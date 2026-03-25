@@ -768,7 +768,11 @@
       flex-wrap: wrap;
       gap: 0.5rem;
       margin-bottom: 2rem;
-      padding: 0.5rem 0;
+      position: sticky;
+      top: 0;
+      background: var(--bg);
+      padding: 0.75rem 0;
+      z-index: 10;
     }
 
     .store-nav-btn {
@@ -947,8 +951,8 @@
     }
 
     .compare-product-img {
-      width: 64px;
-      height: 64px;
+      width: 96px;
+      height: 96px;
       object-fit: contain;
       flex-shrink: 0;
       border-radius: 6px;
@@ -991,8 +995,8 @@
     .compare-pros-list, .compare-cons-list { list-style: none; padding: 0; margin: 0; font-size: 0.8rem; }
     .compare-pros-list li { color: #166534; padding: 0.15rem 0; }
     .compare-cons-list li { color: #991b1b; padding: 0.15rem 0; }
-    .compare-pros-list li::before { content: "\2713 "; font-weight: 700; color: #16a34a; }
-    .compare-cons-list li::before { content: "\2717 "; font-weight: 700; color: #dc2626; }
+    .compare-pros-list li::before { content: ""; }
+    .compare-cons-list li::before { content: ""; }
 
     .compare-view-btn {
       display: inline-block;
@@ -2138,7 +2142,7 @@
       const cats = [...new Set(storeProducts.map(p => p.cat))];
       const nav = document.getElementById("store-nav");
       nav.innerHTML = cats.map((c, i) =>
-        `<button class="store-nav-btn${i === 0 ? ' active' : ''}" onclick="showStoreCat('${c.replace(/'/g, "\\'")}', this)">${c}</button>`
+        `<button class="store-nav-btn${i === 0 ? ' active' : ''}" onclick="scrollToStoreCat('${c.replace(/'/g, "\\'")}', this)">${c}</button>`
       ).join("");
 
       const container = document.getElementById("store-products");
@@ -2189,7 +2193,7 @@
 
         if (hasSubs) {
           return `
-            <div id="store-cat-${catId}" class="store-category" style="display:none;">
+            <div id="store-cat-${catId}" class="store-category">
               <h2 class="store-category-title">${cat}</h2>
               ${catDesc ? `<p class="store-category-problem">${catDesc}</p>` : ""}
               <div class="subcat-tabs">
@@ -2203,7 +2207,7 @@
             </div>`;
         } else {
           return `
-            <div id="store-cat-${catId}" class="store-category" style="display:none;">
+            <div id="store-cat-${catId}" class="store-category">
               <h2 class="store-category-title">${cat}</h2>
               ${catDesc ? `<p class="store-category-problem">${catDesc}</p>` : ""}
               ${renderTable(catProducts)}
@@ -2211,16 +2215,12 @@
         }
       }).join("");
 
-      // Show first category by default
-      const firstCatId = cats[0].replace(/[^a-zA-Z0-9]/g, '');
-      document.getElementById("store-cat-" + firstCatId).style.display = "block";
     }
 
-    function showStoreCat(cat, btn) {
-      document.querySelectorAll(".store-category").forEach(el => el.style.display = "none");
+    function scrollToStoreCat(cat, btn) {
       const id = "store-cat-" + cat.replace(/[^a-zA-Z0-9]/g, '');
       const el = document.getElementById(id);
-      if (el) el.style.display = "block";
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
       document.querySelectorAll(".store-nav-btn").forEach(b => b.classList.remove("active"));
       btn.classList.add("active");
     }
