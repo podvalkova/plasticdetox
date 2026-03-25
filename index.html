@@ -608,6 +608,96 @@
       margin-bottom: 1rem;
     }
 
+    /* ===== RESOURCE TABS ===== */
+    .resource-tabs {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .resource-tab {
+      padding: 0.6rem 1.4rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border: 2px solid var(--border);
+      background: var(--surface);
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .resource-tab:hover {
+      border-color: var(--accent);
+      color: var(--accent-dark);
+    }
+
+    .resource-tab.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    /* ===== ARTICLES ===== */
+    .articles-grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .article-card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .article-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .article-card-body {
+      padding: 1.5rem;
+    }
+
+    .article-card-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      background: var(--accent-light);
+      color: var(--accent-dark);
+      margin-bottom: 0.75rem;
+    }
+
+    .article-card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 0.6rem;
+    }
+
+    .article-card-excerpt {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .article-card-meta {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      display: flex;
+      gap: 1rem;
+    }
+
     /* ===== FOOTER ===== */
     .footer {
       text-align: center;
@@ -739,13 +829,39 @@
   <!-- RESOURCES PAGE -->
   <main id="page-resources" style="display:none;">
     <section class="resources">
-      <h1 class="resources-title">The Research</h1>
-      <p class="resources-intro">Peer-reviewed studies and reputable reports on how plastic affects human health.</p>
-      <div class="search-wrap">
-        <input type="text" class="search-input" id="search-input" placeholder="Search studies..." oninput="filterResources()">
+      <h1 class="resources-title">Resources</h1>
+      <p class="resources-intro">Evidence-based articles and peer-reviewed research on microplastic exposure and how to reduce it.</p>
+
+      <div class="resource-tabs">
+        <button class="resource-tab active" onclick="showResourceTab('articles')">Articles</button>
+        <button class="resource-tab" onclick="showResourceTab('research')">Research Papers</button>
       </div>
-      <div class="resource-count" id="resource-count"></div>
-      <div class="resource-grid" id="resource-grid"></div>
+
+      <!-- ARTICLES TAB -->
+      <div id="tab-articles">
+        <div class="articles-grid">
+          <a href="articles/how-to-remove-microplastics-from-drinking-water.html" class="article-card">
+            <div class="article-card-body">
+              <span class="article-card-tag">Drinking Water</span>
+              <h2 class="article-card-title">How to Remove Microplastics from Drinking Water</h2>
+              <p class="article-card-excerpt">Your tap water contains thousands of microplastic particles per liter. Learn which filters actually remove them, what the research says, and how to protect your family with a step-by-step action plan.</p>
+              <div class="article-card-meta">
+                <span>8 min read</span>
+                <span>March 2026</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- RESEARCH TAB -->
+      <div id="tab-research" style="display:none;">
+        <div class="search-wrap">
+          <input type="text" class="search-input" id="search-input" placeholder="Search studies..." oninput="filterResources()">
+        </div>
+        <div class="resource-count" id="resource-count"></div>
+        <div class="resource-grid" id="resource-grid"></div>
+      </div>
     </section>
   </main>
 
@@ -1284,6 +1400,14 @@
       document.getElementById("nav-resources").classList.add("active");
       renderResources();
       window.scrollTo(0, 0);
+    }
+
+    function showResourceTab(tab) {
+      document.getElementById("tab-articles").style.display = tab === "articles" ? "block" : "none";
+      document.getElementById("tab-research").style.display = tab === "research" ? "block" : "none";
+      document.querySelectorAll(".resource-tab").forEach(btn => btn.classList.remove("active"));
+      event.target.classList.add("active");
+      if (tab === "research") renderResources();
     }
 
     function renderResources(filtered) {
