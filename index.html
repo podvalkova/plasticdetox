@@ -768,11 +768,7 @@
       flex-wrap: wrap;
       gap: 0.5rem;
       margin-bottom: 2rem;
-      position: sticky;
-      top: 0;
-      background: var(--bg);
-      padding: 0.75rem 0;
-      z-index: 10;
+      padding: 0.5rem 0;
     }
 
     .store-nav-btn {
@@ -2084,7 +2080,7 @@
     const storeProducts = [
       // Clean Water > Water Filters
       { cat: "Clean Water", sub: "Water Filters", img: "418gI8Rxl2L", name: "APEC Reverse Osmosis System", asin: "B00I0ZGOZM", bestFor: "Best under sink protection", tier: "$$$", effectiveness: "99.9% removal", desc: "Five stage under sink RO system. NSF certified with a steel pressure tank that serves the whole family.", pros: ["Removes 99.9% of microplastics", "NSF certified", "Serves the whole family"], cons: ["Requires under sink install", "Some water waste", "Higher upfront cost"] },
-      { cat: "Clean Water", sub: "Water Filters", img: "41FVllkDK5L", name: "Bluevua RO100ROPOT Countertop RO", asin: "B09KRDK677", bestFor: "Best countertop RO system", tier: "$$", effectiveness: "99.9% removal", desc: "Countertop reverse osmosis that plugs into your faucet. No plumbing or installation. Five stage purification with remineralization adds healthy minerals back.", pros: ["No installation needed", "Remineralizes water", "Compact countertop design"], cons: ["Needs faucet adapter", "Slower than under sink RO", "2:1 pure to drain ratio"] },
+      { cat: "Clean Water", sub: "Water Filters", img: "41FVllkDK5L", name: "Bluevua RO100ROPOT Countertop RO", asin: "B09KRDK677", bestFor: "Best countertop RO system", tier: "$$", effectiveness: "99.9% removal", desc: "Countertop reverse osmosis you fill by hand. No plumbing, no faucet adapter, no installation at all. Five stage purification with remineralization adds healthy minerals back.", pros: ["Zero installation needed", "Remineralizes water", "Compact countertop design"], cons: ["Fill tank manually", "Slower than under sink RO", "2:1 pure to drain ratio"] },
       { cat: "Clean Water", sub: "Water Filters", img: "51sM4mtrn2L", name: "Big Berkey Countertop Filter", asin: "B0CBVMTYMG", bestFor: "Best gravity fed filter", tier: "$$", effectiveness: "99.9% removal", desc: "Gravity fed stainless steel filter that sits on your countertop. No plumbing or electricity needed. Filters 2.25 gallons at a time.", pros: ["No install or electricity", "Stainless steel construction", "Filters large volumes"], cons: ["Takes up counter space", "Slow gravity fed flow", "Must refill manually"] },
       { cat: "Clean Water", sub: "Water Filters", img: "41bKOyTPymL", name: "Clearly Filtered Pitcher", asin: "B0CW4CDPNJ", bestFor: "Most affordable option", tier: "$", effectiveness: "99.5% removal", desc: "Best pitcher style filter for microplastic removal. NSF tested to standards 42, 53, 401 and 473.", pros: ["Cheapest way to start", "No install needed", "Removes PFAS and lead too"], cons: ["Filter refills every 4 months", "Slower pour speed", "Smaller capacity"] },
 
@@ -2102,7 +2098,7 @@
       { cat: "Clean Cookware", sub: "", img: "216kmrLZraL", name: "Lodge Cast Iron Skillet (12\")", asin: "B00006JSUB", bestFor: "Best for searing and baking", tier: "$", effectiveness: "100% PFAS free", desc: "The classic Teflon replacement. Gets more non stick with every use and will last your whole life.", pros: ["Lasts a lifetime", "Excellent heat retention", "Oven safe to any temp"], cons: ["Heavy at 8 lbs", "Needs seasoning care", "Slow to heat and cool"] },
       { cat: "Clean Cookware", sub: "", img: "21KzEXHq51L", name: "Tramontina Stainless Steel (12\")", asin: "B00JAP44MQ", bestFor: "Best all around workhorse", tier: "$$", effectiveness: "100% PFAS free", desc: "The professional kitchen standard. Completely non reactive so you can cook acidic foods and deglaze with wine.", pros: ["Dishwasher safe", "Non reactive to all foods", "No seasoning needed"], cons: ["Food sticks without technique", "Needs oil or butter", "Less heat retention"] },
       { cat: "Clean Cookware", sub: "", img: "31kOFN-9HpL", name: "De Buyer Carbon Steel (12.5\")", asin: "B00462QP1G", bestFor: "Best for high heat cooking", tier: "$$", effectiveness: "100% PFAS free", desc: "The French chef favorite. Half the weight of cast iron with the same natural non stick seasoning.", pros: ["Half the weight of cast iron", "Heats and cools quickly", "Natural non stick coating"], cons: ["Requires initial seasoning", "Reactive to acidic foods", "Not dishwasher safe"] },
-      { cat: "Clean Cookware", sub: "", img: "41CAi6NhOeL", name: "Xtrema Pure Ceramic Skillet (12\")", asin: "B00JVULOT6", bestFor: "Best for zero chemical cooking", tier: "$$$", effectiveness: "Zero metal or chemical leaching", desc: "100% solid ceramic. Nothing to leach into your food. No metal, no coating, no chemicals of any kind.", pros: ["Zero leaching of any kind", "Completely non reactive", "Scratch proof surface"], cons: ["Fragile if dropped", "No thermal shock", "Heavier than steel"] },
+      { cat: "Clean Cookware", sub: "", img: "41CAi6NhOeL", name: "Xtrema Pure Ceramic Skillet (12\")", url: "https://xtrema.com/collections/skillets", bestFor: "Best for zero chemical cooking", tier: "$$$", effectiveness: "Zero metal or chemical leaching", desc: "100% solid ceramic. Nothing to leach into your food. No metal, no coating, no chemicals of any kind.", pros: ["Zero leaching of any kind", "Completely non reactive", "Scratch proof surface"], cons: ["Fragile if dropped", "No thermal shock", "Heavier than steel"] },
 
       // Kitchen Tools
       { cat: "Kitchen Tools", sub: "", img: "51eQqKKP2yL", name: "Wooden Cooking Utensils (6 Piece)", asin: "B085W92DL4", bestFor: "Best utensil replacement", tier: "$", effectiveness: "Zero chemical leaching", desc: "Natural teak wood spatulas and spoons. Will not melt, scratch, or leach into your food.", pros: ["Will not scratch pans", "Heat resistant", "Non toxic wood"], cons: ["Hand wash only", "Needs occasional oiling"] },
@@ -2142,9 +2138,10 @@
 
       const cats = [...new Set(storeProducts.map(p => p.cat))];
       const nav = document.getElementById("store-nav");
-      nav.innerHTML = cats.map((c, i) =>
-        `<button class="store-nav-btn${i === 0 ? ' active' : ''}" onclick="scrollToStoreCat('${c.replace(/'/g, "\\'")}', this)">${c}</button>`
-      ).join("");
+      nav.innerHTML = `<button class="store-nav-btn active" onclick="showStoreCat('all', this)">All</button>` +
+        cats.map(c =>
+          `<button class="store-nav-btn" onclick="showStoreCat('${c.replace(/'/g, "\\'")}', this)">${c}</button>`
+        ).join("");
 
       const container = document.getElementById("store-products");
       container.innerHTML = cats.map(cat => {
@@ -2168,15 +2165,17 @@
                   </tr>
                 </thead>
                 <tbody>
-                  ${products.map(p => `
+                  ${products.map(p => {
+                    const link = p.url || `https://www.amazon.com/dp/${p.asin}?tag=plasticdetox-20`;
+                    return `
                     <tr>
                       <td>
                         <div class="compare-product-cell">
-                          <a href="https://www.amazon.com/dp/${p.asin}?tag=plasticdetox-20" target="_blank" rel="noopener">
+                          <a href="${link}" target="_blank" rel="noopener">
                             <img class="compare-product-img" src="https://m.media-amazon.com/images/I/${p.img}._AC_SL300_.jpg" alt="${p.name}" loading="lazy">
                           </a>
                           <div class="compare-product-info">
-                            <div class="compare-product-name"><a href="https://www.amazon.com/dp/${p.asin}?tag=plasticdetox-20" target="_blank" rel="noopener">${p.name}</a></div>
+                            <div class="compare-product-name"><a href="${link}" target="_blank" rel="noopener">${p.name}</a></div>
                             <span class="compare-best-for">${p.bestFor}</span>
                           </div>
                         </div>
@@ -2184,9 +2183,9 @@
                       <td>${p.tier}</td>
                       <td><ul class="compare-pros-list">${p.pros.slice(0,3).map(pro => `<li>${pro}</li>`).join("")}</ul></td>
                       <td><ul class="compare-cons-list">${p.cons.slice(0,3).map(con => `<li>${con}</li>`).join("")}</ul></td>
-                      <td><a href="https://www.amazon.com/dp/${p.asin}?tag=plasticdetox-20" target="_blank" rel="noopener" class="compare-view-btn">View</a></td>
-                    </tr>
-                  `).join("")}
+                      <td><a href="${link}" target="_blank" rel="noopener" class="compare-view-btn">View</a></td>
+                    </tr>`;
+                  }).join("")}
                 </tbody>
               </table>
             </div>`;
@@ -2218,10 +2217,15 @@
 
     }
 
-    function scrollToStoreCat(cat, btn) {
-      const id = "store-cat-" + cat.replace(/[^a-zA-Z0-9]/g, '');
-      const el = document.getElementById(id);
-      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    function showStoreCat(cat, btn) {
+      document.querySelectorAll(".store-category").forEach(el => {
+        if (cat === "all") {
+          el.style.display = "block";
+        } else {
+          const id = "store-cat-" + cat.replace(/[^a-zA-Z0-9]/g, '');
+          el.style.display = el.id === id ? "block" : "none";
+        }
+      });
       document.querySelectorAll(".store-nav-btn").forEach(b => b.classList.remove("active"));
       btn.classList.add("active");
     }
