@@ -220,6 +220,43 @@
     .rating-ok { color: #d97706; font-weight: 600; }
     .rating-poor { color: #dc2626; font-weight: 600; }
 
+    .toc {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .toc-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .toc ol {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .toc li {
+      margin-bottom: 0.4rem;
+    }
+
+    .toc a {
+      color: var(--accent-dark);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      line-height: 1.5;
+    }
+
+    .toc a:hover { text-decoration: underline; }
+
     .article a {
       color: var(--accent-dark);
       text-decoration: none;
@@ -264,11 +301,28 @@
     <h1>How to Remove Microplastics from Drinking Water</h1>
     <div class="article-meta">Updated March 25, 2026 · 12 min read · <em>This article contains affiliate links. If you purchase through our links, we may earn a small commission at no extra cost to you.</em></div>
 
+    <nav class="toc">
+      <div class="toc-title">Table of Contents</div>
+      <ol>
+        <li><a href="#whats-in-your-water">What's Actually in Your Water</a></li>
+        <li><a href="#filter-types-compared">Filter Types Compared</a></li>
+        <li><a href="#reverse-osmosis">The Best Option: Reverse Osmosis</a></li>
+        <li><a href="#carbon-block">The Budget Option: Carbon Block Filters</a></li>
+        <li><a href="#what-doesnt-work">What Doesn't Work Well</a></li>
+        <li><a href="#cooking-water">Don't Forget Cooking Water</a></li>
+        <li><a href="#whole-house-vs-point">Whole-House vs. Point-of-Use</a></li>
+        <li><a href="#filter-maintenance">Filter Maintenance Matters</a></li>
+        <li><a href="#certifications">Look for These Certifications</a></li>
+        <li><a href="#action-plan">Quick Action Plan</a></li>
+        <li><a href="#bottom-line">The Bottom Line</a></li>
+      </ol>
+    </nav>
+
     <p>Microplastics have been found in <strong>93% of bottled water brands tested</strong> and in tap water systems across every continent. A 2019 study estimated that the average American ingests over 50,000 microplastic particles per year from water alone, and that number is higher for people who drink exclusively from plastic bottles.</p>
 
     <p>The good news is that the right water filter can remove the vast majority of microplastics from your drinking water. The bad news is that most popular filters don't do nearly as much as people assume. This guide breaks down exactly which filtration technologies work, which don't, and how to choose the best system for your home and budget.</p>
 
-    <h2>What's Actually in Your Water</h2>
+    <h2 id="whats-in-your-water">What's Actually in Your Water</h2>
 
     <p>Before choosing a filter, it helps to understand what you're filtering out. Tap water can contain:</p>
 
@@ -283,7 +337,7 @@
 
     <p>Your specific water contamination depends on where you live. The <strong>EWG Tap Water Database</strong> at ewg.org/tapwater lets you enter your zip code and see exactly what's been detected in your local water supply. Start there before buying any filter.</p>
 
-    <h2>Filter Types Compared</h2>
+    <h2 id="filter-types-compared">Filter Types Compared</h2>
 
     <p>Not all water filters are created equal. Here's how the main technologies perform against microplastics specifically, based on published filtration research.</p>
 
@@ -350,7 +404,7 @@
       </tbody>
     </table>
 
-    <h2>The Best Option: Reverse Osmosis</h2>
+    <h2 id="reverse-osmosis">The Best Option: Reverse Osmosis</h2>
 
     <p>Reverse osmosis is the gold standard for microplastic removal. RO systems force water through a semipermeable membrane with pores as small as 0.0001 microns. For context, the smallest microplastics are about 1 micron, so RO filters catch essentially all of them, including many nanoplastics.</p>
 
@@ -390,7 +444,7 @@
       <li><a href="https://www.amazon.com/dp/B09KRDK677?tag=plasticdetox-20" target="_blank" rel="noopener"><strong>Bluevua RO100ROPOT</strong></a> ($180 to $220). Budget countertop option with solid performance.</li>
     </ul>
 
-    <h2>The Budget Option: Carbon Block Filters</h2>
+    <h2 id="carbon-block">The Budget Option: Carbon Block Filters</h2>
 
     <p>If reverse osmosis is beyond your budget right now, a quality carbon block filter is a significant upgrade over no filter or a basic pitcher. The key word is <strong>block</strong>, not granular. Solid carbon block filters have much smaller pore sizes than loose granular carbon.</p>
 
@@ -402,7 +456,7 @@
       <li><a href="https://www.amazon.com/dp/B00CYW3EVO?tag=plasticdetox-20" target="_blank" rel="noopener"><strong>Berkey</strong></a> ($250 to $350). Gravity-fed countertop system using proprietary carbon block elements. Large capacity, no electricity needed. Note: Berkey has faced some controversy around testing claims, so verify current certifications.</li>
     </ul>
 
-    <h2>What Doesn't Work Well</h2>
+    <h2 id="what-doesnt-work">What Doesn't Work Well</h2>
 
     <p>Many common filters give people a false sense of security:</p>
 
@@ -418,13 +472,13 @@
       Bottled water is not the solution. A 2018 study tested 259 bottles from 11 countries and found microplastics in 93% of them, with an average of 325 particles per liter. Some brands had over 10,000 particles per liter. Bottled water in plastic has more microplastics than most tap water, not fewer. Glass-bottled water is better but expensive and impractical for daily use. Filtering your own tap water is the best approach.
     </div>
 
-    <h2>Don't Forget Cooking Water</h2>
+    <h2 id="cooking-water">Don't Forget Cooking Water</h2>
 
     <p>This is the step most people miss. You filter your drinking water but then boil pasta, rice, and soups in unfiltered tap water. All the contaminants you're filtering out of your glass end up in your food.</p>
 
     <p>If you have an under-sink RO system, use filtered water for all cooking. If you use a pitcher or countertop system, keep enough filtered water on hand for cooking too. It takes a bit more planning but makes your filtration investment much more effective.</p>
 
-    <h2>Whole-House vs. Point-of-Use</h2>
+    <h2 id="whole-house-vs-point">Whole-House vs. Point-of-Use</h2>
 
     <p><strong>Point-of-use systems</strong> (under-sink, countertop, pitcher) filter water at the tap where you drink. These are the most cost-effective for microplastic removal because they only need to filter the water you actually consume.</p>
 
@@ -432,7 +486,7 @@
 
     <p>If shower water concerns you (chlorine and some microplastics do absorb through skin), a separate <a href="https://www.amazon.com/dp/B01MUBU0YC?tag=plasticdetox-20" target="_blank" rel="noopener">shower filter</a> ($30 to $60) with KDF media is a reasonable addition.</p>
 
-    <h2>Filter Maintenance Matters</h2>
+    <h2 id="filter-maintenance">Filter Maintenance Matters</h2>
 
     <p>A neglected filter can be worse than no filter at all. Bacteria can colonize old filters, and saturated carbon loses its ability to adsorb contaminants. Follow these guidelines:</p>
 
@@ -443,7 +497,7 @@
       <li><strong>Track your replacement dates.</strong> Set a calendar reminder. Don't wait until water tastes different because many contaminants are tasteless</li>
     </ul>
 
-    <h2>Look for These Certifications</h2>
+    <h2 id="certifications">Look for These Certifications</h2>
 
     <p>When shopping for any water filter, look for independent testing certifications rather than relying on marketing claims:</p>
 
@@ -457,7 +511,7 @@
 
     <p>A filter with NSF 53 + NSF 58 or NSF P473 certification has been independently verified. Claims without third-party certification should be treated with skepticism.</p>
 
-    <h2>Quick Action Plan</h2>
+    <h2 id="action-plan">Quick Action Plan</h2>
 
     <p>If you're feeling overwhelmed, here's what to do in order of priority:</p>
 
@@ -470,7 +524,7 @@
       <li><strong>Set filter replacement reminders.</strong> A dirty filter is worse than no filter.</li>
     </ol>
 
-    <h2>The Bottom Line</h2>
+    <h2 id="bottom-line">The Bottom Line</h2>
 
     <p>You don't need to spend thousands of dollars to dramatically reduce microplastics in your drinking water. A quality carbon block pitcher ($70) removes the majority. An under-sink reverse osmosis system ($200) removes essentially all of them. Either option is a massive improvement over unfiltered water or plastic bottles.</p>
 
