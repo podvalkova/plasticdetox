@@ -1,0 +1,1527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plastic Detox | Reduce Microplastics in Your Body, Home & Life</title>
+  <meta name="description" content="Microplastics are in your blood, lungs, and brain. Take the free Plastic Detox quiz to get a personalized plan for replacing plastic in your kitchen, bathroom, bedroom, and more. Backed by peer-reviewed research.">
+  <meta name="keywords" content="microplastics, plastic detox, BPA free, reduce plastic, microplastic exposure, plastic alternatives, non-toxic living, plastic free kitchen, plastic free bathroom, PFAS, endocrine disruptors, phthalates">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Plastic Detox | Reduce Microplastics in Your Body, Home & Life">
+  <meta property="og:description" content="Microplastics are in your blood, lungs, and brain. Take the free quiz to get a personalized plan for replacing plastic in every room of your home.">
+  <meta property="og:url" content="https://plasticdetox.org">
+  <meta property="og:site_name" content="Plastic Detox">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Plastic Detox | Reduce Microplastics in Your Body, Home & Life">
+  <meta name="twitter:description" content="Microplastics are in your blood, lungs, and brain. Take the free quiz to get a personalized plan for replacing plastic in every room of your home.">
+
+  <link rel="canonical" href="https://plasticdetox.org">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Plastic Detox",
+    "url": "https://plasticdetox.org",
+    "description": "Interactive quiz and research-backed guide to reducing microplastic exposure in your home and body.",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://plasticdetox.org/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How much plastic do humans eat per week?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "According to a 2019 study by WWF International and the University of Newcastle, humans may ingest approximately 5 grams of plastic per week, roughly the weight of a credit card."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are microplastics found in human blood?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. A 2022 study published in Environment International by Vrije Universiteit Amsterdam detected microplastics in 80% of human blood samples tested."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How can I reduce microplastic exposure at home?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The biggest impact comes from replacing non-stick cookware, filtering your drinking water, avoiding thermal receipts, eliminating canned food and plastic food packaging, and going fragrance-free in personal care and cleaning products."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do microplastics cause health problems?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Research has linked microplastic exposure to cardiovascular risk, endocrine disruption, reproductive issues, and inflammation. A 2024 study in the New England Journal of Medicine found microplastics in arterial plaque were associated with higher heart attack and stroke risk."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --accent: #a78bfa;
+      --accent-dark: #7c3aed;
+      --accent-light: #ede9fe;
+      --red: #ef4444;
+      --orange: #f59e0b;
+      --bg: #fafaf9;
+      --surface: #ffffff;
+      --text: #1c1917;
+      --text-muted: #78716c;
+      --border: #e7e5e4;
+      --radius: 16px;
+      --radius-sm: 10px;
+      --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-lg: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ===== NAV ===== */
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .nav-logo {
+      font-size: 1.25rem;
+      font-weight: 800;
+      text-decoration: none;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+
+    .nav-logo span { color: var(--accent); }
+
+    .nav-links { display: flex; gap: 2rem; }
+
+    .nav-link {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+      cursor: pointer;
+    }
+
+    .nav-link:hover, .nav-link.active { color: var(--text); }
+
+    /* ===== HERO ===== */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: calc(100vh - 80px);
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .hero-content { max-width: 680px; }
+
+    .hero-headline {
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.5rem;
+      color: var(--text);
+    }
+
+    .hero-sub {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 520px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+    }
+
+    /* ===== BUTTONS ===== */
+    .btn-primary {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 1rem 2.5rem;
+      font-size: 1.05rem;
+      font-weight: 600;
+      border-radius: 60px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      font-family: inherit;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-dark);
+      transform: translateY(-1px);
+    }
+
+    /* ===== GAME LAYOUT ===== */
+    .game {
+      display: flex;
+      gap: 3rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem;
+      min-height: calc(100vh - 80px);
+    }
+
+    /* ===== TRACKER ===== */
+    .tracker {
+      width: 240px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 2rem;
+      align-self: flex-start;
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+    }
+
+    .tracker-title {
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .tracker-score-wrap { text-align: center; margin-bottom: 1.25rem; }
+
+    .tracker-circle {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 0.5rem;
+    }
+
+    .tracker-circle svg {
+      transform: rotate(-90deg);
+      width: 100%;
+      height: 100%;
+    }
+
+    .tracker-bg {
+      fill: none;
+      stroke: var(--border);
+      stroke-width: 8;
+    }
+
+    .tracker-fill {
+      fill: none;
+      stroke: var(--accent);
+      stroke-width: 8;
+      stroke-linecap: round;
+      stroke-dasharray: 326.7;
+      stroke-dashoffset: 326.7;
+      transition: stroke-dashoffset 0.6s ease, stroke 0.3s;
+    }
+
+    .tracker-number {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 1.8rem;
+      font-weight: 800;
+    }
+
+    .tracker-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .tracker-categories {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .tracker-cat {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      padding: 0.35rem 0;
+    }
+
+    .tracker-cat.active { color: var(--text); font-weight: 600; }
+    .tracker-cat.done { color: var(--accent); }
+
+    .tracker-cat-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--border);
+      flex-shrink: 0;
+    }
+
+    .tracker-cat.active .tracker-cat-dot {
+      background: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-light);
+    }
+
+    .tracker-cat.done .tracker-cat-dot { background: var(--accent); }
+
+    /* ===== GAME MAIN ===== */
+    .game-main {
+      flex: 1;
+      max-width: 640px;
+      padding-top: 1rem;
+    }
+
+    .game-progress { margin-bottom: 2rem; }
+
+    .progress-bar {
+      height: 6px;
+      background: var(--border);
+      border-radius: 3px;
+      overflow: hidden;
+      margin-bottom: 0.5rem;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 3px;
+      transition: width 0.4s ease;
+      width: 0%;
+    }
+
+    .progress-text {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .category-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    /* ===== QUESTION CARD ===== */
+    .question-card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 2.5rem 2rem;
+      box-shadow: var(--shadow);
+      text-align: center;
+      animation: fadeUp 0.35s ease;
+    }
+
+    .question-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+
+    .question-text {
+      font-size: 1.4rem;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 2rem;
+      letter-spacing: -0.01em;
+    }
+
+    .question-buttons {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-answer {
+      padding: 0.85rem 2rem;
+      border-radius: 60px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: 2px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      transition: all 0.2s;
+      font-family: inherit;
+      min-width: 120px;
+    }
+
+    .btn-answer:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .btn-yes:hover { border-color: var(--red); color: var(--red); }
+    .btn-sometimes:hover { border-color: var(--orange); color: var(--orange); }
+    .btn-no:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ===== ALT CARD ===== */
+    .alt-card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      border-left: 4px solid var(--accent);
+      animation: fadeUp 0.35s ease;
+    }
+
+    .alt-header {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .alt-body {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .alt-body strong { font-weight: 700; }
+
+    .alt-body .alt-swap {
+      display: block;
+      background: var(--accent-light);
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius-sm);
+      margin-top: 0.75rem;
+      font-weight: 500;
+    }
+
+    .btn-next { padding: 0.75rem 2rem; font-size: 0.95rem; }
+
+    .btn-skip {
+      display: block;
+      margin: 1.25rem auto 0;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      font-family: inherit;
+      cursor: pointer;
+      padding: 0.5rem 1rem;
+      transition: color 0.2s;
+    }
+
+    .btn-skip:hover { color: var(--text); }
+
+    /* ===== CATEGORY DONE ===== */
+    .category-done {
+      text-align: center;
+      padding: 3rem 2rem;
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      animation: fadeUp 0.35s ease;
+    }
+
+    .category-done-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .category-done-title { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.75rem; }
+    .category-done-text { color: var(--text-muted); margin-bottom: 2rem; }
+
+    /* ===== RESULTS ===== */
+    .results {
+      animation: fadeUp 0.35s ease;
+      padding-bottom: 3rem;
+    }
+
+    .results-title {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+
+    .results-subtitle {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      margin-bottom: 2rem;
+    }
+
+    .results-category { margin-bottom: 2rem; }
+
+    .results-category-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .result-item {
+      background: var(--surface);
+      border-radius: var(--radius-sm);
+      padding: 1.25rem;
+      margin-bottom: 0.5rem;
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .result-item-icon { font-size: 1.3rem; flex-shrink: 0; padding-top: 0.1rem; }
+
+    .result-item-text { font-size: 0.95rem; line-height: 1.5; }
+    .result-item-text strong { display: block; margin-bottom: 0.15rem; }
+
+    /* ===== RESOURCES ===== */
+    .resources {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+
+    .resources-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.75rem;
+    }
+
+    .resources-intro {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      margin-bottom: 3rem;
+      max-width: 560px;
+    }
+
+    .resource-card {
+      background: var(--surface);
+      border-radius: var(--radius-sm);
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .resource-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .resource-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      background: var(--accent-light);
+      color: var(--accent-dark);
+      margin-bottom: 0.6rem;
+    }
+
+    .resource-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      line-height: 1.4;
+    }
+
+    .resource-source {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .resource-summary {
+      font-size: 0.88rem;
+      color: var(--text);
+      line-height: 1.55;
+      margin-bottom: 0.6rem;
+      opacity: 0.8;
+    }
+
+    .resource-link {
+      font-size: 0.85rem;
+      color: var(--accent-dark);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .resource-link:hover { text-decoration: underline; }
+
+    .search-wrap { margin-bottom: 1rem; }
+
+    .search-input {
+      width: 100%;
+      padding: 0.85rem 1.25rem;
+      border: 2px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-size: 1rem;
+      font-family: inherit;
+      background: var(--surface);
+      color: var(--text);
+      transition: border-color 0.2s;
+      outline: none;
+    }
+
+    .search-input:focus { border-color: var(--accent); }
+    .search-input::placeholder { color: var(--text-muted); }
+
+    .resource-count {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+      margin-top: 3rem;
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ===== MOBILE ===== */
+    @media (max-width: 768px) {
+      .game { flex-direction: column; gap: 1.5rem; }
+
+      .tracker {
+        width: 100%;
+        position: static;
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        padding: 1rem 1.25rem;
+      }
+
+      .tracker-title { display: none; }
+      .tracker-score-wrap { margin-bottom: 0; }
+      .tracker-circle { width: 60px; height: 60px; }
+      .tracker-number { font-size: 1.2rem; }
+      .tracker-label { font-size: 0.7rem; }
+
+      .tracker-categories {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 0.25rem 0.75rem;
+      }
+
+      .question-card { padding: 2rem 1.25rem; }
+      .question-text { font-size: 1.2rem; }
+      .btn-answer { min-width: 100px; padding: 0.75rem 1.5rem; font-size: 0.9rem; }
+      .hero-headline { font-size: 2rem; }
+      .nav { padding: 1rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <a href="#" class="nav-logo" onclick="showHome(); return false;">plastic<span>detox</span></a>
+    <div class="nav-links">
+      <a class="nav-link active" id="nav-home" onclick="showHome()">Home</a>
+      <a class="nav-link" id="nav-resources" onclick="showResources()">Resources</a>
+    </div>
+  </nav>
+
+  <!-- HOME PAGE -->
+  <main id="page-home">
+    <section class="hero" id="hero">
+      <div class="hero-content">
+        <h1 class="hero-headline">Plastic is no longer around you.<br>It's inside you.</h1>
+        <p class="hero-sub">Microplastics are inside your blood, lungs, and brain right now. The good news? Small swaps make a big difference.</p>
+        <button class="btn-primary" onclick="startGame()">Start Your Detox</button>
+      </div>
+    </section>
+
+    <section class="game" id="game" style="display:none;">
+      <div class="tracker" id="tracker">
+        <div class="tracker-title">Your Plastic Score</div>
+        <div class="tracker-score-wrap">
+          <div class="tracker-circle">
+            <svg viewBox="0 0 120 120">
+              <circle cx="60" cy="60" r="52" class="tracker-bg"/>
+              <circle cx="60" cy="60" r="52" class="tracker-fill" id="tracker-arc"/>
+            </svg>
+            <div class="tracker-number" id="tracker-number">0</div>
+          </div>
+          <div class="tracker-label">items to swap</div>
+        </div>
+        <div class="tracker-categories" id="tracker-categories"></div>
+      </div>
+
+      <div class="game-main">
+        <div class="game-progress">
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+          </div>
+          <div class="progress-text" id="progress-text"></div>
+        </div>
+
+        <div class="category-label" id="category-label"></div>
+
+        <div class="question-card" id="question-card">
+          <div class="question-icon" id="question-icon"></div>
+          <h2 class="question-text" id="question-text"></h2>
+          <div class="question-buttons" id="question-buttons">
+            <button class="btn-answer btn-yes" onclick="answer('yes')">Yes</button>
+            <button class="btn-answer btn-sometimes" onclick="answer('sometimes')">Sometimes</button>
+            <button class="btn-answer btn-no" onclick="answer('no')">No</button>
+          </div>
+          <button class="btn-skip" onclick="skipCategory()">Skip this category</button>
+        </div>
+
+        <div class="alt-card" id="alt-card" style="display:none;">
+          <div class="alt-header">Here's a simple swap</div>
+          <div class="alt-body" id="alt-body"></div>
+          <button class="btn-primary btn-next" onclick="nextQuestion()">Got it, next</button>
+        </div>
+
+        <div class="category-done" id="category-done" style="display:none;">
+          <div class="category-done-icon" id="category-done-icon"></div>
+          <h2 class="category-done-title" id="category-done-title"></h2>
+          <p class="category-done-text" id="category-done-text"></p>
+          <button class="btn-primary" id="category-done-btn" onclick="nextCategory()">Continue</button>
+        </div>
+
+        <div class="results" id="results" style="display:none;">
+          <h2 class="results-title">Your Plastic Detox Plan</h2>
+          <p class="results-subtitle" id="results-subtitle"></p>
+          <div class="results-list" id="results-list"></div>
+          <button class="btn-primary" onclick="restartGame()" style="margin-top:2rem;">Start Over</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- RESOURCES PAGE -->
+  <main id="page-resources" style="display:none;">
+    <section class="resources">
+      <h1 class="resources-title">The Research</h1>
+      <p class="resources-intro">Peer-reviewed studies and reputable reports on how plastic affects human health.</p>
+      <div class="search-wrap">
+        <input type="text" class="search-input" id="search-input" placeholder="Search studies..." oninput="filterResources()">
+      </div>
+      <div class="resource-count" id="resource-count"></div>
+      <div class="resource-grid" id="resource-grid"></div>
+    </section>
+  </main>
+
+  <!-- SEO: crawlable content for search engines -->
+  <noscript>
+    <section style="max-width:800px;margin:0 auto;padding:2rem;">
+      <h2>The Plastic Detox Quiz</h2>
+      <p>Take our interactive quiz to discover how much plastic you're exposed to daily and get personalized alternatives for your kitchen, bathroom, bedroom, living room, and more.</p>
+      <h3>The Big 5 Swaps</h3>
+      <ul>
+        <li>Replace non-stick (Teflon) cookware with cast iron, stainless steel, or ceramic</li>
+        <li>Filter your drinking water with reverse osmosis or carbon filtration</li>
+        <li>Stop handling thermal paper receipts. Go digital instead</li>
+        <li>Eliminate canned food and plastic food packaging. Choose fresh food and glass</li>
+        <li>Go fragrance-free in all personal care and cleaning products</li>
+      </ul>
+      <h3>Research</h3>
+      <p>Our recommendations are backed by peer-reviewed studies from institutions including the New England Journal of Medicine, Nature Medicine, The Lancet, and Harvard T.H. Chan School of Public Health.</p>
+    </section>
+  </noscript>
+
+  <footer class="footer">
+    <p>plasticdetox.org. Because your body deserves better than plastic.</p>
+  </footer>
+
+  <script>
+    // ==================== DATA ====================
+    const categories = [
+      {
+        id: "essentials",
+        name: "The Big 5",
+        icon: "\u26A1",
+        description: "These 5 swaps make the biggest difference for your health.",
+        doneText: "These 5 changes alone can cut your plastic exposure by nearly half.",
+        questions: [
+          {
+            icon: "\u{1F373}",
+            text: "Do you cook with non-stick (Teflon) cookware?",
+            alt: "<strong>Replace with cast iron, stainless steel, or ceramic.</strong><span class='alt-swap'>Try a cast iron skillet or stainless steel pan. They last a lifetime and get better with use.</span>Teflon and PTFE coatings release toxic compounds when heated. Food is cooked in this every single day, so cumulative exposure is enormous."
+          },
+          {
+            icon: "\u{1F4A7}",
+            text: "Do you drink unfiltered tap water?",
+            alt: "<strong>Get a water filter. Reverse osmosis removes the most.</strong><span class='alt-swap'>Try a countertop or under-sink reverse osmosis filter. Even a quality carbon filter is a big step up.</span>PFAS (\"forever chemicals\"), heavy metals, and microplastics are in most tap water. Every sip of unfiltered water is a low-dose exposure that adds up over a lifetime."
+          },
+          {
+            icon: "\u{1F9FE}",
+            text: "Do you handle thermal paper receipts?",
+            alt: "<strong>Decline receipts or go digital.</strong><span class='alt-swap'>Say \"no receipt\" or ask for email receipts. Takes zero effort once it's a habit.</span>Hugely underestimated exposure. BPA and BPS absorb directly through your skin, and it's dramatically worsened by hand lotion or sanitizer."
+          },
+          {
+            icon: "\u{1F96B}",
+            text: "Do you eat canned food or food stored in plastic packaging?",
+            alt: "<strong>Switch to fresh food, glass jars, and farmers market shopping.</strong><span class='alt-swap'>Buy fresh produce, choose glass-jarred sauces, and store food in glass containers at home.</span>Cans are lined with BPA/BPS resins. Plastic wrap and containers leach into fatty foods especially. Food is the primary route of plastic chemical ingestion for most people."
+          },
+          {
+            icon: "\u{1F6C1}",
+            text: "Do you use fragranced personal care or cleaning products?",
+            alt: "<strong>Go fragrance-free across the board.</strong><span class='alt-swap'>Switch to \"fragrance-free\" (not \"unscented\") shampoo, lotion, detergent, and cleaning sprays. Check labels because \"fragrance\" hides dozens of chemicals.</span>Synthetic fragrances are a cocktail of phthalates, which are potent hormone disruptors. They're in shampoo, lotion, detergent, candles, air fresheners, and cleaning sprays. Phthalates absorb through skin and lungs."
+          }
+        ]
+      },
+      {
+        id: "kitchen",
+        name: "Your Kitchen",
+        icon: "\u{1F373}",
+        description: "Let's look at what's hiding in your kitchen.",
+        doneText: "Your kitchen is where most daily plastic exposure happens. Every swap here counts.",
+        questions: [
+          {
+            icon: "\u{1F6AB}",
+            text: "Do you microwave food in plastic containers?",
+            alt: "<strong>Never microwave in plastic. Always transfer to glass or ceramic first.</strong><span class='alt-swap'>Even \"microwave safe\" plastic leaches badly when heated. No exceptions on this one.</span>Heat dramatically increases how much plastic leaches into food. This is one of the highest single-exposure habits you can fix instantly."
+          },
+          {
+            icon: "\u{1F964}",
+            text: "Do you store food in plastic containers?",
+            alt: "<strong>Switch to glass or stainless steel food storage.</strong><span class='alt-swap'>No plastic containers for leftovers, especially anything warm or fatty. Glass is easy to clean and lasts forever.</span>Plastic containers leach chemicals into food over time, and the effect is much worse with hot or fatty foods."
+          },
+          {
+            icon: "\u{1FAB5}",
+            text: "Do you use plastic cutting boards?",
+            alt: "<strong>Replace with wood (end-grain) or bamboo.</strong><span class='alt-swap'>Worn plastic boards shed millions of microplastic particles directly into food when cutting. Wood is naturally antimicrobial.</span>Every knife cut on a plastic board releases microplastics straight into your meal. This adds up fast over years of daily cooking."
+          },
+          {
+            icon: "\u2615",
+            text: "Is your coffee equipment plastic?",
+            alt: "<strong>Switch to glass, stainless, or ceramic coffee gear.</strong><span class='alt-swap'>Glass French press, stainless pour-over, or ceramic dripper. Daily high-heat plastic exposure most people miss entirely.</span>Hot water sitting in plastic every morning is a significant daily dose of leached chemicals that's easy to eliminate."
+          },
+          {
+            icon: "\u{1FAD9}",
+            text: "Do you store dry goods in plastic bags?",
+            alt: "<strong>Store dry goods in glass jars.</strong><span class='alt-swap'>Rice, pasta, nuts, and oils sitting long-term in plastic bags slowly leach, especially fatty foods. Mason jars are cheap and last forever.</span>Long-term contact between food and plastic means slow but constant chemical migration into what you eat."
+          },
+          {
+            icon: "\u{1F9FD}",
+            text: "Do you use plastic wrap or zip lock bags?",
+            alt: "<strong>Switch to beeswax wraps, silicone stretch lids, and Stasher bags.</strong><span class='alt-swap'>Plastic wrap directly touching fatty foods like cheese and meat is a significant leaching source. Reusable alternatives work just as well.</span>Direct contact between plastic film and food, especially anything fatty or acidic, is one of the most common daily exposures."
+          },
+          {
+            icon: "\u{1F944}",
+            text: "Do you use plastic utensils or a plastic colander?",
+            alt: "<strong>Switch to wooden spoons, stainless spatulas, and a stainless colander.</strong><span class='alt-swap'>Plastic utensils stirring hot food and boiling pasta through plastic colanders are easy to fix daily exposures.</span>Heat plus plastic plus direct food contact is the worst combination. Stainless and wood handle heat without leaching anything."
+          },
+          {
+            icon: "\u{1FAD6}",
+            text: "Does your kettle have a plastic interior?",
+            alt: "<strong>Switch to a stainless steel or glass kettle.</strong><span class='alt-swap'>Most cheap kettles have plastic interiors that heat water to boiling. That's the worst possible scenario for leaching.</span>Boiling water in a plastic-lined kettle can release billions of nanoplastic particles per liter. Stainless or glass only."
+          },
+          {
+            icon: "\u{1F9F4}",
+            text: "Do you use filtered water for cooking too?",
+            alt: "<strong>Use your water filter for cooking water, not just drinking.</strong><span class='alt-swap'>Most people filter drinking water but cook pasta, soups, and grains in unfiltered tap water. Same filter, just use it for everything.</span>Cooking with unfiltered water means all the contaminants you're filtering out of drinking water still end up in your food."
+          },
+          {
+            icon: "\u{1F961}",
+            text: "Do you eat from plastic takeout containers?",
+            alt: "<strong>Transfer takeout to your own glass or ceramic dishes immediately.</strong><span class='alt-swap'>Hot food in styrofoam or plastic takeout containers is one of the highest single-dose plastic exposures possible.</span>The combination of hot, often fatty food sitting in cheap plastic is a worst-case scenario for chemical leaching. Transfer it right away."
+          }
+        ]
+      },
+      {
+        id: "bathroom",
+        name: "Your Bathroom",
+        icon: "\u{1F6BF}",
+        description: "The bathroom is full of hidden plastics. Let's find them.",
+        doneText: "Bathroom products touch your skin daily. Reducing plastic here protects you directly.",
+        questions: [
+          {
+            icon: "\u{1F9F4}",
+            text: "Do you use shampoo or conditioner in plastic bottles?",
+            alt: "<strong>Switch to shampoo bars or brands in glass bottles.</strong><span class='alt-swap'>Shampoo bars (Ethique, HiBar) or brands in glass eliminate both plastic packaging and synthetic ingredients.</span>Liquid shampoo in plastic bottles is a double hit: plastic packaging plus synthetic ingredients that absorb through your scalp."
+          },
+          {
+            icon: "\u{1FAA5}",
+            text: "Do you use a plastic toothbrush?",
+            alt: "<strong>Switch to a bamboo toothbrush with soft bristles.</strong><span class='alt-swap'>Bamboo with soft bristles is the cleanest swap. Replace every 3 months like usual.</span>Plastic toothbrushes shed microplastics directly into your mouth twice a day."
+          },
+          {
+            icon: "\u{1F9B7}",
+            text: "Do you use conventional toothpaste in a plastic tube?",
+            alt: "<strong>Switch to clean toothpaste in metal tubes or glass jars.</strong><span class='alt-swap'>Try David's (metal tube), Bite tablets (glass jar), or Risewell (hydroxyapatite). For babies, rice grain sized amount only. Ask your pediatric dentist about hydroxyapatite as a fluoride-free option.</span>Conventional toothpaste contains SLS, synthetic fragrance, artificial sweeteners, and comes in unrecyclable plastic tubes."
+          },
+          {
+            icon: "\u{1F9FC}",
+            text: "Do you use liquid body wash in plastic bottles?",
+            alt: "<strong>Switch to bar soap in paper packaging.</strong><span class='alt-swap'>A simple fragrance-free bar soap in paper packaging eliminates all of it. Look for short ingredient lists with recognizable words.</span>Liquid body wash in plastic bottles often contains parabens and synthetic fragrance on top of the plastic waste."
+          },
+          {
+            icon: "\u{1F48A}",
+            text: "Do you use conventional deodorant in a plastic applicator?",
+            alt: "<strong>Replace with paste or glass jar versions.</strong><span class='alt-swap'>Clean alternatives in glass jars or cardboard tubes work well. Try Native fragrance-free or Meow Meow Tweet.</span>Conventional deodorants contain aluminum, fragrance, and parabens in plastic applicators that touch your skin daily."
+          },
+          {
+            icon: "\u{1FA92}",
+            text: "Do you use disposable plastic razors?",
+            alt: "<strong>Switch to a stainless steel safety razor.</strong><span class='alt-swap'>A single stainless safety razor lasts a lifetime. Replacement blades cost pennies.</span>Disposable plastic razors have fragrance-laden lubricating strips touching your skin every shave."
+          },
+          {
+            icon: "\u{1F9FB}",
+            text: "Do you use regular plastic-cased dental floss?",
+            alt: "<strong>Switch to silk floss in a glass or metal dispenser.</strong><span class='alt-swap'>Dental Lace or Lucky Teeth make silk floss in refillable glass or metal containers.</span>Most floss is nylon or PTFE (Teflon) coated in synthetic wax. It goes directly between your teeth and gums."
+          },
+          {
+            icon: "\u{1F6C1}",
+            text: "Do you have a PVC shower curtain?",
+            alt: "<strong>Replace with fabric or install a glass door.</strong><span class='alt-swap'>GOTS-certified organic cotton curtain or a glass door. That \"new shower curtain smell\" is literally chemicals off-gassing.</span>PVC shower curtains are one of the biggest VOC and phthalate sources in the home. You breathe this in every shower."
+          },
+          {
+            icon: "\u{1F9F4}",
+            text: "Do you use chemical sunscreen?",
+            alt: "<strong>Switch to mineral sunscreen with zinc oxide only.</strong><span class='alt-swap'>No oxybenzone or octinoxate (hormone disruptors). Best options: Badger, Thinkbaby, Raw Elements.</span>Chemical sunscreen ingredients like oxybenzone are hormone disruptors that absorb through your skin and enter your bloodstream."
+          },
+          {
+            icon: "\u{1F484}",
+            text: "Have you checked your makeup and skincare ingredients?",
+            alt: "<strong>Use the EWG Skin Deep database to check your products.</strong><span class='alt-swap'>Go to ewg.org/skindeep and look up your specific products. Swap the worst offenders first, especially things left on skin the longest like moisturizer, foundation, and body lotion.</span>Conventional makeup and skincare are loaded with parabens, phthalates, synthetic fragrance, and PFAS (\"forever chemicals\" found in many long-wear foundations and mascaras)."
+          }
+        ]
+      },
+      {
+        id: "bedroom",
+        name: "Your Bedroom & Closet",
+        icon: "\u{1F455}",
+        description: "What you sleep in and wear matters more than you think.",
+        doneText: "You spend a third of your life in bed. Making your bedroom clean is one of the highest impact things you can do.",
+        questions: [
+          {
+            icon: "\u{1F6CF}\uFE0F",
+            text: "Are your bedsheets conventional (non-organic) cotton or synthetic?",
+            alt: "<strong>Switch to organic cotton or linen bedsheets.</strong><span class='alt-swap'>Look for GOTS-certified organic cotton or linen. Brands: Coyuchi, Parachute Organic, Avocado.</span>Conventional cotton is one of the most heavily pesticide-sprayed crops in the world. You spend 7 to 8 hours with your face pressed against these sheets every night."
+          },
+          {
+            icon: "\u{1F6CC}",
+            text: "Is your mattress a conventional one?",
+            alt: "<strong>Replace with a non-toxic mattress when you can.</strong><span class='alt-swap'>Look for GOTS/GOLS certified organic latex or wool mattresses. Brands: Avocado, Naturepedic, My Green Mattress. Use a wool mattress protector as a barrier if full replacement isn't feasible now.</span>Conventional mattresses are treated with chemical flame retardants (PBDE and alternatives) and off-gas VOCs for years. You sleep on this 8 hours a night."
+          },
+          {
+            icon: "\u{1F455}",
+            text: "Are most of your clothes made from synthetic fabrics?",
+            alt: "<strong>Prioritize natural fibers, especially for items worn close to skin.</strong><span class='alt-swap'>Organic cotton, linen, wool, and silk are the cleanest options. Focus on underwear, socks, and sleepwear first since they have the most skin contact.</span>Synthetic fabrics like polyester, nylon, and acrylic are essentially plastic. They shed microplastic fibers with every wear and wash, absorb through skin, and off-gas chemicals."
+          },
+          {
+            icon: "\u{1F9FA}",
+            text: "Do you wash synthetic clothes without a microplastic filter?",
+            alt: "<strong>Add a microplastic filter to your washing machine.</strong><span class='alt-swap'>A Filtrol or Lint LUV-R filter catches microplastic fibers before they enter waterways and reduces your home's microplastic dust load too.</span>Every synthetic fabric wash releases hundreds of thousands of microplastic fibers into water."
+          },
+          {
+            icon: "\u{1F4A4}",
+            text: "Are your pillows and pillowcases conventional?",
+            alt: "<strong>Switch to organic cotton or wool pillows and pillowcases.</strong><span class='alt-swap'>GOTS-certified organic cotton pillowcases are an inexpensive, high-impact swap. Pillowcases are the single item closest to your face all night.</span>Conventional pillows are often made with synthetic foam and chemical treatments."
+          },
+          {
+            icon: "\u{1FA9F}",
+            text: "Do you keep your bedroom windows closed most of the time?",
+            alt: "<strong>Air out your bedroom daily for 10 to 15 minutes.</strong><span class='alt-swap'>Off-gassing from furniture, flooring, and textiles concentrates overnight in a closed room. Opening windows dramatically reduces VOC buildup.</span>Especially important in a new home or with new furniture. Even a short daily airing makes a meaningful difference."
+          },
+          {
+            icon: "\u{1F454}",
+            text: "Do you dry clean your clothes?",
+            alt: "<strong>Avoid dry cleaning or air out garments thoroughly after.</strong><span class='alt-swap'>Remove the plastic bag immediately and air garments outside for several hours before bringing them into your bedroom. Seek out wet cleaning or CO2 cleaning alternatives.</span>Conventional dry cleaning uses perchloroethylene (PERC), a known carcinogen and neurotoxin."
+          },
+          {
+            icon: "\u{1F9F8}",
+            text: "Are your duvets and pillows filled with synthetic polyester?",
+            alt: "<strong>Choose natural fill: wool, down, or organic cotton.</strong><span class='alt-swap'>Wool is especially good as it's naturally flame-resistant, eliminating the need for chemical treatment.</span>Synthetic polyester fill in duvets and pillows is essentially sleeping inside a plastic bag."
+          },
+          {
+            icon: "\u{1F457}",
+            text: "Do you wear new clothes without washing them first?",
+            alt: "<strong>Always wash new clothing before wearing.</strong><span class='alt-swap'>Washing before first wear removes the bulk of surface chemicals. This is especially important for anything worn against skin.</span>New clothes, especially synthetic blends, are treated with formaldehyde-based wrinkle treatments, optical brighteners, and sizing chemicals."
+          },
+          {
+            icon: "\u{1F319}",
+            text: "Is your sleepwear treated with chemical flame retardants?",
+            alt: "<strong>Choose snug-fit 100% natural fiber sleepwear.</strong><span class='alt-swap'>Snug-fitting natural fiber sleepwear meets flame standards through fit rather than chemicals. Look for snug-fit GOTS organic cotton pajamas for the whole family.</span>Most pajamas meet flame resistance standards with chemical flame retardants. The exemption is snug-fitting 100% natural fiber sleepwear."
+          }
+        ]
+      },
+      {
+        id: "living",
+        name: "Your Living Room",
+        icon: "\u{1F6CB}\uFE0F",
+        description: "The room where your family spends the most waking hours.",
+        doneText: "The living room is where dust, off-gassing, and daily exposure overlap the most. These swaps make a real difference.",
+        questions: [
+          {
+            icon: "\u{1F6CB}\uFE0F",
+            text: "Is your sofa or armchair made with synthetic foam?",
+            alt: "<strong>Replace or cover synthetic foam furniture.</strong><span class='alt-swap'>Replace with natural latex, wool, or down fill furniture (Avocado, Inside Weather), or at minimum use a tight-woven organic cotton slipcover as a barrier while you plan a longer-term swap.</span>Conventional sofas are packed with polyurethane foam treated with chemical flame retardants that off-gas continuously and accumulate in household dust. This is one of the largest chemical sources in most homes."
+          },
+          {
+            icon: "\u{1FA9F}",
+            text: "Was your living room painted with conventional paint?",
+            alt: "<strong>Switch to zero-VOC paint for any future painting.</strong><span class='alt-swap'>Benjamin Moore Natura and ECOS Paint are good options. Maximize ventilation in recently painted rooms.</span>Conventional paint off-gasses VOCs for months to years after application. If you've recently painted, this is actively happening right now."
+          },
+          {
+            icon: "\u{1F9F9}",
+            text: "Do you vacuum less than twice a week?",
+            alt: "<strong>Vacuum frequently with a HEPA vacuum and wet mop after.</strong><span class='alt-swap'>Vacuum at least twice a week with a sealed HEPA vacuum (Miele, Dyson HEPA). Wet mopping after vacuuming removes residual fine particles.</span>Household dust is a primary carrier of flame retardants, phthalates, and microplastics shed from furniture, electronics, and synthetic textiles. Babies crawling on floors ingest significant amounts of dust."
+          },
+          {
+            icon: "\u{1F56F}\uFE0F",
+            text: "Do you use synthetic candles, air fresheners, or plug-ins?",
+            alt: "<strong>Remove all synthetic candles and air fresheners.</strong><span class='alt-swap'>Replace with 100% beeswax or soy candles with cotton wicks, or simply open windows. If you want scent, a few drops of pure essential oil in a diffuser used sparingly is the cleanest option.</span>Paraffin candles release benzene and toluene when burned, both carcinogens. Plug-in air fresheners and spray fresheners are among the highest indoor fragrance sources in the home."
+          },
+          {
+            icon: "\u{1F33F}",
+            text: "Do you have synthetic rugs or wall-to-wall carpet?",
+            alt: "<strong>Replace synthetic rugs with natural fiber alternatives.</strong><span class='alt-swap'>Switch to wool, jute, sisal, or organic cotton rugs (Lorena Canals makes washable organic cotton rugs for kids). Look for GOTS or OEKO-TEX certified.</span>Synthetic carpet and rugs are made from nylon, polyester, or polypropylene (all plastics) and are treated with stain-resistant PFAS coatings and adhesives. Babies spend enormous time on rugs."
+          },
+          {
+            icon: "\u{1F4FA}",
+            text: "Is your baby's play area near electronics like the TV?",
+            alt: "<strong>Ventilate around electronics and keep play areas away from them.</strong><span class='alt-swap'>Don't place a baby's play area directly in front of or below a TV unit. Dust electronics regularly with a damp cloth and ensure good airflow in the room.</span>TVs, game consoles, and electronics contain brominated flame retardants that off-gas when warm during use."
+          },
+          {
+            icon: "\u{1FA9F}",
+            text: "Do you have vinyl (PVC) blinds on your windows?",
+            alt: "<strong>Replace with real wood, bamboo, or fabric roman shades.</strong><span class='alt-swap'>Choose OEKO-TEX certified fabric shades. This is especially urgent in a baby's play space.</span>Vinyl blinds, especially older ones, contain lead stabilizers and off-gas phthalates continuously. Older vinyl blinds have been recalled specifically for lead content."
+          },
+          {
+            icon: "\u{1F32C}\uFE0F",
+            text: "Do you have an air purifier in the living room?",
+            alt: "<strong>Add a HEPA + activated carbon air purifier.</strong><span class='alt-swap'>Best options: Coway Airmega, Austin Air HealthMate, or Blueair for larger living spaces. Run it continuously for the most benefit.</span>The living room is where the family spends most waking hours and where babies play. A purifier with both true HEPA (particles) and activated carbon (VOCs and gases) makes a meaningful difference."
+          },
+          {
+            icon: "\u{1FAB5}",
+            text: "Is your furniture made from particleboard or MDF?",
+            alt: "<strong>Choose solid wood furniture over particleboard when replacing.</strong><span class='alt-swap'>Choose solid wood, metal, or CARB Phase 2 certified pieces at minimum. Look for Greenguard Gold certified furniture especially near baby's play area.</span>Flat-pack and budget furniture made from MDF and particleboard uses formaldehyde-based adhesives that off-gas for years. This is a significant and chronic VOC source."
+          },
+          {
+            icon: "\u{1F9FA}",
+            text: "Do you wear shoes inside the house?",
+            alt: "<strong>Remove shoes at the door. One of the simplest, highest-impact habits.</strong><span class='alt-swap'>A strict no-shoes-inside policy and a dedicated shoe area at the entrance is all it takes. Studies show it reduces indoor floor contamination by up to 60%.</span>Outside shoes track in pesticides, heavy metals, asphalt chemicals, and general environmental contaminants directly onto floors where babies crawl and play."
+          }
+        ]
+      },
+      {
+        id: "kids",
+        name: "If You Have Kids",
+        icon: "\u{1F476}",
+        description: "Children are more vulnerable to plastic chemicals. Let's protect them.",
+        doneText: "Children absorb more microplastics per pound of body weight. These swaps protect the most vulnerable.",
+        questions: [
+          {
+            icon: "\u{1F37C}",
+            text: "Are you using conventional disposable diapers?",
+            alt: "<strong>Switch to low-chemical diapers.</strong><span class='alt-swap'>Coterie, Healthy Baby, or Freestyle are totally chlorine-free (TCF), fragrance-free, and third-party tested.</span>Conventional diapers contain chlorine bleaching byproducts, phthalates, and synthetic fragrance against your baby's skin 24/7 for 2 to 3 years."
+          },
+          {
+            icon: "\u{1F9F8}",
+            text: "Does your child play with plastic or PVC toys?",
+            alt: "<strong>Replace with food-grade silicone, natural rubber, untreated wood, and organic cotton toys.</strong><span class='alt-swap'>For bath specifically, choose solid natural rubber (Hevea, Oli & Carol) with no holes to prevent mold, or skip bath toys entirely. Babies mouth everything, so this is direct ingestion.</span>Plastic toys (especially soft PVC) can contain phthalates, BPA, lead, and cadmium in colorants."
+          },
+          {
+            icon: "\u{1F3EB}",
+            text: "Does your child take lunch to school in plastic containers?",
+            alt: "<strong>Pack school lunches in stainless steel or glass.</strong><span class='alt-swap'>Stainless steel bento boxes (PlanetBox, LunchBots) and stainless or glass water bottles. This affects 180+ school days a year.</span>Plastic lunch boxes leach into food all morning before lunch. That's hours of contact with chemicals."
+          },
+          {
+            icon: "\u{1F476}",
+            text: "Do you use regular laundry detergent or fabric softener for baby items?",
+            alt: "<strong>Use fragrance-free baby laundry detergent and skip fabric softener entirely.</strong><span class='alt-swap'>Fabric softener coats fibers with synthetic fragrance and quaternary ammonium compounds. Use wool dryer balls instead of dryer sheets.</span>Baby skin is significantly more permeable than adult skin. Everything on their clothes absorbs into their body more easily."
+          },
+          {
+            icon: "\u{1F33F}",
+            text: "Are your baby's sleep items conventional cotton or synthetic?",
+            alt: "<strong>Switch to organic cotton for all baby sleep items.</strong><span class='alt-swap'>Look for GOTS-certified organic cotton and Greenguard Gold certified crib mattresses (Naturepedic, Newton). Crib mattress, mattress cover, sheets, sleep sacks, and pajamas all matter.</span>Babies sleep 14 to 16 hours a day. All of those items are in continuous skin contact."
+          },
+          {
+            icon: "\u{1F3A8}",
+            text: "Have you checked your child's art supplies and playdough?",
+            alt: "<strong>Choose ASTM D-4236 certified supplies and beeswax crayons.</strong><span class='alt-swap'>Stockmar beeswax crayons are a great option. You can also make playdough at home with clean ingredients.</span>Conventional playdough and crayons often contain preservatives, synthetic fragrance, and heavy metals in pigments."
+          },
+          {
+            icon: "\u{1F9F4}",
+            text: "Have you audited your baby's skincare products?",
+            alt: "<strong>Check every product on EWG Skin Deep. Fewer ingredients is always better.</strong><span class='alt-swap'>Shea butter or a single-ingredient clean balm is all most babies need. Go to ewg.org/skindeep to look up your specific products.</span>Baby lotions and washes are often full of synthetic fragrance, parabens, and PEGs. Baby skin absorbs far more readily than adult skin."
+          },
+          {
+            icon: "\u{1F4F1}",
+            text: "Does your baby eat from plastic food pouches?",
+            alt: "<strong>Transition to homemade food in silicone trays or glass jars.</strong><span class='alt-swap'>If using pouches, never warm them and check brands at HeavyMetals.org. Plastic lined pouches and some purees contain heavy metals.</span>Babies eat these daily, often warm. The plastic lining leaches into the food, especially when heated."
+          },
+          {
+            icon: "\u{1F4A7}",
+            text: "Does your baby drink from plastic bottles?",
+            alt: "<strong>Use glass or silicone bottles only.</strong><span class='alt-swap'>Glass bottles with silicone sleeves are durable and safe. Given how frequently babies feed, this exposure adds up fast.</span>Plastic bottles leach into warm milk. This is especially damaging given the frequency of feedings and how much more vulnerable babies are."
+          },
+          {
+            icon: "\u{1F3E0}",
+            text: "Have you tested your home for lead and radon?",
+            alt: "<strong>Test with inexpensive home kits. This is the single most severe item on any list.</strong><span class='alt-swap'>Pre-1978 homes may have lead paint and lead pipes, a serious direct neurotoxin for young children who crawl and mouth objects. Radon accumulates invisibly in lower floors. Both are easily tested.</span>This is the single item on any list with the most severe potential consequence if missed. Cheap to test, critical to know."
+          }
+        ]
+      },
+      {
+        id: "pets",
+        name: "If You Have Pets",
+        icon: "\u{1F43E}",
+        description: "What goes on your pet ends up on your floors, furniture, and family.",
+        doneText: "Pets transfer chemicals to every surface in your home. Cleaning up their products protects the whole family.",
+        questions: [
+          {
+            icon: "\u{1F963}",
+            text: "Does your pet eat or drink from plastic bowls?",
+            alt: "<strong>Replace with stainless steel, ceramic, or glass bowls.</strong><span class='alt-swap'>Plastic pet bowls scratch over time, and those scratches harbor bacteria and leach chemicals directly into food and water. Avoid cheap ceramic from unknown sources which can contain lead in the glaze.</span>Pets eat and drink from these multiple times daily. The same logic that applies to your own kitchen applies here."
+          },
+          {
+            icon: "\u{1F43E}",
+            text: "Do you use conventional flea and tick treatments?",
+            alt: "<strong>Talk to your vet about lower-toxicity alternatives.</strong><span class='alt-swap'>Conventional spot-on treatments, flea collars (especially Seresto), and oral medications contain organophosphates, pyrethroids, and other neurotoxins that remain on pet fur for weeks. Seresto collars in particular have been linked to serious health concerns.</span>Babies and toddlers who pet animals and then mouth their hands are directly exposed. Time treatments so baby has minimal contact immediately after application."
+          },
+          {
+            icon: "\u{1F356}",
+            text: "Is your pet food in BPA-lined cans or plastic bags?",
+            alt: "<strong>Switch to BPA-free pouches, cartons, or fresh/frozen pet food.</strong><span class='alt-swap'>Brands like Open Farm use Tetra Pak cartons. This also reduces the chemical load your pet carries, which transfers to your home environment.</span>Conventional pet food in metal cans has BPA/BPS-lined interiors. Dry food in plastic bags also leaches over time, especially with fatty food."
+          },
+          {
+            icon: "\u{1F6CF}\uFE0F",
+            text: "Is your pet's bed made from synthetic materials?",
+            alt: "<strong>Switch to organic cotton, wool, or natural latex pet beds.</strong><span class='alt-swap'>Polyester and synthetic foam pet beds off-gas VOCs and shed microplastics. Wash regularly with fragrance-free detergent.</span>Pets spend enormous amounts of time sleeping on these beds, then transfer those chemicals to your floors and furniture where baby crawls."
+          },
+          {
+            icon: "\u{1F9F4}",
+            text: "Do you use conventional pet shampoo?",
+            alt: "<strong>Choose fragrance-free, simple ingredient pet shampoos.</strong><span class='alt-swap'>The fewer ingredients the better. What goes on your pet comes off on your baby's hands.</span>Conventional pet shampoos contain synthetic fragrance, parabens, and SLS. Pets lick themselves after bathing and babies handle pets constantly."
+          },
+          {
+            icon: "\u{1F9F8}",
+            text: "Are your pet's toys made from cheap plastic or rubber?",
+            alt: "<strong>Choose natural rubber, cotton rope, or wool pet toys.</strong><span class='alt-swap'>Soft rubber and plastic pet toys, especially cheap imported ones, can contain phthalates and BPA that transfer to your pet's mouth and then to their fur and your floors.</span>This is especially important if your baby handles pet toys, which they inevitably will."
+          },
+          {
+            icon: "\u{1F33F}",
+            text: "Do you use conventional floor cleaners around your pets?",
+            alt: "<strong>Switch to non-toxic pet-safe cleaning products.</strong><span class='alt-swap'>Use Branch Basics, castile soap, or white vinegar-based cleaners throughout. Avoid Swiffer WetJet solution and Pine-Sol especially.</span>Many conventional floor cleaners contain phenols, quaternary ammonium compounds, and synthetic fragrance that are toxic to pets. Whatever is on your floor transfers to baby too."
+          },
+          {
+            icon: "\u{1FAB1}",
+            text: "Is your pet on year-round blanket chemical parasite prevention?",
+            alt: "<strong>Work with an integrative vet to assess your pet's actual risk level.</strong><span class='alt-swap'>Consider targeted rather than blanket chemical prevention, especially if your pet has close contact with your baby.</span>Monthly heartworm, flea, and tick medications are powerful pesticides given orally or applied topically. Year-round blanket use may not be necessary for every pet in every region."
+          },
+          {
+            icon: "\u{1F3E5}",
+            text: "Do you use scented pet products like deodorizing sprays or scented litter?",
+            alt: "<strong>Go fragrance-free across all pet products.</strong><span class='alt-swap'>Unscented cat litter (World's Best Cat Litter, \u00F6kocat), fragrance-free waste bags, and no pet deodorizing sprays. If your pet smells, that's a diet or health issue worth addressing at the source.</span>Pet deodorizing sprays, scented litter, pet cologne, and scented waste bags are all unnecessary fragrance sources in your home environment."
+          }
+        ]
+      },
+      {
+        id: "bonus",
+        name: "Bonus Round",
+        icon: "\u{1F31F}",
+        description: "Advanced swaps for when you're ready to go deeper.",
+        doneText: "You've completed the full detox audit. You now know more about your exposure than 99% of people.",
+        questions: [
+          {
+            icon: "\u{1F4F1}",
+            text: "Have you thought about plastic in your digital life?",
+            alt: "<strong>Reduce plastic from devices, cases, and delivery packaging.</strong><span class='alt-swap'>Choose fabric or leather phone cases, minimize printing, and shake out or wipe down any paper inserts from deliveries before bringing them to your kitchen counter.</span>Printer cartridges, phone cases, laptop bags, and charging cables all off-gas and shed microplastics. Thermal receipt paper from warehouse order confirmations comes inside your packages and is handled before food."
+          },
+          {
+            icon: "\u{1F3CA}",
+            text: "Do you or your family use pools or hot tubs regularly?",
+            alt: "<strong>Be cautious with pools and hot tubs. Rinse immediately after swimming.</strong><span class='alt-swap'>Chlorinated pool water contains chloramines and disinfection byproducts that absorb through skin and are inhaled as vapor. Hot tubs are worse due to higher temperature. Choose saltwater pools where possible.</span>For babies specifically, the American Academy of Pediatrics recommends waiting until at least 12 months for pool exposure. Indoor pools have more concentrated chemical vapor."
+          },
+          {
+            icon: "\u{1F9FE}",
+            text: "Do you know exactly what's in your specific tap water?",
+            alt: "<strong>Look up your water at ewg.org/tapwater and get the right filter.</strong><span class='alt-swap'>Enter your zip code on the EWG Tap Water Database to see exactly what contaminants your local utility has detected and at what levels. This tells you precisely which filter type you actually need.</span>A general filter is good but knowing what's actually in your specific water is better. Not all filters remove all contaminants."
+          },
+          {
+            icon: "\u{1F30A}",
+            text: "Do you eat a lot of shellfish?",
+            alt: "<strong>Know the microplastic hierarchy in seafood.</strong><span class='alt-swap'>Shellfish like oysters, mussels, and clams are among the highest dietary sources of microplastic ingestion because you eat the entire organism including its digestive system. Fish lower on the food chain (sardines, anchovies, mackerel) have lower loads.</span>This doesn't mean avoid seafood. The omega-3 benefits are real. But it's worth knowing the hierarchy and making informed choices."
+          },
+          {
+            icon: "\u{1F4B3}",
+            text: "Do you still handle thermal paper beyond store receipts?",
+            alt: "<strong>Go fully digital across all thermal paper touchpoints.</strong><span class='alt-swap'>ATM receipts, parking tickets, lottery tickets, airline boarding passes, and deli counter tickets are all thermal paper with the same BPA/BPS coating. Mobile boarding passes, digital parking, and tap-to-pay eliminate the entire category.</span>Going fully digital with receipts everywhere removes this exposure completely from your life."
+          },
+          {
+            icon: "\u{1F3D7}\uFE0F",
+            text: "Are you planning any home renovations?",
+            alt: "<strong>Take extreme caution during renovations. Relocate baby entirely.</strong><span class='alt-swap'>Seal off work areas with plastic sheeting, use HEPA air scrubbers, and do a thorough HEPA clean before baby returns. Never sand pre-1978 paint without professional testing first.</span>Renovations are one of the highest acute chemical exposure events possible. Lead dust from old paint, asbestos from old insulation, formaldehyde from new materials, and VOC spikes from adhesives can all reach dangerous levels."
+          },
+          {
+            icon: "\u{1F9EC}",
+            text: "Have you considered testing your actual body burden of toxins?",
+            alt: "<strong>Consider a comprehensive toxin panel test.</strong><span class='alt-swap'>Services like Mosaic Diagnostics (formerly Great Plains) or functional medicine doctors can run panels measuring your actual body burden of heavy metals, pesticides, phthalates, and PFAS.</span>For a breastfeeding mother especially, knowing your specific levels helps prioritize which swaps matter most for your particular situation. It's the difference between guessing and knowing."
+          },
+          {
+            icon: "\u{1F33E}",
+            text: "Do you buy conventional (non-organic) meat, dairy, and eggs?",
+            alt: "<strong>Buy organic for animal products too, not just produce.</strong><span class='alt-swap'>Organic, pasture-raised meat and dairy dramatically reduces pesticide, antibiotic, and hormone exposure. For breastfeeding mothers, dairy fat in particular is worth upgrading since fat-soluble chemicals transfer readily to breast milk.</span>Conventional animal products concentrate pesticides, antibiotics, and hormones from animal feed in their fat. The Dirty Dozen covers produce, but animal products carry their own chemical burden."
+          },
+          {
+            icon: "\u{1F4E6}",
+            text: "Do you bring new items straight into your home without airing them out?",
+            alt: "<strong>Air new items outside or in a garage for 24 to 72 hours before bringing them inside.</strong><span class='alt-swap'>This applies to furniture, mattresses, car seats, rugs, and electronics. This simple habit significantly reduces the initial VOC spike from new purchases, especially in the nursery or bedroom.</span>Any new item goes through an initial high off-gassing period. Unwrapping and airing it out first makes a real difference."
+          },
+          {
+            icon: "\u{1F9E0}",
+            text: "Are you managing your stress levels?",
+            alt: "<strong>Address stress as a toxin amplifier. A calm nervous system detoxes better.</strong><span class='alt-swap'>Chronic stress elevates cortisol, which increases intestinal permeability (\"leaky gut\"), which in turn increases absorption of environmental toxins from the gut. It also impairs liver detox pathways.</span>Managing stress through sleep, movement, and social connection isn't separate from your toxin reduction work. It's part of it. A calm nervous system is a more resilient detox system."
+          }
+        ]
+      }
+    ];
+
+    const resources = [
+      { tag: "Human Health", title: "Microplastics found in human blood for the first time", source: "Environment International, 2022, Vrije Universiteit Amsterdam", url: "https://doi.org/10.1016/j.envint.2022.107199", summary: "Detected microplastic particles in 80% of human blood samples tested. PET plastic (used in bottles) and polystyrene (used in food packaging) were the most common types found." },
+      { tag: "Human Health", title: "Discovery of microplastics in human lung tissue", source: "Science of The Total Environment, 2022, Hull York Medical School", url: "https://doi.org/10.1016/j.scitotenv.2022.154907", summary: "Found microplastics in 11 of 13 lung tissue samples from living patients. Polypropylene and PET were the most prevalent, with particles found deep in the lower lung regions." },
+      { tag: "Human Health", title: "Microplastics detected in human brain tissue at increasing concentrations", source: "Nature Medicine, 2025, University of New Mexico", url: "https://doi.org/10.1038/s41591-024-03453-1", summary: "Brain tissue samples from 2024 contained significantly higher microplastic concentrations than samples from years prior, suggesting accumulation is accelerating over time." },
+      { tag: "Human Health", title: "Microplastics in human placenta: potential threat to fetal development", source: "Environment International, 2021, Universit\u00E0 Politecnica delle Marche", url: "https://doi.org/10.1016/j.envint.2020.106274", summary: "First study to find microplastic particles in human placental tissue. Twelve fragments were found in four placentas, on both the fetal and maternal sides, raising concerns about fetal exposure." },
+      { tag: "Human Health", title: "Microplastics found in human semen and potential impact on fertility", source: "Science of The Total Environment, 2023, Qingdao University", url: "https://doi.org/10.1016/j.scitotenv.2023.161862", summary: "Detected microplastics in human semen samples for the first time. Higher microplastic concentrations were associated with reduced sperm motility and abnormal sperm morphology." },
+      { tag: "Human Health", title: "Microplastics detected in human liver tissue", source: "Journal of Hazardous Materials, 2023, Medizinische Universit\u00E4t Wien", url: "https://doi.org/10.1016/j.jhazmat.2023.130865", summary: "Found microplastics in all liver tissue samples examined. The liver is the body's primary detox organ, and plastic particle accumulation there may impair its function over time." },
+      { tag: "Human Health", title: "Microplastics in human stool: first evidence of dietary ingestion", source: "Annals of Internal Medicine, 2019, Medical University of Vienna", url: "https://doi.org/10.7326/M19-0618", summary: "All eight participants from eight different countries had microplastics in their stool. On average, 20 microplastic particles were found per 10 grams of stool, confirming dietary ingestion is universal." },
+      { tag: "Cardiovascular", title: "Microplastics and nanoplastics in arterial plaque linked to higher heart attack and stroke risk", source: "New England Journal of Medicine, 2024, University of Campania", url: "https://doi.org/10.1056/NEJMoa2309822", summary: "Patients with microplastics detected in their carotid artery plaque had a 4.5x higher risk of heart attack, stroke, or death over 34 months compared to those without detectable plastics." },
+      { tag: "Exposure", title: "Humans may ingest approximately 5 grams of plastic per week", source: "WWF International / University of Newcastle, 2019", url: "https://wwfint.awsassets.panda.org/downloads/plastic_ingestion.pdf", summary: "Estimated that the average person ingests about 5 grams of plastic weekly (roughly the weight of a credit card) from water, food, and air combined." },
+      { tag: "Exposure", title: "Human consumption of microplastics: estimation of intake from multiple pathways", source: "Environmental Science & Technology, 2019, University of Victoria", url: "https://doi.org/10.1021/acs.est.9b01517", summary: "Estimated Americans consume 39,000 to 52,000 microplastic particles annually through food alone. Those who drink bottled water ingest an additional 90,000 particles per year compared to tap water drinkers." },
+      { tag: "Exposure", title: "Microplastics in indoor air and dust: a growing concern for human exposure", source: "Environment International, 2020, King's College London", url: "https://doi.org/10.1016/j.envint.2020.105411", summary: "Indoor air contains significantly more microplastic particles than outdoor air. Synthetic textiles, furniture, and carpeting are the primary sources. Inhalation may be as significant as dietary ingestion." },
+      { tag: "Food Contact", title: "Plastic bottles release microplastics into drinking water", source: "Frontiers in Chemistry, 2018, State University of New York", url: "https://doi.org/10.3389/fchem.2018.00407", summary: "Tested 259 bottled water brands from 11 countries. 93% contained microplastic contamination, with an average of 325 particles per liter. Some brands had over 10,000 particles per liter." },
+      { tag: "Food Contact", title: "Microwave heating of food in plastic containers increases microplastic release", source: "Environmental Science & Technology, 2023, University of Nebraska Lincoln", url: "https://doi.org/10.1021/acs.est.3c01942", summary: "Microwaving food in plastic containers released up to 4.2 million microplastic and 2.1 billion nanoplastic particles per square centimeter of container. Even \"microwave safe\" containers leached significantly." },
+      { tag: "Food Contact", title: "Plastic cutting boards release millions of microplastic particles annually", source: "Environmental Science & Technology, 2023, North Dakota State University", url: "https://doi.org/10.1021/acs.est.3c00924", summary: "A single plastic cutting board can generate 14 to 71 million microplastic particles per year from normal knife use. Polyethylene and polypropylene boards were the worst offenders." },
+      { tag: "Food Contact", title: "Plastic teabags release billions of microplastic particles into tea", source: "Environmental Science & Technology, 2019, McGill University", url: "https://doi.org/10.1021/acs.est.9b02540", summary: "A single plastic teabag steeped at brewing temperature released approximately 11.6 billion microplastic and 3.1 billion nanoplastic particles into a single cup of tea." },
+      { tag: "Kitchen", title: "Boiling water in plastic kettles releases billions of nanoplastics per liter", source: "Environmental Science & Technology Letters, 2021, National Institute of Standards and Technology", url: "https://doi.org/10.1021/acs.estlett.1c00109", summary: "Boiling water in polypropylene containers released billions of nanoplastic particles per liter. Repeated boiling cycles increased the release rate." },
+      { tag: "Food Contact", title: "BPA in canned foods: dietary exposure and health implications", source: "Environmental Research, 2020, Harvard T.H. Chan School of Public Health", url: "https://doi.org/10.1016/j.envres.2019.108959", summary: "People who ate one canned food item daily had 24% higher urinary BPA levels than those who avoided cans. Canned soups showed the strongest association with elevated BPA." },
+      { tag: "Endocrine Disruption", title: "Plasticizers and BPA as endocrine disruptors: links to reproductive and metabolic disorders", source: "The Lancet Diabetes & Endocrinology, 2020", url: "https://doi.org/10.1016/S2213-8587(20)30116-7", summary: "Comprehensive review linking BPA and phthalate exposure to obesity, type 2 diabetes, reproductive disorders, and thyroid dysfunction. Found that effects occur at doses well below current regulatory limits." },
+      { tag: "Endocrine Disruption", title: "Phthalate exposure and reproductive outcomes in humans", source: "Environment International, 2018, INRS France", url: "https://doi.org/10.1016/j.envint.2017.07.025", summary: "Found consistent associations between phthalate exposure and reduced semen quality in men, earlier puberty in girls, and endometriosis in women across multiple population studies." },
+      { tag: "Endocrine Disruption", title: "BPA alternatives (BPS, BPF) show similar endocrine-disrupting activity", source: "Environmental Health Perspectives, 2017, NIEHS", url: "https://doi.org/10.1289/EHP1233", summary: "\"BPA-free\" replacement chemicals BPS and BPF showed comparable hormonal activity to BPA in lab studies. Products marketed as BPA-free may not be safer from an endocrine disruption standpoint." },
+      { tag: "Children", title: "Infants fed from polypropylene bottles exposed to millions of microplastic particles daily", source: "Nature Food, 2020, Trinity College Dublin", url: "https://doi.org/10.1038/s43016-020-00171-y", summary: "Infants fed with plastic bottles are exposed to up to 16 million microplastic particles per liter per day. Sterilization and exposure to hot water dramatically increased particle release." },
+      { tag: "Children", title: "Prenatal phthalate exposure associated with adverse neurodevelopment in children", source: "Environmental Health Perspectives, 2020, Columbia University", url: "https://doi.org/10.1289/EHP5621", summary: "Higher prenatal phthalate exposure was associated with lower IQ scores, attention problems, and poorer executive function in children at age 7, particularly in boys." },
+      { tag: "Children", title: "Flame retardant exposure in children linked to reduced IQ and behavioral issues", source: "Environmental Health Perspectives, 2017, UC Berkeley", url: "https://doi.org/10.1289/EHP564", summary: "Children with higher PBDE flame retardant levels in their blood at age 7 scored an average of 5 IQ points lower and showed increased hyperactivity and attention problems." },
+      { tag: "PFAS", title: "PFAS contamination in drinking water: prevalence and health impacts", source: "Environmental Science & Technology Letters, 2020, Environmental Working Group", url: "https://doi.org/10.1021/acs.estlett.0c00713", summary: "Estimated that over 200 million Americans have PFAS in their drinking water at levels above 1 ppt. PFAS were detected in 97.5% of blood samples in a national health survey." },
+      { tag: "PFAS", title: "PFAS exposure linked to immune suppression and reduced vaccine response", source: "Environmental Health Perspectives, 2021, Harvard T.H. Chan School", url: "https://doi.org/10.1289/EHP8728", summary: "Children with higher PFAS blood levels showed significantly reduced antibody response to routine childhood vaccines, suggesting PFAS suppresses the immune system at common exposure levels." },
+      { tag: "PFAS", title: "PFAS in non-stick cookware: migration into food during cooking", source: "Science of The Total Environment, 2022, Stockholm University", url: "https://doi.org/10.1016/j.scitotenv.2022.155700", summary: "Non-stick pans released PFAS compounds into food during cooking, with higher migration at higher temperatures. Scratched and older pans released significantly more than new ones." },
+      { tag: "Indoor Air", title: "Flame retardants in household dust: exposure pathways for families", source: "Environmental Science & Technology, 2019, Duke University", url: "https://doi.org/10.1021/acs.est.8b06017", summary: "Household dust was the dominant exposure pathway for flame retardants in young children. Foam furniture and electronics were the primary sources. Frequent vacuuming with HEPA filtration significantly reduced levels." },
+      { tag: "Indoor Air", title: "VOC emissions from household consumer products", source: "Science Advances, 2018, NOAA / UC Boulder", url: "https://doi.org/10.1126/sciadv.aaq0880", summary: "Household products including cleaners, personal care, paints, and fragrances now contribute as much to urban VOC emissions as vehicles do. Indoor concentrations can be 2 to 5 times higher than outdoor." },
+      { tag: "Indoor Air", title: "Paraffin candle emissions: volatile organic compounds including benzene and toluene", source: "Indoor Air, 2014, University of South Carolina", url: "https://doi.org/10.1111/ina.12111", summary: "Paraffin candles emitted benzene, toluene, and other VOCs at levels that could contribute to indoor air quality problems with regular use. Soy and beeswax candles produced significantly fewer emissions." },
+      { tag: "Clothing", title: "Washing synthetic textiles releases hundreds of thousands of microfibers per load", source: "Marine Pollution Bulletin, 2017, Plymouth University", url: "https://doi.org/10.1016/j.marpolbul.2017.09.025", summary: "A single domestic wash cycle released an average of 700,000 microplastic fibers from synthetic clothing. Acrylic fabrics released the most fibers, followed by polyester." },
+      { tag: "Clothing", title: "Microplastic fiber release from textiles during domestic laundry", source: "Science of The Total Environment, 2020, University of Plymouth", url: "https://doi.org/10.1016/j.scitotenv.2019.136014", summary: "Found that fiber release was highest during the first wash but continued at significant levels through subsequent washes. Washing bags reduced fiber release by 54 to 86%." },
+      { tag: "Cancer Risk", title: "Association between plastic-derived chemicals and cancer risk in humans", source: "Journal of Hazardous Materials, 2023", url: "https://doi.org/10.1016/j.jhazmat.2023.131013", summary: "Reviewed evidence linking BPA, phthalates, and styrene to increased risk of breast, prostate, and thyroid cancers. Found that chronic low-dose exposure may promote tumor development through hormonal pathways." },
+      { tag: "Cancer Risk", title: "PFAS exposure and cancer incidence: epidemiological evidence", source: "Environmental Health Perspectives, 2020, International Agency for Research on Cancer", url: "https://doi.org/10.1289/EHP6317", summary: "Found associations between PFAS exposure and kidney cancer, testicular cancer, and thyroid disease. Workers and communities with high PFAS exposure showed elevated cancer rates." },
+      { tag: "Exposure", title: "BPA absorption through skin from thermal receipt paper", source: "PLoS ONE, 2014, University of Missouri", url: "https://doi.org/10.1371/journal.pone.0110509", summary: "Holding thermal receipt paper for just 5 seconds transferred BPA to skin. Wet or greasy fingers absorbed significantly more. Cashiers and retail workers showed the highest occupational exposure." },
+      { tag: "Exposure", title: "Hand sanitizer dramatically increases BPA absorption from receipts", source: "JAMA Dermatology, 2017, University of Alberta", url: "https://doi.org/10.1001/jamadermatol.2016.5532", summary: "Applying hand sanitizer before handling receipts increased BPA skin absorption by up to 100-fold. The alcohol in sanitizer acts as a skin penetration enhancer for BPA." },
+      { tag: "Environment", title: "Global plastic pollution crisis and pathways to reduction", source: "Science, 2020, The Pew Charitable Trusts / SYSTEMIQ", url: "https://doi.org/10.1126/science.aba9475", summary: "Even with immediate, concerted global action, 710 million metric tons of plastic will still enter the environment by 2040. Without action, annual plastic flow to oceans will nearly triple." },
+      { tag: "Environment", title: "Microplastics found in remote mountain and ocean ecosystems worldwide", source: "Science, 2020, Utah State University", url: "https://doi.org/10.1126/science.aaz5819", summary: "Microplastics were found in 98% of atmospheric samples collected in remote US national parks and wilderness areas. An estimated 1,000 tons of microplastic rain falls on protected lands in the western US annually." },
+      { tag: "Fragrance", title: "Phthalate exposure from synthetic fragrances in personal care products", source: "Environmental Health Perspectives, 2012, Silent Spring Institute", url: "https://doi.org/10.1289/ehp.1104717", summary: "Women who used more fragranced products had significantly higher urinary phthalate metabolite levels. Perfume, lotion, and hair products were the strongest predictors of phthalate exposure." },
+      { tag: "Fragrance", title: "Synthetic fragrance compounds as endocrine disruptors", source: "International Journal of Hygiene and Environmental Health, 2017", url: "https://doi.org/10.1016/j.ijheh.2017.05.006", summary: "Found that synthetic musk compounds and other fragrance chemicals showed estrogenic and anti-androgenic activity in multiple assays. Exposure is nearly universal through personal care and household products." }
+    ];
+
+    // ==================== STATE ====================
+    let currentCategory = 0;
+    let currentQuestion = 0;
+    let plasticScore = 0;
+    let totalQuestions = categories.reduce((sum, c) => sum + c.questions.length, 0);
+    let answeredCount = 0;
+    let swaps = [];
+
+    // ==================== NAVIGATION ====================
+    function showHome() {
+      document.getElementById("page-home").style.display = "block";
+      document.getElementById("page-resources").style.display = "none";
+      document.getElementById("nav-home").classList.add("active");
+      document.getElementById("nav-resources").classList.remove("active");
+      window.scrollTo(0, 0);
+    }
+
+    function showResources() {
+      document.getElementById("page-home").style.display = "none";
+      document.getElementById("page-resources").style.display = "block";
+      document.getElementById("nav-home").classList.remove("active");
+      document.getElementById("nav-resources").classList.add("active");
+      renderResources();
+      window.scrollTo(0, 0);
+    }
+
+    function renderResources(filtered) {
+      const list = filtered || resources;
+      const grid = document.getElementById("resource-grid");
+      const count = document.getElementById("resource-count");
+      count.textContent = `Showing ${list.length} of ${resources.length} studies`;
+      grid.innerHTML = list.map(r => `
+        <div class="resource-card">
+          <div class="resource-tag">${r.tag}</div>
+          <div class="resource-title">${r.title}</div>
+          <div class="resource-source">${r.source}</div>
+          <div class="resource-summary">${r.summary}</div>
+          <a href="${r.url}" target="_blank" rel="noopener" class="resource-link">Read the study \u2192</a>
+        </div>
+      `).join("");
+      if (list.length === 0) {
+        grid.innerHTML = '<p style="color:var(--text-muted);padding:2rem 0;">No studies match your search.</p>';
+      }
+    }
+
+    function filterResources() {
+      const q = document.getElementById("search-input").value.toLowerCase().trim();
+      if (!q) { renderResources(); return; }
+      const filtered = resources.filter(r =>
+        r.title.toLowerCase().includes(q) ||
+        r.tag.toLowerCase().includes(q) ||
+        r.source.toLowerCase().includes(q) ||
+        r.summary.toLowerCase().includes(q)
+      );
+      renderResources(filtered);
+    }
+
+    // ==================== GAME ====================
+    function startGame() {
+      document.getElementById("hero").style.display = "none";
+      document.getElementById("game").style.display = "flex";
+      currentCategory = 0;
+      currentQuestion = 0;
+      plasticScore = 0;
+      answeredCount = 0;
+      swaps = [];
+      renderTracker();
+      showQuestion();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function restartGame() {
+      document.getElementById("results").style.display = "none";
+      document.getElementById("game").style.display = "none";
+      document.getElementById("hero").style.display = "flex";
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function renderTracker() {
+      const catEl = document.getElementById("tracker-categories");
+      catEl.innerHTML = categories.map((c, i) => {
+        let cls = "tracker-cat";
+        if (i === currentCategory) cls += " active";
+        if (i < currentCategory) cls += " done";
+        return `<div class="${cls}"><span class="tracker-cat-dot"></span>${c.icon} ${c.name}</div>`;
+      }).join("");
+
+      const maxPossible = totalQuestions;
+      const pct = maxPossible > 0 ? plasticScore / maxPossible : 0;
+      const circumference = 326.7;
+      const arc = document.getElementById("tracker-arc");
+      arc.style.strokeDashoffset = circumference - (pct * circumference);
+
+      if (pct > 0.6) arc.style.stroke = "#ef4444";
+      else if (pct > 0.3) arc.style.stroke = "#f59e0b";
+      else arc.style.stroke = "#a78bfa";
+
+      document.getElementById("tracker-number").textContent = plasticScore;
+    }
+
+    function updateProgress() {
+      const pct = (answeredCount / totalQuestions) * 100;
+      document.getElementById("progress-fill").style.width = pct + "%";
+      const cat = categories[currentCategory];
+      document.getElementById("progress-text").textContent =
+        `Question ${currentQuestion + 1} of ${cat.questions.length} | ${answeredCount} of ${totalQuestions} total`;
+    }
+
+    function showQuestion() {
+      const cat = categories[currentCategory];
+      const q = cat.questions[currentQuestion];
+
+      document.getElementById("question-card").style.display = "block";
+      document.getElementById("alt-card").style.display = "none";
+      document.getElementById("category-done").style.display = "none";
+      document.getElementById("results").style.display = "none";
+
+      document.getElementById("category-label").textContent = `${cat.icon} ${cat.name}: ${cat.description}`;
+      document.getElementById("question-icon").textContent = q.icon;
+      document.getElementById("question-text").textContent = q.text;
+
+      const card = document.getElementById("question-card");
+      card.style.animation = "none";
+      card.offsetHeight;
+      card.style.animation = "fadeUp 0.35s ease";
+
+      updateProgress();
+      renderTracker();
+    }
+
+    function answer(type) {
+      const cat = categories[currentCategory];
+      const q = cat.questions[currentQuestion];
+      answeredCount++;
+
+      if (type === "yes") {
+        plasticScore += 1;
+        swaps.push({ category: cat.name, icon: q.icon, text: q.text, alt: q.alt });
+        showAlternative(q.alt);
+      } else if (type === "sometimes") {
+        plasticScore += 0.5;
+        swaps.push({ category: cat.name, icon: q.icon, text: q.text, alt: q.alt });
+        showAlternative(q.alt);
+      } else {
+        renderTracker();
+        updateProgress();
+        advanceQuestion();
+      }
+    }
+
+    function showAlternative(altHtml) {
+      document.getElementById("question-card").style.display = "none";
+      document.getElementById("alt-card").style.display = "block";
+      document.getElementById("alt-body").innerHTML = altHtml;
+
+      const card = document.getElementById("alt-card");
+      card.style.animation = "none";
+      card.offsetHeight;
+      card.style.animation = "fadeUp 0.35s ease";
+
+      renderTracker();
+      updateProgress();
+    }
+
+    function nextQuestion() { advanceQuestion(); }
+
+    function skipCategory() {
+      const cat = categories[currentCategory];
+      const remaining = cat.questions.length - currentQuestion;
+      answeredCount += remaining;
+      updateProgress();
+      showCategoryDone();
+    }
+
+    function advanceQuestion() {
+      const cat = categories[currentCategory];
+      if (currentQuestion + 1 < cat.questions.length) {
+        currentQuestion++;
+        showQuestion();
+      } else {
+        showCategoryDone();
+      }
+    }
+
+    function showCategoryDone() {
+      const cat = categories[currentCategory];
+
+      document.getElementById("question-card").style.display = "none";
+      document.getElementById("alt-card").style.display = "none";
+      document.getElementById("category-done").style.display = "block";
+      document.getElementById("category-label").textContent = "";
+
+      document.getElementById("category-done-icon").textContent = cat.icon;
+      document.getElementById("category-done-title").textContent = `${cat.name}: Done!`;
+      document.getElementById("category-done-text").textContent = cat.doneText;
+
+      const isLast = currentCategory >= categories.length - 1;
+      document.getElementById("category-done-btn").textContent = isLast
+        ? "See Your Results \u2192"
+        : "Next: " + categories[currentCategory + 1].name + " \u2192";
+
+      renderTracker();
+      updateProgress();
+    }
+
+    function nextCategory() {
+      if (currentCategory + 1 < categories.length) {
+        currentCategory++;
+        currentQuestion = 0;
+        showQuestion();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        showResults();
+      }
+    }
+
+    function showResults() {
+      document.getElementById("question-card").style.display = "none";
+      document.getElementById("alt-card").style.display = "none";
+      document.getElementById("category-done").style.display = "none";
+      document.getElementById("category-label").textContent = "";
+      document.getElementById("results").style.display = "block";
+
+      const scoreEl = document.getElementById("results-subtitle");
+      if (plasticScore <= 5) {
+        scoreEl.textContent = `Nice! You scored ${plasticScore} out of ${totalQuestions}. You're already ahead of most people. Here are a few more things to consider:`;
+      } else if (plasticScore <= 15) {
+        scoreEl.textContent = `You scored ${plasticScore} out of ${totalQuestions}. You have some great opportunities to reduce your plastic exposure. Here's your personalized swap list:`;
+      } else {
+        scoreEl.textContent = `You scored ${plasticScore} out of ${totalQuestions}. Don't worry, most people score high here. The good news? Every swap makes a real difference. Here's where to start:`;
+      }
+
+      const grouped = {};
+      swaps.forEach(s => {
+        if (!grouped[s.category]) grouped[s.category] = [];
+        grouped[s.category].push(s);
+      });
+
+      const listEl = document.getElementById("results-list");
+
+      if (swaps.length === 0) {
+        listEl.innerHTML = `
+          <div class="category-done" style="display:block;">
+            <div class="category-done-icon">\u{1F33F}</div>
+            <h2 class="category-done-title">You're already plastic-free!</h2>
+            <p class="category-done-text">Amazing, you've already made the swaps. Share this with someone who hasn't started yet.</p>
+          </div>`;
+        return;
+      }
+
+      listEl.innerHTML = Object.entries(grouped).map(([cat, items]) => `
+        <div class="results-category">
+          <div class="results-category-title">${cat}</div>
+          ${items.map(item => `
+            <div class="result-item">
+              <div class="result-item-icon">${item.icon}</div>
+              <div class="result-item-text">${item.alt}</div>
+            </div>
+          `).join("")}
+        </div>
+      `).join("");
+
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  </script>
+</body>
+</html>
