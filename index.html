@@ -992,6 +992,31 @@
       line-height: 1.5;
     }
 
+    .subcat-tabs {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .subcat-tab {
+      padding: 0.5rem 1.1rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      font-weight: 600;
+      border: 2px solid var(--border);
+      background: var(--surface);
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .subcat-tab:hover { border-color: var(--accent); color: var(--accent-dark); }
+    .subcat-tab.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+    .subcat-panel { display: none; }
+    .subcat-panel.active { display: block; }
+
     @media (max-width: 768px) {
       .product-grid { grid-template-columns: 1fr; }
       .store-nav { gap: 0.35rem; }
@@ -999,6 +1024,7 @@
       .product-pros-cons { grid-template-columns: 1fr; }
       .compare-table { font-size: 0.78rem; }
       .compare-table th, .compare-table td { padding: 0.5rem 0.65rem; }
+      .subcat-tab { font-size: 0.78rem; padding: 0.4rem 0.8rem; }
     }
 
     /* ===== FOOTER ===== */
@@ -2017,7 +2043,7 @@
     }
     // ==================== STORE ====================
     const catDescriptions = {
-      "Clean Water": "Your tap water contains microplastics, PFAS, lead, and pharmaceutical residues. Filtering it is one of the highest impact swaps you can make. Here are your best options from simple to comprehensive.",
+      "Clean Water": "Your tap water contains microplastics, PFAS, lead, and pharmaceutical residues. Filtering it is one of the highest impact swaps you can make.",
       "Clean Cookware": "Teflon and non stick coatings release toxic PFAS into your food every time you cook. There are four great PFAS free alternatives and each has different strengths. Pick the one that matches how you cook.",
       "Kitchen Tools": "Plastic utensils melt and leach chemicals when they touch hot food. Plastic cutting boards shed millions of microparticles from knife cuts every year. These swaps are cheap, easy, and make an immediate difference.",
       "Food Storage": "Plastic containers leach chemicals into food, especially when heated or scratched. Glass and beeswax alternatives keep your food clean and chemical free.",
@@ -2029,38 +2055,56 @@
     };
 
     const storeProducts = [
-      { cat: "Clean Water", img: "418gI8Rxl2L", name: "APEC ROES-50 Reverse Osmosis", asin: "B00I0ZGOZM", bestFor: "Best overall protection", tier: "$$$", effectiveness: "99.9% removal", install: "Under sink (DIY or plumber)", maintenance: "Filter change every 12 months", desc: "Five stage under sink RO system. NSF certified with a steel pressure tank that serves the whole family.", pros: ["Removes 99.9% microplastics", "NSF certified", "Handles whole family"], cons: ["Requires installation", "Some water waste"] },
-      { cat: "Clean Water", img: "41bKOyTPymL", name: "Clearly Filtered Pitcher", asin: "B0CW4CDPNJ", bestFor: "Best no install option", tier: "$$", effectiveness: "99.5% removal", install: "None, ready to use", maintenance: "Filter change every 4 months", desc: "Best pitcher style filter for microplastic removal. NSF tested to standards 42, 53, 401 and 473.", pros: ["No install needed", "Removes PFAS and lead too", "NSF tested"], cons: ["Filter refills add up", "Slower pour than basic pitchers"] },
-      { cat: "Clean Water", img: "41PYUmcAn4L", name: "Cosori Glass Electric Kettle", asin: "B08PP48979", bestFor: "Best for tea and coffee lovers", tier: "$", effectiveness: "Eliminates boil leaching", install: "Plug in, ready to use", maintenance: "None", desc: "Borosilicate glass body with stainless steel interior. Zero plastic contact with water.", pros: ["Zero plastic contact", "Fast 1500W boil", "Auto shut off"], cons: ["Glass can break if dropped", "Cord does not retract"] },
-      { cat: "Clean Water", img: "31Z-62BNM7L", name: "Klean Kanteen Steel Bottle", asin: "B0019N2DO8", bestFor: "Best for on the go", tier: "$", effectiveness: "No leaching from container", install: "None", maintenance: "Regular washing", desc: "Food grade 18/8 stainless steel. No plastic interior, no BPA, no toxins leaching into your drinks.", pros: ["No plastic interior", "Dishwasher safe", "Toxin free"], cons: ["Not insulated", "Dents if dropped"] },
+      // Clean Water > Water Filters
+      { cat: "Clean Water", sub: "Water Filters", img: "418gI8Rxl2L", name: "APEC Reverse Osmosis System", asin: "B00I0ZGOZM", bestFor: "Best overall protection", tier: "$$$", effectiveness: "99.9% removal", desc: "Five stage under sink RO system. NSF certified with a steel pressure tank that serves the whole family.", pros: ["Removes 99.9% of microplastics", "NSF certified", "Serves the whole family"], cons: ["Requires under sink install", "Some water waste", "Higher upfront cost"] },
+      { cat: "Clean Water", sub: "Water Filters", img: "51sM4mtrn2L", name: "Big Berkey Countertop Filter", asin: "B0CBVMTYMG", bestFor: "Best no install filter", tier: "$$", effectiveness: "99.9% removal", desc: "Gravity fed stainless steel filter that sits on your countertop. No plumbing needed. Filters 2.25 gallons at a time.", pros: ["No installation needed", "Stainless steel construction", "Filters large volumes"], cons: ["Takes up counter space", "Slow gravity fed flow", "Must refill manually"] },
+      { cat: "Clean Water", sub: "Water Filters", img: "41bKOyTPymL", name: "Clearly Filtered Pitcher", asin: "B0CW4CDPNJ", bestFor: "Most affordable option", tier: "$", effectiveness: "99.5% removal", desc: "Best pitcher style filter for microplastic removal. NSF tested to standards 42, 53, 401 and 473.", pros: ["Cheapest way to start", "No install needed", "Removes PFAS and lead too"], cons: ["Filter refills every 4 months", "Slower pour speed", "Smaller capacity"] },
 
-      { cat: "Clean Cookware", img: "216kmrLZraL", name: "Lodge Cast Iron Skillet (12\")", asin: "B00006JSUB", bestFor: "Best for heat retention and searing", tier: "$", effectiveness: "100% PFAS free", install: "Ready to use (pre seasoned)", maintenance: "Season occasionally", desc: "The classic Teflon replacement. Gets more non stick with every use and will last your whole life. Ideal for steaks, cornbread, and anything that benefits from deep even heat.", pros: ["Lasts a lifetime", "Naturally non stick over time", "Unbeatable heat retention", "Oven safe to any temperature"], cons: ["Heavy at 8 lbs", "Needs seasoning care", "Slow to heat up and cool down", "Reactive to acidic foods"] },
-      { cat: "Clean Cookware", img: "21KzEXHq51L", name: "Tramontina Tri Ply Stainless Steel (12\")", asin: "B00JAP44MQ", bestFor: "Best all around kitchen workhorse", tier: "$$", effectiveness: "100% PFAS free", install: "Ready to use", maintenance: "None", desc: "Stainless steel is the go to for professional kitchens. Completely non reactive so you can cook tomato sauces, deglaze with wine, and use any utensil without worry. Dishwasher safe and zero maintenance.", pros: ["Dishwasher safe", "Non reactive to all foods", "No seasoning needed", "Oven safe to 500F"], cons: ["Food sticks without proper technique", "Needs oil or butter to prevent sticking", "Less heat retention than cast iron"] },
-      { cat: "Clean Cookware", img: "31kOFN-9HpL", name: "De Buyer Mineral B Carbon Steel (12.5\")", asin: "B00462QP1G", bestFor: "Best for high heat and quick cooking", tier: "$$", effectiveness: "100% PFAS free", install: "Requires initial seasoning", maintenance: "Season occasionally", desc: "The choice of French chefs. Heats up fast, responds quickly to temperature changes, and develops a natural non stick surface like cast iron but at half the weight. Perfect for stir fry, crepes, and searing.", pros: ["Half the weight of cast iron", "Heats and cools quickly", "Develops natural non stick coating", "Restaurant grade performance"], cons: ["Requires initial seasoning", "Reactive to acidic foods", "Not dishwasher safe", "Can warp on some stovetops"] },
-      { cat: "Clean Cookware", img: "41CAi6NhOeL", name: "Xtrema Pure Ceramic Skillet (12\")", asin: "B00JVULOT6", bestFor: "Best for zero chemical cooking", tier: "$$$", effectiveness: "100% PFAS free, zero metal leaching", install: "Ready to use", maintenance: "None", desc: "100% solid ceramic with absolutely nothing to leach into your food. No metal, no coating, no chemicals. Completely non reactive and scratch proof. The purest cooking surface available.", pros: ["Zero chemical leaching of any kind", "Completely non reactive", "Scratch proof surface", "Dishwasher and microwave safe"], cons: ["Fragile if dropped", "Cannot handle thermal shock", "Heavier than steel options", "Limited shape options"] },
+      // Clean Water > Kettles
+      { cat: "Clean Water", sub: "Kettles", img: "315y-ZG060L", name: "Fellow Stagg EKG Pour Over Kettle", asin: "B077JBQZPX", bestFor: "Best for coffee and tea lovers", tier: "$$$", effectiveness: "Zero plastic contact", desc: "Stainless steel interior with precision temperature control. Built in brew stopwatch and gooseneck spout for perfect pour overs.", pros: ["Precise temperature control", "Beautiful design", "Built in brew timer"], cons: ["Premium price point", "Small 0.9L capacity", "Gooseneck only"] },
+      { cat: "Clean Water", sub: "Kettles", img: "41PYUmcAn4L", name: "Cosori Glass Electric Kettle", asin: "B08PP48979", bestFor: "Best value glass kettle", tier: "$", effectiveness: "Zero plastic contact", desc: "Borosilicate glass body with stainless steel interior. You can see the water boil and know nothing is leaching in.", pros: ["See through glass body", "Fast 1500W boil", "Auto shut off"], cons: ["Glass can break if dropped", "Cord does not retract", "No temperature control"] },
+      { cat: "Clean Water", sub: "Kettles", img: "41Q8gAtpzIL", name: "Mueller Stainless Steel Kettle", asin: "B07TZ5YHJN", bestFor: "Best budget option", tier: "$", effectiveness: "Zero plastic contact", desc: "Fast boiling stainless steel and borosilicate glass kettle. Simple, affordable, and no plastic touches your water.", pros: ["Most affordable option", "Fast boil", "Auto shut off"], cons: ["No temperature control", "Basic design", "No keep warm feature"] },
 
-      { cat: "Kitchen Tools", img: "51eQqKKP2yL", name: "Wooden Cooking Utensils (6 Piece)", asin: "B085W92DL4", bestFor: "Best utensil replacement", tier: "$", effectiveness: "Zero chemical leaching", install: "Ready to use", maintenance: "Occasional oiling", desc: "Natural teak wood spatulas and spoons. Will not melt, scratch, or leach into your food.", pros: ["Will not scratch pans", "Heat resistant", "Non toxic wood"], cons: ["Hand wash only", "Needs occasional oiling"] },
-      { cat: "Kitchen Tools", img: "41MZOZvV7RL", name: "Bamboo Cutting Board", asin: "B08LCXZ3WD", bestFor: "Best cutting surface", tier: "$", effectiveness: "Zero microplastic shed", install: "Ready to use", maintenance: "Occasional oiling", desc: "Bamboo sheds zero microplastics compared to 14 to 71 million particles from plastic boards every year.", pros: ["Zero microplastic shed", "Naturally antimicrobial", "Juice groove"], cons: ["Needs occasional oiling", "Hand wash only"] },
+      // Clean Water > Water Bottles
+      { cat: "Clean Water", sub: "Water Bottles", img: "31vKOP+uLBL", name: "Hydro Flask Wide Mouth (32oz)", asin: "B01GW2GNH8", bestFor: "Best insulated bottle", tier: "$$", effectiveness: "No leaching, stays cold 24hrs", desc: "Double wall vacuum insulated stainless steel. Keeps water cold for 24 hours and hot for 12. No plastic interior.", pros: ["Cold for 24 hours", "Durable powder coat", "Wide mouth for ice"], cons: ["Heavier than basic bottles", "Dents if dropped hard", "Hand wash recommended"] },
+      { cat: "Clean Water", sub: "Water Bottles", img: "21JZo0JiucL", name: "S'well Stainless Steel (17oz)", asin: "B005OJVTWU", bestFor: "Best compact and stylish option", tier: "$$", effectiveness: "No leaching, stays cold 24hrs", desc: "Triple layered insulated stainless steel. Slim profile fits in any bag. Condensation free exterior.", pros: ["Slim and fits anywhere", "No condensation", "Stays cold 24 hours"], cons: ["Smaller 17oz capacity", "Narrow mouth", "Hand wash only"] },
+      { cat: "Clean Water", sub: "Water Bottles", img: "31Z-62BNM7L", name: "Klean Kanteen Classic (27oz)", asin: "B0019N2DO8", bestFor: "Best budget bottle", tier: "$", effectiveness: "No leaching from container", desc: "Food grade 18/8 stainless steel. Simple, durable, and completely free of BPA and toxins.", pros: ["Most affordable option", "Dishwasher safe", "Toxin free interior"], cons: ["Not insulated", "Dents if dropped", "Basic design"] },
 
-      { cat: "Food Storage", img: "41E3pLI0ZzL", name: "Pyrex Glass Storage (12 Pack)", asin: "B07L51SFVS", bestFor: "Best full kitchen replacement", tier: "$$", effectiveness: "Zero chemical leaching", install: "Ready to use", maintenance: "None", desc: "Borosilicate glass containers with BPA free lids. Replaces all plastic food storage in your kitchen.", pros: ["Microwave and oven safe", "Stain resistant", "Dishwasher safe"], cons: ["Heavier than plastic", "Can break if dropped"] },
-      { cat: "Food Storage", img: "41RE8cqekdL", name: "Bee's Wrap Beeswax Wraps (3 Pack)", asin: "B0126LMDFK", bestFor: "Best plastic wrap replacement", tier: "$", effectiveness: "Eliminates all plastic wrap use", install: "Ready to use", maintenance: "Cool water wash", desc: "Organic cotton, beeswax, and jojoba oil. Moldable, reusable, and compostable at end of life.", pros: ["Compostable", "Lasts up to 1 year", "Made in USA"], cons: ["Not for raw meat", "Cool water wash only"] },
+      // Clean Cookware
+      { cat: "Clean Cookware", sub: "", img: "216kmrLZraL", name: "Lodge Cast Iron Skillet (12\")", asin: "B00006JSUB", bestFor: "Best for searing and baking", tier: "$", effectiveness: "100% PFAS free", desc: "The classic Teflon replacement. Gets more non stick with every use and will last your whole life.", pros: ["Lasts a lifetime", "Excellent heat retention", "Oven safe to any temp"], cons: ["Heavy at 8 lbs", "Needs seasoning care", "Slow to heat and cool"] },
+      { cat: "Clean Cookware", sub: "", img: "21KzEXHq51L", name: "Tramontina Stainless Steel (12\")", asin: "B00JAP44MQ", bestFor: "Best all around workhorse", tier: "$$", effectiveness: "100% PFAS free", desc: "The professional kitchen standard. Completely non reactive so you can cook acidic foods and deglaze with wine.", pros: ["Dishwasher safe", "Non reactive to all foods", "No seasoning needed"], cons: ["Food sticks without technique", "Needs oil or butter", "Less heat retention"] },
+      { cat: "Clean Cookware", sub: "", img: "31kOFN-9HpL", name: "De Buyer Carbon Steel (12.5\")", asin: "B00462QP1G", bestFor: "Best for high heat cooking", tier: "$$", effectiveness: "100% PFAS free", desc: "The French chef favorite. Half the weight of cast iron with the same natural non stick seasoning.", pros: ["Half the weight of cast iron", "Heats and cools quickly", "Natural non stick coating"], cons: ["Requires initial seasoning", "Reactive to acidic foods", "Not dishwasher safe"] },
+      { cat: "Clean Cookware", sub: "", img: "41CAi6NhOeL", name: "Xtrema Pure Ceramic Skillet (12\")", asin: "B00JVULOT6", bestFor: "Best for zero chemical cooking", tier: "$$$", effectiveness: "Zero metal or chemical leaching", desc: "100% solid ceramic. Nothing to leach into your food. No metal, no coating, no chemicals of any kind.", pros: ["Zero leaching of any kind", "Completely non reactive", "Scratch proof surface"], cons: ["Fragile if dropped", "No thermal shock", "Heavier than steel"] },
 
-      { cat: "Clean Body", img: "51eQqKKP2yL", name: "Dr. Bronner's Castile Soap", asin: "B00120VWJ0", bestFor: "Best all in one replacement", tier: "$", effectiveness: "Replaces 18 plastic products", install: "Dilute and use", maintenance: "None", desc: "Certified organic, concentrated pure castile soap for dozens of household uses with no synthetic fragrances.", pros: ["18 uses in one bottle", "Certified organic", "Biodegradable"], cons: ["Must dilute before use", "Takes time to learn ratios"] },
-      { cat: "Clean Body", img: "31Tp4yS3euL", name: "Ethique Shampoo Bar", asin: "B0DHFPB45C", bestFor: "Best shampoo swap", tier: "$", effectiveness: "Replaces 3 plastic bottles", install: "Ready to use", maintenance: "Keep dry between uses", desc: "Concentrated solid shampoo with plant based ingredients. Vegan and cruelty free.", pros: ["Replaces 3 bottles", "TSA friendly", "Vegan"], cons: ["Hair adjustment period", "Needs dry storage"] },
-      { cat: "Clean Body", img: "410XbGhKsyL", name: "Merkur 34C Safety Razor", asin: "B002A8JO1Q", bestFor: "Best razor swap", tier: "$$", effectiveness: "Eliminates all disposable razors", install: "Short learning curve", maintenance: "Replace blades (pennies each)", desc: "German made stainless steel. Lasts a lifetime with replacement blades that cost pennies.", pros: ["Lasts a lifetime", "Blades cost pennies", "Made in Germany"], cons: ["Short learning curve", "Handle blades carefully"] },
-      { cat: "Clean Body", img: "418SVv2aMTL", name: "Bamboo Toothbrush Set (10 Pack)", asin: "B08172V3Y5", bestFor: "Easiest bathroom swap", tier: "$", effectiveness: "Keeps 10 plastic brushes from landfill", install: "Ready to use", maintenance: "Replace every 3 months", desc: "Biodegradable bamboo handles with BPA free soft bristles. Individually numbered for families.", pros: ["Compostable handles", "Soft BPA free bristles", "Numbered for families"], cons: ["Nylon bristles not compostable", "Dry between uses"] },
+      // Kitchen Tools
+      { cat: "Kitchen Tools", sub: "", img: "51eQqKKP2yL", name: "Wooden Cooking Utensils (6 Piece)", asin: "B085W92DL4", bestFor: "Best utensil replacement", tier: "$", effectiveness: "Zero chemical leaching", desc: "Natural teak wood spatulas and spoons. Will not melt, scratch, or leach into your food.", pros: ["Will not scratch pans", "Heat resistant", "Non toxic wood"], cons: ["Hand wash only", "Needs occasional oiling"] },
+      { cat: "Kitchen Tools", sub: "", img: "41MZOZvV7RL", name: "Bamboo Cutting Board", asin: "B08LCXZ3WD", bestFor: "Best cutting surface", tier: "$", effectiveness: "Zero microplastic shed", desc: "Bamboo sheds zero microplastics compared to millions of particles from plastic boards every year.", pros: ["Zero microplastic shed", "Naturally antimicrobial", "Juice groove"], cons: ["Needs occasional oiling", "Hand wash only"] },
 
-      { cat: "Bedroom and Laundry", img: "41uZMh6+pyL", name: "Organic Cotton Sheets (Queen)", asin: "B07RY59C3W", bestFor: "Best for your bed", tier: "$$", effectiveness: "Zero microplastic shedding", install: "Ready to use", maintenance: "Regular washing", desc: "GOTS certified 100% organic cotton. Gets softer with each wash with no synthetic fibers.", pros: ["Zero microplastic shed", "Softer over time", "Chemical free"], cons: ["Pricier than polyester", "Wrinkles more"] },
-      { cat: "Bedroom and Laundry", img: "416DJtLU-aL", name: "Wool Dryer Balls (6 Pack)", asin: "B014WOWNAY", bestFor: "Best dryer sheet replacement", tier: "$", effectiveness: "Eliminates all dryer sheet chemicals", install: "Toss in dryer", maintenance: "Lasts 1,000+ loads", desc: "100% New Zealand wool. Reduces drying time by 25% and naturally softens clothes.", pros: ["Saves 25% drying time", "No chemicals", "Lasts years"], cons: ["No fragrance unless you add oils", "Occasional pilling"] },
+      // Food Storage
+      { cat: "Food Storage", sub: "", img: "41E3pLI0ZzL", name: "Pyrex Glass Storage (12 Pack)", asin: "B07L51SFVS", bestFor: "Best full kitchen replacement", tier: "$$", effectiveness: "Zero chemical leaching", desc: "Borosilicate glass containers with BPA free lids. Replaces all plastic food storage in your kitchen.", pros: ["Microwave and oven safe", "Stain resistant", "Dishwasher safe"], cons: ["Heavier than plastic", "Can break if dropped"] },
+      { cat: "Food Storage", sub: "", img: "41RE8cqekdL", name: "Bee's Wrap Beeswax Wraps (3 Pack)", asin: "B0126LMDFK", bestFor: "Best plastic wrap replacement", tier: "$", effectiveness: "Eliminates all plastic wrap", desc: "Organic cotton, beeswax, and jojoba oil. Moldable, reusable, and compostable at end of life.", pros: ["Compostable", "Lasts up to 1 year", "Made in USA"], cons: ["Not for raw meat", "Cool water wash only"] },
 
-      { cat: "Living Room", img: "61j7nB2CEgL", name: "Soy Wax Candle Set (12 Pack)", asin: "B08T1XYNG9", bestFor: "Best candle swap", tier: "$", effectiveness: "Eliminates petroleum fumes", install: "Ready to use", maintenance: "None", desc: "100% natural soy wax with cotton wicks. Clean burn with no soot and 240 hours total burn time.", pros: ["Clean burn with no soot", "240 hours total", "Non toxic wicks"], cons: ["Lighter scent throw", "Softer wax texture"] },
-      { cat: "Living Room", img: "419EDCYNm+L", name: "Levoit Air Purifier (Core 300)", asin: "B07VVK39F7", bestFor: "Best for air quality", tier: "$$$", effectiveness: "Captures 99.97% of airborne fibers", install: "Plug in, ready to use", maintenance: "Filter change every 6 to 8 months", desc: "True HEPA filter. Whisper quiet at 24dB. Covers 1,095 sq ft with no ozone.", pros: ["Covers 1,095 sq ft", "24dB quiet", "No ozone"], cons: ["Filter replacements add up", "Base filter skips VOCs"] },
+      // Clean Body
+      { cat: "Clean Body", sub: "", img: "51eQqKKP2yL", name: "Dr. Bronner's Castile Soap", asin: "B00120VWJ0", bestFor: "Best all in one replacement", tier: "$", effectiveness: "Replaces 18 plastic products", desc: "Certified organic, concentrated pure castile soap for dozens of household uses.", pros: ["18 uses in one bottle", "Certified organic", "Biodegradable"], cons: ["Must dilute before use", "Takes time to learn ratios"] },
+      { cat: "Clean Body", sub: "", img: "31Tp4yS3euL", name: "Ethique Shampoo Bar", asin: "B0DHFPB45C", bestFor: "Best shampoo swap", tier: "$", effectiveness: "Replaces 3 plastic bottles", desc: "Concentrated solid shampoo with plant based ingredients. Vegan and cruelty free.", pros: ["Replaces 3 bottles", "TSA friendly", "Vegan"], cons: ["Hair adjustment period", "Needs dry storage"] },
+      { cat: "Clean Body", sub: "", img: "410XbGhKsyL", name: "Merkur 34C Safety Razor", asin: "B002A8JO1Q", bestFor: "Best razor swap", tier: "$$", effectiveness: "Eliminates disposable razors", desc: "German made stainless steel. Lasts a lifetime with replacement blades that cost pennies.", pros: ["Lasts a lifetime", "Blades cost pennies", "Made in Germany"], cons: ["Short learning curve", "Handle blades carefully"] },
+      { cat: "Clean Body", sub: "", img: "418SVv2aMTL", name: "Bamboo Toothbrush Set (10 Pack)", asin: "B08172V3Y5", bestFor: "Easiest bathroom swap", tier: "$", effectiveness: "Keeps 10 brushes from landfill", desc: "Biodegradable bamboo handles with BPA free soft bristles. Individually numbered for families.", pros: ["Compostable handles", "Soft BPA free bristles", "Numbered for families"], cons: ["Nylon bristles not compostable", "Dry between uses"] },
 
-      { cat: "Kids", img: "41odQEPAoHL", name: "ezpz Mini Mat Silicone Plate", asin: "B01C95ZCNI", bestFor: "Best for mealtime", tier: "$", effectiveness: "Eliminates plastic plate chemicals", install: "Ready to use", maintenance: "Dishwasher safe", desc: "100% food grade silicone. Suctions to highchairs. Free of BPA, BPS, PVC, latex and phthalates.", pros: ["Suctions to surfaces", "Microwave safe", "BPA and PVC free"], cons: ["Best on flat surfaces", "Stains from turmeric"] },
-      { cat: "Kids", img: "41DEzXIr8tL", name: "Honeysticks Beeswax Crayons", asin: "B01GSY9MD2", bestFor: "Best for art time", tier: "$", effectiveness: "Safe if ingested", install: "Ready to use", maintenance: "None", desc: "100% pure New Zealand beeswax. Handmade with food grade colors and a chubby shape for small hands.", pros: ["Non toxic if ingested", "Vibrant colors", "Sturdy shape"], cons: ["Softer than paraffin crayons", "Can melt in heat"] },
+      // Bedroom and Laundry
+      { cat: "Bedroom and Laundry", sub: "", img: "41uZMh6+pyL", name: "Organic Cotton Sheets (Queen)", asin: "B07RY59C3W", bestFor: "Best for your bed", tier: "$$", effectiveness: "Zero microplastic shedding", desc: "GOTS certified 100% organic cotton. Gets softer with each wash with no synthetic fibers.", pros: ["Zero microplastic shed", "Softer over time", "Chemical free"], cons: ["Pricier than polyester", "Wrinkles more"] },
+      { cat: "Bedroom and Laundry", sub: "", img: "416DJtLU-aL", name: "Wool Dryer Balls (6 Pack)", asin: "B014WOWNAY", bestFor: "Best dryer sheet replacement", tier: "$", effectiveness: "Eliminates dryer sheet chemicals", desc: "100% New Zealand wool. Reduces drying time by 25% and naturally softens clothes.", pros: ["Saves 25% drying time", "No chemicals", "Lasts years"], cons: ["No fragrance without oils", "Occasional pilling"] },
 
-      { cat: "Pets", img: "41JNeL2yGBL", name: "Stainless Steel Dog Bowls (2 Pack)", asin: "B01DOP5S9K", bestFor: "Best for feeding", tier: "$", effectiveness: "Eliminates BPA leaching", install: "Ready to use", maintenance: "Dishwasher safe", desc: "Food grade stainless steel with non skid rubber base. Dishwasher safe and built to last.", pros: ["Dishwasher safe", "No bacteria in scratches", "Rust resistant"], cons: ["Noisy on hard floors", "No volume markings"] },
-      { cat: "Pets", img: "315fquAvdGL", name: "Kong Classic Dog Toy", asin: "B0002AR0I8", bestFor: "Best for playtime", tier: "$", effectiveness: "Zero microplastic shedding", install: "Ready to use", maintenance: "Dishwasher safe", desc: "Ultra durable natural rubber. Stuffable with treats and dishwasher safe.", pros: ["Natural rubber", "Stuffable with treats", "Dishwasher safe"], cons: ["Power chewers may destroy it", "Unpredictable bounce"] }
+      // Living Room
+      { cat: "Living Room", sub: "", img: "61j7nB2CEgL", name: "Soy Wax Candle Set (12 Pack)", asin: "B08T1XYNG9", bestFor: "Best candle swap", tier: "$", effectiveness: "Eliminates petroleum fumes", desc: "100% natural soy wax with cotton wicks. Clean burn with no soot and 240 hours total.", pros: ["Clean burn with no soot", "240 hours total", "Non toxic wicks"], cons: ["Lighter scent throw", "Softer wax texture"] },
+      { cat: "Living Room", sub: "", img: "419EDCYNm+L", name: "Levoit Air Purifier (Core 300)", asin: "B07VVK39F7", bestFor: "Best for air quality", tier: "$$$", effectiveness: "99.97% airborne fiber capture", desc: "True HEPA filter. Whisper quiet at 24dB. Covers 1,095 sq ft with no ozone.", pros: ["Covers 1,095 sq ft", "24dB quiet", "No ozone"], cons: ["Filter replacements add up", "Base filter skips VOCs"] },
+
+      // Kids
+      { cat: "Kids", sub: "", img: "41odQEPAoHL", name: "ezpz Mini Mat Silicone Plate", asin: "B01C95ZCNI", bestFor: "Best for mealtime", tier: "$", effectiveness: "Eliminates plastic plate chemicals", desc: "100% food grade silicone. Suctions to highchairs. Free of BPA, BPS, PVC, latex and phthalates.", pros: ["Suctions to surfaces", "Microwave safe", "BPA and PVC free"], cons: ["Best on flat surfaces", "Stains from turmeric"] },
+      { cat: "Kids", sub: "", img: "41DEzXIr8tL", name: "Honeysticks Beeswax Crayons", asin: "B01GSY9MD2", bestFor: "Best for art time", tier: "$", effectiveness: "Safe if ingested", desc: "100% pure New Zealand beeswax. Handmade with food grade colors and a chubby shape for small hands.", pros: ["Non toxic if ingested", "Vibrant colors", "Sturdy shape"], cons: ["Softer than paraffin crayons", "Can melt in heat"] },
+
+      // Pets
+      { cat: "Pets", sub: "", img: "41JNeL2yGBL", name: "Stainless Steel Dog Bowls (2 Pack)", asin: "B01DOP5S9K", bestFor: "Best for feeding", tier: "$", effectiveness: "Eliminates BPA leaching", desc: "Food grade stainless steel with non skid rubber base. Dishwasher safe and built to last.", pros: ["Dishwasher safe", "No bacteria in scratches", "Rust resistant"], cons: ["Noisy on hard floors", "No volume markings"] },
+      { cat: "Pets", sub: "", img: "315fquAvdGL", name: "Kong Classic Dog Toy", asin: "B0002AR0I8", bestFor: "Best for playtime", tier: "$", effectiveness: "Zero microplastic shedding", desc: "Ultra durable natural rubber. Stuffable with treats and dishwasher safe.", pros: ["Natural rubber", "Stuffable with treats", "Dishwasher safe"], cons: ["Power chewers may destroy it", "Unpredictable bounce"] }
     ];
 
     let storeRendered = false;
@@ -2076,19 +2120,21 @@
 
       const container = document.getElementById("store-products");
       container.innerHTML = cats.map(cat => {
-        const products = storeProducts.filter(p => p.cat === cat);
+        const catProducts = storeProducts.filter(p => p.cat === cat);
         const catDesc = catDescriptions[cat] || "";
-        return `
-          <div id="store-cat-${cat.replace(/[^a-zA-Z0-9]/g, '')}" class="store-category">
-            <h2 class="store-category-title">${cat}</h2>
-            ${catDesc ? `<p class="store-category-problem">${catDesc}</p>` : ""}
+        const subs = [...new Set(catProducts.map(p => p.sub).filter(Boolean))];
+        const hasSubs = subs.length > 0;
+        const catId = cat.replace(/[^a-zA-Z0-9]/g, '');
+
+        function renderGroup(products) {
+          return `
             <div class="compare-table-wrap">
               <table class="compare-table">
                 <thead>
                   <tr>
                     <th>Product</th>
                     <th>Best For</th>
-                    <th>Price Range</th>
+                    <th>Price</th>
                     <th>Effectiveness</th>
                     <th>Pros</th>
                     <th>Cons</th>
@@ -2102,8 +2148,8 @@
                       <td><span class="compare-best-for">${p.bestFor}</span></td>
                       <td>${p.tier}</td>
                       <td>${p.effectiveness}</td>
-                      <td>${p.pros.map(pro => `<div class="compare-pro">+ ${pro}</div>`).join("")}</td>
-                      <td>${p.cons.map(con => `<div class="compare-con">- ${con}</div>`).join("")}</td>
+                      <td>${p.pros.slice(0,3).map(pro => `<div class="compare-pro">+ ${pro}</div>`).join("")}</td>
+                      <td>${p.cons.slice(0,3).map(con => `<div class="compare-con">- ${con}</div>`).join("")}</td>
                       <td><a href="https://www.amazon.com/dp/${p.asin}?tag=plasticdetox-20" target="_blank" rel="noopener" class="compare-view-btn">View</a></td>
                     </tr>
                   `).join("")}
@@ -2125,19 +2171,42 @@
                     <div class="product-pros-cons">
                       <div class="product-pros">
                         <div class="product-pros-label">Pros</div>
-                        ${p.pros.map(pro => `<div class="product-pro">${pro}</div>`).join("")}
+                        ${p.pros.slice(0,3).map(pro => `<div class="product-pro">${pro}</div>`).join("")}
                       </div>
                       <div class="product-cons">
                         <div class="product-cons-label">Cons</div>
-                        ${p.cons.map(con => `<div class="product-con">${con}</div>`).join("")}
+                        ${p.cons.slice(0,3).map(con => `<div class="product-con">${con}</div>`).join("")}
                       </div>
                     </div>
                     <a href="https://www.amazon.com/dp/${p.asin}?tag=plasticdetox-20" target="_blank" rel="noopener" class="product-link">View</a>
                   </div>
                 </div>
               `).join("")}
-            </div>
-          </div>`;
+            </div>`;
+        }
+
+        if (hasSubs) {
+          return `
+            <div id="store-cat-${catId}" class="store-category">
+              <h2 class="store-category-title">${cat}</h2>
+              ${catDesc ? `<p class="store-category-problem">${catDesc}</p>` : ""}
+              <div class="subcat-tabs">
+                ${subs.map((s, i) => `<button class="subcat-tab${i === 0 ? ' active' : ''}" onclick="showSubcat('${catId}', '${s.replace(/'/g, "\\'")}', this)">${s}</button>`).join("")}
+              </div>
+              ${subs.map((s, i) => `
+                <div class="subcat-panel${i === 0 ? ' active' : ''}" data-catid="${catId}" data-sub="${s}">
+                  ${renderGroup(catProducts.filter(p => p.sub === s))}
+                </div>
+              `).join("")}
+            </div>`;
+        } else {
+          return `
+            <div id="store-cat-${catId}" class="store-category">
+              <h2 class="store-category-title">${cat}</h2>
+              ${catDesc ? `<p class="store-category-problem">${catDesc}</p>` : ""}
+              ${renderGroup(catProducts)}
+            </div>`;
+        }
       }).join("");
     }
 
@@ -2146,6 +2215,14 @@
       const el = document.getElementById(id);
       if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
       document.querySelectorAll(".store-nav-btn").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+    }
+
+    function showSubcat(catId, sub, btn) {
+      document.querySelectorAll(`.subcat-panel[data-catid="${catId}"]`).forEach(p => p.classList.remove("active"));
+      const target = document.querySelector(`.subcat-panel[data-catid="${catId}"][data-sub="${sub}"]`);
+      if (target) target.classList.add("active");
+      btn.parentElement.querySelectorAll(".subcat-tab").forEach(t => t.classList.remove("active"));
       btn.classList.add("active");
     }
 
