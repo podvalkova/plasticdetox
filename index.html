@@ -1655,6 +1655,16 @@
 
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
+    // Handle hash navigation on page load
+    if (window.location.hash === "#articles" || window.location.hash === "#resources") {
+      showResources();
+      if (window.location.hash === "#articles") {
+        document.querySelectorAll(".resource-tab").forEach(btn => btn.classList.remove("active"));
+        document.querySelector(".resource-tab").classList.add("active");
+        document.getElementById("tab-articles").style.display = "block";
+        document.getElementById("tab-research").style.display = "none";
+      }
+    }
   </script>
 </body>
 </html>
