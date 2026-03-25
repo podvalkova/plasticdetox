@@ -78,6 +78,15 @@
   }
   </script>
 
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -265,6 +274,56 @@
       font-size: 1.8rem;
       font-weight: 800;
     }
+
+    .tracker-score-wrap { cursor: pointer; }
+    .tracker-score-wrap:hover .tracker-circle { transform: scale(1.05); }
+    .tracker-circle { transition: transform 0.2s; }
+
+    .swap-panel {
+      display: none;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 1rem;
+      margin-top: 0.75rem;
+      max-height: 300px;
+      overflow-y: auto;
+      text-align: left;
+      box-shadow: var(--shadow);
+    }
+
+    .swap-panel.open { display: block; }
+
+    .swap-panel-empty {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      text-align: center;
+      padding: 0.5rem 0;
+    }
+
+    .swap-panel-item {
+      display: flex;
+      gap: 0.5rem;
+      padding: 0.4rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.82rem;
+      line-height: 1.4;
+    }
+
+    .swap-panel-item:last-child { border-bottom: none; }
+    .swap-panel-icon { flex-shrink: 0; }
+    .swap-panel-text { color: var(--text); }
+    .swap-panel-cat {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--accent-dark);
+      margin-top: 0.75rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .swap-panel-cat:first-child { margin-top: 0; }
 
     .tracker-label {
       font-size: 0.8rem;
@@ -769,7 +828,7 @@
     <section class="game" id="game" style="display:none;">
       <div class="tracker" id="tracker">
         <div class="tracker-title">Your Plastic Score</div>
-        <div class="tracker-score-wrap">
+        <div class="tracker-score-wrap" onclick="toggleSwapPanel()">
           <div class="tracker-circle">
             <svg viewBox="0 0 120 120">
               <circle cx="60" cy="60" r="52" class="tracker-bg"/>
@@ -777,8 +836,9 @@
             </svg>
             <div class="tracker-number" id="tracker-number">0</div>
           </div>
-          <div class="tracker-label">items to swap</div>
+          <div class="tracker-label">items to swap <span style="font-size:0.7rem;">&#9660;</span></div>
         </div>
+        <div class="swap-panel" id="swap-panel"></div>
         <div class="tracker-categories" id="tracker-categories"></div>
       </div>
 
@@ -1442,6 +1502,31 @@
     }
 
     // ==================== GAME ====================
+    function toggleSwapPanel() {
+      const panel = document.getElementById("swap-panel");
+      panel.classList.toggle("open");
+
+      if (!panel.classList.contains("open")) return;
+
+      if (swaps.length === 0) {
+        panel.innerHTML = '<div class="swap-panel-empty">No items yet. Answer "Yes" or "Sometimes" to see swaps here.</div>';
+        return;
+      }
+
+      const grouped = {};
+      swaps.forEach(s => {
+        if (!grouped[s.category]) grouped[s.category] = [];
+        grouped[s.category].push(s);
+      });
+
+      panel.innerHTML = Object.entries(grouped).map(([cat, items]) =>
+        `<div class="swap-panel-cat">${cat}</div>` +
+        items.map(item =>
+          `<div class="swap-panel-item"><span class="swap-panel-icon">${item.icon}</span><span class="swap-panel-text">${item.text}</span></div>`
+        ).join("")
+      ).join("");
+    }
+
     function startGame() {
       document.getElementById("hero").style.display = "none";
       document.getElementById("game").style.display = "flex";
