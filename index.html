@@ -303,6 +303,7 @@
     }
 
     .tracker-cat.done .tracker-cat-dot { background: var(--accent); }
+    .tracker-cat:hover { color: var(--text); }
 
     /* ===== GAME MAIN ===== */
     .game-main {
@@ -1343,7 +1344,7 @@
         let cls = "tracker-cat";
         if (i === currentCategory) cls += " active";
         if (i < currentCategory) cls += " done";
-        return `<div class="${cls}"><span class="tracker-cat-dot"></span>${c.icon} ${c.name}</div>`;
+        return `<div class="${cls}" onclick="jumpToCategory(${i})" style="cursor:pointer;"><span class="tracker-cat-dot"></span>${c.icon} ${c.name}</div>`;
       }).join("");
 
       const maxPossible = totalQuestions;
@@ -1431,6 +1432,13 @@
       answeredCount += remaining;
       updateProgress();
       showCategoryDone();
+    }
+
+    function jumpToCategory(index) {
+      currentCategory = index;
+      currentQuestion = 0;
+      showQuestion();
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
     function advanceQuestion() {
