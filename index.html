@@ -806,30 +806,86 @@
 
     .product-card {
       background: var(--surface);
-      border-radius: var(--radius-sm);
-      padding: 1.25rem;
+      border-radius: var(--radius);
       box-shadow: var(--shadow);
       display: flex;
       flex-direction: column;
       transition: transform 0.2s, box-shadow 0.2s;
+      overflow: hidden;
     }
 
     .product-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
 
-    .product-emoji { font-size: 2rem; margin-bottom: 0.75rem; }
+    .product-img-wrap {
+      background: #f5f5f4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.25rem;
+      min-height: 160px;
+    }
+
+    .product-img-wrap img {
+      max-height: 130px;
+      max-width: 100%;
+      object-fit: contain;
+    }
+
+    .product-body { padding: 1.25rem; display: flex; flex-direction: column; flex-grow: 1; }
     .product-name { font-size: 1rem; font-weight: 700; margin-bottom: 0.25rem; line-height: 1.3; }
-    .product-price { font-size: 0.85rem; color: var(--accent-dark); font-weight: 600; margin-bottom: 0.5rem; }
+    .product-price { font-size: 0.9rem; color: var(--accent-dark); font-weight: 700; margin-bottom: 0.6rem; }
+
+    .product-problem {
+      font-size: 0.8rem;
+      background: #fef2f2;
+      color: #991b1b;
+      border-radius: 6px;
+      padding: 0.5rem 0.75rem;
+      margin-bottom: 0.6rem;
+      line-height: 1.4;
+    }
+
+    .product-problem strong { color: #dc2626; }
+
+    .product-impact {
+      font-size: 0.8rem;
+      background: #f0fdf4;
+      color: #166534;
+      border-radius: 6px;
+      padding: 0.5rem 0.75rem;
+      margin-bottom: 0.6rem;
+      line-height: 1.4;
+    }
+
+    .product-impact strong { color: #16a34a; }
+
     .product-desc { font-size: 0.85rem; color: var(--text); line-height: 1.55; margin-bottom: 0.75rem; flex-grow: 1; }
 
-    .product-pros-cons { font-size: 0.8rem; line-height: 1.5; margin-bottom: 0.75rem; }
-    .product-pro { color: #16a34a; }
-    .product-con { color: #dc2626; }
-    .product-pro::before { content: "+ "; font-weight: 700; }
-    .product-con::before { content: "- "; font-weight: 700; }
+    .product-pros-cons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+      font-size: 0.78rem;
+      line-height: 1.45;
+    }
+
+    .product-pros, .product-cons {
+      padding: 0.5rem 0.6rem;
+      border-radius: 6px;
+    }
+
+    .product-pros { background: #f0fdf4; }
+    .product-cons { background: #fef2f2; }
+    .product-pros-label, .product-cons-label { font-weight: 700; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.25rem; }
+    .product-pros-label { color: #16a34a; }
+    .product-cons-label { color: #dc2626; }
+    .product-pro { color: #166534; }
+    .product-con { color: #991b1b; }
 
     .product-link {
       display: inline-block;
-      padding: 0.5rem 1rem;
+      padding: 0.55rem 1.25rem;
       background: var(--accent);
       color: #fff;
       border-radius: var(--radius-sm);
@@ -846,6 +902,7 @@
       .product-grid { grid-template-columns: 1fr; }
       .store-nav { gap: 0.35rem; }
       .store-nav-btn { font-size: 0.75rem; padding: 0.4rem 0.75rem; }
+      .product-pros-cons { grid-template-columns: 1fr; }
     }
 
     /* ===== FOOTER ===== */
@@ -1861,35 +1918,33 @@
     }
     // ==================== STORE ====================
     const storeProducts = [
-      { cat: "The Big 5", emoji: "\u{1F373}", name: "Lodge 12\" Cast Iron Skillet", price: "$35", asin: "B00006JSUB", desc: "Pre-seasoned, naturally non-stick cookware that replaces toxic Teflon. Gets better with every use and lasts generations.", pros: ["Lifetime durability", "Chemical-free cooking surface", "Excellent heat retention"], cons: ["Heavy (8 lbs)", "Requires seasoning maintenance"] },
-      { cat: "The Big 5", emoji: "\u{1F4A7}", name: "APEC ROES-50 Reverse Osmosis System", price: "$190", asin: "B00I0ZGOZM", desc: "Five-stage under-sink RO system that removes 99.9% of microplastics, PFAS, lead, and 1,000+ contaminants from tap water.", pros: ["Removes 99.9% of microplastics", "NSF certified", "Steel pressure tank"], cons: ["Requires under-sink installation", "Wastes some water during filtration"] },
-      { cat: "The Big 5", emoji: "\u{1F952}", name: "Pyrex Glass Food Storage Set (12-Pack)", price: "$35", asin: "B07L51SFVS", desc: "Borosilicate glass containers with BPA-free lids. Replaces all plastic food storage in your kitchen.", pros: ["Microwave and oven safe", "Stain and odor resistant", "Dishwasher safe"], cons: ["Heavier than plastic", "Glass can break if dropped"] },
-      { cat: "The Big 5", emoji: "\u{1F9F4}", name: "Dr. Bronner's Pure Castile Soap", price: "$18", asin: "B001ET77GM", desc: "One bottle replaces plastic-packaged hand soap, dish soap, body wash, and household cleaners. Made with organic oils, no synthetic fragrances.", pros: ["18 uses in one bottle", "Certified organic ingredients", "Biodegradable"], cons: ["Concentrated, must be diluted", "Takes time to learn right ratios"] },
-      { cat: "The Big 5", emoji: "\u{1F4B3}", name: "Clearly Filtered Water Pitcher", price: "$80", asin: "B0CW4CDPNJ", desc: "Removes 99.5% of microplastics and 365+ contaminants. Best pitcher-style filter on the market for microplastic removal.", pros: ["Removes microplastics, PFAS, lead", "No installation needed", "NSF tested"], cons: ["Filter replacement every 4 months ($50)", "Slower filtration than basic pitchers"] },
+      { cat: "The Big 5", img: "216kmrLZraL", name: "Lodge 12\" Cast Iron Skillet", price: "$35", asin: "B00006JSUB", problem: "Non-stick (Teflon) pans release toxic PFAS into your food every time you cook.", impact: "Eliminates daily PFAS exposure from cooking. One of the highest-impact swaps you can make.", desc: "Pre-seasoned, naturally non-stick cookware that gets better with every use and lasts generations.", pros: ["Lifetime durability", "Chemical-free surface", "Excellent heat retention"], cons: ["Heavy (8 lbs)", "Requires seasoning"] },
+      { cat: "The Big 5", img: "418gI8Rxl2L", name: "APEC ROES-50 Reverse Osmosis System", price: "$190", asin: "B00I0ZGOZM", problem: "Unfiltered tap water contains microplastics, PFAS, lead, and pharmaceutical residues.", impact: "Removes 99.9% of microplastics from every glass of water you drink and cook with.", desc: "Five-stage under-sink RO system. NSF certified, steel pressure tank, serves the whole family.", pros: ["Removes 99.9% microplastics", "NSF certified", "Steel tank"], cons: ["Under-sink install", "Some water waste"] },
+      { cat: "The Big 5", img: "41E3pLI0ZzL", name: "Pyrex Glass Food Storage (12-Pack)", price: "$35", asin: "B07L51SFVS", problem: "Plastic containers leach chemicals into food, especially when heated or scratched.", impact: "Eliminates chemical leaching from all food storage. Microwave and oven safe.", desc: "Borosilicate glass containers with BPA-free lids. Replaces all plastic food storage in your kitchen.", pros: ["Microwave and oven safe", "Stain resistant", "Dishwasher safe"], cons: ["Heavier than plastic", "Can break if dropped"] },
+      { cat: "The Big 5", img: "41bKOyTPymL", name: "Clearly Filtered Water Pitcher", price: "$80", asin: "B0CW4CDPNJ", problem: "Standard Brita pitchers barely filter microplastics. Most people think they're protected when they're not.", impact: "Removes 99.5% of microplastics and 365+ contaminants. No installation needed.", desc: "Best pitcher-style filter on the market for microplastic removal. NSF tested to standards 42, 53, 401 and 473.", pros: ["Removes PFAS, lead, microplastics", "No install needed", "NSF tested"], cons: ["Filter refill every 4mo ($50)", "Slower than basic pitchers"] },
+      { cat: "The Big 5", img: "51eQqKKP2yL", name: "Dr. Bronner's Castile Soap (32oz)", price: "$18", asin: "B00120VWJ0", problem: "Every plastic soap bottle in your home adds synthetic fragrances and phthalates to your skin.", impact: "One bottle replaces 18 plastic products: hand soap, body wash, dish soap, cleaners, and more.", desc: "Certified organic, concentrated pure castile soap. Dilute for dozens of household uses. No synthetic fragrances.", pros: ["18 uses in one bottle", "Certified organic", "Biodegradable"], cons: ["Must dilute before use", "Learning curve on ratios"] },
 
-      { cat: "Kitchen", emoji: "\u{1F4A7}", name: "Klean Kanteen Stainless Steel Bottle (27oz)", price: "$25", asin: "B0019N2DO8", desc: "Food-grade 18/8 stainless steel water bottle. Replaces single-use plastic bottles completely.", pros: ["No plastic interior", "Dishwasher safe", "Toxin-free"], cons: ["Not insulated (classic model)", "Dents if dropped on hard surface"] },
-      { cat: "Kitchen", emoji: "\u{1F96C}", name: "Bee's Wrap Beeswax Wraps (3-Pack)", price: "$18", asin: "B0126LMDFK", desc: "Reusable food wraps made from organic cotton, beeswax, and jojoba oil. Replaces plastic wrap and sandwich bags.", pros: ["Compostable at end of life", "Lasts up to 1 year", "Made in USA"], cons: ["Cannot use with raw meat", "Must wash with cool water only"] },
-      { cat: "Kitchen", emoji: "\u{1F52A}", name: "Bamboo Cutting Board (Large 18\"x12\")", price: "$16", asin: "B08LCXZ3WD", desc: "Organic bamboo board that replaces plastic cutting boards which shed millions of microplastic particles per year.", pros: ["Zero microplastic shedding", "Naturally antimicrobial", "Juice groove catches liquids"], cons: ["Needs occasional oiling", "Not dishwasher safe"] },
-      { cat: "Kitchen", emoji: "\u{2615}", name: "Cosori Glass Electric Kettle", price: "$35", asin: "B08PP48979", desc: "Borosilicate glass body with stainless steel interior. No plastic touches the water at any point.", pros: ["Zero plastic contact with water", "Fast boiling (1500W)", "Auto shut-off"], cons: ["Glass can break if mishandled", "Cord is not retractable"] },
-      { cat: "Kitchen", emoji: "\u{1F944}", name: "Wooden Cooking Utensil Set (6-Piece)", price: "$13", asin: "B085W92DL4", desc: "Natural teak wood spatulas and spoons. Replaces nylon and plastic utensils that melt and leach chemicals into hot food.", pros: ["Won't scratch non-stick pans", "Heat resistant", "Non-toxic natural wood"], cons: ["Hand wash only", "Needs occasional oil treatment"] },
-      { cat: "Kitchen", emoji: "\u{1F371}", name: "Stainless Steel Bento Box", price: "$30", asin: "B07V2QLKZB", desc: "Leak-proof stainless steel lunch container with compartments. Replaces plastic lunch boxes and single-use bags.", pros: ["Dishwasher safe", "No chemicals leaching into food", "Durable and dent resistant"], cons: ["Cannot microwave", "Heavier than plastic alternatives"] },
+      { cat: "Kitchen", img: "31Z-62BNM7L", name: "Klean Kanteen Steel Bottle (27oz)", price: "$25", asin: "B0019N2DO8", impact: "Eliminates ~167 plastic water bottles per year per person.", desc: "Food-grade 18/8 stainless steel. No plastic interior, no BPA, no toxins.", pros: ["No plastic interior", "Dishwasher safe", "Toxin-free"], cons: ["Not insulated", "Dents if dropped"] },
+      { cat: "Kitchen", img: "41RE8cqekdL", name: "Bee's Wrap Beeswax Wraps (3-Pack)", price: "$18", asin: "B0126LMDFK", impact: "Replaces hundreds of feet of plastic wrap per year.", desc: "Organic cotton, beeswax, and jojoba oil. Moldable, reusable, compostable at end of life.", pros: ["Compostable", "Lasts up to 1 year", "Made in USA"], cons: ["No raw meat use", "Cool water wash only"] },
+      { cat: "Kitchen", img: "41MZOZvV7RL", name: "Bamboo Cutting Board (18\"x12\")", price: "$16", asin: "B08LCXZ3WD", impact: "Stops millions of microplastic particles per year from entering your food.", desc: "Plastic cutting boards shed 14-71 million microparticles per year from knife cuts. Bamboo sheds zero.", pros: ["Zero microplastic shed", "Naturally antimicrobial", "Juice groove"], cons: ["Needs occasional oiling", "Hand wash only"] },
+      { cat: "Kitchen", img: "41PYUmcAn4L", name: "Cosori Glass Electric Kettle", price: "$35", asin: "B08PP48979", impact: "Stops billions of nanoplastic particles released per boil from plastic kettles.", desc: "Borosilicate glass body, stainless steel interior. Zero plastic contact with water.", pros: ["Zero plastic contact", "Fast boil (1500W)", "Auto shut-off"], cons: ["Glass is fragile", "Non-retractable cord"] },
+      { cat: "Kitchen", img: "51eQqKKP2yL", name: "Wooden Cooking Utensils (6-Piece)", price: "$13", asin: "B085W92DL4", impact: "Eliminates chemical leaching from melting nylon/plastic utensils in hot food.", desc: "Natural teak wood spatulas and spoons. Won't melt, scratch, or leach into your food.", pros: ["Won't scratch pans", "Heat resistant", "Non-toxic wood"], cons: ["Hand wash only", "Occasional oiling"] },
 
-      { cat: "Bathroom", emoji: "\u{1F9F4}", name: "Ethique Shampoo Bar", price: "$16", asin: "B0DHFPB45C", desc: "Concentrated solid shampoo that replaces 3 plastic bottles. Made with plant-based ingredients, zero plastic packaging.", pros: ["Replaces 3 plastic bottles", "TSA-friendly for travel", "Vegan and cruelty-free"], cons: ["Adjustment period for hair", "Needs a dry place to store"] },
-      { cat: "Bathroom", emoji: "\u{1FAA5}", name: "Merkur 34C Safety Razor", price: "$33", asin: "B002A8JO1Q", desc: "German-made stainless steel razor that lasts a lifetime. Replaces disposable plastic razors and cartridges forever.", pros: ["Lifetime durability", "Blades cost pennies each", "Made in Germany"], cons: ["Learning curve for first-time users", "Must handle blade carefully"] },
-      { cat: "Bathroom", emoji: "\u{1FAA5}", name: "Bamboo Toothbrush Set (10-Pack)", price: "$10", asin: "B08172V3Y5", desc: "Biodegradable bamboo handles with BPA-free soft bristles. Each one replaces a plastic toothbrush headed for the landfill.", pros: ["Compostable handles", "Soft BPA-free bristles", "Individually numbered"], cons: ["Bristles are nylon (not compostable)", "Must dry between uses to prevent mold"] },
-      { cat: "Bathroom", emoji: "\u{1F9FC}", name: "Glass Soap Dispenser Set", price: "$15", asin: "B07VK5HLYB", desc: "Refillable glass bottles with pump for hand soap, dish soap, and lotion. Ends the cycle of buying new plastic pump bottles.", pros: ["Endlessly refillable", "Looks great on countertops", "Works with any liquid soap"], cons: ["Glass can break", "Pump mechanism is still plastic"] },
+      { cat: "Bathroom", img: "31Tp4yS3euL", name: "Ethique Shampoo Bar", price: "$16", asin: "B0DHFPB45C", impact: "Each bar replaces 3 plastic bottles. Zero plastic packaging.", desc: "Concentrated solid shampoo with plant-based ingredients. Vegan and cruelty-free.", pros: ["Replaces 3 bottles", "TSA-friendly", "Vegan"], cons: ["Hair adjustment period", "Needs dry storage"] },
+      { cat: "Bathroom", img: "410XbGhKsyL", name: "Merkur 34C Safety Razor", price: "$33", asin: "B002A8JO1Q", impact: "Eliminates hundreds of disposable plastic razors and cartridges over your lifetime.", desc: "German-made stainless steel. Lasts a lifetime. Replacement blades cost pennies.", pros: ["Lifetime durability", "Blades cost pennies", "Made in Germany"], cons: ["Learning curve", "Handle blades carefully"] },
+      { cat: "Bathroom", img: "418SVv2aMTL", name: "Bamboo Toothbrush Set (10-Pack)", price: "$10", asin: "B08172V3Y5", impact: "Keeps 10 plastic toothbrushes out of the landfill (where they take 500+ years to decompose).", desc: "Biodegradable bamboo handles with BPA-free soft bristles. Individually numbered for families.", pros: ["Compostable handles", "Soft BPA-free bristles", "Numbered"], cons: ["Nylon bristles not compostable", "Dry between uses"] },
 
-      { cat: "Bedroom & Closet", emoji: "\u{1F6CF}", name: "Organic Cotton Bed Sheets (Queen)", price: "$50", asin: "B07RY59C3W", desc: "GOTS-certified 100% organic cotton sheets. Replaces polyester sheets that shed microfiber plastics with every wash.", pros: ["Zero microplastic shedding", "Gets softer with each wash", "Chemical-free processing"], cons: ["Higher price than polyester", "May wrinkle more than synthetic"] },
-      { cat: "Bedroom & Closet", emoji: "\u{1F9FA}", name: "Wool Dryer Balls (6-Pack)", price: "$10", asin: "B014WOWNAY", desc: "100% New Zealand wool balls that replace plastic dryer sheets and liquid fabric softener. Last for 1,000+ loads.", pros: ["Reduces drying time 25%", "No chemicals on your clothes", "Lasts years"], cons: ["No added fragrance (add essential oils if desired)", "Occasional pilling on balls"] },
+      { cat: "Bedroom & Closet", img: "41uZMh6+pyL", name: "Organic Cotton Sheets (Queen)", price: "$50", asin: "B07RY59C3W", impact: "Stops microfiber plastic shedding into your bed and washing machine with every cycle.", desc: "GOTS-certified 100% organic cotton. Gets softer with each wash. No synthetic fibers.", pros: ["Zero microplastic shed", "Softer over time", "Chemical-free"], cons: ["Pricier than polyester", "Wrinkles more"] },
+      { cat: "Bedroom & Closet", img: "416DJtLU-aL", name: "Wool Dryer Balls (6-Pack)", price: "$10", asin: "B014WOWNAY", impact: "Replaces chemical-laden dryer sheets forever. Lasts 1,000+ loads.", desc: "100% New Zealand wool. Reduces drying time by 25%, naturally softens clothes.", pros: ["Saves 25% drying time", "No chemicals", "Lasts years"], cons: ["No fragrance (add oils)", "Occasional pilling"] },
 
-      { cat: "Living Room", emoji: "\u{1F56F}", name: "Soy Wax Candle Set (12-Pack)", price: "$22", asin: "B08T1XYNG9", desc: "100% natural soy wax with cotton wicks. Replaces paraffin candles that release toluene and benzene (petroleum byproducts) into your air.", pros: ["Clean burn, no soot", "Long lasting (240 hours total)", "Non-toxic cotton wicks"], cons: ["Weaker scent throw than paraffin", "Softer wax melts faster in heat"] },
-      { cat: "Living Room", emoji: "\u{1F32C}", name: "Levoit Air Purifier (Core 300)", price: "$90", asin: "B07VVK39F7", desc: "True HEPA filter captures 99.97% of airborne particles including microplastic fibers shed from synthetic furniture and textiles.", pros: ["Covers 1,095 sq ft", "Whisper quiet at 24dB", "No ozone emissions"], cons: ["Filter replacement every 6-8 months", "Cannot remove gases/VOCs with base filter"] },
+      { cat: "Living Room", img: "61j7nB2CEgL", name: "Soy Wax Candle Set (12-Pack)", price: "$22", asin: "B08T1XYNG9", impact: "Eliminates toluene and benzene (petroleum byproducts) released by paraffin candles.", desc: "100% natural soy wax with cotton wicks. Clean burn, no soot, 240 hours total.", pros: ["Clean burn, no soot", "240 hours total", "Non-toxic wicks"], cons: ["Lighter scent throw", "Softer wax"] },
+      { cat: "Living Room", img: "419EDCYNm+L", name: "Levoit Air Purifier (Core 300)", price: "$90", asin: "B07VVK39F7", impact: "Captures 99.97% of airborne microplastic fibers shed from synthetic furniture and textiles.", desc: "True HEPA filter. Whisper quiet at 24dB. Covers 1,095 sq ft. No ozone.", pros: ["Covers 1,095 sq ft", "24dB quiet", "No ozone"], cons: ["Filter change every 6-8mo", "Base filter skips VOCs"] },
 
-      { cat: "Kids", emoji: "\u{1F37C}", name: "ezpz Mini Mat Silicone Plate", price: "$20", asin: "B01C95ZCNI", desc: "100% food-grade silicone suction placemat that sticks to highchairs. Replaces plastic plates that scratch and harbor bacteria.", pros: ["Suctions to surfaces (no flipping)", "Dishwasher and microwave safe", "BPA, BPS, PVC free"], cons: ["Suction works best on flat surfaces", "Stains with certain foods (turmeric)"] },
-      { cat: "Kids", emoji: "\u{1F3A8}", name: "Beeswax Crayons (12 Colors)", price: "$12", asin: "B00BDJQFG4", desc: "Pure beeswax crayons with no petroleum-based paraffin. Safe if kids put them in their mouth (they will).", pros: ["Non-toxic if ingested", "Vibrant colors", "Natural beeswax scent"], cons: ["Softer than regular crayons", "Can melt in hot cars"] },
+      { cat: "Kids", img: "41odQEPAoHL", name: "ezpz Mini Mat Silicone Plate", price: "$20", asin: "B01C95ZCNI", impact: "Replaces scratched plastic plates that harbor bacteria and leach chemicals into baby food.", desc: "100% food-grade silicone. Suctions to highchairs. BPA, BPS, PVC, latex and phthalate free.", pros: ["Suctions to surfaces", "Microwave safe", "BPA/PVC free"], cons: ["Best on flat surfaces", "Stains from turmeric"] },
+      { cat: "Kids", img: "41DEzXIr8tL", name: "Honeysticks Beeswax Crayons (12-Pack)", price: "$15", asin: "B01GSY9MD2", impact: "Safe when kids put them in their mouth (they will). No petroleum-based paraffin.", desc: "100% pure New Zealand beeswax. Handmade with food-grade colors. Chubby shape for small hands.", pros: ["Non-toxic if ingested", "Vibrant colors", "Sturdy shape"], cons: ["Softer than paraffin crayons", "Can melt in heat"] },
 
-      { cat: "Pets", emoji: "\u{1F436}", name: "Stainless Steel Dog Bowls (2-Pack)", price: "$10", asin: "B01DOP5S9K", desc: "Food-grade stainless steel bowls with non-skid base. Replaces plastic pet bowls that leach BPA and harbor bacteria in scratches.", pros: ["Dishwasher safe", "No bacterial buildup in scratches", "Rust resistant"], cons: ["Can be noisy on hard floors", "No measurement markings"] },
-      { cat: "Pets", emoji: "\u{1F9F8}", name: "Kong Classic Dog Toy", price: "$12", asin: "B0002AR0I8", desc: "Natural rubber chew toy, not synthetic plastic. Durable, stuffable, and made from non-toxic rubber that won't shed microplastics.", pros: ["Ultra-durable natural rubber", "Can stuff with treats", "Dishwasher safe"], cons: ["Power chewers may destroy it", "Bounces unpredictably on hard surfaces"] }
+      { cat: "Pets", img: "41JNeL2yGBL", name: "Stainless Steel Dog Bowls (2-Pack)", price: "$10", asin: "B01DOP5S9K", impact: "Eliminates BPA leaching and bacteria harboring in scratched plastic pet bowls.", desc: "Food-grade stainless steel with non-skid rubber base. Dishwasher safe.", pros: ["Dishwasher safe", "No bacteria in scratches", "Rust resistant"], cons: ["Noisy on hard floors", "No markings"] },
+      { cat: "Pets", img: "315fquAvdGL", name: "Kong Classic Dog Toy", price: "$12", asin: "B0002AR0I8", impact: "Natural rubber instead of synthetic plastic. No microplastic shedding during chewing.", desc: "Ultra-durable natural rubber. Stuffable with treats. Dishwasher safe.", pros: ["Natural rubber", "Stuffable", "Dishwasher safe"], cons: ["Power chewers may destroy", "Unpredictable bounce"] }
     ];
 
     let storeRendered = false;
@@ -1912,15 +1967,27 @@
             <div class="product-grid">
               ${products.map(p => `
                 <div class="product-card">
-                  <div class="product-emoji">${p.emoji}</div>
-                  <div class="product-name">${p.name}</div>
-                  <div class="product-price">${p.price}</div>
-                  <p class="product-desc">${p.desc}</p>
-                  <div class="product-pros-cons">
-                    ${p.pros.map(pro => `<div class="product-pro">${pro}</div>`).join("")}
-                    ${p.cons.map(con => `<div class="product-con">${con}</div>`).join("")}
+                  <div class="product-img-wrap">
+                    <img src="https://m.media-amazon.com/images/I/${p.img}._AC_SL300_.jpg" alt="${p.name}" loading="lazy">
                   </div>
-                  <a href="https://www.amazon.com/dp/${p.asin}?tag=plasticdetox-20" target="_blank" rel="noopener" class="product-link">View on Amazon</a>
+                  <div class="product-body">
+                    <div class="product-name">${p.name}</div>
+                    <div class="product-price">${p.price}</div>
+                    ${p.problem ? `<div class="product-problem"><strong>Problem:</strong> ${p.problem}</div>` : ''}
+                    <div class="product-impact"><strong>Impact:</strong> ${p.impact}</div>
+                    <p class="product-desc">${p.desc}</p>
+                    <div class="product-pros-cons">
+                      <div class="product-pros">
+                        <div class="product-pros-label">Pros</div>
+                        ${p.pros.map(pro => `<div class="product-pro">${pro}</div>`).join("")}
+                      </div>
+                      <div class="product-cons">
+                        <div class="product-cons-label">Cons</div>
+                        ${p.cons.map(con => `<div class="product-con">${con}</div>`).join("")}
+                      </div>
+                    </div>
+                    <a href="https://www.amazon.com/dp/${p.asin}?tag=plasticdetox-20" target="_blank" rel="noopener" class="product-link">View</a>
+                  </div>
                 </div>
               `).join("")}
             </div>
