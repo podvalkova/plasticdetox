@@ -794,12 +794,35 @@
     </div>
   </article>
 
-  <div style="background:#ede9fe;border-top:1px solid #e7e5e4;padding:0.5rem 2rem;text-align:center;">
-    <div style="max-width:700px;margin:0 auto;display:flex;align-items:center;gap:1rem;justify-content:center;flex-wrap:wrap;">
+  <div style="background:#ede9fe;border-top:1px solid #e7e5e4;padding:0.6rem 2rem;text-align:center;">
+    <div style="max-width:700px;margin:0 auto;display:flex;align-items:center;gap:0.75rem;justify-content:center;flex-wrap:wrap;">
       <label style="font-size:0.85rem;font-weight:600;color:#1c1917;white-space:nowrap;">Get plastic free tips in your inbox</label>
-      <iframe src="https://57a81e5f.sibforms.com/serve/MUIFAHP3LqQp0UznZl5CKFGztCR47r9K-zHK4YRpryoqZLY0Ybvjo2ohqZhvH_BMVq5XmiDkLloNlf4re1hUEUwze8N053Xm1uVawE60egTCSDSSxuCOcXoGkfIne8Me-YdQ4i2Yi3ohxDAHB6ichyo1OAh4ocm5vRXvt2dWjtAJK7J7-j3rPzU9F1Lj1NG4RhDjvuFgXLd312bqGg==" frameborder="0" scrolling="no" style="width:380px;height:120px;border:none;overflow:hidden;"></iframe>
+      <input type="email" id="nl-email" placeholder="your@email.com" style="padding:0.4rem 0.75rem;border:1px solid #e7e5e4;border-radius:6px;font-size:0.85rem;font-family:inherit;width:220px;outline:none;">
+      <button onclick="nlSubscribe()" style="padding:0.4rem 1rem;background:#7c3aed;color:#fff;border:none;border-radius:6px;font-size:0.82rem;font-weight:600;font-family:inherit;cursor:pointer;white-space:nowrap;">Subscribe</button>
+      <span id="nl-msg" style="font-size:0.8rem;"></span>
     </div>
   </div>
+  <iframe name="nl-frame" id="nl-frame" style="display:none;"></iframe>
+  <script>
+  function nlSubscribe() {
+    var email = document.getElementById("nl-email").value.trim();
+    var msg = document.getElementById("nl-msg");
+    if (!email || !email.includes("@")) { msg.textContent = "Enter a valid email"; msg.style.color = "#dc2626"; return; }
+    msg.textContent = "Subscribing..."; msg.style.color = "#78716c";
+    var form = document.createElement("form");
+    form.method = "POST";
+    form.action = "https://57a81e5f.sibforms.com/serve/MUIFAHP3LqQp0UznZl5CKFGztCR47r9K-zHK4YRpryoqZLY0Ybvjo2ohqZhvH_BMVq5XmiDkLloNlf4re1hUEUwze8N053Xm1uVawE60egTCSDSSxuCOcXoGkfIne8Me-YdQ4i2Yi3ohxDAHB6ichyo1OAh4ocm5vRXvt2dWjtAJK7J7-j3rPzU9F1Lj1NG4RhDjvuFgXLd312bqGg==";
+    form.target = "nl-frame";
+    var input = document.createElement("input");
+    input.type = "hidden"; input.name = "EMAIL"; input.value = email;
+    form.appendChild(input);
+    document.body.appendChild(form);
+    form.submit();
+    document.body.removeChild(form);
+    document.getElementById("nl-email").value = "";
+    msg.textContent = "You're in!"; msg.style.color = "#16a34a";
+  }
+  </script>
 
   <footer class="footer">
     <p>plasticdetox.org. Because your body deserves better than plastic.</p>
