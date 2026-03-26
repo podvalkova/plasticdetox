@@ -1050,28 +1050,32 @@
       .subcat-tab { font-size: 0.78rem; padding: 0.4rem 0.8rem; }
     }
 
-    /* ===== NEWSLETTER ===== */
-    .newsletter {
-      max-width: 600px;
-      margin: 3rem auto 0;
-      padding: 0 2rem;
+    /* ===== NEWSLETTER BAR ===== */
+    .newsletter-bar {
+      display: none;
+      background: var(--accent-light);
+      border-top: 1px solid var(--border);
+      padding: 0.5rem 2rem;
       text-align: center;
     }
-    .newsletter-title {
-      font-size: 1.4rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      margin-bottom: 0.5rem;
+    .newsletter-bar-inner {
+      max-width: 700px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
     }
-    .newsletter-desc {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      margin-bottom: 1.5rem;
-      line-height: 1.6;
+    .newsletter-bar label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text);
+      white-space: nowrap;
     }
-    .newsletter iframe {
-      border-radius: var(--radius);
-      overflow: hidden;
+    @media (max-width: 768px) {
+      .newsletter-bar-inner { flex-direction: column; gap: 0.25rem; }
+      .newsletter-bar iframe { width: 100% !important; }
     }
 
     /* ===== FOOTER ===== */
@@ -1283,6 +1287,13 @@
       <p>Our recommendations are backed by peer-reviewed studies from institutions including the New England Journal of Medicine, Nature Medicine, The Lancet, and Harvard T.H. Chan School of Public Health.</p>
     </section>
   </noscript>
+
+  <div class="newsletter-bar" id="newsletter-bar">
+    <div class="newsletter-bar-inner">
+      <label>Get plastic free tips in your inbox</label>
+      <iframe src="https://57a81e5f.sibforms.com/serve/MUIFAHP3LqQp0UznZl5CKFGztCR47r9K-zHK4YRpryoqZLY0Ybvjo2ohqZhvH_BMVq5XmiDkLloNlf4re1hUEUwze8N053Xm1uVawE60egTCSDSSxuCOcXoGkfIne8Me-YdQ4i2Yi3ohxDAHB6ichyo1OAh4ocm5vRXvt2dWjtAJK7J7-j3rPzU9F1Lj1NG4RhDjvuFgXLd312bqGg==" frameborder="0" scrolling="no" style="width:380px;height:120px;border:none;overflow:hidden;"></iframe>
+    </div>
+  </div>
 
   <footer class="footer">
     <p>plasticdetox.org. Because your body deserves better than plastic.</p>
@@ -1795,10 +1806,15 @@
       document.getElementById("nav-store").classList.remove("active");
     }
 
+    function showNlBar(show) {
+      document.getElementById("newsletter-bar").style.display = show ? "block" : "none";
+    }
+
     function showHome() {
       hideAllPages();
       document.getElementById("page-home").style.display = "block";
       document.getElementById("nav-home").classList.add("active");
+      showNlBar(false);
       history.replaceState(null, "", window.location.pathname);
       window.scrollTo(0, 0);
     }
@@ -1807,6 +1823,7 @@
       hideAllPages();
       document.getElementById("page-resources").style.display = "block";
       document.getElementById("nav-resources").classList.add("active");
+      showNlBar(true);
       renderResources();
       window.location.hash = "resources";
       window.scrollTo(0, 0);
@@ -1816,6 +1833,7 @@
       hideAllPages();
       document.getElementById("page-store").style.display = "block";
       document.getElementById("nav-store").classList.add("active");
+      showNlBar(true);
       renderStore();
       window.location.hash = "store";
       window.scrollTo(0, 0);
@@ -1889,6 +1907,7 @@
     function startGame() {
       document.getElementById("hero").style.display = "none";
       document.getElementById("game").style.display = "flex";
+      showNlBar(true);
       currentCategory = 0;
       currentQuestion = 0;
       plasticScore = 0;
@@ -2327,6 +2346,7 @@
     } else if (window.location.hash === "#store") {
       showStore();
     }
+
   </script>
 </body>
 </html>
