@@ -308,7 +308,12 @@
       border-bottom: 1px solid var(--border);
       font-size: 0.82rem;
       line-height: 1.4;
+      cursor: pointer;
+      border-radius: 4px;
+      padding: 0.4rem 0.3rem;
+      transition: background 0.15s;
     }
+    .swap-panel-item:hover { background: var(--accent-light); }
 
     .swap-panel-item:last-child { border-bottom: none; }
     .swap-panel-icon { flex-shrink: 0; }
@@ -1976,7 +1981,7 @@
       panel.innerHTML = Object.entries(grouped).map(([cat, items]) =>
         `<div class="swap-panel-cat">${cat}</div>` +
         items.map(item =>
-          `<div class="swap-panel-item"><span class="swap-panel-icon">${item.icon}</span><span class="swap-panel-text">${item.text}</span></div>`
+          `<div class="swap-panel-item" onclick="showSwapFromPanel(${item.catIdx}, ${item.qIdx})"><span class="swap-panel-icon">${item.icon}</span><span class="swap-panel-text">${item.text}</span></div>`
         ).join("")
       ).join("");
     }
@@ -2261,6 +2266,40 @@
         document.querySelector("#alt-card .btn-next").textContent = "Got it, next";
         document.querySelector("#alt-card .btn-next").onclick = function() { nextQuestion(); };
         showResults();
+      };
+      document.querySelector("#alt-card .btn-back").style.display = "none";
+
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function showSwapFromPanel(catIdx, qIdx) {
+      const cat = categories[catIdx];
+      const q = cat.questions[qIdx];
+      const savedCat = currentCategory;
+      const savedQ = currentQuestion;
+
+      document.getElementById("swap-panel").classList.remove("open");
+      document.getElementById("results").style.display = "none";
+      document.getElementById("question-card").style.display = "none";
+      document.getElementById("category-done").style.display = "none";
+      document.getElementById("alt-card").style.display = "block";
+
+      document.getElementById("category-label").textContent = `${cat.icon} ${cat.name}: ${q.text}`;
+      document.getElementById("alt-body").innerHTML = q.alt;
+
+      const altCard = document.getElementById("alt-card");
+      altCard.style.animation = "none";
+      altCard.offsetHeight;
+      altCard.style.animation = "fadeUp 0.35s ease";
+
+      document.querySelector("#alt-card .btn-next").textContent = "\u2190 Back to quiz";
+      document.querySelector("#alt-card .btn-next").onclick = function() {
+        document.getElementById("alt-card").style.display = "none";
+        document.querySelector("#alt-card .btn-next").textContent = "Got it, next";
+        document.querySelector("#alt-card .btn-next").onclick = function() { nextQuestion(); };
+        currentCategory = savedCat;
+        currentQuestion = savedQ;
+        showQuestion();
       };
       document.querySelector("#alt-card .btn-back").style.display = "none";
 
