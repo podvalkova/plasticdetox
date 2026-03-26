@@ -491,6 +491,23 @@
 
     .btn-next { padding: 0.75rem 2rem; font-size: 0.95rem; }
 
+    .btn-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      font-family: inherit;
+      cursor: pointer;
+      padding: 0.4rem 0.75rem;
+      transition: color 0.2s;
+      margin-bottom: 0.75rem;
+    }
+    .btn-back:hover { color: var(--text); }
+    .btn-back svg { width: 16px; height: 16px; }
+
     .btn-skip {
       display: block;
       margin: 1.25rem auto 0;
@@ -558,6 +575,12 @@
       display: flex;
       align-items: flex-start;
       gap: 1rem;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .result-item:hover {
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-lg);
     }
 
     .result-item-icon { font-size: 1.3rem; flex-shrink: 0; padding-top: 0.1rem; }
@@ -1175,6 +1198,7 @@
         <div class="category-label" id="category-label"></div>
 
         <div class="question-card" id="question-card">
+          <button class="btn-back" id="btn-back-q" onclick="goBack()" style="display:none;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg> Back</button>
           <div class="question-icon" id="question-icon"></div>
           <h2 class="question-text" id="question-text"></h2>
           <div class="question-buttons" id="question-buttons">
@@ -1186,6 +1210,7 @@
         </div>
 
         <div class="alt-card" id="alt-card" style="display:none;">
+          <button class="btn-back" onclick="goBackFromAlt()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg> Back</button>
           <div class="alt-header">Here's a simple swap</div>
           <div class="alt-body" id="alt-body"></div>
           <button class="btn-primary btn-next" onclick="nextQuestion()">Got it, next</button>
@@ -1312,12 +1337,12 @@
           {
             icon: "\u{1F373}",
             text: "Do you cook with non-stick (Teflon) cookware?",
-            alt: "<strong>Replace with cast iron, stainless steel, or ceramic.</strong><span class='alt-swap'>Try a cast iron skillet or stainless steel pan. They last a lifetime and get better with use.</span>Teflon and PTFE coatings release toxic compounds when heated. Food is cooked in this every single day, so cumulative exposure is enormous."
+            alt: "<strong>Replace with cast iron, stainless steel, or ceramic.</strong><span class='alt-swap'>Try a cast iron skillet or stainless steel pan. They last a lifetime and get better with use.</span>Teflon and PTFE coatings release toxic compounds when heated. Food is cooked in this every single day, so cumulative exposure is enormous.<div style='margin-top:1rem;display:flex;gap:0.75rem;flex-wrap:wrap;'><a href='articles/cast-iron-vs-stainless-steel-vs-ceramic-cookware.html' style='color:var(--accent-dark);font-weight:600;font-size:0.9rem;'>Read our cookware comparison \u2192</a><a href='#store' onclick=\"showStore();document.getElementById('store-cat-CleanCookware')?.scrollIntoView({behavior:'smooth',block:'start'});\" style='color:var(--accent-dark);font-weight:600;font-size:0.9rem;'>Shop PFAS free cookware \u2192</a></div>"
           },
           {
             icon: "\u{1F4A7}",
             text: "Do you drink unfiltered tap water?",
-            alt: "<strong>Get a water filter. Reverse osmosis removes the most.</strong><span class='alt-swap'>Try a countertop or under-sink reverse osmosis filter. Even a quality carbon filter is a big step up.</span>PFAS (\"forever chemicals\"), heavy metals, and microplastics are in most tap water. Every sip of unfiltered water is a low-dose exposure that adds up over a lifetime."
+            alt: "<strong>Get a water filter. Reverse osmosis removes the most.</strong><span class='alt-swap'>Try a countertop or under-sink reverse osmosis filter. Even a quality carbon filter is a big step up.</span>PFAS (\"forever chemicals\"), heavy metals, and microplastics are in most tap water. Every sip of unfiltered water is a low-dose exposure that adds up over a lifetime.<div style='margin-top:1rem;display:flex;gap:0.75rem;flex-wrap:wrap;'><a href='articles/how-to-remove-microplastics-from-drinking-water.html' style='color:var(--accent-dark);font-weight:600;font-size:0.9rem;'>Read our water filter guide \u2192</a><a href='#store' onclick=\"showStore();document.getElementById('store-cat-CleanWater')?.scrollIntoView({behavior:'smooth',block:'start'});\" style='color:var(--accent-dark);font-weight:600;font-size:0.9rem;'>Shop clean water filters \u2192</a></div>"
           },
           {
             icon: "\u{1F9FE}",
@@ -1913,6 +1938,7 @@
       plasticScore = 0;
       answeredCount = 0;
       swaps = [];
+      answerHistory = [];
       renderTracker();
       showQuestion();
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -1955,6 +1981,8 @@
         `Question ${currentQuestion + 1} of ${cat.questions.length} | ${answeredCount} of ${totalQuestions} total`;
     }
 
+    let answerHistory = [];
+
     function showQuestion() {
       const cat = categories[currentCategory];
       const q = cat.questions[currentQuestion];
@@ -1963,6 +1991,9 @@
       document.getElementById("alt-card").style.display = "none";
       document.getElementById("category-done").style.display = "none";
       document.getElementById("results").style.display = "none";
+
+      const backBtn = document.getElementById("btn-back-q");
+      backBtn.style.display = (currentCategory === 0 && currentQuestion === 0) ? "none" : "inline-flex";
 
       document.getElementById("category-label").textContent = `${cat.icon} ${cat.name}: ${cat.description}`;
       document.getElementById("question-icon").textContent = q.icon;
@@ -1982,19 +2013,56 @@
       const q = cat.questions[currentQuestion];
       answeredCount++;
 
+      answerHistory.push({ catIdx: currentCategory, qIdx: currentQuestion, type: type, score: type === "yes" ? 1 : type === "sometimes" ? 0.5 : 0 });
+
       if (type === "yes") {
         plasticScore += 1;
-        swaps.push({ category: cat.name, icon: q.icon, text: q.text, alt: q.alt });
+        swaps.push({ category: cat.name, icon: q.icon, text: q.text, alt: q.alt, catIdx: currentCategory, qIdx: currentQuestion });
         showAlternative(q.alt);
       } else if (type === "sometimes") {
         plasticScore += 0.5;
-        swaps.push({ category: cat.name, icon: q.icon, text: q.text, alt: q.alt });
+        swaps.push({ category: cat.name, icon: q.icon, text: q.text, alt: q.alt, catIdx: currentCategory, qIdx: currentQuestion });
         showAlternative(q.alt);
       } else {
         renderTracker();
         updateProgress();
         advanceQuestion();
       }
+    }
+
+    function goBack() {
+      if (answerHistory.length === 0 && currentQuestion === 0 && currentCategory === 0) return;
+
+      if (answerHistory.length > 0) {
+        const prev = answerHistory.pop();
+        answeredCount--;
+        plasticScore -= prev.score;
+        if (prev.type === "yes" || prev.type === "sometimes") {
+          swaps.pop();
+        }
+        currentCategory = prev.catIdx;
+        currentQuestion = prev.qIdx;
+      } else if (currentQuestion > 0) {
+        currentQuestion--;
+      } else if (currentCategory > 0) {
+        currentCategory--;
+        currentQuestion = categories[currentCategory].questions.length - 1;
+      }
+      showQuestion();
+    }
+
+    function goBackFromAlt() {
+      if (answerHistory.length > 0) {
+        const prev = answerHistory.pop();
+        answeredCount--;
+        plasticScore -= prev.score;
+        if (prev.type === "yes" || prev.type === "sometimes") {
+          swaps.pop();
+        }
+        currentCategory = prev.catIdx;
+        currentQuestion = prev.qIdx;
+      }
+      showQuestion();
     }
 
     function showAlternative(altHtml) {
@@ -2108,7 +2176,7 @@
         <div class="results-category">
           <div class="results-category-title">${cat}</div>
           ${items.map(item => `
-            <div class="result-item">
+            <div class="result-item" onclick="showSwapDetail(${item.catIdx}, ${item.qIdx})" title="Click to see full details">
               <div class="result-item-icon">${item.icon}</div>
               <div class="result-item-text">${item.alt}</div>
             </div>
@@ -2118,6 +2186,35 @@
 
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
+    function showSwapDetail(catIdx, qIdx) {
+      const cat = categories[catIdx];
+      const q = cat.questions[qIdx];
+
+      document.getElementById("results").style.display = "none";
+      document.getElementById("question-card").style.display = "none";
+      document.getElementById("category-done").style.display = "none";
+      document.getElementById("alt-card").style.display = "block";
+
+      document.getElementById("category-label").textContent = `${cat.icon} ${cat.name}: ${q.text}`;
+      document.getElementById("alt-body").innerHTML = q.alt;
+
+      const altCard = document.getElementById("alt-card");
+      altCard.style.animation = "none";
+      altCard.offsetHeight;
+      altCard.style.animation = "fadeUp 0.35s ease";
+
+      document.querySelector("#alt-card .btn-next").textContent = "\u2190 Back to results";
+      document.querySelector("#alt-card .btn-next").onclick = function() {
+        document.getElementById("alt-card").style.display = "none";
+        document.querySelector("#alt-card .btn-next").textContent = "Got it, next";
+        document.querySelector("#alt-card .btn-next").onclick = function() { nextQuestion(); };
+        showResults();
+      };
+      document.querySelector("#alt-card .btn-back").style.display = "none";
+
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
     // ==================== STORE ====================
     const catDescriptions = {
       "Clean Water": "Your tap water contains microplastics, PFAS, lead, and pharmaceutical residues. Filtering it is one of the highest impact swaps you can make. <a href='articles/how-to-remove-microplastics-from-drinking-water.html' style='color:var(--accent-dark);font-weight:600;'>Read our complete guide to removing microplastics from drinking water.</a>",
