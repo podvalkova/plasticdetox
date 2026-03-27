@@ -29,12 +29,7 @@
     "@type": "WebSite",
     "name": "Plastic Detox",
     "url": "https://plasticdetox.org",
-    "description": "Interactive quiz and research-backed guide to reducing microplastic exposure in your home and body.",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://plasticdetox.org/?q={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
+    "description": "Interactive quiz and research-backed guide to reducing microplastic exposure in your home and body."
   }
   </script>
   <script type="application/ld+json">
@@ -1201,6 +1196,11 @@
         <h1 class="hero-headline">Plastic is no longer around you.<br>It's inside you.</h1>
         <p class="hero-sub">Microplastics are inside your blood, lungs, and brain right now. The good news? Small swaps make a big difference.</p>
         <button class="btn-primary" onclick="startGame()">Start Your Detox</button>
+        <div id="resume-banner" style="display:none;margin-top:1.25rem;padding:1rem 1.5rem;background:var(--surface);border-radius:var(--radius-sm);box-shadow:var(--shadow);text-align:center;">
+          <p style="font-size:0.9rem;margin-bottom:0.75rem;color:var(--text);">You have saved results from a previous quiz.</p>
+          <button class="btn-primary" onclick="resumeResults()" style="font-size:0.85rem;padding:0.6rem 1.5rem;margin-right:0.5rem;">View My Results</button>
+          <button onclick="clearSavedResults();document.getElementById('resume-banner').style.display='none';" style="font-size:0.85rem;padding:0.6rem 1.5rem;background:none;border:1px solid var(--border);border-radius:60px;color:var(--text-muted);cursor:pointer;font-family:inherit;">Dismiss</button>
+        </div>
       </div>
     </section>
 
@@ -1359,6 +1359,10 @@
 
   <footer class="footer">
     <p>plasticdetox.org. Because your body deserves better than plastic.</p>
+    <div style="margin-top:0.5rem;font-size:0.75rem;">
+      <a href="about.html" style="color:var(--text-muted);margin-right:1rem;">About</a>
+      <a href="privacy.html" style="color:var(--text-muted);">Privacy Policy</a>
+    </div>
   </footer>
 
   <script>
@@ -1389,7 +1393,7 @@
         name: "The Big 5",
         icon: "\u26A1",
         description: "These 5 swaps make the biggest difference for your health.",
-        doneText: "These 5 changes alone can cut your plastic exposure by nearly half.",
+        doneText: "These 5 changes alone can significantly reduce your daily plastic exposure.",
         questions: [
           {
             icon: "\u{1F373}",
@@ -1492,7 +1496,7 @@
           {
             icon: "\u{1FAA5}",
             text: "Do you use a plastic toothbrush?",
-            alt: "<strong>Switch to a bamboo toothbrush with soft bristles.</strong><span class='alt-swap'>Bamboo with soft bristles is the cleanest swap. Replace every 3 months like usual.</span>Plastic toothbrushes shed microplastics directly into your mouth twice a day."
+            alt: "<strong>Switch to a bamboo toothbrush with soft bristles.</strong><span class='alt-swap'>Bamboo with soft bristles is the cleanest swap. Replace every 3 months like usual.</span>Plastic toothbrushes are one of the most common single use plastics, and the bristles and handle wear down over time with direct oral contact twice a day."
           },
           {
             icon: "\u{1F9B7}",
@@ -1782,7 +1786,7 @@
           {
             icon: "\u{1F3CA}",
             text: "Do you or your family use pools or hot tubs regularly?",
-            alt: "<strong>Be cautious with pools and hot tubs. Rinse immediately after swimming.</strong><span class='alt-swap'>Chlorinated pool water contains chloramines and disinfection byproducts that absorb through skin and are inhaled as vapor. Hot tubs are worse due to higher temperature. Choose saltwater pools where possible.</span>For babies specifically, the American Academy of Pediatrics recommends waiting until at least 12 months for pool exposure. Indoor pools have more concentrated chemical vapor."
+            alt: "<strong>Be cautious with pools and hot tubs. Rinse immediately after swimming.</strong><span class='alt-swap'>Chlorinated pool water contains chloramines and disinfection byproducts that absorb through skin and are inhaled as vapor. Hot tubs are worse due to higher temperature. Choose saltwater pools where possible.</span>For babies specifically, the AAP recommends swim lessons starting at age 1, and younger children should have minimal exposure to chlorinated water. Indoor pools have more concentrated chemical vapor."
           },
           {
             icon: "\u{1F9FE}",
@@ -1822,7 +1826,7 @@
           {
             icon: "\u{1F9E0}",
             text: "Are you managing your stress levels?",
-            alt: "<strong>Address stress as a toxin amplifier. A calm nervous system detoxes better.</strong><span class='alt-swap'>Chronic stress elevates cortisol, which increases intestinal permeability (\"leaky gut\"), which in turn increases absorption of environmental toxins from the gut. It also impairs liver detox pathways.</span>Managing stress through sleep, movement, and social connection isn't separate from your toxin reduction work. It's part of it. A calm nervous system is a more resilient detox system."
+            alt: "<strong>Address stress as a toxin amplifier. A calm nervous system detoxes better.</strong><span class='alt-swap'>Chronic stress elevates cortisol, which research suggests may impair liver detox pathways and reduce the body's ability to process environmental chemicals efficiently.</span>Managing stress through sleep, movement, and social connection isn't separate from your toxin reduction work. It's part of it. A calm nervous system is a more resilient system overall."
           }
         ]
       }
@@ -2002,9 +2006,11 @@
     }
 
     function restartGame() {
+      clearSavedResults();
       document.getElementById("results").style.display = "none";
       document.getElementById("game").style.display = "none";
       document.getElementById("hero").style.display = "flex";
+      showNlBar(false);
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
@@ -2242,7 +2248,34 @@
       `).join("");
 
       window.scrollTo({ top: 0, behavior: "smooth" });
+
+      try {
+        localStorage.setItem("pd_results", JSON.stringify({ plasticScore, totalQuestions, swaps, answeredCount, date: new Date().toISOString().split("T")[0] }));
+      } catch(e) {}
     }
+
+    function loadSavedResults() {
+      try {
+        const saved = JSON.parse(localStorage.getItem("pd_results"));
+        if (!saved || !saved.swaps || saved.swaps.length === 0) return false;
+        plasticScore = saved.plasticScore;
+        answeredCount = saved.answeredCount;
+        swaps = saved.swaps;
+        return true;
+      } catch(e) { return false; }
+    }
+
+    function resumeResults() {
+      document.getElementById("hero").style.display = "none";
+      document.getElementById("game").style.display = "flex";
+      showNlBar(true);
+      showResults();
+    }
+
+    function clearSavedResults() {
+      try { localStorage.removeItem("pd_results"); } catch(e) {}
+    }
+
     function showSwapDetail(catIdx, qIdx) {
       const cat = categories[catIdx];
       const q = cat.questions[qIdx];
@@ -2324,7 +2357,7 @@
       // Clean Water > Water Filters
       { cat: "Clean Water", sub: "Water Filters", img: "418gI8Rxl2L", name: "APEC Reverse Osmosis System", asin: "B00I0ZGOZM", bestFor: "Best under sink protection", tier: "$$$", effectiveness: "99.9% removal", desc: "Five stage under sink RO system. NSF certified with a steel pressure tank that serves the whole family.", pros: ["Removes 99.9% of microplastics", "NSF certified", "Serves the whole family"], cons: ["Requires under sink install", "FDA grade plastic tubing contacts water", "Some water waste"] },
       { cat: "Clean Water", sub: "Water Filters", img: "41FVllkDK5L", name: "Bluevua RO100ROPOT Countertop RO", asin: "B09KRDK677", bestFor: "Best countertop RO system", tier: "$$", effectiveness: "99.9% removal", desc: "Countertop reverse osmosis you fill by hand. No plumbing, no faucet adapter, no installation at all. Five stage purification with remineralization adds healthy minerals back.", pros: ["Zero installation needed", "Remineralizes water", "Compact countertop design"], cons: ["BPA free plastic tank contacts water", "Fill tank manually", "2:1 pure to drain ratio"] },
-      { cat: "Clean Water", sub: "Water Filters", img: "51sM4mtrn2L", name: "Big Berkey Countertop Filter", asin: "B0CBVMTYMG", bestFor: "Best gravity fed filter", tier: "$$", effectiveness: "99.9% removal", desc: "Gravity fed stainless steel filter that sits on your countertop. No plumbing or electricity needed. Filters 2.25 gallons at a time.", pros: ["No install or electricity", "Stainless steel body", "Filters large volumes"], cons: ["Plastic spigot contacts water (steel upgrade available)", "Slow gravity fed flow", "Takes up counter space"] },
+      { cat: "Clean Water", sub: "Water Filters", img: "51sM4mtrn2L", name: "Big Berkey Countertop Filter", asin: "B0CBVMTYMG", bestFor: "Best gravity fed filter", tier: "$$", effectiveness: "99.9% removal", desc: "Gravity fed stainless steel filter that sits on your countertop. No plumbing or electricity needed. Filters 2.25 gallons at a time.", pros: ["No install or electricity", "Stainless steel body", "Filters large volumes"], cons: ["Plastic spigot contacts water (steel upgrade available)", "Slow gravity fed flow", "Had EPA regulatory issues in 2023 (since resolved)"] },
       { cat: "Clean Water", sub: "Water Filters", img: "41bKOyTPymL", name: "Clearly Filtered Pitcher", asin: "B0CW4CDPNJ", bestFor: "Most affordable option", tier: "$", effectiveness: "99.5% removal", desc: "Best pitcher style filter for microplastic removal. NSF tested to standards 42, 53, 401 and 473.", pros: ["Cheapest way to start", "No install needed", "Removes PFAS and lead too"], cons: ["Tritan plastic pitcher contacts water", "Filter refills every 4 months", "Smaller capacity"] },
 
       // Clean Water > Kettles
@@ -2367,7 +2400,7 @@
       { cat: "Food Storage", sub: "", img: "41RE8cqekdL", name: "Bee's Wrap Beeswax Wraps (3 Pack)", asin: "B0126LMDFK", bestFor: "Best plastic wrap replacement", tier: "$", effectiveness: "Eliminates all plastic wrap", desc: "Organic cotton, beeswax, and jojoba oil. Moldable, reusable, and compostable at end of life.", pros: ["Compostable", "Lasts up to 1 year", "Made in USA"], cons: ["Not for raw meat", "Cool water wash only"] },
 
       // Clean Body > Soap and Shampoo
-      { cat: "Clean Body", sub: "Soap and Shampoo", img: "41f3ICkkvPL", name: "Dr. Bronner's Castile Soap", asin: "B00120VWJ0", bestFor: "Best all in one replacement", tier: "$", effectiveness: "Replaces 18 plastic products", desc: "Certified organic, concentrated pure castile soap for dozens of household uses.", pros: ["18 uses in one bottle", "Certified organic", "Biodegradable"], cons: ["Must dilute before use", "Takes time to learn ratios"] },
+      { cat: "Clean Body", sub: "Soap and Shampoo", img: "41f3ICkkvPL", name: "Dr. Bronner's Castile Soap", asin: "B00120VWJ0", bestFor: "Best all in one replacement", tier: "$", effectiveness: "18 in 1 multipurpose soap", desc: "Certified organic, concentrated pure castile soap for dozens of household uses.", pros: ["18 uses in one bottle", "Certified organic", "Biodegradable"], cons: ["Must dilute before use", "Takes time to learn ratios"] },
       { cat: "Clean Body", sub: "Soap and Shampoo", img: "31Tp4yS3euL", name: "Ethique Shampoo Bar", asin: "B0DHFPB45C", bestFor: "Best shampoo swap", tier: "$", effectiveness: "Replaces 3 plastic bottles", desc: "Concentrated solid shampoo with plant based ingredients. Vegan and cruelty free.", pros: ["Replaces 3 bottles", "TSA friendly", "Vegan"], cons: ["Hair adjustment period", "Needs dry storage"] },
       { cat: "Clean Body", sub: "Soap and Shampoo", img: "410XbGhKsyL", name: "Merkur 34C Safety Razor", asin: "B002A8JO1Q", bestFor: "Best razor swap", tier: "$$", effectiveness: "Eliminates disposable razors", desc: "German made stainless steel. Lasts a lifetime with replacement blades that cost pennies.", pros: ["Lasts a lifetime", "Blades cost pennies", "Made in Germany"], cons: ["Short learning curve", "Handle blades carefully"] },
 
@@ -2455,11 +2488,11 @@
                     <tr>
                       <td>
                         <div class="compare-product-cell">
-                          <a href="${link}" target="_blank" rel="noopener">
+                          <a href="${link}" target="_blank" rel="noopener sponsored">
                             <img class="compare-product-img" src="${p.imgUrl || `https://m.media-amazon.com/images/I/${p.img}._AC_SL300_.jpg`}" alt="${p.name}" loading="lazy">
                           </a>
                           <div class="compare-product-info">
-                            <div class="compare-product-name"><a href="${link}" target="_blank" rel="noopener">${p.name}</a></div>
+                            <div class="compare-product-name"><a href="${link}" target="_blank" rel="noopener sponsored">${p.name}</a></div>
                             <span class="compare-best-for">${p.bestFor}</span>
                           </div>
                         </div>
@@ -2467,7 +2500,7 @@
                       <td>${p.tier}</td>
                       <td><ul class="compare-pros-list">${p.pros.slice(0,3).map(pro => `<li>${pro}</li>`).join("")}</ul></td>
                       <td><ul class="compare-cons-list">${p.cons.slice(0,3).map(con => `<li>${con}</li>`).join("")}</ul></td>
-                      <td><a href="${link}" target="_blank" rel="noopener" class="compare-view-btn">View</a></td>
+                      <td><a href="${link}" target="_blank" rel="noopener sponsored" class="compare-view-btn">View</a></td>
                     </tr>`;
                   }).join("")}
                 </tbody>
@@ -2533,6 +2566,11 @@
       }
     } else if (window.location.hash === "#store") {
       showStore();
+    }
+
+    // Show resume banner if saved results exist
+    if (loadSavedResults()) {
+      document.getElementById("resume-banner").style.display = "block";
     }
 
   </script>
