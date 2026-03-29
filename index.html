@@ -555,6 +555,170 @@
       margin-bottom: 2rem;
     }
 
+    .score-summary {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow);
+    }
+
+    .score-gauge { flex-shrink: 0; }
+
+    .score-gauge-bg { fill: none; stroke: #e7e5e4; stroke-width: 8; }
+    .score-gauge-fill { fill: none; stroke-width: 8; stroke-linecap: round; transition: stroke-dashoffset 1s ease; }
+
+    .score-gauge-text {
+      font-family: 'Inter', sans-serif;
+      font-size: 28px;
+      font-weight: 800;
+      fill: var(--text);
+      text-anchor: middle;
+      dominant-baseline: central;
+    }
+
+    .score-gauge-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      fill: var(--text-muted);
+      text-anchor: middle;
+    }
+
+    .score-info { flex: 1; }
+    .score-level {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+    .score-level-badge {
+      display: inline-block;
+      padding: 0.2rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    .score-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .top-priorities {
+      background: var(--accent-light);
+      border-radius: var(--radius);
+      padding: 1.5rem 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .top-priorities-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .priority-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.75rem 0;
+      cursor: pointer;
+    }
+
+    .priority-item:not(:last-child) {
+      border-bottom: 1px solid rgba(124, 58, 237, 0.1);
+    }
+
+    .priority-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--accent-dark);
+      color: white;
+      font-size: 0.8rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .priority-text {
+      font-size: 0.95rem;
+      line-height: 1.4;
+    }
+
+    .priority-text strong { display: block; margin-bottom: 0.15rem; }
+
+    .email-results {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 1.5rem 2rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow);
+    }
+
+    .email-results-title {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+
+    .email-results-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    .email-results-row {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .email-input {
+      flex: 1;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-family: inherit;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .email-input:focus { border-color: var(--accent); }
+
+    .email-btn {
+      padding: 0.75rem 1.25rem;
+      background: var(--accent-dark);
+      color: white;
+      border: none;
+      border-radius: var(--radius-sm);
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+
+    .email-btn:hover { background: #6d28d9; }
+
+    .email-msg {
+      font-size: 0.85rem;
+      margin-top: 0.5rem;
+      min-height: 1.2em;
+    }
+
+    .results-divider {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin: 2rem 0 1rem;
+    }
+
     .results-category { margin-bottom: 2rem; }
 
     .results-category-title {
@@ -564,6 +728,12 @@
       letter-spacing: 0.06em;
       color: var(--accent);
       margin-bottom: 0.75rem;
+    }
+
+    @media (max-width: 600px) {
+      .score-summary { flex-direction: column; text-align: center; gap: 1rem; padding: 1.5rem; }
+      .email-results-row { flex-direction: column; }
+      .email-btn { width: 100%; }
     }
 
     .result-item {
@@ -1260,6 +1430,18 @@
         <div class="results" id="results" style="display:none;">
           <h2 class="results-title">Your Plastic Detox Plan</h2>
           <p class="results-subtitle" id="results-subtitle"></p>
+          <div id="score-summary"></div>
+          <div id="top-priorities"></div>
+          <div class="email-results" id="email-results">
+            <div class="email-results-title">Save your results</div>
+            <div class="email-results-desc">Get your personalized swap list and top priorities sent to your inbox.</div>
+            <div class="email-results-row">
+              <input type="email" class="email-input" id="email-input" placeholder="your@email.com">
+              <button class="email-btn" id="email-btn" onclick="emailResults()">Send to me</button>
+            </div>
+            <div class="email-msg" id="email-msg"></div>
+          </div>
+          <div class="results-divider" id="results-divider">All Recommended Swaps</div>
           <div class="results-list" id="results-list"></div>
           <button class="btn-primary" onclick="restartGame()" style="margin-top:2rem;">Start Over</button>
         </div>
@@ -1434,7 +1616,7 @@
           },
           {
             icon: "\u{1F96B}",
-            text: "Do you eat canned food or food stored in plastic packaging?",
+            text: "Do you regularly eat oily or acidic foods stored in plastic containers or lined cans?<br><small style='opacity:.7;font-weight:normal'>(e.g. nut butters, cooking oil, tomato sauce, canned tomatoes or fish, salad dressing)</small>",
             alt: "<strong>Switch to fresh food, glass jars, and farmers market shopping.</strong><span class='alt-swap'>Buy fresh produce, choose glass-jarred sauces, and store food in glass containers at home.</span>Cans are lined with BPA/BPS resins. Plastic wrap and containers leach into fatty foods especially. Food is the primary route of plastic chemical ingestion for most people."
           },
           {
@@ -2230,14 +2412,97 @@
       document.getElementById("category-label").textContent = "";
       document.getElementById("results").style.display = "block";
 
-      const scoreEl = document.getElementById("results-subtitle");
-      if (plasticScore <= 5) {
-        scoreEl.textContent = `Nice! You scored ${plasticScore} out of ${totalQuestions}. You're already ahead of most people. Here are a few more things to consider:`;
-      } else if (plasticScore <= 15) {
-        scoreEl.textContent = `You scored ${plasticScore} out of ${totalQuestions}. You have some great opportunities to reduce your plastic exposure. Here's your personalized swap list:`;
+      const pct = Math.round((plasticScore / totalQuestions) * 100);
+      let level, levelColor, badgeBg, desc;
+      if (pct <= 20) {
+        level = "Low Exposure";
+        levelColor = "#16a34a";
+        badgeBg = "#dcfce7";
+        desc = "You are already ahead of most people. Your daily habits involve minimal plastic contact. Keep it up and consider the few remaining swaps below.";
+      } else if (pct <= 50) {
+        level = "Moderate Exposure";
+        levelColor = "#d97706";
+        badgeBg = "#fef3c7";
+        desc = "You have some great opportunities to reduce your plastic exposure. Focus on the top priorities below for the biggest impact.";
+      } else if (pct <= 75) {
+        level = "High Exposure";
+        levelColor = "#ea580c";
+        badgeBg = "#ffedd5";
+        desc = "Your daily routine involves significant plastic contact, but every swap makes a real difference. Start with the top 3 priorities below.";
       } else {
-        scoreEl.textContent = `You scored ${plasticScore} out of ${totalQuestions}. Don't worry, most people score high here. The good news? Every swap makes a real difference. Here's where to start:`;
+        level = "Very High Exposure";
+        levelColor = "#dc2626";
+        badgeBg = "#fee2e2";
+        desc = "Most people score in this range. The good news? The biggest improvements come from just a few simple swaps. Focus on the priorities below.";
       }
+
+      document.getElementById("results-subtitle").textContent = "";
+
+      // Score gauge
+      const radius = 54;
+      const circ = 2 * Math.PI * radius;
+      const offset = circ - (pct / 100) * circ;
+      document.getElementById("score-summary").innerHTML = `
+        <div class="score-summary">
+          <div class="score-gauge">
+            <svg width="140" height="140" viewBox="0 0 140 140">
+              <circle class="score-gauge-bg" cx="70" cy="70" r="${radius}" />
+              <circle class="score-gauge-fill" cx="70" cy="70" r="${radius}"
+                stroke="${levelColor}"
+                stroke-dasharray="${circ}"
+                stroke-dashoffset="${circ}"
+                transform="rotate(-90 70 70)" />
+              <text class="score-gauge-text" x="70" y="65">${plasticScore}/${totalQuestions}</text>
+              <text class="score-gauge-label" x="70" y="85">exposure points</text>
+            </svg>
+          </div>
+          <div class="score-info">
+            <span class="score-level-badge" style="background:${badgeBg};color:${levelColor};">${level}</span>
+            <p class="score-desc">${desc}</p>
+          </div>
+        </div>
+      `;
+
+      // Animate gauge fill
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          const fill = document.querySelector(".score-gauge-fill");
+          if (fill) fill.style.strokeDashoffset = offset;
+        });
+      });
+
+      // Top 3 priorities (Big 5 first, then by category order)
+      const priorityOrder = ["The Big 5", "Kitchen", "Personal Care", "Kids", "Around the House"];
+      const sortedSwaps = [...swaps].sort((a, b) => {
+        const ai = priorityOrder.indexOf(a.category);
+        const bi = priorityOrder.indexOf(b.category);
+        return (ai === -1 ? 99 : ai) - (bi === -1 ? 99 : bi);
+      });
+      const top3 = sortedSwaps.slice(0, 3);
+
+      const topEl = document.getElementById("top-priorities");
+      if (top3.length > 0) {
+        topEl.innerHTML = `
+          <div class="top-priorities">
+            <div class="top-priorities-title">Your Top ${top3.length} Priorities</div>
+            ${top3.map((s, i) => `
+              <div class="priority-item" onclick="showSwapDetail(${s.catIdx}, ${s.qIdx})">
+                <div class="priority-num">${i + 1}</div>
+                <div class="priority-text">
+                  <strong>${s.icon} ${s.text}</strong>
+                  <span style="color:var(--text-muted);font-size:0.85rem;">${s.category}</span>
+                </div>
+              </div>
+            `).join("")}
+          </div>
+        `;
+      } else {
+        topEl.innerHTML = "";
+      }
+
+      // Email and divider visibility
+      document.getElementById("email-results").style.display = swaps.length > 0 ? "flex" : "none";
+      document.getElementById("results-divider").style.display = swaps.length > 0 ? "block" : "none";
 
       const grouped = {};
       swaps.forEach(s => {
@@ -2248,12 +2513,10 @@
       const listEl = document.getElementById("results-list");
 
       if (swaps.length === 0) {
-        listEl.innerHTML = `
-          <div class="category-done" style="display:block;">
-            <div class="category-done-icon">\u{1F33F}</div>
-            <h2 class="category-done-title">You're already plastic-free!</h2>
-            <p class="category-done-text">Amazing, you've already made the swaps. Share this with someone who hasn't started yet.</p>
-          </div>`;
+        document.getElementById("score-summary").querySelector(".score-desc").textContent =
+          "Amazing! You have already made all the swaps. Share this quiz with someone who has not started yet.";
+        listEl.innerHTML = "";
+        window.scrollTo({ top: 0, behavior: "smooth" });
         return;
       }
 
@@ -2274,6 +2537,76 @@
       try {
         localStorage.setItem("pd_results", JSON.stringify({ plasticScore, totalQuestions, swaps, answeredCount, date: new Date().toISOString().split("T")[0] }));
       } catch(e) {}
+    }
+
+    function emailResults() {
+      const email = document.getElementById("email-input").value.trim();
+      const msg = document.getElementById("email-msg");
+      const btn = document.getElementById("email-btn");
+
+      if (!email || !email.includes("@") || !email.includes(".")) {
+        msg.textContent = "Please enter a valid email address";
+        msg.style.color = "#dc2626";
+        document.getElementById("email-input").style.borderColor = "#dc2626";
+        return;
+      }
+
+      msg.textContent = "Sending...";
+      msg.style.color = "var(--text-muted)";
+      btn.disabled = true;
+      btn.textContent = "Sending...";
+      document.getElementById("email-input").style.borderColor = "var(--border)";
+
+      const pct = Math.round((plasticScore / totalQuestions) * 100);
+      let level, levelColor;
+      if (pct <= 20) { level = "Low Exposure"; levelColor = "#16a34a"; }
+      else if (pct <= 50) { level = "Moderate Exposure"; levelColor = "#d97706"; }
+      else if (pct <= 75) { level = "High Exposure"; levelColor = "#ea580c"; }
+      else { level = "Very High Exposure"; levelColor = "#dc2626"; }
+
+      const priorityOrder = ["The Big 5", "Kitchen", "Personal Care", "Kids", "Around the House"];
+      const sortedSwaps = [...swaps].sort((a, b) => {
+        const ai = priorityOrder.indexOf(a.category);
+        const bi = priorityOrder.indexOf(b.category);
+        return (ai === -1 ? 99 : ai) - (bi === -1 ? 99 : bi);
+      });
+      const top3 = sortedSwaps.slice(0, 3);
+
+      fetch("https://plasticdetox-quiz-email.plasticdetox.workers.dev/send", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email,
+          score: plasticScore,
+          total: totalQuestions,
+          level,
+          levelColor,
+          top3: top3.map(s => ({ icon: s.icon, text: s.text, category: s.category })),
+          swaps: swaps.map(s => ({ icon: s.icon, text: s.text, category: s.category }))
+        })
+      })
+      .then(r => r.json())
+      .then(res => {
+        if (res.ok) {
+          document.getElementById("email-input").value = "";
+          msg.textContent = "Check your inbox! Your results are on the way.";
+          msg.style.color = "#16a34a";
+          btn.textContent = "Sent!";
+          btn.style.background = "#16a34a";
+        } else {
+          msg.textContent = "Something went wrong. Please try again.";
+          msg.style.color = "#dc2626";
+          btn.textContent = "Send to me";
+        }
+        btn.disabled = false;
+        setTimeout(() => { btn.textContent = "Send to me"; btn.style.background = ""; }, 5000);
+      })
+      .catch(() => {
+        msg.textContent = "Could not send. Check your connection and try again.";
+        msg.style.color = "#dc2626";
+        btn.disabled = false;
+        btn.textContent = "Send to me";
+      });
     }
 
     function loadSavedResults() {
