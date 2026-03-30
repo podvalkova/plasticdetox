@@ -654,6 +654,8 @@
     .priority-text strong { display: block; margin-bottom: 0.15rem; }
 
     .email-results {
+      display: flex;
+      flex-direction: column;
       background: var(--surface);
       border-radius: var(--radius);
       padding: 1.5rem 2rem;
@@ -1434,7 +1436,7 @@
           <div id="top-priorities"></div>
           <div class="email-results" id="email-results">
             <div class="email-results-title">Save your results</div>
-            <div class="email-results-desc">Get your personalized swap list and top priorities sent to your inbox.</div>
+            <div class="email-results-desc">Get your personalized swap list and recommended swaps sent to your inbox.</div>
             <div class="email-results-row">
               <input type="email" class="email-input" id="email-input" placeholder="your@email.com">
               <button class="email-btn" id="email-btn" onclick="emailResults()">Send to me</button>
@@ -2264,7 +2266,7 @@
 
       document.getElementById("category-label").textContent = `${cat.icon} ${cat.name}: ${cat.description}`;
       document.getElementById("question-icon").textContent = q.icon;
-      document.getElementById("question-text").textContent = q.text;
+      document.getElementById("question-text").innerHTML = q.text;
 
       const card = document.getElementById("question-card");
       card.style.animation = "none";
@@ -2484,7 +2486,7 @@
       if (top3.length > 0) {
         topEl.innerHTML = `
           <div class="top-priorities">
-            <div class="top-priorities-title">Your Top ${top3.length} Priorities</div>
+            <div class="top-priorities-title">Recommended Swaps</div>
             ${top3.map((s, i) => `
               <div class="priority-item" onclick="showSwapDetail(${s.catIdx}, ${s.qIdx})">
                 <div class="priority-num">${i + 1}</div>
@@ -2585,7 +2587,10 @@
           swaps: swaps.map(s => ({ icon: s.icon, text: s.text, category: s.category }))
         })
       })
-      .then(r => r.json())
+      .then(r => {
+        if (!r.ok) throw new Error("Server error: " + r.status);
+        return r.json();
+      })
       .then(res => {
         if (res.ok) {
           document.getElementById("email-input").value = "";

@@ -379,7 +379,7 @@ function showQuestion() {
 
   document.getElementById("category-label").textContent = `${cat.icon} ${cat.name} — ${cat.description}`;
   document.getElementById("question-icon").textContent = q.icon;
-  document.getElementById("question-text").textContent = q.text;
+  document.getElementById("question-text").innerHTML = q.text;
 
   // Re-trigger animation
   const card = document.getElementById("question-card");

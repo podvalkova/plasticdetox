@@ -175,7 +175,7 @@ function buildEmail({ score, total, level, levelColor, top3, swaps }) {
         <!-- Top 3 Priorities -->
         <tr><td>
           <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#ede9fe;border-radius:12px;overflow:hidden;">
-            <tr><td style="padding:20px 16px 8px;font-size:16px;font-weight:700;color:#1c1917;">Your Top ${top3.length} Priorities</td></tr>
+            <tr><td style="padding:20px 16px 8px;font-size:16px;font-weight:700;color:#1c1917;">Recommended Swaps</td></tr>
             ${top3Html}
             <tr><td style="height:8px;"></td></tr>
           </table>
