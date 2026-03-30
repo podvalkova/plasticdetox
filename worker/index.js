@@ -99,18 +99,22 @@ function buildEmail({ score, total, level, levelColor, top3, swaps }) {
 
   const top3Html = top3
     .map(
-      (s, i) => `
+      (s, i) => {
+        const desc = s.alt ? s.alt.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim() : "";
+        return `
     <tr>
       <td style="padding:12px 16px;border-bottom:1px solid #e7e5e4;">
-        <table cellpadding="0" cellspacing="0" border="0"><tr>
-          <td style="width:32px;height:32px;border-radius:50%;background:#7c3aed;color:#fff;text-align:center;line-height:32px;font-weight:700;font-size:14px;">${i + 1}</td>
+        <table cellpadding="0" cellspacing="0" border="0" width="100%"><tr>
+          <td style="width:32px;min-width:32px;max-width:32px;height:32px;border-radius:50%;background:#7c3aed;color:#fff;text-align:center;line-height:32px;font-weight:700;font-size:14px;" width="32">${i + 1}</td>
           <td style="padding-left:12px;">
             <div style="font-weight:600;font-size:15px;color:#1c1917;">${s.icon} ${s.text}</div>
-            <div style="font-size:13px;color:#78716c;">${s.category}</div>
+            <div style="font-size:13px;color:#78716c;margin-top:2px;">${s.category}</div>
+            ${desc ? `<div style="font-size:13px;color:#44403c;margin-top:6px;line-height:1.5;">${desc}</div>` : ""}
           </td>
         </tr></table>
       </td>
-    </tr>`
+    </tr>`;
+      }
     )
     .join("");
 
