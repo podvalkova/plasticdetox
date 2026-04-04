@@ -1464,7 +1464,10 @@
 
       <!-- ARTICLES TAB -->
       <div id="tab-articles">
-        <div class="articles-grid">
+        <div class="search-wrap">
+          <input type="text" class="search-input" id="article-search-input" placeholder="Search articles..." oninput="filterArticles()">
+        </div>
+        <div class="articles-grid" id="articles-grid">
           <a href="articles/how-to-remove-microplastics-from-drinking-water.html" class="article-card">
             <div class="article-card-body">
               <span class="article-card-tag">Drinking Water</span>
@@ -1514,6 +1517,50 @@
               <span class="article-card-tag">Baby Feeding Guide</span>
               <h2 class="article-card-title">Microplastics in Baby Food: What Parents Need to Know (and the Safest Feeding Setup)</h2>
               <p class="article-card-excerpt">Babies consume up to 16 million microplastic particles per day from bottles alone. Learn where the contamination comes from, which products to avoid, and how to build the safest feeding setup from newborn through toddler.</p>
+              <div class="article-card-meta">
+                <span>14 min read</span>
+                <span>April 2026</span>
+              </div>
+            </div>
+          </a>
+          <a href="articles/best-plastic-free-food-storage-containers.html" class="article-card">
+            <div class="article-card-body">
+              <span class="article-card-tag">Food Storage Guide</span>
+              <h2 class="article-card-title">Best Plastic Free Food Storage Containers: Glass, Stainless Steel, and Silicone Compared (2026)</h2>
+              <p class="article-card-excerpt">Plastic containers leach chemicals into your food, especially when heated. Compare glass, stainless steel, and silicone alternatives to find the safest option for meal prep, leftovers, and kids lunches.</p>
+              <div class="article-card-meta">
+                <span>12 min read</span>
+                <span>April 2026</span>
+              </div>
+            </div>
+          </a>
+          <a href="articles/how-to-avoid-microplastics-in-tea.html" class="article-card">
+            <div class="article-card-body">
+              <span class="article-card-tag">Tea Guide</span>
+              <h2 class="article-card-title">How to Avoid Microplastics in Tea: The Complete Guide to Safer Brewing (2026)</h2>
+              <p class="article-card-excerpt">A single plastic tea bag can release 11.6 billion microplastic particles into your cup. Learn which tea bags contain plastic, which brands are safe, and how to switch to plastic free brewing.</p>
+              <div class="article-card-meta">
+                <span>10 min read</span>
+                <span>April 2026</span>
+              </div>
+            </div>
+          </a>
+          <a href="articles/best-non-toxic-cutting-boards.html" class="article-card">
+            <div class="article-card-body">
+              <span class="article-card-tag">Kitchen Guide</span>
+              <h2 class="article-card-title">Best Non Toxic Cutting Boards: Wood, Bamboo, and Plastic Free Alternatives (2026)</h2>
+              <p class="article-card-excerpt">Plastic cutting boards shed millions of microplastic particles into your food every year. Compare wood, bamboo, and rubber alternatives for a safer, knife friendly kitchen.</p>
+              <div class="article-card-meta">
+                <span>11 min read</span>
+                <span>April 2026</span>
+              </div>
+            </div>
+          </a>
+          <a href="articles/how-to-avoid-bpa-and-phthalates.html" class="article-card">
+            <div class="article-card-body">
+              <span class="article-card-tag">Chemical Guide</span>
+              <h2 class="article-card-title">How to Avoid BPA and Phthalates in Everyday Products: A Room by Room Guide (2026)</h2>
+              <p class="article-card-excerpt">BPA and phthalates are in your food containers, receipts, cosmetics, and even your mattress. This room by room guide shows you exactly where these endocrine disruptors hide and how to eliminate them.</p>
               <div class="article-card-meta">
                 <span>14 min read</span>
                 <span>April 2026</span>
@@ -2022,6 +2069,16 @@
         r.summary.toLowerCase().includes(q)
       );
       renderResources(filtered);
+    }
+
+    function filterArticles() {
+      const q = document.getElementById("article-search-input").value.toLowerCase().trim();
+      const cards = document.querySelectorAll("#articles-grid .article-card");
+      cards.forEach(card => {
+        if (!q) { card.style.display = ""; return; }
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? "" : "none";
+      });
     }
 
     // ==================== GAME ====================
@@ -2725,6 +2782,11 @@
       { cat: "Kids", sub: "Baby Food Making", img: "51xtSoBPZDL", name: "Sage Spoonfuls Stainless Steel Steamer Basket", asin: "B00PK49HVO", bestFor: "Best minimal BLW option", tier: "$", effectiveness: "Zero plastic food contact", desc: "Collapsible stainless steel steamer basket that fits any pot 8 inches or larger. The simplest approach to baby food: steam vegetables and soft foods in a pot you already own, then mash with a fork. Perfect for baby led weaning. No gadgets, no plastic, just stainless steel and real food.", pros: ["Cheapest option (~$15)", "Fits pots you already own", "Perfect for baby led weaning"], cons: ["No blending function", "Manual mashing required", "Not a standalone appliance"] },
       { cat: "Kids", sub: "Baby Food Making", img: "41ZRjXRzcQL", name: "Bear NutriEase AllStage Baby Food Maker", asin: "B0FL7K9WMX", bestFor: "Best all in one with stainless steel pathway", tier: "$$", effectiveness: "Fully stainless steel food pathway", desc: "One step baby food maker with a fully stainless steel food pathway. Auto steams and blends in one step. The entire surface that contacts food is stainless steel, not glass or plastic. Preset programs for different food stages.", pros: ["Fully stainless steel food path", "One step auto steam and blend", "Preset stage programs"], cons: ["Newer brand", "Steel bowl not as visible as glass", "Single batch size"] },
       { cat: "Kids", sub: "Baby Food Making", img: "41M6kgy316L", name: "BEABA Babycook Neo Glass Baby Food Maker", asin: "B085PXBB17", bestFor: "Gold standard (consider secondhand)", tier: "$$$", effectiveness: "Zero plastic food contact", desc: "The gold standard for plastic free baby food making. All blending and steaming happens in a borosilicate glass bowl with a stainless steel basket and water reservoir. No plastic ever contacts your baby's food. 4 in 1: steam, blend, reheat, and defrost. At ~$230 new, consider buying secondhand as these hold up well.", pros: ["100% glass and stainless steel food path", "4 in 1 functionality", "Excellent resale value"], cons: ["Premium price (~$230 new)", "Glass bowl is heavier", "Consider buying secondhand"] },
+
+      // Kids > Baby Bottles
+      { cat: "Kids", sub: "Baby Bottles", img: "31gYwJhCmzL", name: "Philips Avent Natural Glass Bottle (8oz)", asin: "B00O2RKMLM", bestFor: "Best overall glass bottle", tier: "$$", effectiveness: "Zero microplastic leaching", desc: "Borosilicate glass body with a wide neck natural latch nipple. Heat and thermal shock resistant. Compatible with the full Avent range of accessories. Ergonomic shape is easy to hold and clean.", pros: ["Heat and thermal shock resistant", "Wide neck for easy cleaning", "Compatible with Avent accessories"], cons: ["Heavier than plastic bottles", "Can break if dropped on hard surface", "Silicone sleeve sold separately"] },
+      { cat: "Kids", sub: "Baby Bottles", img: "31E1x3kXDQL", name: "Dr. Brown's Options+ Glass Bottle (5oz)", asin: "B07NRM3QLP", bestFor: "Best for reducing colic", tier: "$$", effectiveness: "Zero plastic food contact", desc: "Borosilicate glass with an internal vent system clinically proven to reduce colic, spit up, and gas. Works with or without the vent as baby grows. 100% silicone nipple with no plastic touching the milk.", pros: ["Clinically proven anti colic vent", "Grows with baby (removable vent)", "Trusted pediatrician recommended brand"], cons: ["More parts to clean", "Narrow neck bottle", "Vent pieces are small"] },
+      { cat: "Kids", sub: "Baby Bottles", img: "41WPzf9WDFL", name: "Lifefactory Glass Bottle with Silicone Sleeve (9oz)", asin: "B009QXBGPK", bestFor: "Best for durability", tier: "$$", effectiveness: "Zero chemical leaching", desc: "Medical grade borosilicate glass wrapped in a protective food grade silicone sleeve. The sleeve provides grip and shock absorption, making this the most drop resistant glass bottle available. Color coded sleeves make it easy to organize multiple bottles.", pros: ["Protective silicone sleeve included", "Color coded for easy organizing", "Medical grade glass"], cons: ["Bulkier than unsleeved bottles", "Sleeve can trap moisture if not removed for cleaning", "Slightly heavier overall"] },
 
       // Kids > Mealtime
       { cat: "Kids", sub: "Mealtime", img: "41odQEPAoHL", name: "ezpz Mini Mat Silicone Plate", asin: "B01C95ZCNI", bestFor: "Best for mealtime", tier: "$", effectiveness: "Eliminates plastic plate chemicals", desc: "100% food grade silicone. Suctions to highchairs. Free of BPA, BPS, PVC, latex and phthalates.", pros: ["Suctions to surfaces", "Microwave safe", "BPA and PVC free"], cons: ["Best on flat surfaces", "Stains from turmeric"] },
