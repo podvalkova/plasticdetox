@@ -326,6 +326,7 @@ function startGame() {
   renderTracker();
   showQuestion();
   window.scrollTo({ top: 0, behavior: "smooth" });
+  gtag('event', 'quiz_start');
 }
 
 function restartGame() {
@@ -453,6 +454,7 @@ function showCategoryDone() {
   document.getElementById("category-done-icon").textContent = cat.icon;
   document.getElementById("category-done-title").textContent = `${cat.name} — Done!`;
   document.getElementById("category-done-text").textContent = cat.doneText;
+  gtag('event', 'quiz_category_complete', { category_name: cat.name });
 
   const isLast = currentCategory >= categories.length - 1;
   document.getElementById("category-done-btn").textContent = isLast ? "See Your Results →" : "Next: " + categories[currentCategory + 1].name + " →";
@@ -478,6 +480,7 @@ function showResults() {
   document.getElementById("category-done").style.display = "none";
   document.getElementById("category-label").textContent = "";
   document.getElementById("results").style.display = "block";
+  gtag('event', 'quiz_complete', { score: plasticScore, total: totalQuestions, swaps_count: swaps.length });
 
   const scoreEl = document.getElementById("results-subtitle");
   if (plasticScore <= 5) {
