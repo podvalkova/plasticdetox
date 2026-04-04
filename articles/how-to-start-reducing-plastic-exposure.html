@@ -89,6 +89,19 @@
   }
   </script>
 
+  <!-- Structured Data: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://plasticdetox.org/"},
+      {"@type": "ListItem", "position": 2, "name": "Articles", "item": "https://plasticdetox.org/#articles"},
+      {"@type": "ListItem", "position": 3, "name": "Getting Started", "item": "https://plasticdetox.org/articles/how-to-start-reducing-plastic-exposure.html"}
+    ]
+  }
+  </script>
+
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-BBCB36BGP2"></script>
   <script>
@@ -101,327 +114,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-    :root {
-      --accent: #a78bfa;
-      --accent-dark: #7c3aed;
-      --accent-light: #ede9fe;
-      --bg: #fafaf9;
-      --surface: #ffffff;
-      --text: #1c1917;
-      --text-muted: #78716c;
-      --border: #e7e5e4;
-      --radius: 16px;
-      --radius-sm: 10px;
-      --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      min-height: 100vh;
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.25rem 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .nav-logo {
-      font-size: 1.25rem;
-      font-weight: 800;
-      text-decoration: none;
-      color: var(--text);
-      letter-spacing: -0.02em;
-    }
-
-    .nav-logo span { color: var(--accent); }
-    .nav-links { display: flex; gap: 2rem; }
-
-    .nav-link {
-      text-decoration: none;
-      color: var(--text-muted);
-      font-weight: 500;
-      font-size: 0.95rem;
-      transition: color 0.2s;
-    }
-
-    .nav-link:hover { color: var(--text); }
-
-    .article {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 2rem 2rem 4rem;
-    }
-
-    .article-breadcrumb {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      margin-bottom: 1.5rem;
-    }
-
-    .article-breadcrumb a {
-      color: var(--accent-dark);
-      text-decoration: none;
-    }
-
-    .article-tag {
-      display: inline-block;
-      font-size: 0.7rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      background: var(--accent-light);
-      color: var(--accent-dark);
-      padding: 0.2rem 0.6rem;
-      border-radius: 4px;
-      margin-bottom: 0.75rem;
-    }
-
-    .article h1 {
-      font-size: clamp(1.8rem, 4vw, 2.5rem);
-      font-weight: 800;
-      line-height: 1.15;
-      letter-spacing: -0.03em;
-      margin-bottom: 1rem;
-    }
-
-    .article-meta {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      padding-bottom: 1.5rem;
-      margin-bottom: 2rem;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .article h2 {
-      font-size: 1.4rem;
-      font-weight: 700;
-      margin-top: 2.5rem;
-      margin-bottom: 0.75rem;
-      letter-spacing: -0.01em;
-    }
-
-    .article h3 {
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin-top: 2rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .article p {
-      font-size: 1.02rem;
-      line-height: 1.8;
-      margin-bottom: 1.25rem;
-    }
-
-    .article ul, .article ol {
-      padding-left: 1.5rem;
-      margin-bottom: 1.25rem;
-    }
-
-    .article li {
-      font-size: 1.02rem;
-      line-height: 1.7;
-      margin-bottom: 0.5rem;
-    }
-
-    .article a {
-      color: var(--accent-dark);
-      font-weight: 500;
-      text-decoration: none;
-    }
-
-    .article a:hover { text-decoration: underline; }
-
-    .callout {
-      background: var(--accent-light);
-      border-radius: var(--radius-sm);
-      padding: 1.25rem 1.5rem;
-      margin: 1.5rem 0;
-      font-size: 0.95rem;
-      line-height: 1.7;
-    }
-
-    .callout-title {
-      font-weight: 700;
-      margin-bottom: 0.25rem;
-    }
-
-    .comparison-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.9rem;
-      margin: 1.5rem 0;
-    }
-
-    .comparison-table th {
-      background: var(--accent-light);
-      color: var(--accent-dark);
-      font-weight: 700;
-      text-transform: uppercase;
-      font-size: 0.8rem;
-      letter-spacing: 0.04em;
-      padding: 0.75rem 1rem;
-      text-align: left;
-    }
-
-    .comparison-table td {
-      padding: 0.75rem 1rem;
-      border-bottom: 1px solid var(--border);
-      vertical-align: top;
-    }
-
-    .rating-best { color: #16a34a; font-weight: 700; }
-    .rating-good { color: #65a30d; font-weight: 600; }
-    .rating-ok { color: #d97706; font-weight: 600; }
-    .rating-poor { color: #dc2626; font-weight: 600; }
-
-    .toc {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      padding: 1.25rem 1.5rem;
-      margin-bottom: 2rem;
-    }
-
-    .toc-title {
-      font-size: 0.85rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 0.5rem;
-      letter-spacing: 0.04em;
-    }
-
-    .toc ol {
-      padding-left: 1.25rem;
-      margin: 0;
-    }
-
-    .toc li {
-      margin-bottom: 0.25rem;
-    }
-
-    .toc a {
-      color: var(--accent-dark);
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 0.95rem;
-    }
-
-    .toc a:hover { text-decoration: underline; }
-
-    .infographic {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 2rem;
-      margin: 2rem 0;
-      text-align: center;
-    }
-
-    .infographic-title {
-      font-size: 0.8rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--text-muted);
-      margin-bottom: 1rem;
-    }
-
-    .infographic svg { max-width: 100%; height: auto; }
-
-    .priority-tier {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      padding: 1.5rem;
-      margin: 1.5rem 0;
-    }
-
-    .priority-tier-header {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      margin-bottom: 1rem;
-    }
-
-    .priority-badge {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.7rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      padding: 0.25rem 0.75rem;
-      border-radius: 4px;
-      white-space: nowrap;
-    }
-
-    .priority-critical { background: #fef2f2; color: #dc2626; }
-    .priority-high { background: #fff7ed; color: #ea580c; }
-    .priority-medium { background: #fefce8; color: #ca8a04; }
-    .priority-low { background: #f0fdf4; color: #16a34a; }
-
-    .priority-tier-title {
-      font-size: 1.1rem;
-      font-weight: 700;
-    }
-
-    .faq-section { margin-top: 2.5rem; }
-
-    .faq-item {
-      border-bottom: 1px solid var(--border);
-      padding: 1.25rem 0;
-    }
-
-    .faq-item:first-child { border-top: 1px solid var(--border); }
-
-    .faq-question {
-      font-size: 1.05rem;
-      font-weight: 700;
-      line-height: 1.4;
-      margin-bottom: 0.5rem;
-    }
-
-    .faq-answer {
-      font-size: 0.95rem;
-      line-height: 1.7;
-      opacity: 0.85;
-      margin: 0;
-    }
-
-    .footer {
-      text-align: center;
-      padding: 2rem;
-      color: var(--text-muted);
-      font-size: 0.82rem;
-      border-top: 1px solid var(--border);
-      margin-top: 3rem;
-    }
-
-    @media (max-width: 768px) {
-      .article { padding: 1.25rem; }
-      .article h1 { font-size: 1.7rem; }
-      .comparison-table { font-size: 0.8rem; }
-      .comparison-table td, .comparison-table th { padding: 0.5rem 0.6rem; }
-      .nav { padding: 1rem 1.25rem; }
-      .infographic { padding: 1rem; }
-      .priority-tier { padding: 1rem; }
-    }
-  </style>
+  <link rel="stylesheet" href="../css/article.css">
 </head>
 <body>
   <header>
@@ -920,6 +613,17 @@
       <div class="callout-title">Sources</div>
       This article draws on research from: Marfella et al., "Microplastics and Nanoplastics in Atheromas and Cardiovascular Events" (New England Journal of Medicine, 2024); Cox et al., "Human Consumption of Microplastics" (Environmental Science &amp; Technology, 2019); Senathirajah et al., "Estimation of the mass of microplastics ingested" (Journal of Hazardous Materials, 2021); Raza &amp; Ahuja, "Microplastics in Disposable Cups" (Indian Institute of Technology, 2021); Napper &amp; Thompson, "Release of synthetic microplastic fibres from domestic washing machines" (Marine Pollution Bulletin, 2016); Vethaak &amp; Legler, "Microplastics and Human Health" (Science, 2021); research on BPA clearance rates; and AAP guidance on reducing chemical exposures in children.
     </div>
+
+    <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #e7e5e4;">
+      <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:1rem;">Related Articles</h2>
+      <ul style="list-style:none;padding:0;">
+        <li style="margin-bottom:0.75rem;"><a href="cast-iron-vs-stainless-steel-vs-ceramic-cookware.html" style="color:#7c3aed;font-weight:500;text-decoration:none;">Cast Iron vs Stainless Steel vs Ceramic Cookware (2026)</a><br><span style="font-size:0.85rem;color:#78716c;">Compare the four best PFAS free cookware materials on safety, durability, and price.</span></li>
+        <li style="margin-bottom:0.75rem;"><a href="how-to-remove-microplastics-from-drinking-water.html" style="color:#7c3aed;font-weight:500;text-decoration:none;">How to Remove Microplastics from Drinking Water (2026)</a><br><span style="font-size:0.85rem;color:#78716c;">Your tap water contains thousands of microplastic particles per liter. Learn which filters actually work.</span></li>
+        <li style="margin-bottom:0.75rem;"><a href="how-to-avoid-bpa-and-phthalates.html" style="color:#7c3aed;font-weight:500;text-decoration:none;">How to Avoid BPA and Phthalates in Everyday Products: A Room by Room Guide (2026)</a><br><span style="font-size:0.85rem;color:#78716c;">A detailed room by room guide to eliminating endocrine disruptors from your home.</span></li>
+        <li style="margin-bottom:0.75rem;"><a href="best-plastic-free-food-storage-containers.html" style="color:#7c3aed;font-weight:500;text-decoration:none;">Best Plastic Free Food Storage Containers (2026)</a><br><span style="font-size:0.85rem;color:#78716c;">Replace plastic containers with glass, stainless steel, or silicone for safer food storage.</span></li>
+      </ul>
+    </div>
+
   </article>
 
   <div style="background:#ede9fe;border-top:1px solid #e7e5e4;padding:0.6rem 2rem;text-align:center;">
