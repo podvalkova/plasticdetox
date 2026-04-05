@@ -1473,6 +1473,7 @@
       <div class="resource-tabs">
         <button class="resource-tab active" onclick="showResourceTab('articles')">Articles</button>
         <button class="resource-tab" onclick="showResourceTab('research')">Research Papers</button>
+        <button class="resource-tab" onclick="showResourceTab('documentaries')">Documentaries</button>
       </div>
 
       <!-- ARTICLES TAB -->
@@ -1601,6 +1602,11 @@
         </div>
         <div class="resource-count" id="resource-count"></div>
         <div class="resource-grid" id="resource-grid"></div>
+      </div>
+
+      <!-- DOCUMENTARIES TAB -->
+      <div id="tab-documentaries" style="display:none;">
+        <div class="resource-grid" id="documentaries-grid"></div>
       </div>
     </section>
   </main>
@@ -1755,7 +1761,7 @@
           {
             icon: "\u{1F6C1}",
             text: "Do you have a plastic shower curtain?",
-            alt: "<strong>Replace with fabric or install a glass door.</strong><span class='alt-swap'>GOTS-certified organic cotton curtain or a glass door. That \"new shower curtain smell\" is literally chemicals off-gassing.</span>PVC shower curtains are one of the biggest VOC and phthalate sources in the home. You breathe this in every shower."
+            alt: "<strong>Replace with fabric or install a glass door.</strong><span class='alt-swap'>GOTS-certified organic cotton curtain or a glass door. That \"new shower curtain smell\" is literally chemicals off-gassing.</span>PVC shower curtains are one of the biggest VOC and phthalate sources in the home. You breathe this in every shower.<div style='margin-top:1rem;'><a href='#store' onclick=\"showStore();document.getElementById('store-cat-Bathroom')?.scrollIntoView({behavior:'smooth',block:'start'});\" style='color:var(--accent-dark);font-weight:600;font-size:0.9rem;'>Shop plastic free shower curtains \u2192</a></div>"
           },
           {
             icon: "\u{1F9F4}",
@@ -2005,6 +2011,14 @@
       { tag: "Fragrance", title: "Synthetic fragrance compounds as endocrine disruptors", source: "International Journal of Hygiene and Environmental Health, 2017", url: "https://doi.org/10.1016/j.ijheh.2017.05.006", summary: "Found that synthetic musk compounds and other fragrance chemicals showed estrogenic and anti-androgenic activity in multiple assays. Exposure is nearly universal through personal care and household products." }
     ];
 
+    const documentaries = [
+      { title: "The Plastic Detox", year: "2025", platform: "Netflix", url: "https://www.netflix.com/title/82074244", desc: "Explores the hidden health effects of everyday plastic exposure and follows people attempting to eliminate plastic from their lives. Features scientists revealing how microplastics enter our bodies and what we can do about it." },
+      { title: "A Plastic Ocean", year: "2016", platform: "Netflix", url: "https://www.netflix.com/title/80164032", desc: "Journalist Craig Leeson and a team of international scientists reveal the causes and consequences of plastic pollution in our oceans and the surprisingly simple solutions that can save our waterways." },
+      { title: "The Story of Plastic", year: "2019", platform: "Discovery+", url: "https://www.discovery.com/shows/story-of-plastic", desc: "Exposes the plastic pollution crisis and the industry behind it. Follows activists and scientists fighting the plastics industry across three continents." },
+      { title: "Plastic Paradise", year: "2013", platform: "Amazon Prime", url: "https://www.amazon.com/Plastic-Paradise-Great-Pacific-Garbage/dp/B00KSTB0N0", desc: "Journalist Angela Sun travels to the Great Pacific Garbage Patch and uncovers the truth about our plastic consumption and its toxic effect on the ocean and marine life." },
+      { title: "Microplastic Madness", year: "2019", platform: "VOD", url: "https://www.microplasticmadness.org/", desc: "Brooklyn fifth graders investigate microplastic pollution in their local waterways and become citizen scientists and activists, sparking a citywide movement." }
+    ];
+
     // ==================== STATE ====================
     let currentCategory = 0;
     let currentQuestion = 0;
@@ -2059,9 +2073,11 @@
     function showResourceTab(tab) {
       document.getElementById("tab-articles").style.display = tab === "articles" ? "block" : "none";
       document.getElementById("tab-research").style.display = tab === "research" ? "block" : "none";
+      document.getElementById("tab-documentaries").style.display = tab === "documentaries" ? "block" : "none";
       document.querySelectorAll(".resource-tab").forEach(btn => btn.classList.remove("active"));
       event.target.classList.add("active");
       if (tab === "research") renderResources();
+      if (tab === "documentaries") renderDocumentaries();
     }
 
     function renderResources(filtered) {
@@ -2081,6 +2097,18 @@
       if (list.length === 0) {
         grid.innerHTML = '<p style="color:var(--text-muted);padding:2rem 0;">No studies match your search.</p>';
       }
+    }
+
+    function renderDocumentaries() {
+      const grid = document.getElementById("documentaries-grid");
+      grid.innerHTML = documentaries.map(d => `
+        <a href="${d.url}" target="_blank" rel="noopener" class="resource-card" style="text-decoration:none;color:inherit;">
+          <div class="resource-tag">${d.platform} &middot; ${d.year}</div>
+          <div class="resource-title">${d.title}</div>
+          <div class="resource-summary">${d.desc}</div>
+          <span class="resource-link">Watch now \u2192</span>
+        </a>
+      `).join("");
     }
 
     function filterResources() {
@@ -2696,7 +2724,7 @@
       "Clean Cookware": "Teflon and non stick coatings release toxic PFAS into your food every time you cook. There are four great PFAS free alternatives and each has different strengths. Pick the one that matches how you cook.",
       "Kitchen Tools": "Plastic utensils melt and leach chemicals when they touch hot food. Plastic cutting boards shed millions of microparticles from knife cuts every year. These swaps are cheap, easy, and make an immediate difference.",
       "Food Storage": "Plastic containers leach chemicals into food, especially when heated or scratched. Glass and beeswax alternatives keep your food clean and chemical free.",
-      "Clean Body": "Your bathroom is full of plastic bottles that add synthetic fragrances and phthalates to your skin. These swaps cut plastic waste and chemical exposure at the same time.",
+      "Bathroom": "Your bathroom is full of plastic bottles that add synthetic fragrances and phthalates to your skin. These swaps cut plastic waste and chemical exposure at the same time.",
       "Bedroom": "You spend a third of your life in bed. Conventional mattresses contain polyurethane foam, fiberglass, and flame retardants, while synthetic sheets shed microplastic fibers into your skin every night. These swaps eliminate all of it.",
       "Cleaning and Laundry": "Conventional cleaning products come in single use plastic bottles and laundry detergent jugs pile up fast. These swaps eliminate plastic waste from your cleaning routine.",
       "Living Room": "Petroleum candles fill your air with toxic fumes and synthetic fibers float through every room. These products clean up your living space.",
@@ -2770,21 +2798,32 @@
       { cat: "Food Storage", sub: "", img: "31iPGjcwiuL", name: "Stasher Silicone Reusable Bags", asin: "B01DZQT9CU", bestFor: "Best ziplock bag replacement", tier: "$", effectiveness: "Eliminates single use bags", desc: "Platinum food grade silicone. Airtight seal. Safe in microwave, dishwasher, freezer, and even boiling water.", pros: ["Microwave and freezer safe", "Self sealing airtight", "Dishwasher safe"], cons: ["Pricier than plastic bags", "Can stain with sauces", "Takes time to dry"] },
       { cat: "Food Storage", sub: "", img: "41RE8cqekdL", name: "Bee's Wrap Beeswax Wraps (3 Pack)", asin: "B0126LMDFK", bestFor: "Best plastic wrap replacement", tier: "$", effectiveness: "Eliminates all plastic wrap", desc: "Organic cotton, beeswax, and jojoba oil. Moldable, reusable, and compostable at end of life.", pros: ["Compostable", "Lasts up to 1 year", "Made in USA"], cons: ["Not for raw meat", "Cool water wash only"] },
 
-      // Clean Body > Soap and Shampoo
-      { cat: "Clean Body", sub: "Soap and Shampoo", img: "41f3ICkkvPL", name: "Dr. Bronner's Castile Soap", asin: "B00120VWJ0", bestFor: "Best all in one replacement", tier: "$", effectiveness: "18 in 1 multipurpose soap", desc: "Certified organic, concentrated pure castile soap for dozens of household uses.", pros: ["18 uses in one bottle", "Certified organic", "Biodegradable"], cons: ["Must dilute before use", "Takes time to learn ratios"] },
-      { cat: "Clean Body", sub: "Soap and Shampoo", img: "31Tp4yS3euL", name: "Ethique Shampoo Bar", asin: "B0DHFPB45C", bestFor: "Best shampoo swap", tier: "$", effectiveness: "Replaces 3 plastic bottles", desc: "Concentrated solid shampoo with plant based ingredients. Vegan and cruelty free.", pros: ["Replaces 3 bottles", "TSA friendly", "Vegan"], cons: ["Hair adjustment period", "Needs dry storage"] },
-      { cat: "Clean Body", sub: "Soap and Shampoo", img: "410XbGhKsyL", name: "Merkur 34C Safety Razor", asin: "B002A8JO1Q", bestFor: "Best razor swap", tier: "$$", effectiveness: "Eliminates disposable razors", desc: "German made stainless steel. Lasts a lifetime with replacement blades that cost pennies.", pros: ["Lasts a lifetime", "Blades cost pennies", "Made in Germany"], cons: ["Short learning curve", "Handle blades carefully"] },
+      // Bathroom > Soap and Shampoo
+      { cat: "Bathroom", sub: "Soap and Shampoo", img: "41f3ICkkvPL", name: "Dr. Bronner's Castile Soap", asin: "B00120VWJ0", bestFor: "Best all in one replacement", tier: "$", effectiveness: "18 in 1 multipurpose soap", desc: "Certified organic, concentrated pure castile soap for dozens of household uses.", pros: ["18 uses in one bottle", "Certified organic", "Biodegradable"], cons: ["Must dilute before use", "Takes time to learn ratios"] },
+      { cat: "Bathroom", sub: "Soap and Shampoo", img: "41kzVlm-XML", name: "Viori Shampoo Bar", asin: "B099KWKY36", bestFor: "Best shampoo bar", tier: "$$", effectiveness: "Replaces 3 plastic bottles", desc: "Handcrafted shampoo bar made with Longsheng rice water, a 2,000 year old tradition from the Red Yao tribe. Sulfate free, paraben free, and pH balanced. Each bar replaces 2 to 3 plastic bottles and lasts 60 to 80 washes.", pros: ["Ancient rice water formula", "Lasts 60 to 80 washes", "Sulfate and paraben free"], cons: ["Higher price per bar", "Hair adjustment period", "Scent may be strong for some"] },
+      { cat: "Bathroom", sub: "Soap and Shampoo", img: "41n6yFXrURL", name: "HiBAR Shampoo Bar", asin: "B08S3FTX35", bestFor: "Best salon quality bar", tier: "$", effectiveness: "Replaces 2 plastic bottles", desc: "Salon quality solid shampoo bar with no plastic packaging. Available in formulas for different hair types. Vegan, cruelty free, and made in the USA.", pros: ["Formulas for every hair type", "Made in USA", "Zero plastic packaging"], cons: ["Smaller bar size", "Takes time to lather", "Needs dry storage"] },
+      { cat: "Bathroom", sub: "Soap and Shampoo", img: "41QBpJkVHzL", name: "Plaine Products Refillable Shampoo", asin: "B0774WQY7T", bestFor: "Best refillable liquid option", tier: "$$", effectiveness: "Reusable aluminum bottle", desc: "Natural liquid shampoo in a refillable aluminum bottle. Send back empties for free refills. Sulfate free, vegan, and cruelty free. For those who prefer liquid shampoo without the plastic waste.", pros: ["Refillable aluminum bottle", "Free return shipping for refills", "Sulfate free and vegan"], cons: ["Higher upfront cost", "Subscription model", "Limited scent options"] },
+      // Bathroom > Razors
+      { cat: "Bathroom", sub: "Razors", img: "410XbGhKsyL", name: "Merkur 34C Safety Razor", asin: "B002A8JO1Q", bestFor: "Best short handle razor", tier: "$$", effectiveness: "Eliminates disposable razors", desc: "German made stainless steel. Lasts a lifetime with replacement blades that cost pennies. The classic double edge safety razor.", pros: ["Lasts a lifetime", "Blades cost pennies", "Made in Germany"], cons: ["Short learning curve", "Handle blades carefully", "Short handle"] },
+      { cat: "Bathroom", sub: "Razors", img: "31SqWuDu0RL", name: "Merkur 23C Long Handle Safety Razor", asin: "B00374F5CY", bestFor: "Best long handle razor", tier: "$$", effectiveness: "Eliminates disposable razors", desc: "German made stainless steel with an extra long handle for better grip. Same legendary Merkur quality in a longer format that is easier to hold, especially for legs and hard to reach areas.", pros: ["Long handle for better grip", "Great for legs and body", "Made in Germany"], cons: ["Short learning curve", "Handle blades carefully", "Heavier than disposables"] },
+      { cat: "Bathroom", sub: "Razors", img: "41mDGMVVURL", name: "Leaf Thorn Single Edge Razor", asin: "B09V6895XM", bestFor: "Best pivoting head razor", tier: "$$", effectiveness: "Eliminates disposable razors", desc: "Single edge safety razor with a pivoting head that mimics the feel of a cartridge razor. All metal construction with no plastic. Uses half a standard double edge blade. The easiest transition from disposable razors.", pros: ["Pivoting head like a cartridge", "Easiest transition from disposables", "All metal construction"], cons: ["Proprietary blade loading", "Higher price point", "Single edge only"] },
+      { cat: "Bathroom", sub: "Razors", img: "41NHZSvvURL", name: "Edwin Jagger Double Edge Safety Razor", asin: "B003LW4L2W", bestFor: "Best for beginners", tier: "$$", effectiveness: "Eliminates disposable razors", desc: "Chrome plated double edge safety razor handmade in Sheffield, England. Known for its mild, forgiving shave that is perfect for beginners. Works with any standard double edge blade.", pros: ["Mild and forgiving shave", "Handmade in England", "Works with any DE blade"], cons: ["Chrome plating can wear over time", "Mild may not suit thick beards", "Handle can be slippery when wet"] },
 
-      // Clean Body > Deodorants
-      { cat: "Clean Body", sub: "Deodorants", img: "414Knl0CvQL", name: "Native Plastic Free Deodorant", asin: "B0B69J266X", bestFor: "Best everyday option", tier: "$", effectiveness: "Zero plastic packaging", desc: "Naturally derived ingredients in paperboard packaging from responsibly managed forests. 72 hour odor control with coconut oil and shea butter.", pros: ["Plastic free paperboard tube", "72 hour odor control", "50,000+ five star reviews"], cons: ["Contains baking soda", "Paperboard can soften", "One scent per stick"] },
-      { cat: "Clean Body", sub: "Deodorants", img: "31nlKM1LN1L", name: "HiBAR Eucalyptus Deodorant", asin: "B0DFK4S553", bestFor: "Best solid bar option", tier: "$", effectiveness: "Zero plastic packaging", desc: "Plastic free solid deodorant with sunflower seed wax, rice bran, and shea butter. Paraben free and aluminum free. Vegan.", pros: ["100% plastic free", "Paraben and aluminum free", "Light eucalyptus scent"], cons: ["Effectiveness varies by climate", "Smaller size bar", "Less common brand"] },
-      { cat: "Clean Body", sub: "Deodorants", img: "41fKbX8AeXL", name: "Wild Refillable Deodorant", asin: "B0BTZ7YHHZ", bestFor: "Best refillable system", tier: "$$", effectiveness: "Minimal ongoing waste", desc: "Reusable case with bamboo pulp refill pods. Each refill lasts 4 to 6 weeks. Leaping Bunny and Vegan certified.", pros: ["Refills reduce waste", "98% natural ingredients", "Long lasting refills"], cons: ["Case has recycled plastic", "Proprietary refill system", "Higher upfront cost"] },
+      // Bathroom > Deodorants
+      { cat: "Bathroom", sub: "Deodorants", img: "414Knl0CvQL", name: "Native Plastic Free Deodorant", asin: "B0B69J266X", bestFor: "Best everyday option", tier: "$", effectiveness: "Zero plastic packaging", desc: "Naturally derived ingredients in paperboard packaging from responsibly managed forests. 72 hour odor control with coconut oil and shea butter.", pros: ["Plastic free paperboard tube", "72 hour odor control", "50,000+ five star reviews"], cons: ["Contains baking soda", "Paperboard can soften", "One scent per stick"] },
+      { cat: "Bathroom", sub: "Deodorants", img: "31nlKM1LN1L", name: "HiBAR Eucalyptus Deodorant", asin: "B0DFK4S553", bestFor: "Best solid bar option", tier: "$", effectiveness: "Zero plastic packaging", desc: "Plastic free solid deodorant with sunflower seed wax, rice bran, and shea butter. Paraben free and aluminum free. Vegan.", pros: ["100% plastic free", "Paraben and aluminum free", "Light eucalyptus scent"], cons: ["Effectiveness varies by climate", "Smaller size bar", "Less common brand"] },
+      { cat: "Bathroom", sub: "Deodorants", img: "41fKbX8AeXL", name: "Wild Refillable Deodorant", asin: "B0BTZ7YHHZ", bestFor: "Best refillable system", tier: "$$", effectiveness: "Minimal ongoing waste", desc: "Reusable case with bamboo pulp refill pods. Each refill lasts 4 to 6 weeks. Leaping Bunny and Vegan certified.", pros: ["Refills reduce waste", "98% natural ingredients", "Long lasting refills"], cons: ["Case has recycled plastic", "Proprietary refill system", "Higher upfront cost"] },
 
-      // Clean Body > Toothcare
-      { cat: "Clean Body", sub: "Toothcare", img: "41z5IkrgZeL", name: "David's Natural Toothpaste", asin: "B00ZTJC26C", bestFor: "Best plastic free toothpaste", tier: "$", effectiveness: "Zero plastic packaging", desc: "Premium natural toothpaste in a recyclable metal tube. Whitening formula with no SLS, sulfates, or artificial flavors.", pros: ["Recyclable metal tube", "No SLS or sulfates", "Whitening formula"], cons: ["Smaller tube than mainstream", "Mint is strong for some"] },
-      { cat: "Clean Body", sub: "Toothcare", img: "61k9W4xrhRL", name: "Bite Toothpaste Bits", asin: "B0B8F3924K", bestFor: "Best zero waste option", tier: "$$", effectiveness: "Zero plastic packaging", desc: "Dry toothpaste tablets in a refillable glass jar. Just bite, brush, and rinse. No tube to throw away.", pros: ["Glass jar, zero waste", "TSA friendly for travel", "Vegan and cruelty free"], cons: ["Different texture than paste", "Less foamy than regular", "Refills add up"] },
-      { cat: "Clean Body", sub: "Toothcare", img: "316xMyiBd4L", name: "Plus Ultra Organic Toothpaste", asin: "B0C15JP69H", bestFor: "Best for sensitive teeth", tier: "$$", effectiveness: "Zero plastic packaging", desc: "Organic fluoride free toothpaste in a recyclable aluminum tube. Made with aloe, peppermint, and bamboo extract.", pros: ["Recyclable aluminum tube", "Organic ingredients", "Fluoride free option"], cons: ["Higher price point", "Sold as 2 pack", "Smaller brand"] },
-      { cat: "Clean Body", sub: "Toothcare", img: "418SVv2aMTL", name: "Bamboo Toothbrush Set (10 Pack)", asin: "B08172V3Y5", bestFor: "Easiest bathroom swap", tier: "$", effectiveness: "Keeps 10 brushes from landfill", desc: "Biodegradable bamboo handles with BPA free soft bristles. Individually numbered for families.", pros: ["Compostable handles", "Soft BPA free bristles", "Numbered for families"], cons: ["Nylon bristles not compostable", "Dry between uses"] },
+      // Bathroom > Toothcare
+      { cat: "Bathroom", sub: "Toothcare", img: "41z5IkrgZeL", name: "David's Natural Toothpaste", asin: "B00ZTJC26C", bestFor: "Best plastic free toothpaste", tier: "$", effectiveness: "Zero plastic packaging", desc: "Premium natural toothpaste in a recyclable metal tube. Whitening formula with no SLS, sulfates, or artificial flavors.", pros: ["Recyclable metal tube", "No SLS or sulfates", "Whitening formula"], cons: ["Smaller tube than mainstream", "Mint is strong for some"] },
+      { cat: "Bathroom", sub: "Toothcare", img: "61k9W4xrhRL", name: "Bite Toothpaste Bits", asin: "B0B8F3924K", bestFor: "Best zero waste option", tier: "$$", effectiveness: "Zero plastic packaging", desc: "Dry toothpaste tablets in a refillable glass jar. Just bite, brush, and rinse. No tube to throw away.", pros: ["Glass jar, zero waste", "TSA friendly for travel", "Vegan and cruelty free"], cons: ["Different texture than paste", "Less foamy than regular", "Refills add up"] },
+      { cat: "Bathroom", sub: "Toothcare", img: "316xMyiBd4L", name: "Plus Ultra Organic Toothpaste", asin: "B0C15JP69H", bestFor: "Best for sensitive teeth", tier: "$$", effectiveness: "Zero plastic packaging", desc: "Organic fluoride free toothpaste in a recyclable aluminum tube. Made with aloe, peppermint, and bamboo extract.", pros: ["Recyclable aluminum tube", "Organic ingredients", "Fluoride free option"], cons: ["Higher price point", "Sold as 2 pack", "Smaller brand"] },
+      { cat: "Bathroom", sub: "Toothcare", img: "418SVv2aMTL", name: "Bamboo Toothbrush Set (10 Pack)", asin: "B08172V3Y5", bestFor: "Easiest bathroom swap", tier: "$", effectiveness: "Keeps 10 brushes from landfill", desc: "Biodegradable bamboo handles with BPA free soft bristles. Individually numbered for families.", pros: ["Compostable handles", "Soft BPA free bristles", "Numbered for families"], cons: ["Nylon bristles not compostable", "Dry between uses"] },
+
+      // Bathroom > Shower Curtains
+      { cat: "Bathroom", sub: "Shower Curtains", img: "41mvTcSgDTL", name: "Bean Products Cotton Shower Curtain", asin: "B0019JBJTY", bestFor: "Best organic cotton option", tier: "$$", effectiveness: "Eliminates PVC off gassing", desc: "100% organic cotton canvas shower curtain. No liner needed. Machine washable and naturally mildew resistant when dried between uses.", pros: ["100% organic cotton", "No liner needed", "Machine washable"], cons: ["Takes longer to dry", "Needs occasional washing", "Heavier than plastic"] },
+      { cat: "Bathroom", sub: "Shower Curtains", img: "41r9WNHxCQL", name: "Barossa Design Cotton Shower Curtain", asin: "B07PZMRNKF", bestFor: "Best value fabric curtain", tier: "$", effectiveness: "Eliminates PVC off gassing", desc: "Honeycomb waffle weave cotton and polyester blend. Water repellent without a plastic liner. Weighted hem keeps it in place.", pros: ["Water repellent fabric", "Weighted hem", "Affordable price"], cons: ["Cotton poly blend (not 100% natural)", "May need a liner for heavy splashing", "Limited colors"] },
+      { cat: "Bathroom", sub: "Shower Curtains", img: "31dnT2pmxWL", name: "AmazerBath Linen Shower Curtain", asin: "B0B2DSFDB4", bestFor: "Best linen option", tier: "$$", effectiveness: "Eliminates PVC off gassing", desc: "Natural linen blend shower curtain with a weighted hem. Linen dries faster than cotton and resists mildew naturally. No PVC, no vinyl, no chemical smell.", pros: ["Fast drying linen", "Naturally mildew resistant", "No chemical off gassing"], cons: ["May need a liner for full coverage", "Wrinkles naturally", "Linen blend not 100% linen"] },
 
       // Bedroom
       // Bedroom > Mattresses
