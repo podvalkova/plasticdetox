@@ -1474,6 +1474,7 @@
         <button class="resource-tab active" onclick="showResourceTab('articles')">Articles</button>
         <button class="resource-tab" onclick="showResourceTab('research')">Research Papers</button>
         <button class="resource-tab" onclick="showResourceTab('documentaries')">Documentaries</button>
+        <button class="resource-tab" onclick="showResourceTab('organizations')">Organizations</button>
       </div>
 
       <!-- ARTICLES TAB -->
@@ -1640,6 +1641,12 @@
       <!-- DOCUMENTARIES TAB -->
       <div id="tab-documentaries" style="display:none;">
         <div class="resource-grid" id="documentaries-grid"></div>
+      </div>
+
+      <!-- ORGANIZATIONS TAB -->
+      <div id="tab-organizations" style="display:none;">
+        <p style="color:var(--text-muted);margin-bottom:1.5rem;">Nonprofits and foundations leading the fight against plastic pollution and microplastic exposure. Consider supporting their work.</p>
+        <div class="resource-grid" id="organizations-grid"></div>
       </div>
     </section>
   </main>
@@ -2052,6 +2059,21 @@
       { title: "Microplastic Madness", year: "2019", platform: "VOD", url: "https://www.microplasticmadness.org/", desc: "Brooklyn fifth graders investigate microplastic pollution in their local waterways and become citizen scientists and activists, sparking a citywide movement." }
     ];
 
+    const organizations = [
+      { name: "5 Gyres Institute", focus: "Research & Policy", url: "https://www.5gyres.org/", desc: "Conducts open water research on plastic pollution across all five subtropical gyres and advocates for science based policy solutions. Their research has been instrumental in passing microbead bans and corporate pledges to reduce plastic packaging." },
+      { name: "Plastic Soup Foundation", focus: "Awareness & Tools", url: "https://www.plasticsoupfoundation.org/en/", desc: "Netherlands based foundation that created the Beat the Microbead app, which lets consumers scan cosmetics for hidden microplastics. They also run campaigns pushing brands and policymakers to eliminate plastic ingredients from personal care products." },
+      { name: "Ocean Conservancy", focus: "Ocean Cleanup & Policy", url: "https://oceanconservancy.org/", desc: "Organizes the International Coastal Cleanup, the world's largest volunteer effort for ocean health. They also work on policy to reduce plastic production at the source and have helped advance the Global Plastics Treaty negotiations." },
+      { name: "Break Free From Plastic", focus: "Global Movement", url: "https://www.breakfreefromplastic.org/", desc: "A global movement of over 2,400 organizations demanding massive reductions in single use plastic. They publish an annual Brand Audit naming the top corporate plastic polluters, creating accountability and pressure for systemic change." },
+      { name: "Plastic Pollution Coalition", focus: "Education & Advocacy", url: "https://www.plasticpollutioncoalition.org/", desc: "A global alliance of organizations, businesses, and thought leaders working toward a world free of plastic pollution and its toxic impacts on humans, animals, waterways, oceans, and the environment." },
+      { name: "The Story of Stuff Project", focus: "Systemic Change", url: "https://www.storyofstuff.org/", desc: "Advocates for systemic solutions to the throwaway culture that drives plastic production. Known for their viral documentary 'The Story of Stuff' and campaigns that push corporate and government accountability on waste and toxics." },
+      { name: "Surfrider Foundation", focus: "Coastal Protection", url: "https://www.surfrider.org/", desc: "Grassroots network of over 100 chapters working to protect oceans, waves, and beaches. Their Blue Water Task Force runs water quality testing, and they have helped pass over 300 anti plastic ordinances across the United States." },
+      { name: "Plastic Health Coalition", focus: "Health Research", url: "https://www.plastichealthcoalition.org/", desc: "Focuses specifically on the health impacts of plastic and microplastic exposure on humans. They fund and promote research connecting plastic chemicals to endocrine disruption, reproductive harm, and chronic disease." },
+      { name: "Ellen MacArthur Foundation", focus: "Circular Economy", url: "https://www.ellenmacarthurfoundation.org/", desc: "Works with businesses and governments to accelerate the transition to a circular economy where plastic waste is designed out of the system entirely. Their New Plastics Economy initiative has secured commitments from major brands to rethink packaging." },
+      { name: "Lonely Whale", focus: "Innovation & Culture", url: "https://www.lonelywhale.org/", desc: "Co-founded by actor Adrian Grenier, Lonely Whale drives culture change around ocean health and plastic pollution. They launched the #StopSucking campaign that accelerated the global movement to eliminate plastic straws." },
+      { name: "Minderoo Foundation (Plastic Futures)", focus: "Accountability & Data", url: "https://www.minderoo.org/plastic-waste-makers-index/", desc: "Created the Plastic Waste Makers Index, the first comprehensive dataset tracing single use plastic waste back to the petrochemical companies that produce the raw materials. This data has been key to corporate accountability efforts worldwide." },
+      { name: "CIEL (Center for International Environmental Law)", focus: "Legal & Policy", url: "https://www.ciel.org/issue/plastics-human-health/", desc: "Provides legal analysis connecting the plastics lifecycle to health and environmental harms. Their landmark report 'Plastic & Health: The Hidden Costs of a Plastic Planet' documented the health impacts of plastic at every stage from extraction to disposal." }
+    ];
+
     // ==================== STATE ====================
     let currentCategory = 0;
     let currentQuestion = 0;
@@ -2107,10 +2129,12 @@
       document.getElementById("tab-articles").style.display = tab === "articles" ? "block" : "none";
       document.getElementById("tab-research").style.display = tab === "research" ? "block" : "none";
       document.getElementById("tab-documentaries").style.display = tab === "documentaries" ? "block" : "none";
+      document.getElementById("tab-organizations").style.display = tab === "organizations" ? "block" : "none";
       document.querySelectorAll(".resource-tab").forEach(btn => btn.classList.remove("active"));
       event.target.classList.add("active");
       if (tab === "research") renderResources();
       if (tab === "documentaries") renderDocumentaries();
+      if (tab === "organizations") renderOrganizations();
     }
 
     function renderResources(filtered) {
@@ -2140,6 +2164,18 @@
           <div class="resource-title">${d.title}</div>
           <div class="resource-summary">${d.desc}</div>
           <a href="${d.url}" target="_blank" rel="noopener" class="resource-link">Watch now \u2192</a>
+        </div>
+      `).join("");
+    }
+
+    function renderOrganizations() {
+      const grid = document.getElementById("organizations-grid");
+      grid.innerHTML = organizations.map(o => `
+        <div class="resource-card">
+          <div class="resource-tag">${o.focus}</div>
+          <div class="resource-title">${o.name}</div>
+          <div class="resource-summary">${o.desc}</div>
+          <a href="${o.url}" target="_blank" rel="noopener" class="resource-link">Visit website \u2192</a>
         </div>
       `).join("");
     }
@@ -3017,6 +3053,7 @@
         document.querySelector(".resource-tab").classList.add("active");
         document.getElementById("tab-articles").style.display = "block";
         document.getElementById("tab-research").style.display = "none";
+        document.getElementById("tab-organizations").style.display = "none";
       }
     } else if (window.location.hash === "#store") {
       showStore();
