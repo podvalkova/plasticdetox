@@ -1616,6 +1616,17 @@
               </div>
             </div>
           </a>
+          <a href="articles/microplastics-in-bedroom-air.html" class="article-card">
+            <div class="article-card-body">
+              <span class="article-card-tag">Bedroom Guide</span>
+              <h2 class="article-card-title">6 Swaps to Stop Breathing Plastic in Your Bedroom</h2>
+              <p class="article-card-excerpt">Your bedroom air has up to 17,000 microplastic fibers per cubic meter. These 6 simple swaps to your pillows, sheets, and air can reduce your nighttime exposure by 90%.</p>
+              <div class="article-card-meta">
+                <span>9 min read</span>
+                <span>April 2026</span>
+              </div>
+            </div>
+          </a>
           <a href="articles/microplastics-in-indoor-air.html" class="article-card">
             <div class="article-card-body">
               <span class="article-card-tag">Indoor Air Guide</span>
@@ -2795,7 +2806,7 @@
       "Kitchen Tools": "Plastic utensils melt and leach chemicals when they touch hot food. Plastic cutting boards shed millions of microparticles from knife cuts every year. These swaps are cheap, easy, and make an immediate difference.",
       "Food Storage": "Plastic containers leach chemicals into food, especially when heated or scratched. Glass and beeswax alternatives keep your food clean and chemical free.",
       "Bathroom": "Your bathroom is full of plastic bottles that add synthetic fragrances and phthalates to your skin. These swaps cut plastic waste and chemical exposure at the same time.",
-      "Bedroom": "You spend a third of your life in bed. Conventional mattresses contain polyurethane foam, fiberglass, and flame retardants, while synthetic sheets shed microplastic fibers into your skin every night. These swaps eliminate all of it. <a href='articles/microplastics-in-indoor-air.html' target='_blank' rel='noopener' style='color:var(--accent-dark);font-weight:600;'>Learn how to reduce microplastics in your indoor air.</a>",
+      "Bedroom": "You spend a third of your life in bed. Conventional mattresses contain polyurethane foam, fiberglass, and flame retardants, while synthetic sheets shed microplastic fibers into your skin every night. These swaps eliminate all of it. <a href='articles/microplastics-in-bedroom-air.html' target='_blank' rel='noopener' style='color:var(--accent-dark);font-weight:600;'>6 swaps to stop breathing plastic in bed →</a>",
       "Cleaning and Laundry": "Conventional cleaning products come in single use plastic bottles and laundry detergent jugs pile up fast. These swaps eliminate plastic waste from your cleaning routine.",
       "Living Room": "Petroleum candles fill your air with toxic fumes and synthetic fibers float through every room. These products clean up your living space.",
       "Kids": "Children are especially vulnerable to plastic chemicals because they mouth everything and their bodies are still developing. These are the safest alternatives.",
@@ -3067,6 +3078,22 @@
       document.getElementById("resume-banner").style.display = "block";
     }
 
+  </script>
+
+  <!-- Affiliate & outbound link click tracking -->
+  <script>
+    document.addEventListener('click', function(e) {
+      var link = e.target.closest('a[href]');
+      if (!link) return;
+      var href = link.href;
+      if (href && link.hostname !== window.location.hostname) {
+        var isAffiliate = link.hasAttribute('rel') && link.getAttribute('rel').indexOf('sponsored') !== -1;
+        gtag('event', isAffiliate ? 'affiliate_click' : 'outbound_click', {
+          link_url: href,
+          link_text: (link.textContent || '').trim().substring(0, 100)
+        });
+      }
+    });
   </script>
 </body>
 </html>
