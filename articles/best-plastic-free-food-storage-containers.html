@@ -889,5 +889,40 @@
       <a href="mailto:hello@plasticdetox.org" style="color:#78716c;">hello@plasticdetox.org</a>
     </div>
   </footer>
+
+  <!-- Scroll depth & outbound link tracking -->
+  <script>
+    (function() {
+      var fired = {};
+      var thresholds = [25, 50, 75, 100];
+      function getScrollPercent() {
+        var h = document.documentElement, b = document.body;
+        var st = window.pageYOffset || h.scrollTop || b.scrollTop || 0;
+        var sh = Math.max(h.scrollHeight, b.scrollHeight) - Math.max(h.clientHeight, b.clientHeight);
+        return sh > 0 ? Math.round((st / sh) * 100) : 0;
+      }
+      window.addEventListener('scroll', function() {
+        var pct = getScrollPercent();
+        for (var i = 0; i < thresholds.length; i++) {
+          var t = thresholds[i];
+          if (pct >= t && !fired[t]) {
+            fired[t] = true;
+            gtag('event', 'scroll_depth', { percent: t, page: window.location.pathname });
+          }
+        }
+      });
+      document.addEventListener('click', function(e) {
+        var link = e.target.closest('a[href]');
+        if (!link) return;
+        if (link.hostname !== window.location.hostname) {
+          var isAff = link.getAttribute('rel') && link.getAttribute('rel').indexOf('sponsored') !== -1;
+          gtag('event', isAff ? 'affiliate_click' : 'outbound_click', {
+            link_url: link.href,
+            link_text: (link.textContent || '').trim().substring(0, 100)
+          });
+        }
+      });
+    })();
+  </script>
 </body>
 </html>

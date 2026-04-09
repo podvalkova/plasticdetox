@@ -14,13 +14,13 @@
   <meta property="og:title" content="How to Remove Microplastics from Drinking Water (2026)">
   <meta property="og:description" content="Complete guide to removing microplastics from your drinking water. Compare filter types, learn what actually works, and find the best system for your home.">
   <meta property="og:url" content="https://plasticdetox.org/articles/how-to-remove-microplastics-from-drinking-water.html">
-  <meta property="og:image" content="https://plasticdetox.org/images/water.png">
+  <meta property="og:image" content="https://plasticdetox.org/images/water.webp">
   <meta property="og:site_name" content="Plastic Detox">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="How to Remove Microplastics from Drinking Water (2026)">
   <meta name="twitter:description" content="Complete guide to removing microplastics from your drinking water. Compare filter types, learn what actually works, and find the best system for your home.">
-  <meta name="twitter:image" content="https://plasticdetox.org/images/water.png">
+  <meta name="twitter:image" content="https://plasticdetox.org/images/water.webp">
 
   <script type="application/ld+json">
   {
@@ -32,7 +32,7 @@
     "publisher": { "@type": "Organization", "name": "Plastic Detox", "url": "https://plasticdetox.org" },
     "datePublished": "2026-03-25",
     "dateModified": "2026-04-04",
-    "image": "https://plasticdetox.org/images/water.png",
+    "image": "https://plasticdetox.org/images/water.webp",
     "mainEntityOfPage": "https://plasticdetox.org/articles/how-to-remove-microplastics-from-drinking-water.html"
   }
   </script>
@@ -154,7 +154,7 @@
     <h1>How to Remove Microplastics from Drinking Water</h1>
     <div class="article-meta">Updated April 4, 2026 · 16 min read · <em>This article contains affiliate links. If you purchase through our links, we may earn a small commission at no extra cost to you.</em></div>
 
-    <img src="../images/water.png" alt="Illustration of a glass of water filled with microplastics, asking what is really in your water" class="article-img">
+    <img src="../images/water.webp" alt="Illustration of a glass of water filled with microplastics, asking what is really in your water" class="article-img">
 
     <nav class="toc">
       <div class="toc-title">Table of Contents</div>
@@ -404,14 +404,14 @@
 
     <div class="callout">
       <div class="callout-title">What About Bottled Water?</div>
-      Bottled water is not the solution. A 2018 study tested 259 bottles from 11 countries and found microplastics in 93% of them, with an average of 325 particles per liter. Some brands had over 10,000 particles per liter. Bottled water in plastic has more microplastics than most tap water, not fewer. Glass-bottled water is better but expensive and impractical for daily use. Filtering your own tap water is the best approach.
+      Bottled water is not the solution. A 2018 study tested 259 bottles from 11 countries and found microplastics in 93% of them, with an average of 325 particles per liter. Some brands had over 10,000 particles per liter. Bottled water in plastic has more microplastics than most tap water, not fewer. Glass-bottled water is better but expensive and impractical for daily use. Filtering your own tap water is the best approach. Water is just one piece of the puzzle. If you are working on reducing plastic exposure overall, our <a href="how-to-start-reducing-plastic-exposure.html">step by step guide to reducing plastic exposure</a> helps you prioritize the changes that make the biggest difference.
     </div>
 
     <h2 id="cooking-water">Don't Forget Cooking Water</h2>
 
     <p>This is the step most people miss. You filter your drinking water but then boil pasta, rice, and soups in unfiltered tap water. All the contaminants you're filtering out of your glass end up in your food.</p>
 
-    <p>If you have an under-sink RO system, use filtered water for all cooking. If you use a pitcher or countertop system, keep enough filtered water on hand for cooking too. It takes a bit more planning but makes your filtration investment much more effective.</p>
+    <p>If you have an under-sink RO system, use filtered water for all cooking. If you use a pitcher or countertop system, keep enough filtered water on hand for cooking too. It takes a bit more planning but makes your filtration investment much more effective. Once you have clean water covered, switching to <a href="cast-iron-vs-stainless-steel-vs-ceramic-cookware.html">PFAS free cookware</a> and <a href="best-plastic-free-food-storage-containers.html">plastic free food storage</a> eliminates plastic from the rest of your kitchen.</p>
 
     <h2 id="whole-house-vs-point">Whole-House vs. Point-of-Use</h2>
 
@@ -669,5 +669,40 @@
       <a href="mailto:hello@plasticdetox.org" style="color:#78716c;">hello@plasticdetox.org</a>
     </div>
   </footer>
+
+  <!-- Scroll depth & outbound link tracking -->
+  <script>
+    (function() {
+      var fired = {};
+      var thresholds = [25, 50, 75, 100];
+      function getScrollPercent() {
+        var h = document.documentElement, b = document.body;
+        var st = window.pageYOffset || h.scrollTop || b.scrollTop || 0;
+        var sh = Math.max(h.scrollHeight, b.scrollHeight) - Math.max(h.clientHeight, b.clientHeight);
+        return sh > 0 ? Math.round((st / sh) * 100) : 0;
+      }
+      window.addEventListener('scroll', function() {
+        var pct = getScrollPercent();
+        for (var i = 0; i < thresholds.length; i++) {
+          var t = thresholds[i];
+          if (pct >= t && !fired[t]) {
+            fired[t] = true;
+            gtag('event', 'scroll_depth', { percent: t, page: window.location.pathname });
+          }
+        }
+      });
+      document.addEventListener('click', function(e) {
+        var link = e.target.closest('a[href]');
+        if (!link) return;
+        if (link.hostname !== window.location.hostname) {
+          var isAff = link.getAttribute('rel') && link.getAttribute('rel').indexOf('sponsored') !== -1;
+          gtag('event', isAff ? 'affiliate_click' : 'outbound_click', {
+            link_url: link.href,
+            link_text: (link.textContent || '').trim().substring(0, 100)
+          });
+        }
+      });
+    })();
+  </script>
 </body>
 </html>

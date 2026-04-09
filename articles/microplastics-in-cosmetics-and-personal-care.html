@@ -158,7 +158,7 @@
 
     <p>Every day, the average person applies 9 to 15 personal care products to their body before leaving the house. Shampoo, toothpaste, moisturizer, sunscreen, deodorant, foundation. According to a 2023 study by the Plastic Soup Foundation, <strong>87% of these products contain at least one type of microplastic ingredient</strong>. That means most people are rubbing, spreading, and rinsing synthetic plastic polymers directly onto their skin, hair, lips, and gums every single morning.</p>
 
-    <p>These are not just the visible plastic microbeads that made headlines a decade ago. Most of the plastic in your cosmetics is invisible: liquid polymers that create silky textures, film forming agents that make makeup last longer, and synthetic waxes that give lip products their shine. The Microbead Free Waters Act of 2015 banned solid microbeads in rinse off products, but it left the vast majority of plastic ingredients in personal care completely untouched.</p>
+    <p>These are not just the visible plastic microbeads that made headlines a decade ago. Most of the plastic in your cosmetics is invisible: liquid polymers that create silky textures, film forming agents that make makeup last longer, and synthetic waxes that give lip products their shine. The Microbead Free Waters Act of 2015 banned solid microbeads in rinse off products, but it left the vast majority of plastic ingredients in personal care completely untouched. Many of these ingredients contain or overlap with <a href="how-to-avoid-bpa-and-phthalates.html">BPA and phthalates, which carry their own set of health risks</a>.</p>
 
     <p>The good news: switching to plastic free personal care is easier and more affordable than it was even two years ago. This guide breaks down exactly which products contain the most microplastics, how to read ingredient labels, and the best alternatives for every step of your routine.</p>
 
@@ -195,7 +195,7 @@
 
     <div class="callout">
       <div class="callout-title">The Scale of the Problem</div>
-      A 2022 report by the United Nations Environment Programme estimated that the cosmetics and personal care industry uses approximately 16,000 tonnes of plastic microingredients per year globally. A single bottle of facial scrub could contain as many as 330,000 plastic particles. When these wash down the drain, most wastewater treatment plants cannot filter particles smaller than 0.3 millimeters, so they pass directly into rivers and oceans.
+      A 2022 report by the United Nations Environment Programme estimated that the cosmetics and personal care industry uses approximately 16,000 tonnes of plastic microingredients per year globally. A single bottle of facial scrub could contain as many as 330,000 plastic particles. When these wash down the drain, most wastewater treatment plants cannot filter particles smaller than 0.3 millimeters, so they pass directly into rivers and oceans. The same issue affects <a href="microplastics-in-clothing-and-laundry.html">synthetic fibers shed during laundry</a> and <a href="reduce-microplastics-in-cleaning-products.html">microplastics from cleaning products</a>.
     </div>
 
     <!-- SECTION 2: Which Products Contain the Most -->
@@ -778,5 +778,40 @@
       <a href="mailto:hello@plasticdetox.org" style="color:#78716c;">hello@plasticdetox.org</a>
     </div>
   </footer>
+
+  <!-- Scroll depth & outbound link tracking -->
+  <script>
+    (function() {
+      var fired = {};
+      var thresholds = [25, 50, 75, 100];
+      function getScrollPercent() {
+        var h = document.documentElement, b = document.body;
+        var st = window.pageYOffset || h.scrollTop || b.scrollTop || 0;
+        var sh = Math.max(h.scrollHeight, b.scrollHeight) - Math.max(h.clientHeight, b.clientHeight);
+        return sh > 0 ? Math.round((st / sh) * 100) : 0;
+      }
+      window.addEventListener('scroll', function() {
+        var pct = getScrollPercent();
+        for (var i = 0; i < thresholds.length; i++) {
+          var t = thresholds[i];
+          if (pct >= t && !fired[t]) {
+            fired[t] = true;
+            gtag('event', 'scroll_depth', { percent: t, page: window.location.pathname });
+          }
+        }
+      });
+      document.addEventListener('click', function(e) {
+        var link = e.target.closest('a[href]');
+        if (!link) return;
+        if (link.hostname !== window.location.hostname) {
+          var isAff = link.getAttribute('rel') && link.getAttribute('rel').indexOf('sponsored') !== -1;
+          gtag('event', isAff ? 'affiliate_click' : 'outbound_click', {
+            link_url: link.href,
+            link_text: (link.textContent || '').trim().substring(0, 100)
+          });
+        }
+      });
+    })();
+  </script>
 </body>
 </html>

@@ -15,12 +15,12 @@
   <meta property="og:description" content="Your daily coffee habit may expose you to billions of microplastic particles. Learn which brewing methods, beans, and cups are safest.">
   <meta property="og:url" content="https://plasticdetox.org/articles/how-to-enjoy-coffee-without-plastic.html">
   <meta property="og:site_name" content="Plastic Detox">
-  <meta property="og:image" content="https://plasticdetox.org/images/coffe.png">
+  <meta property="og:image" content="https://plasticdetox.org/images/coffe.webp">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="The Complete Guide to Plastic-Free Coffee: Beans, Brewers, and Beyond (2026)">
   <meta name="twitter:description" content="Your daily coffee habit may expose you to billions of microplastic particles. Learn which brewing methods, beans, and cups are safest.">
-  <meta name="twitter:image" content="https://plasticdetox.org/images/coffe.png">
+  <meta name="twitter:image" content="https://plasticdetox.org/images/coffe.webp">
 
   <script type="application/ld+json">
   {
@@ -142,7 +142,7 @@
       Updated March 27, 2026 · 16 min read · <em>This article contains affiliate links. If you purchase through our links, we may earn a small commission at no extra cost to you.</em>
     </div>
 
-    <img src="../images/coffe.png" alt="Illustration of a coffee cup filled with colorful plastic pieces, asking how much plastic is in your morning coffee" class="article-img">
+    <img src="../images/coffe.webp" alt="Illustration of a coffee cup filled with colorful plastic pieces, asking how much plastic is in your morning coffee" class="article-img">
 
     <p>If you drink coffee every day, your morning routine might be one of your biggest sources of microplastic exposure. A single plastic coffee pod can release <strong>billions of nanoplastic particles</strong> into your cup. Disposable cups, plastic lids, chemical solvents in decaf processing, and pesticides on conventional beans all add to the problem.</p>
 
@@ -183,7 +183,7 @@
       <li><strong>Conventional beans</strong> can carry pesticide residues that survive roasting.</li>
     </ul>
 
-    <p>The cumulative exposure is significant. If you drink two cups a day, that is over 700 cups a year. Every small improvement multiplies across every single cup.</p>
+    <p>The cumulative exposure is significant. If you drink two cups a day, that is over 700 cups a year. Every small improvement multiplies across every single cup. The same logic applies to <a href="how-to-avoid-microplastics-in-tea.html">tea, which has its own set of plastic exposure risks</a>.</p>
 
     <!-- SECTION 2: PODS -->
     <h2 id="pods">2. Coffee Pods: The Biggest Problem</h2>
@@ -318,7 +318,7 @@
 
     <div class="callout">
       <div class="callout-title">The Simple Rule</div>
-      If every surface that touches hot water is glass, ceramic, or stainless steel, your microplastic exposure from brewing is zero. Check your brewer: look at the water reservoir, the brew basket, the carafe, and any internal tubing.
+      If every surface that touches hot water is glass, ceramic, or stainless steel, your microplastic exposure from brewing is zero. Check your brewer: look at the water reservoir, the brew basket, the carafe, and any internal tubing. The water itself matters too. Our guide on <a href="how-to-remove-microplastics-from-drinking-water.html">removing microplastics from drinking water</a> covers the best filtration options for the water you brew with.
     </div>
 
     <h3>Glass French Press</h3>
@@ -628,5 +628,40 @@
       <a href="mailto:hello@plasticdetox.org" style="color:#78716c;">hello@plasticdetox.org</a>
     </div>
   </footer>
+
+  <!-- Scroll depth & outbound link tracking -->
+  <script>
+    (function() {
+      var fired = {};
+      var thresholds = [25, 50, 75, 100];
+      function getScrollPercent() {
+        var h = document.documentElement, b = document.body;
+        var st = window.pageYOffset || h.scrollTop || b.scrollTop || 0;
+        var sh = Math.max(h.scrollHeight, b.scrollHeight) - Math.max(h.clientHeight, b.clientHeight);
+        return sh > 0 ? Math.round((st / sh) * 100) : 0;
+      }
+      window.addEventListener('scroll', function() {
+        var pct = getScrollPercent();
+        for (var i = 0; i < thresholds.length; i++) {
+          var t = thresholds[i];
+          if (pct >= t && !fired[t]) {
+            fired[t] = true;
+            gtag('event', 'scroll_depth', { percent: t, page: window.location.pathname });
+          }
+        }
+      });
+      document.addEventListener('click', function(e) {
+        var link = e.target.closest('a[href]');
+        if (!link) return;
+        if (link.hostname !== window.location.hostname) {
+          var isAff = link.getAttribute('rel') && link.getAttribute('rel').indexOf('sponsored') !== -1;
+          gtag('event', isAff ? 'affiliate_click' : 'outbound_click', {
+            link_url: link.href,
+            link_text: (link.textContent || '').trim().substring(0, 100)
+          });
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
