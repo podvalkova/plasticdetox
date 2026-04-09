@@ -290,7 +290,7 @@
     <!-- SECTION 3: LAUNDRY -->
     <h2 id="laundry">3. Laundry Detergent and Microfiber Pollution</h2>
 
-    <p>Laundry is the single largest source of microplastic pollution from any household activity. A single wash cycle with synthetic clothing can release 700,000 microplastic fibers into the wastewater. The detergent you use and how you wash both matter. Our <a href="microplastics-in-clothing-and-laundry.html">complete guide to microplastics in clothing and laundry</a> goes deeper on fabric choices, washing machine filters, and washing habits that reduce shedding.</p>
+    <p>Laundry is the single largest source of microplastic pollution from any household activity. A single wash cycle with synthetic clothing can release 700,000 microplastic fibers into the wastewater. The detergent you use and how you wash both matter.</p>
 
     <h3>The Problem with Liquid Detergent</h3>
     <p>Liquid laundry detergent typically comes in a large plastic jug that is difficult to recycle even where recycling infrastructure exists. The formulas often contain synthetic surfactants, optical brighteners, synthetic fragrances, and preservatives. After a single use, the jug becomes waste.</p>
@@ -358,7 +358,7 @@
     <!-- SECTION 5: BATHROOM CLEANERS -->
     <h2 id="bathroom">5. Bathroom Cleaners</h2>
 
-    <p>Bathrooms are a cleaning product hotspot. Most people keep separate products for the toilet, the shower/tub, the mirror, and the sink. That means multiple plastic bottles with multiple chemical formulas, most of which can be replaced with a few simple ingredients. Many of these products also contain <a href="how-to-avoid-bpa-and-phthalates.html">phthalates hidden in synthetic fragrances</a>, adding chemical exposure on top of the plastic problem.</p>
+    <p>Bathrooms are a cleaning product hotspot. Most people keep separate products for the toilet, the shower/tub, the mirror, and the sink. That means multiple plastic bottles with multiple chemical formulas, most of which can be replaced with a few simple ingredients.</p>
 
     <h3>Toilet Cleaner</h3>
     <p>Conventional toilet bowl cleaners come in thick plastic bottles with angled necks and contain harsh chemicals like hydrochloric acid or sodium hypochlorite. For routine cleaning, a much simpler approach works just as well:</p>
@@ -578,40 +578,5 @@
       <a href="mailto:hello@plasticdetox.org" style="color:#78716c;">hello@plasticdetox.org</a>
     </div>
   </footer>
-
-  <!-- Scroll depth & outbound link tracking -->
-  <script>
-    (function() {
-      var fired = {};
-      var thresholds = [25, 50, 75, 100];
-      function getScrollPercent() {
-        var h = document.documentElement, b = document.body;
-        var st = window.pageYOffset || h.scrollTop || b.scrollTop || 0;
-        var sh = Math.max(h.scrollHeight, b.scrollHeight) - Math.max(h.clientHeight, b.clientHeight);
-        return sh > 0 ? Math.round((st / sh) * 100) : 0;
-      }
-      window.addEventListener('scroll', function() {
-        var pct = getScrollPercent();
-        for (var i = 0; i < thresholds.length; i++) {
-          var t = thresholds[i];
-          if (pct >= t && !fired[t]) {
-            fired[t] = true;
-            gtag('event', 'scroll_depth', { percent: t, page: window.location.pathname });
-          }
-        }
-      });
-      document.addEventListener('click', function(e) {
-        var link = e.target.closest('a[href]');
-        if (!link) return;
-        if (link.hostname !== window.location.hostname) {
-          var isAff = link.getAttribute('rel') && link.getAttribute('rel').indexOf('sponsored') !== -1;
-          gtag('event', isAff ? 'affiliate_click' : 'outbound_click', {
-            link_url: link.href,
-            link_text: (link.textContent || '').trim().substring(0, 100)
-          });
-        }
-      });
-    })();
-  </script>
 </body>
 </html>

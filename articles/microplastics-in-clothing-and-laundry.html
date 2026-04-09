@@ -188,7 +188,7 @@
       A 2016 study in <em>Marine Pollution Bulletin</em> by Napper and Thompson found that a single wash load can release up to 730,000 synthetic microfibers. Wastewater treatment plants capture some of these fibers, but studies show that 40% or more still pass through into waterways.
     </div>
 
-    <p>These fibers do not disappear. Synthetic microfibers have been found in <a href="how-to-remove-microplastics-from-drinking-water.html">tap water and bottled water</a>, sea salt, honey, beer, shellfish, and even in <a href="microplastics-in-indoor-air.html">the air we breathe indoors</a>. A 2019 study by the World Wildlife Fund estimated that people consume approximately 5 grams of plastic per week, roughly the weight of a credit card. Textile fibers are among the most commonly identified microplastic types in environmental samples.</p>
+    <p>These fibers do not disappear. Synthetic microfibers have been found in tap water, bottled water, sea salt, honey, beer, shellfish, and even in the air we breathe. A 2019 study by the World Wildlife Fund estimated that people consume approximately 5 grams of plastic per week, roughly the weight of a credit card. Textile fibers are among the most commonly identified microplastic types in environmental samples.</p>
 
     <p>New clothing sheds more fibers than older garments, but shedding continues throughout the life of the garment. Cutting, sewing, and finishing processes during manufacturing leave loose fiber ends that release readily in the first several washes. However, even well worn synthetic clothing continues to shed at a lower but steady rate.</p>
 
@@ -433,7 +433,7 @@
 
     <p>Most of the conversation around laundry microplastics focuses on washing machines and waterways, but your dryer is a significant and often overlooked source of airborne microplastics. When synthetic clothes tumble in a hot dryer, they shed fibers just as they do in a washing machine. The difference is that dryer fibers are vented directly into the air rather than into water.</p>
 
-    <p>A 2022 study published in <em>Environmental Science and Technology Letters</em> found that a single dryer cycle can release up to 120 million microfibers into the air through the dryer's exhaust vent. These airborne fibers can travel significant distances and have been found in outdoor air samples, on rooftops, and in remote mountain environments far from any urban area. If dryer venting concerns you, our <a href="microplastics-in-indoor-air.html">indoor air microplastics guide</a> covers HEPA purifiers and ventilation strategies that help.</p>
+    <p>A 2022 study published in <em>Environmental Science and Technology Letters</em> found that a single dryer cycle can release up to 120 million microfibers into the air through the dryer's exhaust vent. These airborne fibers can travel significant distances and have been found in outdoor air samples, on rooftops, and in remote mountain environments far from any urban area.</p>
 
     <h3>What You Can Do About It</h3>
 
@@ -600,40 +600,5 @@
       <a href="mailto:hello@plasticdetox.org" style="color:#78716c;">hello@plasticdetox.org</a>
     </div>
   </footer>
-
-  <!-- Scroll depth & outbound link tracking -->
-  <script>
-    (function() {
-      var fired = {};
-      var thresholds = [25, 50, 75, 100];
-      function getScrollPercent() {
-        var h = document.documentElement, b = document.body;
-        var st = window.pageYOffset || h.scrollTop || b.scrollTop || 0;
-        var sh = Math.max(h.scrollHeight, b.scrollHeight) - Math.max(h.clientHeight, b.clientHeight);
-        return sh > 0 ? Math.round((st / sh) * 100) : 0;
-      }
-      window.addEventListener('scroll', function() {
-        var pct = getScrollPercent();
-        for (var i = 0; i < thresholds.length; i++) {
-          var t = thresholds[i];
-          if (pct >= t && !fired[t]) {
-            fired[t] = true;
-            gtag('event', 'scroll_depth', { percent: t, page: window.location.pathname });
-          }
-        }
-      });
-      document.addEventListener('click', function(e) {
-        var link = e.target.closest('a[href]');
-        if (!link) return;
-        if (link.hostname !== window.location.hostname) {
-          var isAff = link.getAttribute('rel') && link.getAttribute('rel').indexOf('sponsored') !== -1;
-          gtag('event', isAff ? 'affiliate_click' : 'outbound_click', {
-            link_url: link.href,
-            link_text: (link.textContent || '').trim().substring(0, 100)
-          });
-        }
-      });
-    })();
-  </script>
 </body>
 </html>
