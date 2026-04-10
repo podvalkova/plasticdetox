@@ -1244,13 +1244,16 @@
       .store-nav { gap: 0.35rem; }
       .store-nav-btn { font-size: 0.75rem; padding: 0.4rem 0.75rem; }
       .product-pros-cons { grid-template-columns: 1fr; }
-      .compare-table { font-size: 0.78rem; }
-      .compare-table th, .compare-table td { padding: 0.5rem 0.65rem; }
+      .compare-table { font-size: 0.78rem; table-layout: fixed; }
+      .compare-table th, .compare-table td { padding: 0.5rem 0.5rem; word-wrap: break-word; }
       .compare-product-cell { min-width: auto; gap: 0.5rem; }
       .compare-product-img { display: none; }
       .compare-pros-cons { flex-direction: column; gap: 0.5rem; }
       .compare-table th:nth-child(5), .compare-table td:nth-child(5) { display: none; }
-      .compare-table th:nth-child(3), .compare-table th:nth-child(4) { width: 30%; }
+      .compare-table th:nth-child(1) { width: 25%; }
+      .compare-table th:nth-child(2) { width: 12%; }
+      .compare-table th:nth-child(3) { width: 32%; }
+      .compare-table th:nth-child(4) { width: 31%; }
       .subcat-tab { font-size: 0.78rem; padding: 0.4rem 0.8rem; }
     }
 
