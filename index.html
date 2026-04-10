@@ -1245,10 +1245,11 @@
       .store-nav-btn { font-size: 0.75rem; padding: 0.4rem 0.75rem; }
       .product-pros-cons { grid-template-columns: 1fr; }
       .compare-table { font-size: 0.78rem; table-layout: fixed; }
-      .compare-table th, .compare-table td { padding: 0.5rem 0.5rem; overflow-wrap: break-word; }
+      .compare-table th, .compare-table td { padding: 0.5rem 0.5rem; overflow-wrap: break-word; overflow: hidden; }
       .compare-table td { hyphens: none; word-break: keep-all; }
-      .compare-product-cell { min-width: auto; gap: 0.5rem; }
-      .compare-product-img { width: 48px; height: 48px; }
+      .compare-product-cell { min-width: auto; gap: 0.5rem; flex-wrap: wrap; }
+      .compare-product-img { width: 48px; height: 48px; flex-shrink: 0; }
+      .compare-product-name { font-size: 0.72rem; }
       .compare-pros-cons { flex-direction: column; gap: 0.5rem; }
       .compare-table th:nth-child(5), .compare-table td:nth-child(5) { display: none; }
       .compare-table th:nth-child(1) { width: 28%; }
