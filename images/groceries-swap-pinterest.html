@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Groceries — Pinterest</title>
+  <style>
+    @font-face {
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 100 900;
+      src: url(inter-latin.woff2) format('woff2');
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #fafaf9;
+      display: flex;
+      justify-content: center;
+      padding: 2rem;
+      font-family: 'Inter', -apple-system, sans-serif;
+    }
+
+    .pin {
+      width: 1000px;
+      height: 1500px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Full bleed image */
+    .pin > img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ─── TOP: headline overlay ─── */
+    .top-overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      padding: 44px 40px 70px;
+      background: linear-gradient(to bottom,
+        rgba(250, 250, 249, 0.95) 0%,
+        rgba(250, 250, 249, 0.85) 60%,
+        rgba(250, 250, 249, 0) 100%
+      );
+      text-align: center;
+    }
+
+    .headline-tag {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: #7c3aed;
+      background: #ede9fe;
+      padding: 6px 18px;
+      border-radius: 100px;
+      margin-bottom: 16px;
+    }
+
+    .top-overlay h1 {
+      font-size: 52px;
+      font-weight: 900;
+      color: #1c1917;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+    }
+
+    /* ─── NUMBERED BADGES ─── */
+    .badge {
+      position: absolute;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      color: #fff;
+      font-size: 17px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow:
+        0 2px 12px rgba(0, 0, 0, 0.3),
+        0 0 0 3px rgba(255, 255, 255, 0.95);
+      z-index: 3;
+    }
+
+    .badge-red { background: #dc2626; }
+    .badge-yellow { background: #ca8a04; }
+    .badge-green { background: #16a34a; }
+
+    .badge-1 { left: 10%; top: 42%; }
+    .badge-2 { left: 30%; top: 55%; }
+    .badge-3 { left: 52%; top: 35%; }
+    .badge-4 { left: 72%; top: 28%; }
+    .badge-5 { left: 78%; top: 50%; }
+
+    /* ─── BOTTOM: swap legend card ─── */
+    .bottom-card {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to bottom,
+        rgba(250, 250, 249, 0) 0%,
+        rgba(250, 250, 249, 0.9) 15%,
+        rgba(250, 250, 249, 0.97) 30%,
+        rgba(250, 250, 249, 1) 50%
+      );
+      padding: 80px 44px 20px;
+    }
+
+    .zone-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+      margin-top: 12px;
+    }
+
+    .zone-label:first-child { margin-top: 0; }
+    .zone-label-red { color: #dc2626; }
+    .zone-label-yellow { color: #a16207; }
+    .zone-label-green { color: #16a34a; }
+
+    .swaps {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 24px;
+    }
+
+    .swap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #fff;
+      border-radius: 10px;
+      padding: 10px 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    .swap-icon {
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .swap-text {
+      flex: 1;
+      font-size: 13px;
+      font-weight: 700;
+      color: #1c1917;
+      line-height: 1.3;
+    }
+
+    .swap-text span {
+      display: block;
+      font-size: 10.5px;
+      font-weight: 500;
+      color: #78716c;
+      margin-top: 1px;
+    }
+
+    /* ─── FOOTER ─── */
+    .footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid #e7e5e4;
+    }
+
+    .footer-stat {
+      font-size: 12px;
+      font-weight: 600;
+      color: #78716c;
+    }
+
+    .footer-url {
+      font-size: 14px;
+      font-weight: 800;
+      color: #7c3aed;
+    }
+  </style>
+</head>
+<body>
+  <div class="pin">
+    <img src="groceries.png" alt="Pencil sketch of grocery items being unpacked on a kitchen counter">
+
+    <div class="top-overlay">
+      <div class="headline-tag">Grocery Guide</div>
+      <h1>Plastic in Groceries:<br>What Really Matters</h1>
+    </div>
+
+    <div class="badge badge-red badge-1">!</div>
+    <div class="badge badge-red badge-2">!</div>
+    <div class="badge badge-yellow badge-3">~</div>
+    <div class="badge badge-yellow badge-4">~</div>
+    <div class="badge badge-green badge-5">✓</div>
+
+    <div class="bottom-card">
+      <div class="zone-label zone-label-red">🔴 Buy plastic free</div>
+      <div class="swaps">
+        <div class="swap">
+          <div class="swap-text">Meat &amp; Cheese<span>High fat + long contact time</span></div>
+        </div>
+        <div class="swap">
+          <div class="swap-text">Oils &amp; Tomatoes<span>Fat soluble or highly acidic</span></div>
+        </div>
+      </div>
+      <div class="zone-label zone-label-yellow">🟡 Transfer at home</div>
+      <div class="swaps">
+        <div class="swap">
+          <div class="swap-text">Milk &amp; Yogurt<span>Pour into glass pitcher</span></div>
+        </div>
+        <div class="swap">
+          <div class="swap-text">Berries &amp; Greens<span>Rinse, move to glass bowl</span></div>
+        </div>
+      </div>
+      <div class="zone-label zone-label-green">🟢 Safe in plastic</div>
+      <div class="swaps">
+        <div class="swap">
+          <div class="swap-text">Frozen Vegs &amp; Fruit<span>Freezing stops leaching</span></div>
+        </div>
+        <div class="swap">
+          <div class="swap-text">Dry Pasta, Rice, Nuts<span>Zero moisture = zero risk</span></div>
+        </div>
+      </div>
+      <div class="footer">
+        <span class="footer-stat">Focus on the red zone. The green zone is not worth worrying about.</span>
+        <span class="footer-url">plasticdetox.org</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
