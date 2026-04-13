@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Groceries — List Only</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #d6d3d1;
+      display: flex;
+      justify-content: center;
+      padding: 2rem;
+      font-family: 'Inter', -apple-system, sans-serif;
+    }
+
+    .pin {
+      width: 1080px;
+      height: 1350px;
+      background: #fafaf9;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 48px 56px;
+    }
+
+    .headline-tag {
+      display: inline-block;
+      font-size: 15px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: #7c3aed;
+      background: #ede9fe;
+      padding: 8px 22px;
+      border-radius: 100px;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 48px;
+      font-weight: 900;
+      color: #1c1917;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .divider {
+      width: 50px;
+      height: 3px;
+      background: #7c3aed;
+      border-radius: 2px;
+      margin-bottom: 32px;
+    }
+
+    .swaps {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .swap {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      background: #fff;
+      border-radius: 16px;
+      padding: 18px 24px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .swap-num {
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
+      max-height: 40px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      color: #fff;
+      font-size: 17px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+
+    .swap-num-red { background: #dc2626; }
+    .swap-num-yellow { background: #ca8a04; }
+    .swap-num-green { background: #16a34a; }
+
+    .swap-text {
+      flex: 1;
+      font-size: 20px;
+      font-weight: 700;
+      color: #1c1917;
+      line-height: 1.3;
+    }
+
+    .swap-text .subtitle {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      color: #78716c;
+      margin-top: 1px;
+    }
+
+    .swap-tips {
+      list-style: none;
+      margin-top: 6px;
+      padding: 0;
+    }
+
+    .swap-tips li {
+      font-size: 13.5px;
+      font-weight: 500;
+      color: #44403c;
+      line-height: 1.35;
+      padding: 2px 0;
+      padding-left: 18px;
+      position: relative;
+    }
+
+    .swap-tips li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: #7c3aed;
+      font-weight: 700;
+    }
+
+    .section-label {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #a8a29e;
+      margin-top: 20px;
+      margin-bottom: 10px;
+      align-self: flex-start;
+    }
+
+    .footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      margin-top: 32px;
+      padding-top: 16px;
+      border-top: 2px solid #e7e5e4;
+    }
+
+    .footer-stat {
+      font-size: 15px;
+      font-weight: 600;
+      color: #78716c;
+    }
+
+    .footer-url {
+      font-size: 17px;
+      font-weight: 800;
+      color: #7c3aed;
+    }
+  </style>
+</head>
+<body>
+  <div class="pin">
+    <div class="headline-tag">Grocery Guide</div>
+    <h1>Grocery Plastic Exposure:<br>The 3 Zone Cheat Sheet</h1>
+    <div class="divider"></div>
+
+    <div class="section-label">🔴 Always buy plastic free</div>
+    <div class="swaps">
+      <div class="swap">
+        <div class="swap-num swap-num-red">1</div>
+        <div class="swap-text">Meat &amp; Seafood<span class="subtitle">High fat + long contact = maximum leaching</span>
+          <ul class="swap-tips">
+            <li>Buy from the butcher counter in paper wrapping</li>
+            <li>Transfer to glass immediately if pre-packaged</li>
+          </ul>
+        </div>
+      </div>
+      <div class="swap">
+        <div class="swap-num swap-num-red">2</div>
+        <div class="swap-text">Cheese &amp; Cooking Oils<span class="subtitle">Fat absorbs BPA and phthalates from packaging</span>
+          <ul class="swap-tips">
+            <li>Buy cheese from deli counter in wax paper</li>
+            <li>Buy oils in glass bottles only</li>
+          </ul>
+        </div>
+      </div>
+      <div class="swap">
+        <div class="swap-num swap-num-red">3</div>
+        <div class="swap-text">Canned Tomatoes &amp; Hot Food<span class="subtitle">Acidity + heat = extreme BPA leaching</span>
+          <ul class="swap-tips">
+            <li>Buy tomato products in glass jars</li>
+            <li>Transfer rotisserie chicken from plastic immediately</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-label">🟡 Buy in plastic, transfer at home</div>
+    <div class="swaps">
+      <div class="swap">
+        <div class="swap-num swap-num-yellow">4</div>
+        <div class="swap-text">Milk, Yogurt, Berries, Leafy Greens<span class="subtitle">Pour into glass pitchers and bowls when you get home</span></div>
+      </div>
+    </div>
+
+    <div class="section-label">🟢 Safe in plastic</div>
+    <div class="swaps">
+      <div class="swap">
+        <div class="swap-num swap-num-green">5</div>
+        <div class="swap-text">Frozen Vegs, Dry Pasta, Bananas, Nuts<span class="subtitle">Dry, frozen, or thick peel = negligible exposure</span></div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span class="footer-stat">Focus on the red zone. Skip the guilt on the green zone.</span>
+      <span class="footer-url">plasticdetox.org</span>
+    </div>
+  </div>
+</body>
+</html>

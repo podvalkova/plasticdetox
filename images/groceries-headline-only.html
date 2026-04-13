@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Groceries — Headline + Image</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #d6d3d1;
+      display: flex;
+      justify-content: center;
+      padding: 2rem;
+      font-family: 'Inter', -apple-system, sans-serif;
+    }
+
+    .pin {
+      width: 1080px;
+      height: 1350px;
+      background: #fafaf9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 56px;
+      text-align: center;
+    }
+
+    .headline-tag {
+      display: inline-block;
+      font-size: 15px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: #7c3aed;
+      background: #ede9fe;
+      padding: 8px 22px;
+      border-radius: 100px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 52px;
+      font-weight: 900;
+      color: #1c1917;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      margin-bottom: 36px;
+    }
+
+    .divider {
+      width: 50px;
+      height: 3px;
+      background: #7c3aed;
+      border-radius: 2px;
+      margin-bottom: 36px;
+    }
+
+    .zones {
+      display: flex;
+      gap: 20px;
+      width: 100%;
+      margin-bottom: 36px;
+    }
+
+    .zone {
+      flex: 1;
+      border-radius: 20px;
+      padding: 28px 24px;
+      text-align: center;
+    }
+
+    .zone-r { background: #fef2f2; }
+    .zone-y { background: #fefce8; }
+    .zone-g { background: #f0fdf4; }
+
+    .zone-icon {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    .zone-label {
+      font-size: 16px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 8px;
+    }
+
+    .zone-r .zone-label { color: #dc2626; }
+    .zone-y .zone-label { color: #a16207; }
+    .zone-g .zone-label { color: #16a34a; }
+
+    .zone-desc {
+      font-size: 13px;
+      font-weight: 600;
+      color: #44403c;
+      line-height: 1.4;
+      margin-bottom: 12px;
+    }
+
+    .zone-items {
+      list-style: none;
+      padding: 0;
+    }
+
+    .zone-items li {
+      font-size: 12px;
+      font-weight: 500;
+      color: #78716c;
+      line-height: 1.5;
+    }
+
+    .footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      margin-top: auto;
+      padding-top: 16px;
+      border-top: 2px solid #e7e5e4;
+    }
+
+    .footer-stat {
+      font-size: 15px;
+      font-weight: 600;
+      color: #78716c;
+    }
+
+    .footer-url {
+      font-size: 17px;
+      font-weight: 800;
+      color: #7c3aed;
+    }
+  </style>
+</head>
+<body>
+  <div class="pin">
+    <div class="headline-tag">Grocery Guide</div>
+    <h1>Plastic in Groceries:<br>What Really Matters</h1>
+    <div class="divider"></div>
+    <div class="zones">
+      <div class="zone zone-r">
+        <div class="zone-icon">🔴</div>
+        <div class="zone-label">Buy Plastic Free</div>
+        <div class="zone-desc">Fatty, acidic, or long contact</div>
+        <ul class="zone-items">
+          <li>Meat &amp; deli</li>
+          <li>Cheese</li>
+          <li>Cooking oils</li>
+          <li>Tomato products</li>
+          <li>Baby food</li>
+          <li>Hot prepared food</li>
+        </ul>
+      </div>
+      <div class="zone zone-y">
+        <div class="zone-icon">🟡</div>
+        <div class="zone-label">Transfer at Home</div>
+        <div class="zone-desc">OK to buy but re-store in glass</div>
+        <ul class="zone-items">
+          <li>Milk &amp; yogurt</li>
+          <li>Butter</li>
+          <li>Berries &amp; soft fruit</li>
+          <li>Leafy greens</li>
+          <li>Condiments</li>
+          <li>Sliced bread</li>
+        </ul>
+      </div>
+      <div class="zone zone-g">
+        <div class="zone-icon">🟢</div>
+        <div class="zone-label">Safe in Plastic</div>
+        <div class="zone-desc">Dry, frozen, or thick peel</div>
+        <ul class="zone-items">
+          <li>Bananas &amp; avocados</li>
+          <li>Frozen vegetables</li>
+          <li>Dry pasta &amp; rice</li>
+          <li>Cereal &amp; granola</li>
+          <li>Nuts &amp; seeds</li>
+          <li>Onions &amp; potatoes</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer">
+      <span class="footer-stat">Focus on the red zone. The green zone is not worth worrying about.</span>
+      <span class="footer-url">plasticdetox.org</span>
+    </div>
+  </div>
+</body>
+</html>
