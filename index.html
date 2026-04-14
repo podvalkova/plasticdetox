@@ -1483,6 +1483,15 @@
       <h2 class="resources-title">Resources</h2>
       <p class="resources-intro">Evidence-based articles and peer-reviewed research on microplastic exposure and how to reduce it.</p>
 
+      <div style="background:var(--accent-light);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem 1.5rem;margin-bottom:1.5rem;text-align:center;">
+        <p style="margin:0 0 0.75rem;font-size:0.95rem;font-weight:600;color:var(--text);">Get new articles and plastic free tips in your inbox</p>
+        <div style="display:flex;align-items:center;gap:0.5rem;justify-content:center;flex-wrap:wrap;">
+          <input type="email" id="nl-email-top" placeholder="your@email.com" style="padding:0.5rem 0.75rem;border:1px solid var(--border);border-radius:8px;font-size:0.9rem;font-family:inherit;width:240px;outline:none;background:#fff;">
+          <button onclick="nlSubscribeTop()" style="padding:0.5rem 1.25rem;background:var(--accent-dark);color:#fff;border:none;border-radius:8px;font-size:0.9rem;font-weight:600;font-family:inherit;cursor:pointer;white-space:nowrap;">Subscribe</button>
+          <span id="nl-msg-top" style="font-size:0.8rem;min-width:60px;"></span>
+        </div>
+      </div>
+
       <div class="resource-tabs">
         <button class="resource-tab active" onclick="showResourceTab('articles')">Articles</button>
         <button class="resource-tab" onclick="showResourceTab('research')">Research Papers</button>
@@ -1812,6 +1821,25 @@
       form.submit();
       document.body.removeChild(form);
       document.getElementById("nl-email").value = "";
+      msg.textContent = "You're in!"; msg.style.color = "#16a34a";
+    }
+
+    function nlSubscribeTop() {
+      const email = document.getElementById("nl-email-top").value.trim();
+      const msg = document.getElementById("nl-msg-top");
+      if (!email || !email.includes("@")) { msg.textContent = "Enter a valid email"; msg.style.color = "#dc2626"; return; }
+      msg.textContent = "Subscribing..."; msg.style.color = "#78716c";
+      const form = document.createElement("form");
+      form.method = "POST";
+      form.action = "https://57a81e5f.sibforms.com/serve/MUIFAHP3LqQp0UznZl5CKFGztCR47r9K-zHK4YRpryoqZLY0Ybvjo2ohqZhvH_BMVq5XmiDkLloNlf4re1hUEUwze8N053Xm1uVawE60egTCSDSSxuCOcXoGkfIne8Me-YdQ4i2Yi3ohxDAHB6ichyo1OAh4ocm5vRXvt2dWjtAJK7J7-j3rPzU9F1Lj1NG4RhDjvuFgXLd312bqGg==";
+      form.target = "nl-frame";
+      const input = document.createElement("input");
+      input.type = "hidden"; input.name = "EMAIL"; input.value = email;
+      form.appendChild(input);
+      document.body.appendChild(form);
+      form.submit();
+      document.body.removeChild(form);
+      document.getElementById("nl-email-top").value = "";
       msg.textContent = "You're in!"; msg.style.color = "#16a34a";
     }
 
