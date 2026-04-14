@@ -3,18 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="robots" content="noindex, nofollow">
-  <title>Groceries — Headline + Image</title>
+  <title>Groceries — Headline + Zones</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      background: #d6d3d1;
-      display: flex;
-      justify-content: center;
-      padding: 2rem;
-      font-family: 'Inter', -apple-system, sans-serif;
-    }
-
+    body { background: #d6d3d1; display: flex; justify-content: center; padding: 2rem; font-family: 'Inter', -apple-system, sans-serif; }
     .pin {
       width: 1080px;
       height: 1350px;
@@ -22,117 +15,28 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      padding: 40px 44px;
-      text-align: center;
+      padding: 52px 48px 32px;
     }
-
-    .headline-tag {
-      display: inline-block;
-      font-size: 15px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: #7c3aed;
-      background: #ede9fe;
-      padding: 8px 22px;
-      border-radius: 100px;
-      margin-bottom: 20px;
-    }
-
-    h1 {
-      font-size: 52px;
-      font-weight: 900;
-      color: #1c1917;
-      line-height: 1.08;
-      letter-spacing: -0.03em;
-      margin-bottom: 36px;
-    }
-
-    .divider {
-      width: 50px;
-      height: 3px;
-      background: #7c3aed;
-      border-radius: 2px;
-      margin-bottom: 36px;
-    }
-
-    .zones {
-      display: flex;
-      gap: 20px;
-      width: 100%;
-      margin-bottom: 36px;
-    }
-
-    .zone {
-      flex: 1;
-      border-radius: 20px;
-      padding: 36px 28px;
-      text-align: center;
-    }
-
-    .zone-r { background: #fef2f2; }
-    .zone-y { background: #fefce8; }
-    .zone-g { background: #f0fdf4; }
-
-    .zone-icon {
-      font-size: 42px;
-      margin-bottom: 14px;
-    }
-
-    .zone-label {
-      font-size: 18px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      margin-bottom: 8px;
-    }
-
+    .headline-tag { display: inline-block; font-size: 16px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; color: #7c3aed; background: #ede9fe; padding: 10px 26px; border-radius: 100px; margin-bottom: 24px; }
+    h1 { font-size: 56px; font-weight: 900; color: #1c1917; line-height: 1.1; letter-spacing: -0.03em; text-align: center; margin-bottom: 28px; }
+    .divider { width: 56px; height: 4px; background: #7c3aed; border-radius: 2px; margin-bottom: 32px; }
+    .zones { display: flex; gap: 18px; width: 100%; flex: 1; }
+    .zone { flex: 1; border-radius: 24px; padding: 44px 24px 40px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: space-between; }
+    .zone-r { background: #fef2f2; border: 1.5px solid #fecaca; }
+    .zone-y { background: #fefce8; border: 1.5px solid #fde68a; }
+    .zone-g { background: #f0fdf4; border: 1.5px solid #bbf7d0; }
+    .zone-icon { font-size: 56px; margin-bottom: 20px; }
+    .zone-label { font-size: 22px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 10px; }
     .zone-r .zone-label { color: #dc2626; }
     .zone-y .zone-label { color: #a16207; }
     .zone-g .zone-label { color: #16a34a; }
-
-    .zone-desc {
-      font-size: 13px;
-      font-weight: 600;
-      color: #44403c;
-      line-height: 1.4;
-      margin-bottom: 12px;
-    }
-
-    .zone-items {
-      list-style: none;
-      padding: 0;
-    }
-
-    .zone-items li {
-      font-size: 14px;
-      font-weight: 500;
-      color: #78716c;
-      line-height: 1.5;
-    }
-
-    .footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 100%;
-      margin-top: auto;
-      padding-top: 16px;
-      border-top: 2px solid #e7e5e4;
-    }
-
-    .footer-stat {
-      font-size: 15px;
-      font-weight: 600;
-      color: #78716c;
-    }
-
-    .footer-url {
-      font-size: 17px;
-      font-weight: 800;
-      color: #7c3aed;
-    }
+    .zone-desc { font-size: 16px; font-weight: 600; color: #57534e; line-height: 1.4; margin-bottom: 20px; }
+    .zone-divider { width: 40px; height: 2px; background: #e7e5e4; margin-bottom: 20px; }
+    .zone-items { list-style: none; padding: 0; flex: 1; }
+    .zone-items li { font-size: 19px; font-weight: 500; color: #44403c; line-height: 2.2; }
+    .footer { display: flex; align-items: center; justify-content: space-between; width: 100%; padding-top: 20px; margin-top: 28px; border-top: 2px solid #e7e5e4; }
+    .footer-stat { font-size: 17px; font-weight: 600; color: #78716c; }
+    .footer-url { font-size: 19px; font-weight: 800; color: #7c3aed; }
   </style>
 </head>
 <body>
@@ -145,23 +49,29 @@
         <div class="zone-icon">🔴</div>
         <div class="zone-label">Buy Plastic Free</div>
         <div class="zone-desc">Fatty, acidic, or long contact</div>
+        <div class="zone-divider"></div>
         <ul class="zone-items">
           <li>Bottled water</li>
           <li>Tea in plastic bags</li>
-          <li>Baby food</li>
-          <li>Meat &amp; deli</li>
-          <li>Cooking oils &amp; nut butters</li>
+          <li>Baby food &amp; formula</li>
+          <li>Meat &amp; seafood</li>
+          <li>Cooking oils</li>
+          <li>Nut butters</li>
           <li>Canned tomatoes</li>
+          <li>Hot prepared food</li>
         </ul>
       </div>
       <div class="zone zone-y">
         <div class="zone-icon">🟡</div>
         <div class="zone-label">Transfer at Home</div>
         <div class="zone-desc">OK to buy but re-store in glass</div>
+        <div class="zone-divider"></div>
         <ul class="zone-items">
           <li>Chocolate</li>
           <li>Cheese</li>
-          <li>Milk, yogurt &amp; sour cream</li>
+          <li>Milk &amp; sour cream</li>
+          <li>Yogurt</li>
+          <li>Butter</li>
           <li>Berries &amp; soft fruit</li>
           <li>Condiments</li>
           <li>Protein powder</li>
@@ -171,9 +81,12 @@
         <div class="zone-icon">🟢</div>
         <div class="zone-label">Safe in Plastic</div>
         <div class="zone-desc">Dry, frozen, or thick peel</div>
+        <div class="zone-divider"></div>
         <ul class="zone-items">
           <li>Bananas &amp; avocados</li>
+          <li>Oranges &amp; melons</li>
           <li>Frozen vegetables</li>
+          <li>Frozen fruit</li>
           <li>Dry pasta &amp; rice</li>
           <li>Coffee beans</li>
           <li>Spices &amp; dried herbs</li>

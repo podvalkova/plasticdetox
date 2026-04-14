@@ -8,20 +8,28 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { background: #d6d3d1; display: flex; justify-content: center; padding: 2rem; font-family: 'Inter', -apple-system, sans-serif; }
-    .pin { width: 1080px; height: 1350px; background: #fafaf9; display: flex; flex-direction: column; align-items: center; padding: 44px 48px; }
-    .headline-tag { display: inline-block; font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; color: #7c3aed; background: #ede9fe; padding: 8px 22px; border-radius: 100px; margin-bottom: 16px; }
-    h1 { font-size: 42px; font-weight: 900; color: #1c1917; line-height: 1.08; letter-spacing: -0.03em; text-align: center; margin-bottom: 28px; }
-    .divider { width: 50px; height: 3px; background: #7c3aed; border-radius: 2px; margin-bottom: 28px; }
-    .rows { width: 100%; display: flex; flex-direction: column; gap: 8px; }
-    .row { display: flex; align-items: center; gap: 16px; background: #fff; border-radius: 14px; padding: 14px 20px; box-shadow: 0 1px 4px rgba(0,0,0,0.05); }
-    .row-food { width: 200px; font-size: 16px; font-weight: 800; color: #1c1917; flex-shrink: 0; }
-    .row-arrow { font-size: 16px; color: #7c3aed; font-weight: 800; flex-shrink: 0; }
-    .row-into { flex: 1; font-size: 15px; font-weight: 600; color: #44403c; }
-    .row-tip { font-size: 12px; font-weight: 500; color: #a8a29e; margin-left: auto; flex-shrink: 0; max-width: 260px; text-align: right; }
-    .bottom-note { font-size: 14px; font-weight: 600; color: #78716c; text-align: center; margin-top: 24px; line-height: 1.5; max-width: 800px; }
-    .footer { display: flex; align-items: center; justify-content: space-between; width: 100%; margin-top: auto; padding-top: 16px; border-top: 2px solid #e7e5e4; }
-    .footer-stat { font-size: 15px; font-weight: 600; color: #78716c; }
-    .footer-url { font-size: 17px; font-weight: 800; color: #7c3aed; }
+    .pin {
+      width: 1080px;
+      height: 1350px;
+      background: #fafaf9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 48px 44px 32px;
+    }
+    .headline-tag { display: inline-block; font-size: 16px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; color: #7c3aed; background: #ede9fe; padding: 10px 26px; border-radius: 100px; margin-bottom: 20px; }
+    h1 { font-size: 48px; font-weight: 900; color: #1c1917; line-height: 1.1; letter-spacing: -0.03em; text-align: center; margin-bottom: 24px; }
+    .divider { width: 56px; height: 4px; background: #7c3aed; border-radius: 2px; margin-bottom: 28px; }
+    .rows { width: 100%; display: flex; flex-direction: column; gap: 6px; flex: 1; justify-content: center; }
+    .row { display: flex; align-items: center; background: #fff; border-radius: 16px; padding: 18px 24px; box-shadow: 0 1px 4px rgba(0,0,0,0.04); }
+    .row-food { width: 210px; font-size: 18px; font-weight: 800; color: #1c1917; flex-shrink: 0; }
+    .row-arrow { font-size: 18px; color: #7c3aed; font-weight: 800; flex-shrink: 0; margin: 0 14px; }
+    .row-into { flex: 1; font-size: 17px; font-weight: 600; color: #44403c; }
+    .row-tip { font-size: 13px; font-weight: 500; color: #a8a29e; margin-left: auto; flex-shrink: 0; max-width: 250px; text-align: right; padding-left: 12px; }
+    .bottom-note { width: 100%; background: #ede9fe; border-radius: 16px; padding: 22px 32px; text-align: center; font-size: 16px; font-weight: 600; color: #5b21b6; line-height: 1.5; margin-top: 20px; }
+    .footer { display: flex; align-items: center; justify-content: space-between; width: 100%; padding-top: 20px; margin-top: 20px; border-top: 2px solid #e7e5e4; }
+    .footer-stat { font-size: 17px; font-weight: 600; color: #78716c; }
+    .footer-url { font-size: 19px; font-weight: 800; color: #7c3aed; }
   </style>
 </head>
 <body>
