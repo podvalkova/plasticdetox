@@ -457,6 +457,10 @@
       "Pets": "Plastic pet products harbor bacteria in scratches and leach chemicals into food and water. Your pets deserve clean alternatives too."
     };
 
+    const subCatDescriptions = {
+      "Toothbrushes": "Most bamboo toothbrushes still use nylon bristles made from petroleum. <a href='articles/bamboo-toothbrush-plastic-bristles.html' style='color:var(--accent-dark);font-weight:600;'>Are bamboo toothbrush bristles really plastic free? \u2192</a>"
+    };
+
     const storeProducts = [
       // Clean Water > Water Filters
       { cat: "Clean Water", sub: "Water Filters", img: "418gI8Rxl2L", name: "APEC Reverse Osmosis System", asin: "B00I0ZGOZM", bestFor: "Best under sink protection", tier: "$$$", effectiveness: "99.9% removal", desc: "Five stage under sink RO system. NSF certified with a steel pressure tank that serves the whole family.", pros: ["Removes 99.9% of microplastics", "NSF certified", "Serves the whole family"], cons: ["Requires under sink install", "FDA grade plastic tubing contacts water", "Some water waste"] },
@@ -666,6 +670,7 @@
               </div>
               ${subs.map((s, i) => `
                 <div class="subcat-panel${i === 0 ? ' active' : ''}" data-catid="${catId}" data-sub="${s}">
+                  ${subCatDescriptions[s] ? `<p class="store-category-problem" style="margin-top:0">${subCatDescriptions[s]}</p>` : ""}
                   ${renderTable(catProducts.filter(p => p.sub === s))}
                 </div>
               `).join("")}
