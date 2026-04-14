@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Groceries — BPA in Canned Foods</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #d6d3d1; display: flex; justify-content: center; padding: 2rem; font-family: 'Inter', -apple-system, sans-serif; }
+    .pin { width: 1080px; height: 1350px; background: #fafaf9; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 48px 56px; }
+    .headline-tag { display: inline-block; font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; color: #7c3aed; background: #ede9fe; padding: 8px 22px; border-radius: 100px; margin-bottom: 16px; }
+    h1 { font-size: 44px; font-weight: 900; color: #1c1917; line-height: 1.08; letter-spacing: -0.03em; text-align: center; margin-bottom: 32px; }
+    .divider { width: 50px; height: 3px; background: #7c3aed; border-radius: 2px; margin-bottom: 40px; }
+    .bars { width: 100%; display: flex; flex-direction: column; gap: 18px; }
+    .bar-row { display: flex; align-items: center; gap: 16px; }
+    .bar-label { width: 220px; text-align: right; font-size: 18px; font-weight: 700; color: #1c1917; flex-shrink: 0; }
+    .bar-track { flex: 1; height: 44px; background: #f5f5f4; border-radius: 10px; position: relative; overflow: hidden; }
+    .bar-fill { height: 100%; border-radius: 10px; display: flex; align-items: center; justify-content: flex-end; padding-right: 14px; }
+    .bar-value { font-size: 16px; font-weight: 800; color: #fff; }
+    .bar-red { background: #dc2626; }
+    .bar-orange { background: #ea580c; }
+    .bar-yellow { background: #ca8a04; }
+    .bar-green { background: #16a34a; }
+    .source { font-size: 13px; color: #a8a29e; text-align: center; margin-top: 32px; line-height: 1.5; max-width: 800px; }
+    .takeaway { width: 100%; background: #fef2f2; border-radius: 16px; padding: 24px 32px; text-align: center; font-size: 17px; font-weight: 700; color: #991b1b; line-height: 1.45; margin-top: 32px; }
+    .footer { display: flex; align-items: center; justify-content: space-between; width: 100%; margin-top: auto; padding-top: 16px; border-top: 2px solid #e7e5e4; }
+    .footer-stat { font-size: 15px; font-weight: 600; color: #78716c; }
+    .footer-url { font-size: 17px; font-weight: 800; color: #7c3aed; }
+  </style>
+</head>
+<body>
+  <div class="pin">
+    <div class="headline-tag">Grocery Guide</div>
+    <h1>BPA Levels in Canned Foods<br>(micrograms per can)</h1>
+    <div class="divider"></div>
+    <div class="bars">
+      <div class="bar-row">
+        <div class="bar-label">Tomato soup</div>
+        <div class="bar-track"><div class="bar-fill bar-red" style="width:100%"><span class="bar-value">54 µg</span></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">Crushed tomatoes</div>
+        <div class="bar-track"><div class="bar-fill bar-red" style="width:89%"><span class="bar-value">48 µg</span></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">Canned pasta</div>
+        <div class="bar-track"><div class="bar-fill bar-orange" style="width:61%"><span class="bar-value">33 µg</span></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">Green beans</div>
+        <div class="bar-track"><div class="bar-fill bar-yellow" style="width:33%"><span class="bar-value">18 µg</span></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">Mixed vegetables</div>
+        <div class="bar-track"><div class="bar-fill bar-green" style="width:24%"><span class="bar-value">13 µg</span></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">Tuna</div>
+        <div class="bar-track"><div class="bar-fill bar-green" style="width:19%"><span class="bar-value">10 µg</span></div></div>
+      </div>
+    </div>
+    <div class="takeaway">Acidic foods have dramatically higher BPA levels.<br>Switch canned tomatoes to glass jars first.</div>
+    <div class="source">Sources: FDA Total Diet Study (2014 to 2021), Lakind &amp; Naiman (2011). Approximate averages per standard can.</div>
+    <div class="footer">
+      <span class="footer-stat">Cans look like metal, but almost all have a plastic interior lining.</span>
+      <span class="footer-url">plasticdetox.org</span>
+    </div>
+  </div>
+</body>
+</html>
