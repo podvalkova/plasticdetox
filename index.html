@@ -842,6 +842,41 @@
     .resource-link:hover { text-decoration: underline; }
 
     .search-wrap { margin-bottom: 1rem; }
+    .articles-toolbar {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+    .articles-toolbar .search-input {
+      flex: 1;
+      min-width: 180px;
+      margin-bottom: 0;
+    }
+    .sort-btns {
+      display: flex;
+      gap: 0.35rem;
+      flex-shrink: 0;
+    }
+    .sort-btn {
+      padding: 0.55rem 1rem;
+      border: 2px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: var(--surface);
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      font-family: inherit;
+      font-weight: 600;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+    .sort-btn:hover { border-color: var(--accent); color: var(--text); }
+    .sort-btn.active {
+      border-color: var(--accent);
+      background: var(--accent-light);
+      color: var(--accent-dark);
+    }
 
     .search-input {
       width: 100%;
@@ -1568,11 +1603,15 @@
 
       <!-- ARTICLES TAB -->
       <div id="tab-articles">
-        <div class="search-wrap">
+        <div class="articles-toolbar">
           <input type="text" class="search-input" id="article-search-input" placeholder="Search articles..." oninput="filterArticles()">
+          <div class="sort-btns">
+            <button class="sort-btn active" onclick="sortArticles('newest')">Newest</button>
+            <button class="sort-btn" onclick="sortArticles('popular')">Most Popular</button>
+          </div>
         </div>
         <div class="articles-grid" id="articles-grid">
-          <a href="articles/how-to-start-reducing-plastic-exposure.html" class="article-card">
+          <a href="articles/how-to-start-reducing-plastic-exposure.html" class="article-card" data-date="2026-03-01" data-popular="1">
             <div class="article-card-body">
               <span class="article-card-tag">Beginner Guide</span>
               <h2 class="article-card-title">How to Start Reducing Plastic Exposure: A Practical Priority Guide (2026)</h2>
@@ -1583,7 +1622,7 @@
               </div>
             </div>
           </a>
-          <a href="articles/plastic-in-groceries-what-really-matters.html" class="article-card">
+          <a href="articles/plastic-in-groceries-what-really-matters.html" class="article-card" data-date="2026-04-01" data-popular="5">
             <div class="article-card-body">
               <span class="article-card-tag">Grocery Guide</span>
               <h2 class="article-card-title">Plastic in Groceries: What Really Matters and What You Can Stop Worrying About (2026)</h2>
@@ -1594,7 +1633,7 @@
               </div>
             </div>
           </a>
-          <a href="articles/how-to-remove-microplastics-from-drinking-water.html" class="article-card">
+          <a href="articles/how-to-remove-microplastics-from-drinking-water.html" class="article-card" data-date="2026-03-05" data-popular="2">
             <div class="article-card-body">
               <span class="article-card-tag">Drinking Water</span>
               <h2 class="article-card-title">How to Remove Microplastics from Drinking Water</h2>
@@ -1605,7 +1644,7 @@
               </div>
             </div>
           </a>
-          <a href="articles/can-nanoplastics-be-filtered-out-of-water.html" class="article-card">
+          <a href="articles/can-nanoplastics-be-filtered-out-of-water.html" class="article-card" data-date="2026-04-02" data-popular="8">
             <div class="article-card-body">
               <span class="article-card-tag">Drinking Water</span>
               <h2 class="article-card-title">Can Nanoplastics Be Filtered Out of Water? Yes, but Only These Methods Work (2026)</h2>
@@ -1616,7 +1655,7 @@
               </div>
             </div>
           </a>
-          <a href="articles/cast-iron-vs-stainless-steel-vs-ceramic-cookware.html" class="article-card">
+          <a href="articles/cast-iron-vs-stainless-steel-vs-ceramic-cookware.html" class="article-card" data-date="2026-03-10" data-popular="6">
             <div class="article-card-body">
               <span class="article-card-tag">Cookware Guide</span>
               <h2 class="article-card-title">Cast Iron vs Stainless Steel vs Ceramic Cookware (2026)</h2>
@@ -1627,7 +1666,7 @@
               </div>
             </div>
           </a>
-          <a href="articles/how-to-enjoy-coffee-without-plastic.html" class="article-card">
+          <a href="articles/how-to-enjoy-coffee-without-plastic.html" class="article-card" data-date="2026-03-12" data-popular="4">
             <div class="article-card-body">
               <span class="article-card-tag">Coffee Guide</span>
               <h2 class="article-card-title">The Complete Guide to Plastic-Free Coffee: Beans, Brewers, and Beyond (2026)</h2>
@@ -1638,7 +1677,7 @@
               </div>
             </div>
           </a>
-          <a href="articles/non-toxic-baby-toddler-products-guide.html" class="article-card">
+          <a href="articles/non-toxic-baby-toddler-products-guide.html" class="article-card" data-date="2026-04-14" data-popular="3">
             <div class="article-card-body">
               <span class="article-card-tag">Baby &amp; Toddler Guide</span>
               <h2 class="article-card-title">The Complete Parent's Guide to Replacing Toxic Baby and Toddler Products (2026)</h2>
@@ -1649,7 +1688,7 @@
               </div>
             </div>
           </a>
-          <a href="articles/microplastics-in-baby-food.html" class="article-card">
+          <a href="articles/microplastics-in-baby-food.html" class="article-card" data-date="2026-04-10" data-popular="7">
             <div class="article-card-body">
               <span class="article-card-tag">Baby Feeding Guide</span>
               <h2 class="article-card-title">Microplastics in Baby Food: What Parents Need to Know (and the Safest Feeding Setup)</h2>
@@ -1660,7 +1699,7 @@
               </div>
             </div>
           </a>
-          <a href="articles/best-plastic-free-food-storage-containers.html" class="article-card">
+          <a href="articles/best-plastic-free-food-storage-containers.html" class="article-card" data-date="2026-04-05" data-popular="9">
             <div class="article-card-body">
               <span class="article-card-tag">Food Storage Guide</span>
               <h2 class="article-card-title">Best Plastic Free Food Storage Containers: Glass, Stainless Steel, and Silicone Compared (2026)</h2>
@@ -1671,7 +1710,7 @@
               </div>
             </div>
           </a>
-          <a href="articles/how-to-avoid-microplastics-in-tea.html" class="article-card">
+          <a href="articles/how-to-avoid-microplastics-in-tea.html" class="article-card" data-date="2026-04-03" data-popular="10">
             <div class="article-card-body">
               <span class="article-card-tag">Tea Guide</span>
               <h2 class="article-card-title">How to Avoid Microplastics in Tea: The Complete Guide to Safer Brewing (2026)</h2>
@@ -1682,7 +1721,7 @@
               </div>
             </div>
           </a>
-          <a href="articles/best-non-toxic-cutting-boards.html" class="article-card">
+          <a href="articles/best-non-toxic-cutting-boards.html" class="article-card" data-date="2026-04-04" data-popular="12">
             <div class="article-card-body">
               <span class="article-card-tag">Kitchen Guide</span>
               <h2 class="article-card-title">Best Non Toxic Cutting Boards: Wood, Bamboo, and Plastic Free Alternatives (2026)</h2>
@@ -1693,7 +1732,7 @@
               </div>
             </div>
           </a>
-          <a href="articles/how-to-avoid-bpa-and-phthalates.html" class="article-card">
+          <a href="articles/how-to-avoid-bpa-and-phthalates.html" class="article-card" data-date="2026-04-06" data-popular="11">
             <div class="article-card-body">
               <span class="article-card-tag">Chemical Guide</span>
               <h2 class="article-card-title">How to Avoid BPA and Phthalates in Everyday Products: A Room by Room Guide (2026)</h2>
@@ -1704,7 +1743,7 @@
               </div>
             </div>
           </a>
-          <a href="articles/reduce-microplastics-in-cleaning-products.html" class="article-card">
+          <a href="articles/reduce-microplastics-in-cleaning-products.html" class="article-card" data-date="2026-04-07" data-popular="13">
             <div class="article-card-body">
               <span class="article-card-tag">Cleaning Guide</span>
               <h2 class="article-card-title">How to Reduce Microplastics in Cleaning Products (2026)</h2>
@@ -1715,7 +1754,7 @@
               </div>
             </div>
           </a>
-          <a href="articles/microplastics-in-clothing-and-laundry.html" class="article-card">
+          <a href="articles/microplastics-in-clothing-and-laundry.html" class="article-card" data-date="2026-04-08" data-popular="14">
             <div class="article-card-body">
               <span class="article-card-tag">Laundry Guide</span>
               <h2 class="article-card-title">Microplastics in Clothing and Laundry: How to Reduce Fiber Shedding (2026)</h2>
@@ -1726,7 +1765,7 @@
               </div>
             </div>
           </a>
-          <a href="articles/microplastics-in-cosmetics-and-personal-care.html" class="article-card">
+          <a href="articles/microplastics-in-cosmetics-and-personal-care.html" class="article-card" data-date="2026-04-09" data-popular="15">
             <div class="article-card-body">
               <span class="article-card-tag">Personal Care Guide</span>
               <h2 class="article-card-title">Microplastics in Cosmetics and Personal Care Products: What to Avoid and Safer Alternatives (2026)</h2>
@@ -1737,7 +1776,7 @@
               </div>
             </div>
           </a>
-          <a href="articles/microplastics-in-bedroom-air.html" class="article-card">
+          <a href="articles/microplastics-in-bedroom-air.html" class="article-card" data-date="2026-04-11" data-popular="16">
             <div class="article-card-body">
               <span class="article-card-tag">Bedroom Guide</span>
               <h2 class="article-card-title">6 Swaps to Stop Breathing Plastic in Your Bedroom</h2>
@@ -1748,7 +1787,7 @@
               </div>
             </div>
           </a>
-          <a href="articles/microplastics-in-indoor-air.html" class="article-card">
+          <a href="articles/microplastics-in-indoor-air.html" class="article-card" data-date="2026-04-12" data-popular="17">
             <div class="article-card-body">
               <span class="article-card-tag">Indoor Air Guide</span>
               <h2 class="article-card-title">Microplastics in Indoor Air: How to Reduce Exposure at Home (2026)</h2>
@@ -1759,7 +1798,7 @@
               </div>
             </div>
           </a>
-          <a href="articles/best-mineral-sunscreen-guide.html" class="article-card">
+          <a href="articles/best-mineral-sunscreen-guide.html" class="article-card" data-date="2026-04-13" data-popular="18">
             <div class="article-card-body">
               <span class="article-card-tag">Sun Protection</span>
               <h2 class="article-card-title">Best Mineral Sunscreens (2026): Chemical vs Mineral, Zinc vs Non Zinc, Nano vs Non Nano</h2>
@@ -1770,7 +1809,7 @@
               </div>
             </div>
           </a>
-          <a href="articles/bamboo-toothbrush-plastic-bristles.html" class="article-card">
+          <a href="articles/bamboo-toothbrush-plastic-bristles.html" class="article-card" data-date="2026-03-15" data-popular="19">
             <div class="article-card-body">
               <span class="article-card-tag">Bathroom Guide</span>
               <h2 class="article-card-title">Your Bamboo Toothbrush Probably Still Has Plastic Bristles (2026)</h2>
@@ -1781,7 +1820,7 @@
               </div>
             </div>
           </a>
-          <a href="articles/bpa-free-is-not-safe.html" class="article-card">
+          <a href="articles/bpa-free-is-not-safe.html" class="article-card" data-date="2026-03-20" data-popular="20">
             <div class="article-card-body">
               <span class="article-card-tag">Chemical Safety</span>
               <h2 class="article-card-title">BPA Free Is Not Safe: What Replaces BPA and Why It Matters (2026)</h2>
@@ -1792,7 +1831,7 @@
               </div>
             </div>
           </a>
-          <a href="articles/how-to-filter-pfas-and-microplastics-from-water.html" class="article-card">
+          <a href="articles/how-to-filter-pfas-and-microplastics-from-water.html" class="article-card" data-date="2026-03-25" data-popular="21">
             <div class="article-card-body">
               <span class="article-card-tag">Water Filtration</span>
               <h2 class="article-card-title">How to Filter PFAS and Microplastics from Drinking Water</h2>
@@ -2402,6 +2441,21 @@
         card.style.display = text.includes(q) ? "" : "none";
       });
     }
+
+    function sortArticles(mode) {
+      document.querySelectorAll(".sort-btn").forEach(b => b.classList.remove("active"));
+      document.querySelector('.sort-btn[onclick*="' + mode + '"]').classList.add("active");
+      const grid = document.getElementById("articles-grid");
+      const cards = Array.from(grid.querySelectorAll(".article-card"));
+      cards.sort((a, b) => {
+        if (mode === "newest") return b.dataset.date.localeCompare(a.dataset.date);
+        return parseInt(a.dataset.popular) - parseInt(b.dataset.popular);
+      });
+      cards.forEach(card => grid.appendChild(card));
+    }
+
+    // Sort by newest on load
+    document.addEventListener("DOMContentLoaded", () => sortArticles("newest"));
 
     // ==================== GAME ====================
     function toggleSwapPanel() {
