@@ -1259,6 +1259,73 @@
       .subcat-tab { font-size: 0.78rem; padding: 0.4rem 0.8rem; }
     }
 
+    /* ===== NEWSLETTER TOP BOX ===== */
+    .nl-top-box {
+      background: var(--accent-light);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    .nl-top-label {
+      margin: 0 0 0.75rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .nl-top-form {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      justify-content: center;
+    }
+    .nl-top-input {
+      padding: 0.5rem 0.75rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-family: inherit;
+      width: 240px;
+      outline: none;
+      background: #fff;
+    }
+    .nl-top-input:focus { border-color: var(--accent); }
+    .nl-top-btn {
+      padding: 0.5rem 1.25rem;
+      background: var(--accent-dark);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+    .nl-top-btn:hover { background: var(--accent); }
+    .nl-top-msg {
+      display: block;
+      font-size: 0.8rem;
+      min-height: 1.2em;
+      margin-top: 0.4rem;
+    }
+    @media (max-width: 768px) {
+      .nl-top-form {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .nl-top-input {
+        width: 100%;
+        max-width: 300px;
+      }
+      .nl-top-btn {
+        width: 100%;
+        max-width: 300px;
+      }
+    }
+
     /* ===== NEWSLETTER BAR ===== */
     .newsletter-bar {
       display: none;
@@ -1483,13 +1550,13 @@
       <h2 class="resources-title">Resources</h2>
       <p class="resources-intro">Evidence-based articles and peer-reviewed research on microplastic exposure and how to reduce it.</p>
 
-      <div style="background:var(--accent-light);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem 1.5rem;margin-bottom:1.5rem;text-align:center;">
-        <p style="margin:0 0 0.75rem;font-size:0.95rem;font-weight:600;color:var(--text);">Get new articles and plastic free tips in your inbox</p>
-        <div style="display:flex;align-items:center;gap:0.5rem;justify-content:center;flex-wrap:wrap;">
-          <input type="email" id="nl-email-top" placeholder="your@email.com" style="padding:0.5rem 0.75rem;border:1px solid var(--border);border-radius:8px;font-size:0.9rem;font-family:inherit;width:240px;outline:none;background:#fff;">
-          <button onclick="nlSubscribeTop()" style="padding:0.5rem 1.25rem;background:var(--accent-dark);color:#fff;border:none;border-radius:8px;font-size:0.9rem;font-weight:600;font-family:inherit;cursor:pointer;white-space:nowrap;">Subscribe</button>
-          <span id="nl-msg-top" style="font-size:0.8rem;min-width:60px;"></span>
+      <div class="nl-top-box">
+        <p class="nl-top-label">Get new articles and plastic free tips in your inbox</p>
+        <div class="nl-top-form">
+          <input type="email" id="nl-email-top" class="nl-top-input" placeholder="your@email.com">
+          <button onclick="nlSubscribeTop()" class="nl-top-btn">Subscribe</button>
         </div>
+        <span id="nl-msg-top" class="nl-top-msg"></span>
       </div>
 
       <div class="resource-tabs">
