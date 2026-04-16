@@ -365,6 +365,17 @@
     </table>
 
     <!-- Section 8: On the Go -->
+    <aside class="email-cta inline" data-email-cta-injected>
+      <div class="email-cta-eyebrow">Free Weekly Tips</div>
+      <h3 class="email-cta-title">Want practical plastic free swaps every week?</h3>
+      <p class="email-cta-desc">One short email, packed with the latest research and easy actions you can take.</p>
+      <form class="email-cta-form" onsubmit="return nlSubmit(this)">
+        <input type="email" name="EMAIL" required placeholder="your@email.com" aria-label="Your email address">
+        <button type="submit">Subscribe</button>
+      </form>
+      <div class="email-cta-msg"></div>
+    </aside>
+
     <h2 id="on-the-go">Water on the Go Without Plastic</h2>
 
     <p>One of the biggest reasons people buy bottled water is convenience. You are out, you are thirsty, and there is a bottle right there. Making the switch means having a plan for water when you leave the house.</p>
@@ -536,6 +547,18 @@
       This article draws on research from: Mason et al., "Synthetic Polymer Contamination in Bottled Water" (Frontiers in Chemistry, 2018); Naidu et al., "Rapid Detection of Nanoplastics and Small Microplastics in Bottled Water Using Stimulated Raman Scattering Microscopy" (Proceedings of the National Academy of Sciences, 2024); Cox et al., "Human Consumption of Microplastics" (Environmental Science &amp; Technology, 2019); Ziajahromi et al., "Microplastic Removal from Drinking Water" (Water Research, 2021); Welle and Franz, "Microplastic Release from PET Bottles under Thermal Stress" (Journal of Hazardous Materials, 2020). Filter performance data from NSF International certified testing databases.
     </div>
 
+    <aside class="email-cta" data-email-cta-injected>
+      <div class="email-cta-eyebrow">Join the Plastic Detox Newsletter</div>
+      <h3 class="email-cta-title">Get the Plastic Free Starter Guide</h3>
+      <p class="email-cta-desc">A short weekly email with science backed swaps, product picks, and the latest microplastic research. No spam, ever.</p>
+      <form class="email-cta-form" onsubmit="return nlSubmit(this)">
+        <input type="email" name="EMAIL" required placeholder="your@email.com" aria-label="Your email address">
+        <button type="submit">Send me the guide</button>
+      </form>
+      <div class="email-cta-msg"></div>
+      <p class="email-cta-fineprint">Free forever. Unsubscribe anytime.</p>
+    </aside>
+
     <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #e7e5e4;">
       <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:1rem;">Related Articles</h2>
       <ul style="list-style:none;padding:0;">
@@ -546,33 +569,34 @@
 
   </article>
 
-  <div style="background:#ede9fe;border-top:1px solid #e7e5e4;padding:0.6rem 2rem;text-align:center;">
-    <div style="max-width:700px;margin:0 auto;display:flex;align-items:center;gap:0.75rem;justify-content:center;flex-wrap:wrap;">
-      <label style="font-size:0.85rem;font-weight:600;color:#1c1917;white-space:nowrap;">Get plastic free tips in your inbox</label>
-      <input type="email" id="nl-email" placeholder="your@email.com" style="padding:0.4rem 0.75rem;border:1px solid #e7e5e4;border-radius:6px;font-size:0.85rem;font-family:inherit;width:220px;outline:none;">
-      <button onclick="nlSubscribe()" style="padding:0.4rem 1rem;background:#7c3aed;color:#fff;border:none;border-radius:6px;font-size:0.82rem;font-weight:600;font-family:inherit;cursor:pointer;white-space:nowrap;">Subscribe</button>
-      <span id="nl-msg" style="font-size:0.8rem;"></span>
-    </div>
-  </div>
   <iframe name="nl-frame" id="nl-frame" style="display:none;"></iframe>
   <script>
-  function nlSubscribe() {
-    var email = document.getElementById("nl-email").value.trim();
-    var msg = document.getElementById("nl-msg");
-    if (!email || !email.includes("@")) { msg.textContent = "Enter a valid email"; msg.style.color = "#dc2626"; return; }
-    msg.textContent = "Subscribing..."; msg.style.color = "#78716c";
-    var form = document.createElement("form");
-    form.method = "POST";
-    form.action = "https://57a81e5f.sibforms.com/serve/MUIFAHP3LqQp0UznZl5CKFGztCR47r9K-zHK4YRpryoqZLY0Ybvjo2ohqZhvH_BMVq5XmiDkLloNlf4re1hUEUwze8N053Xm1uVawE60egTCSDSSxuCOcXoGkfIne8Me-YdQ4i2Yi3ohxDAHB6ichyo1OAh4ocm5vRXvt2dWjtAJK7J7-j3rPzU9F1Lj1NG4RhDjvuFgXLd312bqGg==";
-    form.target = "nl-frame";
-    var input = document.createElement("input");
-    input.type = "hidden"; input.name = "EMAIL"; input.value = email;
-    form.appendChild(input);
-    document.body.appendChild(form);
-    form.submit();
-    document.body.removeChild(form);
-    document.getElementById("nl-email").value = "";
-    msg.textContent = "You're in!"; msg.style.color = "#16a34a";
+  function nlSubmit(form) {
+    var input = form.querySelector('input[name="EMAIL"]');
+    var email = (input.value || "").trim();
+    var msg = form.parentElement.querySelector(".email-cta-msg");
+    if (!email || email.indexOf("@") === -1) {
+      msg.textContent = "Please enter a valid email";
+      msg.style.color = "#dc2626";
+      return false;
+    }
+    msg.textContent = "Subscribing...";
+    msg.style.color = "#78716c";
+    var hidden = document.createElement("form");
+    hidden.method = "POST";
+    hidden.action = "https://57a81e5f.sibforms.com/serve/MUIFAHP3LqQp0UznZl5CKFGztCR47r9K-zHK4YRpryoqZLY0Ybvjo2ohqZhvH_BMVq5XmiDkLloNlf4re1hUEUwze8N053Xm1uVawE60egTCSDSSxuCOcXoGkfIne8Me-YdQ4i2Yi3ohxDAHB6ichyo1OAh4ocm5vRXvt2dWjtAJK7J7-j3rPzU9F1Lj1NG4RhDjvuFgXLd312bqGg==";
+    hidden.target = "nl-frame";
+    var h = document.createElement("input");
+    h.type = "hidden"; h.name = "EMAIL"; h.value = email;
+    hidden.appendChild(h);
+    document.body.appendChild(hidden);
+    hidden.submit();
+    document.body.removeChild(hidden);
+    input.value = "";
+    msg.textContent = "You're in! Check your inbox to confirm.";
+    msg.style.color = "#16a34a";
+    if (window.gtag) { gtag("event", "newsletter_signup", { method: "article_cta" }); }
+    return false;
   }
   </script>
 

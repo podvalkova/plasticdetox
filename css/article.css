@@ -375,6 +375,119 @@ body {
   margin-top: 3rem;
 }
 
+/* Email signup card. Used both inline (mid article) and at end of article. */
+.email-cta {
+  background: linear-gradient(135deg, #ede9fe 0%, #faf5ff 100%);
+  border: 1px solid #ddd6fe;
+  border-radius: var(--radius);
+  padding: 2rem 1.75rem;
+  margin: 2.5rem 0;
+  text-align: center;
+  box-shadow: 0 2px 12px rgba(124, 58, 237, 0.06);
+}
+
+.email-cta-eyebrow {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent-dark);
+  background: #fff;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  margin-bottom: 1rem;
+}
+
+.email-cta-title {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--text);
+  margin: 0 0 0.5rem;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+.email-cta-desc {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin: 0 auto 1.25rem;
+  max-width: 420px;
+  line-height: 1.55;
+}
+
+.email-cta-form {
+  display: flex;
+  gap: 0.5rem;
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+.email-cta-form input[type="email"] {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  background: #fff;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.email-cta-form input[type="email"]:focus {
+  border-color: var(--accent-dark);
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.15);
+}
+
+.email-cta-form button {
+  padding: 0.75rem 1.25rem;
+  background: var(--accent-dark);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s, transform 0.1s;
+}
+
+.email-cta-form button:hover {
+  background: #6d28d9;
+}
+
+.email-cta-form button:active {
+  transform: translateY(1px);
+}
+
+.email-cta-msg {
+  font-size: 0.85rem;
+  margin-top: 0.75rem;
+  min-height: 1.2em;
+}
+
+.email-cta-fineprint {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin: 0.85rem 0 0;
+}
+
+/* Inline variant (slightly more compact for mid article use) */
+.email-cta.inline {
+  padding: 1.5rem 1.5rem;
+  margin: 2rem 0;
+}
+
+.email-cta.inline .email-cta-title {
+  font-size: 1.2rem;
+}
+
+.email-cta.inline .email-cta-desc {
+  font-size: 0.9rem;
+}
+
 @media (max-width: 768px) {
   .article { padding: 1.25rem 1.25rem 3rem; }
   .article h1 { font-size: 1.7rem; }
@@ -384,4 +497,8 @@ body {
   .infographic { padding: 1rem; }
   .priority-tier { padding: 1rem; }
   .material-card .pros-cons { grid-template-columns: 1fr; }
+  .email-cta { padding: 1.5rem 1.25rem; }
+  .email-cta-title { font-size: 1.2rem; }
+  .email-cta-form { flex-direction: column; }
+  .email-cta-form button { width: 100%; }
 }
