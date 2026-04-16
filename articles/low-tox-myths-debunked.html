@@ -167,12 +167,12 @@
       border-radius: 100px;
       margin-bottom: 0.5rem;
     }
-    .verdict-myth { border-left-color: #16a34a; }
-    .verdict-myth .verdict-badge { background: #f0fdf4; color: #16a34a; }
+    .verdict-myth { border-left-color: #dc2626; }
+    .verdict-myth .verdict-badge { background: #fef2f2; color: #dc2626; }
     .verdict-mixed { border-left-color: #ca8a04; }
     .verdict-mixed .verdict-badge { background: #fefce8; color: #a16207; }
-    .verdict-true { border-left-color: #dc2626; }
-    .verdict-true .verdict-badge { background: #fef2f2; color: #dc2626; }
+    .verdict-true { border-left-color: #16a34a; }
+    .verdict-true .verdict-badge { background: #f0fdf4; color: #16a34a; }
     .myth-card .truth-label,
     .myth-card .action-label {
       font-weight: 700;
@@ -277,7 +277,7 @@
 
     <div class="callout">
       <div class="callout-title">How to Read This Article</div>
-      Each claim gets a verdict: <strong style="color:#16a34a;">MYTH</strong> (overblown or wrong), <strong style="color:#a16207;">MIXED</strong> (partly true with important nuance), or <strong style="color:#dc2626;">VALID</strong> (the concern is real and supported by evidence). Then we tell you what to actually do.
+      Each claim gets a verdict: <strong style="color:#dc2626;">MYTH</strong> (overblown or wrong), <strong style="color:#a16207;">MIXED</strong> (partly true with important nuance), or <strong style="color:#16a34a;">VALID</strong> (the concern is real and supported by evidence). Then we tell you what to actually do.
     </div>
 
     <nav class="toc">
@@ -317,11 +317,11 @@
 
         <!-- Quadrant headers tucked in corners -->
         <text x="80" y="70" font-family="Inter,sans-serif" font-size="9" fill="#16a34a" font-weight="800">QUIET BUT REAL</text>
-        <text x="487" y="70" font-family="Inter,sans-serif" font-size="9" fill="#dc2626" font-weight="800" text-anchor="end">LOUD AND REAL</text>
+        <text x="487" y="70" font-family="Inter,sans-serif" font-size="9" fill="#16a34a" font-weight="800" text-anchor="end">LOUD AND REAL</text>
         <text x="80" y="215" font-family="Inter,sans-serif" font-size="9" fill="#78716c" font-weight="800">QUIET, OVERLOOKED</text>
-        <text x="487" y="215" font-family="Inter,sans-serif" font-size="9" fill="#a16207" font-weight="800" text-anchor="end">LOUD, OVERBLOWN</text>
+        <text x="487" y="215" font-family="Inter,sans-serif" font-size="9" fill="#dc2626" font-weight="800" text-anchor="end">LOUD, OVERBLOWN</text>
 
-        <!-- TOP-LEFT (green, evidence based but under discussed). Dots clustered on the right edge so labels read leftward. -->
+        <!-- TOP-LEFT (green, valid concerns, under discussed). -->
         <circle cx="255" cy="105" r="5" fill="#16a34a"/>
         <text x="246" y="109" font-family="Inter,sans-serif" font-size="9" fill="#1c1917" text-anchor="end">Indoor air dust</text>
 
@@ -331,14 +331,14 @@
         <circle cx="260" cy="165" r="5" fill="#16a34a"/>
         <text x="251" y="169" font-family="Inter,sans-serif" font-size="9" fill="#1c1917" text-anchor="end">Receipt thermal paper</text>
 
-        <!-- TOP-RIGHT (red, evidence based and loud). Dots on the left edge so labels read rightward. -->
-        <circle cx="320" cy="105" r="5" fill="#dc2626"/>
+        <!-- TOP-RIGHT (green, valid concerns, well known). -->
+        <circle cx="320" cy="105" r="5" fill="#16a34a"/>
         <text x="329" y="109" font-family="Inter,sans-serif" font-size="9" fill="#1c1917">Plastic baby bottles</text>
 
-        <circle cx="305" cy="135" r="5" fill="#dc2626"/>
+        <circle cx="305" cy="135" r="5" fill="#16a34a"/>
         <text x="314" y="139" font-family="Inter,sans-serif" font-size="9" fill="#1c1917">PFAS in tap water</text>
 
-        <circle cx="335" cy="165" r="5" fill="#dc2626"/>
+        <circle cx="335" cy="165" r="5" fill="#16a34a"/>
         <text x="344" y="169" font-family="Inter,sans-serif" font-size="9" fill="#1c1917">Plastic tea bags</text>
 
         <!-- BOTTOM-LEFT (gray, low evidence and low noise). -->
@@ -348,17 +348,17 @@
         <circle cx="260" cy="290" r="5" fill="#a8a29e"/>
         <text x="251" y="294" font-family="Inter,sans-serif" font-size="9" fill="#1c1917" text-anchor="end">Cast iron poisoning</text>
 
-        <!-- BOTTOM-RIGHT (orange, loud but overblown). -->
-        <circle cx="320" cy="245" r="5" fill="#ca8a04"/>
+        <!-- BOTTOM-RIGHT (red, myths, loud but overblown). -->
+        <circle cx="320" cy="245" r="5" fill="#dc2626"/>
         <text x="329" y="249" font-family="Inter,sans-serif" font-size="9" fill="#1c1917">Microwaves cause cancer</text>
 
-        <circle cx="305" cy="270" r="5" fill="#ca8a04"/>
+        <circle cx="305" cy="270" r="5" fill="#dc2626"/>
         <text x="314" y="274" font-family="Inter,sans-serif" font-size="9" fill="#1c1917">Aluminum and Alzheimer's</text>
 
-        <circle cx="335" cy="295" r="5" fill="#ca8a04"/>
+        <circle cx="335" cy="295" r="5" fill="#dc2626"/>
         <text x="344" y="299" font-family="Inter,sans-serif" font-size="9" fill="#1c1917">All Prop 65 means cancer</text>
 
-        <circle cx="320" cy="320" r="5" fill="#ca8a04"/>
+        <circle cx="320" cy="320" r="5" fill="#dc2626"/>
         <text x="329" y="324" font-family="Inter,sans-serif" font-size="9" fill="#1c1917">Sunscreen worse than sun</text>
       </svg>
     </div>
@@ -622,10 +622,10 @@
 
         <text x="260" y="28" font-family="Inter,sans-serif" font-size="11" fill="#1c1917" font-weight="700" text-anchor="middle">Strong Evidence of Harm vs. Weak or Disputed</text>
 
-        <!-- Strong evidence (left) -->
-        <rect x="20" y="50" width="230" height="245" fill="#fef2f2" rx="10" stroke="#fecaca"/>
-        <text x="135" y="76" font-family="Inter,sans-serif" font-size="11" fill="#dc2626" font-weight="800" text-anchor="middle">STRONG EVIDENCE</text>
-        <line x1="40" y1="86" x2="230" y2="86" stroke="#fecaca"/>
+        <!-- Strong evidence (left, valid = green) -->
+        <rect x="20" y="50" width="230" height="245" fill="#f0fdf4" rx="10" stroke="#bbf7d0"/>
+        <text x="135" y="76" font-family="Inter,sans-serif" font-size="11" fill="#16a34a" font-weight="800" text-anchor="middle">STRONG EVIDENCE</text>
+        <line x1="40" y1="86" x2="230" y2="86" stroke="#bbf7d0"/>
         <text x="135" y="108" font-family="Inter,sans-serif" font-size="10" fill="#1c1917" text-anchor="middle">Phthalates in fragrance</text>
         <text x="135" y="128" font-family="Inter,sans-serif" font-size="10" fill="#1c1917" text-anchor="middle">Oxybenzone sunscreen</text>
         <text x="135" y="148" font-family="Inter,sans-serif" font-size="10" fill="#1c1917" text-anchor="middle">Formaldehyde releasers</text>
@@ -633,12 +633,12 @@
         <text x="135" y="188" font-family="Inter,sans-serif" font-size="10" fill="#1c1917" text-anchor="middle">Talc with asbestos</text>
         <text x="135" y="208" font-family="Inter,sans-serif" font-size="10" fill="#1c1917" text-anchor="middle">Triclosan in soap</text>
         <text x="135" y="228" font-family="Inter,sans-serif" font-size="10" fill="#1c1917" text-anchor="middle">Paraffin candle smoke</text>
-        <text x="135" y="270" font-family="Inter,sans-serif" font-size="9" fill="#dc2626" text-anchor="middle">Worth replacing</text>
+        <text x="135" y="270" font-family="Inter,sans-serif" font-size="9" fill="#16a34a" text-anchor="middle">Worth replacing</text>
 
-        <!-- Weak evidence (right) -->
-        <rect x="270" y="50" width="230" height="245" fill="#f0fdf4" rx="10" stroke="#bbf7d0"/>
-        <text x="385" y="76" font-family="Inter,sans-serif" font-size="11" fill="#16a34a" font-weight="800" text-anchor="middle">WEAK OR DISPUTED</text>
-        <line x1="290" y1="86" x2="480" y2="86" stroke="#bbf7d0"/>
+        <!-- Weak evidence (right, myth territory = red) -->
+        <rect x="270" y="50" width="230" height="245" fill="#fef2f2" rx="10" stroke="#fecaca"/>
+        <text x="385" y="76" font-family="Inter,sans-serif" font-size="11" fill="#dc2626" font-weight="800" text-anchor="middle">WEAK OR DISPUTED</text>
+        <line x1="290" y1="86" x2="480" y2="86" stroke="#fecaca"/>
         <text x="385" y="108" font-family="Inter,sans-serif" font-size="10" fill="#1c1917" text-anchor="middle">Parabens cause cancer</text>
         <text x="385" y="128" font-family="Inter,sans-serif" font-size="10" fill="#1c1917" text-anchor="middle">Aluminum in deodorant</text>
         <text x="385" y="148" font-family="Inter,sans-serif" font-size="10" fill="#1c1917" text-anchor="middle">Mineral sunscreen risk</text>
@@ -646,7 +646,7 @@
         <text x="385" y="188" font-family="Inter,sans-serif" font-size="10" fill="#1c1917" text-anchor="middle">Silicones in hair products</text>
         <text x="385" y="208" font-family="Inter,sans-serif" font-size="10" fill="#1c1917" text-anchor="middle">Fluoride toothpaste</text>
         <text x="385" y="228" font-family="Inter,sans-serif" font-size="10" fill="#1c1917" text-anchor="middle">SLS will give you cancer</text>
-        <text x="385" y="270" font-family="Inter,sans-serif" font-size="9" fill="#16a34a" text-anchor="middle">Don't lose sleep</text>
+        <text x="385" y="270" font-family="Inter,sans-serif" font-size="9" fill="#dc2626" text-anchor="middle">Don't lose sleep</text>
       </svg>
     </div>
 
