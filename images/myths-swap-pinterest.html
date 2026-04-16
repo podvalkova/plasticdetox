@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Low Tox Myths — Pinterest Pin</title>
+  <style>
+    @font-face {
+      font-family: 'Inter';
+      src: url('inter-latin.woff2') format('woff2');
+      font-weight: 100 900;
+      font-display: block;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #fafaf9;
+      display: flex;
+      justify-content: center;
+      padding: 0;
+      font-family: 'Inter', -apple-system, sans-serif;
+    }
+
+    .pin {
+      width: 1000px;
+      height: 1550px;
+      background: #fafaf9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 48px 56px;
+    }
+
+    .headline-tag {
+      display: inline-block;
+      font-size: 15px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: #7c3aed;
+      background: #ede9fe;
+      padding: 8px 22px;
+      border-radius: 100px;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 52px;
+      font-weight: 900;
+      color: #1c1917;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .hero-img {
+      width: 100%;
+      max-height: 440px;
+      object-fit: cover;
+      border-radius: 20px;
+      margin-bottom: 28px;
+    }
+
+    .divider {
+      width: 50px;
+      height: 3px;
+      background: #7c3aed;
+      border-radius: 2px;
+      margin-bottom: 24px;
+    }
+
+    .myths {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .myth {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: #fff;
+      border-radius: 14px;
+      padding: 16px 22px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      border-left: 5px solid;
+    }
+
+    .myth-green { border-left-color: #16a34a; }
+    .myth-yellow { border-left-color: #ca8a04; }
+    .myth-red { border-left-color: #dc2626; }
+
+    .badge {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 4px 12px;
+      border-radius: 100px;
+      white-space: nowrap;
+      min-width: 68px;
+      text-align: center;
+    }
+
+    .badge-green { background: #f0fdf4; color: #16a34a; }
+    .badge-yellow { background: #fefce8; color: #a16207; }
+    .badge-red { background: #fef2f2; color: #dc2626; }
+
+    .myth-text {
+      flex: 1;
+      font-size: 20px;
+      font-weight: 700;
+      color: #1c1917;
+      line-height: 1.3;
+    }
+
+    .footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 2px solid #e7e5e4;
+    }
+
+    .footer-stat {
+      font-size: 15px;
+      font-weight: 600;
+      color: #78716c;
+    }
+
+    .footer-url {
+      font-size: 17px;
+      font-weight: 800;
+      color: #7c3aed;
+    }
+  </style>
+</head>
+<body>
+  <div class="pin">
+    <div class="headline-tag">Myth Busting</div>
+    <h1>Low Tox Myths,<br>Debunked</h1>
+    <img class="hero-img" src="myth.png" alt="Kitchen countertop with wooden cutting board, cast iron skillet, glass storage container, stainless steel bottle, and tea infuser">
+    <div class="divider"></div>
+    <div class="myths">
+      <div class="myth myth-green">
+        <span class="badge badge-green">Myth</span>
+        <span class="myth-text">Microwaves cause cancer</span>
+      </div>
+      <div class="myth myth-yellow">
+        <span class="badge badge-yellow">Mixed</span>
+        <span class="myth-text">All non stick pans are toxic</span>
+      </div>
+      <div class="myth myth-green">
+        <span class="badge badge-green">Myth</span>
+        <span class="myth-text">BPA free means safe</span>
+      </div>
+      <div class="myth myth-green">
+        <span class="badge badge-green">Myth</span>
+        <span class="myth-text">Bottled water is purer than tap</span>
+      </div>
+      <div class="myth myth-red">
+        <span class="badge badge-red">Valid</span>
+        <span class="myth-text">Plastic boards are worse than wood</span>
+      </div>
+      <div class="myth myth-green">
+        <span class="badge badge-green">Myth</span>
+        <span class="myth-text">Sunscreen is worse than sun</span>
+      </div>
+    </div>
+    <div class="footer">
+      <span class="footer-stat">27 claims ranked by actual evidence</span>
+      <span class="footer-url">plasticdetox.org</span>
+    </div>
+  </div>
+</body>
+</html>
