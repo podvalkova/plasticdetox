@@ -22,7 +22,7 @@
 
     .pin {
       width: 1000px;
-      height: 1550px;
+      min-height: 1550px;
       background: #fafaf9;
       display: flex;
       flex-direction: column;
@@ -53,67 +53,116 @@
       margin-bottom: 28px;
     }
 
+    .hero-wrap {
+      position: relative;
+      width: 100%;
+      margin-bottom: 32px;
+    }
+
     .hero-img {
       width: 100%;
-      max-height: 440px;
+      max-height: 580px;
       object-fit: cover;
       border-radius: 20px;
-      margin-bottom: 28px;
+      display: block;
     }
+
+    /* Numbered dots on the image */
+    .dot {
+      position: absolute;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+      line-height: 1;
+    }
+    .dot-green { background: #16a34a; }
+    .dot-yellow { background: #ca8a04; }
+    .dot-red { background: #dc2626; }
 
     .divider {
       width: 50px;
       height: 3px;
       background: #7c3aed;
       border-radius: 2px;
-      margin-bottom: 24px;
+      margin-bottom: 28px;
     }
 
-    .myths {
+    /* Legend items */
+    .legend {
       width: 100%;
       display: flex;
       flex-direction: column;
       gap: 10px;
     }
 
-    .myth {
+    .legend-item {
       display: flex;
       align-items: center;
-      gap: 16px;
-      background: #fff;
-      border-radius: 14px;
-      padding: 16px 22px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-      border-left: 5px solid;
+      gap: 14px;
+      padding: 4px 0;
     }
 
-    .myth-green { border-left-color: #16a34a; }
-    .myth-yellow { border-left-color: #ca8a04; }
-    .myth-red { border-left-color: #dc2626; }
-
-    .badge {
-      display: inline-block;
-      font-size: 12px;
+    .legend-num {
+      width: 36px;
+      height: 36px;
+      min-width: 36px;
+      border-radius: 50%;
+      color: #fff;
+      font-size: 16px;
       font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      padding: 4px 12px;
-      border-radius: 100px;
-      white-space: nowrap;
-      min-width: 68px;
-      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
     }
 
-    .badge-green { background: #f0fdf4; color: #16a34a; }
-    .badge-yellow { background: #fefce8; color: #a16207; }
-    .badge-red { background: #fef2f2; color: #dc2626; }
-
-    .myth-text {
-      flex: 1;
-      font-size: 20px;
-      font-weight: 700;
+    .legend-text {
+      font-size: 19px;
+      font-weight: 600;
       color: #1c1917;
       line-height: 1.3;
+    }
+
+    .legend-text span {
+      font-weight: 500;
+      color: #78716c;
+    }
+
+    /* Color key at bottom */
+    .color-key {
+      display: flex;
+      gap: 32px;
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 2px solid #e7e5e4;
+      width: 100%;
+    }
+
+    .key-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .key-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+    }
+
+    .key-label {
+      font-size: 15px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #57534e;
     }
 
     .footer {
@@ -121,9 +170,7 @@
       align-items: center;
       justify-content: space-between;
       width: 100%;
-      margin-top: 28px;
-      padding-top: 16px;
-      border-top: 2px solid #e7e5e4;
+      margin-top: auto;
     }
 
     .footer-stat {
@@ -143,34 +190,67 @@
   <div class="pin">
     <div class="headline-tag">Myth Busting</div>
     <h1>Low Tox Myths,<br>Debunked</h1>
-    <img class="hero-img" src="myth.png" alt="Kitchen countertop with wooden cutting board, cast iron skillet, glass storage container, stainless steel bottle, and tea infuser">
+
+    <div class="hero-wrap">
+      <img class="hero-img" src="myth.png" alt="">
+      <!-- Wooden cutting board -->
+      <div class="dot dot-red" style="top: 8%; left: 38%;">1</div>
+      <!-- Cast iron skillet -->
+      <div class="dot dot-green" style="top: 12%; right: 8%;">2</div>
+      <!-- Glass storage container -->
+      <div class="dot dot-green" style="top: 42%; left: 32%;">3</div>
+      <!-- Stainless steel bottle -->
+      <div class="dot dot-green" style="top: 48%; left: 6%;">4</div>
+      <!-- Tea with infuser -->
+      <div class="dot dot-yellow" style="top: 68%; left: 28%;">5</div>
+      <!-- Olive oil in glass jar -->
+      <div class="dot dot-green" style="top: 42%; right: 18%;">6</div>
+    </div>
+
     <div class="divider"></div>
-    <div class="myths">
-      <div class="myth myth-green">
-        <span class="badge badge-green">Myth</span>
-        <span class="myth-text">Microwaves cause cancer</span>
+
+    <div class="legend">
+      <div class="legend-item">
+        <div class="legend-num dot-red">1</div>
+        <div class="legend-text">Wood cutting board <span>beats plastic on both axes</span></div>
       </div>
-      <div class="myth myth-yellow">
-        <span class="badge badge-yellow">Mixed</span>
-        <span class="myth-text">All non stick pans are toxic</span>
+      <div class="legend-item">
+        <div class="legend-num dot-green">2</div>
+        <div class="legend-text">Cast iron is safe <span>(iron poisoning is a myth)</span></div>
       </div>
-      <div class="myth myth-green">
-        <span class="badge badge-green">Myth</span>
-        <span class="myth-text">BPA free means safe</span>
+      <div class="legend-item">
+        <div class="legend-num dot-green">3</div>
+        <div class="legend-text">Glass storage <span>is one of several safe options</span></div>
       </div>
-      <div class="myth myth-green">
-        <span class="badge badge-green">Myth</span>
-        <span class="myth-text">Bottled water is purer than tap</span>
+      <div class="legend-item">
+        <div class="legend-num dot-green">4</div>
+        <div class="legend-text">Steel bottle <span>over plastic (bottled water is a myth)</span></div>
       </div>
-      <div class="myth myth-red">
-        <span class="badge badge-red">Valid</span>
-        <span class="myth-text">Plastic boards are worse than wood</span>
+      <div class="legend-item">
+        <div class="legend-num dot-yellow">5</div>
+        <div class="legend-text">Non stick <span>is mixed (old Teflon bad, modern varies)</span></div>
       </div>
-      <div class="myth myth-green">
-        <span class="badge badge-green">Myth</span>
-        <span class="myth-text">Sunscreen is worse than sun</span>
+      <div class="legend-item">
+        <div class="legend-num dot-green">6</div>
+        <div class="legend-text">Glass jar oils <span>over plastic (fat absorbs chemicals)</span></div>
       </div>
     </div>
+
+    <div class="color-key">
+      <div class="key-item">
+        <div class="key-dot" style="background:#16a34a;"></div>
+        <span class="key-label">Myth (overblown)</span>
+      </div>
+      <div class="key-item">
+        <div class="key-dot" style="background:#ca8a04;"></div>
+        <span class="key-label">Mixed (nuanced)</span>
+      </div>
+      <div class="key-item">
+        <div class="key-dot" style="background:#dc2626;"></div>
+        <span class="key-label">Valid (real concern)</span>
+      </div>
+    </div>
+
     <div class="footer">
       <span class="footer-stat">27 claims ranked by actual evidence</span>
       <span class="footer-url">plasticdetox.org</span>
