@@ -1944,23 +1944,41 @@
 
   <script>
     // ==================== NEWSLETTER ====================
+    function getSignupSource() {
+      var params = new URLSearchParams(window.location.search);
+      if (params.get("utm_source")) return params.get("utm_source");
+      if (!document.referrer) return "direct";
+      var host = new URL(document.referrer).hostname;
+      if (host.indexOf("instagram") !== -1) return "instagram";
+      if (host.indexOf("pinterest") !== -1) return "pinterest";
+      if (host.indexOf("google") !== -1) return "google";
+      if (host.indexOf("facebook") !== -1 || host.indexOf("fb.") !== -1) return "facebook";
+      if (host.indexOf("twitter") !== -1 || host.indexOf("t.co") !== -1) return "twitter";
+      return host;
+    }
+
     function nlSubscribe() {
       const email = document.getElementById("nl-email").value.trim();
       const msg = document.getElementById("nl-msg");
       if (!email || !email.includes("@")) { msg.textContent = "Enter a valid email"; msg.style.color = "#dc2626"; return; }
       msg.textContent = "Subscribing..."; msg.style.color = "#78716c";
+      const source = getSignupSource();
       const form = document.createElement("form");
       form.method = "POST";
       form.action = "https://57a81e5f.sibforms.com/serve/MUIFAHP3LqQp0UznZl5CKFGztCR47r9K-zHK4YRpryoqZLY0Ybvjo2ohqZhvH_BMVq5XmiDkLloNlf4re1hUEUwze8N053Xm1uVawE60egTCSDSSxuCOcXoGkfIne8Me-YdQ4i2Yi3ohxDAHB6ichyo1OAh4ocm5vRXvt2dWjtAJK7J7-j3rPzU9F1Lj1NG4RhDjvuFgXLd312bqGg==";
       form.target = "nl-frame";
       const input = document.createElement("input");
       input.type = "hidden"; input.name = "EMAIL"; input.value = email;
+      const src = document.createElement("input");
+      src.type = "hidden"; src.name = "SOURCE"; src.value = source;
       form.appendChild(input);
+      form.appendChild(src);
       document.body.appendChild(form);
       form.submit();
       document.body.removeChild(form);
       document.getElementById("nl-email").value = "";
       msg.textContent = "You're in!"; msg.style.color = "#16a34a";
+      if (window.gtag) { gtag("event", "newsletter_signup", { method: "homepage_bottom", source: source }); }
     }
 
     function nlSubscribeTop() {
@@ -1968,18 +1986,23 @@
       const msg = document.getElementById("nl-msg-top");
       if (!email || !email.includes("@")) { msg.textContent = "Enter a valid email"; msg.style.color = "#dc2626"; return; }
       msg.textContent = "Subscribing..."; msg.style.color = "#78716c";
+      const source = getSignupSource();
       const form = document.createElement("form");
       form.method = "POST";
       form.action = "https://57a81e5f.sibforms.com/serve/MUIFAHP3LqQp0UznZl5CKFGztCR47r9K-zHK4YRpryoqZLY0Ybvjo2ohqZhvH_BMVq5XmiDkLloNlf4re1hUEUwze8N053Xm1uVawE60egTCSDSSxuCOcXoGkfIne8Me-YdQ4i2Yi3ohxDAHB6ichyo1OAh4ocm5vRXvt2dWjtAJK7J7-j3rPzU9F1Lj1NG4RhDjvuFgXLd312bqGg==";
       form.target = "nl-frame";
       const input = document.createElement("input");
       input.type = "hidden"; input.name = "EMAIL"; input.value = email;
+      const src = document.createElement("input");
+      src.type = "hidden"; src.name = "SOURCE"; src.value = source;
       form.appendChild(input);
+      form.appendChild(src);
       document.body.appendChild(form);
       form.submit();
       document.body.removeChild(form);
       document.getElementById("nl-email-top").value = "";
       msg.textContent = "You're in!"; msg.style.color = "#16a34a";
+      if (window.gtag) { gtag("event", "newsletter_signup", { method: "homepage_top", source: source }); }
     }
 
     // ==================== DATA ====================
@@ -2107,7 +2130,7 @@
           {
             icon: "\u{1F9FA}",
             text: "Do you wash synthetic clothes without a microplastic filter?",
-            alt: "<strong>Add a microplastic filter to your washing machine.</strong><span class='alt-swap'>A <a href='https://www.amazon.com/dp/B002KEMABQ?tag=plasticdetox-20' target='_blank' rel='noopener sponsored'>Filtrol</a> or <a href='https://www.amazon.com/dp/B08NBZT5SF?tag=plasticdetox-20' target='_blank' rel='noopener sponsored'>Guppyfriend Washing Bag</a> catches microplastic fibers before they enter waterways and reduces your home's microplastic dust load too.</span>Every synthetic fabric wash releases hundreds of thousands of microplastic fibers into water.<div style='margin-top:1rem;'><a href='articles/microplastics-in-clothing-and-laundry.html' target='_blank' rel='noopener' style='color:var(--accent-dark);font-weight:600;font-size:0.9rem;'>Microplastics in clothing and laundry \u2192</a></div>"
+            alt: "<strong>Add a microplastic filter to your washing machine.</strong><span class='alt-swap'>A <a href='https://www.amazon.com/dp/B002KEMABQ?tag=plasticdetox-20' target='_blank' rel='noopener sponsored'>Filtrol</a> or <a href='https://guppyfriend.us/products/guppyfriend-washing-bag?variant=15269244272738' target='_blank' rel='noopener'>Guppyfriend Washing Bag</a> catches microplastic fibers before they enter waterways and reduces your home's microplastic dust load too.</span>Every synthetic fabric wash releases hundreds of thousands of microplastic fibers into water.<div style='margin-top:1rem;'><a href='articles/microplastics-in-clothing-and-laundry.html' target='_blank' rel='noopener' style='color:var(--accent-dark);font-weight:600;font-size:0.9rem;'>Microplastics in clothing and laundry \u2192</a></div>"
           },
           {
             icon: "\u{1F9F4}",

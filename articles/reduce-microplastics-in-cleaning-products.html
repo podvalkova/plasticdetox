@@ -375,7 +375,7 @@
     <p>Even if you switch to a plastic free detergent, your synthetic clothes (polyester, nylon, acrylic) will still shed microfibers every time they are washed. Two products can help:</p>
 
     <ul>
-      <li><a href="https://www.amazon.com/dp/B08NBZT5SF?tag=plasticdetox-20" target="_blank" rel="noopener sponsored"><strong>Guppyfriend Wash Bag</strong></a> ($35). A specially designed mesh bag that catches microfibers shed during washing. Independent testing shows it captures approximately 54% of microfibers. You put synthetic garments inside the bag before washing, then remove the collected fibers and dispose of them in the trash (not down the drain).</li>
+      <li><a href="https://guppyfriend.us/products/guppyfriend-washing-bag?variant=15269244272738" target="_blank" rel="noopener"><strong>Guppyfriend Wash Bag</strong></a> ($35). A specially designed mesh bag that catches microfibers shed during washing. Independent testing shows it captures approximately 54% of microfibers. You put synthetic garments inside the bag before washing, then remove the collected fibers and dispose of them in the trash (not down the drain).</li>
       <li><strong>Cora Ball</strong> (available at <a href="https://coraball.com" target="_blank" rel="noopener">coraball.com</a>) ($38). A ball that tumbles in the wash and catches microfibers, inspired by the way coral filters ocean water. Independent testing shows it catches about 26% of microfibers. Less effective than the Guppyfriend but easier to use since you just toss it in the machine.</li>
     </ul>
 
@@ -626,6 +626,18 @@
 
   <iframe name="nl-frame" id="nl-frame" style="display:none;"></iframe>
   <script>
+  function getSignupSource() {
+    var params = new URLSearchParams(window.location.search);
+    if (params.get("utm_source")) return params.get("utm_source");
+    if (!document.referrer) return "direct";
+    var host = new URL(document.referrer).hostname;
+    if (host.indexOf("instagram") !== -1) return "instagram";
+    if (host.indexOf("pinterest") !== -1) return "pinterest";
+    if (host.indexOf("google") !== -1) return "google";
+    if (host.indexOf("facebook") !== -1 || host.indexOf("fb.") !== -1) return "facebook";
+    if (host.indexOf("twitter") !== -1 || host.indexOf("t.co") !== -1) return "twitter";
+    return host;
+  }
   function nlSubmit(form) {
     var input = form.querySelector('input[name="EMAIL"]');
     var email = (input.value || "").trim();
@@ -637,20 +649,24 @@
     }
     msg.textContent = "Subscribing...";
     msg.style.color = "#78716c";
+    var source = getSignupSource();
     var hidden = document.createElement("form");
     hidden.method = "POST";
     hidden.action = "https://57a81e5f.sibforms.com/serve/MUIFAHP3LqQp0UznZl5CKFGztCR47r9K-zHK4YRpryoqZLY0Ybvjo2ohqZhvH_BMVq5XmiDkLloNlf4re1hUEUwze8N053Xm1uVawE60egTCSDSSxuCOcXoGkfIne8Me-YdQ4i2Yi3ohxDAHB6ichyo1OAh4ocm5vRXvt2dWjtAJK7J7-j3rPzU9F1Lj1NG4RhDjvuFgXLd312bqGg==";
     hidden.target = "nl-frame";
     var h = document.createElement("input");
     h.type = "hidden"; h.name = "EMAIL"; h.value = email;
+    var s = document.createElement("input");
+    s.type = "hidden"; s.name = "SOURCE"; s.value = source;
     hidden.appendChild(h);
+    hidden.appendChild(s);
     document.body.appendChild(hidden);
     hidden.submit();
     document.body.removeChild(hidden);
     input.value = "";
     msg.textContent = "You're in! Check your inbox to confirm.";
     msg.style.color = "#16a34a";
-    if (window.gtag) { gtag("event", "newsletter_signup", { method: "article_cta" }); }
+    if (window.gtag) { gtag("event", "newsletter_signup", { method: "article_cta", source: source }); }
     return false;
   }
   </script>

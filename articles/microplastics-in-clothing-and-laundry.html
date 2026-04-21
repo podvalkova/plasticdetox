@@ -415,7 +415,7 @@
     <p>Microfiber catching laundry bags provide a practical, affordable way to reduce fiber shedding without installing anything on your washing machine. You place synthetic garments inside the bag, zip it closed, and wash as normal. The bag serves two functions: it catches fibers that do shed, and it reduces the mechanical agitation that causes shedding in the first place.</p>
 
     <ul>
-      <li><a href="https://www.amazon.com/s?k=Guppyfriend+Washing+Bag&tag=plasticdetox-20" target="_blank" rel="noopener sponsored"><strong>Guppyfriend Washing Bag</strong></a> ($35 to $38). The most researched and well known microfiber catching laundry bag. It is made from a tightly woven, untreated polyamide mesh that allows water and detergent through but captures microfibers. Independent testing shows it captures approximately 54% of microfibers and reduces overall shedding by creating a gentler wash environment inside the bag. After washing, you remove the collected fibers from inside the bag and dispose of them in the trash (not down the drain). The bag is large enough to hold several garments per wash.</li>
+      <li><a href="https://guppyfriend.us/products/guppyfriend-washing-bag?variant=15269244272738" target="_blank" rel="noopener"><strong>Guppyfriend Washing Bag</strong></a> ($35 to $38). The most researched and well known microfiber catching laundry bag. It is made from a tightly woven, untreated polyamide mesh that allows water and detergent through but captures microfibers. Independent testing shows it captures approximately 54% of microfibers and reduces overall shedding by creating a gentler wash environment inside the bag. After washing, you remove the collected fibers from inside the bag and dispose of them in the trash (not down the drain). The bag is large enough to hold several garments per wash.</li>
     </ul>
 
     <div class="callout">
@@ -567,7 +567,7 @@
 
     <ol>
       <li><strong>Start washing all synthetic clothes in cold water on a short, gentle cycle.</strong> This is free, immediate, and reduces shedding by 30% or more. You can start today.</li>
-      <li><strong>Buy a Guppyfriend bag and use it for all synthetic garments.</strong> At $35 to $38, this is the cheapest product investment and captures about 54% of fibers. <a href="https://www.amazon.com/s?k=Guppyfriend+Washing+Bag&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Get one here</a>.</li>
+      <li><strong>Buy a Guppyfriend bag and use it for all synthetic garments.</strong> At $35 to $38, this is the cheapest product investment and captures about 54% of fibers. <a href="https://guppyfriend.us/products/guppyfriend-washing-bag?variant=15269244272738" target="_blank" rel="noopener">Get one here</a>.</li>
       <li><strong>Switch from powder to liquid detergent.</strong> This reduces the abrasion that causes fiber breakage. Look for plant based liquid detergent in a recyclable or refillable container.</li>
       <li><strong>Air dry synthetic clothes instead of using the dryer.</strong> This completely eliminates airborne microfiber emissions from drying and extends the life of your clothes.</li>
       <li><strong>Install an external washing machine filter.</strong> The <a href="https://www.amazon.com/s?k=Filtrol+160+washing+machine+filter&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Filtrol 160</a> or <a href="https://www.amazon.com/s?k=PlanetCare+microfiber+filter&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">PlanetCare filter</a> captures 80 to 90% of microfibers. This is the single most effective product you can buy.</li>
@@ -648,6 +648,18 @@
 
   <iframe name="nl-frame" id="nl-frame" style="display:none;"></iframe>
   <script>
+  function getSignupSource() {
+    var params = new URLSearchParams(window.location.search);
+    if (params.get("utm_source")) return params.get("utm_source");
+    if (!document.referrer) return "direct";
+    var host = new URL(document.referrer).hostname;
+    if (host.indexOf("instagram") !== -1) return "instagram";
+    if (host.indexOf("pinterest") !== -1) return "pinterest";
+    if (host.indexOf("google") !== -1) return "google";
+    if (host.indexOf("facebook") !== -1 || host.indexOf("fb.") !== -1) return "facebook";
+    if (host.indexOf("twitter") !== -1 || host.indexOf("t.co") !== -1) return "twitter";
+    return host;
+  }
   function nlSubmit(form) {
     var input = form.querySelector('input[name="EMAIL"]');
     var email = (input.value || "").trim();
@@ -659,20 +671,24 @@
     }
     msg.textContent = "Subscribing...";
     msg.style.color = "#78716c";
+    var source = getSignupSource();
     var hidden = document.createElement("form");
     hidden.method = "POST";
     hidden.action = "https://57a81e5f.sibforms.com/serve/MUIFAHP3LqQp0UznZl5CKFGztCR47r9K-zHK4YRpryoqZLY0Ybvjo2ohqZhvH_BMVq5XmiDkLloNlf4re1hUEUwze8N053Xm1uVawE60egTCSDSSxuCOcXoGkfIne8Me-YdQ4i2Yi3ohxDAHB6ichyo1OAh4ocm5vRXvt2dWjtAJK7J7-j3rPzU9F1Lj1NG4RhDjvuFgXLd312bqGg==";
     hidden.target = "nl-frame";
     var h = document.createElement("input");
     h.type = "hidden"; h.name = "EMAIL"; h.value = email;
+    var s = document.createElement("input");
+    s.type = "hidden"; s.name = "SOURCE"; s.value = source;
     hidden.appendChild(h);
+    hidden.appendChild(s);
     document.body.appendChild(hidden);
     hidden.submit();
     document.body.removeChild(hidden);
     input.value = "";
     msg.textContent = "You're in! Check your inbox to confirm.";
     msg.style.color = "#16a34a";
-    if (window.gtag) { gtag("event", "newsletter_signup", { method: "article_cta" }); }
+    if (window.gtag) { gtag("event", "newsletter_signup", { method: "article_cta", source: source }); }
     return false;
   }
   </script>

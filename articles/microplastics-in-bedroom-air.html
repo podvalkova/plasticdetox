@@ -492,7 +492,7 @@
       </tbody>
     </table>
 
-    <p>If you are not ready to replace your curtains, wash them in a <a href="https://www.amazon.com/s?k=Guppyfriend+washing+bag&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Guppyfriend washing bag</a> before rehanging. This removes loose fibers that would otherwise shed into your air over the following weeks. For more on managing synthetic fiber shedding throughout your home, see our guide to <a href="microplastics-in-clothing-and-laundry.html">microplastics in clothing and laundry</a>.</p>
+    <p>If you are not ready to replace your curtains, wash them in a <a href="https://guppyfriend.us/products/guppyfriend-washing-bag?variant=15269244272738" target="_blank" rel="noopener">Guppyfriend washing bag</a> before rehanging. This removes loose fibers that would otherwise shed into your air over the following weeks. For more on managing synthetic fiber shedding throughout your home, see our guide to <a href="microplastics-in-clothing-and-laundry.html">microplastics in clothing and laundry</a>.</p>
 
     <!-- SWAP 5 -->
     <h2 id="swap-5">6. Swap 5: Flooring</h2>
@@ -625,7 +625,7 @@
       <h3>Guppyfriend Washing Bag</h3>
       <p>If you still have synthetic textiles in your bedroom that you are not ready to replace, wash them inside a Guppyfriend bag. It captures up to 86% of the microfibers that shed during a wash cycle, preventing them from entering your water supply and settling as dust in your home.</p>
       <p><strong>Why we recommend it:</strong> Reduces microfiber release at the source for any synthetic items you still use. Reusable for hundreds of washes.</p>
-      <p><a href="https://www.amazon.com/s?k=Guppyfriend+washing+bag&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Browse Guppyfriend bags on Amazon →</a></p>
+      <p><a href="https://guppyfriend.us/products/guppyfriend-washing-bag?variant=15269244272738" target="_blank" rel="noopener">Browse Guppyfriend bags →</a></p>
     </div>
 
     <!-- FAQ -->
@@ -689,6 +689,18 @@
 
   <iframe name="nl-frame" id="nl-frame" style="display:none;"></iframe>
   <script>
+  function getSignupSource() {
+    var params = new URLSearchParams(window.location.search);
+    if (params.get("utm_source")) return params.get("utm_source");
+    if (!document.referrer) return "direct";
+    var host = new URL(document.referrer).hostname;
+    if (host.indexOf("instagram") !== -1) return "instagram";
+    if (host.indexOf("pinterest") !== -1) return "pinterest";
+    if (host.indexOf("google") !== -1) return "google";
+    if (host.indexOf("facebook") !== -1 || host.indexOf("fb.") !== -1) return "facebook";
+    if (host.indexOf("twitter") !== -1 || host.indexOf("t.co") !== -1) return "twitter";
+    return host;
+  }
   function nlSubmit(form) {
     var input = form.querySelector('input[name="EMAIL"]');
     var email = (input.value || "").trim();
@@ -700,20 +712,24 @@
     }
     msg.textContent = "Subscribing...";
     msg.style.color = "#78716c";
+    var source = getSignupSource();
     var hidden = document.createElement("form");
     hidden.method = "POST";
     hidden.action = "https://57a81e5f.sibforms.com/serve/MUIFAHP3LqQp0UznZl5CKFGztCR47r9K-zHK4YRpryoqZLY0Ybvjo2ohqZhvH_BMVq5XmiDkLloNlf4re1hUEUwze8N053Xm1uVawE60egTCSDSSxuCOcXoGkfIne8Me-YdQ4i2Yi3ohxDAHB6ichyo1OAh4ocm5vRXvt2dWjtAJK7J7-j3rPzU9F1Lj1NG4RhDjvuFgXLd312bqGg==";
     hidden.target = "nl-frame";
     var h = document.createElement("input");
     h.type = "hidden"; h.name = "EMAIL"; h.value = email;
+    var s = document.createElement("input");
+    s.type = "hidden"; s.name = "SOURCE"; s.value = source;
     hidden.appendChild(h);
+    hidden.appendChild(s);
     document.body.appendChild(hidden);
     hidden.submit();
     document.body.removeChild(hidden);
     input.value = "";
     msg.textContent = "You're in! Check your inbox to confirm.";
     msg.style.color = "#16a34a";
-    if (window.gtag) { gtag("event", "newsletter_signup", { method: "article_cta" }); }
+    if (window.gtag) { gtag("event", "newsletter_signup", { method: "article_cta", source: source }); }
     return false;
   }
   </script>
