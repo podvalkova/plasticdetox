@@ -16,19 +16,27 @@
       background: #fafaf9;
       display: flex;
       justify-content: center;
-      padding: 2rem;
+      padding: 0;
       font-family: 'Inter', -apple-system, sans-serif;
     }
 
     .pin {
-      width: 1000px;
-      height: 1550px;
+      width: 936px;
+      height: 1500px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Image area: takes remaining space */
+    .image-area {
+      flex: 1;
       position: relative;
       overflow: hidden;
     }
 
-    /* Full bleed image */
-    .pin > img {
+    .image-area img {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -39,13 +47,14 @@
     .top-overlay {
       position: absolute;
       top: 0; left: 0; right: 0;
-      padding: 44px 40px 70px;
+      padding: 36px 40px 56px;
       background: linear-gradient(to bottom,
         rgba(250, 250, 249, 0.95) 0%,
         rgba(250, 250, 249, 0.85) 60%,
         rgba(250, 250, 249, 0) 100%
       );
       text-align: center;
+      z-index: 2;
     }
 
     .headline-tag {
@@ -62,7 +71,7 @@
     }
 
     .top-overlay h1 {
-      font-size: 52px;
+      font-size: 48px;
       font-weight: 900;
       color: #1c1917;
       line-height: 1.08;
@@ -88,49 +97,57 @@
       z-index: 3;
     }
 
-    .badge-1 { left: 10%; top: 42%; }
-    .badge-2 { left: 28%; top: 35%; }
-    .badge-3 { left: 44%; top: 32%; }
-    .badge-4 { left: 62%; top: 35%; }
-    .badge-5 { left: 78%; top: 42%; }
+    .badge-1 { left: 8%;  top: 42%; }
+    .badge-2 { left: 24%; top: 36%; }
+    .badge-3 { left: 40%; top: 30%; }
+    .badge-4 { left: 58%; top: 33%; }
+    .badge-5 { left: 68%; top: 44%; }
+    .badge-6 { left: 84%; top: 38%; }
+
+    /* Gradient fade at bottom of image */
+    .image-fade {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 60px;
+      background: linear-gradient(to bottom,
+        rgba(250, 250, 249, 0) 0%,
+        rgba(250, 250, 249, 1) 100%
+      );
+      z-index: 2;
+    }
 
     /* ─── BOTTOM: swap legend card ─── */
     .bottom-card {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      background: linear-gradient(to bottom,
-        rgba(250, 250, 249, 0) 0%,
-        rgba(250, 250, 249, 0.9) 15%,
-        rgba(250, 250, 249, 0.97) 30%,
-        rgba(250, 250, 249, 1) 50%
-      );
-      padding: 80px 44px 20px;
+      background: #fafaf9;
+      padding: 16px 36px 14px;
+      flex-shrink: 0;
+      min-height: 200px;
     }
 
     .swaps {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px 28px;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 8px 12px;
     }
 
     .swap {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       background: #fff;
       border-radius: 12px;
-      padding: 12px 14px;
+      padding: 10px 12px;
       box-shadow: 0 1px 3px rgba(0,0,0,0.05);
     }
 
     .swap-num {
-      width: 30px;
-      height: 30px;
-      min-width: 30px;
+      width: 28px;
+      height: 28px;
+      min-width: 28px;
       border-radius: 50%;
       background: #7c3aed;
       color: #fff;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 800;
       display: flex;
       align-items: center;
@@ -139,7 +156,7 @@
 
     .swap-text {
       flex: 1;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 700;
       color: #1c1917;
       line-height: 1.3;
@@ -147,7 +164,7 @@
 
     .swap-text span {
       display: block;
-      font-size: 11.5px;
+      font-size: 10.5px;
       font-weight: 500;
       color: #78716c;
       margin-top: 1px;
@@ -158,8 +175,8 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-top: 16px;
-      padding-top: 12px;
+      margin-top: 10px;
+      padding-top: 8px;
       border-top: 1px solid #e7e5e4;
     }
 
@@ -178,40 +195,49 @@
 </head>
 <body>
   <div class="pin">
-    <img src="kitchen appliences.png" alt="Pencil sketch of kitchen appliances on countertop">
+    <div class="image-area">
+      <img src="kitchen appliences.png" alt="Pencil sketch of kitchen appliances on countertop">
 
-    <div class="top-overlay">
-      <div class="headline-tag">Kitchen Guide</div>
-      <h1>Toxic Kitchen Appliances<br>Ranked by Leaching Risk</h1>
+      <div class="top-overlay">
+        <div class="headline-tag">Kitchen Guide</div>
+        <h1>Toxic Kitchen Appliances<br>Ranked by Leaching Risk</h1>
+      </div>
+
+      <div class="badge badge-1">1</div>
+      <div class="badge badge-2">2</div>
+      <div class="badge badge-3">3</div>
+      <div class="badge badge-4">4</div>
+      <div class="badge badge-5">5</div>
+      <div class="badge badge-6">6</div>
+
+      <div class="image-fade"></div>
     </div>
-
-    <div class="badge badge-1">1</div>
-    <div class="badge badge-2">2</div>
-    <div class="badge badge-3">3</div>
-    <div class="badge badge-4">4</div>
-    <div class="badge badge-5">5</div>
 
     <div class="bottom-card">
       <div class="swaps">
         <div class="swap">
           <div class="swap-num">1</div>
-          <div class="swap-text">Air Fryer<span>PFAS coatings degrade at high heat</span></div>
+          <div class="swap-text">Air Fryer<span>PFAS from nonstick coating</span></div>
         </div>
         <div class="swap">
           <div class="swap-num">2</div>
-          <div class="swap-text">Electric Kettle<span>Plastic interior leaches at 100°C</span></div>
+          <div class="swap-text">Kettle<span>Plastic leaches at 100°C</span></div>
         </div>
         <div class="swap">
           <div class="swap-num">3</div>
-          <div class="swap-text">Pod Coffee<span>Near boiling water through plastic</span></div>
+          <div class="swap-text">Pod Coffee<span>Plastic + aluminum pods</span></div>
         </div>
         <div class="swap">
           <div class="swap-num">4</div>
-          <div class="swap-text">Blender<span>Friction grinds microplastics off jar</span></div>
+          <div class="swap-text">Blender<span>Friction sheds microplastics</span></div>
         </div>
         <div class="swap">
           <div class="swap-num">5</div>
-          <div class="swap-text">Pressure Cooker<span>Stainless steel = safest option</span></div>
+          <div class="swap-text">Pressure Cooker<span>Stainless = safest pick</span></div>
+        </div>
+        <div class="swap">
+          <div class="swap-num">6</div>
+          <div class="swap-text">Rice Cooker<span>Nonstick pot leaches PFAS</span></div>
         </div>
       </div>
       <div class="footer">
