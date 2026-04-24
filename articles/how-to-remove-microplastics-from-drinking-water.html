@@ -697,7 +697,7 @@
     input.value = "";
     msg.textContent = "You're in! Check your inbox to confirm.";
     msg.style.color = "#16a34a";
-    if (window.gtag) { gtag("event", "newsletter_signup", { method: "article_cta", source: source }); }
+    if (window.gtag) { gtag("event", "newsletter_signup", { method: "article_cta", signup_source: source }); }
     return false;
   }
   </script>

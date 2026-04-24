@@ -38,7 +38,7 @@
     "author": { "@type": "Organization", "name": "Plastic Detox", "url": "https://plasticdetox.org" },
     "publisher": { "@type": "Organization", "name": "Plastic Detox", "url": "https://plasticdetox.org" },
     "datePublished": "2026-04-12",
-    "dateModified": "2026-04-12",
+    "dateModified": "2026-04-24",
     "mainEntityOfPage": "https://plasticdetox.org/articles/plastic-in-groceries-what-really-matters.html"
   }
   </script>
@@ -1059,26 +1059,6 @@
       </div>
     </div>
 
-    <div class="priority-tier">
-      <div class="priority-tier-header">
-        <span class="priority-badge priority-medium">Medium Priority</span>
-        <span class="priority-tier-title">Stainless Steel Containers</span>
-      </div>
-      <p style="margin-bottom:0.75rem;">Best for lunches, kids, and on the go food. Unbreakable and lightweight compared to glass.</p>
-      <div class="grocery-grid">
-        <div class="grocery-item">
-          <h4>PlanetBox Rover (Best for Kids)</h4>
-          <p>The go to stainless steel bento for families. Five smart compartments, 18/8 stainless steel with 46% recycled content, dishwasher safe, and includes leak proof dippers. Completely free of BPA, phthalates, and lead.</p>
-          <a href="https://www.amazon.com/dp/B09YMX8TCV?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="rec-link">View on Amazon →</a>
-        </div>
-        <div class="grocery-item">
-          <h4>ECOlunchbox Three in One</h4>
-          <p>Nesting stainless steel containers that stack for easy carrying. Great for adults who want portion controlled, plastic free lunch packing. 100% stainless steel, nothing else touches your food.</p>
-          <a href="https://www.amazon.com/dp/B0040MH642?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="rec-link">View on Amazon →</a>
-        </div>
-      </div>
-    </div>
-
     <!-- SECTION 10: BUDGET -->
     <h2 id="budget">10. Doing This on a Budget</h2>
 
@@ -1239,7 +1219,7 @@
     input.value = "";
     msg.textContent = "You're in! Check your inbox to confirm.";
     msg.style.color = "#16a34a";
-    if (window.gtag) { gtag("event", "newsletter_signup", { method: "article_cta", source: source }); }
+    if (window.gtag) { gtag("event", "newsletter_signup", { method: "article_cta", signup_source: source }); }
     return false;
   }
   </script>
