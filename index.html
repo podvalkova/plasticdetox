@@ -1611,6 +1611,17 @@
           </div>
         </div>
         <div class="articles-grid" id="articles-grid">
+          <a href="articles/glyphosate-detox-guide.html" class="article-card" data-date="2026-04-27" data-popular="9">
+            <div class="article-card-body">
+              <span class="article-card-tag">Food &amp; Pesticides</span>
+              <h2 class="article-card-title">Glyphosate Detox: What It Is, Where It Hides in Your Food, and How to Reduce Exposure (2026)</h2>
+              <p class="article-card-excerpt">A complete guide to glyphosate, the most widely used agricultural chemical in history. The foods with the highest residues, what 2025 and 2026 science says about cancer, gut, liver, and pregnancy effects, plus a 7 day reset and the certified glyphosate residue free brands worth buying.</p>
+              <div class="article-card-meta">
+                <span>24 min read</span>
+                <span>April 2026</span>
+              </div>
+            </div>
+          </a>
           <a href="articles/toxic-kitchen-appliances-ranked.html" class="article-card" data-date="2026-04-22" data-popular="7">
             <div class="article-card-body">
               <span class="article-card-tag">Kitchen &amp; Appliances Guide</span>
@@ -1989,7 +2000,7 @@
       document.body.removeChild(form);
       document.getElementById("nl-email").value = "";
       msg.textContent = "You're in!"; msg.style.color = "#16a34a";
-      if (window.gtag) { gtag("event", "newsletter_signup", { method: "homepage_bottom", source: source }); }
+      if (window.gtag) { gtag("event", "newsletter_signup", { method: "homepage_bottom", signup_source: source }); }
     }
 
     function nlSubscribeTop() {
@@ -2013,7 +2024,7 @@
       document.body.removeChild(form);
       document.getElementById("nl-email-top").value = "";
       msg.textContent = "You're in!"; msg.style.color = "#16a34a";
-      if (window.gtag) { gtag("event", "newsletter_signup", { method: "homepage_top", source: source }); }
+      if (window.gtag) { gtag("event", "newsletter_signup", { method: "homepage_top", signup_source: source }); }
     }
 
     // ==================== DATA ====================
