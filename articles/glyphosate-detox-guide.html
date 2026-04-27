@@ -268,37 +268,51 @@
 
         <!-- Plants column -->
         <rect x="40" y="60" width="160" height="220" rx="10" fill="#bbf7d0" opacity="0.5"/>
-        <text x="120" y="88" font-family="Inter,sans-serif" font-size="14" font-weight="700" fill="#166534" text-anchor="middle">Plants</text>
-        <text x="120" y="112" font-family="Inter,sans-serif" font-size="32" text-anchor="middle">🌱</text>
-        <text x="120" y="148" font-family="Inter,sans-serif" font-size="11" fill="#166534" text-anchor="middle">Use shikimate to</text>
-        <text x="120" y="164" font-family="Inter,sans-serif" font-size="11" fill="#166534" text-anchor="middle">build amino acids</text>
-        <line x1="60" y1="180" x2="180" y2="180" stroke="#166534" stroke-width="0.5" stroke-dasharray="3,2"/>
-        <text x="120" y="208" font-family="Inter,sans-serif" font-size="11" font-weight="700" fill="#dc2626" text-anchor="middle">Glyphosate blocks it</text>
-        <text x="120" y="226" font-family="Inter,sans-serif" font-size="11" fill="#78716c" text-anchor="middle">Plant cannot make</text>
+        <!-- Plant icon: stem with two leaves -->
+        <g transform="translate(120 92)" stroke="#166534" stroke-width="2" stroke-linecap="round" fill="none">
+          <line x1="0" y1="-2" x2="0" y2="14"/>
+          <path d="M 0 4 Q -10 -2 -12 -10 Q -4 -10 0 -2"/>
+          <path d="M 0 0 Q 10 -6 12 -14 Q 4 -14 0 -6"/>
+        </g>
+        <text x="120" y="128" font-family="Inter,sans-serif" font-size="15" font-weight="700" fill="#166534" text-anchor="middle">Plants</text>
+        <text x="120" y="156" font-family="Inter,sans-serif" font-size="11" fill="#166534" text-anchor="middle">Use shikimate to</text>
+        <text x="120" y="170" font-family="Inter,sans-serif" font-size="11" fill="#166534" text-anchor="middle">build amino acids</text>
+        <line x1="60" y1="186" x2="180" y2="186" stroke="#166534" stroke-width="0.5" stroke-dasharray="3,2"/>
+        <text x="120" y="210" font-family="Inter,sans-serif" font-size="11" font-weight="700" fill="#dc2626" text-anchor="middle">Glyphosate blocks it</text>
+        <text x="120" y="228" font-family="Inter,sans-serif" font-size="11" fill="#78716c" text-anchor="middle">Plant cannot make</text>
         <text x="120" y="242" font-family="Inter,sans-serif" font-size="11" fill="#78716c" text-anchor="middle">proteins</text>
         <text x="120" y="266" font-family="Inter,sans-serif" font-size="13" font-weight="700" fill="#dc2626" text-anchor="middle">Plant dies</text>
 
         <!-- Humans column -->
         <rect x="220" y="60" width="160" height="220" rx="10" fill="#dbeafe" opacity="0.5"/>
-        <text x="300" y="88" font-family="Inter,sans-serif" font-size="14" font-weight="700" fill="#1e40af" text-anchor="middle">Human Cells</text>
-        <text x="300" y="112" font-family="Inter,sans-serif" font-size="32" text-anchor="middle">🧬</text>
-        <text x="300" y="148" font-family="Inter,sans-serif" font-size="11" fill="#1e40af" text-anchor="middle">No shikimate pathway</text>
-        <text x="300" y="164" font-family="Inter,sans-serif" font-size="11" fill="#1e40af" text-anchor="middle">(get amino acids from food)</text>
-        <line x1="240" y1="180" x2="360" y2="180" stroke="#1e40af" stroke-width="0.5" stroke-dasharray="3,2"/>
-        <text x="300" y="208" font-family="Inter,sans-serif" font-size="11" font-weight="700" fill="#16a34a" text-anchor="middle">Glyphosate cannot</text>
-        <text x="300" y="224" font-family="Inter,sans-serif" font-size="11" font-weight="700" fill="#16a34a" text-anchor="middle">directly kill the cell</text>
+        <!-- Human icon: simple body silhouette -->
+        <g transform="translate(300 92)" stroke="#1e40af" stroke-width="2" stroke-linecap="round" fill="none">
+          <circle cx="0" cy="-6" r="4"/>
+          <path d="M -8 12 Q -8 0 0 0 Q 8 0 8 12"/>
+        </g>
+        <text x="300" y="128" font-family="Inter,sans-serif" font-size="15" font-weight="700" fill="#1e40af" text-anchor="middle">Human Cells</text>
+        <text x="300" y="156" font-family="Inter,sans-serif" font-size="11" fill="#1e40af" text-anchor="middle">No shikimate pathway</text>
+        <text x="300" y="170" font-family="Inter,sans-serif" font-size="11" fill="#1e40af" text-anchor="middle">(get amino acids from food)</text>
+        <line x1="240" y1="186" x2="360" y2="186" stroke="#1e40af" stroke-width="0.5" stroke-dasharray="3,2"/>
+        <text x="300" y="210" font-family="Inter,sans-serif" font-size="11" font-weight="700" fill="#16a34a" text-anchor="middle">Glyphosate cannot</text>
+        <text x="300" y="226" font-family="Inter,sans-serif" font-size="11" font-weight="700" fill="#16a34a" text-anchor="middle">directly kill the cell</text>
         <text x="300" y="252" font-family="Inter,sans-serif" font-size="13" font-weight="700" fill="#1e40af" text-anchor="middle">Cells survive,</text>
         <text x="300" y="268" font-family="Inter,sans-serif" font-size="13" font-weight="700" fill="#1e40af" text-anchor="middle">but…</text>
 
         <!-- Gut bacteria column -->
         <rect x="400" y="60" width="160" height="220" rx="10" fill="#fed7aa" opacity="0.5"/>
-        <text x="480" y="88" font-family="Inter,sans-serif" font-size="14" font-weight="700" fill="#c2410c" text-anchor="middle">Gut Bacteria</text>
-        <text x="480" y="112" font-family="Inter,sans-serif" font-size="32" text-anchor="middle">🦠</text>
-        <text x="480" y="148" font-family="Inter,sans-serif" font-size="11" fill="#c2410c" text-anchor="middle">Many beneficial species</text>
-        <text x="480" y="164" font-family="Inter,sans-serif" font-size="11" fill="#c2410c" text-anchor="middle">DO use shikimate</text>
-        <line x1="420" y1="180" x2="540" y2="180" stroke="#c2410c" stroke-width="0.5" stroke-dasharray="3,2"/>
-        <text x="480" y="208" font-family="Inter,sans-serif" font-size="11" font-weight="700" fill="#dc2626" text-anchor="middle">Glyphosate selectively</text>
-        <text x="480" y="224" font-family="Inter,sans-serif" font-size="11" font-weight="700" fill="#dc2626" text-anchor="middle">suppresses good bacteria</text>
+        <!-- Bacteria icon: three rod shaped bacteria -->
+        <g transform="translate(480 92)" stroke="#c2410c" stroke-width="2" stroke-linecap="round" fill="none">
+          <ellipse cx="-9" cy="-4" rx="5" ry="2.5" transform="rotate(-20 -9 -4)"/>
+          <ellipse cx="0" cy="6" rx="5" ry="2.5" transform="rotate(15 0 6)"/>
+          <ellipse cx="10" cy="-2" rx="5" ry="2.5" transform="rotate(-10 10 -2)"/>
+        </g>
+        <text x="480" y="128" font-family="Inter,sans-serif" font-size="15" font-weight="700" fill="#c2410c" text-anchor="middle">Gut Bacteria</text>
+        <text x="480" y="156" font-family="Inter,sans-serif" font-size="11" fill="#c2410c" text-anchor="middle">Many beneficial species</text>
+        <text x="480" y="170" font-family="Inter,sans-serif" font-size="11" fill="#c2410c" text-anchor="middle">DO use shikimate</text>
+        <line x1="420" y1="186" x2="540" y2="186" stroke="#c2410c" stroke-width="0.5" stroke-dasharray="3,2"/>
+        <text x="480" y="210" font-family="Inter,sans-serif" font-size="11" font-weight="700" fill="#dc2626" text-anchor="middle">Glyphosate selectively</text>
+        <text x="480" y="226" font-family="Inter,sans-serif" font-size="11" font-weight="700" fill="#dc2626" text-anchor="middle">suppresses good bacteria</text>
         <text x="480" y="252" font-family="Inter,sans-serif" font-size="13" font-weight="700" fill="#dc2626" text-anchor="middle">Microbiome</text>
         <text x="480" y="268" font-family="Inter,sans-serif" font-size="13" font-weight="700" fill="#dc2626" text-anchor="middle">imbalance</text>
 
