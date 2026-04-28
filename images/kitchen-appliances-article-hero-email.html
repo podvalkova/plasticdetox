@@ -9,11 +9,10 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { background: #d6d3d1; display: flex; justify-content: center; padding: 2rem; font-family: 'Inter', -apple-system, sans-serif; }
     .pin {
-      width: 1040px;
-      height: 540px;
+      width: 1080px;
+      height: 1350px;
       position: relative;
       overflow: hidden;
-      border-radius: 20px;
     }
     .pin > img {
       width: 100%;
@@ -21,57 +20,63 @@
       object-fit: cover;
       display: block;
     }
-    .overlay {
+    .top-overlay {
       position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: linear-gradient(to right,
-        rgba(250, 250, 249, 0.95) 0%,
-        rgba(250, 250, 249, 0.80) 45%,
-        rgba(250, 250, 249, 0) 70%
+      top: 0; left: 0; right: 0;
+      padding: 56px 48px 100px;
+      background: linear-gradient(to bottom,
+        rgba(250, 250, 249, 0.97) 0%,
+        rgba(250, 250, 249, 0.90) 50%,
+        rgba(250, 250, 249, 0) 100%
       );
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 48px 56px;
+      text-align: center;
     }
     .headline-tag {
       display: inline-block;
-      font-size: 13px;
+      font-size: 16px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.14em;
       color: #7c3aed;
       background: #ede9fe;
-      padding: 7px 18px;
+      padding: 10px 26px;
       border-radius: 100px;
-      margin-bottom: 16px;
-      align-self: flex-start;
+      margin-bottom: 22px;
     }
-    h1 {
-      font-size: 38px;
+    .top-overlay h1 {
+      font-size: 58px;
       font-weight: 900;
       color: #1c1917;
-      line-height: 1.15;
+      line-height: 1.1;
       letter-spacing: -0.03em;
-      max-width: 480px;
     }
-    .subtitle {
-      font-size: 16px;
-      font-weight: 500;
-      color: #57534e;
-      margin-top: 14px;
-      max-width: 420px;
-      line-height: 1.5;
+    .footer {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 48px;
+      background: linear-gradient(to bottom,
+        rgba(250, 250, 249, 0) 0%,
+        rgba(250, 250, 249, 0.9) 50%,
+        rgba(250, 250, 249, 1) 100%
+      );
     }
+    .footer-stat { font-size: 17px; font-weight: 600; color: #78716c; }
+    .footer-url { font-size: 19px; font-weight: 800; color: #7c3aed; }
   </style>
 </head>
 <body>
   <div class="pin">
     <img src="kitchen appliences.png" alt="Pencil sketch of kitchen appliances ranked by toxicity">
-    <div class="overlay">
+    <div class="top-overlay">
       <div class="headline-tag">Kitchen Guide</div>
       <h1>Kitchen Appliances Ranked by Toxicity</h1>
-      <div class="subtitle">From air fryers shedding PFAS to safe stainless picks. Science backed ranking with specific non toxic swaps.</div>
+    </div>
+    <div class="footer">
+      <span class="footer-stat">From air fryers shedding PFAS to safe stainless picks.</span>
+      <span class="footer-url">plasticdetox.org</span>
     </div>
   </div>
 </body>
