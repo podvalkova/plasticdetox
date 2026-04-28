@@ -25,49 +25,49 @@
       background: #fafaf9;
       display: flex;
       flex-direction: column;
-      padding: 56px 60px 40px;
+      padding: 50px 56px 40px;
     }
     .headline-tag {
       display: inline-block;
-      font-size: 18px;
+      font-size: 32px;
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.14em;
       color: #7c3aed;
       background: #ede9fe;
-      padding: 10px 26px;
+      padding: 14px 32px;
       border-radius: 100px;
-      margin-bottom: 18px;
+      margin-bottom: 22px;
       align-self: center;
     }
     h1 {
-      font-size: 64px;
+      font-size: 76px;
       font-weight: 900;
       color: #1c1917;
-      line-height: 1.04;
+      line-height: 1.0;
       letter-spacing: -0.03em;
       text-align: center;
-      margin-bottom: 14px;
+      margin-bottom: 18px;
     }
     h1 .accent { color: #7c3aed; font-style: italic; }
     .subtitle {
-      font-size: 24px;
+      font-size: 32px;
       font-weight: 600;
       color: #57534e;
       text-align: center;
-      margin-bottom: 32px;
-      line-height: 1.35;
+      margin-bottom: 28px;
+      line-height: 1.3;
     }
     .steps {
       flex: 1;
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 14px;
     }
     .step {
       background: #fff;
       border-radius: 20px;
-      padding: 22px 28px;
+      padding: 18px 26px;
       display: flex;
       align-items: center;
       gap: 22px;
@@ -81,48 +81,41 @@
       border-radius: 50%;
       background: #7c3aed;
       color: #fff;
-      font-size: 32px;
+      font-size: 34px;
       font-weight: 900;
       display: flex;
       align-items: center;
       justify-content: center;
       box-shadow: 0 6px 18px rgba(124, 58, 237, 0.35);
     }
-    .step-body { flex: 1; }
     .step-title {
-      font-size: 28px;
+      flex: 1;
+      font-size: 32px;
       font-weight: 800;
       color: #1c1917;
-      line-height: 1.2;
-      margin-bottom: 4px;
-    }
-    .step-desc {
-      font-size: 19px;
-      font-weight: 500;
-      color: #57534e;
-      line-height: 1.4;
+      line-height: 1.15;
     }
     .step-impact {
       background: #ede9fe;
       color: #5b21b6;
-      font-size: 16px;
-      font-weight: 800;
-      padding: 8px 14px;
+      font-size: 32px;
+      font-weight: 900;
+      padding: 12px 22px;
       border-radius: 100px;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.04em;
       white-space: nowrap;
     }
     .step-impact.highest { background: #7c3aed; color: #fff; }
     .bottom-tip {
       background: #f5f3ff;
       border-radius: 16px;
-      padding: 22px 28px;
+      padding: 24px 28px;
       text-align: center;
-      font-size: 22px;
+      font-size: 32px;
       font-weight: 700;
       color: #5b21b6;
-      line-height: 1.4;
+      line-height: 1.3;
       margin-top: 18px;
     }
     .footer {
@@ -130,72 +123,54 @@
       align-items: center;
       justify-content: space-between;
       width: 100%;
-      padding-top: 14px;
-      margin-top: 14px;
+      padding-top: 18px;
+      margin-top: 16px;
       border-top: 2px solid #e7e5e4;
     }
-    .footer-stat { font-size: 17px; font-weight: 600; color: #78716c; }
-    .footer-url { font-size: 19px; font-weight: 800; color: #7c3aed; }
+    .footer-stat { font-size: 32px; font-weight: 700; color: #78716c; }
+    .footer-url { font-size: 32px; font-weight: 800; color: #7c3aed; }
   </style>
 </head>
 <body>
   <div class="pin">
     <div class="headline-tag">7 Day Reset</div>
     <h1>How to <span class="accent">Detox</span><br>From Glyphosate</h1>
-    <div class="subtitle">Pilot studies show urinary glyphosate can drop ~50% within weeks of switching to organic.</div>
+    <div class="subtitle">Pilot data: urinary glyphosate drops ~50% within weeks.</div>
     <div class="steps">
       <div class="step">
         <div class="step-num">1</div>
-        <div class="step-body">
-          <div class="step-title">Buy Glyphosate Residue Free certified</div>
-          <div class="step-desc">Detox Project lab tested below 0.01 ppm. The cleanest tier.</div>
-        </div>
+        <div class="step-title">Pick GRF or BioChecked brands</div>
         <div class="step-impact highest">Biggest</div>
       </div>
       <div class="step">
         <div class="step-num">2</div>
-        <div class="step-body">
-          <div class="step-title">Default to USDA Organic when not</div>
-          <div class="step-desc">Bans glyphosate use. Solid fallback when no GRF brand exists.</div>
-        </div>
+        <div class="step-title">USDA Organic as fallback</div>
         <div class="step-impact">Big</div>
       </div>
       <div class="step">
         <div class="step-num">3</div>
-        <div class="step-body">
-          <div class="step-title">Filter your water</div>
-          <div class="step-desc">Reverse osmosis or quality carbon block, not pitcher filters</div>
-        </div>
+        <div class="step-title">Filter your water</div>
         <div class="step-impact">Big</div>
       </div>
       <div class="step">
         <div class="step-num">4</div>
-        <div class="step-body">
-          <div class="step-title">Eat sulfur rich foods daily</div>
-          <div class="step-desc">Broccoli, kale, garlic, onions, eggs feed liver detox pathways</div>
-        </div>
+        <div class="step-title">Eat sulfur rich foods daily</div>
         <div class="step-impact">Solid</div>
       </div>
       <div class="step">
         <div class="step-num">5</div>
-        <div class="step-body">
-          <div class="step-title">Eat fermented foods daily</div>
-          <div class="step-desc">Sauerkraut, kefir, kimchi rebuild beneficial gut bacteria</div>
-        </div>
+        <div class="step-title">Eat fermented foods daily</div>
         <div class="step-impact">Solid</div>
       </div>
       <div class="step">
         <div class="step-num">6</div>
-        <div class="step-body">
-          <div class="step-title">Optional: glycine and binders</div>
-          <div class="step-desc">General detox support. Check with your doctor if pregnant or nursing.</div>
-        </div>
+        <div class="step-title">Optional: glycine and binders</div>
         <div class="step-impact">Bonus</div>
       </div>
     </div>
-    <div class="bottom-tip">Skip the 500 dollar detox kits. Your liver and kidneys do the work once exposure stops.</div>
+    <div class="bottom-tip">Skip the 500 dollar detox kits. Reduce exposure first.</div>
     <div class="footer">
-      <span class="footer-stat">Reduce exposure first, support pathways second</span>
+      <span class="footer-stat">Reduce, then support</span>
       <span class="footer-url">plasticdetox.org</span>
     </div>
   </div>

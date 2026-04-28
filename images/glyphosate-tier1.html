@@ -25,38 +25,38 @@
       background: #fafaf9;
       display: flex;
       flex-direction: column;
-      padding: 56px 60px 40px;
+      padding: 50px 56px 40px;
     }
     .headline-tag {
       display: inline-block;
-      font-size: 18px;
+      font-size: 32px;
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.14em;
       color: #fff;
       background: #dc2626;
-      padding: 10px 26px;
+      padding: 14px 32px;
       border-radius: 100px;
-      margin-bottom: 18px;
+      margin-bottom: 22px;
       align-self: center;
     }
     h1 {
-      font-size: 60px;
+      font-size: 72px;
       font-weight: 900;
       color: #1c1917;
-      line-height: 1.04;
+      line-height: 1.0;
       letter-spacing: -0.03em;
       text-align: center;
-      margin-bottom: 14px;
+      margin-bottom: 18px;
     }
     h1 .accent { color: #dc2626; font-style: italic; }
     .subtitle {
-      font-size: 24px;
+      font-size: 32px;
       font-weight: 600;
       color: #57534e;
       text-align: center;
       margin-bottom: 28px;
-      line-height: 1.35;
+      line-height: 1.3;
     }
     .foods {
       flex: 1;
@@ -67,7 +67,7 @@
     .food {
       background: #fff;
       border-radius: 18px;
-      padding: 20px 26px;
+      padding: 16px 24px;
       display: flex;
       align-items: center;
       gap: 22px;
@@ -76,127 +76,99 @@
       flex: 1;
     }
     .food-num {
-      width: 56px;
-      height: 56px;
-      min-width: 56px;
+      width: 64px;
+      height: 64px;
+      min-width: 64px;
       border-radius: 50%;
       background: #fef2f2;
       color: #dc2626;
-      font-size: 28px;
+      font-size: 32px;
       font-weight: 900;
       display: flex;
       align-items: center;
       justify-content: center;
     }
-    .food-body { flex: 1; }
     .food-name {
-      font-size: 28px;
+      flex: 1;
+      font-size: 32px;
       font-weight: 800;
       color: #1c1917;
-      line-height: 1.2;
-      margin-bottom: 4px;
-    }
-    .food-reason {
-      font-size: 18px;
-      font-weight: 500;
-      color: #78716c;
-      line-height: 1.4;
+      line-height: 1.15;
     }
     .food-ppb {
       background: #dc2626;
       color: #fff;
-      font-size: 18px;
+      font-size: 32px;
       font-weight: 800;
-      padding: 10px 16px;
-      border-radius: 12px;
-      text-align: center;
-      min-width: 130px;
-      line-height: 1.15;
-      letter-spacing: 0.02em;
+      padding: 12px 20px;
+      border-radius: 14px;
+      white-space: nowrap;
+      letter-spacing: -0.01em;
     }
-    .food-ppb small { display: block; font-size: 13px; font-weight: 600; opacity: 0.9; margin-top: 2px; }
     .bottom-tip {
       background: #fef2f2;
-      border-radius: 14px;
-      padding: 18px 24px;
+      border-radius: 16px;
+      padding: 22px 26px;
       text-align: center;
-      font-size: 19px;
+      font-size: 32px;
       font-weight: 700;
       color: #991b1b;
-      line-height: 1.4;
-      margin-top: 16px;
+      line-height: 1.3;
+      margin-top: 18px;
     }
     .footer {
       display: flex;
       align-items: center;
       justify-content: space-between;
       width: 100%;
-      padding-top: 14px;
-      margin-top: 14px;
+      padding-top: 18px;
+      margin-top: 16px;
       border-top: 2px solid #e7e5e4;
     }
-    .footer-stat { font-size: 17px; font-weight: 600; color: #78716c; }
-    .footer-url { font-size: 19px; font-weight: 800; color: #7c3aed; }
+    .footer-stat { font-size: 32px; font-weight: 700; color: #78716c; }
+    .footer-url { font-size: 32px; font-weight: 800; color: #7c3aed; }
   </style>
 </head>
 <body>
   <div class="pin">
-    <div class="headline-tag">Tier 1 &middot; Highest Risk</div>
+    <div class="headline-tag">Tier 1</div>
     <h1>The 6 Foods Highest<br>in <span class="accent">Glyphosate</span></h1>
-    <div class="subtitle">Swap these first. Pre harvest desiccation drives the worst residues.</div>
+    <div class="subtitle">All driven by pre harvest desiccation. Swap these first.</div>
     <div class="foods">
       <div class="food">
         <div class="food-num">1</div>
-        <div class="food-body">
-          <div class="food-name">Conventional Oats</div>
-          <div class="food-reason">Sprayed days before harvest as a drying agent</div>
-        </div>
-        <div class="food-ppb">300 to 1,300<small>ppb</small></div>
+        <div class="food-name">Conventional Oats</div>
+        <div class="food-ppb">300 to 1,300</div>
       </div>
       <div class="food">
         <div class="food-num">2</div>
-        <div class="food-body">
-          <div class="food-name">Conventional Wheat</div>
-          <div class="food-reason">Range reflects desiccated spring wheat samples</div>
-        </div>
-        <div class="food-ppb">100 to 600<small>ppb</small></div>
+        <div class="food-name">Conventional Wheat</div>
+        <div class="food-ppb">100 to 600</div>
       </div>
       <div class="food">
         <div class="food-num">3</div>
-        <div class="food-body">
-          <div class="food-name">Conventional Chickpeas</div>
-          <div class="food-reason">Pre harvest spray on pulse crops</div>
-        </div>
-        <div class="food-ppb">200 to 1,000<small>ppb</small></div>
+        <div class="food-name">Chickpeas</div>
+        <div class="food-ppb">200 to 1,000</div>
       </div>
       <div class="food">
         <div class="food-num">4</div>
-        <div class="food-body">
-          <div class="food-name">Conventional Lentils</div>
-          <div class="food-reason">Pre harvest desiccation</div>
-        </div>
-        <div class="food-ppb">100 to 700<small>ppb</small></div>
+        <div class="food-name">Lentils</div>
+        <div class="food-ppb">100 to 700</div>
       </div>
       <div class="food">
         <div class="food-num">5</div>
-        <div class="food-body">
-          <div class="food-name">Dried Beans</div>
-          <div class="food-reason">Pre harvest desiccation in conventional fields</div>
-        </div>
-        <div class="food-ppb">50 to 400<small>ppb</small></div>
+        <div class="food-name">Dried Beans</div>
+        <div class="food-ppb">50 to 400</div>
       </div>
       <div class="food">
         <div class="food-num">6</div>
-        <div class="food-body">
-          <div class="food-name">Soy Products</div>
-          <div class="food-reason">Roundup Ready, sprayed in season</div>
-        </div>
-        <div class="food-ppb">50 to 300<small>ppb</small></div>
+        <div class="food-name">Soy Products</div>
+        <div class="food-ppb">50 to 300</div>
       </div>
     </div>
-    <div class="bottom-tip">Pilot studies suggest urinary glyphosate can drop ~50% within weeks of switching to organic.</div>
+    <div class="bottom-tip">Switching to organic cuts urinary glyphosate by half within weeks.</div>
     <div class="footer">
-      <span class="footer-stat">Source: EWG, HRI Labs, FDA monitoring</span>
+      <span class="footer-stat">ppb in finished food</span>
       <span class="footer-url">plasticdetox.org</span>
     </div>
   </div>
