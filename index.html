@@ -159,9 +159,205 @@
       min-height: calc(100vh - 80px);
       padding: 2rem;
       text-align: center;
+      position: relative;
     }
 
     .hero-content { max-width: 680px; }
+
+    .hero-secondary-link {
+      display: block;
+      margin-top: 1.5rem;
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .hero-secondary-link:hover { color: var(--accent-dark); }
+
+    .scroll-cue {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 600;
+      animation: bounce 2.5s ease-in-out infinite;
+    }
+
+    .scroll-cue:hover { color: var(--accent-dark); }
+    .scroll-cue svg { width: 18px; height: 18px; }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* ===== HOME BROWSE SECTION ===== */
+    .home-browse {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 4rem 2rem 5rem;
+    }
+
+    .browse-eyebrow {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent-dark);
+      margin-bottom: 0.6rem;
+      text-align: center;
+    }
+
+    .browse-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      text-align: center;
+      margin-bottom: 0.75rem;
+    }
+
+    .browse-sub {
+      color: var(--text-muted);
+      text-align: center;
+      max-width: 540px;
+      margin: 0 auto 3rem;
+      font-size: 1.02rem;
+    }
+
+    .topic-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-bottom: 4rem;
+    }
+
+    .topic-card {
+      position: relative;
+      background: var(--surface);
+      border: 2px solid var(--border);
+      border-radius: var(--radius);
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+      overflow: hidden;
+      aspect-ratio: 1 / 1;
+      display: block;
+    }
+
+    .topic-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .topic-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(1);
+      z-index: 1;
+    }
+
+    .topic-content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 1.1rem 1.25rem 2.5rem;
+      z-index: 2;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.7) 60%, rgba(255,255,255,0) 100%);
+    }
+
+    .topic-name {
+      font-weight: 800;
+      font-size: 1.1rem;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      margin-bottom: 0.2rem;
+    }
+
+    .topic-meta {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .browse-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 0 auto 3rem;
+      max-width: 200px;
+    }
+
+    .latest-strip-title {
+      font-size: 1.4rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .latest-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .latest-card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .latest-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .latest-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      background: var(--accent-light);
+      color: var(--accent-dark);
+      margin-bottom: 0.75rem;
+      align-self: flex-start;
+    }
+
+    .latest-card-title {
+      font-size: 1.08rem;
+      font-weight: 700;
+      line-height: 1.35;
+      margin-bottom: 0.5rem;
+    }
+
+    .latest-card-meta {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: auto;
+    }
 
     .hero-headline {
       font-size: clamp(2.2rem, 5vw, 3.8rem);
@@ -1496,11 +1692,103 @@
         <h1 class="hero-headline">Low-tox living, minus the noise.</h1>
         <p class="hero-sub">Researchers keep finding microplastics in places we never expected, including human blood, lungs, and brains. The good news? Small swaps make a big difference. We cut through the greenwashing and the fearmongering to show you what actually matters, backed by research, never by brand deals.</p>
         <button class="btn-primary" onclick="startGame()">Start Your Detox</button>
+        <a href="#browse" class="hero-secondary-link">Or browse articles by topic &rarr;</a>
         <div id="resume-banner" style="display:none;margin-top:1.25rem;padding:1rem 1.5rem;background:var(--surface);border-radius:var(--radius-sm);box-shadow:var(--shadow);text-align:center;">
           <p style="font-size:0.9rem;margin-bottom:0.75rem;color:var(--text);">You have saved results from a previous quiz.</p>
           <button class="btn-primary" onclick="resumeResults()" style="font-size:0.85rem;padding:0.6rem 1.5rem;margin-right:0.5rem;">View My Results</button>
           <button onclick="clearSavedResults();document.getElementById('resume-banner').style.display='none';" style="font-size:0.85rem;padding:0.6rem 1.5rem;background:none;border:1px solid var(--border);border-radius:60px;color:var(--text-muted);cursor:pointer;font-family:inherit;">Dismiss</button>
         </div>
+      </div>
+      <a href="#browse" class="scroll-cue">
+        <span>Explore</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+      </a>
+    </section>
+
+    <section class="home-browse" id="home-browse">
+      <a id="browse" style="position:relative;top:-80px;"></a>
+      <div class="browse-eyebrow">Browse by topic</div>
+      <h2 class="browse-title">Where do you want to start?</h2>
+      <p class="browse-sub">Each topic has a guided 101 hub: the articles in priority order, with quick answers for common questions.</p>
+
+      <div class="topic-grid">
+        <a href="articles/kitchen-detox-101.html" class="topic-card">
+          <img src="images/homepage-kitchen.webp" alt="Pencil illustration of a cast iron skillet representing the non-toxic kitchen guide" class="topic-img" loading="lazy" width="600" height="600">
+          <div class="topic-content">
+            <div class="topic-name">Kitchen</div>
+            <div class="topic-meta">6 guides &middot; ~95 min</div>
+          </div>
+        </a>
+        <a href="articles/water-detox-101.html" class="topic-card">
+          <img src="images/homepage-warterdrinks.webp" alt="Pencil illustration of a glass water carafe representing the water filtration guide" class="topic-img" loading="lazy" width="600" height="600">
+          <div class="topic-content">
+            <div class="topic-name">Water &amp; Drinks</div>
+            <div class="topic-meta">4 guides &middot; ~40 min</div>
+          </div>
+        </a>
+        <a href="articles/bedroom-air-101.html" class="topic-card">
+          <img src="images/homepage-bedroom.webp" alt="Pencil illustration of a bed and nightstand representing the bedroom and indoor air guide" class="topic-img" loading="lazy" width="600" height="600">
+          <div class="topic-content">
+            <div class="topic-name">Bedroom &amp; Air</div>
+            <div class="topic-meta">3 guides &middot; ~35 min</div>
+          </div>
+        </a>
+        <a href="articles/personal-care-101.html" class="topic-card">
+          <img src="images/homepage-personalcare.webp" alt="Pencil illustration of a soap bar and apothecary jar representing the personal care guide" class="topic-img" loading="lazy" width="600" height="600">
+          <div class="topic-content">
+            <div class="topic-name">Personal Care</div>
+            <div class="topic-meta">4 guides &middot; ~45 min</div>
+          </div>
+        </a>
+        <a href="articles/baby-kids-101.html" class="topic-card">
+          <img src="images/homepage-babykids.webp" alt="Pencil illustration of a glass baby bottle and teething ring representing the baby and kids guide" class="topic-img" loading="lazy" width="600" height="600">
+          <div class="topic-content">
+            <div class="topic-name">Baby &amp; Kids</div>
+            <div class="topic-meta">2 guides &middot; ~35 min</div>
+          </div>
+        </a>
+        <a href="articles/reduce-microplastics-in-cleaning-products.html" class="topic-card">
+          <img src="images/homepage-cleaning.webp" alt="Pencil illustration of a natural cleaning spray bottle and lemon representing the non-toxic cleaning guide" class="topic-img" loading="lazy" width="600" height="600">
+          <div class="topic-content">
+            <div class="topic-name">Cleaning</div>
+            <div class="topic-meta">2 guides &middot; ~25 min</div>
+          </div>
+        </a>
+        <a href="articles/glyphosate-detox-guide.html" class="topic-card">
+          <img src="images/homepage-food.webp" alt="Pencil illustration of fresh produce representing the food and pesticide exposure guide" class="topic-img" loading="lazy" width="600" height="600">
+          <div class="topic-content">
+            <div class="topic-name">Food &amp; Pesticides</div>
+            <div class="topic-meta">2 guides &middot; ~42 min</div>
+          </div>
+        </a>
+        <a href="articles/low-tox-myths-debunked.html" class="topic-card">
+          <img src="images/homepage-myths.webp" alt="Pencil illustration of an open book representing the low-tox myth-busting guide" class="topic-img" loading="lazy" width="600" height="600">
+          <div class="topic-content">
+            <div class="topic-name">Myth-Busting</div>
+            <div class="topic-meta">3 guides &middot; ~70 min</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="browse-divider"></div>
+
+      <h2 class="latest-strip-title">Latest research &amp; guides</h2>
+      <div class="latest-grid">
+        <a href="articles/glyphosate-detox-guide.html" class="latest-card">
+          <span class="latest-tag">Food &amp; Pesticides</span>
+          <h3 class="latest-card-title">Glyphosate Detox: What It Is, Where It Hides in Your Food, and How to Reduce Exposure</h3>
+          <span class="latest-card-meta">24 min read &middot; April 2026</span>
+        </a>
+        <a href="articles/toxic-kitchen-appliances-ranked.html" class="latest-card">
+          <span class="latest-tag">Kitchen</span>
+          <h3 class="latest-card-title">The Most (and Least) Toxic Kitchen Appliances, Ranked</h3>
+          <span class="latest-card-meta">28 min read &middot; April 2026</span>
+        </a>
+        <a href="articles/low-tox-mistakes-that-backfire.html" class="latest-card">
+          <span class="latest-tag">Myth-Busting</span>
+          <h3 class="latest-card-title">Low Tox Mistakes That Hurt You More Than They Help</h3>
+          <span class="latest-card-meta">26 min read &middot; April 2026</span>
+        </a>
       </div>
     </section>
 
@@ -2552,6 +2840,7 @@
 
     function startGame() {
       document.getElementById("hero").style.display = "none";
+      document.getElementById("home-browse").style.display = "none";
       document.getElementById("game").style.display = "flex";
       showNlBar(true);
       currentCategory = 0;
@@ -2570,6 +2859,7 @@
       document.getElementById("results").style.display = "none";
       document.getElementById("game").style.display = "none";
       document.getElementById("hero").style.display = "flex";
+      document.getElementById("home-browse").style.display = "block";
       showNlBar(false);
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
@@ -3036,6 +3326,7 @@
 
     function resumeResults() {
       document.getElementById("hero").style.display = "none";
+      document.getElementById("home-browse").style.display = "none";
       document.getElementById("game").style.display = "flex";
       showNlBar(true);
       showResults();
