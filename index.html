@@ -572,6 +572,32 @@
 
     .game-progress { margin-bottom: 2rem; }
 
+    .game-progress-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+      gap: 1rem;
+    }
+
+    .btn-exit-quiz {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      font-family: inherit;
+      cursor: pointer;
+      padding: 0.25rem 0.5rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      border-radius: 6px;
+      transition: color 0.2s, background 0.2s;
+      flex-shrink: 0;
+    }
+    .btn-exit-quiz:hover { color: var(--text); background: var(--border); }
+    .btn-exit-quiz svg { width: 14px; height: 14px; }
+
     .progress-bar {
       height: 6px;
       background: var(--border);
@@ -1837,10 +1863,16 @@
 
       <div class="game-main">
         <div class="game-progress">
+          <div class="game-progress-row">
+            <div class="progress-text" id="progress-text"></div>
+            <button class="btn-exit-quiz" onclick="showHome()" title="Exit quiz">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg>
+              Exit quiz
+            </button>
+          </div>
           <div class="progress-bar">
             <div class="progress-fill" id="progress-fill"></div>
           </div>
-          <div class="progress-text" id="progress-text"></div>
         </div>
 
         <div class="category-label" id="category-label"></div>
@@ -2729,7 +2761,29 @@
       document.getElementById("newsletter-bar").style.display = show ? "block" : "none";
     }
 
+    function isQuizActive() {
+      const game = document.getElementById("game");
+      return game && getComputedStyle(game).display !== "none";
+    }
+
+    function exitQuizIfActive() {
+      if (!isQuizActive()) return true;
+      const resultsEl = document.getElementById("results");
+      const resultsVisible = resultsEl && getComputedStyle(resultsEl).display !== "none";
+      const hasProgress = (typeof answeredCount !== "undefined" && answeredCount > 0) && !resultsVisible;
+      if (hasProgress) {
+        if (!confirm("Leave the quiz? Your answers won't be saved.")) return false;
+      }
+      document.getElementById("game").style.display = "none";
+      if (resultsEl) resultsEl.style.display = "none";
+      document.getElementById("hero").style.display = "flex";
+      document.getElementById("home-browse").style.display = "block";
+      try { gtag('event', 'quiz_exit', { answered: typeof answeredCount !== "undefined" ? answeredCount : 0 }); } catch(e) {}
+      return true;
+    }
+
     function showHome() {
+      if (!exitQuizIfActive()) return;
       hideAllPages();
       document.getElementById("page-home").style.display = "block";
       document.getElementById("nav-home").classList.add("active");
@@ -2739,6 +2793,7 @@
     }
 
     function showResources() {
+      if (!exitQuizIfActive()) return;
       hideAllPages();
       document.getElementById("page-resources").style.display = "block";
       document.getElementById("nav-resources").classList.add("active");
@@ -2749,6 +2804,7 @@
     }
 
     function showStore() {
+      if (!exitQuizIfActive()) return;
       hideAllPages();
       document.getElementById("page-store").style.display = "block";
       document.getElementById("nav-store").classList.add("active");
