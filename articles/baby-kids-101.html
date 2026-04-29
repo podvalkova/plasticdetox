@@ -37,7 +37,8 @@
         "inLanguage": "en",
         "publisher": {"@type": "Organization", "name": "Plastic Detox", "url": "https://plasticdetox.org"},
         "isPartOf": {"@type": "WebSite", "name": "Plastic Detox", "url": "https://plasticdetox.org"}
-      }
+      },
+      {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Are silicone bottles safer than plastic?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, especially for hot liquids. Food-grade platinum-cure silicone (look for that exact phrase on the label) is heat-stable and doesn't shed particles at typical feeding temperatures. Avoid generic \"silicone\" without the platinum-cure designation, and never microwave any silicone product. Glass remains the gold standard."}}, {"@type": "Question", "name": "Should I throw out my plastic baby bottles?", "acceptedAnswer": {"@type": "Answer", "text": "Not necessarily. Most microplastic exposure comes from heat. Three changes cut shedding by ~80% per studies: stop sterilizing in plastic, never warm formula in plastic, and let water cool before pouring into the bottle. Replace with glass or stainless steel as you go, no need to replace all at once."}}, {"@type": "Question", "name": "Are GreenGuard Gold and OEKO-TEX trustworthy?", "acceptedAnswer": {"@type": "Answer", "text": "Both are legitimate but test for different things. GreenGuard Gold tests for VOC emissions (off-gassing). OEKO-TEX Standard 100 tests for chemical residues in textiles. Neither tests for everything. For comprehensive safety, also look for GOTS (organic textiles) and Made Safe certifications."}}, {"@type": "Question", "name": "Are essential oils safe for babies?", "acceptedAnswer": {"@type": "Answer", "text": "No, not for babies under 2. Eucalyptus, peppermint, rosemary, and camphor cause respiratory distress and have been linked to seizures in young children. Lavender and chamomile in extreme dilution are safer but still avoidable. Use unscented, fragrance-free products for babies and toddlers."}}, {"@type": "Question", "name": "What about plastic toys?", "acceptedAnswer": {"@type": "Answer", "text": "Older plastic toys (pre-2008) and imported toys without ASTM F963 or EN 71 certification carry the highest risk for BPA, phthalates, and lead. Newer US/EU-certified toys are significantly safer. For new purchases, choose untreated wood, food-grade silicone, or natural rubber whenever possible."}}, {"@type": "Question", "name": "What water should I mix formula with?", "acceptedAnswer": {"@type": "Answer", "text": "Filtered tap water (not bottled, which is higher in nanoplastics). Use a filter rated for fluoride and PFAS removal: reverse osmosis is best. Heat the water first, then pour into the formula bottle once it's cooled to body temperature. Never warm prepared formula in a plastic bottle."}}]}
     ]
   }
   </script>
@@ -127,6 +128,22 @@
 
     .section-title { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.4rem; }
     .section-sub { color: var(--text-muted); margin-bottom: 1.5rem; }
+
+    .hub-products { margin-bottom: 4rem; }
+    .hub-products-disclosure { font-size: 0.82rem; color: var(--text-muted); font-style: italic; margin-bottom: 1.5rem; }
+    .product-grid-5 { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1rem; }
+    .product-card-mini { background: var(--surface); border-radius: var(--radius); text-decoration: none; color: inherit; box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; overflow: hidden; }
+    .product-card-mini:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+    .product-card-mini img { width: 100%; height: 160px; object-fit: contain; background: #f5f5f4; padding: 0.75rem; }
+    .product-card-body { padding: 1rem; display: flex; flex-direction: column; flex: 1; gap: 0.4rem; }
+    .product-card-tier { font-size: 0.7rem; font-weight: 800; color: var(--accent-dark); letter-spacing: 0.06em; }
+    .product-card-name { font-size: 0.98rem; font-weight: 700; line-height: 1.3; }
+    .product-card-best { font-size: 0.82rem; color: var(--text-muted); line-height: 1.4; flex: 1; }
+    .product-card-cta { font-size: 0.85rem; color: var(--accent-dark); font-weight: 600; margin-top: 0.4rem; }
+
+    .qa-link { display: inline-block; margin-top: auto; font-size: 0.85rem; color: var(--accent-dark); font-weight: 600; text-decoration: none; padding-top: 0.5rem; }
+    .qa-link:hover { text-decoration: underline; }
+
     @media (max-width: 640px) {
       .hub { padding: 1rem 1.25rem 3rem; }
       .step { flex-direction: column; gap: 0.75rem; padding: 1.25rem; }
@@ -203,6 +220,59 @@
       <div class="coming-soon-text">In the works: a guide to reducing exposure before and during pregnancy, plus a curated registry of vetted, non-toxic baby gear with the certifications that actually matter.</div>
     </div>
 
+
+    <section class="hub-products">
+      <h2 class="section-title">Top 5 recommended swaps</h2>
+      <p class="hub-products-disclosure">Vetted picks from our store. Affiliate links: we earn a small commission when you buy, at no cost to you. We never accept paid placements.</p>
+      <div class="product-grid-5">
+        <a href="https://www.amazon.com/dp/B01M5GHAZO?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+          <img src="https://m.media-amazon.com/images/I/31uhPCgmypL._AC_SL400_.jpg" alt="Lifefactory Glass Baby Bottle (9oz)" loading="lazy">
+          <div class="product-card-body">
+            <span class="product-card-tier">$$</span>
+            <h3 class="product-card-name">Lifefactory Glass Baby Bottle (9oz)</h3>
+            <p class="product-card-best">Best durable glass baby bottle</p>
+            <span class="product-card-cta">View on Amazon &rarr;</span>
+          </div>
+        </a>
+        <a href="https://www.amazon.com/dp/B07K1FFK6Z?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+          <img src="https://m.media-amazon.com/images/I/61yfZfNeNzL._AC_SL400_.jpg" alt="Avanchy Stainless Steel Baby Spoons" loading="lazy">
+          <div class="product-card-body">
+            <span class="product-card-tier">$</span>
+            <h3 class="product-card-name">Avanchy Stainless Steel Baby Spoons</h3>
+            <p class="product-card-best">Best plastic-free utensil pick</p>
+            <span class="product-card-cta">View on Amazon &rarr;</span>
+          </div>
+        </a>
+        <a href="https://www.amazon.com/dp/B0C6SVTQ3Q?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+          <img src="https://m.media-amazon.com/images/I/71sYJMAjx6L._AC_SL400_.jpg" alt="Ahimsa Stainless Steel Bowl & Plate Set" loading="lazy">
+          <div class="product-card-body">
+            <span class="product-card-tier">$$</span>
+            <h3 class="product-card-name">Ahimsa Stainless Steel Bowl & Plate Set</h3>
+            <p class="product-card-best">Best plastic-free tableware set</p>
+            <span class="product-card-cta">View on Amazon &rarr;</span>
+          </div>
+        </a>
+        <a href="https://www.amazon.com/dp/B01C95ZCNI?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+          <img src="https://m.media-amazon.com/images/I/41odQEPAoHL._AC_SL400_.jpg" alt="ezpz Mini Mat Silicone Plate" loading="lazy">
+          <div class="product-card-body">
+            <span class="product-card-tier">$</span>
+            <h3 class="product-card-name">ezpz Mini Mat Silicone Plate</h3>
+            <p class="product-card-best">Best food-grade silicone plate (suction)</p>
+            <span class="product-card-cta">View on Amazon &rarr;</span>
+          </div>
+        </a>
+        <a href="https://www.amazon.com/dp/B002HORIN4?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+          <img src="https://m.media-amazon.com/images/I/71rFLyBorRL._AC_SL400_.jpg" alt="REDECKER Bottle Brush Cleaner" loading="lazy">
+          <div class="product-card-body">
+            <span class="product-card-tier">$</span>
+            <h3 class="product-card-name">REDECKER Bottle Brush Cleaner</h3>
+            <p class="product-card-best">Best plastic-free bottle brush</p>
+            <span class="product-card-cta">View on Amazon &rarr;</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
     <div class="quiz-cta">
       <h3>Ready to swap your nursery?</h3>
       <p>Browse vetted baby and toddler products: glass bottles, natural fiber clothing, non-toxic toys, and certified-safe sleep gear. Or take the free whole-home detox quiz, which has a dedicated section for kids.</p>
@@ -214,30 +284,36 @@
       <h2 class="section-title">Quick answers</h2>
       <p class="section-sub">Common parenting questions on lower-tox living, with deep-dive guides for each.</p>
       <div class="qa-grid">
-        <a href="microplastics-in-baby-food.html" class="qa-card">
+        <div class="qa-card">
           <div class="qa-q">Are silicone bottles safer than plastic?</div>
-          <div class="qa-a">Yes, but not all silicone is equal. The grades and brands worth paying for &rarr;</div>
-        </a>
-        <a href="microplastics-in-baby-food.html" class="qa-card">
+          <div class="qa-a">Yes, especially for hot liquids. Food-grade platinum-cure silicone (look for that exact phrase on the label) is heat-stable and doesn't shed particles at typical feeding temperatures. Avoid generic "silicone" without the platinum-cure designation, and never microwave any silicone product. Glass remains the gold standard.</div>
+          <a href="microplastics-in-baby-food.html" class="qa-link">Read the full guide &rarr;</a>
+        </div>
+        <div class="qa-card">
           <div class="qa-q">Should I throw out my plastic baby bottles?</div>
-          <div class="qa-a">Not necessarily. Three changes to your routine cut exposure by 80% &rarr;</div>
-        </a>
-        <a href="non-toxic-baby-toddler-products-guide.html" class="qa-card">
+          <div class="qa-a">Not necessarily. Most microplastic exposure comes from heat. Three changes cut shedding by ~80% per studies: stop sterilizing in plastic, never warm formula in plastic, and let water cool before pouring into the bottle. Replace with glass or stainless steel as you go, no need to replace all at once.</div>
+          <a href="microplastics-in-baby-food.html" class="qa-link">Read the full guide &rarr;</a>
+        </div>
+        <div class="qa-card">
           <div class="qa-q">Are GreenGuard Gold and OEKO-TEX trustworthy?</div>
-          <div class="qa-a">Yes, with caveats. What each certification actually tests for &rarr;</div>
-        </a>
-        <a href="low-tox-mistakes-that-backfire.html" class="qa-card">
+          <div class="qa-a">Both are legitimate but test for different things. GreenGuard Gold tests for VOC emissions (off-gassing). OEKO-TEX Standard 100 tests for chemical residues in textiles. Neither tests for everything. For comprehensive safety, also look for GOTS (organic textiles) and Made Safe certifications.</div>
+          <a href="non-toxic-baby-toddler-products-guide.html" class="qa-link">Read the full guide &rarr;</a>
+        </div>
+        <div class="qa-card">
           <div class="qa-q">Are essential oils safe for babies?</div>
-          <div class="qa-a">No. Common essential oils cause respiratory issues in babies under 2 &rarr;</div>
-        </a>
-        <a href="how-to-avoid-bpa-and-phthalates.html" class="qa-card">
+          <div class="qa-a">No, not for babies under 2. Eucalyptus, peppermint, rosemary, and camphor cause respiratory distress and have been linked to seizures in young children. Lavender and chamomile in extreme dilution are safer but still avoidable. Use unscented, fragrance-free products for babies and toddlers.</div>
+          <a href="low-tox-mistakes-that-backfire.html" class="qa-link">Read the full guide &rarr;</a>
+        </div>
+        <div class="qa-card">
           <div class="qa-q">What about plastic toys?</div>
-          <div class="qa-a">Older or imported plastic toys are highest risk. The labels that matter &rarr;</div>
-        </a>
-        <a href="how-to-remove-microplastics-from-drinking-water.html" class="qa-card">
+          <div class="qa-a">Older plastic toys (pre-2008) and imported toys without ASTM F963 or EN 71 certification carry the highest risk for BPA, phthalates, and lead. Newer US/EU-certified toys are significantly safer. For new purchases, choose untreated wood, food-grade silicone, or natural rubber whenever possible.</div>
+          <a href="how-to-avoid-bpa-and-phthalates.html" class="qa-link">Read the full guide &rarr;</a>
+        </div>
+        <div class="qa-card">
           <div class="qa-q">What water should I mix formula with?</div>
-          <div class="qa-a">Filtered, never warmed in plastic. The full step-by-step &rarr;</div>
-        </a>
+          <div class="qa-a">Filtered tap water (not bottled, which is higher in nanoplastics). Use a filter rated for fluoride and PFAS removal: reverse osmosis is best. Heat the water first, then pour into the formula bottle once it's cooled to body temperature. Never warm prepared formula in a plastic bottle.</div>
+          <a href="how-to-remove-microplastics-from-drinking-water.html" class="qa-link">Read the full guide &rarr;</a>
+        </div>
       </div>
     </div>
 

@@ -37,7 +37,8 @@
         "inLanguage": "en",
         "publisher": {"@type": "Organization", "name": "Plastic Detox", "url": "https://plasticdetox.org"},
         "isPartOf": {"@type": "WebSite", "name": "Plastic Detox", "url": "https://plasticdetox.org"}
-      }
+      },
+      {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Does boiling water remove microplastics?", "acceptedAnswer": {"@type": "Answer", "text": "Boiling reduces microplastics by about 80% (especially in hard water, where calcium carbonate traps them in the kettle scale), but it doesn't remove them, it concentrates them. It also doesn't address nanoplastics or PFAS. Filter first, then boil if needed."}}, {"@type": "Question", "name": "Is reverse osmosis worth the cost?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, if you care about nanoplastics and PFAS. Under-counter RO systems run $200-$400 installed and remove 99%+ of contaminants including nanoplastics, PFAS, fluoride, and lead. For microplastics alone, a certified pitcher filter ($30-$80) is sufficient."}}, {"@type": "Question", "name": "What's the cheapest filter that removes PFAS?", "acceptedAnswer": {"@type": "Answer", "text": "Pitcher filters certified for PFAS reduction (NSF/ANSI 53 or 58) start under $50. Clearly Filtered, ZeroWater, and Epic Pure all carry the certification and remove 95%+ of common PFAS. Standard Brita and Pur filters do not remove PFAS."}}, {"@type": "Question", "name": "Is glass-bottled water any better?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, significantly. A 2024 study found bottled water contains roughly 100x more nanoplastics than tap, mostly leached from the plastic bottle itself. Glass-bottled water (Mountain Valley, Eternal) eliminates that source. Better still: filtered tap in a glass or stainless steel bottle."}}, {"@type": "Question", "name": "Are BPA-free water bottles actually safe?", "acceptedAnswer": {"@type": "Answer", "text": "No. The replacement chemicals (BPS, BPF, BPB) have been shown in research to cause similar endocrine disruption to BPA. \"BPA-free\" tells you what's missing, not what's safe. Choose stainless steel or glass water bottles, which don't leach anything."}}, {"@type": "Question", "name": "If I can only do one thing, what should I do?", "acceptedAnswer": {"@type": "Answer", "text": "Filter your drinking water. It's the highest-impact single change you can make for your health, removes the most measurable amount of plastic from your daily exposure, and the right filter pays for itself within months versus buying bottled water."}}]}
     ]
   }
   </script>
@@ -122,6 +123,22 @@
     @media (max-width: 540px) { .quiz-cta-secondary { display: block; margin: 1rem 0 0; } }
     .section-title { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.4rem; }
     .section-sub { color: var(--text-muted); margin-bottom: 1.5rem; }
+
+    .hub-products { margin-bottom: 4rem; }
+    .hub-products-disclosure { font-size: 0.82rem; color: var(--text-muted); font-style: italic; margin-bottom: 1.5rem; }
+    .product-grid-5 { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1rem; }
+    .product-card-mini { background: var(--surface); border-radius: var(--radius); text-decoration: none; color: inherit; box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; overflow: hidden; }
+    .product-card-mini:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+    .product-card-mini img { width: 100%; height: 160px; object-fit: contain; background: #f5f5f4; padding: 0.75rem; }
+    .product-card-body { padding: 1rem; display: flex; flex-direction: column; flex: 1; gap: 0.4rem; }
+    .product-card-tier { font-size: 0.7rem; font-weight: 800; color: var(--accent-dark); letter-spacing: 0.06em; }
+    .product-card-name { font-size: 0.98rem; font-weight: 700; line-height: 1.3; }
+    .product-card-best { font-size: 0.82rem; color: var(--text-muted); line-height: 1.4; flex: 1; }
+    .product-card-cta { font-size: 0.85rem; color: var(--accent-dark); font-weight: 600; margin-top: 0.4rem; }
+
+    .qa-link { display: inline-block; margin-top: auto; font-size: 0.85rem; color: var(--accent-dark); font-weight: 600; text-decoration: none; padding-top: 0.5rem; }
+    .qa-link:hover { text-decoration: underline; }
+
     @media (max-width: 640px) {
       .hub { padding: 1rem 1.25rem 3rem; }
       .step { flex-direction: column; gap: 0.75rem; padding: 1.25rem; }
@@ -219,6 +236,59 @@
 
     </div>
 
+
+    <section class="hub-products">
+      <h2 class="section-title">Top 5 recommended swaps</h2>
+      <p class="hub-products-disclosure">Vetted picks from our store. Affiliate links: we earn a small commission when you buy, at no cost to you. We never accept paid placements.</p>
+      <div class="product-grid-5">
+        <a href="https://www.amazon.com/dp/B0CW4CDPNJ?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+          <img src="https://m.media-amazon.com/images/I/41bKOyTPymL._AC_SL400_.jpg" alt="Clearly Filtered Pitcher" loading="lazy">
+          <div class="product-card-body">
+            <span class="product-card-tier">$</span>
+            <h3 class="product-card-name">Clearly Filtered Pitcher</h3>
+            <p class="product-card-best">Most affordable PFAS + microplastic filter</p>
+            <span class="product-card-cta">View on Amazon &rarr;</span>
+          </div>
+        </a>
+        <a href="https://www.amazon.com/dp/B09KRDK677?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+          <img src="https://m.media-amazon.com/images/I/41FVllkDK5L._AC_SL400_.jpg" alt="Bluevua Countertop Reverse Osmosis" loading="lazy">
+          <div class="product-card-body">
+            <span class="product-card-tier">$$</span>
+            <h3 class="product-card-name">Bluevua Countertop Reverse Osmosis</h3>
+            <p class="product-card-best">Best countertop RO, no plumbing required</p>
+            <span class="product-card-cta">View on Amazon &rarr;</span>
+          </div>
+        </a>
+        <a href="https://www.amazon.com/dp/B0CBVMTYMG?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+          <img src="https://m.media-amazon.com/images/I/51sM4mtrn2L._AC_SL400_.jpg" alt="Big Berkey Countertop Filter" loading="lazy">
+          <div class="product-card-body">
+            <span class="product-card-tier">$$</span>
+            <h3 class="product-card-name">Big Berkey Countertop Filter</h3>
+            <p class="product-card-best">Best gravity-fed stainless steel filter</p>
+            <span class="product-card-cta">View on Amazon &rarr;</span>
+          </div>
+        </a>
+        <a href="https://www.amazon.com/dp/B00I0ZGOZM?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+          <img src="https://m.media-amazon.com/images/I/418gI8Rxl2L._AC_SL400_.jpg" alt="APEC Reverse Osmosis System" loading="lazy">
+          <div class="product-card-body">
+            <span class="product-card-tier">$$$</span>
+            <h3 class="product-card-name">APEC Reverse Osmosis System</h3>
+            <p class="product-card-best">Best under-sink whole-family protection</p>
+            <span class="product-card-cta">View on Amazon &rarr;</span>
+          </div>
+        </a>
+        <a href="https://www.amazon.com/dp/B08PP48979?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+          <img src="https://m.media-amazon.com/images/I/41PYUmcAn4L._AC_SL400_.jpg" alt="Cosori Glass Electric Kettle" loading="lazy">
+          <div class="product-card-body">
+            <span class="product-card-tier">$</span>
+            <h3 class="product-card-name">Cosori Glass Electric Kettle</h3>
+            <p class="product-card-best">Plastic-free kettle for tea and coffee</p>
+            <span class="product-card-cta">View on Amazon &rarr;</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
     <div class="quiz-cta">
       <h3>Ready to filter your water?</h3>
       <p>Browse our curated water filter picks: pitchers, countertop, and reverse osmosis systems vetted for microplastic, nanoplastic, and PFAS removal. Or take the free whole-home detox quiz for a personalized plan.</p>
@@ -230,30 +300,36 @@
       <h2 class="section-title">Quick answers</h2>
       <p class="section-sub">Common water filtration questions, with deep-dive guides for each.</p>
       <div class="qa-grid">
-        <a href="how-to-remove-microplastics-from-drinking-water.html" class="qa-card">
+        <div class="qa-card">
           <div class="qa-q">Does boiling water remove microplastics?</div>
-          <div class="qa-a">Partially, but it concentrates some plastics rather than removing them. The full answer &rarr;</div>
-        </a>
-        <a href="can-nanoplastics-be-filtered-out-of-water.html" class="qa-card">
+          <div class="qa-a">Boiling reduces microplastics by about 80% (especially in hard water, where calcium carbonate traps them in the kettle scale), but it doesn't remove them, it concentrates them. It also doesn't address nanoplastics or PFAS. Filter first, then boil if needed.</div>
+          <a href="how-to-remove-microplastics-from-drinking-water.html" class="qa-link">Read the full guide &rarr;</a>
+        </div>
+        <div class="qa-card">
           <div class="qa-q">Is reverse osmosis worth the cost?</div>
-          <div class="qa-a">For nanoplastic and PFAS removal, yes. For microplastics alone, there are cheaper options &rarr;</div>
-        </a>
-        <a href="how-to-filter-pfas-and-microplastics-from-water.html" class="qa-card">
+          <div class="qa-a">Yes, if you care about nanoplastics and PFAS. Under-counter RO systems run $200-$400 installed and remove 99%+ of contaminants including nanoplastics, PFAS, fluoride, and lead. For microplastics alone, a certified pitcher filter ($30-$80) is sufficient.</div>
+          <a href="can-nanoplastics-be-filtered-out-of-water.html" class="qa-link">Read the full guide &rarr;</a>
+        </div>
+        <div class="qa-card">
           <div class="qa-q">What's the cheapest filter that removes PFAS?</div>
-          <div class="qa-a">Specific certified pitcher filters under $50 work. The brands and certifications to check &rarr;</div>
-        </a>
-        <a href="how-to-remove-microplastics-from-bottled-water.html" class="qa-card">
+          <div class="qa-a">Pitcher filters certified for PFAS reduction (NSF/ANSI 53 or 58) start under $50. Clearly Filtered, ZeroWater, and Epic Pure all carry the certification and remove 95%+ of common PFAS. Standard Brita and Pur filters do not remove PFAS.</div>
+          <a href="how-to-filter-pfas-and-microplastics-from-water.html" class="qa-link">Read the full guide &rarr;</a>
+        </div>
+        <div class="qa-card">
           <div class="qa-q">Is glass-bottled water any better?</div>
-          <div class="qa-a">Yes, significantly. The trade-offs and the brands worth paying for &rarr;</div>
-        </a>
-        <a href="bpa-free-is-not-safe.html" class="qa-card">
+          <div class="qa-a">Yes, significantly. A 2024 study found bottled water contains roughly 100x more nanoplastics than tap, mostly leached from the plastic bottle itself. Glass-bottled water (Mountain Valley, Eternal) eliminates that source. Better still: filtered tap in a glass or stainless steel bottle.</div>
+          <a href="how-to-remove-microplastics-from-bottled-water.html" class="qa-link">Read the full guide &rarr;</a>
+        </div>
+        <div class="qa-card">
           <div class="qa-q">Are BPA-free water bottles actually safe?</div>
-          <div class="qa-a">No. The replacement chemicals (BPS, BPF) are often just as bad &rarr;</div>
-        </a>
-        <a href="how-to-start-reducing-plastic-exposure.html" class="qa-card">
+          <div class="qa-a">No. The replacement chemicals (BPS, BPF, BPB) have been shown in research to cause similar endocrine disruption to BPA. "BPA-free" tells you what's missing, not what's safe. Choose stainless steel or glass water bottles, which don't leach anything.</div>
+          <a href="bpa-free-is-not-safe.html" class="qa-link">Read the full guide &rarr;</a>
+        </div>
+        <div class="qa-card">
           <div class="qa-q">If I can only do one thing, what should I do?</div>
-          <div class="qa-a">Filter your drinking water. Higher impact than any other single swap &rarr;</div>
-        </a>
+          <div class="qa-a">Filter your drinking water. It's the highest-impact single change you can make for your health, removes the most measurable amount of plastic from your daily exposure, and the right filter pays for itself within months versus buying bottled water.</div>
+          <a href="how-to-start-reducing-plastic-exposure.html" class="qa-link">Read the full guide &rarr;</a>
+        </div>
       </div>
     </div>
 

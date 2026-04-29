@@ -37,7 +37,8 @@
         "inLanguage": "en",
         "publisher": {"@type": "Organization", "name": "Plastic Detox", "url": "https://plasticdetox.org"},
         "isPartOf": {"@type": "WebSite", "name": "Plastic Detox", "url": "https://plasticdetox.org"}
-      }
+      },
+      {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What does \"fragrance\" actually mean?", "acceptedAnswer": {"@type": "Answer", "text": "\"Fragrance\" or \"parfum\" is a regulatory loophole that lets brands hide dozens of unlisted chemicals, including phthalates linked to hormone disruption, infertility, and developmental issues. The FDA does not require fragrance components to be listed individually. Look for \"fragrance-free\" (not \"unscented,\" which can still contain fragrances) or products that disclose every ingredient."}}, {"@type": "Question", "name": "Which makeup ingredients are microplastics?", "acceptedAnswer": {"@type": "Answer", "text": "Watch the ingredient list for: polyethylene (PE), polypropylene (PP), nylon, acrylates copolymer, polymethyl methacrylate (PMMA), and any ingredient starting with \"poly-\" or \"acrylate.\" These are common in mascara, foundation, eyeshadow, and any product labeled \"shimmer\" or \"glitter.\""}}, {"@type": "Question", "name": "Are chemical sunscreens dangerous?", "acceptedAnswer": {"@type": "Answer", "text": "The FDA in 2021 flagged six common chemical UV filters (oxybenzone, octinoxate, homosalate, octisalate, octocrylene, avobenzone) for measurable absorption into the bloodstream after a single use. Long-term effects are unclear and research is ongoing. Mineral sunscreens (zinc oxide, titanium dioxide) sit on the skin instead of absorbing, and remain the safer choice while research catches up."}}, {"@type": "Question", "name": "Is DIY deodorant safe?", "acceptedAnswer": {"@type": "Answer", "text": "Generally no. DIY deodorant recipes commonly use baking soda at concentrations that cause underarm chemical burns and skin sensitization. Pre-formulated natural deodorants (Native, Schmidt's Sensitive, Each & Every) buffer the pH properly and have been clinically tested."}}, {"@type": "Question", "name": "Are \"BPA-free\" products actually safe?", "acceptedAnswer": {"@type": "Answer", "text": "No. The replacement chemicals (BPS, BPF, BPB) cause similar endocrine disruption per multiple peer-reviewed studies. The label tells you what's missing, not what's safe. Choose glass, stainless steel, or untreated natural materials whenever possible."}}, {"@type": "Question", "name": "Do I need to replace everything at once?", "acceptedAnswer": {"@type": "Answer", "text": "Definitely not. Use what you already have until it runs out, then replace it with a vetted alternative. Focus first on products you use daily and on the largest skin surface area: lotion, sunscreen, deodorant, shampoo. Replacing everything at once is wasteful, expensive, and unnecessary."}}]}
     ]
   }
   </script>
@@ -122,6 +123,22 @@
     @media (max-width: 540px) { .quiz-cta-secondary { display: block; margin: 1rem 0 0; } }
     .section-title { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.4rem; }
     .section-sub { color: var(--text-muted); margin-bottom: 1.5rem; }
+
+    .hub-products { margin-bottom: 4rem; }
+    .hub-products-disclosure { font-size: 0.82rem; color: var(--text-muted); font-style: italic; margin-bottom: 1.5rem; }
+    .product-grid-5 { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1rem; }
+    .product-card-mini { background: var(--surface); border-radius: var(--radius); text-decoration: none; color: inherit; box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; overflow: hidden; }
+    .product-card-mini:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+    .product-card-mini img { width: 100%; height: 160px; object-fit: contain; background: #f5f5f4; padding: 0.75rem; }
+    .product-card-body { padding: 1rem; display: flex; flex-direction: column; flex: 1; gap: 0.4rem; }
+    .product-card-tier { font-size: 0.7rem; font-weight: 800; color: var(--accent-dark); letter-spacing: 0.06em; }
+    .product-card-name { font-size: 0.98rem; font-weight: 700; line-height: 1.3; }
+    .product-card-best { font-size: 0.82rem; color: var(--text-muted); line-height: 1.4; flex: 1; }
+    .product-card-cta { font-size: 0.85rem; color: var(--accent-dark); font-weight: 600; margin-top: 0.4rem; }
+
+    .qa-link { display: inline-block; margin-top: auto; font-size: 0.85rem; color: var(--accent-dark); font-weight: 600; text-decoration: none; padding-top: 0.5rem; }
+    .qa-link:hover { text-decoration: underline; }
+
     @media (max-width: 640px) {
       .hub { padding: 1rem 1.25rem 3rem; }
       .step { flex-direction: column; gap: 0.75rem; padding: 1.25rem; }
@@ -219,6 +236,59 @@
 
     </div>
 
+
+    <section class="hub-products">
+      <h2 class="section-title">Top 5 recommended swaps</h2>
+      <p class="hub-products-disclosure">Vetted picks from our store. Affiliate links: we earn a small commission when you buy, at no cost to you. We never accept paid placements.</p>
+      <div class="product-grid-5">
+        <a href="https://www.amazon.com/dp/B099KWKY36?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+          <img src="https://m.media-amazon.com/images/I/81OFqtQpfIL._AC_SL400_.jpg" alt="Viori Shampoo Bar" loading="lazy">
+          <div class="product-card-body">
+            <span class="product-card-tier">$$</span>
+            <h3 class="product-card-name">Viori Shampoo Bar</h3>
+            <p class="product-card-best">Best plastic-free shampoo bar</p>
+            <span class="product-card-cta">View on Amazon &rarr;</span>
+          </div>
+        </a>
+        <a href="https://www.amazon.com/dp/B08S3FTX35?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+          <img src="https://m.media-amazon.com/images/I/51G+heEl8VL._AC_SL400_.jpg" alt="HiBAR Conditioner Bar" loading="lazy">
+          <div class="product-card-body">
+            <span class="product-card-tier">$</span>
+            <h3 class="product-card-name">HiBAR Conditioner Bar</h3>
+            <p class="product-card-best">Best salon-quality plastic-free hair bar</p>
+            <span class="product-card-cta">View on Amazon &rarr;</span>
+          </div>
+        </a>
+        <a href="https://www.amazon.com/dp/B002A8JO1Q?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+          <img src="https://m.media-amazon.com/images/I/410XbGhKsyL._AC_SL400_.jpg" alt="Merkur 34C Safety Razor" loading="lazy">
+          <div class="product-card-body">
+            <span class="product-card-tier">$$</span>
+            <h3 class="product-card-name">Merkur 34C Safety Razor</h3>
+            <p class="product-card-best">Best plastic-free razor</p>
+            <span class="product-card-cta">View on Amazon &rarr;</span>
+          </div>
+        </a>
+        <a href="https://www.amazon.com/dp/B09SGXS4PZ?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+          <img src="https://m.media-amazon.com/images/I/71iWTflth6L._AC_SL400_.jpg" alt="Each & Every Aluminum-Free Deodorant" loading="lazy">
+          <div class="product-card-body">
+            <span class="product-card-tier">$</span>
+            <h3 class="product-card-name">Each & Every Aluminum-Free Deodorant</h3>
+            <p class="product-card-best">Best fragrance-free natural deodorant</p>
+            <span class="product-card-cta">View on Amazon &rarr;</span>
+          </div>
+        </a>
+        <a href="https://www.amazon.com/dp/B0774WQY7T?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+          <img src="https://m.media-amazon.com/images/I/51f5yHWYggL._AC_SL400_.jpg" alt="Plaine Products Refillable Shampoo" loading="lazy">
+          <div class="product-card-body">
+            <span class="product-card-tier">$$</span>
+            <h3 class="product-card-name">Plaine Products Refillable Shampoo</h3>
+            <p class="product-card-best">Best refillable liquid shampoo system</p>
+            <span class="product-card-cta">View on Amazon &rarr;</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
     <div class="quiz-cta">
       <h3>Ready to swap your bathroom shelf?</h3>
       <p>Browse vetted personal care products: clean cosmetics, mineral sunscreens, plastic-free oral care, and fragrance-free essentials. Or take the free whole-home detox quiz for a personalized plan.</p>
@@ -230,30 +300,36 @@
       <h2 class="section-title">Quick answers</h2>
       <p class="section-sub">Common personal care detox questions, with deep-dive guides for each.</p>
       <div class="qa-grid">
-        <a href="how-to-avoid-bpa-and-phthalates.html" class="qa-card">
+        <div class="qa-card">
           <div class="qa-q">What does "fragrance" actually mean?</div>
-          <div class="qa-a">A loophole that lets brands hide dozens of phthalates and unlisted chemicals &rarr;</div>
-        </a>
-        <a href="microplastics-in-cosmetics-and-personal-care.html" class="qa-card">
+          <div class="qa-a">"Fragrance" or "parfum" is a regulatory loophole that lets brands hide dozens of unlisted chemicals, including phthalates linked to hormone disruption, infertility, and developmental issues. The FDA does not require fragrance components to be listed individually. Look for "fragrance-free" (not "unscented," which can still contain fragrances) or products that disclose every ingredient.</div>
+          <a href="how-to-avoid-bpa-and-phthalates.html" class="qa-link">Read the full guide &rarr;</a>
+        </div>
+        <div class="qa-card">
           <div class="qa-q">Which makeup ingredients are microplastics?</div>
-          <div class="qa-a">The ingredient names to scan for on every label &rarr;</div>
-        </a>
-        <a href="best-mineral-sunscreen-guide.html" class="qa-card">
+          <div class="qa-a">Watch the ingredient list for: polyethylene (PE), polypropylene (PP), nylon, acrylates copolymer, polymethyl methacrylate (PMMA), and any ingredient starting with "poly-" or "acrylate." These are common in mascara, foundation, eyeshadow, and any product labeled "shimmer" or "glitter."</div>
+          <a href="microplastics-in-cosmetics-and-personal-care.html" class="qa-link">Read the full guide &rarr;</a>
+        </div>
+        <div class="qa-card">
           <div class="qa-q">Are chemical sunscreens dangerous?</div>
-          <div class="qa-a">FDA flagged six common ingredients in 2021. What the research actually says &rarr;</div>
-        </a>
-        <a href="low-tox-mistakes-that-backfire.html" class="qa-card">
+          <div class="qa-a">The FDA in 2021 flagged six common chemical UV filters (oxybenzone, octinoxate, homosalate, octisalate, octocrylene, avobenzone) for measurable absorption into the bloodstream after a single use. Long-term effects are unclear and research is ongoing. Mineral sunscreens (zinc oxide, titanium dioxide) sit on the skin instead of absorbing, and remain the safer choice while research catches up.</div>
+          <a href="best-mineral-sunscreen-guide.html" class="qa-link">Read the full guide &rarr;</a>
+        </div>
+        <div class="qa-card">
           <div class="qa-q">Is DIY deodorant safe?</div>
-          <div class="qa-a">No. Common DIY recipes cause chemical burns. Safer alternatives &rarr;</div>
-        </a>
-        <a href="bpa-free-is-not-safe.html" class="qa-card">
+          <div class="qa-a">Generally no. DIY deodorant recipes commonly use baking soda at concentrations that cause underarm chemical burns and skin sensitization. Pre-formulated natural deodorants (Native, Schmidt's Sensitive, Each & Every) buffer the pH properly and have been clinically tested.</div>
+          <a href="low-tox-mistakes-that-backfire.html" class="qa-link">Read the full guide &rarr;</a>
+        </div>
+        <div class="qa-card">
           <div class="qa-q">Are "BPA-free" products actually safe?</div>
-          <div class="qa-a">No. The replacement chemicals are often just as bad &rarr;</div>
-        </a>
-        <a href="low-tox-myths-debunked.html" class="qa-card">
+          <div class="qa-a">No. The replacement chemicals (BPS, BPF, BPB) cause similar endocrine disruption per multiple peer-reviewed studies. The label tells you what's missing, not what's safe. Choose glass, stainless steel, or untreated natural materials whenever possible.</div>
+          <a href="bpa-free-is-not-safe.html" class="qa-link">Read the full guide &rarr;</a>
+        </div>
+        <div class="qa-card">
           <div class="qa-q">Do I need to replace everything at once?</div>
-          <div class="qa-a">No. Replace as you finish what you have, focus on top 3 categories first &rarr;</div>
-        </a>
+          <div class="qa-a">Definitely not. Use what you already have until it runs out, then replace it with a vetted alternative. Focus first on products you use daily and on the largest skin surface area: lotion, sunscreen, deodorant, shampoo. Replacing everything at once is wasteful, expensive, and unnecessary.</div>
+          <a href="low-tox-myths-debunked.html" class="qa-link">Read the full guide &rarr;</a>
+        </div>
       </div>
     </div>
 

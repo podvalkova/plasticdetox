@@ -37,7 +37,8 @@
         "inLanguage": "en",
         "publisher": {"@type": "Organization", "name": "Plastic Detox", "url": "https://plasticdetox.org"},
         "isPartOf": {"@type": "WebSite", "name": "Plastic Detox", "url": "https://plasticdetox.org"}
-      }
+      },
+      {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I make coffee without plastic?", "acceptedAnswer": {"@type": "Answer", "text": "Use a French press, pour-over with a steel filter, or a stovetop moka pot, all metal or glass brewers that don't leach. Avoid Keurig pods (they shed millions of particles when heated), plastic-lined paper filters, and plastic drip baskets. If you must use a drip machine, look for stainless steel components and unbleached paper filters."}}, {"@type": "Question", "name": "Are tea bags shedding plastic into my tea?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. A 2019 McGill University study found a single plastic tea bag releases 11.6 billion microplastic and 3.1 billion nanoplastic particles per cup at brewing temperature. Even \"paper\" tea bags often contain polypropylene to seal them. Switch to loose-leaf tea with a stainless steel infuser, or buy brands explicitly labeled plastic-free (Pukka, Numi, Clipper)."}}, {"@type": "Question", "name": "Can my water filter remove nanoplastics?", "acceptedAnswer": {"@type": "Answer", "text": "Most can't. Pitcher and basic carbon filters miss particles smaller than 1 micron. Only reverse osmosis and nanofiltration consistently remove nanoplastics. If you want full nanoplastic protection, look for systems certified to NSF P473 standards."}}, {"@type": "Question", "name": "Does my filter also remove PFAS?", "acceptedAnswer": {"@type": "Answer", "text": "Standard activated carbon filters miss most PFAS. Look for NSF/ANSI 53 or 401 certification specifically labeled for \"PFOA/PFOS reduction.\" Reverse osmosis is most reliable; certified pitcher filters like Clearly Filtered and ZeroWater also remove PFAS."}}, {"@type": "Question", "name": "Is \"BPA-free\" plastic actually safe?", "acceptedAnswer": {"@type": "Answer", "text": "No. Manufacturers replaced BPA with BPS, BPF, and BPB, chemicals shown in peer-reviewed studies to cause similar endocrine disruption. \"BPA-free\" is a marketing claim about what's missing, not a guarantee about what's safe. Choose glass or stainless steel for food storage and water bottles."}}, {"@type": "Question", "name": "Am I making swaps that backfire?", "acceptedAnswer": {"@type": "Answer", "text": "Common backfires: DIY toothpaste (often abrasive and erodes enamel), DIY laundry detergent (doesn't dissolve, damages clothes and machine), bamboo toothbrushes that still have plastic bristles, charcoal toothpaste (linked to gum recession), and going fluoride-free for kids (significantly increases cavity risk)."}}]}
     ]
   }
   </script>
@@ -421,6 +422,22 @@
       margin-bottom: 1.5rem;
     }
 
+
+    .hub-products { margin-bottom: 4rem; }
+    .hub-products-disclosure { font-size: 0.82rem; color: var(--text-muted); font-style: italic; margin-bottom: 1.5rem; }
+    .product-grid-5 { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1rem; }
+    .product-card-mini { background: var(--surface); border-radius: var(--radius); text-decoration: none; color: inherit; box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; overflow: hidden; }
+    .product-card-mini:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+    .product-card-mini img { width: 100%; height: 160px; object-fit: contain; background: #f5f5f4; padding: 0.75rem; }
+    .product-card-body { padding: 1rem; display: flex; flex-direction: column; flex: 1; gap: 0.4rem; }
+    .product-card-tier { font-size: 0.7rem; font-weight: 800; color: var(--accent-dark); letter-spacing: 0.06em; }
+    .product-card-name { font-size: 0.98rem; font-weight: 700; line-height: 1.3; }
+    .product-card-best { font-size: 0.82rem; color: var(--text-muted); line-height: 1.4; flex: 1; }
+    .product-card-cta { font-size: 0.85rem; color: var(--accent-dark); font-weight: 600; margin-top: 0.4rem; }
+
+    .qa-link { display: inline-block; margin-top: auto; font-size: 0.85rem; color: var(--accent-dark); font-weight: 600; text-decoration: none; padding-top: 0.5rem; }
+    .qa-link:hover { text-decoration: underline; }
+
     @media (max-width: 640px) {
       .hub { padding: 1rem 1.25rem 3rem; }
       .step { flex-direction: column; gap: 0.75rem; padding: 1.25rem; }
@@ -556,6 +573,59 @@
 
     </div>
 
+
+    <section class="hub-products">
+      <h2 class="section-title">Top 5 recommended swaps</h2>
+      <p class="hub-products-disclosure">Vetted picks from our store. Affiliate links: we earn a small commission when you buy, at no cost to you. We never accept paid placements.</p>
+      <div class="product-grid-5">
+        <a href="https://www.amazon.com/dp/B000N4WN08?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+          <img src="https://m.media-amazon.com/images/I/31vaGyYFoWL._AC_SL400_.jpg" alt="Lodge Enameled Cast Iron Dutch Oven (6 Qt)" loading="lazy">
+          <div class="product-card-body">
+            <span class="product-card-tier">$$</span>
+            <h3 class="product-card-name">Lodge Enameled Cast Iron Dutch Oven (6 Qt)</h3>
+            <p class="product-card-best">Best plastic-free cookware for soups, stews, bread</p>
+            <span class="product-card-cta">View on Amazon &rarr;</span>
+          </div>
+        </a>
+        <a href="https://www.amazon.com/dp/B00CRUDO0Y?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+          <img src="https://m.media-amazon.com/images/I/71ZXkReaSnL._AC_SL400_.jpg" alt="John Boos Maple End Grain Cutting Board" loading="lazy">
+          <div class="product-card-body">
+            <span class="product-card-tier">$$$</span>
+            <h3 class="product-card-name">John Boos Maple End Grain Cutting Board</h3>
+            <p class="product-card-best">Best premium hardwood cutting board</p>
+            <span class="product-card-cta">View on Amazon &rarr;</span>
+          </div>
+        </a>
+        <a href="https://www.amazon.com/dp/B00008XEWG?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+          <img src="https://m.media-amazon.com/images/I/31je915XePL._AC_SL400_.jpg" alt="Bodum Chambord French Press (34oz)" loading="lazy">
+          <div class="product-card-body">
+            <span class="product-card-tier">$</span>
+            <h3 class="product-card-name">Bodum Chambord French Press (34oz)</h3>
+            <p class="product-card-best">Best all-around plastic-free coffee brewer</p>
+            <span class="product-card-cta">View on Amazon &rarr;</span>
+          </div>
+        </a>
+        <a href="https://www.amazon.com/dp/B08PP48979?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+          <img src="https://m.media-amazon.com/images/I/41PYUmcAn4L._AC_SL400_.jpg" alt="Cosori Glass Electric Kettle" loading="lazy">
+          <div class="product-card-body">
+            <span class="product-card-tier">$</span>
+            <h3 class="product-card-name">Cosori Glass Electric Kettle</h3>
+            <p class="product-card-best">Best value plastic-free kettle</p>
+            <span class="product-card-cta">View on Amazon &rarr;</span>
+          </div>
+        </a>
+        <a href="https://www.amazon.com/dp/B001JPA3Y8?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+          <img src="https://m.media-amazon.com/images/I/811rxDPdjUL._AC_SL400_.jpg" alt="Forlife Stainless Steel Tea Infuser" loading="lazy">
+          <div class="product-card-body">
+            <span class="product-card-tier">$</span>
+            <h3 class="product-card-name">Forlife Stainless Steel Tea Infuser</h3>
+            <p class="product-card-best">Best mug infuser for loose-leaf tea</p>
+            <span class="product-card-cta">View on Amazon &rarr;</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
     <div class="quiz-cta">
       <h3>Ready to make the swaps?</h3>
       <p>Browse our curated kitchen products: cookware, food storage, coffee gear, and more, all vetted against the criteria in this guide. Or take the free whole-home detox quiz to get a personalized priority list.</p>
@@ -566,39 +636,37 @@
     <div class="qa-section">
       <h2 class="section-title">Quick answers</h2>
       <p class="section-sub">Common kitchen detox questions, with deep-dive guides for each.</p>
-
       <div class="qa-grid">
-
-        <a href="how-to-enjoy-coffee-without-plastic.html" class="qa-card">
+        <div class="qa-card">
           <div class="qa-q">How do I make coffee without plastic?</div>
-          <div class="qa-a">Most coffee makers, pods, and filters leach plastic. The brewing methods that don't &rarr;</div>
-        </a>
-
-        <a href="how-to-avoid-microplastics-in-tea.html" class="qa-card">
+          <div class="qa-a">Use a French press, pour-over with a steel filter, or a stovetop moka pot, all metal or glass brewers that don't leach. Avoid Keurig pods (they shed millions of particles when heated), plastic-lined paper filters, and plastic drip baskets. If you must use a drip machine, look for stainless steel components and unbleached paper filters.</div>
+          <a href="how-to-enjoy-coffee-without-plastic.html" class="qa-link">Read the full guide &rarr;</a>
+        </div>
+        <div class="qa-card">
           <div class="qa-q">Are tea bags shedding plastic into my tea?</div>
-          <div class="qa-a">Yes, billions of particles per cup. The loose-leaf options worth switching to &rarr;</div>
-        </a>
-
-        <a href="can-nanoplastics-be-filtered-out-of-water.html" class="qa-card">
+          <div class="qa-a">Yes. A 2019 McGill University study found a single plastic tea bag releases 11.6 billion microplastic and 3.1 billion nanoplastic particles per cup at brewing temperature. Even "paper" tea bags often contain polypropylene to seal them. Switch to loose-leaf tea with a stainless steel infuser, or buy brands explicitly labeled plastic-free (Pukka, Numi, Clipper).</div>
+          <a href="how-to-avoid-microplastics-in-tea.html" class="qa-link">Read the full guide &rarr;</a>
+        </div>
+        <div class="qa-card">
           <div class="qa-q">Can my water filter remove nanoplastics?</div>
-          <div class="qa-a">Most can't. Only reverse osmosis and nanofiltration work. Which to buy &rarr;</div>
-        </a>
-
-        <a href="how-to-filter-pfas-and-microplastics-from-water.html" class="qa-card">
+          <div class="qa-a">Most can't. Pitcher and basic carbon filters miss particles smaller than 1 micron. Only reverse osmosis and nanofiltration consistently remove nanoplastics. If you want full nanoplastic protection, look for systems certified to NSF P473 standards.</div>
+          <a href="can-nanoplastics-be-filtered-out-of-water.html" class="qa-link">Read the full guide &rarr;</a>
+        </div>
+        <div class="qa-card">
           <div class="qa-q">Does my filter also remove PFAS?</div>
-          <div class="qa-a">Standard carbon filters miss most PFAS. The certifications that matter &rarr;</div>
-        </a>
-
-        <a href="bpa-free-is-not-safe.html" class="qa-card">
+          <div class="qa-a">Standard activated carbon filters miss most PFAS. Look for NSF/ANSI 53 or 401 certification specifically labeled for "PFOA/PFOS reduction." Reverse osmosis is most reliable; certified pitcher filters like Clearly Filtered and ZeroWater also remove PFAS.</div>
+          <a href="how-to-filter-pfas-and-microplastics-from-water.html" class="qa-link">Read the full guide &rarr;</a>
+        </div>
+        <div class="qa-card">
           <div class="qa-q">Is "BPA-free" plastic actually safe?</div>
-          <div class="qa-a">No. The replacement chemicals (BPS, BPF) are often just as bad &rarr;</div>
-        </a>
-
-        <a href="low-tox-mistakes-that-backfire.html" class="qa-card">
+          <div class="qa-a">No. Manufacturers replaced BPA with BPS, BPF, and BPB, chemicals shown in peer-reviewed studies to cause similar endocrine disruption. "BPA-free" is a marketing claim about what's missing, not a guarantee about what's safe. Choose glass or stainless steel for food storage and water bottles.</div>
+          <a href="bpa-free-is-not-safe.html" class="qa-link">Read the full guide &rarr;</a>
+        </div>
+        <div class="qa-card">
           <div class="qa-q">Am I making swaps that backfire?</div>
-          <div class="qa-a">11 common low-tox mistakes that cost more than they help &rarr;</div>
-        </a>
-
+          <div class="qa-a">Common backfires: DIY toothpaste (often abrasive and erodes enamel), DIY laundry detergent (doesn't dissolve, damages clothes and machine), bamboo toothbrushes that still have plastic bristles, charcoal toothpaste (linked to gum recession), and going fluoride-free for kids (significantly increases cavity risk).</div>
+          <a href="low-tox-mistakes-that-backfire.html" class="qa-link">Read the full guide &rarr;</a>
+        </div>
       </div>
     </div>
 

@@ -37,7 +37,8 @@
         "inLanguage": "en",
         "publisher": {"@type": "Organization", "name": "Plastic Detox", "url": "https://plasticdetox.org"},
         "isPartOf": {"@type": "WebSite", "name": "Plastic Detox", "url": "https://plasticdetox.org"}
-      }
+      },
+      {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Do I really need to replace my mattress?", "acceptedAnswer": {"@type": "Answer", "text": "Not necessarily. A natural fiber mattress topper (organic cotton or wool) plus a tightly woven barrier cover dramatically reduces direct contact with synthetic foam and off-gassing. Full mattress replacement matters most for kids' bedding and during the first 5 years of a mattress, when off-gassing is highest."}}, {"@type": "Question", "name": "Do laundry filter bags actually work?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Independent studies show fiber-catching laundry bags (Guppyfriend, Cora Ball) capture 80-90% of microfibers shed during washing. Combine with washing in cold water on shorter cycles (which reduces shedding by ~30%) and air-drying synthetic fabrics whenever possible."}}, {"@type": "Question", "name": "Are HEPA filters worth it?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, but only True HEPA (not \"HEPA-style\" or \"HEPA-type,\" which are unregulated marketing terms). True HEPA captures 99.97% of particles down to 0.3 microns, including airborne microplastic dust, mold spores, and most allergens. Place units in the bedroom and main living area for the biggest impact."}}, {"@type": "Question", "name": "Should I throw out my polyester clothes?", "acceptedAnswer": {"@type": "Answer", "text": "No. Throwing them out wastes resources and money, and the microfibers still end up in the environment. Wear them out, wash them less often (and cold), use a fiber-catching laundry bag like Guppyfriend, and replace with natural fibers (organic cotton, hemp, wool, linen) only as you replenish your wardrobe."}}, {"@type": "Question", "name": "What about my cleaning products?", "acceptedAnswer": {"@type": "Answer", "text": "Many sprays leave airborne plastic-particle residue and contain phthalates (hidden as \"fragrance\"). Switch to fragrance-free, refillable concentrates (Branch Basics, Blueland) and use hot water plus microfiber cloths for most surfaces. Avoid anything labeled \"scented\" or with \"fragrance\" in the ingredients."}}, {"@type": "Question", "name": "Are scented candles bad?", "acceptedAnswer": {"@type": "Answer", "text": "Most paraffin candles and \"fragrance\" candles release phthalates and combustion byproducts that disrupt hormones. Choose 100% beeswax or 100% coconut wax candles scented only with pure essential oils. Better still, use diffusers with food-grade essential oils for fragrance."}}]}
     ]
   }
   </script>
@@ -122,6 +123,22 @@
     @media (max-width: 540px) { .quiz-cta-secondary { display: block; margin: 1rem 0 0; } }
     .section-title { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.4rem; }
     .section-sub { color: var(--text-muted); margin-bottom: 1.5rem; }
+
+    .hub-products { margin-bottom: 4rem; }
+    .hub-products-disclosure { font-size: 0.82rem; color: var(--text-muted); font-style: italic; margin-bottom: 1.5rem; }
+    .product-grid-5 { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1rem; }
+    .product-card-mini { background: var(--surface); border-radius: var(--radius); text-decoration: none; color: inherit; box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; overflow: hidden; }
+    .product-card-mini:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+    .product-card-mini img { width: 100%; height: 160px; object-fit: contain; background: #f5f5f4; padding: 0.75rem; }
+    .product-card-body { padding: 1rem; display: flex; flex-direction: column; flex: 1; gap: 0.4rem; }
+    .product-card-tier { font-size: 0.7rem; font-weight: 800; color: var(--accent-dark); letter-spacing: 0.06em; }
+    .product-card-name { font-size: 0.98rem; font-weight: 700; line-height: 1.3; }
+    .product-card-best { font-size: 0.82rem; color: var(--text-muted); line-height: 1.4; flex: 1; }
+    .product-card-cta { font-size: 0.85rem; color: var(--accent-dark); font-weight: 600; margin-top: 0.4rem; }
+
+    .qa-link { display: inline-block; margin-top: auto; font-size: 0.85rem; color: var(--accent-dark); font-weight: 600; text-decoration: none; padding-top: 0.5rem; }
+    .qa-link:hover { text-decoration: underline; }
+
     @media (max-width: 640px) {
       .hub { padding: 1rem 1.25rem 3rem; }
       .step { flex-direction: column; gap: 0.75rem; padding: 1.25rem; }
@@ -206,6 +223,59 @@
 
     </div>
 
+
+    <section class="hub-products">
+      <h2 class="section-title">Top 5 recommended swaps</h2>
+      <p class="hub-products-disclosure">Vetted picks from our store. Affiliate links: we earn a small commission when you buy, at no cost to you. We never accept paid placements.</p>
+      <div class="product-grid-5">
+        <a href="https://www.amazon.com/dp/B07Q1K4G91?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+          <img src="https://m.media-amazon.com/images/I/51yXrCGW8vL._AC_SL400_.jpg" alt="GOTS Organic Cotton Pillowcase" loading="lazy">
+          <div class="product-card-body">
+            <span class="product-card-tier">$</span>
+            <h3 class="product-card-name">GOTS Organic Cotton Pillowcase</h3>
+            <p class="product-card-best">Highest-impact, lowest-cost sleep swap</p>
+            <span class="product-card-cta">View on Amazon &rarr;</span>
+          </div>
+        </a>
+        <a href="https://www.amazon.com/dp/B07RY59C3W?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+          <img src="https://m.media-amazon.com/images/I/41uZMh6+pyL._AC_SL400_.jpg" alt="Organic Cotton Sheets (Queen)" loading="lazy">
+          <div class="product-card-body">
+            <span class="product-card-tier">$$</span>
+            <h3 class="product-card-name">Organic Cotton Sheets (Queen)</h3>
+            <p class="product-card-best">Best natural fiber bedding upgrade</p>
+            <span class="product-card-cta">View on Amazon &rarr;</span>
+          </div>
+        </a>
+        <a href="https://www.amazon.com/dp/B01KPWG11O?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+          <img src="https://m.media-amazon.com/images/I/51aHYq4E2gL._AC_SL400_.jpg" alt="Pure Green Natural Latex Mattress (Queen)" loading="lazy">
+          <div class="product-card-body">
+            <span class="product-card-tier">$$</span>
+            <h3 class="product-card-name">Pure Green Natural Latex Mattress (Queen)</h3>
+            <p class="product-card-best">Best budget natural latex mattress</p>
+            <span class="product-card-cta">View on Amazon &rarr;</span>
+          </div>
+        </a>
+        <a href="https://www.amazon.com/dp/B014WOWNAY?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+          <img src="https://m.media-amazon.com/images/I/416DJtLU-aL._AC_SL400_.jpg" alt="Wool Dryer Balls (6 Pack)" loading="lazy">
+          <div class="product-card-body">
+            <span class="product-card-tier">$</span>
+            <h3 class="product-card-name">Wool Dryer Balls (6 Pack)</h3>
+            <p class="product-card-best">Best replacement for plastic dryer sheets</p>
+            <span class="product-card-cta">View on Amazon &rarr;</span>
+          </div>
+        </a>
+        <a href="https://www.amazon.com/dp/B08GF7YGCD?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+          <img src="https://m.media-amazon.com/images/I/51svVPRWRyL._AC_SL400_.jpg" alt="Earth Breeze Laundry Detergent Sheets" loading="lazy">
+          <div class="product-card-body">
+            <span class="product-card-tier">$</span>
+            <h3 class="product-card-name">Earth Breeze Laundry Detergent Sheets</h3>
+            <p class="product-card-best">Best fragrance-free plastic-free detergent</p>
+            <span class="product-card-cta">View on Amazon &rarr;</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
     <div class="quiz-cta">
       <h3>Ready to clean up your air and bedroom?</h3>
       <p>Browse our curated picks for the bedroom: organic bedding, natural mattress toppers, HEPA air purifiers, and microfiber-catching laundry essentials. Or take the free whole-home detox quiz for a personalized plan.</p>
@@ -217,30 +287,36 @@
       <h2 class="section-title">Quick answers</h2>
       <p class="section-sub">Common bedroom and indoor air questions, with deep-dive guides for each.</p>
       <div class="qa-grid">
-        <a href="microplastics-in-bedroom-air.html" class="qa-card">
+        <div class="qa-card">
           <div class="qa-q">Do I really need to replace my mattress?</div>
-          <div class="qa-a">Not always. The mattress topper hack that drastically reduces exposure for under $200 &rarr;</div>
-        </a>
-        <a href="microplastics-in-clothing-and-laundry.html" class="qa-card">
+          <div class="qa-a">Not necessarily. A natural fiber mattress topper (organic cotton or wool) plus a tightly woven barrier cover dramatically reduces direct contact with synthetic foam and off-gassing. Full mattress replacement matters most for kids' bedding and during the first 5 years of a mattress, when off-gassing is highest.</div>
+          <a href="microplastics-in-bedroom-air.html" class="qa-link">Read the full guide &rarr;</a>
+        </div>
+        <div class="qa-card">
           <div class="qa-q">Do laundry filter bags actually work?</div>
-          <div class="qa-a">The studies say yes, by 80&ndash;90%. The brands that work and the ones that don't &rarr;</div>
-        </a>
-        <a href="microplastics-in-indoor-air.html" class="qa-card">
+          <div class="qa-a">Yes. Independent studies show fiber-catching laundry bags (Guppyfriend, Cora Ball) capture 80-90% of microfibers shed during washing. Combine with washing in cold water on shorter cycles (which reduces shedding by ~30%) and air-drying synthetic fabrics whenever possible.</div>
+          <a href="microplastics-in-clothing-and-laundry.html" class="qa-link">Read the full guide &rarr;</a>
+        </div>
+        <div class="qa-card">
           <div class="qa-q">Are HEPA filters worth it?</div>
-          <div class="qa-a">Yes, but only true HEPA (not "HEPA-style"). What the labels actually mean &rarr;</div>
-        </a>
-        <a href="microplastics-in-clothing-and-laundry.html" class="qa-card">
+          <div class="qa-a">Yes, but only True HEPA (not "HEPA-style" or "HEPA-type," which are unregulated marketing terms). True HEPA captures 99.97% of particles down to 0.3 microns, including airborne microplastic dust, mold spores, and most allergens. Place units in the bedroom and main living area for the biggest impact.</div>
+          <a href="microplastics-in-indoor-air.html" class="qa-link">Read the full guide &rarr;</a>
+        </div>
+        <div class="qa-card">
           <div class="qa-q">Should I throw out my polyester clothes?</div>
-          <div class="qa-a">No. Wear them out, wash them less, then replace with natural fibers &rarr;</div>
-        </a>
-        <a href="reduce-microplastics-in-cleaning-products.html" class="qa-card">
+          <div class="qa-a">No. Throwing them out wastes resources and money, and the microfibers still end up in the environment. Wear them out, wash them less often (and cold), use a fiber-catching laundry bag like Guppyfriend, and replace with natural fibers (organic cotton, hemp, wool, linen) only as you replenish your wardrobe.</div>
+          <a href="microplastics-in-clothing-and-laundry.html" class="qa-link">Read the full guide &rarr;</a>
+        </div>
+        <div class="qa-card">
           <div class="qa-q">What about my cleaning products?</div>
-          <div class="qa-a">Some sprays leave plastic-particle residue in the air. The cleaner alternatives &rarr;</div>
-        </a>
-        <a href="how-to-avoid-bpa-and-phthalates.html" class="qa-card">
+          <div class="qa-a">Many sprays leave airborne plastic-particle residue and contain phthalates (hidden as "fragrance"). Switch to fragrance-free, refillable concentrates (Branch Basics, Blueland) and use hot water plus microfiber cloths for most surfaces. Avoid anything labeled "scented" or with "fragrance" in the ingredients.</div>
+          <a href="reduce-microplastics-in-cleaning-products.html" class="qa-link">Read the full guide &rarr;</a>
+        </div>
+        <div class="qa-card">
           <div class="qa-q">Are scented candles bad?</div>
-          <div class="qa-a">Most contain phthalates that disrupt hormones. The cleaner alternatives &rarr;</div>
-        </a>
+          <div class="qa-a">Most paraffin candles and "fragrance" candles release phthalates and combustion byproducts that disrupt hormones. Choose 100% beeswax or 100% coconut wax candles scented only with pure essential oils. Better still, use diffusers with food-grade essential oils for fragrance.</div>
+          <a href="how-to-avoid-bpa-and-phthalates.html" class="qa-link">Read the full guide &rarr;</a>
+        </div>
       </div>
     </div>
 
