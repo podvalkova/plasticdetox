@@ -243,13 +243,13 @@
     /* ===== Grid + Card ===== */
     .reg-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1.25rem;
+      grid-template-columns: repeat(5, 1fr);
+      gap: .85rem;
     }
     .reg-card {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 14px;
+      border-radius: 12px;
       overflow: hidden;
       text-decoration: none;
       color: inherit;
@@ -259,7 +259,7 @@
       transition: transform .2s, border-color .2s, box-shadow .2s;
     }
     .reg-card:hover {
-      transform: translateY(-3px);
+      transform: translateY(-2px);
       border-color: var(--accent);
       box-shadow: var(--shadow-lg);
     }
@@ -272,7 +272,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 1rem;
+      padding: .65rem;
     }
     .reg-card-img img {
       max-width: 100%;
@@ -281,58 +281,58 @@
     }
     .reg-card-tag {
       position: absolute;
-      top: .65rem; left: .65rem;
+      top: .5rem; left: .5rem;
       background: var(--text); color: #fff;
-      font-size: .65rem; font-weight: 700;
-      text-transform: uppercase; letter-spacing: .08em;
-      padding: .25rem .55rem;
+      font-size: .58rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .07em;
+      padding: .2rem .45rem;
       border-radius: 4px;
     }
     .reg-card-body {
-      padding: 1rem 1.1rem 1.1rem;
+      padding: .7rem .8rem .8rem;
       display: flex;
       flex-direction: column;
       flex: 1;
     }
     .reg-card-name {
-      font-size: 1rem;
+      font-size: .85rem;
       font-weight: 700;
       letter-spacing: -.01em;
       line-height: 1.25;
-      margin-bottom: .55rem;
+      margin-bottom: .4rem;
       text-wrap: pretty;
     }
     .reg-card-sentence {
-      font-size: .85rem;
-      line-height: 1.45;
+      font-size: .76rem;
+      line-height: 1.4;
       color: var(--text-muted);
-      margin-bottom: 1rem;
+      margin-bottom: .7rem;
       flex: 1;
     }
     .reg-card-foot {
       display: flex;
       flex-direction: column;
-      gap: .65rem;
-      padding-top: .75rem;
+      gap: .5rem;
+      padding-top: .6rem;
       border-top: 1px solid var(--border);
     }
     .reg-badges {
       display: flex;
       flex-wrap: wrap;
-      gap: .35rem;
+      gap: .3rem;
     }
     .reg-badge {
       display: inline-block;
-      font-size: .65rem;
+      font-size: .6rem;
       font-weight: 600;
-      letter-spacing: .04em;
-      padding: .2rem .5rem;
+      letter-spacing: .03em;
+      padding: .18rem .42rem;
       background: var(--accent-light);
       color: var(--accent-dark);
       border-radius: 4px;
     }
     .reg-buy {
-      font-size: .85rem;
+      font-size: .76rem;
       font-weight: 600;
       color: var(--accent-dark);
     }
@@ -422,6 +422,14 @@
     }
     .reg-disclosure strong { color: #fff; }
 
+    /* ===== Tablet ===== */
+    @media (max-width: 1180px) {
+      .reg-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+    @media (max-width: 980px) {
+      .reg-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
     /* ===== Mobile ===== */
     @media (max-width: 880px) {
       .nav { padding: 1rem 1.25rem; }
@@ -440,11 +448,11 @@
       .reg-cat-h2 { font-size: 1.65rem; }
       .reg-cat-blurb { font-size: .92rem; }
 
-      .reg-grid { grid-template-columns: repeat(2, 1fr); gap: .75rem; }
-      .reg-card-body { padding: .85rem .85rem 1rem; }
-      .reg-card-name { font-size: .9rem; }
-      .reg-card-sentence { font-size: .78rem; }
-      .reg-buy { font-size: .8rem; }
+      .reg-grid { grid-template-columns: repeat(2, 1fr); gap: .65rem; }
+      .reg-card-body { padding: .65rem .7rem .8rem; }
+      .reg-card-name { font-size: .82rem; }
+      .reg-card-sentence { font-size: .74rem; }
+      .reg-buy { font-size: .72rem; }
 
       .reg-nl-inline {
         grid-template-columns: 1fr;
@@ -473,7 +481,7 @@
     <a href="./" class="nav-logo">plastic<span>detox</span></a>
     <div class="nav-links">
       <a class="nav-link" href="./">Home</a>
-      <a class="nav-link active" href="registry.html">Registry</a>
+      <a class="nav-link active" href="registry.html">Baby Registry</a>
       <a class="nav-link" href="store.html">Store</a>
       <a class="nav-link" href="./#resources">Resources</a>
     </div>
@@ -622,7 +630,7 @@
                             "name": "Burt's Bees Baby Organic Crib Sheets",
                             "img": "61r3F05PnpL",
                             "url": "https://www.amazon.com/s?k=Burts+Bees+Baby+organic+crib+sheets&tag=plasticdetox-20",
-                            "sentence": "GOTS certified 100% organic cotton jersey knit. Widely available, affordable, gets softer with each wash.",
+                            "sentence": "GOTS certified 100% organic cotton jersey knit. No formaldehyde wrinkle treatments. Gets softer with each wash.",
                             "badges": [
                                   "GOTS organic"
                             ],
@@ -1133,7 +1141,7 @@
                             "name": "Coterie Diapers",
                             "img": "616umIINRjL",
                             "url": "https://www.amazon.com/s?k=Coterie+diapers&tag=plasticdetox-20",
-                            "sentence": "Fully disclosed ingredient list, excellent absorbency. Available on Amazon, no subscription required.",
+                            "sentence": "Fully disclosed ingredient list, excellent absorbency, no fragrance or lotion. Plastic neutral certified.",
                             "badges": [
                                   "Fully disclosed"
                             ]
@@ -1290,7 +1298,7 @@
                             "name": "Burt's Bees Baby Organic Hooded Towel",
                             "img": "7155yfK9IqL",
                             "url": "https://www.amazon.com/s?k=Burts+Bees+Baby+organic+hooded+towel&tag=plasticdetox-20",
-                            "sentence": "100% organic cotton with GOTS certification. Affordable and widely available.",
+                            "sentence": "100% organic cotton terry with GOTS certification. Soft, absorbent, hooded design keeps baby warm post bath.",
                             "badges": [
                                   "GOTS organic"
                             ],
@@ -1990,7 +1998,7 @@
                     <div class="reg-badges">
                       ${(p.badges || []).map(b => `<span class="reg-badge">${escapeHtml(b)}</span>`).join("")}
                     </div>
-                    <span class="reg-buy">${p.url && !p.url.includes("amazon.com") ? "Visit site →" : "Buy on Amazon →"}</span>
+                    <span class="reg-buy">View →</span>
                   </div>
                 </div>
               </a>
