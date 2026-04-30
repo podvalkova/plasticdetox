@@ -504,3 +504,20 @@ body {
   .email-cta-form { flex-direction: column; }
   .email-cta-form button { width: 100%; }
 }
+
+@media (max-width: 700px) {
+  .nav {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .nav-links {
+    width: 100%;
+    justify-content: center;
+    gap: 1.25rem;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .nav-links::-webkit-scrollbar { display: none; }
+  .nav-link { font-size: 0.9rem; white-space: nowrap; }
+}
