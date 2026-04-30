@@ -390,6 +390,76 @@
     .reg-nl-form button:hover { background: var(--accent-dark); }
     .reg-nl-msg { font-size: .85rem; color: var(--text-muted); margin-top: .5rem; min-height: 1.2em; }
 
+    /* ===== Related articles ===== */
+    .reg-related {
+      max-width: 1280px;
+      margin: 1rem auto 4rem;
+      padding: 0 3rem;
+    }
+    .reg-related h2 {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -.03em;
+      margin-bottom: .5rem;
+    }
+    .reg-related-blurb {
+      color: var(--text-muted);
+      font-size: 1rem;
+      max-width: 560px;
+      margin-bottom: 2rem;
+    }
+    .reg-related-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+    .reg-related-card {
+      display: block;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.5rem 1.5rem 1.25rem;
+      text-decoration: none;
+      color: inherit;
+      transition: transform .2s, border-color .2s, box-shadow .2s;
+    }
+    .reg-related-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+      box-shadow: var(--shadow-lg);
+    }
+    .reg-related-eyebrow {
+      display: inline-block;
+      font-size: .68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--accent-dark);
+      margin-bottom: .65rem;
+    }
+    .reg-related-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: -.01em;
+      line-height: 1.25;
+      margin-bottom: .55rem;
+    }
+    .reg-related-card p {
+      font-size: .85rem;
+      line-height: 1.5;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .reg-related-link {
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--accent-dark);
+    }
+    @media (max-width: 980px) {
+      .reg-related-grid { grid-template-columns: 1fr; }
+      .reg-related { padding: 0 1.25rem; }
+    }
+
     /* ===== Footer ===== */
     .reg-foot {
       border-top: 1px solid var(--border);
@@ -517,6 +587,31 @@
         <button type="submit">Subscribe free</button>
       </form>
       <iframe name="reg-nl-frame" id="reg-nl-frame" style="display:none;"></iframe>
+    </section>
+
+    <section class="reg-related">
+      <h2>Read before you register</h2>
+      <p class="reg-related-blurb">The reasoning behind every category on this page lives in our deeper guides. Read them once, register with confidence.</p>
+      <div class="reg-related-grid">
+        <a class="reg-related-card" href="articles/non-toxic-baby-toddler-products-guide.html">
+          <span class="reg-related-eyebrow">Complete guide</span>
+          <h3>The Complete Parent's Guide to Replacing Toxic Baby and Toddler Products</h3>
+          <p>The 45 minute deep dive that backs every Tier 1, 2 and 3 pick on this page. Why it matters, what to look for, what to skip.</p>
+          <span class="reg-related-link">Read the guide →</span>
+        </a>
+        <a class="reg-related-card" href="articles/microplastics-in-baby-food.html">
+          <span class="reg-related-eyebrow">Feeding</span>
+          <h3>Microplastics in Baby Food: What Parents Need to Know</h3>
+          <p>The research behind the bottles, plates, pouches and prep gear in the Feeding categories. Why glass and stainless beat even BPA free plastic.</p>
+          <span class="reg-related-link">Read the guide →</span>
+        </a>
+        <a class="reg-related-card" href="articles/baby-kids-101.html">
+          <span class="reg-related-eyebrow">Big picture</span>
+          <h3>Babies & Kids 101: Where Plastic Hides at Every Age</h3>
+          <p>The starter overview if you're new here. What changes from newborn to toddler, and which categories matter most at each stage.</p>
+          <span class="reg-related-link">Read the guide →</span>
+        </a>
+      </div>
     </section>
 
   </main>
@@ -648,12 +743,12 @@
                       {
                             "name": "Woolino 4 Season Merino Sleep Sack",
                             "img": "81xeSHSX75L",
-                            "url": "https://www.amazon.com/s?k=Woolino+4+Season+Merino+sleep+sack+baby&tag=plasticdetox-20",
                             "sentence": "Merino wool is naturally flame resistant without chemicals. Self regulating warmth across seasons.",
                             "badges": [
                                   "Merino wool"
                             ],
-                            "tag": "Editor pick"
+                            "tag": "Editor pick",
+                            "asin": "B07FNB81PH"
                       },
                       {
                             "name": "Kyte Baby Bamboo Sleep Sack",
@@ -700,6 +795,17 @@
                 "tier": "Tier 1 · highest priority",
                 "blurb": "True HEPA and activated carbon filtration for the room baby breathes in for thousands of hours.",
                 "products": [
+                      {
+                            "name": "Blueair Blue Pure 211i Max",
+                            "img": "712FK2wvqRL",
+                            "asin": "B0BN2MGV5H",
+                            "sentence": "Ultra quiet HEPASilent filtration, runs as low as 17 dB so it fits a sleeping nursery. Particle and carbon layers handle VOCs alongside fine particulate.",
+                            "badges": [
+                                  "HEPA + carbon",
+                                  "Ultra quiet"
+                            ],
+                            "tag": "Editor pick"
+                      },
                       {
                             "name": "Coway Airmega 200M",
                             "img": "717cp-LH8JL",
@@ -1744,7 +1850,7 @@
                       },
                       {
                             "name": "Estella Organic Cloth Books",
-                            "url": "https://www.amazon.com/s?k=Estella+organic+cotton+cloth+book&tag=plasticdetox-20",
+                            "url": "https://estella-nyc.com/collections/baby-books",
                             "sentence": "Organic cotton cloth books for babies who chew everything. Soy based inks. Skip vinyl bath books.",
                             "badges": [
                                   "GOTS organic"
