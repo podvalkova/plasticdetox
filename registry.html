@@ -224,6 +224,15 @@
       line-height: 1;
       margin-bottom: .5rem;
     }
+    .reg-cat-tier {
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .04em;
+      color: var(--accent-dark);
+      margin-bottom: .65rem;
+      text-transform: uppercase;
+    }
     .reg-cat-blurb {
       font-size: 1rem;
       color: var(--text-muted);
@@ -521,111 +530,1414 @@
 
   <script>
     const REGISTRY = [
-      {
-        id: "feeding",
-        name: "Feeding",
-        blurb: "Bottles, plates, and utensils that skip plastic where it touches food the most.",
-        products: [
-          { name: "Lifefactory Glass Bottle with Silicone Sleeve (9oz)", img: "31uhPCgmypL", asin: "B01M5GHAZO", sentence: "Medical grade borosilicate glass wrapped in food grade silicone for grip and shock absorption. Zero microplastic release at any temperature.", badges: ["Borosilicate glass", "BPA free"], tag: "Editor pick" },
-          { name: "Pura Kiki Stainless Steel Sippy", url: "https://www.amazon.com/s?k=Pura+Kiki+stainless+steel+sippy+cup&tag=plasticdetox-20", img: "41LzOE7SfTL", sentence: "Stainless steel body that grows from bottle to sippy to straw to sport top. Same body, swap the lid.", badges: ["100% plastic free"], tag: "Grow with baby" },
-          { name: "Klean Kanteen Kid", url: "https://www.amazon.com/s?k=Klean+Kanteen+Kid+stainless+steel+sippy&tag=plasticdetox-20", img: "71sTanwzqIL", sentence: "12 oz stainless steel with a leak proof sippy cap. Built to survive being thrown from a high chair daily.", badges: ["18/8 stainless"], tag: null },
-          { name: "Ahimsa Stainless Steel Bowl and Plate Set", img: "71sYJMAjx6L", asin: "B0C6SVTQ3Q", sentence: "100% stainless steel plates and bowls with no coatings. Designed by a pediatrician, virtually indestructible.", badges: ["Plastic free", "Pediatrician designed"], tag: null },
-          { name: "Avanchy Stainless Steel Baby Spoons", img: "61yfZfNeNzL", asin: "B07K1FFK6Z", sentence: "18/8 stainless on the food contact end, silicone only on the handle. No degradation from biting or heat.", badges: ["18/8 stainless"], tag: "Best value" },
-          { name: "ezpz Mini Mat Silicone Plate", img: "41odQEPAoHL", asin: "B01C95ZCNI", sentence: "Single piece food grade silicone with no fillers. Suctions to high chairs, one piece means no food traps.", badges: ["Food grade silicone"], tag: null },
-          { name: "Mushie Silicone Bibs", url: "https://www.amazon.com/s?k=Mushie+silicone+bib&tag=plasticdetox-20", img: "61YYhjXMnyL", sentence: "Food grade silicone with a deep catch pocket. Rolls up for travel, beautiful muted colors.", badges: ["No PVC, BPA, phthalates"], tag: null },
-          { name: "REDECKER Bottle Brush Cleaner", img: "71rFLyBorRL", asin: "B002HORIN4", sentence: "Natural horsehair bristles with a beechwood handle. Gentle on glass, no plastic bristles shedding into the bottle.", badges: ["Plastic free"], tag: null }
-        ]
-      },
-      {
-        id: "sleep",
-        name: "Sleep & nursery",
-        blurb: "Mattress, sheets, and crib chosen for what babies breathe in for ten plus hours a day.",
-        products: [
-          { name: "Naturepedic Organic Crib Mattress", url: "https://www.amazon.com/s?k=Naturepedic+organic+crib+mattress&tag=plasticdetox-20", img: "71ipiUT2ebL", sentence: "Organic cotton and wool with a food grade PE waterproof layer (not PVC). No polyurethane foam, no fiberglass, no flame retardants.", badges: ["GREENGUARD Gold", "MADE SAFE", "GOTS"], tag: "Editor pick" },
-          { name: "Babyletto Hudson Crib", url: "https://www.amazon.com/s?k=Babyletto+Hudson+crib&tag=plasticdetox-20", img: "71GoLdoPR6L", sentence: "Solid New Zealand pine with non toxic water based finish. Converts to toddler bed and daybed.", badges: ["GREENGUARD Gold", "Solid wood"], tag: null },
-          { name: "Burt's Bees Baby Organic Crib Sheets", url: "https://www.amazon.com/s?k=Burt%27s+Bees+Baby+organic+crib+sheets&tag=plasticdetox-20", img: "61r3F05PnpL", sentence: "GOTS certified 100% organic cotton jersey knit. Widely available and affordable, gets softer with each wash.", badges: ["GOTS organic"], tag: "Best value" },
-          { name: "Naturepedic Organic Changing Pad", url: "https://www.amazon.com/s?k=Naturepedic+organic+changing+pad&tag=plasticdetox-20", img: "41DZFMFm6FL", sentence: "Organic cotton with a food grade polyethylene waterproof layer. No PVC, no phthalates, no flame retardants.", badges: ["No PVC", "Organic cotton"], tag: null },
-          { name: "American Baby Company Organic Cover", url: "https://www.amazon.com/stores/AmericanBabyCompany/page/87F3640A-F489-43C5-9EE1-EFC18063034E?tag=plasticdetox-20", img: "81ApW5JM85L", sentence: "GOTS certified organic cotton with PVC free waterproof backing. Soft terry surface, machine washable.", badges: ["GOTS organic"], tag: null },
-          { name: "Stokke Tripp Trapp High Chair", url: "https://www.amazon.com/s?k=Stokke+Tripp+Trapp+high+chair&tag=plasticdetox-20", img: "61GaFCO7UML", sentence: "Solid European beech with water based finish. Adjusts from 6 months through adulthood, no foam, no plastic tray.", badges: ["GREENGUARD Gold", "Solid beech"], tag: "Lifetime piece" }
-        ]
-      },
-      {
-        id: "bath",
-        name: "Bath & skincare",
-        blurb: "Short ingredient lists and packaging that doesn't shed plastic into a hot tub.",
-        products: [
-          { name: "Burt's Bees Baby Organic Hooded Towels", url: "https://www.amazon.com/s?k=Burt%27s+Bees+Baby+organic+hooded+towel&tag=plasticdetox-20", img: "7155yfK9IqL", sentence: "100% organic cotton with GOTS certification. Soft, absorbent, and gets softer with each wash.", badges: ["GOTS organic"], tag: "Best value" },
-          { name: "Mushie Organic Cotton Washcloths", url: "https://www.amazon.com/s?k=Mushie+baby+washcloth+organic+cotton&tag=plasticdetox-20", img: "71SU8LhQECL", sentence: "Organic cotton muslin washcloths. Lightweight, fast drying, doubles as a burp cloth.", badges: ["OEKO-TEX"], tag: null },
-          { name: "Natemia Organic Turkish Cotton Towel", url: "https://www.amazon.com/s?k=Natemia+organic+cotton+baby+hooded+towel&tag=plasticdetox-20", img: "8121Ufxl+-L", sentence: "Extra large organic Turkish cotton, dense plush weave. Grows into toddlerhood without thinning.", badges: ["Organic Turkish cotton"], tag: "Editor pick" },
-          { name: "Stokke Flexi Bath", url: "https://www.amazon.com/s?k=Stokke+Flexi+Bath&tag=plasticdetox-20", img: "61ThooJ47CL", sentence: "Polypropylene tub with no PVC, no phthalates, no BPA. Foldable for small bathrooms, the cleanest pick at this size.", badges: ["No PVC, BPA, phthalates"], tag: null },
-          { name: "Pipette Baby Shampoo + Body Wash", url: "https://www.amazon.com/s?k=Pipette+baby+shampoo+body+wash&tag=plasticdetox-20", img: "71ajyHpwbAL", sentence: "Plant derived squalane base, no fragrance, parabens, sulfates, or silicones. EWG Verified.", badges: ["EWG Verified"], tag: null },
-          { name: "Earth Mama Organics Baby Wash", url: "https://www.amazon.com/s?k=Earth+Mama+baby+wash&tag=plasticdetox-20", img: "61MN1DKy-7L", sentence: "Castile soap base with organic calendula and chamomile. Developed for NICU use, ultra short ingredient list.", badges: ["EWG Verified", "GOTS"], tag: "NICU grade" },
-          { name: "Babo Botanicals Baby Shampoo", url: "https://www.amazon.com/s?k=Babo+Botanicals+baby+shampoo+fragrance+free&tag=plasticdetox-20", img: "61vx9x0z9nL", sentence: "Creamy formula with oat milk and calendula. Fragrance free option, traditional lather feel.", badges: ["EWG Verified"], tag: null }
-        ]
-      },
-      {
-        id: "diapers",
-        name: "Diapers & wipes",
-        blurb: "What touches skin all day, every day. We weighed disposability against materials.",
-        products: [
-          { name: "HealthyBaby Diapers", url: "https://www.amazon.com/s?k=HealthyBaby+diapers&tag=plasticdetox-20", img: "71chvdNIy7L", sentence: "Every material reviewed against the EWG database. Plant based topsheet, no fragrance, chlorine, or latex.", badges: ["EWG Verified", "MyMicrobiome"], tag: "Editor pick" },
-          { name: "Andy Pandy Bamboo Diapers", url: "https://www.amazon.com/s?k=Andy+Pandy+bamboo+diapers&tag=plasticdetox-20", img: "812MGozBP+L", sentence: "OEKO-TEX certified bamboo based diapers. Widely available on Amazon, no subscription needed.", badges: ["OEKO-TEX bamboo"], tag: "Best value" },
-          { name: "Dyper Bamboo Diapers", url: "https://www.amazon.com/s?k=Dyper+bamboo+diapers&tag=plasticdetox-20", img: "71cZn9aB+bL", sentence: "Bamboo viscose core with the REDYPER composting program. No chlorine, fragrance, alcohol, or latex.", badges: ["Compostable"], tag: null },
-          { name: "Coterie Diapers", url: "https://www.amazon.com/s?k=Coterie+diapers&tag=plasticdetox-20", img: "616umIINRjL", sentence: "Fully disclosed ingredient list, excellent absorbency. Available on Amazon, no subscription required.", badges: ["Fully disclosed"], tag: null },
-          { name: "HealthyBaby Wipes", url: "https://www.amazon.com/s?k=HealthyBaby+wipes&tag=plasticdetox-20", img: "71q-gFbH+LL", sentence: "Wood pulp substrate (not plastic). Only 6 clean ingredients. First wipe with EWG Verified and MADE SAFE.", badges: ["EWG + MADE SAFE", "Compostable"], tag: null },
-          { name: "Natracare Organic Baby Wipes", url: "https://www.amazon.com/s?k=Natracare+organic+cotton+baby+wipes&tag=plasticdetox-20", img: "71P3OqaVx1L", sentence: "Organic cotton substrate with organic essential oils. Fully compostable including packaging.", badges: ["Organic cotton"], tag: null },
-          { name: "Earth Mama Diaper Balm", url: "https://www.amazon.com/s?k=Earth+Mama+diaper+balm&tag=plasticdetox-20", img: "71KzXB188sL", sentence: "Organic herbs in olive oil and beeswax base. Used in hospital NICUs, no petroleum ingredients.", badges: ["EWG Verified"], tag: null },
-          { name: "HealthyBaby Diaper Cream", url: "https://www.amazon.com/s?k=HealthyBaby+diaper+cream&tag=plasticdetox-20", img: "61ARsmPUIqL", sentence: "Plant derived squalane and zinc oxide. No petroleum based carriers, just a clean barrier.", badges: ["EWG Verified"], tag: null }
-        ]
-      },
-      {
-        id: "feedingprep",
-        name: "Feeding prep",
-        blurb: "Baby food makers, breast milk storage, and nursing support that keep plastic away from milk and food.",
-        products: [
-          { name: "BEABA Babycook Neo (Glass)", img: "41M6kgy316L", asin: "B085PXBB17", sentence: "Borosilicate glass bowl with stainless steel basket and reservoir. Steam, blend, reheat, defrost. Consider buying secondhand.", badges: ["Glass + steel path"], tag: "Editor pick" },
-          { name: "Bear NutriEase AllStage", img: "41ZRjXRzcQL", asin: "B0FL7K9WMX", sentence: "Fully stainless steel food pathway. Auto steams and blends in one step with preset stage programs.", badges: ["Stainless food path"], tag: null },
-          { name: "Sage Spoonfuls Stainless Steamer Basket", img: "51xtSoBPZDL", asin: "B00PK49HVO", sentence: "Collapsible stainless basket fits any pot 8 inches or larger. The simplest baby led weaning approach: steam and mash.", badges: ["Plastic free"], tag: "Best value" },
-          { name: "COMI Glass Breast Milk Bottles", img: "61XTMdmmpgL", asin: "B0CCJ65JP5", sentence: "Glass collection bottles for Spectra pumps. Pump directly into glass, eliminating plastic at the source.", badges: ["Glass"], tag: null },
-          { name: "Mila's Keeper Storage Containers", url: "https://www.amazon.com/s?k=Mila%27s+Keeper+breast+milk+storage&tag=plasticdetox-20", img: "71AvTcD+roL", sentence: "Food grade silicone designed for breast milk portions. Stackable, freezer safe, replaces disposable bags.", badges: ["Food grade silicone"], tag: null },
-          { name: "Blessed Nest Organic Nursing Pillow", url: "https://blessednest.com/the-nesting-pillow/", img: null, sentence: "Organic buckwheat hull fill with organic cotton cover. Molds to your body, no foam, no flame retardants.", badges: ["No foam, no flame retardants"], tag: null }
-        ]
-      },
-      {
-        id: "toys",
-        name: "Toys & teethers",
-        blurb: "What ends up in the mouth, on the floor, and in storage for the next sibling.",
-        products: [
-          { name: "Hevea Natural Rubber Teethers", url: "https://www.amazon.com/s?k=Hevea+natural+rubber+teether&tag=plasticdetox-20", img: "71bTuBGHAuL", sentence: "Single piece natural rubber, no additives, no PVC, no BPA. No seams where mold can hide.", badges: ["100% natural rubber"], tag: "Editor pick" },
-          { name: "Sophie la Girafe", url: "https://www.amazon.com/s?k=Sophie+la+Girafe+teether&tag=plasticdetox-20", img: "81xxNpO3KML", sentence: "100% natural rubber with food grade paint. In production since 1961, sixty plus year safety record.", badges: ["Natural rubber"], tag: null },
-          { name: "Mushie Silicone Teethers", url: "https://www.amazon.com/s?k=Mushie+silicone+teether&tag=plasticdetox-20", img: "61+faUIK2AL", sentence: "Food grade silicone, durable enough to be boiled for sterilization. Widely available and affordable.", badges: ["Food grade silicone"], tag: "Best value" },
-          { name: "PlanToys Wooden Toys", url: "https://www.amazon.com/s?k=PlanToys+wooden+toys&tag=plasticdetox-20", img: "813DX4MJpaL", sentence: "Chemical free kiln dried rubberwood with water based dyes and formaldehyde free E Zero glue.", badges: ["FSC rubberwood"], tag: null },
-          { name: "HABA Wooden Toys", url: "https://www.amazon.com/s?k=HABA+wooden+baby+toys&tag=plasticdetox-20", img: "616FF3jIzBL", sentence: "FSC certified beech from German forests. Water based lacquers, EN 71 tested. Making wooden toys since 1938.", badges: ["FSC beech", "EN 71"], tag: null },
-          { name: "Honeysticks Beeswax Crayons", img: "41DEzXIr8tL", asin: "B01GSY9MD2", sentence: "100% pure New Zealand beeswax, food grade colors, chubby shape for small hands. Safe if ingested.", badges: ["100% beeswax"], tag: null },
-          { name: "CaaOcho Natural Rubber Toys", url: "https://www.amazon.com/stores/page/CBC6FF38-3ECE-4BF4-A277-D713F8FB839E?tag=plasticdetox-20", img: "71fskHrcq6L", sentence: "Pure natural rubber from Hevea trees. Single piece construction with no seams or openings where mold can grow.", badges: ["100% natural rubber"], tag: null }
-        ]
-      },
-      {
-        id: "play",
-        name: "Play space",
-        blurb: "What baby crawls and rolls on for hundreds of hours. Materials and washability matter.",
-        products: [
-          { name: "Toki Mats Play Mat", url: "https://www.amazon.com/s?k=Toki+Mats+play+mat&tag=plasticdetox-20", img: "815gF9hP78L", sentence: "Organic cotton cover with kapok fill. No foam, no PVC, no EVA, no synthetic fill of any kind.", badges: ["GOTS cotton + kapok"], tag: "Editor pick" },
-          { name: "Lovevery Play Mat", url: "https://www.amazon.com/s?k=Lovevery+play+mat&tag=plasticdetox-20", img: "81t+v8i2rQL", sentence: "Organic cotton cover with non toxic foam core. Five developmental zones, machine washable cover.", badges: ["GREENGUARD Gold"], tag: null },
-          { name: "Lorena Canals Washable Rugs", url: "https://www.amazon.com/s?k=Lorena+Canals+washable+play+rug&tag=plasticdetox-20", img: "71b7WdzbY4L", sentence: "Handmade 100% cotton rugs that go in the washing machine. Doubles as area rug and play surface.", badges: ["100% cotton"], tag: "Best value" }
-        ]
-      },
-      {
-        id: "carriers",
-        name: "Carriers & clothing",
-        blurb: "What baby spends hours in skin to skin, and the layers between fabric and skin.",
-        products: [
-          { name: "Solly Baby Wrap", url: "https://www.amazon.com/s?k=Solly+Baby+wrap+organic+cotton&tag=plasticdetox-20", img: "81MpilflQtL", sentence: "GOTS certified organic cotton. Single piece of fabric, no foam, no buckles, no plastic.", badges: ["GOTS organic"], tag: "Editor pick" },
-          { name: "Ergobaby Embrace", url: "https://www.amazon.com/s?k=Ergobaby+Embrace+organic+cotton+carrier&tag=plasticdetox-20", img: "61gop13VOgL", sentence: "Structured carrier in organic cotton jersey with metal buckles. No foam padding, no plastic hardware.", badges: ["100% organic cotton"], tag: null },
-          { name: "Colored Organics Basics", url: "https://www.amazon.com/s?k=Colored+Organics+baby+clothes+GOTS&tag=plasticdetox-20", img: "71CN9pmvWXL", sentence: "GOTS certified organic cotton with muted colors from low impact, non toxic dyes.", badges: ["GOTS organic"], tag: null },
-          { name: "Little Unicorn GOTS Swaddles", url: "https://www.amazon.com/s?k=Little+Unicorn+GOTS+swaddle&tag=plasticdetox-20", img: "91flvWzsU5L", sentence: "GOTS certified organic cotton muslin with beautiful prints. Multi use: swaddle, nursing cover, stroller blanket.", badges: ["GOTS organic"], tag: "Best value" }
-        ]
-      }
+          {
+                "id": "sleep",
+                "name": "Sleep & nursery",
+                "tier": "Tier 1 · highest priority",
+                "blurb": "Crib, mattress, sheets and sleep sack chosen for what babies breathe in for ten plus hours a day. Off gassing is highest in the first six months.",
+                "products": [
+                      {
+                            "name": "Babyletto Hudson Crib",
+                            "img": "71GoLdoPR6L",
+                            "url": "https://www.amazon.com/s?k=Babyletto+Hudson+crib&tag=plasticdetox-20",
+                            "sentence": "Solid New Zealand pine with a non toxic water based finish. Converts to a toddler bed and daybed.",
+                            "badges": [
+                                  "GREENGUARD Gold",
+                                  "Solid wood"
+                            ],
+                            "tag": "Editor pick"
+                      },
+                      {
+                            "name": "DaVinci Kalani 4 in 1 Crib",
+                            "img": "61geu3Hv94L",
+                            "url": "https://www.amazon.com/s?k=DaVinci+Kalani+4+in+1+convertible+crib&tag=plasticdetox-20",
+                            "sentence": "Solid wood with low VOC finishes. Avoid MDF and particleboard cribs where off gassing is heaviest in the first six months.",
+                            "badges": [
+                                  "Solid wood",
+                                  "GREENGUARD Gold"
+                            ]
+                      },
+                      {
+                            "name": "Oeuf Sparrow Crib",
+                            "img": "61r05nEaABL",
+                            "url": "https://www.amazon.com/s?k=Oeuf+Sparrow+crib&tag=plasticdetox-20",
+                            "sentence": "Eco friendly birch crib made in Latvia with non toxic finishes. Avoid glossy lacquers and particleboard.",
+                            "badges": [
+                                  "Solid birch",
+                                  "Low VOC"
+                            ]
+                      },
+                      {
+                            "name": "Naturepedic Organic Classic Crib Mattress",
+                            "img": "71ipiUT2ebL",
+                            "url": "https://www.amazon.com/s?k=Naturepedic+Organic+Classic+crib+mattress&tag=plasticdetox-20",
+                            "sentence": "Organic cotton and wool with food grade PE waterproofing. No polyurethane foam, no fiberglass, no flame retardants.",
+                            "badges": [
+                                  "GOTS",
+                                  "MADE SAFE"
+                            ],
+                            "tag": "Editor pick"
+                      },
+                      {
+                            "name": "Avocado Eco Organic Crib Mattress",
+                            "img": "81ReHjx7PbL",
+                            "url": "https://www.amazon.com/s?k=Avocado+Eco+Organic+crib+mattress&tag=plasticdetox-20",
+                            "sentence": "GOTS certified organic cotton with natural latex core. No polyurethane foam, no chemical flame retardants.",
+                            "badges": [
+                                  "GOLS latex",
+                                  "GOTS"
+                            ]
+                      },
+                      {
+                            "name": "My Green Mattress Emily Crib Mattress",
+                            "img": "61ZbSF1H+3L",
+                            "url": "https://www.amazon.com/s?k=My+Green+Mattress+Emily+crib&tag=plasticdetox-20",
+                            "sentence": "GOTS organic cotton, natural wool fire barrier, pocketed coil core. The most affordable triple certified pick.",
+                            "badges": [
+                                  "GOTS",
+                                  "GREENGUARD Gold"
+                            ],
+                            "tag": "Best value"
+                      },
+                      {
+                            "name": "Naturepedic Organic Cotton Waterproof Mattress Pad",
+                            "img": "71Z1D58XYDL",
+                            "url": "https://www.amazon.com/s?k=Naturepedic+organic+cotton+waterproof+pad+crib&tag=plasticdetox-20",
+                            "sentence": "Organic cotton with food grade polyethylene backing. The cleanest waterproof option, no PVC, no PFAS treatments.",
+                            "badges": [
+                                  "No PVC",
+                                  "No PFAS"
+                            ]
+                      },
+                      {
+                            "name": "MakeMake Organics Crib Sheets",
+                            "img": "71dtsv7YvnL",
+                            "url": "https://www.amazon.com/s?k=MakeMake+Organics+crib+sheet&tag=plasticdetox-20",
+                            "sentence": "GOTS certified organic cotton with no formaldehyde wrinkle resistant treatments. Soft, durable, fade resistant.",
+                            "badges": [
+                                  "GOTS organic"
+                            ]
+                      },
+                      {
+                            "name": "Burt's Bees Baby Organic Crib Sheets",
+                            "img": "61r3F05PnpL",
+                            "url": "https://www.amazon.com/s?k=Burts+Bees+Baby+organic+crib+sheets&tag=plasticdetox-20",
+                            "sentence": "GOTS certified 100% organic cotton jersey knit. Widely available, affordable, gets softer with each wash.",
+                            "badges": [
+                                  "GOTS organic"
+                            ],
+                            "tag": "Best value"
+                      },
+                      {
+                            "name": "Coyuchi Organic Crib Sheets",
+                            "img": "61799dJjkuL",
+                            "url": "https://www.amazon.com/s?k=Coyuchi+organic+crib+sheet&tag=plasticdetox-20",
+                            "sentence": "GOTS organic cotton percale with deep pockets. Higher end weave that wears in beautifully.",
+                            "badges": [
+                                  "GOTS organic"
+                            ]
+                      },
+                      {
+                            "name": "Woolino 4 Season Merino Sleep Sack",
+                            "img": "81xeSHSX75L",
+                            "url": "https://www.amazon.com/s?k=Woolino+4+Season+Merino+sleep+sack+baby&tag=plasticdetox-20",
+                            "sentence": "Merino wool is naturally flame resistant without chemicals. Self regulating warmth across seasons.",
+                            "badges": [
+                                  "Merino wool"
+                            ],
+                            "tag": "Editor pick"
+                      },
+                      {
+                            "name": "Kyte Baby Bamboo Sleep Sack",
+                            "img": "41Sh8gfYtXL",
+                            "url": "https://www.amazon.com/s?k=Kyte+Baby+bamboo+sleep+sack&tag=plasticdetox-20",
+                            "sentence": "Bamboo viscose is a chemical process but very soft and breathable. Avoid polyester fleece sleep sacks.",
+                            "badges": [
+                                  "Bamboo viscose"
+                            ]
+                      },
+                      {
+                            "name": "Burt's Bees Organic Cotton Sleep Sack",
+                            "img": "71AnKQe8NZL",
+                            "url": "https://www.amazon.com/s?k=Burts+Bees+organic+cotton+sleep+sack&tag=plasticdetox-20",
+                            "sentence": "GOTS organic cotton sleep sack at an accessible price point. The cleanest non wool pick.",
+                            "badges": [
+                                  "GOTS organic"
+                            ]
+                      },
+                      {
+                            "name": "Aden + Anais Organic Muslin Swaddles",
+                            "img": "71+aR5F1IOL",
+                            "url": "https://www.amazon.com/s?k=Aden+Anais+organic+muslin+swaddle&tag=plasticdetox-20",
+                            "sentence": "100% organic cotton muslin. Skip bamboo rayon swaddles marketed as natural, the process is chemical intensive viscose.",
+                            "badges": [
+                                  "GOTS organic"
+                            ]
+                      },
+                      {
+                            "name": "Little Unicorn Cotton Muslin Swaddles",
+                            "img": "91flvWzsU5L",
+                            "url": "https://www.amazon.com/s?k=Little+Unicorn+GOTS+swaddle&tag=plasticdetox-20",
+                            "sentence": "GOTS certified organic cotton muslin with beautiful prints. Multi use as swaddle, nursing cover, or stroller blanket.",
+                            "badges": [
+                                  "GOTS organic"
+                            ],
+                            "tag": "Best value"
+                      }
+                ]
+          },
+          {
+                "id": "air",
+                "name": "Nursery air",
+                "tier": "Tier 1 · highest priority",
+                "blurb": "True HEPA and activated carbon filtration for the room baby breathes in for thousands of hours.",
+                "products": [
+                      {
+                            "name": "Coway Airmega 200M",
+                            "img": "717cp-LH8JL",
+                            "url": "https://www.amazon.com/s?k=Coway+Airmega+200M+air+purifier&tag=plasticdetox-20",
+                            "sentence": "True HEPA plus activated carbon for VOCs. Reliable, quiet, runs continuously. Avoid ionizers and ozone units.",
+                            "badges": [
+                                  "True HEPA",
+                                  "Activated carbon"
+                            ],
+                            "tag": "Editor pick"
+                      },
+                      {
+                            "name": "Levoit Core 400S",
+                            "img": "71zj41yHChL",
+                            "url": "https://www.amazon.com/s?k=Levoit+Core+400S+air+purifier&tag=plasticdetox-20",
+                            "sentence": "Smart True HEPA with carbon for medium rooms. Filters fine particles and volatile organic compounds.",
+                            "badges": [
+                                  "True HEPA",
+                                  "Smart"
+                            ]
+                      },
+                      {
+                            "name": "Canopy Filtered Humidifier",
+                            "img": "61zh9uVZKbL",
+                            "url": "https://www.amazon.com/s?k=Canopy+humidifier+filtered&tag=plasticdetox-20",
+                            "sentence": "Filtered evaporative humidifier so it does not aerosolize minerals or microbes. Bonus: weekly mold prevention design.",
+                            "badges": [
+                                  "Evaporative",
+                                  "Filtered"
+                            ]
+                      },
+                      {
+                            "name": "Levoit Ultrasonic Humidifier",
+                            "img": "71Vwkk9ht+L",
+                            "url": "https://www.amazon.com/s?k=Levoit+ultrasonic+humidifier&tag=plasticdetox-20",
+                            "sentence": "Use distilled water only with ultrasonic models. Tap water aerosolizes minerals straight into baby's lungs.",
+                            "badges": [
+                                  "Ultrasonic"
+                            ]
+                      },
+                      {
+                            "name": "Airthings View Plus",
+                            "img": "61cGOt0cE3L",
+                            "url": "https://www.amazon.com/s?k=Airthings+View+Plus+air+quality+monitor&tag=plasticdetox-20",
+                            "sentence": "Tracks CO2, VOCs, PM2.5, radon and humidity. Useful baseline for the first six months in any new nursery.",
+                            "badges": [
+                                  "VOC, PM2.5, radon"
+                            ]
+                      },
+                      {
+                            "name": "Awair Element",
+                            "img": "61tliwVkZfL",
+                            "url": "https://www.amazon.com/s?k=Awair+Element+air+quality+monitor&tag=plasticdetox-20",
+                            "sentence": "Tracks VOCs, CO2, PM2.5, temperature and humidity. Smaller and cheaper than Airthings, no radon.",
+                            "badges": [
+                                  "VOC monitor"
+                            ]
+                      }
+                ]
+          },
+          {
+                "id": "bottles",
+                "name": "Bottles & nursing",
+                "tier": "Tier 1 · highest priority",
+                "blurb": "Bottles, nipples, brushes and nursing supplies that skip plastic where it touches breast milk and warm formula.",
+                "products": [
+                      {
+                            "name": "Dr. Brown's Glass Options+ Bottles",
+                            "img": "81PGkAoYIML",
+                            "url": "https://www.amazon.com/s?k=Dr+Brown+glass+Options+anti+colic+bottle&tag=plasticdetox-20",
+                            "sentence": "Borosilicate glass with the venting system that reduces gas. The most pediatrician recommended glass bottle.",
+                            "badges": [
+                                  "Borosilicate glass"
+                            ],
+                            "tag": "Editor pick"
+                      },
+                      {
+                            "name": "Lifefactory Glass Bottle with Silicone Sleeve (9oz)",
+                            "img": "31uhPCgmypL",
+                            "asin": "B01M5GHAZO",
+                            "sentence": "Medical grade borosilicate glass wrapped in food grade silicone for grip and shock absorption. Zero microplastic release at any temperature.",
+                            "badges": [
+                                  "Borosilicate",
+                                  "BPA free"
+                            ]
+                      },
+                      {
+                            "name": "Pura Kiki Stainless Steel Bottle",
+                            "img": "41LzOE7SfTL",
+                            "url": "https://www.amazon.com/s?k=Pura+Kiki+stainless+steel+infant+bottle&tag=plasticdetox-20",
+                            "sentence": "Medical grade stainless interior with silicone nipple. The unbreakable alternative to glass, grows from bottle to sport top.",
+                            "badges": [
+                                  "100% plastic free"
+                            ]
+                      },
+                      {
+                            "name": "Klean Kanteen Baby Bottle",
+                            "img": "61nKgv+XY6L",
+                            "url": "https://www.amazon.com/s?k=Klean+Kanteen+baby+bottle&tag=plasticdetox-20",
+                            "sentence": "18/8 stainless steel body with medical grade silicone nipple. Lightweight and built to last for years.",
+                            "badges": [
+                                  "18/8 stainless"
+                            ]
+                      },
+                      {
+                            "name": "Comotomo Replacement Silicone Nipples",
+                            "img": "61XrEldjY-L",
+                            "url": "https://www.amazon.com/s?k=Comotomo+replacement+nipple+silicone&tag=plasticdetox-20",
+                            "sentence": "100% medical grade silicone, no fillers. Replace every two to three months as silicone slowly breaks down.",
+                            "badges": [
+                                  "Medical silicone"
+                            ]
+                      },
+                      {
+                            "name": "Dr. Brown's Silicone Nipples",
+                            "img": "61rQKLQYvBL",
+                            "url": "https://www.amazon.com/s?k=Dr+Brown+silicone+nipple+replacement&tag=plasticdetox-20",
+                            "sentence": "Pure silicone replacement nipples. Avoid latex nipples, they degrade faster and can trigger latex sensitivity.",
+                            "badges": [
+                                  "Silicone, no latex"
+                            ]
+                      },
+                      {
+                            "name": "Boon Cacti Silicone Bottle Brush",
+                            "img": "61IdbeZoHqL",
+                            "url": "https://www.amazon.com/s?k=Boon+Cacti+silicone+bottle+brush&tag=plasticdetox-20",
+                            "sentence": "Silicone bristles do not trap mold the way nylon does, and they never shed microplastics into the bottle.",
+                            "badges": [
+                                  "Silicone bristles"
+                            ],
+                            "tag": "Best value"
+                      },
+                      {
+                            "name": "OXO Tot Silicone Bottle Brush",
+                            "img": "61tGIePgMQL",
+                            "url": "https://www.amazon.com/s?k=OXO+Tot+silicone+bottle+brush&tag=plasticdetox-20",
+                            "sentence": "Soft silicone bristles with a non slip handle. Easy to disassemble and air dry between uses.",
+                            "badges": [
+                                  "Silicone bristles"
+                            ]
+                      },
+                      {
+                            "name": "REDECKER Bottle Brush",
+                            "img": "71rFLyBorRL",
+                            "asin": "B002HORIN4",
+                            "sentence": "Natural horsehair bristles with a beechwood handle. Plastic free option, gentle on glass bottles.",
+                            "badges": [
+                                  "Plastic free"
+                            ]
+                      },
+                      {
+                            "name": "Earth Mama Organic Nipple Butter",
+                            "img": "61HK1nHCwKL",
+                            "url": "https://www.amazon.com/s?k=Earth+Mama+organic+nipple+butter&tag=plasticdetox-20",
+                            "sentence": "Lanolin free organic herbs in olive oil and beeswax. Safe for baby, no need to wipe off before nursing.",
+                            "badges": [
+                                  "Lanolin free",
+                                  "Organic"
+                            ]
+                      },
+                      {
+                            "name": "Motherlove Nipple Cream",
+                            "img": "513dz1tov8L",
+                            "url": "https://www.amazon.com/s?k=Motherlove+nipple+cream&tag=plasticdetox-20",
+                            "sentence": "Organic herbs in extra virgin olive oil. Lanolin free since lanolin can be pesticide contaminated.",
+                            "badges": [
+                                  "Organic",
+                                  "Lanolin free"
+                            ]
+                      },
+                      {
+                            "name": "Bamboobies Organic Cotton Nursing Pads",
+                            "img": "71AeswAqpJL",
+                            "url": "https://www.amazon.com/s?k=Bamboobies+organic+cotton+nursing+pad+washable&tag=plasticdetox-20",
+                            "sentence": "Reusable organic cotton pads that absorb without bleached cellulose disposables. Verify GOTS organic, skip bamboo marketing.",
+                            "badges": [
+                                  "GOTS organic"
+                            ]
+                      },
+                      {
+                            "name": "Boppy Nursing Pillow with Organic Cotton Cover",
+                            "img": "71dnjeQFKYL",
+                            "url": "https://www.amazon.com/s?k=Boppy+nursing+pillow+organic+cotton+cover&tag=plasticdetox-20",
+                            "sentence": "The cover is the contact point, get organic cotton. Polyester fill is fine since it never touches skin.",
+                            "badges": [
+                                  "Organic cotton cover"
+                            ]
+                      }
+                ]
+          },
+          {
+                "id": "pumping",
+                "name": "Pumping & milk storage",
+                "tier": "Tier 1 · highest priority",
+                "blurb": "Closed system pumps and reusable storage that keep plastic away from breast milk.",
+                "products": [
+                      {
+                            "name": "Spectra S1 Hospital Strength Breast Pump",
+                            "img": "61B7pP6VqAL",
+                            "url": "https://www.amazon.com/s?k=Spectra+S1+breast+pump&tag=plasticdetox-20",
+                            "sentence": "Closed system prevents milk backup into tubing. Hospital grade motor with rechargeable battery. Glass collection bottles available separately.",
+                            "badges": [
+                                  "Closed system"
+                            ],
+                            "tag": "Editor pick"
+                      },
+                      {
+                            "name": "Spectra S2 Plus Breast Pump",
+                            "img": "81EmskV+yoL",
+                            "url": "https://www.amazon.com/s?k=Spectra+S2+breast+pump&tag=plasticdetox-20",
+                            "sentence": "The plug in version of the S1, same closed system motor. Choose this if you pump in one place.",
+                            "badges": [
+                                  "Closed system"
+                            ]
+                      },
+                      {
+                            "name": "COMI Glass Breast Milk Collection Bottles",
+                            "img": "61XTMdmmpgL",
+                            "asin": "B0CCJ65JP5",
+                            "sentence": "Glass collection bottles for Spectra pumps. Pump directly into glass, eliminating plastic at the source.",
+                            "badges": [
+                                  "Glass"
+                            ]
+                      },
+                      {
+                            "name": "Junobie Reusable Silicone Milk Storage Bags",
+                            "img": "61la8jMxhPL",
+                            "url": "https://www.amazon.com/s?k=Junobie+reusable+silicone+breast+milk+storage&tag=plasticdetox-20",
+                            "sentence": "Reusable food grade silicone replaces single use polyethylene bags. Stackable and freezer safe.",
+                            "badges": [
+                                  "Reusable silicone"
+                            ]
+                      },
+                      {
+                            "name": "Mila's Keeper Silicone Storage Containers",
+                            "img": "71AvTcD+roL",
+                            "url": "https://www.amazon.com/s?k=Mila%27s+Keeper+breast+milk+storage&tag=plasticdetox-20",
+                            "sentence": "Food grade silicone designed for breast milk portions. Stackable, freezer safe, eliminates daily bag waste.",
+                            "badges": [
+                                  "Food grade silicone"
+                            ]
+                      },
+                      {
+                            "name": "Lansinoh Breast Milk Storage Bags",
+                            "img": "712xIUHpNGL",
+                            "url": "https://www.amazon.com/s?k=Lansinoh+breast+milk+storage+bags&tag=plasticdetox-20",
+                            "sentence": "If you need disposables, Lansinoh is the most tested polyethylene option. BPA and BPS free.",
+                            "badges": [
+                                  "BPA free"
+                            ],
+                            "tag": "Disposable backup"
+                      }
+                ]
+          },
+          {
+                "id": "solids",
+                "name": "Solids & feeding prep",
+                "tier": "Tier 1 · highest priority",
+                "blurb": "Plates, utensils, cups and prep gear in materials that can take heat, suction, and a thousand dishwasher cycles.",
+                "products": [
+                      {
+                            "name": "Avanchy Bamboo + Silicone Suction Plate",
+                            "img": "61RGPcSuD6L",
+                            "url": "https://www.amazon.com/s?k=Avanchy+bamboo+silicone+suction+plate&tag=plasticdetox-20",
+                            "sentence": "Bamboo with food grade silicone suction base. Avoid melamine and bamboo composite, they often hide melamine resin binders.",
+                            "badges": [
+                                  "Bamboo + silicone"
+                            ],
+                            "tag": "Editor pick"
+                      },
+                      {
+                            "name": "ezpz Mini Mat Silicone Plate",
+                            "img": "41odQEPAoHL",
+                            "asin": "B01C95ZCNI",
+                            "sentence": "Single piece food grade silicone with no fillers. Suctions to high chairs, one piece means no food traps.",
+                            "badges": [
+                                  "Food grade silicone"
+                            ]
+                      },
+                      {
+                            "name": "Ahimsa Stainless Steel Bowl and Plate Set",
+                            "img": "71sYJMAjx6L",
+                            "asin": "B0C6SVTQ3Q",
+                            "sentence": "100% stainless steel plates and bowls with no coatings. Designed by a pediatrician, virtually indestructible.",
+                            "badges": [
+                                  "Plastic free"
+                            ]
+                      },
+                      {
+                            "name": "Avanchy Stainless + Silicone Utensils",
+                            "img": "61yfZfNeNzL",
+                            "asin": "B07K1FFK6Z",
+                            "sentence": "18/8 stainless on the food contact end, silicone only on the handle. No degradation from biting or heat.",
+                            "badges": [
+                                  "18/8 stainless"
+                            ],
+                            "tag": "Best value"
+                      },
+                      {
+                            "name": "NumNum GOOtensils Silicone Spoons",
+                            "img": "71DnvD3NFCL",
+                            "url": "https://www.amazon.com/s?k=NumNum+GOOtensils+silicone+spoon&tag=plasticdetox-20",
+                            "sentence": "100% silicone first stage spoons with a flat scoop perfect for self feeding. No nylon, no bioplastic.",
+                            "badges": [
+                                  "Food grade silicone"
+                            ]
+                      },
+                      {
+                            "name": "ezpz Tiny Cup Silicone Open Cup",
+                            "img": "61zIJNOpJlL",
+                            "url": "https://www.amazon.com/s?k=ezpz+Tiny+Cup+silicone+open+cup&tag=plasticdetox-20",
+                            "sentence": "100% silicone open cup sized for first sips. Skip plastic 360 cups, stainless or silicone is the cleaner standard.",
+                            "badges": [
+                                  "Food grade silicone"
+                            ]
+                      },
+                      {
+                            "name": "Avanchy Mini Baby Stainless Cup",
+                            "img": "61RGPcSuD6L",
+                            "url": "https://www.amazon.com/s?k=Avanchy+mini+baby+stainless+cup&tag=plasticdetox-20",
+                            "sentence": "Tiny stainless steel open cup, weighted base, perfect for early baby led weaning sips.",
+                            "badges": [
+                                  "Stainless steel"
+                            ]
+                      },
+                      {
+                            "name": "Elk and Friends Glass + Silicone Straw Cup",
+                            "img": "71fHUyZqu7L",
+                            "url": "https://www.amazon.com/s?k=Elk+and+Friends+stainless+steel+sippy+cup+silicone+straw&tag=plasticdetox-20",
+                            "sentence": "Glass or stainless body with silicone straw. Avoid Tritan plastic, even BPA free plastic still leaches.",
+                            "badges": [
+                                  "Glass + silicone"
+                            ]
+                      },
+                      {
+                            "name": "Klean Kanteen Kid Kanteen with Silicone Straw",
+                            "img": "71sTanwzqIL",
+                            "url": "https://www.amazon.com/s?k=Klean+Kanteen+Kid+stainless+steel+sippy&tag=plasticdetox-20",
+                            "sentence": "12 oz stainless steel with leak proof straw cap. Built to survive being thrown from a high chair daily.",
+                            "badges": [
+                                  "18/8 stainless"
+                            ]
+                      },
+                      {
+                            "name": "Bumkins Silicone Bib",
+                            "img": "51rIsUjyr1L",
+                            "url": "https://www.amazon.com/s?k=Bumkins+silicone+bib&tag=plasticdetox-20",
+                            "sentence": "Food grade silicone with a wide catch pocket and adjustable neck. Dishwasher safe, no fabric mold risk.",
+                            "badges": [
+                                  "BPA, PVC, phthalate free"
+                            ],
+                            "tag": "Best value"
+                      },
+                      {
+                            "name": "Mushie Silicone Bib",
+                            "img": "61YYhjXMnyL",
+                            "url": "https://www.amazon.com/s?k=Mushie+silicone+bib&tag=plasticdetox-20",
+                            "sentence": "Food grade silicone with deep catch pocket. Rolls up for travel, beautiful muted colors.",
+                            "badges": [
+                                  "No PVC, BPA, phthalates"
+                            ]
+                      },
+                      {
+                            "name": "Stokke Tripp Trapp High Chair",
+                            "img": "61GaFCO7UML",
+                            "url": "https://www.amazon.com/s?k=Stokke+Tripp+Trapp+high+chair&tag=plasticdetox-20",
+                            "sentence": "Solid European beech with water based finish. Adjusts from 6 months through adulthood, no foam, no plastic tray.",
+                            "badges": [
+                                  "GREENGUARD Gold",
+                                  "Solid beech"
+                            ],
+                            "tag": "Lifetime piece"
+                      },
+                      {
+                            "name": "IKEA Antilop High Chair",
+                            "img": "714dLduJaPL",
+                            "url": "https://www.amazon.com/s?k=IKEA+Antilop+high+chair&tag=plasticdetox-20",
+                            "sentence": "Honest pick at thirty dollars. Polypropylene tray but easy to replace and inexpensive. Avoid heavily padded plastic chairs.",
+                            "badges": [
+                                  "PP, BPA free"
+                            ]
+                      },
+                      {
+                            "name": "Weck Glass Storage Jars",
+                            "img": "71XAsssAuJL",
+                            "url": "https://www.amazon.com/s?k=Weck+glass+jars+storage&tag=plasticdetox-20",
+                            "sentence": "Glass jars with glass lids and rubber gaskets for fridge storage. Avoid all plastic baby food storage including BPA free pouches.",
+                            "badges": [
+                                  "100% glass"
+                            ],
+                            "tag": "Editor pick"
+                      },
+                      {
+                            "name": "Pyrex Glass Storage with Glass Lids",
+                            "img": "61UhNLoH4dL",
+                            "url": "https://www.amazon.com/s?k=Pyrex+glass+storage+glass+lids&tag=plasticdetox-20",
+                            "sentence": "Borosilicate glass containers with glass lids. Skip the plastic lid versions for fridge baby food.",
+                            "badges": [
+                                  "Borosilicate glass"
+                            ]
+                      },
+                      {
+                            "name": "Souper Cubes Silicone Freezer Trays",
+                            "img": "717pxFuArxL",
+                            "url": "https://www.amazon.com/s?k=Souper+Cubes+silicone+freezer+tray&tag=plasticdetox-20",
+                            "sentence": "Food grade silicone trays for freezing purees in measured portions. Pop out, transfer to glass for long storage.",
+                            "badges": [
+                                  "Food grade silicone"
+                            ]
+                      },
+                      {
+                            "name": "BEABA Babycook Neo Glass Baby Food Maker",
+                            "img": "41M6kgy316L",
+                            "asin": "B085PXBB17",
+                            "sentence": "Borosilicate glass bowl with stainless steel basket. The only baby food maker with non plastic food contact surfaces.",
+                            "badges": [
+                                  "Glass + steel"
+                            ]
+                      }
+                ]
+          },
+          {
+                "id": "diapers",
+                "name": "Diapers & wipes",
+                "tier": "Tier 1 · highest priority",
+                "blurb": "What touches skin all day, every day. Look for: no fragrance, no lotion, chlorine free, third party tested for VOCs.",
+                "products": [
+                      {
+                            "name": "Kudos Cotton Lined Diapers",
+                            "img": "41GsoM2uhJL",
+                            "url": "https://www.amazon.com/s?k=Kudos+cotton+diapers&tag=plasticdetox-20",
+                            "sentence": "The only disposable with cotton against baby's skin instead of synthetic topsheet. No fragrance, no chlorine, no lotion.",
+                            "badges": [
+                                  "Cotton topsheet"
+                            ],
+                            "tag": "Editor pick"
+                      },
+                      {
+                            "name": "Coterie Diapers",
+                            "img": "616umIINRjL",
+                            "url": "https://www.amazon.com/s?k=Coterie+diapers&tag=plasticdetox-20",
+                            "sentence": "Fully disclosed ingredient list, excellent absorbency. Available on Amazon, no subscription required.",
+                            "badges": [
+                                  "Fully disclosed"
+                            ]
+                      },
+                      {
+                            "name": "Healthynest Diapers",
+                            "img": "71nc9VTUdIL",
+                            "url": "https://www.amazon.com/s?k=Healthynest+diapers&tag=plasticdetox-20",
+                            "sentence": "MADE SAFE certified, no fragrance, no lotion. Plant based topsheet, third party tested for VOCs.",
+                            "badges": [
+                                  "MADE SAFE"
+                            ]
+                      },
+                      {
+                            "name": "HealthyBaby Diapers",
+                            "img": "71chvdNIy7L",
+                            "url": "https://www.amazon.com/s?k=HealthyBaby+diapers&tag=plasticdetox-20",
+                            "sentence": "Every material reviewed against the EWG database. Plant based topsheet, no fragrance, chlorine, or latex.",
+                            "badges": [
+                                  "EWG Verified"
+                            ]
+                      },
+                      {
+                            "name": "GroVia Cloth Diapers",
+                            "img": "61p1DCHT67L",
+                            "url": "https://www.amazon.com/s?k=GroVia+cloth+diapers+organic+cotton&tag=plasticdetox-20",
+                            "sentence": "Hybrid system with organic cotton inserts and PUL outer. Most plastic free path with the lowest learning curve.",
+                            "badges": [
+                                  "Organic cotton"
+                            ]
+                      },
+                      {
+                            "name": "Esembly Cloth Diapers",
+                            "img": "71wmvWLrLNS",
+                            "url": "https://www.amazon.com/s?k=Esembly+cloth+diaper+system&tag=plasticdetox-20",
+                            "sentence": "Two part system with the cleanest PUL on the market. Organic cotton inner, designed for closed loop laundering.",
+                            "badges": [
+                                  "GOTS cotton inner"
+                            ]
+                      },
+                      {
+                            "name": "Thirsties Cloth Diapers",
+                            "img": "61UbtEV-eqL",
+                            "url": "https://www.amazon.com/s?k=Thirsties+cloth+diaper+hemp+organic&tag=plasticdetox-20",
+                            "sentence": "Hemp and organic cotton inserts with a soft PUL cover. Made in the USA, very durable across multiple kids.",
+                            "badges": [
+                                  "Hemp + cotton"
+                            ],
+                            "tag": "Best value"
+                      },
+                      {
+                            "name": "WaterWipes",
+                            "img": "81PXdcO16XL",
+                            "url": "https://www.amazon.com/s?k=WaterWipes+baby+wipes&tag=plasticdetox-20",
+                            "sentence": "Only two ingredients: water plus 0.1% fruit extract. The gold standard for wipe ingredient minimalism.",
+                            "badges": [
+                                  "2 ingredients"
+                            ]
+                      },
+                      {
+                            "name": "Caboo Bamboo Wipes",
+                            "img": "71sZLsACSiL",
+                            "url": "https://www.amazon.com/s?k=Caboo+bamboo+baby+wipes&tag=plasticdetox-20",
+                            "sentence": "Bamboo and sugarcane substrate, 99% water plus chamomile and aloe. No fragrance, no phenoxyethanol.",
+                            "badges": [
+                                  "Plant fiber"
+                            ]
+                      },
+                      {
+                            "name": "Earth Mama Organic Diaper Balm",
+                            "img": "71KzXB188sL",
+                            "url": "https://www.amazon.com/s?k=Earth+Mama+diaper+balm&tag=plasticdetox-20",
+                            "sentence": "Organic herbs in olive oil and beeswax. Used in hospital NICUs, no petroleum, no fragrance.",
+                            "badges": [
+                                  "EWG Verified"
+                            ],
+                            "tag": "NICU trusted"
+                      },
+                      {
+                            "name": "Motherlove Diaper Balm",
+                            "img": "61Ih5SXcfhL",
+                            "url": "https://www.amazon.com/s?k=Motherlove+diaper+balm&tag=plasticdetox-20",
+                            "sentence": "Calendula and yarrow in olive oil and beeswax base. Avoid petroleum, fragrance and mineral oil in daily creams.",
+                            "badges": [
+                                  "Organic herbs"
+                            ]
+                      },
+                      {
+                            "name": "Naturepedic Organic Cotton Changing Pad",
+                            "img": "41DZFMFm6FL",
+                            "url": "https://www.amazon.com/s?k=Naturepedic+organic+changing+pad&tag=plasticdetox-20",
+                            "sentence": "Same logic as the crib mattress: organic cotton, no flame retardants, food grade PE waterproofing instead of contoured polyurethane foam.",
+                            "badges": [
+                                  "Organic cotton",
+                                  "No PVC"
+                            ],
+                            "tag": "Editor pick"
+                      },
+                      {
+                            "name": "Burt's Bees Baby Organic Changing Pad Cover",
+                            "img": "81tiKYnifaS",
+                            "url": "https://www.amazon.com/s?k=Burts+Bees+Baby+organic+changing+pad+cover&tag=plasticdetox-20",
+                            "sentence": "GOTS organic cotton, soft terry. Two to three covers minimum since these wash often.",
+                            "badges": [
+                                  "GOTS organic"
+                            ]
+                      },
+                      {
+                            "name": "MakeMake Organics Changing Pad Cover",
+                            "img": "71eZWLwd6NL",
+                            "url": "https://www.amazon.com/s?k=MakeMake+Organics+changing+pad+cover&tag=plasticdetox-20",
+                            "sentence": "GOTS organic cotton with a snug knit fit. Avoid waterproof covers backed with PVC or PFAS.",
+                            "badges": [
+                                  "GOTS organic"
+                            ]
+                      },
+                      {
+                            "name": "Ubbi Stainless Steel Diaper Pail",
+                            "img": "510zOxj-+8L",
+                            "url": "https://www.amazon.com/s?k=Ubbi+stainless+steel+diaper+pail&tag=plasticdetox-20",
+                            "sentence": "Stainless steel body, uses any standard kitchen bag. Skip Diaper Genie style pails with proprietary plastic cartridges.",
+                            "badges": [
+                                  "Stainless steel"
+                            ]
+                      }
+                ]
+          },
+          {
+                "id": "bath",
+                "name": "Bath & body",
+                "tier": "Tier 1 · highest priority",
+                "blurb": "Short ingredient lists and packaging that doesn't shed plastic into a hot tub.",
+                "products": [
+                      {
+                            "name": "Stokke Flexi Bath",
+                            "img": "61ThooJ47CL",
+                            "url": "https://www.amazon.com/s?k=Stokke+Flexi+Bath&tag=plasticdetox-20",
+                            "sentence": "Polypropylene tub with no PVC, no phthalates, no BPA. Foldable for small bathrooms, the cleanest tub at this size.",
+                            "badges": [
+                                  "No PVC, BPA, phthalates"
+                            ]
+                      },
+                      {
+                            "name": "Under the Nile Organic Cotton Hooded Towel",
+                            "img": "71Xm24wJYCL",
+                            "url": "https://www.amazon.com/s?k=Under+the+Nile+organic+cotton+hooded+towel&tag=plasticdetox-20",
+                            "sentence": "GOTS organic cotton terry. The cleanest material pick, skip bamboo viscose marketed as natural.",
+                            "badges": [
+                                  "GOTS organic"
+                            ],
+                            "tag": "Editor pick"
+                      },
+                      {
+                            "name": "Burt's Bees Baby Organic Hooded Towel",
+                            "img": "7155yfK9IqL",
+                            "url": "https://www.amazon.com/s?k=Burts+Bees+Baby+organic+hooded+towel&tag=plasticdetox-20",
+                            "sentence": "100% organic cotton with GOTS certification. Affordable and widely available.",
+                            "badges": [
+                                  "GOTS organic"
+                            ],
+                            "tag": "Best value"
+                      },
+                      {
+                            "name": "Natemia Organic Turkish Cotton Towel",
+                            "img": "8121Ufxl+-L",
+                            "url": "https://www.amazon.com/s?k=Natemia+organic+cotton+baby+hooded+towel&tag=plasticdetox-20",
+                            "sentence": "Extra large organic Turkish cotton with dense plush weave. Grows into toddlerhood without thinning.",
+                            "badges": [
+                                  "Organic Turkish"
+                            ]
+                      },
+                      {
+                            "name": "Under the Nile Organic Cotton Washcloths",
+                            "img": "71qwnDDacfL",
+                            "url": "https://www.amazon.com/s?k=Under+the+Nile+organic+cotton+washcloths&tag=plasticdetox-20",
+                            "sentence": "Pack of organic cotton terry washcloths. Skip bamboo, the rayon process undercuts the natural marketing.",
+                            "badges": [
+                                  "GOTS organic"
+                            ]
+                      },
+                      {
+                            "name": "Burt's Bees Organic Cotton Washcloths",
+                            "img": "71LYedZ6RxL",
+                            "url": "https://www.amazon.com/s?k=Burts+Bees+organic+cotton+washcloth&tag=plasticdetox-20",
+                            "sentence": "GOTS organic cotton in a pack of multiples. Soft enough for newborn skin, holds up through years of laundering.",
+                            "badges": [
+                                  "GOTS organic"
+                            ]
+                      },
+                      {
+                            "name": "Earth Mama Calming Lavender Baby Wash",
+                            "img": "51Xy6KERAXL",
+                            "url": "https://www.amazon.com/s?k=Earth+Mama+calming+lavender+baby+wash&tag=plasticdetox-20",
+                            "sentence": "Castile soap base with organic lavender and chamomile. EWG Verified, ultra short ingredient list, NICU trusted.",
+                            "badges": [
+                                  "EWG Verified",
+                                  "GOTS"
+                            ],
+                            "tag": "NICU grade"
+                      },
+                      {
+                            "name": "Tubby Todd All Over Ointment",
+                            "img": "61Fj5bADXLL",
+                            "url": "https://www.amazon.com/s?k=Tubby+Todd+All+Over+Ointment&tag=plasticdetox-20",
+                            "sentence": "Plant based ointment for diaper rash, eczema and dry patches. Most newborns do not need daily lotion.",
+                            "badges": [
+                                  "Fragrance free"
+                            ],
+                            "tag": "Editor pick"
+                      },
+                      {
+                            "name": "Earth Mama Baby Lotion",
+                            "img": "51081tf8d1L",
+                            "url": "https://www.amazon.com/s?k=Earth+Mama+baby+lotion&tag=plasticdetox-20",
+                            "sentence": "Light organic lotion for occasional dry patches. Avoid fragrance, phenoxyethanol, sulfates and PEGs in baby skincare.",
+                            "badges": [
+                                  "EWG Verified"
+                            ]
+                      },
+                      {
+                            "name": "Hevea Natural Rubber Whale Bath Toy",
+                            "img": "71J7e4ycunL",
+                            "url": "https://www.amazon.com/s?k=Hevea+natural+rubber+whale+bath+toy&tag=plasticdetox-20",
+                            "sentence": "Solid one piece natural rubber, no hole means no internal mold. Skip squeezy plastic bath toys, they all grow mold.",
+                            "badges": [
+                                  "100% natural rubber"
+                            ]
+                      },
+                      {
+                            "name": "CaaOcho 100% Natural Rubber Bath Toy",
+                            "img": "71nyKwboLUL",
+                            "url": "https://www.amazon.com/s?k=CaaOcho+natural+rubber+bath+toy&tag=plasticdetox-20",
+                            "sentence": "Pure natural rubber from Hevea trees with no holes or seams. Avoids both microplastic shedding and the bath toy mold problem.",
+                            "badges": [
+                                  "100% natural rubber"
+                            ]
+                      }
+                ]
+          },
+          {
+                "id": "travel",
+                "name": "Travel & safety",
+                "tier": "Tier 2 · flame retardants are unavoidable so choose the cleanest",
+                "blurb": "Federal flammability standards require flame retardants or naturally flame resistant fabrics. Wool qualifies naturally, everything else uses chemistry.",
+                "products": [
+                      {
+                            "name": "Nuna Pipa RX Infant Car Seat (Merino)",
+                            "img": "713AXbAReoL",
+                            "url": "https://www.amazon.com/s?k=Nuna+Pipa+RX+merino+infant+car+seat&tag=plasticdetox-20",
+                            "sentence": "The merino wool version meets federal flammability without chemical flame retardants. Worth the line item for a Tier 1 contact item.",
+                            "badges": [
+                                  "No added FR"
+                            ],
+                            "tag": "Editor pick"
+                      },
+                      {
+                            "name": "UPPAbaby Mesa Max Infant Car Seat (Henna)",
+                            "img": "81cL5NVpQjL",
+                            "url": "https://www.amazon.com/s?k=UPPAbaby+Mesa+Max+Henna+merino+wool&tag=plasticdetox-20",
+                            "sentence": "Merino wool fabric meets flammability standards naturally. Verify the current model is the merino Henna version, earlier Evo Pro versions had FR disclosure issues.",
+                            "badges": [
+                                  "Merino wool"
+                            ]
+                      },
+                      {
+                            "name": "Clek Foonf Convertible Car Seat",
+                            "img": "61b2zkCRlXL",
+                            "url": "https://www.amazon.com/s?k=Clek+Foonf+merino+wool+convertible+car+seat&tag=plasticdetox-20",
+                            "sentence": "Clek's merino wool fabric is the cleanest convertible option on the market. Steel anti rebound bar, rear face to 50 lbs.",
+                            "badges": [
+                                  "Merino wool"
+                            ],
+                            "tag": "Editor pick"
+                      },
+                      {
+                            "name": "Clek Fllo Convertible Car Seat",
+                            "img": "71KRyrmd5VL",
+                            "url": "https://www.amazon.com/s?k=Clek+Fllo+merino+wool+convertible+car+seat&tag=plasticdetox-20",
+                            "sentence": "The slim version of the Foonf, three across friendly. Merino wool fabric, no added flame retardants.",
+                            "badges": [
+                                  "Merino wool"
+                            ]
+                      },
+                      {
+                            "name": "Nuna Rava Convertible Car Seat",
+                            "img": "81bpr7MD7OL",
+                            "url": "https://www.amazon.com/s?k=Nuna+Rava+convertible+car+seat&tag=plasticdetox-20",
+                            "sentence": "Greenguard Gold certified with no added flame retardants. Cleanest non merino convertible, slightly bulkier than Clek.",
+                            "badges": [
+                                  "GREENGUARD Gold"
+                            ]
+                      },
+                      {
+                            "name": "UPPAbaby Vista Stroller",
+                            "img": "61CXZQdFSVL",
+                            "url": "https://www.amazon.com/s?k=UPPAbaby+Vista+stroller&tag=plasticdetox-20",
+                            "sentence": "Greenguard Gold certified fabrics, the most transparent stroller brand on flame retardant disclosure. Grows from one to three kids.",
+                            "badges": [
+                                  "GREENGUARD Gold"
+                            ]
+                      },
+                      {
+                            "name": "Bugaboo Fox Stroller",
+                            "img": "71wQ8Y7wmKL",
+                            "url": "https://www.amazon.com/s?k=Bugaboo+Fox+stroller&tag=plasticdetox-20",
+                            "sentence": "Premium European stroller with disclosed materials. All terrain wheels, holds up through multiple kids.",
+                            "badges": [
+                                  "Disclosed materials"
+                            ]
+                      },
+                      {
+                            "name": "Ergobaby Omni Breeze Carrier",
+                            "img": "81H5pc9NL2S",
+                            "url": "https://www.amazon.com/s?k=Ergobaby+Omni+Breeze+carrier&tag=plasticdetox-20",
+                            "sentence": "Mesh option for hot climates. Mesh is polyester, an honest tradeoff. Choose organic cotton Embrace if your climate allows.",
+                            "badges": [
+                                  "Mesh option"
+                            ]
+                      },
+                      {
+                            "name": "Ergobaby Embrace Organic Cotton",
+                            "img": "61gop13VOgL",
+                            "url": "https://www.amazon.com/s?k=Ergobaby+Embrace+organic+cotton+carrier&tag=plasticdetox-20",
+                            "sentence": "Structured carrier in organic cotton jersey with metal buckles. No foam padding, no plastic hardware.",
+                            "badges": [
+                                  "100% organic cotton"
+                            ],
+                            "tag": "Editor pick"
+                      },
+                      {
+                            "name": "LÍLLÉbaby Organic Cotton Carrier",
+                            "img": "81s2btNtpmL",
+                            "url": "https://www.amazon.com/s?k=LILLEbaby+organic+cotton+carrier&tag=plasticdetox-20",
+                            "sentence": "Organic cotton fabric where available. Ergonomic six position carrier for newborn through toddler.",
+                            "badges": [
+                                  "Organic cotton"
+                            ]
+                      },
+                      {
+                            "name": "Solly Baby Wrap (Modal)",
+                            "img": "81MpilflQtL",
+                            "url": "https://www.amazon.com/s?k=Solly+Baby+wrap&tag=plasticdetox-20",
+                            "sentence": "Modal is semi synthetic. Choose Solly if you need stretch, Boba organic cotton if you want the cleaner fiber.",
+                            "badges": [
+                                  "Modal"
+                            ]
+                      },
+                      {
+                            "name": "Boba Wrap Organic Cotton",
+                            "img": "71hO-pPYh3L",
+                            "url": "https://www.amazon.com/s?k=Boba+Wrap+organic+cotton&tag=plasticdetox-20",
+                            "sentence": "GOTS organic cotton, the cleaner fabric pick if you do not need Solly's stretch. One piece, no buckles, no plastic.",
+                            "badges": [
+                                  "GOTS organic"
+                            ],
+                            "tag": "Editor pick"
+                      }
+                ]
+          },
+          {
+                "id": "clothing",
+                "name": "Clothing & laundry",
+                "tier": "Tier 2 · volume matters more than perfection",
+                "blurb": "Aim for organic cotton on first layer items: onesies, sleepers, anything against skin all day. Outer layers and occasion wear matter less.",
+                "products": [
+                      {
+                            "name": "Burt's Bees Baby Organic Onesies",
+                            "img": "71yPgqOmSLL",
+                            "url": "https://www.amazon.com/s?k=Burts+Bees+Baby+organic+onesie&tag=plasticdetox-20",
+                            "sentence": "GOTS organic cotton with snap or zip closures. Avoid screen printed graphics on the inside of fabric.",
+                            "badges": [
+                                  "GOTS organic"
+                            ],
+                            "tag": "Best value"
+                      },
+                      {
+                            "name": "Hanna Andersson Organic Onesies",
+                            "img": "51V62xcZU7L",
+                            "url": "https://www.amazon.com/s?k=Hanna+Andersson+organic+cotton+baby+onesie&tag=plasticdetox-20",
+                            "sentence": "GOTS organic cotton with non toxic dyes. Heavier weight, lasts through multiple kids.",
+                            "badges": [
+                                  "GOTS organic"
+                            ],
+                            "tag": "Editor pick"
+                      },
+                      {
+                            "name": "Kate Quinn Organic Baby",
+                            "img": "71JmFKWWFCL",
+                            "url": "https://www.amazon.com/s?k=Kate+Quinn+organic+baby+clothes&tag=plasticdetox-20",
+                            "sentence": "GOTS organic cotton with low impact dyes and beautiful prints. Designed for layering through seasons.",
+                            "badges": [
+                                  "GOTS organic"
+                            ]
+                      },
+                      {
+                            "name": "Hanna Andersson Footed Sleepers",
+                            "img": "51V62xcZU7L",
+                            "url": "https://www.amazon.com/s?k=Hanna+Andersson+organic+cotton+zipper+sleeper&tag=plasticdetox-20",
+                            "sentence": "Organic cotton zip up sleepers. Avoid polyester fleece footed sleepers, that is synthetic against skin all night.",
+                            "badges": [
+                                  "GOTS organic"
+                            ]
+                      },
+                      {
+                            "name": "Hanna Andersson Snug Fit Pajamas",
+                            "img": "519QEkNkMoL",
+                            "url": "https://www.amazon.com/s?k=Hanna+Andersson+organic+cotton+pajamas&tag=plasticdetox-20",
+                            "sentence": "Snug fit cotton PJs are exempt from federal flame retardant treatment requirements. Avoid loose flame resistant poly pajamas.",
+                            "badges": [
+                                  "No FR chemicals"
+                            ],
+                            "tag": "Editor pick"
+                      },
+                      {
+                            "name": "Burt's Bees Organic Cotton Socks",
+                            "img": "81uFJhpyMBL",
+                            "url": "https://www.amazon.com/s?k=Burts+Bees+organic+cotton+baby+socks&tag=plasticdetox-20",
+                            "sentence": "Organic cotton socks. Skip socks with rubber or PVC grippers on the bottoms, silicone or stitched grip is fine.",
+                            "badges": [
+                                  "GOTS organic"
+                            ]
+                      },
+                      {
+                            "name": "Zutano Cotton Booties",
+                            "img": "81S-2ZRrUNL",
+                            "url": "https://www.amazon.com/s?k=Zutano+cotton+booties&tag=plasticdetox-20",
+                            "sentence": "Cotton booties that actually stay on. The classic stand by for newborns who kick off everything else.",
+                            "badges": [
+                                  "100% cotton"
+                            ]
+                      },
+                      {
+                            "name": "Burt's Bees Organic Hat & Mitten Set",
+                            "img": "71o0fRnLUFL",
+                            "url": "https://www.amazon.com/s?k=Burts+Bees+organic+cotton+baby+hat+mitten&tag=plasticdetox-20",
+                            "sentence": "Organic cotton hats for daily use. Reach for wool when you need outdoor cold weather, naturally FR and breathable.",
+                            "badges": [
+                                  "GOTS organic"
+                            ]
+                      },
+                      {
+                            "name": "Patagonia Baby Reversible Tribbles Jacket",
+                            "img": "81AR2etiEoL",
+                            "url": "https://www.amazon.com/s?k=Patagonia+Baby+Reversible+Tribbles&tag=plasticdetox-20",
+                            "sentence": "Outerwear is hard in natural fiber. Patagonia's PFC free DWR is the cleanest synthetic option, recycled polyester shell.",
+                            "badges": [
+                                  "PFC free DWR"
+                            ]
+                      },
+                      {
+                            "name": "Branch Basics Concentrate",
+                            "url": "https://www.amazon.com/s?k=Branch+Basics+concentrate+laundry&tag=plasticdetox-20",
+                            "sentence": "Wash all baby clothing twice before first wear to remove formaldehyde wrinkle treatments and dye residue. Branch Basics is fragrance free and EWG Verified.",
+                            "badges": [
+                                  "EWG Verified"
+                            ],
+                            "tag": "Editor pick"
+                      },
+                      {
+                            "name": "Molly's Suds Laundry Powder",
+                            "url": "https://www.amazon.com/s?k=Molly%27s+Suds+laundry+powder&tag=plasticdetox-20",
+                            "sentence": "Five ingredient powder, no fragrance, no synthetic surfactants. The simplest baby laundry option.",
+                            "badges": [
+                                  "5 ingredients"
+                            ],
+                            "tag": "Best value"
+                      },
+                      {
+                            "name": "Dirty Labs Bio Enzyme Baby Laundry",
+                            "img": "6143Rpd6lBL",
+                            "url": "https://www.amazon.com/s?k=Dirty+Labs+baby+laundry+detergent&tag=plasticdetox-20",
+                            "sentence": "Concentrated bio enzyme detergent in glass amber bottles. EWG Verified, no synthetic fragrance.",
+                            "badges": [
+                                  "EWG Verified"
+                            ]
+                      }
+                ]
+          },
+          {
+                "id": "play",
+                "name": "Play & development",
+                "tier": "Tier 2 · minimize mouthing of unknown plastics",
+                "blurb": "Natural materials and well vetted brands beat the soft, flexible plastics that hide phthalates.",
+                "products": [
+                      {
+                            "name": "Hevea Natural Rubber Teether",
+                            "img": "71bTuBGHAuL",
+                            "url": "https://www.amazon.com/s?k=Hevea+natural+rubber+teether&tag=plasticdetox-20",
+                            "sentence": "Single piece natural rubber from Hevea brasiliensis. No additives, no PVC, no BPA, no seams where mold can hide.",
+                            "badges": [
+                                  "100% natural rubber"
+                            ],
+                            "tag": "Editor pick"
+                      },
+                      {
+                            "name": "CaaOcho Natural Rubber Toys",
+                            "img": "71fskHrcq6L",
+                            "url": "https://www.amazon.com/s?k=CaaOcho+natural+rubber+toy&tag=plasticdetox-20",
+                            "sentence": "Pure natural rubber, single piece construction with no openings where mold can grow. Painted with food grade colors.",
+                            "badges": [
+                                  "100% natural rubber"
+                            ]
+                      },
+                      {
+                            "name": "Sophie la Girafe",
+                            "img": "81xxNpO3KML",
+                            "url": "https://www.amazon.com/s?k=Sophie+la+Girafe+teether&tag=plasticdetox-20",
+                            "sentence": "100% natural rubber with food grade paint. In production since 1961, sixty plus year safety record.",
+                            "badges": [
+                                  "Natural rubber"
+                            ]
+                      },
+                      {
+                            "name": "Mushie Silicone Teether",
+                            "img": "61+faUIK2AL",
+                            "url": "https://www.amazon.com/s?k=Mushie+silicone+teether&tag=plasticdetox-20",
+                            "sentence": "Food grade silicone, durable enough to be boiled. Skip if going for a true natural material, otherwise the next best option.",
+                            "badges": [
+                                  "Food grade silicone"
+                            ],
+                            "tag": "Best value"
+                      },
+                      {
+                            "name": "PlanToys Wooden Toys",
+                            "img": "813DX4MJpaL",
+                            "url": "https://www.amazon.com/s?k=PlanToys+wooden+toys&tag=plasticdetox-20",
+                            "sentence": "Chemical free kiln dried rubberwood with water based dyes and formaldehyde free E Zero glue.",
+                            "badges": [
+                                  "FSC rubberwood"
+                            ],
+                            "tag": "Editor pick"
+                      },
+                      {
+                            "name": "Hape Wooden Toys",
+                            "img": "51t02jFtN-L",
+                            "url": "https://www.amazon.com/s?k=Hape+wooden+baby+toys&tag=plasticdetox-20",
+                            "sentence": "Sustainable wood with non toxic water based finishes. Wide product range from infant rattles to preschool sets.",
+                            "badges": [
+                                  "Water based finish"
+                            ]
+                      },
+                      {
+                            "name": "Manhattan Toy Skwish",
+                            "url": "https://www.amazon.com/s?k=Manhattan+Toy+Skwish&tag=plasticdetox-20",
+                            "sentence": "Classic wooden grasping toy with elastic cords. Solid wood, water based finishes, made for tiny hands.",
+                            "badges": [
+                                  "Solid wood"
+                            ]
+                      },
+                      {
+                            "name": "Grimm's Rainbow Stacker",
+                            "url": "https://www.amazon.com/s?k=Grimms+rainbow+stacker&tag=plasticdetox-20",
+                            "sentence": "Linden wood with non toxic water based stains. Open ended Waldorf classic that lasts decades.",
+                            "badges": [
+                                  "Solid wood"
+                            ]
+                      },
+                      {
+                            "name": "Hevea Natural Rubber Rattle",
+                            "url": "https://www.amazon.com/s?k=Hevea+natural+rubber+rattle&tag=plasticdetox-20",
+                            "sentence": "Natural rubber rattles for infant grasping. Skip plastic shaker rattles, they often hide phthalate soft plastic.",
+                            "badges": [
+                                  "100% natural rubber"
+                            ]
+                      },
+                      {
+                            "name": "Manhattan Toy Wooden Rattle",
+                            "img": "81QPjWWuXWL",
+                            "url": "https://www.amazon.com/s?k=Manhattan+Toy+wooden+rattle&tag=plasticdetox-20",
+                            "sentence": "Solid wood rattles with water based finishes. Heirloom durable, beautiful textures for sensory play.",
+                            "badges": [
+                                  "Solid wood"
+                            ]
+                      },
+                      {
+                            "name": "Toki Mats Organic Cotton Play Mat",
+                            "img": "815gF9hP78L",
+                            "url": "https://www.amazon.com/s?k=Toki+Mats+organic+cotton+kapok+play+mat&tag=plasticdetox-20",
+                            "sentence": "Organic cotton cover with kapok fill. No foam, no PVC, no EVA, no synthetic fill of any kind.",
+                            "badges": [
+                                  "GOTS + kapok"
+                            ],
+                            "tag": "Editor pick"
+                      },
+                      {
+                            "name": "Gathre Vegan Leather Mat",
+                            "url": "https://www.amazon.com/s?k=Gathre+vegan+leather+mat&tag=plasticdetox-20",
+                            "sentence": "TPU rather than PVC, far better than foam interlocking tiles. Wipes clean, rolls up for travel.",
+                            "badges": [
+                                  "TPU, no PVC"
+                            ]
+                      },
+                      {
+                            "name": "Lovevery Play Gym",
+                            "url": "https://www.amazon.com/s?k=Lovevery+Play+Gym&tag=plasticdetox-20",
+                            "sentence": "Wood frame with organic cotton mat. Toys are mixed materials but well vetted. Skip plastic dome gyms.",
+                            "badges": [
+                                  "Wood + organic cotton"
+                            ]
+                      },
+                      {
+                            "name": "Estella Organic Cloth Books",
+                            "url": "https://www.amazon.com/s?k=Estella+organic+cotton+cloth+book&tag=plasticdetox-20",
+                            "sentence": "Organic cotton cloth books for babies who chew everything. Soy based inks. Skip vinyl bath books.",
+                            "badges": [
+                                  "GOTS organic"
+                            ]
+                      },
+                      {
+                            "name": "Senger Naturwelt Wool Stuffies",
+                            "url": "https://www.amazon.com/s?k=Senger+Naturwelt+wool+stuffed+animal&tag=plasticdetox-20",
+                            "sentence": "Wool body and stuffing with cotton stitching. Heirloom durable, fully compostable at end of life.",
+                            "badges": [
+                                  "100% wool"
+                            ]
+                      },
+                      {
+                            "name": "Under the Nile Organic Cotton Stuffies",
+                            "img": "717caFg7-HL",
+                            "url": "https://www.amazon.com/s?k=Under+the+Nile+organic+cotton+stuffed+animal&tag=plasticdetox-20",
+                            "sentence": "GOTS organic cotton with cotton stuffing. Safe for crib age, machine washable.",
+                            "badges": [
+                                  "GOTS organic"
+                            ]
+                      },
+                      {
+                            "name": "Apple Park Organic Stuffed Animals",
+                            "img": "81Y9CczZPhL",
+                            "url": "https://www.amazon.com/s?k=Apple+Park+organic+cotton+stuffed+animal&tag=plasticdetox-20",
+                            "sentence": "GOTS certified organic cotton with corn fiber filling. Beautifully designed, safe from birth.",
+                            "badges": [
+                                  "GOTS organic"
+                            ]
+                      }
+                ]
+          },
+          {
+                "id": "health",
+                "name": "Health & first aid",
+                "tier": "Tier 3 · pragmatic picks",
+                "blurb": "Standards of care that work. Some plastic is unavoidable here, the goal is short contact and clean ingredient lists.",
+                "products": [
+                      {
+                            "name": "Frida Baby Quick Read Rectal Thermometer",
+                            "img": "61iL1-6ha0L",
+                            "url": "https://www.amazon.com/s?k=Frida+Baby+rectal+thermometer&tag=plasticdetox-20",
+                            "sentence": "Pediatricians recommend rectal under three months for accuracy. Skip forehead and ear scanners for newborns.",
+                            "badges": [
+                                  "Pediatrician recommended"
+                            ]
+                      },
+                      {
+                            "name": "NoseFrida Nasal Aspirator",
+                            "img": "71HVIpGr7JL",
+                            "url": "https://www.amazon.com/s?k=NoseFrida+nasal+aspirator&tag=plasticdetox-20",
+                            "sentence": "Parent powered, fully cleanable. Plastic but it is the standard of care, and contact is brief.",
+                            "badges": [
+                                  "Cleanable"
+                            ]
+                      },
+                      {
+                            "name": "Frida Baby Electric Nail File",
+                            "img": "615+7aiUCEL",
+                            "url": "https://www.amazon.com/s?k=Frida+Baby+electric+nail+file&tag=plasticdetox-20",
+                            "sentence": "Safer than clippers in the newborn period. Skip clippers until baby has more nail to work with.",
+                            "badges": [
+                                  "Newborn safe"
+                            ]
+                      },
+                      {
+                            "name": "Genexa Saline Drops",
+                            "img": "61MnxG5H-fL",
+                            "url": "https://www.amazon.com/s?k=Genexa+saline+drops+baby&tag=plasticdetox-20",
+                            "sentence": "Clean ingredient saline for stuffy noses. Skip natural colic drops with proprietary blends.",
+                            "badges": [
+                                  "Clean ingredients"
+                            ]
+                      },
+                      {
+                            "name": "Earth Mama Gripe Water",
+                            "img": "81nyp23X0AL",
+                            "url": "https://www.amazon.com/s?k=Earth+Mama+gripe+water&tag=plasticdetox-20",
+                            "sentence": "Transparent ingredient list with organic chamomile, ginger, and fennel. Use only if needed for fussiness.",
+                            "badges": [
+                                  "Transparent ingredients"
+                            ]
+                      },
+                      {
+                            "name": "Babo Botanicals Sheer Zinc Sunscreen",
+                            "img": "51OPUaWk5xL",
+                            "url": "https://www.amazon.com/s?k=Babo+Botanicals+Sheer+Zinc+SPF+50&tag=plasticdetox-20",
+                            "sentence": "Mineral zinc oxide only. Avoid chemical sunscreens (oxybenzone, octinoxate). Under six months: shade and clothing only.",
+                            "badges": [
+                                  "Mineral only"
+                            ],
+                            "tag": "Editor pick"
+                      },
+                      {
+                            "name": "Thinkbaby SPF 50 Sunscreen",
+                            "url": "https://www.amazon.com/s?k=Thinkbaby+SPF+50+sunscreen&tag=plasticdetox-20",
+                            "sentence": "Non nano zinc oxide, EWG Verified, water resistant. Apply liberally and reapply often.",
+                            "badges": [
+                                  "EWG Verified"
+                            ]
+                      }
+                ]
+          },
+          {
+                "id": "misc",
+                "name": "Monitors & misc",
+                "tier": "Tier 3 · the rest of the registry",
+                "blurb": "Baby monitor, white noise, pacifiers, bag, keepsakes. Choose transparency and durability over features you'll never use.",
+                "products": [
+                      {
+                            "name": "Eufy SpaceView Baby Monitor",
+                            "img": "519+-hiPldL",
+                            "url": "https://www.amazon.com/s?k=Eufy+SpaceView+baby+monitor&tag=plasticdetox-20",
+                            "sentence": "Local only monitor, no cloud, no wifi exposure. The most transparent brand on data privacy.",
+                            "badges": [
+                                  "Local, no cloud"
+                            ],
+                            "tag": "Editor pick"
+                      },
+                      {
+                            "name": "Nanit Pro Smart Baby Monitor",
+                            "url": "https://www.amazon.com/s?k=Nanit+Pro+smart+baby+monitor&tag=plasticdetox-20",
+                            "sentence": "Wifi monitor with sleep tracking and breathing analysis. More features but cloud dependent, choose Eufy if EMF concerns matter.",
+                            "badges": [
+                                  "Cloud features"
+                            ]
+                      },
+                      {
+                            "name": "Yogasleep Dohm White Noise Machine",
+                            "img": "61PgOWQ0TFL",
+                            "url": "https://www.amazon.com/s?k=Yogasleep+Dohm+white+noise&tag=plasticdetox-20",
+                            "sentence": "Mechanical fan inside, no electronics, lowest EMF option. The oldest, simplest white noise machine on the market.",
+                            "badges": [
+                                  "Mechanical, low EMF"
+                            ],
+                            "tag": "Editor pick"
+                      },
+                      {
+                            "name": "Hatch Rest+ White Noise Machine",
+                            "img": "814DUVqPmJL",
+                            "url": "https://www.amazon.com/s?k=Hatch+Rest+Plus+white+noise&tag=plasticdetox-20",
+                            "sentence": "Wifi sound machine with night light and time to rise features. More featured but it is a wifi device.",
+                            "badges": [
+                                  "Wifi features"
+                            ]
+                      },
+                      {
+                            "name": "Natursutten Natural Rubber Pacifier",
+                            "img": "71HTGnBA8xL",
+                            "url": "https://www.amazon.com/s?k=Natursutten+natural+rubber+pacifier&tag=plasticdetox-20",
+                            "sentence": "100% natural rubber, single piece, no joints to harbor mildew. The cleanest pacifier material available.",
+                            "badges": [
+                                  "100% natural rubber"
+                            ],
+                            "tag": "Editor pick"
+                      },
+                      {
+                            "name": "Hevea Natural Rubber Pacifier",
+                            "img": "51CXhbkU0KL",
+                            "url": "https://www.amazon.com/s?k=Hevea+natural+rubber+pacifier&tag=plasticdetox-20",
+                            "sentence": "One piece natural rubber pacifier. Skip silicone if going for a true natural material, otherwise silicone is the next best option.",
+                            "badges": [
+                                  "100% natural rubber"
+                            ]
+                      },
+                      {
+                            "name": "Storksak Organic Cotton Diaper Bag",
+                            "url": "https://www.amazon.com/s?k=Storksak+organic+cotton+diaper+bag&tag=plasticdetox-20",
+                            "sentence": "GOTS organic cotton with metal hardware. Skip PVC coated wipeable bags, the coating is the problem.",
+                            "badges": [
+                                  "GOTS organic"
+                            ]
+                      },
+                      {
+                            "name": "Freshly Picked Vegan Leather Diaper Bag",
+                            "url": "https://www.amazon.com/s?k=Freshly+Picked+diaper+bag&tag=plasticdetox-20",
+                            "sentence": "TPU vegan leather rather than PVC. Wipes clean, holds up through years of daily use.",
+                            "badges": [
+                                  "TPU, no PVC"
+                            ]
+                      },
+                      {
+                            "name": "Lucy Darling Baby Memory Book",
+                            "img": "91QEaxh1EcS",
+                            "url": "https://www.amazon.com/s?k=Lucy+Darling+baby+memory+book&tag=plasticdetox-20",
+                            "sentence": "Heirloom quality keepsake book printed on FSC paper. Skip plastic milestone cards, they last weeks not decades.",
+                            "badges": [
+                                  "FSC paper"
+                            ]
+                      },
+                      {
+                            "name": "Pearhead Organic Cotton Milestone Blanket",
+                            "url": "https://www.amazon.com/s?k=Pearhead+organic+cotton+milestone+blanket&tag=plasticdetox-20",
+                            "sentence": "Organic cotton monthly photo blanket. Doubles as a swaddle or stroller blanket after the photo year.",
+                            "badges": [
+                                  "GOTS organic"
+                            ]
+                      }
+                ]
+          }
     ];
 
     const PLACEHOLDER_IMG = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><rect fill='%23ede9fe' width='200' height='200' rx='12'/><text x='100' y='108' text-anchor='middle' font-family='Inter,sans-serif' font-size='14' font-weight='600' fill='%237c3aed'>plasticdetox</text></svg>";
@@ -660,6 +1972,7 @@
             <div class="reg-cat-num">${String(ci + 1).padStart(2, "0")}</div>
             <div>
               <h2 class="reg-cat-h2">${escapeHtml(cat.name)}</h2>
+              ${cat.tier ? `<div class="reg-cat-tier">${escapeHtml(cat.tier)}</div>` : ""}
               <p class="reg-cat-blurb">${escapeHtml(cat.blurb)}</p>
             </div>
           </div>
