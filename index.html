@@ -2290,7 +2290,7 @@
         <h1 class="b-h1">
           Find the <em>plastic</em><br>
           you didn't know<br>
-          you were <em>eating</em>.
+          was <em>inside you</em>.
         </h1>
         <p class="b-lede">
           Plastic Detox is a research backed guide to low tox living. Read the science, learn which everyday items matter, and find vetted swaps for your kitchen, bathroom, and bedroom, without the greenwashing.
@@ -3002,7 +3002,9 @@
       if (window.gtag) { gtag("event", "newsletter_signup", { method: "homepage_bottom", signup_source: source }); }
     }
 
+    let heroTeaserAnswer = null;
     function heroAnswer(ans) {
+      heroTeaserAnswer = ans;
       document.querySelectorAll('#b-quiz-answers .b-ans').forEach(btn => {
         btn.classList.remove('b-ans-selected', 'b-ans-yes', 'b-ans-orange', 'b-ans-no');
       });
@@ -3643,6 +3645,28 @@
       answeredCount = 0;
       swaps = [];
       answerHistory = [];
+
+      // If user answered the hero teaser (Big 5 → Q1), record it and advance to Q2.
+      if (heroTeaserAnswer) {
+        const cat = categories[0];
+        const q = cat.questions[0];
+        const ans = heroTeaserAnswer;
+        const isBad = q.reverse
+          ? (ans === "no" || ans === "sometimes")
+          : (ans === "yes" || ans === "sometimes");
+        const score = q.reverse
+          ? (ans === "no" ? 1 : ans === "sometimes" ? 0.5 : 0)
+          : (ans === "yes" ? 1 : ans === "sometimes" ? 0.5 : 0);
+        answeredCount = 1;
+        answerHistory.push({ catIdx: 0, qIdx: 0, type: ans, score: score });
+        if (isBad) {
+          plasticScore += score;
+          swaps.push({ category: cat.name, icon: q.icon, text: q.text, alt: q.alt, catIdx: 0, qIdx: 0 });
+        }
+        currentQuestion = 1;
+        heroTeaserAnswer = null;
+      }
+
       renderTracker();
       showQuestion();
       window.scrollTo({ top: 0, behavior: "smooth" });
