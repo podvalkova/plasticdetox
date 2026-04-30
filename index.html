@@ -1682,6 +1682,552 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
+    /* =====================================================
+       HOMEPAGE V2 — Direction B (Plastic Detox Homepage doc)
+       Namespaced under .b- to avoid colliding with legacy CSS.
+       ===================================================== */
+    .v2-host em {
+      font-style: italic;
+      font-weight: 800;
+      color: var(--accent-dark);
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* Hero ----------------------------------------------- */
+    .b-hero {
+      display: grid;
+      grid-template-columns: 1fr 1.05fr;
+      gap: 4rem;
+      padding: 3.5rem 3rem 5rem;
+      max-width: 1280px;
+      margin: 0 auto;
+      align-items: center;
+    }
+    .b-h1 {
+      font-size: 4.4rem;
+      font-weight: 800;
+      line-height: 0.98;
+      letter-spacing: -0.04em;
+      margin-bottom: 1.75rem;
+      text-wrap: balance;
+    }
+    .b-lede {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+      max-width: 460px;
+      margin-bottom: 2rem;
+      text-wrap: pretty;
+    }
+    .b-trust {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+    .b-trust-item {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+    .b-trust-item svg {
+      width: 18px; height: 18px;
+      color: var(--accent-dark);
+      flex-shrink: 0;
+    }
+
+    /* Quiz teaser card */
+    .b-hero-right { position: relative; }
+    .b-quiz {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      box-shadow: 0 30px 80px -20px rgba(124,58,237,0.18), 0 8px 24px rgba(0,0,0,0.06);
+      display: grid;
+      grid-template-columns: 1fr 180px;
+      overflow: hidden;
+      position: relative;
+    }
+    .b-quiz-head {
+      grid-column: 1 / -1;
+      padding: 1.1rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: 1rem;
+      background: #fafafa;
+    }
+    .b-quiz-title {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+      letter-spacing: -0.01em;
+    }
+    .b-quiz-progress {
+      flex: 1; height: 4px;
+      background: var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .b-quiz-progress span {
+      display: block; height: 100%;
+      background: var(--accent);
+      border-radius: 4px;
+    }
+    .b-quiz-body { padding: 2rem 1.75rem; }
+    .b-quiz-cat {
+      font-size: 0.72rem; font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent-dark);
+      margin-bottom: 0.75rem;
+    }
+    .b-quiz-q {
+      font-size: 1.5rem;
+      font-weight: 700;
+      line-height: 1.25;
+      letter-spacing: -0.015em;
+      margin-bottom: 1.5rem;
+      text-wrap: balance;
+    }
+    .b-quiz-answers {
+      display: flex; gap: 0.65rem;
+      margin-bottom: 1.25rem;
+    }
+    .b-ans {
+      flex: 1;
+      padding: 0.85rem 0;
+      border: 1.5px solid var(--border);
+      background: #fff;
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .b-ans:hover { border-color: var(--text); }
+    .b-ans-selected.b-ans-yes { border-color: var(--red); color: var(--red); background: rgba(239,68,68,0.05); }
+    .b-ans-selected.b-ans-orange { border-color: var(--orange); color: var(--orange); background: rgba(245,158,11,0.05); }
+    .b-ans-selected.b-ans-no { border-color: var(--accent); color: var(--accent-dark); background: var(--accent-light); }
+
+    .b-quiz-feedback {
+      background: var(--accent-light);
+      border-radius: 12px;
+      padding: 1rem 1.1rem;
+      margin-bottom: 1.25rem;
+      border-left: 3px solid var(--accent);
+    }
+    .b-quiz-feedback-tag {
+      font-size: 0.68rem; font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent-dark);
+      margin-bottom: 0.35rem;
+    }
+    .b-quiz-feedback p {
+      font-size: 0.88rem;
+      line-height: 1.5;
+      color: var(--text);
+    }
+    .b-quiz-cta {
+      width: 100%;
+      padding: 1rem;
+      background: var(--text);
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 0.98rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .b-quiz-cta:hover { background: var(--accent-dark); }
+
+    .b-quiz-sidecar {
+      background: linear-gradient(180deg, #fafafa 0%, #f3f0ff 100%);
+      border-left: 1px solid var(--border);
+      padding: 1.75rem 1.25rem;
+      display: flex; flex-direction: column;
+      align-items: center;
+    }
+    .b-sidecar-num {
+      font-size: 3rem;
+      font-weight: 800;
+      letter-spacing: -0.05em;
+      color: var(--accent-dark);
+      line-height: 1;
+    }
+    .b-sidecar-lbl {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      font-weight: 600;
+      margin-top: 0.35rem;
+      text-align: center;
+    }
+    .b-sidecar-rule {
+      width: 32px; height: 2px;
+      background: var(--accent);
+      margin: 1.25rem 0;
+    }
+    .b-sidecar-cats {
+      display: flex; flex-direction: column;
+      gap: 0.5rem;
+      align-self: stretch;
+    }
+    .b-sc-cat {
+      display: flex; align-items: center;
+      gap: 0.5rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+    .b-sc-cat.b-sc-active { color: var(--text); font-weight: 600; }
+    .b-sc-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--border);
+      flex-shrink: 0;
+    }
+    .b-sc-active .b-sc-dot {
+      background: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-light);
+    }
+
+    /* Browse --------------------------------------------- */
+    .b-browse {
+      max-width: 1280px; margin: 0 auto;
+      padding: 5rem 3rem 4rem;
+      border-top: 1px solid var(--border);
+    }
+    .b-browse-head {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .b-browse-h2 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.75rem;
+    }
+    .b-browse-sub {
+      font-size: 1rem;
+      color: var(--text-muted);
+      max-width: 540px;
+      margin: 0 auto;
+    }
+    .b-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+    .b-card {
+      position: relative;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+      color: inherit;
+      display: flex; flex-direction: column;
+    }
+    .b-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent);
+      box-shadow: var(--shadow-lg);
+    }
+    .b-card:hover .b-card-arrow { color: var(--accent-dark); transform: translate(2px, -2px); }
+    .b-card-img {
+      aspect-ratio: 1/1;
+      overflow: hidden;
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+    }
+    .b-card-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.35s;
+    }
+    .b-card:hover .b-card-img img { transform: scale(1.04); }
+    .b-card-body { padding: 1rem 1.1rem; }
+    .b-card-name {
+      font-size: 1.05rem; font-weight: 700;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.15rem;
+    }
+    .b-card-meta {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+    }
+    .b-card-arrow {
+      position: absolute;
+      top: 0.85rem; right: 0.9rem;
+      width: 28px; height: 28px;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(255,255,255,0.92);
+      border-radius: 50%;
+      font-size: 1rem;
+      color: var(--text-muted);
+      transition: color 0.2s, transform 0.2s;
+      backdrop-filter: blur(4px);
+    }
+
+    /* Newsletter band ------------------------------------ */
+    .b-newsletter {
+      background: linear-gradient(135deg, var(--accent-light) 0%, #f5f0ff 100%);
+      padding: 5rem 3rem;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .b-nl-inner {
+      max-width: 1280px; margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .b-nl-eyebrow {
+      font-size: 0.72rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--accent-dark);
+      margin-bottom: 0.85rem;
+    }
+    .b-nl-h2 {
+      font-size: 2.6rem; font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      margin-bottom: 1rem;
+      text-wrap: balance;
+    }
+    .b-nl-sub {
+      font-size: 1rem; line-height: 1.6;
+      color: var(--text-muted);
+      max-width: 480px;
+      margin-bottom: 1.5rem;
+    }
+    .b-nl-form {
+      display: flex; gap: 0.5rem;
+      margin-bottom: 0.75rem;
+      max-width: 480px;
+    }
+    .b-nl-input {
+      flex: 1;
+      padding: 0.9rem 1.1rem;
+      border: 1.5px solid var(--border);
+      background: #fff;
+      border-radius: 60px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .b-nl-input:focus { border-color: var(--accent); }
+    .b-nl-btn {
+      padding: 0.9rem 1.5rem;
+      background: var(--text);
+      color: #fff;
+      border: none;
+      border-radius: 60px;
+      font-family: inherit;
+      font-size: 0.92rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+    .b-nl-btn:hover { background: var(--accent-dark); }
+    .b-nl-meta {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+    }
+    .b-nl-right {
+      position: relative;
+      display: flex; flex-direction: column;
+      gap: 1rem;
+      align-items: stretch;
+    }
+    .b-nl-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.25rem 1.4rem;
+      box-shadow: var(--shadow);
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    }
+    .b-nl-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+      box-shadow: var(--shadow-lg);
+    }
+    .b-nl-card-1 { margin-right: 2.5rem; }
+    .b-nl-card-2 {
+      margin-left: 2.5rem;
+      border-color: var(--accent);
+      background: linear-gradient(180deg, #fff 0%, #faf7ff 100%);
+    }
+    .b-nl-card-tag {
+      font-size: 0.68rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--accent-dark);
+      margin-bottom: 0.4rem;
+    }
+    .b-nl-card-title {
+      font-size: 1.05rem; font-weight: 700;
+      line-height: 1.3; letter-spacing: -0.01em;
+      margin-bottom: 0.35rem;
+      text-wrap: pretty;
+    }
+    .b-nl-card-meta {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+    }
+
+    /* Latest --------------------------------------------- */
+    .b-latest {
+      max-width: 1280px; margin: 0 auto;
+      padding: 4rem 3rem 5rem;
+    }
+    .b-latest-head {
+      display: flex; justify-content: space-between;
+      align-items: end;
+      margin-bottom: 2rem;
+    }
+    .b-latest-all {
+      font-size: 0.9rem;
+      color: var(--accent-dark);
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .b-latest-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+    .b-latest-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem 1.5rem 1.4rem;
+      cursor: pointer;
+      transition: border-color 0.2s, transform 0.2s;
+      display: flex; flex-direction: column;
+      text-decoration: none; color: inherit;
+    }
+    .b-latest-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+    .b-latest-tag {
+      display: inline-block;
+      font-size: 0.68rem; font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 0.25rem 0.55rem;
+      border-radius: 4px;
+      background: var(--accent-light);
+      color: var(--accent-dark);
+      margin-bottom: 0.85rem;
+      align-self: flex-start;
+    }
+    .b-latest-title {
+      font-size: 1.08rem; font-weight: 700;
+      line-height: 1.32;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.65rem;
+      text-wrap: pretty;
+    }
+    .b-latest-meta {
+      margin-top: auto;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+    }
+
+    /* Mobile --------------------------------------------- */
+    @media (max-width: 880px) {
+      .b-hero {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 2rem 1.25rem 3rem;
+      }
+      .b-h1 {
+        font-size: 2.6rem;
+        line-height: 1;
+        letter-spacing: -0.035em;
+        margin-bottom: 1.25rem;
+      }
+      .b-h1 br { display: none; }
+      .b-lede { font-size: 1rem; margin-bottom: 1.5rem; max-width: 100%; }
+      .b-trust { gap: 0.5rem; }
+      .b-trust-item { font-size: 0.85rem; }
+
+      .b-quiz { grid-template-columns: 1fr; border-radius: 16px; }
+      .b-quiz-head { padding: 0.9rem 1rem; }
+      .b-quiz-title { font-size: 0.75rem; }
+      .b-quiz-body { padding: 1.5rem 1.25rem; }
+      .b-quiz-q { font-size: 1.2rem; margin-bottom: 1.25rem; }
+      .b-quiz-answers { flex-direction: column; gap: 0.5rem; }
+      .b-ans { padding: 0.9rem 0; }
+      .b-quiz-feedback p { font-size: 0.85rem; }
+      .b-quiz-sidecar {
+        order: -1;
+        border-left: none;
+        border-bottom: 1px solid var(--border);
+        flex-direction: row;
+        align-items: center;
+        padding: 1rem 1.25rem;
+        gap: 1rem;
+      }
+      .b-sidecar-num { font-size: 2rem; }
+      .b-sidecar-lbl { margin-top: 0; text-align: left; }
+      .b-sidecar-rule { width: 1px; height: 28px; margin: 0; }
+      .b-sidecar-cats {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 0.5rem 1rem;
+        flex: 1;
+      }
+      .b-sc-cat { font-size: 0.72rem; }
+
+      .b-browse { padding: 3rem 1.25rem 2rem; }
+      .b-browse-h2 { font-size: 1.85rem; }
+      .b-browse-sub { font-size: 0.92rem; }
+      .b-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+      .b-card-img { aspect-ratio: 4/3; }
+      .b-card-name { font-size: 0.95rem; }
+      .b-card-meta { font-size: 0.72rem; }
+
+      .b-newsletter { padding: 3rem 1.25rem; }
+      .b-nl-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .b-nl-h2 { font-size: 1.85rem; line-height: 1.1; }
+      .b-nl-h2 br { display: none; }
+      .b-nl-sub { font-size: 0.95rem; }
+      .b-nl-form { flex-direction: column; }
+      .b-nl-input, .b-nl-btn { width: 100%; padding: 0.95rem 1.1rem; }
+      .b-nl-card-1, .b-nl-card-2 { margin: 0; }
+      .b-nl-card-title { font-size: 1rem; }
+
+      .b-latest { padding: 2rem 1.25rem 3rem; }
+      .b-latest-head { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+      .b-latest-row { grid-template-columns: 1fr; gap: 1rem; }
+    }
+
+    @media (max-width: 480px) {
+      .b-h1 { font-size: 2.2rem; }
+      .b-grid { grid-template-columns: 1fr; }
+      .b-browse-h2, .b-nl-h2 { font-size: 1.65rem; }
+    }
+
     /* ===== MOBILE ===== */
     @media (max-width: 768px) {
       .game { flex-direction: column; gap: 1.5rem; }
@@ -1738,108 +2284,203 @@
   </nav>
 
   <!-- HOME PAGE -->
-  <main id="page-home">
-    <section class="hero" id="hero">
-      <div class="hero-content">
-        <h1 class="hero-headline">Low-tox living, minus the noise.</h1>
-        <p class="hero-sub">Researchers keep finding microplastics in places we never expected, including human blood, lungs, and brains. The good news? Small swaps make a big difference. We cut through the greenwashing and the fearmongering to show you what actually matters, backed by research, never by brand deals.</p>
-        <button class="btn-primary" onclick="startGame()">Start Your Detox</button>
-        <a href="#browse" class="hero-secondary-link">Or browse articles by topic &rarr;</a>
-        <div id="resume-banner" style="display:none;margin-top:1.25rem;padding:1rem 1.5rem;background:var(--surface);border-radius:var(--radius-sm);box-shadow:var(--shadow);text-align:center;">
-          <p style="font-size:0.9rem;margin-bottom:0.75rem;color:var(--text);">You have saved results from a previous quiz.</p>
-          <button class="btn-primary" onclick="resumeResults()" style="font-size:0.85rem;padding:0.6rem 1.5rem;margin-right:0.5rem;">View My Results</button>
-          <button onclick="clearSavedResults();document.getElementById('resume-banner').style.display='none';" style="font-size:0.85rem;padding:0.6rem 1.5rem;background:none;border:1px solid var(--border);border-radius:60px;color:var(--text-muted);cursor:pointer;font-family:inherit;">Dismiss</button>
+  <main id="page-home" class="v2-host">
+    <section class="b-hero" id="hero">
+      <div class="b-hero-left">
+        <h1 class="b-h1">
+          Find the <em>plastic</em><br>
+          you didn't know<br>
+          you were <em>eating</em>.
+        </h1>
+        <p class="b-lede">
+          Plastic Detox is a research backed guide to low tox living. Read the science, learn which everyday items matter, and find vetted swaps for your kitchen, bathroom, and bedroom, without the greenwashing.
+        </p>
+        <div class="b-trust">
+          <div class="b-trust-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
+            <span>Peer reviewed sources cited</span>
+          </div>
+          <div class="b-trust-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
+            <span>No sponsored swaps</span>
+          </div>
+          <div class="b-trust-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
+            <span>Always free, no ads</span>
+          </div>
+        </div>
+        <div id="resume-banner" style="display:none;margin-top:1.75rem;padding:1rem 1.25rem;background:var(--surface);border:1px solid var(--border);border-radius:12px;max-width:460px;">
+          <p style="font-size:0.9rem;margin-bottom:0.6rem;color:var(--text);">You have saved results from a previous quiz.</p>
+          <button class="btn-primary" onclick="resumeResults()" style="font-size:0.85rem;padding:0.55rem 1.4rem;margin-right:0.4rem;">View My Results</button>
+          <button onclick="clearSavedResults();document.getElementById('resume-banner').style.display='none';" style="font-size:0.85rem;padding:0.55rem 1.4rem;background:none;border:1px solid var(--border);border-radius:60px;color:var(--text-muted);cursor:pointer;font-family:inherit;">Dismiss</button>
         </div>
       </div>
-      <a href="#browse" class="scroll-cue">
-        <span>Explore</span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-      </a>
+
+      <div class="b-hero-right">
+        <div class="b-quiz">
+          <div class="b-quiz-head">
+            <div class="b-quiz-title">Quick test, question 1 of 21</div>
+            <div class="b-quiz-progress"><span style="width:5%"></span></div>
+          </div>
+
+          <div class="b-quiz-body">
+            <div class="b-quiz-cat">Kitchen</div>
+            <h2 class="b-quiz-q">Do you cook with non stick pans (Teflon, ceramic coated)?</h2>
+
+            <div class="b-quiz-answers" id="b-quiz-answers">
+              <button class="b-ans" data-ans="yes" onclick="heroAnswer('yes')">Yes</button>
+              <button class="b-ans" data-ans="sometimes" onclick="heroAnswer('sometimes')">Sometimes</button>
+              <button class="b-ans" data-ans="no" onclick="heroAnswer('no')">No</button>
+            </div>
+
+            <div class="b-quiz-feedback" id="b-quiz-feedback" style="display:none;">
+              <div class="b-quiz-feedback-tag">Recommended swap</div>
+              <p>
+                <strong>Cast iron, carbon steel, or enameled stainless.</strong> Non stick coatings shed PFAS and microplastic particles, especially when scratched or overheated above 450&deg;F.
+              </p>
+            </div>
+
+            <button class="b-quiz-cta" id="b-quiz-cta" onclick="startGame()">Start the full quiz &rarr;</button>
+          </div>
+
+          <div class="b-quiz-sidecar">
+            <div class="b-sidecar-num" id="b-sidecar-num">0</div>
+            <div class="b-sidecar-lbl">items to swap</div>
+            <div class="b-sidecar-rule"></div>
+            <div class="b-sidecar-cats">
+              <div class="b-sc-cat b-sc-active"><span class="b-sc-dot"></span> Kitchen</div>
+              <div class="b-sc-cat"><span class="b-sc-dot"></span> Water</div>
+              <div class="b-sc-cat"><span class="b-sc-dot"></span> Bedroom</div>
+              <div class="b-sc-cat"><span class="b-sc-dot"></span> Personal care</div>
+              <div class="b-sc-cat"><span class="b-sc-dot"></span> Cleaning</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section class="home-browse" id="home-browse">
+    <section class="b-browse" id="home-browse">
       <a id="browse" style="position:relative;top:-80px;"></a>
-      <div class="browse-eyebrow">Browse by topic</div>
-      <h2 class="browse-title">Where do you want to start?</h2>
-      <p class="browse-sub">Each topic has a guided 101 hub: the articles in priority order, with quick answers for common questions.</p>
-
-      <div class="topic-grid">
-        <a href="articles/kitchen-detox-101.html" class="topic-card">
-          <img src="images/homepage-kitchen.webp" alt="Pencil illustration of a cast iron skillet representing the non-toxic kitchen guide" class="topic-img" loading="lazy" width="600" height="600">
-          <div class="topic-content">
-            <div class="topic-name">Kitchen</div>
-            <div class="topic-meta">6 guides &middot; ~100 min</div>
-          </div>
-        </a>
-        <a href="articles/water-detox-101.html" class="topic-card">
-          <img src="images/homepage-warterdrinks.webp" alt="Pencil illustration of a glass water carafe representing the water filtration guide" class="topic-img" loading="lazy" width="600" height="600">
-          <div class="topic-content">
-            <div class="topic-name">Water &amp; Drinks</div>
-            <div class="topic-meta">4 guides &middot; ~55 min</div>
-          </div>
-        </a>
-        <a href="articles/bedroom-air-101.html" class="topic-card">
-          <img src="images/homepage-bedroom.webp" alt="Pencil illustration of a bed and nightstand representing the bedroom and indoor air guide" class="topic-img" loading="lazy" width="600" height="600">
-          <div class="topic-content">
-            <div class="topic-name">Bedroom &amp; Air</div>
-            <div class="topic-meta">3 guides &middot; ~35 min</div>
-          </div>
-        </a>
-        <a href="articles/personal-care-101.html" class="topic-card">
-          <img src="images/homepage-personalcare.webp" alt="Pencil illustration of a soap bar and apothecary jar representing the personal care guide" class="topic-img" loading="lazy" width="600" height="600">
-          <div class="topic-content">
-            <div class="topic-name">Personal Care</div>
-            <div class="topic-meta">4 guides &middot; ~60 min</div>
-          </div>
-        </a>
-        <a href="articles/baby-kids-101.html" class="topic-card">
-          <img src="images/homepage-babykids.webp" alt="Pencil illustration of a glass baby bottle and teething ring representing the baby and kids guide" class="topic-img" loading="lazy" width="600" height="600">
-          <div class="topic-content">
-            <div class="topic-name">Baby &amp; Kids</div>
-            <div class="topic-meta">2 guides &middot; ~60 min</div>
-          </div>
-        </a>
-        <a href="articles/reduce-microplastics-in-cleaning-products.html" class="topic-card">
-          <img src="images/homepage-cleaning.webp" alt="Pencil illustration of a natural cleaning spray bottle and lemon representing the non-toxic cleaning guide" class="topic-img" loading="lazy" width="600" height="600">
-          <div class="topic-content">
-            <div class="topic-name">Cleaning</div>
-            <div class="topic-meta">1 article &middot; 14 min</div>
-          </div>
-        </a>
-        <a href="articles/glyphosate-detox-guide.html" class="topic-card">
-          <img src="images/homepage-food.webp" alt="Pencil illustration of fresh produce representing the food and pesticide exposure guide" class="topic-img" loading="lazy" width="600" height="600">
-          <div class="topic-content">
-            <div class="topic-name">Food &amp; Pesticides</div>
-            <div class="topic-meta">1 article &middot; 24 min</div>
-          </div>
-        </a>
-        <a href="articles/low-tox-myths-debunked.html" class="topic-card">
-          <img src="images/homepage-myths.webp" alt="Pencil illustration of an open book representing the low-tox myth-busting guide" class="topic-img" loading="lazy" width="600" height="600">
-          <div class="topic-content">
-            <div class="topic-name">Myth-Busting</div>
-            <div class="topic-meta">1 article &middot; 22 min</div>
-          </div>
-        </a>
+      <div class="b-browse-head">
+        <h2 class="b-browse-h2">Browse the <em>guides</em></h2>
+        <p class="b-browse-sub">Each topic is a guided 101 hub. Articles in priority order, with quick answers to common questions.</p>
       </div>
 
-      <div class="browse-divider"></div>
+      <div class="b-grid">
+        <a href="articles/kitchen-detox-101.html" class="b-card">
+          <div class="b-card-img"><img src="images/homepage-kitchen.webp" alt="Pencil illustration of a cast iron skillet representing the non-toxic kitchen guide" loading="lazy" width="600" height="600"></div>
+          <div class="b-card-body">
+            <div class="b-card-name">Kitchen</div>
+            <div class="b-card-meta">6 guides &middot; ~100 min</div>
+          </div>
+          <div class="b-card-arrow">&#8599;</div>
+        </a>
+        <a href="articles/water-detox-101.html" class="b-card">
+          <div class="b-card-img"><img src="images/homepage-warterdrinks.webp" alt="Pencil illustration of a glass water carafe representing the water filtration guide" loading="lazy" width="600" height="600"></div>
+          <div class="b-card-body">
+            <div class="b-card-name">Water &amp; Drinks</div>
+            <div class="b-card-meta">4 guides &middot; ~55 min</div>
+          </div>
+          <div class="b-card-arrow">&#8599;</div>
+        </a>
+        <a href="articles/bedroom-air-101.html" class="b-card">
+          <div class="b-card-img"><img src="images/homepage-bedroom.webp" alt="Pencil illustration of a bed and nightstand representing the bedroom and indoor air guide" loading="lazy" width="600" height="600"></div>
+          <div class="b-card-body">
+            <div class="b-card-name">Bedroom &amp; Air</div>
+            <div class="b-card-meta">3 guides &middot; ~35 min</div>
+          </div>
+          <div class="b-card-arrow">&#8599;</div>
+        </a>
+        <a href="articles/personal-care-101.html" class="b-card">
+          <div class="b-card-img"><img src="images/homepage-personalcare.webp" alt="Pencil illustration of a soap bar and apothecary jar representing the personal care guide" loading="lazy" width="600" height="600"></div>
+          <div class="b-card-body">
+            <div class="b-card-name">Personal Care</div>
+            <div class="b-card-meta">4 guides &middot; ~60 min</div>
+          </div>
+          <div class="b-card-arrow">&#8599;</div>
+        </a>
+        <a href="articles/baby-kids-101.html" class="b-card">
+          <div class="b-card-img"><img src="images/homepage-babykids.webp" alt="Pencil illustration of a glass baby bottle and teething ring representing the baby and kids guide" loading="lazy" width="600" height="600"></div>
+          <div class="b-card-body">
+            <div class="b-card-name">Baby &amp; Kids</div>
+            <div class="b-card-meta">2 guides &middot; ~60 min</div>
+          </div>
+          <div class="b-card-arrow">&#8599;</div>
+        </a>
+        <a href="articles/reduce-microplastics-in-cleaning-products.html" class="b-card">
+          <div class="b-card-img"><img src="images/homepage-cleaning.webp" alt="Pencil illustration of a natural cleaning spray bottle and lemon representing the non-toxic cleaning guide" loading="lazy" width="600" height="600"></div>
+          <div class="b-card-body">
+            <div class="b-card-name">Cleaning</div>
+            <div class="b-card-meta">1 article &middot; 14 min</div>
+          </div>
+          <div class="b-card-arrow">&#8599;</div>
+        </a>
+        <a href="articles/glyphosate-detox-guide.html" class="b-card">
+          <div class="b-card-img"><img src="images/homepage-food.webp" alt="Pencil illustration of fresh produce representing the food and pesticide exposure guide" loading="lazy" width="600" height="600"></div>
+          <div class="b-card-body">
+            <div class="b-card-name">Food &amp; Pesticides</div>
+            <div class="b-card-meta">1 article &middot; 24 min</div>
+          </div>
+          <div class="b-card-arrow">&#8599;</div>
+        </a>
+        <a href="articles/low-tox-myths-debunked.html" class="b-card">
+          <div class="b-card-img"><img src="images/homepage-myths.webp" alt="Pencil illustration of an open book representing the low-tox myth-busting guide" loading="lazy" width="600" height="600"></div>
+          <div class="b-card-body">
+            <div class="b-card-name">Myth-Busting</div>
+            <div class="b-card-meta">1 article &middot; 22 min</div>
+          </div>
+          <div class="b-card-arrow">&#8599;</div>
+        </a>
+      </div>
+    </section>
 
-      <h2 class="latest-strip-title">Latest research &amp; guides</h2>
-      <div class="latest-grid">
-        <a href="articles/glyphosate-detox-guide.html" class="latest-card">
-          <span class="latest-tag">Food &amp; Pesticides</span>
-          <h3 class="latest-card-title">Glyphosate Detox: What It Is, Where It Hides in Your Food, and How to Reduce Exposure</h3>
-          <span class="latest-card-meta">24 min read &middot; April 2026</span>
+    <section class="b-newsletter" id="home-newsletter">
+      <div class="b-nl-inner">
+        <div class="b-nl-left">
+          <div class="b-nl-eyebrow">The Plastic Detox Weekly</div>
+          <h2 class="b-nl-h2">One <em>research backed</em> swap.<br>Straight to your inbox.</h2>
+          <p class="b-nl-sub">No fluff, no sponsored placements, no fear mongering. Just the one thing worth changing this week, with the study to back it up.</p>
+          <form class="b-nl-form" onsubmit="event.preventDefault(); nlSubscribeHero();">
+            <input class="b-nl-input" type="email" id="nl-email-hero" placeholder="your@email.com">
+            <button class="b-nl-btn" type="submit">Subscribe free</button>
+          </form>
+          <div class="b-nl-meta" id="nl-msg-hero">Free forever. Unsubscribe in one click. No spam, ever.</div>
+        </div>
+        <div class="b-nl-right">
+          <a href="articles/glyphosate-detox-guide.html" class="b-nl-card b-nl-card-1">
+            <div class="b-nl-card-tag">Reader favorite</div>
+            <div class="b-nl-card-title">Glyphosate detox: where it hides in your food and how to reduce exposure</div>
+            <div class="b-nl-card-meta">24 min read</div>
+          </a>
+          <a href="articles/baby-kids-101.html" class="b-nl-card b-nl-card-2">
+            <div class="b-nl-card-tag">Most shared</div>
+            <div class="b-nl-card-title">The honest guide to plastic free baby bottles and formula</div>
+            <div class="b-nl-card-meta">9 min read</div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="b-latest" id="home-latest">
+      <div class="b-latest-head">
+        <h2 class="b-browse-h2">Latest <em>research</em> &amp; guides</h2>
+        <a class="b-latest-all" onclick="showResources()">All guides &rarr;</a>
+      </div>
+      <div class="b-latest-row">
+        <a href="articles/glyphosate-detox-guide.html" class="b-latest-card">
+          <span class="b-latest-tag">Food &amp; Pesticides</span>
+          <h3 class="b-latest-title">Glyphosate Detox: What It Is, Where It Hides in Your Food, and How to Reduce Exposure</h3>
+          <span class="b-latest-meta">24 min read &middot; April 2026</span>
         </a>
-        <a href="articles/toxic-kitchen-appliances-ranked.html" class="latest-card">
-          <span class="latest-tag">Kitchen</span>
-          <h3 class="latest-card-title">The Most (and Least) Toxic Kitchen Appliances, Ranked</h3>
-          <span class="latest-card-meta">28 min read &middot; April 2026</span>
+        <a href="articles/toxic-kitchen-appliances-ranked.html" class="b-latest-card">
+          <span class="b-latest-tag">Kitchen</span>
+          <h3 class="b-latest-title">The Most (and Least) Toxic Kitchen Appliances, Ranked</h3>
+          <span class="b-latest-meta">28 min read &middot; April 2026</span>
         </a>
-        <a href="articles/low-tox-mistakes-that-backfire.html" class="latest-card">
-          <span class="latest-tag">Myth-Busting</span>
-          <h3 class="latest-card-title">Low Tox Mistakes That Hurt You More Than They Help</h3>
-          <span class="latest-card-meta">22 min read &middot; April 2026</span>
+        <a href="articles/low-tox-mistakes-that-backfire.html" class="b-latest-card">
+          <span class="b-latest-tag">Myth-Busting</span>
+          <h3 class="b-latest-title">Low Tox Mistakes That Hurt You More Than They Help</h3>
+          <span class="b-latest-meta">22 min read &middot; April 2026</span>
         </a>
       </div>
     </section>
@@ -2361,6 +3002,50 @@
       if (window.gtag) { gtag("event", "newsletter_signup", { method: "homepage_bottom", signup_source: source }); }
     }
 
+    function heroAnswer(ans) {
+      document.querySelectorAll('#b-quiz-answers .b-ans').forEach(btn => {
+        btn.classList.remove('b-ans-selected', 'b-ans-yes', 'b-ans-orange', 'b-ans-no');
+      });
+      const selected = document.querySelector(`#b-quiz-answers .b-ans[data-ans="${ans}"]`);
+      if (selected) {
+        selected.classList.add('b-ans-selected');
+        if (ans === 'yes') selected.classList.add('b-ans-yes');
+        else if (ans === 'sometimes') selected.classList.add('b-ans-orange');
+        else selected.classList.add('b-ans-no');
+      }
+      document.getElementById('b-quiz-feedback').style.display = 'block';
+      const num = document.getElementById('b-sidecar-num');
+      if (ans === 'yes') num.textContent = '3';
+      else if (ans === 'sometimes') num.textContent = '1';
+      else num.textContent = '0';
+      document.getElementById('b-quiz-cta').textContent = 'Continue with full quiz →';
+      if (window.gtag) gtag('event', 'hero_quiz_teaser_answer', { answer: ans });
+    }
+
+    function nlSubscribeHero() {
+      const email = document.getElementById("nl-email-hero").value.trim();
+      const msg = document.getElementById("nl-msg-hero");
+      if (!email || !email.includes("@")) { msg.textContent = "Enter a valid email"; msg.style.color = "#dc2626"; return; }
+      msg.textContent = "Subscribing..."; msg.style.color = "#78716c";
+      const source = getSignupSource();
+      const form = document.createElement("form");
+      form.method = "POST";
+      form.action = "https://57a81e5f.sibforms.com/serve/MUIFAHP3LqQp0UznZl5CKFGztCR47r9K-zHK4YRpryoqZLY0Ybvjo2ohqZhvH_BMVq5XmiDkLloNlf4re1hUEUwze8N053Xm1uVawE60egTCSDSSxuCOcXoGkfIne8Me-YdQ4i2Yi3ohxDAHB6ichyo1OAh4ocm5vRXvt2dWjtAJK7J7-j3rPzU9F1Lj1NG4RhDjvuFgXLd312bqGg==";
+      form.target = "nl-frame";
+      const input = document.createElement("input");
+      input.type = "hidden"; input.name = "EMAIL"; input.value = email;
+      const src = document.createElement("input");
+      src.type = "hidden"; src.name = "SOURCE"; src.value = source;
+      form.appendChild(input);
+      form.appendChild(src);
+      document.body.appendChild(form);
+      form.submit();
+      document.body.removeChild(form);
+      document.getElementById("nl-email-hero").value = "";
+      msg.textContent = "You're in! Check your inbox to confirm."; msg.style.color = "#16a34a";
+      if (window.gtag) { gtag("event", "newsletter_signup", { method: "homepage_hero", signup_source: source }); }
+    }
+
     function nlSubscribeTop() {
       const email = document.getElementById("nl-email-top").value.trim();
       const msg = document.getElementById("nl-msg-top");
@@ -2776,8 +3461,10 @@
       }
       document.getElementById("game").style.display = "none";
       if (resultsEl) resultsEl.style.display = "none";
-      document.getElementById("hero").style.display = "flex";
+      document.getElementById("hero").style.display = "grid";
       document.getElementById("home-browse").style.display = "block";
+      document.getElementById("home-newsletter").style.display = "block";
+      document.getElementById("home-latest").style.display = "block";
       try { gtag('event', 'quiz_exit', { answered: typeof answeredCount !== "undefined" ? answeredCount : 0 }); } catch(e) {}
       return true;
     }
@@ -2946,6 +3633,8 @@
     function startGame() {
       document.getElementById("hero").style.display = "none";
       document.getElementById("home-browse").style.display = "none";
+      document.getElementById("home-newsletter").style.display = "none";
+      document.getElementById("home-latest").style.display = "none";
       document.getElementById("game").style.display = "flex";
       showNlBar(true);
       currentCategory = 0;
@@ -2963,8 +3652,10 @@
       clearSavedResults();
       document.getElementById("results").style.display = "none";
       document.getElementById("game").style.display = "none";
-      document.getElementById("hero").style.display = "flex";
+      document.getElementById("hero").style.display = "grid";
       document.getElementById("home-browse").style.display = "block";
+      document.getElementById("home-newsletter").style.display = "block";
+      document.getElementById("home-latest").style.display = "block";
       showNlBar(false);
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
@@ -3432,6 +4123,8 @@
     function resumeResults() {
       document.getElementById("hero").style.display = "none";
       document.getElementById("home-browse").style.display = "none";
+      document.getElementById("home-newsletter").style.display = "none";
+      document.getElementById("home-latest").style.display = "none";
       document.getElementById("game").style.display = "flex";
       showNlBar(true);
       showResults();
