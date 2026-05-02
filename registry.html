@@ -1740,7 +1740,7 @@
                             "badges": [
                                   "Natural rubber"
                             ],
-                            "asin": "B075JQDMLX"
+                            "asin": "B06XHNCJHV"
                       },
                       {
                             "name": "Mushie Silicone Teether",
@@ -1790,15 +1790,6 @@
                             "img": "715Eh2ha6SS"
                       },
                       {
-                            "name": "Hevea Natural Rubber Rattle",
-                            "sentence": "Natural rubber rattles for infant grasping. Skip plastic shaker rattles, they often hide phthalate soft plastic.",
-                            "badges": [
-                                  "100% natural rubber"
-                            ],
-                            "asin": "B00QUFDPH4",
-                            "img": "41a5e7f29XL"
-                      },
-                      {
                             "name": "Manhattan Toy Wooden Rattle",
                             "img": "81QPjWWuXWL",
                             "sentence": "Solid wood rattles with water based finishes. Heirloom durable, beautiful textures for sensory play.",
@@ -1815,7 +1806,7 @@
                                   "GOTS + kapok"
                             ],
                             "tag": "Editor pick",
-                            "asin": "B0FHBYDFSK"
+                            "url": "https://tokikids.com/collections/cotton-foam-play-mats"
                       },
                       {
                             "name": "Gathre Vegan Leather Mat",
@@ -1842,7 +1833,7 @@
                             "badges": [
                                   "GOTS organic"
                             ],
-                            "img": "71Ja8oWikuL"
+                            "img": "https://estella-nyc.com/cdn/shop/files/baby-books-nyc-abcs-baby-book-estella-1196643304.jpg?v=1774373201&width=1200"
                       },
                       {
                             "name": "Senger Naturwelt Wool Stuffies",
@@ -2052,6 +2043,7 @@
 
     function imgUrl(id) {
       if (!id) return PLACEHOLDER_IMG;
+      if (/^https?:\/\//.test(id)) return id;
       return `https://m.media-amazon.com/images/I/${id}._AC_SL400_.jpg`;
     }
 
