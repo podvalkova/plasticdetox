@@ -184,6 +184,15 @@
       border-radius: var(--radius-sm);
       display: block;
     }
+    .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0 2rem; }
+    .product-card { background: var(--surface); border-radius: var(--radius); text-decoration: none; color: inherit; box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; overflow: hidden; }
+    .product-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+    .product-card img { width: 100%; height: 180px; object-fit: contain; background: #f5f5f4; padding: 0.75rem; }
+    .product-card-body { padding: 1rem; display: flex; flex-direction: column; flex: 1; gap: 0.4rem; }
+    .product-card-tier { font-size: 0.7rem; font-weight: 800; color: var(--accent-dark); letter-spacing: 0.06em; }
+    .product-card-name { font-size: 1rem; font-weight: 700; line-height: 1.3; margin: 0; }
+    .product-card-best { font-size: 0.85rem; color: var(--text-muted); line-height: 1.4; flex: 1; margin: 0; }
+    .product-card-cta { font-size: 0.85rem; color: var(--accent-dark); font-weight: 600; margin-top: 0.4rem; }
   </style>
 </head>
 <body>
@@ -603,42 +612,44 @@
 
     <p>Conventional deodorants and antiperspirants frequently contain dimethicone, cyclomethicone (a volatile silicone), PEG compounds, and synthetic fragrance (which often contains phthalates). The switch to natural deodorant has become mainstream enough that there are now excellent options at every price point.</p>
 
-    <table class="comparison-table">
-      <thead>
-        <tr>
-          <th>Product</th>
-          <th>Type</th>
-          <th>Key Features</th>
-          <th>Rating</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><a href="https://www.amazon.com/dp/B09SGXS4PZ?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Each &amp; Every Aluminum Free Deodorant</a></td>
-          <td>Stick</td>
-          <td>Plant based, Dead Sea salt formula, unisex scents</td>
-          <td><span class="rating-best">Best</span></td>
-        </tr>
-        <tr>
-          <td><a href="https://www.amazon.com/dp/B0DTQ9TLDL?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Wild The Full Monty Aluminum Free Deodorant</a></td>
-          <td>Refillable</td>
-          <td>Refillable case, bamboo pulp pods, Leaping Bunny and Vegan certified</td>
-          <td><span class="rating-best">Best</span></td>
-        </tr>
-        <tr>
-          <td><a href="https://primallypure.com/collections/deodorant" target="_blank" rel="noopener sponsored">Primally Pure Deodorant</a></td>
-          <td>Stick</td>
-          <td>Organic tallow and beeswax base, baking soda free option, multiple scents</td>
-          <td><span class="rating-best">Best</span></td>
-        </tr>
-        <tr>
-          <td><a href="https://www.amazon.com/dp/B07BN1ZNBL?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Salt of the Earth Lavender &amp; Vanilla Roll On</a></td>
-          <td>Roll On</td>
-          <td>Natural mineral salts, no parabens, vegan and cruelty free</td>
-          <td><span class="rating-good">Good</span></td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="product-grid">
+      <a href="https://www.amazon.com/dp/B09SGXS4PZ?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
+        <img src="https://m.media-amazon.com/images/I/71iWTflth6L._AC_SL400_.jpg" alt="Each &amp; Every Aluminum Free Deodorant" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">$ · BEST ALUMINUM FREE</span>
+          <h3 class="product-card-name">Each &amp; Every Aluminum Free Deodorant</h3>
+          <p class="product-card-best">Plant based Dead Sea salt formula, unisex scents.</p>
+          <span class="product-card-cta">View on Amazon &rarr;</span>
+        </div>
+      </a>
+      <a href="https://www.amazon.com/dp/B0DTQ9TLDL?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
+        <img src="https://m.media-amazon.com/images/I/71qQlV5575L._AC_SL400_.jpg" alt="Wild The Full Monty Aluminum Free Deodorant" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">$$ · BEST REFILLABLE</span>
+          <h3 class="product-card-name">Wild The Full Monty Deodorant</h3>
+          <p class="product-card-best">Refillable case, bamboo pulp pods, Leaping Bunny and Vegan certified.</p>
+          <span class="product-card-cta">View on Amazon &rarr;</span>
+        </div>
+      </a>
+      <a href="https://primallypure.com/collections/deodorant" target="_blank" rel="noopener sponsored" class="product-card">
+        <img src="https://cdn.shopify.com/s/files/1/0874/6120/files/2024_CharcoalDeodorant1.7oz_PDPcopy_18f8e7cb-f478-4fb8-9ff1-83b2de288caa.webp?v=1775659689" alt="Primally Pure Deodorant" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">$$ · BEST ORGANIC</span>
+          <h3 class="product-card-name">Primally Pure Deodorant</h3>
+          <p class="product-card-best">Organic tallow and beeswax base. Baking soda free option, multiple scents.</p>
+          <span class="product-card-cta">Shop Primally Pure &rarr;</span>
+        </div>
+      </a>
+      <a href="https://www.amazon.com/dp/B07BN1ZNBL?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
+        <img src="https://m.media-amazon.com/images/I/61yiFpwp9BL._AC_SL400_.jpg" alt="Salt of the Earth Lavender &amp; Vanilla Roll On" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">$ · BEST MINERAL SALT</span>
+          <h3 class="product-card-name">Salt of the Earth Roll On</h3>
+          <p class="product-card-best">Natural mineral salts, no parabens, vegan and cruelty free.</p>
+          <span class="product-card-cta">View on Amazon &rarr;</span>
+        </div>
+      </a>
+    </div>
 
     <div class="callout">
       <div class="callout-title">The Deodorant Transition Period</div>
