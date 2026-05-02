@@ -187,7 +187,7 @@
     .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0 2rem; }
     .product-card { background: var(--surface); border-radius: var(--radius); text-decoration: none; color: inherit; box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; overflow: hidden; }
     .product-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
-    .product-card img { width: 100%; height: 180px; object-fit: contain; background: #f5f5f4; padding: 0.75rem; }
+    .product-card img { width: 100%; height: 180px; object-fit: contain; background: #fff; padding: 0.75rem; }
     .product-card-body { padding: 1rem; display: flex; flex-direction: column; flex: 1; gap: 0.4rem; }
     .product-card-tier { font-size: 0.7rem; font-weight: 800; color: var(--accent-dark); letter-spacing: 0.06em; }
     .product-card-name { font-size: 1rem; font-weight: 700; line-height: 1.3; margin: 0; }
@@ -240,10 +240,8 @@
         <li><a href="#which-products">Which Products Contain the Most Microplastics?</a></li>
         <li><a href="#read-labels">How to Read Ingredient Labels</a></li>
         <li><a href="#our-standard">Our Vetting Standard</a></li>
-        <li><a href="#toothpaste">Toothpaste and Oral Care</a></li>
         <li><a href="#skincare">Skincare Without Plastic</a></li>
         <li><a href="#body-care">Body Care</a></li>
-        <li><a href="#sunscreen">Sunscreen</a></li>
         <li><a href="#makeup">Makeup Alternatives</a></li>
         <li><a href="#fragrance">Fragrance and Perfume</a></li>
         <li><a href="#nails">Nail Polish</a></li>
@@ -329,7 +327,7 @@
       </svg>
     </div>
 
-    <h3>Face Scrubs and Exfoliating Products</h3>
+    <h3 id="face-scrubs">Face Scrubs and Exfoliating Products</h3>
     <p>Despite the microbead ban, many exfoliating products still contain plastic polymers. While the visible plastic beads are mostly gone, manufacturers have replaced them with polyethylene powders, nylon fibers, and silicone microspheres that serve the same purpose. Some products labeled "natural exfoliant" still contain synthetic polymers as binding or texturizing agents elsewhere in their formula.</p>
 
     <div class="product-grid">
@@ -404,8 +402,13 @@
       </a>
     </div>
 
-    <h3>Sunscreen</h3>
-    <p>Sunscreen is one of the most challenging categories because many UV filters themselves are polymer based. Chemical sunscreens often contain acrylates copolymers to create a uniform, water resistant film. Even some mineral sunscreens use silicone based coating agents on their zinc oxide or titanium dioxide particles. This category requires careful label reading.</p>
+    <h3 id="sunscreen">Sunscreen</h3>
+    <p>Sunscreen is the hardest "Best" tier to fill because most UV filters require some kind of polymer or silicone to suspend evenly across skin. Even mineral sunscreens often coat their zinc oxide or titanium dioxide particles in dimethicone. The picks below are the cleanest formulations we have verified.</p>
+
+    <div class="callout">
+      <div class="callout-title">Sunscreen Priority</div>
+      Wearing sunscreen is more important than avoiding microplastics. Skin cancer risk from UV exposure is far more immediate and well documented than topical microplastic exposure. If your only choice is a conventional sunscreen, choose the sunscreen. Every pick below still contains at least one polymer or silicone in the inactive ingredients.
+    </div>
 
     <div class="product-grid">
       <a href="https://www.amazon.com/dp/B004CDQ73K?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
@@ -437,7 +440,9 @@
       </a>
     </div>
 
-    <h3>Shampoo and Conditioner</h3>
+    <p>For families, see our <a href="non-toxic-baby-toddler-products-guide.html">non toxic baby and toddler products guide</a> for kid specific sunscreen picks and our <a href="best-mineral-sunscreen-guide.html">best mineral sunscreen guide</a> for the long form comparison.</p>
+
+    <h3 id="hair">Shampoo and Conditioner</h3>
     <p>Shampoos use polyquaternium compounds (synthetic polymers) for conditioning and detangling effects. Conditioners are even more reliant on plastic ingredients, using dimethicone, amodimethicone, and other silicones to create that smooth, slippery feeling. These ingredients coat each hair strand in a thin layer of plastic that does not fully wash off, building up over time.</p>
 
     <div class="product-grid">
@@ -479,7 +484,7 @@
       </a>
     </div>
 
-    <h3>Face Wash and Cleansers</h3>
+    <h3 id="face-wash">Face Wash and Cleansers</h3>
     <p>Plain face wash is a separate beast from face scrubs and peels. There are no exfoliating beads to worry about, but conventional cleansers are still loaded with PEG compounds (in foaming formulas), carbomer (in gels), and dimethicone (in cream cleansers). Because cleansers contact your skin for less time than leave on products, the absorption risk is lower, but the wash off polymers still go straight into the wastewater stream.</p>
 
     <div class="product-grid">
@@ -512,8 +517,18 @@
       </a>
     </div>
 
-    <h3>Toothpaste</h3>
-    <p>While microbeads in toothpaste received the most media attention, many conventional toothpastes still contain plastic polymers used as binders, thickeners, or for visual appearance. PEG compounds, carbomer, and polyethylene are still found in numerous mainstream brands. The concern with toothpaste is especially acute because these plastic particles are applied directly to mucous membranes and are frequently swallowed in small amounts.</p>
+    <h3 id="toothpaste">Toothpaste</h3>
+    <p>Toothpaste is one of the most important products to get right because you use it twice a day, it contacts your mucous membranes directly, and you inevitably swallow small amounts. A 2019 study in <em>Environmental Science and Pollution Research</em> found that brushing with a polyethylene containing toothpaste released approximately 4,000 microplastic particles per brushing session.</p>
+
+    <div class="callout">
+      <div class="callout-title">What to Avoid in Toothpaste</div>
+      <ul>
+        <li><strong>Polyethylene (PE):</strong> Used as an abrasive and for those colored specks. The original microbead controversy target.</li>
+        <li><strong>PEG compounds (PEG 8, PEG 32, etc.):</strong> Used as humectants and solvents. Synthetic polymers derived from petroleum.</li>
+        <li><strong>Carbomer:</strong> A crosslinked polyacrylic acid used as a thickener and gel former.</li>
+        <li><strong>Triclosan:</strong> Not a microplastic but a synthetic antibacterial that the FDA banned from hand soaps in 2016. Some toothpaste formulas still include it.</li>
+      </ul>
+    </div>
 
     <div class="product-grid">
       <a href="https://www.amazon.com/dp/B0BP4VXJ6X?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
@@ -535,6 +550,8 @@
         </div>
       </a>
     </div>
+
+    <p>For mouthwash, look for brands that come in glass bottles or offer tablet form. Conventional mouthwashes frequently contain PEG compounds and carbomer. <a href="https://www.amazon.com/s?k=Georganics+mouthwash&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Georganics</a> and <a href="https://www.amazon.com/s?k=Bite+mouthwash+bits&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Bite mouthwash bits</a> are solid alternatives.</p>
 
     <h3>Lip Products</h3>
     <p>Lipstick, lip gloss, and lip balm deserve special attention because whatever you put on your lips, you inevitably ingest. Studies estimate that the average lipstick wearer consumes roughly 24 milligrams of product per day. If that product contains synthetic polymers like polybutene, polyethylene, or microcrystalline wax blended with synthetic plastics, you are eating plastic directly. A 2023 study in <em>Science of the Total Environment</em> detected polyethylene particles in 62% of lip products tested.</p>
@@ -588,15 +605,6 @@
           <span class="product-card-tier">$ · BEST BUDGET BAR</span>
           <h3 class="product-card-name">Dr. Bronner's Pure Castile Bar</h3>
           <p class="product-card-best">Eight ingredients, USDA Organic, zero plastic bottle.</p>
-          <span class="product-card-cta">View &rarr;</span>
-        </div>
-      </a>
-      <a href="https://www.amazon.com/dp/B00028EYJ8?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
-        <img src="https://m.media-amazon.com/images/I/81oNLrDwCPL._AC_SL400_.jpg" alt="Dr. Bronner's Pure Castile Liquid Soap" loading="lazy">
-        <div class="product-card-body">
-          <span class="product-card-tier">$ · BEST LIQUID</span>
-          <h3 class="product-card-name">Dr. Bronner's Liquid Castile</h3>
-          <p class="product-card-best">Multipurpose, organic, simple ingredient list.</p>
           <span class="product-card-cta">View &rarr;</span>
         </div>
       </a>
@@ -724,88 +732,12 @@
 
     <p>One honest caveat: ingredient transparency in the beauty industry is patchy. We rely on brand published INCI lists, EWG Skin Deep, and the Beat the Microbead database. For the brands flagged "verify per product" you should always cross check the specific item you are buying because lines can be mixed (a brand can sell one truly clean product alongside others that are not).</p>
 
-    <!-- SECTION 4: Toothpaste and Oral Care -->
-    <h2 id="toothpaste">Toothpaste and Oral Care</h2>
-
-    <p>Toothpaste is one of the most important products to get right because you use it at least twice a day, it contacts your mucous membranes directly, and you inevitably swallow small amounts. A 2019 study in <em>Environmental Science and Pollution Research</em> found that brushing with a polyethylene containing toothpaste released approximately 4,000 microplastic particles per brushing session.</p>
-
-    <h3>What to Avoid in Toothpaste</h3>
-    <ul>
-      <li><strong>Polyethylene (PE):</strong> Used as an abrasive and for those colored specks. This was the original microbead controversy target.</li>
-      <li><strong>PEG compounds (PEG 8, PEG 32, etc.):</strong> Used as humectants and solvents. They are synthetic polymers derived from petroleum.</li>
-      <li><strong>Carbomer:</strong> A crosslinked polyacrylic acid used as a thickener and gel former.</li>
-      <li><strong>Triclosan:</strong> Not a microplastic but a synthetic antibacterial that the FDA banned from hand soaps in 2016. Some toothpaste formulas still include it.</li>
-    </ul>
-
-    <h3>Recommended Toothpaste Alternatives</h3>
-
-    <table class="comparison-table">
-      <thead>
-        <tr>
-          <th>Product</th>
-          <th>Key Features</th>
-          <th>Fluoride</th>
-          <th>Rating</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><a href="https://www.amazon.com/dp/B000Q46K86?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Weleda Salt Toothpaste</a></td>
-          <td>NATRUE certified, plant based, no synthetic polymers</td>
-          <td>No</td>
-          <td><span class="rating-best">Best for adults</span></td>
-        </tr>
-        <tr>
-          <td><a href="https://www.amazon.com/dp/B004769M8E?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Spry Kids Tooth Gel</a></td>
-          <td>Xylitol formula, safe to swallow, no SLS or artificial colors</td>
-          <td>No</td>
-          <td><span class="rating-best">Best for kids</span></td>
-        </tr>
-      </tbody>
-    </table>
-
-    <p>For mouthwash, look for brands that come in glass bottles or offer tablet form. Conventional mouthwashes frequently contain PEG compounds and carbomer. <a href="https://www.amazon.com/s?k=Georganics+mouthwash&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Georganics</a> and <a href="https://www.amazon.com/s?k=Bite+mouthwash+bits&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Bite mouthwash bits</a> are solid alternatives.</p>
-
     <!-- SECTION 5: Skincare Without Plastic -->
     <h2 id="skincare">Skincare Without Plastic</h2>
 
     <p>Skincare is where the industry hides the most synthetic polymers, and ironically it is the highest search volume category for "non toxic" Pinterest traffic. From cleanser to eye cream, nearly every conventional product contains at least one polymer or silicone. Below is a step by step routine with vetted picks for every layer.</p>
 
-    <h3>Cleansers</h3>
-    <p>Conventional cleansers use polyethylene microbeads (now banned in rinse off formulas in many countries) and carbomer as a thickener. Look for cleansers that use natural exfoliants like jojoba beads, rice bran, or oat flour. Bar cleansers are an excellent option as they rarely contain synthetic polymers and skip the plastic bottle entirely.</p>
-
-    <table class="comparison-table">
-      <thead>
-        <tr><th>Product</th><th>Type</th><th>Best For</th><th>Tier</th><th>Rating</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><a href="https://www.amazon.com/s?k=Ethique+Face+Cleanser+Bar&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Ethique Face Cleanser Bar</a></td>
-          <td>Bar</td><td>All skin types, travel, zero waste</td><td>$</td>
-          <td><span class="rating-best">Best</span></td>
-        </tr>
-        <tr>
-          <td><a href="https://www.amazon.com/s?k=One+Love+Organics+Easy+Does+It+Cleanser&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">One Love Organics Easy Does It</a></td>
-          <td>Foam</td><td>Sensitive skin, makeup removal</td><td>$$</td>
-          <td><span class="rating-best">Best</span></td>
-        </tr>
-        <tr>
-          <td><a href="https://www.amazon.com/s?k=Three+Ships+Dew+Drops+Cleansing+Oil&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Three Ships Dew Drops Cleansing Oil</a></td>
-          <td>Oil</td><td>Dry skin, double cleanse step one</td><td>$$</td>
-          <td><span class="rating-best">Best</span></td>
-        </tr>
-        <tr>
-          <td><a href="https://www.amazon.com/s?k=Osea+Ocean+Cleansing+Mudd&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Osea Ocean Cleansing Mudd</a></td>
-          <td>Clay</td><td>Oily and combination skin</td><td>$$$</td>
-          <td><span class="rating-best">Best</span></td>
-        </tr>
-        <tr>
-          <td><a href="https://www.amazon.com/s?k=Dr+Bronners+Pure+Castile+Bar+Soap&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Dr. Bronner's Pure Castile Bar</a></td>
-          <td>Bar</td><td>Body and face, ultra simple</td><td>$</td>
-          <td><span class="rating-best">Best</span></td>
-        </tr>
-      </tbody>
-    </table>
+    <p>For face wash and exfoliant picks, see the <a href="#face-wash">Face Wash</a> and <a href="#face-scrubs">Face Scrubs</a> grids above. The rest of this section covers everything that follows the cleanse step.</p>
 
     <h3>Toners and Mists</h3>
     <p>Toners are often a hidden source of PEG compounds and synthetic fragrance. Stick with witch hazel, rose water, or floral hydrosols in glass.</p>
@@ -886,9 +818,6 @@
     <p>The skin around your eyes is the thinnest on your face and the most likely to absorb anything you apply. Conventional eye creams are some of the most silicone heavy products out there.</p>
     <p><strong>Top picks:</strong> <a href="https://www.amazon.com/s?k=Honest+Hazel+Eye+Gels&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Honest Hazel Eye Gels</a> ($$, glass jar, niche but Pinterest popular). <a href="https://www.amazon.com/s?k=True+Botanicals+Renew+Eye+Cream&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">True Botanicals Renew Eye Cream</a> ($$$, MADE SAFE). <a href="https://www.amazon.com/s?k=Osea+Eyes+Wide+Awake&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Osea Eyes Wide Awake</a> ($$$, seaweed base, glass roller).</p>
 
-    <h3>Exfoliants and Masks</h3>
-    <p>Skip anything with polyethylene "microspheres" or "microbeads." For chemical exfoliation, look for AHA or BHA in glass with a short ingredient list. <a href="https://www.amazon.com/s?k=Earth+Harbor+Tidal+Rose+Mask&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Earth Harbor Tidal Rose Mask</a> ($$, glass, vegan), <a href="https://www.amazon.com/s?k=Osea+Red+Algae+Mask&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Osea Red Algae Mask</a> ($$$, glass, refillable line), and <a href="https://www.amazon.com/s?k=One+Love+Organics+Brand+New+Day+Cleanser&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">One Love Organics Brand New Day</a> ($$, dual cleanser and mask) are the cleanest options we have verified.</p>
-
     <div class="callout">
       <div class="callout-title">A Note on "Cleaner Conventional" Brands</div>
       Several brands like Cocokind, Necessaire, Saie, ILIA, and Kosas are widely loved in the low tox community but contain dimethicone, silica silylate, or other synthetic polymers in specific products. They are still cleaner than mainstream alternatives. We do not put them in our "Best" tier because they fail our zero polymer rule, but if your alternative is a fully conventional drugstore product, they are a meaningful step in the right direction. Always check the specific INCI list before buying because lines often mix clean and not so clean items.
@@ -931,64 +860,11 @@
     <h3>Body Oil</h3>
     <p><a href="https://www.amazon.com/s?k=Osea+Undaria+Algae+Body+Oil&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Osea Undaria Algae Body Oil</a> ($$$, glass bottle, the flagship of the brand and one of the highest search volume body oils on Pinterest). <a href="https://www.amazon.com/s?k=Primally+Pure+Body+Oil&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Primally Pure Body Oil</a> ($$, organic, glass bottle). For a budget pick, plain organic jojoba or sweet almond oil from a glass bottle works just as well.</p>
 
-    <h3>Body Wash</h3>
-    <p>The single best swap is a bar of <a href="https://www.amazon.com/s?k=Dr+Bronners+Pure+Castile+Bar+Soap&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Dr. Bronner's Pure Castile Bar</a> ($, eight ingredients, no plastic bottle). For liquid, <a href="https://www.amazon.com/s?k=Plaine+Products+Body+Wash&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Plaine Products Body Wash</a> ($$, refillable aluminum) is our top pick.</p>
-
     <h3>Body Scrub</h3>
     <p>Skip anything with polyethylene microbeads. The gentlest exfoliants are sugar, salt, or coffee grounds in oil. <a href="https://www.amazon.com/s?k=Osea+Salts+of+the+Earth+Body+Scrub&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Osea Salts of the Earth Body Scrub</a> ($$$, glass jar) and <a href="https://www.amazon.com/s?k=Primally+Pure+Body+Scrub&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Primally Pure Body Scrub</a> ($$, organic, glass) are both clean.</p>
 
     <h3>Hand Cream and Foot Cream</h3>
     <p>For hand cream, <a href="https://www.amazon.com/s?k=Weleda+Skin+Food&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Weleda Skin Food</a> ($, NATRUE certified, plant based) is a clean classic that doubles as foot cream. For a richer foot cream, <a href="https://www.amazon.com/s?k=Earth+Mama+Lavender+Foot+Cream&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Earth Mama Lavender Foot Cream</a> ($, designed for pregnancy swelling) is gentle and clean.</p>
-
-    <!-- SECTION 5.6: Sunscreen -->
-    <h2 id="sunscreen">Sunscreen</h2>
-
-    <p>Sunscreen is the hardest "Best" tier to fill because most UV filters require some kind of polymer or silicone to suspend evenly across skin. Even mineral sunscreens often coat their zinc oxide or titanium dioxide particles in dimethicone. We list the cleanest options we have verified, organized by use case.</p>
-
-    <div class="callout">
-      <div class="callout-title">Sunscreen Priority</div>
-      Wearing sunscreen is more important than avoiding microplastics. Skin cancer risk from UV exposure is far more immediate and well documented than topical microplastic exposure. If your only choice is a conventional sunscreen, choose the sunscreen. The picks below are the cleanest formulations we have found, but every one of them still contains at least one polymer or silicone in the inactive ingredients.
-    </div>
-
-    <table class="comparison-table">
-      <thead>
-        <tr><th>Product</th><th>Use Case</th><th>Active</th><th>Tier</th><th>Rating</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><a href="https://www.amazon.com/s?k=Badger+Sport+Mineral+Sunscreen&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Badger Sport Mineral SPF 40</a></td>
-          <td>Body, sport, sweat</td><td>Zinc oxide</td><td>$</td>
-          <td><span class="rating-best">Best</span></td>
-        </tr>
-        <tr>
-          <td><a href="https://www.amazon.com/s?k=All+Good+Sport+Sunscreen+mineral&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">All Good Sport Sunscreen SPF 30</a></td>
-          <td>Reef safe, swim</td><td>Zinc oxide</td><td>$</td>
-          <td><span class="rating-best">Best</span></td>
-        </tr>
-        <tr>
-          <td><a href="https://www.amazon.com/s?k=Earth+Mama+Tinted+Mineral+Sunscreen&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Earth Mama Tinted Mineral SPF 40</a></td>
-          <td>Face daily, kids, baby</td><td>Zinc oxide</td><td>$$</td>
-          <td><span class="rating-best">Best</span></td>
-        </tr>
-        <tr>
-          <td><a href="https://www.amazon.com/s?k=Three+Ships+Sun+Glow+Tinted+Mineral+SPF&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Three Ships Sun Glow Tinted SPF 30</a></td>
-          <td>Tinted face, daily</td><td>Zinc oxide</td><td>$$</td>
-          <td><span class="rating-best">Best</span></td>
-        </tr>
-        <tr>
-          <td><a href="https://www.amazon.com/s?k=Raw+Elements+Face+Body+Tin&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Raw Elements Face and Body Tin SPF 30</a></td>
-          <td>Plastic free packaging</td><td>Zinc oxide</td><td>$$</td>
-          <td><span class="rating-best">Best</span></td>
-        </tr>
-        <tr>
-          <td><a href="https://www.amazon.com/s?k=Kabana+Green+Screen+SPF&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Kabana Green Screen SPF 32</a></td>
-          <td>Ultra short INCI</td><td>Zinc oxide</td><td>$$</td>
-          <td><span class="rating-best">Best</span></td>
-        </tr>
-      </tbody>
-    </table>
-
-    <p>For families, see our <a href="non-toxic-baby-toddler-products-guide.html">non toxic baby and toddler products guide</a> for kid specific sunscreen picks and our <a href="best-mineral-sunscreen-guide.html">best mineral sunscreen guide</a> for the long form comparison.</p>
 
     <!-- SECTION 6: Makeup Alternatives -->
     <h2 id="makeup">Makeup Alternatives</h2>
@@ -1197,45 +1073,7 @@
 
     <p>Conventional hair care products are loaded with synthetic polymers. Shampoos contain polyquaternium for conditioning, while conditioners rely on dimethicone and amodimethicone to create smooth, tangle free hair. These silicones coat hair strands in plastic that builds up over time, leading to what the natural hair care community calls "silicone buildup," which eventually makes hair feel heavy, greasy, and flat.</p>
 
-    <h3>Shampoo Bars</h3>
-    <p>Shampoo bars are one of the easiest and most impactful switches you can make. They eliminate the plastic bottle entirely, typically contain zero synthetic polymers, and a single bar replaces two to three bottles of liquid shampoo. The transition period (two to four weeks while your hair adjusts) is real but temporary.</p>
-
-    <table class="comparison-table">
-      <thead>
-        <tr>
-          <th>Product</th>
-          <th>Hair Type</th>
-          <th>Key Features</th>
-          <th>Rating</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><a href="https://www.amazon.com/s?k=Ethique+Heali+Kiwi+Shampoo+Bar&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Ethique Heali Kiwi Shampoo Bar</a></td>
-          <td>All types</td>
-          <td>Compostable packaging, no plastic, pH balanced</td>
-          <td><span class="rating-best">Best</span></td>
-        </tr>
-        <tr>
-          <td><a href="https://www.amazon.com/s?k=HiBAR+Maintain+Shampoo+Bar&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">HiBAR Maintain Shampoo</a></td>
-          <td>Normal</td>
-          <td>Salon quality ingredients, zero waste</td>
-          <td><span class="rating-best">Best</span></td>
-        </tr>
-        <tr>
-          <td><a href="https://www.amazon.com/s?k=Plaine+Products+Shampoo&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Plaine Products Shampoo (refill)</a></td>
-          <td>All types</td>
-          <td>Liquid formula in refillable aluminum bottles</td>
-          <td><span class="rating-good">Good</span></td>
-        </tr>
-        <tr>
-          <td><a href="https://www.amazon.com/s?k=Dr+Bronners+Pure+Castile+Liquid+Soap&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Dr. Bronner's Pure Castile Liquid Soap</a></td>
-          <td>All types</td>
-          <td>Multipurpose, organic, simple ingredient list</td>
-          <td><span class="rating-good">Good</span></td>
-        </tr>
-      </tbody>
-    </table>
+    <p>For shampoo picks, see the <a href="#hair">Shampoo and Conditioner</a> grid above. The rest of this section covers conditioner, leave in, scalp, dry shampoo, and styling.</p>
 
     <h3>Conditioner</h3>
     <p>Conditioner bars use cocoa butter, shea butter, and plant oils to condition without silicone coating. <a href="https://www.amazon.com/s?k=Ethique+The+Guardian+Conditioner+Bar&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Ethique The Guardian Conditioner Bar</a> ($, all hair types). For liquid, <a href="https://www.amazon.com/s?k=Plaine+Products+Conditioner&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Plaine Products Conditioner</a> ($$, refillable aluminum) and <a href="https://www.amazon.com/s?k=Innersense+Hydrating+Cream+Conditioner&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Innersense Hydrating Cream Conditioner</a> ($$, salon quality, no silicones) are our picks.</p>
