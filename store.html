@@ -233,7 +233,7 @@
       background: transparent;
       color: var(--text);
     }
-    .a-search-icon { color: var(--text-muted); font-size: 1.05rem; }
+    .a-search-icon { color: var(--text-muted); flex-shrink: 0; }
 
     .a-side-block { margin-bottom: 1.75rem; }
     .a-side-h {
@@ -812,8 +812,8 @@
       <div class="a-body">
         <aside class="a-side">
           <div class="a-search">
-            <span class="a-search-icon">⌕</span>
-            <input id="store-search" type="search" placeholder="Search picks…" aria-label="Search products">
+            <svg class="a-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input id="store-search" type="text" placeholder="Search picks…" aria-label="Search products" autocomplete="off">
           </div>
           <div class="a-side-block cat-block">
             <div class="a-side-h">Categories</div>
@@ -1444,6 +1444,9 @@
     }
 
     function applyFilters() {
+      const filtering = !!(activeFilter || searchTerm);
+      const showingAll = activeCat === 'all';
+      let totalVisible = 0;
       document.querySelectorAll('.a-cat').forEach(section => {
         const grid = section.querySelector('.a-grid');
         if (!grid) return;
@@ -1458,8 +1461,13 @@
           wrap.style.display = matches ? '' : 'none';
           if (matches) visible++;
         });
+        totalVisible += visible;
+        // When filtering across multiple categories, hide entire sections
+        // with zero matches — otherwise the page is full of empty headers.
+        const hideWholeSection = visible === 0 && filtering && showingAll;
+        section.style.display = hideWholeSection ? 'none' : '';
         let empty = section.querySelector('.a-empty');
-        if (visible === 0) {
+        if (visible === 0 && !hideWholeSection) {
           if (!empty) {
             empty = document.createElement('div');
             empty.className = 'a-empty';
@@ -1470,6 +1478,22 @@
           empty.remove();
         }
       });
+      // Global empty state for search/filter that matches nothing anywhere
+      const root = document.getElementById('store-products');
+      let globalEmpty = root.querySelector('.a-global-empty');
+      if (totalVisible === 0 && filtering) {
+        if (!globalEmpty) {
+          globalEmpty = document.createElement('div');
+          globalEmpty.className = 'a-empty a-global-empty';
+          globalEmpty.style.padding = '4rem 1rem';
+          root.appendChild(globalEmpty);
+        }
+        globalEmpty.textContent = searchTerm
+          ? `No picks match "${searchTerm}".`
+          : 'No picks match this filter.';
+      } else if (globalEmpty) {
+        globalEmpty.remove();
+      }
     }
 
     // Event handlers
