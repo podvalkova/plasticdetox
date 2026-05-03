@@ -38,7 +38,7 @@
     "author": { "@type": "Organization", "name": "Plastic Detox", "url": "https://plasticdetox.org" },
     "publisher": { "@type": "Organization", "name": "Plastic Detox", "url": "https://plasticdetox.org" },
     "datePublished": "2026-03-27",
-    "dateModified": "2026-04-24",
+    "dateModified": "2026-05-03",
     "mainEntityOfPage": "https://plasticdetox.org/articles/how-to-enjoy-coffee-without-plastic.html"
   }
   </script>
@@ -168,6 +168,15 @@
       border-radius: var(--radius-sm);
       display: block;
     }
+    .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0 2rem; }
+    .product-card { background: var(--surface); border-radius: var(--radius); text-decoration: none; color: inherit; box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; overflow: hidden; }
+    .product-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+    .product-card img { width: 100%; height: 180px; object-fit: contain; background: #fff; padding: 0.75rem; }
+    .product-card-body { padding: 1rem; display: flex; flex-direction: column; flex: 1; gap: 0.4rem; }
+    .product-card-tier { font-size: 0.7rem; font-weight: 800; color: var(--accent-dark); letter-spacing: 0.06em; }
+    .product-card-name { font-size: 1rem; font-weight: 700; line-height: 1.3; margin: 0; }
+    .product-card-best { font-size: 0.85rem; color: var(--text-muted); line-height: 1.4; flex: 1; margin: 0; }
+    .product-card-cta { font-size: 0.85rem; color: var(--accent-dark); font-weight: 600; margin-top: 0.4rem; }
   </style>
 </head>
 <body>
@@ -191,7 +200,7 @@
     <div class="article-tag">Coffee Guide</div>
     <h1>The Complete Guide to Plastic-Free Coffee: Beans, Brewers, and Beyond (2026)</h1>
     <div class="article-meta">
-      Updated March 27, 2026 · 16 min read · <em>This article contains affiliate links. If you purchase through our links, we may earn a small commission at no extra cost to you.</em>
+      Updated May 3, 2026 · 16 min read · <em>This article contains affiliate links. If you purchase through our links, we may earn a small commission at no extra cost to you.</em>
     </div>
 
     <img src="../images/coffe.webp" alt="Illustration of a coffee cup filled with colorful plastic pieces, asking how much plastic is in your morning coffee" class="article-img">
@@ -381,14 +390,38 @@
       If every surface that touches hot water is glass, ceramic, or stainless steel, your microplastic exposure from brewing is zero. Check your brewer: look at the water reservoir, the brew basket, the carafe, and any internal tubing.
     </div>
 
-    <h3>Glass French Press</h3>
-    <p>The classic plastic free brew. A borosilicate glass carafe with a stainless steel plunger and mesh filter. No plastic touches the water or the coffee at any point. It also produces a full bodied cup because the metal mesh allows coffee oils through. Models like the <a href="https://www.amazon.com/dp/B00008XEWG?tag=plasticdetox-20" target="_blank" rel="noopener sponsored"><strong>Bodum Chambord</strong></a> ($25 to $40) are all glass and stainless steel.</p>
+    <h3>Plastic Free Brewers We Recommend</h3>
+    <p>These three brewers cover every taste and budget. None has plastic in the water path. Pick the one that matches the coffee you actually want to drink: light and clean (pour over), full bodied (French press), or strong and concentrated (moka pot).</p>
 
-    <h3>Ceramic Pour Over</h3>
-    <p>A ceramic dripper (like the <a href="https://www.amazon.com/dp/B000P4D5HG?tag=plasticdetox-20" target="_blank" rel="noopener sponsored"><strong>Hario V60 Ceramic</strong></a>, $20 to $30) sits on top of your mug or carafe. You pour hot water over ground coffee through a paper filter. The ceramic is completely inert, and unbleached paper filters add no chemical exposure. Make sure you buy the <strong>ceramic version</strong>, not the plastic V60 (Hario sells both).</p>
-
-    <h3>Stainless Steel Moka Pot</h3>
-    <p>The stovetop espresso maker. The <a href="https://www.amazon.com/dp/B07ZKZXM4B?tag=plasticdetox-20" target="_blank" rel="noopener sponsored"><strong>Bialetti Venus</strong></a> ($30 to $45) is entirely stainless steel. It makes strong, concentrated coffee similar to espresso. Note: the classic Bialetti Moka Express is made of aluminum, which some people prefer to avoid. Choose the stainless steel Venus model instead.</p>
+    <div class="product-grid">
+      <a href="https://www.amazon.com/dp/B000P4D5HG?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
+        <img src="https://m.media-amazon.com/images/I/51cCw+yG9BL._AC_SL400_.jpg" alt="Hario V60 Ceramic Coffee Dripper" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">$ &middot; BEST POUR OVER</span>
+          <h3 class="product-card-name">Hario V60 Ceramic</h3>
+          <p class="product-card-best">Inert ceramic dripper. Buy the ceramic version, not the plastic.</p>
+          <span class="product-card-cta">View &rarr;</span>
+        </div>
+      </a>
+      <a href="https://www.amazon.com/dp/B00008XEWG?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
+        <img src="https://m.media-amazon.com/images/I/61V-VGqgHqL._AC_SL400_.jpg" alt="Bodum Chambord French Press" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">$ &middot; BEST FRENCH PRESS</span>
+          <h3 class="product-card-name">Bodum Chambord</h3>
+          <p class="product-card-best">All glass and stainless steel. No plastic touches the brew.</p>
+          <span class="product-card-cta">View &rarr;</span>
+        </div>
+      </a>
+      <a href="https://www.amazon.com/dp/B07ZKZXM4B?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
+        <img src="https://m.media-amazon.com/images/I/61RbpANq9CL._AC_SL400_.jpg" alt="Bialetti Venus Stainless Steel Moka Pot" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">$$ &middot; BEST MOKA POT</span>
+          <h3 class="product-card-name">Bialetti Venus</h3>
+          <p class="product-card-best">Stainless steel stovetop espresso. Skip the aluminum classic.</p>
+          <span class="product-card-cta">View &rarr;</span>
+        </div>
+      </a>
+    </div>
 
     <h3>A Note on AeroPress</h3>
     <p>The AeroPress is popular for travel and speed, but it is made from polypropylene plastic. Hot water contacts the plastic body directly during brewing. Polypropylene is one of the more stable plastics and is BPA free, but it is still plastic meeting hot water. If you use an AeroPress, consider it a middle ground rather than a fully plastic free option.</p>
@@ -433,7 +466,40 @@
     <p>Some paper filters are treated with PFAS (forever chemicals) for wet strength. A 2020 study found PFAS in some paper food contact materials. Not all brands disclose this. Look for filters from brands that specifically state they are PFAS free. <a href="https://www.amazon.com/dp/B0014EAPL0?tag=plasticdetox-20" target="_blank" rel="noopener sponsored"><strong>Melitta unbleached filters</strong></a> and <a href="https://www.amazon.com/dp/B001O0R46I?tag=plasticdetox-20" target="_blank" rel="noopener sponsored"><strong>Hario V60 unbleached filters</strong></a> are widely available options.</p>
 
     <h3>Stainless Steel and Gold Filters</h3>
-    <p>Reusable stainless steel mesh filters (grade 304 or 316) are chemically inert and will never leach into your coffee. The tradeoff: they allow coffee oils through, which can raise LDL cholesterol if you drink five or more cups per day. For moderate coffee drinkers, this is not a concern. The <a href="https://www.amazon.com/dp/B07MX87HH9?tag=plasticdetox-20" target="_blank" rel="noopener sponsored"><strong>LHS Stainless Steel Pour Over Filter</strong></a> ($15) is a paperless cone filter that sits directly on your mug, comes with a non slip stand and cleaning brush, and eliminates paper filters entirely.</p>
+    <p>Reusable stainless steel mesh filters (grade 304 or 316) are chemically inert and will never leach into your coffee. The tradeoff: they allow coffee oils through, which can raise LDL cholesterol if you drink five or more cups per day. For moderate coffee drinkers, this is not a concern. A paperless cone filter sits directly on your mug and eliminates paper filters entirely.</p>
+
+    <h3>Plastic Free Filters We Recommend</h3>
+    <p>Pick paper if you want the cholesterol benefit and the easiest cleanup. Pick stainless steel if you want zero waste and the fullest flavor.</p>
+
+    <div class="product-grid">
+      <a href="https://www.amazon.com/dp/B07MX87HH9?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
+        <img src="https://m.media-amazon.com/images/I/71j93poL98L._AC_SL400_.jpg" alt="LHS Stainless Steel Pour Over Coffee Filter" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">$ &middot; BEST REUSABLE</span>
+          <h3 class="product-card-name">LHS Stainless Steel Pour Over</h3>
+          <p class="product-card-best">Paperless cone filter with non slip stand. Zero waste.</p>
+          <span class="product-card-cta">View &rarr;</span>
+        </div>
+      </a>
+      <a href="https://www.amazon.com/dp/B001O0R46I?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
+        <img src="https://m.media-amazon.com/images/I/71zyQAfcnJL._AC_SL400_.jpg" alt="Hario V60 Unbleached Paper Filters" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">$ &middot; BEST FOR V60</span>
+          <h3 class="product-card-name">Hario V60 Unbleached Filters</h3>
+          <p class="product-card-best">Brown paper, no chlorine. Designed for the V60 dripper.</p>
+          <span class="product-card-cta">View &rarr;</span>
+        </div>
+      </a>
+      <a href="https://www.amazon.com/dp/B0014EAPL0?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
+        <img src="https://m.media-amazon.com/images/I/71SlBs41rzL._AC_SL400_.jpg" alt="Melitta Natural Brown Unbleached Coffee Filters" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">$ &middot; BEST FOR DRIP</span>
+          <h3 class="product-card-name">Melitta Unbleached Filters</h3>
+          <p class="product-card-best">Natural brown paper. Fits most drip brewers and cone drippers.</p>
+          <span class="product-card-cta">View &rarr;</span>
+        </div>
+      </a>
+    </div>
 
     <!-- SECTION 5: BEANS -->
     <h2 id="beans">5. Choosing Plastic Free Coffee Beans</h2>
@@ -565,16 +631,42 @@
 
     <h3>Stainless Steel (Best All Around)</h3>
     <p>18/8 stainless steel (grade 304) is completely inert with coffee. It will not leach, stain, or absorb flavors. Double wall vacuum insulation keeps coffee hot for hours.</p>
-    <ul>
-      <li><a href="https://www.amazon.com/dp/B0BRQZJW1Y?tag=plasticdetox-20" target="_blank" rel="noopener sponsored"><strong>Klean Kanteen Insulated Tumbler</strong></a> ($30 to $35). 18/8 stainless steel with a stainless steel lid. One of the few travel mugs with no plastic lid.</li>
-      <li><a href="https://www.amazon.com/dp/B08TLWKVCS?tag=plasticdetox-20" target="_blank" rel="noopener sponsored"><strong>Zojirushi SM-SF</strong></a> ($25 to $30). Exceptional heat retention. The lid has a small plastic gasket for the seal, but it does not contact the liquid during drinking.</li>
-    </ul>
 
     <h3>Glass (Safest Material, More Fragile)</h3>
     <p>Borosilicate glass is completely inert and lets you see your coffee. The tradeoff is fragility, though silicone sleeves help.</p>
-    <ul>
-      <li><a href="https://www.amazon.com/dp/B089QT8JQ9?tag=plasticdetox-20" target="_blank" rel="noopener sponsored"><strong>KeepCup Brew</strong></a> ($30 to $40). Tempered glass with a cork band. Barista standard sizing so coffee shops can fill it directly.</li>
-    </ul>
+
+    <h3>Plastic Free Reusable Cups We Recommend</h3>
+    <p>The cleanest travel mugs are the ones where nothing plastic touches your lips or your coffee. These three pass that test.</p>
+
+    <div class="product-grid">
+      <a href="https://www.amazon.com/dp/B08TLWKVCS?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
+        <img src="https://m.media-amazon.com/images/I/51GU9fO4SPL._AC_SL400_.jpg" alt="Zojirushi SM-SF Stainless Steel Mug" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">$ &middot; BEST INSULATION</span>
+          <h3 class="product-card-name">Zojirushi SM-SF</h3>
+          <p class="product-card-best">Exceptional heat retention. Plastic gasket never touches the drink.</p>
+          <span class="product-card-cta">View &rarr;</span>
+        </div>
+      </a>
+      <a href="https://www.amazon.com/dp/B0BRQZJW1Y?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
+        <img src="https://m.media-amazon.com/images/I/717xLAVYn3L._AC_SL400_.jpg" alt="Klean Kanteen Insulated Tumbler" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">$$ &middot; BEST ALL STEEL</span>
+          <h3 class="product-card-name">Klean Kanteen Tumbler</h3>
+          <p class="product-card-best">18/8 steel body and steel lid. One of the few with no plastic lid.</p>
+          <span class="product-card-cta">View &rarr;</span>
+        </div>
+      </a>
+      <a href="https://www.amazon.com/dp/B089QT8JQ9?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
+        <img src="https://m.media-amazon.com/images/I/41bI7wqx+4L._AC_SL400_.jpg" alt="KeepCup Brew Tempered Glass Coffee Cup" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">$$ &middot; BEST GLASS</span>
+          <h3 class="product-card-name">KeepCup Brew</h3>
+          <p class="product-card-best">Tempered glass with a cork band. Barista standard sizing.</p>
+          <span class="product-card-cta">View &rarr;</span>
+        </div>
+      </a>
+    </div>
 
     <h3>Ceramic</h3>
     <p>Glazed ceramic is inert and will not leach anything. Heavier and more fragile than stainless steel, but many people prefer the feel of ceramic for coffee. A simple ceramic mug from home is the most zero waste option of all.</p>
