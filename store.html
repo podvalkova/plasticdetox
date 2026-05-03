@@ -126,182 +126,482 @@
       .nav-link { font-size: 0.9rem; white-space: nowrap; }
     }
 
-    /* ===== STORE ===== */
-    .store { max-width: 1080px; margin: 0 auto; padding: 3rem 2rem; }
-    .store-title { font-size: 2.5rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 0.75rem; }
-    .store-intro { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 1rem; max-width: 100%; }
-    .store-disclosure { font-size: 0.8rem; color: var(--text-muted); font-style: italic; margin-bottom: 2.5rem; }
+    /* ===== DIRECTION A: EDITORIAL HEADER ===== */
+    .dir-a { background: var(--bg); }
 
-    .store-nav {
+    .a-head { border-bottom: 1px solid var(--border); }
+    .a-head-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 3.5rem 2rem 2.5rem;
+    }
+    .a-crumb {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+    .a-crumb a { color: var(--text-muted); text-decoration: none; }
+    .a-crumb a:hover { color: var(--text); }
+    .a-h1 {
+      font-size: 3.4rem;
+      font-weight: 800;
+      letter-spacing: -0.035em;
+      line-height: 1.02;
+      margin-bottom: 1.25rem;
+      text-wrap: balance;
+    }
+    .a-h1 em { font-style: italic; color: var(--accent-dark); }
+    .a-lede {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+      max-width: 660px;
+      text-wrap: pretty;
+      margin-bottom: 1rem;
+    }
+    .a-lede-link {
+      color: var(--accent-dark);
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1px solid var(--accent-light);
+      white-space: nowrap;
+    }
+    .a-lede-link:hover { border-bottom-color: var(--accent-dark); }
+    .store-disclosure {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      font-style: italic;
+      max-width: 660px;
+    }
+    .a-stats {
+      display: flex;
+      gap: 3rem;
+      margin-top: 1.75rem;
+      padding-top: 1.75rem;
+      border-top: 1px solid var(--border);
+    }
+    .a-stat-num {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+    .a-stat-num span {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--accent-dark);
+      margin-left: 0.15rem;
+    }
+    .a-stat-lbl {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.4rem;
+    }
+
+    /* ===== LAYOUT: SIDEBAR + CONTENT ===== */
+    .a-body {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 240px 1fr;
+    }
+    .a-side {
+      border-right: 1px solid var(--border);
+      padding: 2rem 1.5rem 4rem;
+      position: sticky;
+      top: 0;
+      align-self: start;
+      max-height: 100vh;
+      overflow-y: auto;
+    }
+    .a-search {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 0.85rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--surface);
+      margin-bottom: 1.5rem;
+    }
+    .a-search input {
+      border: none;
+      outline: none;
+      font-family: inherit;
+      font-size: 0.9rem;
+      width: 100%;
+      background: transparent;
+      color: var(--text);
+    }
+    .a-search-icon { color: var(--text-muted); font-size: 1.05rem; }
+
+    .a-side-block { margin-bottom: 1.75rem; }
+    .a-side-h {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.85rem;
+    }
+    .a-side-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+    .a-side-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 0.5rem 0.65rem;
+      font-family: inherit;
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--text);
+      background: none;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      text-align: left;
+    }
+    .a-side-link:hover { background: rgba(0,0,0,0.03); }
+    .a-side-link.active {
+      background: var(--accent-light);
+      color: var(--accent-dark);
+      font-weight: 600;
+    }
+    .a-side-link .ct {
+      font-family: ui-monospace, SFMono-Regular, monospace;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+    .a-side-link.active .ct { color: var(--accent-dark); }
+
+    .a-filter-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 2rem;
-      padding: 0.5rem 0;
+      gap: 0.4rem;
     }
-
-    .store-nav-btn {
-      padding: 0.5rem 1rem;
-      border-radius: 999px;
-      font-size: 0.82rem;
-      font-weight: 600;
-      border: 2px solid var(--border);
+    .a-filter-chip {
+      font-family: inherit;
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 0.3rem 0.7rem;
+      border: 1px solid var(--border);
+      border-radius: 60px;
+      color: var(--text);
       background: var(--surface);
-      color: var(--text-muted);
       cursor: pointer;
-      transition: all 0.2s;
+      transition: all 0.15s;
     }
+    .a-filter-chip:hover { border-color: var(--accent); color: var(--accent-dark); }
+    .a-filter-chip.on {
+      background: var(--text);
+      color: #fff;
+      border-color: var(--text);
+    }
+    .a-side-clear {
+      font-family: inherit;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      background: none;
+      border: none;
+      padding: 0;
+      margin-top: 0.6rem;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+    .a-side-clear:hover { color: var(--text); }
 
-    .store-nav-btn:hover { border-color: var(--accent); color: var(--accent-dark); }
-    .store-nav-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
-
-    .store-category-title {
-      font-size: 1.4rem;
+    /* ===== CONTENT ===== */
+    .a-content {
+      padding: 2.5rem 2rem 4rem;
+      min-width: 0;
+    }
+    .a-cat {
+      margin-bottom: 3.5rem;
+      scroll-margin-top: 1rem;
+    }
+    .a-cat-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 2rem;
+      margin-bottom: 1rem;
+    }
+    .a-cat-h {
+      font-size: 1.7rem;
       font-weight: 700;
-      margin-bottom: 1.25rem;
-      padding-top: 1rem;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
     }
-
-    .store-category-problem {
+    .a-cat-blurb {
       font-size: 0.95rem;
       color: var(--text-muted);
-      margin-bottom: 1.5rem;
+      line-height: 1.55;
+      max-width: 640px;
+    }
+    .a-cat-blurb a {
+      color: var(--accent-dark);
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .a-cat-blurb a:hover { text-decoration: underline; }
+    .a-cat-meta {
+      font-family: ui-monospace, SFMono-Regular, monospace;
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      text-align: right;
+      flex-shrink: 0;
       line-height: 1.5;
     }
 
-    .store-category-problem a { color: var(--accent-dark); font-weight: 600; text-decoration: none; }
-    .store-category-problem a:hover { text-decoration: underline; }
-
-    /* ===== COMPARISON TABLE ===== */
-    .compare-table-wrap {
-      overflow-x: auto;
-      margin-bottom: 2rem;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
+    .a-subtabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.85rem;
+      border-bottom: 1px solid var(--border);
     }
-
-    .compare-table {
-      width: 100%;
-      border-collapse: collapse;
+    .a-subtab {
+      font-family: inherit;
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 0.4rem 0.85rem;
+      border: 1px solid var(--border);
+      border-radius: 60px;
+      color: var(--text-muted);
       background: var(--surface);
-      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.15s;
     }
-
-    .compare-table th {
+    .a-subtab:hover { color: var(--text); border-color: var(--text-muted); }
+    .a-subtab.on {
       background: var(--accent-light);
       color: var(--accent-dark);
-      font-weight: 700;
-      padding: 0.75rem 1rem;
-      text-align: left;
-      white-space: nowrap;
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: 0.03em;
+      border-color: var(--accent-light);
+      font-weight: 600;
     }
 
-    .compare-table td {
-      padding: 0.85rem 1rem;
-      border-top: 1px solid var(--border);
-      vertical-align: top;
-      line-height: 1.45;
+    /* ===== PRODUCT CARDS ===== */
+    .a-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
     }
-
-    .compare-table tr:hover td {
-      background: #fafaf9;
-    }
-
-    .compare-product-cell {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      min-width: 220px;
-    }
-
-    .compare-product-img {
-      width: 96px;
-      height: 96px;
-      object-fit: contain;
-      flex-shrink: 0;
-      border-radius: 6px;
-      background: #fff;
-    }
-
-    .compare-product-info {
+    .a-grid-wrap { display: flex; flex-direction: column; }
+    .a-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
       display: flex;
       flex-direction: column;
+      transition: transform 0.15s, box-shadow 0.15s;
+      height: 100%;
     }
-
-    .compare-product-name {
-      font-weight: 700;
-      color: var(--text);
-      line-height: 1.3;
+    .a-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
     }
-
-    .compare-product-name a {
-      color: var(--text);
-      text-decoration: none;
+    .a-card-img-wrap {
+      aspect-ratio: 1/1;
+      background: #f5f5f4;
+      display: block;
+      overflow: hidden;
     }
-
-    .compare-product-name a:hover {
-      color: var(--accent-dark);
+    .a-card-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 1.25rem;
     }
-
-    .compare-best-for {
-      display: inline-block;
+    .a-card-body {
+      padding: 1rem 1.1rem 0.85rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      flex: 1;
+    }
+    .a-card-bestfor {
+      align-self: flex-start;
       background: var(--accent-light);
       color: var(--accent-dark);
       font-size: 0.7rem;
       font-weight: 600;
-      padding: 0.15rem 0.5rem;
+      padding: 0.18rem 0.6rem;
       border-radius: 999px;
-      margin-top: 0.3rem;
-      width: fit-content;
     }
-
-    .compare-pros-list, .compare-cons-list { list-style: none; padding: 0; margin: 0; font-size: 0.8rem; }
-    .compare-pros-list li { color: #166534; padding: 0.15rem 0; }
-    .compare-cons-list li { color: #991b1b; padding: 0.15rem 0; }
-    .compare-pros-list li::before { content: ""; }
-    .compare-cons-list li::before { content: ""; }
-
-    .compare-view-btn {
-      display: inline-block;
-      padding: 0.35rem 0.85rem;
-      background: var(--accent);
-      color: #fff;
-      border-radius: var(--radius-sm);
-      text-decoration: none;
-      font-size: 0.78rem;
-      font-weight: 600;
-      transition: background 0.2s;
+    .a-card-name {
+      font-size: 0.95rem;
+      font-weight: 700;
+      line-height: 1.3;
+      letter-spacing: -0.005em;
     }
-
-    .compare-view-btn:hover { background: var(--accent-dark); }
-
-    .subcat-tabs {
+    .a-card-name a { color: var(--text); text-decoration: none; }
+    .a-card-name a:hover { color: var(--accent-dark); }
+    .a-card-blurb {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      flex: 1;
+    }
+    .a-card-foot {
       display: flex;
+      align-items: center;
+      justify-content: space-between;
       gap: 0.5rem;
-      margin-bottom: 1.5rem;
+      padding-top: 0.65rem;
+      margin-top: 0.25rem;
+      border-top: 1px solid var(--border);
+    }
+    .a-card-mats {
+      display: flex;
+      gap: 0.3rem;
       flex-wrap: wrap;
     }
-
-    .subcat-tab {
-      padding: 0.5rem 1.1rem;
-      border-radius: var(--radius-sm);
-      font-size: 0.85rem;
+    .mat-chip {
+      font-size: 0.68rem;
+      font-weight: 500;
+      padding: 0.18rem 0.5rem;
+      background: #f5f5f4;
+      color: var(--text-muted);
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+    .tier {
+      font-family: ui-monospace, SFMono-Regular, monospace;
+      font-size: 0.78rem;
       font-weight: 600;
-      border: 2px solid var(--border);
+      color: var(--text);
+      white-space: nowrap;
+    }
+    .tier .dim { color: #d6d3d1; }
+
+    .a-card-cta-row {
+      display: flex;
+      gap: 0.5rem;
+      align-items: stretch;
+      padding: 0 1.1rem 1.1rem;
+    }
+    .a-card-expand {
+      font-family: inherit;
       background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.45rem 0.7rem;
+      font-size: 0.75rem;
+      font-weight: 600;
       color: var(--text-muted);
       cursor: pointer;
-      transition: all 0.2s;
+      transition: all 0.15s;
+      flex-shrink: 0;
+    }
+    .a-card-expand:hover { color: var(--text); border-color: var(--text-muted); }
+    .a-card-view {
+      flex: 1;
+      text-align: center;
+      background: var(--accent);
+      color: #fff;
+      padding: 0.45rem 0.85rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 600;
+      transition: background 0.2s;
+      align-self: center;
+    }
+    .a-card-view:hover { background: var(--accent-dark); }
+
+    .a-card-detail {
+      padding: 0 1.1rem 1.1rem;
+      border-top: 1px solid var(--border);
+      margin-top: 0;
+    }
+    .a-card-detail h4 {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: 0.85rem;
+      margin-bottom: 0.4rem;
+    }
+    .a-card-detail h4.pros-h { color: #166534; }
+    .a-card-detail h4.cons-h { color: #991b1b; }
+    .a-card-detail ul {
+      list-style: none;
+      font-size: 0.78rem;
+      line-height: 1.55;
+      padding: 0;
+    }
+    .a-card-detail .pros li { color: #166534; padding: 0.1rem 0; }
+    .a-card-detail .cons li { color: #991b1b; padding: 0.1rem 0; }
+    .a-card-detail .pros li::before, .a-card-detail .cons li::before {
+      content: "• ";
+      opacity: 0.55;
+      margin-right: 0.15rem;
     }
 
-    .subcat-tab:hover { border-color: var(--accent); color: var(--accent-dark); }
-    .subcat-tab.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+    /* ===== "MORE CATEGORIES" OVERVIEW ===== */
+    .a-overview {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+    .a-overview-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s;
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      padding: 0;
+      font-family: inherit;
+    }
+    .a-overview-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+    .a-overview-card img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      background: #f5f5f4;
+    }
+    .a-overview-card-body { padding: 0.9rem 1rem 1rem; }
+    .a-overview-card-meta {
+      font-family: ui-monospace, SFMono-Regular, monospace;
+      font-size: 0.7rem;
+      color: var(--accent-dark);
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+    }
+    .a-overview-card-name {
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.4rem;
+    }
+    .a-overview-card-subs {
+      font-family: ui-monospace, SFMono-Regular, monospace;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
 
-    .subcat-panel { display: none; }
-    .subcat-panel.active { display: block; }
+    .a-empty {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 3rem 1rem;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
 
     /* ===== NEWSLETTER BAR ===== */
     .newsletter-bar {
@@ -366,21 +666,56 @@
     }
 
     /* ===== MOBILE ===== */
-    @media (max-width: 768px) {
-      .store-nav { gap: 0.35rem; }
-      .store-nav-btn { font-size: 0.75rem; padding: 0.4rem 0.75rem; }
-      .compare-table { font-size: 0.78rem; table-layout: fixed; }
-      .compare-table th, .compare-table td { padding: 0.5rem 0.5rem; overflow-wrap: break-word; overflow: hidden; }
-      .compare-table td { hyphens: none; word-break: keep-all; }
-      .compare-product-cell { min-width: auto; gap: 0.5rem; flex-wrap: wrap; }
-      .compare-product-img { width: 48px; height: 48px; flex-shrink: 0; }
-      .compare-product-name { font-size: 0.72rem; }
-      .compare-table th:nth-child(5), .compare-table td:nth-child(5) { display: none; }
-      .compare-table th:nth-child(1) { width: 28%; }
-      .compare-table th:nth-child(2) { width: 10%; }
-      .compare-table th:nth-child(3) { width: 31%; }
-      .compare-table th:nth-child(4) { width: 31%; }
-      .subcat-tab { font-size: 0.78rem; padding: 0.4rem 0.8rem; }
+    @media (max-width: 960px) {
+      .a-h1 { font-size: 2.5rem; }
+      .a-lede { font-size: 0.95rem; }
+      .a-stats { gap: 1.5rem; flex-wrap: wrap; }
+      .a-stat-num { font-size: 1.6rem; }
+
+      .a-body { grid-template-columns: 1fr; }
+      .a-side {
+        position: static;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        padding: 1.25rem 1.5rem 1.5rem;
+        max-height: none;
+        overflow: visible;
+      }
+      .a-side-block { margin-bottom: 1.25rem; }
+      .a-side-list {
+        flex-direction: row;
+        overflow-x: auto;
+        gap: 0.4rem;
+        padding-bottom: 0.5rem;
+        scrollbar-width: none;
+      }
+      .a-side-list::-webkit-scrollbar { display: none; }
+      .a-side-link {
+        white-space: nowrap;
+        border: 1px solid var(--border);
+        padding: 0.4rem 0.8rem;
+        font-size: 0.85rem;
+      }
+      .a-side-link.active { border-color: var(--accent-light); }
+      .a-side-link .ct { display: none; }
+
+      .a-content { padding: 2rem 1.5rem 3rem; }
+      .a-cat-head { flex-direction: column; gap: 0.4rem; }
+      .a-cat-meta { text-align: left; }
+      .a-cat-h { font-size: 1.4rem; }
+
+      .a-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+      .a-overview { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 560px) {
+      .a-head-inner { padding: 2rem 1.25rem 1.5rem; }
+      .a-h1 { font-size: 2rem; }
+      .a-stats { gap: 1.25rem; }
+      .a-stat-num { font-size: 1.4rem; }
+      .a-content { padding: 1.5rem 1.25rem 3rem; }
+      .a-grid { grid-template-columns: 1fr; }
+      .a-overview { grid-template-columns: 1fr; }
+      .a-card-img-wrap img { padding: 1rem; }
       .newsletter-bar-inner { flex-direction: column; gap: 0.4rem; }
       .newsletter-bar input[type="email"] { width: 100%; max-width: 280px; }
       .nav { padding: 1rem 1.25rem; }
@@ -399,14 +734,52 @@
   </nav>
 
   <main>
-    <section class="store">
-      <h1 class="store-title">The Clean Swap</h1>
-      <p class="store-intro">Replacing all plastic at once can feel overwhelming. Start with the products you use daily for the biggest impact. Every swap here replaces something plastic in your life. <a href="articles/how-to-start-reducing-plastic-exposure.html" style="color:var(--accent-dark);font-weight:600;">Not sure where to start? Read our beginner guide.</a></p>
-      <p class="store-disclosure">None of the products on this page are sponsored. Every item is well researched and trusted by our team. Some products contain affiliate links, which means we may earn a small commission at no extra cost to you.</p>
+    <div class="dir-a">
+      <header class="a-head">
+        <div class="a-head-inner">
+          <div class="a-crumb"><a href="./">Home</a> <span>›</span> <span>Store</span></div>
+          <h1 class="a-h1">The clean swap, <em>by room</em>.</h1>
+          <p class="a-lede">
+            Replacing all plastic at once can feel overwhelming. Start with the products you use daily for the biggest impact. Every swap here replaces something plastic in your life.
+            New here? <a href="articles/how-to-start-reducing-plastic-exposure.html" class="a-lede-link">Read our beginner guide →</a>
+          </p>
+          <p class="store-disclosure">None of the products on this page are sponsored. Every item is well researched and trusted by our team. Some products contain affiliate links, which means we may earn a small commission at no extra cost to you.</p>
+          <div class="a-stats">
+            <div>
+              <div class="a-stat-num" id="stat-products">—</div>
+              <div class="a-stat-lbl">products vetted</div>
+            </div>
+            <div>
+              <div class="a-stat-num" id="stat-rooms">—</div>
+              <div class="a-stat-lbl">rooms covered</div>
+            </div>
+            <div>
+              <div class="a-stat-num">0<span>%</span></div>
+              <div class="a-stat-lbl">sponsored placements</div>
+            </div>
+          </div>
+        </div>
+      </header>
 
-      <nav class="store-nav" id="store-nav"></nav>
-      <div id="store-products"></div>
-    </section>
+      <div class="a-body">
+        <aside class="a-side">
+          <div class="a-search">
+            <span class="a-search-icon">⌕</span>
+            <input id="store-search" type="search" placeholder="Search picks…" aria-label="Search products">
+          </div>
+          <div class="a-side-block">
+            <div class="a-side-h">Categories</div>
+            <ul class="a-side-list" id="cat-list"></ul>
+          </div>
+          <div class="a-side-block">
+            <div class="a-side-h">Filter by material</div>
+            <div class="a-filter-row" id="filter-row"></div>
+            <button class="a-side-clear" id="filter-clear" hidden>Clear filter</button>
+          </div>
+        </aside>
+        <div class="a-content" id="store-products"></div>
+      </div>
+    </div>
   </main>
 
   <div class="newsletter-bar">
@@ -787,109 +1160,353 @@
       { cat: "Kids", sub: "Teethers", img: "61w+gpyCZZL", name: "Medical Grade Silicone Pacifier", asin: "B09XJKHCXZ", bestFor: "Best durable pacifier", tier: "$", effectiveness: "Medical grade, no BPA or PVC", desc: "One piece medical grade silicone pacifier. More durable and easier to clean than natural rubber. Look for one piece designs.", pros: ["More durable than rubber", "Easy to clean", "One piece design"], cons: ["Synthetic material", "Less soft than natural rubber", "Can release siloxanes when boiled"] }
     ];
 
-    // ==================== RENDER STORE ====================
-    (function() {
-      const cats = [...new Set(storeProducts.map(p => p.cat))];
-      const nav = document.getElementById("store-nav");
-      nav.innerHTML = `<button class="store-nav-btn active" onclick="showStoreCat('all', this)">All</button>` +
-        cats.map(c =>
-          `<button class="store-nav-btn" onclick="showStoreCat('${c.replace(/'/g, "\\'")}', this)">${c}</button>`
-        ).join("");
+    // ==================== RENDER STORE (Direction A) ====================
+    const FEATURED_CATS = ["Cookware", "Clean Water", "Bathroom"];
 
-      const container = document.getElementById("store-products");
-      container.innerHTML = cats.map(cat => {
-        const catProducts = storeProducts.filter(p => p.cat === cat);
-        const catDesc = catDescriptions[cat] || "";
-        const subs = [...new Set(catProducts.map(p => p.sub).filter(Boolean))];
-        const hasSubs = subs.length > 0;
-        const catId = cat.replace(/[^a-zA-Z0-9]/g, '');
+    const CAT_IMAGES = {
+      "Clean Water":         "images/homepage-warterdrinks.webp",
+      "Coffee":              "images/homepage-warterdrinks.webp",
+      "Tea":                 "images/homepage-warterdrinks.webp",
+      "Cookware":            "images/homepage-kitchen.webp",
+      "Kitchen":             "images/homepage-kitchen.webp",
+      "Food Storage":        "images/homepage-food.webp",
+      "Bathroom":            "images/homepage-personalcare.webp",
+      "Bedroom":             "images/homepage-bedroom.webp",
+      "Cleaning and Laundry":"images/homepage-cleaning.webp",
+      "Kids":                "images/homepage-babykids.webp",
+      "Pets":                "images/homepage-babykids.webp"
+    };
 
-        function renderTable(products) {
-          return `
-            <div class="compare-table-wrap">
-              <table class="compare-table">
-                <thead>
-                  <tr>
-                    <th>Product</th>
-                    <th>Price</th>
-                    <th style="width:22%">Pros</th>
-                    <th style="width:22%">Cons</th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  ${products.map(p => {
-                    const link = p.url || `https://www.amazon.com/dp/${p.asin}?tag=plasticdetox-20`;
-                    return `
-                    <tr>
-                      <td>
-                        <div class="compare-product-cell">
-                          <a href="${link}" target="_blank" rel="noopener sponsored">
-                            <img class="compare-product-img" src="${p.imgUrl || (p.img ? `https://m.media-amazon.com/images/I/${p.img}._AC_SL300_.jpg` : `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96' viewBox='0 0 96 96'%3E%3Crect fill='%23f5f5f4' width='96' height='96' rx='6'/%3E%3Ctext x='48' y='52' text-anchor='middle' font-family='Inter,sans-serif' font-size='11' fill='%23a8a29e'%3ENo image%3C/text%3E%3C/svg%3E`)}" alt="${p.name}" loading="lazy">
-                          </a>
-                          <div class="compare-product-info">
-                            <div class="compare-product-name"><a href="${link}" target="_blank" rel="noopener sponsored">${p.name}</a></div>
-                            <span class="compare-best-for">${p.bestFor}</span>
-                          </div>
-                        </div>
-                      </td>
-                      <td>${p.tier}</td>
-                      <td><ul class="compare-pros-list">${p.pros.slice(0,3).map(pro => `<li>${pro}</li>`).join("")}</ul></td>
-                      <td><ul class="compare-cons-list">${p.cons.slice(0,3).map(con => `<li>${con}</li>`).join("")}</ul></td>
-                      <td><a href="${link}" target="_blank" rel="noopener sponsored" class="compare-view-btn">View</a></td>
-                    </tr>`;
-                  }).join("")}
-                </tbody>
-              </table>
-            </div>`;
-        }
+    // Material chips: longest-match first. Each tag has a regex over product text.
+    const MATERIAL_RULES = [
+      ["Cast iron",      /cast iron/],
+      ["Carbon steel",   /carbon steel/],
+      ["Stainless",      /stainless|18\/8|18\/10/],
+      ["Glass",          /borosilicate|tempered glass|\bglass\b/],
+      ["Ceramic",        /\bceramic\b/],
+      ["Natural rubber", /natural rubber|hevea/],
+      ["Bamboo",         /\bbamboo\b/],
+      ["Wood",           /\bwood\b|olive wood|maple|hardwood|teak|beech|rubberwood/],
+      ["GOTS organic",   /\bgots\b/],
+      ["Organic cotton", /organic cotton/],
+      ["Cotton",         /\bcotton\b|cellulose/],
+      ["Wool",           /\bwool\b/],
+      ["Beeswax",        /beeswax/],
+      ["USDA organic",   /usda organic/],
+      ["EWG Verified",   /ewg verified/],
+      ["Plant based",    /plant based|plant.based|castile|rice water|plant derived|coconut derived/],
+      ["HEPA",           /true hepa|h13 hepa|\bhepa\b/],
+      ["PFAS free",      /pfas free|pfas-free/],
+      ["BPA free",       /bpa free|bpa-free/],
+      ["Silicone",       /silicone/],
+      ["Aluminum",       /\baluminum\b/],
+      ["Compostable",    /compostable/],
+      ["Plastic free",   /zero plastic|100% plastic free|plastic free|no plastic/]
+    ];
 
-        if (hasSubs) {
-          return `
-            <div id="store-cat-${catId}" class="store-category">
-              <h2 class="store-category-title">${cat}</h2>
-              ${catDesc ? `<p class="store-category-problem">${catDesc}</p>` : ""}
-              <div class="subcat-tabs">
-                ${subs.map((s, i) => `<button class="subcat-tab${i === 0 ? ' active' : ''}" onclick="showSubcat('${catId}', '${s.replace(/'/g, "\\'")}', this)">${s}</button>`).join("")}
+    function deriveMaterials(p) {
+      const text = [p.name, p.bestFor, p.effectiveness, p.desc, (p.pros||[]).join(' '), (p.cons||[]).join(' ')]
+        .filter(Boolean).join(' ').toLowerCase();
+      const tags = [];
+      for (const [tag, re] of MATERIAL_RULES) {
+        if (re.test(text) && !tags.includes(tag)) tags.push(tag);
+        if (tags.length >= 2) break;
+      }
+      return tags;
+    }
+
+    function tierKey(t) {
+      if (!t) return 99;
+      const m = t.match(/\$+/);
+      return m ? m[0].length : 99;
+    }
+
+    function tierBars(t) {
+      const n = (t || '').match(/\$+/);
+      const len = n ? n[0].length : 0;
+      return '$'.repeat(len) + `<span class="dim">${'$'.repeat(Math.max(0, 4 - len))}</span>`;
+    }
+
+    function escapeAttr(s) {
+      return String(s || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+    }
+
+    function imgFor(p) {
+      if (p.imgUrl) return p.imgUrl;
+      if (p.img) return `https://m.media-amazon.com/images/I/${p.img}._AC_SL300_.jpg`;
+      return `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96' viewBox='0 0 96 96'%3E%3Crect fill='%23f5f5f4' width='96' height='96' rx='6'/%3E%3Ctext x='48' y='52' text-anchor='middle' font-family='Inter,sans-serif' font-size='11' fill='%23a8a29e'%3ENo image%3C/text%3E%3C/svg%3E`;
+    }
+
+    function linkFor(p) {
+      return p.url || `https://www.amazon.com/dp/${p.asin}?tag=plasticdetox-20`;
+    }
+
+    // Pre-process every product
+    storeProducts.forEach(p => {
+      p._mats = deriveMaterials(p);
+      p._link = linkFor(p);
+      p._img  = imgFor(p);
+      p._tk   = tierKey(p.tier);
+      p._search = (p.name + ' ' + (p.bestFor||'') + ' ' + (p.desc||'') + ' ' + p._mats.join(' ')).toLowerCase();
+    });
+
+    const cats = [...new Set(storeProducts.map(p => p.cat))];
+    const productsByCat = {};
+    cats.forEach(c => {
+      productsByCat[c] = storeProducts.filter(p => p.cat === c).sort((a, b) => a._tk - b._tk);
+    });
+
+    // Stats
+    document.getElementById('stat-products').textContent = storeProducts.length;
+    document.getElementById('stat-rooms').textContent = cats.length;
+
+    // Sidebar: categories
+    const catList = document.getElementById('cat-list');
+    catList.innerHTML =
+      `<li><button class="a-side-link active" data-cat="all">
+         <span>All</span><span class="ct">${storeProducts.length}</span>
+       </button></li>` +
+      cats.map(c => `
+        <li><button class="a-side-link" data-cat="${escapeAttr(c)}">
+          <span>${c}</span><span class="ct">${productsByCat[c].length}</span>
+        </button></li>
+      `).join('');
+
+    // Sidebar: filter chips (union of all material tags)
+    const allMats = [...new Set(storeProducts.flatMap(p => p._mats))]
+      .sort((a, b) => MATERIAL_RULES.findIndex(r => r[0] === a) - MATERIAL_RULES.findIndex(r => r[0] === b));
+    const filterRow = document.getElementById('filter-row');
+    filterRow.innerHTML = allMats.map(m => `
+      <button class="a-filter-chip" data-mat="${escapeAttr(m)}">${m}</button>
+    `).join('');
+
+    // Render helpers
+    function renderCard(p) {
+      const hasDetail = (p.pros && p.pros.length) || (p.cons && p.cons.length);
+      const blurb = (p.desc || '').split('. ')[0].replace(/\.$/, '') + '.';
+      return `
+        <article class="a-card">
+          <a class="a-card-img-wrap" href="${p._link}" target="_blank" rel="noopener sponsored">
+            <img src="${p._img}" alt="${escapeAttr(p.name)}" loading="lazy">
+          </a>
+          <div class="a-card-body">
+            ${p.bestFor ? `<span class="a-card-bestfor">${p.bestFor}</span>` : ''}
+            <h3 class="a-card-name"><a href="${p._link}" target="_blank" rel="noopener sponsored">${p.name}</a></h3>
+            <p class="a-card-blurb">${blurb}</p>
+            <div class="a-card-foot">
+              <div class="a-card-mats">
+                ${p._mats.map(m => `<span class="mat-chip">${m}</span>`).join('')}
               </div>
-              ${subs.map((s, i) => `
-                <div class="subcat-panel${i === 0 ? ' active' : ''}" data-catid="${catId}" data-sub="${s}">
-                  ${subCatDescriptions[s] ? `<p class="store-category-problem" style="margin-top:0">${subCatDescriptions[s]}</p>` : ""}
-                  ${renderTable(catProducts.filter(p => p.sub === s))}
-                </div>
-              `).join("")}
-            </div>`;
-        } else {
-          return `
-            <div id="store-cat-${catId}" class="store-category">
-              <h2 class="store-category-title">${cat}</h2>
-              ${catDesc ? `<p class="store-category-problem">${catDesc}</p>` : ""}
-              ${renderTable(catProducts)}
-            </div>`;
-        }
-      }).join("");
-    })();
+              <span class="tier">${tierBars(p.tier)}</span>
+            </div>
+          </div>
+          <div class="a-card-cta-row">
+            ${hasDetail ? `<button class="a-card-expand" aria-expanded="false">+ Pros and cons</button>` : ''}
+            <a href="${p._link}" target="_blank" rel="noopener sponsored" class="a-card-view">View →</a>
+          </div>
+          ${hasDetail ? `
+            <div class="a-card-detail" hidden>
+              ${p.pros && p.pros.length ? `<h4 class="pros-h">Pros</h4><ul class="pros">${p.pros.map(x => `<li>${x}</li>`).join('')}</ul>` : ''}
+              ${p.cons && p.cons.length ? `<h4 class="cons-h">Cons</h4><ul class="cons">${p.cons.map(x => `<li>${x}</li>`).join('')}</ul>` : ''}
+            </div>` : ''}
+        </article>
+      `;
+    }
 
-    function showStoreCat(cat, btn) {
-      document.querySelectorAll(".store-category").forEach(el => {
-        if (cat === "all") {
-          el.style.display = "block";
-        } else {
-          const id = "store-cat-" + cat.replace(/[^a-zA-Z0-9]/g, '');
-          el.style.display = el.id === id ? "block" : "none";
+    function renderCatSection(cat) {
+      const products = productsByCat[cat];
+      const subs = [...new Set(products.map(p => p.sub).filter(Boolean))];
+      const catId = cat.replace(/[^a-zA-Z0-9]/g, '');
+      const catDesc = catDescriptions[cat] || '';
+      return `
+        <section class="a-cat" id="cat-${catId}" data-cat="${escapeAttr(cat)}">
+          <div class="a-cat-head">
+            <div>
+              <h2 class="a-cat-h">${cat}</h2>
+              ${catDesc ? `<p class="a-cat-blurb">${catDesc}</p>` : ''}
+            </div>
+            <div class="a-cat-meta">
+              ${products.length} picks${subs.length ? `<br>${subs.length} subcategor${subs.length === 1 ? 'y' : 'ies'}` : ''}
+            </div>
+          </div>
+          ${subs.length ? `
+            <div class="a-subtabs" data-cat-subs="${catId}">
+              <button class="a-subtab on" data-sub="all">All</button>
+              ${subs.map(s => `<button class="a-subtab" data-sub="${escapeAttr(s)}">${s}</button>`).join('')}
+            </div>
+          ` : ''}
+          <div class="a-grid" data-grid="${catId}">
+            ${products.map(p => `<div class="a-grid-wrap" data-sub="${escapeAttr(p.sub || '')}" data-mats="${escapeAttr(p._mats.join('|'))}" data-search="${escapeAttr(p._search)}">${renderCard(p)}</div>`).join('')}
+          </div>
+        </section>
+      `;
+    }
+
+    function renderOverviewCard(cat) {
+      const products = productsByCat[cat];
+      const subs = [...new Set(products.map(p => p.sub).filter(Boolean))];
+      const img = CAT_IMAGES[cat];
+      return `
+        <button class="a-overview-card" data-cat-jump="${escapeAttr(cat)}">
+          ${img ? `<img src="${img}" alt="${cat}" loading="lazy">` : ''}
+          <div class="a-overview-card-body">
+            <div class="a-overview-card-meta">${products.length} picks</div>
+            <div class="a-overview-card-name">${cat}</div>
+            ${subs.length ? `<div class="a-overview-card-subs">${subs.slice(0, 4).join(' · ')}</div>` : ''}
+          </div>
+        </button>
+      `;
+    }
+
+    let activeCat = 'all';
+    let activeFilter = null;
+    let activeSubBy = {};
+    let searchTerm = '';
+
+    function render() {
+      const root = document.getElementById('store-products');
+      const filtering = !!(activeFilter || searchTerm);
+      activeSubBy = {}; // reset subcategory selection on every layout change
+
+      if (activeCat !== 'all') {
+        root.innerHTML = renderCatSection(activeCat);
+      } else if (filtering) {
+        root.innerHTML = cats.map(renderCatSection).join('');
+      } else {
+        const featured = FEATURED_CATS.filter(c => productsByCat[c]);
+        const others = cats.filter(c => !featured.includes(c));
+        root.innerHTML =
+          featured.map(renderCatSection).join('') +
+          (others.length ? `
+            <section class="a-cat" id="cat-more">
+              <div class="a-cat-head">
+                <div>
+                  <h2 class="a-cat-h">More categories</h2>
+                  <p class="a-cat-blurb">Coffee, kitchen tools, food storage, bedroom, kids, cleaning, pets. Click any card for the full list of picks.</p>
+                </div>
+                <div class="a-cat-meta">${others.length} more rooms</div>
+              </div>
+              <div class="a-overview">
+                ${others.map(renderOverviewCard).join('')}
+              </div>
+            </section>
+          ` : '');
+      }
+      applyFilters();
+    }
+
+    function applyFilters() {
+      document.querySelectorAll('.a-cat').forEach(section => {
+        const grid = section.querySelector('.a-grid');
+        if (!grid) return;
+        const catId = (section.id || '').replace(/^cat-/, '');
+        const sub = activeSubBy[catId] || 'all';
+        let visible = 0;
+        section.querySelectorAll('.a-grid-wrap').forEach(wrap => {
+          const matches =
+            (sub === 'all' || wrap.dataset.sub === sub) &&
+            (!activeFilter || (wrap.dataset.mats || '').split('|').includes(activeFilter)) &&
+            (!searchTerm || (wrap.dataset.search || '').includes(searchTerm));
+          wrap.style.display = matches ? '' : 'none';
+          if (matches) visible++;
+        });
+        let empty = section.querySelector('.a-empty');
+        if (visible === 0) {
+          if (!empty) {
+            empty = document.createElement('div');
+            empty.className = 'a-empty';
+            empty.textContent = 'No matches in this category.';
+            grid.appendChild(empty);
+          }
+        } else if (empty) {
+          empty.remove();
         }
       });
-      document.querySelectorAll(".store-nav-btn").forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
     }
 
-    function showSubcat(catId, sub, btn) {
-      document.querySelectorAll(`.subcat-panel[data-catid="${catId}"]`).forEach(p => p.classList.remove("active"));
-      const target = document.querySelector(`.subcat-panel[data-catid="${catId}"][data-sub="${sub}"]`);
-      if (target) target.classList.add("active");
-      btn.parentElement.querySelectorAll(".subcat-tab").forEach(t => t.classList.remove("active"));
-      btn.classList.add("active");
-    }
+    // Event handlers
+    document.addEventListener('click', (e) => {
+      const sideLink = e.target.closest('.a-side-link');
+      if (sideLink) {
+        document.querySelectorAll('.a-side-link').forEach(l => l.classList.remove('active'));
+        sideLink.classList.add('active');
+        activeCat = sideLink.dataset.cat;
+        render();
+        if (activeCat !== 'all') {
+          window.scrollTo({ top: document.querySelector('.a-body').offsetTop - 16, behavior: 'smooth' });
+        }
+        return;
+      }
+
+      const overviewCard = e.target.closest('.a-overview-card');
+      if (overviewCard) {
+        const cat = overviewCard.dataset.catJump;
+        const target = document.querySelector(`.a-side-link[data-cat="${CSS.escape(cat)}"]`);
+        if (target) target.click();
+        return;
+      }
+
+      const chip = e.target.closest('.a-filter-chip');
+      if (chip) {
+        const mat = chip.dataset.mat;
+        const clearBtn = document.getElementById('filter-clear');
+        if (activeFilter === mat) {
+          activeFilter = null;
+          chip.classList.remove('on');
+          clearBtn.hidden = true;
+        } else {
+          document.querySelectorAll('.a-filter-chip').forEach(c => c.classList.remove('on'));
+          activeFilter = mat;
+          chip.classList.add('on');
+          clearBtn.hidden = false;
+        }
+        render();
+        return;
+      }
+
+      if (e.target.id === 'filter-clear') {
+        activeFilter = null;
+        document.querySelectorAll('.a-filter-chip').forEach(c => c.classList.remove('on'));
+        e.target.hidden = true;
+        render();
+        return;
+      }
+
+      const subTab = e.target.closest('.a-subtab');
+      if (subTab) {
+        const tabBar = subTab.parentElement;
+        const catId = tabBar.dataset.catSubs;
+        tabBar.querySelectorAll('.a-subtab').forEach(t => t.classList.remove('on'));
+        subTab.classList.add('on');
+        activeSubBy[catId] = subTab.dataset.sub;
+        applyFilters();
+        return;
+      }
+
+      const expand = e.target.closest('.a-card-expand');
+      if (expand) {
+        const detail = expand.closest('.a-card').querySelector('.a-card-detail');
+        if (!detail) return;
+        const isHidden = detail.hasAttribute('hidden');
+        if (isHidden) {
+          detail.removeAttribute('hidden');
+          expand.textContent = '− Pros and cons';
+          expand.setAttribute('aria-expanded', 'true');
+        } else {
+          detail.setAttribute('hidden', '');
+          expand.textContent = '+ Pros and cons';
+          expand.setAttribute('aria-expanded', 'false');
+        }
+        return;
+      }
+    });
+
+    document.getElementById('store-search').addEventListener('input', (e) => {
+      searchTerm = e.target.value.toLowerCase().trim();
+      render();
+    });
+
+    render();
   </script>
 
   <!-- Affiliate & outbound link click tracking -->
