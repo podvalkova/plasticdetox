@@ -186,6 +186,41 @@ body {
   color: #991b1b;
 }
 
+.tldr-card {
+  background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
+  border-radius: var(--radius);
+  padding: 1.5rem 1.75rem;
+  margin: 1.5rem 0 2rem;
+  border-left: 4px solid #7c3aed;
+}
+.tldr-card h3 {
+  margin: 0 0 0.75rem;
+  font-size: 0.85rem;
+  color: #5b21b6;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.tldr-card ul {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+.tldr-card li {
+  margin-bottom: 0.55rem;
+  line-height: 1.6;
+}
+.tldr-card li:last-child {
+  margin-bottom: 0;
+}
+.tldr-card a {
+  color: #5b21b6;
+  font-weight: 600;
+  text-decoration: underline;
+}
+.tldr-card a:hover {
+  color: #4c1d95;
+}
+
 .comparison-table {
   width: 100%;
   border-collapse: collapse;
