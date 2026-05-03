@@ -672,32 +672,55 @@
       .a-stats { gap: 1.5rem; flex-wrap: wrap; }
       .a-stat-num { font-size: 1.6rem; }
 
-      .a-body { grid-template-columns: 1fr; }
+      /* Stack sidebar on top, content below — block layout so scrollable
+         children can't push the page wider than the viewport. */
+      .a-body { display: block; }
       .a-side {
         position: static;
         border-right: none;
         border-bottom: 1px solid var(--border);
-        padding: 1.25rem 1.5rem 1.5rem;
+        padding: 1.25rem 0 1.5rem;
         max-height: none;
-        overflow: visible;
+        overflow: hidden;
+        width: 100%;
+        min-width: 0;
       }
-      .a-side-block { margin-bottom: 1.25rem; }
+      .a-side-block {
+        margin-bottom: 1.25rem;
+        padding: 0 1.5rem;
+      }
+      .a-side-h { margin-bottom: 0.6rem; }
+      /* Categories: edge-to-edge horizontal scroller. The negative-margin
+         trick lets the row bleed to the viewport edges so chips can scroll
+         past the side gutter without forcing the page width to grow. */
+      .a-side-block.cat-block {
+        padding: 0;
+        margin-bottom: 1.25rem;
+      }
+      .a-side-block.cat-block .a-side-h { padding: 0 1.5rem; }
       .a-side-list {
+        display: flex;
         flex-direction: row;
-        overflow-x: auto;
         gap: 0.4rem;
-        padding-bottom: 0.5rem;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding: 0.15rem 1.5rem 0.5rem;
         scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
       }
       .a-side-list::-webkit-scrollbar { display: none; }
       .a-side-link {
         white-space: nowrap;
         border: 1px solid var(--border);
-        padding: 0.4rem 0.8rem;
+        padding: 0.4rem 0.85rem;
         font-size: 0.85rem;
+        flex-shrink: 0;
       }
       .a-side-link.active { border-color: var(--accent-light); }
       .a-side-link .ct { display: none; }
+
+      /* Filter chips and search keep their gutter padding */
+      .a-search { margin-bottom: 0; }
 
       .a-content { padding: 2rem 1.5rem 3rem; }
       .a-cat-head { flex-direction: column; gap: 0.4rem; }
@@ -767,7 +790,7 @@
             <span class="a-search-icon">⌕</span>
             <input id="store-search" type="search" placeholder="Search picks…" aria-label="Search products">
           </div>
-          <div class="a-side-block">
+          <div class="a-side-block cat-block">
             <div class="a-side-h">Categories</div>
             <ul class="a-side-list" id="cat-list"></ul>
           </div>
