@@ -731,14 +731,39 @@
       .a-overview { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 560px) {
-      .a-head-inner { padding: 2rem 1.25rem 1.5rem; }
-      .a-h1 { font-size: 2rem; }
-      .a-stats { gap: 1.25rem; }
-      .a-stat-num { font-size: 1.4rem; }
-      .a-content { padding: 1.5rem 1.25rem 3rem; }
-      .a-grid { grid-template-columns: 1fr; }
-      .a-overview { grid-template-columns: 1fr; }
-      .a-card-img-wrap img { padding: 1rem; }
+      .a-head-inner { padding: 1.75rem 1.25rem 1.25rem; }
+      .a-h1 { font-size: 1.85rem; margin-bottom: 0.85rem; }
+      .a-lede { font-size: 0.9rem; margin-bottom: 0.75rem; }
+      .store-disclosure { font-size: 0.78rem; }
+      .a-stats { gap: 1.25rem; margin-top: 1.25rem; padding-top: 1.25rem; }
+      .a-stat-num { font-size: 1.3rem; }
+      .a-stat-lbl { font-size: 0.72rem; }
+
+      .a-side { padding: 1rem 0 1.25rem; }
+      .a-side-block { margin-bottom: 1rem; padding: 0 1.25rem; }
+      .a-side-block.cat-block .a-side-h { padding: 0 1.25rem; }
+      .a-side-list { padding: 0.15rem 1.25rem 0.5rem; }
+
+      .a-content { padding: 1.5rem 1.25rem 2.5rem; }
+      .a-cat { margin-bottom: 2.5rem; }
+      .a-cat-h { font-size: 1.3rem; }
+      .a-cat-blurb { font-size: 0.9rem; }
+
+      /* Keep 2-up grid on phones — single column wastes space */
+      .a-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+      .a-overview { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+      .a-card-img-wrap img { padding: 0.65rem; }
+      .a-card-body { padding: 0.75rem 0.85rem 0.65rem; gap: 0.4rem; }
+      .a-card-bestfor { font-size: 0.62rem; padding: 0.12rem 0.5rem; }
+      .a-card-name { font-size: 0.85rem; }
+      .a-card-blurb { font-size: 0.75rem; line-height: 1.45; }
+      .mat-chip { font-size: 0.62rem; padding: 0.12rem 0.4rem; }
+      .tier { font-size: 0.72rem; }
+      .a-card-cta-row { padding: 0 0.85rem 0.85rem; gap: 0.35rem; flex-direction: column; }
+      .a-card-expand, .a-card-view { font-size: 0.72rem; padding: 0.4rem 0.6rem; width: 100%; }
+      .a-card-detail { padding: 0 0.85rem 0.85rem; }
+      .a-card-detail ul { font-size: 0.72rem; }
+
       .newsletter-bar-inner { flex-direction: column; gap: 0.4rem; }
       .newsletter-bar input[type="email"] { width: 100%; max-width: 280px; }
       .nav { padding: 1rem 1.25rem; }
