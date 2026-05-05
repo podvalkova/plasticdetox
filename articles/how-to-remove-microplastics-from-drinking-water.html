@@ -31,7 +31,7 @@
     "author": { "@type": "Organization", "name": "Plastic Detox", "url": "https://plasticdetox.org" },
     "publisher": { "@type": "Organization", "name": "Plastic Detox", "url": "https://plasticdetox.org" },
     "datePublished": "2026-03-25",
-    "dateModified": "2026-05-03",
+    "dateModified": "2026-05-05",
     "image": "https://plasticdetox.org/images/water.webp",
     "mainEntityOfPage": "https://plasticdetox.org/articles/how-to-remove-microplastics-from-drinking-water.html"
   }
@@ -135,6 +135,17 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/article.css">
+  <style>
+    .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0 2rem; }
+    .product-card { background: var(--surface); border-radius: var(--radius); text-decoration: none; color: inherit; box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; overflow: hidden; }
+    .product-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+    .product-card img { width: 100%; height: 180px; object-fit: contain; background: #fff; padding: 0.75rem; }
+    .product-card-body { padding: 1rem; display: flex; flex-direction: column; flex: 1; gap: 0.4rem; }
+    .product-card-tier { font-size: 0.7rem; font-weight: 800; color: var(--accent-dark); letter-spacing: 0.06em; }
+    .product-card-name { font-size: 1rem; font-weight: 700; line-height: 1.3; margin: 0; }
+    .product-card-best { font-size: 0.85rem; color: var(--text-muted); line-height: 1.4; flex: 1; margin: 0; }
+    .product-card-cta { font-size: 0.85rem; color: var(--accent-dark); font-weight: 600; margin-top: 0.4rem; }
+  </style>
 </head>
 <body>
   <nav class="nav">
@@ -164,6 +175,7 @@
         <li><strong>Bottled water is not safer.</strong> A 2018 study found microplastics in 93% of 259 bottled brands (avg 325 particles per liter, some over 10,000). Tap water averages 5 to 15 particles per liter.</li>
         <li><strong>Reverse osmosis is the gold standard.</strong> RO removes 99.9% of microplastics plus 95 to 99% of PFAS, lead, arsenic, and chloramine.</li>
         <li><strong>Best under sink RO:</strong> <a href="https://www.amazon.com/dp/B00I0ZGOZM?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">APEC ROES-50</a> (~$190, NSF certified, the best long term value).</li>
+        <li><strong>Best countertop RO:</strong> <a href="https://www.amazon.com/dp/B09KRDK677?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Bluevua RO100ROPOT</a> (~$200, no plumbing, fills by hand, sits on your kitchen counter).</li>
         <li><strong>Best budget option:</strong> <a href="https://www.amazon.com/dp/B0CW4CDPNJ?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Clearly Filtered Pitcher</a> (~$80, removes up to 99.5% of microplastics, far better than Brita or PUR).</li>
         <li><strong>Skip standard Brita, fridge filters, and faucet attachments.</strong> Granular activated carbon improves taste but barely touches microplastics or PFAS.</li>
         <li><strong>Filter your cooking water too, and store filtered water in glass.</strong> Boiling concentrates microplastics rather than removing them, and plastic pitchers undo the work of your filter.</li>
@@ -373,11 +385,36 @@
     <p>An under-sink RO system connects to your cold water line and has its own dedicated faucet on your countertop. Installation is straightforward and most handy homeowners can do it in an hour.</p>
 
     <p><strong>Top picks:</strong></p>
-    <ul>
-      <li><a href="https://www.amazon.com/dp/B00I0ZGOZM?tag=plasticdetox-20" target="_blank" rel="noopener"><strong>APEC ROES-50</strong></a> ($180 to $200). Five-stage system, NSF certified, excellent track record. The best value option for most families.</li>
-      <li><a href="https://www.amazon.com/dp/B0987FCQQW?tag=plasticdetox-20" target="_blank" rel="noopener"><strong>Waterdrop G3P800</strong></a> ($350 to $400). Tankless design saves space, faster flow rate, smart filter life monitoring. Premium option.</li>
-      <li><a href="https://www.amazon.com/dp/B005LJ8EXU?tag=plasticdetox-20" target="_blank" rel="noopener"><strong>iSpring RCC7AK</strong></a> ($200 to $220). Six-stage system with alkaline remineralization stage that adds back beneficial minerals after filtration.</li>
-    </ul>
+
+    <div class="product-grid">
+      <a href="https://www.amazon.com/dp/B00I0ZGOZM?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
+        <img src="https://m.media-amazon.com/images/I/71q8Vr7D37L._AC_SL400_.jpg" alt="APEC ROES-50 Reverse Osmosis System" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">$$ &middot; BEST UNDER SINK VALUE</span>
+          <h3 class="product-card-name">APEC ROES-50</h3>
+          <p class="product-card-best">Five stage system, NSF certified, stainless steel pressure tank. ~$190. The best long term value for most families.</p>
+          <span class="product-card-cta">View &rarr;</span>
+        </div>
+      </a>
+      <a href="https://www.amazon.com/dp/B005LJ8EXU?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
+        <img src="https://m.media-amazon.com/images/I/81Ius7bMHaL._AC_SL400_.jpg" alt="iSpring RCC7AK Six Stage Reverse Osmosis" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">$$ &middot; WITH REMINERALIZATION</span>
+          <h3 class="product-card-name">iSpring RCC7AK</h3>
+          <p class="product-card-best">Six stage system with an alkaline remineralization stage that adds calcium and magnesium back after filtration. ~$210.</p>
+          <span class="product-card-cta">View &rarr;</span>
+        </div>
+      </a>
+      <a href="https://www.amazon.com/dp/B0987FCQQW?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
+        <img src="https://m.media-amazon.com/images/I/61TounyUzaL._AC_SL400_.jpg" alt="Waterdrop G3P800 Tankless Reverse Osmosis" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">$$$ &middot; PREMIUM TANKLESS</span>
+          <h3 class="product-card-name">Waterdrop G3P800</h3>
+          <p class="product-card-best">Tankless design saves cabinet space. Faster flow rate, smart filter life monitoring. ~$380.</p>
+          <span class="product-card-cta">View &rarr;</span>
+        </div>
+      </a>
+    </div>
 
     <div class="callout">
       <div class="callout-title">Important: Remineralization</div>
@@ -386,12 +423,28 @@
 
     <h3>Countertop RO Systems</h3>
 
-    <p>If you rent or don't want to modify your plumbing, countertop RO systems plug into your existing faucet and sit on the counter. They're portable and require zero installation.</p>
+    <p>If you rent or don't want to modify your plumbing, countertop RO systems plug into your existing faucet or fill by hand and sit on the counter. They're portable and require zero installation.</p>
 
-    <ul>
-      <li><a href="https://www.amazon.com/dp/B0CQS3HQ8F?tag=plasticdetox-20" target="_blank" rel="noopener"><strong>AquaTru</strong></a> ($350 to $450). The most popular countertop RO system. NSF certified to remove 83 contaminants. No installation needed. Fill the tank and it filters into a clean water reservoir.</li>
-      <li><a href="https://www.amazon.com/dp/B09KRDK677?tag=plasticdetox-20" target="_blank" rel="noopener"><strong>Bluevua RO100ROPOT</strong></a> ($180 to $220). Budget countertop option with solid performance.</li>
-    </ul>
+    <div class="product-grid">
+      <a href="https://www.amazon.com/dp/B09KRDK677?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
+        <img src="https://m.media-amazon.com/images/I/61eISzH0uGL._AC_SL400_.jpg" alt="Bluevua RO100ROPOT Countertop Reverse Osmosis" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">$$ &middot; BEST COUNTERTOP VALUE</span>
+          <h3 class="product-card-name">Bluevua RO100ROPOT</h3>
+          <p class="product-card-best">Fill by hand, no plumbing or faucet adapter. Five stage RO with remineralization. ~$200. Borosilicate glass carafe option keeps filtered water off plastic.</p>
+          <span class="product-card-cta">View &rarr;</span>
+        </div>
+      </a>
+      <a href="https://www.amazon.com/dp/B0CQS3HQ8F?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
+        <img src="https://m.media-amazon.com/images/I/61i8GH-LefL._AC_SL400_.jpg" alt="AquaTru Countertop Reverse Osmosis" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">$$$ &middot; NSF CERTIFIED PREMIUM</span>
+          <h3 class="product-card-name">AquaTru</h3>
+          <p class="product-card-best">Most popular countertop RO. NSF certified to remove 83 contaminants. Plug and play, fill the tank and it filters into a clean reservoir. ~$400.</p>
+          <span class="product-card-cta">View &rarr;</span>
+        </div>
+      </a>
+    </div>
 
     <h2 id="carbon-block">The Budget Option: Carbon Block Filters</h2>
 
@@ -399,11 +452,35 @@
 
     <p><strong>Top picks:</strong></p>
 
-    <ul>
-      <li><a href="https://www.amazon.com/dp/B0CW4CDPNJ?tag=plasticdetox-20" target="_blank" rel="noopener"><strong>Clearly Filtered Pitcher</strong></a> ($80 to $90). One of the few pitchers independently tested to remove microplastics, PFAS (98%+), and over 365 contaminants. Clearly Filtered claims up to 99.5% microplastic removal based on their proprietary affinity filtration media testing, which exceeds the 80 to 90% range typical of standard carbon block filters. Far superior to Brita or PUR.</li>
-      <li><a href="https://www.amazon.com/dp/B015N617CK?tag=plasticdetox-20" target="_blank" rel="noopener"><strong>Epic Pure Pitcher</strong></a> ($60 to $70). Another high-performance pitcher with independent lab testing showing strong microplastic and PFAS removal.</li>
-      <li><a href="https://www.amazon.com/dp/B00CYW3EVO?tag=plasticdetox-20" target="_blank" rel="noopener"><strong>Berkey</strong></a> ($250 to $350). Gravity-fed countertop system using proprietary carbon block elements. Large capacity, no electricity needed. Note: In 2023, Berkey received an EPA stop sale order for failing to register its filters as pesticide devices. The company has since returned to market. Verify current certifications before purchasing.</li>
-    </ul>
+    <div class="product-grid">
+      <a href="https://www.amazon.com/dp/B015N617CK?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
+        <img src="https://m.media-amazon.com/images/I/713fOEO93jL._AC_SL400_.jpg" alt="Epic Pure Water Filter Pitcher" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">$ &middot; BEST BUDGET PITCHER</span>
+          <h3 class="product-card-name">Epic Pure Pitcher</h3>
+          <p class="product-card-best">High performance pitcher with independent lab testing showing strong microplastic and PFAS removal. ~$65.</p>
+          <span class="product-card-cta">View &rarr;</span>
+        </div>
+      </a>
+      <a href="https://www.amazon.com/dp/B0CW4CDPNJ?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
+        <img src="https://m.media-amazon.com/images/I/71wjxUpdbGL._AC_SL400_.jpg" alt="Clearly Filtered Water Filter Pitcher" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">$ &middot; BEST PITCHER OVERALL</span>
+          <h3 class="product-card-name">Clearly Filtered Pitcher</h3>
+          <p class="product-card-best">Up to 99.5% microplastic removal, 98%+ PFAS, over 365 contaminants. Far better than Brita or PUR. ~$85.</p>
+          <span class="product-card-cta">View &rarr;</span>
+        </div>
+      </a>
+      <a href="https://www.amazon.com/dp/B00CYW3EVO?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
+        <img src="https://m.media-amazon.com/images/I/61u7kJNAdcL._AC_SL400_.jpg" alt="Berkey Gravity Fed Water Filter System" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">$$$ &middot; GRAVITY FED COUNTERTOP</span>
+          <h3 class="product-card-name">Berkey</h3>
+          <p class="product-card-best">Gravity fed countertop system with proprietary carbon block elements. Large capacity, no electricity needed. ~$300. Verify current certifications before buying.</p>
+          <span class="product-card-cta">View &rarr;</span>
+        </div>
+      </a>
+    </div>
 
     <h2 id="what-doesnt-work">What Doesn't Work Well</h2>
 
@@ -535,10 +612,26 @@
 
     <p>A few companies make water bottles with built-in filtration:</p>
 
-    <ul>
-      <li><strong>Clearly Filtered Insulated Stainless Steel Bottle</strong> ($60 to $70). Uses the same affinity filtration technology as their pitcher, rated to remove over 200 contaminants including PFAS and microplastics. This is the best option for daily commuting and office use.</li>
-      <li><strong>LifeStraw Go</strong> ($40 to $50). Well known for travel and outdoor use, with strong bacteria and parasite filtration. However, its hollow fiber membrane is primarily designed for biological contaminants rather than microplastics. A good choice for hiking and international travel, but not the strongest option for everyday microplastic reduction.</li>
-    </ul>
+    <div class="product-grid">
+      <a href="https://www.amazon.com/dp/B09R84FRX9?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
+        <img src="https://m.media-amazon.com/images/I/61PS+acM82L._AC_SL400_.jpg" alt="LifeStraw Go Stainless Steel Filter Bottle" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">$ &middot; BEST FOR TRAVEL</span>
+          <h3 class="product-card-name">LifeStraw Go</h3>
+          <p class="product-card-best">Hollow fiber membrane designed for bacteria and parasites. Best for hiking and international travel, less optimized for everyday microplastic reduction. ~$45.</p>
+          <span class="product-card-cta">View &rarr;</span>
+        </div>
+      </a>
+      <a href="https://www.amazon.com/dp/B0F4SXJVTC?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
+        <img src="https://m.media-amazon.com/images/I/41ExiZWTuCL._AC_SL400_.jpg" alt="Clearly Filtered Insulated Stainless Steel Filter Bottle" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">$$ &middot; BEST DAILY BOTTLE</span>
+          <h3 class="product-card-name">Clearly Filtered Insulated Bottle</h3>
+          <p class="product-card-best">Same affinity filtration as their pitcher in an insulated stainless steel bottle. Removes 200+ contaminants including PFAS and microplastics. ~$65.</p>
+          <span class="product-card-cta">View &rarr;</span>
+        </div>
+      </a>
+    </div>
 
     <h3>The simplest solution: fill from home</h3>
 
