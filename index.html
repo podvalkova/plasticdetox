@@ -2749,7 +2749,6 @@
   <main id="page-resources" style="display:none;">
     <section class="resources">
       <header class="page-head">
-        <div class="page-eyebrow">Resources</div>
         <h1 class="resources-title">The <em>research</em>, made readable.</h1>
         <p class="resources-intro">Evidence based articles and peer reviewed studies on microplastic exposure, and how to actually reduce it. No fluff, no fear mongering, no sponsored swaps.</p>
       </header>
@@ -3704,7 +3703,7 @@
       hideAllPages();
       document.getElementById("page-resources").style.display = "block";
       document.getElementById("nav-resources").classList.add("active");
-      showNlBar(true);
+      showNlBar(false);
       renderResources();
       window.location.hash = "resources";
       window.scrollTo(0, 0);
@@ -3789,36 +3788,77 @@
     }
 
     let activeArticleCategory = "all";
+    let activeSortMode = "popular";
+
+    // When a category is active, this article (if matching) is pinned first
+    // regardless of sort. Index by category id.
+    const PINNED_ARTICLE_BY_CATEGORY = {
+      start: "articles/how-to-start-reducing-plastic-exposure.html"
+    };
+
+    function articleRelevance(card, q) {
+      if (!q) return 0;
+      const title = (card.querySelector('.article-card-title')?.textContent || '').toLowerCase();
+      const tag = (card.querySelector('.article-card-tag')?.textContent || '').toLowerCase();
+      const excerpt = (card.querySelector('.article-card-excerpt')?.textContent || '').toLowerCase();
+      const esc = q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const wordRe = new RegExp('\\b' + esc + '\\b');
+      let score = 0;
+      if (title.includes(q)) score += 100;
+      if (title.startsWith(q)) score += 50;
+      if (wordRe.test(title)) score += 25;
+      if (tag.includes(q)) score += 30;
+      if (wordRe.test(tag)) score += 10;
+      if (excerpt.includes(q)) score += 8;
+      return score;
+    }
+
+    function updateArticles() {
+      const q = document.getElementById("article-search-input").value.toLowerCase().trim();
+      const grid = document.getElementById("articles-grid");
+      if (!grid) return;
+      const cards = Array.from(grid.querySelectorAll(".article-card"));
+      const visible = [];
+      cards.forEach(card => {
+        const matchesSearch = !q || card.textContent.toLowerCase().includes(q);
+        const cats = (card.dataset.categories || "").split(",").map(c => c.trim()).filter(Boolean);
+        const matchesCat = activeArticleCategory === "all" || cats.includes(activeArticleCategory);
+        const show = matchesSearch && matchesCat;
+        card.style.display = show ? "" : "none";
+        if (show) visible.push(card);
+      });
+      if (q) {
+        visible.sort((a, b) => articleRelevance(b, q) - articleRelevance(a, q));
+      } else {
+        visible.sort((a, b) => {
+          if (activeSortMode === "newest") return b.dataset.date.localeCompare(a.dataset.date);
+          return parseInt(a.dataset.popular) - parseInt(b.dataset.popular);
+        });
+        const pinHref = PINNED_ARTICLE_BY_CATEGORY[activeArticleCategory];
+        if (pinHref) {
+          const idx = visible.findIndex(c => (c.getAttribute('href') || '') === pinHref);
+          if (idx > 0) visible.unshift(visible.splice(idx, 1)[0]);
+        }
+      }
+      visible.forEach(card => grid.appendChild(card));
+    }
 
     function filterByCategory(cat, btn) {
       activeArticleCategory = cat;
       document.querySelectorAll("#category-chips .category-chip").forEach(c => c.classList.remove("active"));
       btn.classList.add("active");
-      filterArticles();
+      updateArticles();
       try { gtag('event', 'resources_filter_category', { category: cat }); } catch(e) {}
     }
 
-    function filterArticles() {
-      const q = document.getElementById("article-search-input").value.toLowerCase().trim();
-      const cards = document.querySelectorAll("#articles-grid .article-card");
-      cards.forEach(card => {
-        const matchesSearch = !q || card.textContent.toLowerCase().includes(q);
-        const cats = (card.dataset.categories || "").split(",").map(c => c.trim()).filter(Boolean);
-        const matchesCat = activeArticleCategory === "all" || cats.includes(activeArticleCategory);
-        card.style.display = (matchesSearch && matchesCat) ? "" : "none";
-      });
-    }
+    function filterArticles() { updateArticles(); }
 
     function sortArticles(mode) {
+      activeSortMode = mode;
       document.querySelectorAll(".sort-btn").forEach(b => b.classList.remove("active"));
-      document.querySelector('.sort-btn[onclick*="' + mode + '"]').classList.add("active");
-      const grid = document.getElementById("articles-grid");
-      const cards = Array.from(grid.querySelectorAll(".article-card"));
-      cards.sort((a, b) => {
-        if (mode === "newest") return b.dataset.date.localeCompare(a.dataset.date);
-        return parseInt(a.dataset.popular) - parseInt(b.dataset.popular);
-      });
-      cards.forEach(card => grid.appendChild(card));
+      const target = document.querySelector('.sort-btn[onclick*="' + mode + '"]');
+      if (target) target.classList.add("active");
+      updateArticles();
     }
 
     // Sort by popular on load

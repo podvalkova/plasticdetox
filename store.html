@@ -719,8 +719,8 @@
       .a-side-link.active { border-color: var(--accent-light); }
       .a-side-link .ct { display: none; }
 
-      /* Filter chips and search keep their gutter padding */
-      .a-search { margin-bottom: 0; }
+      /* Search keeps its gutter padding so it doesn't bleed to viewport edges */
+      .a-search { margin: 0 1.5rem 1rem; }
 
       .a-content { padding: 2rem 1.5rem 3rem; }
       .a-cat-head { flex-direction: column; gap: 0.4rem; }
@@ -743,6 +743,7 @@
       .a-side-block { margin-bottom: 1rem; padding: 0 1.25rem; }
       .a-side-block.cat-block .a-side-h { padding: 0 1.25rem; }
       .a-side-list { padding: 0.15rem 1.25rem 0.5rem; }
+      .a-search { margin: 0 1.25rem 1rem; }
 
       .a-content { padding: 1.5rem 1.25rem 2.5rem; }
       .a-cat { margin-bottom: 2.5rem; }
@@ -1539,6 +1540,26 @@
       applyFilters();
     }
 
+    function searchRelevance(wrap, q) {
+      if (!q) return 0;
+      const text = (wrap.dataset.search || '');
+      if (!text.includes(q)) return 0;
+      const card = wrap.querySelector('.a-card');
+      const name = (card?.querySelector('.a-card-name')?.textContent || '').toLowerCase();
+      const bestFor = (card?.querySelector('.a-card-bestfor')?.textContent || '').toLowerCase();
+      const blurb = (card?.querySelector('.a-card-blurb')?.textContent || '').toLowerCase();
+      const esc = q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const wordRe = new RegExp('\\b' + esc + '\\b');
+      let score = 0;
+      if (name.includes(q)) score += 100;
+      if (name.startsWith(q)) score += 50;
+      if (wordRe.test(name)) score += 25;
+      if (bestFor.includes(q)) score += 30;
+      if (wordRe.test(bestFor)) score += 10;
+      if (blurb.includes(q)) score += 8;
+      return score || 1;
+    }
+
     function applyFilters() {
       const filtering = !!(activeFilter || searchTerm);
       const showingAll = activeCat === 'all';
@@ -1549,7 +1570,8 @@
         const catId = (section.id || '').replace(/^cat-/, '');
         const sub = activeSubBy[catId] || 'all';
         let visible = 0;
-        section.querySelectorAll('.a-grid-wrap').forEach(wrap => {
+        const wraps = Array.from(section.querySelectorAll('.a-grid-wrap'));
+        wraps.forEach(wrap => {
           const matches =
             (sub === 'all' || wrap.dataset.sub === sub) &&
             (!activeFilter || (wrap.dataset.mats || '').split('|').includes(activeFilter)) &&
@@ -1557,6 +1579,10 @@
           wrap.style.display = matches ? '' : 'none';
           if (matches) visible++;
         });
+        if (searchTerm) {
+          const sorted = wraps.slice().sort((a, b) => searchRelevance(b, searchTerm) - searchRelevance(a, searchTerm));
+          sorted.forEach(w => grid.appendChild(w));
+        }
         totalVisible += visible;
         // When filtering across multiple categories, hide entire sections
         // with zero matches — otherwise the page is full of empty headers.
