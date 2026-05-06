@@ -217,23 +217,29 @@
     .a-search {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
-      padding: 0.6rem 0.85rem;
-      border: 1px solid var(--border);
-      border-radius: 8px;
+      gap: 0.6rem;
+      padding: 0.75rem 1.1rem;
+      border: 1.5px solid var(--border);
+      border-radius: 999px;
       background: var(--surface);
       margin-bottom: 1.5rem;
+      transition: border-color .2s;
     }
+    .a-search:focus-within { border-color: var(--accent); }
     .a-search input {
       border: none;
       outline: none;
       font-family: inherit;
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       width: 100%;
       background: transparent;
       color: var(--text);
     }
+    .a-search input::placeholder { color: var(--text-muted); }
     .a-search-icon { color: var(--text-muted); flex-shrink: 0; }
+    @media (max-width: 720px) {
+      .a-search input { font-size: 16px; }
+    }
 
     .a-side-block { margin-bottom: 1.75rem; }
     .a-side-h {
