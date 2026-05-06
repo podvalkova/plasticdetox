@@ -215,30 +215,35 @@
       overflow-y: auto;
     }
     .a-search {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      padding: 0.75rem 1.1rem;
+      position: relative;
+      display: block;
+      margin-bottom: 1.5rem;
+    }
+    .a-search-icon {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+    .a-search input {
+      width: 100%;
+      padding: 0.75rem 1rem 0.75rem 2.6rem;
       border: 1.5px solid var(--border);
       border-radius: 999px;
-      background: var(--surface);
-      margin-bottom: 1.5rem;
-      transition: border-color .2s;
-    }
-    .a-search:focus-within { border-color: var(--accent); }
-    .a-search input {
-      border: none;
-      outline: none;
+      font: inherit;
       font-family: inherit;
       font-size: 0.92rem;
-      width: 100%;
-      background: transparent;
+      background: var(--surface);
       color: var(--text);
+      outline: none;
+      transition: border-color .2s;
     }
+    .a-search input:focus { border-color: var(--accent); }
     .a-search input::placeholder { color: var(--text-muted); }
-    .a-search-icon { color: var(--text-muted); flex-shrink: 0; }
     @media (max-width: 720px) {
-      .a-search input { font-size: 16px; }
+      .a-search input { font-size: 16px; padding: 0.8rem 1rem 0.8rem 2.6rem; }
     }
 
     .a-side-block { margin-bottom: 1.75rem; }
@@ -818,10 +823,10 @@
 
       <div class="a-body">
         <aside class="a-side">
-          <div class="a-search">
-            <svg class="a-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <label class="a-search">
+            <svg class="a-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
             <input id="store-search" type="text" placeholder="Search picks…" aria-label="Search products" autocomplete="off">
-          </div>
+          </label>
           <div class="a-side-block cat-block">
             <div class="a-side-h">Categories</div>
             <ul class="a-side-list" id="cat-list"></ul>
