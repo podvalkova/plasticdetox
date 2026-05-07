@@ -152,6 +152,29 @@
       color: inherit;
     }
     .swap-card:hover { background: #dcfce7; }
+    .swap-card img {
+      width: 84px;
+      height: 84px;
+      object-fit: contain;
+      background: #fff;
+      border-radius: 6px;
+      padding: 4px;
+      flex-shrink: 0;
+      border: 1px solid #e7e5e4;
+    }
+    .swap-card-body {
+      flex: 1;
+      min-width: 0;
+    }
+    .swap-card-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.85rem;
+      margin-top: 1rem;
+    }
+    @media (max-width: 600px) {
+      .swap-card-grid { grid-template-columns: 1fr; }
+    }
     .swap-card-eyebrow {
       font-size: 0.7rem;
       font-weight: 800;
@@ -270,11 +293,11 @@
       <h3>The 30 Second Summary</h3>
       <ul>
         <li><strong>"Clean" is a marketing word, not a legal one.</strong> No FDA standard, no FTC rule, no enforcement body. Retailer programs like Clean at Sephora and Ulta Conscious Beauty are policed only by the retailer.</li>
-        <li><strong>Lead Safe Mama has tested dozens of toothpastes.</strong> Roughly 90% tested positive for lead, 65% for arsenic. Daily use pick from our store: <a href="https://www.amazon.com/dp/B000Q46K86?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Weleda Salt Toothpaste</a> (NATRUE certified, fluoride free, no SLS).</li>
+        <li><strong>Lead Safe Mama has tested dozens of toothpastes.</strong> Roughly 90% tested positive for lead, 65% for arsenic. Daily use picks from our store: <a href="https://www.amazon.com/dp/B000Q46K86?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Weleda Salt Toothpaste</a> for adults and <a href="https://www.amazon.com/dp/B004769M8E?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Spry Kids Tooth Gel</a> for kids.</li>
         <li><strong>Valisure found benzene in deodorants, sunscreens, dry shampoos, and hand sanitizers.</strong> The contamination came from propellants and ethanol sources, not the listed formula. Skip aerosols.</li>
         <li><strong>Sunscreen swap (lotion, mineral, EWG verified):</strong> <a href="https://www.amazon.com/dp/B07J6N8M75?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Earth Mama Baby SPF 40</a>.</li>
         <li><strong>Deodorant swap (no aerosol, plant based):</strong> <a href="https://www.amazon.com/dp/B09SGXS4PZ?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Each &amp; Every aluminum free</a>.</li>
-        <li><strong>Laundry swap (no SLES, no 1,4 dioxane risk):</strong> <a href="https://www.amazon.com/s?k=Molly%27s+Suds+laundry+detergent&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Molly's Suds powder</a>.</li>
+        <li><strong>Laundry swap (no liquid bottle, no 1,4 dioxane risk):</strong> <a href="https://www.amazon.com/dp/B0CGV7HPHM?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Blueland Laundry Detergent Tablets</a>.</li>
         <li><strong>Four certifications worth trusting:</strong> EWG Verified, MADE SAFE, EPA Safer Choice, USDA Organic. Everything else is marketing.</li>
       </ul>
     </div>
@@ -320,55 +343,61 @@
 
     <!-- HERO INFOGRAPHIC: 10 products at a glance -->
     <div class="infographic">
-      <div class="infographic-title">10 "Clean" Products, Ranked by Type of Failure</div>
-      <svg viewBox="0 0 560 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Visual summary of 10 clean labeled products grouped by lab test failure, FDA recall, or active lawsuit.">
-        <rect width="560" height="540" rx="12" fill="#fafaf9"/>
-        <text x="280" y="32" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" font-weight="700" fill="#1c1917">Where the failure was documented</text>
+      <div class="infographic-title">10 "Clean" Products, Grouped by Type of Failure</div>
+      <svg viewBox="0 0 560 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Visual summary of clean labeled products grouped by lab test failure, FDA recall, or active lawsuit.">
+        <rect width="560" height="360" rx="12" fill="#fafaf9"/>
+        <text x="280" y="28" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" font-weight="700" fill="#1c1917">Where the failure was documented</text>
 
         <!-- Column 1: Lab tests -->
-        <rect x="20" y="60" width="170" height="450" rx="10" fill="#fef2f2" stroke="#fecaca"/>
-        <text x="105" y="86" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" font-weight="800" fill="#b91c1c">LAB TESTS</text>
-        <text x="105" y="104" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#7f1d1d">Tamara Rubin, Valisure</text>
-        <text x="32" y="134" font-family="Inter,sans-serif" font-size="10" font-weight="600" fill="#1c1917">1. Mineral toothpastes</text>
-        <text x="32" y="148" font-family="Inter,sans-serif" font-size="9" fill="#57534e">Lead, arsenic in 90%</text>
-        <text x="32" y="178" font-family="Inter,sans-serif" font-size="10" font-weight="600" fill="#1c1917">2. Suave aerosol</text>
-        <text x="32" y="192" font-family="Inter,sans-serif" font-size="9" fill="#57534e">Benzene at 5.21 ppm</text>
-        <text x="32" y="222" font-family="Inter,sans-serif" font-size="10" font-weight="600" fill="#1c1917">3. Aerosol sunscreens</text>
-        <text x="32" y="236" font-family="Inter,sans-serif" font-size="9" fill="#57534e">Benzene in 27% of 294</text>
-        <text x="32" y="266" font-family="Inter,sans-serif" font-size="10" font-weight="600" fill="#1c1917">9. Hand sanitizers</text>
-        <text x="32" y="280" font-family="Inter,sans-serif" font-size="9" fill="#57534e">Benzene in 16%</text>
+        <rect x="20" y="50" width="170" height="290" rx="10" fill="#fef2f2" stroke="#fecaca"/>
+        <text x="105" y="74" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" font-weight="800" fill="#b91c1c">LAB TESTS</text>
+        <text x="105" y="90" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#7f1d1d">Tamara Rubin, Valisure</text>
+        <text x="32" y="118" font-family="Inter,sans-serif" font-size="10" font-weight="600" fill="#1c1917">Mineral toothpastes</text>
+        <text x="32" y="132" font-family="Inter,sans-serif" font-size="9" fill="#57534e">Lead, arsenic in 90%</text>
+        <text x="32" y="158" font-family="Inter,sans-serif" font-size="10" font-weight="600" fill="#1c1917">Suave aerosol</text>
+        <text x="32" y="172" font-family="Inter,sans-serif" font-size="9" fill="#57534e">Benzene at 5.21 ppm</text>
+        <text x="32" y="198" font-family="Inter,sans-serif" font-size="10" font-weight="600" fill="#1c1917">Aerosol sunscreens</text>
+        <text x="32" y="212" font-family="Inter,sans-serif" font-size="9" fill="#57534e">Benzene in 27% of 294</text>
+        <text x="32" y="238" font-family="Inter,sans-serif" font-size="10" font-weight="600" fill="#1c1917">Liquid laundry detergent</text>
+        <text x="32" y="252" font-family="Inter,sans-serif" font-size="9" fill="#57534e">1,4 dioxane (NY rule)</text>
+        <text x="32" y="278" font-family="Inter,sans-serif" font-size="10" font-weight="600" fill="#1c1917">Scented candles</text>
+        <text x="32" y="292" font-family="Inter,sans-serif" font-size="9" fill="#57534e">Phthalates, VOCs</text>
+        <text x="32" y="318" font-family="Inter,sans-serif" font-size="10" font-weight="600" fill="#1c1917">Hand sanitizers</text>
+        <text x="32" y="332" font-family="Inter,sans-serif" font-size="9" fill="#57534e">Benzene in 16%</text>
 
         <!-- Column 2: Recalls -->
-        <rect x="200" y="60" width="170" height="450" rx="10" fill="#fff7ed" stroke="#fed7aa"/>
-        <text x="285" y="86" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" font-weight="800" fill="#b45309">FDA RECALLS</text>
-        <text x="285" y="104" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#7c2d12">2021 to 2025</text>
-        <text x="212" y="134" font-family="Inter,sans-serif" font-size="10" font-weight="600" fill="#1c1917">Suave (Mar 2022)</text>
-        <text x="212" y="164" font-family="Inter,sans-serif" font-size="10" font-weight="600" fill="#1c1917">Neutrogena / Aveeno</text>
-        <text x="212" y="178" font-family="Inter,sans-serif" font-size="9" fill="#57534e">5 SKUs (J&amp;J, 2021)</text>
-        <text x="212" y="208" font-family="Inter,sans-serif" font-size="10" font-weight="600" fill="#1c1917">Coppertone, Banana Boat</text>
+        <rect x="200" y="50" width="170" height="290" rx="10" fill="#fff7ed" stroke="#fed7aa"/>
+        <text x="285" y="74" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" font-weight="800" fill="#b45309">FDA RECALLS</text>
+        <text x="285" y="90" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#7c2d12">2021 to 2025</text>
+        <text x="212" y="118" font-family="Inter,sans-serif" font-size="10" font-weight="600" fill="#1c1917">Suave</text>
+        <text x="212" y="132" font-family="Inter,sans-serif" font-size="9" fill="#57534e">Mar 2022</text>
+        <text x="212" y="158" font-family="Inter,sans-serif" font-size="10" font-weight="600" fill="#1c1917">Neutrogena / Aveeno</text>
+        <text x="212" y="172" font-family="Inter,sans-serif" font-size="9" fill="#57534e">5 SKUs (J&amp;J, 2021)</text>
+        <text x="212" y="198" font-family="Inter,sans-serif" font-size="10" font-weight="600" fill="#1c1917">Coppertone, Banana Boat</text>
+        <text x="212" y="212" font-family="Inter,sans-serif" font-size="9" fill="#57534e">2021 to 2022</text>
         <text x="212" y="238" font-family="Inter,sans-serif" font-size="10" font-weight="600" fill="#1c1917">Old Spice, Secret, Brut</text>
-        <text x="212" y="268" font-family="Inter,sans-serif" font-size="10" font-weight="600" fill="#1c1917">Dove, Nexxus, TIGI dry</text>
-        <text x="212" y="282" font-family="Inter,sans-serif" font-size="9" fill="#57534e">shampoos (Oct 2022)</text>
-        <text x="212" y="312" font-family="Inter,sans-serif" font-size="10" font-weight="600" fill="#1c1917">Power Stick (Jul 2025)</text>
-        <text x="212" y="326" font-family="Inter,sans-serif" font-size="9" fill="#57534e">67,000 cases</text>
+        <text x="212" y="252" font-family="Inter,sans-serif" font-size="9" fill="#57534e">Aerosol antiperspirants</text>
+        <text x="212" y="278" font-family="Inter,sans-serif" font-size="10" font-weight="600" fill="#1c1917">Dove, Nexxus, TIGI</text>
+        <text x="212" y="292" font-family="Inter,sans-serif" font-size="9" fill="#57534e">Dry shampoos, Oct 2022</text>
+        <text x="212" y="318" font-family="Inter,sans-serif" font-size="10" font-weight="600" fill="#1c1917">Power Stick</text>
+        <text x="212" y="332" font-family="Inter,sans-serif" font-size="9" fill="#57534e">67,000 cases, Jul 2025</text>
 
         <!-- Column 3: Lawsuits -->
-        <rect x="380" y="60" width="160" height="450" rx="10" fill="#faf5ff" stroke="#e9d5ff"/>
-        <text x="460" y="86" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" font-weight="800" fill="#7e22ce">LAWSUITS</text>
-        <text x="460" y="104" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#581c87">Active or settled</text>
-        <text x="392" y="134" font-family="Inter,sans-serif" font-size="10" font-weight="600" fill="#1c1917">4. Honest Company</text>
-        <text x="392" y="148" font-family="Inter,sans-serif" font-size="9" fill="#57534e">Multiple consumer claim suits</text>
-        <text x="392" y="178" font-family="Inter,sans-serif" font-size="10" font-weight="600" fill="#1c1917">Suave settlement</text>
-        <text x="392" y="192" font-family="Inter,sans-serif" font-size="9" fill="#57534e">$2M class, 2024</text>
-        <text x="392" y="222" font-family="Inter,sans-serif" font-size="10" font-weight="600" fill="#1c1917">6. Sephora dismissed</text>
-        <text x="392" y="236" font-family="Inter,sans-serif" font-size="9" fill="#57534e">Criteria disclosed</text>
-        <text x="392" y="266" font-family="Inter,sans-serif" font-size="10" font-weight="600" fill="#1c1917">6. Ulta active suit</text>
-        <text x="392" y="280" font-family="Inter,sans-serif" font-size="9" fill="#57534e">Filed Oct 2025</text>
-        <text x="392" y="310" font-family="Inter,sans-serif" font-size="10" font-weight="600" fill="#1c1917">Neutrogena (J&amp;J)</text>
-        <text x="392" y="324" font-family="Inter,sans-serif" font-size="9" fill="#57534e">Personal injury, 2024</text>
-
-        <!-- Footer -->
-        <rect x="20" y="525" width="520" height="0" stroke="none" fill="none"/>
+        <rect x="380" y="50" width="160" height="290" rx="10" fill="#faf5ff" stroke="#e9d5ff"/>
+        <text x="460" y="74" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" font-weight="800" fill="#7e22ce">LAWSUITS</text>
+        <text x="460" y="90" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#581c87">Active or settled</text>
+        <text x="392" y="118" font-family="Inter,sans-serif" font-size="10" font-weight="600" fill="#1c1917">Honest Company</text>
+        <text x="392" y="132" font-family="Inter,sans-serif" font-size="9" fill="#57534e">Multiple consumer suits</text>
+        <text x="392" y="158" font-family="Inter,sans-serif" font-size="10" font-weight="600" fill="#1c1917">Suave settlement</text>
+        <text x="392" y="172" font-family="Inter,sans-serif" font-size="9" fill="#57534e">$2M class, 2024</text>
+        <text x="392" y="198" font-family="Inter,sans-serif" font-size="10" font-weight="600" fill="#1c1917">Sephora dismissed</text>
+        <text x="392" y="212" font-family="Inter,sans-serif" font-size="9" fill="#57534e">Criteria disclosed</text>
+        <text x="392" y="238" font-family="Inter,sans-serif" font-size="10" font-weight="600" fill="#1c1917">Ulta active suit</text>
+        <text x="392" y="252" font-family="Inter,sans-serif" font-size="9" fill="#57534e">Filed Oct 2025</text>
+        <text x="392" y="278" font-family="Inter,sans-serif" font-size="10" font-weight="600" fill="#1c1917">Neutrogena (J&amp;J)</text>
+        <text x="392" y="292" font-family="Inter,sans-serif" font-size="9" fill="#57534e">Personal injury, 2024</text>
+        <text x="392" y="318" font-family="Inter,sans-serif" font-size="10" font-weight="600" fill="#1c1917">Unilever dry shampoo</text>
+        <text x="392" y="332" font-family="Inter,sans-serif" font-size="9" fill="#57534e">Personal injury, ongoing</text>
       </svg>
     </div>
 
@@ -404,14 +433,26 @@
 
       <p><span class="matters-label">Why it matters:</span> Many of these products are marketed to families switching <em>away</em> from conventional toothpaste because they want fewer chemicals. The contamination is invisible on the label.</p>
 
-      <a class="swap-card" href="https://www.amazon.com/dp/B000Q46K86?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">
-        <div>
-          <div class="swap-card-eyebrow">Verified Swap</div>
-          <div class="swap-card-title">Weleda Salt Toothpaste</div>
-          <p class="swap-card-desc">NATRUE certified natural cosmetic. Sea salt and silica base. No fluoride, no SLS, no synthetic foaming agents. Full ingredient transparency from a heritage brand (Weleda, 1921). The daily use pick from our store.</p>
-        </div>
-        <span class="swap-card-arrow">→</span>
-      </a>
+      <div class="swap-card-grid">
+        <a class="swap-card" href="https://www.amazon.com/dp/B000Q46K86?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">
+          <img src="https://m.media-amazon.com/images/I/51yViset7AL._AC_SL400_.jpg" alt="Weleda Salt Toothpaste" loading="lazy">
+          <div class="swap-card-body">
+            <div class="swap-card-eyebrow">Verified Swap · Adults</div>
+            <div class="swap-card-title">Weleda Salt Toothpaste</div>
+            <p class="swap-card-desc">NATRUE certified. Sea salt and silica base. No fluoride, no SLS, no synthetic foaming agents. Heritage brand (1921).</p>
+          </div>
+          <span class="swap-card-arrow">→</span>
+        </a>
+        <a class="swap-card" href="https://www.amazon.com/dp/B004769M8E?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">
+          <img src="https://m.media-amazon.com/images/I/617gFeH3BjL._AC_SL400_.jpg" alt="Spry Kids Tooth Gel" loading="lazy">
+          <div class="swap-card-body">
+            <div class="swap-card-eyebrow">Verified Swap · Kids</div>
+            <div class="swap-card-title">Spry Kids Tooth Gel</div>
+            <p class="swap-card-desc">Xylitol formula, safe to swallow. Strawberry banana. No fluoride, no SLS, no parabens, no artificial colors.</p>
+          </div>
+          <span class="swap-card-arrow">→</span>
+        </a>
+      </div>
     </div>
 
     <!-- Product 2 -->
@@ -434,7 +475,8 @@
       <p><span class="matters-label">Why it matters:</span> The benzene was a propellant contaminant, not a listed ingredient. There was no way for a consumer to know from the label.</p>
 
       <a class="swap-card" href="https://www.amazon.com/dp/B09SGXS4PZ?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">
-        <div>
+        <img src="https://m.media-amazon.com/images/I/71iWTflth6L._AC_SL400_.jpg" alt="Each & Every Aluminum Free Deodorant" loading="lazy">
+        <div class="swap-card-body">
           <div class="swap-card-eyebrow">Verified Swap</div>
           <div class="swap-card-title">Each &amp; Every aluminum free deodorant</div>
           <p class="swap-card-desc">Stick format, no aerosol propellant. Plant based, no aluminum, no propylene glycol, no PEG, no dimethicone. Made in the USA.</p>
@@ -465,7 +507,8 @@
       <p><span class="matters-label">Why it matters:</span> Spray formulations are the highest risk format. The propellant is often the contamination source, which means even mineral sunscreens in aerosol cans have shown contamination. See our full <a href="best-mineral-sunscreen-guide.html">mineral sunscreen guide</a> for vetted lotion picks.</p>
 
       <a class="swap-card" href="https://www.amazon.com/dp/B07J6N8M75?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">
-        <div>
+        <img src="https://m.media-amazon.com/images/I/61Jb2cvKq6L._AC_SL400_.jpg" alt="Earth Mama Baby Mineral Sunscreen Lotion SPF 40" loading="lazy">
+        <div class="swap-card-body">
           <div class="swap-card-eyebrow">Verified Swap</div>
           <div class="swap-card-title">Earth Mama Baby SPF 40 (lotion, mineral)</div>
           <p class="swap-card-desc">Non nano zinc oxide. EWG verified, NSF certified contents. Lotion format, no propellant, no benzene risk.</p>
@@ -492,7 +535,8 @@
       <p><span class="matters-label">Why it matters:</span> Repeated consumer labeling litigation across product categories spanning nearly a decade. Consumers paying premium prices for ingredient claims that have been challenged in court more than once.</p>
 
       <a class="swap-card" href="https://www.amazon.com/s?k=WaterWipes+baby+wipes&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">
-        <div>
+        <img src="https://m.media-amazon.com/images/I/81PXdcO16XL._AC_SL400_.jpg" alt="WaterWipes Original Baby Wipes" loading="lazy">
+        <div class="swap-card-body">
           <div class="swap-card-eyebrow">Verified Swap</div>
           <div class="swap-card-title">WaterWipes</div>
           <p class="swap-card-desc">99.9% water, 0.1% fruit extract. Two ingredient list, no fragrance, no preservatives. Hospital approved. Good for newborn skin.</p>
@@ -516,13 +560,14 @@
 
       <p><span class="truth-label">The fragrance trap:</span> Conventional dryer sheets and fabric softeners coat fabric with chemicals that stay on clothes through wear. A University of Washington study found 25 volatile organic compounds, including 7 hazardous air pollutants like acetaldehyde and benzene, coming out of dryer vents from scented laundry products.</p>
 
-      <p><span class="matters-label">Better swaps:</span> Powders or tablets generally need fewer preservatives and avoid the ethoxylated surfactant problem entirely. EPA Safer Choice and EWG Verified are the two certifications that meaningfully filter for this. See our <a href="reduce-microplastics-in-cleaning-products.html">cleaning product guide</a> for the deeper breakdown.</p>
+      <p><span class="matters-label">Better swaps:</span> Tablets and powders generally need fewer preservatives and avoid the ethoxylated surfactant problem entirely. EPA Safer Choice and EWG Verified are the two certifications that meaningfully filter for this. See our <a href="reduce-microplastics-in-cleaning-products.html">cleaning product guide</a> for the deeper breakdown.</p>
 
-      <a class="swap-card" href="https://www.amazon.com/s?k=Molly%27s+Suds+laundry+detergent&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">
-        <div>
+      <a class="swap-card" href="https://www.amazon.com/dp/B0CGV7HPHM?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">
+        <img src="https://m.media-amazon.com/images/I/81EZ9mzlpNL._AC_SL400_.jpg" alt="Blueland Laundry Detergent Tablets" loading="lazy">
+        <div class="swap-card-body">
           <div class="swap-card-eyebrow">Verified Swap</div>
-          <div class="swap-card-title">Molly's Suds powder</div>
-          <p class="swap-card-desc">Powder format. EPA Safer Choice certified. Sea salt, sodium carbonate, magnesium sulfate. No SLES, no PEG, no 1,4 dioxane risk.</p>
+          <div class="swap-card-title">Blueland Laundry Detergent Tablets</div>
+          <p class="swap-card-desc">Plastic free dry tablets in a paper canister. No SLES, no PEG, no 1,4 dioxane risk, no liquid plastic bottle. Refills available.</p>
         </div>
         <span class="swap-card-arrow">→</span>
       </a>
@@ -543,15 +588,15 @@
 
       <p><span class="truth-label">The fragrance loophole:</span> Even brands on a retailer clean list can contain undisclosed fragrance allergens. The word "fragrance" or "parfum" can legally hide over 3,000 chemicals in the US, including phthalates used to extend scent life. The EU now requires 80 plus specific fragrance allergens to be disclosed by name. The US does not.</p>
 
-      <p><span class="matters-label">Why it matters:</span> Retailer clean programs are defined and enforced by the retailer, not by an independent body. There is no testing, no penalty, no enforcement, only the threat of litigation when something is exposed. See our <a href="microplastics-in-cosmetics-and-personal-care.html">cosmetics and personal care guide</a> for ingredient level vetting.</p>
+      <p><span class="matters-label">Why it matters:</span> Retailer clean programs are defined and enforced by the retailer, not by an independent body. There is no testing, no penalty, no enforcement, only the threat of litigation when something is exposed.</p>
 
-      <a class="swap-card" href="https://www.amazon.com/stores/page/EC9262AF-DBE3-48B0-A40A-E1DAA7F4C9AE?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">
-        <div>
-          <div class="swap-card-eyebrow">Verified Swap</div>
-          <div class="swap-card-title">Henry Rose (full INCI fragrance disclosure)</div>
-          <p class="swap-card-desc">Discloses every ingredient by name, including fragrance components, which almost no other US perfume brand does. Phthalate free, paraben free, aluminum free.</p>
+      <a class="swap-card" href="microplastics-in-cosmetics-and-personal-care.html" style="background:#f5f3ff;border-color:#ddd6fe;border-left-color:#7c3aed;">
+        <div class="swap-card-body">
+          <div class="swap-card-eyebrow" style="color:#7c3aed;">Read Next</div>
+          <div class="swap-card-title">Our full Cosmetics &amp; Personal Care Guide</div>
+          <p class="swap-card-desc">Instead of trusting a retailer's clean shelf, vet products by ingredient. The guide covers every category from foundation and mascara to fragrance and cleansers, with the polymers, fragrance loopholes, and certifications that actually mean something.</p>
         </div>
-        <span class="swap-card-arrow">→</span>
+        <span class="swap-card-arrow" style="color:#7c3aed;">→</span>
       </a>
     </div>
 
@@ -573,7 +618,8 @@
       <p><span class="matters-label">Better swaps:</span> 100% beeswax with cotton wicks and no added fragrance. If you want scent, look for properly diluted essential oils in 100% soy or coconut wax with cotton wicks.</p>
 
       <a class="swap-card" href="https://www.amazon.com/s?k=100%25+beeswax+candle+cotton+wick&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">
-        <div>
+        <img src="https://m.media-amazon.com/images/I/614GBofDKCL._AC_SL400_.jpg" alt="100% beeswax pillar candle with cotton wick" loading="lazy">
+        <div class="swap-card-body">
           <div class="swap-card-eyebrow">Verified Swap</div>
           <div class="swap-card-title">100% beeswax pillars with cotton wicks</div>
           <p class="swap-card-desc">No paraffin, no synthetic fragrance, no phthalates. Cotton wick (zinc and lead wicks should be avoided). Filter by the words 100% beeswax, not "beeswax blend."</p>
@@ -598,11 +644,12 @@
 
       <p><span class="matters-label">Why it matters for "clean" claims:</span> Dry shampoo is marketed heavily to the wellness audience as a "clean" alternative to washing hair daily. The contamination came from the manufacturing process, not the formula, which is why no label change would have warned consumers. Powder format products avoid the aerosol problem entirely.</p>
 
-      <a class="swap-card" href="https://www.amazon.com/s?k=Lulu+Organics+hair+powder&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">
-        <div>
+      <a class="swap-card" href="https://www.amazon.com/dp/B002WWBEXG?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">
+        <img src="https://m.media-amazon.com/images/I/81ni3-Q2x4L._AC_SL400_.jpg" alt="Lulu Organics Lavender Hair Powder Dry Shampoo" loading="lazy">
+        <div class="swap-card-body">
           <div class="swap-card-eyebrow">Verified Swap</div>
-          <div class="swap-card-title">Powder format dry shampoo (e.g. Lulu Organics)</div>
-          <p class="swap-card-desc">Loose powder, no aerosol propellant. Cornstarch base, kaolin clay, essential oils. Glass jar packaging.</p>
+          <div class="swap-card-title">Lulu Organics Lavender Hair Powder</div>
+          <p class="swap-card-desc">Loose powder, no aerosol propellant. Cornstarch base, kaolin clay, essential oils. Glass jar packaging. Made in NYC.</p>
         </div>
         <span class="swap-card-arrow">→</span>
       </a>
@@ -622,7 +669,8 @@
       <p><span class="matters-label">Pattern recognition:</span> Any aerosol or alcohol based product is worth scrutinizing. The contamination source is typically the propellant or the ethanol, not the active formula. Foam pump and non aerosol formats carry far lower contamination risk.</p>
 
       <a class="swap-card" href="https://www.amazon.com/s?k=Dr+Bronner%27s+organic+hand+sanitizer&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">
-        <div>
+        <img src="https://m.media-amazon.com/images/I/61YS%2B9nUXTS._AC_SL400_.jpg" alt="Dr. Bronner's Organic Hand Sanitizer" loading="lazy">
+        <div class="swap-card-body">
           <div class="swap-card-eyebrow">Verified Swap</div>
           <div class="swap-card-title">Dr. Bronner's Organic Hand Sanitizer</div>
           <p class="swap-card-desc">Pump format, no aerosol. Fair trade ethyl alcohol, organic glycerin, organic lavender oil. USDA Organic certified.</p>
@@ -649,7 +697,8 @@
       <p><span class="matters-label">What to look for:</span> Full INCI ingredient transparency, brands that list every fragrance allergen by name, EU compliant labeling even on US products, and MADE SAFE certification.</p>
 
       <a class="swap-card" href="https://www.amazon.com/s?k=RMS+Beauty&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">
-        <div>
+        <img src="https://m.media-amazon.com/images/I/71f%2BsOLj9QL._AC_SL400_.jpg" alt="RMS Beauty Lip2Cheek" loading="lazy">
+        <div class="swap-card-body">
           <div class="swap-card-eyebrow">Verified Swap</div>
           <div class="swap-card-title">RMS Beauty</div>
           <p class="swap-card-desc">Organic, food grade ingredients. Lists every component including any natural fragrance source. EWG verified across most of the line. Glass packaging.</p>
@@ -707,9 +756,14 @@
       </thead>
       <tbody>
         <tr>
-          <td>Toothpaste (daily use)</td>
+          <td>Toothpaste (adults)</td>
           <td><a href="https://www.amazon.com/dp/B000Q46K86?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Weleda Salt Toothpaste</a></td>
           <td>NATRUE certified, no fluoride, no SLS, no synthetic foaming agents</td>
+        </tr>
+        <tr>
+          <td>Toothpaste (kids)</td>
+          <td><a href="https://www.amazon.com/dp/B004769M8E?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Spry Kids Tooth Gel</a></td>
+          <td>Xylitol formula, safe to swallow, no fluoride, no SLS, no parabens</td>
         </tr>
         <tr>
           <td>Antiperspirant / deodorant</td>
@@ -728,13 +782,8 @@
         </tr>
         <tr>
           <td>Laundry detergent</td>
-          <td><a href="https://www.amazon.com/s?k=Molly%27s+Suds+laundry+detergent&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Molly's Suds powder</a></td>
-          <td>EPA Safer Choice, no SLES, no PEG, no 1,4 dioxane risk</td>
-        </tr>
-        <tr>
-          <td>Fragrance</td>
-          <td><a href="https://www.amazon.com/stores/page/EC9262AF-DBE3-48B0-A40A-E1DAA7F4C9AE?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Henry Rose</a></td>
-          <td>Full INCI fragrance disclosure, phthalate free, paraben free</td>
+          <td><a href="https://www.amazon.com/dp/B0CGV7HPHM?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Blueland Laundry Tablets</a></td>
+          <td>Plastic free tablet format, no SLES, no PEG, no 1,4 dioxane risk, refillable</td>
         </tr>
         <tr>
           <td>Candles</td>
@@ -743,7 +792,7 @@
         </tr>
         <tr>
           <td>Dry shampoo</td>
-          <td><a href="https://www.amazon.com/s?k=Lulu+Organics+hair+powder&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Powder format hair powders</a></td>
+          <td><a href="https://www.amazon.com/dp/B002WWBEXG?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Lulu Organics Lavender Hair Powder</a></td>
           <td>No aerosol, no benzene risk, glass jar packaging</td>
         </tr>
         <tr>
