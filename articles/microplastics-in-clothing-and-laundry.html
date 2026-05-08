@@ -184,6 +184,15 @@
       border-radius: var(--radius-sm);
       display: block;
     }
+    .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0 2rem; }
+    .product-card { background: var(--surface); border-radius: var(--radius); text-decoration: none; color: inherit; box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; overflow: hidden; }
+    .product-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+    .product-card img { width: 100%; height: 180px; object-fit: contain; background: #fff; padding: 0.75rem; }
+    .product-card-body { padding: 1rem; display: flex; flex-direction: column; flex: 1; gap: 0.4rem; }
+    .product-card-tier { font-size: 0.7rem; font-weight: 800; color: var(--accent-dark); letter-spacing: 0.06em; }
+    .product-card-name { font-size: 1rem; font-weight: 700; line-height: 1.3; margin: 0; }
+    .product-card-best { font-size: 0.85rem; color: var(--text-muted); line-height: 1.4; flex: 1; margin: 0; }
+    .product-card-cta { font-size: 0.85rem; color: var(--accent-dark); font-weight: 600; margin-top: 0.4rem; }
   </style>
 </head>
 <body>
@@ -235,8 +244,7 @@
       <ol>
         <li><a href="#scale">The Scale of the Problem</a></li>
         <li><a href="#fabrics">Which Fabrics Shed the Most</a></li>
-        <li><a href="#filters">Washing Machine Filters</a></li>
-        <li><a href="#laundry-bags">Laundry Bags</a></li>
+        <li><a href="#filters">Washing Machine Filters and Bags</a></li>
         <li><a href="#washing-habits">Washing Habits That Reduce Shedding</a></li>
         <li><a href="#dryer">The Dryer Problem</a></li>
         <li><a href="#better-fabrics">Choosing Better Fabrics</a></li>
@@ -394,52 +402,79 @@
     <p>The key distinction is not just how much a fabric sheds, but whether what it sheds is persistent. Cotton, linen, hemp, and wool all shed fibers during washing, but those fibers are natural and biodegradable. They break down in the environment over weeks to months. Synthetic fibers persist for hundreds of years, accumulating in ecosystems and food chains.</p>
 
     <!-- SECTION 3: WASHING MACHINE FILTERS -->
-    <h2 id="filters">3. Washing Machine Filters</h2>
+    <h2 id="filters">3. Washing Machine Filters and Bags</h2>
 
-    <p>If you have synthetic clothing you cannot replace right away, an external washing machine filter is the most effective way to prevent microfibers from entering waterways. These filters attach to your washing machine's discharge hose and catch fibers before they reach the drain.</p>
+    <p>If you have synthetic clothing you cannot replace right away, an external washing machine filter is the most effective way to prevent microfibers from entering waterways. Lower cost in drum balls and zip up wash bags help too, with smaller capture rates but zero installation.</p>
 
     <div class="callout">
       <div class="callout-title">Why This Matters</div>
       France became the first country to require microfiber filters on all new washing machines starting in 2025. Australia, the UK, and several other countries are considering similar legislation. Adding a filter now puts you ahead of regulations that are likely coming everywhere.
     </div>
 
+    <div class="product-grid">
+      <a href="https://guppyfriend.us/products/guppyfriend-washing-bag?variant=15269244272738" target="_blank" rel="noopener" class="product-card">
+        <img src="https://guppyfriend.us/cdn/shop/files/Waschbeutel-ENG_600x.jpg?v=1708299779" alt="Guppyfriend Washing Bag" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">$ &middot; BEST IN BAG</span>
+          <h3 class="product-card-name">Guppyfriend Washing Bag</h3>
+          <p class="product-card-best">Tightly woven untreated polyamide mesh. 54% microfiber capture in independent testing. Holds several garments per wash.</p>
+          <span class="product-card-cta">View &rarr;</span>
+        </div>
+      </a>
+      <a href="https://coraball.com/products/cora-ball" target="_blank" rel="noopener" class="product-card">
+        <img src="https://coraball.com/cdn/shop/products/CoraBallonwasher4-3ratio.jpg?v=1644427001" alt="Cora Ball microfiber catcher" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">$ &middot; BEST FOR ZERO INSTALL</span>
+          <h3 class="product-card-name">Cora Ball</h3>
+          <p class="product-card-best">Coral inspired branching structure, tumbles in drum. 26% microfiber capture. Made in Vermont USA.</p>
+          <span class="product-card-cta">View &rarr;</span>
+        </div>
+      </a>
+      <a href="https://www.amazon.com/s?k=PlanetCare+microfiber+filter&amp;tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
+        <img src="https://m.media-amazon.com/images/I/71Vp1rY7E0L._AC_SL400_.jpg" alt="PlanetCare microfiber filter" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">$$ &middot; BEST INLINE</span>
+          <h3 class="product-card-name">PlanetCare Microfiber Filter</h3>
+          <p class="product-card-best">Replaceable cartridge inline filter, 90% capture. Mail back recycling program for collected fibers.</p>
+          <span class="product-card-cta">View &rarr;</span>
+        </div>
+      </a>
+      <a href="https://www.amazon.com/s?k=Filtrol+160+washing+machine+filter&amp;tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
+        <img src="https://m.media-amazon.com/images/I/516yniXUnQL._AC_SL400_.jpg" alt="Filtrol 160 washing machine filter" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">$$ &middot; BEST CAPTURE RATE</span>
+          <h3 class="product-card-name">Filtrol 160</h3>
+          <p class="product-card-best">Reusable mesh, 100 micron filtration, 80 to 90% capture. Fits any standard washer discharge hose.</p>
+          <span class="product-card-cta">View &rarr;</span>
+        </div>
+      </a>
+    </div>
+
     <h3>External Lint Filters</h3>
 
     <p>External filters are the gold standard for microfiber capture. They install on the outside of your washing machine, typically on the discharge hose, and filter all wastewater before it leaves the machine.</p>
 
-    <ul>
-      <li><a href="https://www.amazon.com/s?k=Filtrol+160+washing+machine+filter&tag=plasticdetox-20" target="_blank" rel="noopener sponsored"><strong>Filtrol 160</strong></a> ($150 to $180). The most studied and proven external filter on the market. It uses a reusable mesh filter that captures fibers down to about 100 micrometers. Independent testing shows it captures 80 to 90% of microfibers. You clean the filter after every few washes, which takes about 30 seconds. It installs on the discharge hose of any standard washing machine and requires no special plumbing.</li>
-      <li><a href="https://www.amazon.com/s?k=PlanetCare+microfiber+filter&tag=plasticdetox-20" target="_blank" rel="noopener sponsored"><strong>PlanetCare Microfiber Filter</strong></a> ($90 to $110, plus replacement cartridges). A sleek inline filter that uses replaceable cartridges. PlanetCare offers a cartridge return program where they collect and properly dispose of captured fibers. Independent testing shows similar capture rates to the Filtrol. The cartridge replacement model means slightly higher ongoing costs, but the convenience and proper fiber disposal are significant advantages.</li>
-    </ul>
+    <p>The <strong>Filtrol 160</strong> is the most studied external filter on the market. It uses a reusable mesh element that captures fibers down to about 100 micrometers. Independent testing shows it captures 80 to 90% of microfibers. You clean the filter after every few washes, which takes about 30 seconds. It installs on the discharge hose of any standard washing machine and requires no special plumbing.</p>
+
+    <p>The <strong>PlanetCare Microfiber Filter</strong> is a sleek inline filter that uses replaceable cartridges. PlanetCare offers a cartridge return program where they collect and properly dispose of captured fibers. Independent testing shows similar capture rates to the Filtrol. The cartridge replacement model means slightly higher ongoing costs, but the convenience and proper fiber disposal are significant advantages.</p>
 
     <h3>In Drum Devices</h3>
 
-    <p>These are less effective than external filters but easier to start using because they require no installation.</p>
+    <p>The <strong>Cora Ball</strong> is a small, coral shaped ball that tumbles freely in your washing machine drum. Its branching structure catches microfibers as water flows through it. Independent testing shows it captures about 26% of microfibers. That is significantly less than an external filter, but it requires zero installation. Simply toss it in with your laundry. You periodically remove the collected fiber from the ball's stalks.</p>
 
-    <ul>
-      <li><a href="https://coraball.com/products/cora-ball" target="_blank" rel="noopener"><strong>Cora Ball</strong></a> ($38 to $42). A small, coral shaped ball that tumbles freely in your washing machine drum. Its branching structure catches microfibers as water flows through it. Independent testing shows it captures about 26% of microfibers. That is significantly less than an external filter, but it requires zero installation. Simply toss it in with your laundry. You periodically remove the collected fiber from the ball's stalks.</li>
-    </ul>
+    <h3>Microfiber Catching Wash Bags</h3>
 
-    <p>If you have to choose one solution, an external filter like the Filtrol or PlanetCare will make the biggest impact. If you want something you can start using immediately with no tools, the Cora Ball and Guppyfriend bag (covered next) are good entry points.</p>
-
-    <!-- SECTION 4: LAUNDRY BAGS -->
-    <h2 id="laundry-bags">4. Laundry Bags</h2>
-
-    <p>Microfiber catching laundry bags provide a practical, affordable way to reduce fiber shedding without installing anything on your washing machine. You place synthetic garments inside the bag, zip it closed, and wash as normal. The bag serves two functions: it catches fibers that do shed, and it reduces the mechanical agitation that causes shedding in the first place.</p>
-
-    <ul>
-      <li><a href="https://guppyfriend.us/products/guppyfriend-washing-bag?variant=15269244272738" target="_blank" rel="noopener"><strong>Guppyfriend Washing Bag</strong></a> ($35 to $38). The most researched and well known microfiber catching laundry bag. It is made from a tightly woven, untreated polyamide mesh that allows water and detergent through but captures microfibers. Independent testing shows it captures approximately 54% of microfibers and reduces overall shedding by creating a gentler wash environment inside the bag. After washing, you remove the collected fibers from inside the bag and dispose of them in the trash (not down the drain). The bag is large enough to hold several garments per wash.</li>
-    </ul>
+    <p>The <strong>Guppyfriend Washing Bag</strong> is the most researched microfiber catching laundry bag. It is made from a tightly woven, untreated polyamide mesh that allows water and detergent through but captures microfibers. Independent testing shows it captures approximately 54% of microfibers and reduces overall shedding by creating a gentler wash environment inside the bag. After washing, you remove the collected fibers from inside the bag and dispose of them in the trash (not down the drain). The bag is large enough to hold several garments per wash.</p>
 
     <div class="callout">
       <div class="callout-title">How to Use a Guppyfriend Bag</div>
       Place synthetic garments inside the bag, filling it no more than two thirds full. Close the zipper completely. Wash on any cycle. After the wash, open the bag and remove any visible fiber clumps from the inside corners and seams. Dispose of the fiber clumps in your regular trash. Do not rinse the collected fibers down the drain.
     </div>
 
-    <p>You can use a Guppyfriend bag alongside an external filter for maximum protection, or on its own as a simple first step. The bag also helps protect delicate synthetic garments from pilling, which extends the life of your clothing.</p>
+    <p>If you have to choose one solution, an external filter will make the biggest impact. If you want something to start using immediately with no tools, the Cora Ball and Guppyfriend are strong entry points and can be used together for stacked capture.</p>
 
     <!-- SECTION 5: WASHING HABITS -->
-    <h2 id="washing-habits">5. Washing Habits That Reduce Shedding</h2>
+    <h2 id="washing-habits">4. Washing Habits That Reduce Shedding</h2>
 
     <p>How you wash your clothes matters almost as much as what you wash them with. Several research backed changes to your washing routine can significantly reduce microfiber release, and they cost nothing to implement.</p>
 
@@ -457,6 +492,28 @@
 
     <h3>Use Liquid Detergent Instead of Powder</h3>
     <p>Powder detergent contains granular particles that act as a mild abrasive against fabric during washing. This scrubbing action loosens and breaks fibers. Research from the University of Leeds showed that liquid detergent produced significantly less microfiber shedding than powder. If you prefer to avoid plastic bottles, look for liquid detergent sold in glass bottles or concentrated refill pouches.</p>
+    <p>Skip anything with synthetic fragrance. "Fragrance" in a detergent ingredient list typically masks phthalates, which off gas onto your clothes and skin during and after the wash. The picks below are fragrance free or scented only with essential oils.</p>
+
+    <div class="product-grid">
+      <a href="https://www.amazon.com/s?k=Mollys+Suds+laundry+detergent&amp;tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
+        <img src="https://m.media-amazon.com/images/I/61eiTUo982L._AC_SL400_.jpg" alt="Molly's Suds Laundry Detergent" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">$ &middot; BEST LIQUID</span>
+          <h3 class="product-card-name">Molly's Suds</h3>
+          <p class="product-card-best">Plant based liquid, fragrance free option, no dyes or optical brighteners. EPA Safer Choice certified.</p>
+          <span class="product-card-cta">View &rarr;</span>
+        </div>
+      </a>
+      <a href="https://www.amazon.com/s?k=Dropps+laundry+detergent+pods+unscented&amp;tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
+        <img src="https://m.media-amazon.com/images/I/81AhYURpnuL._AC_SL400_.jpg" alt="Dropps Laundry Detergent Pods" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">$ &middot; BEST PODS</span>
+          <h3 class="product-card-name">Dropps Unscented Pods</h3>
+          <p class="product-card-best">Concentrated pods in cardboard packaging, no plastic jug. Unscented version is dye and fragrance free.</p>
+          <span class="product-card-cta">View &rarr;</span>
+        </div>
+      </a>
+    </div>
 
     <h3>Reduce Spin Speed</h3>
     <p>Higher spin speeds create more centrifugal force on fabrics. While high spin is useful for water extraction, it also increases fiber breakage. Reducing spin speed to 800 RPM or lower for synthetic loads can help reduce shedding. Your clothes may come out slightly wetter, but they will shed fewer microfibers.</p>
@@ -514,7 +571,7 @@
       <div class="email-cta-msg"></div>
     </aside>
 
-    <h2 id="dryer">6. The Dryer Problem</h2>
+    <h2 id="dryer">5. The Dryer Problem</h2>
 
     <p>Most of the conversation around laundry microplastics focuses on washing machines and waterways, but your dryer is a significant and often overlooked source of airborne microplastics. When synthetic clothes tumble in a hot dryer, they shed fibers just as they do in a washing machine. The difference is that dryer fibers are vented directly into the air rather than into water.</p>
 
@@ -530,13 +587,45 @@
 
     <p><strong>Consider a dryer vent filter.</strong> Some companies are developing aftermarket filters that attach to your dryer's exterior vent to capture airborne fibers. This is a newer product category with limited independent testing, but the concept is sound. Check that any filter you install does not restrict airflow, as this can create a fire hazard.</p>
 
+    <p><strong>Replace dryer sheets with wool dryer balls.</strong> Conventional dryer sheets are coated in synthetic fragrance, quaternary ammonium compounds, and a thin polymer film that transfers onto your clothes. Wool dryer balls do the same job, softening fabric and reducing static, by tumbling alongside the load. They also shorten dry time by 15 to 25%, which lowers heat exposure and therefore fiber breakage.</p>
+
+    <div class="product-grid">
+      <a href="https://www.amazon.com/s?k=Smart+Sheep+Wool+Dryer+Balls&amp;tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
+        <img src="https://m.media-amazon.com/images/I/71AlIsUhdYL._AC_SL400_.jpg" alt="Smart Sheep Wool Dryer Balls" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">$ &middot; REPLACES DRYER SHEETS</span>
+          <h3 class="product-card-name">Smart Sheep Wool Dryer Balls</h3>
+          <p class="product-card-best">100% New Zealand wool, 6 pack, lasts about 1000 loads. No fragrance, no synthetic film transfer.</p>
+          <span class="product-card-cta">View &rarr;</span>
+        </div>
+      </a>
+      <a href="https://www.amazon.com/s?k=wooden+drying+rack+laundry&amp;tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
+        <img src="https://m.media-amazon.com/images/I/61BsDibA0rL._AC_SL400_.jpg" alt="Wooden laundry drying rack" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">$ &middot; SKIP THE DRYER</span>
+          <h3 class="product-card-name">Wooden Drying Rack</h3>
+          <p class="product-card-best">Folding solid wood rack. Air drying eliminates dryer fiber emissions entirely and extends garment life.</p>
+          <span class="product-card-cta">View &rarr;</span>
+        </div>
+      </a>
+      <a href="https://www.amazon.com/s?k=dryer+vent+lint+trap+mesh&amp;tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
+        <img src="https://m.media-amazon.com/images/I/61shpxDXBeL._AC_SL400_.jpg" alt="Dryer vent lint trap mesh" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">$ &middot; CATCH EXHAUST FIBERS</span>
+          <h3 class="product-card-name">Dryer Vent Lint Trap</h3>
+          <p class="product-card-best">Mesh sock fits over indoor dryer vent. Captures airborne fibers before they reach room or outdoor air.</p>
+          <span class="product-card-cta">View &rarr;</span>
+        </div>
+      </a>
+    </div>
+
     <div class="callout">
       <div class="callout-title">The Simple Solution</div>
       Air drying your clothes is the single most effective thing you can do to eliminate dryer related microplastic pollution. It costs nothing, extends the life of your clothing, saves energy, and prevents up to 120 million microfibers per load from being released into the air you and your neighbors breathe.
     </div>
 
     <!-- SECTION 7: CHOOSING BETTER FABRICS -->
-    <h2 id="better-fabrics">7. Choosing Better Fabrics</h2>
+    <h2 id="better-fabrics">6. Choosing Better Fabrics</h2>
 
     <p>The most effective long term strategy for reducing laundry microplastics is to gradually replace synthetic clothing with natural fiber alternatives. Every synthetic garment you retire from your wardrobe means fewer microplastic fibers shed over the remaining years of your laundry routine.</p>
 
@@ -560,8 +649,50 @@
       You do not need to replace your entire wardrobe overnight. Start with the items you wash most frequently: underwear, t shirts, socks, and workout clothes. Replacing these high wash items with natural fibers has the biggest impact per dollar spent because they go through the most wash cycles over their lifetime.
     </div>
 
+    <h3>Where to Start: Natural Fiber Picks</h3>
+    <p>Four high impact swaps to begin with. Each replaces a frequently washed synthetic in most wardrobes.</p>
+
+    <div class="product-grid">
+      <a href="https://www.amazon.com/s?k=Pact+organic+cotton+tee+womens&amp;tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
+        <img src="https://m.media-amazon.com/images/I/812+nTNYWKL._AC_SL400_.jpg" alt="Pact Organic Cotton Tee" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">$ &middot; REPLACES POLY BLEND TEES</span>
+          <h3 class="product-card-name">Pact Organic Cotton Tee</h3>
+          <p class="product-card-best">100% GOTS certified organic cotton, Fair Trade Certified factory, no spandex blend.</p>
+          <span class="product-card-cta">View &rarr;</span>
+        </div>
+      </a>
+      <a href="https://www.amazon.com/s?k=Smartwool+merino+wool+socks+womens&amp;tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
+        <img src="https://m.media-amazon.com/images/I/81Xgg8%2BCPSL._AC_SL400_.jpg" alt="Smartwool Merino Wool Socks" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">$$ &middot; REPLACES POLY SOCKS</span>
+          <h3 class="product-card-name">Smartwool Merino Socks</h3>
+          <p class="product-card-best">Merino wool blend, naturally odor resistant and moisture wicking. Wash less frequently than synthetic socks.</p>
+          <span class="product-card-cta">View &rarr;</span>
+        </div>
+      </a>
+      <a href="https://www.amazon.com/s?k=Woolx+merino+wool+base+layer+womens&amp;tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
+        <img src="https://m.media-amazon.com/images/I/81gefeagQjL._AC_SL400_.jpg" alt="Woolx Merino Wool Base Layer" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">$$ &middot; REPLACES POLY ACTIVEWEAR</span>
+          <h3 class="product-card-name">Woolx Merino Base Layer</h3>
+          <p class="product-card-best">100% merino wool, mulesing free. Direct alternative to polyester thermals and athletic base layers.</p>
+          <span class="product-card-cta">View &rarr;</span>
+        </div>
+      </a>
+      <a href="https://www.amazon.com/s?k=organic+linen+sheets+queen&amp;tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
+        <img src="https://m.media-amazon.com/images/I/71c2aa8dmRL._AC_SL400_.jpg" alt="Organic linen sheets" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">$$$ &middot; REPLACES MICROFIBER SHEETS</span>
+          <h3 class="product-card-name">Organic Linen Sheets</h3>
+          <p class="product-card-best">100% flax linen, OEKO TEX or GOTS certified options. Replaces polyester microfiber bedding which sheds in every wash.</p>
+          <span class="product-card-cta">View &rarr;</span>
+        </div>
+      </a>
+    </div>
+
     <!-- SECTION 8: RECYCLED POLYESTER -->
-    <h2 id="recycled-polyester">8. What About Recycled Polyester</h2>
+    <h2 id="recycled-polyester">7. What About Recycled Polyester</h2>
 
     <p>Recycled polyester, often marketed as rPET, is made from recycled plastic bottles or post consumer plastic waste. It has become a popular sustainability claim among major clothing brands. The appeal is clear: it diverts plastic waste from landfills and reduces the need for virgin petroleum to make new polyester fiber.</p>
 
@@ -574,7 +705,7 @@
     <p>The truly sustainable choice for reducing laundry microplastics is to move away from polyester entirely, whether virgin or recycled, and toward natural fibers that biodegrade when they shed.</p>
 
     <!-- SECTION 9: QUICK ACTION PLAN -->
-    <h2 id="action-plan">9. Quick Action Plan</h2>
+    <h2 id="action-plan">8. Quick Action Plan</h2>
 
     <p>Here is a prioritized list of actions you can take, ordered by impact and ease of implementation:</p>
 
