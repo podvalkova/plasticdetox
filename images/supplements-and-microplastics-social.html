@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex,nofollow">
+  <title>supplements-and-microplastics social card</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #d6d3d1;
+      display: flex;
+      justify-content: center;
+      padding: 2rem;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    .card {
+      width: 1200px;
+      height: 630px;
+      position: relative;
+      overflow: hidden;
+      background: #fafaf9;
+    }
+    .bg {
+      position: absolute;
+      top: 0; right: 0;
+      width: 60%;
+      height: 100%;
+      background-image: url('supplements.png');
+      background-size: cover;
+      background-position: center;
+    }
+    .veil {
+      position: absolute;
+      top: 0; left: 0; bottom: 0; right: 0;
+      background: linear-gradient(to right,
+        rgba(250,250,249,1) 0%,
+        rgba(250,250,249,1) 42%,
+        rgba(250,250,249,0.85) 55%,
+        rgba(250,250,249,0.35) 75%,
+        rgba(250,250,249,0.10) 100%);
+    }
+    .content {
+      position: absolute;
+      top: 0; left: 0; bottom: 0;
+      width: 720px;
+      padding: 56px 56px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      z-index: 2;
+    }
+    .tag {
+      display: inline-block;
+      align-self: flex-start;
+      font-size: 22px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: #fff;
+      background: #7c3aed;
+      padding: 10px 22px;
+      border-radius: 100px;
+      margin-bottom: 24px;
+    }
+    h1 {
+      font-size: 78px;
+      font-weight: 900;
+      color: #1c1917;
+      line-height: 0.98;
+      letter-spacing: -0.035em;
+    }
+    h1 .accent { color: #7c3aed; font-style: italic; }
+    .footer {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 40px;
+      z-index: 3;
+    }
+    .footer-stat { font-size: 22px; font-weight: 700; color: #44403c; }
+    .footer-url { font-size: 22px; font-weight: 900; color: #7c3aed; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="bg"></div>
+    <div class="veil"></div>
+    <div class="content">
+      <div class="tag">Supplements</div>
+      <h1>Microplastics in<br>your <span class="accent">supplements</span></h1>
+    </div>
+    <div class="footer">
+      <span class="footer-stat">Cleanest forms and brands</span>
+      <span class="footer-url">plasticdetox.org</span>
+    </div>
+  </div>
+</body>
+</html>
