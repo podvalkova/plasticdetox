@@ -61,7 +61,7 @@
         "name": "Which plastic resin codes are the safest for food contact?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "HDPE (#2), LDPE (#4), and polypropylene (#5) are widely considered the lower risk plastics for food contact. PET (#1) is fine for single use beverage bottles at room temperature. PVC (#3), polystyrene (#6), and polycarbonate (#7) are the categories where the leaching concerns are strongest, especially with heat, fat, or acidity."
+          "text": "HDPE (#2), LDPE (#4), and polypropylene (#5) are widely considered the lower risk plastics for food contact. PET (#1) has clean base chemistry but the microplastic load is significant: a 2024 PNAS study found roughly 240,000 plastic particles per liter in bottled water on average, with about 90% in the nanoplastic range. PVC (#3), polystyrene (#6), and polycarbonate (#7) are the categories where the chemical leaching concerns are strongest, especially with heat, fat, or acidity."
         }
       },
       {
@@ -470,15 +470,16 @@
 
     <p>Here's what each number actually represents, and where each sits on the risk hierarchy.</p>
 
-    <div class="resin-card risk-low">
+    <div class="resin-card risk-medium">
       <div class="resin-header">
         <span class="resin-number">1</span>
         <strong>PET or PETE (Polyethylene Terephthalate)</strong>
-        <span class="risk-badge">Lower risk</span>
+        <span class="risk-badge">Mixed: chemistry is clean, microplastic load is not</span>
       </div>
       <p><span class="label-found">Found in:</span> single use water and soda bottles, salad dressing bottles, peanut butter jars, polyester clothing.</p>
-      <p>PET is widely accepted as low risk for short term, room temperature food contact. It does not contain BPA or phthalates as part of its base chemistry. The legitimate concerns are antimony (a catalyst residue that can leach in tiny amounts, more so when bottles are heated or stored hot) and the fact that PET is not designed for reuse. The bottle's interior is not built to be repeatedly washed and exposed to dishwasher temperatures.</p>
-      <p><span class="label-use">Reasonable use:</span> single use, room temperature, then recycle.<br><span class="label-avoid">Avoid:</span> refilling for weeks, leaving in hot cars, microwaving.</p>
+      <p>On chemistry alone, PET looks like one of the cleaner plastics. It does not contain BPA or phthalates in its base resin, and the main chemical concern is antimony (a catalyst residue that leaches in tiny amounts, more so when bottles are warm). That used to be the whole story.</p>
+      <p>It is no longer the whole story. A 2024 study by Qian et al. in PNAS used a new imaging technique and found roughly 240,000 plastic particles per liter in bottled water on average, with about 90% in the nanoplastic range (smaller than 1 micrometer). Earlier work by Mason et al. in 2018 (Frontiers in Chemistry) already documented thousands of microplastic particles per liter across major bottled water brands. Squeezing the bottle, opening and closing the cap repeatedly, heat, and age all increase shedding. PET bottles are now one of the most quantifiable microplastic exposures in a typical diet.</p>
+      <p><span class="label-avoid">Avoid:</span> bottled water as a daily habit, refilling for weeks, leaving in hot cars, microwaving.<br><span class="label-use">Better path:</span> a home filter that meets NSF/ANSI 401 plus a stainless steel bottle. See <a href="how-to-filter-pfas-and-microplastics-from-water.html">how to filter PFAS and microplastics from water</a> and <a href="how-to-remove-microplastics-from-bottled-water.html">how to remove microplastics from bottled water</a>.</p>
     </div>
 
     <div class="resin-card risk-low">
@@ -550,8 +551,8 @@
     <!-- RISK HIERARCHY INFOGRAPHIC -->
     <div class="infographic">
       <div class="infographic-title">The Plastic Risk Hierarchy at a Glance</div>
-      <svg viewBox="0 0 520 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bar chart sorting the seven plastic resin codes by relative risk from lower to higher.">
-        <rect x="0" y="0" width="520" height="320" fill="#fafaf9" rx="8"/>
+      <svg viewBox="0 0 520 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bar chart sorting the seven plastic resin codes by relative risk from lower to higher.">
+        <rect x="0" y="0" width="520" height="280" fill="#fafaf9" rx="8"/>
         <text x="260" y="28" font-family="Inter,sans-serif" font-size="11" fill="#1c1917" font-weight="700" text-anchor="middle">Resin codes ranked by relative leaching concern</text>
 
         <!-- low risk group -->
@@ -563,20 +564,19 @@
         <rect x="320" y="70" width="120" height="34" rx="6" fill="#f0fdf4" stroke="#bbf7d0"/>
         <text x="380" y="92" font-family="Inter,sans-serif" font-size="11" fill="#16a34a" font-weight="700" text-anchor="middle">#5 PP</text>
 
-        <rect x="60" y="115" width="120" height="34" rx="6" fill="#f0fdf4" stroke="#bbf7d0"/>
-        <text x="120" y="137" font-family="Inter,sans-serif" font-size="11" fill="#16a34a" font-weight="700" text-anchor="middle">#1 PET (single use)</text>
-
         <!-- medium risk -->
-        <text x="60" y="180" font-family="Inter,sans-serif" font-size="10" fill="#a16207" font-weight="800">DEPENDS ON THE RESIN</text>
-        <rect x="60" y="190" width="380" height="34" rx="6" fill="#fefce8" stroke="#fde68a"/>
-        <text x="250" y="212" font-family="Inter,sans-serif" font-size="11" fill="#a16207" font-weight="700" text-anchor="middle">#7 Other (polycarbonate, PLA, multi layer)</text>
+        <text x="60" y="135" font-family="Inter,sans-serif" font-size="10" fill="#a16207" font-weight="800">CHEMISTRY CLEAN, MICROPLASTIC LOAD HIGH OR UNCLEAR</text>
+        <rect x="60" y="145" width="180" height="34" rx="6" fill="#fefce8" stroke="#fde68a"/>
+        <text x="150" y="167" font-family="Inter,sans-serif" font-size="11" fill="#a16207" font-weight="700" text-anchor="middle">#1 PET (bottled water)</text>
+        <rect x="250" y="145" width="190" height="34" rx="6" fill="#fefce8" stroke="#fde68a"/>
+        <text x="345" y="167" font-family="Inter,sans-serif" font-size="11" fill="#a16207" font-weight="700" text-anchor="middle">#7 Other (polycarbonate, PLA)</text>
 
         <!-- high risk -->
-        <text x="60" y="250" font-family="Inter,sans-serif" font-size="10" fill="#dc2626" font-weight="800">HIGHER RISK</text>
-        <rect x="60" y="260" width="180" height="34" rx="6" fill="#fef2f2" stroke="#fecaca"/>
-        <text x="150" y="282" font-family="Inter,sans-serif" font-size="11" fill="#dc2626" font-weight="700" text-anchor="middle">#3 PVC (phthalates)</text>
-        <rect x="250" y="260" width="190" height="34" rx="6" fill="#fef2f2" stroke="#fecaca"/>
-        <text x="345" y="282" font-family="Inter,sans-serif" font-size="11" fill="#dc2626" font-weight="700" text-anchor="middle">#6 PS (styrene)</text>
+        <text x="60" y="210" font-family="Inter,sans-serif" font-size="10" fill="#dc2626" font-weight="800">HIGHER RISK</text>
+        <rect x="60" y="220" width="180" height="34" rx="6" fill="#fef2f2" stroke="#fecaca"/>
+        <text x="150" y="242" font-family="Inter,sans-serif" font-size="11" fill="#dc2626" font-weight="700" text-anchor="middle">#3 PVC (phthalates)</text>
+        <rect x="250" y="220" width="190" height="34" rx="6" fill="#fef2f2" stroke="#fecaca"/>
+        <text x="345" y="242" font-family="Inter,sans-serif" font-size="11" fill="#dc2626" font-weight="700" text-anchor="middle">#6 PS (styrene)</text>
       </svg>
     </div>
 
@@ -667,7 +667,6 @@
     <p>A calibrated guide has to include this section, or the framework is not honest.</p>
 
     <ul>
-      <li><strong>PET water bottles for single use, then recycled.</strong> Not a long term reuse vessel, but for what they are designed for, low risk.</li>
       <li><strong>HDPE (#2) milk jugs, detergent bottles, and food containers.</strong> Among the most stable plastics in food contact use.</li>
       <li><strong>Polypropylene (#5) yogurt containers, prescription bottles, and food storage.</strong> Generally low risk for food contact, including for warmer foods, though we still do not recommend routine microwaving.</li>
       <li><strong>LDPE (#4) bread bags and freezer bags.</strong> Low risk for food contact. The environmental story is worse than the health story for this one.</li>
@@ -722,7 +721,7 @@
       </div>
       <div class="faq-item">
         <div class="faq-question">Which plastic resin codes are the safest for food contact?</div>
-        <p class="faq-answer">HDPE (#2), LDPE (#4), and polypropylene (#5) are widely considered the lower risk plastics for food contact. PET (#1) is fine for single use beverage bottles at room temperature. PVC (#3), polystyrene (#6), and polycarbonate (#7) are the categories where the leaching concerns are strongest, especially with heat, fat, or acidity.</p>
+        <p class="faq-answer">HDPE (#2), LDPE (#4), and polypropylene (#5) are widely considered the lower risk plastics for food contact. PET (#1) has clean base chemistry but the microplastic load is significant: a 2024 PNAS study found roughly 240,000 plastic particles per liter in bottled water on average, with about 90% in the nanoplastic range. PVC (#3), polystyrene (#6), and polycarbonate (#7) are the categories where the chemical leaching concerns are strongest, especially with heat, fat, or acidity.</p>
       </div>
       <div class="faq-item">
         <div class="faq-question">Is BPA free plastic actually safe?</div>
@@ -752,7 +751,7 @@
 
     <div class="callout">
       <div class="callout-title">Sources</div>
-      This article draws on research from: ASTM International D7611 on Resin Identification Codes; the Plastics Industry Association historical record on Bakelite and the Society of the Plastics Industry; PlasticsEurope and OECD data on global production (234 million tons in 2000 to 460 million tons in 2019); systematic reviews of BPA, BPS, and BPF in vitro activity (Rochester and Bolden, Environmental Health Perspectives, 2015); 2025 analyses of bisphenol attributable metabolic disease burden; Hyman et al. on phthalate attributable cardiovascular mortality (EBioMedicine, 2025); Hauser and Calafat on phthalate health effects; Marfella et al., "Microplastics and Nanoplastics in Atheromas and Cardiovascular Events" (New England Journal of Medicine, 2024); Ragusa et al. on microplastics in the human placenta; Leslie et al. on microplastics in human blood (Environment International, 2022); World Health Organization (2022) report on microplastics and human health; International Agency for Research on Cancer monograph on styrene (Group 2B); FDA Food Contact Substance Notification program documentation; Hahladakis et al. on plastic additives (Journal of Hazardous Materials, 2018).
+      This article draws on research from: ASTM International D7611 on Resin Identification Codes; the Plastics Industry Association historical record on Bakelite and the Society of the Plastics Industry; PlasticsEurope and OECD data on global production (234 million tons in 2000 to 460 million tons in 2019); systematic reviews of BPA, BPS, and BPF in vitro activity (Rochester and Bolden, Environmental Health Perspectives, 2015); 2025 analyses of bisphenol attributable metabolic disease burden; Hyman et al. on phthalate attributable cardiovascular mortality (EBioMedicine, 2025); Hauser and Calafat on phthalate health effects; Qian et al., "Rapid Single Particle Chemical Imaging of Nanoplastics by SRS Microscopy" (PNAS, 2024) on ~240,000 plastic particles per liter in bottled water; Mason et al., "Synthetic Polymer Contamination in Bottled Water" (Frontiers in Chemistry, 2018); Marfella et al., "Microplastics and Nanoplastics in Atheromas and Cardiovascular Events" (New England Journal of Medicine, 2024); Ragusa et al. on microplastics in the human placenta; Leslie et al. on microplastics in human blood (Environment International, 2022); World Health Organization (2022) report on microplastics and human health; International Agency for Research on Cancer monograph on styrene (Group 2B); FDA Food Contact Substance Notification program documentation; Hahladakis et al. on plastic additives (Journal of Hazardous Materials, 2018).
     </div>
 
     <aside class="email-cta" data-email-cta-injected>
