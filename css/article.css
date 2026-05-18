@@ -109,6 +109,21 @@ body {
   margin-bottom: 0.5rem;
 }
 
+.article-byline {
+  font-size: 0.9rem;
+  color: var(--text);
+  font-weight: 600;
+  margin: 0.5rem 0 0.4rem;
+}
+.article-byline a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid var(--border);
+}
+.article-byline a:hover {
+  color: var(--accent-dark);
+  border-bottom-color: var(--accent-dark);
+}
 .article-meta {
   font-size: 0.85rem;
   color: var(--text-muted);
