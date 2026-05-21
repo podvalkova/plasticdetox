@@ -295,10 +295,46 @@
     }
     .a-side-link.active .ct { color: var(--accent-dark); }
 
+    .a-filter-details { padding-bottom: 0; }
+    .a-filter-summary {
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      user-select: none;
+    }
+    .a-filter-summary::-webkit-details-marker { display: none; }
+    .a-filter-summary .a-side-h {
+      margin-bottom: 0;
+      flex: 1;
+    }
+    .a-filter-count {
+      font-family: ui-monospace, SFMono-Regular, monospace;
+      font-size: 0.7rem;
+      color: var(--accent-dark);
+      background: var(--accent-light);
+      padding: 0.1rem 0.45rem;
+      border-radius: 60px;
+      font-weight: 600;
+    }
+    .a-filter-caret {
+      width: 8px;
+      height: 8px;
+      border-right: 1.5px solid var(--text-muted);
+      border-bottom: 1.5px solid var(--text-muted);
+      transform: rotate(-45deg);
+      transition: transform 0.15s;
+      margin-left: 0.1rem;
+    }
+    .a-filter-details[open] .a-filter-caret {
+      transform: rotate(45deg);
+    }
     .a-filter-row {
       display: flex;
       flex-wrap: wrap;
       gap: 0.4rem;
+      margin-top: 0.85rem;
     }
     .a-filter-chip {
       font-family: inherit;
@@ -706,25 +742,18 @@
         padding: 0 1.5rem;
       }
       .a-side-h { margin-bottom: 0.6rem; }
-      /* Categories: edge-to-edge horizontal scroller. The negative-margin
-         trick lets the row bleed to the viewport edges so chips can scroll
-         past the side gutter without forcing the page width to grow. */
+      /* Categories: wrap all chips so every category is visible without
+         horizontal scrolling. */
       .a-side-block.cat-block {
-        padding: 0;
+        padding: 0 1.5rem;
         margin-bottom: 1.25rem;
       }
-      .a-side-block.cat-block .a-side-h { padding: 0 1.5rem; }
       .a-side-list {
         display: flex;
         flex-direction: row;
+        flex-wrap: wrap;
         gap: 0.4rem;
-        overflow-x: auto;
-        overflow-y: hidden;
-        padding: 0.15rem 1.5rem 0.5rem;
-        scrollbar-width: none;
-        -webkit-overflow-scrolling: touch;
       }
-      .a-side-list::-webkit-scrollbar { display: none; }
       .a-side-link {
         white-space: nowrap;
         border: 1px solid var(--border);
@@ -757,8 +786,7 @@
 
       .a-side { padding: 1rem 0 1.25rem; }
       .a-side-block { margin-bottom: 1rem; padding: 0 1.25rem; }
-      .a-side-block.cat-block .a-side-h { padding: 0 1.25rem; }
-      .a-side-list { padding: 0.15rem 1.25rem 0.5rem; }
+      .a-side-block.cat-block { padding: 0 1.25rem; }
       .a-search { margin: 0 1.25rem 1rem; }
 
       .a-content { padding: 1.5rem 1.25rem 2.5rem; }
@@ -836,11 +864,15 @@
             <div class="a-side-h">Categories</div>
             <ul class="a-side-list" id="cat-list"></ul>
           </div>
-          <div class="a-side-block">
-            <div class="a-side-h">Filter by material</div>
+          <details class="a-side-block a-filter-details">
+            <summary class="a-filter-summary">
+              <span class="a-side-h">Filter by material</span>
+              <span class="a-filter-count" id="filter-count" hidden></span>
+              <span class="a-filter-caret" aria-hidden="true"></span>
+            </summary>
             <div class="a-filter-row" id="filter-row"></div>
             <button class="a-side-clear" id="filter-clear" hidden>Clear filter</button>
-          </div>
+          </details>
         </aside>
         <div class="a-content" id="store-products"></div>
       </div>
@@ -1538,6 +1570,19 @@
     let activeSubBy = {};
     let searchTerm = '';
 
+    function updateFilterCount() {
+      const badge = document.getElementById('filter-count');
+      const details = document.querySelector('.a-filter-details');
+      if (activeFilter) {
+        badge.textContent = activeFilter;
+        badge.hidden = false;
+        if (details && !details.open) details.open = true;
+      } else {
+        badge.textContent = '';
+        badge.hidden = true;
+      }
+    }
+
     function render() {
       const root = document.getElementById('store-products');
       const filtering = !!(activeFilter || searchTerm);
@@ -1684,6 +1729,7 @@
           chip.classList.add('on');
           clearBtn.hidden = false;
         }
+        updateFilterCount();
         render();
         return;
       }
@@ -1692,6 +1738,7 @@
         activeFilter = null;
         document.querySelectorAll('.a-filter-chip').forEach(c => c.classList.remove('on'));
         e.target.hidden = true;
+        updateFilterCount();
         render();
         return;
       }
