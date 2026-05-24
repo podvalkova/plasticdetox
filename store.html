@@ -1492,7 +1492,7 @@
       const hasDetail = (p.pros && p.pros.length) || (p.cons && p.cons.length);
       const blurb = (p.desc || '').split('. ')[0].replace(/\.$/, '') + '.';
       return `
-        <article class="a-card">
+        <article class="a-card" data-product-name="${escapeAttr(p.name)}" data-asin="${escapeAttr(p.asin || '')}">
           <a class="a-card-img-wrap" href="${p._link}" target="_blank" rel="noopener sponsored">
             <img src="${p._img}" alt="${escapeAttr(p.name)}" loading="lazy">
           </a>
@@ -1780,22 +1780,48 @@
     render();
   </script>
 
-  <!-- Affiliate & outbound link click tracking -->
+  <!-- Affiliate click tracking with product context -->
   <script>
     document.addEventListener("click", function(e) {
       const a = e.target.closest("a[href]");
       if (!a) return;
       const href = a.href;
-      if (href && (href.includes("amazon.com") || href.includes("xtrema.com"))) {
-        if (typeof gtag === "function") {
-          gtag("event", "click", {
-            event_category: "affiliate",
-            event_label: href,
-            transport_type: "beacon"
-          });
-        }
-      }
+      if (!href || !(href.includes("amazon.com") || href.includes("xtrema.com"))) return;
+      if (typeof gtag !== "function") return;
+
+      const card = a.closest(".a-card");
+      const catSection = a.closest(".a-cat");
+      gtag("event", "affiliate_click", {
+        product_name: card ? (card.dataset.productName || "") : "",
+        asin: card ? (card.dataset.asin || "") : "",
+        category: catSection ? (catSection.dataset.cat || "") : "",
+        link_url: href,
+        transport_type: "beacon"
+      });
     });
+
+    // Debounced search query tracking
+    (function() {
+      const input = document.getElementById("store-search");
+      if (!input) return;
+      let timer;
+      input.addEventListener("input", function(e) {
+        clearTimeout(timer);
+        const q = e.target.value.trim();
+        if (q.length < 2) return;
+        timer = setTimeout(function() {
+          if (typeof gtag !== "function") return;
+          const visible = Array.prototype.filter.call(
+            document.querySelectorAll(".a-grid-wrap"),
+            function(w) { return w.style.display !== "none"; }
+          ).length;
+          gtag("event", "store_search", {
+            search_term: q.toLowerCase(),
+            result_count: visible
+          });
+        }, 800);
+      });
+    })();
   </script>
 </body>
 </html>
