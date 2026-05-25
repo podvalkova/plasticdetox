@@ -171,6 +171,20 @@
       margin: 2rem 0 2.5rem;
       text-align: center;
     }
+    .swap-grid-headline {
+      font-family: 'Inter', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      color: #1c1917;
+      margin: 0 0 0.5rem;
+    }
+    .swap-grid-subline {
+      font-size: 1rem;
+      color: #57534e;
+      margin: 0 0 1.25rem;
+    }
     .swap-grid-imgwrap {
       position: relative;
       max-width: 560px;
@@ -178,66 +192,17 @@
       border-radius: var(--radius-sm);
       overflow: hidden;
       line-height: 0;
-      container-type: inline-size;
-      background: #fafaf9;
     }
     .swap-grid-img {
       display: block;
       width: 100%;
       height: auto;
     }
-    .swap-grid-top-overlay {
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      padding: 3.2cqi 4.6cqi 9cqi;
-      background: linear-gradient(to bottom,
-        rgba(250, 250, 249, 0.97) 0%,
-        rgba(250, 250, 249, 0.90) 55%,
-        rgba(250, 250, 249, 0) 100%
-      );
-      text-align: center;
-      pointer-events: none;
-      z-index: 2;
-    }
-    .swap-grid-tag {
-      display: inline-block;
-      font-family: 'Inter', 'Inter Fallback', -apple-system, sans-serif;
-      font-size: 2.96cqi;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: #fff;
-      background: #7c3aed;
-      padding: 1.5cqi 3.3cqi;
-      border-radius: 100px;
-      margin-bottom: 2.2cqi;
-      line-height: 1.2;
-    }
-    .swap-grid-headline {
-      font-family: 'Inter', 'Inter Fallback', -apple-system, sans-serif;
-      font-size: 7.6cqi;
-      font-weight: 900;
-      color: #1c1917;
-      line-height: 1.0;
-      letter-spacing: -0.035em;
-      margin: 0;
-      line-height: 1.05;
-    }
-    .swap-grid-headline .accent {
-      color: #7c3aed;
-      font-style: italic;
-    }
-    .swap-grid-subline {
-      font-size: 0.95rem;
-      color: #57534e;
-      margin: 1rem 0 0;
-    }
     .swap-zone {
       position: absolute;
       display: block;
       border-radius: 10px;
       transition: background-color 0.15s ease, box-shadow 0.15s ease;
-      z-index: 1;
     }
     .swap-zone:hover,
     .swap-zone:focus-visible {
@@ -245,12 +210,15 @@
       box-shadow: inset 0 0 0 2px rgba(124, 58, 237, 0.65);
       outline: none;
     }
-    .swap-zone.z1 { top: 16%; left: 1%;      width: 32.33%; height: 36%; }
-    .swap-zone.z2 { top: 16%; left: 33.66%;  width: 32.33%; height: 36%; }
-    .swap-zone.z3 { top: 16%; left: 66.66%;  width: 32.33%; height: 36%; }
-    .swap-zone.z4 { top: 55%; left: 1%;      width: 32.33%; height: 38%; }
-    .swap-zone.z5 { top: 55%; left: 33.66%;  width: 32.33%; height: 38%; }
-    .swap-zone.z6 { top: 55%; left: 66.66%;  width: 32.33%; height: 38%; }
+    .swap-zone.z1 { top: 0;   left: 0;       width: 33.34%; height: 50%; }
+    .swap-zone.z2 { top: 0;   left: 33.33%;  width: 33.34%; height: 50%; }
+    .swap-zone.z3 { top: 0;   left: 66.66%;  width: 33.34%; height: 50%; }
+    .swap-zone.z4 { top: 50%; left: 0;       width: 33.34%; height: 50%; }
+    .swap-zone.z5 { top: 50%; left: 33.33%;  width: 33.34%; height: 50%; }
+    .swap-zone.z6 { top: 50%; left: 66.66%;  width: 33.34%; height: 50%; }
+    @media (max-width: 480px) {
+      .swap-grid-headline { font-size: 1.5rem; }
+    }
   </style>
 </head>
 <body>
@@ -279,12 +247,10 @@
     </div>
 
     <div class="swap-grid">
+      <h2 class="swap-grid-headline">Start With the 6 Swaps That Matter Most</h2>
+      <p class="swap-grid-subline">Tap any item to jump straight to the products we recommend.</p>
       <div class="swap-grid-imgwrap">
         <img class="swap-grid-img" fetchpriority="high" src="../images/start-reducing-6-swaps.webp" alt="Six high impact plastic swaps illustrated in pencil on marble: microwave, non stick frying pan, water filter, electric kettle, pour over coffee maker, and baby bottle">
-        <div class="swap-grid-top-overlay">
-          <div class="swap-grid-tag">Start Here</div>
-          <h2 class="swap-grid-headline">The <span class="accent">6 Swaps</span><br>That Matter Most</h2>
-        </div>
         <a class="swap-zone z1" href="#swap-microwave" aria-label="Jump to microwave and hot food in plastic swap"></a>
         <a class="swap-zone z2" href="#swap-cookware" aria-label="Jump to non stick cookware swap"></a>
         <a class="swap-zone z3" href="#swap-water" aria-label="Jump to water filter recommendations"></a>
@@ -292,7 +258,6 @@
         <a class="swap-zone z5" href="#swap-coffee" aria-label="Jump to plastic free coffee swap"></a>
         <a class="swap-zone z6" href="#swap-baby" aria-label="Jump to plastic free baby bottle picks"></a>
       </div>
-      <p class="swap-grid-subline">Tap any item to jump straight to the products we recommend.</p>
     </div>
 
     <div class="tldr-card">
