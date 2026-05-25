@@ -36,8 +36,8 @@
     "author": { "@type": "Organization", "name": "Plastic Detox Editorial Team", "url": "https://plasticdetox.org/about.html" },
     "publisher": { "@type": "Organization", "name": "Plastic Detox", "url": "https://plasticdetox.org" },
     "datePublished": "2026-03-27",
-    "dateModified": "2026-05-13",
-    "lastReviewed": "2026-05-13",
+    "dateModified": "2026-05-25",
+    "lastReviewed": "2026-05-25",
     "mainEntityOfPage": "https://plasticdetox.org/articles/how-to-start-reducing-plastic-exposure.html"
   }
   </script>
@@ -167,6 +167,58 @@
       border-radius: var(--radius-sm);
       display: block;
     }
+    .swap-grid {
+      margin: 2rem 0 2.5rem;
+      text-align: center;
+    }
+    .swap-grid-headline {
+      font-family: 'Inter', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      color: #1c1917;
+      margin: 0 0 0.5rem;
+    }
+    .swap-grid-subline {
+      font-size: 1rem;
+      color: #57534e;
+      margin: 0 0 1.25rem;
+    }
+    .swap-grid-imgwrap {
+      position: relative;
+      max-width: 560px;
+      margin: 0 auto;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      line-height: 0;
+    }
+    .swap-grid-img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    .swap-zone {
+      position: absolute;
+      display: block;
+      border-radius: 10px;
+      transition: background-color 0.15s ease, box-shadow 0.15s ease;
+    }
+    .swap-zone:hover,
+    .swap-zone:focus-visible {
+      background-color: rgba(124, 58, 237, 0.14);
+      box-shadow: inset 0 0 0 2px rgba(124, 58, 237, 0.65);
+      outline: none;
+    }
+    .swap-zone.z1 { top: 0;   left: 0;       width: 33.34%; height: 50%; }
+    .swap-zone.z2 { top: 0;   left: 33.33%;  width: 33.34%; height: 50%; }
+    .swap-zone.z3 { top: 0;   left: 66.66%;  width: 33.34%; height: 50%; }
+    .swap-zone.z4 { top: 50%; left: 0;       width: 33.34%; height: 50%; }
+    .swap-zone.z5 { top: 50%; left: 33.33%;  width: 33.34%; height: 50%; }
+    .swap-zone.z6 { top: 50%; left: 66.66%;  width: 33.34%; height: 50%; }
+    @media (max-width: 480px) {
+      .swap-grid-headline { font-size: 1.5rem; }
+    }
   </style>
 </head>
 <body>
@@ -194,12 +246,18 @@
       Updated April 24, 2026 · 15 min read
     </div>
 
-    <div class="pin-container">
-      <a class="pin-button" href="https://www.pinterest.com/pin/create/button/?url=https%3A%2F%2Fplasticdetox.org%2Farticles%2Fhow-to-start-reducing-plastic-exposure.html&media=https%3A%2F%2Fplasticdetox.org%2Fimages%2Fgettingstarted-swap-pinterest.webp&description=How%20to%20Start%20Reducing%20Plastic%20Exposure%20at%20Home.%20A%20room%20by%20room%20guide%20covering%20kitchen%2C%20dining%20room%2C%20living%20room%2C%20bedroom%2C%20and%20closet." target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
-        Save
-      </a>
-      <img class="pin-img" fetchpriority="high" src="../images/gettingstarted-swap-pinterest.webp" alt="Floor plan illustration showing a room by room guide to reducing plastic exposure at home, covering kitchen, dining room, living room, bedroom, and closet" data-pin-description="How to Start Reducing Plastic Exposure at Home. A room by room guide covering kitchen, dining room, living room, bedroom, and closet. Start from the highest exposure sources and work outward.">
+    <div class="swap-grid">
+      <h2 class="swap-grid-headline">Start With the 6 Swaps That Matter Most</h2>
+      <p class="swap-grid-subline">Tap any item to jump straight to the products we recommend.</p>
+      <div class="swap-grid-imgwrap">
+        <img class="swap-grid-img" fetchpriority="high" src="../images/start-reducing-6-swaps.webp" alt="Six high impact plastic swaps illustrated in pencil on marble: microwave, non stick frying pan, water filter, electric kettle, pour over coffee maker, and baby bottle">
+        <a class="swap-zone z1" href="#swap-microwave" aria-label="Jump to microwave and hot food in plastic swap"></a>
+        <a class="swap-zone z2" href="#swap-cookware" aria-label="Jump to non stick cookware swap"></a>
+        <a class="swap-zone z3" href="#swap-water" aria-label="Jump to water filter recommendations"></a>
+        <a class="swap-zone z4" href="#swap-kettle" aria-label="Jump to plastic kettle swap"></a>
+        <a class="swap-zone z5" href="#swap-coffee" aria-label="Jump to plastic free coffee swap"></a>
+        <a class="swap-zone z6" href="#swap-baby" aria-label="Jump to plastic free baby bottle picks"></a>
+      </div>
     </div>
 
     <div class="tldr-card">
@@ -411,14 +469,14 @@
         <span class="priority-tier-title">Stop Heating Food in Plastic</span>
       </div>
       <ul>
-        <li><strong>Never microwave in plastic.</strong> Transfer food to a glass or ceramic dish before microwaving. Even containers labeled "microwave safe" still release microplastics. The label only means the container will not melt or warp. It says nothing about particle or chemical release.</li>
-        <li><strong>Never pour boiling water into plastic.</strong> This applies to plastic kettles, baby bottles, and plastic water pitchers. Switch to a stainless steel or glass kettle (our pick: <a href="https://www.amazon.com/s?k=Fellow+Stagg+EKG+kettle&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Fellow Stagg EKG</a>, or a <a href="https://www.amazon.com/s?k=stainless+steel+stovetop+whistling+tea+kettle&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">stainless steel stovetop kettle</a> for a budget option).</li>
-        <li><strong>Stop using plastic coffee pods.</strong> A single plastic pod releases billions of nanoparticles into your coffee. Switch to a glass French press, ceramic pour over, or stainless moka pot. <a href="how-to-enjoy-coffee-without-plastic.html">Read our plastic free coffee guide.</a></li>
-        <li><strong>Replace non stick (Teflon) cookware.</strong> PFAS coatings break down with heat and release toxic chemicals directly into your food. Switch to cast iron (our pick: <a href="https://www.amazon.com/dp/B00006JSUB?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Lodge 10.25" skillet</a>), stainless steel (our pick: <a href="https://www.amazon.com/dp/B00JAP44MQ?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Tramontina Tri-Ply</a>), carbon steel (our pick: <a href="https://www.amazon.com/dp/B00462QP1G?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">de Buyer Mineral B</a>), or pure ceramic. <a href="cast-iron-vs-stainless-steel-vs-ceramic-cookware.html">Read our full cookware comparison guide.</a></li>
+        <li id="swap-microwave"><strong>Never microwave in plastic.</strong> Transfer food to a glass or ceramic dish before microwaving. Even containers labeled "microwave safe" still release microplastics. The label only means the container will not melt or warp. It says nothing about particle or chemical release.</li>
+        <li id="swap-kettle"><strong>Never pour boiling water into plastic.</strong> This applies to plastic kettles, baby bottles, and plastic water pitchers. Switch to a stainless steel or glass kettle (our pick: <a href="https://www.amazon.com/s?k=Fellow+Stagg+EKG+kettle&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Fellow Stagg EKG</a>, or a <a href="https://www.amazon.com/s?k=stainless+steel+stovetop+whistling+tea+kettle&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">stainless steel stovetop kettle</a> for a budget option).</li>
+        <li id="swap-coffee"><strong>Stop using plastic coffee pods.</strong> A single plastic pod releases billions of nanoparticles into your coffee. Switch to a glass French press, ceramic pour over, or stainless moka pot. <a href="how-to-enjoy-coffee-without-plastic.html">Read our plastic free coffee guide.</a></li>
+        <li id="swap-cookware"><strong>Replace non stick (Teflon) cookware.</strong> PFAS coatings break down with heat and release toxic chemicals directly into your food. Switch to cast iron (our pick: <a href="https://www.amazon.com/dp/B00006JSUB?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Lodge 10.25" skillet</a>), stainless steel (our pick: <a href="https://www.amazon.com/dp/B00JAP44MQ?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Tramontina Tri-Ply</a>), carbon steel (our pick: <a href="https://www.amazon.com/dp/B00462QP1G?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">de Buyer Mineral B</a>), or pure ceramic. <a href="cast-iron-vs-stainless-steel-vs-ceramic-cookware.html">Read our full cookware comparison guide.</a></li>
       </ul>
     </div>
 
-    <div class="priority-tier">
+    <div class="priority-tier" id="swap-water">
       <div class="priority-tier-header">
         <span class="priority-badge priority-high">High Priority</span>
         <span class="priority-tier-title">Filter Your Drinking Water</span>
@@ -605,7 +663,7 @@
     <p>Children deserve extra attention because their bodies are still developing. Pound for pound, children consume more food and water relative to their body weight than adults, which means higher proportional exposure. Their developing endocrine and immune systems are also more sensitive to chemical disruption. We cover this topic in much more depth in our <a href="non-toxic-baby-toddler-products-guide.html">complete non toxic baby and toddler products guide</a>.</p>
 
     <ul>
-      <li><strong>Baby bottles and sippy cups.</strong> Switch to glass (our pick: <a href="https://www.amazon.com/s?k=Lifefactory+glass+baby+bottle&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Lifefactory glass bottles</a>) or stainless steel (our pick: <a href="https://www.amazon.com/dp/B01N23SBMO?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Pura Kiki</a>, non insulated only. Pura's insulated bottle previously tested positive for lead in the bottom seal). If you use plastic, never heat formula or milk in the bottle. Heat it in a separate container and pour it in once cooled.</li>
+      <li id="swap-baby"><strong>Baby bottles and sippy cups.</strong> Switch to glass (our pick: <a href="https://www.amazon.com/s?k=Lifefactory+glass+baby+bottle&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Lifefactory glass bottles</a>) or stainless steel (our pick: <a href="https://www.amazon.com/dp/B01N23SBMO?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Pura Kiki</a>, non insulated only. Pura's insulated bottle previously tested positive for lead in the bottom seal). If you use plastic, never heat formula or milk in the bottle. Heat it in a separate container and pour it in once cooled.</li>
       <li><strong>Baby food containers.</strong> Use glass jars for storing and reheating baby food. Never microwave baby food in plastic.</li>
       <li><strong>Toys.</strong> Young children put everything in their mouths. Prioritize wood, natural rubber (like <a href="https://www.amazon.com/s?k=Hevea+natural+rubber+teether&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Hevea teethers</a>), and silicone toys. The AAP recommends limiting mouthing of plastic toys, especially PVC (vinyl) toys which can contain phthalates.</li>
       <li><strong>Children's plates and utensils.</strong> Bamboo, stainless steel (our pick: <a href="https://www.amazon.com/Ahimsa-Stainless-Pediatrician-Designed-Dishwasher/dp/B0C6SVTQ3Q?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Ahimsa stainless steel plates</a>), and silicone plates and utensils are widely available. Avoid melamine plates, which can release formaldehyde when heated.</li>
