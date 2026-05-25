@@ -103,19 +103,23 @@
     .hub-stat-label { font-size: 0.85rem; color: var(--text-muted); }
 
     .pathway-title { font-size: 1.75rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
-    .pathway-sub { color: var(--text-muted); margin-bottom: 2rem; max-width: 640px; }
-    .step-list { display: flex; flex-direction: column; gap: 1.25rem; margin-bottom: 4rem; }
-    .step { display: flex; gap: 1.5rem; background: var(--surface); border-radius: var(--radius); padding: 1.75rem; box-shadow: var(--shadow); text-decoration: none; color: inherit; transition: transform 0.2s, box-shadow 0.2s; }
-    .step:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+    .pathway-sub { color: var(--text-muted); margin-bottom: 1rem; max-width: 640px; }
+    .disclosure { font-size: 0.82rem; color: var(--text-muted); font-style: italic; margin-bottom: 2rem; }
+    .step-list { display: flex; flex-direction: column; gap: 1.75rem; margin-bottom: 4rem; }
+    .step-card { background: var(--surface); border-radius: var(--radius); padding: 1.75rem; box-shadow: var(--shadow); }
+    .step-header { display: flex; gap: 1.5rem; margin-bottom: 1.5rem; }
     .step-num { flex-shrink: 0; width: 48px; height: 48px; border-radius: 50%; background: var(--accent-light); color: var(--accent-dark); font-weight: 800; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; }
     .step-body { flex: 1; }
     .step-tag { display: inline-block; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent-dark); margin-bottom: 0.4rem; }
     .step-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.4rem; line-height: 1.3; }
     .step-desc { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 0.6rem; }
-    .step-meta { font-size: 0.8rem; color: var(--text-muted); display: flex; gap: 1rem; align-items: center; }
+    .step-meta { font-size: 0.8rem; color: var(--text-muted); display: flex; gap: 1rem; align-items: center; margin-bottom: 0.5rem; }
     .step-impact { display: inline-flex; align-items: center; gap: 0.3rem; font-weight: 600; }
     .impact-high { color: var(--red); } .impact-medium { color: var(--orange); } .impact-low { color: var(--green); }
     .impact-dot { width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+    .step-link { display: inline-block; color: var(--accent-dark); font-weight: 600; text-decoration: none; font-size: 0.92rem; margin-top: 0.4rem; }
+    .step-link:hover { text-decoration: underline; }
+    .step-products { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
 
     .qa-section { margin-bottom: 4rem; }
     .qa-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
@@ -141,17 +145,14 @@
     .section-title { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.4rem; }
     .section-sub { color: var(--text-muted); margin-bottom: 1.5rem; }
 
-    .hub-products { margin-bottom: 4rem; }
-    .hub-products-disclosure { font-size: 0.82rem; color: var(--text-muted); font-style: italic; margin-bottom: 1.5rem; }
-    .product-grid-5 { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1rem; }
-    .product-card-mini { background: var(--surface); border-radius: var(--radius); text-decoration: none; color: inherit; box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; overflow: hidden; }
+    .product-card-mini { background: var(--bg); border-radius: var(--radius-sm); text-decoration: none; color: inherit; transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; overflow: hidden; border: 1px solid var(--border); }
     .product-card-mini:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
-    .product-card-mini img { width: 100%; height: 160px; object-fit: contain; background: #f5f5f4; padding: 0.75rem; }
-    .product-card-body { padding: 1rem; display: flex; flex-direction: column; flex: 1; gap: 0.4rem; }
+    .product-card-mini img { width: 100%; height: 140px; object-fit: contain; background: #fff; padding: 0.6rem; }
+    .product-card-body { padding: 0.85rem; display: flex; flex-direction: column; gap: 0.3rem; flex: 1; }
     .product-card-tier { font-size: 0.7rem; font-weight: 800; color: var(--accent-dark); letter-spacing: 0.06em; }
-    .product-card-name { font-size: 0.98rem; font-weight: 700; line-height: 1.3; }
-    .product-card-best { font-size: 0.82rem; color: var(--text-muted); line-height: 1.4; flex: 1; }
-    .product-card-cta { font-size: 0.85rem; color: var(--accent-dark); font-weight: 600; margin-top: 0.4rem; }
+    .product-card-name { font-size: 0.92rem; font-weight: 700; line-height: 1.3; }
+    .product-card-best { font-size: 0.78rem; color: var(--text-muted); line-height: 1.4; flex: 1; }
+    .product-card-cta { font-size: 0.8rem; color: var(--accent-dark); font-weight: 600; margin-top: 0.3rem; }
 
     .qa-link { display: inline-block; margin-top: auto; font-size: 0.85rem; color: var(--accent-dark); font-weight: 600; text-decoration: none; padding-top: 0.5rem; }
     .qa-link:hover { text-decoration: underline; }
@@ -190,113 +191,472 @@
     <p class="hub-meta">Updated May 25, 2026 by the <a href="../about.html">Plastic Detox Editorial Team</a></p>
 
     <div class="hub-stats">
-      <div><span class="hub-stat-num">3</span><span class="hub-stat-label">in-depth guides</span></div>
-      <div><span class="hub-stat-num">~35 min</span><span class="hub-stat-label">total read time</span></div>
+      <div><span class="hub-stat-num">10</span><span class="hub-stat-label">key swaps</span></div>
       <div><span class="hub-stat-num">5x</span><span class="hub-stat-label">more microplastics indoors</span></div>
       <div><span class="hub-stat-num">8 hrs</span><span class="hub-stat-label">of nightly exposure</span></div>
+      <div><span class="hub-stat-num">3</span><span class="hub-stat-label">in-depth guides</span></div>
     </div>
-    <h2 class="pathway-title" id="detox-steps">Your bedroom &amp; air detox, in order</h2>
-    <p class="pathway-sub">Start at step 1. The biggest single change is what's directly under and against your body for 8 hours a night.</p>
+    <h2 class="pathway-title" id="detox-steps">The 10 step bedroom and air detox, in order</h2>
+    <p class="pathway-sub">Start at step 1. Each swap is ranked by exposure per day, not price. The first three are direct face contact for eight hours a night, so they matter most.</p>
+    <p class="disclosure">Affiliate disclosure: we earn a small commission on the product links below, at no cost to you. We never accept paid placements.</p>
 
     <div class="step-list">
 
-      <a href="microplastics-in-bedroom-air.html" class="step">
-        <div class="step-num">1</div>
-        <div class="step-body">
-          <span class="step-tag">Bedroom</span>
-          <h3 class="step-title">Microplastics in Your Bedroom</h3>
-          <p class="step-desc">Synthetic mattresses, polyester sheets, and memory foam pillows shed plastic fibers directly onto your face for 8 hours a night. The natural alternatives, ranked by cost and impact.</p>
-          <div class="step-meta">
-            <span>9 min read</span>
-            <span class="step-impact impact-high"><span class="impact-dot"></span>High impact</span>
+      <div class="step-card" id="step1">
+        <div class="step-header">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <span class="step-tag">Bedding</span>
+            <h3 class="step-title">Switch to an organic cotton pillowcase</h3>
+            <p class="step-desc">Your face is in direct contact with the pillowcase for roughly eight hours a night. Polyester pillowcases shed microfibers onto skin and into the air, and synthetic pillow fills off gas for years. Start with the pillowcase. It is the cheapest and highest contact swap in the room.</p>
+            <div class="step-meta">
+              <span>9 min read</span>
+              <span class="step-impact impact-high"><span class="impact-dot"></span>High impact</span>
+            </div>
+            <a href="microplastics-in-bedroom-air.html" class="step-link">Read the full guide &rarr;</a>
           </div>
         </div>
-      </a>
+        <div class="step-products">
+          <a href="https://www.amazon.com/dp/B07Q1K4G91?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/51yXrCGW8vL._AC_SL400_.jpg" alt="GOTS Organic Cotton Pillowcase" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$</span>
+              <h4 class="product-card-name">GOTS Organic Cotton Pillowcase</h4>
+              <p class="product-card-best">Cheapest, highest contact face swap</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+          <a href="https://www.amazon.com/dp/B08S6YF42P?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/61jsQg6IZtL._AC_SL400_.jpg" alt="LOFE Organic Buckwheat Pillow with Organic Cotton Cover" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$</span>
+              <h4 class="product-card-name">LOFE Organic Buckwheat Pillow</h4>
+              <p class="product-card-best">Buckwheat hull fill, organic cotton cover, no synthetic foam</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+          <a href="https://www.amazon.com/dp/B07X2TZNZ7?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/61a25CsLSzL._AC_SL400_.jpg" alt="Organic Textiles GOTS Wool Pillow with Organic Cotton Cover" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$$</span>
+              <h4 class="product-card-name">Organic Textiles Wool Pillow</h4>
+              <p class="product-card-best">GOTS certified wool fill, organic cotton cover</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+        </div>
+      </div>
 
-      <a href="microplastics-in-clothing-and-laundry.html" class="step">
-        <div class="step-num">2</div>
-        <div class="step-body">
-          <span class="step-tag">Clothing &amp; Laundry</span>
-          <h3 class="step-title">Microplastics in Clothing and Laundry</h3>
-          <p class="step-desc">Every wash of synthetic clothing releases hundreds of thousands of plastic fibers, and your dryer spreads them throughout your home as airborne dust. Filter bags, washing routines, and the fabrics worth buying.</p>
-          <div class="step-meta">
-            <span>14 min read</span>
-            <span class="step-impact impact-high"><span class="impact-dot"></span>High impact</span>
+      <div class="step-card" id="step2">
+        <div class="step-header">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <span class="step-tag">Bedding</span>
+            <h3 class="step-title">Replace polyester sheets with organic cotton or linen</h3>
+            <p class="step-desc">Polyester and microfiber sheets shed plastic fibers into your skin and lungs every night, and the polyester wicking finish breaks down with every wash. Organic cotton, linen, and TENCEL release zero microplastic. Towels matter too, because they shed onto damp skin.</p>
+            <div class="step-meta">
+              <span>9 min read</span>
+              <span class="step-impact impact-high"><span class="impact-dot"></span>High impact</span>
+            </div>
+            <a href="microplastics-in-bedroom-air.html" class="step-link">Read the full guide &rarr;</a>
           </div>
         </div>
-      </a>
+        <div class="step-products">
+          <a href="https://www.amazon.com/dp/B07RY59C3W?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/41uZMh6+pyL._AC_SL400_.jpg" alt="GOTS Organic Cotton Sheets Queen" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$$</span>
+              <h4 class="product-card-name">Organic Cotton Sheets (Queen)</h4>
+              <p class="product-card-best">GOTS certified 100% organic cotton, gets softer with each wash</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+          <a href="https://www.amazon.com/dp/B0DJ32KJ42?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/71c2aa8dmRL._AC_SL400_.jpg" alt="100% French Linen Sheets Queen" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$$</span>
+              <h4 class="product-card-name">French Linen Sheets (Queen)</h4>
+              <p class="product-card-best">100% French linen, naturally temperature regulating</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+          <a href="https://www.amazon.com/dp/B01MXLISKK?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/31fU4PM-giL._AC_SL400_.jpg" alt="Coyuchi Organic Cotton Towels" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$$</span>
+              <h4 class="product-card-name">Coyuchi Organic Cotton Towels</h4>
+              <p class="product-card-best">GOTS certified, no microplastic shed onto skin</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+        </div>
+      </div>
 
-      <a href="microplastics-in-indoor-air.html" class="step">
-        <div class="step-num">3</div>
-        <div class="step-body">
-          <span class="step-tag">Indoor Air</span>
-          <h3 class="step-title">Microplastics in Indoor Air</h3>
-          <p class="step-desc">The full picture: where indoor microplastics come from (carpets, furniture, dust, electronics), what HEPA filters actually capture, and the simple ventilation routine that cuts exposure in half.</p>
-          <div class="step-meta">
-            <span>13 min read</span>
-            <span class="step-impact impact-medium"><span class="impact-dot"></span>Medium impact</span>
+      <div class="step-card" id="step3">
+        <div class="step-header">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <span class="step-tag">Mattress</span>
+            <h3 class="step-title">Block synthetic mattress off-gassing or upgrade the mattress</h3>
+            <p class="step-desc">Polyurethane foam, memory foam, and flame retardants off gas VOCs for years and shed fibers under sheets. If you cannot replace the mattress yet, a tightly woven organic cotton protector blocks most of it. When it is time to replace, organic latex and wool with encased coils have zero foam.</p>
+            <div class="step-meta">
+              <span>9 min read</span>
+              <span class="step-impact impact-high"><span class="impact-dot"></span>High impact</span>
+            </div>
+            <a href="microplastics-in-bedroom-air.html" class="step-link">Read the full guide &rarr;</a>
           </div>
         </div>
-      </a>
+        <div class="step-products">
+          <a href="https://www.amazon.com/dp/B0BV9G1VVK?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/81PkYHk0YKL._AC_SL400_.jpg" alt="Organic Cotton Waterproof Mattress Protector Queen" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$</span>
+              <h4 class="product-card-name">Organic Cotton Mattress Protector</h4>
+              <p class="product-card-best">Blocks contact and off-gassing when you cannot replace yet</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+          <a href="https://www.amazon.com/dp/B01KPWG11O?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/51aHYq4E2gL._AC_SL400_.jpg" alt="Pure Green Natural Latex Mattress Queen" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$$</span>
+              <h4 class="product-card-name">Pure Green Natural Latex Mattress</h4>
+              <p class="product-card-best">GOLS organic latex, GOTS cotton and wool, zero foam</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+          <a href="https://www.amazon.com/dp/B07PWH9HLJ?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/51lxg6+blOL._AC_SL400_.jpg" alt="Naturepedic Serenade Organic Mattress Queen" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$$$</span>
+              <h4 class="product-card-name">Naturepedic Serenade Organic Mattress</h4>
+              <p class="product-card-best">GREENGUARD Gold, encased coils, no fiberglass or foam</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="step-card" id="step4">
+        <div class="step-header">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <span class="step-tag">Air</span>
+            <h3 class="step-title">Run a True HEPA air purifier in your bedroom</h3>
+            <p class="step-desc">Indoor air contains roughly five times more microplastic particles than outdoor air. A True HEPA purifier captures 99.97% of particles down to 0.3 microns, including airborne microplastic dust, mold spores, and combustion fragments. Run it on auto in the bedroom while you sleep.</p>
+            <div class="step-meta">
+              <span>13 min read</span>
+              <span class="step-impact impact-high"><span class="impact-dot"></span>High impact</span>
+            </div>
+            <a href="microplastics-in-indoor-air.html" class="step-link">Read the full guide &rarr;</a>
+          </div>
+        </div>
+        <div class="step-products">
+          <a href="https://www.amazon.com/dp/B07VVK39F7?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/71t-9BTIg9L._AC_SL400_.jpg" alt="LEVOIT Core 300 Air Purifier" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$</span>
+              <h4 class="product-card-name">LEVOIT Core 300</h4>
+              <p class="product-card-best">Best budget True H13 HEPA for small bedrooms</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+          <a href="https://www.amazon.com/dp/B071CR9JCH?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/81FpnoX9mRL._AC_SL400_.jpg" alt="Coway Airmega AP-1512HH" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$$</span>
+              <h4 class="product-card-name">Coway Airmega AP-1512HH</h4>
+              <p class="product-card-best">Best mid range, auto mode, 360 sq ft coverage</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+          <a href="https://www.amazon.com/dp/B0BN2LZ9JH?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/717L1lcSQCL._AC_SL400_.jpg" alt="Blueair Blue Pure 211i Max Air Purifier" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$$</span>
+              <h4 class="product-card-name">Blueair Blue Pure 211i Max</h4>
+              <p class="product-card-best">Best HEPASilent for quiet bedrooms and nurseries</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="step-card" id="step5">
+        <div class="step-header">
+          <div class="step-num">5</div>
+          <div class="step-body">
+            <span class="step-tag">Laundry</span>
+            <h3 class="step-title">Catch microfibers when washing synthetic clothes</h3>
+            <p class="step-desc">A single load of polyester clothing releases hundreds of thousands of plastic fibers into the wastewater and dryer exhaust. A washing bag, fiber catcher ball, or in-line lint filter captures 80 to 90% of them before they leave the machine.</p>
+            <div class="step-meta">
+              <span>14 min read</span>
+              <span class="step-impact impact-high"><span class="impact-dot"></span>High impact</span>
+            </div>
+            <a href="microplastics-in-clothing-and-laundry.html" class="step-link">Read the full guide &rarr;</a>
+          </div>
+        </div>
+        <div class="step-products">
+          <a href="https://www.amazon.com/dp/B09WN18L4G?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/518i+r87pBL._AC_SL400_.jpg" alt="Microfiber Catching Laundry Balls" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$</span>
+              <h4 class="product-card-name">Microfiber Catching Laundry Balls</h4>
+              <p class="product-card-best">Drop into the drum, captures fibers each cycle</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+          <a href="https://www.amazon.com/dp/B081ZQQZYT?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/81RnPoAeUQL._AC_SL400_.jpg" alt="Polecasa Microfiber Washing Bag" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$</span>
+              <h4 class="product-card-name">Polecasa Microfiber Washing Bag</h4>
+              <p class="product-card-best">Guppyfriend style mesh bag, also reduces fabric wear</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+          <a href="https://www.amazon.com/dp/B0BCR3MCZH?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/516yniXUnQL._AC_SL400_.jpg" alt="Filtrol 160 Filter Bag Set" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$$$</span>
+              <h4 class="product-card-name">Filtrol 160 Filter Bags (4 Pack)</h4>
+              <p class="product-card-best">Replacement bags for the in-line Filtrol washer filter</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="step-card" id="step6">
+        <div class="step-header">
+          <div class="step-num">6</div>
+          <div class="step-body">
+            <span class="step-tag">Laundry</span>
+            <h3 class="step-title">Switch to fragrance free laundry detergent</h3>
+            <p class="step-desc">Fragrance is a regulatory loophole that lets brands hide phthalates and synthetic musks linked to hormone disruption. The chemicals coat your clothes and slowly absorb through skin all day. Fragrance free detergents in cardboard or refillable packaging eliminate both the phthalates and the plastic jug.</p>
+            <div class="step-meta">
+              <span>14 min read</span>
+              <span class="step-impact impact-medium"><span class="impact-dot"></span>Medium impact</span>
+            </div>
+            <a href="how-to-avoid-bpa-and-phthalates.html" class="step-link">Read the full guide &rarr;</a>
+          </div>
+        </div>
+        <div class="step-products">
+          <a href="https://www.amazon.com/dp/B08GF7YGCD?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/51svVPRWRyL._AC_SL400_.jpg" alt="Earth Breeze Laundry Sheets" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$</span>
+              <h4 class="product-card-name">Earth Breeze Laundry Sheets</h4>
+              <p class="product-card-best">Compostable cardboard, hypoallergenic, fragrance free option</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+          <a href="https://www.amazon.com/dp/B07SPVZLVQ?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/610OobVRjIL._AC_SL400_.jpg" alt="Tru Earth Eco Strips" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$</span>
+              <h4 class="product-card-name">Tru Earth Eco Strips</h4>
+              <p class="product-card-best">Pre measured strips, no plastic jug, fragrance free option</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+          <a href="https://www.amazon.com/dp/B093TNNR5F?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/61ZBLzaLcyL._AC_SL400_.jpg" alt="ATTITUDE Fragrance Free Laundry Detergent" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$</span>
+              <h4 class="product-card-name">ATTITUDE Fragrance Free Detergent</h4>
+              <p class="product-card-best">EWG verified, plant based, fragrance free</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="step-card" id="step7">
+        <div class="step-header">
+          <div class="step-num">7</div>
+          <div class="step-body">
+            <span class="step-tag">Air</span>
+            <h3 class="step-title">Vacuum weekly with a True HEPA vacuum</h3>
+            <p class="step-desc">Microplastic dust settles on every surface in your home, and a regular vacuum recirculates the smallest particles back into the air. True HEPA bagged or sealed vacuums trap fibers down to 0.3 microns. Once a week is enough for most bedrooms.</p>
+            <div class="step-meta">
+              <span>13 min read</span>
+              <span class="step-impact impact-medium"><span class="impact-dot"></span>Medium impact</span>
+            </div>
+            <a href="microplastics-in-indoor-air.html" class="step-link">Read the full guide &rarr;</a>
+          </div>
+        </div>
+        <div class="step-products">
+          <a href="https://www.amazon.com/dp/B004Q4DRJW?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/61FHRTjiT3L._AC_SL400_.jpg" alt="Shark Navigator Lift Away HEPA Vacuum" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$</span>
+              <h4 class="product-card-name">Shark Navigator Lift Away</h4>
+              <p class="product-card-best">Best budget True HEPA upright</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+          <a href="https://www.amazon.com/dp/B07P97CD5T?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/716NmNu1quL._AC_SL400_.jpg" alt="Miele Classic C1 HEPA Canister Vacuum" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$$</span>
+              <h4 class="product-card-name">Miele Classic C1</h4>
+              <p class="product-card-best">Sealed system, bagged, gold standard HEPA canister</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+          <a href="https://www.amazon.com/dp/B0CT97D9R2?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/61m8L2J6pQL._AC_SL400_.jpg" alt="Dyson V15 Detect Cordless Vacuum" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$$$</span>
+              <h4 class="product-card-name">Dyson V15 Detect</h4>
+              <p class="product-card-best">Cordless, laser dust detection, HEPA whole machine filtration</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="step-card" id="step8">
+        <div class="step-header">
+          <div class="step-num">8</div>
+          <div class="step-body">
+            <span class="step-tag">Bedroom</span>
+            <h3 class="step-title">Replace synthetic curtains with cotton or linen</h3>
+            <p class="step-desc">Polyester and PVC blackout curtains off gas next to your window, and direct sunlight accelerates the breakdown into airborne particles. Cotton and linen curtains do not shed plastic, and naturally heavy linen blocks plenty of light in a bedroom.</p>
+            <div class="step-meta">
+              <span>9 min read</span>
+              <span class="step-impact impact-low"><span class="impact-dot"></span>Low impact</span>
+            </div>
+            <a href="microplastics-in-bedroom-air.html" class="step-link">Read the full guide &rarr;</a>
+          </div>
+        </div>
+        <div class="step-products">
+          <a href="https://www.amazon.com/dp/B0F8HWJYLF?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/815stDyCOIL._AC_SL400_.jpg" alt="NICETOWN Organic Flax Curtains" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$</span>
+              <h4 class="product-card-name">NICETOWN Organic Flax Curtains</h4>
+              <p class="product-card-best">Heavy organic flax, room darkening without polyester</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+          <a href="https://www.amazon.com/dp/B0CCHZ6J8K?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/71iH+43D6pL._AC_SL400_.jpg" alt="Linen Cotton Blend Gauze Curtains" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$$</span>
+              <h4 class="product-card-name">Linen Cotton Gauze Curtains</h4>
+              <p class="product-card-best">Undyed, light filtering, no synthetic backing</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+          <a href="https://www.amazon.com/dp/B0BN654VLZ?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/81s2sbobabL._AC_SL400_.jpg" alt="MIULEE Natural Linen Curtains" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$$</span>
+              <h4 class="product-card-name">MIULEE Natural Linen Curtains</h4>
+              <p class="product-card-best">Soft textured natural linen, no PVC lining</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="step-card" id="step9">
+        <div class="step-header">
+          <div class="step-num">9</div>
+          <div class="step-body">
+            <span class="step-tag">Bedroom</span>
+            <h3 class="step-title">Cover synthetic carpet with a natural fiber rug</h3>
+            <p class="step-desc">Wall to wall synthetic carpet is one of the largest microplastic sources in a home, but ripping it up is rarely realistic. A wool, jute, or organic cotton rug on top covers the highest traffic area, traps falling dust, and gives you a natural fiber barrier where your feet meet the floor.</p>
+            <div class="step-meta">
+              <span>13 min read</span>
+              <span class="step-impact impact-low"><span class="impact-dot"></span>Low impact</span>
+            </div>
+            <a href="microplastics-in-indoor-air.html" class="step-link">Read the full guide &rarr;</a>
+          </div>
+        </div>
+        <div class="step-products">
+          <a href="https://www.amazon.com/dp/B0FPF22VMJ?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/91LXC4wXz9L._AC_SL400_.jpg" alt="EARTHALL Washable Cotton Area Rug" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$</span>
+              <h4 class="product-card-name">EARTHALL Washable Cotton Rug</h4>
+              <p class="product-card-best">Machine washable, rubber backed, organic cotton</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+          <a href="https://www.amazon.com/dp/B073HG68X6?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/A1TKMXPOccS._AC_SL400_.jpg" alt="SAFAVIEH Natural Fiber Jute Area Rug" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$$</span>
+              <h4 class="product-card-name">SAFAVIEH Natural Fiber Jute Rug</h4>
+              <p class="product-card-best">Handwoven jute, durable, no synthetic backing</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+          <a href="https://www.amazon.com/dp/B0DWKBSTKP?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/71kQCfDfbJL._AC_SL400_.jpg" alt="Handwoven 100% Wool Area Rug" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$$$</span>
+              <h4 class="product-card-name">Handwoven 100% Wool Rug</h4>
+              <p class="product-card-best">Hand woven wool, naturally flame resistant, no plastic backing</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="step-card" id="step10">
+        <div class="step-header">
+          <div class="step-num">10</div>
+          <div class="step-body">
+            <span class="step-tag">Laundry</span>
+            <h3 class="step-title">Skip dryer sheets and air dry where you can</h3>
+            <p class="step-desc">Dryer sheets coat clothes with quaternary ammonium compounds and fragrance phthalates, and the hot tumbling shreds synthetic fibers faster. Wool dryer balls cut drying time by 25%, and a folding rack lets you air dry the synthetic loads that shed the most.</p>
+            <div class="step-meta">
+              <span>14 min read</span>
+              <span class="step-impact impact-low"><span class="impact-dot"></span>Low impact</span>
+            </div>
+            <a href="microplastics-in-clothing-and-laundry.html" class="step-link">Read the full guide &rarr;</a>
+          </div>
+        </div>
+        <div class="step-products">
+          <a href="https://www.amazon.com/dp/B0BVRWJJR2?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/71zqdAQqsCL._AC_SL400_.jpg" alt="Honey-Can-Do Collapsible Bamboo Drying Rack" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$</span>
+              <h4 class="product-card-name">Honey-Can-Do Bamboo Drying Rack</h4>
+              <p class="product-card-best">Folds flat, fits a full load, no plastic</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+          <a href="https://www.amazon.com/dp/B014WOWNAY?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/416DJtLU-aL._AC_SL400_.jpg" alt="Wool Dryer Balls 6 Pack" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$</span>
+              <h4 class="product-card-name">Wool Dryer Balls (6 Pack)</h4>
+              <p class="product-card-best">Cuts drying time, replaces dryer sheets permanently</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+          <a href="https://www.amazon.com/dp/B00GA9P5P0?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/71AlIsUhdYL._AC_SL400_.jpg" alt="Smart Sheep Wool Dryer Balls XL 6-Pack" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$</span>
+              <h4 class="product-card-name">Smart Sheep Wool Dryer Balls XL</h4>
+              <p class="product-card-best">Largest premium wool balls, last 1000+ loads</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+        </div>
+      </div>
 
     </div>
 
-
-    <section class="hub-products">
-      <h2 class="section-title" id="top-swaps">Top 5 recommended swaps</h2>
-      <p class="hub-products-disclosure">Vetted picks from our store. Affiliate links: we earn a small commission when you buy, at no cost to you. We never accept paid placements.</p>
-      <div class="product-grid-5">
-        <a href="https://www.amazon.com/dp/B07Q1K4G91?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
-          <img src="https://m.media-amazon.com/images/I/51yXrCGW8vL._AC_SL400_.jpg" alt="GOTS Organic Cotton Pillowcase" loading="lazy">
-          <div class="product-card-body">
-            <span class="product-card-tier">$</span>
-            <h3 class="product-card-name">GOTS Organic Cotton Pillowcase</h3>
-            <p class="product-card-best">Highest-impact, lowest-cost sleep swap</p>
-            <span class="product-card-cta">View &rarr;</span>
-          </div>
-        </a>
-        <a href="https://www.amazon.com/dp/B07RY59C3W?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
-          <img src="https://m.media-amazon.com/images/I/41uZMh6+pyL._AC_SL400_.jpg" alt="Organic Cotton Sheets (Queen)" loading="lazy">
-          <div class="product-card-body">
-            <span class="product-card-tier">$$</span>
-            <h3 class="product-card-name">Organic Cotton Sheets (Queen)</h3>
-            <p class="product-card-best">Best natural fiber bedding upgrade</p>
-            <span class="product-card-cta">View &rarr;</span>
-          </div>
-        </a>
-        <a href="https://www.amazon.com/dp/B01KPWG11O?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
-          <img src="https://m.media-amazon.com/images/I/51aHYq4E2gL._AC_SL400_.jpg" alt="Pure Green Natural Latex Mattress (Queen)" loading="lazy">
-          <div class="product-card-body">
-            <span class="product-card-tier">$$</span>
-            <h3 class="product-card-name">Pure Green Natural Latex Mattress (Queen)</h3>
-            <p class="product-card-best">Best budget natural latex mattress</p>
-            <span class="product-card-cta">View &rarr;</span>
-          </div>
-        </a>
-        <a href="https://www.amazon.com/dp/B014WOWNAY?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
-          <img src="https://m.media-amazon.com/images/I/416DJtLU-aL._AC_SL400_.jpg" alt="Wool Dryer Balls (6 Pack)" loading="lazy">
-          <div class="product-card-body">
-            <span class="product-card-tier">$</span>
-            <h3 class="product-card-name">Wool Dryer Balls (6 Pack)</h3>
-            <p class="product-card-best">Best replacement for plastic dryer sheets</p>
-            <span class="product-card-cta">View &rarr;</span>
-          </div>
-        </a>
-        <a href="https://www.amazon.com/dp/B0BN2LZ9JH?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
-          <img src="https://m.media-amazon.com/images/I/717L1lcSQCL._AC_SL400_.jpg" alt="Blueair Blue Pure 211i Max Air Purifier" loading="lazy">
-          <div class="product-card-body">
-            <span class="product-card-tier">$$</span>
-            <h3 class="product-card-name">Blueair Blue Pure 211i Max</h3>
-            <p class="product-card-best">Best HEPASilent air purifier for the bedroom</p>
-            <span class="product-card-cta">View &rarr;</span>
-          </div>
-        </a>
-      </div>
-    </section>
-
     <div class="quiz-cta">
       <h3>Ready to clean up your air and bedroom?</h3>
-      <p>Browse our curated picks for the bedroom: organic bedding, natural mattress toppers, HEPA air purifiers, and microfiber-catching laundry essentials. Or take the free whole-home detox quiz for a personalized plan.</p>
+      <p>Browse our curated picks: organic bedding, natural mattress toppers, HEPA air purifiers, and microfiber catching laundry essentials. Or take the free whole home detox quiz for a personalized plan.</p>
       <a href="../store.html#store-cat-Bedroom" class="quiz-cta-btn">Shop Bedroom Swaps</a>
       <a href="../index.html" class="quiz-cta-secondary">Take the whole-home quiz &rarr;</a>
     </div>
