@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Personal Care 101: Avoid PFAS & Endocrine Disruptors | Plastic Detox</title>
-  <meta name="description" content="A complete guide to detoxing your personal care routine. Microplastics in cosmetics, hidden phthalates, mineral sunscreen, and the bamboo toothbrush myth — plus what to swap first.">
+  <title>Bathroom 101: A Plastic Free Bathroom Guide | Plastic Detox</title>
+  <meta name="description" content="A complete guide to detoxing your bathroom. Microplastics in cosmetics, hidden phthalates in fragrance, mineral sunscreen, deodorant, oral care, and the swaps that matter most.">
   <link rel="icon" type="image/png" sizes="48x48" href="../favicon.png">
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
   <link rel="canonical" href="https://plasticdetox.org/articles/personal-care-101.html">
 
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Personal Care 101: How to Avoid Microplastics and Endocrine Disruptors">
-  <meta property="og:description" content="A complete guide to detoxing your personal care routine. What to swap first, what to skip.">
+  <meta property="og:title" content="Bathroom 101: The Complete Plastic Free Bathroom Guide">
+  <meta property="og:description" content="A complete guide to detoxing your bathroom. What to swap first, what to skip.">
   <meta property="og:url" content="https://plasticdetox.org/articles/personal-care-101.html">
   <meta property="og:site_name" content="Plastic Detox">
 
@@ -31,13 +31,13 @@
         "itemListElement": [
           {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://plasticdetox.org/"},
           {"@type": "ListItem", "position": 2, "name": "Resources", "item": "https://plasticdetox.org/#resources"},
-          {"@type": "ListItem", "position": 3, "name": "Personal Care 101", "item": "https://plasticdetox.org/articles/personal-care-101.html"}
+          {"@type": "ListItem", "position": 3, "name": "Bathroom 101", "item": "https://plasticdetox.org/articles/personal-care-101.html"}
         ]
       },
       {
         "@type": "CollectionPage",
-        "name": "Personal Care 101: How to Avoid Microplastics, Endocrine Disruptors, and PFAS in Cosmetics",
-        "description": "A complete guide to detoxing your personal care routine. Microplastics in cosmetics, hidden phthalates, mineral sunscreen, and the bamboo toothbrush myth — plus what to swap first.",
+        "name": "Bathroom 101: The Complete Plastic Free Bathroom Guide",
+        "description": "A complete guide to detoxing your bathroom. Microplastics in cosmetics, hidden phthalates in fragrance, mineral sunscreen, deodorant, oral care, and the swaps that matter most.",
         "url": "https://plasticdetox.org/articles/personal-care-101.html",
         "datePublished": "2026-04-29",
         "dateModified": "2026-05-25",
@@ -102,20 +102,42 @@
     .hub-stat-num { font-size: 1.75rem; font-weight: 800; color: var(--accent-dark); letter-spacing: -0.02em; display: block; }
     .hub-stat-label { font-size: 0.85rem; color: var(--text-muted); }
 
+    .toc { background: var(--surface); border-radius: var(--radius); padding: 1.5rem 1.75rem; box-shadow: var(--shadow); margin-bottom: 3rem; }
+    .toc-title { font-size: 0.78rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent-dark); margin-bottom: 0.75rem; }
+    .toc ol { list-style: decimal; padding-left: 1.4rem; columns: 2; column-gap: 2rem; }
+    .toc li { margin-bottom: 0.35rem; break-inside: avoid; }
+    .toc a { color: var(--text); text-decoration: none; font-size: 0.95rem; font-weight: 500; }
+    .toc a:hover { color: var(--accent-dark); }
+    @media (max-width: 640px) { .toc ol { columns: 1; } }
+
     .pathway-title { font-size: 1.75rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
-    .pathway-sub { color: var(--text-muted); margin-bottom: 2rem; max-width: 640px; }
-    .step-list { display: flex; flex-direction: column; gap: 1.25rem; margin-bottom: 4rem; }
-    .step { display: flex; gap: 1.5rem; background: var(--surface); border-radius: var(--radius); padding: 1.75rem; box-shadow: var(--shadow); text-decoration: none; color: inherit; transition: transform 0.2s, box-shadow 0.2s; }
-    .step:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+    .pathway-sub { color: var(--text-muted); margin-bottom: 1rem; max-width: 640px; }
+    .disclosure { font-size: 0.82rem; color: var(--text-muted); font-style: italic; margin-bottom: 2rem; }
+
+    .step-list { display: flex; flex-direction: column; gap: 1.75rem; margin-bottom: 4rem; }
+    .step-card { background: var(--surface); border-radius: var(--radius); padding: 1.75rem; box-shadow: var(--shadow); }
+    .step-header { display: flex; gap: 1.5rem; margin-bottom: 1.5rem; }
     .step-num { flex-shrink: 0; width: 48px; height: 48px; border-radius: 50%; background: var(--accent-light); color: var(--accent-dark); font-weight: 800; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; }
     .step-body { flex: 1; }
     .step-tag { display: inline-block; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent-dark); margin-bottom: 0.4rem; }
     .step-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.4rem; line-height: 1.3; }
     .step-desc { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 0.6rem; }
-    .step-meta { font-size: 0.8rem; color: var(--text-muted); display: flex; gap: 1rem; align-items: center; }
+    .step-meta { font-size: 0.8rem; color: var(--text-muted); display: flex; gap: 1rem; align-items: center; margin-bottom: 0.5rem; }
     .step-impact { display: inline-flex; align-items: center; gap: 0.3rem; font-weight: 600; }
     .impact-high { color: var(--red); } .impact-medium { color: var(--orange); } .impact-low { color: var(--green); }
     .impact-dot { width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+    .step-link { display: inline-block; color: var(--accent-dark); font-weight: 600; text-decoration: none; font-size: 0.92rem; margin-top: 0.4rem; }
+    .step-link:hover { text-decoration: underline; }
+
+    .step-products { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+    .product-card-mini { background: var(--bg); border-radius: var(--radius-sm); text-decoration: none; color: inherit; transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; overflow: hidden; border: 1px solid var(--border); }
+    .product-card-mini:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+    .product-card-mini img { width: 100%; height: 140px; object-fit: contain; background: #fff; padding: 0.6rem; }
+    .product-card-body { padding: 0.85rem; display: flex; flex-direction: column; gap: 0.3rem; flex: 1; }
+    .product-card-tier { font-size: 0.7rem; font-weight: 800; color: var(--accent-dark); letter-spacing: 0.06em; }
+    .product-card-name { font-size: 0.92rem; font-weight: 700; line-height: 1.3; }
+    .product-card-best { font-size: 0.78rem; color: var(--text-muted); line-height: 1.4; flex: 1; }
+    .product-card-cta { font-size: 0.8rem; color: var(--accent-dark); font-weight: 600; margin-top: 0.3rem; }
 
     .qa-section { margin-bottom: 4rem; }
     .qa-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
@@ -123,6 +145,8 @@
     .qa-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
     .qa-q { font-weight: 700; font-size: 1rem; line-height: 1.4; margin-bottom: 0.5rem; }
     .qa-a { font-size: 0.88rem; color: var(--text-muted); line-height: 1.55; }
+    .qa-link { display: inline-block; margin-top: auto; font-size: 0.85rem; color: var(--accent-dark); font-weight: 600; text-decoration: none; padding-top: 0.5rem; }
+    .qa-link:hover { text-decoration: underline; }
 
     .related-hubs { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 4rem; }
     .related-hub { background: var(--surface); border: 2px solid var(--border); border-radius: var(--radius); padding: 1.25rem; text-decoration: none; color: inherit; transition: border-color 0.2s, transform 0.2s; }
@@ -141,24 +165,10 @@
     .section-title { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.4rem; }
     .section-sub { color: var(--text-muted); margin-bottom: 1.5rem; }
 
-    .hub-products { margin-bottom: 4rem; }
-    .hub-products-disclosure { font-size: 0.82rem; color: var(--text-muted); font-style: italic; margin-bottom: 1.5rem; }
-    .product-grid-5 { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1rem; }
-    .product-card-mini { background: var(--surface); border-radius: var(--radius); text-decoration: none; color: inherit; box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; overflow: hidden; }
-    .product-card-mini:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
-    .product-card-mini img { width: 100%; height: 160px; object-fit: contain; background: #f5f5f4; padding: 0.75rem; }
-    .product-card-body { padding: 1rem; display: flex; flex-direction: column; flex: 1; gap: 0.4rem; }
-    .product-card-tier { font-size: 0.7rem; font-weight: 800; color: var(--accent-dark); letter-spacing: 0.06em; }
-    .product-card-name { font-size: 0.98rem; font-weight: 700; line-height: 1.3; }
-    .product-card-best { font-size: 0.82rem; color: var(--text-muted); line-height: 1.4; flex: 1; }
-    .product-card-cta { font-size: 0.85rem; color: var(--accent-dark); font-weight: 600; margin-top: 0.4rem; }
-
-    .qa-link { display: inline-block; margin-top: auto; font-size: 0.85rem; color: var(--accent-dark); font-weight: 600; text-decoration: none; padding-top: 0.5rem; }
-    .qa-link:hover { text-decoration: underline; }
-
     @media (max-width: 640px) {
       .hub { padding: 1rem 1.25rem 3rem; }
-      .step { flex-direction: column; gap: 0.75rem; padding: 1.25rem; }
+      .step-card { padding: 1.25rem; }
+      .step-header { flex-direction: column; gap: 0.75rem; }
       .step-num { width: 40px; height: 40px; font-size: 1rem; }
       .hub-stats { gap: 1.25rem; padding: 1.25rem; }
     }
@@ -181,157 +191,472 @@
     <div class="breadcrumb">
       <a href="../index.html">Home</a> &nbsp;/&nbsp;
       <a href="../index.html#resources">Resources</a> &nbsp;/&nbsp;
-      Personal Care 101
+      Bathroom 101
     </div>
 
     <span class="hub-eyebrow">Start Here Guide</span>
-    <h1 class="hub-headline">Personal Care 101: Detox the Products You Use Every Day</h1>
-    <p class="hub-intro">The average woman puts 168 chemicals on her skin before breakfast. Many of those products contain microplastics, phthalates, parabens, and PFAS that absorb directly into your bloodstream. This guide walks through which products matter most, in priority order.</p>
+    <h1 class="hub-headline">Bathroom 101: The Complete Plastic Free Bathroom Guide</h1>
+    <p class="hub-intro">The average woman puts 168 chemicals on her skin before breakfast, and most of them come from the bathroom shelf. Many contain microplastics, phthalates, parabens, and PFAS that absorb directly into your bloodstream. This guide walks through the 10 swaps that matter most, in priority order.</p>
     <p class="hub-meta">Updated May 25, 2026 by the <a href="../about.html">Plastic Detox Editorial Team</a></p>
 
     <div class="hub-stats">
-      <div><span class="hub-stat-num">4</span><span class="hub-stat-label">in-depth guides</span></div>
-      <div><span class="hub-stat-num">~60 min</span><span class="hub-stat-label">total read time</span></div>
+      <div><span class="hub-stat-num">10</span><span class="hub-stat-label">key swaps</span></div>
       <div><span class="hub-stat-num">168</span><span class="hub-stat-label">avg chemicals per day</span></div>
       <div><span class="hub-stat-num">Direct</span><span class="hub-stat-label">absorbed into bloodstream</span></div>
+      <div><span class="hub-stat-num">4</span><span class="hub-stat-label">in-depth guides</span></div>
     </div>
-    <nav class="toc">
-      <div class="toc-title">In This Article</div>
-      <ol>
-        <li><a href="#detox-steps">Your personal care detox, in order</a></li>
-        <li><a href="#top-swaps">Top 5 recommended swaps</a></li>
-        <li><a href="#quick-answers">Quick answers</a></li>
-        <li><a href="#continue">Continue your detox</a></li>
-      </ol>
-    </nav>
 
-
-    <h2 class="pathway-title" id="detox-steps">Your personal care detox, in order</h2>
-    <p class="pathway-sub">Start at step 1. The biggest exposure isn't where most people think — fragrance, sunscreen, and makeup come first.</p>
+    <h2 class="pathway-title" id="detox-steps">Your bathroom detox, in order</h2>
+    <p class="pathway-sub">Start at step 1. Each swap is ranked by health impact, so if you only do the first three you have already cut most of your bathroom exposure.</p>
+    <p class="disclosure">Affiliate disclosure: we earn a small commission on the product links below, at no cost to you. We never accept paid placements.</p>
 
     <div class="step-list">
 
-      <a href="how-to-avoid-bpa-and-phthalates.html" class="step">
-        <div class="step-num">1</div>
-        <div class="step-body">
-          <span class="step-tag">Phthalates &amp; BPA</span>
-          <h3 class="step-title">How to Avoid BPA and Phthalates (Room-by-Room)</h3>
-          <p class="step-desc">Phthalates hide behind one word on every label: "fragrance." This guide shows you where they're hiding in your bathroom, what to swap, and which "natural" labels are lying.</p>
-          <div class="step-meta">
-            <span>14 min read</span>
-            <span class="step-impact impact-high"><span class="impact-dot"></span>High impact</span>
+      <div class="step-card" id="step1">
+        <div class="step-header">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <span class="step-tag">Phthalates &amp; Fragrance</span>
+            <h3 class="step-title">Cut hidden phthalates from "fragrance"</h3>
+            <p class="step-desc">"Fragrance" or "parfum" on any label is a regulatory loophole that hides dozens of unlisted chemicals, including phthalates linked to hormone disruption and infertility. Switching to fragrance free across deodorant, soap, and lotion is the single highest impact bathroom change you can make.</p>
+            <div class="step-meta">
+              <span>14 min read</span>
+              <span class="step-impact impact-high"><span class="impact-dot"></span>High impact</span>
+            </div>
+            <a href="how-to-avoid-bpa-and-phthalates.html" class="step-link">Read the full guide &rarr;</a>
           </div>
         </div>
-      </a>
+        <div class="step-products">
+          <a href="https://www.amazon.com/dp/B00120VWJ0?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/81oNLrDwCPL._AC_SL400_.jpg" alt="Dr. Bronner's Unscented Castile Soap" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$</span>
+              <h4 class="product-card-name">Dr. Bronner's Unscented Castile Soap</h4>
+              <p class="product-card-best">Organic, fragrance free, replaces shampoo, body wash, hand soap</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+          <a href="https://www.amazon.com/dp/B09SGXS4PZ?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/71iWTflth6L._AC_SL400_.jpg" alt="Each & Every Aluminum-Free Deodorant" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$</span>
+              <h4 class="product-card-name">Each &amp; Every Deodorant (Fragrance Free)</h4>
+              <p class="product-card-best">Aluminum free, fragrance free option, plant based</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+          <a href="https://www.amazon.com/dp/B0DHFR2JX9?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/61-6DpNQyvL._AC_SL400_.jpg" alt="Ethique Heali Kiwi Shampoo Bar" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$</span>
+              <h4 class="product-card-name">Ethique Shampoo Bar</h4>
+              <p class="product-card-best">Compostable packaging, plant based, B Corp certified</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+        </div>
+      </div>
 
-      <a href="microplastics-in-cosmetics-and-personal-care.html" class="step">
-        <div class="step-num">2</div>
-        <div class="step-body">
-          <span class="step-tag">Cosmetics</span>
-          <h3 class="step-title">Microplastics in Cosmetics and Personal Care Products</h3>
-          <p class="step-desc">Lipstick, foundation, exfoliants, and "shimmer" are some of the worst offenders. The ingredient names that signal hidden microplastics, and clean alternatives that actually perform.</p>
-          <div class="step-meta">
-            <span>12 min read</span>
-            <span class="step-impact impact-high"><span class="impact-dot"></span>High impact</span>
+      <div class="step-card" id="step2">
+        <div class="step-header">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <span class="step-tag">Cosmetics</span>
+            <h3 class="step-title">Replace microplastic loaded makeup</h3>
+            <p class="step-desc">Mascara, foundation, lipstick, and any product with shimmer or glitter are loaded with polyethylene, acrylates copolymer, and nylon. These sit on your face all day and migrate through skin and lash follicles. Clean formulas exist that wear just as well.</p>
+            <div class="step-meta">
+              <span>12 min read</span>
+              <span class="step-impact impact-high"><span class="impact-dot"></span>High impact</span>
+            </div>
+            <a href="microplastics-in-cosmetics-and-personal-care.html" class="step-link">Read the full guide &rarr;</a>
           </div>
         </div>
-      </a>
+        <div class="step-products">
+          <a href="https://www.amazon.com/dp/B0CPQXKPKL?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/519AM1Ln2vL._AC_SL400_.jpg" alt="W3LL PEOPLE Expressionist Mascara" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$$</span>
+              <h4 class="product-card-name">W3LL PEOPLE Mascara</h4>
+              <p class="product-card-best">EWG verified, plant wax base, vegan and cruelty free</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+          <a href="https://www.amazon.com/dp/B073SDTG6V?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/51QfI62pvhL._AC_SL400_.jpg" alt="Henne Organics Luxury Lip Balm" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$$</span>
+              <h4 class="product-card-name">Henne Organics Lip Balm</h4>
+              <p class="product-card-best">Five ingredient formula, glass jar, organic plant oils</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+          <a href="https://www.amazon.com/dp/B01KU7T7MY?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/71sIKGRm4IL._AC_SL400_.jpg" alt="SOPHi by Piggy Paint Nail Polish" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$</span>
+              <h4 class="product-card-name">SOPHi by Piggy Paint Nail Polish</h4>
+              <p class="product-card-best">Water based, no plastic film formers, safe for pregnancy</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+        </div>
+      </div>
 
-      <a href="best-mineral-sunscreen-guide.html" class="step">
-        <div class="step-num">3</div>
-        <div class="step-body">
-          <span class="step-tag">Sunscreen</span>
-          <h3 class="step-title">Best Mineral Sunscreen Guide 2026</h3>
-          <p class="step-desc">Chemical sunscreens are absorbed into your blood within hours. Mineral sunscreens are the safer alternative, but most don't rub in well. The brands that actually do, ranked.</p>
-          <div class="step-meta">
-            <span>18 min read</span>
-            <span class="step-impact impact-medium"><span class="impact-dot"></span>Medium impact</span>
+      <div class="step-card" id="step3">
+        <div class="step-header">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <span class="step-tag">Sunscreen</span>
+            <h3 class="step-title">Switch to mineral sunscreen</h3>
+            <p class="step-desc">The FDA in 2021 confirmed six common chemical UV filters absorb into the bloodstream after a single application. Mineral sunscreens (zinc oxide, titanium dioxide) sit on the skin instead, and modern formulas rub in without the chalky white cast.</p>
+            <div class="step-meta">
+              <span>18 min read</span>
+              <span class="step-impact impact-high"><span class="impact-dot"></span>High impact</span>
+            </div>
+            <a href="best-mineral-sunscreen-guide.html" class="step-link">Read the full guide &rarr;</a>
           </div>
         </div>
-      </a>
+        <div class="step-products">
+          <a href="https://www.amazon.com/dp/B09XWT823G?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/51-fERj+wCL._AC_SL400_.jpg" alt="Pipette Mineral Sunscreen SPF 50" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$</span>
+              <h4 class="product-card-name">Pipette Mineral Sunscreen SPF 50</h4>
+              <p class="product-card-best">20% non nano zinc oxide, squalane base, hypoallergenic</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+          <a href="https://www.amazon.com/dp/B07J6N8M75?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/61Jb2cvKq6L._AC_SL400_.jpg" alt="Earth Mama Baby Mineral Sunscreen SPF 40" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$</span>
+              <h4 class="product-card-name">Earth Mama Baby Mineral SPF 40</h4>
+              <p class="product-card-best">EWG verified, 25% non nano zinc, fragrance free, kids safe</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+          <a href="https://primallypure.com/products/sun-cream-spf30" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://primallypure.com/cdn/shop/files/SunCreamLavenderMintPDP_SeedOilCertcopy.webp?v=1775666669" alt="Primally Pure Sun Cream SPF 30" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$$</span>
+              <h4 class="product-card-name">Primally Pure Sun Cream SPF 30</h4>
+              <p class="product-card-best">Tallow and high zinc, glass jar, ultra short ingredient list</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+        </div>
+      </div>
 
-      <a href="bamboo-toothbrush-plastic-bristles.html" class="step">
-        <div class="step-num">4</div>
-        <div class="step-body">
-          <span class="step-tag">Oral Care</span>
-          <h3 class="step-title">The Bamboo Toothbrush Lie (Plastic Bristles Myth)</h3>
-          <p class="step-desc">Most "bamboo" toothbrushes still have plastic bristles, and you put them in your mouth twice a day. The truly plastic-free options, plus what actually matters in oral care.</p>
-          <div class="step-meta">
-            <span>14 min read</span>
-            <span class="step-impact impact-low"><span class="impact-dot"></span>Lower impact</span>
+      <div class="step-card" id="step4">
+        <div class="step-header">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <span class="step-tag">Deodorant</span>
+            <h3 class="step-title">Drop aluminum and synthetic fragrance deodorants</h3>
+            <p class="step-desc">Conventional antiperspirants combine aluminum compounds with phthalate carrying fragrance and apply them straight to lymphatic skin under the arm. Aluminum free deodorants buffer the pH properly and have been clinically tested. Mineral salt and tallow based options take it one step further.</p>
+            <div class="step-meta">
+              <span class="step-impact impact-medium"><span class="impact-dot"></span>Medium impact</span>
+            </div>
           </div>
         </div>
-      </a>
+        <div class="step-products">
+          <a href="https://www.amazon.com/dp/B07BN1ZNBL?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/61yiFpwp9BL._AC_SL400_.jpg" alt="Salt of the Earth Lavender & Vanilla Roll On" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$</span>
+              <h4 class="product-card-name">Salt of the Earth Mineral Roll On</h4>
+              <p class="product-card-best">Natural mineral salts, no aluminum, no parabens, vegan</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+          <a href="https://www.amazon.com/dp/B0DTQ9TLDL?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/71qQlV5575L._AC_SL400_.jpg" alt="Wild The Full Monty Aluminum Free Deodorant" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$$</span>
+              <h4 class="product-card-name">Wild Refillable Deodorant</h4>
+              <p class="product-card-best">Refillable case, bamboo pulp pods, Leaping Bunny certified</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+          <a href="https://primallypure.com/collections/deodorant" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://cdn.shopify.com/s/files/1/0874/6120/files/2024_CharcoalDeodorant1.7oz_PDPcopy_18f8e7cb-f478-4fb8-9ff1-83b2de288caa.webp?v=1775659689" alt="Primally Pure Deodorant" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$$</span>
+              <h4 class="product-card-name">Primally Pure Deodorant</h4>
+              <p class="product-card-best">Tallow, beeswax, organic ingredients, baking soda free option</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="step-card" id="step5">
+        <div class="step-header">
+          <div class="step-num">5</div>
+          <div class="step-body">
+            <span class="step-tag">Period Care</span>
+            <h3 class="step-title">Switch to organic cotton or a reusable cup</h3>
+            <p class="step-desc">Conventional tampons and pads are made from chlorine bleached rayon and synthetic fibers, applied to one of the most absorbent tissue regions in the body for hours at a time. Organic cotton products and reusable medical grade silicone cups eliminate the plastic and chemical exposure.</p>
+            <div class="step-meta">
+              <span class="step-impact impact-medium"><span class="impact-dot"></span>Medium impact</span>
+            </div>
+          </div>
+        </div>
+        <div class="step-products">
+          <a href="https://www.amazon.com/dp/B001E14MJO?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/71GMCP7U5cL._AC_SL400_.jpg" alt="Natracare Organic Cotton Tampons" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$</span>
+              <h4 class="product-card-name">Natracare Organic Cotton Tampons</h4>
+              <p class="product-card-best">100% organic cotton, no applicator, fully biodegradable</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+          <a href="https://www.amazon.com/dp/B071NCXFMG?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/81KXv+aw22L._AC_SL400_.jpg" alt="AllMatters (OrganiCup) Menstrual Cup" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$$</span>
+              <h4 class="product-card-name">AllMatters Menstrual Cup</h4>
+              <p class="product-card-best">Medical grade silicone, AllergyCertified, reusable up to 10 years</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+          <a href="https://www.amazon.com/dp/B00854HLCI?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/61dO02bDUTL._AC_SL400_.jpg" alt="GladRags Organic Cotton Night Pad" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$$</span>
+              <h4 class="product-card-name">GladRags Reusable Cloth Pad</h4>
+              <p class="product-card-best">100% organic cotton, no plastic backing, lasts 5+ years</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="step-card" id="step6">
+        <div class="step-header">
+          <div class="step-num">6</div>
+          <div class="step-body">
+            <span class="step-tag">Oral Care</span>
+            <h3 class="step-title">Replace plastic tube toothpaste and microbeads</h3>
+            <p class="step-desc">Conventional toothpaste tubes are aluminum lined plastic, and many formulas still contain SLS and synthetic foaming agents. Natural toothpastes in cleaner packaging avoid both, and xylitol based kids formulas are safe to swallow during the unavoidable years.</p>
+            <div class="step-meta">
+              <span class="step-impact impact-medium"><span class="impact-dot"></span>Medium impact</span>
+            </div>
+          </div>
+        </div>
+        <div class="step-products">
+          <a href="https://www.amazon.com/dp/B000Q46K86?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/51yViset7AL._AC_SL400_.jpg" alt="Weleda Salt Toothpaste" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$</span>
+              <h4 class="product-card-name">Weleda Salt Toothpaste</h4>
+              <p class="product-card-best">NATRUE certified, plant based, fluoride and SLS free</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+          <a href="https://www.amazon.com/dp/B004769M8E?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/617gFeH3BjL._AC_SL400_.jpg" alt="Spry Kids Tooth Gel" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$</span>
+              <h4 class="product-card-name">Spry Kids Xylitol Tooth Gel</h4>
+              <p class="product-card-best">Xylitol formula, safe to swallow, no fluoride or SLS</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="step-card" id="step7">
+        <div class="step-header">
+          <div class="step-num">7</div>
+          <div class="step-body">
+            <span class="step-tag">Shampoo &amp; Conditioner</span>
+            <h3 class="step-title">Switch to bar or refillable shampoo</h3>
+            <p class="step-desc">A standard year of liquid shampoo and conditioner sends a dozen plastic bottles to landfill and exposes your scalp to sulfates, silicones, and fragrance. Solid bars in compostable packaging and refillable aluminum bottle systems both eliminate the bottle and the synthetic fillers.</p>
+            <div class="step-meta">
+              <span class="step-impact impact-medium"><span class="impact-dot"></span>Medium impact</span>
+            </div>
+          </div>
+        </div>
+        <div class="step-products">
+          <a href="https://www.amazon.com/dp/B08S3FTX35?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/51G+heEl8VL._AC_SL400_.jpg" alt="HiBAR Shampoo Bar" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$</span>
+              <h4 class="product-card-name">HiBAR Shampoo Bar</h4>
+              <p class="product-card-best">Salon quality, formulas by hair type, zero plastic packaging</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+          <a href="https://www.amazon.com/dp/B099KWKY36?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/81OFqtQpfIL._AC_SL400_.jpg" alt="Viori Shampoo Bar" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$$</span>
+              <h4 class="product-card-name">Viori Shampoo Bar</h4>
+              <p class="product-card-best">Rice water based, sulfate and paraben free, 60 to 80 washes per bar</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+          <a href="https://www.amazon.com/dp/B0774WQY7T?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/51f5yHWYggL._AC_SL400_.jpg" alt="Plaine Products Refillable Shampoo" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$$</span>
+              <h4 class="product-card-name">Plaine Products Refillable Shampoo</h4>
+              <p class="product-card-best">Refillable aluminum bottle, free refill shipping, no silicones</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="step-card" id="step8">
+        <div class="step-header">
+          <div class="step-num">8</div>
+          <div class="step-body">
+            <span class="step-tag">Skincare</span>
+            <h3 class="step-title">Move skincare to glass and clean formulas</h3>
+            <p class="step-desc">Most face cleansers, serums, and moisturizers come in plastic bottles that leach into oily and acidic formulas, and the formulas themselves are loaded with PEGs, silicones, and synthetic polymers. Glass packaging plus MADE SAFE or EWG verified formulas fix both at once.</p>
+            <div class="step-meta">
+              <span class="step-impact impact-medium"><span class="impact-dot"></span>Medium impact</span>
+            </div>
+          </div>
+        </div>
+        <div class="step-products">
+          <a href="https://www.amazon.com/dp/B086W4D6CB?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/51Q5UE1HmTL._AC_SL400_.jpg" alt="Earth Harbor Sunshine Antioxidant Cleansing Mousse" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$</span>
+              <h4 class="product-card-name">Earth Harbor Cleansing Mousse</h4>
+              <p class="product-card-best">Glass bottle, vegan, antioxidant rich, no synthetic polymers</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+          <a href="https://www.amazon.com/dp/B086W2S5LV?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/51fgw1u6hBL._AC_SL400_.jpg" alt="Earth Harbor Marina Biome Serum" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$$</span>
+              <h4 class="product-card-name">Earth Harbor Hyaluronic Serum</h4>
+              <p class="product-card-best">Glass bottle, plant gum texture, no synthetic polymers</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+          <a href="https://www.amazon.com/dp/B07JZVGJV3?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/51rPysR7WlL._AC_SL400_.jpg" alt="Plaine Products Face Moisturizer" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$$</span>
+              <h4 class="product-card-name">Plaine Products Face Moisturizer</h4>
+              <p class="product-card-best">Refillable aluminum bottle, no silicones, vegan</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="step-card" id="step9">
+        <div class="step-header">
+          <div class="step-num">9</div>
+          <div class="step-body">
+            <span class="step-tag">Razor</span>
+            <h3 class="step-title">Replace disposable cartridge razors</h3>
+            <p class="step-desc">Disposable cartridge razors pile up plastic and rubber lubricant strips that touch your skin every shave. A double edge safety razor uses a single recyclable steel blade, lasts a lifetime, and shaves cleaner once you adjust to the angle.</p>
+            <div class="step-meta">
+              <span class="step-impact impact-low"><span class="impact-dot"></span>Lower impact</span>
+            </div>
+          </div>
+        </div>
+        <div class="step-products">
+          <a href="https://www.amazon.com/dp/B003LW4L2W?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/610oKGvPiNL._AC_SL400_.jpg" alt="Edwin Jagger Double Edge Safety Razor" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$$</span>
+              <h4 class="product-card-name">Edwin Jagger Safety Razor</h4>
+              <p class="product-card-best">Mild forgiving shave, all metal, best for beginners</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+          <a href="https://www.amazon.com/dp/B002A8JO1Q?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/410XbGhKsyL._AC_SL400_.jpg" alt="Merkur 34C Safety Razor" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$$</span>
+              <h4 class="product-card-name">Merkur 34C Safety Razor</h4>
+              <p class="product-card-best">German made stainless steel, classic double edge, lasts a lifetime</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+          <a href="https://www.amazon.com/dp/B09V6895XM?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/71-dv28et9L._AC_SL400_.jpg" alt="Leaf Thorn Single Edge Razor" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$$</span>
+              <h4 class="product-card-name">Leaf Thorn Pivoting Razor</h4>
+              <p class="product-card-best">Pivoting head mimics cartridge feel, easiest transition</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="step-card" id="step10">
+        <div class="step-header">
+          <div class="step-num">10</div>
+          <div class="step-body">
+            <span class="step-tag">Toothbrush</span>
+            <h3 class="step-title">Use a truly plastic free toothbrush</h3>
+            <p class="step-desc">Most "bamboo" toothbrushes still have nylon plastic bristles you put in your mouth twice a day. The truly plastic free options use boar bristle or castor bean derived bio bristles, and the cleanest electric option uses an aluminum body that is repaired rather than replaced.</p>
+            <div class="step-meta">
+              <span>14 min read</span>
+              <span class="step-impact impact-low"><span class="impact-dot"></span>Lower impact</span>
+            </div>
+            <a href="bamboo-toothbrush-plastic-bristles.html" class="step-link">Read the full guide &rarr;</a>
+          </div>
+        </div>
+        <div class="step-products">
+          <a href="https://www.amazon.com/dp/B0D2587QXX?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://cdn.shopify.com/s/files/1/0813/4934/5580/files/First2ImagesSquareShopifyproducts_19_00c5e50f-d3be-4ff3-85cb-db6ee59b8158.png?v=1753069376&width=300" alt="PRIMALS Boar Bristle Bamboo Toothbrush" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$</span>
+              <h4 class="product-card-name">PRIMALS Boar Bristle Toothbrush</h4>
+              <p class="product-card-best">100% boar hair bristles, zero nylon, fully compostable</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+          <a href="https://www.amazon.com/s?k=SeaTurtle+castor+bean+bamboo+toothbrush&tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://cdn.shopify.com/s/files/1/0734/9108/7671/files/AdultToothbrushSquare_Transparent_3e202c2b-f1d7-414f-afcd-37f7a43b98ad.png?v=1730859050&width=300" alt="SeaTurtle Plant Based Bamboo Toothbrush" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$</span>
+              <h4 class="product-card-name">SeaTurtle Plant Based Bamboo Toothbrush</h4>
+              <p class="product-card-best">Castor bean bristles, FSC bamboo, best vegan value</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+          <a href="https://www.amazon.com/s?k=SURI+2.0+electric+toothbrush&tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://cdn.shopify.com/s/files/1/0502/5929/6444/files/MidnightBlackSet.png?v=1772702898&width=300" alt="SURI 2.0 Sustainable Electric Toothbrush" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$$$</span>
+              <h4 class="product-card-name">SURI 2.0 Electric Toothbrush</h4>
+              <p class="product-card-best">Aluminum body, castor oil bristles, repairable, B Corp certified</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+        </div>
+      </div>
 
     </div>
 
-
-    <section class="hub-products">
-      <h2 class="section-title" id="top-swaps">Top 5 recommended swaps</h2>
-      <p class="hub-products-disclosure">Vetted picks from our store. Affiliate links: we earn a small commission when you buy, at no cost to you. We never accept paid placements.</p>
-      <div class="product-grid-5">
-        <a href="https://www.amazon.com/dp/B099KWKY36?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
-          <img src="https://m.media-amazon.com/images/I/81OFqtQpfIL._AC_SL400_.jpg" alt="Viori Shampoo Bar" loading="lazy">
-          <div class="product-card-body">
-            <span class="product-card-tier">$$</span>
-            <h3 class="product-card-name">Viori Shampoo Bar</h3>
-            <p class="product-card-best">Best plastic-free shampoo bar</p>
-            <span class="product-card-cta">View &rarr;</span>
-          </div>
-        </a>
-        <a href="https://www.amazon.com/dp/B08S3FTX35?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
-          <img src="https://m.media-amazon.com/images/I/51G+heEl8VL._AC_SL400_.jpg" alt="HiBAR Conditioner Bar" loading="lazy">
-          <div class="product-card-body">
-            <span class="product-card-tier">$</span>
-            <h3 class="product-card-name">HiBAR Conditioner Bar</h3>
-            <p class="product-card-best">Best salon-quality plastic-free hair bar</p>
-            <span class="product-card-cta">View &rarr;</span>
-          </div>
-        </a>
-        <a href="https://www.amazon.com/dp/B002A8JO1Q?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
-          <img src="https://m.media-amazon.com/images/I/410XbGhKsyL._AC_SL400_.jpg" alt="Merkur 34C Safety Razor" loading="lazy">
-          <div class="product-card-body">
-            <span class="product-card-tier">$$</span>
-            <h3 class="product-card-name">Merkur 34C Safety Razor</h3>
-            <p class="product-card-best">Best plastic-free razor</p>
-            <span class="product-card-cta">View &rarr;</span>
-          </div>
-        </a>
-        <a href="https://www.amazon.com/dp/B09SGXS4PZ?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
-          <img src="https://m.media-amazon.com/images/I/71iWTflth6L._AC_SL400_.jpg" alt="Each & Every Aluminum-Free Deodorant" loading="lazy">
-          <div class="product-card-body">
-            <span class="product-card-tier">$</span>
-            <h3 class="product-card-name">Each & Every Aluminum-Free Deodorant</h3>
-            <p class="product-card-best">Best fragrance-free natural deodorant</p>
-            <span class="product-card-cta">View &rarr;</span>
-          </div>
-        </a>
-        <a href="https://www.amazon.com/dp/B0774WQY7T?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
-          <img src="https://m.media-amazon.com/images/I/51f5yHWYggL._AC_SL400_.jpg" alt="Plaine Products Refillable Shampoo" loading="lazy">
-          <div class="product-card-body">
-            <span class="product-card-tier">$$</span>
-            <h3 class="product-card-name">Plaine Products Refillable Shampoo</h3>
-            <p class="product-card-best">Best refillable liquid shampoo system</p>
-            <span class="product-card-cta">View &rarr;</span>
-          </div>
-        </a>
-      </div>
-    </section>
-
     <div class="quiz-cta">
       <h3>Ready to swap your bathroom shelf?</h3>
-      <p>Browse vetted personal care products: clean cosmetics, mineral sunscreens, plastic-free oral care, and fragrance-free essentials. Or take the free whole-home detox quiz for a personalized plan.</p>
+      <p>Browse vetted bathroom products: clean cosmetics, mineral sunscreens, plastic free oral care, and fragrance free essentials. Or take the free whole home detox quiz for a personalized plan.</p>
       <a href="../store.html#store-cat-Bathroom" class="quiz-cta-btn">Shop Bathroom Swaps</a>
       <a href="../index.html" class="quiz-cta-secondary">Take the whole-home quiz &rarr;</a>
     </div>
 
     <div class="qa-section">
       <h2 class="section-title" id="quick-answers">Quick answers</h2>
-      <p class="section-sub">Common personal care detox questions, with deep-dive guides for each.</p>
+      <p class="section-sub">Common bathroom detox questions, with deep dive guides for each.</p>
       <div class="qa-grid">
         <div class="qa-card">
           <div class="qa-q">What does "fragrance" actually mean?</div>
-          <div class="qa-a">"Fragrance" or "parfum" is a regulatory loophole that lets brands hide dozens of unlisted chemicals, including phthalates linked to hormone disruption, infertility, and developmental issues. The FDA does not require fragrance components to be listed individually. Look for "fragrance-free" (not "unscented," which can still contain fragrances) or products that disclose every ingredient.</div>
+          <div class="qa-a">"Fragrance" or "parfum" is a regulatory loophole that lets brands hide dozens of unlisted chemicals, including phthalates linked to hormone disruption, infertility, and developmental issues. The FDA does not require fragrance components to be listed individually. Look for "fragrance free" (not "unscented," which can still contain fragrances) or products that disclose every ingredient.</div>
           <a href="how-to-avoid-bpa-and-phthalates.html" class="qa-link">Read the full guide &rarr;</a>
         </div>
         <div class="qa-card">
@@ -341,17 +666,17 @@
         </div>
         <div class="qa-card">
           <div class="qa-q">Are chemical sunscreens dangerous?</div>
-          <div class="qa-a">The FDA in 2021 flagged six common chemical UV filters (oxybenzone, octinoxate, homosalate, octisalate, octocrylene, avobenzone) for measurable absorption into the bloodstream after a single use. Long-term effects are unclear and research is ongoing. Mineral sunscreens (zinc oxide, titanium dioxide) sit on the skin instead of absorbing, and remain the safer choice while research catches up.</div>
+          <div class="qa-a">The FDA in 2021 flagged six common chemical UV filters (oxybenzone, octinoxate, homosalate, octisalate, octocrylene, avobenzone) for measurable absorption into the bloodstream after a single use. Long term effects are unclear and research is ongoing. Mineral sunscreens (zinc oxide, titanium dioxide) sit on the skin instead of absorbing, and remain the safer choice while research catches up.</div>
           <a href="best-mineral-sunscreen-guide.html" class="qa-link">Read the full guide &rarr;</a>
         </div>
         <div class="qa-card">
           <div class="qa-q">Is DIY deodorant safe?</div>
-          <div class="qa-a">Generally no. DIY deodorant recipes commonly use baking soda at concentrations that cause underarm chemical burns and skin sensitization. Pre-formulated natural deodorants (Native, Schmidt's Sensitive, Each & Every) buffer the pH properly and have been clinically tested.</div>
+          <div class="qa-a">Generally no. DIY deodorant recipes commonly use baking soda at concentrations that cause underarm chemical burns and skin sensitization. Pre formulated natural deodorants (Native, Schmidt's Sensitive, Each &amp; Every) buffer the pH properly and have been clinically tested.</div>
           <a href="low-tox-mistakes-that-backfire.html" class="qa-link">Read the full guide &rarr;</a>
         </div>
         <div class="qa-card">
           <div class="qa-q">Are "BPA-free" products actually safe?</div>
-          <div class="qa-a">No. The replacement chemicals (BPS, BPF, BPB) cause similar endocrine disruption per multiple peer-reviewed studies. The label tells you what's missing, not what's safe. Choose glass, stainless steel, or untreated natural materials whenever possible.</div>
+          <div class="qa-a">No. The replacement chemicals (BPS, BPF, BPB) cause similar endocrine disruption per multiple peer reviewed studies. The label tells you what's missing, not what's safe. Choose glass, stainless steel, or untreated natural materials whenever possible.</div>
           <a href="bpa-free-is-not-safe.html" class="qa-link">Read the full guide &rarr;</a>
         </div>
         <div class="qa-card">
@@ -367,7 +692,7 @@
     <div class="related-hubs">
       <a href="kitchen-detox-101.html" class="related-hub">
         <div class="related-hub-title">Kitchen Detox 101</div>
-        <div class="related-hub-count">6 articles</div>
+        <div class="related-hub-count">11 swaps</div>
       </a>
       <a href="water-detox-101.html" class="related-hub">
         <div class="related-hub-title">Water Detox 101</div>
