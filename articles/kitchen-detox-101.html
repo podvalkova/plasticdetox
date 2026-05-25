@@ -215,6 +215,48 @@
     }
 
     /* ===== STEP PATHWAY ===== */
+    .kitchen-map {
+      position: relative;
+      max-width: 520px;
+      margin: 0 auto 3rem;
+    }
+    .kitchen-map img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: var(--radius);
+    }
+    .kitchen-map-caption {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-align: center;
+      margin-top: 0.75rem;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .kn {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--accent-dark);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.85rem;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+      text-decoration: none;
+      transition: transform 0.15s;
+    }
+    .kn:hover { transform: translate(-50%, -50%) scale(1.15); }
+    @media (max-width: 480px) {
+      .kn { width: 24px; height: 24px; font-size: 0.72rem; }
+    }
+
     .pathway-title {
       font-size: 1.75rem;
       font-weight: 800;
@@ -535,6 +577,23 @@
         <span class="hub-stat-label">highest-impact room</span>
       </div>
     </div>
+
+    <figure class="kitchen-map">
+      <picture>
+        <source srcset="../images/kitchen-detox-101-items.webp" type="image/webp">
+        <img src="../images/kitchen-detox-101-items.png" alt="Pencil illustration of a non-toxic kitchen with the 12 swap categories numbered: water filter, cookware, appliances, food storage, cutting board, kettle, coffee, and utensils" loading="lazy" width="768" height="1376">
+      </picture>
+      <a href="#step4" class="kn" style="top: 12%; left: 50%;" title="4. Food Storage">4</a>
+      <a href="#step1" class="kn" style="top: 41%; left: 22%;" title="1. Drinking Water">1</a>
+      <a href="#step9" class="kn" style="top: 44%; left: 47%;" title="9. Utensils">9</a>
+      <a href="#step5" class="kn" style="top: 39%; left: 73%;" title="5. Cutting Boards">5</a>
+      <a href="#step7" class="kn" style="top: 50%; left: 60%;" title="7. Coffee">7</a>
+      <a href="#step6" class="kn" style="top: 52%; left: 78%;" title="6. Kettle">6</a>
+      <a href="#step2" class="kn" style="top: 62%; left: 38%;" title="2. Cookware">2</a>
+      <a href="#step3" class="kn" style="top: 80%; left: 55%;" title="3. Appliances">3</a>
+      <figcaption class="kitchen-map-caption">Tap a number to jump to that swap. Steps 8, 10, 11, and 12 (wraps, baking, groceries, dishwashing) follow below.</figcaption>
+    </figure>
+
     <h2 class="pathway-title" id="detox-steps">Your kitchen detox, in order</h2>
     <p class="pathway-sub">Start at step 1. Each swap is ranked by health impact, so if you only do the first three, you've already cut most of your exposure.</p>
     <p class="disclosure">Affiliate disclosure: we earn a small commission on the product links below, at no cost to you. We never accept paid placements.</p>
