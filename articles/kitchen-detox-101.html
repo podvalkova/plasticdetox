@@ -226,6 +226,26 @@
       display: block;
       border-radius: var(--radius);
     }
+    .pin-button {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      z-index: 3;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      background: #e60023;
+      color: #fff;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 700;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      transition: transform 0.15s;
+    }
+    .pin-button:hover { transform: translateY(-1px); }
+    .pin-button svg { width: 16px; height: 16px; fill: #fff; }
     .kitchen-map-caption {
       font-size: 0.85rem;
       color: var(--text-muted);
@@ -579,9 +599,13 @@
     </div>
 
     <figure class="kitchen-map">
+      <a class="pin-button" href="https://www.pinterest.com/pin/create/button/?url=https%3A%2F%2Fplasticdetox.org%2Farticles%2Fkitchen-detox-101.html&media=https%3A%2F%2Fplasticdetox.org%2Fimages%2Fkitchen-detox-101-items.webp&description=Kitchen%20Detox%20101%3A%2012%20priorities%20to%20remove%20microplastics%20and%20chemicals%20from%20your%20kitchen.%20Filter%20your%20water%2C%20swap%20your%20cookware%2C%20ditch%20plastic%20food%20storage%2C%20and%20more%20%E2%80%94%20every%20swap%20ranked%20by%20health%20impact." target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+        Save
+      </a>
       <picture>
         <source srcset="../images/kitchen-detox-101-items.webp" type="image/webp">
-        <img src="../images/kitchen-detox-101-items.png" alt="Pencil illustration of a non-toxic kitchen with all 12 swap priorities numbered: drinking water, cookware, appliances, food storage, cutting boards, kettle, coffee, food wraps, utensils, baking, groceries, and dishwashing" loading="lazy" width="768" height="1376">
+        <img src="../images/kitchen-detox-101-items.png" alt="Pencil illustration of a non-toxic kitchen with all 12 swap priorities numbered: drinking water, cookware, appliances, food storage, cutting boards, kettle, coffee, food wraps, utensils, baking, groceries, and dishwashing" loading="lazy" width="768" height="1376" data-pin-description="Kitchen Detox 101: 12 priorities to remove microplastics and chemicals from your kitchen. Filter your water, swap your cookware, ditch plastic food storage, and more — every swap ranked by health impact." data-pin-url="https://plasticdetox.org/articles/kitchen-detox-101.html">
       </picture>
       <a href="#step4" class="kn" style="top: 13%; left: 72%;" title="4. Food Storage">4</a>
       <a href="#step11" class="kn" style="top: 13%; left: 58%;" title="11. Groceries">11</a>
