@@ -171,20 +171,6 @@
       margin: 2rem 0 2.5rem;
       text-align: center;
     }
-    .swap-grid-headline {
-      font-family: 'Inter', sans-serif;
-      font-size: 2rem;
-      font-weight: 800;
-      line-height: 1.15;
-      letter-spacing: -0.01em;
-      color: #1c1917;
-      margin: 0 0 0.5rem;
-    }
-    .swap-grid-subline {
-      font-size: 1rem;
-      color: #57534e;
-      margin: 0 0 1.25rem;
-    }
     .swap-grid-imgwrap {
       position: relative;
       max-width: 560px;
@@ -198,11 +184,33 @@
       width: 100%;
       height: auto;
     }
+    .swap-grid-headline {
+      position: absolute;
+      top: 4%;
+      left: 6%;
+      right: 6%;
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(1.1rem, 4.2vw, 1.85rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.015em;
+      color: #1c1917;
+      text-align: center;
+      pointer-events: none;
+      z-index: 2;
+    }
+    .swap-grid-subline {
+      font-size: 0.95rem;
+      color: #57534e;
+      margin: 1rem 0 0;
+    }
     .swap-zone {
       position: absolute;
       display: block;
       border-radius: 10px;
       transition: background-color 0.15s ease, box-shadow 0.15s ease;
+      z-index: 1;
     }
     .swap-zone:hover,
     .swap-zone:focus-visible {
@@ -210,15 +218,12 @@
       box-shadow: inset 0 0 0 2px rgba(124, 58, 237, 0.65);
       outline: none;
     }
-    .swap-zone.z1 { top: 0;   left: 0;       width: 33.34%; height: 50%; }
-    .swap-zone.z2 { top: 0;   left: 33.33%;  width: 33.34%; height: 50%; }
-    .swap-zone.z3 { top: 0;   left: 66.66%;  width: 33.34%; height: 50%; }
-    .swap-zone.z4 { top: 50%; left: 0;       width: 33.34%; height: 50%; }
-    .swap-zone.z5 { top: 50%; left: 33.33%;  width: 33.34%; height: 50%; }
-    .swap-zone.z6 { top: 50%; left: 66.66%;  width: 33.34%; height: 50%; }
-    @media (max-width: 480px) {
-      .swap-grid-headline { font-size: 1.5rem; }
-    }
+    .swap-zone.z1 { top: 16%; left: 1%;      width: 32.33%; height: 36%; }
+    .swap-zone.z2 { top: 16%; left: 33.66%;  width: 32.33%; height: 36%; }
+    .swap-zone.z3 { top: 16%; left: 66.66%;  width: 32.33%; height: 36%; }
+    .swap-zone.z4 { top: 55%; left: 1%;      width: 32.33%; height: 38%; }
+    .swap-zone.z5 { top: 55%; left: 33.66%;  width: 32.33%; height: 38%; }
+    .swap-zone.z6 { top: 55%; left: 66.66%;  width: 32.33%; height: 38%; }
   </style>
 </head>
 <body>
@@ -247,10 +252,9 @@
     </div>
 
     <div class="swap-grid">
-      <h2 class="swap-grid-headline">Start With the 6 Swaps That Matter Most</h2>
-      <p class="swap-grid-subline">Tap any item to jump straight to the products we recommend.</p>
       <div class="swap-grid-imgwrap">
         <img class="swap-grid-img" fetchpriority="high" src="../images/start-reducing-6-swaps.webp" alt="Six high impact plastic swaps illustrated in pencil on marble: microwave, non stick frying pan, water filter, electric kettle, pour over coffee maker, and baby bottle">
+        <h2 class="swap-grid-headline">Start With the 6 Swaps That Matter Most</h2>
         <a class="swap-zone z1" href="#swap-microwave" aria-label="Jump to microwave and hot food in plastic swap"></a>
         <a class="swap-zone z2" href="#swap-cookware" aria-label="Jump to non stick cookware swap"></a>
         <a class="swap-zone z3" href="#swap-water" aria-label="Jump to water filter recommendations"></a>
@@ -258,6 +262,7 @@
         <a class="swap-zone z5" href="#swap-coffee" aria-label="Jump to plastic free coffee swap"></a>
         <a class="swap-zone z6" href="#swap-baby" aria-label="Jump to plastic free baby bottle picks"></a>
       </div>
+      <p class="swap-grid-subline">Tap any item to jump straight to the products we recommend.</p>
     </div>
 
     <div class="tldr-card">
