@@ -41,7 +41,7 @@
         "url": "https://plasticdetox.org/articles/kitchen-detox-101.html",
         "datePublished": "2026-04-29",
         "dateModified": "2026-05-25",
-        "lastReviewed": "2026-05-13",
+        "lastReviewed": "2026-05-25",
         "inLanguage": "en",
         "author": {"@type": "Organization", "name": "Plastic Detox Editorial Team", "url": "https://plasticdetox.org/about.html"},
         "publisher": {"@type": "Organization", "name": "Plastic Detox", "url": "https://plasticdetox.org"},
@@ -216,26 +216,48 @@
     .step-list {
       display: flex;
       flex-direction: column;
-      gap: 1.25rem;
+      gap: 1.75rem;
       margin-bottom: 4rem;
     }
 
-    .step {
-      display: flex;
-      gap: 1.5rem;
+    .step-card {
       background: var(--surface);
       border-radius: var(--radius);
       padding: 1.75rem;
       box-shadow: var(--shadow);
-      text-decoration: none;
-      color: inherit;
-      transition: transform 0.2s, box-shadow 0.2s;
-      position: relative;
     }
 
-    .step:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-lg);
+    .step-header {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .step-link {
+      display: inline-block;
+      font-size: 0.88rem;
+      color: var(--accent-dark);
+      font-weight: 600;
+      text-decoration: none;
+      margin-top: 0.5rem;
+    }
+    .step-link:hover { text-decoration: underline; }
+
+    .step-products {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+    @media (max-width: 640px) {
+      .step-products { grid-template-columns: 1fr; }
+      .step-header { flex-direction: column; gap: 0.75rem; }
+    }
+
+    .disclosure {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      font-style: italic;
+      margin-bottom: 1.5rem;
     }
 
     .step-num {
@@ -435,9 +457,9 @@
     .hub-products { margin-bottom: 4rem; }
     .hub-products-disclosure { font-size: 0.82rem; color: var(--text-muted); font-style: italic; margin-bottom: 1.5rem; }
     .product-grid-5 { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1rem; }
-    .product-card-mini { background: var(--surface); border-radius: var(--radius); text-decoration: none; color: inherit; box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; overflow: hidden; }
+    .product-card-mini { background: var(--bg); border-radius: var(--radius); text-decoration: none; color: inherit; transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; overflow: hidden; border: 1px solid var(--border); }
     .product-card-mini:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
-    .product-card-mini img { width: 100%; height: 160px; object-fit: contain; background: #f5f5f4; padding: 0.75rem; }
+    .product-card-mini img { width: 100%; height: 150px; object-fit: contain; background: #fff; padding: 0.75rem; }
     .product-card-body { padding: 1rem; display: flex; flex-direction: column; flex: 1; gap: 0.4rem; }
     .product-card-tier { font-size: 0.7rem; font-weight: 800; color: var(--accent-dark); letter-spacing: 0.06em; }
     .product-card-name { font-size: 0.98rem; font-weight: 700; line-height: 1.3; }
@@ -449,7 +471,7 @@
 
     @media (max-width: 640px) {
       .hub { padding: 1rem 1.25rem 3rem; }
-      .step { flex-direction: column; gap: 0.75rem; padding: 1.25rem; }
+      .step-card { padding: 1.25rem; }
       .step-num { width: 40px; height: 40px; font-size: 1rem; }
       .hub-stats { gap: 1.25rem; padding: 1.25rem; }
     }
@@ -499,141 +521,282 @@
     </div>
     <h2 class="pathway-title" id="detox-steps">Your kitchen detox, in order</h2>
     <p class="pathway-sub">Start at step 1. Each swap is ranked by health impact, so if you only do the first three, you've already cut most of your exposure.</p>
+    <p class="disclosure">Affiliate disclosure: we earn a small commission on the product links below, at no cost to you. We never accept paid placements.</p>
 
     <div class="step-list">
 
-      <a href="how-to-remove-microplastics-from-drinking-water.html" class="step">
-        <div class="step-num">1</div>
-        <div class="step-body">
-          <span class="step-tag">Drinking Water</span>
-          <h3 class="step-title">How to Remove Microplastics from Drinking Water</h3>
-          <p class="step-desc">Tap water contains thousands of microplastic particles per liter. The right filter removes 99% of them. Start here, this is the highest impact, lowest cost change you can make.</p>
-          <div class="step-meta">
-            <span>16 min read</span>
-            <span class="step-impact impact-high"><span class="impact-dot"></span>High impact</span>
+      <div class="step-card" id="step1">
+        <div class="step-header">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <span class="step-tag">Drinking Water</span>
+            <h3 class="step-title">How to Remove Microplastics from Drinking Water</h3>
+            <p class="step-desc">Tap water contains thousands of microplastic particles per liter. The right filter removes 99% of them. Start here, this is the highest impact, lowest cost change you can make.</p>
+            <div class="step-meta">
+              <span>16 min read</span>
+              <span class="step-impact impact-high"><span class="impact-dot"></span>High impact</span>
+            </div>
+            <a href="how-to-remove-microplastics-from-drinking-water.html" class="step-link">Read the full guide &rarr;</a>
           </div>
         </div>
-      </a>
+        <div class="step-products">
+          <a href="https://www.amazon.com/dp/B0CW4CDPNJ?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/41bKOyTPymL._AC_SL400_.jpg" alt="Clearly Filtered Pitcher" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$</span>
+              <h4 class="product-card-name">Clearly Filtered Pitcher</h4>
+              <p class="product-card-best">NSF certified pitcher, 99.5% removal, easiest entry point</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+          <a href="https://www.amazon.com/dp/B09KRDK677?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/41FVllkDK5L._AC_SL400_.jpg" alt="Bluevua RO100ROPOT Countertop RO" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$$</span>
+              <h4 class="product-card-name">Bluevua RO100ROPOT Countertop RO</h4>
+              <p class="product-card-best">Five stage countertop RO, no plumbing, remineralized output</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+          <a href="https://www.amazon.com/dp/B00I0ZGOZM?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/418gI8Rxl2L._AC_SL400_.jpg" alt="APEC Reverse Osmosis System" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$$$</span>
+              <h4 class="product-card-name">APEC Reverse Osmosis System</h4>
+              <p class="product-card-best">NSF certified under sink RO, steel tank, whole family</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+        </div>
+      </div>
 
-      <a href="cast-iron-vs-stainless-steel-vs-ceramic-cookware.html" class="step">
-        <div class="step-num">2</div>
-        <div class="step-body">
-          <span class="step-tag">Cookware</span>
-          <h3 class="step-title">Cast Iron vs Stainless Steel vs Ceramic Cookware</h3>
-          <p class="step-desc">Nonstick cookware sheds PFAS into your food at every meal. Side-by-side comparison of the three safe alternatives, with cost, durability, and what each is best for.</p>
-          <div class="step-meta">
-            <span>18 min read</span>
-            <span class="step-impact impact-high"><span class="impact-dot"></span>High impact</span>
+      <div class="step-card" id="step2">
+        <div class="step-header">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <span class="step-tag">Cookware</span>
+            <h3 class="step-title">Cast Iron vs Stainless Steel vs Ceramic Cookware</h3>
+            <p class="step-desc">Nonstick cookware sheds PFAS into your food at every meal. Side-by-side comparison of the three safe alternatives, with cost, durability, and what each is best for.</p>
+            <div class="step-meta">
+              <span>18 min read</span>
+              <span class="step-impact impact-high"><span class="impact-dot"></span>High impact</span>
+            </div>
+            <a href="cast-iron-vs-stainless-steel-vs-ceramic-cookware.html" class="step-link">Read the full guide &rarr;</a>
           </div>
         </div>
-      </a>
+        <div class="step-products">
+          <a href="https://www.amazon.com/dp/B00006JSUB?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/216kmrLZraL._AC_SL400_.jpg" alt="Lodge Cast Iron Skillet" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$</span>
+              <h4 class="product-card-name">Lodge Cast Iron Skillet (12")</h4>
+              <p class="product-card-best">100% PFAS free, lasts a lifetime, oven safe to any temp</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+          <a href="https://www.amazon.com/dp/B00JAP44MQ?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/21KzEXHq51L._AC_SL400_.jpg" alt="Tramontina Stainless Steel" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$$</span>
+              <h4 class="product-card-name">Tramontina Stainless Steel (12")</h4>
+              <p class="product-card-best">Tri ply 18/10 stainless, non reactive, dishwasher safe</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+          <a href="https://www.amazon.com/dp/B000N4WN08?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/31vaGyYFoWL._AC_SL400_.jpg" alt="Lodge Enameled Cast Iron Dutch Oven" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$$</span>
+              <h4 class="product-card-name">Lodge Enameled Cast Iron Dutch Oven (6 Qt)</h4>
+              <p class="product-card-best">100% PFAS free, no seasoning needed, oven safe to 500F</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+        </div>
+      </div>
 
-      <a href="toxic-kitchen-appliances-ranked.html" class="step">
-        <div class="step-num">3</div>
-        <div class="step-body">
-          <span class="step-tag">Appliances</span>
-          <h3 class="step-title">The Most (and Least) Toxic Kitchen Appliances, Ranked</h3>
-          <p class="step-desc">From air fryers shedding PFAS to safe stainless steel picks. Which appliances actually leach into your food, and the specific non-toxic swaps worth the counter space.</p>
-          <div class="step-meta">
-            <span>28 min read</span>
-            <span class="step-impact impact-high"><span class="impact-dot"></span>High impact</span>
+      <div class="step-card" id="step3">
+        <div class="step-header">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <span class="step-tag">Appliances</span>
+            <h3 class="step-title">The Most (and Least) Toxic Kitchen Appliances, Ranked</h3>
+            <p class="step-desc">From air fryers shedding PFAS to safe stainless steel picks. Which appliances actually leach into your food, and the specific non toxic swaps worth the counter space.</p>
+            <div class="step-meta">
+              <span>28 min read</span>
+              <span class="step-impact impact-high"><span class="impact-dot"></span>High impact</span>
+            </div>
+            <a href="toxic-kitchen-appliances-ranked.html" class="step-link">Read the full guide &rarr;</a>
           </div>
         </div>
-      </a>
+        <div class="step-products">
+          <a href="https://www.amazon.com/dp/B088K2P8Z7?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/519Lk5wJ9oS._AC_SL400_.jpg" alt="Stainless Steel Slow Cooker Insert" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$$</span>
+              <h4 class="product-card-name">Stainless Steel Slow Cooker Insert (6 Qt)</h4>
+              <p class="product-card-best">Fits standard Crock Pot base, eliminates ceramic glaze risk</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+          <a href="https://www.amazon.com/dp/B0FLG6D6Z3?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/81+xV-d6bDL._AC_SL400_.jpg" alt="Ninja Crispi Glass Air Fryer" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$$</span>
+              <h4 class="product-card-name">Ninja Crispi Glass Air Fryer</h4>
+              <p class="product-card-best">Borosilicate glass containers, stainless rack upgrade available</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+          <a href="https://www.amazon.com/dp/B0D2Y6SRKY?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/61E4Okc5Q7L._AC_SL400_.jpg" alt="Fritaire Pro Glass Air Fryer" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$$$</span>
+              <h4 class="product-card-name">Fritaire Pro 9 in 1 Glass Air Fryer</h4>
+              <p class="product-card-best">Tempered glass bowl, 304 stainless accessories, no PFAS</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+        </div>
+      </div>
 
-      <a href="best-plastic-free-food-storage-containers.html" class="step">
-        <div class="step-num">4</div>
-        <div class="step-body">
-          <span class="step-tag">Food Storage</span>
-          <h3 class="step-title">Best Plastic-Free Food Storage Containers</h3>
-          <p class="step-desc">Plastic containers leach more when they hold hot, oily, or acidic food. The glass, stainless, and silicone options that actually hold up, and the brands worth buying.</p>
-          <div class="step-meta">
-            <span>12 min read</span>
-            <span class="step-impact impact-high"><span class="impact-dot"></span>High impact</span>
+      <div class="step-card" id="step4">
+        <div class="step-header">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <span class="step-tag">Food Storage</span>
+            <h3 class="step-title">Best Plastic Free Food Storage Containers</h3>
+            <p class="step-desc">Plastic containers leach more when they hold hot, oily, or acidic food. The glass, stainless, and silicone options that actually hold up, and the brands worth buying.</p>
+            <div class="step-meta">
+              <span>12 min read</span>
+              <span class="step-impact impact-high"><span class="impact-dot"></span>High impact</span>
+            </div>
+            <a href="best-plastic-free-food-storage-containers.html" class="step-link">Read the full guide &rarr;</a>
           </div>
         </div>
-      </a>
+        <div class="step-products">
+          <a href="https://www.amazon.com/dp/B084H7K9LY?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/51ZNN0gba3L._AC_SL400_.jpg" alt="Glass Containers with Bamboo Lids" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$</span>
+              <h4 class="product-card-name">Glass Containers with Bamboo Lids (4 Pack)</h4>
+              <p class="product-card-best">Borosilicate glass, oven and microwave safe with lid off</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+          <a href="https://www.amazon.com/dp/B071KTNCSC?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/51q+WO1ThHL._AC_SL400_.jpg" alt="Ball Wide Mouth Mason Jars" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$</span>
+              <h4 class="product-card-name">Ball Wide Mouth Mason Jars (12 Pack)</h4>
+              <p class="product-card-best">Soda lime glass, metal lids, made in USA</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+          <a href="https://www.amazon.com/dp/B0D9QHTF6X?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/41Df1pqVWeL._AC_SL400_.jpg" alt="Urban Green Glass Containers with Glass Lids" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$$</span>
+              <h4 class="product-card-name">Urban Green Glass with Glass Lids (3 Pack)</h4>
+              <p class="product-card-best">100% glass on glass, microwave safe with lid on</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+        </div>
+      </div>
 
-      <a href="best-non-toxic-cutting-boards.html" class="step">
-        <div class="step-num">5</div>
-        <div class="step-body">
-          <span class="step-tag">Prep Tools</span>
-          <h3 class="step-title">Best Non-Toxic Cutting Boards</h3>
-          <p class="step-desc">A 2022 study found a single plastic cutting board sheds up to 50 grams of microplastic per year directly onto your food. The wood, bamboo, and composite options that don't.</p>
-          <div class="step-meta">
-            <span>11 min read</span>
-            <span class="step-impact impact-high"><span class="impact-dot"></span>High impact</span>
+      <div class="step-card" id="step5">
+        <div class="step-header">
+          <div class="step-num">5</div>
+          <div class="step-body">
+            <span class="step-tag">Prep Tools</span>
+            <h3 class="step-title">Best Non Toxic Cutting Boards</h3>
+            <p class="step-desc">A 2022 study found a single plastic cutting board sheds up to 50 grams of microplastic per year directly onto your food. The wood, bamboo, and composite options that don't.</p>
+            <div class="step-meta">
+              <span>11 min read</span>
+              <span class="step-impact impact-high"><span class="impact-dot"></span>High impact</span>
+            </div>
+            <a href="best-non-toxic-cutting-boards.html" class="step-link">Read the full guide &rarr;</a>
           </div>
         </div>
-      </a>
+        <div class="step-products">
+          <a href="https://www.amazon.com/dp/B00012V15K?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/71MmTRhSM1L._AC_SL400_.jpg" alt="Totally Bamboo Cutting Board" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$</span>
+              <h4 class="product-card-name">Totally Bamboo Cutting Board (18x12.5)</h4>
+              <p class="product-card-best">Moso bamboo, formaldehyde free adhesive, large surface</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+          <a href="https://www.amazon.com/dp/B001CMV1VW?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/71AekRMk58L._AC_SL400_.jpg" alt="Teakhaus Edge Grain Teak Board" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$$</span>
+              <h4 class="product-card-name">Teakhaus Edge Grain Teak Board</h4>
+              <p class="product-card-best">Sustainable teak, built in juice groove, water resistant</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+          <a href="https://www.amazon.com/dp/B00CRUDO0Y?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/71ZXkReaSnL._AC_SL400_.jpg" alt="John Boos Maple End Grain Block" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$$$</span>
+              <h4 class="product-card-name">John Boos Maple End Grain Block (20x15)</h4>
+              <p class="product-card-best">End grain hard maple, self healing surface, NSF certified</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+        </div>
+      </div>
 
-      <a href="plastic-in-groceries-what-really-matters.html" class="step">
-        <div class="step-num">6</div>
-        <div class="step-body">
-          <span class="step-tag">Groceries</span>
-          <h3 class="step-title">Plastic in Groceries: What Really Matters</h3>
-          <p class="step-desc">Not all grocery plastic is equal. The foods you should always buy plastic-free, the ones that are fine in plastic but should be re-stored at home, and the ones not worth worrying about.</p>
-          <div class="step-meta">
-            <span>18 min read</span>
-            <span class="step-impact impact-medium"><span class="impact-dot"></span>Medium impact</span>
+      <div class="step-card" id="step6">
+        <div class="step-header">
+          <div class="step-num">6</div>
+          <div class="step-body">
+            <span class="step-tag">Groceries</span>
+            <h3 class="step-title">Plastic in Groceries: What Really Matters</h3>
+            <p class="step-desc">Not all grocery plastic is equal. The foods you should always buy plastic free, the ones that are fine in plastic but should be re stored at home, and the ones not worth worrying about.</p>
+            <div class="step-meta">
+              <span>18 min read</span>
+              <span class="step-impact impact-medium"><span class="impact-dot"></span>Medium impact</span>
+            </div>
+            <a href="plastic-in-groceries-what-really-matters.html" class="step-link">Read the full guide &rarr;</a>
           </div>
         </div>
-      </a>
+        <div class="step-products">
+          <a href="https://www.amazon.com/dp/B07CK2TJKL?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/71IEq8nUWjL._AC_SL400_.jpg" alt="Organic Cotton Reusable Produce Bags" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$</span>
+              <h4 class="product-card-name">Organic Cotton Reusable Produce Bags</h4>
+              <p class="product-card-best">Organic cotton, machine washable, replaces produce aisle plastic</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+          <a href="https://www.amazon.com/dp/B0126LMDFK?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/41RE8cqekdL._AC_SL400_.jpg" alt="Bee's Wrap Beeswax Wraps" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$</span>
+              <h4 class="product-card-name">Bee's Wrap Beeswax Wraps (3 Pack)</h4>
+              <p class="product-card-best">Organic cotton, beeswax, jojoba oil, plastic wrap replacement</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+          <a href="https://www.amazon.com/dp/B01DZQT9CU?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
+            <img src="https://m.media-amazon.com/images/I/31iPGjcwiuL._AC_SL400_.jpg" alt="Stasher Silicone Reusable Bags" loading="lazy">
+            <div class="product-card-body">
+              <span class="product-card-tier">$</span>
+              <h4 class="product-card-name">Stasher Silicone Reusable Bags</h4>
+              <p class="product-card-best">Platinum food grade silicone, airtight, microwave and freezer safe</p>
+              <span class="product-card-cta">View &rarr;</span>
+            </div>
+          </a>
+        </div>
+      </div>
 
     </div>
 
-
-    <section class="hub-products">
-      <h2 class="section-title" id="top-swaps">Top 5 recommended swaps</h2>
-      <p class="hub-products-disclosure">Vetted picks from our store. Affiliate links: we earn a small commission when you buy, at no cost to you. We never accept paid placements.</p>
-      <div class="product-grid-5">
-        <a href="https://www.amazon.com/dp/B000N4WN08?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
-          <img src="https://m.media-amazon.com/images/I/31vaGyYFoWL._AC_SL400_.jpg" alt="Lodge Enameled Cast Iron Dutch Oven (6 Qt)" loading="lazy">
-          <div class="product-card-body">
-            <span class="product-card-tier">$$</span>
-            <h3 class="product-card-name">Lodge Enameled Cast Iron Dutch Oven (6 Qt)</h3>
-            <p class="product-card-best">Best plastic-free cookware for soups, stews, bread</p>
-            <span class="product-card-cta">View &rarr;</span>
-          </div>
-        </a>
-        <a href="https://www.amazon.com/dp/B00CRUDO0Y?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
-          <img src="https://m.media-amazon.com/images/I/71ZXkReaSnL._AC_SL400_.jpg" alt="John Boos Maple End Grain Cutting Board" loading="lazy">
-          <div class="product-card-body">
-            <span class="product-card-tier">$$$</span>
-            <h3 class="product-card-name">John Boos Maple End Grain Cutting Board</h3>
-            <p class="product-card-best">Best premium hardwood cutting board</p>
-            <span class="product-card-cta">View &rarr;</span>
-          </div>
-        </a>
-        <a href="https://www.amazon.com/dp/B00008XEWG?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
-          <img src="https://m.media-amazon.com/images/I/31je915XePL._AC_SL400_.jpg" alt="Bodum Chambord French Press (34oz)" loading="lazy">
-          <div class="product-card-body">
-            <span class="product-card-tier">$</span>
-            <h3 class="product-card-name">Bodum Chambord French Press (34oz)</h3>
-            <p class="product-card-best">Best all-around plastic-free coffee brewer</p>
-            <span class="product-card-cta">View &rarr;</span>
-          </div>
-        </a>
-        <a href="https://www.amazon.com/dp/B08PP48979?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
-          <img src="https://m.media-amazon.com/images/I/41PYUmcAn4L._AC_SL400_.jpg" alt="Cosori Glass Electric Kettle" loading="lazy">
-          <div class="product-card-body">
-            <span class="product-card-tier">$</span>
-            <h3 class="product-card-name">Cosori Glass Electric Kettle</h3>
-            <p class="product-card-best">Best value plastic-free kettle</p>
-            <span class="product-card-cta">View &rarr;</span>
-          </div>
-        </a>
-        <a href="https://www.amazon.com/dp/B001JPA3Y8?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card-mini">
-          <img src="https://m.media-amazon.com/images/I/811rxDPdjUL._AC_SL400_.jpg" alt="Forlife Stainless Steel Tea Infuser" loading="lazy">
-          <div class="product-card-body">
-            <span class="product-card-tier">$</span>
-            <h3 class="product-card-name">Forlife Stainless Steel Tea Infuser</h3>
-            <p class="product-card-best">Best mug infuser for loose-leaf tea</p>
-            <span class="product-card-cta">View &rarr;</span>
-          </div>
-        </a>
-      </div>
-    </section>
 
     <div class="quiz-cta">
       <h3>Ready to make the swaps?</h3>
