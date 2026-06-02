@@ -104,15 +104,10 @@
     .pillars { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.1rem; }
     .pillar { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; text-decoration: none; color: var(--text); transition: transform 0.15s, box-shadow 0.15s; }
     .pillar:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
-    .pillar-img { aspect-ratio: 16 / 9; background: var(--accent-light); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
-    .pillar-img svg { width: 80px; height: 80px; color: var(--accent-dark); }
-    .pillar-img.registry { background: linear-gradient(135deg, #ede9fe 0%, #ddd6fe 100%); }
-    .pillar-img.top100 { background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); }
-    .pillar-img.toddler { background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%); }
-    .pillar-img.guide { background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); }
-    .pillar-img.top100 svg { color: var(--green-dark); }
-    .pillar-img.toddler svg { color: #9d174d; }
-    .pillar-img.guide svg { color: #92400e; }
+    .pillar-img { aspect-ratio: 3 / 2; background: var(--accent-light); position: relative; overflow: hidden; }
+    .pillar-img picture, .pillar-img img { width: 100%; height: 100%; display: block; }
+    .pillar-img img { object-fit: cover; transition: transform 0.3s ease; }
+    .pillar:hover .pillar-img img { transform: scale(1.04); }
     .pillar-body { padding: 1.5rem 1.5rem 1.65rem; flex: 1; display: flex; flex-direction: column; }
     .pillar-tag { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent-dark); margin-bottom: 0.4rem; }
     .pillar-h { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.015em; line-height: 1.25; margin-bottom: 0.55rem; }
@@ -196,8 +191,11 @@
       <h2 class="pillars-h">Start here</h2>
       <div class="pillars">
         <a class="pillar" href="registry.html">
-          <div class="pillar-img registry" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v13H3V8"/><path d="M1 3h22v5H1z"/><path d="M10 12h4"/><path d="M12 3v5"/><path d="M12 3a3 3 0 1 0-3-3 3 3 0 0 0 0 6"/><path d="M12 3a3 3 0 1 1 3-3 3 3 0 0 1 0 6"/></svg>
+          <div class="pillar-img">
+            <picture>
+              <source srcset="images/babies-kids-hub/hub-baby-registry.webp" type="image/webp">
+              <img src="images/babies-kids-hub/hub-baby-registry.jpg" alt="Low tox baby registry, vetted picks organized by room and priority tier" width="800" height="537" loading="eager" decoding="async">
+            </picture>
           </div>
           <div class="pillar-body">
             <div class="pillar-tag">Curated picks</div>
@@ -207,8 +205,11 @@
           </div>
         </a>
         <a class="pillar" href="articles/top-100-baby-kids-products-amazon.html">
-          <div class="pillar-img top100" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M3 9h18"/><path d="M9 21V9"/><path d="M14 13l2 2 4-4"/></svg>
+          <div class="pillar-img">
+            <picture>
+              <source srcset="images/babies-kids-hub/hub-top-100.webp" type="image/webp">
+              <img src="images/babies-kids-hub/hub-top-100.jpg" alt="Top 100 baby products on Amazon ranked Skip, Use Carefully, or Good Choice" width="800" height="537" loading="eager" decoding="async">
+            </picture>
           </div>
           <div class="pillar-body">
             <div class="pillar-tag">Ranked & reviewed</div>
@@ -218,8 +219,11 @@
           </div>
         </a>
         <a class="pillar" href="articles/non-toxic-baby-toddler-products-guide.html">
-          <div class="pillar-img toddler" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h6"/><path d="M16 12h6"/><circle cx="12" cy="12" r="4"/><path d="M12 2v6"/><path d="M12 16v6"/></svg>
+          <div class="pillar-img">
+            <picture>
+              <source srcset="images/babies-kids-hub/hub-detailed-research.webp" type="image/webp">
+              <img src="images/babies-kids-hub/hub-detailed-research.jpg" alt="Detailed research on key baby and toddler items, materials and certifications" width="800" height="537" loading="eager" decoding="async">
+            </picture>
           </div>
           <div class="pillar-body">
             <div class="pillar-tag">Detailed research</div>
@@ -229,8 +233,11 @@
           </div>
         </a>
         <a class="pillar" href="articles/baby-kids-101.html">
-          <div class="pillar-img guide" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          <div class="pillar-img">
+            <picture>
+              <source srcset="images/babies-kids-hub/hub-baby-kids-101.webp" type="image/webp">
+              <img src="images/babies-kids-hub/hub-baby-kids-101.jpg" alt="Baby and Kids 101, the starter guide to low tox parenting" width="800" height="537" loading="eager" decoding="async">
+            </picture>
           </div>
           <div class="pillar-body">
             <div class="pillar-tag">Big picture</div>
