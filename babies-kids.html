@@ -37,9 +37,9 @@
         "name": "Babies & Kids: Low Tox Parenting Hub",
         "description": "Baby Registry, Top 100 Amazon baby products ranked, and every kid focused article on Plastic Detox.",
         "url": "https://plasticdetox.org/babies-kids.html",
-        "datePublished": "2026-06-01",
-        "dateModified": "2026-06-01",
-        "lastReviewed": "2026-06-01",
+        "datePublished": "2026-06-02",
+        "dateModified": "2026-06-02",
+        "lastReviewed": "2026-06-02",
         "inLanguage": "en",
         "author": {"@type": "Organization", "name": "Plastic Detox Editorial Team", "url": "https://plasticdetox.org/about.html"},
         "publisher": {"@type": "Organization", "name": "Plastic Detox", "url": "https://plasticdetox.org"}
@@ -101,15 +101,17 @@
     /* Pillars */
     .pillars-wrap { max-width: 1180px; margin: 0 auto; padding: 3rem 2rem 1rem; }
     .pillars-h { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 1.25rem; }
-    .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    .pillars { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.1rem; }
     .pillar { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; text-decoration: none; color: var(--text); transition: transform 0.15s, box-shadow 0.15s; }
     .pillar:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
     .pillar-img { aspect-ratio: 16 / 9; background: var(--accent-light); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
     .pillar-img svg { width: 80px; height: 80px; color: var(--accent-dark); }
     .pillar-img.registry { background: linear-gradient(135deg, #ede9fe 0%, #ddd6fe 100%); }
     .pillar-img.top100 { background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); }
+    .pillar-img.toddler { background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%); }
     .pillar-img.guide { background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); }
     .pillar-img.top100 svg { color: var(--green-dark); }
+    .pillar-img.toddler svg { color: #9d174d; }
     .pillar-img.guide svg { color: #92400e; }
     .pillar-body { padding: 1.5rem 1.5rem 1.65rem; flex: 1; display: flex; flex-direction: column; }
     .pillar-tag { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent-dark); margin-bottom: 0.4rem; }
@@ -154,11 +156,14 @@
     .footer .social { margin-top: 0.75rem; display: flex; justify-content: center; gap: 0.85rem; }
     .footer .social a { color: #78716c; display: inline-block; }
 
+    @media (max-width: 1080px) {
+      .pillars { grid-template-columns: repeat(2, 1fr); }
+    }
     @media (max-width: 880px) {
-      .pillars { grid-template-columns: 1fr; }
       .article-grid { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 560px) {
+      .pillars { grid-template-columns: 1fr; }
       .article-grid { grid-template-columns: 1fr; }
       .nl-form { flex-direction: column; }
     }
@@ -180,9 +185,9 @@
       <div class="hub-head-inner">
         <div class="crumb"><a href="./">Home</a> <span>›</span> <span>Babies & Kids</span></div>
         <span class="eyebrow">Low Tox Parenting Hub</span>
-        <h1 class="hub-h1">Lower tox parenting, <em>without the doom scrolling</em>.</h1>
+        <h1 class="hub-h1">Everything for <em>safer</em> baby and kid choices.</h1>
         <p class="hub-lede">
-          Babies absorb microplastics roughly 10x faster than adults relative to body weight. We turned that research into a registry of vetted products, a ranked review of the 100 most popular baby items on Amazon, and a library of plain English guides for parents who do not have time to read every lab report.
+          Babies absorb microplastics roughly 10x faster than adults relative to body weight. We turned that research into a registry of vetted products, a ranked review of the 100 most popular baby items on Amazon, a definitive 2026 non toxic guide, and a library of plain English articles for parents who do not have time to read every lab report.
         </p>
       </div>
     </header>
@@ -212,12 +217,23 @@
             <span class="pillar-cta">Open the rankings</span>
           </div>
         </a>
+        <a class="pillar" href="articles/non-toxic-baby-toddler-products-guide.html">
+          <div class="pillar-img toddler" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h6"/><path d="M16 12h6"/><circle cx="12" cy="12" r="4"/><path d="M12 2v6"/><path d="M12 16v6"/></svg>
+          </div>
+          <div class="pillar-body">
+            <div class="pillar-tag">2026 definitive</div>
+            <h3 class="pillar-h">Non Toxic Baby & Toddler Products Guide</h3>
+            <p class="pillar-desc">The 2026 room by room guide. Feeding, nursery, clothing, bath, gear, toys, and home. Every safer alternative with the certification, brand, and priority order.</p>
+            <span class="pillar-cta">Read the guide</span>
+          </div>
+        </a>
         <a class="pillar" href="articles/baby-kids-101.html">
           <div class="pillar-img guide" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
           </div>
           <div class="pillar-body">
-            <div class="pillar-tag">The big picture</div>
+            <div class="pillar-tag">Big picture</div>
             <h3 class="pillar-h">Baby & Kids 101</h3>
             <p class="pillar-desc">The starter guide. Where babies pick up microplastics and toxic chemistries, in priority order, with the highest impact swaps to make first.</p>
             <span class="pillar-cta">Read the guide</span>
@@ -269,9 +285,6 @@
     const TOPICS = ["Feeding", "Skincare", "Sleep", "Clothing", "Toys & Play", "Detox basics"];
 
     const ARTICLES = [
-      { href: "articles/baby-kids-101.html", topic: "Detox basics", title: "Baby & Kids 101", desc: "Where babies pick up microplastic exposure, in priority order, with the highest impact swaps to make first." },
-      { href: "articles/non-toxic-baby-toddler-products-guide.html", topic: "Detox basics", title: "Non Toxic Baby & Toddler Products Guide", desc: "Room by room swaps for feeding, nursery, clothing, bath, gear, toys, and home, with certifications and brand picks." },
-      { href: "articles/top-100-baby-kids-products-amazon.html", topic: "Detox basics", title: "Top 100 Baby Products on Amazon, Ranked", desc: "100 most popular baby items on Amazon rated Skip, Use Carefully, or Good Choice. Search and filter by tier, category, brand." },
       { href: "articles/microplastics-in-baby-food.html", topic: "Feeding", title: "Microplastics in Baby Food", desc: "Baby food contains significantly more microplastics than adult food. Where the contamination comes from and the safest feeding setup." },
       { href: "articles/best-mineral-sunscreen-guide.html", topic: "Skincare", title: "Mineral vs Chemical Sunscreen: Which Is Safer?", desc: "Best mineral sunscreen picks for face, body, deeper skin tones, pregnancy, kids, and reef safe travel." },
       { href: "articles/best-plastic-free-food-storage-containers.html", topic: "Feeding", title: "Best Plastic Free Food Storage Containers", desc: "Glass, stainless, and silicone storage that does not shed microplastics into leftovers or baby portions." },
