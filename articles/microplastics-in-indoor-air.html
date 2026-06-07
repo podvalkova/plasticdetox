@@ -110,6 +110,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/article.css">
   <style>
+    .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0 2rem; }
+    .product-card { background: var(--surface); border-radius: var(--radius); text-decoration: none; color: inherit; box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; overflow: hidden; }
+    .product-card:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0,0,0,0.10); }
+    .product-card img { width: 100%; height: 180px; object-fit: contain; background: #fff; padding: 0.75rem; }
+    .product-card-body { padding: 1rem; display: flex; flex-direction: column; flex: 1; gap: 0.4rem; }
+    .product-card-tier { font-size: 0.7rem; font-weight: 800; color: var(--accent-dark); letter-spacing: 0.06em; }
+    .product-card-name { font-size: 1rem; font-weight: 700; line-height: 1.3; margin: 0; }
+    .product-card-best { font-size: 0.85rem; color: var(--text-muted); line-height: 1.4; flex: 1; margin: 0; }
+    .product-card-cta { font-size: 0.85rem; color: var(--accent-dark); font-weight: 600; margin-top: 0.4rem; }
     .pin-container {
       position: relative;
       margin: 2rem 0;
@@ -566,6 +575,38 @@
       <p>Wool filled pillows are naturally hypoallergenic, temperature regulating, and resistant to dust mites. Unlike polyester fill, wool fibers are biodegradable and do not contribute to microplastic pollution. They maintain their loft well and last significantly longer than synthetic alternatives.</p>
       <p><strong>Why we recommend it:</strong> Zero microplastic shedding, natural temperature regulation, dust mite resistant, and long lasting.</p>
       <p><a href="https://www.amazon.com/s?k=wool+filled+pillow+organic&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Browse wool pillows on Amazon →</a></p>
+    </div>
+
+    <h3>Our Top 3 Organic Sheet Sets</h3>
+
+    <div class="product-grid">
+      <a href="https://www.amazon.com/dp/B0FDF4T5H6/?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
+        <img src="https://m.media-amazon.com/images/I/714GvBCTSRL._AC_SL400_.jpg" alt="Bedsure 100% GOTS Certified Organic Cotton Sheet Set" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">$ · BEST VALUE</span>
+          <h3 class="product-card-name">Bedsure Organic Cotton</h3>
+          <p class="product-card-best">100% GOTS certified organic cotton, percale weave, 17 inch deep pocket, machine washable.</p>
+          <span class="product-card-cta">View &rarr;</span>
+        </div>
+      </a>
+      <a href="https://www.amazon.com/dp/B0DJ32KJ42/?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
+        <img src="https://m.media-amazon.com/images/I/71c2aa8dmRL._AC_SL400_.jpg" alt="100% French Linen Sheet Set from Normandy" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">$$ · BEST FOR TEMPERATURE</span>
+          <h3 class="product-card-name">French Linen Sheet Set</h3>
+          <p class="product-card-best">100% flax linen from Normandy, four piece set, breathable and moisture wicking, softens with every wash.</p>
+          <span class="product-card-cta">View &rarr;</span>
+        </div>
+      </a>
+      <a href="https://www.amazon.com/dp/B0BHZSJ4QK/?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
+        <img src="https://m.media-amazon.com/images/I/51b1GKukZ6L._AC_SL400_.jpg" alt="Boll &amp; Branch Signature Organic Cotton Sheet Set" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">$$$ · BEST PREMIUM</span>
+          <h3 class="product-card-name">Boll &amp; Branch Signature</h3>
+          <p class="product-card-best">100% organic cotton, GOTS and Fair Trade certified, 300 thread count sateen, made without synthetic finishes.</p>
+          <span class="product-card-cta">View &rarr;</span>
+        </div>
+      </a>
     </div>
 
     <h3>Bedding Comparison</h3>
