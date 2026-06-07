@@ -2092,5 +2092,23 @@
     });
   </script>
 
+  <!-- Affiliate & outbound link click tracking -->
+  <script>
+    document.addEventListener('click', function(e) {
+      var link = e.target.closest('a[href]');
+      if (!link) return;
+      var href = link.href;
+      if (href && link.hostname !== window.location.hostname) {
+        var isAffiliate = link.hasAttribute('rel') && link.getAttribute('rel').indexOf('sponsored') !== -1;
+        gtag('event', isAffiliate ? 'affiliate_click' : 'outbound_click', {
+          link_url: href,
+          link_text: (link.textContent || '').trim().substring(0, 100),
+          asin: (link.href.match(/\/(?:dp|gp\/product)\/([A-Z0-9]{10})/) || [])[1] || "",
+          product_name: (link.textContent || '').trim().substring(0, 100)
+        });
+      }
+    });
+  </script>
+
 </body>
 </html>

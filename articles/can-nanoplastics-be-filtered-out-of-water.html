@@ -598,7 +598,9 @@
           var isAff = link.getAttribute('rel') && link.getAttribute('rel').indexOf('sponsored') !== -1;
           gtag('event', isAff ? 'affiliate_click' : 'outbound_click', {
             link_url: link.href,
-            link_text: (link.textContent || '').trim().substring(0, 100)
+            link_text: (link.textContent || '').trim().substring(0, 100),
+            asin: (link.href.match(/\/(?:dp|gp\/product)\/([A-Z0-9]{10})/) || [])[1] || "",
+            product_name: (link.textContent || '').trim().substring(0, 100)
           });
         }
       });
