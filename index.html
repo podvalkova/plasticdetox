@@ -60,6 +60,19 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Plastic Detox main navigation",
+    "itemListElement": [
+      { "@type": "SiteNavigationElement", "position": 1, "name": "Articles", "url": "https://plasticdetox.org/resources.html" },
+      { "@type": "SiteNavigationElement", "position": 2, "name": "Store", "url": "https://plasticdetox.org/store.html" },
+      { "@type": "SiteNavigationElement", "position": 3, "name": "Babies & Kids", "url": "https://plasticdetox.org/babies-kids.html" },
+      { "@type": "SiteNavigationElement", "position": 4, "name": "About", "url": "https://plasticdetox.org/about.html" }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
       {
@@ -2480,7 +2493,7 @@
       <a class="nav-link active" id="nav-home" onclick="showHome()">Home</a>
       <a class="nav-link" id="nav-registry" href="babies-kids.html">Babies &amp; Kids</a>
       <a class="nav-link" id="nav-store" href="store.html">Store</a>
-      <a class="nav-link" id="nav-resources" onclick="showResources()">Resources</a>
+      <a class="nav-link" id="nav-resources" href="resources.html" onclick="showResources(); return false;">Resources</a>
     </div>
   </nav>
 
