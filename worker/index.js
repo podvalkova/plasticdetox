@@ -20,6 +20,18 @@ export default {
       return new Response("Method not allowed", { status: 405 });
     }
 
+    const path = new URL(request.url).pathname;
+
+    // ===== Brand Check: AI read for brands not in our curated database =====
+    if (path === "/brand-check") {
+      return handleBrandCheck(request, env, corsOrigin);
+    }
+
+    // ===== Brand Review request: capture email + requested brand =====
+    if (path === "/brand-request") {
+      return handleBrandRequest(request, env, corsOrigin);
+    }
+
     try {
       const data = await request.json();
       const { email, score, total, level, levelColor, top3, swaps } = data;
@@ -86,6 +98,100 @@ function json(data, status = 200, origin = ALLOWED_ORIGINS[0]) {
       "Access-Control-Allow-Origin": origin,
     },
   });
+}
+
+// Hybrid brand check: when a brand is not in our curated, human-reviewed database,
+// fall back to a clearly-labeled AI estimate. The frontend always shows a disclaimer.
+async function handleBrandCheck(request, env, corsOrigin) {
+  try {
+    const { brand } = await request.json();
+    const clean = (brand || "").toString().trim().slice(0, 80);
+    if (!clean) return json({ ok: false, error: "No brand" }, 400, corsOrigin);
+    if (!env.ANTHROPIC_API_KEY) {
+      return json({ ok: false, error: "AI lookup not configured" }, 503, corsOrigin);
+    }
+
+    const prompt =
+      `You are the research assistant for Plastic Detox, a site that helps people avoid plastic, ` +
+      `microplastics, and toxic chemicals in everyday products. Assess the brand "${clean}" from that lens.\n\n` +
+      `Base your assessment ONLY on widely known, verifiable facts: the materials the brand is known for, ` +
+      `relevant certifications, well documented recalls, lawsuits, or independent lab testing. ` +
+      `Do NOT invent recalls, lawsuits, lab results, or ingredients. If you are not confident, say so and lean to "careful".\n\n` +
+      `Pick exactly one verdict:\n` +
+      `- "good": materials/certifications make it a solid low-tox choice\n` +
+      `- "careful": fine in some cases but with real caveats, mixed evidence, or uncertainty\n` +
+      `- "skip": known plastic-heavy materials, failed testing, or documented recalls/lawsuits\n\n` +
+      `Respond with ONLY a JSON object, no other text: {"verdict":"good|careful|skip","summary":"one or two plain sentences, no dashes"}`;
+
+    const aiRes = await fetch("https://api.anthropic.com/v1/messages", {
+      method: "POST",
+      headers: {
+        "x-api-key": env.ANTHROPIC_API_KEY,
+        "anthropic-version": "2023-06-01",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        model: "claude-haiku-4-5-20251001",
+        max_tokens: 300,
+        messages: [{ role: "user", content: prompt }],
+      }),
+    });
+
+    if (!aiRes.ok) return json({ ok: false, error: "AI request failed" }, 502, corsOrigin);
+    const payload = await aiRes.json();
+    const text = (payload.content && payload.content[0] && payload.content[0].text) || "";
+    const match = text.match(/\{[\s\S]*\}/);
+    if (!match) return json({ ok: false, error: "No result" }, 502, corsOrigin);
+    const parsed = JSON.parse(match[0]);
+    const verdict = ["good", "careful", "skip"].includes(parsed.verdict) ? parsed.verdict : "careful";
+    return json({ ok: true, verdict, summary: (parsed.summary || "").toString().slice(0, 600) }, 200, corsOrigin);
+  } catch (e) {
+    return json({ ok: false, error: "Server error" }, 500, corsOrigin);
+  }
+}
+
+// Capture a request to review a brand we have not covered yet.
+async function handleBrandRequest(request, env, corsOrigin) {
+  try {
+    const { brand, email } = await request.json();
+    const cleanBrand = (brand || "").toString().trim().slice(0, 80);
+    const cleanEmail = (email || "").toString().trim();
+    if (!cleanEmail || !cleanEmail.includes("@") || !cleanBrand) {
+      return json({ ok: false, error: "Invalid data" }, 400, corsOrigin);
+    }
+
+    if (env.BREVO_API_KEY) {
+      await fetch("https://api.brevo.com/v3/contacts", {
+        method: "POST",
+        headers: { "api-key": env.BREVO_API_KEY, "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: cleanEmail,
+          attributes: {
+            BRAND_REQUEST: cleanBrand,
+            BRAND_REQUEST_DATE: new Date().toISOString().split("T")[0],
+          },
+          listIds: env.BREVO_LIST_ID ? [parseInt(env.BREVO_LIST_ID)] : [],
+          updateEnabled: true,
+        }),
+      });
+
+      // Notify the team so the brand can be researched and added to the database.
+      await fetch("https://api.brevo.com/v3/smtp/email", {
+        method: "POST",
+        headers: { "api-key": env.BREVO_API_KEY, "Content-Type": "application/json" },
+        body: JSON.stringify({
+          sender: { name: env.SENDER_NAME, email: env.SENDER_EMAIL },
+          to: [{ email: env.SENDER_EMAIL }],
+          subject: `Brand Check request: ${cleanBrand}`,
+          htmlContent: `<p><strong>${cleanBrand}</strong> was requested via Brand Check.</p><p>Requested by: ${cleanEmail}</p>`,
+        }),
+      }).catch(() => {});
+    }
+
+    return json({ ok: true }, 200, corsOrigin);
+  } catch (e) {
+    return json({ ok: false, error: "Server error" }, 500, corsOrigin);
+  }
 }
 
 function buildEmail({ score, total, level, levelColor, top3, swaps }) {

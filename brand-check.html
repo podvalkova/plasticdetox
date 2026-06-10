@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brand Check: Skip, Careful, or Good Choice? | Plastic Detox</title>
+  <meta name="description" content="Type any brand and get an instant verdict: skip, careful, or good choice. Based on independent lab tests, product recalls, lawsuits, ingredients, and materials. 500+ brands reviewed.">
+  <link rel="icon" type="image/png" sizes="48x48" href="favicon.png">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BBCB36BGP2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-BBCB36BGP2');
+  </script>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Brand Check: Skip, Careful, or Good Choice? | Plastic Detox">
+  <meta property="og:description" content="Type any brand and get an instant verdict based on independent lab tests, recalls, lawsuits, and materials. 500+ brands reviewed.">
+  <meta property="og:url" content="https://plasticdetox.org/brand-check.html">
+  <meta property="og:site_name" content="Plastic Detox">
+  <meta property="og:image" content="https://plasticdetox.org/images/social-share.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Brand Check: Skip, Careful, or Good Choice?">
+  <meta name="twitter:description" content="Type any brand and get an instant verdict based on independent tests, recalls, and materials.">
+  <meta name="twitter:image" content="https://plasticdetox.org/images/social-share.png">
+
+  <link rel="canonical" href="https://plasticdetox.org/brand-check.html">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Plastic Detox Brand Check",
+    "applicationCategory": "HealthApplication",
+    "operatingSystem": "Web",
+    "url": "https://plasticdetox.org/brand-check.html",
+    "description": "Look up any brand for a skip, careful, or good choice verdict based on independent lab tests, recalls, lawsuits, ingredients, and materials.",
+    "isPartOf": { "@type": "WebSite", "name": "Plastic Detox", "url": "https://plasticdetox.org" }
+  }
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --accent: #a78bfa;
+      --accent-dark: #7c3aed;
+      --accent-light: #ede9fe;
+      --bg: #fafaf9;
+      --surface: #ffffff;
+      --text: #1c1917;
+      --text-muted: #78716c;
+      --border: #e7e5e4;
+      --radius: 16px;
+      --radius-sm: 10px;
+      --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-lg: 0 10px 30px rgba(0,0,0,0.08);
+
+      --good: #16a34a;     --good-bg: #dcfce7;   --good-border: #bbf7d0;
+      --careful: #b45309;  --careful-bg: #fef3c7; --careful-border: #fde68a;
+      --skip: #dc2626;     --skip-bg: #fee2e2;   --skip-border: #fecaca;
+      --neutral: #57534e;  --neutral-bg: #f5f5f4; --neutral-border: #e7e5e4;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ===== NAV ===== */
+    .nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.25rem 2rem; max-width: 1200px; margin: 0 auto;
+    }
+    .nav-logo { font-size: 1.25rem; font-weight: 800; text-decoration: none; color: var(--text); letter-spacing: -0.02em; }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 2rem; }
+    .nav-link { text-decoration: none; color: var(--text-muted); font-weight: 500; font-size: 0.95rem; transition: color 0.2s; cursor: pointer; }
+    .nav-link:hover, .nav-link.active { color: var(--text); }
+    @media (max-width: 700px) {
+      .nav { flex-direction: column; gap: 0.75rem; padding: 1rem 1.25rem; }
+      .nav-links { width: 100%; justify-content: center; gap: 1.25rem; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+      .nav-links::-webkit-scrollbar { display: none; }
+      .nav-link { font-size: 0.9rem; white-space: nowrap; }
+    }
+
+    /* ===== HERO / SEARCH ===== */
+    .wrap { max-width: 720px; margin: 0 auto; padding: 2.5rem 1.5rem 5rem; }
+    .eyebrow {
+      font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
+      color: var(--accent-dark); margin-bottom: 0.7rem; text-align: center;
+    }
+    h1 { font-size: clamp(2rem, 5vw, 2.9rem); font-weight: 800; letter-spacing: -0.025em; text-align: center; line-height: 1.1; }
+    .sub { color: var(--text-muted); text-align: center; max-width: 540px; margin: 0.9rem auto 0; font-size: 1.05rem; }
+    .stat-line { text-align: center; font-size: 0.82rem; color: var(--text-muted); margin-top: 0.9rem; font-weight: 500; }
+
+    .search-box { position: relative; margin: 2.2rem auto 0; max-width: 560px; }
+    .search-input {
+      width: 100%; padding: 1.05rem 3rem 1.05rem 1.3rem; font-size: 1.1rem; font-family: inherit;
+      border: 2px solid var(--border); border-radius: 14px; background: var(--surface);
+      box-shadow: var(--shadow); transition: border-color 0.18s, box-shadow 0.18s; color: var(--text);
+    }
+    .search-input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-light); }
+    .search-icon { position: absolute; right: 1.1rem; top: 50%; transform: translateY(-50%); color: var(--text-muted); pointer-events: none; }
+
+    .suggestions {
+      position: absolute; top: calc(100% + 6px); left: 0; right: 0; background: var(--surface);
+      border: 1px solid var(--border); border-radius: 12px; box-shadow: var(--shadow-lg); overflow: hidden;
+      z-index: 30; display: none;
+    }
+    .suggestions.show { display: block; }
+    .sugg-item { padding: 0.7rem 1.1rem; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; border-bottom: 1px solid var(--border); }
+    .sugg-item:last-child { border-bottom: none; }
+    .sugg-item:hover, .sugg-item.active { background: var(--accent-light); }
+    .sugg-name { font-weight: 600; font-size: 0.97rem; }
+    .sugg-cat { font-size: 0.78rem; color: var(--text-muted); }
+    .sugg-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+
+    .quick-row { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-top: 1.1rem; }
+    .quick-chip {
+      font-size: 0.82rem; padding: 0.4rem 0.85rem; border-radius: 999px; border: 1px solid var(--border);
+      background: var(--surface); color: var(--text-muted); cursor: pointer; transition: all 0.15s; font-weight: 500;
+    }
+    .quick-chip:hover { border-color: var(--accent); color: var(--accent-dark); }
+
+    /* ===== RESULT CARD ===== */
+    .result { margin-top: 2.4rem; }
+    .card {
+      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+      box-shadow: var(--shadow); overflow: hidden; animation: pop 0.25s ease;
+    }
+    @keyframes pop { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    .card-top { padding: 1.5rem 1.6rem 1.3rem; border-top: 5px solid var(--neutral); }
+    .card-top.good { border-top-color: var(--good); }
+    .card-top.careful { border-top-color: var(--careful); }
+    .card-top.skip { border-top-color: var(--skip); }
+
+    .verdict-row { display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 0.45rem; padding: 0.4rem 0.85rem; border-radius: 999px;
+      font-weight: 700; font-size: 0.92rem; border: 1px solid;
+    }
+    .badge.good { color: var(--good); background: var(--good-bg); border-color: var(--good-border); }
+    .badge.careful { color: var(--careful); background: var(--careful-bg); border-color: var(--careful-border); }
+    .badge.skip { color: var(--skip); background: var(--skip-bg); border-color: var(--skip-border); }
+    .badge.neutral { color: var(--neutral); background: var(--neutral-bg); border-color: var(--neutral-border); }
+
+    .brand-name { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.015em; margin-top: 0.9rem; }
+    .brand-cat { font-size: 0.85rem; color: var(--text-muted); font-weight: 500; }
+    .reason { font-size: 1.04rem; margin-top: 0.85rem; color: var(--text); }
+
+    .card-body { padding: 0 1.6rem 1.5rem; }
+    .meta-block { margin-top: 1.15rem; }
+    .meta-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.07em; font-weight: 700; color: var(--text-muted); margin-bottom: 0.35rem; }
+    .evidence-chip { display: inline-block; font-size: 0.86rem; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 0.45rem 0.7rem; color: var(--text); }
+    .alt-link {
+      display: inline-flex; align-items: center; gap: 0.4rem; font-weight: 600; color: var(--good);
+      background: var(--good-bg); border: 1px solid var(--good-border); border-radius: 10px;
+      padding: 0.55rem 0.9rem; text-decoration: none; font-size: 0.95rem; cursor: pointer;
+    }
+    .alt-link:hover { filter: brightness(0.97); }
+    .sources { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+    .source-link {
+      font-size: 0.84rem; color: var(--accent-dark); text-decoration: none; background: var(--accent-light);
+      border-radius: 8px; padding: 0.38rem 0.7rem; font-weight: 500;
+    }
+    .source-link:hover { text-decoration: underline; }
+
+    /* ===== UNKNOWN / HYBRID ===== */
+    .unknown-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.6rem; text-align: center; animation: pop 0.25s ease; }
+    .unknown-card h3 { font-size: 1.25rem; font-weight: 800; }
+    .unknown-card p { color: var(--text-muted); margin-top: 0.5rem; font-size: 0.98rem; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem; font-family: inherit; font-weight: 600; font-size: 0.97rem;
+      padding: 0.75rem 1.3rem; border-radius: 11px; border: none; cursor: pointer; transition: all 0.15s; text-decoration: none;
+    }
+    .btn-primary { background: var(--accent-dark); color: #fff; }
+    .btn-primary:hover { filter: brightness(1.07); }
+    .btn-primary:disabled { opacity: 0.55; cursor: default; }
+    .btn-ghost { background: var(--surface); color: var(--text); border: 1px solid var(--border); }
+    .btn-ghost:hover { border-color: var(--accent); }
+    .btn-row { display: flex; gap: 0.7rem; justify-content: center; flex-wrap: wrap; margin-top: 1.2rem; }
+
+    .ai-disclaimer {
+      display: flex; align-items: flex-start; gap: 0.55rem; text-align: left; font-size: 0.84rem; color: var(--careful);
+      background: var(--careful-bg); border: 1px solid var(--careful-border); border-radius: 10px; padding: 0.7rem 0.85rem; margin-bottom: 1rem;
+    }
+    .ai-summary { text-align: left; margin-top: 1.2rem; border-top: 1px solid var(--border); padding-top: 1.2rem; }
+    .ai-summary .reason { font-size: 1rem; }
+    .request-form { margin-top: 1.3rem; display: flex; gap: 0.5rem; max-width: 420px; margin-left: auto; margin-right: auto; }
+    .request-form input { flex: 1; padding: 0.7rem 0.9rem; border: 1px solid var(--border); border-radius: 10px; font-family: inherit; font-size: 0.95rem; }
+    .request-form input:focus { outline: none; border-color: var(--accent); }
+    .form-note { font-size: 0.82rem; color: var(--text-muted); margin-top: 0.6rem; }
+
+    .spinner { width: 16px; height: 16px; border: 2px solid rgba(255,255,255,0.4); border-top-color: #fff; border-radius: 50%; animation: spin 0.7s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ===== HOW IT WORKS ===== */
+    .how { margin-top: 3.5rem; }
+    .how-title { font-size: 1.3rem; font-weight: 800; text-align: center; margin-bottom: 1.4rem; }
+    .legend { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.8rem; margin-bottom: 2rem; }
+    @media (max-width: 560px) { .legend { grid-template-columns: 1fr; } }
+    .legend-item { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1rem; }
+    .legend-item .badge { margin-bottom: 0.6rem; }
+    .legend-item p { font-size: 0.88rem; color: var(--text-muted); }
+    .how-note { font-size: 0.9rem; color: var(--text-muted); background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.15rem 1.3rem; }
+    .how-note strong { color: var(--text); }
+
+    /* ===== FOOTER ===== */
+    .footer { text-align: center; padding: 3rem 1.5rem; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.9rem; margin-top: 2rem; }
+    .footer a { color: var(--text-muted); text-decoration: none; }
+    .footer a:hover { color: var(--accent-dark); }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">plastic<span>detox</span></a>
+    <div class="nav-links">
+      <a class="nav-link" href="index.html">Home</a>
+      <a class="nav-link" href="babies-kids.html">Babies &amp; Kids</a>
+      <a class="nav-link" href="store.html">Store</a>
+      <a class="nav-link" href="resources.html">Resources</a>
+      <a class="nav-link active" href="brand-check.html">Brand Check</a>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <div class="eyebrow">Brand Check</div>
+    <h1>Is that brand a skip or a good choice?</h1>
+    <p class="sub">Type any brand and get a straight answer, based on independent lab tests, recalls, lawsuits, ingredients, and materials. No marketing spin.</p>
+    <p class="stat-line" id="statLine">Loading brand database…</p>
+
+    <div class="search-box">
+      <input id="search" class="search-input" type="text" placeholder="Search a brand… e.g. Brita, Stasher, Native" autocomplete="off" spellcheck="false" aria-label="Search a brand">
+      <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      <div class="suggestions" id="suggestions"></div>
+    </div>
+
+    <div class="quick-row" id="quickRow"></div>
+
+    <div class="result" id="result" aria-live="polite"></div>
+
+    <section class="how">
+      <h2 class="how-title">How the verdicts work</h2>
+      <div class="legend">
+        <div class="legend-item">
+          <span class="badge good">Good choice</span>
+          <p>Materials, certifications, or independent testing back it up. What we would actually buy.</p>
+        </div>
+        <div class="legend-item">
+          <span class="badge careful">Careful</span>
+          <p>Fine in some situations but with real caveats: a specific line to avoid, mixed test results, or a pending question.</p>
+        </div>
+        <div class="legend-item">
+          <span class="badge skip">Skip</span>
+          <p>Failed independent testing, named in a recall or lawsuit, or built from materials we steer away from.</p>
+        </div>
+      </div>
+      <div class="how-note">
+        <strong>Where this comes from.</strong> Every verdict is drawn from our own published research, citing independent lab testing, product recalls, class actions, ingredient labels, and material disclosures. Each result links to the article it came from so you can read the full reasoning. Brands we have not reviewed yet return an optional AI summary that is clearly labeled and not verified by our team. This is general information to help you shop, not a legal or medical claim about any company.
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>plasticdetox.org. Because your body deserves better than plastic.</p>
+    <div style="margin-top:0.5rem;font-size:0.75rem;">
+      <a href="about.html" style="margin-right:1rem;">About</a>
+      <a href="privacy.html" style="margin-right:1rem;">Privacy Policy</a>
+      <a href="mailto:hello@plasticdetox.org">hello@plasticdetox.org</a>
+    </div>
+  </footer>
+
+  <script>
+    const WORKER_URL = "https://plasticdetox-quiz-email.plasticdetox.workers.dev";
+    const STANCE_LABEL = { good: "Good choice", careful: "Careful", skip: "Skip", neutral: "Context" };
+    const QUICK = ["Brita", "Stasher", "Native", "Pyrex", "Thinkbaby", "Hydro Flask", "Lululemon", "Earth Mama"];
+
+    let BRANDS = [];
+    let byId = {};
+    let activeSugg = -1;
+
+    const norm = s => (s || "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+    const collapse = s => (s || "").toLowerCase().replace(/[^a-z0-9]+/g, "");
+
+    const $ = id => document.getElementById(id);
+    const searchEl = $("search"), suggEl = $("suggestions"), resultEl = $("result");
+
+    fetch("brand-data.json")
+      .then(r => r.json())
+      .then(data => {
+        BRANDS = data;
+        BRANDS.forEach(b => { byId[b.id] = b; b._norm = norm(b.brand); b._collapse = collapse(b.brand); });
+        $("statLine").textContent = BRANDS.length + " brands reviewed · updated June 2026";
+        buildQuick();
+        // deep link ?b=
+        const q = new URLSearchParams(location.search).get("b");
+        if (q) { searchEl.value = q; lookup(q); }
+      })
+      .catch(() => { $("statLine").textContent = "Could not load the brand database. Please refresh."; });
+
+    function buildQuick() {
+      const row = $("quickRow");
+      row.innerHTML = '<span style="font-size:0.82rem;color:var(--text-muted);align-self:center;">Try:</span>';
+      QUICK.forEach(name => {
+        const c = document.createElement("button");
+        c.className = "quick-chip"; c.textContent = name;
+        c.onclick = () => { searchEl.value = name; lookup(name); suggEl.classList.remove("show"); };
+        row.appendChild(c);
+      });
+    }
+
+    function findExact(query) {
+      const nq = norm(query), cq = collapse(query);
+      let m = BRANDS.find(b => b._norm === nq || b._collapse === cq);
+      if (m) return m;
+      // startsWith on collapsed
+      m = BRANDS.find(b => b._collapse.startsWith(cq) && cq.length >= 3);
+      if (m) return m;
+      // contains
+      m = BRANDS.find(b => b._norm.includes(nq) && nq.length >= 3);
+      return m || null;
+    }
+
+    function rank(query) {
+      const nq = norm(query), cq = collapse(query);
+      if (!cq) return [];
+      return BRANDS
+        .map(b => {
+          let score = -1;
+          if (b._collapse === cq) score = 0;
+          else if (b._collapse.startsWith(cq)) score = 1;
+          else if (b._norm.split(" ").some(w => w.startsWith(nq))) score = 2;
+          else if (b._norm.includes(nq)) score = 3;
+          return { b, score };
+        })
+        .filter(x => x.score >= 0)
+        .sort((a, c) => a.score - c.score || a.b.brand.length - c.b.brand.length)
+        .slice(0, 7)
+        .map(x => x.b);
+    }
+
+    function renderSuggestions(query) {
+      const list = rank(query);
+      activeSugg = -1;
+      if (!list.length) { suggEl.classList.remove("show"); return; }
+      suggEl.innerHTML = "";
+      list.forEach((b, i) => {
+        const item = document.createElement("div");
+        item.className = "sugg-item"; item.dataset.id = b.id;
+        item.innerHTML =
+          '<span style="display:flex;align-items:center;gap:0.6rem;"><span class="sugg-dot" style="background:var(--' + b.stance + ')"></span><span class="sugg-name">' + esc(b.brand) + '</span></span>' +
+          '<span class="sugg-cat">' + esc(b.category) + '</span>';
+        item.onclick = () => { searchEl.value = b.brand; showResult(b); suggEl.classList.remove("show"); };
+        suggEl.appendChild(item);
+      });
+      suggEl.classList.add("show");
+    }
+
+    function lookup(query) {
+      suggEl.classList.remove("show");
+      const m = findExact(query);
+      if (m) showResult(m);
+      else showUnknown(query);
+    }
+
+    function showResult(b) {
+      history.replaceState(null, "", "?b=" + encodeURIComponent(b.brand));
+      gtag('event', 'brand_check', { brand: b.brand, verdict: b.stance });
+      let altHtml = "";
+      if (b.alternative) {
+        const altMatch = BRANDS.find(x => collapse(x.brand) === collapse(b.alternative) || collapse(b.alternative).includes(x._collapse) && x._collapse.length > 3);
+        const altLabel = "Better: " + esc(b.alternative);
+        altHtml = '<div class="meta-block"><div class="meta-label">Better alternative</div>' +
+          (altMatch
+            ? '<a class="alt-link" onclick="searchEl.value=\'' + jsAttr(altMatch.brand) + '\';lookup(\'' + jsAttr(altMatch.brand) + '\');window.scrollTo({top:0,behavior:\'smooth\'})">' + altLabel + ' &rarr;</a>'
+            : '<span class="alt-link" style="cursor:default">' + altLabel + '</span>') +
+          '</div>';
+      }
+      let evHtml = b.evidence ? '<div class="meta-block"><div class="meta-label">Evidence</div><span class="evidence-chip">' + esc(b.evidence) + '</span></div>' : "";
+      let srcHtml = "";
+      const realSrc = (b.sources || []).filter(s => s && s.endsWith(".html"));
+      if (realSrc.length) {
+        srcHtml = '<div class="meta-block"><div class="meta-label">Where this comes from</div><div class="sources">' +
+          realSrc.map(s => '<a class="source-link" href="articles/' + s + '" target="_blank" rel="noopener">' + articleTitle(s) + ' &rarr;</a>').join("") +
+          '</div></div>';
+      }
+      resultEl.innerHTML =
+        '<div class="card"><div class="card-top ' + b.stance + '">' +
+          '<div class="verdict-row"><span class="badge ' + b.stance + '">' + badgeIcon(b.stance) + STANCE_LABEL[b.stance] + '</span></div>' +
+          '<div class="brand-name">' + esc(b.brand) + '</div>' +
+          '<div class="brand-cat">' + esc(b.category) + '</div>' +
+          '<p class="reason">' + esc(b.reason) + '</p>' +
+        '</div><div class="card-body">' + evHtml + altHtml + srcHtml + '</div></div>';
+    }
+
+    function showUnknown(query) {
+      const clean = query.trim();
+      history.replaceState(null, "", "?b=" + encodeURIComponent(clean));
+      gtag('event', 'brand_check_unknown', { brand: clean });
+      resultEl.innerHTML =
+        '<div class="unknown-card" id="unknownCard">' +
+          '<h3>We have not reviewed ' + esc(clean) + ' yet</h3>' +
+          '<p>It is not in our researched database. You can get an instant AI read now, or ask us to properly review it.</p>' +
+          '<div class="btn-row">' +
+            '<button class="btn btn-primary" id="aiBtn" onclick="aiLookup(\'' + jsAttr(clean) + '\')">Get an instant AI read</button>' +
+          '</div>' +
+          '<div class="request-form">' +
+            '<input id="reqEmail" type="email" placeholder="you@email.com" aria-label="Your email">' +
+            '<button class="btn btn-ghost" onclick="requestReview(\'' + jsAttr(clean) + '\')">Request review</button>' +
+          '</div>' +
+          '<p class="form-note" id="reqNote">We will research it and email you the verdict.</p>' +
+          '<div id="aiSlot"></div>' +
+        '</div>';
+    }
+
+    function aiLookup(brand) {
+      const btn = $("aiBtn");
+      btn.disabled = true; btn.innerHTML = '<span class="spinner"></span> Researching…';
+      gtag('event', 'brand_check_ai', { brand: brand });
+      fetch(WORKER_URL + "/brand-check", {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ brand: brand })
+      })
+        .then(r => r.json())
+        .then(d => {
+          btn.style.display = "none";
+          if (!d || !d.ok) { renderAiError(); return; }
+          const stance = ["good","careful","skip"].includes(d.verdict) ? d.verdict : "neutral";
+          $("aiSlot").innerHTML =
+            '<div class="ai-summary">' +
+              '<div class="ai-disclaimer">' +
+                '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;margin-top:1px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>' +
+                '<span>AI generated and not yet verified by our team. Treat it as a starting point and double check before you buy.</span>' +
+              '</div>' +
+              '<div class="verdict-row"><span class="badge ' + stance + '">' + badgeIcon(stance) + STANCE_LABEL[stance] + '</span><span style="font-size:0.8rem;color:var(--text-muted)">AI estimate</span></div>' +
+              '<p class="reason">' + esc(d.summary || "") + '</p>' +
+            '</div>';
+        })
+        .catch(() => { renderAiError(); });
+    }
+
+    function renderAiError() {
+      const slot = $("aiSlot");
+      if (slot) slot.innerHTML = '<p class="form-note" style="margin-top:1rem">The instant read is not available right now. Leave your email above and we will review it for you.</p>';
+    }
+
+    function requestReview(brand) {
+      const email = ($("reqEmail").value || "").trim();
+      const note = $("reqNote");
+      if (!email || !email.includes("@")) { note.textContent = "Please enter a valid email."; note.style.color = "var(--skip)"; return; }
+      gtag('event', 'brand_check_request', { brand: brand });
+      fetch(WORKER_URL + "/brand-request", {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ brand: brand, email: email })
+      }).catch(() => {});
+      note.style.color = "var(--good)";
+      note.textContent = "Thanks. We will review " + brand + " and email you.";
+      $("reqEmail").disabled = true;
+    }
+
+    // helpers
+    function esc(s) { return (s || "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])); }
+    function jsAttr(s) { return (s || "").replace(/\\/g, "\\\\").replace(/'/g, "\\'"); }
+    function badgeIcon(stance) {
+      const ic = {
+        good: '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>',
+        careful: '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>',
+        skip: '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>',
+        neutral: ''
+      };
+      return ic[stance] || "";
+    }
+    function articleTitle(file) {
+      return file.replace(/\.html$/, "").replace(/-/g, " ").replace(/\b\w/g, c => c.toUpperCase())
+        .replace(/Pfas/g, "PFAS").replace(/Bpa/g, "BPA").replace(/101/g, "101");
+    }
+
+    // search interactions
+    let debounce;
+    searchEl.addEventListener("input", () => {
+      clearTimeout(debounce);
+      const v = searchEl.value;
+      debounce = setTimeout(() => { if (v.trim().length >= 2) renderSuggestions(v); else suggEl.classList.remove("show"); }, 80);
+    });
+    searchEl.addEventListener("keydown", e => {
+      const items = [...suggEl.querySelectorAll(".sugg-item")];
+      if (e.key === "ArrowDown" && items.length) { e.preventDefault(); activeSugg = Math.min(activeSugg + 1, items.length - 1); paintActive(items); }
+      else if (e.key === "ArrowUp" && items.length) { e.preventDefault(); activeSugg = Math.max(activeSugg - 1, 0); paintActive(items); }
+      else if (e.key === "Enter") {
+        e.preventDefault();
+        if (activeSugg >= 0 && items[activeSugg]) { const b = byId[items[activeSugg].dataset.id]; searchEl.value = b.brand; showResult(b); suggEl.classList.remove("show"); }
+        else if (searchEl.value.trim()) lookup(searchEl.value);
+      } else if (e.key === "Escape") { suggEl.classList.remove("show"); }
+    });
+    function paintActive(items) { items.forEach((it, i) => it.classList.toggle("active", i === activeSugg)); }
+    document.addEventListener("click", e => { if (!suggEl.contains(e.target) && e.target !== searchEl) suggEl.classList.remove("show"); });
+  </script>
+</body>
+</html>
