@@ -171,6 +171,12 @@
       padding: 0.55rem 0.9rem; text-decoration: none; font-size: 0.95rem; cursor: pointer;
     }
     .alt-link:hover { filter: brightness(0.97); }
+    .buy-link {
+      display: inline-flex; align-items: center; gap: 0.55rem; font-weight: 700; color: #fff;
+      background: var(--good); border-radius: 11px; padding: 0.8rem 1.3rem; text-decoration: none; font-size: 1rem;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+    }
+    .buy-link:hover { filter: brightness(1.05); }
     .sources { display: flex; flex-wrap: wrap; gap: 0.45rem; }
     .source-link {
       font-size: 0.84rem; color: var(--accent-dark); text-decoration: none; background: var(--accent-light);
@@ -391,6 +397,13 @@
           '</div>';
       }
       let evHtml = b.evidence ? '<div class="meta-block"><div class="meta-label">Evidence</div><span class="evidence-chip">' + esc(b.evidence) + '</span></div>' : "";
+      let buyHtml = "";
+      if (b.stance === "good") {
+        const buyUrl = b.buy || ("https://www.amazon.com/s?k=" + encodeURIComponent(b.brand) + "&tag=plasticdetox-20");
+        buyHtml = '<div class="meta-block"><a class="buy-link" href="' + esc(buyUrl) + '" target="_blank" rel="noopener sponsored" onclick="gtag(\'event\',\'brand_buy\',{brand:\'' + jsAttr(b.brand) + '\'})">' +
+          '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>' +
+          'Shop ' + esc(b.brand) + ' &rarr;</a></div>';
+      }
       let srcHtml = "";
       const realSrc = (b.sources || []).filter(s => s && (s.endsWith(".html") || /^https?:/i.test(s)));
       if (realSrc.length) {
@@ -404,7 +417,7 @@
           '<div class="brand-name">' + esc(b.brand) + '</div>' +
           '<div class="brand-cat">' + esc(b.category) + '</div>' +
           '<p class="reason">' + esc(b.reason) + '</p>' +
-        '</div><div class="card-body">' + evHtml + altHtml + srcHtml + '</div></div>';
+        '</div><div class="card-body">' + buyHtml + evHtml + altHtml + srcHtml + '</div></div>';
     }
 
     function showUnknown(query) {
