@@ -16,18 +16,23 @@ export default {
       });
     }
 
+    const path = new URL(request.url).pathname;
+
+    // ===== Private stats view: every brand searched, ranked by count (GET) =====
+    if (path === "/brand-stats" && request.method === "GET") {
+      return handleBrandStats(request, env);
+    }
+
     if (request.method !== "POST") {
       return new Response("Method not allowed", { status: 405 });
     }
 
-    const path = new URL(request.url).pathname;
-
-    // ===== Brand Check: AI read for brands not in our curated database =====
-    if (path === "/brand-check") {
-      return handleBrandCheck(request, env, corsOrigin);
+    // ===== Log every brand searched (fire-and-forget from the frontend) =====
+    if (path === "/brand-search-log") {
+      return handleSearchLog(request, env, corsOrigin);
     }
 
-    // ===== Brand Review request: capture email + requested brand =====
+    // ===== Brand Review request: capture email + requested brand, email the team =====
     if (path === "/brand-request") {
       return handleBrandRequest(request, env, corsOrigin);
     }
@@ -100,54 +105,69 @@ function json(data, status = 200, origin = ALLOWED_ORIGINS[0]) {
   });
 }
 
-// Hybrid brand check: when a brand is not in our curated, human-reviewed database,
-// fall back to a clearly-labeled AI estimate. The frontend always shows a disclaimer.
-async function handleBrandCheck(request, env, corsOrigin) {
+// Normalize a brand string into a stable KV key.
+function brandKey(s) {
+  return "q:" + (s || "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim().slice(0, 80);
+}
+
+// Record every brand a user searches, with a running count and whether we had a match.
+async function logBrandSearch(env, brand, matched, verdict, requested) {
+  if (!env.BRAND_SEARCHES) return;
+  const display = (brand || "").toString().trim().slice(0, 80);
+  if (!display) return;
+  const key = brandKey(display);
+  const now = new Date().toISOString();
+  let rec;
   try {
-    const { brand } = await request.json();
-    const clean = (brand || "").toString().trim().slice(0, 80);
-    if (!clean) return json({ ok: false, error: "No brand" }, 400, corsOrigin);
-    if (!env.ANTHROPIC_API_KEY) {
-      return json({ ok: false, error: "AI lookup not configured" }, 503, corsOrigin);
-    }
+    rec = await env.BRAND_SEARCHES.get(key, { type: "json" });
+  } catch (e) { rec = null; }
+  if (!rec) rec = { brand: display, count: 0, matched: !!matched, verdict: verdict || "", first: now, requests: 0 };
+  rec.count += 1;
+  rec.last = now;
+  rec.matched = !!matched;
+  if (verdict) rec.verdict = verdict;
+  if (requested) rec.requests = (rec.requests || 0) + 1;
+  rec.brand = display;
+  await env.BRAND_SEARCHES.put(key, JSON.stringify(rec));
+}
 
-    const prompt =
-      `You are the research assistant for Plastic Detox, a site that helps people avoid plastic, ` +
-      `microplastics, and toxic chemicals in everyday products. Assess the brand "${clean}" from that lens.\n\n` +
-      `Base your assessment ONLY on widely known, verifiable facts: the materials the brand is known for, ` +
-      `relevant certifications, well documented recalls, lawsuits, or independent lab testing. ` +
-      `Do NOT invent recalls, lawsuits, lab results, or ingredients. If you are not confident, say so and lean to "careful".\n\n` +
-      `Pick exactly one verdict:\n` +
-      `- "good": materials/certifications make it a solid low-tox choice\n` +
-      `- "careful": fine in some cases but with real caveats, mixed evidence, or uncertainty\n` +
-      `- "skip": known plastic-heavy materials, failed testing, or documented recalls/lawsuits\n\n` +
-      `Respond with ONLY a JSON object, no other text: {"verdict":"good|careful|skip","summary":"one or two plain sentences, no dashes"}`;
-
-    const aiRes = await fetch("https://api.anthropic.com/v1/messages", {
-      method: "POST",
-      headers: {
-        "x-api-key": env.ANTHROPIC_API_KEY,
-        "anthropic-version": "2023-06-01",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        model: "claude-haiku-4-5-20251001",
-        max_tokens: 300,
-        messages: [{ role: "user", content: prompt }],
-      }),
-    });
-
-    if (!aiRes.ok) return json({ ok: false, error: "AI request failed" }, 502, corsOrigin);
-    const payload = await aiRes.json();
-    const text = (payload.content && payload.content[0] && payload.content[0].text) || "";
-    const match = text.match(/\{[\s\S]*\}/);
-    if (!match) return json({ ok: false, error: "No result" }, 502, corsOrigin);
-    const parsed = JSON.parse(match[0]);
-    const verdict = ["good", "careful", "skip"].includes(parsed.verdict) ? parsed.verdict : "careful";
-    return json({ ok: true, verdict, summary: (parsed.summary || "").toString().slice(0, 600) }, 200, corsOrigin);
+// POST /brand-search-log  { brand, matched, verdict }
+async function handleSearchLog(request, env, corsOrigin) {
+  try {
+    const { brand, matched, verdict } = await request.json();
+    await logBrandSearch(env, brand, matched, verdict, false);
+    return json({ ok: true }, 200, corsOrigin);
   } catch (e) {
-    return json({ ok: false, error: "Server error" }, 500, corsOrigin);
+    return json({ ok: false }, 200, corsOrigin); // never block the UI
   }
+}
+
+// GET /brand-stats?token=...  ->  ranked list of everything searched
+async function handleBrandStats(request, env) {
+  const token = new URL(request.url).searchParams.get("token") || "";
+  if (!env.STATS_TOKEN || token !== env.STATS_TOKEN) {
+    return new Response("Unauthorized", { status: 401 });
+  }
+  if (!env.BRAND_SEARCHES) return json({ ok: true, total: 0, brands: [] });
+  const rows = [];
+  let cursor;
+  do {
+    const list = await env.BRAND_SEARCHES.list({ prefix: "q:", cursor, limit: 1000 });
+    for (const k of list.keys) {
+      const rec = await env.BRAND_SEARCHES.get(k.name, { type: "json" });
+      if (rec) rows.push(rec);
+    }
+    cursor = list.list_complete ? null : list.cursor;
+  } while (cursor);
+  rows.sort((a, b) => b.count - a.count);
+  const unmatched = rows.filter((r) => !r.matched);
+  return json({
+    ok: true,
+    totalSearches: rows.reduce((n, r) => n + r.count, 0),
+    uniqueBrands: rows.length,
+    notInDatabase: unmatched.length,
+    brands: rows,
+  });
 }
 
 // Capture a request to review a brand we have not covered yet.
@@ -187,6 +207,9 @@ async function handleBrandRequest(request, env, corsOrigin) {
         }),
       }).catch(() => {});
     }
+
+    // Record the request alongside the search log so it shows up in /brand-stats.
+    await logBrandSearch(env, cleanBrand, false, "", true).catch(() => {});
 
     return json({ ok: true }, 200, corsOrigin);
   } catch (e) {

@@ -379,6 +379,7 @@
     function showResult(b) {
       history.replaceState(null, "", "?b=" + encodeURIComponent(b.brand));
       gtag('event', 'brand_check', { brand: b.brand, verdict: b.stance });
+      logSearch(b.brand, true, b.stance);
       let altHtml = "";
       if (b.alternative) {
         const altMatch = BRANDS.find(x => collapse(x.brand) === collapse(b.alternative) || collapse(b.alternative).includes(x._collapse) && x._collapse.length > 3);
@@ -410,51 +411,28 @@
       const clean = query.trim();
       history.replaceState(null, "", "?b=" + encodeURIComponent(clean));
       gtag('event', 'brand_check_unknown', { brand: clean });
+      logSearch(clean, false, "");
       resultEl.innerHTML =
         '<div class="unknown-card" id="unknownCard">' +
           '<h3>We have not reviewed ' + esc(clean) + ' yet</h3>' +
-          '<p>It is not in our researched database. You can get an instant AI read now, or ask us to properly review it.</p>' +
-          '<div class="btn-row">' +
-            '<button class="btn btn-primary" id="aiBtn" onclick="aiLookup(\'' + jsAttr(clean) + '\')">Get an instant AI read</button>' +
-          '</div>' +
+          '<p>It is not in our researched database yet. Leave your email and our team will research it by hand and send you the verdict.</p>' +
           '<div class="request-form">' +
             '<input id="reqEmail" type="email" placeholder="you@email.com" aria-label="Your email">' +
-            '<button class="btn btn-ghost" onclick="requestReview(\'' + jsAttr(clean) + '\')">Request review</button>' +
+            '<button class="btn btn-primary" onclick="requestReview(\'' + jsAttr(clean) + '\')">Request review</button>' +
           '</div>' +
-          '<p class="form-note" id="reqNote">We will research it and email you the verdict.</p>' +
-          '<div id="aiSlot"></div>' +
+          '<p class="form-note" id="reqNote">We review requested brands and email you when it is added.</p>' +
         '</div>';
     }
 
-    function aiLookup(brand) {
-      const btn = $("aiBtn");
-      btn.disabled = true; btn.innerHTML = '<span class="spinner"></span> Researching…';
-      gtag('event', 'brand_check_ai', { brand: brand });
-      fetch(WORKER_URL + "/brand-check", {
-        method: "POST", headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ brand: brand })
-      })
-        .then(r => r.json())
-        .then(d => {
-          btn.style.display = "none";
-          if (!d || !d.ok) { renderAiError(); return; }
-          const stance = ["good","careful","skip"].includes(d.verdict) ? d.verdict : "neutral";
-          $("aiSlot").innerHTML =
-            '<div class="ai-summary">' +
-              '<div class="ai-disclaimer">' +
-                '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;margin-top:1px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>' +
-                '<span>AI generated and not yet verified by our team. Treat it as a starting point and double check before you buy.</span>' +
-              '</div>' +
-              '<div class="verdict-row"><span class="badge ' + stance + '">' + badgeIcon(stance) + STANCE_LABEL[stance] + '</span><span style="font-size:0.8rem;color:var(--text-muted)">AI estimate</span></div>' +
-              '<p class="reason">' + esc(d.summary || "") + '</p>' +
-            '</div>';
-        })
-        .catch(() => { renderAiError(); });
-    }
-
-    function renderAiError() {
-      const slot = $("aiSlot");
-      if (slot) slot.innerHTML = '<p class="form-note" style="margin-top:1rem">The instant read is not available right now. Leave your email above and we will review it for you.</p>';
+    // Fire-and-forget: record every brand searched on our backend (KV via the worker).
+    function logSearch(brand, matched, verdict) {
+      try {
+        fetch(WORKER_URL + "/brand-search-log", {
+          method: "POST", headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ brand: brand, matched: matched, verdict: verdict || "" }),
+          keepalive: true
+        }).catch(() => {});
+      } catch (e) {}
     }
 
     function requestReview(brand) {
