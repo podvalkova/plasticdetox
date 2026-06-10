@@ -391,10 +391,10 @@
       }
       let evHtml = b.evidence ? '<div class="meta-block"><div class="meta-label">Evidence</div><span class="evidence-chip">' + esc(b.evidence) + '</span></div>' : "";
       let srcHtml = "";
-      const realSrc = (b.sources || []).filter(s => s && s.endsWith(".html"));
+      const realSrc = (b.sources || []).filter(s => s && (s.endsWith(".html") || /^https?:/i.test(s)));
       if (realSrc.length) {
         srcHtml = '<div class="meta-block"><div class="meta-label">Where this comes from</div><div class="sources">' +
-          realSrc.map(s => '<a class="source-link" href="articles/' + s + '" target="_blank" rel="noopener">' + articleTitle(s) + ' &rarr;</a>').join("") +
+          realSrc.map(sourceLink).join("") +
           '</div></div>';
       }
       resultEl.innerHTML =
@@ -486,6 +486,15 @@
     function articleTitle(file) {
       return file.replace(/\.html$/, "").replace(/-/g, " ").replace(/\b\w/g, c => c.toUpperCase())
         .replace(/Pfas/g, "PFAS").replace(/Bpa/g, "BPA").replace(/101/g, "101");
+    }
+    const SOURCE_LABELS = { "tamararubin.com": "Lead Safe Mama", "ewg.org": "EWG", "valisure.com": "Valisure", "consumerreports.org": "Consumer Reports" };
+    function sourceLink(s) {
+      if (/^https?:/i.test(s)) {
+        const host = s.replace(/^https?:\/\//i, "").replace(/^www\./i, "").split("/")[0];
+        const label = SOURCE_LABELS[host] || host;
+        return '<a class="source-link" href="' + esc(s) + '" target="_blank" rel="noopener">' + esc(label) + ' &#8599;</a>';
+      }
+      return '<a class="source-link" href="articles/' + s + '" target="_blank" rel="noopener">' + articleTitle(s) + ' &rarr;</a>';
     }
 
     // search interactions
