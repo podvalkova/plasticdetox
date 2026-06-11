@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Instagram Reel Mockups v2 – PlasticDetox</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #f5f5f4;
+    padding: 40px 20px;
+    color: #1c1917;
+  }
+  h1 { text-align: center; font-size: 28px; margin-bottom: 8px; }
+  .subtitle { text-align: center; color: #78716c; font-size: 14px; margin-bottom: 48px; }
+  .section-title {
+    text-align: center; font-size: 20px; font-weight: 700;
+    margin: 56px 0 8px; color: #1c1917;
+  }
+  .section-desc {
+    text-align: center; color: #78716c; font-size: 13px;
+    margin-bottom: 32px; max-width: 720px;
+    margin-left: auto; margin-right: auto; line-height: 1.6;
+  }
+  .reel-row {
+    display: flex; gap: 32px; justify-content: center;
+    flex-wrap: wrap; margin-bottom: 48px;
+  }
+  .reel-wrapper { text-align: center; }
+  .reel-label {
+    font-size: 12px; font-weight: 600; color: #78716c;
+    margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  .phone {
+    width: 270px; height: 480px; border-radius: 28px;
+    overflow: hidden; position: relative;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15), 0 0 0 2px #d6d3d1;
+  }
+
+  /* ============================================ */
+  /*  A: RATING / SCORE REELS                     */
+  /* ============================================ */
+
+  .reel-rating {
+    background: #0a0a0a;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    position: relative;
+  }
+  .reel-rating .brand-tag {
+    position: absolute; top: 16px; left: 50%; transform: translateX(-50%);
+    font-size: 9px; font-weight: 700; color: #22c55e;
+    letter-spacing: 2px; text-transform: uppercase;
+  }
+  .reel-rating .item-emoji { font-size: 72px; margin-bottom: 16px; }
+  .reel-rating .item-name {
+    font-size: 14px; font-weight: 700; color: #a8a29e;
+    text-transform: uppercase; letter-spacing: 3px; margin-bottom: 20px;
+  }
+  .reel-rating .score-ring {
+    width: 120px; height: 120px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; margin-bottom: 16px;
+  }
+  .reel-rating .score-ring.bad {
+    border: 5px solid #ef4444;
+    box-shadow: 0 0 30px rgba(239,68,68,0.3);
+  }
+  .reel-rating .score-ring.ok {
+    border: 5px solid #f59e0b;
+    box-shadow: 0 0 30px rgba(245,158,11,0.3);
+  }
+  .reel-rating .score-ring.good {
+    border: 5px solid #22c55e;
+    box-shadow: 0 0 30px rgba(34,197,94,0.3);
+  }
+  .reel-rating .score-num {
+    font-size: 42px; font-weight: 900; line-height: 1;
+  }
+  .reel-rating .score-num.bad { color: #ef4444; }
+  .reel-rating .score-num.ok { color: #f59e0b; }
+  .reel-rating .score-num.good { color: #22c55e; }
+  .reel-rating .score-of {
+    font-size: 12px; color: #57534e; font-weight: 600;
+  }
+  .reel-rating .verdict {
+    font-size: 13px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  .reel-rating .verdict.bad { color: #ef4444; }
+  .reel-rating .verdict.ok { color: #f59e0b; }
+  .reel-rating .verdict.good { color: #22c55e; }
+  .reel-rating .one-liner {
+    font-size: 11px; color: #78716c; margin-top: 8px;
+    text-align: center; line-height: 1.4;
+  }
+  .reel-rating .cta {
+    position: absolute; bottom: 16px;
+    font-size: 9px; color: #57534e; letter-spacing: 1px;
+  }
+
+  /* ============================================ */
+  /*  B: RED FLAG / GREEN FLAG                    */
+  /* ============================================ */
+
+  .reel-flags {
+    height: 100%; display: flex; flex-direction: column;
+    position: relative;
+  }
+  .reel-flags .brand-tag {
+    position: absolute; top: 16px; left: 50%; transform: translateX(-50%);
+    font-size: 9px; font-weight: 700; color: #fff;
+    letter-spacing: 2px; text-transform: uppercase; z-index: 2;
+  }
+  .reel-flags .flag-half {
+    flex: 1; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; padding: 16px;
+  }
+  .reel-flags .flag-half.red {
+    background: linear-gradient(135deg, #7f1d1d, #991b1b);
+  }
+  .reel-flags .flag-half.green {
+    background: linear-gradient(135deg, #14532d, #166534);
+  }
+  .reel-flags .flag-emoji { font-size: 32px; margin-bottom: 8px; }
+  .reel-flags .flag-label {
+    font-size: 10px; font-weight: 800; color: rgba(255,255,255,0.6);
+    text-transform: uppercase; letter-spacing: 3px; margin-bottom: 8px;
+  }
+  .reel-flags .flag-text {
+    font-size: 16px; font-weight: 800; color: #fff;
+    text-align: center; line-height: 1.3;
+  }
+  .reel-flags .flag-sub {
+    font-size: 10px; color: rgba(255,255,255,0.5); margin-top: 6px;
+    text-align: center;
+  }
+
+  /* ============================================ */
+  /*  C: THIS OR THAT                             */
+  /* ============================================ */
+
+  .reel-thisorthat {
+    height: 100%; display: flex; flex-direction: column;
+    position: relative; background: #0a0a0a;
+  }
+  .reel-thisorthat .brand-tag {
+    position: absolute; top: 16px; left: 50%; transform: translateX(-50%);
+    font-size: 9px; font-weight: 700; color: #22c55e;
+    letter-spacing: 2px; text-transform: uppercase; z-index: 2;
+  }
+  .reel-thisorthat .vs-badge {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 40px; height: 40px; border-radius: 50%;
+    background: #fafaf9; color: #0a0a0a;
+    font-size: 14px; font-weight: 900;
+    display: flex; align-items: center; justify-content: center;
+    z-index: 3; box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  }
+  .reel-thisorthat .tot-half {
+    flex: 1; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; padding: 16px;
+    position: relative;
+  }
+  .reel-thisorthat .tot-half.top {
+    background: linear-gradient(180deg, #1c1917 0%, #292524 100%);
+    border-bottom: 1px solid #333;
+  }
+  .reel-thisorthat .tot-half.bottom {
+    background: linear-gradient(0deg, #1c1917 0%, #292524 100%);
+  }
+  .reel-thisorthat .tot-emoji { font-size: 40px; margin-bottom: 8px; }
+  .reel-thisorthat .tot-name {
+    font-size: 15px; font-weight: 800; color: #fafaf9; margin-bottom: 4px;
+  }
+  .reel-thisorthat .tot-detail {
+    font-size: 11px; font-weight: 600; text-align: center;
+  }
+  .reel-thisorthat .tot-detail.bad { color: #ef4444; }
+  .reel-thisorthat .tot-detail.good { color: #22c55e; }
+  .reel-thisorthat .tot-tag {
+    position: absolute; top: 12px;
+    font-size: 9px; font-weight: 800; letter-spacing: 2px;
+    text-transform: uppercase; padding: 3px 10px; border-radius: 10px;
+  }
+  .reel-thisorthat .tot-tag.skip {
+    right: 12px; background: rgba(239,68,68,0.15); color: #ef4444;
+  }
+  .reel-thisorthat .tot-tag.pick {
+    right: 12px; background: rgba(34,197,94,0.15); color: #22c55e;
+  }
+
+  /* ============================================ */
+  /*  D: TIER LIST / RANKING                      */
+  /* ============================================ */
+
+  .reel-tier {
+    height: 100%; display: flex; flex-direction: column;
+    position: relative; background: #0a0a0a; padding: 16px;
+  }
+  .reel-tier .brand-tag {
+    font-size: 9px; font-weight: 700; color: #22c55e;
+    letter-spacing: 2px; text-transform: uppercase;
+    text-align: center; margin-bottom: 6px; margin-top: 4px;
+  }
+  .reel-tier .tier-title {
+    font-size: 15px; font-weight: 900; color: #fafaf9;
+    text-align: center; margin-bottom: 16px; line-height: 1.3;
+  }
+  .reel-tier .tier-list {
+    flex: 1; display: flex; flex-direction: column;
+    gap: 6px; justify-content: center;
+  }
+  .reel-tier .tier-row {
+    display: flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 10px; padding: 8px 10px;
+  }
+  .reel-tier .tier-badge {
+    width: 28px; height: 28px; border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 900; color: #fff; flex-shrink: 0;
+  }
+  .reel-tier .tier-badge.s { background: #22c55e; }
+  .reel-tier .tier-badge.a { background: #3b82f6; }
+  .reel-tier .tier-badge.b { background: #f59e0b; }
+  .reel-tier .tier-badge.c { background: #f97316; }
+  .reel-tier .tier-badge.f { background: #ef4444; }
+  .reel-tier .tier-item {
+    font-size: 13px; font-weight: 700; color: #e7e5e4;
+  }
+  .reel-tier .tier-why {
+    font-size: 9px; color: #78716c; font-weight: 500;
+    margin-left: auto; flex-shrink: 0; max-width: 80px; text-align: right;
+  }
+  .reel-tier .cta {
+    text-align: center; font-size: 9px; color: #57534e;
+    letter-spacing: 1px; margin-top: 12px;
+  }
+
+  /* ============================================ */
+  /*  E: "POV" / HOOK TEXT                        */
+  /* ============================================ */
+
+  .reel-pov {
+    height: 100%; display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    position: relative; padding: 28px;
+  }
+  .reel-pov.dark {
+    background: radial-gradient(ellipse at center, #1a1a2e 0%, #0a0a0a 100%);
+  }
+  .reel-pov.warm {
+    background: radial-gradient(ellipse at center, #292524 0%, #0a0a0a 100%);
+  }
+  .reel-pov .brand-tag {
+    position: absolute; top: 16px; left: 50%; transform: translateX(-50%);
+    font-size: 9px; font-weight: 700; color: #22c55e;
+    letter-spacing: 2px; text-transform: uppercase;
+  }
+  .reel-pov .pov-label {
+    font-size: 10px; font-weight: 800; color: #78716c;
+    letter-spacing: 3px; text-transform: uppercase; margin-bottom: 20px;
+  }
+  .reel-pov .pov-text {
+    font-size: 24px; font-weight: 900; color: #fafaf9;
+    text-align: center; line-height: 1.35;
+  }
+  .reel-pov .pov-text .highlight {
+    color: #22c55e;
+  }
+  .reel-pov .pov-text .highlight-red {
+    color: #ef4444;
+  }
+  .reel-pov .pov-emoji {
+    font-size: 48px; margin-top: 24px;
+  }
+  .reel-pov .cta {
+    position: absolute; bottom: 16px;
+    font-size: 9px; color: #57534e; letter-spacing: 1px;
+  }
+
+  /* ============================================ */
+  /*  F: ANIMATED COUNTER / BIG STAT              */
+  /* ============================================ */
+
+  .reel-stat {
+    height: 100%; display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    position: relative; padding: 24px;
+    background: #0a0a0a;
+  }
+  .reel-stat .brand-tag {
+    position: absolute; top: 16px; left: 50%; transform: translateX(-50%);
+    font-size: 9px; font-weight: 700; color: #22c55e;
+    letter-spacing: 2px; text-transform: uppercase;
+  }
+  .reel-stat .stat-context {
+    font-size: 11px; font-weight: 600; color: #78716c;
+    text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px;
+  }
+  .reel-stat .stat-number {
+    font-size: 80px; font-weight: 900; color: #ef4444;
+    line-height: 1; margin-bottom: 4px;
+  }
+  .reel-stat .stat-unit {
+    font-size: 16px; font-weight: 800; color: #ef4444;
+    text-transform: uppercase; letter-spacing: 2px; margin-bottom: 24px;
+  }
+  .reel-stat .stat-bar {
+    width: 100%; height: 6px; background: #292524;
+    border-radius: 3px; overflow: hidden; margin-bottom: 24px;
+  }
+  .reel-stat .stat-bar-fill {
+    height: 100%; border-radius: 3px;
+    background: linear-gradient(90deg, #22c55e, #ef4444);
+  }
+  .reel-stat .stat-punchline {
+    font-size: 18px; font-weight: 800; color: #fafaf9;
+    text-align: center; line-height: 1.4;
+  }
+  .reel-stat .cta {
+    position: absolute; bottom: 16px;
+    font-size: 9px; color: #57534e; letter-spacing: 1px;
+  }
+
+  .note {
+    max-width: 740px; margin: 0 auto 40px;
+    background: #fff; border: 1px solid #e7e5e4;
+    border-radius: 12px; padding: 20px 24px;
+    font-size: 13px; color: #57534e; line-height: 1.7;
+  }
+  .note strong { color: #1c1917; }
+  .note ul { margin: 8px 0 0 16px; }
+  .note li { margin-bottom: 4px; }
+</style>
+</head>
+<body>
+
+<h1>Instagram Reel Mockups v2</h1>
+<p class="subtitle">Visual first. Minimal text. No camera needed.</p>
+
+<!-- ==================== A: RATING ==================== -->
+
+<p class="section-title">A. Rate Everything</p>
+<p class="section-desc">Giant score on screen. One item per reel. People LOVE watching things get rated. In CapCut: zoom into the emoji, count up the number with a drumroll sound, then reveal the verdict. 10 seconds max.</p>
+
+<div class="reel-row">
+  <div class="reel-wrapper">
+    <p class="reel-label">Fail</p>
+    <div class="phone">
+      <div class="reel-rating">
+        <div class="brand-tag">PlasticDetox</div>
+        <div class="item-emoji">🍳</div>
+        <div class="item-name">Nonstick Pan</div>
+        <div class="score-ring bad">
+          <div class="score-num bad">2</div>
+          <div class="score-of">/ 10</div>
+        </div>
+        <div class="verdict bad">Avoid</div>
+        <div class="one-liner">PFAS coating. Toxic fumes at high heat.</div>
+        <div class="cta">Full ranking in bio</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="reel-wrapper">
+    <p class="reel-label">Meh</p>
+    <div class="phone">
+      <div class="reel-rating">
+        <div class="brand-tag">PlasticDetox</div>
+        <div class="item-emoji">🧴</div>
+        <div class="item-name">Plastic Cutting Board</div>
+        <div class="score-ring ok">
+          <div class="score-num ok">5</div>
+          <div class="score-of">/ 10</div>
+        </div>
+        <div class="verdict ok">Replace Soon</div>
+        <div class="one-liner">Sheds microplastics into your food when scored.</div>
+        <div class="cta">Full ranking in bio</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="reel-wrapper">
+    <p class="reel-label">Winner</p>
+    <div class="phone">
+      <div class="reel-rating">
+        <div class="brand-tag">PlasticDetox</div>
+        <div class="item-emoji">🫕</div>
+        <div class="item-name">Cast Iron</div>
+        <div class="score-ring good">
+          <div class="score-num good">9</div>
+          <div class="score-of">/ 10</div>
+        </div>
+        <div class="verdict good">Top Pick</div>
+        <div class="one-liner">No coating. Lasts forever. Adds iron.</div>
+        <div class="cta">Full ranking in bio</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== B: RED/GREEN FLAG ==================== -->
+
+<p class="section-title">B. Red Flag / Green Flag</p>
+<p class="section-desc">Split screen, instant contrast. Trending format. Add a dramatic sound drop when it flips from red to green. 5 seconds each half.</p>
+
+<div class="reel-row">
+  <div class="reel-wrapper">
+    <p class="reel-label">Water Bottles</p>
+    <div class="phone">
+      <div class="reel-flags">
+        <div class="brand-tag">PlasticDetox</div>
+        <div class="flag-half red">
+          <div class="flag-emoji">🚩</div>
+          <div class="flag-label">Red Flag</div>
+          <div class="flag-text">Reusing plastic water bottles</div>
+          <div class="flag-sub">Chemicals leach more each refill</div>
+        </div>
+        <div class="flag-half green">
+          <div class="flag-emoji">🟢</div>
+          <div class="flag-label">Green Flag</div>
+          <div class="flag-text">Stainless steel bottle</div>
+          <div class="flag-sub">Zero leaching. Lasts years.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="reel-wrapper">
+    <p class="reel-label">Food Storage</p>
+    <div class="phone">
+      <div class="reel-flags">
+        <div class="brand-tag">PlasticDetox</div>
+        <div class="flag-half red">
+          <div class="flag-emoji">🚩</div>
+          <div class="flag-label">Red Flag</div>
+          <div class="flag-text">Microwaving in plastic containers</div>
+          <div class="flag-sub">Heat = chemical migration into food</div>
+        </div>
+        <div class="flag-half green">
+          <div class="flag-emoji">🟢</div>
+          <div class="flag-label">Green Flag</div>
+          <div class="flag-text">Glass containers with silicone lids</div>
+          <div class="flag-sub">Microwave safe. No leaching.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="reel-wrapper">
+    <p class="reel-label">Candles</p>
+    <div class="phone">
+      <div class="reel-flags">
+        <div class="brand-tag">PlasticDetox</div>
+        <div class="flag-half red">
+          <div class="flag-emoji">🚩</div>
+          <div class="flag-label">Red Flag</div>
+          <div class="flag-text">Paraffin scented candles</div>
+          <div class="flag-sub">Benzene + toluene in your air</div>
+        </div>
+        <div class="flag-half green">
+          <div class="flag-emoji">🟢</div>
+          <div class="flag-label">Green Flag</div>
+          <div class="flag-text">Beeswax or coconut wax</div>
+          <div class="flag-sub">Clean burn. No synthetic fragrance.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== C: THIS OR THAT ==================== -->
+
+<p class="section-title">C. This or That</p>
+<p class="section-desc">Two products head to head. Simple, visual, decisive. People tap to guess before the reveal. Add a "ding" sound for the winner.</p>
+
+<div class="reel-row">
+  <div class="reel-wrapper">
+    <p class="reel-label">Cookware Battle</p>
+    <div class="phone">
+      <div class="reel-thisorthat">
+        <div class="brand-tag">PlasticDetox</div>
+        <div class="vs-badge">VS</div>
+        <div class="tot-half top">
+          <div class="tot-tag skip">Skip</div>
+          <div class="tot-emoji">🍳</div>
+          <div class="tot-name">Nonstick Pan</div>
+          <div class="tot-detail bad">PFAS coating breaks down</div>
+        </div>
+        <div class="tot-half bottom">
+          <div class="tot-tag pick">Pick</div>
+          <div class="tot-emoji">🥘</div>
+          <div class="tot-name">Stainless Steel</div>
+          <div class="tot-detail good">No coating. No chemicals.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="reel-wrapper">
+    <p class="reel-label">Bottle Battle</p>
+    <div class="phone">
+      <div class="reel-thisorthat">
+        <div class="brand-tag">PlasticDetox</div>
+        <div class="vs-badge">VS</div>
+        <div class="tot-half top">
+          <div class="tot-tag skip">Skip</div>
+          <div class="tot-emoji">🧃</div>
+          <div class="tot-name">"BPA Free" Plastic</div>
+          <div class="tot-detail bad">Still has BPS, BPF</div>
+        </div>
+        <div class="tot-half bottom">
+          <div class="tot-tag pick">Pick</div>
+          <div class="tot-emoji">🪙</div>
+          <div class="tot-name">Glass or Steel</div>
+          <div class="tot-detail good">Actually zero plastic.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== D: TIER LIST ==================== -->
+
+<p class="section-title">D. Tier List</p>
+<p class="section-desc">The internet is obsessed with tier lists. Reveal each tier one by one with sound effects. Works for any category you write about. Highest engagement format on Reels right now.</p>
+
+<div class="reel-row">
+  <div class="reel-wrapper">
+    <p class="reel-label">Cookware Tier List</p>
+    <div class="phone">
+      <div class="reel-tier">
+        <div class="brand-tag">PlasticDetox</div>
+        <div class="tier-title">Kitchen Cookware<br>Tier List</div>
+        <div class="tier-list">
+          <div class="tier-row">
+            <div class="tier-badge s">S</div>
+            <div class="tier-item">Cast Iron</div>
+            <div class="tier-why">Zero toxins, lasts forever</div>
+          </div>
+          <div class="tier-row">
+            <div class="tier-badge a">A</div>
+            <div class="tier-item">Stainless Steel</div>
+            <div class="tier-why">Safe, versatile</div>
+          </div>
+          <div class="tier-row">
+            <div class="tier-badge b">B</div>
+            <div class="tier-item">Ceramic Coated</div>
+            <div class="tier-why">OK but coating wears</div>
+          </div>
+          <div class="tier-row">
+            <div class="tier-badge c">C</div>
+            <div class="tier-item">Aluminum</div>
+            <div class="tier-why">Reactive with acid foods</div>
+          </div>
+          <div class="tier-row">
+            <div class="tier-badge f">F</div>
+            <div class="tier-item">Nonstick / Teflon</div>
+            <div class="tier-why">PFAS, toxic fumes</div>
+          </div>
+        </div>
+        <div class="cta">Save this list</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="reel-wrapper">
+    <p class="reel-label">Water Tier List</p>
+    <div class="phone">
+      <div class="reel-tier">
+        <div class="brand-tag">PlasticDetox</div>
+        <div class="tier-title">Drinking Water<br>Tier List</div>
+        <div class="tier-list">
+          <div class="tier-row">
+            <div class="tier-badge s">S</div>
+            <div class="tier-item">Reverse Osmosis</div>
+            <div class="tier-why">Removes 99%</div>
+          </div>
+          <div class="tier-row">
+            <div class="tier-badge a">A</div>
+            <div class="tier-item">Carbon Block Filter</div>
+            <div class="tier-why">Great for most homes</div>
+          </div>
+          <div class="tier-row">
+            <div class="tier-badge b">B</div>
+            <div class="tier-item">Brita Pitcher</div>
+            <div class="tier-why">Better than nothing</div>
+          </div>
+          <div class="tier-row">
+            <div class="tier-badge c">C</div>
+            <div class="tier-item">Tap (unfiltered)</div>
+            <div class="tier-why">Varies wildly by city</div>
+          </div>
+          <div class="tier-row">
+            <div class="tier-badge f">F</div>
+            <div class="tier-item">Plastic Bottled Water</div>
+            <div class="tier-why">Microplastics + waste</div>
+          </div>
+        </div>
+        <div class="cta">Save this list</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== E: POV / HOOK TEXT ==================== -->
+
+<p class="section-title">E. POV / Hook Text</p>
+<p class="section-desc">Just big bold text on a dark screen with dramatic audio. The text IS the content. These go viral because they trigger emotional reactions and comments. Pair with a "oh no" or suspenseful trending sound.</p>
+
+<div class="reel-row">
+  <div class="reel-wrapper">
+    <p class="reel-label">Shock Hook</p>
+    <div class="phone">
+      <div class="reel-pov dark">
+        <div class="brand-tag">PlasticDetox</div>
+        <div class="pov-label">POV</div>
+        <div class="pov-text">You just learned your <span class="highlight-red">"BPA Free"</span> bottle still has <span class="highlight-red">hormone disruptors</span></div>
+        <div class="pov-emoji">😐</div>
+        <div class="cta">Comment if this was you</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="reel-wrapper">
+    <p class="reel-label">Relatable</p>
+    <div class="phone">
+      <div class="reel-pov warm">
+        <div class="brand-tag">PlasticDetox</div>
+        <div class="pov-label">POV</div>
+        <div class="pov-text">You stopped microwaving in plastic and your friends think you're <span class="highlight">dramatic</span></div>
+        <div class="pov-emoji">💅</div>
+        <div class="cta">Tag that friend</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="reel-wrapper">
+    <p class="reel-label">Curiosity</p>
+    <div class="phone">
+      <div class="reel-pov dark">
+        <div class="brand-tag">PlasticDetox</div>
+        <div class="pov-label">Things in your kitchen</div>
+        <div class="pov-text">that are <span class="highlight-red">slowly</span> making things worse</div>
+        <div class="pov-emoji">👇</div>
+        <div class="cta">Follow for the list</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== F: BIG STAT ==================== -->
+
+<p class="section-title">F. Big Stat Punch</p>
+<p class="section-desc">One massive number, one punchline. The number animates up (easy in CapCut with counter effect). Pair with a bass drop sound. 8 seconds total.</p>
+
+<div class="reel-row">
+  <div class="reel-wrapper">
+    <p class="reel-label">Plastic Ingestion</p>
+    <div class="phone">
+      <div class="reel-stat">
+        <div class="brand-tag">PlasticDetox</div>
+        <div class="stat-context">Every single week</div>
+        <div class="stat-number">5g</div>
+        <div class="stat-unit">of plastic</div>
+        <div class="stat-bar"><div class="stat-bar-fill" style="width:65%"></div></div>
+        <div class="stat-punchline">You're eating a credit card worth of microplastic</div>
+        <div class="cta">Follow to reduce yours</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="reel-wrapper">
+    <p class="reel-label">Regulation Gap</p>
+    <div class="phone">
+      <div class="reel-stat">
+        <div class="brand-tag">PlasticDetox</div>
+        <div class="stat-context">Chemicals banned from cosmetics</div>
+        <div class="stat-number">12</div>
+        <div class="stat-unit">in the US</div>
+        <div class="stat-bar"><div class="stat-bar-fill" style="width:8%"></div></div>
+        <div class="stat-punchline">The EU has banned over 1,300</div>
+        <div class="cta">Let that sink in</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== NOTES ==================== -->
+
+<div class="note">
+  <strong>How these work as Reels (no filming needed):</strong>
+  <ul>
+    <li><strong>Tool:</strong> CapCut (free) or Canva video. Set canvas to 9:16.</li>
+    <li><strong>Animation:</strong> Each element appears one at a time (text pop, scale up, slide in). CapCut has one-tap presets for all of this.</li>
+    <li><strong>Audio:</strong> Use trending sounds from the Reels library. Dramatic reveals work best with suspense/bass drop sounds.</li>
+    <li><strong>Length:</strong> Keep under 15 seconds. Shorter = more replays = better reach.</li>
+    <li><strong>Batch it:</strong> Pick one format, make 6 to 8 variations in one sitting. Schedule with Meta Business Suite. That's a month of content in an hour.</li>
+    <li><strong>CTA variety:</strong> Rotate between "Save this," "Tag a friend," "Comment if you knew," "Follow for more." These drive engagement signals.</li>
+  </ul>
+</div>
+
+</body>
+</html>

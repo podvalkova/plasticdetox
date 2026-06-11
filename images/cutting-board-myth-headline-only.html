@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Cutting Board Myth — Infographic</title>
+  <style>
+    @font-face {
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 100 900;
+      src: url(inter-latin.woff2) format('woff2');
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #d6d3d1;
+      display: flex;
+      justify-content: center;
+      padding: 2rem;
+      font-family: 'Inter', -apple-system, sans-serif;
+    }
+    .pin {
+      width: 1080px;
+      height: 1350px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* top section - warm wood tones */
+    .top {
+      flex: 1;
+      background: linear-gradient(170deg, #3e2723 0%, #5d4037 40%, #6d4c41 100%);
+      padding: 48px 64px 40px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    /* wood grain texture overlay */
+    .top::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        95deg,
+        transparent,
+        transparent 40px,
+        rgba(255,255,255,0.02) 40px,
+        rgba(255,255,255,0.02) 42px
+      );
+    }
+    .top > * { position: relative; z-index: 1; }
+
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 28px;
+    }
+    .series-tag {
+      font-size: 16px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: rgba(255,255,255,0.5);
+    }
+    .handle {
+      font-size: 16px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.35);
+    }
+
+    .question-sticker {
+      width: 580px;
+      align-self: center;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.35);
+      margin-bottom: 40px;
+    }
+    .question-sticker-header {
+      background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+      padding: 12px 28px;
+      text-align: center;
+    }
+    .question-sticker-header span {
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+    }
+    .question-sticker-body {
+      background: #fff;
+      padding: 20px 28px;
+      text-align: center;
+    }
+    .question-text {
+      font-size: 22px;
+      font-weight: 500;
+      color: #262626;
+      line-height: 1.4;
+    }
+
+    /* the big answer moment */
+    .hero-answer {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .hero-answer .small {
+      font-size: 28px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 8px;
+    }
+    .hero-answer .big {
+      font-size: 120px;
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      text-shadow: 0 4px 24px rgba(0,0,0,0.3);
+    }
+
+    /* bottom section - the proof */
+    .bottom {
+      background: #fafaf9;
+      padding: 48px 64px 44px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    /* versus bar */
+    .vs-bar {
+      display: flex;
+      gap: 0;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    .vs-side {
+      flex: 1;
+      padding: 28px 24px;
+      text-align: center;
+    }
+    .vs-side.wood {
+      background: #f0fdf4;
+    }
+    .vs-side.plastic {
+      background: #fef2f2;
+    }
+    .vs-side .material {
+      font-size: 17px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+    }
+    .vs-side.wood .material { color: #16a34a; }
+    .vs-side.plastic .material { color: #dc2626; }
+    .vs-side .stat {
+      font-size: 44px;
+      font-weight: 900;
+      margin-bottom: 4px;
+    }
+    .vs-side.wood .stat { color: #16a34a; }
+    .vs-side.plastic .stat { color: #dc2626; }
+    .vs-side .desc {
+      font-size: 18px;
+      font-weight: 600;
+      color: #78716c;
+      line-height: 1.3;
+    }
+
+    /* explanation */
+    .explain {
+      font-size: 26px;
+      font-weight: 500;
+      color: #44403c;
+      line-height: 1.55;
+    }
+    .explain strong {
+      font-weight: 700;
+      color: #1c1917;
+    }
+    .explain .green { color: #16a34a; font-weight: 700; }
+    .explain .red { color: #dc2626; font-weight: 700; }
+
+    /* action */
+    .action {
+      background: #f5f3ff;
+      border-radius: 14px;
+      padding: 24px 32px;
+      border-left: 5px solid #7c3aed;
+    }
+    .action .label {
+      font-size: 14px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #7c3aed;
+      margin-bottom: 8px;
+    }
+    .action p {
+      font-size: 23px;
+      font-weight: 600;
+      color: #1c1917;
+      line-height: 1.45;
+    }
+
+    .footer-url {
+      text-align: right;
+      font-size: 19px;
+      font-weight: 800;
+      color: #7c3aed;
+    }
+  </style>
+</head>
+<body>
+  <div class="pin">
+
+    <div class="top">
+      <div class="top-bar">
+        <span class="series-tag">No Filter Talk</span>
+        <span class="handle">@plasticdetoxorg</span>
+      </div>
+
+      <div class="question-sticker">
+        <div class="question-sticker-header"><span>Ask me a question</span></div>
+        <div class="question-sticker-body">
+          <div class="question-text">Is stainless steel board better than wood because of the bacteria?</div>
+        </div>
+      </div>
+
+      <div class="hero-answer">
+        <div class="small">Actually,</div>
+        <div class="big">No.</div>
+      </div>
+    </div>
+
+    <div class="bottom">
+
+      <div class="vs-bar">
+        <div class="vs-side wood">
+          <div class="material">Wood</div>
+          <div class="stat">99.9%</div>
+          <div class="desc">bacteria killed<br>within 3 minutes</div>
+        </div>
+        <div class="vs-side plastic">
+          <div class="material">Plastic</div>
+          <div class="stat">0%</div>
+          <div class="desc">bacteria survived<br>and multiplied</div>
+        </div>
+      </div>
+
+      <p class="explain">Hardwoods have natural antibacterial properties. Wood absorbs bacteria where they <span class="green">die off</span>. Knife scars in plastic <span class="red">trap bacteria</span> that are impossible to sanitize.</p>
+
+      <div class="action">
+        <div class="label">Use instead</div>
+        <p>Solid hardwood board (maple, walnut, oak). Wash with hot soapy water, air dry upright, oil occasionally.</p>
+      </div>
+
+      <div class="footer-url">plasticdetox.org</div>
+
+    </div>
+
+  </div>
+</body>
+</html>

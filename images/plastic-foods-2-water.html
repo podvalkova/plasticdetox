@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Bottled water: 240,000 particles per liter</title>
+  <style>
+    @font-face {
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 100 900;
+      src: url(inter-latin.woff2) format('woff2');
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #d6d3d1;
+      display: flex;
+      justify-content: center;
+      padding: 2rem;
+      font-family: 'Inter', -apple-system, sans-serif;
+    }
+
+    .pin {
+      width: 1080px;
+      height: 1920px;
+      background: #ede9fe;
+      display: flex;
+      flex-direction: column;
+      padding: 70px 64px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pin::before {
+      content: "";
+      position: absolute;
+      top: -200px;
+      right: -200px;
+      width: 700px;
+      height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(196, 181, 253, 0.6) 0%, rgba(237, 233, 254, 0) 70%);
+      pointer-events: none;
+    }
+
+    .pin::after {
+      content: "";
+      position: absolute;
+      bottom: -250px;
+      left: -250px;
+      width: 800px;
+      height: 800px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(196, 181, 253, 0.5) 0%, rgba(237, 233, 254, 0) 70%);
+      pointer-events: none;
+    }
+
+    .frame-label {
+      text-align: center;
+      font-size: 34px;
+      font-weight: 800;
+      letter-spacing: 0.32em;
+      color: #7c3aed;
+      text-transform: uppercase;
+      z-index: 5;
+      margin-bottom: 36px;
+      position: relative;
+    }
+
+    .header {
+      text-align: center;
+      position: relative;
+      z-index: 2;
+      margin-bottom: 44px;
+    }
+
+    .rank-tag {
+      display: inline-block;
+      font-size: 36px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      color: #ffffff;
+      background: #7c3aed;
+      padding: 16px 44px;
+      border-radius: 100px;
+      margin-bottom: 28px;
+      box-shadow: 0 8px 24px rgba(124, 58, 237, 0.4);
+    }
+
+    h1 {
+      font-size: 130px;
+      font-weight: 900;
+      color: #1c1917;
+      line-height: 0.95;
+      letter-spacing: -0.045em;
+    }
+
+    h1 .accent {
+      color: #7c3aed;
+      font-style: italic;
+    }
+
+    .stat-card {
+      background: #1c1917;
+      border-radius: 32px;
+      padding: 48px 44px;
+      text-align: center;
+      box-shadow: 0 16px 48px rgba(28, 25, 23, 0.28);
+      position: relative;
+      z-index: 2;
+      margin-bottom: 44px;
+    }
+
+    .stat-number {
+      font-size: 130px;
+      font-weight: 900;
+      color: #c4b5fd;
+      letter-spacing: -0.05em;
+      line-height: 0.95;
+      margin-bottom: 14px;
+    }
+
+    .stat-label {
+      font-size: 38px;
+      font-weight: 700;
+      color: #fafaf9;
+      line-height: 1.2;
+      letter-spacing: -0.005em;
+    }
+
+    .swap-block {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 36px 40px;
+      box-shadow: 0 10px 30px rgba(76, 29, 149, 0.12);
+      border-left: 14px solid #16a34a;
+      position: relative;
+      z-index: 2;
+      margin-bottom: 36px;
+    }
+
+    .swap-label {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #16a34a;
+      margin-bottom: 10px;
+    }
+
+    .swap-text {
+      font-size: 50px;
+      font-weight: 900;
+      color: #1c1917;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      position: relative;
+      z-index: 2;
+      margin-bottom: 36px;
+    }
+
+    .product {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 28px 24px 24px;
+      box-shadow: 0 8px 24px rgba(76, 29, 149, 0.10);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .product-img-wrap {
+      width: 100%;
+      aspect-ratio: 1;
+      background: #fafaf9;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      margin-bottom: 18px;
+    }
+
+    .product-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 12px;
+    }
+
+    .product-name {
+      font-size: 32px;
+      font-weight: 800;
+      color: #1c1917;
+      line-height: 1.15;
+      letter-spacing: -0.015em;
+    }
+
+    .footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      margin-top: auto;
+      padding-top: 28px;
+      border-top: 2px solid rgba(124, 58, 237, 0.25);
+      position: relative;
+      z-index: 2;
+    }
+
+    .footer-stat {
+      font-size: 32px;
+      font-weight: 700;
+      color: #57534e;
+    }
+
+    .footer-url {
+      font-size: 36px;
+      font-weight: 900;
+      color: #7c3aed;
+      letter-spacing: -0.01em;
+    }
+  </style>
+</head>
+<body>
+  <div class="pin">
+    <div class="frame-label">2 of 6</div>
+
+    <div class="header">
+      <div class="rank-tag">#1 WORST</div>
+      <h1>Bottled<br><span class="accent">water</span></h1>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-number">240,000</div>
+      <div class="stat-label">plastic particles per liter</div>
+    </div>
+
+    <div class="swap-block">
+      <div class="swap-label">Swap</div>
+      <div class="swap-text">Filtered tap in glass or stainless.</div>
+    </div>
+
+    <div class="products">
+      <div class="product">
+        <div class="product-img-wrap">
+          <img src="https://m.media-amazon.com/images/I/61VZwRQf19L._AC_SL500_.jpg" alt="Bluevua Countertop RO Filter">
+        </div>
+        <div class="product-name">Bluevua RO Filter</div>
+      </div>
+      <div class="product">
+        <div class="product-img-wrap">
+          <img src="https://m.media-amazon.com/images/I/61Q2Ygr7hcL._AC_SL500_.jpg" alt="Klean Kanteen Stainless Steel">
+        </div>
+        <div class="product-name">Klean Kanteen Stainless</div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span class="footer-stat">2024 Columbia &amp; Rutgers study</span>
+      <span class="footer-url">plasticdetox.org</span>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Apples: 195,000 plastic particles per gram</title>
+  <style>
+    @font-face {
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 100 900;
+      src: url(inter-latin.woff2) format('woff2');
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #d6d3d1;
+      display: flex;
+      justify-content: center;
+      padding: 2rem;
+      font-family: 'Inter', -apple-system, sans-serif;
+    }
+
+    .pin {
+      width: 1080px;
+      height: 1920px;
+      background: #ede9fe;
+      display: flex;
+      flex-direction: column;
+      padding: 70px 64px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pin::before {
+      content: "";
+      position: absolute;
+      top: -200px;
+      right: -200px;
+      width: 700px;
+      height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(196, 181, 253, 0.6) 0%, rgba(237, 233, 254, 0) 70%);
+      pointer-events: none;
+    }
+
+    .pin::after {
+      content: "";
+      position: absolute;
+      bottom: -250px;
+      left: -250px;
+      width: 800px;
+      height: 800px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(196, 181, 253, 0.5) 0%, rgba(237, 233, 254, 0) 70%);
+      pointer-events: none;
+    }
+
+    .frame-label {
+      text-align: center;
+      font-size: 34px;
+      font-weight: 800;
+      letter-spacing: 0.32em;
+      color: #7c3aed;
+      text-transform: uppercase;
+      z-index: 5;
+      margin-bottom: 36px;
+      position: relative;
+    }
+
+    .header {
+      text-align: center;
+      position: relative;
+      z-index: 2;
+      margin-bottom: 48px;
+    }
+
+    .rank-tag {
+      display: inline-block;
+      font-size: 36px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      color: #ffffff;
+      background: #7c3aed;
+      padding: 16px 44px;
+      border-radius: 100px;
+      margin-bottom: 28px;
+      box-shadow: 0 8px 24px rgba(124, 58, 237, 0.4);
+    }
+
+    h1 {
+      font-size: 150px;
+      font-weight: 900;
+      color: #1c1917;
+      line-height: 0.95;
+      letter-spacing: -0.045em;
+    }
+
+    h1 .accent {
+      color: #7c3aed;
+      font-style: italic;
+    }
+
+    .stat-card {
+      background: #1c1917;
+      border-radius: 32px;
+      padding: 48px 44px;
+      text-align: center;
+      box-shadow: 0 16px 48px rgba(28, 25, 23, 0.28);
+      position: relative;
+      z-index: 2;
+      margin-bottom: 44px;
+    }
+
+    .stat-number {
+      font-size: 140px;
+      font-weight: 900;
+      color: #c4b5fd;
+      letter-spacing: -0.05em;
+      line-height: 0.95;
+      margin-bottom: 14px;
+    }
+
+    .stat-label {
+      font-size: 38px;
+      font-weight: 700;
+      color: #fafaf9;
+      line-height: 1.2;
+      letter-spacing: -0.005em;
+    }
+
+    .facts {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      position: relative;
+      z-index: 2;
+      margin-bottom: 36px;
+    }
+
+    .fact {
+      background: #ffffff;
+      border-radius: 22px;
+      padding: 28px 36px;
+      box-shadow: 0 8px 24px rgba(76, 29, 149, 0.10);
+      border-left: 14px solid;
+      display: flex;
+      align-items: center;
+      gap: 26px;
+    }
+
+    .fact.good { border-color: #16a34a; }
+    .fact.bad { border-color: #dc2626; }
+    .fact.note { border-color: #7c3aed; }
+
+    .fact-mark {
+      font-size: 56px;
+      font-weight: 900;
+      line-height: 1;
+      min-width: 60px;
+      text-align: center;
+    }
+
+    .fact.good .fact-mark { color: #16a34a; }
+    .fact.bad .fact-mark { color: #dc2626; }
+    .fact.note .fact-mark { color: #7c3aed; }
+
+    .fact-text {
+      flex: 1;
+      font-size: 42px;
+      font-weight: 800;
+      color: #1c1917;
+      letter-spacing: -0.018em;
+      line-height: 1.15;
+    }
+
+    .footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      margin-top: auto;
+      padding-top: 28px;
+      border-top: 2px solid rgba(124, 58, 237, 0.25);
+      position: relative;
+      z-index: 2;
+    }
+
+    .footer-stat {
+      font-size: 32px;
+      font-weight: 700;
+      color: #57534e;
+    }
+
+    .footer-url {
+      font-size: 36px;
+      font-weight: 900;
+      color: #7c3aed;
+      letter-spacing: -0.01em;
+    }
+  </style>
+</head>
+<body>
+  <div class="pin">
+    <div class="frame-label">4 of 6</div>
+
+    <div class="header">
+      <div class="rank-tag">#3 WORST</div>
+      <h1><span class="accent">Apples</span></h1>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-number">195,000</div>
+      <div class="stat-label">plastic particles per gram</div>
+    </div>
+
+    <div class="facts">
+      <div class="fact good">
+        <div class="fact-mark">&check;</div>
+        <div class="fact-text">Peeling helps partially.</div>
+      </div>
+      <div class="fact bad">
+        <div class="fact-mark">&times;</div>
+        <div class="fact-text">Washing barely does.</div>
+      </div>
+      <div class="fact bad">
+        <div class="fact-mark">&times;</div>
+        <div class="fact-text">Organic doesn't fix it.</div>
+      </div>
+      <div class="fact note">
+        <div class="fact-mark">!</div>
+        <div class="fact-text">Plastic enters through the roots.</div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span class="footer-stat">2020 Environmental Research review</span>
+      <span class="footer-url">plasticdetox.org</span>
+    </div>
+  </div>
+</body>
+</html>

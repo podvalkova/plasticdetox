@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Save. Share. Detox.</title>
+  <style>
+    @font-face {
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 100 900;
+      src: url(inter-latin.woff2) format('woff2');
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #d6d3d1;
+      display: flex;
+      justify-content: center;
+      padding: 2rem;
+      font-family: 'Inter', -apple-system, sans-serif;
+    }
+
+    .pin {
+      width: 1080px;
+      height: 1920px;
+      background: #ede9fe;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 80px 70px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pin::before {
+      content: "";
+      position: absolute;
+      top: -200px;
+      right: -200px;
+      width: 700px;
+      height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(196, 181, 253, 0.6) 0%, rgba(237, 233, 254, 0) 70%);
+      pointer-events: none;
+    }
+
+    .pin::after {
+      content: "";
+      position: absolute;
+      bottom: -250px;
+      left: -250px;
+      width: 800px;
+      height: 800px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(196, 181, 253, 0.5) 0%, rgba(237, 233, 254, 0) 70%);
+      pointer-events: none;
+    }
+
+    .frame-label {
+      position: absolute;
+      top: 60px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-size: 34px;
+      font-weight: 800;
+      letter-spacing: 0.32em;
+      color: #7c3aed;
+      text-transform: uppercase;
+      z-index: 5;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 32px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: #ffffff;
+      background: #7c3aed;
+      padding: 16px 40px;
+      border-radius: 100px;
+      margin-bottom: 56px;
+      position: relative;
+      z-index: 2;
+      box-shadow: 0 6px 20px rgba(124, 58, 237, 0.35);
+    }
+
+    .url-block {
+      text-align: center;
+      position: relative;
+      z-index: 2;
+      margin-bottom: 64px;
+    }
+
+    .url-prefix {
+      font-size: 48px;
+      font-weight: 700;
+      color: #57534e;
+      letter-spacing: -0.01em;
+      margin-bottom: 12px;
+    }
+
+    .url-main {
+      font-size: 130px;
+      font-weight: 900;
+      color: #7c3aed;
+      letter-spacing: -0.05em;
+      line-height: 0.95;
+      text-shadow: 0 12px 40px rgba(124, 58, 237, 0.22);
+    }
+
+    .actions {
+      display: flex;
+      gap: 24px;
+      position: relative;
+      z-index: 2;
+      margin-bottom: 56px;
+    }
+
+    .action {
+      background: #ffffff;
+      border-radius: 32px;
+      padding: 36px 32px;
+      box-shadow: 0 10px 30px rgba(76, 29, 149, 0.15);
+      text-align: center;
+      min-width: 240px;
+    }
+
+    .action-icon {
+      font-size: 80px;
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .action-text {
+      font-size: 42px;
+      font-weight: 900;
+      color: #1c1917;
+      letter-spacing: -0.02em;
+    }
+
+    .closing {
+      font-size: 40px;
+      font-weight: 600;
+      color: #44403c;
+      line-height: 1.3;
+      max-width: 880px;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .closing .accent {
+      color: #7c3aed;
+      font-weight: 800;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <div class="pin">
+    <div class="frame-label">6 of 6</div>
+
+    <div class="tag">More like this</div>
+
+    <div class="url-block">
+      <div class="url-prefix">Find more at</div>
+      <div class="url-main">plasticdetox<br>.org</div>
+    </div>
+
+    <div class="actions">
+      <div class="action">
+        <div class="action-icon">&#128190;</div>
+        <div class="action-text">Save</div>
+      </div>
+      <div class="action">
+        <div class="action-icon">&#128228;</div>
+        <div class="action-text">Share</div>
+      </div>
+      <div class="action">
+        <div class="action-icon">&#127807;</div>
+        <div class="action-text">Detox</div>
+      </div>
+    </div>
+
+    <p class="closing">The biggest plastic load comes from <span class="accent">water</span> and <span class="accent">tea</span>. Start there.</p>
+  </div>
+</body>
+</html>

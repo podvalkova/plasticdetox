@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Baby Guide — Headline + Priority</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #d6d3d1; display: flex; justify-content: center; padding: 2rem; font-family: 'Inter', -apple-system, sans-serif; }
+    .pin {
+      width: 1080px;
+      height: 1350px;
+      background: #fafaf9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 36px 28px;
+    }
+    .headline-tag { display: inline-block; font-size: 16px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; color: #7c3aed; background: #ede9fe; padding: 10px 26px; border-radius: 100px; margin-bottom: 18px; }
+    h1 { font-size: 52px; font-weight: 900; color: #1c1917; line-height: 1.1; letter-spacing: -0.03em; text-align: center; margin-bottom: 22px; }
+    .divider { width: 56px; height: 4px; background: #7c3aed; border-radius: 2px; margin-bottom: 24px; }
+    .priorities { display: flex; flex-direction: column; gap: 14px; width: 100%; flex: 1; }
+    .priority { border-radius: 20px; padding: 28px 32px; flex: 1; display: flex; flex-direction: column; justify-content: center; }
+    .priority-critical { background: #fef2f2; border: 1.5px solid #fecaca; }
+    .priority-high { background: #fff7ed; border: 1.5px solid #fed7aa; }
+    .priority-medium { background: #fefce8; border: 1.5px solid #fde68a; }
+    .priority-lower { background: #f0fdf4; border: 1.5px solid #bbf7d0; }
+    .priority-label { font-size: 20px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px; }
+    .priority-critical .priority-label { color: #dc2626; }
+    .priority-high .priority-label { color: #ea580c; }
+    .priority-medium .priority-label { color: #ca8a04; }
+    .priority-lower .priority-label { color: #16a34a; }
+    .priority-items { font-size: 24px; font-weight: 600; color: #1c1917; line-height: 1.5; }
+    .priority-reason { font-size: 19px; font-weight: 500; color: #57534e; margin-top: 8px; }
+    .footer { display: flex; align-items: center; justify-content: space-between; width: 100%; padding-top: 18px; margin-top: 20px; border-top: 2px solid #e7e5e4; }
+    .footer-stat { font-size: 17px; font-weight: 600; color: #78716c; }
+    .footer-url { font-size: 19px; font-weight: 800; color: #7c3aed; }
+  </style>
+</head>
+<body>
+  <div class="pin">
+    <div class="headline-tag">Baby &amp; Toddler Guide</div>
+    <h1>Baby Product Swaps<br>by Exposure Priority</h1>
+    <div class="divider"></div>
+    <div class="priorities">
+      <div class="priority priority-critical">
+        <div class="priority-label">Critical (14+ hrs/day)</div>
+        <div class="priority-items">Crib mattress &middot; Baby bottles &middot; Pump parts &middot; Breast milk storage</div>
+        <div class="priority-reason">Ingestion + inhalation routes during sleep and feeding</div>
+      </div>
+      <div class="priority priority-high">
+        <div class="priority-label">High (multiple daily exposures)</div>
+        <div class="priority-items">Formula prep &middot; Food storage &middot; Baby wash + lotion &middot; Diapers + wipes &middot; Crib sheets</div>
+        <div class="priority-reason">Direct skin or ingestion contact, repeated heat exposure</div>
+      </div>
+      <div class="priority priority-medium">
+        <div class="priority-label">Medium (1 to 4 hrs/day)</div>
+        <div class="priority-items">Car seat &middot; Everyday clothing &middot; High chair &middot; Teethers + toys &middot; Play mat</div>
+        <div class="priority-reason">Skin + inhalation + mouthing routes, cumulative exposure</div>
+      </div>
+      <div class="priority priority-lower">
+        <div class="priority-label">Lower (still worthwhile)</div>
+        <div class="priority-items">Stroller &middot; Baby carrier &middot; Cleaning products &middot; Laundry detergent &middot; Air purifier</div>
+        <div class="priority-reason">Shorter contact, indirect routes. Swap as budget allows.</div>
+      </div>
+    </div>
+    <div class="footer">
+      <span class="footer-stat">Babies face 10x more chemical exposure than adults</span>
+      <span class="footer-url">plasticdetox.org</span>
+    </div>
+  </div>
+</body>
+</html>

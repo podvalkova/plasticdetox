@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Getting Started — List Only</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #d6d3d1;
+      display: flex;
+      justify-content: center;
+      padding: 2rem;
+      font-family: 'Inter', -apple-system, sans-serif;
+    }
+
+    .pin {
+      width: 1080px;
+      height: 1350px;
+      background: #fafaf9;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 48px 56px;
+    }
+
+    .headline-tag {
+      display: inline-block;
+      font-size: 15px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: #7c3aed;
+      background: #ede9fe;
+      padding: 8px 22px;
+      border-radius: 100px;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 48px;
+      font-weight: 900;
+      color: #1c1917;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .divider {
+      width: 50px;
+      height: 3px;
+      background: #7c3aed;
+      border-radius: 2px;
+      margin-bottom: 32px;
+    }
+
+    .swaps {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .swap {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      background: #fff;
+      border-radius: 16px;
+      padding: 18px 24px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .swap-num {
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
+      max-height: 40px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: #7c3aed;
+      color: #fff;
+      font-size: 17px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+
+    .swap-text {
+      flex: 1;
+      font-size: 20px;
+      font-weight: 700;
+      color: #1c1917;
+      line-height: 1.3;
+    }
+
+    .swap-text .subtitle {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      color: #78716c;
+      margin-top: 1px;
+    }
+
+    .swap-tips {
+      list-style: none;
+      margin-top: 6px;
+      padding: 0;
+    }
+
+    .swap-tips li {
+      font-size: 13.5px;
+      font-weight: 500;
+      color: #44403c;
+      line-height: 1.35;
+      padding: 2px 0;
+      padding-left: 18px;
+      position: relative;
+    }
+
+    .swap-tips li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: #7c3aed;
+      font-weight: 700;
+    }
+
+    /* Compact swaps section */
+    .more-label {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #a8a29e;
+      margin-top: 28px;
+      margin-bottom: 12px;
+    }
+
+    .compact-swaps {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .compact-swap {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 10px 0;
+      border-bottom: 1px solid #e7e5e4;
+    }
+
+    .compact-swap:last-child {
+      border-bottom: none;
+    }
+
+    .compact-num {
+      width: 28px;
+      height: 28px;
+      min-width: 28px;
+      max-height: 28px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: #d8b4fe;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+
+    .compact-text {
+      font-size: 16px;
+      font-weight: 600;
+      color: #44403c;
+      line-height: 1.3;
+    }
+
+    .compact-text span {
+      font-weight: 500;
+      color: #78716c;
+    }
+
+    .footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      margin-top: 32px;
+      padding-top: 16px;
+      border-top: 2px solid #e7e5e4;
+    }
+
+    .footer-stat {
+      font-size: 15px;
+      font-weight: 600;
+      color: #78716c;
+    }
+
+    .footer-url {
+      font-size: 17px;
+      font-weight: 800;
+      color: #7c3aed;
+    }
+  </style>
+</head>
+<body>
+  <div class="pin">
+    <div class="headline-tag">Beginner Guide</div>
+    <h1>How to Start Reducing<br>Plastic Exposure at Home</h1>
+    <div class="divider"></div>
+    <div class="swaps">
+      <div class="swap">
+        <div class="swap-num">1</div>
+        <div class="swap-text">Stop microwaving in plastic<span class="subtitle">Use glass or ceramic dishes instead</span>
+          <ul class="swap-tips">
+            <li>Heat releases chemicals 5x faster into food</li>
+            <li>Even "microwave safe" plastic still leaches</li>
+            <li>Glass containers work for storage and reheating</li>
+          </ul>
+        </div>
+      </div>
+      <div class="swap">
+        <div class="swap-num">2</div>
+        <div class="swap-text">Replace your plastic kettle<span class="subtitle">Switch to stainless steel or glass</span>
+          <ul class="swap-tips">
+            <li>Plastic kettles release millions of microplastics per boil</li>
+            <li>Stainless steel or glass kettles last longer</li>
+            <li>Same goes for plastic coffee makers</li>
+          </ul>
+        </div>
+      </div>
+      <div class="swap">
+        <div class="swap-num">3</div>
+        <div class="swap-text">Ditch non stick cookware<span class="subtitle">Use cast iron, stainless, or ceramic</span>
+          <ul class="swap-tips">
+            <li>Teflon coatings contain PFAS (forever chemicals)</li>
+            <li>Scratched pans release particles into food</li>
+            <li>Cast iron and stainless last a lifetime</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="more-label">More easy swaps</div>
+    <div class="compact-swaps">
+      <div class="compact-swap">
+        <div class="compact-num">4</div>
+        <div class="compact-text">Glass food storage <span>instead of plastic containers</span></div>
+      </div>
+      <div class="compact-swap">
+        <div class="compact-num">5</div>
+        <div class="compact-text">Wood cutting boards <span>instead of plastic</span></div>
+      </div>
+      <div class="compact-swap">
+        <div class="compact-num">6</div>
+        <div class="compact-text">Water filter <span>to remove microplastics</span></div>
+      </div>
+      <div class="compact-swap">
+        <div class="compact-num">7</div>
+        <div class="compact-text">Organic cotton bedding <span>starting with pillowcases</span></div>
+      </div>
+      <div class="compact-swap">
+        <div class="compact-num">8</div>
+        <div class="compact-text">Natural fiber clothing <span>when replacing worn out items</span></div>
+      </div>
+    </div>
+    <div class="footer">
+      <span class="footer-stat">Start from the kitchen. Work outward.</span>
+      <span class="footer-url">plasticdetox.org</span>
+    </div>
+  </div>
+</body>
+</html>

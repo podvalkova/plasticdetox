@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Toothbrush — Bristle Materials Compared</title>
+  <style>
+    @font-face {
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 100 900;
+      src: url(inter-latin.woff2) format('woff2');
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #fafaf9; display: flex; justify-content: center; padding: 0; font-family: 'Inter', -apple-system, sans-serif; }
+    .pin {
+      width: 1080px;
+      height: 1350px;
+      background: #fafaf9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 52px 56px 32px;
+    }
+    .headline-tag { display: inline-block; font-size: 16px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; color: #7c3aed; background: #ede9fe; padding: 10px 26px; border-radius: 100px; margin-bottom: 24px; }
+    h1 { font-size: 64px; font-weight: 900; color: #1c1917; line-height: 1.1; letter-spacing: -0.03em; text-align: center; margin-bottom: 14px; }
+    .subtitle { font-size: 24px; font-weight: 500; color: #78716c; margin-bottom: 32px; text-align: center; }
+    .divider { width: 56px; height: 4px; background: #7c3aed; border-radius: 2px; margin-bottom: 36px; }
+    .table {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      flex: 1;
+      justify-content: center;
+    }
+    .row {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 0.7fr;
+      gap: 16px;
+      align-items: center;
+      padding: 22px 24px;
+      border-radius: 14px;
+    }
+    .row-header {
+      padding: 10px 24px;
+      font-size: 16px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #78716c;
+      border-bottom: 1.5px solid #e7e5e4;
+      border-radius: 0;
+    }
+    .row-red { background: #fef2f2; }
+    .row-orange { background: #fff7ed; }
+    .row-green { background: #f0fdf4; }
+    .row-blue { background: #eff6ff; }
+    .cell-name {
+      font-size: 30px;
+      font-weight: 800;
+      color: #1c1917;
+      line-height: 1.2;
+    }
+    .cell-name span {
+      display: block;
+      font-size: 18px;
+      font-weight: 500;
+      color: #78716c;
+      margin-top: 4px;
+    }
+    .cell-source {
+      font-size: 22px;
+      font-weight: 600;
+      color: #1c1917;
+      line-height: 1.3;
+    }
+    .cell-source span {
+      display: block;
+      font-size: 17px;
+      font-weight: 500;
+      color: #78716c;
+      margin-top: 4px;
+    }
+    .cell-bio {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 24px;
+      font-weight: 800;
+    }
+    .dot { width: 18px; height: 18px; border-radius: 50%; flex-shrink: 0; }
+    .dot-red { background: #dc2626; }
+    .dot-orange { background: #d97706; }
+    .dot-green { background: #16a34a; }
+    .text-red { color: #dc2626; }
+    .text-orange { color: #d97706; }
+    .text-green { color: #16a34a; }
+    .cell-plastic {
+      font-size: 24px;
+      font-weight: 800;
+      text-align: right;
+    }
+    .takeaway { width: 100%; background: #f0fdf4; border: 1.5px solid #bbf7d0; border-radius: 20px; padding: 24px 36px; text-align: center; font-size: 19px; font-weight: 700; color: #14532d; line-height: 1.5; margin-top: 28px; }
+    .footer { display: flex; align-items: center; justify-content: space-between; width: 100%; padding-top: 20px; margin-top: 24px; border-top: 2px solid #e7e5e4; }
+    .footer-stat { font-size: 17px; font-weight: 600; color: #78716c; }
+    .footer-url { font-size: 19px; font-weight: 800; color: #7c3aed; }
+  </style>
+</head>
+<body>
+  <div class="pin">
+    <div class="headline-tag">Bathroom Guide</div>
+    <h1>Toothbrush Bristle<br>Materials Compared</h1>
+    <div class="subtitle">Only one of the four is truly plastic free</div>
+    <div class="divider"></div>
+    <div class="table">
+      <div class="row row-header">
+        <div>Material</div>
+        <div>Source</div>
+        <div>Biodegradable?</div>
+        <div style="text-align:right">Plastic?</div>
+      </div>
+      <div class="row row-red">
+        <div class="cell-name">Nylon-4 / Nylon-6<span>Most common bristle</span></div>
+        <div class="cell-source">Petroleum<span>100% fossil fuel</span></div>
+        <div class="cell-bio"><span class="dot dot-red"></span><span class="text-red">No</span></div>
+        <div class="cell-plastic text-red">Yes</div>
+      </div>
+      <div class="row row-orange">
+        <div class="cell-name">Nylon-1010<span>Marketed as "bio based"</span></div>
+        <div class="cell-source">Castor bean oil<span>Renewable feedstock</span></div>
+        <div class="cell-bio"><span class="dot dot-orange"></span><span class="text-orange">Partially</span></div>
+        <div class="cell-plastic text-orange">Yes</div>
+      </div>
+      <div class="row row-blue">
+        <div class="cell-name">Castor bean bristles<span>Vegan alternative to boar</span></div>
+        <div class="cell-source">Castor bean plant<span>Processed into nylon</span></div>
+        <div class="cell-bio"><span class="dot dot-orange"></span><span class="text-orange">Partially</span></div>
+        <div class="cell-plastic text-orange">Yes</div>
+      </div>
+      <div class="row row-green">
+        <div class="cell-name">Boar hair<span>Natural animal hair</span></div>
+        <div class="cell-source">Pig hair (byproduct)<span>From meat industry</span></div>
+        <div class="cell-bio"><span class="dot dot-green"></span><span class="text-green">Yes</span></div>
+        <div class="cell-plastic text-green">No</div>
+      </div>
+    </div>
+    <div class="takeaway">Boar hair is the only bristle that is genuinely plastic free.<br>Castor bean is the best vegan compromise.</div>
+    <div class="footer">
+      <span class="footer-stat">No company has mass produced a fully biodegradable nylon bristle.</span>
+      <span class="footer-url">plasticdetox.org</span>
+    </div>
+  </div>
+</body>
+</html>

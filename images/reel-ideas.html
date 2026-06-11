@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reel Content Ideas – Plastic Detox</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: #fafaf9;
+    color: #1c1917;
+    line-height: 1.6;
+  }
+
+  :root {
+    --accent: #7c3aed;
+    --accent-light: #ede9fe;
+    --bg: #fafaf9;
+    --surface: #ffffff;
+    --text: #1c1917;
+    --text-muted: #78716c;
+    --text-secondary: #44403c;
+    --border: #e7e5e4;
+  }
+
+  /* ─── Header ─── */
+  .header {
+    padding: 48px 24px 16px;
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .header h1 {
+    font-size: 28px; font-weight: 900; color: var(--text);
+    letter-spacing: -0.03em; margin-bottom: 8px;
+  }
+  .header p {
+    font-size: 14px; color: var(--text-muted); line-height: 1.6;
+  }
+
+  /* ─── Category ─── */
+  .category {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 40px 24px 48px;
+  }
+  .cat-tag {
+    display: inline-block;
+    font-size: 12px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.14em;
+    color: var(--accent); background: var(--accent-light);
+    padding: 6px 16px; border-radius: 100px;
+    margin-bottom: 12px;
+  }
+  .cat-title {
+    font-size: 22px; font-weight: 800;
+    letter-spacing: -0.02em; margin-bottom: 6px;
+  }
+  .cat-description {
+    font-size: 14px; color: var(--text-muted); line-height: 1.6;
+    margin-bottom: 32px;
+  }
+
+  /* ─── Idea card ─── */
+  .idea-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    margin-bottom: 16px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .idea-top {
+    display: flex; align-items: flex-start; gap: 14px;
+    padding: 20px 20px 0;
+  }
+  .idea-num {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: var(--accent); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 800; flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .idea-content { flex: 1; }
+  .idea-question {
+    font-size: 16px; font-weight: 800; line-height: 1.35;
+    margin-bottom: 6px; letter-spacing: -0.01em;
+  }
+  .idea-answer {
+    font-size: 13px; color: var(--text-secondary); line-height: 1.55;
+    margin-bottom: 12px;
+  }
+  .idea-source {
+    font-size: 11px; color: var(--text-muted); font-weight: 500;
+    margin-bottom: 12px;
+  }
+
+  /* ─── Storyboard ─── */
+  .storyboard {
+    display: flex; gap: 0; overflow: hidden;
+    margin: 0 20px 16px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    height: 160px;
+  }
+  .frame {
+    flex: 1;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 14px 10px;
+    position: relative;
+    min-width: 0;
+    background: var(--bg);
+  }
+  .frame + .frame { border-left: 1px solid var(--border); }
+  .frame.surface { background: var(--surface); }
+  .frame.tint { background: var(--accent-light); }
+
+  .frame-step {
+    position: absolute; top: 6px; left: 8px;
+    font-size: 7px; font-weight: 700; color: var(--text-muted);
+    text-transform: uppercase; letter-spacing: 1px;
+  }
+  .frame-tag {
+    display: inline-block;
+    font-size: 7px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--accent); background: var(--accent-light);
+    padding: 3px 8px; border-radius: 100px;
+    margin-bottom: 8px;
+  }
+  .frame-headline {
+    font-size: 12px; font-weight: 800; color: var(--text);
+    text-align: center; line-height: 1.25; letter-spacing: -0.01em;
+  }
+  .frame-body {
+    font-size: 9px; font-weight: 500; color: var(--text-muted);
+    text-align: center; line-height: 1.35; margin-top: 4px;
+  }
+  .frame-stat {
+    font-size: 24px; font-weight: 900; color: var(--accent);
+    line-height: 1;
+  }
+  .frame-stat-label {
+    font-size: 8px; font-weight: 700; color: var(--text-muted);
+    text-transform: uppercase; letter-spacing: 1px; margin-top: 2px;
+  }
+
+  /* Numbered badge inside frame (like your pin badges) */
+  .frame-badge {
+    width: 22px; height: 22px; border-radius: 50%;
+    background: var(--accent); color: #fff;
+    font-size: 10px; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 6px;
+    box-shadow: 0 1px 4px rgba(124, 58, 237, 0.3);
+  }
+
+  /* Swap row inside frame */
+  .frame-swap {
+    display: flex; align-items: center; gap: 6px;
+    background: var(--surface);
+    border-radius: 8px; padding: 5px 8px;
+    margin-top: 3px; width: 100%;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  }
+  .frame-swap-num {
+    width: 16px; height: 16px; border-radius: 50%;
+    background: var(--accent); color: #fff;
+    font-size: 8px; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .frame-swap-text {
+    font-size: 8px; font-weight: 700; color: var(--text);
+    line-height: 1.2;
+  }
+  .frame-swap-sub {
+    font-size: 7px; font-weight: 500; color: var(--text-muted);
+  }
+
+  /* Arrow between swap items */
+  .frame-arrow {
+    font-size: 14px; color: var(--accent); font-weight: 700;
+    margin: 4px 0;
+  }
+
+  /* Divider line (from → to) */
+  .frame-divider {
+    width: 30px; height: 3px;
+    background: var(--accent); border-radius: 2px;
+    margin: 8px 0;
+  }
+
+  .frame-footer {
+    font-size: 8px; font-weight: 700; color: var(--accent);
+    margin-top: auto; padding-top: 4px;
+  }
+
+  /* ─── Tags ─── */
+  .idea-tags {
+    display: flex; gap: 6px; flex-wrap: wrap;
+    padding: 0 20px 16px;
+  }
+  .tag {
+    font-size: 10px; font-weight: 600; padding: 3px 10px;
+    border-radius: 12px;
+  }
+  .tag.format { background: var(--accent-light); color: var(--accent); }
+  .tag.topic { background: #f1f5f9; color: #475569; }
+  .tag.source { background: #fafaf9; color: var(--text-muted); border: 1px solid var(--border); }
+
+  /* ─── Divider ─── */
+  .divider-line {
+    border: none; border-top: 1px solid var(--border);
+    margin: 48px auto; max-width: 720px;
+  }
+
+  /* ─── Tips ─── */
+  .tips {
+    max-width: 720px;
+    margin: 0 auto 60px;
+    padding: 0 24px;
+  }
+  .tips h3 {
+    font-size: 16px; font-weight: 800; margin-bottom: 16px;
+    letter-spacing: -0.01em;
+  }
+  .tip-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  @media (max-width: 600px) { .tip-grid { grid-template-columns: 1fr; } }
+  .tip-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; padding: 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .tip-card strong {
+    font-size: 13px; display: block; margin-bottom: 4px;
+  }
+  .tip-card p {
+    font-size: 12px; color: var(--text-muted); line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Reel Content Ideas</h1>
+  <p>Two series. 20 episodes. All sourced from existing research and articles.</p>
+</div>
+
+<!-- ========================================================= -->
+<!--  CATEGORY 1: NO FILTER TALK                               -->
+<!-- ========================================================= -->
+
+<div class="category">
+  <div class="cat-tag">Series 1</div>
+  <h2 class="cat-title">No Filter Talk</h2>
+  <p class="cat-description">Honest, research-backed answers to real questions. No hedging, no selling. Each reel is a single question answered in under 15 seconds with clear reasoning and a source.</p>
+
+  <!-- 1 -->
+  <div class="idea-card">
+    <div class="idea-top">
+      <div class="idea-num">1</div>
+      <div class="idea-content">
+        <div class="idea-question">Should I buy a bamboo toothbrush?</div>
+        <div class="idea-answer">The handle is compostable bamboo, but the bristles are still nylon (plastic). Labels saying "100% biodegradable" are misleading because the bristles and metal staples go to landfill. It is a better choice than fully plastic, but not what the marketing implies.</div>
+        <div class="idea-source">Source: Bamboo toothbrush article, material breakdown</div>
+      </div>
+    </div>
+    <div class="storyboard">
+      <div class="frame">
+        <div class="frame-step">The question</div>
+        <div class="frame-tag">No Filter Talk</div>
+        <div class="frame-headline">Should I buy a bamboo toothbrush?</div>
+      </div>
+      <div class="frame surface">
+        <div class="frame-step">The answer</div>
+        <div class="frame-headline">The handle composts. The bristles do not.</div>
+        <div class="frame-body">Bristles are nylon, a plastic polymer.<br>Metal staples stay embedded.</div>
+      </div>
+      <div class="frame tint">
+        <div class="frame-step">The takeaway</div>
+        <div class="frame-headline">Better than fully plastic, but not zero waste.</div>
+        <div class="frame-body">Look for brands with a bristle recycling program.</div>
+        <div class="frame-footer">plasticdetox.org</div>
+      </div>
+    </div>
+    <div class="idea-tags">
+      <span class="tag format">Question and Answer</span>
+      <span class="tag topic">Personal Care</span>
+      <span class="tag source">Bamboo Toothbrush article</span>
+    </div>
+  </div>
+
+  <!-- 2 -->
+  <div class="idea-card">
+    <div class="idea-top">
+      <div class="idea-num">2</div>
+      <div class="idea-content">
+        <div class="idea-question">Is a stainless steel cutting board better than wood?</div>
+        <div class="idea-answer">Wood is the better choice for most home kitchens. UC Davis research found that bacteria on wood surfaces die off, while bacteria on plastic boards survive in knife grooves. Plastic cutting boards shed 14 to 71 million microplastic particles per year into food.</div>
+        <div class="idea-source">Source: Environmental Science and Technology, 2023; UC Davis food safety research</div>
+      </div>
+    </div>
+    <div class="storyboard">
+      <div class="frame">
+        <div class="frame-step">The question</div>
+        <div class="frame-tag">No Filter Talk</div>
+        <div class="frame-headline">Stainless steel or wood cutting board?</div>
+      </div>
+      <div class="frame surface">
+        <div class="frame-step">The research</div>
+        <div class="frame-swap">
+          <div class="frame-swap-num">1</div>
+          <div class="frame-swap-text">Wood<div class="frame-swap-sub">Bacteria die on surface</div></div>
+        </div>
+        <div class="frame-swap">
+          <div class="frame-swap-num">2</div>
+          <div class="frame-swap-text">Steel<div class="frame-swap-sub">Safe, but hard on knives</div></div>
+        </div>
+        <div class="frame-swap">
+          <div class="frame-swap-num">3</div>
+          <div class="frame-swap-text">Plastic<div class="frame-swap-sub">71M microplastics per year</div></div>
+        </div>
+      </div>
+      <div class="frame tint">
+        <div class="frame-step">The takeaway</div>
+        <div class="frame-headline">Wood wins for most kitchens.</div>
+        <div class="frame-body">End grain boards are self-healing. Maple has natural antimicrobial properties.</div>
+        <div class="frame-footer">plasticdetox.org</div>
+      </div>
+    </div>
+    <div class="idea-tags">
+      <span class="tag format">Comparison</span>
+      <span class="tag topic">Kitchen</span>
+      <span class="tag source">Cutting Board article</span>
+    </div>
+  </div>
+
+  <!-- 3 -->
+  <div class="idea-card">
+    <div class="idea-top">
+      <div class="idea-num">3</div>
+      <div class="idea-content">
+        <div class="idea-question">Should I throw out all my plastic containers?</div>
+        <div class="idea-answer">No. Replace as they wear out. Prioritize swapping the containers you heat food in, because heat is what accelerates chemical migration. Cold and dry storage in plastic is lower risk. Glass is the priority swap for anything that gets microwaved.</div>
+        <div class="idea-source">Source: PNAS 2024 nanoplastics study; food storage article</div>
+      </div>
+    </div>
+    <div class="storyboard">
+      <div class="frame">
+        <div class="frame-step">The question</div>
+        <div class="frame-tag">No Filter Talk</div>
+        <div class="frame-headline">Should I throw out all my plastic containers?</div>
+      </div>
+      <div class="frame surface">
+        <div class="frame-step">The answer</div>
+        <div class="frame-headline">No. Replace as they wear out.</div>
+        <div class="frame-body">Start with the ones you microwave in. That is where the highest chemical migration happens.</div>
+      </div>
+      <div class="frame tint">
+        <div class="frame-step">Priority swap</div>
+        <div class="frame-badge">1</div>
+        <div class="frame-headline">Glass for anything you heat.</div>
+        <div class="frame-body">Cold dry storage in plastic is lower risk. Do not panic.</div>
+        <div class="frame-footer">plasticdetox.org</div>
+      </div>
+    </div>
+    <div class="idea-tags">
+      <span class="tag format">Question and Answer</span>
+      <span class="tag topic">Food Storage</span>
+      <span class="tag source">Food Storage article</span>
+    </div>
+  </div>
+
+  <!-- 4 -->
+  <div class="idea-card">
+    <div class="idea-top">
+      <div class="idea-num">4</div>
+      <div class="idea-content">
+        <div class="idea-question">Is a Brita filter actually doing anything?</div>
+        <div class="idea-answer">It reduces chlorine, some heavy metals, and improves taste. But standard pitcher filters barely filter microplastics. Carbon block filters and reverse osmosis systems are significantly more effective for chemical removal.</div>
+        <div class="idea-source">Source: Water filtration comparison data</div>
+      </div>
+    </div>
+    <div class="storyboard">
+      <div class="frame">
+        <div class="frame-step">The question</div>
+        <div class="frame-tag">No Filter Talk</div>
+        <div class="frame-headline">Is a Brita filter actually doing anything?</div>
+      </div>
+      <div class="frame surface">
+        <div class="frame-step">What it filters</div>
+        <div class="frame-headline">Chlorine and taste: yes. Microplastics: barely.</div>
+        <div class="frame-body">Standard pitcher filters were not designed for nanoplastic removal.</div>
+      </div>
+      <div class="frame tint">
+        <div class="frame-step">Better options</div>
+        <div class="frame-swap">
+          <div class="frame-swap-num">1</div>
+          <div class="frame-swap-text">Reverse Osmosis<div class="frame-swap-sub">Removes 99% of contaminants</div></div>
+        </div>
+        <div class="frame-swap">
+          <div class="frame-swap-num">2</div>
+          <div class="frame-swap-text">Carbon Block<div class="frame-swap-sub">Best value for most homes</div></div>
+        </div>
+        <div class="frame-footer">plasticdetox.org</div>
+      </div>
+    </div>
+    <div class="idea-tags">
+      <span class="tag format">Comparison</span>
+      <span class="tag topic">Water</span>
+    </div>
+  </div>
+
+  <!-- 5 -->
+  <div class="idea-card">
+    <div class="idea-top">
+      <div class="idea-num">5</div>
+      <div class="idea-content">
+        <div class="idea-question">Nonstick or stainless steel pan?</div>
+        <div class="idea-answer">Stainless steel or cast iron. Nonstick coatings contain PFAS, which begin releasing toxic fumes at high temperatures. Cast iron is completely coating-free, lasts decades, and adds trace iron to food.</div>
+        <div class="idea-source">Source: Kitchen appliances article, PFAS research</div>
+      </div>
+    </div>
+    <div class="storyboard">
+      <div class="frame">
+        <div class="frame-step">The question</div>
+        <div class="frame-tag">No Filter Talk</div>
+        <div class="frame-headline">Nonstick or stainless steel?</div>
+      </div>
+      <div class="frame surface">
+        <div class="frame-step">The issue</div>
+        <div class="frame-headline">Nonstick coatings contain PFAS.</div>
+        <div class="frame-body">These coatings begin breaking down at high heat, releasing compounds linked to polymer fume fever.</div>
+      </div>
+      <div class="frame tint">
+        <div class="frame-step">Safer picks</div>
+        <div class="frame-swap">
+          <div class="frame-swap-num">1</div>
+          <div class="frame-swap-text">Cast Iron<div class="frame-swap-sub">No coating, lasts forever</div></div>
+        </div>
+        <div class="frame-swap">
+          <div class="frame-swap-num">2</div>
+          <div class="frame-swap-text">Stainless Steel<div class="frame-swap-sub">Non reactive, no PFAS</div></div>
+        </div>
+        <div class="frame-footer">plasticdetox.org</div>
+      </div>
+    </div>
+    <div class="idea-tags">
+      <span class="tag format">Comparison</span>
+      <span class="tag topic">Cookware</span>
+      <span class="tag source">Kitchen Appliances article</span>
+    </div>
+  </div>
+
+  <!-- 6 -->
+  <div class="idea-card">
+    <div class="idea-top">
+      <div class="idea-num">6</div>
+      <div class="idea-content">
+        <div class="idea-question">Do I need to detox my baby?</div>
+        <div class="idea-answer">No. Babies are not toxic. "Detox" products marketed for infants have no scientific basis. The effective approach is prevention: safer bottles, food containers, and toys. Replace plastic items that contact food or go in the mouth.</div>
+        <div class="idea-source">Source: Baby guide article</div>
+      </div>
+    </div>
+    <div class="storyboard">
+      <div class="frame">
+        <div class="frame-step">The question</div>
+        <div class="frame-tag">No Filter Talk</div>
+        <div class="frame-headline">Do I need to detox my baby?</div>
+      </div>
+      <div class="frame surface">
+        <div class="frame-step">The answer</div>
+        <div class="frame-headline">No. Prevention, not detox.</div>
+        <div class="frame-body">"Detox" products marketed for infants have no scientific basis. Babies' bodies handle normal exposures.</div>
+      </div>
+      <div class="frame tint">
+        <div class="frame-step">What actually helps</div>
+        <div class="frame-swap">
+          <div class="frame-swap-num">1</div>
+          <div class="frame-swap-text">Glass or steel bottles<div class="frame-swap-sub">Instead of plastic</div></div>
+        </div>
+        <div class="frame-swap">
+          <div class="frame-swap-num">2</div>
+          <div class="frame-swap-text">Glass food storage<div class="frame-swap-sub">For anything heated</div></div>
+        </div>
+        <div class="frame-footer">plasticdetox.org</div>
+      </div>
+    </div>
+    <div class="idea-tags">
+      <span class="tag format">Question and Answer</span>
+      <span class="tag topic">Baby</span>
+      <span class="tag source">Baby Guide article</span>
+    </div>
+  </div>
+
+  <!-- 7 -->
+  <div class="idea-card">
+    <div class="idea-top">
+      <div class="idea-num">7</div>
+      <div class="idea-content">
+        <div class="idea-question">Can I use plastic containers for cold food?</div>
+        <div class="idea-answer">Yes, this is lower risk. Heat is the primary driver of chemical migration from plastic into food. Cold, dry storage in plastic is far less concerning than heating in plastic. Swap the heated containers first.</div>
+        <div class="idea-source">Source: Food storage article, chemical migration research</div>
+      </div>
+    </div>
+    <div class="storyboard">
+      <div class="frame">
+        <div class="frame-step">The question</div>
+        <div class="frame-tag">No Filter Talk</div>
+        <div class="frame-headline">Can I use plastic for cold food?</div>
+      </div>
+      <div class="frame surface">
+        <div class="frame-step">The answer</div>
+        <div class="frame-headline">Yes. Cold and dry is lower risk.</div>
+        <div class="frame-body">Heat is what drives chemical migration from plastic into food.</div>
+      </div>
+      <div class="frame tint">
+        <div class="frame-step">Priority order</div>
+        <div class="frame-swap">
+          <div class="frame-swap-num">1</div>
+          <div class="frame-swap-text">Swap heated containers first<div class="frame-swap-sub">Highest chemical migration</div></div>
+        </div>
+        <div class="frame-swap">
+          <div class="frame-swap-num">2</div>
+          <div class="frame-swap-text">Cold storage can wait<div class="frame-swap-sub">Replace as they wear out</div></div>
+        </div>
+        <div class="frame-footer">plasticdetox.org</div>
+      </div>
+    </div>
+    <div class="idea-tags">
+      <span class="tag format">Question and Answer</span>
+      <span class="tag topic">Food Storage</span>
+    </div>
+  </div>
+
+  <!-- 8 -->
+  <div class="idea-card">
+    <div class="idea-top">
+      <div class="idea-num">8</div>
+      <div class="idea-content">
+        <div class="idea-question">Should I switch to toothpaste tablets?</div>
+        <div class="idea-answer">They reduce plastic packaging significantly. But check if they contain fluoride, as many tablet brands omit it. The best option combines fluoride content with minimal packaging (glass jar, compostable pouch).</div>
+        <div class="idea-source">Source: Toothbrush article, personal care research</div>
+      </div>
+    </div>
+    <div class="storyboard">
+      <div class="frame">
+        <div class="frame-step">The question</div>
+        <div class="frame-tag">No Filter Talk</div>
+        <div class="frame-headline">Should I switch to toothpaste tablets?</div>
+      </div>
+      <div class="frame surface">
+        <div class="frame-step">The trade-off</div>
+        <div class="frame-headline">Less plastic. But check for fluoride.</div>
+        <div class="frame-body">Many tablet brands omit fluoride entirely. Read the ingredients.</div>
+      </div>
+      <div class="frame tint">
+        <div class="frame-step">What to look for</div>
+        <div class="frame-headline">Fluoride content + glass or compostable packaging.</div>
+        <div class="frame-body">That gives you dental protection and reduced plastic.</div>
+        <div class="frame-footer">plasticdetox.org</div>
+      </div>
+    </div>
+    <div class="idea-tags">
+      <span class="tag format">Question and Answer</span>
+      <span class="tag topic">Personal Care</span>
+    </div>
+  </div>
+
+  <!-- 9 -->
+  <div class="idea-card">
+    <div class="idea-top">
+      <div class="idea-num">9</div>
+      <div class="idea-content">
+        <div class="idea-question">Are scented candles actually harmful?</div>
+        <div class="idea-answer">Paraffin-based candles release benzene, toluene, and PM2.5 particulate matter when burned. Indoor air quality during burning can reach levels comparable to secondhand smoke. Beeswax and coconut wax candles burn cleaner with significantly lower emissions.</div>
+        <div class="idea-source">Source: Indoor air quality article, combustion byproduct research</div>
+      </div>
+    </div>
+    <div class="storyboard">
+      <div class="frame">
+        <div class="frame-step">The question</div>
+        <div class="frame-tag">No Filter Talk</div>
+        <div class="frame-headline">Are scented candles harmful?</div>
+      </div>
+      <div class="frame surface">
+        <div class="frame-step">What research shows</div>
+        <div class="frame-headline">Paraffin releases benzene and toluene.</div>
+        <div class="frame-body">Indoor air quality during burning can match secondhand smoke levels.</div>
+      </div>
+      <div class="frame tint">
+        <div class="frame-step">Cleaner alternatives</div>
+        <div class="frame-swap">
+          <div class="frame-swap-num">1</div>
+          <div class="frame-swap-text">Beeswax<div class="frame-swap-sub">Clean burn, no synthetic fragrance</div></div>
+        </div>
+        <div class="frame-swap">
+          <div class="frame-swap-num">2</div>
+          <div class="frame-swap-text">Coconut Wax<div class="frame-swap-sub">Low soot, longer burn time</div></div>
+        </div>
+        <div class="frame-footer">plasticdetox.org</div>
+      </div>
+    </div>
+    <div class="idea-tags">
+      <span class="tag format">Question and Answer</span>
+      <span class="tag topic">Indoor Air</span>
+    </div>
+  </div>
+
+  <!-- 10 -->
+  <div class="idea-card">
+    <div class="idea-top">
+      <div class="idea-num">10</div>
+      <div class="idea-content">
+        <div class="idea-question">Glass or stainless steel containers?</div>
+        <div class="idea-answer">Both are excellent. Glass is microwave-safe and lets you see the contents. Stainless steel is unbreakable and lighter for packed lunches. Neither leaches chemicals. Choose based on how you use them, not marketing.</div>
+        <div class="idea-source">Source: Food storage article, material comparison</div>
+      </div>
+    </div>
+    <div class="storyboard">
+      <div class="frame">
+        <div class="frame-step">The question</div>
+        <div class="frame-tag">No Filter Talk</div>
+        <div class="frame-headline">Glass or stainless steel?</div>
+      </div>
+      <div class="frame surface">
+        <div class="frame-step">Glass</div>
+        <div class="frame-headline">Microwave safe. See-through.</div>
+        <div class="frame-body">Borosilicate handles temperature changes. Can break if dropped.</div>
+      </div>
+      <div class="frame tint">
+        <div class="frame-step">Stainless steel</div>
+        <div class="frame-headline">Unbreakable. Lighter.</div>
+        <div class="frame-body">304 grade (18/8) is food safe. Cannot microwave. Great for packed lunches.</div>
+        <div class="frame-footer">plasticdetox.org</div>
+      </div>
+    </div>
+    <div class="idea-tags">
+      <span class="tag format">Comparison</span>
+      <span class="tag topic">Food Storage</span>
+      <span class="tag source">Food Storage article</span>
+    </div>
+  </div>
+
+</div>
+
+<hr class="divider-line">
+
+<!-- ========================================================= -->
+<!--  CATEGORY 2: THE FINE PRINT                               -->
+<!-- ========================================================= -->
+
+<div class="category">
+  <div class="cat-tag">Series 2</div>
+  <h2 class="cat-title">The Fine Print</h2>
+  <p class="cat-description">Marketing claims taken apart with evidence. Each reel follows the same structure: show the claim as it appears on packaging, then show what the research actually says. No opinions, just evidence and context.</p>
+
+  <!-- 1 -->
+  <div class="idea-card">
+    <div class="idea-top">
+      <div class="idea-num">1</div>
+      <div class="idea-content">
+        <div class="idea-question">"100% Biodegradable" on bamboo toothbrushes</div>
+        <div class="idea-answer">The handle is compostable bamboo. The bristles are nylon, a plastic polymer that does not biodegrade. Metal staples holding the bristles also go to landfill. The claim applies to one part of a multi-material product.</div>
+        <div class="idea-source">Source: Bamboo toothbrush article, material composition analysis</div>
+      </div>
+    </div>
+    <div class="storyboard">
+      <div class="frame">
+        <div class="frame-step">The claim</div>
+        <div class="frame-tag">The Fine Print</div>
+        <div class="frame-headline">"100% Biodegradable"</div>
+        <div class="frame-body">As printed on packaging</div>
+      </div>
+      <div class="frame surface">
+        <div class="frame-step">The materials</div>
+        <div class="frame-headline">Handle: bamboo (composts)</div>
+        <div class="frame-divider"></div>
+        <div class="frame-headline">Bristles: nylon (landfill)</div>
+        <div class="frame-divider"></div>
+        <div class="frame-headline">Staples: metal (landfill)</div>
+      </div>
+      <div class="frame tint">
+        <div class="frame-step">The reality</div>
+        <div class="frame-headline">One of three components is biodegradable.</div>
+        <div class="frame-body">The claim applies to the handle only.</div>
+        <div class="frame-footer">plasticdetox.org</div>
+      </div>
+    </div>
+    <div class="idea-tags">
+      <span class="tag format">Claim vs Evidence</span>
+      <span class="tag topic">Personal Care</span>
+      <span class="tag source">Bamboo Toothbrush article</span>
+    </div>
+  </div>
+
+  <!-- 2 -->
+  <div class="idea-card">
+    <div class="idea-top">
+      <div class="idea-num">2</div>
+      <div class="idea-content">
+        <div class="idea-question">"BPA Free" on bottles and containers</div>
+        <div class="idea-answer">BPA Free means no bisphenol A specifically. Most BPA Free products use BPS or BPF instead, which a 2024 comparative study found have similar estrogenic and anti-androgenic activity. The EU banned all bisphenols in food contact materials. The US has not.</div>
+        <div class="idea-source">Source: 2024 comparative study on BPA alternatives; EU regulation January 2025</div>
+      </div>
+    </div>
+    <div class="storyboard">
+      <div class="frame">
+        <div class="frame-step">The claim</div>
+        <div class="frame-tag">The Fine Print</div>
+        <div class="frame-headline">"BPA Free"</div>
+        <div class="frame-body">Voluntary label. No third party testing required.</div>
+      </div>
+      <div class="frame surface">
+        <div class="frame-step">What replaces it</div>
+        <div class="frame-headline">BPS and BPF are the common replacements.</div>
+        <div class="frame-body">2024 research found similar hormone disrupting effects to BPA.</div>
+      </div>
+      <div class="frame tint">
+        <div class="frame-step">The context</div>
+        <div class="frame-stat">0</div>
+        <div class="frame-stat-label">bisphenols banned by FDA</div>
+        <div class="frame-body" style="margin-top:8px;">The EU banned all bisphenols in food contact materials in January 2025.</div>
+        <div class="frame-footer">plasticdetox.org</div>
+      </div>
+    </div>
+    <div class="idea-tags">
+      <span class="tag format">Claim vs Evidence</span>
+      <span class="tag topic">All Products</span>
+      <span class="tag source">BPA Free article</span>
+    </div>
+  </div>
+
+  <!-- 3 -->
+  <div class="idea-card">
+    <div class="idea-top">
+      <div class="idea-num">3</div>
+      <div class="idea-content">
+        <div class="idea-question">"Plant Based Bristles" on toothbrushes</div>
+        <div class="idea-answer">Castor oil nylon uses a plant-derived raw material, but the manufacturing process converts it into a synthetic polymer. The final product is still plastic, still non-biodegradable, and still ends up in landfill. "Plant based" describes the input, not the output.</div>
+        <div class="idea-source">Source: Bamboo toothbrush article, polymer chemistry</div>
+      </div>
+    </div>
+    <div class="storyboard">
+      <div class="frame">
+        <div class="frame-step">The claim</div>
+        <div class="frame-tag">The Fine Print</div>
+        <div class="frame-headline">"Plant Based Bristles"</div>
+        <div class="frame-body">Implies natural or biodegradable</div>
+      </div>
+      <div class="frame surface">
+        <div class="frame-step">The process</div>
+        <div class="frame-headline">Castor oil (plant)</div>
+        <div class="frame-arrow">→</div>
+        <div class="frame-headline">Nylon polymer (plastic)</div>
+        <div class="frame-body">Same chemical structure as petroleum nylon</div>
+      </div>
+      <div class="frame tint">
+        <div class="frame-step">The distinction</div>
+        <div class="frame-headline">"Plant based" describes the raw material, not the finished product.</div>
+        <div class="frame-body">Still plastic. Still landfill.</div>
+        <div class="frame-footer">plasticdetox.org</div>
+      </div>
+    </div>
+    <div class="idea-tags">
+      <span class="tag format">Claim vs Evidence</span>
+      <span class="tag topic">Personal Care</span>
+      <span class="tag source">Bamboo Toothbrush article</span>
+    </div>
+  </div>
+
+  <!-- 4 -->
+  <div class="idea-card">
+    <div class="idea-top">
+      <div class="idea-num">4</div>
+      <div class="idea-content">
+        <div class="idea-question">"Non-Toxic" on cookware</div>
+        <div class="idea-answer">"Non-toxic" has no legal definition, no required testing, and no certification body behind it. Any manufacturer can use this term on any product. What matters instead: the specific material (stainless steel 18/10, cast iron) and third party certifications like MADE SAFE.</div>
+        <div class="idea-source">Source: Kitchen appliances article, FTC labeling guidelines</div>
+      </div>
+    </div>
+    <div class="storyboard">
+      <div class="frame">
+        <div class="frame-step">The claim</div>
+        <div class="frame-tag">The Fine Print</div>
+        <div class="frame-headline">"Non-Toxic Cookware"</div>
+        <div class="frame-body">Printed on packaging and marketing</div>
+      </div>
+      <div class="frame surface">
+        <div class="frame-step">What it means legally</div>
+        <div class="frame-headline">Nothing.</div>
+        <div class="frame-body">No legal definition.<br>No required testing.<br>No certification needed.</div>
+      </div>
+      <div class="frame tint">
+        <div class="frame-step">What to look for instead</div>
+        <div class="frame-swap">
+          <div class="frame-swap-num">1</div>
+          <div class="frame-swap-text">Specific material<div class="frame-swap-sub">Stainless steel 18/10, cast iron</div></div>
+        </div>
+        <div class="frame-swap">
+          <div class="frame-swap-num">2</div>
+          <div class="frame-swap-text">Third party certifications<div class="frame-swap-sub">MADE SAFE, GOTS, etc.</div></div>
+        </div>
+        <div class="frame-footer">plasticdetox.org</div>
+      </div>
+    </div>
+    <div class="idea-tags">
+      <span class="tag format">Claim vs Evidence</span>
+      <span class="tag topic">Cookware</span>
+    </div>
+  </div>
+
+  <!-- 5 -->
+  <div class="idea-card">
+    <div class="idea-top">
+      <div class="idea-num">5</div>
+      <div class="idea-content">
+        <div class="idea-question">"Zero Waste" on bamboo toothbrush packaging</div>
+        <div class="idea-answer">To compost the brush, you need pliers to pull out each bristle tuft, then discard the nylon bristles and metal staples separately. The handle is the only compostable part. This is lower waste, not zero waste.</div>
+        <div class="idea-source">Source: Bamboo toothbrush article, end-of-life analysis</div>
+      </div>
+    </div>
+    <div class="storyboard">
+      <div class="frame">
+        <div class="frame-step">The claim</div>
+        <div class="frame-tag">The Fine Print</div>
+        <div class="frame-headline">"Zero Waste"</div>
+        <div class="frame-body">On bamboo toothbrush packaging</div>
+      </div>
+      <div class="frame surface">
+        <div class="frame-step">Disposal instructions</div>
+        <div class="frame-headline">Step 1: Remove bristles with pliers.</div>
+        <div class="frame-body">Step 2: Discard bristles (nylon) in trash.<br>Step 3: Discard staples (metal) in trash.<br>Step 4: Compost handle only.</div>
+      </div>
+      <div class="frame tint">
+        <div class="frame-step">The distinction</div>
+        <div class="frame-headline">Lower waste, not zero waste.</div>
+        <div class="frame-body">Three of the disposal steps produce landfill waste.</div>
+        <div class="frame-footer">plasticdetox.org</div>
+      </div>
+    </div>
+    <div class="idea-tags">
+      <span class="tag format">Claim vs Evidence</span>
+      <span class="tag topic">Personal Care</span>
+    </div>
+  </div>
+
+  <!-- 6 -->
+  <div class="idea-card">
+    <div class="idea-top">
+      <div class="idea-num">6</div>
+      <div class="idea-content">
+        <div class="idea-question">"Eco-Friendly" on plastic cutting boards</div>
+        <div class="idea-answer">The claim is based on recyclability. But during normal use, a plastic cutting board releases 14 to 71 million microplastic particles per year directly into food through knife cuts. The environmental and health impact of daily use is left out of the marketing.</div>
+        <div class="idea-source">Source: Environmental Science and Technology, 2023</div>
+      </div>
+    </div>
+    <div class="storyboard">
+      <div class="frame">
+        <div class="frame-step">The claim</div>
+        <div class="frame-tag">The Fine Print</div>
+        <div class="frame-headline">"Eco-Friendly"</div>
+        <div class="frame-body">"Made from recyclable plastic"</div>
+      </div>
+      <div class="frame surface">
+        <div class="frame-step">During normal use</div>
+        <div class="frame-stat">71M</div>
+        <div class="frame-stat-label">microplastics per year</div>
+        <div class="frame-body" style="margin-top:6px;">Released directly into food through knife-scarred grooves.</div>
+      </div>
+      <div class="frame tint">
+        <div class="frame-step">What the label leaves out</div>
+        <div class="frame-headline">Recyclability says nothing about safety during use.</div>
+        <div class="frame-body">A hardwood board releases zero microplastics.</div>
+        <div class="frame-footer">plasticdetox.org</div>
+      </div>
+    </div>
+    <div class="idea-tags">
+      <span class="tag format">Claim vs Evidence</span>
+      <span class="tag topic">Kitchen</span>
+      <span class="tag source">Cutting Board article</span>
+    </div>
+  </div>
+
+  <!-- 7 -->
+  <div class="idea-card">
+    <div class="idea-top">
+      <div class="idea-num">7</div>
+      <div class="idea-content">
+        <div class="idea-question">"BPA Free Bristles" on toothbrushes</div>
+        <div class="idea-answer">Nylon, the material used in toothbrush bristles, has never contained BPA. This label is technically accurate but entirely meaningless. It is the same as labeling water "gluten free."</div>
+        <div class="idea-source">Source: Bamboo toothbrush article, polymer chemistry</div>
+      </div>
+    </div>
+    <div class="storyboard">
+      <div class="frame">
+        <div class="frame-step">The claim</div>
+        <div class="frame-tag">The Fine Print</div>
+        <div class="frame-headline">"BPA Free Bristles"</div>
+        <div class="frame-body">Implies BPA was removed for safety</div>
+      </div>
+      <div class="frame surface">
+        <div class="frame-step">The chemistry</div>
+        <div class="frame-headline">Nylon has never contained BPA.</div>
+        <div class="frame-body">BPA is used in polycarbonate plastics and epoxy resins. Nylon is a different polymer entirely.</div>
+      </div>
+      <div class="frame tint">
+        <div class="frame-step">What this is</div>
+        <div class="frame-headline">A technically true but meaningless claim.</div>
+        <div class="frame-body">Equivalent to labeling water "gluten free."</div>
+        <div class="frame-footer">plasticdetox.org</div>
+      </div>
+    </div>
+    <div class="idea-tags">
+      <span class="tag format">Claim vs Evidence</span>
+      <span class="tag topic">Personal Care</span>
+    </div>
+  </div>
+
+  <!-- 8 -->
+  <div class="idea-card">
+    <div class="idea-top">
+      <div class="idea-num">8</div>
+      <div class="idea-content">
+        <div class="idea-question">"Safe for Food Contact" on plastic containers</div>
+        <div class="idea-answer">This certification is tested at room temperature. When the same container is microwaved, a 2024 PNAS study found it releases over 2 billion nanoplastic particles per square centimeter. The safety rating does not account for heat exposure.</div>
+        <div class="idea-source">Source: PNAS 2024 nanoplastics study</div>
+      </div>
+    </div>
+    <div class="storyboard">
+      <div class="frame">
+        <div class="frame-step">The claim</div>
+        <div class="frame-tag">The Fine Print</div>
+        <div class="frame-headline">"Safe for Food Contact"</div>
+        <div class="frame-body">Printed on container or packaging</div>
+      </div>
+      <div class="frame surface">
+        <div class="frame-step">Under heat</div>
+        <div class="frame-stat">2B+</div>
+        <div class="frame-stat-label">nanoplastics per cm²</div>
+        <div class="frame-body" style="margin-top:6px;">Released when microwaved. (PNAS, 2024)</div>
+      </div>
+      <div class="frame tint">
+        <div class="frame-step">What is missing</div>
+        <div class="frame-headline">The certification does not account for heat.</div>
+        <div class="frame-body">Safety was tested at room temperature, not microwave temperatures.</div>
+        <div class="frame-footer">plasticdetox.org</div>
+      </div>
+    </div>
+    <div class="idea-tags">
+      <span class="tag format">Claim vs Evidence</span>
+      <span class="tag topic">Food Storage</span>
+    </div>
+  </div>
+
+  <!-- 9 -->
+  <div class="idea-card">
+    <div class="idea-top">
+      <div class="idea-num">9</div>
+      <div class="idea-content">
+        <div class="idea-question">"Biodegradable Nylon-4 Bristles"</div>
+        <div class="idea-answer">This claim traces back to a single 1998 lab study that showed degradation under very specific controlled conditions. The result has never been replicated in real-world composting environments. The claim has been used in marketing for 28 years based on one unreplicated study.</div>
+        <div class="idea-source">Source: Bamboo toothbrush article, 1998 biodegradation study</div>
+      </div>
+    </div>
+    <div class="storyboard">
+      <div class="frame">
+        <div class="frame-step">The claim</div>
+        <div class="frame-tag">The Fine Print</div>
+        <div class="frame-headline">"Biodegradable Nylon-4"</div>
+        <div class="frame-body">Used in toothbrush marketing</div>
+      </div>
+      <div class="frame surface">
+        <div class="frame-step">The evidence</div>
+        <div class="frame-stat">1</div>
+        <div class="frame-stat-label">study, from 1998</div>
+        <div class="frame-body" style="margin-top:6px;">Lab conditions only. Never replicated in real-world composting.</div>
+      </div>
+      <div class="frame tint">
+        <div class="frame-step">28 years later</div>
+        <div class="frame-headline">Still used in marketing. Still no real-world evidence.</div>
+        <div class="frame-body">One unreplicated lab result is not proof of biodegradability.</div>
+        <div class="frame-footer">plasticdetox.org</div>
+      </div>
+    </div>
+    <div class="idea-tags">
+      <span class="tag format">Claim vs Evidence</span>
+      <span class="tag topic">Personal Care</span>
+    </div>
+  </div>
+
+  <!-- 10 -->
+  <div class="idea-card">
+    <div class="idea-top">
+      <div class="idea-num">10</div>
+      <div class="idea-content">
+        <div class="idea-question">"Chemical Free" on household products</div>
+        <div class="idea-answer">Every physical substance is a chemical. Water is H2O. Air is nitrogen and oxygen. This phrase has no scientific or legal meaning. What consumers actually want to know: which specific harmful chemicals are absent, and is there testing to verify it.</div>
+        <div class="idea-source">Source: Cross-article pattern, labeling analysis</div>
+      </div>
+    </div>
+    <div class="storyboard">
+      <div class="frame">
+        <div class="frame-step">The claim</div>
+        <div class="frame-tag">The Fine Print</div>
+        <div class="frame-headline">"Chemical Free"</div>
+        <div class="frame-body">On cleaning products, personal care, packaging</div>
+      </div>
+      <div class="frame surface">
+        <div class="frame-step">The science</div>
+        <div class="frame-headline">Every substance is a chemical.</div>
+        <div class="frame-body">Water is H₂O. Air is N₂ and O₂. The claim is scientifically impossible.</div>
+      </div>
+      <div class="frame tint">
+        <div class="frame-step">What to ask instead</div>
+        <div class="frame-headline">Free of which chemicals? Verified by whom?</div>
+        <div class="frame-body">Look for specific claims (PFAS free, phthalate free) with third party verification.</div>
+        <div class="frame-footer">plasticdetox.org</div>
+      </div>
+    </div>
+    <div class="idea-tags">
+      <span class="tag format">Claim vs Evidence</span>
+      <span class="tag topic">All Products</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- ─── TIPS ─── -->
+<div class="tips">
+  <h3>Production Notes</h3>
+  <div class="tip-grid">
+    <div class="tip-card">
+      <strong>No Filter Talk</strong>
+      <p>Collect questions from DMs, comments, and story polls. Answer 6 to 8 in one sitting. Each follows the same three-frame structure: question, answer, takeaway. Consistent format builds recognition.</p>
+    </div>
+    <div class="tip-card">
+      <strong>The Fine Print</strong>
+      <p>Photograph packaging claims when you see them. Each photo becomes a reel: claim, evidence, reality. The packaging does the visual work. Your research provides the credibility.</p>
+    </div>
+    <div class="tip-card">
+      <strong>From existing articles</strong>
+      <p>Every article has 3 to 5 reels in it. Pull the most cited statistic, the most common misconception, and the clearest swap recommendation. That is three reels per article.</p>
+    </div>
+    <div class="tip-card">
+      <strong>Visual consistency</strong>
+      <p>Use your existing brand elements: Inter font, purple accents, numbered badges, white cards on warm background. Keep the sketch illustrations as backgrounds where relevant. Consistency builds trust.</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
