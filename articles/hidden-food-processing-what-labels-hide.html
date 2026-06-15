@@ -163,6 +163,15 @@
       .cheat-table { font-size: 0.8rem; }
       .cheat-table td:first-child { white-space: normal; }
     }
+    .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0 2rem; }
+    .product-card { background: var(--surface); border-radius: var(--radius); text-decoration: none; color: inherit; box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; overflow: hidden; }
+    .product-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+    .product-card img { width: 100%; height: 180px; object-fit: contain; background: #fff; padding: 0.75rem; }
+    .product-card-body { padding: 1rem; display: flex; flex-direction: column; flex: 1; gap: 0.4rem; }
+    .product-card-tier { font-size: 0.7rem; font-weight: 800; color: var(--accent-dark); letter-spacing: 0.06em; }
+    .product-card-name { font-size: 1rem; font-weight: 700; line-height: 1.3; margin: 0; }
+    .product-card-best { font-size: 0.85rem; color: var(--text-muted); line-height: 1.4; flex: 1; margin: 0; }
+    .product-card-cta { font-size: 0.85rem; color: var(--accent-dark); font-weight: 600; margin-top: 0.4rem; }
   </style>
 </head>
 <body>
@@ -302,6 +311,38 @@
       <h3>Decaf Coffee</h3>
       <p>Some decaffeinated coffee is made by washing the beans with methylene chloride, also called dichloromethane, the same solvent found in paint strippers. The FDA caps residue in finished coffee at 10 parts per million, and in practice measured levels are usually far below that ceiling, so this is not a panic. But there is no reason to drink a solvent when clean methods exist, and an Environmental Defense Fund petition filed in January 2024 has asked the FDA to revoke its approval for methylene chloride and three other solvents.</p>
       <p class="buy-line"><strong>What to buy:</strong> coffee labeled <a href="https://www.amazon.com/s?k=swiss+water+process+decaf+coffee&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Swiss Water Process</a>, which is water based, or carbon dioxide process, which uses pressurized CO2. Both are free of chemical solvent. Ethyl acetate decaf is sometimes marketed as natural, but it is still a solvent method and the ethyl acetate can be petroleum derived, so it is a step below the first two.</p>
+    </div>
+
+    <p>If you want to go a step further than the label, these three brands actually publish lab results. All three are Swiss Water decaffeinated, and each one posts third party testing for the things that matter most in coffee: mold, mycotoxins, pesticides, and heavy metals.</p>
+
+    <div class="product-grid">
+      <a href="https://www.amazon.com/dp/B0D683FKMP?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
+        <img src="https://m.media-amazon.com/images/I/61STnYzGuhL._AC_SL400_.jpg" alt="Purity Coffee CALM Decaf Medium Roast Ground" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">$$ · BEST OVERALL</span>
+          <h3 class="product-card-name">Purity Coffee Calm Decaf</h3>
+          <p class="product-card-best">Swiss Water decaffeinated, USDA Organic, regeneratively farmed. Publishes full Certificate of Analysis reports for mold, mycotoxins, pesticides, and heavy metals.</p>
+          <span class="product-card-cta">View &rarr;</span>
+        </div>
+      </a>
+      <a href="https://naturalforce.com/products/clean-coffee-from-best-organic-whole-beans?variant=44364684951845" target="_blank" rel="noopener" class="product-card">
+        <img src="https://cdn.shopify.com/s/files/1/0053/0114/1604/products/natural-force-cof-reg-b12-full-1_v6.1.jpg" alt="Natural Force Organic Clean Decaf Coffee" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">$$ · STRONGEST COA PROGRAM</span>
+          <h3 class="product-card-name">Natural Force Clean Decaf</h3>
+          <p class="product-card-best">Swiss Water decaffeinated, USDA Organic. COAs run through Eurofins to ISO 17025, covering mold, mycotoxins, yeast, acrylamide, heavy metals, and pesticides.</p>
+          <span class="product-card-cta">View &rarr;</span>
+        </div>
+      </a>
+      <a href="https://www.biodynamiccoffee.com/products/biodynamic-decaf" target="_blank" rel="noopener" class="product-card">
+        <img src="https://cdn.shopify.com/s/files/1/0484/7475/1135/files/biodynamic-decaf-300g-9576880.png" alt="Biodynamic Coffee Decaf, Demeter Certified Biodynamic" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">$$$ · BEST FARMING STANDARD</span>
+          <h3 class="product-card-name">Biodynamic Coffee Decaf</h3>
+          <p class="product-card-best">Swiss Water decaffeinated, Demeter Certified Biodynamic farm, which prohibits synthetic pesticides at the source. Every harvest is third party tested for mycotoxins, with ochratoxin A and aflatoxins below the detection limit.</p>
+          <span class="product-card-cta">View &rarr;</span>
+        </div>
+      </a>
     </div>
 
     <div class="food-card">
