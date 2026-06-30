@@ -145,7 +145,18 @@
     .pin-button:hover { background: #ad081b; }
     .pin-button svg { width: 18px; height: 18px; fill: #fff; }
     .pin-img { width: 100%; height: auto; border-radius: var(--radius-sm); display: block; }
-    .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0 2rem; }
+    .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin: 1.5rem 0 2rem; }
+    .product-grid.single { grid-template-columns: 1fr; max-width: 560px; }
+    .product-grid.single .product-card { flex-direction: row; align-items: stretch; }
+    .product-grid.single .product-card img { width: 190px; height: auto; object-fit: contain; flex-shrink: 0; align-self: center; }
+    @media (max-width: 480px) {
+      .product-grid.single .product-card { flex-direction: column; }
+      .product-grid.single .product-card img { width: 100%; height: 180px; }
+    }
+    .tldr-picks { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(0,0,0,0.12); }
+    .tldr-picks-title { font-weight: 800; font-size: 0.95rem; margin-bottom: 0.5rem; }
+    .tldr-picks ul { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 0.35rem 1.5rem; list-style: none; padding: 0; margin: 0; }
+    .tldr-picks li { font-size: 0.92rem; line-height: 1.4; }
     .product-card { background: var(--surface); border-radius: var(--radius); text-decoration: none; color: inherit; box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; overflow: hidden; }
     .product-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
     .product-card img { width: 100%; height: 180px; object-fit: contain; background: #fff; padding: 0.75rem; }
@@ -202,6 +213,18 @@
         <li><strong>Buy organic cane sugar.</strong> Conventional white and brown sugar both tested positive for PET and polypropylene particles.</li>
         <li><strong>Stop re contaminating at home.</strong> Move staples out of plastic bags into <a href="https://www.amazon.com/dp/B0CRD3XTHP?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">airtight glass jars</a> and cook with filtered water.</li>
       </ul>
+      <div class="tldr-picks">
+        <div class="tldr-picks-title">Our Top Picks</div>
+        <ul>
+          <li><strong>Salt:</strong> <a href="https://www.amazon.com/dp/B0011BPMUK?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Diamond Crystal Kosher</a></li>
+          <li><strong>Finishing salt:</strong> <a href="https://www.amazon.com/dp/B086XGH24W?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Maldon Sea Salt</a></li>
+          <li><strong>Sugar:</strong> <a href="https://www.amazon.com/dp/B0BLHLZCLH?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Wholesome Organic Cane</a></li>
+          <li><strong>Rice:</strong> <a href="https://www.amazon.com/dp/B01N1P88E9?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Lundberg Organic White</a></li>
+          <li><strong>Flour:</strong> <a href="https://www.amazon.com/dp/B07C36MJ14?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Palouse (Glyphosate Residue Free)</a></li>
+          <li><strong>Storage:</strong> <a href="https://www.amazon.com/dp/B0CRD3XTHP?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Miuyhji Glass Mason Jars</a></li>
+          <li><strong>Cooking water:</strong> <a href="https://www.amazon.com/dp/B09KRDK677?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Blu Water Filter</a></li>
+        </ul>
+      </div>
     </div>
 
     <nav class="toc">
@@ -333,7 +356,7 @@
     <p>This is where the two problems force a choice. Salt from underground deposits and brine is the lowest in microplastics, because those deposits formed long before plastic existed. Sea salt, by definition, carries more microplastics no matter how premium the brand, since it is made from today's ocean water. So there is really one pick that wins on both counts, plus two honest options if you specifically want a sea salt for flavor or trace minerals.</p>
 
     <h3>Best for everyday cooking (wins on both)</h3>
-    <div class="product-grid">
+    <div class="product-grid single">
       <a href="https://www.amazon.com/dp/B0011BPMUK?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
         <img src="https://m.media-amazon.com/images/I/614FCrE7ZyL._AC_SL400_.jpg" alt="Diamond Crystal Kosher Salt" loading="lazy">
         <div class="product-card-body">
