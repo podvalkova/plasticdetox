@@ -151,6 +151,14 @@
     .tldr-picks-title { font-weight: 800; font-size: 0.95rem; margin-bottom: 0.5rem; }
     .tldr-picks ul { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 0.35rem 1.5rem; list-style: none; padding: 0; margin: 0; }
     .tldr-picks li { font-size: 0.92rem; line-height: 1.4; }
+    /* FAQ accordion */
+    .faq-section details.faq-item { border: 1px solid #e7e5e4; border-radius: 10px; background: var(--surface); box-shadow: var(--shadow); overflow: hidden; margin-bottom: 0.6rem; }
+    .faq-section details.faq-item summary.faq-question { list-style: none; cursor: pointer; padding: 0.95rem 1.1rem; margin: 0; font-weight: 700; font-size: 1rem; color: #1c1917; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+    .faq-section details.faq-item summary.faq-question::-webkit-details-marker { display: none; }
+    .faq-section details.faq-item summary.faq-question::after { content: "+"; font-size: 1.4rem; line-height: 1; color: #7c3aed; font-weight: 400; flex-shrink: 0; }
+    .faq-section details.faq-item[open] summary.faq-question::after { content: "\2212"; }
+    .faq-section details.faq-item summary.faq-question:hover { color: #7c3aed; }
+    .faq-section details.faq-item .faq-answer { margin: 0; padding: 0 1.1rem 1rem; color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
   </style>
 </head>
 <body>
@@ -267,21 +275,21 @@
         <rect x="0" y="0" width="520" height="210" fill="#fafaf9" rx="8"/>
         <rect x="20" y="30" width="150" height="150" fill="#ffffff" rx="8" stroke="#e7e5e4" stroke-width="1"/>
         <circle cx="95" cy="72" r="26" fill="#ede9fe"/>
-        <text x="80" y="82" font-family="Inter,sans-serif" font-size="24">&#x1F9F5;</text>
+        <text x="95" y="82" text-anchor="middle" font-family="Inter,sans-serif" font-size="26" font-weight="800" fill="#7c3aed">1</text>
         <text x="95" y="122" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#1c1917" font-weight="700">PTFE coating</text>
         <text x="95" y="140" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#78716c">gives floss its</text>
         <text x="95" y="153" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#78716c">frictionless glide</text>
         <text x="180" y="110" font-family="Inter,sans-serif" font-size="18" fill="#a78bfa">&#x2192;</text>
         <rect x="200" y="30" width="150" height="150" fill="#ffffff" rx="8" stroke="#e7e5e4" stroke-width="1"/>
         <circle cx="275" cy="72" r="26" fill="#ede9fe"/>
-        <text x="260" y="82" font-family="Inter,sans-serif" font-size="24">&#x1F62C;</text>
+        <text x="275" y="82" text-anchor="middle" font-family="Inter,sans-serif" font-size="26" font-weight="800" fill="#7c3aed">2</text>
         <text x="275" y="122" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#1c1917" font-weight="700">Friction rubs</text>
         <text x="275" y="140" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#78716c">the coating off</text>
         <text x="275" y="153" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#78716c">against your gums</text>
         <text x="360" y="110" font-family="Inter,sans-serif" font-size="18" fill="#a78bfa">&#x2192;</text>
         <rect x="380" y="30" width="120" height="150" fill="#fef2f2" rx="8" stroke="#fca5a5" stroke-width="1"/>
         <circle cx="440" cy="72" r="26" fill="#fee2e2"/>
-        <text x="425" y="82" font-family="Inter,sans-serif" font-size="24">&#x267E;</text>
+        <text x="440" y="82" text-anchor="middle" font-family="Inter,sans-serif" font-size="26" font-weight="800" fill="#dc2626">3</text>
         <text x="440" y="122" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#dc2626" font-weight="700">PFAS is a</text>
         <text x="440" y="140" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#b91c1c">forever chemical</text>
         <text x="440" y="153" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#b91c1c">that builds up</text>
@@ -460,26 +468,26 @@
     <!-- FAQ -->
     <h2 id="faq">8. Frequently Asked Questions</h2>
     <div class="faq-section">
-      <div class="faq-item">
-        <div class="faq-question">Does dental floss contain PFAS?</div>
+      <details class="faq-item" open>
+        <summary class="faq-question">Does dental floss contain PFAS?</summary>
         <p class="faq-answer">Many do. The slick coating that helps floss glide between teeth is often PTFE, the same polymer as Teflon and a member of the PFAS family. A 2024 lab study of 39 flosses found PFAS in roughly a third of them, and Oral-B Glide tested at 248,900 ppm organic fluorine, the highest the lab had ever recorded in a consumer product.</p>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question">Is Oral-B Glide floss safe?</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-question">Is Oral-B Glide floss safe?</summary>
         <p class="faq-answer">A 2019 Silent Spring Institute study found that women who used Oral-B Glide had higher blood levels of a PFAS called PFHxS. Glide was historically made with PTFE. Oral-B has since said it no longer formulates Glide with PTFE, but has not publicly detailed the replacement material or exactly when all inventory changed over. If you want certainty, choose a floss that is explicitly tested PFAS free.</p>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question">What is the best PFAS free dental floss?</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-question">What is the best PFAS free dental floss?</summary>
         <p class="faq-answer">Silk floss coated with plant wax is the cleanest choice because it is both PFAS free and biodegradable. Dental Lace is 100 percent silk with candelilla wax in a refillable glass jar. Dr. Tung's is widely available and PFAS free. Cocofloss is a good vegan option that tests PFAS free, though its strand is polyester rather than silk.</p>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question">How can I tell if my floss has PFAS?</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-question">How can I tell if my floss has PFAS?</summary>
         <p class="faq-answer">There is no PFAS line on the label, so read the clues. Words like glide, comfort, smooth, and slick usually signal a PTFE coating. A floss that names PTFE, or feels unusually slippery, is a red flag. Green flags are the words silk, PFAS free, or PTFE free, and a plant based wax such as candelilla or beeswax.</p>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question">Is silk floss better than nylon floss?</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-question">Is silk floss better than nylon floss?</summary>
         <p class="faq-answer">For most people yes. Silk floss is naturally PFAS free and fully biodegradable, so it avoids both the forever chemicals and the plastic. Nylon and polyester flosses can also be PFAS free, but the strand itself is plastic and does not break down. If you prefer a vegan option, look for a plant based or PFAS free labeled floss and accept that the strand is synthetic.</p>
-      </div>
+      </details>
     </div>
 
     <div class="callout">

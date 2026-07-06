@@ -148,6 +148,14 @@
     .keytake { display: flex; gap: 0.75rem; align-items: flex-start; background: #f5f3ff; border-left: 4px solid #7c3aed; border-radius: 8px; padding: 1rem 1.15rem; margin: 1.25rem 0; }
     .keytake .kt-emoji { font-size: 1.4rem; line-height: 1.2; }
     .keytake p { margin: 0; font-size: 0.95rem; line-height: 1.55; }
+    /* FAQ accordion */
+    .faq-section details.faq-item { border: 1px solid #e7e5e4; border-radius: 10px; background: var(--surface); box-shadow: var(--shadow); overflow: hidden; margin-bottom: 0.6rem; }
+    .faq-section details.faq-item summary.faq-question { list-style: none; cursor: pointer; padding: 0.95rem 1.1rem; margin: 0; font-weight: 700; font-size: 1rem; color: #1c1917; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+    .faq-section details.faq-item summary.faq-question::-webkit-details-marker { display: none; }
+    .faq-section details.faq-item summary.faq-question::after { content: "+"; font-size: 1.4rem; line-height: 1; color: #7c3aed; font-weight: 400; flex-shrink: 0; }
+    .faq-section details.faq-item[open] summary.faq-question::after { content: "\2212"; }
+    .faq-section details.faq-item summary.faq-question:hover { color: #7c3aed; }
+    .faq-section details.faq-item .faq-answer { margin: 0; padding: 0 1.1rem 1rem; color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
   </style>
 </head>
 <body>
@@ -429,26 +437,26 @@
     <!-- FAQ -->
     <h2 id="faq">7. Frequently Asked Questions</h2>
     <div class="faq-section">
-      <div class="faq-item">
-        <div class="faq-question">Is chewing gum made of plastic?</div>
+      <details class="faq-item" open>
+        <summary class="faq-question">Is chewing gum made of plastic?</summary>
         <p class="faq-answer">Most conventional gum is. The ingredient list usually just says "gum base," which is a legal umbrella term that can include synthetic polymers such as polyethylene, polyvinyl acetate, and polyisobutylene. These are the same families of plastic used in shopping bags, wood glue, and inner tubes. Brands are not required to spell out which polymers the gum base contains.</p>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question">Does chewing gum release microplastics?</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-question">Does chewing gum release microplastics?</summary>
         <p class="faq-answer">Yes. A 2025 pilot study presented at the American Chemical Society found that chewing gum releases an average of around 100 microplastic particles per gram, and some pieces released up to 600 per gram. A large piece could shed up to 3,000 particles into your saliva, and a regular habit could add up to roughly 30,000 particles a year.</p>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question">What is the best plastic free chewing gum?</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-question">What is the best plastic free chewing gum?</summary>
         <p class="faq-answer">The best options use chicle, a natural tree sap, instead of a synthetic gum base. Simply Gum uses chicle with a short real ingredient list, Milliways uses a chicle base sweetened with xylitol and stevia so it is sugar free, and True Gum offers a wide flavor range. All of them avoid the petroleum based synthetic polymers found in conventional gum.</p>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question">Does natural chicle gum still release particles?</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-question">Does natural chicle gum still release particles?</summary>
         <p class="faq-answer">The 2025 study found that natural gums also shed particles during chewing. The difference is what those particles are. Chicle is a plant polymer that biodegrades and does not carry the petroleum origins or plasticizer additives of a synthetic base. So chicle gum is the better choice, but the cleanest option of all is to chew less gum.</p>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question">Is xylitol gum safe?</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-question">Is xylitol gum safe?</summary>
         <p class="faq-answer">Xylitol is a plant derived sweetener that is safe for people and is actually good for teeth, which is why many dentists recommend it. The one serious caution is that xylitol is highly toxic to dogs, so keep xylitol gum well out of a pet's reach.</p>
-      </div>
+      </details>
     </div>
 
     <div class="callout">
