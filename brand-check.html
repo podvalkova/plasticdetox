@@ -165,6 +165,19 @@
     .meta-block { margin-top: 1.15rem; }
     .meta-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.07em; font-weight: 700; color: var(--text-muted); margin-bottom: 0.35rem; }
     .evidence-chip { display: inline-block; font-size: 0.86rem; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 0.45rem 0.7rem; color: var(--text); }
+    .product-list { display: flex; flex-direction: column; gap: 0.5rem; }
+    .product-row { display: flex; align-items: flex-start; gap: 0.6rem; background: var(--bg); border: 1px solid var(--border); border-left-width: 3px; border-radius: 8px; padding: 0.6rem 0.7rem; }
+    .product-row.good { border-left-color: var(--good); }
+    .product-row.careful { border-left-color: var(--careful); }
+    .product-row.skip { border-left-color: var(--skip); }
+    .mini-badge { flex: 0 0 auto; display: inline-flex; align-items: center; gap: 0.25rem; font-size: 0.7rem; font-weight: 700; padding: 0.2rem 0.5rem; border-radius: 999px; border: 1px solid transparent; white-space: nowrap; }
+    .mini-badge svg { width: 12px; height: 12px; }
+    .mini-badge.good { color: var(--good); background: var(--good-bg); border-color: var(--good-border); }
+    .mini-badge.careful { color: var(--careful); background: var(--careful-bg); border-color: var(--careful-border); }
+    .mini-badge.skip { color: var(--skip); background: var(--skip-bg); border-color: var(--skip-border); }
+    .product-info { display: flex; flex-direction: column; gap: 0.15rem; min-width: 0; }
+    .product-name { font-size: 0.9rem; font-weight: 650; color: var(--text); }
+    .product-note { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; }
     .alt-link {
       display: inline-flex; align-items: center; gap: 0.4rem; font-weight: 600; color: var(--good);
       background: var(--good-bg); border: 1px solid var(--good-border); border-radius: 10px;
@@ -330,30 +343,49 @@
 
     function findExact(query) {
       const nq = norm(query), cq = collapse(query);
+      if (!cq) return null;
       let m = BRANDS.find(b => b._norm === nq || b._collapse === cq);
       if (m) return m;
-      // startsWith on collapsed
+      // startsWith on collapsed (partial typing: "cuis" -> Cuisinart)
       m = BRANDS.find(b => b._collapse.startsWith(cq) && cq.length >= 3);
       if (m) return m;
-      // contains
+      // product-style query that contains a brand name ("cuisinart kettle", "cerave moisturizing cream")
+      m = brandInQuery(nq, cq);
+      if (m) return m;
+      // brand name contains the query (loose fallback)
       m = BRANDS.find(b => b._norm.includes(nq) && nq.length >= 3);
       return m || null;
+    }
+
+    // The most specific (longest) brand whose name appears inside a longer query string.
+    function brandInQuery(nq, cq) {
+      const padded = " " + nq + " ";
+      let best = null;
+      for (const b of BRANDS) {
+        if (b._collapse.length < 3) continue;
+        const wholeWord = padded.includes(" " + b._norm + " ");
+        const collapsedIn = b._collapse.length >= 4 && cq.includes(b._collapse);
+        if ((wholeWord || collapsedIn) && (!best || b._collapse.length > best._collapse.length)) best = b;
+      }
+      return best;
     }
 
     function rank(query) {
       const nq = norm(query), cq = collapse(query);
       if (!cq) return [];
+      const padded = " " + nq + " ";
       return BRANDS
         .map(b => {
           let score = -1;
           if (b._collapse === cq) score = 0;
           else if (b._collapse.startsWith(cq)) score = 1;
           else if (b._norm.split(" ").some(w => w.startsWith(nq))) score = 2;
+          else if (b._collapse.length >= 3 && (padded.includes(" " + b._norm + " ") || (b._collapse.length >= 4 && cq.includes(b._collapse)))) score = 2.5;
           else if (b._norm.includes(nq)) score = 3;
           return { b, score };
         })
         .filter(x => x.score >= 0)
-        .sort((a, c) => a.score - c.score || a.b.brand.length - c.b.brand.length)
+        .sort((a, c) => a.score - c.score || (a.score === 2.5 ? c.b._collapse.length - a.b._collapse.length : a.b.brand.length - c.b.brand.length))
         .slice(0, 7)
         .map(x => x.b);
     }
@@ -396,6 +428,19 @@
             : '<span class="alt-link" style="cursor:default">' + altLabel + '</span>') +
           '</div>';
       }
+      let productsHtml = "";
+      if (Array.isArray(b.products) && b.products.length) {
+        productsHtml = '<div class="meta-block"><div class="meta-label">By product</div><div class="product-list">' +
+          b.products.map(p => {
+            const st = p.verdict || b.stance;
+            return '<div class="product-row ' + st + '">' +
+              '<span class="mini-badge ' + st + '">' + badgeIcon(st) + STANCE_LABEL[st] + '</span>' +
+              '<div class="product-info"><span class="product-name">' + esc(p.name) + '</span>' +
+              (p.note ? '<span class="product-note">' + esc(p.note) + '</span>' : '') +
+              '</div></div>';
+          }).join("") +
+          '</div></div>';
+      }
       let evHtml = b.evidence ? '<div class="meta-block"><div class="meta-label">Evidence</div><span class="evidence-chip">' + esc(b.evidence) + '</span></div>' : "";
       let buyHtml = "";
       if (b.stance === "good") {
@@ -417,7 +462,7 @@
           '<div class="brand-name">' + esc(b.brand) + '</div>' +
           '<div class="brand-cat">' + esc(b.category) + '</div>' +
           '<p class="reason">' + esc(b.reason) + '</p>' +
-        '</div><div class="card-body">' + buyHtml + evHtml + altHtml + srcHtml + '</div></div>';
+        '</div><div class="card-body">' + productsHtml + buyHtml + evHtml + altHtml + srcHtml + '</div></div>';
     }
 
     function showUnknown(query) {
