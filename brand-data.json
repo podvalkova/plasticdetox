@@ -1542,10 +1542,10 @@
 "id":"beech-nut",
 "brand":"Beech-Nut",
 "category":"Baby food",
-"stance":"careful",
-"reason":"Their organic single-ingredient glass jars are the safest store-bought option, but their infant rice cereal is flagged for heavy-metal/arsenic concerns.",
-"evidence":"glass jars inert; rice cereal arsenic concern",
-"alternative":"",
+"stance":"skip",
+"reason":"Named in the 2021 Congressional heavy-metals report (ingredients up to 913 ppb arsenic and 887 ppb lead) and a defendant in the consolidated baby-food heavy-metals litigation.",
+"evidence":"Congressional heavy-metals report + active baby-food litigation",
+"alternative":"Serenity Kids or homemade purees stored in glass",
 "sources":[
 "top-100-baby-kids-products-amazon.html"
 ]
@@ -1989,10 +1989,10 @@
 "id":"naked-nutrition",
 "brand":"Naked Nutrition",
 "category":"Supplements",
-"stance":"careful",
-"reason":"Unflavored whey is a one-ingredient pick with published COAs, but carries a caveat due to a class action over lead in the parent brand's Vegan Mass Gainer.",
-"evidence":"Grass fed whey concentrate, per-batch COAs; 2025 class action on Vegan Mass Gainer",
-"alternative":"Transparent Labs",
+"stance":"skip",
+"reason":"Active October 2025 false-advertising class action attacking the brand's independently tested for heavy metals / clean claims after Consumer Reports found high lead in its vegan mass gainer.",
+"evidence":"Active false-advertising lawsuit over heavy-metal testing claims (2025)",
+"alternative":"Transparent Labs whey isolate",
 "sources":[
 "supplements-and-microplastics.html"
 ]
@@ -2326,10 +2326,10 @@
 "id":"winix",
 "brand":"Winix",
 "category":"Air purifier",
-"stance":"careful",
-"reason":"Recommended True HEPA purifier but the article advises turning off PlasmaWave for a fully ozone-free experience.",
-"evidence":"True HEPA, PlasmaWave (turn off for ozone-free)",
-"alternative":"",
+"stance":"skip",
+"reason":"Active October 2025 class action alleges the True HEPA filtration underperforms, and the PlasmaWave ionizer can emit ozone.",
+"evidence":"Active HEPA false-advertising lawsuit (2025) + ozone-emitting ionizer",
+"alternative":"Coway Airmega, true HEPA with no ionizer",
 "sources":[
 "microplastics-in-indoor-air.html"
 ]
@@ -2725,14 +2725,13 @@
 "id":"beaba",
 "brand":"BEABA",
 "category":"Baby food prep",
-"stance":"good",
-"reason":"Babycook Neo with a borosilicate glass bowl and stainless basket.",
-"evidence":"borosilicate glass bowl, stainless basket",
-"alternative":"",
+"stance":"skip",
+"reason":"The Babycook Neo is under CPSC recall (glass bowl shatters, 300+ reports) with active product-liability litigation.",
+"evidence":"CPSC recall + active lawsuits (glass bowl shatter)",
+"alternative":"Steam separately and blend in a glass or stainless blender",
 "sources":[
 "baby-kids-101.html"
-],
-"buy":"https://www.amazon.com/dp/B085PXBB17?tag=plasticdetox-20"
+]
 },
 {
 "id":"beach-candy-organics",
@@ -2890,10 +2889,10 @@
 "id":"blueair",
 "brand":"Blueair",
 "category":"Air purifiers",
-"stance":"good",
-"reason":"HEPASilent purifier capturing 99.97% of particles down to 0.1 micron with an activated-carbon VOC layer.",
-"evidence":"99.97% to 0.1 micron, activated carbon",
-"alternative":"",
+"stance":"skip",
+"reason":"HEPA false-advertising investigation plus a non-disableable ionizer that can generate ozone, which conflicts with a no-added-chemistry promise.",
+"evidence":"HEPA marketing investigation + non-disableable ozone ionizer",
+"alternative":"Coway Airmega, true HEPA with no ionizer",
 "sources":[
 "microplastics-in-bedroom-air.html",
 "non-toxic-baby-toddler-products-guide.html"
@@ -3045,14 +3044,13 @@
 "id":"boon",
 "brand":"Boon",
 "category":"Baby bottles",
-"stance":"good",
-"reason":"Nursh food-grade silicone pouch bottle where the polypropylene shell never contacts the formula.",
-"evidence":"food-grade silicone milk-contact surface",
-"alternative":"",
+"stance":"skip",
+"reason":"The Nursh bottle was recalled by CPSC in 2026 (hard plastic shell peels, choking hazard), and the silicone bottle actually has a hard plastic outer shell.",
+"evidence":"2026 CPSC choking recall + hidden plastic shell",
+"alternative":"Lifefactory glass bottle with silicone sleeve",
 "sources":[
 "top-100-baby-kids-products-amazon.html"
-],
-"buy":"https://www.amazon.com/dp/B07BL83415?tag=plasticdetox-20"
+]
 },
 {
 "id":"bragg",
@@ -4481,10 +4479,10 @@
 "id":"levoit",
 "brand":"Levoit",
 "category":"Air purifier",
-"stance":"good",
-"reason":"Best-value budget True H13 HEPA purifier (Core 300).",
-"evidence":"True HEPA H13, 24 dB on low, under $100",
-"alternative":"",
+"stance":"skip",
+"reason":"HEPA false-advertising class action and investigation allege Levoit purifiers are misrepresented as meeting the HEPA standard.",
+"evidence":"HEPA false-advertising class action / investigation",
+"alternative":"Coway Airmega, true HEPA",
 "sources":[
 "microplastics-in-indoor-air.html"
 ]
@@ -5253,16 +5251,15 @@
 "id":"primally-pure",
 "brand":"Primally Pure",
 "category":"Sunscreen",
-"stance":"good",
-"reason":"Best clean ingredients pick, a tallow based sunscreen with high zinc and a very short ingredient list.",
-"evidence":"25% zinc oxide, 7 ingredients, grass fed tallow base",
-"alternative":"",
+"stance":"skip",
+"reason":"Referred to the FTC by the National Advertising Division (Sep 2025) for unsubstantiated poison-free / non-toxic marketing, and its Poison-Free SPF failed independent lab testing for lead and arsenic (Jul 2025).",
+"evidence":"FTC referral over poison-free claims + sunscreen failed heavy-metal testing",
+"alternative":"Earth Mama or Attitude mineral SPF; Each & Every deodorant",
 "sources":[
 "best-mineral-sunscreen-guide.html",
 "how-to-avoid-bpa-and-phthalates.html",
 "personal-care-101.html"
-],
-"buy":"https://primallypure.com/collections/deodorant"
+]
 },
 {
 "id":"primals",
@@ -5576,15 +5573,14 @@
 "id":"salt-of-the-earth",
 "brand":"Salt of the Earth",
 "category":"Personal care",
-"stance":"good",
-"reason":"Recommended mineral roll-on deodorant pick.",
-"evidence":"Mineral salt formula",
-"alternative":"",
+"stance":"skip",
+"reason":"The crystal deodorant is potassium alum (potassium aluminum sulfate), so it contains aluminum and cannot honestly be sold as aluminum-free.",
+"evidence":"Contains aluminum (potassium alum)",
+"alternative":"Each & Every or Wild aluminum-free deodorant",
 "sources":[
 "how-to-avoid-bpa-and-phthalates.html",
 "personal-care-101.html"
-],
-"buy":"https://www.amazon.com/dp/B07BN1ZNBL?tag=plasticdetox-20"
+]
 },
 {
 "id":"sand-cloud",
@@ -6040,14 +6036,13 @@
 "id":"trace-minerals",
 "brand":"Trace Minerals",
 "category":"Supplements",
-"stance":"good",
-"reason":"Best liquid magnesium pick: ionic magnesium chloride in a glass bottle requiring no capsules.",
-"evidence":"Ionic liquid magnesium chloride, glass bottle",
-"alternative":"",
+"stance":"skip",
+"reason":"Mega-Mag was flagged by Labdoor (grade D+) for concerning arsenic, and sister products tested positive for lead, cadmium and arsenic (Lead Safe Mama).",
+"evidence":"Independent testing flagged arsenic and heavy metals",
+"alternative":"Klean Athlete or Thorne magnesium",
 "sources":[
 "supplements-and-microplastics.html"
-],
-"buy":"https://www.amazon.com/dp/B004AC07G6?tag=plasticdetox-20"
+]
 },
 {
 "id":"traditional-medicinals",
@@ -6270,10 +6265,10 @@
 "id":"waterwipes",
 "brand":"WaterWipes",
 "category":"Personal care",
-"stance":"good",
-"reason":"Recommended baby wipe alternative made of 99.9% water and 0.1% fruit extract with no fragrance or preservatives.",
-"evidence":"99.9% water, 0.1% fruit extract, hospital approved",
-"alternative":"",
+"stance":"skip",
+"reason":"Active 2025 California class action alleges the plastic-free / world's purest wipes contain microplastics at roughly 387 times a control sample; a separate suit challenged the 100% biodegradable claim.",
+"evidence":"Active microplastics false-advertising lawsuit (2025)",
+"alternative":"Natracare, Healthybaby, or Coterie wipes with published PFAS testing",
 "sources":[
 "clean-products-that-arent.html",
 "non-toxic-baby-toddler-products-guide.html"
@@ -6447,14 +6442,13 @@
 "id":"yoshihiro",
 "brand":"Yoshihiro",
 "category":"Cutting boards",
-"stance":"good",
-"reason":"Best for knife edges, the Hi-Soft natural rubber board used by professional sushi chefs, nonporous and resurfaceable.",
-"evidence":"Natural rubber and wood pulp, dishwasher safe, zero microplastics",
-"alternative":"",
+"stance":"skip",
+"reason":"The Hi-Soft board marketed as rubber is actually a synthetic plastic (LDPE), so it sheds microplastics like any plastic board.",
+"evidence":"Marketed as rubber but is plastic (LDPE)",
+"alternative":"Solid maple, teak, or walnut boards (Boos, Teakhaus, BoardSmith)",
 "sources":[
 "best-non-toxic-cutting-boards.html"
-],
-"buy":"https://www.amazon.com/dp/B00N9CASRG?tag=plasticdetox-20"
+]
 },
 {
 "id":"zerowater",
@@ -6649,6 +6643,54 @@
 "alternative":"",
 "sources":[
 "https://www.skinsafeproducts.com/hada-labo"
+]
+},
+{
+"id":"lola",
+"brand":"LOLA",
+"category":"Period care",
+"stance":"skip",
+"reason":"False-advertising class action alleges independent testing found PFAS, phthalates and other contaminants despite 100% organic cotton marketing.",
+"evidence":"Active PFAS/contaminant false-advertising lawsuit",
+"alternative":"Natracare or Organyc organic cotton tampons and pads",
+"sources":[
+"store.html"
+]
+},
+{
+"id":"rael",
+"brand":"Rael",
+"category":"Period care",
+"stance":"skip",
+"reason":"A November 2025 California appellate ruling let claims proceed that Rael products contain far less certified-organic material than labeled plus prohibited synthetics; a separate PFAS class action is pending.",
+"evidence":"2025 appellate ruling on organic claims + PFAS suit",
+"alternative":"GladRags or Natracare organic pads",
+"sources":[
+"store.html"
+]
+},
+{
+"id":"cora-period",
+"brand":"Cora",
+"category":"Period care",
+"stance":"skip",
+"reason":"Active PFAS class-action litigation over undisclosed organic fluorine in products marketed as clean and organic. (Distinct from the Cora Ball laundry product.)",
+"evidence":"Active PFAS false-advertising lawsuit",
+"alternative":"Saalt menstrual disc or cup",
+"sources":[
+"store.html"
+]
+},
+{
+"id":"honey-pot",
+"brand":"The Honey Pot Company",
+"category":"Period care",
+"stance":"skip",
+"reason":"Active class action over intimate-wash safety and a 2023 reformulation that triggered widespread burning and irritation reports on its herbal-infused products.",
+"evidence":"Active safety class action + reformulation adverse-event reports",
+"alternative":"Natracare or Organyc organic cotton tampons",
+"sources":[
+"store.html"
 ]
 }
 ]
