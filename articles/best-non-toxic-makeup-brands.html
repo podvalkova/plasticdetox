@@ -32,8 +32,8 @@
     "author": { "@type": "Organization", "name": "Plastic Detox Editorial Team", "url": "https://plasticdetox.org/about.html" },
     "publisher": { "@type": "Organization", "name": "Plastic Detox", "url": "https://plasticdetox.org" },
     "datePublished": "2026-07-12",
-    "dateModified": "2026-07-12",
-    "lastReviewed": "2026-07-12",
+    "dateModified": "2026-07-13",
+    "lastReviewed": "2026-07-13",
     "image": "https://plasticdetox.org/images/best-non-toxic-makeup-brands-social.webp",
     "mainEntityOfPage": "https://plasticdetox.org/articles/best-non-toxic-makeup-brands.html"
   }
@@ -157,6 +157,41 @@
     .toc-section li { padding: 0.2rem 0; }
     .toc-section a { color: #1c1917; text-decoration: none; font-size: 0.92rem; line-height: 1.4; }
     .toc-section a:hover { color: #7c3aed; text-decoration: underline; }
+    /* horizontal scroll wrapper so wide tables never break the page width on mobile */
+    .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 1.5rem 0 2rem; border-radius: var(--radius); }
+    .table-scroll .comparison-table { margin: 0; }
+    .table-hint { display: none; font-size: 0.78rem; color: #7c3aed; font-weight: 600; margin: 0 0 0.4rem; }
+    /* skip to brands button */
+    .skip-btn-wrap { text-align: center; margin: 0 0 2rem; }
+    .skip-btn { display: inline-block; background: #7c3aed; color: #fff; font-weight: 700; font-size: 1rem; padding: 14px 30px; border-radius: 100px; text-decoration: none; box-shadow: 0 2px 8px rgba(124,58,237,0.3); }
+    .skip-btn:hover { background: #6d28d9; }
+    /* certification ladder infographic */
+    .cert-ladder { display: flex; flex-direction: column; gap: 0.5rem; margin: 0.5rem 0 0; }
+    .cert-rung { display: grid; grid-template-columns: 132px 1fr; gap: 0.9rem; align-items: center; background: #fff; border-radius: var(--radius-sm); padding: 0.7rem 0.9rem; box-shadow: var(--shadow); }
+    .cert-rung .cert-seal { font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.03em; text-align: center; padding: 0.45rem 0.3rem; border-radius: 8px; line-height: 1.2; }
+    .cert-rung.r1 .cert-seal { background: #dcfce7; color: #166534; }
+    .cert-rung.r2 .cert-seal { background: #d1fae5; color: #047857; }
+    .cert-rung.r3 .cert-seal { background: #ede9fe; color: #6d28d9; }
+    .cert-rung.r4 .cert-seal { background: #fee2e2; color: #991b1b; }
+    .cert-rung .cert-desc { font-size: 0.9rem; line-height: 1.45; }
+    .cert-rung .cert-desc strong { display: block; }
+    /* microplastic ingredient chips */
+    .mp-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.75rem 0 0.5rem; }
+    .mp-chip { font-size: 0.82rem; font-weight: 600; background: #fee2e2; color: #991b1b; padding: 0.35rem 0.75rem; border-radius: 40px; }
+    /* oil vs water visual */
+    .ow-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.25rem 0 1.5rem; }
+    .ow-card { background: var(--surface); border-radius: var(--radius); padding: 1.1rem 1.2rem; box-shadow: var(--shadow); }
+    .ow-card h4 { margin: 0 0 0.4rem; font-size: 1.02rem; }
+    .ow-card .ow-tag { display: inline-block; font-size: 0.68rem; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; padding: 0.18rem 0.55rem; border-radius: 40px; margin-bottom: 0.5rem; }
+    .ow-water .ow-tag { background: #dbeafe; color: #1e40af; }
+    .ow-oil .ow-tag { background: #fef3c7; color: #92400e; }
+    .ow-card p { font-size: 0.88rem; margin: 0; line-height: 1.5; color: var(--text-muted); }
+    @media (max-width: 640px) {
+      .ow-grid { grid-template-columns: 1fr; }
+      .cert-rung { grid-template-columns: 104px 1fr; gap: 0.7rem; }
+      .table-hint { display: block; }
+      .table-scroll .comparison-table { min-width: 580px; }
+    }
   </style>
 </head>
 <body>
@@ -179,7 +214,7 @@
     <div class="article-tag">Makeup</div>
     <h1>Top Non Toxic Makeup Brands (2026): Certified Organic, Plastic Free, and Refillable</h1>
     <div class="article-byline">By the <a href="../about.html">Plastic Detox Editorial Team</a></div>
-    <div class="article-meta">Updated July 12, 2026 · 18 min read · <em>This article contains affiliate links. If you purchase through our links, we may earn a small commission at no extra cost to you.</em></div>
+    <div class="article-meta">Updated July 13, 2026 · 18 min read · <em>This article contains affiliate links. If you purchase through our links, we may earn a small commission at no extra cost to you.</em></div>
 
     <div class="tldr-card">
       <h2>The 30 Second Summary</h2>
@@ -191,6 +226,51 @@
         <li><strong>Easiest certified organic pick in the US:</strong> <a href="https://www.amazon.com/dp/B0B116STNT?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">INIKA Organic Long Lash Mascara</a> (COSMOS Organic, silicone free). Best refillable value: <a href="https://www.amazon.com/dp/B086MXV7X5?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Zao Cocoon Lipstick</a> in bamboo.</li>
         <li><strong>Best packaging overall:</strong> Kjaer Weis refillable metal compacts. Best budget clean: Lavera (NATRUE natural).</li>
       </ul>
+    </div>
+
+    <div class="skip-btn-wrap">
+      <a href="#tier-1" class="skip-btn">Skip the research, go straight to the brands &darr;</a>
+    </div>
+
+    <h2 id="top-picks">Our Picks at a Glance</h2>
+    <p>Four clean, silicone free starting points, one for each kind of shopper. Full details, pros, cons and two more picks per brand are further down.</p>
+    <div class="product-grid">
+      <a href="https://www.amazon.com/dp/B0B116STNT?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
+        <img src="https://us.inikaorganic.com/cdn/shop/files/5c5d4f372c48d3d01407993681d21722da3acce82f5ab544fb43b7a257b7a6e6_73b81923-dfab-40e1-a3f0-0d5f84c29f19.jpg?v=1771247042&width=1140" alt="INIKA Organic Long Lash Mascara" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">EASIEST US ORGANIC</span>
+          <h3 class="product-card-name">INIKA Organic Long Lash Mascara</h3>
+          <p class="product-card-best">COSMOS Organic, silicone free, and easy to buy. The simplest first step into certified organic makeup.</p>
+          <span class="product-card-cta">View &rarr;</span>
+        </div>
+      </a>
+      <a href="https://kjaerweis.com/products/cream-blush-lovely" target="_blank" rel="noopener" class="product-card">
+        <img src="https://kjaerweis.com/cdn/shop/files/DTC_CreamBlush_lovely_IconicEdition_Packshot_1500x2500_1.jpg?v=1774527370&width=1500" alt="Kjaer Weis Cream Blush in refillable compact" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">BEST PACKAGING AND FINISH</span>
+          <h3 class="product-card-name">Kjaer Weis Cream Blush</h3>
+          <p class="product-card-best">Refillable metal compact, no added fragrance, certified organic oils. The packaging and finish benchmark.</p>
+          <span class="product-card-cta">View &rarr;</span>
+        </div>
+      </a>
+      <a href="https://www.amazon.com/dp/B086MXV7X5?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
+        <img src="https://ec.nice-cdn.com/upload/image/product/large/default/zao-cocoon-lipstick-414-oslo-2098830-en.png" alt="Zao Cocoon Lipstick in bamboo case" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">BEST REFILLABLE VALUE</span>
+          <h3 class="product-card-name">Zao Cocoon Lipstick</h3>
+          <p class="product-card-best">COSMOS Organic in a refillable bamboo case. Certified refillable makeup without the luxury price.</p>
+          <span class="product-card-cta">View &rarr;</span>
+        </div>
+      </a>
+      <a href="https://www.amazon.com/dp/B07J371641?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
+        <img src="https://incidecoder-content.storage.googleapis.com/ef9b00bf-22b4-401f-a661-c09e3c70d056/products/lavera-lipstick/lavera-lipstick_front_photo_original.jpeg" alt="Lavera Beautiful Lips Colour Intense Lipstick" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">BUDGET CLEAN</span>
+          <h3 class="product-card-name">Lavera Beautiful Lips</h3>
+          <p class="product-card-best">NATRUE certified natural, silicone and microplastic free, at roughly drugstore prices.</p>
+          <span class="product-card-cta">View &rarr;</span>
+        </div>
+      </a>
     </div>
 
     <nav class="toc toc-grouped">
@@ -260,14 +340,30 @@
 
     <p>When people picture microplastics in cosmetics they think of the plastic scrub beads that got banned years ago. Those were the easy ones. The microplastics still in makeup are dissolved into the formula itself, as synthetic film formers and silicones that give products their slip, blur and long wear. They are petroleum derived, they do not biodegrade, and they rinse off your face straight into the water system.</p>
 
-    <p>On an ingredient list they read like this:</p>
+    <p>On an ingredient list they read like this. If you see any of these, you are looking at a synthetic polymer:</p>
 
-    <ul>
-      <li><strong>Silicones:</strong> dimethicone, cyclopentasiloxane, cyclohexasiloxane, and anything ending in "siloxane" or "silsesquioxane." The slip in most conventional primers and foundations.</li>
-      <li><strong>Synthetic film formers:</strong> acrylates copolymer, acrylates crosspolymer, polyethylene, nylon 12, polymethyl methacrylate, VP/VA copolymer, PVP. The "budge proof" in long wear formulas.</li>
-    </ul>
+    <div class="mp-chips">
+      <span class="mp-chip">Dimethicone</span>
+      <span class="mp-chip">Cyclopentasiloxane</span>
+      <span class="mp-chip">Cyclohexasiloxane</span>
+      <span class="mp-chip">Anything "siloxane"</span>
+      <span class="mp-chip">Anything "silsesquioxane"</span>
+      <span class="mp-chip">Acrylates copolymer</span>
+      <span class="mp-chip">Acrylates crosspolymer</span>
+      <span class="mp-chip">Polyethylene</span>
+      <span class="mp-chip">Nylon 12</span>
+      <span class="mp-chip">Polymethyl methacrylate</span>
+      <span class="mp-chip">VP/VA copolymer</span>
+      <span class="mp-chip">PVP</span>
+    </div>
+    <p style="font-size:0.85rem;color:#78716c;margin-top:0.5rem;">The silicones give the slip in conventional primers and foundations. The film formers give the "budge proof" in long wear formulas. Both are petroleum derived and neither belongs in a certified organic product.</p>
 
-    <p>The fastest way to avoid all of them is to let a certifier do the reading for you. A real organic seal bans this entire category, which is why certification is the backbone of this guide. For the wider picture beyond makeup, see our deep dive on <a href="microplastics-in-cosmetics-and-personal-care.html">microplastics in cosmetics and personal care</a>, and our breakdown of <a href="clean-products-that-arent.html">clean products that are not actually clean</a>.</p>
+    <p>The fastest way to avoid all of them is to let a certifier do the reading for you. A real organic seal bans this entire category, which is why certification is the backbone of this guide.</p>
+
+    <div class="callout">
+      <div class="callout-title">Read this first: microplastics in cosmetics and personal care</div>
+      <p>Makeup is only one shelf. Our companion guide, <a href="microplastics-in-cosmetics-and-personal-care.html"><strong>Microplastics in Cosmetics and Personal Care Products</strong></a>, lists every synthetic polymer that hides across skincare, hair and body products and shows you exactly how to read an INCI label. Pair it with <a href="clean-products-that-arent.html">Clean Products That Are Not Actually Clean</a> to see why so many "natural" labels do not hold up.</p>
+    </div>
 
     <!-- ============================================ -->
     <!-- SECTION 3: CERTIFICATIONS -->
@@ -277,14 +373,26 @@
 
     <p>Not all "clean" claims carry the same weight. Most are set by the company selling you the product. Only a few are set by an independent third party that audits the actual formula. Here is the ladder we use, strictest at the top.</p>
 
-    <div class="callout">
-      <div class="callout-title">From strictest to loosest</div>
-      <ul>
-        <li><strong>COSMOS Organic</strong> (Ecocert, Cosmebio, Soil Association, ICEA, CCPB): roughly 95 percent or more natural origin, bans silicones and nearly all petroleum ingredients, and requires a minimum certified organic percentage. The strictest common seal.</li>
-        <li><strong>NSF/ANSI 305</strong>: a genuine whole product organic seal, but at a lower 70 percent organic threshold.</li>
-        <li><strong>NATRUE Certified Natural</strong>: independently audited, bans silicones, PEGs and synthetic preservatives. Its "natural" tier is not the same as an organic seal, though NATRUE has a separate, higher Organic level.</li>
-        <li><strong>Retailer "clean" (Sephora Clean, "free from" lists)</strong>: marketing standards set by the seller, not a third party. They routinely allow silicones and synthetic polymers, so a "clean" tag alone tells you very little.</li>
-      </ul>
+    <div class="infographic">
+      <div class="infographic-title">The Clean Makeup Certification Ladder (strictest at the top)</div>
+      <div class="cert-ladder">
+        <div class="cert-rung r1">
+          <span class="cert-seal">COSMOS Organic</span>
+          <span class="cert-desc"><strong>The strictest common seal.</strong> About 95 percent or more natural origin. Bans silicones and nearly all petroleum ingredients, requires a minimum organic percentage. Ecocert, Cosmebio, Soil Association, ICEA, CCPB.</span>
+        </div>
+        <div class="cert-rung r2">
+          <span class="cert-seal">NSF/ANSI 305</span>
+          <span class="cert-desc"><strong>A genuine organic seal, lower bar.</strong> A real whole product organic mark, but at a 70 percent organic threshold rather than COSMOS levels.</span>
+        </div>
+        <div class="cert-rung r3">
+          <span class="cert-seal">NATRUE Natural</span>
+          <span class="cert-desc"><strong>Audited natural, not organic.</strong> Independently checked, bans silicones, PEGs and synthetic preservatives. The natural tier is not a full organic seal, though NATRUE has a separate Organic level.</span>
+        </div>
+        <div class="cert-rung r4">
+          <span class="cert-seal">Retailer "Clean"</span>
+          <span class="cert-desc"><strong>Marketing, not certification.</strong> Sephora Clean and "free from" lists are set by the seller, not a third party, and routinely allow silicones and synthetic polymers. A "clean" tag alone tells you very little.</span>
+        </div>
+      </div>
     </div>
 
     <p>The five brands in Tier 1 hold a third party organic seal. The four in Tier 2 are partly organic or independently certified natural: cleaner than almost anything at a drugstore, but a step below a full organic mark. We are honest about which is which on every card.</p>
@@ -306,14 +414,19 @@
     <h3>3. Light and air, for anything oil based</h3>
     <p>Oil based formulas go rancid with light and air, and plant actives like vitamin C degrade in clear packaging. Opaque glass, metal and airless designs extend shelf life. Powders, being waterless and stable, mostly just need a pressed compact over a loose jar so you are not inhaling or spilling them.</p>
 
-    <div class="callout">
-      <div class="callout-title">The quick rule</div>
-      <ul>
-        <li><strong>Water based liquid:</strong> prioritize an airless pump or tube over a jar, for hygiene. Material matters less.</li>
-        <li><strong>Oil based balm, stick or cream:</strong> prioritize glass, aluminum or metal over soft plastic, for plasticizer migration and oxidation. Material matters a lot.</li>
-        <li><strong>Powder:</strong> a pressed compact beats a loose jar, for control and to avoid inhaling it.</li>
-      </ul>
+    <div class="ow-grid">
+      <div class="ow-card ow-water">
+        <span class="ow-tag">Water based liquid</span>
+        <h4>Packaging matters less</h4>
+        <p>Foundations and tints with water high on the list. The concern is hygiene, so prioritize an airless pump or tube over an open jar. A recycled plastic pump is fine here, the material barely matters.</p>
+      </div>
+      <div class="ow-card ow-oil">
+        <span class="ow-tag">Oil based balm, stick or cream</span>
+        <h4>Packaging matters a lot</h4>
+        <p>Balms, cream sticks and oil foundations pull plasticizers out of soft plastic and oxidize in light. Prioritize glass, aluminum or metal. This is where packaging becomes a health choice, not just an eco one.</p>
+      </div>
     </div>
+    <p style="font-size:0.9rem;color:#78716c;">And powders: waterless and stable, so choose a pressed compact over a loose jar, mostly to control mess and avoid inhaling the product.</p>
 
     <p>With that framework in place, here are the brands. Each one is silicone free and free of synthetic polymers. We note the certification, rate the packaging, summarize what real reviewers praise and complain about, and pick three hero products we verified are clean.</p>
 
@@ -828,6 +941,8 @@
     <h2 id="comparison-table">Full Brand Comparison Table</h2>
     <p>Every brand here is free of silicones and synthetic polymers. What separates them is the strength of the certification and the packaging.</p>
 
+    <p class="table-hint">Swipe the table sideways to see every column &rarr;</p>
+    <div class="table-scroll">
     <table class="comparison-table">
       <thead>
         <tr>
@@ -904,6 +1019,7 @@
         </tr>
       </tbody>
     </table>
+    </div>
 
     <div class="callout">
       <div class="callout-title">If you want one recommendation</div>
