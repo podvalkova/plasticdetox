@@ -161,6 +161,15 @@
     .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 1.5rem 0 2rem; border-radius: var(--radius); }
     .table-scroll .comparison-table { margin: 0; }
     .table-hint { display: none; font-size: 0.78rem; color: #7c3aed; font-weight: 600; margin: 0 0 0.4rem; }
+    /* tier 1 at a glance inside the summary card */
+    .t1-title { font-size: 0.78rem; font-weight: 800; color: #5b21b6; letter-spacing: 0.05em; text-transform: uppercase; margin: 1.25rem 0 0.6rem; }
+    .t1-brands { display: grid; gap: 0.5rem; }
+    .t1-brand { display: grid; grid-template-columns: 148px 1fr; gap: 0.85rem; align-items: center; background: #fff; border-radius: 10px; padding: 0.6rem 0.9rem; box-shadow: 0 1px 3px rgba(80,40,160,0.08); text-decoration: none; color: inherit; }
+    .t1-brand:hover { box-shadow: 0 3px 10px rgba(80,40,160,0.16); }
+    .t1-brand .t1-name { font-weight: 800; font-size: 0.92rem; color: #1c1917; line-height: 1.25; }
+    .t1-brand .t1-name span { display: block; font-weight: 800; font-size: 0.62rem; color: #7c3aed; letter-spacing: 0.04em; text-transform: uppercase; margin-top: 0.1rem; }
+    .t1-brand .t1-for { font-size: 0.86rem; color: #57534e; line-height: 1.4; }
+    @media (max-width: 640px) { .t1-brand { grid-template-columns: 1fr; gap: 0.2rem; } }
     /* skip to brands button */
     .skip-btn-wrap { text-align: center; margin: 0 0 2rem; }
     .skip-btn { display: inline-block; background: #7c3aed; color: #fff; font-weight: 700; font-size: 1rem; padding: 14px 30px; border-radius: 100px; text-decoration: none; box-shadow: 0 2px 8px rgba(124,58,237,0.3); }
@@ -223,9 +232,33 @@
         <li><strong>The microplastics to avoid are silicones and synthetic film formers:</strong> dimethicone, cyclopentasiloxane, acrylates copolymer, polyethylene, nylon 12. Every brand below is free of them.</li>
         <li><strong>Certification hierarchy:</strong> COSMOS Organic (about 95 percent natural, strictest) beats NSF/ANSI 305 (70 percent) beats NATRUE Natural beats retailer "clean" labels, which allow synthetic polymers.</li>
         <li><strong>Packaging matters most for oil based formulas.</strong> Balms and cream sticks pull plasticizers out of soft plastic, so glass and metal are a real upgrade there. Water based liquids just need an airless pump for hygiene.</li>
-        <li><strong>Easiest certified organic pick in the US:</strong> <a href="https://www.amazon.com/dp/B0B116STNT?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">INIKA Organic Long Lash Mascara</a> (COSMOS Organic, silicone free). Best refillable value: <a href="https://www.amazon.com/dp/B086MXV7X5?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Zao Cocoon Lipstick</a> in bamboo.</li>
+        <li><strong>Easiest certified organic pick in the US:</strong> <a href="https://www.amazon.com/dp/B0B116STNT?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">INIKA Organic Long Lash Mascara</a> (COSMOS Organic, silicone free). Best refillable value: <a href="https://zaomakeup.com/en/home" target="_blank" rel="noopener">Zao Cocoon Lipstick</a> in bamboo.</li>
         <li><strong>Best packaging overall:</strong> Kjaer Weis refillable metal compacts. Best budget clean: Lavera (NATRUE natural).</li>
       </ul>
+
+      <div class="t1-title">The 5 certified organic brands, and who each is for</div>
+      <div class="t1-brands">
+        <a href="#inika" class="t1-brand">
+          <span class="t1-name">INIKA Organic<span>COSMOS Organic</span></span>
+          <span class="t1-for">Best for easy US availability. Sheer, sensitive skin friendly certified organic you can actually find.</span>
+        </a>
+        <a href="#kjaer-weis" class="t1-brand">
+          <span class="t1-name">Kjaer Weis<span>CCPB Organic</span></span>
+          <span class="t1-for">Best packaging and finish. Refillable metal compacts and luxury cream textures.</span>
+        </a>
+        <a href="#zao" class="t1-brand">
+          <span class="t1-name">Zao<span>COSMOS Organic</span></span>
+          <span class="t1-for">Best refillable value. Bamboo refill system without the luxury price.</span>
+        </a>
+        <a href="#couleur-caramel" class="t1-brand">
+          <span class="t1-name">Couleur Caramel<span>COSMOS Organic / Natural</span></span>
+          <span class="t1-for">Best pigment payoff, but hard to buy in the US. For makeup artist color.</span>
+        </a>
+        <a href="#ogee" class="t1-brand">
+          <span class="t1-name">Ogee<span>NSF/ANSI 305</span></span>
+          <span class="t1-for">Best silicone free cream sculpting. Bronzer, contour and highlight sticks.</span>
+        </a>
+      </div>
     </div>
 
     <div class="skip-btn-wrap">
@@ -253,7 +286,7 @@
           <span class="product-card-cta">View &rarr;</span>
         </div>
       </a>
-      <a href="https://www.amazon.com/dp/B086MXV7X5?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
+      <a href="https://zaomakeup.com/en/home" target="_blank" rel="noopener" class="product-card">
         <img src="https://ec.nice-cdn.com/upload/image/product/large/default/zao-cocoon-lipstick-414-oslo-2098830-en.png" alt="Zao Cocoon Lipstick in bamboo case" loading="lazy">
         <div class="product-card-body">
           <span class="product-card-tier">BEST REFILLABLE VALUE</span>
@@ -462,6 +495,15 @@
       </div>
     </div>
     <div class="product-grid">
+      <a href="https://www.amazon.com/dp/B0B926HSGZ?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
+        <img src="https://m.media-amazon.com/images/I/41ogVc1DtzL._SL400_.jpg" alt="INIKA Organic Loose Mineral Foundation" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">$$ &middot; BESTSELLING FOUNDATION</span>
+          <h3 class="product-card-name">Loose Mineral Foundation</h3>
+          <p class="product-card-best">Loose mineral powder on a mica, zinc oxide and titanium dioxide base. No talc, no silicones or polymers. Buildable, works on oily skin.</p>
+          <span class="product-card-cta">View &rarr;</span>
+        </div>
+      </a>
       <a href="https://www.amazon.com/dp/B0B116STNT?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
         <img src="https://us.inikaorganic.com/cdn/shop/files/5c5d4f372c48d3d01407993681d21722da3acce82f5ab544fb43b7a257b7a6e6_73b81923-dfab-40e1-a3f0-0d5f84c29f19.jpg?v=1771247042&width=1140" alt="INIKA Organic Long Lash Mascara" loading="lazy">
         <div class="product-card-body">
@@ -471,21 +513,12 @@
           <span class="product-card-cta">View &rarr;</span>
         </div>
       </a>
-      <a href="https://www.amazon.com/dp/B0B92VCGV5?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
-        <img src="https://us.inikaorganic.com/cdn/shop/files/f6fcc40202d070470eabbc91971349571ea57e9baa232d6b7f9b9d43249c9c16.jpg" alt="INIKA Certified Organic Eye Pencil" loading="lazy">
+      <a href="https://www.amazon.com/dp/B0FHGTLR6H?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
+        <img src="https://m.media-amazon.com/images/I/5156qwoWoSL._SL400_.jpg" alt="INIKA Organic Certified Organic Lipstick" loading="lazy">
         <div class="product-card-body">
-          <span class="product-card-tier">$$ &middot; EYE PENCIL</span>
-          <h3 class="product-card-name">Certified Organic Eye Pencil</h3>
-          <p class="product-card-best">Coconut oil and carnauba wax base with mineral pigment. Water resistant, hypoallergenic, no silicones. Choose your shade at checkout.</p>
-          <span class="product-card-cta">View &rarr;</span>
-        </div>
-      </a>
-      <a href="https://www.amazon.com/dp/B0B91WHKH2?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
-        <img src="https://us.inikaorganic.com/cdn/shop/files/b0d435ee07f39be0028cc980f9123656ff51ad279a8c6cf2058024cc3b681932.png" alt="INIKA Certified Organic Lipstick Crayon" loading="lazy">
-        <div class="product-card-body">
-          <span class="product-card-tier">$$ &middot; LIP CRAYON</span>
-          <h3 class="product-card-name">Certified Organic Lipstick Crayon</h3>
-          <p class="product-card-best">Lipstick and liner in one. Coconut oil, carnauba and candelilla wax, vitamin E. Satin to matte, no silicones or polymers.</p>
+          <span class="product-card-tier">$$ &middot; BESTSELLING LIPSTICK</span>
+          <h3 class="product-card-name">Certified Organic Lipstick</h3>
+          <p class="product-card-best">Certified organic lipstick on coconut oil, shea butter and candelilla wax with vitamin E. Hydrating satin finish, no silicones or polymers.</p>
           <span class="product-card-cta">View &rarr;</span>
         </div>
       </a>
@@ -570,7 +603,7 @@
       </div>
     </div>
     <div class="product-grid">
-      <a href="https://www.amazon.com/dp/B086MXV7X5?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
+      <a href="https://zaomakeup.com/en/home" target="_blank" rel="noopener" class="product-card">
         <img src="https://ec.nice-cdn.com/upload/image/product/large/default/zao-cocoon-lipstick-414-oslo-2098830-en.png" alt="Zao Cocoon Lipstick in bamboo case" loading="lazy">
         <div class="product-card-body">
           <span class="product-card-tier">$$ &middot; COSMOS ORGANIC</span>
@@ -579,7 +612,7 @@
           <span class="product-card-cta">View &rarr;</span>
         </div>
       </a>
-      <a href="https://www.amazon.com/dp/B07B6SW6KT?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
+      <a href="https://zaomakeup.com/en/home" target="_blank" rel="noopener" class="product-card">
         <img src="https://ec.nice-cdn.com/upload/image/product/large/default/116826_356b031d.256x256.png" alt="Zao Aloe Vera Mascara in bamboo case" loading="lazy">
         <div class="product-card-body">
           <span class="product-card-tier">$$ &middot; COSMOS ORGANIC</span>
@@ -588,7 +621,7 @@
           <span class="product-card-cta">View &rarr;</span>
         </div>
       </a>
-      <a href="https://www.amazon.com/dp/B008AVJJDU?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
+      <a href="https://zaomakeup.com/en/home" target="_blank" rel="noopener" class="product-card">
         <img src="https://incidecoder-content.storage.googleapis.com/8b9818de-2f72-4185-b1b5-67b675a3cecd/products/zao-mineral-puder-bamboo-mineral-silk-von-zao/zao-mineral-puder-bamboo-mineral-silk-von-zao_front_photo_original.jpeg" alt="Zao Mineral Silk Loose Powder Foundation in bamboo jar" loading="lazy">
         <div class="product-card-body">
           <span class="product-card-tier">$$$ &middot; NATURAL TIER, VERIFY BADGE</span>
@@ -1023,7 +1056,7 @@
 
     <div class="callout">
       <div class="callout-title">If you want one recommendation</div>
-      <p>For the easiest certified organic buy in the US, start with <a href="https://www.amazon.com/dp/B0B116STNT?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">INIKA Organic</a>. For the best packaging and finish and you do not mind the price, <a href="https://kjaerweis.com/products/cream-blush-lovely" target="_blank" rel="noopener">Kjaer Weis</a>. For refillable at a fair price, <a href="https://www.amazon.com/dp/B086MXV7X5?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Zao</a>. For clean on a budget, <a href="https://www.amazon.com/dp/B07J371641?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Lavera</a>. If you are also rethinking your SPF, our <a href="best-mineral-sunscreen-guide.html">mineral sunscreen guide</a> covers tinted mineral bases that work under makeup.</p>
+      <p>For the easiest certified organic buy in the US, start with <a href="https://www.amazon.com/dp/B0B116STNT?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">INIKA Organic</a>. For the best packaging and finish and you do not mind the price, <a href="https://kjaerweis.com/products/cream-blush-lovely" target="_blank" rel="noopener">Kjaer Weis</a>. For refillable at a fair price, <a href="https://zaomakeup.com/en/home" target="_blank" rel="noopener">Zao</a>. For clean on a budget, <a href="https://www.amazon.com/dp/B07J371641?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Lavera</a>. If you are also rethinking your SPF, our <a href="best-mineral-sunscreen-guide.html">mineral sunscreen guide</a> covers tinted mineral bases that work under makeup.</p>
     </div>
 
     <!-- ============================================ -->
