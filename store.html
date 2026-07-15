@@ -1555,7 +1555,7 @@
       p._link = linkFor(p);
       p._img  = imgFor(p);
       p._tk   = tierKey(p.tier);
-      p._search = (p.name + ' ' + (p.bestFor||'') + ' ' + (p.desc||'') + ' ' + p._mats.join(' ')).toLowerCase();
+      p._search = (p.cat + ' ' + (p.sub||'') + ' ' + p.name + ' ' + (p.bestFor||'') + ' ' + (p.desc||'') + ' ' + p._mats.join(' ')).toLowerCase();
     });
 
     const cats = [...new Set(storeProducts.map(p => p.cat))];
