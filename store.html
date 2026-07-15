@@ -1489,7 +1489,12 @@
 
     function deriveMaterials(p) {
       const text = [p.name, p.bestFor, p.effectiveness, p.desc, (p.pros||[]).join(' '), (p.cons||[]).join(' ')]
-        .filter(Boolean).join(' ').toLowerCase();
+        .filter(Boolean).join(' ').toLowerCase()
+        // strip negated silicone claims so "no silicones" / "silicone free" don't trigger a positive material tag.
+        // plural "silicones" is only ever used in banned-ingredient lists; a genuine silicone material reads "silicone lid/seal/cup".
+        .replace(/\bsilicones\b/g, '')
+        .replace(/\bsilicone[-\s]free\b/g, '')
+        .replace(/\b(?:no|non|not|without|free of|free from|instead of|rather than|replaces?(?:\s+the)?)\s+silicone\b/g, '');
       const tags = [];
       for (const [tag, re] of MATERIAL_RULES) {
         if (re.test(text) && !tags.includes(tag)) tags.push(tag);
