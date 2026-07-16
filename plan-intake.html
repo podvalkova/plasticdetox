@@ -462,6 +462,9 @@
   });
 
   document.getElementById('planBadge').innerHTML = 'Your plan: <b>' + TIER_LABEL + '</b>';
+  // Pre-fill email if passed from the confirmation email link
+  const preEmail = new URLSearchParams(location.search).get('email');
+  if(preEmail){ const e = document.getElementById('email'); if(e) e.value = preEmail; }
   render();
 </script>
 

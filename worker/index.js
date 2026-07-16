@@ -52,6 +52,11 @@ export default {
       return handleIntake(request, env, corsOrigin);
     }
 
+    // ===== Stripe webhook: email the buyer their intake-form link =====
+    if (path === "/stripe-webhook") {
+      return handleStripeWebhook(request, env);
+    }
+
     try {
       const data = await request.json();
       const { email, score, total, level, levelColor, top3, swaps } = data;
@@ -358,6 +363,67 @@ async function handleIntake(request, env, corsOrigin) {
   } catch (e) {
     return json({ ok: false, error: "Server error" }, 500, corsOrigin);
   }
+}
+
+// Verify a Stripe webhook signature (Stripe-Signature: t=...,v1=...)
+async function verifyStripeSignature(payload, header, secret) {
+  if (!header || !secret) return false;
+  const parts = {};
+  header.split(",").forEach((kv) => { const [k, v] = kv.split("="); parts[k] = v; });
+  if (!parts.t || !parts.v1) return false;
+  const enc = new TextEncoder();
+  const key = await crypto.subtle.importKey("raw", enc.encode(secret), { name: "HMAC", hash: "SHA-256" }, false, ["sign"]);
+  const sig = await crypto.subtle.sign("HMAC", key, enc.encode(`${parts.t}.${payload}`));
+  const hex = [...new Uint8Array(sig)].map((b) => b.toString(16).padStart(2, "0")).join("");
+  // length-safe compare
+  if (hex.length !== parts.v1.length) return false;
+  let diff = 0;
+  for (let i = 0; i < hex.length; i++) diff |= hex.charCodeAt(i) ^ parts.v1.charCodeAt(i);
+  return diff === 0;
+}
+
+// POST /stripe-webhook  -> on checkout.session.completed, email the buyer their intake link
+async function handleStripeWebhook(request, env) {
+  if (request.method !== "POST") return new Response("Method not allowed", { status: 405 });
+  const payload = await request.text();
+  const sig = request.headers.get("stripe-signature");
+  const ok = await verifyStripeSignature(payload, sig, env.STRIPE_WEBHOOK_SECRET);
+  if (!ok) return new Response("Bad signature", { status: 400 });
+
+  let event;
+  try { event = JSON.parse(payload); } catch { return new Response("Bad JSON", { status: 400 }); }
+
+  if (event.type === "checkout.session.completed") {
+    const s = event.data.object || {};
+    const email = (s.customer_details && s.customer_details.email) || s.customer_email || "";
+    const name = (s.customer_details && s.customer_details.name) || "";
+    const amount = s.amount_total || 0; // cents
+    const tier = amount >= 14900 ? "review" : "custom";
+    const tierLabel = tier === "review" ? "Custom Plan + Personal Review" : "Custom Plan";
+
+    if (email) {
+      const link = `https://plasticdetox.org/plan-intake.html?tier=${tier}&email=${encodeURIComponent(email)}`;
+      await fetch("https://api.brevo.com/v3/smtp/email", {
+        method: "POST",
+        headers: { "api-key": env.BREVO_API_KEY, "Content-Type": "application/json" },
+        body: JSON.stringify({
+          sender: { name: env.SENDER_NAME, email: env.SENDER_EMAIL },
+          to: [{ email, name }],
+          subject: "Thank you. One quick step to build your plan",
+          htmlContent: `
+            <div style="font-family:'Inter',-apple-system,sans-serif;max-width:520px;margin:0 auto;color:#1c1917;">
+              <p style="font-size:16px;">Thank you for your purchase of the <strong>${tierLabel}</strong>.</p>
+              <p style="font-size:16px;">To build your plan, we just need a few quick answers about your home. It takes about two minutes.</p>
+              <p style="margin:28px 0;"><a href="${link}" style="display:inline-block;background:#7c3aed;color:#fff;text-decoration:none;font-weight:600;padding:14px 28px;border-radius:60px;">Build my plan &rarr;</a></p>
+              <p style="font-size:14px;color:#78716c;">Or paste this link into your browser:<br>${link}</p>
+              <p style="font-size:14px;color:#78716c;margin-top:24px;">Questions? Just reply to this email.</p>
+            </div>`,
+        }),
+      }).catch(() => {});
+    }
+  }
+
+  return new Response(JSON.stringify({ received: true }), { status: 200, headers: { "Content-Type": "application/json" } });
 }
 
 function buildEmail({ score, total, level, levelColor, top3, swaps }) {
