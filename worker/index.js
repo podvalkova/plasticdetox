@@ -47,6 +47,11 @@ export default {
       return handleContact(request, env, corsOrigin);
     }
 
+    // ===== Custom Plan intake: email answers (+ photos) to the team =====
+    if (path === "/intake") {
+      return handleIntake(request, env, corsOrigin);
+    }
+
     try {
       const data = await request.json();
       const { email, score, total, level, levelColor, top3, swaps } = data;
@@ -293,6 +298,59 @@ async function handleContact(request, env, corsOrigin) {
         subject: `Custom Plan question from ${cleanName}`,
         htmlContent: `<p><strong>From:</strong> ${esc(cleanName)} (${esc(cleanEmail)})</p><p>${esc(cleanMsg).replace(/\n/g, "<br>")}</p>`,
       }),
+    });
+
+    if (res.ok) return json({ ok: true }, 200, corsOrigin);
+    return json({ ok: false, error: "Email send failed" }, 502, corsOrigin);
+  } catch (e) {
+    return json({ ok: false, error: "Server error" }, 500, corsOrigin);
+  }
+}
+
+// POST /intake  { tier, name, email, household, rooms, kids_age, budget, concern, water, owned, priorities, photos[] }
+async function handleIntake(request, env, corsOrigin) {
+  try {
+    const d = await request.json();
+    const name = (d.name || "").toString().trim().slice(0, 120);
+    const email = (d.email || "").toString().trim();
+    if (!name || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+      return json({ ok: false, error: "Invalid data" }, 400, corsOrigin);
+    }
+
+    const esc = (s) => (s || "").toString().replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    const rows = [
+      ["Plan", d.tier], ["Name", name], ["Email", email],
+      ["Who lives there", d.household], ["Rooms", d.rooms], ["Little ones", d.kids_age],
+      ["Budget", d.budget], ["Top concern", d.concern], ["Water source", d.water],
+      ["Already owns", d.owned], ["Priorities", d.priorities],
+    ];
+    const html = rows
+      .filter(([, v]) => v && v.toString().trim())
+      .map(([k, v]) => `<p style="margin:0 0 8px"><strong>${k}:</strong> ${esc(v).replace(/\n/g, "<br>")}</p>`)
+      .join("");
+
+    // Photos: [{ room, name, content(base64) }] -> Brevo attachments
+    const photos = Array.isArray(d.photos) ? d.photos.slice(0, 20) : [];
+    const attachment = photos
+      .filter((p) => p && p.content)
+      .map((p, i) => {
+        const safe = (p.name || "photo.jpg").replace(/[^a-zA-Z0-9._-]/g, "_").slice(-40);
+        return { content: p.content, name: `${(p.room || "photo")}-${i + 1}-${safe}` };
+      });
+
+    const body = {
+      sender: { name: env.SENDER_NAME, email: env.SENDER_EMAIL },
+      to: [{ email: env.SENDER_EMAIL }],
+      replyTo: { email, name },
+      subject: `New Custom Plan intake: ${name} (${d.tier || "Custom Plan"})`,
+      htmlContent: `<h2>New Custom Plan intake</h2>${html}${attachment.length ? `<p style="margin-top:10px">${attachment.length} photo(s) attached.</p>` : ""}`,
+    };
+    if (attachment.length) body.attachment = attachment;
+
+    const res = await fetch("https://api.brevo.com/v3/smtp/email", {
+      method: "POST",
+      headers: { "api-key": env.BREVO_API_KEY, "Content-Type": "application/json" },
+      body: JSON.stringify(body),
     });
 
     if (res.ok) return json({ ok: true }, 200, corsOrigin);

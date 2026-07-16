@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Build Your Custom Plan | Plastic Detox</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --accent:#a78bfa; --accent-dark:#7c3aed; --accent-light:#ede9fe;
+    --bg:#fafaf9; --surface:#fff; --text:#1c1917; --text-muted:#78716c;
+    --border:#e7e5e4; --radius:16px; --radius-sm:10px;
+    --shadow:0 1px 3px rgba(0,0,0,0.06),0 1px 2px rgba(0,0,0,0.04);
+    --shadow-lg:0 10px 30px rgba(0,0,0,0.08);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+  .narrow{max-width:640px;margin:0 auto;padding:0 24px}
+
+  /* NAV */
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:1.25rem 2rem;max-width:1200px;margin:0 auto}
+  .nav-logo{font-size:1.25rem;font-weight:800;text-decoration:none;color:var(--text);letter-spacing:-.02em}
+  .nav-logo span{color:var(--accent)}
+  .nav-links{display:flex;gap:2rem}
+  .nav-link{text-decoration:none;color:var(--text-muted);font-weight:500;font-size:.95rem;transition:color .2s}
+  .nav-link:hover,.nav-link.active{color:var(--text)}
+  @media(max-width:640px){
+    .nav{flex-direction:column;gap:.75rem;padding:1rem 1.25rem}
+    .nav-links{width:100%;justify-content:center;gap:1.25rem;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+    .nav-links::-webkit-scrollbar{display:none}
+    .nav-link{font-size:.9rem;white-space:nowrap}
+    .nav-hide-mobile{display:none}
+  }
+
+  /* HERO */
+  .hero{border-bottom:1px solid var(--border);text-align:center;padding:2.75rem 0 2rem}
+  .eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-dark);background:var(--accent-light);padding:.4rem .9rem;border-radius:999px;margin-bottom:1rem}
+  .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:#16a34a;display:inline-block}
+  h1{font-size:clamp(1.9rem,4.5vw,2.8rem);font-weight:800;letter-spacing:-.035em;line-height:1.05;margin-bottom:.6rem;text-wrap:balance}
+  h1 em{font-style:italic;color:var(--accent-dark)}
+  .hero-sub{font-size:1.05rem;color:var(--text-muted);max-width:46ch;margin:0 auto}
+
+  /* PROGRESS */
+  .progress-wrap{max-width:640px;margin:2rem auto 0;padding:0 24px}
+  .progress-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.55rem}
+  .progress-top .label{font-size:.8rem;font-weight:600;color:var(--accent-dark);letter-spacing:.02em}
+  .progress-top .pct{font-size:.8rem;color:var(--text-muted)}
+  .track{height:8px;background:var(--border);border-radius:999px;overflow:hidden}
+  .track .fill{height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent-dark));border-radius:999px;transition:width .3s ease}
+
+  /* FORM */
+  .form-wrap{max-width:640px;margin:0 auto;padding:2rem 24px 4rem}
+  .step{display:none}
+  .step.active{display:block;animation:fade .25s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .step-title{font-size:1.5rem;font-weight:800;letter-spacing:-.02em;line-height:1.2;margin-bottom:.4rem}
+  .step-hint{color:var(--text-muted);font-size:.95rem;margin-bottom:1.5rem}
+  .q{margin-bottom:1.5rem}
+  .q:last-child{margin-bottom:0}
+  .q-label{display:block;font-weight:600;font-size:.95rem;margin-bottom:.6rem}
+  .q-label .opt{font-weight:400;color:var(--text-muted);font-size:.85rem}
+  input[type=text],input[type=email],textarea{width:100%;padding:.75rem .9rem;border:1px solid var(--border);border-radius:var(--radius-sm);font-family:inherit;font-size:.95rem;background:var(--surface);resize:vertical}
+  input:focus,textarea:focus{outline:none;border-color:var(--accent-dark)}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+  @media(max-width:520px){.grid2{grid-template-columns:1fr}}
+
+  /* chips */
+  .chips{display:flex;flex-wrap:wrap;gap:.6rem}
+  .chip{position:relative;border:1px solid var(--border);border-radius:999px;padding:.6rem 1.1rem;font-size:.92rem;cursor:pointer;background:var(--surface);transition:border-color .15s,background .15s,color .15s;user-select:none}
+  .chip:hover{border-color:var(--accent)}
+  .chip input{position:absolute;opacity:0;pointer-events:none}
+  .chip:has(input:checked){border-color:var(--accent-dark);background:var(--accent-light);color:var(--accent-dark);font-weight:600}
+
+  .file-input{width:100%;font-family:inherit;font-size:.9rem;color:var(--text-muted);border:1px dashed var(--border);border-radius:var(--radius-sm);padding:.9rem;background:var(--surface);cursor:pointer}
+  .file-input::file-selector-button{font-family:inherit;font-weight:600;font-size:.85rem;color:var(--accent-dark);background:var(--accent-light);border:none;border-radius:999px;padding:.5rem 1rem;margin-right:.9rem;cursor:pointer}
+  .plan-badge{display:inline-block;font-size:.75rem;font-weight:600;color:var(--text-muted);margin-top:.75rem}
+  .plan-badge b{color:var(--accent-dark)}
+
+  /* buttons */
+  .nav-btns{display:flex;align-items:center;justify-content:space-between;margin-top:2rem;gap:1rem}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:inherit;font-weight:600;font-size:1rem;border-radius:60px;cursor:pointer;transition:background .2s,transform .15s;border:none}
+  .btn-next{background:var(--accent);color:#fff;padding:.85rem 2.2rem}
+  .btn-next:hover{background:var(--accent-dark);transform:translateY(-1px)}
+  .btn-back{background:none;color:var(--text-muted);padding:.85rem 1rem}
+  .btn-back:hover{color:var(--text)}
+  .btn-skip{background:none;color:var(--accent-dark);padding:.85rem 1rem;font-weight:600}
+  .btn:disabled{opacity:.55;cursor:default;transform:none}
+  .err{color:#dc2626;font-size:.9rem;margin-top:.9rem;display:none}
+
+  /* success */
+  .success{display:none;text-align:center;max-width:520px;margin:0 auto;padding:4rem 24px}
+  .success .check{width:60px;height:60px;border-radius:50%;background:#dcfce7;color:#166534;font-size:32px;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem}
+  .success h2{font-size:1.7rem;font-weight:800;letter-spacing:-.02em;margin-bottom:.5rem}
+  .success p{color:var(--text-muted)}
+
+  /* FOOTER */
+  .site-footer{text-align:center;padding:2.5rem 2rem;font-size:.82rem;color:var(--text-muted);border-top:1px solid var(--border);background:var(--bg)}
+  .site-footer a{color:var(--text-muted)}
+  .site-footer .fmeta{margin-top:.5rem;font-size:.75rem}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="./" class="nav-logo">plastic<span>detox</span></a>
+  <div class="nav-links">
+    <a class="nav-link nav-hide-mobile" href="./">Home</a>
+    <a class="nav-link" href="custom-plan.html">Custom Plan</a>
+    <a class="nav-link" href="store.html">Store</a>
+    <a class="nav-link" href="./#resources">Resources</a>
+    <a class="nav-link" href="brand-check.html">Brand Check</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="narrow">
+    <span class="eyebrow"><span class="dot"></span> Payment confirmed</span>
+    <h1>Let's build your <em>custom plan</em>.</h1>
+    <p class="hero-sub">A few quick questions so every swap fits your home. One at a time, about 2 minutes.</p>
+    <span class="plan-badge" id="planBadge"></span>
+  </div>
+</header>
+
+<!-- PROGRESS -->
+<div class="progress-wrap" id="progressWrap">
+  <div class="progress-top"><span class="label" id="stepCount">Step 1</span><span class="pct" id="stepPct"></span></div>
+  <div class="track"><div class="fill" id="progressFill"></div></div>
+</div>
+
+<!-- FORM -->
+<div class="form-wrap" id="formWrap">
+  <form id="intakeForm" novalidate>
+
+    <!-- STEP: household -->
+    <section class="step" data-key="household">
+      <h2 class="step-title">First, the basics.</h2>
+      <p class="step-hint">So we can match this to your order and send your plan.</p>
+      <div class="q grid2">
+        <div>
+          <label class="q-label" for="name">Your name</label>
+          <input type="text" id="name" name="name" autocomplete="name">
+        </div>
+        <div>
+          <label class="q-label" for="email">Email <span class="opt">(same as your order)</span></label>
+          <input type="email" id="email" name="email" autocomplete="email">
+        </div>
+      </div>
+      <div class="q">
+        <label class="q-label">Who lives in your home?</label>
+        <div class="chips" id="householdChips">
+        <label class="chip"><input type="checkbox" name="household" value="Babies or kids"> Babies or kids</label>
+        <label class="chip"><input type="checkbox" name="household" value="Pregnant or expecting"> Pregnant or expecting</label>
+        <label class="chip"><input type="checkbox" name="household" value="Pets"> Pets</label>
+        <label class="chip"><input type="checkbox" name="household" value="Adults only" data-exclusive="1"> Adults only</label>
+        </div>
+      </div>
+      <div class="err" id="err-household">Please add your name and email, and choose who lives there.</div>
+    </section>
+
+    <!-- STEP: rooms -->
+    <section class="step" data-key="rooms">
+      <h2 class="step-title">Which rooms should we cover?</h2>
+      <p class="step-hint">Pick any that apply. We prioritize the highest impact swaps first.</p>
+      <div class="chips">
+        <label class="chip"><input type="checkbox" name="rooms" value="Kitchen"> Kitchen</label>
+        <label class="chip"><input type="checkbox" name="rooms" value="Bathroom"> Bathroom</label>
+        <label class="chip"><input type="checkbox" name="rooms" value="Bedroom"> Bedroom</label>
+        <label class="chip"><input type="checkbox" name="rooms" value="Living room"> Living room</label>
+        <label class="chip"><input type="checkbox" name="rooms" value="Laundry"> Laundry</label>
+        <label class="chip" id="chip-nursery"><input type="checkbox" name="rooms" value="Nursery / Kids"> Nursery / Kids</label>
+        <label class="chip"><input type="checkbox" name="rooms" value="Whole home"> Whole home</label>
+      </div>
+      <div class="err" id="err-rooms">Please choose at least one room.</div>
+    </section>
+
+    <!-- STEP: kids (conditional) -->
+    <section class="step" data-key="kids">
+      <h2 class="step-title">Tell us about your little ones.</h2>
+      <p class="step-hint">Feeding gear and nursery items are where exposure adds up fastest, so age matters.</p>
+      <div class="q">
+        <label class="q-label">What stage are they at? <span class="opt">(pick any)</span></label>
+        <div class="chips">
+          <label class="chip"><input type="checkbox" name="kids_age" value="Expecting"> Expecting</label>
+          <label class="chip"><input type="checkbox" name="kids_age" value="0 to 12 months"> 0 to 12 months</label>
+          <label class="chip"><input type="checkbox" name="kids_age" value="1 to 3 years"> 1 to 3 years</label>
+          <label class="chip"><input type="checkbox" name="kids_age" value="4 years and up"> 4 years and up</label>
+        </div>
+      </div>
+      <div class="err" id="err-kids">Please pick at least one stage.</div>
+    </section>
+
+    <!-- STEP: budget -->
+    <section class="step" data-key="budget">
+      <h2 class="step-title">What is your budget approach?</h2>
+      <p class="step-hint">So we can pace the plan to how you want to spend.</p>
+      <div class="chips">
+        <label class="chip"><input type="radio" name="budget" value="Start with essentials"> Start with essentials</label>
+        <label class="chip"><input type="radio" name="budget" value="Moderate"> Moderate</label>
+        <label class="chip"><input type="radio" name="budget" value="Replace most things"> Replace most things</label>
+      </div>
+      <div class="err" id="err-budget">Please choose one.</div>
+    </section>
+
+    <!-- STEP: photos (Personal Review buyers only) -->
+    <section class="step" data-key="photos">
+      <h2 class="step-title">Add photos of your spaces.</h2>
+      <p class="step-hint">Your Personal Review is built from these. Snap each space as it is now, clutter and all. Photos upload privately and go straight to our team.</p>
+      <div class="q">
+        <label class="q-label" for="ph_kitchen">Kitchen</label>
+        <input type="file" class="file-input" id="ph_kitchen" accept="image/*" multiple>
+      </div>
+      <div class="q">
+        <label class="q-label" for="ph_bathroom">Bathroom</label>
+        <input type="file" class="file-input" id="ph_bathroom" accept="image/*" multiple>
+      </div>
+      <div class="q" id="ph_nursery_q">
+        <label class="q-label" for="ph_nursery">Nursery / Kids</label>
+        <input type="file" class="file-input" id="ph_nursery" accept="image/*" multiple>
+      </div>
+      <p class="step-hint" style="margin-top:1rem">You can add or send more later, but the review is faster and better with them now.</p>
+    </section>
+
+    <!-- STEP: more (optional) -->
+    <section class="step" data-key="more">
+      <h2 class="step-title">A little more <span class="opt" style="font-size:1rem;color:var(--text-muted);font-weight:400">(optional)</span></h2>
+      <p class="step-hint">All optional. Skip anything you are not sure about.</p>
+
+      <div class="q">
+        <label class="q-label">What worries you most right now?</label>
+        <div class="chips" id="concernChips">
+          <label class="chip"><input type="radio" name="concern" value="Food and kitchen"> Food and kitchen</label>
+          <label class="chip" id="chip-babyfood"><input type="radio" name="concern" value="Baby feeding and food"> Baby feeding and food</label>
+          <label class="chip"><input type="radio" name="concern" value="Drinking water"> Drinking water</label>
+          <label class="chip"><input type="radio" name="concern" value="Personal care"> Personal care</label>
+          <label class="chip"><input type="radio" name="concern" value="Air and bedroom"> Air and bedroom</label>
+          <label class="chip"><input type="radio" name="concern" value="Not sure yet"> Not sure yet</label>
+          <label class="chip"><input type="radio" name="concern" value="Other"> Other</label>
+        </div>
+        <input type="text" id="concernOther" placeholder="Tell us what worries you" style="display:none;margin-top:.7rem">
+      </div>
+
+      <div class="q">
+        <label class="q-label">Your water source</label>
+        <div class="chips">
+          <label class="chip"><input type="radio" name="water" value="City tap"> City tap</label>
+          <label class="chip"><input type="radio" name="water" value="Well"> Well</label>
+          <label class="chip"><input type="radio" name="water" value="Already filtered"> Already filtered</label>
+        </div>
+      </div>
+
+      <div class="q">
+        <label class="q-label">What have you already swapped or own?</label>
+        <textarea id="owned" name="owned" rows="3" placeholder="So we do not recommend things you already have"></textarea>
+      </div>
+
+      <div class="q">
+        <label class="q-label">Anything specific you want us to prioritize?</label>
+        <textarea id="priorities" name="priorities" rows="3" placeholder="Optional"></textarea>
+      </div>
+
+    </section>
+
+    <!-- nav buttons -->
+    <div class="nav-btns">
+      <button type="button" class="btn btn-back" id="backBtn">← Back</button>
+      <div style="display:flex;align-items:center;gap:.5rem">
+        <button type="button" class="btn btn-skip" id="skipBtn" style="display:none">Skip</button>
+        <button type="button" class="btn btn-next" id="nextBtn">Next →</button>
+        <button type="submit" class="btn btn-next" id="submitBtn" style="display:none">Send my answers →</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<!-- SUCCESS -->
+<div class="success" id="success">
+  <div class="check">&#10003;</div>
+  <h2>Got it, thank you.</h2>
+  <p>We are building your custom plan now and will email it to you shortly. Keep an eye on your inbox.</p>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <p>plasticdetox.org. Because your body deserves better than plastic.</p>
+  <div class="fmeta">
+    <a href="about.html" style="margin-right:1rem;">About</a>
+    <a href="privacy.html" style="margin-right:1rem;">Privacy Policy</a>
+    <a href="mailto:hello@plasticdetox.org">hello@plasticdetox.org</a>
+  </div>
+</footer>
+
+<script>
+  const INTAKE_ENDPOINT = "https://plasticdetox-quiz-email.plasticdetox.workers.dev/intake";
+  // Stripe success URL tags the tier: ?tier=review (Personal Review) or ?tier=custom (Custom Plan)
+  const TIER = new URLSearchParams(location.search).get('tier') === 'review' ? 'review' : 'custom';
+  const TIER_LABEL = TIER === 'review' ? 'Custom Plan + Personal Review' : 'Custom Plan';
+  const form = document.getElementById('intakeForm');
+  const steps = Array.from(form.querySelectorAll('.step'));
+  const stepByKey = {}; steps.forEach(s => stepByKey[s.dataset.key] = s);
+  const backBtn = document.getElementById('backBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const skipBtn = document.getElementById('skipBtn');
+  const submitBtn = document.getElementById('submitBtn');
+  let idx = 0;
+
+  function checked(name){ return Array.from(form.querySelectorAll('input[name="'+name+'"]:checked')).map(i=>i.value); }
+
+  // "Other" concern reveals a text box
+  document.getElementById('concernChips').addEventListener('change', function(){
+    const other = document.getElementById('concernOther');
+    const isOther = checked('concern')[0] === 'Other';
+    other.style.display = isOther ? 'block' : 'none';
+    if(isOther) other.focus();
+  });
+  function hasKids(){ const h = checked('household'); return h.includes('Babies or kids') || h.includes('Pregnant or expecting'); }
+
+  // Which steps are active depends on answers (kids step only if applicable)
+  function activeKeys(){
+    const keys = ['household','rooms'];
+    if(hasKids()) keys.push('kids');
+    keys.push('budget');
+    if(TIER === 'review') keys.push('photos'); // only Personal Review buyers upload photos
+    keys.push('more');
+    return keys;
+  }
+
+  // Exclusive "Adults only" logic + reveal/hide conditional options
+  document.getElementById('householdChips').addEventListener('change', function(e){
+    const box = e.target;
+    if(box.dataset.exclusive){
+      if(box.checked){ form.querySelectorAll('input[name="household"]').forEach(i=>{ if(i!==box) i.checked=false; }); }
+    } else if(box.checked){
+      const ex = form.querySelector('input[name="household"][data-exclusive]'); if(ex) ex.checked=false;
+    }
+    applyConditionalOptions();
+  });
+
+  function applyConditionalOptions(){
+    const kids = hasKids();
+    // nursery room option
+    document.getElementById('chip-nursery').style.display = kids ? '' : 'none';
+    if(!kids){ const n = form.querySelector('input[name="rooms"][value="Nursery / Kids"]'); if(n) n.checked=false; }
+    // baby feeding concern option
+    document.getElementById('chip-babyfood').style.display = kids ? '' : 'none';
+    if(!kids){ const b = form.querySelector('input[name="concern"][value="Baby feeding and food"]'); if(b) b.checked=false; }
+    // nursery photo field (Personal Review + kids only)
+    const nq = document.getElementById('ph_nursery_q'); if(nq) nq.style.display = kids ? '' : 'none';
+  }
+
+  // Downscale phone photos so several fit in one JSON post
+  function compress(file, max, quality){
+    return new Promise(function(resolve){
+      const img = new Image(); const url = URL.createObjectURL(file);
+      img.onload = function(){
+        let w = img.width, h = img.height;
+        if(w > max || h > max){ const r = Math.min(max/w, max/h); w = Math.round(w*r); h = Math.round(h*r); }
+        const c = document.createElement('canvas'); c.width = w; c.height = h;
+        c.getContext('2d').drawImage(img, 0, 0, w, h);
+        URL.revokeObjectURL(url);
+        resolve(c.toDataURL('image/jpeg', quality));
+      };
+      img.onerror = function(){ URL.revokeObjectURL(url); resolve(null); };
+      img.src = url;
+    });
+  }
+  async function collectPhotos(){
+    const out = [];
+    const groups = [['Kitchen','ph_kitchen'],['Bathroom','ph_bathroom'],['Nursery','ph_nursery']];
+    for(const [room, id] of groups){
+      const inp = document.getElementById(id);
+      if(!inp) continue;
+      const q = inp.closest('.q');
+      if(q && q.style.display === 'none') continue; // skip hidden nursery
+      for(const f of inp.files){ const d = await compress(f, 1400, 0.7); if(d) out.push({ room: room, name: f.name, content: d.split(',')[1] }); }
+    }
+    return out;
+  }
+
+  function validate(key){
+    if(key === 'household'){
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const ok = name && /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email) && checked('household').length > 0;
+      document.getElementById('err-household').style.display = ok ? 'none' : 'block';
+      return ok;
+    }
+    const map = { rooms:'rooms', kids:'kids_age', budget:'budget' };
+    if(!map[key]) return true; // optional steps
+    const ok = checked(map[key]).length > 0;
+    document.getElementById('err-'+key).style.display = ok ? 'none' : 'block';
+    return ok;
+  }
+
+  function render(){
+    const keys = activeKeys();
+    if(idx >= keys.length) idx = keys.length - 1;
+    if(idx < 0) idx = 0;
+    const key = keys[idx];
+    applyConditionalOptions();
+    steps.forEach(s => s.classList.toggle('active', s.dataset.key === key));
+    // progress
+    const pctVal = Math.round(((idx+1)/keys.length)*100);
+    document.getElementById('progressFill').style.width = pctVal + '%';
+    document.getElementById('stepCount').textContent = 'Step ' + (idx+1) + ' of ' + keys.length;
+    document.getElementById('stepPct').textContent = pctVal + '%';
+    // buttons
+    backBtn.style.visibility = idx === 0 ? 'hidden' : 'visible';
+    const isLast = idx === keys.length - 1;
+    const optional = !['household','rooms','kids','budget'].includes(key);
+    nextBtn.style.display = isLast ? 'none' : 'inline-flex';
+    submitBtn.style.display = isLast ? 'inline-flex' : 'none';
+    skipBtn.style.display = (optional && !isLast) ? 'inline-flex' : 'none';
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+
+  nextBtn.addEventListener('click', function(){
+    const keys = activeKeys();
+    if(!validate(keys[idx])) return;
+    idx++; render();
+  });
+  skipBtn.addEventListener('click', function(){ idx++; render(); });
+  backBtn.addEventListener('click', function(){ idx--; render(); });
+
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    // validate all required steps before sending
+    for(const k of ['household','rooms', ...(hasKids()?['kids']:[]), 'budget']){ if(!validate(k)){ idx = activeKeys().indexOf(k); render(); return; } }
+    submitBtn.disabled = true; submitBtn.textContent = 'Sending...';
+    const payload = {
+      tier: TIER_LABEL,
+      name: document.getElementById('name').value.trim(),
+      email: document.getElementById('email').value.trim(),
+      household: checked('household').join(', '),
+      rooms: checked('rooms').join(', '),
+      kids_age: checked('kids_age').join(', '),
+      budget: checked('budget')[0] || '',
+      concern: (checked('concern')[0] === 'Other')
+        ? ('Other: ' + document.getElementById('concernOther').value.trim())
+        : (checked('concern')[0] || ''),
+      water: checked('water')[0] || '',
+      owned: document.getElementById('owned').value.trim(),
+      priorities: document.getElementById('priorities').value.trim(),
+      photos: TIER === 'review' ? await collectPhotos() : []
+    };
+    try{
+      const res = await fetch(INTAKE_ENDPOINT, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) });
+      if(!res.ok) throw new Error('bad status');
+      document.getElementById('formWrap').style.display='none';
+      document.getElementById('progressWrap').style.display='none';
+      document.getElementById('success').style.display='block';
+      window.scrollTo({top:0,behavior:'smooth'});
+    }catch(ex){
+      submitBtn.disabled=false; submitBtn.textContent='Send my answers →';
+      alert('Something went wrong. Please try again.');
+    }
+  });
+
+  document.getElementById('planBadge').innerHTML = 'Your plan: <b>' + TIER_LABEL + '</b>';
+  render();
+</script>
+
+</body>
+</html>
