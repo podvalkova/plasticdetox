@@ -37,6 +37,11 @@ export default {
       return handleBrandRequest(request, env, corsOrigin);
     }
 
+    // ===== Digital product waitlist: capture full name + email into Brevo list 8 =====
+    if (path === "/subscribe") {
+      return handleSubscribe(request, env, corsOrigin);
+    }
+
     try {
       const data = await request.json();
       const { email, score, total, level, levelColor, top3, swaps } = data;
@@ -212,6 +217,46 @@ async function handleBrandRequest(request, env, corsOrigin) {
     await logBrandSearch(env, cleanBrand, false, "", true).catch(() => {});
 
     return json({ ok: true }, 200, corsOrigin);
+  } catch (e) {
+    return json({ ok: false, error: "Server error" }, 500, corsOrigin);
+  }
+}
+
+// POST /subscribe  { name, email, listId? }  -> add contact to Brevo list (default 8, "digital")
+async function handleSubscribe(request, env, corsOrigin) {
+  try {
+    const { name, email, listId } = await request.json();
+    const cleanName = (name || "").toString().trim().slice(0, 120);
+    const cleanEmail = (email || "").toString().trim();
+    const list = parseInt(listId) || 8;
+
+    if (!cleanName || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(cleanEmail)) {
+      return json({ ok: false, error: "Invalid data" }, 400, corsOrigin);
+    }
+
+    const parts = cleanName.split(/\s+/);
+    const firstName = parts.shift() || "";
+    const lastName = parts.join(" ");
+
+    const res = await fetch("https://api.brevo.com/v3/contacts", {
+      method: "POST",
+      headers: { "api-key": env.BREVO_API_KEY, "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email: cleanEmail,
+        attributes: {
+          FIRSTNAME: firstName,
+          LASTNAME: lastName,
+          DIGITAL_SIGNUP_DATE: new Date().toISOString().split("T")[0],
+        },
+        listIds: [list],
+        updateEnabled: true,
+      }),
+    });
+
+    if (res.ok || res.status === 204) {
+      return json({ ok: true }, 200, corsOrigin);
+    }
+    return json({ ok: false, error: "Brevo error" }, 502, corsOrigin);
   } catch (e) {
     return json({ ok: false, error: "Server error" }, 500, corsOrigin);
   }
