@@ -352,6 +352,26 @@ async function handleIntake(request, env, corsOrigin) {
     };
     if (attachment.length) body.attachment = attachment;
 
+    // Upsert the buyer into Brevo "Digital" list (8) with their intake answers
+    const nm2 = name.split(/\s+/);
+    await fetch("https://api.brevo.com/v3/contacts", {
+      method: "POST",
+      headers: { "api-key": env.BREVO_API_KEY, "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email,
+        attributes: {
+          FIRSTNAME: nm2.shift() || "",
+          LASTNAME: nm2.join(" "),
+          PLAN_PURCHASED: d.tier || "Custom Plan",
+          INTAKE_ROOMS: (d.rooms || "").toString().slice(0, 200),
+          INTAKE_HOUSEHOLD: (d.household || "").toString().slice(0, 200),
+          INTAKE_DATE: new Date().toISOString().split("T")[0],
+        },
+        listIds: [8],
+        updateEnabled: true,
+      }),
+    }).catch(() => {});
+
     const res = await fetch("https://api.brevo.com/v3/smtp/email", {
       method: "POST",
       headers: { "api-key": env.BREVO_API_KEY, "Content-Type": "application/json" },
@@ -423,6 +443,24 @@ async function handleStripeWebhook(request, env) {
     const tierLabel = tier === "review" ? "Custom Plan + Personal Review" : "Custom Plan";
 
     if (email) {
+      // Add the buyer to Brevo "Digital" list (8) with what they purchased
+      const nm = name.split(/\s+/);
+      await fetch("https://api.brevo.com/v3/contacts", {
+        method: "POST",
+        headers: { "api-key": env.BREVO_API_KEY, "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email,
+          attributes: {
+            FIRSTNAME: nm.shift() || "",
+            LASTNAME: nm.join(" "),
+            PLAN_PURCHASED: tierLabel,
+            PURCHASE_DATE: new Date().toISOString().split("T")[0],
+          },
+          listIds: [8],
+          updateEnabled: true,
+        }),
+      }).catch(() => {});
+
       const link = `https://plasticdetox.org/plan-intake.html?tier=${tier}&email=${encodeURIComponent(email)}`;
       await fetch("https://api.brevo.com/v3/smtp/email", {
         method: "POST",
