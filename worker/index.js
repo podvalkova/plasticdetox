@@ -358,6 +358,27 @@ async function handleIntake(request, env, corsOrigin) {
       body: JSON.stringify(body),
     });
 
+    // Confirmation email to the customer (best effort, does not block success)
+    const tierLabel = d.tier || "Custom Plan";
+    const firstName = name.split(/\s+/)[0] || "there";
+    await fetch("https://api.brevo.com/v3/smtp/email", {
+      method: "POST",
+      headers: { "api-key": env.BREVO_API_KEY, "Content-Type": "application/json" },
+      body: JSON.stringify({
+        sender: { name: env.SENDER_NAME, email: env.SENDER_EMAIL },
+        to: [{ email, name }],
+        subject: "We got your answers. Your plan is on the way",
+        htmlContent: `
+          <div style="font-family:'Inter',-apple-system,sans-serif;max-width:520px;margin:0 auto;color:#1c1917;">
+            <p style="font-size:16px;">Thank you, ${esc(firstName)}.</p>
+            <p style="font-size:16px;">We have received your answers for the <strong>${esc(tierLabel)}</strong> and our team is building your personalized plan now.</p>
+            <p style="font-size:16px;">You will receive it by email <strong>within 24 hours</strong>.</p>
+            <p style="font-size:14px;color:#78716c;margin-top:24px;">Questions or something to add? Just reply to this email.</p>
+            <p style="font-size:14px;color:#78716c;">Plastic Detox</p>
+          </div>`,
+      }),
+    }).catch(() => {});
+
     if (res.ok) return json({ ok: true }, 200, corsOrigin);
     return json({ ok: false, error: "Email send failed" }, 502, corsOrigin);
   } catch (e) {
