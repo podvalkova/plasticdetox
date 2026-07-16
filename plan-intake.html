@@ -246,15 +246,6 @@
       </div>
 
       <div class="q">
-        <label class="q-label">Your water source</label>
-        <div class="chips">
-          <label class="chip"><input type="radio" name="water" value="City tap"> City tap</label>
-          <label class="chip"><input type="radio" name="water" value="Well"> Well</label>
-          <label class="chip"><input type="radio" name="water" value="Already filtered"> Already filtered</label>
-        </div>
-      </div>
-
-      <div class="q">
         <label class="q-label">What have you already swapped or own?</label>
         <textarea id="owned" name="owned" rows="3" placeholder="So we do not recommend things you already have"></textarea>
       </div>
@@ -443,7 +434,6 @@
       concern: (checked('concern')[0] === 'Other')
         ? ('Other: ' + document.getElementById('concernOther').value.trim())
         : (checked('concern')[0] || ''),
-      water: checked('water')[0] || '',
       owned: document.getElementById('owned').value.trim(),
       priorities: document.getElementById('priorities').value.trim(),
       photos: TIER === 'review' ? await collectPhotos() : []
