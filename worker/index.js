@@ -225,9 +225,10 @@ async function handleBrandRequest(request, env, corsOrigin) {
 // POST /subscribe  { name, email, listId? }  -> add contact to Brevo list (default 8, "digital")
 async function handleSubscribe(request, env, corsOrigin) {
   try {
-    const { name, email, listId } = await request.json();
+    const { name, email, listId, plan } = await request.json();
     const cleanName = (name || "").toString().trim().slice(0, 120);
     const cleanEmail = (email || "").toString().trim();
+    const cleanPlan = (plan || "Undecided").toString().trim().slice(0, 80);
     const list = parseInt(listId) || 8;
 
     if (!cleanName || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(cleanEmail)) {
@@ -246,6 +247,7 @@ async function handleSubscribe(request, env, corsOrigin) {
         attributes: {
           FIRSTNAME: firstName,
           LASTNAME: lastName,
+          PLAN_INTEREST: cleanPlan,
           DIGITAL_SIGNUP_DATE: new Date().toISOString().split("T")[0],
         },
         listIds: [list],

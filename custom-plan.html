@@ -186,7 +186,7 @@
     <span class="eyebrow">New from Plastic Detox</span>
     <h1>Your home, <span class="accent">vetted room by room</span>. Built just for you.</h1>
     <p class="sub">Stop guessing which swaps matter. Answer a few questions about your home and get a personalized plan that tells you exactly what to change, in what order, and what to skip.</p>
-    <a href="#" class="cta lg js-plan">Get your plan →</a>
+    <a href="#" class="cta lg js-plan" data-plan="Undecided (top or bottom CTA)">Get your plan →</a>
     <p class="trust-line">Every purchase funds independent lab testing of the products we recommend.</p>
   </div>
 </header>
@@ -256,6 +256,7 @@
       </div>
       <div class="track"><div class="fill"></div></div>
       <p class="meter-foot"><b>Fund opened July 15, 2026.</b> Every purchase moves the bar toward our first round of independent testing. You are not buying a PDF. You are why we can test instead of guess.</p>
+      <p class="meter-foot"><b>Buyers see every result first.</b> We publish the full lab findings to customers before anyone else, good or bad.</p>
     </div>
   </div>
 </section>
@@ -280,8 +281,9 @@
           <li>Budget tiers so you can start small</li>
           <li>Printable checklist you own</li>
           <li>Free updates when our picks change</li>
+          <li>Exclusive access to our lab test results</li>
         </ul>
-        <a href="#" class="cta ghost js-plan">Get the Custom Plan →</a>
+        <a href="#" class="cta ghost js-plan" data-plan="Custom Plan ($39)">Get the Custom Plan →</a>
       </div>
       <div class="tier featured">
         <div class="badge">Best value · Limited spots</div>
@@ -295,8 +297,9 @@
           <li>Your top questions answered in detail</li>
           <li>A tailored priority list built from your photos</li>
           <li>Delivered digitally, no scheduling needed</li>
+          <li>Exclusive access to our lab test results</li>
         </ul>
-        <a href="#" class="cta js-plan">Get the Personal Review →</a>
+        <a href="#" class="cta js-plan" data-plan="Custom Plan + Personal Review ($149)">Get the Personal Review →</a>
       </div>
     </div>
   </div>
@@ -336,7 +339,7 @@
   <div class="narrow">
     <h2>Stop guessing. Start with the swaps that matter.</h2>
     <p>Get a plan built for your home, and fund the independent testing that makes our recommendations worth trusting.</p>
-    <a href="#" class="cta lg js-plan">Get your plan →</a>
+    <a href="#" class="cta lg js-plan" data-plan="Undecided (top or bottom CTA)">Get your plan →</a>
   </div>
 </section>
 
@@ -386,7 +389,13 @@
   const SUBSCRIBE_ENDPOINT = "https://plasticdetox-quiz-email.plasticdetox.workers.dev/subscribe";
   const BREVO_LIST_ID = 8;
 
-  function openPlanModal(e){ if(e) e.preventDefault(); document.getElementById('planModal').classList.add('show'); document.getElementById('fullName').focus(); }
+  let selectedPlan = "Undecided";
+  function openPlanModal(e){
+    if(e) e.preventDefault();
+    if(e && e.currentTarget && e.currentTarget.dataset.plan){ selectedPlan = e.currentTarget.dataset.plan; }
+    document.getElementById('planModal').classList.add('show');
+    document.getElementById('fullName').focus();
+  }
   function closePlanModal(){ document.getElementById('planModal').classList.remove('show'); }
   document.getElementById('planModal').addEventListener('click', function(e){ if(e.target===this) closePlanModal(); });
   document.addEventListener('keydown', function(e){ if(e.key==='Escape') closePlanModal(); });
@@ -404,7 +413,7 @@
     try{
       const res = await fetch(SUBSCRIBE_ENDPOINT, {
         method:'POST', headers:{'Content-Type':'application/json'},
-        body: JSON.stringify({ name: name, email: email, listId: BREVO_LIST_ID })
+        body: JSON.stringify({ name: name, email: email, listId: BREVO_LIST_ID, plan: selectedPlan })
       });
       if(!res.ok) throw new Error('bad status');
       document.getElementById('modalForm').style.display='none';
