@@ -42,6 +42,11 @@ export default {
       return handleSubscribe(request, env, corsOrigin);
     }
 
+    // ===== Contact form: email the question to hello@plasticdetox.org =====
+    if (path === "/contact") {
+      return handleContact(request, env, corsOrigin);
+    }
+
     try {
       const data = await request.json();
       const { email, score, total, level, levelColor, top3, swaps } = data;
@@ -259,6 +264,39 @@ async function handleSubscribe(request, env, corsOrigin) {
       return json({ ok: true }, 200, corsOrigin);
     }
     return json({ ok: false, error: "Brevo error" }, 502, corsOrigin);
+  } catch (e) {
+    return json({ ok: false, error: "Server error" }, 500, corsOrigin);
+  }
+}
+
+// POST /contact  { name, email, message }  -> email the question to the team
+async function handleContact(request, env, corsOrigin) {
+  try {
+    const { name, email, message } = await request.json();
+    const cleanName = (name || "").toString().trim().slice(0, 120);
+    const cleanEmail = (email || "").toString().trim();
+    const cleanMsg = (message || "").toString().trim().slice(0, 5000);
+
+    if (!cleanName || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(cleanEmail) || !cleanMsg) {
+      return json({ ok: false, error: "Invalid data" }, 400, corsOrigin);
+    }
+
+    const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+    const res = await fetch("https://api.brevo.com/v3/smtp/email", {
+      method: "POST",
+      headers: { "api-key": env.BREVO_API_KEY, "Content-Type": "application/json" },
+      body: JSON.stringify({
+        sender: { name: env.SENDER_NAME, email: env.SENDER_EMAIL },
+        to: [{ email: env.SENDER_EMAIL }],
+        replyTo: { email: cleanEmail, name: cleanName },
+        subject: `Custom Plan question from ${cleanName}`,
+        htmlContent: `<p><strong>From:</strong> ${esc(cleanName)} (${esc(cleanEmail)})</p><p>${esc(cleanMsg).replace(/\n/g, "<br>")}</p>`,
+      }),
+    });
+
+    if (res.ok) return json({ ok: true }, 200, corsOrigin);
+    return json({ ok: false, error: "Email send failed" }, 502, corsOrigin);
   } catch (e) {
     return json({ ok: false, error: "Server error" }, 500, corsOrigin);
   }

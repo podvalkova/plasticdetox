@@ -106,6 +106,21 @@
   .tier .cta{width:100%;justify-content:center}
   @media(max-width:640px){.tiers{grid-template-columns:1fr}}
 
+  /* CONTACT */
+  .contact{background:#fff;border-top:1px solid var(--line)}
+  .contact-form{max-width:520px;margin:28px auto 0;text-align:left}
+  .c-row{display:flex;gap:14px;margin-bottom:14px}
+  .c-row input{flex:1;min-width:0}
+  .contact-form input,.contact-form textarea{width:100%;padding:13px 15px;border:1px solid var(--line);border-radius:11px;font-family:inherit;font-size:15px;background:var(--paper);resize:vertical}
+  .contact-form input:focus,.contact-form textarea:focus{outline:none;border-color:var(--purple);background:#fff}
+  .contact-form textarea{margin-bottom:16px}
+  .contact-form .cta{width:100%;justify-content:center;border:none;cursor:pointer}
+  .contact-form .cta:disabled{opacity:.6;cursor:default}
+  .c-error{color:#dc2626;font-size:13.5px;margin-bottom:12px;display:none}
+  .contact-success{display:none;max-width:520px;margin:28px auto 0}
+  .contact-success .check{width:52px;height:52px;border-radius:50%;background:#dcfce7;color:var(--green);font-size:28px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
+  @media(max-width:560px){.c-row{flex-direction:column;gap:14px}}
+
   /* FOR PARENTS */
   .parents{background:linear-gradient(180deg,#fff7ed 0%,var(--paper) 100%);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 
@@ -328,11 +343,11 @@
     </details>
     <details>
       <summary>How does the testing fund work?</summary>
-      <p>We pool testing funds until a round reaches about $2,000, then commission independent lab panels and publish the results. Depending on sales, a round may take a few months to fund. You can watch the progress on the meter above.</p>
+      <p>We pool testing funds until a round reaches about $2,000, then commission independent lab panels and publish the results. You can watch the progress on the meter above.</p>
     </details>
     <details>
       <summary>What is the Personal Review?</summary>
-      <p>You send photos of your kitchen, bathroom and nursery. We go through them room by room and send back a written review of what is worth keeping, what is worth replacing first, and answers to your top questions. Everything is digital, so there is nothing to schedule.</p>
+      <p>You send photos of your kitchen, bathroom and nursery. We go through them room by room and send back a written review of what is worth keeping, what is worth replacing first, and answers to your top questions.</p>
     </details>
     <details>
       <summary>Do I have to buy everything at once?</summary>
@@ -351,6 +366,29 @@
     <h2>Stop guessing. Start with the swaps that matter.</h2>
     <p>Get a plan built for your home, and fund the independent testing that makes our recommendations worth trusting.</p>
     <a href="#" class="cta lg js-plan" data-plan="Undecided (top or bottom CTA)">Get your plan →</a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact">
+  <div class="narrow" style="text-align:center">
+    <div class="section-tag" style="color:var(--purple)">Questions</div>
+    <h2>Still have a question?</h2>
+    <p class="lead">Send it over and we will get back to you.</p>
+    <form id="contactForm" class="contact-form" novalidate>
+      <div class="c-error" id="contactError"></div>
+      <div class="c-row">
+        <input type="text" id="cName" placeholder="Your name" autocomplete="name" required>
+        <input type="email" id="cEmail" placeholder="Your email" autocomplete="email" required>
+      </div>
+      <textarea id="cMessage" rows="5" placeholder="Your question" required></textarea>
+      <button type="submit" class="cta" id="contactBtn">Send question →</button>
+    </form>
+    <div class="contact-success" id="contactSuccess">
+      <div class="check">&#10003;</div>
+      <h3>Thank you</h3>
+      <p>Your question is on its way. We will reply by email soon.</p>
+    </div>
   </div>
 </section>
 
@@ -432,6 +470,32 @@
     }catch(ex){
       err.textContent='Something went wrong. Please try again.'; err.style.display='block';
       btn.disabled=false; btn.textContent='Reserve my plan →';
+    }
+  });
+
+  // Contact form
+  const CONTACT_ENDPOINT = "https://plasticdetox-quiz-email.plasticdetox.workers.dev/contact";
+  document.getElementById('contactForm').addEventListener('submit', async function(e){
+    e.preventDefault();
+    const name = document.getElementById('cName').value.trim();
+    const email = document.getElementById('cEmail').value.trim();
+    const message = document.getElementById('cMessage').value.trim();
+    const err = document.getElementById('contactError');
+    const btn = document.getElementById('contactBtn');
+    err.style.display='none';
+    if(!name || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email) || !message){ err.textContent='Please add your name, a valid email, and your question.'; err.style.display='block'; return; }
+    btn.disabled=true; btn.textContent='Sending...';
+    try{
+      const res = await fetch(CONTACT_ENDPOINT, {
+        method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({ name: name, email: email, message: message })
+      });
+      if(!res.ok) throw new Error('bad status');
+      document.getElementById('contactForm').style.display='none';
+      document.getElementById('contactSuccess').style.display='block';
+    }catch(ex){
+      err.textContent='Something went wrong. Please try again.'; err.style.display='block';
+      btn.disabled=false; btn.textContent='Send question →';
     }
   });
 </script>
