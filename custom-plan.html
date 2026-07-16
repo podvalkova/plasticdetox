@@ -412,73 +412,7 @@
   </div>
 </footer>
 
-<!-- CAPTURE MODAL -->
-<div class="modal-overlay" id="planModal">
-  <div class="modal">
-    <button class="modal-close" onclick="closePlanModal()" aria-label="Close">&times;</button>
-    <div id="modalForm">
-      <h3>Get your personalized plan</h3>
-      <p class="msub">Just share your details and we will get back to you with the next steps.</p>
-      <div class="merror" id="modalError">Something went wrong. Please try again.</div>
-      <form id="captureForm" novalidate>
-        <label for="fullName">Full name</label>
-        <input type="text" id="fullName" name="fullName" autocomplete="name" required>
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" autocomplete="email" required>
-        <button type="submit" class="cta" id="submitBtn">Reserve my plan →</button>
-        <p class="mfoot">No spam. We email you when the plan is ready.</p>
-      </form>
-    </div>
-    <div class="modal-success" id="modalSuccess">
-      <div class="check">&#10003;</div>
-      <h3>You are on the list</h3>
-      <p>Thank you. We will email you the moment your plan is ready.</p>
-    </div>
-  </div>
-</div>
-
 <script>
-  // ==== CONFIG ====
-  // Posts to the existing Plastic Detox worker, which holds the Brevo API key
-  // server-side and adds the contact to Brevo list 8 ("digital").
-  const SUBSCRIBE_ENDPOINT = "https://plasticdetox-quiz-email.plasticdetox.workers.dev/subscribe";
-  const BREVO_LIST_ID = 8;
-
-  let selectedPlan = "Undecided";
-  function openPlanModal(e){
-    if(e) e.preventDefault();
-    if(e && e.currentTarget && e.currentTarget.dataset.plan){ selectedPlan = e.currentTarget.dataset.plan; }
-    document.getElementById('planModal').classList.add('show');
-    document.getElementById('fullName').focus();
-  }
-  function closePlanModal(){ document.getElementById('planModal').classList.remove('show'); }
-  document.getElementById('planModal').addEventListener('click', function(e){ if(e.target===this) closePlanModal(); });
-  document.addEventListener('keydown', function(e){ if(e.key==='Escape') closePlanModal(); });
-  document.querySelectorAll('.js-plan').forEach(function(el){ el.addEventListener('click', openPlanModal); });
-
-  document.getElementById('captureForm').addEventListener('submit', async function(e){
-    e.preventDefault();
-    const name = document.getElementById('fullName').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const err = document.getElementById('modalError');
-    const btn = document.getElementById('submitBtn');
-    err.style.display='none';
-    if(!name || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ err.textContent='Please enter your name and a valid email.'; err.style.display='block'; return; }
-    btn.disabled=true; btn.textContent='Saving...';
-    try{
-      const res = await fetch(SUBSCRIBE_ENDPOINT, {
-        method:'POST', headers:{'Content-Type':'application/json'},
-        body: JSON.stringify({ name: name, email: email, listId: BREVO_LIST_ID, plan: selectedPlan })
-      });
-      if(!res.ok) throw new Error('bad status');
-      document.getElementById('modalForm').style.display='none';
-      document.getElementById('modalSuccess').style.display='block';
-    }catch(ex){
-      err.textContent='Something went wrong. Please try again.'; err.style.display='block';
-      btn.disabled=false; btn.textContent='Reserve my plan →';
-    }
-  });
-
   // Contact form
   const CONTACT_ENDPOINT = "https://plasticdetox-quiz-email.plasticdetox.workers.dev/contact";
   document.getElementById('contactForm').addEventListener('submit', async function(e){
