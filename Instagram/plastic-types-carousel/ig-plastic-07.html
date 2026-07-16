@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="robots" content="noindex,nofollow"><title>Slide 7</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+  <style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #d6d3d1;
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  .pin {
+    width: 1080px;
+    height: 1350px;
+    background: #fafaf9;
+    position: relative;
+    overflow: hidden;
+  }
+
+    .pin {
+      background: #fafaf9;
+      padding: 56px 56px 28px;
+      display: flex;
+      flex-direction: column;
+      color: #1c1917;
+    }
+    .pin::before {
+      content: "";
+      position: absolute;
+      top: -180px; right: -180px;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(196,181,253,0.5) 0%, rgba(250,250,249,0) 70%);
+      pointer-events: none;
+    }
+    .pin::after {
+      content: "";
+      position: absolute;
+      bottom: -200px; left: -180px;
+      width: 700px; height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(196,181,253,0.3) 0%, rgba(250,250,249,0) 70%);
+      pointer-events: none;
+    }
+    .header { text-align: center; position: relative; z-index: 2; }
+    .pin-tag {
+      display: inline-block;
+      font-size: 32px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: #fff;
+      background: #7c3aed;
+      padding: 14px 32px;
+      border-radius: 100px;
+      margin-bottom: 24px;
+    }
+    h1 {
+      font-size: 78px;
+      font-weight: 900;
+      color: #1c1917;
+      line-height: 0.98;
+      letter-spacing: -0.04em;
+      margin-bottom: 30px;
+    }
+    h1 .accent { color: #7c3aed; font-style: italic; }
+    .picks {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      position: relative;
+      z-index: 2;
+      flex: 1;
+      min-height: 0;
+    }
+    .pick-card {
+      background: #fff;
+      border: 3px solid #7c3aed;
+      border-radius: 22px;
+      padding: 22px 28px;
+      box-shadow: 0 10px 22px rgba(124,58,237,0.10);
+    }
+    .pick-name {
+      font-size: 40px;
+      font-weight: 900;
+      color: #1c1917;
+      letter-spacing: -0.025em;
+      margin-bottom: 8px;
+      line-height: 1.05;
+    }
+    .pick-why {
+      font-size: 32px;
+      font-weight: 500;
+      color: #44403c;
+      line-height: 1.22;
+      letter-spacing: -0.005em;
+    }
+    .footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 22px;
+      margin-top: 22px;
+      border-top: 2px solid rgba(124,58,237,0.18);
+      position: relative;
+      z-index: 2;
+    }
+    .footer-stat { font-size: 32px; font-weight: 700; color: #57534e; }
+    .footer-url { font-size: 32px; font-weight: 900; color: #7c3aed; }
+  </style>
+  <div class="pin">
+    <div class="header">
+      <div class="pin-tag">Cleanest swaps</div>
+      <h1>Build a kitchen that <span class="accent">lasts</span></h1>
+    </div>
+    <div class="picks">
+      
+        <div class="pick-card">
+          <div class="pick-name">Glass</div>
+          <div class="pick-why">For storage, microwaving, baby bottles. Inert, reusable, no leaching, no off gassing.</div>
+        </div>
+        <div class="pick-card">
+          <div class="pick-name">Stainless steel</div>
+          <div class="pick-why">For water bottles, food storage, cookware. 18/8 or 18/10 grade. No coatings to scratch.</div>
+        </div>
+        <div class="pick-card">
+          <div class="pick-name">Cast iron</div>
+          <div class="pick-why">For stovetop cooking. Adds bioavailable iron. Lasts generations. Lodge is the budget pick.</div>
+        </div>
+        <div class="pick-card">
+          <div class="pick-name">Platinum cured silicone</div>
+          <div class="pick-why">For bottle nipples, baking mats, storage. Medical grade is the spec. Heat stable to 400F.</div>
+        </div>
+        <div class="pick-card">
+          <div class="pick-name">Wood and ceramic</div>
+          <div class="pick-why">For boards, mugs, plates. The lowest tech swap and often the most effective.</div>
+        </div>
+    </div>
+    <div class="footer">
+      <span class="footer-stat">Material switches beat ingredient hunting</span>
+      <span class="footer-url">plasticdetox.org</span>
+    </div>
+  </div></body></html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="robots" content="noindex,nofollow"><title>Slide 2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+  <style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #d6d3d1;
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  .pin {
+    width: 1080px;
+    height: 1350px;
+    background: #fafaf9;
+    position: relative;
+    overflow: hidden;
+  }
+
+    .pin {
+      display: flex;
+      flex-direction: column;
+      padding: 64px 56px 28px;
+      background: #fafaf9;
+    }
+    .pin::before {
+      content: "";
+      position: absolute;
+      top: -180px; right: -180px;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(196,181,253,0.45) 0%, rgba(250,250,249,0) 70%);
+      pointer-events: none;
+    }
+    .pin::after {
+      content: "";
+      position: absolute;
+      bottom: -200px; left: -180px;
+      width: 700px; height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(196,181,253,0.30) 0%, rgba(250,250,249,0) 70%);
+      pointer-events: none;
+    }
+    .header { text-align: center; position: relative; z-index: 2; }
+    .pin-tag {
+      display: inline-block;
+      font-size: 32px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: #fff;
+      background: #7c3aed;
+      padding: 14px 30px;
+      border-radius: 100px;
+      margin-bottom: 22px;
+    }
+    h1 {
+      font-size: 86px;
+      font-weight: 900;
+      color: #1c1917;
+      line-height: 0.98;
+      letter-spacing: -0.04em;
+      margin-bottom: 28px;
+    }
+    h1 .accent { color: #7c3aed; font-style: italic; }
+    .symbol-wrap {
+      display: flex;
+      justify-content: center;
+      margin: 8px 0 28px;
+      position: relative;
+      z-index: 2;
+    }
+    .symbol-wrap svg {
+      width: 320px;
+      height: 320px;
+    }
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      position: relative;
+      z-index: 2;
+      flex: 1;
+      min-height: 0;
+    }
+    .step {
+      background: #fff;
+      border: 3px solid #7c3aed;
+      border-radius: 22px;
+      padding: 22px 28px;
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      box-shadow: 0 8px 18px rgba(124,58,237,0.10);
+    }
+    .step-num {
+      flex-shrink: 0;
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: #7c3aed;
+      color: #fff;
+      font-size: 42px;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .step-text {
+      font-size: 32px;
+      font-weight: 600;
+      color: #1c1917;
+      line-height: 1.25;
+      letter-spacing: -0.005em;
+    }
+    .footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 22px;
+      margin-top: 22px;
+      border-top: 2px solid rgba(124,58,237,0.18);
+      position: relative;
+      z-index: 2;
+    }
+    .footer-stat { font-size: 32px; font-weight: 700; color: #57534e; }
+    .footer-url { font-size: 32px; font-weight: 900; color: #7c3aed; }
+  </style>
+  <div class="pin">
+    <div class="header">
+      <div class="pin-tag">First, find the number</div>
+      <h1>Look for <span class="accent">this</span> symbol</h1>
+    </div>
+    <div class="symbol-wrap">
+      <svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Recycling triangle with example number 5 inside">
+        <polygon points="120,20 220,200 20,200" fill="none" stroke="#1c1917" stroke-width="9" stroke-linejoin="round"/>
+        <polygon points="116,46 96,80 138,80" fill="#1c1917"/>
+        <polygon points="186,158 206,194 162,194" fill="#1c1917"/>
+        <polygon points="56,158 36,194 80,194" fill="#1c1917"/>
+        <text x="120" y="170" font-family="Inter,sans-serif" font-size="92" font-weight="900" fill="#1c1917" text-anchor="middle">5</text>
+      </svg>
+    </div>
+    <div class="steps">
+      
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-text">Flip the item over. Usually stamped on the bottom of bottles and tubs, or on the side of bags.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-text">Find the small triangle of three chasing arrows, stamped into the plastic, not printed.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-text">The number inside the triangle is 1 to 7. That is the resin code.</div>
+        </div>
+    </div>
+    <div class="footer">
+      <span class="footer-stat">No number? Treat as #7.</span>
+      <span class="footer-url">plasticdetox.org</span>
+    </div>
+  </div></body></html>

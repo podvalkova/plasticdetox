@@ -242,12 +242,13 @@
     .footer a { color: var(--text-muted); text-decoration: none; }
     .footer a:hover { color: var(--accent-dark); }
   </style>
+  <style>@media(max-width:640px){.nav-hide-mobile{display:none!important}}</style>
 </head>
 <body>
   <nav class="nav">
     <a href="index.html" class="nav-logo">plastic<span>detox</span></a>
     <div class="nav-links">
-      <a class="nav-link" href="index.html">Home</a>
+      <a class="nav-link nav-hide-mobile" href="index.html">Home</a>
       <a class="nav-link" href="babies-kids.html">Kids</a>
       <a class="nav-link" href="store.html">Store</a>
       <a class="nav-link" href="resources.html">Resources</a>

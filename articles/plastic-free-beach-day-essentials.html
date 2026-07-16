@@ -191,12 +191,13 @@
     .checklist li { padding: 0.4rem 0; padding-left: 1.8rem; position: relative; font-size: 0.95rem; line-height: 1.5; }
     .checklist li::before { content: ""; position: absolute; left: 0; top: 0.6rem; width: 18px; height: 18px; border: 2px solid #7c3aed; border-radius: 4px; }
   </style>
+  <style>@media(max-width:640px){.nav-hide-mobile{display:none!important}}</style>
 </head>
 <body>
   <nav class="nav">
     <a href="../" class="nav-logo">plastic<span>detox</span></a>
     <div class="nav-links">
-      <a class="nav-link" href="../">Home</a>
+      <a class="nav-link nav-hide-mobile" href="../">Home</a>
       <a class="nav-link" href="../babies-kids.html">Kids</a>
       <a class="nav-link" href="../store.html">Store</a>
       <a class="nav-link" href="../#resources">Resources</a>
