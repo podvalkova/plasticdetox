@@ -392,7 +392,7 @@ async function handleIntake(request, env, corsOrigin) {
           <div style="font-family:'Inter',-apple-system,sans-serif;max-width:520px;margin:0 auto;color:#1c1917;">
             <p style="font-size:16px;">Thank you, ${esc(firstName)}.</p>
             <p style="font-size:16px;">We have received your answers for the <strong>${esc(tierLabel)}</strong> and our team is building your personalized plan now.</p>
-            <p style="font-size:16px;">You will receive it by email <strong>within 24 hours</strong>.</p>
+            <p style="font-size:16px;">You will receive it by email <strong>shortly</strong>.</p>
             <p style="font-size:14px;color:#78716c;margin-top:24px;">Questions or something to add? Just reply to this email.</p>
             <p style="font-size:14px;color:#78716c;">Plastic Detox</p>
           </div>`,
