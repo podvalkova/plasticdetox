@@ -57,6 +57,11 @@ export default {
       return handleStripeWebhook(request, env);
     }
 
+    // ===== Contribute any amount: create a Stripe Checkout Session =====
+    if (path === "/create-contribution") {
+      return handleContribution(request, env, corsOrigin);
+    }
+
     try {
       const data = await request.json();
       const { email, score, total, level, levelColor, top3, swaps } = data;
@@ -401,6 +406,43 @@ async function handleIntake(request, env, corsOrigin) {
 
     if (res.ok) return json({ ok: true }, 200, corsOrigin);
     return json({ ok: false, error: "Email send failed" }, 502, corsOrigin);
+  } catch (e) {
+    return json({ ok: false, error: "Server error" }, 500, corsOrigin);
+  }
+}
+
+// POST /create-contribution  { amount }  -> Stripe Checkout Session URL for a custom contribution
+async function handleContribution(request, env, corsOrigin) {
+  try {
+    const { amount } = await request.json();
+    const dollars = Math.round(Number(amount));
+    if (!dollars || dollars < 1 || dollars > 10000) {
+      return json({ ok: false, error: "Please enter an amount between $1 and $10,000." }, 400, corsOrigin);
+    }
+    if (!env.STRIPE_SECRET_KEY) {
+      return json({ ok: false, error: "Contributions are not configured yet." }, 503, corsOrigin);
+    }
+    const p = new URLSearchParams();
+    p.append("mode", "payment");
+    p.append("success_url", "https://plasticdetox.org/support.html?thanks=1");
+    p.append("cancel_url", "https://plasticdetox.org/support.html");
+    p.append("submit_type", "donate");
+    p.append("line_items[0][quantity]", "1");
+    p.append("line_items[0][price_data][currency]", "usd");
+    p.append("line_items[0][price_data][unit_amount]", String(dollars * 100));
+    p.append("line_items[0][price_data][product_data][name]", "Support Independent Testing");
+
+    const res = await fetch("https://api.stripe.com/v1/checkout/sessions", {
+      method: "POST",
+      headers: {
+        Authorization: "Bearer " + env.STRIPE_SECRET_KEY,
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: p.toString(),
+    });
+    const data = await res.json();
+    if (res.ok && data.url) return json({ ok: true, url: data.url }, 200, corsOrigin);
+    return json({ ok: false, error: (data.error && data.error.message) || "Stripe error" }, 502, corsOrigin);
   } catch (e) {
     return json({ ok: false, error: "Server error" }, 500, corsOrigin);
   }
