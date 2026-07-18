@@ -393,14 +393,12 @@ async function handleIntake(request, env, corsOrigin) {
         sender: { name: env.SENDER_NAME, email: env.SENDER_EMAIL },
         to: [{ email, name }],
         subject: "We got your answers. Your plan is on the way",
-        htmlContent: `
-          <div style="font-family:'Inter',-apple-system,sans-serif;max-width:520px;margin:0 auto;color:#1c1917;">
-            <p style="font-size:16px;">Thank you, ${esc(firstName)}.</p>
-            <p style="font-size:16px;">We have received your answers for the <strong>${esc(tierLabel)}</strong> and our team is building your personalized plan now.</p>
-            <p style="font-size:16px;">You will receive it by email <strong>shortly</strong>.</p>
-            <p style="font-size:14px;color:#78716c;margin-top:24px;">Questions or something to add? Just reply to this email.</p>
-            <p style="font-size:14px;color:#78716c;">Plastic Detox</p>
-          </div>`,
+        htmlContent: emailShell("Received",
+          emailP(`Thank you, ${esc(firstName)}.`) +
+          emailP(`We have received your answers for the <strong>${esc(tierLabel)}</strong> and our team is building your personalized plan now.`) +
+          emailP("You will receive it by email <strong>shortly</strong>.") +
+          `<p style="margin:0;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:13px;line-height:1.6;color:#78716c;">Questions or something to add? Just reply to this email.</p>`
+        ),
       }),
     }).catch(() => {});
 
@@ -510,13 +508,11 @@ async function handleStripeWebhook(request, env) {
             sender: { name: env.SENDER_NAME, email: env.SENDER_EMAIL },
             to: [{ email, name }],
             subject: "Thank you for backing independent testing",
-            htmlContent: `
-              <div style="font-family:'Inter',-apple-system,sans-serif;max-width:520px;margin:0 auto;color:#1c1917;">
-                <p style="font-size:16px;">Thank you${first ? ", " + first : ""}.</p>
-                <p style="font-size:16px;">Your contribution goes straight toward independent lab testing of everyday products. This is what lets us test instead of guess, and publish what we find openly and free.</p>
-                <p style="font-size:16px;">We will keep you posted as testing gets underway and share the results with you first.</p>
-                <p style="font-size:14px;color:#78716c;margin-top:24px;">With gratitude,<br>Plastic Detox</p>
-              </div>`,
+            htmlContent: emailShell("Thank you",
+              emailP(`Thank you${first ? ", " + first : ""}.`) +
+              emailP("Your contribution goes straight toward independent lab testing of everyday products. This is what lets us test instead of guess, and publish what we find openly and free.") +
+              emailP("We will keep you posted as testing gets underway, and share the results with you first.")
+            ),
           }),
         }).catch(() => {});
       }
@@ -554,20 +550,49 @@ async function handleStripeWebhook(request, env) {
           sender: { name: env.SENDER_NAME, email: env.SENDER_EMAIL },
           to: [{ email, name }],
           subject: "Thank you. One quick step to build your plan",
-          htmlContent: `
-            <div style="font-family:'Inter',-apple-system,sans-serif;max-width:520px;margin:0 auto;color:#1c1917;">
-              <p style="font-size:16px;">Thank you for your purchase of the <strong>${tierLabel}</strong>.</p>
-              <p style="font-size:16px;">To build your plan, we just need a few quick answers about your home. It takes about two minutes.</p>
-              <p style="margin:28px 0;"><a href="${link}" style="display:inline-block;background:#7c3aed;color:#fff;text-decoration:none;font-weight:600;padding:14px 28px;border-radius:60px;">Build my plan &rarr;</a></p>
-              <p style="font-size:14px;color:#78716c;">Or paste this link into your browser:<br>${link}</p>
-              <p style="font-size:14px;color:#78716c;margin-top:24px;">Questions? Just reply to this email.</p>
-            </div>`,
+          htmlContent: emailShell("Almost there",
+            emailP(`Thank you for your purchase of the <strong>${tierLabel}</strong>.`) +
+            emailP("To build your plan, we just need a few quick answers about your home. It takes about two minutes.") +
+            emailButton("Build my plan", link) +
+            `<p style="margin:18px 0 0 0;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:13px;line-height:1.6;color:#78716c;">Or paste this link into your browser:<br>${link}</p>` +
+            `<p style="margin:14px 0 0 0;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:13px;line-height:1.6;color:#78716c;">Questions? Just reply to this email.</p>`
+          ),
         }),
       }).catch(() => {});
     }
   }
 
   return new Response(JSON.stringify({ received: true }), { status: 200, headers: { "Content-Type": "application/json" } });
+}
+
+// A branded purple CTA button for transactional emails
+function emailButton(text, url) {
+  return `<table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center" style="margin:6px auto 0;"><tr><td align="center" style="background-color:#7c3aed;border-radius:10px;"><a href="${url}" target="_blank" rel="noopener" style="display:inline-block;padding:14px 32px;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:15px;font-weight:600;color:#ffffff;text-decoration:none;letter-spacing:-0.01em;">${text}</a></td></tr></table>`;
+}
+
+// Wrap content in the branded Plastic Detox email shell (matches the newsletter template)
+function emailShell(tag, contentHtml) {
+  const IG = `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#78716c" style="display:block;"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>`;
+  const PIN = `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#78716c" style="display:block;"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 01.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>`;
+  const tagPill = tag ? `<tr><td style="padding:26px 40px 0 40px;"><span style="display:inline-block;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;padding:5px 12px;border-radius:4px;background-color:#ede9fe;color:#7c3aed;">${tag}</span></td></tr>` : "";
+  return `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"></head>
+<body style="margin:0;padding:0;background-color:#fafaf9;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;-webkit-font-smoothing:antialiased;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#fafaf9;"><tr><td align="center" style="padding:30px 15px;">
+<table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="max-width:600px;width:100%;background-color:#ffffff;border-radius:16px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.06),0 1px 2px rgba(0,0,0,0.04);">
+<tr><td style="padding:30px 40px 20px 40px;"><span style="font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:20px;font-weight:800;color:#1c1917;letter-spacing:-0.02em;">plastic<span style="color:#a78bfa;">detox</span></span></td></tr>
+<tr><td style="padding:0 40px;"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="border-top:1px solid #e7e5e4;"></td></tr></table></td></tr>
+${tagPill}
+<tr><td style="padding:22px 40px 30px 40px;">${contentHtml}</td></tr>
+<tr><td style="padding:22px 40px;background-color:#fafaf9;border-top:1px solid #e7e5e4;text-align:center;">
+<p style="margin:0 0 12px 0;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:13px;color:#78716c;"><a href="https://plasticdetox.org" target="_blank" rel="noopener" style="color:#7c3aed;text-decoration:none;font-weight:600;">plasticdetox.org</a></p>
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center"><tr><td style="padding:0 8px;"><a href="https://www.instagram.com/plasticdetoxorg/" target="_blank" rel="noopener">${IG}</a></td><td style="padding:0 8px;"><a href="https://www.pinterest.com/plasticdetoxorg/" target="_blank" rel="noopener">${PIN}</a></td></tr></table>
+</td></tr>
+</table></td></tr></table></body></html>`;
+}
+
+// Paragraph helper for email bodies
+function emailP(html) {
+  return `<p style="margin:0 0 16px 0;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:15px;line-height:1.7;color:#1c1917;">${html}</p>`;
 }
 
 function buildEmail({ score, total, level, levelColor, top3, swaps }) {
