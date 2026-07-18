@@ -427,6 +427,7 @@ async function handleContribution(request, env, corsOrigin) {
     p.append("success_url", "https://plasticdetox.org/support.html?thanks=1");
     p.append("cancel_url", "https://plasticdetox.org/support.html");
     p.append("submit_type", "donate");
+    p.append("metadata[type]", "contribution");
     p.append("line_items[0][quantity]", "1");
     p.append("line_items[0][price_data][currency]", "usd");
     p.append("line_items[0][price_data][unit_amount]", String(dollars * 100));
@@ -480,6 +481,48 @@ async function handleStripeWebhook(request, env) {
     const s = event.data.object || {};
     const email = (s.customer_details && s.customer_details.email) || s.customer_email || "";
     const name = (s.customer_details && s.customer_details.name) || "";
+
+    // ---- Contribution (from /create-contribution) -> thank-you + Brevo list 9 ----
+    if (s.metadata && s.metadata.type === "contribution") {
+      if (email) {
+        const dollars = Math.round((s.amount_total || 0) / 100);
+        const nm = name.split(/\s+/);
+        const first = nm.shift() || "";
+        await fetch("https://api.brevo.com/v3/contacts", {
+          method: "POST",
+          headers: { "api-key": env.BREVO_API_KEY, "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email,
+            attributes: {
+              FIRSTNAME: first,
+              LASTNAME: nm.join(" "),
+              LAST_CONTRIBUTION: dollars,
+              CONTRIBUTION_DATE: new Date().toISOString().split("T")[0],
+            },
+            listIds: [9],
+            updateEnabled: true,
+          }),
+        }).catch(() => {});
+        await fetch("https://api.brevo.com/v3/smtp/email", {
+          method: "POST",
+          headers: { "api-key": env.BREVO_API_KEY, "Content-Type": "application/json" },
+          body: JSON.stringify({
+            sender: { name: env.SENDER_NAME, email: env.SENDER_EMAIL },
+            to: [{ email, name }],
+            subject: "Thank you for backing independent testing",
+            htmlContent: `
+              <div style="font-family:'Inter',-apple-system,sans-serif;max-width:520px;margin:0 auto;color:#1c1917;">
+                <p style="font-size:16px;">Thank you${first ? ", " + first : ""}.</p>
+                <p style="font-size:16px;">Your contribution goes straight toward independent lab testing of everyday products. This is what lets us test instead of guess, and publish what we find openly and free.</p>
+                <p style="font-size:16px;">We will keep you posted as testing gets underway and share the results with you first.</p>
+                <p style="font-size:14px;color:#78716c;margin-top:24px;">With gratitude,<br>Plastic Detox</p>
+              </div>`,
+          }),
+        }).catch(() => {});
+      }
+      return new Response(JSON.stringify({ received: true }), { status: 200, headers: { "Content-Type": "application/json" } });
+    }
+
     const amount = s.amount_total || 0; // cents
     const tier = amount >= 14900 ? "review" : "custom";
     const tierLabel = tier === "review" ? "Custom Plan + Personal Review" : "Custom Plan";
