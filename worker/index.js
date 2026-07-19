@@ -47,6 +47,11 @@ export default {
       return handleContact(request, env, corsOrigin);
     }
 
+    // ===== Free plan: capture name + email, email the plan link, add to Brevo list 10 =====
+    if (path === "/free-plan") {
+      return handleFreePlan(request, env, corsOrigin);
+    }
+
     // ===== Custom Plan intake: email answers (+ photos) to the team =====
     if (path === "/intake") {
       return handleIntake(request, env, corsOrigin);
@@ -563,6 +568,54 @@ async function handleStripeWebhook(request, env) {
   }
 
   return new Response(JSON.stringify({ received: true }), { status: 200, headers: { "Content-Type": "application/json" } });
+}
+
+// POST /free-plan  { name, email }  -> add to Brevo list 10, email the plan link
+async function handleFreePlan(request, env, corsOrigin) {
+  try {
+    const { name, email } = await request.json();
+    const cleanName = (name || "").toString().trim().slice(0, 120);
+    const cleanEmail = (email || "").toString().trim();
+    if (!cleanName || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(cleanEmail)) {
+      return json({ ok: false, error: "Invalid data" }, 400, corsOrigin);
+    }
+    const parts = cleanName.split(/\s+/);
+    const firstName = parts.shift() || "";
+
+    // Add to Brevo "Free Plan" list (10)
+    await fetch("https://api.brevo.com/v3/contacts", {
+      method: "POST",
+      headers: { "api-key": env.BREVO_API_KEY, "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email: cleanEmail,
+        attributes: { FIRSTNAME: firstName, LASTNAME: parts.join(" "), FREE_PLAN_DATE: new Date().toISOString().split("T")[0] },
+        listIds: [10],
+        updateEnabled: true,
+      }),
+    }).catch(() => {});
+
+    // Email them the plan link
+    const link = "https://plasticdetox.org/plan.html";
+    const res = await fetch("https://api.brevo.com/v3/smtp/email", {
+      method: "POST",
+      headers: { "api-key": env.BREVO_API_KEY, "Content-Type": "application/json" },
+      body: JSON.stringify({
+        sender: { name: env.SENDER_NAME, email: env.SENDER_EMAIL },
+        to: [{ email: cleanEmail, name: cleanName }],
+        subject: "Your free plastic detox plan",
+        htmlContent: emailShell("Your plan",
+          emailP(`Here is your plan${firstName ? ", " + firstName : ""}.`) +
+          emailP("A living, prioritized 90 day plan to cut plastic from your life, starting with the highest exposure swaps. Bookmark it and check off each swap as you go. We keep the picks current as we test products and as recalls happen.") +
+          emailButton("Open my plan", link) +
+          `<p style="margin:18px 0 0 0;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:13px;line-height:1.6;color:#78716c;">Or paste this link into your browser:<br>${link}</p>`
+        ),
+      }),
+    });
+    if (res.ok) return json({ ok: true }, 200, corsOrigin);
+    return json({ ok: false, error: "Email send failed" }, 502, corsOrigin);
+  } catch (e) {
+    return json({ ok: false, error: "Server error" }, 500, corsOrigin);
+  }
 }
 
 // A branded purple CTA button for transactional emails
