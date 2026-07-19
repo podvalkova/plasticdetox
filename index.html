@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Plastic Detox | Reduce Microplastics in Your Body, Home & Life</title>
-  <meta name="description" content="Microplastics are in your blood, lungs, and brain. Take the free Plastic Detox quiz to get a personalized plan for replacing plastic in your kitchen, bathroom, bedroom, and more. Backed by peer-reviewed research.">
+  <meta name="description" content="Microplastics are in your blood, lungs, and brain. Get a free, prioritized plan of vetted swaps for your kitchen, bathroom, and bedroom, ranked by real microplastic exposure. Backed by peer-reviewed research.">
   <link rel="icon" type="image/png" sizes="48x48" href="favicon.png">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
@@ -13,7 +13,7 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Plastic Detox | Reduce Microplastics in Your Body, Home & Life">
-  <meta property="og:description" content="Microplastics are in your blood, lungs, and brain. Take the free quiz to get a personalized plan for replacing plastic in every room of your home.">
+  <meta property="og:description" content="Microplastics are in your blood, lungs, and brain. Get a free plan of vetted swaps for every room, ranked by real microplastic exposure.">
   <meta property="og:url" content="https://plasticdetox.org/">
   <meta property="og:site_name" content="Plastic Detox">
   <meta property="og:image" content="https://plasticdetox.org/images/social-share.png">
@@ -24,7 +24,7 @@
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Plastic Detox | Reduce Microplastics in Your Body, Home & Life">
-  <meta name="twitter:description" content="Microplastics are in your blood, lungs, and brain. Take the free quiz to get a personalized plan for replacing plastic in every room of your home.">
+  <meta name="twitter:description" content="Microplastics are in your blood, lungs, and brain. Get a free plan of vetted swaps for every room, ranked by real microplastic exposure.">
   <meta name="twitter:image" content="https://plasticdetox.org/images/social-share.png">
   <meta name="twitter:image:alt" content="Plastic Detox: find the plastic you didn't know was inside you. Research backed guide to low tox living.">
 
@@ -2507,7 +2507,7 @@
     <a href="#" class="nav-logo" onclick="showHome(); return false;">plastic<span>detox</span></a>
     <div class="nav-links">
       <a class="nav-link active nav-hide-mobile" id="nav-home" onclick="showHome()">Home</a>
-      <a class="nav-link" id="nav-registry" href="custom-plan.html">Custom Plan</a>
+      <a class="nav-link" id="nav-registry" href="plan.html">Free Plan</a>
       <a class="nav-link" id="nav-store" href="store.html">Store</a>
       <a class="nav-link" id="nav-resources" href="resources.html" onclick="showResources(); return false;">Resources</a>
       <a class="nav-link" href="brand-check.html">Brand Check</a>
@@ -2524,8 +2524,9 @@
           was <em>inside you</em>.
         </h1>
         <p class="b-lede">
-          Plastic Detox is a research backed guide to low tox living. Read the science, learn which everyday items matter, and find vetted swaps for your kitchen, bathroom, and bedroom, without the greenwashing.
+          Plastic Detox is a research backed guide to reducing plastic exposure. Read the science, learn which everyday items matter, and get a free plan of vetted swaps for your kitchen, bathroom, and bedroom, without the greenwashing.
         </p>
+        <a href="plan.html" class="btn-primary" style="display:inline-block;text-decoration:none;margin-top:0.5rem;">Get your free plan &rarr;</a>
         <div class="b-trust">
           <div class="b-trust-item">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
@@ -2548,44 +2549,16 @@
       </div>
 
       <div class="b-hero-right">
-        <div class="b-quiz">
-          <div class="b-quiz-head">
-            <div class="b-quiz-title">Quick test, question 1 of 21</div>
-            <div class="b-quiz-progress"><span style="width:5%"></span></div>
-          </div>
-
-          <div class="b-quiz-body">
-            <div class="b-quiz-cat">Kitchen</div>
-            <h2 class="b-quiz-q">Do you cook with non stick pans (Teflon, ceramic coated)?</h2>
-
-            <div class="b-quiz-answers" id="b-quiz-answers">
-              <button class="b-ans" data-ans="yes" onclick="heroAnswer('yes')">Yes</button>
-              <button class="b-ans" data-ans="sometimes" onclick="heroAnswer('sometimes')">Sometimes</button>
-              <button class="b-ans" data-ans="no" onclick="heroAnswer('no')">No</button>
-            </div>
-
-            <div class="b-quiz-feedback" id="b-quiz-feedback" style="display:none;">
-              <div class="b-quiz-feedback-tag">Recommended swap</div>
-              <p>
-                <strong>Cast iron, carbon steel, or enameled stainless.</strong> Non stick coatings shed PFAS and microplastic particles, especially when scratched or overheated above 450&deg;F.
-              </p>
-            </div>
-
-            <button class="b-quiz-cta" id="b-quiz-cta" onclick="startGame()">Start the full quiz &rarr;</button>
-          </div>
-
-          <div class="b-quiz-sidecar">
-            <div class="b-sidecar-num" id="b-sidecar-num">0</div>
-            <div class="b-sidecar-lbl">items to swap</div>
-            <div class="b-sidecar-rule"></div>
-            <div class="b-sidecar-cats">
-              <div class="b-sc-cat b-sc-active"><span class="b-sc-dot"></span> Kitchen</div>
-              <div class="b-sc-cat"><span class="b-sc-dot"></span> Bathroom</div>
-              <div class="b-sc-cat"><span class="b-sc-dot"></span> Bedroom</div>
-              <div class="b-sc-cat"><span class="b-sc-dot"></span> Kids</div>
-              <div class="b-sc-cat"><span class="b-sc-dot"></span> Closet</div>
-            </div>
-          </div>
+        <div class="b-quiz" style="display:block;padding:2rem 1.9rem;">
+          <div class="b-quiz-title" style="color:var(--accent-dark);letter-spacing:0.06em;margin-bottom:0.7rem;">Free &middot; Start here</div>
+          <h2 style="font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;line-height:1.2;margin:0 0 0.7rem;color:var(--text);">Your free 90 day plan</h2>
+          <p style="font-size:0.98rem;color:var(--text-muted);line-height:1.6;margin:0 0 1.25rem;">A prioritized, room by room plan of vetted swaps, ranked by real microplastic exposure. Check off your progress and keep it forever.</p>
+          <ul style="list-style:none;margin:0 0 1.5rem;padding:0;font-size:0.92rem;color:var(--text);">
+            <li style="padding:0.35rem 0 0.35rem 1.6rem;position:relative;"><span style="position:absolute;left:0;color:var(--accent-dark);font-weight:800;">&#10003;</span> The exact vetted product for every swap</li>
+            <li style="padding:0.35rem 0 0.35rem 1.6rem;position:relative;"><span style="position:absolute;left:0;color:var(--accent-dark);font-weight:800;">&#10003;</span> Ranked by actual exposure, biggest wins first</li>
+            <li style="padding:0.35rem 0 0.35rem 1.6rem;position:relative;"><span style="position:absolute;left:0;color:var(--accent-dark);font-weight:800;">&#10003;</span> Always current, updated when recalls happen</li>
+          </ul>
+          <a href="plan.html" class="btn-primary" style="display:inline-block;text-decoration:none;">Get your free plan &rarr;</a>
         </div>
       </div>
     </section>
