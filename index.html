@@ -2507,7 +2507,7 @@
     <a href="#" class="nav-logo" onclick="showHome(); return false;">plastic<span>detox</span></a>
     <div class="nav-links">
       <a class="nav-link active nav-hide-mobile" id="nav-home" onclick="showHome()">Home</a>
-      <a class="nav-link" id="nav-registry" href="plan.html">Free Plan</a>
+      <a class="nav-link" id="nav-registry" href="custom-plan.html">Free Plan</a>
       <a class="nav-link" id="nav-store" href="store.html">Store</a>
       <a class="nav-link" id="nav-resources" href="resources.html" onclick="showResources(); return false;">Resources</a>
       <a class="nav-link" href="brand-check.html">Brand Check</a>
@@ -2526,7 +2526,6 @@
         <p class="b-lede">
           Plastic Detox is a research backed guide to reducing plastic exposure. Read the science, learn which everyday items matter, and get a free plan of vetted swaps for your kitchen, bathroom, and bedroom, without the greenwashing.
         </p>
-        <a href="plan.html" class="btn-primary" style="display:inline-block;text-decoration:none;margin-top:0.5rem;">Get your free plan &rarr;</a>
         <div class="b-trust">
           <div class="b-trust-item">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
@@ -2551,14 +2550,15 @@
       <div class="b-hero-right">
         <div class="b-quiz" style="display:block;padding:2rem 1.9rem;">
           <div class="b-quiz-title" style="color:var(--accent-dark);letter-spacing:0.06em;margin-bottom:0.7rem;">Free &middot; Start here</div>
-          <h2 style="font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;line-height:1.2;margin:0 0 0.7rem;color:var(--text);">Your free 90 day plan</h2>
-          <p style="font-size:0.98rem;color:var(--text-muted);line-height:1.6;margin:0 0 1.25rem;">A prioritized, room by room plan of vetted swaps, ranked by real microplastic exposure. Check off your progress and keep it forever.</p>
-          <ul style="list-style:none;margin:0 0 1.5rem;padding:0;font-size:0.92rem;color:var(--text);">
-            <li style="padding:0.35rem 0 0.35rem 1.6rem;position:relative;"><span style="position:absolute;left:0;color:var(--accent-dark);font-weight:800;">&#10003;</span> The exact vetted product for every swap</li>
-            <li style="padding:0.35rem 0 0.35rem 1.6rem;position:relative;"><span style="position:absolute;left:0;color:var(--accent-dark);font-weight:800;">&#10003;</span> Ranked by actual exposure, biggest wins first</li>
-            <li style="padding:0.35rem 0 0.35rem 1.6rem;position:relative;"><span style="position:absolute;left:0;color:var(--accent-dark);font-weight:800;">&#10003;</span> Always current, updated when recalls happen</li>
-          </ul>
-          <a href="plan.html" class="btn-primary" style="display:inline-block;text-decoration:none;">Get your free plan &rarr;</a>
+          <h2 style="font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;line-height:1.2;margin:0 0 0.6rem;color:var(--text);">Get your free 90 day plan</h2>
+          <p style="font-size:0.95rem;color:var(--text-muted);line-height:1.55;margin:0 0 1.25rem;">A prioritized, room by room plan of vetted swaps, ranked by real microplastic exposure. Enter your details and we will unlock it and email you the link.</p>
+          <form id="heroFreeForm" novalidate>
+            <input type="text" id="hfName" placeholder="Your name" autocomplete="name" style="width:100%;padding:0.8rem 0.95rem;border:1px solid var(--border);border-radius:10px;font-family:inherit;font-size:1rem;margin-bottom:0.6rem;background:var(--bg);box-sizing:border-box;">
+            <input type="email" id="hfEmail" placeholder="Your email" autocomplete="email" style="width:100%;padding:0.8rem 0.95rem;border:1px solid var(--border);border-radius:10px;font-family:inherit;font-size:1rem;margin-bottom:0.75rem;background:var(--bg);box-sizing:border-box;">
+            <button type="submit" class="btn-primary" id="hfBtn" style="width:100%;border:none;cursor:pointer;">Get my plan &rarr;</button>
+            <div id="hfErr" style="display:none;color:#dc2626;font-size:0.85rem;margin-top:0.6rem;"></div>
+            <p style="font-size:0.76rem;color:var(--text-muted);margin-top:0.8rem;text-align:center;">Free forever. No spam. Unsubscribe anytime.</p>
+          </form>
         </div>
       </div>
     </section>
@@ -5072,5 +5072,33 @@
       }
     });
   </script>
+<script>
+  (function(){
+    var form = document.getElementById('heroFreeForm');
+    if(!form) return;
+    form.addEventListener('submit', async function(e){
+      e.preventDefault();
+      var name = document.getElementById('hfName').value.trim();
+      var email = document.getElementById('hfEmail').value.trim();
+      var err = document.getElementById('hfErr');
+      var btn = document.getElementById('hfBtn');
+      err.style.display = 'none';
+      if(!name || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ err.textContent = 'Please enter your name and a valid email.'; err.style.display='block'; return; }
+      btn.disabled = true; btn.textContent = 'Unlocking...';
+      try {
+        var res = await fetch('https://plasticdetox-quiz-email.plasticdetox.workers.dev/free-plan', {
+          method: 'POST', headers: {'Content-Type':'application/json'},
+          body: JSON.stringify({ name: name, email: email })
+        });
+        if(!res.ok) throw new Error('bad');
+        try { localStorage.setItem('freePlanUnlocked', '1'); } catch(e){}
+        window.location = 'plan.html';
+      } catch(ex) {
+        err.textContent = 'Something went wrong. Please try again.'; err.style.display='block';
+        btn.disabled = false; btn.textContent = 'Get my plan →';
+      }
+    });
+  })();
+</script>
 </body>
 </html>
