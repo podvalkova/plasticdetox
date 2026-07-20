@@ -397,6 +397,8 @@
   (function(){
     var gate = document.getElementById('gate');
     var FKEY = 'freePlanUnlocked';
+    // Unlock straight from the emailed plan link (?unlocked=1), on any device
+    try { if(new URLSearchParams(location.search).get('unlocked') === '1'){ try{ localStorage.setItem(FKEY,'1'); }catch(e){} gate.classList.add('hide'); return; } } catch(e){}
     try { if(localStorage.getItem(FKEY) === '1'){ gate.classList.add('hide'); return; } } catch(e){}
     document.getElementById('gateForm').addEventListener('submit', async function(e){
       e.preventDefault();

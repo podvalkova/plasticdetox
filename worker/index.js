@@ -594,8 +594,8 @@ async function handleFreePlan(request, env, corsOrigin) {
       }),
     }).catch(() => {});
 
-    // Email them the plan link
-    const link = "https://plasticdetox.org/plan.html";
+    // Email them the plan link (unlocked flag skips the email gate on any device)
+    const link = "https://plasticdetox.org/plan.html?unlocked=1";
     const res = await fetch("https://api.brevo.com/v3/smtp/email", {
       method: "POST",
       headers: { "api-key": env.BREVO_API_KEY, "Content-Type": "application/json" },
