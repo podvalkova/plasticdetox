@@ -150,6 +150,22 @@
   .gate-btn:disabled{opacity:.6;cursor:default}
   .gate-err{color:#dc2626;font-size:.88rem;margin-top:.7rem;display:none}
   .gate-note{font-size:.78rem;color:var(--text-muted);margin-top:1rem}
+
+  /* CONTACT */
+  .contact{background:var(--bg);border-top:1px solid var(--border)}
+  .contact .narrow{max-width:560px}
+  .contact-head{text-align:center;margin-bottom:1.5rem}
+  .contact-head h2{font-size:1.5rem}
+  .contact-head p{color:var(--text-muted);font-size:.98rem;max-width:44ch;margin:.5rem auto 0}
+  .cform input,.cform textarea{width:100%;padding:.8rem .95rem;border:1px solid var(--border);border-radius:var(--radius-sm);font-family:inherit;font-size:1rem;margin-bottom:.75rem;background:var(--surface);color:var(--text)}
+  .cform textarea{min-height:120px;resize:vertical}
+  .cform input:focus,.cform textarea:focus{outline:none;border-color:var(--accent-dark)}
+  .cform button{width:100%;background:var(--accent-dark);color:#fff;border:none;border-radius:60px;font-family:inherit;font-weight:700;font-size:1rem;padding:.9rem;cursor:pointer}
+  .cform button:hover{background:#6d28d9}
+  .cform button:disabled{opacity:.6;cursor:default}
+  .cform .cmsg{font-size:.9rem;margin-top:.7rem;display:none;text-align:center}
+  .cform .cmsg.err{color:#dc2626}
+  .cform .cmsg.ok{color:#166534}
 </style>
 </head>
 <body>
@@ -208,7 +224,7 @@
       <p>What you eat and drink and what you breathe are the two biggest routes into your body, and <b>heat is the single biggest multiplier</b> on the food side. Hot food in plastic, microwaving, and hot drinks through plastic release far more than the same plastic cold. We start in the kitchen and your water because those swaps are the cheapest and highest certainty wins, then move to the air you breathe in Phase 2. Watch for the <span style="color:#ffedd5">Heat driven</span> tag on the swaps that matter most.</p>
     </div>
     <div style="margin-top:1.5rem;background:#f7f4ff;border:1px solid #e5ddff;border-left:3px solid var(--accent-dark);border-radius:var(--radius-sm);padding:1rem 1.15rem;">
-      <p style="margin:0;font-size:1rem;line-height:1.6;color:var(--text);">Not sure if something you already own is a problem? Run it through our <a href="brand-check.html" style="color:var(--accent-dark);font-weight:700;text-decoration:none;">Brand Check &rarr;</a> before you replace it. No point tossing something that is already fine.</p>
+      <p style="margin:0;font-size:1rem;line-height:1.6;color:var(--text);">Not sure if something you already own is a problem? Run it through our <a href="brand-check.html" target="_blank" rel="noopener" style="color:var(--accent-dark);font-weight:700;text-decoration:none;">Brand Check &rarr;</a> before you replace it. No point tossing something that is already fine.</p>
     </div>
   </div>
 </section>
@@ -251,6 +267,24 @@
         <a href="support.html" class="cc-btn ghost" target="_blank" rel="noopener">Support the testing &rarr;</a>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact">
+  <div class="narrow">
+    <div class="contact-head">
+      <div class="sec-tag" style="text-align:center">Still have questions?</div>
+      <h2>Ask us anything.</h2>
+      <p>Not sure where to start, or stuck on a specific swap? Send us a note and we will get back to you.</p>
+    </div>
+    <form class="cform" id="contactForm" novalidate>
+      <input type="text" id="cName" placeholder="Your name" autocomplete="name" required>
+      <input type="email" id="cEmail" placeholder="Your email" autocomplete="email" required>
+      <textarea id="cMessage" placeholder="Your question" required></textarea>
+      <button type="submit" id="cBtn">Send &rarr;</button>
+      <div class="cmsg" id="cMsg"></div>
+    </form>
   </div>
 </section>
 
@@ -424,6 +458,42 @@
       } catch(ex) {
         err.textContent = 'Something went wrong. Please try again.'; err.style.display='block';
         btn.disabled = false; btn.textContent = 'Get my plan →';
+      }
+    });
+  })();
+</script>
+
+<!-- Contact form -->
+<script>
+  (function(){
+    var form = document.getElementById('contactForm');
+    form.addEventListener('submit', async function(e){
+      e.preventDefault();
+      var name = document.getElementById('cName').value.trim();
+      var email = document.getElementById('cEmail').value.trim();
+      var message = document.getElementById('cMessage').value.trim();
+      var msg = document.getElementById('cMsg');
+      var btn = document.getElementById('cBtn');
+      msg.style.display = 'none'; msg.className = 'cmsg';
+      if(!name || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email) || !message){
+        msg.textContent = 'Please fill in your name, a valid email, and your question.';
+        msg.className = 'cmsg err'; msg.style.display = 'block'; return;
+      }
+      btn.disabled = true; btn.textContent = 'Sending...';
+      try {
+        var res = await fetch('https://plasticdetox-quiz-email.plasticdetox.workers.dev/contact', {
+          method: 'POST', headers: {'Content-Type':'application/json'},
+          body: JSON.stringify({ name: name, email: email, message: message })
+        });
+        if(!res.ok) throw new Error('bad');
+        form.reset();
+        msg.textContent = 'Thanks. Your question is on its way, we will be in touch soon.';
+        msg.className = 'cmsg ok'; msg.style.display = 'block';
+        btn.disabled = false; btn.textContent = 'Send →';
+      } catch(ex) {
+        msg.textContent = 'Something went wrong. Please email hello@plasticdetox.org instead.';
+        msg.className = 'cmsg err'; msg.style.display = 'block';
+        btn.disabled = false; btn.textContent = 'Send →';
       }
     });
   })();
