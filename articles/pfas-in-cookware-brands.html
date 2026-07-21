@@ -178,12 +178,12 @@
     <div class="tldr-card">
       <h2>The 30 Second Summary</h2>
       <ul>
-        <li><strong>You can finally look up your pans.</strong> The nonprofit <a href="https://defendourhealth.org/our-stories/whats-cookin-good-lookin-uncovering-cookware-materials-in-your-kitchen/" target="_blank" rel="noopener">Defend Our Health</a> built a searchable directory of PFAS disclosures for 200+ cookware brands, released July 21, 2026.</li>
+        <li><strong>You can finally look up your pans.</strong> The nonprofit Defend Our Health compiled PFAS disclosures for 200+ cookware brands. We built their data into a <a href="#check">search tool right on this page</a>, so you can check any brand in seconds.</li>
         <li><strong>Of the 149 brands that gave a straight answer, more than half put PFAS in their cookware.</strong> 82 disclose intentionally added <a href="what-are-pfas.html">PFAS</a>, 67 disclose none. (Another 61 filed disclosures too unclear to confirm.)</li>
         <li><strong>A PFAS brand is not always off limits.</strong> Most only use PFAS on nonstick lines and still sell PFAS free stainless or cast iron. Check the exact model, and skip anything labeled nonstick.</li>
         <li><strong>Confirmed PFAS free:</strong> Lodge, Field Company, Smithey, Stargazer, 360 Cookware, Heritage Steel, and Xtrema, among others.</li>
         <li><strong>The safest bet costs $25:</strong> a <a href="https://www.amazon.com/dp/B00006JSUB?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Lodge Cast Iron Skillet</a> is PFAS free by nature and lasts 100+ years. Bare cast iron, stainless, and carbon steel never need a chemical coating.</li>
-        <li><strong>Check any brand instantly</strong> in our <a href="../brand-check.html">Brand Check</a> tool, now updated with all 210 cookware brands from the directory.</li>
+        <li><strong>Check any brand instantly</strong> in the <a href="#check">search box below</a>, updated with every cookware brand that filed a clear disclosure.</li>
       </ul>
     </div>
 
@@ -213,12 +213,12 @@
     <!-- SECTION 1 -->
     <h2 id="directory">1. A Directory That Finally Exists</h2>
     <p>For years, the honest answer to "does my nonstick pan contain PFAS?" was a shrug. The information technically existed, but it was buried in legal disclosure pages that most shoppers never knew to look for.</p>
-    <p>That changed on July 21, 2026, when <a href="https://defendourhealth.org/our-stories/whats-cookin-good-lookin-uncovering-cookware-materials-in-your-kitchen/" target="_blank" rel="noopener">Defend Our Health</a>, a Maine based nonprofit, released a free searchable directory of PFAS disclosures for more than 200 cookware brands. Their team reviewed brand websites, pulled the legally required chemical disclosures, and recorded whether each company admits to intentionally adding <a href="what-are-pfas.html">PFAS forever chemicals</a> to its pots, pans, air fryers, coffee makers, and muffin tins.</p>
+    <p>That changed on July 21, 2026, when Defend Our Health, a Maine based nonprofit, released a free directory of PFAS disclosures for more than 200 cookware brands. Their team reviewed brand websites, pulled the legally required chemical disclosures, and recorded whether each company admits to intentionally adding <a href="what-are-pfas.html">PFAS forever chemicals</a> to its pots, pans, air fryers, coffee makers, and muffin tins. We took that data and turned it into the <a href="#check">searchable tool on this page</a>. Their two decades of policy work made it possible, so if this helps you, consider <a href="https://defendourhealth.org/take-action/donate/" target="_blank" rel="noopener">supporting Defend Our Health</a>.</p>
     <p>The disclosures themselves come from a California law called AB 1200. Since 2023, it has required cookware makers to publish online whether they intentionally use PFAS, lead, arsenic, or formaldehyde. The catch, as Defend put it, was that "most consumers, and even regulators from other states, didn't know where to find them." The formats varied, the fonts were sometimes tiny, and the product listings were nearly impossible to decode without knowing the chemistry.</p>
 
     <div class="callout">
       <div class="callout-title">Why we are covering this</div>
-      Our standard is to vet a product on its formula and its independent test data before anything else. A legally binding disclosure that a company itself intentionally added PFAS is about as clear as evidence gets. Defend Our Health did the archival work of collecting them; we read all 210 and mapped every brand into our <a href="../brand-check.html">Brand Check</a> tool so you can look up yours in one search.
+      Our standard is to vet a product on its formula and its independent test data before anything else. A legally binding disclosure that a company itself intentionally added PFAS is about as clear as evidence gets. Defend Our Health did the archival work of collecting them; we read all 210 and built the ones with a clear answer into the <a href="#check">search tool below</a> so you can look up yours in one search.
     </div>
 
     <!-- SECTION 2 -->
@@ -238,6 +238,167 @@
 
     <p><strong>That is 82 out of 149, or more than half.</strong> Among the brands willing to state plainly what is in their pans, the majority put PFAS forever chemicals in at least one product line, and the list includes household names you would recognize. A further 61 brands filed disclosures that were missing, broken, or too cryptic to confirm, which is its own kind of answer.</p>
     <p>The more hopeful half of the story: plenty of brands make equivalent products with no PFAS at all, often at the same price. As Defend's executive director Emily Carey Perez de Alejo put it, "we also found that many brands make equivalent products that are affordable and free of these chemicals." You are not choosing between PFAS or nothing. You are choosing between two pans that cost about the same, and only one of them coats your food in forever chemicals.</p>
+
+    <!-- EMBEDDED COOKWARE BRAND CHECK -->
+    <div id="check" class="cbc">
+      <div class="cbc-eyebrow">Cookware Brand Check</div>
+      <h2 class="cbc-title">Check your cookware brand</h2>
+      <p class="cbc-sub">Type any cookware, air fryer, or coffee maker brand for a straight answer based on its own PFAS disclosure. <span id="cbcStat">Loading…</span></p>
+      <div class="cbc-search">
+        <svg class="cbc-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input id="cbcInput" class="cbc-input" type="text" placeholder="Search a brand… e.g. T-Fal, Lodge, Ninja, Cosori" autocomplete="off" spellcheck="false" aria-label="Search a cookware brand">
+        <div class="cbc-suggestions" id="cbcSugg"></div>
+      </div>
+      <div class="cbc-quick" id="cbcQuick"></div>
+      <div class="cbc-result" id="cbcResult" aria-live="polite"></div>
+      <p class="cbc-foot">Searching every cookware brand with a clear PFAS disclosure. Want other categories? Use the full <a href="../brand-check.html">Brand Check</a>.</p>
+    </div>
+
+    <style>
+      .cbc { background: var(--surface, #fff); border: 1px solid #e7e5e4; border-radius: 18px; padding: 1.5rem 1.4rem 1.6rem; margin: 2rem 0; box-shadow: 0 6px 24px rgba(0,0,0,0.05); }
+      .cbc-eyebrow { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #7c3aed; }
+      .cbc-title { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.02em; margin: 0.3rem 0 0.35rem; }
+      .cbc-sub { font-size: 0.95rem; color: #57534e; line-height: 1.5; margin: 0 0 1rem; }
+      .cbc-search { position: relative; }
+      .cbc-icon { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: #a8a29e; pointer-events: none; }
+      .cbc-input { width: 100%; box-sizing: border-box; font-family: inherit; font-size: 1.05rem; padding: 0.95rem 1rem 0.95rem 2.9rem; border: 2px solid #e7e5e4; border-radius: 12px; outline: none; transition: border-color 0.15s; background: #fff; color: #1c1917; }
+      .cbc-input:focus { border-color: #7c3aed; }
+      .cbc-suggestions { position: absolute; top: calc(100% + 6px); left: 0; right: 0; background: #fff; border: 1px solid #e7e5e4; border-radius: 12px; box-shadow: 0 12px 30px rgba(0,0,0,0.12); overflow: hidden; z-index: 20; display: none; }
+      .cbc-suggestions.show { display: block; }
+      .cbc-sugg-item { display: flex; align-items: center; justify-content: space-between; gap: 0.6rem; padding: 0.7rem 0.95rem; cursor: pointer; }
+      .cbc-sugg-item:hover, .cbc-sugg-item.active { background: #f5f3ff; }
+      .cbc-sugg-left { display: flex; align-items: center; gap: 0.55rem; min-width: 0; }
+      .cbc-dot { width: 9px; height: 9px; border-radius: 50%; flex: none; }
+      .cbc-sugg-name { font-weight: 600; font-size: 0.95rem; color: #1c1917; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      .cbc-sugg-cat { font-size: 0.75rem; color: #a8a29e; flex: none; }
+      .cbc-quick { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 0.85rem; align-items: center; }
+      .cbc-quick-label { font-size: 0.8rem; color: #78716c; }
+      .cbc-chip { font-family: inherit; font-size: 0.82rem; font-weight: 600; color: #44403c; background: #f5f5f4; border: 1px solid #e7e5e4; border-radius: 999px; padding: 0.32rem 0.75rem; cursor: pointer; }
+      .cbc-chip:hover { background: #ede9fe; border-color: #ddd6fe; color: #6d28d9; }
+      .cbc-result { margin-top: 1.1rem; }
+      .cbc-card { border: 1px solid #e7e5e4; border-radius: 14px; overflow: hidden; }
+      .cbc-card-top { padding: 1.1rem 1.15rem 1.2rem; border-top: 4px solid; }
+      .cbc-card-top.good { border-top-color: #16a34a; background: #f0fdf4; }
+      .cbc-card-top.careful { border-top-color: #b45309; background: #fffbeb; }
+      .cbc-card-top.skip { border-top-color: #dc2626; background: #fef2f2; }
+      .cbc-badge { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.78rem; font-weight: 800; letter-spacing: 0.02em; text-transform: uppercase; padding: 0.28rem 0.6rem; border-radius: 8px; }
+      .cbc-badge.good { color: #16a34a; background: #dcfce7; }
+      .cbc-badge.careful { color: #b45309; background: #fef3c7; }
+      .cbc-badge.skip { color: #dc2626; background: #fee2e2; }
+      .cbc-brand { font-size: 1.25rem; font-weight: 800; margin: 0.6rem 0 0.1rem; color: #1c1917; }
+      .cbc-cat { font-size: 0.8rem; color: #78716c; }
+      .cbc-reason { font-size: 0.95rem; line-height: 1.55; color: #292524; margin: 0.7rem 0 0; }
+      .cbc-body { padding: 0.9rem 1.15rem 1.1rem; display: flex; flex-direction: column; gap: 0.8rem; }
+      .cbc-mlabel { font-size: 0.7rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: #a8a29e; margin-bottom: 0.3rem; }
+      .cbc-evidence { font-size: 0.85rem; color: #44403c; background: #fafaf9; border: 1px solid #e7e5e4; border-radius: 8px; padding: 0.55rem 0.7rem; display: block; }
+      .cbc-alt { font-size: 0.9rem; color: #6d28d9; font-weight: 600; }
+      .cbc-buy { display: inline-flex; align-items: center; gap: 0.45rem; background: #16a34a; color: #fff; text-decoration: none; font-weight: 700; font-size: 0.9rem; padding: 0.6rem 1rem; border-radius: 10px; }
+      .cbc-src a { font-size: 0.85rem; color: #7c3aed; font-weight: 600; text-decoration: none; }
+      .cbc-unknown { border: 1px dashed #d6d3d1; border-radius: 14px; padding: 1.1rem 1.15rem; }
+      .cbc-unknown h4 { margin: 0 0 0.4rem; font-size: 1.05rem; }
+      .cbc-unknown p { margin: 0; font-size: 0.9rem; color: #57534e; line-height: 1.5; }
+      .cbc-foot { font-size: 0.82rem; color: #78716c; margin: 1rem 0 0; }
+    </style>
+    <script>
+    (function () {
+      var STANCE_LABEL = { good: "Good choice", careful: "Careful", skip: "Skip" };
+      var STANCE_COLOR = { good: "#16a34a", careful: "#b45309", skip: "#dc2626" };
+      var QUICK = ["T-Fal", "Lodge", "Ninja", "Cosori", "Caraway", "All-Clad", "Tasty"];
+      var BRANDS = [], byId = {}, active = -1;
+      var norm = function (s) { return (s || "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim(); };
+      var collapse = function (s) { return (s || "").toLowerCase().replace(/[^a-z0-9]+/g, ""); };
+      var $ = function (id) { return document.getElementById(id); };
+      var inp = $("cbcInput"), sugg = $("cbcSugg"), res = $("cbcResult");
+      function esc(s) { return (s || "").replace(/[&<>"']/g, function (c) { return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]; }); }
+      function titleCase(f) { return f.replace(/\.html$/, "").replace(/-/g, " ").replace(/\b\w/g, function (c) { return c.toUpperCase(); }).replace(/Pfas/g, "PFAS"); }
+
+      fetch("../brand-data.json").then(function (r) { return r.json(); }).then(function (data) {
+        BRANDS = data.filter(function (b) { return b.category === "Cookware"; });
+        BRANDS.forEach(function (b) { byId[b.id] = b; b._n = norm(b.brand); b._c = collapse(b.brand); });
+        $("cbcStat").textContent = BRANDS.length + " brands reviewed.";
+        buildQuick();
+      }).catch(function () { $("cbcStat").textContent = "Could not load the brand list. Please refresh."; });
+
+      function buildQuick() {
+        var row = $("cbcQuick");
+        row.innerHTML = '<span class="cbc-quick-label">Try:</span>';
+        QUICK.forEach(function (name) {
+          var c = document.createElement("button");
+          c.className = "cbc-chip"; c.type = "button"; c.textContent = name;
+          c.onclick = function () { inp.value = name; lookup(name); sugg.classList.remove("show"); };
+          row.appendChild(c);
+        });
+      }
+      function rank(q) {
+        var nq = norm(q), cq = collapse(q); if (!cq) return [];
+        var pad = " " + nq + " ";
+        return BRANDS.map(function (b) {
+          var s = -1;
+          if (b._c === cq) s = 0;
+          else if (b._c.indexOf(cq) === 0) s = 1;
+          else if (b._n.split(" ").some(function (w) { return w.indexOf(nq) === 0; })) s = 2;
+          else if (b._c.length >= 3 && (pad.indexOf(" " + b._n + " ") !== -1 || (b._c.length >= 4 && cq.indexOf(b._c) !== -1))) s = 2.5;
+          else if (b._n.indexOf(nq) !== -1) s = 3;
+          return { b: b, s: s };
+        }).filter(function (x) { return x.s >= 0; })
+          .sort(function (a, c) { return a.s - c.s || a.b.brand.length - c.b.brand.length; })
+          .slice(0, 7).map(function (x) { return x.b; });
+      }
+      function findExact(q) {
+        var nq = norm(q), cq = collapse(q); if (!cq) return null;
+        var m = BRANDS.find(function (b) { return b._n === nq || b._c === cq; });
+        if (m) return m;
+        m = BRANDS.find(function (b) { return b._c.indexOf(cq) === 0 && cq.length >= 3; });
+        if (m) return m;
+        m = BRANDS.find(function (b) { return b._n.indexOf(nq) !== -1 && nq.length >= 3; });
+        return m || null;
+      }
+      function renderSugg(q) {
+        var list = rank(q); active = -1;
+        if (!list.length) { sugg.classList.remove("show"); return; }
+        sugg.innerHTML = "";
+        list.forEach(function (b) {
+          var it = document.createElement("div");
+          it.className = "cbc-sugg-item"; it.dataset.id = b.id;
+          it.innerHTML = '<span class="cbc-sugg-left"><span class="cbc-dot" style="background:' + STANCE_COLOR[b.stance] + '"></span><span class="cbc-sugg-name">' + esc(b.brand) + '</span></span><span class="cbc-sugg-cat">' + STANCE_LABEL[b.stance] + '</span>';
+          it.onclick = function () { inp.value = b.brand; showResult(b); sugg.classList.remove("show"); };
+          sugg.appendChild(it);
+        });
+        sugg.classList.add("show");
+      }
+      function lookup(q) { sugg.classList.remove("show"); var m = findExact(q); if (m) showResult(m); else showUnknown(q); }
+      function showResult(b) {
+        if (window.gtag) gtag('event', 'brand_check_embed', { brand: b.brand, verdict: b.stance });
+        var ev = b.evidence ? '<div><div class="cbc-mlabel">Evidence</div><span class="cbc-evidence">' + esc(b.evidence) + '</span></div>' : "";
+        var alt = b.alternative ? '<div><div class="cbc-mlabel">Better alternative</div><span class="cbc-alt">' + esc(b.alternative) + '</span></div>' : "";
+        var buy = "";
+        if (b.stance === "good") {
+          var url = b.buy || ("https://www.amazon.com/s?k=" + encodeURIComponent(b.brand) + "&tag=plasticdetox-20");
+          buy = '<div><a class="cbc-buy" href="' + esc(url) + '" target="_blank" rel="noopener sponsored">Shop ' + esc(b.brand) + ' &rarr;</a></div>';
+        }
+        var src = "";
+        var real = (b.sources || []).filter(function (s) { return s && s.endsWith(".html"); });
+        if (real.length) src = '<div class="cbc-src"><div class="cbc-mlabel">Where this comes from</div>' + real.map(function (s) { return '<a href="' + esc(s) + '" target="_blank" rel="noopener">' + titleCase(s) + ' &rarr;</a>'; }).join(" · ") + '</div>';
+        res.innerHTML = '<div class="cbc-card"><div class="cbc-card-top ' + b.stance + '"><span class="cbc-badge ' + b.stance + '">' + STANCE_LABEL[b.stance] + '</span><div class="cbc-brand">' + esc(b.brand) + '</div><div class="cbc-cat">' + esc(b.category) + '</div><p class="cbc-reason">' + esc(b.reason) + '</p></div><div class="cbc-body">' + buy + ev + alt + src + '</div></div>';
+      }
+      function showUnknown(q) {
+        var clean = q.trim();
+        if (window.gtag) gtag('event', 'brand_check_embed_unknown', { brand: clean });
+        res.innerHTML = '<div class="cbc-unknown"><h4>' + esc(clean) + ' is not in the cookware list</h4><p>It may be filed under another category, or not reviewed yet. Try the full <a href="../brand-check.html?b=' + encodeURIComponent(clean) + '" style="color:#7c3aed;font-weight:600;">Brand Check</a>, which covers 600+ brands across every category.</p></div>';
+      }
+      var deb;
+      inp.addEventListener("input", function () { clearTimeout(deb); var v = inp.value; deb = setTimeout(function () { if (v.trim().length >= 2) renderSugg(v); else sugg.classList.remove("show"); }, 80); });
+      inp.addEventListener("keydown", function (e) {
+        var items = [].slice.call(sugg.querySelectorAll(".cbc-sugg-item"));
+        if (e.key === "ArrowDown" && items.length) { e.preventDefault(); active = Math.min(active + 1, items.length - 1); paint(items); }
+        else if (e.key === "ArrowUp" && items.length) { e.preventDefault(); active = Math.max(active - 1, 0); paint(items); }
+        else if (e.key === "Enter") { e.preventDefault(); if (active >= 0 && items[active]) { var b = byId[items[active].dataset.id]; inp.value = b.brand; showResult(b); sugg.classList.remove("show"); } else if (inp.value.trim()) lookup(inp.value); }
+        else if (e.key === "Escape") { sugg.classList.remove("show"); }
+      });
+      function paint(items) { items.forEach(function (it, i) { it.classList.toggle("active", i === active); }); }
+      document.addEventListener("click", function (e) { if (!sugg.contains(e.target) && e.target !== inp) sugg.classList.remove("show"); });
+    })();
+    </script>
 
     <!-- SECTION 3 -->
     <h2 id="how-states">3. How the States Fit Together</h2>
@@ -291,7 +452,7 @@
       <li>Viking</li>
       <li>Zwilling / Staub (some items)</li>
     </ul>
-    <p>A handful of brands disclose that essentially <em>all</em> of their cookware may contain PFAS, including Tasty, Goodful, Paris Hilton Cookware, Ecolution, and several private labels. Those we flag as skip outright. This list is a sample; look up any specific brand in <a href="../brand-check.html">Brand Check</a> for the full detail, including the exact lines named in each disclosure.</p>
+    <p>A handful of brands disclose that essentially <em>all</em> of their cookware may contain PFAS, including Tasty, Goodful, Paris Hilton Cookware, Ecolution, and several private labels. Those we flag as skip outright. This list is a sample; look up any specific brand in the <a href="#check">search tool above</a> for the full detail, including the exact lines named in each disclosure.</p>
 
     <div class="callout callout-warning">
       <div class="callout-title">The nonstick pattern</div>
@@ -345,7 +506,7 @@
     <h2 id="how-to-use">7. How to Read a Disclosure</h2>
     <p>If you want to check a specific pan yourself, here is what to look for.</p>
     <ol>
-      <li><strong>Find the brand's chemical disclosure page.</strong> Search the brand name plus "AB 1200" or "California chemical disclosure." Or skip the hunt and use our <a href="../brand-check.html">Brand Check</a>, which links straight to it.</li>
+      <li><strong>Find the brand's chemical disclosure page.</strong> Search the brand name plus "AB 1200" or "California chemical disclosure." Or skip the hunt and use the <a href="#check">search tool on this page</a> for an instant verdict.</li>
       <li><strong>Match your exact model.</strong> Many brands sell the same pan in a PFAS and a PFAS free version, distinguished only by a letter at the end of the model number. The name alone is not enough.</li>
       <li><strong>Learn the aliases.</strong> PFAS hides behind PTFE, PFA, FEP, "fluoropolymer," and coating brand names like Teflon, Titum, Stratanium, and Eterna. All are PFAS.</li>
       <li><strong>When in doubt, choose bare metal.</strong> If a disclosure is missing or confusing, an uncoated cast iron, stainless, or carbon steel pan sidesteps the question entirely.</li>
@@ -398,7 +559,7 @@
 
     <div class="callout">
       <div class="callout-title">Take one action today</div>
-      Type the brand of the pan you cook with most into our <a href="../brand-check.html">Brand Check</a> tool. If it comes back skip or careful, replace that one pan first with a <a href="https://www.amazon.com/dp/B00006JSUB?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Lodge skillet</a> or <a href="https://www.amazon.com/dp/B00JAP44MQ?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Tramontina stainless pan</a>. You do not have to redo the whole kitchen at once. If you agree PFAS does not belong in cookware, Defend Our Health also runs a <a href="https://defendourhealth.org/our-stories/whats-cookin-good-lookin-uncovering-cookware-materials-in-your-kitchen/" target="_blank" rel="noopener">petition</a> urging manufacturers and retailers to phase it out.
+      Type the brand of the pan you cook with most into the <a href="#check">search tool on this page</a>. If it comes back skip or careful, replace that one pan first with a <a href="https://www.amazon.com/dp/B00006JSUB?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Lodge skillet</a> or <a href="https://www.amazon.com/dp/B00JAP44MQ?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Tramontina stainless pan</a>. You do not have to redo the whole kitchen at once. If you agree PFAS does not belong in cookware, Defend Our Health also runs a <a href="https://defendourhealth.org/our-stories/whats-cookin-good-lookin-uncovering-cookware-materials-in-your-kitchen/" target="_blank" rel="noopener">petition</a> urging manufacturers and retailers to phase it out.
     </div>
 
     <!-- SECTION 9: FAQ -->
@@ -406,7 +567,7 @@
     <div class="faq-section">
       <details class="faq-item" open>
         <summary class="faq-question">How do I find out if my cookware brand uses PFAS?</summary>
-        <p class="faq-answer">Under California's AB 1200 law, cookware makers must publish online whether they intentionally add PFAS, lead, arsenic, or formaldehyde. Defend Our Health compiled these hard to find disclosures into a searchable directory covering more than 200 brands. You can also type any brand into our <a href="../brand-check.html">Brand Check</a> tool for an instant PFAS verdict.</p>
+        <p class="faq-answer">Under California's AB 1200 law, cookware makers must publish online whether they intentionally add PFAS, lead, arsenic, or formaldehyde. Defend Our Health compiled these hard to find disclosures for more than 200 brands. You can type any brand into the search tool on this page for an instant PFAS verdict.</p>
       </details>
       <details class="faq-item">
         <summary class="faq-question">Does a PFAS disclosure mean every pan from that brand contains PFAS?</summary>
