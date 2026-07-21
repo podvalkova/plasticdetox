@@ -246,7 +246,7 @@
       <p class="cbc-sub">Type any cookware, air fryer, or coffee maker brand for a straight answer based on its own PFAS disclosure. <span id="cbcStat">Loading…</span></p>
       <div class="cbc-search">
         <svg class="cbc-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-        <input id="cbcInput" class="cbc-input" type="text" placeholder="Search a brand… e.g. T-Fal, Lodge, Ninja, Cosori" autocomplete="off" spellcheck="false" aria-label="Search a cookware brand">
+        <input id="cbcInput" class="cbc-input" type="text" placeholder="Search a brand… e.g. T-Fal, Lodge, Made In, Caraway" autocomplete="off" spellcheck="false" aria-label="Search a cookware brand">
         <div class="cbc-suggestions" id="cbcSugg"></div>
       </div>
       <div class="cbc-quick" id="cbcQuick"></div>
@@ -303,7 +303,7 @@
     (function () {
       var STANCE_LABEL = { good: "Good choice", careful: "Careful", skip: "Skip" };
       var STANCE_COLOR = { good: "#16a34a", careful: "#b45309", skip: "#dc2626" };
-      var QUICK = ["T-Fal", "Lodge", "Ninja", "Cosori", "Caraway", "All-Clad", "Tasty"];
+      var QUICK = ["T-Fal", "Lodge", "Made In", "HexClad", "Caraway", "Tasty", "Teflon"];
       var BRANDS = [], byId = {}, active = -1;
       var norm = function (s) { return (s || "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim(); };
       var collapse = function (s) { return (s || "").toLowerCase().replace(/[^a-z0-9]+/g, ""); };
