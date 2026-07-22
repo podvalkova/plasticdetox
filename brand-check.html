@@ -445,7 +445,7 @@
       }
       let evHtml = b.evidence ? '<div class="meta-block"><div class="meta-label">Evidence</div><span class="evidence-chip">' + esc(b.evidence) + '</span></div>' : "";
       let buyHtml = "";
-      if (b.stance === "good") {
+      if (b.stance === "good" && !b.nobuy) {
         const buyUrl = b.buy || ("https://www.amazon.com/s?k=" + encodeURIComponent(b.brand) + "&tag=plasticdetox-20");
         buyHtml = '<div class="meta-block"><a class="buy-link" href="' + esc(buyUrl) + '" target="_blank" rel="noopener sponsored" onclick="gtag(\'event\',\'brand_buy\',{brand:\'' + jsAttr(b.brand) + '\'})">' +
           '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>' +
