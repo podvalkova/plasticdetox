@@ -455,6 +455,22 @@
       transition: transform 0.15s, box-shadow 0.15s;
       height: 100%;
     }
+    .a-card.is-top {
+      border: 2px solid var(--accent);
+      box-shadow: 0 2px 14px rgba(124, 58, 237, 0.13);
+    }
+    .a-card-toptag {
+      align-self: flex-start;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      margin-bottom: 0.1rem;
+    }
     .a-card:hover {
       transform: translateY(-2px);
       box-shadow: var(--shadow);
@@ -1198,10 +1214,10 @@
       { cat: "Kids", sub: "Wipes", img: "711MT-p-9QL", name: "Coterie Wipes", url: "https://www.amazon.com/s?k=Coterie+baby+wipes&tag=plasticdetox-20", bestFor: "Best thick single use wipe", tier: "$$", effectiveness: "Only 6 EWG Verified ingredients", desc: "Thick enough for one wipe per change. No fragrance, parabens, or phenoxyethanol.", pros: ["Only 6 ingredients", "Plant based fibers, thick weave", "No subscription required"], cons: ["Premium pricing", "Fewer wipes per pack"] },
 
       // Kids > Diapers
-      { cat: "Kids", sub: "Diapers", img: "41I83SSsm+L", name: "Eco by Naty Diapers", asin: "B07FTPBBK9", bestFor: "Cheapest clean diaper", tier: "$", effectiveness: "Totally chlorine free pulp, non detect for PFAS markers", desc: "About $0.44 per diaper, the cheapest genuinely clean option. Totally chlorine free pulp with a plant based topsheet, no fragrance or lotion. Non detect for organic fluorine in 2023 independent lab screening.", pros: ["Cheapest clean diaper per change", "Totally chlorine free pulp", "Non detect for PFAS markers in independent testing", "Plant based topsheet"], cons: ["Not EWG Verified", "Swedish brand, US stock can be patchy"] },
-      { cat: "Kids", sub: "Diapers", img: "81iBIj6olPL", name: "Seventh Generation Sensitive Skin Diapers", asin: "B084H4H6HR", bestFor: "Easiest to find", tier: "$$", effectiveness: "Totally chlorine free pulp, non detect for PFAS markers", desc: "Totally chlorine free pulp, oxygen bleached rather than the chlorine dioxide process most of the market uses. No fragrance or lotion. Non detect for organic fluorine in 2023 independent lab screening.", pros: ["Totally chlorine free pulp", "Non detect for PFAS markers in independent testing", "Stocked in ordinary grocery stores, no subscription"], cons: ["Not EWG Verified", "Ingredient deck less disclosed than Coterie or HealthyBaby", "About $0.69 per diaper on Amazon, no cheaper than the premium brands"] },
+      { cat: "Kids", sub: "Diapers", img: "41I83SSsm+L", name: "Eco by Naty Diapers", asin: "B07FTPBBK9", bestFor: "Cheapest clean diaper", tier: "$", effectiveness: "Totally chlorine free pulp, non detect for PFAS markers", desc: "The cheapest genuinely clean option. Totally chlorine free pulp with a plant based topsheet, no fragrance or lotion. Non detect for organic fluorine in 2023 independent lab screening.", pros: ["Cheapest clean diaper per change", "Totally chlorine free pulp", "Non detect for PFAS markers in independent testing", "Plant based topsheet"], cons: ["Not EWG Verified", "Swedish brand, US stock can be patchy"] },
+      { cat: "Kids", sub: "Diapers", img: "81iBIj6olPL", name: "Seventh Generation Sensitive Skin Diapers", asin: "B084H4H6HR", bestFor: "Easiest to find", tier: "$$", effectiveness: "Totally chlorine free pulp, non detect for PFAS markers", desc: "Totally chlorine free pulp, oxygen bleached rather than the chlorine dioxide process most of the market uses. No fragrance or lotion. Non detect for organic fluorine in 2023 independent lab screening.", pros: ["Totally chlorine free pulp", "Non detect for PFAS markers in independent testing", "Stocked in ordinary grocery stores, no subscription"], cons: ["Not EWG Verified", "Ingredient deck less disclosed than Coterie or HealthyBaby", "Priced with the premium brands, not below them"] },
       { cat: "Kids", sub: "Diapers", img: "71vmq0gnwpL", name: "HealthyBaby Diapers", url: "https://www.amazon.com/dp/B0GFXCRB12?tag=plasticdetox-20&th=1", bestFor: "First EWG Verified diaper", tier: "$$", effectiveness: "EWG Verified, MyMicrobiome certified, plant based topsheet", desc: "Every material reviewed against EWG database. Plant based topsheet, no fragrance, chlorine, or latex.", pros: ["EWG Verified", "MyMicrobiome certified", "Plant based topsheet"], cons: ["Premium pricing", "Subscription only"] },
-      { cat: "Kids", sub: "Diapers", img: "7126RO8oaaL", name: "Coterie Diapers", url: "https://www.amazon.com/dp/B0C2DCB188?tag=plasticdetox-20&th=1", bestFor: "Best overall diaper", tier: "$$$", effectiveness: "EWG Verified, totally chlorine free pulp, fully disclosed ingredients", desc: "EWG Verified across every size as of June 2026. Totally chlorine free pulp with a fully disclosed ingredient list. Excellent absorbency.", pros: ["EWG Verified", "Totally chlorine free pulp", "Fully disclosed ingredients", "No subscription required"], cons: ["Most expensive option", "Not compostable"] },
+      { cat: "Kids", sub: "Diapers", img: "7126RO8oaaL", name: "Coterie Diapers", top: true, url: "https://www.amazon.com/dp/B0C2DCB188?tag=plasticdetox-20&th=1", bestFor: "Best overall diaper", tier: "$$$", effectiveness: "EWG Verified, totally chlorine free pulp, fully disclosed ingredients", desc: "EWG Verified across every size as of June 2026. Totally chlorine free pulp with a fully disclosed ingredient list. Excellent absorbency.", pros: ["EWG Verified", "Totally chlorine free pulp", "Fully disclosed ingredients", "No subscription required"], cons: ["Most expensive option", "Not compostable"] },
 
       // Kids > Teethers
       { cat: "Kids", sub: "Teethers", img: "81xxNpO3KML", name: "Sophie la Girafe", asin: "B000IDSLOG", bestFor: "Longest track record in teethers", tier: "$$", effectiveness: "100% natural rubber, 60+ year track record", desc: "In production since 1961. 100% natural rubber with food grade paint. Designed to stimulate all five senses.", pros: ["100% natural rubber", "60+ year safety record", "Stimulates all five senses"], cons: ["Known mold risk if water gets inside; never submerge, or choose the sealed So Pure version", "Higher price"] },
@@ -1581,7 +1597,9 @@
     const cats = [...new Set(storeProducts.map(p => p.cat))];
     const productsByCat = {};
     cats.forEach(c => {
-      productsByCat[c] = storeProducts.filter(p => p.cat === c).sort((a, b) => a._tk - b._tk);
+      // Top picks lead their subcategory; everything else stays cheapest first.
+      productsByCat[c] = storeProducts.filter(p => p.cat === c)
+        .sort((a, b) => (b.top ? 1 : 0) - (a.top ? 1 : 0) || a._tk - b._tk);
     });
 
     // Stats
@@ -1613,11 +1631,12 @@
       const hasDetail = (p.pros && p.pros.length) || (p.cons && p.cons.length);
       const blurb = (p.desc || '').split('. ')[0].replace(/\.$/, '') + '.';
       return `
-        <article class="a-card" data-product-name="${escapeAttr(p.name)}" data-asin="${escapeAttr(p.asin || '')}">
+        <article class="a-card${p.top ? ' is-top' : ''}" data-product-name="${escapeAttr(p.name)}" data-asin="${escapeAttr(p.asin || '')}">
           <a class="a-card-img-wrap" href="${p._link}" target="_blank" rel="noopener sponsored">
             <img src="${p._img}" alt="${escapeAttr(p.name)}" loading="lazy">
           </a>
           <div class="a-card-body">
+            ${p.top ? `<span class="a-card-toptag">Our top pick</span>` : ''}
             ${p.bestFor ? `<span class="a-card-bestfor">${p.bestFor}</span>` : ''}
             <h3 class="a-card-name"><a href="${p._link}" target="_blank" rel="noopener sponsored">${p.name}</a></h3>
             ${p.cert ? `<div class="mk-badges">
