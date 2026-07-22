@@ -166,6 +166,9 @@
     .meta-block { margin-top: 1.15rem; }
     .meta-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.07em; font-weight: 700; color: var(--text-muted); margin-bottom: 0.35rem; }
     .evidence-chip { display: inline-block; font-size: 0.86rem; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 0.45rem 0.7rem; color: var(--text); }
+    .caution-block { display: flex; align-items: flex-start; gap: 0.55rem; font-size: 0.9rem; line-height: 1.5; background: var(--careful-bg); border: 1px solid var(--careful-border); border-radius: 10px; padding: 0.7rem 0.85rem; color: var(--careful); }
+    .caution-block svg { flex-shrink: 0; margin-top: 0.12rem; }
+    .caution-block .meta-label { color: var(--careful); margin-bottom: 0.2rem; }
     .product-list { display: flex; flex-direction: column; gap: 0.5rem; }
     .product-row { display: flex; align-items: flex-start; gap: 0.6rem; background: var(--bg); border: 1px solid var(--border); border-left-width: 3px; border-radius: 8px; padding: 0.6rem 0.7rem; }
     .product-row.good { border-left-color: var(--good); }
@@ -443,6 +446,14 @@
           }).join("") +
           '</div></div>';
       }
+      let cautionHtml = "";
+      if (Array.isArray(b.cautions) && b.cautions.length) {
+        cautionHtml = '<div class="meta-block"><div class="caution-block">' +
+          '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>' +
+          '<div><div class="meta-label">Worth a caution</div>' +
+          '<ul style="margin:0;padding-left:1.05rem;">' + b.cautions.map(c => '<li>' + esc(c) + '</li>').join("") + '</ul>' +
+          '</div></div></div>';
+      }
       let evHtml = b.evidence ? '<div class="meta-block"><div class="meta-label">Evidence</div><span class="evidence-chip">' + esc(b.evidence) + '</span></div>' : "";
       let buyHtml = "";
       if (b.stance === "good" && !b.nobuy) {
@@ -464,7 +475,7 @@
           '<div class="brand-name">' + esc(b.brand) + '</div>' +
           '<div class="brand-cat">' + esc(b.category) + '</div>' +
           '<p class="reason">' + esc(b.reason) + '</p>' +
-        '</div><div class="card-body">' + productsHtml + buyHtml + evHtml + altHtml + srcHtml + '</div></div>';
+        '</div><div class="card-body">' + productsHtml + cautionHtml + buyHtml + evHtml + altHtml + srcHtml + '</div></div>';
     }
 
     function showUnknown(query) {
