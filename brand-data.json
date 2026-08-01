@@ -1844,11 +1844,13 @@
     "brand": "Cora",
     "category": "Period care",
     "stance": "skip",
-    "reason": "Active PFAS class-action litigation over undisclosed organic fluorine in products marketed as clean and organic. (Distinct from the Cora Ball laundry product.)",
-    "evidence": "Active PFAS false-advertising lawsuit",
-    "alternative": "Saalt menstrual disc or cup",
+    "reason": "Independent lab testing found organic fluorine, a PFAS marker, in Cora liners at 30 ppm and in Cora period underwear at 13 to 14 ppm, despite organic and clean marketing. (Distinct from the Cora Ball laundry product.)",
+    "evidence": "30 ppm organic fluorine in liners; 13 to 14 ppm in period underwear (Mamavation, EPA certified lab)",
+    "alternative": "Natracare organic cotton liners, or a Saalt cup or disc",
     "sources": [
-      "store.html"
+      "store.html",
+      "https://mamavation.com/beauty/pfas-forever-chemicals-sanitary-pads-incontinence-pads.html",
+      "best-non-toxic-period-products.html"
     ]
   },
   {
@@ -4457,12 +4459,14 @@
     "id": "lola",
     "brand": "LOLA",
     "category": "Period care",
-    "stance": "skip",
-    "reason": "False-advertising class action alleges independent testing found PFAS, phthalates and other contaminants despite 100% organic cotton marketing.",
-    "evidence": "Active PFAS/contaminant false-advertising lawsuit",
-    "alternative": "Natracare or Organyc organic cotton tampons and pads",
+    "stance": "careful",
+    "reason": "Lola tampons tested non detect for organic fluorine, but an active class action alleges the tampons shed and unravel internally, with users reporting irritation, infection, and cotton left behind requiring medical removal.",
+    "evidence": "Tampons non detect for organic fluorine (Mamavation); active shedding and injury class action (ALYK Inc.)",
+    "alternative": "Natracare organic cotton tampons",
     "sources": [
-      "store.html"
+      "store.html",
+      "https://mamavation.com/beauty/pfas-tampons.html",
+      "best-non-toxic-period-products.html"
     ]
   },
   {
@@ -5161,12 +5165,13 @@
     "brand": "Natracare",
     "category": "Personal care",
     "stance": "good",
-    "reason": "Recommended organic cotton tampons as a plastic and chemical free menstrual product.",
-    "evidence": "Organic cotton, no synthetic fibers",
+    "reason": "Recommended organic cotton tampons, pads, and liners. Totally chlorine free, no rayon, fragrance, dyes, or plastic backsheet.",
+    "evidence": "Non detect organic fluorine in tampons and liners (Mamavation); GOTS and Soil Association organic, MADE SAFE certified",
     "alternative": "",
     "sources": [
       "non-toxic-baby-toddler-products-guide.html",
-      "personal-care-101.html"
+      "personal-care-101.html",
+      "best-non-toxic-period-products.html"
     ],
     "buy": "https://www.amazon.com/dp/B00CGKVQJG?tag=plasticdetox-20"
   },
@@ -6370,11 +6375,13 @@
     "brand": "Rael",
     "category": "Period care",
     "stance": "skip",
-    "reason": "A November 2025 California appellate ruling let claims proceed that Rael products contain far less certified-organic material than labeled plus prohibited synthetics; a separate PFAS class action is pending.",
-    "evidence": "2025 appellate ruling on organic claims + PFAS suit",
-    "alternative": "GladRags or Natracare organic pads",
+    "reason": "A November 2025 California appellate ruling revived claims that Rael products contain far less certified organic material than labeled plus prohibited synthetics, and independent testing found organic fluorine in Rael liners.",
+    "evidence": "Environmental Democracy Project v. Rael (Cal. Ct. App. 2025); 15 ppm organic fluorine in liners (Mamavation)",
+    "alternative": "Natracare organic cotton pads and liners, or GladRags cloth pads",
     "sources": [
-      "store.html"
+      "store.html",
+      "https://mamavation.com/beauty/pfas-forever-chemicals-sanitary-pads-incontinence-pads.html",
+      "best-non-toxic-period-products.html"
     ]
   },
   {
@@ -7506,11 +7513,13 @@
     "brand": "The Honey Pot Company",
     "category": "Period care",
     "stance": "skip",
-    "reason": "Active class action over intimate-wash safety and a 2023 reformulation that triggered widespread burning and irritation reports on its herbal-infused products.",
-    "evidence": "Active safety class action + reformulation adverse-event reports",
-    "alternative": "Natracare or Organyc organic cotton tampons",
+    "reason": "Independent testing found 38 ppm organic fluorine in Honey Pot everyday liners, the highest of any liner tested, alongside an active class action over intimate wash safety and widespread irritation reports after a 2023 reformulation.",
+    "evidence": "38 ppm organic fluorine in everyday liners (Mamavation); active safety class action",
+    "alternative": "Natracare organic cotton liners",
     "sources": [
-      "store.html"
+      "store.html",
+      "https://mamavation.com/beauty/pfas-forever-chemicals-sanitary-pads-incontinence-pads.html",
+      "best-non-toxic-period-products.html"
     ]
   },
   {
@@ -8740,6 +8749,88 @@
     "alternative": "Cloth-eez prefolds with a Rumparooz One Size, or Thirsties Natural One Size (all tested non detect)",
     "sources": [
       "best-non-toxic-diapers.html"
+    ]
+  },
+  {
+    "id": "saalt",
+    "brand": "Saalt",
+    "category": "Period care",
+    "stance": "good",
+    "reason": "Medical grade silicone cups and discs, plus period underwear that tested non detect for organic fluorine in independent 2023 testing after the brand found and removed a PFAS treated fabric before launch in 2020.",
+    "evidence": "Medical grade silicone; non detect organic fluorine in period underwear (Mamavation 2023, 10 ppm in 2021); OEKO-TEX Standard 100 materials",
+    "alternative": "",
+    "sources": [
+      "best-non-toxic-period-products.html",
+      "https://mamavation.com/health/period-underwear-contaminated-pfas-chemicals.html"
+    ],
+    "buy": "https://www.amazon.com/dp/B079DWG2ZV?tag=plasticdetox-20"
+  },
+  {
+    "id": "divacup",
+    "brand": "DivaCup",
+    "category": "Period care",
+    "stance": "good",
+    "reason": "Medical grade silicone menstrual cup, free of BPA, latex, dyes, and fragrance, with no lawsuits, recalls, or regulatory actions on record.",
+    "evidence": "Medical grade silicone; B Corp certified; no recalls or litigation found",
+    "alternative": "",
+    "sources": [
+      "best-non-toxic-period-products.html",
+      "store.html"
+    ],
+    "buy": "https://www.amazon.com/dp/B07KGZ9NMV?tag=plasticdetox-20"
+  },
+  {
+    "id": "organyc",
+    "brand": "Organyc",
+    "category": "Period care",
+    "stance": "careful",
+    "reason": "Liners tested non detect for organic fluorine, but Organyc tampons tested 24 ppm, and the tampon applicator combines bioplastic with conventional plastic despite the compostable positioning.",
+    "evidence": "24 ppm organic fluorine in tampons, liners non detect (Mamavation); GOTS, ICEA, and MADE SAFE certified cotton",
+    "alternative": "Natracare organic cotton tampons with a cardboard applicator",
+    "sources": [
+      "best-non-toxic-period-products.html",
+      "https://mamavation.com/beauty/pfas-tampons.html",
+      "https://mamavation.com/beauty/pfas-forever-chemicals-sanitary-pads-incontinence-pads.html"
+    ]
+  },
+  {
+    "id": "this-is-l",
+    "brand": "L. (This is L.)",
+    "category": "Period care",
+    "stance": "careful",
+    "reason": "Pads, liners, and tampons all tested non detect for organic fluorine, but the brand faces class actions alleging its 100% organic labelling covers products containing polyester, paraffin, and titanium dioxide, and that a pigment is used despite dye free claims.",
+    "evidence": "Non detect organic fluorine across pads, liners, and tampons (Mamavation); active false advertising class actions",
+    "alternative": "Natracare organic cotton pads and tampons",
+    "sources": [
+      "best-non-toxic-period-products.html",
+      "https://mamavation.com/beauty/pfas-tampons.html",
+      "https://mamavation.com/beauty/pfas-forever-chemicals-sanitary-pads-incontinence-pads.html"
+    ]
+  },
+  {
+    "id": "thinx",
+    "brand": "Thinx",
+    "category": "Period care",
+    "stance": "skip",
+    "reason": "Settled a class action for up to $5 million over PFAS in period underwear marketed as sustainable and organic, with independent testing finding organic fluorine as high as 940 ppm in some styles.",
+    "evidence": "Up to $5M PFAS class action settlement (2023); 940 ppm organic fluorine in one style (Mamavation)",
+    "alternative": "Saalt period underwear, or a Saalt cup or disc",
+    "sources": [
+      "best-non-toxic-period-products.html",
+      "https://mamavation.com/health/period-underwear-contaminated-pfas-chemicals.html"
+    ]
+  },
+  {
+    "id": "knix",
+    "brand": "Knix",
+    "category": "Period care",
+    "stance": "careful",
+    "reason": "Settled a $1.4 million PFAS class action over its period underwear and agreed to two years of expanded PFAS testing. Independent testing found 373 ppm organic fluorine in one style. Testing has improved since, but we prefer brands with a clean record.",
+    "evidence": "$1.4M PFAS class action settlement; 373 ppm organic fluorine in one style (Mamavation)",
+    "alternative": "Saalt period underwear",
+    "sources": [
+      "best-non-toxic-period-products.html",
+      "https://mamavation.com/health/period-underwear-contaminated-pfas-chemicals.html"
     ]
   }
 ]
