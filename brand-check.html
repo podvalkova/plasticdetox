@@ -326,8 +326,13 @@
       .then(r => r.json())
       .then(data => {
         BRANDS = data;
-        BRANDS.forEach(b => { byId[b.id] = b; b._norm = norm(b.brand); b._collapse = collapse(b.brand); });
-        $("statLine").textContent = BRANDS.length + " brands reviewed · updated June 2026";
+        BRANDS.forEach(b => {
+          byId[b.id] = b;
+          b._norm = norm(b.brand); b._collapse = collapse(b.brand);
+          // alternate spellings people actually type ("better and better" for "Better & Better")
+          b._alts = (b.aliases || []).map(a => ({ n: norm(a), c: collapse(a) }));
+        });
+        $("statLine").textContent = BRANDS.length + " brands reviewed · updated August 2026";
         buildQuick();
         // deep link ?b=
         const q = new URLSearchParams(location.search).get("b");
@@ -349,10 +354,10 @@
     function findExact(query) {
       const nq = norm(query), cq = collapse(query);
       if (!cq) return null;
-      let m = BRANDS.find(b => b._norm === nq || b._collapse === cq);
+      let m = BRANDS.find(b => b._norm === nq || b._collapse === cq || b._alts.some(a => a.n === nq || a.c === cq));
       if (m) return m;
       // startsWith on collapsed (partial typing: "cuis" -> Cuisinart)
-      m = BRANDS.find(b => b._collapse.startsWith(cq) && cq.length >= 3);
+      m = BRANDS.find(b => cq.length >= 3 && (b._collapse.startsWith(cq) || b._alts.some(a => a.c.startsWith(cq))));
       if (m) return m;
       // product-style query that contains a brand name ("cuisinart kettle", "cerave moisturizing cream")
       m = brandInQuery(nq, cq);
@@ -368,8 +373,8 @@
       let best = null;
       for (const b of BRANDS) {
         if (b._collapse.length < 3) continue;
-        const wholeWord = padded.includes(" " + b._norm + " ");
-        const collapsedIn = b._collapse.length >= 4 && cq.includes(b._collapse);
+        const wholeWord = padded.includes(" " + b._norm + " ") || b._alts.some(a => padded.includes(" " + a.n + " "));
+        const collapsedIn = (b._collapse.length >= 4 && cq.includes(b._collapse)) || b._alts.some(a => a.c.length >= 4 && cq.includes(a.c));
         if ((wholeWord || collapsedIn) && (!best || b._collapse.length > best._collapse.length)) best = b;
       }
       return best;
@@ -382,8 +387,8 @@
       return BRANDS
         .map(b => {
           let score = -1;
-          if (b._collapse === cq) score = 0;
-          else if (b._collapse.startsWith(cq)) score = 1;
+          if (b._collapse === cq || b._alts.some(a => a.c === cq)) score = 0;
+          else if (b._collapse.startsWith(cq) || b._alts.some(a => a.c.startsWith(cq))) score = 1;
           else if (b._norm.split(" ").some(w => w.startsWith(nq))) score = 2;
           else if (b._collapse.length >= 3 && (padded.includes(" " + b._norm + " ") || (b._collapse.length >= 4 && cq.includes(b._collapse)))) score = 2.5;
           else if (b._norm.includes(nq)) score = 3;
