@@ -2239,11 +2239,12 @@
     "brand": "Dr. Brown's",
     "category": "Baby bottles",
     "stance": "skip",
-    "reason": "Glass bottle with painted exterior volume markings that have tested positive for lead, which chips off in use.",
-    "evidence": "Lead Safe Mama lead testing on painted markings",
-    "alternative": "Lifefactory glass bottle",
+    "reason": "Named in a June 2024 class action alleging its BPA free polypropylene bottles release microplastics when heated. Its glass bottle carries painted exterior markings, which have tested positive for lead across the category.",
+    "evidence": "2024 microplastic class action (Handi-Craft); lead in painted markings on glass bottles (Lead Safe Mama)",
+    "alternative": "Evenflo Classic Glass or Lifefactory glass bottle",
     "sources": [
-      "top-100-baby-kids-products-amazon.html"
+      "top-100-baby-kids-products-amazon.html",
+      "best-non-toxic-baby-bottles.html"
     ]
   },
   {
@@ -4336,12 +4337,13 @@
     "brand": "Lifefactory",
     "category": "Baby bottles",
     "stance": "good",
-    "reason": "Borosilicate glass bottle with a silicone sleeve that releases zero microplastics and has no painted markings.",
-    "evidence": "medical-grade borosilicate glass, silicone sleeve",
+    "reason": "Borosilicate glass with a removable silicone sleeve, no painted markings, and no microplastic release at any temperature. Converts to a storage bottle or toddler cup.",
+    "evidence": "Borosilicate glass, silicone sleeve, listed lead free in independent testing",
     "alternative": "",
     "sources": [
       "how-to-remove-microplastics-from-bottled-water.html",
-      "non-toxic-baby-toddler-products-guide.html"
+      "non-toxic-baby-toddler-products-guide.html",
+      "best-non-toxic-baby-bottles.html"
     ],
     "buy": "https://www.amazon.com/dp/B01M5GHAZO?tag=plasticdetox-20"
   },
@@ -5878,11 +5880,12 @@
     "brand": "Philips Avent",
     "category": "Baby bottles",
     "stance": "careful",
-    "reason": "Their Natural Glass bottle is a recommended affordable glass pick, but their polypropylene bottle and painted-marking glass bottles are flagged Skip for microplastic shedding and lead in exterior paint.",
-    "evidence": "borosilicate glass, PP bottle sheds microplastics, lead in painted markings (Lead Safe Mama)",
-    "alternative": "Lifefactory glass bottle",
+    "reason": "Named in a June 2024 class action over microplastic release from its polypropylene bottles. Its glass line is a reasonable option but tested at 33 ppm lead in the painted markings rather than non detect.",
+    "evidence": "2024 microplastic class action (Philips North America); 33 ppm lead in glass bottle markings (XRF screening)",
+    "alternative": "Evenflo Classic Glass or MAM Feel Good Glass",
     "sources": [
-      "top-100-baby-kids-products-amazon.html"
+      "top-100-baby-kids-products-amazon.html",
+      "best-non-toxic-baby-bottles.html"
     ]
   },
   {
@@ -6214,12 +6217,13 @@
     "brand": "Pura Kiki",
     "category": "Baby bottles",
     "stance": "careful",
-    "reason": "Only 100% plastic-free stainless steel bottle, but the insulated version previously tested positive for lead in the bottom seal so only the non-insulated model is recommended.",
-    "evidence": "insulated version tested positive for lead in bottom seal",
-    "alternative": "",
+    "reason": "The only fully plastic free stainless bottle system, and the non insulated model is the one we recommend. Older insulated versions sold through at least 2018 were found by independent XRF testing to contain lead sealing dots in the base, with no recall issued.",
+    "evidence": "Independent XRF testing found lead sealing dots in older insulated models; brand states lead free solder since 2017; MADE SAFE certified",
+    "alternative": "Evenflo Classic Glass for home use",
     "sources": [
       "bpa-free-is-not-safe.html",
-      "non-toxic-baby-toddler-products-guide.html"
+      "non-toxic-baby-toddler-products-guide.html",
+      "best-non-toxic-baby-bottles.html"
     ]
   },
   {
@@ -9084,5 +9088,67 @@
     "alternative": "",
     "cautions": "Vet the specific product's materials rather than the Milomex name.",
     "sources": []
+  },
+  {
+    "id": "evenflo",
+    "brand": "Evenflo",
+    "category": "Baby bottles",
+    "stance": "good",
+    "reason": "Classic Glass bottles are tempered glass with etched rather than painted markings, release no microplastics at any temperature, and cost about two dollars per bottle. Listed lead free in independent XRF screening.",
+    "evidence": "Glass body, etched markings, listed lead free (Lead Safe Mama); no litigation or recalls on the glass line",
+    "alternative": "",
+    "sources": [
+      "best-non-toxic-baby-bottles.html"
+    ],
+    "buy": "https://www.amazon.com/dp/B019PG0FPO?tag=plasticdetox-20"
+  },
+  {
+    "id": "tommee-tippee",
+    "brand": "Tommee Tippee",
+    "category": "Baby bottles",
+    "stance": "skip",
+    "reason": "Named in a 2024 class action against Mayborn USA alleging its polypropylene bottles release microplastics when heated. Its glass version tested at 13 ppm lead in the markings.",
+    "evidence": "2024 microplastic class action; 13 ppm lead in glass bottle markings (XRF screening)",
+    "alternative": "Evenflo Classic Glass",
+    "sources": [
+      "best-non-toxic-baby-bottles.html"
+    ]
+  },
+  {
+    "id": "comotomo",
+    "brand": "Comotomo",
+    "category": "Baby bottles",
+    "stance": "careful",
+    "reason": "Silicone bottle with no lead or phthalates detected in Consumer Reports testing and better heat stability than polypropylene, but silicone sheds micro and nanoplastics under repeated steam disinfection.",
+    "evidence": "Non detect for BPA, lead, and phthalates (Consumer Reports); silicone shedding under steam (Nature Nanotechnology, 2022)",
+    "alternative": "Evenflo Classic Glass or MAM Feel Good Glass",
+    "sources": [
+      "best-non-toxic-baby-bottles.html"
+    ]
+  },
+  {
+    "id": "lansinoh",
+    "brand": "Lansinoh",
+    "category": "Baby bottles",
+    "stance": "skip",
+    "reason": "Independent XRF testing measured 5,605 ppm lead in the painted markings of its glass baby bottle, far above the 90 ppm federal limit for paint on children's products.",
+    "evidence": "5,605 ppm lead in painted markings (Lead Safe Mama XRF, CPSC violation report filed)",
+    "alternative": "Evenflo Classic Glass",
+    "sources": [
+      "best-non-toxic-baby-bottles.html"
+    ]
+  },
+  {
+    "id": "mam-bottles",
+    "brand": "MAM (bottles)",
+    "category": "Baby bottles",
+    "stance": "good",
+    "reason": "The Feel Good glass bottle showed no detectable lead in XRF screening of 32 bottles, and MAM is not named in the 2024 microplastic litigation. Its plastic bottles are still polypropylene.",
+    "evidence": "No detectable lead in glass bottle (XRF screening); non detect for BPA, lead, phthalates (Consumer Reports)",
+    "alternative": "",
+    "sources": [
+      "best-non-toxic-baby-bottles.html"
+    ],
+    "buy": "https://www.amazon.com/dp/B0D144B5QY?tag=plasticdetox-20"
   }
 ]
