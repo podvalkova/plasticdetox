@@ -40,7 +40,7 @@
         "description": "A complete guide to cleaner eating. Glyphosate residue, grocery packaging, tea bag microplastics, plastic free coffee, clean supplements, and the food swaps that actually matter.",
         "url": "https://plasticdetox.org/articles/food-pesticides-101.html",
         "datePublished": "2026-05-25",
-        "dateModified": "2026-06-25",
+        "dateModified": "2026-08-05",
         "lastReviewed": "2026-06-25",
         "inLanguage": "en",
         "author": {"@type": "Organization", "name": "Plastic Detox Editorial Team", "url": "https://plasticdetox.org/about.html"},
@@ -332,6 +332,43 @@
 </div>
 
   </main>
+
+  <!-- Scroll depth & outbound link tracking -->
+  <script>
+    (function() {
+      var fired = {};
+      var thresholds = [25, 50, 75, 100];
+      function getScrollPercent() {
+        var h = document.documentElement, b = document.body;
+        var st = window.pageYOffset || h.scrollTop || b.scrollTop || 0;
+        var sh = Math.max(h.scrollHeight, b.scrollHeight) - Math.max(h.clientHeight, b.clientHeight);
+        return sh > 0 ? Math.round((st / sh) * 100) : 0;
+      }
+      window.addEventListener('scroll', function() {
+        var pct = getScrollPercent();
+        for (var i = 0; i < thresholds.length; i++) {
+          var t = thresholds[i];
+          if (pct >= t && !fired[t]) {
+            fired[t] = true;
+            gtag('event', 'scroll_depth', { percent: t, page: window.location.pathname });
+          }
+        }
+      });
+      document.addEventListener('click', function(e) {
+        var link = e.target.closest('a[href]');
+        if (!link) return;
+        if (link.hostname !== window.location.hostname) {
+          var isAff = link.getAttribute('rel') && link.getAttribute('rel').indexOf('sponsored') !== -1;
+          gtag('event', isAff ? 'affiliate_click' : 'outbound_click', {
+            link_url: link.href,
+            link_text: (link.textContent || '').trim().substring(0, 100),
+            asin: (link.href.match(/\/(?:dp|gp\/product)\/([A-Z0-9]{10})/) || [])[1] || "",
+            product_name: (link.textContent || '').trim().substring(0, 100)
+          });
+        }
+      });
+    })();
+  </script>
 
 </body>
 </html>

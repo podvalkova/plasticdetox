@@ -37,7 +37,7 @@
     "author": { "@type": "Organization", "name": "Plastic Detox Editorial Team", "url": "https://plasticdetox.org/about.html" },
     "publisher": { "@type": "Organization", "name": "Plastic Detox", "url": "https://plasticdetox.org" },
     "datePublished": "2026-05-12",
-    "dateModified": "2026-05-13",
+    "dateModified": "2026-08-05",
     "lastReviewed": "2026-05-13",
     "image": "https://plasticdetox.org/images/sustainable-fabrics-article-hero.webp",
     "mainEntityOfPage": "https://plasticdetox.org/articles/sustainable-fabrics-that-arent.html"
@@ -945,7 +945,13 @@
         try {
           var host = new URL(a.href).hostname;
           if (host && host !== location.hostname) {
-            if (window.gtag) gtag('event', 'outbound_click', { link_url: a.href, link_host: host });
+            var isAff = a.getAttribute('rel') && a.getAttribute('rel').indexOf('sponsored') !== -1;
+            if (window.gtag) gtag('event', isAff ? 'affiliate_click' : 'outbound_click', {
+              link_url: a.href,
+              link_text: (a.textContent || '').trim().substring(0, 100),
+              asin: (a.href.match(/\/(?:dp|gp\/product)\/([A-Z0-9]{10})/) || [])[1] || "",
+              product_name: (a.textContent || '').trim().substring(0, 100)
+            });
           }
         } catch(_) {}
       }, true);
