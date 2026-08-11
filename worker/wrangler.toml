@@ -5,6 +5,9 @@ compatibility_date = "2024-01-01"
 [vars]
 SENDER_EMAIL = "hello@plasticdetox.org"
 SENDER_NAME = "Plastic Detox"
+# Team notifications use a distinct sender so they don't look like self-addressed spoofed mail
+NOTIFY_EMAIL = "noreply@plasticdetox.org"
+NOTIFY_NAME = "Plastic Detox Website"
 
 [[kv_namespaces]]
 binding = "BRAND_SEARCHES"

@@ -230,7 +230,7 @@ async function handleBrandRequest(request, env, corsOrigin) {
         method: "POST",
         headers: { "api-key": env.BREVO_API_KEY, "Content-Type": "application/json" },
         body: JSON.stringify({
-          sender: { name: env.SENDER_NAME, email: env.SENDER_EMAIL },
+          sender: { name: env.NOTIFY_NAME || env.SENDER_NAME, email: env.NOTIFY_EMAIL || env.SENDER_EMAIL },
           to: [{ email: env.SENDER_EMAIL }],
           subject: `Brand Check request: ${cleanBrand}`,
           htmlContent: `<p><strong>${cleanBrand}</strong> was requested via Brand Check.</p><p>Requested by: ${cleanEmail}</p>`,
@@ -307,7 +307,7 @@ async function handleContact(request, env, corsOrigin) {
       method: "POST",
       headers: { "api-key": env.BREVO_API_KEY, "Content-Type": "application/json" },
       body: JSON.stringify({
-        sender: { name: env.SENDER_NAME, email: env.SENDER_EMAIL },
+        sender: { name: env.NOTIFY_NAME || env.SENDER_NAME, email: env.NOTIFY_EMAIL || env.SENDER_EMAIL },
         to: [{ email: env.SENDER_EMAIL }],
         replyTo: { email: cleanEmail, name: cleanName },
         subject: `Custom Plan question from ${cleanName}`,
@@ -354,7 +354,7 @@ async function handleIntake(request, env, corsOrigin) {
       });
 
     const body = {
-      sender: { name: env.SENDER_NAME, email: env.SENDER_EMAIL },
+      sender: { name: env.NOTIFY_NAME || env.SENDER_NAME, email: env.NOTIFY_EMAIL || env.SENDER_EMAIL },
       to: [{ email: env.SENDER_EMAIL }],
       replyTo: { email, name },
       subject: `New Custom Plan intake: ${name} (${d.tier || "Custom Plan"})`,
