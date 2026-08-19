@@ -310,27 +310,20 @@
   {
     "id": "apec",
     "brand": "APEC",
-    "category": "Water filtration",
+    "category": "Water filter",
     "stance": "good",
-    "reason": "Recommended NSF certified under-sink reverse osmosis system with a steel tank.",
-    "evidence": "NSF certified under sink RO, steel tank",
+    "reason": "NSF certified under sink reverse osmosis with a steel tank. The ROES-50 five stage system is the best overall value pick, removing nearly all microplastics and most PFAS.",
+    "evidence": "WQA Gold Seal certified; removes 99.9% of microplastics and 94 to 99% of PFAS",
     "alternative": "",
     "sources": [
       "baby-kids-101.html",
-      "kitchen-detox-101.html"
-    ],
-    "buy": "https://www.amazon.com/dp/B00I0ZGOZM?tag=plasticdetox-20"
-  },
-  {
-    "id": "apec-roes-50",
-    "brand": "APEC ROES-50",
-    "category": "Water filter",
-    "stance": "good",
-    "reason": "Five-stage under-sink reverse osmosis named best overall value, removing nearly all microplastics and most PFAS.",
-    "evidence": "WQA Gold Seal certified, removes 99.9% of microplastics and 94 to 99% of PFAS",
-    "alternative": "",
-    "sources": [
+      "kitchen-detox-101.html",
       "how-to-filter-pfas-and-microplastics-from-water.html"
+    ],
+    "buy": "https://www.amazon.com/dp/B00I0ZGOZM?tag=plasticdetox-20",
+    "aliases": [
+      "APEC ROES-50",
+      "ROES-50"
     ]
   },
   {
@@ -387,23 +380,15 @@
     "brand": "AquaTru",
     "category": "Water filter",
     "stance": "good",
-    "reason": "Countertop reverse osmosis recommended for renters as one of the few countertop units with NSF P473 PFAS certification.",
-    "evidence": "NSF certified to Standards 42, 53, 58, 401, and P473; removes 99.9% microplastics",
+    "reason": "Countertop reverse osmosis recommended for renters as one of the few countertop units with NSF P473 PFAS certification. The Carafe model adds a glass collection carafe so filtered water is not stored in plastic.",
+    "evidence": "NSF certified to Standards 42, 53, 58, 401, and P473; removes 99.9% of microplastics and 84 certified contaminants",
     "alternative": "",
     "sources": [
-      "how-to-filter-pfas-and-microplastics-from-water.html"
-    ]
-  },
-  {
-    "id": "aquatru-carafe",
-    "brand": "AquaTru Carafe",
-    "category": "Water filter",
-    "stance": "good",
-    "reason": "Premium countertop pick using 4-stage reverse osmosis with a glass collection carafe and no plumbing.",
-    "evidence": "Removes 84 certified contaminants including microplastics and PFAS",
-    "alternative": "",
-    "sources": [
+      "how-to-filter-pfas-and-microplastics-from-water.html",
       "plastic-in-groceries-what-really-matters.html"
+    ],
+    "aliases": [
+      "AquaTru Carafe"
     ]
   },
   {
@@ -446,16 +431,30 @@
   {
     "id": "attitude",
     "brand": "ATTITUDE",
-    "category": "Laundry",
-    "stance": "good",
-    "reason": "EWG verified plant-based detergent with zero fragrance or phthalates.",
-    "evidence": "EWG verified, no fragrance/phthalates",
-    "alternative": "",
+    "category": "Multi-category",
+    "stance": "careful",
+    "reason": "The verdict depends on the product. The EWG verified plant based laundry detergent is a featured pick with no fragrance or phthalates, but the Eco diaper returned the highest organic fluorine result among eco positioned brands in 2023 independent screening.",
+    "evidence": "Detergent EWG verified; Eco diaper 60 ppm organic fluorine (2023 lab screening)",
+    "alternative": "Seventh Generation, Coterie, or HealthyBaby diapers",
     "sources": [
       "bedroom-air-101.html",
-      "closet-101.html"
+      "closet-101.html",
+      "best-non-toxic-diapers.html",
+      "https://mamavation.com/motherhood/diapers-pfas-forever-chemicals.html"
     ],
-    "buy": "https://www.amazon.com/dp/B0BVGS8N54?tag=plasticdetox-20"
+    "buy": "https://www.amazon.com/dp/B0BVGS8N54?tag=plasticdetox-20",
+    "products": [
+      {
+        "name": "Laundry detergent",
+        "verdict": "good",
+        "note": "EWG verified plant based formula with zero fragrance or phthalates."
+      },
+      {
+        "name": "Eco diapers",
+        "verdict": "careful",
+        "note": "Returned 60 ppm organic fluorine inside in 2023 independent screening, the highest among eco positioned disposable brands, despite the brand's clean positioning elsewhere."
+      }
+    ]
   },
   {
     "id": "austin-air",
@@ -486,49 +485,46 @@
   {
     "id": "aveeno",
     "brand": "Aveeno",
-    "category": "Sunscreen",
-    "stance": "skip",
-    "reason": "Among the Johnson & Johnson sunscreen SKUs recalled in 2021 for benzene contamination.",
-    "evidence": "Recalled with Neutrogena (five SKUs, 2021)",
-    "alternative": "Earth Mama Baby SPF 40",
-    "sources": [
-      "clean-products-that-arent.html"
-    ]
-  },
-  {
-    "id": "aveeno-baby",
-    "brand": "Aveeno Baby",
-    "category": "Baby skincare",
+    "category": "Personal care",
     "stance": "careful",
-    "reason": "Reformulated and cleaner than Johnson's but still retains fragrance and behentrimonium methosulfate.",
-    "evidence": "retains fragrance and behentrimonium methosulfate",
-    "alternative": "Earth Mama Organics",
+    "reason": "The verdict depends on the product. Aveeno sunscreens were among the Johnson & Johnson SKUs recalled in 2021 for benzene contamination, while the reformulated Aveeno Baby line is cleaner than Johnson's but still keeps fragrance and behentrimonium methosulfate.",
+    "evidence": "2021 benzene sunscreen recall (with Neutrogena)",
+    "alternative": "California Baby SPF 30+ for kids sunscreen; Earth Mama Organics for baby skincare",
     "sources": [
+      "clean-products-that-arent.html",
       "top-100-baby-kids-products-amazon.html"
+    ],
+    "aliases": [
+      "Aveeno Baby"
+    ],
+    "products": [
+      {
+        "name": "Sunscreens",
+        "verdict": "skip",
+        "note": "Among the Johnson & Johnson SKUs recalled in 2021 for benzene contamination."
+      },
+      {
+        "name": "Aveeno Baby lotions",
+        "verdict": "careful",
+        "note": "Reformulated and cleaner than Johnson's but retains fragrance and behentrimonium methosulfate."
+      }
     ]
   },
   {
     "id": "avocado",
-    "brand": "Avocado",
-    "category": "Baby sleep",
-    "stance": "good",
-    "reason": "Lead pick crib mattress with the strongest certification stack and organic latex, wool, and cotton construction.",
-    "evidence": "GREENGUARD Gold + GOTS + MADE SAFE + EWG Verified",
-    "alternative": "",
-    "sources": [
-      "non-toxic-baby-toddler-products-guide.html"
-    ]
-  },
-  {
-    "id": "avocado-green",
-    "brand": "Avocado Green",
+    "brand": "Avocado Green Mattress",
     "category": "Mattress",
     "stance": "good",
-    "reason": "Recommended best-overall organic latex mattress with no foam.",
-    "evidence": "GOLS and GOTS certified, GREENGUARD Gold",
+    "reason": "Organic latex, wool, and cotton mattresses with no polyurethane foam and the strongest certification stack we track, GOLS, GOTS, GREENGUARD Gold, MADE SAFE, EWG Verified. Both the adult mattress and the crib mattress are featured picks.",
+    "evidence": "GOLS + GOTS + GREENGUARD Gold + MADE SAFE + EWG Verified",
     "alternative": "",
     "sources": [
+      "non-toxic-baby-toddler-products-guide.html",
       "microplastics-in-bedroom-air.html"
+    ],
+    "aliases": [
+      "Avocado",
+      "Avocado Green"
     ]
   },
   {
@@ -663,7 +659,7 @@
     "stance": "skip",
     "reason": "Issued a broad benzene sunscreen recall in the 2021-2022 wave.",
     "evidence": "Benzene recall 2021-2022 (Edgewell)",
-    "alternative": "Earth Mama Baby SPF 40",
+    "alternative": "California Baby SPF 30+",
     "sources": [
       "clean-products-that-arent.html",
       "top-100-baby-kids-products-amazon.html"
@@ -1083,28 +1079,20 @@
     "brand": "Bluevua",
     "category": "Water filtration",
     "stance": "good",
-    "reason": "Recommended five stage countertop reverse osmosis system with remineralized output and no plumbing.",
-    "evidence": "Five stage countertop RO, remineralized output",
+    "reason": "Top countertop reverse osmosis pick. Five stage RO with remineralized output and a borosilicate glass carafe so filtered water never touches plastic, no plumbing needed.",
+    "evidence": "Five stage countertop RO, 2:1 pure to drain ratio, glass carafe",
     "alternative": "",
     "sources": [
       "baby-kids-101.html",
-      "kitchen-detox-101.html"
-    ],
-    "buy": "https://www.amazon.com/dp/B09KRDK677?tag=plasticdetox-20"
-  },
-  {
-    "id": "bluevua-ro100ropot",
-    "brand": "Bluevua RO100ROPOT",
-    "category": "Water filter",
-    "stance": "good",
-    "reason": "Top countertop reverse osmosis pick because it pairs RO filtration with a borosilicate glass carafe so filtered water never touches plastic.",
-    "evidence": "Five-stage RO with remineralization, 2:1 pure-to-drain ratio, glass carafe",
-    "alternative": "",
-    "sources": [
+      "kitchen-detox-101.html",
       "2026-low-tox-year-in-review.html",
       "how-to-remove-microplastics-from-drinking-water.html"
     ],
-    "buy": "https://www.amazon.com/dp/B09KRDK677?tag=plasticdetox-20"
+    "buy": "https://www.amazon.com/dp/B09KRDK677?tag=plasticdetox-20",
+    "aliases": [
+      "RO100ROPOT",
+      "Bluevua RO100ROPOT"
+    ]
   },
   {
     "id": "boardsmith",
@@ -1148,27 +1136,37 @@
   {
     "id": "bodum",
     "brand": "Bodum",
-    "category": "Cookware",
+    "category": "Coffee & kitchen",
     "stance": "careful",
-    "reason": "Discloses intentionally added PFAS forever chemicals in specific nonstick lines under California's AB 1200 law. Choose this brand's uncoated stainless or bare cast iron pieces, or a PFAS free brand, and skip anything labeled nonstick.",
-    "evidence": "PFAS disclosed (California AB 1200): BARISTA Electric milk frother (multiple models); OTTONI Electric Milk Frother",
+    "reason": "The verdict depends on the product. The Chambord French press is our best French press pick, all glass and stainless so no plastic touches the brew, but Bodum discloses intentionally added PFAS in specific electric lines under California's AB 1200 law, so skip anything from the brand labeled nonstick or an electric frother.",
+    "evidence": "Chambord all glass and stainless; PFAS disclosed (AB 1200) on BARISTA and OTTONI frothers",
     "alternative": "Lodge cast iron, Tramontina stainless, or de Buyer carbon steel",
     "sources": [
-      "pfas-in-cookware-brands.html"
-    ]
-  },
-  {
-    "id": "bodum-chambord",
-    "brand": "Bodum Chambord",
-    "category": "Coffee brewer",
-    "stance": "good",
-    "reason": "Recommended best French press, all glass and stainless steel so no plastic touches the brew.",
-    "evidence": "All glass and stainless steel construction",
-    "alternative": "",
-    "sources": [
+      "pfas-in-cookware-brands.html",
       "how-to-enjoy-coffee-without-plastic.html"
     ],
-    "buy": "https://www.amazon.com/dp/B00008XEWG?tag=plasticdetox-20"
+    "buy": "https://www.amazon.com/dp/B00008XEWG?tag=plasticdetox-20",
+    "aliases": [
+      "Chambord",
+      "Bodum Chambord"
+    ],
+    "products": [
+      {
+        "name": "Chambord French press",
+        "verdict": "good",
+        "note": "All glass and stainless steel, our best French press pick."
+      },
+      {
+        "name": "BARISTA and OTTONI electric milk frothers",
+        "verdict": "skip",
+        "note": "Intentionally added PFAS disclosed under California AB 1200."
+      },
+      {
+        "name": "Nonstick lines",
+        "verdict": "skip",
+        "note": "PFAS disclosed; choose the brand's uncoated glass or stainless pieces only."
+      }
+    ]
   },
   {
     "id": "boldwill",
@@ -1302,23 +1300,24 @@
     "brand": "Brita",
     "category": "Water filter",
     "stance": "skip",
-    "reason": "Standard granular activated carbon pitchers do not meaningfully remove PFAS or microplastics, only chlorine taste.",
+    "reason": "Standard granular activated carbon pitchers do not meaningfully remove PFAS or microplastics, only chlorine taste. The Longlast+ filter is better than standard but still not tested or rated for microplastic removal, so no Brita product earns a recommendation.",
     "evidence": "Brita's own testing shows standard and Brita Elite filters do not significantly reduce PFOA or PFOS",
-    "alternative": "Clearly Filtered",
+    "alternative": "Bluevua countertop RO or Clearly Filtered",
     "sources": [
-      "how-to-filter-pfas-and-microplastics-from-water.html"
-    ]
-  },
-  {
-    "id": "brita-longlast",
-    "brand": "Brita Longlast+",
-    "category": "Water filter",
-    "stance": "careful",
-    "reason": "A decent budget entry point and better than standard Brita, but not tested or rated for microplastic removal.",
-    "evidence": "Reduces some PFAS and contaminants but not specifically tested for microplastics",
-    "alternative": "Clearly Filtered",
-    "sources": [
+      "how-to-filter-pfas-and-microplastics-from-water.html",
       "how-to-remove-microplastics-from-bottled-water.html"
+    ],
+    "products": [
+      {
+        "name": "Standard and Elite pitchers",
+        "verdict": "skip",
+        "note": "Brita's own testing shows standard and Elite filters do not significantly reduce PFOA or PFOS."
+      },
+      {
+        "name": "Longlast+ filter",
+        "verdict": "careful",
+        "note": "Reduces some PFAS and contaminants, better than standard, but not tested or rated for microplastic removal."
+      }
     ]
   },
   {
@@ -1421,25 +1420,33 @@
   {
     "id": "burt-s-bees-baby",
     "brand": "Burt's Bees Baby",
-    "category": "Baby textiles",
-    "stance": "good",
-    "reason": "GOTS certified organic cotton crib sheets, swaddles, and hooded towels, widely available and affordable.",
-    "evidence": "GOTS certified 100% organic cotton",
-    "alternative": "",
-    "sources": [
-      "non-toxic-baby-toddler-products-guide.html"
-    ]
-  },
-  {
-    "id": "burt-s-bees-baby-lotion",
-    "brand": "Burt's Bees Baby (lotion)",
-    "category": "Baby skincare",
+    "category": "Multi-category",
     "stance": "careful",
-    "reason": "Cleaner ingredient deck but contains proprietary fragrance and tocopheryl acetate.",
-    "evidence": "proprietary fragrance, tocopheryl acetate",
-    "alternative": "Earth Mama Organics",
+    "reason": "The verdict depends on the product. The GOTS certified organic cotton clothing, crib sheets, and towels are featured picks, the lotion carries proprietary fragrance, and the 40% zinc diaper ointment reported over 2,500 ppb lead plus cadmium in 2025 independent testing. The parent brand also faces PFAS related class action litigation over natural claims in its cosmetics line.",
+    "evidence": ">2,500 ppb lead in diaper ointment (LSM); clothing GOTS certified",
+    "alternative": "Weleda Calendula Diaper Cream for diaper cream",
     "sources": [
-      "top-100-baby-kids-products-amazon.html"
+      "non-toxic-baby-toddler-products-guide.html",
+      "top-100-baby-kids-products-amazon.html",
+      "best-non-toxic-diaper-rash-creams.html",
+      "https://tamararubin.com/2025/12/burts-bees-baby-diaper-ointment/"
+    ],
+    "products": [
+      {
+        "name": "Organic cotton clothing and crib sheets",
+        "verdict": "good",
+        "note": "GOTS certified 100% organic cotton crib sheets, swaddles, and hooded towels. Widely available and affordable."
+      },
+      {
+        "name": "Baby lotion",
+        "verdict": "careful",
+        "note": "Cleaner ingredient deck but contains proprietary fragrance and tocopheryl acetate. Earth Mama Organics balm is the cleaner swap."
+      },
+      {
+        "name": "Diaper ointment",
+        "verdict": "skip",
+        "note": "The 40% zinc ointment reported over 2,500 ppb lead plus cadmium in 2025 testing (Lead Safe Mama). Use Weleda Calendula instead."
+      }
     ]
   },
   {
@@ -1744,26 +1751,18 @@
   },
   {
     "id": "clipper",
-    "brand": "Clipper",
-    "category": "Tea",
-    "stance": "good",
-    "reason": "Named as a plastic-free tea brand to switch to instead of polypropylene-sealed bags.",
-    "evidence": "Plastic free tea bags",
-    "alternative": "",
-    "sources": [
-      "kitchen-detox-101.html"
-    ]
-  },
-  {
-    "id": "clipper-tea",
     "brand": "Clipper Tea",
     "category": "Tea",
     "stance": "good",
-    "reason": "Listed as plastic-free using unbleached, non heat-sealed paper bags.",
-    "evidence": "Unbleached, non heat-sealed paper bags",
+    "reason": "Plastic free tea bags, unbleached and non heat sealed paper instead of polypropylene sealed bags.",
+    "evidence": "Unbleached, non heat sealed paper bags",
     "alternative": "",
     "sources": [
+      "kitchen-detox-101.html",
       "how-to-avoid-microplastics-in-tea.html"
+    ],
+    "aliases": [
+      "Clipper"
     ]
   },
   {
@@ -1882,7 +1881,7 @@
     "stance": "skip",
     "reason": "Issued a broad benzene sunscreen recall in the 2021-2022 wave.",
     "evidence": "Benzene recall 2021-2022 (Beiersdorf)",
-    "alternative": "Earth Mama Baby SPF 40",
+    "alternative": "California Baby SPF 30+",
     "sources": [
       "clean-products-that-arent.html"
     ]
@@ -1986,24 +1985,12 @@
     "brand": "Coyuchi",
     "category": "Bedding / basics",
     "stance": "good",
-    "reason": "GOTS organic cotton sheets, towels, and sleepwear with a full annual supply-chain audit.",
+    "reason": "GOTS organic cotton sheets, towels, and sleepwear with a full annual supply chain audit. The organic cotton beach towels are also a recommended swap for microfiber.",
     "evidence": "GOTS organic cotton, supply-chain audit",
     "alternative": "",
     "sources": [
       "microplastics-in-bedroom-air.html",
-      "sustainable-fabrics-that-arent.html"
-    ],
-    "buy": "https://www.amazon.com/dp/B01MXLISKK?tag=plasticdetox-20"
-  },
-  {
-    "id": "coyuchi-beach-towels",
-    "brand": "Coyuchi (beach towels)",
-    "category": "Beach towels",
-    "stance": "good",
-    "reason": "Named as an organic cotton beach towel upgrade over microfiber options.",
-    "evidence": "organic cotton",
-    "alternative": "",
-    "sources": [
+      "sustainable-fabrics-that-arent.html",
       "plastic-free-beach-day-essentials.html"
     ],
     "buy": "https://www.amazon.com/dp/B01MXLISKK?tag=plasticdetox-20"
@@ -2110,7 +2097,7 @@
     "stance": "skip",
     "reason": "Among the four sunscreen brands with the highest benzene contamination in Valisure testing.",
     "evidence": "Highest benzene contamination (Valisure 2021)",
-    "alternative": "Earth Mama Baby SPF 40",
+    "alternative": "California Baby SPF 30+",
     "sources": [
       "clean-products-that-arent.html"
     ]
@@ -2279,23 +2266,24 @@
     "brand": "Dove",
     "category": "Personal care",
     "stance": "skip",
-    "reason": "Dry shampoo aerosols recalled by Unilever in 2022 due to elevated benzene from the propellant.",
+    "reason": "Dry shampoo aerosols were recalled by Unilever in 2022 for elevated benzene from the propellant, and the Men's 0% Aluminum deodorant faces an active class action alleging benzyl alcohol in a product labeled 0%.",
     "evidence": "Unilever benzene dry shampoo recall October 2022",
-    "alternative": "Powder format dry shampoo",
+    "alternative": "Each & Every deodorant; powder format dry shampoo",
     "sources": [
-      "clean-products-that-arent.html"
-    ]
-  },
-  {
-    "id": "dove-men-s-0-aluminum",
-    "brand": "Dove Men's 0% Aluminum",
-    "category": "Deodorant",
-    "stance": "skip",
-    "reason": "Active class action alleges benzyl alcohol detected in a product labeled '0%' implying no alcohol.",
-    "evidence": "Active class action",
-    "alternative": "Each & Every",
-    "sources": [
+      "clean-products-that-arent.html",
       "2026-low-tox-year-in-review.html"
+    ],
+    "products": [
+      {
+        "name": "Dry shampoo aerosols",
+        "verdict": "skip",
+        "note": "Recalled by Unilever in October 2022 for elevated benzene from the propellant."
+      },
+      {
+        "name": "Men's 0% Aluminum deodorant",
+        "verdict": "skip",
+        "note": "Active class action alleges benzyl alcohol detected in a product labeled 0%."
+      }
     ]
   },
   {
@@ -2459,28 +2447,31 @@
     "buy": "https://www.amazon.com/dp/B086W4D6CB?tag=plasticdetox-20"
   },
   {
-    "id": "earth-mama",
-    "brand": "Earth Mama",
-    "category": "Sunscreen",
-    "stance": "skip",
-    "reason": "The Earth Mama Baby Mineral SPF 40 sunscreen tested at 2,140 ppb lead in independent lab testing, one of the highest results on record. (Earth Mama Organics body care is a separate, cleared listing.)",
-    "evidence": "2,140 ppb lead in sunscreen (Lead Safe Mama, 2025)",
-    "alternative": "California Baby SPF 30+ (77 ppb) for kids",
-    "sources": [
-      "best-mineral-sunscreen-guide.html"
-    ]
-  },
-  {
     "id": "earth-mama-organics",
     "brand": "Earth Mama Organics",
     "category": "Baby skincare",
-    "stance": "good",
-    "reason": "The Organic Diaper Balm is a genuinely clean zinc free formula, organic herbs in olive oil and beeswax, EWG Verified, used in hospital NICUs, and it stays a featured pick. Note the brand's separate baby mineral sunscreen tested 2,140 ppb lead and was dropped; the balm contains no zinc oxide so that contamination route does not apply, though the balm itself has no independent metals test.",
-    "evidence": "Balm zinc free + EWG Verified; brand sunscreen tested high lead",
-    "alternative": "",
+    "stance": "careful",
+    "reason": "One company, very different results per product, so check the product rows. The Organic Diaper Balm is a genuinely clean EWG Verified featured pick, while the Baby Mineral SPF 40 sunscreen tested at 2,140 ppb lead in 2025 independent testing, one of the highest results on record, and was dropped from our sunscreen guide.",
+    "evidence": "2,140 ppb lead in sunscreen (LSM 2025); diaper balm EWG Verified",
+    "alternative": "California Baby SPF 30+ (77 ppb) for kids sunscreen",
     "sources": [
       "best-non-toxic-diaper-rash-creams.html",
       "best-mineral-sunscreen-guide.html"
+    ],
+    "aliases": [
+      "Earth Mama"
+    ],
+    "products": [
+      {
+        "name": "Organic Diaper Balm",
+        "verdict": "good",
+        "note": "Zinc free formula, organic herbs in olive oil and beeswax, EWG Verified, used in hospital NICUs. Still a featured pick; it contains no zinc oxide so the sunscreen's contamination route does not apply, though the balm has no independent metals test of its own."
+      },
+      {
+        "name": "Baby Mineral Sunscreen SPF 40",
+        "verdict": "skip",
+        "note": "Tested 2,140 ppb lead (Lead Safe Mama, 2025). Dropped from our sunscreen guide; use California Baby SPF 30+ instead."
+      }
     ]
   },
   {
@@ -3031,7 +3022,7 @@
     "stance": "skip",
     "reason": "Among the four sunscreen brands with the highest benzene contamination in Valisure testing.",
     "evidence": "Highest benzene contamination (Valisure 2021)",
-    "alternative": "Earth Mama Baby SPF 40",
+    "alternative": "California Baby SPF 30+",
     "sources": [
       "clean-products-that-arent.html"
     ]
@@ -3124,25 +3115,25 @@
   {
     "id": "gerber",
     "brand": "Gerber",
-    "category": "Baby food",
+    "category": "Multi-category",
     "stance": "skip",
-    "reason": "Pouches and puffs named in heavy-metal reports and found to contain phthalates not present in jarred versions.",
-    "evidence": "2021 House Oversight heavy-metals report; Consumer Reports 2023 phthalates",
-    "alternative": "Beech-Nut Organics glass jars",
+    "reason": "Baby food pouches and puffs were named in the 2021 House Oversight heavy metals report and Consumer Reports found phthalates not present in jarred versions, and the flame resistant polyester pajamas may use chemical flame retardant treatments per SKU.",
+    "evidence": "House Oversight heavy metals report; CR 2023 phthalates",
+    "alternative": "Beech-Nut Organics glass jars; Hanna Andersson organic cotton pajamas",
     "sources": [
       "top-100-baby-kids-products-amazon.html"
-    ]
-  },
-  {
-    "id": "gerber-pajamas",
-    "brand": "Gerber (pajamas)",
-    "category": "Kids clothing",
-    "stance": "skip",
-    "reason": "Flame-resistant polyester pajamas where brushed variants may use chemical flame-retardant treatments per SKU.",
-    "evidence": "brushed polyester may use chemical FR",
-    "alternative": "Hanna Andersson organic cotton pajamas",
-    "sources": [
-      "top-100-baby-kids-products-amazon.html"
+    ],
+    "products": [
+      {
+        "name": "Baby food pouches and puffs",
+        "verdict": "skip",
+        "note": "Named in heavy metal reports; phthalates found that are not present in jarred versions."
+      },
+      {
+        "name": "Flame resistant polyester pajamas",
+        "verdict": "skip",
+        "note": "Brushed variants may use chemical flame retardant treatments per SKU."
+      }
     ]
   },
   {
@@ -3715,32 +3706,6 @@
     ]
   },
   {
-    "id": "honest",
-    "brand": "Honest",
-    "category": "Cosmetics",
-    "stance": "good",
-    "reason": "Hazel Eye Gels are a featured cosmetics pick (distinct from the wipes labeling issue).",
-    "evidence": "",
-    "alternative": "",
-    "sources": [
-      "microplastics-in-cosmetics-and-personal-care.html"
-    ]
-  },
-  {
-    "id": "honest-company",
-    "brand": "Honest Company",
-    "category": "Personal care",
-    "stance": "skip",
-    "reason": "Faces a class action alleging its 'plant based' wipes contain synthetic ingredients, and has a history of settled greenwashing claims.",
-    "evidence": "2022 class action over plant based wipes; $7.35M and $1.55M settlements in 2017",
-    "alternative": "WaterWipes (99.9% water, 0.1% fruit extract)",
-    "sources": [
-      "clean-products-that-arent.html",
-      "low-tox-myths-debunked.html",
-      "top-100-baby-kids-products-amazon.html"
-    ]
-  },
-  {
     "id": "honey-can-do",
     "brand": "Honey-Can-Do",
     "category": "Drying rack",
@@ -3807,24 +3772,12 @@
     "brand": "Hydro Flask",
     "category": "Drinkware",
     "stance": "good",
-    "reason": "Stainless insulated kids straw cup; recent (2017+) production confirmed lead-free by XRF testing, and the adult bottle is a recommended nursing-mom swap.",
-    "evidence": "Lead Safe Mama XRF confirms lead free 2017+",
+    "reason": "Double wall 18/8 stainless bottles with no plastic in the water path; recent (2017+) production confirmed lead free by XRF testing. Both the adult bottle and the kids insulated straw cup are recommended.",
+    "evidence": "18/8 stainless; Lead Safe Mama XRF confirms lead free 2017+",
     "alternative": "",
     "sources": [
       "how-to-remove-microplastics-from-bottled-water.html",
-      "top-100-baby-kids-products-amazon.html"
-    ],
-    "buy": "https://www.amazon.com/dp/B01GW2GNH8?tag=plasticdetox-20"
-  },
-  {
-    "id": "hydro-flask-adult",
-    "brand": "Hydro Flask (adult)",
-    "category": "Water bottles",
-    "stance": "good",
-    "reason": "Double-wall vacuum-insulated 18/8 stainless steel bottle with no plastic water contact, recommended as a nursing-mom and beach swap.",
-    "evidence": "18/8 stainless steel, no plastic water contact",
-    "alternative": "",
-    "sources": [
+      "top-100-baby-kids-products-amazon.html",
       "plastic-free-beach-day-essentials.html",
       "best-non-toxic-water-bottles.html"
     ],
@@ -4458,23 +4411,27 @@
     "brand": "LifeStraw",
     "category": "Water filter",
     "stance": "careful",
-    "reason": "Portable filter bottle recommended mainly for travel and bacteria/parasites, less optimized for everyday microplastic reduction.",
-    "evidence": "Hollow fiber membrane designed for bacteria and parasites",
+    "reason": "The verdict depends on the product. The Home Glass Pitcher is our top pitcher pick, the only one certified to NSF 244 for microplastic reduction with a glass body, while the portable filter bottles and straws are built for travel bacteria and parasites, not everyday microplastic reduction.",
+    "evidence": "Home Glass Pitcher NSF 244 certified; travel filters not microplastic optimized",
     "alternative": "",
     "sources": [
-      "how-to-remove-microplastics-from-drinking-water.html"
-    ]
-  },
-  {
-    "id": "lifestraw-home-glass-pitcher",
-    "brand": "LifeStraw Home Glass Pitcher",
-    "category": "Water filter",
-    "stance": "good",
-    "reason": "Top water filter pick as the only pitcher certified for microplastic reduction with a glass body that avoids recontamination.",
-    "evidence": "Only pitcher certified to NSF 244 for microplastic reduction; glass body",
-    "alternative": "",
-    "sources": [
+      "how-to-remove-microplastics-from-drinking-water.html",
       "plastic-in-groceries-what-really-matters.html"
+    ],
+    "aliases": [
+      "LifeStraw Home"
+    ],
+    "products": [
+      {
+        "name": "Home Glass Pitcher",
+        "verdict": "good",
+        "note": "The only pitcher certified to NSF 244 for microplastic reduction; the glass body avoids recontamination."
+      },
+      {
+        "name": "Filter bottles and straws",
+        "verdict": "careful",
+        "note": "Hollow fiber membrane designed for bacteria and parasites during travel, less optimized for daily microplastic reduction."
+      }
     ]
   },
   {
@@ -4775,13 +4732,32 @@
   {
     "id": "mam",
     "brand": "MAM",
-    "category": "Pacifiers",
+    "category": "Multi-category",
     "stance": "careful",
-    "reason": "Pacifier with plastic shield elements; the guide warns against pacifiers with plastic shields that sit against the face, though silicone/latex nipples are acceptable.",
-    "evidence": "plastic shield",
-    "alternative": "Natursutten one-piece natural rubber",
+    "reason": "The verdict depends on the product. The Feel Good glass bottle tested clean, no detectable lead in XRF screening of 32 bottles and non detect for BPA, lead, and phthalates at Consumer Reports, while the plastic bottles are polypropylene and the pacifiers use a plastic shield that sits against the face.",
+    "evidence": "Glass bottle non detect (XRF + Consumer Reports); PP bottles; plastic shield pacifiers",
+    "alternative": "Natursutten one piece natural rubber pacifier",
     "sources": [
-      "top-100-baby-kids-products-amazon.html"
+      "top-100-baby-kids-products-amazon.html",
+      "best-non-toxic-baby-bottles.html"
+    ],
+    "buy": "https://www.amazon.com/dp/B0D144B5QY?tag=plasticdetox-20",
+    "products": [
+      {
+        "name": "Feel Good glass bottle",
+        "verdict": "good",
+        "note": "No detectable lead in XRF screening of 32 bottles; non detect for BPA, lead, and phthalates at Consumer Reports. Not named in the 2024 microplastic litigation."
+      },
+      {
+        "name": "Plastic bottles",
+        "verdict": "careful",
+        "note": "Polypropylene; heat and wear shed microplastics like any PP bottle."
+      },
+      {
+        "name": "Pacifiers",
+        "verdict": "careful",
+        "note": "Plastic shield sits against the face; silicone or latex nipples themselves are acceptable. Natursutten one piece natural rubber is the cleaner swap."
+      }
     ]
   },
   {
@@ -5152,23 +5128,15 @@
     "brand": "Munchkin",
     "category": "Tableware / toys",
     "stance": "skip",
-    "reason": "Plastic toddler utensils and snack cups, plus soft PVC bath squirt toys that harbor mold and shed phthalates when chewed.",
+    "reason": "Plastic toddler utensils and snack cups, the Miracle 360 spoutless training cup is a plastic toddler cup we flag, and soft PVC bath squirt toys harbor mold and shed phthalates when chewed.",
     "evidence": "PVC bath toys harbor mold; plastic utensils",
     "alternative": "",
     "sources": [
       "top-100-baby-kids-products-amazon.html"
-    ]
-  },
-  {
-    "id": "munchkin-miracle",
-    "brand": "Munchkin Miracle",
-    "category": "Toddler drinkware",
-    "stance": "skip",
-    "reason": "360 spoutless training cup, a plastic toddler cup flagged in the cup category.",
-    "evidence": "",
-    "alternative": "",
-    "sources": [
-      "top-100-baby-kids-products-amazon.html"
+    ],
+    "aliases": [
+      "Munchkin Miracle",
+      "Miracle 360"
     ]
   },
   {
@@ -5390,7 +5358,7 @@
     "stance": "skip",
     "reason": "One of the four highest-benzene-contaminated sunscreen brands in Valisure testing; five SKUs recalled by J&J.",
     "evidence": "Highest benzene contamination (Valisure); J&J recalled five Neutrogena/Aveeno SKUs in 2021",
-    "alternative": "Earth Mama Baby SPF 40",
+    "alternative": "California Baby SPF 30+",
     "sources": [
       "clean-products-that-arent.html"
     ]
@@ -5449,24 +5417,34 @@
     "brand": "Ninja",
     "category": "Appliances",
     "stance": "careful",
-    "reason": "The Crispi glass air fryer is marketed as the clean, non toxic option, but despite the glass containers your food actually cooks on an aluminum crisper plate with a nano ceramic coating that degrades over time. It is better than a PTFE basket, but not a verified coating free surface, so we do not recommend it. Their standard basket air fryers are PTFE coated.",
-    "evidence": "Borosilicate glass containers but aluminum crisper plate with nano ceramic coating; standard baskets are PTFE",
-    "alternative": "Fritaire or Magnifique glass air fryers cook on a verified coating free glass and stainless surface",
+    "reason": "Nothing in the lineup is a clean recommendation. The standard basket air fryers are PTFE coated, the Crispi glass air fryer still cooks food on an aluminum crisper plate with a nano ceramic coating that degrades, and the NeverStick Ceramic Pro cookware is a sol gel ceramic over hard anodized aluminum that wears down in 1 to 3 years.",
+    "evidence": "PTFE baskets; nano ceramic crisper plate; sol gel ceramic cookware",
+    "alternative": "Fritaire or Magnifique glass air fryers; seasoned cast iron, carbon steel, or uncoated stainless for cookware",
     "sources": [
       "best-non-toxic-air-fryers.html",
-      "toxic-kitchen-appliances-ranked.html"
-    ]
-  },
-  {
-    "id": "ninja-neverstick-ceramic-pro",
-    "brand": "Ninja NeverStick Ceramic Pro",
-    "category": "Cookware",
-    "stance": "careful",
-    "reason": "PTFE free, but it is a sol gel ceramic coating over a hard anodized aluminum body that wears down in 1 to 3 years. Once the coating degrades it can expose the aluminum underneath and you lose the nonstick benefit.",
-    "evidence": "Sol gel ceramic coating over hard anodized aluminum; coating degrades in 1 to 3 years",
-    "alternative": "Seasoned cast iron, carbon steel, or uncoated 304 stainless steel",
-    "sources": [
+      "toxic-kitchen-appliances-ranked.html",
       "cast-iron-vs-stainless-steel-vs-ceramic-cookware.html"
+    ],
+    "aliases": [
+      "NeverStick",
+      "Ninja NeverStick"
+    ],
+    "products": [
+      {
+        "name": "Standard basket air fryers",
+        "verdict": "skip",
+        "note": "PTFE coated baskets."
+      },
+      {
+        "name": "Crispi glass air fryer",
+        "verdict": "careful",
+        "note": "Glass containers, but food cooks on an aluminum crisper plate with a nano ceramic coating that degrades over time. Better than PTFE, not verified coating free."
+      },
+      {
+        "name": "NeverStick Ceramic Pro cookware",
+        "verdict": "careful",
+        "note": "PTFE free, but a sol gel ceramic coating over hard anodized aluminum that wears down in 1 to 3 years and can expose the aluminum underneath."
+      }
     ]
   },
   {
@@ -5556,26 +5534,18 @@
   },
   {
     "id": "numi",
-    "brand": "Numi",
-    "category": "Tea",
-    "stance": "good",
-    "reason": "Named as a plastic-free tea brand to switch to instead of polypropylene-sealed bags.",
-    "evidence": "Plastic free tea bags",
-    "alternative": "",
-    "sources": [
-      "kitchen-detox-101.html"
-    ]
-  },
-  {
-    "id": "numi-organic-tea",
     "brand": "Numi Organic Tea",
     "category": "Tea",
     "stance": "good",
-    "reason": "Listed as plastic-free using plant-based filter paper and packaging.",
+    "reason": "Plastic free tea bags using plant based filter paper and plastic free packaging instead of polypropylene sealed bags.",
     "evidence": "Plant based filter paper, plastic free packaging",
     "alternative": "",
     "sources": [
+      "kitchen-detox-101.html",
       "how-to-avoid-microplastics-in-tea.html"
+    ],
+    "aliases": [
+      "Numi"
     ]
   },
   {
@@ -5875,26 +5845,26 @@
   {
     "id": "pampers",
     "brand": "Pampers",
-    "category": "Diapers",
+    "category": "Diapers & wipes",
     "stance": "skip",
-    "reason": "ANSES 2020 and Greenpeace testing flagged trace dioxins, furans, PCBs, and glyphosate in the diapers worn against skin around the clock.",
+    "reason": "ANSES 2020 and Greenpeace testing flagged trace dioxins, furans, PCBs, and glyphosate in the diapers worn against skin around the clock, and the Sensitive wipes are a conventional polypropylene substrate.",
     "evidence": "ANSES 2020 trace dioxins, furans, PCBs, glyphosate",
-    "alternative": "HealthyBaby diapers",
+    "alternative": "HealthyBaby diapers; WaterWipes or Natracare wipes",
     "sources": [
       "top-100-baby-kids-products-amazon.html",
       "best-non-toxic-diapers.html"
-    ]
-  },
-  {
-    "id": "pampers-sensitive-wipes",
-    "brand": "Pampers (Sensitive Wipes)",
-    "category": "Wipes",
-    "stance": "skip",
-    "reason": "Conventional polypropylene-substrate wipes from a brand flagged across the disposable category.",
-    "evidence": "polypropylene substrate",
-    "alternative": "WaterWipes or Natracare",
-    "sources": [
-      "top-100-baby-kids-products-amazon.html"
+    ],
+    "products": [
+      {
+        "name": "Diapers",
+        "verdict": "skip",
+        "note": "ANSES 2020 and Greenpeace testing flagged trace dioxins, furans, PCBs, and glyphosate."
+      },
+      {
+        "name": "Sensitive Wipes",
+        "verdict": "skip",
+        "note": "Conventional polypropylene substrate wipes."
+      }
     ]
   },
   {
@@ -5976,45 +5946,43 @@
   {
     "id": "philips",
     "brand": "Philips",
-    "category": "Espresso machine",
-    "stance": "skip",
-    "reason": "Named among automatic espresso machines with multiple plastic components contacting hot water.",
-    "evidence": "Plastic reservoir, brew group, and tubing under high heat and pressure",
-    "alternative": "Flair Classic",
-    "sources": [
-      "how-to-enjoy-coffee-without-plastic.html"
-    ]
-  },
-  {
-    "id": "philips-avent",
-    "brand": "Philips Avent",
-    "category": "Baby bottles",
+    "category": "Multi-category",
     "stance": "careful",
-    "reason": "Named in a June 2024 class action over microplastic release from its polypropylene bottles. Its glass line is a reasonable option but tested at 33 ppm lead in the painted markings rather than non detect.",
-    "evidence": "2024 microplastic class action (Philips North America); 33 ppm lead in glass bottle markings (XRF screening)",
-    "alternative": "Evenflo Classic Glass or MAM Feel Good Glass",
+    "reason": "One conglomerate, so the verdict depends on the product line. Automatic espresso machines run hot water through multiple plastic components, Avent bottles face a 2024 microplastic class action over polypropylene and the glass line tested 33 ppm lead in painted markings, and Sonicare toothbrushes are clinically solid but shed nylon bristle microplastics like every electric brush.",
+    "evidence": "Plastic hot water path (espresso); 2024 Avent microplastic class action; bristle microplastic shedding",
+    "alternative": "Flair Classic espresso; Evenflo Classic Glass or MAM Feel Good Glass bottles",
     "sources": [
+      "how-to-enjoy-coffee-without-plastic.html",
       "top-100-baby-kids-products-amazon.html",
-      "best-non-toxic-baby-bottles.html"
-    ]
-  },
-  {
-    "id": "philips-sonicare",
-    "brand": "Philips Sonicare",
-    "category": "Electric toothbrush",
-    "stance": "careful",
-    "reason": "Electric brushing has strong clinical evidence for plaque removal, and Sonicare has a clean safety record in the US with no CPSC recall of any Sonicare toothbrush on file. The tradeoff is that the handle and heads are plastic and the nylon bristles shed microplastic particles into the mouth during brushing, a limitation shared by every electric toothbrush on the market. If you use one, buy genuine replacement heads only, since counterfeit Sonicare heads made with inferior materials and bristles that fall out have been sold widely on marketplaces.",
-    "evidence": "A 2025 Microchemical Journal study found commercial toothbrush bristles release roughly 30 to 120 microplastic particles per brushing session",
-    "alternative": "",
-    "aliases": [
-      "Sonicare"
+      "best-non-toxic-baby-bottles.html",
+      "https://www.cpsc.gov/manufacturer/philips",
+      "https://www.sciencedirect.com/science/article/abs/pii/S0026265X2502034X"
     ],
     "cautions": [
       "Counterfeit brush heads are common on marketplaces and use inferior plastics with bristles that detach; buy heads from Philips or an authorized retailer."
     ],
-    "sources": [
-      "https://www.cpsc.gov/manufacturer/philips",
-      "https://www.sciencedirect.com/science/article/abs/pii/S0026265X2502034X"
+    "aliases": [
+      "Avent",
+      "Philips Avent",
+      "Sonicare",
+      "Philips Sonicare"
+    ],
+    "products": [
+      {
+        "name": "Automatic espresso machines",
+        "verdict": "skip",
+        "note": "Plastic reservoir, brew group, and tubing under high heat and pressure. Flair Classic is the clean swap."
+      },
+      {
+        "name": "Avent baby bottles",
+        "verdict": "careful",
+        "note": "June 2024 class action over microplastic release from the polypropylene bottles; the glass line tested 33 ppm lead in painted markings rather than non detect."
+      },
+      {
+        "name": "Sonicare electric toothbrushes",
+        "verdict": "careful",
+        "note": "Strong clinical evidence and a clean US safety record, but the plastic handle and nylon bristles shed microplastic particles during brushing, a limitation shared by every electric brush."
+      }
     ]
   },
   {
@@ -6297,26 +6265,18 @@
   },
   {
     "id": "pukka",
-    "brand": "Pukka",
-    "category": "Tea",
-    "stance": "good",
-    "reason": "Named as a tea brand explicitly labeled plastic-free, avoiding the polypropylene-sealed tea bag problem.",
-    "evidence": "Plastic free tea bags",
-    "alternative": "",
-    "sources": [
-      "kitchen-detox-101.html"
-    ]
-  },
-  {
-    "id": "pukka-herbs",
     "brand": "Pukka Herbs",
     "category": "Tea",
     "stance": "good",
-    "reason": "Featured as a genuinely plastic-free tea brand using plant-based compostable bags.",
+    "reason": "Genuinely plastic free tea, plant based compostable bags sewn with organic cotton instead of polypropylene sealed bags.",
     "evidence": "Plant based, compostable bags sewn with organic cotton",
     "alternative": "",
     "sources": [
+      "kitchen-detox-101.html",
       "how-to-avoid-microplastics-in-tea.html"
+    ],
+    "aliases": [
+      "Pukka"
     ]
   },
   {
@@ -7035,15 +6995,29 @@
   {
     "id": "seventh-generation",
     "brand": "Seventh Generation",
-    "category": "Laundry",
+    "category": "Multi-category",
     "stance": "good",
-    "reason": "EPA Safer Choice plant-based detergent with a fragrance-free option.",
-    "evidence": "EPA Safer Choice, plant-based",
+    "reason": "Clean across both lines we have tested. The detergent is EPA Safer Choice plant based with a fragrance free option, and the diapers are one of the few using totally chlorine free wood pulp with no fragrance or lotion, non detect for PFAS markers, and the widest ordinary retail availability of any clean diaper.",
+    "evidence": "EPA Safer Choice detergent; TCF pulp diapers, non detect organic fluorine (2023 lab screening)",
     "alternative": "",
     "sources": [
-      "top-100-baby-kids-products-amazon.html"
+      "top-100-baby-kids-products-amazon.html",
+      "best-non-toxic-diapers.html",
+      "https://mamavation.com/motherhood/diapers-pfas-forever-chemicals.html"
     ],
-    "buy": "https://www.amazon.com/dp/B07FVX9Z9H?tag=plasticdetox-20"
+    "buy": "https://www.amazon.com/dp/B07FVX9Z9H?tag=plasticdetox-20",
+    "products": [
+      {
+        "name": "Laundry detergent",
+        "verdict": "good",
+        "note": "EPA Safer Choice plant based formula with a fragrance free option."
+      },
+      {
+        "name": "Diapers",
+        "verdict": "good",
+        "note": "Totally chlorine free (oxygen bleached) pulp rather than elemental chlorine free, no fragrance or lotion, non detect organic fluorine inside and outside. About $0.69 per diaper at size 4."
+      }
+    ]
   },
   {
     "id": "shark",
@@ -7136,22 +7110,11 @@
     "brand": "Smartwool",
     "category": "Activewear / socks",
     "stance": "careful",
-    "reason": "Merino socks are treated with the chlorine Hercosett superwash process that sheds synthetic resin; wearing is not a direct health risk but it is not plastic-free.",
+    "reason": "Merino socks are a recommended swap for polyester socks because wool sheds far less plastic in the wash, but Smartwool merino is treated with the chlorine Hercosett superwash process that coats the fiber in a synthetic resin, so it is not fully plastic free. Better than polyester, not as clean as untreated merino.",
     "evidence": "chlorine Hercosett superwash treatment",
     "alternative": "untreated merino (Wool and Prince, Ramblers Way)",
     "sources": [
-      "sustainable-fabrics-that-arent.html"
-    ]
-  },
-  {
-    "id": "smartwool-socks-pick",
-    "brand": "Smartwool (socks pick)",
-    "category": "Socks",
-    "stance": "good",
-    "reason": "Recommended as a merino wool sock swap for polyester socks in the laundry guide because wool sheds no plastic and needs less washing.",
-    "evidence": "merino wool, biodegradable",
-    "alternative": "",
-    "sources": [
+      "sustainable-fabrics-that-arent.html",
       "microplastics-in-clothing-and-laundry.html"
     ]
   },
@@ -7397,7 +7360,7 @@
     "stance": "skip",
     "reason": "One of the four sunscreen brands with the highest benzene contamination in Valisure testing.",
     "evidence": "Highest benzene contamination (Valisure 2021)",
-    "alternative": "Earth Mama Baby SPF 40",
+    "alternative": "California Baby SPF 30+",
     "sources": [
       "clean-products-that-arent.html"
     ]
@@ -7678,7 +7641,7 @@
     "stance": "skip",
     "reason": "Independent third-party lab testing (Lead Safe Mama, June 2025) found the highest lead level of any baby sunscreen tested to date, above Washington State's 1 ppm cosmetics limit, plus the highest cadmium of 31 sunscreens tested, despite its free of harmful chemicals marketing.",
     "evidence": "Lead Safe Mama XRF testing, June 2025: highest lead of any baby sunscreen tested, exceeds WA 1 ppm legal limit; highest cadmium of 31 products. Reported to WA State and FDA.",
-    "alternative": "Earth Mama",
+    "alternative": "California Baby SPF 30+",
     "sources": [
       "https://tamararubin.com/2025/06/thinkbaby-sunscreen-spf-50/"
     ]
@@ -7983,23 +7946,17 @@
     "brand": "Ulta",
     "category": "Personal care",
     "stance": "skip",
-    "reason": "Its 'Conscious Beauty' program faces an active class action alleging products contain ingredients on Ulta's own Made Without List.",
-    "evidence": "October 2025 class action (Garvey v. Ulta) over acrylates, phthalates, aluminum",
+    "reason": "The Conscious Beauty program faces an active nationwide class action, filed October 2025, alleging program products contain acrylates, phthalates, and aluminum, ingredients on Ulta's own Made Without list.",
+    "evidence": "October 2025 class action (Garvey v. Ulta), active",
     "alternative": "Vet products by ingredient list",
     "sources": [
-      "clean-products-that-arent.html"
-    ]
-  },
-  {
-    "id": "ulta-beauty-conscious-beauty",
-    "brand": "Ulta Beauty Conscious Beauty",
-    "category": "Beauty retailer program",
-    "stance": "skip",
-    "reason": "Class action alleges Conscious Beauty program products contain ingredients on Ulta's own banned list.",
-    "evidence": "Nationwide class action filed October 2025; active",
-    "alternative": "",
-    "sources": [
+      "clean-products-that-arent.html",
       "2026-low-tox-year-in-review.html"
+    ],
+    "aliases": [
+      "Ulta Beauty",
+      "Conscious Beauty",
+      "Ulta Beauty Conscious Beauty"
     ]
   },
   {
@@ -8612,21 +8569,55 @@
     ]
   },
   {
-    "id": "honest-diapers",
+    "id": "honest-company",
     "brand": "Honest Company",
-    "category": "Diapers",
+    "category": "Multi-category",
     "stance": "careful",
-    "reason": "The diapers themselves tested non detect for PFAS markers in 2023 independent screening, but the brand has a long record of marketing litigation over natural and plant based labeling, plus unresolved litigation alleging diaper rash despite gentle and hypoallergenic claims.",
-    "evidence": "Non detect organic fluorine (2023 lab screening); multiple mislabeling class actions resolved by settlement with no admission of fault; diaper irritation litigation unresolved as of 2026.",
-    "alternative": "Coterie or HealthyBaby",
+    "reason": "The verdict depends on the product. The diapers and wipes are decent today, PFAS non detect in independent screening, but the record includes a 2017 nationwide wipes mold recall, repeated litigation over natural and plant based marketing, and unresolved diaper irritation claims. The Sensitive diaper rash cream reported over 1,600 ppb lead plus cadmium in 2025 independent testing.",
+    "evidence": ">1,600 ppb lead in diaper cream (LSM); $7.35M and $1.55M greenwashing settlements",
+    "alternative": "Coterie or HealthyBaby diapers; Weleda Calendula Diaper Cream",
     "sources": [
       "best-non-toxic-diapers.html",
       "https://mamavation.com/motherhood/diapers-pfas-forever-chemicals.html",
-      "https://truthinadvertising.org/class-action/honest-companys-natural-claims/"
+      "https://truthinadvertising.org/class-action/honest-companys-natural-claims/",
+      "microplastics-in-cosmetics-and-personal-care.html",
+      "best-non-toxic-baby-wipes.html",
+      "https://www.consumerreports.org/babies-kids/baby-wipes/pfas-in-baby-wipes-safety-a2172742579/",
+      "best-non-toxic-diaper-rash-creams.html",
+      "https://tamararubin.com/2025/12/honest-sensitive-everyday-diaper-rash-cream/",
+      "clean-products-that-arent.html",
+      "low-tox-myths-debunked.html",
+      "top-100-baby-kids-products-amazon.html"
     ],
     "cautions": [
       "Read the ingredient list rather than the adjectives; the natural and plant based claims are the part that has repeatedly been litigated.",
       "Our earlier note claiming PFAS indicators in Honest diapers was incorrect and was corrected in July 2026."
+    ],
+    "aliases": [
+      "Honest",
+      "Honest Beauty"
+    ],
+    "products": [
+      {
+        "name": "Diapers",
+        "verdict": "careful",
+        "note": "Non detect for PFAS markers in 2023 independent screening, but a long marketing litigation record and unresolved diaper irritation claims."
+      },
+      {
+        "name": "Wipes",
+        "verdict": "careful",
+        "note": "Plant based cloth, PFAS non detect in Consumer Reports 2026 testing. The record is the caution: a 2017 nationwide mold recall, a 2022 class action over plant based claims, and $7.35M and $1.55M greenwashing settlements in 2017."
+      },
+      {
+        "name": "Sensitive diaper rash cream",
+        "verdict": "skip",
+        "note": "Reported over 1,600 ppb lead plus cadmium in 2025 independent testing (Lead Safe Mama). Use Weleda Calendula instead."
+      },
+      {
+        "name": "Honest Beauty Hazel Eye Gels",
+        "verdict": "good",
+        "note": "Featured cosmetics pick, distinct from the wipes and cream issues."
+      }
     ]
   },
   {
@@ -8680,20 +8671,6 @@
     "cautions": [
       "Treat pre 2024 reviews and testing as historical. Ownership changes are a normal moment for formulations and suppliers to shift quietly."
     ]
-  },
-  {
-    "id": "seventh-generation-diapers",
-    "brand": "Seventh Generation",
-    "category": "Diapers",
-    "stance": "good",
-    "reason": "One of the few brands using totally chlorine free (oxygen bleached) wood pulp rather than elemental chlorine free, with no fragrance or lotion, non detect for PFAS markers, and the widest ordinary retail availability of any clean diaper.",
-    "evidence": "TCF pulp; non detect organic fluorine inside and outside (2023 lab screening). About $0.69 per diaper at size 4 on Amazon, so availability rather than price is the advantage.",
-    "alternative": "",
-    "sources": [
-      "best-non-toxic-diapers.html",
-      "https://mamavation.com/motherhood/diapers-pfas-forever-chemicals.html"
-    ],
-    "buy": "https://www.amazon.com/dp/B084H4H6HR?tag=plasticdetox-20"
   },
   {
     "id": "grovia",
@@ -8757,19 +8734,6 @@
     "stance": "careful",
     "reason": "Marketed as a natural diaper but returned organic fluorine in 2023 independent screening.",
     "evidence": "30 ppm organic fluorine inside (2023 lab screening).",
-    "alternative": "Seventh Generation, Coterie, or HealthyBaby",
-    "sources": [
-      "best-non-toxic-diapers.html",
-      "https://mamavation.com/motherhood/diapers-pfas-forever-chemicals.html"
-    ]
-  },
-  {
-    "id": "attitude-diapers",
-    "brand": "ATTITUDE",
-    "category": "Diapers",
-    "stance": "careful",
-    "reason": "The Eco diaper returned the highest disposable organic fluorine result among eco positioned brands in 2023 independent screening, despite the brand's clean positioning elsewhere.",
-    "evidence": "Attitude Eco diaper: 60 ppm organic fluorine inside (2023 lab screening).",
     "alternative": "Seventh Generation, Coterie, or HealthyBaby",
     "sources": [
       "best-non-toxic-diapers.html",
@@ -9304,19 +9268,6 @@
     ]
   },
   {
-    "id": "mam-bottles",
-    "brand": "MAM (bottles)",
-    "category": "Baby bottles",
-    "stance": "good",
-    "reason": "The Feel Good glass bottle showed no detectable lead in XRF screening of 32 bottles, and MAM is not named in the 2024 microplastic litigation. Its plastic bottles are still polypropylene.",
-    "evidence": "No detectable lead in glass bottle (XRF screening); non detect for BPA, lead, phthalates (Consumer Reports)",
-    "alternative": "",
-    "sources": [
-      "best-non-toxic-baby-bottles.html"
-    ],
-    "buy": "https://www.amazon.com/dp/B0D144B5QY?tag=plasticdetox-20"
-  },
-  {
     "id": "pigeon",
     "brand": "Pigeon",
     "category": "Baby bottles",
@@ -9660,45 +9611,6 @@
     "alternative": "",
     "sources": [
       "best-non-toxic-baby-wipes.html"
-    ]
-  },
-  {
-    "id": "honest-wipes",
-    "brand": "Honest Company (wipes)",
-    "category": "Wipes",
-    "stance": "careful",
-    "reason": "Today's wipe is decent: plant based cloth, PFAS non detect in Consumer Reports 2026 testing, and a spot on its cleaner list in 2023. The record is the caution: a 2017 nationwide mold recall of wipes, and repeated litigation over natural marketing settled without admission of fault.",
-    "evidence": "2017 mold recall; PFAS non detect today",
-    "alternative": "Coterie The Wipe",
-    "sources": [
-      "best-non-toxic-baby-wipes.html",
-      "https://www.consumerreports.org/babies-kids/baby-wipes/pfas-in-baby-wipes-safety-a2172742579/"
-    ]
-  },
-  {
-    "id": "honest-diaper-rash-cream",
-    "brand": "Honest Company (diaper rash cream)",
-    "category": "Diaper cream",
-    "stance": "skip",
-    "reason": "The Sensitive marketed zinc cream reported over 1,600 ppb lead plus cadmium in 2025 independent testing.",
-    "evidence": ">1,600 ppb lead (LSM)",
-    "alternative": "Weleda Calendula Diaper Cream",
-    "sources": [
-      "best-non-toxic-diaper-rash-creams.html",
-      "https://tamararubin.com/2025/12/honest-sensitive-everyday-diaper-rash-cream/"
-    ]
-  },
-  {
-    "id": "burts-bees-baby-diaper-ointment",
-    "brand": "Burt's Bees Baby (diaper ointment)",
-    "category": "Diaper cream",
-    "stance": "skip",
-    "reason": "The 40% zinc diaper ointment reported over 2,500 ppb lead plus cadmium in 2025 independent testing, and the parent brand faces PFAS related class action litigation over natural claims in its cosmetics line. The organic cotton baby clothing line is a separate, unaffected category.",
-    "evidence": ">2,500 ppb lead (LSM)",
-    "alternative": "Weleda Calendula Diaper Cream",
-    "sources": [
-      "best-non-toxic-diaper-rash-creams.html",
-      "https://tamararubin.com/2025/12/burts-bees-baby-diaper-ointment/"
     ]
   },
   {
