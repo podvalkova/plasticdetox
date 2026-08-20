@@ -6583,13 +6583,35 @@
   {
     "id": "redmond-real-salt",
     "brand": "Redmond Real Salt",
-    "category": "Salt / food",
-    "stance": "good",
-    "reason": "Recommended mined salt that tests much cleaner for microplastics than evaporated sea salt.",
-    "evidence": "Tests much cleaner for microplastics than sea salt",
-    "alternative": "",
+    "category": "Salt / electrolytes",
+    "stance": "careful",
+    "reason": "Mined rather than sea evaporated, so it is low in microplastics, but independent laboratories have measured roughly 250 to 290 ppb lead and 36 to 91 ppb arsenic in Real Salt. That carries straight into Re-Lyte, the brand electrolyte mix built on it.",
+    "evidence": "Roughly 250 to 290 ppb lead and 36 to 91 ppb arsenic (independent lab testing); Re-Lyte non detect for total fluorine",
+    "alternative": "Diamond Crystal kosher salt for cooking; GOODONYA or TRIORAL for electrolytes",
     "sources": [
-      "low-tox-myths-debunked.html"
+      "microplastics-in-salt-and-pantry-staples.html",
+      "best-non-toxic-electrolytes.html",
+      "low-tox-myths-debunked.html",
+      "https://tamararubin.com/2024/07/independent-3rd-party-laboratory-testing-confirms-redmond-real-salt-tests-positive-for-unsafe-levels-of-lead-and-arsenic-july-2024"
+    ],
+    "aliases": [
+      "Re-Lyte",
+      "Relyte",
+      "Redmond",
+      "Redmond Re-Lyte",
+      "Real Salt"
+    ],
+    "products": [
+      {
+        "name": "Real Salt",
+        "verdict": "careful",
+        "note": "Low in microplastics because it is mined, but independent testing measured roughly 250 to 290 ppb lead and 36 to 91 ppb arsenic. Not our pick for a daily cooking salt."
+      },
+      {
+        "name": "Re-Lyte Electrolyte Mix",
+        "verdict": "careful",
+        "note": "Non detect for total fluorine in 2023 independent screening and a short ingredient list, but its mineral base is Real Salt, so it inherits that lead and arsenic result."
+      }
     ]
   },
   {
@@ -7789,11 +7811,30 @@
     "brand": "Trace Minerals",
     "category": "Supplements",
     "stance": "skip",
-    "reason": "Mega-Mag was flagged by Labdoor (grade D+) for concerning arsenic, and sister products tested positive for lead, cadmium and arsenic (Lead Safe Mama).",
-    "evidence": "Independent testing flagged arsenic and heavy metals",
-    "alternative": "Klean Athlete or Thorne magnesium",
+    "reason": "Mega-Mag was flagged by Labdoor (grade D+) for concerning arsenic, and sister products tested positive for lead, cadmium and arsenic (Lead Safe Mama). Its PowerPak electrolyte stick also returned 23 ppm total fluorine, an indicator of PFAS, in 2023 independent screening.",
+    "evidence": "Independent testing flagged arsenic and heavy metals; PowerPak 23 ppm total fluorine",
+    "alternative": "GOODONYA or TRIORAL for electrolytes; Klean Athlete or Thorne magnesium",
     "sources": [
-      "supplements-and-microplastics.html"
+      "supplements-and-microplastics.html",
+      "best-non-toxic-electrolytes.html",
+      "https://mamavation.com/product-investigations/pfas-forever-chemicals-fluoride-powdered-electrolytes.html"
+    ],
+    "aliases": [
+      "Trace Minerals Research",
+      "PowerPak",
+      "Power Pak"
+    ],
+    "products": [
+      {
+        "name": "Mega-Mag",
+        "verdict": "skip",
+        "note": "Labdoor grade D+ for arsenic; sister products tested positive for lead, cadmium and arsenic."
+      },
+      {
+        "name": "PowerPak Electrolyte Stamina",
+        "verdict": "skip",
+        "note": "Returned 23 ppm total fluorine in 2023 EPA certified lab screening, an indicator of PFAS forever chemicals."
+      }
     ]
   },
   {
@@ -9810,6 +9851,348 @@
     "alternative": "",
     "sources": [
       "https://mabelgreenstudio.co.uk"
+    ]
+  },
+  {
+    "id": "goodonya",
+    "brand": "GOODONYA",
+    "category": "Electrolytes",
+    "stance": "good",
+    "reason": "Our top pick for electrolytes. Six certified organic ingredients, BioChecked Glyphosate Residue Free, and non detect for total fluorine in 2023 independent screening. Sold as a bulk resealable bag rather than dozens of single use stick packs, which is the meaningful packaging difference in this category.",
+    "evidence": "Non detect total fluorine; USDA Organic; BioChecked Glyphosate Residue Free; bulk bag format",
+    "alternative": "",
+    "sources": [
+      "best-non-toxic-electrolytes.html",
+      "https://mamavation.com/product-investigations/pfas-forever-chemicals-fluoride-powdered-electrolytes.html"
+    ],
+    "aliases": [
+      "Good Onya",
+      "GoodOnya Hydrate",
+      "GOODONYA Hydrate"
+    ],
+    "buy": "https://www.amazon.com/dp/B08TP724D2?tag=plasticdetox-20"
+  },
+  {
+    "id": "cure-hydration",
+    "brand": "Cure Hydration",
+    "category": "Electrolytes",
+    "stance": "good",
+    "reason": "Coconut water base with no artificial sweeteners or colors, non detect for total fluorine in 2023 independent screening, and per batch certificates of analysis published for lead, cadmium, arsenic and mercury. Non GMO Project Verified and a certified B Corporation.",
+    "evidence": "Non detect total fluorine; per batch heavy metals COAs published",
+    "alternative": "",
+    "sources": [
+      "best-non-toxic-electrolytes.html",
+      "https://mamavation.com/product-investigations/pfas-forever-chemicals-fluoride-powdered-electrolytes.html",
+      "https://www.curehydration.com/pages/our-standards"
+    ],
+    "aliases": [
+      "Cure",
+      "Cure Hydrating Electrolyte Mix"
+    ],
+    "buy": "https://www.amazon.com/dp/B07RWF8L2V?tag=plasticdetox-20"
+  },
+  {
+    "id": "trioral",
+    "brand": "TRIORAL",
+    "category": "Electrolytes",
+    "stance": "good",
+    "reason": "The World Health Organization low osmolarity oral rehydration formula in four pharmaceutical grade ingredients, with no flavors, sweeteners, colors, or unrefined sea salt. Non detect for total fluorine. The cleanest option in the category for illness, heat, and heavy sweating.",
+    "evidence": "Non detect total fluorine; WHO low osmolarity ORS formula; refined mineral salts, no sea salt",
+    "alternative": "",
+    "sources": [
+      "best-non-toxic-electrolytes.html",
+      "https://mamavation.com/product-investigations/pfas-forever-chemicals-fluoride-powdered-electrolytes.html"
+    ],
+    "aliases": [
+      "Tri Oral",
+      "Trioral ORS",
+      "Oral Rehydration Salts"
+    ],
+    "buy": "https://www.amazon.com/dp/B0BT2TW1WG?tag=plasticdetox-20"
+  },
+  {
+    "id": "lmnt",
+    "brand": "LMNT",
+    "category": "Electrolytes",
+    "stance": "careful",
+    "reason": "Non detect for total fluorine, but it settled a 2021 Proposition 65 lead action over its Recharge Orange Salt and Chocolate Salt mixes, its Raw Unflavored tested at 27 ppb lead in November 2024 independent testing, and three 2025 class actions allege 300 to 450 mg of maltodextrin per serving sits behind a natural flavors listing on an all natural, keto and paleo marketed product. The widely shared claim that it carried seven times the legal lead limit came from a health app that conceded a calculation error, and LMNT sued over it in 2026.",
+    "evidence": "27 ppb lead (Lead Safe Mama, Nov 2024); Prop 65 consent judgment 2021; three 2025 maltodextrin class actions; 1,000 mg sodium per stick",
+    "alternative": "GOODONYA Organic Hydration or TRIORAL",
+    "sources": [
+      "best-non-toxic-electrolytes.html",
+      "https://mamavation.com/product-investigations/pfas-forever-chemicals-fluoride-powdered-electrolytes.html",
+      "https://tamararubin.com/2024/11/lmnt-electrolyte-drink-mix",
+      "https://oag.ca.gov/prop65/60-day-notice-2021-00819"
+    ],
+    "aliases": [
+      "Element",
+      "Drink LMNT",
+      "LMNT Recharge"
+    ],
+    "products": [
+      {
+        "name": "Recharge Electrolyte Drink Mix",
+        "verdict": "careful",
+        "note": "Orange Salt and Chocolate Salt were the products named in the 2021 Proposition 65 lead action, settled with an injunction capping daily lead exposure at 0.5 micrograms without a warning."
+      },
+      {
+        "name": "Raw Unflavored",
+        "verdict": "careful",
+        "note": "Tested at 27 ppb lead in November 2024 independent laboratory testing, with cadmium, arsenic and mercury non detect. Roughly 0.16 micrograms per 6 gram packet."
+      }
+    ]
+  },
+  {
+    "id": "skratch-labs",
+    "brand": "Skratch Labs",
+    "category": "Electrolytes",
+    "stance": "careful",
+    "reason": "One of the better formulas in sports nutrition, real fruit and cane sugar with nothing synthetic, and non detect for total fluorine. But the Environmental Research Center filed a Proposition 65 notice in May 2022 and a complaint in September 2022 alleging lead, mercury and PFOA in Skratch dietary supplements, settled in August 2023 with reformulation limits.",
+    "evidence": "Non detect total fluorine; Prop 65 settlement August 2023 covering lead, mercury and PFOA",
+    "alternative": "GOODONYA Organic Hydration or TRIORAL",
+    "sources": [
+      "best-non-toxic-electrolytes.html",
+      "https://mamavation.com/product-investigations/pfas-forever-chemicals-fluoride-powdered-electrolytes.html",
+      "https://oag.ca.gov/prop65/60-Day-Notice-2022-01055"
+    ],
+    "aliases": [
+      "Skratch"
+    ]
+  },
+  {
+    "id": "ultima-replenisher",
+    "brand": "Ultima Replenisher",
+    "category": "Electrolytes",
+    "stance": "careful",
+    "reason": "Non detect for total fluorine, zero sugar and stevia sweetened, but a California class action alleges its raspberry and watermelon flavors contain DL malic acid, the synthetic petrochemical derived form, while the packaging claims natural flavoring.",
+    "evidence": "Non detect total fluorine; California class action over DL malic acid behind a naturally flavored claim",
+    "alternative": "GOODONYA Organic Hydration or Cure Hydration",
+    "sources": [
+      "best-non-toxic-electrolytes.html",
+      "https://mamavation.com/product-investigations/pfas-forever-chemicals-fluoride-powdered-electrolytes.html",
+      "https://www.classaction.org/news/ultima-electrolyte-powder-not-as-naturally-flavored-as-advertised-class-action-says"
+    ],
+    "aliases": [
+      "Ultima"
+    ]
+  },
+  {
+    "id": "liquid-iv",
+    "brand": "Liquid I.V.",
+    "category": "Electrolytes",
+    "stance": "careful",
+    "reason": "Non detect for total fluorine, so this is not a contamination call. It is the run of consumer class actions over labeling: an August 2026 suit alleging the Sugar Free line is sweetened with 4 to 5 grams of allulose listed first by weight, an earlier suit over preservative free claims, and one over slack filled packets.",
+    "evidence": "Non detect total fluorine; stacked false advertising class actions (2026 allulose, preservatives, slack fill)",
+    "alternative": "Cure Hydration or TRIORAL",
+    "sources": [
+      "best-non-toxic-electrolytes.html",
+      "https://mamavation.com/product-investigations/pfas-forever-chemicals-fluoride-powdered-electrolytes.html",
+      "https://www.classaction.org/news/sugar-free-liquid-i.v.-electrolyte-drink-mixes-contain-sugar-class-action-lawsuit-claims"
+    ],
+    "aliases": [
+      "Liquid IV",
+      "LiquidIV",
+      "Liquid I V"
+    ]
+  },
+  {
+    "id": "nuun",
+    "brand": "Nuun",
+    "category": "Electrolytes",
+    "stance": "careful",
+    "reason": "Nuun Hydration Sport Tropical returned 18 ppm total fluorine in 2023 independent screening, an indicator of PFAS, though repeat testing on the same product came back non detect. The tablets also ship in a rigid plastic tube.",
+    "evidence": "18 ppm total fluorine on first test, non detect on retest; plastic tube packaging",
+    "alternative": "Cure Hydration or TRIORAL",
+    "sources": [
+      "best-non-toxic-electrolytes.html",
+      "https://mamavation.com/product-investigations/pfas-forever-chemicals-fluoride-powdered-electrolytes.html",
+      "https://mamavation.com/food/nuun-hydration-sport-electrolyte-tabs-pfas-forever-chemicals-lab-reports.html"
+    ],
+    "aliases": [
+      "Nuun Sport",
+      "Nuun Hydration"
+    ]
+  },
+  {
+    "id": "flavcity",
+    "brand": "FlavCity",
+    "category": "Electrolytes",
+    "stance": "skip",
+    "reason": "Its grape electrolyte drink mix returned the highest total fluorine results in Mamavation's 2023 electrolyte study, reading 277, 227, 65, 17 and 11 ppm across repeat tests. Total fluorine is a screening indicator rather than a specific PFAS identification, but these were the worst numbers in a 40 product panel, from a brand built on clean label credibility.",
+    "evidence": "Up to 277 ppm total fluorine across repeat tests, highest in a 40 product panel",
+    "alternative": "GOODONYA Organic Hydration or Cure Hydration",
+    "sources": [
+      "best-non-toxic-electrolytes.html",
+      "https://mamavation.com/product-investigations/pfas-forever-chemicals-fluoride-powdered-electrolytes.html"
+    ],
+    "aliases": [
+      "Flav City"
+    ]
+  },
+  {
+    "id": "paleovalley",
+    "brand": "Paleovalley",
+    "category": "Electrolytes",
+    "stance": "careful",
+    "reason": "Both flavors of Essential Electrolytes returned detectable total fluorine in 2023 independent screening, 55 ppm watermelon and 47 ppm orange, an indicator of PFAS forever chemicals. Two detections on two products is a harder signal to dismiss than a single hit.",
+    "evidence": "55 ppm watermelon and 47 ppm orange total fluorine",
+    "alternative": "GOODONYA Organic Hydration or TRIORAL",
+    "sources": [
+      "best-non-toxic-electrolytes.html",
+      "https://mamavation.com/product-investigations/pfas-forever-chemicals-fluoride-powdered-electrolytes.html"
+    ],
+    "aliases": [
+      "Paleo Valley"
+    ]
+  },
+  {
+    "id": "jigsaw-health",
+    "brand": "Jigsaw Health",
+    "category": "Supplements",
+    "stance": "careful",
+    "reason": "Its Adrenal Cocktail with Whole Food Vitamin C returned 89 ppm total fluorine in 2023 independent screening, an indicator of PFAS forever chemicals, the third highest result in a 40 product electrolyte panel.",
+    "evidence": "89 ppm total fluorine (Adrenal Cocktail)",
+    "alternative": "GOODONYA Organic Hydration or Cure Hydration",
+    "sources": [
+      "best-non-toxic-electrolytes.html",
+      "https://mamavation.com/product-investigations/pfas-forever-chemicals-fluoride-powdered-electrolytes.html"
+    ],
+    "aliases": [
+      "Jigsaw"
+    ]
+  },
+  {
+    "id": "plexus",
+    "brand": "Plexus",
+    "category": "Electrolytes",
+    "stance": "skip",
+    "reason": "Plexus Hydrate returned detectable total fluorine on both rounds of 2023 independent screening, 17 ppm and 10 ppm, an indicator of PFAS forever chemicals. Repeat detection is the pattern we weight most.",
+    "evidence": "17 ppm and 10 ppm total fluorine on two separate rounds",
+    "alternative": "GOODONYA Organic Hydration or Cure Hydration",
+    "sources": [
+      "best-non-toxic-electrolytes.html",
+      "https://mamavation.com/product-investigations/pfas-forever-chemicals-fluoride-powdered-electrolytes.html"
+    ]
+  },
+  {
+    "id": "keto-k1000",
+    "brand": "Keto K1000",
+    "category": "Electrolytes",
+    "stance": "neutral",
+    "reason": "Returned non detect for total fluorine in 2023 independent screening, which puts it in the clean tier on PFAS. We have not featured it because we found no published heavy metals testing on the product.",
+    "evidence": "Non detect total fluorine; no published heavy metals data found",
+    "alternative": "GOODONYA Organic Hydration or Cure Hydration",
+    "sources": [
+      "best-non-toxic-electrolytes.html",
+      "https://mamavation.com/product-investigations/pfas-forever-chemicals-fluoride-powdered-electrolytes.html"
+    ]
+  },
+  {
+    "id": "nectar-hydration",
+    "brand": "Nectar Hydration",
+    "category": "Electrolytes",
+    "stance": "neutral",
+    "reason": "Its Essential Daily Hydration mix returned non detect for total fluorine in 2023 independent screening. We have not featured it because we found no published heavy metals testing on the product.",
+    "evidence": "Non detect total fluorine; no published heavy metals data found",
+    "alternative": "GOODONYA Organic Hydration or Cure Hydration",
+    "sources": [
+      "best-non-toxic-electrolytes.html",
+      "https://mamavation.com/product-investigations/pfas-forever-chemicals-fluoride-powdered-electrolytes.html"
+    ],
+    "aliases": [
+      "Nectar"
+    ]
+  },
+  {
+    "id": "earthley",
+    "brand": "Earthley Wellness",
+    "category": "Electrolytes",
+    "stance": "neutral",
+    "reason": "Its electrolyte powder returned non detect for total fluorine in 2023 independent screening. We have not featured it because it is sold direct rather than through the retailers we link, and we found no published heavy metals testing.",
+    "evidence": "Non detect total fluorine; direct to consumer only",
+    "alternative": "GOODONYA Organic Hydration",
+    "sources": [
+      "best-non-toxic-electrolytes.html",
+      "https://mamavation.com/product-investigations/pfas-forever-chemicals-fluoride-powdered-electrolytes.html"
+    ],
+    "aliases": [
+      "Earthley"
+    ]
+  },
+  {
+    "id": "dripdrop",
+    "brand": "DripDrop",
+    "category": "Electrolytes",
+    "stance": "neutral",
+    "reason": "Returned non detect for total fluorine in 2023 independent screening, so it clears the PFAS screen. It is a rehydration formula rather than a daily sipper, and we found no published heavy metals testing on it.",
+    "evidence": "Non detect total fluorine; no published heavy metals data found",
+    "alternative": "TRIORAL for the same rehydration job with four ingredients",
+    "sources": [
+      "best-non-toxic-electrolytes.html",
+      "https://mamavation.com/product-investigations/pfas-forever-chemicals-fluoride-powdered-electrolytes.html"
+    ],
+    "aliases": [
+      "Drip Drop",
+      "DripDrop ORS"
+    ]
+  },
+  {
+    "id": "pedialyte",
+    "brand": "Pedialyte",
+    "category": "Electrolytes",
+    "stance": "neutral",
+    "reason": "Its Advanced Care electrolyte powder returned non detect for total fluorine in 2023 independent screening. It is a clinically established rehydration product, but the formulas use artificial sweeteners and, in several flavors, artificial colors, which is why we point to a plain WHO formula instead.",
+    "evidence": "Non detect total fluorine; artificial sweeteners and colors in several flavors",
+    "alternative": "TRIORAL Oral Rehydration Salts",
+    "sources": [
+      "best-non-toxic-electrolytes.html",
+      "https://mamavation.com/product-investigations/pfas-forever-chemicals-fluoride-powdered-electrolytes.html"
+    ]
+  },
+  {
+    "id": "gatorade",
+    "brand": "Gatorade",
+    "category": "Electrolytes",
+    "stance": "skip",
+    "reason": "Gatorade Zero powder returned non detect for total fluorine, so this is not a contamination call. It is that the line runs on artificial colors and synthetic sweeteners with no function beyond appearance and palatability, and the bottled versions reintroduce the single largest plastic source in a hydration drink.",
+    "evidence": "Non detect total fluorine; artificial colors and synthetic sweeteners; PET bottled ready to drink line",
+    "alternative": "GOODONYA Organic Hydration or Skratch Labs for sport",
+    "sources": [
+      "best-non-toxic-electrolytes.html",
+      "https://mamavation.com/product-investigations/pfas-forever-chemicals-fluoride-powdered-electrolytes.html"
+    ]
+  },
+  {
+    "id": "prime-hydration",
+    "brand": "Prime Hydration",
+    "category": "Electrolytes",
+    "stance": "careful",
+    "reason": "Prime Hydration Sticks returned non detect for total fluorine in 2023 independent screening. Our reservation is the format and the marketing: synthetic sweeteners in a product aimed at children, and a ready to drink line in PET bottles.",
+    "evidence": "Non detect total fluorine; synthetic sweeteners; PET bottled ready to drink line",
+    "alternative": "Cure Hydration or GOODONYA Organic Hydration",
+    "sources": [
+      "best-non-toxic-electrolytes.html",
+      "https://mamavation.com/product-investigations/pfas-forever-chemicals-fluoride-powdered-electrolytes.html"
+    ],
+    "aliases": [
+      "Prime"
+    ]
+  },
+  {
+    "id": "emergen-c",
+    "brand": "Emergen-C",
+    "category": "Electrolytes",
+    "stance": "neutral",
+    "reason": "Its Hydration Plus electrolyte replenishment powder returned non detect for total fluorine in 2023 independent screening. It is a vitamin C drink mix first and an electrolyte second, and we found no published heavy metals testing on it.",
+    "evidence": "Non detect total fluorine; no published heavy metals data found",
+    "alternative": "GOODONYA Organic Hydration or TRIORAL",
+    "sources": [
+      "best-non-toxic-electrolytes.html",
+      "https://mamavation.com/product-investigations/pfas-forever-chemicals-fluoride-powdered-electrolytes.html"
+    ],
+    "aliases": [
+      "Emergen C",
+      "EmergenC"
     ]
   }
 ]
