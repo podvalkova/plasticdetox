@@ -2014,151 +2014,12 @@
       overflow: hidden;
       position: relative;
     }
-    .b-quiz-head {
-      grid-column: 1 / -1;
-      padding: 1.1rem 1.5rem;
-      border-bottom: 1px solid var(--border);
-      display: flex; align-items: center; gap: 1rem;
-      background: #fafafa;
-    }
     .b-quiz-title {
       font-size: 0.82rem;
       font-weight: 600;
       color: var(--text-muted);
       font-family: 'JetBrains Mono', ui-monospace, monospace;
       letter-spacing: -0.01em;
-    }
-    .b-quiz-progress {
-      flex: 1; height: 4px;
-      background: var(--border);
-      border-radius: 4px;
-      overflow: hidden;
-    }
-    .b-quiz-progress span {
-      display: block; height: 100%;
-      background: var(--accent);
-      border-radius: 4px;
-    }
-    .b-quiz-body { padding: 2rem 1.75rem; }
-    .b-quiz-cat {
-      font-size: 0.72rem; font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--accent-dark);
-      margin-bottom: 0.75rem;
-    }
-    .b-quiz-q {
-      font-size: 1.5rem;
-      font-weight: 700;
-      line-height: 1.25;
-      letter-spacing: -0.015em;
-      margin-bottom: 1.5rem;
-      text-wrap: balance;
-    }
-    .b-quiz-answers {
-      display: flex; gap: 0.65rem;
-      margin-bottom: 1.25rem;
-    }
-    .b-ans {
-      flex: 1;
-      padding: 0.85rem 0;
-      border: 1.5px solid var(--border);
-      background: #fff;
-      border-radius: 12px;
-      font-family: inherit;
-      font-size: 0.95rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .b-ans:hover { border-color: var(--text); }
-    .b-ans-selected.b-ans-yes { border-color: var(--red); color: var(--red); background: rgba(239,68,68,0.05); }
-    .b-ans-selected.b-ans-orange { border-color: var(--orange); color: var(--orange); background: rgba(245,158,11,0.05); }
-    .b-ans-selected.b-ans-no { border-color: var(--accent); color: var(--accent-dark); background: var(--accent-light); }
-
-    .b-quiz-feedback {
-      background: var(--accent-light);
-      border-radius: 12px;
-      padding: 1rem 1.1rem;
-      margin-bottom: 1.25rem;
-      border-left: 3px solid var(--accent);
-    }
-    .b-quiz-feedback-tag {
-      font-size: 0.68rem; font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--accent-dark);
-      margin-bottom: 0.35rem;
-    }
-    .b-quiz-feedback p {
-      font-size: 0.88rem;
-      line-height: 1.5;
-      color: var(--text);
-    }
-    .b-quiz-cta {
-      width: 100%;
-      padding: 1rem;
-      background: var(--text);
-      color: #fff;
-      border: none;
-      border-radius: 12px;
-      font-family: inherit;
-      font-size: 0.98rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    .b-quiz-cta:hover { background: var(--accent-dark); }
-
-    .b-quiz-sidecar {
-      background: linear-gradient(180deg, #fafafa 0%, #f3f0ff 100%);
-      border-left: 1px solid var(--border);
-      padding: 1.75rem 1.25rem;
-      display: flex; flex-direction: column;
-      align-items: center;
-    }
-    .b-sidecar-num {
-      font-size: 3rem;
-      font-weight: 800;
-      letter-spacing: -0.05em;
-      color: var(--accent-dark);
-      line-height: 1;
-    }
-    .b-sidecar-lbl {
-      font-size: 0.72rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--text-muted);
-      font-weight: 600;
-      margin-top: 0.35rem;
-      text-align: center;
-    }
-    .b-sidecar-rule {
-      width: 32px; height: 2px;
-      background: var(--accent);
-      margin: 1.25rem 0;
-    }
-    .b-sidecar-cats {
-      display: flex; flex-direction: column;
-      gap: 0.5rem;
-      align-self: stretch;
-    }
-    .b-sc-cat {
-      display: flex; align-items: center;
-      gap: 0.5rem;
-      font-size: 0.78rem;
-      color: var(--text-muted);
-    }
-    .b-sc-cat.b-sc-active { color: var(--text); font-weight: 600; }
-    .b-sc-dot {
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--border);
-      flex-shrink: 0;
-    }
-    .b-sc-active .b-sc-dot {
-      background: var(--accent);
-      box-shadow: 0 0 0 3px var(--accent-light);
     }
 
     /* Browse --------------------------------------------- */
@@ -2452,32 +2313,7 @@
       .b-trust-item { font-size: 0.85rem; }
 
       .b-quiz { grid-template-columns: 1fr; border-radius: 16px; }
-      .b-quiz-head { padding: 0.9rem 1rem; }
       .b-quiz-title { font-size: 0.75rem; }
-      .b-quiz-body { padding: 1.5rem 1.25rem; }
-      .b-quiz-q { font-size: 1.2rem; margin-bottom: 1.25rem; }
-      .b-quiz-answers { flex-direction: column; gap: 0.5rem; }
-      .b-ans { padding: 0.9rem 0; }
-      .b-quiz-feedback p { font-size: 0.85rem; }
-      .b-quiz-sidecar {
-        order: -1;
-        border-left: none;
-        border-bottom: 1px solid var(--border);
-        flex-direction: row;
-        align-items: center;
-        padding: 1rem 1.25rem;
-        gap: 1rem;
-      }
-      .b-sidecar-num { font-size: 2rem; }
-      .b-sidecar-lbl { margin-top: 0; text-align: left; }
-      .b-sidecar-rule { width: 1px; height: 28px; margin: 0; }
-      .b-sidecar-cats {
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: 0.5rem 1rem;
-        flex: 1;
-      }
-      .b-sc-cat { font-size: 0.72rem; }
 
       .b-browse { padding: 3rem 1.25rem 2rem; }
       .b-browse-h2 { font-size: 1.85rem; }
@@ -2589,11 +2425,6 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
             <span>No sponsored placements or paid inclusion</span>
           </div>
-        </div>
-        <div id="resume-banner" style="display:none;margin-top:1.75rem;padding:1rem 1.25rem;background:var(--surface);border:1px solid var(--border);border-radius:12px;max-width:460px;">
-          <p style="font-size:0.9rem;margin-bottom:0.6rem;color:var(--text);">You have saved results from a previous quiz.</p>
-          <button class="btn-primary" onclick="resumeResults()" style="font-size:0.85rem;padding:0.55rem 1.4rem;margin-right:0.4rem;">View My Results</button>
-          <button onclick="clearSavedResults();document.getElementById('resume-banner').style.display='none';" style="font-size:0.85rem;padding:0.55rem 1.4rem;background:none;border:1px solid var(--border);border-radius:60px;color:var(--text-muted);cursor:pointer;font-family:inherit;">Dismiss</button>
         </div>
       </div>
 
@@ -3712,28 +3543,6 @@
       if (window.gtag) { gtag("event", "newsletter_signup", { method: "homepage_bottom", signup_source: source }); }
     }
 
-    let heroTeaserAnswer = null;
-    function heroAnswer(ans) {
-      heroTeaserAnswer = ans;
-      document.querySelectorAll('#b-quiz-answers .b-ans').forEach(btn => {
-        btn.classList.remove('b-ans-selected', 'b-ans-yes', 'b-ans-orange', 'b-ans-no');
-      });
-      const selected = document.querySelector(`#b-quiz-answers .b-ans[data-ans="${ans}"]`);
-      if (selected) {
-        selected.classList.add('b-ans-selected');
-        if (ans === 'yes') selected.classList.add('b-ans-yes');
-        else if (ans === 'sometimes') selected.classList.add('b-ans-orange');
-        else selected.classList.add('b-ans-no');
-      }
-      document.getElementById('b-quiz-feedback').style.display = 'block';
-      const num = document.getElementById('b-sidecar-num');
-      if (ans === 'yes') num.textContent = '3';
-      else if (ans === 'sometimes') num.textContent = '1';
-      else num.textContent = '0';
-      document.getElementById('b-quiz-cta').textContent = 'Continue with full quiz →';
-      if (window.gtag) gtag('event', 'hero_quiz_teaser_answer', { answer: ans });
-    }
-
     function nlSubscribeHero() {
       const email = document.getElementById("nl-email-hero").value.trim();
       const msg = document.getElementById("nl-msg-hero");
@@ -4398,27 +4207,6 @@
       answeredCount = 0;
       swaps = [];
       answerHistory = [];
-
-      // If user answered the hero teaser (Big 5 → Q1), record it and advance to Q2.
-      if (heroTeaserAnswer) {
-        const cat = categories[0];
-        const q = cat.questions[0];
-        const ans = heroTeaserAnswer;
-        const isBad = q.reverse
-          ? (ans === "no" || ans === "sometimes")
-          : (ans === "yes" || ans === "sometimes");
-        const score = q.reverse
-          ? (ans === "no" ? 1 : ans === "sometimes" ? 0.5 : 0)
-          : (ans === "yes" ? 1 : ans === "sometimes" ? 0.5 : 0);
-        answeredCount = 1;
-        answerHistory.push({ catIdx: 0, qIdx: 0, type: ans, score: score });
-        if (isBad) {
-          plasticScore += score;
-          swaps.push({ category: cat.name, icon: q.icon, text: q.text, alt: q.alt, catIdx: 0, qIdx: 0 });
-        }
-        currentQuestion = 1;
-        heroTeaserAnswer = null;
-      }
 
       renderTracker();
       showQuestion();
@@ -5246,10 +5034,6 @@
       window.location.href = "store.html";
     }
 
-    // Show resume banner if saved results exist
-    if (loadSavedResults()) {
-      document.getElementById("resume-banner").style.display = "block";
-    }
 
   </script>
 
@@ -5289,6 +5073,7 @@
           body: JSON.stringify({ name: name, email: email })
         });
         if(!res.ok) throw new Error('bad');
+        if (window.gtag) gtag('event', 'plan_signup', { method: 'hero_form' });
         try { localStorage.setItem('freePlanUnlocked', '1'); } catch(e){}
         window.location = 'plan.html';
       } catch(ex) {
