@@ -33,9 +33,9 @@ const REGISTRY = [
     blurb: "True HEPA and activated carbon filtration for the room baby breathes in for thousands of hours.",
     products: [
       { name: "Coway Airmega 200M", searchQ: "Coway+Airmega+200M+air+purifier", img: "", sentence: "True HEPA plus activated carbon for VOCs. Reliable, quiet, runs continuously. Avoid ionizers and ozone units.", badges: ["True HEPA", "Activated carbon"], tag: "Editor pick" },
-      { name: "Levoit Core 400S", searchQ: "Levoit+Core+400S+air+purifier", img: "", sentence: "Smart True HEPA with carbon for medium rooms. Filters fine particles and volatile organic compounds.", badges: ["True HEPA", "Smart"], tag: null },
+      { name: "Austin Air it", searchQ: "Austin+Air+it+air+purifier", img: "", sentence: "Steel housing instead of plastic, HEPA plus activated carbon, purely mechanical. Filters fine particles and volatile organic compounds.", badges: ["True HEPA", "Smart"], tag: null },
       { name: "Canopy Filtered Humidifier", searchQ: "Canopy+humidifier+filtered", img: "", sentence: "Filtered evaporative humidifier so it does not aerosolize minerals or microbes. Bonus: weekly mold prevention design.", badges: ["Evaporative", "Filtered"], tag: null },
-      { name: "Levoit Ultrasonic Humidifier", searchQ: "Levoit+ultrasonic+humidifier", img: "", sentence: "Use distilled water only with ultrasonic models. Tap water aerosolizes minerals straight into baby's lungs.", badges: ["Ultrasonic"], tag: null },
+      { name: "Vornado Evaporative Humidifier", searchQ: "Vornado+evaporative+humidifier", img: "", sentence: "Evaporative rather than ultrasonic, so it does not aerosolize minerals. With any ultrasonic model use distilled water only, because tap water aerosolizes minerals straight into baby's lungs.", badges: ["Ultrasonic"], tag: null },
       { name: "Airthings View Plus", searchQ: "Airthings+View+Plus+air+quality+monitor", img: "", sentence: "Tracks CO2, VOCs, PM2.5, radon and humidity. Useful baseline for the first six months in any new nursery.", badges: ["VOC, PM2.5, radon"], tag: null },
       { name: "Awair Element", searchQ: "Awair+Element+air+quality+monitor", img: "", sentence: "Tracks VOCs, CO2, PM2.5, temperature and humidity. Smaller and cheaper than Airthings, no radon.", badges: ["VOC monitor"], tag: null }
     ]
