@@ -78,8 +78,38 @@ node tools/social/buffer.mjs list
 | `text` | Required. The caption. |
 | `image` | A repo path (`Pinterest/pin-water1.png`) or a full URL. Required for Pinterest and Instagram. |
 | `pinterest.board` | Required for Pinterest. Board name as shown by `setup`. |
-| `pinterest.title` | Required for Pinterest. The pin title. |
+| `pinterest.title` | Required for Pinterest. The pin title, 100 characters max. |
 | `pinterest.url` | Required for Pinterest. The destination link. |
+| `instagram.type` | `post` (default), `reel`, `story`, or `carousel`. |
+| `instagram.firstComment` | Optional. Posted as the first comment, handy for links. |
+| `instagram.shouldShareToFeed` | Defaults to true, except for stories. |
+| `twitter.thread` | Optional array of `{ text, image }`. Root post first. |
+
+`image` accepts a single path or an array. Caption length and image count are
+checked per network before anything is sent (X 280 with links counted as 23,
+Instagram 2,200 and up to 10 images, Pinterest 1 image, X up to 4).
+
+## Per network notes
+
+**Pinterest** publishes automatically. Nothing extra needed.
+
+**X** publishes automatically, including threads, up to 4 images, and quotes.
+Buffer absorbs X's API cost, so no X developer account is needed on your side.
+Polls and delegate accounts are not supported through Buffer.
+
+**Instagram** only auto publishes to a **Business or Creator** account linked to
+a Facebook Page. A Personal account falls back to Buffer's reminder publishing:
+Buffer schedules the post and pings your phone at the right time, but you tap to
+publish it yourself. The scheduling side of this tool works either way, the
+difference is whether the post goes out without you. Stories with music,
+stickers, or product tags always fall back to reminders.
+
+## Plan limits
+
+The **Free plan caps you at 3 channels and 10 scheduled posts per channel**, so a
+month of prescheduled content will not fit. Essentials at $5 per channel per
+month lifts it to unlimited. API rate limits are generous either way (250 calls
+per 24 hours on Free), so the post cap is the real ceiling, not the API.
 
 ## Images must be public
 

@@ -253,6 +253,31 @@ function resolveBoard(channel, want) {
   return hit;
 }
 
+/* --------------------------------------------------------------- limits -- */
+
+// Caption limits and max images per post, per network.
+const LIMITS = {
+  pinterest: { text: 500, images: 1, title: 100 },
+  instagram: { text: 2200, images: 10 },
+  twitter:   { text: 280, images: 4 },
+  x:         { text: 280, images: 4 },
+  threads:   { text: 500, images: 10 },
+  bluesky:   { text: 300, images: 4 },
+  mastodon:  { text: 500, images: 4 },
+  facebook:  { text: 5000, images: 10 },
+  linkedin:  { text: 3000, images: 9 },
+  tiktok:    { text: 2200, images: 35 },
+};
+
+const isX = s2 => s2 === 'twitter' || s2 === 'x';
+
+/** X shortens every link to a fixed 23 chars, so a naive .length overcounts. */
+function weightedLength(text, service) {
+  const t = String(text ?? '');
+  if (!isX(service)) return [...t].length;
+  return [...t.replace(/https?:\/\/\S+/g, 'x'.repeat(23))].length;
+}
+
 /* ---------------------------------------------------------------- media -- */
 
 export function imageURL(img) {
@@ -278,6 +303,31 @@ export async function verifyImage(url) {
   } catch (e) {
     return { ok: false, why: e.message };
   }
+}
+
+/** Verify every image and turn it into Buffer's assets list. */
+async function collectAssets(image, service, problems, warnings, where = 'image') {
+  if (image === undefined || image === null) return [];
+  const list = Array.isArray(image) ? image : [image];
+  const max = LIMITS[service]?.images;
+  if (max && list.length > max) {
+    problems.push(`${list.length} images in "${where}", but ${service} allows at most ${max}`);
+  }
+  const assets = [];
+  for (const img of list) {
+    const url = imageURL(img);
+    const v = await verifyImage(url);
+    if (!v.ok) {
+      const hint = !/^https?:\/\//i.test(img)
+        ? `\n        (is ${img} committed and pushed? Buffer can only read public URLs)`
+        : '';
+      problems.push(`${where} not usable: ${url}\n        ${v.why}${hint}`);
+    } else if (v.size > 20 * 1048576) {
+      warnings.push(`${img} is ${(v.size / 1048576).toFixed(1)}MB, which some networks reject`);
+    }
+    assets.push({ image: { url } });
+  }
+  return assets;
 }
 
 /* ---------------------------------------------------------------- queue -- */
@@ -324,21 +374,20 @@ async function buildPosts(queuePath) {
       }
 
       // Media
-      const assets = [];
-      if (p.image) {
-        const url = imageURL(p.image);
-        const v = await verifyImage(url);
-        if (!v.ok) {
-          const localHint = !/^https?:\/\//i.test(p.image)
-            ? `\n        (is ${p.image} committed and pushed? Buffer can only read public URLs)`
-            : '';
-          problems.push(`image not usable: ${url}\n        ${v.why}${localHint}`);
-        } else if (v.size > 20 * 1024 * 1024) {
-          warnings.push(`image is ${(v.size / 1048576).toFixed(1)}MB, which some networks reject`);
-        }
-        assets.push({ image: { url } });
-      } else if (service === 'pinterest' || service === 'instagram') {
+      const assets = await collectAssets(p.image, service, problems, warnings);
+      if (!assets.length && (service === 'pinterest' || service === 'instagram')) {
         problems.push(`${service} posts require an "image"`);
+      }
+
+      // Caption length
+      const cap = LIMITS[service]?.text;
+      let text = String(p.text ?? '').trim();
+      if (cap) {
+        const n = weightedLength(text, service);
+        if (n > cap) {
+          problems.push(`text is ${n} characters, over the ${cap} limit for ${service}` +
+            (isX(service) ? ' (links count as 23)' : ''));
+        }
       }
 
       // Per-network metadata
@@ -347,18 +396,59 @@ async function buildPosts(queuePath) {
         const pin = p.pinterest || {};
         const board = resolveBoard(channel, pin.board);
         if (!pin.title) problems.push('pinterest.title is required');
+        else if ([...pin.title].length > LIMITS.pinterest.title) {
+          problems.push(`pinterest.title is ${[...pin.title].length} characters, over the ${LIMITS.pinterest.title} limit`);
+        }
         if (!pin.url) problems.push('pinterest.url (the destination link) is required');
         metadata = {
-          pinterest: {
-            boardServiceId: board.serviceId,
-            title: pin.title,
-            url: pin.url,
+          pinterest: { boardServiceId: board.serviceId, title: pin.title, url: pin.url },
+        };
+
+      } else if (service === 'instagram') {
+        // type and shouldShareToFeed are both required by Buffer.
+        const ig = p.instagram || {};
+        const type = ig.type || 'post';
+        if (!['post', 'reel', 'story', 'carousel'].includes(type)) {
+          problems.push(`instagram.type "${type}" is not one of post, reel, story, carousel`);
+        }
+        metadata = {
+          instagram: {
+            type: E(type),
+            shouldShareToFeed: ig.shouldShareToFeed ?? type !== 'story',
+            firstComment: ig.firstComment,
+            link: ig.link,
+            isAiGenerated: ig.isAiGenerated,
           },
         };
+
+      } else if (isX(service)) {
+        const tw = p.twitter || p.x || {};
+        if (Array.isArray(tw.thread) && tw.thread.length) {
+          // Buffer wants the whole thread here, root first, each replying to the last.
+          const thread = [];
+          for (const [n, item] of tw.thread.entries()) {
+            const where = `thread[${n}].image`;
+            const itemText = String(item.text ?? '').trim();
+            if (!itemText && !item.image) problems.push(`thread[${n}] has neither text nor image`);
+            const len = weightedLength(itemText, service);
+            if (len > LIMITS.twitter.text) {
+              problems.push(`thread[${n}] is ${len} characters, over the ${LIMITS.twitter.text} limit (links count as 23)`);
+            }
+            thread.push({
+              text: itemText,
+              assets: await collectAssets(item.image, service, problems, warnings, where),
+            });
+          }
+          metadata = { twitter: { thread, isAiGenerated: tw.isAiGenerated } };
+          // The thread is authoritative, so keep the top-level text as its root.
+          text = thread[0].text || text;
+        } else if (tw.isAiGenerated !== undefined) {
+          metadata = { twitter: { isAiGenerated: tw.isAiGenerated } };
+        }
       }
 
       input = {
-        text: String(p.text ?? '').trim(),
+        text,
         channelId: channel.id,
         schedulingType: E('automatic'),
         mode,
@@ -390,10 +480,25 @@ function report({ built, tz }) {
       const t = b.input.text.replace(/\s+/g, ' ');
       console.log(`  text: ${t.length > 90 ? t.slice(0, 90) + '...' : t}`);
     }
-    if (b.input?.assets?.[0]?.image?.url) console.log(`  image: ${c.dim(b.input.assets[0].image.url)}`);
+    const imgs = b.input?.assets ?? [];
+    if (imgs.length === 1) console.log(`  image: ${c.dim(imgs[0].image.url)}`);
+    else if (imgs.length > 1) {
+      console.log(`  images: ${imgs.length}`);
+      for (const a of imgs) console.log(`    ${c.dim(a.image.url)}`);
+    }
     if (b.input?.metadata?.pinterest) {
       const pin = b.input.metadata.pinterest;
       console.log(`  pin: "${pin.title}" -> ${pin.url}`);
+    }
+    if (b.input?.metadata?.instagram) {
+      const ig = b.input.metadata.instagram;
+      console.log(`  instagram: ${ig.type.__enum}${ig.shouldShareToFeed ? ', shared to feed' : ''}` +
+        (ig.firstComment ? `, first comment set` : ''));
+    }
+    if (b.input?.metadata?.twitter?.thread) {
+      const th = b.input.metadata.twitter.thread;
+      console.log(`  thread: ${th.length} posts`);
+      th.forEach((t, i) => console.log(`    ${i + 1}. ${String(t.text).replace(/\s+/g, ' ').slice(0, 70)}`));
     }
     if (b.alreadySent) {
       console.log(c.yellow(`  already scheduled on ${b.alreadySent.at} (Buffer post ${b.alreadySent.postId}) — will be skipped`));
