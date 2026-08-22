@@ -745,9 +745,9 @@
     "brand": "BEABA",
     "category": "Baby food prep",
     "stance": "skip",
-    "reason": "The Babycook Neo is under CPSC recall (glass bowl shatters, 300+ reports) with active product-liability litigation.",
+    "reason": "Removed from every pick on the site in August 2026. The Babycook Neo is under CPSC recall after 300 plus reports of the glass bowl shattering, with active product liability litigation. We do not list recalled products.",
     "evidence": "CPSC recall + active lawsuits (glass bowl shatter)",
-    "alternative": "Steam separately and blend in a glass or stainless blender",
+    "alternative": "Bear NutriEase AllStage baby food maker",
     "sources": [
       "baby-kids-101.html"
     ]
@@ -2368,13 +2368,31 @@
     "id": "dr-brown-s",
     "brand": "Dr. Brown's",
     "category": "Baby bottles",
-    "stance": "skip",
-    "reason": "Named in a June 2024 class action alleging its BPA free polypropylene bottles release microplastics when heated. Its glass bottle carries painted exterior markings, which have tested positive for lead across the category.",
+    "stance": "careful",
+    "reason": "Verdict depends on the product line. The baby toothpaste is a featured pick, non detect for heavy metals in independent testing, fluoride free and safe to swallow for the youngest children. The bottles are the problem: a June 2024 class action alleges the BPA free polypropylene bottles release microplastics when heated, and the glass bottle carries painted exterior markings, which have tested positive for lead across the category.",
     "evidence": "2024 microplastic class action (Handi-Craft); lead in painted markings on glass bottles (Lead Safe Mama)",
     "alternative": "Evenflo Classic Glass or Lifefactory glass bottle",
     "sources": [
       "best-non-toxic-baby-bottles.html",
-      "top-100-baby-kids-products-amazon.html"
+      "top-100-baby-kids-products-amazon.html",
+      "best-non-toxic-toothpaste-guide.html"
+    ],
+    "products": [
+      {
+        "name": "Baby toothpaste",
+        "verdict": "good",
+        "note": "Non detect for heavy metals in independent testing. Fluoride free and safe to swallow."
+      },
+      {
+        "name": "Polypropylene baby bottles",
+        "verdict": "skip",
+        "note": "June 2024 class action alleging microplastic release when heated."
+      },
+      {
+        "name": "Glass baby bottles",
+        "verdict": "careful",
+        "note": "Painted exterior markings, a category wide lead risk."
+      }
     ]
   },
   {
@@ -2514,12 +2532,15 @@
     "brand": "Earth Mama Organics",
     "category": "Baby skincare",
     "stance": "careful",
-    "reason": "One company, very different results per product, so check the product rows. The Organic Diaper Balm is a genuinely clean EWG Verified featured pick, while the Baby Mineral SPF 40 sunscreen tested at 2,140 ppb lead in 2025 independent testing, one of the highest results on record, and was dropped from our sunscreen guide.",
+    "reason": "One company, very different results per product, so check the product rows. The Organic Diaper Balm is a genuinely clean EWG Verified featured pick, while the Baby Mineral SPF 40 sunscreen tested at 2,140 ppb lead in 2025 independent testing, one of the highest results on record, and was dropped from our sunscreen guide. The SPF 40 was pulled from every remaining pick position in August 2026; the kids sunscreen pick is California Baby Super Sensitive SPF 30+, which tested at 77 ppb.",
     "evidence": "2,140 ppb lead in sunscreen (LSM 2025); diaper balm EWG Verified",
     "alternative": "California Baby SPF 30+ (77 ppb) for kids sunscreen",
     "sources": [
       "best-mineral-sunscreen-guide.html",
-      "best-non-toxic-diaper-rash-creams.html"
+      "best-non-toxic-diaper-rash-creams.html",
+      "plastic-free-beach-day-essentials.html",
+      "microplastics-in-cosmetics-and-personal-care.html",
+      "clean-products-that-arent.html"
     ],
     "aliases": [
       "Earth Mama"
@@ -5113,12 +5134,24 @@
     "id": "momentous",
     "brand": "Momentous",
     "category": "Supplements",
-    "stance": "skip",
-    "reason": "Considered but removed because its v1 plant protein was flagged for elevated lead, despite the creatine being clean.",
+    "stance": "careful",
+    "reason": "Verdict depends on the product. The creatine is a featured pick, Creapure and NSF Certified for Sport, and the article carries the caveat explicitly. The v1 plant protein was flagged for elevated lead, which is why the brand as a whole does not get a clean rating.",
     "evidence": "Plant protein flagged in Oct 2025 Consumer Reports investigation at ~4 to 6x the lead threshold",
     "alternative": "Thorne",
     "sources": [
       "supplements-and-microplastics.html"
+    ],
+    "products": [
+      {
+        "name": "Creatine",
+        "verdict": "good",
+        "note": "Creapure, NSF Certified for Sport, independently certified SKU."
+      },
+      {
+        "name": "v1 plant protein",
+        "verdict": "skip",
+        "note": "Flagged for elevated lead."
+      }
     ]
   },
   {
@@ -6885,12 +6918,13 @@
     "brand": "Salt of the Earth",
     "category": "Personal care",
     "stance": "skip",
-    "reason": "The crystal deodorant is potassium alum (potassium aluminum sulfate), so it contains aluminum and cannot honestly be sold as aluminum-free.",
+    "reason": "Removed from every pick on the site in August 2026. The crystal deodorant is potassium alum, which is potassium aluminum sulfate, so it contains aluminum and cannot honestly be sold as aluminum free. It had been listed as a mineral salt pick, which was the misleading framing the rating exists to catch.",
     "evidence": "Contains aluminum (potassium alum)",
-    "alternative": "Each & Every or Wild aluminum-free deodorant",
+    "alternative": "Each & Every aluminum free deodorant",
     "sources": [
       "how-to-avoid-bpa-and-phthalates.html",
-      "personal-care-101.html"
+      "personal-care-101.html",
+      "microplastics-in-cosmetics-and-personal-care.html"
     ]
   },
   {
@@ -7897,7 +7931,7 @@
     "stance": "skip",
     "reason": "Mega-Mag was flagged by Labdoor (grade D+) for concerning arsenic, and sister products tested positive for lead, cadmium and arsenic (Lead Safe Mama). Its PowerPak electrolyte stick also returned 23 ppm total fluorine, an indicator of PFAS, in 2023 independent screening.",
     "evidence": "Independent testing flagged arsenic and heavy metals; PowerPak 23 ppm total fluorine",
-    "alternative": "GOODONYA or TRIORAL for electrolytes; Klean Athlete or Thorne magnesium",
+    "alternative": "Klean Athlete Magnesium or Thorne Magnesium Bisglycinate",
     "sources": [
       "best-non-toxic-electrolytes.html",
       "https://mamavation.com/product-investigations/pfas-forever-chemicals-fluoride-powdered-electrolytes.html",

@@ -97,7 +97,6 @@ const REGISTRY = [
       { name: "Weck Glass Storage Jars", searchQ: "Weck+glass+jars+storage", img: "", sentence: "Glass jars with glass lids and rubber gaskets for fridge storage. Avoid all plastic baby food storage including BPA free pouches.", badges: ["100% glass"], tag: "Editor pick" },
       { name: "Pyrex Glass Storage with Glass Lids", searchQ: "Pyrex+glass+storage+glass+lids", img: "", sentence: "Borosilicate glass containers with glass lids. Skip the plastic lid versions for fridge baby food.", badges: ["Borosilicate glass"], tag: null },
       { name: "Souper Cubes Silicone Freezer Trays", searchQ: "Souper+Cubes+silicone+freezer+tray", img: "", sentence: "Food grade silicone trays for freezing purees in measured portions. Pop out, transfer to glass for long storage.", badges: ["Food grade silicone"], tag: null },
-      { name: "BEABA Babycook Neo Glass Baby Food Maker", asin: "B085PXBB17", img: "41M6kgy316L", sentence: "Borosilicate glass bowl with stainless steel basket. The only baby food maker with non plastic food contact surfaces.", badges: ["Glass + steel"], tag: null }
     ]
   },
   {
