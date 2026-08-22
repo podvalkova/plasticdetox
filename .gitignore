@@ -1,3 +1,9 @@
 # Local-only social/production assets (never publish to the site repo)
 Instagram/
 .DS_Store
+
+# Credentials — never commit
+plasticdetox-credentials.csv
+*credentials*.csv
+*.pem
+.env
