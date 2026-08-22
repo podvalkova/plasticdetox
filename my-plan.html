@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Your Custom Plan | Plastic Detox</title>
-<meta name="description" content="Answer six questions and get a personalised plastic reduction plan: what to swap, in what order, what it costs, and what to ignore.">
+<meta name="description" content="Answer six questions and get a plastic reduction plan built for your home: which swaps apply to you, what order to do them in, what each costs, and which you can do for free.">
 <link rel="icon" type="image/png" sizes="48x48" href="favicon.png">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -194,8 +194,8 @@
 <section id="quizWrap">
   <div class="hero">
     <span class="eyebrow"><span class="dot"></span> Custom Plan</span>
-    <h1>Six questions. Then we <em>delete</em> what you don't need.</h1>
-    <p class="hero-sub">Our store has <b id="catalogN">350+</b> vetted products. Almost none of them are for your home. This tells you which ones are, in what order, and what it costs.</p>
+    <h1>A plan built for <em>your</em> home, not everyone else's.</h1>
+    <p class="hero-sub">Answer six questions. You get the swaps that actually apply to you, in the order that cuts your exposure fastest, each with a product to buy and what it costs.</p>
   </div>
 
   <div class="progress-wrap">
@@ -207,7 +207,7 @@
 
     <div class="step active" data-step="0">
       <h2 class="step-title">Who lives in your home?</h2>
-      <p class="step-hint">This is the single biggest filter. Kids gear is a third of everything we list.</p>
+      <p class="step-hint">This changes the plan more than anything else you tell us. Baby and kid gear is where exposure adds up fastest.</p>
       <div class="chips" id="q-household">
         <label class="chip"><input type="checkbox" value="kids"> Babies or kids</label>
         <label class="chip"><input type="checkbox" value="pregnant"> Pregnant or expecting</label>
@@ -226,14 +226,14 @@
 
     <div class="step" data-step="2">
       <h2 class="step-title">Which rooms should we cover?</h2>
-      <p class="step-hint">Anything you leave out is removed from the plan entirely, not just pushed down.</p>
+      <p class="step-hint">We only plan for the rooms you pick, so leave out anything you are not ready to work on.</p>
       <div class="chips" id="q-rooms"></div>
       <p class="err" id="e2">Pick at least one room.</p>
     </div>
 
     <div class="step" data-step="3">
       <h2 class="step-title">Which of these are true for you?</h2>
-      <p class="step-hint">Every box you leave unchecked deletes a whole section. That is the point.</p>
+      <p class="step-hint">These decide whether whole sections belong in your plan, so answer honestly rather than aspirationally.</p>
       <div class="chip-col" id="q-triggers"></div>
     </div>
 
@@ -246,7 +246,7 @@
 
     <div class="step" data-step="5">
       <h2 class="step-title">What worries you most?</h2>
-      <p class="step-hint">We push that area up the order, ahead of things that would otherwise outrank it.</p>
+      <p class="step-hint">Whatever you pick moves to the front of your plan, so you start where your head already is.</p>
       <div class="chips" id="q-concern"></div>
       <p class="err" id="e5">Pick one.</p>
     </div>
@@ -284,6 +284,9 @@
       B = window.PLAN_BUDGETS,   C = window.PLAN_CONCERNS,
       T = window.PLAN_TRIGGERS,  RM = window.PLAN_ROOMS, ST = window.PLAN_STAGES;
 
+  var catalogN = document.getElementById('catalogN');
+  if(catalogN) catalogN.textContent = P.length;
+
   var qs = new URLSearchParams(location.search);
   /* TESTMODE lets you click through the real buy flow before Stripe is wired.
      Without it, and with no CHECKOUT_URL set, the button refuses rather than
@@ -291,8 +294,6 @@
   var TESTMODE = qs.get('test') === '1';
   var UNLOCKED = qs.get('unlocked') === '1' || localStorage.getItem('pd_plan_paid') === '1';
   var PREVIEW  = qs.get('preview') === '1';    // jump straight to the paid view
-
-  document.getElementById('catalogN').textContent = P.length;
 
   /* ---------- build the dynamic questions ---------- */
   function chips(host, items, type, name){
@@ -453,19 +454,19 @@
 
     html += '<div class="res-head">'
       + '<h2>Your plan: '+c.swaps+' swaps, in order.</h2>'
-      + '<p>Built from '+c.catalog+' vetted products. We ruled out '+c.ruledOut+' that do not apply to your home'
-      + (c.laterSwaps ? ', and held back '+c.laterSwaps+' lower priority swaps for later' : '')+'.</p>'
+      + '<p>Start at the top and work down. Everything here applies to your home, ordered so the swaps that cut the most exposure come first.'
+      + (c.laterSwaps ? ' Your budget setting held back '+c.laterSwaps+' lower priority ones for later.' : '')+'</p>'
       + '</div>';
 
     html += '<div class="statgrid">'
-      + '<div class="stat"><div class="n">'+c.ruledOut+'</div><div class="l">products ruled out for you</div></div>'
-      + '<div class="stat"><div class="n">'+c.swaps+'</div><div class="l">swaps that actually apply</div></div>'
+      + '<div class="stat"><div class="n">'+c.swaps+'</div><div class="l">swaps that apply to you</div></div>'
       + '<div class="stat"><div class="n">'+money(PLAN.cost.total)+'</div><div class="l">estimated over 3 months</div></div>'
-      + '<div class="stat"><div class="n">'+PLAN.cost.free+'</div><div class="l">have a $0 alternative</div></div>'
+      + '<div class="stat"><div class="n">'+PLAN.cost.free+'</div><div class="l">you can do for $0</div></div>'
+      + '<div class="stat"><div class="n">'+c.ruledOut+'</div><div class="l">products you can ignore</div></div>'
       + '</div>';
 
-    html += '<div class="panel"><h3>What we deleted, and why</h3>'
-      + '<p class="sub">The store shows everyone the same '+c.catalog+' products. This is the part it cannot do.</p>'
+    html += '<div class="panel"><h3>What you can stop worrying about</h3>'
+      + '<p class="sub">We checked all '+c.catalog+' products we have vetted against your answers. These are the ones you can skip, and why.</p>'
       + '<div class="exlist">'
       + PLAN.excluded.map(function(e){
           return '<div class="exrow"><span>'+esc(e.label)+'</span><span class="c">'+e.count+' products</span></div>';
