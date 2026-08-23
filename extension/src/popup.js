@@ -15,7 +15,7 @@ async function paint() {
   const s = await chrome.storage.local.get(["brands", "asins", "brands_at", "logMisses"]);
   $("brandCount").textContent = s.brands ? s.brands.length.toLocaleString() : "—";
   $("asinCount").textContent = s.asins ? Object.keys(s.asins).length.toLocaleString() : "—";
-  $("logMisses").checked = s.logMisses !== false;
+  $("logMisses").checked = s.logMisses === true;
   $("updated").textContent = ago(s.brands_at);
 }
 

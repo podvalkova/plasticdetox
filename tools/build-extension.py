@@ -92,7 +92,8 @@ def main():
         out = DIST / f"plastic-detox-brand-check-{version}.zip"
         with zipfile.ZipFile(out, "w", zipfile.ZIP_DEFLATED) as z:
             for p in sorted(EXT.rglob("*")):
-                if p.is_file() and ".DS_Store" not in p.name:
+                # store/ holds listing assets for the dashboard, not runtime files.
+                if p.is_file() and ".DS_Store" not in p.name and "store" not in p.relative_to(EXT).parts:
                     z.write(p, p.relative_to(EXT))
         print(f"\npackaged {out.relative_to(ROOT)} ({out.stat().st_size // 1024} KB)")
         print("upload at https://chrome.google.com/webstore/devconsole")

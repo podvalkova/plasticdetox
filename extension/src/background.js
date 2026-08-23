@@ -76,7 +76,10 @@ chrome.runtime.onInstalled.addListener(async () => {
     try { seed[key] = await readBundled(key); } catch (e) { /* keep going */ }
   }
   await chrome.storage.local.set(seed);
-  await chrome.storage.local.set({ logMisses: true });
+  // Off by default. Sending a brand name is not strictly necessary to showing
+  // a verdict, so under the August 2026 Chrome Web Store data rules it has to
+  // be something the user turns on, not something they turn off.
+  await chrome.storage.local.set({ logMisses: false });
   chrome.alarms.create("refresh", { periodInMinutes: REFRESH_HOURS * 60 });
   refreshAll();
 });

@@ -43,7 +43,7 @@
   let byCollapsed = new Map();
   let ASINS = {};
   let SEL = null;
-  let logMisses = true;
+  let logMisses = false;
   const loggedThisPage = new Set();
 
   // ---------------------------------------------------------------- data
@@ -60,7 +60,7 @@
     BRANDS = store.brands || (await bundled("brand-data"));
     ASINS = store.asins || (await bundled("asin-map"));
     SEL = store.selectors || (await bundled("selectors"));
-    logMisses = store.logMisses !== false;
+    logMisses = store.logMisses === true;   // opt in, never opt out
 
     for (const b of BRANDS) {
       const labels = [b.brand, ...(b.aliases || [])];
