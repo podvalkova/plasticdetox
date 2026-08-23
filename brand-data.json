@@ -1633,18 +1633,6 @@
     ]
   },
   {
-    "id": "carlson-labs",
-    "brand": "Carlson Labs",
-    "category": "Supplements",
-    "stance": "good",
-    "reason": "Best-value liquid omega-3 pick with a long history of nitrogen-flushed glass-bottled cod liver oil.",
-    "evidence": "Nitrogen flushed glass bottle, IFOS five star",
-    "alternative": "",
-    "sources": [
-      "supplements-and-microplastics.html"
-    ]
-  },
-  {
     "id": "carter-s",
     "brand": "Carter's",
     "category": "Kids clothing",
@@ -6939,18 +6927,6 @@
     "buy": "https://www.amazon.com/dp/B06W5PQ84B?tag=plasticdetox-20"
   },
   {
-    "id": "rosita-real-foods",
-    "brand": "Rosita Real Foods",
-    "category": "Supplements",
-    "stance": "good",
-    "reason": "Cleanest omega-3 pick: raw-extracted cod liver oil in nitrogen-flushed glass and the only brand publishing per-batch microplastic testing.",
-    "evidence": "Nitrogen flushed glass bottle; publishes per-batch microplastic, heavy metal, and rancidity testing",
-    "alternative": "",
-    "sources": [
-      "supplements-and-microplastics.html"
-    ]
-  },
-  {
     "id": "ross-stores",
     "brand": "Ross Stores",
     "category": "Cookware",
@@ -10900,6 +10876,131 @@
     "sources": [
       "https://revisionskincare.com/products/intellishade-original-spf-45",
       "https://inkeedecoder.com/products/revision-skincare-nectifirm-advanced"
+    ]
+  },
+  {
+    "id": "needed",
+    "brand": "Needed",
+    "category": "Supplements",
+    "stance": "good",
+    "reason": "Our top prenatal pick. The Prenatal Powder has no capsule shell to shed plastic, the most comprehensive nutrition of the prenatals we compared including methylated folate and 400 mg choline, and the strongest transparency posture in the category: it publishes full batch testing rather than a purity claim. The Prenatal Multi Capsules carry the same testing at eight capsules a day. Worth stating plainly that no independently tested prenatal has come back non detect across lead, cadmium, mercury and arsenic, so transparency is the signal we rank on.",
+    "evidence": "Full per batch COA publication; powder format with no capsule shell; methylated folate and 400 mg choline",
+    "alternative": "",
+    "sources": [
+      "cleanest-prenatal-vitamins.html",
+      "supplements-and-microplastics.html"
+    ],
+    "buy": "https://www.amazon.com/dp/B0GM2HYZ9G?tag=plasticdetox-20",
+    "aliases": [
+      "Needed Prenatal",
+      "Needed Prenatal Powder",
+      "Needed Prenatal Multi"
+    ],
+    "products": [
+      {
+        "name": "Prenatal Powder",
+        "verdict": "good",
+        "note": "Top pick. No capsule shell, full batch transparency, methylated folate and 400 mg choline."
+      },
+      {
+        "name": "Prenatal Multi Capsules",
+        "verdict": "good",
+        "note": "Same testing as the powder. Eight capsules a day, in a plastic bottle."
+      }
+    ]
+  },
+  {
+    "id": "fullwell",
+    "brand": "FullWell",
+    "category": "Supplements",
+    "stance": "good",
+    "reason": "A strong alternative prenatal, iron free in HPMC capsules, and it tests every lot. The caveat next to Needed is posture rather than formula: FullWell publishes its own favourable testing but disputes the Lead Safe Mama methodology, which found lead, cadmium and arsenic in February 2025, rather than engaging with it. Publishing a number that is not flattering is the signal we rate highest, and this is a more defensive stance than that.",
+    "evidence": "Iron free HPMC capsules, per lot testing; disputes the Feb 2025 Lead Safe Mama findings rather than engaging",
+    "alternative": "",
+    "sources": [
+      "cleanest-prenatal-vitamins.html"
+    ],
+    "buy": "https://www.amazon.com/dp/B0C7LPMB1Y?tag=plasticdetox-20",
+    "cautions": [
+      "Lead Safe Mama testing in February 2025 reported lead, cadmium and arsenic. FullWell disputes the methodology rather than addressing the result."
+    ],
+    "products": [
+      {
+        "name": "Prenatal",
+        "verdict": "good",
+        "note": "Iron free HPMC capsules, every lot tested. Strong alternative to our top pick."
+      }
+    ]
+  },
+  {
+    "id": "theralogix",
+    "brand": "Theralogix",
+    "category": "Supplements",
+    "stance": "good",
+    "reason": "Theranatal Complete is the only mainstream prenatal multi carrying USP Verification, which covers identity, potency and contaminant limits, and it adds NSF and IFOS testing. USP Verified is the gold standard for prenatals and very few brands hold it, so this is the pick if third party certification matters more to you than format.",
+    "evidence": "USP Verified, the only mainstream prenatal multi with it; plus NSF and IFOS testing",
+    "alternative": "",
+    "sources": [
+      "cleanest-prenatal-vitamins.html"
+    ],
+    "buy": "https://www.amazon.com/dp/B078NVJ47N?tag=plasticdetox-20",
+    "aliases": [
+      "Theranatal",
+      "Theralogix Theranatal"
+    ],
+    "products": [
+      {
+        "name": "Theranatal Complete",
+        "verdict": "good",
+        "note": "USP Verified for identity, potency and contaminant limits. Hard shell capsules in a plastic bottle."
+      }
+    ]
+  },
+  {
+    "id": "rosita",
+    "brand": "Rosita",
+    "category": "Supplements",
+    "stance": "good",
+    "reason": "The cleanest omega 3 we found. Extra Virgin Cod Liver Oil in a nitrogen flushed glass bottle, and one of the only supplement brands anywhere publishing per batch microplastic test results. Omega 3 is the most plastic contaminated supplement category and encapsulation of any kind adds plastic, so liquid oil in glass is the format the data supports.",
+    "evidence": "Publishes per batch microplastic testing; nitrogen flushed glass bottle, no capsule shell",
+    "alternative": "",
+    "sources": [
+      "supplements-and-microplastics.html"
+    ],
+    "buy": "https://www.amazon.com/dp/B00LN3MN26?tag=plasticdetox-20",
+    "aliases": [
+      "Rosita Extra Virgin Cod Liver Oil",
+      "Rosita Real Foods"
+    ],
+    "products": [
+      {
+        "name": "Extra Virgin Cod Liver Oil",
+        "verdict": "good",
+        "note": "Nitrogen flushed glass, per batch microplastic testing published. Our cleanest omega 3 pick."
+      }
+    ]
+  },
+  {
+    "id": "carlson",
+    "brand": "Carlson",
+    "category": "Supplements",
+    "stance": "good",
+    "reason": "Best value liquid omega 3. Wild caught Norwegian cod in a nitrogen flushed glass bottle at 1,100 mg omega 3 per teaspoon, with a long history of glass bottled liquid oil and IFOS five star ratings. No capsule shell, which is the main plastic source in this category. It does not publish microplastic counts the way Rosita does, so the case rests on format and packaging.",
+    "evidence": "IFOS five star, nitrogen flushed glass bottle, 1,100 mg omega 3 per teaspoon, no capsule",
+    "alternative": "",
+    "sources": [
+      "supplements-and-microplastics.html"
+    ],
+    "buy": "https://www.amazon.com/dp/B00014D08Y?tag=plasticdetox-20",
+    "aliases": [
+      "Carlson Labs"
+    ],
+    "products": [
+      {
+        "name": "Cod Liver Oil Liquid",
+        "verdict": "good",
+        "note": "Wild caught Norwegian cod, nitrogen flushed glass, lemon flavoured. No supplier microplastic data published."
+      }
     ]
   }
 ]
