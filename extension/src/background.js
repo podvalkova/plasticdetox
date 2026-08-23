@@ -4,8 +4,11 @@
 // a layout change is a file edit on our side, live within the hour.
 
 const SITE = "https://plasticdetox.org";
+// All three come from extension/data/ rather than the site root. The copy the
+// extension reads then versions with the extension and is not tied to the cache
+// lifetime of the file brand-check.html fetches on every page view.
 const REMOTE = {
-  brands: `${SITE}/brand-data.json`,
+  brands: `${SITE}/extension/data/brand-data.json`,
   asins: `${SITE}/extension/data/asin-map.json`,
   selectors: `${SITE}/extension/data/selectors.json`,
 };

@@ -55,6 +55,9 @@
 /* ---------- detail panel and popover ---------- */
 
 .pd-panel {
+  position: relative;
+  z-index: 1;
+  max-width: 620px;
   margin: 14px 0;
   border: 1px solid var(--pd-neutral-border);
   border-radius: 12px;

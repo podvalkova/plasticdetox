@@ -320,8 +320,12 @@
       (byline && fromBrandName(byline)) ||
       fromTitle(title);
 
-    const anchor = document.querySelector(SEL.detail.anchor);
-    if (!anchor) return;
+    // Anchor to the title's own block so the panel lands inside the centre
+    // column's normal flow. Anchoring to #centerCol itself would drop the panel
+    // beside the column, full page width and underneath Amazon's image overlay.
+    const anchor =
+      titleEl.closest("#titleSection, #title_feature_div") || titleEl.parentElement;
+    if (!anchor || !anchor.parentNode) return;
 
     let panel;
     if (match) {
