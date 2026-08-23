@@ -701,6 +701,7 @@
   </script>
 
 <!-- ============ UNLOCK: quiz, engine, personalised additions ============ -->
+<script src="data/unlock.js"></script>
 <script src="data/store-products.js"></script>
 <script src="data/plan-rules.js"></script>
 <script src="data/plan-engine.js"></script>
@@ -708,9 +709,9 @@
 (function(){
   "use strict";
 
-  /* Paste a Stripe Payment Link here to go live. While it is empty the buy
-     button refuses for real visitors; only ?test=1 unlocks. */
-  var CHECKOUT_URL = "";
+  /* Single source of truth lives in data/unlock.js so this page and the
+     registry and the Top 100 can never drift apart on price or link. */
+  var CHECKOUT_URL = (window.PDUnlock && window.PDUnlock.CHECKOUT_URL) || "";
   var PRICE = "$9.99";
 
   var P = window.STORE_PRODUCTS, R = window.PLAN_RULES,
@@ -977,9 +978,9 @@
   }
 
   function checkout(){
+    if(TESTMODE){ UNLOCKED = true; render(); return; }   /* preview, never charges */
     if(window.gtag) gtag('event','begin_checkout',{value:9.99,currency:'USD'});
     if(CHECKOUT_URL){ location.href = CHECKOUT_URL; return; }
-    if(TESTMODE){ UNLOCKED = true; render(); return; }
     var f = document.querySelector('.u-fine');
     if(f){ f.textContent = 'Checkout is not live yet. Add a payment link to turn this on.'; f.style.color='#b91c1c'; f.style.fontWeight='600'; }
   }

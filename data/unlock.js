@@ -14,7 +14,7 @@
   /* Paste the Stripe Payment Link here to go live. Point its success URL at
      the page the buyer came from plus ?addon=1 (NOT ?unlocked=1, which the
      worker emails to every free subscriber to open the plan email gate). */
-  var CHECKOUT_URL = "";
+  var CHECKOUT_URL = "https://buy.stripe.com/00w9AMfSv90F6VZbT6fEk03";
   var PRICE        = "$9.99";
   var STORE_KEY    = "pd_add_paid";
 
@@ -77,9 +77,11 @@
     var btn = document.getElementById('pdwBuy');
     if (!btn) return;
     btn.addEventListener('click', function () {
+      /* ?test=1 wins over the live link so the paid view stays previewable
+         without putting a real charge through. */
+      if (testMode()) { markPaid(); if (onUnlock) onUnlock(); return; }
       if (root.gtag) root.gtag('event', 'begin_checkout', { value: 9.99, currency: 'USD', items: [{ item_name: 'Baby & Expecting Package' }] });
       if (CHECKOUT_URL) { root.location.href = CHECKOUT_URL; return; }
-      if (testMode()) { markPaid(); if (onUnlock) onUnlock(); return; }
       var f = document.getElementById('pdwFine');
       if (f) {
         f.textContent = 'Checkout is not live yet. Add a payment link to turn this on.';

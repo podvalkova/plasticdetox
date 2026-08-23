@@ -452,7 +452,7 @@
       + '<div class="pkg-price">' + window.PDUnlock.PRICE + '</div>'
       + '<div class="pkg-note">One payment. Opens all three, forever.</div>'
       + '<button class="pkg-btn" id="pdwBuy">Unlock the package</button>'
-      + '<p class="pkg-fine" id="pdwFine">' + (window.PDUnlock.CHECKOUT_URL ? 'Secure checkout. Instant access.' : (window.PDUnlock.testMode() ? 'TEST MODE: unlocks without payment.' : 'Checkout is not live yet.')) + '</p>'
+      + '<p class="pkg-fine" id="pdwFine">' + (window.PDUnlock.testMode() ? 'TEST MODE: unlocks without payment.' : (window.PDUnlock.CHECKOUT_URL ? 'Secure checkout. Instant access.' : 'Checkout is not live yet.')) + '</p>'
       + '<p class="pkg-fine">A share of every sale funds independent lab testing.</p>'
       + '</div></div>';
     window.PDUnlock.wire(render);
