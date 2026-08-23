@@ -524,14 +524,18 @@ window.PLAN_STAGES = [
 /* Budget modes. minRank sets the cutoff, maxSwaps caps the list,
    tierCap limits how expensive a recommended product may be. */
 /* Budget shapes the PAID additions. The free plan swaps that apply to a home
-   are always included, since the reader already has them. */
+   are always included, since the reader already has them.
+
+   Budget sets the exposure floor and how expensive a pick may be. It does NOT
+   truncate the list: an arbitrary cap was hiding 32 of 50 applicable swaps
+   from people who had paid to see them. */
 window.PLAN_BUDGETS = [
-  { id:"essentials", label:"Start with essentials", blurb:"The highest exposure additions only, cheapest option that still passes.",
-    minRank:60, maxExtras:8,  tierCap:2 },
+  { id:"essentials", label:"Start with essentials", blurb:"Only the swaps that cut the most exposure, cheapest option that still passes.",
+    minRank:60, tierCap:2 },
   { id:"moderate",   label:"Moderate",              blurb:"A fuller set at a sane pace, best value pick in each category.",
-    minRank:45, maxExtras:18, tierCap:3 },
+    minRank:45, tierCap:3 },
   { id:"thorough",   label:"Replace most things",   blurb:"Everything that applies to your home, best in class where it matters.",
-    minRank:0,  maxExtras:99, tierCap:4 }
+    minRank:0,  tierCap:4 }
 ];
 
 /* Primary concern boosts a whole area up the ranking. */

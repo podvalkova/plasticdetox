@@ -77,7 +77,7 @@
     var included = [], deferred = [], extras = 0;
     scored.forEach(function (s) {
       if (s.rule.inFree) { included.push(s); return; }
-      if (extras < budget.maxExtras && s.score >= budget.minRank) { included.push(s); extras++; }
+      if (s.score >= budget.minRank) { included.push(s); extras++; }
       else deferred.push(s);
     });
 
