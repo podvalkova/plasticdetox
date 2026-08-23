@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "note": "Anchored on data-* attributes Amazon has kept stable for years. Served from plasticdetox.org/extension/selectors.json so a layout change can be fixed without a store review.",
+  "search": {
+    "card": "[data-component-type=\"s-search-result\"][data-asin]",
+    "title": "h2 a span, h2 span, [data-cy=\"title-recipe\"] h2 span",
+    "insertAfter": "[data-cy=\"title-recipe\"], h2",
+    "brandLine": "[data-cy=\"title-recipe\"] .a-row .a-size-base"
+  },
+  "detail": {
+    "isDetailPage": "#productTitle",
+    "title": "#productTitle",
+    "byline": "#bylineInfo",
+    "anchor": "#titleSection, #title_feature_div, #centerCol",
+    "brandRow": "#productOverview_feature_div tr, #detailBullets_feature_div li, #productDetails_techSpec_section_1 tr"
+  }
+}

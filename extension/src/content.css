@@ -1,0 +1,142 @@
+/* Plastic Detox Brand Check. Palette matches brand-check.html so a verdict looks
+   the same on Amazon as it does on the site. Everything is prefixed .pd- and
+   scoped tightly, because Amazon's own CSS is aggressive and unversioned. */
+
+.pd-chip,
+.pd-panel,
+.pd-pop {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  box-sizing: border-box;
+  --pd-good: #16a34a;    --pd-good-bg: #dcfce7;    --pd-good-border: #bbf7d0;
+  --pd-careful: #b45309; --pd-careful-bg: #fef3c7; --pd-careful-border: #fde68a;
+  --pd-skip: #dc2626;    --pd-skip-bg: #fee2e2;    --pd-skip-border: #fecaca;
+  --pd-neutral: #57534e; --pd-neutral-bg: #f5f5f4; --pd-neutral-border: #e7e5e4;
+  --pd-unknown: #a8a29e;
+  --pd-text: #1c1917;
+  --pd-muted: #78716c;
+}
+
+/* ---------- search result chip ---------- */
+
+.pd-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 6px 0 2px;
+  padding: 3px 9px 3px 7px;
+  border: 1px solid var(--pd-neutral-border);
+  border-radius: 999px;
+  background: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--pd-text);
+  cursor: pointer;
+  user-select: none;
+  transition: box-shadow .15s, transform .15s;
+}
+.pd-chip:hover { box-shadow: 0 2px 8px rgba(0,0,0,.12); transform: translateY(-1px); }
+.pd-chip .pd-dot { width: 8px; height: 8px; border-radius: 50%; flex: 0 0 auto; }
+.pd-chip .pd-fronts { display: inline-flex; gap: 3px; margin-left: 2px; }
+.pd-chip .pd-tick { width: 5px; height: 5px; border-radius: 1px; }
+
+.pd-chip.good    { background: var(--pd-good-bg);    border-color: var(--pd-good-border);    color: #14532d; }
+.pd-chip.careful { background: var(--pd-careful-bg); border-color: var(--pd-careful-border); color: #78350f; }
+.pd-chip.skip    { background: var(--pd-skip-bg);    border-color: var(--pd-skip-border);    color: #7f1d1d; }
+.pd-chip.neutral,
+.pd-chip.unknown { background: var(--pd-neutral-bg); border-color: var(--pd-neutral-border); color: var(--pd-neutral); }
+
+.pd-chip.good .pd-dot    { background: var(--pd-good); }
+.pd-chip.careful .pd-dot { background: var(--pd-careful); }
+.pd-chip.skip .pd-dot    { background: var(--pd-skip); }
+.pd-chip.neutral .pd-dot,
+.pd-chip.unknown .pd-dot { background: var(--pd-unknown); }
+
+/* ---------- detail panel and popover ---------- */
+
+.pd-panel {
+  margin: 14px 0;
+  border: 1px solid var(--pd-neutral-border);
+  border-radius: 12px;
+  background: #fff;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,.06);
+}
+.pd-pop {
+  position: absolute;
+  z-index: 2147483000;
+  width: 340px;
+  border: 1px solid var(--pd-neutral-border);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 8px 28px rgba(0,0,0,.18);
+  overflow: hidden;
+}
+
+.pd-head { padding: 13px 15px 12px; border-top: 4px solid var(--pd-unknown); }
+.pd-head.good    { border-top-color: var(--pd-good); }
+.pd-head.careful { border-top-color: var(--pd-careful); }
+.pd-head.skip    { border-top-color: var(--pd-skip); }
+.pd-head.neutral { border-top-color: var(--pd-neutral); }
+
+.pd-badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 3px 10px; border-radius: 999px;
+  border: 1px solid var(--pd-neutral-border); background: var(--pd-neutral-bg);
+  font-size: 11px; font-weight: 700; letter-spacing: .03em; text-transform: uppercase;
+  color: var(--pd-neutral);
+}
+.pd-badge.good    { color: var(--pd-good);    background: var(--pd-good-bg);    border-color: var(--pd-good-border); }
+.pd-badge.careful { color: var(--pd-careful); background: var(--pd-careful-bg); border-color: var(--pd-careful-border); }
+.pd-badge.skip    { color: var(--pd-skip);    background: var(--pd-skip-bg);    border-color: var(--pd-skip-border); }
+
+.pd-brand { margin: 9px 0 1px; font-size: 17px; font-weight: 700; color: var(--pd-text); }
+.pd-cat { font-size: 12px; color: var(--pd-muted); }
+.pd-reason { margin: 9px 0 0; font-size: 13px; line-height: 1.5; color: #44403c; }
+
+/* ---------- the four fronts ---------- */
+
+.pd-fronts-block { border-top: 1px solid #f0efed; padding: 11px 15px 12px; }
+.pd-fronts-label {
+  font-size: 10px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase;
+  color: var(--pd-muted); margin-bottom: 8px;
+}
+.pd-front { display: flex; align-items: flex-start; gap: 9px; padding: 5px 0; }
+.pd-front + .pd-front { border-top: 1px solid #faf9f8; }
+.pd-icon {
+  flex: 0 0 auto; width: 16px; height: 16px; margin-top: 1px; border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 10px; font-weight: 800; line-height: 1; color: #fff;
+}
+.pd-icon.pass    { background: var(--pd-good); }
+.pd-icon.caution { background: var(--pd-careful); }
+.pd-icon.fail    { background: var(--pd-skip); }
+.pd-icon.unknown { background: #fff; border: 1.5px dashed var(--pd-unknown); color: var(--pd-unknown); }
+
+.pd-front-body { min-width: 0; flex: 1; }
+.pd-front-name { font-size: 12.5px; font-weight: 600; color: var(--pd-text); }
+.pd-front-note { font-size: 11.5px; line-height: 1.45; color: var(--pd-muted); margin-top: 1px; }
+.pd-front.unknown .pd-front-name { color: var(--pd-muted); font-weight: 500; }
+
+.pd-foot {
+  border-top: 1px solid #f0efed; padding: 9px 15px;
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  background: #fdfdfc;
+}
+.pd-link {
+  font-size: 12px; font-weight: 600; color: #0f766e; text-decoration: none;
+}
+.pd-link:hover { text-decoration: underline; }
+.pd-mark { font-size: 10px; color: var(--pd-muted); letter-spacing: .02em; }
+
+.pd-alt { margin-top: 9px; font-size: 12px; color: #44403c; }
+.pd-alt b { color: var(--pd-good); }
+
+.pd-close {
+  position: absolute; top: 8px; right: 9px; width: 20px; height: 20px;
+  border: none; background: transparent; cursor: pointer;
+  font-size: 16px; line-height: 1; color: var(--pd-muted);
+}
+.pd-close:hover { color: var(--pd-text); }
+
+.pd-unmatched { padding: 12px 15px; font-size: 12.5px; color: var(--pd-muted); line-height: 1.5; }

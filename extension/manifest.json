@@ -1,0 +1,42 @@
+{
+  "manifest_version": 3,
+  "name": "Plastic Detox Brand Check",
+  "version": "1.0.0",
+  "description": "Shows our researched verdict on Amazon listings, scored on formula, packaging, recalls and lawsuits, and independent tests.",
+  "homepage_url": "https://plasticdetox.org/brand-check.html",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "permissions": ["storage", "alarms"],
+  "host_permissions": [
+    "https://plasticdetox.org/*",
+    "https://plasticdetox-quiz-email.plasticdetox.workers.dev/*"
+  ],
+  "background": {
+    "service_worker": "src/background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.amazon.com/*",
+        "https://smile.amazon.com/*"
+      ],
+      "js": ["src/content.js"],
+      "css": ["src/content.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "src/popup.html",
+    "default_title": "Plastic Detox Brand Check"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["data/*.json"],
+      "matches": ["https://www.amazon.com/*", "https://smile.amazon.com/*"]
+    }
+  ]
+}
