@@ -602,7 +602,10 @@ async function cmdPush(queuePath, send, verbose, draft) {
 /** Buffer Free allows only 10 queued posts per channel, so count what is pending. */
 async function queuedByChannel(cache) {
   const data = await gql(
-    `query { posts(first: 100, input: ${'${lit({ organizationId: cache.organizationId, filter: { status: [E("scheduled"), E("draft"), E("needs_approval")] } })}'}) {
+    `query { posts(first: 100, input: ${lit({
+        organizationId: cache.organizationId,
+        filter: { status: [E('scheduled'), E('draft'), E('needs_approval')] },
+      })}) {
         edges { node { id channel { id } } }
       } }`
   );
