@@ -127,20 +127,28 @@ address, no product, no identifier.
 Read the research: https://plasticdetox.org/brand-check.html
 ```
 
-**Graphics**, all in `extension/store/`:
+**Graphics**, all in `extension/store/`. **Each slot demands an exact size and
+rejects anything else with "The image size is incorrect."** Match them precisely:
 
-| Asset | Requirement | File |
-|---|---|---|
-| Store icon | 128x128 PNG, 96x96 artwork + 16px transparent padding | `store-icon-128.png` |
-| Screenshot 1 | 1280x800 | `screenshot-1-product-page.png` |
-| Screenshot 2 | 1280x800 | `screenshot-2-search-results.png` |
-| Screenshot 3 | 1280x800 | `screenshot-3-full-verdict.png` |
+| Dashboard slot | Exact size required | Upload this file | Required? |
+|---|---|---|---|
+| Store icon | 128 x 128 | `store-icon-128.png` | Yes |
+| Screenshots (up to 5) | 1280 x 800 | `screenshot-1-product-page.png`, `screenshot-2-search-results.png`, `screenshot-3-full-verdict.png` | Yes, at least 1 |
+| Small promo tile | 440 x 280 | `promo-small-440x280.png` | Optional |
+| Marquee promo tile | 1400 x 560 | `promo-marquee-1400x560.png` | Optional |
+
+If you hit the size error, you are almost certainly in the wrong slot. The store
+icon is the only 128 x 128 asset; everything else is larger. The two promo tiles
+are optional and can be skipped entirely without affecting review.
 
 > Use `store-icon-128.png`, **not** `icons/icon128.png`. The manifest icons
 > deliberately fill the whole square because they render in the toolbar. The
-> store icon needs the artwork inside a 96x96 safe area with genuinely
-> transparent padding, and no edge on the 128x128 canvas, since the store UI
-> draws its own. Regenerate both with `python3 tools/make-icons.py`.
+> store icon needs the artwork inside a 96 x 96 safe area with genuinely
+> transparent padding, and no edge on the 128 x 128 canvas, since the store UI
+> draws its own.
+
+Regenerate every asset above with `python3 tools/make-icons.py`, which asserts
+each output's exact dimensions before writing.
 
 **Support URL**: `https://plasticdetox.org/about.html`
 **Homepage URL**: `https://plasticdetox.org/brand-check.html`
