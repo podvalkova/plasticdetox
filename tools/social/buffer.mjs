@@ -555,9 +555,27 @@ async function cmdPush(queuePath, send, verbose, draft) {
     return;
   }
 
+  // Stay under the Free plan's per-channel queue limit rather than erroring on it.
+  const CAP = 10;
+  const queued = await queuedByChannel(loadChannels());
+  const room = new Map();
+  const deferred = [];
+  const sendable = [];
+  for (const b of todo) {
+    const chId = b.channel.id;
+    if (!room.has(chId)) room.set(chId, CAP - (queued.get(chId) ?? 0));
+    if (room.get(chId) > 0) { room.set(chId, room.get(chId) - 1); sendable.push(b); }
+    else deferred.push(b);
+  }
+  if (deferred.length) {
+    console.log(c.yellow(`\n${deferred.length} post(s) held back: those channels are at the ${CAP} post Free plan limit.`));
+    for (const b of deferred) console.log(c.dim(`  held: ${b.label} (${b.channel.service})`));
+    console.log(c.dim('  They stay in the queue file. Rerun once earlier posts publish.'));
+  }
+
   const ledger = readJSON(LEDGER, {});
   let ok = 0;
-  for (const b of todo) {
+  for (const b of sendable) {
     const data = await gql(mutationFor(b.input));
     const res = data?.createPost ?? {};
     if (res.message) {
@@ -577,7 +595,23 @@ async function cmdPush(queuePath, send, verbose, draft) {
     await new Promise(r => setTimeout(r, 400)); // be gentle with rate limits
   }
   console.log('');
-  console.log(c.green(`Scheduled ${ok}/${todo.length} post(s).`));
+  console.log(c.green(`Scheduled ${ok}/${sendable.length} post(s).`) +
+    (deferred.length ? c.yellow(` ${deferred.length} waiting on free slots.`) : ''));
+}
+
+/** Buffer Free allows only 10 queued posts per channel, so count what is pending. */
+async function queuedByChannel(cache) {
+  const data = await gql(
+    `query { posts(first: 100, input: ${'${lit({ organizationId: cache.organizationId, filter: { status: [E("scheduled"), E("draft"), E("needs_approval")] } })}'}) {
+        edges { node { id channel { id } } }
+      } }`
+  );
+  const counts = new Map();
+  for (const e of data?.posts?.edges ?? []) {
+    const id = e.node?.channel?.id;
+    if (id) counts.set(id, (counts.get(id) ?? 0) + 1);
+  }
+  return counts;
 }
 
 async function cmdList(all) {
@@ -592,11 +626,22 @@ async function cmdList(all) {
   const nodes = (data?.posts?.edges ?? []).map(e => e.node);
   if (!nodes.length) { console.log(all ? 'No posts in Buffer.' : 'Nothing upcoming in Buffer.'); return; }
   nodes.sort((a, b) => String(a.dueAt).localeCompare(String(b.dueAt)));
+  const perCh = new Map();
+  for (const n of nodes) {
+    const k = n.channel ? `${n.channel.service}/${n.channel.name}` : '?';
+    perCh.set(k, (perCh.get(k) ?? 0) + 1);
+  }
   for (const n of nodes) {
     const when = n.dueAt ? fmtLocal(n.dueAt, DEFAULT_TZ) : 'queued';
     const ch = n.channel ? `${n.channel.service}/${n.channel.name}` : '?';
     const t = String(n.text || '').replace(/\s+/g, ' ').slice(0, 60);
     console.log(`${when.padEnd(22)} ${String(n.status).padEnd(10)} ${ch.padEnd(24)} ${t}`);
+  }
+  if (!all) {
+    console.log('');
+    for (const [k, n] of [...perCh].sort()) {
+      console.log(c.dim(`  ${k.padEnd(26)} ${n}/10 slots used, ${10 - n} free`));
+    }
   }
 }
 
