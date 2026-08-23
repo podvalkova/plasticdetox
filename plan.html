@@ -199,6 +199,16 @@
   .u-cta:hover{background:#6d28d9;transform:translateY(-1px);box-shadow:var(--shadow-lg)}
   .u-note{font-size:.85rem;color:var(--text-muted);margin-top:.85rem}
 
+  /* package card shown in place of the old pitch */
+  .u-pkg{display:grid;grid-template-columns:1.3fr 1fr;gap:1.8rem;align-items:center;background:var(--surface);border:2px solid var(--accent);border-radius:var(--radius);padding:1.8rem 2rem;text-align:left;max-width:900px;margin:0 auto;box-shadow:var(--shadow-lg)}
+  .u-pkg-items{display:flex;flex-direction:column;gap:.7rem;margin-top:.9rem}
+  .u-pkg-item{display:flex;gap:.75rem;align-items:flex-start;font-size:.92rem;line-height:1.45}
+  .u-pkg-item b{display:block;font-weight:700}
+  .u-pkg-item .n{flex:0 0 auto;min-width:2.7rem;font-size:1.2rem;font-weight:800;color:var(--accent-dark);letter-spacing:-.02em}
+  .u-pkg-buy{background:var(--bg);border-radius:var(--radius);padding:1.4rem;text-align:center}
+  .u-pkg-buy .u-price{font-size:2.4rem}
+  @media(max-width:780px){ .u-pkg{grid-template-columns:1fr;padding:1.4rem} }
+
   /* quiz */
   .u-quiz{max-width:600px;margin:0 auto}
   .u-bar{height:7px;background:var(--border);border-radius:999px;overflow:hidden;margin-bottom:1.6rem}
@@ -335,18 +345,7 @@
   <div class="narrow">
 
     <!-- pitch -->
-    <div class="u-pitch" id="uPitch">
-      <div class="sec-tag" style="text-align:center">Go further</div>
-      <h2>Those are the swaps that matter for <em>everyone</em>.</h2>
-      <p class="u-lead">Not one of them knows anything about you. <b>The plan above cannot see whether you have a baby, a pantry, a makeup bag, or a supplement shelf</b>, and that is where most of the exposure it misses actually sits.</p>
-      <div class="u-grid" id="uGrid"></div>
-      <div class="u-offer">
-        <div class="u-offer-price">$9.99</div>
-        <div class="u-offer-txt"><b>Answer six questions and we show you which of these apply to your home, free.</b> Three in full, with the product and the $0 alternative. $9.99 opens the rest, plus the full non toxic registry and all 100 popular Amazon baby products rated.</div>
-      </div>
-      <button class="u-cta" id="uStart">Show me what applies to my home &rarr;</button>
-      <p class="u-note">About a minute. No card needed to see the answer.</p>
-    </div>
+    <div class="u-pitch" id="uPitch"></div>
 
     <!-- quiz -->
     <div class="u-quiz" id="uQuiz" hidden>
@@ -725,6 +724,7 @@
      subscriber to bypass the email gate, so reusing it would hand the paid
      additions to the whole list. Point the Stripe success URL at ?addon=1. */
   var UNLOCKED = qs.get('addon') === '1' || localStorage.getItem('pd_add_paid') === '1';   /* same flag as registry + top 100 */
+  var PAID = UNLOCKED;
 
   if(qs.get('addon') === '1'){ try{ localStorage.setItem('pd_add_paid','1'); }catch(e){} }
 
@@ -739,20 +739,49 @@
   function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
   function money(n){ return '$'+n.toLocaleString('en-US'); }
 
-  /* ---------- pitch: real counts of what the free plan never covers ---------- */
-  (function(){
-    var extras = R.filter(function(r){ return !r.inFree; });
-    function n(f){ return extras.filter(f).length; }
-    var cells = [
-      { n: n(function(r){ return r.room==='nursery'; }),  l: 'for babies and kids, from bottles to nursery air' },
-      { n: n(function(r){ return r.key.indexOf('Pantry|')===0 || r.key.indexOf('Tea|')===0 || r.key.indexOf('Coffee|')===0; }), l: 'in the pantry, coffee and tea you buy weekly' },
-      { n: n(function(r){ return r.room==='bathroom'; }), l: 'in personal care and makeup, absorbed daily' },
-      { n: n(function(r){ return r.key.indexOf('Supplements|')===0 || r.room==='whole'; }), l: 'in supplements and the air in every room' }
-    ];
-    document.getElementById('uGrid').innerHTML = cells.map(function(c){
-      return '<div class="u-cell"><div class="n">'+c.n+'</div><div class="l">'+c.l+'</div></div>';
-    }).join('');
-  })();
+  /* ---------- pitch: mention the package, do not preview the swaps ----------
+     Same card as the babies & kids page. Non buyers are told what exists and
+     what it costs; they are not shown any of the actual swaps. Buyers get the
+     quiz instead. */
+  function pitchHTML(){
+    if(PAID){
+      return '<div class="sec-tag" style="text-align:center">Included in your package</div>'
+        + '<h2>Now build the list for <em>your</em> home.</h2>'
+        + '<p class="u-lead">Six questions and we order the swaps around your household, your rooms and your budget, each with a product to buy and the $0 way to do it.</p>'
+        + '<button class="u-cta" id="uStart">Build my list &rarr;</button>'
+        + '<p class="u-note">About a minute. You can redo it any time.</p>';
+    }
+    return '<div class="sec-tag" style="text-align:center">Go further</div>'
+      + '<h2>Expecting, or have little ones at home?</h2>'
+      + '<p class="u-lead">The plan above is the same for everyone. <b>It cannot see whether you have a baby on the way, a nursery to set up, or a registry to fill in</b>, and that is where most of the exposure it misses actually sits.</p>'
+      + '<div class="u-pkg">'
+      + '<div class="u-pkg-left">'
+      + '<span class="u-kick">Baby &amp; Expecting Package</span>'
+      + '<div class="u-pkg-items">'
+      + '<div class="u-pkg-item"><span class="n">123</span><span><b>Registry picks across 12 tiered categories</b>Crib to car seat, ordered by how much each one matters.</span></div>'
+      + '<div class="u-pkg-item"><span class="n">100</span><span><b>Popular Amazon baby products rated</b>47 we would skip, 22 to use carefully, 31 we would buy, with the reasoning.</span></div>'
+      + '<div class="u-pkg-item"><span class="n">23</span><span><b>Baby and kid swaps in priority order</b>Bottles and formula first, then baby food, teethers, diapers and nursery air, plus the rest of your home.</span></div>'
+      + '</div></div>'
+      + '<div class="u-pkg-buy">'
+      + '<div class="u-price">' + PRICE + '</div>'
+      + '<div class="u-pricenote">One payment. Opens all three, forever.</div>'
+      + '<button class="u-buy" id="uBuy">Unlock the package</button>'
+      + '<p class="u-fine">' + (TESTMODE ? 'TEST MODE: unlocks without payment.'
+          : (CHECKOUT_URL ? 'Secure checkout. Instant access.' : 'Checkout is not live yet.')) + '</p>'
+      + '<p class="u-fine">A share of every sale funds independent lab testing.</p>'
+      + '</div></div>';
+  }
+
+  function renderPitch(){
+    pitch.innerHTML = pitchHTML();
+    var st = document.getElementById('uStart');
+    if(st) st.addEventListener('click', function(){
+      pitch.hidden = true; quiz.hidden = false; show(0);
+      if(window.gtag) gtag('event','addon_quiz_start');
+    });
+    var by = document.getElementById('uBuy');
+    if(by) by.addEventListener('click', checkout);
+  }
 
   /* ---------- build the questions ---------- */
   function chips(host, items, type, name, wide){
@@ -810,11 +839,6 @@
   });
   back.addEventListener('click', function(){
     var n = cur-1; while(n>0 && !visible(n)) n--; show(Math.max(0,n));
-  });
-
-  document.getElementById('uStart').addEventListener('click', function(){
-    pitch.hidden = true; quiz.hidden = false; show(0);
-    if(window.gtag) gtag('event','addon_quiz_start');
   });
 
   /* ---------- run ---------- */
@@ -884,39 +908,8 @@
     return 'Other';
   }
 
-  function holdHTML(held){
-    var areas = {};
-    held.forEach(function(s){ var a = areaOf(s.rule); areas[a] = (areas[a]||0)+1; });
-    var rows = Object.keys(areas).sort(function(a,b){ return areas[b]-areas[a]; })
-      .map(function(a){ return '<div class="u-area"><span>'+esc(a)+'</span><b>'+areas[a]+'</b></div>'; }).join('');
-    var n = held.length;
-    var cost = held.reduce(function(t,s){ return t + s.rule.est; }, 0);
-
-    return '<div class="u-hold">'
-      + '<div class="u-kick">Baby &amp; Expecting Package</div>'
-      + '<h3>'+n+' more apply to your home, plus the registry and the full 100</h3>'
-      + '<p class="hsub">Here is where they are, so you know exactly what you would be getting.</p>'
-      + '<div class="u-areas">'+rows+'</div>'
-      + '<div class="u-price">'+PRICE+'</div>'
-      + '<div class="u-pricenote">One payment, opens all three. Less than a single glass bottle.</div>'
-      + '<div class="u-list">'
-      + '<div><span class="tk">✓</span><span>All '+n+', written out in full like the ones above</span></div>'
-      + '<div><span class="tk">✓</span><span>The exact product for each, inside the budget you picked</span></div>'
-      + '<div><span class="tk">✓</span><span>The $0 way to do it wherever one exists, so it works if you buy nothing</span></div>'
-      + '<div><span class="tk">✓</span><span>Ranked by how much exposure each cuts, about '+money(cost)+' to do the lot</span></div>'
-      + '<div><span class="tk">✓</span><span>Tick them off as you go, we remember where you got to</span></div>'
-      + '<div><span class="tk">✓</span><span>A share of every sale funds our independent lab testing</span></div>'
-      + '</div>'
-      + '<button class="u-buy" id="uBuy">Unlock everything &middot; '+PRICE+'</button>'
-      + '<p class="u-fine">'+(CHECKOUT_URL ? 'Secure checkout. Instant access.'
-          : (TESTMODE ? 'TEST MODE: unlocks without payment.' : 'Checkout is not live yet.'))+'</p>'
-      + '</div>';
-  }
-
-  /* Three complete swaps free, then a hard stop. If only a couple apply,
-     charging for them would be absurd, so they are given away instead. */
-  var SAMPLE = 3, MIN_HELD = 5;
-
+  /* Buyers only reach this, so nothing is held back here. The offer above
+     is where non buyers stop, and it never shows them a swap. */
   function render(){
     var adds = PLAN.included.filter(function(s){ return !s.rule.inFree; });
     var total = adds.length;
@@ -924,31 +917,17 @@
     if(!total){
       res.className = 'u-res';
       res.innerHTML = '<h2>Your free plan already covers you.</h2>'
-        + '<p class="u-sub">Nothing we track falls outside it for the home you described. That is a good place to be. Widen your rooms or budget if you want us to look harder.</p>'
+        + '<p class="u-sub">Nothing we track falls outside it for the home you described. Widen your rooms or budget if you want us to look harder.</p>'
         + '<div style="text-align:center"><button class="u-again" id="uAgain">Answer again</button></div>';
       wire(); return;
     }
 
-    var giveAll = UNLOCKED || (total - SAMPLE) < MIN_HELD;
-    var shown = giveAll ? adds : adds.slice(0, SAMPLE);
-    var held  = giveAll ? []   : adds.slice(SAMPLE);
-    var cost  = adds.reduce(function(t,s){ return t + s.rule.est; }, 0);
+    var cost = adds.reduce(function(t,s){ return t + s.rule.est; }, 0);
+    var html = '<h2>' + total + ' swaps for your home, in priority order.</h2>'
+      + '<p class="u-sub">Ranked by how much exposure each one cuts. About ' + money(cost)
+      + ' to do every one, though most come with a way to do it for nothing.</p>';
 
-    var head;
-    if(UNLOCKED){
-      head = '<h2>All '+total+' of them, in full.</h2>'
-        + '<p class="u-sub">Ranked by how much exposure each one cuts. About '+money(cost)+' to do every one, though most come with a way to do it for nothing.</p>';
-    } else if(giveAll){
-      head = '<h2>'+total+' more '+(total===1?'applies':'apply')+' to your home.</h2>'
-        + '<p class="u-sub">That is few enough that charging for '+(total===1?'it':'them')+' would be silly, so here '+(total===1?'it is':'they are')+' in full. Nothing to buy.</p>';
-    } else {
-      head = '<h2>'+total+' swaps apply to you that the free plan never mentioned.</h2>'
-        + '<p class="u-sub">The first '+SAMPLE+' are below in full, product and free alternative included. Use them whether or not you unlock the rest.</p>';
-    }
-
-    var html = head;
-    shown.forEach(function(s, i){ html += addHTML(s, i+1); });
-    if(held.length) html += holdHTML(held);
+    adds.forEach(function(s, i){ html += addHTML(s, i + 1); });
     html += '<div style="text-align:center;margin-top:1.6rem"><button class="u-again" id="uAgain">Answer again</button></div>';
 
     res.className = 'u-res';
@@ -963,6 +942,7 @@
     if(again) again.addEventListener('click', function(){
       try{ localStorage.removeItem('pd_add_answers'); }catch(e){}
       res.hidden = true; res.innerHTML = '';
+      renderPitch();
       pitch.hidden = false;
       pitch.scrollIntoView({behavior:'smooth', block:'start'});
     });
@@ -978,23 +958,27 @@
   }
 
   function checkout(){
-    if(TESTMODE){ UNLOCKED = true; render(); return; }   /* preview, never charges */
+    if(TESTMODE){ UNLOCKED = PAID = true; renderPitch(); return; }   /* preview, never charges */
     if(window.gtag) gtag('event','begin_checkout',{value:9.99,currency:'USD'});
     if(CHECKOUT_URL){ location.href = CHECKOUT_URL; return; }
     var f = document.querySelector('.u-fine');
     if(f){ f.textContent = 'Checkout is not live yet. Add a payment link to turn this on.'; f.style.color='#b91c1c'; f.style.fontWeight='600'; }
   }
 
-  /* come back to what you already built */
-  try{
-    var saved = JSON.parse(localStorage.getItem('pd_add_answers')||'null');
-    if(saved && saved.rooms && saved.rooms.length){
-      ANS = saved;
-      PLAN = window.PlanEngine.buildPlan(ANS, P, R, B, C, T);
-      pitch.hidden = true; quiz.hidden = true; res.hidden = false;
-      render();
-    }
-  }catch(e){}
+  renderPitch();
+
+  /* come back to a list you already built, buyers only */
+  if(PAID){
+    try{
+      var saved = JSON.parse(localStorage.getItem('pd_add_answers')||'null');
+      if(saved && saved.rooms && saved.rooms.length){
+        ANS = saved;
+        PLAN = window.PlanEngine.buildPlan(ANS, P, R, B, C, T);
+        pitch.hidden = true; quiz.hidden = true; res.hidden = false;
+        render();
+      }
+    }catch(e){}
+  }
 
 })();
 </script>
