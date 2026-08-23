@@ -57,6 +57,13 @@ harmless.
 **Either way, it is reversible.** You can switch by changing from Trader to
 Non-Trader and back, which restarts verification.
 
+**If the extension ever charges, Non-Trader is off the table.** Selling to
+consumers is the textbook case of acting in your trade or business, and the
+declaration describes who you are rather than where you sell, so restricting to
+the US would not rescue it. Note also that you cannot charge through the store
+at all: Chrome Web Store payments stopped processing on 1 February 2021 and the
+licensing API went with them, so any paid tier runs through our own checkout.
+
 **EEA exposure for context**: 912 of 11,054 sessions in the last 90 days, 8.3%.
 Restricting distribution to the United States in Step 5 would sidestep the
 question entirely, at the cost of that 8.3%.
