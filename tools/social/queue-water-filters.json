@@ -1,5 +1,7 @@
 {
-  "defaults": { "timezone": "America/Los_Angeles" },
+  "defaults": {
+    "timezone": "America/Los_Angeles"
+  },
   "posts": [
     {
       "id": "wf-pin-hero-2026-08-25",
@@ -37,7 +39,6 @@
         "url": "https://plasticdetox.org/articles/best-water-filters.html"
       }
     },
-
     {
       "id": "wf-x-certifications-2026-08-25",
       "channel": "twitter",
@@ -45,10 +46,16 @@
       "text": "root is taken from the thread below",
       "twitter": {
         "thread": [
-          { "text": "Certified is a claim. Tested to is not.\n\nIf a water filter box says NSF 42, it has been checked for chlorine and taste. Nothing else.",
-            "image": "images/best-water-filters-article-hero.png" },
-          { "text": "What the numbers actually mean:\n\n401 covers microplastics\n53 covers lead and PFAS on carbon\n58 covers reverse osmosis\nP473 covers PFOA and PFOS\n\nA filter certified only to 42 tells you nothing about health contaminants." },
-          { "text": "Reverse osmosis is the only household technology that removes PFAS, microplastics, lead and fluoride. Everything else covers a subset, which is fine once you know which subset you need.\n\nFull breakdown: https://plasticdetox.org/articles/best-water-filters.html" }
+          {
+            "text": "Certified is a claim. Tested to is not.\n\nIf a water filter box says NSF 42, it has been checked for chlorine and taste. Nothing else.",
+            "image": "images/best-water-filters-article-hero.png"
+          },
+          {
+            "text": "What the numbers actually mean:\n\n401 covers microplastics\n53 covers lead and PFAS on carbon\n58 covers reverse osmosis\nP473 covers PFOA and PFOS\n\nA filter certified only to 42 tells you nothing about health contaminants."
+          },
+          {
+            "text": "Reverse osmosis is the only household technology that removes PFAS, microplastics, lead and fluoride. Everything else covers a subset, which is fine once you know which subset you need.\n\nFull breakdown: https://plasticdetox.org/articles/best-water-filters.html"
+          }
         ]
       }
     },
@@ -58,14 +65,32 @@
       "when": "2026-08-27 08:30",
       "text": "In May the EPA proposed keeping the 4 parts per trillion limit for PFOA and PFOS, while letting utilities push compliance from 2029 to 2031.\n\nThe same proposal would rescind the limits for GenX, PFHxS, PFNA and mixtures entirely.\n\nThe deadline moved. The contamination did not."
     },
-
     {
       "id": "wf-ig-story-2026-08-26",
       "channel": "instagram",
       "when": "2026-08-26 18:30",
       "text": "Reverse osmosis is the only household filter that removes PFAS, microplastics, lead and fluoride. New guide is up.",
       "image": "images/best-water-filters-article-hero.png",
-      "instagram": { "type": "story" }
+      "instagram": {
+        "type": "story"
+      }
+    },
+    {
+      "id": "wf-ig-carousel-2026-08-27",
+      "channel": "instagram",
+      "when": "2026-08-27 18:30",
+      "text": "Reverse osmosis is the only household filter that removes all four: PFAS, microplastics, lead and fluoride.\n\nEverything else covers a subset, which is fine once you know which subset you need. Swipe for what each filter type actually does.\n\nThe certification numbers are where most people get lost, so here they are in plain terms. NSF 401 covers microplastics. 53 covers lead and PFAS on carbon. 58 covers reverse osmosis. P473 covers PFOA and PFOS. A filter certified only to 42 has been checked for chlorine and taste, and nothing else.\n\nCarbon is excellent on chlorine, taste and many organics, but it does not touch fluoride or nitrates, and no packaging tells you that. Standard pitcher filters, refrigerator filters and most faucet mounts improve taste without removing what matters for health.\n\nThe full guide has all six filter types, five systems worth buying and how to read the certifications before you spend money. Link in bio.\n\n#waterfilter #reverseosmosis #pfas #microplastics #foreverchemicals #nontoxicliving #plasticfree #cleanwater #waterquality #lowtoxliving",
+      "image": [
+        "images/ig/water-filters/ig-water-filters-01.png",
+        "images/ig/water-filters/ig-water-filters-02.png",
+        "images/ig/water-filters/ig-water-filters-03.png",
+        "images/ig/water-filters/ig-water-filters-04.png",
+        "images/ig/water-filters/ig-water-filters-05.png",
+        "images/ig/water-filters/ig-water-filters-06.png"
+      ],
+      "instagram": {
+        "type": "post"
+      }
     }
   ]
 }
