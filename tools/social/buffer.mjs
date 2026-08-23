@@ -453,7 +453,10 @@ async function buildPosts(queuePath) {
         schedulingType: E('automatic'),
         mode,
         dueAt,
-        assets: assets.length ? assets : undefined,
+        // Both required by CreatePostInput: assets is [AssetInput!]! so a
+        // text-only post still has to send an empty list.
+        assets,
+        needsApproval: false,
         metadata,
       };
 
@@ -530,7 +533,7 @@ function mutationFor(input) {
     } }`;
 }
 
-async function cmdPush(queuePath, send, verbose) {
+async function cmdPush(queuePath, send, verbose, draft) {
   const result = await buildPosts(queuePath);
   const bad = report(result);
   console.log('');
@@ -540,6 +543,7 @@ async function cmdPush(queuePath, send, verbose) {
     return;
   }
   const todo = result.built.filter(b => !b.alreadySent);
+  if (draft) for (const b of todo) b.input.saveToDraft = true;
   if (!todo.length) {
     console.log(c.yellow('Every post in this queue was already scheduled. Nothing to do.'));
     return;
@@ -576,15 +580,17 @@ async function cmdPush(queuePath, send, verbose) {
   console.log(c.green(`Scheduled ${ok}/${todo.length} post(s).`));
 }
 
-async function cmdList() {
+async function cmdList(all) {
   const cache = loadChannels();
+  // organizationId is a top-level PostsInput field, not part of the filter.
+  const filter = all ? undefined : { status: [E('scheduled'), E('draft'), E('needs_approval'), E('error')] };
   const data = await gql(
-    `query { posts(first: 50, input: ${lit({ filter: { organizationId: cache.organizationId } })}) {
+    `query { posts(first: 50, input: ${lit({ organizationId: cache.organizationId, filter })}) {
         edges { node { id text status dueAt channel { name service } } }
       } }`
   );
   const nodes = (data?.posts?.edges ?? []).map(e => e.node);
-  if (!nodes.length) { console.log('Nothing scheduled in Buffer.'); return; }
+  if (!nodes.length) { console.log(all ? 'No posts in Buffer.' : 'Nothing upcoming in Buffer.'); return; }
   nodes.sort((a, b) => String(a.dueAt).localeCompare(String(b.dueAt)));
   for (const n of nodes) {
     const when = n.dueAt ? fmtLocal(n.dueAt, DEFAULT_TZ) : 'queued';
@@ -600,6 +606,7 @@ async function cmdIntrospect(typeName) {
       name kind
       fields { name type { name kind ofType { name kind } } }
       inputFields { name type { name kind ofType { name kind } } }
+      enumValues { name }
     } }`);
   console.log(JSON.stringify(data.__type, null, 2));
 }
@@ -620,7 +627,8 @@ ${c.bold('Buffer scheduler')} — preschedule plasticdetox social posts
   node tools/social/buffer.mjs check <queue.json>    validate a queue, send nothing
   node tools/social/buffer.mjs push  <queue.json>    dry run
   node tools/social/buffer.mjs push  <queue.json> --send    actually schedule
-  node tools/social/buffer.mjs list                  show what Buffer has scheduled
+  node tools/social/buffer.mjs push  <queue.json> --send --draft   save as drafts instead
+  node tools/social/buffer.mjs list                  show upcoming posts (--all for sent too)
   node tools/social/buffer.mjs introspect <Type>     dump a GraphQL type (debugging)
 `;
 
@@ -629,8 +637,8 @@ if (isMain) try {
     case 'setup': await cmdSetup(); break;
     case 'channels': printChannels(loadChannels()); break;
     case 'check': await cmdCheck(args[0] || join(HERE, 'queue.json')); break;
-    case 'push': await cmdPush(args[0] || join(HERE, 'queue.json'), flags.has('--send'), flags.has('--verbose')); break;
-    case 'list': await cmdList(); break;
+    case 'push': await cmdPush(args[0] || join(HERE, 'queue.json'), flags.has('--send'), flags.has('--verbose'), flags.has('--draft')); break;
+    case 'list': await cmdList(flags.has('--all')); break;
     case 'introspect': await cmdIntrospect(args[0]); break;
     default: console.log(USAGE);
   }

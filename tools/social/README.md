@@ -44,7 +44,15 @@ past. Nothing reaches Buffer until you pass `--send`.
 To see what is already scheduled:
 
 ```bash
-node tools/social/buffer.mjs list
+node tools/social/buffer.mjs list          # upcoming only
+node tools/social/buffer.mjs list --all    # includes already sent
+```
+
+To stage posts in Buffer without scheduling them, add `--draft`. They land in
+Buffer as drafts you can review and publish by hand:
+
+```bash
+node tools/social/buffer.mjs push queue-september.json --send --draft
 ```
 
 ## Queue format
@@ -81,7 +89,7 @@ node tools/social/buffer.mjs list
 | `pinterest.title` | Required for Pinterest. The pin title, 100 characters max. |
 | `pinterest.url` | Required for Pinterest. The destination link. |
 | `instagram.type` | `post` (default), `reel`, `story`, or `carousel`. |
-| `instagram.firstComment` | Optional. Posted as the first comment, handy for links. |
+| `instagram.firstComment` | Optional. **Paid plans only**, Buffer rejects the post on Free. |
 | `instagram.shouldShareToFeed` | Defaults to true, except for stories. |
 | `twitter.thread` | Optional array of `{ text, image }`. Root post first. |
 
@@ -110,6 +118,9 @@ The **Free plan caps you at 3 channels and 10 scheduled posts per channel**, so 
 month of prescheduled content will not fit. Essentials at $5 per channel per
 month lifts it to unlimited. API rate limits are generous either way (250 calls
 per 24 hours on Free), so the post cap is the real ceiling, not the API.
+
+Instagram first comments are also a paid feature. On Free, Buffer rejects the
+whole post rather than dropping just the comment, and `push` reports it.
 
 ## Images must be public
 
