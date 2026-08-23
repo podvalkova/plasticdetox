@@ -1,55 +1,97 @@
 {
   "_comment": "X search queries mapped to the article each one should point at. Edit freely. min_faves is a floor inside X's own search; --min filters again on our combined score.",
-  "excludeHandles": ["PlasticDetoxOrg"],
+  "excludeHandles": [
+    "PlasticDetoxOrg",
+    "ValerieAnne1970",
+    "delbigtree",
+    "WallStreetApes",
+    "ProjectGokuu",
+    "RenzTom"
+  ],
   "queries": [
-    { "label": "water-filters",
+    {
+      "label": "water-filters",
       "article": "https://plasticdetox.org/articles/best-water-filters.html",
       "query": "(\"water filter\" OR \"water filtration\" OR \"reverse osmosis\") (microplastics OR PFAS OR \"forever chemicals\") min_faves:15 -filter:replies -filter:retweets lang:en",
-      "modes": ["top", "live"] },
-
-    { "label": "bottled-water",
+      "modes": [
+        "top",
+        "live"
+      ]
+    },
+    {
+      "label": "bottled-water",
       "article": "https://plasticdetox.org/articles/how-to-remove-microplastics-from-bottled-water.html",
       "query": "(\"bottled water\" OR \"plastic bottle\") (microplastics OR nanoplastics) min_faves:20 -filter:replies -filter:retweets lang:en",
-      "modes": ["top"] },
-
-    { "label": "cookware-pfas",
+      "modes": [
+        "top"
+      ]
+    },
+    {
+      "label": "cookware-pfas",
       "article": "https://plasticdetox.org/articles/pfas-in-cookware-brands.html",
       "query": "(cookware OR nonstick OR \"non-stick\" OR teflon OR \"ceramic pan\") (PFAS OR \"forever chemicals\" OR toxic) min_faves:25 -filter:replies -filter:retweets lang:en",
-      "modes": ["top"] },
-
-    { "label": "sunscreen",
+      "modes": [
+        "top"
+      ]
+    },
+    {
+      "label": "sunscreen",
       "article": "https://plasticdetox.org/articles/best-mineral-sunscreen-guide.html",
       "query": "sunscreen (\"endocrine\" OR toxic OR \"mineral sunscreen\" OR oxybenzone) min_faves:25 -filter:replies -filter:retweets lang:en",
-      "modes": ["top"] },
-
-    { "label": "baby-bottles-kids",
+      "modes": [
+        "top"
+      ]
+    },
+    {
+      "label": "baby-bottles-kids",
       "article": "https://plasticdetox.org/articles/best-non-toxic-baby-bottles.html",
       "query": "(\"baby bottle\" OR \"sippy cup\" OR \"baby food\" OR formula) (microplastics OR plastic OR BPA) min_faves:20 -filter:replies -filter:retweets lang:en",
-      "modes": ["top"] },
-
-    { "label": "chewing-gum",
+      "modes": [
+        "top"
+      ]
+    },
+    {
+      "label": "chewing-gum",
       "article": "https://plasticdetox.org/articles/best-plastic-free-chewing-gum.html",
       "query": "(gum OR \"chewing gum\") (plastic OR polymer OR microplastics) min_faves:30 -filter:replies -filter:retweets lang:en",
-      "modes": ["top"] },
-
-    { "label": "food-storage",
+      "modes": [
+        "top"
+      ]
+    },
+    {
+      "label": "food-storage",
       "article": "https://plasticdetox.org/articles/best-plastic-free-food-storage-containers.html",
       "query": "(\"plastic container\" OR tupperware OR \"food storage\" OR microwave) (microplastics OR leach OR BPA) min_faves:25 -filter:replies -filter:retweets lang:en",
-      "modes": ["top"] },
-
-    { "label": "microplastics-health",
+      "modes": [
+        "top"
+      ]
+    },
+    {
+      "label": "microplastics-health",
       "article": "https://plasticdetox.org/articles/can-you-detox-microplastics.html",
       "query": "(microplastics OR nanoplastics) (study OR research OR blood OR brain OR \"how do I\" OR reduce) min_faves:60 -filter:replies -filter:retweets lang:en",
-      "modes": ["top"] },
-
-    { "label": "pfas-general",
+      "modes": [
+        "top"
+      ]
+    },
+    {
+      "label": "pfas-general",
       "article": "https://plasticdetox.org/articles/what-are-pfas.html",
       "query": "(PFAS OR \"forever chemicals\") (drinking water OR blood OR study OR avoid) min_faves:50 -filter:replies -filter:retweets lang:en",
-      "modes": ["top"] },
-
-    { "label": "asking-for-recs",
+      "modes": [
+        "top"
+      ]
+    },
+    {
+      "label": "asking-for-recs",
       "article": null,
       "query": "(\"non toxic\" OR nontoxic OR \"plastic free\" OR \"microplastic free\") (recommendations OR \"any recs\" OR \"what do you use\" OR \"which brand\") min_faves:10 -filter:replies -filter:retweets lang:en",
-      "modes": ["top", "live"] }
-  ]
+      "modes": [
+        "top",
+        "live"
+      ]
+    }
+  ],
+  "maxPerHandle": 2,
+  "_excludeNote": "Accounts whose framing does not fit an education-and-research brand. This is an editorial call, not a fact. Edit freely."
 }

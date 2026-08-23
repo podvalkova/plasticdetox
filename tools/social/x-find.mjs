@@ -201,7 +201,22 @@ for (const q of queries.queries) {
 
 await browser.close();
 
-const list = [...found.values()].sort((a, b) => b.score - a.score);
+let list = [...found.values()].sort((a, b) => b.score - a.score);
+
+// One prolific account can otherwise take over a whole run.
+const maxPerHandle = queries.maxPerHandle ?? 2;
+const perHandle = new Map();
+const capped = [];
+let dropped = 0;
+for (const p of list) {
+  const h = p.handle.toLowerCase();
+  const n = perHandle.get(h) ?? 0;
+  if (n >= maxPerHandle) { dropped++; continue; }
+  perHandle.set(h, n + 1);
+  capped.push(p);
+}
+if (dropped) console.log(`\n  ${dropped} dropped by the ${maxPerHandle}-per-account cap`);
+list = capped;
 writeFileSync(OUT, JSON.stringify({ generatedFor: MIN_ENGAGEMENT, count: list.length, posts: list }, null, 2) + '\n');
 console.log(`\n${list.length} candidates written to ${OUT.replace(REPO + '/', '')}`);
 if (list.length) {
