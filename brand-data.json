@@ -10834,5 +10834,61 @@
       "Honeywell HPA100",
       "Filter R"
     ]
+  },
+  {
+    "id": "kachava",
+    "brand": "Ka'Chava",
+    "category": "Supplements",
+    "stance": "skip",
+    "reason": "Plant based meal replacement shake with a heavy metals record. Lead Safe Mama's February 2025 lab report found lead, cadmium and arsenic in the Superblend Matcha flavor, and a California Proposition 65 case brought by the Environmental Research Center over lead in the Vanilla and Chocolate Whole Body Meal was filed in December 2021 and settled in February 2022. Ka'Chava says it tests through an independent third party and stays below FDA interim reference levels for lead. Plant protein is the most contaminated category in Consumer Reports October 2025 testing, though Ka'Chava itself was not one of the 23 products in that round.",
+    "evidence": "Lead, cadmium and arsenic detected (Lead Safe Mama, 2025); Prop 65 lead case settled 2022",
+    "alternative": "Transparent Labs Whey Isolate",
+    "aliases": [
+      "Kachava",
+      "Ka Chava",
+      "Tribal Superfood"
+    ],
+    "cautions": [
+      "Below FDA interim reference levels is not the same as clean. Consumer Reports treats anything over 0.5 micrograms of lead per day from one source as too much, a far stricter bar than the FDA level brands cite."
+    ],
+    "sources": [
+      "https://tamararubin.com/2025/02/kachava-superblend-plant-based-protein-in-matcha-flavor/",
+      "https://oag.ca.gov/prop65/60-day-notice-2021-01491",
+      "https://www.consumerreports.org/lead/protein-powders-and-shakes-contain-high-levels-of-lead-a4206364640/",
+      "cleanest-protein-powder-tested.html"
+    ]
+  },
+  {
+    "id": "revision-skincare",
+    "brand": "Revision Skincare",
+    "category": "Skincare",
+    "stance": "careful",
+    "reason": "Professional skincare sold through dermatology offices and medspas, private equity owned since 2024. The verdict depends on the product. The Intellishade Original and Matte tinted SPF products are built on octinoxate 7.5% plus octisalate, chemical filters we skip, while the treatment line leans on synthetic fragrance, silicones and PEGs. There is a mineral only Intellishade TruPhysical version, which is the better choice within the brand. No recalls or lawsuits found.",
+    "evidence": "Octinoxate 7.5% in Intellishade Original; fragrance, dimethicone and PEGs in the treatment line",
+    "alternative": "Activist Skincare tinted mineral SPF in refillable glass; Earth Harbor or MARA for serums",
+    "aliases": [
+      "Revision"
+    ],
+    "products": [
+      {
+        "name": "Intellishade Original and Matte SPF 45",
+        "verdict": "skip",
+        "note": "Actives are octinoxate 7.5%, octisalate 5%, titanium dioxide 3.5% and zinc oxide 3%. Octinoxate is a chemical filter with hormone disruption concerns and it is banned in Hawaii for reef harm, so a tinted mineral SPF is the swap."
+      },
+      {
+        "name": "Intellishade TruPhysical",
+        "verdict": "careful",
+        "note": "The mineral only version of the same tinted SPF and a clear improvement on the Original. We have not vetted its full inactive list."
+      },
+      {
+        "name": "Nectifirm and Nectifirm Advanced",
+        "verdict": "careful",
+        "note": "Formula ends in Fragrance (Parfum) and includes dimethicone, dimethicone/vinyl dimethicone crosspolymer, PEG-10 phytosterol and carbomer. No parabens. Effective peptides, but not a clean formula by our standard."
+      }
+    ],
+    "sources": [
+      "https://revisionskincare.com/products/intellishade-original-spf-45",
+      "https://inkeedecoder.com/products/revision-skincare-nectifirm-advanced"
+    ]
   }
 ]
