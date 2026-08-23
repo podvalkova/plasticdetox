@@ -70,12 +70,27 @@
       return b.score - a.score || a.rule.swap.localeCompare(b.rule.swap);
     });
 
-    /* ---- 3. budget cut ---- */
-    var included = [], deferred = [];
+    /* ---- 3. budget cut ----
+       Swaps already in the free 90 day plan are always kept: the reader has
+       them either way, and holding one back would be selling back something
+       we already gave away. Budget only caps the paid additions. */
+    var included = [], deferred = [], extras = 0;
     scored.forEach(function (s) {
-      if (included.length < budget.maxSwaps && s.score >= budget.minRank) included.push(s);
+      if (s.rule.inFree) { included.push(s); return; }
+      if (extras < budget.maxExtras && s.score >= budget.minRank) { included.push(s); extras++; }
       else deferred.push(s);
     });
+
+    /* A narrow selection on the tightest budget can clear the rank floor
+       entirely. Promote the best few rather than offering nothing new. */
+    if (!extras && deferred.length) {
+      deferred.splice(0, Math.min(3, deferred.length)).forEach(function (s) {
+        included.push(s); extras++;
+      });
+      included.sort(function (a, b) {
+        return b.score - a.score || a.rule.swap.localeCompare(b.rule.swap);
+      });
+    }
 
     /* ---- 4. attach products, cheapest passing option within the tier cap ---- */
     var byKey = {};
@@ -152,6 +167,8 @@
         catalog:    PRODUCTS.length,
         shown:      shownCount,
         swaps:      included.length,
+        inFree:     included.filter(function (s) { return s.rule.inFree; }).length,
+        extras:     included.filter(function (s) { return !s.rule.inFree; }).length,
         ruledOut:   totalExcluded,
         deferred:   deferredProducts,
         laterSwaps: deferred.length

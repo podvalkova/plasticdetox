@@ -166,6 +166,77 @@
   .cform .cmsg{font-size:.9rem;margin-top:.7rem;display:none;text-align:center}
   .cform .cmsg.err{color:#dc2626}
   .cform .cmsg.ok{color:#166534}
+
+  /* ============ UNLOCK: more swaps for your home ============ */
+  .unlock-sec{background:linear-gradient(180deg,var(--bg),var(--accent-light));border-top:1px solid var(--border);padding:3.5rem 0 4rem;margin-top:1rem}
+  .u-pitch,.u-quiz,.u-res{scroll-margin-top:86px}   /* clear the sticky progress band */
+  .u-pitch{text-align:center}
+  .u-pitch h2{font-size:clamp(1.6rem,3.6vw,2.3rem);font-weight:800;letter-spacing:-.03em;line-height:1.12;margin-bottom:.7rem;text-wrap:balance}
+  .u-pitch h2 em{font-style:italic;color:var(--accent-dark)}
+  .u-pitch .u-lead{color:var(--text-muted);max-width:56ch;margin:0 auto 1.9rem;font-size:1.02rem}
+  .u-pitch .u-lead b{color:var(--text)}
+  .u-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.8rem;margin-bottom:2rem;text-align:left;max-width:620px;margin-left:auto;margin-right:auto}
+  @media(max-width:520px){ .u-grid{grid-template-columns:1fr} }
+  .u-cell{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:.9rem 1rem}
+  .u-cell .n{font-size:1.5rem;font-weight:800;color:var(--accent-dark);letter-spacing:-.03em;line-height:1.1}
+  .u-cell .l{font-size:.82rem;color:var(--text-muted);line-height:1.35;margin-top:.1rem}
+  .u-cta{background:var(--accent-dark);color:#fff;border:none;border-radius:60px;padding:1rem 2.3rem;font-family:inherit;font-size:1.05rem;font-weight:700;cursor:pointer;transition:all .18s}
+  .u-cta:hover{background:#6d28d9;transform:translateY(-1px);box-shadow:var(--shadow-lg)}
+  .u-note{font-size:.85rem;color:var(--text-muted);margin-top:.85rem}
+
+  /* quiz */
+  .u-quiz{max-width:600px;margin:0 auto}
+  .u-bar{height:7px;background:var(--border);border-radius:999px;overflow:hidden;margin-bottom:1.6rem}
+  .u-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent-dark));border-radius:999px;transition:width .3s ease}
+  .u-step{display:none}
+  .u-step.on{display:block;animation:ufade .25s ease}
+  @keyframes ufade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .u-step h3{font-size:1.35rem;font-weight:700;letter-spacing:-.02em;margin-bottom:.35rem}
+  .u-step .u-hint{color:var(--text-muted);font-size:.93rem;margin-bottom:1.3rem}
+  .u-chips{display:flex;flex-wrap:wrap;gap:.55rem}
+  .u-chips.col{flex-direction:column;flex-wrap:nowrap}
+  .u-chip{display:inline-flex;align-items:center;gap:.55rem;border:1.5px solid var(--border);background:var(--surface);padding:.7rem 1rem;border-radius:999px;cursor:pointer;font-size:.94rem;font-weight:500;transition:all .18s;user-select:none;text-align:left}
+  .u-chip:hover{border-color:var(--accent)}
+  .u-chip input{accent-color:var(--accent-dark);width:16px;height:16px;cursor:pointer;flex:0 0 auto}
+  .u-chip:has(input:checked){border-color:var(--accent-dark);background:var(--accent-light);color:var(--accent-dark);font-weight:600}
+  .u-chip.wide{border-radius:var(--radius-sm);width:100%;padding:.8rem 1rem}
+  .u-chip .cm{display:block;font-weight:600}
+  .u-chip .ch{display:block;font-size:.8rem;color:var(--text-muted);font-weight:400;line-height:1.35}
+  .u-chip.wide:has(input:checked) .ch{color:var(--accent-dark);opacity:.85}
+  .u-nav{display:flex;justify-content:space-between;align-items:center;margin-top:1.9rem;gap:1rem}
+  .u-btn{border:none;border-radius:60px;padding:.75rem 1.5rem;font-family:inherit;font-size:.93rem;font-weight:600;cursor:pointer;transition:all .18s}
+  .u-btn.next{background:var(--accent-dark);color:#fff}
+  .u-btn.next:hover{background:#6d28d9}
+  .u-btn.back{background:transparent;color:var(--text-muted)}
+  .u-err{color:#b91c1c;font-size:.86rem;margin-top:.8rem;display:none}
+
+  /* results */
+  .u-res h2{font-size:clamp(1.5rem,3.4vw,2.1rem);font-weight:800;letter-spacing:-.03em;line-height:1.14;text-align:center;margin-bottom:.5rem;text-wrap:balance}
+  .u-res .u-sub{text-align:center;color:var(--text-muted);max-width:52ch;margin:0 auto 2rem}
+  .u-add{position:relative}
+  .u-add .swap{background:var(--surface)}
+  .u-add.locked .lockbody{filter:blur(5px);opacity:.55;pointer-events:none;user-select:none}
+  .u-tag{display:inline-block;font-size:.63rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--accent-dark);background:var(--accent-light);padding:.15rem .5rem;border-radius:999px}
+  .u-cost{display:inline-block;font-size:.75rem;font-weight:700;color:var(--text-muted);margin-left:.35rem}
+  .u-freealt{margin-top:.6rem;background:#dcfce7;border-radius:var(--radius-sm);padding:.6rem .8rem;font-size:.86rem;line-height:1.5}
+  .u-freealt b{display:block;color:#15803d;font-size:.68rem;letter-spacing:.05em;text-transform:uppercase;margin-bottom:.1rem}
+  .u-why{font-size:.85rem;font-weight:600;color:var(--accent-dark);text-decoration:none;display:inline-block;margin-top:.55rem}
+  .u-why:hover{text-decoration:underline}
+
+  .u-pay{background:var(--surface);border:2px solid var(--accent);border-radius:var(--radius);padding:2rem 1.75rem;text-align:center;margin:1.5rem 0;box-shadow:var(--shadow-lg)}
+  .u-pay h3{font-size:1.4rem;font-weight:800;letter-spacing:-.025em;margin-bottom:.5rem}
+  .u-pay p{color:var(--text-muted);max-width:46ch;margin:0 auto 1.1rem;font-size:.95rem}
+  .u-price{font-size:2.5rem;font-weight:800;letter-spacing:-.04em;line-height:1}
+  .u-pricenote{font-size:.82rem;color:var(--text-muted);margin-bottom:1.2rem}
+  .u-list{text-align:left;max-width:410px;margin:0 auto 1.3rem;display:flex;flex-direction:column;gap:.45rem}
+  .u-list div{font-size:.91rem;display:flex;gap:.6rem;align-items:flex-start}
+  .u-list .tk{color:#16a34a;font-weight:800;flex:0 0 auto}
+  .u-buy{background:var(--accent-dark);color:#fff;border:none;border-radius:60px;padding:1rem 2.2rem;font-family:inherit;font-size:1.04rem;font-weight:700;cursor:pointer;width:100%;max-width:340px;transition:all .18s}
+  .u-buy:hover{background:#6d28d9;transform:translateY(-1px);box-shadow:var(--shadow-lg)}
+  .u-fine{font-size:.77rem;color:var(--text-muted);margin-top:.85rem}
+  .u-again{background:transparent;border:1.5px solid var(--border);color:var(--text-muted);border-radius:60px;padding:.6rem 1.3rem;font-family:inherit;font-size:.86rem;font-weight:600;cursor:pointer;margin:0 auto;display:block}
+  .u-again:hover{border-color:var(--accent);color:var(--text)}
+  @media print{ .unlock-sec{display:none!important} }
 </style>
 </head>
 <body>
@@ -191,7 +262,7 @@
   <a href="./" class="nav-logo">plastic<span>detox</span></a>
   <div class="nav-links">
     <a class="nav-link nav-hide-mobile" href="./">Home</a>
-    <a class="nav-link" href="custom-plan.html">Free Plan</a>
+    <a class="nav-link" href="plan.html">Free Plan</a>
     <a class="nav-link" href="store.html">Store</a>
     <a class="nav-link" href="./#resources">Resources</a>
     <a class="nav-link" href="brand-check.html">Brand Check</a>
@@ -246,20 +317,90 @@
   </div>
 </section>
 
+<!-- UNLOCK: more swaps, chosen for your home -->
+<section class="unlock-sec" id="unlock">
+  <div class="narrow">
+
+    <!-- pitch -->
+    <div class="u-pitch" id="uPitch">
+      <div class="sec-tag" style="text-align:center">Go further</div>
+      <h2>Those are the swaps that matter for <em>everyone</em>.</h2>
+      <p class="u-lead">Not one of them knows anything about you. <b>The plan above cannot see whether you have a baby, a pantry, a makeup bag, or a supplement shelf</b>, and that is where most of the exposure it misses actually sits.</p>
+      <div class="u-grid" id="uGrid"></div>
+      <button class="u-cta" id="uStart">Find what my plan is missing &rarr;</button>
+      <p class="u-note">Six questions, about a minute. Seeing how many you are missing is free.</p>
+    </div>
+
+    <!-- quiz -->
+    <div class="u-quiz" id="uQuiz" hidden>
+      <div class="u-bar"><i id="uFill"></i></div>
+
+      <div class="u-step on" data-s="0">
+        <h3>Who lives in your home?</h3>
+        <p class="u-hint">This changes the answer more than anything else you can tell us.</p>
+        <div class="u-chips" id="uq-household">
+          <label class="u-chip"><input type="checkbox" value="kids"> Babies or kids</label>
+          <label class="u-chip"><input type="checkbox" value="pregnant"> Pregnant or expecting</label>
+          <label class="u-chip"><input type="checkbox" value="pets"> Pets</label>
+          <label class="u-chip"><input type="checkbox" value="adults" data-x="1"> Adults only</label>
+        </div>
+        <p class="u-err" id="ue0">Pick at least one.</p>
+      </div>
+
+      <div class="u-step" data-s="1">
+        <h3>How old are your children?</h3>
+        <p class="u-hint">Feeding gear and nursery items are where exposure adds up fastest, so age decides a lot.</p>
+        <div class="u-chips" id="uq-stages"></div>
+        <p class="u-err" id="ue1">Pick at least one.</p>
+      </div>
+
+      <div class="u-step" data-s="2">
+        <h3>Which rooms should we cover?</h3>
+        <p class="u-hint">We only look at the rooms you pick, so leave out anything you are not ready to work on.</p>
+        <div class="u-chips" id="uq-rooms"></div>
+        <p class="u-err" id="ue2">Pick at least one room.</p>
+      </div>
+
+      <div class="u-step" data-s="3">
+        <h3>Which of these are true for you?</h3>
+        <p class="u-hint">These decide whether whole sections belong in your list, so answer honestly rather than aspirationally.</p>
+        <div class="u-chips col" id="uq-triggers"></div>
+      </div>
+
+      <div class="u-step" data-s="4">
+        <h3>How do you want to spend?</h3>
+        <p class="u-hint">This sets how many additions you get and how expensive the picks are allowed to be.</p>
+        <div class="u-chips col" id="uq-budget"></div>
+        <p class="u-err" id="ue4">Pick one.</p>
+      </div>
+
+      <div class="u-step" data-s="5">
+        <h3>What worries you most?</h3>
+        <p class="u-hint">Whatever you pick moves to the front, so you start where your head already is.</p>
+        <div class="u-chips" id="uq-concern"></div>
+        <p class="u-err" id="ue5">Pick one.</p>
+      </div>
+
+      <div class="u-nav">
+        <button type="button" class="u-btn back" id="uBack" style="visibility:hidden">&larr; Back</button>
+        <button type="button" class="u-btn next" id="uNext">Next &rarr;</button>
+      </div>
+    </div>
+
+    <!-- results -->
+    <div class="u-res" id="uRes" hidden></div>
+
+  </div>
+</section>
+
 <!-- CLOSING CTA -->
 <section class="closing">
   <div class="narrow">
     <div class="close-intro">
-      <div class="sec-tag" style="text-align:center">Two ways to go further</div>
-      <h2>Want more than the general plan?</h2>
+      <div class="sec-tag" style="text-align:center">Why this is free</div>
+      <h2>The plan is free. The testing is not.</h2>
     </div>
     <div class="close-grid">
-      <div class="close-card featured">
-        <div class="cc-tag">Made for your home</div>
-        <h3>Get the version with your name on it.</h3>
-        <p>This plan is the same for everyone. The Custom Plan is built around your home: six questions, and you get only the swaps that apply to you, ordered so the ones that cut the most exposure come first, paced across three months, with a specific product and price for each. $9.99.</p>
-        <a href="my-plan.html" class="cc-btn" target="_blank" rel="noopener">Build my Custom Plan &rarr;</a>
-      </div>
       <div class="close-card">
         <div class="cc-tag">Science first</div>
         <h3>Help fund independent testing.</h3>
@@ -545,6 +686,278 @@
       });
     })();
   </script>
+
+<!-- ============ UNLOCK: quiz, engine, personalised additions ============ -->
+<script src="data/store-products.js"></script>
+<script src="data/plan-rules.js"></script>
+<script src="data/plan-engine.js"></script>
+<script>
+(function(){
+  "use strict";
+
+  /* Paste a Stripe Payment Link here to go live. While it is empty the buy
+     button refuses for real visitors; only ?test=1 unlocks. */
+  var CHECKOUT_URL = "";
+  var PRICE = "$9.99";
+
+  var P = window.STORE_PRODUCTS, R = window.PLAN_RULES,
+      B = window.PLAN_BUDGETS,   C = window.PLAN_CONCERNS,
+      T = window.PLAN_TRIGGERS,  RM = window.PLAN_ROOMS, ST = window.PLAN_STAGES;
+  if(!P || !R || !window.PlanEngine) return;
+
+  var qs = new URLSearchParams(location.search);
+  var TESTMODE = qs.get('test') === '1';
+  /* Deliberately NOT ?unlocked=1: the worker emails that token to every free
+     subscriber to bypass the email gate, so reusing it would hand the paid
+     additions to the whole list. Point the Stripe success URL at ?addon=1. */
+  var UNLOCKED = qs.get('addon') === '1' || localStorage.getItem('pd_add_paid') === '1';
+
+  if(qs.get('addon') === '1'){ try{ localStorage.setItem('pd_add_paid','1'); }catch(e){} }
+
+  var pitch = document.getElementById('uPitch'),
+      quiz  = document.getElementById('uQuiz'),
+      res   = document.getElementById('uRes');
+
+  var DONE = {};
+  try{ DONE = JSON.parse(localStorage.getItem('pd_add_done')||'{}') || {}; }catch(e){ DONE = {}; }
+  function saveDone(){ try{ localStorage.setItem('pd_add_done', JSON.stringify(DONE)); }catch(e){} }
+
+  function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+  function money(n){ return '$'+n.toLocaleString('en-US'); }
+
+  /* ---------- pitch: real counts of what the free plan never covers ---------- */
+  (function(){
+    var extras = R.filter(function(r){ return !r.inFree; });
+    function n(f){ return extras.filter(f).length; }
+    var cells = [
+      { n: n(function(r){ return r.room==='nursery'; }),  l: 'for babies and kids, from bottles to nursery air' },
+      { n: n(function(r){ return r.key.indexOf('Pantry|')===0 || r.key.indexOf('Tea|')===0 || r.key.indexOf('Coffee|')===0; }), l: 'in the pantry, coffee and tea you buy weekly' },
+      { n: n(function(r){ return r.room==='bathroom'; }), l: 'in personal care and makeup, absorbed daily' },
+      { n: n(function(r){ return r.key.indexOf('Supplements|')===0 || r.room==='whole'; }), l: 'in supplements and the air in every room' }
+    ];
+    document.getElementById('uGrid').innerHTML = cells.map(function(c){
+      return '<div class="u-cell"><div class="n">'+c.n+'</div><div class="l">'+c.l+'</div></div>';
+    }).join('');
+  })();
+
+  /* ---------- build the questions ---------- */
+  function chips(host, items, type, name, wide){
+    document.getElementById(host).innerHTML = items.map(function(i){
+      var inner = wide
+        ? '<span><span class="cm">'+i.label+'</span><span class="ch">'+(i.hint||i.blurb||'')+'</span></span>'
+        : ' '+i.label;
+      return '<label class="u-chip'+(wide?' wide':'')+'"><input type="'+type+'" name="'+name+'" value="'+i.id+'">'+inner+'</label>';
+    }).join('');
+  }
+  chips('uq-stages',   ST, 'checkbox', 'ustages',   false);
+  chips('uq-rooms',    RM, 'checkbox', 'urooms',    false);
+  chips('uq-concern',  C,  'radio',    'uconcern',  false);
+  chips('uq-triggers', T,  'checkbox', 'utriggers', true);
+  chips('uq-budget',   B,  'radio',    'ubudget',   true);
+
+  document.getElementById('uq-household').addEventListener('change', function(e){
+    var box = e.target; if(box.type!=='checkbox') return;
+    var all = [].slice.call(document.querySelectorAll('#uq-household input'));
+    if(box.dataset.x && box.checked) all.forEach(function(b){ if(b!==box) b.checked=false; });
+    else if(box.checked) all.forEach(function(b){ if(b.dataset.x) b.checked=false; });
+  });
+
+  /* ---------- step machine ---------- */
+  var steps = [].slice.call(quiz.querySelectorAll('.u-step')), cur = 0;
+  var back = document.getElementById('uBack'), next = document.getElementById('uNext');
+  function vals(sel){ return [].slice.call(document.querySelectorAll(sel+' input:checked')).map(function(i){return i.value;}); }
+  function hasKids(){ return vals('#uq-household').indexOf('kids')!==-1; }
+  function visible(i){ return i===1 ? hasKids() : true; }
+
+  function show(i){
+    steps.forEach(function(s){ s.classList.remove('on'); });
+    steps[i].classList.add('on'); cur = i;
+    var shown = steps.filter(function(_,k){ return visible(k); });
+    var pos = shown.indexOf(steps[i]) + 1;
+    document.getElementById('uFill').style.width = Math.round((pos-1)/shown.length*100)+'%';
+    back.style.visibility = i===0 ? 'hidden' : 'visible';
+    next.textContent = (i===steps.length-1) ? 'Show me what I am missing →' : 'Next →';
+    quiz.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+  function validate(i){
+    var e = document.getElementById('ue'+i); if(e) e.style.display='none';
+    if(i===3) return true;
+    var need = {0:'#uq-household',1:'#uq-stages',2:'#uq-rooms',4:'[name=ubudget]',5:'[name=uconcern]'};
+    var ok = i>=4 ? document.querySelector(need[i]+':checked') : vals(need[i]).length;
+    if(!ok){ if(e) e.style.display='block'; return false; }
+    return true;
+  }
+  next.addEventListener('click', function(){
+    if(!validate(cur)) return;
+    var n = cur+1;
+    while(n<steps.length && !visible(n)) n++;
+    if(n>=steps.length) return build();
+    show(n);
+  });
+  back.addEventListener('click', function(){
+    var n = cur-1; while(n>0 && !visible(n)) n--; show(Math.max(0,n));
+  });
+
+  document.getElementById('uStart').addEventListener('click', function(){
+    pitch.hidden = true; quiz.hidden = false; show(0);
+    if(window.gtag) gtag('event','addon_quiz_start');
+  });
+
+  /* ---------- run ---------- */
+  var PLAN = null, ANS = null;
+
+  function answers(){
+    var trig = {};
+    vals('#uq-triggers').forEach(function(t){ trig[t]=true; });
+    var hh = vals('#uq-household');
+    if(hh.indexOf('pets')!==-1) trig.pets = true;
+    var stages = hasKids() ? vals('#uq-stages') : [];
+    if(hh.indexOf('pregnant')!==-1) stages.push('expecting');
+    return {
+      rooms:    vals('#uq-rooms'),
+      stages:   stages,
+      triggers: trig,
+      budget:   (document.querySelector('[name=ubudget]:checked')||{}).value,
+      concern:  (document.querySelector('[name=uconcern]:checked')||{}).value
+    };
+  }
+
+  function build(){
+    ANS  = answers();
+    PLAN = window.PlanEngine.buildPlan(ANS, P, R, B, C, T);
+    try{ localStorage.setItem('pd_add_answers', JSON.stringify(ANS)); }catch(e){}
+    quiz.hidden = true; pitch.hidden = true; res.hidden = false;
+    render();
+    if(window.gtag) gtag('event','addon_generated',{extras:PLAN.counts.extras,budget:ANS.budget});
+    res.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+
+  function imgFor(p){ return p.imgUrl ? p.imgUrl : (p.img ? 'https://m.media-amazon.com/images/I/'+p.img+'._AC_SL300_.jpg' : ''); }
+  function linkFor(p){ return p.url ? p.url : 'https://www.amazon.com/dp/'+p.asin+'?tag=plasticdetox-20'; }
+
+  function addHTML(s, n, locked){
+    var r = s.rule;
+    var picks = (s.products||[]).map(function(p){
+      return '<div class="pick"><span class="plabel">'+esc(p.tier||'Pick')+'</span>'
+        + '<a href="'+esc(linkFor(p))+'" target="_blank" rel="noopener sponsored">'+esc(p.name)+' &rarr;</a>'
+        + (p.bestFor ? '<span class="pnote">'+esc(p.bestFor)+'</span>' : '') + '</div>';
+    }).join('');
+    var body = '<div class="picks">'+picks+'</div>'
+      + (r.free ? '<div class="u-freealt"><b>Free version</b>'+esc(r.free)+'</div>' : '')
+      + (r.article ? '<a class="u-why" href="'+r.article+'">Why this, in full &rarr;</a>' : '');
+    var isDone = !!DONE[r.key];
+    return '<div class="swap'+(isDone?' done':'')+'" data-k="'+esc(r.key)+'">'
+      + (locked ? '<span class="cbox"></span>'
+                : '<label class="cbox"><input type="checkbox" class="ubox"'+(isDone?' checked':'')+'></label>')
+      + '<div class="swap-body">'
+      + '<div class="swap-top"><span class="swap-title">'+n+'. '+esc(r.swap)+'</span>'
+      + '<span class="u-tag">Not in the free plan</span>'
+      + '<span class="u-cost">about '+money(r.est)+'</span></div>'
+      + '<div class="swap-why">'+esc(r.why)+'</div>'
+      + (locked ? '<div class="lockbody">'+body+'</div>' : body)
+      + '</div></div>';
+  }
+
+  function payHTML(rest){
+    return '<div class="u-pay">'
+      + '<h3>Unlock '+rest+' more for your home</h3>'
+      + '<p>Everything above the line is free. These are the rest of the swaps your answers turned up, and none of them are in the plan you just read.</p>'
+      + '<div class="u-price">'+PRICE+'</div>'
+      + '<div class="u-pricenote">One payment. Yours to keep and reprint.</div>'
+      + '<div class="u-list">'
+      + '<div><span class="tk">✓</span><span>'+rest+' more swap'+(rest===1?'':'s')+', ranked by how much exposure each one cuts</span></div>'
+      + '<div><span class="tk">✓</span><span>The exact product to buy for each, inside the budget you picked</span></div>'
+      + '<div><span class="tk">✓</span><span>The $0 way to do it wherever one exists</span></div>'
+      + '<div><span class="tk">✓</span><span>Tick them off as you go, we remember where you got to</span></div>'
+      + '<div><span class="tk">✓</span><span>A share of every sale funds our independent lab testing</span></div>'
+      + '</div>'
+      + '<button class="u-buy" id="uBuy">Unlock '+(rest===1?'it':rest+' more')+' &middot; '+PRICE+'</button>'
+      + '<p class="u-fine">'+(CHECKOUT_URL ? 'Secure checkout. Instant access.'
+          : (TESTMODE ? 'TEST MODE: unlocks without payment.' : 'Checkout is not live yet.'))+'</p>'
+      + '</div>';
+  }
+
+  /* how many additions are shown before the paywall */
+  var FREE_PEEK = 2;
+
+  function render(){
+    var adds = PLAN.included.filter(function(s){ return !s.rule.inFree; });
+    var locked = !UNLOCKED;
+    var total = adds.length;
+
+    if(!total){
+      res.innerHTML = '<h2>Your free plan already covers you.</h2>'
+        + '<p class="u-sub">Nothing we track falls outside it for the home you described. That is a good place to be. Widen your rooms or budget if you want us to look harder.</p>'
+        + '<button class="u-again" id="uAgain">Answer again</button>';
+      wire();
+      return;
+    }
+
+    var peek = locked ? Math.min(FREE_PEEK, total) : total;
+    var rest = total - peek;
+    var cost = adds.reduce(function(t,s){ return t + s.rule.est; }, 0);
+
+    var html = '<h2>'+total+' more swap'+(total===1?'':'s')+' your plan never mentioned.</h2>'
+      + '<p class="u-sub">Chosen from your answers, ranked by how much exposure each one cuts. About '+money(cost)+' if you bought every single one, though most come with a way to do it for nothing.</p>';
+
+    adds.forEach(function(s, i){
+      var lock = locked && i >= peek;
+      if(lock && i === peek) html += payHTML(rest);
+      html += addHTML(s, i+1, lock);
+    });
+
+    if(!locked){
+      html += '<div style="text-align:center;margin-top:1.6rem">'
+        + '<button class="u-again" id="uAgain">Answer again</button></div>';
+    }
+
+    res.className = 'u-res u-add' + (locked ? ' locked' : '');
+    res.innerHTML = html;
+    wire();
+  }
+
+  function wire(){
+    var buy = document.getElementById('uBuy');
+    if(buy) buy.addEventListener('click', checkout);
+    var again = document.getElementById('uAgain');
+    if(again) again.addEventListener('click', function(){
+      try{ localStorage.removeItem('pd_add_answers'); }catch(e){}
+      res.hidden = true; res.innerHTML = '';
+      pitch.hidden = false;
+      pitch.scrollIntoView({behavior:'smooth', block:'start'});
+    });
+    res.addEventListener('change', function(ev){
+      var b = ev.target;
+      if(!b.classList || !b.classList.contains('ubox')) return;
+      var card = b.closest('.swap'), k = card && card.dataset.k;
+      if(!k) return;
+      if(b.checked) DONE[k]=1; else delete DONE[k];
+      card.classList.toggle('done', b.checked);
+      saveDone();
+    });
+  }
+
+  function checkout(){
+    if(window.gtag) gtag('event','begin_checkout',{value:9.99,currency:'USD'});
+    if(CHECKOUT_URL){ location.href = CHECKOUT_URL; return; }
+    if(TESTMODE){ UNLOCKED = true; render(); return; }
+    var f = document.querySelector('.u-fine');
+    if(f){ f.textContent = 'Checkout is not live yet. Add a payment link to turn this on.'; f.style.color='#b91c1c'; f.style.fontWeight='600'; }
+  }
+
+  /* come back to what you already built */
+  try{
+    var saved = JSON.parse(localStorage.getItem('pd_add_answers')||'null');
+    if(saved && saved.rooms && saved.rooms.length){
+      ANS = saved;
+      PLAN = window.PlanEngine.buildPlan(ANS, P, R, B, C, T);
+      pitch.hidden = true; quiz.hidden = true; res.hidden = false;
+      render();
+    }
+  }catch(e){}
+
+})();
+</script>
 
 </body>
 </html>

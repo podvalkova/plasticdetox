@@ -19,42 +19,42 @@
 window.PLAN_RULES = [
 
   /* ---------- KITCHEN AND WATER: the highest exposure surface ---------- */
-  { key:"Food Storage|Food Storage", swap:"Stop heating and storing food in plastic", room:"kitchen", stage:"all", needs:null, rank:99, est:60,
+  { key:"Food Storage|Food Storage", inFree:true, swap:"Stop heating and storing food in plastic", room:"kitchen", stage:"all", needs:null, rank:99, est:60,
     why:"The single biggest daily exposure. Heat and fat pull plastic straight into your food, and most kitchens do this two or three times a day.",
     free:"Before you buy anything: never microwave in plastic, and let food cool before it goes into a plastic container. That alone removes most of this exposure.",
     article:"articles/best-plastic-free-food-storage-containers.html" },
 
-  { key:"Clean Water|Water Filters", swap:"Filter your drinking water", room:"kitchen", stage:"all", needs:null, rank:98, est:120,
+  { key:"Clean Water|Water Filters", inFree:true, swap:"Filter your drinking water", room:"kitchen", stage:"all", needs:null, rank:98, est:120,
     why:"Tap and bottled water both carry microplastics, PFAS, and heavy metals. Filtering is the highest impact single purchase on this list.",
     free:"No free version of this one. But stopping bottled water is free and removes about 240,000 particles per liter.",
     article:"articles/best-water-filters-for-microplastics-and-pfas.html" },
 
-  { key:"Clean Water|Water Bottles", swap:"Carry a stainless or glass bottle", room:"kitchen", stage:"all", needs:null, rank:96, est:35,
+  { key:"Clean Water|Water Bottles", inFree:true, swap:"Carry a stainless or glass bottle", room:"kitchen", stage:"all", needs:null, rank:96, est:35,
     why:"Ends the daily habit of drinking from plastic, which sheds most when warm or reused. Also ends bottled water for good.",
     free:"Any glass jar with a lid works today. A mason jar is a water bottle.",
     article:"articles/best-non-toxic-water-bottles.html" },
 
-  { key:"Cookware|Pans", swap:"Replace your nonstick pans", room:"kitchen", stage:"all", needs:"cook", rank:95, est:90,
+  { key:"Cookware|Pans", inFree:true, swap:"Replace your nonstick pans", room:"kitchen", stage:"all", needs:"cook", rank:95, est:90,
     why:"Teflon and PTFE degrade with heat and scratches, into food you cook daily. Cast iron and stainless outlive you.",
     free:"Until you replace it: never preheat a nonstick pan empty, keep it below medium, and retire any pan that is scratched.",
     article:"articles/pfas-in-cookware-brands.html" },
 
-  { key:"Cookware|Pots", swap:"Move your pots to stainless or enamel", room:"kitchen", stage:"all", needs:"cook", rank:94, est:110,
+  { key:"Cookware|Pots", inFree:true, swap:"Move your pots to stainless or enamel", room:"kitchen", stage:"all", needs:"cook", rank:94, est:110,
     why:"Pots hold hot liquid for long stretches, which is exactly when coatings break down. This is a buy once purchase.",
     free:"Use your oldest uncoated pot for anything simmering more than 20 minutes.",
     article:"articles/cast-iron-vs-stainless-steel-vs-ceramic-cookware.html" },
 
-  { key:"Kitchen|Cutting Boards", swap:"Swap your plastic cutting board for wood", room:"kitchen", stage:"all", needs:"cook", rank:93, est:45,
+  { key:"Kitchen|Cutting Boards", inFree:true, swap:"Swap your plastic cutting board for wood", room:"kitchen", stage:"all", needs:"cook", rank:93, est:45,
     why:"Every knife cut sheds microplastic fragments into your food. One board can shed tens of millions of particles a year. Wood is naturally antimicrobial.",
     free:"Use a ceramic plate for cutting soft food until you replace the board.",
     article:"articles/best-non-toxic-cutting-boards.html" },
 
-  { key:"Clean Water|Kettles", swap:"Retire the plastic electric kettle", room:"kitchen", stage:"all", needs:null, rank:92, est:55,
+  { key:"Clean Water|Kettles", inFree:true, swap:"Retire the plastic electric kettle", room:"kitchen", stage:"all", needs:null, rank:92, est:55,
     why:"Boiling water inside a plastic lined kettle releases large amounts of nanoplastics into water you then drink hot.",
     free:"Boil in a stainless pot on the stove. Same water, no plastic, no purchase.",
     article:"articles/kitchen-detox-101.html" },
 
-  { key:"Kitchen|Utensils", swap:"Replace black plastic utensils", room:"kitchen", stage:"all", needs:"cook", rank:91, est:30,
+  { key:"Kitchen|Utensils", inFree:true, swap:"Replace black plastic utensils", room:"kitchen", stage:"all", needs:"cook", rank:91, est:30,
     why:"They soften against hot pans, and black plastic kitchenware has repeatedly tested positive for recycled electronic waste additives including flame retardants.",
     free:"Move the plastic ones to the back of the drawer and use whatever metal or wood you already own.",
     article:"articles/kitchen-detox-101.html" },
@@ -64,7 +64,7 @@ window.PLAN_RULES = [
     free:"Use the oven and an uncoated sheet pan instead of the air fryer. Slower, and it costs nothing.",
     article:"articles/best-non-toxic-air-fryers.html" },
 
-  { key:"Kitchen|Cleaning", swap:"Switch kitchen cleaning to plastic free", room:"kitchen", stage:"all", needs:null, rank:69, est:35,
+  { key:"Kitchen|Cleaning", inFree:true, swap:"Switch kitchen cleaning to plastic free", room:"kitchen", stage:"all", needs:null, rank:69, est:35,
     why:"Melamine and polyester sponges shed directly onto the surfaces your food touches, and conventional sprays add synthetic fragrance to the room you eat in.",
     free:"Cut an old cotton t shirt into cloths. Vinegar and water cleans most kitchen surfaces.",
     article:"articles/kitchen-detox-101.html" },
@@ -75,7 +75,7 @@ window.PLAN_RULES = [
     article:"articles/best-non-toxic-cutting-boards.html" },
 
   /* ---------- DRINKS ---------- */
-  { key:"Tea|Loose Leaf", swap:"Ditch plastic tea bags", room:"kitchen", stage:"all", needs:"tea", rank:97, est:20,
+  { key:"Tea|Loose Leaf", inFree:true, swap:"Ditch plastic tea bags", room:"kitchen", stage:"all", needs:"tea", rank:97, est:20,
     why:"One plastic tea bag can release over 11 billion microplastic particles into a single cup, one of the largest single exposures there is.",
     free:"Cut open the bags and steep the leaves loose, then strain. Works with the tea you already own.",
     article:"articles/how-to-avoid-microplastics-in-tea.html" },
@@ -85,17 +85,17 @@ window.PLAN_RULES = [
     free:"A fine metal sieve held over the cup does the job.",
     article:"articles/how-to-avoid-microplastics-in-tea.html" },
 
-  { key:"Coffee|Brewers", swap:"Move to a plastic free coffee maker", room:"kitchen", stage:"all", needs:"coffee", rank:90, est:60,
+  { key:"Coffee|Brewers", inFree:true, swap:"Move to a plastic free coffee maker", room:"kitchen", stage:"all", needs:"coffee", rank:90, est:60,
     why:"Hot water sitting in a plastic reservoir every morning is an easy daily dose to eliminate. Glass, steel, or ceramic only.",
     free:"A stainless pour over cone over a mug removes the plastic for the price of nothing if you already own one.",
     article:"articles/how-to-enjoy-coffee-without-plastic.html" },
 
-  { key:"Coffee|Travel Mugs", swap:"Stop drinking coffee through plastic lids", room:"kitchen", stage:"all", needs:"coffee", rank:89, est:30,
+  { key:"Coffee|Travel Mugs", inFree:true, swap:"Stop drinking coffee through plastic lids", room:"kitchen", stage:"all", needs:"coffee", rank:89, est:30,
     why:"Plastic lined paper cups shed particles into hot coffee, and the lid sits against the hottest liquid you drink all day.",
     free:"Drink it without the lid, or bring any mug you already own.",
     article:"articles/how-to-enjoy-coffee-without-plastic.html" },
 
-  { key:"Coffee|Filters", swap:"Switch to unbleached or metal filters", room:"kitchen", stage:"all", needs:"coffee", rank:80, est:12,
+  { key:"Coffee|Filters", inFree:true, swap:"Switch to unbleached or metal filters", room:"kitchen", stage:"all", needs:"coffee", rank:80, est:12,
     why:"Plastic pods brew hot water through plastic every morning, and bleached filters add chlorine byproducts to the cup.",
     free:"A reusable metal filter pays for itself, but simply switching from pods to any paper filter is the bigger jump.",
     article:"articles/how-to-enjoy-coffee-without-plastic.html" },
@@ -116,7 +116,7 @@ window.PLAN_RULES = [
     article:"articles/how-to-enjoy-coffee-without-plastic.html" },
 
   /* ---------- PANTRY ---------- */
-  { key:"Pantry|Salt", swap:"Rethink your salt", room:"kitchen", stage:"all", needs:null, rank:88, est:15,
+  { key:"Pantry|Salt", inFree:true, swap:"Rethink your salt", room:"kitchen", stage:"all", needs:null, rank:88, est:15,
     why:"Nearly all salt carries microplastics, and plastic grinders shed thousands of particles per twist directly onto your food.",
     free:"Stop using the plastic grinder. Use flake or coarse salt with your fingers.",
     article:"articles/microplastics-in-salt-and-pantry-staples.html" },
@@ -161,7 +161,7 @@ window.PLAN_RULES = [
     free:"Buy from a bakery counter in paper, or store your loaf in a cotton bag.",
     article:"articles/glyphosate-detox-guide.html" },
 
-  { key:"Gum|Gum", swap:"Cut plastic chewing gum", room:"kitchen", stage:"all", needs:null, rank:87, est:14,
+  { key:"Gum|Gum", inFree:true, swap:"Cut plastic chewing gum", room:"kitchen", stage:"all", needs:null, rank:87, est:14,
     why:"Most gum is a synthetic plastic base that sheds thousands of particles into your saliva per piece, up to about 30,000 a year.",
     free:"Stop chewing gum. This is the only swap on the list where doing nothing is the best option.",
     article:"articles/best-plastic-free-chewing-gum.html" },
@@ -172,45 +172,45 @@ window.PLAN_RULES = [
     free:"Open two windows on opposite sides of the home for ten minutes a day. Cross ventilation removes a real share of airborne particles for free.",
     article:"articles/best-air-purifiers-for-microplastics.html" },
 
-  { key:"Vacuums|Vacuums", swap:"Vacuum with a sealed HEPA machine", room:"whole", stage:"all", needs:null, rank:78, est:300,
+  { key:"Vacuums|Vacuums", inFree:true, swap:"Vacuum with a sealed HEPA machine", room:"whole", stage:"all", needs:null, rank:78, est:300,
     why:"An unsealed vacuum blows fine synthetic fibers back into the air you breathe. A sealed HEPA one traps them instead.",
     free:"Damp mop hard floors instead of sweeping. Sweeping lifts dust into the air, mopping captures it.",
     article:"articles/microplastics-in-indoor-air.html" },
 
   /* ---------- LAUNDRY ---------- */
-  { key:"Cleaning and Laundry|Laundry", swap:"Catch microfibers in the wash", room:"laundry", stage:"all", needs:null, rank:81, est:40,
+  { key:"Cleaning and Laundry|Laundry", inFree:true, swap:"Catch microfibers in the wash", room:"laundry", stage:"all", needs:null, rank:81, est:40,
     why:"Every synthetic wash releases hundreds of thousands of microfibers into water and back into your home's dust.",
     free:"Wash synthetics less often, on cold, and with full loads. Fewer washes means fewer fibers.",
     article:"articles/microplastics-in-clothing-and-laundry.html" },
 
-  { key:"Cleaning and Laundry|Cleaning", swap:"Switch to concentrate cleaners", room:"laundry", stage:"all", needs:null, rank:68, est:30,
+  { key:"Cleaning and Laundry|Cleaning", inFree:true, swap:"Switch to concentrate cleaners", room:"laundry", stage:"all", needs:null, rank:68, est:30,
     why:"Concentrates in reusable bottles cut both the plastic bottle stream and the synthetic fragrance you breathe indoors.",
     free:"White vinegar, baking soda, and castile soap handle most of the house for a few dollars.",
     article:"articles/microplastics-in-indoor-air.html" },
 
   /* ---------- BEDROOM ---------- */
-  { key:"Bedroom|Bedding", swap:"Start with an organic cotton pillowcase", room:"bedroom", stage:"all", needs:null, rank:77, est:45,
+  { key:"Bedroom|Bedding", inFree:true, swap:"Start with an organic cotton pillowcase", room:"bedroom", stage:"all", needs:null, rank:77, est:45,
     why:"You breathe from your bedding for a third of your life. Cheapest, highest impact bedroom swap there is.",
     free:"Wash new bedding before use and skip dryer sheets entirely. Dryer sheets coat fabric in fragrance you then breathe all night.",
     article:"articles/microplastics-in-bedroom-air.html" },
 
-  { key:"Bedroom|Mattresses", swap:"Replace the mattress when you are ready", room:"bedroom", stage:"all", needs:null, rank:59, est:1400,
+  { key:"Bedroom|Mattresses", inFree:true, swap:"Replace the mattress when you are ready", room:"bedroom", stage:"all", needs:null, rank:59, est:1400,
     why:"The largest textile you own and you breathe from it nightly. Organic latex skips the synthetic foam, flame retardants, and VOCs.",
     free:"A wool mattress topper over your current mattress puts a natural barrier between you and the foam for a fraction of the cost.",
     article:"articles/microplastics-in-bedroom-air.html" },
 
   /* ---------- BATHROOM: mouth first, then skin ---------- */
-  { key:"Bathroom|Toothbrushes", swap:"Switch your toothbrush", room:"bathroom", stage:"all", needs:null, rank:72, est:15,
+  { key:"Bathroom|Toothbrushes", inFree:true, swap:"Switch your toothbrush", room:"bathroom", stage:"all", needs:null, rank:72, est:15,
     why:"A plastic brush in your mouth twice a day for years. Note that most bamboo brushes still use nylon bristles.",
     free:"Nothing free, but a brush lasts three months and costs a few dollars either way.",
     article:"articles/bamboo-toothbrush-plastic-bristles.html" },
 
-  { key:"Bathroom|Toothcare", swap:"Change your toothpaste", room:"bathroom", stage:"all", needs:null, rank:71, est:14,
+  { key:"Bathroom|Toothcare", inFree:true, swap:"Change your toothpaste", room:"bathroom", stage:"all", needs:null, rank:71, est:14,
     why:"Conventional paste carries SLS, synthetic fragrance, and artificial sweeteners, in a tube that cannot be recycled. You put this in your mouth daily.",
     free:"Baking soda brushing works, though most people will not stick with it. The swap is cheap enough to just make.",
     article:"articles/best-non-toxic-toothpaste-guide.html" },
 
-  { key:"Bathroom|Floss", swap:"Move to silk or PFAS free floss", room:"bathroom", stage:"all", needs:null, rank:70, est:12,
+  { key:"Bathroom|Floss", inFree:true, swap:"Move to silk or PFAS free floss", room:"bathroom", stage:"all", needs:null, rank:70, est:12,
     why:"Most conventional floss is coated in PFAS that you then drag between your teeth and into your gums.",
     free:"None. This one is a few dollars and worth making immediately.",
     article:"articles/pfas-free-dental-floss.html" },
@@ -275,7 +275,7 @@ window.PLAN_RULES = [
     free:"Plain beeswax or shea. Cheap and it is what the good ones are anyway.",
     article:"articles/best-non-toxic-makeup-brands.html" },
 
-  { key:"Bathroom|Razors", swap:"Switch to a metal safety razor", room:"bathroom", stage:"all", needs:"shave", rank:50, est:35,
+  { key:"Bathroom|Razors", inFree:true, swap:"Switch to a metal safety razor", room:"bathroom", stage:"all", needs:"shave", rank:50, est:35,
     why:"Ends the stream of plastic disposables and gives a better shave. One handle lasts decades and blades cost cents.",
     free:"None, but this swap pays for itself within a year.",
     article:"articles/personal-care-101.html" },
@@ -479,8 +479,8 @@ window.PLAN_RULES = [
     article:"articles/personal-care-101.html" },
 
   /* ---------- LIFESTYLE ---------- */
-  { key:"Fitness|Yoga Mats", swap:"Replace your yoga mat", room:"any", stage:"all", needs:"yoga", rank:58, est:90,
-    why:"Your face is inches from it while you breathe deeply on purpose, and PVC mats offgas hardest when warm.",
+  { key:"Fitness|Yoga Mats", swap:"Replace your exercise mat, if you use one", room:"any", stage:"all", needs:null, rank:34, est:90,
+    why:"If you work out on a mat at home, your face is inches from it while you breathe deeply on purpose, and PVC mats offgas hardest when warm.",
     free:"Practice on a cotton rug or towel over a hard floor.",
     article:"articles/best-non-toxic-yoga-mats.html" },
 
@@ -502,8 +502,7 @@ window.PLAN_TRIGGERS = [
   { id:"makeup",      label:"Wear makeup",                   hint:"Lips first, since you ingest it" },
   { id:"periods",     label:"Use period products",           hint:"Higher absorption than skin" },
   { id:"shave",       label:"Shave regularly",               hint:"Razors and post shave products" },
-  { id:"supplements", label:"Take supplements",              hint:"Powders and capsules are a metals source" },
-  { id:"yoga",        label:"Do yoga or floor workouts",     hint:"Mats offgas at close breathing range" }
+  { id:"supplements", label:"Take supplements",              hint:"Powders and capsules are a metals source" }
 ];
 
 /* Room ids used by rules, mapped to the labels the quiz shows. */
@@ -517,7 +516,6 @@ window.PLAN_ROOMS = [
 ];
 
 window.PLAN_STAGES = [
-  { id:"expecting", label:"Expecting" },
   { id:"baby",      label:"0 to 12 months" },
   { id:"toddler",   label:"1 to 3 years" },
   { id:"kid",       label:"4 years and up" }
@@ -525,13 +523,15 @@ window.PLAN_STAGES = [
 
 /* Budget modes. minRank sets the cutoff, maxSwaps caps the list,
    tierCap limits how expensive a recommended product may be. */
+/* Budget shapes the PAID additions. The free plan swaps that apply to a home
+   are always included, since the reader already has them. */
 window.PLAN_BUDGETS = [
-  { id:"essentials", label:"Start with essentials", blurb:"The highest exposure swaps only, cheapest option that still passes.",
-    minRank:70, maxSwaps:12, tierCap:2 },
-  { id:"moderate",   label:"Moderate",              blurb:"A full plan at a sane pace, best value pick in each category.",
-    minRank:52, maxSwaps:24, tierCap:3 },
+  { id:"essentials", label:"Start with essentials", blurb:"The highest exposure additions only, cheapest option that still passes.",
+    minRank:60, maxExtras:8,  tierCap:2 },
+  { id:"moderate",   label:"Moderate",              blurb:"A fuller set at a sane pace, best value pick in each category.",
+    minRank:45, maxExtras:18, tierCap:3 },
   { id:"thorough",   label:"Replace most things",   blurb:"Everything that applies to your home, best in class where it matters.",
-    minRank:0,  maxSwaps:99, tierCap:4 }
+    minRank:0,  maxExtras:99, tierCap:4 }
 ];
 
 /* Primary concern boosts a whole area up the ranking. */
