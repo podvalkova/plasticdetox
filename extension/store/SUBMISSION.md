@@ -25,6 +25,42 @@ python3 tools/build-extension.py --zip
    `Plastic Detox` and verify the contact email. **An unverified contact email
    blocks publishing**, so do this before anything else.
 
+## Step 1b. The trader / non-trader declaration
+
+Also under **Account**. This is an EU Digital Services Act requirement, not a
+Google one, and it is mandatory for every developer.
+
+**Trader** is defined as "any natural person or any legal person, who is acting
+for purposes relating to his trade, business, craft or profession in relation to
+contracts on this marketplace." Non-trader is anyone acting outside their trade
+or business.
+
+**Our read: Trader.** The extension is free and carries no affiliate links, but
+it is published by a commercial site in the course of that business and exists
+to bring people to it. Trader status turns on acting in a professional capacity,
+not on whether money changes hands in this particular transaction. It is a
+judgment call and it is yours to make, but trader is the more defensible answer
+and it is the one to check with whoever handles the business filings.
+
+**What declaring Trader costs.** Google publishes your **legal name, physical
+address and phone number** at the bottom of the public listing, and their own
+FAQ advises using "an address you are comfortable having shared publicly." Do
+not use a home address here. Given the extension stamps SKIP on named brands at
+the point of sale, use a registered agent, an LLC address, or a street-format
+mailbox, and a Google Voice number rather than a personal mobile.
+
+**What declaring Non-Trader costs.** The extension is still distributed in the
+EEA. EEA users simply see a notice that consumer protection rights do not apply
+to contracts with you, which for a free tool that sells nothing is accurate and
+harmless.
+
+**Either way, it is reversible.** You can switch by changing from Trader to
+Non-Trader and back, which restarts verification.
+
+**EEA exposure for context**: 912 of 11,054 sessions in the last 90 days, 8.3%.
+Restricting distribution to the United States in Step 5 would sidestep the
+question entirely, at the cost of that 8.3%.
+
 ## Step 2. Create the item and upload
 
 1. Devconsole → **Items** → **Add new item**.
