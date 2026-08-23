@@ -189,9 +189,14 @@ for (const q of queries.queries) {
     const eng = parseEngagement(r.engLabel);
     const score = eng.likes + eng.reposts * 2 + eng.replies;
     if (score < MIN_ENGAGEMENT) continue;
-    if (found.has(r.link)) { found.get(r.link).topics.push(q.label); continue; }
+    if (found.has(r.link)) {
+      const hit = found.get(r.link);
+      hit.topics.push(q.label);
+      hit.tier = Math.min(hit.tier, q.tier ?? 1);
+      continue;
+    }
     found.set(r.link, {
-      ...r, engagement: eng, score, topics: [q.label],
+      ...r, engagement: eng, score, topics: [q.label], tier: q.tier ?? 1,
       article: q.article || null, engLabel: undefined, isReply: undefined,
     });
     kept++;
@@ -201,7 +206,7 @@ for (const q of queries.queries) {
 
 await browser.close();
 
-let list = [...found.values()].sort((a, b) => b.score - a.score);
+let list = [...found.values()].sort((a, b) => a.tier - b.tier || b.score - a.score);
 
 // One prolific account can otherwise take over a whole run.
 const maxPerHandle = queries.maxPerHandle ?? 2;
@@ -220,9 +225,10 @@ list = capped;
 writeFileSync(OUT, JSON.stringify({ generatedFor: MIN_ENGAGEMENT, count: list.length, posts: list }, null, 2) + '\n');
 console.log(`\n${list.length} candidates written to ${OUT.replace(REPO + '/', '')}`);
 if (list.length) {
-  console.log('\nTop by engagement:');
+  const t1 = list.filter(p => p.tier === 1).length;
+  console.log(`\n${t1} in the plastic core, ${list.length - t1} adjacent. Top:`);
   for (const p of list.slice(0, 8)) {
-    console.log(`  ${String(p.score).padStart(6)}  @${p.handle.padEnd(18)} ${p.topics[0]}`);
+    console.log(`  T${p.tier} ${String(p.score).padStart(6)}  @${p.handle.padEnd(18)} ${p.topics[0]}`);
     console.log(`          ${p.text.slice(0, 95)}`);
   }
 }

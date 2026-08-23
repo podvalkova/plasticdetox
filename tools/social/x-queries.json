@@ -1,18 +1,41 @@
 {
-  "_comment": "X search queries mapped to the article each one should point at. Edit freely. min_faves is a floor inside X's own search; --min filters again on our combined score.",
+  "_comment": "Plastic and microplastics first. tier 1 is the core beat and every query requires a plastic term. tier 2 is adjacent chemistry (PFAS, BPA) that only earns a reply when tied to plastic. General non-toxic topics are deliberately absent: they pull in conspiracy accounts and are not the brand.",
+  "_excludeNote": "Accounts whose framing does not fit an education-and-research brand. Editorial call, not a fact. Edit freely.",
+  "maxPerHandle": 2,
   "excludeHandles": [
     "PlasticDetoxOrg",
     "ValerieAnne1970",
     "delbigtree",
     "WallStreetApes",
     "ProjectGokuu",
-    "RenzTom"
+    "RenzTom",
+    "MAHA_PAC"
   ],
   "queries": [
     {
+      "label": "microplastics-research",
+      "tier": 1,
+      "article": "https://plasticdetox.org/articles/can-you-detox-microplastics.html",
+      "query": "(microplastics OR nanoplastics) (study OR research OR scientists OR findings) min_faves:40 -filter:replies -filter:retweets lang:en",
+      "modes": [
+        "top",
+        "live"
+      ]
+    },
+    {
+      "label": "plastic-in-the-body",
+      "tier": 1,
+      "article": "https://plasticdetox.org/articles/can-you-detox-microplastics.html",
+      "query": "(microplastics OR nanoplastics) (blood OR brain OR placenta OR lungs OR sperm OR breast milk) min_faves:30 -filter:replies -filter:retweets lang:en",
+      "modes": [
+        "top"
+      ]
+    },
+    {
       "label": "water-filters",
+      "tier": 1,
       "article": "https://plasticdetox.org/articles/best-water-filters.html",
-      "query": "(\"water filter\" OR \"water filtration\" OR \"reverse osmosis\") (microplastics OR PFAS OR \"forever chemicals\") min_faves:15 -filter:replies -filter:retweets lang:en",
+      "query": "(\"water filter\" OR \"reverse osmosis\" OR \"filtered water\") (microplastics OR nanoplastics OR plastic) min_faves:15 -filter:replies -filter:retweets lang:en",
       "modes": [
         "top",
         "live"
@@ -20,78 +43,94 @@
     },
     {
       "label": "bottled-water",
+      "tier": 1,
       "article": "https://plasticdetox.org/articles/how-to-remove-microplastics-from-bottled-water.html",
-      "query": "(\"bottled water\" OR \"plastic bottle\") (microplastics OR nanoplastics) min_faves:20 -filter:replies -filter:retweets lang:en",
+      "query": "(\"bottled water\" OR \"plastic bottle\" OR \"water bottle\") (microplastics OR nanoplastics OR particles) min_faves:20 -filter:replies -filter:retweets lang:en",
       "modes": [
         "top"
       ]
     },
     {
-      "label": "cookware-pfas",
-      "article": "https://plasticdetox.org/articles/pfas-in-cookware-brands.html",
-      "query": "(cookware OR nonstick OR \"non-stick\" OR teflon OR \"ceramic pan\") (PFAS OR \"forever chemicals\" OR toxic) min_faves:25 -filter:replies -filter:retweets lang:en",
-      "modes": [
-        "top"
-      ]
-    },
-    {
-      "label": "sunscreen",
-      "article": "https://plasticdetox.org/articles/best-mineral-sunscreen-guide.html",
-      "query": "sunscreen (\"endocrine\" OR toxic OR \"mineral sunscreen\" OR oxybenzone) min_faves:25 -filter:replies -filter:retweets lang:en",
-      "modes": [
-        "top"
-      ]
-    },
-    {
-      "label": "baby-bottles-kids",
-      "article": "https://plasticdetox.org/articles/best-non-toxic-baby-bottles.html",
-      "query": "(\"baby bottle\" OR \"sippy cup\" OR \"baby food\" OR formula) (microplastics OR plastic OR BPA) min_faves:20 -filter:replies -filter:retweets lang:en",
-      "modes": [
-        "top"
-      ]
-    },
-    {
-      "label": "chewing-gum",
-      "article": "https://plasticdetox.org/articles/best-plastic-free-chewing-gum.html",
-      "query": "(gum OR \"chewing gum\") (plastic OR polymer OR microplastics) min_faves:30 -filter:replies -filter:retweets lang:en",
-      "modes": [
-        "top"
-      ]
-    },
-    {
-      "label": "food-storage",
+      "label": "heating-plastic",
+      "tier": 1,
       "article": "https://plasticdetox.org/articles/best-plastic-free-food-storage-containers.html",
-      "query": "(\"plastic container\" OR tupperware OR \"food storage\" OR microwave) (microplastics OR leach OR BPA) min_faves:25 -filter:replies -filter:retweets lang:en",
+      "query": "(microwave OR \"hot food\" OR dishwasher OR \"plastic container\" OR tupperware) (microplastics OR leach OR \"plastic leaching\") min_faves:20 -filter:replies -filter:retweets lang:en",
       "modes": [
         "top"
       ]
     },
     {
-      "label": "microplastics-health",
-      "article": "https://plasticdetox.org/articles/can-you-detox-microplastics.html",
-      "query": "(microplastics OR nanoplastics) (study OR research OR blood OR brain OR \"how do I\" OR reduce) min_faves:60 -filter:replies -filter:retweets lang:en",
+      "label": "baby-plastic",
+      "tier": 1,
+      "article": "https://plasticdetox.org/articles/microplastics-in-baby-food.html",
+      "query": "(\"baby bottle\" OR \"baby food\" OR \"sippy cup\" OR pouches OR formula) (microplastics OR plastic OR polypropylene) min_faves:20 -filter:replies -filter:retweets lang:en",
       "modes": [
         "top"
       ]
     },
     {
-      "label": "pfas-general",
-      "article": "https://plasticdetox.org/articles/what-are-pfas.html",
-      "query": "(PFAS OR \"forever chemicals\") (drinking water OR blood OR study OR avoid) min_faves:50 -filter:replies -filter:retweets lang:en",
+      "label": "tea-and-gum",
+      "tier": 1,
+      "article": "https://plasticdetox.org/articles/how-to-avoid-microplastics-in-tea.html",
+      "query": "(\"tea bag\" OR teabags OR gum OR \"chewing gum\") (microplastics OR plastic OR polymer) min_faves:25 -filter:replies -filter:retweets lang:en",
       "modes": [
         "top"
       ]
     },
     {
-      "label": "asking-for-recs",
+      "label": "textiles-microfibres",
+      "tier": 1,
+      "article": "https://plasticdetox.org/articles/microplastics-in-clothing-and-laundry.html",
+      "query": "(polyester OR laundry OR \"synthetic fabric\" OR microfibres OR microfibers) (microplastics OR \"plastic fibres\" OR \"plastic fibers\") min_faves:20 -filter:replies -filter:retweets lang:en",
+      "modes": [
+        "top"
+      ]
+    },
+    {
+      "label": "indoor-air-dust",
+      "tier": 1,
+      "article": "https://plasticdetox.org/articles/microplastics-in-indoor-air.html",
+      "query": "(\"indoor air\" OR dust OR \"house dust\" OR breathing) (microplastics OR nanoplastics) min_faves:20 -filter:replies -filter:retweets lang:en",
+      "modes": [
+        "top"
+      ]
+    },
+    {
+      "label": "plastic-free-recs",
+      "tier": 1,
       "article": null,
-      "query": "(\"non toxic\" OR nontoxic OR \"plastic free\" OR \"microplastic free\") (recommendations OR \"any recs\" OR \"what do you use\" OR \"which brand\") min_faves:10 -filter:replies -filter:retweets lang:en",
+      "query": "(\"plastic free\" OR \"microplastic free\" OR \"glass instead of plastic\") (recommendations OR \"any recs\" OR \"what do you use\" OR \"which brand\" OR swap) min_faves:10 -filter:replies -filter:retweets lang:en",
       "modes": [
         "top",
         "live"
       ]
+    },
+    {
+      "label": "bpa-phthalates",
+      "tier": 2,
+      "article": "https://plasticdetox.org/articles/bpa-free-is-not-safe.html",
+      "query": "(BPA OR BPS OR phthalates) (plastic OR bottle OR container OR receipt) min_faves:25 -filter:replies -filter:retweets lang:en",
+      "modes": [
+        "top"
+      ]
+    },
+    {
+      "label": "pfas-water",
+      "tier": 2,
+      "article": "https://plasticdetox.org/articles/what-are-pfas.html",
+      "query": "(PFAS OR \"forever chemicals\") (\"drinking water\" OR EPA OR limits OR utilities) min_faves:50 -filter:replies -filter:retweets lang:en",
+      "modes": [
+        "top"
+      ]
+    },
+    {
+      "label": "pfas-cookware",
+      "tier": 2,
+      "article": "https://plasticdetox.org/articles/pfas-in-cookware-brands.html",
+      "query": "(nonstick OR \"non-stick\" OR teflon OR \"ceramic pan\") (PFAS OR \"forever chemicals\" OR coating) min_faves:25 -filter:replies -filter:retweets lang:en",
+      "modes": [
+        "top"
+      ]
     }
-  ],
-  "maxPerHandle": 2,
-  "_excludeNote": "Accounts whose framing does not fit an education-and-research brand. This is an editorial call, not a fact. Edit freely."
+  ]
 }
