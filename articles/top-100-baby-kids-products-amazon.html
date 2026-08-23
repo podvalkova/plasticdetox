@@ -714,11 +714,20 @@
       return arr;
     }
 
-    /* The 47 SKIP verdicts stay free and indexed: warning people off a bad
-       product is the part worth ranking for, and it is the honest hook for
-       the paid half. GOOD CHOICE and USE CAREFULLY sit behind the package. */
+    /* A sample of the SKIP verdicts stays free and indexed: warning people
+       off a popular product is the part worth ranking for, and it is the
+       honest hook for the rest. Everything else sits behind the package.
+       Kept to the most popular products by rank, since those are the ones
+       people actually search for. */
+    const FREE_SAMPLE = 12;
+    const FREE_NUMS = new Set(
+      PRODUCTS.filter(p => p.tier === "SKIP")
+              .sort((a, b) => a.num - b.num)
+              .slice(0, FREE_SAMPLE)
+              .map(p => p.num)
+    );
     function isPaid(){ return window.PDUnlock && window.PDUnlock.isPaid(); }
-    function visible(p){ return isPaid() || p.tier === "SKIP"; }
+    function visible(p){ return isPaid() || FREE_NUMS.has(p.num); }
 
     function render() {
       const all = filteredAndSorted();
@@ -732,9 +741,12 @@
         all.filter(p => !visible(p)).forEach(p => { byTier[p.tier] = (byTier[p.tier] || 0) + 1; });
         window.PDUnlock.injectCSS();
         var wall = window.PDUnlock.paywallHTML({
-          heading: held + " rated products are not shown",
-          sub: "Every product we would steer you away from is above, in full. What is held back is the other side of the list: what we would actually put on a registry, and why.",
-          rows: Object.keys(byTier).map(t => ({ label: t === "GOOD CHOICE" ? "Would buy" : "Would use carefully", count: byTier[t] })),
+          heading: held + " of the 100 are not shown",
+          sub: "Above is a sample of what we would steer you away from. The rest of the list is the other side of it: what we would actually put on a registry, what needs care, and the research behind every call.",
+          rows: Object.keys(byTier).sort().map(t => ({
+            label: t === "GOOD CHOICE" ? "Would buy" : (t === "SKIP" ? "More we would skip" : "Would use carefully"),
+            count: byTier[t]
+          })),
           cta: "Unlock all 100 · " + window.PDUnlock.PRICE
         });
         var pending = wall;
