@@ -131,10 +131,16 @@ Read the research: https://plasticdetox.org/brand-check.html
 
 | Asset | Requirement | File |
 |---|---|---|
-| Store icon | 128x128 PNG | `../icons/icon128.png` |
+| Store icon | 128x128 PNG, 96x96 artwork + 16px transparent padding | `store-icon-128.png` |
 | Screenshot 1 | 1280x800 | `screenshot-1-product-page.png` |
 | Screenshot 2 | 1280x800 | `screenshot-2-search-results.png` |
 | Screenshot 3 | 1280x800 | `screenshot-3-full-verdict.png` |
+
+> Use `store-icon-128.png`, **not** `icons/icon128.png`. The manifest icons
+> deliberately fill the whole square because they render in the toolbar. The
+> store icon needs the artwork inside a 96x96 safe area with genuinely
+> transparent padding, and no edge on the 128x128 canvas, since the store UI
+> draws its own. Regenerate both with `python3 tools/make-icons.py`.
 
 **Support URL**: `https://plasticdetox.org/about.html`
 **Homepage URL**: `https://plasticdetox.org/brand-check.html`
