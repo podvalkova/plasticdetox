@@ -696,6 +696,7 @@
     </p>
   </footer>
 
+  <script src="data/unlock.js"></script>
   <script>
     const REGISTRY = [
           {
@@ -1981,14 +1982,20 @@
 
     function renderAnchorNav() {
       const inner = document.getElementById("reg-anchor-inner");
-      inner.innerHTML = REGISTRY.map(c =>
+      const paid = window.PDUnlock && window.PDUnlock.isPaid();
+      const list = paid ? REGISTRY : REGISTRY.slice(0, FREE_CATS);
+      inner.innerHTML = list.map(c =>
         `<a href="#${c.id}" class="reg-anchor-link">${escapeHtml(c.name)}</a>`
       ).join("");
     }
 
-    function renderCategories() {
-      const root = document.getElementById("reg-categories");
-      root.innerHTML = REGISTRY.map((cat, ci) => `
+    /* The first category is free so the quality speaks for itself. The rest
+       sits behind the Baby & Expecting Package. A category renders whole or
+       not at all: no half cards, no blur. */
+    const FREE_CATS = 1;
+
+    function catHTML(cat, ci) {
+      return `
         <section id="${cat.id}" class="reg-cat">
           <div class="reg-cat-head">
             <div class="reg-cat-num">${String(ci + 1).padStart(2, "0")}</div>
@@ -2019,7 +2026,32 @@
             `).join("")}
           </div>
         </section>
-      `).join("");
+`;
+    }
+
+    function renderCategories() {
+      const root = document.getElementById("reg-categories");
+      const paid = window.PDUnlock && window.PDUnlock.isPaid();
+      const open = paid ? REGISTRY : REGISTRY.slice(0, FREE_CATS);
+      const held = paid ? [] : REGISTRY.slice(FREE_CATS);
+
+      let html = open.map((cat, ci) => catHTML(cat, ci)).join("");
+
+      if (held.length) {
+        const n = held.reduce((t, c) => t + c.products.length, 0);
+        window.PDUnlock.injectCSS();
+        html += window.PDUnlock.paywallHTML({
+          heading: n + " more registry picks, across " + held.length + " categories",
+          sub: "You have the whole first category above. These are the rest, tiered by how much they matter, each with the reasoning.",
+          /* every held category is named, so the buyer knows exactly what
+             they get and the ItemList schema still matches the page */
+          rows: held.map(c => ({ label: c.name, count: c.products.length })),
+          cta: "Unlock the registry · " + window.PDUnlock.PRICE
+        });
+      }
+
+      root.innerHTML = html;
+      if (held.length) window.PDUnlock.wire(function(){ renderCategories(); renderAnchorNav(); });
     }
 
     function nlSubscribe(e) {

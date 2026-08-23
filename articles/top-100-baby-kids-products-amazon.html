@@ -391,6 +391,7 @@
     </div>
   </footer>
 
+  <script src="../data/unlock.js"></script>
   <script>
     const AFF_TAG = "plasticdetox-20";
     const IMG_URL = id => id ? `https://m.media-amazon.com/images/I/${id}._AC_SL400_.jpg` : "";
@@ -713,12 +714,35 @@
       return arr;
     }
 
+    /* The 47 SKIP verdicts stay free and indexed: warning people off a bad
+       product is the part worth ranking for, and it is the honest hook for
+       the paid half. GOOD CHOICE and USE CAREFULLY sit behind the package. */
+    function isPaid(){ return window.PDUnlock && window.PDUnlock.isPaid(); }
+    function visible(p){ return isPaid() || p.tier === "SKIP"; }
+
     function render() {
-      const arr = filteredAndSorted();
+      const all = filteredAndSorted();
+      const arr = all.filter(visible);
+      const held = all.length - arr.length;
       document.getElementById("results-num").textContent = arr.length;
       const list = document.getElementById("products-list");
+
+      if (held && !isPaid()) {
+        const byTier = {};
+        all.filter(p => !visible(p)).forEach(p => { byTier[p.tier] = (byTier[p.tier] || 0) + 1; });
+        window.PDUnlock.injectCSS();
+        var wall = window.PDUnlock.paywallHTML({
+          heading: held + " rated products are not shown",
+          sub: "Every product we would steer you away from is above, in full. What is held back is the other side of the list: what we would actually put on a registry, and why.",
+          rows: Object.keys(byTier).map(t => ({ label: t === "GOOD CHOICE" ? "Would buy" : "Would use carefully", count: byTier[t] })),
+          cta: "Unlock all 100 · " + window.PDUnlock.PRICE
+        });
+        var pending = wall;
+      }
+
       if (!arr.length) {
-        list.innerHTML = `<div class="a-empty">No products match. Try clearing filters or your search.</div>`;
+        list.innerHTML = `<div class="a-empty">No products match. Try clearing filters or your search.</div>` + (typeof pending === "string" ? pending : "");
+        if (held && !isPaid()) window.PDUnlock.wire(render);
         return;
       }
       if (sortBy === "cat") {
@@ -734,10 +758,11 @@
             <div class="a-grid">${groups[c].map(renderCard).join("")}</div>
           </section>
         `).join("");
-        list.innerHTML = html;
+        list.innerHTML = html + (typeof pending === "string" ? pending : "");
       } else {
-        list.innerHTML = `<div class="a-grid">${arr.map(renderCard).join("")}</div>`;
+        list.innerHTML = `<div class="a-grid">${arr.map(renderCard).join("")}</div>` + (typeof pending === "string" ? pending : "");
       }
+      if (held && !isPaid()) window.PDUnlock.wire(render);
     }
 
     render();

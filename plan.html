@@ -189,6 +189,7 @@
   .u-hold{background:var(--surface);border:2px solid var(--accent);border-radius:var(--radius);padding:1.9rem 1.6rem;margin:1.6rem 0;box-shadow:var(--shadow-lg);text-align:center}
   .u-hold .u-buy{margin-left:auto;margin-right:auto}
   .u-hold .u-list{text-align:left}
+  .u-kick{display:inline-block;font-size:.66rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--accent-dark);background:var(--accent-light);padding:.3rem .75rem;border-radius:999px;margin-bottom:.7rem}
   .u-hold h3{font-size:1.35rem;font-weight:800;letter-spacing:-.025em;text-align:center;margin-bottom:.4rem}
   .u-hold .hsub{color:var(--text-muted);font-size:.93rem;text-align:center;max-width:44ch;margin:0 auto 1.3rem}
   .u-areas{display:flex;flex-direction:column;gap:.4rem;max-width:400px;margin:0 auto 1.5rem}
@@ -341,7 +342,7 @@
       <div class="u-grid" id="uGrid"></div>
       <div class="u-offer">
         <div class="u-offer-price">$9.99</div>
-        <div class="u-offer-txt"><b>Answer six questions and we show you which of these apply to your home, free.</b> Three of them in full, with the product and the $0 alternative. The rest of the list is $9.99, one payment, yours to keep.</div>
+        <div class="u-offer-txt"><b>Answer six questions and we show you which of these apply to your home, free.</b> Three in full, with the product and the $0 alternative. $9.99 opens the rest, plus the full non toxic registry and all 100 popular Amazon baby products rated.</div>
       </div>
       <button class="u-cta" id="uStart">Show me what applies to my home &rarr;</button>
       <p class="u-note">About a minute. No card needed to see the answer.</p>
@@ -722,7 +723,7 @@
   /* Deliberately NOT ?unlocked=1: the worker emails that token to every free
      subscriber to bypass the email gate, so reusing it would hand the paid
      additions to the whole list. Point the Stripe success URL at ?addon=1. */
-  var UNLOCKED = qs.get('addon') === '1' || localStorage.getItem('pd_add_paid') === '1';
+  var UNLOCKED = qs.get('addon') === '1' || localStorage.getItem('pd_add_paid') === '1';   /* same flag as registry + top 100 */
 
   if(qs.get('addon') === '1'){ try{ localStorage.setItem('pd_add_paid','1'); }catch(e){} }
 
@@ -891,11 +892,12 @@
     var cost = held.reduce(function(t,s){ return t + s.rule.est; }, 0);
 
     return '<div class="u-hold">'
-      + '<h3>'+n+' more apply to your home</h3>'
+      + '<div class="u-kick">Baby &amp; Expecting Package</div>'
+      + '<h3>'+n+' more apply to your home, plus the registry and the full 100</h3>'
       + '<p class="hsub">Here is where they are, so you know exactly what you would be getting.</p>'
       + '<div class="u-areas">'+rows+'</div>'
       + '<div class="u-price">'+PRICE+'</div>'
-      + '<div class="u-pricenote">One payment. Less than a single glass container.</div>'
+      + '<div class="u-pricenote">One payment, opens all three. Less than a single glass bottle.</div>'
       + '<div class="u-list">'
       + '<div><span class="tk">✓</span><span>All '+n+', written out in full like the ones above</span></div>'
       + '<div><span class="tk">✓</span><span>The exact product for each, inside the budget you picked</span></div>'
@@ -904,7 +906,7 @@
       + '<div><span class="tk">✓</span><span>Tick them off as you go, we remember where you got to</span></div>'
       + '<div><span class="tk">✓</span><span>A share of every sale funds our independent lab testing</span></div>'
       + '</div>'
-      + '<button class="u-buy" id="uBuy">Unlock all '+n+' &middot; '+PRICE+'</button>'
+      + '<button class="u-buy" id="uBuy">Unlock everything &middot; '+PRICE+'</button>'
       + '<p class="u-fine">'+(CHECKOUT_URL ? 'Secure checkout. Instant access.'
           : (TESTMODE ? 'TEST MODE: unlocks without payment.' : 'Checkout is not live yet.'))+'</p>'
       + '</div>';
