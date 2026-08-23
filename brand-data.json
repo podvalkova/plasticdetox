@@ -505,7 +505,7 @@
         "note": "Returned 60 ppm organic fluorine inside in 2023 independent screening, the highest among eco positioned disposable brands, despite the brand's clean positioning elsewhere."
       },
       {
-        "name": "All purpose and bathroom cleaners",
+        "name": "Bathroom and all purpose cleaner",
         "verdict": "good",
         "note": "EWG verified plant based cleaners, no fragrance or phthalates. Same line as the laundry detergent."
       }
@@ -4604,6 +4604,11 @@
         "name": "Filter bottles and straws",
         "verdict": "careful",
         "note": "Hollow fiber membrane designed for bacteria and parasites during travel, less optimized for daily microplastic reduction."
+      },
+      {
+        "name": "Go filter bottle",
+        "verdict": "good",
+        "note": "Hollow fibre membrane for bacteria and parasites while travelling, which is what the card recommends it for. It is not a microplastic filter and we say so."
       }
     ],
     "buy": "https://www.amazon.com/dp/B09R6211QP?tag=plasticdetox-20"
@@ -6221,9 +6226,9 @@
     "id": "pipette",
     "brand": "Pipette",
     "category": "Sunscreen",
-    "stance": "careful",
-    "reason": "Clean fragrance free zinc formula with no synthetic polymers, but its SPF 50 tested at 949 ppb lead, the highest of the mineral sunscreens we still consider and close to the 1,000 ppb line.",
-    "evidence": "949 ppb lead (Lead Safe Mama, 2025)",
+    "stance": "good",
+    "reason": "Clean fragrance free zinc formula with no synthetic polymers, across the sunscreen and the baby wash line. Its SPF 50 tested at 949 ppb lead, the highest of the mineral sunscreens we still recommend. Lead is not the only axis. Every mineral sunscreen tested to date returns some lead, because zinc oxide and titanium dioxide are mined minerals, so a non zero number is the category baseline rather than a red flag on one product. We weigh it against the whole formula and against the alternative, which is chemical UV filters with their own endocrine questions. On formula, filter type and the absence of synthetic polymers, Pipette remains a solid pick, and we publish the number rather than hiding it.",
+    "evidence": "Non nano zinc, fragrance free, no synthetic polymers; 949 ppb lead in independent testing, disclosed on the card",
     "alternative": "California Baby SPF 30+ (77 ppb) or Primally Pure SPF 30 (466 ppb)",
     "sources": [
       "best-mineral-sunscreen-guide.html",
@@ -6233,13 +6238,16 @@
       {
         "name": "Baby shampoo and body wash",
         "verdict": "good",
-        "note": "Fragrance free, no synthetic polymers. Not part of the sunscreen lead finding."
+        "note": "Fragrance free, no synthetic polymers."
       },
       {
         "name": "Mineral Sunscreen SPF 50",
-        "verdict": "careful",
-        "note": "Tested at 949 ppb lead, the highest of the mineral sunscreens we still consider and close to the 1,000 ppb line."
+        "verdict": "good",
+        "note": "Non nano zinc, fragrance free, no synthetic polymers. 949 ppb lead, the highest among our mineral sunscreen picks, disclosed openly. Recommended on the whole formula, not on lead alone."
       }
+    ],
+    "cautions": [
+      "At 949 ppb the SPF 50 carries the highest lead result among the mineral sunscreens we recommend. If you want the lowest tested number, California Baby Super Sensitive SPF 30+ came in at 77 ppb."
     ]
   },
   {
@@ -6416,8 +6424,8 @@
     "brand": "Primally Pure",
     "category": "Sunscreen",
     "stance": "careful",
-    "reason": "Tallow based skincare sold direct. The Sun Cream SPF 30 tested 466 ppb lead, mid range for mineral sunscreen, and the Baby Balm (grass fed tallow, six ingredients) is a featured tallow barrier balm. Marketing caution stands: NAD referred the brand to the FTC over claims tied to its anti sunscreen campaign, so ignore the marketing and judge the formulas.",
-    "evidence": "Clean short formulas; FTC referral over marketing claims",
+    "reason": "Tallow based skincare sold direct, and the formulas are the reason we recommend it. The Sun Cream SPF 30 tested 466 ppb lead, mid range for mineral sunscreen. Lead is not the only axis. Every mineral sunscreen tested to date returns some lead, because zinc oxide and titanium dioxide are mined minerals, so a non zero number is the category baseline rather than a red flag on one product. We weigh it against the whole formula and against the alternative, which is chemical UV filters with their own endocrine questions. The brand level caution is marketing, not formula: NAD referred Primally Pure to the FTC over claims tied to its anti sunscreen campaign, so ignore the marketing and judge the products.",
+    "evidence": "Tallow based formulas, Sun Cream SPF 30 at 466 ppb lead (mid range for mineral sunscreen); NAD referral to the FTC over marketing claims",
     "alternative": "",
     "sources": [
       "best-mineral-sunscreen-guide.html",
@@ -6441,9 +6449,12 @@
       },
       {
         "name": "Sun Cream SPF 30",
-        "verdict": "careful",
-        "note": "Tested at 466 ppb lead, mid range for mineral sunscreen."
+        "verdict": "good",
+        "note": "466 ppb lead, mid range for mineral sunscreen and disclosed on the card. Recommended on the whole formula."
       }
+    ],
+    "cautions": [
+      "NAD referred the brand to the FTC over claims tied to its anti sunscreen campaign. The formulas hold up; the marketing does not."
     ]
   },
   {
@@ -6565,7 +6576,7 @@
     "buy": "https://www.amazon.com/dp/B0B1PFSQB6?tag=plasticdetox-20",
     "products": [
       {
-        "name": "Non insulated stainless bottle, sippy and 9oz",
+        "name": "Non insulated stainless bottle, sippy, 9oz",
         "verdict": "good",
         "note": "Fully plastic free stainless system. This is the model we recommend."
       },
