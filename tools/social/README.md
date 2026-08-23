@@ -146,3 +146,32 @@ If Buffer changes a field name, `introspect` dumps a type's fields:
 node tools/social/buffer.mjs introspect PinterestPostMetadataInput
 node tools/social/buffer.mjs introspect PostsFiltersInput
 ```
+
+## Finding X posts to reply to
+
+`x-find.mjs` searches X for conversations worth joining and writes candidates to
+`x-candidates.json` (gitignored, since it holds other people's posts).
+
+```bash
+node tools/social/x-find.mjs             # default engagement floor of 25
+node tools/social/x-find.mjs --min 100   # only bigger conversations
+node tools/social/x-find.mjs --fresh     # ignore the seen ledger
+```
+
+It reuses the X session already in Chrome by decrypting **only** x.com cookies.
+No other site's cookies are read and nothing is written to disk. Chrome can stay
+open; the cookie store is snapshotted rather than locked.
+
+**First run needs one approval.** macOS will show a dialog saying something wants
+to use confidential information stored in "Chrome Safe Storage". Click **Always
+Allow** and it will never ask again. Without it the script exits with
+instructions rather than hanging.
+
+Queries live in `x-queries.json`, each mapped to the article the reply should
+point at. Edit that file to change what gets surfaced. X's own search operators
+do the first pass (`min_faves:`, `-filter:replies`, `-filter:retweets`), then
+`--min` filters again on likes + reposts*2 + replies.
+
+Replies are drafted separately, from the candidates file. Buffer cannot help
+here: its API posts to your own channels and cannot reply to someone else's
+post, so sending happens on X.
