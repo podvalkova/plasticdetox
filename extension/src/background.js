@@ -1,5 +1,10 @@
 // Keeps the local copy of the brand database fresh, and holds the DOM selector
-// config. Amazon reshuffles its markup often and a Chrome Web Store review takes
+// config.
+//
+// Everything here runs on the "storage" permission alone. The data files are
+// served with Access-Control-Allow-Origin: *, so fetching them needs no host
+// permission, and refresh is driven by staleness rather than a chrome.alarms
+// timer so that permission is not needed either. Amazon reshuffles its markup often and a Chrome Web Store review takes
 // days, so selectors are fetched from the site rather than frozen into the build:
 // a layout change is a file edit on our side, live within the hour.
 
@@ -17,7 +22,7 @@ const BUNDLED = {
   asins: "data/asin-map.json",
   selectors: "data/selectors.json",
 };
-const REFRESH_HOURS = 12;
+export const REFRESH_HOURS = 12;
 
 async function readBundled(key) {
   const res = await fetch(chrome.runtime.getURL(BUNDLED[key]));
@@ -80,16 +85,22 @@ chrome.runtime.onInstalled.addListener(async () => {
   // a verdict, so under the August 2026 Chrome Web Store data rules it has to
   // be something the user turns on, not something they turn off.
   await chrome.storage.local.set({ logMisses: false });
-  chrome.alarms.create("refresh", { periodInMinutes: REFRESH_HOURS * 60 });
   refreshAll();
 });
 
 chrome.runtime.onStartup.addListener(refreshAll);
-chrome.alarms.onAlarm.addListener((a) => { if (a.name === "refresh") refreshAll(); });
 
 chrome.runtime.onMessage.addListener((msg, _sender, respond) => {
   if (msg?.type === "refresh") {
     refreshAll().then(() => respond({ ok: true }));
     return true;
+  }
+  // The content script tells us when its copy has gone stale. Doing it this way
+  // rather than on a chrome.alarms timer means no "alarms" permission, and it
+  // loses nothing: a refresh only matters just before we render a verdict.
+  if (msg?.type === "refreshIfStale") {
+    chrome.storage.local.get("brands_at").then(({ brands_at }) => {
+      if (!brands_at || Date.now() - brands_at > REFRESH_HOURS * 3600e3) refreshAll();
+    });
   }
 });

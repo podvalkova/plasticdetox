@@ -9,9 +9,8 @@
     "48": "icons/icon48.png",
     "128": "icons/icon128.png"
   },
-  "permissions": ["storage", "alarms"],
-  "host_permissions": [
-    "https://plasticdetox.org/*",
+  "permissions": ["storage"],
+  "optional_host_permissions": [
     "https://plasticdetox-quiz-email.plasticdetox.workers.dev/*"
   ],
   "background": {
@@ -20,10 +19,7 @@
   },
   "content_scripts": [
     {
-      "matches": [
-        "https://www.amazon.com/*",
-        "https://smile.amazon.com/*"
-      ],
+      "matches": ["https://www.amazon.com/*"],
       "js": ["src/content.js"],
       "css": ["src/content.css"],
       "run_at": "document_idle"
@@ -36,7 +32,7 @@
   "web_accessible_resources": [
     {
       "resources": ["data/*.json"],
-      "matches": ["https://www.amazon.com/*", "https://smile.amazon.com/*"]
+      "matches": ["https://www.amazon.com/*"]
     }
   ]
 }

@@ -372,6 +372,8 @@
 
   load().then(() => {
     run();
+    // Fire and forget: the service worker decides if the copy is actually stale.
+    try { chrome.runtime.sendMessage({ type: "refreshIfStale" }); } catch (e) {}
     // Amazon paginates and lazy-loads in place, so re-run on mutation, throttled.
     let pending = null;
     const obs = new MutationObserver(() => {

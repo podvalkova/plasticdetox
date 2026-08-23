@@ -19,8 +19,25 @@ async function paint() {
   $("updated").textContent = ago(s.brands_at);
 }
 
-$("logMisses").addEventListener("change", (e) => {
-  chrome.storage.local.set({ logMisses: e.target.checked });
+// Reaching the worker is the only thing this extension does that needs a host
+// permission, and it only happens for people who switch this on. So it is
+// declared optional and requested here, inside the click that turns it on,
+// rather than being granted to everyone at install time.
+const WORKER_ORIGIN = "https://plasticdetox-quiz-email.plasticdetox.workers.dev/*";
+
+$("logMisses").addEventListener("change", async (e) => {
+  const on = e.target.checked;
+  if (!on) {
+    await chrome.storage.local.set({ logMisses: false });
+    chrome.permissions.remove({ origins: [WORKER_ORIGIN] });
+    return;
+  }
+  const granted = await chrome.permissions.request({ origins: [WORKER_ORIGIN] });
+  if (!granted) {
+    e.target.checked = false;   // user declined the prompt, leave it off
+    return;
+  }
+  await chrome.storage.local.set({ logMisses: true });
 });
 
 $("refresh").addEventListener("click", async () => {

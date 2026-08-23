@@ -166,18 +166,29 @@ formula, packaging, recalls and lawsuits, and independent testing without
 leaving the page they are on.
 ```
 
-**Permission justifications**, one per declared permission:
+**Permission justifications.** The manifest was cut down specifically to
+survive this field. It now declares **one** API permission and **zero** default
+host permissions, so there are only three boxes to fill:
 
 | Permission | Justification to paste |
 |---|---|
-| `storage` | `Stores the brand database locally so verdicts render instantly and offline, and stores the user's single on/off preference. No browsing data is stored.` |
-| `alarms` | `Schedules a twice daily refresh of the brand database from plasticdetox.org so verdicts stay current without the user reinstalling.` |
-| `host_permissions: plasticdetox.org` | `Downloads the brand database and the DOM selector configuration the extension reads. This is a static file download and sends no user data.` |
-| `host_permissions: plasticdetox-quiz-email.plasticdetox.workers.dev` | `Receives an optional, off by default brand name request when a user chooses to tell us which unreviewed brand to research next. Sends a brand name only.` |
-| Host access to `www.amazon.com` | `The extension's entire function is to read the brand or product identifier on an Amazon listing and display our published verdict beside it. It runs on no other site.` |
+| `storage` | `Caches the brand verdict database locally so the extension can render a verdict instantly and offline, and stores the single on/off preference for optional brand requests. No browsing data is stored.` |
+| Host access to `www.amazon.com` | `The extension's entire function is to read the brand or product identifier on an Amazon listing and display our published verdict beside it. Amazon is the only site it runs on.` |
+| Optional host access to `plasticdetox-quiz-email.plasticdetox.workers.dev` | `Optional and off by default. Requested at the moment a user switches on "Help us cover more brands", which sends us the name of a brand we have not reviewed so we know what to research next. It sends a brand name and nothing else. Users who leave the setting off are never asked for this permission.` |
 
-**Remote code**: select **No, I am not using remote code**. The extension
-downloads JSON data only. It never fetches or executes script.
+Three permissions were deliberately removed to satisfy "remove any permission
+that is not needed", and it is worth knowing why in case a reviewer asks:
+
+- **`alarms`** dropped. Refresh is now triggered by the content script noticing
+  its copy is stale, so no periodic timer permission is needed. Refreshing while
+  the user is not on Amazon has no value anyway.
+- **`host_permissions` for `plasticdetox.org`** dropped. The data files are
+  served with `Access-Control-Allow-Origin: *`, so ordinary CORS covers the
+  fetch. Verified: the service worker pulls all 793 brands with the permission
+  absent.
+- **`smile.amazon.com`** dropped from the content script matches. Amazon shut
+  Smile down in February 2023, so it was permission for a service that no longer
+  exists.
 
 **Data collection checkboxes**. Tick exactly one:
 
