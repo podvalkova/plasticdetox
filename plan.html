@@ -180,6 +180,20 @@
   .u-cell{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:.9rem 1rem}
   .u-cell .n{font-size:1.5rem;font-weight:800;color:var(--accent-dark);letter-spacing:-.03em;line-height:1.1}
   .u-cell .l{font-size:.82rem;color:var(--text-muted);line-height:1.35;margin-top:.1rem}
+  .u-offer{display:flex;align-items:center;gap:1.1rem;max-width:620px;margin:0 auto 1.8rem;background:var(--surface);border:1.5px solid var(--accent);border-radius:var(--radius);padding:1.1rem 1.3rem;text-align:left}
+  .u-offer-price{font-size:2rem;font-weight:800;letter-spacing:-.04em;color:var(--accent-dark);line-height:1;flex:0 0 auto}
+  .u-offer-txt{font-size:.9rem;color:var(--text-muted);line-height:1.5}
+  .u-offer-txt b{color:var(--text);font-weight:600}
+  @media(max-width:520px){ .u-offer{flex-direction:column;text-align:center;gap:.6rem} }
+
+  .u-hold{background:var(--surface);border:2px solid var(--accent);border-radius:var(--radius);padding:1.9rem 1.6rem;margin:1.6rem 0;box-shadow:var(--shadow-lg);text-align:center}
+  .u-hold .u-buy{margin-left:auto;margin-right:auto}
+  .u-hold .u-list{text-align:left}
+  .u-hold h3{font-size:1.35rem;font-weight:800;letter-spacing:-.025em;text-align:center;margin-bottom:.4rem}
+  .u-hold .hsub{color:var(--text-muted);font-size:.93rem;text-align:center;max-width:44ch;margin:0 auto 1.3rem}
+  .u-areas{display:flex;flex-direction:column;gap:.4rem;max-width:400px;margin:0 auto 1.5rem}
+  .u-area{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;background:var(--bg);border-radius:var(--radius-sm);padding:.6rem .85rem;font-size:.92rem}
+  .u-area b{font-weight:700;color:var(--accent-dark);font-variant-numeric:tabular-nums}
   .u-cta{background:var(--accent-dark);color:#fff;border:none;border-radius:60px;padding:1rem 2.3rem;font-family:inherit;font-size:1.05rem;font-weight:700;cursor:pointer;transition:all .18s}
   .u-cta:hover{background:#6d28d9;transform:translateY(-1px);box-shadow:var(--shadow-lg)}
   .u-note{font-size:.85rem;color:var(--text-muted);margin-top:.85rem}
@@ -213,9 +227,7 @@
   /* results */
   .u-res h2{font-size:clamp(1.5rem,3.4vw,2.1rem);font-weight:800;letter-spacing:-.03em;line-height:1.14;text-align:center;margin-bottom:.5rem;text-wrap:balance}
   .u-res .u-sub{text-align:center;color:var(--text-muted);max-width:52ch;margin:0 auto 2rem}
-  .u-add{position:relative}
-  .u-add .swap{background:var(--surface)}
-  .u-add.locked .lockbody{filter:blur(5px);opacity:.55;pointer-events:none;user-select:none}
+  .u-res .swap{background:var(--surface)}
   .u-tag{display:inline-block;font-size:.63rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--accent-dark);background:var(--accent-light);padding:.15rem .5rem;border-radius:999px}
   .u-cost{display:inline-block;font-size:.75rem;font-weight:700;color:var(--text-muted);margin-left:.35rem}
   .u-freealt{margin-top:.6rem;background:#dcfce7;border-radius:var(--radius-sm);padding:.6rem .8rem;font-size:.86rem;line-height:1.5}
@@ -327,8 +339,12 @@
       <h2>Those are the swaps that matter for <em>everyone</em>.</h2>
       <p class="u-lead">Not one of them knows anything about you. <b>The plan above cannot see whether you have a baby, a pantry, a makeup bag, or a supplement shelf</b>, and that is where most of the exposure it misses actually sits.</p>
       <div class="u-grid" id="uGrid"></div>
-      <button class="u-cta" id="uStart">Find what my plan is missing &rarr;</button>
-      <p class="u-note">Six questions, about a minute. Seeing how many you are missing is free.</p>
+      <div class="u-offer">
+        <div class="u-offer-price">$9.99</div>
+        <div class="u-offer-txt"><b>Answer six questions and we show you which of these apply to your home, free.</b> Three of them in full, with the product and the $0 alternative. The rest of the list is $9.99, one payment, yours to keep.</div>
+      </div>
+      <button class="u-cta" id="uStart">Show me what applies to my home &rarr;</button>
+      <p class="u-note">About a minute. No card needed to see the answer.</p>
     </div>
 
     <!-- quiz -->
@@ -396,10 +412,6 @@
 <!-- CLOSING CTA -->
 <section class="closing">
   <div class="narrow">
-    <div class="close-intro">
-      <div class="sec-tag" style="text-align:center">Why this is free</div>
-      <h2>The plan is free. The testing is not.</h2>
-    </div>
     <div class="close-grid">
       <div class="close-card">
         <div class="cc-tag">Science first</div>
@@ -835,83 +847,108 @@
   function imgFor(p){ return p.imgUrl ? p.imgUrl : (p.img ? 'https://m.media-amazon.com/images/I/'+p.img+'._AC_SL300_.jpg' : ''); }
   function linkFor(p){ return p.url ? p.url : 'https://www.amazon.com/dp/'+p.asin+'?tag=plasticdetox-20'; }
 
-  function addHTML(s, n, locked){
+  function addHTML(s, n){
     var r = s.rule;
     var picks = (s.products||[]).map(function(p){
       return '<div class="pick"><span class="plabel">'+esc(p.tier||'Pick')+'</span>'
         + '<a href="'+esc(linkFor(p))+'" target="_blank" rel="noopener sponsored">'+esc(p.name)+' &rarr;</a>'
         + (p.bestFor ? '<span class="pnote">'+esc(p.bestFor)+'</span>' : '') + '</div>';
     }).join('');
-    var body = '<div class="picks">'+picks+'</div>'
-      + (r.free ? '<div class="u-freealt"><b>Free version</b>'+esc(r.free)+'</div>' : '')
-      + (r.article ? '<a class="u-why" href="'+r.article+'">Why this, in full &rarr;</a>' : '');
     var isDone = !!DONE[r.key];
     return '<div class="swap'+(isDone?' done':'')+'" data-k="'+esc(r.key)+'">'
-      + (locked ? '<span class="cbox"></span>'
-                : '<label class="cbox"><input type="checkbox" class="ubox"'+(isDone?' checked':'')+'></label>')
+      + '<label class="cbox"><input type="checkbox" class="ubox"'+(isDone?' checked':'')+'></label>'
       + '<div class="swap-body">'
       + '<div class="swap-top"><span class="swap-title">'+n+'. '+esc(r.swap)+'</span>'
       + '<span class="u-tag">Not in the free plan</span>'
       + '<span class="u-cost">about '+money(r.est)+'</span></div>'
       + '<div class="swap-why">'+esc(r.why)+'</div>'
-      + (locked ? '<div class="lockbody">'+body+'</div>' : body)
+      + '<div class="picks">'+picks+'</div>'
+      + (r.free ? '<div class="u-freealt"><b>Free version</b>'+esc(r.free)+'</div>' : '')
+      + (r.article ? '<a class="u-why" href="'+r.article+'">Why this, in full &rarr;</a>' : '')
       + '</div></div>';
   }
 
-  function payHTML(rest){
-    return '<div class="u-pay">'
-      + '<h3>Unlock '+rest+' more for your home</h3>'
-      + '<p>Everything above the line is free. These are the rest of the swaps your answers turned up, and none of them are in the plan you just read.</p>'
+  /* Where a held back swap lives, so the reader knows the shape of what is
+     behind the paywall without us dangling the content itself. */
+  function areaOf(r){
+    if(r.room === 'nursery') return 'Babies and kids';
+    if(r.key.indexOf('Supplements|') === 0) return 'Supplements';
+    if(r.room === 'bathroom') return 'Personal care and makeup';
+    if(r.room === 'whole') return 'The air at home';
+    if(r.room === 'bedroom') return 'The bedroom';
+    if(r.room === 'laundry') return 'Cleaning and laundry';
+    if(r.key.indexOf('Pantry|') === 0 || r.key.indexOf('Tea|') === 0 || r.key.indexOf('Coffee|') === 0) return 'Kitchen and pantry';
+    if(r.room === 'kitchen') return 'The kitchen';
+    return 'Other';
+  }
+
+  function holdHTML(held){
+    var areas = {};
+    held.forEach(function(s){ var a = areaOf(s.rule); areas[a] = (areas[a]||0)+1; });
+    var rows = Object.keys(areas).sort(function(a,b){ return areas[b]-areas[a]; })
+      .map(function(a){ return '<div class="u-area"><span>'+esc(a)+'</span><b>'+areas[a]+'</b></div>'; }).join('');
+    var n = held.length;
+    var cost = held.reduce(function(t,s){ return t + s.rule.est; }, 0);
+
+    return '<div class="u-hold">'
+      + '<h3>'+n+' more apply to your home</h3>'
+      + '<p class="hsub">Here is where they are, so you know exactly what you would be getting.</p>'
+      + '<div class="u-areas">'+rows+'</div>'
       + '<div class="u-price">'+PRICE+'</div>'
-      + '<div class="u-pricenote">One payment. Yours to keep and reprint.</div>'
+      + '<div class="u-pricenote">One payment. Less than a single glass container.</div>'
       + '<div class="u-list">'
-      + '<div><span class="tk">✓</span><span>'+rest+' more swap'+(rest===1?'':'s')+', ranked by how much exposure each one cuts</span></div>'
-      + '<div><span class="tk">✓</span><span>The exact product to buy for each, inside the budget you picked</span></div>'
-      + '<div><span class="tk">✓</span><span>The $0 way to do it wherever one exists</span></div>'
+      + '<div><span class="tk">✓</span><span>All '+n+', written out in full like the ones above</span></div>'
+      + '<div><span class="tk">✓</span><span>The exact product for each, inside the budget you picked</span></div>'
+      + '<div><span class="tk">✓</span><span>The $0 way to do it wherever one exists, so it works if you buy nothing</span></div>'
+      + '<div><span class="tk">✓</span><span>Ranked by how much exposure each cuts, about '+money(cost)+' to do the lot</span></div>'
       + '<div><span class="tk">✓</span><span>Tick them off as you go, we remember where you got to</span></div>'
       + '<div><span class="tk">✓</span><span>A share of every sale funds our independent lab testing</span></div>'
       + '</div>'
-      + '<button class="u-buy" id="uBuy">Unlock '+(rest===1?'it':rest+' more')+' &middot; '+PRICE+'</button>'
+      + '<button class="u-buy" id="uBuy">Unlock all '+n+' &middot; '+PRICE+'</button>'
       + '<p class="u-fine">'+(CHECKOUT_URL ? 'Secure checkout. Instant access.'
           : (TESTMODE ? 'TEST MODE: unlocks without payment.' : 'Checkout is not live yet.'))+'</p>'
       + '</div>';
   }
 
-  /* how many additions are shown before the paywall */
-  var FREE_PEEK = 2;
+  /* Three complete swaps free, then a hard stop. If only a couple apply,
+     charging for them would be absurd, so they are given away instead. */
+  var SAMPLE = 3, MIN_HELD = 5;
 
   function render(){
     var adds = PLAN.included.filter(function(s){ return !s.rule.inFree; });
-    var locked = !UNLOCKED;
     var total = adds.length;
 
     if(!total){
+      res.className = 'u-res';
       res.innerHTML = '<h2>Your free plan already covers you.</h2>'
         + '<p class="u-sub">Nothing we track falls outside it for the home you described. That is a good place to be. Widen your rooms or budget if you want us to look harder.</p>'
-        + '<button class="u-again" id="uAgain">Answer again</button>';
-      wire();
-      return;
+        + '<div style="text-align:center"><button class="u-again" id="uAgain">Answer again</button></div>';
+      wire(); return;
     }
 
-    var peek = locked ? Math.min(FREE_PEEK, total) : total;
-    var rest = total - peek;
-    var cost = adds.reduce(function(t,s){ return t + s.rule.est; }, 0);
+    var giveAll = UNLOCKED || (total - SAMPLE) < MIN_HELD;
+    var shown = giveAll ? adds : adds.slice(0, SAMPLE);
+    var held  = giveAll ? []   : adds.slice(SAMPLE);
+    var cost  = adds.reduce(function(t,s){ return t + s.rule.est; }, 0);
 
-    var html = '<h2>'+total+' more swap'+(total===1?'':'s')+' your plan never mentioned.</h2>'
-      + '<p class="u-sub">Chosen from your answers, ranked by how much exposure each one cuts. About '+money(cost)+' if you bought every single one, though most come with a way to do it for nothing.</p>';
-
-    adds.forEach(function(s, i){
-      var lock = locked && i >= peek;
-      if(lock && i === peek) html += payHTML(rest);
-      html += addHTML(s, i+1, lock);
-    });
-
-    if(!locked){
-      html += '<div style="text-align:center;margin-top:1.6rem">'
-        + '<button class="u-again" id="uAgain">Answer again</button></div>';
+    var head;
+    if(UNLOCKED){
+      head = '<h2>All '+total+' of them, in full.</h2>'
+        + '<p class="u-sub">Ranked by how much exposure each one cuts. About '+money(cost)+' to do every one, though most come with a way to do it for nothing.</p>';
+    } else if(giveAll){
+      head = '<h2>'+total+' more '+(total===1?'applies':'apply')+' to your home.</h2>'
+        + '<p class="u-sub">That is few enough that charging for '+(total===1?'it':'them')+' would be silly, so here '+(total===1?'it is':'they are')+' in full. Nothing to buy.</p>';
+    } else {
+      head = '<h2>'+total+' swaps apply to you that the free plan never mentioned.</h2>'
+        + '<p class="u-sub">The first '+SAMPLE+' are below in full, product and free alternative included. Use them whether or not you unlock the rest.</p>';
     }
 
-    res.className = 'u-res u-add' + (locked ? ' locked' : '');
+    var html = head;
+    shown.forEach(function(s, i){ html += addHTML(s, i+1); });
+    if(held.length) html += holdHTML(held);
+    html += '<div style="text-align:center;margin-top:1.6rem"><button class="u-again" id="uAgain">Answer again</button></div>';
+
+    res.className = 'u-res';
     res.innerHTML = html;
     wire();
   }
