@@ -22,8 +22,26 @@
 
   function testMode(){ return qs.get('test') === '1'; }
 
+  /* GA helper: never throws if gtag has not loaded */
+  function track(name, params) {
+    try { if (root.gtag) root.gtag('event', name, params || {}); } catch (e) {}
+  }
+
   function isPaid() {
-    if (qs.get('addon') === '1') { markPaid(); return true; }
+    if (qs.get('addon') === '1') {
+      var fresh = false;
+      try { fresh = localStorage.getItem(STORE_KEY) !== '1'; } catch (e) {}
+      markPaid();
+      /* only the first landing counts, so reloads and reshares do not inflate it */
+      if (fresh) {
+        track('purchase', {
+          transaction_id: 'pkg-' + Date.now(),
+          value: 9.99, currency: 'USD',
+          items: [{ item_id: 'baby-expecting-package', item_name: 'Baby & Expecting Package', price: 9.99, quantity: 1 }]
+        });
+      }
+      return true;
+    }
     try { return localStorage.getItem(STORE_KEY) === '1'; } catch (e) { return false; }
   }
   function markPaid() { try { localStorage.setItem(STORE_KEY, '1'); } catch (e) {} }
@@ -43,6 +61,11 @@
      } */
   function paywallHTML(opts) {
     opts = opts || {};
+    track('view_item', {
+      value: 9.99, currency: 'USD',
+      location: (root.location && root.location.pathname) || '',
+      items: [{ item_id: 'baby-expecting-package', item_name: 'Baby & Expecting Package', price: 9.99 }]
+    });
     var rows = (opts.rows || []).map(function (r) {
       return '<div class="pdw-row"><span>' + esc(r.label) + '</span><b>' + r.count + '</b></div>';
     }).join('');
@@ -80,7 +103,11 @@
       /* ?test=1 wins over the live link so the paid view stays previewable
          without putting a real charge through. */
       if (testMode()) { markPaid(); if (onUnlock) onUnlock(); return; }
-      if (root.gtag) root.gtag('event', 'begin_checkout', { value: 9.99, currency: 'USD', items: [{ item_name: 'Baby & Expecting Package' }] });
+      track('begin_checkout', {
+        value: 9.99, currency: 'USD',
+        location: (root.location && root.location.pathname) || '',
+        items: [{ item_id: 'baby-expecting-package', item_name: 'Baby & Expecting Package', price: 9.99, quantity: 1 }]
+      });
       if (CHECKOUT_URL) { root.location.href = CHECKOUT_URL; return; }
       var f = document.getElementById('pdwFine');
       if (f) {
@@ -119,6 +146,7 @@
   }
 
   root.PDUnlock = {
+    track: track,
     isPaid: isPaid,
     markPaid: markPaid,
     testMode: testMode,

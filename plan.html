@@ -774,6 +774,10 @@
 
   function renderPitch(){
     pitch.innerHTML = pitchHTML();
+    if(!PAID && window.PDUnlock) window.PDUnlock.track('view_item', {
+      value:9.99, currency:'USD', location:'/plan.html',
+      items:[{item_id:'baby-expecting-package', item_name:'Baby & Expecting Package', price:9.99}]
+    });
     var st = document.getElementById('uStart');
     if(st) st.addEventListener('click', function(){
       pitch.hidden = true; quiz.hidden = false; show(0);
@@ -959,7 +963,10 @@
 
   function checkout(){
     if(TESTMODE){ UNLOCKED = PAID = true; renderPitch(); return; }   /* preview, never charges */
-    if(window.gtag) gtag('event','begin_checkout',{value:9.99,currency:'USD'});
+    if(window.PDUnlock) window.PDUnlock.track('begin_checkout', {
+      value:9.99, currency:'USD', location:'/plan.html',
+      items:[{item_id:'baby-expecting-package', item_name:'Baby & Expecting Package', price:9.99, quantity:1}]
+    });
     if(CHECKOUT_URL){ location.href = CHECKOUT_URL; return; }
     var f = document.querySelector('.u-fine');
     if(f){ f.textContent = 'Checkout is not live yet. Add a payment link to turn this on.'; f.style.color='#b91c1c'; f.style.fontWeight='600'; }

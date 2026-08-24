@@ -456,6 +456,10 @@
       + '<p class="pkg-fine" id="pdwFine">' + (window.PDUnlock.testMode() ? 'TEST MODE: unlocks without payment.' : (window.PDUnlock.CHECKOUT_URL ? 'Secure checkout. Instant access.' : 'Checkout is not live yet.')) + '</p>'
       + '<p class="pkg-fine">A share of every sale funds independent lab testing.</p>'
       + '</div></div>';
+    window.PDUnlock.track('view_item', {
+      value:9.99, currency:'USD', location:'/babies-kids.html',
+      items:[{item_id:'baby-expecting-package', item_name:'Baby & Expecting Package', price:9.99}]
+    });
     window.PDUnlock.wire(render);
   }
   render();

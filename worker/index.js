@@ -525,6 +525,69 @@ async function handleStripeWebhook(request, env) {
     }
 
     const amount = s.amount_total || 0; // cents
+
+    // ---- Baby & Expecting Package ($9.99) -> access email + Brevo list 8 ----
+    // The old branch below emailed a plan-intake.html link, which belongs to
+    // the retired $149 review. Anything at the package price is routed here.
+    if (amount > 0 && amount <= 1500) {
+      if (email) {
+        const nm = name.split(/\s+/);
+        const first = nm.shift() || "";
+        await fetch("https://api.brevo.com/v3/contacts", {
+          method: "POST",
+          headers: { "api-key": env.BREVO_API_KEY, "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email,
+            attributes: {
+              FIRSTNAME: first,
+              LASTNAME: nm.join(" "),
+              PLAN_PURCHASED: "Baby & Expecting Package",
+              PURCHASE_DATE: new Date().toISOString().split("T")[0],
+            },
+            listIds: [8],
+            updateEnabled: true,
+          }),
+        }).catch(() => {});
+
+        const hub  = "https://plasticdetox.org/babies-kids.html?addon=1";
+        const reg  = "https://plasticdetox.org/registry.html?addon=1";
+        const top  = "https://plasticdetox.org/articles/top-100-baby-kids-products-amazon.html?addon=1";
+        const swap = "https://plasticdetox.org/articles/baby-kids-101.html?addon=1";
+
+        await fetch("https://api.brevo.com/v3/smtp/email", {
+          method: "POST",
+          headers: { "api-key": env.BREVO_API_KEY, "Content-Type": "application/json" },
+          body: JSON.stringify({
+            sender: { name: env.SENDER_NAME, email: env.SENDER_EMAIL },
+            to: [{ email, name }],
+            subject: "Your Baby & Expecting Package is open",
+            htmlContent: emailShell("You're in",
+              emailP("Thank you. Your package is unlocked. Open any of these and it stays open on that device.") +
+              emailButton("Open the registry, 123 picks", reg) +
+              emailP(`<strong>All 100 Amazon products rated:</strong> <a href="${top}" style="color:#7c3aed;font-weight:600;">open the full list</a><br>` +
+                     `<strong>The 23 swaps in priority order:</strong> <a href="${swap}" style="color:#7c3aed;font-weight:600;">open the swap list</a><br>` +
+                     `<strong>Everything in one place:</strong> <a href="${hub}" style="color:#7c3aed;font-weight:600;">your package page</a>`) +
+              `<p style="margin:18px 0 0 0;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:13px;line-height:1.6;color:#78716c;"><strong>Keep this email.</strong> Access is remembered per browser, so if you switch devices or clear your history, open any link above again to restore it.</p>` +
+              `<p style="margin:14px 0 0 0;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:13px;line-height:1.6;color:#78716c;">A share of what you paid funds the next round of independent lab testing. Questions, or want a refund? Just reply to this email.</p>`
+            ),
+          }),
+        }).catch(() => {});
+
+        // team notification so interest is visible without opening Stripe
+        await fetch("https://api.brevo.com/v3/smtp/email", {
+          method: "POST",
+          headers: { "api-key": env.BREVO_API_KEY, "Content-Type": "application/json" },
+          body: JSON.stringify({
+            sender: { name: env.NOTIFY_NAME, email: env.NOTIFY_EMAIL },
+            to: [{ email: "anya@washos.com" }],
+            subject: `Package sold: ${email}`,
+            htmlContent: `<p>Baby &amp; Expecting Package, $${(amount/100).toFixed(2)}<br>${email}<br>${name||""}</p>`,
+          }),
+        }).catch(() => {});
+      }
+      return new Response(JSON.stringify({ received: true }), { status: 200, headers: { "Content-Type": "application/json" } });
+    }
+
     const tier = amount >= 14900 ? "review" : "custom";
     const tierLabel = tier === "review" ? "Custom Plan + Personal Review" : "Custom Plan";
 
