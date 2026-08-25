@@ -38,6 +38,8 @@ const flag = (name, def) => {
 };
 const MIN_ENGAGEMENT = Number(flag('--min', 25));
 const FRESH = argv.includes('--fresh');
+const BATCH = Number(flag('--batch', 10));      // queries per run; X rate limits above ~10
+const ONLY = String(flag('--only', '') || '');  // comma separated labels, overrides rotation
 
 /* ------------------------------------------------------------- cookies -- */
 
@@ -157,7 +159,22 @@ async function searchOnce(page, query, mode) {
 /* ---------------------------------------------------------------- main -- */
 
 const queries = JSON.parse(readFileSync(QUERIES, 'utf8'));
+
+// Linked accounts (a brand and its clips account) count as one voice.
+const groupOf = new Map();
+for (const g of queries.handleGroups ?? []) for (const h of g) groupOf.set(h.toLowerCase(), g[0].toLowerCase());
+const voice = h => groupOf.get(String(h).toLowerCase()) ?? String(h).toLowerCase();
 const seen = FRESH ? {} : (existsSync(SEEN) ? JSON.parse(readFileSync(SEEN, 'utf8')) : {});
+
+// Handles drafted for recently are rested, so the roster rotates.
+const coolDays = queries.recentHandleDays ?? 14;
+const cutoff = Date.now() - coolDays * 864e5;
+const resting = new Set();
+if (!FRESH) {
+  for (const v of Object.values(seen)) {
+    if (v?.handle && v?.draftedAt && Date.parse(v.draftedAt) > cutoff) resting.add(voice(v.handle));
+  }
+}
 
 console.log('Reading X session from Chrome...');
 let cookies;
@@ -167,28 +184,68 @@ try {
   console.error('\nCannot read your X session.\n' + e.message);
   process.exit(1);
 }
-console.log(`Session found. Running ${queries.queries.length} queries, engagement floor ${MIN_ENGAGEMENT}.\n`);
+console.log(`Session found. Running ${queries.queries.length} queries, engagement floor ${MIN_ENGAGEMENT}.`);
+if (resting.size) console.log(`${resting.size} account(s) rested from the last ${coolDays} days.\n`);
+else console.log('');
 
 const browser = await puppeteer.launch({ headless: 'new' });
 const page = await browser.newPage();
 await page.setUserAgent('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36');
 await browser.setCookie(...cookies);
 
+// X rate limits search, so run a rotating subset and remember where we got to.
+const ROTATE = join(HERE, 'x-rotation.json');
+const lastRun = existsSync(ROTATE) ? JSON.parse(readFileSync(ROTATE, 'utf8')) : {};
+let plan = queries.queries;
+if (ONLY) {
+  const want = new Set(ONLY.split(',').map(x => x.trim().toLowerCase()));
+  plan = plan.filter(q => want.has(q.label.toLowerCase()));
+} else {
+  plan = [...plan].sort((a, b) => (lastRun[a.label] ?? 0) - (lastRun[b.label] ?? 0)).slice(0, BATCH);
+}
+console.log(`Running ${plan.length} of ${queries.queries.length} queries this pass.\n`);
+
+let emptyStreak = 0, rateLimited = false;
 const found = new Map();
-for (const q of queries.queries) {
+for (const q of plan) {
   const rows = [];
   for (const mode of (q.modes || ['top'])) {
     try { rows.push(...await searchOnce(page, q.query, mode)); }
     catch (e) { console.log(`  ${q.label} (${mode}): failed, ${e.message}`); }
+    await new Promise(r => setTimeout(r, 3500)); // pace ourselves; X rate limits search
   }
+  // Several empty queries in a row after successful ones means X has cut us off.
+  if (!rows.length) {
+    if (++emptyStreak >= 3 && found.size) { rateLimited = true; console.log('  (three empty results in a row, stopping early)'); break; }
+  } else emptyStreak = 0;
+  lastRun[q.label] = Date.now();
+
   let kept = 0;
   for (const r of rows) {
     if (!r.link || !r.text || r.isReply) continue;
     if (queries.excludeHandles?.some(h => h.toLowerCase() === r.handle.toLowerCase())) continue;
+    if (resting.has(voice(r.handle))) continue;
     if (seen[r.link]) continue;
     const eng = parseEngagement(r.engLabel);
     const score = eng.likes + eng.reposts * 2 + eng.replies;
-    if (score < MIN_ENGAGEMENT) continue;
+    // Questions from ordinary people carry almost no engagement, and they are the
+    // most repliable posts there are, so they get their own floor.
+    const floor = q.asking ? (queries.askingFloor ?? 1) : MIN_ENGAGEMENT;
+    if (score < floor) continue;
+
+    if (q.asking) {
+      const low = r.text.toLowerCase();
+      // X's search matches loosely, so confirm the product is actually the subject.
+      if (q.terms && !q.terms.some(t => low.includes(t.toLowerCase()))) continue;
+      // Someone genuinely seeking, not a news post, a joke or an ad. Needs a question
+      // mark and explicit seeking language, and real questions are short.
+      const seeking = /\b(any (recs|recommendations|suggestions)|recommendations\?|suggestions\?|looking for a|looking for any|can anyone recommend|does anyone (know|use|have)|has anyone (tried|used)|what (brand|kind|type|do you use|are you using|should i (use|buy|get))|which (brand|one should)|where do (you|i) (buy|get)|i need a|help me find)\b/i.test(r.text);
+      if (!seeking || !r.text.includes('?')) continue;
+      if (r.text.length > 320) continue;                 // long posts are statements, not questions
+      if (/https?:\/\/|#\w+\s+#\w+/.test(r.text)) continue; // links and hashtag stacks read as ads
+      // Genuine questions rarely go viral. Above the cap it is a different kind of post.
+      if (score > (queries.askingMaxScore ?? 6000)) continue;
+    }
     if (found.has(r.link)) {
       const hit = found.get(r.link);
       hit.topics.push(q.label);
@@ -196,7 +253,7 @@ for (const q of queries.queries) {
       continue;
     }
     found.set(r.link, {
-      ...r, engagement: eng, score, topics: [q.label], tier: q.tier ?? 1,
+      ...r, engagement: eng, score, topics: [q.label], tier: q.tier ?? 1, asking: !!q.asking,
       article: q.article || null, engLabel: undefined, isReply: undefined,
     });
     kept++;
@@ -205,8 +262,17 @@ for (const q of queries.queries) {
 }
 
 await browser.close();
+writeFileSync(ROTATE, JSON.stringify(lastRun, null, 2) + '\n');
+if (rateLimited) {
+  console.log('\nX rate limited this run, so coverage is partial. The queries that did not');
+  console.log('run stay at the front of the rotation and go first next time.');
+}
 
-let list = [...found.values()].sort((a, b) => a.tier - b.tier || b.score - a.score);
+let list = [...found.values()].sort((a, b) => {
+  if (a.asking !== b.asking) return a.asking ? -1 : 1;      // questions first
+  if (a.asking) return String(b.at).localeCompare(String(a.at)); // then newest
+  return a.tier - b.tier || b.score - a.score;
+});
 
 // One prolific account can otherwise take over a whole run.
 const maxPerHandle = queries.maxPerHandle ?? 2;
@@ -214,7 +280,7 @@ const perHandle = new Map();
 const capped = [];
 let dropped = 0;
 for (const p of list) {
-  const h = p.handle.toLowerCase();
+  const h = voice(p.handle);
   const n = perHandle.get(h) ?? 0;
   if (n >= maxPerHandle) { dropped++; continue; }
   perHandle.set(h, n + 1);
@@ -225,8 +291,13 @@ list = capped;
 writeFileSync(OUT, JSON.stringify({ generatedFor: MIN_ENGAGEMENT, count: list.length, posts: list }, null, 2) + '\n');
 console.log(`\n${list.length} candidates written to ${OUT.replace(REPO + '/', '')}`);
 if (list.length) {
+  const asks = list.filter(p => p.asking);
+  console.log(`\n${asks.length} are people asking for recommendations:`);
+  for (const p of asks.slice(0, 10)) {
+    console.log(`  @${p.handle.padEnd(18)} ${String(p.topics[0]).padEnd(20)} ${p.text.slice(0, 74)}`);
+  }
   const t1 = list.filter(p => p.tier === 1).length;
-  console.log(`\n${t1} in the plastic core, ${list.length - t1} adjacent. Top:`);
+  console.log(`\n${t1} in the plastic core, ${list.length - t1} adjacent. Top by engagement:`);
   for (const p of list.slice(0, 8)) {
     console.log(`  T${p.tier} ${String(p.score).padStart(6)}  @${p.handle.padEnd(18)} ${p.topics[0]}`);
     console.log(`          ${p.text.slice(0, 95)}`);

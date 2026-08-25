@@ -1,7 +1,7 @@
 {
   "_comment": "Plastic and microplastics first. tier 1 is the core beat. Roughly two thirds of tier 1 is now product-intent (is X safe, what did you switch to) rather than mechanism, matching what people actually search. tier 2 is adjacent chemistry and the heavy-metal product beat, which performs well on site but is not strictly plastic.",
   "_excludeNote": "Accounts whose framing does not fit an education-and-research brand. Editorial call, not a fact. Edit freely.",
-  "maxPerHandle": 2,
+  "maxPerHandle": 1,
   "excludeHandles": [
     "PlasticDetoxOrg",
     "ValerieAnne1970",
@@ -187,6 +187,167 @@
       "modes": [
         "top"
       ]
+    },
+    {
+      "label": "ask-toothpaste",
+      "tier": 1,
+      "article": "https://plasticdetox.org/articles/best-non-toxic-toothpaste-guide.html",
+      "asking": true,
+      "query": "(toothpaste OR toothbrush) (recommend OR recommendations OR \"which one\" OR \"any suggestions\" OR switching OR \"looking for\") min_faves:2 -filter:replies -filter:retweets lang:en",
+      "modes": [
+        "live",
+        "top"
+      ],
+      "terms": [
+        "toothpaste",
+        "toothbrush",
+        "tooth paste"
+      ]
+    },
+    {
+      "label": "ask-prenatal",
+      "tier": 1,
+      "article": "https://plasticdetox.org/articles/cleanest-prenatal-vitamins.html",
+      "asking": true,
+      "query": "(prenatal OR \"prenatal vitamin\" OR \"trying to conceive\" OR pregnant) (recommend OR \"which brand\" OR \"heavy metals\" OR lead OR clean OR safest) min_faves:2 -filter:replies -filter:retweets lang:en",
+      "modes": [
+        "live",
+        "top"
+      ],
+      "terms": [
+        "prenatal",
+        "pregnan",
+        "conceive",
+        "ttc"
+      ]
+    },
+    {
+      "label": "ask-baby-gear",
+      "tier": 1,
+      "article": "https://plasticdetox.org/articles/best-non-toxic-baby-bottles.html",
+      "asking": true,
+      "query": "(\"baby bottle\" OR \"sippy cup\" OR \"baby food\" OR diapers OR \"baby wipes\" OR pacifier) (plastic OR \"non toxic\" OR recommend OR safest OR \"which brand\") min_faves:2 -filter:replies -filter:retweets lang:en",
+      "modes": [
+        "live",
+        "top"
+      ],
+      "terms": [
+        "baby bottle",
+        "sippy",
+        "baby food",
+        "diaper",
+        "baby wipe",
+        "pacifier",
+        "formula"
+      ]
+    },
+    {
+      "label": "ask-cookware",
+      "tier": 1,
+      "article": "https://plasticdetox.org/articles/pfas-in-cookware-brands.html",
+      "asking": true,
+      "query": "(cookware OR \"non stick\" OR \"frying pan\" OR \"air fryer\" OR skillet) (PFAS OR \"non toxic\" OR recommend OR replace OR \"what do you use\") min_faves:2 -filter:replies -filter:retweets lang:en",
+      "modes": [
+        "live",
+        "top"
+      ],
+      "terms": [
+        "cookware",
+        "nonstick",
+        "non-stick",
+        "non stick",
+        "frying pan",
+        "air fryer",
+        "skillet",
+        "teflon",
+        "pan "
+      ]
+    },
+    {
+      "label": "ask-drinkware",
+      "tier": 1,
+      "article": "https://plasticdetox.org/articles/best-non-toxic-water-bottles.html",
+      "asking": true,
+      "query": "(\"water bottle\" OR tumbler OR \"reusable bottle\" OR \"coffee cup\") (plastic OR \"non toxic\" OR stainless OR glass OR recommend) min_faves:2 -filter:replies -filter:retweets lang:en",
+      "modes": [
+        "live",
+        "top"
+      ],
+      "terms": [
+        "water bottle",
+        "tumbler",
+        "reusable bottle",
+        "coffee cup",
+        "hydro flask",
+        "stanley"
+      ]
+    },
+    {
+      "label": "ask-supplements",
+      "tier": 1,
+      "article": "https://plasticdetox.org/articles/cleanest-protein-powder-tested.html",
+      "asking": true,
+      "query": "(\"protein powder\" OR creatine OR electrolytes OR \"greens powder\") (\"heavy metals\" OR lead OR \"third party tested\" OR recommend OR cleanest) min_faves:2 -filter:replies -filter:retweets lang:en",
+      "modes": [
+        "live",
+        "top"
+      ],
+      "terms": [
+        "protein powder",
+        "creatine",
+        "electrolyte",
+        "greens powder",
+        "supplement"
+      ]
+    },
+    {
+      "label": "ask-food-storage",
+      "tier": 1,
+      "article": "https://plasticdetox.org/articles/best-plastic-free-food-storage-containers.html",
+      "asking": true,
+      "query": "(tupperware OR \"food containers\" OR \"meal prep\" OR \"lunch box\") (glass OR plastic OR replace OR recommend OR \"non toxic\") min_faves:2 -filter:replies -filter:retweets lang:en",
+      "modes": [
+        "live",
+        "top"
+      ],
+      "terms": [
+        "tupperware",
+        "food container",
+        "meal prep",
+        "lunch box",
+        "leftovers",
+        "storage container"
+      ]
+    },
+    {
+      "label": "ask-personal-care",
+      "tier": 1,
+      "article": "https://plasticdetox.org/articles/microplastics-in-cosmetics-and-personal-care.html",
+      "asking": true,
+      "query": "(deodorant OR floss OR makeup OR sunscreen OR tampons OR \"period products\") (\"non toxic\" OR plastic OR PFAS OR recommend OR \"clean brand\") min_faves:2 -filter:replies -filter:retweets lang:en",
+      "modes": [
+        "live",
+        "top"
+      ],
+      "terms": [
+        "deodorant",
+        "floss",
+        "makeup",
+        "sunscreen",
+        "tampon",
+        "period product",
+        "shampoo"
+      ]
     }
-  ]
+  ],
+  "handleGroups": [
+    [
+      "foundmyfitness",
+      "fmfclips"
+    ]
+  ],
+  "recentHandleDays": 14,
+  "_diversityNote": "maxPerHandle is 1 so no account takes two slots in a run. handleGroups treats linked accounts as one voice. recentHandleDays suppresses handles already drafted for in that window, so the roster rotates instead of repeating.",
+  "askingFloor": 1,
+  "askingMaxScore": 6000
 }
