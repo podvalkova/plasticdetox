@@ -1,5 +1,5 @@
 {
-  "_comment": "Plastic and microplastics first. tier 1 is the core beat and every query requires a plastic term. tier 2 is adjacent chemistry (PFAS, BPA) that only earns a reply when tied to plastic. General non-toxic topics are deliberately absent: they pull in conspiracy accounts and are not the brand.",
+  "_comment": "Plastic and microplastics first. tier 1 is the core beat. Roughly two thirds of tier 1 is now product-intent (is X safe, what did you switch to) rather than mechanism, matching what people actually search. tier 2 is adjacent chemistry and the heavy-metal product beat, which performs well on site but is not strictly plastic.",
   "_excludeNote": "Accounts whose framing does not fit an education-and-research brand. Editorial call, not a fact. Edit freely.",
   "maxPerHandle": 2,
   "excludeHandles": [
@@ -128,6 +128,62 @@
       "tier": 2,
       "article": "https://plasticdetox.org/articles/pfas-in-cookware-brands.html",
       "query": "(nonstick OR \"non-stick\" OR teflon OR \"ceramic pan\") (PFAS OR \"forever chemicals\" OR coating) min_faves:25 -filter:replies -filter:retweets lang:en",
+      "modes": [
+        "top"
+      ]
+    },
+    {
+      "label": "product-safety-questions",
+      "tier": 1,
+      "article": null,
+      "query": "(\"is it safe\" OR \"should I be worried\" OR \"how bad is\" OR \"worth switching\") (plastic OR microplastics OR BPA OR phthalates) min_faves:10 -filter:replies -filter:retweets lang:en",
+      "modes": [
+        "top",
+        "live"
+      ]
+    },
+    {
+      "label": "swap-intent",
+      "tier": 1,
+      "article": null,
+      "query": "(\"switched to\" OR \"replaced my\" OR \"threw out\" OR \"getting rid of\" OR \"finally ditched\") (plastic OR tupperware OR \"cutting board\" OR \"water bottle\" OR \"non stick\") min_faves:10 -filter:replies -filter:retweets lang:en",
+      "modes": [
+        "top",
+        "live"
+      ]
+    },
+    {
+      "label": "kitchen-plastics",
+      "tier": 1,
+      "article": "https://plasticdetox.org/articles/best-non-toxic-cutting-boards.html",
+      "query": "(\"cutting board\" OR spatula OR utensils OR \"air fryer\" OR \"black plastic\") (microplastics OR plastic OR leaching) min_faves:15 -filter:replies -filter:retweets lang:en",
+      "modes": [
+        "top"
+      ]
+    },
+    {
+      "label": "supplements-capsules",
+      "tier": 1,
+      "article": "https://plasticdetox.org/articles/supplements-and-microplastics.html",
+      "query": "(supplements OR capsules OR vitamins OR \"protein powder\" OR omega) (microplastics OR plastic OR \"heavy metals\" OR contamination) min_faves:15 -filter:replies -filter:retweets lang:en",
+      "modes": [
+        "top"
+      ]
+    },
+    {
+      "label": "toothpaste-heavy-metals",
+      "tier": 2,
+      "article": "https://plasticdetox.org/articles/best-non-toxic-toothpaste-guide.html",
+      "query": "(toothpaste OR toothbrush OR fluoride OR hydroxyapatite) (lead OR \"heavy metals\" OR arsenic OR \"lab tested\" OR plastic) min_faves:15 -filter:replies -filter:retweets lang:en",
+      "modes": [
+        "top"
+      ]
+    },
+    {
+      "label": "glyphosate-food",
+      "tier": 2,
+      "article": "https://plasticdetox.org/articles/glyphosate-detox-guide.html",
+      "query": "(glyphosate OR roundup OR \"pre harvest\" OR desiccant) (oats OR wheat OR food OR cereal OR residue) min_faves:20 -filter:replies -filter:retweets lang:en",
       "modes": [
         "top"
       ]
