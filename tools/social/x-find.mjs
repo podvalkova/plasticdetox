@@ -40,6 +40,7 @@ const MIN_ENGAGEMENT = Number(flag('--min', 25));
 const FRESH = argv.includes('--fresh');
 const BATCH = Number(flag('--batch', 10));      // queries per run; X rate limits above ~10
 const ONLY = String(flag('--only', '') || '');  // comma separated labels, overrides rotation
+const MAX_AGE_H = Number(flag('--max-age', 24)); // only reply to posts still in circulation
 
 /* ------------------------------------------------------------- cookies -- */
 
@@ -132,7 +133,15 @@ function parseEngagement(label) {
 }
 
 async function searchOnce(page, query, mode) {
-  const url = `https://x.com/search?q=${encodeURIComponent(query)}&f=${mode}`;
+  // X's Top tab is not time bounded and happily returns four year old posts, so
+  // constrain the query itself rather than filtering afterwards.
+  const since = Math.floor((Date.now() - MAX_AGE_H * 3600e3) / 1000);
+  // min_faves fights a short window: a post from two hours ago has not accumulated
+  // likes yet even if it is about to. Inside a recency window, drop the floor from
+  // the query and let the post-hoc --min threshold do the filtering instead.
+  let q = MAX_AGE_H <= 48 ? query.replace(/\bmin_faves:\d+\s*/g, '') : query;
+  q = /since_time:/.test(q) ? q : `${q.trim()} since_time:${since}`;
+  const url = `https://x.com/search?q=${encodeURIComponent(q)}&f=${mode}`;
   await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 45000 });
   await new Promise(r => setTimeout(r, 5000));
   for (let i = 0; i < 2; i++) { // a little scroll for more results
@@ -203,9 +212,9 @@ if (ONLY) {
 } else {
   plan = [...plan].sort((a, b) => (lastRun[a.label] ?? 0) - (lastRun[b.label] ?? 0)).slice(0, BATCH);
 }
-console.log(`Running ${plan.length} of ${queries.queries.length} queries this pass.\n`);
+console.log(`Running ${plan.length} of ${queries.queries.length} queries, posts from the last ${MAX_AGE_H}h.\n`);
 
-let emptyStreak = 0, rateLimited = false;
+let emptyStreak = 0, rateLimited = false, tooOld = 0;
 const found = new Map();
 for (const q of plan) {
   const rows = [];
@@ -215,14 +224,24 @@ for (const q of plan) {
     await new Promise(r => setTimeout(r, 3500)); // pace ourselves; X rate limits search
   }
   // Several empty queries in a row after successful ones means X has cut us off.
+  // Rate limiting looks exactly like "no matches", so treat a run of empties as a
+  // cut-off rather than a finding. This also has to fire when nothing has been
+  // found yet, which is the case when X cuts us off from the very first query.
   if (!rows.length) {
-    if (++emptyStreak >= 3 && found.size) { rateLimited = true; console.log('  (three empty results in a row, stopping early)'); break; }
+    if (++emptyStreak >= 3) {
+      rateLimited = true;
+      console.log(`  (${emptyStreak} empty results in a row, stopping early)`);
+      break;
+    }
   } else emptyStreak = 0;
-  lastRun[q.label] = Date.now();
+  if (rows.length) lastRun[q.label] = Date.now();
 
   let kept = 0;
   for (const r of rows) {
     if (!r.link || !r.text || r.isReply) continue;
+    if (!r.at) continue;
+    const ageH = (Date.now() - Date.parse(r.at)) / 3600e3;
+    if (!(ageH >= 0) || ageH > MAX_AGE_H) { tooOld++; continue; }
     if (queries.excludeHandles?.some(h => h.toLowerCase() === r.handle.toLowerCase())) continue;
     if (resting.has(voice(r.handle))) continue;
     if (seen[r.link]) continue;
@@ -264,8 +283,9 @@ for (const q of plan) {
 await browser.close();
 writeFileSync(ROTATE, JSON.stringify(lastRun, null, 2) + '\n');
 if (rateLimited) {
-  console.log('\nX rate limited this run, so coverage is partial. The queries that did not');
-  console.log('run stay at the front of the rotation and go first next time.');
+  console.log('\nX appears to have rate limited this run, so results are NOT a complete picture.');
+  console.log('Queries that did not run keep their place at the front of the rotation.');
+  console.log('Wait 15 to 30 minutes before running again; hammering it risks the account.');
 }
 
 let list = [...found.values()].sort((a, b) => {
@@ -289,6 +309,7 @@ for (const p of list) {
 if (dropped) console.log(`\n  ${dropped} dropped by the ${maxPerHandle}-per-account cap`);
 list = capped;
 writeFileSync(OUT, JSON.stringify({ generatedFor: MIN_ENGAGEMENT, count: list.length, posts: list }, null, 2) + '\n');
+if (tooOld) console.log(`\n  ${tooOld} dropped as older than ${MAX_AGE_H}h`);
 console.log(`\n${list.length} candidates written to ${OUT.replace(REPO + '/', '')}`);
 if (list.length) {
   const asks = list.filter(p => p.asking);

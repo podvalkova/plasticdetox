@@ -59,6 +59,15 @@ const echoScore = (reply, post) => {
   return [...r].filter(w => q.has(w)).length / r.size;
 };
 
+const ageHours = at => at ? (Date.now() - Date.parse(at)) / 3600e3 : null;
+const ageLabel = at => {
+  const h = ageHours(at);
+  if (h === null || !(h >= 0)) return 'unknown age';
+  if (h < 1) return `${Math.round(h * 60)}m old`;
+  if (h < 48) return `${Math.round(h)}h old`;
+  return `${Math.round(h / 24)}d old`;
+};
+
 const cards = rows.map(p => {
   const id = p.link.split('/').pop();
   const echo = echoScore(drafts[id], p.text);
@@ -67,9 +76,10 @@ const cards = rows.map(p => {
     <header>
       <div>
         <a class="handle" href="${esc(p.link)}" target="_blank" rel="noopener">@${esc(p.handle)}</a>
-        <span class="meta">${p.engagement.likes.toLocaleString()} likes · ${p.engagement.replies.toLocaleString()} replies · ${esc(p.topics[0])}</span>
+        <span class="meta">${p.engagement.likes.toLocaleString()} likes · ${p.engagement.replies.toLocaleString()} replies · ${esc(p.topics[0])}${p.at ? ' · ' + ageLabel(p.at) : ''}</span>
         ${dupe.get(id) ? '<span class="warn">same story as another card, reply to one</span>' : ''}
         ${echo > 0.5 ? `<span class="warn">${Math.round(echo * 100)}% of this reply repeats the post, check it adds something</span>` : ''}
+        ${(ageHours(p.at) ?? 0) > 24 ? '<span class="warn">older than 24h, the conversation has moved on</span>' : ''}
       </div>
       <button class="skip" type="button">skip</button>
     </header>
