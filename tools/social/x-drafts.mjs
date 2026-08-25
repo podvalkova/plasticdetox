@@ -18,9 +18,16 @@ const HERE = dirname(fileURLToPath(import.meta.url));
 const REPO = resolve(HERE, '..', '..');
 const OUT = join(HERE, 'x-replies.html');
 
+// x-candidates.json is overwritten on every find, so keep an archive. Otherwise a
+// drafted post you have not sent yet vanishes from the page on the next run.
+const ARCHIVE = join(HERE, 'x-candidates-archive.json');
 const cands = JSON.parse(readFileSync(join(HERE, 'x-candidates.json'), 'utf8')).posts;
+const archive = existsSync(ARCHIVE) ? JSON.parse(readFileSync(ARCHIVE, 'utf8')) : {};
+for (const p of cands) archive[p.link.split('/').pop()] = p;
+writeFileSync(ARCHIVE, JSON.stringify(archive, null, 2) + '\n');
+
 const drafts = JSON.parse(readFileSync(join(HERE, 'x-replies.json'), 'utf8')).replies;
-const byId = new Map(cands.map(p => [p.link.split('/').pop(), p]));
+const byId = new Map(Object.entries(archive));
 
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c =>
   ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -132,7 +139,17 @@ ${cards}
   });
 </script></body></html>`;
 
+// Record everything drafted so the finder stops resurfacing it next run.
+const SEEN = join(HERE, 'x-seen.json');
+const seen = existsSync(SEEN) ? JSON.parse(readFileSync(SEEN, 'utf8')) : {};
+let added = 0;
+for (const p of rows) {
+  if (!seen[p.link]) { seen[p.link] = { handle: p.handle, draftedAt: new Date().toISOString() }; added++; }
+}
+writeFileSync(SEEN, JSON.stringify(seen, null, 2) + '\n');
+
 writeFileSync(OUT, html);
+if (added) console.log(`${added} newly drafted post(s) marked seen (${Object.keys(seen).length} total).`);
 console.log(`${rows.length} drafts written to ${OUT.replace(REPO + '/', '')}`);
 if (!process.argv.includes('--no-open')) {
   try { execFileSync('open', [OUT]); console.log('Opened in your browser.'); } catch {}
