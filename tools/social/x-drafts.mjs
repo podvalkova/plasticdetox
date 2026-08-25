@@ -46,8 +46,22 @@ rows.forEach((a, i) => rows.forEach((b, j) => {
   }
 }));
 
+// A reply that mostly repeats the post is the worst kind of reply. Flag drafts whose
+// content words are already largely present in the original.
+const STOP = new Set(['about','after','their','there','which','these','those','would','could',
+  'other','than','that','this','with','from','into','they','them','your','more','most','being',
+  'because','while','where','still','worth','thing','things','really','actually']);
+const contentWords = t => new Set(String(t).toLowerCase().replace(/[^a-z0-9 ]/g, ' ')
+  .split(/\s+/).filter(w => w.length > 4 && !STOP.has(w)));
+const echoScore = (reply, post) => {
+  const r = contentWords(reply), q = contentWords(post);
+  if (!r.size) return 0;
+  return [...r].filter(w => q.has(w)).length / r.size;
+};
+
 const cards = rows.map(p => {
   const id = p.link.split('/').pop();
+  const echo = echoScore(drafts[id], p.text);
   return `
   <article class="card" data-id="${id}">
     <header>
@@ -55,6 +69,7 @@ const cards = rows.map(p => {
         <a class="handle" href="${esc(p.link)}" target="_blank" rel="noopener">@${esc(p.handle)}</a>
         <span class="meta">${p.engagement.likes.toLocaleString()} likes · ${p.engagement.replies.toLocaleString()} replies · ${esc(p.topics[0])}</span>
         ${dupe.get(id) ? '<span class="warn">same story as another card, reply to one</span>' : ''}
+        ${echo > 0.5 ? `<span class="warn">${Math.round(echo * 100)}% of this reply repeats the post, check it adds something</span>` : ''}
       </div>
       <button class="skip" type="button">skip</button>
     </header>
