@@ -25,7 +25,7 @@
     .legend-title { font-size: 10px; font-weight: 700; letter-spacing: .07em;
       text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
     .row { display: flex; align-items: center; gap: 8px; padding: 3px 0; font-size: 12px; }
-    .dot { width: 9px; height: 9px; border-radius: 50%; flex: 0 0 auto; }
+    .dot { width: 9px; height: 9px; border-radius: 50%; flex: 0 0 auto; background: #d6d3d1; }
     section { padding: 12px 16px; border-bottom: 1px solid var(--line); }
     label.toggle { display: flex; align-items: flex-start; gap: 9px; cursor: pointer; }
     label.toggle input { margin: 2px 0 0; flex: 0 0 auto; }
@@ -58,10 +58,12 @@
 
   <div class="legend">
     <div class="legend-title">Every brand vetted on</div>
-    <div class="row"><span class="dot" style="background:var(--good)"></span>Formula</div>
-    <div class="row"><span class="dot" style="background:var(--good)"></span>Packaging</div>
-    <div class="row"><span class="dot" style="background:var(--careful)"></span>Recalls &amp; lawsuits</div>
-    <div class="row"><span class="dot" style="background:var(--skip)"></span>Independent tests</div>
+    <!-- Neutral dots on purpose. Colouring these per row read as a verdict on the
+         front itself, as if Formula were passing and Independent tests failing. -->
+    <div class="row"><span class="dot"></span>Formula</div>
+    <div class="row"><span class="dot"></span>Packaging</div>
+    <div class="row"><span class="dot"></span>Recalls &amp; lawsuits</div>
+    <div class="row"><span class="dot"></span>Independent tests</div>
   </div>
 
   <section>

@@ -27,17 +27,25 @@ const WORKER_ORIGIN = "https://plasticdetox-quiz-email.plasticdetox.workers.dev/
 
 $("logMisses").addEventListener("change", async (e) => {
   const on = e.target.checked;
-  if (!on) {
-    await chrome.storage.local.set({ logMisses: false });
-    chrome.permissions.remove({ origins: [WORKER_ORIGIN] });
-    return;
+  e.target.disabled = true;
+  try {
+    if (on) {
+      // Resolves false if the user dismisses Chrome's permission prompt, so the
+      // setting can never end up on without the grant that makes it work.
+      const granted = await chrome.permissions.request({ origins: [WORKER_ORIGIN] });
+      await chrome.storage.local.set({ logMisses: granted === true });
+    } else {
+      await chrome.storage.local.set({ logMisses: false });
+      await chrome.permissions.remove({ origins: [WORKER_ORIGIN] });
+    }
+  } catch (err) {
+    // Leave stored state untouched; the repaint below will show what it really is.
+  } finally {
+    e.target.disabled = false;
+    // Storage is the single source of truth. The checkbox flips itself on click,
+    // so without this it would keep showing "on" through a dismissed prompt.
+    await paint();
   }
-  const granted = await chrome.permissions.request({ origins: [WORKER_ORIGIN] });
-  if (!granted) {
-    e.target.checked = false;   // user declined the prompt, leave it off
-    return;
-  }
-  await chrome.storage.local.set({ logMisses: true });
 });
 
 $("refresh").addEventListener("click", async () => {
