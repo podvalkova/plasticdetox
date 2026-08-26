@@ -191,30 +191,54 @@
     }
     root.appendChild(head);
 
-    const block = el("div", "pd-fronts-block");
-    // A product can carry its own fronts. Where it does not, we fall back to the
-    // brand's and say so, because Aquasana's packaging failure is about the
-    // Claryum line and would be a lie on the shower filter's page.
+    // What the scorecard shows depends on what we are claiming.
+    //
+    // A recommendation is the stronger claim, so a "good" verdict has to show
+    // all four fronts and name whatever is still unassessed. A caution or a
+    // skip only has to justify itself, so it shows the fronts that are actually
+    // wrong and stays quiet about the rest. Rows of empty greys next to a
+    // verdict read as carelessness rather than honesty.
     const productFronts = row && row.fronts ? row.fronts : null;
-    const fronts = productFronts || b.fronts || {};
-    block.appendChild(el("div", "pd-fronts-label",
-      productFronts ? "How we checked this product" : "How we checked the brand"));
-    let unknowns = 0;
-    for (const [key, label] of FRONTS) {
-      const f = fronts[key] || { status: "unknown", note: "" };
-      const st = f.status || "unknown";
-      if (st === "unknown") unknowns++;
-      const row = el("div", `pd-front ${st}`);
-      row.appendChild(el("span", `pd-icon ${st}`, STATUS_GLYPH[st]));
-      const body = el("div", "pd-front-body");
-      body.appendChild(el("div", "pd-front-name", label));
-      body.appendChild(
-        el("div", "pd-front-note", st === "unknown" ? "Not assessed yet" : f.note || "")
-      );
-      row.appendChild(body);
-      block.appendChild(row);
+    // When a product's verdict departs from its brand's and it has no fronts of
+    // its own, the brand's fronts are describing other products in the range and
+    // must not be shown. Aquasana's packaging failure is about the Claryum line;
+    // rendering a red cross under a "Good choice" badge on the shower filter is
+    // simply false.
+    const borrowedAndWrong =
+      !productFronts && row && row.verdict && row.verdict !== b.stance;
+    const fronts = productFronts || (borrowedAndWrong ? {} : (b.fronts || {}));
+    const statusOf = (k) => (fronts[k] || {}).status || "unknown";
+
+    const positive = stance === "good";
+    const shown = positive
+      ? FRONTS.filter(([k]) => statusOf(k) !== "unknown")
+      : FRONTS.filter(([k]) => ["caution", "fail"].includes(statusOf(k)));
+    const unassessed = FRONTS.filter(([k]) => statusOf(k) === "unknown");
+
+    const block = el("div", "pd-fronts-block");
+    if (shown.length) {
+      block.appendChild(el("div", "pd-fronts-label",
+        positive
+          ? (productFronts ? "How we checked this product" : "How we checked the brand")
+          : "Why we flag it"));
+      for (const [key, label] of shown) {
+        const f = fronts[key];
+        const st = f.status;
+        const line = el("div", `pd-front ${st}`);
+        line.appendChild(el("span", `pd-icon ${st}`, STATUS_GLYPH[st]));
+        const body = el("div", "pd-front-body");
+        body.appendChild(el("div", "pd-front-name", label));
+        if (f.note) body.appendChild(el("div", "pd-front-note", f.note));
+        line.appendChild(body);
+        block.appendChild(line);
+      }
+      // Only a recommendation owes the reader a list of what we have not looked at.
+      if (positive && unassessed.length) {
+        block.appendChild(el("div", "pd-unassessed",
+          "Not yet assessed: " + unassessed.map(([, l]) => l.toLowerCase()).join(", ")));
+      }
     }
-    root.appendChild(block);
+    if (block.childNodes.length) root.appendChild(block);
 
     const foot = el("div", "pd-foot");
     const link = el("a", "pd-link", "Read the full verdict →");

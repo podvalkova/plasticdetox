@@ -197,3 +197,8 @@
 
 .pd-brandline { margin-top: 8px; font-size: 11.5px; line-height: 1.45; color: var(--pd-muted); }
 .pd-brandline b { color: #57534e; }
+
+.pd-unassessed {
+  margin-top: 9px; padding-top: 8px; border-top: 1px solid #faf9f8;
+  font-size: 11px; color: var(--pd-unknown); font-style: italic;
+}
