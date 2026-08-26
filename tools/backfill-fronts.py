@@ -196,6 +196,10 @@ def split_fragments(brand):
     reason = brand.get("reason") or ""
     # Sentence split, protecting decimals and common abbreviations.
     protected = re.sub(r"(\d)\.(\d)", r"\1<DOT>\2", reason)
+    # Split on clause joins too. A single sentence routinely covers two fronts
+    # ("testing flagged dioxins ... and the wipes are polypropylene"), and
+    # sentence-level fragments force those to compete when both are true.
+    protected = re.sub(r",\s+(and|but|while|though|although|whereas)\s+", ". ", protected)
     for part in re.split(r"(?<=[.;])\s+", protected):
         part = part.replace("<DOT>", ".").strip()
         if len(part) > 12:
@@ -269,18 +273,45 @@ def count_terms(low, terms, respect_negation):
     return n, flipped
 
 
-def polarity(low):
-    neg, negated_away = count_terms(low, NEGATIVE, respect_negation=True)
+# Terms that describe a legal event. They are evidence about the legal front and
+# about nothing else, so they must not move any other front's polarity.
+LEGAL_ONLY = set(HARD_LEGAL) | {"settlement", "settled", "fined", "penalty", "cpsc"}
+
+
+def polarity(low, front=None):
+    """
+    Polarity of a fragment for one front.
+
+    Front-aware because a clause routinely carries good news about one front and
+    bad news about another. "Claryum housing leak investigation closed with no
+    filed suit and no recall" is a legal pass and a packaging failure in the same
+    breath; scoring it once let the legal good news mark the packaging front as
+    passing and overwrite a real defect.
+    """
+    neg_terms = NEGATIVE if front == "legal" or front is None else [
+        t for t in NEGATIVE if t not in LEGAL_ONLY
+    ]
+    neg, negated_away = count_terms(low, neg_terms, respect_negation=True)
     pos, _ = count_terms(low, POSITIVE, respect_negation=False)
     # Every hazard the copy explicitly rules out is itself a positive signal.
     pos += negated_away
-    # Explicit negations of a legal event ("no recall", "closed without a lawsuit")
-    if re.search(r"\bno (cpsc )?(recall|lawsuit|class action|filed)", low):
-        neg -= 2
-        pos += 1
-    if re.search(r"\b(closed|ended) without", low):
-        neg -= 2
-        pos += 1
+
+    if front == "legal" or front is None:
+        # "no recall", "closed without a lawsuit" are legal all-clears.
+        if re.search(r"\bno (cpsc )?(recall|lawsuit|class action|filed)", low):
+            neg -= 2
+            pos += 1
+        if re.search(r"\b(closed|ended) without", low):
+            neg -= 2
+            pos += 1
+    else:
+        # Strip the same all-clear phrasing from a non-legal front's positives,
+        # or the legal good news inflates it.
+        for pat in (r"\bno (cpsc )?(recall|lawsuit|class action|filed)",
+                    r"\b(closed|ended) without"):
+            if re.search(pat, low):
+                pos -= 1
+
     if neg > pos:
         return "neg", neg - pos
     if pos > neg:
@@ -305,30 +336,37 @@ def build_fronts(brand):
         scores, low = score_fragment(frag)
         if not scores:
             continue
-        ranked = sorted(scores.items(), key=lambda kv: kv[1], reverse=True)
-        front, top = ranked[0]
-        # Ambiguous fragment: two fronts tied. Skip rather than guess.
-        if len(ranked) > 1 and ranked[1][1] == top:
-            continue
-        pol, strength = polarity(low)
-        if pol is None:
-            continue
-        weight = top + strength
-        if weight <= best[front]:
-            continue
-        # "caution" rather than "fail" unless the fragment is emphatically
-        # negative. A live recall or filed suit is always a fail on its own,
-        # however briefly it is worded.
-        if pol == "neg":
-            hard = any(has(low, t) and not is_negated(low, m.start(), m.end())
-                       for t in HARD_LEGAL
-                       for m in [re.search(r"(?<![a-z0-9])" + re.escape(t) + r"(?![a-z0-9])", low)]
-                       if m)
-            status = "fail" if (hard or strength >= 2) else "caution"
-        else:
-            status = "pass"
-        fronts[front] = {"status": status, "note": trim_note(frag)}
-        best[front] = weight
+        # Every front with real support in this fragment gets it, not just the
+        # highest scorer. A sentence about lab findings AND materials is
+        # evidence for both; keeping only the winner discarded the rest and was
+        # the single biggest cap on coverage.
+        claimed = [f for f, sc in scores.items() if sc >= 10 or sc >= 2]
+        if not claimed and len(scores) == 1:
+            claimed = [max(scores, key=scores.get)]
+        for front in claimed:
+            pol, strength = polarity(low, front)
+            if pol is None:
+                continue
+            weight = scores[front] + strength
+            if weight <= best[front]:
+                continue
+            # "caution" rather than "fail" unless the fragment is emphatically
+            # negative. A live recall or filed suit is always a fail on its own,
+            # however briefly it is worded.
+            if pol == "neg":
+                hard = any(has(low, t) and not is_negated(low, m.start(), m.end())
+                           for t in HARD_LEGAL
+                           for m in [re.search(r"(?<![a-z0-9])" + re.escape(t) + r"(?![a-z0-9])", low)]
+                           if m)
+                # Only the legal front may be failed on a legal event; a hard
+                # legal word must not fail an unrelated front in the same clause.
+                if front != "legal":
+                    hard = False
+                status = "fail" if (hard or strength >= 2) else "caution"
+            else:
+                status = "pass"
+            fronts[front] = {"status": status, "note": trim_note(frag)}
+            best[front] = weight
 
     # Keep the scorecard consistent with the headline verdict. A brand we rate
     # good must not carry a hard "fail" chip, and a brand we rate skip must not
