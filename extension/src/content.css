@@ -202,3 +202,15 @@
   margin-top: 9px; padding-top: 8px; border-top: 1px solid #faf9f8;
   font-size: 11px; color: var(--pd-unknown); font-style: italic;
 }
+
+/* An unreviewed machine result must never look like a verdict we stand behind. */
+.pd-badge.pd-unreviewed {
+  background: #f5f5f4; border-color: var(--pd-neutral-border);
+  color: var(--pd-muted); text-transform: none; letter-spacing: 0; font-weight: 600;
+}
+.pd-origin {
+  margin-left: 6px; padding: 1px 5px; border-radius: 4px;
+  background: var(--pd-neutral-bg); border: 1px solid var(--pd-neutral-border);
+  font-size: 9px; font-weight: 700; letter-spacing: .04em; color: var(--pd-muted);
+  vertical-align: middle;
+}

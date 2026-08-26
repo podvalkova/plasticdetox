@@ -171,8 +171,12 @@ def cmd_approve(brands):
             continue
         fronts = {"authored": True}
         for f in FRONTS:
-            fronts[f] = {"status": draft[f]["status"], "note": draft[f]["note"]}
+            # Approving a draft is the human review, so it graduates to origin
+            # "human". Anything not approved never reaches brand-data.json.
+            fronts[f] = {"status": draft[f]["status"], "note": draft[f]["note"],
+                         "origin": "human"}
         b["fronts"] = fronts
+        b["reviewed"] = True
         s = set(b.get("sources") or []); s.update(draft.get("sources") or [])
         b["sources"] = sorted(s)
         merged += 1

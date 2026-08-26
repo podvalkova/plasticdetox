@@ -168,8 +168,17 @@
     const row = opts.product || null;   // per-product verdict, when this ASIN has one
     const root = el("div", opts.popover ? "pd-pop" : "pd-panel");
 
-    const head = el("div", `pd-head ${stance}`);
-    head.appendChild(el("span", `pd-badge ${stance}`, STANCE_LABEL[stance] || "Context"));
+    // A stance badge asserts that a person stood behind this verdict. Live AI
+    // research does not get one: it presents findings and lets the reader judge.
+    // Publishing an unreviewed machine verdict against a named brand, at the
+    // moment of purchase, is the one claim we cannot afford to get wrong.
+    const reviewed = b.reviewed !== false;
+    const head = el("div", `pd-head ${reviewed ? stance : "neutral"}`);
+    if (reviewed) {
+      head.appendChild(el("span", `pd-badge ${stance}`, STANCE_LABEL[stance] || "Context"));
+    } else {
+      head.appendChild(el("span", "pd-badge pd-unreviewed", "Research, not yet reviewed"));
+    }
     head.appendChild(el("div", "pd-brand", b.brand));
     // Name the specific product when our verdict is about the product rather
     // than the brand, so a "good" badge on a careful brand does not look wrong.
@@ -227,7 +236,11 @@
         const line = el("div", `pd-front ${st}`);
         line.appendChild(el("span", `pd-icon ${st}`, STATUS_GLYPH[st]));
         const body = el("div", "pd-front-body");
-        body.appendChild(el("div", "pd-front-name", label));
+        const nameLine = el("div", "pd-front-name", label);
+        if (f.origin === "ai") {
+          nameLine.appendChild(el("span", "pd-origin", "AI"));
+        }
+        body.appendChild(nameLine);
         if (f.note) body.appendChild(el("div", "pd-front-note", f.note));
         line.appendChild(body);
         block.appendChild(line);

@@ -329,7 +329,7 @@ def trim_note(fragment, limit=110):
 
 def build_fronts(brand):
     """Return the fronts object plus a per-front confidence tally."""
-    fronts = {f: {"status": "unknown", "note": ""} for f in FRONTS}
+    fronts = {f: {"status": "unknown", "note": "", "origin": "none"} for f in FRONTS}
     best = {f: 0 for f in FRONTS}
 
     for frag in split_fragments(brand):
@@ -365,7 +365,8 @@ def build_fronts(brand):
                 status = "fail" if (hard or strength >= 2) else "caution"
             else:
                 status = "pass"
-            fronts[front] = {"status": status, "note": trim_note(frag)}
+            fronts[front] = {"status": status, "note": trim_note(frag),
+                             "origin": "extracted"}
             best[front] = weight
 
     # Keep the scorecard consistent with the headline verdict. A brand we rate
@@ -378,7 +379,7 @@ def build_fronts(brand):
         if stance == "good" and st == "fail":
             fronts[f]["status"] = "caution"
         elif stance == "skip" and st == "pass":
-            fronts[f] = {"status": "unknown", "note": ""}
+            fronts[f] = {"status": "unknown", "note": "", "origin": "none"}
     return fronts
 
 
