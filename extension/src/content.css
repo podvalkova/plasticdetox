@@ -143,3 +143,54 @@
 .pd-close:hover { color: var(--pd-text); }
 
 .pd-unmatched { padding: 12px 15px; font-size: 12.5px; color: var(--pd-muted); line-height: 1.5; }
+
+/* ---------- report + request forms ---------- */
+
+.pd-report-link {
+  border: none; background: none; padding: 0; cursor: pointer;
+  font-family: inherit; font-size: 11.5px; font-weight: 600;
+  color: var(--pd-muted); text-decoration: underline; text-underline-offset: 2px;
+}
+.pd-report-link:hover { color: var(--pd-skip); }
+
+.pd-report { border-top: 1px solid #f0efed; padding: 12px 15px 13px; background: #fdfdfc; }
+.pd-report-title { font-size: 12.5px; font-weight: 600; color: var(--pd-text); margin-bottom: 9px; }
+
+.pd-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 9px; }
+.pd-issue {
+  padding: 4px 10px; border: 1px solid var(--pd-neutral-border); border-radius: 999px;
+  background: #fff; font-family: inherit; font-size: 11.5px; font-weight: 500;
+  color: #44403c; cursor: pointer; transition: all .15s;
+}
+.pd-issue:hover { border-color: #d6d3d1; background: #fafaf9; }
+.pd-issue.on {
+  background: var(--pd-careful-bg); border-color: var(--pd-careful-border);
+  color: #78350f; font-weight: 600;
+}
+
+.pd-form-wrap { padding: 0 15px 12px; }
+.pd-form { display: flex; gap: 7px; align-items: center; }
+
+.pd-input, .pd-textarea {
+  width: 100%; padding: 7px 10px; border: 1px solid var(--pd-neutral-border);
+  border-radius: 7px; font-family: inherit; font-size: 12.5px; color: var(--pd-text);
+  background: #fff; margin-bottom: 7px;
+}
+.pd-form .pd-input { margin-bottom: 0; }
+.pd-input:focus, .pd-textarea:focus { outline: 2px solid #a8a29e; outline-offset: -1px; }
+.pd-textarea { resize: vertical; line-height: 1.45; }
+
+.pd-btn {
+  flex: 0 0 auto; padding: 7px 13px; border: 1px solid var(--pd-text);
+  border-radius: 7px; background: var(--pd-text); color: #fff;
+  font-family: inherit; font-size: 12px; font-weight: 600; cursor: pointer;
+  white-space: nowrap;
+}
+.pd-btn:hover { background: #292524; }
+.pd-btn:disabled { opacity: .55; cursor: default; }
+.pd-btn.ghost { background: #fff; color: var(--pd-muted); border-color: var(--pd-neutral-border); }
+.pd-btn.ghost:hover { background: #fafaf9; color: var(--pd-text); }
+
+.pd-note { font-size: 11.5px; line-height: 1.45; color: var(--pd-muted); margin-top: 7px; }
+.pd-note.good { color: var(--pd-good); font-weight: 500; }
+.pd-note.bad { color: var(--pd-skip); font-weight: 500; }

@@ -1,9 +1,21 @@
 const ALLOWED_ORIGINS = ["https://plasticdetox.org", "https://www.plasticdetox.org"];
 
+// The Brand Check extension posts from its own chrome-extension:// origin.
+// Allowing it here is what lets the card report an error or request a review
+// inline on Amazon; without it the extension would need a host permission it
+// cannot request from a content script.
+const EXTENSION_ORIGINS = ["chrome-extension://lplncjbnohkgchjkhgdiljpjfgdmgelg"];
+
+function resolveCors(origin) {
+  if (ALLOWED_ORIGINS.includes(origin)) return origin;
+  if (EXTENSION_ORIGINS.includes(origin)) return origin;
+  return ALLOWED_ORIGINS[0];
+}
+
 export default {
   async fetch(request, env) {
     const origin = request.headers.get("Origin") || "";
-    const corsOrigin = ALLOWED_ORIGINS.includes(origin) ? origin : ALLOWED_ORIGINS[0];
+    const corsOrigin = resolveCors(origin);
 
     // CORS preflight
     if (request.method === "OPTIONS") {
@@ -23,6 +35,10 @@ export default {
       return handleBrandStats(request, env);
     }
 
+    if (path === "/brand-reports" && request.method === "GET") {
+      return handleBrandReports(request, env);
+    }
+
     if (request.method !== "POST") {
       return new Response("Method not allowed", { status: 405 });
     }
@@ -33,6 +49,10 @@ export default {
     }
 
     // ===== Brand Review request: capture email + requested brand, email the team =====
+    if (path === "/brand-report") {
+      return handleBrandReport(request, env, corsOrigin);
+    }
+
     if (path === "/brand-request") {
       return handleBrandRequest(request, env, corsOrigin);
     }
@@ -170,6 +190,72 @@ async function handleSearchLog(request, env, corsOrigin) {
   } catch (e) {
     return json({ ok: false }, 200, corsOrigin); // never block the UI
   }
+}
+
+// POST /brand-report  { brand, issue, detail, email? }
+// A reader telling us a verdict is wrong. Stored in the same KV as searches
+// under a report: prefix so it shows up in one place, and mailed on when a
+// Brevo key is configured so a correction is not sitting unread in a store.
+async function handleBrandReport(request, env, corsOrigin) {
+  try {
+    const body = await request.json();
+    const brand = (body.brand || "").toString().trim().slice(0, 80);
+    const issue = (body.issue || "").toString().trim().slice(0, 40);
+    const detail = (body.detail || "").toString().trim().slice(0, 1000);
+    const email = (body.email || "").toString().trim().slice(0, 120);
+    if (!brand || !issue) {
+      return json({ ok: false, error: "Missing brand or issue" }, 400, corsOrigin);
+    }
+
+    if (env.BRAND_SEARCHES) {
+      const key = `report:${Date.now()}:${brand.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
+      await env.BRAND_SEARCHES.put(
+        key,
+        JSON.stringify({ brand, issue, detail, email, at: new Date().toISOString() }),
+        { expirationTtl: 60 * 60 * 24 * 365 }
+      );
+    }
+
+    if (env.BREVO_API_KEY) {
+      await fetch("https://api.brevo.com/v3/smtp/email", {
+        method: "POST",
+        headers: { "api-key": env.BREVO_API_KEY, "Content-Type": "application/json" },
+        body: JSON.stringify({
+          sender: { name: "Brand Check", email: "hello@plasticdetox.org" },
+          to: [{ email: "hello@plasticdetox.org" }],
+          subject: `Brand Check correction: ${brand} (${issue})`,
+          textContent:
+            `Brand: ${brand}\nIssue: ${issue}\n\n${detail || "(no detail given)"}\n\n` +
+            `Reply to: ${email || "(not supplied)"}`,
+        }),
+      }).catch(() => {});
+    }
+
+    return json({ ok: true }, 200, corsOrigin);
+  } catch (e) {
+    return json({ ok: false }, 200, corsOrigin); // never block the UI
+  }
+}
+
+// GET /brand-reports?token=...  ->  everything readers have flagged
+async function handleBrandReports(request, env) {
+  const token = new URL(request.url).searchParams.get("token") || "";
+  if (!env.STATS_TOKEN || token !== env.STATS_TOKEN) {
+    return new Response("Unauthorized", { status: 401 });
+  }
+  if (!env.BRAND_SEARCHES) return json({ ok: true, reports: [] });
+  const rows = [];
+  let cursor;
+  do {
+    const list = await env.BRAND_SEARCHES.list({ prefix: "report:", cursor, limit: 1000 });
+    for (const k of list.keys) {
+      const rec = await env.BRAND_SEARCHES.get(k.name, { type: "json" });
+      if (rec) rows.push(rec);
+    }
+    cursor = list.list_complete ? null : list.cursor;
+  } while (cursor);
+  rows.sort((a, b) => (b.at || "").localeCompare(a.at || ""));
+  return json({ ok: true, count: rows.length, reports: rows });
 }
 
 // GET /brand-stats?token=...  ->  ranked list of everything searched

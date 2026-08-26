@@ -196,9 +196,17 @@
     link.target = "_blank";
     link.rel = "noopener";
     foot.appendChild(link);
-    foot.appendChild(
-      el("span", "pd-mark", unknowns === FRONTS.length ? "Verdict only" : "Plastic Detox")
-    );
+
+    // A verdict shown at the moment of purchase should be correctable at the
+    // moment of purchase too, without sending the reader off to another page.
+    const report = el("button", "pd-report-link", "Report an error");
+    report.addEventListener("click", () => {
+      if (root.querySelector(".pd-report")) return;
+      const form = buildReportForm(b.brand, () => form.remove());
+      root.insertBefore(form, foot);
+      form.scrollIntoView({ block: "nearest" });
+    });
+    foot.appendChild(report);
     root.appendChild(foot);
 
     if (opts.popover) {
@@ -210,6 +218,19 @@
     return root;
   }
 
+  /** POST to the worker. It allows this extension's origin by CORS, so no host
+   *  permission is involved and nothing is sent without an explicit click. */
+  async function postWorker(path, payload) {
+    const res = await fetch(`${WORKER}${path}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!data.ok) throw new Error(data.error || "Could not send");
+    return data;
+  }
+
   function buildUnmatchedPanel(brandName) {
     const root = el("div", "pd-panel");
     const head = el("div", "pd-head");
@@ -218,17 +239,125 @@
     root.appendChild(head);
     root.appendChild(
       el("div", "pd-unmatched",
-        "We have not researched this brand yet. Request a review and we will vet it on all four fronts and publish the verdict.")
+        "We have not researched this brand yet. Ask for a review and we will vet it on all four fronts, then email you the verdict.")
     );
+
+    // Requesting happens right here rather than bouncing the reader to the site,
+    // which is the whole point of doing this on the listing.
+    const form = el("div", "pd-form");
+    const input = el("input", "pd-input");
+    input.type = "email";
+    input.placeholder = "you@email.com";
+    input.setAttribute("aria-label", "Your email");
+    const btn = el("button", "pd-btn", "Request review");
+    const note = el("div", "pd-note", "");
+    form.appendChild(input);
+    form.appendChild(btn);
+
+    btn.addEventListener("click", async () => {
+      const email = input.value.trim();
+      if (!email || !email.includes("@")) {
+        note.textContent = "Please enter a valid email.";
+        note.className = "pd-note bad";
+        return;
+      }
+      btn.disabled = true;
+      btn.textContent = "Sending…";
+      try {
+        await postWorker("/brand-request", { brand: brandName, email });
+        form.remove();
+        note.className = "pd-note good";
+        note.textContent = `Thanks. We will research ${brandName} and email you the verdict.`;
+      } catch (err) {
+        btn.disabled = false;
+        btn.textContent = "Request review";
+        note.className = "pd-note bad";
+        note.textContent = "Could not send just now. Please try again.";
+      }
+    });
+
+    const wrap = el("div", "pd-form-wrap");
+    wrap.appendChild(form);
+    wrap.appendChild(note);
+    root.appendChild(wrap);
+
     const foot = el("div", "pd-foot");
-    const link = el("a", "pd-link", "Request a review →");
-    link.href = `${SITE}/brand-check.html?b=${encodeURIComponent(brandName)}`;
-    link.target = "_blank";
-    link.rel = "noopener";
-    foot.appendChild(link);
     foot.appendChild(el("span", "pd-mark", "Plastic Detox"));
     root.appendChild(foot);
     return root;
+  }
+
+  /** Inline "this is wrong" form, opened from the footer of any verdict card. */
+  function buildReportForm(brandName, onClose) {
+    const wrap = el("div", "pd-report");
+    wrap.appendChild(el("div", "pd-report-title", `What is wrong about ${brandName}?`));
+
+    const ISSUES = [
+      ["wrong-verdict", "Wrong verdict"],
+      ["out-of-date", "Out of date"],
+      ["wrong-brand", "Not this brand"],
+      ["missing-info", "Missing information"],
+    ];
+    let chosen = null;
+    const chips = el("div", "pd-chips");
+    for (const [key, label] of ISSUES) {
+      const c = el("button", "pd-issue", label);
+      c.addEventListener("click", () => {
+        chosen = key;
+        [...chips.children].forEach((x) => x.classList.remove("on"));
+        c.classList.add("on");
+        note.textContent = "";
+      });
+      chips.appendChild(c);
+    }
+    wrap.appendChild(chips);
+
+    const detail = el("textarea", "pd-textarea");
+    detail.placeholder = "What should it say instead? A link to a source helps most.";
+    detail.rows = 3;
+    wrap.appendChild(detail);
+
+    const email = el("input", "pd-input");
+    email.type = "email";
+    email.placeholder = "Email (optional, if you want a reply)";
+    wrap.appendChild(email);
+
+    const note = el("div", "pd-note", "");
+    const row = el("div", "pd-form");
+    const send = el("button", "pd-btn", "Send report");
+    const cancel = el("button", "pd-btn ghost", "Cancel");
+    row.appendChild(send);
+    row.appendChild(cancel);
+    wrap.appendChild(row);
+    wrap.appendChild(note);
+
+    cancel.addEventListener("click", onClose);
+    send.addEventListener("click", async () => {
+      if (!chosen) {
+        note.className = "pd-note bad";
+        note.textContent = "Pick what is wrong first.";
+        return;
+      }
+      send.disabled = true;
+      send.textContent = "Sending…";
+      try {
+        await postWorker("/brand-report", {
+          brand: brandName,
+          issue: chosen,
+          detail: detail.value.trim(),
+          email: email.value.trim(),
+        });
+        wrap.textContent = "";
+        wrap.appendChild(el("div", "pd-note good",
+          "Thanks. Every report is read by a person, and we correct what we get wrong."));
+      } catch (err) {
+        send.disabled = false;
+        send.textContent = "Send report";
+        note.className = "pd-note bad";
+        note.textContent = "Could not send just now. Please try again.";
+      }
+    });
+    return wrap;
   }
 
   // ------------------------------------------------------------- popover

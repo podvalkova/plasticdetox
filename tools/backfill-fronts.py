@@ -12,6 +12,11 @@ This reads only what the existing `reason`, `evidence` and `cautions` fields
 already say. It never invents a finding. Anything it cannot attribute with
 confidence stays "unknown", which the UI renders as "not assessed".
 
+A brand whose `fronts` object carries `"authored": true` is skipped entirely.
+Those were written by hand during research and outrank anything a classifier
+could infer from prose. Extraction is a seeder for brands nobody has done that
+work for yet, not a source of truth.
+
 Precision matters far more than recall here: a wrong "fail" on a named brand
 is the trade-libel exposure. When a fragment is ambiguous, we drop it.
 
@@ -348,16 +353,26 @@ def main():
     tally = {f: collections.Counter() for f in FRONTS}
     filled_per_brand = collections.Counter()
 
+    authored_kept = 0
     for b in brands:
-        fronts = build_fronts(b)
+        # Hand-authored fronts are the source of truth and must never be
+        # regenerated. The classifier only ever seeds brands nobody has
+        # written fronts for by hand.
+        existing = b.get("fronts") or {}
+        if existing.get("authored"):
+            fronts = existing
+            authored_kept += 1
+        else:
+            fronts = build_fronts(b)
         b["fronts"] = fronts
-        filled = sum(1 for f in FRONTS if fronts[f]["status"] != "unknown")
+        filled = sum(1 for f in FRONTS
+                     if (fronts.get(f) or {}).get("status", "unknown") != "unknown")
         filled_per_brand[filled] += 1
         for f in FRONTS:
-            tally[f][fronts[f]["status"]] += 1
+            tally[f][(fronts.get(f) or {}).get("status", "unknown")] += 1
 
     total = len(brands)
-    print(f"{total} brands\n")
+    print(f"{total} brands  ({authored_kept} with hand-authored fronts, left untouched)\n")
     print(f"{'front':<12}{'pass':>7}{'caution':>9}{'fail':>7}{'unknown':>9}{'covered':>9}")
     for f in FRONTS:
         t = tally[f]
