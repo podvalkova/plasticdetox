@@ -674,7 +674,7 @@ async function handleStripeWebhook(request, env) {
           headers: { "api-key": env.BREVO_API_KEY, "Content-Type": "application/json" },
           body: JSON.stringify({
             sender: { name: env.NOTIFY_NAME, email: env.NOTIFY_EMAIL },
-            to: [{ email: "anya@washos.com" }],
+            to: [{ email: "hello@plasticdetox.org" }],
             subject: `Package sold: ${email}`,
             htmlContent: `<p>Baby &amp; Expecting Package, $${(amount/100).toFixed(2)}<br>${email}<br>${name||""}</p>`,
           }),
