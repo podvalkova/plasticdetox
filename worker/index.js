@@ -644,6 +644,9 @@ async function handleStripeWebhook(request, env) {
           }),
         }).catch(() => {});
 
+        // Stripe does not always return a name, so fall back rather than greeting an empty string
+        const greeting = first ? `Hi ${escHtml(first)},` : "Hi there,";
+
         const hub  = "https://plasticdetox.org/babies-kids.html?addon=1";
         const reg  = "https://plasticdetox.org/registry.html?addon=1";
         const top  = "https://plasticdetox.org/articles/top-100-baby-kids-products-amazon.html?addon=1";
@@ -655,15 +658,19 @@ async function handleStripeWebhook(request, env) {
           body: JSON.stringify({
             sender: { name: env.SENDER_NAME, email: env.SENDER_EMAIL },
             to: [{ email, name }],
-            subject: "Your Baby & Expecting Package is open",
+            replyTo: { name: env.SENDER_NAME, email: env.SENDER_EMAIL },
+            subject: "Your Baby & Expecting Package",
             htmlContent: emailShell("You're in",
-              emailP("Thank you. Your package is unlocked. Open any of these and it stays open on that device.") +
+              emailP(`${greeting}`) +
+              emailP("Thank you for your order. Your package is unlocked and ready. Everything below opens straight away, no password to remember.") +
               emailButton("Open the registry, 123 picks", reg) +
               emailP(`<strong>All 100 Amazon products rated:</strong> <a href="${top}" style="color:#7c3aed;font-weight:600;">open the full list</a><br>` +
                      `<strong>The 23 swaps in priority order:</strong> <a href="${swap}" style="color:#7c3aed;font-weight:600;">open the swap list</a><br>` +
                      `<strong>Everything in one place:</strong> <a href="${hub}" style="color:#7c3aed;font-weight:600;">your package page</a>`) +
-              `<p style="margin:18px 0 0 0;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:13px;line-height:1.6;color:#78716c;"><strong>Keep this email.</strong> Access is remembered per browser, so if you switch devices or clear your history, open any link above again to restore it.</p>` +
-              `<p style="margin:14px 0 0 0;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:13px;line-height:1.6;color:#78716c;">A share of what you paid funds the next round of independent lab testing. Questions, or want a refund? Just reply to this email.</p>`
+              `<p style="margin:22px 0 0 0;padding:14px 18px;background-color:#faf9f7;border-left:3px solid #a78bfa;border-radius:6px;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:14px;line-height:1.65;color:#1c1917;"><strong>Keep this email.</strong> Access is remembered per browser, so if you switch to your phone, use a different browser, or clear your history, just open any link above again to restore it.</p>` +
+              `<p style="margin:18px 0 0 0;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:14px;line-height:1.7;color:#1c1917;"><strong>Questions, or something not working?</strong> Reply to this email, or write to <a href="mailto:hello@plasticdetox.org" style="color:#7c3aed;font-weight:600;">hello@plasticdetox.org</a>. A real person reads it and we answer every message.</p>` +
+              `<p style="margin:14px 0 0 0;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:14px;line-height:1.7;color:#1c1917;">If you have feedback on the picks, we would genuinely like to hear it. Reader notes are how the list keeps getting better.</p>` +
+              `<p style="margin:18px 0 0 0;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:13px;line-height:1.6;color:#78716c;">A share of what you paid funds the next round of independent lab testing. Not what you expected? Reply and we will refund you, no questions asked.</p>`
             ),
           }),
         }).catch(() => {});
@@ -802,6 +809,14 @@ ${tagPill}
 }
 
 // Paragraph helper for email bodies
+// Names come from Stripe customer_details and are user supplied, so anything
+// interpolated into HTML has to be escaped first.
+function escHtml(v) {
+  return String(v == null ? "" : v).replace(/[&<>"']/g, function (c) {
+    return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+  });
+}
+
 function emailP(html) {
   return `<p style="margin:0 0 16px 0;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:15px;line-height:1.7;color:#1c1917;">${html}</p>`;
 }

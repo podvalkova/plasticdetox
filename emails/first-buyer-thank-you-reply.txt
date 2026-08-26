@@ -1,0 +1,52 @@
+PERSONAL NOTE TO A PACKAGE BUYER
+Send from Anya's own inbox, not Brevo. This should look like an email from a
+person, because it is one. Plain text, no signature block, no logo.
+
+Get the address from one of:
+  - the "Package sold: {email}" notification the worker sent to anya@washos.com
+  - Stripe, on the charge record
+  - Brevo list 8, once the IP allowlist is fixed
+
+---
+
+Subject: Thank you
+
+Hi [first name],
+
+Thank you for picking up the Baby and Expecting Package. I wanted to say that
+personally rather than let an automated receipt do it for me.
+
+You should have a separate email with your access links. If it did not land,
+reply here and I will send them over.
+
+And if anything in there is unclear, or you think something is missing, tell
+me. I read every reply, and reader notes are how the picks keep getting
+better.
+
+Congratulations on the baby.
+
+Anya
+plasticdetox.org
+
+---
+
+NOTES ON THE DRAFT
+
+Never signal that the product is new or that the buyer is early. A customer
+who has just paid should feel they bought something established. Anya was
+explicit about this on 2026-08-26 after an earlier draft led with "you're the
+first", which is exactly the wrong message to send someone who just handed
+over money.
+
+Written in first person, not the site's usual "we". A one to one note from a
+founder should sound like one person wrote it. The broadcast rule about using
+"we" applies to list sends, not this.
+
+The feedback ask is framed as routine practice ("I read every reply", "reader
+notes are how the picks keep getting better"), which invites a response while
+implying an existing readership rather than an empty one.
+
+The access link question stays. If the worker webhook failed, this is how you
+find out before they get frustrated and ask for a refund.
+
+Do not add a discount, a survey link, or an upsell. It would cheapen it.
