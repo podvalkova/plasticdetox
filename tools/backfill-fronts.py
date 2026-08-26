@@ -48,6 +48,9 @@ CUES = {
         "nonstick", "non-stick", "ptfe", "teflon", "pfoa", "coating", "coated",
         "pfas", "forever chemical", "forever chemicals",
         "silicone", "melamine", "bpa", "bps", "bpf", "phthalate-free",
+        "polypropylene", "polyethylene", "polystyrene", "styrene", "pvc",
+        "pet", "pla", "viscose", "rayon", "modal", "latex", "neoprene",
+        "tpu", "eva", "abs", "substrate", "microplastic", "microplastics",
         "aluminium", "aluminum", "copper", "titanium",
         "sweetener", "sucralose", "aspartame", "natural flavor", "natural flavors",
         "seed oil", "seed oils", "additive", "additives", "fillers", "filler",
@@ -81,6 +84,10 @@ CUES = {
         "leaping bunny", "b corp", "cradle to cradle", "ab 1200",
         "organic fluorine", "total fluorine", "heavy metal", "heavy metals",
         "lead", "cadmium", "arsenic", "mercury", "benzene",
+        "dioxin", "dioxins", "furan", "furans", "pcb", "pcbs", "glyphosate",
+        "anses", "greenpeace", "consumer reports", "mamavation", "ewg",
+        "study", "studies", "screened", "flagged", "residue", "residues",
+        "contaminant", "contaminants", "trace",
     ],
 }
 
@@ -99,6 +106,11 @@ NEGATIVE = [
     "undisclosed", "does not disclose", "no third party", "not certified",
     "not tested", "unclear", "concern", "concerns", "risk", "problem",
     "sucralose", "aspartame", "seed oil",
+    "flagged", "trace", "residue", "residues", "contaminant", "contaminants",
+    "polypropylene", "polyethylene", "polystyrene", "styrene", "pvc", "pla",
+    "viscose", "rayon", "latex", "neoprene", "microplastic", "microplastics",
+    "leached", "leaches", "migrates", "migration", "dioxin", "dioxins",
+    "furan", "furans", "pcb", "pcbs", "glyphosate", "conventional",
 ]
 
 POSITIVE = [
@@ -119,6 +131,8 @@ POSITIVE = [
     "carbon steel", "glass", "tencel", "linen", "hemp", "wool",
     "no recall", "no cpsc recall", "no filed", "closed without",
     "discloses no", "no intentionally",
+    "food grade", "food-grade", "medical grade", "inert", "unlined",
+    "uncoated", "undyed", "untreated", "bare", "solid wood", "borosilicate",
 ]
 
 # Cues that are strong enough on their own to claim a front even in a mixed
