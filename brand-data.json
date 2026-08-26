@@ -4110,24 +4110,26 @@
     "evidence": "Sold in glass",
     "alternative": "",
     "sources": [
+      "https://www.ucdavis.edu/news/most-imported-olive-oils-don%E2%80%99t-match-%E2%80%98extra-virgin%E2%80%99-claims-study-finds",
       "plastic-in-groceries-what-really-matters.html"
     ],
     "fronts": {
+      "authored": true,
       "formula": {
-        "status": "unknown",
-        "note": ""
+        "status": "pass",
+        "note": "California grown extra virgin olive oil. In the UC Davis testing only 10 percent of California oils failed the extra virgin standard, against 69 percent of imports."
       },
       "packaging": {
         "status": "unknown",
         "note": ""
       },
       "legal": {
-        "status": "unknown",
-        "note": ""
+        "status": "pass",
+        "note": "Not among the ten brands named in the chefs' extra virgin mislabelling suit, and no recall or class action found."
       },
       "testing": {
-        "status": "unknown",
-        "note": ""
+        "status": "caution",
+        "note": "California oils performed far better than imports in the UC Davis study, but California Olive Ranch was one of its funders, so it is not fully independent of the brand."
       }
     }
   },
@@ -6576,27 +6578,36 @@
     "sources": [
       "clean-products-that-arent.html",
       "how-to-avoid-bpa-and-phthalates.html",
+      "https://topclassactions.com/lawsuit-settlements/lawsuit-news/dr-bronners-class-action-lawsuit-claims-toothpaste-contains-neurotoxic-heavy-metals/",
       "non-toxic-baby-toddler-products-guide.html"
     ],
     "buy": "https://www.amazon.com/dp/B00120VWJ0?tag=plasticdetox-20",
     "fronts": {
+      "authored": true,
       "formula": {
-        "status": "unknown",
-        "note": ""
+        "status": "pass",
+        "note": "Pure-Castile soaps are saponified organic plant oils with no synthetic detergents, foaming agents or preservatives, and the ingredient list is fully published."
       },
       "packaging": {
         "status": "unknown",
         "note": ""
       },
       "legal": {
-        "status": "unknown",
-        "note": ""
+        "status": "caution",
+        "note": "A 2025 class action alleges the toothpaste contains undisclosed heavy metals. Filed, unresolved, and no recall has been issued."
       },
       "testing": {
-        "status": "unknown",
-        "note": ""
+        "status": "caution",
+        "note": "Lead Safe Mama testing in April 2025 reported lead at 160 ppb, mercury at 6 ppb and arsenic at 23 ppb in the toothpaste. The soaps were not implicated."
       }
-    }
+    },
+    "products": [
+      {
+        "name": "Toothpaste",
+        "verdict": "careful",
+        "note": "Independent testing reported trace lead, mercury and arsenic, and a class action followed. The soaps are a separate matter and remain a pick."
+      }
+    ]
   },
   {
     "id": "dr-brown-s",
