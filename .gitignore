@@ -20,3 +20,7 @@ dist/
 tools/social/x-replies.html
 tools/social/x-candidates-archive.json
 tools/social/x-rotation.json
+
+# Wrangler local cache and KV state, never publish
+worker/.wrangler/
+dist/
