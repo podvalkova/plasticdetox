@@ -162,9 +162,11 @@ function brandKey(s) {
 
 // Record every brand a user searches, with a running count and whether we had a match.
 async function logBrandSearch(env, brand, matched, verdict, requested) {
-  if (!env.BRAND_SEARCHES) return;
+  // Throw rather than return. A silent no-op here reported success for 180
+  // days while nothing was being written, and nothing upstream could tell.
+  if (!env.BRAND_SEARCHES) throw new Error("BRAND_SEARCHES binding is not bound");
   const display = (brand || "").toString().trim().slice(0, 80);
-  if (!display) return;
+  if (!display) throw new Error("empty brand");
   const key = brandKey(display);
   const now = new Date().toISOString();
   let rec;
@@ -179,16 +181,23 @@ async function logBrandSearch(env, brand, matched, verdict, requested) {
   if (requested) rec.requests = (rec.requests || 0) + 1;
   rec.brand = display;
   await env.BRAND_SEARCHES.put(key, JSON.stringify(rec));
+  return key;
 }
 
 // POST /brand-search-log  { brand, matched, verdict }
 async function handleSearchLog(request, env, corsOrigin) {
   try {
     const { brand, matched, verdict } = await request.json();
-    await logBrandSearch(env, brand, matched, verdict, false);
-    return json({ ok: true }, 200, corsOrigin);
+    const key = await logBrandSearch(env, brand, matched, verdict, false);
+    // Read the key straight back. KV is eventually consistent so a miss here is
+    // not proof of failure, but a hit is proof of success, and reporting it
+    // means a dropped write can never masquerade as ok again.
+    let persisted = null;
+    try { persisted = await env.BRAND_SEARCHES.get(key); } catch (e) { persisted = null; }
+    return json({ ok: true, key, persisted: persisted !== null }, 200, corsOrigin);
   } catch (e) {
-    return json({ ok: false }, 200, corsOrigin); // never block the UI
+    // Still 200 so the UI is never blocked, but say plainly that nothing landed.
+    return json({ ok: false, error: String((e && e.message) || e) }, 200, corsOrigin);
   }
 }
 
