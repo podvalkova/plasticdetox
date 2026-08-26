@@ -50,6 +50,8 @@ def main():
 
     run("backfill-fronts.py", "--write")
     run("harvest-asins.py")
+    # Never ship a card whose "Better:" line points at something we flag.
+    run("audit-alternatives.py", "--strict")
 
     src = ROOT / "brand-data.json"
     dst = EXT / "data" / "brand-data.json"
