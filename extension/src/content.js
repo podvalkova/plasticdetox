@@ -105,16 +105,27 @@
     return null;
   }
 
-  /** The product-level verdict wins over the brand-level one when we have it. */
-  function resolveStance(match) {
-    const { brand, product } = match;
-    if (product && product.asin) {
-      const row = (brand.products || []).find(
-        (p) => collapse(p.name) === collapse(product.name)
-      );
-      if (row && row.verdict) return row.verdict;
-    }
-    return brand.stance;
+  /**
+   * Find the per-product verdict for a specific ASIN.
+   *
+   * Matched on the ASIN, not the product name. Name matching resolved zero of
+   * 63 candidates, because the listing title carries the brand and the size
+   * ("Aquasana AQ-4100 Shower Filter") while the entry is editorial ("AQ-4100
+   * shower filter"). This matters more than it sounds: nearly half our product
+   * verdicts disagree with their own brand, so a brand-level answer on a
+   * product page is wrong about as often as it is right.
+   */
+  function productFor(match, asin) {
+    if (!asin) return null;
+    return (match.brand.products || []).find(
+      (p) => Array.isArray(p.asins) && p.asins.includes(asin)
+    ) || null;
+  }
+
+  function resolveStance(match, asin) {
+    const row = productFor(match, asin);
+    if (row && row.verdict) return row.verdict;
+    return match.brand.stance;
   }
 
   // ------------------------------------------------------------ rendering
@@ -154,13 +165,23 @@
   /** The shared card body used by both the detail panel and the chip popover. */
   function buildCard(match, stance, opts = {}) {
     const b = match.brand;
+    const row = opts.product || null;   // per-product verdict, when this ASIN has one
     const root = el("div", opts.popover ? "pd-pop" : "pd-panel");
 
     const head = el("div", `pd-head ${stance}`);
     head.appendChild(el("span", `pd-badge ${stance}`, STANCE_LABEL[stance] || "Context"));
     head.appendChild(el("div", "pd-brand", b.brand));
-    head.appendChild(el("div", "pd-cat", b.category));
-    if (b.reason) head.appendChild(el("p", "pd-reason", b.reason));
+    // Name the specific product when our verdict is about the product rather
+    // than the brand, so a "good" badge on a careful brand does not look wrong.
+    head.appendChild(el("div", "pd-cat", row ? `${row.name} · ${b.category}` : b.category));
+    if (row && row.note) head.appendChild(el("p", "pd-reason", row.note));
+    else if (b.reason) head.appendChild(el("p", "pd-reason", b.reason));
+    if (row && row.note && b.reason) {
+      const bl = el("div", "pd-brandline");
+      bl.appendChild(el("b", null, "About the brand: "));
+      bl.appendChild(document.createTextNode(b.reason));
+      head.appendChild(bl);
+    }
 
     if (b.alternative) {
       const alt = el("div", "pd-alt");
@@ -171,8 +192,13 @@
     root.appendChild(head);
 
     const block = el("div", "pd-fronts-block");
-    block.appendChild(el("div", "pd-fronts-label", "How we checked it"));
-    const fronts = b.fronts || {};
+    // A product can carry its own fronts. Where it does not, we fall back to the
+    // brand's and say so, because Aquasana's packaging failure is about the
+    // Claryum line and would be a lie on the shower filter's page.
+    const productFronts = row && row.fronts ? row.fronts : null;
+    const fronts = productFronts || b.fronts || {};
+    block.appendChild(el("div", "pd-fronts-label",
+      productFronts ? "How we checked this product" : "How we checked the brand"));
     let unknowns = 0;
     for (const [key, label] of FRONTS) {
       const f = fronts[key] || { status: "unknown", note: "" };
@@ -363,9 +389,9 @@
   // ------------------------------------------------------------- popover
 
   let openPop = null;
-  function showPopover(anchor, match, stance) {
+  function showPopover(anchor, match, stance, product) {
     if (openPop) openPop.remove();
-    const pop = buildCard(match, stance, { popover: true });
+    const pop = buildCard(match, stance, { popover: true, product });
     document.body.appendChild(pop);
     const r = anchor.getBoundingClientRect();
     const top = r.bottom + window.scrollY + 6;
@@ -402,12 +428,13 @@
       const match = fromAsin(asin) || fromTitle(title);
       if (!match) continue;
 
-      const stance = resolveStance(match);
+      const stance = resolveStance(match, asin);
+      const prow = productFor(match, asin);
       const chip = buildChip(match, stance);
       chip.addEventListener("click", (e) => {
         e.preventDefault();
         e.stopPropagation();
-        showPopover(chip, match, stance);
+        showPopover(chip, match, stance, prow);
       });
       chip.addEventListener("keydown", (e) => {
         if (e.key === "Enter" || e.key === " ") { e.preventDefault(); chip.click(); }
@@ -456,9 +483,11 @@
       titleEl.closest("#titleSection, #title_feature_div") || titleEl.parentElement;
     if (!anchor || !anchor.parentNode) return;
 
+    const detailAsin = asinFromUrl();
     let panel;
     if (match) {
-      panel = buildCard(match, resolveStance(match));
+      panel = buildCard(match, resolveStance(match, detailAsin),
+                        { product: productFor(match, detailAsin) });
     } else if (byline) {
       panel = buildUnmatchedPanel(byline);
       recordMiss(byline);
