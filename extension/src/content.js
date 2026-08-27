@@ -153,6 +153,11 @@
       const hit = CONTRADICTS_GOOD.find((t) => low.includes(norm(t)));
       if (hit) return { level: "contradicted", term: hit };
     }
+    // A verdict only carries to an unresearched product when the brand's range
+    // is uniform. Where it is not, we say we do not know rather than guess.
+    if (match.brand.generalises === false) {
+      return { level: "varies", note: match.brand.scopeNote };
+    }
     return { level: "brand" };
   }
 
@@ -182,7 +187,7 @@
   function buildChip(match, stance, scope) {
     const chip = el("div", `pd-chip ${stance}`);
     chip.appendChild(el("span", "pd-dot"));
-    const label = (scope && scope.level === "contradicted")
+    const label = (scope && ["contradicted", "varies"].includes(scope.level))
       ? "Check this one"
       : (STANCE_LABEL[stance] || "Context");
     chip.appendChild(el("span", null, label));
@@ -205,13 +210,15 @@
     // moment of purchase, is the one claim we cannot afford to get wrong.
     const reviewed = b.reviewed !== false;
     const scope = opts.scope || { level: "product" };
-    const contradicted = scope.level === "contradicted";
-    const shownStance = contradicted ? "neutral" : stance;
+    // Neither a contradicted listing nor a brand whose range varies may wear a
+    // coloured verdict, because we have not checked this product.
+    const unsure = scope.level === "contradicted" || scope.level === "varies";
+    const shownStance = unsure ? "neutral" : stance;
 
     const head = el("div", `pd-head ${reviewed ? shownStance : "neutral"}`);
     if (!reviewed) {
       head.appendChild(el("span", "pd-badge pd-unreviewed", "Research, not yet reviewed"));
-    } else if (contradicted) {
+    } else if (unsure) {
       head.appendChild(el("span", "pd-badge pd-unreviewed", "Check this one"));
     } else {
       const label = STANCE_LABEL[stance] || "Context";
@@ -237,6 +244,13 @@
       w.appendChild(document.createTextNode(
         "Our verdict on " + b.brand + " does not cover that, and we have not "
         + "reviewed this specific product."));
+      head.appendChild(w);
+    } else if (scope.level === "varies") {
+      const w = el("div", "pd-caveat");
+      w.appendChild(el("b", null, (scope.note || "Our verdict varies across this brand's range.") + " "));
+      w.appendChild(document.createTextNode(
+        "We have not reviewed this specific product, so check the rows below "
+        + "against what you are buying."));
       head.appendChild(w);
     } else if (scope.level === "brand") {
       head.appendChild(el("div", "pd-caveat",
@@ -537,7 +551,7 @@
       const prow = productFor(match, asin);
       const scope = scopeOf(match, asin, title);
       const chip = buildChip(match,
-        scope.level === "contradicted" ? "neutral" : stance,
+        ["contradicted", "varies"].includes(scope.level) ? "neutral" : stance,
         scope);
       chip.addEventListener("click", (e) => {
         e.preventDefault();
