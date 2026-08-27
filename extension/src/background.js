@@ -13,7 +13,12 @@ const SITE = "https://plasticdetox.org";
 // extension reads then versions with the extension and is not tied to the cache
 // lifetime of the file brand-check.html fetches on every page view.
 const REMOTE = {
-  brands: `${SITE}/extension/data/brand-data.json`,
+  // Point at the site's own brand-data.json, not the copy under extension/data.
+  // The copy exists only as the offline seed inside the package; if the remote
+  // read it too, editing the root file without running build-extension.py would
+  // leave the extension silently serving stale verdicts with nothing to show
+  // that anything was wrong.
+  brands: `${SITE}/brand-data.json`,
   asins: `${SITE}/extension/data/asin-map.json`,
   selectors: `${SITE}/extension/data/selectors.json`,
 };

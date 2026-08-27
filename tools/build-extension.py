@@ -80,6 +80,11 @@ def main():
         raise SystemExit("missing files: " + ", ".join(str(m) for m in missing))
     print(f"manifest v{version}: all {len(referenced)} referenced files present")
 
+    # The bundled copy is only the first-run seed; the extension refreshes from
+    # the site within seconds of install. Still worth keeping them in step.
+    if json.loads(src.read_text()) != json.loads(dst.read_text()):
+        raise SystemExit("bundled snapshot diverged from brand-data.json")
+
     brands = json.loads(dst.read_text())
     asins = json.loads((EXT / "data" / "asin-map.json").read_text())
     cells = sum(
