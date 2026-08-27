@@ -12124,6 +12124,7 @@
       "Treat pre 2024 reviews and testing as historical. Ownership changes are a normal moment for formulations and suppliers to shift quietly."
     ],
     "fronts": {
+      "authored": true,
       "formula": {
         "status": "unknown",
         "note": "",
@@ -12135,14 +12136,14 @@
         "origin": "none"
       },
       "legal": {
-        "status": "unknown",
-        "note": "",
-        "origin": "none"
+        "status": "caution",
+        "note": "Filed Chapter 11 in October 2023 and was sold to a private equity buyer. No recall or product suit, but ownership changed hands, so supplier and formulation continuity is not guaranteed.",
+        "origin": "human"
       },
       "testing": {
-        "status": "unknown",
-        "note": "",
-        "origin": "none"
+        "status": "pass",
+        "note": "Tested non detect for PFAS markers.",
+        "origin": "human"
       }
     },
     "reviewed": true

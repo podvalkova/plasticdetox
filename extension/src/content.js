@@ -219,17 +219,20 @@
     const statusOf = (k) => (fronts[k] || {}).status || "unknown";
 
     const positive = stance === "good";
-    const shown = positive
-      ? FRONTS.filter(([k]) => statusOf(k) !== "unknown")
-      : FRONTS.filter(([k]) => ["caution", "fail"].includes(statusOf(k)));
+    const flagged = FRONTS.filter(([k]) => ["caution", "fail"].includes(statusOf(k)));
+    const populated = FRONTS.filter(([k]) => statusOf(k) !== "unknown");
+    // A warning has to name what is wrong with it. Where no front is flagged
+    // yet, fall back to what we did check rather than rendering an empty card,
+    // which reads as a verdict with nothing behind it.
+    const shown = positive ? populated : (flagged.length ? flagged : populated);
+    const heading = positive
+      ? (productFronts ? "How we checked this product" : "How we checked the brand")
+      : (flagged.length ? "Why we flag it" : "What we checked");
     const unassessed = FRONTS.filter(([k]) => statusOf(k) === "unknown");
 
     const block = el("div", "pd-fronts-block");
     if (shown.length) {
-      block.appendChild(el("div", "pd-fronts-label",
-        positive
-          ? (productFronts ? "How we checked this product" : "How we checked the brand")
-          : "Why we flag it"));
+      block.appendChild(el("div", "pd-fronts-label", heading));
       for (const [key, label] of shown) {
         const f = fronts[key];
         const st = f.status;

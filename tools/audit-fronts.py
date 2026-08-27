@@ -99,6 +99,19 @@ def main():
     print(f"  blank but prose covers it{contradicting_cells:>5}  <- fixable from text we already wrote")
     print(f"  blank and genuinely unresearched {total_cells - filled - contradicting_cells:>5}")
     print()
+    # A caution or skip naming no failing front is a card that warns without
+    # saying why. The prose carries the reason, but the scorecard is silent, and
+    # a warning badge over an empty scorecard reads as an oversight.
+    unexplained = [
+        b for b in brands if b.get("stance") in ("careful", "skip")
+        and not [f for f in bf.FRONTS
+                 if (b.get("fronts") or {}).get(f, {}).get("status") in ("caution", "fail")]
+    ]
+    print(f"careful/skip brands that warn without naming a failing front: {len(unexplained)}")
+    for b in unexplained[:10]:
+        print(f"   [{b['stance']:7}] {b['brand']}")
+    print()
+
     print(f"brands showing at least one contradiction: {len(rows)}")
     print(f"brands with a fully blank card and no prose cues: {len(silent)}")
     print()
