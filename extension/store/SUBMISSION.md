@@ -133,7 +133,7 @@ rejects anything else with "The image size is incorrect."** Match them precisely
 | Dashboard slot | Exact size required | Upload this file | Required? |
 |---|---|---|---|
 | Store icon | 128 x 128 | `store-icon-128.png` | Yes |
-| Screenshots (up to 5) | 1280 x 800 | `screenshot-1-product-page.png`, `screenshot-2-search-results.png`, `screenshot-3-full-verdict.png` | Yes, at least 1 |
+| Screenshots (up to 5) | 1280 x 800 | `screenshot-1-search.png`, `screenshot-2-why.png`, `screenshot-3-better.png`, `screenshot-4-good.png`, `screenshot-5-close.png` | Yes, at least 1 |
 | Small promo tile | 440 x 280 | `promo-small-440x280.png` | Optional |
 | Marquee promo tile | 1400 x 560 | `promo-marquee-1400x560.png` | Optional |
 
@@ -147,8 +147,13 @@ are optional and can be skipped entirely without affecting review.
 > transparent padding, and no edge on the 128 x 128 canvas, since the store UI
 > draws its own.
 
-Regenerate every asset above with `python3 tools/make-icons.py`, which asserts
-each output's exact dimensions before writing.
+Regenerate the icons and promo tiles with `python3 tools/make-icons.py`, and the
+five screenshots with `python3 tools/make-store-shots.py`. Both assert exact
+dimensions before writing.
+
+Upload the screenshots in numbered order. They are built to be read as a
+sequence: what it does, why it flags something, what to buy instead, how it
+handles gaps, and what the project is.
 
 **Support URL**: `https://plasticdetox.org/about.html`
 **Homepage URL**: `https://plasticdetox.org/brand-check.html`
