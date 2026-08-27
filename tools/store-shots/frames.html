@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  /* Chrome Web Store frames. Rendered at 1280x800 and displayed at 640x400,
+     so everything is sized to survive being halved. Palette and type are
+     lifted straight from the site, not invented: violet accent on warm
+     off-white, Inter throughout. */
+  :root {
+    --accent: #a78bfa;  --accent-dark: #7c3aed;  --accent-light: #ede9fe;
+    --bg: #fafaf9;      --surface: #fff;
+    --text: #1c1917;    --muted: #78716c;        --border: #e7e5e4;
+    --good: #16a34a;    --good-bg: #dcfce7;      --good-border: #bbf7d0;
+    --careful: #b45309; --careful-bg: #fef3c7;   --careful-border: #fde68a;
+    --skip: #dc2626;    --skip-bg: #fee2e2;      --skip-border: #fecaca;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Inter, -apple-system, BlinkMacSystemFont, sans-serif; }
+
+  .frame {
+    position: relative; width: 1280px; height: 800px; overflow: hidden;
+    background: linear-gradient(135deg, var(--accent-light) 0%, #f5f0ff 42%, var(--bg) 100%);
+    display: flex; flex-direction: column;
+  }
+  /* A soft violet bloom keeps the field from reading as flat paper. */
+  .frame::before {
+    content: ""; position: absolute; width: 780px; height: 780px;
+    right: -220px; top: -300px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(167,139,250,.28) 0%, rgba(167,139,250,0) 68%);
+  }
+  .frame.plain::before { right: -160px; top: -240px; }
+
+  .mark {
+    position: absolute; top: 40px; right: 56px; z-index: 3;
+    font-size: 17px; font-weight: 800; letter-spacing: .12em; color: var(--text);
+  }
+  .mark i { font-style: normal; color: var(--accent-dark); }
+
+  header { position: relative; z-index: 2; padding: 62px 64px 0; }
+  h1 {
+    font-size: 62px; line-height: 1.04; font-weight: 800;
+    letter-spacing: -.033em; color: var(--text); max-width: 20ch;
+  }
+  h1 em { font-style: normal; color: var(--accent-dark); }
+  .sub {
+    margin-top: 16px; font-size: 24px; line-height: 1.42; font-weight: 400;
+    color: var(--muted); max-width: 42ch;
+  }
+
+  /* Browser chrome so a screenshot reads as something happening in a tab,
+     rather than a picture pasted onto a slide. */
+  .window {
+    position: relative; z-index: 2; border-radius: 16px; overflow: hidden;
+    background: #fff; box-shadow: 0 30px 60px -18px rgba(28,25,23,.30),
+                                  0 10px 22px -10px rgba(28,25,23,.16);
+    border: 1px solid rgba(28,25,23,.09);
+  }
+  .bar {
+    height: 40px; background: #f3f1ef; border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 8px; padding: 0 16px;
+  }
+  .bar i { width: 11px; height: 11px; border-radius: 50%; background: #d9d5d1; }
+  .bar span {
+    margin-left: 12px; font-size: 13px; color: #a8a29e; font-weight: 500;
+    background: #fff; border: 1px solid var(--border); border-radius: 7px;
+    padding: 5px 14px;
+  }
+  .window img { display: block; width: 100%; }
+
+  /* Fixed height with the overflow hidden, so a window can never spill past the
+     frame edge or collide with the footer. */
+  .shot { position: relative; padding: 36px 64px 0; height: 528px; overflow: hidden; }
+  .shot .window { width: 100%; }
+  /* A narrow crop blown up to full width goes soft and runs out of vertical
+     room, so the card frames get a narrower window instead. */
+  .shot.card { display: flex; align-items: center; justify-content: center; }
+  .shot.card .window { width: 880px; }
+  /* Frame 5 carries a footer line, so its window sits a little higher. */
+  #f5 .shot.card { align-items: flex-start; padding-top: 24px; }
+
+  /* ---- frame 1: the four checks ---- */
+  .checks { position: relative; z-index: 2; padding: 44px 64px 0; display: grid;
+            grid-template-columns: 1fr 1fr; gap: 18px 20px; }
+  .check {
+    background: rgba(255,255,255,.82); border: 1px solid rgba(28,25,23,.07);
+    border-radius: 16px; padding: 24px 26px 26px;
+    box-shadow: 0 2px 10px rgba(28,25,23,.05);
+  }
+  .check b { display: block; font-size: 30px; font-weight: 700; letter-spacing: -.02em;
+             color: var(--text); }
+  .check span { display: block; margin-top: 6px; font-size: 19px; color: var(--muted); }
+  .check em {
+    display: inline-block; font-style: normal; margin-bottom: 14px;
+    font-size: 13px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase;
+    padding: 5px 12px; border-radius: 999px;
+  }
+  .c1 em { color: var(--good);    background: var(--good-bg);    border: 1px solid var(--good-border); }
+  .c2 em { color: var(--accent-dark); background: var(--accent-light); border: 1px solid #ddd6fe; }
+  .c3 em { color: var(--careful); background: var(--careful-bg); border: 1px solid var(--careful-border); }
+  .c4 em { color: var(--skip);    background: var(--skip-bg);    border: 1px solid var(--skip-border); }
+
+  .foot {
+    position: absolute; left: 64px; bottom: 40px; z-index: 3;
+    font-size: 19px; color: var(--muted); font-weight: 500;
+  }
+  .foot b { color: var(--text); font-weight: 700; }
+</style>
+</head>
+<body>
+
+<!-- 1 ................................................................. -->
+<div class="frame plain" id="f1">
+  <div class="mark">PLASTIC <i>DETOX</i></div>
+  <header>
+    <h1>Four checks on <em>every listing</em></h1>
+    <p class="sub">Run automatically while you shop, before anything reaches your basket.</p>
+  </header>
+  <div class="checks">
+    <div class="check c1"><em>Formula</em><b>What it is made of</b><span>Fibres, coatings, ingredients</span></div>
+    <div class="check c2"><em>Packaging</em><b>What it ships in</b><span>Liners, lids, bottles, wrappers</span></div>
+    <div class="check c3"><em>Lawsuits &amp; recalls</em><b>The legal record</b><span>CPSC recalls, filed class actions</span></div>
+    <div class="check c4"><em>Independent tests</em><b>Published lab results</b><span>PFAS, heavy metals, certifications</span></div>
+  </div>
+  <div class="foot">Free. <b>No affiliate links, nothing collected about your browsing.</b></div>
+</div>
+
+<!-- 2 ................................................................. -->
+<div class="frame" id="f2">
+  <div class="mark">PLASTIC <i>DETOX</i></div>
+  <header>
+    <h1>See it <em>before</em> you click</h1>
+    <p class="sub">Skip, careful or good choice on every search result.</p>
+  </header>
+  <div class="shot">
+    <div class="window">
+      <div class="bar"><i></i><i></i><i></i><span>amazon.com/s?k=diapers</span></div>
+      <img src="raw/search.png" alt="">
+    </div>
+  </div>
+</div>
+
+<!-- 3 ................................................................. -->
+<div class="frame" id="f3">
+  <div class="mark">PLASTIC <i>DETOX</i></div>
+  <header>
+    <h1>Every flag has <em>a source</em></h1>
+    <p class="sub">The exact finding, who published it, and the year.</p>
+  </header>
+  <div class="shot card">
+    <div class="window">
+      <div class="bar"><i></i><i></i><i></i><span>amazon.com/dp/…</span></div>
+      <img src="raw/why.png" alt="">
+    </div>
+  </div>
+</div>
+
+<!-- 4 ................................................................. -->
+<div class="frame" id="f4">
+  <div class="mark">PLASTIC <i>DETOX</i></div>
+  <header>
+    <h1>And what to <em>buy instead</em></h1>
+    <p class="sub">Every skip carries a researched alternative, linked to the full guide.</p>
+  </header>
+  <div class="shot card">
+    <div class="window">
+      <div class="bar"><i></i><i></i><i></i><span>amazon.com/dp/…</span></div>
+      <img src="raw/better.png" alt="">
+    </div>
+  </div>
+</div>
+
+<!-- 5 ................................................................. -->
+<div class="frame" id="f5">
+  <div class="mark">PLASTIC <i>DETOX</i></div>
+  <header>
+    <h1>And what <em>passes</em></h1>
+    <p class="sub">Verdicts written by a person, with the evidence attached.</p>
+  </header>
+  <div class="shot card">
+    <div class="window">
+      <div class="bar"><i></i><i></i><i></i><span>amazon.com/dp/…</span></div>
+      <img src="raw/good-card.png" alt="">
+    </div>
+  </div>
+  <div class="foot">No affiliate links. <b>Nothing collected about your browsing.</b></div>
+</div>
+
+</body>
+</html>
