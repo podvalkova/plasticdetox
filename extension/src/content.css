@@ -214,3 +214,10 @@
   font-size: 9px; font-weight: 700; letter-spacing: .04em; color: var(--pd-muted);
   vertical-align: middle;
 }
+
+.pd-alt-link {
+  color: var(--pd-good); font-weight: 600; text-decoration: none;
+  border-bottom: 1px solid rgba(22,163,74,.35);
+}
+.pd-alt-link:hover { border-bottom-color: var(--pd-good); }
+.pd-alt-arrow { border: none; font-weight: 700; }

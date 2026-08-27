@@ -50,6 +50,7 @@ def main():
 
     run("backfill-fronts.py", "--write")
     run("harvest-asins.py")
+    run("link-articles.py", "--write")
     # Never ship a card whose "Better:" line points at something we flag.
     run("audit-alternatives.py", "--strict")
 

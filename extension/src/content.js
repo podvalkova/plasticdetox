@@ -195,7 +195,20 @@
     if (b.alternative) {
       const alt = el("div", "pd-alt");
       alt.appendChild(el("b", null, "Better: "));
-      alt.appendChild(document.createTextNode(b.alternative));
+      // Send them to the guide that covers this category rather than leaving the
+      // alternative as dead text. They get the full comparison, and the click
+      // lands on our own site, which is also the only place affiliate links may
+      // live: Amazon's Associates terms forbid them inside a browser extension.
+      if (b.article) {
+        const a = el("a", "pd-alt-link", b.alternative);
+        a.href = `${SITE}/articles/${b.article}`;
+        a.target = "_blank";
+        a.rel = "noopener";
+        a.appendChild(el("span", "pd-alt-arrow", " \u2192"));
+        alt.appendChild(a);
+      } else {
+        alt.appendChild(document.createTextNode(b.alternative));
+      }
       head.appendChild(alt);
     }
     root.appendChild(head);
