@@ -79,38 +79,57 @@ question entirely, at the cost of that 8.3%.
 | Field | Value |
 |---|---|
 | Item name | `Plastic Detox Brand Check` |
-| Summary (132 char max) | `See our researched verdict on any Amazon listing, scored on formula, packaging, recalls and lawsuits, and independent tests.` |
+| Summary (132 char max) | `Every Amazon listing checked on four fronts: formula, packaging, recalls and lawsuits, independent lab tests.` |
 | Category | **Shopping** |
 | Language | English (United States) |
 
 **Description** (paste as is):
 
 ```
-Plastic Detox Brand Check shows the verdict we have published for a brand while
-you are looking at it on Amazon.
+Plastic Detox checks the brand you are looking at while you shop on Amazon,
+and tells you what we found.
 
-Search results get a small coloured chip. Product pages get the full scorecard.
-No tab switching, no separate search.
+Search results get a small verdict on each listing. Product pages get the full
+reasoning. You never leave the page you are on.
 
-EVERY BRAND, FOUR FRONTS
+WHAT WE CHECK
 
-We vet every brand we write about on the same four fronts, and the extension
-shows you all four:
+Every brand is researched on the same four fronts:
 
-  Formula             what the product is actually made of
-  Packaging           what it ships and sits in
-  Recalls & lawsuits  the legal and regulatory record
-  Independent tests   third party lab results and certifications
+  Formula
+  What the product is actually made of. Fibres, coatings, ingredients,
+  the difference between totally chlorine free and elemental chlorine free.
 
-Where we have not researched a front yet, it says so rather than pretending.
-We would rather show you an honest gap than a confident guess.
+  Packaging materials
+  What it ships and sits in. Liners, lids, bottles, wrappers, the plastic
+  in a water path.
 
-793 brands researched and counting, drawn from the same database behind
-plasticdetox.org/brand-check.
+  Lawsuits and recalls
+  CPSC recalls, filed class actions, regulatory action, and what the
+  outcome actually was rather than what a headline claimed.
+
+  Independent tests
+  Published lab results and third party certifications. PFAS and organic
+  fluorine screens, heavy metals, EWG Verified, MADE SAFE, GOTS, NSF.
+
+WHAT YOU SEE
+
+Skip, Careful or Good choice on every search result, so you can scan a page
+of twenty products without opening any of them.
+
+On a product page, the specific finding behind the verdict, with the body
+that published it and the year. Not a score out of ten.
+
+Where a brand is one you should skip, the card names a researched alternative
+and links to the full guide, so you leave with something to buy rather than
+just something to avoid.
+
+Verdicts are per product where a range genuinely splits. A brand can be a
+caution overall while one of its lines is a pick, and the card says which.
 
 NO AFFILIATE LINKS
 
-This extension contains no affiliate links. It never adds, alters, or redirects
+This extension contains no affiliate links. It never adds, alters or redirects
 any link on Amazon, and it cannot change where your purchase is credited. We
 earn nothing when you buy something through it.
 
@@ -120,9 +139,18 @@ The brand database is downloaded to your browser and every lookup happens on
 your device. We do not receive your searches, the products you view, the pages
 you visit, or anything you buy.
 
-One optional setting, off unless you turn it on, sends us the name of a brand we
-have not reviewed so we know what to research next. Brand name only. No web
-address, no product, no identifier.
+One optional setting, off unless you switch it on, sends us the name of a brand
+we have not reviewed yet so we know what to research next. Brand name only. No
+web address, no product, no identifier.
+
+HOW THE RESEARCH WORKS
+
+Every verdict is written by a person and carries its sources. Where we have not
+yet researched one of the four fronts for a brand, the card says so rather than
+implying a clean bill of health we have not earned.
+
+Found something wrong? Every card has a Report an error link that reaches us
+directly. Corrections are read by a person.
 
 Read the research: https://plasticdetox.org/brand-check.html
 ```
