@@ -36,14 +36,6 @@
   // colliding with a brand called "Pure".
   const GENERIC = new Set(["pure", "native", "one", "blu", "core", "well", "life", "basics", "all"]);
 
-  // Terms in a listing title that a brand-level verdict does not cover. A brand
-  // rated good for disclosing no intentionally added PFAS has said nothing about
-  // whether this particular pan is coated, so we must not stamp it "good choice".
-  const CONTRADICTS_GOOD = [
-    "nonstick", "non-stick", "non stick", "ptfe", "teflon", "ceramic coated",
-    "coated aluminum", "coated aluminium",
-  ];
-
   const norm = (s) => (s || "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
   const collapse = (s) => (s || "").toLowerCase().replace(/[^a-z0-9]+/g, "");
 
@@ -132,8 +124,7 @@
 
   function resolveStance(match, asin) {
     const row = productFor(match, asin);
-    if (row && row.verdict) return row.verdict;
-    return match.brand.stance;
+    return row && row.verdict ? row.verdict : null;
   }
 
   /**
@@ -146,19 +137,18 @@
    * so anything we have not researched at the product level is labelled as the
    * brand-level judgement it actually is.
    */
-  function scopeOf(match, asin, title) {
-    if (productFor(match, asin)) return { level: "product" };
-    const low = norm(title);
-    if (match.brand.stance === "good") {
-      const hit = CONTRADICTS_GOOD.find((t) => low.includes(norm(t)));
-      if (hit) return { level: "contradicted", term: hit };
-    }
-    // A verdict only carries to an unresearched product when the brand's range
-    // is uniform. Where it is not, we say we do not know rather than guess.
-    if (match.brand.generalises === false) {
-      return { level: "varies", note: match.brand.scopeNote };
-    }
-    return { level: "brand" };
+  /**
+   * A verdict is only ever about a product we researched.
+   *
+   * Knowing the brand is not knowing the product. Cuisinart is a skip for its
+   * appliance line and that says nothing about a bare stainless skillet;
+   * Sensarte discloses no intentionally added PFAS and that says nothing about
+   * whether this pan is coated. Rather than hedge a brand verdict with caveats,
+   * we show no status at all and offer to research it.
+   */
+  function hasVerdict(match, asin) {
+    const row = productFor(match, asin);
+    return !!(row && row.verdict);
   }
 
   // ------------------------------------------------------------ rendering
@@ -184,12 +174,10 @@
     return wrap;
   }
 
-  function buildChip(match, stance, scope) {
+  function buildChip(match, stance) {
     const chip = el("div", `pd-chip ${stance}`);
     chip.appendChild(el("span", "pd-dot"));
-    const label = (scope && ["contradicted", "varies"].includes(scope.level))
-      ? "Check this one"
-      : (STANCE_LABEL[stance] || "Context");
+    const label = STANCE_LABEL[stance] || "Context";
     chip.appendChild(el("span", null, label));
     chip.appendChild(frontsRow(match.brand.fronts));
     chip.setAttribute("role", "button");
@@ -209,22 +197,10 @@
     // Publishing an unreviewed machine verdict against a named brand, at the
     // moment of purchase, is the one claim we cannot afford to get wrong.
     const reviewed = b.reviewed !== false;
-    const scope = opts.scope || { level: "product" };
-    // Neither a contradicted listing nor a brand whose range varies may wear a
-    // coloured verdict, because we have not checked this product.
-    const unsure = scope.level === "contradicted" || scope.level === "varies";
-    const shownStance = unsure ? "neutral" : stance;
-
-    const head = el("div", `pd-head ${reviewed ? shownStance : "neutral"}`);
-    if (!reviewed) {
-      head.appendChild(el("span", "pd-badge pd-unreviewed", "Research, not yet reviewed"));
-    } else if (unsure) {
-      head.appendChild(el("span", "pd-badge pd-unreviewed", "Check this one"));
-    } else {
-      const label = STANCE_LABEL[stance] || "Context";
-      head.appendChild(el("span", `pd-badge ${stance}`,
-        scope.level === "brand" ? `Brand: ${label}` : label));
-    }
+    const head = el("div", `pd-head ${reviewed ? stance : "neutral"}`);
+    head.appendChild(reviewed
+      ? el("span", `pd-badge ${stance}`, STANCE_LABEL[stance] || "Context")
+      : el("span", "pd-badge pd-unreviewed", "Research, not yet reviewed"));
     head.appendChild(el("div", "pd-brand", b.brand));
     // Name the specific product when our verdict is about the product rather
     // than the brand, so a "good" badge on a careful brand does not look wrong.
@@ -236,26 +212,6 @@
       bl.appendChild(el("b", null, "About the brand: "));
       bl.appendChild(document.createTextNode(b.reason));
       head.appendChild(bl);
-    }
-
-    if (scope.level === "contradicted") {
-      const w = el("div", "pd-caveat");
-      w.appendChild(el("b", null, "This listing says " + scope.term + ". "));
-      w.appendChild(document.createTextNode(
-        "Our verdict on " + b.brand + " does not cover that, and we have not "
-        + "reviewed this specific product."));
-      head.appendChild(w);
-    } else if (scope.level === "varies") {
-      const w = el("div", "pd-caveat");
-      w.appendChild(el("b", null, (scope.note || "Our verdict varies across this brand's range.") + " "));
-      w.appendChild(document.createTextNode(
-        "We have not reviewed this specific product, so check the rows below "
-        + "against what you are buying."));
-      head.appendChild(w);
-    } else if (scope.level === "brand") {
-      head.appendChild(el("div", "pd-caveat",
-        "This is our verdict on " + b.brand + ", not on this specific product, "
-        + "which we have not reviewed."));
     }
 
     if (b.alternative) {
@@ -376,16 +332,18 @@
     return data;
   }
 
-  function buildUnmatchedPanel(brandName) {
+  function buildUnmatchedPanel(brandName, knownBrand) {
     const root = el("div", "pd-panel");
     const head = el("div", "pd-head");
     head.appendChild(el("span", "pd-badge", "Not reviewed"));
     head.appendChild(el("div", "pd-brand", brandName));
     root.appendChild(head);
-    root.appendChild(
-      el("div", "pd-unmatched",
-        "We have not researched this brand yet. Ask for a review and we will vet it on all four fronts, then email you the verdict.")
-    );
+    root.appendChild(el("div", "pd-unmatched", knownBrand
+      ? "We have researched " + brandName + " but not this particular product, "
+        + "and a brand is not a product. Ask for a review and we will vet this "
+        + "one on all four fronts, then email you the verdict."
+      : "We have not researched this brand yet. Ask for a review and we will "
+        + "vet it on all four fronts, then email you the verdict."));
 
     // Requesting happens right here rather than bouncing the reader to the site,
     // which is the whole point of doing this on the listing.
@@ -427,6 +385,12 @@
     root.appendChild(wrap);
 
     const foot = el("div", "pd-foot");
+    if (knownBrand) {
+      const a = el("a", "pd-link", "See our verdict on " + brandName + " \u2192");
+      a.href = `${SITE}/brand-check.html?b=${encodeURIComponent(brandName)}`;
+      a.target = "_blank"; a.rel = "noopener";
+      foot.appendChild(a);
+    }
     foot.appendChild(el("span", "pd-mark", "Plastic Detox"));
     root.appendChild(foot);
     return root;
@@ -508,9 +472,9 @@
   // ------------------------------------------------------------- popover
 
   let openPop = null;
-  function showPopover(anchor, match, stance, product, scope) {
+  function showPopover(anchor, match, stance, product) {
     if (openPop) openPop.remove();
-    const pop = buildCard(match, stance, { popover: true, product, scope });
+    const pop = buildCard(match, stance, { popover: true, product });
     document.body.appendChild(pop);
     const r = anchor.getBoundingClientRect();
     const top = r.bottom + window.scrollY + 6;
@@ -547,16 +511,16 @@
       const match = fromAsin(asin) || fromTitle(title);
       if (!match) continue;
 
+      // No researched product, no chip. A grey "we do not know" on every
+      // listing is noise, and a coloured one would be a claim we cannot make.
+      if (!hasVerdict(match, asin)) continue;
       const stance = resolveStance(match, asin);
       const prow = productFor(match, asin);
-      const scope = scopeOf(match, asin, title);
-      const chip = buildChip(match,
-        ["contradicted", "varies"].includes(scope.level) ? "neutral" : stance,
-        scope);
+      const chip = buildChip(match, stance);
       chip.addEventListener("click", (e) => {
         e.preventDefault();
         e.stopPropagation();
-        showPopover(chip, match, stance, prow, scope);
+        showPopover(chip, match, stance, prow);
       });
       chip.addEventListener("keydown", (e) => {
         if (e.key === "Enter" || e.key === " ") { e.preventDefault(); chip.click(); }
@@ -607,10 +571,14 @@
 
     const detailAsin = asinFromUrl();
     let panel;
-    if (match) {
+    if (match && hasVerdict(match, detailAsin)) {
       panel = buildCard(match, resolveStance(match, detailAsin),
-                        { product: productFor(match, detailAsin),
-                          scope: scopeOf(match, detailAsin, title) });
+                        { product: productFor(match, detailAsin) });
+    } else if (match) {
+      // We know the brand but not this product, which is not the same thing.
+      // Offer to research it rather than lending the brand's verdict to it.
+      panel = buildUnmatchedPanel(match.brand.brand, match.brand);
+      recordMiss(match.brand.brand);
     } else if (byline) {
       panel = buildUnmatchedPanel(byline);
       recordMiss(byline);

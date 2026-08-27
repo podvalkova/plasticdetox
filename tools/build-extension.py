@@ -52,6 +52,7 @@ def main():
     run("harvest-asins.py")
     run("link-articles.py", "--write")
     run("mark-scope.py", "--write")
+    run("store-to-products.py", "--write")
     # Never ship a card whose "Better:" line points at something we flag.
     run("audit-alternatives.py", "--strict")
 

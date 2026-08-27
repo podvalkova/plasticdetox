@@ -43,6 +43,10 @@ def load_brands():
     return names
 
 
+def collapse_name(s):
+    return re.sub(r"[^a-z0-9]+", "", (s or "").lower())
+
+
 def resolve_brand(context, brand_names):
     low = context.lower()
     for label, brand, bid in brand_names:
@@ -78,6 +82,14 @@ def main():
             contexts[asin].append((window, path.name))
 
     for asin, ctxs in contexts.items():
+        # A store row carries the product's real name, so it is authoritative.
+        # Falling back to surrounding article copy attributed S'well to Klean
+        # Kanteen and Cocofloss to Oral-B, simply because those brands were
+        # mentioned nearby. If the name yields no brand we know, say so.
+        if asin in found and found[asin].get("source") == "store" \
+                and not found[asin].get("brand"):
+            found[asin]["pages"] = sorted({p for _, p in ctxs})
+            continue
         if asin in found and found[asin].get("brand"):
             found.setdefault(asin, {}).setdefault("pages", [])
             found[asin]["pages"] = sorted({p for _, p in ctxs})
@@ -94,6 +106,17 @@ def main():
         entry.setdefault("source", "link")
         entry["pages"] = sorted({p for _, p in ctxs})
         found[asin] = entry
+
+    # Last guard: when we have a product name, the brand must appear in it.
+    # Anything else is a guess from context dressed up as a fact.
+    dropped = 0
+    for asin, e in list(found.items()):
+        name, brand = e.get("name"), e.get("brand")
+        if name and brand and collapse_name(brand) not in collapse_name(name):
+            e["brand"] = e["brandId"] = None
+            dropped += 1
+    if dropped:
+        print(f"  dropped {dropped} where the brand did not appear in the product name")
 
     resolved = {a: e for a, e in found.items() if e.get("brandId")}
     unresolved = sorted(a for a, e in found.items() if not e.get("brandId"))
