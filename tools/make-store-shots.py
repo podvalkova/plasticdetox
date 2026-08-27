@@ -2,10 +2,14 @@
 """
 Compose the Chrome Web Store screenshots.
 
-A raw screen grab is the weakest thing you can put on a listing. At thumbnail
-size nobody can read a product page, so each image needs a headline that lands
-in about a second and a crop tight enough that the one thing it is arguing for
-is unmistakable.
+The store downscales every screenshot to 640x400 for display. That single fact
+drives the whole design: a frame showing a full product page is being viewed at
+half size, so its UI is unreadable and it argues for nothing. Every frame here
+crops hard to one element, sized so it still reads after that downscale.
+
+The sequence states what gets checked rather than how many brands are covered.
+A brand count is stale the day after it ships, and nobody installs an extension
+because its gaps are honest.
 
 Source grabs live in extension/store/raw/. Output is exactly 1280x800 PNG,
 which is what the dashboard requires.
@@ -140,11 +144,16 @@ def layout_stacked(src, crop, headline, sub, accent=None, dark=True):
     img = base(dark)
     draw_headline(img, headline, sub, 64, 54, W - 128, dark, accent)
 
+    # Contain, never cover. These crops are wider than the box, and covering
+    # them sliced the left and right off every card.
     im = Image.open(src).convert("RGB").crop(crop)
-    box_w, box_h = W - 128, 520
-    im = fit_cover(im, box_w, box_h)
-    x, y = 64, H - box_h - 34
-    shadow(img, (x, y, box_w, box_h), 16)
+    im = fit_contain(im, W - 128, 556)
+    iw, ih = im.size
+    x = (W - iw) // 2
+    # Centre in the space under the headline. Bottom-aligning a wide, short crop
+    # left an obvious hole in the middle of the frame.
+    y = 214 + (556 - ih) // 2
+    shadow(img, (x, y, iw, ih), 16)
     img.alpha_composite(rounded(im, 16), (x, y))
     return img
 
@@ -165,6 +174,27 @@ def layout_split(src, crop, headline, sub, accent=None, dark=True, right=True):
     y = (H - ih) // 2
     shadow(img, (x, y, iw, ih), 18)
     img.alpha_composite(rounded(im, 18), (x, y))
+    return img
+
+
+def layout_fronts(headline, sub):
+    """The four checks, stated large enough to survive the store's 640x400 downscale."""
+    img = base(True)
+    d = ImageDraw.Draw(img)
+    draw_headline(img, headline, sub, 70, 76, W - 140, True)
+
+    rows = [("Formula", "what it is actually made of", GOOD),
+            ("Packaging materials", "what it ships and sits in", VIOLET),
+            ("Lawsuits and recalls", "the legal record", (180, 83, 9)),
+            ("Independent tests", "published lab results", SKIP)]
+    f_name = font(44)
+    f_sub = font(24, bold=False)
+    y = 268
+    for name, meaning, colour in rows:
+        d.rounded_rectangle([70, y + 6, 82, y + 46], radius=6, fill=colour)
+        d.text((112, y), name, font=f_name, fill=(255, 255, 255))
+        d.text((116, y + 54), meaning, font=f_sub, fill=(140, 133, 128))
+        y += 122
     return img
 
 
@@ -225,37 +255,43 @@ def main():
             raise SystemExit(f"missing {p.name} in {RAW.relative_to(ROOT)}")
 
     jobs = [
-        ("screenshot-1-search.png", layout_stacked(
-            search, (30, 60, 2184, 1160),
-            "Every result, rated",
-            "Skip, careful or good choice on each listing, before you click into anything.",
+        # 1. State what gets checked. That is the product, not a brand count.
+        ("screenshot-1-checks.png", layout_fronts(
+            "Four checks on every listing",
+            "Before you add anything to your basket.")),
+
+        # 2. The moment that sells it, cropped hard to two chips so they still
+        #    read after the store halves the image to 640x400.
+        ("screenshot-2-search.png", layout_stacked(
+            search, (40, 495, 1300, 1010),
+            "See it before you click",
+            "Skip, careful or good choice, on every search result.",
             accent=GOOD)),
-        ("screenshot-2-why.png", layout_split(
-            skip, (1140, 230, 2010, 1000),
-            "See exactly why",
-            "Not a score out of ten. The specific thing that is wrong, with the source and the year.",
+
+        # 3. Not a score. The specific finding, with its source.
+        ("screenshot-3-why.png", layout_stacked(
+            skip, (1158, 645, 1975, 915),
+            "Every flag has a source",
+            "The exact finding, the body that published it, and the year.",
             accent=SKIP)),
-        # A landscape crop wastes half a split layout, so this one goes stacked.
-        ("screenshot-3-better.png", layout_stacked(
+
+        # 4. The alternative, which is the useful half of a skip.
+        ("screenshot-4-better.png", layout_stacked(
             skip, (1150, 245, 2005, 645),
             "And what to buy instead",
-            "Every skip carries a researched alternative, linked straight to the full guide.",
+            "Every skip carries a researched alternative, linked to the full guide.",
             accent=GOOD)),
-        ("screenshot-4-good.png", layout_split(
-            good, (1140, 260, 2000, 880),
-            "Honest about the gaps",
-            "Where a front has not been researched yet, the card says so. No invented confidence.",
+
+        # 5. A pick, so the sequence does not end on a warning.
+        ("screenshot-5-good.png", layout_stacked(
+            good, (1152, 275, 1985, 560),
+            "And what passes",
+            "Verdicts written by a person, with the evidence attached. No affiliate links.",
             accent=GOOD)),
-        ("screenshot-5-close.png", layout_close(
-            "Researched, not scraped",
-            "Every verdict written by a person, with the evidence attached.",
-            [("brands researched", "809", GOOD),
-             ("affiliate links in the extension", "Zero", VIOLET),
-             ("collected about your browsing", "Nothing", (180, 83, 9))])),
     ]
 
-    marks = {"screenshot-2-why.png": (70, 92),
-             "screenshot-4-good.png": (70, 92)}
+    # The wordmark goes in whichever column the artwork is not using.
+    marks = {}
     for name, img in jobs:
         mx, my = marks.get(name, (None, 34))
         wordmark(img, dark=True, x=mx, y=my)
@@ -264,8 +300,9 @@ def main():
         print(f"  {name}  {W}x{H}")
 
     # Retire the old raw-screenshot versions so the wrong ones cannot be uploaded.
-    for old in ("screenshot-1-product-page.png", "screenshot-2-search-results.png",
-                "screenshot-3-full-verdict.png"):
+    for old in ("screenshot-1-search.png", "screenshot-2-why.png",
+                "screenshot-3-better.png", "screenshot-4-good.png",
+                "screenshot-5-close.png"):
         p = OUT / old
         if p.exists():
             p.unlink()

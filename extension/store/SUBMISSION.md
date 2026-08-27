@@ -133,7 +133,7 @@ rejects anything else with "The image size is incorrect."** Match them precisely
 | Dashboard slot | Exact size required | Upload this file | Required? |
 |---|---|---|---|
 | Store icon | 128 x 128 | `store-icon-128.png` | Yes |
-| Screenshots (up to 5) | 1280 x 800 | `screenshot-1-search.png`, `screenshot-2-why.png`, `screenshot-3-better.png`, `screenshot-4-good.png`, `screenshot-5-close.png` | Yes, at least 1 |
+| Screenshots (up to 5) | 1280 x 800 | `screenshot-1-checks.png`, `screenshot-2-search.png`, `screenshot-3-why.png`, `screenshot-4-better.png`, `screenshot-5-good.png` | Yes, at least 1 |
 | Small promo tile | 440 x 280 | `promo-small-440x280.png` | Optional |
 | Marquee promo tile | 1400 x 560 | `promo-marquee-1400x560.png` | Optional |
 
@@ -151,7 +151,8 @@ Regenerate the icons and promo tiles with `python3 tools/make-icons.py`, and the
 five screenshots with `python3 tools/make-store-shots.py`. Both assert exact
 dimensions before writing.
 
-Upload the screenshots in numbered order. They are built to be read as a
+The store displays every screenshot at 640x400, half the uploaded size, so each
+frame is cropped hard to one element that survives that. Upload in numbered order. They are built to be read as a
 sequence: what it does, why it flags something, what to buy instead, how it
 handles gaps, and what the project is.
 
