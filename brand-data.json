@@ -3361,7 +3361,7 @@
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "caution",
             "packaging": "unassessed",
             "legal": "unassessed",
             "testing": "unassessed"
@@ -3369,7 +3369,9 @@
           "scope": "line",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2.1 disclosure-failure-caps-at-caution"
+          ]
         },
         "origin": "hand",
         "matchAll": [
@@ -3398,7 +3400,7 @@
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "caution",
             "packaging": "unassessed",
             "legal": "unassessed",
             "testing": "unassessed"
@@ -3406,7 +3408,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2.1 disclosure-failure-caps-at-caution"
+          ]
         }
       },
       {
@@ -9576,7 +9580,7 @@
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "caution",
             "packaging": "unassessed",
             "legal": "unassessed",
             "testing": "unassessed"
@@ -9584,7 +9588,9 @@
           "scope": "line",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2.1 disclosure-failure-caps-at-caution"
+          ]
         },
         "origin": "hand",
         "matchAll": [
@@ -9718,7 +9724,7 @@
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "caution",
             "packaging": "unassessed",
             "legal": "unassessed",
             "testing": "unassessed"
@@ -9726,7 +9732,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2.1 disclosure-failure-caps-at-caution"
+          ]
         }
       }
     ],
@@ -17041,7 +17049,7 @@
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "caution",
             "packaging": "unassessed",
             "legal": "unassessed",
             "testing": "unassessed"
@@ -17049,7 +17057,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2.1 disclosure-failure-caps-at-caution"
+          ]
         }
       }
     ],
@@ -26142,7 +26152,7 @@
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "caution",
             "packaging": "unassessed",
             "legal": "unassessed",
             "testing": "unassessed"
@@ -26150,7 +26160,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2.1 disclosure-failure-caps-at-caution"
+          ]
         }
       }
     ],
@@ -38812,9 +38824,9 @@
         "ext": {
           "verdict": "unrated",
           "dated": "2026-08-28",
-          "why": "no front is directly evidenced by the note",
+          "why": "the note reads adversely on formula, needs a human look",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "caution",
             "packaging": "unassessed",
             "legal": "unassessed",
             "testing": "unassessed"
@@ -38822,7 +38834,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2.1 disclosure-failure-caps-at-caution"
+          ]
         }
       },
       {
@@ -45056,7 +45070,7 @@
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "caution",
             "packaging": "unassessed",
             "legal": "unassessed",
             "testing": "fail"
@@ -45064,7 +45078,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2.1 disclosure-failure-caps-at-caution"
+          ]
         }
       },
       {
@@ -49900,7 +49916,7 @@
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "caution",
             "packaging": "unassessed",
             "legal": "unassessed",
             "testing": "unassessed"
@@ -49908,7 +49924,9 @@
           "scope": "line",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2.1 disclosure-failure-caps-at-caution"
+          ]
         },
         "origin": "hand",
         "matchAll": [
@@ -53730,7 +53748,7 @@
     },
     "reviewed": true,
     "article": "non-toxic-baby-toddler-products-guide.html",
-    "generalises": true,
+    "generalises": false,
     "products": [
       {
         "name": "Sophie la Girafe",
@@ -53798,7 +53816,8 @@
       "Vulli"
     ],
     "rollupApplied": true,
-    "rollupNote": "1 of 2 products we have reviewed under this brand are flagged: Sophie la Girafe. The verdict depends which one you pick."
+    "rollupNote": "1 of 2 products we have reviewed under this brand are flagged: Sophie la Girafe. The verdict depends which one you pick.",
+    "scopeNote": "Our verdict varies across this brand's range."
   },
   {
     "id": "sos-hydration",
@@ -59068,9 +59087,9 @@
         "ext": {
           "verdict": "unrated",
           "dated": "2026-08-28",
-          "why": "no front is directly evidenced by the note",
+          "why": "the note reads adversely on formula, needs a human look",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "caution",
             "packaging": "unassessed",
             "legal": "unassessed",
             "testing": "unassessed"
@@ -59078,7 +59097,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2.1 disclosure-failure-caps-at-caution"
+          ]
         }
       }
     ],

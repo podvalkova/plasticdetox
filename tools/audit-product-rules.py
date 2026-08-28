@@ -168,13 +168,27 @@ INERT = [
     "titanium", "copper", "brass", "porcelain", "stoneware", "clay", "cork",
     "natural rubber", "latex free", "aluminium free", "aluminum free",
 ]
+# Section 2.1. Two kinds of entry, which behave differently.
+#
+# A named hazard is a specific substance with evidence behind it. Un-negated, in
+# the path that reaches a person, it fails the front on its own.
 HAZARD = [
     "plastic", "polyester", "nylon", "acrylic", "spandex", "elastane",
     "ptfe", "teflon", "nonstick", "non-stick", "pfoa", "pfas", "pvc",
     "polycarbonate", "polypropylene", "polyethylene", "polystyrene", "styrene",
     "melamine", "viscose", "rayon", "neoprene", "phthalate", "paraben",
-    "fragrance", "parfum", "formaldehyde", "triclosan", "flame retardant",
+    "formaldehyde", "triclosan", "flame retardant",
     "bpa", "bps", "bpf", "lead", "cadmium", "azo", "chemical filter",
+]
+
+# A disclosure failure is a legal umbrella that hides composition. It names no
+# harmful substance; it says we cannot check. So it caps at caution and never
+# fails a front alone. We count concealment, which the maker chose, and not the
+# absence of independent testing, which they did not. Keeping "fragrance" in the
+# list above would have failed a product on a word that means "undisclosed".
+DISCLOSURE_FAILURE = [
+    "fragrance", "parfum", "gum base", "proprietary blend", "natural flavors",
+    "natural flavour", "artificial flavors", "undisclosed",
 ]
 
 
@@ -363,6 +377,12 @@ def formula_from_materials(note):
         for m in re.finditer(r"(?<![a-z0-9])" + re.escape(h) + r"(?![a-z0-9])", low):
             if not _bf.is_negated(low, m.start(), m.end()):
                 return None
+    # A disclosure failure is not a clean read either. It is the state where the
+    # maker has not told us, which section 2.1 caps at caution.
+    for t in DISCLOSURE_FAILURE:
+        for m in re.finditer(r"(?<![a-z0-9])" + re.escape(t) + r"(?![a-z0-9])", low):
+            if not _bf.is_negated(low, m.start(), m.end()):
+                return "caution"
     return "pass" if any(_bf.has(low, t) for t in INERT) else None
 
 
@@ -453,10 +473,16 @@ def apply_rules(fronts, note, scope, basis, context=""):
         # Read the product name too. "Forlife Stainless Steel Tea Infuser" and
         # "Scanwood Olive Wood Cooking Spoon" name the material in the title and
         # never repeat it in the note, so reading the note alone found nothing.
-        if formula_from_materials(note + " " + (context or "")) == "pass":
+        read = formula_from_materials(note + " " + (context or ""))
+        if read == "pass":
             f["formula"] = {"status": "pass", "note": "Materials named in the listing.",
                             "origin": "rule-2-materials"}
             fired.append("2 formula-read-from-materials")
+        elif read == "caution":
+            f["formula"] = {"status": "caution",
+                            "note": "Carries an undisclosed mixture, so the formula cannot be checked.",
+                            "origin": "rule-2.1-disclosure"}
+            fired.append("2.1 disclosure-failure-caps-at-caution")
 
     # Rule 5.4. A durable good is its own contact surface: a stainless bowl's
     # "packaging" is the stainless. Where the material reads clean and nothing

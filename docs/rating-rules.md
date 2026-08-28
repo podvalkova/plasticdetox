@@ -76,6 +76,46 @@ unworked, not unknowable.
 
 ---
 
+### 2.1 What is on the hazard list, and why
+
+A substance earns a place only when all three hold:
+
+1. **Route.** There is a documented path from this product into a person:
+   migration, shedding, dermal absorption, inhalation, ingestion.
+2. **Evidence.** Independent published evidence of harm, or a restriction by a
+   serious regulator.
+3. **Determinable.** We can tell it is there from the label, the material, or a
+   published test. A rule we cannot apply is not a rule.
+
+The list then has **two kinds of entry**, and they behave differently.
+
+**Named hazards.** A specific substance with evidence behind it: PTFE and the
+other PFAS, PVC, polycarbonate and BPA, polystyrene, melamine, phthalates,
+formaldehyde releasers, triclosan, lead, cadmium. One of these, un-negated, in
+the path that reaches a person, fails the front on its own.
+
+**Disclosure failures.** A legal umbrella that hides composition: "fragrance"
+and "parfum", "gum base", "proprietary blend", "natural flavors". These name no
+harmful substance. What they say is that we cannot check.
+
+> A disclosure failure caps at **careful** on its own. It is not evidence of
+> harm. It is the absence of the evidence we would need, and the maker controls
+> that absence, which is why it counts against them where a missing third party
+> test does not.
+
+That distinction is the whole difference between this and rule 5.6. We do not
+penalise a product for the absence of independent testing, because the maker
+does not control whether a lab has looked at it. We do count concealment,
+because they chose it. "Fragrance" is a single word standing in for a mixture
+that may run to hundreds of ingredients and has historically carried phthalates;
+the objection is to the standing in, not to scent.
+
+Exposure then modulates it, by the same route rule as packaging. A fragrance
+left on skin all day is a different finding from one rinsed down a drain, and
+our practice already reflects this: no product on the site is a skip for
+fragrance alone. Every skip that mentions it carries a second, named finding
+beside it, and that is the rule, not a coincidence.
+
 ## 3. Packaging
 
 **Natural scope:** `format`.
