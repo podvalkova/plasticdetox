@@ -20,10 +20,18 @@ What counts as a recommendation:
 A row carrying `tradeoff` is exempt: it is the honest best option in a category
 with no clean one, listed with its caveat.
 
-What does not count is a mention inside a caution card or a "skip" section,
-which is the article doing its job. Those are matched and excluded by hand,
-because getting that distinction wrong in the other direction would strip real
-warnings out of the site.
+What does not count:
+
+  a mention inside a caution card or a "skip" section
+
+  a rated review article. Top 100 Baby & Kids publishes all three statuses side
+  by side, which is the same job Brand Check does, so a product appearing there
+  under an accurate skip is the article working rather than contradicting
+  itself. Only a product the article presents as a PICK while we rate it careful
+  or skip is a contradiction.
+
+Getting that distinction wrong in the other direction would strip real warnings
+out of the site, which is the worse error.
 
     python3 tools/audit-recommendations.py
     python3 tools/audit-recommendations.py --strict
@@ -75,6 +83,34 @@ def main():
 
     hits = collections.defaultdict(list)
 
+    # A rated review states its own verdict per product. Where it agrees with
+    # the standard, or states any non-recommending verdict, it is not
+    # recommending the product and there is nothing to reconcile.
+    rated = {}
+    for path in sorted((ROOT / "articles").glob("*.html")):
+        src = path.read_text(errors="ignore")
+        m = re.search(r"PRODUCTS\s*=\s*\[", src)
+        if not m:
+            continue
+        start, depth, end = m.end() - 1, 0, None
+        for i in range(start, len(src)):
+            if src[i] == "[":
+                depth += 1
+            elif src[i] == "]":
+                depth -= 1
+                if depth == 0:
+                    end = i + 1
+                    break
+        if not end:
+            continue
+        try:
+            table = json.loads(src[start:end])
+        except json.JSONDecodeError:
+            continue
+        for row in table:
+            if len(row) >= 8 and re.fullmatch(r"[A-Z0-9]{10}", str(row[7] or "")):
+                rated[(path.name, row[7])] = (row[4] or "").upper()
+
     # 1. the store, all three copies
     for fn in STORE_FILES:
         path = ROOT / fn
@@ -98,6 +134,11 @@ def main():
                 continue
             window = safe[max(0, m.start() - 400): m.end() + 400]
             # only count it where the markup frames it as a pick
+            # The article states its own verdict for this ASIN and it is not a
+            # recommendation, so the two agree.
+            stated = rated.get((path.name, a))
+            if stated in ("SKIP", "USE CAREFULLY"):
+                continue
             if re.search(r'product-card|product-grid|class="pick|<li>\s*<a href="[^"]*'
                          + a, window, re.I):
                 brand, prod, v = flagged[a]
