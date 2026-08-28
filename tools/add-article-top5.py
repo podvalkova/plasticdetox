@@ -51,9 +51,11 @@ MAT = ("Most mats are PVC, TPE, NBR or EVA foam. PVC is made from a known carcin
 TAMPON = ("Independent 2024 to 2025 testing found lead and arsenic in 30 of 30 tampons. Most "
           "US tampons also ship with a single use plastic applicator, and the withdrawal cord "
           "and overwrap are usually polyester.")
-TEA = ("One plastic tea bag releases 11.6 billion microplastic particles per cup, and heat is "
-       "the trigger. Silky and pyramid bags are nylon or PET, and even most paper bags carry a "
-       "heat sealed polypropylene seam that sheds into the water.")
+TEA = ("One plastic tea bag releases 11.6 billion microplastic particles per cup, and heat is the "
+       "trigger. Silky and pyramid bags are nylon or PET, and most supermarket paper bags carry a "
+       "heat sealed polypropylene seam. The bag is not packaging: it goes into the drink, at near "
+       "boiling temperature, and you swallow what it sheds. Traditional Medicinals and Pukka use "
+       "unbleached plant based bags, and loose leaf with a steel infuser has no plastic at all.")
 FLOSS = ("The glide is usually PTFE, the same polymer as Teflon and a member of the PFAS "
          "family. A 2019 study tied Oral-B Glide use to higher PFAS blood levels, and 2024 lab "
          "testing measured Glide at 248,900 ppm organic fluorine, a record high for a consumer "
@@ -261,7 +263,7 @@ ROWS = {
                                    "A plain sea salt with no additives. We have no published third party heavy metal or microplastic testing on it, which is the number this category turns on, so that gap is stated rather than assumed either way.", F(fo="pass"))],
     "Amazon Grocery": [("Amazon Grocery sea salt", [["amazon", "grocery", "salt"]], [], ["B07QW1G8MW"], "good",
                         "A plain sea salt with no additives. No published third party heavy metal or microplastic testing, which is the number this category turns on, so the gap is stated.", F(fo="pass")),
-                       ("Amazon Saver black tea", [["amazon", "saver", "tea"]], [], ["B07X1HW96F"], "careful", TEA, F(pk="caution")),
+                       ("Amazon Saver black tea", [["amazon", "saver", "tea"]], [], ["B07X1HW96F"], "skip", TEA, F(fo="fail", te="fail")),
                        ("Amazon Grocery spring water", [["amazon", "grocery", "water"], ["amazon", "grocery", "spring"]], [], ["B0CRF7TG4K"], "skip", PET_WATER, F(pk="fail"))],
     # -------------------------------------------------------- cleaning products
     "Lysol": [("All Purpose Cleaner spray", [["lysol", "all", "purpose"], ["lysol", "cleaner"]], [], ["B0BNP5QQ53", "B00QIT9NDW", "B0G3CJ33QG"], "skip",
@@ -278,9 +280,9 @@ ROWS = {
     "Serta": [("Perfect Slumber and Perfect Start crib mattresses", [["serta", "crib"], ["serta", "mattress"]], [], ["B08KRD7LNX", "B0FHXLNXXY"], "careful",
                "A polyurethane foam core with a waterproof layer, which on crib mattresses is usually a vinyl or polyurethane film. No GREENGUARD or organic certification on the mainstream models.", F(fo="caution"))],
     # ---------------------------------------------------------------------- tea
-    "Lipton": [("Lipton tea bags", [["lipton", "tea"]], [], ["B0DX5XQNRH"], "careful", TEA, F(pk="caution"))],
-    "Twinings": [("Twinings tea bags", [["twinings"]], [], ["B001GM60LE", "B0DYK97R27"], "careful", TEA, F(pk="caution"))],
-    "Bigelow": [("Bigelow tea bags", [["bigelow"]], [], ["B001A3OADO"], "careful", TEA, F(pk="caution"))],
+    "Lipton": [("Lipton tea bags", [["lipton", "tea"]], [], ["B0DX5XQNRH"], "skip", TEA, F(fo="fail", te="fail"))],
+    "Twinings": [("Twinings tea bags", [["twinings"]], [], ["B001GM60LE", "B0DYK97R27"], "skip", TEA, F(fo="fail", te="fail"))],
+    "Bigelow": [("Bigelow tea bags", [["bigelow"]], [], ["B001A3OADO"], "skip", TEA, F(fo="fail", te="fail"))],
     "THETCHRY": [("THETCHRY plastic cutting boards", [["thetchry"]], [], ["B0CXPR165S"], "skip", CUT, F(fo="fail"))],
     "Venture Pal": [("Venture Pal electrolyte stick packs", [["venture", "pal"]], [], ["B0FKN3ZTBJ"], "careful",
                      "Sugar free with a high sodium profile, sold in single serve stick packs, which carry the most plastic surface area per dose in the category. No published PFAS or heavy metal testing.", F(pk="caution"))],

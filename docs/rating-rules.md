@@ -150,6 +150,32 @@ exposure when chewed. That is determinable from the material. Sophie's materials
 are sound, which is exactly why the conditional finding has to stand on its own,
 and on its own it is a caution.
 
+### 2.3 An object immersed in what you consume is not packaging
+
+The packaging matrix in section 3 judges a container holding contents at rest. A
+tea bag is not that. It is an object put inside the drink, at near boiling
+temperature, and then squeezed. The matrix is the wrong instrument, and reaching
+for it produced a caution where the standard's own rules give a skip.
+
+Run a supermarket tea bag through them properly:
+
+- **Named hazard.** Polypropylene, from the heat sealed seam. Section 2.1.
+- **In the ingested path.** You drink the water it steeped in.
+- **At heat**, which section 3.2 says moves everything one step worse.
+- **Measured, not inferred.** 11.6 billion microplastic particles per cup.
+- **The drinkware standard**, which the site already applies: no plastic in the
+  drink path, ever. It is what removed the Owala picks and every straw tumbler.
+
+Five rules, one answer. Where a product is put into the thing a person swallows,
+read it as formula and ingestion, never as packaging.
+
+This is also the mirror of 2.2, and the pair is worth holding together. Sophie la
+Girafe caps at careful because whether a given unit has mould is **not
+determinable** from the product. A tea bag's seam is determinable: it is a
+property of the bag as sold, the article publishes a burn test for it, and
+supermarket brands are documented as using it. Determinable and in the ingested
+path is a skip. Conditional and undetectable is a caution.
+
 ## 3. Packaging
 
 **Natural scope:** `format`.
