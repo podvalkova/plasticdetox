@@ -61,15 +61,30 @@ def main():
         # brand-lines.py tested for `match` before adding a row but writes
         # `matchAll`, so the guard never fired and every build appended another
         # copy. Wet Ones carried seven identical rows. Collapse them here.
-        seen, keep = set(), []
+        # Keyed on the name alone, not the match rules. Keying on the rules let
+        # the same product survive several times over: the cross-brand ASIN guard
+        # strips an ASIN off a row and a later tool recreates the row, and the two
+        # differ only in a field the reader never sees. Rows that agree on the
+        # verdict are merged, taking the union of their ASINs and match rules, so
+        # nothing loses a way to fire. Rows that disagree are both kept for the
+        # collision check below to raise.
+        seen, keep = {}, []
         for p in rows:
-            key = (p.get("name"), json.dumps(p.get("matchAll"), sort_keys=True),
-                   json.dumps(p.get("match"), sort_keys=True),
-                   json.dumps(sorted(p.get("asins") or [])))
-            if key in seen:
+            key = (p.get("name"), (p.get("ext") or {}).get("verdict") or p.get("verdict"))
+            first = seen.get(key)
+            if first is not None:
+                for field in ("asins", "match", "matchAll", "matchNot"):
+                    merged = list(first.get(field) or [])
+                    for v in (p.get(field) or []):
+                        if v not in merged:
+                            merged.append(v)
+                    if merged:
+                        first[field] = merged
+                if not first.get("note") and p.get("note"):
+                    first["note"] = p["note"]
                 dedup += 1
                 continue
-            seen.add(key)
+            seen[key] = p
             keep.append(p)
         if len(keep) != len(rows):
             b["products"] = keep
@@ -187,6 +202,21 @@ def main():
     print("\nextension verdict distribution:")
     for k, v in dist.most_common():
         print(f"  {str(k):<8} {v:>4}")
+
+    # Same brand, same product name, opposite verdicts. The rules cannot tell
+    # these apart and neither can a reader: whichever row a listing happens to
+    # match answers for both. Sophie la Girafe carried a skip for mould in the
+    # sealed cavity and a good for its natural rubber, describing one product.
+    named = {}
+    for b in brands:
+        for p in (b.get("products") or []):
+            v = (p.get("ext") or {}).get("verdict")
+            k = (b["brand"], p.get("name"))
+            if k in named and named[k] != v:
+                print(f"  !! SAME NAME, DIFFERENT VERDICT: {b['brand']} / {p.get('name')} "
+                      f"is both {named[k]} and {v}")
+                clash += 1
+            named[k] = v
 
     if clash:
         raise SystemExit("refusing to write: two rows would answer for the same listing")
