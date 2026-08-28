@@ -91,7 +91,10 @@ def main():
             "name": "Whole range",
             "matchAll": match_all,
             "verdict": b.get("stance"),
-            "note": (b.get("reason") or "")[:400],
+            # No note. The card falls back to the brand's own reason when a row
+            # has none, and copying it here rendered the same paragraph twice:
+            # once as the product note and again under "About the brand".
+            "note": "",
             "origin": "brand-line",
         })
         added += 1
