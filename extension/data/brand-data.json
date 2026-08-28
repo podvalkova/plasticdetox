@@ -7452,28 +7452,30 @@
       {
         "name": "Elite and Longlast+ filters",
         "verdict": "careful",
-        "note": "Certified to NSF/ANSI 53 for lead. Not certified to 401 for microplastics, no fluoride removal, and Brita testing shows no significant PFOA or PFOS reduction.",
+        "note": "The Elite and Longlast filters are certified under NSF/ANSI 53 for lead, which is real and is more than the standard filter does. Neither carries NSF/ANSI 401 for microplastics, so this is the better Brita rather than a microplastics filter.",
         "ext": {
           "verdict": "careful",
-          "why": "adverse finding stands",
+          "why": "Reviewed by hand: certified for lead, not for microplastics.",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "pass",
             "packaging": "unassessed",
             "legal": "unassessed",
-            "testing": "pass"
+            "testing": "caution"
           },
-          "scope": "brand",
+          "scope": "line",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "authored": true
         },
         "origin": "hand",
         "matchAll": [
           [
             "brita",
-            "elite",
-            "longlast",
-            "filters"
+            "elite"
+          ],
+          [
+            "brita",
+            "longlast"
           ]
         ],
         "matchFrom": "name"
@@ -33888,28 +33890,26 @@
       {
         "name": "Crispi glass air fryer",
         "verdict": "careful",
-        "note": "Glass containers, but food cooks on an aluminum crisper plate with a nano ceramic coating that degrades over time. Better than PTFE, not verified coating free.",
+        "note": "The Crispi cooks in a borosilicate glass vessel rather than a coated basket, which is why it is the one Ninja we do not rate skip. Its PFAS free claim is still the manufacturer's own, with no third party verification.",
         "ext": {
           "verdict": "careful",
-          "why": "adverse finding stands",
+          "why": "Reviewed by hand: glass cooking vessel, unverified PFAS free claim.",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "pass",
             "packaging": "unassessed",
             "legal": "unassessed",
-            "testing": "unassessed"
+            "testing": "caution"
           },
-          "scope": "brand",
+          "scope": "line",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "authored": true
         },
         "origin": "hand",
         "matchAll": [
           [
             "ninja",
-            "crispi",
-            "glass",
-            "air"
+            "crispi"
           ]
         ],
         "matchFrom": "name"
