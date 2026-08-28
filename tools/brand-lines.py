@@ -70,8 +70,10 @@ def main():
             skipped_varies += 1
             continue
         rows = b.setdefault("products", [])
-        # Nothing to add if a line already covers this category.
-        if any(p.get("match") for p in rows):
+        # Nothing to add if a line already covers this category. This tested
+        # `match` while the rows it writes carry `matchAll`, so it never fired
+        # and every build appended another copy. Wet Ones reached seven.
+        if any(p.get("match") or p.get("matchAll") for p in rows):
             skipped_have += 1
             continue
 

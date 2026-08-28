@@ -56,6 +56,13 @@ def main():
     run("articles-to-products.py", "--write")
     run("registry-to-products.py", "--write")
     run("brand-lines.py", "--write")
+    # Give hand-researched rows a way to fire, then stamp the strict per-product
+    # verdict the extension reads, then roll products up into the brand stance
+    # Brand Check shows. Order matters: the rollup reads product verdicts, and
+    # apply-product-rules is what collapses duplicate rows.
+    run("name-to-match.py", "--write")
+    run("apply-product-rules.py", "--write")
+    run("brand-rollup.py", "--write")
     # Never ship a card whose "Better:" line points at something we flag.
     run("audit-alternatives.py", "--strict")
 

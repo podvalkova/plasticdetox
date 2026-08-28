@@ -128,15 +128,46 @@
     // Optic White. Longest phrase wins so a specific line beats a general one.
     if (!title) return null;
     const low = " " + norm(title) + " ";
-    const hasWord = (w) => low.includes(" " + norm(w) + " ");
-    let best = null, bestLen = 0;
+    // Tolerate the singular/plural split between an editorial name and a real
+    // listing title: we write "Aveeno Sunscreens", Amazon writes "Sunscreen".
+    const hasWord = (w) => {
+      const n = norm(w);
+      if (!n) return false;
+      if (low.includes(" " + n + " ")) return true;
+      if (n.endsWith("s") && low.includes(" " + n.slice(0, -1) + " ")) return true;
+      return low.includes(" " + n + "s ");
+    };
+    let best = null, bestLen = 0, bestDirect = false, bestEvidence = -1;
+
+    // A researched row always beats an inherited one, however long the inherited
+    // match is. Coterie carries three researched product rows and one generated
+    // whole-range row, and on title alone the generated row won on length, so a
+    // brand we researched three times over answered "no status".
+    const isDirect = (p) => p.origin !== "brand-line";
+    // Where two researched rows describe the same product, the better evidenced
+    // one answers. Weleda Salt Toothpaste has a store spec sheet and an article
+    // row carrying the lab non-detect; the spec sheet won on match length and
+    // threw away the only lab result we hold on it.
+    const evidenceOf = (p) => {
+      const f = (p.ext && p.ext.fronts) || {};
+      return Object.values(f).filter((v) => v && v !== "unassessed" && v !== "unknown").length;
+    };
+    // Direct beats inherited, then evidence, then the longer match.
+    const better = (p, len, d) => {
+      if (d !== bestDirect) return d;
+      const e = evidenceOf(p);
+      if (e !== bestEvidence) return e > bestEvidence;
+      return len > bestLen;
+    };
 
     for (const p of rows) {
       // `match` is an adjacent phrase: "colgate total" names one line.
       for (const phrase of (p.match || [])) {
         const needle = norm(phrase);
-        if (needle && low.includes(needle) && needle.length > bestLen) {
-          best = p; bestLen = needle.length;
+        if (!needle || !low.includes(needle)) continue;
+        const d = isDirect(p);
+        if (better(p, needle.length, d)) {
+          best = p; bestLen = needle.length; bestDirect = d; bestEvidence = evidenceOf(p);
         }
       }
       // `matchAll` is a set of words that must all appear, in any order and
@@ -145,15 +176,35 @@
       for (const group of (p.matchAll || [])) {
         if (!group.length || !group.every(hasWord)) continue;
         const weight = group.join("").length;
-        if (weight > bestLen) { best = p; bestLen = weight; }
+        const d = isDirect(p);
+        if (better(p, weight, d)) {
+          best = p; bestLen = weight; bestDirect = d; bestEvidence = evidenceOf(p);
+        }
       }
     }
     return best;
   }
 
+  /**
+   * The verdict the extension is allowed to assert, which is not always the one
+   * the site shows.
+   *
+   * Brand Check can carry a hedge and a paragraph of context around a verdict.
+   * Here we get one line, on a listing page, at the moment someone is deciding
+   * whether to buy. So the extension holds the stricter line set out in
+   * docs/rating-rules.md: favourable evidence never propagates, so a
+   * recommendation needs direct evidence about this exact product. Where that
+   * is missing the honest answer is no status at all, and "unrated" is how the
+   * data says so. `ext` is stamped by tools/apply-product-rules.py.
+   */
+  function extVerdictOf(row) {
+    if (!row) return null;
+    const v = row.ext ? row.ext.verdict : row.verdict;
+    return v && v !== "unrated" && v !== "neutral" ? v : null;
+  }
+
   function resolveStance(match, asin, title) {
-    const row = productFor(match, asin, title);
-    return row && row.verdict ? row.verdict : null;
+    return extVerdictOf(productFor(match, asin, title));
   }
 
   /**
@@ -176,8 +227,7 @@
    * we show no status at all and offer to research it.
    */
   function hasVerdict(match, asin, title) {
-    const row = productFor(match, asin, title);
-    return !!(row && row.verdict);
+    return !!extVerdictOf(productFor(match, asin, title));
   }
 
   // ------------------------------------------------------------ rendering
@@ -271,7 +321,13 @@
     // skip only has to justify itself, so it shows the fronts that are actually
     // wrong and stays quiet about the rest. Rows of empty greys next to a
     // verdict read as carelessness rather than honesty.
-    const productFronts = row && row.fronts ? row.fronts : null;
+    // The rules corrected scorecard travels as a flat map of statuses. The card
+    // renders {status} objects, so normalise rather than teaching both shapes.
+    const extFronts = row && row.ext && row.ext.fronts
+      ? Object.fromEntries(Object.entries(row.ext.fronts)
+          .map(([k, v]) => [k, { status: v === "unassessed" ? "unknown" : v }]))
+      : null;
+    const productFronts = extFronts || (row && row.fronts ? row.fronts : null);
     // When a product's verdict departs from its brand's and it has no fronts of
     // its own, the brand's fronts are describing other products in the range and
     // must not be shown. Aquasana's packaging failure is about the Claryum line;
@@ -279,6 +335,16 @@
     // simply false.
     const borrowedAndWrong =
       !productFronts && row && row.verdict && row.verdict !== b.stance;
+    // Rule 1.2. A warning resting on evidence about the brand's other products
+    // has to say so, so the shopper can judge the inference themselves rather
+    // than reading it as a finding about the thing in their basket.
+    if (row && row.ext && row.ext.disclose) {
+      const d = el("div", "pd-scope");
+      d.textContent = "This is our finding on " + b.brand
+        + (b.category ? " " + String(b.category).toLowerCase() : "")
+        + " generally. We have not tested this exact listing.";
+      head.appendChild(d);
+    }
     const fronts = productFronts || (borrowedAndWrong ? {} : (b.fronts || {}));
     const statusOf = (k) => (fronts[k] || {}).status || "unknown";
 
