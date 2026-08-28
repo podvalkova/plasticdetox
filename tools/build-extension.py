@@ -79,6 +79,8 @@ def main():
     # editorial conflicts are open and awaiting a decision.
     run("audit-recommendations.py")
     run("audit-store-coverage.py")
+    # The standard is the source of truth; the site must agree with it.
+    run("audit-site-alignment.py")
 
     src = ROOT / "brand-data.json"
     dst = EXT / "data" / "brand-data.json"

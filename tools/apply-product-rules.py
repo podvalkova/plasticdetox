@@ -26,12 +26,14 @@ line: a recommendation needs direct evidence about the exact product on screen.
 
 import argparse
 import collections
+import datetime
 import importlib.util
 import json
 import pathlib
 import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
+TODAY = datetime.date.today().isoformat()
 DATA = ROOT / "brand-data.json"
 
 _spec = importlib.util.spec_from_file_location(
@@ -95,6 +97,7 @@ def main():
                             " " + _a.clean_note(p.get("note")).lower() + " ")):
                     fr["packaging"] = "pass"
                     filled_54 += 1
+                p["ext"].setdefault("dated", TODAY)
                 dist[p["ext"].get("verdict")] += 1
                 hand_kept += 1
                 continue
@@ -108,8 +111,14 @@ def main():
                 v, why, disclose = _a.correct(p.get("verdict"), f, p.get("note"),
                                               scope, basis, consumable=consumable,
                                               origin=p.get("origin"))
+            prev = (p.get("ext") or {})
+            # Track when a verdict last CHANGED, not when the build last ran.
+            # A date that moves on every rebuild tells you nothing; one that moves
+            # only when the answer moved tells you how stale the answer is.
+            dated = prev.get("dated") if prev.get("verdict") == v else None
             p["ext"] = {
                 "verdict": v,
+                "dated": dated or TODAY,
                 "why": why,
                 "fronts": {k: f[k]["status"] for k in FRONTS},
                 "scope": scope,
