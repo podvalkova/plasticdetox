@@ -67,6 +67,7 @@ def main():
     run("add-category-top5.py", "--write")
     run("add-article-top5.py", "--write")
     run("fix-row-copy.py", "--write")
+    run("normalise-categories.py", "--write")
     run("apply-product-rules.py", "--write")
     run("brand-rollup.py", "--write")
     # Last, so it sees every product row the steps above created. Run earlier it
