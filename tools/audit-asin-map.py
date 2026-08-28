@@ -20,6 +20,13 @@ product page is worse than no answer, because a wrong brand carries a verdict.
 
 Needs a titles file of `ASIN|Title` lines, from the Creators API.
 
+A caution learned the hard way: the Creators API reports "not in catalog" for
+ASINs that are perfectly alive in a browser, including variation children (the
+ones whose URL carries `th=1`). Nine store links were called dead on its word and
+eight were repointed, two of them to a different brand's product. Treat a "dead"
+result from that API as a prompt to check in a browser, never as grounds to
+change a link.
+
     python3 tools/audit-asin-map.py --titles /tmp/pd/titles.txt
     python3 tools/audit-asin-map.py --titles /tmp/pd/titles.txt --write
 """
