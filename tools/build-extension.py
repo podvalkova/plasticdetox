@@ -54,6 +54,8 @@ def main():
     run("mark-scope.py", "--write")
     run("store-to-products.py", "--write")
     run("articles-to-products.py", "--write")
+    run("registry-to-products.py", "--write")
+    run("brand-lines.py", "--write")
     # Never ship a card whose "Better:" line points at something we flag.
     run("audit-alternatives.py", "--strict")
 
