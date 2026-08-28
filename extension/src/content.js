@@ -525,13 +525,17 @@
    * rather than reading textContent, which would run them together.
    */
   function titleOf(card) {
-    const h = card.querySelector(SEL.search.title);
-    if (!h) return "";
-    const spans = h.querySelectorAll("span");
-    if (spans.length > 1) {
-      return [...spans].map((s) => s.textContent.trim()).filter(Boolean).join(" ");
+    // Amazon's newer result layout splits the heading into two h2 elements, the
+    // brand in one and the product in the other, so reading the first returned
+    // "Colgate" for every Colgate listing and no product line could ever match.
+    // Older layouts keep the whole title in a single heading. Join whatever is
+    // there, de-duplicated, and the same code covers both.
+    const parts = [];
+    for (const h of card.querySelectorAll(SEL.search.title)) {
+      const t = h.textContent.replace(/\s+/g, " ").trim();
+      if (t && !parts.includes(t)) parts.push(t);
     }
-    return h.textContent.trim();
+    return parts.join(" ");
   }
 
   // -------------------------------------------------------------- search
