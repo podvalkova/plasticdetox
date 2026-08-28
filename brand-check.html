@@ -143,6 +143,31 @@
       box-shadow: var(--shadow); overflow: hidden; animation: pop 0.25s ease;
     }
     @keyframes pop { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+    .ext-cta {
+      display: flex; align-items: center; gap: 0.95rem;
+      max-width: 640px; margin: 1.4rem auto 0; padding: 0.95rem 1.1rem;
+      background: linear-gradient(135deg, var(--accent-light) 0%, #f5f0ff 100%);
+      border: 1px solid #ddd6fe; border-radius: var(--radius); text-align: left;
+    }
+    .ext-cta-icon {
+      flex: 0 0 auto; width: 38px; height: 38px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      background: #fff; color: var(--accent-dark); border: 1px solid #ddd6fe;
+    }
+    .ext-cta-body { flex: 1; min-width: 0; }
+    .ext-cta-body b { display: block; font-size: 0.95rem; color: var(--text); }
+    .ext-cta-body span { display: block; margin-top: 0.15rem; font-size: 0.82rem; line-height: 1.45; color: var(--text-muted); }
+    .ext-cta-btn {
+      flex: 0 0 auto; padding: 0.6rem 1rem; border-radius: 10px;
+      background: var(--accent-dark); color: #fff; font-weight: 600;
+      font-size: 0.88rem; text-decoration: none; white-space: nowrap;
+    }
+    .ext-cta-btn:hover { background: #6d28d9; }
+    @media (max-width: 560px) {
+      .ext-cta { flex-wrap: wrap; }
+      .ext-cta-btn { width: 100%; text-align: center; }
+    }
     .card-top { padding: 1.5rem 1.6rem 1.3rem; border-top: 5px solid var(--neutral); }
     .card-top.good { border-top-color: var(--good); }
     .card-top.careful { border-top-color: var(--careful); }
@@ -274,6 +299,22 @@
 
     <div class="quick-row" id="quickRow"></div>
 
+
+    <!-- Extension CTA. Shown only to desktop Chromium, because nobody else can
+         install it and an offer you cannot accept is just noise. -->
+    <aside class="ext-cta" id="extCta" hidden>
+      <div class="ext-cta-icon" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 11 3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+      </div>
+      <div class="ext-cta-body">
+        <b>Get these verdicts while you shop on Amazon</b>
+        <span>Our free Chrome extension shows the verdict on the listing itself, before you add to basket. No affiliate links.</span>
+      </div>
+      <a class="ext-cta-btn" id="extCtaBtn"
+         href="https://chromewebstore.google.com/detail/lplncjbnohkgchjkhgdiljpjfgdmgelg"
+         target="_blank" rel="noopener">Add to Chrome &rarr;</a>
+    </aside>
+
     <div class="result" id="result" aria-live="polite"></div>
 
     <section class="how">
@@ -339,6 +380,28 @@
         if (q) { searchEl.value = q; lookup(q); }
       })
       .catch(() => { $("statLine").textContent = "Could not load the brand database. Please refresh."; });
+
+
+    // Only offer the extension to browsers that can actually run it: desktop
+    // Chromium, no mobile. Roughly a third of our traffic, and showing it to the
+    // rest is an offer they cannot accept.
+    (function extensionCta() {
+      const ua = navigator.userAgent;
+      const mobile = /Android|iPhone|iPad|iPod|Mobile/i.test(ua);
+      const chromium = /Chrome\/|Chromium\/|Edg\//.test(ua) && !/OPR\//.test(ua);
+      if (mobile || !chromium) return;
+      const box = $("extCta");
+      if (!box) return;
+      box.hidden = false;
+      gtag('event', 'extension_cta_view', { placement: 'brand_check' });
+      $("extCtaBtn").addEventListener('click', function () {
+        gtag('event', 'extension_cta_click', {
+          placement: 'brand_check',
+          // what they had just looked up, so we can see whether a verdict drives installs
+          last_brand: (searchEl && searchEl.value ? searchEl.value.trim().slice(0, 60) : '')
+        });
+      });
+    })();
 
     function buildQuick() {
       const row = $("quickRow");
