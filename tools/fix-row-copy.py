@@ -56,6 +56,30 @@ def variants(group, brand_words=frozenset()):
     return out
 
 
+# Trailing words that a listing routinely drops from the brand name. Requiring
+# them means the row misses: our label says "Earth Mama Organics" and Amazon
+# says "Earth Mama Baby Mineral Sunscreen SPF 40", so a skip we researched never
+# fired on the product it was written about.
+DROPPABLE = {"organics", "organic", "company", "co", "inc", "brands", "naturals",
+             "products", "labs", "laboratories", "nutrition", "foods", "baby",
+             "kids", "home", "living", "goods", "group", "usa", "international"}
+
+
+def brand_variants(groups, brand_words):
+    """Add a variant of each group with a droppable trailing brand word removed."""
+    out = [list(g) for g in groups]
+    ordered = [w for w in brand_words]
+    for g in list(out):
+        for w in ordered:
+            if w in DROPPABLE and w in g:
+                # Only if something distinctive survives, or the rule would
+                # become a bare brand match and claim the whole catalogue.
+                alt = [x for x in g if x != w]
+                if len([x for x in alt if x not in brand_words]) >= 1 and alt not in out:
+                    out.append(alt)
+    return out
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--write", action="store_true")
@@ -79,6 +103,7 @@ def main():
                 for v in variants(g, brand_words):
                     if v not in out:
                         out.append(v)
+            out = brand_variants(out, brand_words)
             if out != groups:
                 if len(examples) < 8:
                     examples.append((b["brand"], p.get("name"), groups[0], out))

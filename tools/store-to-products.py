@@ -50,12 +50,22 @@ def parse_store():
 
 
 def note_for(rec):
-    """A spec-sheet note: what it is, then the caveat if there is one."""
+    """
+    A spec-sheet note: what it is, the evidence behind it, then the caveat.
+
+    The store's `effectiveness` field is where the certifications live: "EWG
+    Verified + GOTS certified", "IAPMO certified to NSF/ANSI 53". Leaving it out
+    threw away the testing front on our own picks, which is why 87 store
+    products resolved to "no front is directly evidenced by the note".
+    """
     desc = (rec.get("desc") or "").strip()
     # Keep it to the first two sentences; the card has limited room.
     parts = re.split(r"(?<=[.!?])\s+", desc)
     note = " ".join(parts[:2]).strip()
     cons = [c for c in (rec.get("cons") or []) if c]
+    ev = (rec.get("effectiveness") or "").strip()
+    if ev and ev.lower() not in note.lower():
+        note = (note + " " if note else "") + ev.rstrip(".") + "."
     if cons:
         note = (note + " " if note else "") + "Worth knowing: " + cons[0].rstrip(".") + "."
     return note[:400]
@@ -73,6 +83,7 @@ def main():
 
     added = skipped_no_brand = already = conflict = 0
     examples = []
+    refreshed = 0
 
     for asin, rec in store.items():
         entry = amap.get(asin)
@@ -91,6 +102,16 @@ def main():
         hit = next((p for p in rows if asin in (p.get("asins") or [])), None)
         if hit:
             already += 1
+            # Refresh the note on rows this tool owns. It used to skip them
+            # entirely, so when note_for started carrying the store's
+            # `effectiveness` field, which is where the certifications live, none
+            # of the 187 existing rows ever picked it up. A hand-authored row is
+            # left alone.
+            if hit.get("origin") == "store" and not (hit.get("ext") or {}).get("authored"):
+                fresh = note_for(rec)
+                if fresh and fresh != hit.get("note"):
+                    hit["note"] = fresh
+                    refreshed += 1
             continue
 
         rows.append({
@@ -107,6 +128,7 @@ def main():
     print(f"store rows with an ASIN: {len(store)}")
     print(f"  new product verdicts added:        {added}")
     print(f"  already had one:                   {already}")
+    print(f"  notes refreshed with the store's evidence: {refreshed}")
     print(f"  ASIN not mapped to a known brand:  {skipped_no_brand}")
     print(f"  brand is careful or skip, skipped: {conflict}")
     print("\nexamples:")

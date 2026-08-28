@@ -64,7 +64,13 @@ def scope_of(prod):
     if prod.get("match"):
         return "line"
     if prod.get("matchAll"):
-        return "brand"
+        # Provenance decides, not the field. brand-lines.py generates groups of
+        # brand words plus one category word, which really is a brand level claim
+        # narrowed to a category. Every other matchAll names a specific product
+        # ("earth mama organic diaper balm", "dyson v15 detect"), which is a
+        # product line. Reading them all as brand scope silently demoted 36
+        # hand-researched recommendations to "we have not reviewed this".
+        return "brand" if prod.get("origin") == "brand-line" else "line"
     return "none"
 
 
@@ -155,6 +161,9 @@ INERT = [
     "plant fibre", "solid wood", "maple", "beech", "birch", "bamboo fiber",
     "beeswax", "paper", "unbleached", "food grade silicone", "platinum silicone",
     "wood pulp", "pulp", "cellulose", "fsc", "viscose free", "tencel",
+    "wood", "wooden", "olive wood", "acacia", "walnut", "teak", "cherry wood",
+    "hardwood", "end grain", "granite", "marble", "soapstone", "slate",
+    "tampico", "horsehair", "boar bristle", "mesh", "wire",
     "bamboo", "rattan", "coconut", "loofa", "seagrass", "rubberwood",
     "titanium", "copper", "brass", "porcelain", "stoneware", "clay", "cork",
     "natural rubber", "latex free", "aluminium free", "aluminum free",
@@ -441,7 +450,10 @@ def apply_rules(fronts, note, scope, basis, context=""):
     # Rule 2: formula is always resolvable, so read the material directly when
     # the classifier's polarity test found nothing to grip on.
     if f["formula"]["status"] in ("unknown", "unassessed"):
-        if formula_from_materials(note) == "pass":
+        # Read the product name too. "Forlife Stainless Steel Tea Infuser" and
+        # "Scanwood Olive Wood Cooking Spoon" name the material in the title and
+        # never repeat it in the note, so reading the note alone found nothing.
+        if formula_from_materials(note + " " + (context or "")) == "pass":
             f["formula"] = {"status": "pass", "note": "Materials named in the listing.",
                             "origin": "rule-2-materials"}
             fired.append("2 formula-read-from-materials")
