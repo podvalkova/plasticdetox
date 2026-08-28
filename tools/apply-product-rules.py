@@ -51,6 +51,7 @@ def main():
     diverge = 0
     dedup = 0
     hand_kept = 0
+    filled_54 = 0
 
     for b in brands:
         rows = b.get("products") or []
@@ -80,6 +81,20 @@ def main():
             # carrying authored: true is left exactly as written, on every
             # rebuild, forever. This is what makes the file editable.
             if (p.get("ext") or {}).get("authored"):
+                # Rule 5.4 is a rule, not a guess: for a durable good the object
+                # IS the surface that touches the contents, so a clean material
+                # read answers the packaging question with the same fact. Asking
+                # it twice and leaving one blank made recommendations look like
+                # they rested on a single observation. This does not overwrite a
+                # human's answer, it only fills a front they left blank.
+                fr = p["ext"].get("fronts") or {}
+                if (not _a.is_consumable(b.get("category"), p.get("name"))
+                        and fr.get("formula") == "pass"
+                        and fr.get("packaging") in (None, "unassessed", "unknown")
+                        and not _a.GENERIC_PLASTIC.search(
+                            " " + _a.clean_note(p.get("note")).lower() + " ")):
+                    fr["packaging"] = "pass"
+                    filled_54 += 1
                 dist[p["ext"].get("verdict")] += 1
                 hand_kept += 1
                 continue
@@ -126,6 +141,7 @@ def main():
     print(f"stamped ext onto {sum(dist.values())} product rows")
     print(f"  rule collisions with different verdicts: {clash}")
     print(f"  hand-authored, left untouched: {hand_kept}")
+    print(f"  rule 5.4 filled the packaging front on: {filled_54}")
     print(f"  collapsed duplicate rows: {dedup}")
     print(f"  extension verdict differs from the site verdict: {diverge}")
     print("\nextension verdict distribution:")

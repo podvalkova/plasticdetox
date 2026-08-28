@@ -125,9 +125,10 @@ NOT_CONTACT = re.compile(
 # lead into every note citing them, which cancelled out the very non-detect they
 # had published: Weleda Salt Toothpaste, a non detect at a 5 ppb limit, scored
 # one hazard against one clean result and came out neutral.
-SOURCE_NAMES = re.compile(
-    r"\blead safe mama\b|\bconsumer reports\b|\bclean label project\b|"
-    r"\bdetox project\b|\bmade safe\b|\bgreenpeace\b", re.I)
+# Only names that contain a hazard word need masking, and only one does. Masking
+# the rest cost real signal: MADE SAFE is a certification the classifier scores
+# as a testing pass, and it was being replaced with the word "lab".
+SOURCE_NAMES = re.compile(r"\blead safe mama\b", re.I)
 
 
 def clean_note(note):
@@ -153,6 +154,8 @@ INERT = [
     "silk", "tencel", "lyocell", "jute", "sisal", "loofah", "plant fiber",
     "plant fibre", "solid wood", "maple", "beech", "birch", "bamboo fiber",
     "beeswax", "paper", "unbleached", "food grade silicone", "platinum silicone",
+    "wood pulp", "pulp", "cellulose", "fsc", "viscose free", "tencel",
+    "bamboo", "rattan", "coconut", "loofa", "seagrass", "rubberwood",
     "titanium", "copper", "brass", "porcelain", "stoneware", "clay", "cork",
     "natural rubber", "latex free", "aluminium free", "aluminum free",
 ]
@@ -442,6 +445,18 @@ def apply_rules(fronts, note, scope, basis, context=""):
             f["formula"] = {"status": "pass", "note": "Materials named in the listing.",
                             "origin": "rule-2-materials"}
             fired.append("2 formula-read-from-materials")
+
+    # Rule 5.4. A durable good is its own contact surface: a stainless bowl's
+    # "packaging" is the stainless. Where the material reads clean and nothing
+    # contradicts it, the packaging front is answered by the same fact rather
+    # than left blank next to a recommendation.
+    if (not is_consumable(context) and f["formula"]["status"] == "pass"
+            and f["packaging"]["status"] in ("unknown", "unassessed")
+            and not GENERIC_PLASTIC.search(low)):
+        f["packaging"] = {"status": "pass",
+                          "note": "The object is its own contact surface, and the material reads clean.",
+                          "origin": "rule-5.4"}
+        fired.append("5.4 durable-good-is-its-own-packaging")
 
     # normalise the classifier's "unknown" to the rules document's vocabulary
     for k in f:
