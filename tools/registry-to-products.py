@@ -72,7 +72,9 @@ def main():
 
     for rec in registry_records():
         key = collapse(rec["name"])
-        brand = next((b for k, b in lookup if key.startswith(k) or k in key), None)
+        # Prefix only. Substring matching put "Awair Element" on LMNT, because
+        # "lmnt" happens to sit inside "element".
+        brand = next((b for k, b in lookup if key.startswith(k)), None)
         if not brand:
             no_brand += 1
             unknown.append(rec["name"])
