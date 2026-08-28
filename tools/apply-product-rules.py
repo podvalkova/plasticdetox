@@ -50,6 +50,7 @@ def main():
     dist = collections.Counter()
     diverge = 0
     dedup = 0
+    hand_kept = 0
 
     for b in brands:
         rows = b.get("products") or []
@@ -73,9 +74,19 @@ def main():
 
         consumable = _a.is_consumable(b.get("category"), "")
         for p in rows:
+            # A hand-written verdict is the point of the whole exercise: the
+            # generated one is a first pass over a 150 character note, and a
+            # person who has read the actual listing knows more. Anything
+            # carrying authored: true is left exactly as written, on every
+            # rebuild, forever. This is what makes the file editable.
+            if (p.get("ext") or {}).get("authored"):
+                dist[p["ext"].get("verdict")] += 1
+                hand_kept += 1
+                continue
             scope, basis = _a.scope_of(p), _a.basis_of(p)
             raw, authored = _a.fronts_for(p, b)
-            f, fired = _a.apply_rules(raw, _a.clean_note(p.get("note")), scope, basis)
+            f, fired = _a.apply_rules(raw, _a.clean_note(p.get("note")), scope, basis,
+                                      f"{p.get('name') or ''} {b.get('category') or ''}")
             if authored:
                 v, why, disclose = p.get("verdict"), "hand authored scorecard", False
             else:
@@ -95,6 +106,7 @@ def main():
                 diverge += 1
 
     print(f"stamped ext onto {sum(dist.values())} product rows")
+    print(f"  hand-authored, left untouched: {hand_kept}")
     print(f"  collapsed duplicate rows: {dedup}")
     print(f"  extension verdict differs from the site verdict: {diverge}")
     print("\nextension verdict distribution:")

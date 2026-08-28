@@ -81,23 +81,92 @@ unworked, not unknowable.
 **Natural scope:** `format`.
 
 **Rule.** Judge the material that touches the contents, in the format sold in the
-listing being viewed. Weight it by exposure: heat, fat, acid and storage time all
-increase migration, so a plastic lid on a cold dry good is not the same finding
-as the same plastic in contact with hot oil.
+listing being viewed.
 
-**Transfers** across every flavour and variant sold in the same container.
-**Never transfers** across formats. The same product in glass and in a pouch are
-two different verdicts, and multipacks and value sizes are frequently a different
-container from the single unit.
+### 3.1 Plastic contact is not a verdict
 
-Ranking used site wide, best to worst: glass or stainless with a glass or metal
-closure, then glass with a plastic lined lid, then uncoated paper or board, then
-HDPE and PP, then PET, then multilayer pouches and laminates, then anything
-fluorinated or PFAS treated.
+If it were, we would skip nearly every cosmetic, supplement and cleaning product
+on the market, and the flag would stop carrying information precisely because it
+fires on everything. A water based toner and a cleansing balm in the same PET
+bottle are not the same exposure.
+
+What governs migration is the pairing. Almost everything that leaches out of a
+plastic is lipophilic, so oil pulls it out and water largely does not.
+
+> **Packaging fails only where an extracting formula meets a polymer that has
+> something to give.**
+
+**How hard the contents pull**, lowest first:
+
+| | Contents | Why |
+|---|---|---|
+| 0 | Dry solids: powders, tablets, bars | Nothing to dissolve into |
+| 1 | Aqueous, neutral, no surfactant: toners, hydrosols, gels | Water is a poor solvent for what plastics shed |
+| 2 | Surfactants: shampoo, body wash, cleansers | Surfactants solubilise the lipophilic additives water cannot |
+| 2 | Alcohol: sprays, toners, sanitiser | A strong extractant |
+| 2 | Acidic: vitamin C, AHA, BHA, vinegar | Hydrolyses PET, releasing antimony |
+| 3 | Emulsions: lotions, creams, conditioners | Carries an oil phase |
+| 4 | Anhydrous: face oils, balms, butters, lip products | The strongest extractant there is |
+
+**What the polymer has to give:**
+
+| | Polymer | Concern |
+|---|---|---|
+| 0 | Glass, stainless, foil lined, ceramic | Inert |
+| 1 | HDPE, LDPE, PP, platinum silicone | Slip agents and antioxidants only |
+| 2 | PET, Tritan, copolyester | Antimony trioxide catalyst, acetaldehyde |
+| 3 | PVC, polycarbonate, polystyrene, melamine | Phthalates, BPA, styrene, melamine monomer |
+
+**The matrix:**
+
+|            | inert | polyolefin | PET | PVC/PC/PS |
+|------------|-------|-----------|-----|-----------|
+| dry        | pass | pass | pass | caution |
+| aqueous    | pass | pass | pass | caution |
+| surfactant | pass | pass | caution | caution |
+| alcohol    | pass | pass | caution | **fail** |
+| acidic     | pass | pass | caution | **fail** |
+| emulsion   | pass | caution | caution | **fail** |
+| anhydrous  | pass | caution | **fail** | **fail** |
+
+So the case that prompted this: **water based skincare or makeup in a plastic
+bottle passes.** The exceptions are the anhydrous ones, face oils, cleansing
+balms and lip products, which are all oil and in the case of lip products also
+swallowed, and acidic actives in PET.
+
+### 3.2 Heat moves everything one step worse
+
+Temperature drives migration harder than any other single variable. Hot fill,
+microwaving, sterilising, dishwashing, storage in a hot car, a shower shelf. A
+polypropylene baby bottle is a pass for dry contents and a caution for warm milk.
+
+### 3.3 Exposure route gives relief
+
+A laundry detergent and a face oil can sit in the same bottle and extract the
+same compounds, and then one is diluted ten thousand fold and rinsed down a
+drain while the other is spread on skin and left there.
+
+- **Left on the body**, or ingested: no relief. The matrix stands.
+- **Rinsed off**: one step better. Shampoo, body wash, cleanser, toothpaste.
+- **Never touches a person**: two steps better. Laundry, dish soap, surface
+  cleaners.
+
+### 3.4 What does not count
+
+- A polymer the copy rules out. "BPA free", "no PVC", "plastic free".
+- A plastic named as the thing avoided. "All steel housing rather than plastic",
+  "glass jar skips the multilayer plastic concern".
+- A plastic that never contacts the contents. An outer shell, a structural
+  sleeve, an appliance housing outside the food path.
+- "Plastic neutral certified", which is a carbon offset claim, not a material.
+
+### 3.5 Transfers
+
+**Across** every flavour and variant sold in the same container. **Never across
+formats**: the same product in glass and in a pouch are two verdicts, and
+multipacks are frequently a different container from the single unit.
 
 Like formula, this front is cheap. It is usually visible in the listing photo.
-
----
 
 ## 4. Independent tests
 

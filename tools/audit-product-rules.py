@@ -108,6 +108,19 @@ CONTRAST_CLAUSE = re.compile(
     re.I)
 
 
+# Ways the copy mentions plastic without the product containing any. A steel
+# purifier "rather than plastic", a glass jar that "skips the multilayer plastic
+# concern", a shell that "never touches the milk", a weight "close to a plastic
+# bottle's", and "plastic neutral certified", which is a carbon offset claim and
+# not a material at all. All five were scoring as plastic contact.
+NOT_CONTACT = re.compile(
+    r"\b(?:rather than|instead of|not|no|never|without|avoids?|skips?|replaces?|"
+    r"unlike|versus|vs\.?|compared (?:to|with)|as (?:light|heavy) as|close to)\s+"
+    r"(?:the\s+|a\s+|an\s+|any\s+)?[\w\s-]{0,24}?plastic\w*[^.;]*"
+    r"|plastic\w*[\s-]+(?:neutral|negative|free|offset)"
+    r"|\bnever touches\b[^.;]*"
+    r"|\bdoes not (?:touch|contact)\b[^.;]*", re.I)
+
 # A source's name is provenance, not a finding. "Lead Safe Mama" put the word
 # lead into every note citing them, which cancelled out the very non-detect they
 # had published: Weleda Salt Toothpaste, a non detect at a 5 ppb limit, scored
@@ -122,6 +135,7 @@ def clean_note(note):
     n = CAVEAT.sub("", note or "")
     n = CONTRAST_CLAUSE.sub(" ", n)
     n = SOURCE_NAMES.sub("the lab", n)
+    n = NOT_CONTACT.sub(" ", n)
     return re.sub(r"\s+", " ", n).strip()
 
 
@@ -178,6 +192,153 @@ def is_consumable(category, product_name=""):
     return any(w in cat for w in CONSUMABLE_WORDS)
 
 
+# --------------------------------------------------------- packaging severity
+#
+# Plastic contact is not a verdict. If it were, we would skip nearly every
+# cosmetic, supplement and cleaning product on the market, and the flag would
+# stop carrying information precisely because it fires on everything.
+#
+# What actually governs migration is the pairing: how aggressively the contents
+# extract, against what the polymer has to give. A water based toner in PET and
+# a cleansing balm in the same bottle are not the same exposure, because almost
+# everything that leaches out of a plastic is lipophilic. Oil pulls it, water
+# largely does not.
+#
+# So packaging fails only where an extracting formula meets a polymer with
+# something to give.
+
+# How hard the contents pull on the container, lowest first.
+EXTRACTION = [
+    (0, "dry", r"\b(powder|tablet|capsule|bar soap|shampoo bar|dry|granule|"
+               r"pastille|lozenge|sachet of powder|loose leaf)\b"),
+    (1, "aqueous", r"\b(water based|aqueous|hydrosol|toner|mist|essence|"
+                   r"micellar|gel|hydrating|99% water|water\b)"),
+    (2, "surfactant", r"\b(shampoo|body wash|face wash|cleanser|detergent|"
+                      r"dish soap|foaming|surfactant|castile|bubble bath)\b"),
+    (2, "alcohol", r"\b(alcohol|ethanol|denat|witch hazel|astringent|spray|"
+                   r"sanitiser|sanitizer|perfume|fragrance mist)\b"),
+    (2, "acidic", r"\b(vitamin c|ascorbic|glycolic|salicylic|lactic acid|aha|bha|"
+                  r"vinegar|citric|low ph|exfoliating acid)\b"),
+    (3, "emulsion", r"\b(lotion|cream|moisturis|moisturiz|emulsion|conditioner|"
+                    r"balm cream|milk\b|butter blend)\b"),
+    (4, "anhydrous", r"\b(oil|balm|butter|salve|ointment|serum oil|cleansing balm|"
+                     r"lip balm|body oil|face oil|anhydrous|petrolatum|wax)\b"),
+]
+# What the polymer has to give up.
+POLYMER = [
+    (0, "inert", r"\b(glass|stainless|steel|aluminium free|tin\b|foil lined|"
+                 r"borosilicate|ceramic|porcelain)\b"),
+    (1, "polyolefin", r"\b(hdpe|ldpe|polyethylene|polypropylene|\bpp\b|#2\b|#5\b|"
+                      r"#4\b|food grade silicone|platinum silicone)\b"),
+    (2, "pet", r"\b(pet\b|pete\b|polyester bottle|#1\b|tritan|copolyester)\b"),
+    # Resins only. BPA and phthalates are additives, not containers, and in our
+    # notes they appear either as a claim the product avoids them or as a lab
+    # result, which is the testing front's business. Reading them as a polymer
+    # failed Bobbie infant formula on the strength of "tested non detect for
+    # lead, arsenic, cadmium, mercury, BPA".
+    (3, "leachy", r"\b(pvc|polycarbonate|polystyrene|styrene|#3\b|#6\b|#7\b|"
+                  r"melamine)\b"),
+]
+# How much of what migrates actually reaches a person. A laundry detergent and a
+# face oil can sit in the same bottle and extract the same compounds, and then
+# one is diluted ten thousand fold and rinsed down a drain while the other is
+# spread on skin and left there. Reading only the container treats those as the
+# same finding, which is how a perfectly ordinary detergent jug ends up cautioned.
+RINSE_OFF = re.compile(r"\b(shampoo|conditioner|body wash|face wash|cleanser|"
+                       r"hand soap|bar soap|castile|bubble bath|toothpaste|"
+                       r"mouthwash|exfoliant|mask)\b", re.I)
+NOT_ON_BODY = re.compile(r"\b(laundry|detergent|dish soap|dishwasher|all purpose|"
+                         r"all-purpose|surface|floor|glass cleaner|bathroom cleaner|"
+                         r"stain remover|softener|degreaser)\b", re.I)
+
+HEATED = re.compile(r"\b(hot fill|hot-fill|microwav\w*|boil\w*|steril\w*|"
+                    r"dishwasher|heat\w*|hot water|hot liquid|shower)\b", re.I)
+GENERIC_PLASTIC = re.compile(r"\bplastic\w*\b", re.I)
+
+
+def packaging_severity(note, context=""):
+    """
+    Return (status, why) for the packaging front, or (None, None) when the note
+    says nothing about a container.
+
+    The matrix, contents down the side and polymer across:
+
+                    inert   polyolefin   PET    PVC/PC/PS
+        dry          pass      pass      pass    caution
+        aqueous      pass      pass      pass    caution
+        surfactant   pass      pass    caution   caution
+        alcohol      pass      pass    caution      fail
+        acidic       pass      pass    caution      fail
+        emulsion     pass    caution   caution      fail
+        anhydrous    pass    caution     fail       fail
+
+    Heat moves anything in a plastic one step worse, because temperature drives
+    migration harder than any other single variable.
+    """
+    low = " " + (note or "").lower() + " "
+    # The exposure route is usually stated in the product name and the category
+    # rather than in the note. "Baby Liquid Laundry Detergent" says everything
+    # about how much of the bottle reaches a person; the note only said "liquid
+    # in a 50 ounce plastic bottle" and drew a caution for it.
+    route = low + " " + (context or "").lower() + " "
+
+    def present(pat):
+        """A term the copy rules out is not a term the product contains."""
+        for m in re.finditer(pat, low, re.I):
+            if not _bf.is_negated(low, m.start(), m.end()):
+                return True
+        return False
+
+    poly, poly_name = None, None
+    for rank, name, pat in POLYMER:
+        if present(pat):
+            if poly is None or rank > poly:
+                poly, poly_name = rank, name
+    # An unqualified "plastic" with no resin named. Treat as PET, the commonest
+    # bottle and the middle of the range, rather than guessing best or worst.
+    # Taken as a maximum, not as a fallback: a glass jar with a plastic lid is a
+    # plastic contact layer, and reading only the glass missed every one of them.
+    if present(GENERIC_PLASTIC.pattern) and (poly is None or poly < 2):
+        poly, poly_name = 2, "unspecified plastic"
+    if poly is None or poly == 0:
+        return None, None
+
+    pull, pull_name = None, None
+    for rank, name, pat in EXTRACTION:
+        if present(pat) and (pull is None or rank > pull):
+            pull, pull_name = rank, name
+    # Nothing in the note describes what is inside. Defaulting to dry was a
+    # false pass, and defaulting to oil would be a libel: a polypropylene baby
+    # bottle scored "dry contents" and passed, when the contents are warm milk.
+    # Where the contents are unknown we can only speak about the polymer, and
+    # only the genuinely leachy resins say anything on their own.
+    if pull is None:
+        return ("caution", f"{poly_name}, contents not described") if poly >= 3 else (None, None)
+
+    grid = {
+        (0, 1): "pass", (0, 2): "pass", (0, 3): "caution",
+        (1, 1): "pass", (1, 2): "pass", (1, 3): "caution",
+        (2, 1): "pass", (2, 2): "caution", (2, 3): "fail",
+        (3, 1): "caution", (3, 2): "caution", (3, 3): "fail",
+        (4, 1): "caution", (4, 2): "fail", (4, 3): "fail",
+    }
+    status = grid.get((pull, poly), "caution")
+    note_bits = [f"{pull_name} contents in {poly_name}"]
+    if HEATED.search(low):
+        status = {"pass": "caution", "caution": "fail", "fail": "fail"}[status]
+        note_bits.append("heated in use")
+    # Relief for what never stays on a person. One step for a rinse-off, two for
+    # something that only ever touches laundry or a worktop.
+    softer = {"fail": "caution", "caution": "pass", "pass": "pass"}
+    if NOT_ON_BODY.search(route):
+        status = softer[softer[status]]
+        note_bits.append("diluted and rinsed, never left on skin")
+    elif RINSE_OFF.search(route):
+        status = softer[status]
+        note_bits.append("rinsed off")
+    return status, ", ".join(note_bits)
+
+
 def formula_from_materials(note):
     """
     'pass' when the note names an inert material and no hazard, else None.
@@ -201,7 +362,7 @@ def fronts_for(prod, brand):
     return _bf.build_fronts(pseudo), False
 
 
-def apply_rules(fronts, note, scope, basis):
+def apply_rules(fronts, note, scope, basis, context=""):
     """
     Fold the rules document's per-front corrections into a classified scorecard.
     Returns the corrected fronts plus the list of rules that fired.
@@ -263,6 +424,16 @@ def apply_rules(fronts, note, scope, basis):
                         "note": "The manufacturer does not publish a complete ingredient list.",
                         "origin": "rule-2"}
         fired.append("2 non-disclosure-is-a-caution")
+
+    # Rule 3: the packaging front is decided by the pairing, not by the word
+    # plastic appearing. This overrides the keyword classifier outright, because
+    # the classifier can only see whether a hazard word is present and the whole
+    # question is what that hazard is sitting next to.
+    pk, pk_why = packaging_severity(note, context)
+    if pk:
+        f["packaging"] = {"status": pk, "note": pk_why.capitalize() + ".",
+                          "origin": "rule-3-matrix"}
+        fired.append(f"3 packaging-matrix-{pk}")
 
     # Rule 2: formula is always resolvable, so read the material directly when
     # the classifier's polarity test found nothing to grip on.
@@ -392,7 +563,8 @@ def main():
         for p in (b.get("products") or []):
             scope, basis = scope_of(p), basis_of(p)
             raw, authored = fronts_for(p, b)
-            f, fired = apply_rules(raw, clean_note(p.get("note")), scope, basis)
+            f, fired = apply_rules(raw, clean_note(p.get("note")), scope, basis,
+                                   f"{p.get('name') or ''} {b.get('category') or ''}")
             new, why, disclose = correct(p.get("verdict"), f, p.get("note"),
                                          scope, basis, args.strict, args.lenient,
                                          is_consumable(b.get("category"), p.get("name")))
