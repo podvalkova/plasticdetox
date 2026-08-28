@@ -24,6 +24,7 @@ installed version rather than waiting on a store review.
 import argparse
 import json
 import pathlib
+import re
 import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -35,10 +36,18 @@ KEEP = {"basics", "foods", "less", "plus", "wellness", "always", "kids",
         "bliss", "swiss", "cross", "brands", "naturals", "essentials"}
 
 
-def variants(group):
-    """Every singular/plural form of a group, as separate groups."""
+def variants(group, brand_words=frozenset()):
+    """
+    Every singular/plural form of a group, as separate groups.
+
+    Never singularises the brand's own name. "Pampers" is not a plural of
+    "Pamper" and "Babyganics" is not a plural of "Babyganic"; generating those
+    adds match rules that can only ever fire on something the brand did not make.
+    """
     out = [list(group)]
     for i, w in enumerate(group):
+        if w in brand_words:
+            continue
         if len(w) > 3 and w.endswith("s") and w not in KEEP and not w.endswith("ss"):
             alt = list(group)
             alt[i] = w[:-1]
@@ -57,6 +66,7 @@ def main():
     examples = []
 
     for b in brands:
+        brand_words = {w for w in re.split(r"[^a-z0-9]+", b["brand"].lower()) if w}
         for p in (b.get("products") or []):
             if p.get("origin") == "brand-line" and (p.get("note") or "").strip():
                 p["note"] = ""
@@ -66,7 +76,7 @@ def main():
                 continue
             out = []
             for g in groups:
-                for v in variants(g):
+                for v in variants(g, brand_words):
                     if v not in out:
                         out.append(v)
             if out != groups:
