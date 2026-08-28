@@ -26,6 +26,13 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 OUT = ROOT / "extension" / "data" / "asin-map.json"
 
 ASIN_RE = re.compile(r"/(?:dp|gp/product|gp/aw/d)/([A-Z0-9]{10})")
+# The anchor's own text, which is almost always the product name we chose to
+# print. Resolving the brand from a window of surrounding copy instead put
+# Manduka PRO under "Made In", because "made in" is a cookware brand and also an
+# ordinary English phrase that appears in the paragraph around the link.
+ANCHOR_RE = re.compile(
+    r"<a\b[^>]*?/(?:dp|gp/product|gp/aw/d)/([A-Z0-9]{10})[^>]*?>(.*?)</a>",
+    re.I | re.S)
 ASIN_FIELD_RE = re.compile(r'asin:\s*"([A-Z0-9]{10})"')
 STORE_ROW_RE = re.compile(r'name:\s*"([^"]+)"[^}]*?asin:\s*"([A-Z0-9]{10})"')
 TAG_RE = re.compile(r"<[^>]+>")
@@ -59,6 +66,7 @@ def main():
     brand_names = load_brands()
     found = {}          # asin -> {name, brand, brandId, source}
     contexts = collections.defaultdict(list)
+    anchors = {}        # asin -> the link text we printed for it
 
     # 1. The store catalog: exact name and ASIN on the same record.
     store = ROOT / "data" / "store-products.js"
@@ -68,6 +76,19 @@ def main():
             brand, bid = resolve_brand(name, brand_names)
             found[asin] = {"name": name, "brand": brand, "brandId": bid, "source": "store"}
 
+    # 1b. Every ASIN already filed against a product row. These are the most
+    # certain attributions we hold, because a person wrote the row against that
+    # product, and exact-ASIN matching then works even where brand detection
+    # from the title cannot: "A+D" collapses to two characters and is below the
+    # matcher's minimum, and "Amazon Brand - Mama Bear" leads with words that
+    # name no brand at all.
+    for b in json.loads((ROOT / "brand-data.json").read_text()):
+        for p in (b.get("products") or []):
+            for asin in (p.get("asins") or []):
+                found[asin] = {"name": p.get("name") or b["brand"],
+                               "brand": b["brand"], "brandId": b.get("id"),
+                               "source": "product"}
+
     # 2. Every affiliate link on the site, brand resolved from surrounding copy.
     html_files = list(ROOT.glob("*.html")) + list((ROOT / "articles").glob("*.html"))
     for path in html_files:
@@ -75,6 +96,13 @@ def main():
             raw = path.read_text(errors="ignore")
         except OSError:
             continue
+        # The link's own anchor text first. It names the product, so the guard
+        # below can actually check it, which it never could for link rows while
+        # every one of them carried an empty name.
+        for m in ANCHOR_RE.finditer(raw):
+            label = re.sub(r"\s+", " ", TAG_RE.sub(" ", m.group(2))).strip()
+            if 3 <= len(label) <= 90:
+                anchors.setdefault(m.group(1), label)
         for m in ASIN_RE.finditer(raw):
             asin = m.group(1)
             window = TAG_RE.sub(" ", raw[max(0, m.start() - 700): m.end() + 400])
@@ -100,19 +128,30 @@ def main():
             if brand:
                 break
         entry = found.get(asin, {})
-        entry.setdefault("name", "")
+        # Prefer the anchor text over a guess from the paragraph around it.
+        label = anchors.get(asin, "")
+        if label:
+            named, named_id = resolve_brand(label, brand_names)
+            if named:
+                brand, bid = named, named_id
+        entry.setdefault("name", label)
         entry["brand"] = entry.get("brand") or brand
         entry["brandId"] = entry.get("brandId") or bid
         entry.setdefault("source", "link")
         entry["pages"] = sorted({p for _, p in ctxs})
         found[asin] = entry
 
-    # Last guard: when we have a product name, the brand must appear in it.
-    # Anything else is a guess from context dressed up as a fact.
+    # Last guard: the brand must appear in the product name. A link row with no
+    # anchor text to check against is a guess from surrounding copy, and in a
+    # comparison article the surrounding copy names what we recommend rather than
+    # what we are criticising. 87 of 146 verified rows were wrong that way, so an
+    # unverifiable row now resolves to no brand rather than to a plausible one.
     dropped = 0
     for asin, e in list(found.items()):
         name, brand = e.get("name"), e.get("brand")
-        if name and brand and collapse_name(brand) not in collapse_name(name):
+        if not brand or e.get("source") == "product":
+            continue
+        if not name or collapse_name(brand) not in collapse_name(name):
             e["brand"] = e["brandId"] = None
             dropped += 1
     if dropped:

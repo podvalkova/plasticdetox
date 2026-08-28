@@ -49,7 +49,6 @@ def main():
     args = ap.parse_args()
 
     run("backfill-fronts.py", "--write")
-    run("harvest-asins.py")
     run("link-articles.py", "--write")
     run("mark-scope.py", "--write")
     run("store-to-products.py", "--write")
@@ -61,8 +60,14 @@ def main():
     # Brand Check shows. Order matters: the rollup reads product verdicts, and
     # apply-product-rules is what collapses duplicate rows.
     run("name-to-match.py", "--write")
+    # The five bestsellers in each category we have a guide for.
+    run("add-category-top5.py", "--write")
     run("apply-product-rules.py", "--write")
     run("brand-rollup.py", "--write")
+    # Last, so it sees every product row the steps above created. Run earlier it
+    # harvested the file as it stood before the rows existed, and the ASINs on
+    # them never reached the map.
+    run("harvest-asins.py")
     # Never ship a card whose "Better:" line points at something we flag.
     run("audit-alternatives.py", "--strict")
 

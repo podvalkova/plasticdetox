@@ -161,6 +161,13 @@
     };
 
     for (const p of rows) {
+      // An exclusion list. Our editorial names describe a class of models
+      // ("Brita standard pitcher filter") while a listing names one SKU
+      // ("Brita Small 6-Cup Water Filter Pitcher"), so the only way to say
+      // "Brita pitchers, but not the Elite or Longlast" is to name what must
+      // NOT appear. Without this the row either misses every listing or claims
+      // the certified filters along with the uncertified ones.
+      if ((p.matchNot || []).some(hasWord)) continue;
       // `match` is an adjacent phrase: "colgate total" names one line.
       for (const phrase of (p.match || [])) {
         const needle = norm(phrase);

@@ -489,11 +489,49 @@
     "article": "best-non-toxic-diaper-rash-creams.html",
     "generalises": true,
     "rollup": {
-      "products": 0,
-      "researched": 0,
-      "flagged": 0,
-      "worst": null
-    }
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "careful"
+    },
+    "products": [
+      {
+        "name": "Original diaper rash ointment",
+        "matchAll": [
+          [
+            "a d",
+            "original",
+            "ointment"
+          ],
+          [
+            "a d",
+            "diaper",
+            "rash"
+          ]
+        ],
+        "asins": [
+          "B01D2NTLZG"
+        ],
+        "verdict": "careful",
+        "note": "A petrolatum and lanolin ointment rather than a zinc paste, so it sidesteps the lead that arrives with zinc oxide. The trade offs are lanolin, a wool derived allergen for some children, and petrolatum whose degree of refinement is neither required nor disclosed in US cosmetics.",
+        "origin": "hand",
+        "source": "best-non-toxic-diaper-rash-creams.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "caution",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ]
   },
   {
     "id": "aden-anais",
@@ -1102,7 +1140,7 @@
   {
     "id": "amazonbasics",
     "brand": "AmazonBasics",
-    "category": "Bakeware",
+    "category": "Multi-category",
     "stance": "skip",
     "reason": "Named among nonstick bakeware brands to avoid because of PTFE coatings.",
     "evidence": "Nonstick PTFE coating",
@@ -1134,13 +1172,83 @@
     },
     "reviewed": true,
     "article": "toxic-kitchen-appliances-ranked.html",
-    "generalises": true,
+    "generalises": false,
     "rollup": {
-      "products": 0,
-      "researched": 0,
-      "flagged": 0,
-      "worst": null
-    }
+      "products": 2,
+      "researched": 2,
+      "flagged": 2,
+      "worst": "skip"
+    },
+    "scopeNote": "Our verdict varies across this brand's range.",
+    "products": [
+      {
+        "name": "Amazon Basics upright bagless vacuum",
+        "matchAll": [
+          [
+            "amazon",
+            "basics",
+            "vacuum"
+          ],
+          [
+            "amazon",
+            "basics",
+            "upright"
+          ]
+        ],
+        "asins": [
+          "B0BN5F6MJY"
+        ],
+        "verdict": "careful",
+        "note": "Bagless with a washable filter rather than a sealed True HEPA system. For settled microplastic fibre the finest fraction is the point, and an unsealed vacuum recirculates it back into the room.",
+        "origin": "hand",
+        "source": "toxic-kitchen-appliances-ranked.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "caution",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      },
+      {
+        "name": "Amazon Basics Prenatal & DHA gummy",
+        "matchAll": [
+          [
+            "amazon",
+            "basics",
+            "prenatal"
+          ]
+        ],
+        "asins": [
+          "B08P7QMWTW"
+        ],
+        "verdict": "skip",
+        "note": "A gummy, which with softgels is the worst form in our ranking for plastic exposure, and there is no published heavy metal testing on it to offset the format. Switching a gummy prenatal to a hard shell capsule is the single best move in this category.",
+        "origin": "hand",
+        "source": "toxic-kitchen-appliances-ranked.html",
+        "ext": {
+          "verdict": "skip",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "fail",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ]
   },
   {
     "id": "ambika-boutique",
@@ -1739,7 +1847,7 @@
     },
     "reviewed": true,
     "article": "best-non-toxic-diaper-rash-creams.html",
-    "generalises": true,
+    "generalises": false,
     "products": [
       {
         "name": "Baby Healing Ointment",
@@ -1764,14 +1872,47 @@
           "disclose": false,
           "rules": []
         }
+      },
+      {
+        "name": "Baby diaper rash paste with zinc oxide",
+        "matchAll": [
+          [
+            "aquaphor",
+            "diaper",
+            "rash"
+          ]
+        ],
+        "asins": [
+          "B082QBB8KQ",
+          "B00Q2MYU9W"
+        ],
+        "verdict": "skip",
+        "note": "Aquaphor's zinc paste was among those returning lead in the 2025 to 2026 diaper cream series, alongside cadmium in most samples. The base also carries lanolin, a wool derived allergen for some children, on already broken skin. Independent testing published by Lead Safe Mama, 2025 to 2026. The brands dispute these results.",
+        "origin": "hand",
+        "source": "best-non-toxic-diaper-rash-creams.html",
+        "ext": {
+          "verdict": "skip",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "caution",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "fail"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
       }
     ],
     "rollup": {
-      "products": 1,
-      "researched": 1,
-      "flagged": 1,
-      "worst": "careful"
-    }
+      "products": 2,
+      "researched": 2,
+      "flagged": 2,
+      "worst": "skip"
+    },
+    "scopeNote": "Our verdict varies across this brand's range."
   },
   {
     "id": "aquasana",
@@ -5651,6 +5792,83 @@
     }
   },
   {
+    "id": "bissell",
+    "brand": "Bissell",
+    "category": "Vacuum",
+    "stance": "careful",
+    "reason": "The CleanView uprights are bagless with a washable filter rather than a sealed True HEPA system, so the finest dust, which is where settled microplastic fibre concentrates, can pass back through the exhaust. Fine for crumbs, not the tool for reducing airborne fibre.",
+    "evidence": "No sealed HEPA system on the CleanView line",
+    "alternative": "Shark Navigator Lift-Away for budget True HEPA, or Miele Classic C1 for a sealed bagged system",
+    "sources": [
+      "bedroom-air-101.html"
+    ],
+    "article": "bedroom-air-101.html",
+    "reviewed": true,
+    "generalises": true,
+    "products": [
+      {
+        "name": "CleanView uprights",
+        "matchAll": [
+          [
+            "bissell",
+            "cleanview"
+          ]
+        ],
+        "asins": [
+          "B09V5NPHP3",
+          "B07F6N3RT6",
+          "B0B1RVNNN7"
+        ],
+        "verdict": "careful",
+        "note": "Bagless with a washable filter rather than a sealed True HEPA system, so the finest dust, which is where settled microplastic fibre concentrates, can pass back through the exhaust into the room you just cleaned.",
+        "origin": "hand",
+        "source": "bedroom-air-101.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "caution",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "packaging": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "rollup": {
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "careful"
+    }
+  },
+  {
     "id": "black-decker",
     "brand": "Black+Decker",
     "category": "Appliances",
@@ -6969,11 +7187,44 @@
     "article": "best-non-toxic-diaper-rash-creams.html",
     "generalises": true,
     "rollup": {
-      "products": 0,
-      "researched": 0,
-      "flagged": 0,
-      "worst": null
-    }
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "skip"
+    },
+    "products": [
+      {
+        "name": "Butt Paste, including the Natural line",
+        "matchAll": [
+          [
+            "boudreaux",
+            "butt",
+            "paste"
+          ]
+        ],
+        "asins": [
+          "B00569GU18"
+        ],
+        "verdict": "skip",
+        "note": "Contains Balsam of Peru, one of the top five pediatric contact allergens, in a product designed for already irritated skin. The Natural line carries it too. Zinc oxide creams as a category returned lead in independent 2025 to 2026 testing.",
+        "origin": "hand",
+        "source": "best-non-toxic-diaper-rash-creams.html",
+        "ext": {
+          "verdict": "skip",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "fail",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ]
   },
   {
     "id": "bragg",
@@ -7226,6 +7477,54 @@
           ]
         ],
         "matchFrom": "name"
+      },
+      {
+        "name": "Pitchers and dispensers on the standard filter",
+        "matchAll": [
+          [
+            "brita",
+            "pitcher"
+          ],
+          [
+            "brita",
+            "dispenser"
+          ],
+          [
+            "brita",
+            "cup"
+          ]
+        ],
+        "asins": [
+          "B09W4PLVQP",
+          "B0DG62Y3DM",
+          "B09WBL9HCS",
+          "B01FXN3E74",
+          "B0DG63TFC3",
+          "B0DG63C2M5",
+          "B0B3GK9RW6"
+        ],
+        "verdict": "skip",
+        "note": "No Brita filter, on any line, carries NSF/ANSI 401 certification for microplastics or the emerging contaminants people buy a pitcher to remove. On top of that the standard filter is not certified under NSF/ANSI 53 for lead either, which only the Elite and Longlast filters are.",
+        "origin": "hand",
+        "source": "how-to-filter-pfas-and-microplastics-from-water.html",
+        "ext": {
+          "verdict": "skip",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "fail"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        },
+        "matchNot": [
+          "elite",
+          "longlast"
+        ]
       }
     ],
     "fronts": {
@@ -7255,9 +7554,9 @@
     "generalises": false,
     "scopeNote": "Our verdict varies across this brand's range.",
     "rollup": {
-      "products": 2,
-      "researched": 2,
-      "flagged": 2,
+      "products": 3,
+      "researched": 3,
+      "flagged": 3,
       "worst": "skip"
     }
   },
@@ -9262,6 +9561,93 @@
     }
   },
   {
+    "id": "chefman",
+    "brand": "Chefman",
+    "category": "Appliances",
+    "stance": "skip",
+    "reason": "The TurboFry and compact fryers cook on a coated basket and crisper plate. A nonstick air fryer coating is PFAS, it is blasted with hot air, and it degrades in one to three years of normal use.",
+    "evidence": "Coated basket in the food path",
+    "alternative": "Fritaire glass air fryer, or the Magnifique glass combo",
+    "sources": [
+      "best-non-toxic-air-fryers.html"
+    ],
+    "article": "best-non-toxic-air-fryers.html",
+    "reviewed": true,
+    "generalises": true,
+    "products": [
+      {
+        "name": "TurboFry and compact air fryers",
+        "matchAll": [
+          [
+            "chefman",
+            "air",
+            "fryer"
+          ],
+          [
+            "chefman",
+            "turbofry"
+          ],
+          [
+            "chefman",
+            "airfryer"
+          ]
+        ],
+        "asins": [
+          "B0CNY1F31S",
+          "B0DC11YH4J",
+          "B08DKYBTPH",
+          "B08DL8WH9V"
+        ],
+        "verdict": "skip",
+        "note": "Coated basket and crisper plate in the food path. A nonstick air fryer coating is PFAS, and hot air over a worn coating is the exposure route the category is worst for.",
+        "origin": "hand",
+        "source": "best-non-toxic-air-fryers.html",
+        "ext": {
+          "verdict": "skip",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "fail",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "fail",
+        "note": "A nonstick air fryer coating is PFAS, it is blasted with hot air",
+        "origin": "extracted"
+      },
+      "packaging": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "rollup": {
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "skip"
+    }
+  },
+  {
     "id": "chicco",
     "brand": "Chicco",
     "category": "Car seats",
@@ -10713,7 +11099,7 @@
     "id": "cosori",
     "brand": "Cosori",
     "category": "Appliances",
-    "stance": "good",
+    "stance": "careful",
     "reason": "This rating is for the Cosori glass kettle only. Its borosilicate glass body with a stainless inner lid, spout, and filter keeps the water and steam path plastic free. Their air fryers are a different story: they use PTFE or ceramic nonstick baskets, and about 2 million first generation Cosori air fryers were recalled in 2023 for a fire hazard. Buy the kettle, skip the air fryers.",
     "evidence": "Glass body with a stainless inner lid, spout, and filter; no plastic in the water or steam path. Air fryers are nonstick coated and had a 2023 recall.",
     "alternative": "",
@@ -10724,7 +11110,7 @@
     "buy": "https://www.amazon.com/dp/B08PP48979?tag=plasticdetox-20",
     "fronts": {
       "formula": {
-        "status": "caution",
+        "status": "fail",
         "note": "Their air fryers are a different story: they use PTFE or ceramic nonstick baskets",
         "origin": "extracted"
       },
@@ -10734,7 +11120,7 @@
         "origin": "extracted"
       },
       "legal": {
-        "status": "caution",
+        "status": "fail",
         "note": "about 2 million first generation Cosori air fryers were recalled in 2023 for a fire hazard",
         "origin": "extracted"
       },
@@ -10746,7 +11132,7 @@
     },
     "reviewed": true,
     "article": "toxic-kitchen-appliances-ranked.html",
-    "generalises": true,
+    "generalises": false,
     "products": [
       {
         "name": "Cosori Glass Electric Kettle",
@@ -10795,14 +11181,56 @@
           "disclose": false,
           "rules": []
         }
+      },
+      {
+        "name": "TurboBlaze and Iconic air fryers",
+        "matchAll": [
+          [
+            "cosori",
+            "air",
+            "fryer"
+          ],
+          [
+            "cosori",
+            "turboblaze"
+          ],
+          [
+            "cosori",
+            "iconic"
+          ]
+        ],
+        "asins": [
+          "B0C33CHG99"
+        ],
+        "verdict": "careful",
+        "note": "Better than a Teflon basket, but the PFAS free claim on the ceramic coating is the manufacturer's own, with no third party verification, and the coating still wears out in one to three years. PFOA free, PTFE free and FDA approved do not mean PFAS free.",
+        "origin": "hand",
+        "source": "toxic-kitchen-appliances-ranked.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "caution",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
       }
     ],
     "rollup": {
-      "products": 2,
-      "researched": 2,
-      "flagged": 0,
-      "worst": null
-    }
+      "products": 3,
+      "researched": 3,
+      "flagged": 1,
+      "worst": "careful"
+    },
+    "scopeNote": "Our verdict varies across this brand's range.",
+    "rollupApplied": true,
+    "rollupNote": "1 of 3 products we have reviewed under this brand are flagged: TurboBlaze and Iconic air fryers. The verdict depends which one you pick."
   },
   {
     "id": "coterie",
@@ -12617,13 +13045,11 @@
     },
     "reviewed": true,
     "article": "best-non-toxic-diaper-rash-creams.html",
-    "generalises": true,
+    "generalises": false,
     "products": [
       {
         "name": "Diaper Rash Cream",
-        "asins": [
-          "B000GCL2B8"
-        ],
+        "asins": [],
         "verdict": "skip",
         "note": "The current drug label lists talc and undisclosed fragrance among the inactives, on top of a petrolatum carrier, and 2025 independent testing reported about 3,300 ppb lead in it. Talc is the ingredient at the center of the J&J baby powder litigation. Zinc creams exist without talc, fragrance, or petrolatum, and every zinc cream carries some lead because zinc ore does, so use zinc for active rash o",
         "origin": "article",
@@ -12637,7 +13063,100 @@
             "legal": "fail",
             "testing": "unassessed"
           },
-          "scope": "sku",
+          "scope": "brand",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        },
+        "matchAll": [
+          [
+            "desitin",
+            "diaper",
+            "rash",
+            "cream"
+          ]
+        ],
+        "matchFrom": "name"
+      },
+      {
+        "name": "Maximum Strength diaper rash paste",
+        "matchAll": [
+          [
+            "desitin",
+            "maximum",
+            "strength"
+          ]
+        ],
+        "asins": [
+          "B00ZQXT4EY"
+        ],
+        "verdict": "skip",
+        "note": "About 3,300 ppb lead in the 40 percent zinc paste. The lead arrives with the zinc: zinc ore naturally contains lead and pharmaceutical grade zinc oxide may legally carry roughly 10,000 ppb. Independent testing published by Lead Safe Mama, 2025 to 2026. The brands dispute these results.",
+        "origin": "hand",
+        "source": "best-non-toxic-diaper-rash-creams.html",
+        "ext": {
+          "verdict": "skip",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "caution",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "fail"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      },
+      {
+        "name": "Daily Defense diaper rash cream",
+        "matchAll": [
+          [
+            "desitin",
+            "daily",
+            "defense"
+          ]
+        ],
+        "asins": [
+          "B00M0N9J20"
+        ],
+        "verdict": "careful",
+        "note": "The lighter zinc formula from the same range. The Maximum Strength version measured about 3,300 ppb lead, and the current drug label lists talc and undisclosed fragrance among the inactives. Independent testing published by Lead Safe Mama, 2025 to 2026. The brands dispute these results.",
+        "origin": "hand",
+        "source": "best-non-toxic-diaper-rash-creams.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "caution",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      },
+      {
+        "name": "Diaper Rash Cream",
+        "asins": [],
+        "verdict": "skip",
+        "note": "The current drug label lists talc and undisclosed fragrance among the inactives, on top of a petrolatum carrier, and 2025 independent testing reported about 3,300 ppb lead in it. Talc is the ingredient at the center of the J&J baby powder litigation. Zinc creams exist without talc, fragrance, or petrolatum, and every zinc cream carries some lead because zinc ore does, so use zinc for active rash o",
+        "origin": "article",
+        "source": "top-100-baby-kids-products-amazon.html",
+        "ext": {
+          "verdict": "skip",
+          "why": "adverse finding stands",
+          "fronts": {
+            "formula": "caution",
+            "packaging": "unassessed",
+            "legal": "fail",
+            "testing": "unassessed"
+          },
+          "scope": "none",
           "basis": "direct",
           "disclose": false,
           "rules": []
@@ -12645,11 +13164,12 @@
       }
     ],
     "rollup": {
-      "products": 1,
-      "researched": 1,
-      "flagged": 1,
+      "products": 4,
+      "researched": 4,
+      "flagged": 4,
       "worst": "skip"
-    }
+    },
+    "scopeNote": "Our verdict varies across this brand's range."
   },
   {
     "id": "diamond-crystal",
@@ -16462,6 +16982,82 @@
     }
   },
   {
+    "id": "eureka",
+    "brand": "Eureka",
+    "category": "Vacuum",
+    "stance": "careful",
+    "reason": "The Airspeed lightweight uprights are bagless and not sealed HEPA, so the smallest particles are recirculated rather than captured. Our guidance is a True HEPA bagged or sealed vacuum for settled fibre.",
+    "evidence": "Not a sealed True HEPA system",
+    "alternative": "Shark Navigator Lift-Away, or Miele Classic C1",
+    "sources": [
+      "bedroom-air-101.html"
+    ],
+    "article": "bedroom-air-101.html",
+    "reviewed": true,
+    "generalises": true,
+    "products": [
+      {
+        "name": "Airspeed lightweight uprights",
+        "matchAll": [
+          [
+            "eureka",
+            "airspeed"
+          ]
+        ],
+        "asins": [
+          "B0923VNPNP",
+          "B083JBZXYS"
+        ],
+        "verdict": "careful",
+        "note": "Lightweight bagless uprights without a sealed HEPA system. For settled fibre our guidance is a True HEPA bagged or sealed vacuum, because anything less recirculates the smallest particles.",
+        "origin": "hand",
+        "source": "bedroom-air-101.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "caution",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "packaging": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "rollup": {
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "careful"
+    }
+  },
+  {
     "id": "evenflo",
     "brand": "Evenflo",
     "category": "Baby bottles",
@@ -16689,6 +17285,89 @@
       "researched": 0,
       "flagged": 0,
       "worst": null
+    }
+  },
+  {
+    "id": "extra-gum",
+    "brand": "Extra",
+    "category": "Chewing gum",
+    "stance": "skip",
+    "reason": "Synthetic gum base. The label word covers polyethylene, polyvinyl acetate and polyisobutylene, the polymer families used in bags, wood glue and inner tubes. A 2025 UCLA pilot study measured a single piece shedding up to 3,000 microplastic particles into saliva.",
+    "evidence": "Undisclosed synthetic gum base; up to 3,000 particles per piece (UCLA 2025)",
+    "alternative": "Simply Gum on a chicle base, or Milliways for sugar free",
+    "sources": [
+      "best-plastic-free-chewing-gum.html"
+    ],
+    "article": "best-plastic-free-chewing-gum.html",
+    "reviewed": true,
+    "generalises": true,
+    "products": [
+      {
+        "name": "Extra sugarfree gum",
+        "matchAll": [
+          [
+            "extra",
+            "gum"
+          ],
+          [
+            "extra",
+            "chewing",
+            "gum"
+          ]
+        ],
+        "asins": [
+          "B001NI0MQ0",
+          "B00N74QZBO",
+          "B002DQ2F9S",
+          "B001GM60J6"
+        ],
+        "verdict": "skip",
+        "note": "Synthetic gum base. The label term covers polyethylene, polyvinyl acetate and polyisobutylene, the same polymer families used in shopping bags, wood glue and inner tubes. A 2025 UCLA pilot study measured a single piece shedding up to 3,000 microplastic particles into saliva.",
+        "origin": "hand",
+        "source": "best-plastic-free-chewing-gum.html",
+        "ext": {
+          "verdict": "skip",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "fail",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "caution",
+        "note": "The label word covers polyethylene, polyvinyl acetate and polyisobutylene, the polymer families used in bags,…",
+        "origin": "extracted"
+      },
+      "packaging": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "rollup": {
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "skip"
     }
   },
   {
@@ -22511,13 +23190,143 @@
             "5.1 filed-suit-caps-at-caution"
           ]
         }
+      },
+      {
+        "name": "Little Snugglers diapers",
+        "matchAll": [
+          [
+            "huggies",
+            "little",
+            "snugglers"
+          ]
+        ],
+        "asins": [
+          "B07MB5PZBF",
+          "B07MYW85VT",
+          "B07M6FL57T"
+        ],
+        "verdict": "skip",
+        "note": "ANSES 2020 and Greenpeace testing flagged trace dioxins, furans, PCBs and glyphosate across the major disposables. Kimberly-Clark disputes the concentrations. The relevant fact is a recurring lab record on a product worn against skin around the clock for two to three years.",
+        "origin": "hand",
+        "source": "best-non-toxic-baby-wipes.html",
+        "ext": {
+          "verdict": "skip",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "fail"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      },
+      {
+        "name": "Snug & Dry diapers",
+        "matchAll": [
+          [
+            "huggies",
+            "snug",
+            "dry"
+          ]
+        ],
+        "asins": [
+          "B0DFNRLHVY"
+        ],
+        "verdict": "skip",
+        "note": "Same ANSES 2020 finding as the rest of the mainstream disposable category, on the cheaper of the two Huggies lines. Kimberly-Clark disputes the concentrations.",
+        "origin": "hand",
+        "source": "best-non-toxic-baby-wipes.html",
+        "ext": {
+          "verdict": "skip",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "fail"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      },
+      {
+        "name": "Natural Care Sensitive wipes",
+        "matchAll": [
+          [
+            "huggies",
+            "natural",
+            "care"
+          ]
+        ],
+        "asins": [
+          "B07SCL613T",
+          "B08QRT84WJ",
+          "B00LSCGZMQ",
+          "B0DJ3W24MV"
+        ],
+        "verdict": "careful",
+        "note": "Huggies describes its wipes as 70 percent or more plant based by weight, which is a precise way of saying up to about 30 percent plastic fibre. The cloth is the exposure, not the liquid, and it crosses a baby's skin roughly sixteen times a day.",
+        "origin": "hand",
+        "source": "best-non-toxic-baby-wipes.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "caution",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      },
+      {
+        "name": "Simply Clean wipes",
+        "matchAll": [
+          [
+            "huggies",
+            "simply",
+            "clean"
+          ]
+        ],
+        "asins": [
+          "B08QRKY3NJ",
+          "B0795VNC6Z"
+        ],
+        "verdict": "careful",
+        "note": "Same partly synthetic substrate as the Natural Care line, described by the manufacturer as 70 percent or more plant based by weight, which leaves up to about 30 percent plastic fibre.",
+        "origin": "hand",
+        "source": "best-non-toxic-baby-wipes.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "caution",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
       }
     ],
     "scopeNote": "Our verdict varies across this brand's range.",
     "rollup": {
-      "products": 2,
-      "researched": 2,
-      "flagged": 2,
+      "products": 6,
+      "researched": 6,
+      "flagged": 6,
       "worst": "skip"
     }
   },
@@ -22712,6 +23521,87 @@
       "researched": 0,
       "flagged": 0,
       "worst": null
+    }
+  },
+  {
+    "id": "ice-breakers",
+    "brand": "Ice Breakers",
+    "category": "Chewing gum",
+    "stance": "skip",
+    "reason": "Ice Cubes and the gum range use a synthetic base the label does not specify, alongside aspartame. Our label rule is that an unnamed gum base is a petroleum polymer until proven otherwise.",
+    "evidence": "Undisclosed synthetic gum base; aspartame",
+    "alternative": "Milliways for sugar free chicle",
+    "sources": [
+      "best-plastic-free-chewing-gum.html"
+    ],
+    "article": "best-plastic-free-chewing-gum.html",
+    "reviewed": true,
+    "generalises": true,
+    "products": [
+      {
+        "name": "Ice Cubes and Ice Breakers gum",
+        "matchAll": [
+          [
+            "ice",
+            "breakers",
+            "gum"
+          ],
+          [
+            "ice",
+            "breakers",
+            "cubes"
+          ]
+        ],
+        "asins": [
+          "B01J26RZVO"
+        ],
+        "verdict": "skip",
+        "note": "Synthetic gum base the label does not specify, alongside aspartame. Our label rule is that an unnamed gum base is a petroleum polymer until the maker names a plant source.",
+        "origin": "hand",
+        "source": "best-plastic-free-chewing-gum.html",
+        "ext": {
+          "verdict": "skip",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "fail",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "packaging": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "rollup": {
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "skip"
     }
   },
   {
@@ -28963,13 +29853,45 @@
           "disclose": true,
           "rules": []
         }
+      },
+      {
+        "name": "Mama Bear baby wipes",
+        "matchAll": [
+          [
+            "mama",
+            "bear",
+            "wipe"
+          ]
+        ],
+        "asins": [
+          "B07XMFVN95",
+          "B0G4W6H1F4"
+        ],
+        "verdict": "careful",
+        "note": "Amazon's own label wipes. Fragrance free, which is the right call, but the substrate is not disclosed as plant based and the category norm is a partly synthetic cloth. The wipe itself is the exposure, not the liquid.",
+        "origin": "hand",
+        "source": "best-non-toxic-diapers.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "caution",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
       }
     ],
     "rollup": {
-      "products": 1,
-      "researched": 0,
-      "flagged": 0,
-      "worst": null
+      "products": 2,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "careful"
     }
   },
   {
@@ -29893,11 +30815,42 @@
           "disclose": false,
           "rules": []
         }
+      },
+      {
+        "name": "Classic C1 canister",
+        "matchAll": [
+          [
+            "miele",
+            "classic",
+            "c1"
+          ]
+        ],
+        "asins": [
+          "B07P97CD5T"
+        ],
+        "verdict": "good",
+        "note": "A sealed bagged system, which is the gold standard for this job: the bag and the seal together mean the fine fraction leaves the room rather than passing back through the exhaust. Captures down to 0.3 microns.",
+        "origin": "hand",
+        "source": "microplastics-in-indoor-air.html",
+        "ext": {
+          "verdict": "good",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "pass",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "pass"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
       }
     ],
     "rollup": {
-      "products": 1,
-      "researched": 1,
+      "products": 2,
+      "researched": 2,
       "flagged": 0,
       "worst": null
     }
@@ -31838,6 +32791,83 @@
     }
   },
   {
+    "id": "nature-made",
+    "brand": "Nature Made",
+    "category": "Supplements",
+    "stance": "careful",
+    "reason": "The Prenatal + DHA softgel is the SKU named in a 2025 Pharmavite class action over phthalates and BPA, following PlasticList's December 2024 testing, and it returned positive for lead, cadmium and arsenic in February 2025 independent testing. A softgel shell is the worst format in our form ranking for plastic contact.",
+    "evidence": "Named in a 2025 class action over phthalates and BPA; positive for lead, cadmium and arsenic",
+    "alternative": "FullWell or Needed, both hard shell capsules",
+    "sources": [
+      "cleanest-prenatal-vitamins.html"
+    ],
+    "article": "cleanest-prenatal-vitamins.html",
+    "reviewed": true,
+    "generalises": true,
+    "products": [
+      {
+        "name": "Prenatal + DHA softgel",
+        "matchAll": [
+          [
+            "nature",
+            "made",
+            "prenatal"
+          ]
+        ],
+        "asins": [
+          "B07BXVFC32",
+          "B005DEK9KE"
+        ],
+        "verdict": "careful",
+        "note": "The SKU named in a 2025 Pharmavite class action over phthalates and BPA, following PlasticList's December 2024 testing, and positive for lead, cadmium and arsenic in February 2025 independent testing. Pharmavite disputes the claims. A softgel shell is also the worst format in our ranking for plastic contact.",
+        "origin": "hand",
+        "source": "cleanest-prenatal-vitamins.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "unassessed",
+            "legal": "caution",
+            "testing": "fail"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "caution",
+        "note": "The Prenatal + DHA softgel is the SKU named in a 2025 Pharmavite class action over phthalates and BPA,…",
+        "origin": "extracted"
+      },
+      "packaging": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "legal": {
+        "status": "fail",
+        "note": "The Prenatal + DHA softgel is the SKU named in a 2025 Pharmavite class action over phthalates and BPA,…",
+        "origin": "extracted"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "rollup": {
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "careful"
+    }
+  },
+  {
     "id": "naturepedic",
     "brand": "Naturepedic",
     "category": "Baby sleep",
@@ -32912,6 +33942,52 @@
           ]
         ],
         "matchFrom": "name"
+      },
+      {
+        "name": "Air Fryer Pro, Max and DualZone baskets",
+        "matchAll": [
+          [
+            "ninja",
+            "air",
+            "fryer"
+          ],
+          [
+            "ninja",
+            "foodi",
+            "air"
+          ],
+          [
+            "ninja",
+            "dualzone"
+          ]
+        ],
+        "asins": [
+          "B0CSZ7WBYW",
+          "B089TQWJKK",
+          "B0CS3V8M9H"
+        ],
+        "verdict": "skip",
+        "note": "The basket and crisper plate are coated, and an air fryer coating is PFAS blasted with hot air. Coatings degrade in one to three years of normal use, and a scratched one can shed particles and fumes straight into the food.",
+        "origin": "hand",
+        "source": "toxic-kitchen-appliances-ranked.html",
+        "ext": {
+          "verdict": "skip",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "fail",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        },
+        "matchNot": [
+          "crispi",
+          "glass"
+        ]
       }
     ],
     "fronts": {
@@ -32941,9 +34017,9 @@
     "generalises": false,
     "scopeNote": "Our verdict varies across this brand's range.",
     "rollup": {
-      "products": 3,
-      "researched": 3,
-      "flagged": 3,
+      "products": 4,
+      "researched": 4,
+      "flagged": 4,
       "worst": "skip"
     }
   },
@@ -33789,6 +34865,83 @@
     }
   },
   {
+    "id": "olly",
+    "brand": "OLLY",
+    "category": "Supplements",
+    "stance": "skip",
+    "reason": "Softgel and gummy formats, the worst forms in our ranking for plastic exposure, with minimal published heavy metal testing to offset it.",
+    "evidence": "Softgel and gummy formats; minimal public heavy metal testing",
+    "alternative": "FullWell or Needed, both hard shell capsules",
+    "sources": [
+      "cleanest-prenatal-vitamins.html"
+    ],
+    "article": "cleanest-prenatal-vitamins.html",
+    "reviewed": true,
+    "generalises": true,
+    "products": [
+      {
+        "name": "Prenatal gummies and softgels",
+        "matchAll": [
+          [
+            "olly",
+            "prenatal"
+          ]
+        ],
+        "asins": [
+          "B0CN7FZG3M",
+          "B014G3ZY5W",
+          "B08LQYMV9D"
+        ],
+        "verdict": "skip",
+        "note": "Softgel and gummy formats, the two worst forms in our ranking for plastic exposure, with minimal published heavy metal testing to offset the format. Switching a softgel or gummy prenatal to a hard shell capsule is the single best move in this category.",
+        "origin": "hand",
+        "source": "cleanest-prenatal-vitamins.html",
+        "ext": {
+          "verdict": "skip",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "fail",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "packaging": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "caution",
+        "note": "Softgel and gummy formats, the worst forms in our ranking for plastic exposure, with minimal published heavy…",
+        "origin": "extracted"
+      }
+    },
+    "rollup": {
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "skip"
+    }
+  },
+  {
     "id": "once-upon-a-farm",
     "brand": "Once Upon a Farm",
     "category": "Baby food",
@@ -33901,6 +35054,82 @@
       "researched": 1,
       "flagged": 1,
       "worst": "careful"
+    }
+  },
+  {
+    "id": "one-a-day",
+    "brand": "One A Day",
+    "category": "Supplements",
+    "stance": "skip",
+    "reason": "The Prenatal Advanced is a softgel, the phthalate plasticised format, and in Lead Safe Mama's 25 product prenatal comparison its lead was higher than 22 of the 25.",
+    "evidence": "Lead higher than 22 of 25 prenatals compared (Lead Safe Mama)",
+    "alternative": "FullWell or Needed, both hard shell capsules",
+    "sources": [
+      "cleanest-prenatal-vitamins.html"
+    ],
+    "article": "cleanest-prenatal-vitamins.html",
+    "reviewed": true,
+    "generalises": true,
+    "products": [
+      {
+        "name": "Prenatal Advanced softgel",
+        "matchAll": [
+          [
+            "one a day",
+            "prenatal"
+          ]
+        ],
+        "asins": [
+          "B084PHB9WZ",
+          "B00I97GQV8"
+        ],
+        "verdict": "skip",
+        "note": "A softgel, which is the phthalate plasticised format, and in a 25 product prenatal comparison its lead was higher than 22 of the 25. Independent testing published by Lead Safe Mama, 2025 to 2026. The brands dispute these results.",
+        "origin": "hand",
+        "source": "cleanest-prenatal-vitamins.html",
+        "ext": {
+          "verdict": "skip",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "caution",
+            "legal": "unassessed",
+            "testing": "fail"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "caution",
+        "note": "The Prenatal Advanced is a softgel, the phthalate plasticised format",
+        "origin": "extracted"
+      },
+      "packaging": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "rollup": {
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "skip"
     }
   },
   {
@@ -38288,6 +39517,81 @@
     }
   },
   {
+    "id": "pur-gum",
+    "brand": "PUR Gum",
+    "category": "Chewing gum",
+    "stance": "careful",
+    "reason": "Aspartame free and sweetened with xylitol, which is the better half of the label, but the base is listed only as gum base with no plant source named. Per our own label rule an unnamed base is synthetic until the maker says otherwise. Not the same company as PUR water filters.",
+    "evidence": "Xylitol sweetened, but the gum base is not named as chicle",
+    "alternative": "Simply Gum or Milliways, both on a named chicle base",
+    "sources": [
+      "best-plastic-free-chewing-gum.html"
+    ],
+    "article": "best-plastic-free-chewing-gum.html",
+    "reviewed": true,
+    "generalises": true,
+    "products": [
+      {
+        "name": "PUR xylitol gum",
+        "matchAll": [
+          [
+            "pur",
+            "gum"
+          ]
+        ],
+        "asins": [
+          "B00ARABK20"
+        ],
+        "verdict": "careful",
+        "note": "Aspartame free and sweetened with xylitol, which is the better half of the label. The base is listed only as gum base with no plant source named, and by our own label rule an unnamed base is synthetic until the maker says otherwise.",
+        "origin": "hand",
+        "source": "best-plastic-free-chewing-gum.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "caution",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "pass",
+        "note": "Aspartame free and sweetened with xylitol, which is the better half of the label",
+        "origin": "extracted"
+      },
+      "packaging": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "rollup": {
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "careful"
+    }
+  },
+  {
     "id": "purity-coffee",
     "brand": "Purity Coffee",
     "category": "Coffee beans",
@@ -39792,6 +41096,82 @@
       "researched": 0,
       "flagged": 0,
       "worst": null
+    }
+  },
+  {
+    "id": "ritual",
+    "brand": "Ritual",
+    "category": "Supplements",
+    "stance": "careful",
+    "reason": "Capsule form, which is the better half of the category, but the single day packet format carries the highest surface area to dose ratio of plastic contact of any prenatal we ranked. Convenience costs the most plastic contact per dose.",
+    "evidence": "Single day packets are the most plastic contact per dose in the category",
+    "alternative": "FullWell or Needed in a bottle rather than daily packets",
+    "sources": [
+      "cleanest-prenatal-vitamins.html"
+    ],
+    "article": "cleanest-prenatal-vitamins.html",
+    "reviewed": true,
+    "generalises": true,
+    "products": [
+      {
+        "name": "Essential Prenatal",
+        "matchAll": [
+          [
+            "ritual",
+            "prenatal"
+          ]
+        ],
+        "asins": [
+          "B09W363MVD",
+          "B0BFGZ8NS2"
+        ],
+        "verdict": "careful",
+        "note": "Capsule form, which is the better half of this category. The caution is the single day packet format, which carries the highest surface area to dose ratio of plastic contact of any prenatal we ranked. Buy the bottle rather than the daily packets.",
+        "origin": "hand",
+        "source": "cleanest-prenatal-vitamins.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "caution",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "packaging": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "rollup": {
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "careful"
     }
   },
   {
@@ -41668,11 +43048,44 @@
           "disclose": false,
           "rules": []
         }
+      },
+      {
+        "name": "Navigator Lift-Away uprights",
+        "matchAll": [
+          [
+            "shark",
+            "navigator",
+            "lift"
+          ]
+        ],
+        "asins": [
+          "B00JH98GR4",
+          "B005KMDV9A",
+          "B08TT4YHG1"
+        ],
+        "verdict": "good",
+        "note": "True HEPA filtration in an upright at the budget end of the category. Settled microplastic fibre is what a vacuum is for in this context, and a True HEPA unit traps down to 0.3 microns rather than recirculating the finest particles.",
+        "origin": "hand",
+        "source": "microplastics-in-indoor-air.html",
+        "ext": {
+          "verdict": "good",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "pass",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "pass"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
       }
     ],
     "rollup": {
-      "products": 1,
-      "researched": 1,
+      "products": 2,
+      "researched": 2,
       "flagged": 0,
       "worst": null
     }
@@ -46379,6 +47792,88 @@
     }
   },
   {
+    "id": "trident-gum",
+    "brand": "Trident",
+    "category": "Chewing gum",
+    "stance": "skip",
+    "reason": "Synthetic gum base with nothing named on the label, which per our own label rule means assume petroleum polymer. A 2025 UCLA pilot study measured up to 3,000 microplastic particles released from one piece.",
+    "evidence": "Undisclosed synthetic gum base; aspartame and sorbitol",
+    "alternative": "Milliways for sugar free chicle, or True Gum",
+    "sources": [
+      "best-plastic-free-chewing-gum.html"
+    ],
+    "article": "best-plastic-free-chewing-gum.html",
+    "reviewed": true,
+    "generalises": true,
+    "products": [
+      {
+        "name": "Trident sugar free gum",
+        "matchAll": [
+          [
+            "trident",
+            "gum"
+          ],
+          [
+            "trident",
+            "sugar",
+            "free"
+          ]
+        ],
+        "asins": [
+          "B0711V757H",
+          "B00IO29CI2",
+          "B071FC8VPH"
+        ],
+        "verdict": "skip",
+        "note": "Synthetic gum base with no polymer named on the label, which by our own label rule means assume petroleum plastic. The 2025 UCLA study put one piece at up to 3,000 microplastic particles released into saliva.",
+        "origin": "hand",
+        "source": "best-plastic-free-chewing-gum.html",
+        "ext": {
+          "verdict": "skip",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "fail",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "caution",
+        "note": "aspartame and sorbitol",
+        "origin": "extracted"
+      },
+      "packaging": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "rollup": {
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "skip"
+    }
+  },
+  {
     "id": "trioral",
     "brand": "TRIORAL",
     "category": "Electrolytes",
@@ -46514,11 +48009,44 @@
     "article": "best-non-toxic-diaper-rash-creams.html",
     "generalises": true,
     "rollup": {
-      "products": 0,
-      "researched": 0,
-      "flagged": 0,
-      "worst": null
-    }
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "skip"
+    },
+    "products": [
+      {
+        "name": "Triple Paste zinc oxide ointment",
+        "matchAll": [
+          [
+            "triple",
+            "paste"
+          ]
+        ],
+        "asins": [
+          "B000GCL2B8",
+          "B0B4PNGXFS"
+        ],
+        "verdict": "skip",
+        "note": "Over 4,000 ppb lead in the 40 percent zinc formula, the highest result the project has found in the diaper cream category. Most zinc pastes tested also carried cadmium. Independent testing published by Lead Safe Mama, 2025 to 2026. The brands dispute these results.",
+        "origin": "hand",
+        "source": "best-non-toxic-diaper-rash-creams.html",
+        "ext": {
+          "verdict": "skip",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "caution",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "fail"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ]
   },
   {
     "id": "tripulse",
@@ -48414,6 +49942,42 @@
           "disclose": false,
           "rules": []
         }
+      },
+      {
+        "name": "Pitcher filters",
+        "matchAll": [
+          [
+            "waterdrop",
+            "pitcher"
+          ]
+        ],
+        "asins": [
+          "B07C3P2RZP",
+          "B0CRDSZ9JG"
+        ],
+        "verdict": "careful",
+        "note": "NSF certified, but a pitcher carbon filter is a different class of product from the tankless reverse osmosis system we recommend. For microplastics and PFAS the certification that matters is NSF/ANSI 401 and 58, not 42.",
+        "origin": "hand",
+        "source": "how-to-filter-pfas-and-microplastics-from-water.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "caution"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        },
+        "matchNot": [
+          "g3p800",
+          "tankless",
+          "reverse osmosis"
+        ]
       }
     ],
     "fronts": {
@@ -48443,9 +50007,9 @@
     "generalises": false,
     "scopeNote": "Our verdict varies across this brand's range.",
     "rollup": {
-      "products": 3,
-      "researched": 3,
-      "flagged": 1,
+      "products": 4,
+      "researched": 4,
+      "flagged": 2,
       "worst": "careful"
     },
     "rollupApplied": true,
@@ -49620,6 +51184,91 @@
     }
   },
   {
+    "id": "wrigleys",
+    "brand": "Wrigley's",
+    "category": "Chewing gum",
+    "stance": "skip",
+    "reason": "Doublemint and the rest of the range run on a synthetic gum base. The 2025 UCLA study put a single piece at up to 3,000 microplastic particles into saliva, and a regular habit at roughly 30,000 a year.",
+    "evidence": "Undisclosed synthetic gum base",
+    "alternative": "Simply Gum on a chicle base",
+    "sources": [
+      "best-plastic-free-chewing-gum.html"
+    ],
+    "article": "best-plastic-free-chewing-gum.html",
+    "reviewed": true,
+    "generalises": false,
+    "products": [
+      {
+        "name": "Doublemint and the Wrigley's range",
+        "matchAll": [
+          [
+            "wrigley",
+            "gum"
+          ],
+          [
+            "wrigley",
+            "doublemint"
+          ],
+          [
+            "doublemint",
+            "chewing",
+            "gum"
+          ]
+        ],
+        "asins": [
+          "B004OZDJW8"
+        ],
+        "verdict": "skip",
+        "note": "Synthetic gum base. The 2025 UCLA pilot study measured up to 3,000 microplastic particles from a single piece, and a regular habit works out at roughly 30,000 particles a year.",
+        "origin": "hand",
+        "source": "best-plastic-free-chewing-gum.html",
+        "ext": {
+          "verdict": "skip",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "fail",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "packaging": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "scopeNote": "Our verdict covers part of this brand's range, not all of it.",
+    "rollup": {
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "skip"
+    }
+  },
+  {
     "id": "xtrema",
     "brand": "Xtrema",
     "category": "Cookware",
@@ -49966,7 +51615,7 @@
     "id": "zerowater",
     "brand": "ZeroWater",
     "category": "Water filtration",
-    "stance": "good",
+    "stance": "careful",
     "reason": "Five stage ion exchange that reduces total dissolved solids further than carbon alone and is certified for PFAS reduction, which puts it well above a standard granular carbon pitcher. It does not reach nanoplastics, it holds filtered water in plastic, and cartridges exhaust quickly in high TDS areas. A reasonable pitcher, not a replacement for reverse osmosis.",
     "evidence": "Certified to remove PFAS",
     "alternative": "",
@@ -50001,11 +51650,53 @@
     "article": "best-water-filters.html",
     "generalises": true,
     "rollup": {
-      "products": 0,
-      "researched": 0,
-      "flagged": 0,
-      "worst": null
-    }
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "careful"
+    },
+    "products": [
+      {
+        "name": "Pitchers and dispensers",
+        "matchAll": [
+          [
+            "zerowater",
+            "pitcher"
+          ],
+          [
+            "zerowater",
+            "dispenser"
+          ],
+          [
+            "zerowater",
+            "cup"
+          ]
+        ],
+        "asins": [
+          "B0BTFXPZK4"
+        ],
+        "verdict": "careful",
+        "note": "A real step above a standard granular carbon pitcher: the five stage ion exchange reduces total dissolved solids further than carbon does, and it is certified for PFAS reduction. It is certified for taste and PFAS, not for particles, so it is not the answer for microplastics.",
+        "origin": "hand",
+        "source": "best-water-filters.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "caution"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "rollupApplied": true,
+    "rollupNote": "1 of 1 products we have reviewed under this brand are flagged: Pitchers and dispensers. The verdict depends which one you pick."
   },
   {
     "id": "zojirushi",
