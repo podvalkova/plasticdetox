@@ -47,6 +47,9 @@ import sys
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "brand-data.json"
 STORE_FILES = ["store.html", "index.html", "data/store-products.js"]
+# The baby registry is a picks list too, and was never checked. 123 curated
+# recommendations that nothing verified against the standard.
+PICK_FILES = ["registry.html"]
 
 # Blocks where naming a product is a warning, not a pick.
 WARNING_BLOCK = re.compile(
@@ -123,6 +126,20 @@ def main():
             if a and a.group(1) in flagged:
                 brand, prod, v = flagged[a.group(1)]
                 hits[f"store: {fn}"].append((n.group(1) if n else "?", brand, v))
+
+    # 1b. the registry, which is a picks list in JSON rather than JS objects
+    for fn in PICK_FILES:
+        path = ROOT / fn
+        if not path.exists():
+            continue
+        src = path.read_text(errors="ignore")
+        for blob in re.findall(r'\{[^{}]*?"name"\s*:\s*"[^"]+"[^{}]*?\}', src):
+            a = re.search(r'"asin"\s*:\s*"([A-Z0-9]{10})"', blob) or \
+                re.search(r'/dp/([A-Z0-9]{10})', blob)
+            n = re.search(r'"name"\s*:\s*"([^"]+)"', blob)
+            if a and a.group(1) in flagged:
+                brand, prod, v = flagged[a.group(1)]
+                hits[f"picks: {fn}"].append((n.group(1) if n else "?", brand, v))
 
     # 2. articles, excluding warning blocks
     for path in sorted((ROOT / "articles").glob("*.html")) + [ROOT / "index.html"]:

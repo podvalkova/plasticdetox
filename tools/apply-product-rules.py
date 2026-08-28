@@ -145,6 +145,35 @@ def main():
             if v != p.get("verdict"):
                 diverge += 1
 
+    # A registry or store row infers "good" from the product being listed; it is
+    # a default, not a judgement. An article row states a researched verdict.
+    # Where both describe one product, the researched one wins. Sophie la Girafe
+    # carried a researched skip for documented mould in its sealed cavity and a
+    # registry default of good, and splitting the difference at careful invented
+    # a verdict neither source held.
+    DERIVED = {"registry", "store"}
+    overruled = 0
+    for b in brands:
+        by_name = {}
+        for p in (b.get("products") or []):
+            by_name.setdefault(p.get("name"), []).append(p)
+        for name, group in by_name.items():
+            if len(group) < 2:
+                continue
+            researched = [p for p in group if p.get("origin") not in DERIVED
+                          and (p.get("ext") or {}).get("verdict") in ("skip", "careful")]
+            defaults = [p for p in group if p.get("origin") in DERIVED
+                        and (p.get("ext") or {}).get("verdict") == "good"]
+            if researched and defaults:
+                for p in defaults:
+                    p["verdict"] = researched[0]["verdict"]
+                    p["ext"] = dict(researched[0]["ext"])
+                    overruled += 1
+                    print(f"  researched verdict overrules a {p.get('origin')} default: "
+                          f"{b['brand']} / {name}")
+    if overruled:
+        print(f"  {overruled} derived defaults overruled by a researched verdict")
+
     # An ASIN identifies exactly one product, so it cannot sit on two brands.
     # Article tables mis-attribute them: B07FVX9Z9H is Seventh Generation's
     # detergent and was also filed under All Free Clear as a careful, so one
