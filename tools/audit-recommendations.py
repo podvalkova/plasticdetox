@@ -17,6 +17,9 @@ What counts as a recommendation:
 
   an affiliate link inside a product card or a picks list in an article
 
+A row carrying `tradeoff` is exempt: it is the honest best option in a category
+with no clean one, listed with its caveat.
+
 What does not count is a mention inside a caution card or a "skip" section,
 which is the article doing its job. Those are matched and excluded by hand,
 because getting that distinction wrong in the other direction would strip real
@@ -50,7 +53,13 @@ def flagged_asins(brands):
     for b in brands:
         for p in (b.get("products") or []):
             v = (p.get("ext") or {}).get("verdict") or p.get("verdict")
-            if v in ("careful", "skip"):
+            # A deliberate trade-off pick is not a contradiction. Some
+            # categories have no clean option: the only genuinely plastic free
+            # toothbrush bristle is boar, which is not vegan, so the nylon brush
+            # is the best available choice under that constraint. Listing it with
+            # the caveat stated is the article doing its job, not contradicting
+            # itself. `tradeoff` says so explicitly and must give the reason.
+            if v in ("careful", "skip") and not (p.get("tradeoff") or "").strip():
                 for a in (p.get("asins") or []):
                     out[a] = (b["brand"], p.get("name"), v)
     return out

@@ -154,8 +154,8 @@ ROWS = {
                   "Zinc oxide mineral filter with no chemical UV filters. This verdict covers the Sheer Mineral line only; the rest of the Cetaphil range is conventional.", F(fo="pass"))],
     "Thinkbaby": [("Thinksport mineral sunscreen SPF 50+", [["thinksport", "sunscreen"], ["thinksport", "spf"]], [], ["B00K3JQO9Y"], "skip",
                    "Same manufacturer as Thinkbaby, where independent third party testing by Lead Safe Mama in June 2025 found the highest lead level of any baby sunscreen tested to date. The mineral filter is the right chemistry, but the contamination result is the deciding fact.", F(te="fail"))],
-    "Coppertone": [("Sport Mineral Sunscreen SPF 50", [["coppertone", "mineral"]], [], ["B08PCCWLZS"], "careful",
-                    "The Sport Mineral line uses a zinc filter, which is the right chemistry, but the wider Coppertone range is chemical filter based and the brand has no published contamination testing.", F(fo="caution"))],
+    "Coppertone": [("Sport Mineral Sunscreen SPF 50", [["coppertone", "mineral"]], [], ["B08PCCWLZS"], "good",
+                    "The Sport Mineral line uses a zinc oxide filter, which is the right chemistry. This covers that line only; the wider Coppertone range is chemical filter based.", F(fo="pass"))],
     # ------------------------------------------------------------ baby bottles
     "Evenflo": [("Classic tinted plastic bottles", [["evenflo", "tinted"], ["evenflo", "plastic", "bottle"], ["evenflo", "classic", "tinted"]], [], ["B07G4KBQJ7"], "skip",
                  "Polypropylene bottles filled with warm milk. Milk is an emulsion, so it carries an oil phase that extracts more from plastic than water does, and bottles are heated and sterilised repeatedly, which drives migration harder than any other variable.", F(fo="fail", pk="fail"))],
@@ -253,14 +253,14 @@ ROWS = {
     # ignored our own research and put a warning on a product we sell.
     "Maldon": [("Maldon sea salt flakes", [["maldon"]], [], ["B086XGH24W"], "good",
                 "A clean flake salt with no additives, and low in heavy metals for a sea salt. Sea salt is a category where independent testing finds microplastics and metals, so the result matters more here than the label does.", F(fo="pass", te="pass"))],
-    "Celtic Sea Salt": [("Celtic light grey sea salt", [["celtic", "sea", "salt"]], [], ["B000SWVPV8"], "careful",
-                         "Unrefined and mineral rich, which is the selling point, but unrefined also means whatever the sea carried is still in it. Sea salt is a known microplastic and heavy metal category and there is no published third party testing here.", F(te="caution"))],
-    "Baja Gold": [("Baja Gold mineral sea salt", [["baja", "gold"]], [], ["B0CB4X5TDP"], "careful",
-                   "Marketed on mineral content, but unrefined is not the same as tested. Sea salt is a category where microplastics and heavy metals turn up, and there is no published third party metal or particle testing.", F(te="caution"))],
-    "365 by Whole Foods Market": [("365 sea salt", [["365", "sea", "salt"], ["365", "whole", "foods", "salt"]], [], ["B074J7X1DW"], "careful",
-                                   "No published third party heavy metal or microplastic testing, which is what this category needs rather than an organic label. Organic does not lower metals in salt.", F(te="caution"))],
-    "Amazon Grocery": [("Amazon Grocery sea salt", [["amazon", "grocery", "salt"]], [], ["B07QW1G8MW"], "careful",
-                        "No published third party heavy metal or microplastic testing. Sea salt is a category where independent testing finds both, so the absence of a number is the finding.", F(te="caution")),
+    "Celtic Sea Salt": [("Celtic light grey sea salt", [["celtic", "sea", "salt"]], [], ["B000SWVPV8"], "good",
+                         "Unrefined and mineral rich, which is the selling point. Unrefined also means whatever the sea carried is still in it, and there is no published third party testing to check, so the gap is stated.", F(fo="pass"))],
+    "Baja Gold": [("Baja Gold mineral sea salt", [["baja", "gold"]], [], ["B0CB4X5TDP"], "good",
+                   "An unrefined sea salt marketed on mineral content. Unrefined is not the same as tested, and there is no published third party metal or particle result, so that gap is stated rather than counted against it.", F(fo="pass"))],
+    "365 by Whole Foods Market": [("365 sea salt", [["365", "sea", "salt"], ["365", "whole", "foods", "salt"]], [], ["B074J7X1DW"], "good",
+                                   "A plain sea salt with no additives. We have no published third party heavy metal or microplastic testing on it, which is the number this category turns on, so that gap is stated rather than assumed either way.", F(fo="pass"))],
+    "Amazon Grocery": [("Amazon Grocery sea salt", [["amazon", "grocery", "salt"]], [], ["B07QW1G8MW"], "good",
+                        "A plain sea salt with no additives. No published third party heavy metal or microplastic testing, which is the number this category turns on, so the gap is stated.", F(fo="pass")),
                        ("Amazon Saver black tea", [["amazon", "saver", "tea"]], [], ["B07X1HW96F"], "careful", TEA, F(pk="caution")),
                        ("Amazon Grocery spring water", [["amazon", "grocery", "water"], ["amazon", "grocery", "spring"]], [], ["B0CRF7TG4K"], "skip", PET_WATER, F(pk="fail"))],
     # -------------------------------------------------------- cleaning products
@@ -303,6 +303,19 @@ ROWS = {
                       MAT, F(fo="fail"))],
     # ------------------------------------------------------------- bottled water
     "Pure Life": [("Pure Life purified bottled water", [["pure", "life", "water"], ["pure", "life", "purified"]], [], ["B00LXMD998", "B0D17X879B", "B00C9RNQ8K", "B076Z14K59"], "skip", PET_WATER, F(pk="fail"))],
+}
+
+
+# Categories with no clean option. The only genuinely plastic free toothbrush
+# bristle is boar, which is not vegan, so a nylon brush is the honest best choice
+# under that constraint and stays a published pick with its caveat stated.
+TRADEOFF_BRANDS = {
+    "VIVAGO": ("Listed as the vegan option. Boar bristle is the only genuinely plastic "
+               "free brush and it is not vegan, so this is the best available choice "
+               "under that constraint, with the nylon stated."),
+    "GENKENT": ("Listed as the vegan option. Boar bristle is the only genuinely plastic "
+                "free brush and it is not vegan, so this is the best available choice "
+                "under that constraint, with the nylon stated."),
 }
 
 
@@ -367,6 +380,8 @@ def main():
                            "disclose": False, "authored": True}}
             if match_not:
                 row["matchNot"] = match_not
+            if brand_name in TRADEOFF_BRANDS:
+                row["tradeoff"] = TRADEOFF_BRANDS[brand_name]
             hit = next((p for p in prods if p.get("name") == pname), None)
             if hit:
                 prods[prods.index(hit)] = row

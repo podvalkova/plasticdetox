@@ -319,6 +319,38 @@ qualify where an independent measurement of the product does not.
 
 Without the limit it carries nothing, per 4.3.
 
+## 5.6 An absent test is a gap, not a finding
+
+A product with no published third party result has not failed anything. We do not
+know, and the honest rendering of that is `unassessed` on the testing front with
+the gap stated in the copy, not a caution on the product.
+
+> Missing evidence is disclosed. It is never counted against a product that is
+> otherwise sound.
+
+Six products were rated careful purely for want of a lab result. Two of them,
+Maldon and Charlie's Soap, had evidence in our own store records that the caution
+had ignored. Downgrading on absence also makes the flag meaningless: almost
+nothing in these categories is independently tested, so the caution stops
+distinguishing anything.
+
+The reverse still holds, from 4.3: a clean result cannot be *cited* without its
+limit of detection. Not citable and not a failing are different states.
+
+## 5.7 A trade-off pick may stay
+
+Some categories have no clean option. The only genuinely plastic free toothbrush
+bristle is boar, which is not vegan, so a nylon brush is the best available
+choice for anyone who needs one and is honestly labelled as such.
+
+> A `careful` product may remain a published pick when it is the best available
+> option under a stated constraint, and the caveat is stated with it.
+
+This is not a loophole for a product that simply fails. It requires the
+constraint to be real, the product to be the best under it, and the caveat to be
+visible at the point of recommendation. In the data it is the `tradeoff` field,
+which must carry the reason.
+
 ## 6. Turning four fronts into one verdict
 
 ```
