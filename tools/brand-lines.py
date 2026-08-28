@@ -76,13 +76,18 @@ def main():
             continue
 
         brand_l = b["brand"].lower()
-        # Skip a category word the brand name already ends with, or we generate
-        # "black girl sunscreen sunscreen", which matches nothing.
-        match = [brand_l if brand_l.endswith(w) else f"{brand_l} {w}" for w in words]
-        match = list(dict.fromkeys(match))
+        # Every brand word plus one category word, all of which must appear but
+        # need not be adjacent. Real titles read "Pampers Swaddlers Diapers", so
+        # an adjacent "pampers diaper" phrase misses almost everything.
+        brand_words = [w for w in re.split(r"[^a-z0-9]+", brand_l) if w]
+        match_all = []
+        for w in words:
+            group = brand_words + [x for x in w.split() if x not in brand_words]
+            if group not in match_all:
+                match_all.append(group)
         rows.append({
-            "name": b.get("category", "Products"),
-            "match": match,
+            "name": "Whole range",
+            "matchAll": match_all,
             "verdict": b.get("stance"),
             "note": (b.get("reason") or "")[:400],
             "origin": "brand-line",
@@ -90,7 +95,7 @@ def main():
         added += 1
         by_cat[b.get("category")] += 1
         if len(examples) < 12:
-            examples.append((b["brand"], b.get("stance"), match[0]))
+            examples.append((b["brand"], b.get("stance"), " + ".join(match_all[0])))
 
     print(f"added {added} product lines from whole-line brand verdicts")
     print(f"  skipped, verdict varies across the range: {skipped_varies}")
@@ -98,7 +103,7 @@ def main():
     print("\nby category:", dict(by_cat))
     print("\nexamples:")
     for name, stance, m in examples:
-        print(f"   {name:<22} {stance:<8} matches {m!r}")
+        print(f"   {name:<22} {stance:<8} needs all of: {m}")
 
     if args.write:
         DATA.write_text(json.dumps(brands, indent=2, ensure_ascii=False) + "\n")

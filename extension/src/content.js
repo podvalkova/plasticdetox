@@ -127,15 +127,25 @@
     // "Colgate Total" covers every listing of that line and claims nothing about
     // Optic White. Longest phrase wins so a specific line beats a general one.
     if (!title) return null;
-    const low = norm(title);
+    const low = " " + norm(title) + " ";
+    const hasWord = (w) => low.includes(" " + norm(w) + " ");
     let best = null, bestLen = 0;
+
     for (const p of rows) {
+      // `match` is an adjacent phrase: "colgate total" names one line.
       for (const phrase of (p.match || [])) {
         const needle = norm(phrase);
         if (needle && low.includes(needle) && needle.length > bestLen) {
-          best = p;
-          bestLen = needle.length;
+          best = p; bestLen = needle.length;
         }
+      }
+      // `matchAll` is a set of words that must all appear, in any order and
+      // anywhere. A whole-line verdict needs this: real titles read "Pampers
+      // Swaddlers Diapers", so requiring "pampers diaper" adjacent misses them.
+      for (const group of (p.matchAll || [])) {
+        if (!group.length || !group.every(hasWord)) continue;
+        const weight = group.join("").length;
+        if (weight > bestLen) { best = p; bestLen = weight; }
       }
     }
     return best;
