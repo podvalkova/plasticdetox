@@ -106,7 +106,8 @@ def main():
                 v, why, disclose = p.get("verdict"), "hand authored scorecard", False
             else:
                 v, why, disclose = _a.correct(p.get("verdict"), f, p.get("note"),
-                                              scope, basis, consumable=consumable)
+                                              scope, basis, consumable=consumable,
+                                              origin=p.get("origin"))
             p["ext"] = {
                 "verdict": v,
                 "why": why,

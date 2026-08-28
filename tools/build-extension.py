@@ -51,6 +51,9 @@ def main():
     run("backfill-fronts.py", "--write")
     run("link-articles.py", "--write")
     run("mark-scope.py", "--write")
+    # A store listing is a vetted pick, so every store brand needs an entry.
+    # Runs before store-to-products, which resolves brands through the ASIN map.
+    run("store-to-brands.py", "--write")
     run("store-to-products.py", "--write")
     run("articles-to-products.py", "--write")
     run("registry-to-products.py", "--write")

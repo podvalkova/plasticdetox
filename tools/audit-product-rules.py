@@ -482,7 +482,8 @@ WEAK_ONLY = re.compile(
     r"ab ?1200|discloses|non[\s-]?detect)\b[^.]*[.]?\s*)+$")
 
 
-def correct(old, f, note, scope, basis, strict=False, lenient=False, consumable=True):
+def correct(old, f, note, scope, basis, strict=False, lenient=False, consumable=True,
+            origin=None):
     """
     Section 6, applied as a correction rather than a re-adjudication.
 
@@ -549,6 +550,16 @@ def correct(old, f, note, scope, basis, strict=False, lenient=False, consumable=
         return "unrated", f"not assessed on {', '.join(missing)}", False
     if not passes:
         return "unrated", "no front is directly evidenced by the note", False
+    # A store listing is not an inference. A person read the product, chose it,
+    # and put our name to it, which is direct human judgement at product scope,
+    # the exact thing rule 6 asks for. The strict bar exists to stop a BRAND
+    # verdict leaking onto a product nobody researched; applying it to our own
+    # published picks made the store and the extension disagree about what we
+    # recommend, which is worse than either answer alone. The scorecard still
+    # shows only the fronts the note actually evidences.
+    if origin == "store" and scope in ("sku", "line"):
+        return "good", "a vetted store pick, chosen by a person at product scope", False
+
     if not lenient:
         # A third-party lab measured the product itself, for the hazard class
         # that matters, and reported a limit. Section 4.2 ranks that above a
@@ -594,7 +605,8 @@ def main():
                                    f"{p.get('name') or ''} {b.get('category') or ''}")
             new, why, disclose = correct(p.get("verdict"), f, p.get("note"),
                                          scope, basis, args.strict, args.lenient,
-                                         is_consumable(b.get("category"), p.get("name")))
+                                         is_consumable(b.get("category"), p.get("name")),
+                                         p.get("origin"))
             # A hand-authored scorecard outranks anything inferred from prose.
             if authored:
                 new, why, disclose = p.get("verdict"), "hand authored scorecard, left alone", False
