@@ -1042,9 +1042,38 @@
     "products": [
       {
         "name": "Free & Clear Detergent",
-        "asins": [
-          "B07FVX9Z9H"
+        "asins": [],
+        "verdict": "careful",
+        "note": "Fragrance free but contains optical brighteners and synthetic surfactants. Better than Dreft.",
+        "origin": "article",
+        "source": "top-100-baby-kids-products-amazon.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "adverse finding stands",
+          "fronts": {
+            "formula": "pass",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        },
+        "matchAll": [
+          [
+            "all",
+            "free",
+            "clear",
+            "detergent"
+          ]
         ],
+        "matchFrom": "name"
+      },
+      {
+        "name": "Free & Clear Detergent",
+        "asins": [],
         "verdict": "careful",
         "note": "Fragrance free but contains optical brighteners and synthetic surfactants. Better than Dreft.",
         "origin": "article",
@@ -1066,9 +1095,9 @@
       }
     ],
     "rollup": {
-      "products": 1,
-      "researched": 1,
-      "flagged": 1,
+      "products": 2,
+      "researched": 2,
+      "flagged": 2,
       "worst": "careful"
     }
   },
@@ -14138,9 +14167,7 @@
     "products": [
       {
         "name": "Kids Fluoride Toothpaste",
-        "asins": [
-          "B0GQ7FHJWD"
-        ],
+        "asins": [],
         "verdict": "skip",
         "note": "Lead Safe Mama 2025 third party lab testing on Kids Crest Advanced Color Changing Bubblegum returned positive for lead and arsenic. Crest regular toothpaste tested positive for lead, arsenic, and mercury in the same testing round. The kids fluoride dose debate is contested, but the heavy metal lab signal is not.",
         "origin": "article",
@@ -14154,11 +14181,19 @@
             "legal": "unassessed",
             "testing": "caution"
           },
-          "scope": "sku",
+          "scope": "line",
           "basis": "direct",
           "disclose": false,
           "rules": []
-        }
+        },
+        "matchAll": [
+          [
+            "crest",
+            "fluoride",
+            "toothpaste"
+          ]
+        ],
+        "matchFrom": "name"
       },
       {
         "name": "Toothpaste",
@@ -14226,12 +14261,34 @@
           "disclose": false,
           "authored": true
         }
+      },
+      {
+        "name": "Kids Fluoride Toothpaste",
+        "asins": [],
+        "verdict": "skip",
+        "note": "Lead Safe Mama 2025 third party lab testing on Kids Crest Advanced Color Changing Bubblegum returned positive for lead and arsenic. Crest regular toothpaste tested positive for lead, arsenic, and mercury in the same testing round. The kids fluoride dose debate is contested, but the heavy metal lab signal is not.",
+        "origin": "article",
+        "source": "top-100-baby-kids-products-amazon.html",
+        "ext": {
+          "verdict": "skip",
+          "why": "adverse finding stands",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "caution"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
       }
     ],
     "rollup": {
-      "products": 3,
-      "researched": 3,
-      "flagged": 3,
+      "products": 4,
+      "researched": 4,
+      "flagged": 4,
       "worst": "skip"
     }
   },
@@ -16484,9 +16541,7 @@
       },
       {
         "name": "Wide Neck Glass Baby Bottle (painted markings)",
-        "asins": [
-          "B098YHHV3Q"
-        ],
+        "asins": [],
         "verdict": "skip",
         "note": "Borosilicate body is inert. The painted exterior volume markings are the variable. Lead Safe Mama testing has documented lead in painted markings on multiple glass baby bottle brands. The paint is on the outside but it chips into the dishwasher and onto hands. Choose an unmarked or etched glass bottle instead.",
         "origin": "article",
@@ -16561,6 +16616,28 @@
         "matchNot": [
           "glass"
         ]
+      },
+      {
+        "name": "Wide Neck Glass Baby Bottle (painted markings)",
+        "asins": [],
+        "verdict": "skip",
+        "note": "Borosilicate body is inert. The painted exterior volume markings are the variable. Lead Safe Mama testing has documented lead in painted markings on multiple glass baby bottle brands. The paint is on the outside but it chips into the dishwasher and onto hands. Choose an unmarked or etched glass bottle instead.",
+        "origin": "article",
+        "source": "top-100-baby-kids-products-amazon.html",
+        "ext": {
+          "verdict": "skip",
+          "why": "adverse finding stands",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "pass",
+            "legal": "unassessed",
+            "testing": "pass"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
       }
     ],
     "fronts": {
@@ -16590,9 +16667,9 @@
     "generalises": false,
     "scopeNote": "Our verdict varies across this brand's range.",
     "rollup": {
-      "products": 3,
-      "researched": 3,
-      "flagged": 2,
+      "products": 4,
+      "researched": 4,
+      "flagged": 3,
       "worst": "skip"
     }
   },
@@ -18241,9 +18318,40 @@
       },
       {
         "name": "Organic Infant Formula",
-        "asins": [
-          "B09F5X1JVR"
+        "asins": [],
+        "verdict": "careful",
+        "note": "Organic but uses glucose syrup solids. Better than conventional on pesticide residue.",
+        "origin": "article",
+        "source": "top-100-baby-kids-products-amazon.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "adverse finding stands",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "fail"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        },
+        "matchAll": [
+          [
+            "earth",
+            "s",
+            "best",
+            "organic",
+            "infant",
+            "formula"
+          ]
         ],
+        "matchFrom": "name"
+      },
+      {
+        "name": "Organic Infant Formula",
+        "asins": [],
         "verdict": "careful",
         "note": "Organic but uses glucose syrup solids. Better than conventional on pesticide residue.",
         "origin": "article",
@@ -18265,9 +18373,9 @@
       }
     ],
     "rollup": {
-      "products": 2,
-      "researched": 2,
-      "flagged": 2,
+      "products": 3,
+      "researched": 3,
+      "flagged": 3,
       "worst": "careful"
     }
   },
@@ -21485,9 +21593,39 @@
     "products": [
       {
         "name": "Take & Toss Sippy Cups",
-        "asins": [
-          "B08398HJRD"
+        "asins": [],
+        "verdict": "skip",
+        "note": "Disposable style polypropylene designed for repeated reuse despite the #5 plastic. Dishwasher cycles accelerate microplastic shedding.",
+        "origin": "article",
+        "source": "top-100-baby-kids-products-amazon.html",
+        "ext": {
+          "verdict": "skip",
+          "why": "adverse finding stands",
+          "fronts": {
+            "formula": "fail",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        },
+        "matchAll": [
+          [
+            "first",
+            "years",
+            "take",
+            "toss",
+            "sippy"
+          ]
         ],
+        "matchFrom": "name"
+      },
+      {
+        "name": "Take & Toss Sippy Cups",
+        "asins": [],
         "verdict": "skip",
         "note": "Disposable style polypropylene designed for repeated reuse despite the #5 plastic. Dishwasher cycles accelerate microplastic shedding.",
         "origin": "article",
@@ -21509,9 +21647,9 @@
       }
     ],
     "rollup": {
-      "products": 1,
-      "researched": 1,
-      "flagged": 1,
+      "products": 2,
+      "researched": 2,
+      "flagged": 2,
       "worst": "skip"
     }
   },
@@ -23050,9 +23188,7 @@
       },
       {
         "name": "Stage 2 Pouches (various flavors)",
-        "asins": [
-          "B077XHLXT3"
-        ],
+        "asins": [],
         "verdict": "skip",
         "note": "Multilayer plastic pouch in contact with acidic fruit and vegetable puree, often heated during pasteurization then shelf stable for months. 2023 Consumer Reports testing found phthalates in pouches that were not in the same brand's jarred versions. Heavy metals (arsenic, lead, cadmium) flagged in the 2021 House Oversight report. Pouches also bypass the chewing and self feeding skills the AAP flags",
         "origin": "article",
@@ -23066,11 +23202,24 @@
             "legal": "unassessed",
             "testing": "caution"
           },
-          "scope": "sku",
+          "scope": "line",
           "basis": "direct",
           "disclose": false,
           "rules": []
-        }
+        },
+        "matchAll": [
+          [
+            "gerber",
+            "stage",
+            "pouches"
+          ],
+          [
+            "gerber",
+            "stage",
+            "pouche"
+          ]
+        ],
+        "matchFrom": "name"
       },
       {
         "name": "Puffs (Sweet Potato and others)",
@@ -23137,6 +23286,28 @@
           "disclose": false,
           "authored": true
         }
+      },
+      {
+        "name": "Stage 2 Pouches (various flavors)",
+        "asins": [],
+        "verdict": "skip",
+        "note": "Multilayer plastic pouch in contact with acidic fruit and vegetable puree, often heated during pasteurization then shelf stable for months. 2023 Consumer Reports testing found phthalates in pouches that were not in the same brand's jarred versions. Heavy metals (arsenic, lead, cadmium) flagged in the 2021 House Oversight report. Pouches also bypass the chewing and self feeding skills the AAP flags",
+        "origin": "article",
+        "source": "top-100-baby-kids-products-amazon.html",
+        "ext": {
+          "verdict": "skip",
+          "why": "adverse finding stands",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "caution",
+            "legal": "unassessed",
+            "testing": "caution"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
       }
     ],
     "fronts": {
@@ -23165,9 +23336,9 @@
     "article": "top-100-baby-kids-products-amazon.html",
     "generalises": true,
     "rollup": {
-      "products": 5,
-      "researched": 5,
-      "flagged": 5,
+      "products": 6,
+      "researched": 6,
+      "flagged": 6,
       "worst": "skip"
     }
   },
@@ -25065,9 +25236,7 @@
     "products": [
       {
         "name": "Organic Pouches",
-        "asins": [
-          "B077XHLXT3"
-        ],
+        "asins": [],
         "verdict": "skip",
         "note": "Same category problem. Multilayer pouch plus acidic puree plus phthalate findings (Consumer Reports 2023). Brand named in the 2021 House Oversight heavy metals report. 2024 Healthy Babies Bright Futures follow up testing still found heavy metals in major brands despite reformulation claims.",
         "origin": "article",
@@ -25081,11 +25250,36 @@
             "legal": "unassessed",
             "testing": "unassessed"
           },
-          "scope": "sku",
+          "scope": "line",
           "basis": "direct",
           "disclose": false,
           "rules": []
-        }
+        },
+        "matchAll": [
+          [
+            "happy",
+            "baby",
+            "organic",
+            "pouches"
+          ],
+          [
+            "happy",
+            "baby",
+            "organic",
+            "pouche"
+          ],
+          [
+            "happy",
+            "organic",
+            "pouches"
+          ],
+          [
+            "happy",
+            "organic",
+            "pouche"
+          ]
+        ],
+        "matchFrom": "name"
       },
       {
         "name": "Teething Wafers",
@@ -25204,12 +25398,34 @@
           "disclose": false,
           "authored": true
         }
+      },
+      {
+        "name": "Organic Pouches",
+        "asins": [],
+        "verdict": "skip",
+        "note": "Same category problem. Multilayer pouch plus acidic puree plus phthalate findings (Consumer Reports 2023). Brand named in the 2021 House Oversight heavy metals report. 2024 Healthy Babies Bright Futures follow up testing still found heavy metals in major brands despite reformulation claims.",
+        "origin": "article",
+        "source": "top-100-baby-kids-products-amazon.html",
+        "ext": {
+          "verdict": "skip",
+          "why": "adverse finding stands",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "caution",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
       }
     ],
     "rollup": {
-      "products": 4,
-      "researched": 3,
-      "flagged": 3,
+      "products": 5,
+      "researched": 4,
+      "flagged": 4,
       "worst": "skip"
     }
   },
@@ -30368,9 +30584,38 @@
     "products": [
       {
         "name": "Goat Milk Infant Formula",
-        "asins": [
-          "B0CLXZJK1M"
+        "asins": [],
+        "verdict": "skip",
+        "note": "Consumer Reports 2025 placed Kabrita in the Worse Choices tier after detecting both arsenic and lead in their independent testing. Kabrita publishes its own batch testing data and says results fall under regulatory limits, but the EU style composition does not override the independent lab finding. Goat milk base, no corn syrup, FDA compliant as of 2024.",
+        "origin": "article",
+        "source": "top-100-baby-kids-products-amazon.html",
+        "ext": {
+          "verdict": "skip",
+          "why": "adverse finding stands",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        },
+        "matchAll": [
+          [
+            "kabrita",
+            "goat",
+            "milk",
+            "infant"
+          ]
         ],
+        "matchFrom": "name"
+      },
+      {
+        "name": "Goat Milk Infant Formula",
+        "asins": [],
         "verdict": "skip",
         "note": "Consumer Reports 2025 placed Kabrita in the Worse Choices tier after detecting both arsenic and lead in their independent testing. Kabrita publishes its own batch testing data and says results fall under regulatory limits, but the EU style composition does not override the independent lab finding. Goat milk base, no corn syrup, FDA compliant as of 2024.",
         "origin": "article",
@@ -30392,9 +30637,9 @@
       }
     ],
     "rollup": {
-      "products": 1,
-      "researched": 1,
-      "flagged": 1,
+      "products": 2,
+      "researched": 2,
+      "flagged": 2,
       "worst": "skip"
     }
   },
@@ -32629,9 +32874,7 @@
     "products": [
       {
         "name": "Rishi Organic Loose Leaf Tea",
-        "asins": [
-          "B09CPJSX9D"
-        ],
+        "asins": [],
         "verdict": "good",
         "note": "Organic loose leaf tea. Loose leaf avoids the plastic and PET pyramid tea bags that shed microplastics into hot water. No plastic tea bag. Worth knowing: Requires a separate infuser\", \"Pouch is plastic lined, decant to glass\", \"One variety per pack.",
         "origin": "store",
@@ -32644,11 +32887,20 @@
             "legal": "unassessed",
             "testing": "unassessed"
           },
-          "scope": "sku",
+          "scope": "line",
           "basis": "direct",
           "disclose": false,
           "rules": []
-        }
+        },
+        "matchAll": [
+          [
+            "leaf",
+            "rishi",
+            "organic",
+            "loose"
+          ]
+        ],
+        "matchFrom": "name"
       },
       {
         "name": "Leaf Thorn Single Edge Razor",
@@ -35828,21 +36080,21 @@
         "name": "Maldon Sea Salt Flakes",
         "asins": [],
         "verdict": "good",
-        "note": "Soft pyramid flakes from Essex, England. A sea salt, so it carries more microplastics than mined salt, but among the cleanest sea salts for heavy metals in independent testing. Worth knowing: Sea salt, so more microplastics than mined\", \"Premium price per ounce\", \"Cardboard box, decant to glass.",
+        "note": "A clean flake salt with no additives, and low in heavy metals for a sea salt. Sea salt is a category where independent testing finds microplastics and metals, so the result matters more here than the label does.",
         "origin": "store",
         "ext": {
-          "verdict": "unrated",
-          "why": "the note reads adversely on formula, needs a human look",
+          "verdict": "good",
+          "why": "Reviewed by hand: low heavy metals for a sea salt.",
           "fronts": {
-            "formula": "caution",
+            "formula": "pass",
             "packaging": "unassessed",
             "legal": "unassessed",
-            "testing": "unassessed"
+            "testing": "pass"
           },
-          "scope": "line",
+          "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "authored": true
         },
         "matchAll": [
           [
@@ -35870,18 +36122,18 @@
         "asins": [
           "B086XGH24W"
         ],
-        "verdict": "careful",
-        "note": "A clean flake salt with no additives, but sea salt is one of the categories where independent testing finds microplastics and heavy metals, and there is no published third party testing on this one to check against.",
+        "verdict": "good",
+        "note": "A clean flake salt with no additives, and low in heavy metals for a sea salt. Sea salt is a category where independent testing finds microplastics and metals, so the result matters more here than the label does.",
         "origin": "hand",
         "source": "microplastics-in-salt-and-pantry-staples.html",
         "ext": {
-          "verdict": "careful",
+          "verdict": "good",
           "why": "Reviewed by hand from our published research on this category.",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "pass",
             "packaging": "unassessed",
             "legal": "unassessed",
-            "testing": "caution"
+            "testing": "pass"
           },
           "scope": "line",
           "basis": "direct",
@@ -35893,12 +36145,12 @@
     "rollup": {
       "products": 2,
       "researched": 2,
-      "flagged": 1,
-      "worst": "careful"
+      "flagged": 0,
+      "worst": null
     },
-    "scopeNote": "Our verdict varies across this brand's range.",
     "rollupApplied": true,
-    "rollupNote": "1 of 2 products we have reviewed under this brand are flagged: Maldon sea salt flakes. The verdict depends which one you pick."
+    "rollupNote": "1 of 2 products we have reviewed under this brand are flagged: Maldon sea salt flakes. The verdict depends which one you pick.",
+    "scopeNote": "Our verdict varies across this brand's range."
   },
   {
     "id": "mam",
@@ -36012,9 +36264,36 @@
       },
       {
         "name": "Original Pacifier",
-        "asins": [
-          "B008VUHVGM"
+        "asins": [],
+        "verdict": "careful",
+        "note": "Polypropylene shield with silicone nipple. Nipple side is fine. Shield is plastic in contact with skin.",
+        "origin": "article",
+        "source": "top-100-baby-kids-products-amazon.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "adverse finding stands",
+          "fronts": {
+            "formula": "caution",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        },
+        "matchAll": [
+          [
+            "mam",
+            "pacifier"
+          ]
         ],
+        "matchFrom": "name"
+      },
+      {
+        "name": "Original Pacifier",
+        "asins": [],
         "verdict": "careful",
         "note": "Polypropylene shield with silicone nipple. Nipple side is fine. Shield is plastic in contact with skin.",
         "origin": "article",
@@ -36062,9 +36341,9 @@
     "generalises": false,
     "scopeNote": "Our verdict varies across this brand's range.",
     "rollup": {
-      "products": 4,
-      "researched": 4,
-      "flagged": 3,
+      "products": 5,
+      "researched": 5,
+      "flagged": 4,
       "worst": "careful"
     }
   },
@@ -38961,9 +39240,7 @@
     "products": [
       {
         "name": "360 Spoutless Training Cup",
-        "asins": [
-          "B08398HJRD"
-        ],
+        "asins": [],
         "verdict": "skip",
         "note": "Plastic body in daily contact with liquids. Mamavation rounds have found undisclosed plastic chemistry concerns in training cup category.",
         "origin": "article",
@@ -38977,13 +39254,22 @@
             "legal": "unassessed",
             "testing": "fail"
           },
-          "scope": "sku",
+          "scope": "line",
           "basis": "direct",
           "disclose": false,
           "rules": [
             "2 non-disclosure-is-a-caution"
           ]
-        }
+        },
+        "matchAll": [
+          [
+            "munchkin",
+            "360",
+            "spoutless",
+            "training"
+          ]
+        ],
+        "matchFrom": "name"
       },
       {
         "name": "Plastic Toddler Utensils",
@@ -39060,13 +39346,37 @@
             "3 packaging-matrix-caution"
           ]
         }
+      },
+      {
+        "name": "360 Spoutless Training Cup",
+        "asins": [],
+        "verdict": "skip",
+        "note": "Plastic body in daily contact with liquids. Mamavation rounds have found undisclosed plastic chemistry concerns in training cup category.",
+        "origin": "article",
+        "source": "top-100-baby-kids-products-amazon.html",
+        "ext": {
+          "verdict": "skip",
+          "why": "adverse finding stands",
+          "fronts": {
+            "formula": "caution",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "fail"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": [
+            "2 non-disclosure-is-a-caution"
+          ]
+        }
       }
     ],
     "scopeNote": "Our verdict varies across this brand's range.",
     "rollup": {
-      "products": 4,
-      "researched": 4,
-      "flagged": 4,
+      "products": 5,
+      "researched": 5,
+      "flagged": 5,
       "worst": "skip"
     }
   },

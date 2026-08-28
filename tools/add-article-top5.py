@@ -248,8 +248,11 @@ ROWS = {
     "Jergens": [("Jergens body lotion", [["jergens"]], [], ["B0FKC23886"], "careful",
                  "A fragranced leave on emulsion in a plastic bottle, with the fragrance an undisclosed mixture.", F(fo="caution"))],
     # --------------------------------------------------------------------- salt
-    "Maldon": [("Maldon sea salt flakes", [["maldon"]], [], ["B086XGH24W"], "careful",
-                "A clean flake salt with no additives, but sea salt is one of the categories where independent testing finds microplastics and heavy metals, and there is no published third party testing on this one to check against.", F(te="caution"))],
+    # The store record for this one already carried the evidence ("low heavy
+    # metals for a sea salt"). Rating it careful for "no published testing"
+    # ignored our own research and put a warning on a product we sell.
+    "Maldon": [("Maldon sea salt flakes", [["maldon"]], [], ["B086XGH24W"], "good",
+                "A clean flake salt with no additives, and low in heavy metals for a sea salt. Sea salt is a category where independent testing finds microplastics and metals, so the result matters more here than the label does.", F(fo="pass", te="pass"))],
     "Celtic Sea Salt": [("Celtic light grey sea salt", [["celtic", "sea", "salt"]], [], ["B000SWVPV8"], "careful",
                          "Unrefined and mineral rich, which is the selling point, but unrefined also means whatever the sea carried is still in it. Sea salt is a known microplastic and heavy metal category and there is no published third party testing here.", F(te="caution"))],
     "Baja Gold": [("Baja Gold mineral sea salt", [["baja", "gold"]], [], ["B0CB4X5TDP"], "careful",

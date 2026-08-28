@@ -75,6 +75,10 @@ def main():
     run("harvest-asins.py")
     # Never ship a card whose "Better:" line points at something we flag.
     run("audit-alternatives.py", "--strict")
+    # Nothing we flag may also be recommended. Not --strict yet: three known
+    # editorial conflicts are open and awaiting a decision.
+    run("audit-recommendations.py")
+    run("audit-store-coverage.py")
 
     src = ROOT / "brand-data.json"
     dst = EXT / "data" / "brand-data.json"

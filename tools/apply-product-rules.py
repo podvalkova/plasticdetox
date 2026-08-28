@@ -121,6 +121,36 @@ def main():
             if v != p.get("verdict"):
                 diverge += 1
 
+    # An ASIN identifies exactly one product, so it cannot sit on two brands.
+    # Article tables mis-attribute them: B07FVX9Z9H is Seventh Generation's
+    # detergent and was also filed under All Free Clear as a careful, so one
+    # store pick carried a recommendation and a warning at once. The row whose
+    # brand actually appears in the ASIN map's product name is the right one.
+    amap = {}
+    map_path = ROOT / "extension" / "data" / "asin-map.json"
+    if map_path.exists():
+        amap = json.loads(map_path.read_text())
+    owner = {}
+    for b in brands:
+        for p in (b.get("products") or []):
+            for a in (p.get("asins") or []):
+                owner.setdefault(a, []).append((b, p))
+    stolen = 0
+    for a, rows in owner.items():
+        if len(rows) < 2:
+            continue
+        truth = (amap.get(a) or {}).get("brand")
+        if not truth:
+            continue
+        for b, p in rows:
+            if b["brand"] != truth:
+                p["asins"] = [x for x in (p.get("asins") or []) if x != a]
+                stolen += 1
+                print(f"  !! {a} sat on {b['brand']} and {truth}; pulled it off "
+                      f"{b['brand']} ({p.get('name')})")
+    if stolen:
+        print(f"  pulled {stolen} ASINs off brands that do not own them")
+
     # Two rows under one brand resolving to the same rule is a silent
     # mis-verdict: whichever sorts first answers for both, and a stale row can
     # outrank the corrected one that replaced it. Levoit carried a good row and
