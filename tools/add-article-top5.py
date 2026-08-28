@@ -70,6 +70,13 @@ PET_WATER = ("Single use PET, which is a major microplastic source rather than a
 STRAW_LID = ("Stainless body, but the lid puts a plastic straw and spout directly in the drink "
              "path. Our drinkware standard is no plastic touching the drink at all, and the lid "
              "is where almost every insulated bottle fails it.")
+# The category finding for every polypropylene baby bottle. The site already
+# rates these skip; softer per-brand rows contradicted that and, because they
+# overlapped the same listings, whichever won a tiebreak answered for all of them.
+PP = ("Polypropylene bottles heated for formula. A 2020 Nature Food study (Li et al.) measured "
+      "polypropylene infant bottles releasing 1 to 16 million microplastic particles per litre at "
+      "70C formula preparation temperature, and milk is an emulsion, so it pulls more out of "
+      "plastic than water does. The same bottle is sold in glass.")
 PTFE_PAN = ("Nonstick coating in the food path. Granite, marble and ceramic finishes on a "
             "budget pan are PTFE based unless the maker names the coating and shows third "
             "party testing, and PFOA free does not mean PFAS free.")
@@ -152,12 +159,14 @@ ROWS = {
     # ------------------------------------------------------------ baby bottles
     "Evenflo": [("Classic tinted plastic bottles", [["evenflo", "tinted"], ["evenflo", "plastic", "bottle"], ["evenflo", "classic", "tinted"]], [], ["B07G4KBQJ7"], "skip",
                  "Polypropylene bottles filled with warm milk. Milk is an emulsion, so it carries an oil phase that extracts more from plastic than water does, and bottles are heated and sterilised repeatedly, which drives migration harder than any other variable.", F(fo="fail", pk="fail"))],
-    "Philips": [("Avent plastic baby bottles", [["philips", "avent", "bottle"], ["avent", "natural", "baby", "bottles"]], ["glass"], ["B0964CHD65"], "careful",
-                 "Polypropylene bottles for warm milk, repeatedly heated and sterilised. Philips also sells the same bottle in glass, which removes the question entirely for a few dollars more.", F(fo="caution", pk="caution"))],
-    "Dr. Brown's": [("Options+ plastic baby bottles", [["dr brown", "options"], ["dr browns", "options"]], ["glass"], ["B01845QGKK", "B07TXM6K2T"], "careful",
-                     "Polypropylene bottles heated and sterilised repeatedly with warm milk, which is an emulsion and pulls more out of plastic than water does. The same bottle is sold in glass.", F(fo="caution", pk="caution"))],
-    "Tommee Tippee": [("Natural Start plastic bottles", [["tommee", "tippee"]], [], ["B0CQMHBV3R"], "careful",
-                       "Polypropylene bottles for warm milk, sterilised repeatedly. Heat is the single biggest driver of migration, and a glass bottle removes the variable.", F(fo="caution", pk="caution"))],
+    "Philips": [("Avent plastic baby bottles", [["philips", "avent", "bottle"], ["avent", "natural", "baby", "bottles"]], ["glass"], ["B0964CHD65"], "skip",
+                 PP + " Philips is also named in a June 2024 class action over microplastic release from the polypropylene bottles.",
+                 F(fo="fail", pk="fail", lg="caution"))],
+    "Dr. Brown's": [("Options+ plastic baby bottles", [["dr brown", "options"], ["dr browns", "options"]], ["glass"], ["B01845QGKK", "B07TXM6K2T"], "skip",
+                     PP + " Dr. Brown's is also named in a June 2024 class action alleging microplastic release when heated.",
+                     F(fo="fail", pk="fail", lg="caution"))],
+    "Tommee Tippee": [("Natural Start plastic bottles", [["tommee", "tippee"]], ["glass"], ["B0CQMHBV3R"], "skip",
+                       PP, F(fo="fail", pk="fail"))],
     # ---------------------------------------------------------- cutting boards
     "Gorilla Grip": [("Reversible plastic cutting boards", [["gorilla", "grip", "cutting"]], [], ["B01GP2MTXW"], "skip", CUT, F(fo="fail"))],
     "Farberware": [("Plastic chopping boards", [["farberware", "cutting"], ["farberware", "chopping"]], [], ["B000W4OC80"], "skip", CUT, F(fo="fail"))],

@@ -15267,45 +15267,6 @@
         "matchFrom": "name"
       },
       {
-        "name": "Polypropylene baby bottles",
-        "verdict": "skip",
-        "note": "June 2024 class action alleging microplastic release when heated.",
-        "ext": {
-          "verdict": "careful",
-          "why": "a filed suit is an allegation, capped at careful",
-          "fronts": {
-            "formula": "unassessed",
-            "packaging": "unassessed",
-            "legal": "caution",
-            "testing": "unassessed"
-          },
-          "scope": "brand",
-          "basis": "direct",
-          "disclose": false,
-          "rules": [
-            "5.1 filed-suit-caps-at-caution"
-          ]
-        },
-        "origin": "hand",
-        "matchAll": [
-          [
-            "dr",
-            "brown",
-            "s",
-            "polypropylene",
-            "bottles"
-          ],
-          [
-            "dr",
-            "brown",
-            "s",
-            "polypropylene",
-            "bottle"
-          ]
-        ],
-        "matchFrom": "name"
-      },
-      {
         "name": "Wide Neck Glass Baby Bottle (painted markings)",
         "asins": [
           "B098YHHV3Q"
@@ -15363,17 +15324,17 @@
           "B01845QGKK",
           "B07TXM6K2T"
         ],
-        "verdict": "careful",
-        "note": "Polypropylene bottles heated and sterilised repeatedly with warm milk, which is an emulsion and pulls more out of plastic than water does. The same bottle is sold in glass.",
+        "verdict": "skip",
+        "note": "Polypropylene bottles heated for formula. A 2020 Nature Food study (Li et al.) measured polypropylene infant bottles releasing 1 to 16 million microplastic particles per litre at 70C formula preparation temperature, and milk is an emulsion, so it pulls more out of plastic than water does. The same bottle is sold in glass. Dr. Brown's is also named in a June 2024 class action alleging microplastic release when heated.",
         "origin": "hand",
         "source": "best-non-toxic-baby-bottles.html",
         "ext": {
-          "verdict": "careful",
+          "verdict": "skip",
           "why": "Reviewed by hand from our published research on this category.",
           "fronts": {
-            "formula": "caution",
-            "packaging": "caution",
-            "legal": "unassessed",
+            "formula": "fail",
+            "packaging": "fail",
+            "legal": "caution",
             "testing": "unassessed"
           },
           "scope": "line",
@@ -15413,9 +15374,9 @@
     "generalises": false,
     "scopeNote": "Our verdict varies across this brand's range.",
     "rollup": {
-      "products": 4,
-      "researched": 4,
-      "flagged": 3,
+      "products": 3,
+      "researched": 3,
+      "flagged": 2,
       "worst": "skip"
     }
   },
@@ -40855,42 +40816,6 @@
         "matchFrom": "name"
       },
       {
-        "name": "Avent baby bottles",
-        "verdict": "careful",
-        "note": "June 2024 class action over microplastic release from the polypropylene bottles; the glass line tested 33 ppm lead in painted markings rather than non detect.",
-        "ext": {
-          "verdict": "careful",
-          "why": "adverse finding stands",
-          "fronts": {
-            "formula": "fail",
-            "packaging": "unassessed",
-            "legal": "fail",
-            "testing": "pass"
-          },
-          "scope": "brand",
-          "basis": "direct",
-          "disclose": false,
-          "rules": []
-        },
-        "origin": "hand",
-        "matchAll": [
-          [
-            "philips",
-            "avent",
-            "bottles"
-          ],
-          [
-            "philips",
-            "avent",
-            "bottle"
-          ]
-        ],
-        "matchFrom": "name",
-        "matchNot": [
-          "glass"
-        ]
-      },
-      {
         "name": "Sonicare electric toothbrushes",
         "verdict": "careful",
         "note": "Strong clinical evidence and a clean US safety record, but the plastic handle and nylon bristles shed microplastic particles during brushing, a limitation shared by every electric brush.",
@@ -40946,36 +40871,6 @@
           "disclose": false,
           "rules": []
         }
-      },
-      {
-        "name": "Natural Baby Bottle (polypropylene)",
-        "asins": [],
-        "verdict": "skip",
-        "note": "Plastic baby bottle. 2020 Nature Food study (Li et al.) documented polypropylene infant bottles release 1 to 16 million microplastic particles per liter at 70°C formula prep temps. Direct conflict with low tox feeding regardless of BPA free marketing.",
-        "origin": "article",
-        "source": "top-100-baby-kids-products-amazon.html",
-        "ext": {
-          "verdict": "skip",
-          "why": "adverse finding stands",
-          "fronts": {
-            "formula": "fail",
-            "packaging": "caution",
-            "legal": "unassessed",
-            "testing": "unassessed"
-          },
-          "scope": "brand",
-          "basis": "direct",
-          "disclose": false,
-          "rules": []
-        },
-        "matchAll": [
-          [
-            "philips",
-            "natural",
-            "bottle"
-          ]
-        ],
-        "matchFrom": "name"
       },
       {
         "name": "Natural Glass Baby Bottle (painted markings)",
@@ -41044,17 +40939,17 @@
         "asins": [
           "B0964CHD65"
         ],
-        "verdict": "careful",
-        "note": "Polypropylene bottles for warm milk, repeatedly heated and sterilised. Philips also sells the same bottle in glass, which removes the question entirely for a few dollars more.",
+        "verdict": "skip",
+        "note": "Polypropylene bottles heated for formula. A 2020 Nature Food study (Li et al.) measured polypropylene infant bottles releasing 1 to 16 million microplastic particles per litre at 70C formula preparation temperature, and milk is an emulsion, so it pulls more out of plastic than water does. The same bottle is sold in glass. Philips is also named in a June 2024 class action over microplastic release from the polypropylene bottles.",
         "origin": "hand",
         "source": "how-to-enjoy-coffee-without-plastic.html",
         "ext": {
-          "verdict": "careful",
+          "verdict": "skip",
           "why": "Reviewed by hand from our published research on this category.",
           "fronts": {
-            "formula": "caution",
-            "packaging": "caution",
-            "legal": "unassessed",
+            "formula": "fail",
+            "packaging": "fail",
+            "legal": "caution",
             "testing": "unassessed"
           },
           "scope": "line",
@@ -41065,28 +40960,6 @@
         "matchNot": [
           "glass"
         ]
-      },
-      {
-        "name": "Natural Baby Bottle (polypropylene)",
-        "asins": [],
-        "verdict": "skip",
-        "note": "Plastic baby bottle. 2020 Nature Food study (Li et al.) documented polypropylene infant bottles release 1 to 16 million microplastic particles per liter at 70°C formula prep temps. Direct conflict with low tox feeding regardless of BPA free marketing.",
-        "origin": "article",
-        "source": "top-100-baby-kids-products-amazon.html",
-        "ext": {
-          "verdict": "skip",
-          "why": "adverse finding stands",
-          "fronts": {
-            "formula": "fail",
-            "packaging": "caution",
-            "legal": "unassessed",
-            "testing": "unassessed"
-          },
-          "scope": "none",
-          "basis": "direct",
-          "disclose": false,
-          "rules": []
-        }
       }
     ],
     "fronts": {
@@ -41116,9 +40989,9 @@
     "generalises": false,
     "scopeNote": "Our verdict varies across this brand's range.",
     "rollup": {
-      "products": 8,
-      "researched": 8,
-      "flagged": 7,
+      "products": 5,
+      "researched": 5,
+      "flagged": 4,
       "worst": "skip"
     }
   },
@@ -51968,7 +51841,7 @@
       "products": 1,
       "researched": 1,
       "flagged": 1,
-      "worst": "careful"
+      "worst": "skip"
     },
     "products": [
       {
@@ -51982,16 +51855,16 @@
         "asins": [
           "B0CQMHBV3R"
         ],
-        "verdict": "careful",
-        "note": "Polypropylene bottles for warm milk, sterilised repeatedly. Heat is the single biggest driver of migration, and a glass bottle removes the variable.",
+        "verdict": "skip",
+        "note": "Polypropylene bottles heated for formula. A 2020 Nature Food study (Li et al.) measured polypropylene infant bottles releasing 1 to 16 million microplastic particles per litre at 70C formula preparation temperature, and milk is an emulsion, so it pulls more out of plastic than water does. The same bottle is sold in glass.",
         "origin": "hand",
         "source": "best-non-toxic-baby-bottles.html",
         "ext": {
-          "verdict": "careful",
+          "verdict": "skip",
           "why": "Reviewed by hand from our published research on this category.",
           "fronts": {
-            "formula": "caution",
-            "packaging": "caution",
+            "formula": "fail",
+            "packaging": "fail",
             "legal": "unassessed",
             "testing": "unassessed"
           },
@@ -51999,7 +51872,10 @@
           "basis": "direct",
           "disclose": false,
           "authored": true
-        }
+        },
+        "matchNot": [
+          "glass"
+        ]
       }
     ],
     "scopeNote": "Our verdict varies across this brand's range."

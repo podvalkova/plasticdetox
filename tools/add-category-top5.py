@@ -272,6 +272,15 @@ ROWS = {
 }
 
 
+# Older rows that the consolidated ones above replace. Leaving them produced
+# four overlapping Philips rows for one product line, disagreeing on the verdict,
+# with whichever won a tiebreak answering for all of them.
+SUPERSEDED = {
+    "Philips": ["Avent baby bottles", "Natural Baby Bottle (polypropylene)"],
+    "Dr. Brown's": ["Polypropylene baby bottles"],
+}
+
+
 def collapse(s):
     return re.sub(r"[^a-z0-9]+", "", (s or "").lower())
 
@@ -346,7 +355,17 @@ def main():
             added += 1
             tally[verdict] += 1
 
+    dropped = 0
+    for brand_name, names in SUPERSEDED.items():
+        b = by_name.get(collapse(brand_name))
+        if not b:
+            continue
+        before = len(b.get("products") or [])
+        b["products"] = [p for p in b["products"] if p.get("name") not in names]
+        dropped += before - len(b["products"])
+
     brands.sort(key=lambda b: collapse(b["brand"]))
+    print(f"dropped  {dropped} superseded rows")
     print(f"created {created} brands the categories needed")
     print(f"added   {added} product rows  {dict(tally)}")
     print(f"pulled  {replaced} ASINs off rows that wrongly claimed them")
