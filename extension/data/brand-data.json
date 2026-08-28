@@ -205,6 +205,91 @@
     }
   },
   {
+    "id": "whole-foods-365",
+    "brand": "365 by Whole Foods Market",
+    "category": "Multi-category",
+    "stance": "careful",
+    "reason": "A store label spanning many categories, so a verdict on one product does not carry to another. The sea salt carries no published third party heavy metal or microplastic testing.",
+    "evidence": "Verdicts here are per product",
+    "sources": [
+      "microplastics-in-salt-and-pantry-staples.html"
+    ],
+    "article": "microplastics-in-salt-and-pantry-staples.html",
+    "reviewed": true,
+    "generalises": false,
+    "aliases": [
+      "365 Whole Foods"
+    ],
+    "products": [
+      {
+        "name": "365 sea salt",
+        "matchAll": [
+          [
+            "365",
+            "sea",
+            "salt"
+          ],
+          [
+            "365",
+            "whole",
+            "foods",
+            "salt"
+          ]
+        ],
+        "asins": [
+          "B074J7X1DW"
+        ],
+        "verdict": "careful",
+        "note": "No published third party heavy metal or microplastic testing, which is what this category needs rather than an organic label. Organic does not lower metals in salt.",
+        "origin": "hand",
+        "source": "microplastics-in-salt-and-pantry-staples.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "caution"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "packaging": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "pass",
+        "note": "The sea salt carries no published third party heavy metal or microplastic testing",
+        "origin": "extracted"
+      }
+    },
+    "scopeNote": "Our verdict covers part of this brand's range, not all of it.",
+    "rollup": {
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "careful"
+    }
+  },
+  {
     "id": "aarke",
     "brand": "Aarke",
     "aliases": [
@@ -1174,9 +1259,9 @@
     "article": "toxic-kitchen-appliances-ranked.html",
     "generalises": false,
     "rollup": {
-      "products": 2,
-      "researched": 2,
-      "flagged": 2,
+      "products": 3,
+      "researched": 3,
+      "flagged": 3,
       "worst": "skip"
     },
     "scopeNote": "Our verdict varies across this brand's range.",
@@ -1247,8 +1332,192 @@
           "disclose": false,
           "authored": true
         }
+      },
+      {
+        "name": "Amazon Basics exercise and yoga mats",
+        "matchAll": [
+          [
+            "amazon",
+            "basics",
+            "yoga"
+          ],
+          [
+            "amazon",
+            "basics",
+            "exercise"
+          ]
+        ],
+        "asins": [
+          "B01LP0U5X0",
+          "B01LP0UX9G"
+        ],
+        "verdict": "skip",
+        "note": "Most mats are PVC, TPE, NBR or EVA foam. PVC is made from a known carcinogen, EVA can off gas formamide, and eco labels like PER are usually PVC in disguise (Ecology Center testing, 2019). You press skin into a mat for an hour while breathing directly above it.",
+        "origin": "hand",
+        "source": "toxic-kitchen-appliances-ranked.html",
+        "ext": {
+          "verdict": "skip",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "fail",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
       }
     ]
+  },
+  {
+    "id": "amazon-grocery",
+    "brand": "Amazon Grocery",
+    "category": "Multi-category",
+    "stance": "careful",
+    "reason": "Amazon's own grocery label across many categories, so a finding on one product says nothing about another. The bottled water is single use PET; the sea salt has no published third party metal testing.",
+    "evidence": "Verdicts here are per product",
+    "sources": [
+      "plastic-in-groceries-what-really-matters.html"
+    ],
+    "article": "plastic-in-groceries-what-really-matters.html",
+    "reviewed": true,
+    "generalises": false,
+    "aliases": [
+      "Amazon Saver",
+      "Amazon Elements"
+    ],
+    "products": [
+      {
+        "name": "Amazon Grocery sea salt",
+        "matchAll": [
+          [
+            "amazon",
+            "grocery",
+            "salt"
+          ]
+        ],
+        "asins": [
+          "B07QW1G8MW"
+        ],
+        "verdict": "careful",
+        "note": "No published third party heavy metal or microplastic testing. Sea salt is a category where independent testing finds both, so the absence of a number is the finding.",
+        "origin": "hand",
+        "source": "plastic-in-groceries-what-really-matters.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "caution"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      },
+      {
+        "name": "Amazon Grocery spring water",
+        "matchAll": [
+          [
+            "amazon",
+            "grocery",
+            "water"
+          ],
+          [
+            "amazon",
+            "grocery",
+            "spring"
+          ]
+        ],
+        "asins": [
+          "B0CRF7TG4K"
+        ],
+        "verdict": "skip",
+        "note": "Single use PET, which is a major microplastic source rather than a neutral container. Bottled water carries far more particles than filtered tap, and heat and storage time both increase what migrates out of the bottle.",
+        "origin": "hand",
+        "source": "plastic-in-groceries-what-really-matters.html",
+        "ext": {
+          "verdict": "skip",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "fail",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      },
+      {
+        "name": "Amazon Saver black tea",
+        "matchAll": [
+          [
+            "amazon",
+            "saver",
+            "tea"
+          ]
+        ],
+        "asins": [
+          "B07X1HW96F"
+        ],
+        "verdict": "careful",
+        "note": "One plastic tea bag releases 11.6 billion microplastic particles per cup, and heat is the trigger. Silky and pyramid bags are nylon or PET, and even most paper bags carry a heat sealed polypropylene seam that sheds into the water.",
+        "origin": "hand",
+        "source": "plastic-in-groceries-what-really-matters.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "caution",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "packaging": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "scopeNote": "Our verdict varies across this brand's range.",
+    "rollup": {
+      "products": 3,
+      "researched": 3,
+      "flagged": 3,
+      "worst": "skip"
+    }
   },
   {
     "id": "ambika-boutique",
@@ -2269,6 +2538,44 @@
           ]
         ],
         "matchFrom": "name"
+      },
+      {
+        "name": "Arm & Hammer liquid laundry detergent",
+        "matchAll": [
+          [
+            "arm",
+            "hammer",
+            "detergent"
+          ],
+          [
+            "arm",
+            "hammer",
+            "liquid"
+          ]
+        ],
+        "asins": [
+          "B0GSPD9FZ6",
+          "B0G4KCCQN2",
+          "B0GQKJ8L9C"
+        ],
+        "verdict": "careful",
+        "note": "4.28 ppm 1,4-dioxane in 2022 testing, the highest figure among the mainstream detergents tested, plus an undisclosed fragrance and a single use plastic jug.",
+        "origin": "hand",
+        "source": "best-non-toxic-laundry-detergent.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "caution",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "caution"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
       }
     ],
     "fronts": {
@@ -2302,9 +2609,9 @@
     "article": "best-non-toxic-laundry-detergent.html",
     "generalises": true,
     "rollup": {
-      "products": 1,
-      "researched": 1,
-      "flagged": 1,
+      "products": 2,
+      "researched": 2,
+      "flagged": 2,
       "worst": "careful"
     }
   },
@@ -2347,6 +2654,80 @@
     "rollup": {
       "products": 0,
       "researched": 0,
+      "flagged": 0,
+      "worst": null
+    }
+  },
+  {
+    "id": "astercook",
+    "brand": "Astercook",
+    "category": "Cutting boards",
+    "stance": "good",
+    "reason": "Bamboo rather than plastic, which is the point. Bamboo is a grass and is harder on knife edges than end grain wood, but it sheds no polyethylene into food.",
+    "evidence": "Bamboo, not plastic",
+    "sources": [
+      "best-non-toxic-cutting-boards.html"
+    ],
+    "article": "best-non-toxic-cutting-boards.html",
+    "reviewed": true,
+    "generalises": true,
+    "products": [
+      {
+        "name": "Bamboo cutting boards",
+        "matchAll": [
+          [
+            "astercook",
+            "cutting"
+          ]
+        ],
+        "asins": [
+          "B0FH6YL3XC"
+        ],
+        "verdict": "good",
+        "note": "Bamboo rather than plastic, which is the whole point in this category. Harder on knife edges than end grain wood, but it sheds no polyethylene into food.",
+        "origin": "hand",
+        "source": "best-non-toxic-cutting-boards.html",
+        "ext": {
+          "verdict": "good",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "pass",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "caution",
+        "note": "Bamboo rather than plastic, which is the point",
+        "origin": "extracted"
+      },
+      "packaging": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "rollup": {
+      "products": 1,
+      "researched": 1,
       "flagged": 0,
       "worst": null
     }
@@ -2850,6 +3231,40 @@
           "disclose": false,
           "rules": []
         }
+      },
+      {
+        "name": "Daily Moisturizing body lotion",
+        "matchAll": [
+          [
+            "aveeno",
+            "lotion"
+          ],
+          [
+            "aveeno",
+            "moisturizing"
+          ]
+        ],
+        "asins": [
+          "B001459IEE"
+        ],
+        "verdict": "careful",
+        "note": "A fragranced leave on emulsion in a plastic bottle. Aveeno's sunscreens are a separate and worse problem; this verdict covers the lotion.",
+        "origin": "hand",
+        "source": "top-100-baby-kids-products-amazon.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "caution",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
       }
     ],
     "fronts": {
@@ -2879,9 +3294,9 @@
     "generalises": false,
     "scopeNote": "Our verdict varies across this brand's range.",
     "rollup": {
-      "products": 3,
-      "researched": 3,
-      "flagged": 3,
+      "products": 4,
+      "researched": 4,
+      "flagged": 4,
       "worst": "skip"
     }
   },
@@ -3619,6 +4034,81 @@
     }
   },
   {
+    "id": "baja-gold",
+    "brand": "Baja Gold",
+    "category": "Salt",
+    "stance": "careful",
+    "reason": "An unrefined sea salt marketed on mineral content. Unrefined is not the same as tested: sea salt is one of the categories where microplastics and heavy metals turn up, and there is no published third party metal or particle testing to check.",
+    "evidence": "No published third party metal or microplastic testing",
+    "sources": [
+      "microplastics-in-salt-and-pantry-staples.html"
+    ],
+    "article": "microplastics-in-salt-and-pantry-staples.html",
+    "reviewed": true,
+    "generalises": true,
+    "alternative": "A salt with published third party testing",
+    "products": [
+      {
+        "name": "Baja Gold mineral sea salt",
+        "matchAll": [
+          [
+            "baja",
+            "gold"
+          ]
+        ],
+        "asins": [
+          "B0CB4X5TDP"
+        ],
+        "verdict": "careful",
+        "note": "Marketed on mineral content, but unrefined is not the same as tested. Sea salt is a category where microplastics and heavy metals turn up, and there is no published third party metal or particle testing.",
+        "origin": "hand",
+        "source": "microplastics-in-salt-and-pantry-staples.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "caution"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "packaging": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "pass",
+        "note": "No published third party metal or microplastic testing",
+        "origin": "extracted"
+      }
+    },
+    "rollup": {
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "careful"
+    }
+  },
+  {
     "id": "ball",
     "brand": "Ball",
     "category": "Food storage",
@@ -4262,6 +4752,80 @@
       "researched": 1,
       "flagged": 0,
       "worst": null
+    }
+  },
+  {
+    "id": "barossa-design",
+    "brand": "Barossa Design",
+    "category": "Shower curtains",
+    "stance": "careful",
+    "reason": "OEKO-TEX certified fabric, which is a real certification and better than a vinyl liner. Still a synthetic fabric, so it is the better plastic rather than no plastic.",
+    "evidence": "OEKO-TEX certified, but synthetic fabric",
+    "sources": [
+      "best-non-toxic-shower-curtains.html"
+    ],
+    "article": "best-non-toxic-shower-curtains.html",
+    "reviewed": true,
+    "generalises": true,
+    "alternative": "A hemp or OEKO-TEX cotton curtain with no liner",
+    "products": [
+      {
+        "name": "OEKO-TEX fabric shower curtain liner",
+        "matchAll": [
+          [
+            "barossa"
+          ]
+        ],
+        "asins": [
+          "B08QRFZ6TH"
+        ],
+        "verdict": "careful",
+        "note": "OEKO-TEX certified fabric, which is a real certification and a clear step up from a vinyl liner. Still a synthetic fabric, so it is the better plastic rather than no plastic.",
+        "origin": "hand",
+        "source": "best-non-toxic-shower-curtains.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "caution",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "pass"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "packaging": {
+        "status": "pass",
+        "note": "OEKO-TEX certified fabric, which is a real certification and better than a vinyl liner",
+        "origin": "extracted"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "pass",
+        "note": "OEKO-TEX certified fabric, which is a real certification and better than a vinyl liner",
+        "origin": "extracted"
+      }
+    },
+    "rollup": {
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "careful"
     }
   },
   {
@@ -4970,13 +5534,52 @@
             "2 formula-read-from-materials"
           ]
         }
+      },
+      {
+        "name": "Baby food pouches",
+        "matchAll": [
+          [
+            "beech",
+            "nut",
+            "pouch"
+          ],
+          [
+            "beechnut",
+            "pouch"
+          ]
+        ],
+        "asins": [
+          "B0BQJTVQS3",
+          "B0BQJYCLKW"
+        ],
+        "verdict": "skip",
+        "note": "A multilayer plastic pouch with an acidic puree inside, the combination Consumer Reports found phthalates in across the category in 2023, on a brand named in the 2021 Congressional heavy metals report with ingredients up to 913 ppb arsenic and 887 ppb lead. Beech-Nut's own glass jar line is the better half of the range.",
+        "origin": "hand",
+        "source": "top-100-baby-kids-products-amazon.html",
+        "ext": {
+          "verdict": "skip",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "fail",
+            "legal": "unassessed",
+            "testing": "fail"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        },
+        "matchNot": [
+          "jar"
+        ]
       }
     ],
     "scopeNote": "Our verdict varies across this brand's range.",
     "rollup": {
-      "products": 2,
-      "researched": 2,
-      "flagged": 1,
+      "products": 3,
+      "researched": 3,
+      "flagged": 2,
       "worst": "skip"
     }
   },
@@ -5698,12 +6301,123 @@
     },
     "reviewed": true,
     "article": "how-to-avoid-microplastics-in-tea.html",
-    "generalises": true,
+    "generalises": false,
     "rollup": {
-      "products": 0,
-      "researched": 0,
-      "flagged": 0,
-      "worst": null
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "careful"
+    },
+    "products": [
+      {
+        "name": "Bigelow tea bags",
+        "matchAll": [
+          [
+            "bigelow"
+          ]
+        ],
+        "asins": [
+          "B001A3OADO"
+        ],
+        "verdict": "careful",
+        "note": "One plastic tea bag releases 11.6 billion microplastic particles per cup, and heat is the trigger. Silky and pyramid bags are nylon or PET, and even most paper bags carry a heat sealed polypropylene seam that sheds into the water.",
+        "origin": "hand",
+        "source": "how-to-avoid-microplastics-in-tea.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "caution",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "scopeNote": "Our verdict varies across this brand's range."
+  },
+  {
+    "id": "bigfoot-curtain",
+    "brand": "BigFoot",
+    "category": "Shower curtains",
+    "stance": "careful",
+    "reason": "PEVA and EVA are less bad than PVC, not non toxic. They drop the chlorine and phthalates but are still plastic and still off gas in a hot shower. A fabric curtain skips the liner entirely.",
+    "evidence": "Plastic shower curtain liner",
+    "sources": [
+      "best-non-toxic-shower-curtains.html"
+    ],
+    "article": "best-non-toxic-shower-curtains.html",
+    "reviewed": true,
+    "generalises": true,
+    "alternative": "A hemp or OEKO-TEX cotton curtain with no liner",
+    "products": [
+      {
+        "name": "BigFoot clear shower curtain",
+        "matchAll": [
+          [
+            "bigfoot",
+            "shower"
+          ],
+          [
+            "bigfoot",
+            "curtain"
+          ]
+        ],
+        "asins": [
+          "B08CRPWQHB"
+        ],
+        "verdict": "careful",
+        "note": "PEVA and EVA are less bad than PVC, not non toxic. They drop the chlorine and phthalates but are still plastic and still off gas in a hot shower. A fabric curtain skips the liner entirely.",
+        "origin": "hand",
+        "source": "best-non-toxic-shower-curtains.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "caution",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "caution",
+        "note": "PEVA and EVA are less bad than PVC, not non toxic",
+        "origin": "extracted"
+      },
+      "packaging": {
+        "status": "caution",
+        "note": "Plastic shower curtain liner",
+        "origin": "extracted"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "rollup": {
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "careful"
     }
   },
   {
@@ -6330,6 +7044,81 @@
     }
   },
   {
+    "id": "blue-lizard",
+    "brand": "Blue Lizard",
+    "category": "Sunscreen",
+    "stance": "good",
+    "reason": "A genuine 100 percent zinc oxide mineral filter on the Sensitive line, with no chemical UV filters. Sold in a plastic bottle, which for an emulsion is a caution rather than a fail.",
+    "evidence": "100% zinc oxide mineral filter, no chemical filters",
+    "sources": [
+      "best-mineral-sunscreen-guide.html"
+    ],
+    "article": "best-mineral-sunscreen-guide.html",
+    "reviewed": true,
+    "generalises": true,
+    "products": [
+      {
+        "name": "Sensitive Mineral Sunscreen SPF 50+",
+        "matchAll": [
+          [
+            "blue",
+            "lizard"
+          ]
+        ],
+        "asins": [
+          "B0862Q6BV9",
+          "B084ZP848Y"
+        ],
+        "verdict": "good",
+        "note": "A genuine 100 percent zinc oxide filter with no chemical UV filters, which is the specification the guide asks for.",
+        "origin": "hand",
+        "source": "best-mineral-sunscreen-guide.html",
+        "ext": {
+          "verdict": "good",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "pass",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "packaging": {
+        "status": "caution",
+        "note": "Sold in a plastic bottle, which for an emulsion is a caution rather than a fail",
+        "origin": "extracted"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "rollup": {
+      "products": 1,
+      "researched": 1,
+      "flagged": 0,
+      "worst": null
+    }
+  },
+  {
     "id": "bluevua",
     "brand": "Bluevua",
     "category": "Water filtration",
@@ -6719,6 +7508,81 @@
       "products": 3,
       "researched": 3,
       "flagged": 2,
+      "worst": "skip"
+    }
+  },
+  {
+    "id": "body-fortress",
+    "brand": "Body Fortress",
+    "category": "Supplements",
+    "stance": "skip",
+    "reason": "A budget mass market whey with artificial sweeteners and colours and no third party certification for heavy metals or banned substances. Protein powders are one of the categories where independent testing has repeatedly found lead and cadmium, so an uncertified product is an unknown you are drinking daily.",
+    "evidence": "No third party certification; artificial sweeteners and colours",
+    "sources": [
+      "cleanest-protein-powder-tested.html"
+    ],
+    "article": "cleanest-protein-powder-tested.html",
+    "reviewed": true,
+    "generalises": true,
+    "alternative": "ProMix Grass Fed Whey Isolate, or Transparent Labs",
+    "products": [
+      {
+        "name": "Super Advanced whey protein",
+        "matchAll": [
+          [
+            "body",
+            "fortress"
+          ]
+        ],
+        "asins": [
+          "B0BJLBD427"
+        ],
+        "verdict": "skip",
+        "note": "No third party certification for heavy metals or banned substances, with artificial sweeteners and colours. Protein powders are one of the categories where independent testing has repeatedly found lead and cadmium, so an uncertified daily powder is an unknown.",
+        "origin": "hand",
+        "source": "cleanest-protein-powder-tested.html",
+        "ext": {
+          "verdict": "skip",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "fail",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "packaging": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "rollup": {
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
       "worst": "skip"
     }
   },
@@ -7840,13 +8704,45 @@
     },
     "reviewed": true,
     "article": "supplements-and-microplastics.html",
-    "generalises": true,
+    "generalises": false,
     "rollup": {
-      "products": 0,
-      "researched": 0,
-      "flagged": 0,
-      "worst": null
-    }
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "careful"
+    },
+    "products": [
+      {
+        "name": "BulkSupplements creatine monohydrate",
+        "matchAll": [
+          [
+            "bulksupplements"
+          ]
+        ],
+        "asins": [
+          "B00E9M4XEE"
+        ],
+        "verdict": "careful",
+        "note": "Sold as a plain dry powder with a certificate of analysis available on request, which is better than nothing but is the brand's own testing rather than third party certification.",
+        "origin": "hand",
+        "source": "supplements-and-microplastics.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "pass",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "scopeNote": "Our verdict varies across this brand's range."
   },
   {
     "id": "bumbleride",
@@ -8724,6 +9620,85 @@
     }
   },
   {
+    "id": "cap-barbell",
+    "brand": "CAP",
+    "category": "Yoga mats",
+    "stance": "skip",
+    "reason": "Most mats are PVC, TPE, NBR or EVA foam. PVC is made from a known carcinogen, EVA can off gas formamide, and eco labels like PER are usually PVC in disguise (Ecology Center testing, 2019). You press skin into a mat for an hour while breathing directly above it.",
+    "evidence": "PVC or EVA foam mat",
+    "sources": [
+      "best-non-toxic-yoga-mats.html"
+    ],
+    "article": "best-non-toxic-yoga-mats.html",
+    "reviewed": true,
+    "generalises": true,
+    "alternative": "Manduka eKO natural tree rubber",
+    "aliases": [
+      "CAP Barbell"
+    ],
+    "products": [
+      {
+        "name": "CAP thick exercise mats",
+        "matchAll": [
+          [
+            "cap",
+            "yoga",
+            "mat"
+          ]
+        ],
+        "asins": [
+          "B0C7SFV8RH"
+        ],
+        "verdict": "skip",
+        "note": "Most mats are PVC, TPE, NBR or EVA foam. PVC is made from a known carcinogen, EVA can off gas formamide, and eco labels like PER are usually PVC in disguise (Ecology Center testing, 2019). You press skin into a mat for an hour while breathing directly above it.",
+        "origin": "hand",
+        "source": "best-non-toxic-yoga-mats.html",
+        "ext": {
+          "verdict": "skip",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "fail",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "caution",
+        "note": "PVC is made from a known carcinogen, EVA can off gas formamide",
+        "origin": "extracted"
+      },
+      "packaging": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "rollup": {
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "skip"
+    }
+  },
+  {
     "id": "caraway",
     "brand": "Caraway",
     "category": "Cookware",
@@ -8920,13 +9895,47 @@
       }
     },
     "reviewed": true,
-    "generalises": true,
+    "generalises": false,
     "rollup": {
-      "products": 0,
-      "researched": 0,
-      "flagged": 0,
-      "worst": null
-    }
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "skip"
+    },
+    "products": [
+      {
+        "name": "CAROTE granite nonstick pans",
+        "matchAll": [
+          [
+            "carote"
+          ]
+        ],
+        "asins": [
+          "B0732NXYNS",
+          "B0DS8Y8RY4",
+          "B0DPHCFCRX"
+        ],
+        "verdict": "skip",
+        "note": "Nonstick coating in the food path. Granite, marble and ceramic finishes on a budget pan are PTFE based unless the maker names the coating and shows third party testing, and PFOA free does not mean PFAS free.",
+        "origin": "hand",
+        "source": null,
+        "ext": {
+          "verdict": "skip",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "fail",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "scopeNote": "Our verdict varies across this brand's range."
   },
   {
     "id": "carter-s",
@@ -9109,13 +10118,47 @@
     },
     "reviewed": true,
     "article": "microplastics-in-salt-and-pantry-staples.html",
-    "generalises": true,
+    "generalises": false,
     "rollup": {
-      "products": 0,
-      "researched": 0,
-      "flagged": 0,
-      "worst": null
-    }
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "careful"
+    },
+    "products": [
+      {
+        "name": "Celtic light grey sea salt",
+        "matchAll": [
+          [
+            "celtic",
+            "sea",
+            "salt"
+          ]
+        ],
+        "asins": [
+          "B000SWVPV8"
+        ],
+        "verdict": "careful",
+        "note": "Unrefined and mineral rich, which is the selling point, but unrefined also means whatever the sea carried is still in it. Sea salt is a known microplastic and heavy metal category and there is no published third party testing here.",
+        "origin": "hand",
+        "source": "microplastics-in-salt-and-pantry-staples.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "caution"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "scopeNote": "Our verdict varies across this brand's range."
   },
   {
     "id": "cento",
@@ -9238,10 +10281,163 @@
       }
     },
     "reviewed": true,
-    "generalises": true,
+    "generalises": false,
     "rollup": {
-      "products": 0,
-      "researched": 0,
+      "products": 2,
+      "researched": 2,
+      "flagged": 0,
+      "worst": null
+    },
+    "products": [
+      {
+        "name": "Daily Moisturizing Lotion",
+        "matchAll": [
+          [
+            "cerave",
+            "moisturizing",
+            "lotion"
+          ],
+          [
+            "cerave",
+            "daily"
+          ]
+        ],
+        "asins": [
+          "B07RK4HST7"
+        ],
+        "verdict": "good",
+        "note": "Fragrance free with ceramides and no undisclosed scent mixture, which is the main thing that goes wrong in a leave on lotion. Sold in a plastic bottle, a caution for an emulsion rather than a fail.",
+        "origin": "hand",
+        "source": null,
+        "ext": {
+          "verdict": "good",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "pass",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        },
+        "matchNot": [
+          "sunscreen",
+          "mineral"
+        ]
+      },
+      {
+        "name": "Invisible Mineral Sunscreen SPF 50",
+        "matchAll": [
+          [
+            "cerave",
+            "mineral",
+            "sunscreen"
+          ]
+        ],
+        "asins": [
+          "B0FXNHDWM7"
+        ],
+        "verdict": "good",
+        "note": "A 100 percent mineral filter, zinc oxide and titanium dioxide, with no chemical UV filters. Sold in a plastic tube, which for an emulsion is worth knowing but not disqualifying.",
+        "origin": "hand",
+        "source": null,
+        "ext": {
+          "verdict": "good",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "pass",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "scopeNote": "Our verdict varies across this brand's range."
+  },
+  {
+    "id": "cetaphil",
+    "brand": "Cetaphil",
+    "category": "Sunscreen",
+    "stance": "careful",
+    "reason": "The Sheer Mineral face line is zinc oxide based, which is the right filter. The rest of the Cetaphil range is conventional, so this verdict covers the mineral SPF only.",
+    "evidence": "Zinc oxide filter on the Sheer Mineral line",
+    "sources": [
+      "best-mineral-sunscreen-guide.html"
+    ],
+    "article": "best-mineral-sunscreen-guide.html",
+    "reviewed": true,
+    "generalises": false,
+    "alternative": "Blue Lizard Sensitive, or California Baby for kids",
+    "products": [
+      {
+        "name": "Sheer Mineral Face Sunscreen SPF 50",
+        "matchAll": [
+          [
+            "cetaphil",
+            "mineral"
+          ],
+          [
+            "cetaphil",
+            "sunscreen"
+          ]
+        ],
+        "asins": [
+          "B08HJKQP7X"
+        ],
+        "verdict": "good",
+        "note": "Zinc oxide mineral filter with no chemical UV filters. This verdict covers the Sheer Mineral line only; the rest of the Cetaphil range is conventional.",
+        "origin": "hand",
+        "source": "best-mineral-sunscreen-guide.html",
+        "ext": {
+          "verdict": "good",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "pass",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "packaging": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "scopeNote": "Our verdict varies across this brand's range.",
+    "rollup": {
+      "products": 1,
+      "researched": 1,
       "flagged": 0,
       "worst": null
     }
@@ -10431,6 +11627,46 @@
           "disclose": false,
           "rules": []
         }
+      },
+      {
+        "name": "Colgate Optic White and Cavity Protection",
+        "matchAll": [
+          [
+            "colgate",
+            "optic",
+            "white"
+          ],
+          [
+            "colgate",
+            "cavity"
+          ],
+          [
+            "colgate",
+            "toothpaste"
+          ]
+        ],
+        "asins": [
+          "B082F1QH7S",
+          "B01BNEWDFQ"
+        ],
+        "verdict": "skip",
+        "note": "Lead at about 539 ppb, the highest of the mainstream pastes, alongside titanium dioxide and SLS. Independent lab testing published by Lead Safe Mama in 2025. Colgate disputes these results.",
+        "origin": "hand",
+        "source": "best-non-toxic-toothpaste-guide.html",
+        "ext": {
+          "verdict": "skip",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "caution",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "fail"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
       }
     ],
     "fronts": {
@@ -10458,9 +11694,9 @@
     "article": "best-non-toxic-toothpaste-guide.html",
     "generalises": true,
     "rollup": {
-      "products": 1,
-      "researched": 1,
-      "flagged": 1,
+      "products": 2,
+      "researched": 2,
+      "flagged": 2,
       "worst": "skip"
     }
   },
@@ -10920,7 +12156,7 @@
     },
     "reviewed": true,
     "article": "clean-products-that-arent.html",
-    "generalises": true,
+    "generalises": false,
     "products": [
       {
         "name": "Whole range",
@@ -10955,14 +12191,45 @@
           "disclose": true,
           "rules": []
         }
+      },
+      {
+        "name": "Sport Mineral Sunscreen SPF 50",
+        "matchAll": [
+          [
+            "coppertone",
+            "mineral"
+          ]
+        ],
+        "asins": [
+          "B08PCCWLZS"
+        ],
+        "verdict": "careful",
+        "note": "The Sport Mineral line uses a zinc filter, which is the right chemistry, but the wider Coppertone range is chemical filter based and the brand has no published contamination testing.",
+        "origin": "hand",
+        "source": "clean-products-that-arent.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "caution",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
       }
     ],
     "rollup": {
-      "products": 1,
-      "researched": 0,
-      "flagged": 0,
-      "worst": null
-    }
+      "products": 2,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "careful"
+    },
+    "scopeNote": "Our verdict varies across this brand's range."
   },
   {
     "id": "cora-period",
@@ -11496,19 +12763,31 @@
         "note": "Sealed True HEPA plus activated carbon, AHAM Verifide at roughly 240 CFM for rooms up to 361 sq ft. 24.7 dB on low with auto mode and a particle sensor. Worth knowing: Has an optional ionizer, leave it off\", \"Plastic housing\", \"Filters are a recurring cost.",
         "origin": "store",
         "ext": {
-          "verdict": "unrated",
-          "why": "no front is directly evidenced by the note",
+          "verdict": "good",
+          "why": "Reviewed by hand: sealed True HEPA with AHAM Verifide rates, ioniser off by default.",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "pass",
             "packaging": "unassessed",
             "legal": "unassessed",
-            "testing": "unassessed"
+            "testing": "pass"
           },
-          "scope": "sku",
+          "scope": "line",
           "basis": "direct",
           "disclose": false,
-          "rules": []
-        }
+          "authored": true
+        },
+        "matchAll": [
+          [
+            "coway",
+            "airmega",
+            "1512"
+          ],
+          [
+            "coway",
+            "airmega",
+            "mighty"
+          ]
+        ]
       },
       {
         "name": "Coway Airmega 400",
@@ -11519,19 +12798,26 @@
         "note": "Dual sealed True HEPA and activated carbon filters with an AHAM Verifide CADR of 400 CFM, the highest here, for rooms up to 1,560 sq ft. Auto mode with a real time air quality indicator. Worth knowing: Large footprint\", \"Optional ionizer, leave it off\", \"Higher filter cost.",
         "origin": "store",
         "ext": {
-          "verdict": "unrated",
-          "why": "the note reads adversely on packaging, needs a human look",
+          "verdict": "good",
+          "why": "Reviewed by hand: sealed True HEPA with AHAM Verifide rates, ioniser off by default.",
           "fronts": {
-            "formula": "unassessed",
-            "packaging": "caution",
+            "formula": "pass",
+            "packaging": "unassessed",
             "legal": "unassessed",
-            "testing": "unassessed"
+            "testing": "pass"
           },
-          "scope": "sku",
+          "scope": "line",
           "basis": "direct",
           "disclose": false,
-          "rules": []
-        }
+          "authored": true
+        },
+        "matchAll": [
+          [
+            "coway",
+            "airmega",
+            "400"
+          ]
+        ]
       },
       {
         "name": "Coway Airmega 200M",
@@ -11542,19 +12828,26 @@
         "note": "True HEPA plus activated carbon for VOCs. Reliable, quiet, runs continuously. Avoid ionizers and ozone units. Badges: True HEPA, Activated carbon.",
         "origin": "registry",
         "ext": {
-          "verdict": "unrated",
-          "why": "no front is directly evidenced by the note",
+          "verdict": "good",
+          "why": "Reviewed by hand: sealed True HEPA with AHAM Verifide rates, ioniser off by default.",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "pass",
             "packaging": "unassessed",
             "legal": "unassessed",
-            "testing": "unassessed"
+            "testing": "pass"
           },
-          "scope": "sku",
+          "scope": "line",
           "basis": "direct",
           "disclose": false,
-          "rules": []
-        }
+          "authored": true
+        },
+        "matchAll": [
+          [
+            "coway",
+            "airmega",
+            "200m"
+          ]
+        ]
       }
     ],
     "rollup": {
@@ -11839,12 +13132,52 @@
           "disclose": false,
           "rules": []
         }
+      },
+      {
+        "name": "Crest whitening and 3D White pastes",
+        "matchAll": [
+          [
+            "crest",
+            "toothpaste"
+          ],
+          [
+            "crest",
+            "3d",
+            "white"
+          ],
+          [
+            "crest",
+            "scope"
+          ]
+        ],
+        "asins": [
+          "B005PLQIQ4",
+          "B09F8FZ18G"
+        ],
+        "verdict": "skip",
+        "note": "Lead at about 399 ppb, with titanium dioxide and artificial dyes. Independent lab testing published by Lead Safe Mama in 2025. The brands dispute these results.",
+        "origin": "hand",
+        "source": "top-100-baby-kids-products-amazon.html",
+        "ext": {
+          "verdict": "skip",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "caution",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "fail"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
       }
     ],
     "rollup": {
-      "products": 2,
-      "researched": 2,
-      "flagged": 2,
+      "products": 3,
+      "researched": 3,
+      "flagged": 3,
       "worst": "skip"
     }
   },
@@ -12685,6 +14018,80 @@
       "researched": 0,
       "flagged": 0,
       "worst": null
+    }
+  },
+  {
+    "id": "dealusy",
+    "brand": "Dealusy",
+    "category": "Food storage",
+    "stance": "careful",
+    "reason": "Glass body with a plastic lid. Hot steam rises and contacts the lid, and plastic lids degrade and shed over time, so the glass only solves half the problem. Containers with glass or bamboo lids close the other half.",
+    "evidence": "Glass body, plastic lid",
+    "sources": [
+      "best-plastic-free-food-storage-containers.html"
+    ],
+    "article": "best-plastic-free-food-storage-containers.html",
+    "reviewed": true,
+    "generalises": true,
+    "alternative": "Urban Green or EcoEvo glass containers with glass lids",
+    "products": [
+      {
+        "name": "Dealusy glass containers with plastic lids",
+        "matchAll": [
+          [
+            "dealusy"
+          ]
+        ],
+        "asins": [
+          "B0GRTKQBCN"
+        ],
+        "verdict": "careful",
+        "note": "Glass body with a plastic lid. Hot steam rises and contacts the lid, and plastic lids degrade and shed over time, so the glass only solves half the problem. Containers with glass or bamboo lids close the other half.",
+        "origin": "hand",
+        "source": "best-plastic-free-food-storage-containers.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "caution",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "packaging": {
+        "status": "caution",
+        "note": "plastic lid",
+        "origin": "extracted"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "rollup": {
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "careful"
     }
   },
   {
@@ -13824,36 +15231,6 @@
         "matchFrom": "name"
       },
       {
-        "name": "Glass baby bottles",
-        "verdict": "careful",
-        "note": "Painted exterior markings, a category wide lead risk.",
-        "ext": {
-          "verdict": "careful",
-          "why": "adverse finding stands",
-          "fronts": {
-            "formula": "unassessed",
-            "packaging": "unassessed",
-            "legal": "unassessed",
-            "testing": "caution"
-          },
-          "scope": "brand",
-          "basis": "direct",
-          "disclose": false,
-          "rules": []
-        },
-        "origin": "hand",
-        "matchAll": [
-          [
-            "dr",
-            "brown",
-            "s",
-            "glass",
-            "bottles"
-          ]
-        ],
-        "matchFrom": "name"
-      },
-      {
         "name": "Wide Neck Glass Baby Bottle (painted markings)",
         "asins": [
           "B098YHHV3Q"
@@ -13864,18 +15241,66 @@
         "source": "top-100-baby-kids-products-amazon.html",
         "ext": {
           "verdict": "skip",
-          "why": "adverse finding stands",
+          "why": "Reviewed by hand: the marking method decides, not the glass.",
           "fronts": {
-            "formula": "unassessed",
-            "packaging": "pass",
+            "formula": "pass",
+            "packaging": "fail",
             "legal": "unassessed",
-            "testing": "pass"
+            "testing": "fail"
           },
-          "scope": "sku",
+          "scope": "line",
           "basis": "direct",
           "disclose": false,
-          "rules": []
-        }
+          "authored": true
+        },
+        "matchAll": [
+          [
+            "dr brown",
+            "glass"
+          ],
+          [
+            "dr browns",
+            "glass"
+          ]
+        ]
+      },
+      {
+        "name": "Options+ plastic baby bottles",
+        "matchAll": [
+          [
+            "dr brown",
+            "options"
+          ],
+          [
+            "dr browns",
+            "options"
+          ]
+        ],
+        "asins": [
+          "B01845QGKK",
+          "B07TXM6K2T"
+        ],
+        "verdict": "careful",
+        "note": "Polypropylene bottles heated and sterilised repeatedly with warm milk, which is an emulsion and pulls more out of plastic than water does. The same bottle is sold in glass.",
+        "origin": "hand",
+        "source": "best-non-toxic-baby-bottles.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "caution",
+            "packaging": "caution",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        },
+        "matchNot": [
+          "glass"
+        ]
       }
     ],
     "fronts": {
@@ -13909,6 +15334,90 @@
       "researched": 4,
       "flagged": 3,
       "worst": "skip"
+    }
+  },
+  {
+    "id": "dream-on-me",
+    "brand": "Dream On Me",
+    "category": "Nursery",
+    "stance": "careful",
+    "reason": "GREENGUARD Gold certified, which tests for VOC emissions and is a real certification. The fill is still polyurethane foam, so the certification covers what comes off it rather than what it is made of.",
+    "evidence": "GREENGUARD Gold certified; polyurethane foam core",
+    "sources": [
+      "non-toxic-nursery-setup.html"
+    ],
+    "article": "non-toxic-nursery-setup.html",
+    "reviewed": true,
+    "generalises": true,
+    "alternative": "Naturepedic or Avocado organic crib mattress",
+    "products": [
+      {
+        "name": "Nap Nest crib mattress",
+        "matchAll": [
+          [
+            "dream",
+            "on",
+            "me",
+            "mattress"
+          ],
+          [
+            "dream",
+            "on",
+            "me",
+            "crib"
+          ]
+        ],
+        "asins": [
+          "B0FHBBTK6W",
+          "B0FJ2XG7QB"
+        ],
+        "verdict": "careful",
+        "note": "GREENGUARD Gold certified, which tests VOC emissions and is a real certification. The fill is still polyurethane foam, so the certification covers what comes off it rather than what it is made of.",
+        "origin": "hand",
+        "source": "non-toxic-nursery-setup.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "caution",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "pass"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "pass",
+        "note": "The fill is still polyurethane foam, so the certification covers what comes off it rather than what it is…",
+        "origin": "extracted"
+      },
+      "packaging": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "pass",
+        "note": "GREENGUARD Gold certified, which tests for VOC emissions and is a real certification",
+        "origin": "extracted"
+      }
+    },
+    "rollup": {
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "careful"
     }
   },
   {
@@ -14280,6 +15789,80 @@
     ],
     "rollup": {
       "products": 2,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "careful"
+    }
+  },
+  {
+    "id": "dysanky",
+    "brand": "DYSANKY",
+    "category": "Water bottles",
+    "stance": "careful",
+    "reason": "Stainless body, but the lid puts a plastic straw and spout directly in the drink path. Our drinkware standard is no plastic touching the drink at all, and the lid is where almost every insulated bottle fails it.",
+    "evidence": "Plastic straw lid in the drink path",
+    "sources": [
+      "best-non-toxic-water-bottles.html"
+    ],
+    "article": "best-non-toxic-water-bottles.html",
+    "reviewed": true,
+    "generalises": true,
+    "alternative": "A stainless bottle with a plain steel or bamboo cap",
+    "products": [
+      {
+        "name": "DYSANKY insulated bottle with straw lid",
+        "matchAll": [
+          [
+            "dysanky"
+          ]
+        ],
+        "asins": [
+          "B0DLCG65B5"
+        ],
+        "verdict": "careful",
+        "note": "Stainless body, but the lid puts a plastic straw and spout directly in the drink path. Our drinkware standard is no plastic touching the drink at all, and the lid is where almost every insulated bottle fails it.",
+        "origin": "hand",
+        "source": "best-non-toxic-water-bottles.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "fail",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "pass",
+        "note": "Stainless body",
+        "origin": "extracted"
+      },
+      "packaging": {
+        "status": "caution",
+        "note": "the lid puts a plastic straw and spout directly in the drink path",
+        "origin": "extracted"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "rollup": {
+      "products": 1,
       "researched": 1,
       "flagged": 1,
       "worst": "careful"
@@ -16004,6 +17587,80 @@
     }
   },
   {
+    "id": "ehznzie",
+    "brand": "EHZNZIE",
+    "category": "Shower curtains",
+    "stance": "careful",
+    "reason": "PEVA and EVA are less bad than PVC, not non toxic. They drop the chlorine and phthalates but are still plastic and still off gas in a hot shower. A fabric curtain skips the liner entirely.",
+    "evidence": "PEVA shower curtain liner",
+    "sources": [
+      "best-non-toxic-shower-curtains.html"
+    ],
+    "article": "best-non-toxic-shower-curtains.html",
+    "reviewed": true,
+    "generalises": true,
+    "alternative": "A hemp or OEKO-TEX cotton curtain with no liner",
+    "products": [
+      {
+        "name": "EHZNZIE PEVA shower curtain liner",
+        "matchAll": [
+          [
+            "ehznzie"
+          ]
+        ],
+        "asins": [
+          "B093D7Y3F2"
+        ],
+        "verdict": "careful",
+        "note": "PEVA and EVA are less bad than PVC, not non toxic. They drop the chlorine and phthalates but are still plastic and still off gas in a hot shower. A fabric curtain skips the liner entirely.",
+        "origin": "hand",
+        "source": "best-non-toxic-shower-curtains.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "caution",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "caution",
+        "note": "PEVA and EVA are less bad than PVC, not non toxic",
+        "origin": "extracted"
+      },
+      "packaging": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "rollup": {
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "careful"
+    }
+  },
+  {
     "id": "ekkovision",
     "brand": "Ekkovision",
     "category": "Electrolytes",
@@ -16556,6 +18213,86 @@
     }
   },
   {
+    "id": "eos",
+    "brand": "eos",
+    "category": "Cosmetics",
+    "stance": "careful",
+    "reason": "Fragranced body lotion in a plastic bottle. An emulsion carries an oil phase, which extracts more from a container than a water based product does, and the fragrance is an undisclosed mixture.",
+    "evidence": "Undisclosed fragrance; emulsion in plastic",
+    "sources": [
+      "microplastics-in-cosmetics-and-personal-care.html"
+    ],
+    "article": "microplastics-in-cosmetics-and-personal-care.html",
+    "reviewed": true,
+    "generalises": true,
+    "alternative": "An unscented lotion in glass, or a simple body oil",
+    "products": [
+      {
+        "name": "eos Shea Better body lotion",
+        "matchAll": [
+          [
+            "eos",
+            "lotion"
+          ],
+          [
+            "eos",
+            "shea"
+          ]
+        ],
+        "asins": [
+          "B08KT2Z93D",
+          "B0BZGRCBY4"
+        ],
+        "verdict": "careful",
+        "note": "A fragranced emulsion in a plastic bottle. An emulsion carries an oil phase, which pulls more out of a container than a water based product, and the fragrance is an undisclosed mixture left on skin all day.",
+        "origin": "hand",
+        "source": "microplastics-in-cosmetics-and-personal-care.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "caution",
+            "packaging": "caution",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "caution",
+        "note": "the fragrance is an undisclosed mixture",
+        "origin": "extracted"
+      },
+      "packaging": {
+        "status": "caution",
+        "note": "Fragranced body lotion in a plastic bottle",
+        "origin": "extracted"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "rollup": {
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "careful"
+    }
+  },
+  {
     "id": "epic-pure",
     "brand": "Epic Pure",
     "category": "Water filter",
@@ -17063,7 +18800,7 @@
     "id": "evenflo",
     "brand": "Evenflo",
     "category": "Baby bottles",
-    "stance": "good",
+    "stance": "careful",
     "reason": "Classic Glass bottles are tempered glass with etched rather than painted markings, release no microplastics at any temperature, and cost about two dollars per bottle. Listed lead free in independent XRF screening.",
     "evidence": "Glass body, etched markings, listed lead free (Lead Safe Mama); no litigation or recalls on the glass line",
     "alternative": "",
@@ -17095,7 +18832,7 @@
     },
     "reviewed": true,
     "article": "best-non-toxic-baby-bottles.html",
-    "generalises": true,
+    "generalises": false,
     "products": [
       {
         "name": "Evenflo Classic Glass Bottles (8oz, 6 pack)",
@@ -17107,28 +18844,75 @@
         "origin": "store",
         "ext": {
           "verdict": "good",
-          "why": "independent lab result at sku scope",
+          "why": "Reviewed by hand: the marking method decides, not the glass.",
           "fronts": {
             "formula": "pass",
             "packaging": "pass",
             "legal": "unassessed",
-            "testing": "pass"
+            "testing": "unassessed"
           },
-          "scope": "sku",
+          "scope": "line",
           "basis": "direct",
           "disclose": false,
-          "rules": [
-            "2 formula-read-from-materials"
+          "authored": true
+        },
+        "matchAll": [
+          [
+            "evenflo",
+            "glass"
           ]
+        ]
+      },
+      {
+        "name": "Classic tinted plastic bottles",
+        "matchAll": [
+          [
+            "evenflo",
+            "tinted"
+          ],
+          [
+            "evenflo",
+            "plastic",
+            "bottle"
+          ],
+          [
+            "evenflo",
+            "classic",
+            "tinted"
+          ]
+        ],
+        "asins": [
+          "B07G4KBQJ7"
+        ],
+        "verdict": "skip",
+        "note": "Polypropylene bottles filled with warm milk. Milk is an emulsion, so it carries an oil phase that extracts more from plastic than water does, and bottles are heated and sterilised repeatedly, which drives migration harder than any other variable.",
+        "origin": "hand",
+        "source": "best-non-toxic-baby-bottles.html",
+        "ext": {
+          "verdict": "skip",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "fail",
+            "packaging": "fail",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
         }
       }
     ],
     "rollup": {
-      "products": 1,
-      "researched": 1,
-      "flagged": 0,
-      "worst": null
-    }
+      "products": 2,
+      "researched": 2,
+      "flagged": 1,
+      "worst": "skip"
+    },
+    "scopeNote": "Our verdict varies across this brand's range.",
+    "rollupApplied": true,
+    "rollupNote": "1 of 2 products we have reviewed under this brand are flagged: Classic tinted plastic bottles. The verdict depends which one you pick."
   },
   {
     "id": "every-man-jack",
@@ -17501,11 +19285,47 @@
     "article": "toxic-kitchen-appliances-ranked.html",
     "generalises": true,
     "rollup": {
-      "products": 0,
-      "researched": 0,
-      "flagged": 0,
-      "worst": null
-    }
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "skip"
+    },
+    "products": [
+      {
+        "name": "Plastic chopping boards",
+        "matchAll": [
+          [
+            "farberware",
+            "cutting"
+          ],
+          [
+            "farberware",
+            "chopping"
+          ]
+        ],
+        "asins": [
+          "B000W4OC80"
+        ],
+        "verdict": "skip",
+        "note": "A plastic cutting board sheds 14 to 71 million microplastic particles a year, with knife grooves releasing polyethylene fragments straight into food (Environmental Science & Technology, 2023). Wood is also more sanitary: UC Davis found bacteria die off in wood fibre while knife scarred plastic traps them.",
+        "origin": "hand",
+        "source": "toxic-kitchen-appliances-ranked.html",
+        "ext": {
+          "verdict": "skip",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "fail",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ]
   },
   {
     "id": "fellow",
@@ -17690,6 +19510,80 @@
       "researched": 0,
       "flagged": 0,
       "worst": null
+    }
+  },
+  {
+    "id": "fijinhom",
+    "brand": "Fijinhom",
+    "category": "Water bottles",
+    "stance": "careful",
+    "reason": "Stainless body, but the lid puts a plastic straw and spout directly in the drink path. Our drinkware standard is no plastic touching the drink at all, and the lid is where almost every insulated bottle fails it.",
+    "evidence": "Plastic lid components in the drink path",
+    "sources": [
+      "best-non-toxic-water-bottles.html"
+    ],
+    "article": "best-non-toxic-water-bottles.html",
+    "reviewed": true,
+    "generalises": true,
+    "alternative": "A stainless bottle with a plain steel or bamboo cap",
+    "products": [
+      {
+        "name": "Fijinhom insulated bottle",
+        "matchAll": [
+          [
+            "fijinhom"
+          ]
+        ],
+        "asins": [
+          "B0D2W136D1"
+        ],
+        "verdict": "careful",
+        "note": "Stainless body, but the lid puts a plastic straw and spout directly in the drink path. Our drinkware standard is no plastic touching the drink at all, and the lid is where almost every insulated bottle fails it.",
+        "origin": "hand",
+        "source": "best-non-toxic-water-bottles.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "caution",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "pass",
+        "note": "Stainless body",
+        "origin": "extracted"
+      },
+      "packaging": {
+        "status": "caution",
+        "note": "the lid puts a plastic straw and spout directly in the drink path",
+        "origin": "extracted"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "rollup": {
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "careful"
     }
   },
   {
@@ -18877,6 +20771,86 @@
     }
   },
   {
+    "id": "gaiam",
+    "brand": "Gaiam",
+    "category": "Yoga mats",
+    "stance": "skip",
+    "reason": "Most mats are PVC, TPE, NBR or EVA foam. PVC is made from a known carcinogen, EVA can off gas formamide, and eco labels like PER are usually PVC in disguise (Ecology Center testing, 2019). You press skin into a mat for an hour while breathing directly above it.",
+    "evidence": "PVC mat",
+    "sources": [
+      "best-non-toxic-yoga-mats.html"
+    ],
+    "article": "best-non-toxic-yoga-mats.html",
+    "reviewed": true,
+    "generalises": true,
+    "alternative": "Manduka eKO natural tree rubber, or Öko Living organic cotton",
+    "products": [
+      {
+        "name": "Gaiam Premium PVC mats",
+        "matchAll": [
+          [
+            "gaiam",
+            "yoga",
+            "mat"
+          ],
+          [
+            "gaiam",
+            "premium"
+          ]
+        ],
+        "asins": [
+          "B087F16GKW"
+        ],
+        "verdict": "skip",
+        "note": "Most mats are PVC, TPE, NBR or EVA foam. PVC is made from a known carcinogen, EVA can off gas formamide, and eco labels like PER are usually PVC in disguise (Ecology Center testing, 2019). You press skin into a mat for an hour while breathing directly above it.",
+        "origin": "hand",
+        "source": "best-non-toxic-yoga-mats.html",
+        "ext": {
+          "verdict": "skip",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "fail",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "caution",
+        "note": "PVC is made from a known carcinogen, EVA can off gas formamide",
+        "origin": "extracted"
+      },
+      "packaging": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "rollup": {
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "skip"
+    }
+  },
+  {
     "id": "gain",
     "brand": "Gain",
     "category": "Laundry",
@@ -19137,6 +21111,81 @@
     }
   },
   {
+    "id": "genkent",
+    "brand": "GENKENT",
+    "category": "Oral care",
+    "stance": "careful",
+    "reason": "The bamboo handle is honest, the bristles usually are not. Nylon bristles are plastic, and castor bean or bio nylon is still a synthetic polymer that sheds microplastics while you brush. Only animal hair is genuinely plastic free.",
+    "evidence": "Nylon bristles on a bamboo handle",
+    "sources": [
+      "bamboo-toothbrush-plastic-bristles.html"
+    ],
+    "article": "bamboo-toothbrush-plastic-bristles.html",
+    "reviewed": true,
+    "generalises": true,
+    "alternative": "PRIMALS boar bristle bamboo toothbrush",
+    "products": [
+      {
+        "name": "GENKENT bamboo toothbrushes",
+        "matchAll": [
+          [
+            "genkent",
+            "bamboo"
+          ]
+        ],
+        "asins": [
+          "B0D13T3XWX"
+        ],
+        "verdict": "careful",
+        "note": "The bamboo handle is honest, the bristles usually are not. Nylon bristles are plastic, and castor bean or bio nylon is still a synthetic polymer that sheds microplastics while you brush. Only animal hair is genuinely plastic free.",
+        "origin": "hand",
+        "source": "bamboo-toothbrush-plastic-bristles.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "caution",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "fail",
+        "note": "castor bean or bio nylon is still a synthetic polymer that sheds microplastics while you brush",
+        "origin": "extracted"
+      },
+      "packaging": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "rollup": {
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "careful"
+    }
+  },
+  {
     "id": "georg-jensen",
     "brand": "Georg Jensen",
     "category": "Cookware",
@@ -19297,6 +21346,44 @@
           "disclose": false,
           "rules": []
         }
+      },
+      {
+        "name": "Gerber pouches and puffs",
+        "matchAll": [
+          [
+            "gerber",
+            "pouch"
+          ],
+          [
+            "gerber",
+            "puree"
+          ],
+          [
+            "gerber",
+            "puffs"
+          ]
+        ],
+        "asins": [
+          "B0090DXWXA"
+        ],
+        "verdict": "skip",
+        "note": "Multilayer plastic pouch with an acidic puree, the combination behind the 2023 phthalate findings, and Gerber was among the brands named in the congressional report on heavy metals in baby food.",
+        "origin": "hand",
+        "source": "top-100-baby-kids-products-amazon.html",
+        "ext": {
+          "verdict": "skip",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "fail",
+            "legal": "unassessed",
+            "testing": "fail"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
       }
     ],
     "fronts": {
@@ -19325,10 +21412,84 @@
     "article": "top-100-baby-kids-products-amazon.html",
     "generalises": true,
     "rollup": {
-      "products": 4,
-      "researched": 4,
-      "flagged": 4,
+      "products": 5,
+      "researched": 5,
+      "flagged": 5,
       "worst": "skip"
+    }
+  },
+  {
+    "id": "germguardian",
+    "brand": "GermGuardian",
+    "category": "Air purifier",
+    "stance": "careful",
+    "reason": "True HEPA on the main filter, which is the part that matters for fibre, but several models pair it with a UV-C lamp and an ioniser. Ionisers can generate ozone, which is a respiratory irritant, so run the unit with that function off.",
+    "evidence": "True HEPA filter, but ioniser and UV-C on several models",
+    "sources": [
+      "best-air-purifiers-for-microplastics.html"
+    ],
+    "article": "best-air-purifiers-for-microplastics.html",
+    "reviewed": true,
+    "generalises": true,
+    "alternative": "Coway Airmega, which ships with its ioniser off by default",
+    "products": [
+      {
+        "name": "GermGuardian HEPA purifiers",
+        "matchAll": [
+          [
+            "germguardian"
+          ]
+        ],
+        "asins": [
+          "B004VGIGVY"
+        ],
+        "verdict": "careful",
+        "note": "True HEPA on the main filter, which is the part that matters for fibre. Several models pair it with a UV-C lamp and an ioniser, and ionisers can generate ozone, a respiratory irritant. Run it with that function off.",
+        "origin": "hand",
+        "source": "best-air-purifiers-for-microplastics.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "caution",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "pass"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "packaging": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "rollup": {
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "careful"
     }
   },
   {
@@ -19660,6 +21821,82 @@
     }
   },
   {
+    "id": "gorilla-grip",
+    "brand": "Gorilla Grip",
+    "category": "Cutting boards",
+    "stance": "skip",
+    "reason": "A plastic cutting board sheds 14 to 71 million microplastic particles a year, with knife grooves releasing polyethylene fragments straight into food (Environmental Science & Technology, 2023). Wood is also more sanitary: UC Davis found bacteria die off in wood fibre while knife scarred plastic traps them.",
+    "evidence": "Plastic board; sheds polyethylene into food",
+    "sources": [
+      "best-non-toxic-cutting-boards.html"
+    ],
+    "article": "best-non-toxic-cutting-boards.html",
+    "reviewed": true,
+    "generalises": true,
+    "alternative": "A wood or bamboo board",
+    "products": [
+      {
+        "name": "Reversible plastic cutting boards",
+        "matchAll": [
+          [
+            "gorilla",
+            "grip",
+            "cutting"
+          ]
+        ],
+        "asins": [
+          "B01GP2MTXW"
+        ],
+        "verdict": "skip",
+        "note": "A plastic cutting board sheds 14 to 71 million microplastic particles a year, with knife grooves releasing polyethylene fragments straight into food (Environmental Science & Technology, 2023). Wood is also more sanitary: UC Davis found bacteria die off in wood fibre while knife scarred plastic traps them.",
+        "origin": "hand",
+        "source": "best-non-toxic-cutting-boards.html",
+        "ext": {
+          "verdict": "skip",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "fail",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "fail",
+        "note": "A plastic cutting board sheds 14 to 71 million microplastic particles a year, with knife grooves releasing…",
+        "origin": "extracted"
+      },
+      "packaging": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "rollup": {
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "skip"
+    }
+  },
+  {
     "id": "gotham-steel",
     "brand": "Gotham Steel",
     "category": "Cookware",
@@ -19737,7 +21974,7 @@
     },
     "reviewed": true,
     "article": "top-100-baby-kids-products-amazon.html",
-    "generalises": true,
+    "generalises": false,
     "products": [
       {
         "name": "Crib Mattress (standard)",
@@ -19786,14 +22023,49 @@
           "disclose": false,
           "rules": []
         }
+      },
+      {
+        "name": "Premium foam crib mattress",
+        "matchAll": [
+          [
+            "graco",
+            "mattress"
+          ],
+          [
+            "graco",
+            "crib"
+          ]
+        ],
+        "asins": [
+          "B010S7VZI0"
+        ],
+        "verdict": "careful",
+        "note": "A polyurethane foam core, which is the standard budget construction and the thing organic crib mattresses exist to avoid. No GREENGUARD or organic certification on this model, and a baby sleeps on it for twelve hours a day.",
+        "origin": "hand",
+        "source": "top-100-baby-kids-products-amazon.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "caution",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
       }
     ],
     "rollup": {
-      "products": 2,
-      "researched": 2,
-      "flagged": 2,
+      "products": 3,
+      "researched": 3,
+      "flagged": 3,
       "worst": "skip"
-    }
+    },
+    "scopeNote": "Our verdict varies across this brand's range."
   },
   {
     "id": "granitestone",
@@ -20975,12 +23247,49 @@
           "disclose": true,
           "rules": []
         }
+      },
+      {
+        "name": "Clearly Crafted pouches",
+        "matchAll": [
+          [
+            "happy",
+            "baby",
+            "pouch"
+          ],
+          [
+            "happy",
+            "baby",
+            "clearly"
+          ]
+        ],
+        "asins": [
+          "B08B2QD558",
+          "B07WJ9D3G2"
+        ],
+        "verdict": "skip",
+        "note": "Multilayer plastic pouch plus acidic puree plus phthalate findings (Consumer Reports 2023), and the brand was named in the congressional heavy metals report on baby food.",
+        "origin": "hand",
+        "source": "top-100-baby-kids-products-amazon.html",
+        "ext": {
+          "verdict": "skip",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "fail",
+            "legal": "unassessed",
+            "testing": "fail"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
       }
     ],
     "rollup": {
-      "products": 3,
-      "researched": 2,
-      "flagged": 2,
+      "products": 4,
+      "researched": 3,
+      "flagged": 3,
       "worst": "skip"
     }
   },
@@ -21606,6 +23915,81 @@
       "researched": 2,
       "flagged": 0,
       "worst": null
+    }
+  },
+  {
+    "id": "hearthy-foods",
+    "brand": "HEARTHY FOODS",
+    "category": "Supplements",
+    "stance": "careful",
+    "reason": "A dry creatine powder in a plastic tub, which is the low migration end of packaging. No third party certification and no published heavy metal testing, which is what this category needs.",
+    "evidence": "No third party certification or published testing",
+    "sources": [
+      "supplements-and-microplastics.html"
+    ],
+    "article": "supplements-and-microplastics.html",
+    "reviewed": true,
+    "generalises": true,
+    "alternative": "Klean Athlete or Thorne creatine",
+    "products": [
+      {
+        "name": "HEARTHY FOODS creatine",
+        "matchAll": [
+          [
+            "hearthy",
+            "foods"
+          ]
+        ],
+        "asins": [
+          "B0DX7846R5"
+        ],
+        "verdict": "careful",
+        "note": "A dry powder in a plastic tub, which is low migration packaging. No third party certification and no published heavy metal testing, which is what this category needs.",
+        "origin": "hand",
+        "source": "supplements-and-microplastics.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "pass",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "packaging": {
+        "status": "fail",
+        "note": "A dry creatine powder in a plastic tub, which is the low migration end of packaging",
+        "origin": "extracted"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "rollup": {
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "careful"
     }
   },
   {
@@ -24633,6 +27017,80 @@
     }
   },
   {
+    "id": "jergens",
+    "brand": "Jergens",
+    "category": "Cosmetics",
+    "stance": "careful",
+    "reason": "Fragranced body lotion in a plastic bottle, with the fragrance an undisclosed mixture. A leave on emulsion is the higher exposure half of personal care.",
+    "evidence": "Undisclosed fragrance; emulsion in plastic",
+    "sources": [
+      "microplastics-in-cosmetics-and-personal-care.html"
+    ],
+    "article": "microplastics-in-cosmetics-and-personal-care.html",
+    "reviewed": true,
+    "generalises": true,
+    "alternative": "An unscented lotion in glass",
+    "products": [
+      {
+        "name": "Jergens body lotion",
+        "matchAll": [
+          [
+            "jergens"
+          ]
+        ],
+        "asins": [
+          "B0FKC23886"
+        ],
+        "verdict": "careful",
+        "note": "A fragranced leave on emulsion in a plastic bottle, with the fragrance an undisclosed mixture.",
+        "origin": "hand",
+        "source": "microplastics-in-cosmetics-and-personal-care.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "caution",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "caution",
+        "note": "Undisclosed fragrance",
+        "origin": "extracted"
+      },
+      "packaging": {
+        "status": "fail",
+        "note": "Fragranced body lotion in a plastic bottle, with the fragrance an undisclosed mixture",
+        "origin": "extracted"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "rollup": {
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "careful"
+    }
+  },
+  {
     "id": "jetboil",
     "brand": "Jetboil",
     "category": "Cookware",
@@ -25948,6 +28406,80 @@
     }
   },
   {
+    "id": "kitsure",
+    "brand": "Kitsure",
+    "category": "Cutting boards",
+    "stance": "good",
+    "reason": "Bamboo rather than plastic. Harder on knives than end grain wood, but it sheds no polyethylene into food.",
+    "evidence": "Bamboo, not plastic",
+    "sources": [
+      "best-non-toxic-cutting-boards.html"
+    ],
+    "article": "best-non-toxic-cutting-boards.html",
+    "reviewed": true,
+    "generalises": true,
+    "products": [
+      {
+        "name": "Bamboo cutting board",
+        "matchAll": [
+          [
+            "kitsure",
+            "cutting"
+          ]
+        ],
+        "asins": [
+          "B0DXPWTSG1"
+        ],
+        "verdict": "good",
+        "note": "Bamboo rather than plastic. Sheds no polyethylene into food, and unlike a plastic board the knife grooves do not become a particle source.",
+        "origin": "hand",
+        "source": "best-non-toxic-cutting-boards.html",
+        "ext": {
+          "verdict": "good",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "pass",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "caution",
+        "note": "Bamboo rather than plastic",
+        "origin": "extracted"
+      },
+      "packaging": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "rollup": {
+      "products": 1,
+      "researched": 1,
+      "flagged": 0,
+      "worst": null
+    }
+  },
+  {
     "id": "kjaer-weis",
     "brand": "Kjaer Weis",
     "category": "Cosmetics",
@@ -27119,6 +29651,80 @@
     }
   },
   {
+    "id": "letmxiu",
+    "brand": "Letmxiu",
+    "category": "Nursery",
+    "stance": "careful",
+    "reason": "A foam core crib mattress with a knitted synthetic cover and no GREENGUARD or organic certification. A baby sleeps on this twelve hours a day, which makes it one of the longest contact times in the house.",
+    "evidence": "Foam core; no emissions certification",
+    "sources": [
+      "non-toxic-nursery-setup.html"
+    ],
+    "article": "non-toxic-nursery-setup.html",
+    "reviewed": true,
+    "generalises": true,
+    "alternative": "Naturepedic or Avocado organic crib mattress",
+    "products": [
+      {
+        "name": "Letmxiu foam crib mattress",
+        "matchAll": [
+          [
+            "letmxiu"
+          ]
+        ],
+        "asins": [
+          "B0BLK39GTG"
+        ],
+        "verdict": "careful",
+        "note": "A foam core with a knitted synthetic cover and no GREENGUARD or organic certification. A baby sleeps on this twelve hours a day, one of the longest contact times in the house.",
+        "origin": "hand",
+        "source": "non-toxic-nursery-setup.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "caution",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "packaging": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "pass",
+        "note": "A foam core crib mattress with a knitted synthetic cover and no GREENGUARD or organic certification",
+        "origin": "extracted"
+      }
+    },
+    "rollup": {
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "careful"
+    }
+  },
+  {
     "id": "levoit",
     "brand": "Levoit",
     "category": "Air purifier",
@@ -27157,11 +29763,45 @@
     "article": "best-air-purifiers-for-microplastics.html",
     "generalises": true,
     "rollup": {
-      "products": 0,
-      "researched": 0,
-      "flagged": 0,
-      "worst": null
-    }
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "skip"
+    },
+    "products": [
+      {
+        "name": "Core and Vital purifiers",
+        "matchAll": [
+          [
+            "levoit",
+            "air",
+            "purifier"
+          ]
+        ],
+        "asins": [
+          "B07VVK39F7",
+          "B0BGPF71Q6"
+        ],
+        "verdict": "skip",
+        "note": "Removed from every pick on the site in August 2026. Levoit is named in consumer class action litigation alleging its purifiers are misrepresented as meeting the True HEPA standard they advertise. On a purifier the filtration number is the entire product, so an unverified filtration claim is not a detail.",
+        "origin": "hand",
+        "source": "best-air-purifiers-for-microplastics.html",
+        "ext": {
+          "verdict": "skip",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "unassessed",
+            "legal": "caution",
+            "testing": "fail"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ]
   },
   {
     "id": "lezat",
@@ -27287,11 +29927,47 @@
     "article": "best-non-toxic-shower-curtains.html",
     "generalises": true,
     "rollup": {
-      "products": 0,
-      "researched": 0,
-      "flagged": 0,
-      "worst": null
-    }
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "careful"
+    },
+    "products": [
+      {
+        "name": "PEVA shower curtain liner",
+        "matchAll": [
+          [
+            "liba",
+            "shower"
+          ],
+          [
+            "liba",
+            "curtain"
+          ]
+        ],
+        "asins": [
+          "B00LS9UD2M"
+        ],
+        "verdict": "careful",
+        "note": "PEVA and EVA are less bad than PVC, not non toxic. They drop the chlorine and phthalates but are still plastic and still off gas in a hot shower. A fabric curtain skips the liner entirely.",
+        "origin": "hand",
+        "source": "best-non-toxic-shower-curtains.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "caution",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ]
   },
   {
     "id": "lifeboost-coffee",
@@ -27657,11 +30333,43 @@
     "generalises": false,
     "scopeNote": "Our verdict covers part of this brand's range, not all of it.",
     "rollup": {
-      "products": 0,
-      "researched": 0,
-      "flagged": 0,
-      "worst": null
-    }
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "careful"
+    },
+    "products": [
+      {
+        "name": "Lipton tea bags",
+        "matchAll": [
+          [
+            "lipton",
+            "tea"
+          ]
+        ],
+        "asins": [
+          "B0DX5XQNRH"
+        ],
+        "verdict": "careful",
+        "note": "One plastic tea bag releases 11.6 billion microplastic particles per cup, and heat is the trigger. Silky and pyramid bags are nylon or PET, and even most paper bags carry a heat sealed polypropylene seam that sheds into the water.",
+        "origin": "hand",
+        "source": "how-to-avoid-microplastics-in-tea.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "caution",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ]
   },
   {
     "id": "liquid-iv",
@@ -27858,6 +30566,80 @@
       "researched": 1,
       "flagged": 0,
       "worst": null
+    }
+  },
+  {
+    "id": "liuruiyu",
+    "brand": "Liuruiyu",
+    "category": "Food storage",
+    "stance": "careful",
+    "reason": "Glass body with a plastic lid. Hot steam rises and contacts the lid, and plastic lids degrade and shed over time, so the glass only solves half the problem. Containers with glass or bamboo lids close the other half.",
+    "evidence": "Glass body, plastic lid",
+    "sources": [
+      "best-plastic-free-food-storage-containers.html"
+    ],
+    "article": "best-plastic-free-food-storage-containers.html",
+    "reviewed": true,
+    "generalises": true,
+    "alternative": "Urban Green or EcoEvo glass containers with glass lids",
+    "products": [
+      {
+        "name": "Liuruiyu glass containers with plastic lids",
+        "matchAll": [
+          [
+            "liuruiyu"
+          ]
+        ],
+        "asins": [
+          "B0F9K2KXZV"
+        ],
+        "verdict": "careful",
+        "note": "Glass body with a plastic lid. Hot steam rises and contacts the lid, and plastic lids degrade and shed over time, so the glass only solves half the problem. Containers with glass or bamboo lids close the other half.",
+        "origin": "hand",
+        "source": "best-plastic-free-food-storage-containers.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "caution",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "packaging": {
+        "status": "caution",
+        "note": "plastic lid",
+        "origin": "extracted"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "rollup": {
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "careful"
     }
   },
   {
@@ -29057,12 +31839,49 @@
           "disclose": false,
           "rules": []
         }
+      },
+      {
+        "name": "All Purpose Cleaner spray",
+        "matchAll": [
+          [
+            "lysol",
+            "all",
+            "purpose"
+          ],
+          [
+            "lysol",
+            "cleaner"
+          ]
+        ],
+        "asins": [
+          "B0BNP5QQ53",
+          "B00QIT9NDW",
+          "B0G3CJ33QG"
+        ],
+        "verdict": "skip",
+        "note": "A quaternary ammonium disinfectant with an undisclosed fragrance, sprayed onto kitchen surfaces and left to dry. Quats are respiratory irritants and are linked to asthma in regular users, and a disinfectant is the wrong default for daily cleaning.",
+        "origin": "hand",
+        "source": "top-100-baby-kids-products-amazon.html",
+        "ext": {
+          "verdict": "skip",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "fail",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
       }
     ],
     "rollup": {
-      "products": 1,
-      "researched": 1,
-      "flagged": 1,
+      "products": 2,
+      "researched": 2,
+      "flagged": 2,
       "worst": "skip"
     }
   },
@@ -29533,7 +32352,7 @@
     "id": "maldon",
     "brand": "Maldon",
     "category": "Salt",
-    "stance": "good",
+    "stance": "careful",
     "reason": "Our finishing salt pick. A sea salt, so it carries more microplastics than mined salt, but among the cleanest sea salts for heavy metals in independent testing. Best reserved for finishing rather than everyday cooking.",
     "evidence": "Among the cleanest sea salts for heavy metals in independent testing; still sea evaporated, so higher microplastics than mined salt",
     "alternative": "Diamond Crystal Kosher Salt for everyday cooking",
@@ -29570,38 +32389,77 @@
     },
     "reviewed": true,
     "article": "microplastics-in-salt-and-pantry-staples.html",
-    "generalises": true,
+    "generalises": false,
     "products": [
       {
         "name": "Maldon Sea Salt Flakes",
-        "asins": [
-          "B086XGH24W"
-        ],
+        "asins": [],
         "verdict": "good",
         "note": "Soft pyramid flakes from Essex, England. A sea salt, so it carries more microplastics than mined salt, but among the cleanest sea salts for heavy metals in independent testing. Worth knowing: Sea salt, so more microplastics than mined\", \"Premium price per ounce\", \"Cardboard box, decant to glass.",
         "origin": "store",
         "ext": {
           "verdict": "unrated",
-          "why": "the note reads adversely on formula, needs a human look",
+          "why": "a recommendation needs sku or line scope, this is brand",
           "fronts": {
             "formula": "caution",
             "packaging": "unassessed",
             "legal": "unassessed",
             "testing": "unassessed"
           },
-          "scope": "sku",
+          "scope": "brand",
           "basis": "direct",
           "disclose": false,
           "rules": []
+        },
+        "matchAll": [
+          [
+            "maldon",
+            "sea",
+            "salt",
+            "flakes"
+          ]
+        ],
+        "matchFrom": "name"
+      },
+      {
+        "name": "Maldon sea salt flakes",
+        "matchAll": [
+          [
+            "maldon"
+          ]
+        ],
+        "asins": [
+          "B086XGH24W"
+        ],
+        "verdict": "careful",
+        "note": "A clean flake salt with no additives, but sea salt is one of the categories where independent testing finds microplastics and heavy metals, and there is no published third party testing on this one to check against.",
+        "origin": "hand",
+        "source": "microplastics-in-salt-and-pantry-staples.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "caution"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
         }
       }
     ],
     "rollup": {
-      "products": 1,
-      "researched": 1,
-      "flagged": 0,
-      "worst": null
-    }
+      "products": 2,
+      "researched": 2,
+      "flagged": 1,
+      "worst": "careful"
+    },
+    "scopeNote": "Our verdict varies across this brand's range.",
+    "rollupApplied": true,
+    "rollupNote": "1 of 2 products we have reviewed under this brand are flagged: Maldon sea salt flakes. The verdict depends which one you pick."
   },
   {
     "id": "mam",
@@ -30714,6 +33572,87 @@
     }
   },
   {
+    "id": "method",
+    "brand": "Method",
+    "category": "Cleaning",
+    "stance": "careful",
+    "reason": "Better ingredient disclosure than the disinfectant brands, but fragranced and sold in single use plastic spray bottles. A refill tablet system removes the bottle from the equation entirely.",
+    "evidence": "Undisclosed fragrance; single use plastic bottle",
+    "sources": [
+      "reduce-microplastics-in-cleaning-products.html"
+    ],
+    "article": "reduce-microplastics-in-cleaning-products.html",
+    "reviewed": true,
+    "generalises": true,
+    "alternative": "Blueland refill tablets, or Attitude fragrance free",
+    "products": [
+      {
+        "name": "Method all purpose cleaner sprays",
+        "matchAll": [
+          [
+            "method",
+            "all",
+            "purpose"
+          ],
+          [
+            "method",
+            "cleaner"
+          ]
+        ],
+        "asins": [
+          "B007AHO6CO",
+          "B0BGQTZB4T"
+        ],
+        "verdict": "careful",
+        "note": "Better ingredient disclosure than the disinfectant brands, but fragranced and sold in a single use plastic spray bottle. A refill tablet system removes the bottle entirely.",
+        "origin": "hand",
+        "source": "reduce-microplastics-in-cleaning-products.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "caution",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "caution",
+        "note": "Undisclosed fragrance",
+        "origin": "extracted"
+      },
+      "packaging": {
+        "status": "caution",
+        "note": "single use plastic bottle",
+        "origin": "extracted"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "rollup": {
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "careful"
+    }
+  },
+  {
     "id": "meyer",
     "brand": "Meyer",
     "category": "Cookware",
@@ -31626,6 +34565,82 @@
     }
   },
   {
+    "id": "mooka",
+    "brand": "MOOKA",
+    "category": "Air purifier",
+    "stance": "careful",
+    "reason": "Marketed on coverage area rather than on a verified True HEPA rating. For airborne microplastic fibre the filter grade is the whole product, so an unverified HEPA claim is the thing to check before the square footage.",
+    "evidence": "HEPA grade not independently verified",
+    "sources": [
+      "best-air-purifiers-for-microplastics.html"
+    ],
+    "article": "best-air-purifiers-for-microplastics.html",
+    "reviewed": true,
+    "generalises": true,
+    "alternative": "Coway Airmega, our best overall True HEPA pick",
+    "products": [
+      {
+        "name": "MOOKA home air purifiers",
+        "matchAll": [
+          [
+            "mooka",
+            "air",
+            "purifier"
+          ]
+        ],
+        "asins": [
+          "B0CXJ97TV1"
+        ],
+        "verdict": "careful",
+        "note": "Marketed on coverage area rather than on a verified True HEPA rating. For fibre the filter grade is the whole product, so that is the number to check before the square footage.",
+        "origin": "hand",
+        "source": "best-air-purifiers-for-microplastics.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "caution",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "caution",
+        "note": "For airborne microplastic fibre the filter grade is the whole product, so an unverified HEPA claim is the…",
+        "origin": "extracted"
+      },
+      "packaging": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "pass",
+        "note": "HEPA grade not independently verified",
+        "origin": "extracted"
+      }
+    },
+    "rollup": {
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "careful"
+    }
+  },
+  {
     "id": "moonkie",
     "brand": "Moonkie",
     "category": "Toddler drinkware",
@@ -31946,6 +34961,156 @@
       "researched": 0,
       "flagged": 0,
       "worst": null
+    }
+  },
+  {
+    "id": "mrs-awesome",
+    "brand": "Mrs Awesome",
+    "category": "Shower curtains",
+    "stance": "careful",
+    "reason": "PEVA and EVA are less bad than PVC, not non toxic. They drop the chlorine and phthalates but are still plastic and still off gas in a hot shower. A fabric curtain skips the liner entirely.",
+    "evidence": "Plastic shower curtain liner",
+    "sources": [
+      "best-non-toxic-shower-curtains.html"
+    ],
+    "article": "best-non-toxic-shower-curtains.html",
+    "reviewed": true,
+    "generalises": true,
+    "alternative": "A hemp or OEKO-TEX cotton curtain with no liner",
+    "products": [
+      {
+        "name": "Mrs Awesome shower curtain liner",
+        "matchAll": [
+          [
+            "mrs",
+            "awesome"
+          ]
+        ],
+        "asins": [
+          "B08NJ6VF9T"
+        ],
+        "verdict": "careful",
+        "note": "PEVA and EVA are less bad than PVC, not non toxic. They drop the chlorine and phthalates but are still plastic and still off gas in a hot shower. A fabric curtain skips the liner entirely.",
+        "origin": "hand",
+        "source": "best-non-toxic-shower-curtains.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "caution",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "caution",
+        "note": "PEVA and EVA are less bad than PVC, not non toxic",
+        "origin": "extracted"
+      },
+      "packaging": {
+        "status": "caution",
+        "note": "Plastic shower curtain liner",
+        "origin": "extracted"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "rollup": {
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "careful"
+    }
+  },
+  {
+    "id": "mrs-meyers",
+    "brand": "Mrs. Meyer's",
+    "category": "Cleaning",
+    "stance": "careful",
+    "reason": "Plant derived surfactants, but a heavy undisclosed fragrance load in a plastic spray bottle. Fragrance is the single most common undisclosed mixture in cleaning products, and this is a leave on residue on kitchen surfaces.",
+    "evidence": "Undisclosed fragrance",
+    "sources": [
+      "reduce-microplastics-in-cleaning-products.html"
+    ],
+    "article": "reduce-microplastics-in-cleaning-products.html",
+    "reviewed": true,
+    "generalises": true,
+    "alternative": "Blueland tablets, or Attitude fragrance free",
+    "products": [
+      {
+        "name": "Clean Day cleaner sprays",
+        "matchAll": [
+          [
+            "mrs",
+            "meyer"
+          ]
+        ],
+        "asins": [
+          "B01IQ9R37E"
+        ],
+        "verdict": "careful",
+        "note": "Plant derived surfactants, which is the better half, but a heavy undisclosed fragrance load in a single use plastic spray bottle. It is rinsed and diluted rather than left on skin, so the exposure is lower than personal care.",
+        "origin": "hand",
+        "source": "reduce-microplastics-in-cleaning-products.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "caution",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "caution",
+        "note": "Fragrance is the single most common undisclosed mixture in cleaning products",
+        "origin": "extracted"
+      },
+      "packaging": {
+        "status": "fail",
+        "note": "a heavy undisclosed fragrance load in a plastic spray bottle",
+        "origin": "extracted"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "caution",
+        "note": "this is a leave on residue on kitchen surfaces",
+        "origin": "extracted"
+      }
+    },
+    "rollup": {
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "careful"
     }
   },
   {
@@ -33174,7 +36339,7 @@
     "id": "nectar-hydration",
     "brand": "Nectar Hydration",
     "category": "Electrolytes",
-    "stance": "neutral",
+    "stance": "careful",
     "reason": "Its Essential Daily Hydration mix returned non detect for total fluorine in 2023 independent screening. We have not featured it because we found no published heavy metals testing on the product.",
     "evidence": "Non detect total fluorine; no published heavy metals data found",
     "alternative": "GOODONYA Organic Hydration or Cure Hydration",
@@ -33211,11 +36376,49 @@
     "article": "best-non-toxic-electrolytes.html",
     "generalises": true,
     "rollup": {
-      "products": 0,
-      "researched": 0,
-      "flagged": 0,
-      "worst": null
-    }
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "careful"
+    },
+    "products": [
+      {
+        "name": "Nectar hydration packets",
+        "matchAll": [
+          [
+            "nectar",
+            "hydration"
+          ],
+          [
+            "nectar",
+            "electrolyte"
+          ]
+        ],
+        "asins": [
+          "B09BD8GZ8L"
+        ],
+        "verdict": "careful",
+        "note": "Sugar free and simple, but sold in single serve stick packs, which carry the most plastic surface area per dose of any format in the category. No published PFAS testing, and electrolyte powders are a category where independent testing has found it.",
+        "origin": "hand",
+        "source": "best-non-toxic-electrolytes.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "caution",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "rollupApplied": true,
+    "rollupNote": "1 of 1 products we have reviewed under this brand are flagged: Nectar hydration packets. The verdict depends which one you pick."
   },
   {
     "id": "needed",
@@ -34616,6 +37819,87 @@
     }
   },
   {
+    "id": "nutricost",
+    "brand": "Nutricost",
+    "category": "Supplements",
+    "stance": "careful",
+    "reason": "Third party tested and sold in a plastic tub, which for a dry powder is low migration. The caution is that the heavy metal testing is not published per lot, so there is no number to check against.",
+    "evidence": "Dry powder in HDPE; no published per lot metal testing",
+    "sources": [
+      "supplements-and-microplastics.html"
+    ],
+    "article": "supplements-and-microplastics.html",
+    "reviewed": true,
+    "generalises": true,
+    "alternative": "Klean Athlete or Thorne, both third party certified",
+    "products": [
+      {
+        "name": "Nutricost electrolyte and creatine powders",
+        "matchAll": [
+          [
+            "nutricost",
+            "electrolyte"
+          ],
+          [
+            "nutricost",
+            "creatine"
+          ]
+        ],
+        "asins": [
+          "B0D6JFYVHW",
+          "B00GL2HMES",
+          "B01EVVQX9U"
+        ],
+        "verdict": "careful",
+        "note": "Third party tested for identity and sold as a dry powder in a plastic tub, which is the low migration end of packaging. The gap is that heavy metal results are not published per lot, so there is no number to check.",
+        "origin": "hand",
+        "source": "supplements-and-microplastics.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "pass",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "packaging": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "caution",
+        "note": "Third party tested and sold in a plastic tub, which for a dry powder is low migration",
+        "origin": "extracted"
+      }
+    },
+    "rollup": {
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "careful"
+    }
+  },
+  {
     "id": "nuun",
     "brand": "Nuun",
     "category": "Electrolytes",
@@ -34819,6 +38103,85 @@
       "researched": 1,
       "flagged": 0,
       "worst": null
+    }
+  },
+  {
+    "id": "olay",
+    "brand": "Olay",
+    "category": "Cosmetics",
+    "stance": "careful",
+    "reason": "Fragranced lotions and creams in plastic. An emulsion pulls more out of a container than a water based product, and fragrance on a leave on product is an undisclosed mixture sitting on skin all day.",
+    "evidence": "Undisclosed fragrance; emulsion in plastic",
+    "sources": [
+      "microplastics-in-cosmetics-and-personal-care.html"
+    ],
+    "article": "microplastics-in-cosmetics-and-personal-care.html",
+    "reviewed": true,
+    "generalises": true,
+    "alternative": "An unscented lotion in glass",
+    "products": [
+      {
+        "name": "Olay body lotion",
+        "matchAll": [
+          [
+            "olay",
+            "lotion"
+          ],
+          [
+            "olay",
+            "body"
+          ]
+        ],
+        "asins": [
+          "B0D7XXQYNH"
+        ],
+        "verdict": "careful",
+        "note": "A fragranced leave on emulsion in plastic. Fragrance is an undisclosed mixture, and a body lotion sits on the largest organ you have for the rest of the day.",
+        "origin": "hand",
+        "source": "microplastics-in-cosmetics-and-personal-care.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "caution",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "caution",
+        "note": "fragrance on a leave on product is an undisclosed mixture sitting on skin all day",
+        "origin": "extracted"
+      },
+      "packaging": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "rollup": {
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "careful"
     }
   },
   {
@@ -35399,6 +38762,86 @@
     }
   },
   {
+    "id": "optimum-nutrition",
+    "brand": "Optimum Nutrition",
+    "category": "Supplements",
+    "stance": "careful",
+    "reason": "Gold Standard is Informed Choice certified on most lots, which covers banned substances rather than heavy metals or plastic. Sold in a plastic tub, which for a dry powder is low migration.",
+    "evidence": "Informed Choice certified; no published heavy metal numbers",
+    "sources": [
+      "cleanest-protein-powder-tested.html"
+    ],
+    "article": "cleanest-protein-powder-tested.html",
+    "reviewed": true,
+    "generalises": true,
+    "alternative": "ProMix Grass Fed Whey Isolate, or Transparent Labs",
+    "products": [
+      {
+        "name": "Gold Standard whey and creatine",
+        "matchAll": [
+          [
+            "optimum",
+            "nutrition"
+          ]
+        ],
+        "asins": [
+          "B000GISTZ4",
+          "B000QSTBNS",
+          "B002DYIZHG",
+          "B000QSNYGI",
+          "B002DYIZEO",
+          "B002DYIZEE"
+        ],
+        "verdict": "careful",
+        "note": "Informed Choice certified on most lots, which covers banned substances rather than heavy metals or plastic. Protein powder is a category where independent testing has repeatedly found lead and cadmium, and there are no published metal numbers here to check.",
+        "origin": "hand",
+        "source": "cleanest-protein-powder-tested.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "caution"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "packaging": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "pass",
+        "note": "Gold Standard is Informed Choice certified on most lots, which covers banned substances rather than heavy…",
+        "origin": "extracted"
+      }
+    },
+    "rollup": {
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "careful"
+    }
+  },
+  {
     "id": "oral-b",
     "brand": "Oral-B",
     "category": "Personal care",
@@ -35439,13 +38882,59 @@
     },
     "reviewed": true,
     "article": "pfas-free-dental-floss.html",
-    "generalises": true,
+    "generalises": false,
     "rollup": {
-      "products": 0,
-      "researched": 0,
-      "flagged": 0,
-      "worst": null
-    }
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "skip"
+    },
+    "products": [
+      {
+        "name": "Glide and Essential floss",
+        "matchAll": [
+          [
+            "oral b",
+            "glide"
+          ],
+          [
+            "oral b",
+            "floss"
+          ],
+          [
+            "glide",
+            "dental",
+            "floss"
+          ]
+        ],
+        "asins": [
+          "B07FLBBWJR",
+          "B01NBRH9TF",
+          "B01KZOTTSO",
+          "B074F5NNCP",
+          "B0DJH7VTL9"
+        ],
+        "verdict": "skip",
+        "note": "The glide is usually PTFE, the same polymer as Teflon and a member of the PFAS family. A 2019 study tied Oral-B Glide use to higher PFAS blood levels, and 2024 lab testing measured Glide at 248,900 ppm organic fluorine, a record high for a consumer product.",
+        "origin": "hand",
+        "source": "pfas-free-dental-floss.html",
+        "ext": {
+          "verdict": "skip",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "fail",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "fail"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "scopeNote": "Our verdict varies across this brand's range."
   },
   {
     "id": "organic-basics",
@@ -36057,11 +39546,42 @@
     "article": "best-non-toxic-water-bottles.html",
     "generalises": true,
     "rollup": {
-      "products": 0,
-      "researched": 0,
-      "flagged": 0,
-      "worst": null
-    }
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "careful"
+    },
+    "products": [
+      {
+        "name": "FreeSip bottles",
+        "matchAll": [
+          [
+            "owala"
+          ]
+        ],
+        "asins": [
+          "B0BZYCJK89"
+        ],
+        "verdict": "careful",
+        "note": "Stainless body, but the FreeSip lid puts a plastic spout and an internal straw directly in the drink path. Our drinkware standard is no plastic in the drink path at all, and the lid is where these bottles fail it.",
+        "origin": "hand",
+        "source": "best-non-toxic-water-bottles.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "fail",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ]
   },
   {
     "id": "owyn",
@@ -37139,7 +40659,10 @@
             "bottles"
           ]
         ],
-        "matchFrom": "name"
+        "matchFrom": "name",
+        "matchNot": [
+          "glass"
+        ]
       },
       {
         "name": "Sonicare electric toothbrushes",
@@ -37194,9 +40717,7 @@
       },
       {
         "name": "Natural Baby Bottle (polypropylene)",
-        "asins": [
-          "B01845QGKK"
-        ],
+        "asins": [],
         "verdict": "skip",
         "note": "Plastic baby bottle. 2020 Nature Food study (Li et al.) documented polypropylene infant bottles release 1 to 16 million microplastic particles per liter at 70°C formula prep temps. Direct conflict with low tox feeding regardless of BPA free marketing.",
         "origin": "article",
@@ -37210,11 +40731,19 @@
             "legal": "unassessed",
             "testing": "unassessed"
           },
-          "scope": "sku",
+          "scope": "brand",
           "basis": "direct",
           "disclose": false,
           "rules": []
-        }
+        },
+        "matchAll": [
+          [
+            "philips",
+            "natural",
+            "bottle"
+          ]
+        ],
+        "matchFrom": "name"
       },
       {
         "name": "Natural Glass Baby Bottle (painted markings)",
@@ -37227,14 +40756,95 @@
         "source": "top-100-baby-kids-products-amazon.html",
         "ext": {
           "verdict": "skip",
+          "why": "Reviewed by hand: the marking method decides, not the glass.",
+          "fronts": {
+            "formula": "pass",
+            "packaging": "fail",
+            "legal": "unassessed",
+            "testing": "fail"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        },
+        "matchAll": [
+          [
+            "philips",
+            "avent",
+            "natural",
+            "glass"
+          ],
+          [
+            "avent",
+            "glass",
+            "baby",
+            "bottle"
+          ],
+          [
+            "philips",
+            "avent",
+            "glass"
+          ]
+        ]
+      },
+      {
+        "name": "Avent plastic baby bottles",
+        "matchAll": [
+          [
+            "philips",
+            "avent",
+            "bottle"
+          ],
+          [
+            "avent",
+            "natural",
+            "baby",
+            "bottles"
+          ]
+        ],
+        "asins": [
+          "B0964CHD65"
+        ],
+        "verdict": "careful",
+        "note": "Polypropylene bottles for warm milk, repeatedly heated and sterilised. Philips also sells the same bottle in glass, which removes the question entirely for a few dollars more.",
+        "origin": "hand",
+        "source": "how-to-enjoy-coffee-without-plastic.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "caution",
+            "packaging": "caution",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        },
+        "matchNot": [
+          "glass"
+        ]
+      },
+      {
+        "name": "Natural Baby Bottle (polypropylene)",
+        "asins": [],
+        "verdict": "skip",
+        "note": "Plastic baby bottle. 2020 Nature Food study (Li et al.) documented polypropylene infant bottles release 1 to 16 million microplastic particles per liter at 70°C formula prep temps. Direct conflict with low tox feeding regardless of BPA free marketing.",
+        "origin": "article",
+        "source": "top-100-baby-kids-products-amazon.html",
+        "ext": {
+          "verdict": "skip",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "unassessed",
-            "packaging": "pass",
+            "formula": "fail",
+            "packaging": "caution",
             "legal": "unassessed",
-            "testing": "pass"
+            "testing": "unassessed"
           },
-          "scope": "sku",
+          "scope": "none",
           "basis": "direct",
           "disclose": false,
           "rules": []
@@ -37268,9 +40878,9 @@
     "generalises": false,
     "scopeNote": "Our verdict varies across this brand's range.",
     "rollup": {
-      "products": 6,
-      "researched": 6,
-      "flagged": 5,
+      "products": 8,
+      "researched": 8,
+      "flagged": 7,
       "worst": "skip"
     }
   },
@@ -37583,6 +41193,80 @@
     }
   },
   {
+    "id": "plackers",
+    "brand": "Plackers",
+    "category": "Oral care",
+    "stance": "skip",
+    "reason": "A floss pick is a moulded plastic handle thrown away after one use, with a nylon or polyester strand. The picks are single use plastic by design, and the strand is not silk.",
+    "evidence": "Single use plastic handle; synthetic strand",
+    "sources": [
+      "pfas-free-dental-floss.html"
+    ],
+    "article": "pfas-free-dental-floss.html",
+    "reviewed": true,
+    "generalises": true,
+    "alternative": "Dental Lace, Hemli Home or TreeBird silk floss",
+    "products": [
+      {
+        "name": "Micro Line floss picks",
+        "matchAll": [
+          [
+            "plackers"
+          ]
+        ],
+        "asins": [
+          "B085YL4HR7"
+        ],
+        "verdict": "skip",
+        "note": "A moulded plastic handle thrown away after a single use, with a nylon or polyester strand. Single use plastic by design, and the strand is not silk.",
+        "origin": "hand",
+        "source": "pfas-free-dental-floss.html",
+        "ext": {
+          "verdict": "skip",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "fail",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "fail",
+        "note": "A floss pick is a moulded plastic handle thrown away after one use, with a nylon or polyester strand",
+        "origin": "extracted"
+      },
+      "packaging": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "rollup": {
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "skip"
+    }
+  },
+  {
     "id": "plaine-products",
     "brand": "Plaine Products",
     "category": "Cosmetics",
@@ -37849,6 +41533,85 @@
       "researched": 1,
       "flagged": 0,
       "worst": null
+    }
+  },
+  {
+    "id": "playtex",
+    "brand": "Playtex",
+    "category": "Period care",
+    "stance": "skip",
+    "reason": "Independent 2024 to 2025 testing found lead and arsenic in 30 of 30 tampons. Most US tampons also ship with a single use plastic applicator, and the withdrawal cord and overwrap are usually polyester.",
+    "evidence": "Lead and arsenic in 30/30 tampons tested; plastic applicator",
+    "sources": [
+      "best-non-toxic-period-products.html"
+    ],
+    "article": "best-non-toxic-period-products.html",
+    "reviewed": true,
+    "generalises": true,
+    "alternative": "Natracare organic cotton tampons, or a medical grade silicone cup",
+    "products": [
+      {
+        "name": "Playtex Sport tampons",
+        "matchAll": [
+          [
+            "playtex",
+            "tampon"
+          ],
+          [
+            "playtex",
+            "sport"
+          ]
+        ],
+        "asins": [
+          "B08L4Q75QP"
+        ],
+        "verdict": "skip",
+        "note": "Independent 2024 to 2025 testing found lead and arsenic in 30 of 30 tampons. Most US tampons also ship with a single use plastic applicator, and the withdrawal cord and overwrap are usually polyester.",
+        "origin": "hand",
+        "source": "best-non-toxic-period-products.html",
+        "ext": {
+          "verdict": "skip",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "caution",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "fail"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "caution",
+        "note": "the withdrawal cord and overwrap are usually polyester",
+        "origin": "extracted"
+      },
+      "packaging": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "rollup": {
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "skip"
     }
   },
   {
@@ -38128,6 +41891,80 @@
       "researched": 0,
       "flagged": 0,
       "worst": null
+    }
+  },
+  {
+    "id": "powcan",
+    "brand": "POWCAN",
+    "category": "Water bottles",
+    "stance": "careful",
+    "reason": "Stainless body, but the lid puts a plastic straw and spout directly in the drink path. Our drinkware standard is no plastic touching the drink at all, and the lid is where almost every insulated bottle fails it.",
+    "evidence": "Plastic straw and spout in the drink path",
+    "sources": [
+      "best-non-toxic-water-bottles.html"
+    ],
+    "article": "best-non-toxic-water-bottles.html",
+    "reviewed": true,
+    "generalises": true,
+    "alternative": "A stainless bottle with a plain steel or bamboo cap",
+    "products": [
+      {
+        "name": "POWCAN insulated bottle with straw lid",
+        "matchAll": [
+          [
+            "powcan"
+          ]
+        ],
+        "asins": [
+          "B0D8J2ZB8P"
+        ],
+        "verdict": "careful",
+        "note": "Stainless body, but the lid puts a plastic straw and spout directly in the drink path. Our drinkware standard is no plastic touching the drink at all, and the lid is where almost every insulated bottle fails it.",
+        "origin": "hand",
+        "source": "best-non-toxic-water-bottles.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "fail",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "pass",
+        "note": "Stainless body",
+        "origin": "extracted"
+      },
+      "packaging": {
+        "status": "caution",
+        "note": "the lid puts a plastic straw and spout directly in the drink path",
+        "origin": "extracted"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "rollup": {
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "careful"
     }
   },
   {
@@ -38638,31 +42475,72 @@
     "products": [
       {
         "name": "PRIMALS Boar Bristle Bamboo Toothbrush (4 Pack)",
-        "asins": [
-          "B0D2587QXX"
-        ],
+        "asins": [],
         "verdict": "good",
         "note": "100% boar hair bristles with zero synthetics anywhere in the brush. Glue free, free standing design that dries fast and resists mold. Worth knowing: Not vegan (boar hair)\", \"Bristles soften fast with use, not for firm brush fans\", \"Early bristle shedding reported\", \"Newer brand.",
         "origin": "store",
         "ext": {
           "verdict": "unrated",
-          "why": "no front is directly evidenced by the note",
+          "why": "a recommendation needs sku or line scope, this is brand",
           "fronts": {
             "formula": "unassessed",
             "packaging": "unassessed",
             "legal": "unassessed",
             "testing": "unassessed"
           },
-          "scope": "sku",
+          "scope": "brand",
           "basis": "direct",
           "disclose": false,
           "rules": []
+        },
+        "matchAll": [
+          [
+            "primals",
+            "boar",
+            "bristle",
+            "bamboo"
+          ]
+        ],
+        "matchFrom": "name"
+      },
+      {
+        "name": "PRIMALS boar bristle bamboo toothbrush",
+        "matchAll": [
+          [
+            "primals",
+            "bamboo"
+          ],
+          [
+            "primals",
+            "boar"
+          ]
+        ],
+        "asins": [
+          "B0D2587QXX"
+        ],
+        "verdict": "good",
+        "note": "Bamboo handle with real boar bristles and no nylon, which makes it the one commercially available brush that is genuinely plastic free and fully compostable.",
+        "origin": "hand",
+        "source": "bamboo-toothbrush-plastic-bristles.html",
+        "ext": {
+          "verdict": "good",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "pass",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
         }
       }
     ],
     "rollup": {
-      "products": 1,
-      "researched": 1,
+      "products": 2,
+      "researched": 2,
       "flagged": 0,
       "worst": null
     }
@@ -39384,6 +43262,93 @@
       "researched": 1,
       "flagged": 0,
       "worst": null
+    }
+  },
+  {
+    "id": "pure-life",
+    "brand": "Pure Life",
+    "category": "Bottled water",
+    "stance": "skip",
+    "reason": "Single use PET, which is a major microplastic source rather than a neutral container. Bottled water carries far more particles than filtered tap, and heat and storage time both increase what migrates out of the bottle.",
+    "evidence": "Single use PET bottled water",
+    "sources": [
+      "how-to-remove-microplastics-from-bottled-water.html"
+    ],
+    "article": "how-to-remove-microplastics-from-bottled-water.html",
+    "reviewed": true,
+    "generalises": true,
+    "alternative": "Filtered tap water in a stainless bottle",
+    "aliases": [
+      "Nestle Pure Life"
+    ],
+    "products": [
+      {
+        "name": "Pure Life purified bottled water",
+        "matchAll": [
+          [
+            "pure",
+            "life",
+            "water"
+          ],
+          [
+            "pure",
+            "life",
+            "purified"
+          ]
+        ],
+        "asins": [
+          "B00LXMD998",
+          "B0D17X879B",
+          "B00C9RNQ8K",
+          "B076Z14K59"
+        ],
+        "verdict": "skip",
+        "note": "Single use PET, which is a major microplastic source rather than a neutral container. Bottled water carries far more particles than filtered tap, and heat and storage time both increase what migrates out of the bottle.",
+        "origin": "hand",
+        "source": "how-to-remove-microplastics-from-bottled-water.html",
+        "ext": {
+          "verdict": "skip",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "fail",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "caution",
+        "note": "Single use PET, which is a major microplastic source rather than a neutral container",
+        "origin": "extracted"
+      },
+      "packaging": {
+        "status": "caution",
+        "note": "heat and storage time both increase what migrates out of the bottle",
+        "origin": "extracted"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "rollup": {
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "skip"
     }
   },
   {
@@ -40803,6 +44768,85 @@
     "rollupNote": "1 of 1 products we have reviewed under this brand are flagged: Recycled HDPE Plates. The verdict depends which one you pick."
   },
   {
+    "id": "retrospec",
+    "brand": "Retrospec",
+    "category": "Yoga mats",
+    "stance": "skip",
+    "reason": "Most mats are PVC, TPE, NBR or EVA foam. PVC is made from a known carcinogen, EVA can off gas formamide, and eco labels like PER are usually PVC in disguise (Ecology Center testing, 2019). You press skin into a mat for an hour while breathing directly above it.",
+    "evidence": "TPE and EVA foam mat",
+    "sources": [
+      "best-non-toxic-yoga-mats.html"
+    ],
+    "article": "best-non-toxic-yoga-mats.html",
+    "reviewed": true,
+    "generalises": true,
+    "alternative": "Manduka eKO natural tree rubber",
+    "products": [
+      {
+        "name": "Solana foam mats",
+        "matchAll": [
+          [
+            "retrospec",
+            "yoga"
+          ],
+          [
+            "retrospec",
+            "solana"
+          ]
+        ],
+        "asins": [
+          "B092XTMNCC"
+        ],
+        "verdict": "skip",
+        "note": "Most mats are PVC, TPE, NBR or EVA foam. PVC is made from a known carcinogen, EVA can off gas formamide, and eco labels like PER are usually PVC in disguise (Ecology Center testing, 2019). You press skin into a mat for an hour while breathing directly above it.",
+        "origin": "hand",
+        "source": "best-non-toxic-yoga-mats.html",
+        "ext": {
+          "verdict": "skip",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "fail",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "caution",
+        "note": "PVC is made from a known carcinogen, EVA can off gas formamide",
+        "origin": "extracted"
+      },
+      "packaging": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "rollup": {
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "skip"
+    }
+  },
+  {
     "id": "revision-skincare",
     "brand": "Revision Skincare",
     "category": "Skincare",
@@ -41557,13 +45601,52 @@
       }
     },
     "reviewed": true,
-    "generalises": true,
+    "generalises": false,
     "rollup": {
-      "products": 0,
-      "researched": 0,
-      "flagged": 0,
-      "worst": null
-    }
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "careful"
+    },
+    "products": [
+      {
+        "name": "Brilliance glass containers with plastic lids",
+        "matchAll": [
+          [
+            "rubbermaid",
+            "brilliance",
+            "glass"
+          ],
+          [
+            "rubbermaid",
+            "glass"
+          ]
+        ],
+        "asins": [
+          "B08BR9HBZ3",
+          "B08B7GLYZC"
+        ],
+        "verdict": "careful",
+        "note": "Glass body with a plastic lid. Hot steam rises and contacts the lid, and plastic lids degrade and shed over time, so the glass only solves half the problem. Containers with glass or bamboo lids close the other half.",
+        "origin": "hand",
+        "source": null,
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "caution",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "scopeNote": "Our verdict varies across this brand's range."
   },
   {
     "id": "ruffoni",
@@ -42740,7 +46823,7 @@
     "id": "sensarte",
     "brand": "Sensarte",
     "category": "Cookware",
-    "stance": "good",
+    "stance": "careful",
     "reason": "Reviewed in Defend Our Health's cookware directory: discloses no intentionally added PFAS forever chemicals in its cookware under California's AB 1200 law.",
     "evidence": "No PFAS disclosed (California AB 1200)",
     "alternative": "",
@@ -42771,13 +46854,56 @@
     },
     "reviewed": true,
     "article": "pfas-in-cookware-brands.html",
-    "generalises": true,
+    "generalises": false,
     "rollup": {
-      "products": 0,
-      "researched": 0,
-      "flagged": 0,
-      "worst": null
-    }
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "skip"
+    },
+    "products": [
+      {
+        "name": "SENSARTE Swiss Granite nonstick pans",
+        "matchAll": [
+          [
+            "sensarte",
+            "nonstick"
+          ],
+          [
+            "sensarte",
+            "granite"
+          ],
+          [
+            "sensarte",
+            "frying"
+          ]
+        ],
+        "asins": [
+          "B086PHS2V8"
+        ],
+        "verdict": "skip",
+        "note": "The Swiss Granite line is a PTFE based coating despite the stone imagery, and it is in the food path. Sensarte also sells a genuinely PTFE free ceramic line, so the verdict depends which one you are looking at.",
+        "origin": "hand",
+        "source": "pfas-in-cookware-brands.html",
+        "ext": {
+          "verdict": "skip",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "fail",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "scopeNote": "Our verdict varies across this brand's range.",
+    "rollupApplied": true,
+    "rollupNote": "1 of 1 products we have reviewed under this brand are flagged: SENSARTE Swiss Granite nonstick pans. The verdict depends which one you pick."
   },
   {
     "id": "sensodyne",
@@ -42841,13 +46967,47 @@
           "disclose": false,
           "rules": []
         }
+      },
+      {
+        "name": "Sensodyne Repair and Protect Whitening",
+        "matchAll": [
+          [
+            "sensodyne",
+            "repair"
+          ],
+          [
+            "sensodyne",
+            "whitening"
+          ]
+        ],
+        "asins": [
+          "B07C1ZQ5ZY"
+        ],
+        "verdict": "careful",
+        "note": "Lead at about 116 ppb in the whitening version. An effective active for sensitivity, but not a clean result. Independent lab testing published by Lead Safe Mama in 2025. The brands dispute these results.",
+        "origin": "hand",
+        "source": "best-non-toxic-toothpaste-guide.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "caution"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
       }
     ],
     "scopeNote": "Our verdict varies across this brand's range.",
     "rollup": {
-      "products": 1,
-      "researched": 1,
-      "flagged": 1,
+      "products": 2,
+      "researched": 2,
+      "flagged": 2,
       "worst": "careful"
     }
   },
@@ -42892,6 +47052,161 @@
       "researched": 0,
       "flagged": 0,
       "worst": null
+    }
+  },
+  {
+    "id": "serenity-kids",
+    "brand": "Serenity Kids",
+    "category": "Baby food",
+    "stance": "careful",
+    "reason": "A better ingredient deck than the mainstream pouches, with real protein and fat rather than fruit puree fillers. Still sold in a multilayer plastic pouch, and pouch packaging with acidic purees is where Consumer Reports found phthalates in 2023.",
+    "evidence": "Multilayer plastic pouch",
+    "sources": [
+      "microplastics-in-baby-food.html"
+    ],
+    "article": "microplastics-in-baby-food.html",
+    "reviewed": true,
+    "generalises": true,
+    "alternative": "Homemade purees in glass, or Serenity Kids' own jarred range",
+    "products": [
+      {
+        "name": "Serenity Kids pouches",
+        "matchAll": [
+          [
+            "serenity",
+            "kids"
+          ]
+        ],
+        "asins": [
+          "B07TFBCDRC"
+        ],
+        "verdict": "careful",
+        "note": "A better ingredient deck than the mainstream pouches, with real protein and fat rather than fruit puree filler. Still a multilayer plastic pouch, which is where the 2023 phthalate findings came from.",
+        "origin": "hand",
+        "source": "microplastics-in-baby-food.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "pass",
+            "packaging": "caution",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "packaging": {
+        "status": "caution",
+        "note": "Still sold in a multilayer plastic pouch",
+        "origin": "extracted"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "rollup": {
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "careful"
+    }
+  },
+  {
+    "id": "serta-baby",
+    "brand": "Serta",
+    "category": "Nursery",
+    "stance": "careful",
+    "reason": "A polyurethane foam core with a waterproof layer, which on crib mattresses is usually a vinyl or polyurethane film. No GREENGUARD or organic certification on the mainstream models.",
+    "evidence": "Polyurethane foam; waterproof film layer",
+    "sources": [
+      "non-toxic-nursery-setup.html"
+    ],
+    "article": "non-toxic-nursery-setup.html",
+    "reviewed": true,
+    "generalises": true,
+    "alternative": "Naturepedic or Avocado organic crib mattress",
+    "products": [
+      {
+        "name": "Perfect Slumber and Perfect Start crib mattresses",
+        "matchAll": [
+          [
+            "serta",
+            "crib"
+          ],
+          [
+            "serta",
+            "mattress"
+          ]
+        ],
+        "asins": [
+          "B08KRD7LNX",
+          "B0FHXLNXXY"
+        ],
+        "verdict": "careful",
+        "note": "A polyurethane foam core with a waterproof layer, which on crib mattresses is usually a vinyl or polyurethane film. No GREENGUARD or organic certification on the mainstream models.",
+        "origin": "hand",
+        "source": "non-toxic-nursery-setup.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "caution",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "packaging": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "pass",
+        "note": "No GREENGUARD or organic certification on the mainstream models",
+        "origin": "extracted"
+      }
+    },
+    "rollup": {
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "careful"
     }
   },
   {
@@ -45337,6 +49652,84 @@
     }
   },
   {
+    "id": "tampax",
+    "brand": "Tampax",
+    "category": "Period care",
+    "stance": "skip",
+    "reason": "Independent 2024 to 2025 testing found lead and arsenic in 30 of 30 tampons. Most US tampons also ship with a single use plastic applicator, and the withdrawal cord and overwrap are usually polyester.",
+    "evidence": "Lead and arsenic in 30/30 tampons tested; plastic applicator",
+    "sources": [
+      "best-non-toxic-period-products.html"
+    ],
+    "article": "best-non-toxic-period-products.html",
+    "reviewed": true,
+    "generalises": true,
+    "alternative": "Natracare organic cotton tampons, or a medical grade silicone cup",
+    "products": [
+      {
+        "name": "Tampax Pearl tampons",
+        "matchAll": [
+          [
+            "tampax"
+          ]
+        ],
+        "asins": [
+          "B0B33LJX6N",
+          "B093LVS21D",
+          "B0BPBB21N3",
+          "B01NCUIII2",
+          "B093LV6X3Q"
+        ],
+        "verdict": "skip",
+        "note": "Independent 2024 to 2025 testing found lead and arsenic in 30 of 30 tampons. Most US tampons also ship with a single use plastic applicator, and the withdrawal cord and overwrap are usually polyester.",
+        "origin": "hand",
+        "source": "best-non-toxic-period-products.html",
+        "ext": {
+          "verdict": "skip",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "caution",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "fail"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "caution",
+        "note": "the withdrawal cord and overwrap are usually polyester",
+        "origin": "extracted"
+      },
+      "packaging": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "rollup": {
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "skip"
+    }
+  },
+  {
     "id": "tap-score",
     "brand": "Tap Score",
     "category": "Water test kit",
@@ -46308,6 +50701,80 @@
     }
   },
   {
+    "id": "thetchry",
+    "brand": "THETCHRY",
+    "category": "Cutting boards",
+    "stance": "skip",
+    "reason": "A plastic cutting board sheds 14 to 71 million microplastic particles a year, with knife grooves releasing polyethylene fragments straight into food (Environmental Science & Technology, 2023). Wood is also more sanitary: UC Davis found bacteria die off in wood fibre while knife scarred plastic traps them.",
+    "evidence": "Plastic board; sheds polyethylene into food",
+    "sources": [
+      "best-non-toxic-cutting-boards.html"
+    ],
+    "article": "best-non-toxic-cutting-boards.html",
+    "reviewed": true,
+    "generalises": true,
+    "alternative": "A wood or bamboo board",
+    "products": [
+      {
+        "name": "THETCHRY plastic cutting boards",
+        "matchAll": [
+          [
+            "thetchry"
+          ]
+        ],
+        "asins": [
+          "B0CXPR165S"
+        ],
+        "verdict": "skip",
+        "note": "A plastic cutting board sheds 14 to 71 million microplastic particles a year, with knife grooves releasing polyethylene fragments straight into food (Environmental Science & Technology, 2023). Wood is also more sanitary: UC Davis found bacteria die off in wood fibre while knife scarred plastic traps them.",
+        "origin": "hand",
+        "source": "best-non-toxic-cutting-boards.html",
+        "ext": {
+          "verdict": "skip",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "fail",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "fail",
+        "note": "A plastic cutting board sheds 14 to 71 million microplastic particles a year, with knife grooves releasing…",
+        "origin": "extracted"
+      },
+      "packaging": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "rollup": {
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "skip"
+    }
+  },
+  {
     "id": "thinkbaby",
     "brand": "Thinkbaby",
     "category": "Sunscreen",
@@ -46376,14 +50843,51 @@
           "disclose": true,
           "rules": []
         }
+      },
+      {
+        "name": "Thinksport mineral sunscreen SPF 50+",
+        "matchAll": [
+          [
+            "thinksport",
+            "sunscreen"
+          ],
+          [
+            "thinksport",
+            "spf"
+          ]
+        ],
+        "asins": [
+          "B00K3JQO9Y"
+        ],
+        "verdict": "skip",
+        "note": "Same manufacturer as Thinkbaby, where independent third party testing by Lead Safe Mama in June 2025 found the highest lead level of any baby sunscreen tested to date. The mineral filter is the right chemistry, but the contamination result is the deciding fact.",
+        "origin": "hand",
+        "source": null,
+        "ext": {
+          "verdict": "skip",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "fail"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
       }
     ],
     "rollup": {
-      "products": 1,
-      "researched": 0,
-      "flagged": 0,
-      "worst": null
-    }
+      "products": 2,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "skip"
+    },
+    "aliases": [
+      "Thinksport"
+    ]
   },
   {
     "id": "thinx",
@@ -46884,6 +51388,46 @@
           ]
         ],
         "matchFrom": "name"
+      },
+      {
+        "name": "Tide liquid detergent and PODS",
+        "matchAll": [
+          [
+            "tide",
+            "detergent"
+          ],
+          [
+            "tide",
+            "pods"
+          ],
+          [
+            "tide",
+            "liquid"
+          ]
+        ],
+        "asins": [
+          "B0BNWCTNYN",
+          "B0BJMV9BXJ",
+          "B085V5PPP8"
+        ],
+        "verdict": "careful",
+        "note": "Heavy undisclosed fragrance load and a large single use plastic jug. PODS add a polyvinyl alcohol film that dissolves into the wash and the waterway rather than disappearing. Detergent is rinsed and diluted, so the exposure is lower than a leave on product.",
+        "origin": "hand",
+        "source": "best-non-toxic-laundry-detergent.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "caution",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
       }
     ],
     "fronts": {
@@ -46912,9 +51456,9 @@
     "article": "best-non-toxic-laundry-detergent.html",
     "generalises": true,
     "rollup": {
-      "products": 3,
-      "researched": 3,
-      "flagged": 3,
+      "products": 4,
+      "researched": 4,
+      "flagged": 4,
       "worst": "careful"
     }
   },
@@ -47153,13 +51697,46 @@
     },
     "reviewed": true,
     "article": "best-non-toxic-baby-bottles.html",
-    "generalises": true,
+    "generalises": false,
     "rollup": {
-      "products": 0,
-      "researched": 0,
-      "flagged": 0,
-      "worst": null
-    }
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "careful"
+    },
+    "products": [
+      {
+        "name": "Natural Start plastic bottles",
+        "matchAll": [
+          [
+            "tommee",
+            "tippee"
+          ]
+        ],
+        "asins": [
+          "B0CQMHBV3R"
+        ],
+        "verdict": "careful",
+        "note": "Polypropylene bottles for warm milk, sterilised repeatedly. Heat is the single biggest driver of migration, and a glass bottle removes the variable.",
+        "origin": "hand",
+        "source": "best-non-toxic-baby-bottles.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "caution",
+            "packaging": "caution",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "scopeNote": "Our verdict varies across this brand's range."
   },
   {
     "id": "tom-s-of-maine",
@@ -47590,7 +52167,7 @@
     "id": "tramontina",
     "brand": "Tramontina",
     "category": "Cookware",
-    "stance": "good",
+    "stance": "careful",
     "reason": "Best everyday all-rounder, tri-ply 18/10 stainless steel that handles acidic foods and is non-reactive.",
     "evidence": "Tri ply 18/10 stainless, PFAS free",
     "alternative": "",
@@ -47623,7 +52200,7 @@
     },
     "reviewed": true,
     "article": "cast-iron-vs-stainless-steel-vs-ceramic-cookware.html",
-    "generalises": true,
+    "generalises": false,
     "products": [
       {
         "name": "Tramontina Stainless Steel (12\\\")",
@@ -47647,14 +52224,52 @@
           "disclose": false,
           "rules": []
         }
+      },
+      {
+        "name": "Professional nonstick frying pans",
+        "matchAll": [
+          [
+            "tramontina",
+            "non",
+            "stick"
+          ],
+          [
+            "tramontina",
+            "nonstick"
+          ]
+        ],
+        "asins": [
+          "B009HBKQ16"
+        ],
+        "verdict": "skip",
+        "note": "Nonstick coating in the food path. Granite, marble and ceramic finishes on a budget pan are PTFE based unless the maker names the coating and shows third party testing, and PFOA free does not mean PFAS free.",
+        "origin": "hand",
+        "source": "cast-iron-vs-stainless-steel-vs-ceramic-cookware.html",
+        "ext": {
+          "verdict": "skip",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "fail",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
       }
     ],
     "rollup": {
-      "products": 1,
-      "researched": 1,
-      "flagged": 0,
-      "worst": null
-    }
+      "products": 2,
+      "researched": 2,
+      "flagged": 1,
+      "worst": "skip"
+    },
+    "scopeNote": "Our verdict varies across this brand's range.",
+    "rollupApplied": true,
+    "rollupNote": "1 of 2 products we have reviewed under this brand are flagged: Professional nonstick frying pans. The verdict depends which one you pick."
   },
   {
     "id": "transparent-labs",
@@ -48047,6 +52662,87 @@
         }
       }
     ]
+  },
+  {
+    "id": "triple-tree",
+    "brand": "Triple Tree",
+    "category": "Water bottles",
+    "stance": "careful",
+    "reason": "Stainless body, but the lid puts a plastic straw and spout directly in the drink path. Our drinkware standard is no plastic touching the drink at all, and the lid is where almost every insulated bottle fails it.",
+    "evidence": "Plastic lid components in the drink path",
+    "sources": [
+      "best-non-toxic-water-bottles.html"
+    ],
+    "article": "best-non-toxic-water-bottles.html",
+    "reviewed": true,
+    "generalises": true,
+    "alternative": "A stainless bottle with a plain steel or bamboo cap",
+    "products": [
+      {
+        "name": "Triple Tree insulated bottle",
+        "matchAll": [
+          [
+            "triple",
+            "tree",
+            "bottle"
+          ],
+          [
+            "triple",
+            "tree",
+            "insulated"
+          ]
+        ],
+        "asins": [
+          "B07Z4L57XQ"
+        ],
+        "verdict": "careful",
+        "note": "Stainless body, but the lid puts a plastic straw and spout directly in the drink path. Our drinkware standard is no plastic touching the drink at all, and the lid is where almost every insulated bottle fails it.",
+        "origin": "hand",
+        "source": "best-non-toxic-water-bottles.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "caution",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "pass",
+        "note": "Stainless body",
+        "origin": "extracted"
+      },
+      "packaging": {
+        "status": "caution",
+        "note": "the lid puts a plastic straw and spout directly in the drink path",
+        "origin": "extracted"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "rollup": {
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "careful"
+    }
   },
   {
     "id": "tripulse",
@@ -48456,11 +53152,43 @@
     "generalises": false,
     "scopeNote": "Our verdict covers part of this brand's range, not all of it.",
     "rollup": {
-      "products": 0,
-      "researched": 0,
-      "flagged": 0,
-      "worst": null
-    }
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "careful"
+    },
+    "products": [
+      {
+        "name": "Twinings tea bags",
+        "matchAll": [
+          [
+            "twinings"
+          ]
+        ],
+        "asins": [
+          "B001GM60LE",
+          "B0DYK97R27"
+        ],
+        "verdict": "careful",
+        "note": "One plastic tea bag releases 11.6 billion microplastic particles per cup, and heat is the trigger. Silky and pyramid bags are nylon or PET, and even most paper bags carry a heat sealed polypropylene seam that sheds into the water.",
+        "origin": "hand",
+        "source": "how-to-avoid-microplastics-in-tea.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "caution",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ]
   },
   {
     "id": "uigos",
@@ -48691,11 +53419,44 @@
     "article": "best-non-toxic-electrolytes.html",
     "generalises": true,
     "rollup": {
-      "products": 0,
-      "researched": 0,
-      "flagged": 0,
-      "worst": null
-    }
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "careful"
+    },
+    "products": [
+      {
+        "name": "Ultima Replenisher electrolyte powder",
+        "matchAll": [
+          [
+            "ultima",
+            "replenisher"
+          ]
+        ],
+        "asins": [
+          "B01IIGQ5KG",
+          "B08XQZX9K3"
+        ],
+        "verdict": "careful",
+        "note": "Sugar free with a reasonable mineral profile. The caution is the format: single serve stick packs are the highest plastic surface area per dose in the category, and the brand publishes no PFAS or heavy metal testing.",
+        "origin": "hand",
+        "source": "best-non-toxic-electrolytes.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "caution",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ]
   },
   {
     "id": "under-the-nile",
@@ -49069,6 +53830,87 @@
     }
   },
   {
+    "id": "utopia-kitchen",
+    "brand": "Utopia Kitchen",
+    "category": "Cookware",
+    "stance": "skip",
+    "reason": "Nonstick coating in the food path. Granite, marble and ceramic finishes on a budget pan are PTFE based unless the maker names the coating and shows third party testing, and PFOA free does not mean PFAS free.",
+    "evidence": "Nonstick coating in the food path",
+    "sources": [
+      "pfas-in-cookware-brands.html"
+    ],
+    "article": "pfas-in-cookware-brands.html",
+    "reviewed": true,
+    "generalises": true,
+    "alternative": "Bare cast iron, carbon steel, or uncoated stainless",
+    "products": [
+      {
+        "name": "Utopia Kitchen nonstick pan set",
+        "matchAll": [
+          [
+            "utopia",
+            "kitchen",
+            "nonstick"
+          ],
+          [
+            "utopia",
+            "kitchen",
+            "frying"
+          ]
+        ],
+        "asins": [
+          "B073WFLD35"
+        ],
+        "verdict": "skip",
+        "note": "Nonstick coating in the food path. Granite, marble and ceramic finishes on a budget pan are PTFE based unless the maker names the coating and shows third party testing, and PFOA free does not mean PFAS free.",
+        "origin": "hand",
+        "source": "pfas-in-cookware-brands.html",
+        "ext": {
+          "verdict": "skip",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "fail",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "packaging": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "caution",
+        "note": "Granite, marble and ceramic finishes on a budget pan are PTFE based unless the maker names the coating and…",
+        "origin": "extracted"
+      }
+    },
+    "rollup": {
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "skip"
+    }
+  },
+  {
     "id": "utoplike",
     "brand": "Utoplike",
     "category": "Bath accessories",
@@ -49291,6 +54133,81 @@
       "researched": 0,
       "flagged": 0,
       "worst": null
+    }
+  },
+  {
+    "id": "venture-pal",
+    "brand": "Venture Pal",
+    "category": "Electrolytes",
+    "stance": "careful",
+    "reason": "Sugar free with a high sodium profile. Sold in single serve stick packs, the highest plastic surface area per dose in the category, with no published PFAS or heavy metal testing. Electrolyte powders are a category where independent testing has found PFAS.",
+    "evidence": "Stick pack format; no published testing",
+    "sources": [
+      "best-non-toxic-electrolytes.html"
+    ],
+    "article": "best-non-toxic-electrolytes.html",
+    "reviewed": true,
+    "generalises": true,
+    "alternative": "GOODONYA Organic Hydration, or Skratch Labs for sport",
+    "products": [
+      {
+        "name": "Venture Pal electrolyte stick packs",
+        "matchAll": [
+          [
+            "venture",
+            "pal"
+          ]
+        ],
+        "asins": [
+          "B0FKN3ZTBJ"
+        ],
+        "verdict": "careful",
+        "note": "Sugar free with a high sodium profile, sold in single serve stick packs, which carry the most plastic surface area per dose in the category. No published PFAS or heavy metal testing.",
+        "origin": "hand",
+        "source": "best-non-toxic-electrolytes.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "caution",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "packaging": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "caution",
+        "note": "Sold in single serve stick packs, the highest plastic surface area per dose in the category, with no…",
+        "origin": "extracted"
+      }
+    },
+    "rollup": {
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "careful"
     }
   },
   {
@@ -49573,6 +54490,84 @@
     }
   },
   {
+    "id": "vivago",
+    "brand": "VIVAGO",
+    "category": "Oral care",
+    "stance": "careful",
+    "reason": "The bamboo handle is honest, the bristles usually are not. Nylon bristles are plastic, and castor bean or bio nylon is still a synthetic polymer that sheds microplastics while you brush. Only animal hair is genuinely plastic free.",
+    "evidence": "Nylon bristles on a bamboo handle",
+    "sources": [
+      "bamboo-toothbrush-plastic-bristles.html"
+    ],
+    "article": "bamboo-toothbrush-plastic-bristles.html",
+    "reviewed": true,
+    "generalises": true,
+    "alternative": "PRIMALS boar bristle, or SeaTurtle for a vegan compromise",
+    "products": [
+      {
+        "name": "VIVAGO bamboo toothbrushes",
+        "matchAll": [
+          [
+            "vivago",
+            "bamboo"
+          ]
+        ],
+        "asins": [
+          "B08172V3Y5",
+          "B0DWX22LPN",
+          "B0BHX1VPFH",
+          "B0GF1JC7DD"
+        ],
+        "verdict": "careful",
+        "note": "The bamboo handle is honest, the bristles usually are not. Nylon bristles are plastic, and castor bean or bio nylon is still a synthetic polymer that sheds microplastics while you brush. Only animal hair is genuinely plastic free.",
+        "origin": "hand",
+        "source": "bamboo-toothbrush-plastic-bristles.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "caution",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "fail",
+        "note": "castor bean or bio nylon is still a synthetic polymer that sheds microplastics while you brush",
+        "origin": "extracted"
+      },
+      "packaging": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "rollup": {
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "careful"
+    }
+  },
+  {
     "id": "vollrath",
     "brand": "Vollrath",
     "category": "Cookware",
@@ -49614,6 +54609,82 @@
       "researched": 0,
       "flagged": 0,
       "worst": null
+    }
+  },
+  {
+    "id": "voopnu",
+    "brand": "VOOPNU",
+    "category": "Air purifier",
+    "stance": "careful",
+    "reason": "A high efficiency filter claim without a stated True HEPA rating or third party verification. Coverage figures are the manufacturer's own.",
+    "evidence": "HEPA grade not independently verified",
+    "sources": [
+      "best-air-purifiers-for-microplastics.html"
+    ],
+    "article": "best-air-purifiers-for-microplastics.html",
+    "reviewed": true,
+    "generalises": true,
+    "alternative": "Coway Airmega, our best overall True HEPA pick",
+    "products": [
+      {
+        "name": "VOOPNU air purifiers",
+        "matchAll": [
+          [
+            "voopnu",
+            "air",
+            "purifier"
+          ]
+        ],
+        "asins": [
+          "B0DY4S3HP2"
+        ],
+        "verdict": "careful",
+        "note": "A high efficiency filter claim with no stated True HEPA rating or third party verification, and coverage figures that are the manufacturer's own.",
+        "origin": "hand",
+        "source": "best-air-purifiers-for-microplastics.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "caution",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "packaging": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "pass",
+        "note": "HEPA grade not independently verified",
+        "origin": "extracted"
+      }
+    },
+    "rollup": {
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "careful"
     }
   },
   {
@@ -49685,6 +54756,86 @@
       "researched": 0,
       "flagged": 0,
       "worst": null
+    }
+  },
+  {
+    "id": "vtopmart",
+    "brand": "Vtopmart",
+    "category": "Food storage",
+    "stance": "careful",
+    "reason": "Glass body with a plastic lid. Hot steam rises and contacts the lid, and plastic lids degrade and shed over time, so the glass only solves half the problem. Containers with glass or bamboo lids close the other half.",
+    "evidence": "Glass body, plastic lid",
+    "sources": [
+      "best-plastic-free-food-storage-containers.html"
+    ],
+    "article": "best-plastic-free-food-storage-containers.html",
+    "reviewed": true,
+    "generalises": true,
+    "alternative": "Urban Green or EcoEvo glass containers with glass lids",
+    "products": [
+      {
+        "name": "Glass containers with plastic lids",
+        "matchAll": [
+          [
+            "vtopmart",
+            "glass"
+          ],
+          [
+            "vtopmart",
+            "storage"
+          ]
+        ],
+        "asins": [
+          "B0B9S5HZ26",
+          "B0D7P6XKNP"
+        ],
+        "verdict": "careful",
+        "note": "Glass body with a plastic lid. Hot steam rises and contacts the lid, and plastic lids degrade and shed over time, so the glass only solves half the problem. Containers with glass or bamboo lids close the other half.",
+        "origin": "hand",
+        "source": "best-plastic-free-food-storage-containers.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "caution",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "packaging": {
+        "status": "caution",
+        "note": "plastic lid",
+        "origin": "extracted"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "rollup": {
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "careful"
     }
   },
   {

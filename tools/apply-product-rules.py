@@ -105,13 +105,35 @@ def main():
             if v != p.get("verdict"):
                 diverge += 1
 
+    # Two rows under one brand resolving to the same rule is a silent
+    # mis-verdict: whichever sorts first answers for both, and a stale row can
+    # outrank the corrected one that replaced it. Levoit carried a good row and
+    # a skip row on the identical match, and the good one won.
+    clash = 0
+    for b in brands:
+        seen = {}
+        for p in (b.get("products") or []):
+            for g in (p.get("matchAll") or []):
+                k = tuple(sorted(g))
+                other = seen.get(k)
+                if other is not None and other["ext"]["verdict"] != p["ext"]["verdict"]:
+                    print(f"  !! COLLISION under {b['brand']}: {other.get('name')!r} "
+                          f"({other['ext']['verdict']}) vs {p.get('name')!r} "
+                          f"({p['ext']['verdict']}) both need {sorted(g)}")
+                    clash += 1
+                seen[k] = p
+
     print(f"stamped ext onto {sum(dist.values())} product rows")
+    print(f"  rule collisions with different verdicts: {clash}")
     print(f"  hand-authored, left untouched: {hand_kept}")
     print(f"  collapsed duplicate rows: {dedup}")
     print(f"  extension verdict differs from the site verdict: {diverge}")
     print("\nextension verdict distribution:")
     for k, v in dist.most_common():
         print(f"  {str(k):<8} {v:>4}")
+
+    if clash:
+        raise SystemExit("refusing to write: two rows would answer for the same listing")
 
     if args.write:
         DATA.write_text(json.dumps(brands, indent=2, ensure_ascii=False) + "\n")
