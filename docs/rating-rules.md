@@ -116,6 +116,40 @@ our practice already reflects this: no product on the site is a skip for
 fragrance alone. Every skip that mentions it carries a second, named finding
 beside it, and that is the rule, not a coincidence.
 
+### 2.2 Conditional failures
+
+Some failures are not a property of the product as sold. They depend on how it is
+used, they are avoidable by stated care, and nothing about the object tells you
+whether they have happened.
+
+Sophie la Girafe is the case. The rubber and the food grade paint are fine. The
+sealed interior cavity is the problem: water enters during washing and cannot be
+dried, and mould colonies inside the toy are documented from 2017 onward. But
+mould is not guaranteed. It depends entirely on whether water gets in.
+
+Run that against 2.1 and the third test fails outright. **Determinable** asks
+whether we can tell it is there from the label, the material, or a published
+test, and we cannot. What is determinable is the design that permits it, which is
+a real finding. Whether any given unit has mould is not.
+
+> A failure inherent to the design, avoidable by stated care, and not detectable
+> in the product as sold caps at **careful**, with the mitigation stated.
+
+Not good, because the failure is unrecoverable once it happens, invisible from
+the outside, and in a product an infant mouths. Not skip, because "skip" when
+"do not submerge it" solves the problem overstates what we know, and gives the
+reader worse information than the caveat would.
+
+This sits with 5.1, 5.2 and 5.6, which all say the same thing in different
+words: do not convict on what might be true.
+
+**The boundary.** A conditional failure alongside a named hazard is still a skip,
+carried by the named hazard rather than the condition. Munchkin's bath toys also
+harbour mould, and they are a skip because they are soft PVC with phthalate
+exposure when chewed. That is determinable from the material. Sophie's materials
+are sound, which is exactly why the conditional finding has to stand on its own,
+and on its own it is a caution.
+
 ## 3. Packaging
 
 **Natural scope:** `format`.
