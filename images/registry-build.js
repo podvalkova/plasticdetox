@@ -20,7 +20,7 @@ const REGISTRY = [
       { name: "Burt's Bees Baby Organic Crib Sheets", searchQ: "Burts+Bees+Baby+organic+crib+sheets", img: "61r3F05PnpL", sentence: "GOTS certified 100% organic cotton jersey knit. Widely available, affordable, gets softer with each wash.", badges: ["GOTS organic"], tag: "Best value" },
       { name: "Coyuchi Organic Crib Sheets", searchQ: "Coyuchi+organic+crib+sheet", img: "", sentence: "GOTS organic cotton percale with deep pockets. Higher end weave that wears in beautifully.", badges: ["GOTS organic"], tag: null },
       { name: "Woolino 4 Season Merino Sleep Sack", searchQ: "Woolino+4+Season+Merino+sleep+sack+baby", img: "", sentence: "Merino wool is naturally flame resistant without chemicals. Self regulating warmth across seasons.", badges: ["Merino wool"], tag: "Editor pick" },
-      { name: "Kyte Baby Bamboo Sleep Sack", searchQ: "Kyte+Baby+bamboo+sleep+sack", img: "", sentence: "Bamboo viscose is a chemical process but very soft and breathable. Avoid polyester fleece sleep sacks.", badges: ["Bamboo viscose"], tag: null },
+      
       { name: "Burt's Bees Organic Cotton Sleep Sack", searchQ: "Burts+Bees+organic+cotton+sleep+sack", img: "", sentence: "GOTS organic cotton sleep sack at an accessible price point. The cleanest non wool pick.", badges: ["GOTS organic"], tag: null },
       { name: "Aden + Anais Organic Muslin Swaddles", searchQ: "Aden+Anais+organic+muslin+swaddle", img: "", sentence: "100% organic cotton muslin. Skip bamboo rayon swaddles marketed as natural, the process is chemical intensive viscose.", badges: ["GOTS organic"], tag: null },
       { name: "Little Unicorn Cotton Muslin Swaddles", searchQ: "Little+Unicorn+GOTS+swaddle", img: "91flvWzsU5L", sentence: "GOTS certified organic cotton muslin with beautiful prints. Multi use as swaddle, nursing cover, or stroller blanket.", badges: ["GOTS organic"], tag: "Best value" }
@@ -57,9 +57,7 @@ const REGISTRY = [
       { name: "REDECKER Bottle Brush", asin: "B002HORIN4", img: "71rFLyBorRL", sentence: "Natural horsehair bristles with a beechwood handle. Plastic free option, gentle on glass bottles.", badges: ["Plastic free"], tag: null },
       { name: "Earth Mama Organic Nipple Butter", searchQ: "Earth+Mama+organic+nipple+butter", img: "", sentence: "Lanolin free organic herbs in olive oil and beeswax. Safe for baby, no need to wipe off before nursing.", badges: ["Lanolin free", "Organic"], tag: null },
       { name: "Motherlove Nipple Cream", searchQ: "Motherlove+nipple+cream", img: "", sentence: "Organic herbs in extra virgin olive oil. Lanolin free since lanolin can be pesticide contaminated.", badges: ["Organic", "Lanolin free"], tag: null },
-      { name: "Bamboobies Organic Cotton Nursing Pads", searchQ: "Bamboobies+organic+cotton+nursing+pad+washable", img: "", sentence: "Reusable organic cotton pads that absorb without bleached cellulose disposables. Verify GOTS organic, skip bamboo marketing.", badges: ["GOTS organic"], tag: null },
-      { name: "Boppy Nursing Pillow with Organic Cotton Cover", searchQ: "Boppy+nursing+pillow+organic+cotton+cover", img: "", sentence: "The cover is the contact point, get organic cotton. Polyester fill is fine since it never touches skin.", badges: ["Organic cotton cover"], tag: null }
-    ]
+      { name: "Bamboobies Organic Cotton Nursing Pads", searchQ: "Bamboobies+organic+cotton+nursing+pad+washable", img: "", sentence: "Reusable organic cotton pads that absorb without bleached cellulose disposables. Verify GOTS organic, skip bamboo marketing.", badges: ["GOTS organic"], tag: null }]
   },
   {
     id: "pumping",
