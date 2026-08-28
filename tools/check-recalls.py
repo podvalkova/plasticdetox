@@ -40,25 +40,61 @@ FDA_CATS = re.compile(
 ENDPOINTS = ["food/enforcement", "drug/enforcement", "device/enforcement"]
 
 
-def query(firm):
-    """Total recalls and the most recent, or None when the source is unreachable."""
-    total, latest = 0, None
+SUFFIX = re.compile(
+    r"\b(inc|llc|l\.l\.c|corp|corporation|co|company|ltd|limited|gmbh|plc|"
+    r"holdings|group|brands|products|foods|usa|international|industries|"
+    r"enterprises|partners|lp|llp)\b\.?", re.I)
+
+
+def is_the_brand(brand, firm):
+    """
+    Is this recalling firm actually our brand?
+
+    recalling_firm is matched as a substring, which is how a search for Crest
+    returned Cedar Crest Specialties, Trident returned Trident Seafoods, Badger
+    returned a kratom vendor called Badger Botanicals, and eos returned EOS
+    Imaging, a medical device maker. Writing any of those to the data would have
+    invented a recall against a named brand, which is the one error with real
+    legal exposure.
+
+    So the firm name, stripped of corporate suffixes, must actually begin with
+    the brand rather than merely contain it somewhere.
+    """
+    def bare(s):
+        s = SUFFIX.sub(" ", (s or "").lower())
+        return re.sub(r"[^a-z0-9]+", " ", s).strip()
+    b, f = bare(brand), bare(firm)
+    if not b or not f:
+        return False
+    return f == b or f.startswith(b + " ")
+
+
+def query(brand):
+    """
+    Verified recalls for this brand, and the most recent.
+
+    Returns (total, latest, examined). `examined` is how many records we looked
+    at, so a zero result can distinguish "nothing matched" from "nothing found".
+    """
+    total, latest, examined = 0, None, 0
     for ep in ENDPOINTS:
         url = (f"https://api.fda.gov/{ep}.json?search=recalling_firm:"
-               f"%22{urllib.parse.quote(firm)}%22&limit=1")
+               f"%22{urllib.parse.quote(brand)}%22&limit=100")
         try:
-            with urllib.request.urlopen(url, timeout=20) as r:
+            with urllib.request.urlopen(url, timeout=25) as r:
                 d = json.loads(r.read())
         except Exception:
             continue
-        n = (d.get("meta", {}).get("results", {}) or {}).get("total", 0)
-        total += n
         for res in d.get("results", []):
+            examined += 1
+            if not is_the_brand(brand, res.get("recalling_firm")):
+                continue
+            total += 1
             dt = res.get("recall_initiation_date")
             if dt and (latest is None or dt > latest[0]):
                 latest = (dt, res.get("reason_for_recall", "")[:160],
-                          res.get("status", ""), res.get("classification", ""))
-    return total, latest
+                          res.get("status", ""), res.get("recalling_firm", ""))
+    return total, latest, examined
 
 
 def main():
@@ -78,10 +114,13 @@ def main():
     print(f"brands in an FDA-answerable category with no cached answer: {len(todo)}")
 
     for i, b in enumerate(todo, 1):
-        total, latest = query(b["brand"])
-        cache[b["brand"]] = {"total": total, "latest": latest, "checked": "2026-08-28"}
+        total, latest, examined = query(b["brand"])
+        cache[b["brand"]] = {"total": total, "latest": latest, "examined": examined,
+                             "checked": "2026-08-28"}
         if total:
-            print(f"  {b['brand']}: {total} recall(s), latest {latest[0] if latest else '?'}")
+            print(f"  {b['brand']}: {total} verified recall(s) "
+                  f"(of {examined} name matches), latest {latest[0]} "
+                  f"[{latest[3][:40]}]")
         if i % 10 == 0:
             print(f"  … {i}/{len(todo)}")
         time.sleep(0.3)
@@ -98,6 +137,7 @@ def main():
         return
 
     set_pass = set_flag = 0
+    needs_review = []
     for b in brands:
         c = cache.get(b["brand"])
         if not c:
@@ -108,19 +148,30 @@ def main():
                 continue
             if e["fronts"].get("legal") not in ("unassessed", "unknown"):
                 continue
-            if c["total"] == 0:
+            # Only two states get written. Nothing resembling the brand appeared
+            # at all, which is a genuine "checked, nothing found". Or something
+            # did, and a name alone cannot tell us whether it is them: Trident
+            # Seafoods and Trident gum both begin with Trident, as do Simply Good
+            # Foods and Simply Gum. Asserting a recall against the wrong company
+            # is the one error here with real consequences, so an ambiguous match
+            # is left unassessed and listed for a person to resolve.
+            if c.get("examined", 0) == 0:
                 e["fronts"]["legal"] = "pass"
                 e["legalNote"] = ("Checked against the FDA enforcement database on "
-                                  f"{c['checked']}: no recall on record for this brand.")
+                                  f"{c['checked']}. No recall on record, and no firm "
+                                  "with a similar name either.")
                 set_pass += 1
             else:
-                e["fronts"]["legal"] = "caution"
-                d = c["latest"][0] if c["latest"] else "?"
-                e["legalNote"] = (f"{c['total']} FDA recall(s) on record for this brand, "
-                                  f"most recent {d}. Checked {c['checked']}.")
-                set_flag += 1
+                needs_review.append((b["brand"], c.get("total", 0), c.get("examined", 0),
+                                     (c.get("latest") or [None, "", "", "?"])[3]))
     DATA.write_text(json.dumps(brands, indent=2, ensure_ascii=False) + "\n")
-    print(f"legal front set to pass on {set_pass} rows, caution on {set_flag}")
+    print(f"legal front set to pass on {set_pass} rows")
+    if needs_review:
+        print(f"\n{len(needs_review)} brands need a person to confirm whether the "
+              f"recalling firm is them:")
+        for brand, total, examined, firm in sorted(needs_review):
+            print(f"  {brand:<24} {total:>3} of {examined:>3} name matches   "
+                  f"most recent firm: {firm[:44]}")
 
 
 if __name__ == "__main__":
