@@ -516,6 +516,24 @@
     if (e.key === "Escape" && openPop) { openPop.remove(); openPop = null; }
   });
 
+  /**
+   * The full title of a search result.
+   *
+   * Amazon now splits it across two spans inside the h2, the brand and then the
+   * rest, so taking the first match returned "Colgate" for every Colgate
+   * listing and nothing matched a product line. Join the spans with a space
+   * rather than reading textContent, which would run them together.
+   */
+  function titleOf(card) {
+    const h = card.querySelector(SEL.search.title);
+    if (!h) return "";
+    const spans = h.querySelectorAll("span");
+    if (spans.length > 1) {
+      return [...spans].map((s) => s.textContent.trim()).filter(Boolean).join(" ");
+    }
+    return h.textContent.trim();
+  }
+
   // -------------------------------------------------------------- search
 
   function decorateSearch() {
@@ -525,8 +543,7 @@
       card.dataset.pdDone = "1";
 
       const asin = card.getAttribute("data-asin");
-      const titleEl = card.querySelector(SEL.search.title);
-      const title = titleEl ? titleEl.textContent.trim() : "";
+      const title = titleOf(card);
       const match = fromAsin(asin) || fromTitle(title);
       if (!match) continue;
 

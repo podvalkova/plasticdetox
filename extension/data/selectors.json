@@ -1,9 +1,9 @@
 {
-  "version": 1,
-  "note": "Anchored on data-* attributes Amazon has kept stable for years. Served from plasticdetox.org/extension/selectors.json so a layout change can be fixed without a store review.",
+  "version": 2,
+  "note": "Anchored on data-* attributes Amazon has kept stable for years. search.title targets the h2 itself, not a span inside it: Amazon splits the title across two spans and the first is only the brand. Served from plasticdetox.org/extension/data/selectors.json so a layout change can be fixed without a store review.",
   "search": {
     "card": "[data-component-type=\"s-search-result\"][data-asin]",
-    "title": "h2 a span, h2 span, [data-cy=\"title-recipe\"] h2 span",
+    "title": "[data-cy=\"title-recipe\"] h2, h2",
     "insertAfter": "[data-cy=\"title-recipe\"], h2",
     "brandLine": "[data-cy=\"title-recipe\"] .a-row .a-size-base"
   },
