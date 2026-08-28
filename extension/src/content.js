@@ -115,15 +115,34 @@
    * verdicts disagree with their own brand, so a brand-level answer on a
    * product page is wrong about as often as it is right.
    */
-  function productFor(match, asin) {
-    if (!asin) return null;
-    return (match.brand.products || []).find(
-      (p) => Array.isArray(p.asins) && p.asins.includes(asin)
-    ) || null;
+  function productFor(match, asin, title) {
+    const rows = match.brand.products || [];
+    if (asin) {
+      const exact = rows.find((p) => Array.isArray(p.asins) && p.asins.includes(asin));
+      if (exact) return exact;
+    }
+    // Then the product line, matched on the listing title. A line sits between a
+    // brand verdict, too broad because Colgate sells around forty pastes, and an
+    // ASIN verdict, too narrow because every size and multipack is its own ASIN.
+    // "Colgate Total" covers every listing of that line and claims nothing about
+    // Optic White. Longest phrase wins so a specific line beats a general one.
+    if (!title) return null;
+    const low = norm(title);
+    let best = null, bestLen = 0;
+    for (const p of rows) {
+      for (const phrase of (p.match || [])) {
+        const needle = norm(phrase);
+        if (needle && low.includes(needle) && needle.length > bestLen) {
+          best = p;
+          bestLen = needle.length;
+        }
+      }
+    }
+    return best;
   }
 
-  function resolveStance(match, asin) {
-    const row = productFor(match, asin);
+  function resolveStance(match, asin, title) {
+    const row = productFor(match, asin, title);
     return row && row.verdict ? row.verdict : null;
   }
 
@@ -146,8 +165,8 @@
    * whether this pan is coated. Rather than hedge a brand verdict with caveats,
    * we show no status at all and offer to research it.
    */
-  function hasVerdict(match, asin) {
-    const row = productFor(match, asin);
+  function hasVerdict(match, asin, title) {
+    const row = productFor(match, asin, title);
     return !!(row && row.verdict);
   }
 
@@ -513,9 +532,9 @@
 
       // No researched product, no chip. A grey "we do not know" on every
       // listing is noise, and a coloured one would be a claim we cannot make.
-      if (!hasVerdict(match, asin)) continue;
-      const stance = resolveStance(match, asin);
-      const prow = productFor(match, asin);
+      if (!hasVerdict(match, asin, title)) continue;
+      const stance = resolveStance(match, asin, title);
+      const prow = productFor(match, asin, title);
       const chip = buildChip(match, stance);
       chip.addEventListener("click", (e) => {
         e.preventDefault();
@@ -571,9 +590,9 @@
 
     const detailAsin = asinFromUrl();
     let panel;
-    if (match && hasVerdict(match, detailAsin)) {
-      panel = buildCard(match, resolveStance(match, detailAsin),
-                        { product: productFor(match, detailAsin) });
+    if (match && hasVerdict(match, detailAsin, title)) {
+      panel = buildCard(match, resolveStance(match, detailAsin, title),
+                        { product: productFor(match, detailAsin, title) });
     } else if (match) {
       // We know the brand but not this product, which is not the same thing.
       // Offer to research it rather than lending the brand's verdict to it.
