@@ -227,6 +227,14 @@ async function handleAppUpdate(request, env, corsOrigin) {
     if (request.method === "POST") {
       const body = await request.json().catch(() => ({}));
       running = String(body.version_name || body.version || "");
+      // A fresh install reports "builtin": it is running the bundle compiled
+      // into the binary, which has no version of its own. The native app
+      // version is the right thing to compare against, and it is why a
+      // release bumps MARKETING_VERSION to match the bundle version. Without
+      // this, every new install downloads a copy of what it already has.
+      if (!running || running === "builtin") {
+        running = String(body.version_build || body.version_native || "");
+      }
     }
 
     const res = await fetch("https://plasticdetox.org/app/updates.json", {

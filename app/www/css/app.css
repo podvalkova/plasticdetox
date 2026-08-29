@@ -231,3 +231,22 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .card .cta:disabled { opacity: .6; }
 .card p + p { margin-top: .5rem; }
 .results:empty { display: none; }
+
+/* The Safari extension prompt, and the screen it opens. */
+.promo {
+  display: flex; align-items: center; gap: .7rem;
+  margin-top: 1rem; padding: .85rem 1rem;
+  background: var(--green-light); border: 1px solid #bbf7d0;
+  border-radius: var(--radius-sm);
+}
+.promo .row-name { font-size: .95rem; }
+.promo .row-sub { color: #15803d; }
+.promo-go {
+  flex: none; padding: .45rem .9rem; border-radius: 999px;
+  background: var(--green-dark); color: #fff; font-weight: 700; font-size: .82rem;
+}
+.promo-x { flex: none; color: #15803d; font-size: .9rem; padding: .2rem .3rem; }
+
+.steps { margin: 0 0 0 1.1rem; padding: 0; }
+.steps li { margin-bottom: .55rem; font-size: .95rem; }
+.steps li::marker { font-weight: 800; color: var(--green-dark); }

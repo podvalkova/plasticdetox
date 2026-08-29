@@ -27,7 +27,10 @@ const BUNDLED = {
   asins: "data/asin-map.json",
   selectors: "data/selectors.json",
 };
-export const REFRESH_HOURS = 12;
+// Not exported. It was, and nothing ever imported it, but the `export` forced
+// the manifest to declare the service worker as a module, which Safari does
+// not support. One plain script now runs unchanged in both browsers.
+const REFRESH_HOURS = 12;
 
 async function readBundled(key) {
   const res = await fetch(chrome.runtime.getURL(BUNDLED[key]));

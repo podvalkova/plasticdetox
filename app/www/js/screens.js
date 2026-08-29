@@ -11,7 +11,7 @@ const STATUS_GLYPH = { pass: "✓", caution: "!", fail: "✕", unknown: "?" };
 
 // ------------------------------------------------------------------- home
 
-export function home(root, { onScan, onSearch, onPick, onStarter, recents, starters, canScan }) {
+export function home(root, { onScan, onSearch, onPick, onStarter, onSafari, onDismissSafari, recents, starters, canScan, showSafari }) {
   const hero = el("div", "hero");
   hero.appendChild(el("h1", null, "What is in your hand?"));
   hero.appendChild(el("p", null, canScan
@@ -41,6 +41,8 @@ export function home(root, { onScan, onSearch, onPick, onStarter, recents, start
 
   const results = el("div", "results");
   root.appendChild(results);
+
+  if (showSafari) root.appendChild(safariPrompt(onSafari, onDismissSafari));
 
   if (recents && recents.length) {
     root.appendChild(el("div", "section-title", "Recent"));
@@ -317,7 +319,7 @@ export function unknown(root, { scan, query, onRequest, onOpen, onSearch }) {
 
 // ------------------------------------------------------------------ about
 
-export function about(root, { meta, onOpen }) {
+export function about(root, { meta, onOpen, onSafari }) {
   root.appendChild(el("div", "hero")).appendChild(el("h1", null, "How this works"));
 
   const how = el("div", "card");
@@ -334,6 +336,15 @@ export function about(root, { meta, onOpen }) {
     ? `Last updated ${new Date(meta.fetched).toLocaleDateString()}.`
     : "Using the version that shipped with the app."));
   root.appendChild(data);
+
+  const safariCard = el("div", "card");
+  safariCard.appendChild(el("h2", null, "In Safari too"));
+  safariCard.appendChild(el("p", null,
+    "Brand Check can show the same verdict on Amazon listings while you browse in Safari. It ships with this app and takes three taps in Settings to turn on."));
+  const setup = el("button", "cta ghost", "How to turn it on");
+  setup.onclick = onSafari;
+  safariCard.appendChild(setup);
+  root.appendChild(safariCard);
 
   const links = el("div", "card");
   links.appendChild(el("h2", null, "More"));
@@ -387,4 +398,69 @@ export function category(root, { label, brands, onPick }) {
     row.onclick = () => onPick({ brand: b });
     root.appendChild(row);
   }
+}
+
+// ----------------------------------------------------------- safari extension
+
+/**
+ * How to turn the Safari extension on.
+ *
+ * iOS gives an app no way to ask whether its own Safari extension is enabled,
+ * so this cannot be a status screen. It is instructions, and the honest thing
+ * is to let someone say they are done rather than pretend to detect it.
+ */
+export function safari(root, { onDone, onOpen }) {
+  const hero = el("div", "hero");
+  hero.appendChild(el("h1", null, "Check Amazon in Safari"));
+  hero.appendChild(el("p", null,
+    "The same four front verdict, on every Amazon listing you open, without leaving the page."));
+  root.appendChild(hero);
+
+  const steps = el("div", "card");
+  steps.appendChild(el("h2", null, "Three taps, once"));
+  const list = el("ol", "steps");
+  for (const [strong, rest] of [
+    ["Open Settings", " and go to Apps, then Safari."],
+    ["Tap Extensions", ", then Brand Check, and turn it on."],
+    ["Allow amazon.com", " so it can read the listing you are looking at."],
+  ]) {
+    const li = el("li");
+    li.appendChild(el("b", null, strong));
+    li.appendChild(document.createTextNode(rest));
+    list.appendChild(li);
+  }
+  steps.appendChild(list);
+  root.appendChild(steps);
+
+  const what = el("div", "card");
+  what.appendChild(el("h2", null, "What it does"));
+  what.appendChild(el("p", null,
+    "A coloured chip on every search result, and the full scorecard on a product page. It reads the listing to work out which brand and product you are looking at, and shows the verdict we published. It sends nothing about you anywhere."));
+  root.appendChild(what);
+
+  const done = el("button", "cta", "I have turned it on");
+  done.onclick = onDone;
+  root.appendChild(done);
+
+  const more = el("a", "cta ghost", "See what a verdict looks like");
+  more.href = "https://plasticdetox.org/brand-check.html";
+  more.onclick = (e) => { e.preventDefault(); onOpen(more.href); };
+  root.appendChild(more);
+}
+
+/** The prompt on the home screen, until it is dismissed. */
+export function safariPrompt(onOpen, onDismiss) {
+  const box = el("div", "promo");
+  const body = el("div", "row-body");
+  body.appendChild(el("div", "row-name", "Shopping on Amazon?"));
+  body.appendChild(el("div", "row-sub", "Turn on Brand Check in Safari"));
+  box.appendChild(body);
+  const go = el("button", "promo-go", "Set up");
+  go.onclick = onOpen;
+  box.appendChild(go);
+  const x = el("button", "promo-x", "✕");
+  x.setAttribute("aria-label", "Dismiss");
+  x.onclick = onDismiss;
+  box.appendChild(x);
+  return box;
 }

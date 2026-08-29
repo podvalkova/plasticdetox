@@ -16,8 +16,7 @@
     "https://plasticdetox-quiz-email.plasticdetox.workers.dev/*"
   ],
   "background": {
-    "service_worker": "src/background.js",
-    "type": "module"
+    "service_worker": "src/background.js"
   },
   "content_scripts": [
     {
