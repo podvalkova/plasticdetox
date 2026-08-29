@@ -12,9 +12,22 @@ const EXTENSION_ORIGINS = [
   "https://smile.amazon.com",
 ];
 
+// The iOS app runs in a WebView whose origin is not a site we own. Capacitor
+// serves it from capacitor://localhost, and a Safari web extension's content
+// script posts under the origin of whatever page it is running on.
+const APP_ORIGINS = [
+  "capacitor://localhost",
+  "ionic://localhost",
+  "http://localhost",
+];
+
 function resolveCors(origin) {
   if (ALLOWED_ORIGINS.includes(origin)) return origin;
   if (EXTENSION_ORIGINS.includes(origin)) return origin;
+  if (APP_ORIGINS.includes(origin)) return origin;
+  // A Safari web extension injects into the page, so its calls arrive with a
+  // safari-web-extension:// origin whose id changes per install.
+  if (origin.startsWith("safari-web-extension://")) return origin;
   return ALLOWED_ORIGINS[0];
 }
 
@@ -35,6 +48,11 @@ export default {
     }
 
     const path = new URL(request.url).pathname;
+
+    // ===== iOS app: which web bundle should this install be running? =====
+    if (path === "/app-update") {
+      return handleAppUpdate(request, env, corsOrigin);
+    }
 
     // ===== Private stats view: every brand searched, ranked by count (GET) =====
     if (path === "/brand-stats" && request.method === "GET") {
@@ -191,6 +209,58 @@ async function logBrandSearch(env, brand, matched, verdict, requested) {
 }
 
 // POST /brand-search-log  { brand, matched, verdict }
+/**
+ * The over the air update check.
+ *
+ * The app posts the bundle version it is running and we answer with a newer
+ * one, or with nothing. The manifest lives on the site rather than in this
+ * worker so that shipping an update is a site deploy and never a worker
+ * deploy: fewer moving parts on the day something is broken and needs fixing.
+ *
+ * Answering "no update" is the safe default for every failure here. A bad
+ * answer would swap the running bundle for one that might not boot.
+ */
+async function handleAppUpdate(request, env, corsOrigin) {
+  const none = (why) => json({ message: why, version: "builtin" }, 200, corsOrigin);
+  try {
+    let running = "";
+    if (request.method === "POST") {
+      const body = await request.json().catch(() => ({}));
+      running = String(body.version_name || body.version || "");
+    }
+
+    const res = await fetch("https://plasticdetox.org/app/updates.json", {
+      cf: { cacheTtl: 60, cacheEverything: true },
+    });
+    if (!res.ok) return none("no manifest");
+
+    const manifest = await res.json();
+    const latest = manifest && manifest.latest;
+    const bundle = latest && manifest.bundles && manifest.bundles[latest];
+    if (!bundle || !bundle.url || !bundle.checksum) return none("no bundle");
+    if (running && !newer(latest, running)) return none("up to date");
+
+    return json({
+      version: bundle.version,
+      url: bundle.url,
+      checksum: bundle.checksum,
+    }, 200, corsOrigin);
+  } catch (e) {
+    return none("check failed");
+  }
+}
+
+/** Semver compare, enough for the three number versions we publish. */
+function newer(candidate, current) {
+  const parse = (v) => String(v).split(".").map((n) => parseInt(n, 10) || 0);
+  const a = parse(candidate);
+  const b = parse(current);
+  for (let i = 0; i < 3; i++) {
+    if ((a[i] || 0) !== (b[i] || 0)) return (a[i] || 0) > (b[i] || 0);
+  }
+  return false;
+}
+
 async function handleSearchLog(request, env, corsOrigin) {
   try {
     const { brand, matched, verdict } = await request.json();

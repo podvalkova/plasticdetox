@@ -2,8 +2,7 @@
 //
 // Three implementations sit behind `scan()`, picked at runtime:
 //
-//   native   the ML Kit scanner, which reads a barcode off a shelf at an
-//            angle, in bad light, through shrink wrap
+//   native   our own AVFoundation plugin, in ios/App/App/Plugins
 //   web      Chrome's BarcodeDetector, so the app is testable in a browser
 //   none     no camera available, and the caller falls back to search
 //
@@ -11,9 +10,8 @@
 // than imported. That is deliberate: it means this bundle is plain files with
 // no build step, which is what makes an over the air update a file copy.
 
-const FORMATS = ["EAN_13", "EAN_8", "UPC_A", "UPC_E", "CODE_128", "ITF"];
-
 let impl = null;
+let nativeSupported = null;
 
 function plugin(name) {
   const cap = window.Capacitor;
@@ -28,8 +26,25 @@ function detect() {
   return impl;
 }
 
-export function available() {
-  return detect() !== "none";
+/**
+ * Can we scan at all?
+ *
+ * On a simulator the plugin is present and the camera is not, so the answer
+ * has to come from the device rather than from whether the bridge exists.
+ */
+export async function available() {
+  const kind = detect();
+  if (kind === "none") return false;
+  if (kind !== "native") return true;
+  if (nativeSupported === null) {
+    try {
+      const { supported } = await plugin("BarcodeScanner").isSupported();
+      nativeSupported = !!supported;
+    } catch {
+      nativeSupported = false;
+    }
+  }
+  return nativeSupported;
 }
 
 /** Ask for the camera. Returns true when we may scan. */
@@ -57,21 +72,8 @@ export async function scan() {
 }
 
 async function scanNative() {
-  const bs = plugin("BarcodeScanner");
-
-  // The scanner module is not in the app binary. On a first scan it downloads,
-  // which takes a moment on a shop's wifi, so we check before opening a camera
-  // that would otherwise sit there finding nothing.
-  try {
-    const ready = await bs.isGoogleBarcodeScannerModuleAvailable();
-    if (ready && ready.available === false) {
-      await bs.installGoogleBarcodeScannerModule();
-    }
-  } catch {
-    // Not every platform exposes the module check. Scanning still works.
-  }
-
-  const { barcodes } = await bs.scan({ formats: FORMATS });
+  // An empty list is how the plugin reports a cancel, which is not an error.
+  const { barcodes } = await plugin("BarcodeScanner").scan();
   if (!barcodes || !barcodes.length) return null;
   return barcodes[0].rawValue || null;
 }

@@ -1,0 +1,12 @@
+node_modules/
+dist/
+ios/App/App/public/
+ios/App/Pods/
+ios/App/output/
+ios/App/build/
+*.xcuserdatad
+.DS_Store
+
+# Generated from the repo root by scripts/sync-data.mjs. brand-data.json has
+# one home and this is not it; a committed copy would drift from the real one.
+www/data/*.json

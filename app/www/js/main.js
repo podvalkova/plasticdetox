@@ -45,6 +45,25 @@ function back() {
 }
 
 function render() {
+  try {
+    draw();
+  } catch (err) {
+    // A screen that throws used to disappear into the boot handler and leave a
+    // blank page with no clue why. Now it says so, on the screen, every time.
+    console.error("render failed", err);
+    view.replaceChildren();
+    const box = el("div", "empty");
+    box.appendChild(el("div", "empty-mark", "⚠️"));
+    box.appendChild(el("h2", null, "That screen did not load"));
+    box.appendChild(el("p", null, String((err && err.message) || err)));
+    const again = el("button", "cta ghost", "Back to the start");
+    again.onclick = () => { stack = [{ screen: "home" }]; render(); };
+    box.appendChild(again);
+    view.appendChild(box);
+  }
+}
+
+function draw() {
   const state = stack[stack.length - 1];
   view.replaceChildren();
   view.scrollTop = 0;
@@ -316,11 +335,11 @@ function hideBusy() {
 
 async function start() {
   index = await data.load();
-  canScan = scanner.available();
+  canScan = await scanner.available();
   boot.classList.add("gone");
   setTimeout(() => boot.remove(), 300);
   go({ screen: "home" });
-  await openDeepLink(location.search);
+  openDeepLink(location.search).catch((err) => console.error("deep link failed", err));
 
   // Refreshed after the first screen is up, never before it. A scan in a shop
   // with one bar of signal must not wait on a two megabyte download.
@@ -368,6 +387,9 @@ async function liveUpdates() {
 }
 
 start().catch((err) => {
-  boot.replaceChildren(el("p", null, "Something went wrong loading the database."));
-  console.error(err);
+  console.error("boot failed", err);
+  if (document.body.contains(boot)) {
+    boot.classList.remove("gone");
+    boot.replaceChildren(el("p", null, "The database did not load. Close the app and open it again."));
+  }
 });
