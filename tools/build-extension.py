@@ -68,6 +68,9 @@ def main():
     run("add-article-top5.py", "--write")
     run("fix-row-copy.py", "--write")
     run("normalise-categories.py", "--write")
+    # Fold the taxonomy down to categories a shopper would filter by, so a new
+    # store category cannot re-fragment it into single-product labels.
+    run("consolidate-categories.py", "--write")
     run("apply-product-rules.py", "--write")
     run("brand-rollup.py", "--write")
     # After apply-product-rules, which regenerates ext wholesale and would
