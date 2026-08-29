@@ -70,6 +70,10 @@ def main():
     run("normalise-categories.py", "--write")
     run("apply-product-rules.py", "--write")
     run("brand-rollup.py", "--write")
+    # After apply-product-rules, which regenerates ext wholesale and would
+    # otherwise wipe the checked legal and testing fronts these two set.
+    run("extract-testing.py", "--write")
+    run("check-recalls.py", "--write")
     # Last, so it sees every product row the steps above created. Run earlier it
     # harvested the file as it stood before the rows existed, and the ASINs on
     # them never reached the map.
