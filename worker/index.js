@@ -1,10 +1,16 @@
 const ALLOWED_ORIGINS = ["https://plasticdetox.org", "https://www.plasticdetox.org"];
 
-// The Brand Check extension posts from its own chrome-extension:// origin.
-// Allowing it here is what lets the card report an error or request a review
-// inline on Amazon; without it the extension would need a host permission it
-// cannot request from a content script.
-const EXTENSION_ORIGINS = ["chrome-extension://lplncjbnohkgchjkhgdiljpjfgdmgelg"];
+// The Brand Check extension posts from a content script, which runs in the
+// page's origin. So the Origin header on these calls is amazon.com, not the
+// chrome-extension:// one. Allowing only the extension origin meant the request
+// reached the worker and succeeded, and the browser then blocked the reply, so
+// "Request review" reported a failure for something that had actually worked.
+const EXTENSION_ORIGINS = [
+  "chrome-extension://lplncjbnohkgchjkhgdiljpjfgdmgelg",
+  "https://www.amazon.com",
+  "https://amazon.com",
+  "https://smile.amazon.com",
+];
 
 function resolveCors(origin) {
   if (ALLOWED_ORIGINS.includes(origin)) return origin;
