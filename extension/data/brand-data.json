@@ -1285,7 +1285,8 @@
           },
           "authored": true
         },
-        "cat": "Menstrual products"
+        "cat": "Menstrual cups",
+        "catAuthored": true
       }
     ],
     "rollup": {
@@ -1487,7 +1488,7 @@
           "discreet"
         ],
         "verdict": "skip",
-        "cat": "Bedding",
+        "cat": "Period pads",
         "note": "Polypropylene cover, polyethylene backsheet, superabsorbent polymer core. 2014 testing found styrene, chloroform, chloroethane and chloromethane emitted; 2024 testing found organic fluorine in three of four Always products.",
         "origin": "research",
         "ext": {
@@ -1510,7 +1511,8 @@
           "disclose": false,
           "rules": [],
           "authored": true
-        }
+        },
+        "catAuthored": true
       }
     ],
     "aliases": [
@@ -1544,7 +1546,8 @@
       "researched": 1,
       "flagged": 1,
       "worst": "skip"
-    }
+    },
+    "alternative": "Natracare or LIVLIT organic cotton pads, or GladRags cloth pads"
   },
   {
     "id": "amazonbasics",
@@ -15452,7 +15455,7 @@
     "stance": "skip",
     "reason": "Cora's Got You Covered liner, the one sold on an organic cotton topsheet, came back at 30 ppm organic fluorine, the highest reading of any pad brand in Mamavation's panel. Organic fluorine is the screening marker for PFAS. A pad sits against mucous membrane for hours, which is the most absorptive exposure route we rate, and the reading landed on the product whose whole selling point is that it is the clean option.",
     "evidence": "30 ppm organic fluorine in liners; 13 to 14 ppm in period underwear (Mamavation, EPA certified lab)",
-    "alternative": "Natracare organic cotton liners, or a Saalt cup or disc",
+    "alternative": "Natracare or LIVLIT organic cotton pads, or a Saalt cup or disc",
     "sources": [
       "best-non-toxic-period-products.html",
       "https://mamavation.com/beauty/pfas-forever-chemicals-sanitary-pads-incontinence-pads.html",
@@ -15497,7 +15500,7 @@
           "cora"
         ],
         "verdict": "skip",
-        "cat": "Bedding",
+        "cat": "Period pads",
         "origin": "research",
         "note": "Organic cotton topsheet over a synthetic core and backsheet. The liner tested at 30 ppm organic fluorine, the highest reading of any pad brand in the 2024 panel.",
         "ext": {
@@ -15524,7 +15527,8 @@
         "matchNot": [
           "ball",
           "coraball"
-        ]
+        ],
+        "catAuthored": true
       }
     ]
   },
@@ -18723,29 +18727,29 @@
         "note": "Medical grade silicone menstrual cup sized for teens and first time users (ages 19 and under, or those with lighter flow). BPA free, latex free, plastic free, dye free, and fragrance free. Medical grade silicone, dye and fragrance free. Worth knowing: Smaller capacity than Model 1 and 2\", \"Learning curve to insert and remove\", \"Requires boiling between cycles.",
         "origin": "store",
         "ext": {
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-08-29",
           "why": "a recommendation needs all four checks; still to do: packaging, legal, testing",
           "fronts": {
             "formula": "pass",
-            "packaging": "unassessed",
-            "legal": "unassessed",
-            "testing": "unassessed"
+            "packaging": "pass",
+            "legal": "pass",
+            "testing": "none"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
           "rules": [],
-          "frontNotes": {},
-          "heldFrom": "good",
+          "frontNotes": {
+            "packaging": "Cotton drawstring bag in a cardboard carton. On a reusable the object is its own contact surface, so the material question is answered on formula and the carton carries no risk.",
+            "legal": "Menstrual cups are FDA class II devices cleared through 510(k). Searched the FDA enforcement and device records on 2026-08-29: no recall, and no filing against the brand.",
+            "testing": "No independent lab testing exists, and none is expected. The organic fluorine panels screen absorbent products, where PFAS would sit in a coating or a laminate. Medical grade silicone has neither, so there is nothing for that method to find."
+          },
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "heldBack": [
-            "packaging",
-            "legal",
-            "testing"
-          ]
+          "authored": true
         },
-        "cat": "Menstrual products"
+        "cat": "Menstrual cups",
+        "catAuthored": true
       }
     ],
     "rollup": {
@@ -27219,29 +27223,30 @@
         "note": "Reusable cloth menstrual pad made from 100% organic cotton with a leak resistant cotton fleece core. Snap closure secures around underwear. Reusable for 5+ years, organic cotton. Worth knowing: Requires rinsing and washing after use\", \"Higher upfront cost\", \"Bulkier than disposable pads.",
         "origin": "store",
         "ext": {
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-08-29",
           "why": "a recommendation needs all four checks; still to do: packaging, testing",
           "fronts": {
             "formula": "pass",
-            "packaging": "unassessed",
+            "packaging": "pass",
             "legal": "pass",
-            "testing": "unassessed"
+            "testing": "none"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
           "rules": [],
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
-          "heldFrom": "good",
+          "frontNotes": {
+            "packaging": "Paper or cardboard, no plastic film. A cloth pad is its own contact surface, so the material question is answered on formula.",
+            "legal": "Searched for recalls and filings on 2026-08-29 and found none.",
+            "testing": "No independent testing exists for this product. What makes it low risk is structural rather than measured: PFAS turn up in reusable period products in the laminated waterproof layer, and a cotton cloth pad does not have one. That is a construction fact, not a lab result, and we would rather say so than imply someone tested it."
+          },
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "heldBack": [
-            "packaging",
-            "testing"
-          ]
+          "authored": true
         },
-        "cat": "Menstrual products"
+        "cat": "Reusable cloth pads",
+        "catAuthored": true
       },
       {
         "name": "GladRags menstrual products",
@@ -27264,32 +27269,31 @@
           ]
         ],
         "verdict": "good",
-        "cat": "Menstrual products",
+        "cat": "Reusable cloth pads",
         "origin": "hand",
         "source": "alternative",
         "note": "Recommended reusable cloth pad as a plastic free menstrual product.",
         "ext": {
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-08-29",
           "why": "a recommendation needs all four checks; still to do: packaging, legal, testing",
           "fronts": {
             "formula": "pass",
-            "packaging": "unassessed",
-            "legal": "unassessed",
-            "testing": "unassessed"
+            "packaging": "pass",
+            "legal": "pass",
+            "testing": "none"
           },
           "scope": "line",
           "basis": "direct",
           "disclose": false,
           "authored": true,
-          "heldBack": [
-            "packaging",
-            "legal",
-            "testing"
-          ],
-          "heldFrom": "good",
-          "frontNotes": {}
-        }
+          "frontNotes": {
+            "packaging": "Paper or cardboard, no plastic film.",
+            "legal": "Searched for recalls and filings on 2026-08-29 and found none.",
+            "testing": "No independent testing exists. These have no laminated waterproof layer, which is where PFAS turn up in reusable period products."
+          }
+        },
+        "catAuthored": true
       }
     ],
     "rollup": {
@@ -36630,7 +36634,7 @@
           "knix"
         ],
         "verdict": "careful",
-        "cat": "Menstrual products",
+        "cat": "Period underwear",
         "origin": "research",
         "note": "One style tested at 373 ppm organic fluorine. Knix settled a $1.4 million PFAS class action and agreed to two years of expanded testing, so the picture has improved since.",
         "ext": {
@@ -36654,7 +36658,8 @@
           "disclose": false,
           "rules": [],
           "authored": true
-        }
+        },
+        "catAuthored": true
       }
     ]
   },
@@ -39512,6 +39517,86 @@
     }
   },
   {
+    "id": "livlit",
+    "brand": "LIVLIT",
+    "aliases": [
+      "Livlit"
+    ],
+    "category": "Period care",
+    "stance": "good",
+    "reviewed": "2026-08-29",
+    "generalises": true,
+    "sources": [
+      "Mamavation, EPA certified lab, organic fluorine, 10 ppm reporting limit",
+      "LIVLIT published material list, mylivlit.com"
+    ],
+    "reason": "100% organic cotton cover with no superabsorbent polymer, and non detect for organic fluorine in the independent panel that caught Cora, Rael and Honey Pot. The backsheet is a sugarcane based biomass film, which is better than polyethylene without being plastic free.",
+    "alternative": "",
+    "products": [
+      {
+        "name": "LIVLIT Organic Cotton Pads",
+        "match": [
+          "livlit"
+        ],
+        "verdict": "good",
+        "cat": "Period pads",
+        "origin": "research",
+        "note": "100% organic cotton cover and wings, no superabsorbent polymer, sugarcane biomass backsheet. Non detect for organic fluorine. Regular, large and overnight lengths.",
+        "ext": {
+          "verdict": "good",
+          "dated": "2026-08-29",
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "rules": [],
+          "authored": true,
+          "why": "organic cotton with no SAP, and it came back clean in the panel that caught the organic brands",
+          "fronts": {
+            "formula": "pass",
+            "packaging": "pass",
+            "legal": "pass",
+            "testing": "pass"
+          },
+          "frontNotes": {
+            "formula": "100% organic cotton topsheet and wings, and no superabsorbent polymer, which is unusual for a disposable. The brand publishes the full layer list. The backsheet is a sugarcane based biomass film: better than polyethylene, and their own figure of 32% sugarcane content means it is a part bio based polymer rather than a plastic free one.",
+            "packaging": "Plastic film wrapper over a dry good, the low migration corner of the matrix.",
+            "legal": "Searched for recalls and filings on 2026-08-29 and found none.",
+            "testing": "Non detect for organic fluorine against a 10 ppm reporting limit, in the same panel that put Honey Pot at 38 ppm, Cora at 30 and Rael at 15."
+          }
+        },
+        "catAuthored": true
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "pass",
+        "note": "100% organic cotton cover with no superabsorbent polymer",
+        "origin": "extracted"
+      },
+      "packaging": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "rollup": {
+      "products": 1,
+      "researched": 1,
+      "flagged": 0,
+      "worst": null
+    }
+  },
+  {
     "id": "liv-nature",
     "brand": "Liv Nature",
     "category": "Natural hair &amp; skincare",
@@ -40019,7 +40104,7 @@
           "lola"
         ],
         "verdict": "careful",
-        "cat": "Menstrual products",
+        "cat": "Tampons",
         "origin": "research",
         "note": "Tampons tested non detect for organic fluorine. The open issue is construction, not chemistry: an active class action alleges the tampons shed and unravel internally.",
         "ext": {
@@ -40047,7 +40132,8 @@
         "matchNot": [
           "granola",
           "lolli"
-        ]
+        ],
+        "catAuthored": true
       }
     ]
   },
@@ -46332,7 +46418,8 @@
             "legal": "Checked against the FDA enforcement database. No recall on record."
           }
         },
-        "cat": "Menstrual products"
+        "cat": "Tampons",
+        "catAuthored": true
       },
       {
         "name": "Natracare Ultra Pads with Wings",
@@ -46345,7 +46432,7 @@
         "ext": {
           "verdict": "good",
           "dated": "2026-08-29",
-          "why": "the only disposable pad we have found with no plastic in the pad itself, and it tests clean",
+          "why": "no superabsorbent polymer and no petroleum plastic in the pad, which no other disposable we have found manages",
           "fronts": {
             "formula": "pass",
             "packaging": "pass",
@@ -46359,13 +46446,14 @@
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "authored": true,
           "frontNotes": {
-            "formula": "Organic cotton cover, cellulose pulp core instead of superabsorbent polymer, and a plant starch backsheet rather than polyethylene. No chlorine bleaching, fragrance or dye. This is the rare disposable pad where the plastic is genuinely absent from the pad, not just from the top layer.",
+            "formula": "Organic cotton cover, cellulose pulp core in place of superabsorbent polymer, and a plant starch backsheet instead of polyethylene. No chlorine bleaching, fragrance or dye. Worth being precise: a plant starch film is still a polymer, so this is not a plastic free pad. What it is free of is petroleum plastic and SAP, and among disposables that is rare.",
             "packaging": "Recycled cardboard carton and a compostable bioplastic wrapper on each pad.",
             "testing": "Mamavation 2024 tested Natracare panty liners against a 10 ppm reporting limit for organic fluorine and found none. Same construction and same supply chain as the pads.",
             "legal": "Checked against the FDA enforcement database. No recall on record."
           }
         },
-        "cat": "Menstrual products"
+        "cat": "Period pads",
+        "catAuthored": true
       },
       {
         "name": "Natracare Tampons with Cardboard Applicator",
@@ -46398,7 +46486,8 @@
             "legal": "Checked against the FDA enforcement database. No recall on record."
           }
         },
-        "cat": "Menstrual products"
+        "cat": "Tampons",
+        "catAuthored": true
       },
       {
         "name": "Natracare baby wipes",
@@ -50471,7 +50560,7 @@
           "organyc"
         ],
         "verdict": "skip",
-        "cat": "Menstrual products",
+        "cat": "Tampons",
         "origin": "research",
         "note": "Tampons returned 24 ppm organic fluorine and the applicator mixes bioplastic with conventional plastic. The brand's liners tested non detect.",
         "ext": {
@@ -50505,7 +50594,8 @@
             "o",
             "n"
           ]
-        ]
+        ],
+        "catAuthored": true
       },
       {
         "name": "Organyc Organic Cotton Liners",
@@ -50513,7 +50603,7 @@
           "organyc"
         ],
         "verdict": "good",
-        "cat": "Menstrual products",
+        "cat": "Panty liners",
         "origin": "research",
         "note": "Liners tested non detect for organic fluorine. Certified organic cotton, chlorine free, no leakproof laminate issue at liner weight.",
         "ext": {
@@ -50540,7 +50630,8 @@
         },
         "matchNot": [
           "tampon"
-        ]
+        ],
+        "catAuthored": true
       }
     ],
     "scopeNote": "Our verdict varies across this brand's range."
@@ -53403,7 +53494,7 @@
             "formula"
           ]
         },
-        "cat": "Menstrual products"
+        "cat": "Tampons"
       }
     ],
     "fronts": {
@@ -55976,7 +56067,7 @@
     "stance": "skip",
     "reason": "Rael's Organic Cotton Cover panty liners tested at 15 ppm organic fluorine, the screening marker for PFAS. In November 2025 a California appellate court revived claims that Rael products labelled organic contain far less certified organic material than the label implies, along with prohibited synthetics. The lab result and the legal record point at the same thing: the organic cover is real, and it is only the cover.",
     "evidence": "Environmental Democracy Project v. Rael (Cal. Ct. App. 2025); 15 ppm organic fluorine in liners (Mamavation)",
-    "alternative": "Natracare organic cotton pads and liners, or GladRags cloth pads",
+    "alternative": "Natracare or LIVLIT organic cotton pads, or GladRags cloth pads",
     "sources": [
       "best-non-toxic-period-products.html",
       "https://mamavation.com/beauty/pfas-forever-chemicals-sanitary-pads-incontinence-pads.html",
@@ -56021,7 +56112,7 @@
           "rael"
         ],
         "verdict": "skip",
-        "cat": "Baby wipes",
+        "cat": "Period pads",
         "origin": "research",
         "note": "Organic cotton cover over a synthetic core. Liners tested at 15 ppm organic fluorine in 2024; the brand has separately faced a class action over natural claims on its wipes.",
         "ext": {
@@ -56045,7 +56136,8 @@
           "disclose": false,
           "rules": [],
           "authored": true
-        }
+        },
+        "catAuthored": true
       }
     ]
   },
@@ -58329,29 +58421,29 @@
         "note": "Softer formulation menstrual cup designed for users with bladder sensitivity, an IUD, or pelvic floor concerns. 100% medical grade silicone, FDA registered, BPA free, and latex free. Medical grade silicone, softer formulation. Worth knowing: Softer cup can be harder to open inside\", \"Two sizes only, regular and small\", \"Premium price compared to original Saalt.",
         "origin": "store",
         "ext": {
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-08-29",
           "why": "a recommendation needs all four checks; still to do: packaging, legal, testing",
           "fronts": {
             "formula": "pass",
-            "packaging": "unassessed",
-            "legal": "unassessed",
-            "testing": "unassessed"
+            "packaging": "pass",
+            "legal": "pass",
+            "testing": "none"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
           "rules": [],
-          "frontNotes": {},
-          "heldFrom": "good",
+          "frontNotes": {
+            "packaging": "Cotton drawstring bag in a cardboard carton. On a reusable the object is its own contact surface, so the material question is answered on formula and the carton carries no risk.",
+            "legal": "Menstrual cups are FDA class II devices cleared through 510(k). Searched the FDA enforcement and device records on 2026-08-29: no recall, and no filing against the brand.",
+            "testing": "No independent lab testing exists, and none is expected. The organic fluorine panels screen absorbent products, where PFAS would sit in a coating or a laminate. Medical grade silicone has neither, so there is nothing for that method to find."
+          },
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "heldBack": [
-            "packaging",
-            "legal",
-            "testing"
-          ]
+          "authored": true
         },
-        "cat": "Menstrual products"
+        "cat": "Menstrual cups",
+        "catAuthored": true
       },
       {
         "name": "Saalt Menstrual Disc",
@@ -58362,29 +58454,29 @@
         "note": "Reusable menstrual disc made of 100% medical grade silicone. Sits in the vaginal fornix rather than the canal, allowing for mess free intercourse. Medical grade silicone, mess free during sex. Worth knowing: Steeper learning curve than cups\", \"Removal requires hooking the rim\", \"Single size only.",
         "origin": "store",
         "ext": {
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-08-29",
           "why": "a recommendation needs all four checks; still to do: packaging, legal, testing",
           "fronts": {
             "formula": "pass",
-            "packaging": "unassessed",
-            "legal": "unassessed",
-            "testing": "unassessed"
+            "packaging": "pass",
+            "legal": "pass",
+            "testing": "none"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
           "rules": [],
-          "frontNotes": {},
-          "heldFrom": "good",
+          "frontNotes": {
+            "packaging": "Cotton drawstring bag in a cardboard carton. On a reusable the object is its own contact surface, so the material question is answered on formula and the carton carries no risk.",
+            "legal": "Menstrual cups are FDA class II devices cleared through 510(k). Searched the FDA enforcement and device records on 2026-08-29: no recall, and no filing against the brand.",
+            "testing": "No independent lab testing exists, and none is expected. The organic fluorine panels screen absorbent products, where PFAS would sit in a coating or a laminate. Medical grade silicone has neither, so there is nothing for that method to find."
+          },
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "heldBack": [
-            "packaging",
-            "legal",
-            "testing"
-          ]
+          "authored": true
         },
-        "cat": "Menstrual products"
+        "cat": "Menstrual cups",
+        "catAuthored": true
       },
       {
         "name": "Saalt menstrual products",
@@ -58407,32 +58499,31 @@
           ]
         ],
         "verdict": "good",
-        "cat": "Menstrual products",
+        "cat": "Period underwear",
         "origin": "hand",
         "source": "alternative",
         "note": "Medical grade silicone cups and discs, plus period underwear that tested non detect for organic fluorine in independent 2023 testing after the brand found and removed a PFAS treated fabric before launch in 2020.",
         "ext": {
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-08-29",
           "why": "a recommendation needs all four checks; still to do: packaging, legal, testing",
           "fronts": {
             "formula": "pass",
-            "packaging": "unassessed",
-            "legal": "unassessed",
-            "testing": "unassessed"
+            "packaging": "pass",
+            "legal": "pass",
+            "testing": "pass"
           },
           "scope": "line",
           "basis": "direct",
           "disclose": false,
           "authored": true,
-          "heldBack": [
-            "packaging",
-            "legal",
-            "testing"
-          ],
-          "heldFrom": "good",
-          "frontNotes": {}
-        }
+          "frontNotes": {
+            "packaging": "Cotton drawstring bag in a cardboard carton. On a reusable the object is its own contact surface, so the material question is answered on formula and the carton carries no risk.",
+            "legal": "Menstrual cups are FDA class II devices cleared through 510(k). Searched the FDA enforcement and device records on 2026-08-29: no recall, and no filing against the brand.",
+            "testing": "Saalt period underwear tested non detect for organic fluorine in 2023, after the brand found and removed a PFAS treated fabric before launch in 2020 and disclosed a 10 ppm result in 2021. The trajectory is the point: they looked, published, and fixed it."
+          }
+        },
+        "catAuthored": true
       }
     ],
     "rollup": {
@@ -62953,28 +63044,29 @@
         "source": "store",
         "note": "Aluminium body, repairable rather than sealed, with a free head take-back programme. The bristles are still Nylon-1010, which is true of every electric brush head on the market; the difference here is that the handle is not a sealed plastic unit destined for landfill when the battery dies.",
         "ext": {
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-08-29",
-          "why": "a recommendation needs all four checks; still to do: legal, testing",
+          "why": "an aluminium handle instead of plastic, with a clean legal record; the castor oil bristles are still a polymer, which is the honest limit of it",
           "fronts": {
             "formula": "pass",
             "packaging": "pass",
-            "legal": "unassessed",
-            "testing": "unassessed"
+            "legal": "pass",
+            "testing": "none"
           },
           "scope": "line",
           "basis": "direct",
           "disclose": false,
           "authored": true,
           "frontNotes": {
-            "formula": "Aluminium body, repairable rather than sealed, with a free head take-back programme."
-          },
-          "heldBack": [
-            "legal",
-            "testing"
-          ],
-          "heldFrom": "good"
-        }
+            "formula": "Aluminium body rather than plastic, and the heads are Nylon-1010 made from castor oil. That is still a polymer and it still sheds as you brush, so it is not a plastic free brush, but it is the only mainstream electric where the handle itself is metal.",
+            "packaging": "Moulded pulp carton, no plastic blister. The travel case is aluminium.",
+            "legal": "Searched for recalls and filings on 2026-08-29 and found none. iFixit's teardown is worth knowing about separately: the battery is not user replaceable, so the repairable claim means SURI repairs it, not you.",
+            "testing": "No independent lab testing exists, and none is expected. Labs screen things you eat, drink or absorb, not a toothbrush handle. The heads are the part that matters and no third party has screened them."
+          }
+        },
+        "match": [
+          "suri"
+        ]
       }
     ]
   },
@@ -63460,7 +63552,7 @@
             "formula"
           ]
         },
-        "cat": "Menstrual products"
+        "cat": "Tampons"
       }
     ],
     "fronts": {
@@ -64405,7 +64497,7 @@
           "tampon"
         ],
         "verdict": "skip",
-        "cat": "Pantry",
+        "cat": "Panty liners",
         "origin": "research",
         "note": "Organic cotton cover over a synthetic core. Returned the highest organic fluorine reading of any liner tested, 38 ppm, on a product sold on the organic cotton claim.",
         "ext": {
@@ -64429,7 +64521,8 @@
           "disclose": false,
           "rules": [],
           "authored": true
-        }
+        },
+        "catAuthored": true
       },
       {
         "name": "The Honey Pot Organic Cotton Tampons",
@@ -64447,7 +64540,7 @@
           ]
         ],
         "verdict": "careful",
-        "cat": "Menstrual products",
+        "cat": "Tampons",
         "origin": "research",
         "note": "Tampons tested non detect for organic fluorine, unlike the brand's liners. The brand's legal record keeps this at careful rather than a pick.",
         "ext": {
@@ -64471,7 +64564,8 @@
           "disclose": false,
           "rules": [],
           "authored": true
-        }
+        },
+        "catAuthored": true
       }
     ],
     "fronts": {
@@ -64503,7 +64597,8 @@
       "researched": 2,
       "flagged": 2,
       "worst": "skip"
-    }
+    },
+    "alternative": "Natracare organic cotton liners, or Organyc light flow liners"
   },
   {
     "id": "honey-pot",
@@ -65021,7 +65116,7 @@
           "thinx"
         ],
         "verdict": "skip",
-        "cat": "Menstrual products",
+        "cat": "Period underwear",
         "origin": "research",
         "note": "Independent testing found up to 940 ppm organic fluorine in some styles. Thinx settled a PFAS class action for up to $5 million in 2023.",
         "ext": {
@@ -65045,7 +65140,8 @@
           "disclose": false,
           "rules": [],
           "authored": true
-        }
+        },
+        "catAuthored": true
       }
     ]
   },
@@ -65155,7 +65251,7 @@
           "this is l"
         ],
         "verdict": "careful",
-        "cat": "Bedding",
+        "cat": "Period pads",
         "note": "Cotton topsheet over a synthetic core and backsheet. Non detect for organic fluorine in 2024 independent testing, which is better than most of the category, but the cotton claim describes the cover rather than the pad.",
         "origin": "research",
         "ext": {
@@ -65179,7 +65275,8 @@
           "disclose": false,
           "rules": [],
           "authored": true
-        }
+        },
+        "catAuthored": true
       }
     ],
     "aliases": [
@@ -65214,7 +65311,8 @@
       "researched": 1,
       "flagged": 1,
       "worst": "careful"
-    }
+    },
+    "alternative": "Natracare or LIVLIT organic cotton pads"
   },
   {
     "id": "thor-kitchen",

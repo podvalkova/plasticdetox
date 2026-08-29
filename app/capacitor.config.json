@@ -1,0 +1,18 @@
+{
+  "appId": "org.plasticdetox.app",
+  "appName": "Plastic Detox",
+  "webDir": "www",
+  "ios": {
+    "contentInset": "always",
+    "backgroundColor": "#fafaf9"
+  },
+  "plugins": {
+    "CapacitorUpdater": {
+      "autoUpdate": true,
+      "updateUrl": "https://plasticdetox.org/app/updates.json",
+      "statsUrl": "",
+      "directUpdate": false,
+      "resetWhenUpdate": true
+    }
+  }
+}

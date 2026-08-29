@@ -31,6 +31,11 @@ row claims about itself. The ceiling only ever lowers a verdict. Nothing here
 raises one except the restore above, and that only returns a row to the verdict
 it already had.
 
+The testing front carries a third option. "none" says we checked and there is
+nothing to check against, which is the normal state for a durable good. Anna's
+rule was that a product should not be marked careful merely because no third
+party has tested it, and this is where that rule lives.
+
 On the legal front the distinction that matters is whether anything was actually
 decided. An active complaint is an allegation, so it caps at caution; a
 settlement, judgment or recall is an outcome, so it fails. A settlement whose own
@@ -50,6 +55,12 @@ import sys
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "brand-data.json"
 FRONTS = ("formula", "packaging", "legal", "testing")
+# "none" is a finding: we looked, and no applicable evidence exists. A lab does
+# not test a toothbrush handle, so holding one back until someone does means
+# holding it back forever, for a gap that is not a gap. It differs from
+# "unassessed", which means nobody has looked yet. Only the second blocks a
+# recommendation. Use it where evidence is genuinely not expected, never on an
+# ingestible, where silence is itself informative.
 BLANK = (None, "unassessed", "unknown", "")
 RANK = {"skip": 0, "careful": 1, "good": 3}
 

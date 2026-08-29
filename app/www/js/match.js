@@ -1,0 +1,322 @@
+// Brand and product matching, shared by every surface of the app.
+//
+// This is the same resolution order the Chrome extension uses on Amazon
+// listings, lifted out of extension/src/content.js so the app and the
+// extension can never drift into disagreeing about the same product:
+//
+//   1. a barcode we have already mapped
+//   2. an ASIN we have already researched and linked
+//   3. the brand name, exact
+//   4. a longest prefix match of a product title against known brand names
+//
+// Everything here is pure. No DOM, no fetch, no platform calls, so it runs
+// unchanged in the app webview, in a unit test, and in the extension.
+
+export const FRONTS = [
+  ["formula", "Formula"],
+  ["packaging", "Packaging"],
+  ["legal", "Recalls & lawsuits"],
+  ["testing", "Independent tests"],
+];
+
+export const STANCE_LABEL = {
+  good: "Good choice",
+  careful: "Careful",
+  skip: "Skip",
+  neutral: "Context",
+};
+
+// Brand names that are ordinary English words. Matched only as the whole
+// leading token, never as part of a longer prefix, to keep "Pure Leaf" from
+// colliding with a brand called "Pure".
+const GENERIC = new Set([
+  "pure", "native", "one", "blu", "core", "well", "life", "basics", "all",
+]);
+
+export const norm = (s) => (s || "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+export const collapse = (s) => (s || "").toLowerCase().replace(/[^a-z0-9]+/g, "");
+
+export class Index {
+  constructor(brands, asins = {}, barcodes = {}) {
+    this.brands = brands || [];
+    this.asins = asins || {};
+    this.barcodes = barcodes || {};
+    this.byId = new Map();
+    this.byCollapsed = new Map();
+    for (const b of this.brands) {
+      this.byId.set(b.id, b);
+      for (const label of [b.brand, ...(b.aliases || [])]) {
+        const key = collapse(label);
+        // First writer wins so the canonical brand beats an alias collision.
+        if (key.length >= 3 && !this.byCollapsed.has(key)) this.byCollapsed.set(key, b);
+      }
+    }
+  }
+
+  // ---------------------------------------------------------------- lookups
+
+  fromBarcode(code) {
+    const hit = code && this.barcodes[String(code).replace(/\D/g, "")];
+    if (!hit) return null;
+    const brand = this.byId.get(hit.brandId);
+    return brand ? { brand, hint: hit, via: "barcode" } : null;
+  }
+
+  fromAsin(asin) {
+    const hit = asin && this.asins[asin];
+    if (!hit) return null;
+    const brand = this.byId.get(hit.brandId);
+    return brand ? { brand, hint: hit, via: "asin" } : null;
+  }
+
+  fromBrandName(name) {
+    const brand = this.byCollapsed.get(collapse(name));
+    return brand ? { brand, via: "brand" } : null;
+  }
+
+  fromTitle(title) {
+    const words = norm(title).split(" ").filter(Boolean);
+    if (!words.length) return null;
+    for (let n = Math.min(4, words.length); n >= 1; n--) {
+      const key = words.slice(0, n).join("");
+      if (key.length < 3) continue;
+      const brand = this.byCollapsed.get(key);
+      if (!brand) continue;
+      // A generic word only counts when it stands alone as the first token.
+      if (GENERIC.has(key) && n !== 1) continue;
+      return { brand, via: "title" };
+    }
+    return null;
+  }
+
+  /**
+   * Resolve whatever a scan or a search gave us into a brand.
+   *
+   * `brandName` comes from a barcode database byline and is the most reliable
+   * signal after our own mappings, because it is the manufacturer's own field
+   * rather than a marketing title. The title prefix is the last resort.
+   */
+  resolve({ barcode, asin, brandName, title } = {}) {
+    return (
+      this.fromBarcode(barcode) ||
+      this.fromAsin(asin) ||
+      (brandName ? this.fromBrandName(brandName) : null) ||
+      (brandName ? this.fromTitle(brandName) : null) ||
+      (title ? this.fromTitle(title) : null) ||
+      null
+    );
+  }
+
+  // ----------------------------------------------------------- free search
+
+  /**
+   * Type ahead over brands and the products under them.
+   *
+   * Scored rather than filtered, because "water" should surface the water
+   * filter brands before a brand whose reason paragraph mentions water. Brand
+   * name beats product name beats category beats reason text.
+   */
+  search(query, limit = 25) {
+    const q = norm(query);
+    if (q.length < 2) return [];
+    const terms = q.split(" ").filter(Boolean);
+    const out = [];
+
+    for (const b of this.brands) {
+      const name = norm(b.brand);
+      const cat = norm(b.category);
+      let score = 0;
+
+      if (name === q) score = 1000;
+      else if (name.startsWith(q)) score = 700;
+      else if (name.includes(q)) score = 500;
+      else if (terms.every((t) => name.includes(t))) score = 400;
+
+      // A product under the brand can answer a query the brand name cannot:
+      // nobody searches "Aquasana", they search "shower filter".
+      let bestProduct = null;
+      for (const p of b.products || []) {
+        const pn = norm(p.name);
+        let ps = 0;
+        if (pn === q) ps = 900;
+        else if (pn.startsWith(q)) ps = 600;
+        else if (pn.includes(q)) ps = 450;
+        else if (terms.every((t) => pn.includes(t))) ps = 350;
+        if (ps > score) { score = ps; bestProduct = p; }
+      }
+
+      if (!score && cat.includes(q)) score = 200;
+      if (!score && terms.every((t) => norm(b.reason).includes(t))) score = 80;
+      if (!score) continue;
+
+      // Researched brands answer before ones we only hold context on, and a
+      // shorter name beats a longer one at equal relevance so "Brita" wins
+      // over "Brita Elite Replacement" for the query "brita".
+      if (b.reviewed !== false) score += 25;
+      score -= Math.min(name.length, 40) / 10;
+
+      out.push({ brand: b, product: bestProduct, score });
+    }
+
+    return out.sort((a, b) => b.score - a.score).slice(0, limit);
+  }
+}
+
+// -------------------------------------------------------------- verdicts
+
+/**
+ * Find the per-product verdict for a specific product.
+ *
+ * Ported verbatim in behaviour from the extension. Nearly half our product
+ * verdicts disagree with their own brand, so a brand level answer on a
+ * specific product is wrong about as often as it is right.
+ */
+export function productFor(brand, { asin, title } = {}) {
+  const rows = brand.products || [];
+  if (asin) {
+    const exact = rows.find((p) => Array.isArray(p.asins) && p.asins.includes(asin));
+    if (exact) return exact;
+  }
+  if (!title) return null;
+  const low = " " + norm(title) + " ";
+
+  // Tolerate the singular/plural split between an editorial name and a real
+  // listing title: we write "Aveeno Sunscreens", the label says "Sunscreen".
+  const hasWord = (w) => {
+    const n = norm(w);
+    if (!n) return false;
+    if (low.includes(" " + n + " ")) return true;
+    if (n.endsWith("s") && low.includes(" " + n.slice(0, -1) + " ")) return true;
+    return low.includes(" " + n + "s ");
+  };
+
+  let best = null, bestLen = 0, bestDirect = false, bestEvidence = -1;
+  const isDirect = (p) => p.origin !== "brand-line";
+  const evidenceOf = (p) => {
+    const f = (p.ext && p.ext.fronts) || {};
+    return Object.values(f).filter((v) => v && v !== "unassessed" && v !== "unknown").length;
+  };
+  const better = (p, len, d) => {
+    if (d !== bestDirect) return d;
+    const e = evidenceOf(p);
+    if (e !== bestEvidence) return e > bestEvidence;
+    return len > bestLen;
+  };
+
+  for (const p of rows) {
+    if ((p.matchNot || []).some(hasWord)) continue;
+    for (const phrase of p.match || []) {
+      const needle = norm(phrase);
+      if (!needle || !low.includes(needle)) continue;
+      const d = isDirect(p);
+      if (better(p, needle.length, d)) {
+        best = p; bestLen = needle.length; bestDirect = d; bestEvidence = evidenceOf(p);
+      }
+    }
+    for (const group of p.matchAll || []) {
+      if (!group.length || !group.every(hasWord)) continue;
+      const weight = group.join("").length;
+      const d = isDirect(p);
+      if (better(p, weight, d)) {
+        best = p; bestLen = weight; bestDirect = d; bestEvidence = evidenceOf(p);
+      }
+    }
+  }
+  return best;
+}
+
+/**
+ * The verdict we are allowed to assert about a product.
+ *
+ * Favourable evidence never propagates from a brand to a product, so a
+ * recommendation needs direct evidence about this exact thing. Where that is
+ * missing the honest answer is no status at all, which is what "unrated" says.
+ */
+export function productVerdict(row) {
+  if (!row) return null;
+  const v = row.ext ? row.ext.verdict : row.verdict;
+  return v && v !== "unrated" && v !== "neutral" ? v : null;
+}
+
+/**
+ * Everything a result screen needs, resolved once.
+ *
+ * `level` is the honest scope of the answer: "product" when we researched this
+ * exact thing, "brand" when all we hold is a judgement about the maker.
+ */
+export function verdictFor(match, ctx = {}) {
+  const brand = match.brand;
+  const title = ctx.title || (match.hint && match.hint.name) || brand.brand;
+  // An explicit row wins over matching. It means the person told us which of
+  // the brand's products they are holding, which is better than any guess we
+  // could make from a title.
+  const row = ctx.product || productFor(brand, { asin: ctx.asin, title });
+  const productStance = productVerdict(row);
+  return {
+    brand,
+    product: row,
+    level: productStance ? "product" : "brand",
+    stance: productStance || brand.stance || "neutral",
+    fronts: (row && row.ext && expandFronts(row.ext.fronts)) || brand.fronts || {},
+    reason: (row && row.note) || brand.reason || "",
+    brandReason: row && row.note ? brand.reason : "",
+    heldBack: (row && row.ext && row.ext.heldBack) || [],
+    why: (row && row.ext && row.ext.why) || "",
+    reviewed: brand.reviewed !== false,
+    article: brand.article || (brand.sources && brand.sources[0]) || "",
+    via: match.via,
+  };
+}
+
+/** Product rows store a bare status string per front; brands store an object. */
+function expandFronts(f) {
+  if (!f) return null;
+  const out = {};
+  for (const [key] of FRONTS) {
+    const v = f[key];
+    out[key] = { status: !v || v === "unassessed" ? "unknown" : v, note: "" };
+  }
+  return out;
+}
+
+/**
+ * The products under a brand that carry a verdict of their own.
+ *
+ * A brand level answer is often the least useful one we hold. Brita is a skip
+ * as a range while its Elite filter is a careful and its standard filter is a
+ * skip for different reasons, so the honest next move is to ask which one the
+ * person actually has rather than average the three into a shrug.
+ */
+export function ratedProducts(brand) {
+  const seen = new Set();
+  const out = [];
+  for (const p of brand.products || []) {
+    const v = productVerdict(p);
+    if (!v || !p.name) continue;
+    const key = p.name.toLowerCase();
+    if (seen.has(key)) continue;
+    seen.add(key);
+    out.push({ row: p, stance: v });
+  }
+  return out;
+}
+
+/**
+ * A better thing to buy, drawn from the brands we already rated good in the
+ * same category. Ordered the way the site orders a card grid, cheapest tier
+ * first, which here means the shortest researched entry list first is wrong,
+ * so we simply keep the data order and let the store be the source of truth.
+ */
+export function alternativesFor(index, brand, limit = 3) {
+  if (!brand || !brand.category) return [];
+  const out = [];
+  for (const b of index.brands) {
+    if (b.id === brand.id) continue;
+    if (b.category !== brand.category) continue;
+    if (b.stance !== "good") continue;
+    if (b.reviewed === false) continue;
+    out.push(b);
+    if (out.length >= limit) break;
+  }
+  return out;
+}

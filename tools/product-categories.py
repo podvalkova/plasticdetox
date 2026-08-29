@@ -31,6 +31,23 @@ DATA = ROOT / "brand-data.json"
 # Ordered: the first match wins, so put the specific before the general.
 # Every key is something a person would actually type into a search box.
 RULES = [
+    # Period care leads, for two reasons. "Pads" and "liners" collide with the
+    # bedding, wipes and diaper rules further down, which is how Always Ultra
+    # Thin Pads was filed under Bedding (the note says "backsheet", and the
+    # bedding pattern matched "sheet" mid word) and Rael under Baby wipes (its
+    # note mentions the wipes lawsuit). And one "Menstrual products" bucket is
+    # not a category anyone searches: pads, tampons, liners, cups and period
+    # underwear are five separate intents, the way diapers and diaper cream are.
+    # "\bpads?\b" alone put a coconut dish scrubber in here, so each pattern
+    # needs a period care word next to it.
+    ("Period underwear",    r"period (underwear|brief|panty|panties)|leakproof (underwear|brief)|"
+                            r"\b(thinx|knix)\b"),
+    ("Menstrual cups",      r"menstrual (cup|disc)|period (cup|disc)|\bdivacup\b|organicup|allmatters"),
+    ("Reusable cloth pads", r"cloth pad|reusable pad|washable pad|gladrags"),
+    ("Tampons",             r"tampon"),
+    ("Panty liners",        r"panty ?liner|pantiliner|(organic cotton|cotton cover) liners?\b"),
+    ("Period pads",         r"(period|sanitary|menstrual|maxi|ultra thin|overnight|day|night) pads?\b|"
+                            r"sanitary (napkin|towel)|pads? with wings|pads and liners"),
     ("Diaper cream",        r"diaper (rash )?(cream|paste|balm|ointment)|butt paste|nappy cream"),
     ("Baby wipes",          r"\bwipes?\b"),
     ("Diapers",             r"\bdiapers?\b|nappy|nappies|pull[- ]ups?|training pant"),
@@ -61,9 +78,6 @@ RULES = [
                             r"body brush|dry brush|shower steamer"),
     ("Soap",                r"castile|bar soap|hand soap|body wash|face wash|cleanser"),
     ("Makeup",              r"mascara|lipstick|foundation|eyeliner|eye shadow|blush|lip balm|nail polish|concealer"),
-    # "\bpads?\b" alone put a coconut dish scrubber in menstrual products.
-    ("Menstrual products",  r"tampon|menstrual|period (cup|underwear|pad)|panty liner|"
-                            r"(day|night|maxi|ultra) pads?\b|cloth pad"),
     ("Chewing gum",         r"\bgum\b"),
     ("Sea salt",            r"\bsalt\b"),
     ("Coffee",              r"coffee|espresso|french press|pour over|kettle|grinder|drip"),
@@ -91,7 +105,7 @@ RULES = [
     ("Strollers",           r"stroller|pram|carrier|babywearing|wrap\b"),
     ("Baby sleep",          r"swaddle|sleep sack|sleeping bag|white noise|night light"),
     ("Shower curtains",     r"shower curtain|curtain liner"),
-    ("Bedding",             r"sheet|pillow|duvet|blanket|towel|bath mat|curtain|rug\b"),
+    ("Bedding",             r"\bsheets?\b|bed sheet|pillow|duvet|blanket|towel|bath mat|curtain|rug\b"),
     ("Clothing",            r"clothing|pajama|pyjama|onesie|romper|hat\b|swimsuit|swim|sock|bodysuit"),
     ("Yoga mats",           r"yoga|exercise mat|pilates"),
     ("Toys",                r"\btoys?\b|teether|rattle|blocks|magnetic tile|doll|ball\b"),
@@ -170,6 +184,14 @@ def main():
         bc = b.get("category")
         for p in (b.get("products") or []):
             if not p.get("ext"):
+                continue
+            # A category set by hand outranks the patterns. Research knows what
+            # a product is; the classifier is guessing from words. It read
+            # "LIVLIT Organic Cotton Pads" as Pantry, because nothing in that
+            # name says period care and the fallback took over.
+            if p.get("catAuthored") and p.get("cat"):
+                per[p["cat"]] += 1
+                set_count += 1
                 continue
             c = categorise(p.get("name") or "", (p.get("note") or "")[:220], bc)
             if not c:

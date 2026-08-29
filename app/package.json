@@ -1,0 +1,25 @@
+{
+  "name": "plasticdetox-app",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Plastic Detox iOS app: scan or search a product, get the four front verdict.",
+  "scripts": {
+    "serve": "node scripts/serve.mjs",
+    "sync-data": "node scripts/sync-data.mjs",
+    "bundle": "node scripts/bundle.mjs",
+    "ios": "npx cap sync ios && npx cap open ios"
+  },
+  "dependencies": {
+    "@capacitor/app": "^8.0.0",
+    "@capacitor/browser": "^8.0.0",
+    "@capacitor/core": "^8.5.0",
+    "@capacitor/haptics": "^8.0.0",
+    "@capacitor/ios": "^8.5.0",
+    "@capacitor/preferences": "^8.0.0",
+    "@capacitor-mlkit/barcode-scanning": "^8.1.0",
+    "@capgo/capacitor-updater": "^8.51.15"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^8.5.0"
+  }
+}
