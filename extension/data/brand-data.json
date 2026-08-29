@@ -5954,6 +5954,10 @@
           [
             "bean",
             "beans"
+          ],
+          [
+            "bean",
+            "bean"
           ]
         ],
         "verdict": "good",
@@ -22480,7 +22484,7 @@
           ]
         ],
         "verdict": "good",
-        "cat": "Bedding / sleepwear",
+        "cat": "Bedding",
         "origin": "hand",
         "source": "alternative",
         "note": "CleanBamboo lyocell made via closed-loop NMMO process, avoiding the carbon disulfide of conventional bamboo viscose.",
@@ -43819,7 +43823,7 @@
     "id": "native",
     "brand": "Native",
     "category": "Personal care",
-    "stance": "skip",
+    "stance": "careful",
     "reason": "Under pre-litigation investigation for PFAS in personal care products marketed as clean.",
     "evidence": "Pre-litigation PFAS investigation",
     "alternative": "Each & Every",
@@ -43856,7 +43860,7 @@
       "products": 1,
       "researched": 1,
       "flagged": 1,
-      "worst": "skip"
+      "worst": "careful"
     },
     "products": [
       {
@@ -43872,16 +43876,17 @@
           "B07G9Z5LQD",
           "B07ZJVFDZ3"
         ],
-        "verdict": "skip",
-        "note": "Under pre-litigation investigation for PFAS in personal care products marketed as clean. Aluminium free is the claim people buy it for, and it says nothing about what else is in the stick.",
+        "verdict": "careful",
+        "note": "Under pre-litigation investigation for PFAS in personal care products marketed as clean. That is an allegation rather than a finding, so it caps at careful: nothing has been measured in this product and nothing has been resolved. Aluminium free is the claim people buy it for, and it says nothing about what else is in the stick.",
         "origin": "hand",
         "source": "store",
         "cat": "Deodorant",
         "ext": {
-          "verdict": "skip",
+          "verdict": "careful",
           "dated": "2026-08-29",
-          "why": "Reviewed by hand against the standard.",
+          "why": "Rule 5.1: an investigation is an allegation, which caps at careful.",
           "fronts": {
+            "formula": "unassessed",
             "packaging": "unassessed",
             "legal": "fail",
             "testing": "unassessed"
@@ -48743,7 +48748,7 @@
           ]
         ],
         "verdict": "good",
-        "cat": "Activewear / basics",
+        "cat": "Clothing",
         "origin": "hand",
         "source": "alternative",
         "note": "Carbon-neutral, GOTS certified, PFAS-free, 100% organic cotton Fair Trade basics; the best budget pick for low-to-moderate activity.",

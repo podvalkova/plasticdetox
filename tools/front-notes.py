@@ -83,7 +83,11 @@ def main():
                             re.search(r"\b(ingredient|material|coating|fibre|fiber|"
                                       r"plastic|polymer|fragrance)\b", s, re.I)
                             for s in sents if other == "formula"):
-                        fronts["legal"] = fronts.pop(other)
+                        # Move the status, do not remove the key. pop() left
+                        # Native with no formula front at all, so the scorecard
+                        # was missing a check rather than showing it unassessed.
+                        fronts["legal"] = fronts[other]
+                        fronts[other] = "unassessed"
                         moved += 1
                         if len(examples) < 10:
                             examples.append((b["brand"], p.get("name"), other,
