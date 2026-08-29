@@ -77,6 +77,9 @@ def main():
     # otherwise wipe the checked legal and testing fronts these two set.
     run("extract-testing.py", "--write")
     run("check-recalls.py", "--write")
+    # Before the gate, because the gate now caps a verdict on the fronts and an
+    # unsourced fail would quietly delete a good pick from the site.
+    run("front-evidence.py", "--write")
     # Last, after every tool that fills a front. A recommendation needs all four.
     run("enforce-scorecard.py", "--write")
     # Last, so it sees every product row the steps above created. Run earlier it
