@@ -77,6 +77,8 @@ def main():
     # otherwise wipe the checked legal and testing fronts these two set.
     run("extract-testing.py", "--write")
     run("check-recalls.py", "--write")
+    # Last, after every tool that fills a front. A recommendation needs all four.
+    run("enforce-scorecard.py", "--write")
     # Last, so it sees every product row the steps above created. Run earlier it
     # harvested the file as it stood before the rows existed, and the ASINs on
     # them never reached the map.

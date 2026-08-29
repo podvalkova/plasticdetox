@@ -131,6 +131,7 @@ def main():
             # A date that moves on every rebuild tells you nothing; one that moves
             # only when the answer moved tells you how stale the answer is.
             dated = prev.get("dated") if prev.get("verdict") == v else None
+
             p["ext"] = {
                 "verdict": v,
                 "dated": dated or TODAY,
