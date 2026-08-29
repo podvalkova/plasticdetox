@@ -467,6 +467,19 @@ def apply_rules(fronts, note, scope, basis, context=""):
                           "origin": "rule-3-matrix"}
         fired.append(f"3 packaging-matrix-{pk}")
 
+    # Packaging stated as plastic free. A solid bar in compostable cardboard or a
+    # refillable aluminium bottle answers the packaging question outright, and
+    # the classifier had no term for it, so shampoo bars whose whole point is the
+    # packaging scored nothing on that front.
+    if f["packaging"]["status"] in ("unknown", "unassessed") and re.search(
+            r"\b(compostable (cardboard|paper|packaging)|cardboard (box|packaging|carton)|"
+            r"(refillable|reusable) (aluminium|aluminum|steel|glass)|plastic[- ]free packaging|"
+            r"no plastic packaging|paper wrap|zero waste packaging|package[- ]free)\b", low):
+        f["packaging"] = {"status": "pass",
+                          "note": "Packaging is stated as plastic free.",
+                          "origin": "rule-3-plastic-free-packaging"}
+        fired.append("3 packaging-stated-plastic-free")
+
     # Rule 2: formula is always resolvable, so read the material directly when
     # the classifier's polarity test found nothing to grip on.
     if f["formula"]["status"] in ("unknown", "unassessed"):
