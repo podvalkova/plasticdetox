@@ -138,8 +138,9 @@ ROWS = {
     # ------------------------------------------------------- bamboo toothbrush
     "VIVAGO": [("VIVAGO bamboo toothbrushes", [["vivago", "bamboo"]], [], ["B08172V3Y5", "B0DWX22LPN", "B0BHX1VPFH", "B0GF1JC7DD"], "careful", NYLON_BRUSH, F(fo="caution"))],
     "GENKENT": [("GENKENT bamboo toothbrushes", [["genkent", "bamboo"]], [], ["B0D13T3XWX"], "careful", NYLON_BRUSH, F(fo="caution"))],
-    "PRIMALS": [("PRIMALS boar bristle bamboo toothbrush", [["primals", "bamboo"], ["primals", "boar"]], [], ["B0D2587QXX"], "good",
-                 "Bamboo handle with real boar bristles and no nylon, which makes it the one commercially available brush that is genuinely plastic free and fully compostable.", F(fo="pass"))],
+    "PRIMALS": [("PRIMALS Boar Bristle & Bamboo Toothbrush (4 pack)", [["primals", "bamboo"], ["primals", "boar"]], [], ["B0D2587QXX"], "good",
+                 "Bamboo handle with 100% boar bristles and no nylon, which makes it the one widely available brush that is genuinely plastic free. Glue free free standing design that dries fast. Not vegan.",
+                 F(fo="pass", pk="pass", lg="pass", te="none"))],
     # ----------------------------------------------------------- air purifiers
     "LEVOIT": [("Core and Vital purifiers", [["levoit", "air", "purifier"]], [], ["B07VVK39F7", "B0BGPF71Q6"], "skip",
                 "Removed from every pick on the site in August 2026. Levoit is named in consumer class action litigation alleging its purifiers are misrepresented as meeting the True HEPA standard they advertise. On a purifier the filtration number is the entire product, so an unverified filtration claim is not a detail.", F(te="fail", lg="caution"))],
@@ -373,6 +374,15 @@ def main():
                     if shared and not (other is b and op.get("name") == pname):
                         op["asins"] = [a for a in (op.get("asins") or []) if a not in shared]
                         replaced += 1
+            # Do not overwrite a row that has since been researched. This table
+            # sets statuses but cannot carry the reasoning behind them, so a
+            # rebuild used to drop the notes and reopen the fronts, which is how
+            # PRIMALS kept reverting to unrated after being rated.
+            prior = next((q for q in prods if q.get("name") == pname
+                          or set(q.get("asins") or []) & set(asins)), None)
+            if prior and (prior.get("ext") or {}).get("researched"):
+                tally[verdict] += 1
+                continue
             row = {"name": pname, "matchAll": match_all, "asins": asins,
                    "verdict": verdict, "note": note, "origin": "hand",
                    "source": b.get("article"),
