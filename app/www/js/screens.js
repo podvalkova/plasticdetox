@@ -130,6 +130,9 @@ export function result(root, { index, match, scan, product, onOpen, onPick, onPr
     bl.appendChild(el("b", null, "About the brand: "));
     bl.appendChild(document.createTextNode(v.brandReason));
     head.appendChild(bl);
+  } else if (v.scoped) {
+    head.appendChild(el("div", "verdict-scope",
+      `This is our finding on ${v.brand.brand} ${String(v.brand.category || "").toLowerCase()} generally. We have not researched this exact product.`));
   } else if (v.level === "brand") {
     // Knowing the brand is not knowing the product. Say so rather than let a
     // brand judgement pass itself off as a verdict on the thing being held.
@@ -148,7 +151,9 @@ export function result(root, { index, match, scan, product, onOpen, onPick, onPr
     body.appendChild(el("div", "front-name", label));
     const note = splitNote(f.note);
     body.appendChild(el("div", "front-note", (note && note.main) || describeFront(st)));
-    if (note && note.scope) body.appendChild(el("div", "front-scope", note.scope));
+    // The card already said this finding is about the brand generally. A second
+    // aside under the front says it again in different words.
+    if (note && note.scope && !v.scoped) body.appendChild(el("div", "front-scope", note.scope));
     line.appendChild(body);
     fronts.appendChild(line);
   }

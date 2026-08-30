@@ -258,6 +258,10 @@ export function verdictFor(match, ctx = {}) {
   // verbatim. Printing it again under "About the brand" promised more and
   // delivered the same paragraph twice, which read as a bug because it was one.
   const brandAdds = productNote && brandNote && norm(productNote) !== norm(brandNote);
+  // A row whose only note is the brand's own sentence has not been researched
+  // as a product, whatever the row's name implies. Saying so is the difference
+  // between a category finding and a claim about the thing in someone's hand.
+  const brandCopyOnly = !!productNote && !!brandNote && !brandAdds;
   return {
     brand,
     product: row,
@@ -266,6 +270,7 @@ export function verdictFor(match, ctx = {}) {
     fronts: (row && row.ext && expandFronts(row.ext, brand)) || brand.fronts || {},
     reason: productNote || brandNote,
     brandReason: brandAdds ? brandNote : "",
+    scoped: brandCopyOnly || !!(row && row.ext && row.ext.disclose),
     heldBack: (row && row.ext && row.ext.heldBack) || [],
     why: (row && row.ext && row.ext.why) || "",
     reviewed: brand.reviewed !== false,

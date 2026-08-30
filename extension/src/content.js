@@ -385,11 +385,18 @@
     // Rule 1.2. A warning resting on evidence about the brand's other products
     // has to say so, so the shopper can judge the inference themselves rather
     // than reading it as a finding about the thing in their basket.
-    if (row && row.ext && row.ext.disclose) {
+    // A row whose only note is the brand's own sentence has not been researched
+    // as a product, whatever the row's name implies. All 127 of ours said so
+    // nowhere, so a category level finding read as a finding about the exact
+    // thing in the basket. It is the same claim `disclose` exists to qualify,
+    // so it is qualified the same way.
+    const impliedScope = productNote && brandNote && norm(productNote) === norm(brandNote);
+    const scopeShown = !!(row && ((row.ext && row.ext.disclose) || impliedScope));
+    if (scopeShown) {
       const d = el("div", "pd-scope");
       d.textContent = "This is our finding on " + b.brand
         + (b.category ? " " + String(b.category).toLowerCase() : "")
-        + " generally. We have not tested this exact listing.";
+        + " generally. We have not researched this exact product.";
       head.appendChild(d);
     }
     const fronts = productFronts || (borrowedAndWrong ? {} : (b.fronts || {}));
@@ -423,7 +430,11 @@
         body.appendChild(nameLine);
         const note = splitNote(f.note);
         if (note && note.main) body.appendChild(el("div", "pd-front-note", note.main));
-        if (note && note.scope) body.appendChild(el("div", "pd-front-scope", note.scope));
+        // The card already said this finding is about the brand generally. A
+        // second aside under the front says it again in different words.
+        if (note && note.scope && !scopeShown) {
+          body.appendChild(el("div", "pd-front-scope", note.scope));
+        }
         line.appendChild(body);
         block.appendChild(line);
       }
