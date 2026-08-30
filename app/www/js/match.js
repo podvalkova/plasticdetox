@@ -252,14 +252,20 @@ export function verdictFor(match, ctx = {}) {
   // could make from a title.
   const row = ctx.product || productFor(brand, { asin: ctx.asin, title });
   const productStance = productVerdict(row);
+  const productNote = (row && row.note) || "";
+  const brandNote = brand.reason || "";
+  // Fifteen percent of our product rows carry the brand's own sentence
+  // verbatim. Printing it again under "About the brand" promised more and
+  // delivered the same paragraph twice, which read as a bug because it was one.
+  const brandAdds = productNote && brandNote && norm(productNote) !== norm(brandNote);
   return {
     brand,
     product: row,
     level: productStance ? "product" : "brand",
     stance: productStance || brand.stance || "neutral",
-    fronts: (row && row.ext && expandFronts(row.ext.fronts)) || brand.fronts || {},
-    reason: (row && row.note) || brand.reason || "",
-    brandReason: row && row.note ? brand.reason : "",
+    fronts: (row && row.ext && expandFronts(row.ext, brand)) || brand.fronts || {},
+    reason: productNote || brandNote,
+    brandReason: brandAdds ? brandNote : "",
     heldBack: (row && row.ext && row.ext.heldBack) || [],
     why: (row && row.ext && row.ext.why) || "",
     reviewed: brand.reviewed !== false,
@@ -268,13 +274,29 @@ export function verdictFor(match, ctx = {}) {
   };
 }
 
-/** Product rows store a bare status string per front; brands store an object. */
-function expandFronts(f) {
-  if (!f) return null;
+/**
+ * Product rows store a bare status string per front; brands store an object.
+ *
+ * The note matters as much as the status. A card that flags Formula and says
+ * nothing else asks someone to take a warning on trust at the moment they are
+ * deciding whether to buy. `frontNotes` holds the reason we recorded, and where
+ * a front was inherited from the brand the brand's note is the one that
+ * applies, because it is the brand's finding.
+ */
+function expandFronts(ext, brand) {
+  const statuses = ext && ext.fronts;
+  if (!statuses) return null;
+  const notes = ext.frontNotes || {};
+  const inherited = ext.inheritedFronts || [];
+  const brandFronts = (brand && brand.fronts) || {};
   const out = {};
   for (const [key] of FRONTS) {
-    const v = f[key];
-    out[key] = { status: !v || v === "unassessed" ? "unknown" : v, note: "" };
+    const v = statuses[key];
+    const fallback = inherited.includes(key) ? (brandFronts[key] || {}).note : "";
+    out[key] = {
+      status: !v || v === "unassessed" ? "unknown" : v,
+      note: notes[key] || fallback || "",
+    };
   }
   return out;
 }

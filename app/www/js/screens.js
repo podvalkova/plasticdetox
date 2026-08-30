@@ -4,7 +4,7 @@
 
 import { FRONTS, STANCE_LABEL, verdictFor, alternativesFor, ratedProducts } from "./match.js";
 import { packagingHeadline } from "./upc.js";
-import { el, frag, icon, ICONS } from "./ui.js";
+import { el, frag, icon, ICONS, splitNote } from "./ui.js";
 
 const SITE = "https://plasticdetox.org";
 const STATUS_GLYPH = { pass: "✓", caution: "!", fail: "✕", unknown: "?" };
@@ -146,7 +146,9 @@ export function result(root, { index, match, scan, product, onOpen, onPick, onPr
     line.appendChild(el("span", `front-mark ${st}`, STATUS_GLYPH[st]));
     const body = el("div", "row-body");
     body.appendChild(el("div", "front-name", label));
-    body.appendChild(el("div", "front-note", f.note || describeFront(st)));
+    const note = splitNote(f.note);
+    body.appendChild(el("div", "front-note", (note && note.main) || describeFront(st)));
+    if (note && note.scope) body.appendChild(el("div", "front-scope", note.scope));
     line.appendChild(body);
     fronts.appendChild(line);
   }

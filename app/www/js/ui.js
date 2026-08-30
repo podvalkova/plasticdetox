@@ -48,3 +48,25 @@ export function toast(message) {
   document.body.appendChild(t);
   toastTimer = setTimeout(() => t.remove(), 2600);
 }
+
+/**
+ * Split a front note into the finding and its scope.
+ *
+ * Most of our notes end with an aside naming what the finding is actually
+ * about ("(Recorded for Tampax as a whole rather than this product
+ * specifically.)"). Glued to the end of a sentence, sometimes after an ellipsis
+ * where the finding was truncated, it reads as a fragment. It is worth keeping
+ * and worth setting apart, so it goes on its own quieter line.
+ */
+export function splitNote(text) {
+  const raw = (text || "").trim();
+  if (!raw) return null;
+  const m = raw.match(/^([\s\S]*?)\s*\(([A-Z][^)]*)\)$/);
+  const main = (m ? m[1] : raw).trim();
+  // Notes are written as sentence fragments about half the time. On a card
+  // they read as sentences, so they start like one.
+  return {
+    main: main ? main[0].toUpperCase() + main.slice(1) : "",
+    scope: m ? m[2].trim() : "",
+  };
+}

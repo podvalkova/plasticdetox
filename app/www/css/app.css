@@ -250,3 +250,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .steps { margin: 0 0 0 1.1rem; padding: 0; }
 .steps li { margin-bottom: .55rem; font-size: .95rem; }
 .steps li::marker { font-weight: 800; color: var(--green-dark); }
+
+/* The scope of a finding, set apart from the finding itself so a caveat never
+   reads as part of the sentence it qualifies. */
+.front-scope { font-size: .78rem; line-height: 1.4; color: var(--text-muted); opacity: .8; font-style: italic; margin-top: .2rem; }

@@ -246,6 +246,27 @@
     return n;
   }
 
+  /**
+   * Split a front note into the finding and its scope.
+   *
+   * Eighty eight of our notes end with an aside naming what the finding is
+   * actually about ("(Recorded for Tampax as a whole rather than this product
+   * specifically.)"). Glued to the end of a sentence, sometimes after an
+   * ellipsis where the finding was truncated, it reads as a fragment. It is
+   * worth keeping and worth setting apart, so it goes on its own quieter line.
+   */
+  function splitNote(text) {
+    const raw = (text || "").trim();
+    if (!raw) return null;
+    const m = raw.match(/^([\s\S]*?)\s*\(([A-Z][^)]*)\)$/);
+    const main = (m ? m[1] : raw).trim();
+    const scope = m ? m[2].trim() : "";
+    // Notes are written as sentence fragments about half the time. On a card
+    // they read as sentences, so they start like one.
+    const shown = main ? main[0].toUpperCase() + main.slice(1) : "";
+    return { main: shown, scope };
+  }
+
   function frontsRow(fronts) {
     const wrap = el("span", "pd-fronts");
     for (const [key] of FRONTS) {
@@ -291,12 +312,17 @@
     // Name the specific product when our verdict is about the product rather
     // than the brand, so a "good" badge on a careful brand does not look wrong.
     head.appendChild(el("div", "pd-cat", row ? `${row.name} · ${b.category}` : b.category));
-    if (row && row.note) head.appendChild(el("p", "pd-reason", row.note));
-    else if (b.reason) head.appendChild(el("p", "pd-reason", b.reason));
-    if (row && row.note && b.reason) {
+    const productNote = (row && row.note) || "";
+    const brandNote = b.reason || "";
+    head.appendChild(el("p", "pd-reason", productNote || brandNote));
+    // "About the brand" is only worth the space when it says something the
+    // product note did not. A hundred and twenty seven of our product rows
+    // carry the brand's own sentence verbatim, and printing it twice under a
+    // heading promising more read as a bug, because it was one.
+    if (productNote && brandNote && norm(productNote) !== norm(brandNote)) {
       const bl = el("div", "pd-brandline");
       bl.appendChild(el("b", null, "About the brand: "));
-      bl.appendChild(document.createTextNode(b.reason));
+      bl.appendChild(document.createTextNode(brandNote));
       head.appendChild(bl);
     }
 
@@ -330,9 +356,23 @@
     // verdict read as carelessness rather than honesty.
     // The rules corrected scorecard travels as a flat map of statuses. The card
     // renders {status} objects, so normalise rather than teaching both shapes.
+    //
+    // The note matters as much as the status. A card that flags Formula and
+    // says nothing else asks the reader to take a warning on trust at the exact
+    // moment they are deciding whether to buy. `frontNotes` holds the reason we
+    // recorded; where the front was inherited from the brand, the brand's note
+    // and origin are the ones that apply, because it is the brand's finding.
     const extFronts = row && row.ext && row.ext.fronts
-      ? Object.fromEntries(Object.entries(row.ext.fronts)
-          .map(([k, v]) => [k, { status: v === "unassessed" ? "unknown" : v }]))
+      ? Object.fromEntries(Object.entries(row.ext.fronts).map(([k, v]) => {
+          const inherited = (row.ext.inheritedFronts || []).includes(k);
+          const brandFront = (b.fronts || {})[k] || {};
+          const note = (row.ext.frontNotes || {})[k] || (inherited ? brandFront.note : "");
+          return [k, {
+            status: v === "unassessed" ? "unknown" : v,
+            note: note || "",
+            origin: inherited ? brandFront.origin : undefined,
+          }];
+        }))
       : null;
     const productFronts = extFronts || (row && row.fronts ? row.fronts : null);
     // When a product's verdict departs from its brand's and it has no fronts of
@@ -381,7 +421,9 @@
           nameLine.appendChild(el("span", "pd-origin", "AI"));
         }
         body.appendChild(nameLine);
-        if (f.note) body.appendChild(el("div", "pd-front-note", f.note));
+        const note = splitNote(f.note);
+        if (note && note.main) body.appendChild(el("div", "pd-front-note", note.main));
+        if (note && note.scope) body.appendChild(el("div", "pd-front-scope", note.scope));
         line.appendChild(body);
         block.appendChild(line);
       }
