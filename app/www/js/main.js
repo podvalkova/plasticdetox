@@ -31,6 +31,27 @@ let index = null;
 let stack = [];
 let canScan = false;
 
+/**
+ * The categories we hold, with how much is in each.
+ *
+ * Computed once and cached, because it walks every brand and the home screen
+ * asks for the count on every render.
+ */
+let groupCache = null;
+function categoryGroups() {
+  if (groupCache) return groupCache;
+  const map = new Map();
+  for (const b of index.brands) {
+    if (!b.category || b.reviewed === false) continue;
+    const g = map.get(b.category) || { category: b.category, count: 0, good: 0 };
+    g.count += 1;
+    if (b.stance === "good") g.good += 1;
+    map.set(b.category, g);
+  }
+  groupCache = [...map.values()].sort((a, b) => b.count - a.count || a.category.localeCompare(b.category));
+  return groupCache;
+}
+
 function isNative() {
   const cap = window.Capacitor;
   return !!(cap && cap.isNativePlatform && cap.isNativePlatform());
@@ -81,6 +102,7 @@ function draw() {
       canScan,
       recents: readRecents(),
       starters: STARTERS,
+      categoryCount: categoryGroups().length,
       // Only offered on a real device: the extension cannot be enabled on a
       // simulator, and on the web there is no extension to enable.
       showSafari: isNative() && localStorage.getItem(SAFARI_KEY) !== "1",
@@ -88,6 +110,7 @@ function draw() {
       onSearch: runSearch,
       onPick: openRecent,
       onStarter: (s) => go({ screen: "category", category: s.category, label: s.label }),
+      onAllCategories: () => go({ screen: "categories" }),
       onSafari: () => go({ screen: "safari" }),
       onDismissSafari: () => { localStorage.setItem(SAFARI_KEY, "1"); render(); },
     });
@@ -115,6 +138,11 @@ function draw() {
       label: state.label,
       brands: index.brands.filter((b) => b.category === state.category && b.reviewed !== false),
       onPick: openHit,
+    });
+  } else if (state.screen === "categories") {
+    screens.categoryIndex(view, {
+      groups: categoryGroups(),
+      onPick: (g) => go({ screen: "category", category: g.category, label: g.category }),
     });
   } else if (state.screen === "safari") {
     screens.safari(view, {
@@ -265,7 +293,7 @@ function logSearch(brand, matched, verdict = "") {
 
 function readRecents() {
   try {
-    return JSON.parse(localStorage.getItem(RECENTS_KEY) || "[]").slice(0, 8);
+    return JSON.parse(localStorage.getItem(RECENTS_KEY) || "[]").slice(0, 20);
   } catch {
     return [];
   }
@@ -284,7 +312,7 @@ function remember(state, verdict) {
   const list = readRecents().filter((r) => r.id !== entry.id);
   list.unshift(entry);
   try {
-    localStorage.setItem(RECENTS_KEY, JSON.stringify(list.slice(0, 8)));
+    localStorage.setItem(RECENTS_KEY, JSON.stringify(list.slice(0, 20)));
   } catch {
     // Not worth failing a lookup over.
   }
@@ -366,6 +394,7 @@ async function start() {
   data.refresh().then((r) => {
     if (r && r.updated) {
       index = data.getIndex();
+      groupCache = null;
       if (stack.length === 1) render();
     }
   });

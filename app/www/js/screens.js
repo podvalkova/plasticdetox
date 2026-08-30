@@ -11,20 +11,24 @@ const STATUS_GLYPH = { pass: "✓", caution: "!", fail: "✕", unknown: "?" };
 
 // ------------------------------------------------------------------- home
 
-export function home(root, { onScan, onSearch, onPick, onStarter, onSafari, onDismissSafari, recents, starters, canScan, showSafari }) {
+export function home(root, { onScan, onSearch, onPick, onStarter, onAllCategories, onSafari, onDismissSafari, recents, starters, canScan, showSafari, categoryCount }) {
   const hero = el("div", "hero");
   hero.appendChild(el("h1", null, "What is in your hand?"));
-  hero.appendChild(el("p", null, canScan
-    ? "Scan the barcode, or search a brand. Every verdict is checked on four fronts."
-    : "Search a brand or a product. Every verdict is checked on four fronts."));
+  hero.appendChild(el("p", null,
+    "Scan the barcode, or search a brand. Every verdict is checked on four fronts."));
   root.appendChild(hero);
 
-  if (canScan) {
-    const btn = el("button", "scan-btn");
-    btn.appendChild(icon(ICONS.scan, 22));
-    btn.appendChild(el("span", null, "Scan a barcode"));
-    btn.onclick = onScan;
-    root.appendChild(btn);
+  // The button is always here, even where it cannot run. Hiding the app's main
+  // feature on a simulator or a desktop browser made it look as though there
+  // was no scanner at all, which is a worse answer than saying why.
+  const btn = el("button", `scan-btn${canScan ? "" : " off"}`);
+  btn.appendChild(icon(ICONS.scan, 22));
+  btn.appendChild(el("span", null, "Scan a barcode"));
+  btn.onclick = canScan ? onScan : null;
+  btn.disabled = !canScan;
+  root.appendChild(btn);
+  if (!canScan) {
+    root.appendChild(el("p", "scan-why", noCameraReason()));
   }
 
   const box = el("div", "search");
@@ -44,17 +48,27 @@ export function home(root, { onScan, onSearch, onPick, onStarter, onSafari, onDi
 
   if (showSafari) root.appendChild(safariPrompt(onSafari, onDismissSafari));
 
+  // History as a strip, not a list.
+  //
+  // Recents used to stack down the screen and push everything else off it, so
+  // after a shop's worth of scanning the home screen was a scrollback of things
+  // you had already looked at. It scrolls sideways now, one row however many
+  // there are, which is what a glance back at the last few actually needs.
   if (recents && recents.length) {
-    root.appendChild(el("div", "section-title", "Recent"));
-    for (const r of recents) root.appendChild(recentRow(r, onPick));
-  } else if (starters && starters.length) {
-    // A first launch has no history, and an empty screen teaches nothing about
-    // what the database actually covers. These are the categories people
-    // arrive asking about, in the order they ask.
-    root.appendChild(el("div", "section-title", "Start here"));
+    root.appendChild(el("div", "section-title", "Recently checked"));
+    const strip = el("div", "strip");
+    for (const r of recents) strip.appendChild(recentChip(r, onPick));
+    root.appendChild(strip);
+  }
+
+  // Browsing is always offered, not only on a first launch. Someone with a
+  // history still needs a way into the parts of the database they have not
+  // touched, and that was the thing recents pushed off the screen.
+  if (starters && starters.length) {
+    root.appendChild(el("div", "section-title", "Browse"));
     for (const s of starters) {
       const row = el("button", "row");
-      row.appendChild(el("span", "dot good"));
+      row.appendChild(el("span", "dot brand"));
       const body = el("div", "row-body");
       body.appendChild(el("div", "row-name", s.label));
       body.appendChild(el("div", "row-sub", s.sub));
@@ -63,22 +77,42 @@ export function home(root, { onScan, onSearch, onPick, onStarter, onSafari, onDi
       row.onclick = () => onStarter(s);
       root.appendChild(row);
     }
+    const all = el("button", "row row-quiet");
+    const body = el("div", "row-body");
+    body.appendChild(el("div", "row-name", "All categories"));
+    body.appendChild(el("div", "row-sub", `${categoryCount} categories researched`));
+    all.appendChild(body);
+    all.appendChild(el("span", "row-chev", "›"));
+    all.onclick = onAllCategories;
+    root.appendChild(all);
   }
 
   root.appendChild(el("p", "note",
     "A verdict here is the same one the site publishes. We rate a product only when we have researched that exact product."));
 }
 
-function recentRow(r, onPick) {
-  const row = el("button", "row");
-  row.appendChild(el("span", `dot ${r.stance || "neutral"}`));
-  const body = el("div", "row-body");
-  body.appendChild(el("div", "row-name", r.name));
-  body.appendChild(el("div", "row-sub", r.sub || ""));
-  row.appendChild(body);
-  row.appendChild(el("span", "row-chev", "›"));
-  row.onclick = () => onPick(r);
-  return row;
+/**
+ * Why the camera is not available, in the words that fit the reason.
+ *
+ * A simulator has no camera at all. A desktop browser has one but no barcode
+ * decoder unless it is Chrome. Those are different problems and a single
+ * "scanning unavailable" would send someone looking in the wrong place.
+ */
+function noCameraReason() {
+  const cap = window.Capacitor;
+  if (cap && cap.isNativePlatform && cap.isNativePlatform()) {
+    return "No camera on this device. On a real iPhone this opens the scanner.";
+  }
+  return "Scanning in a browser needs Chrome. Everything else here works, and on the iPhone the scanner opens the camera.";
+}
+
+/** One thing you already checked, small enough that twenty of them fit. */
+function recentChip(r, onPick) {
+  const chip = el("button", "chip");
+  chip.appendChild(el("span", `dot ${r.stance || "neutral"}`));
+  chip.appendChild(el("span", "chip-name", r.name));
+  chip.onclick = () => onPick(r);
+  return chip;
 }
 
 export function renderResults(container, hits, onPick) {
@@ -470,4 +504,34 @@ export function safariPrompt(onOpen, onDismiss) {
   x.onclick = onDismiss;
   box.appendChild(x);
   return box;
+}
+
+
+// ------------------------------------------------------- category index
+
+/**
+ * Every category we hold, commonest first.
+ *
+ * Sorted by how much we have researched rather than alphabetically, because
+ * the useful answer to "what do you cover" is the areas we cover deeply, and
+ * an A to Z buries 144 cookware brands under Activewear.
+ */
+export function categoryIndex(root, { groups, onPick }) {
+  const hero = el("div", "hero");
+  hero.appendChild(el("h1", null, "All categories"));
+  hero.appendChild(el("p", null, `${groups.length} categories, ${groups.reduce((n, g) => n + g.count, 0)} brands researched`));
+  root.appendChild(hero);
+
+  for (const g of groups) {
+    const row = el("button", "row");
+    row.appendChild(el("span", "dot brand"));
+    const body = el("div", "row-body");
+    body.appendChild(el("div", "row-name", g.category));
+    body.appendChild(el("div", "row-sub",
+      `${g.count} brand${g.count === 1 ? "" : "s"}` + (g.good ? ` · ${g.good} we would buy` : "")));
+    row.appendChild(body);
+    row.appendChild(el("span", "row-chev", "›"));
+    row.onclick = () => onPick(g);
+    root.appendChild(row);
+  }
 }

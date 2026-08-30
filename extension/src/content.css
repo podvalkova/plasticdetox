@@ -7,6 +7,9 @@
 .pd-pop {
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   box-sizing: border-box;
+  /* The brand accent. Green, amber and red are verdicts and never navigation;
+     a link that is not about a verdict wears the brand instead. */
+  --pd-accent: #7c3aed;
   --pd-good: #16a34a;    --pd-good-bg: #dcfce7;    --pd-good-border: #bbf7d0;
   --pd-careful: #b45309; --pd-careful-bg: #fef3c7; --pd-careful-border: #fde68a;
   --pd-skip: #dc2626;    --pd-skip-bg: #fee2e2;    --pd-skip-border: #fecaca;
@@ -130,7 +133,7 @@
   background: #fdfdfc;
 }
 .pd-link {
-  font-size: 12px; font-weight: 600; color: #0f766e; text-decoration: none;
+  font-size: 12px; font-weight: 600; color: var(--pd-accent); text-decoration: none;
 }
 .pd-link:hover { text-decoration: underline; }
 .pd-mark { font-size: 10px; color: var(--pd-muted); letter-spacing: .02em; }

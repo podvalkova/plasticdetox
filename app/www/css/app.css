@@ -1,7 +1,17 @@
 /* Plastic Detox app. Same palette as the site so a verdict looks the same
    here as it does in an article or on an Amazon listing. */
 
+/* Two colour systems, kept apart on purpose.
+   --accent is the brand, and is the only colour a button, a link or a focus
+   ring may use. Green, amber and red mean pass, caution and fail, and appear
+   nowhere except a verdict. A green button would make every screen look like
+   an approval. */
 :root {
+  --accent: #a78bfa;
+  --accent-dark: #7c3aed;
+  --accent-darker: #6d28d9;
+  --accent-light: #ede9fe;
+
   --green: #22c55e;
   --green-dark: #16a34a;
   --green-light: #dcfce7;
@@ -45,7 +55,9 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   backdrop-filter: saturate(180%) blur(12px);
   border-bottom: 1px solid var(--border);
 }
-.bar-title { font-weight: 800; font-size: 1.05rem; letter-spacing: -.01em; flex: 1; text-align: center; }
+.bar-title { font-weight: 800; font-size: 1.05rem; letter-spacing: -.02em; flex: 1; text-align: center; }
+/* The site's wordmark: lowercase, and only "detox" carries the accent. */
+.bar-title span { color: var(--accent); }
 .bar-back, .bar-info {
   width: 2rem; height: 2rem; border-radius: 999px;
   display: grid; place-items: center; font-size: 1.3rem; line-height: 1;
@@ -66,7 +78,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .boot.gone { opacity: 0; pointer-events: none; }
 .boot-mark {
   width: 42px; height: 42px; border-radius: 999px;
-  border: 3px solid var(--border); border-top-color: var(--green-dark);
+  border: 3px solid var(--border); border-top-color: var(--accent-dark);
   animation: spin .8s linear infinite;
 }
 @keyframes spin { to { transform: rotate(360deg); } }
@@ -80,8 +92,8 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .scan-btn {
   width: 100%; display: flex; align-items: center; justify-content: center; gap: .6rem;
   padding: 1.1rem; border-radius: var(--radius);
-  background: var(--text); color: #fff; font-weight: 700; font-size: 1.05rem;
-  box-shadow: var(--shadow-lg);
+  background: var(--accent-dark); color: #fff; font-weight: 700; font-size: 1.05rem;
+  box-shadow: 0 10px 24px rgba(124,58,237,.28);
 }
 .scan-btn:active { transform: scale(.985); }
 .scan-btn svg { width: 22px; height: 22px; }
@@ -95,7 +107,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   background: var(--surface); font-size: 1rem; font-family: inherit; color: var(--text);
   box-shadow: var(--shadow);
 }
-.search input:focus { outline: 2px solid var(--green); outline-offset: 1px; }
+.search input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
 .search svg { position: absolute; left: .95rem; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; color: var(--text-muted); }
 
 .section-title {
@@ -183,7 +195,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .cta {
   display: block; width: 100%; text-align: center; text-decoration: none;
   padding: .95rem; border-radius: var(--radius-sm); font-weight: 700; font-size: .95rem;
-  background: var(--green-dark); color: #fff; margin-top: .9rem;
+  background: var(--accent-dark); color: #fff; margin-top: .9rem;
 }
 .cta.ghost { background: var(--surface); color: var(--text); border: 1px solid var(--border); }
 .cta:active { opacity: .85; }
@@ -227,7 +239,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   border: 1px solid var(--border); border-radius: var(--radius-sm);
   background: var(--bg); margin-top: .3rem;
 }
-.card input:focus { outline: 2px solid var(--green); outline-offset: 1px; }
+.card input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
 .card .cta:disabled { opacity: .6; }
 .card p + p { margin-top: .5rem; }
 .results:empty { display: none; }
@@ -236,21 +248,54 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .promo {
   display: flex; align-items: center; gap: .7rem;
   margin-top: 1rem; padding: .85rem 1rem;
-  background: var(--green-light); border: 1px solid #bbf7d0;
+  background: var(--accent-light); border: 1px solid #ddd6fe;
   border-radius: var(--radius-sm);
 }
 .promo .row-name { font-size: .95rem; }
-.promo .row-sub { color: #15803d; }
+.promo .row-sub { color: var(--accent-darker); }
 .promo-go {
   flex: none; padding: .45rem .9rem; border-radius: 999px;
-  background: var(--green-dark); color: #fff; font-weight: 700; font-size: .82rem;
+  background: var(--accent-dark); color: #fff; font-weight: 700; font-size: .82rem;
 }
-.promo-x { flex: none; color: #15803d; font-size: .9rem; padding: .2rem .3rem; }
+.promo-x { flex: none; color: var(--accent-darker); font-size: .9rem; padding: .2rem .3rem; }
 
 .steps { margin: 0 0 0 1.1rem; padding: 0; }
 .steps li { margin-bottom: .55rem; font-size: .95rem; }
-.steps li::marker { font-weight: 800; color: var(--green-dark); }
+.steps li::marker { font-weight: 800; color: var(--accent-dark); }
 
 /* The scope of a finding, set apart from the finding itself so a caveat never
    reads as part of the sentence it qualifies. */
 .front-scope { font-size: .78rem; line-height: 1.4; color: var(--text-muted); opacity: .8; font-style: italic; margin-top: .2rem; }
+
+/* The scan button where scanning cannot run: still the main thing on the
+   screen, visibly not pressable, with the reason underneath. */
+.scan-btn.off { background: #d6d3d1; box-shadow: none; cursor: default; }
+.scan-btn.off:active { transform: none; }
+.scan-why {
+  font-size: .82rem; color: var(--text-muted); text-align: center;
+  margin-top: .5rem; line-height: 1.45;
+}
+
+/* A row bullet that marks a category rather than a verdict. Green here would
+   read as "we approve of water filters", which is not a claim we are making. */
+.dot.brand { background: var(--accent); }
+
+/* Recently checked: one row that scrolls sideways, however many there are. */
+.strip {
+  display: flex; gap: .5rem; overflow-x: auto; padding: .1rem .1rem .4rem;
+  margin: 0 -1rem; padding-left: 1rem; padding-right: 1rem;
+  scrollbar-width: none; -webkit-overflow-scrolling: touch;
+}
+.strip::-webkit-scrollbar { display: none; }
+.chip {
+  flex: none; display: flex; align-items: center; gap: .45rem;
+  padding: .55rem .85rem; border-radius: 999px;
+  background: var(--surface); border: 1px solid var(--border);
+  font-size: .88rem; font-weight: 600; max-width: 12rem;
+}
+.chip:active { background: #f5f5f4; }
+.chip-name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* A row that is a way onwards rather than a thing in its own right. */
+.row-quiet { background: transparent; border-style: dashed; }
+.row-quiet .row-name { color: var(--accent-dark); }
