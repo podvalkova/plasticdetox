@@ -61,6 +61,21 @@ That covers screens, copy, matching logic, and the verdict data. Bump
 `MARKETING_VERSION` in Xcode to match, or every fresh install downloads a copy
 of what it already has.
 
+### TestFlight
+
+    export PD_TEAM_ID=...      # ten characters, Apple Developer team
+    export PD_ASC_KEY_ID=...   # the XXXXXXXXXX in AuthKey_XXXXXXXXXX.p8
+    export PD_ASC_ISSUER=...   # a UUID, App Store Connect, Users and Access,
+                               # Integrations, App Store Connect API
+    cp AuthKey_$PD_ASC_KEY_ID.p8 ~/.appstoreconnect/private_keys/
+
+    npm run testflight         # next build number
+    npm run testflight 1.0.1   # and set the version people see
+
+Archives, exports, validates, uploads. The build number increments itself and
+is written back to the project, because a build number that reaches App Store
+Connect can never be used again. Listing copy is in `STORE.md`.
+
 **Through the App Store**, needed for:
 
 - anything in `ios/App/App/Plugins/`
