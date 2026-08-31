@@ -1265,23 +1265,49 @@ async function handleInstantVet(request, env, corsOrigin) {
     const fronts = {};
     send({ step: "start", brand, product });
 
-    // Free answer first: a product we already researched costs nothing and
-    // outranks anything a live search could find in ten seconds.
+    // Free answer first, but only where our evidence actually covers the
+    // product. A matched product row answers outright. A brand-only hit
+    // answers only when the brand finding plainly covers this kind of product
+    // (Keurig's reason is about coffee makers, and a coffee maker was asked).
+    // Otherwise the brand verdict is context, never the answer: Chefman is a
+    // skip for its air fryer coatings, and asserting that against a kettle is
+    // the exact brand-is-not-a-product mistake the standard forbids.
+    const STANCE_BADGE = { good: "pass", careful: "caution", skip: "fail" };
     const db = await vetDbLookup(brand, product);
+    let brandStance = null;
     if (db) {
       const b = db.brand, row = db.row;
-      const verdict = (row && row.ext && row.ext.verdict && row.ext.verdict !== "unrated")
-        ? row.ext.verdict : b.stance;
-      const note = (row && row.note) || b.reason || "";
-      send({ step: "database", front: { status: "pass",
-        note: `Already in our database${row ? ` (${row.name})` : ""}: ${note}`.slice(0, 400),
+      const scopeText = ((b.reason || "") + " " + (b.category || "")).toLowerCase();
+      // Only product-type words may prove coverage. "with" matched a fryer
+      // verdict to a kettle; generic adjectives and materials are just as bad.
+      const GENERIC_WORDS = new Set(["with", "without", "this", "that", "from",
+        "have", "your", "temperature", "control", "electric", "digital",
+        "programmable", "adjustable", "stainless", "steel", "glass", "black",
+        "white", "large", "small", "inch", "quart", "liter", "ounce", "pack",
+        "count", "piece", "premium", "classic", "original", "series", "model"]);
+      const covered = row || (product || "").toLowerCase().split(/[^a-z0-9]+/)
+        .some((w) => w.length > 3 && !GENERIC_WORDS.has(w) && scopeText.includes(w));
+      if (covered) {
+        const verdict = (row && row.ext && row.ext.verdict && row.ext.verdict !== "unrated")
+          ? row.ext.verdict : b.stance;
+        const note = (row && row.note) || b.reason || "";
+        send({ step: "database", front: { status: STANCE_BADGE[verdict] || "unassessed",
+          note: `Already in our database${row ? ` (${row.name})` : ""}: ${note}`.slice(0, 400),
+          source: `https://plasticdetox.org/brand-check.html?b=${encodeURIComponent(b.brand)}` },
+          ms: Date.now() - t0 });
+        send({ done: true, elapsedMs: Date.now() - t0, verdict,
+               label: "From our reviewed database, no credit consumed", fronts: {},
+               fromDatabase: true });
+        await writer.close();
+        return;
+      }
+      brandStance = b.stance;
+      send({ step: "database", front: { status: STANCE_BADGE[b.stance] || "unassessed",
+        note: `Brand context only: we rate ${b.brand} ${b.stance} (${(b.reason || "").slice(0, 220)}) `
+          + `That finding is about other ${b.brand} products, not necessarily this one, `
+          + `so we are researching this exact product now.`,
         source: `https://plasticdetox.org/brand-check.html?b=${encodeURIComponent(b.brand)}` },
         ms: Date.now() - t0 });
-      send({ done: true, elapsedMs: Date.now() - t0, verdict,
-             label: "From our reviewed database, no credit consumed", fronts: {},
-             fromDatabase: true });
-      await writer.close();
-      return;
     }
 
     const finish = (key, r, aiKeys) => {
@@ -1308,7 +1334,14 @@ async function handleInstantVet(request, env, corsOrigin) {
     for (const k of ["formula", "packaging", "legal", "testing"]) {
       if (!fronts[k]) fronts[k] = { status: "unassessed", note: "Did not finish in time.", source: "" };
     }
-    send({ done: true, elapsedMs: Date.now() - t0, verdict: vetVerdict(fronts),
+    let verdict = vetVerdict(fronts);
+    // Rule 1.1: adverse brand evidence propagates as a caution with its scope
+    // named (the database line above names it); favourable never does. A clean
+    // read on one product cannot out-rank what we hold against its maker.
+    if ((brandStance === "careful" || brandStance === "skip") && verdict === "good") {
+      verdict = "careful";
+    }
+    send({ done: true, elapsedMs: Date.now() - t0, verdict,
            label: "Research, not yet reviewed", fronts });
     await writer.close();
   };
