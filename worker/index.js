@@ -68,6 +68,11 @@ export default {
       return handleVetTest(request, env);
     }
 
+    // ===== Check pass balance, read by vet.html on load =====
+    if (path === "/vet-balance" && request.method === "GET") {
+      return handleVetBalance(request, env, corsOrigin);
+    }
+
     if (request.method !== "POST") {
       return new Response("Method not allowed", { status: 405 });
     }
@@ -75,6 +80,17 @@ export default {
     // ===== Instant vet prototype: live four-front research on one product =====
     if (path === "/instant-vet") {
       return handleInstantVet(request, env, corsOrigin);
+    }
+
+    // ===== Paid checks: customer vet, pack checkout, private pass minting =====
+    if (path === "/vet") {
+      return handleCustomerVet(request, env, corsOrigin);
+    }
+    if (path === "/vet-checkout") {
+      return handleVetCheckout(request, env, corsOrigin);
+    }
+    if (path === "/vet-grant") {
+      return handleVetGrant(request, env, corsOrigin);
     }
 
     // ===== Log every brand searched (fire-and-forget from the frontend) =====
@@ -713,6 +729,16 @@ async function handleStripeWebhook(request, env) {
       return new Response(JSON.stringify({ received: true }), { status: 200, headers: { "Content-Type": "application/json" } });
     }
 
+    // ---- Check pass purchase (from /vet-checkout) -> mint pass, email link ----
+    if (s.metadata && s.metadata.type === "vet-pack") {
+      const checks = Math.min(500, Math.max(1, Number(s.metadata.checks) || 0));
+      if (email && checks) {
+        const pass = await mintVetPass(env, checks, email, s.metadata.pack || "");
+        await sendPassEmail(env, email, pass, checks);
+      }
+      return new Response(JSON.stringify({ received: true }), { status: 200, headers: { "Content-Type": "application/json" } });
+    }
+
     const amount = s.amount_total || 0; // cents
 
     // ---- Baby & Expecting Package ($9.99) -> access email + Brevo list 8 ----
@@ -1272,6 +1298,121 @@ function vetVerdict(fronts) {
   return "unrated";
 }
 
+// The research pipeline shared by the private bench and the paid customer
+// endpoint. Sends step events as each check finishes; the caller sends the
+// final event, because only the caller knows about credits.
+async function vetCore(env, brand, product, send, allowResearch) {
+  const t0 = Date.now();
+  const fronts = {};
+  send({ step: "start", brand, product });
+
+  // Free answer first, but only where our evidence actually covers the
+  // product. A matched product row answers outright. A brand-only hit
+  // answers only when the brand finding plainly covers this kind of product
+  // (Keurig's reason is about coffee makers, and a coffee maker was asked).
+  // Otherwise the brand verdict is context, never the answer: Chefman is a
+  // skip for its air fryer coatings, and asserting that against a kettle is
+  // the exact brand-is-not-a-product mistake the standard forbids.
+  const STANCE_BADGE = { good: "pass", careful: "caution", skip: "fail" };
+  const db = await vetDbLookup(brand, product);
+  let brandStance = null;
+  if (db) {
+    const b = db.brand, row = db.row;
+    const scopeText = ((b.reason || "") + " " + (b.category || "")).toLowerCase();
+    // Only product-type words may prove coverage. "with" matched a fryer
+    // verdict to a kettle; generic adjectives and materials are just as bad.
+    const GENERIC_WORDS = new Set(["with", "without", "this", "that", "from",
+      "have", "your", "temperature", "control", "electric", "digital",
+      "programmable", "adjustable", "stainless", "steel", "glass", "black",
+      "white", "large", "small", "inch", "quart", "liter", "ounce", "pack",
+      "count", "piece", "premium", "classic", "original", "series", "model"]);
+    const covered = row || (product || "").toLowerCase().split(/[^a-z0-9]+/)
+      .some((w) => w.length > 3 && !GENERIC_WORDS.has(w) && scopeText.includes(w));
+    if (covered) {
+      const verdict = (row && row.ext && row.ext.verdict && row.ext.verdict !== "unrated")
+        ? row.ext.verdict : b.stance;
+      const note = (row && row.note) || b.reason || "";
+      send({ step: "database", front: { status: STANCE_BADGE[verdict] || "unassessed",
+        note: `Already in our database${row ? ` (${row.name})` : ""}: ${note}`.slice(0, 400),
+        source: `https://plasticdetox.org/brand-check.html?b=${encodeURIComponent(b.brand)}` },
+        ms: Date.now() - t0 });
+      return { fromDatabase: true, verdict, capNote: "", fronts: {},
+               chargeable: false, elapsedMs: Date.now() - t0 };
+    }
+    brandStance = b.stance;
+    // Internal context: it steers the verdict cap below, and the review
+    // queue will want it, but the customer card never shows it.
+    send({ step: "database", internal: true,
+      front: { status: STANCE_BADGE[b.stance] || "unassessed",
+      note: `Brand context (internal): we rate ${b.brand} ${b.stance}. `
+        + `Researching this exact product now.`,
+      source: `https://plasticdetox.org/brand-check.html?b=${encodeURIComponent(b.brand)}` },
+      ms: Date.now() - t0 });
+  }
+
+  // Out of credits and not in the database: stop before spending anything.
+  if (!allowResearch) {
+    return { fromDatabase: false, verdict: null, capNote: "", fronts: {},
+             chargeable: false, needsCredits: true, elapsedMs: Date.now() - t0 };
+  }
+
+  let labelOk = false;
+  const finish = (key, r, aiKeys) => {
+    // Claude legs return {data} | {error} | {unconfigured}; legal returns a front.
+    for (const k of aiKeys) {
+      if (r.data && r.data[k] && r.data[k].status) {
+        fronts[k] = r.data[k];
+        if (key === "label") labelOk = true;
+      } else {
+        fronts[k] = { status: "unassessed",
+          note: r.unconfigured
+            ? "AI research is not configured on this worker yet (missing ANTHROPIC_API_KEY)."
+            : `Could not complete this check (${r.error || "no result"}).`,
+          source: "" };
+      }
+      send({ step: k, front: fronts[k], ms: Date.now() - t0 });
+    }
+  };
+
+  const legalP = vetLegal(brand).then((f) => { fronts.legal = f; send({ step: "legal", front: f, ms: Date.now() - t0 }); });
+  const labelP = vetLabel(env, brand, product).then((r) => finish("label", r, ["formula", "packaging"]));
+  const testP = vetTesting(env, brand, product).then((r) => finish("testing", r, ["testing"]));
+  await Promise.allSettled([legalP, labelP, testP]);
+
+  for (const k of ["formula", "packaging", "legal", "testing"]) {
+    if (!fronts[k]) fronts[k] = { status: "unassessed", note: "Did not finish in time.", source: "" };
+  }
+  let verdict = vetVerdict(fronts);
+  // Rule 1.1: adverse brand evidence propagates as a caution with its scope
+  // named; favourable never does. A clean read on one product cannot
+  // out-rank what we hold against its maker.
+  let capNote = "";
+  if ((brandStance === "careful" || brandStance === "skip") && verdict === "good") {
+    verdict = "careful";
+    capNote = `This product read clean, and we still rate the brand itself ${brandStance}.`;
+  }
+  // A customer is charged only when the core of the card, the materials
+  // research, actually delivered. A transport failure is our problem.
+  return { fromDatabase: false, verdict, capNote, fronts,
+           chargeable: labelOk, elapsedMs: Date.now() - t0 };
+}
+
+function sseResponse(corsOrigin) {
+  const { readable, writable } = new TransformStream();
+  const writer = writable.getWriter();
+  const enc = new TextEncoder();
+  return {
+    readable,
+    writer,
+    send: (obj) => writer.write(enc.encode("data: " + JSON.stringify(obj) + "\n\n")),
+    headers: {
+      "Content-Type": "text/event-stream",
+      "Cache-Control": "no-cache",
+      "Access-Control-Allow-Origin": corsOrigin,
+    },
+  };
+}
+
 async function handleInstantVet(request, env, corsOrigin) {
   const token = new URL(request.url).searchParams.get("token") || "";
   if (!env.STATS_TOKEN || token !== env.STATS_TOKEN) {
@@ -1282,112 +1423,153 @@ async function handleInstantVet(request, env, corsOrigin) {
   const product = (body.product || "").toString().trim().slice(0, 160);
   if (!brand) return json({ ok: false, error: "brand is required" }, 400, corsOrigin);
 
-  const { readable, writable } = new TransformStream();
-  const writer = writable.getWriter();
-  const enc = new TextEncoder();
-  const send = (obj) => writer.write(enc.encode("data: " + JSON.stringify(obj) + "\n\n"));
-  const t0 = Date.now();
-
-  const run = async () => {
-    const fronts = {};
-    send({ step: "start", brand, product });
-
-    // Free answer first, but only where our evidence actually covers the
-    // product. A matched product row answers outright. A brand-only hit
-    // answers only when the brand finding plainly covers this kind of product
-    // (Keurig's reason is about coffee makers, and a coffee maker was asked).
-    // Otherwise the brand verdict is context, never the answer: Chefman is a
-    // skip for its air fryer coatings, and asserting that against a kettle is
-    // the exact brand-is-not-a-product mistake the standard forbids.
-    const STANCE_BADGE = { good: "pass", careful: "caution", skip: "fail" };
-    const db = await vetDbLookup(brand, product);
-    let brandStance = null;
-    if (db) {
-      const b = db.brand, row = db.row;
-      const scopeText = ((b.reason || "") + " " + (b.category || "")).toLowerCase();
-      // Only product-type words may prove coverage. "with" matched a fryer
-      // verdict to a kettle; generic adjectives and materials are just as bad.
-      const GENERIC_WORDS = new Set(["with", "without", "this", "that", "from",
-        "have", "your", "temperature", "control", "electric", "digital",
-        "programmable", "adjustable", "stainless", "steel", "glass", "black",
-        "white", "large", "small", "inch", "quart", "liter", "ounce", "pack",
-        "count", "piece", "premium", "classic", "original", "series", "model"]);
-      const covered = row || (product || "").toLowerCase().split(/[^a-z0-9]+/)
-        .some((w) => w.length > 3 && !GENERIC_WORDS.has(w) && scopeText.includes(w));
-      if (covered) {
-        const verdict = (row && row.ext && row.ext.verdict && row.ext.verdict !== "unrated")
-          ? row.ext.verdict : b.stance;
-        const note = (row && row.note) || b.reason || "";
-        send({ step: "database", front: { status: STANCE_BADGE[verdict] || "unassessed",
-          note: `Already in our database${row ? ` (${row.name})` : ""}: ${note}`.slice(0, 400),
-          source: `https://plasticdetox.org/brand-check.html?b=${encodeURIComponent(b.brand)}` },
-          ms: Date.now() - t0 });
-        send({ done: true, elapsedMs: Date.now() - t0, verdict,
-               label: "From our reviewed database, no credit consumed", fronts: {},
-               fromDatabase: true });
-        await writer.close();
-        return;
-      }
-      brandStance = b.stance;
-      // Internal context: it steers the verdict cap below, and the review
-      // queue will want it, but the customer card never shows it. Anna's
-      // call: the shopper gets the four checks, not our reasoning trail.
-      send({ step: "database", internal: true,
-        front: { status: STANCE_BADGE[b.stance] || "unassessed",
-        note: `Brand context (internal): we rate ${b.brand} ${b.stance}. `
-          + `Researching this exact product now.`,
-        source: `https://plasticdetox.org/brand-check.html?b=${encodeURIComponent(b.brand)}` },
-        ms: Date.now() - t0 });
-    }
-
-    const finish = (key, r, aiKeys) => {
-      // Claude legs return {data} | {error} | {unconfigured}; legal returns a front.
-      for (const k of aiKeys) {
-        if (r.data && r.data[k] && r.data[k].status) {
-          fronts[k] = r.data[k];
-        } else {
-          fronts[k] = { status: "unassessed",
-            note: r.unconfigured
-              ? "AI research is not configured on this worker yet (missing ANTHROPIC_API_KEY)."
-              : `Could not complete this check (${r.error || "no result"}).`,
-            source: "" };
-        }
-        send({ step: k, front: fronts[k], ms: Date.now() - t0 });
-      }
-    };
-
-    const legalP = vetLegal(brand).then((f) => { fronts.legal = f; send({ step: "legal", front: f, ms: Date.now() - t0 }); });
-    const labelP = vetLabel(env, brand, product).then((r) => finish("label", r, ["formula", "packaging"]));
-    const testP = vetTesting(env, brand, product).then((r) => finish("testing", r, ["testing"]));
-    await Promise.allSettled([legalP, labelP, testP]);
-
-    for (const k of ["formula", "packaging", "legal", "testing"]) {
-      if (!fronts[k]) fronts[k] = { status: "unassessed", note: "Did not finish in time.", source: "" };
-    }
-    let verdict = vetVerdict(fronts);
-    // Rule 1.1: adverse brand evidence propagates as a caution with its scope
-    // named (the database line above names it); favourable never does. A clean
-    // read on one product cannot out-rank what we hold against its maker.
-    let capNote = "";
-    if ((brandStance === "careful" || brandStance === "skip") && verdict === "good") {
-      verdict = "careful";
-      capNote = `This product read clean, and we still rate the brand itself ${brandStance}.`;
-    }
-    send({ done: true, elapsedMs: Date.now() - t0, verdict, capNote,
-           label: "Research, not yet reviewed", fronts });
-    await writer.close();
-  };
-  run().catch(async (e) => {
-    try { await send({ done: true, error: String(e).slice(0, 200) }); await writer.close(); } catch (_) {}
+  const s = sseResponse(corsOrigin);
+  (async () => {
+    const r = await vetCore(env, brand, product, s.send, true);
+    s.send({ done: true, elapsedMs: r.elapsedMs, verdict: r.verdict, capNote: r.capNote,
+             label: r.fromDatabase ? "From our reviewed database, no credit consumed"
+                                   : "Research, not yet reviewed",
+             fronts: r.fronts, fromDatabase: r.fromDatabase });
+    await s.writer.close();
+  })().catch(async (e) => {
+    try { s.send({ done: true, error: String(e).slice(0, 200) }); await s.writer.close(); } catch (_) {}
   });
+  return new Response(s.readable, { headers: s.headers });
+}
 
-  return new Response(readable, {
-    headers: {
-      "Content-Type": "text/event-stream",
-      "Cache-Control": "no-cache",
-      "Access-Control-Allow-Origin": corsOrigin,
-    },
+// ---------------------------------------------------------------- customers
+//
+// A check pass is a link, not an account: buy a pack, get a tokened URL by
+// email, spend credits from it. Database answers are free and never touch
+// the balance; only completed live research consumes a credit.
+const VET_PACKS = {
+  p5:  { usd: 500,  checks: 20,  name: "Check Pass, 20 checks" },
+  p10: { usd: 1000, checks: 45,  name: "Check Pass, 45 checks" },
+  p20: { usd: 2000, checks: 100, name: "Check Pass, 100 checks" },
+};
+
+async function mintVetPass(env, checks, email, pack) {
+  const token = (crypto.randomUUID() + crypto.randomUUID()).replace(/-/g, "").slice(0, 40);
+  await env.BRAND_SEARCHES.put("vetpass:" + token, JSON.stringify({
+    balance: checks, purchased: checks, used: 0,
+    email: email || "", pack: pack || "", created: new Date().toISOString(),
+    history: [],
+  }));
+  return token;
+}
+
+async function sendPassEmail(env, email, token, checks) {
+  const url = `https://plasticdetox.org/vet.html?pass=${token}`;
+  await fetch("https://api.brevo.com/v3/smtp/email", {
+    method: "POST",
+    headers: { "api-key": env.BREVO_API_KEY, "Content-Type": "application/json" },
+    body: JSON.stringify({
+      sender: { name: env.SENDER_NAME, email: env.SENDER_EMAIL },
+      to: [{ email }],
+      subject: "Your check pass is ready",
+      htmlContent: emailShell("Check Pass",
+        emailP(`Your pass is loaded with ${checks} product checks.`) +
+        emailP(`<a href="${url}">Open your check pass</a> and keep the link; it is your pass. Credits never expire, and a product already in our database never uses one.`) +
+        emailP("Every answer is research we stand behind: four checks, sources shown, and anything new joins our public database after review.")
+      ),
+    }),
+  }).catch(() => {});
+}
+
+async function handleVetCheckout(request, env, corsOrigin) {
+  try {
+    const { pack } = await request.json();
+    const p = VET_PACKS[pack];
+    if (!p) return json({ ok: false, error: "Unknown pack" }, 400, corsOrigin);
+    if (!env.STRIPE_SECRET_KEY) {
+      return json({ ok: false, error: "Checkout is not configured yet." }, 503, corsOrigin);
+    }
+    const q = new URLSearchParams();
+    q.append("mode", "payment");
+    q.append("success_url", "https://plasticdetox.org/vet.html?paid=1");
+    q.append("cancel_url", "https://plasticdetox.org/vet.html?canceled=1");
+    q.append("metadata[type]", "vet-pack");
+    q.append("metadata[pack]", pack);
+    q.append("metadata[checks]", String(p.checks));
+    q.append("line_items[0][quantity]", "1");
+    q.append("line_items[0][price_data][currency]", "usd");
+    q.append("line_items[0][price_data][unit_amount]", String(p.usd));
+    q.append("line_items[0][price_data][product_data][name]", p.name);
+    const res = await fetch("https://api.stripe.com/v1/checkout/sessions", {
+      method: "POST",
+      headers: {
+        Authorization: "Bearer " + env.STRIPE_SECRET_KEY,
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: q.toString(),
+    });
+    const data = await res.json();
+    if (res.ok && data.url) return json({ ok: true, url: data.url }, 200, corsOrigin);
+    return json({ ok: false, error: (data.error && data.error.message) || "Stripe error" }, 502, corsOrigin);
+  } catch (e) {
+    return json({ ok: false, error: "Server error" }, 500, corsOrigin);
+  }
+}
+
+// Token-gated pass minting, for testing and make-goods. Never public.
+async function handleVetGrant(request, env, corsOrigin) {
+  const token = new URL(request.url).searchParams.get("token") || "";
+  if (!env.STATS_TOKEN || token !== env.STATS_TOKEN) {
+    return json({ ok: false, error: "Not authorized" }, 401, corsOrigin);
+  }
+  const body = await request.json().catch(() => ({}));
+  const checks = Math.min(500, Math.max(1, Number(body.checks) || 20));
+  const pass = await mintVetPass(env, checks, body.email || "", "grant");
+  if (body.email) await sendPassEmail(env, body.email, pass, checks);
+  return json({ ok: true, pass, checks,
+    url: `https://plasticdetox.org/vet.html?pass=${pass}` }, 200, corsOrigin);
+}
+
+async function handleVetBalance(request, env, corsOrigin) {
+  const pass = new URL(request.url).searchParams.get("pass") || "";
+  const rec = pass && await env.BRAND_SEARCHES.get("vetpass:" + pass, { type: "json" });
+  if (!rec) return json({ ok: false, error: "Pass not found" }, 404, corsOrigin);
+  return json({ ok: true, balance: rec.balance, purchased: rec.purchased, used: rec.used }, 200, corsOrigin);
+}
+
+async function handleCustomerVet(request, env, corsOrigin) {
+  const body = await request.json().catch(() => ({}));
+  const pass = (body.pass || "").toString().trim();
+  const brand = (body.brand || "").toString().trim().slice(0, 80);
+  const product = (body.product || "").toString().trim().slice(0, 160);
+  if (!brand) return json({ ok: false, error: "brand is required" }, 400, corsOrigin);
+  const key = "vetpass:" + pass;
+  const rec = pass && await env.BRAND_SEARCHES.get(key, { type: "json" });
+  if (!rec) return json({ ok: false, error: "Pass not found" }, 401, corsOrigin);
+
+  const s = sseResponse(corsOrigin);
+  (async () => {
+    const r = await vetCore(env, brand, product, s.send, rec.balance > 0);
+    let consumed = false;
+    if (r.needsCredits) {
+      s.send({ done: true, elapsedMs: r.elapsedMs, needsCredits: true, balance: rec.balance,
+               error: "This product is not in our database yet, and this pass has no checks left." });
+      await s.writer.close();
+      return;
+    }
+    if (!r.fromDatabase && r.chargeable) {
+      rec.balance = Math.max(0, rec.balance - 1);
+      rec.used = (rec.used || 0) + 1;
+      rec.history = (rec.history || []).slice(-49);
+      rec.history.push({ ts: new Date().toISOString(), brand, product, verdict: r.verdict });
+      await env.BRAND_SEARCHES.put(key, JSON.stringify(rec));
+      consumed = true;
+    }
+    s.send({ done: true, elapsedMs: r.elapsedMs, verdict: r.verdict, capNote: r.capNote,
+             label: r.fromDatabase ? "From our reviewed database, no credit consumed"
+                                   : "Research, not yet reviewed",
+             fronts: r.fronts, fromDatabase: r.fromDatabase,
+             consumed, balance: rec.balance });
+    await s.writer.close();
+  })().catch(async (e) => {
+    try { s.send({ done: true, error: String(e).slice(0, 200) }); await s.writer.close(); } catch (_) {}
   });
+  return new Response(s.readable, { headers: s.headers });
 }
 
 function handleVetTest(request, env) {
