@@ -610,8 +610,8 @@
     const labels = Object.fromEntries(FRONTS);
     const still = held.map((k) => (labels[k] || k).toLowerCase());
     const done = FRONTS.filter(([k]) => !held.includes(k)).map(([, l]) => l.toLowerCase());
-    let text = "We have reviewed this product and show a verdict only once all "
-      + "four checks carry a finding.";
+    let text = "We have reviewed this product and show a verdict only once "
+      + "the remaining checks are done.";
     if (done.length) text += " Done: " + done.join(", ") + ".";
     if (still.length) text += " Still verifying: " + still.join(", ") + ".";
     text += " Leave your email and we will send the verdict when it clears.";

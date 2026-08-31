@@ -20,6 +20,7 @@ stays unassessed rather than being guessed at.
 """
 
 import argparse
+import datetime
 import json
 import pathlib
 import re
@@ -116,7 +117,7 @@ def main():
     for i, b in enumerate(todo, 1):
         total, latest, examined = query(b["brand"])
         cache[b["brand"]] = {"total": total, "latest": latest, "examined": examined,
-                             "checked": "2026-08-28"}
+                             "checked": datetime.date.today().isoformat()}
         if total:
             print(f"  {b['brand']}: {total} verified recall(s) "
                   f"(of {examined} name matches), latest {latest[0]} "
@@ -144,9 +145,14 @@ def main():
             continue
         for p in (b.get("products") or []):
             e = p.get("ext")
-            if not e or e.get("authored"):
+            if not e:
                 continue
-            if e["fronts"].get("legal") not in ("unassessed", "unknown"):
+            # Authored rows are included on purpose. The authored flag protects
+            # the verdict and the fronts a person actually set; a front they
+            # left unassessed is not a judgement, and filling it with a dated
+            # database result overwrites nothing. Skipping them held 38 brands
+            # of hand researched rows on a check this tool had already run.
+            if e["fronts"].get("legal") not in ("unassessed", "unknown", None):
                 continue
             # Only two states get written. Nothing resembling the brand appeared
             # at all, which is a genuine "checked, nothing found". Or something
@@ -155,11 +161,23 @@ def main():
             # Foods and Simply Gum. Asserting a recall against the wrong company
             # is the one error here with real consequences, so an ambiguous match
             # is left unassessed and listed for a person to resolve.
-            if c.get("examined", 0) == 0:
+            # A resolved entry is an adjudicated answer: a person or a research
+            # run looked at the actual records and decided, and the note says
+            # what they found. It carries its own status because the answer is
+            # not always a clean pass: a recent remedied recall is a caution.
+            if c.get("resolved"):
+                e["fronts"]["legal"] = c.get("status") or "pass"
+                e["legalNote"] = c.get("note") or ""
+                set_pass += 1
+            elif c.get("examined", 0) == 0:
                 e["fronts"]["legal"] = "pass"
-                e["legalNote"] = ("Checked against the FDA enforcement database on "
-                                  f"{c['checked']}. No recall on record, and no firm "
-                                  "with a similar name either.")
+                # A cache entry may carry its own note: entries written by the
+                # CPSC web check name the source they actually consulted, and
+                # the FDA wording must not claim credit for those.
+                e["legalNote"] = c.get("note") or (
+                    "Checked against the FDA enforcement database on "
+                    f"{c['checked']}. No recall on record, and no firm "
+                    "with a similar name either.")
                 set_pass += 1
             else:
                 needs_review.append((b["brand"], c.get("total", 0), c.get("examined", 0),

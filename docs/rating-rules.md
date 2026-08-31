@@ -477,12 +477,21 @@ otherwise                                            -> unrated
 Then the completeness gate, `tools/enforce-scorecard.py`, which runs last and
 closes every route at once:
 
-> **A recommendation ships only when all four checks carry a finding.**
-> Whatever awarded the good, it is held back while any front is `unassessed`,
-> the missing checks are named on the card, and the verdict returns on its own
-> the moment the research lands. The gate also enforces the ceiling above on
-> every row, whatever the row claims about itself, and a lowered verdict always
-> states which front lowered it.
+> **A recommendation ships only when formula, packaging and the legal check
+> carry a finding.** Whatever awarded the good, it is held back while any of
+> those three is `unassessed`, the missing checks are named on the card, and
+> the verdict returns on its own the moment the research lands. The gate also
+> enforces the ceiling above on every row, whatever the row claims about
+> itself, and a lowered verdict always states which front lowered it.
+
+Testing is deliberately outside the gate, per rule 5.6: a product with no
+third party test available is not held for one, because almost nothing in
+these categories is independently tested and the maker does not control
+whether a lab has looked. The gap is disclosed on the card ("not yet
+assessed: independent tests") rather than blocking the verdict. A testing
+FINDING binds in full, in both directions: a fail or caution caps the verdict
+like any other front, and a clean result at a stated limit of detection is
+the strongest single credential a recommendation can carry.
 
 Front vocabulary, because two of these look alike and are not:
 
@@ -498,8 +507,9 @@ is done and what is still open.
 
 **The guard, restated:**
 
-- `good` requires **direct evidence at product scope**, on **all four checks**.
-  Inheritance can never produce a recommendation.
+- `good` requires **direct evidence at product scope**, with formula,
+  packaging and legal each carrying a finding. Inheritance can never produce
+  a recommendation.
 - `careful` and `skip` **may** rest on inherited evidence, provided the copy
   names the scope it was inherited from.
 - A classifier reading of a note may flag a published good for review. It may
@@ -562,10 +572,10 @@ than a re-research.
 
 ## 9. What this means for the current data
 
-The completeness gate is live, and the honest consequence is a backlog: most
-rows the site rates good sit at "checks in progress" in the extension, mostly
-waiting on the legal and testing fronts. That is the standard working, not the
-standard failing. Two implications:
+The completeness gate is live, and the honest consequence is a backlog: rows
+the site rates good sit at "checks in progress" in the extension until their
+formula, packaging and legal checks carry findings. That is the standard
+working, not the standard failing. Two implications:
 
 1. **Filling a front releases verdicts by itself.** The gate restores a held
    verdict the moment the missing checks land, so a batch legal sweep or a

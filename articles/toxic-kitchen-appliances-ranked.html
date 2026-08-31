@@ -173,6 +173,17 @@
     .tier-a { background: #a7f3d0; color: #065f46; }
   </style>
   <style>@media(max-width:640px){.nav-hide-mobile{display:none!important}}</style>
+  <style>
+    .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0 2rem; }
+    .product-card { background: var(--surface); border-radius: var(--radius); text-decoration: none; color: inherit; box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; overflow: hidden; }
+    .product-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+    .product-card img { width: 100%; height: 180px; object-fit: contain; background: #fff; padding: 0.75rem; }
+    .product-card-body { padding: 1rem; display: flex; flex-direction: column; flex: 1; gap: 0.4rem; }
+    .product-card-tier { font-size: 0.7rem; font-weight: 800; color: var(--accent-dark); letter-spacing: 0.06em; }
+    .product-card-name { font-size: 1rem; font-weight: 700; line-height: 1.3; margin: 0; }
+    .product-card-best { font-size: 0.85rem; color: var(--text-muted); line-height: 1.4; flex: 1; margin: 0; }
+    .product-card-cta { font-size: 0.85rem; color: var(--accent-dark); font-weight: 600; margin-top: 0.4rem; }
+  </style>
 </head>
 <body>
   <nav class="nav">
@@ -211,7 +222,7 @@
         <li><strong>Air fryers are the worst offenders.</strong> Almost every popular model uses a PTFE (Teflon) coated basket that sheds PFAS at 400°F.</li>
         <li><strong>Cheapest fix:</strong> a <a href="https://www.amazon.com/s?k=stainless+steel+air+fryer+basket+oven+insert&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">stainless steel air fryer basket</a> in your regular oven ($15 to $30).</li>
         <li><strong>Best clean blender:</strong> <a href="https://www.amazon.com/Vitamix-Stainless-Steel-Container-48/dp/B089ZMPRLD?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Vitamix Stainless Steel Container</a> eliminates the heated plastic jar most blenders use.</li>
-        <li><strong>Coffee makers are sneaky.</strong> Hot water flows through plastic tubing in nearly every drip machine. A <a href="https://www.amazon.com/dp/B000P4D5HG?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Hario V60</a> plus a stainless kettle keeps zero plastic in the water path.</li>
+        <li><strong>Coffee makers are sneaky.</strong> Hot water flows through plastic tubing in nearly every drip machine. A <a href="https://www.amazon.com/dp/B0BWH3K9Z9?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Hario V60</a> plus a stainless kettle keeps zero plastic in the water path.</li>
         <li><strong>"BPA free" is not the same as plastic free.</strong> BPS, BPF, and phthalates replace BPA and have similar endocrine effects.</li>
       </ul>
     </div>
@@ -559,7 +570,7 @@
     </div>
 
     <div class="material-card">
-      <h3><a href="https://www.amazon.com/dp/B0GTR2L9FX?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Magnifique Glass Air Fryer Combo</a></h3>
+      <h3>Magnifique Glass Air Fryer Combo</h3>
       <p>The second air fryer that clears our bar. The Magnifique cooks in a borosilicate glass pot with a glass lid and a stainless steel crisper disk, so nothing coated ever touches your food. It doubles as a 12 in 1 multi cooker, which makes it the more versatile of the two glass picks. The trade offs are the ones you would expect from a glass design: the bowl is heavier than a coated basket, it is hand wash only, and it takes up more counter space than a compact basket fryer.</p>
       <p><strong>Price:</strong> $199 to $249</p>
       <div class="pros-cons">
@@ -626,7 +637,7 @@
     <p>The internal plumbing of most pod machines adds another layer of concern. Water sits in a plastic reservoir (sometimes for hours), travels through plastic tubes, and passes through a plastic brew chamber. Over time, biofilm and mineral deposits accumulate inside these tubes, creating additional surfaces for chemical interaction. For a detailed look at plastic free coffee brewing, see our <a href="how-to-enjoy-coffee-without-plastic.html">guide to enjoying coffee without plastic</a>.</p>
 
     <div class="material-card">
-      <h3><a href="https://www.amazon.com/dp/B000P4D5HG?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Hario V60 Drip Coffee Pour Over</a></h3>
+      <h3><a href="https://www.amazon.com/dp/B0BWH3K9Z9?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Hario V60 Drip Coffee Pour Over</a></h3>
       <p>A ceramic pour over dripper with zero plastic in the food path. Water passes through a ceramic cone and paper filter directly into your mug or carafe. No electricity, no tubing, no reservoir. The only things that touch your coffee are ceramic, paper, and glass or stainless steel (whatever you brew into).</p>
       <p><strong>Price:</strong> $20 to $30</p>
       <div class="pros-cons">
@@ -658,13 +669,13 @@
         <li><strong><a href="https://www.amazon.com/s?k=Ratio+Six+coffee+maker&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Ratio Six or Ratio Eight</a></strong> ($300 to $500). Glass carafe, stainless steel water path with no plastic tubing in the heated water route, borosilicate brew basket. This is the gold standard for low tox drip. Expensive but genuinely clean.</li>
       </ul>
       <p><strong>What to skip entirely:</strong> Keurig (plastic everywhere plus plastic pods), Mr. Coffee, Black+Decker, Hamilton Beach, most Cuisinart drip machines. Standard pod machines are the worst case scenario for plastic contact.</p>
-      <p>If zero hot plastic contact in drip coffee matters to you, the only honest answer is a manual setup: a <a href="https://www.amazon.com/s?k=Fellow+Stagg+EKG+kettle&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">stainless steel electric kettle</a> paired with a <a href="https://www.amazon.com/dp/B000P4D5HG?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Hario V60</a>. Total cost: $60 to $220 depending on the kettle. Total plastic in the coffee path: zero.</p>
+      <p>If zero hot plastic contact in drip coffee matters to you, the only honest answer is a manual setup: a <a href="https://www.amazon.com/s?k=Fellow+Stagg+EKG+kettle&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">stainless steel electric kettle</a> paired with a <a href="https://www.amazon.com/dp/B0BWH3K9Z9?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Hario V60</a>. Total cost: $60 to $220 depending on the kettle. Total plastic in the coffee path: zero.</p>
       <p><strong>What about espresso machines?</strong> Espresso machines actually tend to have less plastic in the water path than drip machines because the pressures and temperatures require metal components. The cleanest prosumer options (Profitec, ECM, Rocket, $1,500 to $3,000+) use stainless steel or brass water paths with copper boilers. Most consumer machines under $300 (Breville Bambino, DeLonghi automatics, Nespresso) use plastic water tanks and internal tubing. The cleanest espresso option overall is a manual lever machine like the <a href="https://www.amazon.com/s?k=Flair+58+espresso+maker&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Flair 58</a> ($475 to $550), which has zero plastic in the water path.</p>
       <p><strong>Honest caveats for all espresso machines:</strong> every machine has a silicone or EPDM gasket in the group head that touches hot water. There is no way around this. Descaling also matters: mineral buildup creates micro pockets where degradation accelerates. And brass group heads contain trace lead (under 0.25% in modern alloys), though the amount that dissolves during a shot is well below regulatory thresholds. Flush the first shot of the day if this concerns you.</p>
       <p><strong>How to check your espresso machine:</strong> remove the water tank. If it is plastic, the machine has plastic in the water path. Check the spec sheet for "boiler material." If it says stainless steel and the water path is metal, you are in good shape. If the spec sheet does not mention boiler material, assume plastic.</p>
       <p><strong>The complete coffee and espresso hierarchy, cleanest to worst:</strong></p>
       <ol>
-        <li>Manual pour over (<a href="https://www.amazon.com/dp/B000P4D5HG?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Hario V60</a>) + gooseneck kettle</li>
+        <li>Manual pour over (<a href="https://www.amazon.com/dp/B0BWH3K9Z9?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Hario V60</a>) + gooseneck kettle</li>
         <li>Manual lever espresso (<a href="https://www.amazon.com/s?k=Flair+58+espresso+maker&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Flair 58</a>)</li>
         <li>Cleanest electric drip (Ratio Six or Eight)</li>
         <li>Prosumer espresso (Profitec, ECM, Rocket)</li>
@@ -1363,7 +1374,7 @@
         <div class="priority-badge priority-critical">PRIORITY 1</div>
         <h3 class="priority-tier-title">Your Daily Coffee Maker</h3>
       </div>
-      <p>If you drink coffee every day, your coffee maker is your highest frequency plastic exposure point: 365 contact events per year. A <a href="https://www.amazon.com/dp/B000P4D5HG?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Hario V60 pour over</a> costs $20 to $30 and eliminates plastic from the coffee path entirely. This is the highest impact, lowest cost swap on the list.</p>
+      <p>If you drink coffee every day, your coffee maker is your highest frequency plastic exposure point: 365 contact events per year. A <a href="https://www.amazon.com/dp/B0BWH3K9Z9?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Hario V60 pour over</a> costs $20 to $30 and eliminates plastic from the coffee path entirely. This is the highest impact, lowest cost swap on the list.</p>
     </div>
 
     <div class="priority-tier">
@@ -1371,7 +1382,7 @@
         <div class="priority-badge priority-critical">PRIORITY 2</div>
         <h3 class="priority-tier-title">Your Nonstick Air Fryer (if You Use One Regularly)</h3>
       </div>
-      <p>If you air fry three or more times per week, the combination of extreme heat and degrading nonstick coating makes this your highest intensity exposure source. The cleanest options are a <a href="https://www.amazon.com/s?k=stainless+steel+air+fryer+basket+oven+insert&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">stainless steel basket insert</a> in your existing oven, the <a href="https://www.amazon.com/dp/B0D2Y7SG78?ref=t_ac_view_request_product_image&campaignId=amzn1.campaign.1FZV8K5O2C7FT&linkCode=tr1&tag=littleplayapp-20&linkId=amzn1.campaign.1FZV8K5O2C7FT_1787417724394" target="_blank" rel="noopener sponsored">Fritaire glass air fryer</a>, or the <a href="https://www.amazon.com/dp/B0GTR2L9FX?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Magnifique glass air fryer</a>, both of which cook on a verified coating free surface (see <a href="#air-fryers">F1</a> for the full breakdown). If you air fry rarely, this can wait.</p>
+      <p>If you air fry three or more times per week, the combination of extreme heat and degrading nonstick coating makes this your highest intensity exposure source. The cleanest options are a <a href="https://www.amazon.com/s?k=stainless+steel+air+fryer+basket+oven+insert&tag=plasticdetox-20" target="_blank" rel="noopener sponsored">stainless steel basket insert</a> in your existing oven, the <a href="https://www.amazon.com/dp/B0D2Y7SG78?ref=t_ac_view_request_product_image&campaignId=amzn1.campaign.1FZV8K5O2C7FT&linkCode=tr1&tag=littleplayapp-20&linkId=amzn1.campaign.1FZV8K5O2C7FT_1787417724394" target="_blank" rel="noopener sponsored">Fritaire glass air fryer</a>, or the Magnifique glass air fryer, both of which cook on a verified coating free surface (see <a href="#air-fryers">F1</a> for the full breakdown). If you air fry rarely, this can wait.</p>
     </div>
 
     <div class="priority-tier">
@@ -1422,6 +1433,64 @@
 
     <p>If you are setting up a kitchen from scratch or doing a full overhaul, here is a complete set organized by budget.</p>
 
+    <div class="product-grid">
+      <a href="https://www.amazon.com/dp/B0D2Y7SG78?ref=t_ac_view_request_product_image&campaignId=amzn1.campaign.1FZV8K5O2C7FT&linkCode=tr1&tag=littleplayapp-20&linkId=amzn1.campaign.1FZV8K5O2C7FT_1787417724394" target="_blank" rel="noopener sponsored" class="product-card">
+        <img src="https://m.media-amazon.com/images/I/61E4Okc5Q7L._AC_SL400_.jpg" alt="Fritaire glass air fryer" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">BIGGEST SWAP · $$$</span>
+          <h3 class="product-card-name">Fritaire Pro Glass Air Fryer</h3>
+          <p class="product-card-best">Borosilicate glass bowl with a stainless steel heating element. No PTFE basket, which is what most air fryers use and what sheds PFAS above 400F. 9 functions, self cleaning, dishwasher safe bowl.</p>
+          <span class="product-card-cta">View &rarr;</span>
+        </div>
+      </a>
+      <a href="https://www.amazon.com/dp/B0BWH3K9Z9?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
+        <img src="https://m.media-amazon.com/images/I/31wjXVbrNaL._AC_SL400_.jpg" alt="Hario V60 ceramic coffee dripper" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">COFFEE · $</span>
+          <h3 class="product-card-name">Hario V60 Ceramic Dripper</h3>
+          <p class="product-card-best">Ceramic cone, size 02, brews 1 to 4 cups. No plastic anywhere in the water path, unlike drip machines where hot water runs through polymer tubing. Needs paper filters and a kettle.</p>
+          <span class="product-card-cta">View &rarr;</span>
+        </div>
+      </a>
+      <a href="https://www.amazon.com/dp/B07NNS56P1?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
+        <img src="https://m.media-amazon.com/images/I/31lSMp9oZSL._AC_SL400_.jpg" alt="Wildone stainless steel baking sheet set" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">BAKING · $</span>
+          <h3 class="product-card-name">Wildone Stainless Baking Sheets</h3>
+          <p class="product-card-best">Set of two 18/0 stainless steel sheets with rolled edges. No nonstick coating to scratch or off gas. Oven safe to 450F and dishwasher safe. Use parchment rather than a coating.</p>
+          <span class="product-card-cta">View &rarr;</span>
+        </div>
+      </a>
+      <a href="https://www.amazon.com/dp/B088K2P8Z7?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
+        <img src="https://m.media-amazon.com/images/I/519Lk5wJ9oS._AC_SL400_.jpg" alt="Stainless steel slow cooker replacement insert" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">SLOW COOKER · $</span>
+          <h3 class="product-card-name">Stainless Slow Cooker Insert</h3>
+          <p class="product-card-best">6 quart stainless steel replacement pot for slow cookers with a nonstick or coated crock. Cheaper than replacing the whole appliance and removes the coated surface from the food path.</p>
+          <span class="product-card-cta">View &rarr;</span>
+        </div>
+      </a>
+      <a href="https://www.amazon.com/dp/B07T1CH2HH?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
+        <img src="https://m.media-amazon.com/images/I/31uIZeBbrUL._AC_SL400_.jpg" alt="Cosori gooseneck electric kettle" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">KETTLE · $$</span>
+          <h3 class="product-card-name">Cosori Gooseneck Electric Kettle</h3>
+          <p class="product-card-best">0.8L stainless steel interior with temperature control from 104F to 212F. Most electric kettles have a plastic water window or plastic lid components sitting in the steam path.</p>
+          <span class="product-card-cta">View &rarr;</span>
+        </div>
+      </a>
+      <a href="https://www.amazon.com/dp/B089ZMPRLD?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
+        <img src="https://m.media-amazon.com/images/I/41ts1M88wQL._AC_SL400_.jpg" alt="Vitamix stainless steel blender container" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">BLENDER · $$$</span>
+          <h3 class="product-card-name">Vitamix Stainless Steel Container</h3>
+          <p class="product-card-best">48oz stainless steel container that fits standard Vitamix bases. Replaces the copolyester jar, which is the part that heats under friction during long blends. SELF DETECT compatible.</p>
+          <span class="product-card-cta">View &rarr;</span>
+        </div>
+      </a>
+    </div>
+
+
     <h3>Budget Tier (Under $400 Total)</h3>
 
     <table class="comparison-table">
@@ -1435,7 +1504,7 @@
       <tbody>
         <tr>
           <td>Coffee</td>
-          <td><a href="https://www.amazon.com/dp/B000P4D5HG?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Hario V60 ceramic pour over</a></td>
+          <td><a href="https://www.amazon.com/dp/B0BWH3K9Z9?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Hario V60 ceramic pour over</a></td>
           <td>$25</td>
         </tr>
         <tr>
@@ -1494,7 +1563,7 @@
       <tbody>
         <tr>
           <td>Coffee</td>
-          <td><a href="https://www.amazon.com/dp/B000P4D5HG?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Hario V60 ceramic pour over</a> (kettle does double duty)</td>
+          <td><a href="https://www.amazon.com/dp/B0BWH3K9Z9?tag=plasticdetox-20" target="_blank" rel="noopener sponsored">Hario V60 ceramic pour over</a> (kettle does double duty)</td>
           <td>$25</td>
         </tr>
         <tr>

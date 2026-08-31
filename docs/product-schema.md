@@ -188,8 +188,9 @@ apply-product-rules   stamp ext, collapse duplicate rows, refuse to write if two
 brand-rollup          products up into the brand stance
 extract-testing       structured testing evidence onto the fronts
 check-recalls         legal front against the recall databases
-enforce-scorecard     the completeness gate: a good ships only with all four
-                      checks carrying a finding, held back and named otherwise
+enforce-scorecard     the completeness gate: a good ships only with formula,
+                      packaging and legal carrying findings; a missing test is
+                      disclosed, never blocking (rule 5.6)
 audit-alternatives    fail the build if a "Better:" points at a flagged brand
 validate-data --stage post  every invariant the standard promises, on the file
                             about to ship

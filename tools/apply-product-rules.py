@@ -122,6 +122,27 @@ def main():
                             " " + _a.clean_note(p.get("note")).lower() + " ")):
                     fr["packaging"] = "pass"
                     filled_54 += 1
+                # The same principle for research that lands in the note after
+                # the row was authored: a blank front is not a judgement, so
+                # the deterministic reads, the packaging matrix of rule 3 and
+                # the material read of rule 2, may fill it. Only those two:
+                # they act on stated materials and containers, never on the
+                # prose classifier's guesswork, and they never touch a front
+                # the author actually set.
+                cleaned = _a.clean_note(p.get("note"))
+                ctx = f"{p.get('name') or ''} {b.get('category') or ''}"
+                if fr.get("packaging") in (None, "unassessed", "unknown"):
+                    pk, pk_why = _a.packaging_severity(cleaned, ctx)
+                    if pk:
+                        fr["packaging"] = pk
+                        p["ext"].setdefault("frontNotes", {})["packaging"] = \
+                            pk_why.capitalize() + "."
+                if fr.get("formula") in (None, "unassessed", "unknown"):
+                    read = _a.formula_from_materials(cleaned + " " + ctx)
+                    if read == "pass":
+                        fr["formula"] = "pass"
+                        p["ext"].setdefault("frontNotes", {})["formula"] = \
+                            "Materials named in the listing."
                 p["ext"].setdefault("dated", TODAY)
                 dist[p["ext"].get("verdict")] += 1
                 hand_kept += 1

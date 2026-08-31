@@ -178,6 +178,17 @@
     }
   </style>
   <style>@media(max-width:640px){.nav-hide-mobile{display:none!important}}</style>
+  <style>
+    .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0 2rem; }
+    .product-card { background: var(--surface); border-radius: var(--radius); text-decoration: none; color: inherit; box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; overflow: hidden; }
+    .product-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+    .product-card img { width: 100%; height: 180px; object-fit: contain; background: #fff; padding: 0.75rem; }
+    .product-card-body { padding: 1rem; display: flex; flex-direction: column; flex: 1; gap: 0.4rem; }
+    .product-card-tier { font-size: 0.7rem; font-weight: 800; color: var(--accent-dark); letter-spacing: 0.06em; }
+    .product-card-name { font-size: 1rem; font-weight: 700; line-height: 1.3; margin: 0; }
+    .product-card-best { font-size: 0.85rem; color: var(--text-muted); line-height: 1.4; flex: 1; margin: 0; }
+    .product-card-cta { font-size: 0.85rem; color: var(--accent-dark); font-weight: 600; margin-top: 0.4rem; }
+  </style>
 </head>
 <body>
   <header>
@@ -358,7 +369,59 @@
     </div>
 
     <!-- CERTIFICATION CHEAT SHEET -->
-    <h2 id="certifications">Certification Cheat Sheet</h2>
+        <h2>The Picks at a Glance</h2>
+
+    <p>Every recommendation in this guide, with the reasoning underneath each one in its own section below.</p>
+
+    <div class="product-grid">
+      <a href="https://www.amazon.com/dp/B07HM7KVKW?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
+        <img src="https://m.media-amazon.com/images/I/71Lk24fqomL._AC_SL400_.jpg" alt="La Petite Creme organic diaper balm" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">DIAPER BALM · $</span>
+          <h3 class="product-card-name">La Petite Creme Organic Balm</h3>
+          <p class="product-card-best">The only diaper product to test non detect for lead, cadmium, arsenic and mercury in Lead Safe Mama's 2025 series. Zinc free liniment, USDA Organic and EWG Verified. Not for active rash.</p>
+          <span class="product-card-cta">View &rarr;</span>
+        </div>
+      </a>
+      <a href="https://www.amazon.com/dp/B0DMWQ1QQT?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
+        <img src="https://m.media-amazon.com/images/I/71S7mpBkTFL._AC_SL400_.jpg" alt="Coterie baby wipes" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">WIPES, BEST · $$$</span>
+          <h3 class="product-card-name">Coterie The Wipe</h3>
+          <p class="product-card-best">EWG Verified formula of six ingredients on a VEOCEL lyocell and viscose cloth with no plastic fiber. No PFAS detected in Consumer Reports 2026 testing. Highest cost per wipe here.</p>
+          <span class="product-card-cta">View &rarr;</span>
+        </div>
+      </a>
+      <a href="https://www.amazon.com/dp/B01LOPQYHW?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
+        <img src="https://m.media-amazon.com/images/I/71sZLsACSiL._AC_SL400_.jpg" alt="Caboo tree free baby wipes" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">WIPES, VALUE · $</span>
+          <h3 class="product-card-name">Caboo Tree Free Wipes</h3>
+          <p class="product-card-best">MADE SAFE certified on a bamboo viscose cloth with no plastic fiber. Unscented, 99.7 percent naturally derived. No PFAS detected in Consumer Reports 2026 testing. Lowest cost per wipe.</p>
+          <span class="product-card-cta">View &rarr;</span>
+        </div>
+      </a>
+      <a href="https://www.amazon.com/dp/B0C6SVTQ3Q?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
+        <img src="https://m.media-amazon.com/images/I/71sYJMAjx6L._AC_SL400_.jpg" alt="Ahimsa stainless steel kids plate and bowl set" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">FEEDING · $$</span>
+          <h3 class="product-card-name">Ahimsa Stainless Plate Set</h3>
+          <p class="product-card-best">18/8 stainless steel divided plate and bowl, no plastic, no melamine and no coating. Dishwasher safe and will not scratch into the food the way coated toddler plates do.</p>
+          <span class="product-card-cta">View &rarr;</span>
+        </div>
+      </a>
+      <a href="https://www.amazon.com/dp/B07FTPBBK9?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
+        <img src="https://m.media-amazon.com/images/I/41I83SSsm+L._AC_SL400_.jpg" alt="Eco by Naty plant based diapers" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">DIAPERS · $$</span>
+          <h3 class="product-card-name">Eco by Naty Diapers</h3>
+          <p class="product-card-best">Plant based topsheet with a totally chlorine free fluff core, no added fragrance or lotion. One of the few mainstream disposables with an ingredient list you can actually read.</p>
+          <span class="product-card-cta">View &rarr;</span>
+        </div>
+      </a>
+    </div>
+
+<h2 id="certifications">Certification Cheat Sheet</h2>
 
     <p>Not all certifications are created equal. Some are rigorous third party standards with ongoing testing. Others are industry self certifications that mean very little. Here are the ones worth looking for on baby products:</p>
 

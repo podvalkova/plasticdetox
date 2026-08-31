@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-A recommendation needs all four checks. One gate, at the end, for every path.
+A recommendation needs its checks done. One gate, at the end, for every path.
 
 Anna asked for this repeatedly and it kept not happening. The reason was not
 disagreement, it was structure: five different routes could award a good, and
@@ -14,8 +14,12 @@ front. Position matters: run inside apply-product-rules and the legal front is
 always empty, because check-recalls has not run yet, which would have held back
 every recommendation on the site for a reason that was about ordering.
 
-Whatever awarded the good, it stays a good only if all four fronts carry a
-finding. Otherwise it is held back, and the reason names the checks still to do.
+Whatever awarded the good, it stays a good only if formula, packaging and the
+legal check carry a finding. Otherwise it is held back, and the reason names
+the checks still to do. Testing is the exception, per rule 5.6 and by Anna's
+call: a product with no third party test available is not held for it, the
+gap is disclosed on the card instead. A testing finding, good or bad, still
+counts in full.
 
 Two things this has to get right that a first pass got wrong.
 
@@ -62,6 +66,14 @@ FRONTS = ("formula", "packaging", "legal", "testing")
 # recommendation. Use it where evidence is genuinely not expected, never on an
 # ingestible, where silence is itself informative.
 BLANK = (None, "unassessed", "unknown", "")
+# The three checks that must carry a finding before a recommendation ships.
+# Testing is deliberately not among them: rule 5.6 says an absent third party
+# test is a gap to disclose, never a mark against a product that is otherwise
+# sound, and almost nothing in these categories is independently tested. So a
+# missing test never blocks; the card states "not yet assessed: independent
+# tests" instead. A testing FINDING still binds in full: a fail or caution on
+# the front caps the verdict exactly like any other front.
+BLOCKING = ("formula", "packaging", "legal")
 RANK = {"skip": 0, "careful": 1, "good": 3}
 
 
@@ -82,7 +94,7 @@ def main():
             if not e:
                 continue
             f = e.get("fronts") or {}
-            blank = [k for k in FRONTS if f.get(k) in BLANK]
+            blank = [k for k in BLOCKING if f.get(k) in BLANK]
 
             # Give a held back row its verdict back once the checks arrive.
             if e.get("verdict") == "unrated" and e.get("heldFrom") and not blank:
@@ -137,7 +149,7 @@ def main():
             e["heldFrom"] = "good"
             e["restoreWhy"] = e.get("why", "")
             e["verdict"] = "unrated"
-            e["why"] = ("a recommendation needs all four checks; still to do: "
+            e["why"] = ("a recommendation needs its checks done; still to do: "
                         + ", ".join(blank))
             e["heldBack"] = blank
             gated += 1
