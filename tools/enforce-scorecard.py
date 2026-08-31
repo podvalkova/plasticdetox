@@ -104,6 +104,14 @@ def main():
                     e["why"] = e.get("restoreWhy") or ""
                 e.pop("restoreWhy", None)
                 restored += 1
+            # A still held row's outstanding list must track the scorecard:
+            # research can fill one check while others stay open, and the card
+            # names exactly what is left, not what was left when it was held.
+            elif e.get("verdict") == "unrated" and e.get("heldFrom") and blank:
+                if e.get("heldBack") != blank:
+                    e["heldBack"] = blank
+                    e["why"] = ("a recommendation needs its checks done; "
+                                "still to do: " + ", ".join(blank))
 
             # Section 6, as a ceiling. This only ever lowers a verdict, and it
             # lets go again when the front that caused it does. Without the

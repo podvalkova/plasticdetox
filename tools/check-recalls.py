@@ -129,8 +129,9 @@ def main():
     CACHE.parent.mkdir(exist_ok=True)
     CACHE.write_text(json.dumps(cache, indent=1, ensure_ascii=False) + "\n")
 
-    clean = sum(1 for v in cache.values() if v["total"] == 0)
-    hits = sum(1 for v in cache.values() if v["total"])
+    # Web-check and adjudicated entries carry no FDA match counts.
+    clean = sum(1 for v in cache.values() if v.get("total", 0) == 0)
+    hits = sum(1 for v in cache.values() if v.get("total"))
     print(f"\ncached: {len(cache)} brands   clean: {clean}   with recalls: {hits}")
 
     if not args.write:
