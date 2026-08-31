@@ -164,9 +164,16 @@
       font-size: 0.88rem; text-decoration: none; white-space: nowrap;
     }
     .ext-cta-btn:hover { background: #6d28d9; }
-    @media (max-width: 560px) {
+    .ext-cta-shot {
+      flex: 0 0 300px; min-width: 0; border-radius: 10px; overflow: hidden;
+      border: 1px solid #ddd6fe; box-shadow: 0 6px 18px rgba(124,58,237,0.12);
+      line-height: 0;
+    }
+    .ext-cta-shot img { width: 100%; height: auto; display: block; }
+    @media (max-width: 760px) {
       .ext-cta { flex-wrap: wrap; }
       .ext-cta-btn { width: 100%; text-align: center; }
+      .ext-cta-shot { flex: 1 1 100%; order: -1; }
     }
     .card-top { padding: 1.5rem 1.6rem 1.3rem; border-top: 5px solid var(--neutral); }
     .card-top.good { border-top-color: var(--good); }
@@ -304,12 +311,13 @@
     <!-- Extension CTA. Shown only to desktop Chromium, because nobody else can
          install it and an offer you cannot accept is just noise. -->
     <aside class="ext-cta" id="extCta" hidden>
-      <div class="ext-cta-icon" aria-hidden="true">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 11 3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+      <div class="ext-cta-shot" aria-hidden="true">
+        <img src="images/extension-search.jpg" width="1100" height="688" loading="lazy"
+             alt="Amazon search results with Skip, Careful and Good choice verdict chips on each listing">
       </div>
       <div class="ext-cta-body">
-        <b>Get these verdicts while you shop on Amazon</b>
-        <span>Our free Chrome extension shows the verdict on the listing itself, before you add to basket. No affiliate links.</span>
+        <b>See it before you click</b>
+        <span>Our free Chrome extension puts the verdict on every Amazon search result and listing, before you add to basket. No affiliate links.</span>
       </div>
       <a class="ext-cta-btn" id="extCtaBtn"
          href="https://chromewebstore.google.com/detail/lplncjbnohkgchjkhgdiljpjfgdmgelg"
