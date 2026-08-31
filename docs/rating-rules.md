@@ -74,12 +74,21 @@ Non-disclosure is a legitimate mark against a product, and it costs nothing to
 determine. Most of the 380 brands currently sitting at `formula: unknown` are
 unworked, not unknowable.
 
-**A single stated ingredient is a complete list.** "Sole ingredient: creatine
-monohydrate" is a full disclosure by definition, and one named ingredient
-either trips the hazard scan or it does not, so the tooling awards this pass
-on its own. It is the only ingredient-list judgement the classifier is allowed
-to make: a multi-ingredient list stays a human call, because a vocabulary
-cannot vouch for a substance it has no word for.
+**The formula verdict is mechanical once the full list is on the table.**
+That is what this section has always said, and the tooling now applies it the
+way the sunscreen and deodorant research did by hand: scan the list against
+the hazard vocabulary (which names the individual chemical UV filters,
+parabens, formaldehyde releasers and aluminum salts a label would use), a
+named hazard in the exposure path fails the front, a disclosure umbrella like
+fragrance caps it at caution, and a list carrying neither is a pass.
+
+Two shapes of text qualify for the pass. A stated single ingredient ("sole
+ingredient: creatine monohydrate"), which is a complete list by definition.
+And a list explicitly recorded as the list, behind "Ingredients:" or "full
+ingredient list". What never qualifies is a prose summary ("an aloe base with
+oils and extracts"): it may omit exactly the ingredient that matters, so it
+can warn but not clear. Research runs should therefore copy the complete
+label list verbatim behind an "Ingredients:" marker whenever they can get it.
 
 ---
 

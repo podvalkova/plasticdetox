@@ -221,6 +221,21 @@ HAZARD = [
     "melamine", "viscose", "rayon", "neoprene", "phthalate", "paraben",
     "formaldehyde", "triclosan", "flame retardant",
     "bpa", "bps", "bpf", "lead", "cadmium", "azo", "chemical filter",
+    # The substances the published research actually judged on, by name, so an
+    # ingredient list can be scanned the way a person read it. Chemical UV
+    # filters (the sunscreen standard), the individual parabens and
+    # formaldehyde releasers a label would use, the aluminum salts that make
+    # an antiperspirant (never bare "aluminum", which also names an inert
+    # container), and talc.
+    "oxybenzone", "avobenzone", "octinoxate", "octisalate", "octocrylene",
+    "homosalate", "chemical sunscreen",
+    "methylparaben", "propylparaben", "butylparaben", "ethylparaben",
+    "isobutylparaben",
+    "dmdm hydantoin", "quaternium-15", "imidazolidinyl urea",
+    "diazolidinyl urea", "bronopol",
+    "aluminum chlorohydrate", "aluminium chlorohydrate",
+    "aluminum zirconium", "aluminium zirconium",
+    "talc", "benzene",
 ]
 
 # A disclosure failure is a legal umbrella that hides composition. It names no
@@ -415,11 +430,16 @@ def packaging_severity(note, context=""):
 
 # A complete list of one. "Single ingredient: creatine monohydrate" is a full
 # disclosure by definition, and one named ingredient either trips the hazard
-# scan or it does not, so this is the one ingredient-list judgement the engine
-# can make without an opinion on chemistry. A twenty item INCI list stays a
-# human call, because the vocabulary cannot vouch for what it has no word for.
+# scan or it does not.
 SINGLE_INGREDIENT = re.compile(
     r"\b(?:single|sole|only|one)[\s-]+(?:active[\s-]+)?ingredient\b", re.I)
+# A list recorded AS the list. Section 2's formula verdict is mechanical once
+# the full list is on the table: nothing on the hazard list is a pass, a
+# disclosure umbrella caps at caution, a named hazard fails. What the engine
+# must not do is treat a prose summary ("an aloe base with oils and extracts")
+# as complete, so the pass fires only where the text claims to BE the list.
+FULL_LIST = re.compile(
+    r"\b(?:full|complete)\s+ingredient\s+list\b|\b(?:ingredients|inci)\s*:", re.I)
 
 
 def formula_from_materials(note):
@@ -446,6 +466,8 @@ def formula_from_materials(note):
         return "pass", "Materials named in the listing."
     if SINGLE_INGREDIENT.search(low):
         return "pass", "A single disclosed ingredient, with nothing on the hazard list."
+    if FULL_LIST.search(low):
+        return "pass", "Full ingredient list published, with nothing on the hazard list."
     return None, None
 
 

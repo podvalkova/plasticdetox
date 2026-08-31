@@ -236,7 +236,11 @@ python3 tools/build-extension.py --zip       # rebuild and package
 A model vetting a product on a customer's request follows this section exactly:
 it writes one brand entry and one product row in the shapes above, scoped to
 what it actually researched, with the evidence in the note (lab, year, limit of
-detection). Three rules keep that safe:
+detection). Formula evidence goes into the row's `research` field as the
+complete label list verbatim, behind an "Ingredients:" marker; the rules
+engine then judges it under section 2 of the standard. A prose summary of a
+formula can warn but never clear, so do not paraphrase the list. Three rules
+keep all of this safe:
 
 1. **The row must clear `validate-data --stage pre` before anything else runs.**
    A malformed field is rejected, not propagated.

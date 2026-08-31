@@ -66039,10 +66039,10 @@
         "origin": "store",
         "ext": {
           "verdict": "unrated",
-          "dated": "2026-08-28",
-          "why": "no front is directly evidenced by the note",
+          "dated": "2026-08-31",
+          "why": "a recommendation needs its checks done; still to do: packaging",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "pass",
             "packaging": "unassessed",
             "legal": "pass",
             "testing": "unassessed"
@@ -66050,9 +66050,16 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": [],
+          "rules": [
+            "2 formula-read-from-materials"
+          ],
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {}
+          "frontNotes": {},
+          "heldFrom": "good",
+          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
+          "heldBack": [
+            "packaging"
+          ]
         },
         "cat": "Electrolytes"
       },
