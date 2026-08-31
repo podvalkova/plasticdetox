@@ -48,6 +48,9 @@ def main():
     ap.add_argument("--zip", action="store_true", help="package into dist/")
     args = ap.parse_args()
 
+    # Shapes first, before any tool can propagate a malformed field. This is
+    # the gate a hand edit or an AI research run has to clear.
+    run("validate-data.py", "--stage", "pre")
     run("backfill-fronts.py", "--write")
     run("link-articles.py", "--write")
     run("mark-scope.py", "--write")
@@ -94,6 +97,13 @@ def main():
     run("audit-store-coverage.py")
     # The standard is the source of truth; the site must agree with it.
     run("audit-site-alignment.py")
+    # And the shipped file has to hold every invariant the standard promises:
+    # every row stamped, no good on inherited evidence, no adverse verdict
+    # without a reason, no two rules answering one listing differently.
+    run("validate-data.py", "--stage", "post")
+    # The public ledger regenerates from the same file, so it can never again
+    # drift 287 rows behind what the extension actually asserts.
+    run("build-verdict-standard.py")
 
     src = ROOT / "brand-data.json"
     dst = EXT / "data" / "brand-data.json"

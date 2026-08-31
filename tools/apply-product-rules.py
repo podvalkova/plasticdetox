@@ -74,6 +74,16 @@ def main():
             first = seen.get(key)
             if first is not None:
                 for field in ("asins", "match", "matchAll", "matchNot"):
+                    # list() over a bare string iterates its characters, which
+                    # is how "tampon" once became ['t','a','m','p','o','n'] and
+                    # a skip about tampons answered for every Organyc listing.
+                    # validate-data.py rejects the shape upstream; this raises
+                    # rather than propagating it if something slips through.
+                    for row in (first, p):
+                        if isinstance(row.get(field), str):
+                            raise SystemExit(
+                                f"{b['brand']} / {row.get('name')}: {field} is a "
+                                f"bare string {row[field]!r}, must be a list")
                     merged = list(first.get(field) or [])
                     for v in (p.get(field) or []):
                         if v not in merged:
@@ -123,14 +133,22 @@ def main():
             if authored:
                 v, why, disclose = p.get("verdict"), "hand authored scorecard", False
             else:
-                v, why, disclose = _a.correct(p.get("verdict"), f, p.get("note"),
+                # The same cleaned text apply_rules read. The raw note carries
+                # caveat lists and contrast clauses that are not claims about
+                # this product, and correct() must not trip on them either.
+                v, why, disclose = _a.correct(p.get("verdict"), f,
+                                              _a.clean_note(p.get("note")),
                                               scope, basis, consumable=consumable,
                                               origin=p.get("origin"))
             prev = (p.get("ext") or {})
             # Track when a verdict last CHANGED, not when the build last ran.
             # A date that moves on every rebuild tells you nothing; one that moves
             # only when the answer moved tells you how stale the answer is.
-            dated = prev.get("dated") if prev.get("verdict") == v else None
+            # A held back row stores "unrated" with heldFrom naming the verdict
+            # the gate is sitting on. Re-awarding that same verdict is not a
+            # change, so the date must survive it; without this, every rebuild
+            # reset the date on all held rows.
+            dated = prev.get("dated") if v in (prev.get("verdict"), prev.get("heldFrom")) else None
 
             p["ext"] = {
                 "verdict": v,
@@ -208,10 +226,16 @@ def main():
     # Two rows under one brand resolving to the same rule is a silent
     # mis-verdict: whichever sorts first answers for both, and a stale row can
     # outrank the corrected one that replaced it. Levoit carried a good row and
-    # a skip row on the identical match, and the good one won.
+    # a skip row on the identical match, and the good one won. The same trap
+    # exists for `match` phrases and for a shared ASIN: Organyc's skip and good
+    # rows both carried the bare phrase "organyc", tied on every tiebreak, and
+    # file order showed the tampons' skip on the liners we rate good. All three
+    # rule kinds are checked, because a listing only ever sees the winner.
     clash = 0
     for b in brands:
         seen = {}
+        phrases = {}
+        by_asin = {}
         for p in (b.get("products") or []):
             for g in (p.get("matchAll") or []):
                 k = tuple(sorted(g))
@@ -222,6 +246,23 @@ def main():
                           f"({p['ext']['verdict']}) both need {sorted(g)}")
                     clash += 1
                 seen[k] = p
+            for ph in (p.get("match") or []):
+                k = " ".join(str(ph).lower().split())
+                other = phrases.get(k)
+                if other is not None and other["ext"]["verdict"] != p["ext"]["verdict"]:
+                    print(f"  !! PHRASE COLLISION under {b['brand']}: {other.get('name')!r} "
+                          f"({other['ext']['verdict']}) vs {p.get('name')!r} "
+                          f"({p['ext']['verdict']}) both fire on {k!r}")
+                    clash += 1
+                phrases[k] = p
+            for a in (p.get("asins") or []):
+                other = by_asin.get(a)
+                if other is not None and other["ext"]["verdict"] != p["ext"]["verdict"]:
+                    print(f"  !! ASIN COLLISION under {b['brand']}: {a} sits on "
+                          f"{other.get('name')!r} ({other['ext']['verdict']}) and "
+                          f"{p.get('name')!r} ({p['ext']['verdict']})")
+                    clash += 1
+                by_asin[a] = p
 
     print(f"stamped ext onto {sum(dist.values())} product rows")
     print(f"  rule collisions with different verdicts: {clash}")

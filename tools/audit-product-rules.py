@@ -39,7 +39,10 @@ import sys
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "brand-data.json"
 FRONTS = ("formula", "packaging", "legal", "testing")
-TODAY = datetime.date(2026, 8, 28)
+# The real date, not a frozen one. Recall decay under rule 5.2 is computed
+# against this; pinning it to the day the tool was written meant a recall
+# could never age past the threshold no matter how many years went by.
+TODAY = datetime.date.today()
 
 # Reuse the classifier rather than growing a second, divergent copy of it.
 _spec = importlib.util.spec_from_file_location(
@@ -165,8 +168,13 @@ INERT = [
     "hardwood", "end grain", "granite", "marble", "soapstone", "slate",
     "tampico", "horsehair", "boar bristle", "mesh", "wire",
     "bamboo", "rattan", "coconut", "loofa", "seagrass", "rubberwood",
-    "titanium", "copper", "brass", "porcelain", "stoneware", "clay", "cork",
+    "titanium", "copper", "brass", "porcelain", "stoneware", "cork",
     "natural rubber", "latex free", "aluminium free", "aluminum free",
+    # "clay" is deliberately absent. Fired pottery is covered by ceramic,
+    # porcelain and stoneware; raw clay in a consumable is the standard's own
+    # example of an ingredient borne heavy metal carrier (section 4), and
+    # Earthpaste measured 3,500 ppb lead riding in on exactly that. A word
+    # that names the hazard class cannot also read as an inert material.
 ]
 # Section 2.1. Two kinds of entry, which behave differently.
 #
@@ -212,8 +220,14 @@ DURABLE_OVERRIDE = ("cloth diaper", "diaper bag", "diaper pail", "food storage",
 
 
 def is_consumable(category, product_name=""):
+    # The override reads the product name too: a brand can sit in a consumable
+    # category ("Diapers & wipes") while the row names a durable object
+    # ("diaper pail"). The name only ever argues one way, towards durable,
+    # so it can never turn a genuinely consumable row into one that skips
+    # the second front requirement.
     cat = (category or "").lower()
-    if any(w in cat for w in DURABLE_OVERRIDE):
+    name = (product_name or "").lower()
+    if any(w in cat or w in name for w in DURABLE_OVERRIDE):
         return False
     return any(w in cat for w in CONSUMABLE_WORDS)
 
@@ -416,6 +430,10 @@ def apply_rules(fronts, note, scope, basis, context=""):
         fired.append("5.1 filed-suit-caps-at-caution")
 
     # 5.2  a closed, remedied recall older than 24 months is informational.
+    # Notes carry a year, not a date, so the cutoff is three calendar years
+    # back: the only threshold that PROVES the recall is older than 24 months.
+    # A recall from two years back may be 20 or 32 months old, and when we
+    # cannot tell, it stays active. Conservative by construction.
     if f["legal"]["status"] in ("fail", "caution") and "recall" in low:
         years = [int(y) for y in RECALL_YEAR.findall(low)]
         if years and max(years) <= TODAY.year - 3 and re.search(
@@ -572,7 +590,12 @@ def correct(old, f, note, scope, basis, strict=False, lenient=False, consumable=
     # 5.3 absence of a recall is not a pass, and an AB 1200 disclosure existing
     # is a legal front nothing. Neither can be the reason something is good.
     # 4.3 a non detect without its limit of detection is not citable either.
-    if WEAK_ONLY.match(low.strip()):
+    # The one exception is 5.5: a non detect reported WITH its limit is an
+    # independent measurement of the product, the strongest evidence we hold,
+    # and the weak-evidence regex must not swallow it just because the note
+    # says nothing else. A row whose entire note is "non detect at 5 ppb"
+    # is exactly the row that rule exists for.
+    if WEAK_ONLY.match(low.strip()) and not (NON_DETECT.search(low) and HAS_LOD.search(low)):
         return "unrated", "the only evidence is an absence, which cannot carry a recommendation", False
 
     # A classifier reading of a short note may flag a researched recommendation
@@ -640,9 +663,14 @@ def main():
         for p in (b.get("products") or []):
             scope, basis = scope_of(p), basis_of(p)
             raw, authored = fronts_for(p, b)
-            f, fired = apply_rules(raw, clean_note(p.get("note")), scope, basis,
+            # Both steps read the same cleaned text. correct() used to get the
+            # raw note, so a caveat list or a contrast clause ("unlike brands
+            # facing lawsuits") could flip its suit and recall regexes while
+            # being invisible to the fronts step.
+            cleaned = clean_note(p.get("note"))
+            f, fired = apply_rules(raw, cleaned, scope, basis,
                                    f"{p.get('name') or ''} {b.get('category') or ''}")
-            new, why, disclose = correct(p.get("verdict"), f, p.get("note"),
+            new, why, disclose = correct(p.get("verdict"), f, cleaned,
                                          scope, basis, args.strict, args.lenient,
                                          is_consumable(b.get("category"), p.get("name")),
                                          p.get("origin"))

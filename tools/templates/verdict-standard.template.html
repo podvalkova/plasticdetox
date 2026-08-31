@@ -1,0 +1,703 @@
+<title>The Verdict Standard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --ground:#FAF9F7; --raise:#FFFFFF; --sink:#F2F0EE;
+  --ink:#1A1626; --ink-2:#4A4356; --ink-3:#7A7285;
+  --line:#E3DFE4; --line-2:#D2CCD6;
+  --accent:#6D28D9; --accent-soft:#F1EBFC;
+  --good:#15803D; --good-bg:#E7F4EC;
+  --careful:#B45309; --careful-bg:#FBF0E2;
+  --skip:#BE123C; --skip-bg:#FCE9EE;
+  --unrated:#8B8681; --unrated-bg:#EFEDEB;
+  --shadow:0 1px 2px rgba(26,22,38,.05), 0 8px 24px -12px rgba(26,22,38,.12);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --ground:#16131C; --raise:#1E1A26; --sink:#120F17;
+  --ink:#EDE9F2; --ink-2:#B4ADBF; --ink-3:#867E92;
+  --line:#2E2838; --line-2:#3D3549;
+  --accent:#B79BF5; --accent-soft:#241C36;
+  --good:#5FCB88; --good-bg:#16281E;
+  --careful:#E0A356; --careful-bg:#2B2013;
+  --skip:#F0819D; --skip-bg:#2E141C;
+  --unrated:#8A8390; --unrated-bg:#221E29;
+  --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px -12px rgba(0,0,0,.6);
+}}
+:root[data-theme="dark"]{
+  --ground:#16131C; --raise:#1E1A26; --sink:#120F17;
+  --ink:#EDE9F2; --ink-2:#B4ADBF; --ink-3:#867E92;
+  --line:#2E2838; --line-2:#3D3549;
+  --accent:#B79BF5; --accent-soft:#241C36;
+  --good:#5FCB88; --good-bg:#16281E;
+  --careful:#E0A356; --careful-bg:#2B2013;
+  --skip:#F0819D; --skip-bg:#2E141C;
+  --unrated:#8A8390; --unrated-bg:#221E29;
+  --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px -12px rgba(0,0,0,.6);
+}
+*{box-sizing:border-box}
+body{
+  background:var(--ground); color:var(--ink);
+  font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:16px; line-height:1.6; margin:0;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+.read{max-width:70ch}
+
+/* ---------- masthead ---------- */
+header{border-bottom:1px solid var(--line);background:var(--raise)}
+.mast{padding:64px 0 40px;display:flex;flex-direction:column;gap:20px}
+.eyebrow{
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:11.5px; font-weight:500;
+  letter-spacing:.14em; text-transform:uppercase; color:var(--accent); margin:0;
+}
+h1{
+  font-family:Fraunces,Georgia,serif; font-optical-sizing:auto;
+  font-size:clamp(2.6rem,6vw,4.2rem); font-weight:500; line-height:1.02;
+  letter-spacing:-.022em; margin:0; text-wrap:balance;
+}
+.dek{font-size:1.125rem;line-height:1.55;color:var(--ink-2);margin:0;max-width:62ch}
+.tally{display:flex;flex-wrap:wrap;gap:0;margin-top:12px;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.tally div{
+  flex:1 1 130px;padding:14px 18px;background:var(--raise);
+  border-right:1px solid var(--line);
+}
+.tally div:last-child{border-right:0}
+.tally b{
+  display:block;font-family:"IBM Plex Mono",monospace;font-size:1.55rem;font-weight:600;
+  line-height:1.1;font-variant-numeric:tabular-nums;
+}
+.tally span{font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);font-weight:600}
+.t-good b{color:var(--good)} .t-careful b{color:var(--careful)}
+.t-skip b{color:var(--skip)} .t-unrated b{color:var(--unrated)}
+
+/* ---------- the standard ---------- */
+main{padding:56px 0 0}
+.section-head{display:flex;align-items:baseline;gap:14px;margin:0 0 8px}
+.section-n{
+  font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:600;color:var(--accent);
+  letter-spacing:.1em;padding-top:6px;
+}
+h2{
+  font-family:Fraunces,Georgia,serif;font-size:clamp(1.6rem,3.2vw,2.15rem);font-weight:500;
+  letter-spacing:-.015em;line-height:1.15;margin:0;text-wrap:balance;
+}
+h3{
+  font-family:Inter,sans-serif;font-size:1.02rem;font-weight:650;letter-spacing:-.005em;
+  margin:34px 0 8px;
+}
+p{margin:0 0 16px;color:var(--ink-2)}
+.read p strong{color:var(--ink);font-weight:600}
+.pull{
+  border-left:3px solid var(--accent);background:var(--accent-soft);
+  padding:16px 20px;margin:22px 0;border-radius:0 8px 8px 0;
+}
+.pull p{margin:0;color:var(--ink);font-weight:500;font-size:1.02rem;line-height:1.5}
+
+.ladder{list-style:none;padding:0;margin:22px 0;display:flex;flex-direction:column;gap:1px;
+  background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.ladder li{background:var(--raise);padding:11px 16px;display:flex;gap:14px;align-items:baseline}
+.ladder code{
+  font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--accent);font-weight:600;
+  flex:0 0 62px;
+}
+.ladder span{font-size:.94rem;color:var(--ink-2)}
+.ladder b{color:var(--ink);font-weight:600}
+
+.matrix{width:100%;border-collapse:collapse;margin:22px 0;font-size:.86rem}
+.matrix th,.matrix td{padding:8px 10px;text-align:left;border-bottom:1px solid var(--line)}
+.matrix thead th{
+  font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--ink-3);font-weight:600;
+}
+.matrix tbody th{font-weight:600;color:var(--ink);font-size:.86rem}
+.m-pass{color:var(--good);font-weight:600}
+.m-caution{color:var(--careful);font-weight:600}
+.m-fail{color:var(--skip);font-weight:700}
+.scroller{overflow-x:auto;-webkit-overflow-scrolling:touch}
+
+/* ---------- the ledger ---------- */
+.ledger{margin-top:64px;border-top:1px solid var(--line);background:var(--sink);padding:44px 0 56px}
+.toolbar{background:var(--sink);border-bottom:1px solid var(--line)}
+.controls{
+  padding:14px 0 10px;
+  display:flex;flex-wrap:wrap;gap:10px;align-items:center;
+}
+input[type="search"]{
+  flex:1 1 240px;min-width:180px;font:inherit;font-size:.92rem;padding:9px 13px;
+  border:1px solid var(--line-2);border-radius:8px;background:var(--raise);color:var(--ink);
+}
+input[type="search"]:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{
+  font:inherit;font-size:12px;font-weight:600;letter-spacing:.02em;padding:8px 13px;cursor:pointer;
+  border:1px solid var(--line-2);border-radius:999px;background:var(--raise);color:var(--ink-2);
+  transition:background .12s,color .12s,border-color .12s;
+}
+.chip:hover{border-color:var(--accent)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--ground);border-color:var(--ink)}
+.chip.c-good[aria-pressed="true"]{background:var(--good);border-color:var(--good);color:#fff}
+.chip.c-careful[aria-pressed="true"]{background:var(--careful);border-color:var(--careful);color:#fff}
+.chip.c-skip[aria-pressed="true"]{background:var(--skip);border-color:var(--skip);color:#fff}
+.chip.c-unrated[aria-pressed="true"]{background:var(--unrated);border-color:var(--unrated);color:#fff}
+select{
+  font:inherit;font-size:.9rem;padding:9px 11px;border:1px solid var(--line-2);
+  border-radius:8px;background:var(--raise);color:var(--ink);max-width:210px;
+}
+.count{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-3);
+  font-variant-numeric:tabular-nums;margin-left:auto;white-space:nowrap}
+
+.tbl-scroll{
+  overflow:auto;
+  max-height:calc(100vh - var(--ctrl-h,120px) - 16px);
+  border:1px solid var(--line);border-radius:10px;background:var(--raise);
+  overscroll-behavior:contain;
+}
+table.data{width:100%;border-collapse:collapse;font-size:.9rem;min-width:720px}
+table.data th{
+  position:sticky;top:0;z-index:10;background:var(--sink);
+  box-shadow:0 1px 0 var(--line-2);
+  font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--ink-3);font-weight:600;text-align:left;padding:10px 12px;
+  border-bottom:1px solid var(--line-2);cursor:pointer;white-space:nowrap;user-select:none;
+}
+table.data th:hover{color:var(--accent)}
+table.data th[aria-sort]{color:var(--accent)}
+table.data td{padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+table.data tbody tr{background:var(--raise)}
+table.data tbody tr:hover{background:var(--accent-soft)}
+.v{
+  display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  padding:3px 8px;border-radius:5px;white-space:nowrap;
+}
+.v-good{background:var(--good-bg);color:var(--good)}
+.v-careful{background:var(--careful-bg);color:var(--careful)}
+.v-skip{background:var(--skip-bg);color:var(--skip)}
+.v-unrated{background:var(--unrated-bg);color:var(--unrated)}
+.brand{font-weight:600;color:var(--ink);white-space:nowrap}
+.prod{color:var(--ink-2);display:block;font-size:.86rem;line-height:1.35}
+.cat{font-size:.8rem;color:var(--ink-3);white-space:nowrap}
+.asin{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink-3)}
+.asin a{color:var(--accent);text-decoration:none}
+.asin a:hover{text-decoration:underline}
+.fronts{font-family:"IBM Plex Mono",monospace;font-size:15px;letter-spacing:3px;white-space:nowrap;line-height:1}
+.fr{cursor:help}
+.f-p{color:var(--good)} .f-c{color:var(--careful)} .f-f{color:var(--skip)} .f-u{color:var(--line-2)} .f-n{color:var(--good)}
+.tradeoff{
+  display:inline-block;font-size:9.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--accent);border:1px solid var(--accent);border-radius:4px;padding:1px 5px;margin-left:6px;
+}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:11.5px;color:var(--ink-3);
+  margin:0;padding:0 0 12px;font-family:"IBM Plex Mono",monospace}
+.legend b{font-weight:600}
+.empty{padding:48px 12px;text-align:center;color:var(--ink-3)}
+tr.row{cursor:pointer}
+tr.row>td:first-child{position:relative;padding-left:26px}
+tr.row>td:first-child::before{
+  content:"";position:absolute;left:11px;top:16px;width:0;height:0;
+  border-left:5px solid var(--ink-3);border-top:4px solid transparent;border-bottom:4px solid transparent;
+  transition:transform .14s;transform-origin:2px 50%;
+}
+tr.row[aria-expanded="true"]>td:first-child::before{transform:rotate(90deg)}
+tr.detail>td{background:var(--sink);border-bottom:1px solid var(--line-2);padding:0 12px 18px 26px}
+tr.detail .why-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;max-width:88ch;padding-top:4px}
+.why-lab{
+  font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-3);font-weight:600;display:block;margin-bottom:3px;
+}
+.why-body{font-size:.9rem;line-height:1.55;color:var(--ink-2)}
+.why-body.rule{color:var(--ink);font-weight:500}
+.why-meta{display:flex;flex-wrap:wrap;gap:18px;font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-3)}
+.why-fronts{display:flex;flex-wrap:wrap;gap:8px}
+.wf{font-size:11px;padding:3px 8px;border-radius:5px;border:1px solid var(--line-2);color:var(--ink-3)}
+.wf.p{color:var(--good);border-color:var(--good);background:var(--good-bg)}
+.wf.c{color:var(--careful);border-color:var(--careful);background:var(--careful-bg)}
+.wf.f{color:var(--skip);border-color:var(--skip);background:var(--skip-bg)}
+.wf.n{color:var(--good);border-color:var(--good)}
+.date{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink-3);
+  font-variant-numeric:tabular-nums;white-space:nowrap}
+
+footer{border-top:1px solid var(--line);background:var(--raise);padding:32px 0 48px;
+  font-size:.86rem;color:var(--ink-3)}
+footer p{color:var(--ink-3);margin:0 0 6px}
+@media (max-width:640px){
+  .wrap{padding:0 18px}
+  .mast{padding:40px 0 28px}
+  .hide-s{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<header>
+  <div class="wrap mast">
+    <p class="eyebrow">Plastic Detox · Editorial standard</p>
+    <h1>The Verdict Standard</h1>
+    <p class="dek">How a product earns a verdict, and every verdict we currently hold. This is
+      what the Amazon extension asserts on a listing at the moment someone is deciding whether
+      to buy, so the bar is written down and the evidence travels with it.</p>
+    <div class="tally">
+      <div class="t-good"><b id="n-good">0</b><span>Good choice</span></div>
+      <div class="t-careful"><b id="n-careful">0</b><span>Use carefully</span></div>
+      <div class="t-skip"><b id="n-skip">0</b><span>Skip</span></div>
+      <div class="t-unrated"><b id="n-unrated">0</b><span>Not reviewed</span></div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="read">
+    <div class="section-head"><span class="section-n">01</span><h2>Evidence has a scope</h2></div>
+    <p>The old question was “what is our verdict on this brand?” That produced errors in both
+      directions: a pan inherited a pass because its brand was rated good, and a plain stainless
+      skillet inherited a caution because the brand’s <em>appliances</em> were the problem.</p>
+    <p>The right question is <strong>what evidence do we hold, and does its scope contain the thing
+      the shopper is looking at?</strong> Every finding attaches at one of these levels.</p>
+    <ul class="ladder">
+      <li><code>lot</code><span>One batch or production run. <b>A contaminated lot of a botanical.</b></span></li>
+      <li><code>sku</code><span>One listing, size or flavour. <b>Boka Ela Mint 4oz.</b></span></li>
+      <li><code>line</code><span>A named product line. <b>Colgate Total.</b></span></li>
+      <li><code>formula</code><span>A recipe base shared across variants. <b>A whole hydroxyapatite range.</b></span></li>
+      <li><code>format</code><span>A packaging format or construction. <b>Their 12oz glass jar.</b></span></li>
+      <li><code>brand</code><span>The company and its conduct. <b>Litigation over labelling claims.</b></span></li>
+      <li><code>class</code><span>A material across the industry. <b>All bentonite clay oral products.</b></span></li>
+    </ul>
+    <div class="pull"><p>Adverse evidence may propagate. Favourable evidence never does.</p></div>
+    <p>A detection on one SKU is reason to look harder at its siblings. A clean result on one SKU
+      says nothing about siblings, because we did not test them. That asymmetry is safe in both
+      directions: we never wrongly recommend, and when we warn we always disclose what the warning
+      rests on.</p>
+  </section>
+
+  <section class="read">
+    <div class="section-head"><span class="section-n">02</span><h2>The four checks</h2></div>
+    <h3>Formula — what it is made of</h3>
+    <p>Judged from the ingredient list, or the material list, for that specific SKU. It transfers
+      across sizes and multipacks, never across flavours or variants, because whitening, kids and
+      sensitive versions routinely differ in exactly the ingredient that matters.</p>
+    <p>The line between the three answers is <em>where the hazard sits</em>, not whether one is
+      mentioned:</p>
+    <div class="scroller">
+      <table class="matrix">
+        <thead><tr><th style="width:96px">Verdict</th><th>What it takes</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr>
+            <th><span class="v v-good">Good</span></th>
+            <td>Every material in the contact path is named and inert, or the full ingredient list
+              is published and carries nothing on the hazard list.</td>
+            <td>18/8 stainless with no coating. Six named ingredients, no fragrance.</td>
+          </tr>
+          <tr>
+            <th><span class="v v-careful">Careful</span></th>
+            <td>A hazard is present but <em>bounded</em>: outside the contact path, or the least
+              bad option in a category with no clean one. Also here: the maker does not publish a
+              complete list, which is a finding rather than an absence.</td>
+            <td>A polypropylene shell that never touches the milk. Nylon bristles, where boar is
+              the only plastic free option.</td>
+          </tr>
+          <tr>
+            <th><span class="v v-skip">Skip</span></th>
+            <td>An un-negated hazard sits in the path that reaches a person: swallowed, absorbed,
+              inhaled, or in contact with food.</td>
+            <td>PTFE on a pan. Undisclosed "gum base". Fragrance in a leave-on lotion.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <h4>What is on the hazard list</h4>
+    <p>A substance earns a place only when all three hold. <strong>Route:</strong> a documented
+      path from this product into a person — migration, shedding, absorption, inhalation,
+      ingestion. <strong>Evidence:</strong> independent published evidence of harm, or a
+      restriction by a serious regulator. <strong>Determinable:</strong> we can tell it is there
+      from the label, the material or a published test, because a rule we cannot apply is not a
+      rule.</p>
+    <p>The list then holds two kinds of entry, and they do not behave the same way.</p>
+    <div class="scroller">
+      <table class="matrix">
+        <thead><tr><th style="width:150px">Kind</th><th>What it is</th><th>Ceiling on its own</th></tr></thead>
+        <tbody>
+          <tr>
+            <th>Named hazard</th>
+            <td>A specific substance with evidence behind it: PTFE and the other PFAS, PVC,
+              polycarbonate and BPA, polystyrene, melamine, phthalates, formaldehyde releasers,
+              triclosan, lead, cadmium.</td>
+            <td><span class="v v-skip">Skip</span></td>
+          </tr>
+          <tr>
+            <th>Disclosure failure</th>
+            <td>A legal umbrella that hides composition: <em>fragrance</em>, <em>parfum</em>,
+              <em>gum base</em>, <em>proprietary blend</em>, <em>natural flavors</em>. It names no
+              harmful substance.</td>
+            <td><span class="v v-careful">Careful</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>So is fragrance a hazard?</strong> It is on the list, but as the second kind. The
+      objection is not to scent. "Fragrance" is one word standing in for a mixture that may run to
+      hundreds of ingredients and has historically carried phthalates, and the word exists to make
+      that legal. What it tells us is that we cannot check.</p>
+    <div class="pull"><p>A disclosure failure caps at careful on its own. It is not evidence of
+      harm — it is the absence of the evidence we would need, and the maker controls that absence,
+      which is why it counts against them where a missing lab test does not.</p></div>
+    <p>That is the whole difference between this and the rule above. We do not mark a product down
+      because no lab has looked at it; the maker does not control that. We do mark down
+      concealment, because they chose it. Exposure then modulates the weight by the same route
+      rule as packaging: fragrance left on skin all day is a different finding from fragrance
+      rinsed down a drain. No product on this site is a skip for fragrance alone — every skip that
+      mentions it carries a second, named finding beside it, and that is the rule rather than a
+      coincidence.</p>
+    <p>A term the copy explicitly rules out — "BPA free", "no PVC", "fragrance free" — is not a
+      hazard present.</p>
+
+    <h4>Conditional failures</h4>
+    <p>Some failures are not a property of the product as sold. They depend on how it is used,
+      they are avoidable by stated care, and nothing about the object tells you whether they have
+      happened.</p>
+    <p>Sophie la Girafe is the case. The rubber and the food grade paint are fine; the sealed
+      interior cavity is the problem, because water enters during washing and cannot be dried, and
+      mould colonies inside the toy are documented from 2017 onward. But mould is not guaranteed.
+      It depends entirely on whether water gets in. Run that against the three tests above and the
+      third fails outright: we cannot tell from the label, the material or any test whether a given
+      unit has it. What <em>is</em> determinable is the design that permits it.</p>
+    <div class="pull"><p>A failure inherent to the design, avoidable by stated care, and not
+      detectable in the product as sold caps at careful, with the mitigation stated.</p></div>
+    <p>Not good, because the failure is unrecoverable once it happens, invisible from outside, and
+      in a product an infant mouths. Not skip, because "skip" when "do not submerge it" solves the
+      problem overstates what we know, and gives the reader worse information than the caveat
+      would.</p>
+    <p><strong>The boundary.</strong> A conditional failure alongside a named hazard is still a
+      skip, carried by the named hazard rather than the condition. Munchkin's bath toys also
+      harbour mould, and they are a skip because they are soft PVC with phthalate exposure when
+      chewed — determinable from the material. Sophie's materials are sound, which is exactly why
+      the conditional finding has to stand on its own, and on its own it is a caution.</p>
+
+    <h3>Packaging — what touches the contents</h3>
+    <p>Plastic contact is not a verdict. If it were, we would skip nearly every cosmetic and
+      cleaning product on the market, and the flag would stop carrying information precisely
+      because it fires on everything. Almost everything that leaches out of a plastic is
+      lipophilic, so oil pulls it out and water largely does not. The pairing decides.</p>
+    <div class="scroller">
+      <table class="matrix">
+        <thead><tr><th>Contents</th><th>Glass, steel</th><th>HDPE, PP</th><th>PET</th><th>PVC, PC, PS</th></tr></thead>
+        <tbody>
+          <tr><th>Dry powder, bar</th><td class="m-pass">pass</td><td class="m-pass">pass</td><td class="m-pass">pass</td><td class="m-caution">caution</td></tr>
+          <tr><th>Aqueous: toner, gel</th><td class="m-pass">pass</td><td class="m-pass">pass</td><td class="m-pass">pass</td><td class="m-caution">caution</td></tr>
+          <tr><th>Surfactant: shampoo</th><td class="m-pass">pass</td><td class="m-pass">pass</td><td class="m-caution">caution</td><td class="m-caution">caution</td></tr>
+          <tr><th>Acidic: vitamin C, AHA</th><td class="m-pass">pass</td><td class="m-pass">pass</td><td class="m-caution">caution</td><td class="m-fail">fail</td></tr>
+          <tr><th>Emulsion: lotion, cream</th><td class="m-pass">pass</td><td class="m-caution">caution</td><td class="m-caution">caution</td><td class="m-fail">fail</td></tr>
+          <tr><th>Anhydrous: oil, balm</th><td class="m-pass">pass</td><td class="m-caution">caution</td><td class="m-fail">fail</td><td class="m-fail">fail</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Heat moves everything one step worse, because temperature drives migration harder than any
+      other single variable. Exposure route gives relief in the other direction: a rinse-off gets
+      one step, and something that never touches a person — laundry, surface cleaner — gets two.</p>
+
+    <h4>When there are no contents</h4>
+    <p>Most products are not a substance in a container. A yoga mat, a toothbrush, a cutting board,
+      a vacuum: the object <em>is</em> the material. For those, this check reads the surface that
+      actually reaches a person, and the answer is the same fact as the formula check rather than
+      a second, emptier question.</p>
+    <div class="scroller">
+      <table class="matrix">
+        <thead><tr><th>Object</th><th>The surface that reaches you</th></tr></thead>
+        <tbody>
+          <tr><th>Cutting board</th><td>The cut surface, because knife grooves shed it into food</td></tr>
+          <tr><th>Yoga mat</th><td>The top layer, pressed against skin for an hour while you breathe above it</td></tr>
+          <tr><th>Toothbrush</th><td>The bristles, not the handle</td></tr>
+          <tr><th>Vacuum</th><td>The exhaust, because an unsealed one returns the finest dust to the room</td></tr>
+          <tr><th>Cookware</th><td>The cooking surface, at temperature</td></tr>
+          <tr><th>Bottle or cup</th><td>The whole drink path, lid and straw included</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>So a stainless bowl with no coating passes both checks on one fact, and a mat whose top layer
+      is PVC fails both on one fact. Asking twice and leaving one blank would make a sound
+      recommendation look like it rested on a single observation.</p>
+
+    <h4>An object immersed in what you consume is not packaging</h4>
+    <p>The matrix above judges a container holding contents at rest. A tea bag is not that. It is
+      an object put <em>inside</em> the drink, at near boiling temperature, and then squeezed.
+      Reaching for the matrix produced a caution where the standard's own rules give a skip.</p>
+    <div class="scroller">
+      <table class="matrix">
+        <thead><tr><th style="width:210px">Rule</th><th>Applied to a supermarket tea bag</th></tr></thead>
+        <tbody>
+          <tr><th>Named hazard</th><td>Polypropylene, from the heat sealed seam</td></tr>
+          <tr><th>In the ingested path</th><td>You drink the water it steeped in</td></tr>
+          <tr><th>At heat</th><td>Which moves everything one step worse</td></tr>
+          <tr><th>Measured, not inferred</th><td><strong>11.6 billion microplastic particles per cup</strong></td></tr>
+          <tr><th>The drinkware standard</th><td>No plastic in the drink path, ever. It removed the Owala picks and every straw tumbler</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Five rules, one answer. Where a product is put into the thing a person swallows, read it as
+      formula and ingestion, never as packaging.</p>
+    <div class="pull"><p>This is the mirror of the conditional failure above, and the pair is worth
+      holding together. Sophie la Girafe caps at careful because whether a given unit has mould is
+      not determinable from the product. A tea bag's seam is determinable: it is a property of the
+      bag as sold. Determinable and in the ingested path is a skip; conditional and undetectable is
+      a caution.</p></div>
+
+    <h3>Independent tests — what a lab measured</h3>
+    <p>A result’s scope is set by the contamination <em>mechanism</em>, not by the brand. Ask how
+      the contaminant got in and the answer tells you exactly how far the finding travels.</p>
+    <div class="scroller">
+      <table class="matrix">
+        <thead><tr><th>Mechanism</th><th>Scope</th><th>Transfers to</th></tr></thead>
+        <tbody>
+          <tr><th>Ingredient borne<br><span class="cat">clay, cocoa, hydroxyapatite</span></th><td><code>class</code></td><td>Every SKU containing it, across brands</td></tr>
+          <tr><th>Process borne<br><span class="cat">fluorinated HDPE, tubing</span></th><td><code>format</code></td><td>Same container or line, any flavour</td></tr>
+          <tr><th>Formulation choice<br><span class="cat">a preservative, a fragrance</span></th><td><code>formula</code></td><td>SKUs sharing that base</td></tr>
+          <tr><th>Lot failure<br><span class="cat">one bad batch</span></th><td><code>lot</code></td><td>Nothing. It is a recall signal</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>So: baby toothpaste tests positive for lead, does the adult version inherit it?
+      <strong>Yes, as a caution, never a skip, and only if they share the implicated ingredient.</strong>
+      Lead rides in on the abrasive or mineral active, which the brand buys once for the whole
+      range. If the adult paste uses silica instead, it does not transfer at all.</p>
+    <div class="pull"><p>An absent test is a gap, not a finding. Missing evidence is disclosed,
+      never counted against a product that is otherwise sound.</p></div>
+
+    <h3>Recalls and lawsuits — what happened</h3>
+    <p>A filed suit is an allegation, so on its own it caps at caution; only a settlement or
+      judgment reaches skip. Recalls decay: open is a skip, closed and remedied under two years is
+      a caution, older than that is informational. Three or more distinct recalls in five years is
+      the one route to a brand-level verdict, because at that point it is evidence about the
+      quality system rather than any one product.</p>
+    <div class="pull"><p>Absence of a recall is not a pass. In these categories it usually means
+      no regulator was looking.</p></div>
+  </section>
+
+  <section class="read">
+    <div class="section-head"><span class="section-n">03</span><h2>What earns a recommendation</h2></div>
+    <p>A <strong>skip</strong> or <strong>caution</strong> may rest on inherited evidence, provided
+      the card names the scope it came from. A <strong>good</strong> may not. Inheritance can warn;
+      it can never recommend.</p>
+    <div class="pull"><p>And a recommendation needs all four checks. Whatever awarded the good,
+      a store pick, a lab result, a hand written scorecard, it ships only when every
+      front carries a finding. Until then the verdict is held back, the missing checks are named,
+      and the verdict returns on its own the moment the research lands.</p></div>
+    <p>Held back is not a euphemism for rejected. The gate exists because five different routes
+      could award a good and only one of them looked at the scorecard; one gate, at the end,
+      closes them all at once. On an Amazon listing a held product says exactly what state it is
+      in: which checks are done, which are still open, and how to be told when it clears.</p>
+    <p>Two fronts can be answered by structure rather than paperwork. For a durable good the
+      object <em>is</em> its contact surface, so a stainless bowl&rsquo;s packaging is the stainless and
+      the material answers both checks. And a third-party lab result at product scope outranks a
+      label read; it is the strongest single piece of evidence a front can hold.</p>
+    <p>A front can also come back <strong>&ldquo;none&rdquo;</strong>: we checked, and no evidence of that
+      kind exists for this product, because no lab tests toothbrush handles. That is a finding,
+      and it satisfies the gate. <strong>&ldquo;Unassessed&rdquo;</strong> means nobody has looked yet. It is not a
+      finding, and it blocks the recommendation until someone looks.</p>
+    <p>A <strong>careful</strong> product may stay a published pick when it is the honest best
+      option under a stated constraint and the caveat travels with it. The only genuinely
+      plastic-free toothbrush bristle is boar, which is not vegan, so a nylon brush is the best
+      available choice for anyone who needs one. Those rows are marked
+      <span class="tradeoff">trade-off</span> below.</p>
+    <p>Otherwise the answer is <strong>not reviewed</strong>, with a request-a-review button. That
+      is a real, shippable state, and it is always better than a guess.</p>
+  </section>
+</main>
+
+<section class="ledger">
+  <div class="wrap">
+    <div class="section-head"><span class="section-n">04</span><h2>Every verdict we hold</h2></div>
+    <p style="max-width:70ch">What the extension will say on an Amazon listing today. The four
+      marks are formula, packaging, recalls&nbsp;&amp; lawsuits, independent tests, in that order.
+      <strong>Verdict set</strong> is the date the answer last changed, not the date the file was
+      rebuilt, so it tells you how stale a verdict actually is. An open circle is a check that
+      came back &ldquo;nothing of this kind applies to this product&rdquo;, which is a finding, not a gap.</p>
+    <div class="toolbar">
+    <div class="controls">
+      <input type="search" id="q" placeholder="Search brand or product…" aria-label="Search brand or product">
+      <div class="chips" id="chips">
+        <button class="chip c-good" data-v="good" aria-pressed="false">Good</button>
+        <button class="chip c-careful" data-v="careful" aria-pressed="false">Careful</button>
+        <button class="chip c-skip" data-v="skip" aria-pressed="false">Skip</button>
+        <button class="chip c-unrated" data-v="unrated" aria-pressed="false">Not reviewed</button>
+      </div>
+      <select id="cat" aria-label="Filter by category"><option value="">All categories</option></select>
+      <span class="count" id="count"></span>
+    </div>
+    <p class="legend">
+      <span><b class="f-p">●</b> pass</span><span><b class="f-c">●</b> caution</span>
+      <span><b class="f-f">●</b> fail</span><span><b class="f-u">·</b> not assessed</span><span><b class="f-n">○</b> checked, nothing applies</span>
+      <span style="color:var(--accent)">Click any row for the reasoning</span>
+    </p>
+    </div>
+    <div class="tbl-scroll">
+      <table class="data">
+        <thead><tr>
+          <th data-k="b">Brand</th>
+          <th data-k="p">Product</th>
+          <th data-k="c" class="hide-s">Category</th>
+          <th data-k="v">Verdict</th>
+          <th>Checks</th>
+          <th data-k="a" class="hide-s">ASIN</th>
+          <th data-k="d" class="hide-s">Verdict set</th>
+        </tr></thead>
+        <tbody id="tb"></tbody>
+      </table>
+      <div class="empty" id="empty" hidden>Nothing matches that.</div>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap">
+  <p>Plastic Detox — generated __DATE__ by <code>tools/build-verdict-standard.py</code> from
+    <code>brand-data.json</code>, the single source the site, Brand Check and the extension all
+    read. It regenerates on every build, so this page always matches what the extension asserts.</p>
+  <p>Verdicts reflect published independent testing and the brands’ own disclosures. Where a brand
+    disputes a result, the note says so.</p>
+</div></footer>
+
+<script id="rows" type="application/json">__ROWS_JSON__</script>
+<script>
+(function(){
+  var ROWS = JSON.parse(document.getElementById('rows').textContent);
+  var VN = {good:'Good choice', careful:'Use carefully', skip:'Skip', unrated:'Not reviewed'};
+  var FN = ['Formula','Packaging','Recalls & lawsuits','Independent tests'];
+  var FL = {p:'pass', c:'caution', f:'fail', u:'not assessed', n:'checked, nothing applies'};
+  var state = {q:'', v:new Set(), c:'', k:'b', dir:1, open:new Set()};
+
+  var tally = {good:0, careful:0, skip:0, unrated:0}, cats = {};
+  ROWS.forEach(function(r, i){ r._i = i; tally[r.v]++; cats[r.c] = (cats[r.c]||0)+1; });
+  ['good','careful','skip','unrated'].forEach(function(k){
+    document.getElementById('n-'+k).textContent = tally[k].toLocaleString();
+  });
+  var sel = document.getElementById('cat');
+  Object.keys(cats).sort().forEach(function(c){
+    var o = document.createElement('option');
+    o.value = c; o.textContent = c + ' (' + cats[c] + ')'; sel.appendChild(o);
+  });
+
+  function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g, function(m){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]; }); }
+
+  // The table scrolls inside its own box, so the header sticks to the top of
+  // that box and nothing else can slide over it. The measurement now sizes the
+  // scroll region rather than offsetting the header, which was the mistake: an
+  // ancestor with overflow becomes the sticky containing block, so no offset
+  // aimed at the viewport was ever going to land.
+  var ctrl = document.querySelector('.toolbar');
+  function measure(){
+    var top = ctrl.getBoundingClientRect().top + window.scrollY;
+    var head = ctrl.offsetHeight;
+    document.documentElement.style.setProperty('--ctrl-h', head + 'px');
+  }
+  measure();
+  if (window.ResizeObserver) new ResizeObserver(measure).observe(ctrl);
+  window.addEventListener('resize', measure);
+
+  function fronts(f){
+    return f.map(function(x,i){
+      return '<span class="fr f-'+x+'" title="'+FN[i]+': '+FL[x]+'">'+(x==='u'?'\u00B7':x==='n'?'\u25CB':'\u25CF')+'</span>';
+    }).join('');
+  }
+
+  function detail(r){
+    var chips = r.f.map(function(x,i){
+      return '<span class="wf '+x+'">'+FN[i]+': '+FL[x]+'</span>';
+    }).join('');
+    var h = '<div class="why-grid">';
+    var found = r.n || r.br;
+    if (found) h += '<div><span class="why-lab">What we found'
+                + (r.n ? '' : ' <em style="text-transform:none;letter-spacing:0">'
+                   + '(this covers the brand\'s whole range)</em>') + '</span>'
+                + '<div class="why-body">'+esc(found)+'</div></div>';
+    if (r.w) h += '<div><span class="why-lab">Why this verdict</span>'
+                + '<div class="why-body rule">'+esc(r.w)+'</div></div>';
+    if (r.t) h += '<div><span class="why-lab">Why it stays a pick</span>'
+                + '<div class="why-body rule">'+esc(r.t)+'</div></div>';
+    h += '<div><span class="why-lab">The four checks</span><div class="why-fronts">'+chips+'</div></div>';
+    if (r.lg) h += '<div><span class="why-lab">Recalls &amp; lawsuits</span>'
+                 + '<div class="why-body">'+esc(r.lg)+'</div></div>';
+    if (r.tn) h += '<div><span class="why-lab">Independent tests</span>'
+                 + '<div class="why-body">'+esc(r.tn)+'</div></div>';
+    h += '<div class="why-meta">'
+       + '<span>Verdict set ' + esc(r.d || 'unknown') + '</span>'
+       + (r.a ? '<span>ASIN ' + esc(r.a) + '</span>' : '')
+       + (r.s ? '<span>Source: ' + esc(r.s.replace(/\.html$/,'')) + '</span>' : '')
+       + '</div></div>';
+    return h;
+  }
+
+  function render(){
+    var q = state.q.toLowerCase();
+    var out = ROWS.filter(function(r){
+      if (state.v.size && !state.v.has(r.v)) return false;
+      if (state.c && r.c !== state.c) return false;
+      if (q && (r.b+' '+r.p+' '+r.n).toLowerCase().indexOf(q) < 0) return false;
+      return true;
+    });
+    out.sort(function(a,b){
+      var x, y;
+      if (state.k === 'v'){ var o = {skip:0,careful:1,unrated:2,good:3}; x = o[a.v]; y = o[b.v]; }
+      else { x = String(a[state.k]||'').toLowerCase(); y = String(b[state.k]||'').toLowerCase(); }
+      return (x < y ? -1 : x > y ? 1 : 0) * state.dir;
+    });
+    document.getElementById('count').textContent =
+      out.length.toLocaleString() + ' of ' + ROWS.length.toLocaleString();
+    document.getElementById('empty').hidden = out.length > 0;
+    document.getElementById('tb').innerHTML = out.map(function(r){
+      var open = state.open.has(r._i);
+      var a = r.a ? '<a href="https://www.amazon.com/dp/'+r.a+'" target="_blank" rel="noopener">'
+                    +r.a+'</a>' : '\u2014';
+      var tr = '<tr class="row" data-i="'+r._i+'" tabindex="0" aria-expanded="'+open+'">'
+        + '<td class="brand">'+esc(r.b)+'</td>'
+        + '<td><span class="prod">'+esc(r.p||'\u2014')
+          + (r.t ? '<span class="tradeoff">trade-off</span>' : '') + '</span></td>'
+        + '<td class="cat hide-s">'+esc(r.c)+'</td>'
+        + '<td><span class="v v-'+r.v+'">'+VN[r.v]+'</span></td>'
+        + '<td class="fronts">'+fronts(r.f)+'</td>'
+        + '<td class="asin hide-s">'+a+'</td>'
+        + '<td class="date hide-s">'+esc(r.d||'\u2014')+'</td>'
+        + '</tr>';
+      if (open) tr += '<tr class="detail"><td colspan="7">'+detail(r)+'</td></tr>';
+      return tr;
+    }).join('');
+  }
+
+  function toggle(i){
+    if (state.open.has(i)) state.open['delete'](i); else state.open.add(i);
+    render();
+  }
+  var tb = document.getElementById('tb');
+  tb.addEventListener('click', function(e){
+    var tr = e.target.closest('tr.row'); if (!tr) return;
+    if (e.target.closest('a')) return;
+    toggle(+tr.dataset.i);
+  });
+  tb.addEventListener('keydown', function(e){
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    var tr = e.target.closest('tr.row'); if (!tr) return;
+    e.preventDefault(); toggle(+tr.dataset.i);
+  });
+
+  document.getElementById('q').addEventListener('input', function(e){
+    state.q = e.target.value; render();
+  });
+  sel.addEventListener('change', function(e){ state.c = e.target.value; render(); });
+  document.getElementById('chips').addEventListener('click', function(e){
+    var b = e.target.closest('.chip'); if (!b) return;
+    var v = b.dataset.v, on = b.getAttribute('aria-pressed') === 'true';
+    b.setAttribute('aria-pressed', on ? 'false' : 'true');
+    if (on) state.v['delete'](v); else state.v.add(v);
+    render();
+  });
+  document.querySelectorAll('table.data th[data-k]').forEach(function(th){
+    th.addEventListener('click', function(){
+      var k = th.dataset.k;
+      if (state.k === k) state.dir *= -1; else { state.k = k; state.dir = 1; }
+      document.querySelectorAll('table.data th').forEach(function(o){ o.removeAttribute('aria-sort'); });
+      th.setAttribute('aria-sort', state.dir === 1 ? 'ascending' : 'descending');
+      render();
+    });
+  });
+  render();
+})();
+</script>

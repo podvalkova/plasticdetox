@@ -6,8 +6,11 @@
 //
 // Matching order, most reliable first:
 //   1. ASIN against products we have already researched and linked
-//   2. the brand byline Amazon puts on the detail page
-//   3. a longest-prefix match of the listing title against known brand names
+//   2. the brand byline Amazon puts on the detail page, with corporate
+//      dressing ("Store", "North America") stripped a word at a time
+//   3. a longest-prefix match of the listing title against known brand names,
+//      used on search results, and on detail pages only when there is no
+//      byline: a title prefix can hit a different company sharing a first word
 //
 // Nothing is injected into the page from a string: every node is built with
 // createElement and textContent, so an Amazon listing title can never become
@@ -30,10 +33,15 @@
     skip: "Skip",
     neutral: "Context",
   };
-  const STATUS_GLYPH = { pass: "✓", caution: "!", fail: "✕", unknown: "?" };
-  // Brand names that are ordinary English words. Matched only as the whole
-  // leading token, never as part of a longer prefix, to keep "Pure Leaf" from
-  // colliding with a brand called "Pure".
+  // "none" is a finding, not a gap: we checked, and no evidence of that kind
+  // exists for this product. A lab does not test a toothbrush handle. It is
+  // rendered as its own state so it never reads as either a pass or a blank.
+  const STATUS_GLYPH = { pass: "✓", caution: "!", fail: "✕", unknown: "?", none: "–" };
+  // Brand names that are ordinary English words. The guard stops a multi
+  // token run from collapsing into one of them ("O.N.E." must not become
+  // "one"). It cannot tell "Pure Leaf" from a brand called "Pure", which is
+  // why a title read is never trusted on its own: search chips also need a
+  // researched product row to fire, and detail pages prefer the byline.
   const GENERIC = new Set(["pure", "native", "one", "blu", "core", "well", "life", "basics", "all"]);
 
   const norm = (s) => (s || "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
@@ -267,26 +275,48 @@
     return { main: shown, scope };
   }
 
-  function frontsRow(fronts) {
+  /**
+   * The four statuses a card or chip should show for this match, flat.
+   *
+   * The product's own corrected scorecard when we have one, the brand's only
+   * as a fallback. The chip used to read the brand fronts unconditionally, so
+   * a "Good choice" product wore its brand's red packaging dot from a finding
+   * about entirely different products, which is the exact claim the panel's
+   * own comments call simply false.
+   */
+  function flatFronts(row, brand) {
+    if (row && row.ext && row.ext.fronts) {
+      return Object.fromEntries(Object.entries(row.ext.fronts).map(
+        ([k, v]) => [k, v === "unassessed" ? "unknown" : v]));
+    }
+    const out = {};
+    for (const [key] of FRONTS) {
+      out[key] = ((brand.fronts || {})[key] || {}).status || "unknown";
+    }
+    return out;
+  }
+
+  function frontsRow(statuses) {
     const wrap = el("span", "pd-fronts");
     for (const [key] of FRONTS) {
-      const st = (fronts && fronts[key] && fronts[key].status) || "unknown";
+      const st = (statuses && statuses[key]) || "unknown";
       const tick = el("span", "pd-tick");
       tick.style.background = {
-        pass: "#16a34a", caution: "#b45309", fail: "#dc2626", unknown: "#d6d3d1",
-      }[st];
-      tick.title = st;
+        pass: "#16a34a", caution: "#b45309", fail: "#dc2626",
+        unknown: "#d6d3d1", none: "#86efac",
+      }[st] || "#d6d3d1";
+      tick.title = st === "none" ? "checked, nothing applies" : st;
       wrap.appendChild(tick);
     }
     return wrap;
   }
 
-  function buildChip(match, stance) {
+  function buildChip(match, stance, prow) {
     const chip = el("div", `pd-chip ${stance}`);
     chip.appendChild(el("span", "pd-dot"));
     const label = STANCE_LABEL[stance] || "Context";
     chip.appendChild(el("span", null, label));
-    chip.appendChild(frontsRow(match.brand.fronts));
+    chip.appendChild(frontsRow(flatFronts(prow, match.brand)));
     chip.setAttribute("role", "button");
     chip.setAttribute("tabindex", "0");
     chip.title = "Plastic Detox verdict. Click for the full breakdown.";
@@ -369,7 +399,10 @@
           const note = (row.ext.frontNotes || {})[k] || (inherited ? brandFront.note : "");
           return [k, {
             status: v === "unassessed" ? "unknown" : v,
-            note: note || "",
+            // A "none" with no note of its own still has to say what it means,
+            // or the dash reads as a rendering glitch.
+            note: note || (v === "none"
+              ? "Checked: nothing of this kind applies to this product." : ""),
             origin: inherited ? brandFront.origin : undefined,
           }];
         }))
@@ -487,27 +520,16 @@
     return data;
   }
 
-  function buildUnmatchedPanel(brandName, knownBrand) {
-    const root = el("div", "pd-panel");
-    const head = el("div", "pd-head");
-    head.appendChild(el("span", "pd-badge", "Not reviewed"));
-    head.appendChild(el("div", "pd-brand", brandName));
-    root.appendChild(head);
-    root.appendChild(el("div", "pd-unmatched", knownBrand
-      ? "We have researched " + brandName + " but not this particular product, "
-        + "and a brand is not a product. Ask for a review and we will vet this "
-        + "one on all four fronts, then email you the verdict."
-      : "We have not researched this brand yet. Ask for a review and we will "
-        + "vet it on all four fronts, then email you the verdict."));
-
-    // Requesting happens right here rather than bouncing the reader to the site,
-    // which is the whole point of doing this on the listing.
+  /** Email request form: posts to the worker so the ask happens right here on
+   *  the listing rather than bouncing the reader to the site. Shared by the
+   *  unmatched panel and the checks-in-progress panel. */
+  function requestForm(brandName, buttonLabel, thanks) {
     const form = el("div", "pd-form");
     const input = el("input", "pd-input");
     input.type = "email";
     input.placeholder = "you@email.com";
     input.setAttribute("aria-label", "Your email");
-    const btn = el("button", "pd-btn", "Request review");
+    const btn = el("button", "pd-btn", buttonLabel);
     const note = el("div", "pd-note", "");
     form.appendChild(input);
     form.appendChild(btn);
@@ -525,10 +547,10 @@
         await postWorker("/brand-request", { brand: brandName, email });
         form.remove();
         note.className = "pd-note good";
-        note.textContent = `Thanks. We will research ${brandName} and email you the verdict.`;
+        note.textContent = thanks;
       } catch (err) {
         btn.disabled = false;
-        btn.textContent = "Request review";
+        btn.textContent = buttonLabel;
         note.className = "pd-note bad";
         note.textContent = "Could not send just now. Please try again.";
       }
@@ -537,7 +559,23 @@
     const wrap = el("div", "pd-form-wrap");
     wrap.appendChild(form);
     wrap.appendChild(note);
-    root.appendChild(wrap);
+    return wrap;
+  }
+
+  function buildUnmatchedPanel(brandName, knownBrand) {
+    const root = el("div", "pd-panel");
+    const head = el("div", "pd-head");
+    head.appendChild(el("span", "pd-badge", "Not reviewed"));
+    head.appendChild(el("div", "pd-brand", brandName));
+    root.appendChild(head);
+    root.appendChild(el("div", "pd-unmatched", knownBrand
+      ? "We have researched " + brandName + " but not this particular product, "
+        + "and a brand is not a product. Ask for a review and we will vet this "
+        + "one on all four fronts, then email you the verdict."
+      : "We have not researched this brand yet. Ask for a review and we will "
+        + "vet it on all four fronts, then email you the verdict."));
+    root.appendChild(requestForm(brandName, "Request review",
+      `Thanks. We will research ${brandName} and email you the verdict.`));
 
     const foot = el("div", "pd-foot");
     if (knownBrand) {
@@ -546,6 +584,46 @@
       a.target = "_blank"; a.rel = "noopener";
       foot.appendChild(a);
     }
+    foot.appendChild(el("span", "pd-mark", "Plastic Detox"));
+    root.appendChild(foot);
+    return root;
+  }
+
+  /**
+   * We reviewed this exact product; the completeness gate is holding the
+   * verdict until every one of the four checks carries a finding.
+   *
+   * Telling this shopper "we have not researched this particular product" was
+   * false on a couple of hundred store picks: the row exists, a person chose
+   * it, and what is missing is named in ext.heldBack. Say the true state.
+   */
+  function buildHeldPanel(brand, row) {
+    const root = el("div", "pd-panel");
+    const head = el("div", "pd-head");
+    head.appendChild(el("span", "pd-badge", "Checks in progress"));
+    head.appendChild(el("div", "pd-brand", brand.brand));
+    head.appendChild(el("div", "pd-cat",
+      row.name ? `${row.name} · ${brand.category}` : brand.category));
+    root.appendChild(head);
+
+    const held = row.ext.heldBack || [];
+    const labels = Object.fromEntries(FRONTS);
+    const still = held.map((k) => (labels[k] || k).toLowerCase());
+    const done = FRONTS.filter(([k]) => !held.includes(k)).map(([, l]) => l.toLowerCase());
+    let text = "We have reviewed this product and show a verdict only once all "
+      + "four checks carry a finding.";
+    if (done.length) text += " Done: " + done.join(", ") + ".";
+    if (still.length) text += " Still verifying: " + still.join(", ") + ".";
+    text += " Leave your email and we will send the verdict when it clears.";
+    root.appendChild(el("div", "pd-unmatched", text));
+    root.appendChild(requestForm(brand.brand, "Email me the verdict",
+      "Thanks. We will email you when every check on this one is done."));
+
+    const foot = el("div", "pd-foot");
+    const a = el("a", "pd-link", "See our verdict on " + brand.brand + " →");
+    a.href = `${SITE}/brand-check.html?b=${encodeURIComponent(brand.brand)}`;
+    a.target = "_blank"; a.rel = "noopener";
+    foot.appendChild(a);
     foot.appendChild(el("span", "pd-mark", "Plastic Detox"));
     root.appendChild(foot);
     return root;
@@ -692,7 +770,7 @@
       if (!hasVerdict(match, asin, title)) continue;
       const stance = resolveStance(match, asin, title);
       const prow = productFor(match, asin, title);
-      const chip = buildChip(match, stance);
+      const chip = buildChip(match, stance, prow);
       chip.addEventListener("click", (e) => {
         e.preventDefault();
         e.stopPropagation();
@@ -726,17 +804,47 @@
     return m ? m[1] : "";
   }
 
+  // Corporate dressing a byline wraps around the brand: "Weleda North
+  // America", "Boka Store". Stripped one suffix at a time, and only words
+  // that are dressing: "Native Union" must never decay into "Native",
+  // because Union is the name, not a suffix.
+  const BYLINE_SUFFIX = /\s+(store|shop|company|co|inc|llc|ltd|gmbh|usa|us|uk|official|brands?|north america)\.?$/i;
+
+  function brandFromByline(byline) {
+    let s = (byline || "").trim();
+    for (let i = 0; s && i < 4; i++) {
+      const hit = fromBrandName(s);
+      if (hit) return hit;
+      const next = s.replace(BYLINE_SUFFIX, "");
+      if (next === s) return null;
+      s = next;
+    }
+    return null;
+  }
+
   function decorateDetail() {
-    if (document.querySelector(".pd-panel")) return;
+    const detailAsin = asinFromUrl();
+    const existing = document.querySelector(".pd-panel");
+    if (existing) {
+      // Amazon swaps variants in place with pushState, and a per product
+      // verdict must not survive onto a sibling SKU: the glass and the
+      // plastic Dr. Brown's bottles are different answers.
+      if ((existing.dataset.pdAsin || "") === detailAsin) return;
+      existing.remove();
+    }
     const titleEl = document.querySelector(SEL.detail.title);
     if (!titleEl) return;
 
     const title = titleEl.textContent.trim();
     const byline = bylineBrand();
+    // The byline is Amazon's own statement of the brand, so it outranks any
+    // title read. A title prefix can hit a different company that shares a
+    // first word, so the title is only consulted when the page offers no
+    // byline at all. Where the byline names a brand we do not know, the
+    // honest panel is "not researched", under the byline's own name.
     const match =
-      fromAsin(asinFromUrl()) ||
-      (byline && fromBrandName(byline)) ||
-      fromTitle(title);
+      fromAsin(detailAsin) ||
+      (byline ? brandFromByline(byline) : fromTitle(title));
 
     // Anchor to the title's own block so the panel lands inside the centre
     // column's normal flow. Anchoring to #centerCol itself would drop the panel
@@ -745,11 +853,14 @@
       titleEl.closest("#titleSection, #title_feature_div") || titleEl.parentElement;
     if (!anchor || !anchor.parentNode) return;
 
-    const detailAsin = asinFromUrl();
     let panel;
+    const prow = match && productFor(match, detailAsin, title);
     if (match && hasVerdict(match, detailAsin, title)) {
       panel = buildCard(match, resolveStance(match, detailAsin, title),
-                        { product: productFor(match, detailAsin, title) });
+                        { product: prow });
+    } else if (match && prow && prow.ext && (prow.ext.heldBack || []).length) {
+      // We reviewed this product; the gate is waiting on named checks.
+      panel = buildHeldPanel(match.brand, prow);
     } else if (match) {
       // We know the brand but not this product, which is not the same thing.
       // Offer to research it rather than lending the brand's verdict to it.
@@ -761,6 +872,7 @@
     } else {
       return;
     }
+    panel.dataset.pdAsin = detailAsin;
     anchor.parentNode.insertBefore(panel, anchor.nextSibling);
   }
 

@@ -4,7 +4,7 @@ How a product gets a verdict. This is the editorial standard for Brand Check, th
 Amazon extension, and the paid API. If a rule here and a published page disagree,
 the page is wrong.
 
-Last revised 2026-08-28.
+Last revised 2026-08-31.
 
 ---
 
@@ -370,6 +370,11 @@ A recall is bounded in time and in lots, so it decays.
 | Open or active recall covering this product | `skip`. No judgement required |
 | Closed, remedied, under 24 months | `caution`, with the date and the defect |
 | Closed, remedied, over 24 months | Informational. Shown in the scorecard, does not set the verdict |
+
+Notes usually carry a year rather than a date, so the tools decay a recall only
+when it is provably older than 24 months, which with year granularity means
+three calendar years back. A recall that may be 20 or may be 32 months old
+stays active. Conservative by construction.
 | Recall on a sibling product | Does not transfer, **unless** the mechanism is shared, such as a plant contamination or a common component. Then `caution` on the products sharing it |
 
 **The pattern rule.** Three or more distinct recalls in five years across
@@ -453,6 +458,8 @@ which must carry the reason.
 
 ## 6. Turning four fronts into one verdict
 
+Two stages. First, what the evidence supports:
+
 ```
 any front == fail                                    -> skip
 any front == caution, none fail                      -> careful
@@ -463,22 +470,41 @@ scope is broader than line                           -> unrated
 testing is a direct pass at sku or line scope        -> good      (5.5)
 formula is a direct pass, and the product is durable -> good      (5.4)
 formula is a direct pass plus one other front        -> good
+a store pick, chosen by a person at product scope    -> good
 otherwise                                            -> unrated
 ```
 
-`unassessed` is an absence, not a failure. It never produces a skip. What it
-does do is block `good`, because `good` is the only verdict that requires
-positive evidence rather than the absence of a problem.
+Then the completeness gate, `tools/enforce-scorecard.py`, which runs last and
+closes every route at once:
 
-`unrated` is a real, shippable state. It reads "we have not reviewed this one"
-with a request a review button. It is always better than a guess.
+> **A recommendation ships only when all four checks carry a finding.**
+> Whatever awarded the good, it is held back while any front is `unassessed`,
+> the missing checks are named on the card, and the verdict returns on its own
+> the moment the research lands. The gate also enforces the ceiling above on
+> every row, whatever the row claims about itself, and a lowered verdict always
+> states which front lowered it.
+
+Front vocabulary, because two of these look alike and are not:
+
+- `unassessed`: nobody has looked yet. Blocks `good`. Never produces a skip.
+- `none`: we looked, and no evidence of that kind exists for this product.
+  No lab tests a toothbrush handle. This is a finding, and it satisfies the
+  gate. Never use it on an ingestible, where silence is itself informative.
+
+`unrated` is a real, shippable state, and the extension distinguishes its two
+flavours: a product we never researched reads "not reviewed" with a request a
+review button, and a held back product reads "checks in progress" naming what
+is done and what is still open.
 
 **The guard, restated:**
 
-- `good` requires **direct evidence at product scope**. Inheritance can never
-  produce a recommendation.
+- `good` requires **direct evidence at product scope**, on **all four checks**.
+  Inheritance can never produce a recommendation.
 - `careful` and `skip` **may** rest on inherited evidence, provided the copy
   names the scope it was inherited from.
+- A classifier reading of a note may flag a published good for review. It may
+  never convict it: the ceiling for an inferred adverse reading is `unrated`
+  and a person looks at it.
 
 ---
 
@@ -493,6 +519,13 @@ rather than silently asserting something old.
 | Packaging | 24 months | Container changes are common and unannounced |
 | Testing | 36 months | Results age slowly, but supply chains change |
 | Legal | 12 months, rolling | New filings and recalls appear continuously |
+
+**Implementation status.** What ships today: `ext.dated` records when a
+verdict last changed, and it moves only when the answer moves, never on a
+rebuild. Per-front dates and automatic TTL expiry are not yet enforced; until
+they are, the legal front's freshness rides on `check-recalls.py` stamping its
+check date into the note on every build, and the rest of this table is the
+standard the tooling is being built toward, not a description of it.
 
 ---
 
@@ -518,20 +551,46 @@ is the product. A buyer paying for this needs to know why, not just what colour.
 `basis: "inherited"` must always be accompanied by a note naming the scope it came
 from, because that is what gets shown to the shopper.
 
+**Implementation status.** This is the target record for AI-assisted research
+and the paid API, not what the file stores today. Today a front stores a flat
+status plus `frontNotes` prose, and scope, basis and the rule trail live on
+`ext`. New research should already be written with every field above stated in
+the note (source, date, LOD, mechanism), so the migration is a re-parse rather
+than a re-research.
+
 ---
 
 ## 9. What this means for the current data
 
-1. **483 brand line rows** carry a brand verdict onto products. Each needs
-   re-scoping. Where the category word genuinely constrains it, such as Pampers
-   diapers, it survives. Where it does not, it drops to `unrated`.
-2. **The 49 cookware brands** rated good on the AB 1200 disclosure fail rule 5.3
-   and section 6. A disclosure is not a formula pass. They drop to `unrated`
-   pending a per-line review, because a brand selling both PTFE and ceramic lines
-   cannot have one cookware verdict.
-3. **380 formula unknowns and 723 packaging unknowns** are mostly deskwork, not
-   research spend. Sections 2 and 3 resolve them from the label and the listing
-   photo, and non-disclosure converts to a `caution` rather than a blank.
-4. **Testing and legal gaps stay gaps.** They are the two fronts that genuinely
-   need paid research, and per the scorecard rule they simply do not render until
-   we have them.
+The completeness gate is live, and the honest consequence is a backlog: most
+rows the site rates good sit at "checks in progress" in the extension, mostly
+waiting on the legal and testing fronts. That is the standard working, not the
+standard failing. Two implications:
+
+1. **Filling a front releases verdicts by itself.** The gate restores a held
+   verdict the moment the missing checks land, so a batch legal sweep or a
+   testing citation run pays out immediately, with no verdict re-adjudication.
+2. **The `none` state is how durable goods clear.** A toothbrush or a steel
+   bowl is never going to have a lab dossier, and marking testing `none` after
+   actually checking is the legitimate way such a product reaches good.
+
+## 10. Vetting a product on request
+
+The end state this file is building toward: a customer asks about a product,
+a research run answers, and the shopper sees the verdict on the listing. The
+contract for that run, human or AI, lives in `docs/product-schema.md` section
+7 and boils down to three rules:
+
+1. **The model records evidence; the pipeline decides the verdict.** A research
+   run writes the brand entry and the product row with the findings in the
+   note: source, year, limit of detection, mechanism. `apply-product-rules`
+   and the gate turn that into the verdict under this standard. `authored`
+   blocks are reserved for rows a person signed off.
+2. **Nothing enters the file without validation.** `validate-data.py --stage
+   pre` rejects malformed shapes, duplicate brands, and rules that would
+   answer one listing two ways, before any tool can propagate them. The build
+   runs it again, with the full invariant set, on the file about to ship.
+3. **An unreviewed machine verdict never wears our badge.** `reviewed: false`
+   on the brand renders as "Research, not yet reviewed" in every surface.
+   Publishing an unchecked machine claim against a named brand at the moment
+   of purchase is the one mistake this system is designed to make impossible.

@@ -102,12 +102,32 @@ def main():
                 "careful" if "caution" in vals else "good")
             if e.get("cappedFrom") and RANK[ceiling] > RANK[e["verdict"]]:
                 e["verdict"] = min(e.pop("cappedFrom"), ceiling, key=RANK.get)
+                if e.get("capRestoreWhy") is not None:
+                    e["why"] = e.pop("capRestoreWhy")
                 released += 1
             if e.get("verdict") in ("good", "careful"):
                 if RANK[e["verdict"]] > RANK[ceiling]:
+                    # A lowered verdict has to say why, or the card shows a
+                    # warning with no stated reason. Earth Mama's balm shipped
+                    # a Careful badge over a note that still read like a
+                    # recommendation, because this branch changed the verdict
+                    # and left `why` behind.
+                    flagged = [k for k in FRONTS if f.get(k) in ("caution", "fail")]
                     e.setdefault("cappedFrom", e["verdict"])
+                    e.setdefault("capRestoreWhy", e.get("why", ""))
                     e["verdict"] = ceiling
+                    e["why"] = ("section 6 ceiling: "
+                                + ", ".join(f"{k} is {f.get(k)}" for k in flagged))
                     capped += 1
+
+            # Rows capped by an earlier version of this tool, which changed the
+            # verdict without writing a reason. Give them the reason now.
+            if (e.get("cappedFrom") and e.get("verdict") in ("careful", "skip")
+                    and not str(e.get("why") or "").strip()):
+                flagged = [k for k in FRONTS if f.get(k) in ("caution", "fail")]
+                e["why"] = ("section 6 ceiling: "
+                            + ", ".join(f"{k} is {f.get(k)}" for k in flagged)
+                            if flagged else "section 6 ceiling")
 
             if e.get("verdict") != "good":
                 continue

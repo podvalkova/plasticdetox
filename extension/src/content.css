@@ -118,6 +118,9 @@
 .pd-icon.caution { background: var(--pd-careful); }
 .pd-icon.fail    { background: var(--pd-skip); }
 .pd-icon.unknown { background: #fff; border: 1.5px dashed var(--pd-unknown); color: var(--pd-unknown); }
+/* "none" is a finding: checked, and nothing of that kind exists to test.
+   Solid green outline so it reads as settled, dash so it never reads as a pass. */
+.pd-icon.none    { background: #fff; border: 1.5px solid var(--pd-good); color: var(--pd-good); }
 
 .pd-front-body { min-width: 0; flex: 1; }
 .pd-front-name { font-size: 12.5px; font-weight: 600; color: var(--pd-text); }
