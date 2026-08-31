@@ -149,6 +149,24 @@ def clean_note(note):
     return re.sub(r"\s+", " ", n).strip()
 
 
+def evidence_text(prod):
+    """
+    Everything the classifier may read about this row: the display note plus
+    the `research` field.
+
+    Research lives in its own field on purpose. The first materials sweep
+    appended its facts to the note, and the next build silently deleted 77 of
+    121 of them, because store-to-products refreshes store row notes from the
+    store data on every run. A field no note-refreshing tool knows about is
+    the only text guaranteed to survive the pipeline.
+
+    Cleaned part by part, never as one string: the caveat stripper cuts from
+    "Worth knowing:" to the end of its text, and text joined after a note
+    that ends in a caveat would be amputated along with it.
+    """
+    return f"{clean_note(prod.get('note'))} {clean_note(prod.get('research'))}".strip()
+
+
 # The classifier was written for brand prose, where a claim comes wrapped in
 # argument. Store and registry notes are spec sheets: "18/8 stainless", "100%
 # cotton muslin", "medical grade borosilicate glass". Those name the material
@@ -404,7 +422,7 @@ def fronts_for(prod, brand):
     """Classify the row's own note. Never falls back to the brand's prose."""
     if prod.get("fronts") and prod["fronts"].get("authored"):
         return {f: prod["fronts"][f] for f in FRONTS if f in prod["fronts"]}, True
-    pseudo = {"reason": clean_note(prod.get("note")), "evidence": "", "stance": None}
+    pseudo = {"reason": evidence_text(prod), "evidence": "", "stance": None}
     return _bf.build_fronts(pseudo), False
 
 
@@ -667,7 +685,7 @@ def main():
             # raw note, so a caveat list or a contrast clause ("unlike brands
             # facing lawsuits") could flip its suit and recall regexes while
             # being invisible to the fronts step.
-            cleaned = clean_note(p.get("note"))
+            cleaned = evidence_text(p)
             f, fired = apply_rules(raw, cleaned, scope, basis,
                                    f"{p.get('name') or ''} {b.get('category') or ''}")
             new, why, disclose = correct(p.get("verdict"), f, cleaned,

@@ -119,7 +119,7 @@ def main():
                         and fr.get("formula") == "pass"
                         and fr.get("packaging") in (None, "unassessed", "unknown")
                         and not _a.GENERIC_PLASTIC.search(
-                            " " + _a.clean_note(p.get("note")).lower() + " ")):
+                            " " + _a.evidence_text(p).lower() + " ")):
                     fr["packaging"] = "pass"
                     filled_54 += 1
                 # The same principle for research that lands in the note after
@@ -129,7 +129,7 @@ def main():
                 # they act on stated materials and containers, never on the
                 # prose classifier's guesswork, and they never touch a front
                 # the author actually set.
-                cleaned = _a.clean_note(p.get("note"))
+                cleaned = _a.evidence_text(p)
                 ctx = f"{p.get('name') or ''} {b.get('category') or ''}"
                 if fr.get("packaging") in (None, "unassessed", "unknown"):
                     pk, pk_why = _a.packaging_severity(cleaned, ctx)
@@ -149,7 +149,7 @@ def main():
                 continue
             scope, basis = _a.scope_of(p), _a.basis_of(p)
             raw, authored = _a.fronts_for(p, b)
-            f, fired = _a.apply_rules(raw, _a.clean_note(p.get("note")), scope, basis,
+            f, fired = _a.apply_rules(raw, _a.evidence_text(p), scope, basis,
                                       f"{p.get('name') or ''} {b.get('category') or ''}")
             if authored:
                 v, why, disclose = p.get("verdict"), "hand authored scorecard", False
@@ -158,7 +158,7 @@ def main():
                 # caveat lists and contrast clauses that are not claims about
                 # this product, and correct() must not trip on them either.
                 v, why, disclose = _a.correct(p.get("verdict"), f,
-                                              _a.clean_note(p.get("note")),
+                                              _a.evidence_text(p),
                                               scope, basis, consumable=consumable,
                                               origin=p.get("origin"))
             prev = (p.get("ext") or {})

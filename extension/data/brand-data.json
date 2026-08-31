@@ -2471,27 +2471,29 @@
         "ext": {
           "verdict": "unrated",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: formula, packaging",
+          "why": "the note reads adversely on formula, needs a human look",
           "fronts": {
-            "formula": "unassessed",
-            "packaging": "unassessed",
+            "formula": "caution",
+            "packaging": "pass",
             "legal": "pass",
             "testing": "pass"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": [],
+          "rules": [
+            "3 packaging-matrix-pass"
+          ],
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
-          "frontNotes": {},
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "heldBack": [
-            "formula",
-            "packaging"
+          "frontNotes": {
+            "formula": "The ROES-50 five stage system removes nearly all microplastics and most PFAS (Recorded for APEC as a whole rather than this product specifically.)"
+          },
+          "inheritedFronts": [
+            "formula"
           ]
         },
-        "cat": "Water filters"
+        "cat": "Water filters",
+        "research": "Packaging: Under-sink durable unit; water path uses food-grade plastic tubing, a pressurized steel storage tank, a stainless steel check valve, and a lead-free faucet. Filter housing resin unstated. Materials: Five stages: polypropylene sediment filter, two extruded activated carbon block filters, TFC reverse osmosis membrane, coconut-shell refining carbon post-filter."
       }
     ],
     "rollup": {
@@ -2750,7 +2752,7 @@
       {
         "name": "OptimH2O whole house",
         "verdict": "good",
-        "note": "IAPMO certified to NSF/ANSI 53 for lead and cysts and NSF P473 for 98 percent PFOA and PFOS. About 90 percent chlorine and chloramine. Roughly $1,799, professional install. Packaging: Whole-house inline system; the brand product page does not state tank, housing, or water-contact materials. Materials: Media train is a sediment pre-filter, activated carbon with copper-zinc (KDF) media, and a sub-micron post-filter (Claryum technology).",
+        "note": "IAPMO certified to NSF/ANSI 53 for lead and cysts and NSF P473 for 98 percent PFOA and PFOS. About 90 percent chlorine and chloramine. Roughly $1,799, professional install.",
         "ext": {
           "verdict": "unrated",
           "dated": "2026-08-29",
@@ -2783,7 +2785,8 @@
           ]
         ],
         "matchFrom": "name",
-        "cat": "Water filters"
+        "cat": "Water filters",
+        "research": "Packaging: Whole-house inline system; the brand product page does not state tank, housing, or water-contact materials. Materials: Media train is a sediment pre-filter, activated carbon with copper-zinc (KDF) media, and a sub-micron post-filter (Claryum technology)."
       },
       {
         "name": "AQ-4100 shower filter",
@@ -2931,7 +2934,7 @@
       {
         "name": "Glass Carafe",
         "verdict": "good",
-        "note": "IAPMO certified to NSF/ANSI 42, 53, 58, 401 and 372. Glass collection carafe, plastic fill tank. Packaging: Dispense carafe is borosilicate glass; tap-water fill tank and housing are BPA-free plastic, resin unstated on the Carafe listings. Materials: Four-stage RO: mechanical pre-filter, activated carbon pre-filter, reverse osmosis membrane, activated coconut-shell carbon VOC polishing filter.",
+        "note": "IAPMO certified to NSF/ANSI 42, 53, 58, 401 and 372. Glass collection carafe, plastic fill tank.",
         "asins": [
           "B0BT4FYHFJ"
         ],
@@ -2959,7 +2962,8 @@
             "formula"
           ]
         },
-        "cat": "Water filters"
+        "cat": "Water filters",
+        "research": "Packaging: Dispense carafe is borosilicate glass; tap-water fill tank and housing are BPA-free plastic, resin unstated on the Carafe listings. Materials: Four-stage RO: mechanical pre-filter, activated carbon pre-filter, reverse osmosis membrane, activated coconut-shell carbon VOC polishing filter."
       },
       {
         "name": "Classic",
@@ -3391,7 +3395,7 @@
       {
         "name": "Laundry detergent",
         "verdict": "good",
-        "note": "EWG verified plant based formula with zero fragrance or phthalates. Packaging: Contents are liquid laundry detergent in an HDPE #2 bottle; brand sells boxed eco-refills so the bottle is reused.",
+        "note": "EWG verified plant based formula with zero fragrance or phthalates.",
         "asins": [
           "B093TNNR5F"
         ],
@@ -3416,7 +3420,8 @@
           "cappedFrom": "good",
           "capRestoreWhy": "independent lab result at sku scope"
         },
-        "cat": "Laundry detergent"
+        "cat": "Laundry detergent",
+        "research": "Packaging: Contents are liquid laundry detergent in an HDPE #2 bottle; brand sells boxed eco-refills so the bottle is reused."
       },
       {
         "name": "Eco diapers",
@@ -4241,7 +4246,7 @@
           "B07NJPR4TN"
         ],
         "verdict": "good",
-        "note": "EWG Verified, no fragrance, no sulfates, no PEGs. Packaging: Contents are a lotion in a plastic squeeze/pump bottle; brand page cites 100% post-consumer recycled plastic, resin unstated. Materials: Water plus safflower and sunflower seed oil base with 2% colloidal oat, shea butter, jojoba oil, calendula and chamomile extracts; fragrance-free.",
+        "note": "EWG Verified, no fragrance, no sulfates, no PEGs.",
         "origin": "article",
         "source": "top-100-baby-kids-products-amazon.html",
         "ext": {
@@ -4263,7 +4268,8 @@
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {}
         },
-        "cat": "Baby lotion"
+        "cat": "Baby lotion",
+        "research": "Packaging: Contents are a lotion in a plastic squeeze/pump bottle; brand page cites 100% post-consumer recycled plastic, resin unstated. Materials: Water plus safflower and sunflower seed oil base with 2% colloidal oat, shea butter, jojoba oil, calendula and chamomile extracts; fragrance-free."
       },
       {
         "name": "Babo Botanicals baby lotion",
@@ -4293,7 +4299,7 @@
         "cat": "Baby lotion",
         "origin": "hand",
         "source": "alternative",
-        "note": "The EWG Verified lotions and washes remain good choices. The exception is the Sensitive Baby Diaper Cream: also EWG Verified, yet 2025 independent testing reported concerning lead levels in it, a reminder that certification audits the formula while contamination requires a lab test. Skip the zinc diaper cream, the rest of the line is fine. Packaging: Lotions ship in plastic bottles; brand cites post-consumer recycled plastic on the Sensitive Baby lotion page, resin unstated.",
+        "note": "The EWG Verified lotions and washes remain good choices. The exception is the Sensitive Baby Diaper Cream: also EWG Verified, yet 2025 independent testing reported concerning lead levels in it, a reminder that certification audits the formula while contamination requires a lab test. Skip the zinc diaper cream, the rest of the line is fine.",
         "ext": {
           "verdict": "careful",
           "dated": "2026-08-29",
@@ -4314,7 +4320,8 @@
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "cappedFrom": "good",
           "capRestoreWhy": ""
-        }
+        },
+        "research": "Packaging: Lotions ship in plastic bottles; brand cites post-consumer recycled plastic on the Sensitive Baby lotion page, resin unstated."
       }
     ],
     "rollup": {
@@ -4806,7 +4813,7 @@
       {
         "name": "Zinc diaper cream",
         "verdict": "good",
-        "note": "One of the cleanest formulas on paper, 10 percent USP zinc plus four organic ingredients, NSF/ANSI 305, but no independent metals test and the Amazon listing has gone unavailable. Packaging: Cream ships in a 2.9 fl oz plastic squeeze tube with 50% post-consumer recycled content; resin unstated.",
+        "note": "One of the cleanest formulas on paper, 10 percent USP zinc plus four organic ingredients, NSF/ANSI 305, but no independent metals test and the Amazon listing has gone unavailable.",
         "ext": {
           "verdict": "careful",
           "why": "section 6 ceiling: packaging is caution",
@@ -4839,7 +4846,8 @@
           ]
         ],
         "matchFrom": "name",
-        "cat": "Diaper cream"
+        "cat": "Diaper cream",
+        "research": "Packaging: Cream ships in a 2.9 fl oz plastic squeeze tube with 50% post-consumer recycled content; resin unstated."
       }
     ],
     "fronts": {
@@ -5778,27 +5786,29 @@
         "ext": {
           "verdict": "unrated",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: formula, packaging",
+          "why": "a recommendation needs its checks done; still to do: formula",
           "fronts": {
             "formula": "unassessed",
-            "packaging": "unassessed",
+            "packaging": "pass",
             "legal": "pass",
             "testing": "pass"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": [],
+          "rules": [
+            "3 packaging-matrix-pass"
+          ],
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {},
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
           "heldBack": [
-            "formula",
-            "packaging"
+            "formula"
           ]
         },
-        "cat": "Supplements"
+        "cat": "Supplements",
+        "research": "Packaging: Contents are unflavored creatine powder in a plastic tub (per prior note); tub resin unstated by brand or retailers. Materials: Single ingredient: Creapure micronized creatine monohydrate, 5 g per serving; brand page states NSF Certified for Sport (note previously recorded Informed Sport)."
       }
     ],
     "rollup": {
@@ -8509,7 +8519,7 @@
         "cat": "Baby bottles",
         "origin": "hand",
         "source": "alternative",
-        "note": "Recommended laundry detergent tablets and cleaning tablets that reuse one bottle, avoiding liquid plastic bottles, SLES, PEG, and 1,4 dioxane. Packaging: Tablet refills ship in compostable FSC paper wrappers lined with thin aluminum and PLA. Reusable containers: Tritan cleaning spray bottle, glass hand-soap bottle, tin-coated steel laundry/dishwasher tins.",
+        "note": "Recommended laundry detergent tablets and cleaning tablets that reuse one bottle, avoiding liquid plastic bottles, SLES, PEG, and 1,4 dioxane.",
         "ext": {
           "verdict": "good",
           "dated": "2026-08-29",
@@ -8528,7 +8538,8 @@
             "packaging": "Surfactant contents in unspecified plastic, diluted and rinsed, never left on skin."
           },
           "legalNote": "Checked on 2026-08-31. A 2020 National Advertising Division review of recyclability claims was resolved when Blueland revised the claims; no safety action on record."
-        }
+        },
+        "research": "Packaging: Tablet refills ship in compostable FSC paper wrappers lined with thin aluminum and PLA. Reusable containers: Tritan cleaning spray bottle, glass hand-soap bottle, tin-coated steel laundry/dishwasher tins."
       }
     ],
     "rollup": {
@@ -8931,7 +8942,7 @@
         "cat": "Baby formula",
         "origin": "hand",
         "source": "alternative",
-        "note": "Top Choices tier in Consumer Reports 2025 and 2026 with non-detect or low heavy metals/BPA and lactose as the primary carb. Packaging: Powdered formula ships in a 14.1 oz (also 12.7 and 24 oz) can; can material unstated by brand site, Target, or reviews checked.",
+        "note": "Top Choices tier in Consumer Reports 2025 and 2026 with non-detect or low heavy metals/BPA and lactose as the primary carb.",
         "ext": {
           "verdict": "unrated",
           "dated": "2026-08-29",
@@ -8952,7 +8963,8 @@
           "heldFrom": "good",
           "frontNotes": {},
           "legalNote": "Checked the FDA enforcement database on 2026-08-31. One recall on record: the original 2019 launch formula, for inadequate nutrition labeling, closed and remedied before the current FDA compliant formula launched in 2021. Now informational."
-        }
+        },
+        "research": "Packaging: Powdered formula ships in a 14.1 oz (also 12.7 and 24 oz) can; can material unstated by brand site, Target, or reviews checked."
       }
     ],
     "rollup": {
@@ -10004,7 +10016,7 @@
         "cat": "Baby bottles",
         "origin": "hand",
         "source": "alternative",
-        "note": "MADE SAFE certified fragrance-free concentrate with no quats, preservatives, or dyes. Packaging: Liquid concentrate ships in a 33.8 fl oz plastic bottle, resin unstated; brand sells a separate glass-bottle kit for diluted mixes.",
+        "note": "MADE SAFE certified fragrance-free concentrate with no quats, preservatives, or dyes.",
         "ext": {
           "verdict": "unrated",
           "dated": "2026-08-29",
@@ -10025,7 +10037,8 @@
           "heldFrom": "good",
           "frontNotes": {},
           "legalNote": "Checked on 2026-08-31. The 2015 dispute over all natural claims led to a voluntary withdrawal and an 18 month reformulation; the current formula postdates it and no recall or regulatory action is on record."
-        }
+        },
+        "research": "Packaging: Liquid concentrate ships in a 33.8 fl oz plastic bottle, resin unstated; brand sells a separate glass-bottle kit for diluted mixes."
       }
     ],
     "rollup": {
@@ -10816,7 +10829,8 @@
             "packaging"
           ]
         },
-        "cat": "Pantry"
+        "cat": "Pantry",
+        "research": "Packaging: Whole shelled almonds ship in resealable bags (1 lb and 5 lb on the farm site); bag material unstated by brand. Materials: Sole ingredient is certified Regenerative Organic almonds from one California farm; Amazon-listed lots are steam pasteurized, the farm-site truly raw line is untreated."
       }
     ],
     "cautions": [
@@ -11521,20 +11535,23 @@
           "why": "section 6 ceiling: legal is caution",
           "fronts": {
             "formula": "pass",
-            "packaging": "unassessed",
+            "packaging": "pass",
             "legal": "caution",
             "testing": "pass"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": [],
+          "rules": [
+            "3 packaging-matrix-pass"
+          ],
           "legalNote": "A California Prop 65 notice filed August 2025 alleged PFOS in Caboo bamboo baby wipes sold without a warning, and the docket shows a settlement. That is a recent, settled finding about this product category.",
           "frontNotes": {},
           "cappedFrom": "good",
           "capRestoreWhy": "a vetted store pick, chosen by a person at product scope"
         },
-        "cat": "Baby wipes"
+        "cat": "Baby wipes",
+        "research": "Packaging: Wet wipes come in soft plastic film pouches with a resealable peel tab, 72 per pack; film resin unstated. Multipacks add a paperboard carton."
       },
       {
         "name": "Whole range",
@@ -11627,7 +11644,7 @@
         "ext": {
           "verdict": "unrated",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: packaging",
+          "why": "the note reads adversely on packaging, needs a human look",
           "fronts": {
             "formula": "pass",
             "packaging": "unassessed",
@@ -11637,16 +11654,14 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": [],
+          "rules": [
+            "3 packaging-matrix-fail"
+          ],
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "heldBack": [
-            "packaging"
-          ]
+          "frontNotes": {}
         },
-        "cat": "Diaper cream"
+        "cat": "Diaper cream",
+        "research": "Packaging: Ships in an 82 g / 2.9 oz plastic squeeze tube with a plastic cap; resin unstated. Contents are a water-free zinc oxide ointment."
       },
       {
         "name": "California Baby Super Sensitive SPF 30+",
@@ -11659,7 +11674,7 @@
         "ext": {
           "verdict": "unrated",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: packaging",
+          "why": "the note reads adversely on packaging, needs a human look",
           "fronts": {
             "formula": "pass",
             "packaging": "unassessed",
@@ -11669,16 +11684,14 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": [],
+          "rules": [
+            "3 packaging-matrix-caution"
+          ],
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "heldBack": [
-            "packaging"
-          ]
+          "frontNotes": {}
         },
-        "cat": "Sunscreen"
+        "cat": "Sunscreen",
+        "research": "Packaging: Ships in a plastic squeeze tube with a flip cap; brand sells 1.8, 2.9, and 6 oz tubes; resin unstated. Contents are mineral sunscreen lotion."
       },
       {
         "name": "Whole range",
@@ -13048,7 +13061,7 @@
       {
         "name": "Laundry Powder",
         "verdict": "good",
-        "note": "Sodium carbonate, C12-16 Pareth-9, C10-14 alcohol ethoxylate, sodium metasilicate. Highest owner rating in the category at 4.7 stars. Packaging: The 2.64 lb / 100 load size ships in a resealable stand-up plastic zip pouch; resin unstated. Contents are powder detergent.",
+        "note": "Sodium carbonate, C12-16 Pareth-9, C10-14 alcohol ethoxylate, sodium metasilicate. Highest owner rating in the category at 4.7 stars.",
         "asins": [
           "B0018B15FE"
         ],
@@ -13072,7 +13085,8 @@
           },
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found."
         },
-        "cat": "Laundry detergent"
+        "cat": "Laundry detergent",
+        "research": "Packaging: The 2.64 lb / 100 load size ships in a resealable stand-up plastic zip pouch; resin unstated. Contents are powder detergent."
       }
     ],
     "fronts": {
@@ -14131,7 +14145,7 @@
         "ext": {
           "verdict": "unrated",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: packaging",
+          "why": "the note reads adversely on packaging, needs a human look",
           "fronts": {
             "formula": "pass",
             "packaging": "unassessed",
@@ -14141,16 +14155,14 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": [],
+          "rules": [
+            "3 packaging-matrix-fail"
+          ],
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "heldBack": [
-            "packaging"
-          ]
+          "frontNotes": {}
         },
-        "cat": "Dental floss"
+        "cat": "Dental floss",
+        "research": "Packaging: Floss spool sits in a refillable plastic dispenser; resin unstated; brand calls the plastic dispensers endlessly refillable. Shipping boxes are 100% recycled paper."
       }
     ],
     "cautions": [
@@ -14449,12 +14461,12 @@
         "note": "German engineered hand grinder with high nitrogen stainless steel burrs. Glass catch jar and stainless steel body ensure zero plastic contact with your coffee. Steel and glass, no plastic contact. Worth knowing: Premium price point\", \"Manual effort required\", \"Can be hard to find in stock.",
         "origin": "store",
         "ext": {
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: packaging",
+          "why": "a vetted store pick, chosen by a person at product scope",
           "fronts": {
             "formula": "pass",
-            "packaging": "unassessed",
+            "packaging": "pass",
             "legal": "pass",
             "testing": "unassessed"
           },
@@ -14463,14 +14475,10 @@
           "disclose": false,
           "rules": [],
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "heldBack": [
-            "packaging"
-          ]
+          "frontNotes": {}
         },
-        "cat": "Coffee"
+        "cat": "Coffee",
+        "research": "Packaging: Burrs are Nitro Rex high-alloy steel; grounds collect in the included dark glass jar with lid or a transparent QTP polymer jar. Body is a powder-coated metal cylinder; crank has a lacquered oak knob."
       }
     ],
     "rollup": {
@@ -15596,12 +15604,12 @@
         "note": "Six EWG Verified ingredients, 99% water, on a VEOCEL lyocell and viscose cloth with no plastic fiber. National Eczema Association seal. EWG Verified, plastic free lyocell, PFAS non detect. Worth knowing: Highest cost per wipe\", \"Fewer wipes per pack.",
         "origin": "store",
         "ext": {
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: packaging",
+          "why": "a vetted store pick, chosen by a person at product scope",
           "fronts": {
             "formula": "pass",
-            "packaging": "unassessed",
+            "packaging": "pass",
             "legal": "pass",
             "testing": "unassessed"
           },
@@ -15609,17 +15617,14 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
-            "4.3 non-detect-without-lod"
+            "4.3 non-detect-without-lod",
+            "3 packaging-matrix-pass"
           ],
           "legalNote": "Checked on 2026-08-31. A 2024 suit alleging false PFAS free marketing was dismissed for lack of standing, with no adverse finding entered and no recall; refiling was left open.",
-          "frontNotes": {},
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "heldBack": [
-            "packaging"
-          ]
+          "frontNotes": {}
         },
-        "cat": "Baby wipes"
+        "cat": "Baby wipes",
+        "research": "Packaging: Wet wipes come in soft plastic film packs with a resealable flap; film resin unstated. Multipacks add a paperboard carton."
       },
       {
         "name": "Fully Disclosed Diapers",
@@ -15655,7 +15660,7 @@
           "B0C2DCB188"
         ],
         "verdict": "good",
-        "note": "EWG Verified across every size as of June 2026. Totally chlorine free pulp, fully disclosed ingredient list, excellent absorbency, no fragrance or lotion. Badges: EWG Verified, Fully disclosed. Packaging: Dry diapers ship in plastic film inner bags packed inside a corrugated cardboard box; film resin unstated.",
+        "note": "EWG Verified across every size as of June 2026. Totally chlorine free pulp, fully disclosed ingredient list, excellent absorbency, no fragrance or lotion. Badges: EWG Verified, Fully disclosed.",
         "origin": "registry",
         "ext": {
           "verdict": "good",
@@ -15676,7 +15681,8 @@
           "legalNote": "Checked on 2026-08-31. A 2024 suit alleging false PFAS free marketing was dismissed for lack of standing, with no adverse finding entered and no recall; refiling was left open.",
           "frontNotes": {}
         },
-        "cat": "Diapers"
+        "cat": "Diapers",
+        "research": "Packaging: Dry diapers ship in plastic film inner bags packed inside a corrugated cardboard box; film resin unstated."
       },
       {
         "name": "Whole range",
@@ -16704,10 +16710,10 @@
         "ext": {
           "verdict": "unrated",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: packaging",
+          "why": "a recommendation needs its checks done; still to do: formula",
           "fronts": {
-            "formula": "pass",
-            "packaging": "unassessed",
+            "formula": "unassessed",
+            "packaging": "pass",
             "legal": "pass",
             "testing": "unassessed"
           },
@@ -16715,17 +16721,18 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
-            "2 formula-read-from-materials"
+            "3 packaging-matrix-pass"
           ],
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {},
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
           "heldBack": [
-            "packaging"
+            "formula"
           ]
         },
-        "cat": "Electrolytes"
+        "cat": "Electrolytes",
+        "research": "Packaging: Powder comes in single-serve 0.28 oz film stick packets, 14 to a resealable stand-up plastic pouch; packet film resin unstated."
       },
       {
         "name": "Cure Hydration electrolytes",
@@ -16745,7 +16752,7 @@
         "cat": "Electrolytes",
         "origin": "hand",
         "source": "alternative",
-        "note": "Coconut water base with no artificial sweeteners or colors, non detect for total fluorine in 2023 independent screening, and per batch certificates of analysis published for lead, cadmium, arsenic and mercury. Non GMO Project Verified and a certified B Corporation. Packaging: Single-serve film stick packets sold 14 or 28 per resealable plastic pouch, plus a bulk jar option.",
+        "note": "Coconut water base with no artificial sweeteners or colors, non detect for total fluorine in 2023 independent screening, and per batch certificates of analysis published for lead, cadmium, arsenic and mercury. Non GMO Project Verified and a certified B Corporation.",
         "ext": {
           "verdict": "good",
           "dated": "2026-08-29",
@@ -16764,7 +16771,8 @@
             "packaging": "Aqueous contents in unspecified plastic."
           },
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either."
-        }
+        },
+        "research": "Packaging: Single-serve film stick packets sold 14 or 28 per resealable plastic pouch, plus a bulk jar option."
       }
     ],
     "rollup": {
@@ -17232,7 +17240,8 @@
             "packaging"
           ]
         },
-        "cat": "Cribs & nursery"
+        "cat": "Cribs & nursery",
+        "research": "Packaging: Durable good, no contents; body is 100% solid New Zealand pine wood with a non-toxic multi-step painted finish, stated lead and phthalate safe. Materials: 100% solid FSC certified New Zealand pine, non-toxic paint, GREENGUARD Gold certified; retailer specs also list a TSCA compliant MDF board over the metal mattress support."
       }
     ],
     "cautions": [
@@ -17849,12 +17858,12 @@
           "B0FQNXKHTW"
         ],
         "ext": {
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: packaging",
+          "why": "a vetted store pick, chosen by a person at product scope",
           "fronts": {
             "formula": "pass",
-            "packaging": "unassessed",
+            "packaging": "pass",
             "legal": "pass",
             "testing": "unassessed"
           },
@@ -17863,14 +17872,10 @@
           "disclose": false,
           "rules": [],
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "heldBack": [
-            "packaging"
-          ]
+          "frontNotes": {}
         },
-        "cat": "Dental floss"
+        "cat": "Dental floss",
+        "research": "Packaging: Refillable glass container with a stainless steel cap and cutter holds the silk floss spool; refills ship in compostable PLA bags inside a recyclable paperboard box."
       }
     ],
     "cautions": [
@@ -18144,7 +18149,7 @@
         "cat": "Sea salt",
         "origin": "hand",
         "source": "alternative",
-        "note": "Our salt pick site wide. Additive free kosher salt made from underground brine rather than seawater, so it is low in microplastics, and it has returned non detect for lead, arsenic, cadmium and mercury across multiple independent rounds. Also the base we recommend for a homemade electrolyte drink. Packaging: Ships in a cardboard box with a side pour spout (3 lb); contents are dry kosher salt crystals.",
+        "note": "Our salt pick site wide. Additive free kosher salt made from underground brine rather than seawater, so it is low in microplastics, and it has returned non detect for lead, arsenic, cadmium and mercury across multiple independent rounds. Also the base we recommend for a homemade electrolyte drink.",
         "ext": {
           "verdict": "unrated",
           "dated": "2026-08-29",
@@ -18165,7 +18170,8 @@
           "heldFrom": "good",
           "frontNotes": {},
           "legalNote": "FDA database matches reviewed on 2026-08-31: the recalling firm, Diamond Crystal Brands of Savannah GA, is a foodservice packet company unrelated to the Diamond Crystal salt brand. No recall on record for this brand."
-        }
+        },
+        "research": "Packaging: Ships in a cardboard box with a side pour spout (3 lb); contents are dry kosher salt crystals."
       }
     ],
     "rollup": {
@@ -18296,7 +18302,7 @@
           "B09B85YVMD"
         ],
         "verdict": "good",
-        "note": "Concentrated bio enzyme detergent in glass amber bottles. EWG Verified, no synthetic fragrance. Badges: EWG Verified. Packaging: Liquid detergent ships in a recyclable aluminum bottle, not glass; the companion baby booster powder comes in a recyclable cardboard tube.",
+        "note": "Concentrated bio enzyme detergent in glass amber bottles. EWG Verified, no synthetic fragrance. Badges: EWG Verified.",
         "origin": "registry",
         "ext": {
           "verdict": "good",
@@ -18317,7 +18323,8 @@
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
           "frontNotes": {}
         },
-        "cat": "Laundry detergent"
+        "cat": "Laundry detergent",
+        "research": "Packaging: Liquid detergent ships in a recyclable aluminum bottle, not glass; the companion baby booster powder comes in a recyclable cardboard tube."
       },
       {
         "name": "Dirty Labs laundry detergent",
@@ -18363,7 +18370,7 @@
         "cat": "Laundry detergent",
         "origin": "hand",
         "source": "alternative",
-        "note": "Bio-enzyme formulas are free of SLS/SLES, phosphates, 1,4-dioxane, optical brighteners, dyes, and Prop 65 chemicals, EWG Verified with EPA Safer Choice and USDA Biobased certs, and sold in recyclable aluminum and cardboard packaging. Packaging: Liquid detergent ships in a recyclable aluminum bottle, 8.6 fl oz (32 loads) or 21.6 fl oz (80 loads); cap material unstated.",
+        "note": "Bio-enzyme formulas are free of SLS/SLES, phosphates, 1,4-dioxane, optical brighteners, dyes, and Prop 65 chemicals, EWG Verified with EPA Safer Choice and USDA Biobased certs, and sold in recyclable aluminum and cardboard packaging.",
         "ext": {
           "verdict": "unrated",
           "dated": "2026-08-29",
@@ -18384,7 +18391,8 @@
           "heldFrom": "good",
           "frontNotes": {},
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found."
-        }
+        },
+        "research": "Packaging: Liquid detergent ships in a recyclable aluminum bottle, 8.6 fl oz (32 loads) or 21.6 fl oz (80 loads); cap material unstated."
       }
     ],
     "rollup": {
@@ -19302,9 +19310,9 @@
         "ext": {
           "verdict": "unrated",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: packaging",
+          "why": "the note reads adversely on packaging, needs a human look",
           "fronts": {
-            "formula": "pass",
+            "formula": "unassessed",
             "packaging": "unassessed",
             "legal": "pass",
             "testing": "unassessed"
@@ -19313,17 +19321,13 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
-            "2 formula-read-from-materials"
+            "3 packaging-matrix-fail"
           ],
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "heldBack": [
-            "packaging"
-          ]
+          "frontNotes": {}
         },
-        "cat": "Makeup"
+        "cat": "Makeup",
+        "research": "Packaging: 6 ml plastic mascara tube, resin unstated (brand converting to 100% recycled plastic); outer folding box is 100% recycled FSC board. Contents are cream mascara."
       }
     ],
     "cautions": [
@@ -19457,9 +19461,9 @@
         "ext": {
           "verdict": "unrated",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: packaging",
+          "why": "the note reads adversely on packaging, needs a human look",
           "fronts": {
-            "formula": "pass",
+            "formula": "unassessed",
             "packaging": "unassessed",
             "legal": "pass",
             "testing": "unassessed"
@@ -19467,18 +19471,12 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": [
-            "2 formula-read-from-materials"
-          ],
+          "rules": [],
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "heldBack": [
-            "packaging"
-          ]
+          "frontNotes": {}
         },
-        "cat": "Makeup"
+        "cat": "Makeup",
+        "research": "Packaging: Brand states all its make-up products are packaged in plastic, resin unstated; contents are liquid eyeliner."
       }
     ],
     "cautions": [
@@ -19659,7 +19657,7 @@
         "cat": "Cleaning products",
         "origin": "hand",
         "source": "alternative",
-        "note": "Named as a powder detergent in cardboard packaging that avoids plastic. Packaging: Pods ship in a recyclable paperboard box; each dose is liquid detergent enclosed in a water-soluble polyvinyl alcohol (PVOH) film that dissolves in the wash.",
+        "note": "Named as a powder detergent in cardboard packaging that avoids plastic.",
         "ext": {
           "verdict": "unrated",
           "dated": "2026-08-29",
@@ -19680,7 +19678,8 @@
           "heldFrom": "good",
           "frontNotes": {},
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found."
-        }
+        },
+        "research": "Packaging: Pods ship in a recyclable paperboard box; each dose is liquid detergent enclosed in a water-soluble polyvinyl alcohol (PVOH) film that dissolves in the wash."
       }
     ]
   },
@@ -20099,7 +20098,8 @@
             "packaging"
           ]
         },
-        "cat": "Deodorant"
+        "cat": "Deodorant",
+        "research": "Packaging: Twist-up stick; brand states packaging is made from recycled materials and is curbside recyclable with cap attached, material type unstated. Contents are a solid deodorant stick."
       },
       {
         "name": "Each & Every deodorant",
@@ -20114,7 +20114,7 @@
         "cat": "Deodorant",
         "origin": "hand",
         "source": "alternative",
-        "note": "Recommended aluminum free stick deodorant with no aerosol propellant, plant based with no PEG or dimethicone. Packaging: Twist-up stick; brand states packaging is made from recycled materials and is curbside recyclable with cap attached, material type unstated. Contents are a solid deodorant stick.",
+        "note": "Recommended aluminum free stick deodorant with no aerosol propellant, plant based with no PEG or dimethicone.",
         "ext": {
           "verdict": "unrated",
           "dated": "2026-08-29",
@@ -20135,7 +20135,8 @@
           "heldFrom": "good",
           "frontNotes": {},
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either."
-        }
+        },
+        "research": "Packaging: Twist-up stick; brand states packaging is made from recycled materials and is curbside recyclable with cap attached, material type unstated. Contents are a solid deodorant stick."
       }
     ],
     "rollup": {
@@ -20564,7 +20565,7 @@
         "cat": "Baby bottles",
         "origin": "hand",
         "source": "alternative",
-        "note": "Recommended cleansers, serums, and milk in glass bottles with short vegan ingredient lists. Packaging: Skincare ships in flint glass containers, including recycled glass, with aluminum and post-consumer resin closures; contents are liquid cleansers, serums, and lotions.",
+        "note": "Recommended cleansers, serums, and milk in glass bottles with short vegan ingredient lists.",
         "ext": {
           "verdict": "unrated",
           "dated": "2026-08-29",
@@ -20585,7 +20586,8 @@
           "heldFrom": "good",
           "frontNotes": {},
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either."
-        }
+        },
+        "research": "Packaging: Skincare ships in flint glass containers, including recycled glass, with aluminum and post-consumer resin closures; contents are liquid cleansers, serums, and lotions."
       }
     ],
     "rollup": {
@@ -20830,7 +20832,7 @@
           "B07NSBTZ22"
         ],
         "verdict": "good",
-        "note": "EWG Verified, organic certified, no fragrance, full disclosure. Packaging: Now sold as Simply Non-Scents Baby Lotion in an 8 oz squeeze bottle; bottle material unstated by brand. Contents are a lotion. Materials: Water and organic aloe juice base with organic olive oil, shea butter, oat protein, and organic calendula flower extract; NSF/ANSI 305 organic certified by Oregon Tilth.",
+        "note": "EWG Verified, organic certified, no fragrance, full disclosure.",
         "origin": "article",
         "source": "top-100-baby-kids-products-amazon.html",
         "ext": {
@@ -20856,7 +20858,8 @@
             "packaging"
           ]
         },
-        "cat": "Baby lotion"
+        "cat": "Baby lotion",
+        "research": "Packaging: Now sold as Simply Non-Scents Baby Lotion in an 8 oz squeeze bottle; bottle material unstated by brand. Contents are a lotion. Materials: Water and organic aloe juice base with organic olive oil, shea butter, oat protein, and organic calendula flower extract; NSF/ANSI 305 organic certified by Oregon Tilth."
       },
       {
         "name": "Mineral Baby Sunscreen SPF 40",
@@ -21484,7 +21487,7 @@
         "cat": "Food storage",
         "origin": "hand",
         "source": "alternative",
-        "note": "Four large 35oz glass containers with matching glass lids, so nothing but glass touches your food. Airtight leak proof seal, microwave, oven, freezer, and dishwasher safe. Zero plastic contact. Vetted for the store; this verdict covers the product we listed, not the brand's whole range. Packaging: Durable good: container body and lid are both glass (4-pack, 35 oz, airtight, leak proof); food-contact surface is glass. Lid sealing gasket material unstated in listing title.",
+        "note": "Four large 35oz glass containers with matching glass lids, so nothing but glass touches your food. Airtight leak proof seal, microwave, oven, freezer, and dishwasher safe. Zero plastic contact. Vetted for the store; this verdict covers the product we listed, not the brand's whole range.",
         "ext": {
           "verdict": "unrated",
           "dated": "2026-08-29",
@@ -21505,7 +21508,8 @@
           "heldFrom": "good",
           "frontNotes": {},
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either."
-        }
+        },
+        "research": "Packaging: Durable good: container body and lid are both glass (4-pack, 35 oz, airtight, leak proof); food-contact surface is glass. Lid sealing gasket material unstated in listing title."
       }
     ],
     "cautions": [
@@ -23250,7 +23254,7 @@
         "ext": {
           "verdict": "unrated",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: formula",
+          "why": "the note reads adversely on formula, needs a human look",
           "fronts": {
             "formula": "unassessed",
             "packaging": "pass",
@@ -23264,14 +23268,10 @@
             "3 packaging-stated-plastic-free"
           ],
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "heldBack": [
-            "formula"
-          ]
+          "frontNotes": {}
         },
-        "cat": "Shampoo"
+        "cat": "Shampoo",
+        "research": "Materials: ASIN now sells the renamed Scalp Health bar: sodium coco-sulfate and sodium cocoyl isethionate surfactant base with decyl glucoside, oatmeal, karanja oil, neem seed oil, and cocoa butter."
       },
       {
         "name": "Ethique Guardian Conditioner Bar",
@@ -23282,11 +23282,11 @@
         "note": "Solid conditioner bar with compostable cardboard packaging. Formulated for normal to dry hair. Compostable packaging, pairs with shampoo bar. Worth knowing: Bar requires dry storage\", \"Coverage varies by hair type\", \"Slower to apply than liquid.",
         "origin": "store",
         "ext": {
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: formula",
+          "why": "a vetted store pick, chosen by a person at product scope",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "pass",
             "packaging": "pass",
             "legal": "pass",
             "testing": "unassessed"
@@ -23295,17 +23295,14 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
-            "3 packaging-stated-plastic-free"
+            "3 packaging-stated-plastic-free",
+            "2 formula-read-from-materials"
           ],
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "heldBack": [
-            "formula"
-          ]
+          "frontNotes": {}
         },
-        "cat": "Conditioner"
+        "cat": "Conditioner",
+        "research": "Materials: Solid 60 g conditioner bar; base is behentrimonium methosulfate with brassica alcohol, hydrogenated castor oil, glycerine, coconut oil, and cocoa seed butter."
       }
     ],
     "rollup": {
@@ -24090,28 +24087,26 @@
         "note": "Stainless steel interior with precision temperature control. Built in brew stopwatch and gooseneck spout for perfect pour overs. Zero plastic contact. Worth knowing: Premium price point\", \"Small 0.9L capacity\", \"Gooseneck only.",
         "origin": "store",
         "ext": {
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: packaging",
+          "why": "a vetted store pick, chosen by a person at product scope",
           "fronts": {
             "formula": "pass",
-            "packaging": "unassessed",
+            "packaging": "pass",
             "legal": "pass",
             "testing": "unassessed"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": [],
+          "rules": [
+            "3 packaging-matrix-pass"
+          ],
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
-          "frontNotes": {},
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "heldBack": [
-            "packaging"
-          ]
+          "frontNotes": {}
         },
-        "cat": "Coffee"
+        "cat": "Coffee",
+        "research": "Packaging: Kettle body and water interior are 304 18/8 stainless steel; handle and lid pull are BPA-free polypropylene; silicone ring around the internal temperature probe."
       },
       {
         "name": "Fellow coffee",
@@ -24706,7 +24701,8 @@
             "packaging"
           ]
         },
-        "cat": "Coffee"
+        "cat": "Coffee",
+        "research": "Packaging: Durable brewer, no contents; cast aluminum press stand with stainless steel brew head, removable stainless steel spout, and all-stainless bottomless portafilter."
       },
       {
         "name": "Flair Classic Manual Lever Espresso Maker",
@@ -24738,7 +24734,8 @@
             "packaging"
           ]
         },
-        "cat": "Coffee"
+        "cat": "Coffee",
+        "research": "Packaging: Durable brewer, no contents; die-cast aluminum stand and post with a stainless steel brewing head; Flair does not itemize piston or seal materials."
       },
       {
         "name": "Flair coffee",
@@ -24752,7 +24749,7 @@
         "cat": "Coffee",
         "origin": "hand",
         "source": "alternative",
-        "note": "Cleanest espresso option overall, a manual lever machine (Flair 58) with zero plastic and no boiler in the water path. Packaging: Flair 58 has an all stainless steel brew path; Flair states no plastic touches the espresso from kettle to cup; walnut portafilter handle and tamper.",
+        "note": "Cleanest espresso option overall, a manual lever machine (Flair 58) with zero plastic and no boiler in the water path.",
         "ext": {
           "verdict": "unrated",
           "dated": "2026-08-29",
@@ -24773,7 +24770,8 @@
           "heldFrom": "good",
           "frontNotes": {},
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found."
-        }
+        },
+        "research": "Packaging: Flair 58 has an all stainless steel brew path; Flair states no plastic touches the espresso from kettle to cup; walnut portafilter handle and tamper."
       }
     ],
     "rollup": {
@@ -24965,7 +24963,7 @@
         "ext": {
           "verdict": "unrated",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: packaging",
+          "why": "the note reads adversely on packaging, needs a human look",
           "fronts": {
             "formula": "pass",
             "packaging": "unassessed",
@@ -24977,14 +24975,10 @@
           "disclose": false,
           "rules": [],
           "legalNote": "Checked recall records on 2026-08-31. One 2013 recall of a sprouted grain cereal for an undeclared allergen, long resolved; the breads were not involved.",
-          "frontNotes": {},
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "heldBack": [
-            "packaging"
-          ]
+          "frontNotes": {}
         },
-        "cat": "Pantry"
+        "cat": "Pantry",
+        "research": "Packaging: Sold frozen in a clear plastic bread bag with plastic closure; resin unstated. Contents are sprouted whole grain sesame bread."
       }
     ],
     "rollup": {
@@ -25125,12 +25119,12 @@
         "note": "Large basket infuser that fits most mugs and teapots. Fine mesh handles even small leaf teas without leaking particles. Zero plastic contact. Worth knowing: Single cup at a time\", \"Must remove after steeping\", \"Hand wash recommended.",
         "origin": "store",
         "ext": {
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: packaging",
+          "why": "a vetted store pick, chosen by a person at product scope",
           "fronts": {
             "formula": "pass",
-            "packaging": "unassessed",
+            "packaging": "pass",
             "legal": "pass",
             "testing": "unassessed"
           },
@@ -25141,14 +25135,10 @@
             "2 formula-read-from-materials"
           ],
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "heldBack": [
-            "packaging"
-          ]
+          "frontNotes": {}
         },
-        "cat": "Tea"
+        "cat": "Tea",
+        "research": "Packaging: Durable infuser, no contents; extra-fine perforated stainless steel basket and stainless steel lid; lid edge carries a black trim ring, material unstated."
       }
     ],
     "rollup": {
@@ -25709,7 +25699,7 @@
         "cat": "Prenatal vitamins",
         "origin": "hand",
         "source": "alternative",
-        "note": "A strong alternative prenatal, iron free in HPMC capsules, and it tests every lot. The caveat next to Needed is posture rather than formula: FullWell publishes its own favourable testing but disputes the Lead Safe Mama methodology, which found lead, cadmium and arsenic in February 2025, rather than engaging with it. Publishing a number that is not flattering is the signal we rate highest, and this is a more defensive stance than that. Packaging: Contents are 240 hypromellose (HPMC) capsules per 30-day bottle; bottle is a white plastic screw-cap jar, resin unstated by the brand.",
+        "note": "A strong alternative prenatal, iron free in HPMC capsules, and it tests every lot. The caveat next to Needed is posture rather than formula: FullWell publishes its own favourable testing but disputes the Lead Safe Mama methodology, which found lead, cadmium and arsenic in February 2025, rather than engaging with it. Publishing a number that is not flattering is the signal we rate highest, and this is a more defensive stance than that.",
         "ext": {
           "verdict": "unrated",
           "dated": "2026-08-29",
@@ -25730,7 +25720,8 @@
           "heldFrom": "good",
           "frontNotes": {},
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either."
-        }
+        },
+        "research": "Packaging: Contents are 240 hypromellose (HPMC) capsules per 30-day bottle; bottle is a white plastic screw-cap jar, resin unstated by the brand."
       }
     ],
     "fronts": {
@@ -25893,7 +25884,7 @@
         "cat": "Toothbrushes",
         "origin": "hand",
         "source": "alternative",
-        "note": "Most established boar bristle bamboo toothbrush, 100% boar hair with no petrochemicals. Packaging: Toothbrush body is a bamboo handle with boar hair bristles; ships in a compostable paperboard tube with plastic-free shipping.",
+        "note": "Most established boar bristle bamboo toothbrush, 100% boar hair with no petrochemicals.",
         "ext": {
           "verdict": "unrated",
           "dated": "2026-08-29",
@@ -25914,7 +25905,8 @@
           "heldFrom": "good",
           "frontNotes": {},
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either."
-        }
+        },
+        "research": "Packaging: Toothbrush body is a bamboo handle with boar hair bristles; ships in a compostable paperboard tube with plastic-free shipping."
       }
     ]
   },
@@ -27185,9 +27177,9 @@
         "ext": {
           "verdict": "unrated",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: packaging",
+          "why": "the note reads adversely on packaging, needs a human look",
           "fronts": {
-            "formula": "pass",
+            "formula": "unassessed",
             "packaging": "unassessed",
             "legal": "pass",
             "testing": "pass"
@@ -27196,17 +27188,13 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
-            "2 formula-read-from-materials"
+            "3 packaging-matrix-caution"
           ],
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "heldBack": [
-            "packaging"
-          ]
+          "frontNotes": {}
         },
-        "cat": "Electrolytes"
+        "cat": "Electrolytes",
+        "research": "Packaging: Electrolyte drink-mix powder (11.8 oz, 42 servings) in a resealable stand-up plastic film pouch; resin unstated."
       },
       {
         "name": "GOODONYA electrolytes",
@@ -27224,7 +27212,7 @@
         "cat": "Electrolytes",
         "origin": "hand",
         "source": "alternative",
-        "note": "Our top pick for electrolytes. Six certified organic ingredients, BioChecked Glyphosate Residue Free, and non detect for total fluorine in 2023 independent screening. Sold as a bulk resealable bag rather than dozens of single use stick packs, which is the meaningful packaging difference in this category. Packaging: Same product: powder sold as one resealable 42-serving stand-up plastic film pouch instead of stick packs; resin unstated.",
+        "note": "Our top pick for electrolytes. Six certified organic ingredients, BioChecked Glyphosate Residue Free, and non detect for total fluorine in 2023 independent screening. Sold as a bulk resealable bag rather than dozens of single use stick packs, which is the meaningful packaging difference in this category.",
         "ext": {
           "verdict": "good",
           "dated": "2026-08-29",
@@ -27243,7 +27231,8 @@
             "packaging": "Dry contents in unspecified plastic."
           },
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either."
-        }
+        },
+        "research": "Packaging: Same product: powder sold as one resealable 42-serving stand-up plastic film pouch instead of stick packs; resin unstated."
       }
     ],
     "rollup": {
@@ -29253,7 +29242,8 @@
       {
         "name": "Hario V60 Ceramic Dripper (02)",
         "asins": [
-          "B000P4D5HG"
+          "B000P4D5HG",
+          "B0BWH3K9Z9"
         ],
         "verdict": "good",
         "note": "Ceramic pour over dripper that sits on your mug or carafe. Completely inert material that will not leach anything into your coffee. Zero plastic contact. Worth knowing: Requires paper filters\", \"One cup at a time\", \"Ceramic can chip if dropped.",
@@ -29286,12 +29276,12 @@
         "note": "Borosilicate glass teapot with a stainless steel mesh filter built in. Made in Japan with no plastic parts that contact tea. Zero plastic contact. Worth knowing: Glass can break\", \"Smaller capacity\", \"No insulation.",
         "origin": "store",
         "ext": {
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: packaging",
+          "why": "a vetted store pick, chosen by a person at product scope",
           "fronts": {
             "formula": "pass",
-            "packaging": "unassessed",
+            "packaging": "pass",
             "legal": "pass",
             "testing": "unassessed"
           },
@@ -29300,14 +29290,10 @@
           "disclose": false,
           "rules": [],
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
-          "frontNotes": {},
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "heldBack": [
-            "packaging"
-          ]
+          "frontNotes": {}
         },
-        "cat": "Tea"
+        "cat": "Tea",
+        "research": "Packaging: Teapot body and lid are heatproof borosilicate glass; built-in strainer is stainless steel. Durable teapot, no contents."
       },
       {
         "name": "Hario coffee",
@@ -29339,37 +29325,11 @@
           "frontNotes": {},
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found."
         }
-      },
-      {
-        "name": "Hario V60 Ceramic Dripper (02)",
-        "asins": [
-          "B0BWH3K9Z9"
-        ],
-        "verdict": "good",
-        "note": "Ceramic pour over dripper that sits on your mug or carafe. Completely inert material that will not leach anything into your coffee. Zero plastic contact. Worth knowing: Requires paper filters\", \"One cup at a time\", \"Ceramic can chip if dropped.",
-        "origin": "store",
-        "ext": {
-          "verdict": "unrated",
-          "dated": "2026-08-31",
-          "why": "no front is directly evidenced by the note",
-          "fronts": {
-            "formula": "unassessed",
-            "packaging": "unassessed",
-            "legal": "pass",
-            "testing": "unassessed"
-          },
-          "scope": "sku",
-          "basis": "direct",
-          "disclose": false,
-          "rules": [],
-          "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
-          "frontNotes": {}
-        }
       }
     ],
     "rollup": {
-      "products": 5,
-      "researched": 5,
+      "products": 4,
+      "researched": 4,
       "flagged": 0,
       "worst": null
     }
@@ -29644,9 +29604,9 @@
         "ext": {
           "verdict": "unrated",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: packaging",
+          "why": "the note reads adversely on packaging, needs a human look",
           "fronts": {
-            "formula": "pass",
+            "formula": "unassessed",
             "packaging": "unassessed",
             "legal": "pass",
             "testing": "pass"
@@ -29654,18 +29614,12 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": [
-            "2 formula-read-from-materials"
-          ],
+          "rules": [],
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
-          "frontNotes": {},
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "heldBack": [
-            "packaging"
-          ]
+          "frontNotes": {}
         },
-        "cat": "Baby wipes"
+        "cat": "Baby wipes",
+        "research": "Packaging: Wet wipes in a flexible plastic film pouch with a rigid plastic flip cap; brand says pouch is store drop-off recyclable, resin unstated."
       },
       {
         "name": "EWG Verified Diapers",
@@ -29673,7 +29627,7 @@
           "B0GFXCRB12"
         ],
         "verdict": "good",
-        "note": "Every material reviewed against the EWG database. Plant based topsheet, no fragrance, no chlorine, no latex. EWG Verified, the most stringent certification in the disposable diaper category. Packaging: Monthly supply ships as a corrugated cardboard box holding six flexible film packs of 33 diapers each; pack film material unstated.",
+        "note": "Every material reviewed against the EWG database. Plant based topsheet, no fragrance, no chlorine, no latex. EWG Verified, the most stringent certification in the disposable diaper category.",
         "origin": "article",
         "source": "top-100-baby-kids-products-amazon.html",
         "ext": {
@@ -29695,7 +29649,8 @@
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
           "frontNotes": {}
         },
-        "cat": "Diapers"
+        "cat": "Diapers",
+        "research": "Packaging: Monthly supply ships as a corrugated cardboard box holding six flexible film packs of 33 diapers each; pack film material unstated."
       },
       {
         "name": "Whole range",
@@ -30220,12 +30175,12 @@
           "B0DDZRY34Y"
         ],
         "ext": {
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: packaging",
+          "why": "a vetted store pick, chosen by a person at product scope",
           "fronts": {
             "formula": "pass",
-            "packaging": "unassessed",
+            "packaging": "pass",
             "legal": "pass",
             "testing": "unassessed"
           },
@@ -30234,14 +30189,10 @@
           "disclose": false,
           "rules": [],
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "heldBack": [
-            "packaging"
-          ]
+          "frontNotes": {}
         },
-        "cat": "Dental floss"
+        "cat": "Dental floss",
+        "research": "Packaging: Floss ships in a refillable glass container; refills come as a compostable 3-pack; contents are natural silk floss spools."
       }
     ],
     "cautions": [
@@ -30323,12 +30274,12 @@
         "note": "Five ingredient lip balm in a glass jar. Organic avocado oil, jojoba oil, beeswax, vitamin E, and shea butter. Five ingredients, glass jar. Worth knowing: Lid is plastic\", \"Beeswax base, not vegan\", \"Smaller jar size than tube balms.",
         "origin": "store",
         "ext": {
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: packaging",
+          "why": "a vetted store pick, chosen by a person at product scope",
           "fronts": {
             "formula": "pass",
-            "packaging": "unassessed",
+            "packaging": "pass",
             "legal": "pass",
             "testing": "unassessed"
           },
@@ -30339,14 +30290,10 @@
             "2 formula-read-from-materials"
           ],
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "heldBack": [
-            "packaging"
-          ]
+          "frontNotes": {}
         },
-        "cat": "Makeup"
+        "cat": "Makeup",
+        "research": "Packaging: Solid balm in a black MIRON violet glass jar, 10 ml; lid material not stated by brand or retail pages opened."
       },
       {
         "name": "Henne Organics Luxury Lip Tint",
@@ -32607,7 +32554,8 @@
             "packaging"
           ]
         },
-        "cat": "Makeup"
+        "cat": "Makeup",
+        "research": "Packaging: Solid lipstick bullet in an aluminum tube; brand states it is housed in sustainable aluminium packaging."
       }
     ],
     "cautions": [
@@ -34074,12 +34022,12 @@
           "B075SL8HZ5"
         ],
         "ext": {
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: packaging",
+          "why": "a vetted store pick, chosen by a person at product scope",
           "fronts": {
             "formula": "pass",
-            "packaging": "unassessed",
+            "packaging": "pass",
             "legal": "pass",
             "testing": "unassessed"
           },
@@ -34090,14 +34038,10 @@
             "2 formula-read-from-materials"
           ],
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "heldBack": [
-            "packaging"
-          ]
+          "frontNotes": {}
         },
-        "cat": "Makeup"
+        "cat": "Makeup",
+        "research": "Packaging: Liquid serum foundation in a recyclable glass pump bottle; carton is FSC paper; pump material unstated."
       }
     ],
     "cautions": [
@@ -34690,28 +34634,27 @@
         "ext": {
           "verdict": "unrated",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: packaging",
+          "why": "a recommendation needs its checks done; still to do: formula",
           "fronts": {
-            "formula": "pass",
-            "packaging": "unassessed",
+            "formula": "unassessed",
+            "packaging": "pass",
             "legal": "pass",
-            "testing": "unassessed"
+            "testing": "pass"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": [
-            "2 formula-read-from-materials"
-          ],
+          "rules": [],
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {},
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
           "heldBack": [
-            "packaging"
+            "formula"
           ]
         },
-        "cat": "Coffee"
+        "cat": "Coffee",
+        "research": "Packaging: Cup is tempered soda-lime glass, 25% recovered content, lead and cadmium free; lid is PP alloy, sipper plug is LDPE, band is 100% recovered cork."
       }
     ],
     "rollup": {
@@ -34998,7 +34941,8 @@
             "packaging"
           ]
         },
-        "cat": "Coffee"
+        "cat": "Coffee",
+        "research": "Packaging: Whole beans ship in a foil-lined bag; brand states the lining makes bags non-recyclable; liner resin unstated. Materials: Whole bean dark roast, 100% organic Arabica, Swiss Water Process decaf; certified organic, Fairtrade, and kosher."
       }
     ],
     "rollup": {
@@ -35422,7 +35366,7 @@
         "cat": "Cookware",
         "origin": "hand",
         "source": "alternative",
-        "note": "Recommended refillable cream foundation, mascara, lip tint, blush, and eyeshadow in refillable metal compacts with certified organic ingredients. Packaging: Refillable Iconic Edition compacts are metal (brand spec: Material: Metal), alloy unstated; Red Edition cases are paper; formulas sold as refill inserts.",
+        "note": "Recommended refillable cream foundation, mascara, lip tint, blush, and eyeshadow in refillable metal compacts with certified organic ingredients.",
         "ext": {
           "verdict": "unrated",
           "dated": "2026-08-29",
@@ -35443,7 +35387,8 @@
           "heldFrom": "good",
           "frontNotes": {},
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either."
-        }
+        },
+        "research": "Packaging: Refillable Iconic Edition compacts are metal (brand spec: Material: Metal), alloy unstated; Red Edition cases are paper; formulas sold as refill inserts."
       }
     ],
     "rollup": {
@@ -36565,7 +36510,8 @@
             "packaging"
           ]
         },
-        "cat": "Coffee"
+        "cat": "Coffee",
+        "research": "Packaging: Boiler, brewing group, and steam wand are chromed brass; base and lever are chromed steel; lever handle is Bakelite; drip-tray drawer is ABS."
       }
     ],
     "rollup": {
@@ -36647,7 +36593,8 @@
             "packaging"
           ]
         },
-        "cat": "Diaper cream"
+        "cat": "Diaper cream",
+        "research": "Packaging: Balm/cream ships in a 1 oz jar (4 oz jar also sold); jar material not stated by the brand."
       },
       {
         "name": "La Petite Creme diaper cream",
@@ -36681,7 +36628,7 @@
         "cat": "Diaper cream",
         "origin": "hand",
         "source": "alternative",
-        "note": "The only diaper product with a published independent heavy metals result showing nothing detected: non detect for lead, cadmium, arsenic, and mercury. A zinc free French style liniment of five ingredients (organic olive oil, water, beeswax, glycerin, lime water), USDA Organic and EWG Verified. Our top diaper balm pick. Packaging: Liquid liniment (Diapering Lotion) ships in a pump bottle; bottle material not stated by the brand; the balm version comes in a jar.",
+        "note": "The only diaper product with a published independent heavy metals result showing nothing detected: non detect for lead, cadmium, arsenic, and mercury. A zinc free French style liniment of five ingredients (organic olive oil, water, beeswax, glycerin, lime water), USDA Organic and EWG Verified. Our top diaper balm pick.",
         "ext": {
           "verdict": "unrated",
           "dated": "2026-08-29",
@@ -36702,7 +36649,8 @@
           "heldFrom": "good",
           "frontNotes": {},
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either."
-        }
+        },
+        "research": "Packaging: Liquid liniment (Diapering Lotion) ships in a pump bottle; bottle material not stated by the brand; the balm version comes in a jar."
       }
     ],
     "rollup": {
@@ -37564,12 +37512,12 @@
           "B07MX87HH9"
         ],
         "ext": {
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: packaging",
+          "why": "a vetted store pick, chosen by a person at product scope",
           "fronts": {
             "formula": "pass",
-            "packaging": "unassessed",
+            "packaging": "pass",
             "legal": "pass",
             "testing": "unassessed"
           },
@@ -37578,14 +37526,10 @@
           "disclose": false,
           "rules": [],
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "heldBack": [
-            "packaging"
-          ]
+          "frontNotes": {}
         },
-        "cat": "Coffee"
+        "cat": "Coffee",
+        "research": "Packaging: Body is a stainless steel mesh cone with a metal cup stand and cleaning brush; no contents; steel grade not stated in the listing."
       }
     ],
     "cautions": [
@@ -38219,12 +38163,12 @@
           "B076KT472Y"
         ],
         "ext": {
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: packaging",
+          "why": "a vetted store pick, chosen by a person at product scope",
           "fronts": {
             "formula": "pass",
-            "packaging": "unassessed",
+            "packaging": "pass",
             "legal": "pass",
             "testing": "unassessed"
           },
@@ -38233,14 +38177,10 @@
           "disclose": false,
           "rules": [],
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "heldBack": [
-            "packaging"
-          ]
+          "frontNotes": {}
         },
-        "cat": "Food storage"
+        "cat": "Food storage",
+        "research": "Packaging: Bag body is unbleached natural linen fabric with a drawstring closure, 11 x 15 in, 2-pack; fiber percentage not stated; contents are bread loaves."
       }
     ],
     "cautions": [
@@ -40834,7 +40774,7 @@
         "name": "Maldon Sea Salt Flakes",
         "asins": [],
         "verdict": "good",
-        "note": "A clean flake salt with no additives, and low in heavy metals for a sea salt. Sea salt is a category where independent testing finds microplastics and metals, so the result matters more here than the label does. Packaging: The 8.5 oz (250 g) retail format is a cardboard box; Maldon's product page lists packaging simply as Box. Contents are dry sea salt flakes, 100% sea salt.",
+        "note": "A clean flake salt with no additives, and low in heavy metals for a sea salt. Sea salt is a category where independent testing finds microplastics and metals, so the result matters more here than the label does.",
         "origin": "store",
         "ext": {
           "verdict": "unrated",
@@ -40875,7 +40815,8 @@
           ]
         ],
         "matchFrom": "name",
-        "cat": "Sea salt"
+        "cat": "Sea salt",
+        "research": "Packaging: The 8.5 oz (250 g) retail format is a cardboard box; Maldon's product page lists packaging simply as Box. Contents are dry sea salt flakes, 100% sea salt."
       },
       {
         "name": "Maldon sea salt flakes",
@@ -41469,7 +41410,7 @@
         "cat": "Baby bottles",
         "origin": "hand",
         "source": "alternative",
-        "note": "Recommended algae-based toner and face oil in glass bottles. Packaging: MARA sells no ingestible supplements; the line is topical skincare only. Toner, serums, and face oils ship in recycled, recyclable glass bottles; unit cartons are FSC-certified paperboard. Contents are liquid skincare.",
+        "note": "Recommended algae-based toner and face oil in glass bottles.",
         "ext": {
           "verdict": "unrated",
           "dated": "2026-08-29",
@@ -41490,7 +41431,8 @@
           "heldFrom": "good",
           "frontNotes": {},
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either."
-        }
+        },
+        "research": "Packaging: MARA sells no ingestible supplements; the line is topical skincare only. Toner, serums, and face oils ship in recycled, recyclable glass bottles; unit cartons are FSC-certified paperboard. Contents are liquid skincare."
       }
     ],
     "rollup": {
@@ -41632,12 +41574,12 @@
         "note": "100% organic cotton flannel squares sewn in Oregon. Use with plain warm water, wash with regular laundry. Organic cotton flannel, use with plain water. Worth knowing: Needs washing\", \"Less convenient away from home.",
         "origin": "store",
         "ext": {
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: packaging",
+          "why": "a vetted store pick, chosen by a person at product scope",
           "fronts": {
             "formula": "pass",
-            "packaging": "unassessed",
+            "packaging": "pass",
             "legal": "pass",
             "testing": "unassessed"
           },
@@ -41646,14 +41588,10 @@
           "disclose": false,
           "rules": [],
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
-          "frontNotes": {},
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "heldBack": [
-            "packaging"
-          ]
+          "frontNotes": {}
         },
-        "cat": "Baby wipes"
+        "cat": "Baby wipes",
+        "research": "Packaging: Minimal packaging: 100% FSC-certified recycled and recyclable cardstock with paper tape; orders ship plastic free with paper or fabric padding. Contents are dry organic cotton flannel wipes."
       },
       {
         "name": "Whole range",
@@ -42002,7 +41940,7 @@
         "ext": {
           "verdict": "unrated",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: formula",
+          "why": "the note reads adversely on formula, needs a human look",
           "fronts": {
             "formula": "unassessed",
             "packaging": "pass",
@@ -42016,14 +41954,10 @@
             "3 packaging-matrix-pass"
           ],
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
-          "frontNotes": {},
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "heldBack": [
-            "formula"
-          ]
+          "frontNotes": {}
         },
-        "cat": "Cleaning products"
+        "cat": "Cleaning products",
+        "research": "Materials: Vegetable soap: sodium cocoate, sodium sunflowerate, glycerin, water, organic coconut oil, organic sunflower seed oil; lemon version adds organic lemon peel oil. No synthetic fragrance, preservatives, dyes, or palm oil."
       },
       {
         "name": "Meliora laundry detergent",
@@ -42049,7 +41983,7 @@
         "cat": "Laundry detergent",
         "origin": "hand",
         "source": "alternative",
-        "note": "MADE SAFE certified laundry powder from a B Corp, EWG rated A and Leaping Bunny certified. Four ingredients: baking soda, washing soda, a real coconut oil soap and water. The only detergent we found that ships fully plastic free, in a paper can with steel ends and a stainless steel scoop. Packaging: Powder ships in a paper can with steel ends and a stainless steel scoop; uncoated paper label; plastic free. Contents are ultra-concentrated powder detergent; refills come in a separate refill format.",
+        "note": "MADE SAFE certified laundry powder from a B Corp, EWG rated A and Leaping Bunny certified. Four ingredients: baking soda, washing soda, a real coconut oil soap and water. The only detergent we found that ships fully plastic free, in a paper can with steel ends and a stainless steel scoop.",
         "ext": {
           "verdict": "unrated",
           "dated": "2026-08-29",
@@ -42070,7 +42004,8 @@
           "heldFrom": "good",
           "frontNotes": {},
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found."
-        }
+        },
+        "research": "Packaging: Powder ships in a paper can with steel ends and a stainless steel scoop; uncoated paper label; plastic free. Contents are ultra-concentrated powder detergent; refills come in a separate refill format."
       }
     ],
     "fronts": {
@@ -42272,12 +42207,12 @@
         "note": "German made stainless steel. Reusable handle with inexpensive replacement blades. Eliminates disposable razors. Worth knowing: Learning curve from cartridge razors\", \"Must handle blades carefully.",
         "origin": "store",
         "ext": {
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: packaging",
+          "why": "a vetted store pick, chosen by a person at product scope",
           "fronts": {
             "formula": "pass",
-            "packaging": "unassessed",
+            "packaging": "pass",
             "legal": "pass",
             "testing": "unassessed"
           },
@@ -42286,14 +42221,10 @@
           "disclose": false,
           "rules": [],
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "heldBack": [
-            "packaging"
-          ]
+          "frontNotes": {}
         },
-        "cat": "Razors"
+        "cat": "Razors",
+        "research": "Packaging: Body is chrome-plated metal, not stainless: head is cast zinc alloy (zamak); retailers describe the handle as brass or zinc alloy. No plastic in the razor body."
       }
     ],
     "rollup": {
@@ -42548,7 +42479,8 @@
             "formula"
           ]
         },
-        "cat": "Water filters"
+        "cat": "Water filters",
+        "research": "Materials: Canister housing is ABS plastic per multiple vacuum retailers; Miele itself does not state the resin. Bagged design with sealed AirClean HEPA filtration."
       },
       {
         "name": "Classic C1 canister",
@@ -43503,28 +43435,26 @@
         "note": "EWG Verified baby laundry liquid with a short ingredient list and no fragrance. Enzyme formula for formula, breast milk and blowout stains. EWG Verified, fragrance free. Worth knowing: Liquid in a 50 ounce plastic bottle\", \"Higher cost per load than powder\", \"Fragrance free only.",
         "origin": "store",
         "ext": {
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: packaging",
+          "why": "a vetted store pick, chosen by a person at product scope",
           "fronts": {
             "formula": "pass",
-            "packaging": "unassessed",
+            "packaging": "pass",
             "legal": "pass",
             "testing": "pass"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": [],
+          "rules": [
+            "3 packaging-matrix-pass"
+          ],
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
-          "frontNotes": {},
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "heldBack": [
-            "packaging"
-          ]
+          "frontNotes": {}
         },
-        "cat": "Laundry detergent"
+        "cat": "Laundry detergent",
+        "research": "Packaging: Ships in a 50 oz #1 (PET) recyclable plastic bottle; brand FAQ states its liquid products use #1 recyclable plastic. Contents are liquid laundry detergent."
       }
     ],
     "aliases": [
@@ -43640,7 +43570,7 @@
       {
         "name": "Creatine",
         "verdict": "good",
-        "note": "Creapure, NSF Certified for Sport, independently certified SKU. Packaging: Sold as a 15.8 oz (450 g) jar; jar material not stated by Momentous. Contents are unflavored micronized creatine powder; travel packs also sold. Materials: Single ingredient: creatine monohydrate, NSF Certified for Sport.",
+        "note": "Creapure, NSF Certified for Sport, independently certified SKU.",
         "ext": {
           "verdict": "unrated",
           "dated": "2026-08-29",
@@ -43672,7 +43602,8 @@
           ]
         ],
         "matchFrom": "name",
-        "cat": "Supplements"
+        "cat": "Supplements",
+        "research": "Packaging: Sold as a 15.8 oz (450 g) jar; jar material not stated by Momentous. Contents are unflavored micronized creatine powder; travel packs also sold. Materials: Single ingredient: creatine monohydrate, NSF Certified for Sport."
       },
       {
         "name": "v1 plant protein",
@@ -44021,7 +43952,7 @@
         "cat": "Diaper cream",
         "origin": "hand",
         "source": "alternative",
-        "note": "USDA Organic (Oregon Tilth) and Leaping Bunny certified diaper balm: olive oil and beeswax with Oregon grape root, myrrh, yarrow, and calendula. No zinc, petroleum, lanolin, or fragrance, and safe for cloth diapers. No lawsuits or recalls found. Packaging: Ships in a glass jar (1, 2, or 4 oz sizes); brand FAQ says it packages in glass except liquid soaps. Contents are an olive oil and beeswax herbal balm.",
+        "note": "USDA Organic (Oregon Tilth) and Leaping Bunny certified diaper balm: olive oil and beeswax with Oregon grape root, myrrh, yarrow, and calendula. No zinc, petroleum, lanolin, or fragrance, and safe for cloth diapers. No lawsuits or recalls found.",
         "ext": {
           "verdict": "unrated",
           "dated": "2026-08-29",
@@ -44042,7 +43973,8 @@
           "heldFrom": "good",
           "frontNotes": {},
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either."
-        }
+        },
+        "research": "Packaging: Ships in a glass jar (1, 2, or 4 oz sizes); brand FAQ says it packages in glass except liquid soaps. Contents are an olive oil and beeswax herbal balm."
       }
     ],
     "rollup": {
@@ -45547,7 +45479,7 @@
         "cat": "Baby wipes",
         "origin": "hand",
         "source": "alternative",
-        "note": "Recommended organic cotton tampons, pads, and liners. Totally chlorine free, no rayon, fragrance, dyes, or plastic backsheet. Packaging: Wipes pack is recyclable BPA-free plastic, resin code PP 5; pack is not compostable, only the wipes are. Contents are moist wipes of 100% certified organic cotton cloth.",
+        "note": "Recommended organic cotton tampons, pads, and liners. Totally chlorine free, no rayon, fragrance, dyes, or plastic backsheet.",
         "ext": {
           "verdict": "unrated",
           "dated": "2026-08-29",
@@ -45568,7 +45500,8 @@
           "heldFrom": "good",
           "frontNotes": {},
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either."
-        }
+        },
+        "research": "Packaging: Wipes pack is recyclable BPA-free plastic, resin code PP 5; pack is not compostable, only the wipes are. Contents are moist wipes of 100% certified organic cotton cloth."
       }
     ],
     "rollup": {
@@ -45623,7 +45556,8 @@
             "packaging"
           ]
         },
-        "cat": "Coffee"
+        "cat": "Coffee",
+        "research": "Packaging: Ships in a nitrogen-flushed coffee bag (10 oz ground; whole bean also sold); neither brand nor retailer states the bag material. Contents are roasted ground coffee. Materials: 100% USDA Organic specialty-grade arabica beans; decaf is Swiss Water Process; lab tested for mold, mycotoxins, and pesticides."
       }
     ],
     "cautions": [
@@ -46298,7 +46232,7 @@
         "cat": "Prenatal vitamins",
         "origin": "hand",
         "source": "alternative",
-        "note": "Our top prenatal pick. The Prenatal Powder has no capsule shell to shed plastic, the most comprehensive nutrition of the prenatals we compared including methylated folate and 400 mg choline, and the strongest transparency posture in the category: it publishes full batch testing rather than a purity claim. The Prenatal Multi Capsules carry the same testing at eight capsules a day. Worth stating plainly that no independently tested prenatal has come back non detect across lead, cadmium, mercury and arsenic, so transparency is the signal we rank on. Packaging: Prenatal powder ships in a plastic bottle with plastic cap, both 30% post-consumer recycled plastic; resin type unstated. Contents are loose vanilla-flavored multivitamin powder.",
+        "note": "Our top prenatal pick. The Prenatal Powder has no capsule shell to shed plastic, the most comprehensive nutrition of the prenatals we compared including methylated folate and 400 mg choline, and the strongest transparency posture in the category: it publishes full batch testing rather than a purity claim. The Prenatal Multi Capsules carry the same testing at eight capsules a day. Worth stating plainly that no independently tested prenatal has come back non detect across lead, cadmium, mercury and arsenic, so transparency is the signal we rank on.",
         "ext": {
           "verdict": "good",
           "dated": "2026-08-29",
@@ -46317,7 +46251,8 @@
             "packaging": "Dry contents in unspecified plastic."
           },
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either."
-        }
+        },
+        "research": "Packaging: Prenatal powder ships in a plastic bottle with plastic cap, both 30% post-consumer recycled plastic; resin type unstated. Contents are loose vanilla-flavored multivitamin powder."
       }
     ],
     "fronts": {
@@ -46783,7 +46718,7 @@
         "ext": {
           "verdict": "unrated",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: formula, packaging",
+          "why": "the note reads adversely on formula, packaging, needs a human look",
           "fronts": {
             "formula": "unassessed",
             "packaging": "unassessed",
@@ -46795,15 +46730,10 @@
           "disclose": false,
           "rules": [],
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
-          "frontNotes": {},
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "heldBack": [
-            "formula",
-            "packaging"
-          ]
+          "frontNotes": {}
         },
-        "cat": "Crib mattresses"
+        "cat": "Crib mattresses",
+        "research": "Packaging: Core body is 100% polyethylene Wovenaire (label reads Polyethylene Pad 100%); sleep-surface cover fabric is 84% polyester, 16% viscose. Materials: Woven food-grade polyethylene core, 90% air by volume, with a quilted polyester/viscose spacer-fabric cover; no foam, latex, springs, or chemical flame retardants."
       }
     ],
     "rollup": {
@@ -47392,28 +47322,26 @@
         "note": "Solid dish washing block. Zero waste, free of dyes and fragrance. Eliminates plastic soap bottles. Worth knowing: Requires a dish or tray\", \"Less suds than liquid soap.",
         "origin": "store",
         "ext": {
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: packaging",
+          "why": "a vetted store pick, chosen by a person at product scope",
           "fronts": {
             "formula": "pass",
-            "packaging": "unassessed",
+            "packaging": "pass",
             "legal": "pass",
             "testing": "unassessed"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": [],
+          "rules": [
+            "3 packaging-stated-plastic-free"
+          ],
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
-          "frontNotes": {},
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "heldBack": [
-            "packaging"
-          ]
+          "frontNotes": {}
         },
-        "cat": "Cleaning products"
+        "cat": "Cleaning products",
+        "research": "Packaging: Ships in a recyclable, compostable paper box with no plastic or shrink wrap; contents are a solid dish soap bar."
       }
     ],
     "rollup": {
@@ -48359,10 +48287,10 @@
         "ext": {
           "verdict": "unrated",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: packaging",
+          "why": "the note reads adversely on packaging, needs a human look",
           "fronts": {
-            "formula": "pass",
-            "packaging": "unassessed",
+            "formula": "unassessed",
+            "packaging": "caution",
             "legal": "pass",
             "testing": "pass"
           },
@@ -48370,17 +48298,18 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
-            "2 formula-read-from-materials"
+            "3 packaging-matrix-caution"
           ],
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "heldBack": [
+          "frontNotes": {
+            "packaging": "Plastic stick packaging, no refill\", \"Can crease and need setting on oily skin\", \"Premium price for the size (Recorded for Ogee Sculpted Complexion as a whole rather than this product specifically.)"
+          },
+          "inheritedFronts": [
             "packaging"
           ]
         },
-        "cat": "Makeup"
+        "cat": "Makeup",
+        "research": "Packaging: Stick is a plastic twist-up case and cap with a magnetic hold (resin unstated); contents are a cream foundation stick; no refill offered."
       }
     ],
     "cautions": [
@@ -49034,27 +48963,29 @@
         "ext": {
           "verdict": "unrated",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: formula, packaging",
+          "why": "a recommendation needs its checks done; still to do: formula",
           "fronts": {
             "formula": "unassessed",
-            "packaging": "unassessed",
+            "packaging": "pass",
             "legal": "pass",
             "testing": "pass"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": [],
+          "rules": [
+            "3 packaging-matrix-pass"
+          ],
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {},
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
           "heldBack": [
-            "formula",
-            "packaging"
+            "formula"
           ]
         },
-        "cat": "Pantry"
+        "cat": "Pantry",
+        "research": "Packaging: Ships in a resealable multi-layer plastic pouch (resin unstated, brand FAQ confirms multi-layer material); contents are dry rolled oats. Materials: Single ingredient: organic sprouted gluten-free non-GMO oats; USDA Organic, Glyphosate Free certified, Certified Vegan, nut-free facility."
       },
       {
         "name": "Whole range",
@@ -50698,7 +50629,8 @@
             "packaging"
           ]
         },
-        "cat": "Pantry"
+        "cat": "Pantry",
+        "research": "Packaging: Brand FAQ states 3 lb and 5 lb bags are plastic-free packaging; exact material unstated; contents are milled wheat flour. Materials: Single ingredient wheat flour milled in small batches from the farm's wheat berries; Non-GMO Project Verified, Certified Glyphosate Residue Free, Kosher Parve, no additives."
       }
     ],
     "rollup": {
@@ -52141,7 +52073,7 @@
         "ext": {
           "verdict": "unrated",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: formula",
+          "why": "the note reads adversely on formula, needs a human look",
           "fronts": {
             "formula": "unassessed",
             "packaging": "pass",
@@ -52155,14 +52087,10 @@
             "3 packaging-stated-plastic-free"
           ],
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "heldBack": [
-            "formula"
-          ]
+          "frontNotes": {}
         },
-        "cat": "Shampoo"
+        "cat": "Shampoo",
+        "research": "Materials: Aloe vera leaf juice base cleansing with saponified coconut and safflower oils plus quillaja saponin; botanical oils and extracts; sulfate, silicone, paraben, and synthetic fragrance free."
       },
       {
         "name": "Plaine Products Face Moisturizer",
@@ -52196,7 +52124,8 @@
             "formula"
           ]
         },
-        "cat": "Body lotion"
+        "cat": "Body lotion",
+        "research": "Materials: Aloe vera leaf juice base with safflower, apricot kernel, jojoba, and avocado oils, olive-derived emulsifiers, and shea butter; preserved with phenoxyethanol and benzoic acid."
       },
       {
         "name": "Plaine Products Refillable Conditioner",
@@ -52230,7 +52159,8 @@
             "formula"
           ]
         },
-        "cat": "Conditioner"
+        "cat": "Conditioner",
+        "research": "Materials: Aloe vera leaf juice base with cetyl and stearyl fatty alcohols, glycerin, shea and mango butters, and botanical extracts; silicone and sulfate free."
       }
     ],
     "rollup": {
@@ -55552,7 +55482,8 @@
             "packaging"
           ]
         },
-        "cat": "Cleaning products"
+        "cat": "Cleaning products",
+        "research": "Packaging: Brush body and handle are beechwood; bristles are natural tampico plant fiber, usable in boiling water; no plastic parts stated."
       },
       {
         "name": "REDECKER Bottle Brush Cleaner",
@@ -55586,7 +55517,8 @@
             "packaging"
           ]
         },
-        "cat": "Cleaning products"
+        "cat": "Cleaning products",
+        "research": "Packaging: Handle is beechwood; bristles are light horsehair; made in Germany; wire core material not stated on the listing."
       },
       {
         "name": "Natural bristle bath brush",
@@ -57394,7 +57326,8 @@
             "packaging"
           ]
         },
-        "cat": "Cleaning products"
+        "cat": "Cleaning products",
+        "research": "Packaging: Pad body is 100% coconut coir fiber bound with a non-toxic adhesive (type unstated); no plastic in the pad; retail wrap material unverified."
       }
     ],
     "cautions": [
@@ -57476,12 +57409,12 @@
         "note": "Collapsible stainless steel steamer basket that fits any pot 8 inches or larger. The simplest approach to baby food: steam vegetables and soft foods in a pot you already own, then mash with a fork. Zero plastic food contact. Worth knowing: No blending function\", \"Manual mashing required\", \"Not a standalone appliance.",
         "origin": "store",
         "ext": {
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: packaging",
+          "why": "a vetted store pick, chosen by a person at product scope",
           "fronts": {
             "formula": "pass",
-            "packaging": "unassessed",
+            "packaging": "pass",
             "legal": "pass",
             "testing": "unassessed"
           },
@@ -57490,14 +57423,10 @@
           "disclose": false,
           "rules": [],
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "heldBack": [
-            "packaging"
-          ]
+          "frontNotes": {}
         },
-        "cat": "Tableware"
+        "cat": "Tableware",
+        "research": "Packaging: Body is a collapsible stainless steel steamer basket, dishwasher safe; steel grade and any plastic or silicone parts not stated on the listing."
       }
     ],
     "rollup": {
@@ -58808,7 +58737,7 @@
       {
         "name": "Laundry detergent",
         "verdict": "good",
-        "note": "EPA Safer Choice plant based formula with a fragrance free option. Packaging: The 90 fl oz bottle is 100% post-consumer recycled plastic (resin unstated); cap is plastic; contents are liquid laundry detergent.",
+        "note": "EPA Safer Choice plant based formula with a fragrance free option.",
         "asins": [
           "B07FVX9Z9H"
         ],
@@ -58833,7 +58762,8 @@
           "cappedFrom": "good",
           "capRestoreWhy": "direct evidence at sku scope on formula, packaging"
         },
-        "cat": "Laundry detergent"
+        "cat": "Laundry detergent",
+        "research": "Packaging: The 90 fl oz bottle is 100% post-consumer recycled plastic (resin unstated); cap is plastic; contents are liquid laundry detergent."
       },
       {
         "name": "Diapers",
@@ -59366,7 +59296,7 @@
         "ext": {
           "verdict": "unrated",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: formula",
+          "why": "the note reads adversely on formula, needs a human look",
           "fronts": {
             "formula": "unassessed",
             "packaging": "pass",
@@ -59380,14 +59310,10 @@
             "3 packaging-matrix-pass"
           ],
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
-          "frontNotes": {},
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "heldBack": [
-            "formula"
-          ]
+          "frontNotes": {}
         },
-        "cat": "Cleaning products"
+        "cat": "Cleaning products",
+        "research": "Materials: Saponified bar of sugar, sea salt, water, coconut oil, lemon-peel oil, grape seed oil, jojoba oil, plant extracts, tocopherol, sodium hydroxide, sodium bicarbonate, lauric acid."
       }
     ],
     "cautions": [
@@ -59445,29 +59371,26 @@
           "B000WS3AJS"
         ],
         "ext": {
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: formula, packaging",
+          "why": "a vetted store pick, chosen by a person at product scope",
           "fronts": {
-            "formula": "unassessed",
-            "packaging": "unassessed",
+            "formula": "pass",
+            "packaging": "pass",
             "legal": "pass",
             "testing": "pass"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": [],
+          "rules": [
+            "2 formula-read-from-materials"
+          ],
           "legalNote": "Checked recall records on 2026-08-31. Frontier Co-op recalled many Simply Organic seasoning mixes in 2015 over salmonella in a garlic powder ingredient; resolved a decade ago, now informational, and the single ingredient spices we cover were not implicated.",
-          "frontNotes": {},
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "heldBack": [
-            "formula",
-            "packaging"
-          ]
+          "frontNotes": {}
         },
-        "cat": "Pantry"
+        "cat": "Pantry",
+        "research": "Packaging: Ships in a glass bottle (2.31 oz); lid material unstated; contents are ground cumin powder. Materials: Single ingredient: certified organic ground cumin seed; QAI certified organic, kosher, not irradiated, no ethylene oxide."
       },
       {
         "name": "Simply pantry",
@@ -59497,7 +59420,7 @@
         "cat": "Pantry",
         "origin": "hand",
         "source": "alternative",
-        "note": "Certified organic ground cumin. Organic spices cannot be sterilized with ethylene oxide or irradiated the way conventional ground spices routinely are. Glass jar. Organic, no ethylene oxide. Vetted for the store; this verdict covers the product we listed, not the brand's whole range. Packaging: Bottled spice line ships in glass bottles; lid material unstated; contents are dry ground spices.",
+        "note": "Certified organic ground cumin. Organic spices cannot be sterilized with ethylene oxide or irradiated the way conventional ground spices routinely are. Glass jar. Organic, no ethylene oxide. Vetted for the store; this verdict covers the product we listed, not the brand's whole range.",
         "ext": {
           "verdict": "unrated",
           "dated": "2026-08-29",
@@ -59518,7 +59441,8 @@
           "heldFrom": "good",
           "frontNotes": {},
           "legalNote": "Checked recall records on 2026-08-31. Frontier Co-op recalled many Simply Organic seasoning mixes in 2015 over salmonella in a garlic powder ingredient; resolved a decade ago, now informational, and the single ingredient spices we cover were not implicated."
-        }
+        },
+        "research": "Packaging: Bottled spice line ships in glass bottles; lid material unstated; contents are dry ground spices."
       }
     ],
     "cautions": [
@@ -60220,12 +60144,12 @@
         "note": "Water based nail polish formulated by Piggy Paint, designed safe for kids and pregnancy. Free of formaldehyde, toluene, dibutyl phthalate, ethyl tosylamide, camphor, xylene, parabens, and synthetic fragrance. Water based, no plastic film formers. Worth knowing: Less long wearing than solvent based polish\", \"Limited color range\", \"Requires top coat for durability.",
         "origin": "store",
         "ext": {
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: packaging",
+          "why": "a vetted store pick, chosen by a person at product scope",
           "fronts": {
             "formula": "pass",
-            "packaging": "unassessed",
+            "packaging": "pass",
             "legal": "pass",
             "testing": "unassessed"
           },
@@ -60234,14 +60158,10 @@
           "disclose": false,
           "rules": [],
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "heldBack": [
-            "packaging"
-          ]
+          "frontNotes": {}
         },
-        "cat": "Makeup"
+        "cat": "Makeup",
+        "research": "Packaging: 0.5 fl oz clear glass nail-polish bottle with screw cap and brush; cap material unstated; contents are water-based liquid polish."
       }
     ],
     "rollup": {
@@ -60703,7 +60623,7 @@
         "cat": "Toothpaste",
         "origin": "hand",
         "source": "alternative",
-        "note": "Recommended kids tooth gel using a xylitol formula safe to swallow with no SLS or artificial colors. Packaging: Kids tooth gel ships in a 2 fl oz squeeze tube; tube material unstated; contents are xylitol tooth gel.",
+        "note": "Recommended kids tooth gel using a xylitol formula safe to swallow with no SLS or artificial colors.",
         "ext": {
           "verdict": "unrated",
           "dated": "2026-08-29",
@@ -60724,7 +60644,8 @@
           "heldFrom": "good",
           "frontNotes": {},
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either."
-        }
+        },
+        "research": "Packaging: Kids tooth gel ships in a 2 fl oz squeeze tube; tube material unstated; contents are xylitol tooth gel."
       }
     ],
     "rollup": {
@@ -62798,7 +62719,7 @@
         "ext": {
           "verdict": "unrated",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: formula, packaging",
+          "why": "the note reads adversely on packaging, needs a human look",
           "fronts": {
             "formula": "unassessed",
             "packaging": "unassessed",
@@ -62808,17 +62729,14 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": [],
+          "rules": [
+            "3 packaging-matrix-caution"
+          ],
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "heldBack": [
-            "formula",
-            "packaging"
-          ]
+          "frontNotes": {}
         },
-        "cat": "Pantry"
+        "cat": "Pantry",
+        "research": "Packaging: Zip-top stand-up pouch with a clear plastic film window (resin unstated); contents are raw whole almonds, dry goods. Materials: Single ingredient: certified organic raw almonds (Prunus dulcis); unpasteurized line is imported from Spain, never irradiated, heat-, steam-, or chemically treated; Non-GMO Project Verified."
       }
     ],
     "cautions": [
@@ -64213,7 +64131,8 @@
             "packaging"
           ]
         },
-        "cat": "Supplements"
+        "cat": "Supplements",
+        "research": "Packaging: 1 fl oz (30 mL) amber bottle with metered self-dispensing drop top; bottle material not stated by brand; contents are D3/K2 drops in MCT oil."
       },
       {
         "name": "Thorne Magnesium Bisglycinate Powder",
@@ -64226,7 +64145,7 @@
         "ext": {
           "verdict": "unrated",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: formula, packaging",
+          "why": "the note reads adversely on packaging, needs a human look",
           "fronts": {
             "formula": "unassessed",
             "packaging": "unassessed",
@@ -64238,15 +64157,10 @@
           "disclose": false,
           "rules": [],
           "legalNote": "Checked the FDA enforcement database on 2026-08-31. Only 2014 recalls of the discontinued Captomer DMSA products, terminated over a decade ago. Now informational.",
-          "frontNotes": {},
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "heldBack": [
-            "formula",
-            "packaging"
-          ]
+          "frontNotes": {}
         },
-        "cat": "Supplements"
+        "cat": "Supplements",
+        "research": "Packaging: White plastic screw-top tub (resin unstated), 7.98 oz (226.2 g); contents are flavored drink powder. Materials: Magnesium bisglycinate providing 200 mg elemental magnesium per scoop; other ingredients are citric acid and monk fruit concentrate; NSF Certified for Sport."
       },
       {
         "name": "Thorne Creatine",
@@ -64259,27 +64173,29 @@
         "ext": {
           "verdict": "unrated",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: formula, packaging",
+          "why": "a recommendation needs its checks done; still to do: formula",
           "fronts": {
             "formula": "unassessed",
-            "packaging": "unassessed",
+            "packaging": "pass",
             "legal": "pass",
             "testing": "pass"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": [],
+          "rules": [
+            "3 packaging-matrix-pass"
+          ],
           "legalNote": "Checked the FDA enforcement database on 2026-08-31. Only 2014 recalls of the discontinued Captomer DMSA products, terminated over a decade ago. Now informational.",
           "frontNotes": {},
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
           "heldBack": [
-            "formula",
-            "packaging"
+            "formula"
           ]
         },
-        "cat": "Supplements"
+        "cat": "Supplements",
+        "research": "Packaging: White plastic screw-top tub (resin unstated), 16 oz (450 g); contents are unflavored creatine powder. Materials: Sole ingredient is micronized creatine monohydrate, unflavored, no other ingredients; NSF Certified for Sport."
       },
       {
         "name": "Thorne supplements",
@@ -64309,7 +64225,7 @@
         "cat": "Supplements",
         "origin": "hand",
         "source": "alternative",
-        "note": "Top pick for vitamin D3/K2 liquid and creatine; NSF Certified for Sport across the line with some glass packaging. Packaging: Powder products ship in white plastic screw-top tubs (resin unstated); liquids in 1 oz amber bottles with metered drop tops, bottle material unstated.",
+        "note": "Top pick for vitamin D3/K2 liquid and creatine; NSF Certified for Sport across the line with some glass packaging.",
         "ext": {
           "verdict": "good",
           "dated": "2026-08-29",
@@ -64328,7 +64244,8 @@
             "packaging": "Dry contents in unspecified plastic."
           },
           "legalNote": "Checked the FDA enforcement database on 2026-08-31. Only 2014 recalls of the discontinued Captomer DMSA products, terminated over a decade ago. Now informational."
-        }
+        },
+        "research": "Packaging: Powder products ship in white plastic screw-top tubs (resin unstated); liquids in 1 oz amber bottles with metered drop tops, bottle material unstated."
       }
     ],
     "rollup": {
@@ -65664,27 +65581,29 @@
         "ext": {
           "verdict": "unrated",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: formula, packaging",
+          "why": "a recommendation needs its checks done; still to do: formula",
           "fronts": {
             "formula": "unassessed",
-            "packaging": "unassessed",
+            "packaging": "pass",
             "legal": "pass",
             "testing": "pass"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": [],
+          "rules": [
+            "3 packaging-matrix-pass"
+          ],
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {},
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
           "heldBack": [
-            "formula",
-            "packaging"
+            "formula"
           ]
         },
-        "cat": "Supplements"
+        "cat": "Supplements",
+        "research": "Packaging: White plastic wide-mouth screw-top tub (resin unstated); contents are whey protein drink powder. Materials: 100% grass-fed whey protein isolate, naturally flavored, 28 g protein per serving; brand states no artificial sweeteners, food dyes, fillers, gluten, or preservatives."
       },
       {
         "name": "Transparent Labs Grass Fed Whey Isolate",
@@ -65771,7 +65690,7 @@
         "cat": "Supplements",
         "origin": "hand",
         "source": "alternative",
-        "note": "Top protein powder pick with per-batch COAs, public lot lookup, and Informed Protein certification. Packaging: Protein powders ship in white plastic wide-mouth screw-top tubs (resin unstated); contents are drink powders.",
+        "note": "Top protein powder pick with per-batch COAs, public lot lookup, and Informed Protein certification.",
         "ext": {
           "verdict": "good",
           "dated": "2026-08-29",
@@ -65790,7 +65709,8 @@
             "packaging": "Dry contents in unspecified plastic."
           },
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either."
-        }
+        },
+        "research": "Packaging: Protein powders ship in white plastic wide-mouth screw-top tubs (resin unstated); contents are drink powders."
       }
     ],
     "rollup": {
@@ -65823,12 +65743,12 @@
           "B0855ZVQ9W"
         ],
         "ext": {
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: packaging",
+          "why": "a vetted store pick, chosen by a person at product scope",
           "fronts": {
             "formula": "pass",
-            "packaging": "unassessed",
+            "packaging": "pass",
             "legal": "pass",
             "testing": "unassessed"
           },
@@ -65837,14 +65757,10 @@
           "disclose": false,
           "rules": [],
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "heldBack": [
-            "packaging"
-          ]
+          "frontNotes": {}
         },
-        "cat": "Dental floss"
+        "cat": "Dental floss",
+        "research": "Packaging: Refillable stainless steel floss dispenser; refills are 33 yd spools of pure silk floss waxed with candelilla wax, mint flavor."
       }
     ],
     "cautions": [
@@ -66205,7 +66121,7 @@
         "cat": "Electrolytes",
         "origin": "hand",
         "source": "alternative",
-        "note": "The World Health Organization low osmolarity oral rehydration formula in four pharmaceutical grade ingredients, with no flavors, sweeteners, colors, or unrefined sea salt. Non detect for total fluorine. The cleanest option in the category for illness, heat, and heavy sweating. Packaging: Individually sealed single-serve powder packets, each mixed into 1 L of water; packet material unstated.",
+        "note": "The World Health Organization low osmolarity oral rehydration formula in four pharmaceutical grade ingredients, with no flavors, sweeteners, colors, or unrefined sea salt. Non detect for total fluorine. The cleanest option in the category for illness, heat, and heavy sweating.",
         "ext": {
           "verdict": "unrated",
           "dated": "2026-08-29",
@@ -66226,7 +66142,8 @@
           "heldFrom": "good",
           "frontNotes": {},
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either."
-        }
+        },
+        "research": "Packaging: Individually sealed single-serve powder packets, each mixed into 1 L of water; packet material unstated."
       }
     ],
     "rollup": {
@@ -67139,12 +67056,12 @@
         "note": "304 stainless steel shower curtain rings, set of 12, with a roller ball glide. A rustproof upgrade over the flimsy plastic hooks that yellow and snap over time. No brittle plastic hooks. Worth knowing: Metal on metal can be noisy\", \"Chrome finish shows water spots\", \"Not double hooks (single layer).",
         "origin": "store",
         "ext": {
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: packaging",
+          "why": "a vetted store pick, chosen by a person at product scope",
           "fronts": {
             "formula": "pass",
-            "packaging": "unassessed",
+            "packaging": "pass",
             "legal": "pass",
             "testing": "unassessed"
           },
@@ -67153,14 +67070,10 @@
           "disclose": false,
           "rules": [],
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "heldBack": [
-            "packaging"
-          ]
+          "frontNotes": {}
         },
-        "cat": "Bedding"
+        "cat": "Bedding",
+        "research": "Packaging: Rings are rust-resistant stainless steel with a chrome finish; roller glide ball material unstated; durable object with no contents."
       }
     ],
     "rollup": {
@@ -67562,9 +67475,7 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": [
-            "2 formula-read-from-materials"
-          ],
+          "rules": [],
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
           "frontNotes": {},
           "heldFrom": "good",
@@ -67573,7 +67484,8 @@
             "packaging"
           ]
         },
-        "cat": "Teethers"
+        "cat": "Teethers",
+        "research": "Packaging: Solid maple hardwood teether, sold only unfinished, sanded smooth; no coating on the mouth-contact wood; made by Maple Landmark (Schoolhouse Naturals) in Middlebury, Vermont."
       }
     ],
     "cautions": [
@@ -67673,7 +67585,8 @@
           "cappedFrom": "good",
           "capRestoreWhy": "a vetted store pick, chosen by a person at product scope"
         },
-        "cat": "Strollers"
+        "cat": "Strollers",
+        "research": "Packaging: Durable stroller; frame metal not specified on the product page; textile seat fabrics with full-grain REACH-compliant leather accents; GREENGUARD Gold certified for low chemical emissions. Materials: Fabric fiber content not published; fabrics are GREENGUARD Gold certified; full-grain REACH-compliant leather details."
       },
       {
         "name": "UPPAbaby Mesa Max Infant Car Seat (Henna)",
@@ -68543,7 +68456,8 @@
             "packaging"
           ]
         },
-        "cat": "Shampoo"
+        "cat": "Shampoo",
+        "research": "Packaging: Contents are a solid shampoo bar; product pages state plastic-free and the sustainability page states PLASTIC FREE PACKAGING; box material is not named by the brand."
       },
       {
         "name": "Unscented conditioner bar",
@@ -69186,9 +69100,9 @@
         "ext": {
           "verdict": "unrated",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: formula, packaging",
+          "why": "a recommendation needs its checks done; still to do: packaging",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "pass",
             "packaging": "unassessed",
             "legal": "pass",
             "testing": "pass"
@@ -69196,17 +69110,19 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": [],
+          "rules": [
+            "2 formula-read-from-materials"
+          ],
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {},
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
           "heldBack": [
-            "formula",
             "packaging"
           ]
         },
-        "cat": "Makeup"
+        "cat": "Makeup",
+        "research": "Packaging: Cream mascara in a tube; tube material is not stated on the brand product page or the Amazon listing. Materials: Water-based mascara with Copernicia cerifera (carnauba) plant wax, hydrogenated jojoba oil, glyceryl stearate, glycerin, and acacia senegal gum; vegan and EWG Verified."
       },
       {
         "name": "W3LL PEOPLE makeup",
@@ -69338,7 +69254,7 @@
       {
         "name": "G3P800 tankless reverse osmosis",
         "verdict": "good",
-        "note": "Tankless, so filtered water never sits in a bladder. NSF 58 certified, 800 GPD, 3:1 pure to drain. Needs a power outlet under the sink. Packaging: Tankless under-sink RO appliance; drink-path materials covered by NSF/ANSI 372 lead-free certification; housing material not specified; dispenses through the included smart LED faucet. Materials: Reverse osmosis system; 10-stage filtration with a 0.0001 micron RO membrane; certified to NSF/ANSI 42, 53, 58, and 372; 800 GPD.",
+        "note": "Tankless, so filtered water never sits in a bladder. NSF 58 certified, 800 GPD, 3:1 pure to drain. Needs a power outlet under the sink.",
         "ext": {
           "verdict": "unrated",
           "dated": "2026-08-29",
@@ -69372,7 +69288,8 @@
           ]
         ],
         "matchFrom": "name",
-        "cat": "Water filters"
+        "cat": "Water filters",
+        "research": "Packaging: Tankless under-sink RO appliance; drink-path materials covered by NSF/ANSI 372 lead-free certification; housing material not specified; dispenses through the included smart LED faucet. Materials: Reverse osmosis system; 10-stage filtration with a 0.0001 micron RO membrane; certified to NSF/ANSI 42, 53, 58, and 372; 800 GPD."
       },
       {
         "name": "Gravity and pitcher filters",
@@ -69419,7 +69336,7 @@
           "B0987FCQQW"
         ],
         "verdict": "good",
-        "note": "Tankless under sink reverse osmosis certified to NSF/ANSI 58. Filters on demand straight to the faucet, so filtered water never sits in a storage bladder. Worth knowing: Most expensive filter we list\", \"Needs a power outlet under the sink\", \"Requires plumbing install. Packaging: Tankless under-sink RO appliance; drink-path materials covered by NSF/ANSI 372 lead-free certification; housing material not specified; dispenses through the included smart LED faucet. Materials: Reverse osmosis system; 10-stage filtration with a 0.0001 micron RO membrane; certified to NSF/ANSI 42, 53, 58, and 372.",
+        "note": "Tankless under sink reverse osmosis certified to NSF/ANSI 58. Filters on demand straight to the faucet, so filtered water never sits in a storage bladder. Worth knowing: Most expensive filter we list\", \"Needs a power outlet under the sink\", \"Requires plumbing install.",
         "origin": "store",
         "ext": {
           "verdict": "unrated",
@@ -69444,7 +69361,8 @@
             "packaging"
           ]
         },
-        "cat": "Water filters"
+        "cat": "Water filters",
+        "research": "Packaging: Tankless under-sink RO appliance; drink-path materials covered by NSF/ANSI 372 lead-free certification; housing material not specified; dispenses through the included smart LED faucet. Materials: Reverse osmosis system; 10-stage filtration with a 0.0001 micron RO membrane; certified to NSF/ANSI 42, 53, 58, and 372."
       },
       {
         "name": "Pitcher filters",
@@ -69950,9 +69868,9 @@
         "ext": {
           "verdict": "unrated",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: formula, packaging",
+          "why": "a recommendation needs its checks done; still to do: packaging",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "pass",
             "packaging": "unassessed",
             "legal": "pass",
             "testing": "pass"
@@ -69960,17 +69878,19 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": [],
+          "rules": [
+            "2 formula-read-from-materials"
+          ],
           "legalNote": "Checked the FDA enforcement database on 2026-08-31. One recall on record: 2023 Hepatodoron supplement tablets, a different product line, terminated. Over 24 months, now informational.",
           "frontNotes": {},
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
           "heldBack": [
-            "formula",
             "packaging"
           ]
         },
-        "cat": "Baby lotion"
+        "cat": "Baby lotion",
+        "research": "Packaging: Cream in an aluminum tube; Weleda states the tube is made of 95% recycled aluminum and easily recyclable; cap material not stated. Materials: Plant-oil base of sunflower and sweet almond oils with lanolin and beeswax; rosemary, chamomile, calendula, and pansy extracts; NATRUE certified."
       },
       {
         "name": "Salt Toothpaste",
@@ -69979,7 +69899,7 @@
           "weleda toothpaste"
         ],
         "verdict": "good",
-        "note": "Non detect for lead, one of only three pastes in the guide to clear the 5 ppb detection line. Independent lab testing published by Lead Safe Mama in 2025. The brands dispute these results. Packaging: Toothpaste in a 75 ml tube; retailer lists packaging type Tube without naming the tube material. Materials: Fluoride-free paste based on sodium bicarbonate and sea salt with silica, glycerin, jojoba oil, myrrh extract, and horse-chestnut bark extract.",
+        "note": "Non detect for lead, one of only three pastes in the guide to clear the 5 ppb detection line. Independent lab testing published by Lead Safe Mama in 2025. The brands dispute these results.",
         "origin": "article",
         "source": "best-non-toxic-toothpaste-guide.html",
         "ext": {
@@ -70011,7 +69931,8 @@
           "B000Q46K86",
           "B0BP4VXJ6X"
         ],
-        "cat": "Toothpaste"
+        "cat": "Toothpaste",
+        "research": "Packaging: Toothpaste in a 75 ml tube; retailer lists packaging type Tube without naming the tube material. Materials: Fluoride-free paste based on sodium bicarbonate and sea salt with silica, glycerin, jojoba oil, myrrh extract, and horse-chestnut bark extract."
       }
     ],
     "rollup": {
@@ -70416,7 +70337,8 @@
             "packaging"
           ]
         },
-        "cat": "Deodorant"
+        "cat": "Deodorant",
+        "research": "Packaging: Solid deodorant stick sold as refill pods for a reusable case; Wild states refills are compostable material, plastic free and recyclable, with paper or cardboard; case material not stated."
       }
     ],
     "rollup": {
@@ -71822,7 +71744,7 @@
         "cat": "Clothing",
         "origin": "hand",
         "source": "alternative",
-        "note": "Tier 2 pick with the lowest plastic content because it uses natural rubber elastic and cotton thread instead of synthetic elastane; OEKO-TEX certified. Packaging: Worn good; swim fabrics are 98% merino wool with 2% elastane or TENCEL-SeaCell blends, with 100% cotton thread and natural rubber elastic; shipping packaging not stated.",
+        "note": "Tier 2 pick with the lowest plastic content because it uses natural rubber elastic and cotton thread instead of synthetic elastane; OEKO-TEX certified.",
         "ext": {
           "verdict": "unrated",
           "dated": "2026-08-29",
@@ -71843,7 +71765,8 @@
           "heldFrom": "good",
           "frontNotes": {},
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found."
-        }
+        },
+        "research": "Packaging: Worn good; swim fabrics are 98% merino wool with 2% elastane or TENCEL-SeaCell blends, with 100% cotton thread and natural rubber elastic; shipping packaging not stated."
       }
     ]
   },
