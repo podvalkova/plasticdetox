@@ -120,6 +120,15 @@
       </div>
     </div>
     <p class="trust">Checks never expire. A product already in our reviewed database never uses a check. Your pass arrives by email right after payment.</p>
+    <p class="trust"><b>Every check helps everyone.</b> When you check a product, the verdict joins our public database after review, free for the next person who asks. You are not just buying answers, you are funding the open database.</p>
+    <div class="vetbox">
+      <b>Or request a free review</b>
+      <p class="note" style="margin:.3rem 0 .6rem">Our team researches requested products by hand and emails you when the verdict is published. This can take a few weeks.</p>
+      <input id="reqBrand" placeholder="Brand and product">
+      <input id="reqEmail" type="email" placeholder="you@email.com">
+      <button class="go" id="reqBtn" onclick="requestFree()">Request free review</button>
+      <p class="note" id="reqNote"></p>
+    </div>
   </section>
 
   <!-- VET STATE -->
@@ -161,6 +170,8 @@ async function init(){
   const banner = document.getElementById("banner");
   if (qs.get("paid")) { banner.className="banner ok"; banner.textContent="Payment received. Your pass link is on its way to your email, usually within a minute."; }
   if (qs.get("canceled")) { banner.className="banner info"; banner.textContent="Checkout was canceled. No charge was made."; }
+  const rb = document.getElementById("reqBrand");
+  if (rb && PRE_BRAND) rb.value = PRE_BRAND;
   if (PASS) {
     try {
       const r = await fetch(WORKER + "/vet-balance?pass=" + encodeURIComponent(PASS));
@@ -182,6 +193,21 @@ async function init(){
 
 function paintBalance(n){
   document.getElementById("balance").textContent = n + (n===1?" check":" checks") + " remaining on this pass";
+}
+
+async function requestFree(){
+  const brand = document.getElementById("reqBrand").value.trim();
+  const email = document.getElementById("reqEmail").value.trim();
+  const note = document.getElementById("reqNote");
+  if (!brand) { document.getElementById("reqBrand").focus(); return; }
+  if (!email || !email.includes("@")) { note.textContent = "Please enter a valid email."; return; }
+  const btn = document.getElementById("reqBtn"); btn.disabled = true;
+  try {
+    const r = await fetch(WORKER + "/brand-request", {method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({brand, email})});
+    const d = await r.json();
+    note.textContent = d.ok ? "Thanks. We will research it and email you the verdict." : (d.error || "Could not send just now.");
+  } catch(e){ note.textContent = "Could not send just now. Please try again."; }
+  btn.disabled = false;
 }
 
 async function checkout(pack){
@@ -231,7 +257,7 @@ async function vet(){
           res.innerHTML = '<div class="verdict '+e.verdict+'">'+(names[e.verdict]||e.verdict)+'</div>'
             + '<div class="unrev">'+e.label+'</div>'
             + (e.capNote ? '<p class="note">'+e.capNote+'</p>' : "")
-            + (e.consumed ? '<p class="note">1 check used.</p>' : "");
+            + (e.consumed ? '<p class="note">1 check used. This research will join our public database after review, free for everyone.</p>' : "");
           if (typeof e.balance === "number") paintBalance(e.balance);
         }
       }

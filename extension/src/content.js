@@ -52,6 +52,7 @@
   let ASINS = {};
   let SEL = null;
   let logMisses = false;
+  let VET_PASS = "";
   const loggedThisPage = new Set();
 
   // ---------------------------------------------------------------- data
@@ -63,12 +64,13 @@
 
   async function load() {
     const store = await chrome.storage.local.get([
-      "brands", "asins", "selectors", "logMisses",
+      "brands", "asins", "selectors", "logMisses", "vetPass",
     ]);
     BRANDS = store.brands || (await bundled("brand-data"));
     ASINS = store.asins || (await bundled("asin-map"));
     SEL = store.selectors || (await bundled("selectors"));
     logMisses = store.logMisses === true;   // opt in, never opt out
+    VET_PASS = (store.vetPass || "").toString();
 
     for (const b of BRANDS) {
       const labels = [b.brand, ...(b.aliases || [])];
@@ -520,6 +522,104 @@
     return data;
   }
 
+  /**
+   * The paid path, right on the listing. With a check pass stored (captured
+   * automatically when the buyer opens their pass link, or pasted in the
+   * popup) the vet runs inline and the verdict streams into this panel.
+   * Without one, the button opens the site's check page prefilled. Either
+   * way the community line states the deal plainly: a paid check becomes a
+   * public verdict, free for the next person who asks.
+   */
+  function vetActions(brandName, productTitle) {
+    const wrap = el("div", "pd-vet-actions");
+    const btn = el("button", "pd-btn", VET_PASS
+      ? "Check this product now · uses 1 check"
+      : "Get it checked now →");
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (VET_PASS) {
+        runInlineVet(wrap, brandName, productTitle);
+      } else {
+        window.open(`${SITE}/vet.html?brand=${encodeURIComponent(brandName)}`
+          + `&product=${encodeURIComponent(productTitle || "")}`, "_blank", "noopener");
+      }
+    });
+    wrap.appendChild(btn);
+    wrap.appendChild(el("div", "pd-note",
+      "Four checks, sources shown, about a minute. Every checked product "
+      + "joins our public database, free for everyone."));
+    return wrap;
+  }
+
+  function runInlineVet(mount, brandName, productTitle) {
+    mount.textContent = "";
+    const box = el("div", "pd-vet-live");
+    box.appendChild(el("div", "pd-fronts-label", "Checking…"));
+    mount.appendChild(box);
+    const LABELS = Object.fromEntries(FRONTS);
+    (async () => {
+      const res = await fetch(`${WORKER}/vet`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ pass: VET_PASS, brand: brandName,
+                               product: (productTitle || "").slice(0, 160) }),
+      });
+      if (!res.ok) {
+        const d = await res.json().catch(() => ({}));
+        box.textContent = d.error || "Could not start the check.";
+        return;
+      }
+      const reader = res.body.getReader();
+      const dec = new TextDecoder();
+      let buf = "";
+      for (;;) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        buf += dec.decode(value, { stream: true });
+        let i;
+        while ((i = buf.indexOf("\n\n")) >= 0) {
+          const chunk = buf.slice(0, i);
+          buf = buf.slice(i + 2);
+          if (!chunk.startsWith("data: ")) continue;
+          let ev;
+          try { ev = JSON.parse(chunk.slice(6)); } catch (e) { continue; }
+          if (ev.internal) continue;
+          if (ev.front) {
+            const st = ev.front.status;
+            const line = el("div", `pd-front ${st}`);
+            line.appendChild(el("span", `pd-icon ${st}`, STATUS_GLYPH[st] || "?"));
+            const body = el("div", "pd-front-body");
+            body.appendChild(el("div", "pd-front-name",
+              LABELS[ev.step] || "Database"));
+            if (ev.front.note) body.appendChild(el("div", "pd-front-note", ev.front.note));
+            line.appendChild(body);
+            box.appendChild(line);
+          }
+          if (ev.done) {
+            if (ev.needsCredits) {
+              const a = el("a", "pd-link", "This pass is empty. Get more checks →");
+              a.href = `${SITE}/vet.html`;
+              a.target = "_blank"; a.rel = "noopener";
+              box.appendChild(a);
+              continue;
+            }
+            if (ev.error) { box.appendChild(el("div", "pd-note bad", ev.error)); continue; }
+            const head = el("div", `pd-head ${ev.verdict}`);
+            head.appendChild(el("span", `pd-badge ${ev.verdict}`,
+              STANCE_LABEL[ev.verdict] || ev.verdict));
+            head.appendChild(el("div", "pd-cat", ev.label || ""));
+            box.insertBefore(head, box.firstChild);
+            const bits = [];
+            if (ev.consumed) bits.push("1 check used; " + ev.balance + " left.");
+            if (ev.fromDatabase) bits.push("From our reviewed database, no check used.");
+            bits.push("This verdict joins our free public database.");
+            box.appendChild(el("div", "pd-note good", bits.join(" ")));
+          }
+        }
+      }
+    })().catch(() => { box.textContent = "Connection lost. No check was used unless the full card was delivered."; });
+  }
+
   /** Email request form: posts to the worker so the ask happens right here on
    *  the listing rather than bouncing the reader to the site. Shared by the
    *  unmatched panel and the checks-in-progress panel. */
@@ -562,7 +662,7 @@
     return wrap;
   }
 
-  function buildUnmatchedPanel(brandName, knownBrand) {
+  function buildUnmatchedPanel(brandName, knownBrand, title) {
     const root = el("div", "pd-panel");
     const head = el("div", "pd-head");
     head.appendChild(el("span", "pd-badge", "Not reviewed"));
@@ -570,11 +670,13 @@
     root.appendChild(head);
     root.appendChild(el("div", "pd-unmatched", knownBrand
       ? "We have researched " + brandName + " but not this particular product, "
-        + "and a brand is not a product. Ask for a review and we will vet this "
-        + "one on all four fronts, then email you the verdict."
-      : "We have not researched this brand yet. Ask for a review and we will "
-        + "vet it on all four fronts, then email you the verdict."));
-    root.appendChild(requestForm(brandName, "Request review",
+        + "and a brand is not a product."
+      : "We have not researched this brand yet."));
+    root.appendChild(vetActions(brandName, title));
+    root.appendChild(el("div", "pd-unmatched",
+      "Or request a free hand review and we will email you the verdict. "
+      + "This can take a few weeks."));
+    root.appendChild(requestForm(brandName, "Request free review",
       `Thanks. We will research ${brandName} and email you the verdict.`));
 
     const foot = el("div", "pd-foot");
@@ -597,7 +699,7 @@
    * false on a couple of hundred store picks: the row exists, a person chose
    * it, and what is missing is named in ext.heldBack. Say the true state.
    */
-  function buildHeldPanel(brand, row) {
+  function buildHeldPanel(brand, row, title) {
     const root = el("div", "pd-panel");
     const head = el("div", "pd-head");
     head.appendChild(el("span", "pd-badge", "Checks in progress"));
@@ -614,8 +716,10 @@
       + "the remaining checks are done.";
     if (done.length) text += " Done: " + done.join(", ") + ".";
     if (still.length) text += " Still verifying: " + still.join(", ") + ".";
-    text += " Leave your email and we will send the verdict when it clears.";
     root.appendChild(el("div", "pd-unmatched", text));
+    root.appendChild(vetActions(brand.brand, title || row.name));
+    root.appendChild(el("div", "pd-unmatched",
+      "Or leave your email and we will send the verdict free when it clears."));
     root.appendChild(requestForm(brand.brand, "Email me the verdict",
       "Thanks. We will email you when every check on this one is done."));
 
@@ -860,14 +964,14 @@
                         { product: prow });
     } else if (match && prow && prow.ext && (prow.ext.heldBack || []).length) {
       // We reviewed this product; the gate is waiting on named checks.
-      panel = buildHeldPanel(match.brand, prow);
+      panel = buildHeldPanel(match.brand, prow, title);
     } else if (match) {
       // We know the brand but not this product, which is not the same thing.
       // Offer to research it rather than lending the brand's verdict to it.
-      panel = buildUnmatchedPanel(match.brand.brand, match.brand);
+      panel = buildUnmatchedPanel(match.brand.brand, match.brand, title);
       recordMiss(match.brand.brand);
     } else if (byline) {
-      panel = buildUnmatchedPanel(byline);
+      panel = buildUnmatchedPanel(byline, null, title);
       recordMiss(byline);
     } else {
       return;

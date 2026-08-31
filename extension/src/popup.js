@@ -12,12 +12,47 @@ function ago(ts) {
 }
 
 async function paint() {
-  const s = await chrome.storage.local.get(["brands", "asins", "brands_at", "logMisses"]);
+  const s = await chrome.storage.local.get(["brands", "asins", "brands_at", "logMisses", "vetPass"]);
   $("brandCount").textContent = s.brands ? s.brands.length.toLocaleString() : "—";
   $("asinCount").textContent = s.asins ? Object.keys(s.asins).length.toLocaleString() : "—";
   $("logMisses").checked = s.logMisses === true;
   $("updated").textContent = ago(s.brands_at);
+  paintPass(s.vetPass || "");
 }
+
+// The check pass: the worker's CORS allows this extension's origin, so the
+// balance lookup needs no host permission and no key ever leaves the pass.
+const VET_WORKER = "https://plasticdetox-quiz-email.plasticdetox.workers.dev";
+
+async function paintPass(pass) {
+  if (!pass) return;
+  $("passInput").value = pass;
+  $("passStatus").textContent = "Checking your pass…";
+  try {
+    const r = await fetch(`${VET_WORKER}/vet-balance?pass=${encodeURIComponent(pass)}`);
+    const d = await r.json();
+    $("passStatus").textContent = d.ok
+      ? `Pass active: ${d.balance} check${d.balance === 1 ? "" : "s"} left. ` +
+        "On any listing we have not covered, the panel offers Check this product now."
+      : "That pass was not recognised.";
+  } catch (e) {
+    $("passStatus").textContent = "Could not reach the server to check the pass.";
+  }
+}
+
+$("passSave").addEventListener("click", async () => {
+  const pass = $("passInput").value.trim();
+  if (!/^[a-z0-9]{20,64}$/i.test(pass)) {
+    $("passStatus").textContent = "That does not look like a pass code. It is the long code from your pass link.";
+    return;
+  }
+  await chrome.storage.local.set({ vetPass: pass });
+  paintPass(pass);
+});
+
+$("passGet").addEventListener("click", () => {
+  chrome.tabs.create({ url: "https://plasticdetox.org/vet.html" });
+});
 
 // Reaching the worker is the only thing this extension does that needs a host
 // permission, and it only happens for people who switch this on. So it is

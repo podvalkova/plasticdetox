@@ -122,6 +122,13 @@
    Solid green outline so it reads as settled, dash so it never reads as a pass. */
 .pd-icon.none    { background: #fff; border: 1.5px solid var(--pd-good); color: var(--pd-good); }
 
+/* Inline paid check: the button block and the streamed result rows. */
+.pd-vet-actions { padding: 10px 14px 4px; }
+.pd-vet-actions .pd-btn { width: 100%; }
+.pd-vet-actions .pd-note { margin-top: 6px; }
+.pd-vet-live { padding: 4px 0; }
+.pd-vet-live .pd-head { border-radius: 8px; margin-bottom: 6px; }
+
 .pd-front-body { min-width: 0; flex: 1; }
 .pd-front-name { font-size: 12.5px; font-weight: 600; color: var(--pd-text); }
 .pd-front-note { font-size: 11.5px; line-height: 1.45; color: var(--pd-muted); margin-top: 1px; }

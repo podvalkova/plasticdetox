@@ -30,6 +30,16 @@
         "src/content.css"
       ],
       "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://plasticdetox.org/vet.html*",
+        "https://www.plasticdetox.org/vet.html*"
+      ],
+      "js": [
+        "src/pass-capture.js"
+      ],
+      "run_at": "document_idle"
     }
   ],
   "action": {
