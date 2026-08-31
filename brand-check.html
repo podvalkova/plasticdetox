@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Brand Check: Skip, Careful, or Good Choice? | Plastic Detox</title>
-  <meta name="description" content="Type any brand and get an instant verdict: skip, careful, or good choice. Based on independent lab tests, product recalls, lawsuits, ingredients, and materials. 500+ brands reviewed.">
+  <title>Product Check: Skip, Careful, or Good Choice? | Plastic Detox</title>
+  <meta name="description" content="Type any product or brand and get an instant verdict: skip, careful, or good choice. Based on independent lab tests, product recalls, lawsuits, ingredients, and materials.">
   <link rel="icon" type="image/png" sizes="48x48" href="favicon.png">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
@@ -19,8 +19,8 @@
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Brand Check: Skip, Careful, or Good Choice? | Plastic Detox">
-  <meta property="og:description" content="Type any brand and get an instant verdict based on independent lab tests, recalls, lawsuits, and materials. 500+ brands reviewed.">
+  <meta property="og:title" content="Product Check: Skip, Careful, or Good Choice? | Plastic Detox">
+  <meta property="og:description" content="Type any product or brand and get an instant verdict based on independent lab tests, recalls, lawsuits, and materials.">
   <meta property="og:url" content="https://plasticdetox.org/brand-check.html">
   <meta property="og:site_name" content="Plastic Detox">
   <meta property="og:image" content="https://plasticdetox.org/images/social-share.png">
@@ -282,18 +282,18 @@
       <a class="nav-link" href="custom-plan.html">Free Plan</a>
       <a class="nav-link" href="store.html">Store</a>
       <a class="nav-link" href="resources.html">Resources</a>
-      <a class="nav-link active" href="brand-check.html">Brand Check</a>
+      <a class="nav-link active" href="brand-check.html">Product Check</a>
     </div>
   </nav>
 
   <main class="wrap">
-    <div class="eyebrow">Brand Check</div>
-    <h1>Is that brand a <em>skip</em> or a <em>good choice</em>?</h1>
-    <p class="sub">Type any brand and get a straight answer, based on independent lab tests, recalls, lawsuits, ingredients, and materials. No marketing spin.</p>
+    <div class="eyebrow">Product Check</div>
+    <h1>Is that product a <em>skip</em> or a <em>good choice</em>?</h1>
+    <p class="sub">Type any product or brand and get a straight answer, based on independent lab tests, recalls, lawsuits, ingredients, and materials. No marketing spin.</p>
     <p class="stat-line" id="statLine">Loading brand database…</p>
 
     <div class="search-box">
-      <input id="search" class="search-input" type="text" placeholder="Search a brand… e.g. Brita, Stasher, Native" autocomplete="off" spellcheck="false" aria-label="Search a brand">
+      <input id="search" class="search-input" type="text" placeholder="Search a product or brand… e.g. Brita pitcher, Stasher bags" autocomplete="off" spellcheck="false" aria-label="Search a brand">
       <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
       <div class="suggestions" id="suggestions"></div>
     </div>
@@ -570,13 +570,15 @@
       logSearch(clean, false, "");
       resultEl.innerHTML =
         '<div class="unknown-card" id="unknownCard">' +
-          '<h3>We have not reviewed ' + esc(clean) + ' yet</h3>' +
-          '<p>It is not in our researched database yet. Leave your email and our team will research it by hand and send you the verdict.</p>' +
+          '<h3>We have not checked ' + esc(clean) + ' yet</h3>' +
+          '<p><strong>Get it checked now.</strong> Our research system runs the same four checks we use for every verdict, formula, packaging, recalls, independent tests, and answers in about a minute, with sources shown. Packs start at $5 for 20 checks.</p>' +
+          '<p><a class="btn btn-primary" href="vet.html?q=' + encodeURIComponent(clean) + '">Check it now</a></p>' +
+          '<p style="margin:1rem 0 .5rem"><strong>Or request a free review.</strong> Leave your email and our team will research it by hand and email you when it is added. This can take a few weeks.</p>' +
           '<div class="request-form">' +
             '<input id="reqEmail" type="email" placeholder="you@email.com" aria-label="Your email">' +
-            '<button class="btn btn-primary" onclick="requestReview(\'' + jsAttr(clean) + '\')">Request review</button>' +
+            '<button class="btn" onclick="requestReview(\'' + jsAttr(clean) + '\')">Request free review</button>' +
           '</div>' +
-          '<p class="form-note" id="reqNote">We review requested brands and email you when it is added.</p>' +
+          '<p class="form-note" id="reqNote"></p>' +
         '</div>';
     }
 

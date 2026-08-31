@@ -91,7 +91,7 @@
     <a class="nav-link nav-hide-mobile" href="./">Home</a>
     <a class="nav-link" href="custom-plan.html">Free Plan</a>
     <a class="nav-link" href="store.html">Store</a>
-    <a class="nav-link" href="brand-check.html">Brand Check</a>
+    <a class="nav-link" href="brand-check.html">Product Check</a>
   </div>
 </nav>
 
@@ -150,6 +150,8 @@
 const WORKER = "https://plasticdetox-quiz-email.plasticdetox.workers.dev";
 const qs = new URLSearchParams(location.search);
 let PASS = qs.get("pass") || localStorage.getItem("pdVetPass") || "";
+const PRE_BRAND = qs.get("brand") || qs.get("q") || "";
+const PRE_PRODUCT = qs.get("product") || "";
 const NAME = {formula:"Formula", packaging:"Packaging", legal:"Recalls & lawsuits", testing:"Independent tests"};
 let timer;
 
@@ -166,6 +168,8 @@ async function init(){
       if (d.ok) {
         localStorage.setItem("pdVetPass", PASS);
         document.getElementById("vet").style.display="block";
+        if (PRE_BRAND) document.getElementById("brand").value = PRE_BRAND;
+        if (PRE_PRODUCT) document.getElementById("product").value = PRE_PRODUCT;
         paintBalance(d.balance);
         if (d.balance <= 0) showBuy();
         return;
