@@ -1086,6 +1086,10 @@ function bareFirm(s) {
 function isTheBrand(brand, firm) {
   const b = bareFirm(brand), f = bareFirm(firm);
   if (!b || !f) return false;
+  // A short brand makes the prefix rule dangerous: "L." would claim every
+  // firm beginning with the word L, and 31 of Perrigo's recalls landed on a
+  // tampon brand. Short names get exact equality only.
+  if (b.length < 3) return f === b;
   return f === b || f.startsWith(b + " ");
 }
 
@@ -1111,18 +1115,23 @@ async function vetLegal(brand) {
   }
   const ms = Date.now() - t0;
   if (total === 0) {
-    return { status: "pass", ms,
-      note: examined === 0
-        ? "Checked the FDA enforcement database just now. No recall on record, and no firm with a similar name either."
-        : "Checked the FDA enforcement database just now. Matches by name belong to differently named firms; nothing on record for this brand.",
+    return { status: "pass", ms, note: "No recalls on record.",
       source: "https://open.fda.gov/apis/" };
   }
-  const y = latest.date ? latest.date.slice(0, 4) : "unknown year";
-  const old = latest.date && Number(latest.date.slice(0, 4)) <= new Date().getFullYear() - 3;
-  return {
-    status: old && /terminated|completed/i.test(latest.status) ? "pass" : "caution", ms,
-    note: `FDA enforcement records list ${total} recall(s) for this firm, latest ${y} (${latest.status}): ${latest.reason}` +
-      (old ? " Over 24 months and closed, so informational under our rules." : " Recent enough to count."),
+  // The customer card speaks plainly; the counting and the decay rule are our
+  // business. openFDA dates are YYYYMMDD, so the 24 month line is exact.
+  const d = latest.date || "";
+  const ageMonths = d.length === 8
+    ? (Date.now() - Date.parse(`${d.slice(0, 4)}-${d.slice(4, 6)}-${d.slice(6, 8)}`)) / 2629800000
+    : 0;
+  const closed = /terminated|completed/i.test(latest.status);
+  if (ageMonths > 24 && closed) {
+    return { status: "pass", ms,
+      note: "No recalls in the last two years. Older recalls exist and were resolved.",
+      source: "https://open.fda.gov/apis/" };
+  }
+  return { status: "caution", ms,
+    note: `A ${closed ? "resolved " : ""}recall from ${d.slice(0, 4) || "recently"} is on record: ${latest.reason}`,
     source: "https://open.fda.gov/apis/",
   };
 }
@@ -1174,7 +1183,7 @@ Status rules (a digest of our standard):
 - fail: plastic in the path of hot water, brewed drink, or heated food. Heat drives migration harder than anything else and this is the ingestion path. Pod and capsule coffee machines (plastic water paths, plastic pods brewed under near-boiling pressurized water), plastic kettles and plastic-path hot appliances fail here; so does anything plastic immersed in what a person drinks (the tea bag rule). Anhydrous oil stored in PET also fails. "BPA-free" does not rescue this: any plastic in a hot drink path fails, resin stated or not.
 - caution: a disclosure umbrella ("fragrance", "parfum", "proprietary blend", "natural flavors"); or an emulsion in plastic packaging; or plastic with resin unstated holding anything not dry; or cold-water contact with unstated plastic.
 - pass: inert materials (glass, stainless, aluminum container, paper, cotton, wood); dry contents in any plastic; a full ingredient list with none of the above.
-- none: you checked, and nothing of this kind exists or applies. A durable good has no contents, so its "packaging" is none (the contact surface is judged under formula). A product nobody has lab tested is testing none. This is a completed check, not a gap.
+- none: you checked, and nothing of this kind exists or applies. A durable good has no contents, so its "packaging" is none (the contact surface is judged under formula). A DRY product's packaging is also none: dry contents extract nothing from a wrapper or box (note: "Not applicable: dry product, packaging is not a migration path"), with PVC wrapping the one exception, at caution. A product nobody has lab tested is testing none. This is a completed check, not a gap.
 - unassessed: ONLY when you could not complete the check.
 For a durable good or appliance, "formula" means the surfaces that actually touch the water, food, drink, or skin (the reservoir, tubing, brew chamber, cooking surface, drink path), never the retail box. Well documented facts about a product category (how a pod machine brews, what a nonstick coating is) are evidence you may use; name the category fact in the note.
 Respond with ONLY a JSON object, no prose.`;
@@ -1214,7 +1223,10 @@ async function vetDbLookup(brand, product) {
       for (const b of brands) {
         for (const label of [b.brand, ...(b.aliases || [])]) {
           const k = vetCollapse(label);
-          if (k.length >= 3 && !map.has(k)) map.set(k, b);
+          // Unlike the extension's title matcher, lookup here is exact
+          // equality on what the user typed, so even one-letter labels are
+          // safe to index: "L." must be findable or its brand never matches.
+          if (k.length >= 1 && !map.has(k)) map.set(k, b);
         }
       }
       VET_DB = { at: Date.now(), byLabel: map };
