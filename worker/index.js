@@ -1174,19 +1174,21 @@ Status rules (a digest of our standard):
 - fail: plastic in the path of hot water, brewed drink, or heated food. Heat drives migration harder than anything else and this is the ingestion path. Pod and capsule coffee machines (plastic water paths, plastic pods brewed under near-boiling pressurized water), plastic kettles and plastic-path hot appliances fail here; so does anything plastic immersed in what a person drinks (the tea bag rule). Anhydrous oil stored in PET also fails. "BPA-free" does not rescue this: any plastic in a hot drink path fails, resin stated or not.
 - caution: a disclosure umbrella ("fragrance", "parfum", "proprietary blend", "natural flavors"); or an emulsion in plastic packaging; or plastic with resin unstated holding anything not dry; or cold-water contact with unstated plastic.
 - pass: inert materials (glass, stainless, aluminum container, paper, cotton, wood); dry contents in any plastic; a full ingredient list with none of the above.
-For a durable good or appliance, "formula" and "packaging" both mean the surfaces that actually touch the water, food, drink, or skin (the reservoir, tubing, brew chamber, cooking surface, drink path), never the retail box. Well documented facts about a product category (how a pod machine brews, what a nonstick coating is) are evidence you may use; name the category fact in the note.
+- none: you checked, and nothing of this kind exists or applies. A durable good has no contents, so its "packaging" is none (the contact surface is judged under formula). A product nobody has lab tested is testing none. This is a completed check, not a gap.
+- unassessed: ONLY when you could not complete the check.
+For a durable good or appliance, "formula" means the surfaces that actually touch the water, food, drink, or skin (the reservoir, tubing, brew chamber, cooking surface, drink path), never the retail box. Well documented facts about a product category (how a pod machine brews, what a nonstick coating is) are evidence you may use; name the category fact in the note.
 Respond with ONLY a JSON object, no prose.`;
 
 async function vetLabel(env, brand, product) {
   const r = await vetClaude(env, VET_RULES,
-    `Product: ${brand} ${product}. Find (1) "formula": what the product itself is made of. For a consumable that is the ingredient list; for an appliance or durable good it is the materials of the surfaces that touch the water, food, drink, or skin (reservoir, tubing, brew chamber, cooking surface). How the product is BUILT always belongs here, never under testing, and plastic in a hot water or drink path is a formula fail. (2) "packaging": the container that holds the contents, or for a durable good the same contact-surface fact restated. Search the brand site or retailer listings. Reply ONLY: {"formula":{"status":"pass|caution|fail|unassessed","note":"<one sentence of facts>","source":"<url>"},"packaging":{"status":"...","note":"...","source":"..."}}`,
+    `Product: ${brand} ${product}. Find (1) "formula": what the product itself is made of. For a consumable that is the ingredient list; for an appliance or durable good it is the materials of the surfaces that touch the water, food, drink, or skin (reservoir, tubing, brew chamber, cooking surface). How the product is BUILT always belongs here, never under testing, and plastic in a hot water or drink path is a formula fail. (2) "packaging": the container that holds the contents (matters for cosmetics, food, liquids). A durable good or appliance has no contents, so its packaging is status "none" with note "Not applicable: no contents; the contact surfaces are judged under formula." Reply ONLY: {"formula":{"status":"pass|caution|fail|none|unassessed","note":"<one sentence of facts>","source":"<url>"},"packaging":{"status":"...","note":"...","source":"..."}}`,
     3);
   return r;
 }
 
 async function vetTesting(env, brand, product) {
   const r = await vetClaude(env, VET_RULES,
-    `Product: ${brand} ${product}. This front is ONLY for actual measurements and certifications: lab results, peer reviewed studies, certifications (Lead Safe Mama, Mamavation, Consumer Reports, NSF, OEKO-TEX, GOTS, EWG Verified), including studies that MEASURED this product category (for example microplastic particle counts from pod coffee machines or tea bags), which count at caution strength with the note saying it is a category measurement. What the product is made of or how it is built is NOT testing evidence and must not be reported here. A clean result needs its detection limit to count as pass. If no measurement exists, status is "unassessed" with note "No independent testing found." Reply ONLY: {"testing":{"status":"pass|caution|fail|unassessed","note":"<one sentence>","source":"<url or empty>"}}`,
+    `Product: ${brand} ${product}. This front is ONLY for actual measurements and certifications: lab results, peer reviewed studies, certifications (Lead Safe Mama, Mamavation, Consumer Reports, NSF, OEKO-TEX, GOTS, EWG Verified), including studies that MEASURED this product category (for example microplastic particle counts from pod coffee machines or tea bags), which count at caution strength with the note saying it is a category measurement. What the product is made of or how it is built is NOT testing evidence and must not be reported here. A clean result needs its detection limit to count as pass. If you searched and no measurement has been published, status is "none" with note "We searched; no independent testing of this product has been published." Use "unassessed" only if you could not complete the search. Reply ONLY: {"testing":{"status":"pass|caution|fail|none|unassessed","note":"<one sentence>","source":"<url or empty>"}}`,
     2);
   return r;
 }
@@ -1240,8 +1242,10 @@ function vetVerdict(fronts) {
   const all = ["formula", "packaging", "legal", "testing"].map(st);
   if (all.includes("fail")) return "skip";
   if (all.includes("caution")) return "careful";
+  // "none" satisfies a check the way the pipeline's gate treats it: we
+  // looked, and nothing of this kind applies. Only "unassessed" blocks.
   const blocking = ["formula", "packaging", "legal"];
-  if (blocking.every((k) => st(k) === "pass")) return "good";
+  if (blocking.every((k) => st(k) === "pass" || st(k) === "none")) return "good";
   return "unrated";
 }
 
@@ -1302,10 +1306,13 @@ async function handleInstantVet(request, env, corsOrigin) {
         return;
       }
       brandStance = b.stance;
-      send({ step: "database", front: { status: STANCE_BADGE[b.stance] || "unassessed",
-        note: `Brand context only: we rate ${b.brand} ${b.stance} (${(b.reason || "").slice(0, 220)}) `
-          + `That finding is about other ${b.brand} products, not necessarily this one, `
-          + `so we are researching this exact product now.`,
+      // Internal context: it steers the verdict cap below, and the review
+      // queue will want it, but the customer card never shows it. Anna's
+      // call: the shopper gets the four checks, not our reasoning trail.
+      send({ step: "database", internal: true,
+        front: { status: STANCE_BADGE[b.stance] || "unassessed",
+        note: `Brand context (internal): we rate ${b.brand} ${b.stance}. `
+          + `Researching this exact product now.`,
         source: `https://plasticdetox.org/brand-check.html?b=${encodeURIComponent(b.brand)}` },
         ms: Date.now() - t0 });
     }
@@ -1338,10 +1345,12 @@ async function handleInstantVet(request, env, corsOrigin) {
     // Rule 1.1: adverse brand evidence propagates as a caution with its scope
     // named (the database line above names it); favourable never does. A clean
     // read on one product cannot out-rank what we hold against its maker.
+    let capNote = "";
     if ((brandStance === "careful" || brandStance === "skip") && verdict === "good") {
       verdict = "careful";
+      capNote = `This product read clean, and we still rate the brand itself ${brandStance}.`;
     }
-    send({ done: true, elapsedMs: Date.now() - t0, verdict,
+    send({ done: true, elapsedMs: Date.now() - t0, verdict, capNote,
            label: "Research, not yet reviewed", fronts });
     await writer.close();
   };
@@ -1374,6 +1383,7 @@ button{font:inherit;font-weight:600;padding:10px 18px;border:0;border-radius:8px
 .badge{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;padding:2px 8px;border-radius:5px}
 .pass{background:#dcfce7;color:#15803d}.caution{background:#fef3c7;color:#b45309}
 .fail{background:#fee2e2;color:#dc2626}.unassessed{background:#f5f5f4;color:#78716c}
+.none{background:#f0fdf4;color:#3f6212;border:1px dashed #86efac}
 .verdict{font-size:22px;font-weight:700;margin:14px 0 2px}
 .unrev{font-size:12px;color:#b45309;font-weight:600}
 small{color:#78716c}
@@ -1410,14 +1420,16 @@ async function go(){
       const chunk=buf.slice(0,i);buf=buf.slice(i+2);
       if(!chunk.startsWith('data: '))continue;
       const e=JSON.parse(chunk.slice(6));
+      if(e.internal){console.log('internal:',e);continue}
       if(e.front){
         const f=e.front;
-        line('<span class="badge '+f.status+'">'+f.status+'</span> <b>'+(NAME[e.step]||e.step)+'</b> at '+(e.ms/1000).toFixed(1)+'s<br><small>'+f.note+(f.source?' · <a href="'+f.source+'" target="_blank" rel="noopener">source</a>':'')+'</small>');
+        const lbl=f.status==='none'?(e.step==='testing'?'none found':'N/A'):f.status;
+        line('<span class="badge '+f.status+'">'+lbl+'</span> <b>'+(NAME[e.step]||e.step)+'</b> at '+(e.ms/1000).toFixed(1)+'s<br><small>'+f.note+(f.source?' · <a href="'+f.source+'" target="_blank" rel="noopener">source</a>':'')+'</small>');
       }
       if(e.done){
         clearInterval(timer);
         if(e.error){line('Error: '+e.error);continue}
-        res.innerHTML='<div class="verdict">'+({good:'Good choice',careful:'Careful',skip:'Skip',unrated:'Not enough found'}[e.verdict]||e.verdict)+'</div><div class="unrev">'+e.label+' · finished in '+(e.elapsedMs/1000).toFixed(1)+'s</div>';
+        res.innerHTML='<div class="verdict">'+({good:'Good choice',careful:'Careful',skip:'Skip',unrated:'Not enough found'}[e.verdict]||e.verdict)+'</div><div class="unrev">'+e.label+' · finished in '+(e.elapsedMs/1000).toFixed(1)+'s</div>'+(e.capNote?'<div><small>'+e.capNote+'</small></div>':'');
       }
     }
   }
