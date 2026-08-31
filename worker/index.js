@@ -1171,8 +1171,10 @@ async function vetClaude(env, system, userText, maxUses) {
 const VET_RULES = `You are a researcher for Plastic Detox, a consumer safety site. Judge ONLY from what you actually find; when you cannot determine something, say "unassessed". Never guess.
 Status rules (a digest of our standard):
 - fail: a named hazard in the path that reaches a person: PTFE/PFAS, PVC, polycarbonate/BPA, polystyrene, melamine, phthalates, formaldehyde releasers, triclosan, lead, cadmium, chemical UV filters (oxybenzone, avobenzone, octinoxate, octisalate, octocrylene, homosalate), aluminum chlorohydrate/zirconium, talc.
-- caution: a disclosure umbrella ("fragrance", "parfum", "proprietary blend", "natural flavors"); or an emulsion/oil in plastic packaging; or plastic with resin unstated holding anything not dry.
+- fail: plastic in the path of hot water, brewed drink, or heated food. Heat drives migration harder than anything else and this is the ingestion path. Pod and capsule coffee machines (plastic water paths, plastic pods brewed under near-boiling pressurized water), plastic kettles and plastic-path hot appliances fail here; so does anything plastic immersed in what a person drinks (the tea bag rule). Anhydrous oil stored in PET also fails.
+- caution: a disclosure umbrella ("fragrance", "parfum", "proprietary blend", "natural flavors"); or an emulsion in plastic packaging; or plastic with resin unstated holding anything not dry; or cold-water contact with unstated plastic.
 - pass: inert materials (glass, stainless, aluminum container, paper, cotton, wood); dry contents in any plastic; a full ingredient list with none of the above.
+For a durable good or appliance, "formula" and "packaging" both mean the surfaces that actually touch the water, food, drink, or skin (the reservoir, tubing, brew chamber, cooking surface, drink path), never the retail box. Well documented facts about a product category (how a pod machine brews, what a nonstick coating is) are evidence you may use; name the category fact in the note.
 Respond with ONLY a JSON object, no prose.`;
 
 async function vetLabel(env, brand, product) {
@@ -1184,9 +1186,52 @@ async function vetLabel(env, brand, product) {
 
 async function vetTesting(env, brand, product) {
   const r = await vetClaude(env, VET_RULES,
-    `Product: ${brand} ${product}. Search for independent lab testing or certifications (Lead Safe Mama, Mamavation, Consumer Reports, NSF, OEKO-TEX, GOTS, EWG Verified). A clean result needs its detection limit to count as pass. If nobody has tested it, status is "unassessed" with note "No independent testing found." Reply ONLY: {"testing":{"status":"pass|caution|fail|unassessed","note":"<one sentence>","source":"<url or empty>"}}`,
+    `Product: ${brand} ${product}. Search for independent lab testing, peer reviewed studies, or certifications: Lead Safe Mama, Mamavation, Consumer Reports, NSF, OEKO-TEX, GOTS, EWG Verified, and academic studies about this exact product category (for example microplastic release measured from pod coffee machines, plastic kettles, or tea bags). A category level study counts, at caution strength, and the note must say it is about the category. A clean result needs its detection limit to count as pass. If nothing exists, status is "unassessed" with note "No independent testing found." Reply ONLY: {"testing":{"status":"pass|caution|fail|unassessed","note":"<one sentence>","source":"<url or empty>"}}`,
     2);
   return r;
+}
+
+// ---------------------------------------------------------------- database
+//
+// The database answers before any research spends a cent. A vet on a product
+// we already researched is free, instant, and better than anything a live
+// search could produce: Keurig sat in brand-data.json as a skip with the pods
+// named, while the prototype spent twelve seconds rediscovering less.
+let VET_DB = { at: 0, byLabel: null };
+
+function vetCollapse(s) { return (s || "").toLowerCase().replace(/[^a-z0-9]+/g, ""); }
+
+async function vetDbLookup(brand, product) {
+  try {
+    if (!VET_DB.byLabel || Date.now() - VET_DB.at > 3600e3) {
+      const res = await fetch("https://plasticdetox.org/brand-data.json",
+        { cf: { cacheTtl: 3600, cacheEverything: true } });
+      if (!res.ok) return null;
+      const brands = await res.json();
+      const map = new Map();
+      for (const b of brands) {
+        for (const label of [b.brand, ...(b.aliases || [])]) {
+          const k = vetCollapse(label);
+          if (k.length >= 3 && !map.has(k)) map.set(k, b);
+        }
+      }
+      VET_DB = { at: Date.now(), byLabel: map };
+    }
+    const hit = VET_DB.byLabel.get(vetCollapse(brand));
+    if (!hit) return null;
+    // Cheap product row match: every match/matchAll word present in the title.
+    const low = " " + (product || "").toLowerCase().replace(/[^a-z0-9]+/g, " ") + " ";
+    let row = null;
+    for (const p of hit.products || []) {
+      const phrases = (p.match || []).map((x) => " " + String(x).toLowerCase() + " ");
+      const groups = p.matchAll || [];
+      if (phrases.some((ph) => low.includes(ph)) ||
+          groups.some((g) => g.length && g.every((w) => low.includes(" " + String(w).toLowerCase() + " ")))) {
+        row = p; break;
+      }
+    }
+    return { brand: hit, row };
+  } catch (e) { return null; }
 }
 
 // The section 6 ladder plus the completeness gate, as the extension applies it.
@@ -1219,6 +1264,25 @@ async function handleInstantVet(request, env, corsOrigin) {
   const run = async () => {
     const fronts = {};
     send({ step: "start", brand, product });
+
+    // Free answer first: a product we already researched costs nothing and
+    // outranks anything a live search could find in ten seconds.
+    const db = await vetDbLookup(brand, product);
+    if (db) {
+      const b = db.brand, row = db.row;
+      const verdict = (row && row.ext && row.ext.verdict && row.ext.verdict !== "unrated")
+        ? row.ext.verdict : b.stance;
+      const note = (row && row.note) || b.reason || "";
+      send({ step: "database", front: { status: "pass",
+        note: `Already in our database${row ? ` (${row.name})` : ""}: ${note}`.slice(0, 400),
+        source: `https://plasticdetox.org/brand-check.html?b=${encodeURIComponent(b.brand)}` },
+        ms: Date.now() - t0 });
+      send({ done: true, elapsedMs: Date.now() - t0, verdict,
+             label: "From our reviewed database, no credit consumed", fronts: {},
+             fromDatabase: true });
+      await writer.close();
+      return;
+    }
 
     const finish = (key, r, aiKeys) => {
       // Claude legs return {data} | {error} | {unconfigured}; legal returns a front.
