@@ -51,6 +51,28 @@ if (!fs.existsSync(keyPath)) {
 const run = (cmd, args, opts = {}) =>
   execFileSync(cmd, args, { stdio: "inherit", cwd: IOS, ...opts });
 
+/**
+ * altool, which reports failure by printing it and exiting zero.
+ *
+ * A validation error scrolled past, the upload ran anyway, failed the same
+ * way, and the script said "Uploaded". So its output is read rather than its
+ * exit code.
+ */
+function altool(args, label) {
+  let out = "";
+  try {
+    out = execFileSync("xcrun", ["altool", ...args], { cwd: IOS, encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] });
+  } catch (err) {
+    out = String((err.stdout || "") + (err.stderr || ""));
+  }
+  process.stdout.write(out);
+  if (/VERIFY FAILED|UPLOAD FAILED|ERROR: /.test(out)) {
+    console.error(`\n${label} failed. Nothing was uploaded, so this build number is still free.`);
+    process.exit(1);
+  }
+  return out;
+}
+
 // The version people see, and the build number, which must never repeat.
 const version = process.argv[2];
 const pbxproj = path.join(IOS, "App.xcodeproj", "project.pbxproj");
@@ -68,6 +90,16 @@ if (version) {
 fs.writeFileSync(pbxproj, proj);
 const marketing = (proj.match(/MARKETING_VERSION = ([^;]+);/) || [])[1];
 console.log(`\n==> ${marketing} (${build})\n`);
+
+// Apple validates the Safari extension's manifest, and rejects the whole
+// upload over it. Checked here because finding out costs three minutes of
+// archiving otherwise, and the limits are not written down anywhere obvious.
+const manifest = JSON.parse(fs.readFileSync(path.join(APP, "..", "extension", "manifest.json"), "utf8"));
+if (!manifest.description || typeof manifest.description !== "string" || manifest.description.length > 112) {
+  console.error(`extension/manifest.json description must be a string of 112 characters or fewer.`);
+  console.error(`It is currently ${manifest.description ? manifest.description.length : "missing"}.`);
+  process.exit(1);
+}
 
 console.log("==> web bundle");
 run("npm", ["run", "sync-data"], { cwd: APP });
@@ -125,12 +157,12 @@ if (!ipa) {
 }
 
 console.log(`\n==> validate ${ipa}`);
-run("xcrun", ["altool", "--validate-app", "-f", path.join(OUT, ipa), "-t", "ios",
-  "--apiKey", KEY_ID, "--apiIssuer", ISSUER]);
+altool(["--validate-app", "-f", path.join(OUT, ipa), "-t", "ios",
+  "--apiKey", KEY_ID, "--apiIssuer", ISSUER], "Validation");
 
 console.log("\n==> upload");
-run("xcrun", ["altool", "--upload-app", "-f", path.join(OUT, ipa), "-t", "ios",
-  "--apiKey", KEY_ID, "--apiIssuer", ISSUER]);
+altool(["--upload-app", "-f", path.join(OUT, ipa), "-t", "ios",
+  "--apiKey", KEY_ID, "--apiIssuer", ISSUER], "Upload");
 
 console.log(`\nUploaded ${marketing} (${build}).`);
 console.log("Processing takes a few minutes. Then in App Store Connect, TestFlight,");
