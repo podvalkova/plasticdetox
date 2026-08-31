@@ -1152,7 +1152,12 @@ async function vetClaude(env, system, userText, maxUses) {
         model: VET_MODEL,
         max_tokens: 1200,
         system,
-        tools: [{ type: "web_search_20250305", name: "web_search", max_uses: maxUses }],
+        tools: [
+          { type: "web_search_20250305", name: "web_search", max_uses: maxUses },
+          // Search alone finds that a page exists; fetch lets the researcher
+          // read it. EWG scores and brand ingredient pages are public.
+          { type: "web_fetch_20250910", name: "web_fetch", max_uses: 3 },
+        ],
         messages,
       }),
       signal: AbortSignal.timeout(VET_TIMEOUT_MS - 5000),
@@ -1181,7 +1186,13 @@ const VET_RULES = `You are a researcher for Plastic Detox, a consumer safety sit
 Status rules (a digest of our standard):
 - fail: a named hazard in the path that reaches a person: PTFE/PFAS, PVC, polycarbonate/BPA, polystyrene, melamine, phthalates, formaldehyde releasers, triclosan, lead, cadmium, chemical UV filters (oxybenzone, avobenzone, octinoxate, octisalate, octocrylene, homosalate), aluminum chlorohydrate/zirconium, talc.
 - fail: plastic in the path of hot water, brewed drink, or heated food. Heat drives migration harder than anything else and this is the ingestion path. Pod and capsule coffee machines (plastic water paths, plastic pods brewed under near-boiling pressurized water), plastic kettles and plastic-path hot appliances fail here; so does anything plastic immersed in what a person drinks (the tea bag rule). Anhydrous oil stored in PET also fails. "BPA-free" does not rescue this: any plastic in a hot drink path fails, resin stated or not.
-- caution: a disclosure umbrella ("fragrance", "parfum", "proprietary blend", "natural flavors"); or an emulsion in plastic packaging; or plastic with resin unstated holding anything not dry; or cold-water contact with unstated plastic.
+- caution: a disclosure umbrella ("fragrance", "parfum", "proprietary blend", "natural flavors").
+Packaging follows our matrix, by what the contents are, because what leaches from plastic is lipophilic: oil pulls it out, water largely does not. Determine the contents type from the ingredient list (no water = anhydrous; water first with oils = emulsion; watery gel or toner = aqueous) and NAME it in the note.
+- aqueous or water-based contents in any common plastic: pass.
+- surfactant rinse-off (shampoo, wash) in PET: caution; in HDPE or PP: pass.
+- emulsion (lotion, cream, most sunscreens) in plastic: caution.
+- anhydrous (oils, balms, lip products) in PET: fail; in other plastic: caution.
+- glass, aluminum, steel, paper: pass for anything. Heat in use moves one step worse; rinse-off use one step better.
 - pass: inert materials (glass, stainless, aluminum container, paper, cotton, wood); dry contents in any plastic; a full ingredient list with none of the above.
 - none: you checked, and nothing of this kind exists or applies. A durable good has no contents, so its "packaging" is none (the contact surface is judged under formula). A DRY product's packaging is also none: dry contents extract nothing from a wrapper or box (note: "Not applicable: dry product, packaging is not a migration path"), with PVC wrapping the one exception, at caution. A product nobody has lab tested is testing none. This is a completed check, not a gap.
 - unassessed: ONLY when you could not complete the check.
@@ -1190,14 +1201,14 @@ Respond with ONLY a JSON object, no prose.`;
 
 async function vetLabel(env, brand, product) {
   const r = await vetClaude(env, VET_RULES,
-    `Product: ${brand} ${product}. Find (1) "formula": what the product itself is made of. For a consumable that is the ingredient list; for an appliance or durable good it is the materials of the surfaces that touch the water, food, drink, or skin (reservoir, tubing, brew chamber, cooking surface). How the product is BUILT always belongs here, never under testing, and plastic in a hot water or drink path is a formula fail. (2) "packaging": the container that holds the contents (matters for cosmetics, food, liquids). A durable good or appliance has no contents, so its packaging is status "none" with note "Not applicable: no contents; the contact surfaces are judged under formula." Reply ONLY: {"formula":{"status":"pass|caution|fail|none|unassessed","note":"<one sentence of facts>","source":"<url>"},"packaging":{"status":"...","note":"...","source":"..."}}`,
+    `Product: ${brand} ${product}. Find (1) "formula": what the product itself is made of. For a consumable that is the ingredient list; for an appliance or durable good it is the materials of the surfaces that touch the water, food, drink, or skin (reservoir, tubing, brew chamber, cooking surface). How the product is BUILT always belongs here, never under testing, and plastic in a hot water or drink path is a formula fail. For a consumable, formula judges the INGREDIENTS only; what the container does to them is packaging's question, never formula's. (2) "packaging": the container that holds the contents (matters for cosmetics, food, liquids). A durable good or appliance has no contents, so its packaging is status "none" with note "Not applicable: no contents; the contact surfaces are judged under formula." Reply ONLY: {"formula":{"status":"pass|caution|fail|none|unassessed","note":"<one sentence of facts>","source":"<url>"},"packaging":{"status":"...","note":"...","source":"..."}}`,
     3);
   return r;
 }
 
 async function vetTesting(env, brand, product) {
   const r = await vetClaude(env, VET_RULES,
-    `Product: ${brand} ${product}. This front is ONLY for actual measurements and certifications: lab results, peer reviewed studies, certifications (Lead Safe Mama, Mamavation, Consumer Reports, NSF, OEKO-TEX, GOTS, EWG Verified), including studies that MEASURED this product category (for example microplastic particle counts from pod coffee machines or tea bags), which count at caution strength with the note saying it is a category measurement. What the product is made of or how it is built is NOT testing evidence and must not be reported here. A clean result needs its detection limit to count as pass. If you searched and no measurement has been published, status is "none" with note "We searched; no independent testing of this product has been published." Use "unassessed" only if you could not complete the search. Reply ONLY: {"testing":{"status":"pass|caution|fail|none|unassessed","note":"<one sentence>","source":"<url or empty>"}}`,
+    `Product: ${brand} ${product}. This front is ONLY for actual measurements and certifications: lab results, peer reviewed studies, certifications (Lead Safe Mama, Mamavation, Consumer Reports, NSF, OEKO-TEX, GOTS, EWG Verified), including studies that MEASURED this product category, which count at caution strength with the note saying it is a category measurement. A certification you verify (EWG Verified, NSF, OEKO-TEX, GOTS) is pass-level evidence. EWG Skin Deep pages and brand certification pages are public: FETCH them rather than reporting that they exist. If an assessment exists only behind a paywall (Consumer Reports), say so plainly: "Consumer Reports has tested this product; the results are subscription only and we could not verify them." What the product is made of is NOT testing evidence. A clean lab result needs its detection limit to count as pass. If you searched and nothing has been published, status is "none" with note "We searched; no independent testing of this product has been published." Use "unassessed" only if you could not complete the search. Reply ONLY: {"testing":{"status":"pass|caution|fail|none|unassessed","note":"<one sentence>","source":"<url or empty>"}}`,
     2);
   return r;
 }
