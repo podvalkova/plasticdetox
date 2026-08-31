@@ -197,6 +197,17 @@
     }
   </style>
   <style>@media(max-width:640px){.nav-hide-mobile{display:none!important}}</style>
+  <style>
+    .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0 2rem; }
+    .product-card { background: var(--surface); border-radius: var(--radius); text-decoration: none; color: inherit; box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; overflow: hidden; }
+    .product-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+    .product-card img { width: 100%; height: 180px; object-fit: contain; background: #fff; padding: 0.75rem; }
+    .product-card-body { padding: 1rem; display: flex; flex-direction: column; flex: 1; gap: 0.4rem; }
+    .product-card-tier { font-size: 0.7rem; font-weight: 800; color: var(--accent-dark); letter-spacing: 0.06em; }
+    .product-card-name { font-size: 1rem; font-weight: 700; line-height: 1.3; margin: 0; }
+    .product-card-best { font-size: 0.85rem; color: var(--text-muted); line-height: 1.4; flex: 1; margin: 0; }
+    .product-card-cta { font-size: 0.85rem; color: var(--accent-dark); font-weight: 600; margin-top: 0.4rem; }
+  </style>
 </head>
 <body>
   <nav class="nav">
@@ -780,6 +791,55 @@
     <p>This is the printable, "save this article" list. For grain, legume, bread, snack, and baby food categories, only brands that hold a finished product testing certification are listed (Glyphosate Residue Free from The Detox Project or BioChecked Non Glyphosate Certified). For categories where no glyphosate specific certification exists (oils, coffee, tea, dairy, meat, eggs), category level guidance is given instead of brand picks.</p>
 
     <p style="font-size:0.85rem;color:#78716c;font-style:italic;">Affiliate disclosure: links in this section are Amazon affiliate links. As an Amazon Associate, Plastic Detox earns a small commission from qualifying purchases at no extra cost to you. We only recommend products we would buy ourselves, and inclusion is editorial, not paid placement.</p>
+
+    <div class="product-grid">
+      <a href="https://www.amazon.com/dp/B08T3SY8P8?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
+        <img src="https://m.media-amazon.com/images/I/41uZ--B6A3L._AC_SL400_.jpg" alt="One Degree Organics sprouted rolled oats" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">OATS, START HERE · $$</span>
+          <h3 class="product-card-name">One Degree Sprouted Rolled Oats</h3>
+          <p class="product-card-best">BioChecked Non Glyphosate Certified, tested batch by batch rather than certified once. USDA Organic, Non GMO Project Verified, certified gluten free. Sprouted. 24oz, four pack.</p>
+          <span class="product-card-cta">View &rarr;</span>
+        </div>
+      </a>
+      <a href="https://www.amazon.com/dp/B095VGX93G?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
+        <img src="https://m.media-amazon.com/images/I/51+JSzQPNGL._AC_SL400_.jpg" alt="One Degree Organics gluten free sprouted rolled oats five pound bag" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">OATS, BULK · $$</span>
+          <h3 class="product-card-name">One Degree Sprouted Oats, 5lb</h3>
+          <p class="product-card-best">The same BioChecked certified sprouted oats in a 5 pound bag. Oats are the single highest priority swap because pre harvest desiccation puts glyphosate on the grain directly.</p>
+          <span class="product-card-cta">View &rarr;</span>
+        </div>
+      </a>
+      <a href="https://www.amazon.com/dp/B0B4TRK7HH?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
+        <img src="https://m.media-amazon.com/images/I/41kXbJT8YeL._AC_SL400_.jpg" alt="One Degree Organics sprouted steel cut oats" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">STEEL CUT · $$</span>
+          <h3 class="product-card-name">One Degree Sprouted Steel Cut Oats</h3>
+          <p class="product-card-best">BioChecked Non Glyphosate Certified steel cut oats, less processed than rolled and slower cooking. USDA Organic and Non GMO Project Verified. 24oz, four pack.</p>
+          <span class="product-card-cta">View &rarr;</span>
+        </div>
+      </a>
+      <a href="https://www.amazon.com/dp/B00K1GFA76?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
+        <img src="https://m.media-amazon.com/images/I/41S+DWhjIkL._AC_SL400_.jpg" alt="Jovial organic einkorn all purpose flour" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">FLOUR · $$</span>
+          <h3 class="product-card-name">Jovial Einkorn All Purpose Flour</h3>
+          <p class="product-card-best">Glyphosate Residue Free certified by the Detox Project. Einkorn is an ancient wheat never bred for modern desiccation practices. Unbleached, organic, high protein, 10 pound bag.</p>
+          <span class="product-card-cta">View &rarr;</span>
+        </div>
+      </a>
+      <a href="https://www.amazon.com/dp/B01NCRKNAX?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
+        <img src="https://m.media-amazon.com/images/I/51sp1N3PHML._AC_SL400_.jpg" alt="Purely Elizabeth ancient grain granola" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">GRANOLA · $</span>
+          <h3 class="product-card-name">Purely Elizabeth Ancient Grain Granola</h3>
+          <p class="product-card-best">Glyphosate Residue Free certified by the Detox Project. Organic, gluten free, made on oats and ancient grains rather than conventional wheat. Original flavour.</p>
+          <span class="product-card-cta">View &rarr;</span>
+        </div>
+      </a>
+    </div>
+
 
     <div class="material-card">
       <h3>Grains and Flours (lab tested certified)</h3>

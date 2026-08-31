@@ -189,6 +189,17 @@
     .red-flag-title { font-weight:800; color:#dc2626; font-size:0.85rem; letter-spacing:0.04em; text-transform:uppercase; margin-bottom:0.4rem; }
   </style>
   <style>@media(max-width:640px){.nav-hide-mobile{display:none!important}}</style>
+  <style>
+    .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0 2rem; }
+    .product-card { background: var(--surface); border-radius: var(--radius); text-decoration: none; color: inherit; box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; overflow: hidden; }
+    .product-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+    .product-card img { width: 100%; height: 180px; object-fit: contain; background: #fff; padding: 0.75rem; }
+    .product-card-body { padding: 1rem; display: flex; flex-direction: column; flex: 1; gap: 0.4rem; }
+    .product-card-tier { font-size: 0.7rem; font-weight: 800; color: var(--accent-dark); letter-spacing: 0.06em; }
+    .product-card-name { font-size: 1rem; font-weight: 700; line-height: 1.3; margin: 0; }
+    .product-card-best { font-size: 0.85rem; color: var(--text-muted); line-height: 1.4; flex: 1; margin: 0; }
+    .product-card-cta { font-size: 0.85rem; color: var(--accent-dark); font-weight: 600; margin-top: 0.4rem; }
+  </style>
 </head>
 <body>
   <header>
@@ -803,7 +814,54 @@
 
     <p><strong>When "good enough" is the honest answer.</strong> If you are picking between a polyester legging from a fast fashion brand and a rPET legging from Girlfriend Collective at the same price point, the Girlfriend Collective version is meaningfully cleaner on chemical inputs and PFAS, with no meaningful difference on microfiber shedding. Take the win where it is, do not overpay for a marginal improvement, and prioritize the bigger upgrades (bedding, base layers worn for hours) over the marginal ones (a single activewear piece worn an hour a week).</p>
 
-    <h2 id="conclusion">Conclusion</h2>
+        <h2 id="what-to-buy">What to Buy Instead</h2>
+
+    <p>Two honest caveats before the picks. First, we do not recommend activewear on Amazon, because the certification claims that matter here cannot be verified from a listing, which is the whole argument of this article. The brand tiers above are where to shop for garments.</p>
+
+    <p>Second, the highest value purchases for most people are not new clothes at all. They are the things that stop the synthetics already in your wardrobe from shedding, and natural fibre for the textiles that spend the most hours against your skin.</p>
+
+    <p style="margin:1.25rem 0;padding:14px 18px;background:#faf9f7;border-left:3px solid #a78bfa;border-radius:6px;"><strong>Start here, whatever else you do.</strong> A <a href="https://guppyfriend.us/products/guppyfriend-washing-bag?sca_ref=11095270.1J77JIl7LBc" target="_blank" rel="noopener">Guppyfriend washing bag</a> captures released fibre so it goes in the bin rather than the drain, and cuts shedding in the first place by reducing abrasion between garments. It is the single highest impact item on this page and it works on the synthetics you already own.</p>
+
+    <div class="product-grid">
+      <a href="https://www.amazon.com/dp/B014WOWNAY?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
+        <img src="https://m.media-amazon.com/images/I/416DJtLU-aL._AC_SL400_.jpg" alt="wool dryer balls six pack" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">DRYER · $</span>
+          <h3 class="product-card-name">Wool Dryer Balls, 6 Pack</h3>
+          <p class="product-card-best">New Zealand wool. Replaces dryer sheets, which coat fabric in a cationic softener film. Cuts drying time by around 25%, so less heat and less mechanical stress on fibres.</p>
+          <span class="product-card-cta">View &rarr;</span>
+        </div>
+      </a>
+      <a href="https://www.amazon.com/dp/B01DC1D4JM?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
+        <img src="https://m.media-amazon.com/images/I/41AgTid6JyL._AC_SL400_.jpg" alt="Meliora laundry powder" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">DETERGENT · $$</span>
+          <h3 class="product-card-name">Meliora Laundry Powder</h3>
+          <p class="product-card-best">MADE SAFE certified, EWG rated A, four ingredients and no optical brighteners. Brighteners are dyes engineered to stay on fabric after rinsing, which is the opposite of what you want against skin.</p>
+          <span class="product-card-cta">View &rarr;</span>
+        </div>
+      </a>
+      <a href="https://www.amazon.com/dp/B07RY59C3W?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
+        <img src="https://m.media-amazon.com/images/I/41uZMh6+pyL._AC_SL400_.jpg" alt="organic cotton percale sheet set" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">SHEETS · $$</span>
+          <h3 class="product-card-name">Organic Cotton Percale Sheets</h3>
+          <p class="product-card-best">100% organic cotton, queen, four piece percale set. Bedding is the textile with the most hours against your skin of anything you own, and most sets at this price are polyester or a cotton blend.</p>
+          <span class="product-card-cta">View &rarr;</span>
+        </div>
+      </a>
+      <a href="https://www.amazon.com/dp/B01MXLISKK?tag=plasticdetox-20" target="_blank" rel="noopener sponsored" class="product-card">
+        <img src="https://m.media-amazon.com/images/I/31fU4PM-giL._AC_SL400_.jpg" alt="Coyuchi organic cotton towel set" loading="lazy">
+        <div class="product-card-body">
+          <span class="product-card-tier">TOWELS · $$</span>
+          <h3 class="product-card-name">Coyuchi Organic Cotton Towels</h3>
+          <p class="product-card-best">GOTS certified organic cotton, no synthetic blend. Towels made with polyester shed fibre onto wet skin. Lightweight air weight construction so they dry quickly.</p>
+          <span class="product-card-cta">View &rarr;</span>
+        </div>
+      </a>
+    </div>
+
+<h2 id="conclusion">Conclusion</h2>
 
     <p>The pattern is the same across all three materials. Superwash wool keeps the natural fiber story while quietly wrapping every strand in synthetic resin. Recycled polyester keeps the recycling story while still shedding the same microplastics. Bamboo viscose keeps the plant based story while running the plant through a carbon disulfide bath. In every case, a partial win has been marketed as a full solution, and the chemistry that actually determines whether the fabric is "sustainable" has been left off the label.</p>
 
