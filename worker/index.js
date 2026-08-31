@@ -1161,7 +1161,9 @@ async function vetClaude(env, system, userText, maxUses) {
     const text = (msg.content || []).filter((b) => b.type === "text").map((b) => b.text).join("\n");
     const m = text.match(/\{[\s\S]*\}/);
     if (!m) return { error: "no JSON in reply" };
-    try { return { data: JSON.parse(m[0]) }; } catch (e) { return { error: "unparseable JSON" }; }
+    // Web search wraps quoted findings in <cite> tags; the card wants prose.
+    try { return { data: JSON.parse(m[0].replace(/<\/?cite[^>]*>/g, "")) };
+    } catch (e) { return { error: "unparseable JSON" }; }
   }
   return { error: "search did not finish in three turns" };
 }
