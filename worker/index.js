@@ -63,8 +63,18 @@ export default {
       return handleBrandReports(request, env);
     }
 
+    // ===== Instant vet test bench (private, token gated like /brand-stats) =====
+    if (path === "/vet-test" && request.method === "GET") {
+      return handleVetTest(request, env);
+    }
+
     if (request.method !== "POST") {
       return new Response("Method not allowed", { status: 405 });
+    }
+
+    // ===== Instant vet prototype: live four-front research on one product =====
+    if (path === "/instant-vet") {
+      return handleInstantVet(request, env, corsOrigin);
     }
 
     // ===== Log every brand searched (fire-and-forget from the frontend) =====
@@ -1045,4 +1055,274 @@ function buildEmail({ score, total, level, levelColor, top3, swaps }) {
   </table>
 </body>
 </html>`;
+}
+
+// ============================================================================
+// Instant vet: the paid-check prototype.
+//
+// One product, four checks, streamed as they finish so the shopper watches the
+// research happen instead of staring at a spinner. The legal check is a free
+// openFDA query and usually lands inside two seconds; formula/packaging and
+// testing each run as one Claude call with server-side web search.
+//
+// This is a prototype for feeling the latency, so the model classifies fronts
+// directly from a compact digest of the rating rules. The production path is
+// the one the repo documents: the model records facts, the Python rules engine
+// computes the verdict, and everything ships through the validated pipeline.
+// Either way the card is labelled "Research, not yet reviewed": an unreviewed
+// machine verdict never wears the badge.
+// ============================================================================
+
+const VET_MODEL = "claude-haiku-4-5";
+const VET_TIMEOUT_MS = 70000;
+
+// Same strict prefix rule as tools/check-recalls.py: the recalling firm must
+// BEGIN with the brand, or Crest matches Cedar Crest Specialties and we invent
+// a recall against a named brand, the one error with real legal exposure.
+const FIRM_SUFFIX = /\b(inc|llc|l\.l\.c|corp|corporation|co|company|ltd|limited|gmbh|plc|holdings|group|brands|products|foods|usa|international|industries|enterprises|partners|lp|llp)\b\.?/gi;
+function bareFirm(s) {
+  return (s || "").toLowerCase().replace(FIRM_SUFFIX, " ").replace(/[^a-z0-9]+/g, " ").trim();
+}
+function isTheBrand(brand, firm) {
+  const b = bareFirm(brand), f = bareFirm(firm);
+  if (!b || !f) return false;
+  return f === b || f.startsWith(b + " ");
+}
+
+async function vetLegal(brand) {
+  const t0 = Date.now();
+  let total = 0, latest = null, examined = 0;
+  for (const ep of ["food/enforcement", "drug/enforcement", "device/enforcement"]) {
+    try {
+      const url = `https://api.fda.gov/${ep}.json?search=recalling_firm:%22${encodeURIComponent(brand)}%22&limit=50`;
+      const res = await fetch(url, { signal: AbortSignal.timeout(6000) });
+      if (!res.ok) continue;
+      const d = await res.json();
+      for (const r of d.results || []) {
+        examined += 1;
+        if (!isTheBrand(brand, r.recalling_firm)) continue;
+        total += 1;
+        const dt = r.recall_initiation_date || "";
+        if (!latest || dt > latest.date) {
+          latest = { date: dt, reason: (r.reason_for_recall || "").slice(0, 140), status: r.status || "" };
+        }
+      }
+    } catch (e) { /* one slow endpoint must not sink the check */ }
+  }
+  const ms = Date.now() - t0;
+  if (total === 0) {
+    return { status: "pass", ms,
+      note: examined === 0
+        ? "Checked the FDA enforcement database just now. No recall on record, and no firm with a similar name either."
+        : "Checked the FDA enforcement database just now. Matches by name belong to differently named firms; nothing on record for this brand.",
+      source: "https://open.fda.gov/apis/" };
+  }
+  const y = latest.date ? latest.date.slice(0, 4) : "unknown year";
+  const old = latest.date && Number(latest.date.slice(0, 4)) <= new Date().getFullYear() - 3;
+  return {
+    status: old && /terminated|completed/i.test(latest.status) ? "pass" : "caution", ms,
+    note: `FDA enforcement records list ${total} recall(s) for this firm, latest ${y} (${latest.status}): ${latest.reason}` +
+      (old ? " Over 24 months and closed, so informational under our rules." : " Recent enough to count."),
+    source: "https://open.fda.gov/apis/",
+  };
+}
+
+// One Claude call with server-side web search. Returns parsed JSON or null.
+async function vetClaude(env, system, userText, maxUses) {
+  if (!env.ANTHROPIC_API_KEY) return { unconfigured: true };
+  let messages = [{ role: "user", content: userText }];
+  for (let turn = 0; turn < 3; turn++) {
+    const res = await fetch("https://api.anthropic.com/v1/messages", {
+      method: "POST",
+      headers: {
+        "x-api-key": env.ANTHROPIC_API_KEY,
+        "anthropic-version": "2023-06-01",
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        model: VET_MODEL,
+        max_tokens: 1200,
+        system,
+        tools: [{ type: "web_search_20250305", name: "web_search", max_uses: maxUses }],
+        messages,
+      }),
+      signal: AbortSignal.timeout(VET_TIMEOUT_MS - 5000),
+    });
+    if (!res.ok) {
+      const body = await res.text().catch(() => "");
+      return { error: `API ${res.status}: ${body.slice(0, 160)}` };
+    }
+    const msg = await res.json();
+    if (msg.stop_reason === "pause_turn") {
+      // A long search turn paused; hand the partial turn back and continue.
+      messages = messages.concat([{ role: "assistant", content: msg.content }]);
+      continue;
+    }
+    const text = (msg.content || []).filter((b) => b.type === "text").map((b) => b.text).join("\n");
+    const m = text.match(/\{[\s\S]*\}/);
+    if (!m) return { error: "no JSON in reply" };
+    try { return { data: JSON.parse(m[0]) }; } catch (e) { return { error: "unparseable JSON" }; }
+  }
+  return { error: "search did not finish in three turns" };
+}
+
+const VET_RULES = `You are a researcher for Plastic Detox, a consumer safety site. Judge ONLY from what you actually find; when you cannot determine something, say "unassessed". Never guess.
+Status rules (a digest of our standard):
+- fail: a named hazard in the path that reaches a person: PTFE/PFAS, PVC, polycarbonate/BPA, polystyrene, melamine, phthalates, formaldehyde releasers, triclosan, lead, cadmium, chemical UV filters (oxybenzone, avobenzone, octinoxate, octisalate, octocrylene, homosalate), aluminum chlorohydrate/zirconium, talc.
+- caution: a disclosure umbrella ("fragrance", "parfum", "proprietary blend", "natural flavors"); or an emulsion/oil in plastic packaging; or plastic with resin unstated holding anything not dry.
+- pass: inert materials (glass, stainless, aluminum container, paper, cotton, wood); dry contents in any plastic; a full ingredient list with none of the above.
+Respond with ONLY a JSON object, no prose.`;
+
+async function vetLabel(env, brand, product) {
+  const r = await vetClaude(env, VET_RULES,
+    `Product: ${brand} ${product}. Find (1) what the product/formula is made of and (2) the container or material that touches the contents. Search the brand site or retailer listings. Reply ONLY: {"formula":{"status":"pass|caution|fail|unassessed","note":"<one sentence of facts>","source":"<url>"},"packaging":{"status":"...","note":"...","source":"..."}}`,
+    3);
+  return r;
+}
+
+async function vetTesting(env, brand, product) {
+  const r = await vetClaude(env, VET_RULES,
+    `Product: ${brand} ${product}. Search for independent lab testing or certifications (Lead Safe Mama, Mamavation, Consumer Reports, NSF, OEKO-TEX, GOTS, EWG Verified). A clean result needs its detection limit to count as pass. If nobody has tested it, status is "unassessed" with note "No independent testing found." Reply ONLY: {"testing":{"status":"pass|caution|fail|unassessed","note":"<one sentence>","source":"<url or empty>"}}`,
+    2);
+  return r;
+}
+
+// The section 6 ladder plus the completeness gate, as the extension applies it.
+function vetVerdict(fronts) {
+  const st = (k) => (fronts[k] && fronts[k].status) || "unassessed";
+  const all = ["formula", "packaging", "legal", "testing"].map(st);
+  if (all.includes("fail")) return "skip";
+  if (all.includes("caution")) return "careful";
+  const blocking = ["formula", "packaging", "legal"];
+  if (blocking.every((k) => st(k) === "pass")) return "good";
+  return "unrated";
+}
+
+async function handleInstantVet(request, env, corsOrigin) {
+  const token = new URL(request.url).searchParams.get("token") || "";
+  if (!env.STATS_TOKEN || token !== env.STATS_TOKEN) {
+    return json({ ok: false, error: "Not authorized" }, 401, corsOrigin);
+  }
+  const body = await request.json().catch(() => ({}));
+  const brand = (body.brand || "").toString().trim().slice(0, 80);
+  const product = (body.product || "").toString().trim().slice(0, 160);
+  if (!brand) return json({ ok: false, error: "brand is required" }, 400, corsOrigin);
+
+  const { readable, writable } = new TransformStream();
+  const writer = writable.getWriter();
+  const enc = new TextEncoder();
+  const send = (obj) => writer.write(enc.encode("data: " + JSON.stringify(obj) + "\n\n"));
+  const t0 = Date.now();
+
+  const run = async () => {
+    const fronts = {};
+    send({ step: "start", brand, product });
+
+    const finish = (key, r, aiKeys) => {
+      // Claude legs return {data} | {error} | {unconfigured}; legal returns a front.
+      for (const k of aiKeys) {
+        if (r.data && r.data[k] && r.data[k].status) {
+          fronts[k] = r.data[k];
+        } else {
+          fronts[k] = { status: "unassessed",
+            note: r.unconfigured
+              ? "AI research is not configured on this worker yet (missing ANTHROPIC_API_KEY)."
+              : `Could not complete this check (${r.error || "no result"}).`,
+            source: "" };
+        }
+        send({ step: k, front: fronts[k], ms: Date.now() - t0 });
+      }
+    };
+
+    const legalP = vetLegal(brand).then((f) => { fronts.legal = f; send({ step: "legal", front: f, ms: Date.now() - t0 }); });
+    const labelP = vetLabel(env, brand, product).then((r) => finish("label", r, ["formula", "packaging"]));
+    const testP = vetTesting(env, brand, product).then((r) => finish("testing", r, ["testing"]));
+    await Promise.allSettled([legalP, labelP, testP]);
+
+    for (const k of ["formula", "packaging", "legal", "testing"]) {
+      if (!fronts[k]) fronts[k] = { status: "unassessed", note: "Did not finish in time.", source: "" };
+    }
+    send({ done: true, elapsedMs: Date.now() - t0, verdict: vetVerdict(fronts),
+           label: "Research, not yet reviewed", fronts });
+    await writer.close();
+  };
+  run().catch(async (e) => {
+    try { await send({ done: true, error: String(e).slice(0, 200) }); await writer.close(); } catch (_) {}
+  });
+
+  return new Response(readable, {
+    headers: {
+      "Content-Type": "text/event-stream",
+      "Cache-Control": "no-cache",
+      "Access-Control-Allow-Origin": corsOrigin,
+    },
+  });
+}
+
+function handleVetTest(request, env) {
+  const token = new URL(request.url).searchParams.get("token") || "";
+  if (!env.STATS_TOKEN || token !== env.STATS_TOKEN) {
+    return new Response("Add ?token=... (same token as /brand-stats)", { status: 401 });
+  }
+  const html = `<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Instant Vet Bench</title>
+<style>
+body{font:15px -apple-system,sans-serif;max-width:640px;margin:40px auto;padding:0 16px;color:#1c1917}
+input{font:inherit;padding:10px;border:1px solid #d6d3d1;border-radius:8px;width:100%;box-sizing:border-box;margin:4px 0}
+button{font:inherit;font-weight:600;padding:10px 18px;border:0;border-radius:8px;background:#16a34a;color:#fff;cursor:pointer;margin-top:8px}
+.clock{font-size:32px;font-weight:700;font-variant-numeric:tabular-nums;margin:16px 0 4px}
+.log div{padding:6px 0;border-bottom:1px solid #f5f5f4}
+.badge{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;padding:2px 8px;border-radius:5px}
+.pass{background:#dcfce7;color:#15803d}.caution{background:#fef3c7;color:#b45309}
+.fail{background:#fee2e2;color:#dc2626}.unassessed{background:#f5f5f4;color:#78716c}
+.verdict{font-size:22px;font-weight:700;margin:14px 0 2px}
+.unrev{font-size:12px;color:#b45309;font-weight:600}
+small{color:#78716c}
+</style>
+<h2>Instant Vet Bench</h2>
+<p><small>Prototype. Times every step of a live four-check vet.</small></p>
+<input id="b" placeholder="Brand (required), e.g. Graza">
+<input id="p" placeholder="Product, e.g. Sizzle extra virgin olive oil">
+<button onclick="go()">Vet it</button>
+<div class="clock" id="clock">0.0s</div>
+<div class="log" id="log"></div>
+<div id="result"></div>
+<script>
+let timer;
+async function go(){
+  const log=document.getElementById('log'), res=document.getElementById('result'), clock=document.getElementById('clock');
+  log.innerHTML='';res.innerHTML='';
+  const t0=Date.now();
+  clearInterval(timer);
+  timer=setInterval(()=>{clock.textContent=((Date.now()-t0)/1000).toFixed(1)+'s'},100);
+  const line=(html)=>{const d=document.createElement('div');d.innerHTML=html;log.appendChild(d)};
+  line('Checking recall databases, reading the label, searching lab tests…');
+  const r=await fetch(location.pathname.replace('vet-test','instant-vet')+location.search,{method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({brand:document.getElementById('b').value,product:document.getElementById('p').value})});
+  if(!r.ok){clearInterval(timer);line('Error: '+r.status+' '+await r.text());return}
+  const reader=r.body.getReader();const dec=new TextDecoder();let buf='';
+  const NAME={formula:'Formula',packaging:'Packaging',legal:'Recalls & lawsuits',testing:'Independent tests'};
+  while(true){
+    const {done,value}=await reader.read();if(done)break;
+    buf+=dec.decode(value,{stream:true});
+    let i;
+    while((i=buf.indexOf('\\n\\n'))>=0){
+      const chunk=buf.slice(0,i);buf=buf.slice(i+2);
+      if(!chunk.startsWith('data: '))continue;
+      const e=JSON.parse(chunk.slice(6));
+      if(e.front){
+        const f=e.front;
+        line('<span class="badge '+f.status+'">'+f.status+'</span> <b>'+(NAME[e.step]||e.step)+'</b> at '+(e.ms/1000).toFixed(1)+'s<br><small>'+f.note+(f.source?' · <a href="'+f.source+'" target="_blank" rel="noopener">source</a>':'')+'</small>');
+      }
+      if(e.done){
+        clearInterval(timer);
+        if(e.error){line('Error: '+e.error);continue}
+        res.innerHTML='<div class="verdict">'+({good:'Good choice',careful:'Careful',skip:'Skip',unrated:'Not enough found'}[e.verdict]||e.verdict)+'</div><div class="unrev">'+e.label+' · finished in '+(e.elapsedMs/1000).toFixed(1)+'s</div>';
+      }
+    }
+  }
+}
+</script>`;
+  return new Response(html, { headers: { "Content-Type": "text/html; charset=utf-8" } });
 }
