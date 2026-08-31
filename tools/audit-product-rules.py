@@ -167,6 +167,22 @@ def evidence_text(prod):
     return f"{clean_note(prod.get('note'))} {clean_note(prod.get('research'))}".strip()
 
 
+MATERIALS_SEG = re.compile(r"\bMaterials:\s*(.+?)(?=\s+Packaging:|$)", re.S)
+
+
+def formula_evidence(prod):
+    """
+    Just the formula portion of the research, for the formula read.
+
+    The materials read scans the whole text for hazards, which is right for a
+    durable good and wrong for a labelled research field: "creatine powder in
+    a plastic tub" vetoed a single ingredient formula pass on the word
+    plastic, which describes the tub the packaging front already judged.
+    """
+    segs = MATERIALS_SEG.findall(prod.get("research") or "")
+    return clean_note(" ".join(segs))
+
+
 # The classifier was written for brand prose, where a claim comes wrapped in
 # argument. Store and registry notes are spec sheets: "18/8 stainless", "100%
 # cotton muslin", "medical grade borosilicate glass". Those name the material
@@ -397,9 +413,20 @@ def packaging_severity(note, context=""):
     return status, ", ".join(note_bits)
 
 
+# A complete list of one. "Single ingredient: creatine monohydrate" is a full
+# disclosure by definition, and one named ingredient either trips the hazard
+# scan or it does not, so this is the one ingredient-list judgement the engine
+# can make without an opinion on chemistry. A twenty item INCI list stays a
+# human call, because the vocabulary cannot vouch for what it has no word for.
+SINGLE_INGREDIENT = re.compile(
+    r"\b(?:single|sole|only|one)[\s-]+(?:active[\s-]+)?ingredient\b", re.I)
+
+
 def formula_from_materials(note):
     """
-    'pass' when the note names an inert material and no hazard, else None.
+    ('pass', why) when the note names an inert material or a single disclosed
+    ingredient and no hazard; ('caution', why) on a disclosure failure;
+    (None, None) otherwise.
 
     Hazard words that the copy explicitly rules out do not count, so
     "no interior coating", "BPA free cap" and "phthalate free" stay passes.
@@ -408,14 +435,18 @@ def formula_from_materials(note):
     for h in HAZARD:
         for m in re.finditer(r"(?<![a-z0-9])" + re.escape(h) + r"(?![a-z0-9])", low):
             if not _bf.is_negated(low, m.start(), m.end()):
-                return None
+                return None, None
     # A disclosure failure is not a clean read either. It is the state where the
     # maker has not told us, which section 2.1 caps at caution.
     for t in DISCLOSURE_FAILURE:
         for m in re.finditer(r"(?<![a-z0-9])" + re.escape(t) + r"(?![a-z0-9])", low):
             if not _bf.is_negated(low, m.start(), m.end()):
-                return "caution"
-    return "pass" if any(_bf.has(low, t) for t in INERT) else None
+                return "caution", "Carries an undisclosed mixture, so the formula cannot be checked."
+    if any(_bf.has(low, t) for t in INERT):
+        return "pass", "Materials named in the listing."
+    if SINGLE_INGREDIENT.search(low):
+        return "pass", "A single disclosed ingredient, with nothing on the hazard list."
+    return None, None
 
 
 def fronts_for(prod, brand):
@@ -426,7 +457,7 @@ def fronts_for(prod, brand):
     return _bf.build_fronts(pseudo), False
 
 
-def apply_rules(fronts, note, scope, basis, context=""):
+def apply_rules(fronts, note, scope, basis, context="", formula_text=""):
     """
     Fold the rules document's per-front corrections into a classified scorecard.
     Returns the corrected fronts plus the list of rules that fired.
@@ -522,14 +553,18 @@ def apply_rules(fronts, note, scope, basis, context=""):
         # Read the product name too. "Forlife Stainless Steel Tea Infuser" and
         # "Scanwood Olive Wood Cooking Spoon" name the material in the title and
         # never repeat it in the note, so reading the note alone found nothing.
-        read = formula_from_materials(note + " " + (context or ""))
+        read, read_why = formula_from_materials(note + " " + (context or ""))
+        # The whole-text read is vetoed by any hazard word, including one that
+        # only describes the container. Where labelled formula evidence exists,
+        # judge it on its own.
+        if read is None and formula_text:
+            read, read_why = formula_from_materials(formula_text)
         if read == "pass":
-            f["formula"] = {"status": "pass", "note": "Materials named in the listing.",
+            f["formula"] = {"status": "pass", "note": read_why,
                             "origin": "rule-2-materials"}
             fired.append("2 formula-read-from-materials")
         elif read == "caution":
-            f["formula"] = {"status": "caution",
-                            "note": "Carries an undisclosed mixture, so the formula cannot be checked.",
+            f["formula"] = {"status": "caution", "note": read_why,
                             "origin": "rule-2.1-disclosure"}
             fired.append("2.1 disclosure-failure-caps-at-caution")
 
@@ -687,7 +722,8 @@ def main():
             # being invisible to the fronts step.
             cleaned = evidence_text(p)
             f, fired = apply_rules(raw, cleaned, scope, basis,
-                                   f"{p.get('name') or ''} {b.get('category') or ''}")
+                                   f"{p.get('name') or ''} {b.get('category') or ''}",
+                                   formula_text=formula_evidence(p))
             new, why, disclose = correct(p.get("verdict"), f, cleaned,
                                          scope, basis, args.strict, args.lenient,
                                          is_consumable(b.get("category"), p.get("name")),

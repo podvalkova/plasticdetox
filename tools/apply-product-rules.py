@@ -138,11 +138,12 @@ def main():
                         p["ext"].setdefault("frontNotes", {})["packaging"] = \
                             pk_why.capitalize() + "."
                 if fr.get("formula") in (None, "unassessed", "unknown"):
-                    read = _a.formula_from_materials(cleaned + " " + ctx)
+                    read, read_why = _a.formula_from_materials(cleaned + " " + ctx)
+                    if read is None:
+                        read, read_why = _a.formula_from_materials(_a.formula_evidence(p))
                     if read == "pass":
                         fr["formula"] = "pass"
-                        p["ext"].setdefault("frontNotes", {})["formula"] = \
-                            "Materials named in the listing."
+                        p["ext"].setdefault("frontNotes", {})["formula"] = read_why
                 p["ext"].setdefault("dated", TODAY)
                 dist[p["ext"].get("verdict")] += 1
                 hand_kept += 1
@@ -150,7 +151,8 @@ def main():
             scope, basis = _a.scope_of(p), _a.basis_of(p)
             raw, authored = _a.fronts_for(p, b)
             f, fired = _a.apply_rules(raw, _a.evidence_text(p), scope, basis,
-                                      f"{p.get('name') or ''} {b.get('category') or ''}")
+                                      f"{p.get('name') or ''} {b.get('category') or ''}",
+                                      formula_text=_a.formula_evidence(p))
             if authored:
                 v, why, disclose = p.get("verdict"), "hand authored scorecard", False
             else:

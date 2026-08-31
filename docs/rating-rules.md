@@ -74,6 +74,13 @@ Non-disclosure is a legitimate mark against a product, and it costs nothing to
 determine. Most of the 380 brands currently sitting at `formula: unknown` are
 unworked, not unknowable.
 
+**A single stated ingredient is a complete list.** "Sole ingredient: creatine
+monohydrate" is a full disclosure by definition, and one named ingredient
+either trips the hazard scan or it does not, so the tooling awards this pass
+on its own. It is the only ingredient-list judgement the classifier is allowed
+to make: a multi-ingredient list stays a human call, because a vocabulary
+cannot vouch for a substance it has no word for.
+
 ---
 
 ### 2.1 What is on the hazard list, and why

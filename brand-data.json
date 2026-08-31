@@ -2754,27 +2754,24 @@
         "verdict": "good",
         "note": "IAPMO certified to NSF/ANSI 53 for lead and cysts and NSF P473 for 98 percent PFOA and PFOS. About 90 percent chlorine and chloramine. Roughly $1,799, professional install.",
         "ext": {
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: formula, packaging",
+          "why": "independent lab result at line scope",
           "fronts": {
-            "formula": "unassessed",
-            "packaging": "unassessed",
+            "formula": "pass",
+            "packaging": "pass",
             "legal": "pass",
             "testing": "pass"
           },
           "scope": "line",
           "basis": "direct",
           "disclose": false,
-          "rules": [],
+          "rules": [
+            "2 formula-read-from-materials",
+            "5.4 durable-good-is-its-own-packaging"
+          ],
           "legalNote": "Checked on 2026-08-31. An attorney led investigation into Claryum under sink filter leaks closed in early 2026 with no suit filed and no recall issued.",
-          "frontNotes": {},
-          "heldFrom": "good",
-          "restoreWhy": "independent lab result at line scope",
-          "heldBack": [
-            "formula",
-            "packaging"
-          ]
+          "frontNotes": {}
         },
         "origin": "hand",
         "matchAll": [
@@ -2939,11 +2936,11 @@
           "B0BT4FYHFJ"
         ],
         "ext": {
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: formula",
+          "why": "independent lab result at sku scope",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "pass",
             "packaging": "pass",
             "legal": "pass",
             "testing": "pass"
@@ -2952,15 +2949,11 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
-            "3 packaging-matrix-pass"
+            "3 packaging-matrix-pass",
+            "2 formula-read-from-materials"
           ],
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
-          "frontNotes": {},
-          "heldFrom": "good",
-          "restoreWhy": "independent lab result at sku scope",
-          "heldBack": [
-            "formula"
-          ]
+          "frontNotes": {}
         },
         "cat": "Water filters",
         "research": "Packaging: Dispense carafe is borosilicate glass; tap-water fill tank and housing are BPA-free plastic, resin unstated on the Carafe listings. Materials: Four-stage RO: mechanical pre-filter, activated carbon pre-filter, reverse osmosis membrane, activated coconut-shell carbon VOC polishing filter."
@@ -5784,11 +5777,11 @@
         "note": "Creapure plus Informed Sport (the European equivalent of NSF Certified for Sport, equally rigorous per batch testing). Founder led brand, no PE parent. Creapure + Informed Sport. Worth knowing: Plastic tub (transfer to glass)\", \"Smaller 60 serving format\", \"Pending boilerplate natural flavor suit on different SKU.",
         "origin": "store",
         "ext": {
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: formula",
+          "why": "a vetted store pick, chosen by a person at product scope",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "pass",
             "packaging": "pass",
             "legal": "pass",
             "testing": "pass"
@@ -5797,15 +5790,11 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
-            "3 packaging-matrix-pass"
+            "3 packaging-matrix-pass",
+            "2 formula-read-from-materials"
           ],
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "heldBack": [
-            "formula"
-          ]
+          "frontNotes": {}
         },
         "cat": "Supplements",
         "research": "Packaging: Contents are unflavored creatine powder in a plastic tub (per prior note); tub resin unstated by brand or retailers. Materials: Single ingredient: Creapure micronized creatine monohydrate, 5 g per serving; brand page states NSF Certified for Sport (note previously recorded Informed Sport)."
@@ -10809,9 +10798,9 @@
         "ext": {
           "verdict": "unrated",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: formula, packaging",
+          "why": "a recommendation needs its checks done; still to do: packaging",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "pass",
             "packaging": "unassessed",
             "legal": "pass",
             "testing": "pass"
@@ -10819,13 +10808,14 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": [],
+          "rules": [
+            "2 formula-read-from-materials"
+          ],
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {},
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
           "heldBack": [
-            "formula",
             "packaging"
           ]
         },
@@ -17218,27 +17208,24 @@
           "B000FT7NSI"
         ],
         "ext": {
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: formula, packaging",
+          "why": "a vetted store pick, chosen by a person at product scope",
           "fronts": {
-            "formula": "unassessed",
-            "packaging": "unassessed",
+            "formula": "pass",
+            "packaging": "pass",
             "legal": "pass",
             "testing": "pass"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": [],
+          "rules": [
+            "2 formula-read-from-materials",
+            "5.4 durable-good-is-its-own-packaging"
+          ],
           "legalNote": "Checked recall records on 2026-08-31. The 2015 DaVinci crib recall covered the Emily, Jamie, Jenny Lind and Reagan models only; the Kalani was never recalled.",
-          "frontNotes": {},
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "heldBack": [
-            "formula",
-            "packaging"
-          ]
+          "frontNotes": {}
         },
         "cat": "Cribs & nursery",
         "research": "Packaging: Durable good, no contents; body is 100% solid New Zealand pine wood with a non-toxic multi-step painted finish, stated lead and phthalate safe. Materials: 100% solid FSC certified New Zealand pine, non-toxic paint, GREENGUARD Gold certified; retailer specs also list a TSCA compliant MDF board over the metal mattress support."
@@ -43574,9 +43561,9 @@
         "ext": {
           "verdict": "unrated",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: formula, packaging",
+          "why": "a recommendation needs its checks done; still to do: packaging",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "pass",
             "packaging": "unassessed",
             "legal": "pass",
             "testing": "pass"
@@ -43584,13 +43571,14 @@
           "scope": "line",
           "basis": "direct",
           "disclose": false,
-          "rules": [],
+          "rules": [
+            "2 formula-read-from-materials"
+          ],
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {},
           "heldFrom": "good",
           "restoreWhy": "independent lab result at line scope",
           "heldBack": [
-            "formula",
             "packaging"
           ]
         },
@@ -48961,11 +48949,11 @@
         "note": "USDA Organic sprouted rolled oats with BioChecked Glyphosate Residue Free certification, the standard most organic oat brands do not carry. BioChecked directly verifies no detectable glyphosate. Worth knowing: Plastic lined bag\", \"Requires cooking\", \"Not single serve.",
         "origin": "store",
         "ext": {
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: formula",
+          "why": "a vetted store pick, chosen by a person at product scope",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "pass",
             "packaging": "pass",
             "legal": "pass",
             "testing": "pass"
@@ -48974,15 +48962,11 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
-            "3 packaging-matrix-pass"
+            "3 packaging-matrix-pass",
+            "2 formula-read-from-materials"
           ],
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "heldBack": [
-            "formula"
-          ]
+          "frontNotes": {}
         },
         "cat": "Pantry",
         "research": "Packaging: Ships in a resealable multi-layer plastic pouch (resin unstated, brand FAQ confirms multi-layer material); contents are dry rolled oats. Materials: Single ingredient: organic sprouted gluten-free non-GMO oats; USDA Organic, Glyphosate Free certified, Certified Vegan, nut-free facility."
@@ -50607,27 +50591,24 @@
         "note": "Whole wheat and bread flour certified Glyphosate Residue Free by The Detox Project. USA grown and field traced from a single family farm in Washington State. Glyphosate Residue Free, field traced. Worth knowing: Bread flour, not all purpose\", \"Higher price than commodity flour\", \"Decant to glass for long storage.",
         "origin": "store",
         "ext": {
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: formula, packaging",
+          "why": "a vetted store pick, chosen by a person at product scope",
           "fronts": {
-            "formula": "unassessed",
-            "packaging": "unassessed",
+            "formula": "pass",
+            "packaging": "pass",
             "legal": "pass",
             "testing": "pass"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": [],
+          "rules": [
+            "2 formula-read-from-materials",
+            "5.4 durable-good-is-its-own-packaging"
+          ],
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "heldBack": [
-            "formula",
-            "packaging"
-          ]
+          "frontNotes": {}
         },
         "cat": "Pantry",
         "research": "Packaging: Brand FAQ states 3 lb and 5 lb bags are plastic-free packaging; exact material unstated; contents are milled wheat flour. Materials: Single ingredient wheat flour milled in small batches from the farm's wheat berries; Non-GMO Project Verified, Certified Glyphosate Residue Free, Kosher Parve, no additives."
@@ -62721,7 +62702,7 @@
           "dated": "2026-08-29",
           "why": "the note reads adversely on packaging, needs a human look",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "pass",
             "packaging": "unassessed",
             "legal": "pass",
             "testing": "pass"
@@ -62730,7 +62711,8 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
-            "3 packaging-matrix-caution"
+            "3 packaging-matrix-caution",
+            "2 formula-read-from-materials"
           ],
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {}
@@ -64171,11 +64153,11 @@
         "note": "The most established Creapure plus NSF Certified for Sport pick on Amazon. The material used in most peer reviewed creatine studies. Creapure + NSF Certified for Sport. Worth knowing: Plastic tub (transfer to glass)\", \"Owned by L Catterton PE since 2023\", \"Bigger tub format.",
         "origin": "store",
         "ext": {
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: formula",
+          "why": "a vetted store pick, chosen by a person at product scope",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "pass",
             "packaging": "pass",
             "legal": "pass",
             "testing": "pass"
@@ -64184,15 +64166,11 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
-            "3 packaging-matrix-pass"
+            "3 packaging-matrix-pass",
+            "2 formula-read-from-materials"
           ],
           "legalNote": "Checked the FDA enforcement database on 2026-08-31. Only 2014 recalls of the discontinued Captomer DMSA products, terminated over a decade ago. Now informational.",
-          "frontNotes": {},
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "heldBack": [
-            "formula"
-          ]
+          "frontNotes": {}
         },
         "cat": "Supplements",
         "research": "Packaging: White plastic screw-top tub (resin unstated), 16 oz (450 g); contents are unflavored creatine powder. Materials: Sole ingredient is micronized creatine monohydrate, unflavored, no other ingredients; NSF Certified for Sport."
