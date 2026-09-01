@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,700;0,800;1,700;1,800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  body { margin: 0; background: #FAFAF9; color: #0A0A0A; -webkit-font-smoothing: antialiased; }
+  * { box-sizing: border-box; }
+  a { color: #7C3AED; text-decoration: none; }
+  a:hover { color: #5B21B6; }
+  input, button { font: inherit; }
+  ::placeholder { color: #A1A1A0; }
+  [data-band="ext"] { display: none; }
+  [data-band="mobile"] { display: block; }
+  @media (min-width: 900px) {
+    [data-band="ext"] { display: block; }
+    [data-band="mobile"] { display: none; }
+  }
+  @media (min-width: 900px) and (pointer: coarse) {
+    [data-band="ext"] { display: none; }
+    [data-band="mobile"] { display: block; }
+  }
+  @media (max-width: 899px) {
+    [data-cols="split"] { grid-template-columns: 1fr !important; gap: 40px !important; padding-left: 24px !important; padding-right: 24px !important; }
+    [data-pad] { padding-left: 24px !important; padding-right: 24px !important; }
+    [data-h="hero"] { font-size: 40px !important; }
+    [data-h="sec"] { font-size: 30px !important; }
+    [data-nav] { gap: 18px !important; font-size: 14.5px !important; flex-wrap: wrap; justify-content: flex-end; }
+    [data-pad="head"] { padding-top: 18px !important; padding-bottom: 18px !important; }
+    [data-cols="split"] > * { min-width: 0; }
+  }
+  @media (max-width: 620px) {
+    [data-h="hero"] { font-size: 34px !important; }
+    [data-nav] a { font-size: 14px !important; }
+  }
+</style>
+</helmet>
+
+<div style="font-family: 'Plus Jakarta Sans', system-ui, sans-serif; background: #FAFAF9; min-height: 100vh;">
+
+  <header style="background: rgba(250,250,249,0.9); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 20;">
+    <div data-pad="head" style="max-width: 1220px; margin: 0 auto; padding: 26px 40px; display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap;">
+      <a href="/index.html" style="font-size: 21px; font-weight: 800; letter-spacing: -0.03em; color: #0A0A0A;">plastic<span style="color: #7C3AED;">detox</span></a>
+      <nav data-nav="" style="display: flex; align-items: center; gap: 34px; font-size: 16px; font-weight: 500;">
+        <a href="/index.html" style="color: #71716E;">Home</a>
+        <a href="/custom-plan.html" style="color: #71716E;">Free Plan</a>
+        <a href="/store.html" style="color: #71716E;">Store</a>
+        <a href="/resources.html" style="color: #71716E;">Resources</a>
+        <a href="/brand-check.html" style="color: #0A0A0A; font-weight: 700;">Product Check</a>
+      </nav>
+    </div>
+  </header>
+
+  <section data-cols="split" style="max-width: 1220px; margin: 0 auto; padding: 56px 40px 0; display: grid; grid-template-columns: 1.02fr 1fr; gap: 72px; align-items: start;">
+    <div>
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 500; letter-spacing: 0.06em; color: #7C3AED;">704 assessed · Free</div>
+      <h1 data-h="hero" style="font-size: 66px; font-weight: 800; line-height: 1.0; letter-spacing: -0.035em; margin: 20px 0 0; text-wrap: pretty;">Is that product a <em style="font-style: italic; color: #7C3AED;">skip</em> or a <em style="font-style: italic; color: #7C3AED;">good choice</em>?</h1>
+      <p style="font-size: 19px; line-height: 1.62; color: #71716E; max-width: 30em; margin: 26px 0 0; text-wrap: pretty;">Type any product or brand and get a straight answer, drawn from independent lab tests, recalls, lawsuits, ingredients, and materials. No marketing spin.</p>
+
+      <div style="margin-top: 34px; max-width: 620px;">
+        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+          <input value="{{ query }}" onChange="{{ onQuery }}" onKeyDown="{{ onKey }}" placeholder="Try “tumblers”, “floss”, “protein powder”…" style="flex: 1 1 300px; min-width: 0; border: 1px solid #E7E7E3; background: #FFFFFF; border-radius: 999px; padding: 19px 26px; font-size: 17px; outline: none; color: #0A0A0A;" style-focus="border-color: #7C3AED;" />
+          <button onClick="{{ onSearch }}" style="border: 0; background: #0A0A0A; color: #FFFFFF; padding: 19px 34px; border-radius: 999px; font-size: 17px; font-weight: 700; cursor: pointer; white-space: nowrap;" style-hover="background: #7C3AED;">Check it</button>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 9px; margin-top: 18px;">
+          <span style="font-family: 'JetBrains Mono', monospace; font-size: 12.5px; color: #6E6E6B; margin-right: 3px;">Most checked</span>
+          <sc-for list="{{ popular }}" as="p" hint-placeholder-count="6">
+            <button onClick="{{ p.pick }}" style="border: 1px solid #E7E7E3; background: #FFFFFF; color: #52524F; padding: 9px 17px; border-radius: 999px; font-size: 14.5px; font-weight: 500; cursor: pointer;" style-hover="border-color: #7C3AED; color: #7C3AED;">{{ p.name }}</button>
+          </sc-for>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 26px; margin-top: 34px; padding-top: 26px; border-top: 1px solid #EDEDEA;">
+          <div style="display: flex; align-items: center; gap: 10px; font-size: 15.5px; color: #52524F;"><span style="color: #7C3AED; font-weight: 800;">✓</span>Five checks per product</div>
+          <div style="display: flex; align-items: center; gap: 10px; font-size: 15.5px; color: #52524F;"><span style="color: #7C3AED; font-weight: 800;">✓</span>Every verdict cites its source</div>
+          <div style="display: flex; align-items: center; gap: 10px; font-size: 15.5px; color: #52524F;"><span style="color: #7C3AED; font-weight: 800;">✓</span>No paid inclusion</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <sc-if value="{{ showExample }}" hint-placeholder-val="{{ true }}">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 12.5px; color: #6E6E6B; margin-bottom: 12px;">Example result — this is what a verdict looks like</div>
+      </sc-if>
+
+      <sc-if value="{{ hasResult }}" hint-placeholder-val="{{ true }}">
+        <article style="background: #FFFFFF; border: 1px solid #EDEDEA; border-radius: 22px; padding: 34px 36px; box-shadow: 0 2px 20px -12px rgba(10,10,10,0.12);">
+          <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px;">
+            <span style="display: inline-flex; align-items: center; gap: 9px; padding: 9px 17px; border-radius: 999px; font-size: 13px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: {{ result.ink }}; background: {{ result.wash }};">
+              <span style="width: 8px; height: 8px; border-radius: 50%; background: {{ result.ink }};"></span>{{ result.verdict }}
+            </span>
+            <span style="font-family: 'JetBrains Mono', monospace; font-size: 12.5px; letter-spacing: 0.04em; color: #6E6E6B;">{{ result.category }}</span>
+          </div>
+          <h2 style="font-size: 27px; font-weight: 800; line-height: 1.2; letter-spacing: -0.025em; margin: 20px 0 0;">{{ result.name }}</h2>
+          <p style="font-size: 16.5px; line-height: 1.65; color: #52524F; margin: 12px 0 0;">{{ result.reason }}</p>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px;">
+            <sc-for list="{{ result.tags }}" as="t" hint-placeholder-count="3">
+              <span style="background: #F5F5F3; color: #52524F; font-family: 'JetBrains Mono', monospace; font-size: 12px; padding: 7px 12px; border-radius: 999px;">{{ t }}</span>
+            </sc-for>
+          </div>
+          <div style="margin-top: 26px; padding-top: 22px; border-top: 1px solid #EDEDEA;">
+            <a href="{{ result.href }}" style="font-size: 16px; font-weight: 700;">{{ result.source }} →</a>
+          </div>
+        </article>
+      </sc-if>
+
+      <sc-if value="{{ showUnreviewed }}" hint-placeholder-val="{{ false }}">
+        <article style="background: #FFFFFF; border: 1px solid #EDEDEA; border-radius: 22px; padding: 34px 36px;">
+          <span style="display: inline-flex; padding: 9px 17px; border-radius: 999px; font-size: 13px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #52524F; background: #F5F5F3;">Not reviewed yet</span>
+          <h2 style="font-size: 27px; font-weight: 800; line-height: 1.2; letter-spacing: -0.025em; margin: 20px 0 0;">We have not tested “{{ query }}”.</h2>
+          <p style="font-size: 16.5px; line-height: 1.65; color: #52524F; margin: 12px 0 0;">No lab result, recall, or lawsuit on file — so we will not hand out a verdict. Request it, or read the guide for its category and judge by material.</p>
+          <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px;">
+            <button onClick="{{ onRequest }}" style="border: 0; background: #0A0A0A; color: #FFFFFF; padding: 15px 26px; border-radius: 999px; font-size: 16px; font-weight: 700; cursor: pointer;" style-hover="background: #7C3AED;">Request this brand</button>
+            <a href="/resources.html" style="border: 1px solid #E7E7E3; padding: 15px 26px; border-radius: 999px; font-size: 16px; font-weight: 700; color: #0A0A0A;" style-hover="border-color: #7C3AED; color: #7C3AED;">Browse the guides</a>
+          </div>
+          <p style="font-family: 'JetBrains Mono', monospace; font-size: 12.5px; line-height: 1.65; color: #6E6E6B; margin: 24px 0 0;">An unverified AI summary can be shown for unreviewed brands. It is clearly labeled, not checked by our team, and never counts as a verdict.</p>
+        </article>
+      </sc-if>
+    </div>
+  </section>
+
+  <section data-pad="" style="max-width: 1220px; margin: 0 auto; padding: 104px 40px 0; text-align: center;">
+    <h2 data-h="sec" style="font-size: 46px; font-weight: 800; letter-spacing: -0.032em; margin: 0;">How the <em style="font-style: italic; color: #7C3AED;">verdicts</em> work</h2>
+    <p style="font-size: 18px; line-height: 1.6; color: #71716E; margin: 16px auto 0; max-width: 34em;">Three outcomes, one bar for each. Nothing is scored on packaging claims.</p>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px; margin-top: 44px; text-align: left;">
+      <div style="background: #FFFFFF; border: 1px solid #EDEDEA; border-radius: 22px; padding: 32px;">
+        <span style="display: inline-flex; align-items: center; gap: 9px; padding: 9px 17px; border-radius: 999px; font-size: 13px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #047857; background: #ECFDF5;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #047857;"></span>Good choice</span>
+        <p style="font-size: 16.5px; line-height: 1.62; color: #52524F; margin: 18px 0 0;">Materials, certifications, or independent testing back it up. What we would actually buy.</p>
+      </div>
+      <div style="background: #FFFFFF; border: 1px solid #EDEDEA; border-radius: 22px; padding: 32px;">
+        <span style="display: inline-flex; align-items: center; gap: 9px; padding: 9px 17px; border-radius: 999px; font-size: 13px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #B45309; background: #FFFBEB;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #B45309;"></span>Careful</span>
+        <p style="font-size: 16.5px; line-height: 1.62; color: #52524F; margin: 18px 0 0;">Fine in some situations, with real caveats: one line to avoid, mixed test results, or an open question.</p>
+      </div>
+      <div style="background: #FFFFFF; border: 1px solid #EDEDEA; border-radius: 22px; padding: 32px;">
+        <span style="display: inline-flex; align-items: center; gap: 9px; padding: 9px 17px; border-radius: 999px; font-size: 13px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #B91C1C; background: #FEF2F2;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #B91C1C;"></span>Skip</span>
+        <p style="font-size: 16.5px; line-height: 1.62; color: #52524F; margin: 18px 0 0;">Failed independent testing, named in a recall or lawsuit, or built from materials we steer away from.</p>
+      </div>
+    </div>
+  </section>
+
+  <div data-band="ext">
+    <section style="margin: 104px 0 0; background: linear-gradient(180deg, #F1ECFE 0%, #EDE9FE 100%);">
+      <div data-cols="split" style="max-width: 1220px; margin: 0 auto; padding: 88px 40px; display: grid; grid-template-columns: 1.04fr 1fr; gap: 72px; align-items: center;">
+        <div>
+          <div style="font-size: 13.5px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #7C3AED;">Free extension · desktop only</div>
+          <h2 data-h="sec" style="font-size: 50px; font-weight: 800; line-height: 1.03; letter-spacing: -0.033em; margin: 20px 0 0; max-width: 18em;">Stop leaving the store to <em style="font-style: italic; color: #7C3AED;">look things up</em>.</h2>
+          <p style="font-size: 18.5px; line-height: 1.62; color: #52524F; margin: 20px 0 0; max-width: 32em; text-wrap: pretty;">Searching this page works, but it means switching tabs mid-cart. The extension puts the same verdict on the product page you are already reading — while the Add to Cart button is still on screen.</p>
+
+          <div style="display: grid; gap: 22px; margin-top: 34px;">
+            <div style="display: grid; grid-template-columns: 30px 1fr; gap: 16px; align-items: start;">
+              <span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 500; color: #7C3AED; padding-top: 3px;">01</span>
+              <div>
+                <div style="font-size: 17.5px; font-weight: 800; letter-spacing: -0.01em;">The verdict lands on the page</div>
+                <p style="font-size: 16px; line-height: 1.6; color: #71716E; margin: 5px 0 0;">Skip, Careful, or Good Choice appears beside the product title on Amazon, Target, and Walmart. No copy-pasting brand names.</p>
+              </div>
+            </div>
+            <div style="display: grid; grid-template-columns: 30px 1fr; gap: 16px; align-items: start;">
+              <span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 500; color: #7C3AED; padding-top: 3px;">02</span>
+              <div>
+                <div style="font-size: 17.5px; font-weight: 800; letter-spacing: -0.01em;">The reason, not just a rating</div>
+                <p style="font-size: 16px; line-height: 1.6; color: #71716E; margin: 5px 0 0;">One line on what the problem is — the lead result, the PTFE coating, the open class action — linked to the article it came from.</p>
+              </div>
+            </div>
+            <div style="display: grid; grid-template-columns: 30px 1fr; gap: 16px; align-items: start;">
+              <span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 500; color: #7C3AED; padding-top: 3px;">03</span>
+              <div>
+                <div style="font-size: 17.5px; font-weight: 800; letter-spacing: -0.01em;">A cleaner option, in one click</div>
+                <p style="font-size: 16px; line-height: 1.6; color: #71716E; margin: 5px 0 0;">When something is a Skip, it offers the vetted alternative that cleared all five checks — so you are not left abandoning the cart.</p>
+              </div>
+            </div>
+          </div>
+
+          <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 18px; margin-top: 38px;">
+            <a href="#install" style="background: #0A0A0A; color: #FFFFFF; padding: 19px 34px; border-radius: 999px; font-size: 17px; font-weight: 700;" style-hover="background: #7C3AED; color: #FFFFFF;">{{ installLabel }}</a>
+            <span style="font-size: 15.5px; color: #71716E;">{{ installNote }}</span>
+          </div>
+          <p style="font-family: 'JetBrains Mono', monospace; font-size: 12.5px; line-height: 1.7; color: #8B8B88; margin: 20px 0 0; max-width: 34em;">No account. No browsing history collected — lookups run against a list stored on your own machine.</p>
+        </div>
+
+        <div style="background: #FFFFFF; border-radius: 22px; overflow: hidden; box-shadow: 0 26px 60px -28px rgba(76,29,149,0.4);">
+          <div style="display: flex; align-items: center; gap: 7px; padding: 14px 16px; background: #F5F5F3;">
+            <span style="width: 9px; height: 9px; border-radius: 50%; background: #DEDEDA;"></span>
+            <span style="width: 9px; height: 9px; border-radius: 50%; background: #DEDEDA;"></span>
+            <span style="width: 9px; height: 9px; border-radius: 50%; background: #DEDEDA;"></span>
+            <span style="flex: 1; margin-left: 10px; background: #FFFFFF; border-radius: 999px; padding: 6px 14px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #6E6E6B;">retailer.com/product/…</span>
+          </div>
+          <div style="padding: 30px;">
+            <div style="display: grid; grid-template-columns: 96px 1fr; gap: 20px; align-items: start;">
+              <div style="aspect-ratio: 1; border-radius: 12px; background: repeating-linear-gradient(135deg, #F7F7F5 0 6px, #EFEFEC 6px 12px); display: flex; align-items: flex-end; justify-content: center; padding: 7px;">
+                <span style="font-family: 'JetBrains Mono', monospace; font-size: 8.5px; color: #A1A1A0; text-align: center; line-height: 1.3;">product<br />shot</span>
+              </div>
+              <div>
+                <div style="font-size: 16.5px; font-weight: 700; line-height: 1.35; letter-spacing: -0.01em;">40 oz Insulated Tumbler, Stainless</div>
+                <div style="font-family: 'JetBrains Mono', monospace; font-size: 11.5px; color: #6E6E6B; margin-top: 7px;">$44.99 · 12,418 ratings</div>
+                <div style="margin-top: 16px; background: #FFFBEB; border-radius: 14px; padding: 16px;">
+                  <div style="display: flex; align-items: center; gap: 8px;">
+                    <span style="width: 8px; height: 8px; border-radius: 50%; background: #B45309;"></span>
+                    <span style="font-size: 12.5px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #B45309;">Careful</span>
+                    <span style="font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: #6E6E6B; margin-left: auto;">plasticdetox</span>
+                  </div>
+                  <p style="font-size: 14px; line-height: 1.55; color: #52524F; margin: 10px 0 0;">Lead-containing pellet seals the base; the drink path itself is stainless. Fine sealed — replace it if the base cap is damaged.</p>
+                  <div style="margin-top: 12px;"><a href="#" style="font-size: 13.5px; font-weight: 700;">Read the tumbler testing →</a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div data-band="mobile">
+    <section style="margin: 76px 0 0; background: linear-gradient(180deg, #F1ECFE 0%, #EDE9FE 100%);">
+      <div style="max-width: 1220px; margin: 0 auto; padding: 52px 24px;">
+        <div style="font-size: 13px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #7C3AED;">On a laptop later?</div>
+        <h2 style="font-size: 34px; font-weight: 800; line-height: 1.08; letter-spacing: -0.03em; margin: 16px 0 0;">Our free extension shows verdicts <em style="font-style: italic; color: #7C3AED;">right on the product page</em>.</h2>
+        <p style="font-size: 17px; line-height: 1.6; color: #52524F; margin: 14px 0 0;">Browser extensions only exist on desktop, so we will send the install link for when you are back at a computer. The search above works everywhere, right now.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px;">
+          <input placeholder="your@email.com" style="flex: 1 1 240px; min-width: 0; border: 1px solid #E7E7E3; background: #FFFFFF; border-radius: 999px; padding: 17px 24px; font-size: 16px; outline: none;" />
+          <button style="border: 0; background: #0A0A0A; color: #FFFFFF; padding: 17px 28px; border-radius: 999px; font-size: 16px; font-weight: 700; cursor: pointer; min-height: 52px;">Email me the link</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <section data-cols="split" style="max-width: 1220px; margin: 0 auto; padding: 96px 40px; display: grid; grid-template-columns: 1fr 0.85fr; gap: 72px; align-items: start;">
+    <div>
+      <h2 data-h="sec" style="font-size: 42px; font-weight: 800; letter-spacing: -0.032em; margin: 0;">Where this <em style="font-style: italic; color: #7C3AED;">comes from</em></h2>
+      <p style="font-size: 18px; line-height: 1.62; color: #52524F; margin: 18px 0 0; max-width: 34em; text-wrap: pretty;">Every verdict is drawn from our own published research, citing independent lab testing, product recalls, class actions, ingredient labels, and material disclosures. Each result links to the article it came from so you can read the full reasoning.</p>
+      <p style="font-size: 15.5px; line-height: 1.6; color: #8B8B88; margin: 18px 0 0; max-width: 34em;">This is general information to help you shop, not a legal or medical claim about any company.</p>
+    </div>
+    <div style="background: #FFFFFF; border: 1px solid #EDEDEA; border-radius: 22px; padding: 12px 30px;">
+      <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 20px; padding: 20px 0; border-bottom: 1px solid #EDEDEA;">
+        <span style="font-size: 16px; color: #52524F;">Brands assessed</span><span style="font-size: 28px; font-weight: 800; letter-spacing: -0.03em;">704</span>
+      </div>
+      <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 20px; padding: 20px 0; border-bottom: 1px solid #EDEDEA;">
+        <span style="font-size: 16px; color: #52524F;">Evidence-based guides</span><span style="font-size: 28px; font-weight: 800; letter-spacing: -0.03em;">60</span>
+      </div>
+      <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 20px; padding: 20px 0; border-bottom: 1px solid #EDEDEA;">
+        <span style="font-size: 16px; color: #52524F;">Checks per product</span><span style="font-size: 28px; font-weight: 800; letter-spacing: -0.03em;">5</span>
+      </div>
+      <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 20px; padding: 20px 0;">
+        <span style="font-size: 16px; color: #52524F;">Sponsored placements</span><span style="font-size: 28px; font-weight: 800; letter-spacing: -0.03em; color: #7C3AED;">0</span>
+      </div>
+    </div>
+  </section>
+
+  <footer style="background: #F5F5F3;">
+    <div data-pad="" style="max-width: 1220px; margin: 0 auto; padding: 38px 40px; display: flex; flex-wrap: wrap; gap: 18px; justify-content: space-between; align-items: center; font-size: 15.5px; color: #71716E;">
+      <span>plasticdetox.org. Because your body deserves better than plastic.</span>
+      <span style="display: flex; gap: 26px;">
+        <a href="/about.html" style="color: #52524F; font-weight: 500;">About</a>
+        <a href="/privacy.html" style="color: #52524F; font-weight: 500;">Privacy Policy</a>
+        <a href="mailto:hello@plasticdetox.org" style="color: #52524F; font-weight: 500;">hello@plasticdetox.org</a>
+      </span>
+    </div>
+  </footer>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;extensionState&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;live&quot;,&quot;waitlist&quot;],&quot;default&quot;:&quot;live&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Extension&quot;}}">
+const TONES = {
+  "Good choice": { ink: "#047857", wash: "#ECFDF5" },
+  "Careful": { ink: "#B45309", wash: "#FFFBEB" },
+  "Skip": { ink: "#B91C1C", wash: "#FEF2F2" }
+};
+
+const DB = [
+  { name: "Insulated stainless tumblers (40 oz)", category: "Drinkware", verdict: "Careful",
+    reason: "The big tumbler brands seal the base with a pellet that is roughly half lead. Sealed, it does not touch your drink — but the drink path matters more: if you sip through a plastic lid, it is out regardless.",
+    tags: ["Lead seal", "Plastic drink path"], source: "Best Non Toxic Water Bottles and Tumblers (2026)", href: "/articles/best-non-toxic-water-bottles.html" },
+  { name: "PTFE-coated “glide” dental floss", category: "Oral care", verdict: "Skip",
+    reason: "The slickness in glide-type floss is usually PTFE, from the Teflon family, and one study tied a glide floss to higher PFAS in blood. Silk and plant-based flosses test PFAS free and cost the same.",
+    tags: ["PFAS", "Published study", "Swap available"], source: "Best PFAS Free Dental Floss (2026)", href: "/articles/pfas-free-dental-floss.html" },
+  { name: "Plant-based protein powders", category: "Supplements", verdict: "Careful",
+    reason: "Consumer Reports found lead in two thirds of protein powders tested, and plant and chocolate powders test worst. Only brands publishing per-batch heavy metal results clear our bar.",
+    tags: ["Heavy metals", "Per-batch testing"], source: "The Cleanest Protein Powders (2026, Tested)", href: "/articles/cleanest-protein-powder-tested.html" },
+  { name: "PVC shower curtains", category: "Bathroom", verdict: "Skip",
+    reason: "A PVC curtain off-gasses 108 VOCs into a small unventilated room, over 16 times the indoor air guideline. Hemp, linen, and organic cotton do the same job with no coating.",
+    tags: ["VOCs", "PVC", "Swap available"], source: "Best Non Toxic Shower Curtains (2026)", href: "/articles/best-non-toxic-shower-curtains.html" },
+  { name: "Cast iron and carbon steel cookware", category: "Cookware", verdict: "Good choice",
+    reason: "No coating to shed, no PFAS to disclose, and it outlives every non-stick pan you would otherwise replace. The seasoning is polymerised oil, not a fluoropolymer.",
+    tags: ["No PFAS", "Bare material", "Durable"], source: "Cast Iron vs Stainless vs Carbon Steel (2026)", href: "/articles/cast-iron-vs-stainless-steel-vs-ceramic-cookware.html" },
+  { name: "Nylon-bristle bamboo toothbrushes", category: "Bathroom", verdict: "Careful",
+    reason: "The handle is compostable; the bristles are almost always nylon from petroleum or castor oil. Better than an all-plastic brush, not the plastic-free swap the packaging implies.",
+    tags: ["Label claim gap", "Nylon bristles"], source: "Your Bamboo Toothbrush Probably Still Has Plastic Bristles", href: "/articles/bamboo-toothbrush-plastic-bristles.html" },
+  { name: "PTFE-basket air fryers", category: "Kitchen", verdict: "Skip",
+    reason: "Most fryer baskets are coated in PTFE, a PFAS forever chemical, and run hot and dry — the worst case for coating breakdown. Glass and stainless models exist at the same price.",
+    tags: ["PFAS", "High heat", "Swap available"], source: "Best Non Toxic Air Fryers (2026)", href: "/articles/best-non-toxic-air-fryers.html" },
+  { name: "“Plastic free” laundry sheets", category: "Laundry", verdict: "Careful",
+    reason: "Sheets marketed as plastic free are bound with PVA, a synthetic polymer. It dissolves, which is not the same as not being plastic. Powder in cardboard avoids the question entirely.",
+    tags: ["PVA", "Marketing claim"], source: "Best Non Toxic Laundry Detergent (2026)", href: "/articles/best-non-toxic-laundry-detergent.html" },
+  { name: "Sealed True HEPA air purifiers", category: "Indoor air", verdict: "Good choice",
+    reason: "The single most effective way to cut the microplastics you breathe, provided the housing is sealed so air cannot bypass the filter. Skip anything advertising ozone or ionisation.",
+    tags: ["Sealed HEPA", "No ozone"], source: "Best Air Purifiers for Microplastics (2026)", href: "/articles/best-air-purifiers-for-microplastics.html" },
+  { name: "Plastic cutting boards", category: "Kitchen", verdict: "Skip",
+    reason: "Every knife stroke sheds particles straight into the food you are about to cook. Hard maple, beech, and natural rubber boards are knife-friendly and do not shed polymer.",
+    tags: ["Microplastic shedding", "Food contact"], source: "Best Non Toxic Cutting Boards (2026)", href: "/articles/best-non-toxic-cutting-boards.html" },
+  { name: "Plastic tea bags", category: "Food & drink", verdict: "Skip",
+    reason: "A single pyramid bag can release billions of microplastic particles into near-boiling water. Loose leaf in a stainless basket is the whole fix.",
+    tags: ["Microplastics", "Heat exposure"], source: "How to Avoid Microplastics in Tea (2026)", href: "/articles/how-to-avoid-microplastics-in-tea.html" },
+  { name: "Glass baby bottles", category: "Baby & kids", verdict: "Good choice",
+    reason: "Plastic bottles released up to 16.2 million particles per litre when prepared by the book. Glass and stainless remove the variable completely; keep the silicone nipple out of boiling water.",
+    tags: ["No leaching", "Best in class"], source: "Best Non Toxic Baby Bottles (2026)", href: "/articles/best-non-toxic-baby-bottles.html" }
+];
+
+const POPULAR = ["Tumblers", "Dental floss", "Protein powder", "Air fryers", "Tea bags", "Baby bottles"];
+
+class Component extends DCLogic {
+  state = { query: "", submitted: "" };
+
+  find(q) {
+    const t = q.trim().toLowerCase();
+    if (!t) return null;
+    const words = t.split(/\s+/);
+    return DB.find(d => {
+      const hay = (d.name + " " + d.category + " " + d.tags.join(" ")).toLowerCase();
+      return words.every(w => hay.includes(w.replace(/s$/, "")));
+    }) || null;
+  }
+
+  renderVals() {
+    const q = this.state.submitted;
+    const hit = this.find(q);
+    const shown = q ? hit : DB[0];
+    const result = shown ? Object.assign({}, shown, TONES[shown.verdict]) : null;
+    const live = (this.props.extensionState ?? "live") === "live";
+
+    return {
+      query: this.state.query,
+      popular: POPULAR.map(name => ({ name, pick: () => this.setState({ query: name, submitted: name }) })),
+      onQuery: e => this.setState({ query: e.target.value }),
+      onKey: e => { if (e.key === "Enter") this.setState({ submitted: this.state.query }); },
+      onSearch: () => this.setState({ submitted: this.state.query }),
+      onRequest: () => this.setState({ query: "", submitted: "" }),
+      showExample: !q,
+      hasResult: !!result,
+      showUnreviewed: !!q && !hit,
+      result,
+      installLabel: live ? "Add to Chrome — free" : "Join the extension waitlist",
+      installNote: live ? "Also Edge, Brave, and Arc · no account" : "We will email you the day it ships."
+    };
+  }
+}
+
+</script>
+</body>
+</html>

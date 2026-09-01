@@ -47,28 +47,34 @@
   }
   </script>
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600;1,700;1,800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    [hidden] { display: none !important; }
 
     :root {
-      --accent: #a78bfa;
-      --accent-dark: #7c3aed;
-      --accent-light: #ede9fe;
-      --bg: #fafaf9;
-      --surface: #ffffff;
-      --text: #1c1917;
-      --text-muted: #78716c;
-      --border: #e7e5e4;
-      --radius: 16px;
-      --radius-sm: 10px;
-      --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
-      --shadow-lg: 0 10px 30px rgba(0,0,0,0.08);
+      --accent: #7C3AED;
+      --accent-deep: #5B21B6;
+      --accent-light: #EDE9FE;
+      --accent-wash: #F1ECFE;
+      --bg: #FAFAF9;
+      --surface: #FFFFFF;
+      --text: #0A0A0A;
+      --body: #52524F;
+      --muted: #71716E;
+      --faint: #8B8B88;
+      --mono-muted: #6E6E6B;
+      --border: #EDEDEA;
+      --border-strong: #E7E7E3;
+      --chip: #F5F5F3;
+      --mono: 'JetBrains Mono', monospace;
 
-      --good: #16a34a;     --good-bg: #dcfce7;   --good-border: #bbf7d0;
-      --careful: #b45309;  --careful-bg: #fef3c7; --careful-border: #fde68a;
-      --skip: #dc2626;     --skip-bg: #fee2e2;   --skip-border: #fecaca;
-      --neutral: #57534e;  --neutral-bg: #f5f5f4; --neutral-border: #e7e5e4;
+      --good: #047857;     --good-bg: #ECFDF5;    --good-border: #A7F3D0;
+      --careful: #B45309;  --careful-bg: #FFFBEB; --careful-border: #FDE68A;
+      --skip: #B91C1C;     --skip-bg: #FEF2F2;    --skip-border: #FECACA;
+      --neutral: #52524F;  --neutral-bg: #F5F5F3; --neutral-border: #E7E5E4;
     }
 
     body {
@@ -78,283 +84,377 @@
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
     }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { color: var(--accent-deep); }
+    input, button { font: inherit; }
+    ::placeholder { color: #A1A1A0; }
 
-    /* ===== NAV ===== */
-    .nav {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1.25rem 2rem; max-width: 1200px; margin: 0 auto;
-    }
-    .nav-logo { font-size: 1.25rem; font-weight: 800; text-decoration: none; color: var(--text); letter-spacing: -0.02em; }
-    .nav-logo span { color: var(--accent); }
-    .nav-links { display: flex; gap: 2rem; }
-    .nav-link { text-decoration: none; color: var(--text-muted); font-weight: 500; font-size: 0.95rem; transition: color 0.2s; cursor: pointer; }
-    .nav-link:hover, .nav-link.active { color: var(--text); }
-    @media (max-width: 700px) {
-      .nav { flex-direction: column; gap: 0.75rem; padding: 1rem 1.25rem; }
-      .nav-links { width: 100%; justify-content: center; gap: 1.25rem; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
-      .nav-links::-webkit-scrollbar { display: none; }
-      .nav-link { font-size: 0.9rem; white-space: nowrap; }
-    }
+    .shell { max-width: 1220px; margin: 0 auto; padding-left: 40px; padding-right: 40px; }
 
-    /* ===== HERO / SEARCH ===== */
-    .wrap { max-width: 720px; margin: 0 auto; padding: 2.5rem 1.5rem 5rem; }
-    .eyebrow {
-      font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
-      color: var(--accent-dark); margin-bottom: 0.7rem; text-align: center;
-    }
-    h1 { font-size: clamp(2rem, 5vw, 2.9rem); font-weight: 800; letter-spacing: -0.025em; text-align: center; line-height: 1.1; }
-    h1 em { font-style: italic; color: var(--accent-dark); }
-    .sub { color: var(--text-muted); text-align: center; max-width: 540px; margin: 0.9rem auto 0; font-size: 1.05rem; }
-    .stat-line { text-align: center; font-size: 0.82rem; color: var(--text-muted); margin-top: 0.9rem; font-weight: 500; }
+    /* ===== HEADER ===== */
+    .site-head { background: rgba(250,250,249,0.9); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 20; }
+    .site-head-in { display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; padding-top: 26px; padding-bottom: 26px; }
+    .logo { font-size: 21px; font-weight: 800; letter-spacing: -0.03em; color: var(--text); }
+    .logo span { color: var(--accent); }
+    .nav-links { display: flex; align-items: center; gap: 34px; font-size: 16px; font-weight: 500; }
+    .nav-links a { color: var(--muted); transition: color 0.15s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a.active { color: var(--text); font-weight: 700; }
 
-    .search-box { position: relative; margin: 2.2rem auto 0; max-width: 560px; }
+    /* ===== HERO ===== */
+    .hero { display: grid; grid-template-columns: 1.02fr 1fr; gap: 72px; align-items: start; padding-top: 56px; }
+    .kicker { font-family: var(--mono); font-size: 14px; font-weight: 500; letter-spacing: 0.06em; color: var(--accent); }
+    h1 { font-size: 66px; font-weight: 800; line-height: 1.0; letter-spacing: -0.035em; margin-top: 20px; text-wrap: pretty; }
+    h1 em, .sec-title em, .ext-title em { font-style: italic; color: var(--accent); }
+    .sub { font-size: 19px; line-height: 1.62; color: var(--muted); max-width: 30em; margin-top: 26px; text-wrap: pretty; }
+
+    .search-area { margin-top: 34px; max-width: 620px; }
+    .search-row { display: flex; gap: 12px; flex-wrap: wrap; }
+    .search-box { position: relative; flex: 1 1 300px; min-width: 0; }
     .search-input {
-      width: 100%; padding: 1.05rem 3rem 1.05rem 1.3rem; font-size: 1.1rem; font-family: inherit;
-      border: 2px solid var(--border); border-radius: 14px; background: var(--surface);
-      box-shadow: var(--shadow); transition: border-color 0.18s, box-shadow 0.18s; color: var(--text);
+      width: 100%; border: 1px solid var(--border-strong); background: var(--surface);
+      border-radius: 999px; padding: 19px 26px; font-size: 17px; outline: none; color: var(--text);
+      transition: border-color 0.15s, box-shadow 0.15s;
     }
-    .search-input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-light); }
-    .search-icon { position: absolute; right: 1.1rem; top: 50%; transform: translateY(-50%); color: var(--text-muted); pointer-events: none; }
+    .search-input:focus { border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-light); }
+    .check-btn {
+      border: 0; background: var(--text); color: #fff; padding: 19px 34px; border-radius: 999px;
+      font-size: 17px; font-weight: 700; cursor: pointer; white-space: nowrap; transition: background 0.15s;
+    }
+    .check-btn:hover { background: var(--accent); }
 
     .suggestions {
-      position: absolute; top: calc(100% + 6px); left: 0; right: 0; background: var(--surface);
-      border: 1px solid var(--border); border-radius: 12px; box-shadow: var(--shadow-lg); overflow: hidden;
-      z-index: 30; display: none;
+      position: absolute; top: calc(100% + 8px); left: 0; right: 0; background: var(--surface);
+      border: 1px solid var(--border); border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      overflow: hidden; z-index: 30; display: none;
     }
     .suggestions.show { display: block; }
-    .sugg-item { padding: 0.7rem 1.1rem; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; border-bottom: 1px solid var(--border); }
+    .sugg-item { padding: 0.7rem 1.3rem; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; border-bottom: 1px solid var(--border); }
     .sugg-item:last-child { border-bottom: none; }
-    .sugg-item:hover, .sugg-item.active { background: var(--accent-light); }
-    .sugg-name { font-weight: 600; font-size: 0.97rem; }
-    .sugg-cat { font-size: 0.78rem; color: var(--text-muted); }
+    .sugg-item:hover, .sugg-item.active { background: var(--accent-wash); }
+    .sugg-name { font-weight: 600; font-size: 15.5px; }
+    .sugg-cat { font-family: var(--mono); font-size: 11.5px; color: var(--mono-muted); }
     .sugg-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
 
-    .quick-row { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-top: 1.1rem; }
+    .chips-row { display: flex; flex-wrap: wrap; align-items: center; gap: 9px; margin-top: 18px; }
+    .chips-label { font-family: var(--mono); font-size: 12.5px; color: var(--mono-muted); margin-right: 3px; }
     .quick-chip {
-      font-size: 0.82rem; padding: 0.4rem 0.85rem; border-radius: 999px; border: 1px solid var(--border);
-      background: var(--surface); color: var(--text-muted); cursor: pointer; transition: all 0.15s; font-weight: 500;
+      border: 1px solid var(--border-strong); background: var(--surface); color: var(--body);
+      padding: 9px 17px; border-radius: 999px; font-size: 14.5px; font-weight: 500; cursor: pointer; transition: all 0.15s;
     }
-    .quick-chip:hover { border-color: var(--accent); color: var(--accent-dark); }
+    .quick-chip:hover { border-color: var(--accent); color: var(--accent); }
 
-    /* ===== RESULT CARD ===== */
-    .result { margin-top: 2.4rem; }
+    .assurances { display: flex; flex-wrap: wrap; gap: 26px; margin-top: 34px; padding-top: 26px; border-top: 1px solid var(--border); }
+    .assurances div { display: flex; align-items: center; gap: 10px; font-size: 15.5px; color: var(--body); }
+    .assurances b { color: var(--accent); font-weight: 800; }
+
+    /* ===== RESULT ===== */
+    .example-label { font-family: var(--mono); font-size: 12.5px; color: var(--mono-muted); margin-bottom: 12px; }
+    .result { scroll-margin-top: 96px; }
     .card {
-      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
-      box-shadow: var(--shadow); overflow: hidden; animation: pop 0.25s ease;
+      background: var(--surface); border: 1px solid var(--border); border-radius: 22px;
+      padding: 34px 36px; box-shadow: 0 2px 20px -12px rgba(10,10,10,0.12); animation: pop 0.25s ease;
     }
     @keyframes pop { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
-    .ext-cta {
-      display: flex; align-items: center; gap: 1.3rem;
-      max-width: 860px; margin: 1.4rem auto 0; padding: 1.1rem 1.25rem;
-      background: linear-gradient(135deg, var(--accent-light) 0%, #f5f0ff 100%);
-      border: 1px solid #ddd6fe; border-radius: var(--radius); text-align: left;
-    }
-    .ext-cta-icon {
-      flex: 0 0 auto; width: 38px; height: 38px; border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      background: #fff; color: var(--accent-dark); border: 1px solid #ddd6fe;
-    }
-    .ext-cta-body { flex: 1; min-width: 0; }
-    .ext-cta-body b { display: block; font-size: 0.95rem; color: var(--text); }
-    .ext-cta-body span { display: block; margin-top: 0.15rem; font-size: 0.82rem; line-height: 1.45; color: var(--text-muted); }
-    .ext-cta-btn {
-      flex: 0 0 auto; padding: 0.6rem 1rem; border-radius: 10px;
-      background: var(--accent-dark); color: #fff; font-weight: 600;
-      font-size: 0.88rem; text-decoration: none; white-space: nowrap;
-    }
-    .ext-cta-btn:hover { background: #6d28d9; }
-    .ext-cta-shot {
-      flex: 1 1 55%; min-width: 0; border-radius: 10px; overflow: hidden;
-      border: 1px solid #ddd6fe; box-shadow: 0 6px 18px rgba(124,58,237,0.12);
-      line-height: 0;
-    }
-    .ext-cta .ext-cta-body { flex: 1 1 30%; }
-    .ext-cta-shot img { width: 100%; height: auto; display: block; }
-    @media (max-width: 760px) {
-      .ext-cta { flex-wrap: wrap; }
-      .ext-cta-btn { width: 100%; text-align: center; }
-      .ext-cta-shot { flex: 1 1 100%; order: -1; }
-    }
-    .card-top { padding: 1.5rem 1.6rem 1.3rem; border-top: 5px solid var(--neutral); }
-    .card-top.good { border-top-color: var(--good); }
-    .card-top.careful { border-top-color: var(--careful); }
-    .card-top.skip { border-top-color: var(--skip); }
-
-    .verdict-row { display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap; }
+    .verdict-row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
     .badge {
-      display: inline-flex; align-items: center; gap: 0.45rem; padding: 0.4rem 0.85rem; border-radius: 999px;
-      font-weight: 700; font-size: 0.92rem; border: 1px solid;
+      display: inline-flex; align-items: center; gap: 9px; padding: 9px 17px; border-radius: 999px;
+      font-size: 13px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
     }
-    .badge.good { color: var(--good); background: var(--good-bg); border-color: var(--good-border); }
-    .badge.careful { color: var(--careful); background: var(--careful-bg); border-color: var(--careful-border); }
-    .badge.skip { color: var(--skip); background: var(--skip-bg); border-color: var(--skip-border); }
-    .badge.neutral { color: var(--neutral); background: var(--neutral-bg); border-color: var(--neutral-border); }
+    .badge .dot, .mini-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: currentColor; flex-shrink: 0; }
+    .badge.good { color: var(--good); background: var(--good-bg); }
+    .badge.careful { color: var(--careful); background: var(--careful-bg); }
+    .badge.skip { color: var(--skip); background: var(--skip-bg); }
+    .badge.neutral { color: var(--neutral); background: var(--neutral-bg); }
+    .cat-mono { font-family: var(--mono); font-size: 12.5px; letter-spacing: 0.04em; color: var(--mono-muted); }
 
-    .brand-name { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.015em; margin-top: 0.9rem; }
-    .brand-cat { font-size: 0.85rem; color: var(--text-muted); font-weight: 500; }
-    .reason { font-size: 1.04rem; margin-top: 0.85rem; color: var(--text); }
+    .brand-name { font-size: 27px; font-weight: 800; line-height: 1.2; letter-spacing: -0.025em; margin-top: 20px; }
+    .reason { font-size: 16.5px; line-height: 1.65; color: var(--body); margin-top: 12px; }
 
-    .card-body { padding: 0 1.6rem 1.5rem; }
-    .meta-block { margin-top: 1.15rem; }
-    .meta-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.07em; font-weight: 700; color: var(--text-muted); margin-bottom: 0.35rem; }
-    .evidence-chip { display: inline-block; font-size: 0.86rem; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 0.45rem 0.7rem; color: var(--text); }
-    .caution-block { display: flex; align-items: flex-start; gap: 0.55rem; font-size: 0.9rem; line-height: 1.5; background: var(--careful-bg); border: 1px solid var(--careful-border); border-radius: 10px; padding: 0.7rem 0.85rem; color: var(--careful); }
-    .caution-block svg { flex-shrink: 0; margin-top: 0.12rem; }
-    .caution-block .meta-label { color: var(--careful); margin-bottom: 0.2rem; }
-    .product-list { display: flex; flex-direction: column; gap: 0.5rem; }
-    .product-row { display: flex; align-items: flex-start; gap: 0.6rem; background: var(--bg); border: 1px solid var(--border); border-left-width: 3px; border-radius: 8px; padding: 0.6rem 0.7rem; }
-    .rollup-note { background: #fffbeb; border: 1px solid #fde68a; border-left: 3px solid var(--careful); border-radius: 8px; padding: 0.65rem 0.8rem; font-size: 0.9rem; line-height: 1.5; color: #78350f; }
+    .meta-block { margin-top: 22px; }
+    .meta-label { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.07em; font-weight: 500; color: var(--mono-muted); margin-bottom: 8px; }
+
+    .product-list { display: flex; flex-direction: column; gap: 8px; }
+    .product-row {
+      display: flex; align-items: flex-start; gap: 10px; background: var(--bg);
+      border: 1px solid var(--border); border-left-width: 3px; border-radius: 12px; padding: 10px 13px;
+    }
     .product-row.good { border-left-color: var(--good); }
     .product-row.careful { border-left-color: var(--careful); }
     .product-row.skip { border-left-color: var(--skip); }
-    .mini-badge { flex: 0 0 auto; display: inline-flex; align-items: center; gap: 0.25rem; font-size: 0.7rem; font-weight: 700; padding: 0.2rem 0.5rem; border-radius: 999px; border: 1px solid transparent; white-space: nowrap; }
-    .mini-badge svg { width: 12px; height: 12px; }
-    .mini-badge.good { color: var(--good); background: var(--good-bg); border-color: var(--good-border); }
-    .mini-badge.careful { color: var(--careful); background: var(--careful-bg); border-color: var(--careful-border); }
-    .mini-badge.skip { color: var(--skip); background: var(--skip-bg); border-color: var(--skip-border); }
-    .product-info { display: flex; flex-direction: column; gap: 0.15rem; min-width: 0; }
-    .product-name { font-size: 0.9rem; font-weight: 650; color: var(--text); }
-    .product-note { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; }
+    .mini-badge {
+      flex: 0 0 auto; display: inline-flex; align-items: center; gap: 6px; font-size: 10.5px; font-weight: 800;
+      letter-spacing: 0.06em; text-transform: uppercase; padding: 4px 10px; border-radius: 999px; white-space: nowrap; margin-top: 2px;
+    }
+    .mini-badge .dot { width: 6px; height: 6px; }
+    .mini-badge.good { color: var(--good); background: var(--good-bg); }
+    .mini-badge.careful { color: var(--careful); background: var(--careful-bg); }
+    .mini-badge.skip { color: var(--skip); background: var(--skip-bg); }
+    .product-info { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+    .product-name { font-size: 14.5px; font-weight: 650; color: var(--text); }
+    .product-note { font-size: 13.5px; color: var(--muted); line-height: 1.5; }
+
+    .rollup-note {
+      background: var(--careful-bg); border: 1px solid var(--careful-border); border-left: 3px solid var(--careful);
+      border-radius: 12px; padding: 12px 15px; font-size: 14.5px; line-height: 1.55; color: #78350F;
+    }
+    .caution-block {
+      display: flex; align-items: flex-start; gap: 10px; font-size: 14.5px; line-height: 1.55;
+      background: var(--careful-bg); border: 1px solid var(--careful-border); border-radius: 14px;
+      padding: 12px 15px; color: var(--careful);
+    }
+    .caution-block svg { flex-shrink: 0; margin-top: 3px; }
+    .caution-block .meta-label { color: var(--careful); margin-bottom: 4px; }
+
     .alt-link {
-      display: inline-flex; align-items: center; gap: 0.4rem; font-weight: 600; color: var(--good);
-      background: var(--good-bg); border: 1px solid var(--good-border); border-radius: 10px;
-      padding: 0.55rem 0.9rem; text-decoration: none; font-size: 0.95rem; cursor: pointer;
+      display: inline-flex; align-items: center; gap: 8px; font-weight: 700; font-size: 15px; color: var(--good);
+      background: var(--good-bg); border: 1px solid var(--good-border); border-radius: 999px;
+      padding: 10px 18px; cursor: pointer;
     }
-    .alt-link:hover { filter: brightness(0.97); }
+    .alt-link:hover { filter: brightness(0.97); color: var(--good); }
     .buy-link {
-      display: inline-flex; align-items: center; gap: 0.55rem; font-weight: 700; color: #fff;
-      background: var(--good); border-radius: 11px; padding: 0.8rem 1.3rem; text-decoration: none; font-size: 1rem;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+      display: inline-flex; align-items: center; gap: 10px; font-weight: 700; color: #fff;
+      background: var(--text); border-radius: 999px; padding: 14px 26px; font-size: 15.5px; transition: background 0.15s;
     }
-    .buy-link:hover { filter: brightness(1.05); }
-    .sources { display: flex; flex-wrap: wrap; gap: 0.45rem; }
-    .source-link {
-      font-size: 0.84rem; color: var(--accent-dark); text-decoration: none; background: var(--accent-light);
-      border-radius: 8px; padding: 0.38rem 0.7rem; font-weight: 500;
-    }
-    .source-link:hover { text-decoration: underline; }
+    .buy-link:hover { background: var(--accent); color: #fff; }
+    .evidence-chip { display: inline-block; font-family: var(--mono); font-size: 12px; background: var(--chip); border-radius: 999px; padding: 7px 13px; color: var(--body); }
+    .sources { display: flex; flex-wrap: wrap; gap: 8px; }
+    .source-link { font-size: 13.5px; font-weight: 600; color: var(--accent-deep); background: var(--accent-wash); border-radius: 999px; padding: 7px 14px; }
+    .source-link:hover { background: var(--accent-light); color: var(--accent-deep); }
 
-    /* ===== UNKNOWN / HYBRID ===== */
-    .unknown-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.6rem; text-align: center; animation: pop 0.25s ease; }
-    .unknown-card h3 { font-size: 1.25rem; font-weight: 800; }
-    .unknown-card p { color: var(--text-muted); margin-top: 0.5rem; font-size: 0.98rem; }
+    /* ===== UNKNOWN CARD ===== */
     .btn {
-      display: inline-flex; align-items: center; gap: 0.5rem; font-family: inherit; font-weight: 600; font-size: 0.97rem;
-      padding: 0.75rem 1.3rem; border-radius: 11px; border: none; cursor: pointer; transition: all 0.15s; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 8px; font-weight: 700; font-size: 16px;
+      padding: 15px 26px; border-radius: 999px; border: 0; cursor: pointer; transition: all 0.15s;
     }
-    .btn-primary { background: var(--accent-dark); color: #fff; }
-    .btn-primary:hover { filter: brightness(1.07); }
-    .btn-primary:disabled { opacity: 0.55; cursor: default; }
-    .btn-ghost { background: var(--surface); color: var(--text); border: 1px solid var(--border); }
-    .btn-ghost:hover { border-color: var(--accent); }
-    .btn-row { display: flex; gap: 0.7rem; justify-content: center; flex-wrap: wrap; margin-top: 1.2rem; }
-
-    .ai-disclaimer {
-      display: flex; align-items: flex-start; gap: 0.55rem; text-align: left; font-size: 0.84rem; color: var(--careful);
-      background: var(--careful-bg); border: 1px solid var(--careful-border); border-radius: 10px; padding: 0.7rem 0.85rem; margin-bottom: 1rem;
+    .btn-primary { background: var(--text); color: #fff; }
+    .btn-primary:hover { background: var(--accent); color: #fff; }
+    .btn-ghost { background: var(--surface); color: var(--text); border: 1px solid var(--border-strong); font-size: 15px; padding: 13px 22px; }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+    .request-form { margin-top: 14px; display: flex; gap: 10px; flex-wrap: wrap; }
+    .request-form input {
+      flex: 1 1 200px; min-width: 0; padding: 13px 20px; border: 1px solid var(--border-strong);
+      border-radius: 999px; font-size: 15px; outline: none; background: var(--surface); color: var(--text);
     }
-    .ai-summary { text-align: left; margin-top: 1.2rem; border-top: 1px solid var(--border); padding-top: 1.2rem; }
-    .ai-summary .reason { font-size: 1rem; }
-    .request-form { margin-top: 1.3rem; display: flex; gap: 0.5rem; max-width: 420px; margin-left: auto; margin-right: auto; }
-    .request-form input { flex: 1; padding: 0.7rem 0.9rem; border: 1px solid var(--border); border-radius: 10px; font-family: inherit; font-size: 0.95rem; }
-    .request-form input:focus { outline: none; border-color: var(--accent); }
-    .form-note { font-size: 0.82rem; color: var(--text-muted); margin-top: 0.6rem; }
-
-    .spinner { width: 16px; height: 16px; border: 2px solid rgba(255,255,255,0.4); border-top-color: #fff; border-radius: 50%; animation: spin 0.7s linear infinite; }
-    @keyframes spin { to { transform: rotate(360deg); } }
+    .request-form input:focus { border-color: var(--accent); }
+    .form-note { font-size: 13.5px; color: var(--muted); margin-top: 10px; }
 
     /* ===== HOW IT WORKS ===== */
-    .how { margin-top: 3.5rem; }
-    .how-title { font-size: 1.3rem; font-weight: 800; text-align: center; margin-bottom: 1.4rem; }
-    .legend { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.8rem; margin-bottom: 2rem; }
-    @media (max-width: 560px) { .legend { grid-template-columns: 1fr; } }
-    .legend-item { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1rem; }
-    .legend-item .badge { margin-bottom: 0.6rem; }
-    .legend-item p { font-size: 0.88rem; color: var(--text-muted); }
-    .how-note { font-size: 0.9rem; color: var(--text-muted); background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.15rem 1.3rem; }
-    .how-note strong { color: var(--text); }
+    .how { padding-top: 104px; text-align: center; }
+    .sec-title { font-size: 46px; font-weight: 800; letter-spacing: -0.032em; }
+    .sec-sub { font-size: 18px; line-height: 1.6; color: var(--muted); margin: 16px auto 0; max-width: 34em; }
+    .legend { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px; margin-top: 44px; text-align: left; }
+    .legend-item { background: var(--surface); border: 1px solid var(--border); border-radius: 22px; padding: 32px; }
+    .legend-item p { font-size: 16.5px; line-height: 1.62; color: var(--body); margin-top: 18px; }
+
+    /* ===== EXTENSION BAND (desktop Chromium only, revealed by JS) ===== */
+    .ext-band { margin-top: 104px; background: linear-gradient(180deg, #F1ECFE 0%, #EDE9FE 100%); }
+    .ext-grid { display: grid; grid-template-columns: 1.04fr 1fr; gap: 72px; align-items: center; padding-top: 88px; padding-bottom: 88px; }
+    .ext-kicker { font-size: 13.5px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); }
+    .ext-title { font-size: 50px; font-weight: 800; line-height: 1.03; letter-spacing: -0.033em; margin-top: 20px; max-width: 18em; }
+    .ext-lede { font-size: 18.5px; line-height: 1.62; color: var(--body); margin-top: 20px; max-width: 32em; text-wrap: pretty; }
+    .ext-steps { display: grid; gap: 22px; margin-top: 34px; }
+    .ext-step { display: grid; grid-template-columns: 30px 1fr; gap: 16px; align-items: start; }
+    .ext-step-num { font-family: var(--mono); font-size: 13px; font-weight: 500; color: var(--accent); padding-top: 3px; }
+    .ext-step b { display: block; font-size: 17.5px; font-weight: 800; letter-spacing: -0.01em; color: var(--text); }
+    .ext-step p { font-size: 16px; line-height: 1.6; color: var(--muted); margin-top: 5px; }
+    .ext-cta-row { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; margin-top: 38px; }
+    .ext-install { background: var(--text); color: #fff; padding: 19px 34px; border-radius: 999px; font-size: 17px; font-weight: 700; transition: background 0.15s; }
+    .ext-install:hover { background: var(--accent); color: #fff; }
+    .ext-note { font-size: 15.5px; color: var(--muted); }
+    .ext-fine { font-family: var(--mono); font-size: 12.5px; line-height: 1.7; color: var(--faint); margin-top: 20px; max-width: 34em; }
+    .browser-frame { background: var(--surface); border-radius: 22px; overflow: hidden; box-shadow: 0 26px 60px -28px rgba(76,29,149,0.4); }
+    .browser-bar { display: flex; align-items: center; gap: 7px; padding: 14px 16px; background: var(--chip); }
+    .browser-dot { width: 9px; height: 9px; border-radius: 50%; background: #DEDEDA; flex-shrink: 0; }
+    .browser-url { flex: 1; margin-left: 10px; background: var(--surface); border-radius: 999px; padding: 6px 14px; font-family: var(--mono); font-size: 11px; color: var(--mono-muted); overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+    .browser-frame img { width: 100%; height: auto; display: block; }
+
+    /* ===== WHERE THIS COMES FROM ===== */
+    .origins { display: grid; grid-template-columns: 1fr 0.85fr; gap: 72px; align-items: start; padding-top: 96px; padding-bottom: 96px; }
+    .origins .sec-title { font-size: 42px; }
+    .origins-copy p { font-size: 18px; line-height: 1.62; color: var(--body); margin-top: 18px; max-width: 34em; text-wrap: pretty; }
+    .origins-copy p.fine { font-size: 15.5px; color: var(--faint); }
+    .stats-card { background: var(--surface); border: 1px solid var(--border); border-radius: 22px; padding: 12px 30px; }
+    .stat-row { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; padding: 20px 0; border-bottom: 1px solid var(--border); }
+    .stat-row:last-child { border-bottom: none; }
+    .stat-row span:first-child { font-size: 16px; color: var(--body); }
+    .stat-num { font-size: 28px; font-weight: 800; letter-spacing: -0.03em; }
+    .stat-num.accent { color: var(--accent); }
 
     /* ===== FOOTER ===== */
-    .footer { text-align: center; padding: 3rem 1.5rem; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.9rem; margin-top: 2rem; }
-    .footer a { color: var(--text-muted); text-decoration: none; }
-    .footer a:hover { color: var(--accent-dark); }
+    .footer { background: var(--chip); }
+    .footer-in {
+      padding-top: 38px; padding-bottom: 38px; display: flex; flex-wrap: wrap; gap: 18px;
+      justify-content: space-between; align-items: center; font-size: 15.5px; color: var(--muted);
+    }
+    .footer a { color: var(--body); font-weight: 500; }
+    .footer a:hover { color: var(--accent); }
+    .footer-links { display: flex; gap: 26px; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 899px) {
+      .shell { padding-left: 24px; padding-right: 24px; }
+      .site-head-in { padding-top: 18px; padding-bottom: 18px; }
+      .nav-links { gap: 18px; font-size: 14.5px; flex-wrap: wrap; justify-content: flex-end; }
+      .hero, .ext-grid, .origins { grid-template-columns: 1fr; gap: 40px; }
+      h1 { font-size: 40px; }
+      .sec-title, .origins .sec-title { font-size: 30px; }
+      .ext-title { font-size: 34px; }
+      .how { padding-top: 76px; }
+      .ext-band { margin-top: 76px; }
+      .ext-grid { padding-top: 52px; padding-bottom: 52px; }
+      .origins { padding-top: 64px; padding-bottom: 64px; }
+    }
+    @media (max-width: 620px) {
+      h1 { font-size: 34px; }
+      .nav-links a { font-size: 14px; }
+      .card { padding: 26px 24px; }
+    }
   </style>
-  <style>@media(max-width:640px){.nav-hide-mobile{display:none!important}}</style>
 </head>
 <body>
-  <nav class="nav">
-    <a href="index.html" class="nav-logo">plastic<span>detox</span></a>
-    <div class="nav-links">
-      <a class="nav-link nav-hide-mobile" href="index.html">Home</a>
-      <a class="nav-link" href="custom-plan.html">Free Plan</a>
-      <a class="nav-link" href="store.html">Store</a>
-      <a class="nav-link" href="resources.html">Resources</a>
-      <a class="nav-link active" href="brand-check.html">Product Check</a>
+  <header class="site-head">
+    <div class="shell site-head-in">
+      <a href="index.html" class="logo">plastic<span>detox</span></a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="custom-plan.html">Free Plan</a>
+        <a href="store.html">Store</a>
+        <a href="resources.html">Resources</a>
+        <a class="active" href="brand-check.html">Product Check</a>
+      </nav>
     </div>
-  </nav>
+  </header>
 
-  <main class="wrap">
-    <div class="eyebrow">Product Check</div>
-    <h1>Is that product a <em>skip</em> or a <em>good choice</em>?</h1>
-    <p class="sub">Type any product or brand and get a straight answer, based on independent lab tests, recalls, lawsuits, ingredients, and materials. No marketing spin.</p>
-    <p class="stat-line" id="statLine">Loading brand database…</p>
+  <main>
+    <section class="shell hero">
+      <div>
+        <div class="kicker" id="statLine">Loading brand database…</div>
+        <h1>Is that product a <em>skip</em> or a <em>good choice</em>?</h1>
+        <p class="sub">Type any product or brand and get a straight answer, drawn from independent lab tests, recalls, lawsuits, ingredients, and materials. No marketing spin.</p>
 
-    <div class="search-box">
-      <input id="search" class="search-input" type="text" placeholder="Search a product or brand… e.g. Brita pitcher, Stasher bags" autocomplete="off" spellcheck="false" aria-label="Search a brand">
-      <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-      <div class="suggestions" id="suggestions"></div>
-    </div>
-
-    <div class="quick-row" id="quickRow"></div>
-
-
-    <!-- Extension CTA. Shown only to desktop Chromium, because nobody else can
-         install it and an offer you cannot accept is just noise. -->
-    <aside class="ext-cta" id="extCta" hidden>
-      <div class="ext-cta-shot" aria-hidden="true">
-        <img src="images/extension-search.jpg" width="1160" height="500" loading="lazy"
-             alt="Amazon search results with Skip, Careful and Good choice verdict chips on each listing">
+        <div class="search-area">
+          <div class="search-row">
+            <div class="search-box">
+              <input id="search" class="search-input" type="text" placeholder="Try &ldquo;Brita&rdquo;, &ldquo;Stasher&rdquo;, &ldquo;Hydro Flask&rdquo;&hellip;" autocomplete="off" spellcheck="false" aria-label="Search a product or brand">
+              <div class="suggestions" id="suggestions"></div>
+            </div>
+            <button class="check-btn" onclick="if(searchEl.value.trim())lookup(searchEl.value)">Check it</button>
+          </div>
+          <div class="chips-row" id="quickRow"></div>
+          <div class="assurances">
+            <div><b>&#10003;</b>Four checks per product</div>
+            <div><b>&#10003;</b>Every verdict cites its source</div>
+            <div><b>&#10003;</b>No paid inclusion</div>
+          </div>
+        </div>
       </div>
-      <div class="ext-cta-body">
-        <b>See it before you click</b>
-        <span>Our free Chrome extension puts the verdict on every Amazon search result and listing, before you add to basket. No affiliate links.</span>
+
+      <div>
+        <div class="example-label" id="exampleLabel" hidden>Example result &mdash; this is what a verdict looks like</div>
+        <div class="result" id="result" aria-live="polite"></div>
       </div>
-      <a class="ext-cta-btn" id="extCtaBtn"
-         href="https://chromewebstore.google.com/detail/lplncjbnohkgchjkhgdiljpjfgdmgelg"
-         target="_blank" rel="noopener">Add to Chrome &rarr;</a>
-    </aside>
+    </section>
 
-    <div class="result" id="result" aria-live="polite"></div>
-
-    <section class="how">
-      <h2 class="how-title">How the verdicts work</h2>
+    <section class="shell how">
+      <h2 class="sec-title">How the <em>verdicts</em> work</h2>
+      <p class="sec-sub">Three outcomes, one bar for each. Nothing is scored on packaging claims.</p>
       <div class="legend">
         <div class="legend-item">
-          <span class="badge good">Good choice</span>
+          <span class="badge good"><span class="dot"></span>Good choice</span>
           <p>Materials, certifications, or independent testing back it up. What we would actually buy.</p>
         </div>
         <div class="legend-item">
-          <span class="badge careful">Careful</span>
-          <p>Fine in some situations but with real caveats: a specific line to avoid, mixed test results, or a pending question.</p>
+          <span class="badge careful"><span class="dot"></span>Careful</span>
+          <p>Fine in some situations, with real caveats: one line to avoid, mixed test results, or an open question.</p>
         </div>
         <div class="legend-item">
-          <span class="badge skip">Skip</span>
+          <span class="badge skip"><span class="dot"></span>Skip</span>
           <p>Failed independent testing, named in a recall or lawsuit, or built from materials we steer away from.</p>
         </div>
       </div>
-      <div class="how-note">
-        <strong>Where this comes from.</strong> Every verdict is drawn from our own published research, citing independent lab testing, product recalls, class actions, ingredient labels, and material disclosures. Each result links to the article it came from so you can read the full reasoning. Brands we have not reviewed yet return an optional AI summary that is clearly labeled and not verified by our team. This is general information to help you shop, not a legal or medical claim about any company.
+    </section>
+
+    <!-- Extension band. Shown only to desktop Chromium, because nobody else can
+         install it and an offer you cannot accept is just noise. -->
+    <div class="ext-band" id="extBand" hidden>
+      <div class="shell ext-grid">
+        <div>
+          <div class="ext-kicker">Free extension &middot; desktop only</div>
+          <h2 class="ext-title">Stop leaving the store to <em>look things up</em>.</h2>
+          <p class="ext-lede">Searching this page works, but it means switching tabs mid-cart. The extension puts the same verdict on the Amazon page you are already reading &mdash; while the Add to Cart button is still on screen.</p>
+
+          <div class="ext-steps">
+            <div class="ext-step">
+              <span class="ext-step-num">01</span>
+              <div>
+                <b>The verdict lands on the page</b>
+                <p>Skip, Careful, or Good Choice appears right on Amazon search results and product listings. No copy-pasting brand names.</p>
+              </div>
+            </div>
+            <div class="ext-step">
+              <span class="ext-step-num">02</span>
+              <div>
+                <b>The reason, not just a rating</b>
+                <p>One line on what the problem is &mdash; the lead result, the PTFE coating, the open class action &mdash; linked to the article it came from.</p>
+              </div>
+            </div>
+            <div class="ext-step">
+              <span class="ext-step-num">03</span>
+              <div>
+                <b>A cleaner option, in one click</b>
+                <p>When something is a Skip, it shows the better alternative from our research &mdash; so you are not left abandoning the cart.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="ext-cta-row">
+            <a class="ext-install" id="extInstallBtn"
+               href="https://chromewebstore.google.com/detail/lplncjbnohkgchjkhgdiljpjfgdmgelg"
+               target="_blank" rel="noopener">Add to Chrome &mdash; free</a>
+            <span class="ext-note">Also Edge, Brave, and Arc &middot; no account</span>
+          </div>
+          <p class="ext-fine">No account. No affiliate links. Verdicts come from our published research, bundled with the extension.</p>
+        </div>
+
+        <div class="browser-frame">
+          <div class="browser-bar">
+            <span class="browser-dot"></span>
+            <span class="browser-dot"></span>
+            <span class="browser-dot"></span>
+            <span class="browser-url">amazon.com/s?k=&hellip;</span>
+          </div>
+          <img src="images/extension-search.jpg" width="1160" height="500" loading="lazy"
+               alt="Amazon search results with Skip, Careful and Good choice verdict chips on each listing">
+        </div>
+      </div>
+    </div>
+
+    <section class="shell origins">
+      <div class="origins-copy">
+        <h2 class="sec-title">Where this <em>comes from</em></h2>
+        <p>Every verdict is drawn from our own published research, citing independent lab testing, product recalls, class actions, ingredient labels, and material disclosures. Each result links to the article it came from so you can read the full reasoning.</p>
+        <p>Brands we have not reviewed yet can be run through the same checks on demand, or requested for a free hand review by our team.</p>
+        <p class="fine">This is general information to help you shop, not a legal or medical claim about any company.</p>
+      </div>
+      <div class="stats-card">
+        <div class="stat-row"><span>Brands assessed</span><span class="stat-num" id="statBrands">950+</span></div>
+        <div class="stat-row"><span>Evidence-based guides</span><span class="stat-num">73</span></div>
+        <div class="stat-row"><span>Checks per product</span><span class="stat-num">4</span></div>
+        <div class="stat-row"><span>Sponsored placements</span><span class="stat-num accent">0</span></div>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <p>plasticdetox.org. Because your body deserves better than plastic.</p>
-    <div style="margin-top:0.5rem;font-size:0.75rem;">
-      <a href="about.html" style="margin-right:1rem;">About</a>
-      <a href="privacy.html" style="margin-right:1rem;">Privacy Policy</a>
-      <a href="mailto:hello@plasticdetox.org">hello@plasticdetox.org</a>
+    <div class="shell footer-in">
+      <span>plasticdetox.org. Because your body deserves better than plastic.</span>
+      <span class="footer-links">
+        <a href="about.html">About</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="mailto:hello@plasticdetox.org">hello@plasticdetox.org</a>
+      </span>
     </div>
   </footer>
 
@@ -383,11 +483,13 @@
           // alternate spellings people actually type ("better and better" for "Better & Better")
           b._alts = (b.aliases || []).map(a => ({ n: norm(a), c: collapse(a) }));
         });
-        $("statLine").textContent = BRANDS.length + " brands reviewed · updated August 2026";
+        $("statLine").textContent = BRANDS.length + " brands assessed · Free";
+        $("statBrands").textContent = BRANDS.length;
         buildQuick();
         // deep link ?b=
         const q = new URLSearchParams(location.search).get("b");
         if (q) { searchEl.value = q; lookup(q); }
+        else showExample();
       })
       .catch(() => { $("statLine").textContent = "Could not load the brand database. Please refresh."; });
 
@@ -400,11 +502,11 @@
       const mobile = /Android|iPhone|iPad|iPod|Mobile/i.test(ua);
       const chromium = /Chrome\/|Chromium\/|Edg\//.test(ua) && !/OPR\//.test(ua);
       if (mobile || !chromium) return;
-      const box = $("extCta");
-      if (!box) return;
-      box.hidden = false;
+      const band = $("extBand");
+      if (!band) return;
+      band.hidden = false;
       gtag('event', 'extension_cta_view', { placement: 'brand_check' });
-      $("extCtaBtn").addEventListener('click', function () {
+      $("extInstallBtn").addEventListener('click', function () {
         gtag('event', 'extension_cta_click', {
           placement: 'brand_check',
           // what they had just looked up, so we can see whether a verdict drives installs
@@ -415,7 +517,7 @@
 
     function buildQuick() {
       const row = $("quickRow");
-      row.innerHTML = '<span style="font-size:0.82rem;color:var(--text-muted);align-self:center;">Try:</span>';
+      row.innerHTML = '<span class="chips-label">Most checked</span>';
       QUICK.forEach(name => {
         const c = document.createElement("button");
         c.className = "quick-chip"; c.textContent = name;
@@ -497,10 +599,24 @@
       else showUnknown(query);
     }
 
-    function showResult(b) {
-      history.replaceState(null, "", "?b=" + encodeURIComponent(b.brand));
-      gtag('event', 'brand_check', { brand: b.brand, verdict: b.stance });
-      logSearch(b.brand, true, b.stance);
+    // The example card teaches what a verdict looks like before the first
+    // search. It must not log analytics or rewrite the URL.
+    function showExample() {
+      const ex = BRANDS.find(b => b._collapse === "brita") || BRANDS[0];
+      if (!ex) return;
+      $("exampleLabel").hidden = false;
+      renderBrand(ex, true);
+    }
+
+    function showResult(b) { renderBrand(b, false); }
+
+    function renderBrand(b, isExample) {
+      if (!isExample) {
+        $("exampleLabel").hidden = true;
+        history.replaceState(null, "", "?b=" + encodeURIComponent(b.brand));
+        gtag('event', 'brand_check', { brand: b.brand, verdict: b.stance });
+        logSearch(b.brand, true, b.stance);
+      }
       let altHtml = "";
       if (b.alternative) {
         const altMatch = BRANDS.find(x => collapse(x.brand) === collapse(b.alternative) || collapse(b.alternative).includes(x._collapse) && x._collapse.length > 3);
@@ -527,7 +643,7 @@
           ordered.map(p => {
             const st = p.verdict || b.stance;
             return '<div class="product-row ' + st + '">' +
-              '<span class="mini-badge ' + st + '">' + badgeIcon(st) + STANCE_LABEL[st] + '</span>' +
+              '<span class="mini-badge ' + st + '"><span class="dot"></span>' + STANCE_LABEL[st] + '</span>' +
               '<div class="product-info"><span class="product-name">' + esc(p.name) + '</span>' +
               (p.note ? '<span class="product-note">' + esc(p.note) + '</span>' : '') +
               '</div></div>';
@@ -564,31 +680,42 @@
           '</div></div>';
       }
       resultEl.innerHTML =
-        '<div class="card"><div class="card-top ' + b.stance + '">' +
-          '<div class="verdict-row"><span class="badge ' + b.stance + '">' + badgeIcon(b.stance) + STANCE_LABEL[b.stance] + '</span></div>' +
-          '<div class="brand-name">' + esc(b.brand) + '</div>' +
-          '<div class="brand-cat">' + esc(b.category) + '</div>' +
+        '<article class="card">' +
+          '<div class="verdict-row"><span class="badge ' + b.stance + '"><span class="dot"></span>' + STANCE_LABEL[b.stance] + '</span>' +
+          '<span class="cat-mono">' + esc(b.category) + '</span></div>' +
+          '<h2 class="brand-name">' + esc(b.brand) + '</h2>' +
           '<p class="reason">' + esc(b.reason) + '</p>' +
-        '</div><div class="card-body">' + rollupHtml + productsHtml + cautionHtml + buyHtml + evHtml + altHtml + srcHtml + '</div></div>';
+          rollupHtml + productsHtml + cautionHtml + buyHtml + evHtml + altHtml + srcHtml +
+        '</article>';
+      if (!isExample) focusResult();
     }
 
     function showUnknown(query) {
       const clean = query.trim();
+      $("exampleLabel").hidden = true;
       history.replaceState(null, "", "?b=" + encodeURIComponent(clean));
       gtag('event', 'brand_check_unknown', { brand: clean });
       logSearch(clean, false, "");
       resultEl.innerHTML =
-        '<div class="unknown-card" id="unknownCard">' +
-          '<h3>We have not checked ' + esc(clean) + ' yet</h3>' +
-          '<p><strong>Get it checked now.</strong> Our research system runs the same four checks we use for every verdict, formula, packaging, recalls, independent tests, and answers in about a minute, with sources shown. Packs start at $5 for 20 checks.</p>' +
-          '<p><a class="btn btn-primary" href="vet.html?q=' + encodeURIComponent(clean) + '">Check it now</a></p>' +
-          '<p style="margin:1rem 0 .5rem"><strong>Or request a free review.</strong> Leave your email and our team will research it by hand and email you the verdict, usually within 2 business days.</p>' +
+        '<article class="card">' +
+          '<div class="verdict-row"><span class="badge neutral"><span class="dot"></span>Not reviewed yet</span></div>' +
+          '<h2 class="brand-name">We have not checked &ldquo;' + esc(clean) + '&rdquo; yet.</h2>' +
+          '<p class="reason"><strong>Get it checked now.</strong> Our research system runs the same four checks we use for every verdict, formula, packaging, recalls, independent tests, and answers in about a minute, with sources shown. Packs start at $5 for 20 checks.</p>' +
+          '<div class="meta-block"><a class="btn btn-primary" href="vet.html?q=' + encodeURIComponent(clean) + '">Check it now</a></div>' +
+          '<p class="reason" style="margin-top:22px;"><strong>Or request a free review.</strong> Leave your email and our team will research it by hand and email you the verdict, usually within 2 business days.</p>' +
           '<div class="request-form">' +
             '<input id="reqEmail" type="email" placeholder="you@email.com" aria-label="Your email">' +
-            '<button class="btn" onclick="requestReview(\'' + jsAttr(clean) + '\')">Request free review</button>' +
+            '<button class="btn btn-ghost" onclick="requestReview(\'' + jsAttr(clean) + '\')">Request free review</button>' +
           '</div>' +
           '<p class="form-note" id="reqNote"></p>' +
-        '</div>';
+        '</article>';
+      focusResult();
+    }
+
+    // On narrow screens the result renders below the search area, so bring it
+    // into view after a user-initiated lookup (never for the example card).
+    function focusResult() {
+      if (window.innerWidth < 900) resultEl.scrollIntoView({ behavior: "smooth", block: "start" });
     }
 
     // Fire-and-forget: record every brand searched on our backend (KV via the worker).
@@ -631,15 +758,6 @@
       return out + esc((s || "").slice(last));
     }
     function jsAttr(s) { return (s || "").replace(/\\/g, "\\\\").replace(/'/g, "\\'"); }
-    function badgeIcon(stance) {
-      const ic = {
-        good: '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>',
-        careful: '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>',
-        skip: '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>',
-        neutral: ''
-      };
-      return ic[stance] || "";
-    }
     function articleTitle(file) {
       return file.replace(/\.html$/, "").replace(/-/g, " ").replace(/\b\w/g, c => c.toUpperCase())
         .replace(/Pfas/g, "PFAS").replace(/Bpa/g, "BPA").replace(/101/g, "101");
