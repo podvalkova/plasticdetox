@@ -1232,7 +1232,7 @@
           "B071NCXFMG"
         ],
         "verdict": "good",
-        "note": "100% medical grade silicone menstrual cup. AllergyCertified, Vegan Society certified, and FDA registered. Medical grade silicone, AllergyCertified. Worth knowing: Learning curve to insert and remove\", \"Requires boiling between cycles\", \"Two sizes only, no firmness options.",
+        "note": "100% medical grade silicone menstrual cup. AllergyCertified, Vegan Society certified, and FDA registered. Medical grade silicone, AllergyCertified. Worth knowing: Learning curve to insert and remove, Requires boiling between cycles, Two sizes only, no firmness options.",
         "origin": "store",
         "ext": {
           "verdict": "good",
@@ -6331,10 +6331,7 @@
           "legalNote": "FDA database matches reviewed on 2026-08-31: the recalling firm, Bear Stewart Co, is a commercial bakery unrelated to this appliance brand. No recall on record for this brand.",
           "frontNotes": {}
         },
-        "cat": "Baby food"
-      },
-      {
-        "name": "Bear baby food",
+        "cat": "Baby food",
         "matchAll": [
           [
             "bear",
@@ -6348,34 +6345,12 @@
             "bear",
             "pouch"
           ]
-        ],
-        "verdict": "good",
-        "cat": "Baby food",
-        "origin": "hand",
-        "source": "alternative",
-        "note": "NutriEase AllStage baby food maker with a fully stainless steel food pathway.",
-        "ext": {
-          "verdict": "good",
-          "dated": "2026-08-29",
-          "why": "",
-          "fronts": {
-            "formula": "pass",
-            "packaging": "pass",
-            "legal": "pass",
-            "testing": "unassessed"
-          },
-          "scope": "line",
-          "basis": "direct",
-          "disclose": false,
-          "authored": true,
-          "frontNotes": {},
-          "legalNote": "FDA database matches reviewed on 2026-08-31: the recalling firm, Bear Stewart Co, is a commercial bakery unrelated to this appliance brand. No recall on record for this brand."
-        }
+        ]
       }
     ],
     "rollup": {
-      "products": 2,
-      "researched": 2,
+      "products": 1,
+      "researched": 1,
       "flagged": 0,
       "worst": null
     }
@@ -7916,15 +7891,18 @@
     "brand": "Bissell",
     "category": "Vacuum",
     "stance": "careful",
-    "reason": "The CleanView uprights are bagless with a washable filter rather than a sealed True HEPA system, so the finest dust, which is where settled microplastic fibre concentrates, can pass back through the exhaust. Fine for crumbs, not the tool for reducing airborne fibre.",
-    "evidence": "No sealed HEPA system on the CleanView line",
-    "alternative": "Shark Navigator Lift-Away for budget True HEPA, or Miele Classic C1 for a sealed bagged system",
+    "reason": "Two cordless vacuum battery fire recalls in two years: about 61,000 Multi Surface wet dry vacuums in January 2023 (66 smoking reports, 5 fires) and about 142,000 Multi Reach cordless vacuums in February 2024 (6 fires). Separately, more than 4.9 million Steam Shot steam cleaners recalled across 2024 and 2026 with over 160 burn injuries, and class actions are pending over the recall remedy. Bissell sells corded models with a sealed HEPA claim, but we found no independent verification of the seal. The bagless CleanView uprights are not sealed systems.",
+    "evidence": "CPSC recalls 2023 and 2024 (cordless vacuum battery fires), 2024 and 2026 (Steam Shot burns); no independent seal verification",
+    "alternative": "Shark Navigator NV356E for budget sealed HEPA, or Miele Guard L1 for a sealed bagged system",
     "sources": [
-      "bedroom-air-101.html"
+      "bedroom-air-101.html",
+      "best-vacuum-cleaners-for-microplastics.html",
+      "https://www.cpsc.gov/Recalls/2023/BISSELL-Recalls-Cordless-Multi-Surface-Wet-Dry-Vacuums-Due-to-Fire-Hazard",
+      "https://www.cpsc.gov/Recalls/2024/BISSELL-Recalls-Multi-Reach-Hand-and-Floor-Vacuum-Cleaners-Due-to-Fire-Hazard"
     ],
-    "article": "bedroom-air-101.html",
+    "article": "best-vacuum-cleaners-for-microplastics.html",
     "reviewed": true,
-    "generalises": true,
+    "generalises": false,
     "products": [
       {
         "name": "CleanView uprights",
@@ -7942,7 +7920,7 @@
         "verdict": "careful",
         "note": "Bagless with a washable filter rather than a sealed True HEPA system, so the finest dust, which is where settled microplastic fibre concentrates, can pass back through the exhaust into the room you just cleaned.",
         "origin": "hand",
-        "source": "bedroom-air-101.html",
+        "source": "best-vacuum-cleaners-for-microplastics.html",
         "ext": {
           "verdict": "careful",
           "why": "Reviewed by hand from our published research on this category.",
@@ -7960,6 +7938,42 @@
           "frontNotes": {}
         },
         "cat": "Air purifiers"
+      },
+      {
+        "name": "Cordless vacuums (Multi Surface wet dry, Multi Reach)",
+        "matchAll": [
+          [
+            "bissell",
+            "multi surface"
+          ],
+          [
+            "bissell",
+            "multi reach"
+          ],
+          [
+            "bissell",
+            "cordless"
+          ]
+        ],
+        "verdict": "skip",
+        "note": "Both cordless lines were recalled for battery fire hazards (January 2023 and February 2024). Check the CPSC recall lists before using one you already own.",
+        "ext": {
+          "verdict": "skip",
+          "dated": "2026-09-01",
+          "why": "adverse finding stands",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "rules": [],
+          "frontNotes": {}
+        },
+        "cat": "Vacuums"
       }
     ],
     "fronts": {
@@ -7974,9 +7988,9 @@
         "origin": "none"
       },
       "legal": {
-        "status": "unknown",
-        "note": "",
-        "origin": "none"
+        "status": "fail",
+        "note": "Separately, more than 4.9 million Steam Shot steam cleaners recalled across 2024 and 2026 with over 160 burn…",
+        "origin": "extracted"
       },
       "testing": {
         "status": "unknown",
@@ -7985,11 +7999,12 @@
       }
     },
     "rollup": {
-      "products": 1,
-      "researched": 1,
-      "flagged": 1,
-      "worst": "careful"
-    }
+      "products": 2,
+      "researched": 2,
+      "flagged": 2,
+      "worst": "skip"
+    },
+    "scopeNote": "Our verdict varies across this brand's range."
   },
   {
     "id": "black-decker",
@@ -10086,8 +10101,8 @@
     "brand": "Brita",
     "category": "Water filter",
     "stance": "skip",
-    "reason": "Standard granular carbon pitchers reduce chlorine taste and little else. The Elite and Longlast filters are certified under NSF/ANSI 53 for lead, which is real and worth knowing, but no Brita filter carries NSF/ANSI 401 certification for microplastics, none removes fluoride because activated carbon does not adsorb it, and Brita's own published testing shows the standard and Elite filters do not significantly reduce PFOA or PFOS. Treat the whole range as a taste filter.",
-    "evidence": "Elite and Longlast certified to NSF/ANSI 53 for lead; no Brita filter certified to NSF/ANSI 401; Brita testing shows standard and Elite do not significantly reduce PFOA or PFOS",
+    "reason": "Standard granular carbon reduces chlorine taste and little else, and treating the range as more than a taste filter is where buyers get burned: no Brita filter carries NSF/ANSI 401 certification for microplastics, none removes fluoride, and Brita's own published data show the filters do not significantly reduce PFOA or PFOS.",
+    "evidence": "NSF certification listings; Brita's published performance data",
     "alternative": "Bluevua countertop RO or Clearly Filtered",
     "sources": [
       "how-to-filter-pfas-and-microplastics-from-water.html",
@@ -10096,43 +10111,9 @@
     ],
     "products": [
       {
-        "name": "Standard pitcher filter",
-        "verdict": "skip",
-        "note": "Chlorine taste only. No lead, microplastic, PFAS or fluoride certification.",
-        "ext": {
-          "verdict": "skip",
-          "dated": "2026-08-28",
-          "why": "adverse finding stands",
-          "fronts": {
-            "formula": "pass",
-            "packaging": "pass",
-            "legal": "unassessed",
-            "testing": "pass"
-          },
-          "scope": "line",
-          "basis": "direct",
-          "disclose": false,
-          "rules": [
-            "5.4 durable-good-is-its-own-packaging"
-          ],
-          "frontNotes": {}
-        },
-        "origin": "hand",
-        "matchAll": [
-          [
-            "brita",
-            "standard",
-            "pitcher",
-            "filter"
-          ]
-        ],
-        "matchFrom": "name",
-        "cat": "Water filters"
-      },
-      {
         "name": "Elite and Longlast+ filters",
         "verdict": "careful",
-        "note": "The Elite and Longlast filters are certified under NSF/ANSI 53 for lead, which is real and is more than the standard filter does. Neither carries NSF/ANSI 401 for microplastics, so this is the better Brita rather than a microplastics filter.",
+        "note": "The one real upgrade in the range: certified under NSF/ANSI 53 for lead, which the standard filter is not. The better Brita if you keep one.",
         "ext": {
           "verdict": "careful",
           "why": "Reviewed by hand: certified for lead, not for microplastics.",
@@ -10164,6 +10145,55 @@
           ]
         ],
         "matchFrom": "name",
+        "cat": "Water filters"
+      },
+      {
+        "name": "Pitchers, dispensers, and cups on the standard filter",
+        "matchAll": [
+          [
+            "brita",
+            "pitcher"
+          ],
+          [
+            "brita",
+            "dispenser"
+          ],
+          [
+            "brita",
+            "cup"
+          ],
+          [
+            "brita",
+            "standard",
+            "pitcher",
+            "filter"
+          ]
+        ],
+        "asins": [],
+        "verdict": "skip",
+        "note": "The default filter in every Brita pitcher, dispenser, and cup. Chlorine taste only.",
+        "origin": "hand",
+        "source": "how-to-filter-pfas-and-microplastics-from-water.html",
+        "ext": {
+          "verdict": "skip",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true,
+          "dated": "2026-09-01",
+          "frontNotes": {}
+        },
+        "matchNot": [
+          "elite",
+          "longlast"
+        ],
         "cat": "Water filters"
       },
       {
@@ -10995,7 +11025,7 @@
       {
         "name": "Baby lotion",
         "verdict": "careful",
-        "note": "Cleaner ingredient deck but contains proprietary fragrance and tocopheryl acetate. Earth Mama Organics balm is the cleaner swap.",
+        "note": "Cleaner ingredient deck but contains proprietary fragrance and tocopheryl acetate. Owned by Clorox since the 2007 acquisition. Earth Mama Organics balm is the cleaner swap.",
         "ext": {
           "verdict": "careful",
           "dated": "2026-08-28",
@@ -11006,7 +11036,7 @@
             "legal": "pass",
             "testing": "unassessed"
           },
-          "scope": "line",
+          "scope": "sku",
           "basis": "direct",
           "disclose": false,
           "rules": [
@@ -11032,7 +11062,10 @@
           ]
         ],
         "matchFrom": "name",
-        "cat": "Baby lotion"
+        "cat": "Baby lotion",
+        "asins": [
+          "B00DM14TYC"
+        ]
       },
       {
         "name": "Diaper ointment",
@@ -11139,36 +11172,6 @@
         ],
         "matchFrom": "name",
         "cat": "Cribs & nursery"
-      },
-      {
-        "name": "Baby Lotion",
-        "asins": [
-          "B00DM14TYC"
-        ],
-        "verdict": "careful",
-        "note": "Cleaner ingredient deck but contains proprietary fragrance and tocopheryl acetate. Owned by Clorox post 2007 acquisition.",
-        "origin": "article",
-        "source": "top-100-baby-kids-products-amazon.html",
-        "ext": {
-          "verdict": "careful",
-          "dated": "2026-08-28",
-          "why": "adverse finding stands",
-          "fronts": {
-            "formula": "unassessed",
-            "packaging": "unassessed",
-            "legal": "pass",
-            "testing": "unassessed"
-          },
-          "scope": "sku",
-          "basis": "direct",
-          "disclose": false,
-          "rules": [
-            "2.1 disclosure-failure-caps-at-caution"
-          ],
-          "legalNote": "Checked recall records on 2026-08-31. One 2017 recall of an infant coverall set for a choking hazard, resolved; the textiles we cover were not involved.",
-          "frontNotes": {}
-        },
-        "cat": "Baby lotion"
       }
     ],
     "fronts": {
@@ -11198,9 +11201,9 @@
     "generalises": false,
     "scopeNote": "Our verdict varies across this brand's range.",
     "rollup": {
-      "products": 5,
-      "researched": 5,
-      "flagged": 3,
+      "products": 4,
+      "researched": 4,
+      "flagged": 2,
       "worst": "skip"
     }
   },
@@ -14566,6 +14569,49 @@
     }
   },
   {
+    "id": "common-good",
+    "brand": "Common Good",
+    "category": "Laundry",
+    "stance": "good",
+    "reason": "Liquid laundry detergent sold in refillable glass bottles, the liquid pick for readers who will not use powder; refills skip the plastic jug.",
+    "evidence": "Refillable glass packaging",
+    "alternative": "",
+    "sources": [
+      "microplastics-in-clothing-and-laundry.html"
+    ],
+    "fronts": {
+      "formula": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "packaging": {
+        "status": "pass",
+        "note": "Refillable glass packaging",
+        "origin": "extracted"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "reviewed": true,
+    "article": "microplastics-in-clothing-and-laundry.html",
+    "generalises": true,
+    "rollup": {
+      "products": 0,
+      "researched": 0,
+      "flagged": 0,
+      "worst": null
+    }
+  },
+  {
     "id": "comotomo",
     "brand": "Comotomo",
     "category": "Baby bottles",
@@ -15031,7 +15077,7 @@
       {
         "name": "Cooks Standard Stainless Steel Cookware",
         "verdict": "good",
-        "note": "Multi ply full clad stainless steel cookware. Available in individual pots and full sets from sauce pans to stock pots. Professional grade with stay cool handles, induction compatible, and dishwasher safe. Browse their store for the exact size you need. 100% PFAS free. Worth knowing: Food sticks without technique\", \"Heavier than single ply\", \"Higher price for full sets.",
+        "note": "Multi ply full clad stainless steel cookware. Available in individual pots and full sets from sauce pans to stock pots. Professional grade with stay cool handles, induction compatible, and dishwasher safe. Browse their store for the exact size you need. 100% PFAS free. Worth knowing: Food sticks without technique, Heavier than single ply, Higher price for full sets.",
         "origin": "store",
         "source": "store",
         "matchAll": [
@@ -15344,7 +15390,8 @@
       "researched": 0,
       "flagged": 0,
       "worst": null
-    }
+    },
+    "buy": "https://coraball.com/products/cora-ball"
   },
   {
     "id": "cosmo-appliances",
@@ -15434,7 +15481,7 @@
           "B08PP48979"
         ],
         "verdict": "good",
-        "note": "Borosilicate glass body with a stainless steel inner lid, spout, and filter. You can see the water boil and know nothing is leaching in. Worth knowing: Glass can break if dropped\", \"Cord does not retract\", \"No temperature control.",
+        "note": "Borosilicate glass body with a stainless steel inner lid, spout, and filter. You can see the water boil and know nothing is leaching in. Worth knowing: Glass can break if dropped, Cord does not retract, No temperature control.",
         "origin": "store",
         "ext": {
           "verdict": "good",
@@ -15463,7 +15510,7 @@
           "B0BZDFXLYX"
         ],
         "verdict": "good",
-        "note": "Double wall 304 stainless steel with no plastic inner lid, filter, or spout. Every surface the water and steam touch is steel, and the outside stays cool. Worth knowing: No temperature control\", \"No keep warm feature\", \"1.5L capacity.",
+        "note": "Double wall 304 stainless steel with no plastic inner lid, filter, or spout. Every surface the water and steam touch is steel, and the outside stays cool. Worth knowing: No temperature control, No keep warm feature, 1.5L capacity.",
         "origin": "store",
         "ext": {
           "verdict": "good",
@@ -15822,7 +15869,7 @@
           "B01728NLRG"
         ],
         "verdict": "good",
-        "note": "Sealed True HEPA plus activated carbon, AHAM Verifide at roughly 240 CFM for rooms up to 361 sq ft. 24.7 dB on low with auto mode and a particle sensor. Worth knowing: Has an optional ionizer, leave it off\", \"Plastic housing\", \"Filters are a recurring cost.",
+        "note": "Sealed True HEPA plus activated carbon, AHAM Verifide at roughly 240 CFM for rooms up to 361 sq ft. 24.7 dB on low with auto mode and a particle sensor. Worth knowing: Has an optional ionizer, leave it off, Plastic housing, Filters are a recurring cost.",
         "origin": "store",
         "ext": {
           "verdict": "good",
@@ -15864,7 +15911,7 @@
           "B01C9RIACG"
         ],
         "verdict": "good",
-        "note": "Dual sealed True HEPA and activated carbon filters with an AHAM Verifide CADR of 400 CFM, the highest here, for rooms up to 1,560 sq ft. Auto mode with a real time air quality indicator. Worth knowing: Large footprint\", \"Optional ionizer, leave it off\", \"Higher filter cost.",
+        "note": "Dual sealed True HEPA and activated carbon filters with an AHAM Verifide CADR of 400 CFM, the highest here, for rooms up to 1,560 sq ft. Auto mode with a real time air quality indicator. Worth knowing: Large footprint, Optional ionizer, leave it off, Higher filter cost.",
         "origin": "store",
         "ext": {
           "verdict": "good",
@@ -18432,7 +18479,7 @@
           "B07KGZ9NMV"
         ],
         "verdict": "good",
-        "note": "Medical grade silicone menstrual cup sized for teens and first time users (ages 19 and under, or those with lighter flow). BPA free, latex free, plastic free, dye free, and fragrance free. Medical grade silicone, dye and fragrance free. Worth knowing: Smaller capacity than Model 1 and 2\", \"Learning curve to insert and remove\", \"Requires boiling between cycles.",
+        "note": "Medical grade silicone menstrual cup sized for teens and first time users (ages 19 and under, or those with lighter flow). BPA free, latex free, plastic free, dye free, and fragrance free. Medical grade silicone, dye and fragrance free. Worth knowing: Smaller capacity than Model 1 and 2, Learning curve to insert and remove, Requires boiling between cycles.",
         "origin": "store",
         "ext": {
           "verdict": "good",
@@ -18830,7 +18877,7 @@
           "B00120VWJ0"
         ],
         "verdict": "good",
-        "note": "Organic castile soap that can replace shampoo, body wash, face wash, and hand soap. One bottle replaces multiple products. Worth knowing: Castile soap feel differs from conventional\", \"Still in plastic bottle\", \"Hair adjustment period.",
+        "note": "Organic castile soap that can replace shampoo, body wash, face wash, and hand soap. One bottle replaces multiple products. Worth knowing: Castile soap feel differs from conventional, Still in plastic bottle, Hair adjustment period.",
         "origin": "store",
         "ext": {
           "verdict": "unrated",
@@ -18857,7 +18904,7 @@
           "B00JF2PYVE"
         ],
         "verdict": "good",
-        "note": "USDA Organic castile bar soap with eight ingredients. Replaces body wash, hand soap, and face wash for non sensitive skin. Worth knowing: Bar requires a dish or tray\", \"Castile feel is different from sulfate body wash\", \"Some scents include essential oils.",
+        "note": "USDA Organic castile bar soap with eight ingredients. Replaces body wash, hand soap, and face wash for non sensitive skin. Worth knowing: Bar requires a dish or tray, Castile feel is different from sulfate body wash, Some scents include essential oils.",
         "origin": "store",
         "ext": {
           "verdict": "unrated",
@@ -19939,21 +19986,22 @@
     "brand": "Dyson",
     "category": "Vacuum",
     "stance": "careful",
-    "reason": "Recommended cordless whole-machine HEPA vacuum but flagged as premium priced with replacement parts that add up.",
-    "evidence": "Whole machine HEPA filtration, laser dust detection",
+    "reason": "Check the model, not the brand: whole machine HEPA filtration is standard only on the Gen5detect (and a V15 Detect Absolute HEPA variant sold only via Dyson direct). The V8, V10, V12 and the standard V15 Detect sold at retail do not carry the whole machine HEPA claim, so they are not air quality tools. Bagless bins release dust on emptying, so empty outdoors. CPSC has warned about aftermarket lithium replacement batteries for Dyson vacuums after multiple fires; buy OEM batteries only.",
+    "evidence": "Whole machine HEPA (99.99% at 0.1 micron) standard on Gen5detect only",
     "alternative": "",
     "sources": [
-      "microplastics-in-indoor-air.html"
+      "microplastics-in-indoor-air.html",
+      "best-vacuum-cleaners-for-microplastics.html"
     ],
     "products": [
       {
         "name": "V15 Detect cordless vacuum",
-        "verdict": "good",
-        "note": "Whole machine HEPA filtration, sealed. The caution is price and replacement part cost, not performance.",
+        "verdict": "careful",
+        "note": "The standard V15 Detect sold at retail does not have whole machine HEPA filtration; that build is standard on the Gen5detect and on a V15 Absolute HEPA variant sold only through Dyson directly. Great suction, not an air quality tool.",
         "ext": {
-          "verdict": "unrated",
-          "dated": "2026-08-28",
-          "why": "no front is directly evidenced by the note",
+          "verdict": "careful",
+          "dated": "2026-09-01",
+          "why": "adverse finding stands",
           "fronts": {
             "formula": "unassessed",
             "packaging": "unassessed",
@@ -19977,6 +20025,67 @@
         ],
         "matchFrom": "name",
         "cat": "Vacuums"
+      },
+      {
+        "name": "Gen5detect cordless vacuum",
+        "asins": [
+          "B0C2JD5H7D"
+        ],
+        "verdict": "good",
+        "note": "The only Dyson sold on Amazon with whole machine HEPA filtration as standard, 99.99% at 0.1 microns. Bagless, so empty the bin outdoors, and use only OEM batteries.",
+        "ext": {
+          "verdict": "unrated",
+          "dated": "2026-09-01",
+          "why": "no front is directly evidenced by the note",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": [],
+          "frontNotes": {}
+        },
+        "cat": "Vacuums"
+      },
+      {
+        "name": "V8, V10 and V12 cordless vacuums",
+        "matchAll": [
+          [
+            "dyson",
+            "v8"
+          ],
+          [
+            "dyson",
+            "v10"
+          ],
+          [
+            "dyson",
+            "v12"
+          ]
+        ],
+        "verdict": "careful",
+        "note": "No whole machine HEPA filtration. Capable cleaners, best on hard floors; do not rely on them for dust or allergen control.",
+        "ext": {
+          "verdict": "careful",
+          "dated": "2026-09-01",
+          "why": "adverse finding stands",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "rules": [],
+          "frontNotes": {}
+        },
+        "cat": "Vacuums"
       }
     ],
     "fronts": {
@@ -19996,21 +20105,22 @@
         "origin": "none"
       },
       "testing": {
-        "status": "caution",
-        "note": "Recommended cordless whole-machine HEPA vacuum but flagged as premium priced with replacement parts that add…",
-        "origin": "extracted"
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
       }
     },
     "reviewed": true,
-    "article": "microplastics-in-indoor-air.html",
+    "article": "best-vacuum-cleaners-for-microplastics.html",
     "generalises": false,
     "scopeNote": "Our verdict varies across this brand's range.",
     "rollup": {
-      "products": 1,
-      "researched": 1,
-      "flagged": 0,
-      "worst": null
-    }
+      "products": 3,
+      "researched": 3,
+      "flagged": 2,
+      "worst": "careful"
+    },
+    "buy": "https://www.amazon.com/dp/B0C2JD5H7D?tag=plasticdetox-20"
   },
   {
     "id": "each-every",
@@ -20084,49 +20194,19 @@
           ]
         },
         "cat": "Deodorant",
-        "research": "Packaging: Twist-up stick; brand states packaging is made from recycled materials and is curbside recyclable with cap attached, material type unstated. Contents are a solid deodorant stick."
-      },
-      {
-        "name": "Each & Every deodorant",
+        "research": "Packaging: Twist-up stick; brand states packaging is made from recycled materials and is curbside recyclable with cap attached, material type unstated. Contents are a solid deodorant stick.",
         "matchAll": [
           [
             "each",
             "every",
             "deodorant"
           ]
-        ],
-        "verdict": "good",
-        "cat": "Deodorant",
-        "origin": "hand",
-        "source": "alternative",
-        "note": "Recommended aluminum free stick deodorant with no aerosol propellant, plant based with no PEG or dimethicone.",
-        "ext": {
-          "verdict": "unrated",
-          "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: packaging",
-          "fronts": {
-            "formula": "pass",
-            "packaging": "unassessed",
-            "legal": "pass",
-            "testing": "unassessed"
-          },
-          "scope": "line",
-          "basis": "direct",
-          "disclose": false,
-          "authored": true,
-          "heldBack": [
-            "packaging"
-          ],
-          "heldFrom": "good",
-          "frontNotes": {},
-          "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either."
-        },
-        "research": "Packaging: Twist-up stick; brand states packaging is made from recycled materials and is curbside recyclable with cap attached, material type unstated. Contents are a solid deodorant stick."
+        ]
       }
     ],
     "rollup": {
-      "products": 2,
-      "researched": 2,
+      "products": 1,
+      "researched": 1,
       "flagged": 0,
       "worst": null
     }
@@ -20708,18 +20788,18 @@
       {
         "name": "Baby Mineral Sunscreen SPF 40",
         "verdict": "skip",
-        "note": "Tested 2,140 ppb lead (Lead Safe Mama, 2025). Dropped from our sunscreen guide; use California Baby SPF 30+ instead.",
+        "note": "Downgraded July 2026. The formula reads clean, non nano zinc, no chemical filters, EWG Verified, but independent testing measured 2,140 ppb lead (Lead Safe Mama, 2025), one of the highest results on record for a mineral sunscreen. Every mineral sunscreen carries some lead because zinc ore does; this one carried far more than the low lead options. Use California Baby SPF 30+ instead.",
         "ext": {
           "verdict": "skip",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "pass",
             "packaging": "unassessed",
             "legal": "pass",
             "testing": "unassessed"
           },
-          "scope": "line",
+          "scope": "sku",
           "basis": "direct",
           "disclose": false,
           "rules": [],
@@ -20745,7 +20825,10 @@
           ]
         ],
         "matchFrom": "name",
-        "cat": "Sunscreen"
+        "cat": "Sunscreen",
+        "asins": [
+          "B0822M17DK"
+        ]
       },
       {
         "name": "Baby Wash",
@@ -20845,34 +20928,6 @@
         },
         "cat": "Baby lotion",
         "research": "Packaging: Now sold as Simply Non-Scents Baby Lotion in an 8 oz squeeze bottle; bottle material unstated by brand. Contents are a lotion. Materials: Water and organic aloe juice base with organic olive oil, shea butter, oat protein, and organic calendula flower extract; NSF/ANSI 305 organic certified by Oregon Tilth."
-      },
-      {
-        "name": "Mineral Baby Sunscreen SPF 40",
-        "asins": [
-          "B0822M17DK"
-        ],
-        "verdict": "skip",
-        "note": "Downgraded July 2026. The formula reads clean, non nano zinc, no chemical filters, EWG Verified, but independent testing measured 2,140 ppb lead, one of the highest results on record for a mineral sunscreen. Every mineral sunscreen carries some lead because zinc ore does; this one carried far more than the low lead options.",
-        "origin": "article",
-        "source": "top-100-baby-kids-products-amazon.html",
-        "ext": {
-          "verdict": "skip",
-          "dated": "2026-08-28",
-          "why": "adverse finding stands",
-          "fronts": {
-            "formula": "pass",
-            "packaging": "unassessed",
-            "legal": "pass",
-            "testing": "pass"
-          },
-          "scope": "sku",
-          "basis": "direct",
-          "disclose": false,
-          "rules": [],
-          "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {}
-        },
-        "cat": "Sunscreen"
       }
     ],
     "fronts": {
@@ -20902,9 +20957,9 @@
     "generalises": false,
     "scopeNote": "Our verdict varies across this brand's range.",
     "rollup": {
-      "products": 6,
-      "researched": 6,
-      "flagged": 2,
+      "products": 5,
+      "researched": 5,
+      "flagged": 1,
       "worst": "skip"
     }
   },
@@ -23379,11 +23434,12 @@
     "stance": "careful",
     "reason": "The Airspeed lightweight uprights are bagless and not sealed HEPA, so the smallest particles are recirculated rather than captured. Our guidance is a True HEPA bagged or sealed vacuum for settled fibre.",
     "evidence": "Not a sealed True HEPA system",
-    "alternative": "Shark Navigator Lift-Away, or Miele Classic C1",
+    "alternative": "Shark Navigator NV356E for budget sealed HEPA, or Miele Guard L1 for a sealed bagged system",
     "sources": [
-      "bedroom-air-101.html"
+      "bedroom-air-101.html",
+      "best-vacuum-cleaners-for-microplastics.html"
     ],
-    "article": "bedroom-air-101.html",
+    "article": "best-vacuum-cleaners-for-microplastics.html",
     "reviewed": true,
     "generalises": true,
     "products": [
@@ -23402,7 +23458,7 @@
         "verdict": "careful",
         "note": "Lightweight bagless uprights without a sealed HEPA system. For settled fibre our guidance is a True HEPA bagged or sealed vacuum, because anything less recirculates the smallest particles.",
         "origin": "hand",
-        "source": "bedroom-air-101.html",
+        "source": "best-vacuum-cleaners-for-microplastics.html",
         "ext": {
           "verdict": "careful",
           "why": "Reviewed by hand from our published research on this category.",
@@ -23495,7 +23551,7 @@
           "B019PG0FPO"
         ],
         "verdict": "good",
-        "note": "Tempered glass infant bottle with etched rather than painted measurement markings, standard neck, and a silicone teat. Glass releases no microplastics at formula preparation temperatures, unlike polypropylene bottles, which released up to 16.2 million particles per litre in Nature Food testing. Worth knowing: Heavier than plastic and breakable without a sleeve\", \"No silicone sleeve included\", \"Sta",
+        "note": "Tempered glass infant bottle with etched rather than painted measurement markings, standard neck, and a silicone teat. Glass releases no microplastics at formula preparation temperatures, unlike polypropylene bottles, which released up to 16.2 million particles per litre in Nature Food testing. Worth knowing: Heavier than plastic and breakable without a sleeve, No silicone sleeve included, Sta",
         "origin": "store",
         "ext": {
           "verdict": "careful",
@@ -24373,7 +24429,8 @@
       "researched": 0,
       "flagged": 0,
       "worst": null
-    }
+    },
+    "buy": "https://www.filtrol.net/"
   },
   {
     "id": "finex",
@@ -25639,11 +25696,13 @@
     "alternative": "",
     "sources": [
       "cleanest-prenatal-vitamins.html",
-      "https://fullwellfertility.com/blogs/knowledgewell/test-results"
+      "https://fullwellfertility.com/blogs/knowledgewell/test-results",
+      "https://mamavation.com/supplements/prenatal-vitamins-pesticides-lead-phthalates-pfas.html"
     ],
     "buy": "https://www.amazon.com/dp/B0C7LPMB1Y?tag=plasticdetox-20",
     "cautions": [
-      "Lead Safe Mama testing in February 2025 reported lead, cadmium and arsenic. FullWell disputes the methodology rather than addressing the result."
+      "Lead Safe Mama testing in February 2025 reported lead, cadmium and arsenic. FullWell disputes the methodology rather than addressing the result.",
+      "Mamavation September 2026: 319 ppb ortho-phthalates and mid pack heavy metals, a middle tier result among the nine prenatals tested."
     ],
     "products": [
       {
@@ -26079,7 +26138,9 @@
     "evidence": "~2.76 µg lead per serving (~564% of CR's daily limit); class action filed Dec 2025",
     "alternative": "Transparent Labs",
     "sources": [
-      "supplements-and-microplastics.html"
+      "supplements-and-microplastics.html",
+      "cleanest-prenatal-vitamins.html",
+      "https://mamavation.com/supplements/prenatal-vitamins-pesticides-lead-phthalates-pfas.html"
     ],
     "fronts": {
       "formula": {
@@ -26107,11 +26168,88 @@
     "article": "supplements-and-microplastics.html",
     "generalises": true,
     "rollup": {
-      "products": 0,
-      "researched": 0,
-      "flagged": 0,
-      "worst": null
-    }
+      "products": 2,
+      "researched": 2,
+      "flagged": 2,
+      "worst": "skip"
+    },
+    "products": [
+      {
+        "name": "Vitamin Code RAW Prenatal",
+        "matchAll": [
+          [
+            "vitamin code",
+            "prenatal"
+          ],
+          [
+            "raw",
+            "prenatal"
+          ]
+        ],
+        "asins": [
+          "B005JAT3TU"
+        ],
+        "verdict": "skip",
+        "note": "Highest arsenic of any prenatal in Lead Safe Mama's testing (Nov 2024), plus lead and cadmium.",
+        "origin": "hand",
+        "source": "cleanest-prenatal-vitamins.html",
+        "ext": {
+          "verdict": "skip",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true,
+          "dated": "2026-09-01",
+          "frontNotes": {}
+        },
+        "cat": "Prenatal vitamins"
+      },
+      {
+        "name": "Organics Prenatal Once Daily",
+        "matchAll": [
+          [
+            "organics",
+            "prenatal"
+          ],
+          [
+            "organic",
+            "prenatal"
+          ],
+          [
+            "once daily",
+            "prenatal"
+          ]
+        ],
+        "verdict": "skip",
+        "note": "The only PFAS detection in Mamavation's September 2026 nine prenatal study (0.45 ng/g 4:2FTS), plus 740 ppb ortho-phthalates and the study's highest arsenic (1.34 ug/g).",
+        "origin": "hand",
+        "source": "cleanest-prenatal-vitamins.html",
+        "ext": {
+          "verdict": "skip",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true,
+          "dated": "2026-09-01",
+          "frontNotes": {}
+        },
+        "cat": "Prenatal vitamins"
+      }
+    ]
   },
   {
     "id": "gas-one",
@@ -26813,7 +26951,7 @@
           "B00854HLCI"
         ],
         "verdict": "good",
-        "note": "Reusable cloth menstrual pad made from 100% organic cotton with a leak resistant cotton fleece core. Snap closure secures around underwear. Reusable for 5+ years, organic cotton. Worth knowing: Requires rinsing and washing after use\", \"Higher upfront cost\", \"Bulkier than disposable pads.",
+        "note": "Reusable cloth menstrual pad made from 100% organic cotton with a leak resistant cotton fleece core. Snap closure secures around underwear. Reusable for 5+ years, organic cotton. Worth knowing: Requires rinsing and washing after use, Higher upfront cost, Bulkier than disposable pads.",
         "origin": "store",
         "ext": {
           "verdict": "good",
@@ -29835,7 +29973,7 @@
       {
         "name": "Heavenly Organics Raw Honey",
         "verdict": "good",
-        "note": "100 percent raw and organic honey in a glass jar. The first food certified Glyphosate Residue Free by The Detox Project, sourced from remote wild hives far from pesticides. First Glyphosate Residue Free certified food. Worth knowing: Premium price\", \"Crystallizes over time, normal for raw honey\", \"Not for infants under one year.",
+        "note": "100 percent raw and organic honey in a glass jar. The first food certified Glyphosate Residue Free by The Detox Project, sourced from remote wild hives far from pesticides. First Glyphosate Residue Free certified food. Worth knowing: Premium price, Crystallizes over time, normal for raw honey, Not for infants under one year.",
         "origin": "store",
         "source": "store",
         "matchAll": [
@@ -29949,7 +30087,7 @@
           "B0GQ7FHJWD"
         ],
         "verdict": "skip",
-        "note": "Lead Safe Mama 2025 third party lab testing returned 493 ppb lead and 19 ppb mercury on Hello Kids Fluoride Free toothpaste. The fluoride containing Hello Kids Dragon Dazzle variant returned 428 ppb lead and 12 ppb mercury. For context, the EPA maximum contaminant level for drinking water is 15 ppb lead and 2 ppb mercury. A proposed class action was filed in 2025 over the heavy metal contamination",
+        "note": "Lead Safe Mama 2025 third party lab testing returned 493 ppb lead and 19 ppb mercury on Hello Kids Fluoride Free toothpaste. The fluoride containing Hello Kids Dragon Dazzle variant returned 428 ppb lead and 12 ppb mercury. For context, the EPA maximum contaminant level for drinking water is 15 ppb lead and 2 ppb mercury. A proposed class action was filed in 2025 over the heavy metal contamination. The brand disputes the results.",
         "origin": "article",
         "source": "top-100-baby-kids-products-amazon.html",
         "ext": {
@@ -29975,42 +30113,17 @@
             "legal"
           ]
         },
-        "cat": "Toothpaste"
-      },
-      {
-        "name": "Fluoride free toothpaste",
+        "cat": "Toothpaste",
         "match": [
           "hello fluoride free",
           "hello toothpaste"
-        ],
-        "verdict": "skip",
-        "note": "Lead about 493 ppb in the fluoride free version. Independent lab testing published by Lead Safe Mama in 2025. The brands dispute these results.",
-        "origin": "article",
-        "source": "best-non-toxic-toothpaste-guide.html",
-        "ext": {
-          "verdict": "skip",
-          "dated": "2026-08-28",
-          "why": "adverse finding stands",
-          "fronts": {
-            "formula": "unassessed",
-            "packaging": "unassessed",
-            "legal": "pass",
-            "testing": "unassessed"
-          },
-          "scope": "line",
-          "basis": "direct",
-          "disclose": false,
-          "rules": [],
-          "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {}
-        },
-        "cat": "Toothpaste"
+        ]
       }
     ],
     "rollup": {
-      "products": 2,
-      "researched": 2,
-      "flagged": 2,
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
       "worst": "skip"
     }
   },
@@ -30577,6 +30690,49 @@
     }
   },
   {
+    "id": "hg-power",
+    "brand": "HG Power",
+    "category": "Laundry",
+    "stance": "good",
+    "reason": "All metal inline dryer duct lint trap with stainless steel mesh that catches exhaust lint and fibers before they vent into room or outdoor air. For indoor venting electric dryers only, never gas.",
+    "evidence": "Stainless steel mesh, 4 inch duct, inline install",
+    "alternative": "",
+    "sources": [
+      "microplastics-in-clothing-and-laundry.html"
+    ],
+    "fronts": {
+      "formula": {
+        "status": "pass",
+        "note": "All metal inline dryer duct lint trap with stainless steel mesh that catches exhaust lint and fibers before…",
+        "origin": "extracted"
+      },
+      "packaging": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "reviewed": true,
+    "article": "microplastics-in-clothing-and-laundry.html",
+    "generalises": true,
+    "rollup": {
+      "products": 0,
+      "researched": 0,
+      "flagged": 0,
+      "worst": null
+    }
+  },
+  {
     "id": "hibar",
     "brand": "HiBAR",
     "category": "Cosmetics",
@@ -30947,6 +31103,49 @@
     }
   },
   {
+    "id": "home-it",
+    "brand": "Home-it",
+    "category": "Laundry",
+    "stance": "good",
+    "reason": "Collapsible solid wood clothes drying rack; air drying eliminates dryer microfiber emissions entirely. Verdict covers the wooden rack, not the brand's wider housewares range.",
+    "evidence": "Solid wood, no plastic parts",
+    "alternative": "",
+    "sources": [
+      "microplastics-in-clothing-and-laundry.html"
+    ],
+    "fronts": {
+      "formula": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "packaging": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "reviewed": true,
+    "article": "microplastics-in-clothing-and-laundry.html",
+    "generalises": true,
+    "rollup": {
+      "products": 0,
+      "researched": 0,
+      "flagged": 0,
+      "worst": null
+    }
+  },
+  {
     "id": "homekol",
     "brand": "Homekol",
     "category": "Food storage",
@@ -31070,6 +31269,49 @@
     },
     "reviewed": true,
     "article": "best-air-purifiers-for-microplastics.html",
+    "generalises": true,
+    "rollup": {
+      "products": 0,
+      "researched": 0,
+      "flagged": 0,
+      "worst": null
+    }
+  },
+  {
+    "id": "hoover",
+    "brand": "Hoover",
+    "category": "Vacuum",
+    "stance": "careful",
+    "reason": "Sells 'HEPA media' filters inside machines that make no sealed system claim, and owner reports describe visible dust leakage at the bag door. Filter material without a sealed machine tells you little about what leaves the exhaust. Hoover also paid a $750,000 CPSC fine in 2007 for failing to report a vacuum fire hazard, and WindTunnel canisters were recalled in 2011 for fire and shock after 69 overheating reports. Owned by TTI Floor Care alongside Dirt Devil and Oreck.",
+    "evidence": "No sealed system claim behind the HEPA media marketing; 2007 CPSC fine; 2011 WindTunnel canister recall",
+    "alternative": "Shark Navigator NV356E for budget sealed HEPA, or Kenmore 600 Series for bagged value",
+    "sources": [
+      "best-vacuum-cleaners-for-microplastics.html",
+      "https://www.cpsc.gov/Newsroom/News-Releases/2007/Hoover-Company-Fined-750000-for-Failing-to-Report-Fire-Hazard-with-Vacuum-Cleaners"
+    ],
+    "fronts": {
+      "formula": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "packaging": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "legal": {
+        "status": "fail",
+        "note": "WindTunnel canisters were recalled in 2011 for fire and shock after 69 overheating reports",
+        "origin": "extracted"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "article": "best-vacuum-cleaners-for-microplastics.html",
     "generalises": true,
     "rollup": {
       "products": 0,
@@ -31342,35 +31584,6 @@
         "cat": "Diapers"
       },
       {
-        "name": "Natural Care Wipes",
-        "asins": [
-          "B0GT6Z19FS"
-        ],
-        "verdict": "careful",
-        "note": "MI and phenoxyethanol were removed years ago, but the cloth is still up to about 30% polypropylene plastic fiber by the brand's own plant based math, a class action challenged the natural labeling, and a 2024 suit alleges trace PFAS in the Simply Clean line.",
-        "origin": "article",
-        "source": "top-100-baby-kids-products-amazon.html",
-        "ext": {
-          "verdict": "careful",
-          "dated": "2026-08-28",
-          "why": "adverse finding stands",
-          "fronts": {
-            "formula": "unassessed",
-            "packaging": "unassessed",
-            "legal": "unassessed",
-            "testing": "unassessed"
-          },
-          "scope": "sku",
-          "basis": "direct",
-          "disclose": false,
-          "rules": [
-            "5.1 filed-suit-caps-at-caution"
-          ],
-          "frontNotes": {}
-        },
-        "cat": "Baby wipes"
-      },
-      {
         "name": "Little Snugglers diapers",
         "matchAll": [
           [
@@ -31513,6 +31726,35 @@
           "disclose": false,
           "authored": true,
           "dated": "2026-09-01",
+          "frontNotes": {}
+        },
+        "cat": "Baby wipes"
+      },
+      {
+        "name": "Natural Care Wipes",
+        "asins": [
+          "B0GT6Z19FS"
+        ],
+        "verdict": "careful",
+        "note": "MI and phenoxyethanol were removed years ago, but the cloth is still up to about 30% polypropylene plastic fiber by the brand's own plant based math, a class action challenged the natural labeling, and a 2024 suit alleges trace PFAS in the Simply Clean line.",
+        "origin": "article",
+        "source": "top-100-baby-kids-products-amazon.html",
+        "ext": {
+          "verdict": "careful",
+          "dated": "2026-09-01",
+          "why": "adverse finding stands",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": [
+            "5.1 filed-suit-caps-at-caution"
+          ],
           "frontNotes": {}
         },
         "cat": "Baby wipes"
@@ -34524,7 +34766,7 @@
         "cat": "Baby food"
       },
       {
-        "name": "KeaBabies baby food",
+        "name": "Glass baby food storage jars",
         "matchAll": [
           [
             "keababies",
@@ -34694,13 +34936,14 @@
   },
   {
     "id": "kenmore-intuition-bu4050",
-    "brand": "Kenmore Intuition BU4050",
+    "brand": "Kenmore",
     "category": "Vacuum",
     "stance": "good",
-    "reason": "Bagged upright with a lift-away canister and HEPA media filter. Bagged design seals dust on disposal so you do not aerosolize fine particles when you empty it, which matters for microplastic capture. Triple HEPA seal across the airflow path. Heavier than the Shark but cleaner emptying. HEPA filter, sealed bagged system. Vetted for the store; this verdict covers the product we listed, not the brand's whole range.",
-    "evidence": "HEPA filter, sealed bagged system",
+    "reason": "Good budget bagged options (Cleva-era floor care). The 600 Series bagged canister has a sealed AllergenSeal system, HEPA media exhaust filter and Type Q bags rated 99.97% at 0.3 microns; the Intuition BU4050 is a sealed bagged upright with a HEPA media filter. Bags close with a plain collar, not self sealing like Miele. Known weak point on the canisters is the wired hose. No modern vacuum recalls or lawsuits found (the 1987 Sears-era canister recalls predate current manufacturing).",
+    "evidence": "Sealed AllergenSeal system, HEPA media exhaust, 99.97% at 0.3 micron bags",
     "sources": [
-      "store"
+      "store",
+      "best-vacuum-cleaners-for-microplastics.html"
     ],
     "reviewed": true,
     "generalises": true,
@@ -34708,7 +34951,7 @@
       {
         "name": "Kenmore Intuition BU4050 Bagged Lift-Away",
         "verdict": "good",
-        "note": "Bagged upright with a lift-away canister and HEPA media filter. Bagged design seals dust on disposal so you do not aerosolize fine particles when you empty it, which matters for microplastic capture. HEPA filter, sealed bagged system. Worth knowing: Plastic body throughout\", \"Ongoing bag replacement cost\", \"Heavier than bagless competitors.",
+        "note": "Bagged upright with a lift-away canister and HEPA media filter. Bagged design seals dust on disposal so you do not aerosolize fine particles when you empty it, which matters for microplastic capture. HEPA filter, sealed bagged system. Worth knowing: Plastic body throughout, Ongoing bag replacement cost, Heavier than bagless competitors.",
         "origin": "store",
         "source": "store",
         "asins": [
@@ -34719,7 +34962,7 @@
           "dated": "2026-08-28",
           "why": "the note reads adversely on formula, needs a human look",
           "fronts": {
-            "formula": "caution",
+            "formula": "unassessed",
             "packaging": "unassessed",
             "legal": "unassessed",
             "testing": "unassessed"
@@ -34728,30 +34971,50 @@
           "basis": "direct",
           "disclose": false,
           "rules": [],
-          "frontNotes": {
-            "formula": "Bagged design seals dust on disposal so you do not aerosolize fine particles when you empty it, which matters… (Recorded for Kenmore Intuition BU4050 as a whole rather than this product specifically.)"
-          },
-          "inheritedFronts": [
-            "formula"
-          ]
+          "frontNotes": {}
         },
         "cat": "Air purifiers"
+      },
+      {
+        "name": "Kenmore 600 Series Bagged Canister",
+        "asins": [
+          "B08JTVDQ2G"
+        ],
+        "verdict": "good",
+        "note": "Sealed AllergenSeal canister with HEPA media exhaust and Type Q filtration bags. PowerMate brush head, aluminum wand. Bags are not self sealing; the wired hose is the known repair point.",
+        "ext": {
+          "verdict": "unrated",
+          "dated": "2026-09-01",
+          "why": "no front is directly evidenced by the note",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": [],
+          "frontNotes": {}
+        },
+        "cat": "Water filters"
       }
     ],
     "cautions": [
       "Plastic body throughout\", \"Ongoing bag replacement cost\", \"Heavier than bagless competitors"
     ],
     "rollup": {
-      "products": 1,
-      "researched": 1,
+      "products": 2,
+      "researched": 2,
       "flagged": 0,
       "worst": null
     },
     "fronts": {
       "formula": {
-        "status": "caution",
-        "note": "Bagged design seals dust on disposal so you do not aerosolize fine particles when you empty it, which matters…",
-        "origin": "extracted"
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
       },
       "packaging": {
         "status": "unknown",
@@ -34768,7 +35031,9 @@
         "note": "",
         "origin": "none"
       }
-    }
+    },
+    "buy": "https://www.amazon.com/dp/B08JTVDQ2G?tag=plasticdetox-20",
+    "article": "best-vacuum-cleaners-for-microplastics.html"
   },
   {
     "id": "keto-k1000",
@@ -35837,7 +36102,7 @@
       {
         "name": "Öko Living Herbal Mat",
         "verdict": "good",
-        "note": "Handloomed GOTS and USDA certified organic cotton rug on a natural tree rubber backing, 74 x 27 in, 5 mm. Dyed with an Ayurvastra herbal process that uses a salt mordant instead of heavy metals. One of the few organic cotton mats that states its full composition. Machine washable. GOTS organic cotton, herbal dyed. Worth knowing: A firm cotton rug, not a cushioned mat\", \"Can shed cotton fibers when",
+        "note": "Handloomed GOTS and USDA certified organic cotton rug on a natural tree rubber backing, 74 x 27 in, 5 mm. Dyed with an Ayurvastra herbal process that uses a salt mordant instead of heavy metals. One of the few organic cotton mats that states its full composition. Machine washable. GOTS organic cotton, herbal dyed. Worth knowing: A firm cotton rug, not a cushioned mat, Can shed cotton fibers when",
         "origin": "store",
         "source": "store",
         "matchAll": [
@@ -37047,7 +37312,7 @@
         "name": "Rishi Organic Loose Leaf Tea",
         "asins": [],
         "verdict": "good",
-        "note": "Organic loose leaf tea. Loose leaf avoids the plastic and PET pyramid tea bags that shed microplastics into hot water. No plastic tea bag. Worth knowing: Requires a separate infuser\", \"Pouch is plastic lined, decant to glass\", \"One variety per pack.",
+        "note": "Organic loose leaf tea. Loose leaf avoids the plastic and PET pyramid tea bags that shed microplastics into hot water. No plastic tea bag. Worth knowing: Requires a separate infuser, Pouch is plastic lined, decant to glass, One variety per pack.",
         "origin": "store",
         "ext": {
           "verdict": "unrated",
@@ -40566,7 +40831,7 @@
           "B0GTR2L9FX"
         ],
         "verdict": "good",
-        "note": "Borosilicate glass pot and lid with a stainless steel crisper disk, so nothing coated touches your food. Doubles as a multi cooker with 12 functions. Borosilicate glass and 304 stainless food contact. Worth knowing: Glass bowl is heavier than a coated basket\", \"Hand wash the glass to avoid thermal shock\", \"Larger footprint than a basket fryer.",
+        "note": "Borosilicate glass pot and lid with a stainless steel crisper disk, so nothing coated touches your food. Doubles as a multi cooker with 12 functions. Borosilicate glass and 304 stainless food contact. Worth knowing: Glass bowl is heavier than a coated basket, Hand wash the glass to avoid thermal shock, Larger footprint than a basket fryer.",
         "origin": "store",
         "ext": {
           "verdict": "good",
@@ -40757,54 +41022,6 @@
     "products": [
       {
         "name": "Maldon Sea Salt Flakes",
-        "asins": [],
-        "verdict": "good",
-        "note": "A clean flake salt with no additives, and low in heavy metals for a sea salt. Sea salt is a category where independent testing finds microplastics and metals, so the result matters more here than the label does.",
-        "origin": "store",
-        "ext": {
-          "verdict": "unrated",
-          "why": "a recommendation needs its checks done; still to do: packaging",
-          "fronts": {
-            "formula": "pass",
-            "packaging": "unassessed",
-            "legal": "pass",
-            "testing": "pass"
-          },
-          "scope": "sku",
-          "basis": "direct",
-          "disclose": false,
-          "authored": true,
-          "dated": "2026-08-28",
-          "frontNotes": {
-            "testing": "Sea salt is a category where independent testing finds microplastics and metals, so the result matters more here than the label does.",
-            "formula": "A clean flake salt with no additives, and low in heavy metals for a sea salt."
-          },
-          "heldBack": [
-            "packaging"
-          ],
-          "heldFrom": "good",
-          "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either."
-        },
-        "matchAll": [
-          [
-            "maldon",
-            "sea",
-            "salt",
-            "flakes"
-          ],
-          [
-            "maldon",
-            "sea",
-            "salt",
-            "flake"
-          ]
-        ],
-        "matchFrom": "name",
-        "cat": "Sea salt",
-        "research": "Packaging: The 8.5 oz (250 g) retail format is a cardboard box; Maldon's product page lists packaging simply as Box. Contents are dry sea salt flakes, 100% sea salt."
-      },
-      {
-        "name": "Maldon sea salt flakes",
         "matchAll": [
           [
             "maldon"
@@ -40843,8 +41060,8 @@
       }
     ],
     "rollup": {
-      "products": 2,
-      "researched": 2,
+      "products": 1,
+      "researched": 1,
       "flagged": 0,
       "worst": null
     },
@@ -41207,7 +41424,7 @@
       {
         "name": "Manduka eKO 5mm",
         "verdict": "good",
-        "note": "100% natural tree rubber, 71 x 26 in, 5 mm, with a closed cell surface that wipes clean. Non Amazon sourced rubber with over 30% recycled content. No PVC, phthalates, or heavy metals. Balanced cushion and grip for daily practice. 100% natural tree rubber, no PVC. Worth knowing: Contains natural latex, not for latex allergies\", \"Mild rubber smell for the first few days\", \"Degrades faster in direct ",
+        "note": "100% natural tree rubber, 71 x 26 in, 5 mm, with a closed cell surface that wipes clean. Non Amazon sourced rubber with over 30% recycled content. No PVC, phthalates, or heavy metals. Balanced cushion and grip for daily practice. 100% natural tree rubber, no PVC. Worth knowing: Contains natural latex, not for latex allergies, Mild rubber smell for the first few days, Degrades faster in direct ",
         "origin": "store",
         "source": "store",
         "matchAll": [
@@ -41625,6 +41842,93 @@
     }
   },
   {
+    "id": "maryruths",
+    "brand": "MaryRuth's",
+    "category": "Supplements",
+    "stance": "careful",
+    "reason": "The cleanest overall result in Mamavation's September 2026 prenatal study: 10 ppb ortho-phthalates, 4 ppb lead, no PFAS, no pesticides. Real credit. The caution is format: a gummy prenatal cannot carry therapeutic doses of choline, iron, calcium, or magnesium, so treat it as a clean base rather than a complete prenatal.",
+    "evidence": "10 ppb phthalates, 4 ppb lead, no PFAS or pesticides (Mamavation, Sept 2026)",
+    "alternative": "Needed or FullWell for a complete prenatal",
+    "sources": [
+      "cleanest-prenatal-vitamins.html",
+      "https://mamavation.com/supplements/prenatal-vitamins-pesticides-lead-phthalates-pfas.html"
+    ],
+    "article": "cleanest-prenatal-vitamins.html",
+    "reviewed": true,
+    "generalises": true,
+    "aliases": [
+      "MaryRuths",
+      "Mary Ruth's",
+      "Mary Ruth Organics",
+      "MaryRuth Organics"
+    ],
+    "fronts": {
+      "formula": {
+        "status": "pass",
+        "note": "The cleanest overall result in Mamavation's September 2026 prenatal study: 10 ppb ortho-phthalates, 4 ppb…",
+        "origin": "extracted"
+      },
+      "packaging": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "pass",
+        "note": "The cleanest overall result in Mamavation's September 2026 prenatal study: 10 ppb ortho-phthalates, 4 ppb…",
+        "origin": "extracted"
+      }
+    },
+    "products": [
+      {
+        "name": "Organic Prenatal & Postnatal gummy",
+        "matchAll": [
+          [
+            "maryruth",
+            "prenatal"
+          ],
+          [
+            "mary ruth",
+            "prenatal"
+          ]
+        ],
+        "verdict": "careful",
+        "note": "Cleanest result of the nine prenatals in Mamavation's September 2026 study (10 ppb phthalates, 4 ppb lead, no PFAS or pesticides), but a gummy cannot carry therapeutic doses of the bulky prenatal nutrients.",
+        "origin": "hand",
+        "source": "cleanest-prenatal-vitamins.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "unassessed",
+            "legal": "pass",
+            "testing": "unassessed"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true,
+          "dated": "2026-09-01",
+          "frontNotes": {},
+          "legalNote": "Checked against the FDA enforcement database on 2026-09-01. No recall on record, and no firm with a similar name either."
+        },
+        "cat": "Prenatal vitamins"
+      }
+    ],
+    "rollup": {
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "careful"
+    }
+  },
+  {
     "id": "masa-swim",
     "brand": "MASA Swim",
     "category": "Swimwear",
@@ -41872,6 +42176,99 @@
       "researched": 0,
       "flagged": 0,
       "worst": null
+    }
+  },
+  {
+    "id": "megafood",
+    "brand": "MegaFood",
+    "category": "Supplements",
+    "stance": "skip",
+    "reason": "Baby & Me 2 carried the worst phthalate result of the nine prenatals in Mamavation's September 2026 study (2,167 ppb), and earlier Lead Safe Mama testing found all four heavy metals, including quantified mercury (13 ppb) and the highest cadmium in our comparison (67 ppb), above MegaFood's own internal limits, with no offsetting certification or published numbers.",
+    "evidence": "2,167 ppb ortho-phthalates (Mamavation, Sept 2026); lead 62, cadmium 67, arsenic 27, mercury 13 ppb (Lead Safe Mama)",
+    "alternative": "Needed or FullWell, both publish batch testing",
+    "sources": [
+      "cleanest-prenatal-vitamins.html",
+      "https://mamavation.com/supplements/prenatal-vitamins-pesticides-lead-phthalates-pfas.html"
+    ],
+    "article": "cleanest-prenatal-vitamins.html",
+    "reviewed": true,
+    "generalises": true,
+    "aliases": [
+      "MegaFood Baby & Me 2",
+      "Mega Food"
+    ],
+    "fronts": {
+      "formula": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "packaging": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "caution",
+        "note": "Baby & Me 2 carried the worst phthalate result of the nine prenatals in Mamavation's September 2026 study…",
+        "origin": "extracted"
+      }
+    },
+    "products": [
+      {
+        "name": "Baby & Me 2",
+        "matchAll": [
+          [
+            "megafood",
+            "prenatal"
+          ],
+          [
+            "baby",
+            "me 2"
+          ]
+        ],
+        "asins": [
+          "B01CQ3E6HG"
+        ],
+        "verdict": "skip",
+        "note": "Worst phthalate result of the nine prenatals in Mamavation's September 2026 study (2,167 ppb), plus all four heavy metals including quantified mercury in Lead Safe Mama testing.",
+        "origin": "hand",
+        "source": "cleanest-prenatal-vitamins.html",
+        "ext": {
+          "verdict": "skip",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "unassessed",
+            "legal": "pass",
+            "testing": "caution"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true,
+          "dated": "2026-09-01",
+          "frontNotes": {
+            "testing": "Baby & Me 2 carried the worst phthalate result of the nine prenatals in Mamavation's September 2026 study… (Recorded for MegaFood as a whole rather than this product specifically.)"
+          },
+          "legalNote": "Checked against the FDA enforcement database on 2026-09-01. No recall on record, and no firm with a similar name either.",
+          "inheritedFronts": [
+            "testing"
+          ]
+        },
+        "cat": "Prenatal vitamins"
+      }
+    ],
+    "rollup": {
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "skip"
     }
   },
   {
@@ -42401,13 +42798,14 @@
     "brand": "Miele",
     "category": "Vacuum",
     "stance": "good",
-    "reason": "Best-pick sealed True HEPA canister vacuum (Complete C3, Classic C1).",
-    "evidence": "Sealed HEPA system, 20 year lifespan",
+    "reason": "Best-pick sealed bagged canisters. The long running Complete C3 was discontinued in 2025; the Guard series (L1 AllFloor) is its successor, with the same sealed AirClean design and self sealing 3D bags that snap shut on removal. Ships with a standard AirClean exhaust filter, so add the SF-HA 50 for certified HEPA 13 (Classic C1 takes the SF-HA 30 instead). No CPSC vacuum recall on record and no vacuum litigation found.",
+    "evidence": "Sealed AirClean system, self sealing bags, EN 1822 HEPA 13 filter option, 7 year motor warranty",
     "alternative": "",
     "sources": [
-      "microplastics-in-indoor-air.html"
+      "microplastics-in-indoor-air.html",
+      "best-vacuum-cleaners-for-microplastics.html"
     ],
-    "buy": "https://www.amazon.com/dp/B08RSN5ZKL?tag=plasticdetox-20",
+    "buy": "https://www.amazon.com/dp/B0FJ2PXQMQ?tag=plasticdetox-20",
     "fronts": {
       "formula": {
         "status": "unknown",
@@ -42420,18 +42818,18 @@
         "origin": "none"
       },
       "legal": {
-        "status": "unknown",
-        "note": "",
-        "origin": "none"
+        "status": "pass",
+        "note": "No CPSC vacuum recall on record and no vacuum litigation found",
+        "origin": "extracted"
       },
       "testing": {
-        "status": "unknown",
-        "note": "",
-        "origin": "none"
+        "status": "pass",
+        "note": "Ships with a standard AirClean exhaust filter, so add the SF-HA 50 for certified HEPA 13 (Classic C1 takes…",
+        "origin": "extracted"
       }
     },
     "reviewed": true,
-    "article": "microplastics-in-indoor-air.html",
+    "article": "best-vacuum-cleaners-for-microplastics.html",
     "generalises": true,
     "products": [
       {
@@ -42440,15 +42838,15 @@
           "B08RSN5ZKL"
         ],
         "verdict": "good",
-        "note": "German engineered canister with a fully sealed AirClean filtration system and certified HEPA filter. Self sealing bags lock dust at disposal so nothing re-aerosolizes when you change them. AirClean sealed HEPA system. Worth knowing: Premium price point\", \"Canister form factor takes practice\", \"Ongoing genuine bag cost.",
+        "note": "Discontinued in 2025 and now unavailable on Amazon. A fine sealed machine if you already own one; the Guard L1 is the successor.",
         "origin": "store",
         "ext": {
           "verdict": "unrated",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: formula",
+          "why": "the note reads adversely on packaging, needs a human look",
           "fronts": {
             "formula": "unassessed",
-            "packaging": "pass",
+            "packaging": "unassessed",
             "legal": "pass",
             "testing": "unassessed"
           },
@@ -42457,14 +42855,9 @@
           "disclose": false,
           "rules": [],
           "legalNote": "Checked recall records on 2026-08-31. Miele's only US recall is a 2008 gas dryer inspection program, long resolved; no action has ever involved its vacuums.",
-          "frontNotes": {},
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "heldBack": [
-            "formula"
-          ]
+          "frontNotes": {}
         },
-        "cat": "Water filters",
+        "cat": "Vacuums",
         "research": "Materials: Canister housing is ABS plastic per multiple vacuum retailers; Miele itself does not state the resin. Bagged design with sealed AirClean HEPA filtration."
       },
       {
@@ -42482,7 +42875,7 @@
         "verdict": "good",
         "note": "A sealed bagged system, which is the gold standard for this job: the bag and the seal together mean the fine fraction leaves the room rather than passing back through the exhaust. Captures down to 0.3 microns.",
         "origin": "hand",
-        "source": "microplastics-in-indoor-air.html",
+        "source": "best-vacuum-cleaners-for-microplastics.html",
         "ext": {
           "verdict": "good",
           "why": "Reviewed by hand from our published research on this category.",
@@ -42501,11 +42894,74 @@
           "frontNotes": {}
         },
         "cat": "Vacuums"
+      },
+      {
+        "name": "Miele Guard L1 AllFloor Canister",
+        "asins": [
+          "B0FJ2PXQMQ"
+        ],
+        "verdict": "good",
+        "note": "Successor to the Complete C3. Sealed AirClean system, self sealing 3D bags, stainless wand, 7 year motor warranty. Add the SF-HA 50 filter (B000A32LLS) for certified HEPA 13.",
+        "ext": {
+          "verdict": "good",
+          "dated": "2026-09-01",
+          "why": "independent lab result at sku scope",
+          "fronts": {
+            "formula": "pass",
+            "packaging": "pass",
+            "legal": "pass",
+            "testing": "pass"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": [
+            "2 formula-read-from-materials",
+            "5.4 durable-good-is-its-own-packaging"
+          ],
+          "legalNote": "Checked recall records on 2026-08-31. Miele's only US recall is a 2008 gas dryer inspection program, long resolved; no action has ever involved its vacuums.",
+          "frontNotes": {}
+        },
+        "cat": "Air purifiers"
+      },
+      {
+        "name": "Miele Classic C1 Pure Suction",
+        "asins": [],
+        "verdict": "good",
+        "note": "Affordable entry to the sealed Miele platform. Takes the SF-HA 30 HEPA filter, not the SF-HA 50, and the SF-HA 30 drifts in and out of stock.",
+        "matchAll": [
+          [
+            "miele",
+            "c1",
+            "pure",
+            "suction"
+          ]
+        ],
+        "matchFrom": "name",
+        "origin": "hand",
+        "ext": {
+          "verdict": "unrated",
+          "dated": "2026-09-01",
+          "why": "no front is directly evidenced by the note",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "unassessed",
+            "legal": "pass",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "rules": [],
+          "legalNote": "Checked recall records on 2026-08-31. Miele's only US recall is a 2008 gas dryer inspection program, long resolved; no action has ever involved its vacuums.",
+          "frontNotes": {}
+        },
+        "cat": "Air purifiers"
       }
     ],
     "rollup": {
-      "products": 2,
-      "researched": 2,
+      "products": 4,
+      "researched": 4,
       "flagged": 0,
       "worst": null
     }
@@ -43860,7 +44316,7 @@
           "B08KSQV695"
         ],
         "verdict": "good",
-        "note": "Olive oil and beeswax base with Oregon grape root, myrrh, yarrow, and calendula. USDA Organic via Oregon Tilth, Leaping Bunny. USDA Organic, cloth diaper safe. Worth knowing: Small jar\", \"Herbal scent from the plants themselves.",
+        "note": "Olive oil and beeswax base with Oregon grape root, myrrh, yarrow, and calendula. USDA Organic via Oregon Tilth, Leaping Bunny. USDA Organic, cloth diaper safe. Worth knowing: Small jar, Herbal scent from the plants themselves.",
         "origin": "store",
         "ext": {
           "verdict": "careful",
@@ -45323,7 +45779,7 @@
           "B00CGKVQJG"
         ],
         "verdict": "good",
-        "note": "The only disposable wipe on a certified organic cotton cloth (GOTS via Soil Association), EWG Verified. Fully compostable including packaging. Organic cotton, fully compostable. Worth knowing: Thinner than competitors\", \"Essential oils may not suit ultra sensitive skin.",
+        "note": "The only disposable wipe on a certified organic cotton cloth (GOTS via Soil Association), EWG Verified. Fully compostable including packaging. Organic cotton, fully compostable. Worth knowing: Thinner than competitors, Essential oils may not suit ultra sensitive skin.",
         "origin": "store",
         "ext": {
           "verdict": "good",
@@ -45345,7 +45801,17 @@
           },
           "authored": true
         },
-        "cat": "Baby wipes"
+        "cat": "Baby wipes",
+        "matchAll": [
+          [
+            "natracare",
+            "wipe"
+          ],
+          [
+            "natracare",
+            "wipes"
+          ]
+        ]
       },
       {
         "name": "Natracare Organic Cotton Tampons",
@@ -45353,7 +45819,7 @@
           "B001E14MJO"
         ],
         "verdict": "good",
-        "note": "100% certified organic cotton tampons with no applicator, no synthetics, no chlorine, no dioxin, and no rayon. Fully biodegradable and compostable, including the wrapper. 100% organic cotton, no applicator. Worth knowing: No applicator requires fingertip insertion\", \"Higher price than conventional tampons\", \"Smaller individual box sizes.",
+        "note": "100% certified organic cotton tampons with no applicator, no synthetics, no chlorine, no dioxin, and no rayon. Fully biodegradable and compostable, including the wrapper. 100% organic cotton, no applicator. Worth knowing: No applicator requires fingertip insertion, Higher price than conventional tampons, Smaller individual box sizes.",
         "origin": "store",
         "ext": {
           "verdict": "good",
@@ -45387,7 +45853,7 @@
           "B000VI3LNE"
         ],
         "verdict": "good",
-        "note": "Organic cotton cover over an ecologically certified cellulose core with a plant starch backsheet instead of polyethylene film. No chlorine, fragrance, or superabsorbent polymer. No plastic backsheet or superabsorbent polymer. Worth knowing: Thicker than mainstream ultra thin pads\", \"14 count boxes, so reorders are frequent\", \"Wings adhere less firmly than conventional pads.",
+        "note": "Organic cotton cover over an ecologically certified cellulose core with a plant starch backsheet instead of polyethylene film. No chlorine, fragrance, or superabsorbent polymer. No plastic backsheet or superabsorbent polymer. Worth knowing: Thicker than mainstream ultra thin pads, 14 count boxes, so reorders are frequent, Wings adhere less firmly than conventional pads.",
         "origin": "store",
         "ext": {
           "verdict": "good",
@@ -45421,7 +45887,7 @@
           "B001E1256Q"
         ],
         "verdict": "good",
-        "note": "100% certified organic cotton tampons with a biodegradable cardboard applicator and paper wrapper. Totally chlorine free, no rayon, fragrance, or dye. Non detect for organic fluorine. Worth knowing: Cardboard applicator glides less easily than plastic\", \"Higher price than conventional tampons\", \"Regular absorbency only in this pack.",
+        "note": "100% certified organic cotton tampons with a biodegradable cardboard applicator and paper wrapper. Totally chlorine free, no rayon, fragrance, or dye. Non detect for organic fluorine. Worth knowing: Cardboard applicator glides less easily than plastic, Higher price than conventional tampons, Regular absorbency only in this pack.",
         "origin": "store",
         "ext": {
           "verdict": "good",
@@ -45450,19 +45916,35 @@
         "catAuthored": true
       },
       {
-        "name": "Natracare baby wipes",
+        "name": "Organic cotton tampons, pads, and liners",
         "matchAll": [
           [
             "natracare",
-            "wipe"
+            "tampon"
           ],
           [
             "natracare",
-            "wipes"
+            "tampons"
+          ],
+          [
+            "natracare",
+            "pad"
+          ],
+          [
+            "natracare",
+            "pads"
+          ],
+          [
+            "natracare",
+            "liner"
+          ],
+          [
+            "natracare",
+            "liners"
           ]
         ],
         "verdict": "good",
-        "cat": "Baby wipes",
+        "cat": "Tampons",
         "origin": "hand",
         "source": "alternative",
         "note": "Recommended organic cotton tampons, pads, and liners. Totally chlorine free, no rayon, fragrance, dyes, or plastic backsheet.",
@@ -46143,7 +46625,8 @@
     "alternative": "",
     "sources": [
       "cleanest-prenatal-vitamins.html",
-      "supplements-and-microplastics.html"
+      "supplements-and-microplastics.html",
+      "https://mamavation.com/supplements/prenatal-vitamins-pesticides-lead-phthalates-pfas.html"
     ],
     "buy": "https://www.amazon.com/dp/B0GM2HYZ9G?tag=plasticdetox-20",
     "aliases": [
@@ -46181,14 +46664,14 @@
       {
         "name": "Prenatal Multi Capsules",
         "verdict": "good",
-        "note": "Same testing as the powder. Eight capsules a day, in a plastic bottle.",
+        "note": "Same testing as the powder. Eight capsules a day, in a plastic bottle. Mamavation (Sept 2026): 665 ppb phthalates and the highest total lead of the nine prenatals it tested (130 ppb). The verdict holds on transparency and formula, but this result tips the format choice firmly to the powder.",
         "asins": [
           "B097SSXB34"
         ],
         "ext": {
           "verdict": "unrated",
           "dated": "2026-08-28",
-          "why": "no direct pass on formula, and no lab result standing in for one",
+          "why": "the note reads adversely on testing, needs a human look",
           "fronts": {
             "formula": "unassessed",
             "packaging": "pass",
@@ -46271,7 +46754,10 @@
       "researched": 3,
       "flagged": 0,
       "worst": null
-    }
+    },
+    "cautions": [
+      "Mamavation's September 2026 study measured 665 ppb ortho-phthalates and the study's highest total lead (0.13 ug/g, 130 ppb) on the Prenatal Multi capsules, versus 25 ppb lead in Lead Safe Mama's 2024 test. Needed's own published batch results sit below Prop 65 and the brand engages with independent results; the powder remains the format we put first."
+    ]
   },
   {
     "id": "nellie-s",
@@ -46653,6 +47139,129 @@
       "researched": 0,
       "flagged": 0,
       "worst": null
+    }
+  },
+  {
+    "id": "new-chapter",
+    "brand": "New Chapter",
+    "category": "Supplements",
+    "stance": "skip",
+    "reason": "Moved from careful to skip in September 2026 when direct phthalate data arrived: Mamavation measured 1,492 ppb ortho-phthalates in Perfect Prenatal, the second highest of the nine prenatals tested. That lands on top of the original concern, no per batch transparency, and the One Daily 35+ prenatal testing positive for lead, cadmium, and arsenic (Lead Safe Mama, April 2025).",
+    "evidence": "1,492 ppb ortho-phthalates (Mamavation, Sept 2026); lead, cadmium, arsenic on One Daily 35+ (Lead Safe Mama, Apr 2025); no published per batch numbers",
+    "alternative": "Needed or FullWell, both publish batch testing",
+    "sources": [
+      "cleanest-prenatal-vitamins.html",
+      "https://mamavation.com/supplements/prenatal-vitamins-pesticides-lead-phthalates-pfas.html"
+    ],
+    "article": "cleanest-prenatal-vitamins.html",
+    "reviewed": true,
+    "generalises": true,
+    "aliases": [
+      "New Chapter Perfect Prenatal",
+      "New Chapter Advanced Perfect Prenatal"
+    ],
+    "fronts": {
+      "formula": {
+        "status": "fail",
+        "note": "Moved from careful to skip in September 2026 when direct phthalate data arrived: Mamavation measured 1,492…",
+        "origin": "extracted"
+      },
+      "packaging": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "fail",
+        "note": "Moved from careful to skip in September 2026 when direct phthalate data arrived: Mamavation measured 1,492…",
+        "origin": "extracted"
+      }
+    },
+    "products": [
+      {
+        "name": "Perfect Prenatal",
+        "matchAll": [
+          [
+            "new chapter",
+            "prenatal"
+          ]
+        ],
+        "asins": [
+          "B003BEDU2M"
+        ],
+        "verdict": "skip",
+        "note": "Mamavation (Sept 2026) measured 1,492 ppb ortho-phthalates, the second highest of nine prenatals tested, and the brand publishes no per batch numbers.",
+        "origin": "hand",
+        "source": "cleanest-prenatal-vitamins.html",
+        "ext": {
+          "verdict": "skip",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "fail"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true,
+          "dated": "2026-09-01",
+          "frontNotes": {
+            "testing": "Moved from careful to skip in September 2026 when direct phthalate data arrived: Mamavation measured 1,492… (Recorded for New Chapter as a whole rather than this product specifically.)"
+          },
+          "inheritedFronts": [
+            "testing"
+          ]
+        },
+        "cat": "Prenatal vitamins"
+      },
+      {
+        "name": "One Daily 35+ prenatal",
+        "matchAll": [
+          [
+            "one daily",
+            "prenatal"
+          ]
+        ],
+        "verdict": "skip",
+        "note": "Tested positive for lead, cadmium, and arsenic in Lead Safe Mama testing (April 2025).",
+        "origin": "hand",
+        "source": "cleanest-prenatal-vitamins.html",
+        "ext": {
+          "verdict": "skip",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "fail"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true,
+          "dated": "2026-09-01",
+          "frontNotes": {
+            "testing": "Moved from careful to skip in September 2026 when direct phthalate data arrived: Mamavation measured 1,492… (Recorded for New Chapter as a whole rather than this product specifically.)"
+          },
+          "inheritedFronts": [
+            "testing"
+          ]
+        },
+        "cat": "Prenatal vitamins"
+      }
+    ],
+    "rollup": {
+      "products": 2,
+      "researched": 2,
+      "flagged": 2,
+      "worst": "skip"
     }
   },
   {
@@ -47107,7 +47716,9 @@
     "evidence": "Glass dropper vitamin D, HPMC veggie cap; pending Orrico and Clark lawsuits over labeling",
     "alternative": "",
     "sources": [
-      "supplements-and-microplastics.html"
+      "supplements-and-microplastics.html",
+      "cleanest-prenatal-vitamins.html",
+      "https://mamavation.com/supplements/prenatal-vitamins-pesticides-lead-phthalates-pfas.html"
     ],
     "products": [
       {
@@ -47182,6 +47793,73 @@
           "frontNotes": {}
         },
         "cat": "Supplements"
+      },
+      {
+        "name": "Prenatal Multivitamin",
+        "matchAll": [
+          [
+            "nordic",
+            "prenatal",
+            "multi"
+          ]
+        ],
+        "verdict": "careful",
+        "note": "Middle tier in Mamavation's September 2026 study: 218 ppb ortho-phthalates and mid pack metals. Not a pick of ours; the transparent capsule brands and the Needed powder rank ahead of it.",
+        "origin": "hand",
+        "source": "cleanest-prenatal-vitamins.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "unassessed",
+            "legal": "pass",
+            "testing": "unassessed"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true,
+          "dated": "2026-09-01",
+          "frontNotes": {},
+          "legalNote": "Checked the FDA enforcement database on 2026-08-31. Two closed and remedied recalls on record for the firm: elevated vitamin D3 in Baby's D3 liquid (2024, over 24 months, now informational) and a mislabeled kids gummy (2025, a different product line whose defect does not transfer). Neither is open."
+        },
+        "cat": "Prenatal vitamins"
+      },
+      {
+        "name": "Prenatal DHA softgel",
+        "matchAll": [
+          [
+            "nordic",
+            "prenatal",
+            "dha"
+          ]
+        ],
+        "asins": [
+          "B079J5YZSS"
+        ],
+        "verdict": "skip",
+        "note": "A softgel, the worst form in our ranking for plastic exposure, and a DHA add on rather than a complete prenatal. For DHA, choose a liquid in glass instead.",
+        "origin": "hand",
+        "source": "cleanest-prenatal-vitamins.html",
+        "ext": {
+          "verdict": "skip",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "unassessed",
+            "legal": "pass",
+            "testing": "unassessed"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true,
+          "dated": "2026-09-01",
+          "frontNotes": {},
+          "legalNote": "Checked the FDA enforcement database on 2026-08-31. Two closed and remedied recalls on record for the firm: elevated vitamin D3 in Baby's D3 liquid (2024, over 24 months, now informational) and a mislabeled kids gummy (2025, a different product line whose defect does not transfer). Neither is open."
+        },
+        "cat": "Prenatal vitamins"
       }
     ],
     "fronts": {
@@ -47211,10 +47889,10 @@
     "generalises": false,
     "scopeNote": "Our verdict varies across this brand's range.",
     "rollup": {
-      "products": 2,
-      "researched": 2,
-      "flagged": 0,
-      "worst": null
+      "products": 4,
+      "researched": 4,
+      "flagged": 2,
+      "worst": "skip"
     }
   },
   {
@@ -49726,7 +50404,7 @@
           "B0BXQT82Y7"
         ],
         "verdict": "good",
-        "note": "Seaweed based eye serum with a glass roller applicator. MADE SAFE certified. Glass roller, no synthetic polymers. Worth knowing: Cap is plastic\", \"Premium price\", \"Smaller bottle size.",
+        "note": "Seaweed based eye serum with a glass roller applicator. MADE SAFE certified. Glass roller, no synthetic polymers. Worth knowing: Cap is plastic, Premium price, Smaller bottle size.",
         "origin": "store",
         "ext": {
           "verdict": "good",
@@ -51735,7 +52413,7 @@
       {
         "name": "Mineral Sunscreen SPF 50",
         "verdict": "good",
-        "note": "Non nano zinc, fragrance free, no synthetic polymers. 949 ppb lead, the highest among our mineral sunscreen picks, disclosed openly. Recommended on the whole formula, not on lead alone.",
+        "note": "Non nano zinc, fragrance free, no synthetic polymers, and a budget pick next to California Baby. Tested at 949 ppb lead, the highest among our mineral sunscreen picks, disclosed openly. Recommended on the whole formula, not on lead alone.",
         "ext": {
           "verdict": "unrated",
           "dated": "2026-08-28",
@@ -51746,7 +52424,7 @@
             "legal": "pass",
             "testing": "caution"
           },
-          "scope": "line",
+          "scope": "sku",
           "basis": "direct",
           "disclose": false,
           "rules": [],
@@ -51768,34 +52446,10 @@
           ]
         ],
         "matchFrom": "name",
-        "cat": "Sunscreen"
-      },
-      {
-        "name": "Pipette Mineral Sunscreen SPF 50",
+        "cat": "Sunscreen",
         "asins": [
           "B09XWT823G"
-        ],
-        "verdict": "good",
-        "note": "Non nano zinc oxide, fragrance free, no chemical filters. A budget alternative, though it tested higher for lead (949 ppb) than our California Baby pick. Badges: Non nano zinc, Budget.",
-        "origin": "registry",
-        "ext": {
-          "verdict": "unrated",
-          "dated": "2026-08-28",
-          "why": "consumable with only a formula read, no second front",
-          "fronts": {
-            "formula": "pass",
-            "packaging": "unassessed",
-            "legal": "pass",
-            "testing": "unassessed"
-          },
-          "scope": "sku",
-          "basis": "direct",
-          "disclose": false,
-          "rules": [],
-          "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {}
-        },
-        "cat": "Sunscreen"
+        ]
       },
       {
         "name": "Whole range",
@@ -51865,8 +52519,8 @@
     "article": "best-mineral-sunscreen-guide.html",
     "generalises": true,
     "rollup": {
-      "products": 4,
-      "researched": 3,
+      "products": 3,
+      "researched": 2,
       "flagged": 0,
       "worst": null
     }
@@ -52269,14 +52923,14 @@
       }
     },
     "reviewed": true,
-    "article": "",
     "generalises": true,
     "rollup": {
       "products": 0,
       "researched": 0,
       "flagged": 0,
       "worst": null
-    }
+    },
+    "nobuy": true
   },
   {
     "id": "plantoys",
@@ -54107,7 +54761,9 @@
     "evidence": "Lead Safe Mama 2025 XRF testing positive for lead on ~80% of tested products; owned by Nestlé Health Science",
     "alternative": "Thorne",
     "sources": [
-      "supplements-and-microplastics.html"
+      "supplements-and-microplastics.html",
+      "cleanest-prenatal-vitamins.html",
+      "https://mamavation.com/supplements/prenatal-vitamins-pesticides-lead-phthalates-pfas.html"
     ],
     "fronts": {
       "formula": {
@@ -54135,11 +54791,47 @@
     "article": "supplements-and-microplastics.html",
     "generalises": true,
     "rollup": {
-      "products": 0,
-      "researched": 0,
-      "flagged": 0,
-      "worst": null
-    }
+      "products": 1,
+      "researched": 1,
+      "flagged": 1,
+      "worst": "skip"
+    },
+    "products": [
+      {
+        "name": "Prenatal Nutrients",
+        "matchAll": [
+          [
+            "pure encapsulations",
+            "prenatal"
+          ],
+          [
+            "pure encapsulation",
+            "prenatal"
+          ]
+        ],
+        "verdict": "skip",
+        "note": "Mid tier result in Mamavation's September 2026 study (334 ppb phthalates, 40 ppb lead), which neither rescues nor sinks it: the skip is brand level, from Lead Safe Mama's 2025 XRF lead pattern across the line and the absence of per batch published numbers.",
+        "origin": "hand",
+        "source": "cleanest-prenatal-vitamins.html",
+        "ext": {
+          "verdict": "skip",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true,
+          "dated": "2026-09-01",
+          "frontNotes": {}
+        },
+        "cat": "Prenatal vitamins"
+      }
+    ]
   },
   {
     "id": "pure-green",
@@ -56906,10 +57598,7 @@
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
           "frontNotes": {}
         },
-        "cat": "Diapers"
-      },
-      {
-        "name": "Rumparooz One Size diapers",
+        "cat": "Diapers",
         "matchAll": [
           [
             "rumparooz",
@@ -56923,37 +57612,15 @@
             "size",
             "diapers"
           ]
-        ],
-        "verdict": "good",
-        "cat": "Diapers",
-        "origin": "hand",
-        "source": "alternative",
-        "note": "The exact Kanga Care one size product that returned non detect for PFAS markers inside and outside. That matters because the waterproof layer is where cloth diaper testing found the worst results, up to 323 ppm. Double inner leg gussets, 6 to 35 lbs. Non detect for PFAS markers, the category testing flagged most. Vetted for the store; this verdict covers the product we listed, not the brand's whole range.",
-        "ext": {
-          "verdict": "good",
-          "dated": "2026-08-29",
-          "why": "",
-          "fronts": {
-            "formula": "pass",
-            "packaging": "pass",
-            "legal": "pass",
-            "testing": "unassessed"
-          },
-          "scope": "line",
-          "basis": "direct",
-          "disclose": false,
-          "authored": true,
-          "frontNotes": {},
-          "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found."
-        }
+        ]
       }
     ],
     "cautions": [
       "Synthetic outer, so it sheds in the wash\", \"Pricier per unit than prefolds"
     ],
     "rollup": {
-      "products": 2,
-      "researched": 2,
+      "products": 1,
+      "researched": 1,
       "flagged": 0,
       "worst": null
     },
@@ -57068,7 +57735,7 @@
           "B09JQ4G62Q"
         ],
         "verdict": "good",
-        "note": "Softer formulation menstrual cup designed for users with bladder sensitivity, an IUD, or pelvic floor concerns. 100% medical grade silicone, FDA registered, BPA free, and latex free. Medical grade silicone, softer formulation. Worth knowing: Softer cup can be harder to open inside\", \"Two sizes only, regular and small\", \"Premium price compared to original Saalt.",
+        "note": "Softer formulation menstrual cup designed for users with bladder sensitivity, an IUD, or pelvic floor concerns. 100% medical grade silicone, FDA registered, BPA free, and latex free. Medical grade silicone, softer formulation. Worth knowing: Softer cup can be harder to open inside, Two sizes only, regular and small, Premium price compared to original Saalt.",
         "origin": "store",
         "ext": {
           "verdict": "good",
@@ -57101,7 +57768,7 @@
           "B0B13WT3KV"
         ],
         "verdict": "good",
-        "note": "Reusable menstrual disc made of 100% medical grade silicone. Sits in the vaginal fornix rather than the canal, allowing for mess free intercourse. Medical grade silicone, mess free during sex. Worth knowing: Steeper learning curve than cups\", \"Removal requires hooking the rim\", \"Single size only.",
+        "note": "Reusable menstrual disc made of 100% medical grade silicone. Sits in the vaginal fornix rather than the canal, allowing for mess free intercourse. Medical grade silicone, mess free during sex. Worth knowing: Steeper learning curve than cups, Removal requires hooking the rim, Single size only.",
         "origin": "store",
         "ext": {
           "verdict": "good",
@@ -58197,6 +58864,50 @@
     }
   },
   {
+    "id": "sebo",
+    "brand": "Sebo",
+    "category": "Vacuum",
+    "stance": "good",
+    "reason": "The allergy purist's canister. Airbelt K3 is built to the German S-Class standard, which requires a fully sealed, leak free machine, and carries the British Allergy Foundation seal of approval. Three stage filtration with three layer bags that seal with a manual hygiene cap on disposal. No recalls or lawsuits found. Buy from an authorized dealer, not Amazon: Sebo's extended warranty explicitly excludes third party marketplace purchases.",
+    "evidence": "S-Class sealed construction, British Allergy Foundation seal, no recalls or litigation found",
+    "alternative": "",
+    "buy": "https://sebo.us/product/airbelt-k",
+    "sources": [
+      "best-vacuum-cleaners-for-microplastics.html",
+      "https://sebo.us/product/airbelt-k"
+    ],
+    "fronts": {
+      "formula": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "packaging": {
+        "status": "pass",
+        "note": "Airbelt K3 is built to the German S-Class standard, which requires a fully sealed, leak free machine",
+        "origin": "extracted"
+      },
+      "legal": {
+        "status": "pass",
+        "note": "no recalls or litigation found",
+        "origin": "extracted"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "article": "best-vacuum-cleaners-for-microplastics.html",
+    "generalises": true,
+    "rollup": {
+      "products": 0,
+      "researched": 0,
+      "flagged": 0,
+      "worst": null
+    }
+  },
+  {
     "id": "secret",
     "brand": "Secret",
     "category": "Personal care",
@@ -58859,14 +59570,15 @@
     "id": "shark",
     "brand": "Shark",
     "category": "Vacuum",
-    "stance": "good",
-    "reason": "Recommended budget sealed True HEPA upright vacuum (Navigator Lift Away).",
-    "evidence": "Sealed HEPA, detachable canister",
+    "stance": "careful",
+    "reason": "Best overall vacuum pick. The Navigator Lift-Away Professional NV356E pairs a HEPA filter with Shark's Anti-Allergen Complete Seal, tested to ASTM F1977 and independently corroborated by particle counter testing at the exhaust. Corded, so it sidesteps the lithium battery fire hazard driving CPSC actions on budget cordless sticks. Bagless cup, so empty it outdoors. Only vacuum recall on record is 2015 (NV650 series wand shock hazard, different models).",
+    "evidence": "Anti-Allergen Complete Seal (ASTM F1977) with HEPA filter, independent exhaust particle testing",
     "alternative": "",
     "sources": [
-      "microplastics-in-indoor-air.html"
+      "microplastics-in-indoor-air.html",
+      "best-vacuum-cleaners-for-microplastics.html"
     ],
-    "buy": "https://www.amazon.com/dp/B004Q4DRJW?tag=plasticdetox-20",
+    "buy": "https://www.amazon.com/dp/B005KMDV9A?tag=plasticdetox-20",
     "fronts": {
       "formula": {
         "status": "unknown",
@@ -58879,9 +59591,9 @@
         "origin": "none"
       },
       "legal": {
-        "status": "unknown",
-        "note": "",
-        "origin": "none"
+        "status": "fail",
+        "note": "Only vacuum recall on record is 2015 (NV650 series wand shock hazard, different models)",
+        "origin": "extracted"
       },
       "testing": {
         "status": "unknown",
@@ -58890,21 +59602,21 @@
       }
     },
     "reviewed": true,
-    "article": "microplastics-in-indoor-air.html",
-    "generalises": true,
+    "article": "best-vacuum-cleaners-for-microplastics.html",
+    "generalises": false,
     "products": [
       {
         "name": "Shark Navigator Lift-Away NV352",
         "asins": [
           "B004Q4DRJW"
         ],
-        "verdict": "good",
-        "note": "Lightweight upright with a detachable lift-away canister for stairs and upholstery. Anti-allergen complete seal plus a HEPA-style filter traps fine dust inside the unit. Anti allergen sealed system. Worth knowing: HEPA-style filter (not certified True HEPA)\", \"Bagless cup releases dust on emptying\", \"Plastic body throughout.",
+        "verdict": "careful",
+        "note": "The base NV352 has the anti allergen seal but not the certified HEPA filter of the NV356E. Choose the NV356E for the full sealed HEPA setup.",
         "origin": "store",
         "ext": {
-          "verdict": "unrated",
-          "dated": "2026-08-28",
-          "why": "no front is directly evidenced by the note",
+          "verdict": "careful",
+          "dated": "2026-09-01",
+          "why": "adverse finding stands",
           "fronts": {
             "formula": "unassessed",
             "packaging": "unassessed",
@@ -58937,7 +59649,7 @@
         "verdict": "good",
         "note": "True HEPA filtration in an upright at the budget end of the category. Settled microplastic fibre is what a vacuum is for in this context, and a True HEPA unit traps down to 0.3 microns rather than recirculating the finest particles.",
         "origin": "hand",
-        "source": "microplastics-in-indoor-air.html",
+        "source": "best-vacuum-cleaners-for-microplastics.html",
         "ext": {
           "verdict": "good",
           "why": "Reviewed by hand from our published research on this category.",
@@ -58956,14 +59668,77 @@
           "frontNotes": {}
         },
         "cat": "Water filters"
+      },
+      {
+        "name": "Shark Navigator Lift-Away Professional NV356E",
+        "asins": [],
+        "verdict": "good",
+        "note": "Sealed system with HEPA filter, tested to ASTM F1977 and corroborated by independent particle counter testing. Corded. Empty the bagless cup outdoors.",
+        "matchAll": [
+          [
+            "shark",
+            "nv356e",
+            "navigator",
+            "lift"
+          ]
+        ],
+        "matchFrom": "name",
+        "origin": "hand",
+        "ext": {
+          "verdict": "unrated",
+          "dated": "2026-09-01",
+          "why": "no front is directly evidenced by the note",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "unassessed",
+            "legal": "pass",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "rules": [],
+          "legalNote": "Checked recall records on 2026-08-31. The 2015 Rotator wand recall was remedied by replacement and did not cover the Navigator models we list; the 2025 SharkNinja pressure cooker recall is a different product line.",
+          "frontNotes": {}
+        },
+        "cat": "Air purifiers"
+      },
+      {
+        "name": "Shark Rotator Lift-Away ADV LA502",
+        "asins": [
+          "B089TPNZQ5"
+        ],
+        "verdict": "good",
+        "note": "Same Anti-Allergen Complete Seal plus HEPA in a step-up upright with DuoClean and a self cleaning brushroll.",
+        "ext": {
+          "verdict": "unrated",
+          "dated": "2026-09-01",
+          "why": "no front is directly evidenced by the note",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "unassessed",
+            "legal": "pass",
+            "testing": "unassessed"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": [],
+          "legalNote": "Checked recall records on 2026-08-31. The 2015 Rotator wand recall was remedied by replacement and did not cover the Navigator models we list; the 2025 SharkNinja pressure cooker recall is a different product line.",
+          "frontNotes": {}
+        },
+        "cat": "Cleaning products"
       }
     ],
     "rollup": {
-      "products": 2,
-      "researched": 2,
-      "flagged": 0,
-      "worst": null
-    }
+      "products": 4,
+      "researched": 4,
+      "flagged": 1,
+      "worst": "careful"
+    },
+    "scopeNote": "Our verdict varies across this brand's range.",
+    "rollupApplied": true,
+    "rollupNote": "1 of 4 products we have reviewed under this brand are flagged: Shark Navigator Lift-Away NV352. The verdict depends which one you pick."
   },
   {
     "id": "sheep-inc",
@@ -59183,7 +59958,8 @@
     "reason": "USA made bagged upright purpose built for allergy and asthma households. Certified HEPA media captures 99.97% of particles down to 0.3 microns, including airborne microplastic dust. Fully sealed body so no air bypasses the filter. Repairable construction with a long parts pipeline. Certified HEPA, fully sealed allergen system. Vetted for the store; this verdict covers the product we listed, not the brand's whole range.",
     "evidence": "Certified HEPA, fully sealed allergen system",
     "sources": [
-      "store"
+      "store",
+      "best-vacuum-cleaners-for-microplastics.html"
     ],
     "reviewed": true,
     "generalises": true,
@@ -59246,7 +60022,8 @@
         "note": "Certified HEPA",
         "origin": "extracted"
       }
-    }
+    },
+    "article": "best-vacuum-cleaners-for-microplastics.html"
   },
   {
     "id": "simplut",
@@ -59783,6 +60560,121 @@
       "flagged": 0,
       "worst": null
     }
+  },
+  {
+    "id": "smartypants",
+    "brand": "SmartyPants",
+    "category": "Supplements",
+    "stance": "careful",
+    "reason": "Trace level contamination results in recent independent testing: Mamavation (September 2026) put the Sugar Free Prenatal in its best tier at 13 ppb ortho-phthalates and 9 ppb lead with no PFAS or pesticides, and Lead Safe Mama measured 7.77 ppb lead on the Organic Prenatal. The problem is format, not chemistry: gummies cannot carry therapeutic doses of choline, iron, or minerals, so no SmartyPants prenatal is a pick.",
+    "evidence": "Sugar Free Prenatal: 13 ppb phthalates, 9 ppb lead, no PFAS (Mamavation, Sept 2026); Organic Prenatal: 7.77 ppb lead (Lead Safe Mama, Aug 2024)",
+    "alternative": "Needed or FullWell for a complete prenatal",
+    "sources": [
+      "cleanest-prenatal-vitamins.html",
+      "https://mamavation.com/supplements/prenatal-vitamins-pesticides-lead-phthalates-pfas.html"
+    ],
+    "article": "cleanest-prenatal-vitamins.html",
+    "reviewed": true,
+    "generalises": false,
+    "aliases": [
+      "Smarty Pants"
+    ],
+    "fronts": {
+      "formula": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "packaging": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "products": [
+      {
+        "name": "Organic Prenatal gummy",
+        "matchAll": [
+          [
+            "smartypants",
+            "organic",
+            "prenatal"
+          ]
+        ],
+        "asins": [
+          "B07CVN3VCH"
+        ],
+        "verdict": "skip",
+        "note": "At the clean end of the category on metals (7.77 ppb lead, Lead Safe Mama Aug 2024), but the gummy format adds sugar and cannot carry therapeutic doses of choline, iron, or minerals.",
+        "origin": "hand",
+        "source": "cleanest-prenatal-vitamins.html",
+        "ext": {
+          "verdict": "skip",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true,
+          "dated": "2026-09-01",
+          "frontNotes": {}
+        },
+        "cat": "Prenatal vitamins"
+      },
+      {
+        "name": "Sugar Free Prenatal gummy",
+        "matchAll": [
+          [
+            "smartypants",
+            "sugar free",
+            "prenatal"
+          ]
+        ],
+        "verdict": "careful",
+        "note": "Mamavation's best tier (Sept 2026): 13 ppb phthalates, 9 ppb lead, no PFAS or pesticides. Still a gummy, so treat it as a clean base rather than a complete prenatal.",
+        "origin": "hand",
+        "source": "cleanest-prenatal-vitamins.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true,
+          "dated": "2026-09-01",
+          "frontNotes": {}
+        },
+        "cat": "Prenatal vitamins"
+      }
+    ],
+    "rollup": {
+      "products": 2,
+      "researched": 2,
+      "flagged": 2,
+      "worst": "skip"
+    },
+    "scopeNote": "Our verdict varies across this brand's range."
   },
   {
     "id": "smeg",
@@ -65433,7 +66325,7 @@
           "B00JAP44MQ"
         ],
         "verdict": "good",
-        "note": "Tri ply 18/10 stainless steel, induction compatible. Completely non reactive so you can cook acidic foods and deglaze with wine. Worth knowing: Food sticks without technique\", \"Needs oil or butter\", \"Less heat retention.",
+        "note": "Tri ply 18/10 stainless steel, induction compatible. Completely non reactive so you can cook acidic foods and deglaze with wine. Worth knowing: Food sticks without technique, Needs oil or butter, Less heat retention.",
         "origin": "store",
         "ext": {
           "verdict": "good",
@@ -69317,7 +70209,7 @@
           "B0987FCQQW"
         ],
         "verdict": "good",
-        "note": "Tankless under sink reverse osmosis certified to NSF/ANSI 58. Filters on demand straight to the faucet, so filtered water never sits in a storage bladder. Worth knowing: Most expensive filter we list\", \"Needs a power outlet under the sink\", \"Requires plumbing install.",
+        "note": "Tankless under sink reverse osmosis certified to NSF/ANSI 58. Filters on demand straight to the faucet, so filtered water never sits in a storage bladder. Worth knowing: Most expensive filter we list, Needs a power outlet under the sink, Requires plumbing install.",
         "origin": "store",
         "ext": {
           "verdict": "unrated",
@@ -71111,7 +72003,8 @@
       {
         "name": "Yogasleep Dohm Classic White Noise Machine",
         "asins": [
-          "B00HD0ELFK"
+          "B00HD0ELFK",
+          "B07DJL3Y8K"
         ],
         "verdict": "good",
         "note": "Mechanical fan based real white noise with no looped track, no Bluetooth, no app, and no microphone. The original Marpac Dohm under the Yogasleep name. No Bluetooth, app, or microphone. Worth knowing: Plastic housing\", \"No volume display\", \"Single sound only.",
@@ -71133,38 +72026,12 @@
           "frontNotes": {}
         },
         "cat": "Baby sleep"
-      },
-      {
-        "name": "Yogasleep Dohm White Noise Machine",
-        "asins": [
-          "B07DJL3Y8K"
-        ],
-        "verdict": "good",
-        "note": "Mechanical fan inside, no electronics, lowest EMF option. The oldest, simplest white noise machine on the market. Badges: Mechanical, low EMF.",
-        "origin": "registry",
-        "ext": {
-          "verdict": "unrated",
-          "dated": "2026-08-28",
-          "why": "no front is directly evidenced by the note",
-          "fronts": {
-            "formula": "unassessed",
-            "packaging": "unassessed",
-            "legal": "unassessed",
-            "testing": "unassessed"
-          },
-          "scope": "sku",
-          "basis": "direct",
-          "disclose": false,
-          "rules": [],
-          "frontNotes": {}
-        },
-        "cat": "Baby sleep"
       }
     ],
     "scopeNote": "Our verdict varies across this brand's range.",
     "rollup": {
-      "products": 2,
-      "researched": 2,
+      "products": 1,
+      "researched": 1,
       "flagged": 0,
       "worst": null
     }
@@ -71185,7 +72052,7 @@
       {
         "name": "Yoloha Cork Mat",
         "verdict": "good",
-        "note": "Natural cork surface over a natural and recycled rubber base, 72 x 26 in, about 6 mm. USA made with largely renewable content. Cork is naturally antimicrobial and grips better the more you sweat, which makes it the standout for hot yoga. Natural cork over rubber, antimicrobial. Worth knowing: Rubber backing contains natural latex\", \"Firmer feel than pure rubber\", \"Not sold on Amazon, order direct.",
+        "note": "Natural cork surface over a natural and recycled rubber base, 72 x 26 in, about 6 mm. USA made with largely renewable content. Cork is naturally antimicrobial and grips better the more you sweat, which makes it the standout for hot yoga. Natural cork over rubber, antimicrobial. Worth knowing: Rubber backing contains natural latex, Firmer feel than pure rubber, Not sold on Amazon, order direct.",
         "origin": "store",
         "source": "store",
         "matchAll": [
@@ -71517,7 +72384,7 @@
           "B005PO9T44"
         ],
         "verdict": "good",
-        "note": "Exceptional heat retention in a lightweight design. The lid has a small plastic gasket for the seal, but it does not contact the liquid during drinking. Minimal plastic contact. Worth knowing: Small plastic gasket in lid\", \"Narrow mouth\", \"Older or secondhand units may have lead in the base seal; buy current models.",
+        "note": "Exceptional heat retention in a lightweight design. The lid has a small plastic gasket for the seal, but it does not contact the liquid during drinking. Minimal plastic contact. Worth knowing: Small plastic gasket in lid, Narrow mouth, Older or secondhand units may have lead in the base seal; buy current models.",
         "origin": "store",
         "ext": {
           "verdict": "unrated",
@@ -71860,136 +72727,6 @@
     },
     "reviewed": true,
     "article": "pfas-in-cookware-brands.html",
-    "generalises": false,
-    "scopeNote": "Our verdict covers part of this brand's range, not all of it.",
-    "rollup": {
-      "products": 0,
-      "researched": 0,
-      "flagged": 0,
-      "worst": null
-    }
-  },
-  {
-    "id": "hg-power",
-    "brand": "HG Power",
-    "category": "Laundry",
-    "stance": "good",
-    "reason": "All metal inline dryer duct lint trap with stainless steel mesh that catches exhaust lint and fibers before they vent into room or outdoor air. For indoor venting electric dryers only, never gas.",
-    "evidence": "Stainless steel mesh, 4 inch duct, inline install",
-    "alternative": "",
-    "sources": [
-      "microplastics-in-clothing-and-laundry.html"
-    ],
-    "fronts": {
-      "formula": {
-        "status": "unknown",
-        "note": "",
-        "origin": "none"
-      },
-      "packaging": {
-        "status": "unknown",
-        "note": "",
-        "origin": "none"
-      },
-      "legal": {
-        "status": "unknown",
-        "note": "",
-        "origin": "none"
-      },
-      "testing": {
-        "status": "unknown",
-        "note": "",
-        "origin": "none"
-      }
-    },
-    "reviewed": true,
-    "article": "microplastics-in-clothing-and-laundry.html",
-    "generalises": true,
-    "rollup": {
-      "products": 0,
-      "researched": 0,
-      "flagged": 0,
-      "worst": null
-    }
-  },
-  {
-    "id": "common-good",
-    "brand": "Common Good",
-    "category": "Laundry",
-    "stance": "good",
-    "reason": "Liquid laundry detergent sold in refillable glass bottles, the liquid pick for readers who will not use powder; refills skip the plastic jug.",
-    "evidence": "Refillable glass packaging",
-    "alternative": "",
-    "sources": [
-      "microplastics-in-clothing-and-laundry.html"
-    ],
-    "fronts": {
-      "formula": {
-        "status": "unknown",
-        "note": "",
-        "origin": "none"
-      },
-      "packaging": {
-        "status": "unknown",
-        "note": "",
-        "origin": "none"
-      },
-      "legal": {
-        "status": "unknown",
-        "note": "",
-        "origin": "none"
-      },
-      "testing": {
-        "status": "unknown",
-        "note": "",
-        "origin": "none"
-      }
-    },
-    "reviewed": true,
-    "article": "microplastics-in-clothing-and-laundry.html",
-    "generalises": true,
-    "rollup": {
-      "products": 0,
-      "researched": 0,
-      "flagged": 0,
-      "worst": null
-    }
-  },
-  {
-    "id": "home-it",
-    "brand": "Home-it",
-    "category": "Laundry",
-    "stance": "good",
-    "reason": "Collapsible solid wood clothes drying rack; air drying eliminates dryer microfiber emissions entirely. Verdict covers the wooden rack, not the brand's wider housewares range.",
-    "evidence": "Solid wood, no plastic parts",
-    "alternative": "",
-    "sources": [
-      "microplastics-in-clothing-and-laundry.html"
-    ],
-    "fronts": {
-      "formula": {
-        "status": "unknown",
-        "note": "",
-        "origin": "none"
-      },
-      "packaging": {
-        "status": "unknown",
-        "note": "",
-        "origin": "none"
-      },
-      "legal": {
-        "status": "unknown",
-        "note": "",
-        "origin": "none"
-      },
-      "testing": {
-        "status": "unknown",
-        "note": "",
-        "origin": "none"
-      }
-    },
-    "reviewed": true,
-    "article": "microplastics-in-clothing-and-laundry.html",
     "generalises": false,
     "scopeNote": "Our verdict covers part of this brand's range, not all of it.",
     "rollup": {

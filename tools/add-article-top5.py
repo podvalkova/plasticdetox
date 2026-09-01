@@ -254,7 +254,7 @@ ROWS = {
     # The store record for this one already carried the evidence ("low heavy
     # metals for a sea salt"). Rating it careful for "no published testing"
     # ignored our own research and put a warning on a product we sell.
-    "Maldon": [("Maldon sea salt flakes", [["maldon"]], [], ["B086XGH24W"], "good",
+    "Maldon": [("Maldon Sea Salt Flakes", [["maldon"]], [], ["B086XGH24W"], "good",
                 "A clean flake salt with no additives, and low in heavy metals for a sea salt. Sea salt is a category where independent testing finds microplastics and metals, so the result matters more here than the label does.", F(fo="pass", te="pass"))],
     "Celtic Sea Salt": [("Celtic light grey sea salt", [["celtic", "sea", "salt"]], [], ["B000SWVPV8"], "good",
                          "Unrefined and mineral rich, which is the selling point. Unrefined also means whatever the sea carried is still in it, and there is no published third party testing to check, so the gap is stated.", F(fo="pass"))],
