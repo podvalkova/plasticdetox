@@ -557,6 +557,7 @@
 
     let BRANDS = [];
     let byId = {};
+    let ASIN_INDEX = {};
     let activeSugg = -1;
 
     const norm = s => (s || "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
@@ -574,6 +575,11 @@
           b._norm = norm(b.brand); b._collapse = collapse(b.brand);
           // alternate spellings people actually type ("better and better" for "Better & Better")
           b._alts = (b.aliases || []).map(a => ({ n: norm(a), c: collapse(a) }));
+          // ASIN -> brand, so a pasted Amazon link or bare ASIN resolves to
+          // the brand that owns the product row.
+          (b.products || []).forEach(p => (p.asins || []).forEach(a => {
+            if (!ASIN_INDEX[a]) ASIN_INDEX[a] = b;
+          }));
         });
         $("statLine").textContent = BRANDS.length + " brands assessed · Free";
         $("statBrands").textContent = BRANDS.length;
@@ -622,7 +628,16 @@
       });
     }
 
+    // A pasted Amazon URL ("amazon.com/dp/B0FJ2PXQMQ?tag=...") carries no
+    // brand text at all, so pull the ASIN out and resolve it directly.
+    function extractAsin(q) {
+      const m = q.match(/(?:\/(?:dp|gp\/product|gp\/aw\/d)\/|[?&]asin=)([A-Z0-9]{10})/i) || q.trim().match(/^(B0[A-Z0-9]{8})$/i);
+      return m ? m[1].toUpperCase() : null;
+    }
+
     function findExact(query) {
+      const asin = extractAsin(query);
+      if (asin && ASIN_INDEX[asin]) return ASIN_INDEX[asin];
       const nq = norm(query), cq = collapse(query);
       if (!cq) return null;
       let m = BRANDS.find(b => b._norm === nq || b._collapse === cq || b._alts.some(a => a.n === nq || a.c === cq));

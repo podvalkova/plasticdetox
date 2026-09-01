@@ -144,9 +144,12 @@ ROWS = {
     ],
     # ---------------------------------------------------------------- vacuums
     "Shark": [
-        ("Navigator Lift-Away uprights", [["shark", "navigator", "lift"]], [], ["B00JH98GR4", "B005KMDV9A", "B08TT4YHG1"], "good",
-         "True HEPA filtration in an upright at the budget end of the category. Settled microplastic fibre is what a vacuum is for in this context, and a True HEPA unit traps down to 0.3 microns rather than recirculating the finest particles.",
+        ("Shark Navigator Lift-Away Professional NV356E", [["shark", "navigator", "professional"], ["shark", "nv356e"]], [], ["B005KMDV9A"], "good",
+         "Anti-Allergen Complete Seal tested to ASTM F1977 with a HEPA filter included, and the seal is corroborated by independent particle counter testing at the exhaust. Corded, so no lithium battery hazard. Empty the bagless cup outdoors.",
          F(fo="pass", te="pass")),
+        ("Navigator Lift-Away base uprights (NV352 and siblings)", [["shark", "navigator", "lift"]], [], ["B00JH98GR4", "B08TT4YHG1"], "careful",
+         "The base Navigator uprights carry the anti allergen seal but not the certified HEPA filter of the NV356E, so the finest fraction of settled fibre is the part they are weakest on. Choose the NV356E for the full sealed HEPA setup.",
+         F(fo="caution")),
     ],
     "Miele": [
         ("Classic C1 canister", [["miele", "classic", "c1"]], [], ["B07P97CD5T"], "good",

@@ -42925,36 +42925,34 @@
         "cat": "Air purifiers"
       },
       {
-        "name": "Miele Classic C1 Pure Suction",
-        "asins": [],
-        "verdict": "good",
-        "note": "Affordable entry to the sealed Miele platform. Takes the SF-HA 30 HEPA filter, not the SF-HA 50, and the SF-HA 30 drifts in and out of stock.",
-        "matchAll": [
-          [
-            "miele",
-            "c1",
-            "pure",
-            "suction"
-          ]
+        "name": "HEPA AirClean Filter SF-HA 50",
+        "asins": [
+          "B000A32LLS"
         ],
-        "matchFrom": "name",
-        "origin": "hand",
+        "verdict": "good",
+        "note": "The HEPA 13 upgrade filter (EN 1822 certified) for Guard S1/M1/L1, Complete C2/C3 and Compact C1/C2 canisters. Seats against a rubber gasket so no air bypasses it. Does not fit the Classic C1, which takes the SF-HA 30.",
         "ext": {
           "verdict": "unrated",
           "dated": "2026-09-01",
-          "why": "no front is directly evidenced by the note",
+          "why": "a recommendation needs its checks done; still to do: formula, packaging",
           "fronts": {
             "formula": "unassessed",
             "packaging": "unassessed",
             "legal": "pass",
-            "testing": "unassessed"
+            "testing": "pass"
           },
-          "scope": "line",
+          "scope": "sku",
           "basis": "direct",
           "disclose": false,
           "rules": [],
           "legalNote": "Checked recall records on 2026-08-31. Miele's only US recall is a 2008 gas dryer inspection program, long resolved; no action has ever involved its vacuums.",
-          "frontNotes": {}
+          "frontNotes": {},
+          "heldFrom": "good",
+          "restoreWhy": "independent lab result at sku scope",
+          "heldBack": [
+            "formula",
+            "packaging"
+          ]
         },
         "cat": "Air purifiers"
       }
@@ -59571,7 +59569,7 @@
     "brand": "Shark",
     "category": "Vacuum",
     "stance": "careful",
-    "reason": "Best overall vacuum pick. The Navigator Lift-Away Professional NV356E pairs a HEPA filter with Shark's Anti-Allergen Complete Seal, tested to ASTM F1977 and independently corroborated by particle counter testing at the exhaust. Corded, so it sidesteps the lithium battery fire hazard driving CPSC actions on budget cordless sticks. Bagless cup, so empty it outdoors. Only vacuum recall on record is 2015 (NV650 series wand shock hazard, different models).",
+    "reason": "Depends on the model, which is the story of this category. The Navigator Lift-Away Professional NV356E is our best overall vacuum pick: HEPA filter plus the Anti-Allergen Complete Seal tested to ASTM F1977, corroborated by independent particle counter testing, and corded so it sidesteps the lithium battery fires driving CPSC actions on budget cordless sticks. The base Navigator uprights (NV352 and siblings) lack the certified HEPA filter, so check the model before assuming the seal claim covers yours. Only vacuum recall on record is 2015 (NV650 series wand shock hazard, different models).",
     "evidence": "Anti-Allergen Complete Seal (ASTM F1977) with HEPA filter, independent exhaust particle testing",
     "alternative": "",
     "sources": [
@@ -59633,77 +59631,6 @@
         "cat": "Air purifiers"
       },
       {
-        "name": "Navigator Lift-Away uprights",
-        "matchAll": [
-          [
-            "shark",
-            "navigator",
-            "lift"
-          ]
-        ],
-        "asins": [
-          "B00JH98GR4",
-          "B005KMDV9A",
-          "B08TT4YHG1"
-        ],
-        "verdict": "good",
-        "note": "True HEPA filtration in an upright at the budget end of the category. Settled microplastic fibre is what a vacuum is for in this context, and a True HEPA unit traps down to 0.3 microns rather than recirculating the finest particles.",
-        "origin": "hand",
-        "source": "best-vacuum-cleaners-for-microplastics.html",
-        "ext": {
-          "verdict": "good",
-          "why": "Reviewed by hand from our published research on this category.",
-          "fronts": {
-            "formula": "pass",
-            "packaging": "pass",
-            "legal": "pass",
-            "testing": "pass"
-          },
-          "scope": "line",
-          "basis": "direct",
-          "disclose": false,
-          "authored": true,
-          "dated": "2026-09-01",
-          "legalNote": "Checked recall records on 2026-08-31. The 2015 Rotator wand recall was remedied by replacement and did not cover the Navigator models we list; the 2025 SharkNinja pressure cooker recall is a different product line.",
-          "frontNotes": {}
-        },
-        "cat": "Water filters"
-      },
-      {
-        "name": "Shark Navigator Lift-Away Professional NV356E",
-        "asins": [],
-        "verdict": "good",
-        "note": "Sealed system with HEPA filter, tested to ASTM F1977 and corroborated by independent particle counter testing. Corded. Empty the bagless cup outdoors.",
-        "matchAll": [
-          [
-            "shark",
-            "nv356e",
-            "navigator",
-            "lift"
-          ]
-        ],
-        "matchFrom": "name",
-        "origin": "hand",
-        "ext": {
-          "verdict": "unrated",
-          "dated": "2026-09-01",
-          "why": "no front is directly evidenced by the note",
-          "fronts": {
-            "formula": "unassessed",
-            "packaging": "unassessed",
-            "legal": "pass",
-            "testing": "unassessed"
-          },
-          "scope": "line",
-          "basis": "direct",
-          "disclose": false,
-          "rules": [],
-          "legalNote": "Checked recall records on 2026-08-31. The 2015 Rotator wand recall was remedied by replacement and did not cover the Navigator models we list; the 2025 SharkNinja pressure cooker recall is a different product line.",
-          "frontNotes": {}
-        },
-        "cat": "Air purifiers"
-      },
-      {
         "name": "Shark Rotator Lift-Away ADV LA502",
         "asins": [
           "B089TPNZQ5"
@@ -59728,12 +59655,87 @@
           "frontNotes": {}
         },
         "cat": "Cleaning products"
+      },
+      {
+        "name": "Shark Navigator Lift-Away Professional NV356E",
+        "matchAll": [
+          [
+            "shark",
+            "navigator",
+            "professional"
+          ],
+          [
+            "shark",
+            "nv356e"
+          ]
+        ],
+        "asins": [
+          "B005KMDV9A"
+        ],
+        "verdict": "good",
+        "note": "Anti-Allergen Complete Seal tested to ASTM F1977 with a HEPA filter included, and the seal is corroborated by independent particle counter testing at the exhaust. Corded, so no lithium battery hazard. Empty the bagless cup outdoors.",
+        "origin": "hand",
+        "source": "best-vacuum-cleaners-for-microplastics.html",
+        "ext": {
+          "verdict": "good",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "pass",
+            "packaging": "pass",
+            "legal": "pass",
+            "testing": "pass"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true,
+          "dated": "2026-09-01",
+          "legalNote": "Checked recall records on 2026-08-31. The 2015 Rotator wand recall was remedied by replacement and did not cover the Navigator models we list; the 2025 SharkNinja pressure cooker recall is a different product line.",
+          "frontNotes": {}
+        },
+        "cat": "Air purifiers"
+      },
+      {
+        "name": "Navigator Lift-Away base uprights (NV352 and siblings)",
+        "matchAll": [
+          [
+            "shark",
+            "navigator",
+            "lift"
+          ]
+        ],
+        "asins": [
+          "B00JH98GR4",
+          "B08TT4YHG1"
+        ],
+        "verdict": "careful",
+        "note": "The base Navigator uprights carry the anti allergen seal but not the certified HEPA filter of the NV356E, so the finest fraction of settled fibre is the part they are weakest on. Choose the NV356E for the full sealed HEPA setup.",
+        "origin": "hand",
+        "source": "best-vacuum-cleaners-for-microplastics.html",
+        "ext": {
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
+          "fronts": {
+            "formula": "unassessed",
+            "packaging": "unassessed",
+            "legal": "pass",
+            "testing": "unassessed"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true,
+          "dated": "2026-09-01",
+          "legalNote": "Checked recall records on 2026-08-31. The 2015 Rotator wand recall was remedied by replacement and did not cover the Navigator models we list; the 2025 SharkNinja pressure cooker recall is a different product line.",
+          "frontNotes": {}
+        },
+        "cat": "Air purifiers"
       }
     ],
     "rollup": {
       "products": 4,
       "researched": 4,
-      "flagged": 1,
+      "flagged": 2,
       "worst": "careful"
     },
     "scopeNote": "Our verdict varies across this brand's range.",
