@@ -114,20 +114,20 @@
 
   .affil-note{font-size:.78rem;color:var(--text-muted);text-align:center;margin-top:1.5rem;line-height:1.5}
 
-  /* CLOSING CTA */
-  .closing{background:var(--surface);border-top:1px solid var(--border)}
-  .close-intro{text-align:center;margin-bottom:1.75rem}
-  .close-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;align-items:stretch}
-  @media(max-width:720px){.close-grid{grid-template-columns:1fr}}
-  .close-card{border:1px solid var(--border);border-radius:var(--radius);padding:1.7rem;display:flex;flex-direction:column}
-  .close-card.featured{border:2px solid var(--accent-dark);background:linear-gradient(160deg,#faf8ff,#fff)}
-  .cc-tag{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--accent-dark);margin-bottom:.5rem}
-  .close-card h3{font-size:1.2rem;font-weight:800;letter-spacing:-.01em;margin-bottom:.5rem}
-  .close-card p{font-size:.92rem;color:var(--text-muted);line-height:1.6;margin-bottom:1.2rem;flex:1}
-  .cc-btn{display:inline-block;align-self:flex-start;background:var(--accent-dark);color:#fff;text-decoration:none;font-weight:700;font-size:.95rem;padding:.75rem 1.6rem;border-radius:60px}
-  .cc-btn:hover{background:#6d28d9}
-  .cc-btn.ghost{background:#fff;color:var(--accent-dark);border:2px solid var(--accent-dark);padding:calc(.75rem - 2px) calc(1.6rem - 2px)}
-  .cc-btn.ghost:hover{background:var(--accent-light)}
+  /* PRODUCT CHECK EXTENSION CTA */
+  .ext-cta{display:flex;align-items:center;gap:1.3rem;margin:1.4rem auto 0;padding:1.1rem 1.25rem;background:linear-gradient(135deg,var(--accent-light) 0%,#f5f0ff 100%);border:1px solid #ddd6fe;border-radius:var(--radius);text-align:left}
+  .ext-cta-body{flex:1 1 30%;min-width:0}
+  .ext-cta-body b{display:block;font-size:.95rem;color:var(--text)}
+  .ext-cta-body span{display:block;margin-top:.15rem;font-size:.82rem;line-height:1.45;color:var(--text-muted)}
+  .ext-cta-btn{flex:0 0 auto;padding:.6rem 1rem;border-radius:10px;background:var(--accent-dark);color:#fff;font-weight:600;font-size:.88rem;text-decoration:none;white-space:nowrap}
+  .ext-cta-btn:hover{background:#6d28d9}
+  .ext-cta-shot{flex:1 1 55%;min-width:0;border-radius:10px;overflow:hidden;border:1px solid #ddd6fe;box-shadow:0 6px 18px rgba(124,58,237,0.12);line-height:0}
+  .ext-cta-shot img{width:100%;height:auto;display:block}
+  @media(max-width:760px){
+    .ext-cta{flex-wrap:wrap}
+    .ext-cta-btn{width:100%;text-align:center}
+    .ext-cta-shot{flex:1 1 100%;order:-1}
+  }
 
   /* FOOTER */
   .site-footer{text-align:center;padding:2.5rem 2rem;font-size:.82rem;color:var(--text-muted);border-top:1px solid var(--border);background:var(--bg)}
@@ -318,8 +318,23 @@
       <p>What you eat and drink and what you breathe are the two biggest routes into your body, and <b>heat is the single biggest multiplier</b> on the food side. Hot food in plastic, microwaving, and hot drinks through plastic release far more than the same plastic cold. We start in the kitchen and your water because those swaps are the cheapest and highest certainty wins, then move to the air you breathe in Phase 2. Watch for the <span style="color:#ffedd5">Heat driven</span> tag on the swaps that matter most.</p>
     </div>
     <div style="margin-top:1.5rem;background:#f7f4ff;border:1px solid #e5ddff;border-left:3px solid var(--accent-dark);border-radius:var(--radius-sm);padding:1rem 1.15rem;">
-      <p style="margin:0;font-size:1rem;line-height:1.6;color:var(--text);">Not sure if something you already own is a problem? Run it through our <a href="brand-check.html" target="_blank" rel="noopener" style="color:var(--accent-dark);font-weight:700;text-decoration:none;">Brand Check &rarr;</a> before you replace it. No point tossing something that is already fine.</p>
+      <p style="margin:0;font-size:1rem;line-height:1.6;color:var(--text);">Not sure if something you already own is a problem? Run it through our <a href="brand-check.html" target="_blank" rel="noopener" style="color:var(--accent-dark);font-weight:700;text-decoration:none;">Product Check &rarr;</a> before you replace it. No point tossing something that is already fine.</p>
     </div>
+    <!-- Extension offer. Shown only to desktop Chromium, because nobody else can
+         install it and an offer you cannot accept is just noise. -->
+    <aside class="ext-cta" id="extCta" hidden>
+      <div class="ext-cta-shot" aria-hidden="true">
+        <img src="images/extension-search.jpg" width="1160" height="500" loading="lazy"
+             alt="Amazon search results with Skip, Careful and Good choice verdict chips on each listing">
+      </div>
+      <div class="ext-cta-body">
+        <b>Shopping the plan on Amazon? See the verdict before you click.</b>
+        <span>Our free Chrome extension puts Skip, Careful, or Good choice on every Amazon search result and listing, before you add to basket. No affiliate links.</span>
+      </div>
+      <a class="ext-cta-btn" id="extCtaBtn"
+         href="https://chromewebstore.google.com/detail/lplncjbnohkgchjkhgdiljpjfgdmgelg"
+         target="_blank" rel="noopener">Add to Chrome &rarr;</a>
+    </aside>
   </div>
 </section>
 
@@ -406,20 +421,6 @@
     <!-- results -->
     <div class="u-res" id="uRes" hidden></div>
 
-  </div>
-</section>
-
-<!-- CLOSING CTA -->
-<section class="closing">
-  <div class="narrow">
-    <div class="close-grid">
-      <div class="close-card">
-        <div class="cc-tag">Science first</div>
-        <h3>Help fund independent testing.</h3>
-        <p>This plan is free. The lab testing behind our recommendations is not. We test everyday products for heavy metals, plastics, and hidden chemicals and publish every result openly. Contribute any amount to keep it going.</p>
-        <a href="support.html" class="cc-btn ghost" target="_blank" rel="noopener">Support the testing &rarr;</a>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -580,6 +581,22 @@
   });
   document.getElementById('preset').addEventListener('click', () => { save({}); refresh(); });
   refresh();
+
+  // Only offer the extension to browsers that can actually run it: desktop
+  // Chromium, no mobile. An offer you cannot accept is just noise.
+  (function(){
+    const ua = navigator.userAgent;
+    const mobile = /Android|iPhone|iPad|iPod|Mobile/i.test(ua);
+    const chromium = /Chrome\/|Chromium\/|Edg\//.test(ua) && !/OPR\//.test(ua);
+    if (mobile || !chromium) return;
+    const box = document.getElementById('extCta');
+    if (!box) return;
+    box.hidden = false;
+    if (window.gtag) gtag('event', 'extension_cta_view', { placement: 'plan' });
+    document.getElementById('extCtaBtn').addEventListener('click', function(){
+      if (window.gtag) gtag('event', 'extension_cta_click', { placement: 'plan' });
+    });
+  })();
 </script>
 
 <!-- Email gate -->
