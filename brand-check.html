@@ -678,9 +678,10 @@
     // The example card teaches what a verdict looks like before the first
     // search. It must not log analytics or rewrite the URL.
     function showExample() {
-      // Aquafina: a compact entry, so the example card stays about the same
-      // height as the hero copy instead of dragging the fold down.
-      const ex = BRANDS.find(b => b._collapse === "aquafina") || BRANDS[0];
+      // Owala: a careful verdict with a real trade-off (lead free, not plastic
+      // free) that shows every card feature once, at about half Brita's height,
+      // so the hero columns stay level.
+      const ex = BRANDS.find(b => b._collapse === "owala") || BRANDS[0];
       if (!ex) return;
       $("exampleLabel").hidden = false;
       renderBrand(ex, true);
