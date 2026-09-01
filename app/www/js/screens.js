@@ -13,9 +13,9 @@ const STATUS_GLYPH = { pass: "✓", caution: "!", fail: "✕", unknown: "?" };
 
 export function home(root, { onScan, onSearch, onPick, onStarter, onAllCategories, onSafari, onDismissSafari, recents, starters, canScan, scanReason, showSafari, categoryCount }) {
   const hero = el("div", "hero");
-  hero.appendChild(el("h1", null, "What is in your hand?"));
+  hero.appendChild(el("h1", null, "Check it before you buy it"));
   hero.appendChild(el("p", null,
-    "Scan the barcode, or search a brand. Every verdict is checked on four fronts."));
+    "In a shop or in a basket. Type a brand and product, or scan the barcode, and see all four checks."));
   root.appendChild(hero);
 
   // The button is always here, even where it cannot run. Hiding the app's main
@@ -35,7 +35,7 @@ export function home(root, { onScan, onSearch, onPick, onStarter, onAllCategorie
   box.appendChild(icon(ICONS.search, 18));
   const input = el("input");
   input.type = "search";
-  input.placeholder = "Search a brand or product";
+  input.placeholder = "Brand and product, like Brita Elite";
   input.autocapitalize = "none";
   input.autocomplete = "off";
   input.spellcheck = false;
@@ -144,8 +144,8 @@ export function renderResults(container, hits, onPick) {
  * carries the packaging read. It is rendered even when we know the brand,
  * because "good brand, PET bottle" is a real and common answer.
  */
-export function result(root, { index, match, scan, product, onOpen, onPick, onProduct }) {
-  const v = verdictFor(match, { title: scan ? scan.title : "", product });
+export function result(root, { index, match, scan, product, query, onOpen, onPick, onProduct }) {
+  const v = verdictFor(match, { title: (scan && scan.title) || query || "", product });
 
   const card = el("div", "verdict");
   const head = el("div", "verdict-head");

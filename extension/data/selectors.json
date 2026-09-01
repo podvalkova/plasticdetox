@@ -1,6 +1,6 @@
 {
-  "version": 2,
-  "note": "Anchored on data-* attributes Amazon has kept stable for years. search.title targets the h2 itself, not a span inside it: Amazon splits the title across two spans and the first is only the brand. Served from plasticdetox.org/extension/data/selectors.json so a layout change can be fixed without a store review.",
+  "version": 3,
+  "note": "Anchored on data-* attributes and ids Amazon has kept stable for years. search.title targets the h2 itself, not a span inside it: Amazon splits the title across two spans and the first is only the brand. detail.title carries both layouts: desktop puts the title in span#productTitle inside h1#title, mobile puts it in span#title and has no #productTitle at all, which is why the extension did nothing on an iPhone. The tag is part of the mobile selector because a bare #title would match the desktop h1 wrapper first. Mobile has no usable brand byline either, its store links are empty logo anchors, so detail.byline stays desktop only and mobile falls through to matching on the title. Served from plasticdetox.org/extension/data/selectors.json so a layout change can be fixed without a store review.",
   "search": {
     "card": "[data-component-type=\"s-search-result\"][data-asin]",
     "title": "[data-cy=\"title-recipe\"] h2, h2",
@@ -8,10 +8,10 @@
     "brandLine": "[data-cy=\"title-recipe\"] .a-row .a-size-base"
   },
   "detail": {
-    "isDetailPage": "#productTitle",
-    "title": "#productTitle",
+    "isDetailPage": "#productTitle, span#title",
+    "title": "#productTitle, span#title",
     "byline": "#bylineInfo",
-    "anchor": "#titleSection, #title_feature_div, #centerCol",
+    "anchor": "#titleSection, #title_feature_div, #centerCol, #ppd",
     "brandRow": "#productOverview_feature_div tr, #detailBullets_feature_div li, #productDetails_techSpec_section_1 tr"
   }
 }

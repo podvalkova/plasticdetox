@@ -121,9 +121,10 @@ function draw() {
       match: state.match,
       scan: state.scan,
       product: state.product,
+      query: state.query,
       onOpen: openExternal,
       onPick: openHit,
-      onProduct: (row) => go({ screen: "result", match: state.match, scan: state.scan, product: row }),
+      onProduct: (row) => go({ screen: "result", match: state.match, scan: state.scan, query: state.query, product: row }),
     });
     remember(state, v);
   } else if (state.screen === "unknown") {
@@ -171,21 +172,28 @@ function runSearch(query, container) {
   // cheap but not free, and a fast typist would otherwise run it per keystroke.
   searchTimer = setTimeout(() => {
     const hits = index.search(query, 20);
-    screens.renderResults(container, hits, openHit);
+    screens.renderResults(container, hits, (hit) => openHit(hit, query));
     // Only a query that found nothing is worth logging: that is the research
     // queue. A query that matched tells us nothing we do not already hold.
     if (query.trim().length >= 3 && !hits.length) logSearch(query, false);
   }, 120);
 }
 
-function openHit(hit) {
+function openHit(hit, query) {
   const match = hit.brand ? { brand: hit.brand, via: "search" } : hit.match;
   if (!match) return;
   go({
     screen: "result",
     match,
     scan: hit.scan || null,
-    title: hit.product ? hit.product.name : "",
+    // What they typed is the title. It is the same signal the extension reads
+    // off an Amazon listing, and it is what names the product rather than the
+    // company, so "Brita Elite" answers about the Elite filter.
+    //
+    // A row picked from search carries the brand too. Product rows are matched
+    // the way a listing reads, brand first, so "Elite and Longlast+ filters"
+    // on its own fails the very row it names.
+    query: hit.product ? `${match.brand.brand} ${hit.product.name}` : (query || ""),
   });
 }
 

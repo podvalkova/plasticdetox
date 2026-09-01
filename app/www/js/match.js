@@ -134,14 +134,21 @@ export class Index {
 
       // A product under the brand can answer a query the brand name cannot:
       // nobody searches "Aquasana", they search "shower filter".
+      //
+      // Terms are matched against the brand and the product name together.
+      // People type both, and the words are split across the two: "Brita
+      // Elite" has no match on either alone, because the brand is not called
+      // Elite and the product row is not called Brita.
       let bestProduct = null;
       for (const p of b.products || []) {
         const pn = norm(p.name);
+        const combined = name + " " + pn;
         let ps = 0;
         if (pn === q) ps = 900;
         else if (pn.startsWith(q)) ps = 600;
         else if (pn.includes(q)) ps = 450;
-        else if (terms.every((t) => pn.includes(t))) ps = 350;
+        else if (terms.every((t) => pn.includes(t))) ps = 380;
+        else if (terms.every((t) => combined.includes(t))) ps = 340;
         if (ps > score) { score = ps; bestProduct = p; }
       }
 
