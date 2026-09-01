@@ -8,7 +8,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = scene as? UIWindowScene else { return }
 
         window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = CAPBridgeViewController()
+        // ViewController, not CAPBridgeViewController: it is the subclass that
+        // registers the barcode scanner. The storyboard is not consulted here,
+        // so setting a custom class there did nothing and the scanner stayed
+        // unregistered on every device.
+        window?.rootViewController = ViewController()
         window?.makeKeyAndVisible()
 
         SceneDelegateProxy.shared.scene(scene, willConnectTo: session, options: connectionOptions)

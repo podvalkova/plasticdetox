@@ -47,6 +47,22 @@ export async function available() {
   return nativeSupported;
 }
 
+/**
+ * Why scanning is off, told apart rather than lumped together.
+ *
+ * "No scanner in this build" and "no camera on this device" look identical to
+ * someone holding a phone, and the first one is a bug. It shipped once: the
+ * plugin was never registered, every device reported no camera, and the app
+ * looked like it had simply chosen not to have a scanner.
+ */
+export function unavailableReason() {
+  const cap = window.Capacitor;
+  const native = !!(cap && cap.isNativePlatform && cap.isNativePlatform());
+  if (native && !plugin("BarcodeScanner")) return "missing-plugin";
+  if (native) return "no-camera";
+  return "web";
+}
+
 /** Ask for the camera. Returns true when we may scan. */
 export async function permit() {
   if (detect() !== "native") return true;

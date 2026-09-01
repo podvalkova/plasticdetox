@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		00B32635F0B679718971F1EF /* data in Resources */ = {isa = PBXBuildFile; fileRef = B5B08CBA1B3DFE447D334973 /* data */; };
 		0AE1D614EC7214178CB03EEF /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = CECE7D785F821BE0EBED52E2 /* PrivacyInfo.xcprivacy */; };
+		1C1A8F17326093C1305E3626 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2BA02B7728C2024B069A27 /* ViewController.swift */; };
 		2FAD9763203C412B000D30F8 /* config.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2FAD9762203C412B000D30F8 /* config.xml */; };
 		34A985ED1B35962F7B563ABA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E7FA516124C1414084494FD /* Foundation.framework */; };
 		50379B232058CBB4000EE86E /* capacitor.config.json in Resources */ = {isa = PBXBuildFile; fileRef = 50379B222058CBB4000EE86E /* capacitor.config.json */; };
@@ -56,6 +57,7 @@
 		209E31DE5838F8681893E4E2 /* icons */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = icons; path = ../../../../extension/icons; sourceTree = "<group>"; };
 		2EE947F8E31F573ED269D8FC /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2FAD9762203C412B000D30F8 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = config.xml; sourceTree = "<group>"; };
+		3B2BA02B7728C2024B069A27 /* ViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		50379B222058CBB4000EE86E /* capacitor.config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = capacitor.config.json; sourceTree = "<group>"; };
 		504EC3041FED79650016851F /* App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		504EC3071FED79650016851F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				50B271D01FEDC1A000F3C39B /* public */,
 				6854D50343A99995E741775B /* Plugins */,
 				CECE7D785F821BE0EBED52E2 /* PrivacyInfo.xcprivacy */,
+				3B2BA02B7728C2024B069A27 /* ViewController.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -348,6 +351,7 @@
 				504EC3081FED79650016851F /* AppDelegate.swift in Sources */,
 				9582B6852FE996820072D4E8 /* SceneDelegate.swift in Sources */,
 				670A671BDD0B793B33F7C1BD /* BarcodeScannerPlugin.swift in Sources */,
+				1C1A8F17326093C1305E3626 /* ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

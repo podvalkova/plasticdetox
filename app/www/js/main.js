@@ -100,6 +100,7 @@ function draw() {
   if (state.screen === "home") {
     screens.home(view, {
       canScan,
+      scanReason: scanner.unavailableReason(),
       recents: readRecents(),
       starters: STARTERS,
       categoryCount: categoryGroups().length,

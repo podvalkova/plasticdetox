@@ -11,7 +11,7 @@ const STATUS_GLYPH = { pass: "✓", caution: "!", fail: "✕", unknown: "?" };
 
 // ------------------------------------------------------------------- home
 
-export function home(root, { onScan, onSearch, onPick, onStarter, onAllCategories, onSafari, onDismissSafari, recents, starters, canScan, showSafari, categoryCount }) {
+export function home(root, { onScan, onSearch, onPick, onStarter, onAllCategories, onSafari, onDismissSafari, recents, starters, canScan, scanReason, showSafari, categoryCount }) {
   const hero = el("div", "hero");
   hero.appendChild(el("h1", null, "What is in your hand?"));
   hero.appendChild(el("p", null,
@@ -28,7 +28,7 @@ export function home(root, { onScan, onSearch, onPick, onStarter, onAllCategorie
   btn.disabled = !canScan;
   root.appendChild(btn);
   if (!canScan) {
-    root.appendChild(el("p", "scan-why", noCameraReason()));
+    root.appendChild(el("p", "scan-why", noCameraReason(scanReason)));
   }
 
   const box = el("div", "search");
@@ -98,9 +98,11 @@ export function home(root, { onScan, onSearch, onPick, onStarter, onAllCategorie
  * decoder unless it is Chrome. Those are different problems and a single
  * "scanning unavailable" would send someone looking in the wrong place.
  */
-function noCameraReason() {
-  const cap = window.Capacitor;
-  if (cap && cap.isNativePlatform && cap.isNativePlatform()) {
+function noCameraReason(reason) {
+  if (reason === "missing-plugin") {
+    return "The scanner is missing from this build. That is a bug, not your phone. Please report it.";
+  }
+  if (reason === "no-camera") {
     return "No camera on this device. On a real iPhone this opens the scanner.";
   }
   return "Scanning in a browser needs Chrome. Everything else here works, and on the iPhone the scanner opens the camera.";
@@ -146,7 +148,7 @@ export function result(root, { index, match, scan, product, onOpen, onPick, onPr
   const v = verdictFor(match, { title: scan ? scan.title : "", product });
 
   const card = el("div", "verdict");
-  const head = el("div", `verdict-head ${v.reviewed ? v.stance : "neutral"}`);
+  const head = el("div", "verdict-head");
 
   // A stance badge asserts that a person stood behind this verdict. Anything
   // we have not reviewed says so instead of wearing a colour it has not earned.
@@ -179,7 +181,7 @@ export function result(root, { index, match, scan, product, onOpen, onPick, onPr
   for (const [key, label] of FRONTS) {
     const f = (v.fronts && v.fronts[key]) || { status: "unknown" };
     const st = f.status || "unknown";
-    const line = el("div", "front");
+    const line = el("div", `front ${st}`);
     line.appendChild(el("span", `front-mark ${st}`, STATUS_GLYPH[st]));
     const body = el("div", "row-body");
     body.appendChild(el("div", "front-name", label));
