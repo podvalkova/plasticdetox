@@ -698,10 +698,9 @@
     // The example card teaches what a verdict looks like before the first
     // search. It must not log analytics or rewrite the URL.
     function showExample() {
-      // Owala: a careful verdict with a real trade-off (lead free, not plastic
-      // free) that shows every card feature once, at about half Brita's height,
-      // so the hero columns stay level.
-      const ex = BRANDS.find(b => b._collapse === "owala") || BRANDS[0];
+      // Brita's entry copy is deduplicated so each fact appears once and the
+      // card stays near the height of the hero copy beside it.
+      const ex = BRANDS.find(b => b._collapse === "brita") || BRANDS[0];
       if (!ex) return;
       $("exampleLabel").hidden = false;
       renderBrand(ex, true);
