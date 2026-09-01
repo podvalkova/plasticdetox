@@ -73,6 +73,12 @@ export default {
       return handleVetBalance(request, env, corsOrigin);
     }
 
+    // ===== Claim a freshly paid pass by Stripe session, so the buyer lands
+    // back on vet.html with checks live instead of waiting for the email =====
+    if (path === "/vet-claim" && request.method === "GET") {
+      return handleVetClaim(request, env, corsOrigin);
+    }
+
     if (request.method !== "POST") {
       return new Response("Method not allowed", { status: 405 });
     }
@@ -733,7 +739,15 @@ async function handleStripeWebhook(request, env) {
     if (s.metadata && s.metadata.type === "vet-pack") {
       const checks = Math.min(500, Math.max(1, Number(s.metadata.checks) || 0));
       if (email && checks) {
-        const pass = await mintVetPass(env, checks, email, s.metadata.pack || "");
+        // One pass per checkout session, shared with /vet-claim: whichever of
+        // the webhook and the success-page claim runs first mints it, the
+        // other finds it here. The email always carries the same token the
+        // buyer is already using.
+        let pass = s.id ? await env.BRAND_SEARCHES.get("vetsession:" + s.id) : null;
+        if (!pass) {
+          pass = await mintVetPass(env, checks, email, s.metadata.pack || "");
+          if (s.id) await env.BRAND_SEARCHES.put("vetsession:" + s.id, pass);
+        }
         await sendPassEmail(env, email, pass, checks);
       }
       return new Response(JSON.stringify({ received: true }), { status: 200, headers: { "Content-Type": "application/json" } });
@@ -1486,7 +1500,10 @@ async function handleVetCheckout(request, env, corsOrigin) {
     }
     const q = new URLSearchParams();
     q.append("mode", "payment");
-    q.append("success_url", "https://plasticdetox.org/vet.html?paid=1");
+    // Stripe substitutes the {CHECKOUT_SESSION_ID} placeholder at redirect
+    // time; vet.html trades it for the pass via /vet-claim so checks are
+    // usable the moment the buyer lands back, email link as backup.
+    q.append("success_url", "https://plasticdetox.org/vet.html?paid=1&session={CHECKOUT_SESSION_ID}");
     q.append("cancel_url", "https://plasticdetox.org/vet.html?canceled=1");
     q.append("metadata[type]", "vet-pack");
     q.append("metadata[pack]", pack);
@@ -1523,6 +1540,40 @@ async function handleVetGrant(request, env, corsOrigin) {
   if (body.email) await sendPassEmail(env, body.email, pass, checks);
   return json({ ok: true, pass, checks,
     url: `https://plasticdetox.org/vet.html?pass=${pass}` }, 200, corsOrigin);
+}
+
+// The success page trades its Stripe session id for the pass. The webhook
+// normally lands first and has stored the session -> pass mapping; we wait a
+// few seconds for it, then verify the payment with Stripe ourselves and mint,
+// so a slow or failing webhook cannot strand a paid customer on an empty page.
+async function handleVetClaim(request, env, corsOrigin) {
+  const sid = (new URL(request.url).searchParams.get("session") || "").trim();
+  if (!/^cs_[A-Za-z0-9_]{10,200}$/.test(sid)) {
+    return json({ ok: false, error: "Bad session" }, 400, corsOrigin);
+  }
+  for (let attempt = 0; attempt < 4; attempt++) {
+    const token = await env.BRAND_SEARCHES.get("vetsession:" + sid);
+    if (token) {
+      const rec = await env.BRAND_SEARCHES.get("vetpass:" + token, { type: "json" });
+      if (rec) return json({ ok: true, pass: token, balance: rec.balance }, 200, corsOrigin);
+    }
+    if (attempt < 3) await new Promise((r) => setTimeout(r, 1200));
+  }
+  if (!env.STRIPE_SECRET_KEY) {
+    return json({ ok: false, error: "Not configured" }, 503, corsOrigin);
+  }
+  const res = await fetch("https://api.stripe.com/v1/checkout/sessions/" + sid, {
+    headers: { Authorization: "Bearer " + env.STRIPE_SECRET_KEY },
+  });
+  const s = await res.json().catch(() => ({}));
+  if (!res.ok || s.payment_status !== "paid" || !s.metadata || s.metadata.type !== "vet-pack") {
+    return json({ ok: false, error: "Payment not found" }, 404, corsOrigin);
+  }
+  const checks = Math.min(500, Math.max(1, Number(s.metadata.checks) || 0));
+  const email = (s.customer_details && s.customer_details.email) || "";
+  const pass = await mintVetPass(env, checks, email, s.metadata.pack || "");
+  await env.BRAND_SEARCHES.put("vetsession:" + sid, pass);
+  return json({ ok: true, pass, balance: checks }, 200, corsOrigin);
 }
 
 async function handleVetBalance(request, env, corsOrigin) {

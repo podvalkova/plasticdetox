@@ -674,8 +674,8 @@
       : "We have not researched this brand yet."));
     root.appendChild(vetActions(brandName, title));
     root.appendChild(el("div", "pd-unmatched",
-      "Or request a free hand review and we will email you the verdict. "
-      + "This can take a few weeks."));
+      "Or request a free hand review and we will email you the verdict, "
+      + "usually within 2 business days."));
     root.appendChild(requestForm(brandName, "Request free review",
       `Thanks. We will research ${brandName} and email you the verdict.`));
 
