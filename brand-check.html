@@ -111,6 +111,7 @@
       --neutral: #52524F;  --neutral-bg: #F5F5F3; --neutral-border: #E7E5E4;
     }
 
+    html { scroll-behavior: smooth; }
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       background: var(--bg);
@@ -177,6 +178,14 @@
       padding: 9px 17px; border-radius: 999px; font-size: 14.5px; font-weight: 500; cursor: pointer; transition: all 0.15s;
     }
     .quick-chip:hover { border-color: var(--accent); color: var(--accent); }
+
+    .ext-teaser {
+      display: inline-flex; align-items: center; gap: 9px; margin-top: 18px;
+      background: var(--accent-wash); color: var(--accent-deep); border: 1px solid var(--accent-light);
+      border-radius: 999px; padding: 10px 18px; font-size: 14.5px; font-weight: 600; transition: background 0.15s;
+    }
+    .ext-teaser:hover { background: var(--accent-light); color: var(--accent-deep); }
+    .ext-teaser b { font-weight: 800; }
 
     .assurances { display: flex; flex-wrap: wrap; gap: 26px; margin-top: 34px; padding-top: 26px; border-top: 1px solid var(--border); }
     .assurances div { display: flex; align-items: center; gap: 10px; font-size: 15.5px; color: var(--body); }
@@ -283,7 +292,7 @@
     .legend-item p { font-size: 16.5px; line-height: 1.62; color: var(--body); margin-top: 18px; }
 
     /* ===== EXTENSION BAND (desktop Chromium only, revealed by JS) ===== */
-    .ext-band { margin-top: 104px; background: linear-gradient(180deg, #F1ECFE 0%, #EDE9FE 100%); }
+    .ext-band { margin-top: 104px; background: linear-gradient(180deg, #F1ECFE 0%, #EDE9FE 100%); scroll-margin-top: 70px; }
     .ext-grid { display: grid; grid-template-columns: 1.04fr 1fr; gap: 72px; align-items: center; padding-top: 88px; padding-bottom: 88px; }
     .ext-kicker { font-size: 13.5px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); }
     .ext-title { font-size: 50px; font-weight: 800; line-height: 1.03; letter-spacing: -0.033em; margin-top: 20px; max-width: 18em; }
@@ -358,7 +367,13 @@
     }
     @media (max-width: 620px) {
       h1 { font-size: 34px; }
-      .nav-links a { font-size: 14px; }
+      /* One centered, single-line nav under the logo; Home is reachable via
+         the logo, so it hides to keep all links on one line without wrapping. */
+      .site-head-in { flex-direction: column; align-items: center; gap: 8px; padding-top: 14px; padding-bottom: 12px; }
+      .nav-links { width: 100%; justify-content: center; gap: 16px; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+      .nav-links::-webkit-scrollbar { display: none; }
+      .nav-links a { font-size: 14px; white-space: nowrap; }
+      .nav-home { display: none; }
       .card { padding: 26px 24px; }
     }
   </style>
@@ -368,7 +383,7 @@
     <div class="shell site-head-in">
       <a href="index.html" class="logo">plastic<span>detox</span></a>
       <nav class="nav-links">
-        <a href="index.html">Home</a>
+        <a href="index.html" class="nav-home">Home</a>
         <a href="custom-plan.html">Free Plan</a>
         <a href="store.html">Store</a>
         <a href="resources.html">Resources</a>
@@ -393,6 +408,7 @@
             <button class="check-btn" onclick="if(searchEl.value.trim())lookup(searchEl.value)">Check it</button>
           </div>
           <div class="chips-row" id="quickRow"></div>
+          <a class="ext-teaser" id="extTeaser" href="#extension" hidden>Shopping on Amazon? Our free extension shows verdicts right on the page&nbsp;<b>&darr;</b></a>
           <div class="assurances">
             <div><b>&#10003;</b>Four checks per product</div>
             <div><b>&#10003;</b>Every verdict cites its source</div>
@@ -428,7 +444,7 @@
 
     <!-- Extension band. Shown only to desktop Chromium, because nobody else can
          install it and an offer you cannot accept is just noise. -->
-    <div class="ext-band" id="extBand" hidden>
+    <div class="ext-band" id="extension" hidden>
       <div class="shell ext-grid">
         <div>
           <div class="ext-kicker">Free extension &middot; desktop only</div>
@@ -578,10 +594,14 @@
       const mobile = /Android|iPhone|iPad|iPod|Mobile/i.test(ua);
       const chromium = /Chrome\/|Chromium\/|Edg\//.test(ua) && !/OPR\//.test(ua);
       if (mobile || !chromium) return;
-      const band = $("extBand");
+      const band = $("extension");
       if (!band) return;
       band.hidden = false;
+      $("extTeaser").hidden = false;
       gtag('event', 'extension_cta_view', { placement: 'brand_check' });
+      $("extTeaser").addEventListener('click', function () {
+        gtag('event', 'extension_teaser_click', { placement: 'brand_check_hero' });
+      });
       $("extInstallBtn").addEventListener('click', function () {
         gtag('event', 'extension_cta_click', {
           placement: 'brand_check',
