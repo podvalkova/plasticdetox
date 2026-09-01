@@ -11,49 +11,59 @@ const STATUS_GLYPH = { pass: "✓", caution: "!", fail: "✕", unknown: "?" };
 
 // ------------------------------------------------------------------- home
 
-export function home(root, { onScan, onSearch, onPick, onStarter, onAllCategories, onSafari, onDismissSafari, recents, starters, canScan, scanReason, showSafari, categoryCount }) {
+export function home(root, {
+  onScan, onSearch, onPick, onStarter, onAllCategories, onSafari, onDismissSafari,
+  onCheck, recents, starters, canScan, scanReason, showSafari, categoryCount, draft,
+}) {
   const hero = el("div", "hero");
   hero.appendChild(el("h1", null, "Check it before you buy it"));
   hero.appendChild(el("p", null,
-    "In a shop or in a basket. Type a brand and product, or scan the barcode, and see all four checks."));
+    "In a shop or in a basket. Name the brand and the product, and see all four checks."));
   root.appendChild(hero);
 
-  // The button is always here, even where it cannot run. Hiding the app's main
-  // feature on a simulator or a desktop browser made it look as though there
-  // was no scanner at all, which is a worse answer than saying why.
-  const btn = el("button", `scan-btn${canScan ? "" : " off"}`);
-  btn.appendChild(icon(ICONS.scan, 22));
-  btn.appendChild(el("span", null, "Scan a barcode"));
-  btn.onclick = canScan ? onScan : null;
-  btn.disabled = !canScan;
-  root.appendChild(btn);
-  if (!canScan) {
-    root.appendChild(el("p", "scan-why", noCameraReason(scanReason)));
-  }
+  // Brand and product are separate fields, as they are on the site. A single
+  // box invited a brand name on its own, and a brand verdict is the least
+  // useful answer we hold: half our product verdicts disagree with it.
+  const form = el("form", "check-form");
+  form.setAttribute("novalidate", "");
 
-  const box = el("div", "search");
-  box.appendChild(icon(ICONS.search, 18));
-  const input = el("input");
-  input.type = "search";
-  input.placeholder = "Brand and product, like Brita Elite";
-  input.autocapitalize = "none";
-  input.autocomplete = "off";
-  input.spellcheck = false;
-  input.oninput = () => onSearch(input.value, results);
-  box.appendChild(input);
-  root.appendChild(box);
+  const brand = field("Brand, for example Graza", (draft && draft.brand) || "");
+  const product = field("Product, for example Sizzle extra virgin olive oil", (draft && draft.product) || "");
+  form.appendChild(brand.wrap);
 
+  // Type ahead on the brand only. A brand we already hold should never need
+  // the second field filled in to be found.
   const results = el("div", "results");
-  root.appendChild(results);
+  brand.input.oninput = () => onSearch(brand.input.value, results, () => ({
+    brand: brand.input.value, product: product.input.value,
+  }));
+  form.appendChild(results);
+
+  form.appendChild(product.wrap);
+
+  const go = el("button", "cta", "Check it");
+  go.type = "submit";
+  form.appendChild(go);
+  form.onsubmit = (e) => {
+    e.preventDefault();
+    onCheck({ brand: brand.input.value.trim(), product: product.input.value.trim() });
+  };
+  root.appendChild(form);
+
+  const scan = el("button", `cta ghost${canScan ? "" : " off"}`);
+  scan.type = "button";
+  scan.appendChild(icon(ICONS.scan, 18));
+  scan.appendChild(el("span", null, "Or scan the barcode"));
+  scan.onclick = canScan ? onScan : null;
+  scan.disabled = !canScan;
+  root.appendChild(scan);
+  if (!canScan) root.appendChild(el("p", "scan-why", noCameraReason(scanReason)));
 
   if (showSafari) root.appendChild(safariPrompt(onSafari, onDismissSafari));
 
-  // History as a strip, not a list.
-  //
-  // Recents used to stack down the screen and push everything else off it, so
-  // after a shop's worth of scanning the home screen was a scrollback of things
-  // you had already looked at. It scrolls sideways now, one row however many
-  // there are, which is what a glance back at the last few actually needs.
+  // History as a strip, not a list. Stacked down the screen it pushed browsing
+  // off the bottom, so after a shop's worth of checking the first thing the app
+  // showed was a list of things already looked at.
   if (recents && recents.length) {
     root.appendChild(el("div", "section-title", "Recently checked"));
     const strip = el("div", "strip");
@@ -61,28 +71,27 @@ export function home(root, { onScan, onSearch, onPick, onStarter, onAllCategorie
     root.appendChild(strip);
   }
 
-  // Browsing is always offered, not only on a first launch. Someone with a
-  // history still needs a way into the parts of the database they have not
-  // touched, and that was the thing recents pushed off the screen.
   if (starters && starters.length) {
     root.appendChild(el("div", "section-title", "Browse"));
     for (const s of starters) {
       const row = el("button", "row");
+      row.type = "button";
       row.appendChild(el("span", "dot brand"));
       const body = el("div", "row-body");
       body.appendChild(el("div", "row-name", s.label));
       body.appendChild(el("div", "row-sub", s.sub));
       row.appendChild(body);
-      row.appendChild(el("span", "row-chev", "›"));
+      row.appendChild(el("span", "row-chev", "\u203a"));
       row.onclick = () => onStarter(s);
       root.appendChild(row);
     }
     const all = el("button", "row row-quiet");
+    all.type = "button";
     const body = el("div", "row-body");
     body.appendChild(el("div", "row-name", "All categories"));
     body.appendChild(el("div", "row-sub", `${categoryCount} categories researched`));
     all.appendChild(body);
-    all.appendChild(el("span", "row-chev", "›"));
+    all.appendChild(el("span", "row-chev", "\u203a"));
     all.onclick = onAllCategories;
     root.appendChild(all);
   }
@@ -91,30 +100,18 @@ export function home(root, { onScan, onSearch, onPick, onStarter, onAllCategorie
     "A verdict here is the same one the site publishes. We rate a product only when we have researched that exact product."));
 }
 
-/**
- * Why the camera is not available, in the words that fit the reason.
- *
- * A simulator has no camera at all. A desktop browser has one but no barcode
- * decoder unless it is Chrome. Those are different problems and a single
- * "scanning unavailable" would send someone looking in the wrong place.
- */
-function noCameraReason(reason) {
-  if (reason === "missing-plugin") {
-    return "The scanner is missing from this build. That is a bug, not your phone. Please report it.";
-  }
-  if (reason === "no-camera") {
-    return "No camera on this device. On a real iPhone this opens the scanner.";
-  }
-  return "Scanning in a browser needs Chrome. Everything else here works, and on the iPhone the scanner opens the camera.";
-}
-
-/** One thing you already checked, small enough that twenty of them fit. */
-function recentChip(r, onPick) {
-  const chip = el("button", "chip");
-  chip.appendChild(el("span", `dot ${r.stance || "neutral"}`));
-  chip.appendChild(el("span", "chip-name", r.name));
-  chip.onclick = () => onPick(r);
-  return chip;
+/** One labelled input in the check form. */
+function field(placeholder, value) {
+  const wrap = el("div", "field");
+  const input = el("input");
+  input.type = "text";
+  input.placeholder = placeholder;
+  input.value = value || "";
+  input.autocapitalize = "words";
+  input.autocomplete = "off";
+  input.spellcheck = false;
+  wrap.appendChild(input);
+  return { wrap, input };
 }
 
 export function renderResults(container, hits, onPick) {
@@ -314,50 +311,109 @@ function packagingCard(scan, onOpen) {
  * often the thing the person actually wanted to know, and offers to put the
  * brand in the queue.
  */
-export function unknown(root, { scan, query, onRequest, onOpen, onSearch }) {
-  const name = (scan && (scan.brandName || scan.title)) || query || "";
+export function unknown(root, { scan, brand, product, hasPass, onCheck, onRequest, onBuy, onOpen, onSearch, onPaste }) {
+  const named = [brand, product].filter(Boolean).join(" ").trim()
+    || (scan && (scan.brandName || scan.title)) || "";
 
-  const empty = el("div", "empty");
-  empty.appendChild(el("div", "empty-mark", "🔍"));
-  empty.appendChild(el("h2", null, name ? `We have not researched ${name}` : "No match yet"));
-  empty.appendChild(el("p", null, scan
-    ? "It is not in our database. Here is what the barcode still tells us."
-    : "Nothing in our database matches that. Try the brand name on its own."));
-  root.appendChild(empty);
+  const card = el("div", "verdict");
+  const head = el("div", "verdict-head");
+  head.appendChild(el("span", "badge neutral", "Not reviewed yet"));
+  head.appendChild(el("div", "verdict-brand",
+    named ? `We have not checked ${named} yet.` : "We have not checked that yet."));
+  card.appendChild(head);
+  root.appendChild(card);
 
-  if (scan) root.appendChild(packagingCard(scan, onOpen));
+  // Same two ways forward as the site: pay for the automated check now, or ask
+  // a person to do it for free and wait two business days.
+  const now = el("div", "card");
+  now.appendChild(el("h2", null, "Get it checked now"));
+  now.appendChild(el("p", null,
+    "Our research system runs the same four checks we use for every verdict: formula, packaging, recalls and lawsuits, independent tests. It answers in about a minute and shows its sources."));
 
-  if (name) {
-    const box = el("div", "card");
-    box.appendChild(el("h2", null, "Put it in the queue"));
-    box.appendChild(el("p", null,
-      `We research brands people ask for. Add your email and we will tell you when ${name} is done.`));
+  const log = el("div", "checklog");
+  now.appendChild(log);
+
+  if (hasPass) {
+    const go = el("button", "cta", "Run the check");
+    go.onclick = () => onCheck(go, log);
+    now.appendChild(go);
+  } else {
+    now.appendChild(el("p", "pkg-why", "Checks come in packs, starting at $5 for 20."));
+    const buy = el("button", "cta", "Get checks");
+    buy.onclick = onBuy;
+    now.appendChild(buy);
+    const paste = el("button", "cta ghost", "I already have a pass");
+    paste.onclick = onPaste;
+    now.appendChild(paste);
+  }
+  root.appendChild(now);
+
+  if (named) {
+    const free = el("div", "card");
+    free.appendChild(el("h2", null, "Or request a free review"));
+    free.appendChild(el("p", null,
+      `Leave your email and our team will research ${named} by hand and email you the verdict, usually within 2 business days.`));
     const input = el("input");
     input.type = "email";
-    input.placeholder = "you@example.com";
-    input.className = "req-email";
+    input.placeholder = "you@email.com";
     input.autocapitalize = "none";
     input.autocomplete = "email";
-    box.appendChild(input);
-    const btn = el("button", "cta", `Research ${name}`);
-    btn.onclick = () => onRequest(name, input.value, btn);
-    box.appendChild(btn);
-    root.appendChild(box);
+    free.appendChild(input);
+    const btn = el("button", "cta ghost", "Request free review");
+    btn.onclick = () => onRequest(input.value, btn);
+    free.appendChild(btn);
+    root.appendChild(free);
   }
+
+  if (scan) root.appendChild(packagingCard(scan, onOpen));
 
   const box = el("div", "search");
   box.appendChild(icon(ICONS.search, 18));
   const input = el("input");
   input.type = "search";
   input.placeholder = "Search our database instead";
-  input.value = name || "";
+  input.value = brand || "";
   input.autocapitalize = "none";
   input.oninput = () => onSearch(input.value, results);
   box.appendChild(input);
   root.appendChild(box);
   const results = el("div", "results");
   root.appendChild(results);
-  if (name) onSearch(name, results);
+  if (brand) onSearch(brand, results);
+}
+
+/** One front as it arrives from the check stream. */
+export function checkRow(step, front, label) {
+  const row = el("div", `front ${front.status === "none" ? "unknown" : front.status}`);
+  const glyph = { pass: "\u2713", caution: "!", fail: "\u2715" }[front.status] || "?";
+  row.appendChild(el("span", `front-mark ${front.status === "none" ? "unknown" : front.status}`, glyph));
+  const body = el("div", "row-body");
+  body.appendChild(el("div", "front-name", label));
+  if (front.note) body.appendChild(el("div", "front-note", front.note));
+  if (front.source) {
+    const a = el("a", "front-source", "source");
+    a.href = front.source;
+    a.target = "_blank";
+    a.rel = "noopener";
+    body.appendChild(a);
+  }
+  row.appendChild(body);
+  return row;
+}
+
+/** The verdict the check settled on, in the same words the site uses. */
+export function checkVerdict(event) {
+  const names = { good: "Good choice", careful: "Careful", skip: "Skip", unrated: "Not enough found" };
+  const box = el("div", "check-result");
+  box.appendChild(el("span", `badge ${event.verdict === "unrated" ? "neutral" : event.verdict}`,
+    names[event.verdict] || event.verdict));
+  if (event.label) box.appendChild(el("div", "check-label", event.label));
+  if (event.capNote) box.appendChild(el("p", "pkg-why", event.capNote));
+  if (event.consumed) {
+    box.appendChild(el("p", "pkg-why",
+      "1 check used. This research will join our public database after review, free for everyone."));
+  }
+  return box;
 }
 
 // ------------------------------------------------------------------ about

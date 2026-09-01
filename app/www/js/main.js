@@ -6,6 +6,7 @@
 import * as data from "./data.js";
 import * as scanner from "./scan.js";
 import * as screens from "./screens.js";
+import * as check from "./check.js";
 import { lookup, cleanCode } from "./upc.js";
 import { el, toast } from "./ui.js";
 
@@ -110,6 +111,8 @@ function draw() {
       onScan: startScan,
       onSearch: runSearch,
       onPick: openRecent,
+      draft: state.draft,
+      onCheck: runCheck,
       onStarter: (s) => go({ screen: "category", category: s.category, label: s.label }),
       onAllCategories: () => go({ screen: "categories" }),
       onSafari: () => go({ screen: "safari" }),
@@ -130,8 +133,13 @@ function draw() {
   } else if (state.screen === "unknown") {
     screens.unknown(view, {
       scan: state.scan,
-      query: state.query,
-      onRequest: requestResearch,
+      brand: state.brand || state.query || "",
+      product: state.product || "",
+      hasPass: !!check.getPass(),
+      onCheck: (btn, log) => runInstantCheck(state, btn, log),
+      onRequest: (email, btn) => requestResearch(state, email, btn),
+      onBuy: () => openExternal(check.buyUrl(state.brand || state.query, state.product)),
+      onPaste: promptForPass,
       onOpen: openExternal,
       onSearch: runSearch,
     });
@@ -166,13 +174,16 @@ infoBtn.onclick = () => go({ screen: "about" });
 // ----------------------------------------------------------------- search
 
 let searchTimer = null;
-function runSearch(query, container) {
+function runSearch(query, container, getDraft) {
   clearTimeout(searchTimer);
   // Debounced because a search over 960 brands with their product rows is
   // cheap but not free, and a fast typist would otherwise run it per keystroke.
   searchTimer = setTimeout(() => {
     const hits = index.search(query, 20);
-    screens.renderResults(container, hits, (hit) => openHit(hit, query));
+    screens.renderResults(container, hits, (hit) => {
+      const d = getDraft ? getDraft() : null;
+      openHit(hit, d ? [d.brand, d.product].filter(Boolean).join(" ") : query);
+    });
     // Only a query that found nothing is worth logging: that is the research
     // queue. A query that matched tells us nothing we do not already hold.
     if (query.trim().length >= 3 && !hits.length) logSearch(query, false);
@@ -195,6 +206,82 @@ function openHit(hit, query) {
     // on its own fails the very row it names.
     query: hit.product ? `${match.brand.brand} ${hit.product.name}` : (query || ""),
   });
+}
+
+/**
+ * The check, run against what we already hold.
+ *
+ * The brand names the entry and the product names the row inside it, which is
+ * the distinction that matters: Brita is a skip and its Elite filter is a
+ * careful. Anything we cannot answer falls through to the screen that offers
+ * an automated check or a person.
+ */
+function runCheck({ brand, product }) {
+  if (!brand) {
+    toast("Name the brand first.");
+    return;
+  }
+  const title = [brand, product].filter(Boolean).join(" ").trim();
+  const match = index.resolve({ brandName: brand, title });
+  if (match) {
+    go({ screen: "result", match, scan: null, query: title });
+    logSearch(title, true, match.brand.stance);
+  } else {
+    go({ screen: "unknown", scan: null, brand, product });
+    logSearch(title, false);
+  }
+}
+
+/**
+ * The automated check, streamed.
+ *
+ * Each front is rendered as it lands rather than after all four, because the
+ * whole thing takes about a minute and watching it work is most of what makes
+ * that minute bearable.
+ */
+async function runInstantCheck(state, button, log) {
+  const brand = state.brand || state.query || "";
+  const product = state.product || "";
+  button.disabled = true;
+  button.textContent = "Checking";
+  log.replaceChildren();
+
+  await check.run({
+    brand,
+    product,
+    onFront: (step, front) => {
+      log.appendChild(screens.checkRow(step, front, check.STEP_LABEL[step] || "Database"));
+    },
+    onDone: (event) => {
+      button.disabled = false;
+      button.textContent = "Run the check";
+      if (event.needsCredits) {
+        log.appendChild(el("p", "pkg-why", event.error || "No checks left on this pass."));
+        button.remove();
+        const buy = el("button", "cta", "Get more checks");
+        buy.onclick = () => openExternal(check.buyUrl(brand, product));
+        log.parentNode.appendChild(buy);
+        return;
+      }
+      if (event.error) {
+        log.appendChild(el("p", "pkg-why", event.error));
+        return;
+      }
+      log.appendChild(screens.checkVerdict(event));
+      button.remove();
+    },
+  });
+}
+
+/** A pass bought on the website, brought back by hand. */
+function promptForPass() {
+  const token = window.prompt("Paste your pass link or token");
+  if (!token) return;
+  // The email sends a link, so accept either the link or the bare token.
+  const value = (token.match(/[?&]pass=([^&\s]+)/) || [])[1] || token;
+  check.setPass(decodeURIComponent(value.trim()));
+  toast("Pass saved.");
+  render();
 }
 
 // ------------------------------------------------------------------- scan
@@ -240,7 +327,7 @@ async function resolveCode(rawCode) {
   hideBusy();
 
   if (!hit) {
-    go({ screen: "unknown", scan: { code, packaging: [] }, query: "" });
+    go({ screen: "unknown", scan: { code, packaging: [] }, brand: "", product: "" });
     logSearch(`barcode ${code}`, false);
     return;
   }
@@ -250,39 +337,37 @@ async function resolveCode(rawCode) {
     go({ screen: "result", match, scan: hit });
     logSearch(hit.brandName || hit.title, true, match.brand.stance);
   } else {
-    go({ screen: "unknown", scan: hit, query: hit.brandName || hit.title });
+    // The barcode database splits these the same way we ask people to.
+    go({ screen: "unknown", scan: hit, brand: hit.brandName || "", product: hit.title || "" });
     logSearch(hit.brandName || hit.title, false);
   }
 }
 
 // ---------------------------------------------------------------- requests
 
-async function requestResearch(brand, email, button) {
+async function requestResearch(state, email, button) {
   const clean = (email || "").trim();
   if (!clean.includes("@")) {
     toast("An email address, so we can tell you when it is done.");
     return;
   }
+  const brand = state.brand || state.query || "";
+  const product = state.product || "";
   button.disabled = true;
   button.textContent = "Sending";
   try {
-    const res = await fetch(`${WORKER}/brand-request`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ brand, email: clean }),
-    });
-    const body = await res.json().catch(() => ({}));
-    if (body.ok) {
-      button.textContent = "On the list";
-      toast(`${brand} is in the queue.`);
+    const ok = await check.requestReview({ brand, product, email: clean });
+    if (ok) {
+      button.textContent = "Requested";
+      toast("In the queue. We will email you within 2 business days.");
     } else {
       button.disabled = false;
-      button.textContent = `Research ${brand}`;
+      button.textContent = "Request free review";
       toast("That did not send. Try again in a moment.");
     }
   } catch {
     button.disabled = false;
-    button.textContent = `Research ${brand}`;
+    button.textContent = "Request free review";
     toast("No connection.");
   }
 }
@@ -368,6 +453,17 @@ async function openExternal(url) {
  */
 export async function openDeepLink(search) {
   const params = new URLSearchParams(search || "");
+
+  // plasticdetox://pass?pass=... is how a pass bought on the website reaches
+  // the app without anyone copying a token by hand.
+  const pass = params.get("pass") || params.get("token");
+  if (pass) {
+    check.setPass(pass);
+    toast("Pass saved.");
+    render();
+    return;
+  }
+
   const code = params.get("code");
   if (code) return resolveCode(code);
 

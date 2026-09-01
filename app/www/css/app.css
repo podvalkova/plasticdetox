@@ -299,3 +299,27 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
      system themes rather than risk a red that reads as an orange. */
   :root { color-scheme: light; }
 }
+
+/* ------------------------------------------------------- the check form */
+
+.check-form { display: block; }
+.field { margin-bottom: .6rem; }
+.field input {
+  width: 100%; padding: 1rem 1.1rem; font: inherit; font-size: 17px; color: var(--text);
+  border: 1px solid var(--border-strong); border-radius: 999px;
+  background: var(--surface); outline: none;
+  transition: border-color .15s, box-shadow .15s;
+}
+.field input:focus { border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-light); }
+.check-form .cta { margin-top: .3rem; }
+.cta.ghost.off { color: var(--faint); border-color: var(--border); }
+.cta svg { margin-right: .5rem; }
+
+/* Each of the four checks as it arrives from the stream. */
+.checklog:not(:empty) { margin: .9rem 0 .2rem; }
+.front-source { font-size: 12.5px; font-weight: 600; color: var(--accent); text-decoration: none; }
+.check-result {
+  margin-top: .9rem; padding-top: .9rem; border-top: 1px solid var(--border);
+  display: flex; flex-direction: column; align-items: flex-start; gap: .5rem;
+}
+.check-label { font-size: 15.5px; font-weight: 650; color: var(--text); }
