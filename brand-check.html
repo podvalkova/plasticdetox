@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Product Check: Skip, Careful, or Good Choice? | Plastic Detox</title>
-  <meta name="description" content="Type any product or brand and get an instant verdict: skip, careful, or good choice. Based on independent lab tests, product recalls, lawsuits, ingredients, and materials.">
+  <meta name="description" content="Get an instant verdict on any product or brand: skip, careful, or good choice. 950+ brands checked against independent lab tests, recalls, lawsuits, and materials.">
   <link rel="icon" type="image/png" sizes="48x48" href="favicon.png">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
@@ -20,7 +20,7 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Product Check: Skip, Careful, or Good Choice? | Plastic Detox">
-  <meta property="og:description" content="Type any product or brand and get an instant verdict based on independent lab tests, recalls, lawsuits, and materials.">
+  <meta property="og:description" content="Get an instant verdict on any product or brand: skip, careful, or good choice. 950+ brands checked against independent lab tests, recalls, lawsuits, and materials.">
   <meta property="og:url" content="https://plasticdetox.org/brand-check.html">
   <meta property="og:site_name" content="Plastic Detox">
   <meta property="og:image" content="https://plasticdetox.org/images/social-share.png">
@@ -29,7 +29,7 @@
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Brand Check: Skip, Careful, or Good Choice?">
-  <meta name="twitter:description" content="Type any brand and get an instant verdict based on independent tests, recalls, and materials.">
+  <meta name="twitter:description" content="Get an instant verdict on any product or brand: skip, careful, or good choice. 950+ brands checked.">
   <meta name="twitter:image" content="https://plasticdetox.org/images/social-share.png">
 
   <link rel="canonical" href="https://plasticdetox.org/brand-check.html">
@@ -43,13 +43,48 @@
     "operatingSystem": "Web",
     "url": "https://plasticdetox.org/brand-check.html",
     "description": "Look up any brand for a skip, careful, or good choice verdict based on independent lab tests, recalls, lawsuits, ingredients, and materials.",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
     "isPartOf": { "@type": "WebSite", "name": "Plastic Detox", "url": "https://plasticdetox.org" }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is Product Check free?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Searching the database of 950+ reviewed brands is free, with no account. If we have not reviewed a brand yet, you can run an instant automated check (packs start at $5 for 20 checks) or request a free hand review, usually answered within 2 business days." }
+      },
+      {
+        "@type": "Question",
+        "name": "Where do the verdicts come from?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Every verdict is drawn from our published research, which cites independent lab testing from sources like Consumer Reports, Lead Safe Mama, and Valisure, along with product recalls, class actions, ingredient labels, and material disclosures. Each result links to the article behind it." }
+      },
+      {
+        "@type": "Question",
+        "name": "What do Skip, Careful, and Good Choice mean?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Good Choice means materials, certifications, or independent testing back the product up. Careful means it is fine in some situations but comes with real caveats, like one line to avoid or mixed test results. Skip means it failed independent testing, was named in a recall or lawsuit, or is built from materials we steer away from." }
+      },
+      {
+        "@type": "Question",
+        "name": "Do brands pay to be listed or rated?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. There is no paid inclusion and no sponsored placement. Some Good Choice results include affiliate links, and they never influence a verdict: plenty of brands we earn nothing from rate Good Choice, and brands we could earn from rate Skip." }
+      },
+      {
+        "@type": "Question",
+        "name": "How is Product Check different from the browser extension?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Same verdicts, different place. The Product Check page works in any browser on any device. The free Chrome extension shows the verdict directly on Amazon search results and product pages while you shop, so you do not have to switch tabs." }
+      }
+    ]
   }
   </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600;1,700;1,800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600;1,700;1,800&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     [hidden] { display: none !important; }
@@ -69,7 +104,6 @@
       --border: #EDEDEA;
       --border-strong: #E7E7E3;
       --chip: #F5F5F3;
-      --mono: 'JetBrains Mono', monospace;
 
       --good: #047857;     --good-bg: #ECFDF5;    --good-border: #A7F3D0;
       --careful: #B45309;  --careful-bg: #FFFBEB; --careful-border: #FDE68A;
@@ -103,7 +137,7 @@
 
     /* ===== HERO ===== */
     .hero { display: grid; grid-template-columns: 1.02fr 1fr; gap: 72px; align-items: start; padding-top: 56px; }
-    .kicker { font-family: var(--mono); font-size: 14px; font-weight: 500; letter-spacing: 0.06em; color: var(--accent); }
+    .kicker { font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
     h1 { font-size: 66px; font-weight: 800; line-height: 1.0; letter-spacing: -0.035em; margin-top: 20px; text-wrap: pretty; }
     h1 em, .sec-title em, .ext-title em { font-style: italic; color: var(--accent); }
     .sub { font-size: 19px; line-height: 1.62; color: var(--muted); max-width: 30em; margin-top: 26px; text-wrap: pretty; }
@@ -133,11 +167,11 @@
     .sugg-item:last-child { border-bottom: none; }
     .sugg-item:hover, .sugg-item.active { background: var(--accent-wash); }
     .sugg-name { font-weight: 600; font-size: 15.5px; }
-    .sugg-cat { font-family: var(--mono); font-size: 11.5px; color: var(--mono-muted); }
+    .sugg-cat { font-size: 12.5px; color: var(--mono-muted); }
     .sugg-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
 
     .chips-row { display: flex; flex-wrap: wrap; align-items: center; gap: 9px; margin-top: 18px; }
-    .chips-label { font-family: var(--mono); font-size: 12.5px; color: var(--mono-muted); margin-right: 3px; }
+    .chips-label { font-size: 13px; font-weight: 500; color: var(--mono-muted); margin-right: 3px; }
     .quick-chip {
       border: 1px solid var(--border-strong); background: var(--surface); color: var(--body);
       padding: 9px 17px; border-radius: 999px; font-size: 14.5px; font-weight: 500; cursor: pointer; transition: all 0.15s;
@@ -149,7 +183,7 @@
     .assurances b { color: var(--accent); font-weight: 800; }
 
     /* ===== RESULT ===== */
-    .example-label { font-family: var(--mono); font-size: 12.5px; color: var(--mono-muted); margin-bottom: 12px; }
+    .example-label { font-size: 13px; font-weight: 500; color: var(--mono-muted); margin-bottom: 12px; }
     .result { scroll-margin-top: 96px; }
     .card {
       background: var(--surface); border: 1px solid var(--border); border-radius: 22px;
@@ -167,13 +201,13 @@
     .badge.careful { color: var(--careful); background: var(--careful-bg); }
     .badge.skip { color: var(--skip); background: var(--skip-bg); }
     .badge.neutral { color: var(--neutral); background: var(--neutral-bg); }
-    .cat-mono { font-family: var(--mono); font-size: 12.5px; letter-spacing: 0.04em; color: var(--mono-muted); }
+    .brand-cat { font-size: 13.5px; font-weight: 500; color: var(--mono-muted); }
 
     .brand-name { font-size: 27px; font-weight: 800; line-height: 1.2; letter-spacing: -0.025em; margin-top: 20px; }
     .reason { font-size: 16.5px; line-height: 1.65; color: var(--body); margin-top: 12px; }
 
     .meta-block { margin-top: 22px; }
-    .meta-label { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.07em; font-weight: 500; color: var(--mono-muted); margin-bottom: 8px; }
+    .meta-label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.07em; font-weight: 700; color: var(--mono-muted); margin-bottom: 8px; }
 
     .product-list { display: flex; flex-direction: column; gap: 8px; }
     .product-row {
@@ -218,7 +252,7 @@
       background: var(--text); border-radius: 999px; padding: 14px 26px; font-size: 15.5px; transition: background 0.15s;
     }
     .buy-link:hover { background: var(--accent); color: #fff; }
-    .evidence-chip { display: inline-block; font-family: var(--mono); font-size: 12px; background: var(--chip); border-radius: 999px; padding: 7px 13px; color: var(--body); }
+    .evidence-chip { display: inline-block; font-size: 13.5px; line-height: 1.55; background: var(--chip); border-radius: 14px; padding: 9px 15px; color: var(--body); }
     .sources { display: flex; flex-wrap: wrap; gap: 8px; }
     .source-link { font-size: 13.5px; font-weight: 600; color: var(--accent-deep); background: var(--accent-wash); border-radius: 999px; padding: 7px 14px; }
     .source-link:hover { background: var(--accent-light); color: var(--accent-deep); }
@@ -256,18 +290,18 @@
     .ext-lede { font-size: 18.5px; line-height: 1.62; color: var(--body); margin-top: 20px; max-width: 32em; text-wrap: pretty; }
     .ext-steps { display: grid; gap: 22px; margin-top: 34px; }
     .ext-step { display: grid; grid-template-columns: 30px 1fr; gap: 16px; align-items: start; }
-    .ext-step-num { font-family: var(--mono); font-size: 13px; font-weight: 500; color: var(--accent); padding-top: 3px; }
+    .ext-step-num { font-size: 13px; font-weight: 800; color: var(--accent); padding-top: 4px; }
     .ext-step b { display: block; font-size: 17.5px; font-weight: 800; letter-spacing: -0.01em; color: var(--text); }
     .ext-step p { font-size: 16px; line-height: 1.6; color: var(--muted); margin-top: 5px; }
     .ext-cta-row { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; margin-top: 38px; }
     .ext-install { background: var(--text); color: #fff; padding: 19px 34px; border-radius: 999px; font-size: 17px; font-weight: 700; transition: background 0.15s; }
     .ext-install:hover { background: var(--accent); color: #fff; }
     .ext-note { font-size: 15.5px; color: var(--muted); }
-    .ext-fine { font-family: var(--mono); font-size: 12.5px; line-height: 1.7; color: var(--faint); margin-top: 20px; max-width: 34em; }
+    .ext-fine { font-size: 13.5px; line-height: 1.7; color: var(--faint); margin-top: 20px; max-width: 34em; }
     .browser-frame { background: var(--surface); border-radius: 22px; overflow: hidden; box-shadow: 0 26px 60px -28px rgba(76,29,149,0.4); }
     .browser-bar { display: flex; align-items: center; gap: 7px; padding: 14px 16px; background: var(--chip); }
     .browser-dot { width: 9px; height: 9px; border-radius: 50%; background: #DEDEDA; flex-shrink: 0; }
-    .browser-url { flex: 1; margin-left: 10px; background: var(--surface); border-radius: 999px; padding: 6px 14px; font-family: var(--mono); font-size: 11px; color: var(--mono-muted); overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+    .browser-url { flex: 1; margin-left: 10px; background: var(--surface); border-radius: 999px; padding: 6px 14px; font-size: 11.5px; color: var(--mono-muted); overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
     .browser-frame img { width: 100%; height: auto; display: block; }
 
     /* ===== WHERE THIS COMES FROM ===== */
@@ -281,6 +315,20 @@
     .stat-row span:first-child { font-size: 16px; color: var(--body); }
     .stat-num { font-size: 28px; font-weight: 800; letter-spacing: -0.03em; }
     .stat-num.accent { color: var(--accent); }
+
+    /* ===== FAQ ===== */
+    .faq { max-width: 820px; padding-bottom: 96px; }
+    .faq .sec-title { font-size: 42px; text-align: center; }
+    .faq-list { margin-top: 36px; display: flex; flex-direction: column; gap: 12px; }
+    .faq-item { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; }
+    .faq-item summary {
+      cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;
+      gap: 16px; font-size: 17px; font-weight: 700; letter-spacing: -0.01em; padding: 20px 26px;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: "+"; font-size: 24px; font-weight: 400; line-height: 1; color: var(--accent); flex-shrink: 0; transition: transform 0.15s; }
+    .faq-item[open] summary::after { transform: rotate(45deg); }
+    .faq-item p { font-size: 16px; line-height: 1.65; color: var(--body); padding: 0 26px 22px; }
 
     /* ===== FOOTER ===== */
     .footer { background: var(--chip); }
@@ -305,6 +353,8 @@
       .ext-band { margin-top: 76px; }
       .ext-grid { padding-top: 52px; padding-bottom: 52px; }
       .origins { padding-top: 64px; padding-bottom: 64px; }
+      .faq { padding-bottom: 64px; }
+      .faq .sec-title { font-size: 30px; }
     }
     @media (max-width: 620px) {
       h1 { font-size: 34px; }
@@ -352,7 +402,7 @@
       </div>
 
       <div>
-        <div class="example-label" id="exampleLabel" hidden>Example result &mdash; this is what a verdict looks like</div>
+        <div class="example-label" id="exampleLabel" hidden>Example result: this is what a verdict looks like</div>
         <div class="result" id="result" aria-live="polite"></div>
       </div>
     </section>
@@ -383,7 +433,7 @@
         <div>
           <div class="ext-kicker">Free extension &middot; desktop only</div>
           <h2 class="ext-title">Stop leaving the store to <em>look things up</em>.</h2>
-          <p class="ext-lede">Searching this page works, but it means switching tabs mid-cart. The extension puts the same verdict on the Amazon page you are already reading &mdash; while the Add to Cart button is still on screen.</p>
+          <p class="ext-lede">Searching this page works, but it means switching tabs mid-cart. The extension puts the same verdict on the Amazon page you are already reading, while the Add to Cart button is still on screen.</p>
 
           <div class="ext-steps">
             <div class="ext-step">
@@ -397,14 +447,14 @@
               <span class="ext-step-num">02</span>
               <div>
                 <b>The reason, not just a rating</b>
-                <p>One line on what the problem is &mdash; the lead result, the PTFE coating, the open class action &mdash; linked to the article it came from.</p>
+                <p>One line on the actual problem, whether a lead result, a PTFE coating, or an open class action, linked to the article it came from.</p>
               </div>
             </div>
             <div class="ext-step">
               <span class="ext-step-num">03</span>
               <div>
                 <b>A cleaner option, in one click</b>
-                <p>When something is a Skip, it shows the better alternative from our research &mdash; so you are not left abandoning the cart.</p>
+                <p>When something is a Skip, it shows the better alternative from our research, so you are not left abandoning the cart.</p>
               </div>
             </div>
           </div>
@@ -412,8 +462,8 @@
           <div class="ext-cta-row">
             <a class="ext-install" id="extInstallBtn"
                href="https://chromewebstore.google.com/detail/lplncjbnohkgchjkhgdiljpjfgdmgelg"
-               target="_blank" rel="noopener">Add to Chrome &mdash; free</a>
-            <span class="ext-note">Also Edge, Brave, and Arc &middot; no account</span>
+               target="_blank" rel="noopener">Add to Chrome</a>
+            <span class="ext-note">Free &middot; also Edge, Brave, and Arc &middot; no account</span>
           </div>
           <p class="ext-fine">No account. No affiliate links. Verdicts come from our published research, bundled with the extension.</p>
         </div>
@@ -434,7 +484,7 @@
     <section class="shell origins">
       <div class="origins-copy">
         <h2 class="sec-title">Where this <em>comes from</em></h2>
-        <p>Every verdict is drawn from our own published research, citing independent lab testing, product recalls, class actions, ingredient labels, and material disclosures. Each result links to the article it came from so you can read the full reasoning.</p>
+        <p>Every verdict is drawn from <a href="resources.html">our own published research</a>, citing independent lab testing, product recalls, class actions, ingredient labels, and material disclosures. Each result links to the article it came from so you can read the full reasoning.</p>
         <p>Brands we have not reviewed yet can be run through the same checks on demand, or requested for a free hand review by our team.</p>
         <p class="fine">This is general information to help you shop, not a legal or medical claim about any company.</p>
       </div>
@@ -443,6 +493,32 @@
         <div class="stat-row"><span>Evidence-based guides</span><span class="stat-num">73</span></div>
         <div class="stat-row"><span>Checks per product</span><span class="stat-num">4</span></div>
         <div class="stat-row"><span>Sponsored placements</span><span class="stat-num accent">0</span></div>
+      </div>
+    </section>
+
+    <section class="shell faq">
+      <h2 class="sec-title">Common <em>questions</em></h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>Is Product Check free?</summary>
+          <p>Yes. Searching the database of 950+ reviewed brands is free, with no account. If we have not reviewed a brand yet, you can run an instant automated check (packs start at $5 for 20 checks) or request a free hand review, usually answered within 2 business days.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Where do the verdicts come from?</summary>
+          <p>Every verdict is drawn from <a href="resources.html">our published research</a>, which cites independent lab testing from sources like Consumer Reports, Lead Safe Mama, and Valisure, along with product recalls, class actions, ingredient labels, and material disclosures. Each result links to the article behind it.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What do Skip, Careful, and Good Choice mean?</summary>
+          <p>Good Choice means materials, certifications, or independent testing back the product up. Careful means it is fine in some situations but comes with real caveats, like one line to avoid or mixed test results. Skip means it failed independent testing, was named in a recall or lawsuit, or is built from materials we steer away from.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Do brands pay to be listed or rated?</summary>
+          <p>No. There is no paid inclusion and no sponsored placement. Some Good Choice results include affiliate links, and they never influence a verdict: plenty of brands we earn nothing from rate Good Choice, and brands we could earn from rate Skip.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How is this different from the browser extension?</summary>
+          <p>Same verdicts, different place. This page works in any browser on any device. Our free Chrome extension shows the verdict directly on Amazon search results and product pages while you shop, so you do not have to switch tabs.</p>
+        </details>
       </div>
     </section>
   </main>
@@ -602,7 +678,9 @@
     // The example card teaches what a verdict looks like before the first
     // search. It must not log analytics or rewrite the URL.
     function showExample() {
-      const ex = BRANDS.find(b => b._collapse === "brita") || BRANDS[0];
+      // Aquafina: a compact entry, so the example card stays about the same
+      // height as the hero copy instead of dragging the fold down.
+      const ex = BRANDS.find(b => b._collapse === "aquafina") || BRANDS[0];
       if (!ex) return;
       $("exampleLabel").hidden = false;
       renderBrand(ex, true);
@@ -682,7 +760,7 @@
       resultEl.innerHTML =
         '<article class="card">' +
           '<div class="verdict-row"><span class="badge ' + b.stance + '"><span class="dot"></span>' + STANCE_LABEL[b.stance] + '</span>' +
-          '<span class="cat-mono">' + esc(b.category) + '</span></div>' +
+          '<span class="brand-cat">' + esc(b.category) + '</span></div>' +
           '<h2 class="brand-name">' + esc(b.brand) + '</h2>' +
           '<p class="reason">' + esc(b.reason) + '</p>' +
           rollupHtml + productsHtml + cautionHtml + buyHtml + evHtml + altHtml + srcHtml +
