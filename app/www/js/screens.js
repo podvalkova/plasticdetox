@@ -114,6 +114,32 @@ function field(placeholder, value) {
   return { wrap, input };
 }
 
+/** One thing you already checked, small enough that twenty of them fit. */
+function recentChip(r, onPick) {
+  const chip = el("button", "chip");
+  chip.type = "button";
+  chip.appendChild(el("span", `dot ${r.stance || "neutral"}`));
+  chip.appendChild(el("span", "chip-name", r.name));
+  chip.onclick = () => onPick(r);
+  return chip;
+}
+
+/**
+ * Why the camera is not available, told apart rather than lumped together.
+ *
+ * "No scanner in this build" and "no camera on this device" look identical to
+ * someone holding a phone, and only the first is a bug.
+ */
+function noCameraReason(reason) {
+  if (reason === "missing-plugin") {
+    return "The scanner is missing from this build. That is a bug, not your phone. Please report it.";
+  }
+  if (reason === "no-camera") {
+    return "No camera on this device. On a real iPhone this opens the scanner.";
+  }
+  return "Scanning in a browser needs Chrome. Everything else here works, and on the iPhone the scanner opens the camera.";
+}
+
 export function renderResults(container, hits, onPick) {
   container.replaceChildren();
   if (!hits.length) return;
