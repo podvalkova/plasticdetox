@@ -123,6 +123,35 @@ tr:hover td{background:var(--sunk)}
 .mark-l{font-size:12px;color:var(--muted)}
 .mat{font-size:12px;color:var(--body)}
 .mat.none{color:var(--faint)}
+#drawer{position:fixed;inset:0;z-index:40;background:rgba(0,0,0,.45);
+  display:flex;justify-content:flex-end}
+.sheet{background:var(--surface);width:min(560px,100%);height:100%;overflow-y:auto;
+  padding:2rem 1.9rem 4rem;border-left:1px solid var(--border);position:relative}
+.close{position:absolute;top:1rem;right:1.1rem;width:2rem;height:2rem;border:0;border-radius:999px;
+  background:var(--sunk);color:var(--body);font-size:1.2rem;line-height:1;cursor:pointer}
+.d-brand{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--accent)}
+#d-name{font-size:1.45rem;font-weight:800;letter-spacing:-.03em;margin-top:.4rem;line-height:1.2}
+.d-meta{color:var(--muted);font-size:13px;margin-top:.3rem}
+.d-sec{margin-top:1.7rem}
+.d-sec h3{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--faint);font-weight:500;margin-bottom:.7rem}
+.qa{display:grid;grid-template-columns:1.6rem 1fr;gap:.55rem .7rem;align-items:start}
+.qa .qn{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--faint);padding-top:.15rem}
+.qa .q{font-size:13.5px;color:var(--muted);line-height:1.45}
+.qa .a{font-size:14.5px;font-weight:600;margin-top:.1rem}
+.qa .a.dim{font-weight:400;color:var(--faint)}
+.qa .src{font-size:11.5px;color:var(--faint);font-family:'JetBrains Mono',monospace;margin-top:.15rem}
+.d-row{display:flex;gap:.7rem;align-items:flex-start;padding:.6rem 0;border-bottom:1px solid var(--border)}
+.d-row:last-child{border-bottom:0}
+.d-row .nm{font-size:13.5px;font-weight:600;min-width:6.5rem}
+.d-row .nt{font-size:13px;color:var(--muted);line-height:1.5}
+.d-row .og{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--faint);
+  border:1px solid var(--border-strong);border-radius:4px;padding:.05rem .3rem;white-space:nowrap}
+.verdict-line{display:flex;align-items:center;gap:.6rem;margin-top:1rem}
+.why{font-size:13.5px;color:var(--body);line-height:1.55;margin-top:.6rem;
+  background:var(--sunk);border-radius:10px;padding:.7rem .85rem}
+tr{cursor:pointer}
 footer{margin-top:2.4rem;padding-top:1.2rem;border-top:1px solid var(--border);
   color:var(--muted);font-size:12.5px;line-height:1.7}
 </style>
@@ -177,6 +206,13 @@ footer{margin-top:2.4rem;padding-top:1.2rem;border-top:1px solid var(--border);
       </tr></thead>
       <tbody id="rows"></tbody>
     </table>
+  </div>
+
+  <div id="drawer" hidden>
+    <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="d-name">
+      <button class="close" id="d-close" aria-label="Close">&times;</button>
+      <div id="d-body"></div>
+    </div>
   </div>
 
   <footer>
@@ -248,7 +284,9 @@ function build(brands){
       });
       if(e.packagingMaterial) withMat++;
       ROWS.push([b.brand, p.name||"", b.category||"", v, e.packagingMaterial||"", checks,
-                 (e.frontNotes||{}).packaging||"", fr.packaging||"unassessed"]);
+                 (e.frontNotes||{}).packaging||"", fr.packaging||"unassessed",
+                 {fronts:fr, origin:or, notes:e.frontNotes||{}, answers:e.packagingAnswers||null,
+                  why:e.why||"", asins:p.asins||[], dated:e.dated||"", scope:e.scope||""}]);
     }
   }
 
@@ -304,6 +342,9 @@ function render(){
   const frag = document.createDocumentFragment();
   for(const r of rows.slice(0,600)){
     const tr = el("tr");
+    tr.tabIndex = 0;
+    tr.addEventListener("click", ()=>openDetail(r));
+    tr.addEventListener("keydown", e=>{ if(e.key==="Enter"){ e.preventDefault(); openDetail(r); }});
     tr.appendChild(el("td","b",r[0]));
     tr.appendChild(el("td",null,r[1]));
     tr.appendChild(el("td","dim",r[2]));
@@ -326,6 +367,91 @@ function render(){
   document.getElementById("count").textContent =
     rows.length + " of " + ROWS.length + (rows.length>600 ? " (showing 600)" : "");
 }
+
+const Q = [
+  ["Does the product touch it?",
+   "Contents, mouth or skin. A plastic kettle body around a stainless interior is not a finding."],
+  ["Would that contact matter?",
+   "Fat pulls more out than water, heat drives it, mouthing abrades, and time multiplies all three."],
+  ["What are the contact parts made of?", "Only the parts the product actually touches."],
+  ["Which polymer?", "Where we know it. An independent test is better evidence than a name."],
+];
+const FRONT_LABEL = {formula:"Formula",packaging:"Packaging",legal:"Recalls & lawsuits",testing:"Independent tests"};
+
+function answerFor(i, a){
+  if(!a) return ["Not recorded", true, ""];
+  if(i===0){
+    if(!a.contact) return ["Not established", true, ""];
+    const from = a.contactFrom === "recorded" ? "researched" : a.contactFrom;
+    return [a.contact === "yes" ? "Yes" : a.contact === "no" ? "No, nothing it holds touches it" : "Unknown",
+            a.contact === "unknown", from ? "from " + from : ""];
+  }
+  if(i===1){
+    if(a.contact !== "yes") return ["Not asked, the answer above ends it", true, ""];
+    const bits = [];
+    if(a.base) bits.push(a.base + " contents");
+    if(a.heated) bits.push("heated");
+    if(a.mouthed) bits.push("mouthed or chewed");
+    if(a.reuse) bits.push(a.reuse + " contact");
+    return [bits.length ? bits.join(", ") : "Not recorded", !bits.length, ""];
+  }
+  if(i===2) return [a.material || "Not recorded", !a.material, a.source ? "source " + a.source : ""];
+  return [a.material && /pet|pvc|hdpe|ldpe|pp|ps|pc|tritan/i.test(a.material)
+            ? a.material : "Not named", true, ""];
+}
+
+function openDetail(r){
+  const d = r[8], a = d.answers;
+  const body = document.getElementById("d-body");
+  body.replaceChildren();
+  body.appendChild(el("div","d-brand", r[0]));
+  const h = el("h2", null, r[1]); h.id = "d-name"; body.appendChild(h);
+  body.appendChild(el("div","d-meta", [r[2], d.scope, d.asins.join(", ")].filter(Boolean).join(" · ")));
+
+  const vl = el("div","verdict-line");
+  vl.appendChild(el("span","pill "+r[3], r[3]));
+  if(d.dated) vl.appendChild(el("span","d-meta","last changed " + d.dated));
+  body.appendChild(vl);
+  if(d.why) body.appendChild(el("div","why", d.why));
+
+  const pk = el("div","d-sec");
+  pk.appendChild(el("h3", null, "Packaging, question by question"));
+  const grid = el("div","qa");
+  Q.forEach((q, i)=>{
+    const [ans, dim, note] = answerFor(i, a);
+    grid.appendChild(el("div","qn", String(i+1)));
+    const cell = el("div");
+    cell.appendChild(el("div","q", q[0]));
+    cell.appendChild(el("div","a"+(dim?" dim":""), ans));
+    if(note) cell.appendChild(el("div","src", note));
+    grid.appendChild(cell);
+  });
+  pk.appendChild(grid);
+  const concl = el("div","why");
+  concl.appendChild(el("span","mark "+r[7]));
+  concl.appendChild(document.createTextNode(r[6] || "Not assessed."));
+  pk.appendChild(concl);
+  body.appendChild(pk);
+
+  const fs = el("div","d-sec");
+  fs.appendChild(el("h3", null, "The four checks"));
+  for(const f of FRONTS){
+    const row = el("div","d-row");
+    row.appendChild(el("span","mark "+((d.fronts[f]&&d.fronts[f]!=="unassessed"&&d.fronts[f]!=="unknown")?d.fronts[f]:"")));
+    const bd = el("div");
+    bd.appendChild(el("div","nm", FRONT_LABEL[f] + " — " + (d.fronts[f]||"not checked")));
+    if(d.notes[f]) bd.appendChild(el("div","nt", d.notes[f]));
+    row.appendChild(bd);
+    row.appendChild(el("span","og", d.origin[f] || "none"));
+    fs.appendChild(row);
+  }
+  body.appendChild(fs);
+  document.getElementById("drawer").hidden = false;
+}
+document.getElementById("d-close").addEventListener("click", ()=>{document.getElementById("drawer").hidden=true;});
+document.getElementById("drawer").addEventListener("click", e=>{
+  if(e.target.id==="drawer") document.getElementById("drawer").hidden = true;});
+document.addEventListener("keydown", e=>{ if(e.key==="Escape") document.getElementById("drawer").hidden=true;});
 
 for(const btn of document.querySelectorAll(".chip")){
   btn.addEventListener("click", ()=>{

@@ -259,6 +259,18 @@ def main():
                 e.setdefault("frontOrigin", {}).pop("packaging", None)
                 e.setdefault("frontNotes", {})["packaging"] = reason + "."
                 e.pop("packagingMaterial", None)
+                e["packagingAnswers"] = {
+                    "contact": pack.get("contact") or "",
+                    "contactFrom": pack.get("contactFrom") or "",
+                    "base": pack.get("base") or "",
+                    "heated": bool(pack.get("heated")),
+                    "mouthed": bool(pack.get("mouthed")),
+                    "reuse": pack.get("reuse") or "",
+                    "material": pack.get("material") or "",
+                    "source": pack.get("source") or "",
+                    "checked": pack.get("checked") or pack.get("checkedListing") or "",
+                    "open": reason,
+                }
                 continue
             e = p.setdefault("ext", {})
             e.setdefault("fronts", {})["packaging"] = status
@@ -268,7 +280,20 @@ def main():
             if mat:
                 e["packagingMaterial"] = ", ".join(
                     x.strip() for x in re.split(r"[,^/;+&]", str(pack.get("material"))) if x.strip())
-            e["packagingContact"] = pack.get("contact")
+            # Keep the answers, not just the conclusion. A mark with no working
+            # is the same problem as a status with no note: you have to take it
+            # on trust, and you cannot tell a researched answer from a default.
+            e["packagingAnswers"] = {
+                "contact": pack.get("contact"),
+                "contactFrom": pack.get("contactFrom") or "recorded",
+                "base": pack.get("base") or "",
+                "heated": bool(pack.get("heated")),
+                "mouthed": bool(pack.get("mouthed")),
+                "reuse": pack.get("reuse") or "",
+                "material": pack.get("material") or "",
+                "source": pack.get("source") or "",
+                "checked": pack.get("checked") or pack.get("checkedListing") or "",
+            }
             applied[status] += 1
 
     total = sum(v for k, v in applied.items() if k != "skipped")
