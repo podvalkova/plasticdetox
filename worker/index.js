@@ -28,6 +28,12 @@ function resolveCors(origin) {
   // A Safari web extension injects into the page, so its calls arrive with a
   // safari-web-extension:// origin whose id changes per install.
   if (origin.startsWith("safari-web-extension://")) return origin;
+  // A dev server runs on a port, and http://localhost is not the same origin as
+  // http://localhost:4455. Every route here is either public or password gated,
+  // so allowing a local port costs nothing and makes the internal pages
+  // testable before they are deployed.
+  if (/^http:\/\/localhost(:\d+)?$/.test(origin)) return origin;
+  if (/^http:\/\/127\.0\.0\.1(:\d+)?$/.test(origin)) return origin;
   return ALLOWED_ORIGINS[0];
 }
 
@@ -48,6 +54,11 @@ export default {
     }
 
     const path = new URL(request.url).pathname;
+
+    // ===== The internal database view: is this password right? =====
+    if (path === "/db-auth") {
+      return handleDbAuth(request, env, corsOrigin);
+    }
 
     // ===== iOS app: which web bundle should this install be running? =====
     if (path === "/app-update") {
@@ -241,6 +252,33 @@ async function logBrandSearch(env, brand, matched, verdict, requested) {
 }
 
 // POST /brand-search-log  { brand, matched, verdict }
+/**
+ * The gate on the internal database view.
+ *
+ * A real check rather than a string compared in the page, so the password is
+ * never shipped to the browser. It is worth saying plainly that this hides the
+ * view, not the data: brand-data.json is served publicly because the extension
+ * and the app read it. Making the data private means moving that file behind
+ * this worker too.
+ */
+async function handleDbAuth(request, env, corsOrigin) {
+  if (request.method !== "POST") return json({ ok: false }, 405, corsOrigin);
+  try {
+    const { password } = await request.json();
+    const expected = env.DB_PASSWORD || "";
+    const given = String(password || "");
+    // Constant time-ish: compare every character rather than bailing on the
+    // first mismatch, so response time says nothing about how much was right.
+    let same = expected.length > 0 && given.length === expected.length;
+    for (let i = 0; i < Math.max(given.length, expected.length); i++) {
+      if (given[i] !== expected[i]) same = false;
+    }
+    return json({ ok: same }, same ? 200 : 401, corsOrigin);
+  } catch (e) {
+    return json({ ok: false }, 400, corsOrigin);
+  }
+}
+
 /**
  * The over the air update check.
  *

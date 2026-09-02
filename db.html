@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Product Database</title>
+<link rel="icon" type="image/png" sizes="48x48" href="favicon.png">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BBCB36BGP2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-BBCB36BGP2');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --accent:#7C3AED; --accent-deep:#5B21B6; --accent-light:#EDE9FE; --accent-wash:#F1ECFE;
+  --bg:#FAFAF9; --surface:#FFFFFF; --sunk:#F5F5F3;
+  --text:#0A0A0A; --body:#52524F; --muted:#71716E; --faint:#8B8B88;
+  --border:#EDEDEA; --border-strong:#E7E7E3;
+  --good:#047857; --good-bg:#ECFDF5;
+  --careful:#B45309; --careful-bg:#FFFBEB;
+  --skip:#B91C1C; --skip-bg:#FEF2F2;
+  --neutral:#52524F; --neutral-bg:#F5F5F3;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#131211; --surface:#1B1A18; --sunk:#221F1D;
+  --text:#F7F6F4; --body:#C6C2BC; --muted:#9A958E; --faint:#7C7770;
+  --border:#2B2825; --border-strong:#3A3632;
+  --accent:#A78BFA; --accent-deep:#C4B5FD; --accent-light:#2A2140; --accent-wash:#241E33;
+  --good:#34D399; --good-bg:#0C2A20; --careful:#FBBF24; --careful-bg:#2E220A;
+  --skip:#F87171; --skip-bg:#2E1414; --neutral:#C6C2BC; --neutral-bg:#252220;
+}}
+*{box-sizing:border-box;margin:0;padding:0}
+/* A display rule on an element beats the hidden attribute, so the gate stayed
+   on screen after it was hidden. */
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--text);font-family:Inter,-apple-system,sans-serif;
+  line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1240px;margin:0 auto;padding:0 clamp(1rem,4vw,2.5rem) 5rem}
+button,input{font:inherit}
+
+/* gate */
+#gate{min-height:100vh;display:grid;place-content:center;justify-items:center;gap:1rem;padding:2rem}
+#gate h1{font-size:1.6rem;font-weight:800;letter-spacing:-.03em}
+#gate p{color:var(--muted);font-size:.95rem}
+#gate form{display:flex;gap:.5rem;margin-top:.5rem}
+#gate input{padding:.7rem 1rem;border:1px solid var(--border-strong);border-radius:999px;
+  background:var(--surface);color:var(--text);outline:none;min-width:15rem}
+#gate input:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-light)}
+#gate button{padding:.7rem 1.4rem;border:0;border-radius:999px;background:var(--text);
+  color:var(--bg);font-weight:700;cursor:pointer}
+#gate .err{color:var(--skip);font-size:.88rem;min-height:1.2em}
+
+header{padding:2.6rem 0 1.4rem}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--accent);font-weight:500}
+h1.title{font-size:clamp(1.8rem,3.6vw,2.6rem);font-weight:800;letter-spacing:-.035em;margin-top:.6rem}
+.sub{color:var(--muted);font-size:.98rem;margin-top:.5rem}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(146px,1fr));gap:1px;
+  background:var(--border);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-top:1.6rem}
+.cell{background:var(--surface);padding:1rem 1.1rem}
+.n{font-family:'JetBrains Mono',monospace;font-size:1.65rem;font-weight:500;letter-spacing:-.03em;
+  font-variant-numeric:tabular-nums}
+.l{font-size:12.5px;color:var(--muted);margin-top:.1rem;line-height:1.4}
+.n.good{color:var(--good)} .n.careful{color:var(--careful)} .n.skip{color:var(--skip)}
+
+h2{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;
+  color:var(--muted);margin:2.2rem 0 .8rem}
+
+.bars{display:flex;flex-direction:column;gap:.7rem}
+.bar-row{display:grid;grid-template-columns:8.5rem 1fr auto;gap:.9rem;align-items:center}
+.bar-name{font-size:14px;font-weight:600}
+.bar{height:9px;border-radius:999px;background:var(--sunk);overflow:hidden;display:flex}
+.bar i{display:block;height:100%}
+.bar i.ev{background:var(--accent)} .bar i.inf{background:var(--careful)}
+.bar-num{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted);
+  font-variant-numeric:tabular-nums;white-space:nowrap}
+.key{display:flex;gap:1rem;font-size:12px;color:var(--muted);margin-top:.6rem}
+.key span{display:inline-flex;align-items:center;gap:.35rem}
+.key i{width:9px;height:9px;border-radius:2px;display:block}
+
+.controls{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center;margin:1.4rem 0 .6rem}
+.controls input{flex:1 1 220px;padding:.55rem .95rem;border:1px solid var(--border-strong);
+  border-radius:999px;background:var(--surface);color:var(--text);outline:none}
+.controls input:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-light)}
+.chip{padding:.42rem .85rem;border-radius:999px;border:1px solid var(--border-strong);
+  background:var(--surface);color:var(--body);font-size:13px;cursor:pointer}
+.chip[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff}
+.count{margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted)}
+
+.scroll{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th{text-align:left;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--faint);font-weight:500;padding:.5rem .65rem;
+  border-bottom:1px solid var(--border-strong);white-space:nowrap;cursor:pointer;background:var(--bg)}
+th:hover{color:var(--accent)}
+td{padding:.55rem .65rem;border-bottom:1px solid var(--border);vertical-align:middle}
+tr:hover td{background:var(--sunk)}
+.b{font-weight:650}
+.dim{color:var(--muted)}
+.mono{font-family:'JetBrains Mono',monospace;font-variant-numeric:tabular-nums}
+.pill{display:inline-flex;align-items:center;gap:.35rem;padding:.15rem .55rem;border-radius:999px;
+  font-size:10.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;white-space:nowrap}
+.pill::before{content:"";width:6px;height:6px;border-radius:999px;background:currentColor}
+.pill.good{color:var(--good);background:var(--good-bg)}
+.pill.careful{color:var(--careful);background:var(--careful-bg)}
+.pill.skip{color:var(--skip);background:var(--skip-bg)}
+.pill.unrated,.pill.neutral{color:var(--neutral);background:var(--neutral-bg)}
+.sq{display:inline-flex;gap:3px}
+.sq i{width:10px;height:10px;border-radius:2.5px;border:1.5px solid var(--border-strong);display:block}
+.sq i.ev{background:var(--accent);border-color:var(--accent)}
+.sq i.inf{background:var(--careful);border-color:var(--careful)}
+.mat{font-size:12px;color:var(--body)}
+.mat.none{color:var(--faint)}
+footer{margin-top:2.4rem;padding-top:1.2rem;border-top:1px solid var(--border);
+  color:var(--muted);font-size:12.5px;line-height:1.7}
+</style>
+</head>
+<body>
+
+<div id="gate">
+  <div class="eyebrow">Plastic Detox</div>
+  <h1>Product database</h1>
+  <p>Internal view. Enter the password.</p>
+  <form id="gate-form">
+    <input type="password" id="pw" autocomplete="current-password" aria-label="Password" autofocus>
+    <button type="submit">Open</button>
+  </form>
+  <div class="err" id="err"></div>
+</div>
+
+<div class="wrap" id="app" hidden>
+  <header>
+    <div class="eyebrow">Internal &middot; <span id="stamp"></span></div>
+    <h1 class="title">Product database</h1>
+    <p class="sub" id="sub"></p>
+  </header>
+
+  <div class="grid" id="tiles"></div>
+
+  <h2>Evidence behind each check</h2>
+  <div class="bars" id="bars"></div>
+  <div class="key">
+    <span><i style="background:var(--accent)"></i> recorded, with a source</span>
+    <span><i style="background:var(--careful)"></i> inferred from a note</span>
+    <span><i style="background:var(--sunk)"></i> not checked</span>
+  </div>
+
+  <h2>Every product</h2>
+  <div class="controls">
+    <input type="search" id="q" placeholder="Search a brand, product or material">
+    <button class="chip" data-f="store" aria-pressed="false">Needs work</button>
+    <button class="chip" data-f="nomat" aria-pressed="false">No material</button>
+    <button class="chip" data-v="good" aria-pressed="false">Good</button>
+    <button class="chip" data-v="careful" aria-pressed="false">Careful</button>
+    <button class="chip" data-v="skip" aria-pressed="false">Skip</button>
+    <button class="chip" data-v="unrated" aria-pressed="false">Unrated</button>
+    <span class="count" id="count"></span>
+  </div>
+  <div class="scroll">
+    <table>
+      <thead><tr>
+        <th data-s="0">Brand</th><th data-s="1">Product</th><th data-s="2">Category</th>
+        <th data-s="3">Verdict</th><th data-s="5">Checks</th><th data-s="4">Packaging</th>
+      </tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </div>
+
+  <footer>
+    <b>Checks</b> is formula, packaging, recalls and lawsuits, independent tests, in that order.
+    Purple means a recorded finding with a source; amber means it was inferred from a product note
+    and cannot say where it came from; empty means nobody has looked.
+    This page reads brand-data.json live, so it shows whatever was last deployed.
+    The password hides this view, not the data: brand-data.json is served publicly because the
+    extension and the app both read it.
+  </footer>
+</div>
+
+<script>
+const WORKER = "https://plasticdetox-quiz-email.plasticdetox.workers.dev";
+const FRONTS = ["formula","packaging","legal","testing"];
+const KEY = "pd.db.ok";
+let ROWS = [], sortCol = null, sortDir = 1;
+const state = {q:"", work:false, nomat:false, v:new Set()};
+const el = (t,c,x)=>{const n=document.createElement(t); if(c)n.className=c; if(x!=null)n.textContent=x; return n;};
+
+async function unlock(pw){
+  const r = await fetch(WORKER + "/db-auth", {method:"POST",
+    headers:{"Content-Type":"application/json"}, body:JSON.stringify({password:pw})});
+  return r.ok;
+}
+document.getElementById("gate-form").addEventListener("submit", async (e)=>{
+  e.preventDefault();
+  const err = document.getElementById("err");
+  err.textContent = "Checking…";
+  const pw = document.getElementById("pw").value;
+  if(await unlock(pw)){ sessionStorage.setItem(KEY,"1"); open_(); }
+  else err.textContent = "That password is not right.";
+});
+
+async function open_(){
+  document.getElementById("gate").hidden = true;
+  document.getElementById("app").hidden = false;
+  const res = await fetch("brand-data.json", {cache:"no-cache"});
+  const brands = await res.json();
+  build(brands);
+  const when = res.headers.get("last-modified");
+  document.getElementById("stamp").textContent =
+    when ? new Date(when).toLocaleString(undefined,{dateStyle:"medium",timeStyle:"short"}) : "live";
+}
+if(sessionStorage.getItem(KEY) === "1") open_();
+
+function build(brands){
+  let prods = 0;
+  const verdicts = {good:0,careful:0,skip:0,unrated:0};
+  const ev = {}, inf = {}, blank = {};
+  for(const f of FRONTS){ ev[f]=0; inf[f]=0; blank[f]=0; }
+  let withMat = 0;
+
+  for(const b of brands){
+    for(const p of (b.products||[])){
+      prods++;
+      const e = p.ext || {}, fr = e.fronts||{}, or = e.frontOrigin||{};
+      const v = e.verdict || "unrated";
+      if(v in verdicts) verdicts[v]++;
+      const checks = FRONTS.map(f=>{
+        const s = fr[f];
+        if(!s || s==="unassessed" || s==="unknown"){ blank[f]++; return 0; }
+        if(or[f] && or[f]!=="inferred"){ ev[f]++; return 2; }
+        inf[f]++; return 1;
+      });
+      if(e.packagingMaterial) withMat++;
+      ROWS.push([b.brand, p.name||"", b.category||"", v, e.packagingMaterial||"", checks,
+                 (e.frontNotes||{}).packaging||""]);
+    }
+  }
+
+  const tiles = document.getElementById("tiles");
+  const add=(n,l,cls)=>{const c=el("div","cell");const d=el("div","n"+(cls?" "+cls:""),String(n));
+    c.append(d, el("div","l",l)); tiles.appendChild(c);};
+  add(brands.length,"brands");
+  add(prods,"products");
+  add(verdicts.good,"we would buy","good");
+  add(verdicts.careful,"careful","careful");
+  add(verdicts.skip,"skip","skip");
+  add(verdicts.unrated,"no verdict yet");
+  add(withMat,"packaging material recorded");
+  document.getElementById("sub").textContent =
+    `${prods} products across ${brands.length} brands. ${withMat} have a recorded packaging material.`;
+
+  const bars = document.getElementById("bars");
+  const LABEL = {formula:"Formula",packaging:"Packaging",legal:"Recalls",testing:"Testing"};
+  for(const f of FRONTS){
+    const row = el("div","bar-row");
+    row.appendChild(el("div","bar-name",LABEL[f]));
+    const bar = el("div","bar");
+    const a = el("i","ev"), b_ = el("i","inf");
+    a.style.width = (ev[f]/prods*100)+"%"; b_.style.width = (inf[f]/prods*100)+"%";
+    bar.append(a,b_); row.appendChild(bar);
+    row.appendChild(el("div","bar-num",`${ev[f]} recorded · ${inf[f]} inferred · ${blank[f]} open`));
+    bars.appendChild(row);
+  }
+  render();
+}
+
+function passes(r){
+  if(state.nomat && r[4]) return false;
+  if(state.work && !(r[3]==="unrated" || !r[4])) return false;
+  if(state.v.size && !state.v.has(r[3])) return false;
+  if(state.q){
+    const q = state.q.toLowerCase();
+    if(!(r[0]+" "+r[1]+" "+r[2]+" "+r[4]).toLowerCase().includes(q)) return false;
+  }
+  return true;
+}
+
+function render(){
+  let rows = ROWS.filter(passes);
+  if(sortCol!==null) rows = rows.slice().sort((a,b)=>{
+    let x=a[sortCol], y=b[sortCol];
+    if(sortCol===5){ x=a[5].reduce((s,n)=>s+n,0); y=b[5].reduce((s,n)=>s+n,0); }
+    return (typeof x==="string" ? x.localeCompare(y) : x-y)*sortDir;
+  });
+  const body = document.getElementById("rows");
+  body.replaceChildren();
+  const frag = document.createDocumentFragment();
+  for(const r of rows.slice(0,600)){
+    const tr = el("tr");
+    tr.appendChild(el("td","b",r[0]));
+    tr.appendChild(el("td",null,r[1]));
+    tr.appendChild(el("td","dim",r[2]));
+    const v=el("td"); v.appendChild(el("span","pill "+r[3], r[3])); tr.appendChild(v);
+    const c=el("td"); const sq=el("span","sq");
+    sq.title = FRONTS.map((f,i)=>f+": "+["not checked","inferred","recorded"][r[5][i]]).join(", ");
+    for(const n of r[5]) sq.appendChild(el("i", n===2?"ev":n===1?"inf":""));
+    c.appendChild(sq); tr.appendChild(c);
+    const m=el("td","mat"+(r[4]?"":" none"), r[4] || "—");
+    if(r[6]) m.title = r[6];
+    tr.appendChild(m);
+    frag.appendChild(tr);
+  }
+  body.appendChild(frag);
+  document.getElementById("count").textContent =
+    rows.length + " of " + ROWS.length + (rows.length>600 ? " (showing 600)" : "");
+}
+
+for(const btn of document.querySelectorAll(".chip")){
+  btn.addEventListener("click", ()=>{
+    const on = btn.getAttribute("aria-pressed")==="true";
+    btn.setAttribute("aria-pressed", String(!on));
+    if(btn.dataset.f==="store") state.work=!on;
+    else if(btn.dataset.f==="nomat") state.nomat=!on;
+    else { !on ? state.v.add(btn.dataset.v) : state.v.delete(btn.dataset.v); }
+    render();
+  });
+}
+document.getElementById("q").addEventListener("input", e=>{ state.q=e.target.value.trim(); render(); });
+for(const th of document.querySelectorAll("th[data-s]")){
+  th.addEventListener("click", ()=>{
+    const c=+th.dataset.s; sortDir = (sortCol===c) ? -sortDir : 1; sortCol=c; render();
+  });
+}
+</script>
+</body>
+</html>

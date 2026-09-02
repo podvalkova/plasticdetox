@@ -233,7 +233,10 @@ def main():
             e.setdefault("fronts", {})["packaging"] = status
             e.setdefault("frontNotes", {})["packaging"] = reason[0].upper() + reason[1:] + "."
             e.setdefault("frontOrigin", {})["packaging"] = "database"
-            e["packagingMaterial"] = material
+            # Listings separate materials with carets and slashes as well as
+            # commas, and "Stainless Steel^Plastic" reads as a typo on screen.
+            e["packagingMaterial"] = ", ".join(
+                x.strip() for x in re.split(r"[,^/;+&]", str(material)) if x.strip())
             applied[status] += 1
 
     total = sum(v for k, v in applied.items() if k != "skipped")
