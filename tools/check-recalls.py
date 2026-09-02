@@ -102,12 +102,14 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--write", action="store_true")
     ap.add_argument("--limit", type=int, default=0, help="stop after N brands")
+    ap.add_argument("--apply", action="store_true",
+                    help="skip the queries and re-apply what is already cached")
     args = ap.parse_args()
 
     brands = json.loads(DATA.read_text())
     cache = json.loads(CACHE.read_text()) if CACHE.exists() else {}
 
-    todo = [b for b in brands
+    todo = [] if args.apply else [b for b in brands
             if b.get("products") and FDA_CATS.search(b.get("category") or "")
             and b["brand"] not in cache]
     if args.limit:
@@ -138,23 +140,66 @@ def main():
         print("\ndry run. re-run with --write to set the legal front.")
         return
 
-    set_pass = set_flag = 0
+    set_pass = set_flag = rescoped = dated = 0
     needs_review = []
     for b in brands:
         c = cache.get(b["brand"])
         if not c:
             continue
+        # Which rows a finding actually concerns.
+        #
+        # A brand level answer used to be written onto every product row, so
+        # six Evenflo car seat recalls capped a glass bottle and an UPPAbaby
+        # car seat suit capped a stroller. Worse, Pura Kiki's lead sealing dot,
+        # which is under the insulated base, capped the non insulated bottle
+        # and left the insulated one passing.
+        #
+        # `appliesTo` names the exact rows a finding covers. Absent means the
+        # whole brand, which is right for a formulation or a claims settlement.
+        # An empty list means it concerns no product we rate.
+        applies = c.get("appliesTo")
+        scoped = applies is not None
+
         for p in (b.get("products") or []):
             e = p.get("ext")
             if not e:
+                continue
+            if scoped and p.get("name") not in applies:
+                # Not this product. We did look, so this is a finding, not a
+                # blank: checked, and what is on record is about other lines.
+                if e["fronts"].get("legal") == "caution" and e.get("legalNote") == (c.get("note") or ""):
+                    e["fronts"]["legal"] = "pass"
+                    e["legalNote"] = (
+                        f"Checked. What is on record concerns other {b['brand']} "
+                        f"products, not this one: {c.get('note') or ''}")
+                    (e.get("frontNotes") or {}).pop("legal", None)
+                    rescoped += 1
                 continue
             # Authored rows are included on purpose. The authored flag protects
             # the verdict and the fronts a person actually set; a front they
             # left unassessed is not a judgement, and filling it with a dated
             # database result overwrites nothing. Skipping them held 38 brands
             # of hand researched rows on a check this tool had already run.
+            # A row the finding names, sitting on a pass that nothing wrote a
+            # note for, is not a judgement either: it is a gap. Pura Kiki's
+            # insulated bottles, the ones with the lead sealing dot, were
+            # passing on an empty note while the caution sat on the non
+            # insulated row. Only an unexplained pass is overwritten; a pass a
+            # person put a reason against is left alone.
+            # Stamp the date on any row already carrying this finding, even
+            # one we are about to skip. The ceiling needs it to weigh the
+            # finding against newer testing, and without it every row set by an
+            # earlier run stayed undateable.
+            if (c.get("eventDate") and e.get("legalNote") == (c.get("note") or "")
+                    and not e.get("legalDate")):
+                e["legalDate"] = c["eventDate"]
+                dated += 1
+
+            unexplained = (e["fronts"].get("legal") == "pass"
+                           and not str(e.get("legalNote") or "").strip())
             if e["fronts"].get("legal") not in ("unassessed", "unknown", None):
-                continue
+                if not (scoped and unexplained and c.get("status") in ("caution", "fail")):
+                    continue
             # Only two states get written. Nothing resembling the brand appeared
             # at all, which is a genuine "checked, nothing found". Or something
             # did, and a name alone cannot tell us whether it is them: Trident
@@ -169,6 +214,8 @@ def main():
             if c.get("resolved"):
                 e["fronts"]["legal"] = c.get("status") or "pass"
                 e["legalNote"] = c.get("note") or ""
+                if c.get("eventDate"):
+                    e["legalDate"] = c["eventDate"]
                 set_pass += 1
             elif c.get("examined", 0) == 0:
                 e["fronts"]["legal"] = "pass"
@@ -184,7 +231,11 @@ def main():
                 needs_review.append((b["brand"], c.get("total", 0), c.get("examined", 0),
                                      (c.get("latest") or [None, "", "", "?"])[3]))
     DATA.write_text(json.dumps(brands, indent=2, ensure_ascii=False) + "\n")
-    print(f"legal front set to pass on {set_pass} rows")
+    print(f"legal front set on {set_pass} rows")
+    if rescoped:
+        print(f"{rescoped} rows released: the finding was about other products")
+    if dated:
+        print(f"{dated} rows stamped with the date the finding dates from")
     if needs_review:
         print(f"\n{len(needs_review)} brands need a person to confirm whether the "
               f"recalling firm is them:")

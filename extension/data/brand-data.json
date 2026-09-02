@@ -3393,13 +3393,13 @@
           "B093TNNR5F"
         ],
         "ext": {
-          "verdict": "careful",
+          "verdict": "good",
           "dated": "2026-09-01",
-          "why": "section 6 ceiling: legal is caution",
+          "why": "independent lab result at sku scope",
           "fronts": {
             "formula": "pass",
             "packaging": "pass",
-            "legal": "caution",
+            "legal": "pass",
             "testing": "pass"
           },
           "scope": "sku",
@@ -3408,10 +3408,8 @@
           "rules": [
             "3 packaging-matrix-pass"
           ],
-          "legalNote": "Health Canada recalled a lot of ATTITUDE Bathroom Cleaner in July 2026 for a missing expiry date, a labeling compliance issue with no injuries; the recall is recent and appears open. It names the bathroom cleaner lot only, not the rest of the range.",
-          "frontNotes": {},
-          "cappedFrom": "good",
-          "capRestoreWhy": "independent lab result at sku scope"
+          "legalNote": "Checked. What is on record concerns other ATTITUDE products, not this one: Health Canada recalled a lot of ATTITUDE Bathroom Cleaner in July 2026 for a missing expiry date, a labeling compliance issue with no injuries; the recall is recent and appears open. It names the bathroom cleaner lot only, not the rest of the range.",
+          "frontNotes": {}
         },
         "cat": "Laundry detergent",
         "research": "Packaging: Contents are liquid laundry detergent in an HDPE #2 bottle; brand sells boxed eco-refills so the bottle is reused."
@@ -3427,14 +3425,14 @@
           "fronts": {
             "formula": "unassessed",
             "packaging": "unassessed",
-            "legal": "caution",
+            "legal": "pass",
             "testing": "unassessed"
           },
           "scope": "line",
           "basis": "direct",
           "disclose": false,
           "rules": [],
-          "legalNote": "Health Canada recalled a lot of ATTITUDE Bathroom Cleaner in July 2026 for a missing expiry date, a labeling compliance issue with no injuries; the recall is recent and appears open. It names the bathroom cleaner lot only, not the rest of the range.",
+          "legalNote": "Checked. What is on record concerns other ATTITUDE products, not this one: Health Canada recalled a lot of ATTITUDE Bathroom Cleaner in July 2026 for a missing expiry date, a labeling compliance issue with no injuries; the recall is recent and appears open. It names the bathroom cleaner lot only, not the rest of the range.",
           "frontNotes": {}
         },
         "origin": "hand",
@@ -3476,7 +3474,8 @@
           "legalNote": "Health Canada recalled a lot of ATTITUDE Bathroom Cleaner in July 2026 for a missing expiry date, a labeling compliance issue with no injuries; the recall is recent and appears open. It names the bathroom cleaner lot only, not the rest of the range.",
           "frontNotes": {},
           "cappedFrom": "good",
-          "capRestoreWhy": "independent lab result at line scope"
+          "capRestoreWhy": "independent lab result at line scope",
+          "legalDate": "2026-07"
         },
         "origin": "hand",
         "matchAll": [
@@ -3864,14 +3863,15 @@
           "fronts": {
             "formula": "unassessed",
             "packaging": "unassessed",
-            "legal": "unassessed",
+            "legal": "pass",
             "testing": "unassessed"
           },
           "scope": "line",
           "basis": "direct",
           "disclose": false,
           "rules": [],
-          "frontNotes": {}
+          "frontNotes": {},
+          "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either."
         },
         "origin": "hand",
         "matchAll": [
@@ -6748,7 +6748,7 @@
           "fronts": {
             "formula": "pass",
             "packaging": "unassessed",
-            "legal": "unassessed",
+            "legal": "pass",
             "testing": "unassessed"
           },
           "scope": "sku",
@@ -6757,7 +6757,8 @@
           "rules": [
             "2 formula-read-from-materials"
           ],
-          "frontNotes": {}
+          "frontNotes": {},
+          "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either."
         },
         "cat": "Pantry"
       },
@@ -8254,7 +8255,8 @@
           "frontNotes": {},
           "legalNote": "CPSC issued a standing category wide warning in October 2020 that nursing pillows must never be used for infant sleep after suffocation deaths across brands. No Blessed Nest specific recall exists; the warning covers the whole category, this product included.",
           "cappedFrom": "good",
-          "capRestoreWhy": ""
+          "capRestoreWhy": "",
+          "legalDate": "2020-10"
         }
       }
     ]
@@ -11523,9 +11525,9 @@
         "note": "Bamboo viscose cloth with no plastic fiber, MADE SAFE certified, unscented. 99.7% naturally derived, primarily water and glycerin. MADE SAFE certified, bamboo substrate. Worth knowing: Thinner than premium wipes.",
         "origin": "store",
         "ext": {
-          "verdict": "careful",
+          "verdict": "good",
           "dated": "2026-09-01",
-          "why": "section 6 ceiling: legal is caution",
+          "why": "a vetted store pick, chosen by a person at product scope",
           "fronts": {
             "formula": "pass",
             "packaging": "pass",
@@ -11540,8 +11542,10 @@
           ],
           "legalNote": "A California Prop 65 notice filed August 2025 alleged PFOS in Caboo bamboo baby wipes sold without a warning, and the docket shows a settlement. That is a recent, settled finding about this product category.",
           "frontNotes": {},
-          "cappedFrom": "good",
-          "capRestoreWhy": "a vetted store pick, chosen by a person at product scope"
+          "legalDate": "2025-08",
+          "testingDate": "2026",
+          "testingNote": "Consumer Reports found PFAS non detect in its 2026 testing, after the 2025 Prop 65 notice.",
+          "legalSuperseded": "Independent testing in 2026 post-dates this 2025-08 finding and did not confirm it."
         },
         "cat": "Baby wipes",
         "research": "Packaging: Wet wipes come in soft plastic film pouches with a resealable peel tab, 72 per pack; film resin unstated. Multipacks add a paperboard carton."
@@ -11576,7 +11580,8 @@
           "disclose": false,
           "rules": [],
           "legalNote": "A California Prop 65 notice filed August 2025 alleged PFOS in Caboo bamboo baby wipes sold without a warning, and the docket shows a settlement. That is a recent, settled finding about this product category.",
-          "frontNotes": {}
+          "frontNotes": {},
+          "legalDate": "2025-08"
         },
         "cat": "Baby wipes"
       }
@@ -17994,14 +17999,15 @@
           "fronts": {
             "formula": "unassessed",
             "packaging": "unassessed",
-            "legal": "unassessed",
+            "legal": "pass",
             "testing": "unassessed"
           },
           "scope": "line",
           "basis": "direct",
           "disclose": false,
           "rules": [],
-          "frontNotes": {}
+          "frontNotes": {},
+          "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either."
         },
         "matchAll": [
           [
@@ -18850,14 +18856,15 @@
           "fronts": {
             "formula": "unassessed",
             "packaging": "unassessed",
-            "legal": "unassessed",
+            "legal": "pass",
             "testing": "unassessed"
           },
           "scope": "line",
           "basis": "direct",
           "disclose": false,
           "rules": [],
-          "frontNotes": {}
+          "frontNotes": {},
+          "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either."
         },
         "origin": "hand",
         "matchAll": [
@@ -19067,7 +19074,7 @@
           "fronts": {
             "formula": "unassessed",
             "packaging": "unassessed",
-            "legal": "unassessed",
+            "legal": "pass",
             "testing": "unassessed"
           },
           "scope": "line",
@@ -19075,7 +19082,8 @@
           "disclose": false,
           "authored": true,
           "dated": "2026-09-01",
-          "frontNotes": {}
+          "frontNotes": {},
+          "legalNote": "Checked recall records on 2026-08-31. One 2018 recall of the Lovey pacifier holder for a detaching snap, resolved; bottles were never involved."
         },
         "matchNot": [
           "glass"
@@ -23554,12 +23562,12 @@
         "note": "Tempered glass infant bottle with etched rather than painted measurement markings, standard neck, and a silicone teat. Glass releases no microplastics at formula preparation temperatures, unlike polypropylene bottles, which released up to 16.2 million particles per litre in Nature Food testing. Worth knowing: Heavier than plastic and breakable without a sleeve, No silicone sleeve included, Sta",
         "origin": "store",
         "ext": {
-          "verdict": "careful",
-          "why": "section 6 ceiling: legal is caution",
+          "verdict": "good",
+          "why": "",
           "fronts": {
             "formula": "pass",
             "packaging": "pass",
-            "legal": "caution",
+            "legal": "pass",
             "testing": "unassessed"
           },
           "scope": "line",
@@ -23571,9 +23579,7 @@
             "packaging": "Tempered glass infant bottle with etched rather than painted measurement markings, standard neck, and a silicone teat.",
             "formula": "Glass releases no microplastics at formula preparation temperatures, unlike polypropylene bottles, which released up to 16.2 million particles per litre in Nature Food testing."
           },
-          "legalNote": "Six distinct Evenflo car seat recalls ran through 2025 and 2026 (Revolve360 Slim, All4One, Titan 65, LiteMax 30, REO, Revolve180 LiteMax NXT), several with remedies still open. Three or more distinct recalls in five years is evidence about the quality system, so this finding is brand scoped even though no recall touches the product on this page.",
-          "cappedFrom": "good",
-          "capRestoreWhy": ""
+          "legalNote": "Checked. What is on record concerns other Evenflo products, not this one: Six distinct Evenflo car seat recalls ran through 2025 and 2026 (Revolve360 Slim, All4One, Titan 65, LiteMax 30, REO, Revolve180 LiteMax NXT), several with remedies still open. Three or more distinct recalls in five years is evidence about the quality system, so this finding is brand scoped even though no recall touches the product on this page."
         },
         "matchAll": [
           [
@@ -23614,7 +23620,7 @@
           "fronts": {
             "formula": "unassessed",
             "packaging": "unassessed",
-            "legal": "caution",
+            "legal": "pass",
             "testing": "unassessed"
           },
           "scope": "line",
@@ -23622,7 +23628,7 @@
           "disclose": false,
           "authored": true,
           "dated": "2026-09-01",
-          "legalNote": "Six distinct Evenflo car seat recalls ran through 2025 and 2026 (Revolve360 Slim, All4One, Titan 65, LiteMax 30, REO, Revolve180 LiteMax NXT), several with remedies still open. Three or more distinct recalls in five years is evidence about the quality system, so this finding is brand scoped even though no recall touches the product on this page.",
+          "legalNote": "Checked. What is on record concerns other Evenflo products, not this one: Six distinct Evenflo car seat recalls ran through 2025 and 2026 (Revolve360 Slim, All4One, Titan 65, LiteMax 30, REO, Revolve180 LiteMax NXT), several with remedies still open. Three or more distinct recalls in five years is evidence about the quality system, so this finding is brand scoped even though no recall touches the product on this page.",
           "frontNotes": {}
         },
         "cat": "Baby bottles"
@@ -41107,7 +41113,8 @@
           "legalNote": "MAM USA settled a class action for $2.75M in 2024 over unsupported orthodontic and oral development marketing claims on its pacifiers and bottles, the exact products this page covers. Under our rules a settled representation suit means the brand's own claims need third party proof.",
           "frontNotes": {},
           "cappedFrom": "good",
-          "capRestoreWhy": "direct evidence at line scope on formula, packaging"
+          "capRestoreWhy": "direct evidence at line scope on formula, packaging",
+          "legalDate": "2024"
         },
         "origin": "hand",
         "matchAll": [
@@ -41140,7 +41147,8 @@
           "disclose": false,
           "rules": [],
           "legalNote": "MAM USA settled a class action for $2.75M in 2024 over unsupported orthodontic and oral development marketing claims on its pacifiers and bottles, the exact products this page covers. Under our rules a settled representation suit means the brand's own claims need third party proof.",
-          "frontNotes": {}
+          "frontNotes": {},
+          "legalDate": "2024"
         },
         "origin": "hand",
         "matchAll": [
@@ -41177,7 +41185,8 @@
           "disclose": false,
           "rules": [],
           "legalNote": "MAM USA settled a class action for $2.75M in 2024 over unsupported orthodontic and oral development marketing claims on its pacifiers and bottles, the exact products this page covers. Under our rules a settled representation suit means the brand's own claims need third party proof.",
-          "frontNotes": {}
+          "frontNotes": {},
+          "legalDate": "2024"
         },
         "origin": "hand",
         "matchAll": [
@@ -41215,7 +41224,8 @@
           "disclose": false,
           "rules": [],
           "legalNote": "MAM USA settled a class action for $2.75M in 2024 over unsupported orthodontic and oral development marketing claims on its pacifiers and bottles, the exact products this page covers. Under our rules a settled representation suit means the brand's own claims need third party proof.",
-          "frontNotes": {}
+          "frontNotes": {},
+          "legalDate": "2024"
         },
         "matchAll": [
           [
@@ -45840,7 +45850,8 @@
             "packaging": "Cardboard carton, paper wrapped tampons.",
             "testing": "Mamavation's 2024 panel found no detectable organic fluorine in Natracare, against a 10 ppm reporting limit.",
             "legal": "Checked against the FDA enforcement database. No recall on record."
-          }
+          },
+          "testingDate": "2024"
         },
         "cat": "Tampons",
         "catAuthored": true
@@ -45874,7 +45885,8 @@
             "packaging": "Recycled cardboard carton and a compostable bioplastic wrapper on each pad.",
             "testing": "Mamavation 2024 tested Natracare panty liners against a 10 ppm reporting limit for organic fluorine and found none. Same construction and same supply chain as the pads.",
             "legal": "Checked against the FDA enforcement database. No recall on record."
-          }
+          },
+          "testingDate": "2024"
         },
         "cat": "Period pads",
         "catAuthored": true
@@ -45908,7 +45920,8 @@
             "packaging": "Cardboard carton, paper wrapped tampons.",
             "testing": "Mamavation's 2024 panel found no detectable organic fluorine in Natracare, against a 10 ppm reporting limit.",
             "legal": "Checked against the FDA enforcement database. No recall on record."
-          }
+          },
+          "testingDate": "2024"
         },
         "cat": "Tampons",
         "catAuthored": true
@@ -48492,7 +48505,8 @@
           "frontNotes": {},
           "legalNote": "NHTSA recall 24C-002, opened December 2024, covers 608,786 RAVA convertible seats (2016 to 2023 production) whose harness can fail to stay tight; the remedy is still being distributed and a related class action was filed in 2025. The RAVA is part of the car seat line this page covers.",
           "cappedFrom": "good",
-          "capRestoreWhy": ""
+          "capRestoreWhy": "",
+          "legalDate": "2024-12"
         }
       }
     ]
@@ -52218,7 +52232,7 @@
           "fronts": {
             "formula": "unassessed",
             "packaging": "unassessed",
-            "legal": "unassessed",
+            "legal": "pass",
             "testing": "unassessed"
           },
           "scope": "line",
@@ -52226,7 +52240,8 @@
           "disclose": false,
           "authored": true,
           "dated": "2026-09-01",
-          "frontNotes": {}
+          "frontNotes": {},
+          "legalNote": "Checked recall records on 2026-08-31. Philips recalls (Respironics breathing devices from 2021, Avent video monitors in 2023) are in other product lines; the Soothie pacifier has never been recalled."
         },
         "matchNot": [
           "glass"
@@ -54566,13 +54581,13 @@
         "verdict": "good",
         "note": "Fully plastic free stainless system. This is the model we recommend.",
         "ext": {
-          "verdict": "careful",
+          "verdict": "good",
           "dated": "2026-09-01",
-          "why": "section 6 ceiling: legal is caution",
+          "why": "direct evidence at line scope on formula, packaging",
           "fronts": {
             "formula": "pass",
             "packaging": "pass",
-            "legal": "caution",
+            "legal": "pass",
             "testing": "unassessed"
           },
           "scope": "line",
@@ -54581,10 +54596,8 @@
           "rules": [
             "5.4 durable-good-is-its-own-packaging"
           ],
-          "legalNote": "Lead Safe Mama documented a lead sealing dot under the base of Pura Kiki INSULATED bottles sold through about 2018 and has petitioned CPSC for a recall since 2017 without action, so the matter stands unresolved. The non-insulated bottles this page covers have no vacuum seal dot, which is the implicated component.",
-          "frontNotes": {},
-          "cappedFrom": "good",
-          "capRestoreWhy": "direct evidence at line scope on formula, packaging"
+          "legalNote": "Checked. What is on record concerns other Pura Kiki products, not this one: Lead Safe Mama documented a lead sealing dot under the base of Pura Kiki INSULATED bottles sold through about 2018 and has petitioned CPSC for a recall since 2017 without action, so the matter stands unresolved. The non-insulated bottles this page covers have no vacuum seal dot, which is the implicated component.",
+          "frontNotes": {}
         },
         "origin": "hand",
         "matchAll": [
@@ -54610,14 +54623,16 @@
           "fronts": {
             "formula": "unassessed",
             "packaging": "unassessed",
-            "legal": "pass",
+            "legal": "caution",
             "testing": "unassessed"
           },
           "scope": "line",
           "basis": "direct",
           "disclose": false,
           "rules": [],
-          "frontNotes": {}
+          "frontNotes": {},
+          "legalNote": "Lead Safe Mama documented a lead sealing dot under the base of Pura Kiki INSULATED bottles sold through about 2018 and has petitioned CPSC for a recall since 2017 without action, so the matter stands unresolved. The non-insulated bottles this page covers have no vacuum seal dot, which is the implicated component.",
+          "legalDate": "2018"
         },
         "origin": "hand",
         "matchAll": [
@@ -57836,7 +57851,8 @@
             "packaging": "Cotton drawstring bag in a cardboard carton. On a reusable the object is its own contact surface, so the material question is answered on formula and the carton carries no risk.",
             "legal": "Menstrual cups are FDA class II devices cleared through 510(k). Searched the FDA enforcement and device records on 2026-08-29: no recall, and no filing against the brand.",
             "testing": "Saalt period underwear tested non detect for organic fluorine in 2023, after the brand found and removed a PFAS treated fabric before launch in 2020 and disclosed a 10 ppm result in 2021. The trajectory is the point: they looked, published, and fixed it."
-          }
+          },
+          "testingDate": "2023"
         },
         "catAuthored": true
       }
@@ -59446,7 +59462,8 @@
           "legalNote": "Seventh Generation settled a class action in 2016 over natural and non toxic marketing claims ($4.5M), which under our rules means its own claims need third party proof, and a 2024 class action about overstated loads per bottle appears still open. No safety recall is on record.",
           "frontNotes": {},
           "cappedFrom": "good",
-          "capRestoreWhy": "direct evidence at sku scope on formula, packaging"
+          "capRestoreWhy": "direct evidence at sku scope on formula, packaging",
+          "legalDate": "2024"
         },
         "cat": "Laundry detergent",
         "research": "Packaging: The 90 fl oz bottle is 100% post-consumer recycled plastic (resin unstated); cap is plastic; contents are liquid laundry detergent."
@@ -59478,7 +59495,8 @@
           "legalNote": "Seventh Generation settled a class action in 2016 over natural and non toxic marketing claims ($4.5M), which under our rules means its own claims need third party proof, and a 2024 class action about overstated loads per bottle appears still open. No safety recall is on record.",
           "frontNotes": {},
           "cappedFrom": "good",
-          "capRestoreWhy": "direct evidence at sku scope on formula"
+          "capRestoreWhy": "direct evidence at sku scope on formula",
+          "legalDate": "2024"
         },
         "cat": "Diapers"
       },
@@ -59528,7 +59546,8 @@
           "frontNotes": {},
           "legalNote": "Seventh Generation settled a class action in 2016 over natural and non toxic marketing claims ($4.5M), which under our rules means its own claims need third party proof, and a 2024 class action about overstated loads per bottle appears still open. No safety recall is on record.",
           "cappedFrom": "good",
-          "capRestoreWhy": ""
+          "capRestoreWhy": "",
+          "legalDate": "2024"
         }
       }
     ],
@@ -61474,7 +61493,8 @@
           "rules": [],
           "testingNote": "Lab tested. From top-100-baby-kids-products-amazon.html: Xylitol based kids tooth gel in strawberry banana flavor, safe to swallow. Lead Safe Mama 2025 third party lab testing returned non detect for lead, mercury, cadmium, and arsenic on Spry brand xylitol toothpaste. Xylitol",
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {}
+          "frontNotes": {},
+          "testingDate": "2025"
         },
         "cat": "Toothpaste"
       },
@@ -64848,7 +64868,8 @@
           "basis": "direct",
           "disclose": false,
           "rules": [],
-          "authored": true
+          "authored": true,
+          "testingDate": "2024"
         },
         "catAuthored": true
       }
@@ -65858,14 +65879,15 @@
           "fronts": {
             "formula": "unassessed",
             "packaging": "unassessed",
-            "legal": "unassessed",
+            "legal": "pass",
             "testing": "unassessed"
           },
           "scope": "line",
           "basis": "direct",
           "disclose": false,
           "rules": [],
-          "frontNotes": {}
+          "frontNotes": {},
+          "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either."
         },
         "cat": "Toothpaste"
       }
@@ -68442,23 +68464,27 @@
         "note": "GREENGUARD Gold certified fabrics from the most transparent stroller brand on flame retardant disclosure. Grows from one to three kids with bassinet, toddler seat, and rumble seat. Worth knowing: Premium price\", \"Heavy and large\", \"Bulky fold.",
         "origin": "store",
         "ext": {
-          "verdict": "careful",
+          "verdict": "unrated",
           "dated": "2026-09-01",
-          "why": "section 6 ceiling: legal is caution",
+          "why": "a recommendation needs its checks done; still to do: formula, packaging",
           "fronts": {
             "formula": "unassessed",
             "packaging": "unassessed",
-            "legal": "caution",
+            "legal": "pass",
             "testing": "pass"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
           "rules": [],
-          "legalNote": "A federal class action filed in 2025 and still open alleges the Mesa Max, Mesa V2 and Aria car seats can let infants sink into a chin to chest position. A filed suit is an allegation, so it caps at caution. Three older recalls (2015 Vista bumper bar, 2021 RumbleSeat adapters, 2022 RIDGE) all completed their remedies.",
+          "legalNote": "Checked. What is on record concerns other UPPAbaby products, not this one: A federal class action filed in 2025 and still open alleges the Mesa Max, Mesa V2 and Aria car seats can let infants sink into a chin to chest position. A filed suit is an allegation, so it caps at caution. Three older recalls (2015 Vista bumper bar, 2021 RumbleSeat adapters, 2022 RIDGE) all completed their remedies.",
           "frontNotes": {},
-          "cappedFrom": "good",
-          "capRestoreWhy": "a vetted store pick, chosen by a person at product scope"
+          "heldFrom": "good",
+          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
+          "heldBack": [
+            "formula",
+            "packaging"
+          ]
         },
         "cat": "Strollers",
         "research": "Packaging: Durable stroller; frame metal not specified on the product page; textile seat fabrics with full-grain REACH-compliant leather accents; GREENGUARD Gold certified for low chemical emissions. Materials: Fabric fiber content not published; fabrics are GREENGUARD Gold certified; full-grain REACH-compliant leather details."
@@ -68490,7 +68516,8 @@
           "legalNote": "A federal class action filed in 2025 and still open alleges the Mesa Max, Mesa V2 and Aria car seats can let infants sink into a chin to chest position. A filed suit is an allegation, so it caps at caution. Three older recalls (2015 Vista bumper bar, 2021 RumbleSeat adapters, 2022 RIDGE) all completed their remedies.",
           "frontNotes": {},
           "cappedFrom": "good",
-          "capRestoreWhy": "direct evidence at sku scope on formula, packaging"
+          "capRestoreWhy": "direct evidence at sku scope on formula, packaging",
+          "legalDate": "2025"
         },
         "cat": "Car seats"
       }

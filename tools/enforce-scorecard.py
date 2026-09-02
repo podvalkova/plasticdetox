@@ -77,6 +77,36 @@ BLOCKING = ("formula", "packaging", "legal")
 RANK = {"skip": 0, "careful": 1, "good": 3}
 
 
+def _when(value):
+    """A year and month from a date we may only know to the year."""
+    text = str(value or "").strip()
+    if not text:
+        return None
+    parts = text.split("-")
+    try:
+        year = int(parts[0])
+    except ValueError:
+        return None
+    month = int(parts[1]) if len(parts) > 1 and parts[1].isdigit() else 0
+    return (year, month)
+
+
+def superseded_by_testing(ext, fronts):
+    """Is a legal caution answered by testing that came after it?
+
+    Both dates have to be known. Without them there is no way to tell which
+    piece of evidence is the later one, and guessing in either direction would
+    be worse than leaving the ceiling where it is.
+    """
+    if fronts.get("legal") != "caution" or fronts.get("testing") != "pass":
+        return False
+    legal = _when(ext.get("legalDate"))
+    testing = _when(ext.get("testingDate"))
+    if not legal or not testing:
+        return False
+    return testing > legal
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--write", action="store_true")
@@ -117,7 +147,29 @@ def main():
             # lets go again when the front that caused it does. Without the
             # release a verdict capped on evidence later withdrawn stayed
             # capped, which is how Native sat at skip with no finding left.
-            vals = [f.get(k) for k in FRONTS]
+            # A legal caution answered by newer testing does not set the
+            # ceiling.
+            #
+            # Caboo's wipes carried a Prop 65 notice from August 2025 alleging
+            # PFOS, settled. Independent 2026 testing then found PFAS non
+            # detect on the same product. Capping on the older allegation while
+            # holding the newer lab result meant the weaker, older evidence
+            # decided the verdict. A filed or settled allegation is what someone
+            # claimed; a lab result is what was measured.
+            #
+            # The caution still shows. It is a real finding and the card names
+            # it. What it no longer does is outrank the measurement that came
+            # after it.
+            effective = dict(f)
+            if superseded_by_testing(e, f):
+                effective["legal"] = "pass"
+                e["legalSuperseded"] = (
+                    f"Independent testing in {e.get('testingDate')} post-dates this "
+                    f"{e.get('legalDate')} finding and did not confirm it.")
+            else:
+                e.pop("legalSuperseded", None)
+
+            vals = [effective.get(k) for k in FRONTS]
             ceiling = "skip" if "fail" in vals else (
                 "careful" if "caution" in vals else "good")
             if e.get("cappedFrom") and RANK[ceiling] > RANK[e["verdict"]]:
