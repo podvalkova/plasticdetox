@@ -114,6 +114,7 @@ def main():
 
     brands = json.loads(DATA.read_text())
     gated, kept, restored, capped, released = 0, 0, 0, 0, 0
+    cleared_stale = 0
     missing = collections.Counter()
     by_cat = collections.Counter()
     examples = []
@@ -125,6 +126,20 @@ def main():
                 continue
             f = e.get("fronts") or {}
             blank = [k for k in BLOCKING if f.get(k) in BLANK]
+
+            # A reason has to outlive its cause or die with it.
+            #
+            # "the note reads adversely on formula, needs a human look" is
+            # written when a front reads as a caution. Clear the front and the
+            # sentence stays, so a row sits in a review queue over a finding
+            # that is no longer there. Anthony's popcorn was held for a note
+            # saying it skips the PFAS bag; once the misread was corrected the
+            # row still asked for a human to look at nothing.
+            if (str(e.get("why") or "").startswith("the note reads adversely")
+                    and not [k for k in FRONTS if f.get(k) in ("caution", "fail")]):
+                e["why"] = ("a recommendation needs its checks done; still to do: "
+                            + ", ".join(blank)) if blank else ""
+                cleared_stale += 1
 
             # Give a held back row its verdict back once the checks arrive.
             if e.get("verdict") == "unrated" and e.get("heldFrom") and not blank:

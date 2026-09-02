@@ -167,6 +167,20 @@ ANCHORS = {
 NEGATORS = [
     "no", "not", "never", "without", "zero", "free of", "free from",
     "avoids", "avoid", "removed", "excludes", "non", "nondetect", "non-detect",
+    # Avoidance is not always phrased as absence. Copy about a product whose
+    # whole purpose is replacing a hazard describes the hazard in order to say
+    # it is gone: beeswax wraps "eliminate plastic wrap", plain kernels "skip
+    # the PFAS coated microwave bag". Without these the classifier flagged
+    # eight products for the very thing they solve, and each one then sat in a
+    # queue waiting for a person to rule that a note saying "no plastic" did
+    # not mean plastic.
+    "skips", "skip", "skipping", "eliminates", "eliminate", "eliminating",
+    "replaces", "replace", "instead of", "keeps out", "prevents",
+    "alternative to", "away from",
+    # "rather than" is deliberately absent. In "covers banned substances rather
+    # than heavy metals or plastic" it marks what a certification does not
+    # cover, not what the product avoids, and adding it cleared a real caution
+    # on Optimum Nutrition.
 ]
 # ...unless the sentence turns back on itself in between.
 CONTRAST = ["but", "however", "though", "although", "while", "still", "yet", "despite"]
