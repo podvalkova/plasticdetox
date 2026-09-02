@@ -49,39 +49,41 @@ DATA = ROOT / "brand-data.json"
 EVIDENCE = ROOT / "data" / "front-evidence.json"
 TODAY = datetime.date.today().isoformat()
 
-# Materials that put nothing into what they hold. The answer does not depend on
-# the contents, which is the whole point of recording a material rather than a
-# judgement.
+# Question 3, the material of the parts actually in contact. Inert means the
+# answer does not depend on what it holds, which is the point of asking.
 INERT = {"glass", "borosilicate", "tempered glass", "stainless", "stainless steel",
          "steel", "tin", "ceramic", "porcelain", "enamel", "bamboo", "wood",
-         "maple wood", "beeswax", "paper-uncoated", "silicone", "cotton", "metal"}
+         "maple wood", "beeswax", "paper-uncoated", "silicone", "cotton", "metal",
+         "rubber", "cast iron", "carbon steel", "titanium"}
 
-# Everything else in the contact path, and how much of a problem the polymer is
-# before the contents are considered. PVC carries phthalate plasticisers,
-# polystyrene leaches styrene, and 7 is the catch all that includes
-# polycarbonate. PET is its own case: antimony from the polymerisation catalyst,
-# and it sheds. PP and the polyethylenes are the more stable ones.
+# How much of a problem the polymer is before the contents are considered. PVC
+# carries phthalate plasticisers, polystyrene leaches styrene, 7 is the catch all
+# that includes polycarbonate. PET is its own case: antimony from the
+# polymerisation catalyst, and it sheds. PP and the polyethylenes are steadier.
 POLYMER = {
-    "pvc": 3, "ps": 3, "polystyrene": 3, "pc": 3, "polycarbonate": 3, "other": 3,
-    "pet": 2, "pete": 2,
+    "pvc": 2, "ps": 2, "polystyrene": 2, "pc": 2, "polycarbonate": 2, "other": 2,
+    "melamine": 2, "non stick": 2, "nonstick": 2, "ptfe": 2,
+    "pet": 1.5, "pete": 1.5, "tritan": 1.5, "acrylic": 1.5, "nylon": 1.5,
     "pp": 1, "polypropylene": 1, "hdpe": 1, "ldpe": 1, "polyethylene": 1,
-    "acrylic": 2, "nylon": 2, "melamine": 3,
-    # Paper and card on the food side are usually coated, and the coating is the
-    # part that matters.
-    "paper-coated": 2, "paperboard": 2, "carton": 2,
-    "plastic": 2,        # unnamed polymer: we know it is plastic and no more
-    "tritan": 2,         # BPA free copolyester, still a plastic contact surface
-    "aluminum": 1, "aluminium": 1,   # nearly always lined, and the lining decides
-    "non stick": 3, "nonstick": 3, "ptfe": 3,
+    "aluminum": 1, "aluminium": 1,
+    "paper-coated": 1, "paperboard": 1, "carton": 1, "cardboard": 1,
+    "plastic": 1.5,      # named as plastic and no more
 }
+
+ACRONYMS = {"pet", "pete", "pvc", "ps", "pc", "pp", "hdpe", "ldpe", "ptfe"}
+OILY = {"anhydrous", "oil", "oily", "fatty", "balm", "alcohol"}
+DRY = {"dry", "solid", "powder"}
+
+
+def pretty(m):
+    return m.upper() if m in ACRONYMS else m
 
 
 def classify(name):
     """Which rule a material name falls under, matched on the words in it.
 
     Listings write "Borosilicate Glass", "Medical-Grade Tritan", "Aluminum, Non
-    Stick Granite". Exact matching missed all three, so the longest known term
-    appearing anywhere in the name decides.
+    Stick Granite". Exact matching missed all three.
     """
     n = (name or "").strip().lower()
     if not n:
@@ -97,78 +99,99 @@ def classify(name):
 
 
 def worst(materials):
-    """The material that decides, from a listing naming several.
+    """Of the parts in contact, the one that decides.
 
-    A listing gives the whole object: "Glass, Silicone" is a jar and its gasket,
-    "Metal, Plastic" is a housing and its fittings. The one that decides is the
-    worst non inert part, because that is the one that can migrate. An object
-    whose parts are all inert is inert.
+    A jar and its gasket, a housing and its fittings. The worst non inert part
+    decides, because that is the one that can migrate, and an object whose
+    contact parts are all inert is inert.
     """
     parts = [m.strip() for m in re.split(r"[,^/;+&]|\band\b", str(materials or "")) if m.strip()]
-    scored = [(classify(m), m) for m in parts]
-    bad = [(r, term) for (term, r), _ in scored if r]
+    scored = [classify(m) for m in parts]
+    bad = [(r, t) for t, r in scored if r]
     if bad:
         return max(bad)[1]
-    inert = [term for (term, r), _ in scored if term and r == 0]
+    inert = [t for t, r in scored if t and r == 0]
     return inert[0] if inert else ""
 
 
-# What is inside. Fat is the strongest extractant there is, alcohol close
-# behind; water is the mild case; a dry solid barely migrates at all.
-BASE = {"anhydrous": 3, "oil": 3, "fatty": 3, "alcohol": 3,
-        "aqueous": 2, "water": 2, "wet": 2,
-        "dry": 0, "solid": 0, "powder": 0}
+def assess(pack):
+    """The four questions, in order, with unknown allowed at each one.
 
-# What the product is for. Swallowed or left on skin is the full exposure;
-# rinsed off is brief; nothing that never touches the contents counts at all.
-USE = {"ingested": 2, "food": 2, "drink": 2, "leave-on": 2, "oral": 2,
-       "rinse-off": 1, "topical-rinse": 1,
-       "non-contact": 0, "external": 0}
+    1  Does it touch the contents, the mouth or the skin? A plastic kettle body
+       around a stainless interior is not a finding, and asking this first
+       dismisses most of the plastic on most products before anyone researches
+       anything.
+    2  Would contact matter? Fat is the strongest extractant there is, heat
+       drives migration, a chewed spout is abrasion, and time multiplies all of
+       it. A dry bar in a card box exits here.
+    3  What are the contact parts made of.
+    4  Which polymer, where we know it. Not asked when the answer changes
+       nothing; an independent test is the better evidence anyway.
 
-# Polymer names are acronyms, and "Pet against anhydrous contents" reads like
-# an animal.
-ACRONYMS = {"pet", "pete", "pvc", "ps", "pc", "pp", "hdpe", "ldpe"}
-
-
-def pretty(m):
-    return m.upper() if m in ACRONYMS else m
-
-
-def packaging_status(material, base, use):
-    """How bad is this container, given what is in it and what it is for.
-
-    Returns (status, reason). An unknown material is not a pass and not a
-    failure: it is a thing we have not looked up.
+    Returns (status, reason). Unknown is an outcome, not a gap to be filled with
+    a guess: it means unassessed, which is not a pass.
     """
-    m = (material or "").strip().lower()
-    if not m or m in ("na", "n/a", "unknown"):
-        return None, "material not recorded"
-    term, rank = classify(m)
+    contact = str(pack.get("contact") or "").strip().lower()
+
+    if contact in ("no", "false", "none"):
+        return "pass", "Nothing the product touches is plastic"
+    if contact not in ("yes", "true"):
+        return None, "We have not established what the product actually touches"
+
+    raw = str(pack.get("material") or "")
+    parts = [m.strip() for m in re.split(r"[,^/;+&]|\band\b", raw) if m.strip()]
+    ranks = [classify(m) for m in parts]
+    mixed = any(r for t, r in ranks if r) and any(t and r == 0 for t, r in ranks)
+    if mixed and pack.get("contactFrom") != "recorded":
+        # Question 3 asks what the parts in contact are made of, and a listing
+        # names every part without saying which. 24Bottles is single wall
+        # stainless with a plastic cap: taking the worst part called a good
+        # bottle a caution, and taking the best would be worse. Which part is in
+        # the drink path is a fact somebody has to establish.
+        return None, (f"The listing names {raw}, and we have not established which of "
+                      "those the contents actually touch")
+
+    material = worst(raw)
+    term, rank = classify(material)
     if term is None:
-        return None, f"material '{m}' is not one we have a rule for"
-    m = term
+        return None, "The contact material is not recorded"
     if rank == 0:
-        return "pass", f"{pretty(m)}, which puts nothing into what it holds"
+        return "pass", f"In contact with {pretty(term)}, which puts nothing into what it holds"
 
-    b = BASE.get((base or "").strip().lower())
-    u = USE.get((use or "").strip().lower())
-    if b is None or u is None:
-        # Plastic in the contact path is a caution on its own. Saying more than
-        # that needs to know what is inside it.
-        return "caution", f"{pretty(m)} in the contact path, and we have not recorded what it holds"
-    if u == 0:
-        return "pass", f"{pretty(m)}, but it does not touch the contents"
+    base = str(pack.get("base") or "").strip().lower()
+    heated = bool(pack.get("heated"))
+    mouthed = bool(pack.get("mouthed"))
+    repeated = str(pack.get("reuse") or "").strip().lower() in ("repeated", "reused", "daily", "years")
 
-    score = rank + b + u
-    what = f"{pretty(m)} against {base} contents, {use}"
-    if score >= 7:
-        return "fail", what
-    if score >= 4:
-        return "caution", what
-    # A dry solid in a card box is the plastic free option, not a caution.
-    # Migration needs something to migrate into, and nothing much moves out of
-    # a carton into a bar of soap.
-    return "pass", f"{pretty(m)}, but {base} contents {use} give it little to migrate into"
+    # Weighted, not counted. Fat and heat are the two that actually drive
+    # migration, and counting every driver alike left a warmed plastic baby
+    # bottle at caution, which is the exact case our own research is loudest
+    # about: 16.2 million particles per litre in the Nature Food work.
+    drivers, weight = [], 0.0
+    if base in OILY:
+        drivers.append("an oil based formula, which is the strongest extractant there is")
+        weight += 2
+    if heated:
+        drivers.append("heat")
+        weight += 2
+    if mouthed:
+        drivers.append("being mouthed or chewed")
+        weight += 1.5
+    if repeated:
+        drivers.append("repeated contact over time")
+        weight += 1
+
+    if not drivers and base in DRY:
+        return "pass", (f"{pretty(term)} in contact, but dry contents at room temperature "
+                        "give it little to migrate into")
+    if not drivers and base:
+        return "caution", f"{pretty(term)} in contact with {base} contents"
+    if not drivers:
+        return "caution", f"{pretty(term)} in contact, and we have not recorded what it holds"
+
+    score = rank + weight
+    reason = f"{pretty(term)} in contact, with " + ", ".join(drivers)
+    return ("fail" if score >= 4 else "caution"), reason
 
 
 def keys_for(brand, product):
@@ -220,23 +243,32 @@ def main():
             if not entry:
                 continue
             pack = entry.get("packaging") or {}
-            form = entry.get("formula") or {}
-            material = pack.get("material")
-            if not material:
+            if not pack:
                 continue
+            status, reason = assess(pack)
             filled += 1
-            status, reason = packaging_status(material, form.get("base"), form.get("use"))
             if status is None:
-                applied["skipped"] += 1
+                applied["unassessed"] += 1
+                # Not knowing is a state worth recording, so the view can show
+                # what still needs answering rather than an empty cell that
+                # looks the same as a pass.
+                e = p.setdefault("ext", {})
+                # An unanswered question has to clear the old answer too, or a
+                # stale caution sits under a note saying we do not know.
+                e.setdefault("fronts", {})["packaging"] = "unassessed"
+                e.setdefault("frontOrigin", {}).pop("packaging", None)
+                e.setdefault("frontNotes", {})["packaging"] = reason + "."
+                e.pop("packagingMaterial", None)
                 continue
             e = p.setdefault("ext", {})
             e.setdefault("fronts", {})["packaging"] = status
-            e.setdefault("frontNotes", {})["packaging"] = reason[0].upper() + reason[1:] + "."
+            e.setdefault("frontNotes", {})["packaging"] = reason + "."
             e.setdefault("frontOrigin", {})["packaging"] = "database"
-            # Listings separate materials with carets and slashes as well as
-            # commas, and "Stainless Steel^Plastic" reads as a typo on screen.
-            e["packagingMaterial"] = ", ".join(
-                x.strip() for x in re.split(r"[,^/;+&]", str(material)) if x.strip())
+            mat = worst(pack.get("material"))
+            if mat:
+                e["packagingMaterial"] = ", ".join(
+                    x.strip() for x in re.split(r"[,^/;+&]", str(pack.get("material"))) if x.strip())
+            e["packagingContact"] = pack.get("contact")
             applied[status] += 1
 
     total = sum(v for k, v in applied.items() if k != "skipped")

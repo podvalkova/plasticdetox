@@ -117,6 +117,10 @@ tr:hover td{background:var(--sunk)}
 .sq i{width:10px;height:10px;border-radius:2.5px;border:1.5px solid var(--border-strong);display:block}
 .sq i.ev{background:var(--accent);border-color:var(--accent)}
 .sq i.inf{background:var(--careful);border-color:var(--careful)}
+.mark{width:10px;height:10px;border-radius:999px;display:inline-block;vertical-align:-1px;
+  margin-right:.45rem;background:var(--border-strong)}
+.mark.pass{background:var(--good)} .mark.caution{background:var(--careful)} .mark.fail{background:var(--skip)}
+.mark-l{font-size:12px;color:var(--muted)}
 .mat{font-size:12px;color:var(--body)}
 .mat.none{color:var(--faint)}
 footer{margin-top:2.4rem;padding-top:1.2rem;border-top:1px solid var(--border);
@@ -158,6 +162,7 @@ footer{margin-top:2.4rem;padding-top:1.2rem;border-top:1px solid var(--border);
     <input type="search" id="q" placeholder="Search a brand, product or material">
     <button class="chip" data-f="store" aria-pressed="false">Needs work</button>
     <button class="chip" data-f="nomat" aria-pressed="false">No material</button>
+    <button class="chip" data-f="pkgbad" aria-pressed="false">Packaging flagged</button>
     <button class="chip" data-v="good" aria-pressed="false">Good</button>
     <button class="chip" data-v="careful" aria-pressed="false">Careful</button>
     <button class="chip" data-v="skip" aria-pressed="false">Skip</button>
@@ -168,13 +173,17 @@ footer{margin-top:2.4rem;padding-top:1.2rem;border-top:1px solid var(--border);
     <table>
       <thead><tr>
         <th data-s="0">Brand</th><th data-s="1">Product</th><th data-s="2">Category</th>
-        <th data-s="3">Verdict</th><th data-s="5">Checks</th><th data-s="4">Packaging</th>
+        <th data-s="3">Verdict</th><th data-s="5">Checks</th><th data-s="7">Packaging</th><th data-s="4">Material</th>
       </tr></thead>
       <tbody id="rows"></tbody>
     </table>
   </div>
 
   <footer>
+    <b>Packaging</b> is the four questions in order: does the product touch it, would that
+    contact matter, what are the contact parts made of, and which polymer. Green means it does
+    not matter or the contact material is inert; orange and red mean it does, scaled by what is
+    inside and how it is used. Grey means a question is still unanswered, which is not a pass.
     <b>Checks</b> is formula, packaging, recalls and lawsuits, independent tests, in that order.
     Purple means a recorded finding with a source; amber means it was inferred from a product note
     and cannot say where it came from; empty means nobody has looked.
@@ -189,7 +198,7 @@ const WORKER = "https://plasticdetox-quiz-email.plasticdetox.workers.dev";
 const FRONTS = ["formula","packaging","legal","testing"];
 const KEY = "pd.db.ok";
 let ROWS = [], sortCol = null, sortDir = 1;
-const state = {q:"", work:false, nomat:false, v:new Set()};
+const state = {q:"", work:false, nomat:false, pkgbad:false, v:new Set()};
 const el = (t,c,x)=>{const n=document.createElement(t); if(c)n.className=c; if(x!=null)n.textContent=x; return n;};
 
 async function unlock(pw){
@@ -239,7 +248,7 @@ function build(brands){
       });
       if(e.packagingMaterial) withMat++;
       ROWS.push([b.brand, p.name||"", b.category||"", v, e.packagingMaterial||"", checks,
-                 (e.frontNotes||{}).packaging||""]);
+                 (e.frontNotes||{}).packaging||"", fr.packaging||"unassessed"]);
     }
   }
 
@@ -273,6 +282,7 @@ function build(brands){
 
 function passes(r){
   if(state.nomat && r[4]) return false;
+  if(state.pkgbad && !(r[7]==="caution" || r[7]==="fail")) return false;
   if(state.work && !(r[3]==="unrated" || !r[4])) return false;
   if(state.v.size && !state.v.has(r[3])) return false;
   if(state.q){
@@ -302,6 +312,11 @@ function render(){
     sq.title = FRONTS.map((f,i)=>f+": "+["not checked","inferred","recorded"][r[5][i]]).join(", ");
     for(const n of r[5]) sq.appendChild(el("i", n===2?"ev":n===1?"inf":""));
     c.appendChild(sq); tr.appendChild(c);
+    const pk=el("td"); const dot=el("span","mark "+r[7]);
+    dot.title = r[6] || r[7];
+    pk.appendChild(dot);
+    pk.appendChild(el("span","mark-l", {pass:"pass",caution:"caution",fail:"fail"}[r[7]] || "—"));
+    tr.appendChild(pk);
     const m=el("td","mat"+(r[4]?"":" none"), r[4] || "—");
     if(r[6]) m.title = r[6];
     tr.appendChild(m);
@@ -318,6 +333,7 @@ for(const btn of document.querySelectorAll(".chip")){
     btn.setAttribute("aria-pressed", String(!on));
     if(btn.dataset.f==="store") state.work=!on;
     else if(btn.dataset.f==="nomat") state.nomat=!on;
+    else if(btn.dataset.f==="pkgbad") state.pkgbad=!on;
     else { !on ? state.v.add(btn.dataset.v) : state.v.delete(btn.dataset.v); }
     render();
   });
