@@ -20756,7 +20756,7 @@
           "rules": [],
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
-            "packaging": "Earth Mama does not publish the container material for the 4 oz size, and their own product page says only that packaging may vary. An anhydrous balm is the case where the container matters most, so an undisclosed one is a gap rather than a neutral fact."
+            "packaging": "PET plastic, confirmed by Earth Mama's own FAQ, which calls it \"non-leaching PET\". PET is not non-leaching: it carries antimony from its polymerisation catalyst and sheds particles, and migration is highest into fatty contents. This balm is anhydrous olive oil and beeswax, which is the most aggressive case for a plastic container. \"BPA free\" says nothing here either, as PET never contained BPA."
           },
           "authored": true,
           "cappedFrom": "good"
@@ -44319,7 +44319,52 @@
     "generalises": true,
     "products": [
       {
-        "name": "Motherlove Diaper Balm",
+        "name": "Diaper Balm, 1 oz and 2 oz (glass)",
+        "asins": [
+          "B000GLK6K2",
+          "B000XJ2LDW"
+        ],
+        "verdict": "good",
+        "note": "Olive oil and beeswax base with Oregon grape root, myrrh, yarrow, and calendula. USDA Organic via Oregon Tilth, Leaping Bunny. USDA Organic, cloth diaper safe. Worth knowing: Small jar, Herbal scent from the plants themselves.",
+        "origin": "store",
+        "ext": {
+          "verdict": "good",
+          "dated": "2026-08-29",
+          "why": "",
+          "fronts": {
+            "formula": "pass",
+            "packaging": "pass",
+            "legal": "pass",
+            "testing": "pass"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": [
+            "2 formula-read-from-materials"
+          ],
+          "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
+          "frontNotes": {
+            "packaging": "Glass jar. Motherlove ships the 1 oz and 2 oz in glass everywhere including Amazon, and only moved the 4 oz to plastic because Amazon requires glass above a certain size to be bubble wrapped."
+          },
+          "authored": true
+        },
+        "cat": "Diaper cream",
+        "matchAll": [
+          [
+            "motherlove",
+            "diaper",
+            "balm"
+          ]
+        ],
+        "matchNot": [
+          "4 oz",
+          "4oz",
+          "value size"
+        ]
+      },
+      {
+        "name": "Diaper Balm, 4 oz value size (plastic jar)",
         "asins": [
           "B08KSQV695"
         ],
@@ -44344,12 +44389,20 @@
           ],
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
-            "packaging": "The 4 oz size sold on Amazon is a plastic jar. Motherlove ships the 1 oz and 2 oz in glass and switched the 4 oz to plastic for Amazon specifically. An olive oil and beeswax balm is anhydrous, which is the strongest extractant there is, so the jar matters here more than it would for a water based product. The smaller glass sizes avoid it."
+            "packaging": "Plastic jar. An olive oil and beeswax balm is anhydrous, which is the strongest extractant there is, so the container matters more here than it would for a water based product. The 1 oz and 2 oz ship in glass."
           },
           "authored": true,
           "cappedFrom": "good"
         },
-        "cat": "Diaper cream"
+        "cat": "Diaper cream",
+        "matchAll": [
+          [
+            "motherlove",
+            "diaper",
+            "balm",
+            "4"
+          ]
+        ]
       },
       {
         "name": "Motherlove Nipple Cream",
