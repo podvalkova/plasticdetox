@@ -167,17 +167,21 @@ export function renderResults(container, hits, onPick) {
  * carries the packaging read. It is rendered even when we know the brand,
  * because "good brand, PET bottle" is a real and common answer.
  */
-export function result(root, { index, match, scan, product, query, onOpen, onPick, onProduct }) {
-  const v = verdictFor(match, { title: (scan && scan.title) || query || "", product });
+export function result(root, { index, match, scan, product, query, productNamed, onOpen, onPick, onProduct }) {
+  const v = verdictFor(match, { title: (scan && scan.title) || query || "", product, productNamed });
 
   const card = el("div", "verdict");
   const head = el("div", "verdict-head");
 
   // A stance badge asserts that a person stood behind this verdict. Anything
   // we have not reviewed says so instead of wearing a colour it has not earned.
-  head.appendChild(v.reviewed
-    ? el("span", `badge ${v.stance}`, STANCE_LABEL[v.stance] || "Context")
-    : el("span", "badge neutral", "Research, not yet reviewed"));
+  // A badge asserts a verdict. Where the gate did not let one through, the
+  // badge says so rather than borrowing the brand's.
+  head.appendChild(!v.reviewed
+    ? el("span", "badge neutral", "Research, not yet reviewed")
+    : v.asserted
+      ? el("span", `badge ${v.stance}`, STANCE_LABEL[v.stance] || "Context")
+      : el("span", "badge neutral", "No verdict on this product"));
 
   head.appendChild(el("div", "verdict-brand", v.brand.brand));
   head.appendChild(el("div", "verdict-cat",
@@ -189,6 +193,12 @@ export function result(root, { index, match, scan, product, query, onOpen, onPic
     bl.appendChild(el("b", null, "About the brand: "));
     bl.appendChild(document.createTextNode(v.brandReason));
     head.appendChild(bl);
+  } else if (!v.asserted) {
+    // Say what is missing, in the data's own words where it has them.
+    const box = el("div", "verdict-scope");
+    box.appendChild(document.createTextNode(
+      v.why || `We have researched ${v.brand.brand}, but not this exact product, so we are not putting a verdict on it.`));
+    head.appendChild(box);
   } else if (v.scoped) {
     head.appendChild(el("div", "verdict-scope",
       `This is our finding on ${v.brand.brand} ${String(v.brand.category || "").toLowerCase()} generally. We have not researched this exact product.`));
@@ -200,8 +210,28 @@ export function result(root, { index, match, scan, product, query, onOpen, onPic
   }
   card.appendChild(head);
 
+  // Show what was checked, and name what was not, rather than printing four
+  // rows where three of them say "not yet checked".
+  //
+  // The four-front data lives on product rows. Brand entries barely carry it:
+  // 455 of the 457 brands we rate good have at least one unassessed front, and
+  // 86 have none at all. A full scorecard drawn from a brand therefore reads as
+  // a half-finished verdict, which is how this looked on a Caboo scan. Same
+  // rule the extension has always used.
+  const statusOf = (k) => ((v.fronts && v.fronts[k]) || {}).status || "unknown";
+  const flagged = FRONTS.filter(([k]) => ["caution", "fail"].includes(statusOf(k)));
+  const populated = FRONTS.filter(([k]) => statusOf(k) !== "unknown");
+  const positive = v.asserted && v.stance === "good";
+  const shown = positive ? populated : (flagged.length ? flagged : populated);
+  const unassessed = FRONTS.filter(([k]) => statusOf(k) === "unknown");
+
   const fronts = el("div", "fronts");
-  for (const [key, label] of FRONTS) {
+  if (shown.length) {
+    fronts.appendChild(el("div", "fronts-label", positive
+      ? (v.level === "product" ? "How we checked this product" : "How we checked the brand")
+      : (flagged.length ? "Why we flag it" : "What we checked")));
+  }
+  for (const [key, label] of shown) {
     const f = (v.fronts && v.fronts[key]) || { status: "unknown" };
     const st = f.status || "unknown";
     const line = el("div", `front ${st}`);
@@ -216,7 +246,12 @@ export function result(root, { index, match, scan, product, query, onOpen, onPic
     line.appendChild(body);
     fronts.appendChild(line);
   }
-  card.appendChild(fronts);
+  // Only a recommendation owes the reader a list of what we have not looked at.
+  if (positive && unassessed.length) {
+    fronts.appendChild(el("div", "fronts-unassessed",
+      "Not yet assessed: " + unassessed.map(([, l]) => l.toLowerCase()).join(", ")));
+  }
+  if (fronts.childNodes.length) card.appendChild(fronts);
   root.appendChild(card);
 
   if (v.heldBack && v.heldBack.length) {

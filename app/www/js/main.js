@@ -125,6 +125,7 @@ function draw() {
       scan: state.scan,
       product: state.product,
       query: state.query,
+      productNamed: !!(state.scan || state.productNamed),
       onOpen: openExternal,
       onPick: openHit,
       onProduct: (row) => go({ screen: "result", match: state.match, scan: state.scan, query: state.query, product: row }),
@@ -224,7 +225,7 @@ function runCheck({ brand, product }) {
   const title = [brand, product].filter(Boolean).join(" ").trim();
   const match = index.resolve({ brandName: brand, title });
   if (match) {
-    go({ screen: "result", match, scan: null, query: title });
+    go({ screen: "result", match, scan: null, query: title, productNamed: !!product });
     logSearch(title, true, match.brand.stance);
   } else {
     go({ screen: "unknown", scan: null, brand, product });

@@ -62,13 +62,28 @@
     return res.json();
   }
 
+  /** Whichever selector set is newer, with the bundled copy as the floor. */
+  function newerSelectors(stored, packaged) {
+    if (!stored || typeof stored !== "object") return packaged;
+    const a = Number(stored.version) || 0;
+    const b = Number(packaged.version) || 0;
+    return a >= b ? stored : packaged;
+  }
+
   async function load() {
     const store = await chrome.storage.local.get([
       "brands", "asins", "selectors", "logMisses", "vetPass",
     ]);
     BRANDS = store.brands || (await bundled("brand-data"));
     ASINS = store.asins || (await bundled("asin-map"));
-    SEL = store.selectors || (await bundled("selectors"));
+    // Selectors are the one file where a newer build can know better than the
+    // cache. Everything else only grows, but a selector set is a fix for a
+    // layout change, and the stored copy is whatever the site last served.
+    // Taking the cache unconditionally meant shipping a fix in the package did
+    // nothing until the twelve hour refresh happened to run, which on iOS is
+    // the difference between an extension that works on install and one that
+    // looks broken for half a day.
+    SEL = newerSelectors(store.selectors, await bundled("selectors"));
     logMisses = store.logMisses === true;   // opt in, never opt out
     VET_PASS = (store.vetPass || "").toString();
 

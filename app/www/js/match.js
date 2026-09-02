@@ -254,11 +254,23 @@ export function productVerdict(row) {
 export function verdictFor(match, ctx = {}) {
   const brand = match.brand;
   const title = ctx.title || (match.hint && match.hint.name) || brand.brand;
+  // Did the person name a product, or only a brand? Scanning a barcode and
+  // typing a product both name one; browsing to a brand does not.
+  const productNamed = !!ctx.productNamed;
   // An explicit row wins over matching. It means the person told us which of
   // the brand's products they are holding, which is better than any guess we
   // could make from a title.
   const row = ctx.product || productFor(brand, { asin: ctx.asin, title });
   const productStance = productVerdict(row);
+  // A brand verdict is not a product verdict, and must never stand in for one.
+  //
+  // Caboo is a good brand whose wipes are a careful, and whose whole-range row
+  // is unrated because a recommendation cannot rest on inherited evidence.
+  // Scanning the wipes matched the unrated row, fell through to the brand, and
+  // answered "Good choice" over two unassessed checks. That is the gate the
+  // site spent a release building, and the extension has always held: where
+  // there is no product verdict there is no verdict, only context.
+  const asserted = productNamed ? !!productStance : !!(productStance || brand.stance);
   const productNote = (row && row.note) || "";
   const brandNote = brand.reason || "";
   // Fifteen percent of our product rows carry the brand's own sentence
@@ -273,7 +285,8 @@ export function verdictFor(match, ctx = {}) {
     brand,
     product: row,
     level: productStance ? "product" : "brand",
-    stance: productStance || brand.stance || "neutral",
+    asserted,
+    stance: asserted ? (productStance || brand.stance || "neutral") : "neutral",
     fronts: (row && row.ext && expandFronts(row.ext, brand)) || brand.fronts || {},
     reason: productNote || brandNote,
     brandReason: brandAdds ? brandNote : "",
