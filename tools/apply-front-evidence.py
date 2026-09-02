@@ -41,6 +41,7 @@ import collections
 import datetime
 import json
 import pathlib
+import re
 import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -103,7 +104,7 @@ def worst(materials):
     worst non inert part, because that is the one that can migrate. An object
     whose parts are all inert is inert.
     """
-    parts = [m.strip() for m in str(materials or "").split(",") if m.strip()]
+    parts = [m.strip() for m in re.split(r"[,^/;+&]|\band\b", str(materials or "")) if m.strip()]
     scored = [(classify(m), m) for m in parts]
     bad = [(r, term) for (term, r), _ in scored if r]
     if bad:

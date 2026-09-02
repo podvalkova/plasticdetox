@@ -178,7 +178,9 @@
         "origin": "store",
         "ext": {
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
-          "frontNotes": {},
+          "frontNotes": {
+            "packaging": "Stainless steel, which puts nothing into what it holds."
+          },
           "verdict": "good",
           "dated": "2026-08-29",
           "why": "a vetted store pick, chosen by a person at product scope",
@@ -190,13 +192,14 @@
           },
           "frontOrigin": {
             "formula": "inferred",
-            "packaging": "inferred",
+            "packaging": "database",
             "legal": "database"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [],
+          "packagingMaterial": "Stainless Steel^Plastic"
         },
         "cat": "Baby bottles"
       }
@@ -774,7 +777,9 @@
         "origin": "registry",
         "ext": {
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
-          "frontNotes": {},
+          "frontNotes": {
+            "packaging": "Cotton, which puts nothing into what it holds."
+          },
           "verdict": "good",
           "dated": "2026-08-29",
           "why": "independent lab result at sku scope",
@@ -786,7 +791,7 @@
           },
           "frontOrigin": {
             "formula": "inferred",
-            "packaging": "inferred",
+            "packaging": "database",
             "legal": "database",
             "testing": "inferred"
           },
@@ -795,7 +800,8 @@
           "disclose": false,
           "rules": [
             "5.4 durable-good-is-its-own-packaging"
-          ]
+          ],
+          "packagingMaterial": "Cotton"
         },
         "cat": "Baby sleep"
       }
@@ -1780,15 +1786,16 @@
           "disclose": false,
           "authored": true,
           "frontNotes": {
-            "packaging": "Stainless steel through the food contact surface with no coating or liner.",
+            "packaging": "Stainless steel, which puts nothing into what it holds.",
             "formula": "For a durable good the object is its material, so this is the whole safety case: nothing to leach, nothing to scratch off into food."
           },
           "legalNote": "Checked recall records on 2026-08-31. The label's recalls (2018 power banks, heaters) are electricals, resolved, and unrelated to the kitchenware we cover.",
           "frontOrigin": {
             "formula": "stated",
-            "packaging": "stated",
+            "packaging": "database",
             "legal": "database"
-          }
+          },
+          "packagingMaterial": "Rubber, Stainless Steel"
         },
         "cat": "Tableware"
       }
@@ -2579,7 +2586,8 @@
         "ext": {
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
           "frontNotes": {
-            "formula": "The ROES-50 five stage system removes nearly all microplastics and most PFAS (Recorded for APEC as a whole rather than this product specifically.)"
+            "formula": "The ROES-50 five stage system removes nearly all microplastics and most PFAS (Recorded for APEC as a whole rather than this product specifically.)",
+            "packaging": "Plastic in the contact path, and we have not recorded what it holds."
           },
           "inheritedFronts": [
             "formula"
@@ -2589,13 +2597,13 @@
           "why": "the note reads adversely on formula, needs a human look",
           "fronts": {
             "formula": "caution",
-            "packaging": "pass",
+            "packaging": "caution",
             "legal": "pass",
             "testing": "pass"
           },
           "frontOrigin": {
             "formula": "stated",
-            "packaging": "inferred",
+            "packaging": "database",
             "legal": "database",
             "testing": "inferred"
           },
@@ -2604,7 +2612,8 @@
           "disclose": false,
           "rules": [
             "3 packaging-matrix-pass"
-          ]
+          ],
+          "packagingMaterial": "Plastic"
         },
         "cat": "Water filters",
         "research": "Packaging: Under-sink durable unit; water path uses food-grade plastic tubing, a pressurized steel storage tank, a stainless steel check valve, and a lead-free faucet. Filter housing resin unstated. Materials: Five stages: polypropylene sediment filter, two extruded activated carbon block filters, TFC reverse osmosis membrane, coconut-shell refining carbon post-filter."
@@ -2943,26 +2952,31 @@
           }
         },
         "ext": {
-          "frontNotes": {},
-          "verdict": "good",
+          "frontNotes": {
+            "packaging": "Plastic in the contact path, and we have not recorded what it holds."
+          },
+          "verdict": "careful",
           "dated": "2026-08-28",
-          "why": "hand authored scorecard",
+          "why": "section 6 ceiling: packaging is caution",
           "fronts": {
             "formula": "pass",
-            "packaging": "pass",
+            "packaging": "caution",
             "legal": "pass",
             "testing": "pass"
           },
           "frontOrigin": {
             "formula": "inferred",
-            "packaging": "inferred",
+            "packaging": "database",
             "legal": "inferred",
             "testing": "inferred"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [],
+          "packagingMaterial": "Metal, Plastic",
+          "cappedFrom": "good",
+          "capRestoreWhy": "hand authored scorecard"
         },
         "cat": "Water filters"
       },
@@ -3076,7 +3090,9 @@
         ],
         "ext": {
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
-          "frontNotes": {},
+          "frontNotes": {
+            "packaging": "Borosilicate, which puts nothing into what it holds."
+          },
           "verdict": "good",
           "dated": "2026-08-29",
           "why": "independent lab result at sku scope",
@@ -3088,7 +3104,7 @@
           },
           "frontOrigin": {
             "formula": "inferred",
-            "packaging": "inferred",
+            "packaging": "database",
             "legal": "database",
             "testing": "inferred"
           },
@@ -3098,7 +3114,8 @@
           "rules": [
             "3 packaging-matrix-pass",
             "2 formula-read-from-materials"
-          ]
+          ],
+          "packagingMaterial": "Borosilicate Glass"
         },
         "cat": "Water filters",
         "research": "Packaging: Dispense carafe is borosilicate glass; tap-water fill tank and housing are BPA-free plastic, resin unstated on the Carafe listings. Materials: Four-stage RO: mechanical pre-filter, activated carbon pre-filter, reverse osmosis membrane, activated coconut-shell carbon VOC polishing filter."
@@ -3448,12 +3465,15 @@
           "authored": true,
           "dated": "2026-09-01",
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
-          "frontNotes": {},
+          "frontNotes": {
+            "packaging": "Bamboo, which puts nothing into what it holds."
+          },
           "frontOrigin": {
             "formula": "inferred",
-            "packaging": "inferred",
+            "packaging": "database",
             "legal": "database"
-          }
+          },
+          "packagingMaterial": "Bamboo"
         },
         "cat": "Cutting boards"
       }
@@ -3941,7 +3961,9 @@
         "source": "top-100-baby-kids-products-amazon.html",
         "ext": {
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
-          "frontNotes": {},
+          "frontNotes": {
+            "packaging": "Bamboo, which puts nothing into what it holds."
+          },
           "verdict": "careful",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
@@ -3953,7 +3975,7 @@
           },
           "frontOrigin": {
             "formula": "inferred",
-            "packaging": "inferred",
+            "packaging": "database",
             "legal": "database"
           },
           "scope": "sku",
@@ -3961,7 +3983,8 @@
           "disclose": false,
           "rules": [
             "5.4 durable-good-is-its-own-packaging"
-          ]
+          ],
+          "packagingMaterial": "Bamboo"
         },
         "cat": "Tableware"
       },
@@ -3975,7 +3998,9 @@
         "origin": "registry",
         "ext": {
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
-          "frontNotes": {},
+          "frontNotes": {
+            "packaging": "Stainless steel, which puts nothing into what it holds."
+          },
           "verdict": "good",
           "dated": "2026-08-29",
           "why": "direct evidence at sku scope on formula, packaging",
@@ -3987,7 +4012,7 @@
           },
           "frontOrigin": {
             "formula": "inferred",
-            "packaging": "inferred",
+            "packaging": "database",
             "legal": "database"
           },
           "scope": "sku",
@@ -3995,7 +4020,8 @@
           "disclose": false,
           "rules": [
             "5.4 durable-good-is-its-own-packaging"
-          ]
+          ],
+          "packagingMaterial": "Stainless Steel"
         },
         "cat": "Tableware"
       },
@@ -4009,7 +4035,9 @@
         "origin": "registry",
         "ext": {
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
-          "frontNotes": {},
+          "frontNotes": {
+            "packaging": "Silicone, which puts nothing into what it holds."
+          },
           "verdict": "good",
           "dated": "2026-08-29",
           "why": "direct evidence at sku scope on formula, packaging",
@@ -4021,7 +4049,7 @@
           },
           "frontOrigin": {
             "formula": "inferred",
-            "packaging": "inferred",
+            "packaging": "database",
             "legal": "database"
           },
           "scope": "sku",
@@ -4029,7 +4057,8 @@
           "disclose": false,
           "rules": [
             "5.4 durable-good-is-its-own-packaging"
-          ]
+          ],
+          "packagingMaterial": "Silicone"
         },
         "cat": "Tableware"
       }
@@ -5281,23 +5310,27 @@
         "origin": "store",
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
+          "frontNotes": {
+            "packaging": "Glass, which puts nothing into what it holds."
+          },
           "verdict": "unrated",
           "dated": "2026-08-28",
           "why": "no front is directly evidenced by the note",
           "fronts": {
             "formula": "unassessed",
-            "packaging": "unassessed",
+            "packaging": "pass",
             "legal": "pass",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "legal": "database"
+            "legal": "database",
+            "packaging": "database"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [],
+          "packagingMaterial": "Glass"
         },
         "cat": "Food storage"
       }
@@ -5719,19 +5752,22 @@
         ],
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
-          "verdict": "unrated",
+          "frontNotes": {
+            "packaging": "Bamboo, which puts nothing into what it holds."
+          },
+          "verdict": "good",
           "dated": "2026-09-02",
-          "why": "a recommendation needs its checks done; still to do: packaging",
+          "why": "a vetted store pick, chosen by a person at product scope",
           "fronts": {
             "formula": "pass",
-            "packaging": "unassessed",
+            "packaging": "pass",
             "legal": "pass",
             "testing": "unassessed"
           },
           "frontOrigin": {
             "legal": "database",
-            "formula": "inferred"
+            "formula": "inferred",
+            "packaging": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -5739,11 +5775,7 @@
           "rules": [
             "2 formula-read-from-materials"
           ],
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "heldBack": [
-            "packaging"
-          ]
+          "packagingMaterial": "Bamboo"
         },
         "cat": "Food storage"
       }
@@ -5828,7 +5860,8 @@
         "source": "top-100-baby-kids-products-amazon.html",
         "ext": {
           "frontNotes": {
-            "formula": "Bamboo composite toddler plates bonded with melamine/formaldehyde resin, flagged in the tableware category (Recorded for Bambooware as a whole rather than this product specifically.)"
+            "formula": "Bamboo composite toddler plates bonded with melamine/formaldehyde resin, flagged in the tableware category (Recorded for Bambooware as a whole rather than this product specifically.)",
+            "packaging": "Bamboo, which puts nothing into what it holds."
           },
           "inheritedFronts": [
             "formula"
@@ -5838,20 +5871,21 @@
           "why": "adverse finding stands",
           "fronts": {
             "formula": "fail",
-            "packaging": "caution",
+            "packaging": "pass",
             "legal": "unassessed",
             "testing": "unassessed"
           },
           "frontOrigin": {
             "formula": "stated",
-            "packaging": "inferred"
+            "packaging": "database"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
           "rules": [
             "3 packaging-matrix-caution"
-          ]
+          ],
+          "packagingMaterial": "Bamboo"
         },
         "cat": "Tableware"
       }
@@ -6456,7 +6490,9 @@
         "origin": "store",
         "ext": {
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
-          "frontNotes": {},
+          "frontNotes": {
+            "packaging": "Cotton, which puts nothing into what it holds."
+          },
           "verdict": "good",
           "dated": "2026-08-29",
           "why": "a vetted store pick, chosen by a person at product scope",
@@ -6468,7 +6504,7 @@
           },
           "frontOrigin": {
             "formula": "inferred",
-            "packaging": "inferred",
+            "packaging": "database",
             "legal": "database"
           },
           "scope": "sku",
@@ -6476,7 +6512,8 @@
           "disclose": false,
           "rules": [
             "5.4 durable-good-is-its-own-packaging"
-          ]
+          ],
+          "packagingMaterial": "Organic Cotton"
         },
         "cat": "Pantry"
       },
@@ -6647,7 +6684,9 @@
         "origin": "store",
         "ext": {
           "legalNote": "FDA database matches reviewed on 2026-08-31: the recalling firm, Bear Stewart Co, is a commercial bakery unrelated to this appliance brand. No recall on record for this brand.",
-          "frontNotes": {},
+          "frontNotes": {
+            "packaging": "Stainless steel, which puts nothing into what it holds."
+          },
           "verdict": "good",
           "dated": "2026-08-29",
           "why": "a vetted store pick, chosen by a person at product scope",
@@ -6659,7 +6698,7 @@
           },
           "frontOrigin": {
             "formula": "inferred",
-            "packaging": "inferred",
+            "packaging": "database",
             "legal": "database"
           },
           "scope": "sku",
@@ -6667,7 +6706,8 @@
           "disclose": false,
           "rules": [
             "5.4 durable-good-is-its-own-packaging"
-          ]
+          ],
+          "packagingMaterial": "Stainless Steel"
         },
         "cat": "Baby food",
         "matchAll": [
@@ -7122,7 +7162,9 @@
         "source": "top-100-baby-kids-products-amazon.html",
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
+          "frontNotes": {
+            "packaging": "Glass, which puts nothing into what it holds."
+          },
           "verdict": "good",
           "dated": "2026-08-29",
           "why": "direct evidence at sku scope on formula, packaging",
@@ -7134,7 +7176,7 @@
           },
           "frontOrigin": {
             "formula": "inferred",
-            "packaging": "inferred",
+            "packaging": "database",
             "legal": "database"
           },
           "scope": "sku",
@@ -7142,7 +7184,8 @@
           "disclose": false,
           "rules": [
             "2 formula-read-from-materials"
-          ]
+          ],
+          "packagingMaterial": "glass"
         },
         "cat": "Pantry"
       },
@@ -7172,7 +7215,7 @@
           "why": "Reviewed by hand from our published research on this category.",
           "fronts": {
             "formula": "unassessed",
-            "packaging": "unassessed",
+            "packaging": "caution",
             "legal": "pass",
             "testing": "unassessed"
           },
@@ -7182,10 +7225,14 @@
           "authored": true,
           "dated": "2026-09-01",
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
+          "frontNotes": {
+            "packaging": "Plastic against aqueous contents, ingested."
+          },
           "frontOrigin": {
-            "legal": "database"
-          }
+            "legal": "database",
+            "packaging": "database"
+          },
+          "packagingMaterial": "plastic"
         },
         "matchNot": [
           "jar"
@@ -7339,29 +7386,28 @@
         "origin": "store",
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
-          "verdict": "unrated",
+          "frontNotes": {
+            "packaging": "Beeswax, which puts nothing into what it holds."
+          },
+          "verdict": "good",
           "dated": "2026-09-02",
-          "why": "a recommendation needs its checks done; still to do: packaging",
+          "why": "a vetted store pick, chosen by a person at product scope",
           "fronts": {
             "formula": "pass",
-            "packaging": "unassessed",
+            "packaging": "pass",
             "legal": "pass",
             "testing": "unassessed"
           },
           "frontOrigin": {
             "formula": "inferred",
-            "legal": "database"
+            "legal": "database",
+            "packaging": "database"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
           "rules": [],
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "heldBack": [
-            "packaging"
-          ]
+          "packagingMaterial": "Beeswax"
         },
         "cat": "Food storage"
       }
@@ -8147,7 +8193,7 @@
           "disclose": false,
           "authored": true,
           "frontNotes": {
-            "packaging": "Leachy, contents not described.",
+            "packaging": "Plastic in the contact path, and we have not recorded what it holds.",
             "formula": "PEVA and EVA are less bad than PVC, not non toxic (Recorded for BigFoot as a whole rather than this product specifically.)"
           },
           "dated": "2026-09-01",
@@ -8156,8 +8202,9 @@
           ],
           "frontOrigin": {
             "formula": "stated",
-            "packaging": "stated"
-          }
+            "packaging": "database"
+          },
+          "packagingMaterial": "Ethylene Vinyl Acetate, Magnet, Metal, Plastic"
         },
         "cat": "Shower curtains"
       }
@@ -9112,23 +9159,27 @@
         "origin": "store",
         "ext": {
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
-          "frontNotes": {},
+          "frontNotes": {
+            "packaging": "Borosilicate, which puts nothing into what it holds."
+          },
           "verdict": "unrated",
           "dated": "2026-08-28",
           "why": "no front is directly evidenced by the note",
           "fronts": {
             "formula": "unassessed",
-            "packaging": "unassessed",
+            "packaging": "pass",
             "legal": "pass",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "legal": "database"
+            "legal": "database",
+            "packaging": "database"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [],
+          "packagingMaterial": "Borosilicate Glass"
         },
         "cat": "Water filters"
       },
@@ -9236,7 +9287,9 @@
         "origin": "store",
         "ext": {
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
-          "frontNotes": {},
+          "frontNotes": {
+            "packaging": "Maple wood, which puts nothing into what it holds."
+          },
           "verdict": "good",
           "dated": "2026-08-29",
           "why": "a vetted store pick, chosen by a person at product scope",
@@ -9248,7 +9301,7 @@
           },
           "frontOrigin": {
             "formula": "inferred",
-            "packaging": "inferred",
+            "packaging": "database",
             "legal": "database"
           },
           "scope": "sku",
@@ -9256,7 +9309,8 @@
           "disclose": false,
           "rules": [
             "5.4 durable-good-is-its-own-packaging"
-          ]
+          ],
+          "packagingMaterial": "Maple Wood"
         },
         "cat": "Cutting boards"
       },
@@ -10732,7 +10786,7 @@
           "why": "Reviewed by hand from our published research on this category.",
           "fronts": {
             "formula": "unassessed",
-            "packaging": "unassessed",
+            "packaging": "caution",
             "legal": "unassessed",
             "testing": "unassessed"
           },
@@ -10741,8 +10795,13 @@
           "disclose": false,
           "authored": true,
           "dated": "2026-09-01",
-          "frontNotes": {},
-          "frontOrigin": {}
+          "frontNotes": {
+            "packaging": "Plastic in the contact path, and we have not recorded what it holds."
+          },
+          "frontOrigin": {
+            "packaging": "database"
+          },
+          "packagingMaterial": "Plastic"
         },
         "matchNot": [
           "elite",
@@ -11205,7 +11264,8 @@
         "source": "top-100-baby-kids-products-amazon.html",
         "ext": {
           "frontNotes": {
-            "legal": "Active PFAS lawsuit over PFOA in coated-fabric bibs (filed 2024) (Recorded for Bumkins as a whole rather than this product specifically.)"
+            "legal": "Active PFAS lawsuit over PFOA in coated-fabric bibs (filed 2024) (Recorded for Bumkins as a whole rather than this product specifically.)",
+            "packaging": "Silicone, which puts nothing into what it holds."
           },
           "inheritedFronts": [
             "legal"
@@ -11221,7 +11281,7 @@
           },
           "frontOrigin": {
             "formula": "inferred",
-            "packaging": "inferred",
+            "packaging": "database",
             "legal": "stated"
           },
           "scope": "sku",
@@ -11230,7 +11290,8 @@
           "rules": [
             "5.1 filed-suit-caps-at-caution",
             "5.4 durable-good-is-its-own-packaging"
-          ]
+          ],
+          "packagingMaterial": "Silicone Plastic"
         },
         "cat": "Tableware"
       }
@@ -12541,7 +12602,9 @@
         ],
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
+          "frontNotes": {
+            "packaging": "Stainless steel, which puts nothing into what it holds."
+          },
           "verdict": "good",
           "dated": "2026-08-29",
           "why": "a vetted store pick, chosen by a person at product scope",
@@ -12553,13 +12616,14 @@
           },
           "frontOrigin": {
             "formula": "inferred",
-            "packaging": "inferred",
+            "packaging": "database",
             "legal": "database"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [],
+          "packagingMaterial": "Stainless Steel"
         },
         "cat": "Food storage"
       }
@@ -12830,7 +12894,7 @@
           "why": "Reviewed by hand from our published research on this category.",
           "fronts": {
             "formula": "unassessed",
-            "packaging": "unassessed",
+            "packaging": "caution",
             "legal": "unassessed",
             "testing": "unassessed"
           },
@@ -12839,8 +12903,13 @@
           "disclose": false,
           "authored": true,
           "dated": "2026-09-01",
-          "frontNotes": {},
-          "frontOrigin": {}
+          "frontNotes": {
+            "packaging": "Non stick in the contact path, and we have not recorded what it holds."
+          },
+          "frontOrigin": {
+            "packaging": "database"
+          },
+          "packagingMaterial": "Aluminum, Non Stick Granite"
         },
         "cat": "Cookware"
       }
@@ -14288,7 +14357,8 @@
         "ext": {
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
           "frontNotes": {
-            "formula": "removes PFAS (Recorded for Clearly Filtered as a whole rather than this product specifically.)"
+            "formula": "removes PFAS (Recorded for Clearly Filtered as a whole rather than this product specifically.)",
+            "packaging": "Tritan in the contact path, and we have not recorded what it holds."
           },
           "inheritedFronts": [
             "formula"
@@ -14298,19 +14368,21 @@
           "why": "the note reads adversely on formula, needs a human look",
           "fronts": {
             "formula": "caution",
-            "packaging": "unassessed",
+            "packaging": "caution",
             "legal": "pass",
             "testing": "pass"
           },
           "frontOrigin": {
             "formula": "stated",
             "legal": "database",
-            "testing": "inferred"
+            "testing": "inferred",
+            "packaging": "database"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [],
+          "packagingMaterial": "Medical-Grade Tritan"
         },
         "cat": "Water filters"
       },
@@ -16215,7 +16287,9 @@
         "origin": "store",
         "ext": {
           "legalNote": "Checked recall records on 2026-08-31. The February 2023 recall of 2 million Cosori air fryers (overheating connectors) was remedied by replacement and did not cover the kettles we feature; over 24 months, now informational.",
-          "frontNotes": {},
+          "frontNotes": {
+            "packaging": "Stainless steel, which puts nothing into what it holds."
+          },
           "verdict": "good",
           "dated": "2026-08-29",
           "why": "a vetted store pick, chosen by a person at product scope",
@@ -16227,7 +16301,7 @@
           },
           "frontOrigin": {
             "formula": "inferred",
-            "packaging": "inferred",
+            "packaging": "database",
             "legal": "database"
           },
           "scope": "sku",
@@ -16235,7 +16309,8 @@
           "disclose": false,
           "rules": [
             "2 formula-read-from-materials"
-          ]
+          ],
+          "packagingMaterial": "BPA-Free, Stainless Steel, Borosilicate Glass"
         },
         "cat": "Coffee"
       },
@@ -18521,7 +18596,9 @@
         "origin": "store",
         "ext": {
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
-          "frontNotes": {},
+          "frontNotes": {
+            "packaging": "Cotton, which puts nothing into what it holds."
+          },
           "verdict": "good",
           "dated": "2026-08-29",
           "why": "a vetted store pick, chosen by a person at product scope",
@@ -18533,7 +18610,7 @@
           },
           "frontOrigin": {
             "formula": "inferred",
-            "packaging": "inferred",
+            "packaging": "database",
             "legal": "database",
             "testing": "inferred"
           },
@@ -18542,7 +18619,8 @@
           "disclose": false,
           "rules": [
             "5.4 durable-good-is-its-own-packaging"
-          ]
+          ],
+          "packagingMaterial": "Cotton"
         },
         "cat": "Bedding"
       }
@@ -21523,7 +21601,9 @@
         "origin": "store",
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
+          "frontNotes": {
+            "packaging": "Glass, which puts nothing into what it holds."
+          },
           "verdict": "good",
           "dated": "2026-08-29",
           "why": "a vetted store pick, chosen by a person at product scope",
@@ -21535,7 +21615,7 @@
           },
           "frontOrigin": {
             "formula": "inferred",
-            "packaging": "inferred",
+            "packaging": "database",
             "legal": "database"
           },
           "scope": "sku",
@@ -21543,7 +21623,8 @@
           "disclose": false,
           "rules": [
             "2 formula-read-from-materials"
-          ]
+          ],
+          "packagingMaterial": "glass"
         },
         "cat": "Baby bottles"
       },
@@ -21557,7 +21638,9 @@
         "origin": "store",
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
+          "frontNotes": {
+            "packaging": "Glass, which puts nothing into what it holds."
+          },
           "verdict": "good",
           "dated": "2026-08-29",
           "why": "a vetted store pick, chosen by a person at product scope",
@@ -21569,7 +21652,7 @@
           },
           "frontOrigin": {
             "formula": "inferred",
-            "packaging": "inferred",
+            "packaging": "database",
             "legal": "database"
           },
           "scope": "sku",
@@ -21577,7 +21660,8 @@
           "disclose": false,
           "rules": [
             "2 formula-read-from-materials"
-          ]
+          ],
+          "packagingMaterial": "glass"
         },
         "cat": "Baby bottles"
       },
@@ -21591,7 +21675,9 @@
         "origin": "store",
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
+          "frontNotes": {
+            "packaging": "Glass, which puts nothing into what it holds."
+          },
           "verdict": "good",
           "dated": "2026-08-29",
           "why": "a vetted store pick, chosen by a person at product scope",
@@ -21603,7 +21689,7 @@
           },
           "frontOrigin": {
             "formula": "inferred",
-            "packaging": "inferred",
+            "packaging": "database",
             "legal": "database"
           },
           "scope": "sku",
@@ -21611,7 +21697,8 @@
           "disclose": false,
           "rules": [
             "2 formula-read-from-materials"
-          ]
+          ],
+          "packagingMaterial": "glass"
         },
         "cat": "Baby bottles"
       },
