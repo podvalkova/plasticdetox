@@ -173,11 +173,39 @@ def main():
             # reset the date on all held rows.
             dated = prev.get("dated") if v in (prev.get("verdict"), prev.get("heldFrom")) else None
 
+            # This used to replace ext wholesale, which threw away everything
+            # another tool owns: the legal findings check-recalls got from the
+            # actual databases, the dates the ceiling weighs, the notes saying
+            # why a front holds its value. One run wiped 455 rows of that and
+            # moved fifteen verdicts as a side effect.
+            #
+            # A front derived from note text is the weakest evidence we have, so
+            # it may fill a blank and may correct another inference, but it does
+            # not get to overwrite a database answer or a person's judgement.
+            RANK = {"inferred": 0, "stated": 1, "database": 2, "hand": 3}
+            origin = dict(prev.get("frontOrigin") or {})
+            merged = {}
+            for k in FRONTS:
+                held = prev.get("fronts", {}).get(k)
+                if held not in (None, "unassessed", "unknown") and RANK.get(origin.get(k, "inferred"), 0) > 0:
+                    merged[k] = held          # better evidence already stands
+                else:
+                    merged[k] = f[k]["status"]
+                    if merged[k] not in (None, "unassessed", "unknown"):
+                        origin[k] = "inferred"
+                    else:
+                        origin.pop(k, None)
+
             p["ext"] = {
+                **{key: val for key, val in prev.items()
+                   if key in ("legalNote", "legalDate", "testingNote", "testingDate",
+                              "frontNotes", "cappedFrom", "capRestoreWhy", "heldFrom",
+                              "restoreWhy", "legalSuperseded", "authored", "inheritedFronts")},
                 "verdict": v,
                 "dated": dated or TODAY,
                 "why": why,
-                "fronts": {k: f[k]["status"] for k in FRONTS},
+                "fronts": merged,
+                "frontOrigin": origin,
                 "scope": scope,
                 "basis": basis,
                 "disclose": disclose,
