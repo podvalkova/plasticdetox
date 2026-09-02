@@ -51,8 +51,9 @@ TODAY = datetime.date.today().isoformat()
 # Materials that put nothing into what they hold. The answer does not depend on
 # the contents, which is the whole point of recording a material rather than a
 # judgement.
-INERT = {"glass", "borosilicate", "stainless", "steel", "tin", "ceramic",
-         "porcelain", "enamel", "bamboo", "wood", "paper-uncoated"}
+INERT = {"glass", "borosilicate", "tempered glass", "stainless", "stainless steel",
+         "steel", "tin", "ceramic", "porcelain", "enamel", "bamboo", "wood",
+         "maple wood", "beeswax", "paper-uncoated", "silicone", "cotton", "metal"}
 
 # Everything else in the contact path, and how much of a problem the polymer is
 # before the contents are considered. PVC carries phthalate plasticisers,
@@ -63,12 +64,53 @@ POLYMER = {
     "pvc": 3, "ps": 3, "polystyrene": 3, "pc": 3, "polycarbonate": 3, "other": 3,
     "pet": 2, "pete": 2,
     "pp": 1, "polypropylene": 1, "hdpe": 1, "ldpe": 1, "polyethylene": 1,
-    "acrylic": 2, "nylon": 2, "melamine": 3, "silicone": 1,
+    "acrylic": 2, "nylon": 2, "melamine": 3,
     # Paper and card on the food side are usually coated, and the coating is the
     # part that matters.
     "paper-coated": 2, "paperboard": 2, "carton": 2,
     "plastic": 2,        # unnamed polymer: we know it is plastic and no more
+    "tritan": 2,         # BPA free copolyester, still a plastic contact surface
+    "aluminum": 1, "aluminium": 1,   # nearly always lined, and the lining decides
+    "non stick": 3, "nonstick": 3, "ptfe": 3,
 }
+
+
+def classify(name):
+    """Which rule a material name falls under, matched on the words in it.
+
+    Listings write "Borosilicate Glass", "Medical-Grade Tritan", "Aluminum, Non
+    Stick Granite". Exact matching missed all three, so the longest known term
+    appearing anywhere in the name decides.
+    """
+    n = (name or "").strip().lower()
+    if not n:
+        return None, None
+    best = None
+    for term, rank in POLYMER.items():
+        if term in n and (best is None or len(term) > len(best[0])):
+            best = (term, rank)
+    for term in INERT:
+        if term in n and (best is None or len(term) > len(best[0])):
+            best = (term, 0)
+    return best if best else (None, None)
+
+
+def worst(materials):
+    """The material that decides, from a listing naming several.
+
+    A listing gives the whole object: "Glass, Silicone" is a jar and its gasket,
+    "Metal, Plastic" is a housing and its fittings. The one that decides is the
+    worst non inert part, because that is the one that can migrate. An object
+    whose parts are all inert is inert.
+    """
+    parts = [m.strip() for m in str(materials or "").split(",") if m.strip()]
+    scored = [(classify(m), m) for m in parts]
+    bad = [(r, term) for (term, r), _ in scored if r]
+    if bad:
+        return max(bad)[1]
+    inert = [term for (term, r), _ in scored if term and r == 0]
+    return inert[0] if inert else ""
+
 
 # What is inside. Fat is the strongest extractant there is, alcohol close
 # behind; water is the mild case; a dry solid barely migrates at all.
@@ -81,7 +123,6 @@ BASE = {"anhydrous": 3, "oil": 3, "fatty": 3, "alcohol": 3,
 USE = {"ingested": 2, "food": 2, "drink": 2, "leave-on": 2, "oral": 2,
        "rinse-off": 1, "topical-rinse": 1,
        "non-contact": 0, "external": 0}
-
 
 # Polymer names are acronyms, and "Pet against anhydrous contents" reads like
 # an animal.
@@ -101,11 +142,12 @@ def packaging_status(material, base, use):
     m = (material or "").strip().lower()
     if not m or m in ("na", "n/a", "unknown"):
         return None, "material not recorded"
-    if m in INERT:
-        return "pass", f"{pretty(m)}, which puts nothing into what it holds"
-    rank = POLYMER.get(m)
-    if rank is None:
+    term, rank = classify(m)
+    if term is None:
         return None, f"material '{m}' is not one we have a rule for"
+    m = term
+    if rank == 0:
+        return "pass", f"{pretty(m)}, which puts nothing into what it holds"
 
     b = BASE.get((base or "").strip().lower())
     u = USE.get((use or "").strip().lower())
