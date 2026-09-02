@@ -6,7 +6,7 @@
   "scripts": {
     "serve": "node scripts/serve.mjs",
     "sync-data": "node scripts/sync-data.mjs",
-    "bundle": "node scripts/sync-data.mjs && node scripts/smoke.mjs && node scripts/bundle.mjs",
+    "bundle": "node scripts/sync-data.mjs && node scripts/smoke.mjs && python3 ../tools/audit-links.py --strict && node scripts/bundle.mjs",
     "ios": "npm run sync-data && npx cap sync ios && npx cap open ios",
     "testflight": "node scripts/testflight.mjs",
     "archive": "npm run sync-data && npx cap copy ios && xcodebuild -workspace ios/App/App.xcworkspace -scheme App -configuration Release -sdk iphoneos -archivePath dist/ios/PlasticDetox.xcarchive archive",
