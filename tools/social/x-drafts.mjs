@@ -68,6 +68,16 @@ const ageLabel = at => {
   return `${Math.round(h / 24)}d old`;
 };
 
+// Drafting from a search-result preview is how replies end up answering something the
+// post never said. Refuse to pretend the text is complete when it is not.
+const unhydrated = rows.filter(p => !p.fullText);
+if (unhydrated.length) {
+  console.error(`\nWARNING: ${unhydrated.length} of ${rows.length} drafted posts have not been hydrated,`);
+  console.error('so their text may be truncated. Run: node tools/social/x-hydrate.mjs');
+  for (const p of unhydrated) console.error(`  @${p.handle}`);
+  console.error('');
+}
+
 const cards = rows.map(p => {
   const id = p.link.split('/').pop();
   const echo = echoScore(drafts[id], p.text);
@@ -80,6 +90,7 @@ const cards = rows.map(p => {
         ${dupe.get(id) ? '<span class="warn">same story as another card, reply to one</span>' : ''}
         ${echo > 0.5 ? `<span class="warn">${Math.round(echo * 100)}% of this reply repeats the post, check it adds something</span>` : ''}
         ${(ageHours(p.at) ?? 0) > 24 ? '<span class="warn">older than 24h, the conversation has moved on</span>' : ''}
+        ${p.fullText ? '' : '<span class="warn">text may be truncated, not hydrated</span>'}
       </div>
       <button class="skip" type="button">skip</button>
     </header>
