@@ -229,6 +229,16 @@ def assess(pack):
 # Exposure types that name a thing you swallow or leave on your body. These
 # have an ingredient list and formula is a real question. Everything else is an
 # object, and objects are answered by the materials front.
+# Exposure types that are an object rather than a recipe. A kettle, a bowl, a
+# mat: nothing to list, so formula is `none` and the materials front carries
+# the whole question.
+DURABLE_TYPES = {
+    "air appliance", "equipment", "floss", "food surface", "food vessel",
+    "heated cookware", "heated vessel", "mouthed object", "oral appliance",
+    "reusable bottle", "room textile", "slept on", "wet room textile",
+    "worn gear", "worn textile",
+}
+
 CONSUMED = {
     "chewed supplement", "chewing gum", "drinking water", "food", "hot drink",
     "leave-on face", "leave-on skin", "mouth rinse", "rinse-off skin",
@@ -480,7 +490,7 @@ def main():
     # formula is `none`, a completed check, not `unassessed`, a gap. Leaving it
     # as a gap makes a steel kettle wait forever for a recipe it does not have,
     # and reads to the shopper as a check we skipped.
-    nofm = 0
+    nofm, undone = 0, 0
     for b in brands:
         for p in (b.get("products") or []):
             e0 = p.get("ext") or {}
@@ -495,8 +505,36 @@ def main():
                     fa["summary"] = ("A durable good has no ingredient list. "
                                      "What it is made of is the materials check.")
             etype = ((e0.get("exposure") or {}).get("type") or "").strip().lower()
+            # A `none` this rule wrote before, on something that is not an
+            # object after all. It has to come back off, or the correction only
+            # ever applies to rows nobody had reached yet.
+            # Note or no note. Some of these were written before the rule kept
+            # one, so matching on the sentence missed exactly the rows that had
+            # been wrong longest. A person's own scorecard is left alone.
+            if (etype and etype not in DURABLE_TYPES
+                    and ((e0.get("fronts") or {}).get("formula")) == "none"
+                    and not e0.get("authored")):
+                e0["fronts"]["formula"] = "unassessed"
+                (e0.get("frontOrigin") or {}).pop("formula", None)
+                (e0.get("frontNotes") or {}).pop("formula", None)
+                fa = e0.get("formulaAnswers")
+                if fa is not None and fa.get("verdict") == "n/a":
+                    fa["verdict"] = "open"
+                    fa["summary"] = "No ingredient list recorded."
+                undone += 1
+
             if etype:
-                if etype in CONSUMED:
+                # An allowlist, not an exclusion.
+                #
+                # This used to mark formula `none` for any exposure type that
+                # was not on the consumable list, which asserts "this has no
+                # ingredient list" about things nobody checked. It stamped that
+                # on diapers, whose wipes carry six published ingredients, and
+                # on period products. Asserting a finding we have not
+                # established is the one thing this file exists to prevent, so
+                # only types that are unambiguously an object qualify, and
+                # anything else stays unassessed.
+                if etype not in DURABLE_TYPES:
                     continue
             else:
                 entry = next((ev[k] for k in keys_for(b["brand"], p) if k in ev), None)
@@ -521,6 +559,8 @@ def main():
                                      "What it is made of is the materials check.")
                 nofm += 1
     print(f"  formula marked none on durable goods: {nofm}")
+    if undone:
+        print(f"  stale none cleared off non-durables:   {undone}")
 
     total = sum(v for k, v in applied.items() if k != "skipped")
     print(f"entries in {EVIDENCE.relative_to(ROOT)}: {len(ev)}")

@@ -757,11 +757,15 @@ export function result(root, { index, match, scan, product, query, productNamed,
   // a half-finished verdict, which is how this looked on a Caboo scan. Same
   // rule the extension has always used.
   const statusOf = (k) => ((v.fronts && v.fronts[k]) || {}).status || "unknown";
-  const flagged = FRONTS.filter(([k]) => ["caution", "fail"].includes(statusOf(k)));
-  const populated = FRONTS.filter(([k]) => statusOf(k) !== "unknown");
+  // A front that does not apply is not a check anybody wants to read. A kettle
+  // has no ingredient list, and a row saying so is a line of furniture between
+  // the reader and the findings that do apply.
+  const applies = ([k]) => !(k === "formula" && statusOf(k) === "none");
+  const flagged = FRONTS.filter((f) => applies(f) && ["caution", "fail"].includes(statusOf(f[0])));
+  const populated = FRONTS.filter((f) => applies(f) && statusOf(f[0]) !== "unknown");
   const positive = v.asserted && v.stance === "good";
   const shown = positive ? populated : (flagged.length ? flagged : populated);
-  const unassessed = FRONTS.filter(([k]) => statusOf(k) === "unknown");
+  const unassessed = FRONTS.filter((f) => applies(f) && statusOf(f[0]) === "unknown");
 
   const printed = [];
   const fronts = el("div", "fronts");
