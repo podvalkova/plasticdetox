@@ -117,6 +117,13 @@ tr:hover td{background:var(--sunk)}
 .sq i{width:10px;height:10px;border-radius:2.5px;border:1.5px solid var(--border-strong);display:block}
 .sq i.ev{background:var(--accent);border-color:var(--accent)}
 .sq i.inf{background:var(--careful);border-color:var(--careful)}
+.lvl{display:inline-block;padding:.15rem .55rem;border-radius:999px;font-size:10.5px;
+  font-weight:800;letter-spacing:.05em;text-transform:uppercase}
+.lvl.high{color:var(--skip);background:var(--skip-bg)}
+.lvl.medium{color:var(--careful);background:var(--careful-bg)}
+.lvl.low{color:var(--good);background:var(--good-bg)}
+.lvl-t{font-size:11.5px;color:var(--muted);margin-left:.45rem}
+#exp-table td{font-size:12.5px}
 .mark{width:10px;height:10px;border-radius:999px;display:inline-block;vertical-align:-1px;
   margin-right:.45rem;background:var(--border-strong)}
 .mark.pass{background:var(--good)} .mark.caution{background:var(--careful)} .mark.fail{background:var(--skip)}
@@ -186,6 +193,21 @@ footer{margin-top:2.4rem;padding-top:1.2rem;border-top:1px solid var(--border);
     <span><i style="background:var(--sunk)"></i> not checked</span>
   </div>
 
+  <h2>Exposure by product type</h2>
+  <p class="sub" style="margin:-.4rem 0 1rem">How much of a product actually reaches a person, decided once
+  per type rather than per product. Release is what comes out of the material; dose is what gets to you.
+  Anything for a baby is high whatever the arithmetic says.</p>
+  <div class="scroll">
+    <table id="exp-table">
+      <thead><tr>
+        <th>Product type</th><th>Route</th><th>Amount</th><th>Duration</th>
+        <th>Retained</th><th>How often</th><th>Heat</th><th>Fat</th>
+        <th class="num">Products</th><th>Exposure</th>
+      </tr></thead>
+      <tbody id="exp-rows"></tbody>
+    </table>
+  </div>
+
   <h2>Every product</h2>
   <div class="controls">
     <input type="search" id="q" placeholder="Search a brand, product or material">
@@ -196,6 +218,9 @@ footer{margin-top:2.4rem;padding-top:1.2rem;border-top:1px solid var(--border);
     <button class="chip" data-v="careful" aria-pressed="false">Careful</button>
     <button class="chip" data-v="skip" aria-pressed="false">Skip</button>
     <button class="chip" data-v="unrated" aria-pressed="false">Unrated</button>
+    <button class="chip" data-x="high" aria-pressed="false">High exposure</button>
+    <button class="chip" data-x="medium" aria-pressed="false">Medium</button>
+    <button class="chip" data-x="low" aria-pressed="false">Low</button>
     <span class="count" id="count"></span>
   </div>
   <div class="scroll">
@@ -234,7 +259,7 @@ const WORKER = "https://plasticdetox-quiz-email.plasticdetox.workers.dev";
 const FRONTS = ["formula","packaging","legal","testing"];
 const KEY = "pd.db.ok";
 let ROWS = [], sortCol = null, sortDir = 1;
-const state = {q:"", work:false, nomat:false, pkgbad:false, v:new Set()};
+const state = {q:"", work:false, nomat:false, pkgbad:false, v:new Set(), x:new Set()};
 const el = (t,c,x)=>{const n=document.createElement(t); if(c)n.className=c; if(x!=null)n.textContent=x; return n;};
 
 async function unlock(pw){
@@ -285,7 +310,9 @@ function build(brands){
       if(e.packagingMaterial) withMat++;
       ROWS.push([b.brand, p.name||"", b.category||"", v, e.packagingMaterial||"", checks,
                  (e.frontNotes||{}).packaging||"", fr.packaging||"unassessed",
+                 (e.exposure||{}).level||"", (e.exposure||{}).type||"",
                  {fronts:fr, origin:or, notes:e.frontNotes||{}, answers:e.packagingAnswers||null,
+                  exposure:e.exposure||null,
                   why:e.why||"", asins:p.asins||[], dated:e.dated||"", scope:e.scope||""}]);
     }
   }
@@ -316,11 +343,35 @@ function build(brands){
     bars.appendChild(row);
   }
   render();
+  buildExposure();
+}
+
+async function buildExposure(){
+  let table;
+  try { table = await (await fetch("data/exposure.json",{cache:"no-cache"})).json(); }
+  catch(e){ return; }
+  const counts = {};
+  for(const r of ROWS) if(r[9]) counts[r[9]] = (counts[r[9]]||0)+1;
+  const body = document.getElementById("exp-rows");
+  const rows = Object.entries(table.types)
+    .sort((a,b)=> (b[1].score||0)-(a[1].score||0));
+  for(const [name, t] of rows){
+    const tr = el("tr");
+    tr.appendChild(el("td","b", name));
+    for(const k of ["route","amount","duration","retained","frequency"]) tr.appendChild(el("td","dim", t[k]));
+    tr.appendChild(el("td","dim", t.heat ? "yes" : "—"));
+    tr.appendChild(el("td","dim", t.fat ? "yes" : "—"));
+    tr.appendChild(el("td","num", String(counts[name]||0)));
+    const lv = el("td"); lv.appendChild(el("span","lvl "+t.level, t.level)); tr.appendChild(lv);
+    tr.title = t.note || "";
+    body.appendChild(tr);
+  }
 }
 
 function passes(r){
   if(state.nomat && r[4]) return false;
   if(state.pkgbad && !(r[7]==="caution" || r[7]==="fail")) return false;
+  if(state.x.size && !state.x.has(r[8])) return false;
   if(state.work && !(r[3]==="unrated" || !r[4])) return false;
   if(state.v.size && !state.v.has(r[3])) return false;
   if(state.q){
@@ -353,6 +404,11 @@ function render(){
     sq.title = FRONTS.map((f,i)=>f+": "+["not checked","inferred","recorded"][r[5][i]]).join(", ");
     for(const n of r[5]) sq.appendChild(el("i", n===2?"ev":n===1?"inf":""));
     c.appendChild(sq); tr.appendChild(c);
+    const xp=el("td");
+    if(r[8]){ xp.appendChild(el("span","lvl "+r[8], r[8]));
+              xp.appendChild(el("span","lvl-t", r[9])); }
+    else xp.appendChild(el("span","mat none","—"));
+    tr.appendChild(xp);
     const pk=el("td"); const dot=el("span","mark "+r[7]);
     dot.title = r[6] || r[7];
     pk.appendChild(dot);
@@ -401,7 +457,7 @@ function answerFor(i, a){
 }
 
 function openDetail(r){
-  const d = r[8], a = d.answers;
+  const d = r[10], a = d.answers;
   const body = document.getElementById("d-body");
   body.replaceChildren();
   body.appendChild(el("div","d-brand", r[0]));
@@ -413,6 +469,27 @@ function openDetail(r){
   if(d.dated) vl.appendChild(el("span","d-meta","last changed " + d.dated));
   body.appendChild(vl);
   if(d.why) body.appendChild(el("div","why", d.why));
+
+  if(d.exposure){
+    const x = d.exposure;
+    const xs = el("div","d-sec");
+    xs.appendChild(el("h3", null, "Exposure"));
+    const head = el("div","verdict-line");
+    head.appendChild(el("span","lvl "+x.level, x.level));
+    head.appendChild(el("span","d-meta", x.type));
+    xs.appendChild(head);
+    const g = el("div","qa");
+    const pairs = [["Route", x.route], ["Duration", x.duration], ["Retained", x.retained],
+                   ["How often", x.frequency], ["Heat", x.heat?"yes":"no"], ["Fat", x.fat?"yes":"no"]];
+    for(const [k,v] of pairs){
+      g.appendChild(el("div","qn", ""));
+      const c2 = el("div"); c2.appendChild(el("div","q", k)); c2.appendChild(el("div","a", String(v)));
+      g.appendChild(c2);
+    }
+    xs.appendChild(g);
+    if(x.why) xs.appendChild(el("div","why", x.why));
+    body.appendChild(xs);
+  }
 
   const pk = el("div","d-sec");
   pk.appendChild(el("h3", null, "Packaging, question by question"));
@@ -460,6 +537,7 @@ for(const btn of document.querySelectorAll(".chip")){
     if(btn.dataset.f==="store") state.work=!on;
     else if(btn.dataset.f==="nomat") state.nomat=!on;
     else if(btn.dataset.f==="pkgbad") state.pkgbad=!on;
+    else if(btn.dataset.x){ !on ? state.x.add(btn.dataset.x) : state.x.delete(btn.dataset.x); }
     else { !on ? state.v.add(btn.dataset.v) : state.v.delete(btn.dataset.v); }
     render();
   });
