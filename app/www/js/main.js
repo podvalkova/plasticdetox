@@ -139,6 +139,8 @@ function draw() {
       productNamed: !!(state.scan || state.productNamed),
       onOpen: openExternal,
       onPick: openHit,
+      onSave: toggleSaved,
+      isSaved,
       onProduct: (row) => go({ screen: "result", match: state.match, scan: state.scan, query: state.query, product: row }),
     });
     remember(state, v);
@@ -191,6 +193,24 @@ function draw() {
         product: row, productNamed: true, query: `${b.brand} ${row.name}`,
       }),
     });
+  } else if (state.screen === "saved") {
+    screens.saved(view, {
+      items: readSaved(),
+      index,
+      onOpen: openExternal,
+      onShop: () => { stack = [{ screen: "shop" }]; render(); },
+      onProduct: (b, row) => go({
+        screen: "result", match: { brand: b, via: "picked" }, scan: null,
+        product: row, productNamed: true, query: `${b.brand} ${row.name}`,
+      }),
+    });
+  } else if (state.screen === "learn") {
+    screens.learn(view, {
+      articles: data.allArticles(),
+      query: state.q || "",
+      onQuery: (q) => { state.q = q; render(); view.querySelector(".shop-search input")?.focus(); },
+      onOpen: openExternal,
+    });
   } else if (state.screen === "shopCategory") {
     screens.shopCategory(view, {
       index,
@@ -209,20 +229,72 @@ function draw() {
 
   // The bar belongs to the two roots, not to a screen you drilled into: it is
   // how you switch jobs, and a back arrow is how you come back up.
-  const root = stack[0].screen;
-  const onRoot = stack.length === 1 && ["home", "shop"].includes(state.screen);
+  const ROOTS = { home: "check", shop: "shop", saved: "saved", learn: "learn" };
+  const onRoot = stack.length === 1 && state.screen in ROOTS;
   document.querySelector(".tabs")?.remove();
   document.body.classList.toggle("has-tabs", onRoot);
   if (onRoot) {
-    document.body.appendChild(screens.tabs(
-      state.screen === "shop" ? "shop" : "check",
-      (tab) => { stack = [{ screen: tab === "shop" ? "shop" : "home" }]; render(); },
-    ));
+    document.body.appendChild(screens.tabs(ROOTS[state.screen], (tab) => {
+      stack = [{ screen: tab === "check" ? "home" : tab }];
+      render();
+    }));
   }
 }
 
 backBtn.onclick = back;
 infoBtn.onclick = () => go({ screen: "about" });
+
+// ------------------------------------------------------------------ saved
+
+/**
+ * Products someone deliberately kept.
+ *
+ * Distinct from recents, which is a history and fills itself. This is a list
+ * you build, which is what turns a lookup tool into a shopping list. Stored on
+ * the device: there are no accounts, and a saved list is not worth inventing
+ * one for.
+ */
+const SAVED_KEY = "pd.saved.v1";
+
+function readSaved() {
+  try {
+    const raw = JSON.parse(localStorage.getItem(SAVED_KEY) || "[]");
+    return Array.isArray(raw) ? raw : [];
+  } catch {
+    return [];
+  }
+}
+
+function savedKey(brandName, name) {
+  return `${brandName}\u0000${name}`;
+}
+
+function isSaved(brandName, name) {
+  return readSaved().some((s) => savedKey(s.brand, s.name) === savedKey(brandName, name));
+}
+
+function toggleSaved(b, row) {
+  const list = readSaved();
+  const key = savedKey(b.brand, row.name);
+  const at = list.findIndex((s) => savedKey(s.brand, s.name) === key);
+  if (at >= 0) {
+    list.splice(at, 1);
+    toast("Removed");
+  } else {
+    list.unshift({
+      brand: b.brand, brandId: b.id, name: row.name,
+      cat: row.cat || b.category || "", asin: (row.asins || [])[0] || "",
+      stance: (row.ext || {}).verdict || "unrated", at: Date.now(),
+    });
+    toast("Saved");
+  }
+  try {
+    localStorage.setItem(SAVED_KEY, JSON.stringify(list.slice(0, 200)));
+  } catch {
+    // A full quota is not worth a crash.
+  }
+  render();
+}
 
 // ----------------------------------------------------------------- search
 

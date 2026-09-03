@@ -25,6 +25,7 @@ let meta = { source: "bundle", version: null, brands: 0 };
 
 let campaignLinks = {};
 let productImages = {};
+let articles = [];
 
 /**
  * The buy link for an ASIN.
@@ -49,6 +50,9 @@ export function productImage(asin, px = 300) {
   const id = asin && productImages[asin];
   return id ? `https://m.media-amazon.com/images/I/${id}._AC_SL${px}_.jpg` : "";
 }
+
+/** The articles, newest first. */
+export function allArticles() { return articles; }
 
 async function readBundled(name) {
   const res = await fetch(`./data/${name}.json`, { cache: "force-cache" });
@@ -103,6 +107,7 @@ export async function load() {
   // no credit. Absent is fine: the shop falls back to a plain tagged link.
   campaignLinks = await readBundled("campaign-links").catch(() => ({}));
   productImages = await readBundled("product-images").catch(() => ({}));
+  articles = await readBundled("articles").catch(() => []);
   return build({ brands, asins, barcodes }, "bundle");
 }
 

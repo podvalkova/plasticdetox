@@ -59,6 +59,30 @@ fs.writeFileSync(path.join(OUT, "product-images.json"),
   JSON.stringify(images, null, 1) + "\n");
 console.log(`product-images.json  ${Object.keys(images).length} products`);
 
+// The articles, so the app has something to read between shopping trips.
+// Seventy four of them exist and the app surfaced none, which made it a
+// lookup tool rather than somewhere you would keep going back to.
+const ARTICLES = path.join(REPO, "articles");
+const grab = (text, re) => (text.match(re) || [])[1] || "";
+const articles = [];
+for (const name of fs.readdirSync(ARTICLES)) {
+  if (!name.endsWith(".html")) continue;
+  const head = fs.readFileSync(path.join(ARTICLES, name), "utf8").slice(0, 6000);
+  const title = grab(head, /<title>([\s\S]*?)<\/title>/)
+    .replace(/\s*\|\s*Plastic Detox\s*$/, "").trim();
+  if (!title) continue;
+  articles.push({
+    slug: name,
+    title,
+    blurb: grab(head, /name="description" content="([^"]*)"/).trim(),
+    image: grab(head, /property="og:image" content="([^"]*)"/).trim(),
+    date: grab(head, /"datePublished":\s*"([^"]+)"/).trim(),
+  });
+}
+articles.sort((a, b) => (b.date || "").localeCompare(a.date || ""));
+fs.writeFileSync(path.join(OUT, "articles.json"), JSON.stringify(articles, null, 1) + "\n");
+console.log(`articles.json        ${articles.length} articles`);
+
 let brands = 0;
 for (const { from, to } of SOURCES) {
   if (!fs.existsSync(from)) {

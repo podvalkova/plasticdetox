@@ -217,6 +217,8 @@ export function tabs(current, onTab) {
   for (const [key, label, path] of [
     ["check", "Check", ICONS.check],
     ["shop", "Shop", ICONS.shop],
+    ["saved", "Saved", ICONS.saved],
+    ["learn", "Learn", ICONS.learn],
   ]) {
     const b = el("button", `tab${current === key ? " on" : ""}`);
     b.appendChild(icon(path));
@@ -225,6 +227,96 @@ export function tabs(current, onTab) {
     bar.appendChild(b);
   }
   return bar;
+}
+
+// ------------------------------------------------------------------ saved
+
+export function saved(root, { items, index, onProduct, onOpen, onShop }) {
+  const hero = el("div", "hero shop-hero");
+  hero.appendChild(el("h1", null, "Saved"));
+  hero.appendChild(el("p", null, items.length
+    ? `${items.length} kept for later.`
+    : "Nothing kept yet."));
+  root.appendChild(hero);
+
+  if (!items.length) {
+    const empty = el("div", "empty");
+    empty.appendChild(el("h2", null, "Your list is empty"));
+    empty.appendChild(el("p", null,
+      "Tap Save on any product and it waits here, so a shop trip is a list rather than a memory test."));
+    const go = el("button", "cta", "Browse what we would buy");
+    go.onclick = onShop;
+    empty.appendChild(go);
+    root.appendChild(empty);
+    return;
+  }
+
+  const grid = el("div", "pgrid");
+  for (const s of items) {
+    // Resolve back to the live row, so a saved item shows today's verdict
+    // rather than the one it had when it was saved.
+    const b = index.brands.find((x) => x.id === s.brandId || x.brand === s.brand);
+    const row = b && (b.products || []).find((p) => p.name === s.name);
+    if (b && row) {
+      grid.appendChild(shopCard({ brand: b, row }, { onOpen, onProduct }));
+      continue;
+    }
+    const card = el("div", "pcard");
+    const body = el("div", "pcard-body");
+    body.appendChild(el("div", "pcard-brand", s.brand));
+    body.appendChild(el("div", "pcard-name", s.name));
+    card.appendChild(body);
+    grid.appendChild(card);
+  }
+  root.appendChild(grid);
+}
+
+// ------------------------------------------------------------------ learn
+
+export function learn(root, { articles, onOpen, query, onQuery }) {
+  const hero = el("div", "hero shop-hero");
+  hero.appendChild(el("h1", null, "Learn"));
+  hero.appendChild(el("p", null,
+    `${articles.length} guides on what the research actually says.`));
+  root.appendChild(hero);
+
+  const box = el("div", "search shop-search");
+  const input = el("input");
+  input.type = "search";
+  input.placeholder = "Search the guides";
+  input.value = query || "";
+  input.autocomplete = "off";
+  input.oninput = () => onQuery(input.value);
+  box.appendChild(icon(ICONS.search, 18));
+  box.appendChild(input);
+  root.appendChild(box);
+
+  const q = (query || "").trim().toLowerCase();
+  const list = q.length >= 2
+    ? articles.filter((a) => `${a.title} ${a.blurb}`.toLowerCase().includes(q))
+    : articles;
+
+  if (!list.length) {
+    root.appendChild(el("p", "note", "No guide matches that yet."));
+    return;
+  }
+
+  for (const a of list) {
+    const card = el("button", "acard");
+    card.type = "button";
+    if (a.image) {
+      const im = el("img");
+      im.src = a.image; im.alt = ""; im.loading = "lazy";
+      im.onerror = () => im.remove();
+      card.appendChild(im);
+    }
+    const body = el("div", "acard-body");
+    body.appendChild(el("div", "acard-title", a.title));
+    if (a.blurb) body.appendChild(el("div", "acard-blurb", a.blurb));
+    card.appendChild(body);
+    card.onclick = () => onOpen(`https://plasticdetox.org/articles/${a.slug}`);
+    root.appendChild(card);
+  }
 }
 
 // ------------------------------------------------------------------- shop
@@ -488,7 +580,8 @@ function worthKnowing(ext, fronts, shown = []) {
   return box;
 }
 
-export function result(root, { index, match, scan, product, query, productNamed, onOpen, onPick, onProduct }) {
+export function result(root, { index, match, scan, product, query, productNamed,
+  onOpen, onPick, onProduct, onSave, isSaved }) {
   const v = verdictFor(match, { title: (scan && scan.title) || query || "", product, productNamed });
 
   const stanceClass = v.asserted && ["good", "careful", "skip"].includes(v.stance)
@@ -583,6 +676,18 @@ export function result(root, { index, match, scan, product, query, productNamed,
       "Not yet assessed: " + unassessed.map(([, l]) => l.toLowerCase()).join(", ")));
   }
   if (fronts.childNodes.length) card.appendChild(fronts);
+
+  // Keeping a product is a decision, so the control sits with the verdict
+  // rather than at the bottom of the page under everything else.
+  if (onSave && v.product) {
+    const on = isSaved && isSaved(v.brand.brand, v.product.name);
+    const save = el("button", `savebtn${on ? " on" : ""}`);
+    save.type = "button";
+    save.appendChild(icon(ICONS.saved, 17));
+    save.appendChild(el("span", null, on ? "Saved" : "Save"));
+    save.onclick = () => onSave(v.brand, v.product);
+    card.appendChild(save);
+  }
   root.appendChild(card);
 
   if (v.heldBack && v.heldBack.length) {

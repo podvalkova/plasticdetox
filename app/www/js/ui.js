@@ -40,6 +40,8 @@ export const ICONS = {
   // A shield for the check tab, a basket for the shop.
   check: "M12 3l7 3v6c0 4.5-3 8.3-7 9-4-.7-7-4.5-7-9V6l7-3zM9 12l2 2 4-4",
   shop: "M6 7h12l1.5 12a2 2 0 0 1-2 2H6.5a2 2 0 0 1-2-2L6 7zM9 7V5a3 3 0 0 1 6 0v2",
+  saved: "M6 4h12a1 1 0 0 1 1 1v15l-7-4-7 4V5a1 1 0 0 1 1-1z",
+  learn: "M4 5.5A2.5 2.5 0 0 1 6.5 3H19v15H6.5A2.5 2.5 0 0 0 4 20.5V5.5zM19 18v3H6.5",
 };
 
 let toastTimer = null;
