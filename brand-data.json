@@ -787,18 +787,21 @@
           "why": "Reviewed by hand from our published research on this category.",
           "fronts": {
             "formula": "caution",
-            "materials": "unassessed",
-            "legal": "unassessed",
-            "testing": "unassessed"
+            "materials": "caution",
+            "legal": "caution",
+            "testing": "none"
           },
           "scope": "line",
           "basis": "direct",
           "disclose": false,
           "authored": true,
           "dated": "2026-09-03",
+          "legalNote": "Bayer recalled A+D Diaper Rash Cream in February 2017 for trace diethyl phthalate, on a product labelled phthalate free. That recall is closed and nine years old, so under rule 5.2 it is informational. Two things about it are not. The recalled item was the Cream and this is the Ointment, but diethyl phthalate is a fragrance solvent and this ointment carries undisclosed Fragrance, which is a shared mechanism rather than a sibling coincidence. And it was an adverse finding on the brand's own representations: the FDA label and the Amazon listing still read PHTHALATE-FREE today, so under rule 5.1 nothing this brand says about itself can carry a pass without third party proof. The earlier FDA match on this brand was A & D Engineering, a blood pressure monitor maker with no connection to the ointment, and has been discarded.",
+          "legalDate": "2017-02-23",
           "frontNotes": {
             "formula": "The published ingredient list hides composition behind fragrance.",
-            "materials": "We have not established what the product actually touches."
+            "testing": "Checked the published diaper cream testing. Lead Safe Mama runs an active programme on this category and A+D Original is not in it. Their heavy metals findings run on zinc oxide, which this product does not contain, so that class mechanism does not reach it. No third party result published for this product.",
+            "materials": "polyethylene in contact, with an oil based formula, which is the strongest extractant there is."
           },
           "exposure": {
             "type": "leave-on skin",
@@ -814,7 +817,9 @@
             "why": "Left on the skin, so contact runs for hours."
           },
           "frontOrigin": {
-            "formula": "database"
+            "formula": "database",
+            "testing": "database",
+            "materials": "database"
           },
           "formulaAnswers": {
             "ingredients": "Active Ingredients: Lanolin (15.4 %), Skin Protectant; Petrolatum (53.4 %), Skin Protectant. Inactive Ingredients: Mineral Oil, Paraffin, Microcrystalline Wax, Cod Liver Oil (Contains Vitamin A & Vitamin D), Fragrance.",
@@ -825,17 +830,19 @@
             "source": "amazon:B01D2NTLZG",
             "checked": "2026-09-03"
           },
+          "testingNote": "Checked the published diaper cream testing. Lead Safe Mama runs an active programme on this category and A+D Original is not in it. Their heavy metals findings run on zinc oxide, which this product does not contain, so that class mechanism does not reach it. No third party result published for this product.",
+          "testingDate": "2026-09-03",
+          "materialsList": "polyethylene",
           "materialAnswers": {
-            "contact": "",
-            "contactFrom": "",
-            "base": "",
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "anhydrous",
             "heated": false,
             "mouthed": false,
             "reuse": "",
-            "material": "",
-            "source": "",
-            "checked": "2026-09-02",
-            "open": "We have not established what the product actually touches"
+            "material": "polyethylene",
+            "source": "FDA DailyMed label: 113 g TUBE. Polymer not stated by the maker; an OTC ointment tube of this format is polyethylene or a PE lined laminate, which is the best case here and still a caution against anhydrous contents. Not a reused container: the tube is emptied and discarded, so there are no repeated contact cycles.",
+            "checked": "2026-09-03"
           }
         },
         "cat": "Diaper cream"
@@ -7709,6 +7716,8 @@
             "materials": "In contact with bamboo, which puts nothing into what it holds."
           },
           "inheritedFronts": [
+            "formula",
+            "formula",
             "formula",
             "formula",
             "formula",
@@ -17051,6 +17060,8 @@
             "formula",
             "formula",
             "formula",
+            "formula",
+            "formula",
             "formula"
           ],
           "verdict": "skip",
@@ -25035,6 +25046,8 @@
             "materials": "We have not established what the product actually touches."
           },
           "inheritedFronts": [
+            "formula",
+            "formula",
             "formula",
             "formula",
             "formula",
@@ -46026,6 +46039,8 @@
             "formula",
             "formula",
             "formula",
+            "formula",
+            "formula",
             "formula"
           ],
           "verdict": "skip",
@@ -49473,6 +49488,8 @@
             "materials": "Made of bamboo, which the product name states, and which puts nothing into what it touches."
           },
           "inheritedFronts": [
+            "formula",
+            "formula",
             "formula",
             "formula",
             "formula",
@@ -69092,6 +69109,8 @@
             "formula",
             "formula",
             "formula",
+            "formula",
+            "formula",
             "formula"
           ],
           "verdict": "skip",
@@ -81202,6 +81221,8 @@
             "checked": ""
           },
           "inheritedFronts": [
+            "formula",
+            "formula",
             "formula",
             "formula",
             "formula",
@@ -93695,6 +93716,8 @@
           "inheritedFronts": [
             "formula",
             "packaging",
+            "formula",
+            "formula",
             "formula",
             "formula",
             "formula",

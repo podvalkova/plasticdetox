@@ -344,6 +344,7 @@ def main():
 
     applied = collections.Counter()
     formula = collections.Counter()
+    testing = collections.Counter()
     filled = 0
     for b in brands:
         for p in (b.get("products") or []):
@@ -396,6 +397,18 @@ def main():
                     "source": fm.get("source") or "",
                     "checked": fm.get("checkedListing") or "",
                 }
+
+            test = entry.get("testing") or {}
+            if test.get("status"):
+                te = p.setdefault("ext", {})
+                te.setdefault("fronts", {})["testing"] = test["status"]
+                te.setdefault("frontOrigin", {})["testing"] = "database"
+                if test.get("note"):
+                    te.setdefault("frontNotes", {})["testing"] = test["note"]
+                    te["testingNote"] = test["note"]
+                if test.get("checked"):
+                    te["testingDate"] = test["checked"]
+                testing[test["status"]] += 1
 
             pack = entry.get("materials") or {}
             if not pack:
@@ -513,6 +526,9 @@ def main():
     print(f"  with a material recorded: {filled}")
     print(f"  materials derived from it: {total}   "
           + "  ".join(f"{k} {n}" for k, n in applied.items()))
+    if testing:
+        print(f"  testing read from a recorded check: {sum(testing.values())}   "
+              + "  ".join(f"{k} {n}" for k, n in testing.items()))
     print(f"  formula derived from a recorded list: {sum(formula.values())}   "
           + "  ".join(f"{k} {n}" for k, n in formula.items()))
     if args.write:
