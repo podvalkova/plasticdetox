@@ -1,0 +1,34 @@
+{
+  "_comment": "Subreddits to watch, with the article a comment there should usually point at. Reddit threads stay useful far longer than X posts, so maxAgeHours defaults higher. Keywords are matched against title plus body.",
+  "maxAgeHours": 72,
+  "minScore": 3,
+  "maxPerSub": 4,
+  "keywords": [
+    "microplastic", "nanoplastic", "plastic", "polyester", "polypropylene", "bpa", "bps",
+    "phthalate", "pfas", "forever chemical", "teflon", "ptfe", "non stick", "nonstick",
+    "non-toxic", "nontoxic", "low tox", "leach", "off gas", "offgas",
+    "water filter", "reverse osmosis", "brita", "bottled water",
+    "toothpaste", "toothbrush", "floss", "deodorant", "sunscreen", "tampon", "period product",
+    "cutting board", "tupperware", "food container", "air fryer", "cookware", "pan ",
+    "baby bottle", "sippy", "formula", "diaper", "wipes", "prenatal",
+    "protein powder", "supplement", "capsule", "tea bag", "coffee pod", "chewing gum",
+    "shower curtain", "yoga mat", "glyphosate", "heavy metal", "lead in"
+  ],
+  "subs": [
+    { "name": "ZeroWaste",              "article": null },
+    { "name": "Anticonsumption",        "article": null },
+    { "name": "BuyItForLife",           "article": null },
+    { "name": "ScienceBasedParenting",  "article": "https://plasticdetox.org/articles/microplastics-in-baby-food.html" },
+    { "name": "beyondthebump",          "article": "https://plasticdetox.org/articles/best-non-toxic-baby-bottles.html" },
+    { "name": "NewParents",             "article": "https://plasticdetox.org/articles/best-non-toxic-baby-bottles.html" },
+    { "name": "BabyBumps",              "article": "https://plasticdetox.org/articles/cleanest-prenatal-vitamins.html" },
+    { "name": "HydroHomies",            "article": "https://plasticdetox.org/articles/best-water-filters.html" },
+    { "name": "Cooking",                "article": "https://plasticdetox.org/articles/pfas-in-cookware-brands.html" },
+    { "name": "castiron",               "article": "https://plasticdetox.org/articles/cast-iron-vs-stainless-steel-vs-ceramic-cookware.html" },
+    { "name": "tea",                    "article": "https://plasticdetox.org/articles/how-to-avoid-microplastics-in-tea.html" },
+    { "name": "Coffee",                 "article": "https://plasticdetox.org/articles/how-to-enjoy-coffee-without-plastic.html" },
+    { "name": "SkincareAddiction",      "article": "https://plasticdetox.org/articles/microplastics-in-cosmetics-and-personal-care.html" },
+    { "name": "declutter",              "article": null },
+    { "name": "sustainability",         "article": null }
+  ]
+}

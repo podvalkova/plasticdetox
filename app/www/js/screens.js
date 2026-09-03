@@ -246,7 +246,7 @@ function ingredientsCard(fa) {
  * Deliberately conditional. A card that always appears and is sometimes filler
  * is worth less than one that appears only when we have something.
  */
-function worthKnowing(ext, fronts) {
+function worthKnowing(ext, fronts, shown = []) {
   if (!ext) return null;
   const k = ext.classEvidence;
   const legal = ((fronts && fronts.legal) || {}).status;
@@ -255,6 +255,16 @@ function worthKnowing(ext, fronts) {
   if (k && k.detail) body = k.detail + (k.source ? ` (${k.source})` : "");
   else if (["caution", "fail"].includes(legal) && legalNote.length > 90) body = legalNote;
   if (!body) return null;
+
+  // The scorecard above shows the first sentence of a long note. Repeating it
+  // verbatim here made the card read as a rendering bug rather than as detail,
+  // so this picks up where the row left off. If nothing is left, there was no
+  // detail to add and the card does not appear at all.
+  for (const seen of shown) {
+    const t = String(seen || "").trim();
+    if (t.length > 40 && body.startsWith(t)) body = body.slice(t.length).trim();
+  }
+  if (body.length < 60) return null;
   const box = el("div", "card know");
   box.appendChild(el("h2", null, "Worth knowing"));
   box.appendChild(el("p", null, body));
@@ -325,6 +335,7 @@ export function result(root, { index, match, scan, product, query, productNamed,
   const shown = positive ? populated : (flagged.length ? flagged : populated);
   const unassessed = FRONTS.filter(([k]) => statusOf(k) === "unknown");
 
+  const printed = [];
   const fronts = el("div", "fronts");
   if (shown.length) {
     fronts.appendChild(el("div", "fronts-label", positive
@@ -340,8 +351,9 @@ export function result(root, { index, match, scan, product, query, productNamed,
     body.appendChild(el("div", "front-name", label));
     const note = splitNote(f.note);
     const full = (note && note.main) || describeFront(st);
-    body.appendChild(el("div", "front-note",
-      full.length > 200 ? full.split(/(?<=\.)\s+/)[0] : full));
+    const shortNote = full.length > 200 ? full.split(/(?<=\.)\s+/)[0] : full;
+    printed.push(shortNote);
+    body.appendChild(el("div", "front-note", shortNote));
     // The card already said this finding is about the brand generally. A second
     // aside under the front says it again in different words.
     if (note && note.scope && !v.scoped) body.appendChild(el("div", "front-scope", note.scope));
@@ -389,7 +401,7 @@ export function result(root, { index, match, scan, product, query, productNamed,
   const ing = ingredientsCard(v.ext && v.ext.formulaAnswers);
   if (ing) root.appendChild(ing);
 
-  const know = worthKnowing(v.ext, v.fronts);
+  const know = worthKnowing(v.ext, v.fronts, printed);
   if (know) root.appendChild(know);
 
   if (scan) root.appendChild(materialsCard(scan, onOpen));

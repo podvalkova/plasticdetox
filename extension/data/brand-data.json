@@ -5595,20 +5595,20 @@
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
-            "materials": "We have not established what the product actually touches.",
-            "formula": "The listing we hold for this product serves a different item, The Honest Company Bubble Bath, Hypoallergenic, Lavender Calm, 12 fl oz."
+            "materials": "We have not established what the product actually touches."
           },
           "verdict": "careful",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "caution",
             "materials": "unassessed",
             "legal": "pass",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "legal": "database"
+            "legal": "database",
+            "formula": "inferred"
           },
           "scope": "sku",
           "basis": "direct",
@@ -5633,7 +5633,7 @@
             "ingredients": "",
             "prose": "",
             "complete": false,
-            "verdict": "open",
+            "verdict": "careful",
             "summary": "The listing we hold for this product serves a different item, The Honest Company Bubble Bath, Hypoallergenic, Lavender Calm, 12 fl oz.",
             "flagged": [],
             "source": "amazon:B01LDZJHAE",
@@ -7810,6 +7810,7 @@
             "formula",
             "formula",
             "formula",
+            "formula",
             "formula"
           ],
           "verdict": "skip",
@@ -7927,8 +7928,7 @@
         "ext": {
           "frontNotes": {
             "legal": "Issued a broad benzene sunscreen recall in the 2021-2022 wave (Recorded for Banana Boat as a whole rather than this product specifically.)",
-            "materials": "We have not established what the product actually touches.",
-            "formula": "The listing we hold for this product serves a different item, Baby Bum SPF 50 Sunscreen Spray - Mineral UVA/UVB Face and Body Protection for Sensitive Skin - Travel Size - 3 oz."
+            "materials": "We have not established what the product actually touches."
           },
           "inheritedFronts": [
             "legal"
@@ -7937,13 +7937,14 @@
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "caution",
             "materials": "unassessed",
             "legal": "fail",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "legal": "stated"
+            "legal": "stated",
+            "formula": "inferred"
           },
           "scope": "sku",
           "basis": "direct",
@@ -7966,7 +7967,7 @@
             "ingredients": "",
             "prose": "",
             "complete": false,
-            "verdict": "open",
+            "verdict": "careful",
             "summary": "The listing we hold for this product serves a different item, Baby Bum SPF 50 Sunscreen Spray - Mineral UVA/UVB Face and Body Protection for Sensitive Skin - Travel Size - 3 oz.",
             "flagged": [],
             "source": "amazon:B07ZR1KQ44",
@@ -17225,6 +17226,7 @@
             "formula",
             "formula",
             "formula",
+            "formula",
             "formula"
           ],
           "verdict": "skip",
@@ -25295,6 +25297,7 @@
             "formula",
             "formula",
             "formula",
+            "formula",
             "formula"
           ],
           "verdict": "unrated",
@@ -27054,19 +27057,20 @@
         "source": "top-100-baby-kids-products-amazon.html",
         "ext": {
           "frontNotes": {
-            "materials": "We have not established what the product actually touches.",
-            "formula": "The listing we hold for this product serves a different item, ATTITUDE Baby Laundry Detergent, Dermatologist Tested, Unscented, 80 Loads."
+            "materials": "We have not established what the product actually touches."
           },
           "verdict": "skip",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "caution",
             "materials": "unassessed",
             "legal": "unassessed",
             "testing": "unassessed"
           },
-          "frontOrigin": {},
+          "frontOrigin": {
+            "formula": "inferred"
+          },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
@@ -27090,7 +27094,7 @@
             "ingredients": "",
             "prose": "",
             "complete": false,
-            "verdict": "open",
+            "verdict": "careful",
             "summary": "The listing we hold for this product serves a different item, ATTITUDE Baby Laundry Detergent, Dermatologist Tested, Unscented, 80 Loads.",
             "flagged": [],
             "source": "amazon:B084W9XN3K",
@@ -46436,6 +46440,7 @@
             "formula",
             "formula",
             "formula",
+            "formula",
             "formula"
           ],
           "verdict": "skip",
@@ -49911,6 +49916,7 @@
             "formula",
             "formula",
             "formula",
+            "formula",
             "formula"
           ],
           "verdict": "careful",
@@ -51700,21 +51706,20 @@
         "origin": "store",
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {
-            "formula": "No ingredient list recorded."
-          },
+          "frontNotes": {},
           "verdict": "unrated",
           "dated": "2026-08-28",
-          "why": "a recommendation needs its checks done; still to do: materials, formula",
+          "why": "the note reads adversely on formula, needs a human look",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "caution",
             "materials": "unassessed",
             "legal": "pass",
             "testing": "pass"
           },
           "frontOrigin": {
             "legal": "database",
-            "testing": "inferred"
+            "testing": "inferred",
+            "formula": "inferred"
           },
           "scope": "sku",
           "basis": "direct",
@@ -51739,7 +51744,7 @@
             "ingredients": "",
             "prose": "",
             "complete": false,
-            "verdict": "open",
+            "verdict": "careful",
             "summary": "No ingredient list recorded.",
             "flagged": [],
             "source": "amazon:B0899ZYXXN",
@@ -69660,6 +69665,7 @@
             "formula",
             "formula",
             "formula",
+            "formula",
             "formula"
           ],
           "verdict": "skip",
@@ -71222,21 +71228,20 @@
         "origin": "store",
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {
-            "formula": "No ingredient list recorded."
-          },
+          "frontNotes": {},
           "verdict": "unrated",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: formula",
+          "why": "the note reads adversely on formula, needs a human look",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "caution",
             "materials": "pass",
             "legal": "pass",
             "testing": "unassessed"
           },
           "frontOrigin": {
             "legal": "database",
-            "materials": "inferred"
+            "materials": "inferred",
+            "formula": "inferred"
           },
           "scope": "sku",
           "basis": "direct",
@@ -71261,7 +71266,7 @@
             "ingredients": "",
             "prose": "",
             "complete": false,
-            "verdict": "open",
+            "verdict": "careful",
             "summary": "No ingredient list recorded.",
             "flagged": [],
             "source": "amazon:B0774WQY7T",
@@ -81832,6 +81837,7 @@
             "checked": ""
           },
           "inheritedFronts": [
+            "formula",
             "formula",
             "formula",
             "formula",
@@ -94406,6 +94412,7 @@
           "inheritedFronts": [
             "formula",
             "packaging",
+            "formula",
             "formula",
             "formula",
             "formula",
