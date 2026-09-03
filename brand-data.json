@@ -364,7 +364,12 @@
           "authored": true,
           "dated": "2026-09-03",
           "legalNote": "Checked recall records on 2026-08-31. The 365 label has routine food recalls on other products (2025 allergen and salad kit recalls, resolved); none involve the sea salt, and a recall on a sibling product does not transfer.",
-          "frontNotes": {},
+          "frontNotes": {
+            "legal": "Checked recall records on 2026-08-31. The 365 label has routine food recalls on other products (2025 allergen and salad kit recalls, resolved); none involve the sea salt, and a recall on a sibling product does not transfer."
+          },
+          "frontOrigin": {
+            "legal": "database"
+          },
           "exposure": {
             "type": "food",
             "level": "medium",
@@ -797,12 +802,19 @@
           "authored": true,
           "dated": "2026-09-03",
           "legalNote": "Bayer recalled A+D Diaper Rash Cream in February 2017 for trace diethyl phthalate, on a product labelled phthalate free. That recall is closed and nine years old, so under rule 5.2 it is informational. Two things about it are not. The recalled item was the Cream and this is the Ointment, but diethyl phthalate is a fragrance solvent and this ointment carries undisclosed Fragrance, which is a shared mechanism rather than a sibling coincidence. And it was an adverse finding on the brand's own representations: the FDA label and the Amazon listing still read PHTHALATE-FREE today, so under rule 5.1 nothing this brand says about itself can carry a pass without third party proof. The earlier FDA match on this brand was A & D Engineering, a blood pressure monitor maker with no connection to the ointment, and has been discarded.",
-          "legalDate": "2017-02-23",
           "frontNotes": {
+            "legal": "Bayer recalled A+D Diaper Rash Cream in February 2017 for trace diethyl phthalate, on a product labelled phthalate free. That recall is closed and nine years old, so under rule 5.2 it is informational. Two things about it are not. The recalled item was the Cream and this is the Ointment, but diethyl phthalate is a fragrance solvent and this ointment carries undisclosed Fragrance, which is a shared mechanism rather than a sibling coincidence. And it was an adverse finding on the brand's own representations: the FDA label and the Amazon listing still read PHTHALATE-FREE today, so under rule 5.1 nothing this brand says about itself can carry a pass without third party proof. The earlier FDA match on this brand was A & D Engineering, a blood pressure monitor maker with no connection to the ointment, and has been discarded.",
             "formula": "The published ingredient list hides composition behind fragrance.",
             "testing": "Checked the published diaper cream testing. Lead Safe Mama runs an active programme on this category and A+D Original is not in it. Their heavy metals findings run on zinc oxide, which this product does not contain, so that class mechanism does not reach it. No third party result published for this product.",
             "materials": "polyethylene in contact, with an oil based formula, which is the strongest extractant there is."
           },
+          "frontOrigin": {
+            "legal": "database",
+            "formula": "database",
+            "testing": "database",
+            "materials": "database"
+          },
+          "legalDate": "2017-02-23",
           "exposure": {
             "type": "leave-on skin",
             "level": "high",
@@ -815,11 +827,6 @@
             "heat": false,
             "fat": true,
             "why": "Left on the skin, so contact runs for hours."
-          },
-          "frontOrigin": {
-            "formula": "database",
-            "testing": "database",
-            "materials": "database"
           },
           "formulaAnswers": {
             "ingredients": "Active Ingredients: Lanolin (15.4 %), Skin Protectant; Petrolatum (53.4 %), Skin Protectant. Inactive Ingredients: Mineral Oil, Paraffin, Microcrystalline Wax, Cod Liver Oil (Contains Vitamin A & Vitamin D), Fragrance.",
@@ -2044,8 +2051,13 @@
           "dated": "2026-09-03",
           "legalNote": "Checked recall records on 2026-08-31. The label's recalls (2018 power banks, heaters) are electricals, resolved, and unrelated to the kitchenware we cover.",
           "frontNotes": {
+            "legal": "Checked recall records on 2026-08-31. The label's recalls (2018 power banks, heaters) are electricals, resolved, and unrelated to the kitchenware we cover.",
             "formula": "A durable good has no ingredient list. What it is made of is the materials check.",
             "materials": "We have not established what the product actually touches."
+          },
+          "frontOrigin": {
+            "legal": "database",
+            "formula": "database"
           },
           "exposure": {
             "type": "air appliance",
@@ -2059,9 +2071,6 @@
             "heat": false,
             "fat": false,
             "why": "Running in the room, moving air past its own materials."
-          },
-          "frontOrigin": {
-            "formula": "database"
           },
           "formulaAnswers": {
             "ingredients": "",
@@ -2119,8 +2128,12 @@
           "dated": "2026-09-03",
           "legalNote": "Checked recall records on 2026-08-31. The label's recalls (2018 power banks, heaters) are electricals, resolved, and unrelated to the kitchenware we cover.",
           "frontNotes": {
+            "legal": "Checked recall records on 2026-08-31. The label's recalls (2018 power banks, heaters) are electricals, resolved, and unrelated to the kitchenware we cover.",
             "formula": "No ingredient list recorded.",
             "materials": "We have not established what the product actually touches."
+          },
+          "frontOrigin": {
+            "legal": "database"
           },
           "exposure": {
             "type": "chewed supplement",
@@ -2135,7 +2148,6 @@
             "fat": false,
             "why": "Chewed, so it sits against the mouth before it is swallowed."
           },
-          "frontOrigin": {},
           "formulaAnswers": {
             "ingredients": "",
             "prose": "",
@@ -2197,10 +2209,15 @@
           "authored": true,
           "frontNotes": {
             "materials": "Leachy, contents not described.",
+            "legal": "Checked recall records on 2026-08-31. The label's recalls (2018 power banks, heaters) are electricals, resolved, and unrelated to the kitchenware we cover.",
             "formula": "A durable good has no ingredient list. What it is made of is the materials check."
           },
           "dated": "2026-09-03",
           "legalNote": "Checked recall records on 2026-08-31. The label's recalls (2018 power banks, heaters) are electricals, resolved, and unrelated to the kitchenware we cover.",
+          "frontOrigin": {
+            "legal": "database",
+            "formula": "database"
+          },
           "exposure": {
             "type": "worn gear",
             "level": "medium",
@@ -2213,9 +2230,6 @@
             "heat": false,
             "fat": false,
             "why": "Against the skin, but not every day."
-          },
-          "frontOrigin": {
-            "formula": "database"
           },
           "formulaAnswers": {
             "ingredients": "",
@@ -2357,7 +2371,12 @@
           "authored": true,
           "dated": "2026-09-03",
           "legalNote": "Checked recall records on 2026-08-31. Predecessor private labels had 2025 food recalls, resolved; none involve sea salt.",
-          "frontNotes": {},
+          "frontNotes": {
+            "legal": "Checked recall records on 2026-08-31. Predecessor private labels had 2025 food recalls, resolved; none involve sea salt."
+          },
+          "frontOrigin": {
+            "legal": "database"
+          },
           "exposure": {
             "type": "food",
             "level": "medium",
@@ -2420,9 +2439,14 @@
           "dated": "2026-09-03",
           "legalNote": "Checked recall records on 2026-08-31. Predecessor private labels had 2025 food recalls, resolved; none involve sea salt.",
           "frontNotes": {
+            "legal": "Checked recall records on 2026-08-31. Predecessor private labels had 2025 food recalls, resolved; none involve sea salt.",
             "formula": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear.",
             "materials": "We have not established what the product actually touches.",
             "testing": "Bottled water carries roughly 240,000 plastic particles per litre (Columbia University, PNAS, 2024). This is about bottled water generally. We have not confirmed it for this product. Tap water through a filter, or water sold in glass."
+          },
+          "frontOrigin": {
+            "legal": "database",
+            "testing": "class"
           },
           "exposure": {
             "type": "drinking water",
@@ -2436,9 +2460,6 @@
             "heat": false,
             "fat": false,
             "why": "Drunk in quantity, every day, for years."
-          },
-          "frontOrigin": {
-            "testing": "class"
           },
           "formulaAnswers": {
             "ingredients": "",
@@ -2507,11 +2528,16 @@
           "authored": true,
           "frontNotes": {
             "materials": "Dry contents in pet, heated in use.",
+            "legal": "Checked recall records on 2026-08-31. Predecessor private labels had 2025 food recalls, resolved; none involve sea salt.",
             "formula": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear.",
             "testing": "Tea bags with a plastic seam or mesh release 11.6 billion microplastic particles per cup (McGill University, Environmental Science and Technology, 2019). This is about tea generally. We have not confirmed it for this product."
           },
           "dated": "2026-09-03",
           "legalNote": "Checked recall records on 2026-08-31. Predecessor private labels had 2025 food recalls, resolved; none involve sea salt.",
+          "frontOrigin": {
+            "legal": "database",
+            "testing": "class"
+          },
           "exposure": {
             "type": "hot drink",
             "level": "medium",
@@ -2524,9 +2550,6 @@
             "heat": true,
             "fat": false,
             "why": "Brewed hot, which pulls more out of whatever it is brewed in."
-          },
-          "frontOrigin": {
-            "testing": "class"
           },
           "formulaAnswers": {
             "ingredients": "",
@@ -3644,8 +3667,13 @@
           "dated": "2026-09-03",
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
+            "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
             "formula": "The published ingredient list carries nothing on the hazard list.",
             "materials": "We have not established what the product actually touches."
+          },
+          "frontOrigin": {
+            "legal": "database",
+            "formula": "database"
           },
           "exposure": {
             "type": "leave-on skin",
@@ -3659,9 +3687,6 @@
             "heat": false,
             "fat": true,
             "why": "Left on the skin, so contact runs for hours."
-          },
-          "frontOrigin": {
-            "formula": "database"
           },
           "formulaAnswers": {
             "ingredients": "Active Ingredient: Zinc Oxide 40.0%...Purpose: Skin Protectant Ointment. Inactive Ingredients: Glycerin, Caprylic/Capric Triglyceride, Octyldodecanol, Polyglyceryl-4 Diisostearate/Polyhydroxystearate/Sebacate, Magnesium Stearate, Panthenol, Butyrospermum Parkii (Shea) Butter, Water.",
@@ -4467,7 +4492,12 @@
           "dated": "2026-09-03",
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
           "frontNotes": {
+            "legal": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
             "materials": "In contact with bamboo, which puts nothing into what it holds."
+          },
+          "frontOrigin": {
+            "legal": "database",
+            "materials": "database"
           },
           "exposure": {
             "type": "food surface",
@@ -4490,9 +4520,6 @@
             "summary": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear.",
             "source": "amazon:B0FH6YL3XC",
             "checked": "2026-09-03"
-          },
-          "frontOrigin": {
-            "materials": "database"
           },
           "materialsList": "Bamboo",
           "materialAnswers": {
@@ -5622,10 +5649,15 @@
           "authored": true,
           "frontNotes": {
             "materials": "Emulsion contents in unspecified plastic.",
+            "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
             "formula": "The published ingredient list carries nothing on the hazard list."
           },
           "dated": "2026-09-03",
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
+          "frontOrigin": {
+            "legal": "database",
+            "formula": "database"
+          },
           "exposure": {
             "type": "rinse-off skin",
             "level": "low",
@@ -5638,9 +5670,6 @@
             "heat": false,
             "fat": false,
             "why": "Rinsed off, so most of it never stays."
-          },
-          "frontOrigin": {
-            "formula": "database"
           },
           "formulaAnswers": {
             "ingredients": "Water, Glycerin, Distearyldimonium Chloride, Petrolatum, Isopropyl Palmitate, Cetyl Alcohol, Avena Sativa (Oat) Kernel Flour, Dimethicone, Benzyl Alcohol, Sodium Chloride",
@@ -6899,8 +6928,13 @@
           "dated": "2026-09-03",
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
+            "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
             "formula": "The published ingredient list carries nothing on the hazard list.",
             "materials": "We have not established what the product actually touches."
+          },
+          "frontOrigin": {
+            "legal": "database",
+            "formula": "database"
           },
           "exposure": {
             "type": "food",
@@ -6914,9 +6948,6 @@
             "heat": false,
             "fat": false,
             "why": "Eaten, so whatever is in it arrives whole."
-          },
-          "frontOrigin": {
-            "formula": "database"
           },
           "formulaAnswers": {
             "ingredients": "Baja Sea Salt",
@@ -7716,6 +7747,8 @@
             "materials": "In contact with bamboo, which puts nothing into what it holds."
           },
           "inheritedFronts": [
+            "formula",
+            "formula",
             "formula",
             "formula",
             "formula",
@@ -9532,8 +9565,14 @@
           "dated": "2026-09-03",
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
+            "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
             "formula": "The published ingredient list carries nothing on the hazard list.",
             "materials": "plastic in contact with water contents."
+          },
+          "frontOrigin": {
+            "legal": "database",
+            "formula": "database",
+            "materials": "database"
           },
           "exposure": {
             "type": "food",
@@ -9547,10 +9586,6 @@
             "heat": false,
             "fat": false,
             "why": "for a baby, which is high whatever the arithmetic says"
-          },
-          "frontOrigin": {
-            "formula": "database",
-            "materials": "database"
           },
           "formulaAnswers": {
             "ingredients": "PROTEIN & FIBER: APPLE, WHOLE MILK YOGURT (CULTURED PASTEURIZED WHOLE MILK, NONFAT DRY MILK), WATER, RASPBERRIES, PURPLE CARROT, WHOLE GRAIN OAT FLOUR, WHEY PROTEIN CONCENTRATE, CHICORY ROOT FIBER, CITRIC ACID. CONTAINS: WHEAT, MILK. IRON & ZINC: APPLE, BLUEBERRIES, SPINACH, WATER, VITAMIN C (ASCORBIC ACID), CITRIC ACID, FERRIC PHOSPHATE (IRON), ZINC SULPHATE MONOHYDRATE. PREBIOTIC FIBER: CARROT, APPLE, SWEET POTATO, WATER, CHICORY ROOT FIBER, CITRIC ACID.",
@@ -10633,11 +10668,17 @@
           "authored": true,
           "frontNotes": {
             "materials": "Dry contents in pet, heated in use.",
+            "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
             "formula": "The published ingredient list carries nothing on the hazard list.",
             "testing": "Tea bags with a plastic seam or mesh release 11.6 billion microplastic particles per cup (McGill University, Environmental Science and Technology, 2019). This is about tea generally. We have not confirmed it for this product."
           },
           "dated": "2026-09-03",
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
+          "frontOrigin": {
+            "legal": "database",
+            "formula": "database",
+            "testing": "class"
+          },
           "exposure": {
             "type": "hot drink",
             "level": "medium",
@@ -10650,10 +10691,6 @@
             "heat": true,
             "fat": false,
             "why": "Brewed hot, which pulls more out of whatever it is brewed in."
-          },
-          "frontOrigin": {
-            "formula": "database",
-            "testing": "class"
           },
           "formulaAnswers": {
             "ingredients": "Lemon Lift: black tea, natural lemon flavor (soy lecithin), spice, lemon peel; Earl Grey: black tea, natural oil of bergamot; English Teatime: black tea; Constant Comment: black tea, rind of oranges, sweet spice, natural flavor; Green Tea: green tea; Cozy Chamomile: chamomile flowers; Mint Medley: peppermint leaves, spearmint leaves, rose hips, lemon peel, hibiscus; Orange and Spice: rose hips, spices, hibiscus, orange peel, roasted chicory, natural orange flavours (soy lecithin)",
@@ -11779,8 +11816,13 @@
           "dated": "2026-09-03",
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
+            "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
             "formula": "The published ingredient list carries nothing on the hazard list.",
             "materials": "We have not established what the product actually touches."
+          },
+          "frontOrigin": {
+            "legal": "database",
+            "formula": "database"
           },
           "exposure": {
             "type": "sunscreen",
@@ -11794,9 +11836,6 @@
             "heat": false,
             "fat": true,
             "why": "Applied thickly over a large area and left there."
-          },
-          "frontOrigin": {
-            "formula": "database"
           },
           "formulaAnswers": {
             "ingredients": "Active Ingredients: Titanium Dioxide 8%, Zinc Oxide 10%, Inactive Ingredients: 1,2-Hexanediol, Aloe Barbadensis Leaf Juice Powder, Alumina, Aluminum Stearate, Butyloctyl Salicylate, C12-15 Alkyl Benzoate, Caprylyl Glycol, Cetyl Dimethicone, Cetyl PEG/PPG-10/1 Dimethicone, Dimethicone, Disodium EDTA, Ethylhexyl Palmitate, Ethylhexyl Stearate, Euphorbia Cerifera (Candelilla) Wax, Hexyl Laurate, Hydroxyacetophenone, Methyl Glucose Dioleate, Octyldodecyl Neopentanoate, PEG-7 Hydrogenated Castor Oil, Polyglyceryl-4 Isostearate, Polyhydroxystearic Acid, Propanediol, Tocopherol, Tocopheryl Acetate, Triethoxycaprylylsilane, Trimethylsiloxysilicate, VP/Hexadecene Copolymer, Water",
@@ -12696,8 +12735,13 @@
           "dated": "2026-09-03",
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
+            "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
             "formula": "The published ingredient list carries nothing on the hazard list.",
             "materials": "We have not established what the product actually touches."
+          },
+          "frontOrigin": {
+            "legal": "database",
+            "formula": "database"
           },
           "exposure": {
             "type": "supplement",
@@ -12711,9 +12755,6 @@
             "heat": false,
             "fat": false,
             "why": "Swallowed whole, daily, indefinitely."
-          },
-          "frontOrigin": {
-            "formula": "database"
           },
           "formulaAnswers": {
             "ingredients": "Other Ingredients: Super Whey Protein Blend (Whey Protein Concentrate, Whey Protein Isolate), Cocoa (Processed with Alkali), Maltodextrin, Sunflower Lecithin, Natural Flavor, Salt, Cellulose Gum, Ascorbic Acid, Acesulfame Potassium, Sucralose, Zinc Oxide, Vitamin D3.",
@@ -13512,8 +13553,12 @@
           "dated": "2026-09-03",
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
+            "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
             "formula": "No ingredient list recorded.",
             "materials": "We have not established what the product actually touches."
+          },
+          "frontOrigin": {
+            "legal": "database"
           },
           "exposure": {
             "type": "leave-on skin",
@@ -13528,7 +13573,6 @@
             "fat": true,
             "why": "Left on the skin, so contact runs for hours."
           },
-          "frontOrigin": {},
           "formulaAnswers": {
             "ingredients": "",
             "prose": "",
@@ -14515,7 +14559,12 @@
           "dated": "2026-09-03",
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
+            "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
             "formula": "The published ingredient list carries nothing on the hazard list."
+          },
+          "frontOrigin": {
+            "legal": "database",
+            "formula": "database"
           },
           "exposure": {
             "type": "supplement",
@@ -14529,9 +14578,6 @@
             "heat": false,
             "fat": false,
             "why": "Swallowed whole, daily, indefinitely."
-          },
-          "frontOrigin": {
-            "formula": "database"
           },
           "formulaAnswers": {
             "ingredients": "Creatine Monohydrate",
@@ -17062,6 +17108,8 @@
             "formula",
             "formula",
             "formula",
+            "formula",
+            "formula",
             "formula"
           ],
           "verdict": "skip",
@@ -17253,8 +17301,13 @@
           "dated": "2026-09-03",
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
+            "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
             "formula": "The published ingredient list carries nothing on the hazard list.",
             "materials": "We have not established what the product actually touches."
+          },
+          "frontOrigin": {
+            "legal": "database",
+            "formula": "database"
           },
           "exposure": {
             "type": "food",
@@ -17268,9 +17321,6 @@
             "heat": false,
             "fat": false,
             "why": "Eaten, so whatever is in it arrives whole."
-          },
-          "frontOrigin": {
-            "formula": "database"
           },
           "formulaAnswers": {
             "ingredients": "Celtic Sea Salt, Light Grey Pouch, 8 oz",
@@ -17468,10 +17518,15 @@
           "authored": true,
           "frontNotes": {
             "materials": "Emulsion contents in unspecified plastic.",
+            "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
             "formula": "The published ingredient list carries nothing on the hazard list."
           },
           "dated": "2026-09-03",
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
+          "frontOrigin": {
+            "legal": "database",
+            "formula": "database"
+          },
           "exposure": {
             "type": "leave-on face",
             "level": "medium",
@@ -17484,9 +17539,6 @@
             "heat": false,
             "fat": false,
             "why": "Left on the face all day."
-          },
-          "frontOrigin": {
-            "formula": "database"
           },
           "formulaAnswers": {
             "ingredients": "Aqua / Water / Eau, Glycerin, Caprylic/Capric Triglyceride, Cetearyl Alcohol, Cetyl Alcohol, Dimethicone, Phenoxyethanol, Polysorbate 20, Ceteareth-20, Behentrimonium Methosulfate, Polyglyceryl-3 Diisostearate, Sodium Lauroyl Lactylate, Ethylhexylglycerin, Potassium Phosphate, Disodium EDTA, Dipotassium Phosphate, Ceramide NP, Ceramide AP, Phytosphingosine, Cholesterol, Xanthan Gum, Carbomer, Sodium Hyaluronate, Tocopherol, Ceramide EOP",
@@ -17538,8 +17590,13 @@
           "dated": "2026-09-03",
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
+            "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
             "formula": "The published ingredient list carries nothing on the hazard list.",
             "materials": "We have not established what the product actually touches."
+          },
+          "frontOrigin": {
+            "legal": "database",
+            "formula": "database"
           },
           "exposure": {
             "type": "leave-on face",
@@ -17553,9 +17610,6 @@
             "heat": false,
             "fat": false,
             "why": "Left on the face all day."
-          },
-          "frontOrigin": {
-            "formula": "database"
           },
           "formulaAnswers": {
             "ingredients": "WATER • C15-19 ALKANE • GLYCERIN • DICAPRYLYL CARBONATE • NIACINAMIDE • PROPANEDIOL • CETEARYL ISONONANOATE • POLYHYDROXYSTEARIC ACID • DIMETHICONE • ETHYLHEXYL METHOXYCRYLENE • CELLULOSE • TRIETHYLHEXANOIN • ISOHEXADECANE • TRIETHOXYCAPRYLYLSILANE • STEARETH-20 • SILICA • STEARETH-2 • CERAMIDE NP • CERAMIDE AP • CERAMIDE EOP • CARBOMER • GLYCERYL STEARATE • CETEARYL ALCOHOL • BEHENTRIMONIUM METHOSULFATE • TRIETHYL CITRATE • SODIUM LAUROYL LACTYLATE • CHOLESTEROL • ALUMINUM STEARATE • ALUMINA • CHLORPHENESIN • TOCOPHEROL • HYDROXYACETOPHENONE • CAPRYLYL GLYCOL • CAPRYLIC/CAPRIC TRIGLYCERIDE • CITRIC ACID • DIETHYLHEXYL SYRINGYLIDENEMALONATE • PANTHENOL • XANTHAN GUM • PHYTOSPHINGOSINE • POLYSORBATE 20 • ACRYLATES/C10-30 ALKYL ACRYLATE CROSSPOLYMER • BENZOIC ACID",
@@ -17639,8 +17693,13 @@
           "dated": "2026-09-03",
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
+            "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
             "formula": "The published ingredient list carries nothing on the hazard list.",
             "materials": "We have not established what the product actually touches."
+          },
+          "frontOrigin": {
+            "legal": "database",
+            "formula": "database"
           },
           "exposure": {
             "type": "sunscreen",
@@ -17654,9 +17713,6 @@
             "heat": false,
             "fat": true,
             "why": "Applied thickly over a large area and left there."
-          },
-          "frontOrigin": {
-            "formula": "database"
           },
           "formulaAnswers": {
             "ingredients": "ACTIVE INGREDIENTS: ZINC OXIDE 12% (SUNSCREEN) INACTIVE INGREDIENTS: ALLANTOIN, BISABOLOL, BUTYLOCTYL SALICYLATE, C12-15 ALKYL BENZOATE, CAPRYLYL GLYCOL, CAPRYLYL METHICONE , DIMETHICONE, DIMETHICONOL/PROPYLSILSESQUIOXANE/SILICATE CROSSPOLYMER, ETHYLHEXYLGLYCERIN, HEXYLENE GLYCOL , ISODODECANE, LAURYL PEG-10 TRIS(TRIMETHYLSILOXY)SILYLETHYL DIMETHICONE, LAURYL PEG-8 DIMETHICONE, NIACINAMIDE, OCTYLDODECYL NEOPENTANOATE , PEG-10, PHENOXYETHANOL , POLYMETHYLSILSESQUIOXANE, PROPANEDIOL , SODIUM CHLORIDE, SODIUM HYDROXIDE, TETRASODIUM GLUTAMATE DIACETATE, TOCOPHEROL (VITAMIN E), TRILAURETH-4 PHOSPHATE, WATER",
@@ -20957,8 +21013,13 @@
           "dated": "2026-09-03",
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
+            "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
             "formula": "The published ingredient list names polyester.",
             "materials": "We have not established what the product actually touches."
+          },
+          "frontOrigin": {
+            "legal": "database",
+            "formula": "database"
           },
           "exposure": {
             "type": "sunscreen",
@@ -20972,9 +21033,6 @@
             "heat": false,
             "fat": true,
             "why": "Applied thickly over a large area and left there."
-          },
-          "frontOrigin": {
-            "formula": "database"
           },
           "formulaAnswers": {
             "ingredients": "Active Ingredients: Zinc Oxide 24.08%...Inactive Ingredients: water, C12-15 alkyl benzoate, isopropyl palmitate, butyloctyl salicylate, ethylhexyl isononanoate, cetyl PEG/PPG-10/1 dimethicone, propylene glycol, cyclopentasiloxane, bis-octyldodecyl dimer dilinoleate/propanediol copolymer, dimethicone, ethylhexyl methoxycrylene, polyester-27, triethoxycaprylylsilane, beeswax, hydroxyacetophenone, sodium chloride, PEG-12 dimethicone crosspolymer, 1,2-hexanediol, caprylyl glycol",
@@ -21423,8 +21481,13 @@
           "dated": "2026-09-03",
           "legalNote": "Checked recall records on 2026-08-31. The February 2023 recall of 2 million Cosori air fryers (overheating connectors) was remedied by replacement and did not cover the kettles we feature; over 24 months, now informational.",
           "frontNotes": {
+            "legal": "Checked recall records on 2026-08-31. The February 2023 recall of 2 million Cosori air fryers (overheating connectors) was remedied by replacement and did not cover the kettles we feature; over 24 months, now informational.",
             "formula": "A durable good has no ingredient list. What it is made of is the materials check.",
             "materials": "We have not established what the product actually touches."
+          },
+          "frontOrigin": {
+            "legal": "database",
+            "formula": "database"
           },
           "exposure": {
             "type": "heated vessel",
@@ -21438,9 +21501,6 @@
             "heat": true,
             "fat": false,
             "why": "Heat drives whatever is in the surface into the water."
-          },
-          "frontOrigin": {
-            "formula": "database"
           },
           "formulaAnswers": {
             "ingredients": "",
@@ -23987,8 +24047,14 @@
           "dated": "2026-09-03",
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
+            "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
             "materials": "Made of glass, which the product name states, and which puts nothing into what it touches.",
             "formula": "A durable good has no ingredient list. What it is made of is the materials check."
+          },
+          "frontOrigin": {
+            "legal": "database",
+            "materials": "database",
+            "formula": "database"
           },
           "inheritedFronts": [
             "materials"
@@ -24005,10 +24071,6 @@
             "heat": false,
             "fat": false,
             "why": "Food sits in it, often for hours."
-          },
-          "frontOrigin": {
-            "materials": "database",
-            "formula": "database"
           },
           "formulaAnswers": {
             "ingredients": "",
@@ -24862,8 +24924,13 @@
           "dated": "2026-09-03",
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
+            "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
             "formula": "The published ingredient list names talc.",
             "materials": "We have not established what the product actually touches."
+          },
+          "frontOrigin": {
+            "legal": "database",
+            "formula": "database"
           },
           "exposure": {
             "type": "leave-on skin",
@@ -24877,9 +24944,6 @@
             "heat": false,
             "fat": true,
             "why": "Left on the skin, so contact runs for hours."
-          },
-          "frontOrigin": {
-            "formula": "database"
           },
           "formulaAnswers": {
             "ingredients": "Active Ingredient: Zinc Oxide 40% Purpose Skin Protectant Inactive Ingredients: Petrolatum, Cod Liver Oil, Lanolin, Glycerin, Beeswax, Sorbitan Sesquioleate, Fragrance, Pentaerythrityl Tetra-di-t-butyl Hydroxyhydrocinnamate, Tocopheryl Acetate, Talc",
@@ -24937,8 +25001,13 @@
           "dated": "2026-09-03",
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
+            "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
             "formula": "The published ingredient list carries nothing on the hazard list.",
             "materials": "We have not established what the product actually touches."
+          },
+          "frontOrigin": {
+            "legal": "database",
+            "formula": "database"
           },
           "exposure": {
             "type": "leave-on skin",
@@ -24952,9 +25021,6 @@
             "heat": false,
             "fat": true,
             "why": "Left on the skin, so contact runs for hours."
-          },
-          "frontOrigin": {
-            "formula": "database"
           },
           "formulaAnswers": {
             "ingredients": "Active Ingredient: Zinc Oxide 13% Purpose Skin Protectant Inactive Ingredients: water, mineral oil, petrolatum, beeswax, dimethicone, sorbitan sesquioleate, microcrystalline wax, PEG-30 dipolyhydroxystearate, aloe barbadensis leaf extract, glycerin, tropolone, tocopheryl acetate, 1,2-hexanediol, caprylyl glycol, magnesium sulfate, potassium hydroxide, phenoxyethanol",
@@ -25046,6 +25112,8 @@
             "materials": "We have not established what the product actually touches."
           },
           "inheritedFronts": [
+            "formula",
+            "formula",
             "formula",
             "formula",
             "formula",
@@ -33132,8 +33200,13 @@
           "dated": "2026-09-03",
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
+            "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
             "formula": "The published ingredient list hides composition behind artificial flavors, gum base.",
             "materials": "We have not established what the product actually touches."
+          },
+          "frontOrigin": {
+            "legal": "database",
+            "formula": "database"
           },
           "inheritedFronts": [
             "formula"
@@ -33150,9 +33223,6 @@
             "heat": false,
             "fat": false,
             "why": "Held in the mouth for a long time, and what comes out of it during that time is swallowed."
-          },
-          "frontOrigin": {
-            "formula": "database"
           },
           "formulaAnswers": {
             "ingredients": "Sorbitol, Gum Base, Glycerol, Natural and Artificial Flavors; Less than 2% of: Hydrogenated Starch Hydrolysate, Aspartame, Mannitol, Acesulfame K, Soy Lecithin, BHT (to Maintain Freshness), Colors (Turmeric, Blue 1 Lake).",
@@ -36609,7 +36679,12 @@
           "dated": "2026-09-03",
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
+            "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
             "materials": "Made of bamboo, which the product name states, and which puts nothing into what it touches."
+          },
+          "frontOrigin": {
+            "legal": "database",
+            "materials": "database"
           },
           "inheritedFronts": [
             "formula"
@@ -36635,9 +36710,6 @@
             "summary": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear.",
             "source": "amazon:B0D13T3XWX",
             "checked": "2026-09-03"
-          },
-          "frontOrigin": {
-            "materials": "database"
           },
           "materialsList": "bamboo",
           "materialAnswers": {
@@ -39970,8 +40042,12 @@
           "dated": "2026-09-03",
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
+            "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
             "testing": "Organic pouches named in the 2021 heavy-metals report with phthalate findings and persistent heavy metals in… (Recorded for Happy Baby as a whole rather than this product specifically.)",
             "formula": "No ingredient list recorded."
+          },
+          "frontOrigin": {
+            "legal": "database"
           },
           "inheritedFronts": [
             "testing"
@@ -39989,7 +40065,6 @@
             "fat": false,
             "why": "for a baby, which is high whatever the arithmetic says"
           },
-          "frontOrigin": {},
           "formulaAnswers": {
             "ingredients": "",
             "prose": "",
@@ -41038,7 +41113,11 @@
           "dated": "2026-09-03",
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
+            "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
             "formula": "No ingredient list recorded."
+          },
+          "frontOrigin": {
+            "legal": "database"
           },
           "exposure": {
             "type": "supplement",
@@ -41053,7 +41132,6 @@
             "fat": false,
             "why": "Swallowed whole, daily, indefinitely."
           },
-          "frontOrigin": {},
           "formulaAnswers": {
             "ingredients": "",
             "prose": "",
@@ -43737,7 +43815,12 @@
           "authored": true,
           "dated": "2026-09-03",
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
+          "frontNotes": {
+            "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either."
+          },
+          "frontOrigin": {
+            "legal": "database"
+          },
           "exposure": {
             "type": "chewing gum",
             "level": "medium",
@@ -45605,10 +45688,14 @@
           "disclose": false,
           "authored": true,
           "frontNotes": {
-            "materials": "Emulsion contents in unspecified plastic."
+            "materials": "Emulsion contents in unspecified plastic.",
+            "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either."
           },
           "dated": "2026-09-03",
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
+          "frontOrigin": {
+            "legal": "database"
+          },
           "inheritedFronts": [
             "formula"
           ],
@@ -46033,6 +46120,8 @@
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {},
           "inheritedFronts": [
+            "formula",
+            "formula",
             "formula",
             "formula",
             "formula",
@@ -48063,7 +48152,12 @@
           "dated": "2026-09-03",
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
           "frontNotes": {
+            "legal": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
             "materials": "Made of bamboo, which the product name states, and which puts nothing into what it touches."
+          },
+          "frontOrigin": {
+            "legal": "database",
+            "materials": "database"
           },
           "exposure": {
             "type": "food surface",
@@ -48086,9 +48180,6 @@
             "summary": "No ingredient list recorded.",
             "source": "",
             "checked": ""
-          },
-          "frontOrigin": {
-            "materials": "database"
           },
           "materialsList": "bamboo",
           "materialAnswers": {
@@ -49488,6 +49579,8 @@
             "materials": "Made of bamboo, which the product name states, and which puts nothing into what it touches."
           },
           "inheritedFronts": [
+            "formula",
+            "formula",
             "formula",
             "formula",
             "formula",
@@ -52192,11 +52285,16 @@
           "authored": true,
           "frontNotes": {
             "materials": "Dry contents in pet, heated in use.",
+            "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
             "formula": "No ingredient list recorded.",
             "testing": "Tea bags with a plastic seam or mesh release 11.6 billion microplastic particles per cup (McGill University, Environmental Science and Technology, 2019). This is about tea generally. We have not confirmed it for this product."
           },
           "dated": "2026-09-03",
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
+          "frontOrigin": {
+            "legal": "database",
+            "testing": "class"
+          },
           "exposure": {
             "type": "hot drink",
             "level": "medium",
@@ -52209,9 +52307,6 @@
             "heat": true,
             "fat": false,
             "why": "Brewed hot, which pulls more out of whatever it is brewed in."
-          },
-          "frontOrigin": {
-            "testing": "class"
           },
           "formulaAnswers": {
             "ingredients": "",
@@ -52559,8 +52654,13 @@
           "dated": "2026-09-03",
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
+            "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
             "materials": "plastic lid (Recorded for Liuruiyu as a whole rather than this product specifically.)",
             "formula": "A durable good has no ingredient list. What it is made of is the materials check."
+          },
+          "frontOrigin": {
+            "legal": "database",
+            "formula": "database"
           },
           "inheritedFronts": [
             "materials"
@@ -52577,9 +52677,6 @@
             "heat": false,
             "fat": false,
             "why": "Food sits in it, often for hours."
-          },
-          "frontOrigin": {
-            "formula": "database"
           }
         },
         "cat": "Food storage"
@@ -55372,7 +55469,12 @@
           "authored": true,
           "dated": "2026-09-03",
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
+          "frontNotes": {
+            "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either."
+          },
+          "frontOrigin": {
+            "legal": "database"
+          },
           "exposure": {
             "type": "food",
             "level": "medium",
@@ -57790,7 +57892,12 @@
           "authored": true,
           "dated": "2026-09-03",
           "legalNote": "Checked recall records on 2026-08-31. Miele's only US recall is a 2008 gas dryer inspection program, long resolved; no action has ever involved its vacuums.",
-          "frontNotes": {},
+          "frontNotes": {
+            "legal": "Checked recall records on 2026-08-31. Miele's only US recall is a 2008 gas dryer inspection program, long resolved; no action has ever involved its vacuums."
+          },
+          "frontOrigin": {
+            "legal": "database"
+          },
           "exposure": {
             "type": "air appliance",
             "level": "high",
@@ -62822,7 +62929,11 @@
           "dated": "2026-09-03",
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
+            "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
             "formula": "No ingredient list recorded."
+          },
+          "frontOrigin": {
+            "legal": "database"
           },
           "exposure": {
             "type": "drinking water",
@@ -62837,7 +62948,6 @@
             "fat": false,
             "why": "Drunk in quantity, every day, for years."
           },
-          "frontOrigin": {},
           "formulaAnswers": {
             "ingredients": "",
             "prose": "",
@@ -65530,7 +65640,11 @@
           "dated": "2026-09-03",
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
+            "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
             "formula": "No ingredient list recorded."
+          },
+          "frontOrigin": {
+            "legal": "database"
           },
           "exposure": {
             "type": "supplement",
@@ -65545,7 +65659,6 @@
             "fat": false,
             "why": "Swallowed whole, daily, indefinitely."
           },
-          "frontOrigin": {},
           "formulaAnswers": {
             "ingredients": "",
             "prose": "",
@@ -66220,10 +66333,14 @@
           "disclose": false,
           "authored": true,
           "frontNotes": {
-            "materials": "Emulsion contents in unspecified plastic."
+            "materials": "Emulsion contents in unspecified plastic.",
+            "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either."
           },
           "dated": "2026-09-03",
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
+          "frontOrigin": {
+            "legal": "database"
+          },
           "inheritedFronts": [
             "formula"
           ],
@@ -66373,7 +66490,11 @@
           "dated": "2026-09-03",
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
+            "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
             "formula": "No ingredient list recorded."
+          },
+          "frontOrigin": {
+            "legal": "database"
           },
           "exposure": {
             "type": "supplement",
@@ -66388,7 +66509,6 @@
             "fat": false,
             "why": "Swallowed whole, daily, indefinitely."
           },
-          "frontOrigin": {},
           "formulaAnswers": {
             "ingredients": "",
             "prose": "",
@@ -66639,7 +66759,11 @@
           "dated": "2026-09-03",
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
+            "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
             "formula": "No ingredient list recorded."
+          },
+          "frontOrigin": {
+            "legal": "database"
           },
           "exposure": {
             "type": "supplement",
@@ -66654,7 +66778,6 @@
             "fat": false,
             "why": "Swallowed whole, daily, indefinitely."
           },
-          "frontOrigin": {},
           "formulaAnswers": {
             "ingredients": "",
             "prose": "",
@@ -67132,7 +67255,11 @@
           "dated": "2026-09-03",
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
+            "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
             "formula": "No ingredient list recorded."
+          },
+          "frontOrigin": {
+            "legal": "database"
           },
           "exposure": {
             "type": "supplement",
@@ -67147,7 +67274,6 @@
             "fat": false,
             "why": "Swallowed whole, daily, indefinitely."
           },
-          "frontOrigin": {},
           "formulaAnswers": {
             "ingredients": "",
             "prose": "",
@@ -67283,7 +67409,11 @@
           "dated": "2026-09-03",
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
+            "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
             "formula": "No ingredient list recorded."
+          },
+          "frontOrigin": {
+            "legal": "database"
           },
           "exposure": {
             "type": "rinse-off skin",
@@ -67298,7 +67428,6 @@
             "fat": false,
             "why": "Rinsed off, so most of it never stays."
           },
-          "frontOrigin": {},
           "formulaAnswers": {
             "ingredients": "",
             "prose": "",
@@ -69111,6 +69240,8 @@
             "formula",
             "formula",
             "formula",
+            "formula",
+            "formula",
             "formula"
           ],
           "verdict": "skip",
@@ -70557,7 +70688,12 @@
           "authored": true,
           "dated": "2026-09-03",
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
+          "frontNotes": {
+            "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either."
+          },
+          "frontOrigin": {
+            "legal": "database"
+          },
           "inheritedFronts": [
             "formula"
           ],
@@ -73496,7 +73632,12 @@
           "authored": true,
           "dated": "2026-09-03",
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
+          "frontNotes": {
+            "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either."
+          },
+          "frontOrigin": {
+            "legal": "database"
+          },
           "exposure": {
             "type": "chewing gum",
             "level": "medium",
@@ -75875,7 +76016,11 @@
           "dated": "2026-09-03",
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
+            "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
             "formula": "No ingredient list recorded."
+          },
+          "frontOrigin": {
+            "legal": "database"
           },
           "exposure": {
             "type": "supplement",
@@ -75890,7 +76035,6 @@
             "fat": false,
             "why": "Swallowed whole, daily, indefinitely."
           },
-          "frontOrigin": {},
           "formulaAnswers": {
             "ingredients": "",
             "prose": "",
@@ -76449,8 +76593,14 @@
           "dated": "2026-09-03",
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
+            "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
             "formula": "A durable good has no ingredient list. What it is made of is the materials check.",
             "materials": "Made of glass, which the product name states, and which puts nothing into what it touches."
+          },
+          "frontOrigin": {
+            "legal": "database",
+            "materials": "database",
+            "formula": "database"
           },
           "exposure": {
             "type": "food vessel",
@@ -76464,10 +76614,6 @@
             "heat": false,
             "fat": false,
             "why": "Food sits in it, often for hours."
-          },
-          "frontOrigin": {
-            "materials": "database",
-            "formula": "database"
           },
           "formulaAnswers": {
             "ingredients": "",
@@ -78509,7 +78655,11 @@
           "dated": "2026-09-03",
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
+            "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
             "formula": "No ingredient list recorded."
+          },
+          "frontOrigin": {
+            "legal": "database"
           },
           "exposure": {
             "type": "rinse-off skin",
@@ -78524,7 +78674,6 @@
             "fat": false,
             "why": "Rinsed off, so most of it never stays."
           },
-          "frontOrigin": {},
           "formulaAnswers": {
             "ingredients": "",
             "prose": "",
@@ -78635,7 +78784,11 @@
           "dated": "2026-09-03",
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
+            "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
             "materials": "Still sold in a multilayer plastic pouch (Recorded for Serenity Kids as a whole rather than this product specifically.)"
+          },
+          "frontOrigin": {
+            "legal": "database"
           },
           "inheritedFronts": [
             "materials"
@@ -79193,7 +79346,12 @@
           "authored": true,
           "dated": "2026-09-03",
           "legalNote": "Checked recall records on 2026-08-31. The 2015 Rotator wand recall was remedied by replacement and did not cover the Navigator models we list; the 2025 SharkNinja pressure cooker recall is a different product line.",
-          "frontNotes": {},
+          "frontNotes": {
+            "legal": "Checked recall records on 2026-08-31. The 2015 Rotator wand recall was remedied by replacement and did not cover the Navigator models we list; the 2025 SharkNinja pressure cooker recall is a different product line."
+          },
+          "frontOrigin": {
+            "legal": "database"
+          },
           "exposure": {
             "type": "air appliance",
             "level": "high",
@@ -79243,7 +79401,12 @@
           "dated": "2026-09-03",
           "legalNote": "Checked recall records on 2026-08-31. The 2015 Rotator wand recall was remedied by replacement and did not cover the Navigator models we list; the 2025 SharkNinja pressure cooker recall is a different product line.",
           "frontNotes": {
+            "legal": "Checked recall records on 2026-08-31. The 2015 Rotator wand recall was remedied by replacement and did not cover the Navigator models we list; the 2025 SharkNinja pressure cooker recall is a different product line.",
             "formula": "A durable good has no ingredient list. What it is made of is the materials check."
+          },
+          "frontOrigin": {
+            "legal": "database",
+            "formula": "database"
           },
           "exposure": {
             "type": "air appliance",
@@ -79257,9 +79420,6 @@
             "heat": false,
             "fat": false,
             "why": "Running in the room, moving air past its own materials."
-          },
-          "frontOrigin": {
-            "formula": "database"
           }
         },
         "cat": "Air purifiers"
@@ -81221,6 +81381,8 @@
             "checked": ""
           },
           "inheritedFronts": [
+            "formula",
+            "formula",
             "formula",
             "formula",
             "formula",
@@ -85203,8 +85365,12 @@
           "dated": "2026-09-03",
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
+            "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
             "testing": "Independent third-party lab testing (Lead Safe Mama, June 2025) found the highest lead level of any baby… (Recorded for Thinkbaby as a whole rather than this product specifically.)",
             "formula": "No ingredient list recorded."
+          },
+          "frontOrigin": {
+            "legal": "database"
           },
           "inheritedFronts": [
             "testing"
@@ -85222,7 +85388,6 @@
             "fat": true,
             "why": "Applied thickly over a large area and left there."
           },
-          "frontOrigin": {},
           "formulaAnswers": {
             "ingredients": "",
             "prose": "",
@@ -87531,7 +87696,12 @@
           "dated": "2026-09-03",
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
           "frontNotes": {
+            "legal": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
             "formula": "A durable good has no ingredient list. What it is made of is the materials check."
+          },
+          "frontOrigin": {
+            "legal": "database",
+            "formula": "database"
           },
           "exposure": {
             "type": "heated cookware",
@@ -87545,9 +87715,6 @@
             "heat": true,
             "fat": true,
             "why": "Hot fat against the cooking surface is the most aggressive case there is."
-          },
-          "frontOrigin": {
-            "formula": "database"
           }
         },
         "cat": "Cookware"
@@ -88492,7 +88659,11 @@
           "dated": "2026-09-03",
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
+            "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
             "formula": "No ingredient list recorded."
+          },
+          "frontOrigin": {
+            "legal": "database"
           },
           "exposure": {
             "type": "leave-on skin",
@@ -88507,7 +88678,6 @@
             "fat": true,
             "why": "Left on the skin, so contact runs for hours."
           },
-          "frontOrigin": {},
           "formulaAnswers": {
             "ingredients": "",
             "prose": "",
@@ -89916,7 +90086,11 @@
           "dated": "2026-09-03",
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
+            "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
             "formula": "No ingredient list recorded."
+          },
+          "frontOrigin": {
+            "legal": "database"
           },
           "exposure": {
             "type": "drinking water",
@@ -89931,7 +90105,6 @@
             "fat": false,
             "why": "Drunk in quantity, every day, for years."
           },
-          "frontOrigin": {},
           "formulaAnswers": {
             "ingredients": "",
             "prose": "",
@@ -91130,7 +91303,11 @@
           "dated": "2026-09-03",
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
+            "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
             "formula": "No ingredient list recorded."
+          },
+          "frontOrigin": {
+            "legal": "database"
           },
           "exposure": {
             "type": "drinking water",
@@ -91145,7 +91322,6 @@
             "fat": false,
             "why": "Drunk in quantity, every day, for years."
           },
-          "frontOrigin": {},
           "formulaAnswers": {
             "ingredients": "",
             "prose": "",
@@ -91761,7 +91937,12 @@
           "dated": "2026-09-03",
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
+            "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
             "materials": "Made of bamboo, which the product name states, and which puts nothing into what it touches."
+          },
+          "frontOrigin": {
+            "legal": "database",
+            "materials": "database"
           },
           "inheritedFronts": [
             "formula"
@@ -91787,9 +91968,6 @@
             "summary": "No ingredient list recorded.",
             "source": "amazon:B08172V3Y5",
             "checked": ""
-          },
-          "frontOrigin": {
-            "materials": "database"
           },
           "materialsList": "bamboo",
           "materialAnswers": {
@@ -92135,8 +92313,13 @@
           "dated": "2026-09-03",
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
+            "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
             "materials": "plastic lid (Recorded for Vtopmart as a whole rather than this product specifically.)",
             "formula": "A durable good has no ingredient list. What it is made of is the materials check."
+          },
+          "frontOrigin": {
+            "legal": "database",
+            "formula": "database"
           },
           "inheritedFronts": [
             "materials"
@@ -92153,9 +92336,6 @@
             "heat": false,
             "fat": false,
             "why": "Food sits in it, often for hours."
-          },
-          "frontOrigin": {
-            "formula": "database"
           }
         },
         "cat": "Food storage"
@@ -92677,7 +92857,12 @@
           "authored": true,
           "dated": "2026-09-03",
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
-          "frontNotes": {},
+          "frontNotes": {
+            "legal": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found."
+          },
+          "frontOrigin": {
+            "legal": "database"
+          },
           "exposure": {
             "type": "drinking water",
             "level": "high",
@@ -93723,6 +93908,8 @@
             "formula",
             "formula",
             "formula",
+            "formula",
+            "formula",
             "formula"
           ],
           "verdict": "unrated",
@@ -94608,7 +94795,12 @@
           "authored": true,
           "dated": "2026-09-03",
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
+          "frontNotes": {
+            "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either."
+          },
+          "frontOrigin": {
+            "legal": "database"
+          },
           "exposure": {
             "type": "chewing gum",
             "level": "medium",

@@ -214,6 +214,14 @@ def main():
             if c.get("resolved"):
                 e["fronts"]["legal"] = c.get("status") or "pass"
                 e["legalNote"] = c.get("note") or ""
+                # Also where every other front keeps its note and provenance.
+                # This wrote only to legalNote, so a reader looking at the four
+                # checks saw "Recalls and lawsuits, caution" with nothing under
+                # it and the origin reading "none", on an entry a person had
+                # adjudicated with a citation.
+                if c.get("note"):
+                    e.setdefault("frontNotes", {})["legal"] = c["note"]
+                e.setdefault("frontOrigin", {})["legal"] = "database"
                 if c.get("eventDate"):
                     e["legalDate"] = c["eventDate"]
                 set_pass += 1
@@ -226,6 +234,8 @@ def main():
                     "Checked against the FDA enforcement database on "
                     f"{c['checked']}. No recall on record, and no firm "
                     "with a similar name either.")
+                e.setdefault("frontNotes", {})["legal"] = e["legalNote"]
+                e.setdefault("frontOrigin", {})["legal"] = "database"
                 set_pass += 1
             else:
                 needs_review.append((b["brand"], c.get("total", 0), c.get("examined", 0),

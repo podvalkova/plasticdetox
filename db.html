@@ -358,7 +358,7 @@ function build(brands){
                  {fronts:fr, origin:or, notes:e.frontNotes||{}, answers:e.materialAnswers||null, formula:e.formulaAnswers||null,
                   klass:e.classEvidence||null,
                   exposure:e.exposure||null,
-                  why:e.why||"", asins:p.asins||[], dated:e.dated||"", scope:e.scope||""}]);
+                  why:e.why||"", legalNote:e.legalNote||"", asins:p.asins||[], dated:e.dated||"", scope:e.scope||""}]);
     }
   }
 
@@ -587,7 +587,8 @@ function openDetail(r){
     row.appendChild(el("span","mark "+((d.fronts[f]&&d.fronts[f]!=="unassessed"&&d.fronts[f]!=="unknown")?d.fronts[f]:"")));
     const bd = el("div");
     bd.appendChild(el("div","nm", FRONT_LABEL[f] + " — " + (d.fronts[f]||"not checked")));
-    if(d.notes[f]) bd.appendChild(el("div","nt", d.notes[f]));
+    const note = d.notes[f] || (f==="legal" ? (d.legalNote||"") : "");
+    if(note) bd.appendChild(el("div","nt", note));
     // The list itself, not our reading of it. A pass you cannot check is the
     // thing this whole front was rebuilt to stop producing.
     // Research about this KIND of product, shown where nobody has tested the
@@ -615,7 +616,7 @@ function openDetail(r){
         const w = {good:"good", careful:"careful", bad:"skip"}[fm.verdict];
         if(fm.verdict==="n/a") line.appendChild(el("span","mark none"));
         if(w) line.appendChild(el("span","pill "+w, fm.verdict));
-        if(fm.summary) line.appendChild(el("span","nt", fm.summary));
+        if(fm.summary && fm.summary !== d.notes[f]) line.appendChild(el("span","nt", fm.summary));
         bd.appendChild(line);
       }
       if(fm.ingredients || fm.prose){
