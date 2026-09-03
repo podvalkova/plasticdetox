@@ -161,6 +161,20 @@ tr:hover td{background:var(--sunk)}
 tr{cursor:pointer}
 footer{margin-top:2.4rem;padding-top:1.2rem;border-top:1px solid var(--border);
   color:var(--muted);font-size:12.5px;line-height:1.7}
+
+/* A phone is not eight columns wide. The ones carrying the answer stay; the
+   rest fold away and are all in the panel a tap away. */
+@media (max-width:820px){
+  table{font-size:12.5px}
+  table th:nth-child(3), table td:nth-child(3),
+  table th:nth-child(8), table td:nth-child(8){display:none}
+  td,th{padding-left:.4rem;padding-right:.4rem}
+  .lvl-t{display:block;margin-left:0;margin-top:.15rem}
+  .sheet{width:100%;padding:1.6rem 1.2rem 4rem}
+  .grid{grid-template-columns:repeat(auto-fit,minmax(120px,1fr))}
+  .bar-row{grid-template-columns:5.5rem 1fr;row-gap:.2rem}
+  .bar-num{grid-column:2}
+}
 </style>
 </head>
 <body>
@@ -227,7 +241,7 @@ footer{margin-top:2.4rem;padding-top:1.2rem;border-top:1px solid var(--border);
     <table>
       <thead><tr>
         <th data-s="0">Brand</th><th data-s="1">Product</th><th data-s="2">Category</th>
-        <th data-s="3">Verdict</th><th data-s="5">Checks</th><th data-s="7">Packaging</th><th data-s="4">Material</th>
+        <th data-s="3">Verdict</th><th data-s="5">Checks</th><th data-s="8">Exposure</th><th data-s="7">Packaging</th><th data-s="4">Material</th>
       </tr></thead>
       <tbody id="rows"></tbody>
     </table>
