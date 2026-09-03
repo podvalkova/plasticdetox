@@ -40,7 +40,7 @@ import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "brand-data.json"
-FRONTS = ("formula", "packaging", "legal", "testing")
+FRONTS = ("formula", "materials", "legal", "testing")
 
 STANCES = {"good", "careful", "skip", "neutral"}
 VERDICTS = {"good", "careful", "skip", "neutral", "unrated"}
@@ -123,6 +123,14 @@ def check_product(b, p, where, errs, stage):
             if e.get("scope") not in ("sku", "line"):
                 errs.append(f"{where}: good at {e.get('scope')!r} scope")
             bad = [k for k in FRONTS if (e.get("fronts") or {}).get(k) in ("caution", "fail")]
+            # Rule 5.5 and the section 6 ceiling: a legal caution answered by
+            # independent testing that post-dates it does not set the verdict.
+            # enforce-scorecard has applied that since the Caboo review and
+            # records it as `legalSuperseded`; this check did not know about it,
+            # so the two tools answered the same row differently the moment the
+            # completeness gate stopped hiding the disagreement.
+            if e.get("legalSuperseded") and bad == ["legal"]:
+                bad = []
             if bad:
                 errs.append(f"{where}: good with adverse fronts {bad}")
         # A warning has to say why. An empty why on a careful or skip is how

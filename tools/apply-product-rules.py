@@ -117,10 +117,10 @@ def main():
                 fr = p["ext"].get("fronts") or {}
                 if (not _a.is_consumable(b.get("category"), p.get("name"))
                         and fr.get("formula") == "pass"
-                        and fr.get("packaging") in (None, "unassessed", "unknown")
+                        and fr.get("materials") in (None, "unassessed", "unknown")
                         and not _a.GENERIC_PLASTIC.search(
                             " " + _a.evidence_text(p).lower() + " ")):
-                    fr["packaging"] = "pass"
+                    fr["materials"] = "pass"
                     filled_54 += 1
                 # The same principle for research that lands in the note after
                 # the row was authored: a blank front is not a judgement, so
@@ -131,19 +131,28 @@ def main():
                 # the author actually set.
                 cleaned = _a.evidence_text(p)
                 ctx = f"{p.get('name') or ''} {b.get('category') or ''}"
-                if fr.get("packaging") in (None, "unassessed", "unknown"):
+                if fr.get("materials") in (None, "unassessed", "unknown"):
                     pk, pk_why = _a.packaging_severity(cleaned, ctx)
                     if pk:
-                        fr["packaging"] = pk
-                        p["ext"].setdefault("frontNotes", {})["packaging"] = \
+                        fr["materials"] = pk
+                        p["ext"].setdefault("frontNotes", {})["materials"] = \
                             pk_why.capitalize() + "."
-                if fr.get("formula") in (None, "unassessed", "unknown"):
+                # A material read names what the object is made of, so on a
+                # durable good it answers MATERIALS, not formula. It used to
+                # answer formula because formula was where a durable's material
+                # lived, and rule 5.4 then copied that answer across. Now that
+                # materials is its own front and a durable's formula is `none`,
+                # the read has to land where the fact actually belongs, or the
+                # 5.4 copy has nothing to copy and the front stays blank.
+                durable = not _a.is_consumable(b.get("category"), p.get("name"))
+                target = "materials" if durable else "formula"
+                if fr.get(target) in (None, "unassessed", "unknown"):
                     read, read_why = _a.formula_from_materials(cleaned + " " + ctx)
                     if read is None:
                         read, read_why = _a.formula_from_materials(_a.formula_evidence(p))
                     if read == "pass":
-                        fr["formula"] = "pass"
-                        p["ext"].setdefault("frontNotes", {})["formula"] = read_why
+                        fr[target] = "pass"
+                        p["ext"].setdefault("frontNotes", {})[target] = read_why
                 p["ext"].setdefault("dated", TODAY)
                 dist[p["ext"].get("verdict")] += 1
                 hand_kept += 1

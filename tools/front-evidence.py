@@ -43,7 +43,7 @@ import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "brand-data.json"
-FRONTS = ("formula", "packaging", "legal", "testing")
+FRONTS = ("formula", "materials", "legal", "testing")
 ADVERSE = ("fail", "caution")
 
 # Something was decided.

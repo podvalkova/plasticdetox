@@ -38,7 +38,7 @@ import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "brand-data.json"
-FRONTS = ("formula", "packaging", "legal", "testing")
+FRONTS = ("formula", "materials", "legal", "testing")
 # The real date, not a frozen one. Recall decay under rule 5.2 is computed
 # against this; pinning it to the day the tool was written meant a recall
 # could never age past the threshold no matter how many years went by.
@@ -486,7 +486,11 @@ def apply_rules(fronts, note, scope, basis, context="", formula_text=""):
     """
     low = (note or "").lower()
     fired = []
-    f = {k: dict(v) for k, v in fronts.items()}
+    # An authored scorecard carries only the fronts a person filled in, so a
+    # front nobody wrote is absent rather than unassessed. Every rule below
+    # reads all four, so fill the gaps with the honest default first.
+    f = {k: {"status": "unassessed", "note": "", "origin": "none"} for k in FRONTS}
+    f.update({k: dict(v) for k, v in fronts.items() if k in FRONTS})
 
     # 5.3  absence of a recall is not a pass. Barely regulated categories produce
     #      no recalls because nobody is looking, not because nothing is wrong.
@@ -552,7 +556,7 @@ def apply_rules(fronts, note, scope, basis, context="", formula_text=""):
     # question is what that hazard is sitting next to.
     pk, pk_why = packaging_severity(note, context)
     if pk:
-        f["packaging"] = {"status": pk, "note": pk_why.capitalize() + ".",
+        f["materials"] = {"status": pk, "note": pk_why.capitalize() + ".",
                           "origin": "rule-3-matrix"}
         fired.append(f"3 packaging-matrix-{pk}")
 
@@ -560,11 +564,11 @@ def apply_rules(fronts, note, scope, basis, context="", formula_text=""):
     # refillable aluminium bottle answers the packaging question outright, and
     # the classifier had no term for it, so shampoo bars whose whole point is the
     # packaging scored nothing on that front.
-    if f["packaging"]["status"] in ("unknown", "unassessed") and re.search(
+    if f["materials"]["status"] in ("unknown", "unassessed") and re.search(
             r"\b(compostable (cardboard|paper|packaging)|cardboard (box|packaging|carton)|"
             r"(refillable|reusable) (aluminium|aluminum|steel|glass)|plastic[- ]free packaging|"
             r"no plastic packaging|paper wrap|zero waste packaging|package[- ]free)\b", low):
-        f["packaging"] = {"status": "pass",
+        f["materials"] = {"status": "pass",
                           "note": "Packaging is stated as plastic free.",
                           "origin": "rule-3-plastic-free-packaging"}
         fired.append("3 packaging-stated-plastic-free")
@@ -591,13 +595,15 @@ def apply_rules(fronts, note, scope, basis, context="", formula_text=""):
             fired.append("2.1 disclosure-failure-caps-at-caution")
 
     # Rule 5.4. A durable good is its own contact surface: a stainless bowl's
-    # "packaging" is the stainless. Where the material reads clean and nothing
+    # "materials" is the stainless. Where the material reads clean and nothing
     # contradicts it, the packaging front is answered by the same fact rather
     # than left blank next to a recommendation.
-    if (not is_consumable(context) and f["formula"]["status"] == "pass"
-            and f["packaging"]["status"] in ("unknown", "unassessed")
+    if (not is_consumable(context)
+            and f["formula"]["status"] in ("pass", "none")
+            and f["materials"]["status"] in ("unknown", "unassessed")
+            and formula_from_materials(low)[0] == "pass"
             and not GENERIC_PLASTIC.search(low)):
-        f["packaging"] = {"status": "pass",
+        f["materials"] = {"status": "pass",
                           "note": "The object is its own contact surface, and the material reads clean.",
                           "origin": "rule-5.4"}
         fired.append("5.4 durable-good-is-its-own-packaging")

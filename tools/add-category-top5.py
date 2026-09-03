@@ -95,7 +95,7 @@ NEW_BRANDS = [
 
 # brand -> rows. Each row: (name, matchAll, matchNot, asins, verdict, note, fronts)
 F = lambda fo="unassessed", pk="unassessed", lg="unassessed", te="unassessed": {
-    "formula": fo, "packaging": pk, "legal": lg, "testing": te}
+    "formula": fo, "materials": pk, "legal": lg, "testing": te}
 
 ROWS = {
     # ---------------------------------------------------------------- diapers

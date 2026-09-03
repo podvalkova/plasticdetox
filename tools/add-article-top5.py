@@ -31,7 +31,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "brand-data.json"
 
 F = lambda fo="unassessed", pk="unassessed", lg="unassessed", te="unassessed": {
-    "formula": fo, "packaging": pk, "legal": lg, "testing": te}
+    "formula": fo, "materials": pk, "legal": lg, "testing": te}
 
 # Category level findings, each straight out of the named article.
 CUT = ("A plastic cutting board sheds 14 to 71 million microplastic particles a year, "

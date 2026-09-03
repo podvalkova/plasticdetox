@@ -14,7 +14,7 @@
 
 export const FRONTS = [
   ["formula", "Formula"],
-  ["packaging", "Packaging"],
+  ["materials", "Packaging"],
   ["legal", "Recalls & lawsuits"],
   ["testing", "Independent tests"],
 ];

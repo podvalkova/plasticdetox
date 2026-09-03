@@ -54,11 +54,12 @@ import argparse
 import collections
 import json
 import pathlib
+import re
 import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "brand-data.json"
-FRONTS = ("formula", "packaging", "legal", "testing")
+FRONTS = ("formula", "materials", "legal", "testing")
 # "none" is a finding: we looked, and no applicable evidence exists. A lab does
 # not test a toothbrush handle, so holding one back until someone does means
 # holding it back forever, for a gap that is not a gap. It differs from
@@ -73,8 +74,34 @@ BLANK = (None, "unassessed", "unknown", "")
 # missing test never blocks; the card states "not yet assessed: independent
 # tests" instead. A testing FINDING still binds in full: a fail or caution on
 # the front caps the verdict exactly like any other front.
-BLOCKING = ("formula", "packaging", "legal")
+# Materials and legal block everything. Formula blocks a consumable only,
+# because a durable good has no ingredient list and never will: a kettle's
+# formula is not missing, it does not exist, and holding a steel kettle back
+# for one is the same mistake rule 5.6 corrects on testing. What a durable is
+# made of is a real question and it is the materials front, which does block.
+BLOCKING = ("materials", "legal")
+CONSUMABLE_ONLY = ("formula",)
 RANK = {"skip": 0, "careful": 1, "good": 3}
+
+# The site's own vocabulary, not a new one. A consumable is anything swallowed
+# or left on a person, where an ingredient list exists and is the evidence.
+CONSUMABLE = re.compile(
+    r"cosmetic|personal care|sunscreen|skincare|supplement|bottled water|baby food|"
+    r"snack|pantry|formula|electrolyte|oral care|toothpaste|mouthwash|floss|cleaning|"
+    r"laundry|dish|coffee|tea|salt|spice|protein|diaper cream|lotion|balm|soap|shampoo|"
+    r"conditioner|deodorant|wipe|honey|chocolate|diaper|period", re.I)
+
+
+def blocking_for(brand, product):
+    """Which fronts must carry a finding before this product may be recommended."""
+    # A formula front already answered `none` says this is a durable good and
+    # the question does not apply. Trust that over the shopping category, which
+    # files a glass pour-over cup under Coffee.
+    if (((product.get("ext") or {}).get("fronts") or {}).get("formula")) == "none":
+        return BLOCKING
+    consumable = bool(CONSUMABLE.search(
+        f"{product.get('cat') or ''} {brand.get('category') or ''}"))
+    return BLOCKING + (CONSUMABLE_ONLY if consumable else ())
 
 
 def _when(value):
@@ -125,7 +152,7 @@ def main():
             if not e:
                 continue
             f = e.get("fronts") or {}
-            blank = [k for k in BLOCKING if f.get(k) in BLANK]
+            blank = [k for k in blocking_for(b, p) if f.get(k) in BLANK]
 
             # A reason has to outlive its cause or die with it.
             #

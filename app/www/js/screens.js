@@ -284,7 +284,7 @@ export function result(root, { index, match, scan, product, query, productNamed,
     }
   }
 
-  if (scan) root.appendChild(packagingCard(scan, onOpen));
+  if (scan) root.appendChild(materialsCard(scan, onOpen));
 
   const alts = v.stance === "good" ? [] : alternativesFor(index, v.brand, 3);
   if (alts.length) {
@@ -333,11 +333,11 @@ function describeFront(status) {
  * Shown on every scan, brand known or not, because it is the one answer we can
  * give about a product nobody has researched.
  */
-function packagingCard(scan, onOpen) {
+function materialsCard(scan, onOpen) {
   const box = el("div", "card");
-  box.appendChild(el("h2", null, "The packaging"));
+  box.appendChild(el("h2", null, "The materials"));
 
-  const headline = packagingHeadline(scan.packaging);
+  const headline = packagingHeadline(scan.materials);
   if (!headline) {
     box.appendChild(el("p", "pkg-why",
       "The barcode databases do not record what this one is packaged in. If it is a bottle or a pouch, assume plastic."));
@@ -345,14 +345,14 @@ function packagingCard(scan, onOpen) {
   }
 
   box.appendChild(el("p", null, headline.text));
-  for (const m of scan.packaging) {
+  for (const m of scan.materials) {
     const row = el("div", "pkg");
     row.appendChild(el("span", `pkg-chip ${m.concern}`, m.label));
     row.appendChild(el("span", "pkg-why", m.why));
     box.appendChild(row);
   }
 
-  const withArticle = scan.packaging.find((m) => m.article);
+  const withArticle = scan.materials.find((m) => m.article);
   if (withArticle) {
     const a = el("a", "cta ghost", "Why this plastic matters");
     a.href = `${SITE}/${withArticle.article}`;
@@ -389,7 +389,7 @@ export function unknown(root, { scan, brand, product, hasPass, onCheck, onReques
   const now = el("div", "card");
   now.appendChild(el("h2", null, "Get it checked now"));
   now.appendChild(el("p", null,
-    "Our research system runs the same four checks we use for every verdict: formula, packaging, recalls and lawsuits, independent tests. It answers in about a minute and shows its sources."));
+    "Our research system runs the same four checks we use for every verdict: formula, materials, recalls and lawsuits, independent tests. It answers in about a minute and shows its sources."));
 
   const log = el("div", "checklog");
   now.appendChild(log);
@@ -426,7 +426,7 @@ export function unknown(root, { scan, brand, product, hasPass, onCheck, onReques
     root.appendChild(free);
   }
 
-  if (scan) root.appendChild(packagingCard(scan, onOpen));
+  if (scan) root.appendChild(materialsCard(scan, onOpen));
 
   const box = el("div", "search");
   box.appendChild(icon(ICONS.search, 18));

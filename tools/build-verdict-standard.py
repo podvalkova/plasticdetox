@@ -29,7 +29,7 @@ DATA = ROOT / "brand-data.json"
 TEMPLATE = ROOT / "tools" / "templates" / "verdict-standard.template.html"
 OUT = ROOT / "docs" / "verdict-standard.html"
 
-FRONTS = ("formula", "packaging", "legal", "testing")
+FRONTS = ("formula", "materials", "legal", "testing")
 MARK = {"pass": "p", "caution": "c", "fail": "f", "none": "n",
         "unassessed": "u", "unknown": "u", None: "u", "": "u"}
 

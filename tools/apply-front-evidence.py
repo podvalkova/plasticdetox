@@ -26,7 +26,7 @@ get different answers for exactly this reason.
     data/front-evidence.json
     {
       "B0825WHHGJ": {
-        "packaging": {"material": "pet", "source": "earthmama.com/faq"},
+        "materials": {"material": "pet", "source": "earthmama.com/faq"},
         "formula":   {"base": "anhydrous", "use": "leave-on"}
       }
     }
@@ -39,6 +39,7 @@ get different answers for exactly this reason.
 import argparse
 import collections
 import datetime
+import importlib.util
 import json
 import pathlib
 import re
@@ -49,12 +50,27 @@ DATA = ROOT / "brand-data.json"
 EVIDENCE = ROOT / "data" / "front-evidence.json"
 TODAY = datetime.date.today().isoformat()
 
+
+def _load(name, path):
+    spec = importlib.util.spec_from_file_location(name, ROOT / path)
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
+
+# One vocabulary, one negation reader. Duplicating either is how the extension
+# and the tools came to answer the same listing two ways.
+_apr = _load("_apr", "tools/audit-product-rules.py")
+_bf = _load("_bf", "tools/backfill-fronts.py")
+
 # Question 3, the material of the parts actually in contact. Inert means the
 # answer does not depend on what it holds, which is the point of asking.
 INERT = {"glass", "borosilicate", "tempered glass", "stainless", "stainless steel",
          "steel", "tin", "ceramic", "porcelain", "enamel", "bamboo", "wood",
          "maple wood", "beeswax", "paper-uncoated", "silicone", "cotton", "metal",
-         "rubber", "cast iron", "carbon steel", "titanium"}
+         "rubber", "cast iron", "carbon steel", "titanium",
+         "cork", "linen", "hemp", "silk", "jute", "wool", "leather", "felt",
+         "aluminum foil", "paper", "cardboard", "glass-ceramic"}
 
 # How much of a problem the polymer is before the contents are considered. PVC
 # carries phthalate plasticisers, polystyrene leaches styrene, 7 is the catch all
@@ -132,13 +148,29 @@ def assess(pack):
     a guess: it means unassessed, which is not a pass.
     """
     contact = str(pack.get("contact") or "").strip().lower()
+    raw = str(pack.get("material") or "")
+
+    # Question 1 asks which part of a container touches the contents, and that
+    # was the right first question while this front was about packaging. It is
+    # the wrong one for an object that is made of a single stated material: a
+    # stainless steel bowl has no part that is not stainless steel, so there is
+    # nothing left to establish. Rule 5.4, a fully specified inert material is
+    # the complete safety case. Only a single material qualifies; the moment a
+    # name lists two, which one is in contact is a real question again.
+    single = [m.strip() for m in re.split(r"[,^/;+&]|\band\b", raw) if m.strip()]
+    if len(single) == 1 and str(pack.get("source") or "") == "product name":
+        term, rank = classify(single[0])
+        if term is not None and rank == 0:
+            return "pass", (f"Made of {pretty(term)}, which the product name states, "
+                            "and which puts nothing into what it touches")
+        if term is not None:
+            contact = "yes"
 
     if contact in ("no", "false", "none"):
         return "pass", "Nothing the product touches is plastic"
     if contact not in ("yes", "true"):
         return None, "We have not established what the product actually touches"
 
-    raw = str(pack.get("material") or "")
     parts = [m.strip() for m in re.split(r"[,^/;+&]|\band\b", raw) if m.strip()]
     ranks = [classify(m) for m in parts]
     mixed = any(r for t, r in ranks if r) and any(t and r == 0 for t, r in ranks)
@@ -194,6 +226,81 @@ def assess(pack):
     return ("fail" if score >= 4 else "caution"), reason
 
 
+# Exposure types that name a thing you swallow or leave on your body. These
+# have an ingredient list and formula is a real question. Everything else is an
+# object, and objects are answered by the materials front.
+CONSUMED = {
+    "chewed supplement", "chewing gum", "drinking water", "food", "hot drink",
+    "leave-on face", "leave-on skin", "mouth rinse", "rinse-off skin",
+    "sprayed", "sunscreen", "supplement", "toothpaste",
+}
+
+CONSUMABLE = re.compile(
+    r"cosmetic|personal care|sunscreen|skincare|supplement|bottled water|baby food|"
+    r"snack|pantry|formula|electrolyte|oral care|toothpaste|mouthwash|floss|cleaning|"
+    r"laundry|dish|coffee|tea|salt|spice|protein|diaper cream|lotion|balm|soap|shampoo|"
+    r"conditioner|deodorant|wipe|honey|chocolate|diaper|period", re.I)
+
+
+def read_formula(entry):
+    """
+    Return (status, why, origin) for the formula front from a recorded list.
+
+    Section 2 is explicit that a prose summary may warn but never clear, and
+    that is not a nicety. Osea's cleanser was rated good on the phrase "no
+    synthetic polymers" while its own note admits a plastic pump, and three
+    products were failed on notes that say the hazard is absent: Newton Baby on
+    "no chemical flame retardants", Quut on "BPA, phthalate and PVC free",
+    Branch Basics on a sentence about washing formaldehyde OUT of clothing.
+
+    So the two directions are not symmetric here either. A recorded list can
+    clear a product or convict it. Marketing prose can only ever warn, and
+    warns at caution, because rule 6 caps an inferred adverse reading.
+    """
+    fm = entry.get("formula") or {}
+    if fm.get("asinMismatch"):
+        return None, ("The listing we hold for this product serves a different item, "
+                      f"{fm['asinMismatch']}"), None
+
+    text = fm.get("ingredients") or ""
+    complete = bool(fm.get("complete")) and bool(text)
+    if not complete:
+        text = fm.get("prose") or ""
+        if not text:
+            return None, "No ingredient list recorded", None
+
+    low = text.lower()
+
+    def hits(terms):
+        out = []
+        for t in terms:
+            rx = re.compile(r"(?<![a-z0-9])" + re.escape(t) + r"s?(?![a-z0-9])")
+            for m in rx.finditer(low):
+                if not _bf.is_negated(low, m.start(), m.end()):
+                    out.append(t)
+                    break
+        return out
+
+    named = hits(_apr.HAZARD)
+    hidden = hits(_apr.DISCLOSURE_FAILURE)
+
+    if not complete:
+        if named:
+            return "caution", ("The listing describes " + ", ".join(sorted(named)[:3])
+                               + ", but publishes no ingredient list, so this is a "
+                                 "reading of marketing copy and not of the label"), "inferred"
+        return None, ("The listing publishes no ingredient list, only description copy, "
+                      "which can warn but cannot clear"), None
+
+    if named:
+        return "fail", ("The published ingredient list names "
+                        + ", ".join(sorted(named)[:4])), "database"
+    if hidden:
+        return "caution", ("The published ingredient list hides composition behind "
+                           + ", ".join(sorted(hidden)[:3])), "database"
+    return "pass", "The published ingredient list carries nothing on the hazard list", "database"
+
+
 def keys_for(brand, product):
     out = list(product.get("asins") or [])
     out.append(f"{brand}::{product.get('name')}")
@@ -224,7 +331,7 @@ def main():
                 # An empty entry is a question, not an answer. It names the
                 # product and waits for a material.
                 ev[key] = {"_product": f"{b['brand']} {p.get('name')}",
-                           "packaging": {"material": ""},
+                           "materials": {"material": ""},
                            "formula": {"base": "", "use": ""}}
                 added += 1
         if args.write:
@@ -236,18 +343,69 @@ def main():
         return 0
 
     applied = collections.Counter()
+    formula = collections.Counter()
     filled = 0
     for b in brands:
         for p in (b.get("products") or []):
             entry = next((ev[k] for k in keys_for(b["brand"], p) if k in ev), None)
             if not entry:
                 continue
-            pack = entry.get("packaging") or {}
+
+            # Formula reads its own recorded list and is independent of the
+            # material, so it runs whether or not a material is on file.
+            f_status, f_why, f_origin = read_formula(entry)
+            if f_why:
+                e = p.setdefault("ext", {})
+                e.setdefault("frontNotes", {})["formula"] = f_why + "."
+                held = (e.get("fronts") or {}).get("formula")
+                held_origin = (e.get("frontOrigin") or {}).get("formula")
+                if f_status:
+                    e.setdefault("fronts", {})["formula"] = f_status
+                    e.setdefault("frontOrigin", {})["formula"] = f_origin
+                    formula[f_status] += 1
+                elif held in (None, "unknown", "unassessed") or (
+                        held == "pass" and held_origin == "inferred"):
+                    # Nothing recorded clears a front that was never established,
+                    # and it withdraws an inferred pass, which section 2 says
+                    # prose could not have granted in the first place. It must
+                    # not touch a stated or hand finding, or an adverse one:
+                    # a silent Amazon listing is not evidence against them.
+                    e.setdefault("fronts", {})["formula"] = "unassessed"
+                    e.setdefault("frontOrigin", {}).pop("formula", None)
+                    formula["unassessed"] += 1
+                else:
+                    # Leave a stated or adverse finding exactly as it stands,
+                    # and drop the note this run would have written over it.
+                    # This must not skip the product: materials is a separate
+                    # front and still has to be assessed below.
+                    formula["left as recorded"] += 1
+                    e.setdefault("frontNotes", {}).pop("formula", None)
+                fm = entry.get("formula") or {}
+                e["formulaAnswers"] = {
+                    "ingredients": fm.get("ingredients") or "",
+                    "prose": "" if fm.get("ingredients") else (fm.get("prose") or ""),
+                    "complete": bool(fm.get("complete") and fm.get("ingredients")),
+                    "source": fm.get("source") or "",
+                    "checked": fm.get("checkedListing") or "",
+                }
+
+            pack = entry.get("materials") or {}
             if not pack:
                 continue
             status, reason = assess(pack)
             filled += 1
             if status is None:
+                held = (p.get("ext", {}).get("fronts") or {}).get("materials")
+                held_origin = (p.get("ext", {}).get("frontOrigin") or {}).get("materials")
+                if held in ("pass", "caution", "fail") and held_origin != "inferred":
+                    # Rule 5.4 answers a durable good's material from the object
+                    # itself, and a person may have answered it by hand. Having
+                    # no row in the evidence file is not a finding against
+                    # either: absence of a record is not a record of absence.
+                    # Writing unassessed here withdrew 85 recommendations that
+                    # a rule had already answered correctly.
+                    applied["left as derived"] += 1
+                    continue
                 applied["unassessed"] += 1
                 # Not knowing is a state worth recording, so the view can show
                 # what still needs answering rather than an empty cell that
@@ -255,11 +413,11 @@ def main():
                 e = p.setdefault("ext", {})
                 # An unanswered question has to clear the old answer too, or a
                 # stale caution sits under a note saying we do not know.
-                e.setdefault("fronts", {})["packaging"] = "unassessed"
-                e.setdefault("frontOrigin", {}).pop("packaging", None)
-                e.setdefault("frontNotes", {})["packaging"] = reason + "."
-                e.pop("packagingMaterial", None)
-                e["packagingAnswers"] = {
+                e.setdefault("fronts", {})["materials"] = "unassessed"
+                e.setdefault("frontOrigin", {}).pop("materials", None)
+                e.setdefault("frontNotes", {})["materials"] = reason + "."
+                e.pop("materialsList", None)
+                e["materialAnswers"] = {
                     "contact": pack.get("contact") or "",
                     "contactFrom": pack.get("contactFrom") or "",
                     "base": pack.get("base") or "",
@@ -273,17 +431,17 @@ def main():
                 }
                 continue
             e = p.setdefault("ext", {})
-            e.setdefault("fronts", {})["packaging"] = status
-            e.setdefault("frontNotes", {})["packaging"] = reason + "."
-            e.setdefault("frontOrigin", {})["packaging"] = "database"
+            e.setdefault("fronts", {})["materials"] = status
+            e.setdefault("frontNotes", {})["materials"] = reason + "."
+            e.setdefault("frontOrigin", {})["materials"] = "database"
             mat = worst(pack.get("material"))
             if mat:
-                e["packagingMaterial"] = ", ".join(
+                e["materialsList"] = ", ".join(
                     x.strip() for x in re.split(r"[,^/;+&]", str(pack.get("material"))) if x.strip())
             # Keep the answers, not just the conclusion. A mark with no working
             # is the same problem as a status with no note: you have to take it
             # on trust, and you cannot tell a researched answer from a default.
-            e["packagingAnswers"] = {
+            e["materialAnswers"] = {
                 "contact": pack.get("contact"),
                 "contactFrom": pack.get("contactFrom") or "recorded",
                 "base": pack.get("base") or "",
@@ -296,11 +454,41 @@ def main():
             }
             applied[status] += 1
 
+    # A durable good has no ingredient list and never will. Section 5.4: its
+    # formula is `none`, a completed check, not `unassessed`, a gap. Leaving it
+    # as a gap makes a steel kettle wait forever for a recipe it does not have,
+    # and reads to the shopper as a check we skipped.
+    nofm = 0
+    for b in brands:
+        for p in (b.get("products") or []):
+            e0 = p.get("ext") or {}
+            etype = ((e0.get("exposure") or {}).get("type") or "").strip().lower()
+            if etype:
+                if etype in CONSUMED:
+                    continue
+            else:
+                entry = next((ev[k] for k in keys_for(b["brand"], p) if k in ev), None)
+                named = str(((entry or {}).get("materials") or {}).get("source") or "") == "product name"
+                if not named and CONSUMABLE.search(f"{p.get('cat') or ''} {b.get('category') or ''}"):
+                    continue
+            e = p.setdefault("ext", {})
+            fr = e.setdefault("fronts", {})
+            if fr.get("formula") in (None, "", "unknown", "unassessed"):
+                fr["formula"] = "none"
+                e.setdefault("frontOrigin", {})["formula"] = "database"
+                e.setdefault("frontNotes", {})["formula"] = (
+                    "A durable good has no ingredient list. What it is made of "
+                    "is the materials check.")
+                nofm += 1
+    print(f"  formula marked none on durable goods: {nofm}")
+
     total = sum(v for k, v in applied.items() if k != "skipped")
     print(f"entries in {EVIDENCE.relative_to(ROOT)}: {len(ev)}")
     print(f"  with a material recorded: {filled}")
-    print(f"  packaging derived from it: {total}   "
+    print(f"  materials derived from it: {total}   "
           + "  ".join(f"{k} {n}" for k, n in applied.items()))
+    print(f"  formula derived from a recorded list: {sum(formula.values())}   "
+          + "  ".join(f"{k} {n}" for k, n in formula.items()))
     if args.write:
         DATA.write_text(json.dumps(brands, indent=2, ensure_ascii=False) + "\n")
         print("\nwrote brand-data.json")

@@ -42,7 +42,7 @@ NEW = [
         "fronts": {
             "authored": True,
             "formula": front("pass", "Totally chlorine free, not just elemental chlorine free, with no fragrance, parabens, lotion or latex and an organic cotton top sheet."),
-            "packaging": front("caution", "Outer cover is polyethylene and polyester; the company states directly that the diapers are not plastic free. Outer bag is recyclable."),
+            "materials": front("caution", "Outer cover is polyethylene and polyester; the company states directly that the diapers are not plastic free. Outer bag is recyclable."),
             "legal": front("unknown", ""),
             "testing": front("caution", "Allergy UK certified and B Corp, but no published PFAS or organic fluorine testing on the diapers."),
         },
@@ -60,7 +60,7 @@ NEW = [
         "fronts": {
             "authored": True,
             "formula": front("caution", "Wipes were alleged in a 2022 class action to carry numerous non plant ingredients under a plant based claim."),
-            "packaging": front("unknown", ""),
+            "materials": front("unknown", ""),
             "legal": front("fail", "2017 settlement of $7.4M over natural labelling with Honest Diapers named, plus a 2022 class action over plant based wipes claims."),
             "testing": front("pass", "Non detect for organic fluorine in the 2023 Mamavation and EHN screen of 65 diapers."),
         },
@@ -80,7 +80,7 @@ NEW = [
         "fronts": {
             "authored": True,
             "formula": front("caution", "Elemental chlorine free rather than totally chlorine free; conventional polypropylene nonwovens over sodium polyacrylate. No fragrance, lotion, parabens or latex."),
-            "packaging": front("unknown", ""),
+            "materials": front("unknown", ""),
             "legal": front("unknown", ""),
             "testing": front("unknown", ""),
         },
@@ -99,7 +99,7 @@ NEW = [
         "fronts": {
             "authored": True,
             "formula": front("caution", "Elemental chlorine free rather than totally chlorine free, and the disclosed core includes titanium dioxide. No fragrance, lotion, parabens or phthalates."),
-            "packaging": front("unknown", ""),
+            "materials": front("unknown", ""),
             "legal": front("unknown", ""),
             "testing": front("unknown", ""),
         },
@@ -118,7 +118,7 @@ NEW = [
         "fronts": {
             "authored": True,
             "formula": front("caution", "Viscose from bamboo is a chemically regenerated rayon, not the raw plant the marketing implies."),
-            "packaging": front("unknown", ""),
+            "materials": front("unknown", ""),
             "legal": front("unknown", ""),
             "testing": front("pass", "Tested completely clean in the 2023 Mamavation and EHN organic fluorine screen."),
         },
@@ -137,7 +137,7 @@ NEW = [
         "fronts": {
             "authored": True,
             "formula": front("fail", "Uses fragrance and lotion, and publishes neither a full ingredient list nor its bleaching method."),
-            "packaging": front("unknown", ""),
+            "materials": front("unknown", ""),
             "legal": front("unknown", ""),
             "testing": front("caution", "No published independent testing, and no ingredient disclosure to test the claims against."),
         },
@@ -183,7 +183,7 @@ def main():
     for e in added:
         chips = " ".join(
             f"{f[:4]}:{e['fronts'][f]['status']}"
-            for f in ("formula", "packaging", "legal", "testing")
+            for f in ("formula", "materials", "legal", "testing")
         )
         print(f"  [{e['stance']:7}] {e['brand']:<22} {chips}")
     if skipped:

@@ -4,7 +4,7 @@ How a product gets a verdict. This is the editorial standard for Brand Check, th
 Amazon extension, and the paid API. If a rule here and a published page disagree,
 the page is wrong.
 
-Last revised 2026-08-31.
+Last revised 2026-09-02.
 
 ---
 
@@ -126,7 +126,7 @@ because they chose it. "Fragrance" is a single word standing in for a mixture
 that may run to hundreds of ingredients and has historically carried phthalates;
 the objection is to the standing in, not to scent.
 
-Exposure then modulates it, by the same route rule as packaging. A fragrance
+Exposure then modulates it, by the same route rule as materials. A fragrance
 left on skin all day is a different finding from one rinsed down a drain, and
 our practice already reflects this: no product on the site is a skip for
 fragrance alone. Every skip that mentions it carries a second, named finding
@@ -166,9 +166,9 @@ exposure when chewed. That is determinable from the material. Sophie's materials
 are sound, which is exactly why the conditional finding has to stand on its own,
 and on its own it is a caution.
 
-### 2.3 An object immersed in what you consume is not packaging
+### 2.3 An object immersed in what you consume is not its container
 
-The packaging matrix in section 3 judges a container holding contents at rest. A
+The materials matrix in section 3 judges a container holding contents at rest. A
 tea bag is not that. It is an object put inside the drink, at near boiling
 temperature, and then squeezed. The matrix is the wrong instrument, and reaching
 for it produced a caution where the standard's own rules give a skip.
@@ -183,7 +183,7 @@ Run a supermarket tea bag through them properly:
   drink path, ever. It is what removed the Owala picks and every straw tumbler.
 
 Five rules, one answer. Where a product is put into the thing a person swallows,
-read it as formula and ingestion, never as packaging.
+read it as formula and ingestion, never as a container.
 
 This is also the mirror of 2.2, and the pair is worth holding together. Sophie la
 Girafe caps at careful because whether a given unit has mould is **not
@@ -192,12 +192,34 @@ property of the bag as sold, the article publishes a burn test for it, and
 supermarket brands are documented as using it. Determinable and in the ingested
 path is a skip. Conditional and undetectable is a caution.
 
-## 3. Packaging
+## 3. Materials
 
 **Natural scope:** `format`.
 
-**Rule.** Judge the material that touches the contents, in the format sold in the
-listing being viewed.
+**Rule.** Judge what the product is physically made of, at every surface that
+reaches a person or the contents.
+
+This front was called packaging, and the word was wrong for most of what it
+held. A yoga mat has no packaging. A kettle has no packaging. The field the
+listing scraper reads is Material, which on a listing describes the product and
+not its box, so 377 durable goods had the object's own material filed under a
+key claiming to be about a container.
+
+One question now covers everything:
+
+- For a **consumable**, the material is the container that holds the contents,
+  which is exactly what packaging always meant. Nothing about these rows
+  changes and the matrix below is unaltered.
+- For a **durable**, it is the object and every part of it that touches a
+  person or what they consume. A part counts even when it is small. Evenflo's
+  glass bottle was rated on the glass while the thing in the baby's mouth is
+  the silicone teat; Osea's cleanser was rated on the glass bottle while the
+  acidic formula runs through a plastic pump. Both fell through because
+  neither part was packaging in any natural sense, and so neither had a front
+  to land on.
+
+The retail box is not this front and is not rated. A wrapper a dry product
+comes in extracts nothing and is recorded as `none`, which is a finding.
 
 ### 3.1 Plastic contact is not a verdict
 
@@ -415,18 +437,25 @@ nothing. It is not a formula front pass.
 
 ## 5.4 Durable goods and consumables are not the same problem
 
-For a **durable good** the object is its material. A stainless bowl with no
-coating has nothing further to disclose, and formula and packaging are the same
-front asked twice. A fully specified inert material is the complete safety case,
-so it carries a recommendation on its own.
+For a **durable good** the object is its material, and it has no ingredient
+list at all. Its formula is `none`, which is a finding and not a gap: a
+kettle's recipe is not missing, it does not exist. What the kettle is made of
+is a real question and it is the materials front, which does apply. A fully
+specified inert material is the complete safety case, so it carries a
+recommendation on its own.
 
-For a **consumable** the two come apart. The formula is a recipe, the packaging
+This is what retired the old wording, which had to say that for a durable good
+formula and packaging were "the same front asked twice". They were the same
+front asked twice because the fronts were named wrongly. Renaming packaging to
+materials removes the special case instead of documenting it.
+
+For a **consumable** the two come apart. The formula is a recipe, the container
 is a separate object that can migrate into it, and lab testing routinely finds
 what an ingredient list cannot show. There a second front is real evidence, not
 a formality.
 
-So the second front is required for anything ingested or applied to skin, and
-not required for an object whose material we can name.
+So formula is required for anything ingested or applied to skin, and is `none`
+for an object whose material we can name. Materials is required for both.
 
 ## 5.5 A lab result outranks a label read
 
@@ -493,10 +522,11 @@ otherwise                                            -> unrated
 Then the completeness gate, `tools/enforce-scorecard.py`, which runs last and
 closes every route at once:
 
-> **A recommendation ships only when formula, packaging and the legal check
-> carry a finding.** Whatever awarded the good, it is held back while any of
-> those three is `unassessed`, the missing checks are named on the card, and
-> the verdict returns on its own the moment the research lands. The gate also
+> **A recommendation ships only when materials and the legal check carry a
+> finding, and formula too where the product is a consumable.** Whatever
+> awarded the good, it is held back while any of those is `unassessed`, the
+> missing checks are named on the card, and the verdict returns on its own the
+> moment the research lands. The gate also
 > enforces the ceiling above on every row, whatever the row claims about
 > itself, and a lowered verdict always states which front lowered it.
 
@@ -524,7 +554,8 @@ is done and what is still open.
 **The guard, restated:**
 
 - `good` requires **direct evidence at product scope**, with formula,
-  packaging and legal each carrying a finding. Inheritance can never produce
+  materials and legal each carrying a finding, and formula on a consumable.
+  Inheritance can never produce
   a recommendation.
 - `careful` and `skip` **may** rest on inherited evidence, provided the copy
   names the scope it was inherited from.
@@ -590,7 +621,7 @@ than a re-research.
 
 The completeness gate is live, and the honest consequence is a backlog: rows
 the site rates good sit at "checks in progress" in the extension until their
-formula, packaging and legal checks carry findings. That is the standard
+materials and legal checks carry findings. That is the standard
 working, not the standard failing. Two implications:
 
 1. **Filling a front releases verdicts by itself.** The gate restores a held

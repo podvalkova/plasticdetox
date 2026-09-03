@@ -13,7 +13,7 @@ const PASS_KEY = "pd.pass.v1";
 
 export const STEP_LABEL = {
   formula: "Formula",
-  packaging: "Packaging",
+  materials: "Materials",
   legal: "Recalls & lawsuits",
   testing: "Independent tests",
 };

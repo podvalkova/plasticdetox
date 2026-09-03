@@ -1140,7 +1140,7 @@ function buildEmail({ score, total, level, levelColor, top3, swaps }) {
 //
 // One product, four checks, streamed as they finish so the shopper watches the
 // research happen instead of staring at a spinner. The legal check is a free
-// openFDA query and usually lands inside two seconds; formula/packaging and
+// openFDA query and usually lands inside two seconds; formula/materials and
 // testing each run as one Claude call with server-side web search.
 //
 // This is a prototype for feeling the latency, so the model classifies fronts
@@ -1272,14 +1272,14 @@ Packaging follows our matrix, by what the contents are, because what leaches fro
 - anhydrous (oils, balms, lip products) in PET: fail; in other plastic: caution.
 - glass, aluminum, steel, paper: pass for anything. Heat in use moves one step worse; rinse-off use one step better.
 - pass: inert materials (glass, stainless, aluminum container, paper, cotton, wood); dry contents in any plastic; a full ingredient list with none of the above.
-- none: you checked, and nothing of this kind exists or applies. A durable good has no contents, so its "packaging" is none (the contact surface is judged under formula). A DRY product's packaging is also none: dry contents extract nothing from a wrapper or box (note: "Not applicable: dry product, packaging is not a migration path"), with PVC wrapping the one exception, at caution. A product nobody has lab tested is testing none. This is a completed check, not a gap.
+- none: you checked, and nothing of this kind exists or applies. A durable good has no ingredient list, so its "formula" is none (note: "Not applicable: a durable good has no formula; what it is made of is the materials front"). A product nobody has lab tested is testing none. This is a completed check, not a gap.
 - unassessed: ONLY when you could not complete the check.
-For a durable good or appliance, "formula" means the surfaces that actually touch the water, food, drink, or skin (the reservoir, tubing, brew chamber, cooking surface, drink path), never the retail box. Well documented facts about a product category (how a pod machine brews, what a nonstick coating is) are evidence you may use; name the category fact in the note.
+For a durable good or appliance, "materials" means the surfaces that actually touch the water, food, drink, skin or mouth (the reservoir, tubing, brew chamber, cooking surface, drink path, teat, mouthpiece, pump), never the retail box. A part that touches the person or the contents is a material of the product even when it is small: a bottle's silicone teat and a cleanser's plastic pump both count. Well documented facts about a product category (how a pod machine brews, what a nonstick coating is) are evidence you may use; name the category fact in the note.
 Respond with ONLY a JSON object, no prose.`;
 
 async function vetLabel(env, brand, product) {
   const r = await vetClaude(env, VET_RULES,
-    `Product: ${brand} ${product}. Find (1) "formula": what the product itself is made of. For a consumable that is the ingredient list; for an appliance or durable good it is the materials of the surfaces that touch the water, food, drink, or skin (reservoir, tubing, brew chamber, cooking surface). How the product is BUILT always belongs here, never under testing, and plastic in a hot water or drink path is a formula fail. For a consumable, formula judges the INGREDIENTS only; what the container does to them is packaging's question, never formula's. (2) "packaging": the container that holds the contents (matters for cosmetics, food, liquids). A durable good or appliance has no contents, so its packaging is status "none" with note "Not applicable: no contents; the contact surfaces are judged under formula." Reply ONLY: {"formula":{"status":"pass|caution|fail|none|unassessed","note":"<one sentence of facts>","source":"<url>"},"packaging":{"status":"...","note":"...","source":"..."}}`,
+    `Product: ${brand} ${product}. Find (1) "formula": the ingredient list, and nothing else. Quote it verbatim behind the word Ingredients where you can find it. A durable good has no ingredient list, so its formula is status "none". What a container does to the contents is the materials question, never formula's. (2) "materials": what the product is physically made of. For a durable good that is every surface touching the water, food, drink, skin or mouth, including small parts like a teat, mouthpiece or pump. For a consumable it is the container holding the contents. How the product is BUILT always belongs here, never under testing, and plastic in a hot water or drink path is a materials fail. Reply ONLY: {"formula":{"status":"pass|caution|fail|none|unassessed","note":"<one sentence of facts>","source":"<url>"},"materials":{"status":"...","note":"...","source":"..."}}`,
     3);
   return r;
 }
@@ -1340,12 +1340,12 @@ async function vetDbLookup(brand, product) {
 // The section 6 ladder plus the completeness gate, as the extension applies it.
 function vetVerdict(fronts) {
   const st = (k) => (fronts[k] && fronts[k].status) || "unassessed";
-  const all = ["formula", "packaging", "legal", "testing"].map(st);
+  const all = ["formula", "materials", "legal", "testing"].map(st);
   if (all.includes("fail")) return "skip";
   if (all.includes("caution")) return "careful";
   // "none" satisfies a check the way the pipeline's gate treats it: we
   // looked, and nothing of this kind applies. Only "unassessed" blocks.
-  const blocking = ["formula", "packaging", "legal"];
+  const blocking = ["formula", "materials", "legal"];
   if (blocking.every((k) => st(k) === "pass" || st(k) === "none")) return "good";
   return "unrated";
 }
@@ -1427,11 +1427,11 @@ async function vetCore(env, brand, product, send, allowResearch) {
   };
 
   const legalP = vetLegal(brand).then((f) => { fronts.legal = f; send({ step: "legal", front: f, ms: Date.now() - t0 }); });
-  const labelP = vetLabel(env, brand, product).then((r) => finish("label", r, ["formula", "packaging"]));
+  const labelP = vetLabel(env, brand, product).then((r) => finish("label", r, ["formula", "materials"]));
   const testP = vetTesting(env, brand, product).then((r) => finish("testing", r, ["testing"]));
   await Promise.allSettled([legalP, labelP, testP]);
 
-  for (const k of ["formula", "packaging", "legal", "testing"]) {
+  for (const k of ["formula", "materials", "legal", "testing"]) {
     if (!fronts[k]) fronts[k] = { status: "unassessed", note: "Did not finish in time.", source: "" };
   }
   let verdict = vetVerdict(fronts);
@@ -1705,7 +1705,7 @@ async function go(){
     body:JSON.stringify({brand:document.getElementById('b').value,product:document.getElementById('p').value})});
   if(!r.ok){clearInterval(timer);line('Error: '+r.status+' '+await r.text());return}
   const reader=r.body.getReader();const dec=new TextDecoder();let buf='';
-  const NAME={formula:'Formula',packaging:'Packaging',legal:'Recalls & lawsuits',testing:'Independent tests'};
+  const NAME={formula:'Formula',materials:'Materials',legal:'Recalls & lawsuits',testing:'Independent tests'};
   while(true){
     const {done,value}=await reader.read();if(done)break;
     buf+=dec.decode(value,{stream:true});

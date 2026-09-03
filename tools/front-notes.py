@@ -78,7 +78,7 @@ def main():
             # classifier's fallback for anything it cannot place.
             legal_sents = [s for s in sents if LEGAL.search(s)]
             if legal_sents and fronts.get("legal") in (None, "unassessed", "unknown"):
-                for other in ("formula", "packaging"):
+                for other in ("formula", "materials"):
                     if fronts.get(other) in ("fail", "caution") and not any(
                             re.search(r"\b(ingredient|material|coating|fibre|fiber|"
                                       r"plastic|polymer|fragrance)\b", s, re.I)
@@ -97,7 +97,7 @@ def main():
             # A note per front, so the card can say which sentence applies.
             fn = {}
             for key, rx in (("legal", LEGAL), ("testing", TESTING),
-                            ("packaging", PACKAGING)):
+                            ("materials", PACKAGING)):
                 if fronts.get(key) in ("pass", "caution", "fail"):
                     hit = next((s for s in sents if rx.search(s)), None)
                     if hit:

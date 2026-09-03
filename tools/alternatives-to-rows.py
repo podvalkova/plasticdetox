@@ -117,7 +117,7 @@ def main():
             "ext": {"verdict": "good", "dated": "2026-08-29",
                     "why": "Named in our guides as the better choice in this category, "
                            "which is a person's decision at line scope rather than an inference.",
-                    "fronts": {"formula": "pass", "packaging": "unassessed",
+                    "fronts": {"formula": "pass", "materials": "unassessed",
                                "legal": "unassessed", "testing": "unassessed"},
                     "scope": "line", "basis": "direct", "disclose": False,
                     "authored": True}})

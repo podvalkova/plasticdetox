@@ -83,6 +83,12 @@ def main():
     # Before the gate, because the gate now caps a verdict on the fronts and an
     # unsourced fail would quietly delete a good pick from the site.
     run("front-evidence.py", "--write")
+    # Materials a product states in its own name, then the fronts derived from
+    # every recorded material and ingredient list. Both read data/front-evidence
+    # .json, which is input: established once, re-read on every build, never
+    # re-argued from prose.
+    run("formula/materials-from-name.py", "--write")
+    run("apply-front-evidence.py", "--write")
     # Last, after every tool that fills a front. A recommendation needs all four.
     run("enforce-scorecard.py", "--write")
     # Last, so it sees every product row the steps above created. Run earlier it
@@ -139,7 +145,7 @@ def main():
     brands = json.loads(dst.read_text())
     asins = json.loads((EXT / "data" / "asin-map.json").read_text())
     cells = sum(
-        1 for b in brands for f in ("formula", "packaging", "legal", "testing")
+        1 for b in brands for f in ("formula", "materials", "legal", "testing")
         if b.get("fronts", {}).get(f, {}).get("status", "unknown") != "unknown"
     )
     print(f"payload: {len(brands)} brands, {len(asins)} mapped ASINs, "

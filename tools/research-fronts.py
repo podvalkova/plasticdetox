@@ -33,13 +33,13 @@ DATA = ROOT / "brand-data.json"
 ASINS = ROOT / "extension" / "data" / "asin-map.json"
 QUEUE = ROOT / "data" / "front-drafts.json"
 
-FRONTS = ("formula", "packaging", "legal", "testing")
+FRONTS = ("formula", "materials", "legal", "testing")
 MODEL = "claude-opus-5"
 
 FRONT_SCHEMA = {
     "type": "object",
     "additionalProperties": False,
-    "required": ["formula", "packaging", "legal", "testing", "sources"],
+    "required": ["formula", "materials", "legal", "testing", "sources"],
     "properties": {
         **{
             f: {

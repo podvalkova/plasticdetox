@@ -34,7 +34,7 @@ import sys
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "brand-data.json"
 
-FRONTS = ("formula", "packaging", "legal", "testing")
+FRONTS = ("formula", "materials", "legal", "testing")
 
 # Vocabulary is matched on word boundaries against a lowercased fragment.
 # Multi-word entries are matched as phrases.
@@ -60,8 +60,8 @@ CUES = {
         "sweetener", "sucralose", "aspartame", "natural flavor", "natural flavors",
         "seed oil", "seed oils", "additive", "additives", "fillers", "filler",
     ],
-    "packaging": [
-        "packaging", "packaged", "bottle", "bottled", "container", "canister",
+    "materials": [
+        "materials", "packaged", "bottle", "bottled", "container", "canister",
         "lining", "liner", "lined", "can lining", "wrapper", "wrapped", "pouch",
         "sachet", "stick pack", "single-use", "lid", "lids", "cap", "caps",
         "carton", "tetra", "jar", "tube", "pump", "dispenser", "housing",
@@ -156,7 +156,7 @@ ANCHORS = {
     # "discloses no intentionally added PFAS" passes, "discloses intentionally
     # added PFAS" fails.
     "formula": ["ab 1200"],
-    "packaging": ["packaging", "bottle", "lining", "liner", "lid", "wrapper",
+    "materials": ["materials", "bottle", "lining", "liner", "lid", "wrapper",
                   "pouch", "sachet", "stick pack", "housing", "water path",
                   "drink path", "carton", "tetra", "canister"],
 }
@@ -255,6 +255,14 @@ def is_negated(low, start, end):
         return True
     # Trailing non-detection: "PFAS non detect", "lead not detected"
     if re.match(r"^\W*(non[\s-]?detect\w*|not detected|undetected|below detection)", ahead):
+        return True
+    # One "free" covering a written-out list: "BPA, phthalate and PVC free".
+    # The suffix rule above only reaches a hazard glued to the word, so the
+    # first two members of a list stayed convicted. That is what failed Quut's
+    # beach toys on a sentence saying the hazards are absent. Bounded to 45
+    # characters and to list punctuation, so it cannot reach across a clause
+    # into an unrelated "BPA free" later in the sentence.
+    if re.match(r"^[\w\s,/&+-]{0,45}?[\s-]free\b", ahead):
         return True
     window = low[max(0, start - 45):start]
     hit = -1

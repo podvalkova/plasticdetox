@@ -175,6 +175,9 @@ footer{margin-top:2.4rem;padding-top:1.2rem;border-top:1px solid var(--border);
   .bar-row{grid-template-columns:5.5rem 1fr;row-gap:.2rem}
   .bar-num{grid-column:2}
 }
+  .ing{margin-top:6px;border-left:2px solid var(--line,#ddd);padding-left:8px}
+  .ing-h{font-size:11px;text-transform:uppercase;letter-spacing:.04em;opacity:.6;margin-bottom:2px}
+  .ing-t{font-size:12px;line-height:1.5;opacity:.85;max-height:8.5em;overflow-y:auto}
 </style>
 </head>
 <body>
@@ -259,7 +262,7 @@ footer{margin-top:2.4rem;padding-top:1.2rem;border-top:1px solid var(--border);
     contact matter, what are the contact parts made of, and which polymer. Green means it does
     not matter or the contact material is inert; orange and red mean it does, scaled by what is
     inside and how it is used. Grey means a question is still unanswered, which is not a pass.
-    <b>Checks</b> is formula, packaging, recalls and lawsuits, independent tests, in that order.
+    <b>Checks</b> is formula, materials, recalls and lawsuits, independent tests, in that order.
     Purple means a recorded finding with a source; amber means it was inferred from a product note
     and cannot say where it came from; empty means nobody has looked.
     This page reads brand-data.json live, so it shows whatever was last deployed.
@@ -270,7 +273,7 @@ footer{margin-top:2.4rem;padding-top:1.2rem;border-top:1px solid var(--border);
 
 <script>
 const WORKER = "https://plasticdetox-quiz-email.plasticdetox.workers.dev";
-const FRONTS = ["formula","packaging","legal","testing"];
+const FRONTS = ["formula","materials","legal","testing"];
 const KEY = "pd.db.ok";
 let ROWS = [], sortCol = null, sortDir = 1;
 const state = {q:"", work:false, nomat:false, pkgbad:false, v:new Set(), x:new Set()};
@@ -321,11 +324,11 @@ function build(brands){
         if(or[f] && or[f]!=="inferred"){ ev[f]++; return 2; }
         inf[f]++; return 1;
       });
-      if(e.packagingMaterial) withMat++;
-      ROWS.push([b.brand, p.name||"", b.category||"", v, e.packagingMaterial||"", checks,
-                 (e.frontNotes||{}).packaging||"", fr.packaging||"unassessed",
+      if(e.materialsList) withMat++;
+      ROWS.push([b.brand, p.name||"", b.category||"", v, e.materialsList||"", checks,
+                 (e.frontNotes||{}).materials||"", fr.materials||"unassessed",
                  (e.exposure||{}).level||"", (e.exposure||{}).type||"",
-                 {fronts:fr, origin:or, notes:e.frontNotes||{}, answers:e.packagingAnswers||null,
+                 {fronts:fr, origin:or, notes:e.frontNotes||{}, answers:e.materialAnswers||null, formula:e.formulaAnswers||null,
                   exposure:e.exposure||null,
                   why:e.why||"", asins:p.asins||[], dated:e.dated||"", scope:e.scope||""}]);
     }
@@ -340,12 +343,12 @@ function build(brands){
   add(verdicts.careful,"careful","careful");
   add(verdicts.skip,"skip","skip");
   add(verdicts.unrated,"no verdict yet");
-  add(withMat,"packaging material recorded");
+  add(withMat,"material recorded");
   document.getElementById("sub").textContent =
-    `${prods} products across ${brands.length} brands. ${withMat} have a recorded packaging material.`;
+    `${prods} products across ${brands.length} brands. ${withMat} have a recorded material.`;
 
   const bars = document.getElementById("bars");
-  const LABEL = {formula:"Formula",packaging:"Packaging",legal:"Recalls",testing:"Testing"};
+  const LABEL = {formula:"Formula",materials:"Materials",legal:"Recalls",testing:"Testing"};
   for(const f of FRONTS){
     const row = el("div","bar-row");
     row.appendChild(el("div","bar-name",LABEL[f]));
@@ -446,7 +449,7 @@ const Q = [
   ["What are the contact parts made of?", "Only the parts the product actually touches."],
   ["Which polymer?", "Where we know it. An independent test is better evidence than a name."],
 ];
-const FRONT_LABEL = {formula:"Formula",packaging:"Packaging",legal:"Recalls & lawsuits",testing:"Independent tests"};
+const FRONT_LABEL = {formula:"Formula",materials:"Materials",legal:"Recalls & lawsuits",testing:"Independent tests"};
 
 function answerFor(i, a){
   if(!a) return ["Not recorded", true, ""];
@@ -532,6 +535,16 @@ function openDetail(r){
     const bd = el("div");
     bd.appendChild(el("div","nm", FRONT_LABEL[f] + " — " + (d.fronts[f]||"not checked")));
     if(d.notes[f]) bd.appendChild(el("div","nt", d.notes[f]));
+    // The list itself, not our reading of it. A pass you cannot check is the
+    // thing this whole front was rebuilt to stop producing.
+    if(f==="formula" && d.formula && (d.formula.ingredients || d.formula.prose)){
+      const box = el("div","ing");
+      box.appendChild(el("div","ing-h", d.formula.complete
+        ? "Published ingredient list" + (d.formula.checked ? ", read " + d.formula.checked : "")
+        : "No list published. Description copy only, which can warn but cannot clear."));
+      box.appendChild(el("div","ing-t", d.formula.ingredients || d.formula.prose));
+      bd.appendChild(box);
+    }
     row.appendChild(bd);
     row.appendChild(el("span","og", d.origin[f] || "none"));
     fs.appendChild(row);
