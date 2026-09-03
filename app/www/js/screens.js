@@ -217,6 +217,7 @@ export function tabs(current, onTab) {
   for (const [key, label, path] of [
     ["check", "Check", ICONS.check],
     ["shop", "Shop", ICONS.shop],
+    ["detox", "Detox", ICONS.detox],
     ["saved", "Saved", ICONS.saved],
     ["learn", "Learn", ICONS.learn],
   ]) {
@@ -227,6 +228,79 @@ export function tabs(current, onTab) {
     bar.appendChild(b);
   }
   return bar;
+}
+
+// ------------------------------------------------------------------ detox
+
+/**
+ * The 90 day plan, as something you tick off.
+ *
+ * The site already personalises this by room, household and budget. The app
+ * wants the simpler thing: the same swaps, ordered by exposure, with a box
+ * beside each one. It is the only screen here that is about what to do next
+ * rather than about a product in front of you, which is what makes it worth
+ * opening on a day you are not shopping.
+ *
+ * Every step carries its free version, because the plan is not a shopping list
+ * and the cheapest swap is usually a habit.
+ */
+export function detox(root, { phases, done, onToggle, onOpen }) {
+  const all = phases.reduce((n, p) => n + p.steps.length, 0);
+  const ticked = phases.reduce(
+    (n, p) => n + p.steps.filter((s) => done.has(s.id)).length, 0);
+
+  const hero = el("div", "hero shop-hero");
+  hero.appendChild(el("h1", null, "Your 90 day plan"));
+  hero.appendChild(el("p", null,
+    "Ordered by how much it cuts your exposure, not by how easy it is."));
+  root.appendChild(hero);
+
+  const bar = el("div", "progress");
+  const fill = el("div", "progress-fill");
+  fill.style.width = `${all ? Math.round((ticked / all) * 100) : 0}%`;
+  bar.appendChild(fill);
+  root.appendChild(bar);
+  root.appendChild(el("div", "progress-note", `${ticked} of ${all} done`));
+
+  for (const phase of phases) {
+    const doneHere = phase.steps.filter((s) => done.has(s.id)).length;
+    const head = el("div", "phase-head");
+    head.appendChild(el("div", "phase-title", phase.title));
+    head.appendChild(el("div", "phase-sub",
+      `${phase.sub} · ${doneHere} of ${phase.steps.length}`));
+    root.appendChild(head);
+
+    for (const step of phase.steps) {
+      const on = done.has(step.id);
+      const item = el("details", `step${on ? " on" : ""}`);
+      const sum = el("summary");
+      const box = el("span", `tick${on ? " on" : ""}`);
+      if (on) box.appendChild(icon("M5 12l5 5L20 7", 14));
+      // The box is the control. Opening the row is a different intent from
+      // marking it done, so tapping one must not do the other.
+      box.onclick = (e) => { e.preventDefault(); e.stopPropagation(); onToggle(step.id); };
+      sum.appendChild(box);
+      const txt = el("div", "step-body");
+      txt.appendChild(el("div", "step-swap", step.swap));
+      if (step.room) txt.appendChild(el("div", "step-room", step.room));
+      sum.appendChild(txt);
+      item.appendChild(sum);
+
+      if (step.why) item.appendChild(el("p", "step-why", step.why));
+      if (step.free) {
+        const free = el("div", "step-free");
+        free.appendChild(el("b", null, "Free version. "));
+        free.appendChild(document.createTextNode(step.free));
+        item.appendChild(free);
+      }
+      if (step.article) {
+        const link = el("button", "cta ghost", "Read the guide");
+        link.onclick = () => onOpen(`https://plasticdetox.org/${step.article}?app=1`);
+        item.appendChild(link);
+      }
+      root.appendChild(item);
+    }
+  }
 }
 
 // ------------------------------------------------------------------ saved

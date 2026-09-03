@@ -87,6 +87,28 @@ function back() {
  * today's verdicts rather than from whatever was true when you left.
  */
 const PLACE_KEY = "pd.place.v1";
+const DONE_KEY = "pd.plan.v1";
+
+function readDone() {
+  try {
+    const raw = JSON.parse(localStorage.getItem(DONE_KEY) || "[]");
+    return new Set(Array.isArray(raw) ? raw : []);
+  } catch {
+    return new Set();
+  }
+}
+
+function toggleDone(id) {
+  const set = readDone();
+  if (set.has(id)) set.delete(id);
+  else set.add(id);
+  try {
+    localStorage.setItem(DONE_KEY, JSON.stringify([...set]));
+  } catch {
+    // A full store is not worth a crash.
+  }
+  render();
+}
 
 function rememberPlace() {
   try {
@@ -118,7 +140,7 @@ function restorePlace() {
 
   const rebuilt = [];
   for (const step of saved.trail) {
-    if (["home", "shop", "saved", "learn", "categories"].includes(step.screen)) {
+    if (["home", "shop", "detox", "saved", "learn", "categories"].includes(step.screen)) {
       rebuilt.push({ screen: step.screen, q: step.q || "" });
       continue;
     }
@@ -281,6 +303,13 @@ function draw() {
         product: row, productNamed: true, query: `${b.brand} ${row.name}`,
       }),
     });
+  } else if (state.screen === "detox") {
+    screens.detox(view, {
+      phases: data.planPhases(),
+      done: readDone(),
+      onToggle: toggleDone,
+      onOpen: openExternal,
+    });
   } else if (state.screen === "learn") {
     screens.learn(view, {
       articles: data.allArticles(),
@@ -306,7 +335,7 @@ function draw() {
 
   // The bar belongs to the two roots, not to a screen you drilled into: it is
   // how you switch jobs, and a back arrow is how you come back up.
-  const ROOTS = { home: "check", shop: "shop", saved: "saved", learn: "learn" };
+  const ROOTS = { home: "check", shop: "shop", detox: "detox", saved: "saved", learn: "learn" };
   const onRoot = stack.length === 1 && state.screen in ROOTS;
   document.querySelector(".tabs")?.remove();
   document.body.classList.toggle("has-tabs", onRoot);

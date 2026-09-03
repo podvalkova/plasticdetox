@@ -402,6 +402,50 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .pcard-buy:active { background: var(--accent-light); }
 
 /* The keep control, on the verdict card itself. */
+/* ----------------------------------------------------------------- detox */
+
+.progress {
+  height: 8px; border-radius: 999px; background: var(--chip);
+  overflow: hidden; margin: .2rem 0 .45rem;
+}
+.progress-fill { height: 100%; background: var(--accent); border-radius: 999px; transition: width .3s ease; }
+.progress-note { font-size: 13px; color: var(--muted); margin-bottom: 1.2rem; }
+
+.phase-head { margin: 1.5rem 0 .7rem; }
+.phase-title { font-size: 19px; font-weight: 800; letter-spacing: -.025em; }
+.phase-sub { font-size: 13px; color: var(--muted); margin-top: .1rem; }
+
+.step {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 16px; margin-bottom: .5rem; overflow: hidden;
+}
+.step.on { background: var(--good-bg); border-color: var(--good-border); }
+.step summary {
+  display: flex; gap: .75rem; align-items: flex-start;
+  padding: .85rem .95rem; cursor: pointer; list-style: none;
+}
+.step summary::-webkit-details-marker { display: none; }
+.tick {
+  width: 22px; height: 22px; flex: none; border-radius: 7px; margin-top: .05rem;
+  border: 2px solid var(--border-strong); background: var(--surface);
+  display: grid; place-items: center; color: #fff;
+}
+.tick.on { background: var(--good); border-color: var(--good); }
+.step-swap { font-size: 14.5px; font-weight: 650; letter-spacing: -.015em; line-height: 1.35; }
+.step.on .step-swap { color: var(--good); }
+.step-room {
+  font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em;
+  color: var(--faint); margin-top: .2rem;
+}
+.step-why { font-size: 13.5px; line-height: 1.55; color: var(--body); padding: 0 .95rem .2rem; }
+.step-free {
+  font-size: 13px; line-height: 1.5; color: var(--body); margin: .5rem .95rem;
+  background: var(--accent-wash); border: 1px solid var(--accent-light);
+  border-radius: 12px; padding: .65rem .8rem;
+}
+.step-free b { color: var(--accent-deep); }
+.step .cta { margin: 0 .95rem .85rem; width: auto; }
+
 /* ----------------------------------------------------------------- learn */
 
 .acard {
@@ -427,7 +471,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
    second had no way in at all, which made it invisible. */
 .tabs {
   position: fixed; left: 0; right: 0; bottom: 0; z-index: 30;
-  display: grid; grid-template-columns: repeat(4, 1fr);
+  display: grid; grid-template-columns: repeat(5, 1fr);
   background: rgba(250,250,249,.94);
   backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
   border-top: 1px solid var(--border);

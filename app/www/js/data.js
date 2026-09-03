@@ -26,6 +26,7 @@ let meta = { source: "bundle", version: null, brands: 0 };
 let campaignLinks = {};
 let productImages = {};
 let articles = [];
+let plan = [];
 
 /**
  * The buy link for an ASIN.
@@ -53,6 +54,9 @@ export function productImage(asin, px = 300) {
 
 /** The articles, newest first. */
 export function allArticles() { return articles; }
+
+/** The 90 day plan, three phases of swaps ordered by exposure. */
+export function planPhases() { return plan; }
 
 async function readBundled(name) {
   const res = await fetch(`./data/${name}.json`, { cache: "force-cache" });
@@ -108,10 +112,11 @@ let sidecarsLoaded = false;
 async function sidecars() {
   if (sidecarsLoaded) return;
   sidecarsLoaded = true;
-  [campaignLinks, productImages, articles] = await Promise.all([
+  [campaignLinks, productImages, articles, plan] = await Promise.all([
     readBundled("campaign-links").catch(() => ({})),
     readBundled("product-images").catch(() => ({})),
     readBundled("articles").catch(() => []),
+    readBundled("plan").catch(() => []),
   ]);
 }
 

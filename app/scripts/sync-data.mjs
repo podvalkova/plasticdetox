@@ -83,6 +83,49 @@ articles.sort((a, b) => (b.date || "").localeCompare(a.date || ""));
 fs.writeFileSync(path.join(OUT, "articles.json"), JSON.stringify(articles, null, 1) + "\n");
 console.log(`articles.json        ${articles.length} articles`);
 
+// The 90 day plan, as a checklist.
+//
+// data/plan-rules.js already holds the whole thing: what to change, why, the
+// free version of each, the article behind it, and a rank that is exposure
+// priority. The site turns that into a personalised plan; the app wants the
+// same list as something you tick off. Read from the same file so the two
+// cannot drift, and phased by rank because rank is already "do this first".
+const rulesSrc = fs.readFileSync(path.join(REPO, "data", "plan-rules.js"), "utf8");
+const field = (block, name, quoted = true) => {
+  const re = quoted
+    ? new RegExp(name + ':\\s*"((?:[^"\\\\]|\\\\.)*)"')
+    : new RegExp(name + ":\\s*([0-9]+)");
+  const m = block.match(re);
+  return m ? m[1].replace(/\\"/g, '"') : "";
+};
+const steps = [];
+// Split on the rule opener rather than trying to match a balanced block: the
+// closing brace shares a line with the last field, so an anchored regex found
+// nothing and a lazy one found twice as many blocks as there are rules.
+for (const block of rulesSrc.split(/\n\s*\{\s*(?=key:)/).slice(1)) {
+  const swap = field(block, "swap");
+  if (!swap) continue;
+  steps.push({
+    id: field(block, "key"),
+    swap,
+    why: field(block, "why"),
+    free: field(block, "free"),
+    room: field(block, "room"),
+    article: field(block, "article"),
+    rank: Number(field(block, "rank", false) || 0),
+    est: Number(field(block, "est", false) || 0),
+  });
+}
+steps.sort((a, b) => b.rank - a.rank);
+const per = Math.ceil(steps.length / 3);
+const PHASES = [
+  { title: "Days 1 to 30", sub: "Kitchen and water", steps: steps.slice(0, per) },
+  { title: "Days 31 to 60", sub: "Air and textiles", steps: steps.slice(per, per * 2) },
+  { title: "Days 61 to 90", sub: "Reduce the chemicals", steps: steps.slice(per * 2) },
+];
+fs.writeFileSync(path.join(OUT, "plan.json"), JSON.stringify(PHASES, null, 1) + "\n");
+console.log(`plan.json            ${steps.length} steps in 3 phases`);
+
 let brands = 0;
 for (const { from, to } of SOURCES) {
   if (!fs.existsSync(from)) {
