@@ -71,6 +71,10 @@ def main():
 
     table = json.loads(TABLE.read_text())
     types, by_category = table["types"], table["categories"]
+    # A per-product name beats the category. Multi-category is a bucket for
+    # brands that sell across the whole shop, so the category genuinely carries
+    # no information and each row has to be named.
+    by_product = table.get("products", {})
     brands = json.loads(DATA.read_text())
 
     # The table itself, with its band worked out rather than asserted.
@@ -89,7 +93,7 @@ def main():
     for b in brands:
         cat = b.get("category") or ""
         for p in (b.get("products") or []):
-            t = by_category.get(cat)
+            t = by_product.get(f"{b['brand']}::{p.get('name')}") or by_category.get(cat)
             if not t:
                 unmatched[cat] += 1
                 continue

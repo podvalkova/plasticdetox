@@ -378,6 +378,19 @@
             "source": "",
             "checked": "2026-09-02",
             "open": "We have not established what the product actually touches"
+          },
+          "exposure": {
+            "type": "food",
+            "level": "medium",
+            "score": 6.0,
+            "baby": false,
+            "route": "ingestion",
+            "duration": "minutes",
+            "retained": "swallowed",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "Eaten, so whatever is in it arrives whole."
           }
         },
         "cat": "Sea salt"
@@ -1976,6 +1989,19 @@
             "source": "",
             "checked": "2026-09-02",
             "open": "We have not established what the product actually touches"
+          },
+          "exposure": {
+            "type": "air appliance",
+            "level": "high",
+            "score": 8.0,
+            "baby": false,
+            "route": "inhalation",
+            "duration": "all day",
+            "retained": "breathed",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "Running in the room, moving air past its own materials."
           }
         },
         "cat": "Vacuums"
@@ -2028,6 +2054,19 @@
             "source": "",
             "checked": "2026-09-02",
             "open": "We have not established what the product actually touches"
+          },
+          "exposure": {
+            "type": "chewed supplement",
+            "level": "medium",
+            "score": 6.0,
+            "baby": false,
+            "route": "mucosal",
+            "duration": "minutes",
+            "retained": "swallowed",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "Chewed, so it sits against the mouth before it is swallowed."
           }
         },
         "cat": "Prenatal vitamins"
@@ -2086,6 +2125,19 @@
             "source": "amazon:B01LP0U5X0",
             "checked": "2026-09-02",
             "open": "The contact material is not recorded"
+          },
+          "exposure": {
+            "type": "worn gear",
+            "level": "medium",
+            "score": 5.0,
+            "baby": false,
+            "route": "skin",
+            "duration": "hours",
+            "retained": "prolonged",
+            "frequency": "weekly",
+            "heat": false,
+            "fat": false,
+            "why": "Against the skin, but not every day."
           }
         },
         "cat": "Yoga mats"
@@ -2142,6 +2194,19 @@
             "material": "Rubber, Stainless Steel",
             "source": "amazon:B01DOP5S9K",
             "checked": "2026-09-02"
+          },
+          "exposure": {
+            "type": "equipment",
+            "level": "low",
+            "score": 2.0,
+            "baby": false,
+            "route": "none",
+            "duration": "seconds",
+            "retained": "none",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "Nothing it holds touches the part in question."
           }
         },
         "cat": "Tableware"
@@ -2220,6 +2285,19 @@
             "source": "",
             "checked": "2026-09-02",
             "open": "We have not established what the product actually touches"
+          },
+          "exposure": {
+            "type": "food",
+            "level": "medium",
+            "score": 6.0,
+            "baby": false,
+            "route": "ingestion",
+            "duration": "minutes",
+            "retained": "swallowed",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "Eaten, so whatever is in it arrives whole."
           }
         },
         "cat": "Sea salt"
@@ -2277,6 +2355,19 @@
             "source": "",
             "checked": "2026-09-02",
             "open": "We have not established what the product actually touches"
+          },
+          "exposure": {
+            "type": "drinking water",
+            "level": "high",
+            "score": 8.0,
+            "baby": false,
+            "route": "ingestion",
+            "duration": "all day",
+            "retained": "swallowed",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "Drunk in quantity, every day, for years."
           }
         },
         "cat": "Bottled water"
@@ -2329,6 +2420,19 @@
             "source": "",
             "checked": "2026-09-02",
             "open": "We have not established what the product actually touches"
+          },
+          "exposure": {
+            "type": "hot drink",
+            "level": "medium",
+            "score": 7.5,
+            "baby": false,
+            "route": "ingestion",
+            "duration": "minutes",
+            "retained": "swallowed",
+            "frequency": "daily",
+            "heat": true,
+            "fat": false,
+            "why": "Brewed hot, which pulls more out of whatever it is brewed in."
           }
         },
         "cat": "Tea"
@@ -4317,6 +4421,19 @@
             "source": "",
             "checked": "2026-09-02",
             "open": "We have not established what the product actually touches"
+          },
+          "exposure": {
+            "type": "rinse-off skin",
+            "level": "low",
+            "score": 3.5,
+            "baby": false,
+            "route": "skin",
+            "duration": "minutes",
+            "retained": "rinsed",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "Rinsed off, so most of it never stays."
           }
         },
         "cat": "Laundry detergent",
@@ -4345,7 +4462,20 @@
           "scope": "line",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [],
+          "exposure": {
+            "type": "diaper",
+            "level": "high",
+            "score": 7.0,
+            "baby": true,
+            "route": "skin",
+            "duration": "hours",
+            "retained": "prolonged",
+            "frequency": "several daily",
+            "heat": false,
+            "fat": false,
+            "why": "for a baby, which is high whatever the arithmetic says"
+          }
         },
         "origin": "hand",
         "matchAll": [
@@ -4393,7 +4523,20 @@
           "disclose": false,
           "rules": [
             "5.4 durable-good-is-its-own-packaging"
-          ]
+          ],
+          "exposure": {
+            "type": "sprayed",
+            "level": "medium",
+            "score": 6.0,
+            "baby": false,
+            "route": "inhalation",
+            "duration": "minutes",
+            "retained": "breathed",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "Aerosolised on purpose, into the air in front of you."
+          }
         },
         "origin": "hand",
         "matchAll": [
@@ -14160,7 +14303,20 @@
           "rules": [
             "2 formula-read-from-materials",
             "5.4 durable-good-is-its-own-packaging"
-          ]
+          ],
+          "exposure": {
+            "type": "worn textile",
+            "level": "high",
+            "score": 7.0,
+            "baby": true,
+            "route": "skin",
+            "duration": "all day",
+            "retained": "prolonged",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "for a baby, which is high whatever the arithmetic says"
+          }
         },
         "origin": "hand",
         "matchAll": [
@@ -14224,6 +14380,19 @@
             "source": "",
             "checked": "2026-09-02",
             "open": "We have not established what the product actually touches"
+          },
+          "exposure": {
+            "type": "leave-on skin",
+            "level": "high",
+            "score": 8.0,
+            "baby": true,
+            "route": "skin",
+            "duration": "hours",
+            "retained": "leave-on",
+            "frequency": "several daily",
+            "heat": false,
+            "fat": true,
+            "why": "Left on the skin, so contact runs for hours."
           }
         },
         "origin": "hand",
@@ -14270,7 +14439,20 @@
           "scope": "line",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [],
+          "exposure": {
+            "type": "leave-on skin",
+            "level": "high",
+            "score": 8.0,
+            "baby": true,
+            "route": "skin",
+            "duration": "hours",
+            "retained": "leave-on",
+            "frequency": "several daily",
+            "heat": false,
+            "fat": true,
+            "why": "Left on the skin, so contact runs for hours."
+          }
         },
         "origin": "hand",
         "matchAll": [
@@ -14321,7 +14503,20 @@
           "rules": [
             "2 formula-read-from-materials",
             "5.4 durable-good-is-its-own-packaging"
-          ]
+          ],
+          "exposure": {
+            "type": "worn textile",
+            "level": "high",
+            "score": 7.0,
+            "baby": true,
+            "route": "skin",
+            "duration": "all day",
+            "retained": "prolonged",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "for a baby, which is high whatever the arithmetic says"
+          }
         },
         "origin": "hand",
         "matchAll": [
@@ -34479,7 +34674,20 @@
           "scope": "line",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [],
+          "exposure": {
+            "type": "food",
+            "level": "high",
+            "score": 6.0,
+            "baby": true,
+            "route": "ingestion",
+            "duration": "minutes",
+            "retained": "swallowed",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "for a baby, which is high whatever the arithmetic says"
+          }
         },
         "origin": "hand",
         "matchAll": [
@@ -34530,7 +34738,20 @@
           "scope": "line",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [],
+          "exposure": {
+            "type": "worn textile",
+            "level": "medium",
+            "score": 7.0,
+            "baby": false,
+            "route": "skin",
+            "duration": "all day",
+            "retained": "prolonged",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "Against the skin all day."
+          }
         },
         "origin": "hand",
         "matchAll": [
@@ -34569,7 +34790,20 @@
           "scope": "line",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [],
+          "exposure": {
+            "type": "food",
+            "level": "medium",
+            "score": 6.0,
+            "baby": false,
+            "route": "ingestion",
+            "duration": "minutes",
+            "retained": "swallowed",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "Eaten, so whatever is in it arrives whole."
+          }
         },
         "matchAll": [
           [
@@ -34612,7 +34846,20 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [],
+          "exposure": {
+            "type": "food",
+            "level": "medium",
+            "score": 6.0,
+            "baby": false,
+            "route": "ingestion",
+            "duration": "minutes",
+            "retained": "swallowed",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "Eaten, so whatever is in it arrives whole."
+          }
         },
         "cat": "Baby food"
       },
@@ -34658,7 +34905,20 @@
           "authored": true,
           "dated": "2026-09-01",
           "frontNotes": {},
-          "frontOrigin": {}
+          "frontOrigin": {},
+          "exposure": {
+            "type": "food",
+            "level": "medium",
+            "score": 6.0,
+            "baby": false,
+            "route": "ingestion",
+            "duration": "minutes",
+            "retained": "swallowed",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "Eaten, so whatever is in it arrives whole."
+          }
         },
         "cat": "Baby food"
       }
@@ -51728,7 +51988,20 @@
           "rules": [
             "2 formula-read-from-materials",
             "5.4 durable-good-is-its-own-packaging"
-          ]
+          ],
+          "exposure": {
+            "type": "heated vessel",
+            "level": "medium",
+            "score": 5.7,
+            "baby": false,
+            "route": "ingestion",
+            "duration": "minutes",
+            "retained": "transfer",
+            "frequency": "daily",
+            "heat": true,
+            "fat": false,
+            "why": "Heat drives whatever is in the surface into the water."
+          }
         },
         "origin": "hand",
         "matchAll": [
@@ -51767,7 +52040,20 @@
           "scope": "line",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [],
+          "exposure": {
+            "type": "heated vessel",
+            "level": "medium",
+            "score": 5.7,
+            "baby": false,
+            "route": "ingestion",
+            "duration": "minutes",
+            "retained": "transfer",
+            "frequency": "daily",
+            "heat": true,
+            "fat": false,
+            "why": "Heat drives whatever is in the surface into the water."
+          }
         },
         "origin": "hand",
         "matchAll": [
@@ -51809,7 +52095,20 @@
           "scope": "line",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [],
+          "exposure": {
+            "type": "mouthed object",
+            "level": "high",
+            "score": 8.0,
+            "baby": true,
+            "route": "mucosal",
+            "duration": "hours",
+            "retained": "prolonged",
+            "frequency": "several daily",
+            "heat": false,
+            "fat": false,
+            "why": "In a baby's mouth for hours, and being chewed."
+          }
         },
         "origin": "hand",
         "matchAll": [
@@ -51852,7 +52151,20 @@
           "scope": "line",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [],
+          "exposure": {
+            "type": "mouthed object",
+            "level": "high",
+            "score": 8.0,
+            "baby": true,
+            "route": "mucosal",
+            "duration": "hours",
+            "retained": "prolonged",
+            "frequency": "several daily",
+            "heat": false,
+            "fat": false,
+            "why": "In a baby's mouth for hours, and being chewed."
+          }
         },
         "matchAll": [
           [
@@ -64980,7 +65292,20 @@
           "scope": "line",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [],
+          "exposure": {
+            "type": "hot drink",
+            "level": "medium",
+            "score": 7.5,
+            "baby": false,
+            "route": "ingestion",
+            "duration": "minutes",
+            "retained": "swallowed",
+            "frequency": "daily",
+            "heat": true,
+            "fat": false,
+            "why": "Brewed hot, which pulls more out of whatever it is brewed in."
+          }
         },
         "origin": "hand",
         "matchAll": [
@@ -65025,7 +65350,20 @@
           "disclose": false,
           "rules": [],
           "cappedFrom": "careful",
-          "capRestoreWhy": "adverse finding stands"
+          "capRestoreWhy": "adverse finding stands",
+          "exposure": {
+            "type": "oral appliance",
+            "level": "low",
+            "score": 4.75,
+            "baby": false,
+            "route": "mucosal",
+            "duration": "minutes",
+            "retained": "spat",
+            "frequency": "several daily",
+            "heat": false,
+            "fat": false,
+            "why": "In the mouth twice a day, shedding from the part doing the scrubbing."
+          }
         },
         "origin": "hand",
         "matchAll": [
@@ -65074,7 +65412,20 @@
           "disclose": false,
           "rules": [
             "5.4 durable-good-is-its-own-packaging"
-          ]
+          ],
+          "exposure": {
+            "type": "mouthed object",
+            "level": "high",
+            "score": 8.0,
+            "baby": true,
+            "route": "mucosal",
+            "duration": "hours",
+            "retained": "prolonged",
+            "frequency": "several daily",
+            "heat": false,
+            "fat": false,
+            "why": "In a baby's mouth for hours, and being chewed."
+          }
         },
         "cat": "Pacifiers"
       },
@@ -65110,6 +65461,19 @@
             "formula": "stated",
             "legal": "database",
             "testing": "stated"
+          },
+          "exposure": {
+            "type": "heated vessel",
+            "level": "high",
+            "score": 5.7,
+            "baby": true,
+            "route": "ingestion",
+            "duration": "minutes",
+            "retained": "transfer",
+            "frequency": "daily",
+            "heat": true,
+            "fat": false,
+            "why": "for a baby, which is high whatever the arithmetic says"
           }
         },
         "matchAll": [
@@ -65181,6 +65545,19 @@
           "legalNote": "Checked recall records on 2026-08-31. Philips recalls (Respironics breathing devices from 2021, Avent video monitors in 2023) are in other product lines; the Soothie pacifier has never been recalled.",
           "frontOrigin": {
             "legal": "database"
+          },
+          "exposure": {
+            "type": "heated vessel",
+            "level": "high",
+            "score": 5.7,
+            "baby": true,
+            "route": "ingestion",
+            "duration": "minutes",
+            "retained": "transfer",
+            "frequency": "daily",
+            "heat": true,
+            "fat": false,
+            "why": "for a baby, which is high whatever the arithmetic says"
           }
         },
         "matchNot": [
@@ -69859,7 +70236,20 @@
           "scope": "line",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [],
+          "exposure": {
+            "type": "toothpaste",
+            "level": "low",
+            "score": 4.75,
+            "baby": false,
+            "route": "ingestion",
+            "duration": "minutes",
+            "retained": "spat",
+            "frequency": "several daily",
+            "heat": false,
+            "fat": false,
+            "why": "Spat out, so almost none of it is swallowed."
+          }
         },
         "cat": "Toothpaste"
       },
@@ -69886,7 +70276,20 @@
           "scope": "line",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [],
+          "exposure": {
+            "type": "food",
+            "level": "medium",
+            "score": 6.0,
+            "baby": false,
+            "route": "ingestion",
+            "duration": "minutes",
+            "retained": "swallowed",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "Eaten, so whatever is in it arrives whole."
+          }
         },
         "cat": "Sea salt",
         "matchAll": [
@@ -69921,7 +70324,20 @@
           "scope": "line",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [],
+          "exposure": {
+            "type": "drinking water",
+            "level": "high",
+            "score": 8.0,
+            "baby": false,
+            "route": "ingestion",
+            "duration": "all day",
+            "retained": "swallowed",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "Drunk in quantity, every day, for years."
+          }
         },
         "origin": "hand",
         "matchAll": [
@@ -73516,7 +73932,20 @@
           "disclose": false,
           "rules": [
             "3 packaging-matrix-pass"
-          ]
+          ],
+          "exposure": {
+            "type": "rinse-off skin",
+            "level": "low",
+            "score": 3.5,
+            "baby": false,
+            "route": "skin",
+            "duration": "minutes",
+            "retained": "rinsed",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "Rinsed off, so most of it never stays."
+          }
         },
         "cat": "Laundry detergent",
         "research": "Packaging: The 90 fl oz bottle is 100% post-consumer recycled plastic (resin unstated); cap is plastic; contents are liquid laundry detergent."
@@ -73553,7 +73982,20 @@
           "rules": [
             "4.3 non-detect-without-lod",
             "2 formula-read-from-materials"
-          ]
+          ],
+          "exposure": {
+            "type": "diaper",
+            "level": "high",
+            "score": 7.0,
+            "baby": true,
+            "route": "skin",
+            "duration": "hours",
+            "retained": "prolonged",
+            "frequency": "several daily",
+            "heat": false,
+            "fat": false,
+            "why": "for a baby, which is high whatever the arithmetic says"
+          }
         },
         "cat": "Diapers"
       },
@@ -73609,6 +74051,19 @@
             "formula": "inferred",
             "packaging": "inferred",
             "legal": "database"
+          },
+          "exposure": {
+            "type": "rinse-off skin",
+            "level": "low",
+            "score": 3.5,
+            "baby": false,
+            "route": "skin",
+            "duration": "minutes",
+            "retained": "rinsed",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "Rinsed off, so most of it never stays."
           }
         }
       }
@@ -78494,7 +78949,20 @@
             "4.3 non-detect-without-lod"
           ],
           "cappedFrom": "careful",
-          "capRestoreWhy": "adverse finding stands"
+          "capRestoreWhy": "adverse finding stands",
+          "exposure": {
+            "type": "diaper",
+            "level": "high",
+            "score": 7.0,
+            "baby": true,
+            "route": "skin",
+            "duration": "hours",
+            "retained": "prolonged",
+            "frequency": "several daily",
+            "heat": false,
+            "fat": false,
+            "why": "for a baby, which is high whatever the arithmetic says"
+          }
         },
         "origin": "hand",
         "matchAll": [
@@ -78545,7 +79013,20 @@
             "4.3 non-detect-without-lod"
           ],
           "cappedFrom": "careful",
-          "capRestoreWhy": "adverse finding stands"
+          "capRestoreWhy": "adverse finding stands",
+          "exposure": {
+            "type": "leave-on skin",
+            "level": "high",
+            "score": 8.0,
+            "baby": false,
+            "route": "skin",
+            "duration": "hours",
+            "retained": "leave-on",
+            "frequency": "several daily",
+            "heat": false,
+            "fat": true,
+            "why": "Left on the skin, so contact runs for hours."
+          }
         },
         "origin": "hand",
         "matchAll": [
@@ -78590,7 +79071,20 @@
           "scope": "line",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [],
+          "exposure": {
+            "type": "leave-on skin",
+            "level": "high",
+            "score": 8.0,
+            "baby": true,
+            "route": "skin",
+            "duration": "hours",
+            "retained": "leave-on",
+            "frequency": "several daily",
+            "heat": false,
+            "fat": true,
+            "why": "Left on the skin, so contact runs for hours."
+          }
         },
         "origin": "hand",
         "matchAll": [
@@ -78630,7 +79124,20 @@
           "scope": "line",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [],
+          "exposure": {
+            "type": "leave-on face",
+            "level": "medium",
+            "score": 6.0,
+            "baby": false,
+            "route": "skin",
+            "duration": "hours",
+            "retained": "leave-on",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "Left on the face all day."
+          }
         },
         "origin": "hand",
         "matchAll": [
@@ -78680,7 +79187,20 @@
           "disclose": false,
           "rules": [],
           "cappedFrom": "careful",
-          "capRestoreWhy": "adverse finding stands"
+          "capRestoreWhy": "adverse finding stands",
+          "exposure": {
+            "type": "diaper",
+            "level": "high",
+            "score": 7.0,
+            "baby": true,
+            "route": "skin",
+            "duration": "hours",
+            "retained": "prolonged",
+            "frequency": "several daily",
+            "heat": false,
+            "fat": false,
+            "why": "for a baby, which is high whatever the arithmetic says"
+          }
         },
         "cat": "Diapers"
       },
