@@ -305,6 +305,35 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 .note { font-size: 13px; color: var(--faint); text-align: center; margin-top: 1.6rem; line-height: 1.55; }
 .results:empty { display: none; }
+/* The brand's own products, offered instead of asking someone to guess the
+   words our matcher agrees with. */
+.picker:empty { display: none; }
+.picker { margin-top: .6rem; }
+.picker .row { width: 100%; text-align: left; }
+.picker .section-title { margin: .2rem 0 .5rem; }
+
+/* ------------------------------------------------------------------ tabs */
+/* Two things this app does: answer a question about something you are
+   holding, and show what we would buy when you have nothing in mind. The
+   second had no way in at all, which made it invisible. */
+.tabs {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 30;
+  display: grid; grid-template-columns: 1fr 1fr;
+  background: rgba(250,250,249,.94);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid var(--border);
+  padding-bottom: var(--safe-bottom);
+}
+.tab {
+  display: flex; flex-direction: column; align-items: center; gap: 3px;
+  padding: .55rem 0 .5rem; color: var(--muted);
+  font-size: 11px; font-weight: 650; letter-spacing: -.01em;
+}
+.tab svg { width: 21px; height: 21px; }
+.tab.on { color: var(--accent); }
+.tab:active { color: var(--accent-deep); }
+/* The bar floats over the screen, so the screen has to end above it. */
+body.has-tabs .screen { padding-bottom: calc(var(--safe-bottom) + 5.2rem); }
 
 /* The Safari extension prompt, and the screen it opens. */
 .promo {

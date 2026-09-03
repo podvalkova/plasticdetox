@@ -37,6 +37,9 @@ export function icon(path, size = 20) {
 export const ICONS = {
   scan: "M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2M7 8v8M11 8v8M15 8v8",
   search: "M11 3a8 8 0 1 0 0 16 8 8 0 0 0 0-16zM21 21l-4.35-4.35",
+  // A shield for the check tab, a basket for the shop.
+  check: "M12 3l7 3v6c0 4.5-3 8.3-7 9-4-.7-7-4.5-7-9V6l7-3zM9 12l2 2 4-4",
+  shop: "M6 7h12l1.5 12a2 2 0 0 1-2 2H6.5a2 2 0 0 1-2-2L6 7zM9 7V5a3 3 0 0 1 6 0v2",
 };
 
 let toastTimer = null;

@@ -23,6 +23,21 @@ const MAX_AGE_MS = 6 * 60 * 60 * 1000;   // refresh at most four times a day
 let index = null;
 let meta = { source: "bundle", version: null, brands: 0 };
 
+let campaignLinks = {};
+
+/**
+ * The buy link for an ASIN.
+ *
+ * A Creator Connections link carries its own campaignId and the campaign's own
+ * tag, and only that exact URL credits it. Rebuilding one as
+ * /dp/ASIN?tag=plasticdetox-20 looks identical and silently loses the credit,
+ * so a campaign URL always wins where we hold one.
+ */
+export function buyLink(asin) {
+  if (!asin) return "";
+  return campaignLinks[asin] || `https://www.amazon.com/dp/${asin}?tag=plasticdetox-20`;
+}
+
 async function readBundled(name) {
   const res = await fetch(`./data/${name}.json`, { cache: "force-cache" });
   if (!res.ok) throw new Error(`bundled ${name} missing`);
@@ -72,6 +87,9 @@ export async function load() {
     readBundled("asin-map"),
     readBundled("barcodes").catch(() => ({})),
   ]);
+  // Creator Connections URLs, which must be used verbatim or the campaign gets
+  // no credit. Absent is fine: the shop falls back to a plain tagged link.
+  campaignLinks = await readBundled("campaign-links").catch(() => ({}));
   return build({ brands, asins, barcodes }, "bundle");
 }
 

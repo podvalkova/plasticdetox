@@ -19,6 +19,34 @@ const SOURCES = [
 
 fs.mkdirSync(OUT, { recursive: true });
 
+// Creator Connections links are not ours to rebuild.
+//
+// A campaign link carries its own campaignId and the littleplayapp-20 tag, and
+// only that exact URL credits the campaign. Constructing our own
+// /dp/ASIN?tag=plasticdetox-20 for those products would quietly break them, so
+// the app ships a map of ASIN to campaign URL, harvested from the site's own
+// pages rather than typed here where it could drift out of date.
+const CAMPAIGN = /https:\/\/www\.amazon\.com\/dp\/([A-Z0-9]{10})\?[^"'\s<>]*campaignId=[^"'\s<>]*/g;
+const campaigns = {};
+const walk = (dir, depth = 0) => {
+  if (depth > 3) return;
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    if (entry.name.startsWith(".") || entry.name === "node_modules") continue;
+    const full = path.join(dir, entry.name);
+    if (entry.isDirectory()) { walk(full, depth + 1); continue; }
+    if (!/\.(html|js)$/.test(entry.name)) continue;
+    const text = fs.readFileSync(full, "utf8");
+    for (const m of text.matchAll(CAMPAIGN)) {
+      const url = m[0].replace(/&amp;/g, "&");
+      if (!campaigns[m[1]]) campaigns[m[1]] = url;
+    }
+  }
+};
+walk(REPO);
+fs.writeFileSync(path.join(OUT, "campaign-links.json"),
+  JSON.stringify(campaigns, null, 1) + "\n");
+console.log(`campaign-links.json  ${Object.keys(campaigns).length} products`);
+
 let brands = 0;
 for (const { from, to } of SOURCES) {
   if (!fs.existsSync(from)) {

@@ -113,6 +113,17 @@ function draw() {
       onPick: openRecent,
       draft: state.draft,
       onCheck: runCheck,
+      // A row chosen from the brand's own list needs no matching at all: the
+      // person pointed at it. This is the path that used to depend on typing
+      // words our matchAll happened to agree with.
+      onProduct: (b, row) => go({
+        screen: "result",
+        match: { brand: b, via: "picked" },
+        scan: null,
+        product: row,
+        productNamed: true,
+        query: `${b.brand} ${row.name}`,
+      }),
       onStarter: (s) => go({ screen: "category", category: s.category, label: s.label }),
       onAllCategories: () => go({ screen: "categories" }),
       onSafari: () => go({ screen: "safari" }),
@@ -166,6 +177,38 @@ function draw() {
       onOpen: openExternal,
       onSafari: () => go({ screen: "safari" }),
     });
+  } else if (state.screen === "shop") {
+    screens.shopIndex(view, {
+      index,
+      onCategory: (category) => go({ screen: "shopCategory", category }),
+    });
+  } else if (state.screen === "shopCategory") {
+    screens.shopCategory(view, {
+      index,
+      category: state.category,
+      onOpen: openExternal,
+      onProduct: (b, row) => go({
+        screen: "result",
+        match: { brand: b, via: "picked" },
+        scan: null,
+        product: row,
+        productNamed: true,
+        query: `${b.brand} ${row.name}`,
+      }),
+    });
+  }
+
+  // The bar belongs to the two roots, not to a screen you drilled into: it is
+  // how you switch jobs, and a back arrow is how you come back up.
+  const root = stack[0].screen;
+  const onRoot = stack.length === 1 && ["home", "shop"].includes(state.screen);
+  document.querySelector(".tabs")?.remove();
+  document.body.classList.toggle("has-tabs", onRoot);
+  if (onRoot) {
+    document.body.appendChild(screens.tabs(
+      state.screen === "shop" ? "shop" : "check",
+      (tab) => { stack = [{ screen: tab === "shop" ? "shop" : "home" }]; render(); },
+    ));
   }
 }
 

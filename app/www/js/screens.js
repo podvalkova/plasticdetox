@@ -5,6 +5,7 @@
 import { FRONTS, STANCE_LABEL, verdictFor, alternativesFor, ratedProducts } from "./match.js";
 import { packagingHeadline } from "./upc.js";
 import { el, frag, icon, ICONS, splitNote } from "./ui.js";
+import { buyLink } from "./data.js";
 
 const SITE = "https://plasticdetox.org";
 const STATUS_GLYPH = { pass: "✓", caution: "!", fail: "✕", unknown: "?" };
@@ -13,7 +14,8 @@ const STATUS_GLYPH = { pass: "✓", caution: "!", fail: "✕", unknown: "?" };
 
 export function home(root, {
   onScan, onSearch, onPick, onStarter, onAllCategories, onSafari, onDismissSafari,
-  onCheck, recents, starters, canScan, scanReason, showSafari, categoryCount, draft,
+  onCheck, onProduct, recents, starters, canScan, scanReason, showSafari,
+  categoryCount, draft,
 }) {
   const hero = el("div", "hero");
   hero.appendChild(el("h1", null, "Check it before you buy it"));
@@ -27,8 +29,8 @@ export function home(root, {
   const form = el("form", "check-form");
   form.setAttribute("novalidate", "");
 
-  const brand = field("Brand, for example Graza", (draft && draft.brand) || "");
-  const product = field("Product, for example Sizzle extra virgin olive oil", (draft && draft.product) || "");
+  const brand = field("Brand, for example Pampers", (draft && draft.brand) || "");
+  const product = field("Product, for example Sensitive Wipes", (draft && draft.product) || "");
   form.appendChild(brand.wrap);
 
   // Type ahead on the brand only. A brand we already hold should never need
@@ -50,13 +52,63 @@ export function home(root, {
     if (hit.product || hit.scan) return false;
     brand.input.value = hit.brand.brand;
     results.replaceChildren();
-    product.input.focus();
-    // A webview does not always bring a focused field into view on its own,
-    // and this one sat at the very bottom of the screen behind the list.
-    product.wrap.scrollIntoView({ block: "center", behavior: "smooth" });
+    showProducts(hit.brand);
     return true;
   }, 5);
   form.appendChild(results);
+
+  // Which one of theirs is it?
+  //
+  // Typing the product was a guessing game against our own match rules. A+D
+  // has one product, "Original diaper rash ointment", and typing "ointment"
+  // matched nothing, because a matchAll group needs every word in it. The
+  // person then got "no verdict" on a product we hold a full scorecard for.
+  //
+  // So stop asking them to guess. Once the brand is known, list what we have
+  // and let them point at it, with a way out for anything we do not list.
+  const picker = el("div", "picker");
+  form.appendChild(picker);
+
+  function showProducts(b) {
+    picker.replaceChildren();
+    const rows = ratedProducts(b);
+    if (!rows.length) {
+      product.wrap.hidden = false;
+      product.input.focus();
+      product.wrap.scrollIntoView({ block: "center", behavior: "smooth" });
+      return;
+    }
+    product.wrap.hidden = true;
+    picker.appendChild(el("div", "section-title", `Which ${b.brand}?`));
+    for (const { row: pr, stance } of rows) {
+      const line = el("button", "row");
+      line.type = "button";
+      line.appendChild(el("span", `dot ${stance || "neutral"}`));
+      const body = el("div", "row-body");
+      body.appendChild(el("div", "row-name", pr.name));
+      if (pr.cat) body.appendChild(el("div", "row-sub", pr.cat));
+      line.appendChild(body);
+      line.appendChild(el("span", "row-chev", "\u203a"));
+      line.onclick = () => onProduct(b, pr);
+      picker.appendChild(line);
+    }
+    const other = el("button", "row");
+    other.type = "button";
+    other.appendChild(el("span", "dot neutral"));
+    const ob = el("div", "row-body");
+    ob.appendChild(el("div", "row-name", "Something else"));
+    ob.appendChild(el("div", "row-sub", "Type the product name"));
+    other.appendChild(ob);
+    other.appendChild(el("span", "row-chev", "\u203a"));
+    other.onclick = () => {
+      picker.replaceChildren();
+      product.wrap.hidden = false;
+      product.input.focus();
+      product.wrap.scrollIntoView({ block: "center", behavior: "smooth" });
+    };
+    picker.appendChild(other);
+    picker.scrollIntoView({ block: "center", behavior: "smooth" });
+  }
 
   form.appendChild(product.wrap);
 
@@ -174,6 +226,127 @@ export function renderResults(container, hits, onPick) {
     row.appendChild(el("span", "row-chev", "›"));
     row.onclick = () => onPick(hit);
     container.appendChild(row);
+  }
+}
+
+
+/**
+ * The tab bar. Two jobs, so two tabs, and no more.
+ */
+export function tabs(current, onTab) {
+  const bar = el("div", "tabs");
+  for (const [key, label, path] of [
+    ["check", "Check", ICONS.check],
+    ["shop", "Shop", ICONS.shop],
+  ]) {
+    const b = el("button", `tab${current === key ? " on" : ""}`);
+    b.appendChild(icon(path));
+    b.appendChild(el("span", null, label));
+    b.onclick = () => onTab(key);
+    bar.appendChild(b);
+  }
+  return bar;
+}
+
+// ------------------------------------------------------------------- shop
+
+/**
+ * Everything we would actually buy, by category.
+ *
+ * Checking a brand answers a question somebody already has. This answers the
+ * one they have before they have a brand in mind, which is most of the time
+ * and was the half of the app that did not exist. Only rows we rate good and
+ * that have somewhere to buy them: a shelf you cannot buy from is a list.
+ */
+export function shopIndex(root, { index, onCategory }) {
+  const groups = new Map();
+  for (const b of index.brands) {
+    for (const row of (b.products || [])) {
+      if (((row.ext || {}).verdict) !== "good") continue;
+      if (!(row.asins || []).length) continue;
+      const cat = row.cat || b.category || "Other";
+      if (!groups.has(cat)) groups.set(cat, []);
+      groups.get(cat).push({ brand: b, row });
+    }
+  }
+  const cats = [...groups.entries()].sort((a, b) => a[0].localeCompare(b[0]));
+
+  const hero = el("div", "hero");
+  hero.appendChild(el("h1", null, "What we would buy"));
+  hero.appendChild(el("p", null,
+    `${[...groups.values()].reduce((n, v) => n + v.length, 0)} products that cleared our checks, across ${cats.length} categories.`));
+  root.appendChild(hero);
+
+  const box = el("div", "card");
+  for (const [cat, items] of cats) {
+    const line = el("button", "row");
+    const body = el("div", "row-body");
+    body.appendChild(el("div", "row-name", cat));
+    body.appendChild(el("div", "row-sub", `${items.length} pick${items.length === 1 ? "" : "s"}`));
+    line.appendChild(body);
+    line.appendChild(el("span", "row-chev", "\u203a"));
+    line.onclick = () => onCategory(cat);
+    box.appendChild(line);
+  }
+  root.appendChild(box);
+}
+
+export function shopCategory(root, { index, category, onProduct, onOpen }) {
+  const items = [];
+  for (const b of index.brands) {
+    for (const row of (b.products || [])) {
+      if (((row.ext || {}).verdict) !== "good") continue;
+      if (!(row.asins || []).length) continue;
+      if ((row.cat || b.category || "Other") !== category) continue;
+      items.push({ brand: b, row });
+    }
+  }
+
+  const hero = el("div", "hero");
+  hero.appendChild(el("h1", null, category));
+  hero.appendChild(el("p", null,
+    `${items.length} that cleared all the checks we could run.`));
+  root.appendChild(hero);
+
+  for (const { brand: b, row } of items) {
+    const card = el("div", "card");
+    const label = row.name.toLowerCase().startsWith(b.brand.toLowerCase())
+      ? row.name : `${b.brand} ${row.name}`;
+    card.appendChild(el("div", "alt-name", label));
+    const note = (row.note || b.reason || "").split(". ").slice(0, 2).join(". ");
+    if (note) card.appendChild(el("p", null, note.endsWith(".") ? note : note + "."));
+
+    const ex = (row.ext || {}).exposure;
+    if (ex && ex.level) {
+      const strip = el("div", `expo ${ex.level}`);
+      strip.appendChild(el("span", `pkg-chip ${ex.level}`, String(ex.level).toUpperCase()));
+      strip.appendChild(el("div", "expo-why", ex.why || ""));
+      card.appendChild(strip);
+    }
+
+    const four = el("div", "alt-four");
+    const fr = (row.ext || {}).fronts || {};
+    for (const [k] of FRONTS) {
+      const st = fr[k];
+      const dot = el("i");
+      if (st === "pass") dot.style.background = "var(--good)";
+      else if (st === "none") { dot.style.background = "var(--faint)"; dot.style.opacity = ".45"; }
+      else dot.style.background = "var(--accent)";
+      four.appendChild(dot);
+    }
+    four.appendChild(el("em", null,
+      `${FRONTS.filter(([k]) => ["pass", "none"].includes(fr[k])).length} of 4 checked`));
+    card.appendChild(four);
+
+    const open = el("button", "cta", "View");
+    open.onclick = () => onOpen(buyLink(row.asins[0]));
+    card.appendChild(open);
+
+    const why = el("button", "cta ghost", "Why it passed");
+    why.onclick = () => onProduct(b, row);
+    card.appendChild(why);
+
+    root.appendChild(card);
   }
 }
 
