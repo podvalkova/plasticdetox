@@ -49,13 +49,18 @@ for (const b of brands) {
   for (const p of (b.products || [])) {
     const asin = (p.asins || [])[0];
     if (!asin) continue;
-    if (!CONSUMABLE.test(`${p.cat || ''} ${b.category || ''}`)) continue;
+    // Formula applies wherever it is not already answered `none`. That is the
+    // model's own test for "this thing has an ingredient list", and it beats
+    // matching category words, which filed a glass pour-over cup under Coffee.
+    const front = ((p.ext || {}).fronts || {}).formula;
+    if (front === 'none') continue;
+    if (!front && !CONSUMABLE.test(`${p.cat || ''} ${b.category || ''}`)) continue;
     const held = ev[asin]?.formula;
     if (held?.ingredients || held?.checkedListing) continue;
     todo.push({ asin, brand: b.brand, name: p.name, cat: p.cat || '' });
   }
 }
-console.log(`consumable rows with an ASIN and no list yet: ${todo.length}`);
+console.log(`rows with a formula, an ASIN and no list yet: ${todo.length}`);
 const batch = todo.slice(0, limit);
 console.log(`this run: ${batch.length}\n`);
 
@@ -175,6 +180,13 @@ for (const [i, row] of batch.entries()) {
     console.log(`  ! ${row.brand} / ${row.name.slice(0, 28)} ${e.message.slice(0, 40)}`);
   }
   await new Promise(r => setTimeout(r, 2500));
+  // Save as we go. This wrote only at the very end, so a run that was killed,
+  // or that hit the surrogate bug, threw away everything it had found. A
+  // 25 minute job holding 50 hard-won ingredient lists in memory is not a
+  // reasonable thing to lose to a stray interrupt.
+  if (write && (i + 1) % 10 === 0) {
+    fs.writeFileSync(EVIDENCE, JSON.stringify(ev, null, 1) + '\n');
+  }
   // A fresh context every 25 rows. Reputation attaches to the session, so the
   // hit rate decays within a run and resets when the browser does.
   if ((i + 1) % 25 === 0) {

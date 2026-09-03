@@ -1,0 +1,156 @@
+{
+  "_": "Research about a KIND of product, not a brand. Section 1 calls this `class` scope and section 4 says it transfers to every SKU sharing the mechanism, including across brands. It could only ever warn: rule 1.1 means a class study can never clear a product, only a test of the actual product does that. Each finding must name what escapes it, because a finding every product in a category carries tells a shopper nothing (rule 5.3, and the Sonicare mistake).",
+  "findings": [
+    {
+      "id": "tea-bag-plastic",
+      "front": "testing",
+      "status": "fail",
+      "headline": "Tea bags with a plastic seam or mesh release 11.6 billion microplastic particles per cup",
+      "detail": "A single hot brew of a plastic mesh tea bag releases an estimated 11.6 billion microplastic and 3.1 billion nanoplastic particles into one cup. Paper bags are commonly sealed with polypropylene; pyramid mesh styles are often nylon or PET.",
+      "source": "McGill University, Environmental Science and Technology, 2019",
+      "year": 2019,
+      "mechanism": "process",
+      "appliesTo": {
+        "cats": [
+          "Tea"
+        ]
+      },
+      "confirmedBy": {
+        "any": [
+          "pyramid",
+          "plastic mesh",
+          "nylon mesh",
+          "nylon",
+          "polypropylene",
+          "silken",
+          "sachet",
+          "plastic bag"
+        ]
+      },
+      "escapedBy": {
+        "any": [
+          "loose leaf",
+          "loose-leaf",
+          "looseleaf",
+          "paper only",
+          "unbleached paper",
+          "plastic free",
+          "plastic-free",
+          "hemp",
+          "cotton bag",
+          "stainless",
+          "steel",
+          "glass",
+          "infuser",
+          "teapot",
+          "strainer",
+          "ceramic",
+          "porcelain"
+        ]
+      },
+      "escapeNote": "Loose leaf and paper only bags have no seam to shed."
+    },
+    {
+      "id": "heated-polypropylene-bottle",
+      "front": "testing",
+      "status": "fail",
+      "headline": "Polypropylene baby bottles release up to 16.2 million microplastic particles per litre at formula temperature",
+      "detail": "Polypropylene bottles, about 82 percent of the global market, release 1.3 to 16.2 million particles per litre in hot water at formula preparation temperature. Shaking increases release; sterilising with boiling water is highest of all.",
+      "source": "Trinity College Dublin, Nature Food, 2020",
+      "year": 2020,
+      "mechanism": "process",
+      "appliesTo": {
+        "cats": [
+          "Baby bottles"
+        ]
+      },
+      "confirmedBy": {
+        "any": [
+          "polypropylene",
+          "pp bottle",
+          "plastic bottle",
+          "tritan",
+          "polyamide"
+        ]
+      },
+      "escapedBy": {
+        "any": [
+          "glass",
+          "stainless",
+          "silicone",
+          "borosilicate",
+          "glass jar",
+          "steel",
+          "refill",
+          "concentrate",
+          "tablet"
+        ]
+      },
+      "escapeNote": "Glass, stainless and silicone bottles are not the polymer that was measured."
+    },
+    {
+      "id": "pet-bottled-water",
+      "front": "testing",
+      "status": "fail",
+      "headline": "Bottled water carries roughly 240,000 plastic particles per litre",
+      "detail": "Laser microscopy counted about 240,000 plastic particles per litre across popular bottled water brands, roughly 90 percent of them nanoplastics, far above typical treated tap water. PET sheds faster with heat and time, so storage matters.",
+      "source": "Columbia University, PNAS, 2024",
+      "year": 2024,
+      "mechanism": "process",
+      "appliesTo": {
+        "cats": [
+          "Bottled water"
+        ]
+      },
+      "confirmedBy": {
+        "any": [
+          "pet",
+          "plastic bottle",
+          "polyethylene terephthalate",
+          "#1"
+        ]
+      },
+      "escapedBy": {
+        "any": [
+          "glass",
+          "aluminum",
+          "aluminium",
+          "carton",
+          "boxed"
+        ]
+      },
+      "escapeNote": "Nothing sold as bottled water escapes this, which is the point: the alternative is not another bottle.",
+      "categoryWide": true,
+      "alternative": "Tap water through a filter, or water sold in glass."
+    },
+    {
+      "id": "period-underwear-pfas",
+      "front": "testing",
+      "status": "caution",
+      "headline": "Roughly a third of period underwear tested carried intentionally added PFAS",
+      "detail": "Independent testing found organic fluorine as high as 940 ppm in some Thinx styles and 373 ppm in a Knix style. Others in the same category tested non detect, so this is not a property of the category, and an untested pair cannot be placed on either side of it.",
+      "source": "Mamavation, independent laboratory testing",
+      "year": 2023,
+      "mechanism": "formulation",
+      "appliesTo": {
+        "cats": [
+          "Period underwear"
+        ]
+      },
+      "confirmedBy": {
+        "any": []
+      },
+      "escapedBy": {
+        "any": [
+          "non detect",
+          "non-detect",
+          "oeko-tex",
+          "pfas free",
+          "pfas-free"
+        ]
+      },
+      "escapeNote": "A published non detect for organic fluorine answers this directly."
+    }
+  ],
+  "_guard": "A finding must name what escapes it. Usually that is a sibling in the same category: loose leaf has no bag, glass is not the measured polymer. Where the whole category carries it, the finding must instead name an alternative outside the category, or it is a fact about the world rather than a way to tell two products apart, and it belongs in an article."
+}

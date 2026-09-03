@@ -381,10 +381,18 @@ def main():
                     formula["left as recorded"] += 1
                     e.setdefault("frontNotes", {}).pop("formula", None)
                 fm = entry.get("formula") or {}
+                # Save the list AND the reading of it. A stored ingredient list
+                # nobody has judged is a document, not an answer; a stored
+                # verdict with no list behind it is an assertion. Keeping both
+                # together is what lets a person check our work in one glance.
+                WORD = {"pass": "good", "caution": "careful", "fail": "bad"}
+                held = (e.get("fronts") or {}).get("formula")
                 e["formulaAnswers"] = {
                     "ingredients": fm.get("ingredients") or "",
                     "prose": "" if fm.get("ingredients") else (fm.get("prose") or ""),
                     "complete": bool(fm.get("complete") and fm.get("ingredients")),
+                    "verdict": WORD.get(f_status or held, "open"),
+                    "summary": f_why + "." if f_why else "",
                     "source": fm.get("source") or "",
                     "checked": fm.get("checkedListing") or "",
                 }
@@ -462,6 +470,16 @@ def main():
     for b in brands:
         for p in (b.get("products") or []):
             e0 = p.get("ext") or {}
+            # Correct the saved answer wherever the front already says `none`,
+            # before any skip below can step over the row. These are decided
+            # elsewhere and kept read_formula's "no ingredient list recorded",
+            # which describes a gap where the front records a finding.
+            if ((e0.get("fronts") or {}).get("formula")) == "none":
+                fa = e0.get("formulaAnswers")
+                if fa is not None and fa.get("verdict") != "n/a":
+                    fa["verdict"] = "n/a"
+                    fa["summary"] = ("A durable good has no ingredient list. "
+                                     "What it is made of is the materials check.")
             etype = ((e0.get("exposure") or {}).get("type") or "").strip().lower()
             if etype:
                 if etype in CONSUMED:
@@ -479,6 +497,14 @@ def main():
                 e.setdefault("frontNotes", {})["formula"] = (
                     "A durable good has no ingredient list. What it is made of "
                     "is the materials check.")
+                # The saved answer has to agree with the front. read_formula ran
+                # first and wrote "no ingredient list recorded", which is a gap;
+                # this is a finding. A bottle is not missing a recipe.
+                fa = e.get("formulaAnswers")
+                if fa is not None:
+                    fa["verdict"] = "n/a"
+                    fa["summary"] = ("A durable good has no ingredient list. "
+                                     "What it is made of is the materials check.")
                 nofm += 1
     print(f"  formula marked none on durable goods: {nofm}")
 

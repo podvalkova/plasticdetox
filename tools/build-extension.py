@@ -87,15 +87,21 @@ def main():
     # every recorded material and ingredient list. Both read data/front-evidence
     # .json, which is input: established once, re-read on every build, never
     # re-argued from prose.
+    # Exposure is decided once per product type, then stamped onto every row of
+    # that type. It has to run after apply-product-rules, which rebuilds ext, or
+    # the stamp is written and then thrown away: that is why 660 of 823 rows
+    # showed no exposure while this was never in the build at all. It also has
+    # to run BEFORE apply-front-evidence, which asks the exposure type whether a
+    # product is a durable good. Run after, and that test finds nothing and
+    # falls back to matching category words, which is the test it replaced.
+    run("exposure.py", "--write")
     run("formula/materials-from-name.py", "--write")
     run("apply-front-evidence.py", "--write")
-    # Exposure is decided once per product type, then stamped onto every row of
-    # that type. It has to run after apply-product-rules, which rebuilds ext,
-    # or the stamp is written and then thrown away. That is exactly what had
-    # been happening: the tool was never in the build, so it only ever ran by
-    # hand, and 660 of 823 rows showed no exposure because the next rebuild
-    # discarded it.
-    run("exposure.py", "--write")
+    # What we know about a KIND of product, for the rows nobody has tested.
+    # After front-evidence, which blanks unsourced adverse fronts, because a
+    # class finding carries its own citation and must not be swept up as one.
+    # It only ever fills a gap: a real test of the product always wins.
+    run("apply-class-evidence.py", "--write")
     # Last, after every tool that fills a front. A recommendation needs all four.
     run("enforce-scorecard.py", "--write")
     # Last, so it sees every product row the steps above created. Run earlier it

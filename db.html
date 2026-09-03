@@ -190,6 +190,10 @@ footer{margin-top:2.4rem;padding-top:1.2rem;border-top:1px solid var(--border);
   .ing{margin-top:6px;border-left:2px solid var(--line,#ddd);padding-left:8px}
   .ing-h{font-size:11px;text-transform:uppercase;letter-spacing:.04em;opacity:.6;margin-bottom:2px}
   .ing-t{font-size:12px;line-height:1.5;opacity:.85;max-height:8.5em;overflow-y:auto}
+  .d-meta a.asin{color:var(--accent);text-decoration:none;border-bottom:1px dotted var(--accent)}
+  .d-meta a.asin:hover{border-bottom-style:solid}
+  .fsum{margin-top:6px;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+  .fsum .pill{font-size:10px}
 </style>
 </head>
 <body>
@@ -352,6 +356,7 @@ function build(brands){
                  (e.frontNotes||{}).materials||"", fr.materials||"unassessed",
                  (e.exposure||{}).level||"", (e.exposure||{}).type||"",
                  {fronts:fr, origin:or, notes:e.frontNotes||{}, answers:e.materialAnswers||null, formula:e.formulaAnswers||null,
+                  klass:e.classEvidence||null,
                   exposure:e.exposure||null,
                   why:e.why||"", asins:p.asins||[], dated:e.dated||"", scope:e.scope||""}]);
     }
@@ -513,7 +518,21 @@ function openDetail(r){
   body.replaceChildren();
   body.appendChild(el("div","d-brand", r[0]));
   const h = el("h2", null, r[1]); h.id = "d-name"; body.appendChild(h);
-  body.appendChild(el("div","d-meta", [r[2], d.scope, d.asins.join(", ")].filter(Boolean).join(" · ")));
+  // The ASIN was plain text, which meant checking a row against its listing was
+  // a copy and paste. Every one is now the listing itself. No affiliate tag:
+  // this is an internal view and our own clicks should not be tagged as sales.
+  const meta = el("div","d-meta");
+  const bits = [r[2], d.scope].filter(Boolean);
+  meta.appendChild(document.createTextNode(bits.join(" · ")));
+  d.asins.forEach((a, i) => {
+    meta.appendChild(document.createTextNode(i === 0 && bits.length ? " · " : i ? " · " : ""));
+    const link = el("a","asin", a);
+    link.href = "https://www.amazon.com/dp/" + a;
+    link.target = "_blank";
+    link.rel = "noopener";
+    meta.appendChild(link);
+  });
+  body.appendChild(meta);
 
   const vl = el("div","verdict-line");
   vl.appendChild(el("span","pill "+r[3], r[3]));
@@ -571,13 +590,42 @@ function openDetail(r){
     if(d.notes[f]) bd.appendChild(el("div","nt", d.notes[f]));
     // The list itself, not our reading of it. A pass you cannot check is the
     // thing this whole front was rebuilt to stop producing.
-    if(f==="formula" && d.formula && (d.formula.ingredients || d.formula.prose)){
+    // Research about this KIND of product, shown where nobody has tested the
+    // product itself. It says so plainly, because an inherited finding a reader
+    // cannot see the scope of is one they cannot judge.
+    if(d.origin[f]==="class" && d.klass){
+      const k = d.klass;
       const box = el("div","ing");
-      box.appendChild(el("div","ing-h", d.formula.complete
-        ? "Published ingredient list" + (d.formula.checked ? ", read " + d.formula.checked : "")
-        : "No list published. Description copy only, which can warn but cannot clear."));
-      box.appendChild(el("div","ing-t", d.formula.ingredients || d.formula.prose));
+      box.appendChild(el("div","ing-h",
+        (k.membership==="confirmed"
+          ? "This product's own materials put it in this class"
+          : "About this kind of product. Not confirmed for this one")
+        + (k.year ? " · " + k.year : "")));
+      box.appendChild(el("div","ing-t", k.detail));
+      const src = el("div","ing-h", k.source + (k.escape ? " · " + k.escape : ""));
+      box.appendChild(src);
       bd.appendChild(box);
+    }
+    if(f==="formula" && d.formula){
+      const fm = d.formula;
+      // The saved reading, in the same words the verdict uses, then the list it
+      // was read from. Verdict first: it is what a person is looking for.
+      if(fm.verdict || fm.summary){
+        const line = el("div","fsum");
+        const w = {good:"good", careful:"careful", bad:"skip"}[fm.verdict];
+        if(fm.verdict==="n/a") line.appendChild(el("span","mark none"));
+        if(w) line.appendChild(el("span","pill "+w, fm.verdict));
+        if(fm.summary) line.appendChild(el("span","nt", fm.summary));
+        bd.appendChild(line);
+      }
+      if(fm.ingredients || fm.prose){
+        const box = el("div","ing");
+        box.appendChild(el("div","ing-h", fm.complete
+          ? "Published ingredient list" + (fm.checked ? ", read " + fm.checked : "")
+          : "No list published. Description copy only, which can warn but cannot clear."));
+        box.appendChild(el("div","ing-t", fm.ingredients || fm.prose));
+        bd.appendChild(box);
+      }
     }
     row.appendChild(bd);
     row.appendChild(el("span","og", d.origin[f] || "none"));

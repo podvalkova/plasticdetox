@@ -4,7 +4,7 @@ How a product gets a verdict. This is the editorial standard for Brand Check, th
 Amazon extension, and the paid API. If a rule here and a published page disagree,
 the page is wrong.
 
-Last revised 2026-09-02.
+Last revised 2026-09-03.
 
 ---
 
@@ -468,6 +468,51 @@ qualify where an independent measurement of the product does not.
 > carries a recommendation on its own.
 
 Without the limit it carries nothing, per 4.3.
+
+### 4.5 What is known about the kind of product
+
+Section 4 scopes a result by its mechanism, and the widest scope in the table
+is `class`: a material or ingredient across the industry, which transfers to
+every SKU sharing it, including across brands. We held no class findings as
+data, only as article prose, and the consequence was that the testing front
+asked one question where it should ask two.
+
+> **Has anyone tested this product, and has anyone tested this kind of
+> product?** The first answer wins wherever it exists, because it is about the
+> actual thing. The second fills the gap, which is most rows.
+
+Without it, `unassessed` reads identically for a tea bag and a wooden spoon.
+Nobody will ever lab test a wooden spoon. Tea bags have been measured at 11.6
+billion particles per cup, a number this site cites in thirteen places while
+showing its own tea rows as unassessed.
+
+Three constraints, all of them consequences of rules already written:
+
+- **A class finding warns and never clears** (1.1). Its status is `caution` or
+  `fail`. Only a test of the product itself carries a recommendation, and a
+  product with its own result is not subject to the inference at all.
+- **The copy names the scope** (1.2): "This is about bottled water generally.
+  We have not confirmed it for this product."
+- **Weight follows determinability** (2.2). Where the product's own name or
+  recorded material puts it in the class, the finding lands at full weight.
+  Where only the category matches, it caps at `caution`.
+
+Membership is read from the product's name and recorded material, never from
+our note about it. Every supermarket tea row mentions loose leaf, because that
+is what we tell people to buy instead, and matching on prose let Lipton and
+Twinings escape a finding about exactly their kind of bag.
+
+**A finding must name what escapes it.** Usually that is a sibling in the same
+category: loose leaf has no seam, glass is not the polymer that was measured, a
+published non detect answers the question directly. Where a whole category
+carries it, the finding must instead name an alternative outside the category,
+as bottled water does with a filter. A finding nothing escapes is a fact about
+the world rather than a way to tell two products apart, and it belongs in an
+article. This is rule 5.3's mistake in another costume, and the one that rated
+Sonicare a skip for bristles every electric brush has.
+
+The findings live in `data/class-evidence.json`, recorded once and re-read on
+every build, the same treatment as recalls and materials.
 
 ## 5.6 An absent test is a gap, not a finding
 
