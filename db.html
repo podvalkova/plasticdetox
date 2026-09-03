@@ -115,8 +115,19 @@ tr:hover td{background:var(--sunk)}
 .pill.unrated,.pill.neutral{color:var(--neutral);background:var(--neutral-bg)}
 .sq{display:inline-flex;gap:3px}
 .sq i{width:10px;height:10px;border-radius:2.5px;border:1.5px solid var(--border-strong);display:block}
-.sq i.ev{background:var(--accent);border-color:var(--accent)}
-.sq i.inf{background:var(--careful);border-color:var(--careful)}
+/* Scoped to the class, not to .sq, so the same swatch works in the key below.
+   Scoping it to .sq drew the legend as five empty outlines. */
+.s-pass{background:var(--good);border-color:var(--good)}
+.s-caution{background:var(--careful);border-color:var(--careful)}
+.s-fail{background:var(--skip);border-color:var(--skip)}
+/* Checked, and nothing of this kind applies. A durable good has no ingredient
+   list. Grey says answered, which an empty box did not. */
+.s-none{background:var(--faint);border-color:var(--faint);opacity:.45}
+/* Nobody has looked yet. The one state that blocks a recommendation, so it
+   gets the accent rather than the absence of one. */
+.s-missing{background:var(--accent);border-color:var(--accent)}
+.key{display:inline-flex;align-items:center;gap:5px;margin-right:12px;white-space:nowrap}
+.key i{width:10px;height:10px;border-radius:2.5px;display:block;border:1.5px solid var(--border-strong)}
 .lvl{display:inline-block;padding:.15rem .55rem;border-radius:999px;font-size:10.5px;
   font-weight:800;letter-spacing:.05em;text-transform:uppercase}
 .lvl.high{color:var(--skip);background:var(--skip-bg)}
@@ -127,6 +138,7 @@ tr:hover td{background:var(--sunk)}
 .mark{width:10px;height:10px;border-radius:999px;display:inline-block;vertical-align:-1px;
   margin-right:.45rem;background:var(--border-strong)}
 .mark.pass{background:var(--good)} .mark.caution{background:var(--careful)} .mark.fail{background:var(--skip)}
+.mark.none{background:var(--faint);opacity:.45} .mark.missing{background:var(--accent)}
 .mark-l{font-size:12px;color:var(--muted)}
 .mat{font-size:12px;color:var(--body)}
 .mat.none{color:var(--faint)}
@@ -258,13 +270,22 @@ footer{margin-top:2.4rem;padding-top:1.2rem;border-top:1px solid var(--border);
   </div>
 
   <footer>
-    <b>Packaging</b> is the four questions in order: does the product touch it, would that
+    <b>Materials</b> is the four questions in order: does the product touch it, would that
     contact matter, what are the contact parts made of, and which polymer. Green means it does
     not matter or the contact material is inert; orange and red mean it does, scaled by what is
-    inside and how it is used. Grey means a question is still unanswered, which is not a pass.
-    <b>Checks</b> is formula, materials, recalls and lawsuits, independent tests, in that order.
-    Purple means a recorded finding with a source; amber means it was inferred from a product note
-    and cannot say where it came from; empty means nobody has looked.
+    inside and how it is used. It uses the same five colours as Checks, so purple there also
+    means the question is still open, which is not a pass.
+    <b>Checks</b> is formula, materials, recalls and lawsuits, independent tests, in that order,
+    coloured by the answer:
+    <span class="key"><i class="s-pass"></i>pass</span>
+    <span class="key"><i class="s-caution"></i>caution</span>
+    <span class="key"><i class="s-fail"></i>fail</span>
+    <span class="key"><i class="s-none"></i>not applicable</span>
+    <span class="key"><i class="s-missing"></i>not checked yet</span>
+    Grey and purple are both blanks in the old view and are not the same thing. Grey is an answer:
+    somebody looked and nothing of that kind applies, which is why a steel kettle has no ingredient
+    list and is not held for one. Purple is the gap that holds a recommendation back. Where the
+    answer came from is in the row detail, and the bars above count it across the file.
     This page reads brand-data.json live, so it shows whatever was last deployed.
     The password hides this view, not the data: brand-data.json is served publicly because the
     extension and the app both read it.
@@ -320,9 +341,11 @@ function build(brands){
       if(v in verdicts) verdicts[v]++;
       const checks = FRONTS.map(f=>{
         const s = fr[f];
-        if(!s || s==="unassessed" || s==="unknown"){ blank[f]++; return 0; }
-        if(or[f] && or[f]!=="inferred"){ ev[f]++; return 2; }
-        inf[f]++; return 1;
+        // The provenance counters still feed the evidence bars above; what
+        // changed is that the row squares now show the answer instead.
+        if(!s || s==="unassessed" || s==="unknown"){ blank[f]++; return "missing"; }
+        if(or[f] && or[f]!=="inferred") ev[f]++; else inf[f]++;
+        return s === "none" ? "none" : s;
       });
       if(e.materialsList) withMat++;
       ROWS.push([b.brand, p.name||"", b.category||"", v, e.materialsList||"", checks,
@@ -402,7 +425,8 @@ function render(){
   let rows = ROWS.filter(passes);
   if(sortCol!==null) rows = rows.slice().sort((a,b)=>{
     let x=a[sortCol], y=b[sortCol];
-    if(sortCol===5){ x=a[5].reduce((s,n)=>s+n,0); y=b[5].reduce((s,n)=>s+n,0); }
+    if(sortCol===5){ const w={fail:0,caution:1,missing:2,none:3,pass:4};
+                     x=a[5].reduce((s,n)=>s+w[n],0); y=b[5].reduce((s,n)=>s+w[n],0); }
     return (typeof x==="string" ? x.localeCompare(y) : x-y)*sortDir;
   });
   const body = document.getElementById("rows");
@@ -418,18 +442,21 @@ function render(){
     tr.appendChild(el("td","dim",r[2]));
     const v=el("td"); v.appendChild(el("span","pill "+r[3], r[3])); tr.appendChild(v);
     const c=el("td"); const sq=el("span","sq");
-    sq.title = FRONTS.map((f,i)=>f+": "+["not checked","inferred","recorded"][r[5][i]]).join(", ");
-    for(const n of r[5]) sq.appendChild(el("i", n===2?"ev":n===1?"inf":""));
+    sq.title = FRONTS.map((f,i)=>f+": "+(r[5][i]==="missing"?"not checked yet":r[5][i]==="none"?"not applicable":r[5][i])).join(", ");
+    for(const st of r[5]) sq.appendChild(el("i","s-"+st));
     c.appendChild(sq); tr.appendChild(c);
     const xp=el("td");
     if(r[8]){ xp.appendChild(el("span","lvl "+r[8], r[8]));
               xp.appendChild(el("span","lvl-t", r[9])); }
     else xp.appendChild(el("span","mat none","—"));
     tr.appendChild(xp);
-    const pk=el("td"); const dot=el("span","mark "+r[7]);
-    dot.title = r[6] || r[7];
+    const pk=el("td");
+    const mst = (!r[7] || r[7]==="unassessed" || r[7]==="unknown") ? "missing" : r[7];
+    const dot=el("span","mark "+mst);
+    dot.title = r[6] || (mst==="missing" ? "not checked yet" : mst==="none" ? "not applicable" : mst);
     pk.appendChild(dot);
-    pk.appendChild(el("span","mark-l", {pass:"pass",caution:"caution",fail:"fail"}[r[7]] || "—"));
+    pk.appendChild(el("span","mark-l",
+      {pass:"pass",caution:"caution",fail:"fail",none:"n/a",missing:"open"}[mst] || "—"));
     tr.appendChild(pk);
     const m=el("td","mat"+(r[4]?"":" none"), r[4] || "—");
     if(r[6]) m.title = r[6];
