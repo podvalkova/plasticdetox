@@ -172,7 +172,19 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .verdict.v-good { border-top-color: var(--good); }
 .verdict.v-careful { border-top-color: var(--careful); }
 .verdict.v-skip { border-top-color: var(--skip); }
-.verdict-head { padding: 1.5rem 1.4rem 1.3rem; }
+.verdict-head { padding: 1.5rem 1.4rem 1.3rem; position: relative; }
+
+/* Keeping something is a decision made at the verdict, so the control lives
+   with it, in the corner where a person already looks for one. */
+.heart {
+  position: absolute; top: 1.1rem; right: 1.1rem;
+  width: 2.4rem; height: 2.4rem; border-radius: 999px;
+  display: grid; place-items: center; color: var(--faint);
+  border: 1px solid var(--border-strong); background: var(--surface);
+}
+.heart:active { background: var(--accent-wash); border-color: var(--accent-light); }
+.heart.on { color: var(--accent); border-color: var(--accent-light); background: var(--accent-wash); }
+.heart.on svg { fill: currentColor; }
 
 /* Tinted text on a tinted pill, the way the site does it. A solid block of
    colour behind the whole header shouted the verdict before anyone had read
@@ -381,15 +393,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .pcard-buy:active { background: var(--accent-light); }
 
 /* The keep control, on the verdict card itself. */
-.savebtn {
-  display: flex; align-items: center; justify-content: center; gap: .45rem;
-  width: 100%; padding: .85rem; border-top: 1px solid var(--border);
-  font-size: 14.5px; font-weight: 700; color: var(--body); background: var(--bg);
-}
-.savebtn:active { background: var(--accent-wash); color: var(--accent-deep); }
-.savebtn.on { color: var(--accent-deep); background: var(--accent-wash); }
-.savebtn.on svg { fill: currentColor; }
-
 /* ----------------------------------------------------------------- learn */
 
 .acard {

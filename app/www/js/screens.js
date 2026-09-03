@@ -258,7 +258,7 @@ export function saved(root, { items, index, onProduct, onOpen, onShop }) {
     const b = index.brands.find((x) => x.id === s.brandId || x.brand === s.brand);
     const row = b && (b.products || []).find((p) => p.name === s.name);
     if (b && row) {
-      grid.appendChild(shopCard({ brand: b, row }, { onOpen, onProduct }));
+      grid.appendChild(shopCard({ brand: b, row }, { onOpen, onProduct, eager: true }));
       continue;
     }
     const card = el("div", "pcard");
@@ -301,12 +301,13 @@ export function learn(root, { articles, onOpen, query, onQuery }) {
     return;
   }
 
-  for (const a of list) {
+  list.forEach((a, i) => {
     const card = el("button", "acard");
     card.type = "button";
     if (a.image) {
       const im = el("img");
-      im.src = a.image; im.alt = ""; im.loading = "lazy";
+      im.src = a.image; im.alt = "";
+      if (i >= 6) im.loading = "lazy";
       im.onerror = () => im.remove();
       card.appendChild(im);
     }
@@ -316,7 +317,7 @@ export function learn(root, { articles, onOpen, query, onQuery }) {
     card.appendChild(body);
     card.onclick = () => onOpen(`https://plasticdetox.org/articles/${a.slug}`);
     root.appendChild(card);
-  }
+  });
 }
 
 // ------------------------------------------------------------------- shop
@@ -343,7 +344,7 @@ function shelf(index) {
 }
 
 /** One product, as something you can look at rather than read. */
-function shopCard({ brand: b, row }, { onOpen, onProduct }) {
+function shopCard({ brand: b, row }, { onOpen, onProduct, eager = false }) {
   const card = el("button", "pcard");
   card.type = "button";
 
@@ -353,7 +354,7 @@ function shopCard({ brand: b, row }, { onOpen, onProduct }) {
     const img = el("img");
     img.src = src;
     img.alt = row.name;
-    img.loading = "lazy";
+    if (!eager) img.loading = "lazy";
     // A missing photo should look deliberate, not broken.
     img.onerror = () => { shot.replaceChildren(el("span", "pcard-fallback", b.brand)); };
     shot.appendChild(img);
@@ -422,7 +423,8 @@ export function shopIndex(root, { index, onCategory, onOpen, onProduct, query, o
     root.appendChild(el("div", "section-title",
       `${hits.length} match${hits.length === 1 ? "" : "es"}`));
     const grid = el("div", "pgrid");
-    for (const item of hits) grid.appendChild(shopCard(item, { onOpen, onProduct }));
+    hits.forEach((item, i) => grid.appendChild(
+      shopCard(item, { onOpen, onProduct, eager: i < 8 })));
     root.appendChild(grid);
     if (!hits.length) {
       root.appendChild(el("p", "note", "Nothing on the shelf matches that yet."));
@@ -440,7 +442,9 @@ export function shopIndex(root, { index, onCategory, onOpen, onProduct, query, o
       const src = productImage(it.row.asins[0], 150);
       if (!src) continue;
       const im = el("img");
-      im.src = src; im.alt = ""; im.loading = "lazy";
+      im.src = src; im.alt = "";
+      // Tile thumbnails are 150px and there are three per tile. The whole
+      // grid weighs less than one product photo, so none of it is deferred.
       im.onerror = () => im.remove();
       strip.appendChild(im);
     }
@@ -463,7 +467,8 @@ export function shopCategory(root, { index, category, onProduct, onOpen }) {
   root.appendChild(hero);
 
   const grid = el("div", "pgrid");
-  for (const item of items) grid.appendChild(shopCard(item, { onOpen, onProduct }));
+  items.forEach((item, i) => grid.appendChild(
+    shopCard(item, { onOpen, onProduct, eager: i < 8 })));
   root.appendChild(grid);
 }
 
@@ -590,6 +595,17 @@ export function result(root, { index, match, scan, product, query, productNamed,
   root.classList.add("tinted");
   const head = el("div", "verdict-head");
 
+  if (onSave) {
+    const keepName = (v.product && v.product.name) || v.brand.category || v.brand.brand;
+    const on = isSaved && isSaved(v.brand.brand, keepName);
+    const heart = el("button", `heart${on ? " on" : ""}`);
+    heart.type = "button";
+    heart.setAttribute("aria-label", on ? "Saved" : "Save");
+    heart.appendChild(icon(ICONS.heart, 20));
+    heart.onclick = () => onSave(v.brand, v.product || { name: keepName, cat: v.brand.category });
+    head.appendChild(heart);
+  }
+
   // A stance badge asserts that a person stood behind this verdict. Anything
   // we have not reviewed says so instead of wearing a colour it has not earned.
   // A badge asserts a verdict. Where the gate did not let one through, the
@@ -677,17 +693,6 @@ export function result(root, { index, match, scan, product, query, productNamed,
   }
   if (fronts.childNodes.length) card.appendChild(fronts);
 
-  // Keeping a product is a decision, so the control sits with the verdict
-  // rather than at the bottom of the page under everything else.
-  if (onSave && v.product) {
-    const on = isSaved && isSaved(v.brand.brand, v.product.name);
-    const save = el("button", `savebtn${on ? " on" : ""}`);
-    save.type = "button";
-    save.appendChild(icon(ICONS.saved, 17));
-    save.appendChild(el("span", null, on ? "Saved" : "Save"));
-    save.onclick = () => onSave(v.brand, v.product);
-    card.appendChild(save);
-  }
   root.appendChild(card);
 
   if (v.heldBack && v.heldBack.length) {

@@ -616,7 +616,8 @@ function hideBusy() {
 }
 
 async function start() {
-  // First, before anything that can be slow or can fail.
+  // Started first and not awaited: the ready call must not wait on the data
+  // load, and the first paint must not wait on the native bridge.
   //
   // This used to run at the end of start(), after a three megabyte parse and a
   // full first render. Capgo rolls a bundle back when this call does not
@@ -627,7 +628,7 @@ async function start() {
   // The bundle has demonstrably booted by the time this line runs: the module
   // loaded and executed. That is what the call is for. Whether the data then
   // loads is a different failure with its own handling below.
-  await liveUpdates();
+  liveUpdates();
 
   index = await data.load();
   canScan = await scanner.available();
@@ -667,16 +668,33 @@ async function start() {
  * the parts that change are the verdicts, the copy, and the screens.
  */
 async function liveUpdates() {
-  const cap = window.Capacitor;
-  const updater = cap && cap.Plugins && cap.Plugins.CapacitorUpdater;
-  if (!updater) return;
-  try {
-    // Tells the plugin this bundle booted without crashing. Without it the
-    // next launch rolls back to the last known good one, which is the whole
-    // safety net that makes shipping without review acceptable.
-    await updater.notifyAppReady();
-  } catch {
-    // Without the plugin the bundled version simply keeps running.
+  // Tells the plugin this bundle booted. Without it the next launch rolls back
+  // to the last known good one, which is the safety net that makes shipping
+  // without review acceptable, and which had been firing on good bundles.
+  //
+  // The plugin is injected by the native bridge, which is not necessarily up
+  // when this module runs. Reading it once and giving up when it is absent
+  // meant a bundle that booted perfectly could still be reverted, purely
+  // because we asked a moment too early. Moving the call earlier in boot,
+  // which was the previous fix, made that MORE likely rather than less.
+  //
+  // So wait for the bridge rather than assume it. Ten seconds of polling
+  // covers a cold start on a slow device and costs nothing on the web, where
+  // Capacitor never appears and there is nothing to notify.
+  for (let i = 0; i < 100; i += 1) {
+    const cap = window.Capacitor;
+    const updater = cap && cap.Plugins && cap.Plugins.CapacitorUpdater;
+    if (updater) {
+      try {
+        await updater.notifyAppReady();
+      } catch {
+        // A plugin that refuses is not worth a crash.
+      }
+      return;
+    }
+    // Not a native shell at all: nothing will ever inject the plugin.
+    if (!cap) return;
+    await new Promise((r) => setTimeout(r, 100));
   }
 }
 

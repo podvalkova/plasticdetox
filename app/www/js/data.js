@@ -94,7 +94,29 @@ function build(payload, source) {
 }
 
 /** Load the best data we have, without touching the network. */
+/**
+ * The three small files that are not the verdict payload.
+ *
+ * These have to load on every launch, not only on the one where the cache is
+ * cold. They used to sit after the `if (cached) return` below, which meant
+ * that from the second launch onwards the app had no product images, no
+ * articles and no campaign links: the shop was a wall of fallback text, the
+ * Learn tab was empty, and Creator Connections links quietly reverted to a
+ * plain tag. Small, independent of the brand payload, and cheap to read.
+ */
+let sidecarsLoaded = false;
+async function sidecars() {
+  if (sidecarsLoaded) return;
+  sidecarsLoaded = true;
+  [campaignLinks, productImages, articles] = await Promise.all([
+    readBundled("campaign-links").catch(() => ({})),
+    readBundled("product-images").catch(() => ({})),
+    readBundled("articles").catch(() => []),
+  ]);
+}
+
 export async function load() {
+  await sidecars();
   if (index) return index;
   const cached = readCache();
   if (cached) return build(cached, "cache");
@@ -103,11 +125,6 @@ export async function load() {
     readBundled("asin-map"),
     readBundled("barcodes").catch(() => ({})),
   ]);
-  // Creator Connections URLs, which must be used verbatim or the campaign gets
-  // no credit. Absent is fine: the shop falls back to a plain tagged link.
-  campaignLinks = await readBundled("campaign-links").catch(() => ({}));
-  productImages = await readBundled("product-images").catch(() => ({}));
-  articles = await readBundled("articles").catch(() => []);
   return build({ brands, asins, barcodes }, "bundle");
 }
 
