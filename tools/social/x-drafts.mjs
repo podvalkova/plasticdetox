@@ -23,7 +23,17 @@ const OUT = join(HERE, 'x-replies.html');
 const ARCHIVE = join(HERE, 'x-candidates-archive.json');
 const cands = JSON.parse(readFileSync(join(HERE, 'x-candidates.json'), 'utf8')).posts;
 const archive = existsSync(ARCHIVE) ? JSON.parse(readFileSync(ARCHIVE, 'utf8')) : {};
-for (const p of cands) archive[p.link.split('/').pop()] = p;
+for (const p of cands) {
+  const id = p.link.split('/').pop();
+  const prev = archive[id];
+  // Merge, never replace: a raw candidate carries the truncated search preview and
+  // would otherwise clobber text we already hydrated.
+  archive[id] = { ...prev, ...p };
+  if (prev?.fullText && (prev.text?.length ?? 0) > (p.text?.length ?? 0)) {
+    archive[id].text = prev.text;
+    archive[id].fullText = true;
+  }
+}
 writeFileSync(ARCHIVE, JSON.stringify(archive, null, 2) + '\n');
 
 const drafts = JSON.parse(readFileSync(join(HERE, 'x-replies.json'), 'utf8')).replies;
