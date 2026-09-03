@@ -53,9 +53,9 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   position: sticky; top: 0; z-index: 20;
   display: flex; align-items: center; gap: .5rem;
   padding: calc(var(--safe-top) + .5rem) 1rem .55rem;
-  background: rgba(250,250,249,.9);
+  background: var(--accent-wash);
   backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--accent-light);
 }
 .bar-title {
   flex: 1; text-align: center;
@@ -71,6 +71,11 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .bar-back[hidden] { visibility: hidden; display: grid; }
 
 .screen { padding: .5rem 1rem calc(var(--safe-bottom) + 2.5rem); max-width: 640px; margin: 0 auto; }
+/* The result screen was a stack of white cards on a near-white ground. A brand
+   wash under the top of it gives the page somewhere to start, and carries no
+   verdict meaning, which keeps the two colour systems apart. */
+.screen.tinted { background: linear-gradient(180deg,
+  var(--accent-wash) 0, var(--accent-wash) 90px, var(--bg) 300px); }
 
 .boot {
   position: fixed; inset: 0; z-index: 50;
@@ -160,7 +165,13 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   background: var(--surface); border: 1px solid var(--border);
   border-radius: var(--card-radius); box-shadow: var(--card-shadow);
   overflow: hidden; animation: pop .25s ease;
+  border-top: 4px solid var(--border-strong);
 }
+/* The verdict colour on the top edge only. A solid block behind the header
+   shouted before anyone had read the brand, which is why it is not there. */
+.verdict.v-good { border-top-color: var(--good); }
+.verdict.v-careful { border-top-color: var(--careful); }
+.verdict.v-skip { border-top-color: var(--skip); }
 .verdict-head { padding: 1.5rem 1.4rem 1.3rem; }
 
 /* Tinted text on a tinted pill, the way the site does it. A solid block of
@@ -193,9 +204,16 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   border-radius: 12px; padding: .7rem .85rem; margin-bottom: .45rem;
 }
 .front:last-child { margin-bottom: 0; }
-.front.pass { border-left-color: var(--good); }
-.front.caution { border-left-color: var(--careful); }
-.front.fail { border-left-color: var(--skip); }
+/* Each row wears its own answer rather than a shared grey, so a scorecard
+   reads at a glance instead of on a second look. */
+.front.pass { border-left-color: var(--good); background: var(--good-bg); border-color: var(--good-border); }
+.front.caution { border-left-color: var(--careful); background: var(--careful-bg); border-color: var(--careful-border); }
+.front.fail { border-left-color: var(--skip); background: var(--skip-bg); border-color: var(--skip-border); }
+/* On a tinted row the mark can no longer be the same tint. */
+.front.pass .front-mark, .front.caution .front-mark, .front.fail .front-mark { background: var(--surface); }
+.front.pass .front-mark { box-shadow: inset 0 0 0 1px var(--good-border); }
+.front.caution .front-mark { box-shadow: inset 0 0 0 1px var(--careful-border); }
+.front.fail .front-mark { box-shadow: inset 0 0 0 1px var(--skip-border); }
 .front-mark {
   width: 20px; height: 20px; border-radius: 999px; flex: none; margin-top: .1rem;
   display: grid; place-items: center; font-size: 11px; font-weight: 800;
@@ -227,6 +245,37 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .card input:focus { border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-light); }
 .card .row { background: var(--bg); }
 
+/* Editorial, not a verdict, so it wears the brand rather than a severity. */
+.card.know { background: var(--accent-wash); border-color: var(--accent-light); }
+.card.know h2 { color: var(--accent-deep); }
+.card.know em { font-style: italic; font-weight: 650; color: var(--accent-deep); }
+/* The label we read, set apart from our writing about it. */
+.card.ing-card { background: var(--chip); border-color: var(--border-strong); }
+.card.alt-card { background: var(--good-bg); border-color: var(--good-border); }
+.card.alt-card h2 { color: var(--good); }
+.ing-list { font-size: 14px; line-height: 1.65; color: var(--body); }
+.ing-list b { color: var(--text); font-weight: 650; }
+.ing-src { font-size: 12.5px; color: var(--faint); margin-top: .6rem; }
+.ing-list mark {
+  background: #FEF3C7; color: #7C4A16; font-weight: 700;
+  padding: 0 4px; border-radius: 5px; box-shadow: inset 0 0 0 1px var(--careful-border);
+}
+.alt-name { font-size: 17px; font-weight: 800; letter-spacing: -.02em; color: var(--text); }
+.alt-four { display: flex; gap: 5px; margin-top: .6rem; align-items: center; }
+.alt-four i { width: 10px; height: 10px; border-radius: 3px; background: var(--good); display: block; }
+.alt-four em { font-style: normal; font-size: 12.5px; color: var(--good); font-weight: 650; margin-left: .3rem; }
+
+/* Exposure sits inside the verdict card now. It is a severity, so it may wear
+   one: it is the reason three small findings add up to an answer here and
+   would not on a hand cream. */
+.expo { display: flex; gap: .7rem; align-items: flex-start; margin-top: .9rem;
+  border-radius: 14px; padding: 12px 14px; }
+.expo.low { background: var(--chip); border: 1px solid var(--border-strong); }
+.expo.medium { background: var(--careful-bg); border: 1px solid var(--careful-border); }
+.expo.high { background: var(--skip-bg); border: 1px solid var(--skip-border); }
+.expo-why { font-size: 13.5px; line-height: 1.5; color: var(--muted); }
+.expo-why b { color: var(--body); font-weight: 650; display: block; }
+
 .pkg { display: flex; gap: .7rem; align-items: flex-start; padding: .5rem 0; }
 .pkg-chip {
   flex: none; padding: .28rem .65rem; border-radius: 999px;
@@ -245,7 +294,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   background: var(--text); color: #fff; margin-top: .9rem;
 }
 .cta:active { background: var(--accent); }
-.cta.ghost { background: var(--surface); color: var(--text); border: 1px solid var(--border-strong); }
+.cta.ghost { background: var(--accent-wash); color: var(--accent-deep); border: 1px solid var(--accent-light); }
 .cta.ghost:active { background: var(--accent-wash); border-color: var(--accent-light); color: var(--accent-deep); }
 .cta:disabled { opacity: .55; }
 

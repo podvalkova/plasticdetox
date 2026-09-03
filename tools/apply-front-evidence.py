@@ -260,14 +260,14 @@ def read_formula(entry):
     fm = entry.get("formula") or {}
     if fm.get("asinMismatch"):
         return None, ("The listing we hold for this product serves a different item, "
-                      f"{fm['asinMismatch']}"), None
+                      f"{fm['asinMismatch']}"), None, []
 
     text = fm.get("ingredients") or ""
     complete = bool(fm.get("complete")) and bool(text)
     if not complete:
         text = fm.get("prose") or ""
         if not text:
-            return None, "No ingredient list recorded", None
+            return None, "No ingredient list recorded", None, []
 
     low = text.lower()
 
@@ -286,19 +286,19 @@ def read_formula(entry):
 
     if not complete:
         if named:
-            return "caution", ("The listing describes " + ", ".join(sorted(named)[:3])
-                               + ", but publishes no ingredient list, so this is a "
-                                 "reading of marketing copy and not of the label"), "inferred"
+            return ("caution", "The listing describes " + ", ".join(sorted(named)[:3])
+                    + ", but publishes no ingredient list, so this is a reading of "
+                      "marketing copy and not of the label", "inferred", sorted(named))
         return None, ("The listing publishes no ingredient list, only description copy, "
-                      "which can warn but cannot clear"), None
+                      "which can warn but cannot clear"), None, []
 
     if named:
-        return "fail", ("The published ingredient list names "
-                        + ", ".join(sorted(named)[:4])), "database"
+        return ("fail", "The published ingredient list names "
+                + ", ".join(sorted(named)[:4]), "database", sorted(named))
     if hidden:
-        return "caution", ("The published ingredient list hides composition behind "
-                           + ", ".join(sorted(hidden)[:3])), "database"
-    return "pass", "The published ingredient list carries nothing on the hazard list", "database"
+        return ("caution", "The published ingredient list hides composition behind "
+                + ", ".join(sorted(hidden)[:3]), "database", sorted(hidden))
+    return "pass", "The published ingredient list carries nothing on the hazard list", "database", []
 
 
 def keys_for(brand, product):
@@ -354,7 +354,7 @@ def main():
 
             # Formula reads its own recorded list and is independent of the
             # material, so it runs whether or not a material is on file.
-            f_status, f_why, f_origin = read_formula(entry)
+            f_status, f_why, f_origin, f_terms = read_formula(entry)
             if f_why:
                 e = p.setdefault("ext", {})
                 e.setdefault("frontNotes", {})["formula"] = f_why + "."
@@ -394,6 +394,7 @@ def main():
                     "complete": bool(fm.get("complete") and fm.get("ingredients")),
                     "verdict": WORD.get(f_status or held, "open"),
                     "summary": f_why + "." if f_why else "",
+                    "flagged": f_terms,
                     "source": fm.get("source") or "",
                     "checked": fm.get("checkedListing") or "",
                 }

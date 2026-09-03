@@ -48,7 +48,14 @@ export class Index {
       for (const label of [b.brand, ...(b.aliases || [])]) {
         const key = collapse(label);
         // First writer wins so the canonical brand beats an alias collision.
-        if (key.length >= 3 && !this.byCollapsed.has(key)) this.byCollapsed.set(key, b);
+        //
+        // Every brand is indexed, however short. The length guard used to live
+        // here, which meant a brand whose name collapses under three characters
+        // was never in the map at all: A+D collapses to "ad", so the app could
+        // not find it by name however it was typed. The guard belongs in
+        // fromTitle, where a two letter prefix really would match half the file,
+        // and not on an exact lookup of what somebody typed.
+        if (!this.byCollapsed.has(key)) this.byCollapsed.set(key, b);
       }
     }
   }
@@ -292,6 +299,9 @@ export function verdictFor(match, ctx = {}) {
     brandReason: brandAdds ? brandNote : "",
     scoped: brandCopyOnly || !!(row && row.ext && row.ext.disclose),
     heldBack: (row && row.ext && row.ext.heldBack) || [],
+    // The row's own record, for the blocks that only exist where we did the
+    // work: the exposure line, the ingredient list, the story worth telling.
+    ext: (row && row.ext) || null,
     why: (row && row.ext && row.ext.why) || "",
     reviewed: brand.reviewed !== false,
     article: brand.article || (brand.sources && brand.sources[0]) || "",
@@ -354,15 +364,34 @@ export function ratedProducts(brand) {
  * first, which here means the shortest researched entry list first is wrong,
  * so we simply keep the data order and let the store be the source of truth.
  */
-export function alternativesFor(index, brand, limit = 3) {
-  if (!brand || !brand.category) return [];
+/**
+ * What we would buy instead, chosen at product scope.
+ *
+ * This used to pick brands whose stance is good in the same brand category,
+ * which put Babo Botanicals on a diaper cream page: the brand is good because
+ * its lotions are, and its diaper cream is the one that tested leaded. The
+ * subtitle even printed "Diaper cream tested leaded" as the reason to buy it.
+ * That is section 1's opening failure, a brand verdict standing in for a
+ * product one, on the surface where it does the most damage.
+ *
+ * So: a product row we rate good, in the same product category, from a brand
+ * we have reviewed. Falls back to the brand category only where the row has
+ * none, and never returns the brand being looked at.
+ */
+export function alternativesFor(index, brand, limit = 3, cat = "") {
+  const want = cat || (brand && brand.category) || "";
+  if (!want) return [];
   const out = [];
   for (const b of index.brands) {
-    if (b.id === brand.id) continue;
-    if (b.category !== brand.category) continue;
-    if (b.stance !== "good") continue;
-    if (b.reviewed === false) continue;
-    out.push(b);
+    if (!b || b.reviewed === false) continue;
+    if (brand && b.id === brand.id) continue;
+    for (const row of (b.products || [])) {
+      const ext = row.ext || {};
+      if (ext.verdict !== "good") continue;
+      if ((row.cat || b.category) !== want) continue;
+      out.push({ brand: b, row });
+      break;
+    }
     if (out.length >= limit) break;
   }
   return out;

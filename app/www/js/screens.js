@@ -167,10 +167,107 @@ export function renderResults(container, hits, onPick) {
  * carries the packaging read. It is rendered even when we know the brand,
  * because "good brand, PET bottle" is a real and common answer.
  */
+
+/**
+ * The exposure line, said the way a person would say it.
+ *
+ * The model already decides this once per product type, so every row has one.
+ * It belongs beside the verdict rather than three cards down, because it is
+ * the reason three small findings add up to an answer on a diaper cream and
+ * would not on a hand cream.
+ */
+const CONTACT = {
+  "leave-on": "left on skin", swallowed: "swallowed", spat: "spat out",
+  rinsed: "rinsed off", transfer: "passed into what you eat or drink",
+  prolonged: "in contact for hours", breathed: "breathed in",
+};
+const HOW_OFTEN = {
+  "several daily": "several times a day", daily: "every day",
+  weekly: "most weeks", rare: "now and then",
+};
+
+function exposureBlock(ex) {
+  if (!ex || !ex.level) return null;
+  const box = el("div", `expo ${ex.level}`);
+  box.appendChild(el("span", `pkg-chip ${ex.level}`, String(ex.level).toUpperCase()));
+  const why = el("div", "expo-why");
+  const bits = [
+    ex.baby ? "On a baby" : null,
+    CONTACT[ex.retained] || null,
+    HOW_OFTEN[ex.frequency] || null,
+  ].filter(Boolean);
+  if (bits.length) {
+    const line = bits.join(", ") + ".";
+    why.appendChild(el("b", null, line.charAt(0).toUpperCase() + line.slice(1)));
+  }
+  if (ex.why) why.appendChild(document.createTextNode(ex.why));
+  box.appendChild(why);
+  return box;
+}
+
+/**
+ * The label we read, with the words we objected to marked inside it.
+ *
+ * Every scanner app hands out a score. Almost none show the list they read it
+ * from. This is the part that makes a verdict checkable rather than another
+ * opinion, which is why the terms are stored rather than parsed back out of
+ * our own sentence.
+ */
+function ingredientsCard(fa) {
+  if (!fa || !fa.ingredients) return null;
+  const box = el("div", "card ing-card");
+  box.appendChild(el("h2", null, "What is in it"));
+  const p = el("p", "ing-list");
+  const terms = (fa.flagged || []).filter(Boolean);
+  const rx = terms.length
+    ? new RegExp("(" + terms.map((t) => t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|") + ")s?", "ig")
+    : null;
+  const text = fa.ingredients;
+  if (!rx) {
+    p.textContent = text;
+  } else {
+    let last = 0, m;
+    while ((m = rx.exec(text)) !== null) {
+      if (m.index > last) p.appendChild(document.createTextNode(text.slice(last, m.index)));
+      p.appendChild(el("mark", null, m[0]));
+      last = m.index + m[0].length;
+      if (rx.lastIndex === m.index) rx.lastIndex++;
+    }
+    if (last < text.length) p.appendChild(document.createTextNode(text.slice(last)));
+  }
+  box.appendChild(p);
+  if (fa.checked) box.appendChild(el("div", "ing-src", `Read from the label, ${fa.checked}.`));
+  return box;
+}
+
+/**
+ * The one story worth telling about this product, where there is one.
+ *
+ * Deliberately conditional. A card that always appears and is sometimes filler
+ * is worth less than one that appears only when we have something.
+ */
+function worthKnowing(ext, fronts) {
+  if (!ext) return null;
+  const k = ext.classEvidence;
+  const legal = ((fronts && fronts.legal) || {}).status;
+  const legalNote = ext.legalNote || "";
+  let body = null;
+  if (k && k.detail) body = k.detail + (k.source ? ` (${k.source})` : "");
+  else if (["caution", "fail"].includes(legal) && legalNote.length > 90) body = legalNote;
+  if (!body) return null;
+  const box = el("div", "card know");
+  box.appendChild(el("h2", null, "Worth knowing"));
+  box.appendChild(el("p", null, body));
+  return box;
+}
+
 export function result(root, { index, match, scan, product, query, productNamed, onOpen, onPick, onProduct }) {
   const v = verdictFor(match, { title: (scan && scan.title) || query || "", product, productNamed });
 
-  const card = el("div", "verdict");
+  const stanceClass = v.asserted && ["good", "careful", "skip"].includes(v.stance)
+    ? ` v-${v.stance}` : "";
+  const card = el("div", "verdict" + stanceClass);
+  root.classList.add("tinted");
   const head = el("div", "verdict-head");
 
   // A stance badge asserts that a person stood behind this verdict. Anything
@@ -187,6 +284,9 @@ export function result(root, { index, match, scan, product, query, productNamed,
   head.appendChild(el("div", "verdict-cat",
     v.level === "product" && v.product ? `${v.product.name} · ${v.brand.category}` : v.brand.category));
   if (v.reason) head.appendChild(el("p", "verdict-reason", v.reason));
+
+  const expo = exposureBlock(v.ext && v.ext.exposure);
+  if (expo) head.appendChild(expo);
 
   if (v.brandReason) {
     const bl = el("div", "verdict-scope");
@@ -239,7 +339,9 @@ export function result(root, { index, match, scan, product, query, productNamed,
     const body = el("div", "row-body");
     body.appendChild(el("div", "front-name", label));
     const note = splitNote(f.note);
-    body.appendChild(el("div", "front-note", (note && note.main) || describeFront(st)));
+    const full = (note && note.main) || describeFront(st);
+    body.appendChild(el("div", "front-note",
+      full.length > 200 ? full.split(/(?<=\.)\s+/)[0] : full));
     // The card already said this finding is about the brand generally. A second
     // aside under the front says it again in different words.
     if (note && note.scope && !v.scoped) body.appendChild(el("div", "front-scope", note.scope));
@@ -284,18 +386,32 @@ export function result(root, { index, match, scan, product, query, productNamed,
     }
   }
 
+  const ing = ingredientsCard(v.ext && v.ext.formulaAnswers);
+  if (ing) root.appendChild(ing);
+
+  const know = worthKnowing(v.ext, v.fronts);
+  if (know) root.appendChild(know);
+
   if (scan) root.appendChild(materialsCard(scan, onOpen));
 
-  const alts = v.stance === "good" ? [] : alternativesFor(index, v.brand, 3);
+  const alts = v.stance === "good"
+    ? []
+    : alternativesFor(index, v.brand, 3, (v.product && v.product.cat) || "");
   if (alts.length) {
-    const box = el("div", "card");
+    const box = el("div", "card alt-card");
     box.appendChild(el("h2", null, "What we would buy instead"));
-    for (const b of alts) {
+    for (const { brand: b, row: pr } of alts) {
       const row = el("button", "row");
       row.appendChild(el("span", "dot good"));
       const body = el("div", "row-body");
-      body.appendChild(el("div", "row-name", b.brand));
-      body.appendChild(el("div", "row-sub", b.evidence || b.category));
+      // Many rows already carry the brand in their name, so prefixing it gave
+      // "Forlife Forlife Stainless Steel Tea Infuser".
+      const label = pr.name.toLowerCase().startsWith(b.brand.toLowerCase())
+        ? pr.name : `${b.brand} ${pr.name}`;
+      body.appendChild(el("div", "row-name", label));
+      // The row's own sentence, not the brand's. A brand blurb here is how a
+      // good brand's bad product ends up recommended.
+      body.appendChild(el("div", "row-sub", (pr.note || "").split(". ")[0] || b.category));
       row.appendChild(body);
       row.appendChild(el("span", "row-chev", "›"));
       row.onclick = () => onPick({ brand: b });
@@ -376,7 +492,10 @@ export function unknown(root, { scan, brand, product, hasPass, onCheck, onReques
   const named = [brand, product].filter(Boolean).join(" ").trim()
     || (scan && (scan.brandName || scan.title)) || "";
 
+  // No verdict here, so no verdict colour on the edge. The wash still applies:
+  // it is the brand, not a judgement.
   const card = el("div", "verdict");
+  root.classList.add("tinted");
   const head = el("div", "verdict-head");
   head.appendChild(el("span", "badge neutral", "Not reviewed yet"));
   head.appendChild(el("div", "verdict-brand",
