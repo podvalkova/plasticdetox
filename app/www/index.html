@@ -6,6 +6,39 @@
   <meta name="color-scheme" content="light">
   <title>Plastic Detox</title>
   <link rel="stylesheet" href="./css/app.css">
+  <script>
+  // Tell the updater this bundle booted, before anything else can go wrong.
+  //
+  // Capgo reverts to the previous bundle, and eventually to the copy shipped
+  // inside the app, if this is not called within ten seconds of load. Doing it
+  // from a module meant it depended on that module parsing, on its imports
+  // resolving, and on a three megabyte JSON parse not hogging the main thread
+  // first. Any one of those failing looked to a person like the app randomly
+  // going back to an old version, which is exactly what was happening.
+  //
+  // Nothing here imports anything, and it runs before the module does. The
+  // bridge injects the plugin at its own pace, so poll rather than assume, and
+  // stop straight away on the web where Capacitor never appears at all.
+  (function () {
+    var tries = 0;
+    (function ready() {
+      var cap = window.Capacitor;
+      var plugin = cap && cap.Plugins && cap.Plugins.CapacitorUpdater;
+      if (plugin && plugin.notifyAppReady) {
+        try {
+          plugin.notifyAppReady();
+          window.__pdReady = true;
+        } catch (e) {
+          window.__pdReadyError = String(e);
+        }
+        return;
+      }
+      if (!cap && tries > 5) return;
+      if (tries++ > 80) return;
+      setTimeout(ready, 100);
+    })();
+  })();
+  </script>
 </head>
 <body>
   <div id="app">

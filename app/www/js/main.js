@@ -810,6 +810,10 @@ async function liveUpdates() {
   // So wait for the bridge rather than assume it. Ten seconds of polling
   // covers a cold start on a slow device and costs nothing on the web, where
   // Capacitor never appears and there is nothing to notify.
+  // The shell in index.html already does this before any module loads, which
+  // is the call that matters. This is the belt to that pair of braces: it
+  // costs nothing, and notifying twice is harmless.
+  if (window.__pdReady) return;
   for (let i = 0; i < 100; i += 1) {
     const cap = window.Capacitor;
     const updater = cap && cap.Plugins && cap.Plugins.CapacitorUpdater;
