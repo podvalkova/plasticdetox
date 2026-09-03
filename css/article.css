@@ -593,3 +593,14 @@ body {
   .nav-links::-webkit-scrollbar { display: none; }
   .nav-link { font-size: 0.9rem; white-space: nowrap; }
 }
+
+/* pd-app-mode */
+/* Opened from the app (?app=1). The app supplies its own nav and the article
+   is the only thing it wants, so the site's furniture stands down. */
+html.in-app .nav,
+html.in-app .footer,
+html.in-app .breadcrumbs,
+html.in-app .newsletter,
+html.in-app .site-header { display: none !important; }
+html.in-app body { padding-top: 0 !important; }
+html.in-app .article, html.in-app main { padding-top: 1rem !important; }

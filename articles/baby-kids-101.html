@@ -174,8 +174,13 @@
       .step-num { width: 40px; height: 40px; font-size: 1rem; }
       .hub-stats { gap: 1.25rem; padding: 1.25rem; }
     }
-  </style>
+  
+/* pd-app-mode: opened from the app, so the site's own furniture stands down. */
+html.in-app .nav, html.in-app .footer, html.in-app .breadcrumbs,
+html.in-app .newsletter, html.in-app .site-header { display: none !important; }
+</style>
   <style>@media(max-width:640px){.nav-hide-mobile{display:none!important}}</style>
+<script id="pd-app-mode">if(location.search.indexOf("app=1")>-1)document.documentElement.classList.add("in-app")</script>
 </head>
 <body>
 

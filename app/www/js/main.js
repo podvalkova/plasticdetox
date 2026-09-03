@@ -64,12 +64,89 @@ function go(state, { replace = false } = {}) {
   if (replace) stack.pop();
   stack.push(state);
   render();
+  rememberPlace();
 }
 
 function back() {
   if (stack.length <= 1) return;
   stack.pop();
   render();
+  rememberPlace();
+}
+
+/**
+ * Where you were, so a reload does not send you home.
+ *
+ * The webview restarts for reasons that have nothing to do with you: iOS
+ * reclaims memory from a backgrounded app, and the updater reloads when it
+ * swaps a bundle in. Either way the stack lives in memory and you land back on
+ * the home screen, which reads as the app forgetting what you were doing.
+ *
+ * Only enough to find the place again: a screen, a brand id, a product name.
+ * Nothing here is a copy of the data, so a restored screen is rebuilt from
+ * today's verdicts rather than from whatever was true when you left.
+ */
+const PLACE_KEY = "pd.place.v1";
+
+function rememberPlace() {
+  try {
+    const trail = stack.map((s) => ({
+      screen: s.screen,
+      brandId: (s.match && s.match.brand && s.match.brand.id) || null,
+      product: (s.product && s.product.name) || null,
+      category: s.category || null,
+      label: s.label || null,
+      query: s.query || null,
+      q: s.q || null,
+    })).slice(-4);
+    sessionStorage.setItem(PLACE_KEY, JSON.stringify({ trail, at: Date.now() }));
+  } catch {
+    // A full or unavailable store is not worth a crash.
+  }
+}
+
+function restorePlace() {
+  let saved = null;
+  try {
+    saved = JSON.parse(sessionStorage.getItem(PLACE_KEY) || "null");
+  } catch {
+    return false;
+  }
+  if (!saved || !Array.isArray(saved.trail) || !saved.trail.length) return false;
+  // Half an hour later this is a new visit, not the same one interrupted.
+  if (Date.now() - (saved.at || 0) > 30 * 60 * 1000) return false;
+
+  const rebuilt = [];
+  for (const step of saved.trail) {
+    if (["home", "shop", "saved", "learn", "categories"].includes(step.screen)) {
+      rebuilt.push({ screen: step.screen, q: step.q || "" });
+      continue;
+    }
+    if (step.screen === "shopCategory" && step.category) {
+      rebuilt.push({ screen: "shopCategory", category: step.category });
+      continue;
+    }
+    if (step.screen === "result" && step.brandId) {
+      const brand = index.brands.find((b) => b.id === step.brandId);
+      if (!brand) return rebuilt.length ? (stack = rebuilt, true) : false;
+      const row = step.product
+        && (brand.products || []).find((x) => x.name === step.product);
+      rebuilt.push({
+        screen: "result",
+        match: { brand, via: "restored" },
+        scan: null,
+        product: row || null,
+        productNamed: !!row,
+        query: step.query || "",
+      });
+      continue;
+    }
+    // Anything else, a scan or a paid check in flight, is not worth restoring.
+    break;
+  }
+  if (!rebuilt.length) return false;
+  stack = rebuilt;
+  return true;
 }
 
 function render() {
@@ -237,6 +314,7 @@ function draw() {
     document.body.appendChild(screens.tabs(ROOTS[state.screen], (tab) => {
       stack = [{ screen: tab === "check" ? "home" : tab }];
       render();
+      rememberPlace();
     }));
   }
 }
@@ -634,7 +712,8 @@ async function start() {
   canScan = await scanner.available();
   boot.classList.add("gone");
   setTimeout(() => boot.remove(), 300);
-  go({ screen: "home" });
+  if (restorePlace()) render();
+  else go({ screen: "home" });
   openDeepLink(location.search).catch((err) => console.error("deep link failed", err));
 
   // Refreshed after the first screen is up, never before it. A scan in a shop

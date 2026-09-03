@@ -315,7 +315,10 @@ export function learn(root, { articles, onOpen, query, onQuery }) {
     body.appendChild(el("div", "acard-title", a.title));
     if (a.blurb) body.appendChild(el("div", "acard-blurb", a.blurb));
     card.appendChild(body);
-    card.onclick = () => onOpen(`https://plasticdetox.org/articles/${a.slug}`);
+    // app=1 tells the article the app already has a nav, so it drops the
+    // site's own header, footer and newsletter block and reads as one screen
+    // rather than as a website we sent you to.
+    card.onclick = () => onOpen(`https://plasticdetox.org/articles/${a.slug}?app=1`);
     root.appendChild(card);
   });
 }
