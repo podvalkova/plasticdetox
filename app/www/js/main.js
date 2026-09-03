@@ -180,7 +180,16 @@ function draw() {
   } else if (state.screen === "shop") {
     screens.shopIndex(view, {
       index,
+      query: state.q || "",
+      // Typing filters in place rather than pushing a screen, so the back
+      // arrow still means "leave the shop" and not "undo a keystroke".
+      onQuery: (q) => { state.q = q; render(); view.querySelector(".shop-search input")?.focus(); },
       onCategory: (category) => go({ screen: "shopCategory", category }),
+      onOpen: openExternal,
+      onProduct: (b, row) => go({
+        screen: "result", match: { brand: b, via: "picked" }, scan: null,
+        product: row, productNamed: true, query: `${b.brand} ${row.name}`,
+      }),
     });
   } else if (state.screen === "shopCategory") {
     screens.shopCategory(view, {
@@ -535,6 +544,19 @@ function hideBusy() {
 }
 
 async function start() {
+  // First, before anything that can be slow or can fail.
+  //
+  // This used to run at the end of start(), after a three megabyte parse and a
+  // full first render. Capgo rolls a bundle back when this call does not
+  // arrive in time, so a slow cold start looked exactly like a broken bundle
+  // and the update kept reverting. Worse, anything throwing above it meant the
+  // call never happened at all and the rollback was guaranteed.
+  //
+  // The bundle has demonstrably booted by the time this line runs: the module
+  // loaded and executed. That is what the call is for. Whether the data then
+  // loads is a different failure with its own handling below.
+  await liveUpdates();
+
   index = await data.load();
   canScan = await scanner.available();
   boot.classList.add("gone");
@@ -551,8 +573,6 @@ async function start() {
       if (stack.length === 1) render();
     }
   });
-
-  await liveUpdates();
 
   const cap = window.Capacitor;
   const appPlugin = cap && cap.Plugins && cap.Plugins.App;

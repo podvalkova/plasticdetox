@@ -47,6 +47,18 @@ fs.writeFileSync(path.join(OUT, "campaign-links.json"),
   JSON.stringify(campaigns, null, 1) + "\n");
 console.log(`campaign-links.json  ${Object.keys(campaigns).length} products`);
 
+// Product images, harvested the same way and for the same reason: the store
+// already holds an Amazon image id for most of what we recommend, and a shop
+// that is a wall of text is a list rather than a shelf.
+const store = fs.readFileSync(path.join(REPO, "data", "store-products.js"), "utf8");
+const images = {};
+for (const m of store.matchAll(/\{[^{}]*?img:\s*"([^"]+)"[^{}]*?asin:\s*"([A-Z0-9]{10})"[^{}]*?\}/g)) {
+  if (!images[m[2]]) images[m[2]] = m[1];
+}
+fs.writeFileSync(path.join(OUT, "product-images.json"),
+  JSON.stringify(images, null, 1) + "\n");
+console.log(`product-images.json  ${Object.keys(images).length} products`);
+
 let brands = 0;
 for (const { from, to } of SOURCES) {
   if (!fs.existsSync(from)) {

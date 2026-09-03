@@ -24,6 +24,7 @@ let index = null;
 let meta = { source: "bundle", version: null, brands: 0 };
 
 let campaignLinks = {};
+let productImages = {};
 
 /**
  * The buy link for an ASIN.
@@ -36,6 +37,17 @@ let campaignLinks = {};
 export function buyLink(asin) {
   if (!asin) return "";
   return campaignLinks[asin] || `https://www.amazon.com/dp/${asin}?tag=plasticdetox-20`;
+}
+
+/**
+ * A product photo, where the store holds one.
+ *
+ * Amazon serves any size off the same id, so the app asks for a small one:
+ * a shelf of 150 products should not pull 150 full resolution photographs.
+ */
+export function productImage(asin, px = 300) {
+  const id = asin && productImages[asin];
+  return id ? `https://m.media-amazon.com/images/I/${id}._AC_SL${px}_.jpg` : "";
 }
 
 async function readBundled(name) {
@@ -90,6 +102,7 @@ export async function load() {
   // Creator Connections URLs, which must be used verbatim or the campaign gets
   // no credit. Absent is fine: the shop falls back to a plain tagged link.
   campaignLinks = await readBundled("campaign-links").catch(() => ({}));
+  productImages = await readBundled("product-images").catch(() => ({}));
   return build({ brands, asins, barcodes }, "bundle");
 }
 

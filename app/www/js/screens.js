@@ -5,7 +5,7 @@
 import { FRONTS, STANCE_LABEL, verdictFor, alternativesFor, ratedProducts } from "./match.js";
 import { packagingHeadline } from "./upc.js";
 import { el, frag, icon, ICONS, splitNote } from "./ui.js";
-import { buyLink } from "./data.js";
+import { buyLink, productImage } from "./data.js";
 
 const SITE = "https://plasticdetox.org";
 const STATUS_GLYPH = { pass: "✓", caution: "!", fail: "✕", unknown: "?" };
@@ -142,30 +142,9 @@ export function home(root, {
     root.appendChild(strip);
   }
 
-  if (starters && starters.length) {
-    root.appendChild(el("div", "section-title", "Browse"));
-    for (const s of starters) {
-      const row = el("button", "row");
-      row.type = "button";
-      row.appendChild(el("span", "dot brand"));
-      const body = el("div", "row-body");
-      body.appendChild(el("div", "row-name", s.label));
-      body.appendChild(el("div", "row-sub", s.sub));
-      row.appendChild(body);
-      row.appendChild(el("span", "row-chev", "\u203a"));
-      row.onclick = () => onStarter(s);
-      root.appendChild(row);
-    }
-    const all = el("button", "row row-quiet");
-    all.type = "button";
-    const body = el("div", "row-body");
-    body.appendChild(el("div", "row-name", "All categories"));
-    body.appendChild(el("div", "row-sub", `${categoryCount} categories researched`));
-    all.appendChild(body);
-    all.appendChild(el("span", "row-chev", "\u203a"));
-    all.onclick = onAllCategories;
-    root.appendChild(all);
-  }
+  // The Browse list used to live here. It is what the Shop tab is, and having
+  // both meant the home screen answered a question the bar already answers.
+  // Check is for something in your hand; Shop is for everything else.
 
   root.appendChild(el("p", "note",
     "A verdict here is the same one the site publishes. We rate a product only when we have researched that exact product."));
@@ -258,96 +237,142 @@ export function tabs(current, onTab) {
  * and was the half of the app that did not exist. Only rows we rate good and
  * that have somewhere to buy them: a shelf you cannot buy from is a list.
  */
-export function shopIndex(root, { index, onCategory }) {
-  const groups = new Map();
+/** Everything we would buy, gathered once. */
+function shelf(index) {
+  const out = [];
   for (const b of index.brands) {
     for (const row of (b.products || [])) {
       if (((row.ext || {}).verdict) !== "good") continue;
       if (!(row.asins || []).length) continue;
-      const cat = row.cat || b.category || "Other";
-      if (!groups.has(cat)) groups.set(cat, []);
-      groups.get(cat).push({ brand: b, row });
+      out.push({ brand: b, row, cat: row.cat || b.category || "Other" });
     }
   }
-  const cats = [...groups.entries()].sort((a, b) => a[0].localeCompare(b[0]));
+  return out;
+}
 
-  const hero = el("div", "hero");
+/** One product, as something you can look at rather than read. */
+function shopCard({ brand: b, row }, { onOpen, onProduct }) {
+  const card = el("button", "pcard");
+  card.type = "button";
+
+  const shot = el("div", "pcard-img");
+  const src = productImage(row.asins[0], 300);
+  if (src) {
+    const img = el("img");
+    img.src = src;
+    img.alt = row.name;
+    img.loading = "lazy";
+    // A missing photo should look deliberate, not broken.
+    img.onerror = () => { shot.replaceChildren(el("span", "pcard-fallback", b.brand)); };
+    shot.appendChild(img);
+  } else {
+    shot.appendChild(el("span", "pcard-fallback", b.brand));
+  }
+  card.appendChild(shot);
+
+  const body = el("div", "pcard-body");
+  body.appendChild(el("div", "pcard-brand", b.brand));
+  const label = row.name.toLowerCase().startsWith(b.brand.toLowerCase())
+    ? row.name.slice(b.brand.length).trim() || row.name : row.name;
+  body.appendChild(el("div", "pcard-name", label));
+
+  const fr = (row.ext || {}).fronts || {};
+  const done = FRONTS.filter(([k]) => ["pass", "none"].includes(fr[k])).length;
+  const marks = el("div", "pcard-checks");
+  for (const [k] of FRONTS) {
+    const dot = el("i");
+    dot.className = ["pass", "none"].includes(fr[k]) ? "on" : "";
+    marks.appendChild(dot);
+  }
+  marks.appendChild(el("em", null, `${done}/4`));
+  body.appendChild(marks);
+  card.appendChild(body);
+
+  const buy = el("span", "pcard-buy", "View");
+  buy.onclick = (e) => { e.stopPropagation(); onOpen(buyLink(row.asins[0])); };
+  card.appendChild(buy);
+
+  card.onclick = () => onProduct(b, row);
+  return card;
+}
+
+export function shopIndex(root, { index, onCategory, onOpen, onProduct, query, onQuery }) {
+  const all = shelf(index);
+  const groups = new Map();
+  for (const item of all) {
+    if (!groups.has(item.cat)) groups.set(item.cat, []);
+    groups.get(item.cat).push(item);
+  }
+
+  const hero = el("div", "hero shop-hero");
   hero.appendChild(el("h1", null, "What we would buy"));
   hero.appendChild(el("p", null,
-    `${[...groups.values()].reduce((n, v) => n + v.length, 0)} products that cleared our checks, across ${cats.length} categories.`));
+    `${all.length} products that cleared our checks, across ${groups.size} categories.`));
   root.appendChild(hero);
 
-  const box = el("div", "card");
-  for (const [cat, items] of cats) {
-    const line = el("button", "row");
-    const body = el("div", "row-body");
-    body.appendChild(el("div", "row-name", cat));
-    body.appendChild(el("div", "row-sub", `${items.length} pick${items.length === 1 ? "" : "s"}`));
-    line.appendChild(body);
-    line.appendChild(el("span", "row-chev", "\u203a"));
-    line.onclick = () => onCategory(cat);
-    box.appendChild(line);
-  }
+  // Search across the shelf, not the whole database. Everything here is
+  // something we would actually buy, so a hit is always an answer.
+  const box = el("div", "search shop-search");
+  const input = el("input");
+  input.type = "search";
+  input.placeholder = "Search these picks";
+  input.value = query || "";
+  input.autocomplete = "off";
+  input.oninput = () => onQuery(input.value);
+  box.appendChild(icon(ICONS.search, 18));
+  box.appendChild(input);
   root.appendChild(box);
+
+  const q = (query || "").trim().toLowerCase();
+  if (q.length >= 2) {
+    const hits = all.filter(({ brand: b, row, cat }) =>
+      `${b.brand} ${row.name} ${cat}`.toLowerCase().includes(q));
+    root.appendChild(el("div", "section-title",
+      `${hits.length} match${hits.length === 1 ? "" : "es"}`));
+    const grid = el("div", "pgrid");
+    for (const item of hits) grid.appendChild(shopCard(item, { onOpen, onProduct }));
+    root.appendChild(grid);
+    if (!hits.length) {
+      root.appendChild(el("p", "note", "Nothing on the shelf matches that yet."));
+    }
+    return;
+  }
+
+  root.appendChild(el("div", "section-title", "By category"));
+  const cats = el("div", "cgrid");
+  for (const [cat, items] of [...groups].sort((a, b) => b[1].length - a[1].length)) {
+    const tile = el("button", "ctile");
+    tile.type = "button";
+    const strip = el("div", "ctile-shots");
+    for (const it of items.slice(0, 3)) {
+      const src = productImage(it.row.asins[0], 150);
+      if (!src) continue;
+      const im = el("img");
+      im.src = src; im.alt = ""; im.loading = "lazy";
+      im.onerror = () => im.remove();
+      strip.appendChild(im);
+    }
+    if (strip.childNodes.length) tile.appendChild(strip);
+    tile.appendChild(el("div", "ctile-name", cat));
+    tile.appendChild(el("div", "ctile-count", `${items.length} pick${items.length === 1 ? "" : "s"}`));
+    tile.onclick = () => onCategory(cat);
+    cats.appendChild(tile);
+  }
+  root.appendChild(cats);
 }
 
 export function shopCategory(root, { index, category, onProduct, onOpen }) {
-  const items = [];
-  for (const b of index.brands) {
-    for (const row of (b.products || [])) {
-      if (((row.ext || {}).verdict) !== "good") continue;
-      if (!(row.asins || []).length) continue;
-      if ((row.cat || b.category || "Other") !== category) continue;
-      items.push({ brand: b, row });
-    }
-  }
+  const items = shelf(index).filter((i) => i.cat === category);
 
-  const hero = el("div", "hero");
+  const hero = el("div", "hero shop-hero");
   hero.appendChild(el("h1", null, category));
   hero.appendChild(el("p", null,
     `${items.length} that cleared all the checks we could run.`));
   root.appendChild(hero);
 
-  for (const { brand: b, row } of items) {
-    const card = el("div", "card");
-    const label = row.name.toLowerCase().startsWith(b.brand.toLowerCase())
-      ? row.name : `${b.brand} ${row.name}`;
-    card.appendChild(el("div", "alt-name", label));
-    const note = (row.note || b.reason || "").split(". ").slice(0, 2).join(". ");
-    if (note) card.appendChild(el("p", null, note.endsWith(".") ? note : note + "."));
-
-    const ex = (row.ext || {}).exposure;
-    if (ex && ex.level) {
-      const strip = el("div", `expo ${ex.level}`);
-      strip.appendChild(el("span", `pkg-chip ${ex.level}`, String(ex.level).toUpperCase()));
-      strip.appendChild(el("div", "expo-why", ex.why || ""));
-      card.appendChild(strip);
-    }
-
-    const four = el("div", "alt-four");
-    const fr = (row.ext || {}).fronts || {};
-    for (const [k] of FRONTS) {
-      const st = fr[k];
-      const dot = el("i");
-      if (st === "pass") dot.style.background = "var(--good)";
-      else if (st === "none") { dot.style.background = "var(--faint)"; dot.style.opacity = ".45"; }
-      else dot.style.background = "var(--accent)";
-      four.appendChild(dot);
-    }
-    four.appendChild(el("em", null,
-      `${FRONTS.filter(([k]) => ["pass", "none"].includes(fr[k])).length} of 4 checked`));
-    card.appendChild(four);
-
-    const open = el("button", "cta", "View");
-    open.onclick = () => onOpen(buyLink(row.asins[0]));
-    card.appendChild(open);
-
-    const why = el("button", "cta ghost", "Why it passed");
-    why.onclick = () => onProduct(b, row);
-    card.appendChild(why);
-
-    root.appendChild(card);
-  }
+  const grid = el("div", "pgrid");
+  for (const item of items) grid.appendChild(shopCard(item, { onOpen, onProduct }));
+  root.appendChild(grid);
 }
 
 // ----------------------------------------------------------------- result

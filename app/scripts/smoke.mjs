@@ -115,7 +115,9 @@ await screen("home", async (p) => {
   const fields = await p.$$(".field input");
   if (fields.length !== 2) throw new Error(`expected 2 fields, got ${fields.length}`);
   await need(p, ".chip", "recent chip");
-  await need(p, ".row-quiet", "all categories row");
+  // Browse moved out of Check and became the Shop tab, so the way to
+  // everything we recommend is the bar rather than a row on this screen.
+  await need(p, ".tabs", "tab bar");
 });
 
 await screen("known product", async (p) => {
@@ -139,11 +141,26 @@ await screen("unknown product", async (p) => {
   }
 });
 
-await screen("categories", async (p) => {
-  await p.evaluate(() => [...document.querySelectorAll(".row")]
-    .find((r) => r.textContent.includes("All categories")).click());
-  await new Promise((r) => setTimeout(r, 400));
-  await need(p, ".row-name", "category rows");
+await screen("shop", async (p) => {
+  await p.evaluate(() => [...document.querySelectorAll(".tab")]
+    .find((t) => /Shop/.test(t.textContent)).click());
+  await new Promise((r) => setTimeout(r, 600));
+  await need(p, ".ctile", "category tiles");
+  await need(p, ".shop-search input", "shop search");
+  // Into a category, which is where the product cards live.
+  await p.evaluate(() => document.querySelector(".ctile").click());
+  await new Promise((r) => setTimeout(r, 600));
+  await need(p, ".pcard", "product cards");
+  await need(p, ".pcard-buy", "buy link");
+});
+
+await screen("shop search", async (p) => {
+  await p.evaluate(() => [...document.querySelectorAll(".tab")]
+    .find((t) => /Shop/.test(t.textContent)).click());
+  await new Promise((r) => setTimeout(r, 600));
+  await fill(p, ".shop-search input", 0, "glass");
+  await new Promise((r) => setTimeout(r, 500));
+  await need(p, ".pcard", "search results");
 });
 
 await screen("about", async (p) => {
