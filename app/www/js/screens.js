@@ -33,10 +33,29 @@ export function home(root, {
 
   // Type ahead on the brand only. A brand we already hold should never need
   // the second field filled in to be found.
+  //
+  // Tapping a suggestion used to jump straight to a verdict, which skipped the
+  // product field entirely: you could name the brand and never get asked what
+  // you were holding. A brand suggestion now fills the field and moves you on.
+  // A suggestion that names a product still goes, because at that point you
+  // have said which one.
+  //
+  // Five, not twenty. The list sits between the two fields, so a long one
+  // pushed the product field off the screen, which is the other half of why
+  // there appeared to be nowhere to type it.
   const results = el("div", "results");
   brand.input.oninput = () => onSearch(brand.input.value, results, () => ({
     brand: brand.input.value, product: product.input.value,
-  }));
+  }), (hit) => {
+    if (hit.product || hit.scan) return false;
+    brand.input.value = hit.brand.brand;
+    results.replaceChildren();
+    product.input.focus();
+    // A webview does not always bring a focused field into view on its own,
+    // and this one sat at the very bottom of the screen behind the list.
+    product.wrap.scrollIntoView({ block: "center", behavior: "smooth" });
+    return true;
+  }, 5);
   form.appendChild(results);
 
   form.appendChild(product.wrap);

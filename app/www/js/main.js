@@ -175,13 +175,17 @@ infoBtn.onclick = () => go({ screen: "about" });
 // ----------------------------------------------------------------- search
 
 let searchTimer = null;
-function runSearch(query, container, getDraft) {
+function runSearch(query, container, getDraft, onHit, limit = 20) {
   clearTimeout(searchTimer);
   // Debounced because a search over 960 brands with their product rows is
   // cheap but not free, and a fast typist would otherwise run it per keystroke.
   searchTimer = setTimeout(() => {
-    const hits = index.search(query, 20);
+    const hits = index.search(query, limit);
     screens.renderResults(container, hits, (hit) => {
+      // The caller may want a suggestion to fill a field rather than answer
+      // the question. On the two field form, picking a brand is not the same
+      // as saying which product you are holding.
+      if (onHit && onHit(hit)) return;
       const d = getDraft ? getDraft() : null;
       openHit(hit, d ? [d.brand, d.product].filter(Boolean).join(" ") : query);
     });
