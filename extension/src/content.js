@@ -23,7 +23,7 @@
   const SITE = "https://plasticdetox.org";
   const FRONTS = [
     ["formula", "Formula"],
-    ["materials", "Packaging"],
+    ["materials", "Materials"],
     ["legal", "Recalls & lawsuits"],
     ["testing", "Independent tests"],
   ];

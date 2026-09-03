@@ -37,7 +37,13 @@ await new Promise((r) => setTimeout(r, 900));
 
 const base = `http://localhost:${PORT}`;
 const errors = [];
-const browser = await puppeteer.launch({ headless: "new", args: ["--no-sandbox"] });
+// Six screens each load and parse the full brand file, and the default 30s
+// protocol timeout is measured per CDP call, not per screen. As the data grew
+// past 2.5MB the later screens started tripping it, which reads as four broken
+// screens when nothing is broken. This is a smoke test, not a perf budget.
+const browser = await puppeteer.launch({
+  headless: "new", args: ["--no-sandbox"], protocolTimeout: 180000,
+});
 
 async function screen(label, steps, { recents = true } = {}) {
   const page = await browser.newPage();
@@ -76,6 +82,29 @@ async function screen(label, steps, { recents = true } = {}) {
   await page.close();
 }
 
+// Puppeteer's own click() and type() hang in this environment: both issue a
+// Runtime.callFunctionOn to scroll the element into view and compute its box,
+// and that call never returns. Raising protocolTimeout to 180s changed
+// nothing, so it is a hang and not slowness. The split in the results is the
+// tell: every screen that failed drove the page through Puppeteer input, and
+// every screen that passed did its clicking inside page.evaluate. So do the
+// same everywhere. It also matches what the app actually receives, since a
+// real tap arrives as a DOM event either way.
+const tap = (page, sel) => page.evaluate((s) => {
+  const el = document.querySelector(s);
+  if (!el) throw new Error(`nothing to click at ${s}`);
+  el.click();
+}, sel);
+
+const fill = (page, sel, i, text) => page.evaluate((s, n, t) => {
+  const el = document.querySelectorAll(s)[n];
+  if (!el) throw new Error(`no field ${n} at ${s}`);
+  el.value = t;
+  // Vanilla listeners key off input, not on assignment to .value.
+  el.dispatchEvent(new Event("input", { bubbles: true }));
+  el.dispatchEvent(new Event("change", { bubbles: true }));
+}, sel, i, text);
+
 const need = async (page, sel, what) => {
   const found = await page.$(sel);
   if (!found) throw new Error(`missing ${what} (${sel})`);
@@ -90,20 +119,18 @@ await screen("home", async (p) => {
 });
 
 await screen("known product", async (p) => {
-  const f = await p.$$(".field input");
-  await f[0].type("Brita");
-  await f[1].type("Elite");
-  await p.click(".check-form .cta");
+  await fill(p, ".field input", 0, "Brita");
+  await fill(p, ".field input", 1, "Elite");
+  await tap(p, ".check-form .cta");
   await new Promise((r) => setTimeout(r, 700));
   await need(p, ".verdict-brand", "verdict");
   await need(p, ".front", "front rows");
 });
 
 await screen("unknown product", async (p) => {
-  const f = await p.$$(".field input");
-  await f[0].type("Kelloggs");
-  await f[1].type("Corn Flakes");
-  await p.click(".check-form .cta");
+  await fill(p, ".field input", 0, "Kelloggs");
+  await fill(p, ".field input", 1, "Corn Flakes");
+  await tap(p, ".check-form .cta");
   await new Promise((r) => setTimeout(r, 700));
   await need(p, ".badge", "not reviewed badge");
   const ctas = await p.$$eval(".card .cta", (ns) => ns.map((n) => n.textContent.trim()));
@@ -120,13 +147,13 @@ await screen("categories", async (p) => {
 });
 
 await screen("about", async (p) => {
-  await p.click("#info");
+  await tap(p, "#info");
   await new Promise((r) => setTimeout(r, 400));
   await need(p, ".card", "about cards");
 });
 
 await screen("safari setup", async (p) => {
-  await p.click("#info");
+  await tap(p, "#info");
   await new Promise((r) => setTimeout(r, 300));
   await p.evaluate(() => [...document.querySelectorAll(".cta")]
     .find((b) => /turn it on/i.test(b.textContent)).click());
