@@ -446,6 +446,26 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .step-free b { color: var(--accent-deep); }
 .step .cta { margin: 0 .95rem .85rem; width: auto; }
 
+.step-picks { margin: .2rem .95rem .8rem; }
+.step-picks-h {
+  font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em;
+  color: var(--muted); margin-bottom: .4rem;
+}
+.prow {
+  display: flex; align-items: center; gap: .7rem; width: 100%; text-align: left;
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: 13px; padding: .5rem .65rem; margin-bottom: .35rem;
+}
+.prow:active { border-color: var(--accent-light); background: var(--accent-wash); }
+.prow-img {
+  width: 42px; height: 42px; flex: none; border-radius: 9px; background: #FFFFFF;
+  border: 1px solid var(--border); display: grid; place-items: center; overflow: hidden; padding: 2px;
+}
+.prow-img img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.prow-name { font-size: 13.5px; font-weight: 650; letter-spacing: -.015em; line-height: 1.3; }
+.prow-best { font-size: 12px; color: var(--muted); margin-top: .1rem; }
+.prow-tier { font-size: 12px; font-weight: 700; color: var(--faint); flex: none; }
+
 /* ----------------------------------------------------------------- learn */
 
 .acard {

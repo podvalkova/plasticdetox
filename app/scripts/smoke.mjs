@@ -62,10 +62,16 @@ async function screen(label, steps, { recents = true } = {}) {
   if (recents) {
     // The state a real person is in. A fresh install has none of this, which is
     // exactly why a fresh install proved nothing.
-    await page.evaluate(() => localStorage.setItem("pd.recents.v1", JSON.stringify([
-      { id: "brita", name: "Brita", sub: "Water filter", stance: "skip" },
-      { id: "stanley", name: "Stanley", sub: "Coolers", stance: "good" },
-    ])));
+    await page.evaluate(() => {
+      localStorage.setItem("pd.recents.v1", JSON.stringify([
+        { id: "brita", name: "Brita", sub: "Water filter", stance: "skip" },
+        { id: "stanley", name: "Stanley", sub: "Coolers", stance: "good" },
+      ]));
+      // Each screen starts where a person opening the app starts. The app now
+      // resumes where you left off, which is right for a person and wrong for
+      // a test: without this every screen began wherever the last one ended.
+      localStorage.removeItem("pd.place.v1");
+    });
     await page.reload({ waitUntil: "networkidle0" });
   }
   await new Promise((r) => setTimeout(r, 1500));

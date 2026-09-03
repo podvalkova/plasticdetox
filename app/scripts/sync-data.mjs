@@ -124,7 +124,47 @@ const PHASES = [
   { title: "Days 61 to 90", sub: "Reduce the chemicals", steps: steps.slice(per * 2) },
 ];
 fs.writeFileSync(path.join(OUT, "plan.json"), JSON.stringify(PHASES, null, 1) + "\n");
-console.log(`plan.json            ${steps.length} steps in 3 phases`);
+// Each swap, with the products we would actually buy for it.
+//
+// The rule key is cat|sub and matches store-products.js exactly, which is how
+// the site attaches picks to a plan. Harvesting the plan without them left a
+// checklist that told you to move your bottles to glass and then did not say
+// which glass bottle, which is the one question it provokes.
+const storeSrc = fs.readFileSync(path.join(REPO, "data", "store-products.js"), "utf8");
+const byKey = {};
+for (const block of storeSrc.split(/\n\s*\{\s*(?=cat:)/).slice(1)) {
+  const g = (name) => {
+    const m = block.match(new RegExp(name + ':\\s*"((?:[^"\\\\]|\\\\.)*)"'));
+    return m ? m[1].replace(/\\"/g, '"') : "";
+  };
+  const cat = g("cat"), sub = g("sub"), name = g("name");
+  if (!cat || !sub || !name) continue;
+  const key = `${cat}|${sub}`;
+  (byKey[key] = byKey[key] || []).push({
+    name,
+    asin: g("asin"),
+    url: g("url"),
+    img: g("img"),
+    tier: g("tier"),
+    bestFor: g("bestFor"),
+    top: /\btop:\s*true/.test(block),
+  });
+}
+const TIER = { "$": 1, "$$": 2, "$$$": 3 };
+let attached = 0;
+for (const phase of PHASES) {
+  for (const step of phase.steps) {
+    const pool = (byKey[step.id] || []).slice().sort((a, b) => {
+      if (!!b.top !== !!a.top) return b.top ? 1 : -1;
+      return (TIER[a.tier] || 9) - (TIER[b.tier] || 9);
+    });
+    step.picks = pool.slice(0, 3).filter((x) => x.asin || x.url);
+    attached += step.picks.length;
+  }
+}
+fs.writeFileSync(path.join(OUT, "plan.json"), JSON.stringify(PHASES, null, 1) + "\n");
+const withPicks = PHASES.reduce((n, p) => n + p.steps.filter((s) => s.picks.length).length, 0);
+console.log(`plan.json            ${steps.length} steps, ${withPicks} with picks, ${attached} products`);
 
 let brands = 0;
 for (const { from, to } of SOURCES) {

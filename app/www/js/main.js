@@ -85,6 +85,11 @@ function back() {
  * Only enough to find the place again: a screen, a brand id, a product name.
  * Nothing here is a copy of the data, so a restored screen is rebuilt from
  * today's verdicts rather than from whatever was true when you left.
+ *
+ * localStorage, not sessionStorage. iOS discards session storage along with
+ * the webview it belonged to, which is the exact event this exists to survive:
+ * the first version of this looked right in a browser reload and did nothing
+ * at all on a phone. The half hour expiry below is what scopes it to a visit.
  */
 const PLACE_KEY = "pd.place.v1";
 const DONE_KEY = "pd.plan.v1";
@@ -121,7 +126,7 @@ function rememberPlace() {
       query: s.query || null,
       q: s.q || null,
     })).slice(-4);
-    sessionStorage.setItem(PLACE_KEY, JSON.stringify({ trail, at: Date.now() }));
+    localStorage.setItem(PLACE_KEY, JSON.stringify({ trail, at: Date.now() }));
   } catch {
     // A full or unavailable store is not worth a crash.
   }
@@ -130,7 +135,7 @@ function rememberPlace() {
 function restorePlace() {
   let saved = null;
   try {
-    saved = JSON.parse(sessionStorage.getItem(PLACE_KEY) || "null");
+    saved = JSON.parse(localStorage.getItem(PLACE_KEY) || "null");
   } catch {
     return false;
   }
@@ -275,6 +280,7 @@ function draw() {
   } else if (state.screen === "about") {
     screens.about(view, {
       meta: data.status(),
+      bundle: currentBundle,
       onOpen: openExternal,
       onSafari: () => go({ screen: "safari" }),
     });
@@ -775,6 +781,21 @@ async function start() {
  * next cold start. Native code cannot change this way, and does not need to:
  * the parts that change are the verdicts, the copy, and the screens.
  */
+/** Which web bundle is running, as the updater sees it. */
+async function currentBundle() {
+  const updater = window.Capacitor
+    && window.Capacitor.Plugins
+    && window.Capacitor.Plugins.CapacitorUpdater;
+  if (!updater || !updater.current) return null;
+  try {
+    const r = await updater.current();
+    const b = (r && r.bundle) || {};
+    return { version: b.version || "unknown", builtin: b.id === "builtin" };
+  } catch {
+    return null;
+  }
+}
+
 async function liveUpdates() {
   // Tells the plugin this bundle booted. Without it the next launch rolls back
   // to the last known good one, which is the safety net that makes shipping

@@ -293,6 +293,31 @@ export function detox(root, { phases, done, onToggle, onOpen }) {
         free.appendChild(document.createTextNode(step.free));
         item.appendChild(free);
       }
+      if ((step.picks || []).length) {
+        const picks = el("div", "step-picks");
+        picks.appendChild(el("div", "step-picks-h", "What we would buy"));
+        for (const pick of step.picks) {
+          const row = el("button", "prow");
+          row.type = "button";
+          const shot = el("div", "prow-img");
+          if (pick.img) {
+            const im = el("img");
+            im.src = `https://m.media-amazon.com/images/I/${pick.img}._AC_SL160_.jpg`;
+            im.alt = "";
+            im.onerror = () => im.remove();
+            shot.appendChild(im);
+          }
+          row.appendChild(shot);
+          const body = el("div", "row-body");
+          body.appendChild(el("div", "prow-name", pick.name));
+          if (pick.bestFor) body.appendChild(el("div", "prow-best", pick.bestFor));
+          row.appendChild(body);
+          if (pick.tier) row.appendChild(el("span", "prow-tier", pick.tier));
+          row.onclick = () => onOpen(pick.asin ? buyLink(pick.asin) : pick.url);
+          picks.appendChild(row);
+        }
+        item.appendChild(picks);
+      }
       if (step.article) {
         const link = el("button", "cta ghost", "Read the guide");
         link.onclick = () => onOpen(`https://plasticdetox.org/${step.article}?app=1`);
@@ -1014,7 +1039,7 @@ export function checkVerdict(event) {
 
 // ------------------------------------------------------------------ about
 
-export function about(root, { meta, onOpen, onSafari }) {
+export function about(root, { meta, bundle, onOpen, onSafari }) {
   root.appendChild(el("div", "hero")).appendChild(el("h1", null, "How this works"));
 
   const how = el("div", "card");
@@ -1030,6 +1055,20 @@ export function about(root, { meta, onOpen, onSafari }) {
   data.appendChild(el("p", "pkg-why", meta.fetched
     ? `Last updated ${new Date(meta.fetched).toLocaleDateString()}.`
     : "Using the version that shipped with the app."));
+  // Which build is actually running.
+  //
+  // Neither of us could see this, so an update that never landed and an update
+  // that landed and reverted looked identical from the outside, and the only
+  // evidence was somebody saying the app looked old. Now it says so itself.
+  const line = el("p", "pkg-why");
+  line.id = "bundle-line";
+  line.textContent = "App build: checking…";
+  data.appendChild(line);
+  Promise.resolve(bundle && bundle()).then((info) => {
+    line.textContent = info
+      ? `App build ${info.version}${info.builtin ? " (shipped with the app)" : ""}.`
+      : "App build: bundled version.";
+  }).catch(() => { line.textContent = "App build: bundled version."; });
   root.appendChild(data);
 
   const safariCard = el("div", "card");
