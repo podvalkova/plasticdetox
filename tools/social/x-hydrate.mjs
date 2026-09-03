@@ -21,8 +21,16 @@ const ARCHIVE = join(HERE, 'x-candidates-archive.json');
 const archive = existsSync(ARCHIVE) ? JSON.parse(readFileSync(ARCHIVE, 'utf8')) : {};
 const drafted = new Set(Object.keys(JSON.parse(readFileSync(join(HERE, 'x-replies.json'), 'utf8')).replies));
 
+// Default to the CURRENT candidate set, not the drafted set. Drafting happens after
+// this runs, so keying off drafts meant new candidates were never hydrated and got
+// written up from a truncated preview.
+const CANDS = join(HERE, 'x-candidates.json');
+const current = existsSync(CANDS)
+  ? new Set(JSON.parse(readFileSync(CANDS, 'utf8')).posts.map(p => p.link.split('/').pop()))
+  : new Set();
+
 const ids = Object.keys(archive)
-  .filter(id => (process.argv.includes('--all') || drafted.has(id)) && !archive[id].fullText);
+  .filter(id => (process.argv.includes('--all') || current.has(id) || drafted.has(id)) && !archive[id].fullText);
 if (!ids.length) { console.log('Nothing to hydrate.'); process.exit(0); }
 console.log(`Hydrating ${ids.length} post(s)...`);
 

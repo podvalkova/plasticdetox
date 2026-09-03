@@ -28,6 +28,28 @@ if (!/^\d+\.\d+\.\d+$/.test(version)) {
   process.exit(1);
 }
 
+// A release may only go forwards.
+//
+// package.json still said 1.0.0 while the live manifest was on 1.0.9, so
+// running this with no argument wrote latest: 1.0.0, then pruned the very
+// bundle it had just built because KEEP only holds the newest three. The
+// manifest was left pointing every install at a version absent from its own
+// bundle list. Nothing catches that downstream, so it is caught here.
+const asNum = (v) => v.split(".").map(Number);
+const newer = (a, b) => {
+  const [x, y, z] = asNum(a), [p, q, r] = asNum(b);
+  return x !== p ? x > p : y !== q ? y > q : z > r;
+};
+if (fs.existsSync(MANIFEST)) {
+  const live = JSON.parse(fs.readFileSync(MANIFEST, "utf8")).latest;
+  if (live && !newer(version, live)) {
+    console.error(`refusing to release ${version}: the manifest is already on ${live}.`);
+    console.error(`pass a higher version, for example: node scripts/bundle.mjs ${
+      (([x, y, z]) => [x, y, z + 1].join("."))(asNum(live))}`);
+    process.exit(1);
+  }
+}
+
 // A bundle without data is a bundle that boots to an empty database.
 for (const required of ["index.html", "js/main.js", "data/brand-data.json"]) {
   if (!fs.existsSync(path.join(WWW, required))) {
