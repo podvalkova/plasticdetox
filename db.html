@@ -448,7 +448,14 @@ function render(){
     const xp=el("td");
     if(r[8]){ xp.appendChild(el("span","lvl "+r[8], r[8]));
               xp.appendChild(el("span","lvl-t", r[9])); }
-    else xp.appendChild(el("span","mat none","—"));
+    else {
+      // Exposure attaches to a product type. A whole-range row that spans
+      // diapers, wipes, cleaning and skincare has no single type, so a level
+      // here would be invented rather than derived.
+      const none = el("span","mat none","—");
+      none.title = "No single product type: this row covers a whole range.";
+      xp.appendChild(none);
+    }
     tr.appendChild(xp);
     const pk=el("td");
     const mst = (!r[7] || r[7]==="unassessed" || r[7]==="unknown") ? "missing" : r[7];

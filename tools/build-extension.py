@@ -89,6 +89,13 @@ def main():
     # re-argued from prose.
     run("formula/materials-from-name.py", "--write")
     run("apply-front-evidence.py", "--write")
+    # Exposure is decided once per product type, then stamped onto every row of
+    # that type. It has to run after apply-product-rules, which rebuilds ext,
+    # or the stamp is written and then thrown away. That is exactly what had
+    # been happening: the tool was never in the build, so it only ever ran by
+    # hand, and 660 of 823 rows showed no exposure because the next rebuild
+    # discarded it.
+    run("exposure.py", "--write")
     # Last, after every tool that fills a front. A recommendation needs all four.
     run("enforce-scorecard.py", "--write")
     # Last, so it sees every product row the steps above created. Run earlier it
