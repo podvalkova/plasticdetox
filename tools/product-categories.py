@@ -59,6 +59,13 @@ RULES = [
     ("Baby formula",        r"\bformula\b"),
     ("Baby food",           r"baby food|puree|pouch|puffs|teething wafer|infant cereal|oatmeal"),
     ("Prenatal vitamins",   r"prenatal"),
+    # There was no skincare category at all, so a serum matched nothing by name
+    # and fell through to its note, where food words live: MARA's Universal Face
+    # Oil was filed under Pantry and True Botanicals' Pure Radiance Oil under
+    # Clothing. A face oil is not a cooking oil and a toner is not a vitamin.
+    ("Skincare",            r"serum|face oil|facial oil|body oil|moisturi[sz]er|eye cream|"
+                            r"\btoner\b|face cream|moisture cream|night cream|day cream|retinol|hyaluronic|ampoule|"
+                            r"cleansing (oil|balm|mousse|cream)|face mask|facial"),
     ("Supplements",         r"creatine|omega|cod liver|vitamin|magnesium|probiotic|collagen|protein powder|whey"),
     ("Electrolytes",        r"electrolyte|hydration|rehydration"),
     ("Sunscreen",           r"sunscreen|\bspf\b|sunblock"),
@@ -152,6 +159,15 @@ FALLBACK = {
 }
 
 
+# Words that name a container, not a product kind. In a name they identify the
+# thing; in a note they are nearly always describing what something is packaged
+# in. Reading them off a note filed three Earth Harbor serums, a MARA face oil,
+# an Ogee lip oil, a True Botanicals oil and a prenatal under Baby bottles,
+# because each note mentions a glass bottle.
+PACKAGING_WORDS = re.compile(
+    r"(glass|plastic|polypropylene|amber|pump) bottles?\b|glass jars?\b")
+
+
 def categorise(name, note, brand_cat):
     """
     The product's own name decides. The note is only consulted when the name
@@ -163,7 +179,7 @@ def categorise(name, note, brand_cat):
     for cat, pat in RULES:
         if re.search(pat, n):
             return cat
-    hay = (note or "").lower()
+    hay = PACKAGING_WORDS.sub(" ", (note or "").lower())
     for cat, pat in RULES:
         if re.search(pat, hay):
             return cat

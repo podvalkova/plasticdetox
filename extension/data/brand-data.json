@@ -215,17 +215,17 @@
           "disclose": false,
           "rules": [],
           "exposure": {
-            "type": "heated vessel",
-            "level": "medium",
-            "score": 5.7,
+            "type": "equipment",
+            "level": "low",
+            "score": 2.0,
             "baby": false,
-            "route": "ingestion",
-            "duration": "minutes",
-            "retained": "transfer",
+            "route": "none",
+            "duration": "seconds",
+            "retained": "none",
             "frequency": "daily",
-            "heat": true,
+            "heat": false,
             "fat": false,
-            "why": "Heat drives whatever is in the surface into the water."
+            "why": "Nothing it holds touches the part in question."
           },
           "formulaAnswers": {
             "ingredients": "",
@@ -253,7 +253,7 @@
             "materials"
           ]
         },
-        "cat": "Baby bottles"
+        "cat": "Vacuums"
       }
     ],
     "rollup": {
@@ -5595,20 +5595,20 @@
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
-            "materials": "We have not established what the product actually touches."
+            "materials": "We have not established what the product actually touches.",
+            "formula": "The listing we hold for this product serves a different item, The Honest Company Bubble Bath, Hypoallergenic, Lavender Calm, 12 fl oz."
           },
           "verdict": "careful",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "caution",
+            "formula": "unassessed",
             "materials": "unassessed",
             "legal": "pass",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "legal": "database",
-            "formula": "inferred"
+            "legal": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -5633,7 +5633,7 @@
             "ingredients": "",
             "prose": "",
             "complete": false,
-            "verdict": "careful",
+            "verdict": "open",
             "summary": "The listing we hold for this product serves a different item, The Honest Company Bubble Bath, Hypoallergenic, Lavender Calm, 12 fl oz.",
             "flagged": [],
             "source": "amazon:B01LDZJHAE",
@@ -7803,6 +7803,7 @@
             "formula",
             "formula",
             "formula",
+            "formula",
             "formula"
           ],
           "verdict": "skip",
@@ -7920,7 +7921,8 @@
         "ext": {
           "frontNotes": {
             "legal": "Issued a broad benzene sunscreen recall in the 2021-2022 wave (Recorded for Banana Boat as a whole rather than this product specifically.)",
-            "materials": "We have not established what the product actually touches."
+            "materials": "We have not established what the product actually touches.",
+            "formula": "The listing we hold for this product serves a different item, Baby Bum SPF 50 Sunscreen Spray - Mineral UVA/UVB Face and Body Protection for Sensitive Skin - Travel Size - 3 oz."
           },
           "inheritedFronts": [
             "legal"
@@ -7929,14 +7931,13 @@
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "caution",
+            "formula": "unassessed",
             "materials": "unassessed",
             "legal": "fail",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "legal": "stated",
-            "formula": "inferred"
+            "legal": "stated"
           },
           "scope": "sku",
           "basis": "direct",
@@ -7959,7 +7960,7 @@
             "ingredients": "",
             "prose": "",
             "complete": false,
-            "verdict": "careful",
+            "verdict": "open",
             "summary": "The listing we hold for this product serves a different item, Baby Bum SPF 50 Sunscreen Spray - Mineral UVA/UVB Face and Body Protection for Sensitive Skin - Travel Size - 3 oz.",
             "flagged": [],
             "source": "amazon:B07ZR1KQ44",
@@ -8635,7 +8636,8 @@
         "ext": {
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
           "frontNotes": {
-            "materials": "In contact with cotton, which puts nothing into what it holds."
+            "materials": "In contact with cotton, which puts nothing into what it holds.",
+            "formula": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear."
           },
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
@@ -8676,7 +8678,7 @@
             "prose": "About this item 𝗣𝗥𝗘𝗠𝗜𝗨𝗠 𝗠𝗔𝗧𝗘𝗥𝗜𝗔𝗟: This white 36\" x 74\" standard stall-size shower curtain liner is crafted from high-quality organic cotton, offering a soft and breathable fabric feel for everyday use. The eco-friendly material ensures a non-toxic and odor-free bathroom environment, while its durable construction provides long-lasting performance for modern homes. 𝗤𝗨𝗜𝗖𝗞 𝗗𝗥𝗬 𝗣𝗘𝗥𝗙𝗢𝗥𝗠𝗔𝗡𝗖𝗘: This quick-dry shower curtain liner ensures efficient moisture control, helping maintain a clean and fresh bathroom environment. The breathable cotton fabric allows fast drying after each use, making it ideal for daily routines. Our easy-care design supports simple maintenance and long-lasting cleanliness. 𝗩𝗘𝗥𝗦𝗔𝗧𝗜𝗟𝗘 𝗠𝗨𝗟𝗧𝗜 𝗨𝗦𝗘: This versatile shower curtain liner can be used as a bathroom curtain, room divider, or decorative drape, adding elegance to any space. The lightweight shower curtain adapts easily to different environments, making it ideal for homes, apartments, and dorm rooms. Our multipurpose design enhances functionality and style. 𝗘𝗔𝗥𝗧𝗛 𝗙𝗥𝗜𝗘𝗡𝗗𝗟𝗬 𝗔𝗡𝗗 𝗗𝗨𝗥𝗔𝗕𝗟𝗘: This shower curtain liner is crafted without harsh chemica",
             "complete": false,
             "verdict": "open",
-            "summary": "No ingredient list recorded.",
+            "summary": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear.",
             "flagged": [],
             "source": "amazon:B07RHQ53L9",
             "checked": "2026-09-03"
@@ -11694,17 +11696,16 @@
           "capRestoreWhy": "a vetted store pick, chosen by a person at product scope",
           "verdict": "careful",
           "dated": "2026-09-02",
-          "why": "section 6 ceiling: formula is caution, testing is caution",
+          "why": "section 6 ceiling: formula is caution",
           "fronts": {
             "formula": "caution",
             "materials": "unassessed",
             "legal": "pass",
-            "testing": "caution"
+            "testing": "unassessed"
           },
           "frontOrigin": {
             "legal": "database",
-            "formula": "database",
-            "testing": "class"
+            "formula": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -11714,17 +11715,17 @@
             "2 formula-read-from-materials"
           ],
           "exposure": {
-            "type": "heated vessel",
+            "type": "sprayed",
             "level": "medium",
-            "score": 5.7,
+            "score": 6.0,
             "baby": false,
-            "route": "ingestion",
+            "route": "inhalation",
             "duration": "minutes",
-            "retained": "transfer",
+            "retained": "breathed",
             "frequency": "daily",
-            "heat": true,
+            "heat": false,
             "fat": false,
-            "why": "Heat drives whatever is in the surface into the water."
+            "why": "Aerosolised on purpose, into the air in front of you."
           },
           "formulaAnswers": {
             "ingredients": "Hand Soap - Citric Acid, Sodium Carbonate, Sodium Benzoate, Sodium Coco-Sulfate, Sodium Citrate, Algin, Disodium Cocoyl Glutamate, Potassium Sorbate, Sodium Cocoyl Isethionate, Fragrance, Coconut Acid, Glutamic Acid, Monosodium Citrate. Multisurface Cleaner - Citric Acid, Sodium Carbonate, Sodium Benzoate, Sodium Gluconate, Potassium Sorbate, Sodium Lauryl Sulfate, Sodium Coco-Sulfate, Monosodium Citrate, Hydrated Dextrates, Fragrance, Hydrated Silica, Sorbitan Caprylate, Yellow Colorant. Bathroom Cleaner - Citric Acid, Sodium Carbonate, Sodium Benzoate, Sodium Lauryl Sulfate, Sodium Gluconate, Potassium Sorbate, Monosodium Citrate, Hydrated Dextrates, Fragrance, Hydrated Silica, Sorbitan Caprylate, Pink Colorant",
@@ -11749,21 +11750,9 @@
             "source": "",
             "checked": "2026-09-02",
             "open": "We have not established what the product actually touches"
-          },
-          "classEvidence": {
-            "id": "heated-polypropylene-bottle",
-            "headline": "Polypropylene baby bottles release up to 16.2 million microplastic particles per litre at formula temperature",
-            "detail": "Polypropylene bottles, about 82 percent of the global market, release 1.3 to 16.2 million particles per litre in hot water at formula preparation temperature. Shaking increases release; sterilising with boiling water is highest of all.",
-            "source": "Trinity College Dublin, Nature Food, 2020",
-            "year": 2020,
-            "status": "caution",
-            "membership": "inferred",
-            "confirmedBy": "",
-            "escape": "Glass, stainless and silicone bottles are not the polymer that was measured.",
-            "alternative": ""
           }
         },
-        "cat": "Baby bottles"
+        "cat": "Cleaning products"
       },
       {
         "name": "Blueland baby bottles",
@@ -13405,7 +13394,8 @@
         "origin": "hand",
         "ext": {
           "frontNotes": {
-            "materials": "We have not established what the product actually touches."
+            "materials": "We have not established what the product actually touches.",
+            "formula": "No ingredient list recorded."
           },
           "verdict": "unrated",
           "dated": "2026-08-28",
@@ -13797,17 +13787,17 @@
           "disclose": false,
           "rules": [],
           "exposure": {
-            "type": "heated vessel",
+            "type": "sprayed",
             "level": "medium",
-            "score": 5.7,
+            "score": 6.0,
             "baby": false,
-            "route": "ingestion",
+            "route": "inhalation",
             "duration": "minutes",
-            "retained": "transfer",
+            "retained": "breathed",
             "frequency": "daily",
-            "heat": true,
+            "heat": false,
             "fat": false,
-            "why": "Heat drives whatever is in the surface into the water."
+            "why": "Aerosolised on purpose, into the air in front of you."
           },
           "formulaAnswers": {
             "ingredients": "Concentrate- Purified Water, Decyl Glucoside, Organic Chamomile Flower Extract, Coco-Glucoside, Sodium Citrate, Sodium Bicarbonate, Sodium Phytate",
@@ -13832,7 +13822,7 @@
             "open": "We have not established what the product actually touches"
           }
         },
-        "cat": "Baby bottles"
+        "cat": "Cleaning products"
       },
       {
         "name": "Branch Basics Concentrate",
@@ -17237,6 +17227,7 @@
             "formula",
             "formula",
             "formula",
+            "formula",
             "formula"
           ],
           "verdict": "skip",
@@ -20404,7 +20395,8 @@
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
-            "materials": "Made of glass, which the product name states, and which puts nothing into what it touches."
+            "materials": "Made of glass, which the product name states, and which puts nothing into what it touches.",
+            "formula": "No ingredient list recorded."
           },
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
@@ -20526,7 +20518,8 @@
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
-            "materials": "Made of glass, which the product name states, and which puts nothing into what it touches."
+            "materials": "Made of glass, which the product name states, and which puts nothing into what it touches.",
+            "formula": "No ingredient list recorded."
           },
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
@@ -21465,7 +21458,8 @@
         "ext": {
           "legalNote": "Checked recall records on 2026-08-31. The February 2023 recall of 2 million Cosori air fryers (overheating connectors) was remedied by replacement and did not cover the kettles we feature; over 24 months, now informational.",
           "frontNotes": {
-            "materials": "Nothing the product touches is plastic."
+            "materials": "Nothing the product touches is plastic.",
+            "formula": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear."
           },
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
@@ -21506,7 +21500,7 @@
             "prose": "About this item No Plastic Contact with Your Water——With no plastic inside, water never touches plastic, ensuring a pure taste and safer drinking experience Faster Than a Stovetop Kettle——Heats 0.5L (2 Cups) water in under 3 minutes for less wait time Easy to Clean——Wide mouth and large-angle lid lets you reach every corner with ease Dual-Angle Lid Design——One-touch button opens the lid to a splash-reducing angle, or fully opens it when you need to clean or refill. Safe & Easy to Use——Worry-free auto shut-off and boil-dry safety feature Auto Shut-Off Safety——Automatically shuts off within 30 seconds after the water reaches a boil Accurate Pouring——Precision spout and cool-touch handle help prevent spills and burns Modern Look——Sleek design equipped with blue LED light that glows when boiling More Than Just a Kettle——Great for tea, coffee, and quick meals Show more › See more product details",
             "complete": false,
             "verdict": "open",
-            "summary": "No ingredient list recorded.",
+            "summary": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear.",
             "flagged": [],
             "source": "amazon:B08PP48979",
             "checked": "2026-09-03"
@@ -21540,7 +21534,8 @@
         "ext": {
           "legalNote": "Checked recall records on 2026-08-31. The February 2023 recall of 2 million Cosori air fryers (overheating connectors) was remedied by replacement and did not cover the kettles we feature; over 24 months, now informational.",
           "frontNotes": {
-            "materials": "Made of stainless steel, which the product name states, and which puts nothing into what it touches."
+            "materials": "Made of stainless steel, which the product name states, and which puts nothing into what it touches.",
+            "formula": "No ingredient list recorded."
           },
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
@@ -24599,8 +24594,7 @@
         "ext": {
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
           "frontNotes": {
-            "materials": "In contact with cotton, which puts nothing into what it holds.",
-            "formula": "A durable good has no ingredient list. What it is made of is the materials check."
+            "materials": "In contact with cotton, which puts nothing into what it holds."
           },
           "verdict": "good",
           "dated": "2026-08-29",
@@ -25297,6 +25291,7 @@
             "materials": "We have not established what the product actually touches."
           },
           "inheritedFronts": [
+            "formula",
             "formula",
             "formula",
             "formula",
@@ -27074,19 +27069,20 @@
         "source": "top-100-baby-kids-products-amazon.html",
         "ext": {
           "frontNotes": {
-            "materials": "We have not established what the product actually touches."
+            "materials": "We have not established what the product actually touches.",
+            "formula": "A durable good has no ingredient list. What it is made of is the materials check."
           },
           "verdict": "skip",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "caution",
+            "formula": "none",
             "materials": "unassessed",
             "legal": "unassessed",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "formula": "inferred"
+            "formula": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -27111,8 +27107,8 @@
             "ingredients": "",
             "prose": "",
             "complete": false,
-            "verdict": "careful",
-            "summary": "The listing we hold for this product serves a different item, ATTITUDE Baby Laundry Detergent, Dermatologist Tested, Unscented, 80 Loads.",
+            "verdict": "n/a",
+            "summary": "A durable good has no ingredient list. What it is made of is the materials check.",
             "flagged": [],
             "source": "amazon:B084W9XN3K",
             "checked": "2026-09-03"
@@ -28792,17 +28788,17 @@
             "2 formula-read-from-materials"
           ],
           "exposure": {
-            "type": "heated vessel",
+            "type": "leave-on face",
             "level": "medium",
-            "score": 5.7,
+            "score": 6.0,
             "baby": false,
-            "route": "ingestion",
-            "duration": "minutes",
-            "retained": "transfer",
+            "route": "skin",
+            "duration": "hours",
+            "retained": "leave-on",
             "frequency": "daily",
-            "heat": true,
+            "heat": false,
             "fat": false,
-            "why": "Heat drives whatever is in the surface into the water."
+            "why": "Left on the face all day."
           },
           "formulaAnswers": {
             "ingredients": "Grapeseed Oil (Vitis vinifera)°°, Fractionated Coconut Oil (Caprylic/Capric Triglycerides)°°, Meadowfoam Seed Oil (Limnanthes alba)°°, Jojoba Seed Oil (Simmondsia chinensis)°, Avocado Fruit Oil (Persea gratissima)°°, Sunflower Vitamin E (Tocopherol)°°, Sunflower Seed Oil (Helianthus annuus)°, Neem Seed Oil (Melia azadirachta)°, Vegetable di-ppg-2 myreth-10 adipate (plant-based emollient)°°, Papaya Fruit Ferment Extract/Lactobacillus (Carica papaya)°°, Papaya Seed Oil (Carica papaya)°°, Rosemary Leaf Extract (Rosmarinus officinalis)°, Sea Kelp Extract (Ascophyllum nodosum)°, Sweet Orange Peel Oil (Citrus sinensis)°°, Mandarin Peel Oil (Citrus reticulata)°°, Tangerine Peel Oil (Citrus reticulata)°°, Lavender Flower Oil (Lavandula angustifolia)°, Litsea Oil (Litsea cubeba)°°, Damiana Blossom Oil (Turnera diffusa)°°, Jasmine Flower Extract (Jasminum officinale var. grandiflorum)°°, Clementine Peel Oil (Citrus clementina)°°, Vanilla Bean Extract (Vanilla planifolia)°°",
@@ -28827,7 +28823,7 @@
             "checked": "2026-09-02"
           }
         },
-        "cat": "Baby bottles"
+        "cat": "Skincare"
       },
       {
         "name": "Earth Harbor Mermaid Milk Toner",
@@ -28866,17 +28862,17 @@
             "2 formula-read-from-materials"
           ],
           "exposure": {
-            "type": "heated vessel",
+            "type": "leave-on face",
             "level": "medium",
-            "score": 5.7,
+            "score": 6.0,
             "baby": false,
-            "route": "ingestion",
-            "duration": "minutes",
-            "retained": "transfer",
+            "route": "skin",
+            "duration": "hours",
+            "retained": "leave-on",
             "frequency": "daily",
-            "heat": true,
+            "heat": false,
             "fat": false,
-            "why": "Heat drives whatever is in the surface into the water."
+            "why": "Left on the face all day."
           },
           "formulaAnswers": {
             "ingredients": "Aqua, Glycerin, Cetearyl Olivate°, Sorbitan Olivate°, Cetyl Palmitate°, Sorbitan Palmitate°, Squalane°, Rosa Canina (Rosehip) Fruit Extract°, Salix Alba (White Willow Bark) Extract°, Vaccinium Myrtillus (Bilberry) Fruit Extract°, Laminaria Japonica (Seaweed Collagen Nutrient) Extract, Saccharum Officinarum (Sugar Cane) Extract°, Althaea Officinalis (Marshmallow) Root Extract°, Citrus Sinensis (Sweet Orange) Peel Extract°, Averrhoa Carambola (Star Fruit) Extract°, Passiflora Incarnata (Passion Fruit) Extract°, Actinidia Chinensis (Kiwi) Fruit Extract°, Garcinia Mangostana (Mangosteen) Fruit Extract°, Ananas Sativus (Pineapple) Fruit Extract°, Punica Granatum (Pomegranate) Extract°, Litchi Chinensis (Lychee) Fruit Extract°, Zizyphus Jujuba (Jujube) Fruit Extract°, Psidium Guajava (Guava) Fruit Extract°, Citrus Aurantium Dulcis (Orange) Fruit Extract°, Citrus Limon (Lemon) Fruit Extract°, Acer Saccharum (Sugar Maple) Extract°, Saccharomyces Cerevisiae (Yeast Collagen Nutrient) Extract°, Leuconostoc/Radish Root Ferment Filtrate°, Xanthan Gum°, Lecithin°, Pullulan°, Sclerotium Gum°, Dehydroacetic Acid°, Benzyl Alcohol°.**",
@@ -28901,7 +28897,7 @@
             "checked": "2026-09-02"
           }
         },
-        "cat": "Baby bottles"
+        "cat": "Skincare"
       },
       {
         "name": "Earth Harbor Marina Biome Serum",
@@ -28914,24 +28910,22 @@
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
-            "materials": "In contact with glass, which puts nothing into what it holds.",
-            "formula": "A durable good has no ingredient list. What it is made of is the materials check."
+            "materials": "In contact with glass, which puts nothing into what it holds."
           },
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "verdict": "good",
+          "verdict": "unrated",
           "dated": "2026-08-29",
-          "why": "a vetted store pick, chosen by a person at product scope",
+          "why": "a recommendation needs its checks done; still to do: formula",
           "fronts": {
-            "formula": "none",
+            "formula": "unassessed",
             "materials": "pass",
             "legal": "pass",
             "testing": "unassessed"
           },
           "frontOrigin": {
             "legal": "database",
-            "materials": "database",
-            "formula": "database"
+            "materials": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -28940,24 +28934,24 @@
             "2 formula-read-from-materials"
           ],
           "exposure": {
-            "type": "heated vessel",
+            "type": "leave-on face",
             "level": "medium",
-            "score": 5.7,
+            "score": 6.0,
             "baby": false,
-            "route": "ingestion",
-            "duration": "minutes",
-            "retained": "transfer",
+            "route": "skin",
+            "duration": "hours",
+            "retained": "leave-on",
             "frequency": "daily",
-            "heat": true,
+            "heat": false,
             "fat": false,
-            "why": "Heat drives whatever is in the surface into the water."
+            "why": "Left on the face all day."
           },
           "formulaAnswers": {
             "ingredients": "",
             "prose": "",
             "complete": false,
-            "verdict": "n/a",
-            "summary": "A durable good has no ingredient list. What it is made of is the materials check.",
+            "verdict": "open",
+            "summary": "No ingredient list recorded.",
             "flagged": [],
             "source": "amazon:B086W2S5LV",
             "checked": "2026-09-03"
@@ -28973,9 +28967,12 @@
             "material": "glass",
             "source": "earthharbor.com/blogs/news/how-to-recycle-earth-harbor-gems",
             "checked": "2026-09-02"
-          }
+          },
+          "heldBack": [
+            "formula"
+          ]
         },
-        "cat": "Baby bottles"
+        "cat": "Skincare"
       },
       {
         "name": "Earth Harbor baby bottles",
@@ -29766,8 +29763,7 @@
         "ext": {
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
           "frontNotes": {
-            "materials": "Made of hemp, which the product name states, and which puts nothing into what it touches.",
-            "formula": "A durable good has no ingredient list. What it is made of is the materials check."
+            "materials": "Made of hemp, which the product name states, and which puts nothing into what it touches."
           },
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
@@ -33642,7 +33638,8 @@
         "ext": {
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
           "frontNotes": {
-            "materials": "Made of silicone, which the product name states, and which puts nothing into what it touches."
+            "materials": "Made of silicone, which the product name states, and which puts nothing into what it touches.",
+            "formula": "No ingredient list recorded."
           },
           "heldFrom": "good",
           "restoreWhy": "direct evidence at sku scope on formula, materials",
@@ -34660,7 +34657,8 @@
         "ext": {
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
           "frontNotes": {
-            "materials": "We have not established what the product actually touches."
+            "materials": "We have not established what the product actually touches.",
+            "formula": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear."
           },
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
@@ -34698,7 +34696,7 @@
             "prose": "About this item DIRECT LEVER MANUAL ESPRESSO MACHINE - The Flair 49 PRO is an all manual, lever espresso machine, meaning that you are in control of your espresso extraction. All the force you put onto the lever is directly translated into your coffee making it easy to brew espresso to your exact tastes. 49MM PORTAFILTER SYSTEM - A 49mm portafilter system is deeper and more narrow that a traditional 58mm system, meaning that dial-in is more forgiving with larger grind sizes, and your espresso can have a more full body and mouthfeel, due to the increased contact time when brewing. NO PLASTICS IN THE BREW PATH - The 49 PRO has been designed with a stainless steel cylinder, valve plunger and stem, meaning that no plastic touches your brew water when making espresso. Brew pure espresso, from kettle to cup. PRESSURE GAUGE FOR 9BAR BREWING - Every Flair 49 PRO features an integrated pressure gauge with a custom “Espresso” zone between 5-9BAR, exactly that needed for brewing cafe-quality espresso at home. Choose any pressure and flow profile you want, you’re in full control. SMALL FOOTPRINT FOR ANY KITCHEN - The Flair 49 PRO doesn’t take up space like semi-automatic machines, and with a f",
             "complete": false,
             "verdict": "open",
-            "summary": "No ingredient list recorded.",
+            "summary": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear.",
             "flagged": [],
             "source": "amazon:B0842H62PV",
             "checked": "2026-09-03"
@@ -34734,7 +34732,8 @@
         "ext": {
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
           "frontNotes": {
-            "materials": "We have not established what the product actually touches."
+            "materials": "We have not established what the product actually touches.",
+            "formula": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear."
           },
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
@@ -34772,7 +34771,7 @@
             "prose": "About this item HANDCRAFT SHOTS OF ESPRESSO - With the Flair Espresso Maker, you have a complete manual espresso machine that can produce professional quality of espresso from your home, or wherever you are. Add 60ml of boiled water and a dose of up to 18 grams to yield a 40 ml shot with beautiful crema. FULLY MANUAL & COMPLETELY BEAUTIFUL – The Flair Classic is a 100% human-powered, direct lever espresso press. There are no plugs or electronics, meaning the Flair will look beautiful in any coffee station or kitchen. ADVANCED & BEGINNER ESPRESSO BREWING – The relaunched Flair Classic comes with both our Bottomless 2-in-1 Portafilter and our Flow Control Portafilter, meaning you can brew for convenience or control. BUILT TO LAST WITH A WARRANTY – The Flair Classic is made from durable materials like cast aluminum and stainless steel, you can be sure your manual espresso maker, by Flair, is built to last. Both the aluminum press stand and the stainless steel brewing head are backed by a 3-year warranty. EASY TO CLEAN – The Flair Classic manual espresso machine is the only manual espresso maker with a completely detachable brewing head. This patented design allows for users to complet",
             "complete": false,
             "verdict": "open",
-            "summary": "No ingredient list recorded.",
+            "summary": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear.",
             "flagged": [],
             "source": "amazon:B06X916JM8",
             "checked": "2026-09-03"
@@ -36236,7 +36235,9 @@
           "B086H1W384"
         ],
         "ext": {
-          "frontNotes": {},
+          "frontNotes": {
+            "formula": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear."
+          },
           "verdict": "unrated",
           "dated": "2026-08-28",
           "why": "a recommendation needs its checks done; still to do: materials, legal, formula",
@@ -36271,7 +36272,7 @@
             "prose": "About this item Brass boiler with increased capacity & power Made in Italy from machine-grade components Solid steel housing, brass group head w/stainless steel surround 9-bar extractions with 3-way solenoid valve Commercial Steam Wand › See more product details",
             "complete": false,
             "verdict": "open",
-            "summary": "No ingredient list recorded.",
+            "summary": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear.",
             "flagged": [],
             "source": "amazon:B086H1W384",
             "checked": "2026-09-03"
@@ -40189,9 +40190,7 @@
         "ext": {
           "testingNote": "Lab tested. From top-100-baby-kids-products-amazon.html: Grain based teething product. Brand named in the 2021 House Oversight heavy metals report. Daily teething use means daily exposure window, which is the worst version of the heavy metal pattern for infants.",
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {
-            "formula": "A durable good has no ingredient list. What it is made of is the materials check."
-          },
+          "frontNotes": {},
           "verdict": "skip",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
@@ -40628,7 +40627,9 @@
         "origin": "store",
         "ext": {
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
-          "frontNotes": {},
+          "frontNotes": {
+            "formula": "No ingredient list recorded."
+          },
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
           "verdict": "unrated",
@@ -40689,7 +40690,8 @@
         "ext": {
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
           "frontNotes": {
-            "materials": "Made of ceramic, which the product name states, and which puts nothing into what it touches."
+            "materials": "Made of ceramic, which the product name states, and which puts nothing into what it touches.",
+            "formula": "No ingredient list recorded."
           },
           "verdict": "unrated",
           "dated": "2026-08-28",
@@ -40756,7 +40758,9 @@
         "origin": "store",
         "ext": {
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
-          "frontNotes": {},
+          "frontNotes": {
+            "formula": "No ingredient list recorded."
+          },
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
           "verdict": "unrated",
@@ -40954,7 +40958,9 @@
         "origin": "article",
         "source": "top-100-baby-kids-products-amazon.html",
         "ext": {
-          "frontNotes": {},
+          "frontNotes": {
+            "formula": "No ingredient list recorded."
+          },
           "verdict": "careful",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
@@ -41911,9 +41917,7 @@
         ],
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {
-            "formula": "A durable good has no ingredient list. What it is made of is the materials check."
-          },
+          "frontNotes": {},
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
           "verdict": "good",
@@ -44375,7 +44379,9 @@
         "origin": "store",
         "ext": {
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
-          "frontNotes": {},
+          "frontNotes": {
+            "formula": "No ingredient list recorded."
+          },
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
           "verdict": "unrated",
@@ -44436,7 +44442,9 @@
         "origin": "store",
         "ext": {
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
-          "frontNotes": {},
+          "frontNotes": {
+            "formula": "No ingredient list recorded."
+          },
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
           "verdict": "unrated",
@@ -44498,7 +44506,9 @@
         "origin": "store",
         "ext": {
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
-          "frontNotes": {},
+          "frontNotes": {
+            "formula": "No ingredient list recorded."
+          },
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
           "verdict": "unrated",
@@ -47064,7 +47074,7 @@
             "checked": "2026-09-04"
           }
         },
-        "cat": "Makeup",
+        "cat": "Skincare",
         "research": "Packaging: Liquid serum foundation in a recyclable glass pump bottle; carton is FSC paper; pump material unstated."
       }
     ],
@@ -47575,7 +47585,9 @@
         "origin": "registry",
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
+          "frontNotes": {
+            "formula": "No ingredient list recorded."
+          },
           "heldFrom": "good",
           "restoreWhy": "direct evidence at sku scope on formula, materials",
           "verdict": "unrated",
@@ -48699,9 +48711,7 @@
         "origin": "store",
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {
-            "formula": "A durable good has no ingredient list. What it is made of is the materials check."
-          },
+          "frontNotes": {},
           "verdict": "unrated",
           "dated": "2026-08-28",
           "why": "no front is directly evidenced by the note",
@@ -49180,7 +49190,9 @@
         "origin": "store",
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
+          "frontNotes": {
+            "formula": "No ingredient list recorded."
+          },
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
           "verdict": "unrated",
@@ -50056,6 +50068,7 @@
             "materials": "Made of bamboo, which the product name states, and which puts nothing into what it touches."
           },
           "inheritedFronts": [
+            "formula",
             "formula",
             "formula",
             "formula",
@@ -51878,20 +51891,21 @@
         "origin": "store",
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
+          "frontNotes": {
+            "formula": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear."
+          },
           "verdict": "unrated",
           "dated": "2026-08-28",
-          "why": "the note reads adversely on formula, needs a human look",
+          "why": "a recommendation needs its checks done; still to do: materials, formula",
           "fronts": {
-            "formula": "caution",
+            "formula": "unassessed",
             "materials": "unassessed",
             "legal": "pass",
             "testing": "pass"
           },
           "frontOrigin": {
             "legal": "database",
-            "testing": "inferred",
-            "formula": "inferred"
+            "testing": "inferred"
           },
           "scope": "sku",
           "basis": "direct",
@@ -51916,7 +51930,7 @@
             "ingredients": "",
             "prose": "About this item Delicious, Ethically Sourced Coffee: You've tried the rest, now buy the best ground coffee on the market; This Non-Gmo organic low acid coffee is high in flavor; The beans are sun dried, and spring water washed; The result is pure, natural coffee derived straight from nature Grown In The Mountains Of Central America: Lifeboost Single Origin Acid Free Coffee is shade grown at a high elevation in the mountains of Central America; The exclusive farms that we work with are all bird friendly and each coffee bean is hand selected to ensure purity Low Acid Medium Roast Ground Coffee: Your standard cup of coffee is very acidic; That's why some feel stomach discomfort or deal with teeth issues from drinking coffee; The solution is our low acid coffee beans; The antioxidant rich organic coffee delivers all the wonderful benefits of coffee without the unwanted side effects Certified Organic & 3rd Party Tested: Lifeboost Organic Coffee Ground Beans are Usda Certified Organic, and 3rd Party Tested for mycotoxins, heavy metals, pesticides, and 400 other toxins; One sip of this organic ground coffee and you'll have a hard time going back to an ordinary cup of joe THE LIFEBOOST PRO",
             "complete": false,
-            "verdict": "careful",
+            "verdict": "open",
             "summary": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear.",
             "flagged": [],
             "source": "amazon:B0899ZYXXN",
@@ -56755,17 +56769,17 @@
             "2 formula-read-from-materials"
           ],
           "exposure": {
-            "type": "supplement",
+            "type": "leave-on face",
             "level": "medium",
-            "score": 5.0,
+            "score": 6.0,
             "baby": false,
-            "route": "ingestion",
-            "duration": "seconds",
-            "retained": "swallowed",
+            "route": "skin",
+            "duration": "hours",
+            "retained": "leave-on",
             "frequency": "daily",
             "heat": false,
             "fat": false,
-            "why": "Swallowed whole, daily, indefinitely."
+            "why": "Left on the face all day."
           },
           "formulaAnswers": {
             "ingredients": "Caprylic/capric Triglyceride, Helianthus Annuus (Sunflower) Seed Oil, Tetrahexyldecyl Ascorbate, Squalane, Passiflora Edulis Seed Oil, Moringa Oleifera Seed Oil, Algae Extract, Limonium Gerberi Extract, Crambe Maritima Leaf Extract, Aster Tripolium (Sea Starwort Oil) Extract, Ganoderma Lucidum (Reishi) Extract, Chlorella Vulgaris (Dermochlorella Algae) Extract, Panax Ginseng (Ginseng) Root Extract, Citrus Aurantifolia (Lime) Seed Oil, Fragaria Ananassa (Strawberry) Seed Oil, Curcuma Longa (Turmeric) Root Oil, Tocopherol, Ribes Nigrum (Blackcurrant) Seed Oil, Silybum Marianum Seed Oil, Thymus Vulgaris (Common Thyme) Extract, Psidium Guajava (Guava) Fruit Extract, Citrus Paradisi (Grapefruit) Fruit Extract, Petroselinum Crispum (Parsley) Leaf Extract, Terminalia Ferdinandiana (Kakadu Plum) Fruit Extract, Actinidia Chinensis (Kiwi) Fruit Extract, Chondrus Crispus (Carrageenan) Extract, Carica Papaya (Papaya) Fruit Extract, Simmondsia Chinensis (Jojoba) Seed Oil, Isosorbide Dicaprylate, Citrus Aurantium Bergamia (Bergamot) Fruit Oil, Limonene, Linalool.",
@@ -56778,7 +56792,7 @@
             "checked": "2026-09-04"
           }
         },
-        "cat": "Supplements"
+        "cat": "Skincare"
       },
       {
         "name": "MARA Universal Face Oil",
@@ -56817,17 +56831,17 @@
             "2 formula-read-from-materials"
           ],
           "exposure": {
-            "type": "heated vessel",
+            "type": "leave-on face",
             "level": "medium",
-            "score": 5.7,
+            "score": 6.0,
             "baby": false,
-            "route": "ingestion",
-            "duration": "minutes",
-            "retained": "transfer",
+            "route": "skin",
+            "duration": "hours",
+            "retained": "leave-on",
             "frequency": "daily",
-            "heat": true,
+            "heat": false,
             "fat": false,
-            "why": "Heat drives whatever is in the surface into the water."
+            "why": "Left on the face all day."
           },
           "formulaAnswers": {
             "ingredients": "Moringa Oleifera Seed Oil, Helianthus Annuus (Sunflower) Seed Oil, Vitis Vinifera (Grape) Seed Oil, Linum Usitatissimum (Linseed) Seed Oil, Vaccinium Myrtillus Seed Oil, Caprylic/Capric Triglyceride, Citrullus Lanatus (Watermelon) Seed Oil, Adansonia Digitata Seed Oil, Citrus Aurantium Bergamia (Bergamot) Fruit Oil, Citrus Aurantium Amara (Bitter Orange) Peel Oil, Alaria Esculenta Extract, Plankton Extract, Tocopherol, Limonene, Linalool, Farnesol, Geraniol",
@@ -56840,7 +56854,7 @@
             "checked": "2026-09-04"
           }
         },
-        "cat": "Baby bottles"
+        "cat": "Skincare"
       },
       {
         "name": "MARA supplements",
@@ -56867,7 +56881,7 @@
           ]
         ],
         "verdict": "good",
-        "cat": "Baby bottles",
+        "cat": "Skincare",
         "origin": "hand",
         "source": "alternative",
         "note": "Recommended algae-based toner and face oil in glass bottles.",
@@ -56899,17 +56913,17 @@
             "testing": "class"
           },
           "exposure": {
-            "type": "heated vessel",
+            "type": "leave-on face",
             "level": "medium",
-            "score": 5.7,
+            "score": 6.0,
             "baby": false,
-            "route": "ingestion",
-            "duration": "minutes",
-            "retained": "transfer",
+            "route": "skin",
+            "duration": "hours",
+            "retained": "leave-on",
             "frequency": "daily",
-            "heat": true,
+            "heat": false,
             "fat": false,
-            "why": "Heat drives whatever is in the surface into the water."
+            "why": "Left on the face all day."
           },
           "classEvidence": {
             "id": "heated-polypropylene-bottle",
@@ -59757,9 +59771,7 @@
         "origin": "store",
         "ext": {
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
-          "frontNotes": {
-            "formula": "A durable good has no ingredient list. What it is made of is the materials check."
-          },
+          "frontNotes": {},
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
           "verdict": "good",
@@ -61939,6 +61951,7 @@
             "checked": "2026-09-04"
           },
           "inheritedFronts": [
+            "formula",
             "formula"
           ]
         }
@@ -66941,27 +66954,24 @@
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
-            "formula": "A durable good has no ingredient list. What it is made of is the materials check.",
             "testing": "Polypropylene baby bottles release up to 16.2 million microplastic particles per litre at formula temperature (Trinity College Dublin, Nature Food, 2020). This is about baby bottles generally. We have not confirmed it for this product."
           },
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
           "cappedFrom": "good",
           "capRestoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "verdict": "careful",
+          "verdict": "unrated",
           "dated": "2026-08-29",
-          "why": "section 6 ceiling: testing is caution",
+          "why": "a recommendation needs its checks done; still to do: formula",
           "fronts": {
-            "formula": "none",
+            "formula": "unassessed",
             "materials": "pass",
             "legal": "pass",
-            "testing": "caution"
+            "testing": "unassessed"
           },
           "frontOrigin": {
             "legal": "database",
-            "materials": "inferred",
-            "formula": "database",
-            "testing": "class"
+            "materials": "inferred"
           },
           "scope": "sku",
           "basis": "direct",
@@ -66970,42 +66980,33 @@
             "2 formula-read-from-materials"
           ],
           "exposure": {
-            "type": "heated vessel",
+            "type": "leave-on face",
             "level": "medium",
-            "score": 5.7,
+            "score": 6.0,
             "baby": false,
-            "route": "ingestion",
-            "duration": "minutes",
-            "retained": "transfer",
+            "route": "skin",
+            "duration": "hours",
+            "retained": "leave-on",
             "frequency": "daily",
-            "heat": true,
+            "heat": false,
             "fat": false,
-            "why": "Heat drives whatever is in the surface into the water."
+            "why": "Left on the face all day."
           },
           "formulaAnswers": {
             "ingredients": "",
             "prose": "",
             "complete": false,
-            "verdict": "n/a",
-            "summary": "A durable good has no ingredient list. What it is made of is the materials check.",
+            "verdict": "open",
+            "summary": "No ingredient list recorded.",
             "flagged": [],
             "source": "",
             "checked": ""
           },
-          "classEvidence": {
-            "id": "heated-polypropylene-bottle",
-            "headline": "Polypropylene baby bottles release up to 16.2 million microplastic particles per litre at formula temperature",
-            "detail": "Polypropylene bottles, about 82 percent of the global market, release 1.3 to 16.2 million particles per litre in hot water at formula preparation temperature. Shaking increases release; sterilising with boiling water is highest of all.",
-            "source": "Trinity College Dublin, Nature Food, 2020",
-            "year": 2020,
-            "status": "caution",
-            "membership": "inferred",
-            "confirmedBy": "",
-            "escape": "Glass, stainless and silicone bottles are not the polymer that was measured.",
-            "alternative": ""
-          }
+          "heldBack": [
+            "formula"
+          ]
         },
-        "cat": "Baby bottles"
+        "cat": "Makeup"
       }
     ],
     "cautions": [
@@ -68658,17 +68659,17 @@
             "2 formula-read-from-materials"
           ],
           "exposure": {
-            "type": "leave-on skin",
-            "level": "high",
-            "score": 8.0,
+            "type": "leave-on face",
+            "level": "medium",
+            "score": 6.0,
             "baby": false,
             "route": "skin",
             "duration": "hours",
             "retained": "leave-on",
-            "frequency": "several daily",
+            "frequency": "daily",
             "heat": false,
-            "fat": true,
-            "why": "Left on the skin, so contact runs for hours."
+            "fat": false,
+            "why": "Left on the face all day."
           },
           "formulaAnswers": {
             "ingredients": "",
@@ -68684,7 +68685,7 @@
             "formula"
           ]
         },
-        "cat": "Body lotion"
+        "cat": "Skincare"
       },
       {
         "name": "Osea Eyes Wide Awake",
@@ -68721,17 +68722,17 @@
             "materials": "stated"
           },
           "exposure": {
-            "type": "food",
+            "type": "leave-on face",
             "level": "medium",
             "score": 6.0,
             "baby": false,
-            "route": "ingestion",
-            "duration": "minutes",
-            "retained": "swallowed",
+            "route": "skin",
+            "duration": "hours",
+            "retained": "leave-on",
             "frequency": "daily",
             "heat": false,
             "fat": false,
-            "why": "Eaten, so whatever is in it arrives whole."
+            "why": "Left on the face all day."
           },
           "formulaAnswers": {
             "ingredients": "",
@@ -68744,7 +68745,7 @@
             "checked": ""
           }
         },
-        "cat": "Pantry"
+        "cat": "Skincare"
       },
       {
         "name": "Osea Undaria Algae Body Oil",
@@ -68781,17 +68782,17 @@
             "2 formula-read-from-materials"
           ],
           "exposure": {
-            "type": "leave-on skin",
-            "level": "high",
-            "score": 8.0,
+            "type": "leave-on face",
+            "level": "medium",
+            "score": 6.0,
             "baby": false,
             "route": "skin",
             "duration": "hours",
             "retained": "leave-on",
-            "frequency": "several daily",
+            "frequency": "daily",
             "heat": false,
-            "fat": true,
-            "why": "Left on the skin, so contact runs for hours."
+            "fat": false,
+            "why": "Left on the face all day."
           },
           "formulaAnswers": {
             "ingredients": "",
@@ -68807,7 +68808,7 @@
             "formula"
           ]
         },
-        "cat": "Body lotion"
+        "cat": "Skincare"
       },
       {
         "name": "Osea Salts of the Earth Body Scrub",
@@ -68955,17 +68956,17 @@
             "2 formula-read-from-materials"
           ],
           "exposure": {
-            "type": "rinse-off skin",
-            "level": "low",
-            "score": 3.5,
+            "type": "leave-on face",
+            "level": "medium",
+            "score": 6.0,
             "baby": false,
             "route": "skin",
-            "duration": "minutes",
-            "retained": "rinsed",
+            "duration": "hours",
+            "retained": "leave-on",
             "frequency": "daily",
             "heat": false,
             "fat": false,
-            "why": "Rinsed off, so most of it never stays."
+            "why": "Left on the face all day."
           },
           "formulaAnswers": {
             "ingredients": "",
@@ -68981,7 +68982,7 @@
             "formula"
           ]
         },
-        "cat": "Soap"
+        "cat": "Skincare"
       }
     ],
     "rollup": {
@@ -70000,6 +70001,7 @@
           "inheritedFronts": [
             "formula",
             "testing",
+            "formula",
             "formula",
             "formula",
             "formula",
@@ -71578,20 +71580,21 @@
         "origin": "store",
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
+          "frontNotes": {
+            "formula": "No ingredient list recorded."
+          },
           "verdict": "unrated",
           "dated": "2026-08-29",
-          "why": "the note reads adversely on formula, needs a human look",
+          "why": "a recommendation needs its checks done; still to do: formula",
           "fronts": {
-            "formula": "caution",
+            "formula": "unassessed",
             "materials": "pass",
             "legal": "pass",
             "testing": "unassessed"
           },
           "frontOrigin": {
             "legal": "database",
-            "materials": "inferred",
-            "formula": "inferred"
+            "materials": "inferred"
           },
           "scope": "sku",
           "basis": "direct",
@@ -71616,7 +71619,7 @@
             "ingredients": "",
             "prose": "",
             "complete": false,
-            "verdict": "careful",
+            "verdict": "open",
             "summary": "No ingredient list recorded.",
             "flagged": [],
             "source": "amazon:B0774WQY7T",
@@ -71661,17 +71664,17 @@
             "3 packaging-stated-plastic-free"
           ],
           "exposure": {
-            "type": "leave-on skin",
-            "level": "high",
-            "score": 8.0,
+            "type": "leave-on face",
+            "level": "medium",
+            "score": 6.0,
             "baby": false,
             "route": "skin",
             "duration": "hours",
             "retained": "leave-on",
-            "frequency": "several daily",
+            "frequency": "daily",
             "heat": false,
-            "fat": true,
-            "why": "Left on the skin, so contact runs for hours."
+            "fat": false,
+            "why": "Left on the face all day."
           },
           "formulaAnswers": {
             "ingredients": "",
@@ -71687,7 +71690,7 @@
             "formula"
           ]
         },
-        "cat": "Body lotion",
+        "cat": "Skincare",
         "research": "Materials: Aloe vera leaf juice base with safflower, apricot kernel, jojoba, and avocado oils, olive-derived emulsifiers, and shea butter; preserved with phenoxyethanol and benzoic acid."
       },
       {
@@ -72989,17 +72992,17 @@
           "disclose": false,
           "rules": [],
           "exposure": {
-            "type": "leave-on skin",
-            "level": "high",
-            "score": 8.0,
+            "type": "leave-on face",
+            "level": "medium",
+            "score": 6.0,
             "baby": false,
             "route": "skin",
             "duration": "hours",
             "retained": "leave-on",
-            "frequency": "several daily",
+            "frequency": "daily",
             "heat": false,
-            "fat": true,
-            "why": "Left on the skin, so contact runs for hours."
+            "fat": false,
+            "why": "Left on the face all day."
           }
         },
         "origin": "hand",
@@ -73012,7 +73015,7 @@
           ]
         ],
         "matchFrom": "name",
-        "cat": "Body lotion"
+        "cat": "Skincare"
       },
       {
         "name": "Deodorant",
@@ -77980,7 +77983,9 @@
         ],
         "ext": {
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
-          "frontNotes": {},
+          "frontNotes": {
+            "formula": "No ingredient list recorded."
+          },
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
           "verdict": "unrated",
@@ -80056,7 +80061,9 @@
         "note": "Same Anti-Allergen Complete Seal plus HEPA in a step-up upright with DuoClean and a self cleaning brushroll.",
         "ext": {
           "legalNote": "Checked recall records on 2026-08-31. The 2015 Rotator wand recall was remedied by replacement and did not cover the Navigator models we list; the 2025 SharkNinja pressure cooker recall is a different product line.",
-          "frontNotes": {},
+          "frontNotes": {
+            "formula": "No ingredient list recorded."
+          },
           "verdict": "unrated",
           "dated": "2026-09-01",
           "why": "no front is directly evidenced by the note",
@@ -82206,6 +82213,7 @@
             "formula",
             "formula",
             "formula",
+            "formula",
             "formula"
           ]
         },
@@ -82827,7 +82835,9 @@
         "origin": "store",
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
+          "frontNotes": {
+            "formula": "No ingredient list recorded."
+          },
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
           "verdict": "unrated",
@@ -84556,17 +84566,17 @@
             "2 formula-read-from-materials"
           ],
           "exposure": {
-            "type": "leave-on skin",
-            "level": "high",
-            "score": 8.0,
+            "type": "leave-on face",
+            "level": "medium",
+            "score": 6.0,
             "baby": false,
             "route": "skin",
             "duration": "hours",
             "retained": "leave-on",
-            "frequency": "several daily",
+            "frequency": "daily",
             "heat": false,
-            "fat": true,
-            "why": "Left on the skin, so contact runs for hours."
+            "fat": false,
+            "why": "Left on the face all day."
           },
           "formulaAnswers": {
             "ingredients": "",
@@ -84582,7 +84592,7 @@
             "formula"
           ]
         },
-        "cat": "Body lotion"
+        "cat": "Skincare"
       }
     ],
     "rollup": {
@@ -85788,65 +85798,50 @@
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
-            "formula": "A durable good has no ingredient list. What it is made of is the materials check.",
             "testing": "Polypropylene baby bottles release up to 16.2 million microplastic particles per litre at formula temperature (Trinity College Dublin, Nature Food, 2020). This is about baby bottles generally. We have not confirmed it for this product."
           },
           "verdict": "unrated",
           "dated": "2026-08-28",
-          "why": "the note reads adversely on materials, needs a human look",
+          "why": "a recommendation needs its checks done; still to do: materials, formula",
           "fronts": {
-            "formula": "none",
+            "formula": "unassessed",
             "materials": "unassessed",
             "legal": "pass",
-            "testing": "caution"
+            "testing": "unassessed"
           },
           "frontOrigin": {
             "legal": "database",
-            "materials": "inferred",
-            "formula": "database",
-            "testing": "class"
+            "materials": "inferred"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
           "rules": [],
           "exposure": {
-            "type": "heated vessel",
+            "type": "supplement",
             "level": "medium",
-            "score": 5.7,
+            "score": 5.0,
             "baby": false,
             "route": "ingestion",
-            "duration": "minutes",
-            "retained": "transfer",
+            "duration": "seconds",
+            "retained": "swallowed",
             "frequency": "daily",
-            "heat": true,
+            "heat": false,
             "fat": false,
-            "why": "Heat drives whatever is in the surface into the water."
+            "why": "Swallowed whole, daily, indefinitely."
           },
           "formulaAnswers": {
             "ingredients": "",
             "prose": "",
             "complete": false,
-            "verdict": "n/a",
-            "summary": "A durable good has no ingredient list. What it is made of is the materials check.",
+            "verdict": "open",
+            "summary": "No ingredient list recorded.",
             "flagged": [],
             "source": "",
             "checked": ""
-          },
-          "classEvidence": {
-            "id": "heated-polypropylene-bottle",
-            "headline": "Polypropylene baby bottles release up to 16.2 million microplastic particles per litre at formula temperature",
-            "detail": "Polypropylene bottles, about 82 percent of the global market, release 1.3 to 16.2 million particles per litre in hot water at formula preparation temperature. Shaking increases release; sterilising with boiling water is highest of all.",
-            "source": "Trinity College Dublin, Nature Food, 2020",
-            "year": 2020,
-            "status": "caution",
-            "membership": "inferred",
-            "confirmedBy": "",
-            "escape": "Glass, stainless and silicone bottles are not the polymer that was measured.",
-            "alternative": ""
           }
         },
-        "cat": "Baby bottles"
+        "cat": "Supplements"
       }
     ],
     "fronts": {
@@ -87083,17 +87078,17 @@
             "2 formula-read-from-materials"
           ],
           "exposure": {
-            "type": "supplement",
+            "type": "leave-on face",
             "level": "medium",
-            "score": 5.0,
+            "score": 6.0,
             "baby": false,
-            "route": "ingestion",
-            "duration": "seconds",
-            "retained": "swallowed",
+            "route": "skin",
+            "duration": "hours",
+            "retained": "leave-on",
             "frequency": "daily",
             "heat": false,
             "fat": false,
-            "why": "Swallowed whole, daily, indefinitely."
+            "why": "Left on the face all day."
           },
           "formulaAnswers": {
             "ingredients": "",
@@ -87109,7 +87104,7 @@
             "formula"
           ]
         },
-        "cat": "Supplements"
+        "cat": "Skincare"
       }
     ],
     "rollup": {
@@ -87482,7 +87477,9 @@
         "origin": "store",
         "ext": {
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
-          "frontNotes": {},
+          "frontNotes": {
+            "formula": "No ingredient list recorded."
+          },
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
           "verdict": "unrated",
@@ -88863,8 +88860,7 @@
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
-            "materials": "Made of silk, which the product name states, and which puts nothing into what it touches.",
-            "formula": "A durable good has no ingredient list. What it is made of is the materials check."
+            "materials": "Made of silk, which the product name states, and which puts nothing into what it touches."
           },
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
@@ -89936,17 +89932,17 @@
             "2 formula-read-from-materials"
           ],
           "exposure": {
-            "type": "food",
+            "type": "leave-on face",
             "level": "medium",
             "score": 6.0,
             "baby": false,
-            "route": "ingestion",
-            "duration": "minutes",
-            "retained": "swallowed",
+            "route": "skin",
+            "duration": "hours",
+            "retained": "leave-on",
             "frequency": "daily",
             "heat": false,
             "fat": false,
-            "why": "Eaten, so whatever is in it arrives whole."
+            "why": "Left on the face all day."
           },
           "formulaAnswers": {
             "ingredients": "",
@@ -89962,7 +89958,7 @@
             "formula"
           ]
         },
-        "cat": "Pantry"
+        "cat": "Skincare"
       },
       {
         "name": "True Botanicals Renew Eye Cream",
@@ -89999,17 +89995,17 @@
             "2 formula-read-from-materials"
           ],
           "exposure": {
-            "type": "food",
+            "type": "leave-on face",
             "level": "medium",
             "score": 6.0,
             "baby": false,
-            "route": "ingestion",
-            "duration": "minutes",
-            "retained": "swallowed",
+            "route": "skin",
+            "duration": "hours",
+            "retained": "leave-on",
             "frequency": "daily",
             "heat": false,
             "fat": false,
-            "why": "Eaten, so whatever is in it arrives whole."
+            "why": "Left on the face all day."
           },
           "formulaAnswers": {
             "ingredients": "",
@@ -90026,7 +90022,7 @@
             "formula"
           ]
         },
-        "cat": "Pantry"
+        "cat": "Skincare"
       },
       {
         "name": "True Botanicals Pure Radiance Oil",
@@ -90038,16 +90034,14 @@
         "origin": "store",
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {
-            "formula": "A durable good has no ingredient list. What it is made of is the materials check."
-          },
+          "frontNotes": {},
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "verdict": "good",
+          "verdict": "unrated",
           "dated": "2026-08-28",
-          "why": "a vetted store pick, chosen by a person at product scope",
+          "why": "a recommendation needs its checks done; still to do: formula",
           "fronts": {
-            "formula": "none",
+            "formula": "unassessed",
             "materials": "pass",
             "legal": "pass",
             "testing": "pass"
@@ -90055,8 +90049,7 @@
           "frontOrigin": {
             "legal": "database",
             "testing": "inferred",
-            "materials": "inferred",
-            "formula": "database"
+            "materials": "inferred"
           },
           "scope": "sku",
           "basis": "direct",
@@ -90065,30 +90058,33 @@
             "2 formula-read-from-materials"
           ],
           "exposure": {
-            "type": "heated vessel",
+            "type": "leave-on face",
             "level": "medium",
-            "score": 5.7,
+            "score": 6.0,
             "baby": false,
-            "route": "ingestion",
-            "duration": "minutes",
-            "retained": "transfer",
+            "route": "skin",
+            "duration": "hours",
+            "retained": "leave-on",
             "frequency": "daily",
-            "heat": true,
+            "heat": false,
             "fat": false,
-            "why": "Heat drives whatever is in the surface into the water."
+            "why": "Left on the face all day."
           },
           "formulaAnswers": {
             "ingredients": "",
             "prose": "",
             "complete": false,
-            "verdict": "n/a",
-            "summary": "A durable good has no ingredient list. What it is made of is the materials check.",
+            "verdict": "open",
+            "summary": "No ingredient list recorded.",
             "flagged": [],
             "source": "amazon:B08HZC2NP4",
             "checked": ""
-          }
+          },
+          "heldBack": [
+            "formula"
+          ]
         },
-        "cat": "Baby bottles"
+        "cat": "Skincare"
       }
     ],
     "rollup": {
@@ -90354,9 +90350,7 @@
         ],
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {
-            "formula": "A durable good has no ingredient list. What it is made of is the materials check."
-          },
+          "frontNotes": {},
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
           "verdict": "good",
@@ -90652,8 +90646,7 @@
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
-            "materials": "Made of stainless steel, which the product name states, and which puts nothing into what it touches.",
-            "formula": "A durable good has no ingredient list. What it is made of is the materials check."
+            "materials": "Made of stainless steel, which the product name states, and which puts nothing into what it touches."
           },
           "verdict": "good",
           "dated": "2026-08-29",
@@ -94063,7 +94056,9 @@
         "origin": "registry",
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
+          "frontNotes": {
+            "formula": "No ingredient list recorded."
+          },
           "heldFrom": "good",
           "restoreWhy": "direct evidence at sku scope on formula, materials",
           "verdict": "unrated",
@@ -94622,7 +94617,9 @@
         ],
         "ext": {
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
-          "frontNotes": {},
+          "frontNotes": {
+            "formula": "No ingredient list recorded."
+          },
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
           "verdict": "unrated",
@@ -94779,6 +94776,7 @@
           "inheritedFronts": [
             "formula",
             "packaging",
+            "formula",
             "formula",
             "formula",
             "formula",
@@ -96387,8 +96385,7 @@
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
-            "materials": "Plastic gasket does not contact the drink (Recorded for Zojirushi as a whole rather than this product specifically.)",
-            "formula": "A durable good has no ingredient list. What it is made of is the materials check."
+            "materials": "Plastic gasket does not contact the drink (Recorded for Zojirushi as a whole rather than this product specifically.)"
           },
           "inheritedFronts": [
             "packaging"
