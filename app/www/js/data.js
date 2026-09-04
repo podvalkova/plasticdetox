@@ -18,7 +18,11 @@ import { Index } from "./match.js";
 const SITE = "https://plasticdetox.org";
 const CACHE_KEY = "pd.data.v1";
 const STAMP_KEY = "pd.data.stamp.v1";
-const MAX_AGE_MS = 6 * 60 * 60 * 1000;   // refresh at most four times a day
+// Verdicts are the product, so a stale copy is worse than a slow one. Six
+// hours meant a fix pushed at noon was still invisible at six, and the shop
+// was assembled from a shelf that had since changed.
+const MAX_AGE_MS = 60 * 60 * 1000;   // an hour
+const BUILD_KEY = "pd.data.build.v1";
 
 let index = null;
 let meta = { source: "bundle", version: null, brands: 0 };
@@ -80,6 +84,7 @@ function writeCache(payload) {
   try {
     localStorage.setItem(CACHE_KEY, JSON.stringify(payload));
     localStorage.setItem(STAMP_KEY, String(Date.now()));
+    if (lastBuild) localStorage.setItem(BUILD_KEY, lastBuild);
   } catch {
     // A full quota is not worth failing a lookup over. We simply refetch next
     // launch and keep serving the bundled snapshot in the meantime.
@@ -109,6 +114,7 @@ function build(payload, source) {
  * plain tag. Small, independent of the brand payload, and cheap to read.
  */
 let sidecarsLoaded = false;
+let lastBuild = "";
 async function sidecars() {
   if (sidecarsLoaded) return;
   sidecarsLoaded = true;
@@ -137,9 +143,19 @@ export async function load() {
  * Ask the site for newer verdicts. Safe to call on every launch: it returns
  * early unless the cache is stale, and it never throws.
  */
-export async function refresh({ force = false } = {}) {
+export async function refresh({ force = false, build = "" } = {}) {
   const stamp = Number(localStorage.getItem(STAMP_KEY) || 0);
-  if (!force && Date.now() - stamp < MAX_AGE_MS) return { skipped: true };
+  // A new app build almost always means new verdicts, and it is the one moment
+  // we know for certain that something changed. Coterie was good on the site
+  // and careful in the app for hours because the cache had not aged out yet.
+  let stale = false;
+  try {
+    if (build && localStorage.getItem(BUILD_KEY) !== build) stale = true;
+  } catch {
+    // Unreadable storage just means we fall back to the clock.
+  }
+  if (!force && !stale && Date.now() - stamp < MAX_AGE_MS) return { skipped: true };
+  lastBuild = build || lastBuild;
   try {
     const ctl = new AbortController();
     const timer = setTimeout(() => ctl.abort(), 12000);

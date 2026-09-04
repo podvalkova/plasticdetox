@@ -138,7 +138,14 @@ for (const [i, row] of batch.entries()) {
     const fold = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
     const tokens = fold(row.brand).split(/[^a-z0-9]+/).filter(t => t.length >= 4);
     const t = fold(got?.title || '');
-    const titleOk = !got?.title || !tokens.length || tokens.some(k => t.includes(k));
+    // Also compare with all separators removed, so a brand written solid in our
+    // file and spaced on the listing still matches: AmazonBasics against
+    // "Amazon Basics Prenatal" was being reported as a different product.
+    const solid = t.replace(/[^a-z0-9]+/g, '');
+    const brandSolid = fold(row.brand).replace(/[^a-z0-9]+/g, '');
+    const titleOk = !got?.title || !tokens.length
+      || tokens.some(k => t.includes(k))
+      || (brandSolid.length >= 5 && solid.includes(brandSolid));
 
     // "See label", "refer to package" is a pointer, not a list.
     const punt = got && /^(see|refer to|check)\b.{0,40}\b(label|package|packaging|product)/i.test(got.text);

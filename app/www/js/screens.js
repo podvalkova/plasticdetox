@@ -20,7 +20,9 @@ export function home(root, {
   const hero = el("div", "hero");
   hero.appendChild(el("h1", null, "Check it before you buy it"));
   hero.appendChild(el("p", null,
-    "In a shop or in a basket. Name the brand and the product, and see all four checks."));
+    "Four checks on every product: what is in it, what it is made of, what it has "
+    + "been recalled or sued over, and what independent labs found. Nothing earns a "
+    + "recommendation until all four are done."));
   root.appendChild(hero);
 
   // Brand and product are separate fields, as they are on the site. A single
@@ -332,11 +334,12 @@ export function detox(root, { phases, done, onToggle, onOpen }) {
   // the site gives away for an email address, not a trimmed version of the
   // thing somebody paid for.
   const more = el("div", "card know");
-  more.appendChild(el("h2", null, "Beyond the 90 days"));
+  more.appendChild(el("h2", null, "Expecting, or a baby at home?"));
   more.appendChild(el("p", null,
-    "This is the free plan, the same one the site sends out. A custom plan works "
-    + "through the rest of what we track, for your rooms, your household and your budget."));
-  const go = el("button", "cta ghost", "See the custom plan");
+    "This is the free plan, the same one the site sends out. The Baby Package covers "
+    + "the nursery, bottles and feeding, wipes and creams, in the order that matters "
+    + "for someone that small."));
+  const go = el("button", "cta ghost", "See the Baby Package");
   go.onclick = () => onOpen("https://plasticdetox.org/custom-plan.html?app=1");
   more.appendChild(go);
   root.appendChild(more);

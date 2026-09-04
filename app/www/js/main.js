@@ -753,7 +753,10 @@ async function start() {
 
   // Refreshed after the first screen is up, never before it. A scan in a shop
   // with one bar of signal must not wait on a two megabyte download.
-  data.refresh().then((r) => {
+  // Hand the refresh the running build, so a release always brings its
+  // verdicts with it rather than waiting for the clock.
+  currentBundle().then((info) => data.refresh({ build: (info && info.version) || "" }))
+    .then((r) => {
     if (r && r.updated) {
       index = data.getIndex();
       groupCache = null;

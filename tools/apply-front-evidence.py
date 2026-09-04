@@ -252,6 +252,16 @@ def assess(pack):
 # Exposure types that are an object rather than a recipe. A kettle, a bowl, a
 # mat: nothing to list, so formula is `none` and the materials front carries
 # the whole question.
+# Categories that are a device, whatever the exposure model calls them. A
+# shower filter is typed "drinking water" because that is what it acts on, and
+# an air purifier "air appliance", but neither has an ingredient list. The type
+# describes what reaches a person, which is the right question for exposure and
+# the wrong one for whether a recipe exists.
+DEVICE_CATS = {
+    "Water filters", "Air purifiers", "Vacuums", "Air fryers",
+    "Kitchen appliances", "Humidifiers", "Toothbrushes",
+}
+
 DURABLE_TYPES = {
     "air appliance", "equipment", "floss", "food surface", "food vessel",
     "heated cookware", "heated vessel", "mouthed object", "oral appliance",
@@ -542,6 +552,9 @@ def main():
                     fa["verdict"] = "open"
                     fa["summary"] = "No ingredient list recorded."
                 undone += 1
+
+            if (p.get("cat") or "") in DEVICE_CATS:
+                etype = ""   # judged as an object below, whatever its type says
 
             if etype:
                 # An allowlist, not an exclusion.
