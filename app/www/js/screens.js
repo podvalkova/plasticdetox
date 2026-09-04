@@ -89,7 +89,8 @@ export function home(root, {
       line.appendChild(el("span", `dot ${stance || "neutral"}`));
       const body = el("div", "row-body");
       body.appendChild(el("div", "row-name", pr.name));
-      if (pr.cat) body.appendChild(el("div", "row-sub", pr.cat));
+      const hint1 = scopeHint(pr);
+      if (hint1 || pr.cat) body.appendChild(el("div", "row-sub", hint1 || pr.cat));
       line.appendChild(body);
       line.appendChild(el("span", "row-chev", "\u203a"));
       line.onclick = () => onProduct(b, pr);
@@ -245,6 +246,22 @@ export function tabs(current, onTab) {
  * move through it. Counts, never percentages: "3 gone, 20 to go" is language
  * anyone feels.
  */
+/**
+ * What a picker row covers, when the name alone does not say.
+ *
+ * A row scoped to a line and carrying no ASIN is not a product you can hold.
+ * Pampers offers "Baby Dry Diapers", "Swaddlers" and plain "Diapers", and the
+ * third is the answer for every Pampers diaper the first two do not cover.
+ * Sitting unlabelled between two specific packs it just reads as a third pack.
+ * The scope is recorded on every row; the picker was not reading it.
+ */
+function scopeHint(row) {
+  const scope = (row.ext || {}).scope;
+  if (scope === "line" && !((row.asins || []).length)) return "the rest of this range";
+  if (scope === "brand") return "the brand as a whole";
+  return "";
+}
+
 export function detox(root, { phases, done, room, onRoom, onStep, onOpen }) {
   const all = phases.reduce((n, p) => n + p.steps.length, 0);
   const ticked = phases.reduce(
@@ -997,7 +1014,10 @@ export function result(root, { index, match, scan, product, query, productNamed,
         line.appendChild(el("span", `dot ${stance}`));
         const body = el("div", "row-body");
         body.appendChild(el("div", "row-name", row.name));
-        body.appendChild(el("div", "row-sub", STANCE_LABEL[stance] || "Context"));
+        const hint2 = scopeHint(row);
+        body.appendChild(el("div", "row-sub", hint2
+          ? `${STANCE_LABEL[stance] || "Context"} · ${hint2}`
+          : (STANCE_LABEL[stance] || "Context")));
         line.appendChild(body);
         line.appendChild(el("span", "row-chev", "›"));
         line.onclick = () => onProduct(row);
