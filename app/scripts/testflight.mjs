@@ -26,6 +26,23 @@ const IOS = path.join(APP, "ios", "App");
 const OUT = path.join(APP, "dist", "ios");
 const ARCHIVE = path.join(OUT, "PlasticDetox.xcarchive");
 
+// Read app/.env.local first, so the identifiers survive a new shell.
+//
+// These lived only as exported shell variables, which meant that months later
+// nobody could upload a build without hunting them down again. They are
+// account identifiers rather than secrets; the signing key is never here.
+try {
+  const local = path.join(APP, ".env.local");
+  if (fs.existsSync(local)) {
+    for (const line of fs.readFileSync(local, "utf8").split("\n")) {
+      const m = line.match(/^\s*(?:export\s+)?(PD_[A-Z_]+)\s*=\s*(.+?)\s*$/);
+      if (m && !process.env[m[1]]) process.env[m[1]] = m[2].replace(/^["']|["']$/g, "");
+    }
+  }
+} catch {
+  // A missing or unreadable file just means the variables come from the shell.
+}
+
 const TEAM = process.env.PD_TEAM_ID;
 const KEY_ID = process.env.PD_ASC_KEY_ID;
 const ISSUER = process.env.PD_ASC_ISSUER;
