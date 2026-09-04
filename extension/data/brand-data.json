@@ -5584,19 +5584,21 @@
         "note": "Reformulated and cleaner than Johnson's but retains fragrance and behentrimonium methosulfate.",
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
+          "frontNotes": {
+            "formula": "Reformulated and cleaner than Johnson's but retains fragrance and behentrimonium methosulfate."
+          },
           "verdict": "careful",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "caution",
             "materials": "unassessed",
             "legal": "pass",
             "testing": "unassessed"
           },
           "frontOrigin": {
             "legal": "database",
-            "formula": "inferred"
+            "formula": "hand"
           },
           "scope": "line",
           "basis": "direct",
@@ -5645,19 +5647,20 @@
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
             "materials": "We have not established what the product actually touches.",
-            "formula": "The listing we hold for this product serves a different item, The Honest Company Bubble Bath, Hypoallergenic, Lavender Calm, 12 fl oz."
+            "formula": "Current version uses oat extracts but retains fragrance and behentrimonium methosulfate."
           },
           "verdict": "careful",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "caution",
             "materials": "unassessed",
             "legal": "pass",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "legal": "database"
+            "legal": "database",
+            "formula": "hand"
           },
           "scope": "sku",
           "basis": "direct",
@@ -6517,20 +6520,21 @@
         "ext": {
           "legalNote": "Checked recall records on 2026-08-31. A July 2025 recall of Kiwi electric gliders (USB port overheating) was remedied with a repair kit; no Babyletto crib has been recalled, and the electrical mechanism does not transfer to furniture without electronics.",
           "frontNotes": {
-            "materials": "We have not established what the product actually touches."
+            "materials": "Polyurethane foam cushions, polyester or rayon upholstery."
           },
           "verdict": "careful",
           "dated": "2026-09-02",
           "why": "adverse finding stands",
           "fronts": {
             "formula": "none",
-            "materials": "unassessed",
+            "materials": "caution",
             "legal": "pass",
             "testing": "unassessed"
           },
           "frontOrigin": {
             "legal": "database",
-            "formula": "database"
+            "formula": "database",
+            "materials": "hand"
           },
           "scope": "sku",
           "basis": "direct",
@@ -6797,7 +6801,9 @@
         "note": "Independent Lead Safe Mama testing found mercury.",
         "ext": {
           "legalNote": "FDA database matches reviewed on 2026-08-31: the recalling firm, Badger Botanicals, is a kratom vendor unrelated to W.S. Badger. No recall on record for this brand.",
-          "frontNotes": {},
+          "frontNotes": {
+            "testing": "Independent Lead Safe Mama testing found mercury."
+          },
           "verdict": "skip",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
@@ -6805,10 +6811,11 @@
             "formula": "unassessed",
             "materials": "unassessed",
             "legal": "pass",
-            "testing": "unassessed"
+            "testing": "caution"
           },
           "frontOrigin": {
-            "legal": "database"
+            "legal": "database",
+            "testing": "hand"
           },
           "scope": "line",
           "basis": "direct",
@@ -10432,7 +10439,8 @@
         "note": "Recalled in France in 2020 and again in 2021 for the same uncertified CE mark problem. Risk of injuries and burns.",
         "ext": {
           "frontNotes": {
-            "formula": "A durable good has no ingredient list. What it is made of is the materials check."
+            "formula": "A durable good has no ingredient list. What it is made of is the materials check.",
+            "legal": "Recalled in France in 2020 and again in 2021 for the same uncertified CE mark problem."
           },
           "verdict": "skip",
           "dated": "2026-08-28",
@@ -10440,11 +10448,11 @@
           "fronts": {
             "formula": "none",
             "materials": "unassessed",
-            "legal": "unassessed",
+            "legal": "caution",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "legal": "inferred",
+            "legal": "hand",
             "formula": "database"
           },
           "scope": "line",
@@ -11223,7 +11231,8 @@
         "note": "Both cordless lines were recalled for battery fire hazards (January 2023 and February 2024). Check the CPSC recall lists before using one you already own.",
         "ext": {
           "frontNotes": {
-            "formula": "A durable good has no ingredient list. What it is made of is the materials check."
+            "formula": "A durable good has no ingredient list. What it is made of is the materials check.",
+            "legal": "Both cordless lines were recalled for battery fire hazards (January 2023 and February 2024)."
           },
           "verdict": "skip",
           "dated": "2026-09-01",
@@ -11231,11 +11240,11 @@
           "fronts": {
             "formula": "none",
             "materials": "unassessed",
-            "legal": "unassessed",
+            "legal": "caution",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "legal": "inferred",
+            "legal": "hand",
             "formula": "database"
           },
           "scope": "line",
@@ -12773,19 +12782,21 @@
         "note": "Intentionally added PFAS disclosed under California AB 1200.",
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
+          "frontNotes": {
+            "formula": "Intentionally added PFAS disclosed under California AB 1200."
+          },
           "verdict": "skip",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "fail",
             "materials": "unassessed",
             "legal": "pass",
             "testing": "unassessed"
           },
           "frontOrigin": {
             "legal": "database",
-            "formula": "inferred"
+            "formula": "hand"
           },
           "scope": "line",
           "basis": "direct",
@@ -12944,7 +12955,7 @@
             "formula": "pass",
             "materials": "unassessed",
             "legal": "pass",
-            "testing": "unassessed"
+            "testing": "caution"
           },
           "scope": "line",
           "basis": "direct",
@@ -12955,11 +12966,13 @@
           "frontNotes": {
             "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
             "formula": "The published ingredient list carries nothing on the hazard list.",
-            "materials": "We have not established what the product actually touches."
+            "materials": "We have not established what the product actually touches.",
+            "testing": "Protein powders are one of the categories where independent testing has repeatedly found lead and cadmium, so an uncertified daily powder is an unknown."
           },
           "frontOrigin": {
             "legal": "database",
-            "formula": "database"
+            "formula": "database",
+            "testing": "hand"
           },
           "exposure": {
             "type": "supplement",
@@ -13054,7 +13067,9 @@
         "source": "best-non-toxic-toothpaste-guide.html",
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
+          "frontNotes": {
+            "testing": "Independent lab testing published by Lead Safe Mama in 2025."
+          },
           "verdict": "careful",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
@@ -13062,10 +13077,11 @@
             "formula": "unassessed",
             "materials": "unassessed",
             "legal": "pass",
-            "testing": "unassessed"
+            "testing": "caution"
           },
           "frontOrigin": {
-            "legal": "database"
+            "legal": "database",
+            "testing": "hand"
           },
           "scope": "line",
           "basis": "direct",
@@ -15274,7 +15290,9 @@
         "source": "best-non-toxic-toothpaste-guide.html",
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
+          "frontNotes": {
+            "testing": "Lead about 446 ppb in the whitening paste."
+          },
           "verdict": "skip",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
@@ -15282,10 +15300,11 @@
             "formula": "unassessed",
             "materials": "unassessed",
             "legal": "pass",
-            "testing": "unassessed"
+            "testing": "caution"
           },
           "frontOrigin": {
-            "legal": "database"
+            "legal": "database",
+            "testing": "hand"
           },
           "scope": "line",
           "basis": "direct",
@@ -17334,7 +17353,8 @@
         "source": "top-100-baby-kids-products-amazon.html",
         "ext": {
           "frontNotes": {
-            "materials": "Made of cotton, which the product name states, and which puts nothing into what it touches."
+            "materials": "Made of cotton, which the product name states, and which puts nothing into what it touches.",
+            "legal": "Brand level recall record across multiple chemistries."
           },
           "verdict": "skip",
           "dated": "2026-08-28",
@@ -17342,11 +17362,11 @@
           "fronts": {
             "formula": "none",
             "materials": "pass",
-            "legal": "unassessed",
+            "legal": "caution",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "legal": "inferred",
+            "legal": "hand",
             "materials": "database",
             "formula": "database"
           },
@@ -21889,7 +21909,7 @@
           "why": "Reviewed by hand from our published research on this category.",
           "fronts": {
             "formula": "none",
-            "materials": "unassessed",
+            "materials": "caution",
             "legal": "pass",
             "testing": "unassessed"
           },
@@ -21902,11 +21922,12 @@
           "frontNotes": {
             "legal": "Checked recall records on 2026-08-31. The February 2023 recall of 2 million Cosori air fryers (overheating connectors) was remedied by replacement and did not cover the kettles we feature; over 24 months, now informational.",
             "formula": "A durable good has no ingredient list. What it is made of is the materials check.",
-            "materials": "We have not established what the product actually touches."
+            "materials": "Better than a Teflon basket, but the PFAS free claim on the ceramic coating is the manufacturer's own, with no third party verification, and the coating still wears out in one to three years."
           },
           "frontOrigin": {
             "legal": "database",
-            "formula": "database"
+            "formula": "database",
+            "materials": "hand"
           },
           "exposure": {
             "type": "heated cookware",
@@ -23110,7 +23131,9 @@
         "origin": "article",
         "source": "best-non-toxic-toothpaste-guide.html",
         "ext": {
-          "frontNotes": {},
+          "frontNotes": {
+            "testing": "Lead about 399 ppb, with titanium dioxide and artificial dyes."
+          },
           "verdict": "skip",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
@@ -23118,9 +23141,11 @@
             "formula": "unassessed",
             "materials": "unassessed",
             "legal": "unassessed",
-            "testing": "unassessed"
+            "testing": "caution"
           },
-          "frontOrigin": {},
+          "frontOrigin": {
+            "testing": "hand"
+          },
           "scope": "line",
           "basis": "direct",
           "disclose": false,
@@ -23415,18 +23440,20 @@
         "verdict": "skip",
         "note": "Plastic water reservoir and water path in contact with hot water.",
         "ext": {
-          "frontNotes": {},
+          "frontNotes": {
+            "materials": "Plastic water reservoir and water path in contact with hot water."
+          },
           "verdict": "skip",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
             "formula": "unassessed",
-            "materials": "unassessed",
+            "materials": "caution",
             "legal": "unassessed",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "materials": "inferred"
+            "materials": "hand"
           },
           "scope": "line",
           "basis": "direct",
@@ -23472,19 +23499,21 @@
         "note": "Nonstick coated interior.",
         "ext": {
           "frontNotes": {
-            "formula": "A durable good has no ingredient list. What it is made of is the materials check."
+            "formula": "A durable good has no ingredient list. What it is made of is the materials check.",
+            "materials": "Nonstick coated interior."
           },
           "verdict": "skip",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
             "formula": "none",
-            "materials": "unassessed",
+            "materials": "caution",
             "legal": "unassessed",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "formula": "database"
+            "formula": "database",
+            "materials": "hand"
           },
           "scope": "line",
           "basis": "direct",
@@ -23872,7 +23901,9 @@
         "note": "",
         "origin": "brand-line",
         "ext": {
-          "frontNotes": {},
+          "frontNotes": {
+            "testing": "Among the four sunscreen brands with the highest benzene contamination in Valisure testing."
+          },
           "verdict": "skip",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
@@ -23880,9 +23911,11 @@
             "formula": "unassessed",
             "materials": "unassessed",
             "legal": "unassessed",
-            "testing": "unassessed"
+            "testing": "caution"
           },
-          "frontOrigin": {},
+          "frontOrigin": {
+            "testing": "hand"
+          },
           "scope": "brand",
           "basis": "inherited",
           "disclose": true,
@@ -26475,18 +26508,20 @@
         "verdict": "skip",
         "note": "Recalled by Unilever in October 2022 for elevated benzene from the propellant.",
         "ext": {
-          "frontNotes": {},
+          "frontNotes": {
+            "legal": "Recalled by Unilever in October 2022 for elevated benzene from the propellant."
+          },
           "verdict": "skip",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
             "formula": "unassessed",
             "materials": "unassessed",
-            "legal": "unassessed",
+            "legal": "caution",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "legal": "inferred"
+            "legal": "hand"
           },
           "scope": "line",
           "basis": "direct",
@@ -26756,7 +26791,8 @@
         "note": "Independent testing reported trace lead, mercury and arsenic, and a class action followed. The soaps are a separate matter and remain a pick.",
         "ext": {
           "frontNotes": {
-            "legal": "Our own research records an action here, and the note on this product describes it. Nothing further is open in the FDA enforcement database, and under rule 5.2 a remedied action over 24 months old is informational rather than a finding against the product today."
+            "legal": "Our own research records an action here, and the note on this product describes it. Nothing further is open in the FDA enforcement database, and under rule 5.2 a remedied action over 24 months old is informational rather than a finding against the product today.",
+            "testing": "Independent testing reported trace lead, mercury and arsenic, and a class action followed."
           },
           "legalNote": "Our own research records an action here, and the note on this product describes it. Nothing further is open in the FDA enforcement database, and under rule 5.2 a remedied action over 24 months old is informational rather than a finding against the product today.",
           "verdict": "careful",
@@ -26766,11 +26802,11 @@
             "formula": "unassessed",
             "materials": "unassessed",
             "legal": "pass",
-            "testing": "unassessed"
+            "testing": "caution"
           },
           "frontOrigin": {
             "legal": "database",
-            "testing": "inferred"
+            "testing": "hand"
           },
           "scope": "line",
           "basis": "direct",
@@ -32237,7 +32273,8 @@
         "source": "top-100-baby-kids-products-amazon.html",
         "ext": {
           "frontNotes": {
-            "materials": "We have not established what the product actually touches."
+            "materials": "We have not established what the product actually touches.",
+            "legal": "Borax containing slimes have CPSC injury reports (skin burns)."
           },
           "verdict": "skip",
           "dated": "2026-08-28",
@@ -32245,11 +32282,12 @@
           "fronts": {
             "formula": "none",
             "materials": "unassessed",
-            "legal": "unassessed",
+            "legal": "caution",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "formula": "database"
+            "formula": "database",
+            "legal": "hand"
           },
           "scope": "sku",
           "basis": "direct",
@@ -32359,18 +32397,21 @@
         "origin": "brand-line",
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
+          "frontNotes": {
+            "formula": "UV Clear is marketed as clean but is actually a chemical sunscreen containing octinoxate, a banned-in-Hawaii endocrine disruptor."
+          },
           "verdict": "skip",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "fail",
             "materials": "unassessed",
             "legal": "pass",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "legal": "database"
+            "legal": "database",
+            "formula": "hand"
           },
           "scope": "brand",
           "basis": "inherited",
@@ -36610,7 +36651,9 @@
         "note": "",
         "origin": "brand-line",
         "ext": {
-          "frontNotes": {},
+          "frontNotes": {
+            "testing": "Among the four sunscreen brands with the highest benzene contamination in Valisure testing."
+          },
           "verdict": "skip",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
@@ -36618,9 +36661,11 @@
             "formula": "unassessed",
             "materials": "unassessed",
             "legal": "unassessed",
-            "testing": "unassessed"
+            "testing": "caution"
           },
-          "frontOrigin": {},
+          "frontOrigin": {
+            "testing": "hand"
+          },
           "scope": "brand",
           "basis": "inherited",
           "disclose": true,
@@ -37275,7 +37320,7 @@
           "fronts": {
             "formula": "pass",
             "legal": "unassessed",
-            "testing": "unassessed",
+            "testing": "caution",
             "materials": "unassessed"
           },
           "scope": "sku",
@@ -37284,10 +37329,12 @@
           "authored": true,
           "dated": "2026-09-01",
           "frontNotes": {
-            "formula": "The published ingredient list carries nothing on the hazard list."
+            "formula": "The published ingredient list carries nothing on the hazard list.",
+            "testing": "Highest arsenic of any prenatal in Lead Safe Mama's testing (Nov 2024), plus lead and cadmium."
           },
           "frontOrigin": {
-            "formula": "database"
+            "formula": "database",
+            "testing": "hand"
           },
           "exposure": {
             "type": "supplement",
@@ -37341,7 +37388,7 @@
           "fronts": {
             "formula": "unassessed",
             "legal": "unassessed",
-            "testing": "unassessed",
+            "testing": "caution",
             "materials": "unassessed"
           },
           "scope": "sku",
@@ -37349,8 +37396,12 @@
           "disclose": false,
           "authored": true,
           "dated": "2026-09-01",
-          "frontNotes": {},
-          "frontOrigin": {},
+          "frontNotes": {
+            "testing": "The only PFAS detection in Mamavation's September 2026 nine prenatal study (0.45 ng/g 4:2FTS), plus 740 ppb ortho-phthalates and the study's highest arsenic (1.34 ug/g)."
+          },
+          "frontOrigin": {
+            "testing": "hand"
+          },
           "exposure": {
             "type": "supplement",
             "level": "medium",
@@ -37856,19 +37907,22 @@
         "origin": "article",
         "source": "top-100-baby-kids-products-amazon.html",
         "ext": {
-          "frontNotes": {},
+          "frontNotes": {
+            "materials": "Multilayer plastic pouch in contact with acidic fruit and vegetable puree, often heated during pasteurization then shelf stable for months.",
+            "testing": "2023 Consumer Reports testing found phthalates in pouches that were not in the same brand's jarred versions."
+          },
           "verdict": "skip",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
             "formula": "unassessed",
-            "materials": "unassessed",
+            "materials": "caution",
             "legal": "unassessed",
-            "testing": "unassessed"
+            "testing": "caution"
           },
           "frontOrigin": {
-            "testing": "inferred",
-            "materials": "inferred"
+            "testing": "hand",
+            "materials": "hand"
           },
           "scope": "sku",
           "basis": "direct",
@@ -37914,7 +37968,8 @@
         "source": "top-100-baby-kids-products-amazon.html",
         "ext": {
           "frontNotes": {
-            "formula": "The published ingredient list carries nothing on the hazard list."
+            "formula": "The published ingredient list carries nothing on the hazard list.",
+            "testing": "Gerber was named in the 2021 House Oversight report for arsenic, lead, cadmium, and mercury."
           },
           "verdict": "skip",
           "dated": "2026-08-28",
@@ -37923,10 +37978,10 @@
             "formula": "pass",
             "materials": "unassessed",
             "legal": "unassessed",
-            "testing": "unassessed"
+            "testing": "caution"
           },
           "frontOrigin": {
-            "testing": "inferred",
+            "testing": "hand",
             "formula": "database"
           },
           "scope": "sku",
@@ -37993,7 +38048,7 @@
             "formula": "pass",
             "materials": "unassessed",
             "legal": "unassessed",
-            "testing": "unassessed"
+            "testing": "caution"
           },
           "scope": "line",
           "basis": "direct",
@@ -38001,7 +38056,8 @@
           "authored": true,
           "dated": "2026-09-03",
           "frontNotes": {
-            "formula": "The published ingredient list carries nothing on the hazard list."
+            "formula": "The published ingredient list carries nothing on the hazard list.",
+            "testing": "Multilayer plastic pouch with an acidic puree, the combination behind the 2023 phthalate findings, and Gerber was among the brands named in the congressional report on heavy metals in baby food."
           },
           "exposure": {
             "type": "food",
@@ -38017,7 +38073,8 @@
             "why": "Eaten, so whatever is in it arrives whole."
           },
           "frontOrigin": {
-            "formula": "database"
+            "formula": "database",
+            "testing": "hand"
           },
           "formulaAnswers": {
             "ingredients": "Ingredients: Organic Apples, Organic Blueberries, Organic Spinach.",
@@ -39276,19 +39333,21 @@
         "source": "top-100-baby-kids-products-amazon.html",
         "ext": {
           "frontNotes": {
-            "formula": "A durable good has no ingredient list. What it is made of is the materials check."
+            "formula": "A durable good has no ingredient list. What it is made of is the materials check.",
+            "materials": "Polyurethane foam typically contains flame retardants (TDCPP, TCEP historically."
           },
           "verdict": "skip",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
             "formula": "none",
-            "materials": "unassessed",
+            "materials": "caution",
             "legal": "unassessed",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "formula": "database"
+            "formula": "database",
+            "materials": "hand"
           },
           "scope": "sku",
           "basis": "direct",
@@ -40776,7 +40835,9 @@
         "source": "top-100-baby-kids-products-amazon.html",
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
+          "frontNotes": {
+            "testing": "Multilayer pouch plus acidic puree plus phthalate findings (Consumer Reports 2023)."
+          },
           "verdict": "skip",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
@@ -40784,11 +40845,12 @@
             "formula": "unassessed",
             "materials": "unassessed",
             "legal": "pass",
-            "testing": "unassessed"
+            "testing": "caution"
           },
           "frontOrigin": {
             "legal": "database",
-            "materials": "inferred"
+            "materials": "inferred",
+            "testing": "hand"
           },
           "scope": "sku",
           "basis": "direct",
@@ -41622,18 +41684,20 @@
         "source": "top-100-baby-kids-products-amazon.html",
         "ext": {
           "frontNotes": {
-            "formula": "No ingredient list recorded."
+            "formula": "Contains fragrance and preservatives."
           },
           "verdict": "careful",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "caution",
             "materials": "unassessed",
             "legal": "unassessed",
             "testing": "unassessed"
           },
-          "frontOrigin": {},
+          "frontOrigin": {
+            "formula": "hand"
+          },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
@@ -48053,7 +48117,9 @@
         "source": "top-100-baby-kids-products-amazon.html",
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
+          "frontNotes": {
+            "testing": "Consumer Reports 2025 placed Kabrita in the Worse Choices tier after detecting both arsenic and lead in their independent testing."
+          },
           "verdict": "skip",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
@@ -48061,10 +48127,11 @@
             "formula": "unassessed",
             "materials": "unassessed",
             "legal": "pass",
-            "testing": "unassessed"
+            "testing": "caution"
           },
           "frontOrigin": {
-            "legal": "database"
+            "legal": "database",
+            "testing": "hand"
           },
           "scope": "sku",
           "basis": "direct",
@@ -52297,7 +52364,7 @@
           "fronts": {
             "formula": "none",
             "materials": "unassessed",
-            "legal": "unassessed",
+            "legal": "caution",
             "testing": "unassessed"
           },
           "scope": "line",
@@ -52306,7 +52373,8 @@
           "authored": true,
           "dated": "2026-09-03",
           "frontNotes": {
-            "formula": "A durable good has no ingredient list. What it is made of is the materials check."
+            "formula": "A durable good has no ingredient list. What it is made of is the materials check.",
+            "legal": "Levoit is named in consumer class action litigation alleging its purifiers are misrepresented as meeting the True HEPA standard they advertise."
           },
           "exposure": {
             "type": "air appliance",
@@ -52322,7 +52390,8 @@
             "why": "Running in the room, moving air past its own materials."
           },
           "frontOrigin": {
-            "formula": "database"
+            "formula": "database",
+            "legal": "hand"
           }
         },
         "cat": "Air purifiers"
@@ -56593,7 +56662,8 @@
         "source": "top-100-baby-kids-products-amazon.html",
         "ext": {
           "frontNotes": {
-            "formula": "A durable good has no ingredient list. What it is made of is the materials check."
+            "formula": "A durable good has no ingredient list. What it is made of is the materials check.",
+            "legal": "CPSC has long recall history of high powered magnet sets (Buckyballs era)."
           },
           "verdict": "careful",
           "dated": "2026-09-02",
@@ -56601,12 +56671,12 @@
           "fronts": {
             "formula": "none",
             "materials": "unassessed",
-            "legal": "unassessed",
+            "legal": "caution",
             "testing": "unassessed"
           },
           "frontOrigin": {
             "formula": "database",
-            "legal": "inferred"
+            "legal": "hand"
           },
           "scope": "sku",
           "basis": "direct",
@@ -65395,7 +65465,9 @@
         "origin": "brand-line",
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
+          "frontNotes": {
+            "testing": "One of the four highest-benzene-contaminated sunscreen brands in Valisure testing; five SKUs recalled by J&J."
+          },
           "verdict": "skip",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
@@ -65403,10 +65475,11 @@
             "formula": "unassessed",
             "materials": "unassessed",
             "legal": "pass",
-            "testing": "unassessed"
+            "testing": "caution"
           },
           "frontOrigin": {
-            "legal": "database"
+            "legal": "database",
+            "testing": "hand"
           },
           "scope": "brand",
           "basis": "inherited",
@@ -65861,19 +65934,21 @@
         "note": "PTFE coated baskets.",
         "ext": {
           "frontNotes": {
-            "formula": "A durable good has no ingredient list. What it is made of is the materials check."
+            "formula": "A durable good has no ingredient list. What it is made of is the materials check.",
+            "materials": "PTFE coated baskets."
           },
           "verdict": "skip",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
             "formula": "none",
-            "materials": "unassessed",
+            "materials": "caution",
             "legal": "unassessed",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "formula": "database"
+            "formula": "database",
+            "materials": "hand"
           },
           "scope": "line",
           "basis": "direct",
@@ -66355,7 +66430,7 @@
           "fronts": {
             "formula": "unassessed",
             "legal": "pass",
-            "testing": "unassessed",
+            "testing": "caution",
             "materials": "unassessed"
           },
           "scope": "sku",
@@ -66363,10 +66438,13 @@
           "disclose": false,
           "authored": true,
           "dated": "2026-09-01",
-          "frontNotes": {},
+          "frontNotes": {
+            "testing": "Middle tier in Mamavation's September 2026 study: 218 ppb ortho-phthalates and mid pack metals."
+          },
           "legalNote": "Checked the FDA enforcement database on 2026-08-31. Two closed and remedied recalls on record for the firm: elevated vitamin D3 in Baby's D3 liquid (2024, over 24 months, now informational) and a mislabeled kids gummy (2025, a different product line whose defect does not transfer). Neither is open.",
           "frontOrigin": {
-            "legal": "database"
+            "legal": "database",
+            "testing": "hand"
           },
           "exposure": {
             "type": "supplement",
@@ -68415,20 +68493,21 @@
         "source": "top-100-baby-kids-products-amazon.html",
         "ext": {
           "frontNotes": {
-            "formula": "No ingredient list recorded."
+            "formula": "No ingredient list recorded.",
+            "materials": "But the pouch itself is multilayer plastic in contact with acidic puree, which is the category problem better ingredients cannot fix."
           },
           "verdict": "careful",
           "dated": "2026-09-02",
           "why": "adverse finding stands",
           "fronts": {
             "formula": "unassessed",
-            "materials": "unassessed",
+            "materials": "caution",
             "legal": "unassessed",
             "testing": "pass"
           },
           "frontOrigin": {
             "testing": "inferred",
-            "materials": "inferred"
+            "materials": "hand"
           },
           "scope": "sku",
           "basis": "direct",
@@ -68567,7 +68646,7 @@
             "formula": "unassessed",
             "materials": "unassessed",
             "legal": "pass",
-            "testing": "unassessed"
+            "testing": "caution"
           },
           "scope": "line",
           "basis": "direct",
@@ -68577,10 +68656,12 @@
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
             "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-            "formula": "No ingredient list recorded."
+            "formula": "No ingredient list recorded.",
+            "testing": "Independent testing published by Lead Safe Mama, 2025 to 2026."
           },
           "frontOrigin": {
-            "legal": "database"
+            "legal": "database",
+            "testing": "hand"
           },
           "exposure": {
             "type": "supplement",
@@ -69066,7 +69147,7 @@
             "formula": "unassessed",
             "materials": "unassessed",
             "legal": "pass",
-            "testing": "unassessed"
+            "testing": "caution"
           },
           "scope": "line",
           "basis": "direct",
@@ -69076,10 +69157,12 @@
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
             "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-            "formula": "No ingredient list recorded."
+            "formula": "No ingredient list recorded.",
+            "testing": "Protein powder is a category where independent testing has repeatedly found lead and cadmium, and there are no published metal numbers here to check."
           },
           "frontOrigin": {
-            "legal": "database"
+            "legal": "database",
+            "testing": "hand"
           },
           "exposure": {
             "type": "supplement",
@@ -69221,7 +69304,7 @@
             "formula": "none",
             "materials": "unassessed",
             "legal": "pass",
-            "testing": "unassessed"
+            "testing": "caution"
           },
           "scope": "line",
           "basis": "direct",
@@ -69231,11 +69314,13 @@
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
             "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-            "formula": "A durable good has no ingredient list. What it is made of is the materials check."
+            "formula": "A durable good has no ingredient list. What it is made of is the materials check.",
+            "testing": "A 2019 study tied Oral-B Glide use to higher PFAS blood levels, and 2024 lab testing measured Glide at 248,900 ppm organic fluorine, a record high for a consumer product."
           },
           "frontOrigin": {
             "legal": "database",
-            "formula": "database"
+            "formula": "database",
+            "testing": "hand"
           },
           "exposure": {
             "type": "floss",
@@ -71815,18 +71900,21 @@
         "note": "Plastic reservoir, brew group, and tubing under high heat and pressure. Flair Classic is the clean swap.",
         "ext": {
           "legalNote": "Checked recall records on 2026-08-31. Philips recalls (Respironics breathing devices from 2021, Avent video monitors in 2023) are in other product lines; the Soothie pacifier has never been recalled.",
-          "frontNotes": {},
+          "frontNotes": {
+            "materials": "Plastic reservoir, brew group, and tubing under high heat and pressure."
+          },
           "verdict": "skip",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
             "formula": "unassessed",
-            "materials": "unassessed",
+            "materials": "caution",
             "legal": "pass",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "legal": "database"
+            "legal": "database",
+            "materials": "hand"
           },
           "scope": "line",
           "basis": "direct",
@@ -73434,18 +73522,21 @@
         "origin": "brand-line",
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
+          "frontNotes": {
+            "materials": "Organic baby food pouches flagged in the same multilayer-plastic-pouch and heavy-metal category as other pouch brands."
+          },
           "verdict": "skip",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
             "formula": "unassessed",
-            "materials": "unassessed",
+            "materials": "caution",
             "legal": "pass",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "legal": "database"
+            "legal": "database",
+            "materials": "hand"
           },
           "scope": "brand",
           "basis": "inherited",
@@ -75281,7 +75372,7 @@
           "fronts": {
             "formula": "unassessed",
             "legal": "unassessed",
-            "testing": "unassessed",
+            "testing": "caution",
             "materials": "unassessed"
           },
           "scope": "sku",
@@ -75289,8 +75380,12 @@
           "disclose": false,
           "authored": true,
           "dated": "2026-09-01",
-          "frontNotes": {},
-          "frontOrigin": {},
+          "frontNotes": {
+            "testing": "Mid tier result in Mamavation's September 2026 study (334 ppb phthalates, 40 ppb lead), which neither rescues nor sinks it: the skip is brand level, from Lead Safe Mama's 2025 XRF lead pattern across the line and the absence of per batch published numbers."
+          },
+          "frontOrigin": {
+            "testing": "hand"
+          },
           "exposure": {
             "type": "supplement",
             "level": "medium",
@@ -75590,7 +75685,7 @@
           "verdict": "careful",
           "why": "Reviewed by hand from our published research on this category.",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "caution",
             "materials": "unassessed",
             "legal": "pass",
             "testing": "unassessed"
@@ -75602,10 +75697,12 @@
           "dated": "2026-09-03",
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
-            "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either."
+            "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
+            "formula": "The base is listed only as gum base with no plant source named, and by our own label rule an unnamed base is synthetic until the maker says otherwise."
           },
           "frontOrigin": {
-            "legal": "database"
+            "legal": "database",
+            "formula": "hand"
           },
           "exposure": {
             "type": "chewing gum",
@@ -77060,7 +77157,9 @@
         "source": "best-non-toxic-toothpaste-guide.html",
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
+          "frontNotes": {
+            "testing": "About 3,500 ppb lead, roughly seven times the worst conventional paste."
+          },
           "verdict": "skip",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
@@ -77068,11 +77167,11 @@
             "formula": "unassessed",
             "materials": "unassessed",
             "legal": "pass",
-            "testing": "unassessed"
+            "testing": "caution"
           },
           "frontOrigin": {
             "legal": "database",
-            "testing": "inferred"
+            "testing": "hand"
           },
           "scope": "line",
           "basis": "direct",
@@ -77111,7 +77210,9 @@
         "note": "Low in microplastics because it is mined, but independent testing measured roughly 250 to 290 ppb lead and 36 to 91 ppb arsenic. Not our pick for a daily cooking salt.",
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
+          "frontNotes": {
+            "testing": "Low in microplastics because it is mined, but independent testing measured roughly 250 to 290 ppb lead and 36 to 91 ppb arsenic."
+          },
           "verdict": "careful",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
@@ -77119,11 +77220,12 @@
             "formula": "unassessed",
             "materials": "unassessed",
             "legal": "pass",
-            "testing": "unassessed"
+            "testing": "caution"
           },
           "frontOrigin": {
             "legal": "database",
-            "formula": "inferred"
+            "formula": "inferred",
+            "testing": "hand"
           },
           "scope": "line",
           "basis": "direct",
@@ -77630,19 +77732,21 @@
         "note": "Formula ends in Fragrance (Parfum) and includes dimethicone, dimethicone/vinyl dimethicone crosspolymer, PEG-10 phytosterol and carbomer. No parabens. Effective peptides, but not a clean formula by our standard.",
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
+          "frontNotes": {
+            "formula": "Formula ends in Fragrance (Parfum) and includes dimethicone, dimethicone/vinyl dimethicone crosspolymer, PEG-10 phytosterol and carbomer."
+          },
           "verdict": "careful",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "caution",
             "materials": "unassessed",
             "legal": "pass",
             "testing": "unassessed"
           },
           "frontOrigin": {
             "legal": "database",
-            "formula": "inferred"
+            "formula": "hand"
           },
           "scope": "line",
           "basis": "direct",
@@ -80567,7 +80671,7 @@
           "why": "Reviewed by hand from our published research on this category.",
           "fronts": {
             "formula": "none",
-            "materials": "unassessed",
+            "materials": "caution",
             "legal": "unassessed",
             "testing": "unassessed"
           },
@@ -80577,7 +80681,8 @@
           "authored": true,
           "dated": "2026-09-03",
           "frontNotes": {
-            "formula": "A durable good has no ingredient list. What it is made of is the materials check."
+            "formula": "A durable good has no ingredient list. What it is made of is the materials check.",
+            "materials": "The Swiss Granite line is a PTFE based coating despite the stone imagery, and it is in the food path."
           },
           "exposure": {
             "type": "heated cookware",
@@ -80593,7 +80698,8 @@
             "why": "Hot fat against the cooking surface is the most aggressive case there is."
           },
           "frontOrigin": {
-            "formula": "database"
+            "formula": "database",
+            "materials": "hand"
           }
         },
         "cat": "Cookware"
@@ -80653,7 +80759,9 @@
         "source": "best-non-toxic-toothpaste-guide.html",
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
+          "frontNotes": {
+            "testing": "Lead about 116 ppb in the whitening version."
+          },
           "verdict": "careful",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
@@ -80661,10 +80769,11 @@
             "formula": "unassessed",
             "materials": "unassessed",
             "legal": "pass",
-            "testing": "unassessed"
+            "testing": "caution"
           },
           "frontOrigin": {
-            "legal": "database"
+            "legal": "database",
+            "testing": "hand"
           },
           "scope": "line",
           "basis": "direct",
@@ -80723,7 +80832,7 @@
             "formula": "unassessed",
             "materials": "unassessed",
             "legal": "pass",
-            "testing": "unassessed"
+            "testing": "caution"
           },
           "scope": "line",
           "basis": "direct",
@@ -80733,10 +80842,12 @@
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
             "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-            "formula": "No ingredient list recorded."
+            "formula": "No ingredient list recorded.",
+            "testing": "Lead at about 116 ppb in the whitening version."
           },
           "frontOrigin": {
-            "legal": "database"
+            "legal": "database",
+            "testing": "hand"
           },
           "exposure": {
             "type": "toothpaste",
@@ -82617,7 +82728,7 @@
           "fronts": {
             "formula": "unassessed",
             "legal": "unassessed",
-            "testing": "unassessed",
+            "testing": "caution",
             "materials": "unassessed"
           },
           "scope": "sku",
@@ -82626,9 +82737,12 @@
           "authored": true,
           "dated": "2026-09-01",
           "frontNotes": {
-            "formula": "No ingredient list recorded."
+            "formula": "No ingredient list recorded.",
+            "testing": "At the clean end of the category on metals (7.77 ppb lead, Lead Safe Mama Aug 2024), but the gummy format adds sugar and cannot carry therapeutic doses of choline, iron, or minerals."
           },
-          "frontOrigin": {},
+          "frontOrigin": {
+            "testing": "hand"
+          },
           "exposure": {
             "type": "supplement",
             "level": "medium",
@@ -84723,7 +84837,9 @@
         "origin": "brand-line",
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
+          "frontNotes": {
+            "testing": "One of the four sunscreen brands with the highest benzene contamination in Valisure testing."
+          },
           "verdict": "skip",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
@@ -84731,10 +84847,11 @@
             "formula": "unassessed",
             "materials": "unassessed",
             "legal": "pass",
-            "testing": "unassessed"
+            "testing": "caution"
           },
           "frontOrigin": {
-            "legal": "database"
+            "legal": "database",
+            "testing": "hand"
           },
           "scope": "brand",
           "basis": "inherited",
@@ -86945,7 +87062,8 @@
         "origin": "brand-line",
         "ext": {
           "frontNotes": {
-            "formula": "A durable good has no ingredient list. What it is made of is the materials check."
+            "formula": "A durable good has no ingredient list. What it is made of is the materials check.",
+            "testing": "The Sensitive diaper rash cream reported over 1,600 ppb lead plus cadmium in 2025 independent testing."
           },
           "verdict": "careful",
           "dated": "2026-08-28",
@@ -86954,10 +87072,11 @@
             "formula": "none",
             "materials": "unassessed",
             "legal": "unassessed",
-            "testing": "unassessed"
+            "testing": "caution"
           },
           "frontOrigin": {
-            "formula": "database"
+            "formula": "database",
+            "testing": "hand"
           },
           "scope": "brand",
           "basis": "inherited",
@@ -89359,7 +89478,8 @@
         "source": "best-non-toxic-toothpaste-guide.html",
         "ext": {
           "frontNotes": {
-            "legal": "Our own research records an action here, and the note on this product describes it. Nothing further is open in the FDA enforcement database, and under rule 5.2 a remedied action over 24 months old is informational rather than a finding against the product today."
+            "legal": "Our own research records an action here, and the note on this product describes it. Nothing further is open in the FDA enforcement database, and under rule 5.2 a remedied action over 24 months old is informational rather than a finding against the product today.",
+            "testing": "Lead about 240 ppb in the kids paste, and the company settled a class action over heavy metals."
           },
           "legalNote": "Our own research records an action here, and the note on this product describes it. Nothing further is open in the FDA enforcement database, and under rule 5.2 a remedied action over 24 months old is informational rather than a finding against the product today.",
           "verdict": "skip",
@@ -89369,10 +89489,11 @@
             "formula": "unassessed",
             "materials": "unassessed",
             "legal": "pass",
-            "testing": "unassessed"
+            "testing": "caution"
           },
           "frontOrigin": {
-            "legal": "database"
+            "legal": "database",
+            "testing": "hand"
           },
           "scope": "line",
           "basis": "direct",
@@ -90074,7 +90195,7 @@
           "why": "Reviewed by hand from our published research on this category.",
           "fronts": {
             "formula": "none",
-            "materials": "unassessed",
+            "materials": "caution",
             "legal": "pass",
             "testing": "unassessed"
           },
@@ -90086,11 +90207,13 @@
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
           "frontNotes": {
             "legal": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
-            "formula": "A durable good has no ingredient list. What it is made of is the materials check."
+            "formula": "A durable good has no ingredient list. What it is made of is the materials check.",
+            "materials": "Nonstick coating in the food path."
           },
           "frontOrigin": {
             "legal": "database",
-            "formula": "database"
+            "formula": "database",
+            "materials": "hand"
           },
           "exposure": {
             "type": "heated cookware",
@@ -90578,7 +90701,7 @@
           "dated": "2026-08-29",
           "why": "Reviewed by hand against the standard.",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "caution",
             "legal": "unassessed",
             "testing": "unassessed",
             "materials": "pass"
@@ -90589,10 +90712,11 @@
           "authored": true,
           "frontNotes": {
             "materials": "Emulsion contents in unspecified plastic, rinsed off.",
-            "formula": "No ingredient list recorded."
+            "formula": "A fragranced conditioner in a plastic bottle."
           },
           "frontOrigin": {
-            "materials": "stated"
+            "materials": "stated",
+            "formula": "hand"
           },
           "exposure": {
             "type": "rinse-off skin",
@@ -93372,7 +93496,7 @@
           "why": "Reviewed by hand from our published research on this category.",
           "fronts": {
             "formula": "none",
-            "materials": "unassessed",
+            "materials": "caution",
             "legal": "unassessed",
             "testing": "unassessed"
           },
@@ -93382,7 +93506,8 @@
           "authored": true,
           "dated": "2026-09-03",
           "frontNotes": {
-            "formula": "A durable good has no ingredient list. What it is made of is the materials check."
+            "formula": "A durable good has no ingredient list. What it is made of is the materials check.",
+            "materials": "Nonstick coating in the food path."
           },
           "exposure": {
             "type": "heated cookware",
@@ -93398,7 +93523,8 @@
             "why": "Hot fat against the cooking surface is the most aggressive case there is."
           },
           "frontOrigin": {
-            "formula": "database"
+            "formula": "database",
+            "materials": "hand"
           }
         },
         "cat": "Cookware"
@@ -97327,7 +97453,7 @@
           "verdict": "skip",
           "why": "Reviewed by hand from our published research on this category.",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "caution",
             "materials": "unassessed",
             "legal": "pass",
             "testing": "unassessed"
@@ -97339,10 +97465,12 @@
           "dated": "2026-09-03",
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
-            "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either."
+            "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
+            "formula": "Synthetic gum base."
           },
           "frontOrigin": {
-            "legal": "database"
+            "legal": "database",
+            "formula": "hand"
           },
           "exposure": {
             "type": "chewing gum",
