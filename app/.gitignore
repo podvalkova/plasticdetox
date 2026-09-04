@@ -10,3 +10,14 @@ ios/App/build/
 # Generated from the repo root by scripts/sync-data.mjs. brand-data.json has
 # one home and this is not it; a committed copy would drift from the real one.
 www/data/*.json
+
+# Android, the same rule as iOS: everything Capacitor regenerates on `cap copy`
+# is derived from www/ and must not be committed, or it drifts from the source.
+android/app/src/main/assets/public/
+android/app/src/main/assets/capacitor.config.json
+android/app/src/main/assets/capacitor.plugins.json
+android/.gradle/
+android/build/
+android/app/build/
+android/local.properties
+android/.idea/
