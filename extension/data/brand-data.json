@@ -23084,7 +23084,8 @@
         "ext": {
           "testingNote": "Lab tested. From top-100-baby-kids-products-amazon.html: EWG 2018 and US PIRG testing found asbestos fibers in some Crayola branded crayons sourced from China. Recurring third party finding through 2023. Crayola disputes. Asbestos does not have a safe daily exposure level for ",
           "frontNotes": {
-            "materials": "We have not established what the product actually touches."
+            "materials": "We have not established what the product actually touches.",
+            "testing": "EWG 2018 and US PIRG testing found asbestos fibers in some Crayola branded crayons sourced from China. A recurring lab signal across five years on a product that goes in toddler hands and mouths is the SKIP signal."
           },
           "verdict": "skip",
           "dated": "2026-08-28",
@@ -25853,7 +25854,9 @@
           "legalNote": "FDA database matches reviewed on 2026-08-31: the recalling firm, Diamond Crystal Brands of Savannah GA, is a foodservice packet company unrelated to the Diamond Crystal salt brand. No recall on record for this brand.",
           "frontNotes": {
             "materials": "We have not established what the product actually touches.",
-            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
+            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
+            "formula": "Additive free kosher salt, so there is nothing on the hazard list and nothing hidden",
+            "testing": "Non detect for lead, arsenic, cadmium and mercury across multiple independent rounds"
           },
           "inheritedFronts": [
             "formula",
@@ -25894,16 +25897,17 @@
           ],
           "verdict": "unrated",
           "dated": "2026-08-28",
-          "why": "the note reads adversely on formula, needs a human look",
+          "why": "a recommendation needs its checks done; still to do: materials",
           "fronts": {
-            "formula": "caution",
+            "formula": "pass",
             "materials": "unassessed",
             "legal": "none",
-            "testing": "unassessed"
+            "testing": "pass"
           },
           "frontOrigin": {
-            "formula": "stated",
-            "legal": "database"
+            "formula": "hand",
+            "legal": "database",
+            "testing": "hand"
           },
           "scope": "sku",
           "basis": "direct",
@@ -39655,7 +39659,8 @@
         "ext": {
           "testingNote": "Lab tested. From top-100-baby-kids-products-amazon.html: Ecology Center 2018 car seat testing found brominated and chlorinated flame retardants in major car seats including Graco. Some lines have shifted since 2015 but Graco has not publicly committed to FR free across the 4Ev",
           "frontNotes": {
-            "formula": "A durable good has no ingredient list. What it is made of is the materials check."
+            "formula": "A durable good has no ingredient list. What it is made of is the materials check.",
+            "testing": "Ecology Center 2018 car seat testing found brominated and chlorinated flame retardants in major car seats including Graco. Until per SKU verification confirms FR free, the lab finding is the relevant signal."
           },
           "verdict": "skip",
           "dated": "2026-08-28",
@@ -41197,7 +41202,8 @@
           "testingNote": "Lab tested. From top-100-baby-kids-products-amazon.html: Grain based teething product. Brand named in the 2021 House Oversight heavy metals report. Daily teething use means daily exposure window, which is the worst version of the heavy metal pattern for infants.",
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
-            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
+            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
+            "testing": "Brand named in the 2021 House Oversight heavy metals report."
           },
           "verdict": "skip",
           "dated": "2026-08-28",
@@ -47271,12 +47277,14 @@
           "authored": true,
           "frontNotes": {
             "materials": "Emulsion contents in unspecified plastic.",
-            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
+            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
+            "formula": "A fragranced leave on emulsion in a plastic bottle, with the fragrance an undisclosed mixture."
           },
           "dated": "2026-09-03",
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontOrigin": {
-            "legal": "database"
+            "legal": "database",
+            "formula": "hand"
           },
           "inheritedFronts": [
             "formula"
@@ -62931,20 +62939,22 @@
         "ext": {
           "frontNotes": {
             "formula": "A durable good has no ingredient list. What it is made of is the materials check.",
-            "testing": "Polypropylene baby bottles release up to 16.2 million microplastic particles per litre at formula temperature (Trinity College Dublin, Nature Food, 2020). This is about baby bottles generally. We have not confirmed it for this product."
+            "testing": "No independent test of this product; the finding is what it is made of",
+            "materials": "A plastic body in daily contact with liquids, and Mamavation rounds have found undisclosed plastic chemistry across the training cup category"
           },
           "verdict": "skip",
           "dated": "2026-08-28",
           "why": "held at this verdict by independent tests is fail",
           "fronts": {
             "formula": "none",
-            "materials": "unassessed",
+            "materials": "fail",
             "legal": "unassessed",
-            "testing": "fail"
+            "testing": "none"
           },
           "frontOrigin": {
             "formula": "database",
-            "testing": "inferred"
+            "testing": "hand",
+            "materials": "hand"
           },
           "scope": "sku",
           "basis": "direct",
@@ -63083,21 +63093,23 @@
         "ext": {
           "testingNote": "Lab tested. From top-100-baby-kids-products-amazon.html: Soft PVC commonly. Squirt toys harbor mold internally (documented). Phthalate exposure when chewed.",
           "frontNotes": {
-            "formula": "A durable good has no ingredient list. What it is made of is the materials check."
+            "formula": "A durable good has no ingredient list. What it is made of is the materials check.",
+            "materials": "Commonly soft PVC, chewed, with phthalate exposure on the route that matters. Squirt toys also harbour mould internally",
+            "testing": "No independent test of this product; the finding is what it is made of"
           },
           "verdict": "skip",
           "dated": "2026-08-28",
           "why": "held at this verdict by independent tests is fail",
           "fronts": {
             "formula": "none",
-            "materials": "unassessed",
+            "materials": "fail",
             "legal": "unassessed",
-            "testing": "fail"
+            "testing": "none"
           },
           "frontOrigin": {
-            "testing": "stated",
+            "testing": "hand",
             "formula": "database",
-            "materials": "inferred"
+            "materials": "hand"
           },
           "scope": "sku",
           "basis": "direct",
@@ -63501,18 +63513,22 @@
           "dated": "2026-08-29",
           "why": "Reviewed by hand against the standard.",
           "fronts": {
-            "formula": "caution",
+            "formula": "none",
             "legal": "unassessed",
             "testing": "unassessed",
-            "materials": "unassessed"
+            "materials": "caution"
           },
           "scope": "line",
           "basis": "direct",
           "disclose": false,
           "authored": true,
-          "frontNotes": {},
+          "frontNotes": {
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "materials": "Sold as a loofah and made of plastic foam. A synthetic sponge abrades against wet skin for its whole life and sheds as it degrades"
+          },
           "frontOrigin": {
-            "formula": "stated"
+            "formula": "hand",
+            "materials": "hand"
           },
           "exposure": {
             "type": "rinse-off skin",
@@ -68807,12 +68823,14 @@
           "authored": true,
           "frontNotes": {
             "materials": "Emulsion contents in unspecified plastic.",
-            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
+            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
+            "formula": "Fragrance is an undisclosed mixture, and a body lotion sits on the largest organ you have for the rest of the day."
           },
           "dated": "2026-09-03",
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontOrigin": {
-            "legal": "database"
+            "legal": "database",
+            "formula": "hand"
           },
           "inheritedFronts": [
             "formula"
@@ -82002,8 +82020,7 @@
               "lod": null
             }
           ],
-          "buyable": false,
-          "buyableNote": "B084H4H6HR is live but unbuyable and no Seventh Generation diaper appears in the Amazon catalog as of September 2026. The guide's own argument for this pick is that it is stocked in ordinary grocery and drug stores, so the recommendation stands and the Amazon link does not"
+          "buyableNote": "The Creators API does not carry a Seventh Generation diaper, so its listing cannot be verified or image matched programmatically. That is not evidence the link is broken. Worth a manual check before changing the store link"
         },
         "cat": "Diapers"
       },
@@ -97388,7 +97405,8 @@
         ],
         "ext": {
           "frontNotes": {
-            "materials": "Conventional white and brown sugar have tested positive for PET and polypropylene particles, so a less… (Recorded for Wholesome as a whole rather than this product specifically.)"
+            "materials": "Conventional white and brown sugar have tested positive for PET and polypropylene particles, so a less… (Recorded for Wholesome as a whole rather than this product specifically.)",
+            "formula": "Organic, fair trade, minimally processed cane sugar with nothing on the hazard list"
           },
           "inheritedFronts": [
             "formula",
@@ -97432,13 +97450,13 @@
           "dated": "2026-08-28",
           "why": "the note reads adversely on formula, needs a human look",
           "fronts": {
-            "formula": "caution",
+            "formula": "pass",
             "materials": "caution",
             "legal": "unassessed",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "formula": "stated",
+            "formula": "hand",
             "materials": "stated"
           },
           "scope": "sku",
