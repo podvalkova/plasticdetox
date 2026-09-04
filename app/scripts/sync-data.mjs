@@ -83,94 +83,69 @@ articles.sort((a, b) => (b.date || "").localeCompare(a.date || ""));
 fs.writeFileSync(path.join(OUT, "articles.json"), JSON.stringify(articles, null, 1) + "\n");
 console.log(`articles.json        ${articles.length} articles`);
 
-// The 90 day plan, as a checklist.
+// The 90 day plan, read from the page that publishes it.
 //
-// data/plan-rules.js already holds the whole thing: what to change, why, the
-// free version of each, the article behind it, and a rank that is exposure
-// priority. The site turns that into a personalised plan; the app wants the
-// same list as something you tick off. Read from the same file so the two
-// cannot drift, and phased by rank because rank is already "do this first".
-const rulesSrc = fs.readFileSync(path.join(REPO, "data", "plan-rules.js"), "utf8");
-const field = (block, name, quoted = true) => {
-  const re = quoted
-    ? new RegExp(name + ':\\s*"((?:[^"\\\\]|\\\\.)*)"')
-    : new RegExp(name + ":\\s*([0-9]+)");
-  const m = block.match(re);
-  return m ? m[1].replace(/\\"/g, '"') : "";
+// This used to assemble the plan from data/plan-rules.js, which drives the
+// personalised engine, and attach picks by matching a cat|sub key against the
+// store. That produced three laundry detergents under "catch microfibers in
+// the wash", a step whose whole point is a wash bag, because detergents are
+// what sits under that key in the store.
+//
+// plan.html is the free plan. It carries three phases, 23 swaps, and 23 hand
+// picked product lists with the right links, including the ones that are not
+// on Amazon at all: the Guppyfriend bag has its own affiliate URL and no ASIN
+// to look up. Reading the published page means the app cannot drift from what
+// somebody gets for their email address, and cannot invent a pick.
+const planSrc = fs.readFileSync(path.join(REPO, "plan.html"), "utf8");
+
+// The page resolves a few links through helpers, so resolve them the same way.
+const consts = {};
+for (const m of planSrc.matchAll(/const\s+([A-Z][A-Z0-9_]*)\s*=\s*"([^"]+)"/g)) {
+  consts[m[1]] = m[2];
+}
+const AZ_TAG = (planSrc.match(/az\s*=\s*[^\n]*tag=([a-z0-9-]+)/) || [])[1] || "plasticdetox-20";
+const resolveUrl = (raw) => {
+  const t = raw.trim();
+  const az = t.match(/^az\("([A-Z0-9]{10})"\)$/);
+  if (az) return `https://www.amazon.com/dp/${az[1]}?tag=${AZ_TAG}`;
+  if (consts[t]) return consts[t];
+  const lit = t.match(/^"(.*)"$/);
+  if (!lit) return "";
+  const url = lit[1];
+  return /^https?:/.test(url) ? url : `https://plasticdetox.org/${url.replace(/^\//, "")}`;
 };
-const steps = [];
-// Split on the rule opener rather than trying to match a balanced block: the
-// closing brace shares a line with the last field, so an anchored regex found
-// nothing and a lazy one found twice as many blocks as there are rules.
-for (const block of rulesSrc.split(/\n\s*\{\s*(?=key:)/).slice(1)) {
-  // The free 90 day plan is the 24 rules flagged inFree. The other 68 are the
-  // paid Custom Plan, and shipping all 92 gave that away: somebody paying for
-  // the upgrade would have found it already sitting on the Detox tab. The app
-  // carries the plan the website hands over for an email address, and points
-  // at the paid one rather than containing it.
-  if (!/inFree:\s*true/.test(block)) continue;
-  const swap = field(block, "swap");
-  if (!swap) continue;
-  steps.push({
-    id: field(block, "key"),
-    swap,
-    why: field(block, "why"),
-    free: field(block, "free"),
-    room: field(block, "room"),
-    article: field(block, "article"),
-    rank: Number(field(block, "rank", false) || 0),
-    est: Number(field(block, "est", false) || 0),
-  });
-}
-steps.sort((a, b) => b.rank - a.rank);
-const per = Math.ceil(steps.length / 3);
-const PHASES = [
-  { title: "Days 1 to 30", sub: "Kitchen and water", steps: steps.slice(0, per) },
-  { title: "Days 31 to 60", sub: "Air and textiles", steps: steps.slice(per, per * 2) },
-  { title: "Days 61 to 90", sub: "Reduce the chemicals", steps: steps.slice(per * 2) },
-];
-fs.writeFileSync(path.join(OUT, "plan.json"), JSON.stringify(PHASES, null, 1) + "\n");
-// Each swap, with the products we would actually buy for it.
-//
-// The rule key is cat|sub and matches store-products.js exactly, which is how
-// the site attaches picks to a plan. Harvesting the plan without them left a
-// checklist that told you to move your bottles to glass and then did not say
-// which glass bottle, which is the one question it provokes.
-const storeSrc = fs.readFileSync(path.join(REPO, "data", "store-products.js"), "utf8");
-const byKey = {};
-for (const block of storeSrc.split(/\n\s*\{\s*(?=cat:)/).slice(1)) {
-  const g = (name) => {
-    const m = block.match(new RegExp(name + ':\\s*"((?:[^"\\\\]|\\\\.)*)"'));
-    return m ? m[1].replace(/\\"/g, '"') : "";
-  };
-  const cat = g("cat"), sub = g("sub"), name = g("name");
-  if (!cat || !sub || !name) continue;
-  const key = `${cat}|${sub}`;
-  (byKey[key] = byKey[key] || []).push({
-    name,
-    asin: g("asin"),
-    url: g("url"),
-    img: g("img"),
-    tier: g("tier"),
-    bestFor: g("bestFor"),
-    top: /\btop:\s*true/.test(block),
-  });
-}
-const TIER = { "$": 1, "$$": 2, "$$$": 3 };
-let attached = 0;
-for (const phase of PHASES) {
-  for (const step of phase.steps) {
-    const pool = (byKey[step.id] || []).slice().sort((a, b) => {
-      if (!!b.top !== !!a.top) return b.top ? 1 : -1;
-      return (TIER[a.tier] || 9) - (TIER[b.tier] || 9);
+
+const PHASES = [];
+// A phase object opens with days:, not title:, so anchor on that.
+for (const block of planSrc.split(/\n\s*\{\s*(?=days:\s*")/).slice(1)) {
+  const title = (block.match(/title:\s*"(Phase [^"]+)"/) || [])[1] || "";
+  const days = (block.match(/days:\s*"([^"]+)"/) || [])[1] || "";
+  const focus = (block.match(/focus:\s*"((?:[^"\\]|\\.)*)"/) || [])[1] || "";
+  const steps = [];
+  for (const sw of block.split(/\n\s*\{\s*(?=title:\s*"(?!Phase ))/).slice(1)) {
+    const swap = (sw.match(/title:\s*"((?:[^"\\]|\\.)*)"/) || [])[1];
+    if (!swap) continue;
+    const why = (sw.match(/why:\s*"((?:[^"\\]|\\.)*)"/) || [])[1] || "";
+    const picks = [];
+    const list = (sw.match(/picks:\s*\[([\s\S]*?)\]\s*\}/) || [])[1] || "";
+    for (const one of list.matchAll(
+        /\{\s*label:\s*"([^"]*)",\s*name:\s*"((?:[^"\\]|\\.)*)",\s*url:\s*([^}]+?)\s*\}/g)) {
+      const url = resolveUrl(one[3]);
+      if (url) picks.push({ label: one[1], name: one[2].replace(/\\"/g, '"'), url });
+    }
+    steps.push({
+      id: `${title}::${swap}`.slice(0, 120),
+      swap: swap.replace(/\\"/g, '"'),
+      why: why.replace(/\\"/g, '"'),
+      picks,
     });
-    step.picks = pool.slice(0, 3).filter((x) => x.asin || x.url);
-    attached += step.picks.length;
   }
+  if (steps.length) PHASES.push({ title: days || title, sub: title.replace(/^Phase \d+:\s*/, ""), focus, steps });
 }
 fs.writeFileSync(path.join(OUT, "plan.json"), JSON.stringify(PHASES, null, 1) + "\n");
-const withPicks = PHASES.reduce((n, p) => n + p.steps.filter((s) => s.picks.length).length, 0);
-console.log(`plan.json            ${steps.length} free steps, ${withPicks} with picks, ${attached} products`);
+const stepCount = PHASES.reduce((n, p) => n + p.steps.length, 0);
+const pickCount = PHASES.reduce((n, p) => n + p.steps.reduce((m, s) => m + s.picks.length, 0), 0);
+console.log(`plan.json            ${PHASES.length} phases, ${stepCount} swaps, ${pickCount} picks`);
 
 let brands = 0;
 for (const { from, to } of SOURCES) {

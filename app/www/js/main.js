@@ -125,6 +125,7 @@ function rememberPlace() {
       label: s.label || null,
       query: s.query || null,
       q: s.q || null,
+      room: s.room || null,
     })).slice(-4);
     localStorage.setItem(PLACE_KEY, JSON.stringify({ trail, at: Date.now() }));
   } catch {
@@ -146,7 +147,7 @@ function restorePlace() {
   const rebuilt = [];
   for (const step of saved.trail) {
     if (["home", "shop", "detox", "saved", "learn", "categories"].includes(step.screen)) {
-      rebuilt.push({ screen: step.screen, q: step.q || "" });
+      rebuilt.push({ screen: step.screen, q: step.q || "", room: step.room || "" });
       continue;
     }
     if (step.screen === "shopCategory" && step.category) {
@@ -290,9 +291,16 @@ function draw() {
     screens.shopIndex(view, {
       index,
       query: state.q || "",
+      room: state.room || "",
       // Typing filters in place rather than pushing a screen, so the back
       // arrow still means "leave the shop" and not "undo a keystroke".
-      onQuery: (q) => { state.q = q; render(); view.querySelector(".shop-search input")?.focus(); },
+      onQuery: (q) => {
+        state.q = q; render(); rememberPlace();
+        view.querySelector(".shop-search input")?.focus();
+      },
+      // Same for the room: it narrows this screen rather than becoming one, so
+      // back leaves the shop instead of stepping through filters.
+      onRoom: (r) => { state.room = r; render(); rememberPlace(); },
       onCategory: (category) => go({ screen: "shopCategory", category }),
       onOpen: openExternal,
       onProduct: (b, row) => go({

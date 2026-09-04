@@ -158,6 +158,13 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 .chip:active { border-color: var(--accent); color: var(--accent); }
 .chip-name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+/* Shop room filter: the selected room reads as pressed, not merely tinted. */
+.rooms { margin-bottom: .9rem; }
+.chip.on {
+  background: var(--accent); border-color: var(--accent); color: #fff;
+}
+.chip.on .chip-n { color: #fff; opacity: .75; }
+.chip-n { font-size: 12.5px; font-weight: 600; color: var(--faint); }
 
 /* ---------------------------------------------------------------- result */
 
@@ -465,6 +472,11 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .prow-name { font-size: 13.5px; font-weight: 650; letter-spacing: -.015em; line-height: 1.3; }
 .prow-best { font-size: 12px; color: var(--muted); margin-top: .1rem; }
 .prow-tier { font-size: 12px; font-weight: 700; color: var(--faint); flex: none; }
+.prow-label {
+  flex: none; font-size: 10px; font-weight: 800; text-transform: uppercase;
+  letter-spacing: .06em; color: var(--accent-deep); background: var(--accent-wash);
+  border: 1px solid var(--accent-light); border-radius: 6px; padding: .2rem .4rem;
+}
 
 /* ----------------------------------------------------------------- learn */
 

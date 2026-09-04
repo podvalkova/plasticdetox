@@ -254,7 +254,7 @@ export function detox(root, { phases, done, onToggle, onOpen }) {
   const hero = el("div", "hero shop-hero");
   hero.appendChild(el("h1", null, "Your 90 day plan"));
   hero.appendChild(el("p", null,
-    "Ordered by how much it cuts your exposure, not by how easy it is."));
+    "The same plan the site sends out, in the order that cuts exposure fastest."));
   root.appendChild(hero);
 
   const bar = el("div", "progress");
@@ -278,61 +278,40 @@ export function detox(root, { phases, done, onToggle, onOpen }) {
       const sum = el("summary");
       const box = el("span", `tick${on ? " on" : ""}`);
       if (on) box.appendChild(icon("M5 12l5 5L20 7", 14));
-      // The box is the control. Opening the row is a different intent from
-      // marking it done, so tapping one must not do the other.
+      // The box marks it done. Opening the row is a different intent, so one
+      // control must not do both.
       box.onclick = (e) => { e.preventDefault(); e.stopPropagation(); onToggle(step.id); };
       sum.appendChild(box);
       const txt = el("div", "step-body");
       txt.appendChild(el("div", "step-swap", step.swap));
-      if (step.room) txt.appendChild(el("div", "step-room", step.room));
       sum.appendChild(txt);
       item.appendChild(sum);
 
       if (step.why) item.appendChild(el("p", "step-why", step.why));
-      if (step.free) {
-        const free = el("div", "step-free");
-        free.appendChild(el("b", null, "Free version. "));
-        free.appendChild(document.createTextNode(step.free));
-        item.appendChild(free);
-      }
+
+      // The picks the plan itself names, with the links it uses. Some are not
+      // on Amazon at all, which is why they are read from the page rather than
+      // looked up: the Guppyfriend bag has its own affiliate URL and no ASIN.
       if ((step.picks || []).length) {
         const picks = el("div", "step-picks");
         picks.appendChild(el("div", "step-picks-h", "What we would buy"));
         for (const pick of step.picks) {
           const row = el("button", "prow");
           row.type = "button";
-          const shot = el("div", "prow-img");
-          if (pick.img) {
-            const im = el("img");
-            im.src = `https://m.media-amazon.com/images/I/${pick.img}._AC_SL160_.jpg`;
-            im.alt = "";
-            im.onerror = () => im.remove();
-            shot.appendChild(im);
-          }
-          row.appendChild(shot);
+          if (pick.label) row.appendChild(el("span", "prow-label", pick.label));
           const body = el("div", "row-body");
           body.appendChild(el("div", "prow-name", pick.name));
-          if (pick.bestFor) body.appendChild(el("div", "prow-best", pick.bestFor));
           row.appendChild(body);
-          if (pick.tier) row.appendChild(el("span", "prow-tier", pick.tier));
-          row.onclick = () => onOpen(pick.asin ? buyLink(pick.asin) : pick.url);
+          row.appendChild(el("span", "row-chev", "\u203a"));
+          row.onclick = () => onOpen(pick.url);
           picks.appendChild(row);
         }
         item.appendChild(picks);
-      }
-      if (step.article) {
-        const link = el("button", "cta ghost", "Read the guide");
-        link.onclick = () => onOpen(`https://plasticdetox.org/${step.article}?app=1`);
-        item.appendChild(link);
       }
       root.appendChild(item);
     }
   }
 
-  // The paid plan is the rest of what we hold, personalised by room, household
-  // and budget. Naming it here is honest about what this is: the same 24 swaps
-  // the site gives away for an email address, not a trimmed version of the
-  // thing somebody paid for.
   const more = el("div", "card know");
   more.appendChild(el("h2", null, "Expecting, or a baby at home?"));
   more.appendChild(el("p", null,
@@ -450,6 +429,47 @@ export function learn(root, { articles, onOpen, query, onQuery }) {
  * that have somewhere to buy them: a shelf you cannot buy from is a list.
  */
 /** Everything we would buy, gathered once. */
+/**
+ * Which room you would be standing in.
+ *
+ * The shop groups by category, which is right once you know what you want and
+ * useless when you are working through a house. 39 categories is a wall; five
+ * rooms is a decision. Kid specific things go to Kids even when they belong to
+ * another room, because a crib mattress is what a parent is shopping for, not
+ * bedding, and baby bottles are not really kitchenware.
+ *
+ * Anything unmapped lands in Other rather than disappearing, so adding a
+ * category to the database can never quietly empty it out of the shop.
+ */
+const ROOM_OF = {
+  // Kitchen
+  "Food storage": "Kitchen", "Tableware": "Kitchen", "Cutting boards": "Kitchen",
+  "Water filters": "Kitchen", "Cookware": "Kitchen", "Sea salt": "Kitchen",
+  "Pantry": "Kitchen", "Kitchen appliances": "Kitchen", "Air fryers": "Kitchen",
+  "Water bottles": "Kitchen", "Chewing gum": "Kitchen",
+  // Bedroom
+  "Bedding": "Bedroom", "Air purifiers": "Bedroom",
+  // Bathroom
+  "Skincare": "Bathroom", "Dental floss": "Bathroom", "Makeup": "Bathroom",
+  "Toothbrushes": "Bathroom", "Tampons": "Bathroom", "Menstrual cups": "Bathroom",
+  "Reusable cloth pads": "Bathroom", "Period pads": "Bathroom", "Razors": "Bathroom",
+  "Conditioner": "Bathroom", "Prenatal vitamins": "Bathroom",
+  // Kids
+  "Toys": "Kids", "Baby bottles": "Kids", "Baby sleep": "Kids",
+  "Pacifiers": "Kids", "Cribs & nursery": "Kids", "Crib mattresses": "Kids",
+  "Strollers": "Kids", "Teethers": "Kids", "Diapers": "Kids",
+  "Breast milk storage": "Kids", "Diaper cream": "Kids",
+  // Other: worn or used everywhere rather than in one room
+  "Clothing": "Other", "Vacuums": "Other", "Laundry detergent": "Other",
+  "Yoga mats": "Other",
+};
+
+export const ROOMS = ["Kitchen", "Bedroom", "Bathroom", "Kids", "Other"];
+
+export function roomFor(cat) {
+  return ROOM_OF[cat] || "Other";
+}
+
 function shelf(index) {
   const out = [];
   for (const b of index.brands) {
@@ -508,8 +528,13 @@ function shopCard({ brand: b, row }, { onOpen, onProduct, eager = false }) {
   return card;
 }
 
-export function shopIndex(root, { index, onCategory, onOpen, onProduct, query, onQuery }) {
-  const all = shelf(index);
+export function shopIndex(root, {
+  index, onCategory, onOpen, onProduct, query, onQuery, room, onRoom,
+}) {
+  const shelfAll = shelf(index);
+  // The room narrows the shelf itself, so the count, the categories and the
+  // search below all describe the same set of things.
+  const all = room ? shelfAll.filter((i) => roomFor(i.cat) === room) : shelfAll;
   const groups = new Map();
   for (const item of all) {
     if (!groups.has(item.cat)) groups.set(item.cat, []);
@@ -517,10 +542,29 @@ export function shopIndex(root, { index, onCategory, onOpen, onProduct, query, o
   }
 
   const hero = el("div", "hero shop-hero");
-  hero.appendChild(el("h1", null, "What we would buy"));
+  hero.appendChild(el("h1", null, room || "What we would buy"));
   hero.appendChild(el("p", null,
-    `${all.length} products that cleared our checks, across ${groups.size} categories.`));
+    `${all.length} product${all.length === 1 ? "" : "s"} that cleared our checks, `
+    + `across ${groups.size} categor${groups.size === 1 ? "y" : "ies"}.`));
   root.appendChild(hero);
+
+  // Rooms first. Counted from the shelf rather than hardcoded, so a room that
+  // holds nothing says so instead of opening an empty grid.
+  const strip = el("div", "strip rooms");
+  const roomBtn = (label, value, n) => {
+    const b = el("button", "chip" + (room === value ? " on" : ""));
+    b.type = "button";
+    b.appendChild(el("span", "chip-name", label));
+    if (n != null) b.appendChild(el("span", "chip-n", String(n)));
+    b.onclick = () => onRoom(room === value ? "" : value);
+    return b;
+  };
+  strip.appendChild(roomBtn("All", "", shelfAll.length));
+  for (const r of ROOMS) {
+    const n = shelfAll.filter((i) => roomFor(i.cat) === r).length;
+    if (n) strip.appendChild(roomBtn(r, r, n));
+  }
+  root.appendChild(strip);
 
   // Search across the shelf, not the whole database. Everything here is
   // something we would actually buy, so a hit is always an answer.
@@ -546,7 +590,9 @@ export function shopIndex(root, { index, onCategory, onOpen, onProduct, query, o
       shopCard(item, { onOpen, onProduct, eager: i < 8 })));
     root.appendChild(grid);
     if (!hits.length) {
-      root.appendChild(el("p", "note", "Nothing on the shelf matches that yet."));
+      root.appendChild(el("p", "note", room
+        ? `Nothing in ${room.toLowerCase()} matches that yet.`
+        : "Nothing on the shelf matches that yet."));
     }
     return;
   }
