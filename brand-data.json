@@ -8805,23 +8805,22 @@
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
           "frontNotes": {
             "materials": "In contact with cotton, which puts nothing into what it holds.",
-            "formula": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear.",
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
             "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
           },
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: formula",
+          "why": "a vetted store pick, chosen by a person at product scope",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "none",
             "materials": "pass",
             "legal": "none",
             "testing": "unassessed"
           },
           "frontOrigin": {
             "legal": "database",
-            "materials": "database"
+            "materials": "database",
+            "formula": "hand"
           },
           "scope": "sku",
           "basis": "direct",
@@ -8863,12 +8862,9 @@
             "material": "Organic Cotton",
             "source": "amazon:B07RHQ53L9",
             "checked": "2026-09-02"
-          },
-          "heldBack": [
-            "formula"
-          ]
+          }
         },
-        "cat": "Pantry"
+        "cat": "Shower curtains"
       },
       {
         "name": "Bean Products Hemp Curtain",
@@ -37073,19 +37069,20 @@
         ],
         "ext": {
           "frontNotes": {
-            "formula": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear."
+            "formula": "An object has no ingredient list. What it is made of is the materials check."
           },
           "verdict": "unrated",
           "dated": "2026-08-28",
           "why": "a recommendation needs its checks done; still to do: materials, legal, formula",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "none",
             "materials": "unassessed",
             "legal": "unassessed",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "testing": "inferred"
+            "testing": "inferred",
+            "formula": "hand"
           },
           "scope": "sku",
           "basis": "direct",
@@ -37115,7 +37112,7 @@
             "checked": "2026-09-03"
           }
         },
-        "cat": "Coffee"
+        "cat": "Kitchen appliances"
       }
     ],
     "fronts": {
@@ -61180,7 +61177,7 @@
             "checked": "2026-09-04"
           }
         },
-        "cat": "Baby formula"
+        "cat": "Laundry detergent"
       },
       {
         "name": "Baby Liquid Laundry Detergent",
@@ -70210,23 +70207,22 @@
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
-            "formula": "No ingredient list recorded.",
+            "formula": "Complete label read: no hazard list ingredient and no fragrance umbrella. Scent comes from named essential oils (bergamot, lime, jasmine)",
             "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
           },
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: formula",
+          "why": "a vetted store pick, chosen by a person at product scope",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "pass",
             "materials": "pass",
             "legal": "none",
             "testing": "unassessed"
           },
           "frontOrigin": {
             "legal": "database",
-            "materials": "inferred"
+            "materials": "inferred",
+            "formula": "hand"
           },
           "scope": "sku",
           "basis": "direct",
@@ -70256,10 +70252,7 @@
             "flagged": [],
             "source": "amazon:B09GL3TH9D",
             "checked": ""
-          },
-          "heldBack": [
-            "formula"
-          ]
+          }
         },
         "cat": "Soap"
       },
@@ -70338,16 +70331,14 @@
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
-            "formula": "No ingredient list recorded.",
+            "formula": "Complete label read: no hazard list ingredient and no fragrance umbrella. Scent comes from named essential oils (geranium, lavandin, chamomile, clary sage)",
             "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
           },
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-08-28",
-          "why": "a recommendation needs its checks done; still to do: formula",
+          "why": "a vetted store pick, chosen by a person at product scope",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "pass",
             "materials": "pass",
             "legal": "none",
             "testing": "pass"
@@ -70355,7 +70346,8 @@
           "frontOrigin": {
             "legal": "database",
             "testing": "inferred",
-            "materials": "inferred"
+            "materials": "inferred",
+            "formula": "hand"
           },
           "scope": "sku",
           "basis": "direct",
@@ -70385,10 +70377,7 @@
             "flagged": [],
             "source": "amazon:B0CPQ7V5Z8",
             "checked": ""
-          },
-          "heldBack": [
-            "formula"
-          ]
+          }
         },
         "cat": "Skincare"
       },
@@ -70464,23 +70453,22 @@
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
-            "formula": "No ingredient list recorded.",
+            "formula": "The label ends in Fragrance/Parfum, an undisclosed mixture, on an oil left on the skin",
             "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
           },
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "verdict": "unrated",
+          "verdict": "careful",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: formula",
+          "why": "section 6 ceiling: formula is caution",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "caution",
             "materials": "pass",
             "legal": "none",
             "testing": "unassessed"
           },
           "frontOrigin": {
             "legal": "database",
-            "materials": "inferred"
+            "materials": "inferred",
+            "formula": "hand"
           },
           "scope": "sku",
           "basis": "direct",
@@ -70511,9 +70499,8 @@
             "source": "amazon:B004L17FKC",
             "checked": ""
           },
-          "heldBack": [
-            "formula"
-          ]
+          "cappedFrom": "good",
+          "capRestoreWhy": "a vetted store pick, chosen by a person at product scope"
         },
         "cat": "Skincare"
       },
@@ -78962,7 +78949,7 @@
             "formula"
           ]
         },
-        "cat": "Pantry"
+        "cat": "Makeup"
       }
     ],
     "rollup": {
@@ -79224,19 +79211,21 @@
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
-            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
+            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
+            "formula": "An object has no ingredient list. What it is made of is the materials check."
           },
           "verdict": "unrated",
           "dated": "2026-08-28",
           "why": "no front is directly evidenced by the note",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "none",
             "materials": "unassessed",
             "legal": "none",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "legal": "database"
+            "legal": "database",
+            "formula": "hand"
           },
           "scope": "line",
           "basis": "direct",
@@ -79265,7 +79254,7 @@
           ]
         ],
         "matchFrom": "name",
-        "cat": "Pantry"
+        "cat": "Food storage"
       }
     ],
     "fronts": {
@@ -92278,16 +92267,14 @@
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
-            "formula": "No ingredient list recorded.",
+            "formula": "Complete label read: no hazard list ingredient and no fragrance umbrella. Grapefruit, jasmine, lavender and vetiver oils are named, with limonene and linalool declared",
             "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
           },
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-08-28",
-          "why": "a recommendation needs its checks done; still to do: formula",
+          "why": "a vetted store pick, chosen by a person at product scope",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "pass",
             "materials": "pass",
             "legal": "none",
             "testing": "pass"
@@ -92295,7 +92282,8 @@
           "frontOrigin": {
             "legal": "database",
             "testing": "inferred",
-            "materials": "inferred"
+            "materials": "inferred",
+            "formula": "hand"
           },
           "scope": "sku",
           "basis": "direct",
@@ -92325,10 +92313,7 @@
             "flagged": [],
             "source": "amazon:B08HZCJJZW",
             "checked": ""
-          },
-          "heldBack": [
-            "formula"
-          ]
+          }
         },
         "cat": "Soap"
       },
@@ -92343,16 +92328,14 @@
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
-            "formula": "No ingredient list recorded.",
+            "formula": "Complete label read: no hazard list ingredient and no fragrance umbrella. Scent is named essential oils with limonene and linalool declared",
             "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
           },
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-08-28",
-          "why": "a recommendation needs its checks done; still to do: formula",
+          "why": "a vetted store pick, chosen by a person at product scope",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "pass",
             "materials": "pass",
             "legal": "none",
             "testing": "pass"
@@ -92360,7 +92343,8 @@
           "frontOrigin": {
             "legal": "database",
             "testing": "inferred",
-            "materials": "inferred"
+            "materials": "inferred",
+            "formula": "hand"
           },
           "scope": "sku",
           "basis": "direct",
@@ -92390,10 +92374,7 @@
             "flagged": [],
             "source": "amazon:B09NP69CSS",
             "checked": ""
-          },
-          "heldBack": [
-            "formula"
-          ]
+          }
         },
         "cat": "Skincare"
       },
@@ -92473,16 +92454,14 @@
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
-            "formula": "No ingredient list recorded.",
+            "formula": "Complete label read: no hazard list ingredient and no fragrance umbrella. The allergens are named individually (linalool, citronellol, geraniol, citral, limonene), which is disclosure rather than concealment",
             "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
           },
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-08-28",
-          "why": "a recommendation needs its checks done; still to do: formula",
+          "why": "a vetted store pick, chosen by a person at product scope",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "pass",
             "materials": "pass",
             "legal": "none",
             "testing": "pass"
@@ -92490,7 +92469,8 @@
           "frontOrigin": {
             "legal": "database",
             "testing": "inferred",
-            "materials": "inferred"
+            "materials": "inferred",
+            "formula": "hand"
           },
           "scope": "sku",
           "basis": "direct",
@@ -92520,10 +92500,7 @@
             "flagged": [],
             "source": "amazon:B08HZC2NP4",
             "checked": ""
-          },
-          "heldBack": [
-            "formula"
-          ]
+          }
         },
         "cat": "Skincare"
       }
@@ -98410,7 +98387,7 @@
           ]
         ],
         "matchFrom": "name",
-        "cat": "Cookware"
+        "cat": "Food storage"
       }
     ],
     "fronts": {
