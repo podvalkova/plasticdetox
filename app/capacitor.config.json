@@ -8,10 +8,11 @@
   },
   "plugins": {
     "CapacitorUpdater": {
-      "autoUpdate": true,
+      "autoUpdate": "onLaunch",
       "updateUrl": "https://plasticdetox-quiz-email.plasticdetox.workers.dev/app-update",
       "directUpdate": false,
-      "resetWhenUpdate": true
+      "resetWhenUpdate": true,
+      "appReadyTimeout": 20000
     }
   }
 }
