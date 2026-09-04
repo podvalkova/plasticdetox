@@ -344,12 +344,32 @@ function expandFronts(ext, brand) {
  * skip for different reasons, so the honest next move is to ask which one the
  * person actually has rather than average the three into a shrug.
  */
+/**
+ * Is this row a stand-in for the brand rather than something you can hold?
+ *
+ * The file carries two kinds: 70 rows literally called "Whole range", and 47
+ * named "<brand> <category>", like "Lodge cookware" or "Ahimsa tableware".
+ * They are useful as a place to hang brand scope evidence and useless in a
+ * list headed "which one do you have", where they read as a product nobody
+ * sells. An ASIN settles it either way: Eco by Naty Diapers is named exactly
+ * like a generated row and is a real listing.
+ */
+export function isBrandLine(brand, row) {
+  if ((row.asins || []).length) return false;
+  const name = String(row.name || "").trim().toLowerCase();
+  if (!name) return true;
+  if (name === "whole range") return true;
+  if (((row.ext || {}).scope) === "brand") return true;
+  return name === `${brand.brand} ${brand.category || ""}`.trim().toLowerCase();
+}
+
 export function ratedProducts(brand) {
   const seen = new Set();
   const out = [];
   for (const p of brand.products || []) {
     const v = productVerdict(p);
     if (!v || !p.name) continue;
+    if (isBrandLine(brand, p)) continue;
     const key = p.name.toLowerCase();
     if (seen.has(key)) continue;
     seen.add(key);
