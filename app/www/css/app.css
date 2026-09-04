@@ -430,6 +430,118 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 /* The keep control, on the verdict card itself. */
 /* ----------------------------------------------------------------- detox */
 
+/* Your home, item by item. One journey bar whose color follows how far in
+   you are; that is a stage, not a verdict, but it borrows the verdict hues
+   deliberately: amber while most sources remain, green once few do. */
+.dx-big {
+  font-size: 22px; font-weight: 800; letter-spacing: -.028em; line-height: 1.15;
+  color: var(--good); margin: .3rem 0 0;
+}
+.dx-bar {
+  height: 12px; border-radius: 999px; background: var(--chip);
+  overflow: hidden; margin-top: .65rem;
+}
+.dx-fill { height: 100%; border-radius: 999px; transition: width .4s ease; }
+.dx-fill.start { background: #D97706; }
+.dx-fill.mid { background: var(--accent); }
+.dx-fill.close, .dx-fill.clear { background: var(--good); }
+.dx-meta {
+  display: flex; justify-content: space-between; align-items: baseline;
+  font-size: 12px; margin: .45rem 0 1.1rem;
+}
+.dx-stage { font-weight: 750; }
+.dx-stage.start { color: #D97706; }
+.dx-stage.mid { color: var(--accent-deep); }
+.dx-stage.close, .dx-stage.clear { color: var(--good); }
+.dx-togo { color: var(--muted); font-variant-numeric: tabular-nums; }
+
+.dx-rooms { display: flex; gap: .4rem; margin-bottom: 1rem; }
+.dx-room {
+  font-size: 12px; font-weight: 700; padding: .45rem .8rem; border-radius: 999px;
+  background: var(--chip); border: 1px solid transparent; color: var(--faint);
+  white-space: nowrap;
+}
+.dx-room.on {
+  background: var(--accent); color: #fff;
+  box-shadow: 0 3px 10px -4px rgba(124, 58, 237, .5);
+}
+
+.dx-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .65rem; }
+.dxt {
+  position: relative; border-radius: 16px; padding: 1rem .25rem .8rem;
+  text-align: center; background: var(--chip); border: 1.5px solid var(--border-strong);
+  color: var(--faint); display: block; width: 100%;
+}
+.dxt svg { margin: 0 auto .35rem; display: block; }
+.dxt span {
+  font-size: 10.5px; font-weight: 650; display: block; line-height: 1.25;
+  color: var(--faint);
+}
+.dxt.done {
+  background: var(--surface); border-color: var(--border-strong); color: var(--good);
+  box-shadow: 0 2px 10px -6px rgba(10, 10, 10, .14);
+}
+.dxt.done span { color: var(--body); }
+.dxt.done::after {
+  content: "✓"; position: absolute; top: -6px; right: -5px; width: 18px; height: 18px;
+  border-radius: 999px; background: var(--good); color: #fff; font-size: 10.5px;
+  font-weight: 800; line-height: 18px; box-shadow: 0 0 0 2.5px var(--bg);
+}
+.dxt.next {
+  background: var(--surface); border: 2px solid var(--accent); color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(124, 58, 237, .14), 0 4px 14px -6px rgba(124, 58, 237, .4);
+}
+.dxt.next span { color: var(--accent-deep); font-weight: 700; }
+.dxt.next::before {
+  content: "NEXT"; position: absolute; top: -9px; left: 50%; transform: translateX(-50%);
+  background: var(--accent); color: #fff; font-size: 8px; font-weight: 800;
+  letter-spacing: .08em; padding: 2.5px 8px; border-radius: 999px;
+  box-shadow: 0 0 0 2.5px var(--bg);
+}
+.dxt.mys {
+  display: flex; align-items: center; justify-content: center; min-height: 84px;
+  border-style: dashed; opacity: .8;
+}
+.dxt.mys b { font-size: 17px; font-weight: 800; color: var(--faint); }
+.dx-more {
+  text-align: center; font-size: 12px; font-weight: 600; color: var(--faint);
+  margin: .9rem 0 .2rem;
+}
+.dx-more.clear { color: var(--good); font-weight: 700; }
+
+/* One source, one screen. */
+.dx-k {
+  font-size: 11px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase;
+  color: var(--faint); margin: 1.1rem 0 .45rem;
+}
+.dx-k:first-child { margin-top: .3rem; }
+.dx-k.free { color: var(--accent-deep); }
+.dx-titrow { display: flex; gap: .8rem; align-items: center; margin: .2rem 0 .2rem; }
+.dx-medal {
+  flex: none; width: 52px; height: 52px; border-radius: 17px;
+  background: var(--accent-wash); color: var(--accent);
+  display: grid; place-items: center;
+}
+.dx-title { font-size: 19px; font-weight: 800; letter-spacing: -.025em; line-height: 1.15; }
+.dx-heat {
+  display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .05em;
+  text-transform: uppercase; color: #C2410C; background: #FFEDD5;
+  padding: 2px 8px; border-radius: 999px; margin-top: .3rem;
+}
+.dx-why { font-size: 14px; line-height: 1.55; color: var(--body); }
+.dx-pick { background: var(--surface); }
+.prow-note { font-size: 11.5px; color: var(--muted); line-height: 1.35; margin-top: .1rem; }
+.dx-pick-right { margin-left: auto; text-align: right; flex: none; }
+.prow-view {
+  display: block; font-size: 12.5px; font-weight: 700; color: var(--accent);
+  margin-top: .3rem;
+}
+.dx-foot { margin-top: 1.3rem; }
+.dx-ghost {
+  display: block; width: 100%; background: none; border: none; color: var(--faint);
+  font-size: 13px; font-weight: 650; padding: .7rem; text-align: center;
+}
+
 .progress {
   height: 8px; border-radius: 999px; background: var(--chip);
   overflow: hidden; margin: .2rem 0 .45rem;

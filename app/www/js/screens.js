@@ -6,6 +6,7 @@ import { FRONTS, STANCE_LABEL, verdictFor, alternativesFor, ratedProducts } from
 import { packagingHeadline } from "./upc.js";
 import { el, frag, icon, ICONS, splitNote } from "./ui.js";
 import { buyLink, productImage } from "./data.js";
+import { stepContent, roomName, stage } from "./detox-content.js";
 
 const SITE = "https://plasticdetox.org";
 const STATUS_GLYPH = { pass: "✓", caution: "!", fail: "✕", unknown: "?" };
@@ -235,81 +236,89 @@ export function tabs(current, onTab) {
 // ------------------------------------------------------------------ detox
 
 /**
- * The 90 day plan, as something you tick off.
+ * Your home, item by item.
  *
- * The site already personalises this by room, household and budget. The app
- * wants the simpler thing: the same swaps, ordered by exposure, with a box
- * beside each one. It is the only screen here that is about what to do next
- * rather than about a product in front of you, which is what makes it worth
- * opening on a day you are not shopping.
- *
- * Every step carries its free version, because the plan is not a shopping list
- * and the cheapest swap is usually a habit.
+ * The same 23 swaps the plan publishes, but the screen is a picture rather
+ * than a list: sources you have cleared are tiles with a check, one tile
+ * glows next, and everything further ahead hides behind quiet tiles until
+ * you get there. One bar tracks the whole journey and shifts color as you
+ * move through it. Counts, never percentages: "3 gone, 20 to go" is language
+ * anyone feels.
  */
-export function detox(root, { phases, done, onToggle, onOpen }) {
+export function detox(root, { phases, done, room, onRoom, onStep, onOpen }) {
   const all = phases.reduce((n, p) => n + p.steps.length, 0);
   const ticked = phases.reduce(
     (n, p) => n + p.steps.filter((s) => done.has(s.id)).length, 0);
 
-  const hero = el("div", "hero shop-hero");
-  hero.appendChild(el("h1", null, "Your 90 day plan"));
-  hero.appendChild(el("p", null,
-    "The same plan the site sends out, in the order that cuts exposure fastest."));
-  root.appendChild(hero);
+  // Which room you are looking at. With no choice made, the one holding the
+  // next undone swap, so the screen always opens where the action is.
+  let at = Number(room);
+  if (!Number.isInteger(at) || at < 0 || at >= phases.length) {
+    at = Math.max(0, phases.findIndex((p) => p.steps.some((s) => !done.has(s.id))));
+  }
+  const phase = phases[at];
 
-  const bar = el("div", "progress");
-  const fill = el("div", "progress-fill");
-  fill.style.width = `${all ? Math.round((ticked / all) * 100) : 0}%`;
+  root.appendChild(el("h1", "dx-big",
+    ticked ? `${ticked} plastic source${ticked === 1 ? "" : "s"} gone`
+      : "Your home, source by source"));
+
+  const st = stage(ticked, all);
+  const bar = el("div", "dx-bar");
+  const fill = el("div", `dx-fill ${st.key}`);
+  fill.style.width = `${all ? Math.max(2, Math.round((ticked / all) * 100)) : 0}%`;
   bar.appendChild(fill);
   root.appendChild(bar);
-  root.appendChild(el("div", "progress-note", `${ticked} of ${all} done`));
+  const meta = el("div", "dx-meta");
+  meta.appendChild(el("span", `dx-stage ${st.key}`, st.label));
+  meta.appendChild(el("span", "dx-togo",
+    ticked >= all ? `All ${all} cleared` : `${all - ticked} to go`));
+  root.appendChild(meta);
 
-  for (const phase of phases) {
-    const doneHere = phase.steps.filter((s) => done.has(s.id)).length;
-    const head = el("div", "phase-head");
-    head.appendChild(el("div", "phase-title", phase.title));
-    head.appendChild(el("div", "phase-sub",
-      `${phase.sub} · ${doneHere} of ${phase.steps.length}`));
-    root.appendChild(head);
+  const rooms = el("div", "dx-rooms");
+  phases.forEach((p, i) => {
+    const dn = p.steps.filter((s) => done.has(s.id)).length;
+    const pill = el("button", `dx-room${i === at ? " on" : ""}`,
+      i === at ? `${roomName(p)} \u00b7 ${dn}/${p.steps.length}` : roomName(p));
+    pill.type = "button";
+    pill.onclick = () => onRoom(String(i));
+    rooms.appendChild(pill);
+  });
+  root.appendChild(rooms);
 
-    for (const step of phase.steps) {
-      const on = done.has(step.id);
-      const item = el("details", `step${on ? " on" : ""}`);
-      const sum = el("summary");
-      const box = el("span", `tick${on ? " on" : ""}`);
-      if (on) box.appendChild(icon("M5 12l5 5L20 7", 14));
-      // The box marks it done. Opening the row is a different intent, so one
-      // control must not do both.
-      box.onclick = (e) => { e.preventDefault(); e.stopPropagation(); onToggle(step.id); };
-      sum.appendChild(box);
-      const txt = el("div", "step-body");
-      txt.appendChild(el("div", "step-swap", step.swap));
-      sum.appendChild(txt);
-      item.appendChild(sum);
-
-      if (step.why) item.appendChild(el("p", "step-why", step.why));
-
-      // The picks the plan itself names, with the links it uses. Some are not
-      // on Amazon at all, which is why they are read from the page rather than
-      // looked up: the Guppyfriend bag has its own affiliate URL and no ASIN.
-      if ((step.picks || []).length) {
-        const picks = el("div", "step-picks");
-        picks.appendChild(el("div", "step-picks-h", "What we would buy"));
-        for (const pick of step.picks) {
-          const row = el("button", "prow");
-          row.type = "button";
-          if (pick.label) row.appendChild(el("span", "prow-label", pick.label));
-          const body = el("div", "row-body");
-          body.appendChild(el("div", "prow-name", pick.name));
-          row.appendChild(body);
-          row.appendChild(el("span", "row-chev", "\u203a"));
-          row.onclick = () => onOpen(pick.url);
-          picks.appendChild(row);
-        }
-        item.appendChild(picks);
-      }
-      root.appendChild(item);
-    }
+  // Done tiles and the next one are named. Beyond that, at most two quiet
+  // tiles stand in for what is coming, and one line carries the rest: there
+  // is always a next step on screen, and never a to do list.
+  const grid = el("div", "dx-grid");
+  let revealed = false;
+  let hidden = 0;
+  for (const step of phase.steps) {
+    const isDone = done.has(step.id);
+    if (!isDone && revealed) { hidden += 1; continue; }
+    const c = stepContent(step);
+    const tile = el("button", `dxt${isDone ? " done" : " next"}`);
+    tile.type = "button";
+    tile.appendChild(icon(c.icon, 25));
+    const label = el("span");
+    c.short.split("\n").forEach((line, i) => {
+      if (i) label.appendChild(document.createElement("br"));
+      label.appendChild(document.createTextNode(line));
+    });
+    tile.appendChild(label);
+    tile.onclick = () => onStep(step.id);
+    grid.appendChild(tile);
+    if (!isDone) revealed = true;
+  }
+  for (let i = 0; i < Math.min(hidden, 2); i++) {
+    const mys = el("span", "dxt mys");
+    if (i === 1) mys.style.opacity = ".55";
+    mys.appendChild(el("b", null, "?"));
+    grid.appendChild(mys);
+  }
+  root.appendChild(grid);
+  if (hidden > 2) {
+    root.appendChild(el("div", "dx-more", `${hidden - 2} more reveal as you go`));
+  } else if (!phase.steps.some((s) => !done.has(s.id))) {
+    root.appendChild(el("div", "dx-more clear", `${roomName(phase)} clear \u2713`));
   }
 
   const more = el("div", "card know");
@@ -322,6 +331,73 @@ export function detox(root, { phases, done, onToggle, onOpen }) {
   go.onclick = () => onOpen("https://plasticdetox.org/custom-plan.html?app=1");
   more.appendChild(go);
   root.appendChild(more);
+}
+
+/**
+ * One source, one screen of value.
+ *
+ * Why it matters in the plan's own words, the picks the plan names with their
+ * notes and links, and the free version where one exists, because the cheapest
+ * swap is usually a habit and it counts the same. One button marks it done.
+ */
+export function detoxStep(root, { phase, step, isDone, onDone, onUndo, onLater, onOpen }) {
+  const c = stepContent(step);
+
+  root.appendChild(el("div", "dx-k",
+    `${roomName(phase)} \u00b7 ${isDone ? "done \u2713" : "next up"}`));
+
+  const row = el("div", "dx-titrow");
+  const medal = el("span", "dx-medal");
+  medal.appendChild(icon(c.icon, 26));
+  row.appendChild(medal);
+  const tw = el("div");
+  tw.appendChild(el("div", "dx-title", step.swap));
+  if (step.heat) tw.appendChild(el("span", "dx-heat", "Heat driven"));
+  row.appendChild(tw);
+  root.appendChild(row);
+
+  if (step.why) {
+    root.appendChild(el("div", "dx-k", "Why it matters"));
+    root.appendChild(el("p", "dx-why", step.why));
+  }
+
+  if ((step.picks || []).length) {
+    root.appendChild(el("div", "dx-k", "Our picks \u00b7 vetted"));
+    for (const pick of step.picks) {
+      const p = el("button", "prow dx-pick");
+      p.type = "button";
+      const body = el("div", "row-body");
+      body.appendChild(el("div", "prow-name", pick.name));
+      if (pick.note) body.appendChild(el("div", "prow-note", pick.note));
+      p.appendChild(body);
+      const right = el("div", "dx-pick-right");
+      if (pick.label) right.appendChild(el("span", "prow-label", pick.label));
+      right.appendChild(el("span", "prow-view", "View \u2192"));
+      p.appendChild(right);
+      p.onclick = () => onOpen(pick.url);
+      root.appendChild(p);
+    }
+  }
+
+  if (c.free) {
+    root.appendChild(el("div", "dx-k free", "Costs nothing \u00b7 counts the same"));
+    root.appendChild(el("div", "step-free", c.free));
+  }
+
+  const foot = el("div", "dx-foot");
+  if (!isDone) {
+    const cta = el("button", "cta", "Done, next source");
+    cta.onclick = onDone;
+    foot.appendChild(cta);
+    const later = el("button", "dx-ghost", "Maybe later");
+    later.onclick = onLater;
+    foot.appendChild(later);
+  } else {
+    const undo = el("button", "cta ghost", "Mark as not done");
+    undo.onclick = onUndo;
+    foot.appendChild(undo);
+  }
+  root.appendChild(foot);
 }
 
 // ------------------------------------------------------------------ saved

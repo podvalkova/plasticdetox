@@ -128,15 +128,25 @@ for (const block of planSrc.split(/\n\s*\{\s*(?=days:\s*")/).slice(1)) {
     const why = (sw.match(/why:\s*"((?:[^"\\]|\\.)*)"/) || [])[1] || "";
     const picks = [];
     const list = (sw.match(/picks:\s*\[([\s\S]*?)\]\s*\}/) || [])[1] || "";
+    // A pick may carry a trailing note ("cheapest way in, great for renters").
+    // The url capture must stop at the comma before it: the first version of
+    // this regex ate the note into the url, which shipped two dead links.
     for (const one of list.matchAll(
-        /\{\s*label:\s*"([^"]*)",\s*name:\s*"((?:[^"\\]|\\.)*)",\s*url:\s*([^}]+?)\s*\}/g)) {
+        /\{\s*label:\s*"([^"]*)",\s*name:\s*"((?:[^"\\]|\\.)*)",\s*url:\s*([^,}]+?)\s*(?:,\s*note:\s*"((?:[^"\\]|\\.)*)"\s*)?\}/g)) {
       const url = resolveUrl(one[3]);
-      if (url) picks.push({ label: one[1], name: one[2].replace(/\\"/g, '"'), url });
+      if (url) {
+        const pick = { label: one[1], name: one[2].replace(/\\"/g, '"'), url };
+        if (one[4]) pick.note = one[4].replace(/\\"/g, '"');
+        picks.push(pick);
+      }
     }
     steps.push({
       id: `${title}::${swap}`.slice(0, 120),
       swap: swap.replace(/\\"/g, '"'),
       why: why.replace(/\\"/g, '"'),
+      // The page tags the swaps where heat multiplies leaching, and leans on
+      // that tag in its own hero copy. The app finally renders it.
+      heat: /heat:\s*true/.test(sw),
       picks,
     });
   }

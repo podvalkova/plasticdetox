@@ -323,7 +323,32 @@ function draw() {
     screens.detox(view, {
       phases: data.planPhases(),
       done: readDone(),
-      onToggle: toggleDone,
+      room: state.room || "",
+      onRoom: (r) => { state.room = r; render(); rememberPlace(); },
+      onStep: (stepId) => go({ screen: "detoxStep", stepId }),
+      onOpen: openExternal,
+    });
+  } else if (state.screen === "detoxStep") {
+    // Resolve the step fresh each render, so ticking it re-renders this same
+    // screen in its done state rather than a stale copy.
+    const phases = data.planPhases();
+    const phase = phases.find((p) => p.steps.some((s) => s.id === state.stepId));
+    const step = phase && phase.steps.find((s) => s.id === state.stepId);
+    if (!step) { back(); return; }
+    const set = readDone();
+    screens.detoxStep(view, {
+      phase,
+      step,
+      isDone: set.has(step.id),
+      onDone: () => {
+        toggleDone(step.id);
+        back();
+        const all = phases.reduce((n, p) => n + p.steps.length, 0);
+        const gone = readDone().size;
+        toast(gone >= all ? "Your home is clear ✓" : `Source cleared · ${all - gone} to go`);
+      },
+      onUndo: () => toggleDone(step.id),
+      onLater: back,
       onOpen: openExternal,
     });
   } else if (state.screen === "learn") {
