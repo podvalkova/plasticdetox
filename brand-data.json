@@ -3344,7 +3344,7 @@
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
           "frontNotes": {
             "materials": "plastic in contact, with repeated contact over time.",
-            "formula": "The listing describes lead, pfas, but publishes no ingredient list, so this is a reading of marketing copy and not of the label."
+            "formula": "An object has no ingredient list. What it is made of is the materials check."
           },
           "inheritedFronts": [
             "formula",
@@ -3358,7 +3358,7 @@
           "dated": "2026-09-03",
           "why": "section 6 ceiling: formula is caution, materials is caution",
           "fronts": {
-            "formula": "caution",
+            "formula": "none",
             "materials": "caution",
             "legal": "pass",
             "testing": "pass"
@@ -3367,7 +3367,7 @@
             "legal": "database",
             "testing": "inferred",
             "materials": "database",
-            "formula": "inferred"
+            "formula": "hand"
           },
           "scope": "sku",
           "basis": "direct",
@@ -7861,7 +7861,9 @@
         "source": "top-100-baby-kids-products-amazon.html",
         "ext": {
           "frontNotes": {
-            "materials": "In contact with bamboo, which puts nothing into what it holds."
+            "materials": "A bamboo melamine composite, not bare bamboo. Melamine migrates at high temperature, and the name says bamboo while the binder is the exposure",
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "legal": "FDA issued warning letters from 2021 to 2023 on bamboo melamine composite dishware"
           },
           "inheritedFronts": [
             "formula",
@@ -7904,14 +7906,15 @@
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "fail",
-            "materials": "pass",
-            "legal": "unassessed",
+            "formula": "none",
+            "materials": "fail",
+            "legal": "caution",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "formula": "stated",
-            "materials": "database"
+            "formula": "hand",
+            "materials": "hand",
+            "legal": "hand"
           },
           "scope": "sku",
           "basis": "direct",
@@ -10085,7 +10088,7 @@
           "dated": "2026-08-29",
           "why": "Reviewed by hand: a named plastic in a product designed to be chewed.",
           "fronts": {
-            "formula": "fail",
+            "formula": "none",
             "legal": "unassessed",
             "testing": "unassessed",
             "materials": "caution"
@@ -10096,10 +10099,10 @@
           "authored": true,
           "frontNotes": {
             "materials": "nylon in contact, and we have not recorded what it holds.",
-            "formula": "The published ingredient list names nylon."
+            "formula": "An object has no ingredient list. What it is made of is the materials check."
           },
           "frontOrigin": {
-            "formula": "database",
+            "formula": "hand",
             "materials": "database"
           },
           "exposure": {
@@ -10954,7 +10957,7 @@
           "verdict": "careful",
           "why": "Reviewed by hand from our published research on this category.",
           "fronts": {
-            "formula": "caution",
+            "formula": "none",
             "materials": "caution",
             "legal": "unassessed",
             "testing": "unassessed"
@@ -10965,7 +10968,7 @@
           "authored": true,
           "frontNotes": {
             "materials": "Leachy, contents not described.",
-            "formula": "The listing describes plastic, but publishes no ingredient list, so this is a reading of marketing copy and not of the label."
+            "formula": "An object has no ingredient list. What it is made of is the materials check."
           },
           "dated": "2026-09-03",
           "inheritedFronts": [
@@ -10985,7 +10988,7 @@
             "why": "A hot, enclosed room concentrates whatever comes off it."
           },
           "frontOrigin": {
-            "formula": "inferred"
+            "formula": "hand"
           },
           "formulaAnswers": {
             "ingredients": "",
@@ -12783,20 +12786,22 @@
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
-            "formula": "Intentionally added PFAS disclosed under California AB 1200."
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "materials": "Intentionally added PFAS, disclosed by the maker under California AB 1200"
           },
           "verdict": "skip",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "fail",
-            "materials": "unassessed",
+            "formula": "none",
+            "materials": "fail",
             "legal": "pass",
             "testing": "unassessed"
           },
           "frontOrigin": {
             "legal": "database",
-            "formula": "hand"
+            "formula": "hand",
+            "materials": "hand"
           },
           "scope": "line",
           "basis": "direct",
@@ -14368,7 +14373,7 @@
           "verdict": "skip",
           "why": "Reviewed by hand from our published research on this category.",
           "fronts": {
-            "formula": "caution",
+            "formula": "none",
             "materials": "caution",
             "legal": "unassessed",
             "testing": "unassessed"
@@ -14379,7 +14384,7 @@
           "authored": true,
           "dated": "2026-09-03",
           "frontNotes": {
-            "formula": "The listing describes cadmium, plastic, but publishes no ingredient list, so this is a reading of marketing copy and not of the label.",
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
             "materials": "plastic in contact, with repeated contact over time."
           },
           "exposure": {
@@ -14396,7 +14401,7 @@
             "why": "Against the skin all day."
           },
           "frontOrigin": {
-            "formula": "inferred",
+            "formula": "hand",
             "materials": "database"
           },
           "formulaAnswers": {
@@ -16771,8 +16776,8 @@
           "verdict": "skip",
           "why": "Reviewed by hand from our published research on this category.",
           "fronts": {
-            "formula": "caution",
-            "materials": "pass",
+            "formula": "none",
+            "materials": "fail",
             "legal": "unassessed",
             "testing": "unassessed"
           },
@@ -16781,7 +16786,8 @@
           "disclose": false,
           "authored": true,
           "frontNotes": {
-            "materials": "Nothing the product touches is plastic."
+            "materials": "PVC, TPE, NBR or EVA foam. PVC is made from a known carcinogen and EVA can off gas formamide, pressed against skin for an hour while you breathe directly above it",
+            "formula": "An object has no ingredient list. What it is made of is the materials check."
           },
           "dated": "2026-09-03",
           "inheritedFronts": [
@@ -16811,7 +16817,8 @@
             "checked": "2026-09-03"
           },
           "frontOrigin": {
-            "materials": "database"
+            "materials": "hand",
+            "formula": "hand"
           },
           "materialsList": "Nitrile Butadiene Rubber",
           "materialAnswers": {
@@ -17423,7 +17430,8 @@
         "source": "top-100-baby-kids-products-amazon.html",
         "ext": {
           "frontNotes": {
-            "materials": "We have not established what the product actually touches."
+            "materials": "Polyester meets the flame standard through the fibre itself, but brushed variants may use chemical treatments per SKU",
+            "formula": "An object has no ingredient list. What it is made of is the materials check."
           },
           "inheritedFronts": [
             "formula",
@@ -17466,13 +17474,14 @@
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "caution",
-            "materials": "unassessed",
+            "formula": "none",
+            "materials": "caution",
             "legal": "unassessed",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "formula": "stated"
+            "formula": "hand",
+            "materials": "hand"
           },
           "scope": "sku",
           "basis": "direct",
@@ -18735,8 +18744,8 @@
           "verdict": "skip",
           "why": "Reviewed by hand from our published research on this category.",
           "fronts": {
-            "formula": "caution",
-            "materials": "unassessed",
+            "formula": "none",
+            "materials": "fail",
             "legal": "unassessed",
             "testing": "unassessed"
           },
@@ -18746,8 +18755,8 @@
           "authored": true,
           "dated": "2026-09-03",
           "frontNotes": {
-            "formula": "The listing describes nonstick, but publishes no ingredient list, so this is a reading of marketing copy and not of the label.",
-            "materials": "We have not established what the product actually touches."
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "materials": "Coated basket and crisper plate sit in the food path, and a nonstick air fryer coating is PFAS blasted with hot air"
           },
           "inheritedFronts": [
             "formula"
@@ -18766,7 +18775,8 @@
             "why": "Hot fat against the cooking surface is the most aggressive case there is."
           },
           "frontOrigin": {
-            "formula": "inferred"
+            "formula": "hand",
+            "materials": "hand"
           },
           "formulaAnswers": {
             "ingredients": "",
@@ -19248,7 +19258,7 @@
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
           "frontNotes": {
             "materials": "tritan in contact, with repeated contact over time.",
-            "formula": "The listing describes lead, pfas, pfoa, but publishes no ingredient list, so this is a reading of marketing copy and not of the label."
+            "formula": "An object has no ingredient list. What it is made of is the materials check."
           },
           "inheritedFronts": [
             "formula",
@@ -19260,13 +19270,13 @@
           "dated": "2026-08-28",
           "why": "the note reads adversely on formula, needs a human look",
           "fronts": {
-            "formula": "caution",
+            "formula": "none",
             "materials": "caution",
             "legal": "pass",
             "testing": "pass"
           },
           "frontOrigin": {
-            "formula": "inferred",
+            "formula": "hand",
             "legal": "database",
             "testing": "inferred",
             "materials": "database"
@@ -19954,21 +19964,22 @@
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
-            "materials": "We have not established what the product actually touches.",
-            "formula": "The listing describes plastic, polyester, but publishes no ingredient list, so this is a reading of marketing copy and not of the label."
+            "materials": "The listing describes plastic, polyester in contact, recorded from the listing rather than an established contact material",
+            "formula": "An object has no ingredient list. What it is made of is the materials check."
           },
           "verdict": "unrated",
           "dated": "2026-08-29",
           "why": "the note reads adversely on materials, needs a human look",
           "fronts": {
-            "formula": "caution",
-            "materials": "unassessed",
+            "formula": "none",
+            "materials": "caution",
             "legal": "pass",
             "testing": "unassessed"
           },
           "frontOrigin": {
             "legal": "database",
-            "formula": "inferred"
+            "formula": "hand",
+            "materials": "hand"
           },
           "scope": "sku",
           "basis": "direct",
@@ -25254,17 +25265,15 @@
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
             "materials": "Made of silk, which the product name states, and which puts nothing into what it touches.",
-            "formula": "The listing describes plastic, but publishes no ingredient list, so this is a reading of marketing copy and not of the label."
+            "formula": "An object has no ingredient list. What it is made of is the materials check."
           },
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "cappedFrom": "good",
-          "capRestoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "verdict": "careful",
+          "verdict": "good",
           "dated": "2026-08-29",
-          "why": "section 6 ceiling: formula is caution",
+          "why": "a vetted store pick, chosen by a person at product scope",
           "fronts": {
-            "formula": "caution",
+            "formula": "none",
             "materials": "pass",
             "legal": "pass",
             "testing": "unassessed"
@@ -25272,7 +25281,7 @@
           "frontOrigin": {
             "legal": "database",
             "materials": "database",
-            "formula": "inferred"
+            "formula": "hand"
           },
           "scope": "sku",
           "basis": "direct",
@@ -31816,7 +31825,7 @@
           "verdict": "careful",
           "why": "Reviewed by hand from our published research on this category.",
           "fronts": {
-            "formula": "caution",
+            "formula": "none",
             "materials": "caution",
             "legal": "unassessed",
             "testing": "unassessed"
@@ -31826,7 +31835,8 @@
           "disclose": false,
           "authored": true,
           "frontNotes": {
-            "materials": "Leachy, contents not described."
+            "materials": "Leachy, contents not described.",
+            "formula": "An object has no ingredient list. What it is made of is the materials check."
           },
           "dated": "2026-09-03",
           "inheritedFronts": [
@@ -31854,6 +31864,9 @@
             "flagged": [],
             "source": "amazon:B093D7Y3F2",
             "checked": "2026-09-03"
+          },
+          "frontOrigin": {
+            "formula": "hand"
           }
         },
         "cat": "Shower curtains"
@@ -34390,8 +34403,8 @@
           "verdict": "skip",
           "why": "Reviewed by hand from our published research on this category.",
           "fronts": {
-            "formula": "caution",
-            "materials": "unassessed",
+            "formula": "none",
+            "materials": "caution",
             "legal": "unassessed",
             "testing": "unassessed"
           },
@@ -34401,8 +34414,8 @@
           "authored": true,
           "dated": "2026-09-03",
           "frontNotes": {
-            "formula": "The listing describes plastic, polypropylene, but publishes no ingredient list, so this is a reading of marketing copy and not of the label.",
-            "materials": "We have not established what the product actually touches."
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "materials": "The listing describes plastic, polypropylene in contact, recorded from the listing rather than an established contact material"
           },
           "inheritedFronts": [
             "formula"
@@ -34421,7 +34434,8 @@
             "why": "Brief contact, but it is the food you then eat."
           },
           "frontOrigin": {
-            "formula": "inferred"
+            "formula": "hand",
+            "materials": "hand"
           },
           "formulaAnswers": {
             "ingredients": "",
@@ -37016,7 +37030,7 @@
           "dated": "2026-08-29",
           "why": "a recommendation needs its checks done; still to do: materials",
           "fronts": {
-            "formula": "pass",
+            "formula": "none",
             "legal": "pass",
             "testing": "unassessed",
             "materials": "unassessed"
@@ -37029,10 +37043,12 @@
             "materials"
           ],
           "heldFrom": "good",
-          "frontNotes": {},
+          "frontNotes": {
+            "formula": "An object has no ingredient list. What it is made of is the materials check."
+          },
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontOrigin": {
-            "formula": "inferred",
+            "formula": "hand",
             "legal": "database"
           },
           "exposure": {
@@ -37092,7 +37108,7 @@
           "verdict": "skip",
           "why": "Reviewed by hand from our published research on this category.",
           "fronts": {
-            "formula": "caution",
+            "formula": "none",
             "materials": "caution",
             "legal": "unassessed",
             "testing": "unassessed"
@@ -37102,7 +37118,8 @@
           "disclose": false,
           "authored": true,
           "frontNotes": {
-            "materials": "Leachy, contents not described."
+            "materials": "Leachy, contents not described.",
+            "formula": "An object has no ingredient list. What it is made of is the materials check."
           },
           "dated": "2026-09-03",
           "inheritedFronts": [
@@ -37130,6 +37147,9 @@
             "flagged": [],
             "source": "amazon:B087F16GKW",
             "checked": "2026-09-03"
+          },
+          "frontOrigin": {
+            "formula": "hand"
           }
         },
         "cat": "Yoga mats"
@@ -37611,11 +37631,11 @@
         "origin": "hand",
         "source": "bamboo-toothbrush-plastic-bristles.html",
         "ext": {
-          "verdict": "skip",
-          "why": "section 6 ceiling: formula is fail",
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
           "fronts": {
-            "formula": "fail",
-            "materials": "pass",
+            "formula": "none",
+            "materials": "caution",
             "legal": "pass",
             "testing": "unassessed"
           },
@@ -37627,11 +37647,13 @@
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
             "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-            "materials": "Made of bamboo, which the product name states, and which puts nothing into what it touches."
+            "materials": "The bamboo handle is honest, the bristles are not: nylon bristles are plastic, and bio nylon is still a synthetic polymer that sheds while you brush",
+            "formula": "An object has no ingredient list. What it is made of is the materials check."
           },
           "frontOrigin": {
             "legal": "database",
-            "materials": "database"
+            "materials": "hand",
+            "formula": "hand"
           },
           "inheritedFronts": [
             "formula"
@@ -37670,9 +37692,7 @@
             "material": "bamboo",
             "source": "product name",
             "checked": ""
-          },
-          "cappedFrom": "careful",
-          "capRestoreWhy": "Reviewed by hand from our published research on this category."
+          }
         },
         "tradeoff": "Listed as the vegan option. Boar bristle is the only genuinely plastic free brush and it is not vegan, so this is the best available choice under that constraint, with the nylon stated.",
         "cat": "Toothbrushes"
@@ -38960,8 +38980,8 @@
           "verdict": "skip",
           "why": "Reviewed by hand from our published research on this category.",
           "fronts": {
-            "formula": "caution",
-            "materials": "unassessed",
+            "formula": "none",
+            "materials": "caution",
             "legal": "unassessed",
             "testing": "unassessed"
           },
@@ -38971,7 +38991,8 @@
           "authored": true,
           "dated": "2026-09-03",
           "frontNotes": {
-            "formula": "The listing describes plastic, but publishes no ingredient list, so this is a reading of marketing copy and not of the label."
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "materials": "The listing describes plastic in contact, recorded from the listing rather than an established contact material"
           },
           "inheritedFronts": [
             "formula"
@@ -38990,7 +39011,8 @@
             "why": "Brief contact, but it is the food you then eat."
           },
           "frontOrigin": {
-            "formula": "inferred"
+            "formula": "hand",
+            "materials": "hand"
           },
           "formulaAnswers": {
             "ingredients": "",
@@ -50942,7 +50964,8 @@
         "source": "top-100-baby-kids-products-amazon.html",
         "ext": {
           "frontNotes": {
-            "materials": "Made of bamboo, which the product name states, and which puts nothing into what it touches."
+            "materials": "Marketed as bamboo, but viscose from bamboo is chemically regenerated rayon rather than the plant",
+            "formula": "An object has no ingredient list. What it is made of is the materials check."
           },
           "inheritedFronts": [
             "formula",
@@ -50985,14 +51008,14 @@
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "caution",
-            "materials": "pass",
+            "formula": "none",
+            "materials": "caution",
             "legal": "unassessed",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "formula": "stated",
-            "materials": "database"
+            "formula": "hand",
+            "materials": "hand"
           },
           "scope": "sku",
           "basis": "direct",
@@ -61170,7 +61193,7 @@
           "verdict": "careful",
           "why": "Reviewed by hand from our published research on this category.",
           "fronts": {
-            "formula": "caution",
+            "formula": "none",
             "materials": "unassessed",
             "legal": "unassessed",
             "testing": "unassessed"
@@ -61180,7 +61203,9 @@
           "disclose": false,
           "authored": true,
           "dated": "2026-09-03",
-          "frontNotes": {},
+          "frontNotes": {
+            "formula": "An object has no ingredient list. What it is made of is the materials check."
+          },
           "inheritedFronts": [
             "formula"
           ],
@@ -61206,6 +61231,9 @@
             "flagged": [],
             "source": "amazon:B0CXJ97TV1",
             "checked": "2026-09-04"
+          },
+          "frontOrigin": {
+            "formula": "hand"
           }
         },
         "cat": "Air purifiers"
@@ -62023,7 +62051,7 @@
           "verdict": "careful",
           "why": "Reviewed by hand from our published research on this category.",
           "fronts": {
-            "formula": "caution",
+            "formula": "none",
             "materials": "caution",
             "legal": "unassessed",
             "testing": "unassessed"
@@ -62034,7 +62062,7 @@
           "authored": true,
           "frontNotes": {
             "materials": "Leachy, contents not described.",
-            "formula": "The listing describes plastic, but publishes no ingredient list, so this is a reading of marketing copy and not of the label."
+            "formula": "An object has no ingredient list. What it is made of is the materials check."
           },
           "dated": "2026-09-03",
           "inheritedFronts": [
@@ -62054,7 +62082,7 @@
             "why": "A hot, enclosed room concentrates whatever comes off it."
           },
           "frontOrigin": {
-            "formula": "inferred"
+            "formula": "hand"
           },
           "formulaAnswers": {
             "ingredients": "",
@@ -66900,22 +66928,22 @@
           "dated": "2026-08-29",
           "why": "Reviewed by hand against the standard.",
           "fronts": {
-            "formula": "caution",
+            "formula": "none",
             "legal": "unassessed",
             "testing": "unassessed",
-            "materials": "pass"
+            "materials": "caution"
           },
           "scope": "line",
           "basis": "direct",
           "disclose": false,
           "authored": true,
           "frontNotes": {
-            "formula": "Silicone brush head on a rigid plastic handle, chewed.",
-            "materials": "Aqueous contents in unspecified plastic."
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "materials": "A silicone brush head on a rigid plastic handle, chewed, so the handle is plastic in the mouth"
           },
           "frontOrigin": {
-            "formula": "stated",
-            "materials": "stated"
+            "formula": "hand",
+            "materials": "hand"
           },
           "exposure": {
             "type": "mouthed object",
@@ -71511,7 +71539,8 @@
         "origin": "registry",
         "ext": {
           "frontNotes": {
-            "formula": "Still mostly recycled polyester and nylon, so it sheds. Wash it in a Guppyfriend bag (Recorded for Patagonia as a whole rather than this product specifically.)"
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "materials": "The listing describes nylon, polyester in contact, recorded from the listing rather than an established contact material"
           },
           "inheritedFronts": [
             "formula"
@@ -71520,13 +71549,14 @@
           "dated": "2026-08-28",
           "why": "the note reads adversely on formula, needs a human look",
           "fronts": {
-            "formula": "caution",
-            "materials": "unassessed",
+            "formula": "none",
+            "materials": "caution",
             "legal": "unassessed",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "formula": "stated"
+            "formula": "hand",
+            "materials": "hand"
           },
           "scope": "sku",
           "basis": "direct",
@@ -72688,8 +72718,8 @@
           "verdict": "skip",
           "why": "Reviewed by hand from our published research on this category.",
           "fronts": {
-            "formula": "fail",
-            "materials": "unassessed",
+            "formula": "none",
+            "materials": "fail",
             "legal": "pass",
             "testing": "unassessed"
           },
@@ -72700,10 +72730,14 @@
           "dated": "2026-09-03",
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
-            "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either."
+            "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "materials": "A moulded plastic handle thrown away after one use, with a nylon or polyester strand rather than silk"
           },
           "frontOrigin": {
-            "legal": "database"
+            "legal": "database",
+            "formula": "hand",
+            "materials": "hand"
           },
           "inheritedFronts": [
             "formula"
@@ -74473,7 +74507,7 @@
           "authored": true,
           "why": "the only brush we have found with no plastic anywhere in it, bristles included, which is the part every other bamboo brush gets wrong",
           "fronts": {
-            "formula": "pass",
+            "formula": "none",
             "legal": "pass",
             "testing": "none",
             "materials": "pass"
@@ -74481,11 +74515,12 @@
           "frontNotes": {
             "legal": "Searched for recalls and filings on 2026-08-29 and found none.",
             "testing": "No independent lab testing exists and none is expected for a toothbrush handle. The claim that matters here is a material one, bristle composition, and it is verifiable by inspection rather than by assay.",
-            "materials": "Recycled cardboard, no plastic wrap and no blister. The brush and the box both compost."
+            "materials": "Recycled cardboard, no plastic wrap and no blister. The brush and the box both compost.",
+            "formula": "An object has no ingredient list. What it is made of is the materials check."
           },
           "researched": true,
           "frontOrigin": {
-            "formula": "stated",
+            "formula": "hand",
             "legal": "hand",
             "testing": "stated",
             "materials": "stated"
@@ -77551,7 +77586,7 @@
           "verdict": "skip",
           "why": "Reviewed by hand from our published research on this category.",
           "fronts": {
-            "formula": "caution",
+            "formula": "none",
             "materials": "caution",
             "legal": "unassessed",
             "testing": "unassessed"
@@ -77562,7 +77597,7 @@
           "authored": true,
           "frontNotes": {
             "materials": "Leachy, contents not described.",
-            "formula": "PVC is made from a known carcinogen, EVA can off gas formamide (Recorded for Retrospec as a whole rather than this product specifically.)"
+            "formula": "An object has no ingredient list. What it is made of is the materials check."
           },
           "dated": "2026-09-03",
           "inheritedFronts": [
@@ -77580,6 +77615,9 @@
             "heat": false,
             "fat": false,
             "why": "Against the skin, but not every day."
+          },
+          "frontOrigin": {
+            "formula": "hand"
           }
         },
         "cat": "Yoga mats"
@@ -80391,23 +80429,24 @@
           "dated": "2026-08-29",
           "why": "Rule 5.7: the honest best option under a stated constraint.",
           "fronts": {
-            "formula": "caution",
+            "formula": "none",
             "legal": "pass",
             "testing": "unassessed",
-            "materials": "pass"
+            "materials": "caution"
           },
           "scope": "line",
           "basis": "direct",
           "disclose": false,
           "authored": true,
           "frontNotes": {
-            "formula": "Best vegan option."
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "materials": "Castor bean bristles are still a nylon polymer and shed some microplastic, which is true of every bristle on the market"
           },
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontOrigin": {
-            "formula": "stated",
+            "formula": "hand",
             "legal": "database",
-            "materials": "inferred"
+            "materials": "hand"
           },
           "exposure": {
             "type": "oral appliance",
@@ -83614,21 +83653,22 @@
           "dated": "2026-08-29",
           "why": "Reviewed by hand: a named plastic in a product designed to be chewed.",
           "fronts": {
-            "formula": "caution",
+            "formula": "none",
             "legal": "unassessed",
             "testing": "unassessed",
-            "materials": "pass"
+            "materials": "fail"
           },
           "scope": "line",
           "basis": "direct",
           "disclose": false,
           "authored": true,
           "frontNotes": {
-            "materials": "Made of bamboo, which the product name states, and which puts nothing into what it touches."
+            "materials": "Bamboo fibre bound in nylon, which the name states. Nylon is a named plastic and the product is designed to be gnawed, so fragments are swallowed",
+            "formula": "An object has no ingredient list. What it is made of is the materials check."
           },
           "frontOrigin": {
-            "formula": "stated",
-            "materials": "database"
+            "formula": "hand",
+            "materials": "hand"
           },
           "exposure": {
             "type": "worn textile",
@@ -85174,7 +85214,7 @@
           "dated": "2026-08-29",
           "why": "an aluminium handle instead of plastic, with a clean legal record; the castor oil bristles are still a polymer, which is the honest limit of it",
           "fronts": {
-            "formula": "pass",
+            "formula": "none",
             "legal": "pass",
             "testing": "none",
             "materials": "pass"
@@ -85186,10 +85226,11 @@
           "frontNotes": {
             "legal": "Searched for recalls and filings on 2026-08-29 and found none. iFixit's teardown is worth knowing about separately: the battery is not user replaceable, so the repairable claim means SURI repairs it, not you.",
             "testing": "No independent lab testing exists, and none is expected. Labs screen things you eat, drink or absorb, not a toothbrush handle. The heads are the part that matters and no third party has screened them.",
-            "materials": "Moulded pulp carton, no plastic blister. The travel case is aluminium."
+            "materials": "Moulded pulp carton, no plastic blister. The travel case is aluminium.",
+            "formula": "An object has no ingredient list. What it is made of is the materials check."
           },
           "frontOrigin": {
-            "formula": "stated",
+            "formula": "hand",
             "legal": "hand",
             "testing": "stated",
             "materials": "stated"
@@ -87581,8 +87622,8 @@
           "verdict": "skip",
           "why": "Reviewed by hand from our published research on this category.",
           "fronts": {
-            "formula": "fail",
-            "materials": "unassessed",
+            "formula": "none",
+            "materials": "caution",
             "legal": "unassessed",
             "testing": "unassessed"
           },
@@ -87592,7 +87633,8 @@
           "authored": true,
           "dated": "2026-09-03",
           "frontNotes": {
-            "formula": "A plastic cutting board sheds 14 to 71 million microplastic particles a year, with knife grooves releasing… (Recorded for THETCHRY as a whole rather than this product specifically.)"
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "materials": "The listing describes plastic in contact, recorded from the listing rather than an established contact material"
           },
           "inheritedFronts": [
             "formula"
@@ -87620,7 +87662,11 @@
               "year": 2023,
               "lod": null
             }
-          ]
+          ],
+          "frontOrigin": {
+            "materials": "hand",
+            "formula": "hand"
+          }
         },
         "cat": "Cutting boards"
       }
@@ -89362,8 +89408,8 @@
           "verdict": "skip",
           "why": "Reviewed by hand from our published research on this category.",
           "fronts": {
-            "formula": "fail",
-            "materials": "unassessed",
+            "formula": "none",
+            "materials": "caution",
             "legal": "unassessed",
             "testing": "fail"
           },
@@ -89373,8 +89419,9 @@
           "authored": true,
           "dated": "2026-09-03",
           "frontNotes": {
-            "formula": "Named in a 2024 class action against Mayborn USA alleging its polypropylene bottles release microplastics… (Recorded for Tommee Tippee as a whole rather than this product specifically.)",
-            "testing": "Polypropylene baby bottles release up to 16.2 million microplastic particles per litre at formula temperature (Trinity College Dublin, Nature Food, 2020). This product's own materials put it in that class."
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "testing": "Polypropylene baby bottles release up to 16.2 million microplastic particles per litre at formula temperature (Trinity College Dublin, Nature Food, 2020). This product's own materials put it in that class.",
+            "materials": "The listing describes polypropylene in contact, recorded from the listing rather than an established contact material"
           },
           "inheritedFronts": [
             "formula"
@@ -89393,7 +89440,9 @@
             "why": "for a baby, which is high whatever the arithmetic says"
           },
           "frontOrigin": {
-            "testing": "class"
+            "testing": "class",
+            "materials": "hand",
+            "formula": "hand"
           },
           "classEvidence": {
             "id": "heated-polypropylene-bottle",
@@ -94513,11 +94562,11 @@
         "origin": "hand",
         "source": "bamboo-toothbrush-plastic-bristles.html",
         "ext": {
-          "verdict": "skip",
-          "why": "section 6 ceiling: formula is fail",
+          "verdict": "careful",
+          "why": "Reviewed by hand from our published research on this category.",
           "fronts": {
-            "formula": "fail",
-            "materials": "pass",
+            "formula": "none",
+            "materials": "caution",
             "legal": "pass",
             "testing": "unassessed"
           },
@@ -94529,11 +94578,13 @@
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
             "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-            "materials": "Made of bamboo, which the product name states, and which puts nothing into what it touches."
+            "materials": "The bamboo handle is honest, the bristles are not: nylon bristles are plastic, and bio nylon is still a synthetic polymer that sheds while you brush",
+            "formula": "An object has no ingredient list. What it is made of is the materials check."
           },
           "frontOrigin": {
             "legal": "database",
-            "materials": "database"
+            "materials": "hand",
+            "formula": "hand"
           },
           "inheritedFronts": [
             "formula"
@@ -94572,9 +94623,7 @@
             "material": "bamboo",
             "source": "product name",
             "checked": ""
-          },
-          "cappedFrom": "careful",
-          "capRestoreWhy": "Reviewed by hand from our published research on this category."
+          }
         },
         "tradeoff": "Listed as the vegan option. Boar bristle is the only genuinely plastic free brush and it is not vegan, so this is the best available choice under that constraint, with the nylon stated.",
         "cat": "Toothbrushes"
