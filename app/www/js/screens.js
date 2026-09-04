@@ -326,6 +326,20 @@ export function detox(root, { phases, done, onToggle, onOpen }) {
       root.appendChild(item);
     }
   }
+
+  // The paid plan is the rest of what we hold, personalised by room, household
+  // and budget. Naming it here is honest about what this is: the same 24 swaps
+  // the site gives away for an email address, not a trimmed version of the
+  // thing somebody paid for.
+  const more = el("div", "card know");
+  more.appendChild(el("h2", null, "Beyond the 90 days"));
+  more.appendChild(el("p", null,
+    "This is the free plan, the same one the site sends out. A custom plan works "
+    + "through the rest of what we track, for your rooms, your household and your budget."));
+  const go = el("button", "cta ghost", "See the custom plan");
+  go.onclick = () => onOpen("https://plasticdetox.org/custom-plan.html?app=1");
+  more.appendChild(go);
+  root.appendChild(more);
 }
 
 // ------------------------------------------------------------------ saved

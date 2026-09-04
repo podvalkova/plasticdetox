@@ -103,6 +103,12 @@ const steps = [];
 // closing brace shares a line with the last field, so an anchored regex found
 // nothing and a lazy one found twice as many blocks as there are rules.
 for (const block of rulesSrc.split(/\n\s*\{\s*(?=key:)/).slice(1)) {
+  // The free 90 day plan is the 24 rules flagged inFree. The other 68 are the
+  // paid Custom Plan, and shipping all 92 gave that away: somebody paying for
+  // the upgrade would have found it already sitting on the Detox tab. The app
+  // carries the plan the website hands over for an email address, and points
+  // at the paid one rather than containing it.
+  if (!/inFree:\s*true/.test(block)) continue;
   const swap = field(block, "swap");
   if (!swap) continue;
   steps.push({
@@ -164,7 +170,7 @@ for (const phase of PHASES) {
 }
 fs.writeFileSync(path.join(OUT, "plan.json"), JSON.stringify(PHASES, null, 1) + "\n");
 const withPicks = PHASES.reduce((n, p) => n + p.steps.filter((s) => s.picks.length).length, 0);
-console.log(`plan.json            ${steps.length} steps, ${withPicks} with picks, ${attached} products`);
+console.log(`plan.json            ${steps.length} free steps, ${withPicks} with picks, ${attached} products`);
 
 let brands = 0;
 for (const { from, to } of SOURCES) {
