@@ -5583,20 +5583,20 @@
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
-            "materials": "We have not established what the product actually touches."
+            "materials": "We have not established what the product actually touches.",
+            "formula": "The listing we hold for this product serves a different item, The Honest Company Bubble Bath, Hypoallergenic, Lavender Calm, 12 fl oz."
           },
           "verdict": "careful",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "caution",
+            "formula": "unassessed",
             "materials": "unassessed",
             "legal": "pass",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "legal": "database",
-            "formula": "inferred"
+            "legal": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -5621,7 +5621,7 @@
             "ingredients": "",
             "prose": "",
             "complete": false,
-            "verdict": "careful",
+            "verdict": "open",
             "summary": "The listing we hold for this product serves a different item, The Honest Company Bubble Bath, Hypoallergenic, Lavender Calm, 12 fl oz.",
             "flagged": [],
             "source": "amazon:B01LDZJHAE",
@@ -7787,6 +7787,7 @@
             "formula",
             "formula",
             "formula",
+            "formula",
             "formula"
           ],
           "verdict": "skip",
@@ -7904,7 +7905,8 @@
         "ext": {
           "frontNotes": {
             "legal": "Issued a broad benzene sunscreen recall in the 2021-2022 wave (Recorded for Banana Boat as a whole rather than this product specifically.)",
-            "materials": "We have not established what the product actually touches."
+            "materials": "We have not established what the product actually touches.",
+            "formula": "The listing we hold for this product serves a different item, Baby Bum SPF 50 Sunscreen Spray - Mineral UVA/UVB Face and Body Protection for Sensitive Skin - Travel Size - 3 oz."
           },
           "inheritedFronts": [
             "legal"
@@ -7913,14 +7915,13 @@
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "caution",
+            "formula": "unassessed",
             "materials": "unassessed",
             "legal": "fail",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "legal": "stated",
-            "formula": "inferred"
+            "legal": "stated"
           },
           "scope": "sku",
           "basis": "direct",
@@ -7943,7 +7944,7 @@
             "ingredients": "",
             "prose": "",
             "complete": false,
-            "verdict": "careful",
+            "verdict": "open",
             "summary": "The listing we hold for this product serves a different item, Baby Bum SPF 50 Sunscreen Spray - Mineral UVA/UVB Face and Body Protection for Sensitive Skin - Travel Size - 3 oz.",
             "flagged": [],
             "source": "amazon:B07ZR1KQ44",
@@ -17207,6 +17208,7 @@
             "formula",
             "formula",
             "formula",
+            "formula",
             "formula"
           ],
           "verdict": "skip",
@@ -21863,17 +21865,19 @@
         "ext": {
           "legalNote": "Checked on 2026-08-31. A 2024 suit alleging false PFAS free marketing was dismissed for lack of standing, with no adverse finding entered and no recall; refiling was left open.",
           "frontNotes": {
-            "materials": "polypropylene in contact, and we have not recorded what it holds.",
+            "materials": "Made of polypropylene, with nothing inside it to pull anything out. What that contact means is the exposure read.",
             "formula": "The published ingredient list carries nothing on the hazard list."
           },
           "heldFrom": "good",
           "restoreWhy": "independent lab result at sku scope",
-          "verdict": "careful",
+          "cappedFrom": "good",
+          "capRestoreWhy": "independent lab result at sku scope",
+          "verdict": "good",
           "dated": "2026-08-29",
-          "why": "section 6 ceiling: materials is caution",
+          "why": "independent lab result at sku scope",
           "fronts": {
             "formula": "pass",
-            "materials": "caution",
+            "materials": "pass",
             "legal": "pass",
             "testing": "pass"
           },
@@ -21921,11 +21925,9 @@
             "mouthed": false,
             "reuse": "",
             "material": "polypropylene",
-            "source": "Coterie's own published layer list (coterie.com/blog/full-materials-list). Topsheet polypropylene 99% is the surface against the skin. Transfer layer PET, core TCF cellulose with sodium polyacrylate, core wrap polypropylene, leg cuff polypropylene with polyurethane, waistband and closing system polypropylene with polyethylene and polystyrene 5%, backsheet polyethylene with calcium carbonate, outer cover polypropylene, polyester, polyethylene.",
+            "source": "Coterie's own published layer list (coterie.com/blog/full-materials-list): topsheet polypropylene 99%, transfer layer PET, core TCF cellulose with sodium polyacrylate, waistband polypropylene with polyethylene and polystyrene 5%, backsheet polyethylene with calcium carbonate. Totally chlorine free pulp, no lotion or fragrance, and the list is published in full, which is what separates it from the category rather than the fact that it is plastic: every disposable diaper has a polypropylene topsheet, so that is context and not a finding.",
             "checked": "2026-09-03"
-          },
-          "cappedFrom": "good",
-          "capRestoreWhy": "independent lab result at sku scope"
+          }
         },
         "cat": "Diapers",
         "research": "Packaging: Dry diapers ship in plastic film inner bags packed inside a corrugated cardboard box; film resin unstated."
@@ -25275,6 +25277,7 @@
             "formula",
             "formula",
             "formula",
+            "formula",
             "formula"
           ],
           "verdict": "unrated",
@@ -27034,20 +27037,19 @@
         "source": "top-100-baby-kids-products-amazon.html",
         "ext": {
           "frontNotes": {
-            "materials": "We have not established what the product actually touches."
+            "materials": "We have not established what the product actually touches.",
+            "formula": "The listing we hold for this product serves a different item, ATTITUDE Baby Laundry Detergent, Dermatologist Tested, Unscented, 80 Loads."
           },
           "verdict": "skip",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "caution",
+            "formula": "unassessed",
             "materials": "unassessed",
             "legal": "unassessed",
             "testing": "unassessed"
           },
-          "frontOrigin": {
-            "formula": "inferred"
-          },
+          "frontOrigin": {},
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
@@ -27071,7 +27073,7 @@
             "ingredients": "",
             "prose": "",
             "complete": false,
-            "verdict": "careful",
+            "verdict": "open",
             "summary": "The listing we hold for this product serves a different item, ATTITUDE Baby Laundry Detergent, Dermatologist Tested, Unscented, 80 Loads.",
             "flagged": [],
             "source": "amazon:B084W9XN3K",
@@ -46386,6 +46388,7 @@
             "formula",
             "formula",
             "formula",
+            "formula",
             "formula"
           ],
           "verdict": "skip",
@@ -49861,6 +49864,7 @@
             "formula",
             "formula",
             "formula",
+            "formula",
             "formula"
           ],
           "verdict": "careful",
@@ -51655,20 +51659,21 @@
         "origin": "store",
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
+          "frontNotes": {
+            "formula": "No ingredient list recorded."
+          },
           "verdict": "unrated",
           "dated": "2026-08-28",
-          "why": "the note reads adversely on formula, needs a human look",
+          "why": "a recommendation needs its checks done; still to do: materials, formula",
           "fronts": {
-            "formula": "caution",
+            "formula": "unassessed",
             "materials": "unassessed",
             "legal": "pass",
             "testing": "pass"
           },
           "frontOrigin": {
             "legal": "database",
-            "testing": "inferred",
-            "formula": "inferred"
+            "testing": "inferred"
           },
           "scope": "sku",
           "basis": "direct",
@@ -51693,7 +51698,7 @@
             "ingredients": "",
             "prose": "",
             "complete": false,
-            "verdict": "careful",
+            "verdict": "open",
             "summary": "No ingredient list recorded.",
             "flagged": [],
             "source": "amazon:B0899ZYXXN",
@@ -69600,6 +69605,7 @@
             "formula",
             "formula",
             "formula",
+            "formula",
             "formula"
           ],
           "verdict": "skip",
@@ -71158,20 +71164,21 @@
         "origin": "store",
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
+          "frontNotes": {
+            "formula": "No ingredient list recorded."
+          },
           "verdict": "unrated",
           "dated": "2026-08-29",
-          "why": "the note reads adversely on formula, needs a human look",
+          "why": "a recommendation needs its checks done; still to do: formula",
           "fronts": {
-            "formula": "caution",
+            "formula": "unassessed",
             "materials": "pass",
             "legal": "pass",
             "testing": "unassessed"
           },
           "frontOrigin": {
             "legal": "database",
-            "materials": "inferred",
-            "formula": "inferred"
+            "materials": "inferred"
           },
           "scope": "sku",
           "basis": "direct",
@@ -71196,7 +71203,7 @@
             "ingredients": "",
             "prose": "",
             "complete": false,
-            "verdict": "careful",
+            "verdict": "open",
             "summary": "No ingredient list recorded.",
             "flagged": [],
             "source": "amazon:B0774WQY7T",
@@ -81759,6 +81766,7 @@
             "checked": ""
           },
           "inheritedFronts": [
+            "formula",
             "formula",
             "formula",
             "formula",
@@ -94322,6 +94330,7 @@
           "inheritedFronts": [
             "formula",
             "packaging",
+            "formula",
             "formula",
             "formula",
             "formula",

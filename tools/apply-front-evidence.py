@@ -213,6 +213,26 @@ def assess(pack):
         drivers.append("repeated contact over time")
         weight += 1
 
+    # An object is not a container.
+    #
+    # This matrix exists because contents extract from a polymer, so it asks
+    # what is inside and defaults to caution when nobody has said. For a diaper
+    # or a mat nothing is inside: the product IS the surface, and the only
+    # route is the contact the exposure model already scores. Cautioning those
+    # for a blank field marked them down for missing information, which the
+    # standard forbids everywhere else, and it did it to every disposable
+    # diaper equally, which tells a shopper nothing about any of them.
+    if str(pack.get("holds") or "").strip().lower() == "none":
+        if rank <= 1 and not drivers:
+            return "pass", (f"Made of {pretty(term)}, with nothing inside it to pull anything "
+                            "out. What that contact means is the exposure read")
+        if rank <= 1:
+            return "caution", (f"{pretty(term)} against the skin, with "
+                               + ", ".join(drivers))
+        return ("fail" if rank + weight >= 4 else "caution"), (
+            f"{pretty(term)} in direct contact"
+            + (", with " + ", ".join(drivers) if drivers else ""))
+
     if not drivers and base in DRY:
         return "pass", (f"{pretty(term)} in contact, but dry contents at room temperature "
                         "give it little to migrate into")
