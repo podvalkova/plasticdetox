@@ -96,6 +96,13 @@ h2{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;
   background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M3 4.5L6 8l3-3.5' fill='none' stroke='%2371716E' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
   background-repeat:no-repeat;background-position:right .75rem center;background-size:12px}
 .controls select:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-light);outline:none}
+.summary{font-size:.95rem;line-height:1.55;color:var(--text);background:var(--surface);
+  border:1px solid var(--border-strong);border-radius:12px;padding:.7rem .85rem}
+.cautionbox{background:#FFFBEB;border:1px solid #FDE68A;border-radius:12px;
+  padding:.65rem .85rem;margin-top:.6rem}
+.cautionbox .q{color:#B45309;font-weight:600;font-size:.72rem;letter-spacing:.06em;
+  text-transform:uppercase;margin-bottom:.2rem}
+.cautionbox .a{font-size:.9rem;line-height:1.5;color:var(--text)}
 .chip{padding:.42rem .85rem;border-radius:999px;border:1px solid var(--border-strong);
   background:var(--surface);color:var(--body);font-size:13px;cursor:pointer}
 .chip[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff}
@@ -369,7 +376,12 @@ function build(brands){
                  {fronts:fr, origin:or, notes:e.frontNotes||{}, answers:e.materialAnswers||null, formula:e.formulaAnswers||null,
                   klass:e.classEvidence||null,
                   exposure:e.exposure||null,
-                  why:e.why||"", legalNote:e.legalNote||"", asins:p.asins||[], dated:e.dated||"", scope:e.scope||""}]);
+                  why:e.why||"", legalNote:e.legalNote||"", asins:p.asins||[], dated:e.dated||"", scope:e.scope||"",
+                  // The sentence the customer actually reads. The panel showed
+                  // fronts, exposure and a one line `why`, and never carried
+                  // the summary itself, so the internal view could not show the
+                  // thing the product card leads with.
+                  note:p.note||"", reason:b.reason||"", cautions:b.cautions||[]}]);
     }
   }
 
@@ -561,6 +573,23 @@ function openDetail(r){
   vl.appendChild(el("span","pill "+r[3], r[3]));
   if(d.dated) vl.appendChild(el("span","d-meta","last changed " + d.dated));
   body.appendChild(vl);
+  // What the customer reads, first, because it is what the card leads with.
+  const summary = d.note || d.reason || "";
+  if(summary){
+    const sm = el("div","d-sec");
+    sm.appendChild(el("h3", null, d.note ? "What we say about this product"
+                                         : "What we say about this brand"));
+    sm.appendChild(el("div","summary", summary));
+    if(!d.note && d.reason) sm.appendChild(el("div","src","brand level: this row has no note of its own"));
+    body.appendChild(sm);
+  }
+  (d.cautions||[]).forEach(c=>{
+    const cw = el("div","cautionbox");
+    cw.appendChild(el("div","q","Worth a caution"));
+    cw.appendChild(el("div","a", c));
+    body.appendChild(cw);
+  });
+
   if(d.why) body.appendChild(el("div","why", d.why));
 
   const fs = el("div","d-sec");
