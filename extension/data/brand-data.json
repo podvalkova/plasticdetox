@@ -5603,20 +5603,20 @@
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
-            "materials": "We have not established what the product actually touches."
+            "materials": "We have not established what the product actually touches.",
+            "formula": "The listing we hold for this product serves a different item, The Honest Company Bubble Bath, Hypoallergenic, Lavender Calm, 12 fl oz."
           },
           "verdict": "careful",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "caution",
+            "formula": "unassessed",
             "materials": "unassessed",
             "legal": "pass",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "legal": "database",
-            "formula": "inferred"
+            "legal": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -5641,7 +5641,7 @@
             "ingredients": "",
             "prose": "",
             "complete": false,
-            "verdict": "careful",
+            "verdict": "open",
             "summary": "The listing we hold for this product serves a different item, The Honest Company Bubble Bath, Hypoallergenic, Lavender Calm, 12 fl oz.",
             "flagged": [],
             "source": "amazon:B01LDZJHAE",
@@ -7106,9 +7106,9 @@
           "frontNotes": {
             "materials": "In contact with glass, which puts nothing into what it holds."
           },
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-08-28",
-          "why": "no front is directly evidenced by the note",
+          "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
             "materials": "pass",
@@ -7817,6 +7817,11 @@
             "formula",
             "formula",
             "formula",
+            "formula",
+            "formula",
+            "formula",
+            "formula",
+            "formula",
             "formula"
           ],
           "verdict": "skip",
@@ -7934,7 +7939,8 @@
         "ext": {
           "frontNotes": {
             "legal": "Issued a broad benzene sunscreen recall in the 2021-2022 wave (Recorded for Banana Boat as a whole rather than this product specifically.)",
-            "materials": "We have not established what the product actually touches."
+            "materials": "We have not established what the product actually touches.",
+            "formula": "The listing we hold for this product serves a different item, Baby Bum SPF 50 Sunscreen Spray - Mineral UVA/UVB Face and Body Protection for Sensitive Skin - Travel Size - 3 oz."
           },
           "inheritedFronts": [
             "legal"
@@ -7943,14 +7949,13 @@
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "caution",
+            "formula": "unassessed",
             "materials": "unassessed",
             "legal": "fail",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "legal": "stated",
-            "formula": "inferred"
+            "legal": "stated"
           },
           "scope": "sku",
           "basis": "direct",
@@ -7973,7 +7978,7 @@
             "ingredients": "",
             "prose": "",
             "complete": false,
-            "verdict": "careful",
+            "verdict": "open",
             "summary": "The listing we hold for this product serves a different item, Baby Bum SPF 50 Sunscreen Spray - Mineral UVA/UVB Face and Body Protection for Sensitive Skin - Travel Size - 3 oz.",
             "flagged": [],
             "source": "amazon:B07ZR1KQ44",
@@ -12038,9 +12043,9 @@
             "materials": "In contact with borosilicate, which puts nothing into what it holds.",
             "formula": "A durable good has no ingredient list. What it is made of is the materials check."
           },
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-08-28",
-          "why": "no front is directly evidenced by the note",
+          "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
             "materials": "pass",
@@ -17230,6 +17235,11 @@
             "materials": "We have not established what the product actually touches."
           },
           "inheritedFronts": [
+            "formula",
+            "formula",
+            "formula",
+            "formula",
+            "formula",
             "formula",
             "formula",
             "formula",
@@ -25352,6 +25362,11 @@
             "formula",
             "formula",
             "formula",
+            "formula",
+            "formula",
+            "formula",
+            "formula",
+            "formula",
             "formula"
           ],
           "verdict": "unrated",
@@ -28089,19 +28104,22 @@
         "note": "The standard V15 Detect sold at retail does not have whole machine HEPA filtration; that build is standard on the Gen5detect and on a V15 Absolute HEPA variant sold only through Dyson directly. Great suction, not an air quality tool.",
         "ext": {
           "frontNotes": {
-            "formula": "A durable good has no ingredient list. What it is made of is the materials check."
+            "formula": "A durable good has no ingredient list. What it is made of is the materials check.",
+            "legal": "Checked CPSC records on 2026-09-03. No recall of a Dyson vacuum. The CPSC warnings that carry the Dyson name, ZAUTNKN in January 2024 and Powerextra in January 2025, are about third party lithium battery packs sold as compatible with the V6, made by other companies and not Dyson or Dyson authorised. They are a reason to use only OEM batteries, which our note already says, and not a finding against the machine."
           },
+          "legalNote": "Checked CPSC records on 2026-09-03. No recall of a Dyson vacuum. The CPSC warnings that carry the Dyson name, ZAUTNKN in January 2024 and Powerextra in January 2025, are about third party lithium battery packs sold as compatible with the V6, made by other companies and not Dyson or Dyson authorised. They are a reason to use only OEM batteries, which our note already says, and not a finding against the machine.",
           "verdict": "careful",
           "dated": "2026-09-01",
           "why": "adverse finding stands",
           "fronts": {
             "formula": "none",
             "materials": "unassessed",
-            "legal": "unassessed",
+            "legal": "pass",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "formula": "database"
+            "formula": "database",
+            "legal": "database"
           },
           "scope": "line",
           "basis": "direct",
@@ -28142,19 +28160,27 @@
         "note": "The only Dyson sold on Amazon with whole machine HEPA filtration as standard, 99.99% at 0.1 microns. Bagless, so empty the bin outdoors, and use only OEM batteries.",
         "ext": {
           "frontNotes": {
-            "materials": "We have not established what the product actually touches."
+            "materials": "Nothing the product touches is plastic.",
+            "legal": "Checked CPSC records on 2026-09-03. No recall of a Dyson vacuum. The CPSC warnings that carry the Dyson name, ZAUTNKN in January 2024 and Powerextra in January 2025, are about third party lithium battery packs sold as compatible with the V6, made by other companies and not Dyson or Dyson authorised. They are a reason to use only OEM batteries, which our note already says, and not a finding against the machine.",
+            "testing": "Checked. No independent particle count testing of this model is published. The 99.99% at 0.1 micron figure is Dyson's own specification, which under rule 4.2 is a manufacturer disclosure rather than third party evidence. The Shark Navigator is the model reviewers have measured at the exhaust."
           },
-          "verdict": "unrated",
+          "legalNote": "Checked CPSC records on 2026-09-03. No recall of a Dyson vacuum. The CPSC warnings that carry the Dyson name, ZAUTNKN in January 2024 and Powerextra in January 2025, are about third party lithium battery packs sold as compatible with the V6, made by other companies and not Dyson or Dyson authorised. They are a reason to use only OEM batteries, which our note already says, and not a finding against the machine.",
+          "testingNote": "Checked. No independent particle count testing of this model is published. The 99.99% at 0.1 micron figure is Dyson's own specification, which under rule 4.2 is a manufacturer disclosure rather than third party evidence. The Shark Navigator is the model reviewers have measured at the exhaust.",
+          "testingDate": "2026-09-03",
+          "verdict": "good",
           "dated": "2026-09-01",
-          "why": "no front is directly evidenced by the note",
+          "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
-            "materials": "unassessed",
-            "legal": "unassessed",
-            "testing": "unassessed"
+            "materials": "pass",
+            "legal": "pass",
+            "testing": "none"
           },
           "frontOrigin": {
-            "formula": "database"
+            "formula": "database",
+            "legal": "database",
+            "testing": "database",
+            "materials": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -28184,16 +28210,15 @@
             "checked": ""
           },
           "materialAnswers": {
-            "contact": "",
-            "contactFrom": "",
+            "contact": "no",
+            "contactFrom": "recorded",
             "base": "",
             "heated": false,
             "mouthed": false,
             "reuse": "",
-            "material": "",
-            "source": "",
-            "checked": "2026-09-02",
-            "open": "We have not established what the product actually touches"
+            "material": "sealed housing",
+            "source": "Whole machine HEPA filtration as standard, 99.99% at 0.1 microns: the entire machine is sealed so all air exits through the filter. That is the fact the article turns on, because in an unsealed machine dusty air leaves through housing seams without meeting the filter at all. Standard on the Gen5detect and on the V15 Absolute HEPA sold direct; not on the retail V15, V12, V10 or V8.",
+            "checked": "2026-09-03"
           }
         },
         "cat": "Vacuums"
@@ -28218,19 +28243,22 @@
         "note": "No whole machine HEPA filtration. Capable cleaners, best on hard floors; do not rely on them for dust or allergen control.",
         "ext": {
           "frontNotes": {
-            "formula": "A durable good has no ingredient list. What it is made of is the materials check."
+            "formula": "A durable good has no ingredient list. What it is made of is the materials check.",
+            "legal": "Checked CPSC records on 2026-09-03. No recall of a Dyson vacuum. The CPSC warnings that carry the Dyson name, ZAUTNKN in January 2024 and Powerextra in January 2025, are about third party lithium battery packs sold as compatible with the V6, made by other companies and not Dyson or Dyson authorised. They are a reason to use only OEM batteries, which our note already says, and not a finding against the machine."
           },
+          "legalNote": "Checked CPSC records on 2026-09-03. No recall of a Dyson vacuum. The CPSC warnings that carry the Dyson name, ZAUTNKN in January 2024 and Powerextra in January 2025, are about third party lithium battery packs sold as compatible with the V6, made by other companies and not Dyson or Dyson authorised. They are a reason to use only OEM batteries, which our note already says, and not a finding against the machine.",
           "verdict": "careful",
           "dated": "2026-09-01",
           "why": "adverse finding stands",
           "fronts": {
             "formula": "none",
             "materials": "unassessed",
-            "legal": "unassessed",
+            "legal": "pass",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "formula": "database"
+            "formula": "database",
+            "legal": "database"
           },
           "scope": "line",
           "basis": "direct",
@@ -36281,19 +36309,20 @@
           "B086H1W384"
         ],
         "ext": {
-          "frontNotes": {},
+          "frontNotes": {
+            "formula": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear."
+          },
           "verdict": "unrated",
           "dated": "2026-08-28",
-          "why": "the note reads adversely on formula, testing, needs a human look",
+          "why": "a recommendation needs its checks done; still to do: materials, legal, formula",
           "fronts": {
-            "formula": "caution",
+            "formula": "unassessed",
             "materials": "unassessed",
             "legal": "unassessed",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "testing": "inferred",
-            "formula": "inferred"
+            "testing": "inferred"
           },
           "scope": "sku",
           "basis": "direct",
@@ -36316,7 +36345,7 @@
             "ingredients": "",
             "prose": "About this item Brass boiler with increased capacity & power Made in Italy from machine-grade components Solid steel housing, brass group head w/stainless steel surround 9-bar extractions with 3-way solenoid valve Commercial Steam Wand › See more product details",
             "complete": false,
-            "verdict": "careful",
+            "verdict": "open",
             "summary": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear.",
             "flagged": [],
             "source": "amazon:B086H1W384",
@@ -37882,9 +37911,9 @@
           "frontNotes": {
             "materials": "Made of glass, which the product name states, and which puts nothing into what it touches."
           },
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-08-28",
-          "why": "",
+          "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
             "materials": "pass",
@@ -39599,9 +39628,9 @@
           "frontNotes": {
             "materials": "Made of silicone, which the product name states, and which puts nothing into what it touches."
           },
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-08-28",
-          "why": "",
+          "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
             "materials": "pass",
@@ -39935,9 +39964,9 @@
           "frontNotes": {
             "materials": "Made of cotton, which the product name states, and which puts nothing into what it touches."
           },
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-08-28",
-          "why": "no front is directly evidenced by the note",
+          "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
             "materials": "pass",
@@ -41007,19 +41036,19 @@
         "origin": "article",
         "source": "top-100-baby-kids-products-amazon.html",
         "ext": {
-          "frontNotes": {},
+          "frontNotes": {
+            "formula": "No ingredient list recorded."
+          },
           "verdict": "careful",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "caution",
+            "formula": "unassessed",
             "materials": "unassessed",
             "legal": "unassessed",
             "testing": "unassessed"
           },
-          "frontOrigin": {
-            "formula": "inferred"
-          },
+          "frontOrigin": {},
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
@@ -41043,7 +41072,7 @@
             "ingredients": "",
             "prose": "",
             "complete": false,
-            "verdict": "careful",
+            "verdict": "open",
             "summary": "No ingredient list recorded.",
             "flagged": [],
             "source": "amazon:B0GH9RFS4K",
@@ -50153,6 +50182,11 @@
             "formula",
             "formula",
             "formula",
+            "formula",
+            "formula",
+            "formula",
+            "formula",
+            "formula",
             "formula"
           ],
           "verdict": "careful",
@@ -51955,20 +51989,21 @@
         "origin": "store",
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
+          "frontNotes": {
+            "formula": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear."
+          },
           "verdict": "unrated",
           "dated": "2026-08-28",
-          "why": "the note reads adversely on formula, needs a human look",
+          "why": "a recommendation needs its checks done; still to do: materials, formula",
           "fronts": {
-            "formula": "caution",
+            "formula": "unassessed",
             "materials": "unassessed",
             "legal": "pass",
             "testing": "pass"
           },
           "frontOrigin": {
             "legal": "database",
-            "testing": "inferred",
-            "formula": "inferred"
+            "testing": "inferred"
           },
           "scope": "sku",
           "basis": "direct",
@@ -51993,7 +52028,7 @@
             "ingredients": "",
             "prose": "About this item Delicious, Ethically Sourced Coffee: You've tried the rest, now buy the best ground coffee on the market; This Non-Gmo organic low acid coffee is high in flavor; The beans are sun dried, and spring water washed; The result is pure, natural coffee derived straight from nature Grown In The Mountains Of Central America: Lifeboost Single Origin Acid Free Coffee is shade grown at a high elevation in the mountains of Central America; The exclusive farms that we work with are all bird friendly and each coffee bean is hand selected to ensure purity Low Acid Medium Roast Ground Coffee: Your standard cup of coffee is very acidic; That's why some feel stomach discomfort or deal with teeth issues from drinking coffee; The solution is our low acid coffee beans; The antioxidant rich organic coffee delivers all the wonderful benefits of coffee without the unwanted side effects Certified Organic & 3rd Party Tested: Lifeboost Organic Coffee Ground Beans are Usda Certified Organic, and 3rd Party Tested for mycotoxins, heavy metals, pesticides, and 400 other toxins; One sip of this organic ground coffee and you'll have a hard time going back to an ordinary cup of joe THE LIFEBOOST PRO",
             "complete": false,
-            "verdict": "careful",
+            "verdict": "open",
             "summary": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear.",
             "flagged": [],
             "source": "amazon:B0899ZYXXN",
@@ -56192,9 +56227,9 @@
           "cappedFrom": "good",
           "capRestoreWhy": "direct evidence at line scope on formula, packaging",
           "legalDate": "2024",
-          "verdict": "careful",
+          "verdict": "unrated",
           "dated": "2026-09-03",
-          "why": "section 6 ceiling: legal is caution",
+          "why": "no direct pass on materials, and no lab result standing in for one",
           "fronts": {
             "formula": "none",
             "materials": "pass",
@@ -58818,9 +58853,9 @@
           "frontNotes": {
             "materials": "Made of silicone, which the product name states, and which puts nothing into what it touches."
           },
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-08-28",
-          "why": "",
+          "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
             "materials": "pass",
@@ -62035,6 +62070,11 @@
             "formula",
             "formula",
             "formula",
+            "formula",
+            "formula",
+            "formula",
+            "formula",
+            "formula",
             "formula"
           ]
         }
@@ -63352,8 +63392,8 @@
             "materials": "Made of cotton, which the product name states, and which puts nothing into what it touches."
           },
           "verdict": "good",
-          "dated": "2026-08-29",
-          "why": "direct evidence at sku scope on formula",
+          "dated": "2026-09-03",
+          "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
             "materials": "pass",
@@ -63886,9 +63926,9 @@
           "frontNotes": {
             "formula": "The published ingredient list carries nothing on the hazard list."
           },
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-08-28",
-          "why": "",
+          "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
             "materials": "pass",
@@ -70117,6 +70157,11 @@
             "formula",
             "formula",
             "formula",
+            "formula",
+            "formula",
+            "formula",
+            "formula",
+            "formula",
             "formula"
           ],
           "verdict": "skip",
@@ -71676,20 +71721,21 @@
         "origin": "store",
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {},
+          "frontNotes": {
+            "formula": "No ingredient list recorded."
+          },
           "verdict": "unrated",
           "dated": "2026-08-29",
-          "why": "the note reads adversely on formula, needs a human look",
+          "why": "a recommendation needs its checks done; still to do: formula",
           "fronts": {
-            "formula": "caution",
+            "formula": "unassessed",
             "materials": "pass",
             "legal": "pass",
             "testing": "unassessed"
           },
           "frontOrigin": {
             "legal": "database",
-            "materials": "inferred",
-            "formula": "inferred"
+            "materials": "inferred"
           },
           "scope": "sku",
           "basis": "direct",
@@ -71714,7 +71760,7 @@
             "ingredients": "",
             "prose": "",
             "complete": false,
-            "verdict": "careful",
+            "verdict": "open",
             "summary": "No ingredient list recorded.",
             "flagged": [],
             "source": "amazon:B0774WQY7T",
@@ -79936,9 +79982,9 @@
           "cappedFrom": "good",
           "capRestoreWhy": "direct evidence at sku scope on formula",
           "legalDate": "2024",
-          "verdict": "careful",
+          "verdict": "unrated",
           "dated": "2026-09-03",
-          "why": "section 6 ceiling: legal is caution",
+          "why": "no direct pass on materials, and no lab result standing in for one",
           "fronts": {
             "formula": "pass",
             "materials": "unassessed",
@@ -80167,9 +80213,7 @@
         "note": "Same Anti-Allergen Complete Seal plus HEPA in a step-up upright with DuoClean and a self cleaning brushroll.",
         "ext": {
           "legalNote": "Checked recall records on 2026-08-31. The 2015 Rotator wand recall was remedied by replacement and did not cover the Navigator models we list; the 2025 SharkNinja pressure cooker recall is a different product line.",
-          "frontNotes": {
-            "formula": "A durable good has no ingredient list. What it is made of is the materials check."
-          },
+          "frontNotes": {},
           "verdict": "unrated",
           "dated": "2026-09-01",
           "why": "no front is directly evidenced by the note",
@@ -82303,6 +82347,11 @@
             "checked": ""
           },
           "inheritedFronts": [
+            "formula",
+            "formula",
+            "formula",
+            "formula",
+            "formula",
             "formula",
             "formula",
             "formula",
@@ -94911,6 +94960,11 @@
           "inheritedFronts": [
             "formula",
             "packaging",
+            "formula",
+            "formula",
+            "formula",
+            "formula",
+            "formula",
             "formula",
             "formula",
             "formula",

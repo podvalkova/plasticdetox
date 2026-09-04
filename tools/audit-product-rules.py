@@ -712,11 +712,23 @@ def correct(old, f, note, scope, basis, strict=False, lenient=False, consumable=
         # did not.
         if "testing" in passes and scope in ("sku", "line"):
             return "good", f"independent lab result at {scope} scope", False
-        if "formula" not in passes:
-            return "unrated", "no direct pass on formula, and no lab result standing in for one", False
-        # A durable good's material is its whole composition, so formula alone
-        # carries it. A consumable needs a second front, because its formula is
-        # a recipe and its packaging is a separate object that can migrate.
+        # For a durable good, materials is where its composition lives now.
+        #
+        # This asked for a formula pass from everything, which was right while a
+        # durable's material was recorded under formula. It is recorded under
+        # materials since the rename, and durables now read formula `none`,
+        # which is a finding rather than a pass. So the path that awards a
+        # durable its verdict had quietly closed: the Dyson Gen5detect answered
+        # all four fronts, passed the one that matters for a vacuum, and still
+        # came out unrated.
+        carrier = "formula" if consumable else "materials"
+        if carrier not in passes:
+            return ("unrated",
+                    f"no direct pass on {carrier}, and no lab result standing in for one",
+                    False)
+        # A durable good's material is its whole composition, so that one front
+        # carries it. A consumable needs a second, because its formula is a
+        # recipe and its container is a separate object that can migrate.
         if len(passes) < 2 and consumable:
             return "unrated", "consumable with only a formula read, no second front", False
     return "good", f"direct evidence at {scope} scope on {', '.join(passes)}", False

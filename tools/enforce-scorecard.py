@@ -141,6 +141,7 @@ def main():
 
     brands = json.loads(DATA.read_text())
     gated, kept, restored, capped, released = 0, 0, 0, 0, 0
+    awarded = 0
     cleared_stale = 0
     missing = collections.Counter()
     by_cat = collections.Counter()
@@ -214,11 +215,43 @@ def main():
             vals = [effective.get(k) for k in FRONTS]
             ceiling = "skip" if "fail" in vals else (
                 "careful" if "caution" in vals else "good")
-            if e.get("cappedFrom") and RANK[ceiling] > RANK[e["verdict"]]:
+            # `unrated` is not on the good/careful/skip scale: it means we are
+            # not asserting anything, so there is no cap to lift. Indexing RANK
+            # with it raised a KeyError the moment a capped row became unrated,
+            # which is what happens when the front that carried its verdict
+            # moves, as formula did for every durable good.
+            if (e.get("cappedFrom") and e.get("verdict") in RANK
+                    and RANK[ceiling] > RANK[e["verdict"]]):
                 e["verdict"] = min(e.pop("cappedFrom"), ceiling, key=RANK.get)
                 if e.get("capRestoreWhy") is not None:
                     e["why"] = e.pop("capRestoreWhy")
                 released += 1
+            # Evidence recorded after the verdict was decided can now award one.
+            #
+            # apply-product-rules reads a product note and decides from that,
+            # and it runs before the tools that record real evidence, so a row
+            # could answer every front from a published source and stay unrated
+            # on the strength of a sentence that said nothing. The Dyson
+            # Gen5detect passed the one check that matters for a vacuum, a
+            # sealed whole machine HEPA path, and still read "no front is
+            # directly evidenced by the note".
+            #
+            # Deliberately narrow. Nothing adverse anywhere, the carrying front
+            # passing from a recorded source rather than a classifier reading,
+            # and every blocking front answered. That is the same bar
+            # apply-product-rules applies, met with better evidence.
+            if e.get("verdict") == "unrated" and not [
+                    k for k in FRONTS if f.get(k) in ("caution", "fail")]:
+                carrier = ("formula" if "formula" in blocking_for(b, p)
+                           else "materials")
+                origin = (e.get("frontOrigin") or {}).get(carrier)
+                if (f.get(carrier) == "pass" and origin in ("database", "hand")
+                        and not [k for k in blocking_for(b, p) if f.get(k) in BLANK]):
+                    e["verdict"] = "good"
+                    e["why"] = (f"direct evidence on {carrier}, recorded rather than "
+                                "read off a note")
+                    awarded += 1
+
             if e.get("verdict") in ("good", "careful"):
                 if RANK[e["verdict"]] > RANK[ceiling]:
                     # A lowered verdict has to say why, or the card shows a
