@@ -359,10 +359,19 @@ def read_formula(entry):
     hidden = hits(_apr.DISCLOSURE_FAILURE)
 
     if not complete:
-        if named:
-            return ("caution", "The listing describes " + ", ".join(sorted(named)[:3])
-                    + ", but publishes no ingredient list, so this is a reading of "
-                      "marketing copy and not of the label", "inferred", sorted(named))
+        # A hazard word in description copy is not a formula finding, and the
+        # sentence this used to emit said so out loud: "a reading of marketing
+        # copy and not of the label". It still capped the verdict.
+        #
+        # It read the word "plastic" off a Fellow kettle listing whose own note
+        # says zero plastic contact and a verified 304 stainless water path, and
+        # held it at careful. Same for two all-metal safety razors and a
+        # stainless baby food maker. Five products, all held back by a finding
+        # that admitted it was not evidence.
+        #
+        # A hazard named in copy is worth recording where it points, which is
+        # what the thing is made of, so it is left for the materials front and
+        # for a person. Formula stays unanswered until somebody reads a label.
         return None, ("The listing publishes no ingredient list, only description copy, "
                       "which can warn but cannot clear"), None, []
 
