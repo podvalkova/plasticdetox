@@ -119,6 +119,29 @@ function readDone() {
   }
 }
 
+// Swaps someone opened and set aside with "Maybe later". They stay on the
+// board in grey rather than blocking the path: skipping a step reveals the
+// next one, and a grey tile can be finished any time.
+const SEEN_KEY = "pd.plan.seen.v1";
+function readSeen() {
+  try {
+    const raw = JSON.parse(localStorage.getItem(SEEN_KEY) || "[]");
+    return new Set(Array.isArray(raw) ? raw : []);
+  } catch {
+    return new Set();
+  }
+}
+function markSeen(id) {
+  const set = readSeen();
+  if (set.has(id)) return;
+  set.add(id);
+  try {
+    localStorage.setItem(SEEN_KEY, JSON.stringify([...set]));
+  } catch {
+    // A full store is not worth a crash.
+  }
+}
+
 function toggleDone(id) {
   const set = readDone();
   if (set.has(id)) set.delete(id);
@@ -339,6 +362,7 @@ function draw() {
     screens.detox(view, {
       phases: data.planPhases(),
       done: readDone(),
+      seen: readSeen(),
       room: state.room || "",
       onRoom: (r) => { state.room = r; render(); rememberPlace(); },
       onStep: (stepId) => go({ screen: "detoxStep", stepId }),
@@ -358,6 +382,7 @@ function draw() {
       phase,
       step,
       isDone: set.has(step.id),
+      isSeen: readSeen().has(step.id),
       onDone: () => {
         toggleDone(step.id);
         back();
@@ -366,7 +391,7 @@ function draw() {
         toast(gone >= all ? "Your home is clear ✓" : `Source cleared · ${all - gone} to go`);
       },
       onUndo: () => toggleDone(step.id),
-      onLater: back,
+      onLater: () => { markSeen(step.id); back(); },
       onOpen: openExternal,
     });
   } else if (state.screen === "learn") {

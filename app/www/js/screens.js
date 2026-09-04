@@ -311,7 +311,7 @@ function scopeHint(row) {
   return "";
 }
 
-export function detox(root, { phases, done, room, onRoom, onStep, onKids }) {
+export function detox(root, { phases, done, seen, room, onRoom, onStep, onKids }) {
   const all = phases.reduce((n, p) => n + p.steps.length, 0);
   const ticked = phases.reduce(
     (n, p) => n + p.steps.filter((s) => done.has(s.id)).length, 0);
@@ -357,42 +357,37 @@ export function detox(root, { phases, done, room, onRoom, onStep, onKids }) {
   rooms.appendChild(kids);
   root.appendChild(rooms);
 
-  // Done tiles and the next one are named. Beyond that, at most two quiet
-  // tiles stand in for what is coming, and one line carries the rest: there
-  // is always a next step on screen, and never a to do list.
+  // Every swap is on the board, in the plan's order. Done wears a green
+  // check, one you opened and set aside stays grey with its name, the next
+  // one glows, and everything you have not reached yet is a quiet question
+  // mark that opens like any other tile.
   const grid = el("div", "dx-grid");
-  // Cleared tiles first, then the single NEXT, then the quiet ones. The plan
-  // order still decides what is next; the display groups what is finished, so
-  // a check never appears below the thing it precedes.
-  const doneSteps = phase.steps.filter((s) => done.has(s.id));
-  const nextStep = phase.steps.find((s) => !done.has(s.id));
-  const hidden = phase.steps.length - doneSteps.length - (nextStep ? 1 : 0);
-  const addTile = (step, cls) => {
-    const c = stepContent(step);
+  const nextStep = phase.steps.find((s) => !done.has(s.id) && !seen.has(s.id));
+  for (const step of phase.steps) {
+    const isDone = done.has(step.id);
+    const cls = isDone ? "done"
+      : (nextStep && step.id === nextStep.id) ? "next"
+      : seen.has(step.id) ? "skip" : "mys";
     const tile = el("button", `dxt ${cls}`);
     tile.type = "button";
-    tile.appendChild(icon(c.icon, 25));
-    const label = el("span");
-    c.short.split("\n").forEach((line, i) => {
-      if (i) label.appendChild(document.createElement("br"));
-      label.appendChild(document.createTextNode(line));
-    });
-    tile.appendChild(label);
+    if (cls === "mys") {
+      tile.appendChild(el("b", null, "?"));
+    } else {
+      const c = stepContent(step);
+      tile.appendChild(icon(c.icon, 28));
+      const label = el("span");
+      c.short.split("\n").forEach((line, i) => {
+        if (i) label.appendChild(document.createElement("br"));
+        label.appendChild(document.createTextNode(line));
+      });
+      tile.appendChild(label);
+    }
+    tile.setAttribute("aria-label", step.swap);
     tile.onclick = () => onStep(step.id);
     grid.appendChild(tile);
-  };
-  for (const step of doneSteps) addTile(step, "done");
-  if (nextStep) addTile(nextStep, "next");
-  for (let i = 0; i < Math.min(hidden, 2); i++) {
-    const mys = el("span", "dxt mys");
-    if (i === 1) mys.style.opacity = ".55";
-    mys.appendChild(el("b", null, "?"));
-    grid.appendChild(mys);
   }
   root.appendChild(grid);
-  if (hidden > 2) {
-    root.appendChild(el("div", "dx-more", `${hidden - 2} more reveal as you go`));
-  } else if (!nextStep) {
+  if (!phase.steps.some((s) => !done.has(s.id))) {
     root.appendChild(el("div", "dx-more clear", `${roomName(phase)} clear \u2713`));
   }
 }
@@ -443,11 +438,11 @@ export function detoxKids(root, { onOpen, onLater }) {
  * notes and links, and the free version where one exists, because the cheapest
  * swap is usually a habit and it counts the same. One button marks it done.
  */
-export function detoxStep(root, { phase, step, isDone, onDone, onUndo, onLater, onOpen }) {
+export function detoxStep(root, { phase, step, isDone, isSeen, onDone, onUndo, onLater, onOpen }) {
   const c = stepContent(step);
 
   root.appendChild(el("div", "dx-k",
-    `${roomName(phase)} \u00b7 ${isDone ? "done \u2713" : "next up"}`));
+    `${roomName(phase)} \u00b7 ${isDone ? "done \u2713" : isSeen ? "set aside for now" : "next up"}`));
 
   const row = el("div", "dx-titrow");
   const medal = el("span", "dx-medal");
@@ -484,7 +479,7 @@ export function detoxStep(root, { phase, step, isDone, onDone, onUndo, onLater, 
 
   if (c.free) {
     root.appendChild(el("div", "dx-k free", "Costs nothing \u00b7 counts the same"));
-    root.appendChild(el("div", "step-free", c.free));
+    root.appendChild(el("div", "step-free dx-free", c.free));
   }
 
   const foot = el("div", "dx-foot");
