@@ -42,8 +42,6 @@ it still surfaces for people who think of it as a shopping tool.
     - A shop of products that passed, organized room by room
     - Plain word guides on the science behind every recommendation
     - Works offline, the whole database lives on your phone
-    - Brand Check for Safari: the same verdicts on Amazon listings while you
-      browse
     - No account, no ads, nothing sponsored
 
     Every verdict is the one published at plasticdetox.org, updated in the
