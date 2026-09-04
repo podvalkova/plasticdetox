@@ -47,7 +47,9 @@ DEVICE_CATS = {
 # Manufactured articles with no ingredient list. A diaper is not a formulation:
 # what it is made of is the materials check. Some add a lotion or fragrance,
 # which is a real formula finding, so only an unearned pass is wrong here.
-NO_INGREDIENT_CATS = {"Diapers"}
+# A silicone menstrual cup is an object: there is nothing in it to list. Its
+# exposure type, "absorbent worn", reads as a consumable to the check above.
+NO_INGREDIENT_CATS = {"Diapers", "Menstrual cups"}
 
 # A word in a product name that all but settles what kind of thing it is.
 NAME_SIGNALS = [

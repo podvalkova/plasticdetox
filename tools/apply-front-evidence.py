@@ -294,7 +294,7 @@ DEVICE_CATS = {
 # the sense that you throw them away. A diaper is not a formulation: what it is
 # made of is the materials check. Some diapers do add a lotion or a fragrance,
 # and that is a real formula finding, so only an unearned PASS is wrong here.
-NO_INGREDIENT_CATS = {"Diapers"}
+NO_INGREDIENT_CATS = {"Diapers", "Menstrual cups"}
 
 DURABLE_TYPES = {
     "air appliance", "equipment", "floss", "food surface", "food vessel",

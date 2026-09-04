@@ -5694,17 +5694,17 @@
             "2.1 disclosure-failure-caps-at-caution"
           ],
           "exposure": {
-            "type": "leave-on skin",
+            "type": "rinse-off skin",
             "level": "high",
-            "score": 8.0,
+            "score": 3.5,
             "baby": true,
             "route": "skin",
-            "duration": "hours",
-            "retained": "leave-on",
-            "frequency": "several daily",
+            "duration": "minutes",
+            "retained": "rinsed",
+            "frequency": "daily",
             "heat": false,
-            "fat": true,
-            "why": "Left on the skin, so contact runs for hours."
+            "fat": false,
+            "why": "for a baby, which is high whatever the arithmetic says"
           },
           "formulaAnswers": {
             "ingredients": "",
@@ -5729,7 +5729,7 @@
             "open": "We have not established what the product actually touches"
           }
         },
-        "cat": "Baby lotion"
+        "cat": "Shampoo"
       },
       {
         "name": "Daily Moisturizing body lotion",
@@ -16428,7 +16428,7 @@
             "type": "leave-on skin",
             "level": "high",
             "score": 8.0,
-            "baby": false,
+            "baby": true,
             "route": "skin",
             "duration": "hours",
             "retained": "leave-on",
@@ -26535,7 +26535,7 @@
             "type": "leave-on skin",
             "level": "high",
             "score": 8.0,
-            "baby": false,
+            "baby": true,
             "route": "skin",
             "duration": "hours",
             "retained": "leave-on",
@@ -30468,14 +30468,14 @@
             "5.4 durable-good-is-its-own-packaging"
           ],
           "exposure": {
-            "type": "worn textile",
+            "type": "diaper",
             "level": "high",
             "score": 7.0,
             "baby": true,
             "route": "skin",
-            "duration": "all day",
+            "duration": "hours",
             "retained": "prolonged",
-            "frequency": "daily",
+            "frequency": "several daily",
             "heat": false,
             "fat": false,
             "why": "for a baby, which is high whatever the arithmetic says"
@@ -31596,7 +31596,7 @@
             "type": "leave-on skin",
             "level": "high",
             "score": 8.0,
-            "baby": false,
+            "baby": true,
             "route": "skin",
             "duration": "hours",
             "retained": "leave-on",
@@ -46907,7 +46907,7 @@
             "type": "leave-on skin",
             "level": "high",
             "score": 8.0,
-            "baby": false,
+            "baby": true,
             "route": "skin",
             "duration": "hours",
             "retained": "leave-on",
@@ -47869,7 +47869,7 @@
             "type": "leave-on skin",
             "level": "high",
             "score": 8.0,
-            "baby": false,
+            "baby": true,
             "route": "skin",
             "duration": "hours",
             "retained": "leave-on",
@@ -56459,17 +56459,17 @@
           "disclose": false,
           "rules": [],
           "exposure": {
-            "type": "leave-on skin",
-            "level": "high",
-            "score": 8.0,
+            "type": "sprayed",
+            "level": "medium",
+            "score": 6.0,
             "baby": false,
-            "route": "skin",
-            "duration": "hours",
-            "retained": "leave-on",
-            "frequency": "several daily",
+            "route": "inhalation",
+            "duration": "minutes",
+            "retained": "breathed",
+            "frequency": "daily",
             "heat": false,
-            "fat": true,
-            "why": "Left on the skin, so contact runs for hours."
+            "fat": false,
+            "why": "Aerosolised on purpose, into the air in front of you."
           },
           "formulaAnswers": {
             "ingredients": "",
@@ -57916,7 +57916,8 @@
         "ext": {
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
           "frontNotes": {
-            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
+            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
+            "formula": "An object has no ingredient list. What it is made of is the materials check."
           },
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
@@ -57924,13 +57925,13 @@
           "dated": "2026-08-29",
           "why": "a recommendation needs its checks done; still to do: materials",
           "fronts": {
-            "formula": "pass",
+            "formula": "none",
             "materials": "unassessed",
             "legal": "none",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "formula": "inferred",
+            "formula": "hand",
             "legal": "database"
           },
           "scope": "line",
@@ -57938,17 +57939,17 @@
           "disclose": false,
           "rules": [],
           "exposure": {
-            "type": "leave-on skin",
-            "level": "high",
-            "score": 8.0,
+            "type": "worn gear",
+            "level": "medium",
+            "score": 5.0,
             "baby": false,
             "route": "skin",
             "duration": "hours",
-            "retained": "leave-on",
-            "frequency": "several daily",
+            "retained": "prolonged",
+            "frequency": "weekly",
             "heat": false,
-            "fat": true,
-            "why": "Left on the skin, so contact runs for hours."
+            "fat": false,
+            "why": "Against the skin, but not every day."
           },
           "heldBack": [
             "materials"
@@ -58406,7 +58407,7 @@
             "type": "leave-on skin",
             "level": "high",
             "score": 8.0,
-            "baby": false,
+            "baby": true,
             "route": "skin",
             "duration": "hours",
             "retained": "leave-on",
@@ -58477,7 +58478,7 @@
             "type": "leave-on skin",
             "level": "high",
             "score": 8.0,
-            "baby": false,
+            "baby": true,
             "route": "skin",
             "duration": "hours",
             "retained": "leave-on",
@@ -61928,13 +61929,13 @@
           "disclose": false,
           "rules": [],
           "exposure": {
-            "type": "food",
+            "type": "leave-on face",
             "level": "high",
             "score": 6.0,
             "baby": true,
-            "route": "ingestion",
-            "duration": "minutes",
-            "retained": "swallowed",
+            "route": "skin",
+            "duration": "hours",
+            "retained": "leave-on",
             "frequency": "daily",
             "heat": false,
             "fat": false,
@@ -71606,17 +71607,17 @@
             "2.1 disclosure-failure-caps-at-caution"
           ],
           "exposure": {
-            "type": "slept on",
+            "type": "diaper",
             "level": "high",
-            "score": 8.0,
+            "score": 7.0,
             "baby": true,
-            "route": "inhalation",
-            "duration": "overnight",
-            "retained": "breathed",
-            "frequency": "daily",
+            "route": "skin",
+            "duration": "hours",
+            "retained": "prolonged",
+            "frequency": "several daily",
             "heat": false,
             "fat": false,
-            "why": "Eight hours a night, close to the face."
+            "why": "for a baby, which is high whatever the arithmetic says"
           },
           "formulaAnswers": {
             "ingredients": "",
@@ -72780,17 +72781,17 @@
           "disclose": false,
           "rules": [],
           "exposure": {
-            "type": "leave-on skin",
+            "type": "rinse-off skin",
             "level": "high",
-            "score": 8.0,
+            "score": 3.5,
             "baby": true,
             "route": "skin",
-            "duration": "hours",
-            "retained": "leave-on",
-            "frequency": "several daily",
+            "duration": "minutes",
+            "retained": "rinsed",
+            "frequency": "daily",
             "heat": false,
-            "fat": true,
-            "why": "Left on the skin, so contact runs for hours."
+            "fat": false,
+            "why": "for a baby, which is high whatever the arithmetic says"
           }
         },
         "origin": "hand",
@@ -72803,7 +72804,7 @@
           ]
         ],
         "matchFrom": "name",
-        "cat": "Baby lotion"
+        "cat": "Shampoo"
       },
       {
         "name": "Mineral Sunscreen SPF 50",
@@ -79466,7 +79467,7 @@
           "dated": "2026-08-29",
           "why": "a recommendation needs all four checks; still to do: packaging, legal, testing",
           "fronts": {
-            "formula": "pass",
+            "formula": "none",
             "legal": "pass",
             "testing": "none",
             "materials": "pass"
@@ -79478,12 +79479,13 @@
           "frontNotes": {
             "legal": "Menstrual cups are FDA class II devices cleared through 510(k). Searched the FDA enforcement and device records on 2026-08-29: no recall, and no filing against the brand.",
             "testing": "No independent lab testing exists, and none is expected. The organic fluorine panels screen absorbent products, where PFAS would sit in a coating or a laminate. Medical grade silicone has neither, so there is nothing for that method to find.",
-            "materials": "Cotton drawstring bag in a cardboard carton. On a reusable the object is its own contact surface, so the material question is answered on formula and the carton carries no risk."
+            "materials": "Cotton drawstring bag in a cardboard carton. On a reusable the object is its own contact surface, so the material question is answered on formula and the carton carries no risk.",
+            "formula": "An object has no ingredient list. What it is made of is the materials check."
           },
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
           "authored": true,
           "frontOrigin": {
-            "formula": "inferred",
+            "formula": "hand",
             "legal": "hand",
             "testing": "stated",
             "materials": "stated"
@@ -79518,7 +79520,7 @@
           "dated": "2026-08-29",
           "why": "a recommendation needs all four checks; still to do: packaging, legal, testing",
           "fronts": {
-            "formula": "pass",
+            "formula": "none",
             "legal": "pass",
             "testing": "none",
             "materials": "pass"
@@ -79530,12 +79532,13 @@
           "frontNotes": {
             "legal": "Menstrual cups are FDA class II devices cleared through 510(k). Searched the FDA enforcement and device records on 2026-08-29: no recall, and no filing against the brand.",
             "testing": "No independent lab testing exists, and none is expected. The organic fluorine panels screen absorbent products, where PFAS would sit in a coating or a laminate. Medical grade silicone has neither, so there is nothing for that method to find.",
-            "materials": "Cotton drawstring bag in a cardboard carton. On a reusable the object is its own contact surface, so the material question is answered on formula and the carton carries no risk."
+            "materials": "Cotton drawstring bag in a cardboard carton. On a reusable the object is its own contact surface, so the material question is answered on formula and the carton carries no risk.",
+            "formula": "An object has no ingredient list. What it is made of is the materials check."
           },
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
           "authored": true,
           "frontOrigin": {
-            "formula": "inferred",
+            "formula": "hand",
             "legal": "hand",
             "testing": "stated",
             "materials": "stated"
@@ -91686,17 +91689,17 @@
             "testing": "hand"
           },
           "exposure": {
-            "type": "toothpaste",
+            "type": "leave-on skin",
             "level": "high",
-            "score": 4.75,
+            "score": 8.0,
             "baby": true,
-            "route": "ingestion",
-            "duration": "minutes",
-            "retained": "spat",
+            "route": "skin",
+            "duration": "hours",
+            "retained": "leave-on",
             "frequency": "several daily",
             "heat": false,
-            "fat": false,
-            "why": "for a baby, which is high whatever the arithmetic says"
+            "fat": true,
+            "why": "Left on the skin, so contact runs for hours."
           },
           "formulaAnswers": {
             "ingredients": "",
@@ -96098,7 +96101,7 @@
             "type": "leave-on skin",
             "level": "high",
             "score": 8.0,
-            "baby": false,
+            "baby": true,
             "route": "skin",
             "duration": "hours",
             "retained": "leave-on",
@@ -96846,7 +96849,7 @@
             "type": "leave-on skin",
             "level": "high",
             "score": 8.0,
-            "baby": false,
+            "baby": true,
             "route": "skin",
             "duration": "hours",
             "retained": "leave-on",
