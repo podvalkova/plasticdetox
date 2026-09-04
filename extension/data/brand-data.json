@@ -216,17 +216,17 @@
           "disclose": false,
           "rules": [],
           "exposure": {
-            "type": "equipment",
-            "level": "low",
-            "score": 2.0,
+            "type": "reusable bottle",
+            "level": "high",
+            "score": 8.0,
             "baby": false,
-            "route": "none",
-            "duration": "seconds",
-            "retained": "none",
+            "route": "ingestion",
+            "duration": "all day",
+            "retained": "swallowed",
             "frequency": "daily",
             "heat": false,
             "fat": false,
-            "why": "Nothing it holds touches the part in question."
+            "why": "Carried and refilled all day, every day."
           },
           "formulaAnswers": {
             "ingredients": "",
@@ -254,7 +254,7 @@
             "materials"
           ]
         },
-        "cat": "Vacuums"
+        "cat": "Water bottles"
       }
     ],
     "rollup": {
@@ -5603,20 +5603,20 @@
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
-            "materials": "We have not established what the product actually touches.",
-            "formula": "The listing we hold for this product serves a different item, The Honest Company Bubble Bath, Hypoallergenic, Lavender Calm, 12 fl oz."
+            "materials": "We have not established what the product actually touches."
           },
           "verdict": "careful",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "caution",
             "materials": "unassessed",
             "legal": "pass",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "legal": "database"
+            "legal": "database",
+            "formula": "inferred"
           },
           "scope": "sku",
           "basis": "direct",
@@ -5641,7 +5641,7 @@
             "ingredients": "",
             "prose": "",
             "complete": false,
-            "verdict": "open",
+            "verdict": "careful",
             "summary": "The listing we hold for this product serves a different item, The Honest Company Bubble Bath, Hypoallergenic, Lavender Calm, 12 fl oz.",
             "flagged": [],
             "source": "amazon:B01LDZJHAE",
@@ -7816,6 +7816,7 @@
             "formula",
             "formula",
             "formula",
+            "formula",
             "formula"
           ],
           "verdict": "skip",
@@ -7933,8 +7934,7 @@
         "ext": {
           "frontNotes": {
             "legal": "Issued a broad benzene sunscreen recall in the 2021-2022 wave (Recorded for Banana Boat as a whole rather than this product specifically.)",
-            "materials": "We have not established what the product actually touches.",
-            "formula": "The listing we hold for this product serves a different item, Baby Bum SPF 50 Sunscreen Spray - Mineral UVA/UVB Face and Body Protection for Sensitive Skin - Travel Size - 3 oz."
+            "materials": "We have not established what the product actually touches."
           },
           "inheritedFronts": [
             "legal"
@@ -7943,13 +7943,14 @@
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "caution",
             "materials": "unassessed",
             "legal": "fail",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "legal": "stated"
+            "legal": "stated",
+            "formula": "inferred"
           },
           "scope": "sku",
           "basis": "direct",
@@ -7972,7 +7973,7 @@
             "ingredients": "",
             "prose": "",
             "complete": false,
-            "verdict": "open",
+            "verdict": "careful",
             "summary": "The listing we hold for this product serves a different item, Baby Bum SPF 50 Sunscreen Spray - Mineral UVA/UVB Face and Body Protection for Sensitive Skin - Travel Size - 3 oz.",
             "flagged": [],
             "source": "amazon:B07ZR1KQ44",
@@ -17255,6 +17256,7 @@
             "formula",
             "formula",
             "formula",
+            "formula",
             "formula"
           ],
           "verdict": "skip",
@@ -25323,6 +25325,7 @@
             "materials": "We have not established what the product actually touches."
           },
           "inheritedFronts": [
+            "formula",
             "formula",
             "formula",
             "formula",
@@ -36278,20 +36281,19 @@
           "B086H1W384"
         ],
         "ext": {
-          "frontNotes": {
-            "formula": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear."
-          },
+          "frontNotes": {},
           "verdict": "unrated",
           "dated": "2026-08-28",
-          "why": "a recommendation needs its checks done; still to do: materials, legal, formula",
+          "why": "the note reads adversely on formula, testing, needs a human look",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "caution",
             "materials": "unassessed",
             "legal": "unassessed",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "testing": "inferred"
+            "testing": "inferred",
+            "formula": "inferred"
           },
           "scope": "sku",
           "basis": "direct",
@@ -36314,7 +36316,7 @@
             "ingredients": "",
             "prose": "About this item Brass boiler with increased capacity & power Made in Italy from machine-grade components Solid steel housing, brass group head w/stainless steel surround 9-bar extractions with 3-way solenoid valve Commercial Steam Wand › See more product details",
             "complete": false,
-            "verdict": "open",
+            "verdict": "careful",
             "summary": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear.",
             "flagged": [],
             "source": "amazon:B086H1W384",
@@ -41005,19 +41007,19 @@
         "origin": "article",
         "source": "top-100-baby-kids-products-amazon.html",
         "ext": {
-          "frontNotes": {
-            "formula": "No ingredient list recorded."
-          },
+          "frontNotes": {},
           "verdict": "careful",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "caution",
             "materials": "unassessed",
             "legal": "unassessed",
             "testing": "unassessed"
           },
-          "frontOrigin": {},
+          "frontOrigin": {
+            "formula": "inferred"
+          },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
@@ -41041,7 +41043,7 @@
             "ingredients": "",
             "prose": "",
             "complete": false,
-            "verdict": "open",
+            "verdict": "careful",
             "summary": "No ingredient list recorded.",
             "flagged": [],
             "source": "amazon:B0GH9RFS4K",
@@ -43953,17 +43955,17 @@
             "2 formula-read-from-materials"
           ],
           "exposure": {
-            "type": "equipment",
-            "level": "low",
-            "score": 2.0,
+            "type": "reusable bottle",
+            "level": "high",
+            "score": 8.0,
             "baby": false,
-            "route": "none",
-            "duration": "seconds",
-            "retained": "none",
+            "route": "ingestion",
+            "duration": "all day",
+            "retained": "swallowed",
             "frequency": "daily",
             "heat": false,
             "fat": false,
-            "why": "Nothing it holds touches the part in question."
+            "why": "Carried and refilled all day, every day."
           },
           "formulaAnswers": {
             "ingredients": "",
@@ -43976,7 +43978,7 @@
             "checked": "2026-09-04"
           }
         },
-        "cat": "Vacuums"
+        "cat": "Water bottles"
       },
       {
         "name": "Stainless Insulated Straw Cup (12 oz)",
@@ -47960,20 +47962,20 @@
           "disclose": false,
           "rules": [],
           "exposure": {
-            "type": "air appliance",
-            "level": "high",
-            "score": 8.0,
+            "type": "equipment",
+            "level": "low",
+            "score": 2.0,
             "baby": false,
-            "route": "inhalation",
-            "duration": "all day",
-            "retained": "breathed",
+            "route": "none",
+            "duration": "seconds",
+            "retained": "none",
             "frequency": "daily",
             "heat": false,
             "fat": false,
-            "why": "Running in the room, moving air past its own materials."
+            "why": "Nothing it holds touches the part in question."
           }
         },
-        "cat": "Air purifiers"
+        "cat": "Vacuums"
       },
       {
         "name": "Kenmore 600 Series Bagged Canister",
@@ -48003,20 +48005,20 @@
           "disclose": false,
           "rules": [],
           "exposure": {
-            "type": "drinking water",
-            "level": "high",
-            "score": 8.0,
+            "type": "equipment",
+            "level": "low",
+            "score": 2.0,
             "baby": false,
-            "route": "ingestion",
-            "duration": "all day",
-            "retained": "swallowed",
+            "route": "none",
+            "duration": "seconds",
+            "retained": "none",
             "frequency": "daily",
             "heat": false,
             "fat": false,
-            "why": "Drunk in quantity, every day, for years."
+            "why": "Nothing it holds touches the part in question."
           }
         },
-        "cat": "Water filters"
+        "cat": "Vacuums"
       }
     ],
     "cautions": [
@@ -49134,17 +49136,17 @@
             "5.4 durable-good-is-its-own-packaging"
           ],
           "exposure": {
-            "type": "equipment",
-            "level": "low",
-            "score": 2.0,
+            "type": "food vessel",
+            "level": "medium",
+            "score": 5.8,
             "baby": false,
-            "route": "none",
-            "duration": "seconds",
-            "retained": "none",
+            "route": "ingestion",
+            "duration": "hours",
+            "retained": "transfer",
             "frequency": "daily",
             "heat": false,
             "fat": false,
-            "why": "Nothing it holds touches the part in question."
+            "why": "Food sits in it, often for hours."
           },
           "formulaAnswers": {
             "ingredients": "",
@@ -49157,7 +49159,7 @@
             "checked": "2026-09-04"
           }
         },
-        "cat": "Vacuums"
+        "cat": "Food storage"
       },
       {
         "name": "Klean Kanteen Kid Classic (12oz)",
@@ -50124,6 +50126,7 @@
             "materials": "Made of bamboo, which the product name states, and which puts nothing into what it touches."
           },
           "inheritedFronts": [
+            "formula",
             "formula",
             "formula",
             "formula",
@@ -51952,21 +51955,20 @@
         "origin": "store",
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {
-            "formula": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear."
-          },
+          "frontNotes": {},
           "verdict": "unrated",
           "dated": "2026-08-28",
-          "why": "a recommendation needs its checks done; still to do: materials, formula",
+          "why": "the note reads adversely on formula, needs a human look",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "caution",
             "materials": "unassessed",
             "legal": "pass",
             "testing": "pass"
           },
           "frontOrigin": {
             "legal": "database",
-            "testing": "inferred"
+            "testing": "inferred",
+            "formula": "inferred"
           },
           "scope": "sku",
           "basis": "direct",
@@ -51991,7 +51993,7 @@
             "ingredients": "",
             "prose": "About this item Delicious, Ethically Sourced Coffee: You've tried the rest, now buy the best ground coffee on the market; This Non-Gmo organic low acid coffee is high in flavor; The beans are sun dried, and spring water washed; The result is pure, natural coffee derived straight from nature Grown In The Mountains Of Central America: Lifeboost Single Origin Acid Free Coffee is shade grown at a high elevation in the mountains of Central America; The exclusive farms that we work with are all bird friendly and each coffee bean is hand selected to ensure purity Low Acid Medium Roast Ground Coffee: Your standard cup of coffee is very acidic; That's why some feel stomach discomfort or deal with teeth issues from drinking coffee; The solution is our low acid coffee beans; The antioxidant rich organic coffee delivers all the wonderful benefits of coffee without the unwanted side effects Certified Organic & 3rd Party Tested: Lifeboost Organic Coffee Ground Beans are Usda Certified Organic, and 3rd Party Tested for mycotoxins, heavy metals, pesticides, and 400 other toxins; One sip of this organic ground coffee and you'll have a hard time going back to an ordinary cup of joe THE LIFEBOOST PRO",
             "complete": false,
-            "verdict": "open",
+            "verdict": "careful",
             "summary": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear.",
             "flagged": [],
             "source": "amazon:B0899ZYXXN",
@@ -62032,6 +62034,7 @@
             "formula",
             "formula",
             "formula",
+            "formula",
             "formula"
           ]
         }
@@ -70113,6 +70116,7 @@
             "formula",
             "formula",
             "formula",
+            "formula",
             "formula"
           ],
           "verdict": "skip",
@@ -71672,21 +71676,20 @@
         "origin": "store",
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {
-            "formula": "No ingredient list recorded."
-          },
+          "frontNotes": {},
           "verdict": "unrated",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: formula",
+          "why": "the note reads adversely on formula, needs a human look",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "caution",
             "materials": "pass",
             "legal": "pass",
             "testing": "unassessed"
           },
           "frontOrigin": {
             "legal": "database",
-            "materials": "inferred"
+            "materials": "inferred",
+            "formula": "inferred"
           },
           "scope": "sku",
           "basis": "direct",
@@ -71711,7 +71714,7 @@
             "ingredients": "",
             "prose": "",
             "complete": false,
-            "verdict": "open",
+            "verdict": "careful",
             "summary": "No ingredient list recorded.",
             "flagged": [],
             "source": "amazon:B0774WQY7T",
@@ -80140,20 +80143,20 @@
           "disclose": false,
           "rules": [],
           "exposure": {
-            "type": "air appliance",
-            "level": "high",
-            "score": 8.0,
+            "type": "equipment",
+            "level": "low",
+            "score": 2.0,
             "baby": false,
-            "route": "inhalation",
-            "duration": "all day",
-            "retained": "breathed",
+            "route": "none",
+            "duration": "seconds",
+            "retained": "none",
             "frequency": "daily",
             "heat": false,
             "fat": false,
-            "why": "Running in the room, moving air past its own materials."
+            "why": "Nothing it holds touches the part in question."
           }
         },
-        "cat": "Air purifiers"
+        "cat": "Vacuums"
       },
       {
         "name": "Shark Rotator Lift-Away ADV LA502",
@@ -80165,49 +80168,50 @@
         "ext": {
           "legalNote": "Checked recall records on 2026-08-31. The 2015 Rotator wand recall was remedied by replacement and did not cover the Navigator models we list; the 2025 SharkNinja pressure cooker recall is a different product line.",
           "frontNotes": {
-            "formula": "No ingredient list recorded."
+            "formula": "A durable good has no ingredient list. What it is made of is the materials check."
           },
           "verdict": "unrated",
           "dated": "2026-09-01",
           "why": "no front is directly evidenced by the note",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "none",
             "materials": "unassessed",
             "legal": "pass",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "legal": "database"
+            "legal": "database",
+            "formula": "database"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
           "rules": [],
           "exposure": {
-            "type": "sprayed",
-            "level": "medium",
-            "score": 6.0,
+            "type": "equipment",
+            "level": "low",
+            "score": 2.0,
             "baby": false,
-            "route": "inhalation",
-            "duration": "minutes",
-            "retained": "breathed",
+            "route": "none",
+            "duration": "seconds",
+            "retained": "none",
             "frequency": "daily",
             "heat": false,
             "fat": false,
-            "why": "Aerosolised on purpose, into the air in front of you."
+            "why": "Nothing it holds touches the part in question."
           },
           "formulaAnswers": {
             "ingredients": "",
             "prose": "",
             "complete": false,
-            "verdict": "open",
-            "summary": "No ingredient list recorded.",
+            "verdict": "n/a",
+            "summary": "A durable good has no ingredient list. What it is made of is the materials check.",
             "flagged": [],
             "source": "amazon:B089TPNZQ5",
             "checked": ""
           }
         },
-        "cat": "Cleaning products"
+        "cat": "Vacuums"
       },
       {
         "name": "Shark Navigator Lift-Away Professional NV356E",
@@ -80253,20 +80257,20 @@
             "formula": "database"
           },
           "exposure": {
-            "type": "air appliance",
-            "level": "high",
-            "score": 8.0,
+            "type": "equipment",
+            "level": "low",
+            "score": 2.0,
             "baby": false,
-            "route": "inhalation",
-            "duration": "all day",
-            "retained": "breathed",
+            "route": "none",
+            "duration": "seconds",
+            "retained": "none",
             "frequency": "daily",
             "heat": false,
             "fat": false,
-            "why": "Running in the room, moving air past its own materials."
+            "why": "Nothing it holds touches the part in question."
           }
         },
-        "cat": "Air purifiers"
+        "cat": "Vacuums"
       },
       {
         "name": "Navigator Lift-Away base uprights (NV352 and siblings)",
@@ -80309,20 +80313,20 @@
             "formula": "database"
           },
           "exposure": {
-            "type": "air appliance",
-            "level": "high",
-            "score": 8.0,
+            "type": "equipment",
+            "level": "low",
+            "score": 2.0,
             "baby": false,
-            "route": "inhalation",
-            "duration": "all day",
-            "retained": "breathed",
+            "route": "none",
+            "duration": "seconds",
+            "retained": "none",
             "frequency": "daily",
             "heat": false,
             "fat": false,
-            "why": "Running in the room, moving air past its own materials."
+            "why": "Nothing it holds touches the part in question."
           }
         },
-        "cat": "Air purifiers"
+        "cat": "Vacuums"
       }
     ],
     "rollup": {
@@ -80616,20 +80620,20 @@
           "disclose": false,
           "rules": [],
           "exposure": {
-            "type": "air appliance",
-            "level": "high",
-            "score": 8.0,
+            "type": "equipment",
+            "level": "low",
+            "score": 2.0,
             "baby": false,
-            "route": "inhalation",
-            "duration": "all day",
-            "retained": "breathed",
+            "route": "none",
+            "duration": "seconds",
+            "retained": "none",
             "frequency": "daily",
             "heat": false,
             "fat": false,
-            "why": "Running in the room, moving air past its own materials."
+            "why": "Nothing it holds touches the part in question."
           }
         },
-        "cat": "Air purifiers"
+        "cat": "Vacuums"
       }
     ],
     "cautions": [
@@ -82299,6 +82303,7 @@
             "checked": ""
           },
           "inheritedFronts": [
+            "formula",
             "formula",
             "formula",
             "formula",
@@ -94906,6 +94911,7 @@
           "inheritedFronts": [
             "formula",
             "packaging",
+            "formula",
             "formula",
             "formula",
             "formula",

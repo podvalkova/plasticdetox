@@ -90,6 +90,10 @@ RULES = [
     ("Coffee",              r"coffee|espresso|french press|pour over|kettle|grinder|drip"),
     ("Tea",                 r"\btea\b|infuser|teapot"),
     ("Bottled water",       r"bottled water|spring water|purified water"),
+    # Ahead of Air purifiers, Water filters and Cleaning products, which all
+    # claimed vacuums first: every vacuum has a HEPA filter, a replacement
+    # filter and the word cleaner somewhere in its own description.
+    ("Vacuums",             r"vacuum|bagless|lift[- ]?away|bagged canister|canister vacuum|\bupright\b"),
     ("Water filters",       r"water filter|reverse osmosis|filtration|pitcher filter|\bro\b|"
                             r"shower filter|carafe|replacement filter|under sink|whole house|"
                             r"longlast|claryum|aq-\d"),
@@ -109,7 +113,7 @@ RULES = [
     ("Laundry detergent",   r"laundry|detergent|dryer ball|fabric softener|stain remover"),
     ("Cleaning products",   r"cleaner|cleaning|dish soap|dish block|dish brush|scrub|sponge|disinfect"),
     ("Air purifiers",       r"air purifier|hepa|air filter"),
-    ("Vacuums",             r"vacuum"),
+
     ("Crib mattresses",     r"crib mattress|toddler mattress|changing pad|mattress"),
     ("Cribs & nursery",     r"\bcrib\b|bassinet|glider|nursery|high chair|play ?mat|playard"),
     ("Car seats",           r"car seat"),
@@ -171,6 +175,17 @@ FALLBACK = {
 PACKAGING_WORDS = re.compile(
     r"(glass|plastic|polypropylene|amber|pump) bottles?\b|glass jars?\b")
 
+# How a flask keeps coffee hot, not a machine that cleans a floor. Three water
+# bottles were filed under Vacuums on this word alone.
+INSULATION = re.compile(r"vacuum[- ](insulat\w+|seal\w+|flask)")
+
+
+# Categories a note may not decide. A vacuum cleaner always says so in its own
+# name; a note saying "vacuum insulated" is describing a flask. Same shape as
+# the packaging words above: prose about a product is not a claim about what
+# kind of thing it is.
+NAME_ONLY = {"Vacuums"}
+
 
 def categorise(name, note, brand_cat):
     """
@@ -179,12 +194,14 @@ def categorise(name, note, brand_cat):
     else: "the formula is clean" put two dozen unrelated products into Baby
     formula, and "no plastic in the drink path" would pull a pan into Drinkware.
     """
-    n = (name or "").lower()
+    n = INSULATION.sub(" ", (name or "").lower())
     for cat, pat in RULES:
         if re.search(pat, n):
             return cat
-    hay = PACKAGING_WORDS.sub(" ", (note or "").lower())
+    hay = INSULATION.sub(" ", PACKAGING_WORDS.sub(" ", (note or "").lower()))
     for cat, pat in RULES:
+        if cat in NAME_ONLY:
+            continue
         if re.search(pat, hay):
             return cat
     return None
