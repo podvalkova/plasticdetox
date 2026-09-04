@@ -240,7 +240,15 @@ def main():
             # passing from a recorded source rather than a classifier reading,
             # and every blocking front answered. That is the same bar
             # apply-product-rules applies, met with better evidence.
-            if e.get("verdict") == "unrated" and not [
+            # A brand stand-in is not something anyone can buy. Coterie's whole
+            # range really is totally chlorine free and non detect, so the
+            # fronts on that row are true and worth keeping at brand scope, but
+            # awarding it "good" puts a recommendation on a row with no product
+            # behind it and no ASIN to reach.
+            stand_in = (p.get("origin") == "brand-line"
+                        or str(p.get("name") or "").strip().lower() == "whole range"
+                        or ((e.get("scope") or "") == "brand" and not (p.get("asins") or [])))
+            if (not stand_in) and e.get("verdict") == "unrated" and not [
                     k for k in FRONTS if f.get(k) in ("caution", "fail")]:
                 carrier = ("formula" if "formula" in blocking_for(b, p)
                            else "materials")
