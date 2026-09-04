@@ -359,7 +359,11 @@ function build(brands){
         return s === "none" ? "none" : s;
       });
       if(e.materialsList) withMat++;
-      ROWS.push([b.brand, p.name||"", b.category||"", v, e.materialsList||"", checks,
+      // The product's own category, falling back to the brand's. A brand that
+      // sells two things has one category and two kinds of row, so reading the
+      // brand's put Coterie's wipes under Diapers and made the filter offer
+      // both "Diapers" and "Diapers & wipes" as if they were different shelves.
+      ROWS.push([b.brand, p.name||"", p.cat||b.category||"", v, e.materialsList||"", checks,
                  (e.frontNotes||{}).materials||"", fr.materials||"unassessed",
                  (e.exposure||{}).level||"", (e.exposure||{}).type||"",
                  {fronts:fr, origin:or, notes:e.frontNotes||{}, answers:e.materialAnswers||null, formula:e.formulaAnswers||null,

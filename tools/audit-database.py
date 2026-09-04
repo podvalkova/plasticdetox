@@ -44,6 +44,11 @@ DEVICE_CATS = {
     "Kitchen appliances", "Humidifiers", "Toothbrushes",
 }
 
+# Manufactured articles with no ingredient list. A diaper is not a formulation:
+# what it is made of is the materials check. Some add a lotion or fragrance,
+# which is a real formula finding, so only an unearned pass is wrong here.
+NO_INGREDIENT_CATS = {"Diapers"}
+
 # A word in a product name that all but settles what kind of thing it is.
 NAME_SIGNALS = [
     (r"\bserum\b|\bface oil\b|moisturi[sz]er|\beye cream\b", {"Skincare"}),
@@ -102,11 +107,20 @@ def check(brands, rows):
         e = p.get("ext") or {}
         t = ((e.get("exposure") or {}).get("type") or "")
         f = (e.get("fronts") or {}).get("formula")
-        if (t in DURABLE_TYPES or (p.get("cat") or "") in DEVICE_CATS) \
+        cat = p.get("cat") or ""
+        # A diaper has no ingredient list, so a clean formula read is an
+        # assertion nobody could have made. An adverse one is different: Luvs
+        # and Pampers Swaddlers really do add lotion and fragrance, and that
+        # finding is about something applied to skin, not about a recipe.
+        if cat in NO_INGREDIENT_CATS:
+            if f == "pass":
+                wrong.append(f"{b['brand']} / {p.get('name')} [{cat}] formula=pass")
+            continue
+        if (t in DURABLE_TYPES or cat in DEVICE_CATS) \
                 and f in ("pass", "caution", "fail"):
             wrong.append(f"{b['brand']} / {p.get('name')} [{t}] formula={f}")
         if (t and t not in DURABLE_TYPES and f == "none"
-                and (p.get("cat") or "") not in DEVICE_CATS):
+                and cat not in DEVICE_CATS):
             wrong.append(f"{b['brand']} / {p.get('name')} [{t}] formula=none")
     add("formula-kind", "Formula answered as if the product were another kind of thing", wrong,
         "An object has no ingredient list and a consumable has one. Either "

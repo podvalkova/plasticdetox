@@ -2905,17 +2905,21 @@
         "note": "",
         "origin": "brand-line",
         "ext": {
-          "frontNotes": {},
+          "frontNotes": {
+            "formula": "A diaper has no ingredient list. What it is made of is the materials check."
+          },
           "verdict": "careful",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "none",
             "materials": "unassessed",
             "legal": "unassessed",
             "testing": "unassessed"
           },
-          "frontOrigin": {},
+          "frontOrigin": {
+            "formula": "hand"
+          },
           "scope": "brand",
           "basis": "inherited",
           "disclose": true,
@@ -4762,20 +4766,22 @@
         "ext": {
           "legalNote": "Checked. What is on record concerns other ATTITUDE products, not this one: Health Canada recalled a lot of ATTITUDE Bathroom Cleaner in July 2026 for a missing expiry date, a labeling compliance issue with no injuries; the recall is recent and appears open. It names the bathroom cleaner lot only, not the rest of the range.",
           "frontNotes": {
-            "testing": "60 ppm organic fluorine inside in 2023 independent screening, the highest among eco positioned disposable brands"
+            "testing": "60 ppm organic fluorine inside in 2023 independent screening, the highest among eco positioned disposable brands",
+            "formula": "A diaper has no ingredient list. What it is made of is the materials check."
           },
           "verdict": "careful",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "none",
             "materials": "unassessed",
             "legal": "pass",
             "testing": "caution"
           },
           "frontOrigin": {
             "legal": "database",
-            "testing": "hand"
+            "testing": "hand",
+            "formula": "hand"
           },
           "scope": "line",
           "basis": "direct",
@@ -6281,19 +6287,21 @@
         "origin": "brand-line",
         "ext": {
           "frontNotes": {
-            "testing": "The Bouncy Soft diaper returned organic fluorine in 2023 independent screening"
+            "testing": "The Bouncy Soft diaper returned organic fluorine in 2023 independent screening",
+            "formula": "A diaper has no ingredient list. What it is made of is the materials check."
           },
           "verdict": "careful",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "none",
             "materials": "unassessed",
             "legal": "unassessed",
             "testing": "caution"
           },
           "frontOrigin": {
-            "testing": "hand"
+            "testing": "hand",
+            "formula": "hand"
           },
           "scope": "brand",
           "basis": "inherited",
@@ -6408,19 +6416,21 @@
         "origin": "brand-line",
         "ext": {
           "frontNotes": {
-            "testing": "The Skin Love diaper returned a low level organic fluorine detection in 2023 independent screening"
+            "testing": "The Skin Love diaper returned a low level organic fluorine detection in 2023 independent screening",
+            "formula": "A diaper has no ingredient list. What it is made of is the materials check."
           },
           "verdict": "careful",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "none",
             "materials": "unassessed",
             "legal": "unassessed",
             "testing": "caution"
           },
           "frontOrigin": {
-            "testing": "hand"
+            "testing": "hand",
+            "formula": "hand"
           },
           "scope": "brand",
           "basis": "inherited",
@@ -7418,7 +7428,7 @@
   {
     "id": "bambino-mio",
     "brand": "Bambino Mio",
-    "category": "Cloth diapers",
+    "category": "Diapers",
     "stance": "careful",
     "reason": "The Miosolo all in one returned high organic fluorine on the waterproof layer in 2023 independent screening.",
     "evidence": "Miosolo all in one: 174 ppm outside, 15 ppm inside (2023 lab screening).",
@@ -7482,19 +7492,21 @@
         "origin": "brand-line",
         "ext": {
           "frontNotes": {
-            "testing": "The Miosolo all in one returned high organic fluorine on the waterproof layer in 2023 independent screening"
+            "testing": "The Miosolo all in one returned high organic fluorine on the waterproof layer in 2023 independent screening",
+            "formula": "A diaper has no ingredient list. What it is made of is the materials check."
           },
           "verdict": "careful",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "none",
             "materials": "unassessed",
             "legal": "unassessed",
             "testing": "caution"
           },
           "frontOrigin": {
-            "testing": "hand"
+            "testing": "hand",
+            "formula": "hand"
           },
           "scope": "brand",
           "basis": "inherited",
@@ -7623,19 +7635,21 @@
         "origin": "brand-line",
         "ext": {
           "frontNotes": {
-            "testing": "The Dream diaper returned organic fluorine in 2023 independent screening, despite the Nordic Swan Ecolabel"
+            "testing": "The Dream diaper returned organic fluorine in 2023 independent screening, despite the Nordic Swan Ecolabel",
+            "formula": "A diaper has no ingredient list. What it is made of is the materials check."
           },
           "verdict": "careful",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "none",
             "materials": "unassessed",
             "legal": "unassessed",
             "testing": "caution"
           },
           "frontOrigin": {
-            "testing": "hand"
+            "testing": "hand",
+            "formula": "hand"
           },
           "scope": "brand",
           "basis": "inherited",
@@ -16156,7 +16170,7 @@
   {
     "id": "caboo",
     "brand": "Caboo",
-    "category": "Wipes",
+    "category": "Baby wipes",
     "stance": "good",
     "reason": "MADE SAFE certified baby wipes on a bamboo viscose cloth with no plastic fiber. Unscented, 99.7% naturally derived, no parabens, phthalates, or formaldehyde releasers. Consumer Reports recommended in its 2023 ingredient review and PFAS non detect in its 2026 testing. Our best value wipe.",
     "evidence": "MADE SAFE; CR recommended; PFAS non detect",
@@ -18333,7 +18347,7 @@
   {
     "id": "charlie-banana",
     "brand": "Charlie Banana",
-    "category": "Cloth diapers",
+    "category": "Diapers",
     "stance": "careful",
     "reason": "OEKO-TEX certified cloth brand, but both its swim diaper and its one size diaper returned organic fluorine in 2023 screening.",
     "evidence": "Swim diaper 100 ppm outside; one size 19 ppm inside (2023 lab screening).",
@@ -18397,19 +18411,21 @@
         "origin": "brand-line",
         "ext": {
           "frontNotes": {
-            "testing": "Both the swim diaper and the one size diaper returned organic fluorine in 2023 screening, despite OEKO-TEX certification"
+            "testing": "Both the swim diaper and the one size diaper returned organic fluorine in 2023 screening, despite OEKO-TEX certification",
+            "formula": "A diaper has no ingredient list. What it is made of is the materials check."
           },
           "verdict": "careful",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "none",
             "materials": "unassessed",
             "legal": "unassessed",
             "testing": "caution"
           },
           "frontOrigin": {
-            "testing": "hand"
+            "testing": "hand",
+            "formula": "hand"
           },
           "scope": "brand",
           "basis": "inherited",
@@ -19730,7 +19746,7 @@
   {
     "id": "cloth-eez",
     "brand": "Cloth-eez",
-    "category": "Cloth diapers",
+    "category": "Diapers",
     "stance": "good",
     "reason": "Unbleached cotton prefolds from Green Mountain Diapers, non detect for organic fluorine, and the cheapest cost per change of any diapering system.",
     "evidence": "Non detect organic fluorine (2023 lab screening); unbleached cotton, no waterproof laminate.",
@@ -19794,17 +19810,21 @@
         "note": "",
         "origin": "brand-line",
         "ext": {
-          "frontNotes": {},
+          "frontNotes": {
+            "formula": "A diaper has no ingredient list. What it is made of is the materials check."
+          },
           "verdict": "unrated",
           "dated": "2026-08-28",
           "why": "a recommendation cannot rest on inherited evidence",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "none",
             "materials": "unassessed",
             "legal": "unassessed",
             "testing": "unassessed"
           },
-          "frontOrigin": {},
+          "frontOrigin": {
+            "formula": "hand"
+          },
           "scope": "brand",
           "basis": "inherited",
           "disclose": false,
@@ -21927,7 +21947,7 @@
   {
     "id": "coterie",
     "brand": "Coterie",
-    "category": "Diapers & wipes",
+    "category": "Diapers",
     "stance": "good",
     "reason": "EWG Verified across every diaper size as of June 2026, totally chlorine free pulp, a fully published layer by layer material list, and 6 ingredient EWG Verified wipes.",
     "evidence": "EWG Verified (all sizes, June 2026); TCF pulp; non detect organic fluorine inside and outside in 2023 lab screening; full public ingredient disclosure.",
@@ -22069,19 +22089,20 @@
           "legalNote": "Checked on 2026-08-31. A 2024 suit alleging false PFAS free marketing was dismissed for lack of standing, with no adverse finding entered and no recall; refiling was left open.",
           "frontNotes": {
             "materials": "We have not established what the product actually touches.",
-            "formula": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear."
+            "formula": "A diaper has no ingredient list. What it is made of is the materials check."
           },
           "verdict": "unrated",
           "dated": "2026-08-28",
           "why": "consumable with only a formula read, no second front",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "none",
             "materials": "unassessed",
             "legal": "pass",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "legal": "database"
+            "legal": "database",
+            "formula": "hand"
           },
           "scope": "sku",
           "basis": "direct",
@@ -22137,7 +22158,7 @@
           "legalNote": "Checked on 2026-08-31. A 2024 suit alleging false PFAS free marketing was dismissed for lack of standing, with no adverse finding entered and no recall; refiling was left open.",
           "frontNotes": {
             "materials": "Made of polypropylene, with nothing inside it to pull anything out. What that contact means is the exposure read.",
-            "formula": "The published ingredient list carries nothing on the hazard list."
+            "formula": "A diaper has no ingredient list. What it is made of is the materials check."
           },
           "heldFrom": "good",
           "restoreWhy": "independent lab result at sku scope",
@@ -22147,7 +22168,7 @@
           "dated": "2026-08-29",
           "why": "independent lab result at sku scope",
           "fronts": {
-            "formula": "pass",
+            "formula": "none",
             "materials": "pass",
             "legal": "pass",
             "testing": "pass"
@@ -22155,7 +22176,7 @@
           "frontOrigin": {
             "legal": "database",
             "testing": "inferred",
-            "formula": "database",
+            "formula": "hand",
             "materials": "database"
           },
           "scope": "sku",
@@ -22238,18 +22259,21 @@
         "origin": "brand-line",
         "ext": {
           "legalNote": "Checked on 2026-08-31. A 2024 suit alleging false PFAS free marketing was dismissed for lack of standing, with no adverse finding entered and no recall; refiling was left open.",
-          "frontNotes": {},
+          "frontNotes": {
+            "formula": "A diaper has no ingredient list. What it is made of is the materials check."
+          },
           "verdict": "unrated",
           "dated": "2026-08-28",
           "why": "a recommendation cannot rest on inherited evidence",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "none",
             "materials": "unassessed",
             "legal": "pass",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "legal": "database"
+            "legal": "database",
+            "formula": "hand"
           },
           "scope": "brand",
           "basis": "inherited",
@@ -26270,7 +26294,7 @@
   {
     "id": "doctor-butlers",
     "brand": "Doctor Butler's",
-    "category": "Wipes",
+    "category": "Baby wipes",
     "stance": "neutral",
     "reason": "Organic bamboo cloth baby wipes with a short water based formula, free of rayon, phthalates, parabens, and quats, and a Mamavation best rated wipe. Screens clean on ingredients; we have not run our full vetting on the brand.",
     "evidence": "Mamavation best rated; clean ingredient screen",
@@ -28173,19 +28197,20 @@
         "ext": {
           "frontNotes": {
             "materials": "Marketed chlorine free but never totally chlorine free; the core is elemental chlorine free pulp",
-            "formula": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear."
+            "formula": "A diaper has no ingredient list. What it is made of is the materials check."
           },
           "verdict": "careful",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "none",
             "materials": "caution",
             "legal": "unassessed",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "materials": "hand"
+            "materials": "hand",
+            "formula": "hand"
           },
           "scope": "sku",
           "basis": "direct",
@@ -28289,19 +28314,21 @@
         "origin": "brand-line",
         "ext": {
           "frontNotes": {
-            "materials": "Markets itself as chlorine free without claiming totally chlorine free; the core is elemental chlorine free pulp"
+            "materials": "Markets itself as chlorine free without claiming totally chlorine free; the core is elemental chlorine free pulp",
+            "formula": "A diaper has no ingredient list. What it is made of is the materials check."
           },
           "verdict": "careful",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "none",
             "materials": "caution",
             "legal": "unassessed",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "materials": "hand"
+            "materials": "hand",
+            "formula": "hand"
           },
           "scope": "brand",
           "basis": "inherited",
@@ -29021,7 +29048,7 @@
       "Earth and Eden",
       "Earth+Eden"
     ],
-    "category": "Diapers & wipes",
+    "category": "Diapers",
     "stance": "careful",
     "reason": "Made in the United States by First Quality, with no lotion, fragrance, parabens or latex, and inks made without lead or heavy metals. The reason this is a caution rather than a pick is the bleaching: the fluff is elemental chlorine free, not totally chlorine free, which is the distinction that actually matters for dioxin byproducts. The absorbent layers are conventional polypropylene nonwovens over sodium polyacrylate, and we found no independent PFAS testing.",
     "evidence": "Elemental chlorine free (not TCF); no lotion, fragrance, parabens or latex; polypropylene nonwovens over sodium polyacrylate; made in USA by First Quality",
@@ -29098,19 +29125,21 @@
         "origin": "brand-line",
         "ext": {
           "frontNotes": {
-            "materials": "The fluff is elemental chlorine free rather than totally chlorine free, which is the distinction that matters"
+            "materials": "The fluff is elemental chlorine free rather than totally chlorine free, which is the distinction that matters",
+            "formula": "A diaper has no ingredient list. What it is made of is the materials check."
           },
           "verdict": "careful",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "none",
             "materials": "caution",
             "legal": "unassessed",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "materials": "hand"
+            "materials": "hand",
+            "formula": "hand"
           },
           "scope": "brand",
           "basis": "inherited",
@@ -30167,7 +30196,7 @@
   {
     "id": "ecoable",
     "brand": "EcoAble",
-    "category": "Cloth diapers",
+    "category": "Diapers",
     "stance": "good",
     "reason": "Hemp and organic cotton inserts that tested non detect, and the practical way to make overnight cloth work without adding synthetic microfiber.",
     "evidence": "Hemp inserts non detect for organic fluorine (2023 lab screening).",
@@ -30312,18 +30341,21 @@
         "origin": "brand-line",
         "ext": {
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
-          "frontNotes": {},
+          "frontNotes": {
+            "formula": "A diaper has no ingredient list. What it is made of is the materials check."
+          },
           "verdict": "unrated",
           "dated": "2026-08-28",
           "why": "a recommendation cannot rest on inherited evidence",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "none",
             "materials": "unassessed",
             "legal": "pass",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "legal": "database"
+            "legal": "database",
+            "formula": "hand"
           },
           "scope": "brand",
           "basis": "inherited",
@@ -30360,7 +30392,7 @@
       "Eco Boom",
       "EcoBoom"
     ],
-    "category": "Diapers & wipes",
+    "category": "Diapers",
     "stance": "careful",
     "reason": "Came back completely clean in the 2023 Mamavation and EHN organic fluorine screen, which is the strongest thing that can be said for it. The caution is the fibre: the top sheet is viscose from bamboo, which is bamboo dissolved and regenerated through a chemical process, so it is rayon rather than the plant it is marketed as. Clean on the test that matters most, less clean on how the softness is achieved.",
     "evidence": "Non detect in the 2023 Mamavation/EHN organic fluorine screen; viscose from bamboo (regenerated rayon) top sheet",
@@ -30437,19 +30469,21 @@
         "origin": "brand-line",
         "ext": {
           "frontNotes": {
-            "materials": "The top sheet is viscose from bamboo, dissolved and regenerated through a chemical process, so rayon rather than mechanical bamboo"
+            "materials": "The top sheet is viscose from bamboo, dissolved and regenerated through a chemical process, so rayon rather than mechanical bamboo",
+            "formula": "A diaper has no ingredient list. What it is made of is the materials check."
           },
           "verdict": "careful",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "none",
             "materials": "caution",
             "legal": "unassessed",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "materials": "hand"
+            "materials": "hand",
+            "formula": "hand"
           },
           "scope": "brand",
           "basis": "inherited",
@@ -30530,7 +30564,7 @@
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
           "frontNotes": {
             "materials": "We have not established what the product actually touches.",
-            "formula": "The published ingredient list carries nothing on the hazard list."
+            "formula": "A diaper has no ingredient list. What it is made of is the materials check."
           },
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
@@ -30538,14 +30572,14 @@
           "dated": "2026-08-29",
           "why": "a recommendation needs its checks done; still to do: materials",
           "fronts": {
-            "formula": "pass",
+            "formula": "none",
             "materials": "unassessed",
             "legal": "pass",
             "testing": "unassessed"
           },
           "frontOrigin": {
             "legal": "database",
-            "formula": "database"
+            "formula": "hand"
           },
           "scope": "sku",
           "basis": "direct",
@@ -30668,18 +30702,21 @@
         "origin": "brand-line",
         "ext": {
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
-          "frontNotes": {},
+          "frontNotes": {
+            "formula": "A diaper has no ingredient list. What it is made of is the materials check."
+          },
           "verdict": "unrated",
           "dated": "2026-08-28",
           "why": "a recommendation cannot rest on inherited evidence",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "none",
             "materials": "unassessed",
             "legal": "pass",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "legal": "database"
+            "legal": "database",
+            "formula": "hand"
           },
           "scope": "brand",
           "basis": "inherited",
@@ -31259,7 +31296,7 @@
   {
     "id": "eco-pea-co",
     "brand": "Eco Pea Co",
-    "category": "Wipes",
+    "category": "Baby wipes",
     "stance": "careful",
     "reason": "Bamboo wipe brand with strong eco marketing whose own published ingredient list includes polyhexamethylene biguanide (a synthetic antimicrobial polymer) and a silicone antifoam emulsion. Neither is a scandal; both are what the branding implies are not there.",
     "evidence": "PHMB + silicone antifoam on own ingredient page",
@@ -32847,7 +32884,7 @@
   {
     "id": "esembly",
     "brand": "Esembly",
-    "category": "Cloth diapers",
+    "category": "Diapers",
     "stance": "neutral",
     "reason": "A well made organic cotton system, but it was not included in the 2023 independent PFAS screening and publishes no testing of its own, so it is untested rather than cleared.",
     "evidence": "Not part of the 2023 lab screening; no brand published PFAS testing found.",
@@ -32905,17 +32942,21 @@
         "note": "",
         "origin": "brand-line",
         "ext": {
-          "frontNotes": {},
+          "frontNotes": {
+            "formula": "A diaper has no ingredient list. What it is made of is the materials check."
+          },
           "verdict": "unrated",
           "dated": "2026-08-28",
           "why": "neutral is not a verdict, nothing is being asserted",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "none",
             "materials": "unassessed",
             "legal": "unassessed",
             "testing": "unassessed"
           },
-          "frontOrigin": {},
+          "frontOrigin": {
+            "formula": "hand"
+          },
           "scope": "brand",
           "basis": "inherited",
           "disclose": false,
@@ -39647,7 +39688,7 @@
   {
     "id": "green-sprouts",
     "brand": "Green Sprouts",
-    "category": "Swim diapers",
+    "category": "Diapers",
     "stance": "good",
     "reason": "OEKO-TEX certified reusable swim diapers and trunks free from azo dyes and formaldehyde, UPF 50+.",
     "evidence": "OEKO-TEX certified, no azo dyes/formaldehyde",
@@ -39838,7 +39879,7 @@
   {
     "id": "grovia",
     "brand": "GroVia",
-    "category": "Cloth diapers",
+    "category": "Diapers",
     "stance": "careful",
     "reason": "Well regarded cloth system, but its hybrid waterproof cover returned the single highest organic fluorine result in the 2023 diaper screening.",
     "evidence": "GroVia hybrid cover: 323 ppm organic fluorine on the outside (2023 lab screening).",
@@ -39901,19 +39942,21 @@
         "origin": "brand-line",
         "ext": {
           "frontNotes": {
-            "testing": "The hybrid waterproof cover returned the single highest organic fluorine result in the 2023 diaper screening"
+            "testing": "The hybrid waterproof cover returned the single highest organic fluorine result in the 2023 diaper screening",
+            "formula": "A diaper has no ingredient list. What it is made of is the materials check."
           },
           "verdict": "careful",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "none",
             "materials": "unassessed",
             "legal": "unassessed",
             "testing": "caution"
           },
           "frontOrigin": {
-            "testing": "hand"
+            "testing": "hand",
+            "formula": "hand"
           },
           "scope": "brand",
           "basis": "inherited",
@@ -41117,19 +41160,21 @@
         "origin": "brand-line",
         "ext": {
           "frontNotes": {
-            "testing": "Marketed as a natural diaper but returned organic fluorine in 2023 independent screening"
+            "testing": "Marketed as a natural diaper but returned organic fluorine in 2023 independent screening",
+            "formula": "A diaper has no ingredient list. What it is made of is the materials check."
           },
           "verdict": "careful",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "none",
             "materials": "unassessed",
             "legal": "unassessed",
             "testing": "caution"
           },
           "frontOrigin": {
-            "testing": "hand"
+            "testing": "hand",
+            "formula": "hand"
           },
           "scope": "brand",
           "basis": "inherited",
@@ -41732,7 +41777,7 @@
   {
     "id": "healthybaby",
     "brand": "HealthyBaby",
-    "category": "Diapers & wipes",
+    "category": "Diapers",
     "stance": "good",
     "reason": "Diapers: the first EWG Verified diaper, totally chlorine free. Wipes: the only wipe with both EWG Verified and MADE SAFE, on FSC wood pulp cloth, PFAS non detect in Consumer Reports 2026 testing. Its zinc diaper cream is the exception: 2025 independent testing reported lead in it and we removed it from our picks; certification audits the formula, not batch contamination.",
     "evidence": "Diapers/wipes clean; diaper cream tested leaded (LSM)",
@@ -41839,15 +41884,13 @@
         "ext": {
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
           "frontNotes": {
-            "formula": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear."
+            "formula": "A diaper has no ingredient list. What it is made of is the materials check."
           },
-          "heldFrom": "good",
-          "restoreWhy": "independent lab result at sku scope",
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: formula",
+          "why": "independent lab result at sku scope",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "none",
             "materials": "pass",
             "legal": "pass",
             "testing": "pass"
@@ -41855,7 +41898,8 @@
           "frontOrigin": {
             "legal": "database",
             "testing": "inferred",
-            "materials": "inferred"
+            "materials": "inferred",
+            "formula": "hand"
           },
           "scope": "sku",
           "basis": "direct",
@@ -41885,10 +41929,7 @@
             "flagged": [],
             "source": "amazon:B0GFXCRB12",
             "checked": "2026-09-04"
-          },
-          "heldBack": [
-            "formula"
-          ]
+          }
         },
         "cat": "Diapers",
         "research": "Packaging: Monthly supply ships as a corrugated cardboard box holding six flexible film packs of 33 diapers each; pack film material unstated."
@@ -41928,18 +41969,21 @@
         "origin": "brand-line",
         "ext": {
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
-          "frontNotes": {},
+          "frontNotes": {
+            "formula": "A diaper has no ingredient list. What it is made of is the materials check."
+          },
           "verdict": "unrated",
           "dated": "2026-08-28",
           "why": "a recommendation cannot rest on inherited evidence",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "none",
             "materials": "unassessed",
             "legal": "pass",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "legal": "database"
+            "legal": "database",
+            "formula": "hand"
           },
           "scope": "brand",
           "basis": "inherited",
@@ -42491,17 +42535,21 @@
         "note": "",
         "origin": "brand-line",
         "ext": {
-          "frontNotes": {},
+          "frontNotes": {
+            "formula": "A diaper has no ingredient list. What it is made of is the materials check."
+          },
           "verdict": "careful",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "none",
             "materials": "unassessed",
             "legal": "unassessed",
             "testing": "unassessed"
           },
-          "frontOrigin": {},
+          "frontOrigin": {
+            "formula": "hand"
+          },
           "scope": "brand",
           "basis": "inherited",
           "disclose": true,
@@ -44000,7 +44048,7 @@
   {
     "id": "huggies",
     "brand": "Huggies",
-    "category": "Diapers & wipes",
+    "category": "Diapers",
     "stance": "skip",
     "reason": "Wipes cloth is up to about 30% polypropylene plastic fiber by the brand's own plant based math. MI and phenoxyethanol were removed years ago after the wipe rash era, but a class action challenged Natural Care's natural labeling and a 2024 suit alleges trace PFAS in Simply Clean wipes. Diapers use ECF pulp with no full material disclosure.",
     "evidence": "Plastic fiber cloth; natural labeling and PFAS suits",
@@ -44051,20 +44099,21 @@
         "source": "top-100-baby-kids-products-amazon.html",
         "ext": {
           "frontNotes": {
-            "formula": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear.",
+            "formula": "A diaper has no ingredient list. What it is made of is the materials check.",
             "testing": "ANSES 2020 testing flagged Huggies alongside Pampers for trace dioxins, furans, PCBs and glyphosate"
           },
           "verdict": "skip",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "none",
             "materials": "unassessed",
             "legal": "unassessed",
             "testing": "fail"
           },
           "frontOrigin": {
-            "testing": "hand"
+            "testing": "hand",
+            "formula": "hand"
           },
           "scope": "sku",
           "basis": "direct",
@@ -44123,7 +44172,7 @@
           "verdict": "skip",
           "why": "Reviewed by hand from our published research on this category.",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "none",
             "materials": "unassessed",
             "legal": "unassessed",
             "testing": "fail"
@@ -44134,7 +44183,7 @@
           "authored": true,
           "dated": "2026-09-03",
           "frontNotes": {
-            "formula": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear.",
+            "formula": "A diaper has no ingredient list. What it is made of is the materials check.",
             "testing": "ANSES 2020 and Greenpeace testing flagged trace dioxins, furans, PCBs and glyphosate across the major disposables. Kimberly-Clark disputes the concentrations"
           },
           "exposure": {
@@ -44151,7 +44200,8 @@
             "why": "for a baby, which is high whatever the arithmetic says"
           },
           "frontOrigin": {
-            "testing": "hand"
+            "testing": "hand",
+            "formula": "hand"
           },
           "formulaAnswers": {
             "ingredients": "",
@@ -44186,7 +44236,7 @@
           "verdict": "skip",
           "why": "Reviewed by hand from our published research on this category.",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "none",
             "materials": "unassessed",
             "legal": "unassessed",
             "testing": "fail"
@@ -44197,7 +44247,7 @@
           "authored": true,
           "dated": "2026-09-03",
           "frontNotes": {
-            "formula": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear.",
+            "formula": "A diaper has no ingredient list. What it is made of is the materials check.",
             "testing": "The same ANSES 2020 finding as the rest of the mainstream disposable category. Kimberly-Clark disputes the concentrations"
           },
           "exposure": {
@@ -44214,7 +44264,8 @@
             "why": "for a baby, which is high whatever the arithmetic says"
           },
           "frontOrigin": {
-            "testing": "hand"
+            "testing": "hand",
+            "formula": "hand"
           },
           "formulaAnswers": {
             "ingredients": "",
@@ -46450,7 +46501,7 @@
   {
     "id": "jackson-reece",
     "brand": "Jackson Reece (Kinder by Nature)",
-    "category": "Wipes",
+    "category": "Baby wipes",
     "stance": "good",
     "reason": "UK wipe brand on 100% biodegradable wood pulp cloth with a phenoxyethanol free, paraben free formula. A Mamavation best rated wipe. US availability and owner reviews run behind our main picks, but the wipe itself screens clean.",
     "evidence": "Wood pulp cloth; phenoxyethanol free; Mamavation best",
@@ -47415,7 +47466,7 @@
   {
     "id": "joonya",
     "brand": "Joonya",
-    "category": "Wipes",
+    "category": "Baby wipes",
     "stance": "neutral",
     "reason": "Wipes on FSC certified viscose cloth with a 99.7% water formula, no phenoxyethanol, parabens, or formaldehyde releasers, with brand commissioned Eurofins chemical testing. Screens clean on ingredients; we have not run our full vetting on the brand.",
     "evidence": "Clean ingredient screen; brand commissioned testing",
@@ -48064,7 +48115,7 @@
   {
     "id": "kanga-care",
     "brand": "Kanga Care",
-    "category": "Cloth diapers",
+    "category": "Diapers",
     "stance": "good",
     "reason": "Rumparooz covers tested non detect for organic fluorine in the round where waterproof covers were the worst performing category overall.",
     "evidence": "Rumparooz One Size non detect organic fluorine inside and outside (2023 lab screening).",
@@ -48128,17 +48179,21 @@
         "note": "",
         "origin": "brand-line",
         "ext": {
-          "frontNotes": {},
+          "frontNotes": {
+            "formula": "A diaper has no ingredient list. What it is made of is the materials check."
+          },
           "verdict": "unrated",
           "dated": "2026-08-28",
           "why": "a recommendation cannot rest on inherited evidence",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "none",
             "materials": "unassessed",
             "legal": "unassessed",
             "testing": "unassessed"
           },
-          "frontOrigin": {},
+          "frontOrigin": {
+            "formula": "hand"
+          },
           "scope": "brand",
           "basis": "inherited",
           "disclose": false,
@@ -50679,19 +50734,21 @@
         "origin": "brand-line",
         "ext": {
           "frontNotes": {
-            "testing": "Two labs disagree: 2023 screening returned the highest disposable organic fluorine result on size 4, while size 5 was non detect"
+            "testing": "Two labs disagree: 2023 screening returned the highest disposable organic fluorine result on size 4, while size 5 was non detect",
+            "formula": "A diaper has no ingredient list. What it is made of is the materials check."
           },
           "verdict": "careful",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "none",
             "materials": "unassessed",
             "legal": "unassessed",
             "testing": "caution"
           },
           "frontOrigin": {
-            "testing": "hand"
+            "testing": "hand",
+            "formula": "hand"
           },
           "scope": "brand",
           "basis": "inherited",
@@ -55779,7 +55836,7 @@
     "id": "luvs",
     "brand": "Luvs",
     "aliases": [],
-    "category": "Diapers & wipes",
+    "category": "Diapers",
     "stance": "skip",
     "reason": "Procter & Gamble's budget diaper, and the one place in their range where fragrance and lotion are still used. The company does not disclose its ingredient list or its bleaching method, which on its own is disqualifying against brands that publish both. Fragrance against skin worn around the clock is the single easiest thing to avoid in this category, and every totally chlorine free brand avoids it.",
     "evidence": "Uses fragrance and lotion; no ingredient or bleaching disclosure published",
@@ -57232,7 +57289,7 @@
       "Amazon Mama Bear",
       "Mama Bear Gentle Touch"
     ],
-    "category": "Diapers & wipes",
+    "category": "Diapers",
     "stance": "careful",
     "reason": "Amazon's own label, manufactured by First Quality, the same maker as Earth & Eden. Free of fragrance, lotion, parabens and phthalates, which is better than most budget diapers. It is elemental chlorine free rather than totally chlorine free, and the disclosed core includes titanium dioxide alongside sodium polyacrylate, cellulose pulp, polyolefin and polyester. No independent PFAS testing that we can find.",
     "evidence": "First Quality made; elemental chlorine free; no fragrance, lotion, parabens or phthalates; core discloses titanium dioxide, sodium polyacrylate, polyolefin, polyester",
@@ -57309,19 +57366,21 @@
         "origin": "brand-line",
         "ext": {
           "frontNotes": {
-            "materials": "Elemental chlorine free rather than totally chlorine free, and the disclosed core includes titanium dioxide"
+            "materials": "Elemental chlorine free rather than totally chlorine free, and the disclosed core includes titanium dioxide",
+            "formula": "A diaper has no ingredient list. What it is made of is the materials check."
           },
           "verdict": "careful",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "none",
             "materials": "caution",
             "legal": "unassessed",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "materials": "hand"
+            "materials": "hand",
+            "formula": "hand"
           },
           "scope": "brand",
           "basis": "inherited",
@@ -57862,7 +57921,7 @@
   {
     "id": "marleys-monsters",
     "brand": "Marley's Monsters",
-    "category": "Wipes",
+    "category": "Baby wipes",
     "stance": "good",
     "reason": "Reusable 100% organic cotton flannel wipes sewn in Oregon, used with plain water. No preservatives, fragrance, or plastic fiber, nothing to vet. Our reusable wipes pick.",
     "evidence": "Organic cotton + water, zero additives",
@@ -66041,7 +66100,7 @@
   {
     "id": "no-7-beauty",
     "brand": "No. 7 Beauty",
-    "category": "Cosmetics / wipes",
+    "category": "Makeup",
     "stance": "skip",
     "reason": "Lawsuit alleges makeup remover wipes marketed as biodegradable do not degrade under landfill conditions.",
     "evidence": "Filed April 28, 2026, New York federal court",
@@ -69974,7 +70033,7 @@
   {
     "id": "osocozy",
     "brand": "OsoCozy",
-    "category": "Cloth diapers",
+    "category": "Diapers",
     "stance": "careful",
     "reason": "Widely recommended budget prefold that returned a low level organic fluorine detection in 2023 independent screening.",
     "evidence": "20 ppm organic fluorine inside (2023 lab screening).",
@@ -70034,19 +70093,21 @@
         "origin": "brand-line",
         "ext": {
           "frontNotes": {
-            "testing": "Returned a low level organic fluorine detection in 2023 independent screening"
+            "testing": "Returned a low level organic fluorine detection in 2023 independent screening",
+            "formula": "A diaper has no ingredient list. What it is made of is the materials check."
           },
           "verdict": "careful",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "none",
             "materials": "unassessed",
             "legal": "unassessed",
             "testing": "caution"
           },
           "frontOrigin": {
-            "testing": "hand"
+            "testing": "hand",
+            "formula": "hand"
           },
           "scope": "brand",
           "basis": "inherited",
@@ -70787,7 +70848,7 @@
   {
     "id": "pampers",
     "brand": "Pampers",
-    "category": "Diapers & wipes",
+    "category": "Diapers",
     "stance": "skip",
     "reason": "ANSES 2020 and Greenpeace testing flagged trace dioxins, furans, PCBs, and glyphosate in the diapers worn against skin around the clock, and the Sensitive wipes are a conventional polypropylene substrate.",
     "evidence": "ANSES 2020 trace dioxins, furans, PCBs, glyphosate",
@@ -70804,7 +70865,8 @@
         "note": "ANSES 2020 and Greenpeace testing flagged trace dioxins, furans, PCBs, and glyphosate.",
         "ext": {
           "frontNotes": {
-            "testing": "ANSES 2020 and Greenpeace testing flagged trace dioxins, furans, PCBs and glyphosate in diapers worn against skin around the clock. (Recorded for Pampers as a whole rather than this product specifically.)"
+            "testing": "ANSES 2020 and Greenpeace testing flagged trace dioxins, furans, PCBs and glyphosate in diapers worn against skin around the clock. (Recorded for Pampers as a whole rather than this product specifically.)",
+            "formula": "A diaper has no ingredient list. What it is made of is the materials check."
           },
           "inheritedFronts": [
             "testing"
@@ -70813,13 +70875,14 @@
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "none",
             "materials": "unassessed",
             "legal": "unassessed",
             "testing": "fail"
           },
           "frontOrigin": {
-            "testing": "stated"
+            "testing": "stated",
+            "formula": "hand"
           },
           "scope": "line",
           "basis": "direct",
@@ -70922,7 +70985,7 @@
         "ext": {
           "frontNotes": {
             "testing": "ANSES 2020 and Greenpeace testing flagged trace dioxins, furans, PCBs and glyphosate in diapers worn against skin around the clock. (Recorded for Pampers as a whole rather than this product specifically.)",
-            "formula": "No ingredient list recorded."
+            "formula": "A diaper has no ingredient list. What it is made of is the materials check."
           },
           "inheritedFronts": [
             "testing"
@@ -70931,13 +70994,14 @@
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "none",
             "materials": "unassessed",
             "legal": "unassessed",
             "testing": "fail"
           },
           "frontOrigin": {
-            "testing": "stated"
+            "testing": "stated",
+            "formula": "hand"
           },
           "scope": "sku",
           "basis": "direct",
@@ -71101,20 +71165,22 @@
         "ext": {
           "frontNotes": {
             "testing": "ANSES 2020 and Greenpeace testing flagged trace dioxins, furans, PCBs and glyphosate in diapers worn against skin around the clock",
-            "materials": "The Sensitive wipes are a conventional polypropylene substrate"
+            "materials": "The Sensitive wipes are a conventional polypropylene substrate",
+            "formula": "A diaper has no ingredient list. What it is made of is the materials check."
           },
           "verdict": "skip",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "none",
             "materials": "caution",
             "legal": "unassessed",
             "testing": "fail"
           },
           "frontOrigin": {
             "testing": "hand",
-            "materials": "hand"
+            "materials": "hand",
+            "formula": "hand"
           },
           "scope": "brand",
           "basis": "inherited",
@@ -74680,7 +74746,7 @@
       "Pura Baby",
       "Pura 360"
     ],
-    "category": "Diapers & wipes",
+    "category": "Diapers",
     "stance": "good",
     "reason": "British brand whose diapers are totally chlorine free rather than the weaker elemental chlorine free, with no fragrance, parabens, lotion or latex and an organic cotton top sheet. The company is unusually straight about limits: it states plainly that the diapers are not plastic free, because the outer cover is polyethylene and polyester. The wipes are the standout, 99 percent water with organic aloe and genuinely plastic free. We have found no independent PFAS or organic fluorine testing on the diapers, so this rests on materials rather than lab results.",
     "evidence": "Totally chlorine free; no fragrance, parabens, lotion or latex; organic cotton top sheet; PE/PET outer cover; B Corp; Allergy UK certified",
@@ -74750,17 +74816,21 @@
         "note": "",
         "origin": "brand-line",
         "ext": {
-          "frontNotes": {},
+          "frontNotes": {
+            "formula": "A diaper has no ingredient list. What it is made of is the materials check."
+          },
           "verdict": "unrated",
           "dated": "2026-08-28",
           "why": "a recommendation cannot rest on inherited evidence",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "none",
             "materials": "unassessed",
             "legal": "unassessed",
             "testing": "unassessed"
           },
-          "frontOrigin": {},
+          "frontOrigin": {
+            "formula": "hand"
+          },
           "scope": "brand",
           "basis": "inherited",
           "disclose": false,
@@ -76349,19 +76419,21 @@
         "origin": "brand-line",
         "ext": {
           "frontNotes": {
-            "testing": "Returned a low level organic fluorine detection in 2023 independent screening"
+            "testing": "Returned a low level organic fluorine detection in 2023 independent screening",
+            "formula": "A diaper has no ingredient list. What it is made of is the materials check."
           },
           "verdict": "careful",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "none",
             "materials": "unassessed",
             "legal": "unassessed",
             "testing": "caution"
           },
           "frontOrigin": {
-            "testing": "hand"
+            "testing": "hand",
+            "formula": "hand"
           },
           "scope": "brand",
           "basis": "inherited",
@@ -78617,20 +78689,22 @@
         ],
         "ext": {
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
-          "frontNotes": {},
+          "frontNotes": {
+            "formula": "A diaper has no ingredient list. What it is made of is the materials check."
+          },
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
           "verdict": "unrated",
           "dated": "2026-08-29",
           "why": "a recommendation needs its checks done; still to do: materials",
           "fronts": {
-            "formula": "pass",
+            "formula": "none",
             "materials": "unassessed",
             "legal": "pass",
             "testing": "pass"
           },
           "frontOrigin": {
-            "formula": "inferred",
+            "formula": "hand",
             "legal": "database",
             "testing": "inferred"
           },
@@ -80994,7 +81068,9 @@
         ],
         "ext": {
           "legalNote": "Seventh Generation settled a class action in 2016 over natural and non toxic marketing claims ($4.5M), which under our rules means its own claims need third party proof, and a 2024 class action about overstated loads per bottle appears still open. No safety recall is on record.",
-          "frontNotes": {},
+          "frontNotes": {
+            "formula": "A diaper has no ingredient list. What it is made of is the materials check."
+          },
           "cappedFrom": "good",
           "capRestoreWhy": "direct evidence at sku scope on formula",
           "legalDate": "2024",
@@ -81002,13 +81078,13 @@
           "dated": "2026-09-03",
           "why": "no direct pass on materials, and no lab result standing in for one",
           "fronts": {
-            "formula": "pass",
+            "formula": "none",
             "materials": "unassessed",
             "legal": "caution",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "formula": "inferred",
+            "formula": "hand",
             "legal": "database"
           },
           "scope": "sku",
@@ -86397,19 +86473,21 @@
         "note": "Non detect for PFAS markers in 2023 independent screening, but a long marketing litigation record and unresolved diaper irritation claims.",
         "ext": {
           "frontNotes": {
-            "legal": "A long marketing litigation record and unresolved diaper irritation claims"
+            "legal": "A long marketing litigation record and unresolved diaper irritation claims",
+            "formula": "A diaper has no ingredient list. What it is made of is the materials check."
           },
           "verdict": "careful",
           "dated": "2026-09-02",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "none",
             "materials": "unassessed",
             "legal": "caution",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "legal": "hand"
+            "legal": "hand",
+            "formula": "hand"
           },
           "scope": "line",
           "basis": "direct",
@@ -86673,20 +86751,22 @@
         "source": "top-100-baby-kids-products-amazon.html",
         "ext": {
           "frontNotes": {
-            "legal": "Multiple class actions alleged that natural, naturally derived and plant based labeling was misleading"
+            "legal": "Multiple class actions alleged that natural, naturally derived and plant based labeling was misleading",
+            "formula": "A diaper has no ingredient list. What it is made of is the materials check."
           },
           "verdict": "careful",
           "dated": "2026-09-02",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "none",
             "materials": "unassessed",
             "legal": "caution",
             "testing": "unassessed"
           },
           "frontOrigin": {
             "legal": "hand",
-            "testing": "inferred"
+            "testing": "inferred",
+            "formula": "hand"
           },
           "scope": "sku",
           "basis": "direct",
@@ -87681,7 +87761,7 @@
   {
     "id": "thirsties",
     "brand": "Thirsties",
-    "category": "Cloth diapers",
+    "category": "Diapers",
     "stance": "good",
     "reason": "The Natural all in one uses organic cotton and hemp absorbency sewn into the cover, tested non detect, and is made in the USA.",
     "evidence": "Thirsties Natural non detect for organic fluorine (2023 lab screening).",
@@ -87741,17 +87821,21 @@
         "note": "",
         "origin": "brand-line",
         "ext": {
-          "frontNotes": {},
+          "frontNotes": {
+            "formula": "A diaper has no ingredient list. What it is made of is the materials check."
+          },
           "verdict": "unrated",
           "dated": "2026-08-28",
           "why": "a recommendation cannot rest on inherited evidence",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "none",
             "materials": "unassessed",
             "legal": "unassessed",
             "testing": "unassessed"
           },
-          "frontOrigin": {},
+          "frontOrigin": {
+            "formula": "hand"
+          },
           "scope": "brand",
           "basis": "inherited",
           "disclose": false,
@@ -95237,7 +95321,7 @@
   {
     "id": "waterwipes",
     "brand": "WaterWipes",
-    "category": "Wipes",
+    "category": "Baby wipes",
     "stance": "careful",
     "reason": "The two ingredient label (99.9% water + grapefruit seed extract) is real and the wipes tested PFAS non detect, but two active 2025 lawsuits allege microplastics in wipes marketed as plastic free, the grapefruit seed extract carries a disclosed trace of benzalkonium chloride, and NAD twice ruled against its diaper rash claims in 2022. Cloth improved from 80% polyester to 100% viscose in 2022.",
     "evidence": "2025 microplastics lawsuits; disclosed BAK trace; PFAS non detect (CR 2026)",
@@ -95982,7 +96066,7 @@
   {
     "id": "wet-ones",
     "brand": "Wet Ones",
-    "category": "Wipes",
+    "category": "Baby wipes",
     "stance": "skip",
     "reason": "Active class action alleges methylisothiazolinone and other allergens in a product labeled hypoallergenic.",
     "evidence": "Active class action",
