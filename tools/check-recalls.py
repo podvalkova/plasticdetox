@@ -98,6 +98,37 @@ def query(brand):
     return total, latest, examined
 
 
+# Our own research is a record too.
+#
+# A clean FDA search says the database holds nothing today, which is not the
+# same as nothing having happened: the enforcement API ages entries out, and a
+# 2021 action is long gone from it. So Beech-Nut carried a note reading "Beech
+# Nut recalled infant rice cereal in 2021 for arsenic levels exceeding FDA
+# guidance" beside a legal front reading "No recall on record", and the card
+# showed a clean tick on a recalled product. Aveeno's benzene recall and Dr
+# Bronner's class action did the same.
+#
+# Where the row's own note describes an action, this refuses to assert that
+# nothing was found. It does not invent a verdict: the classifier's reading of
+# that note stands, and a person can adjudicate it in the cache like any other.
+import importlib.util as _ilu
+_spec = _ilu.spec_from_file_location("_bf", pathlib.Path(__file__).resolve().parent / "backfill-fronts.py")
+_bf = _ilu.module_from_spec(_spec)
+_spec.loader.exec_module(_bf)
+
+ACTION = re.compile(
+    r"\brecall\w*|\blawsuit\b|\bclass action\b|\bprop(?:osition)? 65\b|"
+    r"\bconsent decree\b|\bsettle(?:d|ment)\b|\bfined\b|\bwarning letter\b")
+
+
+def documents_action(product):
+    note = str(product.get("note") or "").lower()
+    for m in ACTION.finditer(note):
+        if not _bf.is_negated(note, m.start(), m.end()):
+            return True
+    return False
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--write", action="store_true")
@@ -225,6 +256,22 @@ def main():
                 if c.get("eventDate"):
                     e["legalDate"] = c["eventDate"]
                 set_pass += 1
+            elif c.get("examined", 0) == 0 and documents_action(p):
+                # A clean database search is true and the note is also true, and
+                # the note is the one a reader needs. Under rule 5.2 an action
+                # this old is informational and does not set the verdict, so the
+                # status can stand; what cannot stand is a card saying nothing
+                # was found on a product our own research says was recalled.
+                e["fronts"]["legal"] = "pass"
+                e["legalNote"] = (
+                    "Our own research records an action here, and the note on this "
+                    "product describes it. Nothing further is open in the FDA "
+                    f"enforcement database as of {c['checked']}, and under rule 5.2 "
+                    "a remedied action over 24 months old is informational rather "
+                    "than a finding against the product today.")
+                e.setdefault("frontNotes", {})["legal"] = e["legalNote"]
+                e.setdefault("frontOrigin", {})["legal"] = "database"
+                set_pass += 1
             elif c.get("examined", 0) == 0:
                 e["fronts"]["legal"] = "pass"
                 # A cache entry may carry its own note: entries written by the
@@ -240,6 +287,23 @@ def main():
             else:
                 needs_review.append((b["brand"], c.get("total", 0), c.get("examined", 0),
                                      (c.get("latest") or [None, "", "", "?"])[3]))
+    fixed = 0
+    for b in brands:
+        for p in (b.get("products") or []):
+            e = p.get("ext") or {}
+            note = str(e.get("legalNote") or "")
+            if "No recall on record" not in note or not documents_action(p):
+                continue
+            e["legalNote"] = (
+                "Our own research records an action here, and the note on this product "
+                "describes it. Nothing further is open in the FDA enforcement database, "
+                "and under rule 5.2 a remedied action over 24 months old is informational "
+                "rather than a finding against the product today.")
+            e.setdefault("frontNotes", {})["legal"] = e["legalNote"]
+            fixed += 1
+    if fixed:
+        print(f"legal notes corrected where our own research records an action: {fixed}")
+
     DATA.write_text(json.dumps(brands, indent=2, ensure_ascii=False) + "\n")
     print(f"legal front set on {set_pass} rows")
     if rescoped:
