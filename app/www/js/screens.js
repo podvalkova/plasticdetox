@@ -1122,16 +1122,28 @@ export function result(root, { index, match, scan, product, query, productNamed,
     root.appendChild(box);
   }
 
+  // Buying is the action this screen exists to serve, so it leads. The
+  // research is the reason to trust the answer and sits under it. Brand Check
+  // is the same verdict on another surface, which is a link to where you
+  // already are, so it is gone.
+  //
+  // Only where we would actually buy it: a View button under a skip is an
+  // invitation to buy the thing we just told you not to.
+  const asin = (v.product && (v.product.asins || [])[0])
+    || ((v.brand.products || []).find((p) => (p.ext || {}).verdict === "good"
+          && (p.asins || []).length) || {}).asins?.[0];
+  if (asin && v.stance === "good") {
+    const buy = el("a", "cta", "View \u2192");
+    buy.href = buyLink(asin);
+    buy.onclick = (e) => { e.preventDefault(); onOpen(buy.href); };
+    root.appendChild(buy);
+  }
   if (v.article) {
-    const a = el("a", "cta", "Read the research");
+    const a = el("a", asin && v.stance === "good" ? "cta ghost" : "cta", "Read the research");
     a.href = `${SITE}/articles/${v.article}`;
     a.onclick = (e) => { e.preventDefault(); onOpen(a.href); };
     root.appendChild(a);
   }
-  const check = el("a", "cta ghost", "Open in Brand Check");
-  check.href = `${SITE}/brand-check.html?b=${encodeURIComponent(v.brand.brand)}`;
-  check.onclick = (e) => { e.preventDefault(); onOpen(check.href); };
-  root.appendChild(check);
 
   return v;
 }
