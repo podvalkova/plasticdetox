@@ -563,46 +563,6 @@ function openDetail(r){
   body.appendChild(vl);
   if(d.why) body.appendChild(el("div","why", d.why));
 
-  if(d.exposure){
-    const x = d.exposure;
-    const xs = el("div","d-sec");
-    xs.appendChild(el("h3", null, "Exposure"));
-    const head = el("div","verdict-line");
-    head.appendChild(el("span","lvl "+x.level, x.level));
-    head.appendChild(el("span","d-meta", x.type));
-    xs.appendChild(head);
-    const g = el("div","qa");
-    const pairs = [["Route", x.route], ["Duration", x.duration], ["Retained", x.retained],
-                   ["How often", x.frequency], ["Heat", x.heat?"yes":"no"], ["Fat", x.fat?"yes":"no"]];
-    for(const [k,v] of pairs){
-      g.appendChild(el("div","qn", ""));
-      const c2 = el("div"); c2.appendChild(el("div","q", k)); c2.appendChild(el("div","a", String(v)));
-      g.appendChild(c2);
-    }
-    xs.appendChild(g);
-    if(x.why) xs.appendChild(el("div","why", x.why));
-    body.appendChild(xs);
-  }
-
-  const pk = el("div","d-sec");
-  pk.appendChild(el("h3", null, "Packaging, question by question"));
-  const grid = el("div","qa");
-  Q.forEach((q, i)=>{
-    const [ans, dim, note] = answerFor(i, a);
-    grid.appendChild(el("div","qn", String(i+1)));
-    const cell = el("div");
-    cell.appendChild(el("div","q", q[0]));
-    cell.appendChild(el("div","a"+(dim?" dim":""), ans));
-    if(note) cell.appendChild(el("div","src", note));
-    grid.appendChild(cell);
-  });
-  pk.appendChild(grid);
-  const concl = el("div","why");
-  concl.appendChild(el("span","mark "+r[7]));
-  concl.appendChild(document.createTextNode(r[6] || "Not assessed."));
-  pk.appendChild(concl);
-  body.appendChild(pk);
-
   const fs = el("div","d-sec");
   fs.appendChild(el("h3", null, "The four checks"));
   for(const f of FRONTS){
@@ -656,6 +616,47 @@ function openDetail(r){
     fs.appendChild(row);
   }
   body.appendChild(fs);
+
+  if(d.exposure){
+    const x = d.exposure;
+    const xs = el("div","d-sec");
+    xs.appendChild(el("h3", null, "Exposure"));
+    const head = el("div","verdict-line");
+    head.appendChild(el("span","lvl "+x.level, x.level));
+    head.appendChild(el("span","d-meta", x.type));
+    xs.appendChild(head);
+    const g = el("div","qa");
+    const pairs = [["Route", x.route], ["Duration", x.duration], ["Retained", x.retained],
+                   ["How often", x.frequency], ["Heat", x.heat?"yes":"no"], ["Fat", x.fat?"yes":"no"]];
+    for(const [k,v] of pairs){
+      g.appendChild(el("div","qn", ""));
+      const c2 = el("div"); c2.appendChild(el("div","q", k)); c2.appendChild(el("div","a", String(v)));
+      g.appendChild(c2);
+    }
+    xs.appendChild(g);
+    if(x.why) xs.appendChild(el("div","why", x.why));
+    body.appendChild(xs);
+  }
+
+  const pk = el("div","d-sec");
+  pk.appendChild(el("h3", null, "Materials, question by question"));
+  const grid = el("div","qa");
+  Q.forEach((q, i)=>{
+    const [ans, dim, note] = answerFor(i, a);
+    grid.appendChild(el("div","qn", String(i+1)));
+    const cell = el("div");
+    cell.appendChild(el("div","q", q[0]));
+    cell.appendChild(el("div","a"+(dim?" dim":""), ans));
+    if(note) cell.appendChild(el("div","src", note));
+    grid.appendChild(cell);
+  });
+  pk.appendChild(grid);
+  const concl = el("div","why");
+  concl.appendChild(el("span","mark "+r[7]));
+  concl.appendChild(document.createTextNode(r[6] || "Not assessed."));
+  pk.appendChild(concl);
+  body.appendChild(pk);
+
   document.getElementById("drawer").hidden = false;
 }
 document.getElementById("d-close").addEventListener("click", ()=>{document.getElementById("drawer").hidden=true;});
