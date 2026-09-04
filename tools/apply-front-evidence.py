@@ -257,6 +257,34 @@ def assess(pack):
 # an air purifier "air appliance", but neither has an ingredient list. The type
 # describes what reaches a person, which is the right question for exposure and
 # the wrong one for whether a recipe exists.
+# Brand categories that are objects. A cookware brand has no ingredient list,
+# so a "Formula: PFAS free" line on its card is the materials answer wearing
+# the wrong label, and 143 cookware brands were carrying one. Textiles, tools,
+# furniture and drinkware are the same: what they are made of is the question,
+# and materials is where it belongs.
+DURABLE_BRAND_CATS = {
+    "Cookware", "Bakeware", "Appliances", "Espresso machine", "Kitchen",
+    "Food storage", "Baby food storage", "Baby food prep", "Cutting boards",
+    "Tableware", "Tableware / bibs", "Tableware / toys", "Drinkware",
+    "Water bottles", "Toddler drinkware", "Coolers", "Baby bottles",
+    "Breast milk storage", "Reusable coffee pod", "Drying rack",
+    "Water filter", "Showerheads / filters", "Water test kit",
+    "Air purifier", "Vacuum", "Laundry microfiber filter",
+    "Activewear", "Activewear / basics", "Activewear / socks", "Apparel",
+    "Swimwear", "Swim diapers", "Socks", "Base layers", "Kids clothing",
+    "Baby clothing", "Sun hats", "Kids sun hats", "Baby sun hats",
+    "Sleepwear / basics", "Bedding / sleepwear", "Basics", "Bedding / basics",
+    "Bedding", "Pillow / bedding", "Mattress", "Bedroom", "Home textiles",
+    "Bath textiles", "Beach towels", "Beach blankets", "Beach textiles",
+    "Curtains", "Shower curtains", "Rugs", "Play mats", "Nursing pillows",
+    "Baby textiles", "Baby textiles / teethers", "Baby sleep", "Nursery",
+    "Nursery furniture", "High chairs", "Car seats", "Car seats / sleep",
+    "Car seats / strollers", "Strollers", "Baby carriers", "Home",
+    "Toys", "Beach toys", "Teethers", "Pacifiers", "Yoga mats", "Fitness",
+    "Beach seating", "Beach shade", "Beach shade / seating", "Beach gear",
+    "Beach bags", "Bath accessories", "Razors", "Pumping",
+}
+
 DEVICE_CATS = {
     "Water filters", "Air purifiers", "Vacuums", "Air fryers",
     "Kitchen appliances", "Humidifiers", "Toothbrushes",
@@ -516,6 +544,29 @@ def main():
             }
             applied[status] += 1
 
+    # Brand cards carry fronts too, and a brand card is what somebody sees when
+    # we hold no verdict on the exact product. Lodge showed "Formula: PFAS
+    # free" on a cast iron skillet.
+    nobf = 0
+    for b in brands:
+        if (b.get("category") or "") not in DURABLE_BRAND_CATS:
+            continue
+        fr = b.get("fronts")
+        if not isinstance(fr, dict):
+            continue
+        cur = fr.get("formula")
+        status = cur.get("status") if isinstance(cur, dict) else cur
+        if status in ("pass", "unknown", "unassessed", None, ""):
+            fr["formula"] = {
+                "status": "none",
+                "note": ("A durable good has no ingredient list. What it is made of "
+                         "is the materials check."),
+                "origin": "database",
+            }
+            nobf += 1
+    if nobf:
+        print(f"  formula marked none on durable brands:   {nobf}")
+
     # A durable good has no ingredient list and never will. Section 5.4: its
     # formula is `none`, a completed check, not `unassessed`, a gap. Leaving it
     # as a gap makes a steel kettle wait forever for a recipe it does not have,
@@ -576,7 +627,22 @@ def main():
                     continue
             e = p.setdefault("ext", {})
             fr = e.setdefault("fronts", {})
-            if fr.get("formula") in (None, "", "unknown", "unassessed"):
+            # Overwrite a pass too, unless a person set it.
+            #
+            # A durable good having no ingredient list is a fact about the kind
+            # of thing, not a judgement worth preserving, and a formula `pass`
+            # on one is the materials answer wearing the wrong label: Lodge
+            # read "Formula: PFAS free" on cast iron. Filling only blanks left
+            # every row the classifier had already guessed at.
+            blank = fr.get("formula") in (None, "", "unknown", "unassessed")
+            # The front's own provenance, not the row's. `authored` means a
+            # person signed off the scorecard, which is not the same as having
+            # set every front in it: Lodge's row is authored and its formula
+            # came from the classifier, marked `inferred`, and that combination
+            # was enough to keep "PFAS free" on a cast iron skillet.
+            origin = (e.get("frontOrigin") or {}).get("formula")
+            mislabelled = fr.get("formula") == "pass" and origin != "hand"
+            if blank or mislabelled:
                 fr["formula"] = "none"
                 e.setdefault("frontOrigin", {})["formula"] = "database"
                 e.setdefault("frontNotes", {})["formula"] = (

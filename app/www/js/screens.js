@@ -705,7 +705,7 @@ function worthKnowing(ext, fronts, shown = []) {
 }
 
 export function result(root, { index, match, scan, product, query, productNamed,
-  onOpen, onPick, onProduct, onSave, isSaved }) {
+  onOpen, onPick, onProduct, onSave, isSaved, onRequest }) {
   const v = verdictFor(match, { title: (scan && scan.title) || query || "", product, productNamed });
 
   const stanceClass = v.asserted && ["good", "careful", "skip"].includes(v.stance)
@@ -846,6 +846,30 @@ export function result(root, { index, match, scan, product, query, productNamed,
       }
       root.appendChild(box);
     }
+  }
+
+  // Knowing the brand is not knowing the product, and somebody standing in a
+  // shop with the thing in their hand is the best possible moment to ask. The
+  // unknown screen already offered this; a card that says "no verdict on this
+  // product" and then offers nothing was the dead end.
+  if (onRequest && !v.asserted) {
+    const ask = el("div", "card");
+    ask.appendChild(el("h2", null, "Want us to check this one?"));
+    ask.appendChild(el("p", null,
+      `Leave your email and we will research ${v.brand.brand}`
+      + `${v.product && v.product.name ? " " + v.product.name : ""} by hand `
+      + "and send you the verdict, usually within 2 business days."));
+    const input = el("input");
+    input.type = "email";
+    input.placeholder = "you@email.com";
+    input.autocapitalize = "none";
+    input.autocomplete = "email";
+    ask.appendChild(input);
+    const btn = el("button", "cta ghost", "Request a free check");
+    btn.onclick = () => onRequest(
+      v.brand.brand, (v.product && v.product.name) || query || "", input.value, btn);
+    ask.appendChild(btn);
+    root.appendChild(ask);
   }
 
   const ing = ingredientsCard(v.ext && v.ext.formulaAnswers);

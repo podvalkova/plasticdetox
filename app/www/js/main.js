@@ -245,6 +245,8 @@ function draw() {
       onPick: openHit,
       onSave: toggleSaved,
       isSaved,
+      onRequest: (brand, product, email, btn) =>
+        requestResearch({ brand, product }, email, btn),
       onProduct: (row) => go({ screen: "result", match: state.match, scan: state.scan, query: state.query, product: row }),
     });
     remember(state, v);

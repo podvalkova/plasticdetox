@@ -97,7 +97,11 @@ RULES = [
     ("Cookware",            r"pan\b|skillet|cookware|frying|dutch oven|saucepan|bakeware|"
                             r"baking sheet|nonstick|non-stick"),
     ("Air fryers",          r"air fryer|airfryer"),
-    ("Kitchen appliances",  r"blender|mixer|rice cooker|slow cooker|pressure cooker|toaster|popcorn|frother"),
+    ("Kitchen appliances",  r"blender|mixer|rice cooker|slow cooker|pressure cooker|toaster|frother|"
+                            # "popcorn" alone filed Anthony's popcorn kernels as an
+                            # appliance, which then read as a durable good with no
+                            # ingredient list. The machine, not the corn.
+                            r"popcorn (popper|maker|machine)"),
     ("Cutting boards",      r"cutting board|chopping board|butcher block"),
     ("Food storage",        r"food storage|storage container|mason jar|jar lid|beeswax wrap|"
                             r"food container|bento|lunch|bread box|produce bag|cheese"),
