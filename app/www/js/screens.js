@@ -866,6 +866,29 @@ export function result(root, { index, match, scan, product, query, productNamed,
   // these as "Worth a caution" since launch, from brand.cautions. The app
   // never read the field, so Andy Pandy showed a CAREFUL badge over an empty
   // "why we flag it" while the website explained itself perfectly.
+  // The measurements themselves. A card that says "independent testing found
+  // lead" is weaker than one that says 913 ppb arsenic, and we hold 108 of
+  // these figures. Nothing rendered them until now.
+  const results = ((v.ext || {}).testingResults || []).filter(Boolean);
+  if (results.length) {
+    const rw = el("div", "lab");
+    rw.appendChild(el("div", "fronts-label", "What the lab measured"));
+    for (const r of results) {
+      const line = el("div", "lab-row");
+      const val = r.outcome === "non-detect"
+        ? "non detect"
+        : (r.value != null ? `${r.value}${r.unit ? " " + r.unit : ""}` : String(r.outcome || ""));
+      line.appendChild(el("span", `lab-val ${r.outcome === "non-detect" ? "clean" : "hit"}`, val));
+      const b2 = el("div", "row-body");
+      b2.appendChild(el("div", "lab-analyte", String(r.analyte || "")));
+      const bits = [r.lab, r.year, r.lod ? `LOD ${r.lod}` : ""].filter(Boolean);
+      if (bits.length) b2.appendChild(el("div", "lab-src", bits.join(" · ")));
+      line.appendChild(b2);
+      rw.appendChild(line);
+    }
+    fronts.appendChild(rw);
+  }
+
   const cautions = ((v.brand || {}).cautions || []).filter(Boolean);
   if (cautions.length) {
     const cw = el("div", "cautions");

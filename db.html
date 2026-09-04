@@ -381,7 +381,8 @@ function build(brands){
                   // fronts, exposure and a one line `why`, and never carried
                   // the summary itself, so the internal view could not show the
                   // thing the product card leads with.
-                  note:p.note||"", reason:b.reason||"", cautions:b.cautions||[]}]);
+                  note:p.note||"", reason:b.reason||"", cautions:b.cautions||[],
+                  results:e.testingResults||[], scopeNote:b.scopeNote||"", tradeoff:p.tradeoff||""}]);
     }
   }
 
@@ -589,6 +590,33 @@ function openDetail(r){
     cw.appendChild(el("div","a", c));
     body.appendChild(cw);
   });
+
+  // The measurements themselves, not a sentence about them. 89 rows carry a
+  // structured result and nothing displayed it.
+  if((d.results||[]).length){
+    const rs = el("div","d-sec");
+    rs.appendChild(el("h3", null, "What the lab measured"));
+    const g = el("div","qa");
+    d.results.forEach(r=>{
+      g.appendChild(el("div","qn",""));
+      const cell = el("div");
+      const val = r.outcome === "non-detect" ? "non detect"
+                : (r.value!=null ? r.value + (r.unit ? " " + r.unit : "") : r.outcome);
+      cell.appendChild(el("div","q", String(r.analyte||"") + " — " + val));
+      const bits = [r.lab, r.year, r.lod ? "LOD " + r.lod : ""].filter(Boolean);
+      if(bits.length) cell.appendChild(el("div","src", bits.join(" · ")));
+      g.appendChild(cell);
+    });
+    rs.appendChild(g);
+    body.appendChild(rs);
+  }
+  if(d.tradeoff){
+    const t = el("div","cautionbox");
+    t.appendChild(el("div","q","Why we keep it anyway"));
+    t.appendChild(el("div","a", d.tradeoff));
+    body.appendChild(t);
+  }
+  if(d.scopeNote) body.appendChild(el("div","src", d.scopeNote));
 
   if(d.why) body.appendChild(el("div","why", d.why));
 

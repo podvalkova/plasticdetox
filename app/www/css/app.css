@@ -243,6 +243,18 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .front-mark.unknown { color: var(--faint); background: var(--chip); }
 
 /* A caution the four fronts cannot hold: out of business, an unverified claim. */
+/* The measurements behind a testing finding. */
+.lab { margin-top: .85rem; padding: .8rem .9rem; border-radius: 14px;
+  background: var(--chip); border: 1px solid var(--border-strong); }
+.lab .fronts-label { margin: 0 0 .5rem; }
+.lab-row { display: flex; gap: .7rem; align-items: baseline; padding: .25rem 0; }
+.lab-val { flex: none; min-width: 5.6rem; font-weight: 700; font-size: 14px;
+  font-variant-numeric: tabular-nums; }
+.lab-val.hit { color: var(--skip); }
+.lab-val.clean { color: var(--good); }
+.lab-analyte { font-size: 14px; color: var(--text); }
+.lab-src { font-size: 12px; color: var(--faint); }
+
 .cautions { margin-top: .85rem; padding: .8rem .9rem; border-radius: 14px;
   background: var(--careful-bg); border: 1px solid var(--careful-border); }
 .cautions .fronts-label { margin: 0 0 .35rem; color: var(--careful); }
