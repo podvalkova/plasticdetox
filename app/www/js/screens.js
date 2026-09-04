@@ -860,6 +860,20 @@ export function result(root, { index, match, scan, product, query, productNamed,
     fronts.appendChild(el("div", "fronts-unassessed",
       "Not yet assessed: " + unassessed.map(([, l]) => l.toLowerCase()).join(", ")));
   }
+  // Reasons the four fronts have no place for. A brand can be cautioned for
+  // going out of business, or for an efficacy claim, and none of formula,
+  // materials, legal or testing is where that lives. The site has rendered
+  // these as "Worth a caution" since launch, from brand.cautions. The app
+  // never read the field, so Andy Pandy showed a CAREFUL badge over an empty
+  // "why we flag it" while the website explained itself perfectly.
+  const cautions = ((v.brand || {}).cautions || []).filter(Boolean);
+  if (cautions.length) {
+    const cw = el("div", "cautions");
+    cw.appendChild(el("div", "fronts-label", "Worth a caution"));
+    for (const t of cautions) cw.appendChild(el("p", "caution-line", String(t)));
+    fronts.appendChild(cw);
+  }
+
   if (fronts.childNodes.length) card.appendChild(fronts);
 
   root.appendChild(card);

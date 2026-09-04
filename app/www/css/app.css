@@ -241,6 +241,13 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .front-mark.caution { color: var(--careful); background: var(--careful-bg); }
 .front-mark.fail { color: var(--skip); background: var(--skip-bg); }
 .front-mark.unknown { color: var(--faint); background: var(--chip); }
+
+/* A caution the four fronts cannot hold: out of business, an unverified claim. */
+.cautions { margin-top: .85rem; padding: .8rem .9rem; border-radius: 14px;
+  background: var(--careful-bg); border: 1px solid var(--careful-border); }
+.cautions .fronts-label { margin: 0 0 .35rem; color: var(--careful); }
+.caution-line { font-size: 14px; line-height: 1.5; color: var(--body); margin: 0 0 .4rem; }
+.caution-line:last-child { margin-bottom: 0; }
 .front-name { font-weight: 650; font-size: 14.5px; }
 .front-note { color: var(--muted); font-size: 13.5px; line-height: 1.5; }
 .front-scope { color: var(--faint); font-size: 12.5px; line-height: 1.45; font-style: italic; margin-top: .2rem; }
