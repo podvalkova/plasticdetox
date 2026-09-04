@@ -294,7 +294,29 @@ DEVICE_CATS = {
 # the sense that you throw them away. A diaper is not a formulation: what it is
 # made of is the materials check. Some diapers do add a lotion or a fragrance,
 # and that is a real formula finding, so only an unearned PASS is wrong here.
-NO_INGREDIENT_CATS = {"Diapers", "Menstrual cups"}
+# Categories where the formula question does not apply, because the product is
+# a thing rather than a formulation. Keyed on category, not exposure type: the
+# type names the route, so a laundry detergent reads as "worn textile" and a
+# razor as "rinse-off skin", and keying on it marked 17 detergents as having no
+# ingredient list while a kettle got a formula caution.
+NO_INGREDIENT_CATS = {
+    "Air fryers", "Air purifiers", "Baby bottles", "Baby sleep", "Bedding",
+    "Breast milk storage", "Car seats", "Clothing", "Cookware",
+    "Crib mattresses", "Cribs & nursery", "Cutting boards", "Dental floss",
+    "Diapers", "Food storage", "Kitchen appliances", "Menstrual cups",
+    "Pacifiers", "Razors", "Shower curtains", "Strollers", "Tableware",
+    "Teethers", "Toothbrushes", "Toys", "Vacuums", "Water bottles",
+    "Water filters", "Yoga mats",
+}
+
+# Formulations. The question applies and only a label read may answer it.
+FORMULA_CATS = {
+    "Baby food", "Baby formula", "Baby lotion", "Baby wipes", "Body lotion",
+    "Bottled water", "Chewing gum", "Cleaning products", "Conditioner",
+    "Deodorant", "Diaper cream", "Electrolytes", "Laundry detergent", "Makeup",
+    "Pantry", "Prenatal vitamins", "Sea salt", "Shampoo", "Skincare", "Soap",
+    "Sunscreen", "Supplements", "Tea", "Toothpaste",
+}
 
 DURABLE_TYPES = {
     "air appliance", "equipment", "floss", "food surface", "food vessel",
@@ -438,6 +460,17 @@ def main():
             # Formula reads its own recorded list and is independent of the
             # material, so it runs whether or not a material is on file.
             f_status, f_why, f_origin, f_terms = read_formula(entry)
+            # A thing has no ingredient list, so there is nothing for the reader
+            # to return and nothing to overwrite. Without this the reader cleared
+            # 40 diapers back to unassessed on every run.
+            if (p.get("cat") or b.get("category") or "") in NO_INGREDIENT_CATS:
+                e = p.setdefault("ext", {})
+                e.setdefault("fronts", {})["formula"] = "none"
+                e.setdefault("frontNotes", {})["formula"] = (
+                    "An object has no ingredient list. What it is made of is "
+                    "the materials check.")
+                e.setdefault("frontOrigin", {})["formula"] = "hand"
+                f_why = None
             if f_why:
                 e = p.setdefault("ext", {})
                 e.setdefault("frontNotes", {})["formula"] = f_why + "."
@@ -618,6 +651,30 @@ def main():
                     fa["verdict"] = "open"
                     fa["summary"] = "No ingredient list recorded."
                 undone += 1
+
+            cat = p.get("cat") or b.get("category") or ""
+            # Category decides whether the formula question applies, because
+            # the exposure type names the route rather than the thing. Keyed on
+            # type, a laundry detergent is a "worn textile" and got marked as
+            # having no ingredient list, seventeen times over.
+            if cat in NO_INGREDIENT_CATS:
+                e = p.setdefault("ext", {})
+                e.setdefault("fronts", {})["formula"] = "none"
+                e.setdefault("frontNotes", {})["formula"] = (
+                    "An object has no ingredient list. What it is made of is "
+                    "the materials check.")
+                e.setdefault("frontOrigin", {})["formula"] = "hand"
+                continue
+            if cat in FORMULA_CATS:
+                # A formulation. Only a real label read may answer this, and a
+                # stored "none" is the exposure type talking, so clear it and
+                # leave the question open rather than assert an absence.
+                e = p.setdefault("ext", {})
+                if (e.get("fronts") or {}).get("formula") == "none":
+                    e["fronts"]["formula"] = "unassessed"
+                    (e.get("frontNotes") or {}).pop("formula", None)
+                    (e.get("frontOrigin") or {}).pop("formula", None)
+                continue
 
             if (p.get("cat") or "") in DEVICE_CATS:
                 etype = ""   # judged as an object below, whatever its type says
