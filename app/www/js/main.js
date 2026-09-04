@@ -94,6 +94,22 @@ function back() {
 const PLACE_KEY = "pd.place.v1";
 const DONE_KEY = "pd.plan.v1";
 
+// One time reset when the tile design first runs.
+//
+// The old checklist shipped for six days and its ticks were mostly testing,
+// but they survived into the tile design, which then opened on "1 source
+// gone" for someone who had done nothing. The redesign starts everyone at
+// zero, once, and never again.
+const RESET_KEY = "pd.plan.reset.v1";
+try {
+  if (!localStorage.getItem(RESET_KEY)) {
+    localStorage.removeItem(DONE_KEY);
+    localStorage.setItem(RESET_KEY, "1");
+  }
+} catch {
+  // Unreadable storage is not worth a crash.
+}
+
 function readDone() {
   try {
     const raw = JSON.parse(localStorage.getItem(DONE_KEY) || "[]");
