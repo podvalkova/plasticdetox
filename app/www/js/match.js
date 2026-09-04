@@ -347,12 +347,25 @@ function expandFronts(ext, brand) {
 /**
  * Is this row a stand-in for the brand rather than something you can hold?
  *
- * The file carries two kinds: 70 rows literally called "Whole range", and 47
- * named "<brand> <category>", like "Lodge cookware" or "Ahimsa tableware".
- * They are useful as a place to hang brand scope evidence and useless in a
- * list headed "which one do you have", where they read as a product nobody
- * sells. An ASIN settles it either way: Eco by Naty Diapers is named exactly
- * like a generated row and is a real listing.
+ * Three kinds are not products. Rows literally called "Whole range". Rows
+ * whose evidence is recorded at brand scope. And 85 search aliases, which are
+ * the ones that kept leaking: a matchAll list, no ASIN, source "alternative",
+ * and a `cat` naming the aisle a shopper might be standing in rather than the
+ * category of anything the brand sells. "Hydro Flask vacuums" exists to catch
+ * someone typing "hydro flask vacuum", because a vacuum flask is what it is.
+ * "Kjaer Weis cookware" catches "kjaer weis pan", where the pan is a makeup
+ * pan and the brand has never made a skillet.
+ *
+ * Testing the name against "<brand> <that brand's own category>" recognised
+ * 46 of those 85, because an alias is named after the aisle it catches and
+ * not after the brand's category. The other 39 reached the picker, where
+ * "which Saalt?" offered "Saalt menstrual products" beside two real cups.
+ * Match on the shape instead, which is what actually distinguishes them and
+ * needs no upkeep as new aliases are generated.
+ *
+ * An ASIN settles it either way: Eco by Naty Diapers is named exactly like a
+ * generated row and is a real listing. Aliases still match, since matching
+ * never consults this; only the "which one do you have" list does.
  */
 export function isBrandLine(brand, row) {
   if ((row.asins || []).length) return false;
@@ -360,6 +373,7 @@ export function isBrandLine(brand, row) {
   if (!name) return true;
   if (name === "whole range") return true;
   if (((row.ext || {}).scope) === "brand") return true;
+  if ((row.matchAll || []).length && row.source === "alternative") return true;
   return name === `${brand.brand} ${brand.category || ""}`.trim().toLowerCase();
 }
 
