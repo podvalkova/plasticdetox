@@ -27,52 +27,27 @@ it still surfaces for people who think of it as a shopping tool.
 
 ## Description
 
-    Your home is full of plastic you never chose. Plastic Detox shows you
-    what is safe, what to swap, and how to clear it out, one source at a time.
+    Plastic Detox helps you find and remove the plastic in your daily life.
+    Check any product before you buy it, then clear your home one swap at a
+    time.
 
-    CLEAR YOUR HOME, SOURCE BY SOURCE
+    - Scan a barcode or search any brand for an instant verdict
+    - Four checks behind every verdict: formula, packaging, recalls,
+      independent lab tests
+    - 960 brands researched by hand, with verdicts on exact products
+    - A step by step home detox: 23 plastic sources, in the order that cuts
+      exposure fastest
+    - Vetted swaps for every step, always with a free option that counts the
+      same
+    - A shop of products that passed, organized room by room
+    - Plain word guides on the science behind every recommendation
+    - Works offline, the whole database lives on your phone
+    - Brand Check for Safari: the same verdicts on Amazon listings while you
+      browse
+    - No account, no ads, nothing sponsored
 
-    Every plastic source in your daily life sits on one board: hot food in
-    plastic, tap water, tea bags, nonstick pans, all 23 of them in the order
-    that cuts your exposure fastest. Tap one and you get the why in two
-    sentences, the swaps we vetted, and a free option that counts the same.
-    Check it off and watch your home get cleaner, room by room. No accounts,
-    no questions, no schedule. Skip anything, come back to it whenever.
-
-    CHECK ANYTHING BEFORE YOU BUY IT
-
-    Scan the barcode in the aisle, or search the brand, and you get one
-    answer checked four ways: what the product is made of, what it is
-    packaged in, whether it has been recalled or sued over, and what
-    independent laboratory testing found.
-
-    - 960 brands researched by hand, not guessed by a model
-    - Verdicts on individual products, not just the companies that make them
-    - A better thing to buy whenever we would not buy the one you scanned
-    - The packaging material of anything with a barcode, down to the polymer,
-      even for brands we have never researched
-    - The whole database on your phone, so it works with no signal in a shop
-
-    HONEST BLANKS
-
-    A product only gets a recommendation when all four checks pass. Where a
-    check has not been done, the app says so instead of filling the gap.
-    Where we know the brand but not the exact product, it says that too.
-    Nothing here is sponsored.
-
-    A SHOP OF THINGS THAT PASSED
-
-    Browse what we would actually buy, room by room. Every product on that
-    shelf cleared the same four checks as everything else in the app.
-
-    ALSO IN SAFARI
-
-    Brand Check ships with the app. Turn it on in Settings and the same
-    verdicts appear on Amazon listings while you browse.
-
-    Every verdict is the one published at plasticdetox.org, and the app
-    updates them in the background, so a recall reaches you without an
-    update.
+    Every verdict is the one published at plasticdetox.org, updated in the
+    background, so a recall reaches you without waiting for an app update.
 
 ## What to test [TestFlight, 4000]
 
