@@ -93,7 +93,12 @@ def main():
     for b in brands:
         cat = b.get("category") or ""
         for p in (b.get("products") or []):
-            t = by_product.get(f"{b['brand']}::{p.get('name')}") or by_category.get(cat)
+            # The product's own category first. The brand's is a shop aisle,
+            # not a kind of thing: Natracare sits under Personal care, so its
+            # tampons resolved to rinse-off skin and read LOW.
+            t = (by_product.get(f"{b['brand']}::{p.get('name')}")
+                 or by_category.get(p.get("cat") or "")
+                 or by_category.get(cat))
             if not t:
                 unmatched[cat] += 1
                 continue
