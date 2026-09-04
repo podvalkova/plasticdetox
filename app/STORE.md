@@ -58,9 +58,6 @@ it still surfaces for people who think of it as a shopping tool.
     2. Search a brand you have an opinion about. Is the verdict clear in the
        two seconds you would actually give it in an aisle?
 
-    The Safari extension is optional and takes three taps in Settings, Apps,
-    Safari, Extensions. The app shows you where.
-
     Known: the camera needs a real device, and the barcode databases we fall
     back to are strongest on food and personal care, thinner on cookware and
     textiles.

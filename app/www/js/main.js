@@ -12,7 +12,6 @@ import { el, toast } from "./ui.js";
 
 const WORKER = "https://plasticdetox-quiz-email.plasticdetox.workers.dev";
 const RECENTS_KEY = "pd.recents.v1";
-const SAFARI_KEY = "pd.safari.dismissed.v1";
 
 // The categories people arrive asking about. Kept short on purpose: this is a
 // way in for someone who has nothing to scan yet, not a directory.
@@ -251,7 +250,6 @@ function draw() {
       categoryCount: categoryGroups().length,
       // Only offered on a real device: the extension cannot be enabled on a
       // simulator, and on the web there is no extension to enable.
-      showSafari: isNative() && localStorage.getItem(SAFARI_KEY) !== "1",
       onScan: startScan,
       onSearch: runSearch,
       onPick: openRecent,
@@ -270,8 +268,6 @@ function draw() {
       }),
       onStarter: (s) => go({ screen: "category", category: s.category, label: s.label }),
       onAllCategories: () => go({ screen: "categories" }),
-      onSafari: () => go({ screen: "safari" }),
-      onDismissSafari: () => { localStorage.setItem(SAFARI_KEY, "1"); render(); },
     });
   } else if (state.screen === "result") {
     const v = screens.result(view, {
@@ -314,17 +310,11 @@ function draw() {
       groups: categoryGroups(),
       onPick: (g) => go({ screen: "category", category: g.category, label: g.category }),
     });
-  } else if (state.screen === "safari") {
-    screens.safari(view, {
-      onOpen: openExternal,
-      onDone: () => { localStorage.setItem(SAFARI_KEY, "1"); back(); },
-    });
   } else if (state.screen === "about") {
     screens.about(view, {
       meta: data.status(),
       bundle: currentBundle,
       onOpen: openExternal,
-      onSafari: () => go({ screen: "safari" }),
     });
   } else if (state.screen === "shop") {
     screens.shopIndex(view, {
