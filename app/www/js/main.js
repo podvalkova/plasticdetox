@@ -723,6 +723,12 @@ function openRecent(entry) {
  * Safari already has the person's session.
  */
 async function openExternal(url) {
+  // A mail link is a hand-off to the mail app, not a page to render. The
+  // in-app browser shows a blank sheet for one, so it goes to the system.
+  if (String(url || "").startsWith("mailto:")) {
+    window.location.href = url;
+    return;
+  }
   const cap = window.Capacitor;
   const browser = cap && cap.Plugins && cap.Plugins.Browser;
   if (browser) {

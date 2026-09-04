@@ -247,6 +247,55 @@ export function tabs(current, onTab) {
  * anyone feels.
  */
 /**
+ * Tell us we got it wrong.
+ *
+ * The verdicts are researched by hand and some of them will be out of date or
+ * simply mistaken, and the person holding the product is the one who can see
+ * it first. This carries their note plus the context we would otherwise have
+ * to ask for: which row, what we currently say, and what the four checks read.
+ *
+ * mailto rather than a form, so it cannot fail silently on a bad connection
+ * and they keep a copy in their sent mail.
+ */
+function reportCard(v, onOpen) {
+  const wrap = el("div", "report");
+  const open = el("button", "report-open", "Something wrong here? Tell us");
+  const form = el("div", "report-form");
+  form.hidden = true;
+  const ta = el("textarea");
+  ta.placeholder = "What did we get wrong?";
+  ta.rows = 3;
+  form.appendChild(ta);
+  const send = el("button", "cta ghost", "Send to our inbox");
+  send.onclick = () => {
+    const said = ta.value.trim();
+    if (!said) { ta.focus(); return; }
+    const name = v.product ? `${v.brand.brand} ${v.product.name}` : v.brand.brand;
+    const fr = v.fronts || {};
+    const scorecard = ["formula", "materials", "legal", "testing"]
+      .map((k) => `${k}: ${(fr[k] || {}).status || "unknown"}`).join(", ");
+    const body = [
+      said, "", "---", `Product: ${name}`,
+      `Our verdict: ${STANCE_LABEL[v.stance] || v.stance || "none"}`,
+      `Checks: ${scorecard}`,
+      v.product && (v.product.asins || [])[0] ? `ASIN: ${v.product.asins[0]}` : "",
+    ].filter(Boolean).join("\n");
+    onOpen(`mailto:hello@plasticdetox.org`
+      + `?subject=${encodeURIComponent("Correction: " + name)}`
+      + `&body=${encodeURIComponent(body)}`);
+    send.textContent = "Opening your mail app";
+  };
+  form.appendChild(send);
+  open.onclick = () => {
+    form.hidden = !form.hidden;
+    if (!form.hidden) ta.focus();
+  };
+  wrap.appendChild(open);
+  wrap.appendChild(form);
+  return wrap;
+}
+
+/**
  * What a picker row covers, when the name alone does not say.
  *
  * A row scoped to a line and carrying no ASIN is not a product you can hold.
@@ -1144,6 +1193,8 @@ export function result(root, { index, match, scan, product, query, productNamed,
     a.onclick = (e) => { e.preventDefault(); onOpen(a.href); };
     root.appendChild(a);
   }
+
+  root.appendChild(reportCard(v, onOpen));
 
   return v;
 }
