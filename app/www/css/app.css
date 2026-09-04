@@ -455,7 +455,12 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .dx-stage.close, .dx-stage.clear { color: var(--good); }
 .dx-togo { color: var(--muted); font-variant-numeric: tabular-nums; }
 
-.dx-rooms { display: flex; gap: .4rem; margin-bottom: 1rem; }
+.dx-rooms {
+  display: flex; gap: .4rem; margin-bottom: 1rem;
+  overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch;
+  margin-inline: -1rem; padding-inline: 1rem;
+}
+.dx-rooms::-webkit-scrollbar { display: none; }
 .dx-room {
   font-size: 12px; font-weight: 700; padding: .45rem .8rem; border-radius: 999px;
   background: var(--chip); border: 1px solid transparent; color: var(--faint);
@@ -465,6 +470,11 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   background: var(--accent); color: #fff;
   box-shadow: 0 3px 10px -4px rgba(124, 58, 237, .5);
 }
+.dx-room.lock {
+  display: inline-flex; align-items: center; gap: .3rem;
+  border: 1px dashed var(--border-strong); background: var(--surface);
+}
+.dx-room.lock svg { opacity: .7; }
 
 .dx-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .65rem; }
 .dxt {

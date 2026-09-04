@@ -326,8 +326,10 @@ function draw() {
       room: state.room || "",
       onRoom: (r) => { state.room = r; render(); rememberPlace(); },
       onStep: (stepId) => go({ screen: "detoxStep", stepId }),
-      onOpen: openExternal,
+      onKids: () => go({ screen: "detoxKids" }),
     });
+  } else if (state.screen === "detoxKids") {
+    screens.detoxKids(view, { onOpen: openExternal, onLater: back });
   } else if (state.screen === "detoxStep") {
     // Resolve the step fresh each render, so ticking it re-renders this same
     // screen in its done state rather than a stale copy.

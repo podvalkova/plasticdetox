@@ -262,7 +262,7 @@ function scopeHint(row) {
   return "";
 }
 
-export function detox(root, { phases, done, room, onRoom, onStep, onOpen }) {
+export function detox(root, { phases, done, room, onRoom, onStep, onKids }) {
   const all = phases.reduce((n, p) => n + p.steps.length, 0);
   const ticked = phases.reduce(
     (n, p) => n + p.steps.filter((s) => done.has(s.id)).length, 0);
@@ -300,19 +300,27 @@ export function detox(root, { phases, done, room, onRoom, onStep, onOpen }) {
     pill.onclick = () => onRoom(String(i));
     rooms.appendChild(pill);
   });
+  const kids = el("button", "dx-room lock");
+  kids.type = "button";
+  kids.appendChild(icon("M7 11V8a5 5 0 0 1 10 0v3M5 11h14v10H5zM12 15v3", 13));
+  kids.appendChild(el("span", null, "Kids"));
+  kids.onclick = onKids;
+  rooms.appendChild(kids);
   root.appendChild(rooms);
 
   // Done tiles and the next one are named. Beyond that, at most two quiet
   // tiles stand in for what is coming, and one line carries the rest: there
   // is always a next step on screen, and never a to do list.
   const grid = el("div", "dx-grid");
-  let revealed = false;
-  let hidden = 0;
-  for (const step of phase.steps) {
-    const isDone = done.has(step.id);
-    if (!isDone && revealed) { hidden += 1; continue; }
+  // Cleared tiles first, then the single NEXT, then the quiet ones. The plan
+  // order still decides what is next; the display groups what is finished, so
+  // a check never appears below the thing it precedes.
+  const doneSteps = phase.steps.filter((s) => done.has(s.id));
+  const nextStep = phase.steps.find((s) => !done.has(s.id));
+  const hidden = phase.steps.length - doneSteps.length - (nextStep ? 1 : 0);
+  const addTile = (step, cls) => {
     const c = stepContent(step);
-    const tile = el("button", `dxt${isDone ? " done" : " next"}`);
+    const tile = el("button", `dxt ${cls}`);
     tile.type = "button";
     tile.appendChild(icon(c.icon, 25));
     const label = el("span");
@@ -323,8 +331,9 @@ export function detox(root, { phases, done, room, onRoom, onStep, onOpen }) {
     tile.appendChild(label);
     tile.onclick = () => onStep(step.id);
     grid.appendChild(tile);
-    if (!isDone) revealed = true;
-  }
+  };
+  for (const step of doneSteps) addTile(step, "done");
+  if (nextStep) addTile(nextStep, "next");
   for (let i = 0; i < Math.min(hidden, 2); i++) {
     const mys = el("span", "dxt mys");
     if (i === 1) mys.style.opacity = ".55";
@@ -334,20 +343,48 @@ export function detox(root, { phases, done, room, onRoom, onStep, onOpen }) {
   root.appendChild(grid);
   if (hidden > 2) {
     root.appendChild(el("div", "dx-more", `${hidden - 2} more reveal as you go`));
-  } else if (!phase.steps.some((s) => !done.has(s.id))) {
+  } else if (!nextStep) {
     root.appendChild(el("div", "dx-more clear", `${roomName(phase)} clear \u2713`));
   }
+}
 
-  const more = el("div", "card know");
-  more.appendChild(el("h2", null, "Expecting, or a baby at home?"));
-  more.appendChild(el("p", null,
-    "This is the free plan, the same one the site sends out. The Baby Package covers "
-    + "the nursery, bottles and feeding, wipes and creams, in the order that matters "
-    + "for someone that small."));
-  const go = el("button", "cta ghost", "See the Baby Package");
-  go.onclick = () => onOpen("https://plasticdetox.org/custom-plan.html?app=1");
-  more.appendChild(go);
-  root.appendChild(more);
+/**
+ * The Kids room, before it is unlocked.
+ *
+ * The room exists on the shelf so a parent knows it is there, and it opens to
+ * a teaser rather than a paywall wall of text. The package itself is bought on
+ * the website, which is also the Apple compliant path: the app links out, the
+ * purchase happens in the browser.
+ */
+export function detoxKids(root, { onOpen, onLater }) {
+  root.appendChild(el("div", "dx-k", "Kids \u00b7 locked"));
+  const row = el("div", "dx-titrow");
+  const medal = el("span", "dx-medal");
+  medal.appendChild(icon("M7 11V8a5 5 0 0 1 10 0v3M5 11h14v10H5zM12 15v3", 26));
+  row.appendChild(medal);
+  const tw = el("div");
+  tw.appendChild(el("div", "dx-title", "The kids room"));
+  row.appendChild(tw);
+  root.appendChild(row);
+
+  root.appendChild(el("div", "dx-k", "What is inside"));
+  root.appendChild(el("p", "dx-why",
+    "Bottles and feeding, the nursery, wipes and creams, in the order that matters "
+    + "for someone that small. Built from the same testing as everything else here, "
+    + "sequenced for the smallest person in the house."));
+
+  root.appendChild(el("div", "dx-k free", "Part of the Baby Package"));
+  root.appendChild(el("div", "step-free",
+    "The Baby Package is bought on plasticdetox.org and this room opens with it."));
+
+  const foot = el("div", "dx-foot");
+  const cta = el("button", "cta", "See the Baby Package");
+  cta.onclick = () => onOpen("https://plasticdetox.org/custom-plan.html?app=1");
+  foot.appendChild(cta);
+  const later = el("button", "dx-ghost", "Maybe later");
+  later.onclick = onLater;
+  foot.appendChild(later);
+  root.appendChild(foot);
 }
 
 /**
