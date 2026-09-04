@@ -6,7 +6,7 @@ Apple's, and every field below is inside them.
 ## Identity
 
 - **Name** [30]: `Plastic Detox` (13)
-- **Subtitle** [30]: `Scan for plastic and PFAS` (25)
+- **Subtitle** [30]: `Check, swap, live plastic free` (30)
 - **Bundle ID**: `org.plasticdetox.app`
 - **Primary category**: Health & Fitness. **Secondary**: Shopping.
 - **Age rating**: 4+
@@ -18,7 +18,7 @@ it still surfaces for people who think of it as a shopping tool.
 
 ## Keywords [100]
 
-    microplastics,pfas,bpa,phthalates,toxin,scanner,barcode,nontoxic,ingredients,packaging,plastic free
+    microplastics,pfas,bpa,phthalates,toxin,scanner,barcode,nontoxic,ingredients,packaging,lead,recalls
 
 ## Promotional text [170]
 
@@ -27,14 +27,24 @@ it still surfaces for people who think of it as a shopping tool.
 
 ## Description
 
-    You are holding a bottle in a shop and the label tells you nothing useful.
-    Plastic Detox tells you what we found.
+    Your home is full of plastic you never chose. Plastic Detox shows you
+    what is safe, what to swap, and how to clear it out, one source at a time.
 
-    Scan the barcode, or search the brand, and you get one answer checked four
-    ways: what the product is made of, what it is packaged in, whether it has
-    been recalled or sued over, and what independent laboratory testing found.
+    CLEAR YOUR HOME, SOURCE BY SOURCE
 
-    WHAT YOU GET
+    Every plastic source in your daily life sits on one board: hot food in
+    plastic, tap water, tea bags, nonstick pans, all 23 of them in the order
+    that cuts your exposure fastest. Tap one and you get the why in two
+    sentences, the swaps we vetted, and a free option that counts the same.
+    Check it off and watch your home get cleaner, room by room. No accounts,
+    no questions, no schedule. Skip anything, come back to it whenever.
+
+    CHECK ANYTHING BEFORE YOU BUY IT
+
+    Scan the barcode in the aisle, or search the brand, and you get one
+    answer checked four ways: what the product is made of, what it is
+    packaged in, whether it has been recalled or sued over, and what
+    independent laboratory testing found.
 
     - 960 brands researched by hand, not guessed by a model
     - Verdicts on individual products, not just the companies that make them
@@ -46,16 +56,23 @@ it still surfaces for people who think of it as a shopping tool.
     HONEST BLANKS
 
     A product only gets a recommendation when all four checks pass. Where a
-    check has not been done, the app says so instead of filling the gap. Where
-    we know the brand but not the exact product, it says that too.
+    check has not been done, the app says so instead of filling the gap.
+    Where we know the brand but not the exact product, it says that too.
+    Nothing here is sponsored.
+
+    A SHOP OF THINGS THAT PASSED
+
+    Browse what we would actually buy, room by room. Every product on that
+    shelf cleared the same four checks as everything else in the app.
 
     ALSO IN SAFARI
 
-    Brand Check ships with the app. Turn it on in Settings and the same verdict
-    appears on Amazon listings while you browse. It carries no affiliate links.
+    Brand Check ships with the app. Turn it on in Settings and the same
+    verdicts appear on Amazon listings while you browse.
 
-    Every verdict here is the one published at plasticdetox.org, and the app
-    updates them in the background, so a recall reaches you without an update.
+    Every verdict is the one published at plasticdetox.org, and the app
+    updates them in the background, so a recall reaches you without an
+    update.
 
 ## What to test [TestFlight, 4000]
 
