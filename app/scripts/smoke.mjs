@@ -175,13 +175,13 @@ await screen("about", async (p) => {
   await need(p, ".card", "about cards");
 });
 
-await screen("safari setup", async (p) => {
+// The Safari setup screen was removed with the extension target: the extension
+// was not working on device, so it came out rather than shipping broken. The
+// About screen it opened from is still here and still worth walking.
+await screen("about", async (p) => {
   await tap(p, "#info");
   await new Promise((r) => setTimeout(r, 300));
-  await p.evaluate(() => [...document.querySelectorAll(".cta")]
-    .find((b) => /turn it on/i.test(b.textContent)).click());
-  await new Promise((r) => setTimeout(r, 300));
-  await need(p, ".steps", "setup steps");
+  await need(p, ".card", "about card");
 });
 
 await browser.close();

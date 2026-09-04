@@ -49,7 +49,23 @@ DEVICE_CATS = {
 # which is a real formula finding, so only an unearned pass is wrong here.
 # A silicone menstrual cup is an object: there is nothing in it to list. Its
 # exposure type, "absorbent worn", reads as a consumable to the check above.
-NO_INGREDIENT_CATS = {"Diapers", "Menstrual cups"}
+NO_INGREDIENT_CATS = {
+    "Air fryers", "Air purifiers", "Baby bottles", "Baby sleep", "Bedding",
+    "Breast milk storage", "Car seats", "Clothing", "Cookware",
+    "Crib mattresses", "Cribs & nursery", "Cutting boards", "Dental floss",
+    "Diapers", "Food storage", "Kitchen appliances", "Menstrual cups",
+    "Pacifiers", "Razors", "Shower curtains", "Strollers", "Tableware",
+    "Teethers", "Toothbrushes", "Toys", "Vacuums", "Water bottles",
+    "Water filters", "Yoga mats",
+}
+# Formulations: the question applies, so `none` is the wrong answer here.
+FORMULA_CATS = {
+    "Baby food", "Baby formula", "Baby lotion", "Baby wipes", "Body lotion",
+    "Bottled water", "Chewing gum", "Cleaning products", "Conditioner",
+    "Deodorant", "Diaper cream", "Electrolytes", "Laundry detergent", "Makeup",
+    "Pantry", "Prenatal vitamins", "Sea salt", "Shampoo", "Skincare", "Soap",
+    "Sunscreen", "Supplements", "Tea", "Toothpaste",
+}
 
 # A word in a product name that all but settles what kind of thing it is.
 NAME_SIGNALS = [
@@ -94,7 +110,7 @@ def check(brands, rows):
     bad = []
     for b, p in rows:
         name = (p.get("name") or "").lower()
-        cat = p.get("cat") or ""
+        cat = p.get("cat") or b.get("category") or ""
         for pat, ok in NAME_SIGNALS:
             if re.search(pat, name) and cat and cat not in ok:
                 bad.append(f"{b['brand']} / {p.get('name')} -> {cat}")
@@ -118,12 +134,16 @@ def check(brands, rows):
             if f == "pass":
                 wrong.append(f"{b['brand']} / {p.get('name')} [{cat}] formula=pass")
             continue
+        # A formulation may not answer "none"; the question applies to it.
+        if cat in FORMULA_CATS:
+            if f == "none":
+                wrong.append(f"{b['brand']} / {p.get('name')} [{cat}] formula=none")
+            continue
+        # Neither list covers this category, so fall back to the exposure type,
+        # which is a weaker signal because it names the route not the thing.
         if (t in DURABLE_TYPES or cat in DEVICE_CATS) \
                 and f in ("pass", "caution", "fail"):
             wrong.append(f"{b['brand']} / {p.get('name')} [{t}] formula={f}")
-        if (t and t not in DURABLE_TYPES and f == "none"
-                and cat not in DEVICE_CATS):
-            wrong.append(f"{b['brand']} / {p.get('name')} [{t}] formula=none")
     add("formula-kind", "Formula answered as if the product were another kind of thing", wrong,
         "An object has no ingredient list and a consumable has one. Either "
         "answer on the wrong side is an assertion nobody established.")
