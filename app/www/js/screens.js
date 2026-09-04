@@ -219,9 +219,9 @@ export function renderResults(container, hits, onPick) {
 export function tabs(current, onTab) {
   const bar = el("div", "tabs");
   for (const [key, label, path] of [
+    ["detox", "Detox", ICONS.detox],
     ["check", "Check", ICONS.check],
     ["shop", "Shop", ICONS.shop],
-    ["detox", "Detox", ICONS.detox],
     ["saved", "Saved", ICONS.saved],
     ["learn", "Learn", ICONS.learn],
   ]) {
