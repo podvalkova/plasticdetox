@@ -90,6 +90,12 @@ h2{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;
 .controls input{flex:1 1 220px;padding:.55rem .95rem;border:1px solid var(--border-strong);
   border-radius:999px;background:var(--surface);color:var(--text);outline:none}
 .controls input:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-light)}
+.controls select{flex:0 1 auto;max-width:15rem;padding:.55rem 2rem .55rem .95rem;
+  border:1px solid var(--border-strong);border-radius:999px;background:var(--surface);
+  color:var(--text);cursor:pointer;appearance:none;
+  background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M3 4.5L6 8l3-3.5' fill='none' stroke='%2371716E' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right .75rem center;background-size:12px}
+.controls select:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-light);outline:none}
 .chip{padding:.42rem .85rem;border-radius:999px;border:1px solid var(--border-strong);
   background:var(--surface);color:var(--body);font-size:13px;cursor:pointer}
 .chip[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff}
@@ -244,6 +250,7 @@ footer{margin-top:2.4rem;padding-top:1.2rem;border-top:1px solid var(--border);
   <h2>Every product</h2>
   <div class="controls">
     <input type="search" id="q" placeholder="Search a brand, product or material">
+    <select id="cat" aria-label="Filter by category"><option value="">All categories</option></select>
     <button class="chip" data-f="store" aria-pressed="false">Needs work</button>
     <button class="chip" data-f="nomat" aria-pressed="false">No material</button>
     <button class="chip" data-f="pkgbad" aria-pressed="false">Packaging flagged</button>
@@ -301,7 +308,7 @@ const WORKER = "https://plasticdetox-quiz-email.plasticdetox.workers.dev";
 const FRONTS = ["formula","materials","legal","testing"];
 const KEY = "pd.db.ok";
 let ROWS = [], sortCol = null, sortDir = 1;
-const state = {q:"", work:false, nomat:false, pkgbad:false, v:new Set(), x:new Set()};
+const state = {q:"", cat:"", work:false, nomat:false, pkgbad:false, v:new Set(), x:new Set()};
 const el = (t,c,x)=>{const n=document.createElement(t); if(c)n.className=c; if(x!=null)n.textContent=x; return n;};
 
 async function unlock(pw){
@@ -362,6 +369,17 @@ function build(brands){
     }
   }
 
+  // Categories, counted off the rows that exist rather than a hardcoded list, so a
+  // category added to brand-data.json shows up here without touching this page.
+  const catSel = document.getElementById("cat");
+  const catN = new Map();
+  for(const r of ROWS) catN.set(r[2]||"—", (catN.get(r[2]||"—")||0)+1);
+  for(const [name,n] of [...catN].sort((a,b)=>a[0].localeCompare(b[0]))){
+    const o=document.createElement("option");
+    o.value=name; o.textContent=`${name} (${n})`;
+    catSel.appendChild(o);
+  }
+
   const tiles = document.getElementById("tiles");
   const add=(n,l,cls)=>{const c=el("div","cell");const d=el("div","n"+(cls?" "+cls:""),String(n));
     c.append(d, el("div","l",l)); tiles.appendChild(c);};
@@ -414,6 +432,7 @@ async function buildExposure(){
 }
 
 function passes(r){
+  if(state.cat && r[2] !== state.cat) return false;
   if(state.nomat && r[4]) return false;
   if(state.pkgbad && !(r[7]==="caution" || r[7]==="fail")) return false;
   if(state.x.size && !state.x.has(r[8])) return false;
@@ -653,6 +672,7 @@ for(const btn of document.querySelectorAll(".chip")){
   });
 }
 document.getElementById("q").addEventListener("input", e=>{ state.q=e.target.value.trim(); render(); });
+document.getElementById("cat").addEventListener("change", e=>{ state.cat=e.target.value; render(); });
 for(const th of document.querySelectorAll("th[data-s]")){
   th.addEventListener("click", ()=>{
     const c=+th.dataset.s; sortDir = (sortCol===c) ? -sortDir : 1; sortCol=c; render();
