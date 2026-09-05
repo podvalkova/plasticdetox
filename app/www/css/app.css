@@ -4,29 +4,39 @@
    brand and the only colour navigation may use; good, careful and skip mean
    what they say and appear nowhere except a verdict. */
 
+/* v2 palette. Two colour systems, still kept apart: --accent is the brand and
+   the only colour navigation may use, and good/careful/skip mean what they say
+   and appear nowhere except a verdict. The design canvas confirms the split,
+   defining GOOD as the deep green, MIXED as the amber and AVOID as the red,
+   with the purple reserved for the wordmark and links.
+
+   The ground is warm stone rather than near white, so every surface, line and
+   grey shifts with it: a cool grey on a warm ground reads as dirty. Type stays
+   Inter. */
 :root {
-  --accent: #7C3AED;
-  --accent-deep: #5B21B6;
-  --accent-light: #EDE9FE;
-  --accent-wash: #F1ECFE;
+  --accent: #6A2BF0;
+  --accent-deep: #4E17C7;
+  --accent-light: #E6DCFD;
+  --accent-wash: #F1EAFE;
 
-  --bg: #FAFAF9;
-  --surface: #FFFFFF;
-  --text: #0A0A0A;
-  --body: #52524F;
-  --muted: #71716E;
-  --faint: #8B8B88;
-  --border: #EDEDEA;
-  --border-strong: #E7E7E3;
-  --chip: #F5F5F3;
+  --bg: #EAE8E1;
+  --surface: #F7F6F2;
+  --text: #12130F;
+  --body: #5B5C55;
+  --muted: #8A8981;
+  --faint: #A3A29A;
+  --border: #E7E3D9;
+  --border-strong: #DCD7C9;
+  --chip: #F0EDE6;
 
-  --good: #047857;     --good-bg: #ECFDF5;    --good-border: #A7F3D0;
-  --careful: #B45309;  --careful-bg: #FFFBEB; --careful-border: #FDE68A;
-  --skip: #B91C1C;     --skip-bg: #FEF2F2;    --skip-border: #FECACA;
-  --neutral: #52524F;  --neutral-bg: #F5F5F3; --neutral-border: #E7E5E4;
+  --good: #0B4A38;     --good-bg: #EDF7F1;    --good-border: #BFE3D0;
+  --careful: #C25A00;  --careful-bg: #FFEDDC; --careful-border: #F3CFA8;
+  --skip: #B3261E;     --skip-bg: #FDECEC;    --skip-border: #F1C6C3;
+  --neutral: #5B5C55;  --neutral-bg: #F0EDE6; --neutral-border: #E7E3D9;
 
-  --card-radius: 22px;
-  --card-shadow: 0 2px 20px -12px rgba(10,10,10,0.12);
+  /* Softer and larger than v1, matching the canvas: cards 24, sheets 28. */
+  --card-radius: 24px;
+  --card-shadow: 0 2px 24px -14px rgba(18,19,15,0.16);
   --safe-top: env(safe-area-inset-top, 0px);
   --safe-bottom: env(safe-area-inset-bottom, 0px);
 }
@@ -42,7 +52,7 @@ body {
   overscroll-behavior-y: none;
 }
 button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
-::placeholder { color: #A1A1A0; }
+::placeholder { color: var(--faint); }
 
 /* ---------------------------------------------------------------- chrome */
 
@@ -133,7 +143,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .row-body { flex: 1; min-width: 0; }
 .row-name { font-weight: 650; font-size: 15.5px; letter-spacing: -.01em; }
 .row-sub { color: var(--muted); font-size: 13.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.row-chev { color: #D6D6D2; font-size: 1.3rem; }
+.row-chev { color: var(--border-strong); font-size: 1.3rem; }
 .row-quiet { background: transparent; border-style: dashed; border-color: var(--border-strong); }
 .row-quiet .row-name { color: var(--accent); }
 
@@ -306,7 +316,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .ing-list b { color: var(--text); font-weight: 650; }
 .ing-src { font-size: 12.5px; color: var(--faint); margin-top: .6rem; }
 .ing-list mark {
-  background: #FEF3C7; color: #7C4A16; font-weight: 700;
+  background: var(--careful-bg); color: var(--careful); font-weight: 700;
   padding: 0 4px; border-radius: 5px; box-shadow: inset 0 0 0 1px var(--careful-border);
 }
 .alt-name { font-size: 17px; font-weight: 800; letter-spacing: -.02em; color: var(--text); }
@@ -453,7 +463,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   overflow: hidden; margin-top: .65rem;
 }
 .dx-fill { height: 100%; border-radius: 999px; transition: width .4s ease; }
-.dx-fill.start { background: #D97706; }
+.dx-fill.start { background: var(--careful); }
 .dx-fill.mid { background: var(--accent); }
 .dx-fill.close, .dx-fill.clear { background: var(--good); }
 .dx-meta {
@@ -461,7 +471,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   font-size: 14px; margin: .5rem 0 1.15rem;
 }
 .dx-stage { font-weight: 750; }
-.dx-stage.start { color: #D97706; }
+.dx-stage.start { color: var(--careful); }
 .dx-stage.mid { color: var(--accent-deep); }
 .dx-stage.close, .dx-stage.clear { color: var(--good); }
 .dx-togo { color: var(--muted); font-variant-numeric: tabular-nums; }
@@ -549,7 +559,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .dx-title { font-size: 22px; font-weight: 800; letter-spacing: -.025em; line-height: 1.15; }
 .dx-heat {
   display: inline-block; font-size: 11.5px; font-weight: 700; letter-spacing: .05em;
-  text-transform: uppercase; color: #C2410C; background: #FFEDD5;
+  text-transform: uppercase; color: var(--careful); background: var(--careful-bg);
   padding: 2px 8px; border-radius: 999px; margin-top: .3rem;
 }
 .dx-why { font-size: 15.5px; line-height: 1.55; color: var(--body); }
@@ -717,6 +727,20 @@ body.has-tabs .screen { padding-bottom: calc(var(--safe-bottom) + 5.2rem); }
      system themes rather than risk a red that reads as an orange. */
   :root { color-scheme: light; }
 }
+
+/* Tip of the day. Quiet, but it is the reason to open the app on a day when
+   there is nothing left on the list. */
+.tip-card {
+  margin: 1.1rem 0 .2rem; padding: 1rem 1.1rem 1.1rem;
+  background: var(--good-bg); border: 1px solid var(--good-border);
+  border-radius: var(--card-radius);
+}
+.tip-label {
+  font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--good); margin-bottom: .45rem;
+}
+.tip-title { font-size: 17px; font-weight: 700; letter-spacing: -.01em; line-height: 1.3; }
+.tip-body { font-size: 15px; color: var(--body); margin-top: .3rem; line-height: 1.55; }
 
 /* ------------------------------------------------------- the check form */
 

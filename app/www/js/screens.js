@@ -5,7 +5,7 @@
 import { FRONTS, STANCE_LABEL, verdictFor, alternativesFor, ratedProducts } from "./match.js";
 import { packagingHeadline } from "./upc.js";
 import { el, frag, icon, ICONS, splitNote } from "./ui.js";
-import { buyLink, productImage } from "./data.js";
+import { buyLink, productImage, tipOfDay } from "./data.js";
 import { stepContent, roomName, stage } from "./detox-content.js";
 
 const SITE = "https://plasticdetox.org";
@@ -133,6 +133,18 @@ export function home(root, {
   scan.disabled = !canScan;
   root.appendChild(scan);
   if (!canScan) root.appendChild(el("p", "scan-why", noCameraReason(scanReason)));
+
+  // One tip, the same all day, different tomorrow. Keyed on the day of the
+  // year so it needs no storage and no server, and it gives someone who has
+  // already checked everything on their list a reason to open the app.
+  const tip = tipOfDay();
+  if (tip) {
+    const card = el("div", "tip-card");
+    card.appendChild(el("div", "tip-label", "Tip of the day"));
+    card.appendChild(el("div", "tip-title", tip.title));
+    card.appendChild(el("p", "tip-body", tip.body));
+    root.appendChild(card);
+  }
 
   // History as a strip, not a list. Stacked down the screen it pushed browsing
   // off the bottom, so after a shop's worth of checking the first thing the app

@@ -83,6 +83,13 @@ articles.sort((a, b) => (b.date || "").localeCompare(a.date || ""));
 fs.writeFileSync(path.join(OUT, "articles.json"), JSON.stringify(articles, null, 1) + "\n");
 console.log(`articles.json        ${articles.length} articles`);
 
+// The 365 daily tips. Authored once and kept at the repo root like every other
+// source of truth, because www/data is generated and gitignored: a file that
+// lives only there is one `npm run sync-data` away from being lost.
+const tips = JSON.parse(fs.readFileSync(path.join(REPO, "data", "tips.json"), "utf8"));
+fs.writeFileSync(path.join(OUT, "tips.json"), JSON.stringify(tips, null, 1) + "\n");
+console.log(`tips.json            ${tips.length} daily tips`);
+
 // The 90 day plan, read from the page that publishes it.
 //
 // This used to assemble the plan from data/plan-rules.js, which drives the

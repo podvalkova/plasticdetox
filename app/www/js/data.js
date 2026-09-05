@@ -30,6 +30,7 @@ let meta = { source: "bundle", version: null, brands: 0 };
 let campaignLinks = {};
 let productImages = {};
 let articles = [];
+let tips = [];
 let plan = [];
 
 /**
@@ -58,6 +59,21 @@ export function productImage(asin, px = 300) {
 
 /** The articles, newest first. */
 export function allArticles() { return articles; }
+
+/**
+ * One tip, the same one all day, different tomorrow.
+ *
+ * Keyed on the day of the year so it needs no storage and no server: everyone
+ * opening the app on the same day sees the same tip, and it comes back around
+ * in a year. 365 of them, so a leap day repeats the 31st of December rather
+ * than showing nothing.
+ */
+export function tipOfDay(when = new Date()) {
+  if (!tips.length) return null;
+  const start = Date.UTC(when.getUTCFullYear(), 0, 0);
+  const day = Math.floor((Date.UTC(when.getUTCFullYear(), when.getUTCMonth(), when.getUTCDate()) - start) / 86400000);
+  return tips[Math.min(day, tips.length) - 1] || tips[0];
+}
 
 /** The 90 day plan, three phases of swaps ordered by exposure. */
 export function planPhases() { return plan; }
@@ -118,11 +134,12 @@ let lastBuild = "";
 async function sidecars() {
   if (sidecarsLoaded) return;
   sidecarsLoaded = true;
-  [campaignLinks, productImages, articles, plan] = await Promise.all([
+  [campaignLinks, productImages, articles, plan, tips] = await Promise.all([
     readBundled("campaign-links").catch(() => ({})),
     readBundled("product-images").catch(() => ({})),
     readBundled("articles").catch(() => []),
     readBundled("plan").catch(() => []),
+    readBundled("tips").catch(() => []),
   ]);
 }
 
