@@ -159,6 +159,17 @@ await screen("detox", async (p) => {
   await p.evaluate(() => document.querySelector(".dx-quest-cta").click());
   await new Promise((r) => setTimeout(r, 600));
   await need(p, ".dx-pick", "vetted picks");
+  // The buttons are pinned, and the copy has to end above them rather than
+  // scroll underneath and disappear.
+  const foot = await p.evaluate(() => {
+    const f = document.querySelector(".dx-foot");
+    const kids = [...document.getElementById("screen").children].filter((e) => e !== f);
+    const last = kids[kids.length - 1];
+    return { fixed: getComputedStyle(f).position === "fixed",
+             clears: last.getBoundingClientRect().bottom <= f.getBoundingClientRect().top + 1 };
+  });
+  if (!foot.fixed) throw new Error("step buttons are not pinned");
+  if (!foot.clears) throw new Error("step copy runs under the buttons");
   await p.evaluate(() => document.querySelector(".dx-foot .cta").click());
   await new Promise((r) => setTimeout(r, 700));
   await need(p, ".rw-disc", "the reward");

@@ -94,13 +94,14 @@ function back() {
 const PLACE_KEY = "pd.place.v1";
 const DONE_KEY = "pd.plan.v1";
 
-// One time reset when the tile design first runs.
+// One time reset when a redesign first runs.
 //
-// The old checklist shipped for six days and its ticks were mostly testing,
-// but they survived into the tile design, which then opened on "1 source
-// gone" for someone who had done nothing. The redesign starts everyone at
-// zero, once, and never again.
-const RESET_KEY = "pd.plan.reset.v1";
+// This has now happened twice for the same reason: ticks left over from
+// testing survive into a new design, which then opens on "4 of 23" for someone
+// who cleared nothing. The ring makes it louder than the old tiles did, since
+// the number is the first thing on the screen. Bumped per redesign, so each
+// one starts at zero once and never again.
+const RESET_KEY = "pd.plan.reset.v2";
 try {
   if (!localStorage.getItem(RESET_KEY)) {
     localStorage.removeItem(DONE_KEY);
@@ -238,6 +239,9 @@ function render() {
 function draw() {
   const state = stack[stack.length - 1];
   view.replaceChildren();
+  // replaceChildren empties the children and leaves the classes, so a screen
+  // that tints itself or pins a footer was handing that on to the next one.
+  view.className = "screen";
   view.scrollTop = 0;
   window.scrollTo(0, 0);
   backBtn.hidden = stack.length <= 1;

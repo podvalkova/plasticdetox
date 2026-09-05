@@ -31,14 +31,16 @@ export function home(root, {
   const scanCard = el("button", `scan-card${canScan ? "" : " off"}`);
   scanCard.type = "button";
   const glyph = el("div", "scan-glyph");
-  for (const w of [3, 6, 3]) {
+  for (const w of [2, 4, 2]) {
     const bar = el("i");
     bar.style.width = `${w}px`;
     glyph.appendChild(bar);
   }
   scanCard.appendChild(glyph);
-  scanCard.appendChild(el("div", "scan-h", canScan ? "Scan a barcode" : "Scanning unavailable"));
-  scanCard.appendChild(el("div", "scan-p", canScan ? "or search by name below" : (scanReason || "Search by name below")));
+  const scanText = el("div", "scan-text");
+  scanText.appendChild(el("div", "scan-h", canScan ? "Scan a barcode" : "Scanning unavailable"));
+  scanText.appendChild(el("div", "scan-p", canScan ? "or search by name below" : (scanReason || "Search by name below")));
+  scanCard.appendChild(scanText);
   scanCard.onclick = canScan ? onScan : null;
   scanCard.disabled = !canScan;
   root.appendChild(scanCard);
@@ -502,6 +504,7 @@ export function detoxKids(root, { onOpen, onLater }) {
  */
 export function detoxStep(root, { phase, step, isDone, isSeen, onDone, onUndo, onLater, onOpen }) {
   const c = stepContent(step);
+  root.classList.add("with-foot");
 
   root.appendChild(el("div", "dx-k",
     `${roomName(phase)} \u00b7 ${isDone ? "done \u2713" : isSeen ? "set aside for now" : "next up"}`));
@@ -585,6 +588,7 @@ export function detoxStep(root, { phase, step, isDone, isSeen, onDone, onUndo, o
  * sitting instead of deciding five separate times to carry on.
  */
 export function detoxReward(root, { ticked, all, cleared, roomLabel, nextStep, onNext, onClose }) {
+  root.classList.add("with-foot");
   const wrap = el("div", "rw");
   const disc = el("div", "rw-disc");
   disc.appendChild(el("b", null, String(ticked)));
@@ -709,7 +713,7 @@ export function learn(root, { articles, onOpen, query, onQuery }) {
   // The one to read first, which the canvas puts above the list rather than
   // leaving someone to guess where seventy four guides begin.
   if (!q) {
-    const start = articles.find((a) => /what-are-pfas|water-detox-101|microplastic/i.test(a.slug))
+    const start = articles.find((a) => /^getting-started-checklist/.test(a.slug || ""))
       || articles[0];
     if (start) {
       const card = el("button", "start-card");
