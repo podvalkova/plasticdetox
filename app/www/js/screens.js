@@ -706,14 +706,41 @@ export function learn(root, { articles, onOpen, query, onQuery }) {
     ? articles.filter((a) => `${a.title} ${a.blurb}`.toLowerCase().includes(q))
     : articles;
 
+  // The one to read first, which the canvas puts above the list rather than
+  // leaving someone to guess where seventy four guides begin.
+  if (!q) {
+    const start = articles.find((a) => /what-are-pfas|water-detox-101|microplastic/i.test(a.slug))
+      || articles[0];
+    if (start) {
+      const card = el("button", "start-card");
+      card.type = "button";
+      card.appendChild(el("div", "start-k", "Start here \u00b7 5 min"));
+      card.appendChild(el("div", "start-h", start.title));
+      card.appendChild(el("p", "start-p", start.blurb));
+      card.onclick = () => onOpen(`https://plasticdetox.org/articles/${start.slug}`);
+      root.appendChild(card);
+    }
+  }
+
   if (!list.length) {
     root.appendChild(el("p", "note", "No guide matches that yet."));
     return;
   }
+  root.appendChild(el("div", "section-title", `All articles \u00b7 ${list.length}`));
 
   list.forEach((a, i) => {
     const card = el("button", "acard");
     card.type = "button";
+    const body = el("div", "acard-body");
+    // The canvas leads each row with a kicker. Ours is the article's own
+    // subject, taken off the slug, so it names the thing rather than a number.
+    const kicker = (a.slug || "").replace(/\.html$/, "").split("-")
+      .filter((w) => !/^(best|non|toxic|the|a|for|and|to|in|of|guide|2026)$/i.test(w))
+      .slice(0, 2).join(" ");
+    if (kicker) body.appendChild(el("div", "acard-k", kicker));
+    body.appendChild(el("div", "acard-title", a.title));
+    if (a.blurb) body.appendChild(el("div", "acard-blurb", a.blurb));
+    card.appendChild(body);
     if (a.image) {
       const im = el("img");
       im.src = a.image; im.alt = "";
@@ -721,10 +748,6 @@ export function learn(root, { articles, onOpen, query, onQuery }) {
       im.onerror = () => im.remove();
       card.appendChild(im);
     }
-    const body = el("div", "acard-body");
-    body.appendChild(el("div", "acard-title", a.title));
-    if (a.blurb) body.appendChild(el("div", "acard-blurb", a.blurb));
-    card.appendChild(body);
     // app=1 tells the article the app already has a nav, so it drops the
     // site's own header, footer and newsletter block and reads as one screen
     // rather than as a website we sent you to.
@@ -912,29 +935,39 @@ export function shopIndex(root, {
     return;
   }
 
-  root.appendChild(el("div", "section-title", "By category"));
-  const cats = el("div", "cgrid");
-  for (const [cat, items] of [...groups].sort((a, b) => b[1].length - a[1].length)) {
-    const tile = el("button", "ctile");
-    tile.type = "button";
-    const strip = el("div", "ctile-shots");
-    for (const it of items.slice(0, 3)) {
-      const src = productImage(it.row.asins[0], 150);
-      if (!src) continue;
-      const im = el("img");
-      im.src = src; im.alt = "";
-      // Tile thumbnails are 150px and there are three per tile. The whole
-      // grid weighs less than one product photo, so none of it is deferred.
-      im.onerror = () => im.remove();
-      strip.appendChild(im);
-    }
-    if (strip.childNodes.length) tile.appendChild(strip);
-    tile.appendChild(el("div", "ctile-name", cat));
-    tile.appendChild(el("div", "ctile-count", `${items.length} pick${items.length === 1 ? "" : "s"}`));
-    tile.onclick = () => onCategory(cat);
-    cats.appendChild(tile);
+  root.appendChild(el("div", "section-title", `All picks \u00b7 ${all.length}`));
+  const list = el("div", "plist");
+  all.forEach((item, i) => list.appendChild(shopRow(item, { onProduct, eager: i < 8 })));
+  root.appendChild(list);
+}
+
+/**
+ * One pick, as the canvas rows it: image, what it is, what it replaces.
+ *
+ * The canvas also carries a price, which we do not hold, so the row ends at
+ * the category rather than showing an invented one.
+ */
+function shopRow(item, { onProduct, eager }) {
+  const { brand: b, row, cat } = item;
+  const el_ = el("button", "prow");
+  el_.type = "button";
+  const thumb = el("div", "prow-img bare");
+  const src = productImage((row.asins || [])[0], 200);
+  if (src) {
+    thumb.classList.remove("bare");
+    const im = el("img");
+    im.src = src; im.alt = "";
+    if (!eager) im.loading = "lazy";
+    im.onerror = () => im.remove();
+    thumb.appendChild(im);
   }
-  root.appendChild(cats);
+  el_.appendChild(thumb);
+  const body = el("div", "row-body");
+  body.appendChild(el("div", "prow-name", row.name || b.brand));
+  body.appendChild(el("div", "prow-note", `${b.brand} \u00b7 ${cat}`));
+  el_.appendChild(body);
+  el_.onclick = () => onProduct(b, row);
+  return el_;
 }
 
 export function shopCategory(root, { index, category, onProduct, onOpen }) {

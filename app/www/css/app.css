@@ -653,23 +653,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 /* ----------------------------------------------------------------- learn */
 
-.acard {
-  display: flex; gap: .85rem; align-items: center; width: 100%; text-align: left;
-  background: var(--surface); border: 1px solid var(--border);
-  border-radius: 18px; padding: .7rem .85rem .7rem .7rem; margin-bottom: .6rem;
-  box-shadow: var(--card-shadow);
-}
-.acard:active { border-color: var(--accent-light); background: var(--accent-wash); }
-.acard img {
-  width: 74px; height: 74px; flex: none; object-fit: cover;
-  border-radius: 13px; background: var(--chip);
-}
-.acard-title { font-size: 14.5px; font-weight: 700; letter-spacing: -.02em; line-height: 1.28; }
-.acard-blurb {
-  font-size: 12.5px; color: var(--muted); line-height: 1.45; margin-top: .22rem;
-  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
-}
-
 /* ------------------------------------------------------------------ tabs */
 /* Two things this app does: answer a question about something you are
    holding, and show what we would buy when you have nothing in mind. The
@@ -907,10 +890,10 @@ body.has-tabs .screen { padding-bottom: calc(var(--safe-bottom) + 4rem); }
   display: flex; align-items: center; justify-content: center;
 }
 .dx-pick-img img { width: 100%; height: 100%; object-fit: contain; }
-.dx-pick-img.bare {
+.prow-img.bare, .dx-pick-img.bare {
   background: repeating-linear-gradient(135deg, var(--chip) 0 6px, var(--border) 6px 12px);
 }
-.dx-pick-img.bare img { display: none; }
+.prow-img.bare img, .dx-pick-img.bare img { display: none; }
 
 
 /* The Check screen, canvas order: title, scan card, then the typed fallback. */
@@ -946,6 +929,42 @@ body.has-tabs .screen { padding-bottom: calc(var(--safe-bottom) + 4rem); }
   height: 56px; border-radius: 28px; font-size: 15.5px;
 }
 .cta.outline:active { background: var(--accent-soft); }
+
+
+/* Learn and Shop, canvas rows. */
+.start-card {
+  width: 100%; text-align: left; border: 0; border-radius: 28px;
+  background: var(--accent-soft); padding: 26px 24px; margin-bottom: 16px;
+  display: flex; flex-direction: column; gap: 12px; cursor: pointer;
+}
+.start-k {
+  font-size: 10px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--accent);
+}
+.start-h { font-size: 26px; font-weight: 900; letter-spacing: -.03em; line-height: 1.1; color: var(--text); }
+.start-p { font-size: 14.5px; line-height: 1.5; color: var(--body); }
+
+.plist { display: flex; flex-direction: column; }
+.acard {
+  display: flex; gap: 16px; align-items: center; width: 100%; text-align: left;
+  background: var(--surface); border: 1.5px solid rgba(0, 0, 0, .07);
+  border-radius: 22px; padding: 16px; margin-bottom: 12px;
+}
+.acard:active { border-color: rgba(0, 0, 0, .2); }
+.acard-body { flex: 1; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.acard-k {
+  font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--accent);
+}
+.acard-title { font-size: 16px; font-weight: 800; letter-spacing: -.02em; line-height: 1.2; }
+.acard-blurb {
+  font-size: 12.5px; font-weight: 600; color: var(--muted); line-height: 1.35;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.acard img {
+  flex: none; width: 56px; height: 56px; border-radius: 16px; object-fit: cover;
+  background: var(--chip);
+}
 
 /* ------------------------------------------------------- the check form */
 

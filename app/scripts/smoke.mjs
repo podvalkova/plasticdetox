@@ -147,17 +147,33 @@ await screen("unknown product", async (p) => {
   }
 });
 
+await screen("detox", async (p) => {
+  await p.evaluate(() => [...document.querySelectorAll(".tab")]
+    .find((t) => /Detox/.test(t.textContent)).click());
+  await new Promise((r) => setTimeout(r, 700));
+  await need(p, ".dx-ring", "progress ring");
+  await need(p, ".tip-card", "tip of the day");
+  await need(p, ".dx-room .dx-pip", "room pips");
+  await need(p, ".dx-quest-cta", "the next swap");
+  // Into a swap, and through it, which is the loop the design is built on.
+  await p.evaluate(() => document.querySelector(".dx-quest-cta").click());
+  await new Promise((r) => setTimeout(r, 600));
+  await need(p, ".dx-pick", "vetted picks");
+  await p.evaluate(() => document.querySelector(".dx-foot .cta").click());
+  await new Promise((r) => setTimeout(r, 700));
+  await need(p, ".rw-disc", "the reward");
+});
+
 await screen("shop", async (p) => {
   await p.evaluate(() => [...document.querySelectorAll(".tab")]
     .find((t) => /Shop/.test(t.textContent)).click());
   await new Promise((r) => setTimeout(r, 600));
-  await need(p, ".ctile", "category tiles");
+  // The canvas lists the picks rather than making you pick a category first.
+  await need(p, ".plist .prow", "pick rows");
   await need(p, ".shop-search input", "shop search");
-  // Into a category, which is where the product cards live.
-  await p.evaluate(() => document.querySelector(".ctile").click());
-  await new Promise((r) => setTimeout(r, 600));
-  await need(p, ".pcard", "product cards");
-  await need(p, ".pcard-buy", "buy link");
+  await p.evaluate(() => document.querySelector(".plist .prow").click());
+  await new Promise((r) => setTimeout(r, 700));
+  await need(p, ".verdict-brand", "product verdict");
 });
 
 await screen("shop search", async (p) => {
