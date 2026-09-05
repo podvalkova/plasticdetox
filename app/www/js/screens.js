@@ -1012,7 +1012,11 @@ const HOW_OFTEN = {
 function exposureBlock(ex) {
   if (!ex || !ex.level) return null;
   const box = el("div", `expo ${ex.level}`);
-  box.appendChild(el("span", `pkg-chip ${ex.level}`, String(ex.level).toUpperCase()));
+  // "HIGH" on its own reads as a rating of the product rather than of the
+  // contact, which is the opposite of what it means.
+  const level = String(ex.level);
+  box.appendChild(el("span", `pkg-chip ${ex.level}`,
+    `${level.charAt(0).toUpperCase()}${level.slice(1)} exposure`));
   const why = el("div", "expo-why");
   const bits = [
     ex.baby ? "On a baby" : null,
