@@ -382,6 +382,7 @@ function draw() {
       onStep: (stepId) => go({ screen: "detoxStep", stepId }),
       onKids: () => go({ screen: "detoxKids" }),
       onCleared: () => go({ screen: "detoxCleared" }),
+      onSetAside: () => go({ screen: "detoxLater" }),
     });
   } else if (state.screen === "detoxReward") {
     const phases = data.planPhases();
@@ -425,6 +426,29 @@ function draw() {
         go({ screen: "detox" }, { replace: true });
       },
     });
+  } else if (state.screen === "detoxLater") {
+    // Everything you tapped "Maybe later" on, and a way straight back into it.
+    // Setting a swap aside used to hide it until the rest of the room was done,
+    // which is not the same as choosing to come back to it.
+    const phases = data.planPhases();
+    const set = readDone();
+    const seen = readSeen();
+    const rows = [];
+    for (const ph of phases) {
+      for (const st of ph.steps) {
+        if (!set.has(st.id) && seen.has(st.id)) {
+          rows.push({ id: st.id, title: st.swap, meta: roomName(ph) });
+        }
+      }
+    }
+    screens.detoxCleared(view, {
+      rows,
+      title: "Set aside for now",
+      empty: "Nothing set aside. Anything you tap \u201cMaybe later\u201d on waits here.",
+      action: "Open",
+      onUndo: (id) => go({ screen: "detoxStep", stepId: id }),
+      onClose: back,
+    });
   } else if (state.screen === "detoxCleared") {
     const phases = data.planPhases();
     const set = readDone();
@@ -461,6 +485,16 @@ function draw() {
       onUndo: () => toggleDone(step.id),
       onLater: () => { markSeen(step.id); back(); },
       onOpen: openExternal,
+      // A pick can be kept without buying it now. Plan picks are not database
+      // rows, so they save under the pick's own name with the ASIN off its
+      // link, which is what the Saved tab needs to draw the row.
+      onSavePick: (pick) => {
+        const asin = (pick.url.match(/\/dp\/([A-Z0-9]{10})/) || [])[1] || "";
+        toggleSaved(
+          { brand: pick.name, id: `pick:${asin || pick.name}`, category: roomName(phase) },
+          { name: pick.name, cat: roomName(phase), asins: asin ? [asin] : [], ext: {} });
+      },
+      isPickSaved: (pick) => isSaved(pick.name, pick.name),
     });
   } else if (state.screen === "learn") {
     screens.learn(view, {

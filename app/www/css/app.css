@@ -902,6 +902,68 @@ body.has-tabs .screen { padding-bottom: calc(var(--safe-bottom) + 4rem); }
   background: var(--chip);
 }
 
+
+.dx-prog-row { display: flex; gap: 8px; }
+.dx-prog-row .dx-prog-cta { flex: 1; }
+/* A set aside swap is not a completed one, so it does not wear the green. */
+.clr.later { background: var(--chip); border-color: var(--border-strong); }
+.clr.later .clr-tick { background: var(--faint); }
+.clr.later .clr-undo { color: var(--accent); }
+
+
+/* A pick sits in a holder with its heart, so keeping one never fires the row. */
+.dx-pick-hold { position: relative; }
+.dx-pick-hold .dx-pick { padding-right: 3.4rem; }
+.pick-heart {
+  position: absolute; top: 50%; right: 14px; transform: translateY(-50%);
+  width: 34px; height: 34px; border-radius: 17px; border: 1.5px solid var(--border-strong);
+  background: var(--surface); color: var(--faint);
+  display: grid; place-items: center; cursor: pointer;
+}
+.pick-heart.on { color: var(--accent); border-color: var(--accent); background: var(--accent-soft); }
+.pick-heart.on svg { fill: currentColor; }
+
+
+/* Where to start: numbered because the order is the information. */
+.dx-order { list-style: none; counter-reset: o; display: flex; flex-direction: column; gap: 12px; margin-top: .3rem; }
+.dx-order li {
+  counter-increment: o; position: relative; padding-left: 40px;
+  display: flex; flex-direction: column; gap: 3px;
+}
+.dx-order li::before {
+  content: counter(o); position: absolute; left: 0; top: 0;
+  width: 26px; height: 26px; border-radius: 13px; background: var(--accent-soft);
+  color: var(--accent); font-size: 13px; font-weight: 800;
+  display: grid; place-items: center;
+}
+.dx-order b { font-size: 15.5px; font-weight: 800; letter-spacing: -.01em; }
+.dx-order span { font-size: 14.5px; line-height: 1.5; color: var(--body); }
+
+/* The thing worth knowing that is not a product. */
+.pro-tip {
+  background: var(--surface); border: 1.5px solid rgba(0, 0, 0, .07);
+  border-radius: 22px; padding: 18px 20px; margin-top: .3rem;
+}
+.pro-tip-k {
+  font-size: 10px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 8px;
+}
+.pro-tip-h { font-size: 17px; font-weight: 800; letter-spacing: -.02em; line-height: 1.25; margin-bottom: 8px; }
+.pro-tip-p { font-size: 14.5px; line-height: 1.55; color: var(--body); }
+.pro-tip-sub {
+  font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase;
+  margin-top: 14px; margin-bottom: 6px;
+}
+.pro-tip-sub.look { color: var(--good); }
+.pro-tip-sub.skip { color: var(--skip); }
+.pro-tip-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.pro-tip-list li {
+  font-size: 14px; line-height: 1.5; color: var(--body);
+  padding-left: 18px; position: relative;
+}
+.pro-tip-list.look li::before { content: "\2713"; position: absolute; left: 0; color: var(--good); font-weight: 800; }
+.pro-tip-list.skip li::before { content: "\00d7"; position: absolute; left: 0; color: var(--skip); font-weight: 800; }
+
 /* ------------------------------------------------------- the check form */
 
 .check-form { display: block; }

@@ -120,7 +120,10 @@ export function stepContent(step) {
   return {
     short: c.short || step.swap,
     icon: c.icon || I.box,
-    free: c.free || "",
+    // The Kids room is read out of baby-kids-101, which carries its own free
+    // version per swap. This map only covers the three original rooms, so a
+    // step that brings its own wins over an empty entry here.
+    free: c.free || step.free || "",
   };
 }
 

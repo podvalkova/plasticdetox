@@ -54,7 +54,12 @@ export function buyLink(asin) {
  */
 export function productImage(asin, px = 300) {
   const id = asin && productImages[asin];
-  return id ? `https://m.media-amazon.com/images/I/${id}._AC_SL${px}_.jpg` : "";
+  if (!id) return "";
+  // Some products carry a full URL rather than an Amazon image id, because we
+  // host the photo ourselves. The website reads both; so does this now.
+  return /^https?:\/\//.test(id)
+    ? id
+    : `https://m.media-amazon.com/images/I/${id}._AC_SL${px}_.jpg`;
 }
 
 /** The articles, newest first. */
@@ -91,7 +96,12 @@ export function dayOfYear(when = new Date()) {
 }
 
 /** The 90 day plan, three phases of swaps ordered by exposure. */
-export function planPhases() { return plan; }
+export function planPhases({ withLocked = false } = {}) {
+  return withLocked ? plan : plan.filter((ph) => !ph.locked);
+}
+
+/** The locked rooms, and whether this install has opened them. */
+export function lockedPhases() { return plan.filter((ph) => ph.locked); }
 
 async function readBundled(name) {
   const res = await fetch(`./data/${name}.json`, { cache: "force-cache" });

@@ -337,7 +337,7 @@ function appendTip(root) {
   root.appendChild(card);
 }
 
-export function detox(root, { phases, done, seen, room, onRoom, onStep, onKids, onCleared }) {
+export function detox(root, { phases, done, seen, room, onRoom, onStep, onKids, onCleared, onSetAside }) {
   const all = phases.reduce((n, p) => n + p.steps.length, 0);
   const ticked = phases.reduce(
     (n, p) => n + p.steps.filter((s) => done.has(s.id)).length, 0);
@@ -353,13 +353,16 @@ export function detox(root, { phases, done, seen, room, onRoom, onStep, onKids, 
   }
   const phase = phases[at];
 
+  const setAside = phases.reduce(
+    (n, ph) => n + ph.steps.filter((st) => !done.has(st.id) && seen.has(st.id)).length, 0);
+
   if (ticked >= all && all) {
     const card = el("div", "dx-alldone");
     card.appendChild(el("div", "dx-alldone-k", "Nothing left on your list"));
     card.appendChild(el("div", "dx-alldone-h", `All ${all} sources are done`));
     card.appendChild(el("p", "dx-alldone-p",
-      "We will add a source if something new comes into the house, or you can look back over what you cleared."));
-    const again = el("button", "dx-alldone-cta", "See what you cleared");
+      "We will add a source if something new comes into the house, or you can look back over what you completed."));
+    const again = el("button", "dx-alldone-cta", "See what you completed");
     again.type = "button";
     again.onclick = () => onCleared && onCleared();
     card.appendChild(again);
@@ -383,11 +386,24 @@ export function detox(root, { phases, done, seen, room, onRoom, onStep, onKids, 
       "Your list is ranked by how much contact each source causes, so the heaviest ones go first."));
     top.appendChild(side);
     card.appendChild(top);
-    if (ticked) {
-      const seeAll = el("button", "dx-prog-cta", `${ticked} cleared \u00b7 see the list`);
-      seeAll.type = "button";
-      seeAll.onclick = () => onCleared && onCleared();
-      card.appendChild(seeAll);
+    if (ticked || setAside) {
+      const row = el("div", "dx-prog-row");
+      if (ticked) {
+        const seeAll = el("button", "dx-prog-cta", `${ticked} completed \u00b7 see the list`);
+        seeAll.type = "button";
+        seeAll.onclick = () => onCleared && onCleared();
+        row.appendChild(seeAll);
+      }
+      // "Maybe later" used to leave a grey tile on the board. With the board
+      // gone there was nowhere for a set aside swap to live, so it vanished
+      // until everything else in the room was done.
+      if (setAside) {
+        const later = el("button", "dx-prog-cta", `${setAside} set aside \u00b7 see the list`);
+        later.type = "button";
+        later.onclick = () => onSetAside && onSetAside();
+        row.appendChild(later);
+      }
+      card.appendChild(row);
     }
     wrap.appendChild(card);
   }
@@ -497,7 +513,7 @@ export function detoxKids(root, { onOpen, onLater }) {
  * notes and links, and the free version where one exists, because the cheapest
  * swap is usually a habit and it counts the same. One button marks it done.
  */
-export function detoxStep(root, { phase, step, isDone, isSeen, onDone, onUndo, onLater, onOpen }) {
+export function detoxStep(root, { phase, step, isDone, isSeen, onDone, onUndo, onLater, onOpen, onSavePick, isPickSaved }) {
   const c = stepContent(step);
   root.classList.add("with-foot");
 
@@ -551,8 +567,53 @@ export function detoxStep(root, { phase, step, isDone, isSeen, onDone, onUndo, o
       right.appendChild(el("span", "prow-view", "View \u2192"));
       p.appendChild(right);
       p.onclick = () => onOpen(pick.url);
-      root.appendChild(p);
+
+      // Keeping a pick is a separate decision from buying it now, so the heart
+      // sits outside the row's own tap target rather than inside it.
+      const holder = el("div", "dx-pick-hold");
+      holder.appendChild(p);
+      if (onSavePick) {
+        const on = isPickSaved && isPickSaved(pick);
+        const heart = el("button", `pick-heart${on ? " on" : ""}`);
+        heart.type = "button";
+        heart.setAttribute("aria-label", on ? "Saved" : "Save this pick");
+        heart.appendChild(icon(ICONS.heart, 17));
+        heart.onclick = (e) => { e.stopPropagation(); onSavePick(pick); };
+        holder.appendChild(heart);
+      }
+      root.appendChild(holder);
     }
+  }
+
+  // Where to start, when a swap is really a series of them.
+  if (step.order && (step.order.steps || []).length) {
+    root.appendChild(el("div", "dx-k", step.order.title || "Where to start"));
+    if (step.order.body) root.appendChild(el("p", "dx-why", step.order.body));
+    const list = el("ol", "dx-order");
+    step.order.steps.forEach((o) => {
+      const li = el("li");
+      li.appendChild(el("b", null, o.name));
+      li.appendChild(el("span", null, o.why));
+      list.appendChild(li);
+    });
+    root.appendChild(list);
+  }
+
+  // The thing worth knowing that is not a product.
+  if (step.tip && step.tip.body) {
+    const box = el("div", "pro-tip");
+    box.appendChild(el("div", "pro-tip-k", "Pro tip"));
+    if (step.tip.title) box.appendChild(el("div", "pro-tip-h", step.tip.title));
+    box.appendChild(el("p", "pro-tip-p", step.tip.body));
+    const cols = [["Look for", step.tip.look, "look"], ["Ignore", step.tip.skip, "skip"]];
+    for (const [head, items, cls] of cols) {
+      if (!(items || []).length) continue;
+      box.appendChild(el("div", `pro-tip-sub ${cls}`, head));
+      const ul = el("ul", `pro-tip-list ${cls}`);
+      for (const one of items) ul.appendChild(el("li", null, one));
+      box.appendChild(ul);
+    }
+    root.appendChild(box);
   }
 
   if (c.free) {
@@ -614,25 +675,24 @@ export function detoxReward(root, { ticked, all, cleared, roomLabel, nextStep, o
  * The count on the Detox screen was the only record of the work, and a number
  * is not a record. This is the list behind it.
  */
-export function detoxCleared(root, { rows, onUndo, onClose }) {
+export function detoxCleared(root, { rows, onUndo, onClose, title, empty, action }) {
   const veil = el("div", "sheet-veil");
   veil.onclick = onClose;
   root.appendChild(veil);
   const sheet = el("div", "sheet");
   sheet.appendChild(el("div", "sheet-grab"));
-  sheet.appendChild(el("h1", "sheet-h", "What you completed"));
+  sheet.appendChild(el("h1", "sheet-h", title || "What you completed"));
   if (!rows.length) {
-    sheet.appendChild(el("p", "sheet-none", "Nothing cleared yet. The first one is the hardest."));
+    sheet.appendChild(el("p", "sheet-none", empty || "Nothing completed yet. The first one is the hardest."));
   }
   for (const r of rows) {
-    const row = el("div", "clr");
-    const tick = el("div", "clr-tick", "\u2713");
-    row.appendChild(tick);
+    const row = el("div", `clr${action ? " later" : ""}`);
+    row.appendChild(el("div", "clr-tick", action ? "\u2013" : "\u2713"));
     const body = el("div", "clr-body");
     body.appendChild(el("div", "clr-t", r.title));
     body.appendChild(el("div", "clr-m", r.meta));
     row.appendChild(body);
-    const undo = el("button", "clr-undo", "Undo");
+    const undo = el("button", "clr-undo", action || "Undo");
     undo.type = "button";
     undo.onclick = () => onUndo(r.id);
     row.appendChild(undo);

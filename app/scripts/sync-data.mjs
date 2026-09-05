@@ -51,9 +51,18 @@ console.log(`campaign-links.json  ${Object.keys(campaigns).length} products`);
 // already holds an Amazon image id for most of what we recommend, and a shop
 // that is a wall of text is a list rather than a shelf.
 const store = fs.readFileSync(path.join(REPO, "data", "store-products.js"), "utf8");
+// The store carries two image forms and store.html reads both: img is an
+// Amazon image id, imgUrl is a full URL for products whose photo we host
+// ourselves. Harvesting only img left six picks showing the woven placeholder
+// in the app while the website showed them fine.
 const images = {};
-for (const m of store.matchAll(/\{[^{}]*?img:\s*"([^"]+)"[^{}]*?asin:\s*"([A-Z0-9]{10})"[^{}]*?\}/g)) {
-  if (!images[m[2]]) images[m[2]] = m[1];
+for (const obj of store.match(/\{[^{}]*\}/g) || []) {
+  const asin = (obj.match(/asin:\s*"([A-Z0-9]{10})"/) || [])[1];
+  if (!asin || images[asin]) continue;
+  const id = (obj.match(/\bimg:\s*"([^"]+)"/) || [])[1];
+  const url = (obj.match(/\bimgUrl:\s*"([^"]+)"/) || [])[1];
+  if (id) images[asin] = id;
+  else if (url) images[asin] = url;
 }
 fs.writeFileSync(path.join(OUT, "product-images.json"),
   JSON.stringify(images, null, 1) + "\n");
@@ -159,6 +168,89 @@ for (const block of planSrc.split(/\n\s*\{\s*(?=days:\s*")/).slice(1)) {
   }
   if (steps.length) PHASES.push({ title: days || title, sub: title.replace(/^Phase \d+:\s*/, ""), focus, steps });
 }
+// Extra blocks a swap can carry: a pro tip, or an order to work in. Kept in
+// data/step-extras.json rather than plan.html, whose swap objects are parsed
+// with regexes that nested fields would break.
+let EXTRAS = {};
+try {
+  EXTRAS = JSON.parse(fs.readFileSync(path.join(REPO, "data", "step-extras.json"), "utf8"));
+} catch {
+  // No extras file is not an error; every swap simply renders without one.
+}
+let extraCount = 0;
+for (const ph of PHASES) {
+  for (const st of ph.steps) {
+    const ex = EXTRAS[st.swap];
+    if (!ex) continue;
+    if (ex.tip) st.tip = ex.tip;
+    if (ex.order) st.order = ex.order;
+    extraCount++;
+  }
+}
+console.log(`step extras          ${extraCount} swaps carry a tip or an order`);
+
+// ---- The Kids room, lifted from baby-kids-101 rather than written twice ----
+//
+// The article already carries "The 23 baby and kid swaps, in priority order",
+// each with an impact, a why, a free version and its picks. Copying that into
+// a second source would guarantee the two drift, so the app reads the article.
+// Edit the article and the room follows.
+const kidsSrc = fs.readFileSync(path.join(REPO, "articles", "baby-kids-101.html"), "utf8")
+  .replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/g, "");
+const text = (h) => h.replace(/<[^>]+>/g, "")
+  .replace(/&amp;/g, "&").replace(/&rarr;/g, "").replace(/&nbsp;/g, " ")
+  .replace(/&#39;|&rsquo;/g, "'").replace(/&quot;/g, '"').replace(/\s+/g, " ").trim();
+const kidsSteps = [];
+for (const m of kidsSrc.matchAll(/<h3[^>]*>([\s\S]*?)<\/h3>([\s\S]*?)(?=<h3|<h2|$)/g)) {
+  const body = m[2];
+  const desc = (body.match(/class="step-desc"[^>]*>([\s\S]*?)<\/p>/) || [])[1];
+  if (!desc) continue;
+  const free = text((desc.match(/<b>Free version:<\/b>([\s\S]*)$/) || [])[1] || "");
+  // The related-article cards at the foot are h3s with a description too. What
+  // separates a swap is that every one of them names a free version; checking
+  // the markup instead let both cards through as swaps.
+  if (!free) continue;
+  const why = text(desc.replace(/<b>Free version:<\/b>[\s\S]*$/, ""));
+  const picks = [];
+  for (const c of body.matchAll(
+      /href="(https:\/\/www\.amazon\.com\/dp\/[^"]+)"[\s\S]*?product-card-tier">([^<]*)<[\s\S]*?product-card-name">([^<]*)<(?:[\s\S]*?product-card-best">([^<]*)<)?/g)) {
+    // The store shows a price tier and a line saying what the pick is best for.
+    // Cutting that line down to two words gave "Best glyphosate" and "Easiest
+    // to", so the tier becomes the chip and the line stays whole as the note,
+    // which is how the store itself presents them.
+    picks.push({
+      label: text(c[2]) || "Pick",
+      name: text(c[3]),
+      url: c[1],
+      note: text(c[4] || ""),
+    });
+  }
+  // A swap whose picks live in its own guide gets the guide, the way the
+  // fibres swap already does, rather than an empty "our picks" heading.
+  if (!picks.length) {
+    const guide = (body.match(/class="step-link"[^>]*href="([^"]+)"|href="([^"]+)"[^>]*class="step-link"/) || []);
+    const href = guide[1] || guide[2];
+    if (href) {
+      picks.push({ label: "Guide", name: "Read the full guide",
+        url: href.startsWith("http") ? href : `https://plasticdetox.org/articles/${href}` });
+    }
+  }
+  kidsSteps.push({
+    id: `Kids::${text(m[1])}`.slice(0, 120),
+    swap: text(m[1]),
+    why,
+    heat: /heat|warm|hot/i.test(why),
+    free,
+    picks,
+  });
+}
+if (kidsSteps.length) {
+  PHASES.push({ title: "Kids", sub: "Kids", focus:
+    "Bottles and feeding, the nursery, wipes and creams, in the order that matters for someone that small.",
+    locked: true, steps: kidsSteps });
+}
+console.log(`kids room            ${kidsSteps.length} swaps, ${kidsSteps.reduce((n, s) => n + s.picks.length, 0)} picks`);
+
 fs.writeFileSync(path.join(OUT, "plan.json"), JSON.stringify(PHASES, null, 1) + "\n");
 const stepCount = PHASES.reduce((n, p) => n + p.steps.length, 0);
 const pickCount = PHASES.reduce((n, p) => n + p.steps.reduce((m, s) => m + s.picks.length, 0), 0);
