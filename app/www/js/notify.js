@@ -10,7 +10,10 @@
  */
 import { tipOfDay, dayOfYear } from "./data.js";
 
-const KEY = "pd.notify.v1";
+// Absence means on. Provisional authorisation means nobody had to opt in, so
+// the only state worth storing is a deliberate refusal.
+const OFF_KEY = "pd.notify.off.v1";
+const SEEDED_KEY = "pd.notify.seeded.v1";
 const HOUR_KEY = "pd.notify.hour.v1";
 const WINDOW = 55;
 const DEFAULT_HOUR = 8;
@@ -26,7 +29,7 @@ export function available() {
 }
 
 export function isOn() {
-  try { return localStorage.getItem(KEY) === "1"; } catch { return false; }
+  try { return localStorage.getItem(OFF_KEY) !== "1"; } catch { return true; }
 }
 
 export function hour() {
@@ -35,11 +38,46 @@ export function hour() {
 
 function remember(on) {
   try {
-    if (on) localStorage.setItem(KEY, "1");
-    else localStorage.removeItem(KEY);
+    if (on) localStorage.removeItem(OFF_KEY);
+    else localStorage.setItem(OFF_KEY, "1");
   } catch {
     // A phone that will not store the preference still gets this session's.
   }
+}
+
+/** Whether iOS will actually deliver, counting the quiet provisional grant. */
+async function allowed() {
+  const ln = plugin();
+  if (!ln) return false;
+  try {
+    const p = await ln.checkPermissions();
+    return p && p.display === "granted";
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Start on its own, with no dialog and nothing to tap.
+ *
+ * AppDelegate asks for provisional authorisation at launch, which iOS grants
+ * without asking anyone anything and delivers quietly. So by the time this
+ * runs the answer is usually already yes, and the reader gets tomorrow's tip
+ * without ever having opted in. The first one goes out within the minute so
+ * there is something real in Notification Centre carrying Apple's own Keep and
+ * Turn Off buttons, which is the decision that actually matters.
+ */
+export async function autoStart() {
+  if (!isOn()) return 0;
+  if (!(await allowed())) return 0;
+  const n = await reschedule();
+  let seeded = true;
+  try { seeded = localStorage.getItem(SEEDED_KEY) === "1"; } catch { /* treat as seeded */ }
+  if (!seeded) {
+    try { localStorage.setItem(SEEDED_KEY, "1"); } catch { /* not worth failing over */ }
+    await sendSample(45);
+  }
+  return n;
 }
 
 /**
@@ -49,15 +87,18 @@ function remember(on) {
 export async function turnOn() {
   const ln = plugin();
   if (!ln) return "unavailable";
-  let granted = false;
+  remember(true);
+  if (await allowed()) {
+    await reschedule();
+    return "on";
+  }
+  // Only reached if the quiet grant was refused or revoked in Settings.
   try {
     const asked = await ln.requestPermissions();
-    granted = asked && (asked.display === "granted" || asked.display === "prompt-with-rationale");
+    if (!asked || asked.display !== "granted") return "denied";
   } catch {
     return "unavailable";
   }
-  if (!granted) return "denied";
-  remember(true);
   await reschedule();
   return "on";
 }
@@ -110,7 +151,7 @@ export async function reschedule() {
 }
 
 /** One now, so someone who just turned it on can see that it works. */
-export async function sendSample() {
+export async function sendSample(seconds = 5) {
   const ln = plugin();
   if (!ln) return false;
   const tip = tipOfDay();
@@ -121,7 +162,7 @@ export async function sendSample() {
         id: 19999,
         title: tip.title,
         body: tip.body,
-        schedule: { at: new Date(Date.now() + 5000) },
+        schedule: { at: new Date(Date.now() + seconds * 1000) },
       }],
     });
     return true;

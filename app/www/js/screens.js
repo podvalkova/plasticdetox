@@ -337,8 +337,9 @@ function appendTip(root, notify) {
   if (notify && notify.available) {
     const row = el("button", `tip-bell${notify.on ? " on" : ""}`);
     row.type = "button";
+    // On by default, so this is the way out rather than the way in.
     row.textContent = notify.on
-      ? "Arriving each morning \u2713"
+      ? "Arriving each morning \u00b7 turn off"
       : "Send me this each morning";
     row.onclick = () => notify.onToggle();
     card.appendChild(row);

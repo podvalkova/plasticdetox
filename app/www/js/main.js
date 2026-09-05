@@ -397,15 +397,9 @@ function draw() {
             return;
           }
           const r = await notify.turnOn();
-          if (r === "on") {
-            const n = await notify.reschedule();
-            await notify.sendSample();
-            toast(n ? `On. ${n} days scheduled` : "On");
-          } else if (r === "denied") {
-            toast("Notifications are off in Settings");
-          } else {
-            toast("Not available on this device");
-          }
+          if (r === "denied") toast("Turn notifications on in Settings");
+          else if (r === "unavailable") toast("Not available on this device");
+          else toast("Back on, one each morning");
           render();
         },
       },
@@ -988,6 +982,10 @@ async function start() {
   if (restorePlace()) render();
   else go({ screen: "detox" });
   openDeepLink(location.search).catch((err) => console.error("deep link failed", err));
+
+  // Nothing to tap. Provisional authorisation is already granted by the time
+  // this runs, so the schedule simply gets laid down.
+  notify.autoStart().catch(() => {});
 
   // Refreshed after the first screen is up, never before it. A scan in a shop
   // with one bar of signal must not wait on a two megabyte download.

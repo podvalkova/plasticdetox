@@ -1,5 +1,6 @@
 import UIKit
 import Capacitor
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -7,8 +8,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        requestQuietNotifications()
         return true
+    }
+
+    /// Ask for provisional authorisation, which shows no dialog at all.
+    ///
+    /// A daily tip is worth almost nothing if nobody ever opts in, and an opt in
+    /// button on a card is a button most people scroll past. Provisional
+    /// authorisation is Apple's answer to that: notifications start arriving
+    /// immediately, delivered quietly to Notification Centre with no banner, no
+    /// sound and nothing on the lock screen, and each one carries Keep and Turn
+    /// Off buttons. The reader decides after seeing the actual thing rather than
+    /// a dialog asking permission for something they have not read yet.
+    ///
+    /// Only asked while the status is still notDetermined, so this never
+    /// downgrades a full grant and never re-asks someone who said no.
+    private func requestQuietNotifications() {
+        let center = UNUserNotificationCenter.current()
+        center.getNotificationSettings { settings in
+            guard settings.authorizationStatus == .notDetermined else { return }
+            center.requestAuthorization(options: [.alert, .sound, .badge, .provisional]) { _, _ in
+                // A refusal here is not an error: the app simply schedules nothing.
+            }
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
