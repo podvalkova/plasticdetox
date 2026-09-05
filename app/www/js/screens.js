@@ -324,17 +324,29 @@ function scopeHint(row) {
 // The canvas sits the tip at the foot of the Detox screen. Keyed on the day of
 // the year, so it needs no storage and no server, everyone sees the same tip on
 // the same day, and it comes back around in a year.
-function appendTip(root) {
+function appendTip(root, notify) {
   const tip = tipOfDay();
   if (!tip) return;
   const card = el("div", "tip-card");
   card.appendChild(el("div", "tip-label", "Tip of the day"));
   card.appendChild(el("div", "tip-title", tip.title));
   card.appendChild(el("p", "tip-body", tip.body));
+  // Asked here rather than at first launch, because this is the moment the
+  // thing being offered is on screen and obviously worth having. Permission
+  // is spent once: a no on the launch screen is a no for good.
+  if (notify && notify.available) {
+    const row = el("button", `tip-bell${notify.on ? " on" : ""}`);
+    row.type = "button";
+    row.textContent = notify.on
+      ? "Arriving each morning \u2713"
+      : "Send me this each morning";
+    row.onclick = () => notify.onToggle();
+    card.appendChild(row);
+  }
   root.appendChild(card);
 }
 
-export function detox(root, { phases, done, seen, room, onRoom, onStep, onKids, onCleared, onSetAside }) {
+export function detox(root, { phases, done, seen, room, onRoom, onStep, onKids, onCleared, notify }) {
   const all = phases.reduce((n, p) => n + p.steps.length, 0);
   const ticked = phases.reduce(
     (n, p) => n + p.steps.filter((s) => done.has(s.id)).length, 0);
@@ -392,7 +404,7 @@ export function detox(root, { phases, done, seen, room, onRoom, onStep, onKids, 
     wrap.appendChild(card);
   }
 
-  appendTip(wrap);
+  appendTip(wrap, notify);
 
   wrap.appendChild(el("div", "dx-where", "Where do you want to work"));
   const rooms = el("div", "dx-rooms");

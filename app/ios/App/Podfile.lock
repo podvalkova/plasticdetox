@@ -10,6 +10,8 @@ PODS:
   - CapacitorCordova (8.5.0)
   - CapacitorHaptics (8.0.2):
     - Capacitor
+  - CapacitorLocalNotifications (8.3.1):
+    - Capacitor
   - CapacitorPreferences (8.0.1):
     - Capacitor
   - CapgoCapacitorUpdater (8.51.15):
@@ -27,6 +29,7 @@ DEPENDENCIES:
   - "CapacitorBrowser (from `../../node_modules/@capacitor/browser`)"
   - "CapacitorCordova (from `../../node_modules/@capacitor/ios`)"
   - "CapacitorHaptics (from `../../node_modules/@capacitor/haptics`)"
+  - "CapacitorLocalNotifications (from `../../node_modules/@capacitor/local-notifications`)"
   - "CapacitorPreferences (from `../../node_modules/@capacitor/preferences`)"
   - "CapgoCapacitorUpdater (from `../../node_modules/@capgo/capacitor-updater`)"
 
@@ -48,6 +51,8 @@ EXTERNAL SOURCES:
     :path: "../../node_modules/@capacitor/ios"
   CapacitorHaptics:
     :path: "../../node_modules/@capacitor/haptics"
+  CapacitorLocalNotifications:
+    :path: "../../node_modules/@capacitor/local-notifications"
   CapacitorPreferences:
     :path: "../../node_modules/@capacitor/preferences"
   CapgoCapacitorUpdater:
@@ -61,11 +66,12 @@ SPEC CHECKSUMS:
   CapacitorBrowser: 752e0208aa07c7aa63d1f7cde895a3e9519b2656
   CapacitorCordova: 9d3acbb574048e7167d2af127a0af2123e619f2f
   CapacitorHaptics: 296f771ecd89c7a1bd92a7b6826a7d268e2e70f5
+  CapacitorLocalNotifications: e0747a329ddde3074d52dc74a003688af90e42be
   CapacitorPreferences: cca2021f386efb75947c850334447d9ff22b14f1
   CapgoCapacitorUpdater: 691ad5c4955163d2b56e7eb4cb6dbc42766bdc48
   Version: de5907f2c5d0f3cf21708db7801d1d5401139486
   ZIPFoundation: dfd3d681c4053ff7e2f7350bc4e53b5dba3f5351
 
-PODFILE CHECKSUM: 0dcf556ef93a9f7b969a559ef38518c293e4a0ac
+PODFILE CHECKSUM: 23b4b7eb610e8272ad9432bbb7188a67654fffb9
 
 COCOAPODS: 1.16.2

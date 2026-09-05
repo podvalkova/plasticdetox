@@ -10,6 +10,7 @@ import * as check from "./check.js";
 import { lookup, cleanCode } from "./upc.js";
 import { el, toast } from "./ui.js";
 import { roomName } from "./detox-content.js";
+import * as notify from "./notify.js";
 
 const WORKER = "https://plasticdetox-quiz-email.plasticdetox.workers.dev";
 const RECENTS_KEY = "pd.recents.v1";
@@ -231,6 +232,9 @@ let drawnOn = data.dayOfYear();
 document.addEventListener("visibilitychange", () => {
   if (document.visibilityState !== "visible") return;
   const today = data.dayOfYear();
+  // Top the schedule up on every return, so the window never runs dry and a
+  // day that turned over while the app was closed still has its tip queued.
+  notify.reschedule();
   if (today === drawnOn) return;
   drawnOn = today;
   render();
@@ -382,7 +386,29 @@ function draw() {
       onStep: (stepId) => go({ screen: "detoxStep", stepId }),
       onKids: () => go({ screen: "detoxKids" }),
       onCleared: () => go({ screen: "detoxCleared" }),
-      onSetAside: () => go({ screen: "detoxLater" }),
+      notify: {
+        available: notify.available(),
+        on: notify.isOn(),
+        onToggle: async () => {
+          if (notify.isOn()) {
+            await notify.turnOff();
+            toast("Daily tip off");
+            render();
+            return;
+          }
+          const r = await notify.turnOn();
+          if (r === "on") {
+            const n = await notify.reschedule();
+            await notify.sendSample();
+            toast(n ? `On. ${n} days scheduled` : "On");
+          } else if (r === "denied") {
+            toast("Notifications are off in Settings");
+          } else {
+            toast("Not available on this device");
+          }
+          render();
+        },
+      },
     });
   } else if (state.screen === "detoxReward") {
     const phases = data.planPhases();

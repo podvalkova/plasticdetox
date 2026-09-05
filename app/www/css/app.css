@@ -1014,6 +1014,17 @@ body.has-tabs .screen { padding-bottom: calc(var(--safe-bottom) + 4rem); }
 .pc-list.pro li::before { content: "\2713"; position: absolute; left: 0; color: var(--good); font-weight: 800; }
 .pc-list.con li::before { content: "\2013"; position: absolute; left: 0; color: var(--careful); font-weight: 800; }
 
+
+/* The opt in sits inside the tip, so the offer and the thing being offered are
+   the same object. */
+.tip-bell {
+  align-self: flex-start; margin-top: 4px; border: 0; cursor: pointer;
+  padding: 8px 14px; border-radius: 18px;
+  background: rgba(106, 43, 240, .1); color: var(--accent);
+  font: inherit; font-size: 12.5px; font-weight: 800; letter-spacing: -.01em;
+}
+.tip-bell.on { background: var(--good-bg); color: var(--good); }
+
 /* ------------------------------------------------------- the check form */
 
 .check-form { display: block; }
