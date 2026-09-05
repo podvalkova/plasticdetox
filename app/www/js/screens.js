@@ -6,7 +6,7 @@ import { FRONTS, STANCE_LABEL, verdictFor, alternativesFor, ratedProducts } from
 import { packagingHeadline } from "./upc.js";
 import { el, frag, icon, ICONS, splitNote } from "./ui.js";
 import { buyLink, productImage, tipOfDay } from "./data.js";
-import { stepContent, roomName, stage } from "./detox-content.js";
+import { stepContent, roomName } from "./detox-content.js";
 
 const SITE = "https://plasticdetox.org";
 const STATUS_GLYPH = { pass: "✓", caution: "!", fail: "✕", unknown: "?" };
@@ -467,12 +467,7 @@ export function detox(root, { phases, done, seen, room, onRoom, onStep, onKids, 
 export function detoxKids(root, { onOpen, onLater }) {
   root.appendChild(el("div", "dx-k", "Kids \u00b7 locked"));
   const row = el("div", "dx-titrow");
-  const medal = el("span", "dx-medal");
-  medal.appendChild(icon("M7 11V8a5 5 0 0 1 10 0v3M5 11h14v10H5zM12 15v3", 26));
-  row.appendChild(medal);
-  const tw = el("div");
-  tw.appendChild(el("div", "dx-title", "The kids room"));
-  row.appendChild(tw);
+  row.appendChild(el("div", "dx-title", "The kids room"));
   root.appendChild(row);
 
   root.appendChild(el("div", "dx-k", "What is inside"));

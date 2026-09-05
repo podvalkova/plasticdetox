@@ -56,5 +56,6 @@ const idx2 = data.getIndex();
 screens.shopIndex(frame("shop"), { index: idx2, room: "", onRoom(){}, onProduct(){}, onOpen(){}, onCategory(){} });
 screens.learn(frame("learn"), { articles: data.allArticles(), query: "", onQuery(){}, onOpen(){} });
 screens.saved(frame("saved"), { items: [], index: idx2, onProduct(){}, onOpen(){}, onShop(){} });
+screens.detoxKids(frame("kids"), { onOpen(){}, onLater(){} });
 document.title = "ready";
 </script>
