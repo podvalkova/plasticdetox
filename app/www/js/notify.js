@@ -15,8 +15,63 @@ import { tipOfDay, dayOfYear } from "./data.js";
 const OFF_KEY = "pd.notify.off.v1";
 const SEEDED_KEY = "pd.notify.seeded.v1";
 const HOUR_KEY = "pd.notify.hour.v1";
+const SAID_KEY = "pd.notify.said.v1";
+const WHO_KEY = "pd.notify.who.v1";
+const WORKER = "https://plasticdetox-quiz-email.plasticdetox.workers.dev";
 const WINDOW = 55;
 const DEFAULT_HOUR = 8;
+
+/**
+ * A random id, so the counts are devices rather than app opens.
+ *
+ * Not derived from anything about the phone or the person: it exists only so
+ * one install reporting "on" every morning counts once, not thirty times.
+ */
+function who() {
+  try {
+    let id = localStorage.getItem(WHO_KEY);
+    if (!id) {
+      id = Math.random().toString(36).slice(2) + Date.now().toString(36);
+      localStorage.setItem(WHO_KEY, id);
+    }
+    return id;
+  } catch {
+    return "";
+  }
+}
+
+/**
+ * Report the state once a day at most.
+ *
+ * Deduped on device and day, so "on" answers how many installs have the tip
+ * scheduled rather than how many times anyone opened the app.
+ */
+export function report(state) {
+  const day = new Date().toISOString().slice(0, 10);
+  const stamp = `${day}:${state}`;
+  try {
+    if (localStorage.getItem(SAID_KEY) === stamp) return;
+    localStorage.setItem(SAID_KEY, stamp);
+  } catch {
+    // Unstorable means it may double count, which beats not counting.
+  }
+  fetch(`${WORKER}/notify-log`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ state, day, id: who() }),
+    keepalive: true,
+  }).catch(() => {});
+}
+
+/** A tap is the only real evidence a tip was seen. Counted every time. */
+export function reportTap() {
+  fetch(`${WORKER}/notify-log`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ state: "tap", day: new Date().toISOString().slice(0, 10), id: who() }),
+    keepalive: true,
+  }).catch(() => {});
+}
 
 function plugin() {
   const cap = window.Capacitor;
@@ -68,8 +123,22 @@ async function allowed() {
  * Turn Off buttons, which is the decision that actually matters.
  */
 export async function autoStart() {
-  if (!isOn()) return 0;
-  if (!(await allowed())) return 0;
+  const ln = plugin();
+  if (!ln) return 0;
+  if (!isOn()) { report("off"); return 0; }
+  if (!(await allowed())) {
+    // Granted quietly at launch, so a no here means it was turned off in
+    // Settings rather than never asked for.
+    report("denied");
+    return 0;
+  }
+  report("on");
+  // A tap is the only thing that proves a tip was actually seen.
+  try {
+    ln.addListener("localNotificationActionPerformed", () => reportTap());
+  } catch {
+    // An older plugin without the listener still schedules fine.
+  }
   const n = await reschedule();
   let seeded = true;
   try { seeded = localStorage.getItem(SEEDED_KEY) === "1"; } catch { /* treat as seeded */ }

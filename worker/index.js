@@ -66,6 +66,14 @@ export default {
     }
 
     // ===== Private stats view: every brand searched, ranked by count (GET) =====
+    // ===== App notification counters: on, off, denied, tap (anonymous) =====
+    if (path === "/notify-log" && request.method === "POST") {
+      return handleNotifyLog(request, env, corsOrigin);
+    }
+    if (path === "/notify-stats" && request.method === "GET") {
+      return handleNotifyStats(request, env);
+    }
+
     if (path === "/brand-stats" && request.method === "GET") {
       return handleBrandStats(request, env);
     }
@@ -405,6 +413,61 @@ async function handleBrandReports(request, env) {
 }
 
 // GET /brand-stats?token=...  ->  ranked list of everything searched
+
+/**
+ * Four counters a day: how many installs have the tip scheduled, how many
+ * turned it off in the app, how many had it turned off in Settings, and how
+ * many tapped one.
+ *
+ * The id is a random string the app makes up for itself. It is here so a phone
+ * reporting every morning counts once a day rather than once an open, and it
+ * carries nothing about the phone or the person.
+ */
+async function handleNotifyLog(request, env, corsOrigin) {
+  try {
+    const b = await request.json().catch(() => ({}));
+    const state = String(b.state || "");
+    if (!["on", "off", "denied", "tap"].includes(state)) {
+      return json({ ok: false, error: "bad state" }, 400, corsOrigin);
+    }
+    const day = /^\d{4}-\d{2}-\d{2}$/.test(b.day) ? b.day : new Date().toISOString().slice(0, 10);
+    const id = String(b.id || "").slice(0, 40);
+    if (!env.BRAND_SEARCHES) return json({ ok: false }, 200, corsOrigin);
+
+    // A tap is counted every time; the rest once per device per day, so the
+    // numbers answer "how many installs" rather than "how many app opens".
+    if (state !== "tap" && id) {
+      const seen = `notifyseen:${day}:${state}:${id}`;
+      if (await env.BRAND_SEARCHES.get(seen)) return json({ ok: true, dup: true }, 200, corsOrigin);
+      await env.BRAND_SEARCHES.put(seen, "1", { expirationTtl: 60 * 60 * 48 });
+    }
+    const key = `notify:${day}:${state}`;
+    const now = Number(await env.BRAND_SEARCHES.get(key)) || 0;
+    await env.BRAND_SEARCHES.put(key, String(now + 1));
+    return json({ ok: true }, 200, corsOrigin);
+  } catch (e) {
+    return json({ ok: false }, 200, corsOrigin);
+  }
+}
+
+/** The last 30 days, token gated like the other private views. */
+async function handleNotifyStats(request, env) {
+  const url = new URL(request.url);
+  if (!env.STATS_TOKEN || url.searchParams.get("token") !== env.STATS_TOKEN) {
+    return new Response("Not found", { status: 404 });
+  }
+  const rows = [];
+  for (let i = 0; i < 30; i++) {
+    const d = new Date(Date.now() - i * 86400000).toISOString().slice(0, 10);
+    const [on, off, denied, tap] = await Promise.all(
+      ["on", "off", "denied", "tap"].map((k) =>
+        env.BRAND_SEARCHES.get(`notify:${d}:${k}`).then((v) => Number(v) || 0)));
+    if (on || off || denied || tap) rows.push({ day: d, on, off, denied, tap });
+  }
+  return new Response(JSON.stringify({ days: rows }, null, 1),
+    { headers: { "Content-Type": "application/json" } });
+}
+
 async function handleBrandStats(request, env) {
   const token = new URL(request.url).searchParams.get("token") || "";
   if (!env.STATS_TOKEN || token !== env.STATS_TOKEN) {
