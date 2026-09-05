@@ -9,6 +9,7 @@
  * window well inside that and top it up every time the app opens.
  */
 import { tipOfDay, dayOfYear } from "./data.js";
+import { track } from "./track.js";
 
 // Absence means on. Provisional authorisation means nobody had to opt in, so
 // the only state worth storing is a deliberate refusal.
@@ -55,6 +56,7 @@ export function report(state) {
   } catch {
     // Unstorable means it may double count, which beats not counting.
   }
+  track("notify_state", { state });
   fetch(`${WORKER}/notify-log`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -65,6 +67,7 @@ export function report(state) {
 
 /** A tap is the only real evidence a tip was seen. Counted every time. */
 export function reportTap() {
+  track("notify_tap", {});
   fetch(`${WORKER}/notify-log`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },

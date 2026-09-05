@@ -11,6 +11,7 @@ import { lookup, cleanCode } from "./upc.js";
 import { el, toast } from "./ui.js";
 import { roomName } from "./detox-content.js";
 import * as notify from "./notify.js";
+import { track, setBundle, flush } from "./track.js";
 
 const WORKER = "https://plasticdetox-quiz-email.plasticdetox.workers.dev";
 const RECENTS_KEY = "pd.recents.v1";
@@ -405,7 +406,7 @@ function draw() {
       seen: readSeen(),
       room: state.room || "",
       onRoom: (r) => { state.room = r; render(); rememberPlace(); },
-      onStep: (stepId) => go({ screen: "detoxStep", stepId }),
+      onStep: (stepId) => { track("swap_opened", { step: stepId }); go({ screen: "detoxStep", stepId }); },
       onKids: () => go({ screen: "detoxKids" }),
       onCleared: () => go({ screen: "detoxCleared" }),
       notify: notifyProps(),
@@ -444,6 +445,7 @@ function draw() {
         // the stack, not from this one, so crossing into a new room has to
         // update that entry. Without it, backing out of the step lands on the
         // room you were in before rather than the one you are now working.
+        track("reward_next", { crossed_room: nextRoom !== at });
         if (nextRoom >= 0) setRootRoom(String(nextRoom));
         go({ screen: "detoxStep", stepId: next.id }, { replace: true });
       },
@@ -505,16 +507,18 @@ function draw() {
       isDone: set.has(step.id),
       isSeen: readSeen().has(step.id),
       onDone: () => {
+        track("swap_done", { step: step.id, room: roomName(phase) });
         toggleDone(step.id);
         go({ screen: "detoxReward", stepId: step.id }, { replace: true });
       },
       onUndo: () => toggleDone(step.id),
-      onLater: () => { markSeen(step.id); back(); },
+      onLater: () => { track("swap_later", { step: step.id }); markSeen(step.id); back(); },
       onOpen: openExternal,
       // A pick can be kept without buying it now. Plan picks are not database
       // rows, so they save under the pick's own name with the ASIN off its
       // link, which is what the Saved tab needs to draw the row.
       onSavePick: (pick) => {
+        track("pick_saved", { name: pick.name });
         // Resolve the pick to the row we actually hold, so the Saved card shows
         // the real brand, its image and today's verdict. Saving the pick's own
         // name as its brand produced a card with the name twice and no View.
@@ -997,7 +1001,11 @@ async function start() {
   // with one bar of signal must not wait on a two megabyte download.
   // Hand the refresh the running build, so a release always brings its
   // verdicts with it rather than waiting for the clock.
-  currentBundle().then((info) => data.refresh({ build: (info && info.version) || "" }))
+  currentBundle().then((info) => {
+    setBundle((info && info.version) || "");
+    track("app_open", { notify_on: notify.isOn() });
+    return data.refresh({ build: (info && info.version) || "" });
+  })
     .then((r) => {
     if (r && r.updated) {
       index = data.getIndex();

@@ -66,6 +66,11 @@ export default {
     }
 
     // ===== Private stats view: every brand searched, ranked by count (GET) =====
+    // ===== App events, forwarded to Mixpanel so no SDK sits on the phone =====
+    if (path === "/mp" && request.method === "POST") {
+      return handleMixpanel(request, env, corsOrigin);
+    }
+
     // ===== App notification counters: on, off, denied, tap (anonymous) =====
     if (path === "/notify-log" && request.method === "POST") {
       return handleNotifyLog(request, env, corsOrigin);
@@ -423,6 +428,61 @@ async function handleBrandReports(request, env) {
  * reporting every morning counts once a day rather than once an open, and it
  * carries nothing about the phone or the person.
  */
+
+/**
+ * Forward a batch of app events to Mixpanel.
+ *
+ * The token lives here rather than in the app, so it is not sitting in a
+ * bundle anyone can unzip, and the device never talks to Mixpanel directly.
+ * Events are capped and their property names are not trusted: this endpoint is
+ * open to the internet like every other one the app calls.
+ */
+async function handleMixpanel(request, env, corsOrigin) {
+  try {
+    if (!env.MIXPANEL_TOKEN) return json({ ok: false, error: "not configured" }, 200, corsOrigin);
+    const body = await request.json().catch(() => ({}));
+    const id = String(body.id || "").slice(0, 64) || "anon";
+    const events = Array.isArray(body.events) ? body.events.slice(0, 40) : [];
+    if (!events.length) return json({ ok: true, sent: 0 }, 200, corsOrigin);
+
+    const payload = events.map((e) => {
+      const props = {};
+      // Copy a bounded set of scalar properties. An event that arrives with a
+      // hundred keys, or an object in one of them, is a bug or an abuse, and
+      // either way it is not going into the project.
+      const src = (e && e.props) || {};
+      let n = 0;
+      for (const k of Object.keys(src)) {
+        if (n >= 12) break;
+        const v = src[k];
+        if (v === null || ["string", "number", "boolean"].includes(typeof v)) {
+          props[String(k).slice(0, 40)] = typeof v === "string" ? v.slice(0, 200) : v;
+          n++;
+        }
+      }
+      return {
+        event: String((e && e.event) || "unknown").slice(0, 60),
+        properties: {
+          ...props,
+          token: env.MIXPANEL_TOKEN,
+          distinct_id: id,
+          time: Number(e && e.at) || Date.now(),
+          $insert_id: `${id}-${Number(e && e.at) || 0}-${Math.random().toString(36).slice(2, 8)}`,
+        },
+      };
+    });
+
+    const res = await fetch("https://api.mixpanel.com/track", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "text/plain" },
+      body: JSON.stringify(payload),
+    });
+    return json({ ok: res.ok, sent: payload.length }, 200, corsOrigin);
+  } catch (e) {
+    return json({ ok: false }, 200, corsOrigin);
+  }
+}
+
 async function handleNotifyLog(request, env, corsOrigin) {
   try {
     const b = await request.json().catch(() => ({}));
