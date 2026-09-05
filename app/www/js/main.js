@@ -489,12 +489,22 @@ function draw() {
       // rows, so they save under the pick's own name with the ASIN off its
       // link, which is what the Saved tab needs to draw the row.
       onSavePick: (pick) => {
+        // Resolve the pick to the row we actually hold, so the Saved card shows
+        // the real brand, its image and today's verdict. Saving the pick's own
+        // name as its brand produced a card with the name twice and no View.
         const asin = (pick.url.match(/\/dp\/([A-Z0-9]{10})/) || [])[1] || "";
+        const hit = asin && findByAsin(asin);
+        if (hit) { toggleSaved(hit.brand, hit.row); return; }
         toggleSaved(
           { brand: pick.name, id: `pick:${asin || pick.name}`, category: roomName(phase) },
-          { name: pick.name, cat: roomName(phase), asins: asin ? [asin] : [], ext: {} });
+          { name: pick.name, cat: roomName(phase), asins: asin ? [asin] : [],
+            url: pick.url, ext: {} });
       },
-      isPickSaved: (pick) => isSaved(pick.name, pick.name),
+      isPickSaved: (pick) => {
+        const asin = (pick.url.match(/\/dp\/([A-Z0-9]{10})/) || [])[1] || "";
+        const hit = asin && findByAsin(asin);
+        return hit ? isSaved(hit.brand.brand, hit.row.name) : isSaved(pick.name, pick.name);
+      },
     });
   } else if (state.screen === "learn") {
     screens.learn(view, {
@@ -566,6 +576,17 @@ function isSaved(brandName, name) {
   return readSaved().some((s) => savedKey(s.brand, s.name) === savedKey(brandName, name));
 }
 
+/** The brand and product row holding an ASIN, when we hold one. */
+function findByAsin(asin) {
+  if (!index) return null;
+  for (const b of index.brands) {
+    for (const row of (b.products || [])) {
+      if ((row.asins || []).includes(asin)) return { brand: b, row };
+    }
+  }
+  return null;
+}
+
 function toggleSaved(b, row) {
   const list = readSaved();
   const key = savedKey(b.brand, row.name);
@@ -577,6 +598,7 @@ function toggleSaved(b, row) {
     list.unshift({
       brand: b.brand, brandId: b.id, name: row.name,
       cat: row.cat || b.category || "", asin: (row.asins || [])[0] || "",
+      url: row.url || "",
       stance: (row.ext || {}).verdict || "unrated", at: Date.now(),
     });
     toast("Saved");

@@ -86,6 +86,17 @@ for (const obj of store.match(/\{[^{}]*\}/g) || []) {
 fs.writeFileSync(path.join(OUT, "product-notes.json"), JSON.stringify(notes, null, 1) + "\n");
 console.log(`product-notes.json   ${Object.keys(notes).length} products with pros and cons`);
 
+// Picks we recommend that are not in the store yet still need a picture. These
+// are kept apart from the harvest so it stays obvious which products are
+// missing a store entry, which is the thing that actually wants fixing.
+try {
+  const extra = JSON.parse(fs.readFileSync(path.join(REPO, "data", "extra-product-images.json"), "utf8"));
+  for (const [asin, id] of Object.entries(extra)) {
+    if (/^[A-Z0-9]{10}$/.test(asin) && !images[asin]) images[asin] = id;
+  }
+} catch {
+  // Optional file.
+}
 fs.writeFileSync(path.join(OUT, "product-images.json"),
   JSON.stringify(images, null, 1) + "\n");
 console.log(`product-images.json  ${Object.keys(images).length} products`);

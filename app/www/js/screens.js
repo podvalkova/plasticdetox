@@ -446,8 +446,12 @@ export function detox(root, { phases, done, seen, room, onRoom, onStep, onKids, 
     // ones you set aside was another thing to read; swiping is how you already
     // expect a stack of cards to behave, and it reaches every swap in the room
     // rather than only the next one.
+    // The next one, and the ones you chose to come back to. Showing all
+    // thirteen rebuilt the board the design removed: the whole point is that
+    // choosing is the step people stall on, and what is coming stays unseen.
+    const later = left.filter((st) => seen.has(st.id));
     const fresh = left.filter((st) => !seen.has(st.id));
-    const order = fresh.length ? fresh.concat(left.filter((st) => seen.has(st.id))) : left;
+    const order = fresh.length ? [fresh[0], ...later] : later;
     const strip = el("div", "dx-quest-strip");
     order.forEach((st, i) => {
       const q = el("div", `dx-quest${seen.has(st.id) ? " later" : ""}`);
@@ -710,6 +714,27 @@ export function detoxCleared(root, { rows, onUndo, onClose, title, empty, action
   root.appendChild(veil);
   const sheet = el("div", "sheet");
   sheet.appendChild(el("div", "sheet-grab"));
+  // The grabber promises a drag, so honour it. There is no edge swipe back out
+  // of a sheet in a webview, which left tapping the veil as the only way out
+  // and nothing on screen saying so.
+  let startY = 0, dragging = false;
+  sheet.addEventListener("touchstart", (e) => {
+    dragging = sheet.scrollTop <= 0;
+    startY = e.touches[0].clientY;
+  }, { passive: true });
+  sheet.addEventListener("touchmove", (e) => {
+    if (!dragging) return;
+    const dy = e.touches[0].clientY - startY;
+    if (dy > 0) sheet.style.transform = `translateY(${dy}px)`;
+  }, { passive: true });
+  sheet.addEventListener("touchend", (e) => {
+    if (!dragging) return;
+    const dy = (e.changedTouches[0] || {}).clientY - startY;
+    sheet.style.transition = "transform .18s";
+    sheet.style.transform = "";
+    setTimeout(() => { sheet.style.transition = ""; }, 200);
+    if (dy > 90) onClose();
+  }, { passive: true });
   sheet.appendChild(el("h1", "sheet-h", title || "What you completed"));
   if (!rows.length) {
     sheet.appendChild(el("p", "sheet-none", empty || "Nothing completed yet. The first one is the hardest."));
@@ -762,11 +787,30 @@ export function saved(root, { items, index, onProduct, onOpen, onShop }) {
       grid.appendChild(shopCard({ brand: b, row }, { onOpen, onProduct, eager: true }));
       continue;
     }
+    // Nothing in the database matches this one, which happens for a plan pick
+    // we have not written up yet. It still gets a picture and a way to buy it,
+    // rather than a white box with the name printed twice.
     const card = el("div", "pcard");
+    const src = productImage(s.asin, 300);
+    if (src) {
+      const shot = el("div", "pcard-shot");
+      const im = el("img");
+      im.src = src; im.alt = "";
+      im.onerror = () => shot.remove();
+      shot.appendChild(im);
+      card.appendChild(shot);
+    }
     const body = el("div", "pcard-body");
-    body.appendChild(el("div", "pcard-brand", s.brand));
+    if (s.cat) body.appendChild(el("div", "pcard-brand", s.cat));
     body.appendChild(el("div", "pcard-name", s.name));
     card.appendChild(body);
+    const link = s.url || (s.asin ? buyLink(s.asin) : "");
+    if (link) {
+      const view = el("button", "pcard-buy", "View");
+      view.type = "button";
+      view.onclick = () => onOpen(link);
+      card.appendChild(view);
+    }
     grid.appendChild(card);
   }
   root.appendChild(grid);
