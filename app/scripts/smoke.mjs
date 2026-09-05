@@ -111,12 +111,19 @@ const fill = (page, sel, i, text) => page.evaluate((s, n, t) => {
   el.dispatchEvent(new Event("change", { bubbles: true }));
 }, sel, i, text);
 
+// The app opens on Detox now, so anything testing the Check screen has to go
+// there first rather than assuming it is what loads.
+const toCheck = (page) => page.evaluate(() => [...document.querySelectorAll(".tab")]
+  .find((t) => /Check/.test(t.textContent)).click());
+
 const need = async (page, sel, what) => {
   const found = await page.$(sel);
   if (!found) throw new Error(`missing ${what} (${sel})`);
 };
 
 await screen("home", async (p) => {
+  await toCheck(p);
+  await new Promise((r) => setTimeout(r, 500));
   await need(p, ".check-form", "check form");
   const fields = await p.$$(".field input");
   if (fields.length !== 2) throw new Error(`expected 2 fields, got ${fields.length}`);
@@ -127,6 +134,8 @@ await screen("home", async (p) => {
 });
 
 await screen("known product", async (p) => {
+  await toCheck(p);
+  await new Promise((r) => setTimeout(r, 500));
   await fill(p, ".field input", 0, "Brita");
   await fill(p, ".field input", 1, "Elite");
   await tap(p, ".check-form .cta");
@@ -136,6 +145,8 @@ await screen("known product", async (p) => {
 });
 
 await screen("unknown product", async (p) => {
+  await toCheck(p);
+  await new Promise((r) => setTimeout(r, 500));
   await fill(p, ".field input", 0, "Kelloggs");
   await fill(p, ".field input", 1, "Corn Flakes");
   await tap(p, ".check-form .cta");
@@ -145,6 +156,20 @@ await screen("unknown product", async (p) => {
   for (const want of ["Get checks", "Request free review"]) {
     if (!ctas.some((t) => t.includes(want))) throw new Error(`missing "${want}"`);
   }
+});
+
+await screen("opens on detox", async (p) => {
+  // A fresh open lands on the plan, not the lookup. Asserted because three
+  // other screens quietly depended on the opposite. Pages in this run share an
+  // origin and therefore localStorage, so this relies on the seeding step
+  // clearing pd.place.v1: without that a previous screen's remembered place is
+  // restored and this reads as Check no matter what the default is.
+  const on = await p.evaluate(() => {
+    const t = document.querySelector(".tab.on");
+    return t ? t.textContent.trim() : "(none)";
+  });
+  if (on !== "Detox") throw new Error(`opened on ${on}, expected Detox`);
+  await need(p, ".dx-ring, .dx-alldone", "the detox screen");
 });
 
 await screen("detox", async (p) => {

@@ -243,7 +243,7 @@ function render() {
     box.appendChild(el("h2", null, "That screen did not load"));
     box.appendChild(el("p", null, String((err && err.message) || err)));
     const again = el("button", "cta ghost", "Back to the start");
-    again.onclick = () => { stack = [{ screen: "home" }]; render(); };
+    again.onclick = () => { stack = [{ screen: "detox" }]; render(); };
     box.appendChild(again);
     view.appendChild(box);
   }
@@ -876,8 +876,12 @@ async function start() {
   canScan = await scanner.available();
   boot.classList.add("gone");
   setTimeout(() => boot.remove(), 300);
+  // Open on Detox, not Check. Check answers a question you already have, which
+  // means you arrive at it deliberately; Detox is the thing with something to
+  // show someone who opened the app without one. Resuming still wins, so
+  // anyone who was mid task lands back where they were.
   if (restorePlace()) render();
-  else go({ screen: "home" });
+  else go({ screen: "detox" });
   openDeepLink(location.search).catch((err) => console.error("deep link failed", err));
 
   // Refreshed after the first screen is up, never before it. A scan in a shop
