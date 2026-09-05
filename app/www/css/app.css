@@ -164,42 +164,44 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .strip::-webkit-scrollbar { display: none; }
 .chip {
   flex: none; display: flex; align-items: center; gap: .45rem;
-  padding: .6rem .95rem; border-radius: 999px;
-  background: var(--surface); border: 1px solid var(--border-strong);
-  font-size: 14.5px; font-weight: 500; color: var(--body); max-width: 12rem;
+  padding: 11px 17px; border-radius: 22px;
+  background: var(--surface); border: 1.5px solid var(--border-strong);
+  font-size: 13.5px; font-weight: 700; color: var(--text); max-width: 12rem;
 }
 .chip:active { border-color: var(--accent); color: var(--accent); }
 .chip-name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 /* Shop room filter: the selected room reads as pressed, not merely tinted. */
 .rooms { margin-bottom: .9rem; }
 .chip.on {
-  background: var(--accent); border-color: var(--accent); color: #fff;
+  background: var(--accent-soft); border-color: var(--accent); color: var(--accent);
 }
-.chip.on .chip-n { color: #fff; opacity: .75; }
+.chip.on .chip-n { color: var(--accent); opacity: .7; }
 .chip-n { font-size: 12.5px; font-weight: 600; color: var(--faint); }
 
 /* ---------------------------------------------------------------- result */
 
 .verdict {
-  background: var(--surface); border: 1px solid var(--border);
-  border-radius: var(--card-radius); box-shadow: var(--card-shadow);
-  overflow: hidden; animation: pop .25s ease;
-  border-top: 4px solid var(--border-strong);
+  background: var(--surface); border: 1.5px solid rgba(0, 0, 0, .07);
+  border-radius: 26px; overflow: hidden; animation: pop .25s ease;
+  border-top: 5px solid var(--border-strong);
 }
 /* The verdict colour on the top edge only. A solid block behind the header
    shouted before anyone had read the brand, which is why it is not there. */
 .verdict.v-good { border-top-color: var(--good); }
 .verdict.v-careful { border-top-color: var(--careful); }
 .verdict.v-skip { border-top-color: var(--skip); }
-.verdict-head { padding: 1.5rem 1.4rem 1.3rem; position: relative; }
+.verdict-head {
+  padding: 22px 20px; position: relative;
+  display: flex; flex-direction: column; gap: 18px;
+}
 
 /* Keeping something is a decision made at the verdict, so the control lives
    with it, in the corner where a person already looks for one. */
 .heart {
-  position: absolute; top: 1.1rem; right: 1.1rem;
-  width: 2.4rem; height: 2.4rem; border-radius: 999px;
+  position: absolute; top: 22px; right: 20px;
+  width: 44px; height: 44px; border-radius: 22px;
   display: grid; place-items: center; color: var(--faint);
-  border: 1px solid var(--border-strong); background: var(--surface);
+  border: 1.5px solid var(--border-strong); background: var(--surface);
 }
 .heart:active { background: var(--accent-wash); border-color: var(--accent-light); }
 .heart.on { color: var(--accent); border-color: var(--accent-light); background: var(--accent-wash); }
@@ -209,30 +211,29 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
    colour behind the whole header shouted the verdict before anyone had read
    the brand. */
 .badge {
-  display: inline-flex; align-items: center; gap: 9px;
-  padding: 9px 16px; border-radius: 999px;
-  font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase;
+  align-self: flex-start; display: inline-flex; align-items: center; gap: 9px;
+  padding: 9px 15px; border-radius: 20px; margin-right: 52px;
+  font-size: 12.5px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase;
 }
-.badge::before { content: ""; width: 8px; height: 8px; border-radius: 999px; background: currentColor; flex: none; }
+.badge::before { content: ""; width: 9px; height: 9px; border-radius: 5px; background: currentColor; flex: none; }
 .badge.good { color: var(--good); background: var(--good-bg); }
 .badge.careful { color: var(--careful); background: var(--careful-bg); }
 .badge.skip { color: var(--skip); background: var(--skip-bg); }
 .badge.neutral, .badge.unrated { color: var(--neutral); background: var(--neutral-bg); }
 
-.verdict-brand { font-size: 27px; font-weight: 800; letter-spacing: -.025em; line-height: 1.2; margin-top: 1.05rem; }
-.verdict-cat { color: var(--muted); font-size: 13.5px; font-weight: 500; margin-top: .2rem; }
-.verdict-reason { font-size: 16.5px; line-height: 1.65; color: var(--body); margin-top: .75rem; }
+.verdict-brand { font-size: 34px; font-weight: 900; letter-spacing: -.04em; line-height: 1.02; }
+.verdict-cat { color: var(--muted); font-size: 14.5px; font-weight: 500; line-height: 1.3; margin-top: -12px; }
+.verdict-reason { font-size: 16px; line-height: 1.55; color: var(--text); }
 .verdict-scope {
-  margin-top: .9rem; font-size: 14px; line-height: 1.55; color: var(--muted);
-  background: var(--chip); border-radius: 14px; padding: 11px 14px;
+  font-size: 14px; line-height: 1.5; color: var(--body);
+  background: var(--surface-sunk); border-radius: 18px; padding: 16px;
 }
 
 .fronts { padding: 0 1.4rem 1.3rem; }
 .front {
-  display: flex; gap: .75rem; align-items: flex-start;
-  background: var(--bg); border: 1px solid var(--border);
-  border-left-width: 3px; border-left-color: var(--border-strong);
-  border-radius: 12px; padding: .7rem .85rem; margin-bottom: .45rem;
+  display: flex; gap: 12px; align-items: flex-start;
+  background: var(--bg); border: 1.5px solid var(--border);
+  border-radius: 18px; padding: 16px; margin-bottom: 10px;
 }
 .front:last-child { margin-bottom: 0; }
 /* Each row wears its own answer rather than a shared grey, so a scorecard
@@ -246,8 +247,9 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .front.caution .front-mark { box-shadow: inset 0 0 0 1px var(--careful-border); }
 .front.fail .front-mark { box-shadow: inset 0 0 0 1px var(--skip-border); }
 .front-mark {
-  width: 20px; height: 20px; border-radius: 999px; flex: none; margin-top: .1rem;
-  display: grid; place-items: center; font-size: 11px; font-weight: 800;
+  width: 24px; height: 24px; border-radius: 12px; flex: none;
+  display: grid; place-items: center; font-size: 12px; font-weight: 800;
+  border: 2px solid currentColor; background: none;
 }
 .front-mark.pass { color: var(--good); background: var(--good-bg); }
 .front-mark.caution { color: var(--careful); background: var(--careful-bg); }
@@ -267,11 +269,11 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .report-form .cta { margin-top: .5rem; }
 
 /* The measurements behind a testing finding. */
-.lab { margin-top: .85rem; padding: .8rem .9rem; border-radius: 14px;
-  background: var(--chip); border: 1px solid var(--border-strong); }
+.lab { margin-top: .85rem; padding: 18px; border-radius: 18px;
+  background: var(--surface-sunk); border: 0; }
 .lab .fronts-label { margin: 0 0 .5rem; }
 .lab-row { display: flex; gap: .7rem; align-items: baseline; padding: .25rem 0; }
-.lab-val { flex: none; min-width: 5.6rem; font-weight: 700; font-size: 14px;
+.lab-val { flex: none; width: 96px; font-weight: 800; font-size: 15px;
   font-variant-numeric: tabular-nums; }
 .lab-val.hit { color: var(--skip); }
 .lab-val.clean { color: var(--good); }
@@ -329,11 +331,11 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 /* Exposure sits inside the verdict card now. It is a severity, so it may wear
    one: it is the reason three small findings add up to an answer here and
    would not on a hand cream. */
-.expo { display: flex; gap: .7rem; align-items: flex-start; margin-top: .9rem;
-  border-radius: 14px; padding: 12px 14px; }
-.expo.low { background: var(--chip); border: 1px solid var(--border-strong); }
-.expo.medium { background: var(--careful-bg); border: 1px solid var(--careful-border); }
-.expo.high { background: var(--skip-bg); border: 1px solid var(--skip-border); }
+.expo { display: flex; gap: 14px; align-items: flex-start;
+  border-radius: 18px; padding: 16px; }
+.expo.low { background: var(--chip); border: 1.5px solid var(--border-strong); }
+.expo.medium { background: var(--careful-bg); border: 1.5px solid var(--careful-border); }
+.expo.high { background: var(--skip-bg); border: 1.5px solid var(--skip-border); }
 .expo-why { font-size: 13.5px; line-height: 1.5; color: var(--muted); }
 .expo-why b { color: var(--body); font-weight: 650; display: block; }
 
@@ -351,11 +353,11 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .cta {
   display: flex; align-items: center; justify-content: center;
   width: 100%; text-decoration: none;
-  padding: 1rem; border-radius: 999px; font-weight: 700; font-size: 16px;
-  background: var(--text); color: #fff; margin-top: .9rem;
+  height: 58px; padding: 0 1rem; border-radius: 29px; font-weight: 800; font-size: 16.5px;
+  background: var(--text); color: #fff; margin-top: 10px;
 }
 .cta:active { background: var(--accent); }
-.cta.ghost { background: var(--accent-wash); color: var(--accent-deep); border: 1px solid var(--accent-light); }
+.cta.ghost { background: var(--accent-soft); color: var(--accent); border: 0; }
 .cta.ghost:active { background: var(--accent-wash); border-color: var(--accent-light); color: var(--accent-deep); }
 .cta:disabled { opacity: .55; }
 
@@ -383,7 +385,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   position: absolute; left: 1.05rem; top: 50%; transform: translateY(-50%);
   color: var(--faint); pointer-events: none;
 }
-.shop-search input { padding-left: 2.9rem; }
+.shop-search input { height: 54px; border-radius: 27px; border-width: 1.5px; padding-left: 3.1rem; }
 
 /* Categories as a shelf you can see, with three of their picks on the front.
    A list of forty words told you nothing about what was behind each one. */
@@ -479,23 +481,27 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .dx-togo { color: var(--muted); font-variant-numeric: tabular-nums; }
 
 .dx-rooms {
-  display: flex; gap: .4rem; margin-bottom: 1rem;
+  display: flex; gap: .5rem;
   overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch;
   margin-inline: -1rem; padding-inline: 1rem;
 }
 .dx-rooms::-webkit-scrollbar { display: none; }
+/* A room is a card, not a pill: it carries a name, a count and a pip per
+   source, so the shape of the room reads before you open it. */
 .dx-room {
-  font-size: 14px; font-weight: 700; padding: .55rem .95rem; border-radius: 999px;
-  background: var(--chip); border: 1px solid transparent; color: var(--faint);
-  white-space: nowrap;
+  flex: none; min-width: 104px; padding: 12px 16px; border-radius: 20px;
+  background: var(--surface); border: 1.5px solid var(--border-strong);
+  color: var(--text); white-space: nowrap; text-align: left;
+  display: flex; flex-direction: column; gap: 8px; cursor: pointer;
 }
-.dx-room.on {
-  background: var(--accent); color: #fff;
-  box-shadow: 0 3px 10px -4px rgba(124, 58, 237, .5);
-}
+.dx-room.on { background: var(--accent-soft); border-color: var(--accent); }
+.dx-room.on .dx-room-n { color: var(--accent); }
+.dx-room.on .dx-room-c { color: var(--accent); opacity: .75; }
+.dx-room.on .dx-pip { background: rgba(106, 43, 240, .25); }
+.dx-room.on .dx-pip.on { background: var(--accent); }
 .dx-room.lock {
-  display: inline-flex; align-items: center; gap: .3rem;
-  border: 1px dashed var(--border-strong); background: var(--surface);
+  flex-direction: row; align-items: center; gap: .4rem; min-width: 0;
+  border-style: dashed; color: var(--muted);
 }
 .dx-room.lock svg { opacity: .7; }
 
@@ -566,7 +572,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 .dx-why { font-size: 15.5px; line-height: 1.55; color: var(--body); }
 .dx-pick { background: var(--surface); }
-.prow-note { font-size: 13px; color: var(--muted); line-height: 1.35; margin-top: .1rem; }
+.prow-note { font-size: 13px; font-weight: 500; color: var(--muted); line-height: 1.3; margin-top: 6px; }
 .dx-pick-right { margin-left: auto; text-align: right; flex: none; }
 .prow-view {
   display: block; font-size: 14px; font-weight: 700; color: var(--accent);
@@ -626,18 +632,18 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   color: var(--muted); margin-bottom: .4rem;
 }
 .prow {
-  display: flex; align-items: center; gap: .7rem; width: 100%; text-align: left;
-  background: var(--bg); border: 1px solid var(--border);
-  border-radius: 13px; padding: .5rem .65rem; margin-bottom: .35rem;
+  display: flex; align-items: center; gap: 16px; width: 100%; text-align: left;
+  background: var(--surface); border: 1.5px solid rgba(0, 0, 0, .07);
+  border-radius: 24px; padding: 16px; margin-bottom: 12px;
 }
-.prow:active { border-color: var(--accent-light); background: var(--accent-wash); }
+.prow:active { border-color: rgba(0, 0, 0, .2); }
 .prow-img {
-  width: 42px; height: 42px; flex: none; border-radius: 9px; background: #FFFFFF;
-  border: 1px solid var(--border); display: grid; place-items: center; overflow: hidden; padding: 2px;
+  width: 76px; height: 76px; flex: none; border-radius: 18px; background: #FFFFFF;
+  border: 1px solid var(--border); display: grid; place-items: center; overflow: hidden; padding: 4px;
 }
 .prow-img img { width: 100%; height: 100%; object-fit: contain; display: block; }
-.prow-name { font-size: 13.5px; font-weight: 650; letter-spacing: -.015em; line-height: 1.3; }
-.prow-best { font-size: 12px; color: var(--muted); margin-top: .1rem; }
+.prow-name { font-size: 16.5px; font-weight: 800; letter-spacing: -.02em; line-height: 1.15; }
+.prow-best { font-size: 13px; font-weight: 500; color: var(--muted); margin-top: 6px; }
 .prow-tier { font-size: 12px; font-weight: 700; color: var(--faint); flex: none; }
 .prow-label {
   flex: none; font-size: 10px; font-weight: 800; text-transform: uppercase;
@@ -670,22 +676,22 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
    second had no way in at all, which made it invisible. */
 .tabs {
   position: fixed; left: 0; right: 0; bottom: 0; z-index: 30;
-  display: grid; grid-template-columns: repeat(5, 1fr);
-  background: rgba(250,250,249,.94);
-  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-  border-top: 1px solid var(--border);
-  padding-bottom: var(--safe-bottom);
+  display: flex; gap: 6px;
+  background: var(--surface); border-top: 1px solid rgba(0, 0, 0, .07);
+  padding: 12px 12px 26px; padding-bottom: calc(26px + var(--safe-bottom));
 }
+/* Text pills, as the canvas has them. The current tab is filled, the rest are
+   bare, so the bar reads as one control rather than five icons. */
 .tab {
-  display: flex; flex-direction: column; align-items: center; gap: 3px;
-  padding: .55rem 0 .5rem; color: var(--muted);
-  font-size: 11px; font-weight: 650; letter-spacing: -.01em;
+  flex: 1; height: 44px; border: 0; border-radius: 22px; background: none;
+  display: flex; align-items: center; justify-content: center;
+  font: inherit; font-size: 14.5px; font-weight: 800; letter-spacing: -.01em;
+  color: var(--muted); cursor: pointer;
 }
-.tab svg { width: 21px; height: 21px; }
-.tab.on { color: var(--accent); }
-.tab:active { color: var(--accent-deep); }
+.tab.on { background: var(--accent-soft); color: var(--accent); }
+.tab:active { color: var(--accent); }
 /* The bar floats over the screen, so the screen has to end above it. */
-body.has-tabs .screen { padding-bottom: calc(var(--safe-bottom) + 5.2rem); }
+body.has-tabs .screen { padding-bottom: calc(var(--safe-bottom) + 6rem); }
 
 /* The Safari extension prompt, and the screen it opens. */
 .promo {
@@ -733,7 +739,7 @@ body.has-tabs .screen { padding-bottom: calc(var(--safe-bottom) + 5.2rem); }
 /* Tip of the day. Quiet, but it is the reason to open the app on a day when
    there is nothing left on the list. */
 .tip-card {
-  margin: 1.25rem 0 .25rem; padding: 20px;
+  padding: 20px;
   background: var(--accent-soft); border: 0;
   border-radius: 24px; display: flex; flex-direction: column; gap: 6px;
 }
@@ -743,6 +749,203 @@ body.has-tabs .screen { padding-bottom: calc(var(--safe-bottom) + 5.2rem); }
 }
 .tip-title { font-size: 17px; font-weight: 700; letter-spacing: -.02em; line-height: 1.3; }
 .tip-body { font-size: 14.5px; color: var(--body); line-height: 1.5; }
+
+
+/* ---------------------------------------------- detox, v2 canvas language */
+
+/* The count as a ring. --pct is set per render; the conic gradient does the
+   arithmetic so there is no second element to keep in step. */
+.dx-prog {
+  background: var(--surface); border: 1.5px solid rgba(0, 0, 0, .07);
+  border-radius: 28px; padding: 22px;
+  display: flex; flex-direction: column; gap: 18px;
+}
+.dx-prog-top { display: flex; align-items: center; gap: 20px; }
+.dx-ring {
+  flex: none; width: 104px; height: 104px; border-radius: 52px;
+  background: conic-gradient(var(--good) var(--pct, 0%), var(--chip) 0);
+  display: flex; align-items: center; justify-content: center;
+}
+.dx-ring-in {
+  width: 82px; height: 82px; border-radius: 41px; background: var(--surface);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
+.dx-ring-in b { font-size: 38px; font-weight: 900; letter-spacing: -.05em; line-height: .9; }
+.dx-ring-in span { font-size: 11px; font-weight: 600; color: var(--muted); margin-top: 2px; }
+.dx-prog-side { flex: 1; display: flex; flex-direction: column; gap: 8px; }
+.dx-prog-k {
+  font-size: 10px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--good);
+}
+.dx-prog-p { font-size: 14.5px; line-height: 1.45; color: var(--body); }
+.dx-prog-cta {
+  height: 44px; border: 0; border-radius: 22px; background: var(--chip);
+  font: inherit; font-size: 13.5px; font-weight: 700; color: var(--text); cursor: pointer;
+}
+
+/* Everything done. The one place the app goes full green, because it is the
+   only screen that is purely a result. */
+.dx-alldone {
+  background: var(--good); border-radius: 28px; padding: 26px 22px;
+  display: flex; flex-direction: column; gap: 12px;
+}
+.dx-alldone-k {
+  font-size: 10px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase;
+  color: #7FD3B4;
+}
+.dx-alldone-h { font-size: 28px; font-weight: 900; letter-spacing: -.035em; line-height: 1.05; color: #fff; }
+.dx-alldone-p { font-size: 15px; line-height: 1.5; color: rgba(255, 255, 255, .7); }
+.dx-alldone-cta {
+  height: 52px; border: 0; border-radius: 26px; background: #fff; margin-top: 4px;
+  font: inherit; font-size: 15.5px; font-weight: 800; color: var(--good); cursor: pointer;
+}
+
+.dx-where { font-size: 13px; font-weight: 800; letter-spacing: -.01em; padding-left: 4px; margin-bottom: -6px; }
+.dx-room-top { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+.dx-room-n { font-size: 14.5px; font-weight: 800; }
+.dx-room-c { font-size: 11px; font-weight: 700; color: var(--muted); }
+.dx-pips { display: flex; gap: 3px; flex-wrap: wrap; }
+.dx-pip { width: 7px; height: 7px; border-radius: 4px; background: var(--border-strong); }
+.dx-pip.on { background: var(--good); }
+
+
+/* The canvas wrapper: one column, 16px between blocks. */
+.dx-wrap { display: flex; flex-direction: column; gap: 16px; animation: pop .22s ease; }
+@keyframes pop { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .dx-wrap { animation: none; } }
+
+/* The next swap, as the canvas frames it: one card with an accent border,
+   which is the only element on the screen asking to be tapped. */
+.dx-quest {
+  background: var(--surface); border: 2px solid var(--accent);
+  border-radius: 28px; padding: 22px;
+  display: flex; flex-direction: column; gap: 14px;
+}
+.dx-quest-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.dx-quest-k {
+  font-size: 10px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--accent);
+}
+.dx-quest-tag {
+  padding: 6px 11px; border-radius: 20px; background: var(--careful-bg);
+  font-size: 11px; font-weight: 800; color: var(--careful); white-space: nowrap;
+}
+.dx-quest-h { font-size: 30px; font-weight: 900; letter-spacing: -.04em; line-height: 1.05; text-wrap: pretty; }
+.dx-quest-p { font-size: 14.5px; font-weight: 500; line-height: 1.45; color: var(--body); }
+.dx-quest-cta {
+  height: 56px; border: 0; border-radius: 28px; background: var(--accent);
+  font: inherit; font-size: 16.5px; font-weight: 800; color: #fff; cursor: pointer;
+}
+.dx-jump { font-size: 13px; font-weight: 600; line-height: 1.45; color: var(--muted); padding: 0 4px; }
+
+/* ------------------------------------------------------------- the reward */
+
+.rw {
+  display: flex; flex-direction: column; align-items: center; gap: 20px;
+  padding-top: 22px; animation: burst .4s cubic-bezier(.2, .9, .3, 1);
+}
+@keyframes burst {
+  from { opacity: 0; transform: scale(.86); }
+  to { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) { .rw { animation: none; } }
+.rw-disc {
+  width: 150px; height: 150px; border-radius: 75px; background: var(--good);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
+.rw-disc b { font-size: 62px; font-weight: 900; letter-spacing: -.05em; line-height: .9; color: #fff; }
+.rw-disc span { font-size: 12px; font-weight: 600; color: rgba(255, 255, 255, .6); margin-top: 4px; }
+.rw-h {
+  font-size: 32px; font-weight: 900; letter-spacing: -.04em; line-height: 1.05;
+  text-align: center; text-wrap: pretty;
+}
+.rw-chip {
+  padding: 12px 18px; border-radius: 22px; background: var(--accent-soft);
+  font-size: 14px; font-weight: 800; color: var(--accent);
+}
+.rw-foot { margin-top: 2rem; display: flex; flex-direction: column; gap: 10px; }
+
+/* --------------------------------------------------- the cleared list sheet */
+
+.sheet-veil { position: fixed; inset: 0; z-index: 88; background: rgba(10, 10, 10, .4); }
+.sheet {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 89;
+  background: var(--surface-sunk); border-radius: 30px 30px 0 0;
+  padding: 16px 20px 34px; max-height: 80%; overflow-y: auto;
+  animation: sheetUp .26s cubic-bezier(.2, .8, .25, 1);
+}
+@keyframes sheetUp { from { transform: translateY(14%); opacity: .6; } to { transform: none; opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .sheet { animation: none; } }
+.sheet-grab { width: 42px; height: 4px; border-radius: 2px; background: rgba(0, 0, 0, .16); margin: 0 auto 18px; }
+.sheet-h { font-size: 28px; font-weight: 900; letter-spacing: -.035em; line-height: 1.05; margin-bottom: 12px; }
+.sheet-none { font-size: 15px; color: var(--body); }
+.clr {
+  display: flex; gap: 14px; align-items: center; padding: 15px 16px; margin-bottom: 10px;
+  border-radius: 20px; background: var(--good-bg); border: 1.5px solid var(--good-border);
+}
+.clr-tick {
+  flex: none; width: 22px; height: 22px; border-radius: 11px; background: var(--good);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 800; color: #fff;
+}
+.clr-body { flex: 1; display: flex; flex-direction: column; gap: 3px; }
+.clr-t { font-size: 15px; font-weight: 700; line-height: 1.25; }
+.clr-m { font-size: 11.5px; font-weight: 600; color: var(--muted); }
+.clr-undo {
+  flex: none; border: 0; background: none; font: inherit; font-size: 12.5px;
+  font-weight: 700; color: var(--muted); cursor: pointer;
+}
+.clr-undo:hover { color: var(--text); }
+
+
+/* Pick rows carry the product image, as the canvas does. A missing image
+   falls back to the woven placeholder rather than a broken icon. */
+.dx-pick { gap: 14px; align-items: center; padding: 16px; border-radius: 22px; }
+.dx-pick-img {
+  flex: none; width: 64px; height: 64px; border-radius: 16px; overflow: hidden;
+  background: #fff; border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+}
+.dx-pick-img img { width: 100%; height: 100%; object-fit: contain; }
+.dx-pick-img.bare {
+  background: repeating-linear-gradient(135deg, var(--chip) 0 6px, var(--border) 6px 12px);
+}
+.dx-pick-img.bare img { display: none; }
+
+
+/* The Check screen, canvas order: title, scan card, then the typed fallback. */
+.hero h1 { font-size: 34px; font-weight: 900; letter-spacing: -.04em; line-height: 1.02; }
+.hero p { display: none; }
+.scan-card {
+  width: 100%; border: 0; border-radius: 30px; background: var(--accent);
+  padding: 34px 24px; margin-bottom: 18px; cursor: pointer;
+  display: flex; flex-direction: column; align-items: center; gap: 14px;
+}
+.scan-card.off { background: var(--chip); }
+.scan-glyph {
+  width: 62px; height: 44px; border-radius: 8px; border: 3px solid #fff;
+  display: flex; align-items: center; justify-content: center; gap: 4px;
+}
+.scan-card.off .scan-glyph { border-color: var(--faint); }
+.scan-glyph i { height: 26px; background: #fff; display: block; }
+.scan-card.off .scan-glyph i { background: var(--faint); }
+.scan-h { font-size: 19px; font-weight: 800; color: #fff; }
+.scan-p { font-size: 13.5px; font-weight: 500; color: rgba(255, 255, 255, .55); }
+.scan-card.off .scan-h { color: var(--muted); }
+.scan-card.off .scan-p { color: var(--faint); }
+
+.field-k {
+  font-size: 11px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--muted); padding-left: 4px; margin-bottom: 7px;
+}
+.field { margin-bottom: 12px; }
+.field input { height: 56px; border-radius: 28px; border-width: 1.5px; padding: 0 22px; }
+/* The typed check is the fallback, so it is outlined rather than filled. */
+.cta.outline {
+  background: var(--surface); border: 1.5px solid var(--accent); color: var(--accent);
+  height: 56px; border-radius: 28px; font-size: 15.5px;
+}
+.cta.outline:active { background: var(--accent-soft); }
 
 /* ------------------------------------------------------- the check form */
 
@@ -781,3 +984,10 @@ body.has-tabs .screen { padding-bottom: calc(var(--safe-bottom) + 5.2rem); }
 .dx-pick .prow-name { font-size: 15px; }
 .dx-pick .prow-label { font-size: 10.5px; }
 .dx-free { font-size: 14.5px; }
+
+/* Every tab opens on the same 34px title, which is what makes them read as
+   one app rather than five screens. */
+.screen > h1, .hero h1, .shop-h1, .learn-h1 {
+  font-size: 34px; font-weight: 900; letter-spacing: -.04em; line-height: 1.02;
+}
+.section-title { font-size: 13px; font-weight: 800; letter-spacing: -.01em; color: var(--text); padding-left: 4px; }

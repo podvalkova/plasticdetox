@@ -121,6 +121,12 @@ if (!manifest.description || typeof manifest.description !== "string" || manifes
 console.log("==> web bundle");
 run("npm", ["run", "sync-data"], { cwd: APP });
 run("npx", ["cap", "copy", "ios"], { cwd: APP });
+// The render harness lives in www so it can import the app's own modules.
+// It is a dev tool and has no business inside a store binary.
+for (const f of fs.readdirSync(path.join(IOS, "App", "App", "public")).filter((n) => n.startsWith("_"))) {
+  fs.rmSync(path.join(IOS, "App", "App", "public", f), { recursive: true, force: true });
+  console.log(`dropped www/${f} from the binary`);
+}
 
 fs.mkdirSync(OUT, { recursive: true });
 fs.rmSync(ARCHIVE, { recursive: true, force: true });

@@ -65,7 +65,9 @@ fs.rmSync(zip, { force: true });
 
 // Zipped from inside www so the archive holds index.html and js/ at its root,
 // which is what the updater unpacks over the running bundle.
-execFileSync("zip", ["-qr", zip, ".", "-x", ".DS_Store", "-x", "__MACOSX/*"], { cwd: WWW });
+// Files starting with _ are dev tools that live in www so they can import the
+// app's own modules (the render harness). They never ship.
+execFileSync("zip", ["-qr", zip, ".", "-x", ".DS_Store", "-x", "__MACOSX/*", "-x", "_*"], { cwd: WWW });
 
 const body = fs.readFileSync(zip);
 const checksum = crypto.createHash("sha256").update(body).digest("hex");

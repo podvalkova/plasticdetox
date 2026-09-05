@@ -19,12 +19,25 @@ export function home(root, {
   categoryCount, draft,
 }) {
   const hero = el("div", "hero");
-  hero.appendChild(el("h1", null, "Check it before you buy it"));
-  hero.appendChild(el("p", null,
-    "Four checks on every product: what is in it, what it is made of, what it has "
-    + "been recalled or sued over, and what independent labs found. Nothing earns a "
-    + "recommendation until all four are done."));
+  hero.appendChild(el("h1", null, "Check before you buy"));
   root.appendChild(hero);
+
+  // The scan card, which the canvas makes the hero: it is the fastest way to
+  // an answer and it used to sit under the form as an afterthought.
+  const scanCard = el("button", `scan-card${canScan ? "" : " off"}`);
+  scanCard.type = "button";
+  const glyph = el("div", "scan-glyph");
+  for (const w of [3, 6, 3]) {
+    const bar = el("i");
+    bar.style.width = `${w}px`;
+    glyph.appendChild(bar);
+  }
+  scanCard.appendChild(glyph);
+  scanCard.appendChild(el("div", "scan-h", canScan ? "Scan a barcode" : "Scanning unavailable"));
+  scanCard.appendChild(el("div", "scan-p", canScan ? "or search by name below" : (scanReason || "Search by name below")));
+  scanCard.onclick = canScan ? onScan : null;
+  scanCard.disabled = !canScan;
+  root.appendChild(scanCard);
 
   // Brand and product are separate fields, as they are on the site. A single
   // box invited a brand name on its own, and a brand verdict is the least
@@ -32,8 +45,8 @@ export function home(root, {
   const form = el("form", "check-form");
   form.setAttribute("novalidate", "");
 
-  const brand = field("Brand, for example Pampers", (draft && draft.brand) || "");
-  const product = field("Product, for example Sensitive Wipes", (draft && draft.product) || "");
+  const brand = field("For example Pampers", (draft && draft.brand) || "", "Brand");
+  const product = field("For example Sensitive Wipes", (draft && draft.product) || "", "Product");
   form.appendChild(brand.wrap);
 
   // Type ahead on the brand only. A brand we already hold should never need
@@ -116,7 +129,7 @@ export function home(root, {
 
   form.appendChild(product.wrap);
 
-  const go = el("button", "cta", "Check it");
+  const go = el("button", "cta outline", "Check it");
   go.type = "submit";
   form.appendChild(go);
   form.onsubmit = (e) => {
@@ -125,13 +138,7 @@ export function home(root, {
   };
   root.appendChild(form);
 
-  const scan = el("button", `cta ghost${canScan ? "" : " off"}`);
-  scan.type = "button";
-  scan.appendChild(icon(ICONS.scan, 18));
-  scan.appendChild(el("span", null, "Or scan the barcode"));
-  scan.onclick = canScan ? onScan : null;
-  scan.disabled = !canScan;
-  root.appendChild(scan);
+
   if (!canScan) root.appendChild(el("p", "scan-why", noCameraReason(scanReason)));
 
   // History as a strip, not a list. Stacked down the screen it pushed browsing
@@ -153,8 +160,9 @@ export function home(root, {
 }
 
 /** One labelled input in the check form. */
-function field(placeholder, value) {
+function field(placeholder, value, label) {
   const wrap = el("div", "field");
+  if (label) wrap.appendChild(el("div", "field-k", label));
   const input = el("input");
   input.type = "text";
   input.placeholder = placeholder;
@@ -223,8 +231,9 @@ export function tabs(current, onTab) {
     ["saved", "Saved", ICONS.saved],
     ["learn", "Learn", ICONS.learn],
   ]) {
+    // The canvas drops the icons: five text pills, the current one filled.
+    // At this size the glyphs were decoration that cost the label its room.
     const b = el("button", `tab${current === key ? " on" : ""}`);
-    b.appendChild(icon(path));
     b.appendChild(el("span", null, label));
     b.onclick = () => onTab(key);
     bar.appendChild(b);
@@ -322,10 +331,13 @@ function appendTip(root) {
   root.appendChild(card);
 }
 
-export function detox(root, { phases, done, seen, room, onRoom, onStep, onKids }) {
+export function detox(root, { phases, done, seen, room, onRoom, onStep, onKids, onCleared }) {
   const all = phases.reduce((n, p) => n + p.steps.length, 0);
   const ticked = phases.reduce(
     (n, p) => n + p.steps.filter((s) => done.has(s.id)).length, 0);
+
+  const wrap = el("div", "dx-wrap");
+  root.appendChild(wrap);
 
   // Which room you are looking at. With no choice made, the one holding the
   // next undone swap, so the screen always opens where the action is.
@@ -335,28 +347,64 @@ export function detox(root, { phases, done, seen, room, onRoom, onStep, onKids }
   }
   const phase = phases[at];
 
-  root.appendChild(el("h1", "dx-big",
-    ticked ? `${ticked} plastic source${ticked === 1 ? "" : "s"} gone`
-      : "Your home, source by source"));
+  if (ticked >= all && all) {
+    const card = el("div", "dx-alldone");
+    card.appendChild(el("div", "dx-alldone-k", "Nothing left on your list"));
+    card.appendChild(el("div", "dx-alldone-h", `All ${all} sources are done`));
+    card.appendChild(el("p", "dx-alldone-p",
+      "We will add a source if something new comes into the house, or you can look back over what you cleared."));
+    const again = el("button", "dx-alldone-cta", "See what you cleared");
+    again.type = "button";
+    again.onclick = () => onCleared && onCleared();
+    card.appendChild(again);
+    wrap.appendChild(card);
+  } else {
+    // The count as a ring rather than a bar. A bar reads as a loading state
+    // and says nothing until it is nearly full; the ring carries the number,
+    // which is the thing someone came back to see.
+    const card = el("div", "dx-prog");
+    const top = el("div", "dx-prog-top");
+    const ring = el("div", "dx-ring");
+    ring.style.setProperty("--pct", `${all ? Math.round((ticked / all) * 100) : 0}%`);
+    const hole = el("div", "dx-ring-in");
+    hole.appendChild(el("b", null, String(ticked)));
+    hole.appendChild(el("span", null, `of ${all}`));
+    ring.appendChild(hole);
+    top.appendChild(ring);
+    const side = el("div", "dx-prog-side");
+    side.appendChild(el("div", "dx-prog-k", "Sources removed"));
+    side.appendChild(el("p", "dx-prog-p",
+      "Your list is ranked by how much contact each source causes, so the heaviest ones go first."));
+    top.appendChild(side);
+    card.appendChild(top);
+    if (ticked) {
+      const seeAll = el("button", "dx-prog-cta", `${ticked} cleared \u00b7 see the list`);
+      seeAll.type = "button";
+      seeAll.onclick = () => onCleared && onCleared();
+      card.appendChild(seeAll);
+    }
+    wrap.appendChild(card);
+  }
 
-  const st = stage(ticked, all);
-  const bar = el("div", "dx-bar");
-  const fill = el("div", `dx-fill ${st.key}`);
-  fill.style.width = `${all ? Math.max(2, Math.round((ticked / all) * 100)) : 0}%`;
-  bar.appendChild(fill);
-  root.appendChild(bar);
-  const meta = el("div", "dx-meta");
-  meta.appendChild(el("span", `dx-stage ${st.key}`, st.label));
-  meta.appendChild(el("span", "dx-togo",
-    ticked >= all ? `All ${all} cleared` : `${all - ticked} to go`));
-  root.appendChild(meta);
+  appendTip(wrap);
 
+  wrap.appendChild(el("div", "dx-where", "Where do you want to work"));
   const rooms = el("div", "dx-rooms");
   phases.forEach((p, i) => {
     const dn = p.steps.filter((s) => done.has(s.id)).length;
-    const pill = el("button", `dx-room${i === at ? " on" : ""}`,
-      i === at ? `${roomName(p)} \u00b7 ${dn}/${p.steps.length}` : roomName(p));
+    const pill = el("button", `dx-room${i === at ? " on" : ""}`);
     pill.type = "button";
+    const head = el("div", "dx-room-top");
+    head.appendChild(el("span", "dx-room-n", roomName(p)));
+    head.appendChild(el("span", "dx-room-c", `${dn}/${p.steps.length}`));
+    pill.appendChild(head);
+    // A pip per source, filled as it clears. It shows the shape of the room
+    // at a glance, which a bare count cannot.
+    const pips = el("div", "dx-pips");
+    for (const st of p.steps) {
+      pips.appendChild(el("i", `dx-pip${done.has(st.id) ? " on" : ""}`));
+    }
+    pill.appendChild(pips);
     pill.onclick = () => onRoom(String(i));
     rooms.appendChild(pill);
   });
@@ -366,44 +414,44 @@ export function detox(root, { phases, done, seen, room, onRoom, onStep, onKids }
   kids.appendChild(el("span", null, "Kids"));
   kids.onclick = onKids;
   rooms.appendChild(kids);
-  root.appendChild(rooms);
+  wrap.appendChild(rooms);
 
-  // Every swap is on the board, in the plan's order. Done wears a green
-  // check, one you opened and set aside stays grey with its name, the next
-  // one glows, and everything you have not reached yet is a quiet question
-  // mark that opens like any other tile.
-  const grid = el("div", "dx-grid");
-  const nextStep = phase.steps.find((s) => !done.has(s.id) && !seen.has(s.id));
-  for (const step of phase.steps) {
-    const isDone = done.has(step.id);
-    const cls = isDone ? "done"
-      : (nextStep && step.id === nextStep.id) ? "next"
-      : seen.has(step.id) ? "skip" : "mys";
-    const tile = el("button", `dxt ${cls}`);
-    tile.type = "button";
-    if (cls === "mys") {
-      tile.appendChild(el("b", null, "?"));
-    } else {
-      const c = stepContent(step);
-      tile.appendChild(icon(c.icon, 28));
-      const label = el("span");
-      c.short.split("\n").forEach((line, i) => {
-        if (i) label.appendChild(document.createElement("br"));
-        label.appendChild(document.createTextNode(line));
-      });
-      tile.appendChild(label);
+  // One source at a time, which is the whole idea: the board of thirteen tiles
+  // asked you to choose, and choosing is the step people stall on. The next
+  // undone swap in this room is simply presented, with the room's own leftovers
+  // pointed at once it is clear.
+  const next = phase.steps.find((s) => !done.has(s.id) && !seen.has(s.id))
+    || phase.steps.find((s) => !done.has(s.id));
+  if (!next) {
+    const other = phases.findIndex((p) => p.steps.some((s) => !done.has(s.id)));
+    if (other >= 0) {
+      const note = el("div", "dx-jump",
+        `${roomName(phase)} is clear. ${roomName(phases[other])} still has ${
+          phases[other].steps.filter((s) => !done.has(s.id)).length} to go.`);
+      wrap.appendChild(note);
+      const jump = el("button", "dx-quest-cta", `Go to ${roomName(phases[other])}`);
+      jump.type = "button";
+      jump.onclick = () => onRoom(String(other));
+      wrap.appendChild(jump);
     }
-    tile.setAttribute("aria-label", step.swap);
-    tile.onclick = () => onStep(step.id);
-    grid.appendChild(tile);
+  } else {
+    const q = el("div", "dx-quest");
+    const qt = el("div", "dx-quest-top");
+    qt.appendChild(el("span", "dx-quest-k", `Next in ${roomName(phase)}`));
+    qt.appendChild(el("span", "dx-quest-tag",
+      next.heat ? "Heat driven" : at === 1 ? "Abrasion driven" : "Contact driven"));
+    q.appendChild(qt);
+    q.appendChild(el("div", "dx-quest-h", next.swap));
+    if (next.why) {
+      q.appendChild(el("p", "dx-quest-p", next.why.split(". ")[0].replace(/\.$/, "") + "."));
+    }
+    const cta = el("button", "dx-quest-cta", "Start this swap");
+    cta.type = "button";
+    cta.onclick = () => onStep(next.id);
+    q.appendChild(cta);
+    wrap.appendChild(q);
   }
-  root.appendChild(grid);
-  if (!phase.steps.some((s) => !done.has(s.id))) {
-    root.appendChild(el("div", "dx-more clear", `${roomName(phase)} clear \u2713`));
-  }
-  appendTip(root);
 }
-
 /**
  * The Kids room, before it is unlocked.
  *
@@ -476,6 +524,21 @@ export function detoxStep(root, { phase, step, isDone, isSeen, onDone, onUndo, o
     for (const pick of step.picks) {
       const p = el("button", "prow dx-pick");
       p.type = "button";
+      // The canvas gives every pick a thumbnail. The ASIN is already in the
+      // buy link, so the real product image costs nothing to show.
+      const asin = (pick.url.match(/\/dp\/([A-Z0-9]{10})/) || [])[1];
+      const thumb = el("div", "dx-pick-img");
+      if (asin) {
+        const img = document.createElement("img");
+        img.src = productImage(asin, 160);
+        img.alt = "";
+        img.loading = "lazy";
+        img.onerror = () => thumb.classList.add("bare");
+        thumb.appendChild(img);
+      } else {
+        thumb.classList.add("bare");
+      }
+      p.appendChild(thumb);
       const body = el("div", "row-body");
       body.appendChild(el("div", "prow-name", pick.name));
       if (pick.note) body.appendChild(el("div", "prow-note", pick.note));
@@ -508,6 +571,70 @@ export function detoxStep(root, { phase, step, isDone, isSeen, onDone, onUndo, o
     foot.appendChild(undo);
   }
   root.appendChild(foot);
+}
+
+/**
+ * The reward, which is the whole loop.
+ *
+ * Clearing a source used to drop you back on the grid with a toast, so the
+ * moment you finished something looked exactly like the moment before it. The
+ * canvas makes it a screen: the count, what you just did, and the next source
+ * already queued behind one button, so a motivated person clears a room in one
+ * sitting instead of deciding five separate times to carry on.
+ */
+export function detoxReward(root, { ticked, all, cleared, roomLabel, nextStep, onNext, onClose }) {
+  const wrap = el("div", "rw");
+  const disc = el("div", "rw-disc");
+  disc.appendChild(el("b", null, String(ticked)));
+  disc.appendChild(el("span", null, `of ${all} completed`));
+  wrap.appendChild(disc);
+  wrap.appendChild(el("div", "rw-h", `${cleared}, gone`));
+  wrap.appendChild(el("div", "rw-chip", roomLabel));
+  root.appendChild(wrap);
+
+  const foot = el("div", "rw-foot");
+  const cta = el("button", "cta", nextStep ? "Next source" : "Back to my list");
+  cta.onclick = () => (nextStep ? onNext() : onClose());
+  foot.appendChild(cta);
+  if (nextStep) {
+    const back = el("button", "dx-ghost", "Back to my list");
+    back.onclick = onClose;
+    foot.appendChild(back);
+  }
+  root.appendChild(foot);
+}
+
+/**
+ * Everything cleared so far, with an undo on each.
+ *
+ * The count on the Detox screen was the only record of the work, and a number
+ * is not a record. This is the list behind it.
+ */
+export function detoxCleared(root, { rows, onUndo, onClose }) {
+  const veil = el("div", "sheet-veil");
+  veil.onclick = onClose;
+  root.appendChild(veil);
+  const sheet = el("div", "sheet");
+  sheet.appendChild(el("div", "sheet-grab"));
+  sheet.appendChild(el("h1", "sheet-h", "What you completed"));
+  if (!rows.length) {
+    sheet.appendChild(el("p", "sheet-none", "Nothing cleared yet. The first one is the hardest."));
+  }
+  for (const r of rows) {
+    const row = el("div", "clr");
+    const tick = el("div", "clr-tick", "\u2713");
+    row.appendChild(tick);
+    const body = el("div", "clr-body");
+    body.appendChild(el("div", "clr-t", r.title));
+    body.appendChild(el("div", "clr-m", r.meta));
+    row.appendChild(body);
+    const undo = el("button", "clr-undo", "Undo");
+    undo.type = "button";
+    undo.onclick = () => onUndo(r.id);
+    row.appendChild(undo);
+    sheet.appendChild(row);
+  }
+  root.appendChild(sheet);
 }
 
 // ------------------------------------------------------------------ saved

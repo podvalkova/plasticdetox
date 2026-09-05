@@ -9,6 +9,7 @@ import * as screens from "./screens.js";
 import * as check from "./check.js";
 import { lookup, cleanCode } from "./upc.js";
 import { el, toast } from "./ui.js";
+import { roomName } from "./detox-content.js";
 
 const WORKER = "https://plasticdetox-quiz-email.plasticdetox.workers.dev";
 const RECENTS_KEY = "pd.recents.v1";
@@ -357,6 +358,46 @@ function draw() {
       onRoom: (r) => { state.room = r; render(); rememberPlace(); },
       onStep: (stepId) => go({ screen: "detoxStep", stepId }),
       onKids: () => go({ screen: "detoxKids" }),
+      onCleared: () => go({ screen: "detoxCleared" }),
+    });
+  } else if (state.screen === "detoxReward") {
+    const phases = data.planPhases();
+    const set = readDone();
+    const all = phases.reduce((n, p) => n + p.steps.length, 0);
+    let cleared = "That source", roomLabel = "";
+    for (const ph of phases) {
+      const hit = ph.steps.find((s) => s.id === state.stepId);
+      if (hit) {
+        cleared = hit.swap;
+        const dn = ph.steps.filter((s) => set.has(s.id)).length;
+        roomLabel = `${roomName(ph)} · ${dn} of ${ph.steps.length}`;
+      }
+    }
+    // The next source is the next undone one anywhere, not just in this room,
+    // so finishing a room rolls straight into the following one.
+    let next = null;
+    for (const ph of phases) {
+      const hit = ph.steps.find((s) => !set.has(s.id));
+      if (hit) { next = hit; break; }
+    }
+    screens.detoxReward(view, {
+      ticked: set.size, all, cleared, roomLabel, nextStep: next,
+      onNext: () => next && go({ screen: "detoxStep", stepId: next.id }, { replace: true }),
+      onClose: () => go({ screen: "detox" }, { replace: true }),
+    });
+  } else if (state.screen === "detoxCleared") {
+    const phases = data.planPhases();
+    const set = readDone();
+    const rows = [];
+    for (const ph of phases) {
+      for (const st of ph.steps) {
+        if (set.has(st.id)) rows.push({ id: st.id, title: st.swap, meta: roomName(ph) });
+      }
+    }
+    screens.detoxCleared(view, {
+      rows,
+      onUndo: (id) => { toggleDone(id); render(); },
+      onClose: back,
     });
   } else if (state.screen === "detoxKids") {
     screens.detoxKids(view, { onOpen: openExternal, onLater: back });
@@ -375,10 +416,7 @@ function draw() {
       isSeen: readSeen().has(step.id),
       onDone: () => {
         toggleDone(step.id);
-        back();
-        const all = phases.reduce((n, p) => n + p.steps.length, 0);
-        const gone = readDone().size;
-        toast(gone >= all ? "Your home is clear ✓" : `Source cleared · ${all - gone} to go`);
+        go({ screen: "detoxReward", stepId: step.id }, { replace: true });
       },
       onUndo: () => toggleDone(step.id),
       onLater: () => { markSeen(step.id); back(); },
