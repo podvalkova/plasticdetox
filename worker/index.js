@@ -291,22 +291,13 @@ async function handleDbAuth(request, env, corsOrigin) {
  * answer would swap the running bundle for one that might not boot.
  */
 async function handleAppUpdate(request, env, corsOrigin) {
-  const none = (why) => json({ message: why, version: "builtin" }, 200, corsOrigin);
+  // Never answer with version:"builtin". The updater treats that exact string
+  // as an instruction to roll back to the bundle compiled into the app, so
+  // saying it to mean "nothing new" made every app switch revert, then update,
+  // then revert, forever. An error shaped reply takes the plugin's own quiet
+  // path and changes nothing.
+  const none = (why) => json({ error: why }, 200, corsOrigin);
   try {
-    let running = "";
-    if (request.method === "POST") {
-      const body = await request.json().catch(() => ({}));
-      running = String(body.version_name || body.version || "");
-      // A fresh install reports "builtin": it is running the bundle compiled
-      // into the binary, which has no version of its own. The native app
-      // version is the right thing to compare against, and it is why a
-      // release bumps MARKETING_VERSION to match the bundle version. Without
-      // this, every new install downloads a copy of what it already has.
-      if (!running || running === "builtin") {
-        running = String(body.version_build || body.version_native || "");
-      }
-    }
-
     const res = await fetch("https://plasticdetox.org/app/updates.json", {
       cf: { cacheTtl: 60, cacheEverything: true },
     });
@@ -316,8 +307,10 @@ async function handleAppUpdate(request, env, corsOrigin) {
     const latest = manifest && manifest.latest;
     const bundle = latest && manifest.bundles && manifest.bundles[latest];
     if (!bundle || !bundle.url || !bundle.checksum) return none("no bundle");
-    if (running && !newer(latest, running)) return none("up to date");
 
+    // Always answer with the latest bundle and let the plugin decide. It
+    // already skips a version it is running, so there is no "up to date" case
+    // for us to encode, and encoding one is what caused the rollback loop.
     return json({
       version: bundle.version,
       url: bundle.url,
@@ -328,16 +321,6 @@ async function handleAppUpdate(request, env, corsOrigin) {
   }
 }
 
-/** Semver compare, enough for the three number versions we publish. */
-function newer(candidate, current) {
-  const parse = (v) => String(v).split(".").map((n) => parseInt(n, 10) || 0);
-  const a = parse(candidate);
-  const b = parse(current);
-  for (let i = 0; i < 3; i++) {
-    if ((a[i] || 0) !== (b[i] || 0)) return (a[i] || 0) > (b[i] || 0);
-  }
-  return false;
-}
 
 async function handleSearchLog(request, env, corsOrigin) {
   try {
