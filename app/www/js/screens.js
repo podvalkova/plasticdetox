@@ -19,7 +19,11 @@ export function home(root, {
   categoryCount, draft,
 }) {
   const hero = el("div", "hero");
-  hero.appendChild(el("h1", null, "Check before you buy"));
+  hero.appendChild(el("h1", null, "Check it before you buy it"));
+  hero.appendChild(el("p", null,
+    "Four checks on every product: what is in it, what it is made of, what it has "
+    + "been recalled or sued over, and what independent labs found. Nothing earns a "
+    + "recommendation until all four are done."));
   root.appendChild(hero);
 
   // The scan card, which the canvas makes the hero: it is the fastest way to
@@ -442,9 +446,7 @@ export function detox(root, { phases, done, seen, room, onRoom, onStep, onKids, 
       next.heat ? "Heat driven" : at === 1 ? "Abrasion driven" : "Contact driven"));
     q.appendChild(qt);
     q.appendChild(el("div", "dx-quest-h", next.swap));
-    if (next.why) {
-      q.appendChild(el("p", "dx-quest-p", next.why.split(". ")[0].replace(/\.$/, "") + "."));
-    }
+    if (next.why) q.appendChild(el("p", "dx-quest-p", next.why));
     const cta = el("button", "dx-quest-cta", "Start this swap");
     cta.type = "button";
     cta.onclick = () => onStep(next.id);

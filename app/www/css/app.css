@@ -678,7 +678,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   position: fixed; left: 0; right: 0; bottom: 0; z-index: 30;
   display: flex; gap: 6px;
   background: var(--surface); border-top: 1px solid rgba(0, 0, 0, .07);
-  padding: 12px 12px 26px; padding-bottom: calc(26px + var(--safe-bottom));
+  padding: 12px; padding-bottom: max(12px, var(--safe-bottom));
 }
 /* Text pills, as the canvas has them. The current tab is filled, the rest are
    bare, so the bar reads as one control rather than five icons. */
@@ -691,7 +691,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .tab.on { background: var(--accent-soft); color: var(--accent); }
 .tab:active { color: var(--accent); }
 /* The bar floats over the screen, so the screen has to end above it. */
-body.has-tabs .screen { padding-bottom: calc(var(--safe-bottom) + 6rem); }
+body.has-tabs .screen { padding-bottom: calc(var(--safe-bottom) + 4rem); }
 
 /* The Safari extension prompt, and the screen it opens. */
 .promo {
@@ -915,7 +915,7 @@ body.has-tabs .screen { padding-bottom: calc(var(--safe-bottom) + 6rem); }
 
 /* The Check screen, canvas order: title, scan card, then the typed fallback. */
 .hero h1 { font-size: 34px; font-weight: 900; letter-spacing: -.04em; line-height: 1.02; }
-.hero p { display: none; }
+.hero p { font-size: 15px; line-height: 1.55; color: var(--body); margin-top: 10px; }
 .scan-card {
   width: 100%; border: 0; border-radius: 30px; background: var(--accent);
   padding: 34px 24px; margin-bottom: 18px; cursor: pointer;

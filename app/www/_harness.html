@@ -16,7 +16,7 @@ import * as screens from "./js/screens.js";
 import { roomName } from "./js/detox-content.js";
 await data.load();
 const phases = data.planPhases();
-const done = new Set(phases[0].steps.slice(0, 4).map(s => s.id));
+const done = new Set();
 const out = document.getElementById("out");
 const frame = (label) => {
   const ph = document.createElement("div"); ph.className = "ph";
