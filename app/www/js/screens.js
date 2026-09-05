@@ -134,18 +134,6 @@ export function home(root, {
   root.appendChild(scan);
   if (!canScan) root.appendChild(el("p", "scan-why", noCameraReason(scanReason)));
 
-  // One tip, the same all day, different tomorrow. Keyed on the day of the
-  // year so it needs no storage and no server, and it gives someone who has
-  // already checked everything on their list a reason to open the app.
-  const tip = tipOfDay();
-  if (tip) {
-    const card = el("div", "tip-card");
-    card.appendChild(el("div", "tip-label", "Tip of the day"));
-    card.appendChild(el("div", "tip-title", tip.title));
-    card.appendChild(el("p", "tip-body", tip.body));
-    root.appendChild(card);
-  }
-
   // History as a strip, not a list. Stacked down the screen it pushed browsing
   // off the bottom, so after a shop's worth of checking the first thing the app
   // showed was a list of things already looked at.
@@ -321,6 +309,19 @@ function scopeHint(row) {
   return "";
 }
 
+// The canvas sits the tip at the foot of the Detox screen. Keyed on the day of
+// the year, so it needs no storage and no server, everyone sees the same tip on
+// the same day, and it comes back around in a year.
+function appendTip(root) {
+  const tip = tipOfDay();
+  if (!tip) return;
+  const card = el("div", "tip-card");
+  card.appendChild(el("div", "tip-label", "Tip of the day"));
+  card.appendChild(el("div", "tip-title", tip.title));
+  card.appendChild(el("p", "tip-body", tip.body));
+  root.appendChild(card);
+}
+
 export function detox(root, { phases, done, seen, room, onRoom, onStep, onKids }) {
   const all = phases.reduce((n, p) => n + p.steps.length, 0);
   const ticked = phases.reduce(
@@ -400,6 +401,7 @@ export function detox(root, { phases, done, seen, room, onRoom, onStep, onKids }
   if (!phase.steps.some((s) => !done.has(s.id))) {
     root.appendChild(el("div", "dx-more clear", `${roomName(phase)} clear \u2713`));
   }
+  appendTip(root);
 }
 
 /**
