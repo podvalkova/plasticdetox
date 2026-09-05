@@ -509,14 +509,11 @@ export function detoxStep(root, { phase, step, isDone, isSeen, onDone, onUndo, o
   root.appendChild(el("div", "dx-k",
     `${roomName(phase)} \u00b7 ${isDone ? "done \u2713" : isSeen ? "set aside for now" : "next up"}`));
 
+  // The canvas gives this screen a title and a tag, nothing else. The icon
+  // beside it was decoration that cost the headline a third of its width.
   const row = el("div", "dx-titrow");
-  const medal = el("span", "dx-medal");
-  medal.appendChild(icon(c.icon, 26));
-  row.appendChild(medal);
-  const tw = el("div");
-  tw.appendChild(el("div", "dx-title", step.swap));
-  if (step.heat) tw.appendChild(el("span", "dx-heat", "Heat driven"));
-  row.appendChild(tw);
+  row.appendChild(el("div", "dx-title", step.swap));
+  row.appendChild(el("span", "dx-heat", step.heat ? "Heat driven" : "Contact driven"));
   root.appendChild(row);
 
   if (step.why) {

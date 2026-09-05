@@ -558,17 +558,13 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 .dx-k:first-child { margin-top: .3rem; }
 .dx-k.free { color: var(--accent-deep); }
-.dx-titrow { display: flex; gap: .8rem; align-items: center; margin: .2rem 0 .2rem; }
-.dx-medal {
-  flex: none; width: 58px; height: 58px; border-radius: 18px;
-  background: var(--accent-wash); color: var(--accent);
-  display: grid; place-items: center;
-}
-.dx-title { font-size: 22px; font-weight: 800; letter-spacing: -.025em; line-height: 1.15; }
+/* Title then tag, stacked, as the canvas has it. */
+.dx-titrow { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; margin: .2rem 0; }
+.dx-title { font-size: 32px; font-weight: 900; letter-spacing: -.04em; line-height: 1.05; text-wrap: pretty; }
 .dx-heat {
-  display: inline-block; font-size: 11.5px; font-weight: 700; letter-spacing: .05em;
-  text-transform: uppercase; color: var(--careful); background: var(--careful-bg);
-  padding: 2px 8px; border-radius: 999px; margin-top: .3rem;
+  font-size: 12px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--careful); background: var(--careful-bg);
+  padding: 8px 14px; border-radius: 18px;
 }
 .dx-why { font-size: 15.5px; line-height: 1.55; color: var(--body); }
 .dx-pick { background: var(--surface); }
