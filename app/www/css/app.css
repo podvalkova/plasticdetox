@@ -855,7 +855,12 @@ body.has-tabs .screen { padding-bottom: calc(var(--safe-bottom) + 4rem); }
 .prow-img.bare img, .dx-pick-img.bare img { display: none; }
 
 /* The Check screen, canvas order: title, scan card, then the typed fallback. */
-.hero h1 { font-size: 34px; font-weight: 900; letter-spacing: -.04em; line-height: 1.02; }
+/* balance stops the last word dropping to a line of its own, which left "it"
+   stranded under "Check it before you buy". */
+.hero h1 {
+  font-size: 34px; font-weight: 900; letter-spacing: -.04em; line-height: 1.05;
+  text-wrap: balance;
+}
 .hero p { font-size: 15px; line-height: 1.55; color: var(--body); margin-top: 10px; }
 .scan-card {
   width: 100%; border: 0; border-radius: 24px; background: var(--accent);

@@ -160,9 +160,6 @@ export function home(root, {
   // The Browse list used to live here. It is what the Shop tab is, and having
   // both meant the home screen answered a question the bar already answers.
   // Check is for something in your hand; Shop is for everything else.
-
-  root.appendChild(el("p", "note",
-    "A verdict here is the same one the site publishes. We rate a product only when we have researched that exact product."));
 }
 
 /** One labelled input in the check form. */
