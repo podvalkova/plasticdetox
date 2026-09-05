@@ -5,7 +5,7 @@
 import { FRONTS, STANCE_LABEL, verdictFor, alternativesFor, ratedProducts } from "./match.js";
 import { packagingHeadline } from "./upc.js";
 import { el, frag, icon, ICONS, splitNote } from "./ui.js";
-import { buyLink, productImage, tipOfDay, allArticles } from "./data.js";
+import { buyLink, productImage, tipOfDay, allArticles, productNotes } from "./data.js";
 import { stepContent, roomName } from "./detox-content.js";
 
 const SITE = "https://plasticdetox.org";
@@ -386,24 +386,11 @@ export function detox(root, { phases, done, seen, room, onRoom, onStep, onKids, 
       "Your list is ranked by how much contact each source causes, so the heaviest ones go first."));
     top.appendChild(side);
     card.appendChild(top);
-    if (ticked || setAside) {
-      const row = el("div", "dx-prog-row");
-      if (ticked) {
-        const seeAll = el("button", "dx-prog-cta", `${ticked} completed \u00b7 see the list`);
-        seeAll.type = "button";
-        seeAll.onclick = () => onCleared && onCleared();
-        row.appendChild(seeAll);
-      }
-      // "Maybe later" used to leave a grey tile on the board. With the board
-      // gone there was nowhere for a set aside swap to live, so it vanished
-      // until everything else in the room was done.
-      if (setAside) {
-        const later = el("button", "dx-prog-cta", `${setAside} set aside \u00b7 see the list`);
-        later.type = "button";
-        later.onclick = () => onSetAside && onSetAside();
-        row.appendChild(later);
-      }
-      card.appendChild(row);
+    if (ticked) {
+      const seeAll = el("button", "dx-prog-cta", `${ticked} completed \u00b7 see the list`);
+      seeAll.type = "button";
+      seeAll.onclick = () => onCleared && onCleared();
+      card.appendChild(seeAll);
     }
     wrap.appendChild(card);
   }
@@ -442,34 +429,54 @@ export function detox(root, { phases, done, seen, room, onRoom, onStep, onKids, 
   // asked you to choose, and choosing is the step people stall on. The next
   // undone swap in this room is simply presented, with the room's own leftovers
   // pointed at once it is clear.
-  const next = phase.steps.find((s) => !done.has(s.id) && !seen.has(s.id))
-    || phase.steps.find((s) => !done.has(s.id));
-  if (!next) {
-    const other = phases.findIndex((p) => p.steps.some((s) => !done.has(s.id)));
+  const left = phase.steps.filter((st) => !done.has(st.id));
+  if (!left.length) {
+    const other = phases.findIndex((p) => p.steps.some((st) => !done.has(st.id)));
     if (other >= 0) {
-      const note = el("div", "dx-jump",
+      wrap.appendChild(el("div", "dx-jump",
         `${roomName(phase)} is clear. ${roomName(phases[other])} still has ${
-          phases[other].steps.filter((s) => !done.has(s.id)).length} to go.`);
-      wrap.appendChild(note);
+          phases[other].steps.filter((st) => !done.has(st.id)).length} to go.`));
       const jump = el("button", "dx-quest-cta", `Go to ${roomName(phases[other])}`);
       jump.type = "button";
       jump.onclick = () => onRoom(String(other));
       wrap.appendChild(jump);
     }
   } else {
-    const q = el("div", "dx-quest");
-    const qt = el("div", "dx-quest-top");
-    qt.appendChild(el("span", "dx-quest-k", `Next in ${roomName(phase)}`));
-    qt.appendChild(el("span", "dx-quest-tag",
-      next.heat ? "Heat driven" : at === 1 ? "Abrasion driven" : "Contact driven"));
-    q.appendChild(qt);
-    q.appendChild(el("div", "dx-quest-h", next.swap));
-    if (next.why) q.appendChild(el("p", "dx-quest-p", next.why));
-    const cta = el("button", "dx-quest-cta", "Start this swap");
-    cta.type = "button";
-    cta.onclick = () => onStep(next.id);
-    q.appendChild(cta);
-    wrap.appendChild(q);
+    // One card at a time, and the rest a swipe away. A second button for the
+    // ones you set aside was another thing to read; swiping is how you already
+    // expect a stack of cards to behave, and it reaches every swap in the room
+    // rather than only the next one.
+    const fresh = left.filter((st) => !seen.has(st.id));
+    const order = fresh.length ? fresh.concat(left.filter((st) => seen.has(st.id))) : left;
+    const strip = el("div", "dx-quest-strip");
+    order.forEach((st, i) => {
+      const q = el("div", `dx-quest${seen.has(st.id) ? " later" : ""}`);
+      const qt = el("div", "dx-quest-top");
+      qt.appendChild(el("span", "dx-quest-k",
+        seen.has(st.id) ? "Set aside" : `Next in ${roomName(phase)}`));
+      qt.appendChild(el("span", "dx-quest-tag",
+        st.heat ? "Heat driven" : at === 1 ? "Abrasion driven" : "Contact driven"));
+      q.appendChild(qt);
+      q.appendChild(el("div", "dx-quest-h", st.swap));
+      if (st.why) q.appendChild(el("p", "dx-quest-p", st.why));
+      const cta = el("button", "dx-quest-cta", seen.has(st.id) ? "Pick this back up" : "Start this swap");
+      cta.type = "button";
+      cta.onclick = () => onStep(st.id);
+      q.appendChild(cta);
+      strip.appendChild(q);
+    });
+    wrap.appendChild(strip);
+    if (order.length > 1) {
+      const dots = el("div", "dx-dots");
+      order.forEach((_, i) => dots.appendChild(el("i", `dx-dot${i ? "" : " on"}`)));
+      wrap.appendChild(dots);
+      // The dot follows the card you are on, so the strip reads as a stack
+      // rather than as something that scrolled off by accident.
+      strip.onscroll = () => {
+        const i = Math.round(strip.scrollLeft / strip.clientWidth);
+        [...dots.children].forEach((d, n) => d.classList.toggle("on", n === i));
+      };
+    }
   }
 }
 /**
@@ -546,7 +553,10 @@ export function detoxStep(root, { phase, step, isDone, isSeen, onDone, onUndo, o
       const slug = (pick.url.match(/\/articles\/([\w-]+\.html)/) || [])[1];
       const art = slug && allArticles().find((a) => a.slug === slug);
       const src = asin ? productImage(asin, 160) : (art && art.image) || "";
-      const thumb = el("div", "dx-pick-img");
+      // A product photo is a cutout on white and wants contain; an article hero
+      // is a wide illustration and wants cover, which is what the Learn tab
+      // does. Rendering the hero with contain letterboxed it into a stamp.
+      const thumb = el("div", `dx-pick-img${art && !asin ? " art" : ""}`);
       if (src) {
         const img = document.createElement("img");
         img.src = src;
@@ -558,9 +568,13 @@ export function detoxStep(root, { phase, step, isDone, isSeen, onDone, onUndo, o
         thumb.classList.add("bare");
       }
       p.appendChild(thumb);
+      const notes = asin ? productNotes(asin) : null;
       const body = el("div", "row-body");
       body.appendChild(el("div", "prow-name", pick.name));
-      if (pick.note) body.appendChild(el("div", "prow-note", pick.note));
+      // The line the store shows under a name, when the plan does not carry
+      // one of its own.
+      const sub = pick.note || (notes && notes.bestFor) || "";
+      if (sub) body.appendChild(el("div", "prow-note", sub));
       p.appendChild(body);
       const right = el("div", "dx-pick-right");
       if (pick.label) right.appendChild(el("span", "prow-label", pick.label));
@@ -580,6 +594,21 @@ export function detoxStep(root, { phase, step, isDone, isSeen, onDone, onUndo, o
         heart.appendChild(icon(ICONS.heart, 17));
         heart.onclick = (e) => { e.stopPropagation(); onSavePick(pick); };
         holder.appendChild(heart);
+      }
+      // Pros and cons, as the store page has them, folded away so the step
+      // still reads as a short list of picks rather than a wall of text.
+      if (notes && ((notes.pros || []).length || (notes.cons || []).length)) {
+        const box = el("details", "pc");
+        const sum = el("summary", "pc-sum", "Pros and cons");
+        box.appendChild(sum);
+        for (const [head, items, cls] of [["Pros", notes.pros, "pro"], ["Cons", notes.cons, "con"]]) {
+          if (!(items || []).length) continue;
+          box.appendChild(el("div", `pc-h ${cls}`, head));
+          const ul = el("ul", `pc-list ${cls}`);
+          for (const one of items) ul.appendChild(el("li", null, one));
+          box.appendChild(ul);
+        }
+        holder.appendChild(box);
       }
       root.appendChild(holder);
     }

@@ -760,6 +760,24 @@ body.has-tabs .screen { padding-bottom: calc(var(--safe-bottom) + 4rem); }
 }
 .dx-jump { font-size: 13px; font-weight: 600; line-height: 1.45; color: var(--muted); padding: 0 4px; }
 
+
+/* One swap on screen, the rest a swipe away. Scroll snap does the gesture, so
+   there is no touch handling to fight the browser over. */
+.dx-quest-strip {
+  display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory;
+  scrollbar-width: none; -webkit-overflow-scrolling: touch;
+  margin-inline: -1rem; padding-inline: 1rem;
+}
+.dx-quest-strip::-webkit-scrollbar { display: none; }
+.dx-quest-strip .dx-quest { flex: 0 0 100%; scroll-snap-align: center; }
+/* A swap you set aside is still yours to pick up, but it is not the next one. */
+.dx-quest.later { border-color: var(--border-strong); }
+.dx-quest.later .dx-quest-k { color: var(--muted); }
+.dx-quest.later .dx-quest-cta { background: var(--chip); color: var(--text); }
+.dx-dots { display: flex; gap: 6px; justify-content: center; margin-top: -6px; }
+.dx-dot { width: 6px; height: 6px; border-radius: 3px; background: var(--border-strong); transition: background .15s; }
+.dx-dot.on { background: var(--accent); }
+
 /* ------------------------------------------------------------- the reward */
 
 .rw {
@@ -827,6 +845,8 @@ body.has-tabs .screen { padding-bottom: calc(var(--safe-bottom) + 4rem); }
   display: flex; align-items: center; justify-content: center;
 }
 .dx-pick-img img { width: 100%; height: 100%; object-fit: contain; }
+.dx-pick-img.art { background: var(--chip); border-color: transparent; }
+.dx-pick-img.art img { object-fit: cover; }
 .prow-img.bare, .dx-pick-img.bare {
   background: repeating-linear-gradient(135deg, var(--chip) 0 6px, var(--border) 6px 12px);
 }
@@ -963,6 +983,31 @@ body.has-tabs .screen { padding-bottom: calc(var(--safe-bottom) + 4rem); }
 }
 .pro-tip-list.look li::before { content: "\2713"; position: absolute; left: 0; color: var(--good); font-weight: 800; }
 .pro-tip-list.skip li::before { content: "\00d7"; position: absolute; left: 0; color: var(--skip); font-weight: 800; }
+
+
+/* Pros and cons, folded away. The step is a short list of picks first. */
+.pc { margin: -6px 0 12px; }
+.pc-sum {
+  list-style: none; cursor: pointer; display: inline-flex; align-items: center; gap: 6px;
+  font-size: 13px; font-weight: 700; color: var(--accent); padding: 6px 4px 6px 16px;
+}
+.pc-sum::-webkit-details-marker { display: none; }
+.pc-sum::before {
+  content: ""; width: 0; height: 0; border-left: 5px solid currentColor;
+  border-top: 4px solid transparent; border-bottom: 4px solid transparent;
+  transition: transform .15s;
+}
+.pc[open] .pc-sum::before { transform: rotate(90deg); }
+.pc-h {
+  font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase;
+  margin: 8px 0 4px 16px;
+}
+.pc-h.pro { color: var(--good); }
+.pc-h.con { color: var(--careful); }
+.pc-list { list-style: none; display: flex; flex-direction: column; gap: 4px; margin-left: 16px; }
+.pc-list li { font-size: 13.5px; line-height: 1.45; color: var(--body); padding-left: 16px; position: relative; }
+.pc-list.pro li::before { content: "\2713"; position: absolute; left: 0; color: var(--good); font-weight: 800; }
+.pc-list.con li::before { content: "\2013"; position: absolute; left: 0; color: var(--careful); font-weight: 800; }
 
 /* ------------------------------------------------------- the check form */
 

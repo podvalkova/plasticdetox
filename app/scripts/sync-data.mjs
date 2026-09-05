@@ -64,6 +64,28 @@ for (const obj of store.match(/\{[^{}]*\}/g) || []) {
   if (id) images[asin] = id;
   else if (url) images[asin] = url;
 }
+// What the store says about each pick: the tier, the line about what it is best
+// for, and the pros and cons. The app showed a name and a link and nothing else,
+// so the reasoning that exists on the website never reached the phone.
+const notes = {};
+for (const obj of store.match(/\{[^{}]*\}/g) || []) {
+  const asin = (obj.match(/asin:\s*"([A-Z0-9]{10})"/) || [])[1];
+  if (!asin || notes[asin]) continue;
+  const one = (k) => (obj.match(new RegExp(k + ':\\s*"((?:[^"\\\\]|\\\\.)*)"')) || [])[1];
+  const many = (k) => {
+    const raw = (obj.match(new RegExp(k + ':\\s*\\[([^\\]]*)\\]')) || [])[1];
+    return raw ? [...raw.matchAll(/"((?:[^"\\\\]|\\\\.)*)"/g)].map((m) => m[1]) : [];
+  };
+  const row = {};
+  const tier = one("tier"); if (tier) row.tier = tier;
+  const best = one("bestFor"); if (best) row.bestFor = best;
+  const pros = many("pros"); if (pros.length) row.pros = pros;
+  const cons = many("cons"); if (cons.length) row.cons = cons;
+  if (Object.keys(row).length) notes[asin] = row;
+}
+fs.writeFileSync(path.join(OUT, "product-notes.json"), JSON.stringify(notes, null, 1) + "\n");
+console.log(`product-notes.json   ${Object.keys(notes).length} products with pros and cons`);
+
 fs.writeFileSync(path.join(OUT, "product-images.json"),
   JSON.stringify(images, null, 1) + "\n");
 console.log(`product-images.json  ${Object.keys(images).length} products`);

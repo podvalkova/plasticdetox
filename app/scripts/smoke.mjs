@@ -190,6 +190,10 @@ await screen("detox", async (p) => {
     const f = document.querySelector(".dx-foot");
     const kids = [...document.getElementById("screen").children].filter((e) => e !== f);
     const last = kids[kids.length - 1];
+    // Scroll to the end first. Without this the check only passed while the
+    // step happened to be shorter than the screen, so adding a pro tip or a
+    // pros and cons block failed it even though the padding was correct.
+    window.scrollTo(0, document.body.scrollHeight);
     return { fixed: getComputedStyle(f).position === "fixed",
              clears: last.getBoundingClientRect().bottom <= f.getBoundingClientRect().top + 1 };
   });

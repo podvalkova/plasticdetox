@@ -29,6 +29,7 @@ let meta = { source: "bundle", version: null, brands: 0 };
 
 let campaignLinks = {};
 let productImages = {};
+let productNotesById = {};
 let articles = [];
 let tips = [];
 let plan = [];
@@ -64,6 +65,9 @@ export function productImage(asin, px = 300) {
 
 /** The articles, newest first. */
 export function allArticles() { return articles; }
+
+/** What the store says about a product: tier, what it is best for, pros, cons. */
+export function productNotes(asin) { return (asin && productNotesById[asin]) || null; }
 
 /**
  * One tip, the same one all day, different tomorrow.
@@ -159,9 +163,10 @@ let lastBuild = "";
 async function sidecars() {
   if (sidecarsLoaded) return;
   sidecarsLoaded = true;
-  [campaignLinks, productImages, articles, plan, tips] = await Promise.all([
+  [campaignLinks, productImages, productNotesById, articles, plan, tips] = await Promise.all([
     readBundled("campaign-links").catch(() => ({})),
     readBundled("product-images").catch(() => ({})),
+    readBundled("product-notes").catch(() => ({})),
     readBundled("articles").catch(() => []),
     readBundled("plan").catch(() => []),
     readBundled("tips").catch(() => []),
