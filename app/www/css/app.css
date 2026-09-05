@@ -923,8 +923,6 @@ body.has-tabs .screen { padding-bottom: calc(var(--safe-bottom) + 4rem); }
 }
 
 
-.dx-prog-row { display: flex; gap: 8px; }
-.dx-prog-row .dx-prog-cta { flex: 1; }
 /* A set aside swap is not a completed one, so it does not wear the green. */
 .clr.later { background: var(--chip); border-color: var(--border-strong); }
 .clr.later .clr-tick { background: var(--faint); }
