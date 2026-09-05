@@ -331,16 +331,15 @@ function appendTip(root, notify) {
   card.appendChild(el("div", "tip-label", "Tip of the day"));
   card.appendChild(el("div", "tip-title", tip.title));
   card.appendChild(el("p", "tip-body", tip.body));
-  // Asked here rather than at first launch, because this is the moment the
-  // thing being offered is on screen and obviously worth having. Permission
-  // is spent once: a no on the launch screen is a no for good.
-  if (notify && notify.available) {
-    const row = el("button", `tip-bell${notify.on ? " on" : ""}`);
+  // Only when they are off, because then it is the only way back. While they
+  // are arriving there is nothing to say: a permanent "turn off" chip would sit
+  // on the card every day competing with the tip, and offer the one action we
+  // do not want to keep suggesting. iOS already carries Turn Off on every
+  // notification, and the About screen holds the real control.
+  if (notify && notify.available && !notify.on) {
+    const row = el("button", "tip-bell");
     row.type = "button";
-    // On by default, so this is the way out rather than the way in.
-    row.textContent = notify.on
-      ? "Arriving each morning \u00b7 turn off"
-      : "Send me this each morning";
+    row.textContent = "Send me this each morning";
     row.onclick = () => notify.onToggle();
     card.appendChild(row);
   }
@@ -1686,7 +1685,7 @@ export function checkVerdict(event) {
 
 // ------------------------------------------------------------------ about
 
-export function about(root, { meta, bundle, onOpen }) {
+export function about(root, { meta, bundle, onOpen, notify }) {
   root.appendChild(el("div", "hero")).appendChild(el("h1", null, "How this works"));
 
   const how = el("div", "card");
@@ -1717,6 +1716,19 @@ export function about(root, { meta, bundle, onOpen }) {
       : "App build: bundled version.";
   }).catch(() => { line.textContent = "App build: bundled version."; });
   root.appendChild(data);
+
+  if (notify && notify.available) {
+    const box = el("div", "card");
+    box.appendChild(el("h2", null, "The daily tip"));
+    box.appendChild(el("p", null, notify.on
+      ? "One tip each morning, from the same list the app shows on the Detox tab."
+      : "Off. Turn it back on for one tip each morning."));
+    const btn = el("button", "cta ghost", notify.on ? "Turn off the daily tip" : "Send one each morning");
+    btn.type = "button";
+    btn.onclick = () => notify.onToggle();
+    box.appendChild(btn);
+    root.appendChild(box);
+  }
 
   const links = el("div", "card");
   links.appendChild(el("h2", null, "More"));

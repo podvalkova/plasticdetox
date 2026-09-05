@@ -240,6 +240,27 @@ document.addEventListener("visibilitychange", () => {
   render();
 });
 
+/** The daily tip control, wherever it is shown. */
+function notifyProps() {
+  return {
+    available: notify.available(),
+    on: notify.isOn(),
+    onToggle: async () => {
+      if (notify.isOn()) {
+        await notify.turnOff();
+        toast("Daily tip off");
+        render();
+        return;
+      }
+      const r = await notify.turnOn();
+      if (r === "denied") toast("Turn notifications on in Settings");
+      else if (r === "unavailable") toast("Not available on this device");
+      else toast("Back on, one each morning");
+      render();
+    },
+  };
+}
+
 function render() {
   try {
     draw();
@@ -343,6 +364,7 @@ function draw() {
       meta: data.status(),
       bundle: currentBundle,
       onOpen: openExternal,
+      notify: notifyProps(),
     });
   } else if (state.screen === "shop") {
     screens.shopIndex(view, {
@@ -386,23 +408,7 @@ function draw() {
       onStep: (stepId) => go({ screen: "detoxStep", stepId }),
       onKids: () => go({ screen: "detoxKids" }),
       onCleared: () => go({ screen: "detoxCleared" }),
-      notify: {
-        available: notify.available(),
-        on: notify.isOn(),
-        onToggle: async () => {
-          if (notify.isOn()) {
-            await notify.turnOff();
-            toast("Daily tip off");
-            render();
-            return;
-          }
-          const r = await notify.turnOn();
-          if (r === "denied") toast("Turn notifications on in Settings");
-          else if (r === "unavailable") toast("Not available on this device");
-          else toast("Back on, one each morning");
-          render();
-        },
-      },
+      notify: notifyProps(),
     });
   } else if (state.screen === "detoxReward") {
     const phases = data.planPhases();
