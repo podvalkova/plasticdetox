@@ -70,9 +70,24 @@ export function allArticles() { return articles; }
  */
 export function tipOfDay(when = new Date()) {
   if (!tips.length) return null;
-  const start = Date.UTC(when.getUTCFullYear(), 0, 0);
-  const day = Math.floor((Date.UTC(when.getUTCFullYear(), when.getUTCMonth(), when.getUTCDate()) - start) / 86400000);
-  return tips[Math.min(day, tips.length) - 1] || tips[0];
+  return tips[Math.min(dayOfYear(when), tips.length) - 1] || tips[0];
+}
+
+/**
+ * The day of the year, in the reader's own timezone.
+ *
+ * This was UTC, which meant the tip turned over at seven in the evening in New
+ * York rather than at midnight: you would see tomorrow's tip after dinner and
+ * then the same one all through the next morning, which reads as broken.
+ *
+ * Date.UTC is still the arithmetic, because subtracting local timestamps across
+ * a daylight saving boundary is off by an hour and can land on the wrong day.
+ * The components going into it are local.
+ */
+export function dayOfYear(when = new Date()) {
+  const start = Date.UTC(when.getFullYear(), 0, 0);
+  const today = Date.UTC(when.getFullYear(), when.getMonth(), when.getDate());
+  return Math.floor((today - start) / 86400000);
 }
 
 /** The 90 day plan, three phases of swaps ordered by exposure. */

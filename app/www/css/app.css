@@ -511,7 +511,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 .dx-foot, .rw-foot {
   position: fixed; left: 0; right: 0; bottom: 0; z-index: 20;
-  background: var(--bg); padding: 14px 20px calc(22px + var(--safe-bottom));
+  background: var(--bg); padding: 14px 20px max(14px, var(--safe-bottom));
   display: flex; flex-direction: column; gap: 10px;
   max-width: 640px; margin: 0 auto;
 }
@@ -521,10 +521,10 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   background: linear-gradient(to top, var(--bg), transparent); pointer-events: none;
 }
 /* The screen ends above the pinned footer rather than behind it. */
-.with-foot { padding-bottom: calc(var(--safe-bottom) + 9rem); }
+.with-foot { padding-bottom: calc(var(--safe-bottom) + 8rem); }
 .dx-ghost {
-  display: block; width: 100%; background: none; border: none; color: var(--faint);
-  font-size: 14.5px; font-weight: 650; padding: .7rem; text-align: center;
+  display: block; width: 100%; background: none; border: none; color: var(--muted);
+  font-size: 14.5px; font-weight: 700; padding: .3rem; text-align: center;
 }
 
 .progress {

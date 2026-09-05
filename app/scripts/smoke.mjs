@@ -170,6 +170,19 @@ await screen("detox", async (p) => {
   });
   if (!foot.fixed) throw new Error("step buttons are not pinned");
   if (!foot.clears) throw new Error("step copy runs under the buttons");
+  // The footer sits on the home indicator, it does not stack a design padding
+  // on top of it. Twice now that has been added instead of maxed, which floats
+  // the buttons up the screen. Asserted on the rule, not on a pixel count, so
+  // it holds on a headless viewport that has no inset at all.
+  const pad = await p.evaluate(() => {
+    const f = document.querySelector(".dx-foot");
+    const inset = parseFloat(getComputedStyle(document.documentElement)
+      .getPropertyValue("--safe-bottom")) || 0;
+    return { bottom: parseFloat(getComputedStyle(f).paddingBottom), want: Math.max(14, inset) };
+  });
+  if (pad.bottom > pad.want + 1) {
+    throw new Error(`footer padding ${pad.bottom}px, expected max(14, inset) = ${pad.want}px`);
+  }
   await p.evaluate(() => document.querySelector(".dx-foot .cta").click());
   await new Promise((r) => setTimeout(r, 700));
   await need(p, ".rw-disc", "the reward");

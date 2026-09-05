@@ -217,6 +217,19 @@ function restorePlace() {
   return true;
 }
 
+// A phone spends most of its life with the app in the background, so the day
+// can turn over while nothing is drawing. Without this the tip stays on
+// yesterday's until you happen to navigate, which looks like a tip that never
+// changes rather than one that changes at midnight.
+let drawnOn = data.dayOfYear();
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState !== "visible") return;
+  const today = data.dayOfYear();
+  if (today === drawnOn) return;
+  drawnOn = today;
+  render();
+});
+
 function render() {
   try {
     draw();
