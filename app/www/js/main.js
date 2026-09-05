@@ -60,6 +60,12 @@ function isNative() {
 
 // ------------------------------------------------------------- navigation
 
+/** The room the Detox screen is showing, which lives on its own stack entry. */
+function setRootRoom(room) {
+  const root = stack.find((st) => st.screen === "detox");
+  if (root) root.room = room;
+}
+
 function go(state, { replace = false } = {}) {
   if (replace) stack.pop();
   stack.push(state);
@@ -381,26 +387,43 @@ function draw() {
     const phases = data.planPhases();
     const set = readDone();
     const all = phases.reduce((n, p) => n + p.steps.length, 0);
-    let cleared = "That source", roomLabel = "";
-    for (const ph of phases) {
+    let cleared = "That source", roomLabel = "", at = -1;
+    phases.forEach((ph, i) => {
       const hit = ph.steps.find((s) => s.id === state.stepId);
-      if (hit) {
-        cleared = hit.swap;
-        const dn = ph.steps.filter((s) => set.has(s.id)).length;
-        roomLabel = `${roomName(ph)} · ${dn} of ${ph.steps.length}`;
+      if (!hit) return;
+      at = i;
+      cleared = hit.swap;
+      const dn = ph.steps.filter((s) => set.has(s.id)).length;
+      roomLabel = `${roomName(ph)} · ${dn} of ${ph.steps.length}`;
+    });
+    // Next means next in this room. Scanning from the first phase sent someone
+    // working through Air and laundry back to the kitchen on every swap, which
+    // reads as the app losing your place. Only when a room is clear does the
+    // next one open, and the room you land in is the one the screen names.
+    const undoneIn = (ph) => ph.steps.find((s) => !set.has(s.id));
+    let next = at >= 0 ? undoneIn(phases[at]) : null;
+    let nextRoom = at;
+    if (!next) {
+      for (let i = 0; i < phases.length; i++) {
+        const hit = undoneIn(phases[i]);
+        if (hit) { next = hit; nextRoom = i; break; }
       }
-    }
-    // The next source is the next undone one anywhere, not just in this room,
-    // so finishing a room rolls straight into the following one.
-    let next = null;
-    for (const ph of phases) {
-      const hit = ph.steps.find((s) => !set.has(s.id));
-      if (hit) { next = hit; break; }
     }
     screens.detoxReward(view, {
       ticked: set.size, all, cleared, roomLabel, nextStep: next,
-      onNext: () => next && go({ screen: "detoxStep", stepId: next.id }, { replace: true }),
-      onClose: () => go({ screen: "detox" }, { replace: true }),
+      onNext: () => {
+        if (!next) return;
+        // The Detox screen reads its room from its own entry at the bottom of
+        // the stack, not from this one, so crossing into a new room has to
+        // update that entry. Without it, backing out of the step lands on the
+        // room you were in before rather than the one you are now working.
+        if (nextRoom >= 0) setRootRoom(String(nextRoom));
+        go({ screen: "detoxStep", stepId: next.id }, { replace: true });
+      },
+      onClose: () => {
+        if (at >= 0) setRootRoom(String(at));
+        go({ screen: "detox" }, { replace: true });
+      },
     });
   } else if (state.screen === "detoxCleared") {
     const phases = data.planPhases();

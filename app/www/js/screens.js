@@ -5,7 +5,7 @@
 import { FRONTS, STANCE_LABEL, verdictFor, alternativesFor, ratedProducts } from "./match.js";
 import { packagingHeadline } from "./upc.js";
 import { el, frag, icon, ICONS, splitNote } from "./ui.js";
-import { buyLink, productImage, tipOfDay } from "./data.js";
+import { buyLink, productImage, tipOfDay, allArticles } from "./data.js";
 import { stepContent, roomName } from "./detox-content.js";
 
 const SITE = "https://plasticdetox.org";
@@ -524,10 +524,16 @@ export function detoxStep(root, { phase, step, isDone, isSeen, onDone, onUndo, o
       // The canvas gives every pick a thumbnail. The ASIN is already in the
       // buy link, so the real product image costs nothing to show.
       const asin = (pick.url.match(/\/dp\/([A-Z0-9]{10})/) || [])[1];
+      // Not every pick is a product. A guide points at one of our own articles,
+      // which ships a hero image, and showing the placeholder instead made the
+      // one pick on that step look like a broken row.
+      const slug = (pick.url.match(/\/articles\/([\w-]+\.html)/) || [])[1];
+      const art = slug && allArticles().find((a) => a.slug === slug);
+      const src = asin ? productImage(asin, 160) : (art && art.image) || "";
       const thumb = el("div", "dx-pick-img");
-      if (asin) {
+      if (src) {
         const img = document.createElement("img");
-        img.src = productImage(asin, 160);
+        img.src = src;
         img.alt = "";
         img.loading = "lazy";
         img.onerror = () => thumb.classList.add("bare");

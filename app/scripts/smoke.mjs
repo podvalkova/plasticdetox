@@ -213,6 +213,30 @@ await screen("detox", async (p) => {
   await need(p, ".rw-disc", "the reward");
 });
 
+await screen("next stays in the room", async (p) => {
+  // Working through Air and laundry used to throw you back to the kitchen on
+  // every Done, because the search for the next swap started at phase zero.
+  await p.evaluate(() => [...document.querySelectorAll(".tab")]
+    .find((t) => /Detox/.test(t.textContent)).click());
+  await new Promise((r) => setTimeout(r, 700));
+  const room = await p.evaluate(() => {
+    const r = [...document.querySelectorAll(".dx-room")].find((x) => /Air/.test(x.textContent));
+    if (!r) return null;
+    r.click();
+    return "Air";
+  });
+  if (!room) throw new Error("no Air + laundry room to work in");
+  await new Promise((r) => setTimeout(r, 600));
+  await tap(p, ".dx-quest-cta");
+  await new Promise((r) => setTimeout(r, 600));
+  await tap(p, ".dx-foot .cta");
+  await new Promise((r) => setTimeout(r, 700));
+  await tap(p, ".rw-foot .cta");
+  await new Promise((r) => setTimeout(r, 700));
+  const where = await p.evaluate(() => document.querySelector(".dx-k").textContent);
+  if (!/Air/.test(where)) throw new Error(`next swap left the room: "${where}"`);
+});
+
 await screen("shop", async (p) => {
   await p.evaluate(() => [...document.querySelectorAll(".tab")]
     .find((t) => /Shop/.test(t.textContent)).click());
