@@ -791,15 +791,20 @@ export function saved(root, { items, index, onProduct, onOpen, onShop }) {
     // we have not written up yet. It still gets a picture and a way to buy it,
     // rather than a white box with the name printed twice.
     const card = el("div", "pcard");
+    // The same picture box the resolved cards use. Inventing a second one gave
+    // it no rules at all, so the photo rendered at its natural height and the
+    // two cards in a row were different sizes.
+    const shot = el("div", "pcard-img");
     const src = productImage(s.asin, 300);
     if (src) {
-      const shot = el("div", "pcard-shot");
       const im = el("img");
       im.src = src; im.alt = "";
-      im.onerror = () => shot.remove();
+      im.onerror = () => { im.remove(); shot.appendChild(el("div", "pcard-fallback", s.name)); };
       shot.appendChild(im);
-      card.appendChild(shot);
+    } else {
+      shot.appendChild(el("div", "pcard-fallback", s.name));
     }
+    card.appendChild(shot);
     const body = el("div", "pcard-body");
     if (s.cat) body.appendChild(el("div", "pcard-brand", s.cat));
     body.appendChild(el("div", "pcard-name", s.name));
