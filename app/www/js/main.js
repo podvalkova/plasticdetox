@@ -390,7 +390,12 @@ function draw() {
       },
       // Same for the room: it narrows this screen rather than becoming one, so
       // back leaves the shop instead of stepping through filters.
-      onRoom: (r) => { state.room = r; render(); rememberPlace(); },
+      onRoom: (r, opts) => {
+        state.room = r;
+        // The screen has already updated itself; this only has to be remembered.
+        if (!opts || !opts.quiet) render();
+        rememberPlace();
+      },
       onCategory: (category) => go({ screen: "shopCategory", category }),
       onOpen: openExternal,
       onProduct: (b, row) => go({
@@ -415,7 +420,12 @@ function draw() {
       done: readDone(),
       seen: readSeen(),
       room: state.room || "",
-      onRoom: (r) => { state.room = r; render(); rememberPlace(); },
+      onRoom: (r, opts) => {
+        state.room = r;
+        // The screen has already updated itself; this only has to be remembered.
+        if (!opts || !opts.quiet) render();
+        rememberPlace();
+      },
       onStep: (stepId) => { track("swap_opened", { step: stepId }); go({ screen: "detoxStep", stepId }); },
       onKids: kids.OFFERED ? () => go({ screen: "detoxKids" }) : null,
       onCleared: () => go({ screen: "detoxCleared" }),

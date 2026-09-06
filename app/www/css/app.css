@@ -459,16 +459,18 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
    you are; that is a stage, not a verdict, but it borrows the verdict hues
    deliberately: amber while most sources remain, green once few do. */
 
+/* Every room on screen at once.
+   A horizontal strip put the fourth room off the edge, which happened to be
+   the one that is worth money: it did not exist unless you thought to swipe a
+   row that gave no sign there was more of it. Four fit as two rows of two
+   without crowding, and nothing is hidden behind a gesture. */
 .dx-rooms {
-  display: flex; gap: .5rem;
-  overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch;
-  margin-inline: -1rem; padding-inline: 1rem;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
 }
-.dx-rooms::-webkit-scrollbar { display: none; }
 /* A room is a card, not a pill: it carries a name, a count and a pip per
    source, so the shape of the room reads before you open it. */
 .dx-room {
-  flex: none; min-width: 104px; padding: 12px 16px; border-radius: 20px;
+  min-width: 0; padding: 12px 14px; border-radius: 20px;
   background: var(--surface); border: 1.5px solid var(--border-strong);
   color: var(--text); white-space: nowrap; text-align: left;
   display: flex; flex-direction: column; gap: 8px; cursor: pointer;
@@ -479,7 +481,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .dx-room.on .dx-pip { background: rgba(106, 43, 240, .25); }
 .dx-room.on .dx-pip.on { background: var(--accent); }
 .dx-room.lock {
-  flex-direction: row; align-items: center; gap: .4rem; min-width: 0;
+  flex-direction: row; align-items: center; gap: .4rem; justify-content: center;
   border-style: dashed; color: var(--muted);
 }
 .dx-room.lock svg { opacity: .7; }
@@ -725,7 +727,7 @@ body.has-tabs .screen { padding-bottom: calc(var(--safe-bottom) + 4rem); }
 
 .dx-where { font-size: 13px; font-weight: 800; letter-spacing: -.01em; padding-left: 4px; margin-bottom: -6px; }
 .dx-room-top { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
-.dx-room-n { font-size: 14.5px; font-weight: 800; }
+.dx-room-n { font-size: 14.5px; font-weight: 800; overflow: hidden; text-overflow: ellipsis; }
 .dx-room-c { font-size: 11px; font-weight: 700; color: var(--muted); }
 .dx-pips { display: flex; gap: 3px; flex-wrap: wrap; }
 .dx-pip { width: 7px; height: 7px; border-radius: 4px; background: var(--border-strong); }
@@ -1071,3 +1073,6 @@ body.has-tabs .screen { padding-bottom: calc(var(--safe-bottom) + 4rem); }
 .section-title { font-size: 13px; font-weight: 800; letter-spacing: -.01em; color: var(--text); padding-left: 4px; }
 
 .dx-foot .cta, .rw-foot .cta { margin-top: 0; }
+
+.dx-room-top { min-width: 0; }
+.dx-below { display: flex; flex-direction: column; gap: 16px; }

@@ -408,65 +408,67 @@ export function detox(root, { phases, done, seen, room, onRoom, onStep, onKids, 
 
   wrap.appendChild(el("div", "dx-where", "Where do you want to work"));
   const rooms = el("div", "dx-rooms");
-  phases.forEach((p, i) => {
-    const dn = p.steps.filter((s) => done.has(s.id)).length;
-    const pill = el("button", `dx-room${i === at ? " on" : ""}`);
-    pill.type = "button";
-    const head = el("div", "dx-room-top");
-    head.appendChild(el("span", "dx-room-n", roomName(p)));
-    head.appendChild(el("span", "dx-room-c", `${dn}/${p.steps.length}`));
-    pill.appendChild(head);
-    // A pip per source, filled as it clears. It shows the shape of the room
-    // at a glance, which a bare count cannot.
-    const pips = el("div", "dx-pips");
-    for (const st of p.steps) {
-      pips.appendChild(el("i", `dx-pip${done.has(st.id) ? " on" : ""}`));
-    }
-    pill.appendChild(pips);
-    pill.onclick = () => onRoom(String(i));
-    rooms.appendChild(pill);
-  });
-  // The teaser only exists while the room does not. Once it is bought the real
-  // room is in the list above and a second Kids chip beside it is nonsense.
-  if (onKids && !phases.some((ph) => ph.sub === "Kids")) {
-    const kids = el("button", "dx-room lock");
-    kids.type = "button";
-    kids.appendChild(icon("M7 11V8a5 5 0 0 1 10 0v3M5 11h14v10H5zM12 15v3", 13));
-    kids.appendChild(el("span", null, "Kids"));
-    kids.onclick = onKids;
-    rooms.appendChild(kids);
-  }
   wrap.appendChild(rooms);
+  // The part that actually changes when you switch rooms. Everything above it
+  // is identical either way, so redrawing the screen only made it blink.
+  const below = el("div", "dx-below");
+  wrap.appendChild(below);
 
-  // One source at a time, which is the whole idea: the board of thirteen tiles
-  // asked you to choose, and choosing is the step people stall on. The next
-  // undone swap in this room is simply presented, with the room's own leftovers
-  // pointed at once it is clear.
-  const left = phase.steps.filter((st) => !done.has(st.id));
-  if (!left.length) {
-    const other = phases.findIndex((p) => p.steps.some((st) => !done.has(st.id)));
-    if (other >= 0) {
-      wrap.appendChild(el("div", "dx-jump",
-        `${roomName(phase)} is clear. ${roomName(phases[other])} still has ${
-          phases[other].steps.filter((st) => !done.has(st.id)).length} to go.`));
-      const jump = el("button", "dx-quest-cta", `Go to ${roomName(phases[other])}`);
-      jump.type = "button";
-      jump.onclick = () => onRoom(String(other));
-      wrap.appendChild(jump);
+  const drawRooms = () => {
+    rooms.replaceChildren();
+    phases.forEach((ph, i) => {
+      const dn = ph.steps.filter((st) => done.has(st.id)).length;
+      const pill = el("button", `dx-room${i === at ? " on" : ""}`);
+      pill.type = "button";
+      const head = el("div", "dx-room-top");
+      head.appendChild(el("span", "dx-room-n", roomName(ph)));
+      head.appendChild(el("span", "dx-room-c", `${dn}/${ph.steps.length}`));
+      pill.appendChild(head);
+      const pips = el("div", "dx-pips");
+      for (const st of ph.steps) pips.appendChild(el("i", `dx-pip${done.has(st.id) ? " on" : ""}`));
+      pill.appendChild(pips);
+      pill.onclick = () => {
+        if (i === at) return;
+        at = i;
+        drawRooms();
+        drawBelow();
+        // Persisted so the choice survives leaving the tab, without a redraw.
+        onRoom(String(i), { quiet: true });
+      };
+      rooms.appendChild(pill);
+    });
+    if (onKids && !phases.some((ph) => ph.sub === "Kids")) {
+      const kids = el("button", "dx-room lock");
+      kids.type = "button";
+      kids.appendChild(icon("M7 11V8a5 5 0 0 1 10 0v3M5 11h14v10H5zM12 15v3", 13));
+      kids.appendChild(el("span", null, "Kids"));
+      kids.onclick = onKids;
+      rooms.appendChild(kids);
     }
-  } else {
-    // One card at a time, and the rest a swipe away. A second button for the
-    // ones you set aside was another thing to read; swiping is how you already
-    // expect a stack of cards to behave, and it reaches every swap in the room
-    // rather than only the next one.
-    // The next one, and the ones you chose to come back to. Showing all
-    // thirteen rebuilt the board the design removed: the whole point is that
-    // choosing is the step people stall on, and what is coming stays unseen.
+  };
+
+  const drawBelow = () => {
+    below.replaceChildren();
+    const phase = phases[at];
+    const left = phase.steps.filter((st) => !done.has(st.id));
+    if (!left.length) {
+      const other = phases.findIndex((ph) => ph.steps.some((st) => !done.has(st.id)));
+      if (other >= 0) {
+        below.appendChild(el("div", "dx-jump",
+          `${roomName(phase)} is clear. ${roomName(phases[other])} still has ${
+            phases[other].steps.filter((st) => !done.has(st.id)).length} to go.`));
+        const jump = el("button", "dx-quest-cta", `Go to ${roomName(phases[other])}`);
+        jump.type = "button";
+        jump.onclick = () => { at = other; drawRooms(); drawBelow(); onRoom(String(other), { quiet: true }); };
+        below.appendChild(jump);
+      }
+      return;
+    }
     const later = left.filter((st) => seen.has(st.id));
     const fresh = left.filter((st) => !seen.has(st.id));
     const order = fresh.length ? [fresh[0], ...later] : later;
     const strip = el("div", "dx-quest-strip");
-    order.forEach((st, i) => {
+    order.forEach((st) => {
       const q = el("div", `dx-quest${seen.has(st.id) ? " later" : ""}`);
       const qt = el("div", "dx-quest-top");
       qt.appendChild(el("span", "dx-quest-k",
@@ -482,19 +484,20 @@ export function detox(root, { phases, done, seen, room, onRoom, onStep, onKids, 
       q.appendChild(cta);
       strip.appendChild(q);
     });
-    wrap.appendChild(strip);
+    below.appendChild(strip);
     if (order.length > 1) {
       const dots = el("div", "dx-dots");
       order.forEach((_, i) => dots.appendChild(el("i", `dx-dot${i ? "" : " on"}`)));
-      wrap.appendChild(dots);
-      // The dot follows the card you are on, so the strip reads as a stack
-      // rather than as something that scrolled off by accident.
+      below.appendChild(dots);
       strip.onscroll = () => {
         const i = Math.round(strip.scrollLeft / strip.clientWidth);
         [...dots.children].forEach((d, n) => d.classList.toggle("on", n === i));
       };
     }
-  }
+  };
+
+  drawRooms();
+  drawBelow();
 }
 /**
  * The Kids room, before it is unlocked.
