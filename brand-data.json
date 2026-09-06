@@ -345,13 +345,13 @@
         "origin": "hand",
         "source": "microplastics-in-salt-and-pantry-staples.html",
         "ext": {
-          "verdict": "good",
-          "why": "Reviewed by hand from our published research on this category.",
+          "verdict": "careful",
+          "why": "section 6 ceiling: testing is caution",
           "fronts": {
             "formula": "pass",
             "materials": "pass",
             "legal": "pass",
-            "testing": "unassessed"
+            "testing": "caution"
           },
           "scope": "line",
           "basis": "direct",
@@ -360,10 +360,12 @@
           "dated": "2026-09-06",
           "legalNote": "Checked recall records on 2026-08-31. The 365 label has routine food recalls on other products (2025 allergen and salad kit recalls, resolved); none involve the sea salt, and a recall on a sibling product does not transfer.",
           "frontNotes": {
-            "legal": "Checked recall records on 2026-08-31. The 365 label has routine food recalls on other products (2025 allergen and salad kit recalls, resolved); none involve the sea salt, and a recall on a sibling product does not transfer."
+            "legal": "Checked recall records on 2026-08-31. The 365 label has routine food recalls on other products (2025 allergen and salad kit recalls, resolved); none involve the sea salt, and a recall on a sibling product does not transfer.",
+            "testing": "Sea salt is the most microplastic contaminated salt, because it is evaporated seawater (Environmental Science & Technology, 39 brands across 21 countries). This product's own materials put it in that class."
           },
           "frontOrigin": {
-            "legal": "database"
+            "legal": "database",
+            "testing": "class"
           },
           "exposure": {
             "type": "food",
@@ -387,7 +389,21 @@
             "flagged": [],
             "source": "amazon:B074J7X1DW",
             "checked": "2026-09-03"
-          }
+          },
+          "classEvidence": {
+            "id": "sea-salt-microplastics",
+            "headline": "Sea salt is the most microplastic contaminated salt, because it is evaporated seawater",
+            "detail": "A study of 39 salt brands from 21 countries detected microplastics in roughly 90 percent of them, and sea salt was the most contaminated category. Independent testing puts sea salt at around 681 particles per kilogram against about 204 for salt mined from underground deposits. The mechanism is the source rather than the brand: seawater carries the ocean's plastic, and evaporating it concentrates what was already there. This is about sea salt generally. We have not confirmed it for any individual product.",
+            "source": "Environmental Science & Technology, 39 brands across 21 countries",
+            "year": 2018,
+            "status": "caution",
+            "membership": "confirmed",
+            "confirmedBy": "sea salt",
+            "escape": "Salt mined from an underground deposit is not evaporated seawater and does not carry this. That is the alternative outside the category, and it is what we recommend.",
+            "alternative": ""
+          },
+          "cappedFrom": "good",
+          "capRestoreWhy": "Reviewed by hand from our published research on this category."
         },
         "cat": "Sea salt"
       }
@@ -2440,13 +2456,13 @@
         "origin": "hand",
         "source": "plastic-in-groceries-what-really-matters.html",
         "ext": {
-          "verdict": "good",
-          "why": "Reviewed by hand from our published research on this category.",
+          "verdict": "careful",
+          "why": "section 6 ceiling: testing is caution",
           "fronts": {
             "formula": "pass",
             "materials": "pass",
             "legal": "pass",
-            "testing": "unassessed"
+            "testing": "caution"
           },
           "scope": "line",
           "basis": "direct",
@@ -2455,10 +2471,12 @@
           "dated": "2026-09-06",
           "legalNote": "Checked recall records on 2026-08-31. Predecessor private labels had 2025 food recalls, resolved; none involve sea salt.",
           "frontNotes": {
-            "legal": "Checked recall records on 2026-08-31. Predecessor private labels had 2025 food recalls, resolved; none involve sea salt."
+            "legal": "Checked recall records on 2026-08-31. Predecessor private labels had 2025 food recalls, resolved; none involve sea salt.",
+            "testing": "Sea salt is the most microplastic contaminated salt, because it is evaporated seawater (Environmental Science & Technology, 39 brands across 21 countries). This product's own materials put it in that class."
           },
           "frontOrigin": {
-            "legal": "database"
+            "legal": "database",
+            "testing": "class"
           },
           "exposure": {
             "type": "food",
@@ -2482,7 +2500,21 @@
             "flagged": [],
             "source": "amazon:B07QW1G8MW",
             "checked": "2026-09-03"
-          }
+          },
+          "classEvidence": {
+            "id": "sea-salt-microplastics",
+            "headline": "Sea salt is the most microplastic contaminated salt, because it is evaporated seawater",
+            "detail": "A study of 39 salt brands from 21 countries detected microplastics in roughly 90 percent of them, and sea salt was the most contaminated category. Independent testing puts sea salt at around 681 particles per kilogram against about 204 for salt mined from underground deposits. The mechanism is the source rather than the brand: seawater carries the ocean's plastic, and evaporating it concentrates what was already there. This is about sea salt generally. We have not confirmed it for any individual product.",
+            "source": "Environmental Science & Technology, 39 brands across 21 countries",
+            "year": 2018,
+            "status": "caution",
+            "membership": "confirmed",
+            "confirmedBy": "sea salt",
+            "escape": "Salt mined from an underground deposit is not evaporated seawater and does not carry this. That is the alternative outside the category, and it is what we recommend.",
+            "alternative": ""
+          },
+          "cappedFrom": "good",
+          "capRestoreWhy": "Reviewed by hand from our published research on this category."
         },
         "cat": "Sea salt"
       },
@@ -5610,20 +5642,20 @@
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
             "materials": "We have not established what the product actually touches.",
-            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
-            "formula": "The listing we hold for this product serves a different item, The Honest Company Bubble Bath, Hypoallergenic, Lavender Calm, 12 fl oz."
+            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
           },
           "verdict": "careful",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "caution",
             "materials": "unassessed",
             "legal": "none",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "legal": "database"
+            "legal": "database",
+            "formula": "inferred"
           },
           "scope": "sku",
           "basis": "direct",
@@ -5648,7 +5680,7 @@
             "ingredients": "",
             "prose": "",
             "complete": false,
-            "verdict": "open",
+            "verdict": "careful",
             "summary": "The listing we hold for this product serves a different item, The Honest Company Bubble Bath, Hypoallergenic, Lavender Calm, 12 fl oz.",
             "flagged": [],
             "source": "amazon:B01LDZJHAE",
@@ -6956,13 +6988,13 @@
         "origin": "hand",
         "source": "microplastics-in-salt-and-pantry-staples.html",
         "ext": {
-          "verdict": "unrated",
-          "why": "a recommendation needs its checks done; still to do: materials",
+          "verdict": "careful",
+          "why": "section 6 ceiling: testing is caution",
           "fronts": {
             "formula": "pass",
             "materials": "unassessed",
             "legal": "pass",
-            "testing": "unassessed"
+            "testing": "caution"
           },
           "scope": "line",
           "basis": "direct",
@@ -6973,11 +7005,13 @@
           "frontNotes": {
             "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
             "formula": "The published ingredient list carries nothing on the hazard list.",
-            "materials": "We have not established what the product actually touches."
+            "materials": "We have not established what the product actually touches.",
+            "testing": "Sea salt is the most microplastic contaminated salt, because it is evaporated seawater (Environmental Science & Technology, 39 brands across 21 countries). This product's own materials put it in that class."
           },
           "frontOrigin": {
             "legal": "database",
-            "formula": "database"
+            "formula": "database",
+            "testing": "class"
           },
           "exposure": {
             "type": "food",
@@ -7014,11 +7048,20 @@
             "checked": "2026-09-02",
             "open": "We have not established what the product actually touches"
           },
-          "heldFrom": "good",
-          "restoreWhy": "Reviewed by hand from our published research on this category.",
-          "heldBack": [
-            "materials"
-          ]
+          "classEvidence": {
+            "id": "sea-salt-microplastics",
+            "headline": "Sea salt is the most microplastic contaminated salt, because it is evaporated seawater",
+            "detail": "A study of 39 salt brands from 21 countries detected microplastics in roughly 90 percent of them, and sea salt was the most contaminated category. Independent testing puts sea salt at around 681 particles per kilogram against about 204 for salt mined from underground deposits. The mechanism is the source rather than the brand: seawater carries the ocean's plastic, and evaporating it concentrates what was already there. This is about sea salt generally. We have not confirmed it for any individual product.",
+            "source": "Environmental Science & Technology, 39 brands across 21 countries",
+            "year": 2018,
+            "status": "caution",
+            "membership": "confirmed",
+            "confirmedBy": "sea salt",
+            "escape": "Salt mined from an underground deposit is not evaporated seawater and does not carry this. That is the alternative outside the category, and it is what we recommend.",
+            "alternative": ""
+          },
+          "cappedFrom": "good",
+          "capRestoreWhy": "Reviewed by hand from our published research on this category."
         },
         "cat": "Sea salt"
       }
@@ -7933,7 +7976,8 @@
         "ext": {
           "frontNotes": {
             "legal": "Issued a broad benzene sunscreen recall in the 2021-2022 wave (Recorded for Banana Boat as a whole rather than this product specifically.)",
-            "materials": "We have not established what the product actually touches."
+            "materials": "We have not established what the product actually touches.",
+            "formula": "The listing we hold for this product serves a different item, Baby Bum SPF 50 Sunscreen Spray - Mineral UVA/UVB Face and Body Protection for Sensitive Skin - Travel Size - 3 oz."
           },
           "inheritedFronts": [
             "legal"
@@ -7942,14 +7986,13 @@
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "caution",
+            "formula": "unassessed",
             "materials": "unassessed",
             "legal": "fail",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "legal": "stated",
-            "formula": "inferred"
+            "legal": "stated"
           },
           "scope": "sku",
           "basis": "direct",
@@ -7972,7 +8015,7 @@
             "ingredients": "",
             "prose": "",
             "complete": false,
-            "verdict": "careful",
+            "verdict": "open",
             "summary": "The listing we hold for this product serves a different item, Baby Bum SPF 50 Sunscreen Spray - Mineral UVA/UVB Face and Body Protection for Sensitive Skin - Travel Size - 3 oz.",
             "flagged": [],
             "source": "amazon:B07ZR1KQ44",
@@ -17297,13 +17340,13 @@
         "origin": "hand",
         "source": "microplastics-in-salt-and-pantry-staples.html",
         "ext": {
-          "verdict": "unrated",
-          "why": "a recommendation needs its checks done; still to do: materials",
+          "verdict": "careful",
+          "why": "section 6 ceiling: testing is caution",
           "fronts": {
             "formula": "pass",
             "materials": "unassessed",
             "legal": "pass",
-            "testing": "unassessed"
+            "testing": "caution"
           },
           "scope": "line",
           "basis": "direct",
@@ -17314,11 +17357,13 @@
           "frontNotes": {
             "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
             "formula": "The published ingredient list carries nothing on the hazard list.",
-            "materials": "We have not established what the product actually touches."
+            "materials": "We have not established what the product actually touches.",
+            "testing": "Sea salt is the most microplastic contaminated salt, because it is evaporated seawater (Environmental Science & Technology, 39 brands across 21 countries). This product's own materials put it in that class."
           },
           "frontOrigin": {
             "legal": "database",
-            "formula": "database"
+            "formula": "database",
+            "testing": "class"
           },
           "exposure": {
             "type": "food",
@@ -17355,11 +17400,20 @@
             "checked": "2026-09-02",
             "open": "We have not established what the product actually touches"
           },
-          "heldFrom": "good",
-          "restoreWhy": "Reviewed by hand from our published research on this category.",
-          "heldBack": [
-            "materials"
-          ]
+          "classEvidence": {
+            "id": "sea-salt-microplastics",
+            "headline": "Sea salt is the most microplastic contaminated salt, because it is evaporated seawater",
+            "detail": "A study of 39 salt brands from 21 countries detected microplastics in roughly 90 percent of them, and sea salt was the most contaminated category. Independent testing puts sea salt at around 681 particles per kilogram against about 204 for salt mined from underground deposits. The mechanism is the source rather than the brand: seawater carries the ocean's plastic, and evaporating it concentrates what was already there. This is about sea salt generally. We have not confirmed it for any individual product.",
+            "source": "Environmental Science & Technology, 39 brands across 21 countries",
+            "year": 2018,
+            "status": "caution",
+            "membership": "confirmed",
+            "confirmedBy": "sea salt",
+            "escape": "Salt mined from an underground deposit is not evaporated seawater and does not carry this. That is the alternative outside the category, and it is what we recommend.",
+            "alternative": ""
+          },
+          "cappedFrom": "good",
+          "capRestoreWhy": "Reviewed by hand from our published research on this category."
         },
         "cat": "Sea salt"
       }
@@ -25075,7 +25129,7 @@
           "fronts": {
             "formula": "pass",
             "legal": "none",
-            "testing": "unassessed",
+            "testing": "caution",
             "materials": "unassessed"
           },
           "scope": "line",
@@ -25087,12 +25141,14 @@
           ],
           "heldFrom": "good",
           "frontNotes": {
-            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
+            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
+            "testing": "Sea salt is the most microplastic contaminated salt, because it is evaporated seawater (Environmental Science & Technology, 39 brands across 21 countries). This product's own materials put it in that class."
           },
           "legalNote": "FDA database matches reviewed on 2026-08-31: the recalling firm, Diamond Crystal Brands of Savannah GA, is a foodservice packet company unrelated to the Diamond Crystal salt brand. No recall on record for this brand.",
           "frontOrigin": {
             "formula": "inferred",
-            "legal": "database"
+            "legal": "database",
+            "testing": "class"
           },
           "exposure": {
             "type": "food",
@@ -25117,7 +25173,19 @@
               "year": null,
               "lod": null
             }
-          ]
+          ],
+          "classEvidence": {
+            "id": "sea-salt-microplastics",
+            "headline": "Sea salt is the most microplastic contaminated salt, because it is evaporated seawater",
+            "detail": "A study of 39 salt brands from 21 countries detected microplastics in roughly 90 percent of them, and sea salt was the most contaminated category. Independent testing puts sea salt at around 681 particles per kilogram against about 204 for salt mined from underground deposits. The mechanism is the source rather than the brand: seawater carries the ocean's plastic, and evaporating it concentrates what was already there. This is about sea salt generally. We have not confirmed it for any individual product.",
+            "source": "Environmental Science & Technology, 39 brands across 21 countries",
+            "year": 2018,
+            "status": "caution",
+            "membership": "confirmed",
+            "confirmedBy": "sea salt",
+            "escape": "Salt mined from an underground deposit is not evaporated seawater and does not carry this. That is the alternative outside the category, and it is what we recommend.",
+            "alternative": ""
+          }
         },
         "research": "Packaging: Ships in a cardboard box with a side pour spout (3 lb); contents are dry kosher salt crystals."
       }
@@ -26777,19 +26845,20 @@
         "source": "top-100-baby-kids-products-amazon.html",
         "ext": {
           "frontNotes": {
-            "materials": "We have not established what the product actually touches.",
-            "formula": "The listing we hold for this product serves a different item, ATTITUDE Baby Laundry Detergent, Dermatologist Tested, Unscented, 80 Loads."
+            "materials": "We have not established what the product actually touches."
           },
           "verdict": "skip",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "caution",
             "materials": "unassessed",
             "legal": "unassessed",
             "testing": "unassessed"
           },
-          "frontOrigin": {},
+          "frontOrigin": {
+            "formula": "inferred"
+          },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
@@ -26813,7 +26882,7 @@
             "ingredients": "",
             "prose": "",
             "complete": false,
-            "verdict": "open",
+            "verdict": "careful",
             "summary": "The listing we hold for this product serves a different item, ATTITUDE Baby Laundry Detergent, Dermatologist Tested, Unscented, 80 Loads.",
             "flagged": [],
             "source": "amazon:B084W9XN3K",
@@ -35822,19 +35891,20 @@
           "B086H1W384"
         ],
         "ext": {
-          "frontNotes": {},
+          "frontNotes": {
+            "formula": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear."
+          },
           "verdict": "unrated",
           "dated": "2026-08-28",
-          "why": "the note reads adversely on formula, testing, needs a human look",
+          "why": "a recommendation needs its checks done; still to do: materials, legal, formula",
           "fronts": {
-            "formula": "caution",
+            "formula": "unassessed",
             "materials": "unassessed",
             "legal": "unassessed",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "testing": "inferred",
-            "formula": "inferred"
+            "testing": "inferred"
           },
           "scope": "sku",
           "basis": "direct",
@@ -35857,7 +35927,7 @@
             "ingredients": "",
             "prose": "About this item Brass boiler with increased capacity & power Made in Italy from machine-grade components Solid steel housing, brass group head w/stainless steel surround 9-bar extractions with 3-way solenoid valve Commercial Steam Wand › See more product details",
             "complete": false,
-            "verdict": "careful",
+            "verdict": "open",
             "summary": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear.",
             "flagged": [],
             "source": "amazon:B086H1W384",
@@ -40652,19 +40722,19 @@
         "origin": "article",
         "source": "top-100-baby-kids-products-amazon.html",
         "ext": {
-          "frontNotes": {
-            "formula": "No ingredient list recorded."
-          },
+          "frontNotes": {},
           "verdict": "careful",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "caution",
             "materials": "unassessed",
             "legal": "unassessed",
             "testing": "unassessed"
           },
-          "frontOrigin": {},
+          "frontOrigin": {
+            "formula": "inferred"
+          },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
@@ -40688,14 +40758,14 @@
             "ingredients": "",
             "prose": "",
             "complete": false,
-            "verdict": "open",
+            "verdict": "careful",
             "summary": "No ingredient list recorded.",
             "flagged": [],
             "source": "amazon:B0GH9RFS4K",
             "checked": ""
           }
         },
-        "cat": "Sea salt"
+        "cat": "Pantry"
       }
     ],
     "rollup": {
@@ -49395,19 +49465,20 @@
         "ext": {
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
           "frontNotes": {
-            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
+            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
+            "formula": "An object has no ingredient list. What it is made of is the materials check."
           },
           "verdict": "good",
           "dated": "2026-08-29",
           "why": "a vetted store pick, chosen by a person at product scope",
           "fronts": {
-            "formula": "pass",
+            "formula": "none",
             "materials": "pass",
             "legal": "none",
             "testing": "pass"
           },
           "frontOrigin": {
-            "formula": "inferred",
+            "formula": "hand",
             "legal": "database",
             "testing": "inferred",
             "materials": "inferred"
@@ -49419,20 +49490,20 @@
             "5.4 durable-good-is-its-own-packaging"
           ],
           "exposure": {
-            "type": "food",
-            "level": "medium",
-            "score": 6.0,
+            "type": "slept on",
+            "level": "high",
+            "score": 8.0,
             "baby": false,
-            "route": "ingestion",
-            "duration": "minutes",
-            "retained": "swallowed",
+            "route": "inhalation",
+            "duration": "overnight",
+            "retained": "breathed",
             "frequency": "daily",
             "heat": false,
             "fat": false,
-            "why": "Eaten, so whatever is in it arrives whole."
+            "why": "Eight hours a night, close to the face."
           }
         },
-        "cat": "Sea salt"
+        "cat": "Bedding"
       }
     ],
     "cautions": [
@@ -51669,21 +51740,21 @@
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
-            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
+            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
+            "formula": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear."
           },
           "verdict": "unrated",
           "dated": "2026-08-28",
-          "why": "the note reads adversely on formula, needs a human look",
+          "why": "a recommendation needs its checks done; still to do: materials, formula",
           "fronts": {
-            "formula": "caution",
+            "formula": "unassessed",
             "materials": "unassessed",
             "legal": "none",
             "testing": "pass"
           },
           "frontOrigin": {
             "legal": "database",
-            "testing": "inferred",
-            "formula": "inferred"
+            "testing": "inferred"
           },
           "scope": "sku",
           "basis": "direct",
@@ -51708,7 +51779,7 @@
             "ingredients": "",
             "prose": "About this item Delicious, Ethically Sourced Coffee: You've tried the rest, now buy the best ground coffee on the market; This Non-Gmo organic low acid coffee is high in flavor; The beans are sun dried, and spring water washed; The result is pure, natural coffee derived straight from nature Grown In The Mountains Of Central America: Lifeboost Single Origin Acid Free Coffee is shade grown at a high elevation in the mountains of Central America; The exclusive farms that we work with are all bird friendly and each coffee bean is hand selected to ensure purity Low Acid Medium Roast Ground Coffee: Your standard cup of coffee is very acidic; That's why some feel stomach discomfort or deal with teeth issues from drinking coffee; The solution is our low acid coffee beans; The antioxidant rich organic coffee delivers all the wonderful benefits of coffee without the unwanted side effects Certified Organic & 3rd Party Tested: Lifeboost Organic Coffee Ground Beans are Usda Certified Organic, and 3rd Party Tested for mycotoxins, heavy metals, pesticides, and 400 other toxins; One sip of this organic ground coffee and you'll have a hard time going back to an ordinary cup of joe THE LIFEBOOST PRO",
             "complete": false,
-            "verdict": "careful",
+            "verdict": "open",
             "summary": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear.",
             "flagged": [],
             "source": "amazon:B0899ZYXXN",
@@ -69540,6 +69611,7 @@
             "formula",
             "formula",
             "formula",
+            "formula",
             "formula"
           ],
           "verdict": "skip",
@@ -71279,21 +71351,21 @@
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
-            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
+            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
+            "formula": "No ingredient list recorded."
           },
           "verdict": "unrated",
           "dated": "2026-08-29",
-          "why": "the note reads adversely on formula, needs a human look",
+          "why": "a recommendation needs its checks done; still to do: formula",
           "fronts": {
-            "formula": "caution",
+            "formula": "unassessed",
             "materials": "pass",
             "legal": "none",
             "testing": "unassessed"
           },
           "frontOrigin": {
             "legal": "database",
-            "materials": "inferred",
-            "formula": "inferred"
+            "materials": "inferred"
           },
           "scope": "sku",
           "basis": "direct",
@@ -71318,7 +71390,7 @@
             "ingredients": "",
             "prose": "",
             "complete": false,
-            "verdict": "careful",
+            "verdict": "open",
             "summary": "No ingredient list recorded.",
             "flagged": [],
             "source": "amazon:B0774WQY7T",
@@ -74960,7 +75032,7 @@
         "asins": [
           "B072R5YT92"
         ],
-        "cat": "Sea salt",
+        "cat": "Pantry",
         "note": "Tomato sauce in a glass jar with a metal lid rather than a lined can. Tomatoes, olive oil, salt, garlic and basil, with no added sugar. Worth knowing: the lid has a plastic sealing liner, which touches the headspace rather than the sauce.",
         "ext": {
           "verdict": "good",

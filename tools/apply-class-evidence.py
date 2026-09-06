@@ -94,6 +94,13 @@ def main():
             e = p.get("ext") or {}
             held = (e.get("fronts") or {}).get(f["front"])
             origin = (e.get("frontOrigin") or {}).get(f["front"])
+            note = ((e.get("frontNotes") or {}).get(f["front"]) or "").strip()
+            # A result has to exist to outrank a finding about the class. A
+            # bare "pass" with no note and no recorded origin is an assertion,
+            # not a measurement, and treating it as one let a sea salt escape
+            # the sea salt finding on the strength of an empty field.
+            if not note and not origin:
+                return False
             return held in HELD and origin != "inferred"
 
         # A product somebody actually tested escapes a claim about its class by

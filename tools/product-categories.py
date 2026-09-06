@@ -86,7 +86,10 @@ RULES = [
     ("Soap",                r"castile|bar soap|hand soap|body wash|face wash|cleanser"),
     ("Makeup",              r"mascara|lipstick|foundation|eyeliner|eye shadow|blush|lip balm|nail polish|concealer"),
     ("Chewing gum",         r"\bgum\b"),
-    ("Sea salt",            r"\bsalt\b"),
+    # Salt has to be the product, not an ingredient. A bare \bsalt\b put
+    # Play-Doh and a jar of marinara in this category, because both list salt,
+    # and the sea salt class finding then landed on a toy and a pasta sauce.
+    ("Sea salt",            r"(?:sea|kosher|table|rock|mineral|finishing|celtic|himalayan|flake)\s+salt\b|\bsalt\s*(?:flakes?|crystals?)\b|\bsalt\s*$"),
     ("Coffee",              r"coffee|espresso|french press|pour over|kettle|grinder|drip"),
     ("Tea",                 r"\btea\b|infuser|teapot"),
     ("Bottled water",       r"bottled water|spring water|purified water"),
@@ -184,7 +187,9 @@ INSULATION = re.compile(r"vacuum[- ](insulat\w+|seal\w+|flask)")
 # name; a note saying "vacuum insulated" is describing a flask. Same shape as
 # the packaging words above: prose about a product is not a claim about what
 # kind of thing it is.
-NAME_ONLY = {"Vacuums"}
+# A note names salt as an ingredient constantly, so this category is decided
+# by the product name alone.
+NAME_ONLY = {"Vacuums", "Sea salt"}
 
 
 def categorise(name, note, brand_cat):
