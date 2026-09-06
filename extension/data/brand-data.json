@@ -5610,20 +5610,20 @@
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
             "materials": "We have not established what the product actually touches.",
-            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
+            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
+            "formula": "The listing we hold for this product serves a different item, The Honest Company Bubble Bath, Hypoallergenic, Lavender Calm, 12 fl oz."
           },
           "verdict": "careful",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "caution",
+            "formula": "unassessed",
             "materials": "unassessed",
             "legal": "none",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "legal": "database",
-            "formula": "inferred"
+            "legal": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -5648,7 +5648,7 @@
             "ingredients": "",
             "prose": "",
             "complete": false,
-            "verdict": "careful",
+            "verdict": "open",
             "summary": "The listing we hold for this product serves a different item, The Honest Company Bubble Bath, Hypoallergenic, Lavender Calm, 12 fl oz.",
             "flagged": [],
             "source": "amazon:B01LDZJHAE",
@@ -7933,8 +7933,7 @@
         "ext": {
           "frontNotes": {
             "legal": "Issued a broad benzene sunscreen recall in the 2021-2022 wave (Recorded for Banana Boat as a whole rather than this product specifically.)",
-            "materials": "We have not established what the product actually touches.",
-            "formula": "The listing we hold for this product serves a different item, Baby Bum SPF 50 Sunscreen Spray - Mineral UVA/UVB Face and Body Protection for Sensitive Skin - Travel Size - 3 oz."
+            "materials": "We have not established what the product actually touches."
           },
           "inheritedFronts": [
             "legal"
@@ -7943,13 +7942,14 @@
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "caution",
             "materials": "unassessed",
             "legal": "fail",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "legal": "stated"
+            "legal": "stated",
+            "formula": "inferred"
           },
           "scope": "sku",
           "basis": "direct",
@@ -7972,7 +7972,7 @@
             "ingredients": "",
             "prose": "",
             "complete": false,
-            "verdict": "open",
+            "verdict": "careful",
             "summary": "The listing we hold for this product serves a different item, Baby Bum SPF 50 Sunscreen Spray - Mineral UVA/UVB Face and Body Protection for Sensitive Skin - Travel Size - 3 oz.",
             "flagged": [],
             "source": "amazon:B07ZR1KQ44",
@@ -26777,20 +26777,19 @@
         "source": "top-100-baby-kids-products-amazon.html",
         "ext": {
           "frontNotes": {
-            "materials": "We have not established what the product actually touches."
+            "materials": "We have not established what the product actually touches.",
+            "formula": "The listing we hold for this product serves a different item, ATTITUDE Baby Laundry Detergent, Dermatologist Tested, Unscented, 80 Loads."
           },
           "verdict": "skip",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "caution",
+            "formula": "unassessed",
             "materials": "unassessed",
             "legal": "unassessed",
             "testing": "unassessed"
           },
-          "frontOrigin": {
-            "formula": "inferred"
-          },
+          "frontOrigin": {},
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
@@ -26814,7 +26813,7 @@
             "ingredients": "",
             "prose": "",
             "complete": false,
-            "verdict": "careful",
+            "verdict": "open",
             "summary": "The listing we hold for this product serves a different item, ATTITUDE Baby Laundry Detergent, Dermatologist Tested, Unscented, 80 Loads.",
             "flagged": [],
             "source": "amazon:B084W9XN3K",
@@ -35823,20 +35822,19 @@
           "B086H1W384"
         ],
         "ext": {
-          "frontNotes": {
-            "formula": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear."
-          },
+          "frontNotes": {},
           "verdict": "unrated",
           "dated": "2026-08-28",
-          "why": "a recommendation needs its checks done; still to do: materials, legal, formula",
+          "why": "the note reads adversely on formula, testing, needs a human look",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "caution",
             "materials": "unassessed",
             "legal": "unassessed",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "testing": "inferred"
+            "testing": "inferred",
+            "formula": "inferred"
           },
           "scope": "sku",
           "basis": "direct",
@@ -35859,7 +35857,7 @@
             "ingredients": "",
             "prose": "About this item Brass boiler with increased capacity & power Made in Italy from machine-grade components Solid steel housing, brass group head w/stainless steel surround 9-bar extractions with 3-way solenoid valve Commercial Steam Wand › See more product details",
             "complete": false,
-            "verdict": "open",
+            "verdict": "careful",
             "summary": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear.",
             "flagged": [],
             "source": "amazon:B086H1W384",
@@ -40654,19 +40652,19 @@
         "origin": "article",
         "source": "top-100-baby-kids-products-amazon.html",
         "ext": {
-          "frontNotes": {},
+          "frontNotes": {
+            "formula": "No ingredient list recorded."
+          },
           "verdict": "careful",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "caution",
+            "formula": "unassessed",
             "materials": "unassessed",
             "legal": "unassessed",
             "testing": "unassessed"
           },
-          "frontOrigin": {
-            "formula": "inferred"
-          },
+          "frontOrigin": {},
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
@@ -40690,7 +40688,7 @@
             "ingredients": "",
             "prose": "",
             "complete": false,
-            "verdict": "careful",
+            "verdict": "open",
             "summary": "No ingredient list recorded.",
             "flagged": [],
             "source": "amazon:B0GH9RFS4K",
@@ -47322,11 +47320,65 @@
     "article": "plastic-in-groceries-what-really-matters.html",
     "generalises": true,
     "rollup": {
-      "products": 0,
-      "researched": 0,
+      "products": 1,
+      "researched": 1,
       "flagged": 0,
       "worst": null
-    }
+    },
+    "products": [
+      {
+        "name": "Kasandrinos Extra Virgin Olive Oil",
+        "verdict": "good",
+        "origin": "article",
+        "source": "article",
+        "asins": [
+          "B01GIW8STI"
+        ],
+        "cat": "Pantry",
+        "note": "Single origin Greek extra virgin olive oil in a dark glass bottle with a metal cap. The brand publishes third party results for phthalates and heavy metals, which almost no olive oil does. Worth knowing: premium price per litre.",
+        "ext": {
+          "verdict": "good",
+          "why": "third party phthalate and heavy metal results, in glass",
+          "dated": "2026-09-06",
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true,
+          "fronts": {
+            "formula": "pass",
+            "materials": "pass",
+            "legal": "none",
+            "testing": "pass"
+          },
+          "frontNotes": {
+            "formula": "One ingredient, organic extra virgin olive oil, USDA organic.",
+            "materials": "Dark glass with a metal cap. Oil is the strongest extractant there is, which is exactly why the glass matters here: rule 3.1, an inert container has nothing to give up to it.",
+            "legal": "Checked against the FDA food enforcement database on 2026-09-06. No recall on record.",
+            "testing": "The brand publishes third party phthalate and heavy metal testing on the finished oil."
+          },
+          "frontOrigin": {
+            "formula": "stated",
+            "materials": "stated",
+            "legal": "database",
+            "testing": "stated"
+          },
+          "legalNote": "Checked against the FDA food enforcement database on 2026-09-06. No recall on record.",
+          "exposure": {
+            "type": "food",
+            "level": "medium",
+            "score": 6.0,
+            "baby": false,
+            "route": "ingestion",
+            "duration": "minutes",
+            "retained": "swallowed",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "Eaten, so whatever is in it arrives whole."
+          }
+        }
+      }
+    ]
   },
   {
     "id": "keababies",
@@ -51611,21 +51663,21 @@
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
-            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
-            "formula": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear."
+            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
           },
           "verdict": "unrated",
           "dated": "2026-08-28",
-          "why": "a recommendation needs its checks done; still to do: materials, formula",
+          "why": "the note reads adversely on formula, needs a human look",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "caution",
             "materials": "unassessed",
             "legal": "none",
             "testing": "pass"
           },
           "frontOrigin": {
             "legal": "database",
-            "testing": "inferred"
+            "testing": "inferred",
+            "formula": "inferred"
           },
           "scope": "sku",
           "basis": "direct",
@@ -51650,7 +51702,7 @@
             "ingredients": "",
             "prose": "About this item Delicious, Ethically Sourced Coffee: You've tried the rest, now buy the best ground coffee on the market; This Non-Gmo organic low acid coffee is high in flavor; The beans are sun dried, and spring water washed; The result is pure, natural coffee derived straight from nature Grown In The Mountains Of Central America: Lifeboost Single Origin Acid Free Coffee is shade grown at a high elevation in the mountains of Central America; The exclusive farms that we work with are all bird friendly and each coffee bean is hand selected to ensure purity Low Acid Medium Roast Ground Coffee: Your standard cup of coffee is very acidic; That's why some feel stomach discomfort or deal with teeth issues from drinking coffee; The solution is our low acid coffee beans; The antioxidant rich organic coffee delivers all the wonderful benefits of coffee without the unwanted side effects Certified Organic & 3rd Party Tested: Lifeboost Organic Coffee Ground Beans are Usda Certified Organic, and 3rd Party Tested for mycotoxins, heavy metals, pesticides, and 400 other toxins; One sip of this organic ground coffee and you'll have a hard time going back to an ordinary cup of joe THE LIFEBOOST PRO",
             "complete": false,
-            "verdict": "open",
+            "verdict": "careful",
             "summary": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear.",
             "flagged": [],
             "source": "amazon:B0899ZYXXN",
@@ -68401,6 +68453,8 @@
           },
           "cappedFrom": "good",
           "capRestoreWhy": "a vetted store pick, chosen by a person at product scope",
+          "heldFrom": "good",
+          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
           "verdict": "unrated",
           "dated": "2026-09-06",
           "why": "a recommendation needs its checks done; still to do: formula",
@@ -68443,8 +68497,6 @@
             "source": "amazon:B004L17FKC",
             "checked": ""
           },
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
           "heldBack": [
             "formula"
           ]
@@ -69542,6 +69594,7 @@
             "legal": "Checked recall listings and class action reporting in September 2026. No recall or action found on this brand's wipes, which in a barely regulated category means no regulator was looking rather than a clean bill"
           },
           "inheritedFronts": [
+            "formula",
             "formula",
             "formula",
             "formula"
@@ -71283,21 +71336,21 @@
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
-            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
-            "formula": "No ingredient list recorded."
+            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
           },
           "verdict": "unrated",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: formula",
+          "why": "the note reads adversely on formula, needs a human look",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "caution",
             "materials": "pass",
             "legal": "none",
             "testing": "unassessed"
           },
           "frontOrigin": {
             "legal": "database",
-            "materials": "inferred"
+            "materials": "inferred",
+            "formula": "inferred"
           },
           "scope": "sku",
           "basis": "direct",
@@ -71322,7 +71375,7 @@
             "ingredients": "",
             "prose": "",
             "complete": false,
-            "verdict": "open",
+            "verdict": "careful",
             "summary": "No ingredient list recorded.",
             "flagged": [],
             "source": "amazon:B0774WQY7T",
@@ -74949,11 +75002,63 @@
     "article": "plastic-in-groceries-what-really-matters.html",
     "generalises": true,
     "rollup": {
-      "products": 0,
-      "researched": 0,
+      "products": 1,
+      "researched": 1,
       "flagged": 0,
       "worst": null
-    }
+    },
+    "products": [
+      {
+        "name": "Rao's Homemade Marinara",
+        "verdict": "good",
+        "origin": "article",
+        "source": "article",
+        "asins": [
+          "B072R5YT92"
+        ],
+        "cat": "Sea salt",
+        "note": "Tomato sauce in a glass jar with a metal lid rather than a lined can. Tomatoes, olive oil, salt, garlic and basil, with no added sugar. Worth knowing: the lid has a plastic sealing liner, which touches the headspace rather than the sauce.",
+        "ext": {
+          "verdict": "good",
+          "why": "glass jar rather than a lined can, on an acidic food",
+          "dated": "2026-09-06",
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true,
+          "fronts": {
+            "formula": "pass",
+            "materials": "pass",
+            "legal": "none",
+            "testing": "unassessed"
+          },
+          "frontNotes": {
+            "formula": "Tomatoes, olive oil, salt, garlic, basil, oregano. No added sugar.",
+            "materials": "Glass jar with a metal lid. Tomato is acidic at pH 4.3 to 4.9 and a can lining is the usual BPA route; glass removes it. The lid liner is plastic and sits against the headspace, which is why this is a jar swap rather than a perfect one.",
+            "legal": "Checked against the FDA food enforcement database on 2026-09-06. No recall on record."
+          },
+          "frontOrigin": {
+            "formula": "stated",
+            "materials": "stated",
+            "legal": "database"
+          },
+          "legalNote": "Checked against the FDA food enforcement database on 2026-09-06. No recall on record.",
+          "exposure": {
+            "type": "food",
+            "level": "medium",
+            "score": 6.0,
+            "baby": false,
+            "route": "ingestion",
+            "duration": "minutes",
+            "retained": "swallowed",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "Eaten, so whatever is in it arrives whole."
+          }
+        }
+      }
+    ]
   },
   {
     "id": "rascal-and-friends",
