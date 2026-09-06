@@ -528,12 +528,12 @@ export function detoxKids(root, { unlocked, onBuyWeb, onBuyApp, onRestore, canBu
     return;
   }
 
-  root.appendChild(el("div", "dx-k free", "One payment \u00b7 $9.99"));
+  root.appendChild(el("div", "dx-k free", "One payment \u00b7 $5"));
   root.appendChild(el("div", "step-free dx-free",
     "It opens here and on the website, and it stays open."));
 
   const foot = el("div", "dx-foot");
-  const web = el("button", "cta", "Get the package \u00b7 $9.99");
+  const web = el("button", "cta", "Get the package \u00b7 $5");
   web.onclick = onBuyWeb;
   foot.appendChild(web);
   // Offered because 3.1.3(b) requires it once the app unlocks anything bought

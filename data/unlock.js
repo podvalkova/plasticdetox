@@ -1,11 +1,11 @@
 /* ============================================================================
    BABY & EXPECTING PACKAGE — shared unlock
-   One $9.99 purchase opens the registry, the full Top 100 table, and the
+   One $5 purchase opens the registry, the full Top 100 table, and the
    personalised swaps. Every gated page loads this and asks it two questions:
    am I paid, and give me a paywall to render.
 
    NOTE ON THE GATE: this is client side. The data sits in the page, so anyone
-   who opens devtools can read it. That is a deliberate trade at $9.99. Move
+   who opens devtools can read it. That is a deliberate trade at $5. Move
    the check to the worker if the dataset ever justifies it.
    ============================================================================ */
 (function (root) {
@@ -15,7 +15,7 @@
      the page the buyer came from plus ?addon=1 (NOT ?unlocked=1, which the
      worker emails to every free subscriber to open the plan email gate). */
   var CHECKOUT_URL = "https://buy.stripe.com/00w9AMfSv90F6VZbT6fEk03";
-  var PRICE        = "$9.99";
+  var PRICE        = "$5";
   var STORE_KEY    = "pd_add_paid";
 
   var qs = new URLSearchParams(root.location ? root.location.search : "");
@@ -36,8 +36,8 @@
       if (fresh) {
         track('purchase', {
           transaction_id: 'pkg-' + Date.now(),
-          value: 9.99, currency: 'USD',
-          items: [{ item_id: 'baby-expecting-package', item_name: 'Baby & Expecting Package', price: 9.99, quantity: 1 }]
+          value: 5.00, currency: 'USD',
+          items: [{ item_id: 'baby-expecting-package', item_name: 'Baby & Expecting Package', price: 5.00, quantity: 1 }]
         });
       }
       return true;
@@ -62,9 +62,9 @@
   function paywallHTML(opts) {
     opts = opts || {};
     track('view_item', {
-      value: 9.99, currency: 'USD',
+      value: 5.00, currency: 'USD',
       location: (root.location && root.location.pathname) || '',
-      items: [{ item_id: 'baby-expecting-package', item_name: 'Baby & Expecting Package', price: 9.99 }]
+      items: [{ item_id: 'baby-expecting-package', item_name: 'Baby & Expecting Package', price: 5.00 }]
     });
     var rows = (opts.rows || []).map(function (r) {
       return '<div class="pdw-row"><span>' + esc(r.label) + '</span><b>' + r.count + '</b></div>';
@@ -104,9 +104,9 @@
          without putting a real charge through. */
       if (testMode()) { markPaid(); if (onUnlock) onUnlock(); return; }
       track('begin_checkout', {
-        value: 9.99, currency: 'USD',
+        value: 5.00, currency: 'USD',
         location: (root.location && root.location.pathname) || '',
-        items: [{ item_id: 'baby-expecting-package', item_name: 'Baby & Expecting Package', price: 9.99, quantity: 1 }]
+        items: [{ item_id: 'baby-expecting-package', item_name: 'Baby & Expecting Package', price: 5.00, quantity: 1 }]
       });
       if (CHECKOUT_URL) { root.location.href = CHECKOUT_URL; return; }
       var f = document.getElementById('pdwFine');

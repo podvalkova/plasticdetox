@@ -1079,7 +1079,7 @@ async function handleStripeWebhook(request, env) {
 
     const amount = s.amount_total || 0; // cents
 
-    // ---- Baby & Expecting Package ($9.99) -> access email + Brevo list 8 ----
+    // ---- Baby & Expecting Package ($5) -> access email + Brevo list 8 ----
     // The old branch below emailed a plan-intake.html link, which belongs to
     // the retired $149 review. Anything at the package price is routed here.
     if (amount > 0 && amount <= 1500) {

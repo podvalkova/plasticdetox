@@ -728,7 +728,7 @@
   /* Single source of truth lives in data/unlock.js so this page and the
      registry and the Top 100 can never drift apart on price or link. */
   var CHECKOUT_URL = (window.PDUnlock && window.PDUnlock.CHECKOUT_URL) || "";
-  var PRICE = "$9.99";
+  var PRICE = "$5";
 
   var P = window.STORE_PRODUCTS, R = window.PLAN_RULES,
       B = window.PLAN_BUDGETS,   C = window.PLAN_CONCERNS,
@@ -792,8 +792,8 @@
   function renderPitch(){
     pitch.innerHTML = pitchHTML();
     if(!PAID && window.PDUnlock) window.PDUnlock.track('view_item', {
-      value:9.99, currency:'USD', location:'/plan.html',
-      items:[{item_id:'baby-expecting-package', item_name:'Baby & Expecting Package', price:9.99}]
+      value:5.00, currency:'USD', location:'/plan.html',
+      items:[{item_id:'baby-expecting-package', item_name:'Baby & Expecting Package', price:5.00}]
     });
     var st = document.getElementById('uStart');
     if(st) st.addEventListener('click', function(){
@@ -981,8 +981,8 @@
   function checkout(){
     if(TESTMODE){ UNLOCKED = PAID = true; renderPitch(); return; }   /* preview, never charges */
     if(window.PDUnlock) window.PDUnlock.track('begin_checkout', {
-      value:9.99, currency:'USD', location:'/plan.html',
-      items:[{item_id:'baby-expecting-package', item_name:'Baby & Expecting Package', price:9.99, quantity:1}]
+      value:5.00, currency:'USD', location:'/plan.html',
+      items:[{item_id:'baby-expecting-package', item_name:'Baby & Expecting Package', price:5.00, quantity:1}]
     });
     if(CHECKOUT_URL){ location.href = CHECKOUT_URL; return; }
     var f = document.querySelector('.u-fine');
