@@ -178,12 +178,6 @@ export const KIDS = {
      "note": "Only diaper balm lab tested clean, our top pick"
     },
     {
-     "label": "$",
-     "name": "Earth Mama Organics Diaper Balm",
-     "url": "https://www.amazon.com/dp/B0825WHHGJ?tag=plasticdetox-20",
-     "note": "Best NICU trusted balm"
-    },
-    {
      "label": "$$",
      "name": "Motherlove Diaper Balm",
      "url": "https://www.amazon.com/dp/B000XJ2LDW?tag=plasticdetox-20",
