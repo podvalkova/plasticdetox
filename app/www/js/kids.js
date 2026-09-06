@@ -5,16 +5,27 @@
  * anything shipped inside one is a single unzip away from anybody who finds
  * the link. They live in the worker and arrive only against a pass.
  *
- * Two ways to buy. The web link is the one offered first: Stripe collects an
- * email, which is how the rest of the business reaches people, and Apple takes
- * nothing. The in app purchase is offered as well, because guideline 3.1.3(b)
- * requires it once the app unlocks anything bought elsewhere.
+ * Sold in the app only, at its own price. The website package is a different,
+ * larger product at its own price and unlocking one from the other would make
+ * both confusing, so nothing here reads a web purchase. That also keeps this a
+ * plain in app purchase: 3.1.3(b) only bites when an app unlocks something
+ * acquired elsewhere, and this never does.
  */
 const WORKER = "https://plasticdetox-quiz-email.plasticdetox.workers.dev";
 const PASS_KEY = "pd.kids.pass.v1";
 const PLAN_KEY = "pd.kids.plan.v1";
 const PRODUCT = "org.plasticdetox.app.baby";
-const BUY_URL = "https://plasticdetox.org/babies-kids.html?from=app";
+
+/**
+ * Whether the room is offered at all.
+ *
+ * Off for the first submission. The purchase is built and works, but the App
+ * Store product does not exist until the app itself is approved, and a review
+ * that taps a buy button which cannot reach a product is a rejection. Turn it
+ * on for the second upload, once the product is Ready to Submit and the Stripe
+ * link agrees on the price.
+ */
+export const OFFERED = false;
 
 let phase = null;
 
@@ -69,8 +80,6 @@ export async function load() {
     return phaseIfAny();
   }
 }
-
-export function buyUrl() { return BUY_URL; }
 
 function purchases() {
   const cap = window.Capacitor;

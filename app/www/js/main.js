@@ -246,7 +246,7 @@ document.addEventListener("visibilitychange", () => {
 /** The rooms, plus the paid one when it has been bought. */
 function allPhases() {
   const open = data.planPhases();
-  const paid = kids.phaseIfAny();
+  const paid = kids.OFFERED ? kids.phaseIfAny() : null;
   return paid ? open.concat([paid]) : open;
 }
 
@@ -415,7 +415,7 @@ function draw() {
       room: state.room || "",
       onRoom: (r) => { state.room = r; render(); rememberPlace(); },
       onStep: (stepId) => { track("swap_opened", { step: stepId }); go({ screen: "detoxStep", stepId }); },
-      onKids: () => go({ screen: "detoxKids" }),
+      onKids: kids.OFFERED ? () => go({ screen: "detoxKids" }) : null,
       onCleared: () => go({ screen: "detoxCleared" }),
       notify: notifyProps(),
     });
@@ -504,10 +504,6 @@ function draw() {
       unlocked: kids.unlocked(),
       canBuyInApp: kids.canBuyInApp(),
       onLater: back,
-      onBuyWeb: () => {
-        track("kids_buy_web", {});
-        openExternal(kids.buyUrl());
-      },
       onBuyApp: async () => {
         track("kids_buy_app", {});
         showBusy("Talking to the App Store");
@@ -974,18 +970,6 @@ export async function openDeepLink(search) {
   if (pass) {
     check.setPass(pass);
     toast("Pass saved.");
-    render();
-    return;
-  }
-
-  // plasticdetox://kids?kids=... is how a package bought on the website opens
-  // the room, with nothing to type and no account to make.
-  const kidsPass = params.get("kids");
-  if (kidsPass) {
-    kids.setPass(kidsPass);
-    await kids.load();
-    track("kids_unlocked", { via: "web" });
-    toast("Kids room opened");
     render();
     return;
   }
