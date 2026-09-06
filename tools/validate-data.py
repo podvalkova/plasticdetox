@@ -178,6 +178,41 @@ def main():
                             f"[{b['brand']}]; merge them or drop the alias")
             label_owner.setdefault(key, b)
 
+    # A brand name that is another brand's name plus more words, in the same
+    # category. Brand Check matches on the brand field, so "Rishi" and "Rishi
+    # Tea" both answer for the same listing and whichever sorts first wins.
+    # These arise when an entry is created from the leading words of a product
+    # name: "Heavenly Organics Raw Honey" became a brand called "Heavenly
+    # Organics Raw". Different categories are left alone, because Pura the
+    # diaper brand and Pura Kiki the bottle brand really are different, and so
+    # are HALO sleep sacks and HALO Hydration.
+    for a in brands:
+        for b in brands:
+            if a is b:
+                continue
+            na, nb = (a.get("brand") or ""), (b.get("brand") or "")
+            if not na or not nb or not nb.lower().startswith(na.lower() + " "):
+                continue
+            if (a.get("category") or "") == (b.get("category") or ""):
+                errs.append(f"[{nb}] is [{na}] plus more words in the same category "
+                            f"({a.get('category')!r}); one lookup answers for both, so "
+                            "merge them or make the names distinct")
+
+    # A product row whose ASIN belongs to a different product. The row name is
+    # what a person reads and the ASIN is what they buy, so a mismatch sells
+    # the wrong thing: a row called "Calm Decaf" carried the ASIN for a 5lb bag
+    # of Balance 2/3. We cannot check the catalogue from here, but we can catch
+    # the same ASIN sitting on two differently named rows.
+    asin_rows = {}
+    for b in brands:
+        for p in (b.get("products") or []):
+            for a in (p.get("asins") or []):
+                prev = asin_rows.get(a)
+                if prev and collapse(prev[1]) != collapse(p.get("name") or ""):
+                    errs.append(f"ASIN {a} is on two differently named rows: "
+                                f"[{prev[0]}] {prev[1]!r} and [{b.get('brand')}] {p.get('name')!r}")
+                asin_rows.setdefault(a, (b.get("brand"), p.get("name") or ""))
+
     # ---- product rows -----------------------------------------------------
     for b in brands:
         rows = b.get("products") or []

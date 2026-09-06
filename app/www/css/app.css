@@ -512,7 +512,15 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .dx-why { font-size: 15.5px; line-height: 1.55; color: var(--body); }
 .dx-pick { background: var(--surface); }
 .prow-note { font-size: 13px; font-weight: 500; color: var(--muted); line-height: 1.3; margin-top: 6px; }
-.dx-pick-right { margin-left: auto; text-align: right; flex: none; }
+.dx-pick-right {
+  margin-left: auto; text-align: right; flex: none;
+  /* A label sets this column's width, and `flex: none` let it take whatever it
+     wanted. "BEST OVERALL" is nearly twice the width of "BEST", which squeezed
+     the name beside it into "Purity / Coffee / Calm / Decaf" down four lines.
+     Cap the column and let a long label wrap instead of the product name. */
+  max-width: 84px;
+}
+.dx-pick-right .prow-label { display: inline-block; white-space: normal; text-wrap: balance; }
 .prow-view {
   display: block; font-size: 14px; font-weight: 700; color: var(--accent);
   margin-top: .3rem;

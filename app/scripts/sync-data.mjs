@@ -216,11 +216,51 @@ try {
 /**
  * The article behind a swap, and the questions it already answers.
  *
- * The guides carry their FAQ as details/summary pairs. Repeating the first
- * three on the swap means the obvious question is answered where it is asked,
- * rather than behind a link somebody has to decide to follow.
+ * The guides carry their FAQ as details/summary pairs. Repeating three of them
+ * on the swap means the obvious question is answered where it is asked, rather
+ * than behind a link somebody has to decide to follow.
+ *
+ * Which three has to depend on the swap, not on document order. One guide now
+ * backs up to five swaps: the hidden processing guide answers for almonds,
+ * decaf, dried fruit, citrus and shrimp at once. Taking the first three left a
+ * shrimp swap asking "Are raw almonds actually raw?", which reads like the app
+ * lost its place. So score each question against the swap it will sit on and
+ * keep the three that actually match, falling back to document order when a
+ * guide covers a single subject and nothing scores.
  */
-const articleBits = (slug) => {
+const STOP = new Set(["the","a","an","and","or","your","you","it","in","on","of","to","for","is",
+  "are","not","buy","switch","skip","that","this","with","from","if","do","does","what","how",
+  "why","when","at","be","by","its","as","was","were","them","they","their","our","we"]);
+const terms = (s) => new Set(String(s || "").toLowerCase().match(/[a-z]{3,}/g)?.filter(w => !STOP.has(w)) || []);
+const stem = (w) => w.replace(/(ies|es|s)$/, "");
+
+// How many of a guide's questions each word appears in. A word in most of them
+// ("food", "safe", "plastic") separates nothing; a word in one ("glyphosate",
+// "almond", "shrimp") identifies its question exactly. Without this a swap
+// about dried fruit matched "Why is some fresh tuna so bright red?" on the
+// word "bright", which is a coincidence rather than a subject.
+const questionIdf = (faqs) => {
+  const df = new Map();
+  for (const f of faqs) {
+    for (const w of new Set([...terms(f.q)].map(stem))) df.set(w, (df.get(w) || 0) + 1);
+  }
+  return df;
+};
+
+const scoreFaq = (faq, want, df, total) => {
+  const inQ = new Set([...terms(faq.q)].map(stem));
+  let n = 0;
+  for (const w of want) {
+    const k = stem(w);
+    if (!inQ.has(k)) continue;
+    // Distinctive within this guide, so it names the subject.
+    if ((df.get(k) || 0) <= Math.max(1, total * 0.34)) n += 3;
+    else n += 1;
+  }
+  return n;
+};
+
+const articleBits = (slug, swap = "", why = "", soleOwner = true, pick = null) => {
   try {
     const raw = fs.readFileSync(path.join(REPO, "articles", slug), "utf8");
     const body = raw.replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/g, "");
@@ -234,13 +274,52 @@ const articleBits = (slug) => {
       const q = clean(m[1]), a = clean(m[2]);
       // A one line answer is usually a teaser rather than an answer.
       if (q && a.length > 60) faqs.push({ q, a });
-      if (faqs.length === 3) break;
     }
-    return { title, faqs };
+    // The swap title carries the subject; the why text carries its vocabulary.
+    const want = terms(swap + " " + why);
+    const df = questionIdf(faqs);
+    const scored = faqs.map((f, i) => ({ f, i, s: scoreFaq(f, want, df, faqs.length) }));
+    // Three ways to choose, in order of how much we actually know.
+    //
+    // 1. The swap names its questions in step-extras. A guide backing five
+    //    swaps is a survey, and which of its questions belongs on which card
+    //    is an editorial judgement, not something to infer from shared words.
+    //    Scoring produced a shrimp swap asking about tuna and a dried fruit
+    //    swap asking about salmon, because those were the nearest questions
+    //    in a guide that has none on either subject.
+    // 2. The guide backs this swap alone, so every question in it is on
+    //    subject and document order is right.
+    // 3. Otherwise: none. The swap still links the guide, and no question is
+    //    better than another swap's question.
+    let chosen;
+    if (pick && pick.length) {
+      const byQ = new Map(faqs.map((f) => [f.q.toLowerCase().replace(/\s+/g, " ").trim(), f]));
+      chosen = pick.map((q) => {
+        const hit = byQ.get(String(q).toLowerCase().replace(/\s+/g, " ").trim());
+        if (!hit) throw new Error(`${slug}: no FAQ matching ${JSON.stringify(q)}`);
+        return hit;
+      }).slice(0, 3);
+    } else if (soleOwner) {
+      chosen = scored.slice(0, 3).map((x) => x.f);
+    } else {
+      chosen = [];
+    }
+    return { title, faqs: chosen };
   } catch {
     return null;
   }
 };
+
+// How many swaps each guide backs. A guide used once was written for that
+// swap and every question in it is on subject; a guide used five times is a
+// survey, and only the questions matching this swap belong on this card.
+const GUIDE_USE = {};
+for (const ph of PHASES) {
+  for (const st of ph.steps) {
+    const ex = EXTRAS[st.swap];
+    if (ex && ex.article) GUIDE_USE[ex.article] = (GUIDE_USE[ex.article] || 0) + 1;
+  }
+}
 
 let extraCount = 0;
 let faqCount = 0;
@@ -251,7 +330,7 @@ for (const ph of PHASES) {
     if (ex.tip) st.tip = ex.tip;
     if (ex.order) st.order = ex.order;
     if (ex.article) {
-      const bits = articleBits(ex.article);
+      const bits = articleBits(ex.article, st.swap, st.why, GUIDE_USE[ex.article] === 1, ex.faqs);
       if (bits) {
         st.article = { slug: ex.article, title: bits.title };
         if (bits.faqs.length) { st.faqs = bits.faqs; faqCount += bits.faqs.length; }

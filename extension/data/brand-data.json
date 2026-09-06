@@ -41234,8 +41234,8 @@
     }
   },
   {
-    "id": "heavenly-organics-raw",
-    "brand": "Heavenly Organics Raw",
+    "id": "heavenly-organics",
+    "brand": "Heavenly Organics",
     "category": "Pantry",
     "stance": "good",
     "reason": "100 percent raw and organic honey in a glass jar. The first food certified Glyphosate Residue Free by The Detox Project, sourced from remote wild hives far from pesticides. First Glyphosate Residue Free certified food. Vetted for the store; this verdict covers the product we listed, not the brand's whole range.",
@@ -41285,7 +41285,7 @@
             "testing": "inferred",
             "materials": "inferred"
           },
-          "scope": "line",
+          "scope": "sku",
           "basis": "direct",
           "disclose": false,
           "rules": [
@@ -41305,7 +41305,10 @@
             "why": "Eaten, so whatever is in it arrives whole."
           }
         },
-        "cat": "Pantry"
+        "cat": "Pantry",
+        "asins": [
+          "B07GZT9WXV"
+        ]
       }
     ],
     "cautions": [
@@ -41339,7 +41342,10 @@
         "note": "The first food certified Glyphosate Residue Free by The Detox Project, sourced from remote wild hives far…",
         "origin": "extracted"
       }
-    }
+    },
+    "alsoKnownAs": [
+      "Heavenly Organics Raw"
+    ]
   },
   {
     "id": "hello",
@@ -59445,7 +59451,7 @@
       {
         "name": "Baby Liquid Laundry Detergent",
         "verdict": "good",
-        "note": "EWG Verified enzyme liquid for milk, formula and blowout stains. Liquid in a 50 ounce plastic bottle.",
+        "note": "EWG Verified baby laundry liquid with a short ingredient list and no fragrance. Enzyme formula for formula, breast milk and blowout stains. EWG Verified, fragrance free. Worth knowing: Liquid in a 50 ounce plastic bottle.",
         "ext": {
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
           "frontNotes": {
@@ -59456,24 +59462,21 @@
           "restoreWhy": "independent lab result at sku scope",
           "verdict": "unrated",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: formula",
+          "why": "a recommendation needs its checks done; still to do: materials, formula",
           "fronts": {
             "formula": "unassessed",
-            "materials": "pass",
+            "materials": "unassessed",
             "legal": "none",
             "testing": "pass"
           },
           "frontOrigin": {
             "legal": "database",
-            "testing": "inferred",
-            "materials": "inferred"
+            "testing": "inferred"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": [
-            "3 packaging-matrix-pass"
-          ],
+          "rules": [],
           "exposure": {
             "type": "worn textile",
             "level": "high",
@@ -59498,6 +59501,7 @@
             "checked": "2026-09-04"
           },
           "heldBack": [
+            "materials",
             "formula"
           ]
         },
@@ -59517,72 +59521,6 @@
         "asins": [
           "B0CQBF47VV"
         ]
-      },
-      {
-        "name": "Molly's Suds Baby Laundry Detergent",
-        "asins": [
-          "B0CQBF47VV"
-        ],
-        "verdict": "good",
-        "note": "EWG Verified baby laundry liquid with a short ingredient list and no fragrance. Enzyme formula for formula, breast milk and blowout stains. EWG Verified, fragrance free. Worth knowing: Liquid in a 50 ounce plastic bottle.",
-        "origin": "store",
-        "ext": {
-          "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
-          "frontNotes": {
-            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
-            "formula": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear."
-          },
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "verdict": "unrated",
-          "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: formula",
-          "fronts": {
-            "formula": "unassessed",
-            "materials": "pass",
-            "legal": "none",
-            "testing": "pass"
-          },
-          "frontOrigin": {
-            "legal": "database",
-            "testing": "inferred",
-            "materials": "inferred"
-          },
-          "scope": "sku",
-          "basis": "direct",
-          "disclose": false,
-          "rules": [
-            "3 packaging-matrix-pass"
-          ],
-          "exposure": {
-            "type": "worn textile",
-            "level": "high",
-            "score": 7.0,
-            "baby": true,
-            "route": "skin",
-            "duration": "all day",
-            "retained": "prolonged",
-            "frequency": "daily",
-            "heat": false,
-            "fat": false,
-            "why": "for a baby, which is high whatever the arithmetic says"
-          },
-          "formulaAnswers": {
-            "ingredients": "",
-            "prose": "About this item Developed by a pediatric nurse & mom, our Baby Laundry Detergent is extra gentle for newborns, babies and toddlers. Made with clean, simple ingredients, our detergent effectively cleans and gently deodorizes clothes. No dyes or artificial fragrances. Family-friendly and designed with your baby and the environment in-mind. Dirty diaper blowouts have finally met their match! This ultra concentrated formula is packed with stain-fighting enzymes that remove breast milk, formula and baby poop stains from clothing and cloth diapers. Always check for stains before laundering; treat fabric within 24 hours; read and follow laundry care labels. From Mother Earth to our family to yours. Proudly made in the USA with domestic & imported ingredients that are certified Cruelty-Free and rinse clean without residues. Septic and grey water safe. Thoughtfully created for mothers, babies, people, skin sensitivities, and planet for cleaning power with compassion. Standard, commercial, and HE washing machines clean clothes best with sustainable cleaning products like our Baby Liquid Laundry Detergent. Uses only a few simple ingredients and minimal suds for a detergent that launders garme",
-            "complete": false,
-            "verdict": "open",
-            "summary": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear.",
-            "flagged": [],
-            "source": "amazon:B0CQBF47VV",
-            "checked": "2026-09-04"
-          },
-          "heldBack": [
-            "formula"
-          ]
-        },
-        "cat": "Laundry detergent",
-        "research": "Packaging: Ships in a 50 oz #1 (PET) recyclable plastic bottle; brand FAQ states its liquid products use #1 recyclable plastic. Contents are liquid laundry detergent."
       }
     ],
     "aliases": [
@@ -59593,8 +59531,8 @@
     "article": "best-non-toxic-laundry-detergent.html",
     "generalises": true,
     "rollup": {
-      "products": 4,
-      "researched": 4,
+      "products": 3,
+      "researched": 3,
       "flagged": 0,
       "worst": null
     }
@@ -62514,8 +62452,8 @@
     }
   },
   {
-    "id": "natural-force-clean",
-    "brand": "Natural Force Clean",
+    "id": "natural-force",
+    "brand": "Natural Force",
     "category": "Coffee",
     "stance": "good",
     "reason": "Swiss Water Process decaf, decaffeinated with only water, temperature, and time, so no methylene chloride or chemical solvents. Third party tested for mold and mycotoxins. USDA organic. Swiss Water, mold and mycotoxin tested. Vetted for the store; this verdict covers the product we listed, not the brand's whole range.",
@@ -62623,7 +62561,10 @@
         "note": "Third party tested for mold and mycotoxins",
         "origin": "extracted"
       }
-    }
+    },
+    "alsoKnownAs": [
+      "Natural Force Clean"
+    ]
   },
   {
     "id": "nature-made",
@@ -69597,6 +69538,8 @@
             "formula",
             "formula",
             "formula",
+            "formula",
+            "formula",
             "formula"
           ],
           "verdict": "skip",
@@ -74375,6 +74318,7 @@
       {
         "name": "Purity Coffee Calm Decaf",
         "asins": [
+          "B0D683FKMP",
           "B0D8K3G9L1"
         ],
         "verdict": "good",
@@ -76628,114 +76572,10 @@
         "note": "",
         "origin": "none"
       }
-    }
-  },
-  {
-    "id": "rishi-tea",
-    "brand": "Rishi Tea",
-    "category": "Tea",
-    "stance": "good",
-    "reason": "Organic loose leaf tea. Loose leaf avoids the plastic and PET pyramid tea bags that shed microplastics into hot water. Brew with a stainless steel infuser. Decant the pouch to glass at home. No plastic tea bag. Vetted for the store; this verdict covers the product we listed, not the brand's whole range.",
-    "evidence": "No plastic tea bag",
-    "sources": [
-      "store",
-      "how-to-avoid-microplastics-in-tea.html"
-    ],
-    "reviewed": true,
-    "generalises": true,
-    "products": [
-      {
-        "name": "Rishi Organic Loose Leaf Tea",
-        "verdict": "good",
-        "note": "Organic loose leaf tea. Loose leaf avoids the plastic and PET pyramid tea bags that shed microplastics into hot water. No plastic tea bag. Worth knowing: Requires a separate infuser.",
-        "origin": "store",
-        "source": "store",
-        "asins": [],
-        "ext": {
-          "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-          "frontNotes": {
-            "formula": "No ingredient list recorded.",
-            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
-          },
-          "verdict": "unrated",
-          "dated": "2026-08-28",
-          "why": "no front is directly evidenced by the note",
-          "fronts": {
-            "formula": "unassessed",
-            "materials": "unassessed",
-            "legal": "none",
-            "testing": "unassessed"
-          },
-          "frontOrigin": {
-            "legal": "database"
-          },
-          "scope": "line",
-          "basis": "direct",
-          "disclose": false,
-          "rules": [],
-          "exposure": {
-            "type": "hot drink",
-            "level": "medium",
-            "score": 7.5,
-            "baby": false,
-            "route": "ingestion",
-            "duration": "minutes",
-            "retained": "swallowed",
-            "frequency": "daily",
-            "heat": true,
-            "fat": false,
-            "why": "Brewed hot, which pulls more out of whatever it is brewed in."
-          }
-        },
-        "cat": "Tea",
-        "matchAll": [
-          [
-            "rishi",
-            "tea",
-            "organic",
-            "loose",
-            "leaf"
-          ]
-        ],
-        "matchFrom": "name"
-      }
-    ],
-    "cautions": [
-      "Requires a separate infuser",
-      "Pouch is plastic lined, decant to glass"
-    ],
-    "rollup": {
-      "products": 1,
-      "researched": 1,
-      "flagged": 0,
-      "worst": null
-    },
-    "fronts": {
-      "formula": {
-        "status": "pass",
-        "note": "Brew with a stainless steel infuser",
-        "origin": "extracted"
-      },
-      "materials": {
-        "status": "pass",
-        "note": "Decant the pouch to glass at home",
-        "origin": "extracted"
-      },
-      "legal": {
-        "status": "unknown",
-        "note": "",
-        "origin": "none"
-      },
-      "testing": {
-        "status": "unknown",
-        "note": "",
-        "origin": "none"
-      }
     },
     "alsoKnownAs": [
-      "Rishi"
-    ],
-    "article": "how-to-avoid-microplastics-in-tea.html"
+      "Rishi Tea"
+    ]
   },
   {
     "id": "ritual",
@@ -93679,7 +93519,7 @@
       {
         "name": "G3P800 tankless reverse osmosis",
         "verdict": "good",
-        "note": "Tankless, so filtered water never sits in a bladder. NSF 58 certified, 800 GPD, 3:1 pure to drain. Needs a power outlet under the sink.",
+        "note": "Tankless under sink reverse osmosis certified to NSF/ANSI 58. Filters on demand straight to the faucet, so filtered water never sits in a storage bladder. Worth knowing: Most expensive filter we list, Needs a power outlet under the sink, Requires plumbing install.",
         "ext": {
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
           "frontNotes": {
@@ -93798,58 +93638,6 @@
         "cat": "Water filters"
       },
       {
-        "name": "Waterdrop G3P800 Tankless RO",
-        "asins": [
-          "B0987FCQQW"
-        ],
-        "verdict": "good",
-        "note": "Tankless under sink reverse osmosis certified to NSF/ANSI 58. Filters on demand straight to the faucet, so filtered water never sits in a storage bladder. Worth knowing: Most expensive filter we list, Needs a power outlet under the sink, Requires plumbing install.",
-        "origin": "store",
-        "ext": {
-          "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
-          "frontNotes": {
-            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
-            "formula": "An object has no ingredient list. What it is made of is the materials check."
-          },
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "verdict": "good",
-          "dated": "2026-08-29",
-          "why": "a vetted store pick, chosen by a person at product scope",
-          "fronts": {
-            "formula": "none",
-            "materials": "pass",
-            "legal": "none",
-            "testing": "pass"
-          },
-          "frontOrigin": {
-            "legal": "database",
-            "testing": "inferred",
-            "materials": "inferred",
-            "formula": "hand"
-          },
-          "scope": "sku",
-          "basis": "direct",
-          "disclose": false,
-          "rules": [],
-          "exposure": {
-            "type": "drinking water",
-            "level": "high",
-            "score": 8.0,
-            "baby": false,
-            "route": "ingestion",
-            "duration": "all day",
-            "retained": "swallowed",
-            "frequency": "daily",
-            "heat": false,
-            "fat": false,
-            "why": "Drunk in quantity, every day, for years."
-          }
-        },
-        "cat": "Water filters",
-        "research": "Packaging: Tankless under-sink RO appliance; drink-path materials covered by NSF/ANSI 372 lead-free certification; housing material not specified; dispenses through the included smart LED faucet. Materials: Reverse osmosis system; 10-stage filtration with a 0.0001 micron RO membrane; certified to NSF/ANSI 42, 53, 58, and 372."
-      },
-      {
         "name": "Pitcher filters",
         "matchAll": [
           [
@@ -93937,8 +93725,8 @@
     "generalises": false,
     "scopeNote": "Our verdict varies across this brand's range.",
     "rollup": {
-      "products": 4,
-      "researched": 4,
+      "products": 3,
+      "researched": 3,
       "flagged": 2,
       "worst": "careful"
     },
