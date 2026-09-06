@@ -178,7 +178,13 @@ await screen("detox", async (p) => {
   await new Promise((r) => setTimeout(r, 700));
   await need(p, ".dx-ring", "progress ring");
   await need(p, ".tip-card", "tip of the day");
-  await need(p, ".dx-room .dx-pip", "room pips");
+  await need(p, ".dx-room .dx-room-c", "room counts");
+  // Every room reachable without a swipe. The fourth used to sit off the edge
+  // of a scrolling strip, and the fourth is the one that is worth money.
+  const offscreen = await p.evaluate(() => [...document.querySelectorAll(".dx-room")]
+    .filter((r) => { const b = r.getBoundingClientRect(); return b.right > window.innerWidth + 1 || b.left < -1; })
+    .map((r) => r.textContent.trim().slice(0, 20)));
+  if (offscreen.length) throw new Error(`rooms off screen: ${offscreen.join(", ")}`);
   await need(p, ".dx-quest-cta", "the next swap");
   // Into a swap, and through it, which is the loop the design is built on.
   await p.evaluate(() => document.querySelector(".dx-quest-cta").click());

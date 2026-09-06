@@ -465,12 +465,13 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
    row that gave no sign there was more of it. Four fit as two rows of two
    without crowding, and nothing is hidden behind a gesture. */
 .dx-rooms {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+  display: grid; gap: 8px;
+  grid-template-columns: repeat(auto-fit, minmax(148px, 1fr));
 }
 /* A room is a card, not a pill: it carries a name, a count and a pip per
    source, so the shape of the room reads before you open it. */
 .dx-room {
-  min-width: 0; padding: 12px 14px; border-radius: 20px;
+  min-width: 0; padding: 11px 14px; border-radius: 16px;
   background: var(--surface); border: 1.5px solid var(--border-strong);
   color: var(--text); white-space: nowrap; text-align: left;
   display: flex; flex-direction: column; gap: 8px; cursor: pointer;
@@ -478,9 +479,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .dx-room.on { background: var(--accent-soft); border-color: var(--accent); }
 .dx-room.on .dx-room-n { color: var(--accent); }
 .dx-room.on .dx-room-c { color: var(--accent); opacity: .75; }
-.dx-room.on .dx-pip { background: rgba(106, 43, 240, .25); }
-.dx-room.on .dx-pip.on { background: var(--accent); }
-.dx-room.lock {
+.dx-room.on .dx-room.on .dx-room.lock {
   flex-direction: row; align-items: center; gap: .4rem; justify-content: center;
   border-style: dashed; color: var(--muted);
 }
@@ -729,9 +728,6 @@ body.has-tabs .screen { padding-bottom: calc(var(--safe-bottom) + 4rem); }
 .dx-room-top { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
 .dx-room-n { font-size: 14.5px; font-weight: 800; overflow: hidden; text-overflow: ellipsis; }
 .dx-room-c { font-size: 11px; font-weight: 700; color: var(--muted); }
-.dx-pips { display: flex; gap: 3px; flex-wrap: wrap; }
-.dx-pip { width: 7px; height: 7px; border-radius: 4px; background: var(--border-strong); }
-.dx-pip.on { background: var(--good); }
 
 /* The canvas wrapper: one column, 16px between blocks. */
 .dx-wrap { display: flex; flex-direction: column; gap: 16px; animation: pop .22s ease; }

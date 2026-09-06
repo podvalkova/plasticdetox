@@ -420,13 +420,12 @@ export function detox(root, { phases, done, seen, room, onRoom, onStep, onKids, 
       const dn = ph.steps.filter((st) => done.has(st.id)).length;
       const pill = el("button", `dx-room${i === at ? " on" : ""}`);
       pill.type = "button";
+      // No pips. They said the same thing as the count beside them, and cost a
+      // second line on every tile to do it.
       const head = el("div", "dx-room-top");
       head.appendChild(el("span", "dx-room-n", roomName(ph)));
       head.appendChild(el("span", "dx-room-c", `${dn}/${ph.steps.length}`));
       pill.appendChild(head);
-      const pips = el("div", "dx-pips");
-      for (const st of ph.steps) pips.appendChild(el("i", `dx-pip${done.has(st.id) ? " on" : ""}`));
-      pill.appendChild(pips);
       pill.onclick = () => {
         if (i === at) return;
         at = i;
