@@ -472,12 +472,21 @@ async function handleMixpanel(request, env, corsOrigin) {
       };
     });
 
-    const res = await fetch("https://api.mixpanel.com/track", {
+    // ?verbose=1 so a rejection says why. Without it Mixpanel answers 200 with
+    // a body of "0" when it drops the batch, and reading res.ok alone would
+    // report success for events that never arrived.
+    const res = await fetch("https://api.mixpanel.com/track?verbose=1", {
       method: "POST",
-      headers: { "Content-Type": "application/json", Accept: "text/plain" },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
     });
-    return json({ ok: res.ok, sent: payload.length }, 200, corsOrigin);
+    const out = await res.json().catch(() => ({}));
+    const accepted = res.ok && out && out.status === 1;
+    if (!accepted) {
+      console.log("mixpanel rejected", res.status, JSON.stringify(out).slice(0, 200));
+    }
+    return json({ ok: accepted, sent: accepted ? payload.length : 0, error: (out && out.error) || null },
+      200, corsOrigin);
   } catch (e) {
     return json({ ok: false }, 200, corsOrigin);
   }
