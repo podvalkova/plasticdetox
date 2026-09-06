@@ -466,7 +466,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
    without crowding, and nothing is hidden behind a gesture. */
 .dx-rooms {
   display: grid; gap: 8px;
-  grid-template-columns: repeat(auto-fit, minmax(148px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(165px, 1fr));
 }
 /* A room is a card, not a pill: it carries a name, a count and a pip per
    source, so the shape of the room reads before you open it. */
@@ -479,11 +479,18 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .dx-room.on { background: var(--accent-soft); border-color: var(--accent); }
 .dx-room.on .dx-room-n { color: var(--accent); }
 .dx-room.on .dx-room-c { color: var(--accent); opacity: .75; }
-.dx-room.on .dx-room.on .dx-room.lock {
-  flex-direction: row; align-items: center; gap: .4rem; justify-content: center;
-  border-style: dashed; color: var(--muted);
+/* Every tile the same height whatever is in it, so a row does not step. */
+.dx-room {
+  min-height: 46px; justify-content: center;
 }
-.dx-room.lock svg { opacity: .7; }
+/* The teaser carries no count, so it centres a label rather than pretending to
+   have the same two column head as a real room. */
+.dx-room.lock {
+  flex-direction: row; align-items: center; justify-content: flex-start; gap: .45rem;
+  border-style: dashed; color: var(--muted);
+  font-size: 14.5px; font-weight: 800;
+}
+.dx-room.lock svg { flex: none; opacity: .7; }
 
 /* Opened and set aside: named, grey, and still one tap from done. */
 
@@ -726,7 +733,7 @@ body.has-tabs .screen { padding-bottom: calc(var(--safe-bottom) + 4rem); }
 
 .dx-where { font-size: 13px; font-weight: 800; letter-spacing: -.01em; padding-left: 4px; margin-bottom: -6px; }
 .dx-room-top { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
-.dx-room-n { font-size: 14.5px; font-weight: 800; overflow: hidden; text-overflow: ellipsis; }
+.dx-room-n { font-size: 14.5px; font-weight: 800; }
 .dx-room-c { font-size: 11px; font-weight: 700; color: var(--muted); }
 
 /* The canvas wrapper: one column, 16px between blocks. */
