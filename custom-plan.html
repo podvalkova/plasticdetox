@@ -200,6 +200,9 @@
   .modal-success .check{width:56px;height:56px;border-radius:50%;background:#dcfce7;color:var(--green);font-size:30px;display:flex;align-items:center;justify-content:center;margin:0 auto 18px}
   .modal-success h3{margin-bottom:8px}
   .modal-success p{color:var(--stone);font-size:15px}
+  .cta-quiet{display:block;text-align:center;margin-top:.6rem;font-size:.9rem;font-weight:600;
+    color:var(--text-muted);text-decoration:none}
+  .cta-quiet:hover{color:var(--purple);text-decoration:underline}
 </style>
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-BBCB36BGP2"></script>
@@ -350,7 +353,8 @@
           <li>Everything in the free plan as well</li>
           <li>A share of every sale funds independent lab testing</li>
         </ul>
-        <a href="babies-kids.html" class="cta">See what is inside &rarr;</a>
+        <a href="https://buy.stripe.com/00w9AMfSv90F6VZbT6fEk03" class="cta" id="pkgBuy" rel="noopener">Get the package &middot; $9.99</a>
+        <a href="babies-kids.html" class="cta-quiet">See what is inside first &rarr;</a>
       </div>
     </div>
   </div>
@@ -459,5 +463,18 @@
   });
 </script>
 
+<script>
+  // This card now sells rather than browses, so it has to report itself the way
+  // every other entry point does. Without this the direct path would look like
+  // zero intent in the funnel while quietly taking the money.
+  document.getElementById('pkgBuy')?.addEventListener('click', function () {
+    try {
+      if (window.gtag) window.gtag('event', 'begin_checkout', {
+        value: 9.99, currency: 'USD', location: '/custom-plan.html',
+        items: [{ item_id: 'baby-expecting-package', item_name: 'Baby & Expecting Package', price: 9.99, quantity: 1 }]
+      });
+    } catch (e) {}
+  });
+</script>
 </body>
 </html>
