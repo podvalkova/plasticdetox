@@ -1,3 +1,5 @@
+import { KIDS } from "./kids-data.js";
+
 const ALLOWED_ORIGINS = ["https://plasticdetox.org", "https://www.plasticdetox.org"];
 
 // The Brand Check extension posts from a content script, which runs in the
@@ -66,6 +68,17 @@ export default {
     }
 
     // ===== Private stats view: every brand searched, ranked by count (GET) =====
+    // ===== The Kids room: buy it, prove it, read it =====
+    if (path === "/kids-claim") {
+      return handleKidsClaim(request, env, corsOrigin);
+    }
+    if (path === "/kids-verify" && request.method === "POST") {
+      return handleKidsVerify(request, env, corsOrigin);
+    }
+    if (path === "/kids-plan") {
+      return handleKidsPlan(request, env, corsOrigin);
+    }
+
     // ===== App events, forwarded to Mixpanel so no SDK sits on the phone =====
     if (path === "/mp" && request.method === "POST") {
       return handleMixpanel(request, env, corsOrigin);
@@ -437,6 +450,164 @@ async function handleBrandReports(request, env) {
  * Events are capped and their property names are not trusted: this endpoint is
  * open to the internet like every other one the app calls.
  */
+
+/* ===================== The Kids room =====================================
+   Two ways in and one key. A web buyer is proved by their Stripe session, an
+   in app buyer by Apple's signed transaction. Both mint the same token, so
+   everything downstream has one thing to check.
+   ======================================================================== */
+
+
+/* ---- Verifying Apple's signature on a StoreKit 2 transaction -------------
+   The JWS header carries x5c: the leaf certificate that signed it, its
+   intermediate, and Apple's root. Reading the payload without checking that
+   signature would let anyone mint a pass by POSTing a JSON object naming our
+   product, so the signature is checked against the leaf's public key and the
+   chain is required to end at Apple's own root.
+   ------------------------------------------------------------------------ */
+
+const APPLE_ROOT_G3_SPKI_START = "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE";
+
+const b64urlToBytes = (s) => {
+  const b = atob(s.replace(/-/g, "+").replace(/_/g, "/").padEnd(Math.ceil(s.length / 4) * 4, "="));
+  const out = new Uint8Array(b.length);
+  for (let i = 0; i < b.length; i++) out[i] = b.charCodeAt(i);
+  return out;
+};
+
+/** Walk the DER of an X.509 certificate and return its SubjectPublicKeyInfo. */
+function spkiFromCert(der) {
+  let i = 0;
+  const len = () => {
+    let n = der[i++];
+    if (n & 0x80) {
+      let c = n & 0x7f; n = 0;
+      while (c--) n = (n << 8) | der[i++];
+    }
+    return n;
+  };
+  const step = () => { i++; const n = len(); const start = i; i += n; return [start, n]; };
+  i++; len();                       // Certificate SEQUENCE
+  i++; const tbsLen = len();        // TBSCertificate SEQUENCE
+  const tbsEnd = i + tbsLen;
+  if (der[i] === 0xa0) { i++; const n = len(); i += n; }  // [0] version
+  step();                           // serialNumber
+  step();                           // signature
+  step();                           // issuer
+  step();                           // validity
+  step();                           // subject
+  const start = i;                  // subjectPublicKeyInfo begins here
+  i++; const n = len();
+  const end = i + n;
+  if (end > tbsEnd) throw new Error("bad cert");
+  return der.slice(start, end);
+}
+
+async function verifyAppleJws(jws) {
+  const [h, pl, sig] = jws.split(".");
+  if (!h || !pl || !sig) throw new Error("malformed");
+  const header = JSON.parse(new TextDecoder().decode(b64urlToBytes(h)));
+  const chain = header.x5c;
+  if (!Array.isArray(chain) || chain.length < 2) throw new Error("no chain");
+
+  // The chain has to end at Apple's root, not merely be a well formed chain.
+  const rootSpki = spkiFromCert(b64urlToBytes(chain[chain.length - 1].replace(/\s/g, "")));
+  const rootB64 = btoa(String.fromCharCode(...rootSpki));
+  if (!rootB64.startsWith(APPLE_ROOT_G3_SPKI_START)) throw new Error("not apple");
+
+  const leafSpki = spkiFromCert(b64urlToBytes(chain[0].replace(/\s/g, "")));
+  const key = await crypto.subtle.importKey(
+    "spki", leafSpki, { name: "ECDSA", namedCurve: "P-256" }, false, ["verify"]);
+  const ok = await crypto.subtle.verify(
+    { name: "ECDSA", hash: "SHA-256" }, key,
+    b64urlToBytes(sig), new TextEncoder().encode(`${h}.${pl}`));
+  if (!ok) throw new Error("bad signature");
+  return JSON.parse(new TextDecoder().decode(b64urlToBytes(pl)));
+}
+
+async function mintKidsPass(env, source, ref) {
+  const token = "k_" + crypto.randomUUID().replace(/-/g, "");
+  await env.BRAND_SEARCHES.put("kidspass:" + token,
+    JSON.stringify({ source, ref: String(ref || "").slice(0, 120), at: Date.now() }));
+  return token;
+}
+
+async function kidsPassValid(env, token) {
+  if (!token || !/^k_[a-f0-9]{32}$/.test(token)) return false;
+  return !!(await env.BRAND_SEARCHES.get("kidspass:" + token));
+}
+
+/** Web purchase: prove it with the Stripe checkout session. */
+async function handleKidsClaim(request, env, corsOrigin) {
+  const sid = (new URL(request.url).searchParams.get("session") || "").trim();
+  if (!/^cs_[A-Za-z0-9_]{10,200}$/.test(sid)) {
+    return json({ ok: false, error: "Bad session" }, 400, corsOrigin);
+  }
+  // One token per session, so a reload does not mint a second one.
+  const seen = await env.BRAND_SEARCHES.get("kidssession:" + sid);
+  if (seen) return json({ ok: true, pass: seen }, 200, corsOrigin);
+
+  if (!env.STRIPE_SECRET_KEY) return json({ ok: false, error: "Not configured" }, 503, corsOrigin);
+  const res = await fetch("https://api.stripe.com/v1/checkout/sessions/" + sid, {
+    headers: { Authorization: "Bearer " + env.STRIPE_SECRET_KEY },
+  });
+  const ses = await res.json().catch(() => ({}));
+  if (!res.ok || ses.payment_status !== "paid") {
+    return json({ ok: false, error: "Payment not found" }, 404, corsOrigin);
+  }
+  const pass = await mintKidsPass(env, "web", sid);
+  await env.BRAND_SEARCHES.put("kidssession:" + sid, pass);
+  return json({ ok: true, pass }, 200, corsOrigin);
+}
+
+/**
+ * In app purchase: prove it with StoreKit 2's signed transaction.
+ *
+ * The signature is checked against the leaf certificate in the JWS header and
+ * the chain is required to end at Apple's own root, so a forged payload naming
+ * our product is refused. Then the payload has to name our product and our
+ * bundle, not be revoked, and one Apple transaction mints one token however
+ * many times it is presented.
+ */
+async function handleKidsVerify(request, env, corsOrigin) {
+  try {
+    const body = await request.json().catch(() => ({}));
+    const jws = String(body.jws || "");
+    let claim;
+    try {
+      claim = await verifyAppleJws(jws);
+    } catch (e) {
+      return json({ ok: false, error: "Unverified receipt" }, 400, corsOrigin);
+    }
+    const wanted = env.KIDS_PRODUCT_ID || "org.plasticdetox.app.baby";
+    if (claim.productId !== wanted) return json({ ok: false, error: "Wrong product" }, 400, corsOrigin);
+    if (claim.bundleId && claim.bundleId !== "org.plasticdetox.app") {
+      return json({ ok: false, error: "Wrong app" }, 400, corsOrigin);
+    }
+    if (claim.revocationDate) return json({ ok: false, error: "Refunded" }, 400, corsOrigin);
+    const original = String(claim.originalTransactionId || claim.transactionId || "");
+    if (!original) return json({ ok: false, error: "Bad receipt" }, 400, corsOrigin);
+
+    // One Apple purchase, one token, however many times it is presented.
+    const seen = await env.BRAND_SEARCHES.get("kidsapple:" + original);
+    if (seen) return json({ ok: true, pass: seen }, 200, corsOrigin);
+    const pass = await mintKidsPass(env, "iap", original);
+    await env.BRAND_SEARCHES.put("kidsapple:" + original, pass);
+    return json({ ok: true, pass }, 200, corsOrigin);
+  } catch (e) {
+    return json({ ok: false, error: "Bad receipt" }, 400, corsOrigin);
+  }
+}
+
+/** The swaps themselves, which live nowhere the app can reach unpaid. */
+async function handleKidsPlan(request, env, corsOrigin) {
+  const token = new URL(request.url).searchParams.get("pass") || "";
+  if (!(await kidsPassValid(env, token))) {
+    return json({ ok: false, error: "No pass" }, 403, corsOrigin);
+  }
+  return json({ ok: true, phase: KIDS }, 200, corsOrigin);
+}
+
 async function handleMixpanel(request, env, corsOrigin) {
   try {
     if (!env.MIXPANEL_TOKEN) return json({ ok: false, error: "not configured" }, 200, corsOrigin);

@@ -12,6 +12,7 @@ import { el, toast } from "./ui.js";
 import { roomName } from "./detox-content.js";
 import * as notify from "./notify.js";
 import { track, setBundle, flush } from "./track.js";
+import * as kids from "./kids.js";
 
 const WORKER = "https://plasticdetox-quiz-email.plasticdetox.workers.dev";
 const RECENTS_KEY = "pd.recents.v1";
@@ -242,6 +243,13 @@ document.addEventListener("visibilitychange", () => {
 });
 
 /** The daily tip control, wherever it is shown. */
+/** The rooms, plus the paid one when it has been bought. */
+function allPhases() {
+  const open = data.planPhases();
+  const paid = kids.phaseIfAny();
+  return paid ? open.concat([paid]) : open;
+}
+
 function notifyProps() {
   return {
     available: notify.available(),
@@ -401,7 +409,7 @@ function draw() {
     });
   } else if (state.screen === "detox") {
     screens.detox(view, {
-      phases: data.planPhases(),
+      phases: allPhases(),
       done: readDone(),
       seen: readSeen(),
       room: state.room || "",
@@ -412,7 +420,7 @@ function draw() {
       notify: notifyProps(),
     });
   } else if (state.screen === "detoxReward") {
-    const phases = data.planPhases();
+    const phases = allPhases();
     const set = readDone();
     const all = phases.reduce((n, p) => n + p.steps.length, 0);
     let cleared = "That source", roomLabel = "", at = -1;
@@ -458,7 +466,7 @@ function draw() {
     // Everything you tapped "Maybe later" on, and a way straight back into it.
     // Setting a swap aside used to hide it until the rest of the room was done,
     // which is not the same as choosing to come back to it.
-    const phases = data.planPhases();
+    const phases = allPhases();
     const set = readDone();
     const seen = readSeen();
     const rows = [];
@@ -478,7 +486,7 @@ function draw() {
       onClose: back,
     });
   } else if (state.screen === "detoxCleared") {
-    const phases = data.planPhases();
+    const phases = allPhases();
     const set = readDone();
     const rows = [];
     for (const ph of phases) {
@@ -492,11 +500,37 @@ function draw() {
       onClose: back,
     });
   } else if (state.screen === "detoxKids") {
-    screens.detoxKids(view, { onOpen: openExternal, onLater: back });
+    screens.detoxKids(view, {
+      unlocked: kids.unlocked(),
+      canBuyInApp: kids.canBuyInApp(),
+      onLater: back,
+      onBuyWeb: () => {
+        track("kids_buy_web", {});
+        openExternal(kids.buyUrl());
+      },
+      onBuyApp: async () => {
+        track("kids_buy_app", {});
+        showBusy("Talking to the App Store");
+        const r = await kids.buyInApp();
+        hideBusy();
+        if (r === "ok") { track("kids_unlocked", { via: "iap" }); toast("Opened. The room is on your list"); render(); }
+        else if (r === "cancelled") { /* their choice, say nothing */ }
+        else if (r === "unavailable") toast("Not available on this device");
+        else toast("That did not go through");
+      },
+      onRestore: async () => {
+        showBusy("Checking with the App Store");
+        const r = await kids.restore();
+        hideBusy();
+        if (r === "ok") { track("kids_unlocked", { via: "restore" }); toast("Restored"); render(); }
+        else if (r === "none") toast("No purchase found on this Apple ID");
+        else toast("Could not check right now");
+      },
+    });
   } else if (state.screen === "detoxStep") {
     // Resolve the step fresh each render, so ticking it re-renders this same
     // screen in its done state rather than a stale copy.
-    const phases = data.planPhases();
+    const phases = allPhases();
     const phase = phases.find((p) => p.steps.some((s) => s.id === state.stepId));
     const step = phase && phase.steps.find((s) => s.id === state.stepId);
     if (!step) { back(); return; }
@@ -944,6 +978,18 @@ export async function openDeepLink(search) {
     return;
   }
 
+  // plasticdetox://kids?kids=... is how a package bought on the website opens
+  // the room, with nothing to type and no account to make.
+  const kidsPass = params.get("kids");
+  if (kidsPass) {
+    kids.setPass(kidsPass);
+    await kids.load();
+    track("kids_unlocked", { via: "web" });
+    toast("Kids room opened");
+    render();
+    return;
+  }
+
   const code = params.get("code");
   if (code) return resolveCode(code);
 
@@ -996,6 +1042,7 @@ async function start() {
   // Nothing to tap. Provisional authorisation is already granted by the time
   // this runs, so the schedule simply gets laid down.
   notify.autoStart().catch(() => {});
+  if (kids.unlocked()) kids.load().then(() => render()).catch(() => {});
 
   // Refreshed after the first screen is up, never before it. A scan in a shop
   // with one bar of signal must not wait on a two megabyte download.

@@ -20,6 +20,8 @@ PODS:
     - Capacitor
     - Version (= 0.8.0)
     - ZIPFoundation (~> 0.9)
+  - CapgoNativePurchases (8.7.0):
+    - Capacitor
   - Version (0.8.0)
   - ZIPFoundation (0.9.20)
 
@@ -32,6 +34,7 @@ DEPENDENCIES:
   - "CapacitorLocalNotifications (from `../../node_modules/@capacitor/local-notifications`)"
   - "CapacitorPreferences (from `../../node_modules/@capacitor/preferences`)"
   - "CapgoCapacitorUpdater (from `../../node_modules/@capgo/capacitor-updater`)"
+  - "CapgoNativePurchases (from `../../node_modules/@capgo/native-purchases`)"
 
 SPEC REPOS:
   trunk:
@@ -57,6 +60,8 @@ EXTERNAL SOURCES:
     :path: "../../node_modules/@capacitor/preferences"
   CapgoCapacitorUpdater:
     :path: "../../node_modules/@capgo/capacitor-updater"
+  CapgoNativePurchases:
+    :path: "../../node_modules/@capgo/native-purchases"
 
 SPEC CHECKSUMS:
   Alamofire: 7193b3b92c74a07f85569e1a6c4f4237291e7496
@@ -69,9 +74,10 @@ SPEC CHECKSUMS:
   CapacitorLocalNotifications: e0747a329ddde3074d52dc74a003688af90e42be
   CapacitorPreferences: cca2021f386efb75947c850334447d9ff22b14f1
   CapgoCapacitorUpdater: 691ad5c4955163d2b56e7eb4cb6dbc42766bdc48
+  CapgoNativePurchases: d469fec1021b90cabc209616e08d6ca574ca8d0b
   Version: de5907f2c5d0f3cf21708db7801d1d5401139486
   ZIPFoundation: dfd3d681c4053ff7e2f7350bc4e53b5dba3f5351
 
-PODFILE CHECKSUM: 23b4b7eb610e8272ad9432bbb7188a67654fffb9
+PODFILE CHECKSUM: 7ce82e5d8dac1a2ef19d1edb8180457233b27893
 
 COCOAPODS: 1.16.2

@@ -426,12 +426,16 @@ export function detox(root, { phases, done, seen, room, onRoom, onStep, onKids, 
     pill.onclick = () => onRoom(String(i));
     rooms.appendChild(pill);
   });
-  const kids = el("button", "dx-room lock");
-  kids.type = "button";
-  kids.appendChild(icon("M7 11V8a5 5 0 0 1 10 0v3M5 11h14v10H5zM12 15v3", 13));
-  kids.appendChild(el("span", null, "Kids"));
-  kids.onclick = onKids;
-  rooms.appendChild(kids);
+  // The teaser only exists while the room does not. Once it is bought the real
+  // room is in the list above and a second Kids chip beside it is nonsense.
+  if (!phases.some((ph) => ph.sub === "Kids")) {
+    const kids = el("button", "dx-room lock");
+    kids.type = "button";
+    kids.appendChild(icon("M7 11V8a5 5 0 0 1 10 0v3M5 11h14v10H5zM12 15v3", 13));
+    kids.appendChild(el("span", null, "Kids"));
+    kids.onclick = onKids;
+    rooms.appendChild(kids);
+  }
   wrap.appendChild(rooms);
 
   // One source at a time, which is the whole idea: the board of thirteen tiles
@@ -500,31 +504,52 @@ export function detox(root, { phases, done, seen, room, onRoom, onStep, onKids, 
  * the website, which is also the Apple compliant path: the app links out, the
  * purchase happens in the browser.
  */
-export function detoxKids(root, { onOpen, onLater }) {
-  root.appendChild(el("div", "dx-k", "Kids \u00b7 locked"));
+export function detoxKids(root, { unlocked, onBuyWeb, onBuyApp, onRestore, canBuyInApp, onLater }) {
+  root.classList.add("with-foot");
+  root.appendChild(el("div", "dx-k", unlocked ? "Kids \u00b7 open" : "Kids \u00b7 locked"));
   const row = el("div", "dx-titrow");
   row.appendChild(el("div", "dx-title", "The kids room"));
   root.appendChild(row);
 
   root.appendChild(el("div", "dx-k", "What is inside"));
   root.appendChild(el("p", "dx-why",
-    "Bottles and feeding, the nursery, wipes and creams, in the order that matters "
-    + "for someone that small. Built from the same testing as everything else here, "
-    + "sequenced for the smallest person in the house."));
+    "Twenty three swaps for bottles and feeding, the nursery, wipes and creams, in the order that "
+    + "matters for someone that small. Each one says why it matters, what we would buy, and the way "
+    + "to do it for nothing."));
 
-  root.appendChild(el("div", "dx-k free", "Part of the Baby Package"));
-  root.appendChild(el("div", "step-free",
-    "The Baby Package is bought on plasticdetox.org and this room opens with it."));
+  if (unlocked) {
+    root.appendChild(el("div", "step-free dx-free",
+      "Yours. The room is on the Detox tab with the others."));
+    const foot = el("div", "dx-foot");
+    const go = el("button", "cta", "Open the kids room");
+    go.onclick = onLater;
+    foot.appendChild(go);
+    root.appendChild(foot);
+    return;
+  }
+
+  root.appendChild(el("div", "dx-k free", "One payment \u00b7 $9.99"));
+  root.appendChild(el("div", "step-free dx-free",
+    "It opens here and on the website, and it stays open."));
 
   const foot = el("div", "dx-foot");
-  const cta = el("button", "cta", "See the Baby Package");
-  cta.onclick = () => onOpen("https://plasticdetox.org/custom-plan.html?app=1");
-  foot.appendChild(cta);
-  const later = el("button", "dx-ghost", "Maybe later");
-  later.onclick = onLater;
-  foot.appendChild(later);
+  const web = el("button", "cta", "Get the package \u00b7 $9.99");
+  web.onclick = onBuyWeb;
+  foot.appendChild(web);
+  // Offered because 3.1.3(b) requires it once the app unlocks anything bought
+  // elsewhere. The web route is first because it is the one that reaches you
+  // by email afterwards.
+  if (canBuyInApp) {
+    const inApp = el("button", "cta ghost", "Buy in the app instead");
+    inApp.onclick = onBuyApp;
+    foot.appendChild(inApp);
+  }
+  const restore = el("button", "dx-ghost", "Restore a purchase");
+  restore.onclick = onRestore;
+  foot.appendChild(restore);
   root.appendChild(foot);
 }
+
 
 /**
  * One source, one screen of value.
