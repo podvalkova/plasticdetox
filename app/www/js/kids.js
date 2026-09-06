@@ -25,7 +25,7 @@ const PRODUCT = "org.plasticdetox.app.baby";
  * on for the second upload, once the product is Ready to Submit and the Stripe
  * link agrees on the price.
  */
-export const OFFERED = false;
+export const OFFERED = true;
 
 let phase = null;
 
@@ -87,6 +87,26 @@ function purchases() {
 }
 
 export function canBuyInApp() { return !!purchases(); }
+
+/**
+ * The price Apple will actually charge, in the reader's own currency.
+ *
+ * The button used to say $5 because that is what it costs in the States, which
+ * is wrong for everyone else: the price is set once and Apple converts it per
+ * territory. Asking StoreKit means the button and the sheet that opens from it
+ * agree, wherever someone is.
+ */
+export async function price() {
+  const p = purchases();
+  if (!p) return "";
+  try {
+    const r = await p.getProduct({ productIdentifier: PRODUCT });
+    const one = (r && (r.product || r)) || {};
+    return one.priceString || one.displayPrice || "";
+  } catch {
+    return "";
+  }
+}
 
 /** Redeem a StoreKit transaction with the worker, which checks Apple's signature. */
 async function redeem(jws) {

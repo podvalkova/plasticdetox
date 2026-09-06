@@ -504,7 +504,7 @@ export function detox(root, { phases, done, seen, room, onRoom, onStep, onKids, 
  * the website, which is also the Apple compliant path: the app links out, the
  * purchase happens in the browser.
  */
-export function detoxKids(root, { unlocked, onBuyApp, onRestore, canBuyInApp, onLater }) {
+export function detoxKids(root, { unlocked, onBuyApp, onRestore, canBuyInApp, onLater, price }) {
   root.classList.add("with-foot");
   root.appendChild(el("div", "dx-k", unlocked ? "Kids \u00b7 open" : "Kids \u00b7 locked"));
   const row = el("div", "dx-titrow");
@@ -528,12 +528,12 @@ export function detoxKids(root, { unlocked, onBuyApp, onRestore, canBuyInApp, on
     return;
   }
 
-  root.appendChild(el("div", "dx-k free", "One payment \u00b7 $5"));
+  root.appendChild(el("div", "dx-k free", price ? `One payment \u00b7 ${price}` : "One payment"));
   root.appendChild(el("div", "step-free dx-free",
     "Bought once and yours for good, on every device signed in to your Apple ID."));
 
   const foot = el("div", "dx-foot");
-  const buy = el("button", "cta", "Unlock the kids room \u00b7 $5");
+  const buy = el("button", "cta", price ? `Unlock the kids room \u00b7 ${price}` : "Unlock the kids room");
   buy.onclick = onBuyApp;
   buy.disabled = !canBuyInApp;
   foot.appendChild(buy);

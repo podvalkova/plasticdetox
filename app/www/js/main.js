@@ -250,6 +250,8 @@ function allPhases() {
   return paid ? open.concat([paid]) : open;
 }
 
+let kidsPrice = null;
+
 function notifyProps() {
   return {
     available: notify.available(),
@@ -500,7 +502,14 @@ function draw() {
       onClose: back,
     });
   } else if (state.screen === "detoxKids") {
+    // Ask StoreKit what it costs here, then redraw with it. Drawn without a
+    // price first so the screen is never blank waiting on the App Store.
+    if (kidsPrice === null) {
+      kidsPrice = "";
+      kids.price().then((p) => { if (p && p !== kidsPrice) { kidsPrice = p; render(); } });
+    }
     screens.detoxKids(view, {
+      price: kidsPrice,
       unlocked: kids.unlocked(),
       canBuyInApp: kids.canBuyInApp(),
       onLater: back,
