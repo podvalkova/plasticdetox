@@ -306,6 +306,33 @@ multipacks are frequently a different container from the single unit.
 
 Like formula, this front is cheap. It is usually visible in the listing photo.
 
+### 3.6 A caution needs a shelf to point at
+
+The matrix in 3.1 answers what migrates. It does not ask whether the shopper
+could have done anything about it, and for some formats the honest answer is no.
+
+Every stick foundation, cream blush, mineral bronzer and lip balm on the market
+is an anhydrous formula in a plastic twist up tube, because that is the only way
+the format exists. Rule 3.1 opens by refusing a flag that fires on everything,
+and then the matrix fires on all of them anyway, which caps a certified organic
+brand at the same grade as an uncertified one and tells a shopper nothing about
+either.
+
+So: **where a format has no non plastic version on the market, the polymer is a
+note, not a cap.** Formula and independent testing carry the verdict, and the
+packaging is recorded in the caveats where a shopper can still read it.
+
+This is narrow on purpose, and it turns on availability rather than on
+inconvenience. Face oils, serums and toners are sold in glass by most of the
+brands we rate, so the matrix stands for those. Lip products stay under the
+ingestion logic in 2.3 regardless of what the tube is made of, because they are
+swallowed. The test is whether a shopper following our advice could buy a
+better package, not whether a better package would be nicer to have.
+
+The reverse case is the same principle: a plastic that never touches the
+contents is already excluded by 3.4, and a blank contents field is a gap under
+5.6. Neither is a caution.
+
 ## 4. Independent tests
 
 The hard one. Here is the governing principle:

@@ -43,7 +43,7 @@ def parse_store():
         blob = m.group(0)
         rec = {k: v for k, v in FIELD.findall(blob)}
         for k, body in LIST.findall(blob):
-            rec[k] = [x.strip().strip('"') for x in body.split('","')] if body.strip() else []
+            rec[k] = [x.strip().strip('"') for x in re.split(r'",\s*"', body)] if body.strip() else []
         if rec.get("asin"):
             out[rec["asin"]] = rec
     return out

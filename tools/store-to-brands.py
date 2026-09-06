@@ -52,7 +52,7 @@ def parse_store():
     for blob in re.findall(r"\{[^{}]*?name:\s*\"[^\"]+\"[^{}]*?\}", STORE.read_text()):
         r = {k: v for k, v in FIELD.findall(blob)}
         for k, body in LIST.findall(blob):
-            r[k] = [x.strip().strip('"') for x in body.split('","')] if body.strip() else []
+            r[k] = [x.strip().strip('"') for x in re.split(r'",\s*"', body)] if body.strip() else []
         if r.get("name"):
             out.append(r)
     return out

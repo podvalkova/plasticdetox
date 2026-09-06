@@ -95,6 +95,17 @@ def pretty(m):
     return m.upper() if m in ACRONYMS else m
 
 
+# A material named as the thing the product does NOT contain. Both orders occur
+# in listings: "aluminium free", "BPA-free" and "free of parabens", "no PVC",
+# "without phthalates", "non-toxic".
+NEGATED = re.compile(
+    r"\b[\w-]+[\s-]*free\b"
+    r"|\bfree\s+(?:of|from)\s+[\w-]+"
+    r"|\b(?:no|without|non)[\s-]+[\w-]+",
+    re.I,
+)
+
+
 def classify(name):
     """Which rule a material name falls under, matched on the words in it.
 
@@ -104,6 +115,17 @@ def classify(name):
     n = (name or "").strip().lower()
     if not n:
         return None, None
+
+    # Rule 3.4: a material the copy rules out is not a material in contact.
+    # "Aluminum Free Deodorant" contains the word aluminium, and a bare
+    # substring match read that as aluminium against the skin, which is the
+    # exact opposite of what the label says. Same for "BPA free", "PVC free",
+    # "no polycarbonate", "non toxic". Strip the negated spans before matching
+    # rather than after, so the term never reaches the polymer table.
+    n = NEGATED.sub(" ", n)
+    if not n.strip():
+        return None, None
+
     best = None
     for term, rank in POLYMER.items():
         if term in n and (best is None or len(term) > len(best[0])):
@@ -239,7 +261,15 @@ def assess(pack):
     if not drivers and base:
         return "caution", f"{pretty(term)} in contact with {base} contents"
     if not drivers:
-        return "caution", f"{pretty(term)} in contact, and we have not recorded what it holds"
+        # An unrecorded contents field is a gap, not a finding. The matrix
+        # needs two axes and we only have one: without knowing whether the
+        # tube holds a dry stick or a face oil, "caution" is not a reading of
+        # the product, it is a reading of our own missing note. Rule 5.6, and
+        # the same mistake the `holds == none` branch above was fixed for.
+        # This cautioned two aluminium-free deodorants and a mineral bronzer
+        # for the crime of having a blank field.
+        return None, (f"{pretty(term)} in contact, and we have not recorded what it "
+                      "holds, so the matrix has only one of the two axes it needs")
 
     score = rank + weight
     reason = f"{pretty(term)} in contact, with " + ", ".join(drivers)
