@@ -587,7 +587,7 @@ export function detoxStep(root, { phase, step, isDone, isSeen, onDone, onUndo, o
       // one pick on that step look like a broken row.
       const slug = (pick.url.match(/\/articles\/([\w-]+\.html)/) || [])[1];
       const art = slug && allArticles().find((a) => a.slug === slug);
-      const src = asin ? productImage(asin, 160) : (art && art.image) || "";
+      const src = pick.img || (asin ? productImage(asin, 160) : (art && art.image) || "");
       // A product photo is a cutout on white and wants contain; an article hero
       // is a wide illustration and wants cover, which is what the Learn tab
       // does. Rendering the hero with contain letterboxed it into a stamp.
@@ -683,6 +683,28 @@ export function detoxStep(root, { phase, step, isDone, isSeen, onDone, onUndo, o
   if (c.free) {
     root.appendChild(el("div", "dx-k free", "Costs nothing \u00b7 counts the same"));
     root.appendChild(el("div", "step-free dx-free", c.free));
+  }
+
+  // The questions the guide already answers, asked where they come up rather
+  // than behind a link somebody has to decide to follow.
+  if ((step.faqs || []).length) {
+    root.appendChild(el("div", "dx-k", "Common questions"));
+    for (const f of step.faqs) {
+      const d = el("details", "faq");
+      d.appendChild(el("summary", "faq-q", f.q));
+      d.appendChild(el("p", "faq-a", f.a));
+      root.appendChild(d);
+    }
+  }
+
+  // And the guide itself, at the end, where somebody who wants more goes next.
+  if (step.article && step.article.slug) {
+    const a = el("button", "read-more");
+    a.type = "button";
+    a.appendChild(el("span", "read-more-k", "The full guide"));
+    a.appendChild(el("span", "read-more-t", step.article.title));
+    a.onclick = () => onOpen(`https://plasticdetox.org/articles/${step.article.slug}?app=1`);
+    root.appendChild(a);
   }
 
   const foot = el("div", "dx-foot");

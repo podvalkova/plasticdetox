@@ -181,11 +181,14 @@ for (const block of planSrc.split(/\n\s*\{\s*(?=days:\s*")/).slice(1)) {
     // The url capture must stop at the comma before it: the first version of
     // this regex ate the note into the url, which shipped two dead links.
     for (const one of list.matchAll(
-        /\{\s*label:\s*"([^"]*)",\s*name:\s*"((?:[^"\\]|\\.)*)",\s*url:\s*([^,}]+?)\s*(?:,\s*note:\s*"((?:[^"\\]|\\.)*)"\s*)?\}/g)) {
+        /\{\s*label:\s*"([^"]*)",\s*name:\s*"((?:[^"\\]|\\.)*)",\s*url:\s*([^,}]+?)\s*(?:,\s*note:\s*"((?:[^"\\]|\\.)*)"\s*)?(?:,\s*img:\s*"([^"]*)"\s*)?\}/g)) {
       const url = resolveUrl(one[3]);
       if (url) {
         const pick = { label: one[1], name: one[2].replace(/\\"/g, '"'), url };
         if (one[4]) pick.note = one[4].replace(/\\"/g, '"');
+        // A pick that is not an Amazon product has no ASIN to look an image up
+        // by, so it may carry its own.
+        if (one[5]) pick.img = one[5];
         picks.push(pick);
       }
     }
@@ -210,16 +213,54 @@ try {
 } catch {
   // No extras file is not an error; every swap simply renders without one.
 }
+/**
+ * The article behind a swap, and the questions it already answers.
+ *
+ * The guides carry their FAQ as details/summary pairs. Repeating the first
+ * three on the swap means the obvious question is answered where it is asked,
+ * rather than behind a link somebody has to decide to follow.
+ */
+const articleBits = (slug) => {
+  try {
+    const raw = fs.readFileSync(path.join(REPO, "articles", slug), "utf8");
+    const body = raw.replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/g, "");
+    const clean = (h) => h.replace(/<[^>]+>/g, "")
+      .replace(/&amp;/g, "&").replace(/&rarr;/g, "").replace(/&nbsp;/g, " ")
+      .replace(/&#39;|&rsquo;/g, "'").replace(/&quot;|&ldquo;|&rdquo;/g, '"')
+      .replace(/\s+/g, " ").trim();
+    const title = clean((body.match(/<h1[^>]*>([\s\S]*?)<\/h1>/) || [])[1] || "");
+    const faqs = [];
+    for (const m of body.matchAll(/<details[^>]*>\s*<summary[^>]*>([\s\S]*?)<\/summary>([\s\S]*?)<\/details>/g)) {
+      const q = clean(m[1]), a = clean(m[2]);
+      // A one line answer is usually a teaser rather than an answer.
+      if (q && a.length > 60) faqs.push({ q, a });
+      if (faqs.length === 3) break;
+    }
+    return { title, faqs };
+  } catch {
+    return null;
+  }
+};
+
 let extraCount = 0;
+let faqCount = 0;
 for (const ph of PHASES) {
   for (const st of ph.steps) {
     const ex = EXTRAS[st.swap];
     if (!ex) continue;
     if (ex.tip) st.tip = ex.tip;
     if (ex.order) st.order = ex.order;
+    if (ex.article) {
+      const bits = articleBits(ex.article);
+      if (bits) {
+        st.article = { slug: ex.article, title: bits.title };
+        if (bits.faqs.length) { st.faqs = bits.faqs; faqCount += bits.faqs.length; }
+      }
+    }
     extraCount++;
   }
 }
+console.log(`swap FAQs            ${faqCount} questions lifted from the guides`);
 console.log(`step extras          ${extraCount} swaps carry a tip or an order`);
 
 // ---- The Kids room, lifted from baby-kids-101 rather than written twice ----
