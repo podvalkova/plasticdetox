@@ -129,6 +129,22 @@ function readDone() {
   }
 }
 
+// How many of the swaps on the board are done.
+//
+// Not the size of the stored set. A swap's id is its phase title plus its own
+// title, so editing either one leaves the old id in storage pointing at a swap
+// that no longer exists. Splitting the Groceries room into single decisions
+// orphaned two ids that way, and the reward screen, which was reading the raw
+// set size, then claimed 6 of 37 while the list behind it showed 4. Count the
+// steps that actually exist, which is what every room counter already does.
+//
+// Orphans are counted out rather than deleted: a step missing because data
+// failed to load would otherwise erase real progress permanently.
+function countDone(phases, set) {
+  return phases.reduce(
+    (n, p) => n + p.steps.filter((s) => set.has(s.id)).length, 0);
+}
+
 // Swaps someone opened and set aside with "Maybe later". They stay on the
 // board in grey rather than blocking the path: skipping a step reveals the
 // next one, and a grey tile can be finished any time.
@@ -458,7 +474,7 @@ function draw() {
       }
     }
     screens.detoxReward(view, {
-      ticked: set.size, all, cleared, roomLabel, nextStep: next,
+      ticked: countDone(phases, set), all, cleared, roomLabel, nextStep: next,
       onNext: () => {
         if (!next) return;
         // The Detox screen reads its room from its own entry at the bottom of

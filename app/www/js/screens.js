@@ -739,7 +739,7 @@ export function detoxReward(root, { ticked, all, cleared, roomLabel, nextStep, o
   disc.appendChild(el("b", null, String(ticked)));
   disc.appendChild(el("span", null, `of ${all} completed`));
   wrap.appendChild(disc);
-  wrap.appendChild(el("div", "rw-h", `${cleared}, gone`));
+  wrap.appendChild(el("div", "rw-h", `${cleared}, done`));
   wrap.appendChild(el("div", "rw-chip", roomLabel));
   root.appendChild(wrap);
 
