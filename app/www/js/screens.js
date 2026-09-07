@@ -1382,7 +1382,16 @@ export function result(root, { index, match, scan, product, query, productNamed,
   const flagged = FRONTS.filter((f) => applies(f) && ["caution", "fail"].includes(statusOf(f[0])));
   const populated = FRONTS.filter((f) => applies(f) && statusOf(f[0]) !== "unknown");
   const positive = v.asserted && v.stance === "good";
-  const shown = positive ? populated : (flagged.length ? flagged : populated);
+  // Rule 1.1, in the interface this time. Adverse evidence may reach a product
+  // we have not researched; favourable evidence may not. The badge withholds
+  // the verdict and then this list used to hand it straight back as a column of
+  // green ticks: a Caboo scan read "No verdict on this product" directly above
+  // two passing fronts, which is the verdict, drawn in the one colour everyone
+  // reads without reading. Where we are not asserting, only a finding against
+  // the product is shown, and where there is none the sentence above carries it.
+  const shown = v.asserted
+    ? (positive ? populated : (flagged.length ? flagged : populated))
+    : flagged;
   const unassessed = FRONTS.filter((f) => applies(f) && statusOf(f[0]) === "unknown");
 
   const printed = [];
