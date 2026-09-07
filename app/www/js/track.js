@@ -43,7 +43,7 @@ export function track(event, props) {
   if (!event) return;
   queue.push({
     event,
-    props: { ...(props || {}), bundle, platform: window.Capacitor ? "ios" : "web" },
+    props: { ...(props || {}), bundle, platform: window.Capacitor ? window.Capacitor.getPlatform() : "web" },
     at: Date.now(),
   });
   if (queue.length >= 12) return flush();
