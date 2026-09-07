@@ -515,7 +515,7 @@ export function detoxKids(root, { unlocked, onBuyApp, onRestore, canBuyInApp, on
 
   root.appendChild(el("div", "dx-k", "What is inside"));
   root.appendChild(el("p", "dx-why",
-    "Twenty three swaps for bottles and feeding, the nursery, wipes and creams, in the order that "
+    "The swaps for bottles and feeding, the nursery, wipes and creams, in the order that "
     + "matters for someone that small. Each one says why it matters, what we would buy, and the way "
     + "to do it for nothing."));
 
