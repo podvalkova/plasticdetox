@@ -34,9 +34,9 @@ it still surfaces for people who think of it as a shopping tool.
     - Scan a barcode or search any brand for an instant verdict
     - Four checks behind every verdict: formula, packaging, recalls,
       independent lab tests
-    - 960 brands researched by hand, with verdicts on exact products
-    - A step by step home detox: 23 plastic sources, in the order that cuts
-      exposure fastest
+    - A brand database researched by hand, with verdicts on exact products
+    - A step by step home detox, tackling plastic sources in the order that
+      cuts exposure fastest
     - Vetted swaps for every step, always with a free option that counts the
       same
     - A shop of products that passed, organized room by room
