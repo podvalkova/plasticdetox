@@ -561,7 +561,90 @@ async function handleKidsClaim(request, env, corsOrigin) {
 }
 
 /**
- * In app purchase: prove it with StoreKit 2's signed transaction.
+ * Google purchase: prove it by asking Google.
+ *
+ * A Play purchase token means nothing on its own; the proof is the Play
+ * Developer API confirming it names a real, paid, unrefunded purchase of our
+ * product. Auth is a service account key signed into a short lived access
+ * token with WebCrypto, cached because one worker instance answers many buys.
+ */
+let googleAccess = null;
+async function googleAccessToken(env) {
+  if (googleAccess && Date.now() < googleAccess.until) return googleAccess.value;
+  const now = Math.floor(Date.now() / 1000);
+  const enc = (o) => btoa(JSON.stringify(o)).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+  const unsigned = enc({ alg: "RS256", typ: "JWT" }) + "." + enc({
+    iss: env.GOOGLE_SA_EMAIL,
+    scope: "https://www.googleapis.com/auth/androidpublisher",
+    aud: "https://oauth2.googleapis.com/token",
+    iat: now,
+    exp: now + 3600,
+  });
+  const der = Uint8Array.from(
+    atob(String(env.GOOGLE_SA_KEY || "").replace(/-----[A-Z ]+-----|\\n|\s/g, "")),
+    (c) => c.charCodeAt(0));
+  const key = await crypto.subtle.importKey(
+    "pkcs8", der, { name: "RSASSA-PKCS1-v1_5", hash: "SHA-256" }, false, ["sign"]);
+  const sig = await crypto.subtle.sign("RSASSA-PKCS1-v1_5", key, new TextEncoder().encode(unsigned));
+  const jwt = unsigned + "." + btoa(String.fromCharCode(...new Uint8Array(sig)))
+    .replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+  const r = await fetch("https://oauth2.googleapis.com/token", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: "grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer&assertion=" + jwt,
+  });
+  const d = await r.json().catch(() => ({}));
+  if (!r.ok || !d.access_token) throw new Error("no google token");
+  googleAccess = { value: d.access_token, until: Date.now() + 45 * 60 * 1000 };
+  return d.access_token;
+}
+
+async function handleKidsVerifyPlay(body, env, corsOrigin) {
+  const token = String(body.purchaseToken || "");
+  if (!/^[\w.-]{20,600}$/.test(token)) {
+    return json({ ok: false, error: "Bad token" }, 400, corsOrigin);
+  }
+  if (!env.GOOGLE_SA_EMAIL || !env.GOOGLE_SA_KEY) {
+    return json({ ok: false, error: "Not configured" }, 503, corsOrigin);
+  }
+  let access;
+  try {
+    access = await googleAccessToken(env);
+  } catch {
+    return json({ ok: false, error: "Not configured" }, 503, corsOrigin);
+  }
+  const wanted = env.KIDS_PRODUCT_ID || "org.plasticdetox.app.baby";
+  const base = "https://androidpublisher.googleapis.com/androidpublisher/v3/applications/org.plasticdetox.app"
+    + "/purchases/products/" + encodeURIComponent(wanted) + "/tokens/" + encodeURIComponent(token);
+  const r = await fetch(base, { headers: { Authorization: "Bearer " + access } });
+  const p = await r.json().catch(() => ({}));
+  if (!r.ok) return json({ ok: false, error: "Unverified receipt" }, 400, corsOrigin);
+  // 0 purchased, 1 canceled, 2 pending.
+  if (p.purchaseState !== 0) {
+    return json({ ok: false, error: p.purchaseState === 2 ? "Pending" : "Refunded" }, 400, corsOrigin);
+  }
+
+  // One Google purchase, one token, however many times it is presented.
+  const ref = String(p.orderId || token.slice(0, 60));
+  const seen = await env.BRAND_SEARCHES.get("kidsgoogle:" + ref);
+  if (seen) return json({ ok: true, pass: seen }, 200, corsOrigin);
+
+  // Acknowledge, or Google refunds an unacknowledged purchase after three days.
+  if (p.acknowledgementState === 0) {
+    await fetch(base + ":acknowledge", {
+      method: "POST",
+      headers: { Authorization: "Bearer " + access, "Content-Type": "application/json" },
+      body: "{}",
+    }).catch(() => {});
+  }
+  const pass = await mintKidsPass(env, "play", ref);
+  await env.BRAND_SEARCHES.put("kidsgoogle:" + ref, pass);
+  return json({ ok: true, pass }, 200, corsOrigin);
+}
+
+/**
+ * In app purchase: prove it with StoreKit 2's signed transaction, or hand a
+ * Play token to the Google prover above.
  *
  * The signature is checked against the leaf certificate in the JWS header and
  * the chain is required to end at Apple's own root, so a forged payload naming
@@ -572,6 +655,7 @@ async function handleKidsClaim(request, env, corsOrigin) {
 async function handleKidsVerify(request, env, corsOrigin) {
   try {
     const body = await request.json().catch(() => ({}));
+    if (body.store === "play") return await handleKidsVerifyPlay(body, env, corsOrigin);
     const jws = String(body.jws || "");
     let claim;
     try {

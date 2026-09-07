@@ -538,10 +538,11 @@ function draw() {
       price: kidsPrice,
       unlocked: kids.unlocked(),
       canBuyInApp: kids.canBuyInApp(),
+      accountName: kids.accountName(),
       onLater: back,
       onBuyApp: async () => {
         track("kids_buy_app", {});
-        showBusy("Talking to the App Store");
+        showBusy(`Talking to ${kids.storeName()}`);
         const r = await kids.buyInApp();
         hideBusy();
         if (r === "ok") { track("kids_unlocked", { via: "iap" }); toast("Opened. The room is on your list"); render(); }
@@ -550,11 +551,11 @@ function draw() {
         else toast("That did not go through");
       },
       onRestore: async () => {
-        showBusy("Checking with the App Store");
+        showBusy(`Checking with ${kids.storeName()}`);
         const r = await kids.restore();
         hideBusy();
         if (r === "ok") { track("kids_unlocked", { via: "restore" }); toast("Restored"); render(); }
-        else if (r === "none") toast("No purchase found on this Apple ID");
+        else if (r === "none") toast(`No purchase found on this ${kids.accountName()}`);
         else toast("Could not check right now");
       },
     });

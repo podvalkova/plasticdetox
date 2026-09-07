@@ -506,7 +506,7 @@ export function detox(root, { phases, done, seen, room, onRoom, onStep, onKids, 
  * only exists where StoreKit does; anywhere else the room says so quietly
  * rather than showing a button that cannot work.
  */
-export function detoxKids(root, { unlocked, onBuyApp, onRestore, canBuyInApp, onLater, price }) {
+export function detoxKids(root, { unlocked, onBuyApp, onRestore, canBuyInApp, onLater, price, accountName }) {
   root.classList.add("with-foot");
   root.appendChild(el("div", "dx-k", unlocked ? "Kids \u00b7 open" : "Kids \u00b7 locked"));
   const row = el("div", "dx-titrow");
@@ -543,14 +543,14 @@ export function detoxKids(root, { unlocked, onBuyApp, onRestore, canBuyInApp, on
 
   root.appendChild(el("div", "dx-k free", price ? `One payment \u00b7 ${price}` : "One payment"));
   root.appendChild(el("div", "step-free dx-free",
-    "Bought once and yours for good, on every device signed in to your Apple ID."));
+    `Bought once and yours for good, on every device signed in to your ${accountName || "Apple ID"}.`));
 
   const foot = el("div", "dx-foot");
   const buy = el("button", "cta", price ? `Unlock the kids room \u00b7 ${price}` : "Unlock the kids room");
   buy.onclick = onBuyApp;
   foot.appendChild(buy);
-  // Apple requires this on a non consumable, and it is the whole account
-  // system: the Apple ID is the login, so a new phone needs nothing typed.
+  // Both stores require this on a non consumable, and it is the whole account
+  // system: the store account is the login, so a new phone needs nothing typed.
   const restore = el("button", "dx-ghost", "Restore a purchase");
   restore.onclick = onRestore;
   foot.appendChild(restore);

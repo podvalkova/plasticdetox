@@ -88,6 +88,15 @@ function purchases() {
 
 export function canBuyInApp() { return !!purchases(); }
 
+/** Which store this device buys from: "play" on Android, "apple" elsewhere. */
+function store() {
+  const cap = window.Capacitor;
+  return cap && cap.getPlatform && cap.getPlatform() === "android" ? "play" : "apple";
+}
+
+export function storeName() { return store() === "play" ? "Google Play" : "the App Store"; }
+export function accountName() { return store() === "play" ? "Google account" : "Apple ID"; }
+
 /**
  * The price Apple will actually charge, in the reader's own currency.
  *
@@ -108,12 +117,16 @@ export async function price() {
   }
 }
 
-/** Redeem a StoreKit transaction with the worker, which checks Apple's signature. */
-async function redeem(jws) {
+/**
+ * Redeem a purchase with the worker: Apple's signed transaction, or the Play
+ * purchase token, whichever this device produces. The worker checks it with
+ * the store it came from.
+ */
+async function redeem(proof) {
   const r = await fetch(`${WORKER}/kids-verify`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ jws }),
+    body: JSON.stringify(proof),
   });
   const d = await r.json().catch(() => ({}));
   if (!d || !d.ok || !d.pass) return false;
@@ -122,14 +135,23 @@ async function redeem(jws) {
   return true;
 }
 
+function proofFrom(t) {
+  if (store() === "play") {
+    const token = (t && t.purchaseToken) || "";
+    return token ? { store: "play", purchaseToken: token } : null;
+  }
+  const jws = (t && (t.jwsRepresentation || t.transactionReceipt || t.receipt)) || "";
+  return jws ? { jws } : null;
+}
+
 export async function buyInApp() {
   const p = purchases();
   if (!p) return "unavailable";
   try {
     const t = await p.purchaseProduct({ productIdentifier: PRODUCT, productType: "inapp" });
-    const jws = (t && (t.jwsRepresentation || t.transactionReceipt || t.receipt)) || "";
-    if (!jws) return "failed";
-    return (await redeem(jws)) ? "ok" : "failed";
+    const proof = proofFrom(t);
+    if (!proof) return "failed";
+    return (await redeem(proof)) ? "ok" : "failed";
   } catch (e) {
     // A cancelled purchase is a normal outcome, not an error to shout about.
     return /cancel/i.test(String((e && e.message) || e)) ? "cancelled" : "failed";
@@ -137,18 +159,26 @@ export async function buyInApp() {
 }
 
 /**
- * Restore. Apple requires this for a non consumable, and it is the whole
- * account system: the Apple ID is the login, so a new phone needs no email,
- * no password and nothing typed.
+ * Restore. Both stores require this for a non consumable, and it is the whole
+ * account system: the store account is the login, so a new phone needs no
+ * email, no password and nothing typed.
  */
 export async function restore() {
   const p = purchases();
   if (!p) return "unavailable";
   try {
+    if (store() === "play") {
+      const r = await p.getPurchases({ productType: "inapp" }).catch(() => null);
+      const owned = ((r && r.purchases) || []).find(
+        (t) => (t.productIdentifier || t.productId) === PRODUCT && t.purchaseToken);
+      const proof = owned && proofFrom(owned);
+      if (proof && await redeem(proof)) return "ok";
+      return "none";
+    }
     await p.restorePurchases();
     const owned = await p.getProduct({ productIdentifier: PRODUCT }).catch(() => null);
     const jws = owned && (owned.jwsRepresentation || owned.transactionReceipt);
-    if (jws && await redeem(jws)) return "ok";
+    if (jws && await redeem({ jws })) return "ok";
     return "none";
   } catch {
     return "failed";
