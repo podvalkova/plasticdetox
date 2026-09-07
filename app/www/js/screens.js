@@ -502,9 +502,9 @@ export function detox(root, { phases, done, seen, room, onRoom, onStep, onKids, 
  * The Kids room, before it is unlocked.
  *
  * The room exists on the shelf so a parent knows it is there, and it opens to
- * a teaser rather than a paywall wall of text. The package itself is bought on
- * the website, which is also the Apple compliant path: the app links out, the
- * purchase happens in the browser.
+ * a teaser rather than a paywall wall of text. The purchase is StoreKit, so it
+ * only exists where StoreKit does; anywhere else the room says so quietly
+ * rather than showing a button that cannot work.
  */
 export function detoxKids(root, { unlocked, onBuyApp, onRestore, canBuyInApp, onLater, price }) {
   root.classList.add("with-foot");
@@ -530,6 +530,17 @@ export function detoxKids(root, { unlocked, onBuyApp, onRestore, canBuyInApp, on
     return;
   }
 
+  if (!canBuyInApp) {
+    root.appendChild(el("div", "step-free dx-free",
+      "The kids room is not for sale in this version yet."));
+    const foot = el("div", "dx-foot");
+    const go = el("button", "cta", "Back to the detox");
+    go.onclick = onLater;
+    foot.appendChild(go);
+    root.appendChild(foot);
+    return;
+  }
+
   root.appendChild(el("div", "dx-k free", price ? `One payment \u00b7 ${price}` : "One payment"));
   root.appendChild(el("div", "step-free dx-free",
     "Bought once and yours for good, on every device signed in to your Apple ID."));
@@ -537,7 +548,6 @@ export function detoxKids(root, { unlocked, onBuyApp, onRestore, canBuyInApp, on
   const foot = el("div", "dx-foot");
   const buy = el("button", "cta", price ? `Unlock the kids room \u00b7 ${price}` : "Unlock the kids room");
   buy.onclick = onBuyApp;
-  buy.disabled = !canBuyInApp;
   foot.appendChild(buy);
   // Apple requires this on a non consumable, and it is the whole account
   // system: the Apple ID is the login, so a new phone needs nothing typed.

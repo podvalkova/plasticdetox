@@ -18,6 +18,14 @@
   "android": {
     "backgroundColor": "#EAE8E1",
     "allowMixedContent": false,
-    "captureInput": true
+    "captureInput": true,
+    "includePlugins": [
+      "@capacitor/app",
+      "@capacitor/browser",
+      "@capacitor/haptics",
+      "@capacitor/local-notifications",
+      "@capacitor/preferences",
+      "@capgo/capacitor-updater"
+    ]
   }
 }
