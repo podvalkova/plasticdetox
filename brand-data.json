@@ -16795,14 +16795,14 @@
   "brand": "Clearly Filtered",
   "category": "Water filter",
   "stance": "good",
-  "reason": "Recommended NSF certified water pitcher with 99.5% removal and the easiest entry point, also removes PFAS.",
-  "evidence": "NSF certified, 99.5% removal, removes PFAS",
+  "reason": "Recommended pitcher and under sink filters, tested to NSF/ANSI 42, 53, 401 and 473 standards, the easiest entry points that also remove PFAS.",
+  "evidence": "Tested to NSF 42/53/401/473 standards; Mamavation and The Water Map independent test (Sept 2026) cut microplastics from 14 particles to 1 through the under sink system",
   "alternative": "",
   "sources": [
-   "baby-kids-101.html",
    "how-to-filter-pfas-and-microplastics-from-water.html",
    "kitchen-detox-101.html",
-   "best-water-filters.html"
+   "water-detox-101.html",
+   "how-to-remove-microplastics-from-drinking-water.html"
   ],
   "buy": "https://www.amazon.com/dp/B0DFC22BHT?ref=t_ac_view_request_product_image&campaignId=amzn1.campaign.38YAEF19RESRL&linkCode=tr1&tag=littleplayapp-20&linkId=amzn1.campaign.38YAEF19RESRL_1787418470763",
   "fronts": {
@@ -16823,8 +16823,8 @@
    },
    "testing": {
     "status": "pass",
-    "note": "NSF certified",
-    "origin": "extracted"
+    "note": "Tested to NSF/ANSI 42, 53, 401 and 473 standards at an IAPMO accredited lab; independent Mamavation and The Water Map test (Sept 2026) cut microplastics from 14 particles to 1 through the under sink system",
+    "origin": "hand"
    }
   },
   "reviewed": true,
@@ -21517,8 +21517,8 @@
   "id": "degree",
   "brand": "Degree",
   "category": "Personal care",
-  "stance": "careful",
-  "reason": "Conventional antiperspirant. Aluminium zirconium tetrachlorohydrex gly is the active, and aluminium is not on our hazard list. What holds it at careful is fragrance, plus talc and cyclopentasiloxane in the same stick.",
+  "stance": "skip",
+  "reason": "Contains talc, which IARC reclassified in July 2024 as probably carcinogenic to humans, alongside cyclopentasiloxane, PEG-8 distearate and fragrance. We skip Desitin for talc and this is the same ingredient.",
   "evidence": "Fragrance (parfum), talc, cyclopentasiloxane; FDA label",
   "alternative": "",
   "sources": [
@@ -21526,8 +21526,8 @@
   ],
   "fronts": {
    "formula": {
-    "status": "caution",
-    "note": "Aluminium zirconium tetrachlorohydrex gly 18.2% as the active, then cyclopentasiloxane, stearyl alcohol, PPG-14 butyl ether, hydrogenated castor oil, talc, PEG-8 distearate, fragrance (parfum), BHT. R",
+    "status": "fail",
+    "note": "Aluminium zirconium tetrachlorohydrex gly 18.2% as the active, then cyclopentasiloxane, stearyl alcohol, PPG-14 butyl ether, hydrogenated castor oil, TALC, PEG-8 distearate, fragrance (parfum), BHT. R",
     "origin": "stated"
    },
    "materials": {
@@ -21554,7 +21554,7 @@
     "asins": [
      "B00TPRG5D0"
     ],
-    "verdict": "careful",
+    "verdict": "skip",
     "note": "Conventional antiperspirant in a plastic stick. Aluminium zirconium active, with fragrance, talc and cyclopentasiloxane alongside it. Worth knowing: fragrance is an undisclosed mixture left on skin all day.",
     "origin": "hand",
     "matchAll": [
@@ -21569,15 +21569,15 @@
     ],
     "cat": "Deodorant",
     "ext": {
-     "verdict": "careful",
-     "why": "fragrance is a disclosure failure, which caps at careful",
+     "verdict": "skip",
+     "why": "talc, which IARC calls probably carcinogenic, in a product used daily on skin",
      "dated": "2026-09-08",
      "scope": "sku",
      "basis": "direct",
      "disclose": false,
      "authored": true,
      "fronts": {
-      "formula": "caution",
+      "formula": "fail",
       "materials": "caution",
       "legal": "none",
       "testing": "unassessed"
@@ -21588,7 +21588,7 @@
       "legal": "database"
      },
      "frontNotes": {
-      "formula": "Aluminium zirconium tetrachlorohydrex gly 18.2% as the active, then cyclopentasiloxane, stearyl alcohol, PPG-14 butyl ether, hydrogenated castor oil, talc, PEG-8 distearate, fragrance (parfum), BHT. Read from the FDA DailyMed label. Rule 2.1: 'fragrance' is a legal umbrella that stands in for a mixture running to tens or hundreds of ingredients, historically a phthalate carrier, on skin it is left on all day. That is a disclosure failure, which caps at careful. It is not evidence of harm, it is the absence of the evidence we would need, and the maker chose it.",
+      "formula": "Aluminium zirconium tetrachlorohydrex gly 18.2% as the active, then cyclopentasiloxane, stearyl alcohol, PPG-14 butyl ether, hydrogenated castor oil, TALC, PEG-8 distearate, fragrance (parfum), BHT. Read from the FDA DailyMed label. Talc is in the stick. IARC reclassified talc as Group 2A, probably carcinogenic to humans, on 5 July 2024, on limited human evidence, sufficient animal evidence and strong mechanistic evidence. Cosmetic talc also carries an asbestos contamination question, which is the J&J litigation. We already skip Desitin partly for talc, and this is the same ingredient in a product applied daily to skin. Cyclopentasiloxane (D5) is the first inactive ingredient. The EU restricted D5 and D6 to a maximum of 0.1 percent in leave-on cosmetics under Regulation 2024/1328, in force since 6 June 2026, on very persistent and very bioaccumulative grounds, and it names deodorant as a target category. D4 has been banned in EU cosmetics since January 2022. There is no US restriction, so this is legal here and present at far above 0.1 percent. 'Fragrance' hides a mixture that can run to hundreds of ingredients. Rule 2.1 makes that a disclosure failure, capping at careful.",
       "materials": "A plastic twist up tube. The stick is a wax and silicone solid, which the matrix in rule 3.1 pairs with a polyolefin as a caution on a leave-on product.",
       "legal": "Checked the FDA drug enforcement database on 2026-09-08. Unilever recalled Suave 24-Hour aerosol antiperspirant in 2021 for benzene. Degree was not in that recall, and rule 5.2 decays a closed recall past 24 months to informational."
      },
@@ -60167,9 +60167,9 @@
   ],
   "fronts": {
    "formula": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "Cyclopentasiloxane, stearyl alcohol, mineral oil, dimethicone, petrolatum, hydrogenated castor oil, PPG-14 butyl ether, fragrance, behenyl alcohol. Read from the FDA DailyMed label. Cyclopentasiloxane",
+    "origin": "stated"
    },
    "materials": {
     "status": "unknown",
@@ -60220,7 +60220,7 @@
     ],
     "ext": {
      "verdict": "careful",
-     "why": "fragrance is a disclosure failure, which caps at careful",
+     "why": "cyclopentasiloxane above the EU leave-on limit, plus fragrance",
      "dated": "2026-09-08",
      "scope": "sku",
      "basis": "direct",
@@ -60238,7 +60238,7 @@
       "legal": "database"
      },
      "frontNotes": {
-      "formula": "Cyclopentasiloxane, stearyl alcohol, mineral oil, dimethicone, petrolatum, hydrogenated castor oil, PPG-14 butyl ether, fragrance, behenyl alcohol. Read from the FDA DailyMed label. Rule 2.1: 'fragrance' is a legal umbrella standing in for a mixture of tens to hundreds of ingredients, historically a phthalate carrier, on skin left on all day. A disclosure failure caps at careful. It is not evidence of harm, it is the absence of evidence we would need, and the maker chose it.",
+      "formula": "Cyclopentasiloxane, stearyl alcohol, mineral oil, dimethicone, petrolatum, hydrogenated castor oil, PPG-14 butyl ether, fragrance, behenyl alcohol. Read from the FDA DailyMed label. Cyclopentasiloxane (D5) is the first inactive ingredient. The EU restricted D5 and D6 to a maximum of 0.1 percent in leave-on cosmetics under Regulation 2024/1328, in force since 6 June 2026, on very persistent and very bioaccumulative grounds, and it names deodorant as a target category. D4 has been banned in EU cosmetics since January 2022. There is no US restriction, so this is legal here and present at far above 0.1 percent. 'Fragrance' hides a mixture that can run to hundreds of ingredients. Rule 2.1 makes that a disclosure failure, capping at careful. Mineral oil and petrolatum are petroleum derived; fully refined grades are the norm in cosmetics but refinement is not disclosed.",
       "materials": "A plastic twist up tube holding a wax and silicone solid, which rule 3.1 pairs with a polyolefin as a caution on a leave-on product.",
       "legal": "Checked the FDA drug enforcement database on 2026-09-08. Procter & Gamble's 2021 benzene action names 'Secret, powder fresh, Aluminum chlorohydrate 24%' for chemical contamination and the Old Spice and Secret dry sprays for a CGMP deviation at the same facility. All 2021, so rule 5.2 decays them to informational: recorded, not verdict setting."
      },
@@ -71718,9 +71718,9 @@
   ],
   "fronts": {
    "formula": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "Cyclopentasiloxane, stearyl alcohol, mineral oil, dimethicone, petrolatum, hydrogenated castor oil, PPG-14 butyl ether, fragrance, cyclodextrin, behenyl alcohol. Read from the FDA DailyMed label. Cycl",
+    "origin": "stated"
    },
    "materials": {
     "status": "unknown",
@@ -71769,7 +71769,7 @@
     ],
     "ext": {
      "verdict": "careful",
-     "why": "fragrance is a disclosure failure, which caps at careful",
+     "why": "cyclopentasiloxane above the EU leave-on limit, plus fragrance",
      "dated": "2026-09-08",
      "scope": "sku",
      "basis": "direct",
@@ -71787,7 +71787,7 @@
       "legal": "database"
      },
      "frontNotes": {
-      "formula": "Cyclopentasiloxane, stearyl alcohol, mineral oil, dimethicone, petrolatum, hydrogenated castor oil, PPG-14 butyl ether, fragrance, cyclodextrin, behenyl alcohol. Read from the FDA DailyMed label. Rule 2.1: 'fragrance' is a legal umbrella standing in for a mixture of tens to hundreds of ingredients, historically a phthalate carrier, on skin left on all day. A disclosure failure caps at careful. It is not evidence of harm, it is the absence of evidence we would need, and the maker chose it.",
+      "formula": "Cyclopentasiloxane, stearyl alcohol, mineral oil, dimethicone, petrolatum, hydrogenated castor oil, PPG-14 butyl ether, fragrance, cyclodextrin, behenyl alcohol. Read from the FDA DailyMed label. Cyclopentasiloxane (D5) is the first inactive ingredient. The EU restricted D5 and D6 to a maximum of 0.1 percent in leave-on cosmetics under Regulation 2024/1328, in force since 6 June 2026, on very persistent and very bioaccumulative grounds, and it names deodorant as a target category. D4 has been banned in EU cosmetics since January 2022. There is no US restriction, so this is legal here and present at far above 0.1 percent. 'Fragrance' hides a mixture that can run to hundreds of ingredients. Rule 2.1 makes that a disclosure failure, capping at careful. Mineral oil and petrolatum are petroleum derived; fully refined grades are the norm but refinement is not disclosed.",
       "materials": "A plastic twist up tube holding a wax and silicone solid, which rule 3.1 pairs with a polyolefin as a caution on a leave-on product.",
       "legal": "Checked the FDA drug enforcement database on 2026-09-08. Procter & Gamble's 2021 benzene action names 'Secret, powder fresh, Aluminum chlorohydrate 24%' for chemical contamination and the Old Spice and Secret dry sprays for a CGMP deviation at the same facility. All 2021, so rule 5.2 decays them to informational: recorded, not verdict setting."
      },
@@ -74572,7 +74572,7 @@
     "cat": "Deodorant",
     "ext": {
      "verdict": "careful",
-     "why": "fragrance is a disclosure failure, which caps at careful",
+     "why": "cyclomethicone above the EU leave-on limit, plus fragrance and an ethoxylated PEG",
      "dated": "2026-09-08",
      "scope": "sku",
      "basis": "direct",
@@ -74590,7 +74590,7 @@
       "legal": "database"
      },
      "frontNotes": {
-      "formula": "Palm kernel oil, stearyl alcohol, cyclomethicone, C12-15 alkyl benzoate, PPG-14 butyl ether, hydrogenated castor oil, hydrogenated soybean oil, PEG-8 distearate, fragrance, behenyl alcohol, citric acid. Read from the FDA DailyMed label. Rule 2.1: 'fragrance' is a legal umbrella that stands in for a mixture running to tens or hundreds of ingredients, historically a phthalate carrier, on skin it is left on all day. That is a disclosure failure, which caps at careful. It is not evidence of harm, it is the absence of the evidence we would need, and the maker chose it.",
+      "formula": "Palm kernel oil, stearyl alcohol, cyclomethicone, C12-15 alkyl benzoate, PPG-14 butyl ether, hydrogenated castor oil, hydrogenated soybean oil, PEG-8 distearate, fragrance, behenyl alcohol, citric acid. Read from the FDA DailyMed label. Cyclomethicone is a mixture of cyclic siloxanes, typically D5. Cyclopentasiloxane (D5) is the first inactive ingredient. The EU restricted D5 and D6 to a maximum of 0.1 percent in leave-on cosmetics under Regulation 2024/1328, in force since 6 June 2026, on very persistent and very bioaccumulative grounds, and it names deodorant as a target category. D4 has been banned in EU cosmetics since January 2022. There is no US restriction, so this is legal here and present at far above 0.1 percent. 'Fragrance' hides a mixture that can run to hundreds of ingredients. Rule 2.1 makes that a disclosure failure, capping at careful. PEG-8 distearate is ethoxylated, which is the 1,4-dioxane route we flag on detergents.",
       "materials": "A plastic twist up tube. The stick is a wax and silicone solid, which the matrix in rule 3.1 pairs with a polyolefin as a caution on a leave-on product.",
       "legal": "Checked the FDA drug enforcement database on 2026-09-08. Colgate-Palmolive's records are toothpaste labelling mix ups, PreviDent and hello, with nothing on Speed Stick."
      },
