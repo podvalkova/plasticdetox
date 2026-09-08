@@ -182,9 +182,15 @@ await screen("unreadable barcode still offers the free check", async (p) => {
   if (!ctas.some((t) => t.includes("Request a free check"))) {
     throw new Error("no free check offered when the product could not be identified");
   }
-  // And it has to ask what the thing is, or the request cannot be actioned.
-  const types = await p.$$eval(".card input", (ns) => ns.map((n) => n.type));
-  if (!types.includes("text")) throw new Error("no field to name the product");
+  // And it has to ask for BOTH halves. A brand on its own is not a research
+  // request: our product verdicts disagree with the brand verdict often enough
+  // that "Native" could mean a good stick or a cautioned one.
+  const labels = await p.$$eval(".card .field-k", (ns) => ns.map((n) => n.textContent.trim()));
+  for (const want of ["Brand", "Product"]) {
+    if (!labels.some((t) => t === want)) {
+      throw new Error(`no "${want}" field on the request form`);
+    }
+  }
 });
 
 await screen("opens on detox", async (p) => {

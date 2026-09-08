@@ -1509,6 +1509,15 @@ export function result(root, { index, match, scan, product, query, productNamed,
       `Leave your email and we will research ${v.brand.brand}`
       + `${v.product && v.product.name ? " " + v.product.name : ""} by hand `
       + "and send you the verdict, usually within 2 business days."));
+    // We know the brand here. What we usually do not know is which of its
+    // products is in someone's hand, and that is the half that decides the
+    // answer, so ask for it rather than send the brand on its own.
+    const known = (v.product && v.product.name) || "";
+    let askProduct = null;
+    if (!known) {
+      askProduct = field("For example Coconut & Vanilla deodorant", query || "", "Which product");
+      ask.appendChild(askProduct.wrap);
+    }
     const input = el("input");
     input.type = "email";
     input.placeholder = "you@email.com";
@@ -1517,7 +1526,7 @@ export function result(root, { index, match, scan, product, query, productNamed,
     ask.appendChild(input);
     const btn = el("button", "cta ghost", "Request a free check");
     btn.onclick = () => onRequest(
-      v.brand.brand, (v.product && v.product.name) || query || "", input.value, btn);
+      v.brand.brand, known || (askProduct ? askProduct.input.value.trim() : ""), input.value, btn);
     ask.appendChild(btn);
     root.appendChild(ask);
   }
@@ -1698,13 +1707,16 @@ export function unknown(root, { scan, brand, product, hasPass, onCheck, onReques
   free.appendChild(el("p", null, named
     ? `Leave your email and our team will research ${named} by hand and email you the verdict, usually within 2 business days.`
     : "Tell us what it is and our team will research it by hand and email you the verdict, usually within 2 business days."));
-  let nameInput = null;
+  // Brand and product as two fields, the same as the Check screen, and for the
+  // same reason its comment gives: one box invites a brand name on its own, and
+  // a brand is not a research request. "Native" could be any of a dozen sticks
+  // with different formulas. Both are required below.
+  let brandField = null, productField = null;
   if (!named) {
-    nameInput = el("input");
-    nameInput.type = "text";
-    nameInput.placeholder = "Brand and product, e.g. Native deodorant";
-    nameInput.autocapitalize = "words";
-    free.appendChild(nameInput);
+    brandField = field("For example Native", brand || "", "Brand");
+    productField = field("For example Coconut & Vanilla deodorant", product || "", "Product");
+    free.appendChild(brandField.wrap);
+    free.appendChild(productField.wrap);
   }
   const emailInput = el("input");
   emailInput.type = "email";
@@ -1714,7 +1726,9 @@ export function unknown(root, { scan, brand, product, hasPass, onCheck, onReques
   free.appendChild(emailInput);
   const freeBtn = el("button", "cta", "Request a free check");
   freeBtn.onclick = () => onRequest(
-    nameInput ? nameInput.value.trim() : named, emailInput.value, freeBtn);
+    brandField ? brandField.input.value.trim() : (brand || named),
+    productField ? productField.input.value.trim() : (product || ""),
+    emailInput.value, freeBtn);
   free.appendChild(freeBtn);
   root.appendChild(free);
 

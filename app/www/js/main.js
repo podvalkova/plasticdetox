@@ -373,10 +373,14 @@ function draw() {
       // barcode, because a request to research "0812154030013" is not a
       // request anybody can action. The code still travels with it so the
       // reviewer can see what was actually scanned.
-      onRequest: (typed, email, btn) => requestResearch({
-        brand: typed || state.brand || state.query || "",
-        product: state.product
-          || (state.scan && state.scan.code ? `scanned barcode ${state.scan.code}` : ""),
+      // The screen supplies both halves now. The barcode travels with the
+      // product name rather than instead of it, so the reviewer can see what
+      // was actually scanned without it standing in for a description.
+      onRequest: (typedBrand, typedProduct, email, btn) => requestResearch({
+        brand: typedBrand || state.brand || state.query || "",
+        product: [typedProduct || state.product,
+                  state.scan && state.scan.code ? `(scanned ${state.scan.code})` : ""]
+                 .filter(Boolean).join(" "),
       }, email, btn),
       onBuy: () => openExternal(check.buyUrl(state.brand || state.query, state.product)),
       onPaste: promptForPass,
@@ -788,12 +792,18 @@ function runCheck({ brand, product }) {
  * that minute bearable.
  */
 async function runInstantCheck(state, button, log) {
-  const brand = state.brand || state.query || "";
-  const product = state.product || "";
-  // A request with no name is a request nobody can action, and it would sit in
-  // the queue looking like work. Ask rather than accept it.
-  if (!brand.trim()) {
-    toast("Tell us the brand and product, so we know what to research.");
+  const brand = (state.brand || state.query || "").trim();
+  const product = (state.product || "").trim();
+  // Both halves, or it is not a request anybody can action. A brand on its own
+  // is the weakest thing we hold: our own product verdicts disagree with the
+  // brand verdict often enough that "Native" could mean a good stick or a
+  // cautioned one. Asking is better than queueing work that cannot be done.
+  if (!brand) {
+    toast("Which brand? We need that to look it up.");
+    return;
+  }
+  if (!product) {
+    toast("Which product? A brand on its own is not enough to research.");
     return;
   }
   button.disabled = true;
