@@ -369,7 +369,15 @@ function draw() {
       product: state.product || "",
       hasPass: !!check.getPass(),
       onCheck: (btn, log) => runInstantCheck(state, btn, log),
-      onRequest: (email, btn) => requestResearch(state, email, btn),
+      // The screen now supplies a name when we could not read one off the
+      // barcode, because a request to research "0812154030013" is not a
+      // request anybody can action. The code still travels with it so the
+      // reviewer can see what was actually scanned.
+      onRequest: (typed, email, btn) => requestResearch({
+        brand: typed || state.brand || state.query || "",
+        product: state.product
+          || (state.scan && state.scan.code ? `scanned barcode ${state.scan.code}` : ""),
+      }, email, btn),
       onBuy: () => openExternal(check.buyUrl(state.brand || state.query, state.product)),
       onPaste: promptForPass,
       onOpen: openExternal,
@@ -782,6 +790,12 @@ function runCheck({ brand, product }) {
 async function runInstantCheck(state, button, log) {
   const brand = state.brand || state.query || "";
   const product = state.product || "";
+  // A request with no name is a request nobody can action, and it would sit in
+  // the queue looking like work. Ask rather than accept it.
+  if (!brand.trim()) {
+    toast("Tell us the brand and product, so we know what to research.");
+    return;
+  }
   button.disabled = true;
   button.textContent = "Checking";
   log.replaceChildren();

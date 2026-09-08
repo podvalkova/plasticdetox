@@ -153,9 +153,38 @@ await screen("unknown product", async (p) => {
   await new Promise((r) => setTimeout(r, 700));
   await need(p, ".badge", "not reviewed badge");
   const ctas = await p.$$eval(".card .cta", (ns) => ns.map((n) => n.textContent.trim()));
-  for (const want of ["Get checks", "Request free review"]) {
+  for (const want of ["Get checks", "Request a free check"]) {
     if (!ctas.some((t) => t.includes(want))) throw new Error(`missing "${want}"`);
   }
+  // The free check has to come before the paid pack. Leading with the $5 pack
+  // while giving the same answer away is the kind of thing that creeps back in
+  // one reorder at a time.
+  const iFree = ctas.findIndex((t) => t.includes("Request a free check"));
+  const iPaid = ctas.findIndex((t) => t.includes("Get checks"));
+  if (iFree > iPaid) throw new Error("the paid pack is listed above the free check");
+});
+
+// The case that actually broke: a barcode we cannot read at all. The free
+// review used to be gated on having identified the product, so the one screen
+// most likely to appear in a shop offered the paid pack and nothing else.
+await screen("unreadable barcode still offers the free check", async (p) => {
+  await p.evaluate(async () => {
+    const screens = await import("./js/screens.js");
+    const root = document.querySelector(".view") || document.body;
+    root.innerHTML = "";
+    screens.unknown(root, {
+      scan: { code: "0812154030013", packaging: [] }, brand: "", product: "",
+      hasPass: false, onCheck() {}, onRequest() {}, onBuy() {},
+      onOpen() {}, onSearch() {}, onPaste() {},
+    });
+  });
+  const ctas = await p.$$eval(".card .cta", (ns) => ns.map((n) => n.textContent.trim()));
+  if (!ctas.some((t) => t.includes("Request a free check"))) {
+    throw new Error("no free check offered when the product could not be identified");
+  }
+  // And it has to ask what the thing is, or the request cannot be actioned.
+  const types = await p.$$eval(".card input", (ns) => ns.map((n) => n.type));
+  if (!types.includes("text")) throw new Error("no field to name the product");
 });
 
 await screen("opens on detox", async (p) => {

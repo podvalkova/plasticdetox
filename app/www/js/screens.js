@@ -1682,10 +1682,46 @@ export function unknown(root, { scan, brand, product, hasPass, onCheck, onReques
   box.appendChild(searchInput);
   if (!named) { root.appendChild(box); root.appendChild(results); }
 
-  // Same two ways forward as the site: pay for the automated check now, or ask
-  // a person to do it for free and wait two business days.
+  // Free first, and never gated.
+  //
+  // This card used to be skipped whenever we could not name the product, which
+  // is exactly the case a scanner produces most: an unreadable barcode offered
+  // the $5 pack and nothing else, so the one free way forward disappeared at
+  // the moment it was most needed. It was gated because a request needs
+  // something to research and a bare barcode is not it. The answer is to ask
+  // for the name rather than to withdraw the offer.
+  //
+  // It is also placed above the paid check now. Leading with the pack while a
+  // free review exists sells something we give away.
+  const free = el("div", "card");
+  free.appendChild(el("h2", null, "Ask us to check it, free"));
+  free.appendChild(el("p", null, named
+    ? `Leave your email and our team will research ${named} by hand and email you the verdict, usually within 2 business days.`
+    : "Tell us what it is and our team will research it by hand and email you the verdict, usually within 2 business days."));
+  let nameInput = null;
+  if (!named) {
+    nameInput = el("input");
+    nameInput.type = "text";
+    nameInput.placeholder = "Brand and product, e.g. Native deodorant";
+    nameInput.autocapitalize = "words";
+    free.appendChild(nameInput);
+  }
+  const emailInput = el("input");
+  emailInput.type = "email";
+  emailInput.placeholder = "you@email.com";
+  emailInput.autocapitalize = "none";
+  emailInput.autocomplete = "email";
+  free.appendChild(emailInput);
+  const freeBtn = el("button", "cta", "Request a free check");
+  freeBtn.onclick = () => onRequest(
+    nameInput ? nameInput.value.trim() : named, emailInput.value, freeBtn);
+  free.appendChild(freeBtn);
+  root.appendChild(free);
+
+  // And the paid one, for someone who wants the answer in the aisle rather
+  // than in two days.
   const now = el("div", "card");
-  now.appendChild(el("h2", null, named ? "Get it checked now" : "Or get it checked now"));
+  now.appendChild(el("h2", null, "Or get the answer now"));
   now.appendChild(el("p", null,
     "Our research system runs the same four checks we use for every verdict: formula, materials, recalls and lawsuits, independent tests. It answers in about a minute and shows its sources."));
 
@@ -1706,23 +1742,6 @@ export function unknown(root, { scan, brand, product, hasPass, onCheck, onReques
     now.appendChild(paste);
   }
   root.appendChild(now);
-
-  if (named) {
-    const free = el("div", "card");
-    free.appendChild(el("h2", null, "Or request a free review"));
-    free.appendChild(el("p", null,
-      `Leave your email and our team will research ${named} by hand and email you the verdict, usually within 2 business days.`));
-    const input = el("input");
-    input.type = "email";
-    input.placeholder = "you@email.com";
-    input.autocapitalize = "none";
-    input.autocomplete = "email";
-    free.appendChild(input);
-    const btn = el("button", "cta ghost", "Request free review");
-    btn.onclick = () => onRequest(input.value, btn);
-    free.appendChild(btn);
-    root.appendChild(free);
-  }
 
   if (scan) root.appendChild(materialsCard(scan, onOpen));
 
