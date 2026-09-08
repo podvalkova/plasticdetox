@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# Refuse a commit that leaves the product database inconsistent with its rules.
+#
+# 1.0.88 shipped with 14 rows carrying no scorecard, because validation ran
+# before the step that fills them in rather than after. A hook does not forget
+# the order.
+#
+# Only runs when brand-data.json is actually staged, so an unrelated commit is
+# not made to wait on it. Skip deliberately with: git commit --no-verify
+git diff --cached --name-only | grep -q '^brand-data\.json$' || exit 0
+echo "brand-data.json is staged, checking it against the rules..."
+if ! tools/check.sh; then
+  echo
+  echo "Refusing the commit. Run tools/check.sh --fix, or --no-verify if you mean it."
+  exit 1
+fi
