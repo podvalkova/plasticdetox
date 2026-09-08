@@ -6172,8 +6172,7 @@
      "scope": "sku",
      "basis": "direct",
      "disclose": false,
-     "rules": [],
-     "authored": true
+     "rules": []
     },
     "cat": "Sea salt"
    }
@@ -15039,8 +15038,7 @@
      "scope": "sku",
      "basis": "direct",
      "disclose": false,
-     "rules": [],
-     "authored": true
+     "rules": []
     },
     "cat": "Sea salt"
    }
@@ -15224,8 +15222,7 @@
      "disclose": false,
      "rules": [
       "3 packaging-matrix-caution"
-     ],
-     "authored": true
+     ]
     },
     "matchNot": [
      "sunscreen",
@@ -15256,9 +15253,11 @@
       "formula": "The published ingredient list carries nothing on the hazard list.",
       "materials": "We have not established what the product actually touches."
      },
-     "verdict": "careful",
+     "cappedFrom": "good",
+     "capRestoreWhy": "the note reads adversely on materials, needs a human look",
+     "verdict": "unrated",
      "dated": "2026-09-08",
-     "why": "section 6 ceiling: materials is caution",
+     "why": "the note reads adversely on materials, needs a human look",
      "fronts": {
       "formula": "pass",
       "materials": "caution",
@@ -15276,8 +15275,6 @@
      "rules": [
       "2 formula-read-from-materials"
      ],
-     "cappedFrom": "good",
-     "capRestoreWhy": "the note reads adversely on materials, needs a human look",
      "authored": true
     },
     "cat": "Sunscreen"
@@ -16454,8 +16451,7 @@
      "scope": "sku",
      "basis": "direct",
      "disclose": false,
-     "rules": [],
-     "authored": true
+     "rules": []
     },
     "cat": "Water filters"
    },
@@ -18281,8 +18277,7 @@
      "scope": "sku",
      "basis": "direct",
      "disclose": false,
-     "rules": [],
-     "authored": true
+     "rules": []
     },
     "cat": "Sunscreen"
    }
@@ -22679,12 +22674,15 @@
      ]
     ],
     "ext": {
+     "frontNotes": {
+      "formula": "Aluminium salt as the active, with fragrance among the inactives. Rule 2.1: 'fragrance' is a legal umbrella standing in for a mixture of tens to hundreds of ingredients, historically a phthalate carrier, on skin left on all day. A disclosure failure caps at careful.",
+      "materials": "A plastic twist up tube holding a wax and silicone solid, which rule 3.1 pairs with a polyolefin as a caution on a leave-on product.",
+      "legal": "Checked the FDA drug enforcement database on 2026-09-08. Unilever's records are Suave aerosol antiperspirants recalled in 2021 for benzene, a sibling line, and rule 5.2 decays a closed recall past 24 months to informational."
+     },
+     "legalNote": "Checked the FDA drug enforcement database on 2026-09-08. Nothing current on this stick.",
      "verdict": "skip",
-     "why": "cyclopentasiloxane, restricted by the EU to 0.1 percent in leave-on cosmetics since June 2026, as the first inactive ingredient",
      "dated": "2026-09-08",
-     "scope": "sku",
-     "basis": "direct",
-     "disclose": false,
+     "why": "adverse finding stands",
      "fronts": {
       "formula": "fail",
       "materials": "caution",
@@ -22696,26 +22694,10 @@
       "materials": "stated",
       "legal": "database"
      },
-     "frontNotes": {
-      "formula": "Aluminium salt as the active, with fragrance among the inactives. Rule 2.1: 'fragrance' is a legal umbrella standing in for a mixture of tens to hundreds of ingredients, historically a phthalate carrier, on skin left on all day. A disclosure failure caps at careful.",
-      "materials": "A plastic twist up tube holding a wax and silicone solid, which rule 3.1 pairs with a polyolefin as a caution on a leave-on product.",
-      "legal": "Checked the FDA drug enforcement database on 2026-09-08. Unilever's records are Suave aerosol antiperspirants recalled in 2021 for benzene, a sibling line, and rule 5.2 decays a closed recall past 24 months to informational."
-     },
-     "legalNote": "Checked the FDA drug enforcement database on 2026-09-08. Nothing current on this stick.",
-     "exposure": {
-      "type": "leave-on skin",
-      "level": "medium",
-      "score": 6.0,
-      "baby": false,
-      "route": "skin",
-      "duration": "hours",
-      "retained": "leave-on",
-      "frequency": "daily",
-      "heat": false,
-      "fat": false,
-      "why": "Applied daily to skin and left there."
-     },
-     "authored": true
+     "scope": "sku",
+     "basis": "direct",
+     "disclose": false,
+     "rules": []
     },
     "research": "Ingredients: an aluminium salt active with cyclopentasiloxane and fragrance among the inactives."
    }
@@ -27651,6 +27633,8 @@
       "formula",
       "materials"
      ],
+     "cappedFrom": "careful",
+     "capRestoreWhy": "adverse finding stands",
      "verdict": "skip",
      "dated": "2026-09-08",
      "why": "section 6 ceiling: formula is caution, materials is fail",
@@ -27669,10 +27653,7 @@
      "disclose": false,
      "rules": [
       "3 packaging-matrix-fail"
-     ],
-     "cappedFrom": "careful",
-     "capRestoreWhy": "adverse finding stands",
-     "authored": true
+     ]
     },
     "cat": "Body lotion"
    }
@@ -36123,50 +36104,30 @@
     "origin": "hand",
     "source": "supplements-and-microplastics.html",
     "ext": {
+     "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
+     "frontNotes": {
+      "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
+      "formula": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear."
+     },
      "verdict": "careful",
-     "why": "Reviewed by hand from our published research on this category.",
+     "dated": "2026-09-08",
+     "why": "adverse finding stands",
      "fronts": {
       "formula": "unassessed",
       "materials": "pass",
       "legal": "pass",
       "testing": "unassessed"
      },
-     "scope": "line",
+     "frontOrigin": {
+      "legal": "database",
+      "materials": "inferred"
+     },
+     "scope": "sku",
      "basis": "direct",
      "disclose": false,
-     "authored": true,
-     "dated": "2026-09-08",
-     "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-     "frontNotes": {
-      "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-      "formula": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear."
-     },
-     "frontOrigin": {
-      "legal": "database"
-     },
-     "exposure": {
-      "type": "supplement",
-      "level": "medium",
-      "score": 5.0,
-      "baby": false,
-      "route": "ingestion",
-      "duration": "seconds",
-      "retained": "swallowed",
-      "frequency": "daily",
-      "heat": false,
-      "fat": false,
-      "why": "Swallowed whole, daily, indefinitely."
-     },
-     "formulaAnswers": {
-      "ingredients": "",
-      "prose": "About this item 100% Pure Creatine Monohydrate for Women Monohydrate, 5g per Serving - Each scoop delivers a potent 5 grams of pure creatine monohydrate for men from Hearthy Foods, with no fillers, additives, or artificial ingredients for optimal muscle performance. 100 Servings Creatine Monohydrate Powder per Bag - A full 500g bag creatine with 100 servings, offering an extended supply to support your workout goals for longer. Micronized Creatine Monohydrate for Fast Absorption - Ultra-fine Monohydrate Creatine designed to absorb quickly in the body, providing rapid muscle fuel and supporting quicker recovery after workouts with our creatine powder for men. Boosts Muscle Strength & Endurance - Proven to increase energy output with our micronized creatine and enhance strength, helping you lift heavier and train harder with each workout with sports research creatine monohydrate. Unflavored & Easily Mixable Raw Creatine Monohydrate - Versatile, tasteless Vegan Creatine that blends smoothly with water, juice, or your favorite workout shake without any gritty texture with this best creatine for women. Vegan, Gluten-Free & Non-GMO - Crafted by Hearthy Foods, this creatine is suitable fo",
-      "complete": false,
-      "verdict": "open",
-      "summary": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear.",
-      "flagged": [],
-      "source": "amazon:B0DX7846R5",
-      "checked": "2026-09-04"
-     }
+     "rules": [
+      "3 packaging-matrix-pass"
+     ]
     },
     "cat": "Supplements"
    }
@@ -37222,8 +37183,7 @@
      "scope": "sku",
      "basis": "direct",
      "disclose": false,
-     "rules": [],
-     "authored": true
+     "rules": []
     },
     "cat": "Shampoo",
     "matchAll": [
@@ -38141,38 +38101,26 @@
     "origin": "hand",
     "source": "best-non-toxic-diapers.html",
     "ext": {
+     "frontNotes": {
+      "formula": "An object has no ingredient list. What it is made of is the materials check."
+     },
      "verdict": "skip",
-     "why": "Reviewed by hand from our published research on this category.",
+     "dated": "2026-09-08",
+     "why": "adverse finding stands",
      "fronts": {
       "formula": "none",
       "materials": "unassessed",
       "legal": "unassessed",
-      "testing": "unassessed"
-     },
-     "scope": "line",
-     "basis": "direct",
-     "disclose": false,
-     "authored": true,
-     "dated": "2026-09-08",
-     "frontNotes": {
-      "formula": "An object has no ingredient list. What it is made of is the materials check."
-     },
-     "exposure": {
-      "type": "diaper",
-      "level": "high",
-      "score": 7.0,
-      "baby": true,
-      "route": "skin",
-      "duration": "hours",
-      "retained": "prolonged",
-      "frequency": "several daily",
-      "heat": false,
-      "fat": false,
-      "why": "for a baby, which is high whatever the arithmetic says"
+      "testing": "fail"
      },
      "frontOrigin": {
-      "formula": "hand"
-     }
+      "formula": "hand",
+      "testing": "inferred"
+     },
+     "scope": "sku",
+     "basis": "direct",
+     "disclose": false,
+     "rules": []
     },
     "cat": "Diapers"
    },
@@ -38193,38 +38141,25 @@
     "origin": "hand",
     "source": "best-non-toxic-diapers.html",
     "ext": {
+     "frontNotes": {
+      "formula": "An object has no ingredient list. What it is made of is the materials check."
+     },
      "verdict": "skip",
-     "why": "Reviewed by hand from our published research on this category.",
+     "dated": "2026-09-08",
+     "why": "adverse finding stands",
      "fronts": {
       "formula": "none",
       "materials": "unassessed",
       "legal": "unassessed",
       "testing": "unassessed"
      },
-     "scope": "line",
-     "basis": "direct",
-     "disclose": false,
-     "authored": true,
-     "dated": "2026-09-08",
-     "frontNotes": {
-      "formula": "An object has no ingredient list. What it is made of is the materials check."
-     },
-     "exposure": {
-      "type": "diaper",
-      "level": "high",
-      "score": 7.0,
-      "baby": true,
-      "route": "skin",
-      "duration": "hours",
-      "retained": "prolonged",
-      "frequency": "several daily",
-      "heat": false,
-      "fat": false,
-      "why": "for a baby, which is high whatever the arithmetic says"
-     },
      "frontOrigin": {
       "formula": "hand"
-     }
+     },
+     "scope": "sku",
+     "basis": "direct",
+     "disclose": false,
+     "rules": []
     },
     "cat": "Diapers"
    },
@@ -40509,53 +40444,35 @@
     "origin": "hand",
     "source": "microplastics-in-cosmetics-and-personal-care.html",
     "ext": {
+     "frontNotes": {
+      "materials": "Emulsion contents in unspecified plastic.",
+      "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either."
+     },
+     "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
+     "inheritedFronts": [
+      "formula"
+     ],
      "verdict": "careful",
-     "why": "Reviewed by hand from our published research on this category.",
+     "dated": "2026-09-08",
+     "why": "adverse finding stands",
      "fronts": {
       "formula": "caution",
       "materials": "caution",
       "legal": "pass",
       "testing": "unassessed"
      },
-     "scope": "line",
+     "frontOrigin": {
+      "legal": "database",
+      "formula": "inferred",
+      "materials": "inferred"
+     },
+     "scope": "sku",
      "basis": "direct",
      "disclose": false,
-     "authored": true,
-     "frontNotes": {
-      "materials": "Emulsion contents in unspecified plastic.",
-      "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either."
-     },
-     "dated": "2026-09-08",
-     "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-     "frontOrigin": {
-      "legal": "database"
-     },
-     "inheritedFronts": [
-      "formula"
-     ],
-     "exposure": {
-      "type": "leave-on skin",
-      "level": "high",
-      "score": 8.0,
-      "baby": false,
-      "route": "skin",
-      "duration": "hours",
-      "retained": "leave-on",
-      "frequency": "several daily",
-      "heat": false,
-      "fat": true,
-      "why": "Left on the skin, so contact runs for hours."
-     },
-     "formulaAnswers": {
-      "ingredients": "",
-      "prose": "",
-      "complete": false,
-      "verdict": "careful",
-      "summary": "No ingredient list recorded.",
-      "flagged": [],
-      "source": "amazon:B0FKC23886",
-      "checked": "2026-09-04"
-     }
+     "rules": [
+      "2 non-disclosure-is-a-caution",
+      "3 packaging-matrix-caution"
+     ]
     },
     "cat": "Body lotion"
    }
@@ -55128,56 +55045,32 @@
     "note": "100% certified organic cotton tampons with no applicator, no synthetics, no chlorine, no dioxin, and no rayon. Fully biodegradable and compostable, including the wrapper. 100% organic cotton, no applicator. Worth knowing: No applicator requires fingertip insertion, Higher price than conventional tampons, Smaller individual box sizes.",
     "origin": "store",
     "ext": {
-     "verdict": "good",
-     "dated": "2026-08-29",
-     "why": "certified organic cotton with no plastic in the part that is inserted, and it tests clean",
-     "fronts": {
-      "formula": "pass",
-      "legal": "none",
-      "testing": "pass",
-      "materials": "pass"
-     },
-     "scope": "sku",
-     "basis": "direct",
-     "disclose": false,
-     "rules": [],
      "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-     "authored": true,
      "frontNotes": {
       "testing": "Mamavation's 2024 panel found no detectable organic fluorine in Natracare, against a 10 ppm reporting limit.",
       "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
       "materials": "Cardboard carton, paper wrapped tampons."
      },
      "testingDate": "2024",
+     "verdict": "good",
+     "dated": "2026-08-29",
+     "why": "a vetted store pick, chosen by a person at product scope",
+     "fronts": {
+      "formula": "pass",
+      "materials": "pass",
+      "legal": "none",
+      "testing": "pass"
+     },
      "frontOrigin": {
       "formula": "stated",
       "legal": "database",
       "testing": "stated",
       "materials": "stated"
      },
-     "exposure": {
-      "type": "absorbent worn",
-      "level": "high",
-      "score": 8.0,
-      "baby": false,
-      "route": "mucosal",
-      "duration": "hours",
-      "retained": "prolonged",
-      "frequency": "several daily",
-      "heat": false,
-      "fat": false,
-      "why": "Hours against mucosal tissue, which absorbs far more than skin, and changed several times a day while in use."
-     },
-     "formulaAnswers": {
-      "ingredients": "",
-      "prose": "",
-      "complete": false,
-      "verdict": "good",
-      "summary": "No ingredient list recorded.",
-      "flagged": [],
-      "source": "amazon:B001E14MJO",
-      "checked": ""
-     }
+     "scope": "sku",
+     "basis": "direct",
+     "disclose": false,
+     "rules": []
     },
     "cat": "Tampons",
     "catAuthored": true
@@ -55238,67 +55131,32 @@
     "note": "100% certified organic cotton tampons with a biodegradable cardboard applicator and paper wrapper. Totally chlorine free, no rayon, fragrance, or dye. Non detect for organic fluorine. Worth knowing: Cardboard applicator glides less easily than plastic, Higher price than conventional tampons, Regular absorbency only in this pack.",
     "origin": "store",
     "ext": {
-     "verdict": "good",
-     "dated": "2026-08-29",
-     "why": "certified organic cotton with no plastic in the part that is inserted, and it tests clean",
-     "fronts": {
-      "formula": "pass",
-      "legal": "none",
-      "testing": "pass",
-      "materials": "pass"
-     },
-     "scope": "sku",
-     "basis": "direct",
-     "disclose": false,
-     "rules": [],
      "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-     "authored": true,
      "frontNotes": {
       "testing": "Mamavation's 2024 panel found no detectable organic fluorine in Natracare, against a 10 ppm reporting limit.",
       "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
       "materials": "Cardboard carton, paper wrapped tampons."
      },
      "testingDate": "2024",
+     "verdict": "good",
+     "dated": "2026-08-29",
+     "why": "a vetted store pick, chosen by a person at product scope",
+     "fronts": {
+      "formula": "pass",
+      "materials": "pass",
+      "legal": "none",
+      "testing": "pass"
+     },
      "frontOrigin": {
       "formula": "stated",
       "legal": "database",
       "testing": "stated",
       "materials": "stated"
      },
-     "exposure": {
-      "type": "absorbent worn",
-      "level": "high",
-      "score": 8.0,
-      "baby": false,
-      "route": "mucosal",
-      "duration": "hours",
-      "retained": "prolonged",
-      "frequency": "several daily",
-      "heat": false,
-      "fat": false,
-      "why": "Hours against mucosal tissue, which absorbs far more than skin, and changed several times a day while in use."
-     },
-     "formulaAnswers": {
-      "ingredients": "",
-      "prose": "About this item 2 Pieces - Perfume And Chlorine Free, Bio-Degradable, 100% Cotton Show more",
-      "complete": false,
-      "verdict": "good",
-      "summary": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear.",
-      "flagged": [],
-      "source": "amazon:B001E1256Q",
-      "checked": "2026-09-04"
-     },
-     "testingResults": [
-      {
-       "analyte": "organic fluorine",
-       "value": null,
-       "unit": null,
-       "outcome": "non-detect",
-       "lab": null,
-       "year": null,
-       "lod": null
-      }
-     ]
+     "scope": "sku",
+     "basis": "direct",
+     "disclose": false,
+     "rules": []
     },
     "cat": "Tampons",
     "catAuthored": true,
@@ -59407,53 +59265,34 @@
     "origin": "hand",
     "source": "microplastics-in-cosmetics-and-personal-care.html",
     "ext": {
+     "frontNotes": {
+      "materials": "Emulsion contents in unspecified plastic.",
+      "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either."
+     },
+     "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
+     "inheritedFronts": [
+      "formula"
+     ],
      "verdict": "careful",
-     "why": "Reviewed by hand from our published research on this category.",
+     "dated": "2026-09-08",
+     "why": "adverse finding stands",
      "fronts": {
       "formula": "caution",
       "materials": "caution",
       "legal": "pass",
       "testing": "unassessed"
      },
-     "scope": "line",
+     "frontOrigin": {
+      "legal": "database",
+      "formula": "inferred",
+      "materials": "inferred"
+     },
+     "scope": "sku",
      "basis": "direct",
      "disclose": false,
-     "authored": true,
-     "frontNotes": {
-      "materials": "Emulsion contents in unspecified plastic.",
-      "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either."
-     },
-     "dated": "2026-09-08",
-     "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-     "frontOrigin": {
-      "legal": "database"
-     },
-     "inheritedFronts": [
-      "formula"
-     ],
-     "exposure": {
-      "type": "leave-on skin",
-      "level": "high",
-      "score": 8.0,
-      "baby": false,
-      "route": "skin",
-      "duration": "hours",
-      "retained": "leave-on",
-      "frequency": "several daily",
-      "heat": false,
-      "fat": true,
-      "why": "Left on the skin, so contact runs for hours."
-     },
-     "formulaAnswers": {
-      "ingredients": "",
-      "prose": "",
-      "complete": false,
-      "verdict": "careful",
-      "summary": "No ingredient list recorded.",
-      "flagged": [],
-      "source": "",
-      "checked": ""
-     }
+     "rules": [
+      "3 packaging-matrix-caution"
+     ]
     },
     "cat": "Body lotion"
    }
@@ -60322,50 +60161,28 @@
     "origin": "hand",
     "source": "cleanest-protein-powder-tested.html",
     "ext": {
-     "verdict": "careful",
-     "why": "Reviewed by hand from our published research on this category.",
-     "fronts": {
-      "formula": "unassessed",
-      "materials": "unassessed",
-      "legal": "pass",
-      "testing": "unassessed"
-     },
-     "scope": "line",
-     "basis": "direct",
-     "disclose": false,
-     "authored": true,
-     "dated": "2026-09-08",
      "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
      "frontNotes": {
       "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
       "formula": "No ingredient list recorded."
      },
+     "verdict": "careful",
+     "dated": "2026-09-08",
+     "why": "adverse finding stands",
+     "fronts": {
+      "formula": "unassessed",
+      "materials": "unassessed",
+      "legal": "pass",
+      "testing": "pass"
+     },
      "frontOrigin": {
-      "legal": "database"
+      "legal": "database",
+      "testing": "inferred"
      },
-     "exposure": {
-      "type": "supplement",
-      "level": "medium",
-      "score": 5.0,
-      "baby": false,
-      "route": "ingestion",
-      "duration": "seconds",
-      "retained": "swallowed",
-      "frequency": "daily",
-      "heat": false,
-      "fat": false,
-      "why": "Swallowed whole, daily, indefinitely."
-     },
-     "formulaAnswers": {
-      "ingredients": "",
-      "prose": "",
-      "complete": false,
-      "verdict": "open",
-      "summary": "No ingredient list recorded.",
-      "flagged": [],
-      "source": "amazon:B000GISTZ4",
-      "checked": ""
-     }
+     "scope": "sku",
+     "basis": "direct",
+     "disclose": false,
+     "rules": []
     },
     "cat": "Supplements"
    }
@@ -60477,41 +60294,28 @@
     "origin": "hand",
     "source": "pfas-free-dental-floss.html",
     "ext": {
+     "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
+     "frontNotes": {
+      "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
+      "formula": "An object has no ingredient list. What it is made of is the materials check."
+     },
      "verdict": "skip",
-     "why": "Reviewed by hand from our published research on this category.",
+     "dated": "2026-09-08",
+     "why": "adverse finding stands",
      "fronts": {
       "formula": "none",
       "materials": "unassessed",
       "legal": "pass",
       "testing": "unassessed"
      },
-     "scope": "line",
-     "basis": "direct",
-     "disclose": false,
-     "authored": true,
-     "dated": "2026-09-08",
-     "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-     "frontNotes": {
-      "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-      "formula": "An object has no ingredient list. What it is made of is the materials check."
-     },
      "frontOrigin": {
       "legal": "database",
       "formula": "hand"
      },
-     "exposure": {
-      "type": "floss",
-      "level": "low",
-      "score": 2.75,
-      "baby": false,
-      "route": "mucosal",
-      "duration": "seconds",
-      "retained": "spat",
-      "frequency": "daily",
-      "heat": false,
-      "fat": false,
-      "why": "Brief, but directly against gum tissue, which absorbs readily."
-     }
+     "scope": "sku",
+     "basis": "direct",
+     "disclose": false,
+     "rules": []
     },
     "cat": "Dental floss"
    }
@@ -71501,50 +71305,27 @@
     "origin": "hand",
     "source": "best-non-toxic-toothpaste-guide.html",
     "ext": {
+     "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
+     "frontNotes": {
+      "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
+      "formula": "No ingredient list recorded."
+     },
      "verdict": "careful",
-     "why": "Reviewed by hand from our published research on this category.",
+     "dated": "2026-09-08",
+     "why": "adverse finding stands",
      "fronts": {
       "formula": "unassessed",
       "materials": "unassessed",
       "legal": "pass",
       "testing": "unassessed"
      },
-     "scope": "line",
-     "basis": "direct",
-     "disclose": false,
-     "authored": true,
-     "dated": "2026-09-08",
-     "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-     "frontNotes": {
-      "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-      "formula": "No ingredient list recorded."
-     },
      "frontOrigin": {
       "legal": "database"
      },
-     "exposure": {
-      "type": "toothpaste",
-      "level": "low",
-      "score": 4.75,
-      "baby": false,
-      "route": "ingestion",
-      "duration": "minutes",
-      "retained": "spat",
-      "frequency": "several daily",
-      "heat": false,
-      "fat": false,
-      "why": "Spat out, so almost none of it is swallowed."
-     },
-     "formulaAnswers": {
-      "ingredients": "",
-      "prose": "",
-      "complete": false,
-      "verdict": "open",
-      "summary": "No ingredient list recorded.",
-      "flagged": [],
-      "source": "amazon:B07C1ZQ5ZY",
-      "checked": ""
-     }
+     "scope": "sku",
+     "basis": "direct",
+     "disclose": false,
+     "rules": []
     },
     "cat": "Toothpaste"
    }
@@ -79085,47 +78866,32 @@
     "origin": "hand",
     "source": "best-non-toxic-laundry-detergent.html",
     "ext": {
-     "verdict": "careful",
-     "why": "Reviewed by hand from our published research on this category.",
-     "fronts": {
-      "formula": "unassessed",
-      "materials": "pass",
-      "legal": "unassessed",
-      "testing": "unassessed"
-     },
-     "scope": "line",
-     "basis": "direct",
-     "disclose": false,
-     "authored": true,
      "frontNotes": {
       "materials": "Surfactant contents in unspecified plastic, diluted and rinsed, never left on skin.",
       "formula": "No ingredient list recorded."
      },
+     "verdict": "skip",
      "dated": "2026-09-08",
-     "exposure": {
-      "type": "worn textile",
-      "level": "medium",
-      "score": 7.0,
-      "baby": false,
-      "route": "skin",
-      "duration": "all day",
-      "retained": "prolonged",
-      "frequency": "daily",
-      "heat": false,
-      "fat": false,
-      "why": "Against the skin all day."
+     "why": "section 6 ceiling: formula is fail",
+     "fronts": {
+      "formula": "fail",
+      "materials": "pass",
+      "legal": "unassessed",
+      "testing": "unassessed"
      },
-     "frontOrigin": {},
-     "formulaAnswers": {
-      "ingredients": "",
-      "prose": "",
-      "complete": false,
-      "verdict": "open",
-      "summary": "No ingredient list recorded.",
-      "flagged": [],
-      "source": "amazon:B0BNWCTNYN",
-      "checked": ""
-     }
+     "frontOrigin": {
+      "formula": "inferred",
+      "materials": "inferred"
+     },
+     "scope": "sku",
+     "basis": "direct",
+     "disclose": false,
+     "rules": [
+      "3 packaging-matrix-pass"
+     ],
+     "cappedFrom": "careful",
+     "capRestoreWhy": "adverse finding stands",
+     "authored": true
     },
     "cat": "Laundry detergent"
    }
@@ -79553,12 +79319,15 @@
      ]
     ],
     "ext": {
+     "frontNotes": {
+      "formula": "Unscented: propylene glycol, water, sodium stearate, organic aloe, zinc ricinoleate, glyceryl laurate, hops CO2 extract, sunflower seed oil, ascorbic acid, lemongrass oil. Every component named, no fragrance umbrella, no aluminium.",
+      "materials": "A plastic twist up tube holding a water and glycol based stick. Rule 3.1: an aqueous formula is a poor solvent for what a polyolefin sheds, so this pairing passes.",
+      "legal": "The FDA issued a warning letter in November 2024 after a May inspection of the Sanford, Maine plant: significant CGMP violations, Pseudomonas aeruginosa in water used to manufacture toothpaste, a black mold-like substance near equipment. It concerns toothpaste and we have not established whether deodorant shares the line, but rule 5.2 names plant contamination as a mechanism that transfers, so it is a caution rather than dismissed."
+     },
+     "legalNote": "The FDA issued a warning letter in November 2024 after a May inspection of the Sanford, Maine plant: significant CGMP violations, Pseudomonas aeruginosa in water used to manufacture toothpaste, a black mold-like substance near equipment. It concerns toothpaste and we have not established whether deodorant shares the line, but rule 5.2 names plant contamination as a mechanism that transfers, so it is a caution rather than dismissed.",
      "verdict": "careful",
-     "why": "a clean named formula, held at careful by the 2024 FDA warning letter on the plant",
      "dated": "2026-09-08",
-     "scope": "sku",
-     "basis": "direct",
-     "disclose": false,
+     "why": "adverse finding stands",
      "fronts": {
       "formula": "pass",
       "materials": "pass",
@@ -79570,26 +79339,10 @@
       "materials": "stated",
       "legal": "database"
      },
-     "frontNotes": {
-      "formula": "Unscented: propylene glycol, water, sodium stearate, organic aloe, zinc ricinoleate, glyceryl laurate, hops CO2 extract, sunflower seed oil, ascorbic acid, lemongrass oil. Every component named, no fragrance umbrella, no aluminium.",
-      "materials": "A plastic twist up tube holding a water and glycol based stick. Rule 3.1: an aqueous formula is a poor solvent for what a polyolefin sheds, so this pairing passes.",
-      "legal": "The FDA issued a warning letter in November 2024 after a May inspection of the Sanford, Maine plant: significant CGMP violations, Pseudomonas aeruginosa in water used to manufacture toothpaste, a black mold-like substance near equipment. It concerns toothpaste and we have not established whether deodorant shares the line, but rule 5.2 names plant contamination as a mechanism that transfers, so it is a caution rather than dismissed."
-     },
-     "legalNote": "The FDA issued a warning letter in November 2024 after a May inspection of the Sanford, Maine plant: significant CGMP violations, Pseudomonas aeruginosa in water used to manufacture toothpaste, a black mold-like substance near equipment. It concerns toothpaste and we have not established whether deodorant shares the line, but rule 5.2 names plant contamination as a mechanism that transfers, so it is a caution rather than dismissed.",
-     "exposure": {
-      "type": "leave-on skin",
-      "level": "medium",
-      "score": 6.0,
-      "baby": false,
-      "route": "skin",
-      "duration": "hours",
-      "retained": "leave-on",
-      "frequency": "daily",
-      "heat": false,
-      "fat": false,
-      "why": "Applied daily to skin and left there."
-     },
-     "authored": true
+     "scope": "sku",
+     "basis": "direct",
+     "disclose": false,
+     "rules": []
     },
     "research": "Ingredients: propylene glycol, water, sodium stearate, organic aloe, zinc ricinoleate, glyceryl laurate, hops CO2 extract, sunflower seed oil, ascorbic acid, lemongrass oil."
    }
@@ -86910,39 +86663,29 @@
     "origin": "hand",
     "source": "best-plastic-free-chewing-gum.html",
     "ext": {
-     "verdict": "skip",
-     "why": "Reviewed by hand from our published research on this category.",
-     "fronts": {
-      "formula": "unassessed",
-      "materials": "unassessed",
-      "legal": "pass",
-      "testing": "unassessed"
-     },
-     "scope": "line",
-     "basis": "direct",
-     "disclose": false,
-     "authored": true,
-     "dated": "2026-09-08",
      "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
      "frontNotes": {
       "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either."
      },
-     "frontOrigin": {
-      "legal": "database"
+     "verdict": "skip",
+     "dated": "2026-09-08",
+     "why": "adverse finding stands",
+     "fronts": {
+      "formula": "caution",
+      "materials": "unassessed",
+      "legal": "pass",
+      "testing": "unassessed"
      },
-     "exposure": {
-      "type": "chewing gum",
-      "level": "medium",
-      "score": 5.8,
-      "baby": false,
-      "route": "mucosal",
-      "duration": "hours",
-      "retained": "transfer",
-      "frequency": "daily",
-      "heat": false,
-      "fat": false,
-      "why": "Held in the mouth for a long time, and what comes out of it during that time is swallowed."
-     }
+     "frontOrigin": {
+      "legal": "database",
+      "formula": "inferred"
+     },
+     "scope": "sku",
+     "basis": "direct",
+     "disclose": false,
+     "rules": [
+      "2.1 disclosure-failure-caps-at-caution"
+     ]
     },
     "cat": "Chewing gum"
    }
