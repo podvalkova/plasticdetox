@@ -377,6 +377,34 @@ export function isBrandLine(brand, row) {
   return name === `${brand.brand} ${brand.category || ""}`.trim().toLowerCase();
 }
 
+/**
+ * Every product of this brand we hold a row for, rated or not.
+ *
+ * `ratedProducts` drops anything unrated, which is right when the question is
+ * "what do we recommend" and wrong when the question is "which one are you
+ * holding". Asking Primally Pure offered Deodorant and nothing else, because
+ * their Body Oil, Baby Balm and Sun Cream are all unrated, so somebody holding
+ * the sunscreen could not say so, and we do hold something to say about it: a
+ * 466 ppb lead result. A row with no verdict still has a scorecard, and the
+ * screen it opens explains what is missing and offers the free check.
+ *
+ * The stance comes back null for those, so a caller can mark them neutral
+ * rather than borrow a colour they have not earned.
+ */
+export function knownProducts(brand) {
+  const seen = new Set();
+  const out = [];
+  for (const p of brand.products || []) {
+    if (!p.name) continue;
+    if (isBrandLine(brand, p)) continue;
+    const key = p.name.toLowerCase();
+    if (seen.has(key)) continue;
+    seen.add(key);
+    out.push({ row: p, stance: productVerdict(p) });
+  }
+  return out;
+}
+
 export function ratedProducts(brand) {
   const seen = new Set();
   const out = [];

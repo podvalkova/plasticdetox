@@ -2,7 +2,7 @@
 // resolved data, so nothing here waits on a network call or knows about the
 // camera. Navigation is handled by main.js.
 
-import { FRONTS, STANCE_LABEL, verdictFor, alternativesFor, ratedProducts } from "./match.js";
+import { FRONTS, STANCE_LABEL, verdictFor, alternativesFor, ratedProducts, knownProducts } from "./match.js";
 import { packagingHeadline } from "./upc.js";
 import { el, frag, icon, ICONS, splitNote } from "./ui.js";
 import { buyLink, productImage, tipOfDay, allArticles, productNotes } from "./data.js";
@@ -93,7 +93,7 @@ export function home(root, {
 
   function showProducts(b) {
     picker.replaceChildren();
-    const rows = ratedProducts(b);
+    const rows = knownProducts(b);
     if (!rows.length) {
       product.wrap.hidden = false;
       product.input.focus();
@@ -109,7 +109,11 @@ export function home(root, {
       const body = el("div", "row-body");
       body.appendChild(el("div", "row-name", pr.name));
       const hint1 = scopeHint(pr);
-      if (hint1 || pr.cat) body.appendChild(el("div", "row-sub", hint1 || pr.cat));
+      // An unrated row says so rather than showing its category as if it were a
+      // finding. It is still worth opening: the screen behind it names which
+      // checks are outstanding and offers the free one.
+      const sub1 = stance ? (hint1 || pr.cat) : "Checks in progress";
+      if (sub1) body.appendChild(el("div", "row-sub", sub1));
       line.appendChild(body);
       line.appendChild(el("span", "row-chev", "\u203a"));
       line.onclick = () => onProduct(b, pr);
@@ -1474,7 +1478,7 @@ export function result(root, { index, match, scan, product, query, productNamed,
   }
 
   if (v.level === "brand") {
-    const rows = ratedProducts(v.brand);
+    const rows = knownProducts(v.brand);
     if (rows.length) {
       const box = el("div", "card");
       box.appendChild(el("h2", null, "Which one do you have?"));
@@ -1482,13 +1486,12 @@ export function result(root, { index, match, scan, product, query, productNamed,
         "We rate these separately, because they do not all behave the same way."));
       for (const { row, stance } of rows) {
         const line = el("button", "row");
-        line.appendChild(el("span", `dot ${stance}`));
+        line.appendChild(el("span", `dot ${stance || "neutral"}`));
         const body = el("div", "row-body");
         body.appendChild(el("div", "row-name", row.name));
         const hint2 = scopeHint(row);
-        body.appendChild(el("div", "row-sub", hint2
-          ? `${STANCE_LABEL[stance] || "Context"} · ${hint2}`
-          : (STANCE_LABEL[stance] || "Context")));
+        const label2 = stance ? (STANCE_LABEL[stance] || "Context") : "Checks in progress";
+        body.appendChild(el("div", "row-sub", hint2 ? `${label2} · ${hint2}` : label2));
         line.appendChild(body);
         line.appendChild(el("span", "row-chev", "›"));
         line.onclick = () => onProduct(row);
