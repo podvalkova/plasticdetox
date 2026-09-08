@@ -1,5 +1,5 @@
 const puppeteer = require('puppeteer');
-const dps = ['B0H4WDTZ7Z', 'B008H2JLP8', 'B08SWBRTRK', 'B0D9W787CJ'];
+const dps = ['B091SLC7LD'];
 (async () => {
   const browser = await puppeteer.launch({ headless: true });
   const page = await browser.newPage();
