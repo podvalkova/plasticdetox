@@ -16845,7 +16845,8 @@
   "evidence": "No PFAS disclosed (California AB 1200); ceramic/coated nonstick surface",
   "alternative": "Lodge cast iron, Tramontina stainless, or de Buyer carbon steel",
   "sources": [
-   "pfas-in-cookware-brands.html"
+   "pfas-in-cookware-brands.html",
+   "best-non-toxic-bakeware.html"
   ],
   "fronts": {
    "formula": {
@@ -38986,11 +38987,13 @@
   "brand": "Green Pan",
   "category": "Cookware",
   "stance": "careful",
-  "reason": "Discloses no intentionally added PFAS under California's AB 1200 law, but relies on a ceramic or coated nonstick surface that wears down in 1 to 3 years. Fine as a PFAS free choice, but a bare cast iron, stainless, or carbon steel pan lasts a lifetime.",
-  "evidence": "No PFAS disclosed (California AB 1200); ceramic/coated nonstick surface",
-  "alternative": "Lodge cast iron, Tramontina stainless, or de Buyer carbon steel",
+  "reason": "Discloses no intentionally added PFAS, but its Thermolon ceramic nonstick is a sol gel coating that wears out in 1 to 3 years and ends up in food and dishwater. A class action filed in 2019 challenges toxin free and healthy marketing claims, and the NAD recommended dropping eco friendly claims in 2012. Fine as a PFAS free choice; an uncoated pan lasts a lifetime.",
+  "evidence": "2019 class action over toxin free marketing; consumable ceramic coating",
+  "alternative": "Lodge cast iron, uncoated stainless bakeware",
   "sources": [
-   "pfas-in-cookware-brands.html"
+   "pfas-in-cookware-brands.html",
+   "best-non-toxic-bakeware.html",
+   "https://truthinadvertising.org/class-action/greenpan-cookware/"
   ],
   "fronts": {
    "formula": {
@@ -38999,14 +39002,14 @@
     "origin": "database"
    },
    "materials": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "fail",
+    "note": "Ceramic sol gel nonstick coating wears into food within 1 to 3 years",
+    "origin": "extracted"
    },
    "legal": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "fail",
+    "note": "Class action pending since 2019 over toxin free and healthy marketing claims",
+    "origin": "extracted"
    },
    "testing": {
     "status": "unknown",
@@ -39022,7 +39025,10 @@
    "researched": 0,
    "flagged": 0,
    "worst": null
-  }
+  },
+  "aliases": [
+   "GreenPan"
+  ]
  },
  {
   "id": "green-sprouts",
@@ -44521,12 +44527,14 @@
   "brand": "If You Care",
   "category": "Kitchen",
   "stance": "good",
-  "reason": "Recommended chlorine free, compostable unbleached parchment paper with no PFAS coating.",
-  "evidence": "Chlorine free, compostable, no PFAS coating",
+  "reason": "Recommended chlorine free, compostable unbleached parchment paper and baking cups. Parchment tested non detect for organic fluorine, the PFAS marker, in Mamavation's certified lab screening.",
+  "evidence": "Chlorine free, compostable; non detect for organic fluorine (Mamavation)",
   "alternative": "",
   "sources": [
    "how-to-enjoy-coffee-without-plastic.html",
-   "kitchen-detox-101.html"
+   "kitchen-detox-101.html",
+   "best-non-toxic-bakeware.html",
+   "https://mamavation.com/food/if-you-care-parchment-baking-paper-pfas-testing-results.html"
   ],
   "buy": "https://www.amazon.com/dp/B000KBNTM0?tag=plasticdetox-20",
   "fronts": {
@@ -44546,9 +44554,9 @@
     "origin": "none"
    },
    "testing": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "pass",
+    "note": "Parchment non detect for organic fluorine in Mamavation lab screening",
+    "origin": "extracted"
    }
   },
   "reviewed": true,
@@ -44748,6 +44756,14 @@
      ]
     },
     "cat": "Coffee"
+   },
+   {
+    "name": "If You Care Unbleached Baking Cups (60 ct, 3 pk)",
+    "asins": [
+     "B00KQ17X6C"
+    ],
+    "verdict": "good",
+    "note": "Grease resistant without fluorochemical treatment, chlorine free, compostable."
    }
   ],
   "rollup": {
@@ -48509,7 +48525,8 @@
   "alternative": "Caboo Tree Free Wipes",
   "sources": [
    "best-non-toxic-baby-wipes.html",
-   "best-non-toxic-diapers.html"
+   "best-non-toxic-diapers.html",
+   "best-non-toxic-bakeware.html"
   ],
   "aliases": [
    "Kirkland"
@@ -48545,7 +48562,15 @@
    "researched": 0,
    "flagged": 0,
    "worst": null
-  }
+  },
+  "products": [
+   {
+    "name": "Kirkland Signature Culinary Parchment",
+    "asins": [],
+    "verdict": "careful",
+    "note": "12 ppm organic fluorine in Mamavation screening; points to contamination, not intentional PFAS treatment. Non detect brands cost the same."
+   }
+  ]
  },
  {
   "id": "kitchenaid",
@@ -53954,7 +53979,8 @@
   "alternative": "",
   "sources": [
    "cast-iron-vs-stainless-steel-vs-ceramic-cookware.html",
-   "microplastics-and-fertility.html"
+   "microplastics-and-fertility.html",
+   "best-non-toxic-bakeware.html"
   ],
   "buy": "https://www.amazon.com/dp/B00006JSUB?tag=plasticdetox-20",
   "fronts": {
@@ -54182,6 +54208,14 @@
       "why": "Hot fat against the cooking surface is the most aggressive case there is."
      }
     }
+   },
+   {
+    "name": "Lodge Cast Iron Loaf Pan",
+    "asins": [
+     "B0971NWGPM"
+    ],
+    "verdict": "good",
+    "note": "Pre seasoned bare cast iron, made without PFAS. Featured bread pick in the bakeware guide."
    }
   ],
   "rollup": {
@@ -65821,7 +65855,8 @@
   "evidence": "PFAS disclosed (California AB 1200): PFAS is disclosed as \"9\" in their disclosures listing of individual product IDs; many items have both PFAS-free and PFAS-containing versions of the same product name (with different letters at the end of the model number)",
   "alternative": "Lodge cast iron, Tramontina stainless, or de Buyer carbon steel",
   "sources": [
-   "pfas-in-cookware-brands.html"
+   "pfas-in-cookware-brands.html",
+   "best-non-toxic-bakeware.html"
   ],
   "fronts": {
    "formula": {
@@ -69755,7 +69790,8 @@
   "evidence": "PFAS disclosed (California AB 1200): Strive Insulated Water Bottles, OXO Good Grips and SoftWorks Nylon Products, OXO Good Grips Nonstick Pro Bakeware",
   "alternative": "Lodge cast iron, Tramontina stainless, or de Buyer carbon steel",
   "sources": [
-   "pfas-in-cookware-brands.html"
+   "pfas-in-cookware-brands.html",
+   "best-non-toxic-bakeware.html"
   ],
   "fronts": {
    "formula": {
@@ -92733,7 +92769,8 @@
   "evidence": "PFAS disclosed (California AB 1200): 1200MF-2-ABC 12 Cup Muffin Pan, 1120BW-2-ABC 8-Inch Square, 1045QS-AP Allergy ID Quarter Sheet, 1050HS-AP Allergy ID Half Sheet, 1110RC-AP Allergy ID 9x13, 1120BW-AP Allergy ID 8-inch Square, 1140LF-AP Allergy ID Loaf, 1145QS-AP Allergy ID…",
   "alternative": "Lodge cast iron, Tramontina stainless, or de Buyer carbon steel",
   "sources": [
-   "pfas-in-cookware-brands.html"
+   "pfas-in-cookware-brands.html",
+   "best-non-toxic-bakeware.html"
   ],
   "fronts": {
    "formula": {
@@ -96060,11 +96097,12 @@
   "brand": "Wildone",
   "category": "Bakeware",
   "stance": "good",
-  "reason": "Recommended stainless steel baking sheets as a non-coated bakeware option.",
-  "evidence": "Stainless steel construction",
+  "reason": "Top pick in our non toxic bakeware guide: 18/8 stainless steel baking sheets with no nonstick coating, no PFAS, and no aluminum contact. September 2026 checks found no recalls or lawsuits.",
+  "evidence": "18/8 stainless steel, uncoated; no recalls or lawsuits found",
   "alternative": "",
   "sources": [
-   "kitchen-detox-101.html"
+   "kitchen-detox-101.html",
+   "best-non-toxic-bakeware.html"
   ],
   "buy": "https://www.amazon.com/Wildone-Baking-Sheet-Set-Stainless/dp/B07NNS56P1?tag=plasticdetox-20",
   "fronts": {
@@ -96074,14 +96112,14 @@
     "origin": "database"
    },
    "materials": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "pass",
+    "note": "18/8 stainless steel, no nonstick coating",
+    "origin": "extracted"
    },
    "legal": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "pass",
+    "note": "No recalls or lawsuits found in September 2026 searches; not on the FDA imported cookware lead warning list",
+    "origin": "extracted"
    },
    "testing": {
     "status": "unknown",
@@ -96097,7 +96135,17 @@
    "researched": 0,
    "flagged": 0,
    "worst": null
-  }
+  },
+  "products": [
+   {
+    "name": "Wildone Stainless Steel Baking Sheet Set",
+    "asins": [
+     "B07NNS56P1"
+    ],
+    "verdict": "good",
+    "note": "Top bakeware pick. Use parchment for release and skip empty high heat preheats, which can warp thin steel."
+   }
+  ]
  },
  {
   "id": "wilton",
@@ -97948,5 +97996,589 @@
    "flagged": 0,
    "worst": null
   }
+ },
+ {
+  "id": "e-far",
+  "brand": "E-far",
+  "category": "Bakeware",
+  "stance": "good",
+  "reason": "Uncoated food grade stainless steel bakeware with no nonstick layer, so there is no PFAS coating to flake into food. September 2026 checks found no recalls or lawsuits, and the brand is not on the FDA imported cookware lead warning list.",
+  "evidence": "Uncoated stainless steel; no recalls or lawsuits found",
+  "alternative": "",
+  "sources": [
+   "best-non-toxic-bakeware.html"
+  ],
+  "buy": "https://www.amazon.com/dp/B09X9P8YYZ?tag=plasticdetox-20",
+  "fronts": {
+   "formula": {
+    "status": "none",
+    "note": "A durable good has no ingredient list. What it is made of is the materials check.",
+    "origin": "database"
+   },
+   "materials": {
+    "status": "pass",
+    "note": "Uncoated stainless steel, no nonstick coating",
+    "origin": "extracted"
+   },
+   "legal": {
+    "status": "pass",
+    "note": "No recalls or lawsuits found in September 2026 searches; not on the FDA imported cookware lead warning list",
+    "origin": "extracted"
+   },
+   "testing": {
+    "status": "unknown",
+    "note": "",
+    "origin": "none"
+   }
+  },
+  "reviewed": true,
+  "article": "best-non-toxic-bakeware.html",
+  "generalises": true,
+  "products": [
+   {
+    "name": "E-far Stainless Steel Muffin Pan (12 Cup)",
+    "asins": [
+     "B09X9P8YYZ"
+    ],
+    "verdict": "good",
+    "note": "Uncoated food grade stainless steel, rated to 450F. Featured muffin pan pick."
+   },
+   {
+    "name": "E-far 8 Inch Cake Pan Set (3)",
+    "asins": [
+     "B07ZCVMCLT"
+    ],
+    "verdict": "good",
+    "note": "Uncoated stainless steel layer cake pans. Featured cake pan pick."
+   }
+  ]
+ },
+ {
+  "id": "teamfar",
+  "brand": "TeamFar",
+  "category": "Bakeware",
+  "stance": "good",
+  "reason": "Uncoated stainless steel bakeware with no nonstick layer to flake into food. September 2026 checks found no recalls or lawsuits, and the brand is not on the FDA imported cookware lead warning list.",
+  "evidence": "Uncoated stainless steel; no recalls or lawsuits found",
+  "alternative": "",
+  "sources": [
+   "best-non-toxic-bakeware.html"
+  ],
+  "buy": "https://www.amazon.com/dp/B08C2H24TF?tag=plasticdetox-20",
+  "fronts": {
+   "formula": {
+    "status": "none",
+    "note": "A durable good has no ingredient list. What it is made of is the materials check.",
+    "origin": "database"
+   },
+   "materials": {
+    "status": "pass",
+    "note": "Uncoated stainless steel, no nonstick coating",
+    "origin": "extracted"
+   },
+   "legal": {
+    "status": "pass",
+    "note": "No recalls or lawsuits found in September 2026 searches; not on the FDA imported cookware lead warning list",
+    "origin": "extracted"
+   },
+   "testing": {
+    "status": "unknown",
+    "note": "",
+    "origin": "none"
+   }
+  },
+  "reviewed": true,
+  "article": "best-non-toxic-bakeware.html",
+  "generalises": true,
+  "products": [
+   {
+    "name": "TeamFar Stainless Steel Loaf Pans (2)",
+    "asins": [
+     "B08C2H24TF"
+    ],
+    "verdict": "good",
+    "note": "Two uncoated 9 x 5 inch stainless loaf pans. Featured loaf pan pick."
+   }
+  ]
+ },
+ {
+  "id": "pp-chef",
+  "brand": "P&P Chef",
+  "category": "Bakeware",
+  "stance": "good",
+  "reason": "Uncoated stainless steel bakeware in the same mold as E-far and TeamFar. Passed the same September 2026 recall and lawsuit checks; not featured only because sibling picks carried larger review bases.",
+  "evidence": "Uncoated stainless steel; no recalls or lawsuits found",
+  "alternative": "",
+  "sources": [
+   "best-non-toxic-bakeware.html"
+  ],
+  "fronts": {
+   "formula": {
+    "status": "none",
+    "note": "A durable good has no ingredient list. What it is made of is the materials check.",
+    "origin": "database"
+   },
+   "materials": {
+    "status": "pass",
+    "note": "Uncoated stainless steel, no nonstick coating",
+    "origin": "extracted"
+   },
+   "legal": {
+    "status": "pass",
+    "note": "No recalls or lawsuits found in September 2026 searches; not on the FDA imported cookware lead warning list",
+    "origin": "extracted"
+   },
+   "testing": {
+    "status": "unknown",
+    "note": "",
+    "origin": "none"
+   }
+  },
+  "reviewed": true,
+  "article": "best-non-toxic-bakeware.html",
+  "generalises": true,
+  "products": [
+   {
+    "name": "P&P Chef 12 Cup Muffin Pan",
+    "asins": [
+     "B09SG51JMD"
+    ],
+    "verdict": "good",
+    "note": "Uncoated stainless steel muffin pan, a fine alternative to the featured E-far."
+   }
+  ]
+ },
+ {
+  "id": "finedine",
+  "brand": "FineDine",
+  "category": "Kitchen",
+  "stance": "good",
+  "reason": "All stainless steel nesting mixing bowls with no plastic lids or parts. September 2026 checks found no recalls or lawsuits.",
+  "evidence": "All stainless construction; no recalls or lawsuits found",
+  "alternative": "",
+  "sources": [
+   "best-non-toxic-bakeware.html"
+  ],
+  "buy": "https://www.amazon.com/dp/B01HTYH8YA?tag=plasticdetox-20",
+  "fronts": {
+   "formula": {
+    "status": "none",
+    "note": "A durable good has no ingredient list. What it is made of is the materials check.",
+    "origin": "database"
+   },
+   "materials": {
+    "status": "pass",
+    "note": "Stainless steel, no plastic parts or lids",
+    "origin": "extracted"
+   },
+   "legal": {
+    "status": "pass",
+    "note": "No recalls or lawsuits found in September 2026 searches; not on the FDA imported cookware lead warning list",
+    "origin": "extracted"
+   },
+   "testing": {
+    "status": "unknown",
+    "note": "",
+    "origin": "none"
+   }
+  },
+  "reviewed": true,
+  "article": "best-non-toxic-bakeware.html",
+  "generalises": false,
+  "products": [
+   {
+    "name": "FineDine Stainless Steel Mixing Bowls (6)",
+    "asins": [
+     "B01HTYH8YA"
+    ],
+    "verdict": "good",
+    "note": "Six nesting stainless bowls, no lids, no plastic. Featured mixing bowl pick."
+   }
+  ]
+ },
+ {
+  "id": "tiluck",
+  "brand": "TILUCK",
+  "category": "Kitchen",
+  "stance": "good",
+  "reason": "Measuring cups in 18/8 stainless steel and spoons in food grade stainless, one piece construction with no plastic handles or coatings. September 2026 checks found no recalls or lawsuits.",
+  "evidence": "18/8 stainless cups, no plastic; no recalls or lawsuits found",
+  "alternative": "",
+  "sources": [
+   "best-non-toxic-bakeware.html"
+  ],
+  "buy": "https://www.amazon.com/dp/B091JXDLDX?tag=plasticdetox-20",
+  "fronts": {
+   "formula": {
+    "status": "none",
+    "note": "A durable good has no ingredient list. What it is made of is the materials check.",
+    "origin": "database"
+   },
+   "materials": {
+    "status": "pass",
+    "note": "18/8 stainless cups, stainless spoons, no plastic",
+    "origin": "extracted"
+   },
+   "legal": {
+    "status": "pass",
+    "note": "No recalls or lawsuits found in September 2026 searches; not on the FDA imported cookware lead warning list",
+    "origin": "extracted"
+   },
+   "testing": {
+    "status": "unknown",
+    "note": "",
+    "origin": "none"
+   }
+  },
+  "reviewed": true,
+  "article": "best-non-toxic-bakeware.html",
+  "generalises": false,
+  "products": [
+   {
+    "name": "TILUCK Measuring Cups & Spoons Set",
+    "asins": [
+     "B091JXDLDX"
+    ],
+    "verdict": "good",
+    "note": "Featured measuring set pick."
+   }
+  ]
+ },
+ {
+  "id": "nilehome",
+  "brand": "NileHome",
+  "category": "Kitchen",
+  "stance": "good",
+  "reason": "All stainless steel whisks with sealed metal handles and no plastic or silicone anywhere. September 2026 checks found no recalls or lawsuits.",
+  "evidence": "All stainless construction; no recalls or lawsuits found",
+  "alternative": "",
+  "sources": [
+   "best-non-toxic-bakeware.html"
+  ],
+  "buy": "https://www.amazon.com/dp/B08SWBRTRK?tag=plasticdetox-20",
+  "fronts": {
+   "formula": {
+    "status": "none",
+    "note": "A durable good has no ingredient list. What it is made of is the materials check.",
+    "origin": "database"
+   },
+   "materials": {
+    "status": "pass",
+    "note": "All stainless steel, no plastic or silicone parts",
+    "origin": "extracted"
+   },
+   "legal": {
+    "status": "pass",
+    "note": "No recalls or lawsuits found in September 2026 searches; not on the FDA imported cookware lead warning list",
+    "origin": "extracted"
+   },
+   "testing": {
+    "status": "unknown",
+    "note": "",
+    "origin": "none"
+   }
+  },
+  "reviewed": true,
+  "article": "best-non-toxic-bakeware.html",
+  "generalises": false,
+  "products": [
+   {
+    "name": "NileHome Stainless Steel Whisk Set (3)",
+    "asins": [
+     "B08SWBRTRK"
+    ],
+    "verdict": "good",
+    "note": "Featured whisk pick."
+   }
+  ]
+ },
+ {
+  "id": "chef-pomodoro",
+  "brand": "Chef Pomodoro",
+  "category": "Kitchen",
+  "stance": "good",
+  "reason": "Solid beechwood spoons finished with food safe oil, no paint, lacquer, or plastic. September 2026 checks found no recalls or lawsuits. Our budget wooden spoon pick alongside the Berard and Earlywood pieces in the store.",
+  "evidence": "Solid beechwood, oil finish only; no recalls or lawsuits found",
+  "alternative": "",
+  "sources": [
+   "best-non-toxic-bakeware.html"
+  ],
+  "buy": "https://www.amazon.com/dp/B091SLC7LD?tag=plasticdetox-20",
+  "fronts": {
+   "formula": {
+    "status": "none",
+    "note": "A durable good has no ingredient list. What it is made of is the materials check.",
+    "origin": "database"
+   },
+   "materials": {
+    "status": "pass",
+    "note": "Solid beechwood, food safe oil finish, no lacquer",
+    "origin": "extracted"
+   },
+   "legal": {
+    "status": "pass",
+    "note": "No recalls or lawsuits found in September 2026 searches; not on the FDA imported cookware lead warning list",
+    "origin": "extracted"
+   },
+   "testing": {
+    "status": "unknown",
+    "note": "",
+    "origin": "none"
+   }
+  },
+  "reviewed": true,
+  "article": "best-non-toxic-bakeware.html",
+  "generalises": false,
+  "products": [
+   {
+    "name": "Chef Pomodoro Beechwood Spoons (3)",
+    "asins": [
+     "B091SLC7LD"
+    ],
+    "verdict": "good",
+    "note": "Featured wooden spoon pick."
+   }
+  ]
+ },
+ {
+  "id": "simax",
+  "brand": "Simax",
+  "category": "Bakeware",
+  "stance": "good",
+  "reason": "Czech borosilicate glass bakeware, plain clear glass with no coatings or decorations. Borosilicate handles thermal shock better than soda lime glass. Amazon stock runs thin, which is why it is a prose recommendation rather than a featured pick.",
+  "evidence": "Plain borosilicate glass, no coatings",
+  "alternative": "",
+  "sources": [
+   "best-non-toxic-bakeware.html"
+  ],
+  "fronts": {
+   "formula": {
+    "status": "none",
+    "note": "A durable good has no ingredient list. What it is made of is the materials check.",
+    "origin": "database"
+   },
+   "materials": {
+    "status": "pass",
+    "note": "Plain clear borosilicate glass, no coatings or decorations",
+    "origin": "extracted"
+   },
+   "legal": {
+    "status": "pass",
+    "note": "No recalls or lawsuits found in September 2026 searches; not on the FDA imported cookware lead warning list",
+    "origin": "extracted"
+   },
+   "testing": {
+    "status": "unknown",
+    "note": "",
+    "origin": "none"
+   }
+  },
+  "reviewed": true,
+  "article": "best-non-toxic-bakeware.html",
+  "generalises": true,
+  "products": [
+   {
+    "name": "SIMAX Glass Loaf Pan (1.5 Qt)",
+    "asins": [
+     "B07PDN1Q1X"
+    ],
+    "verdict": "good",
+    "note": "Excellent when in stock; Amazon inventory is often thin."
+   }
+  ]
+ },
+ {
+  "id": "katbite",
+  "brand": "Katbite",
+  "category": "Kitchen",
+  "stance": "good",
+  "reason": "Parchment paper tested non detect for organic fluorine in Mamavation's certified lab screening. We feature If You Care, which also tested non detect and is unbleached, but Katbite passed the same test.",
+  "evidence": "Non detect for organic fluorine (Mamavation lab screening)",
+  "alternative": "",
+  "sources": [
+   "best-non-toxic-bakeware.html",
+   "https://mamavation.com/food/safest-non-toxic-parchment-paper-without-pfas-forever-chemicals.html"
+  ],
+  "fronts": {
+   "formula": {
+    "status": "none",
+    "note": "A durable good has no ingredient list. What it is made of is the materials check.",
+    "origin": "database"
+   },
+   "materials": {
+    "status": "pass",
+    "note": "Silicone coated parchment, no fluorochemical treatment",
+    "origin": "extracted"
+   },
+   "legal": {
+    "status": "unknown",
+    "note": "",
+    "origin": "none"
+   },
+   "testing": {
+    "status": "pass",
+    "note": "Non detect for organic fluorine in Mamavation screening",
+    "origin": "extracted"
+   }
+  },
+  "reviewed": true,
+  "article": "best-non-toxic-bakeware.html",
+  "generalises": false
+ },
+ {
+  "id": "gifbera",
+  "brand": "GIFBERA",
+  "category": "Kitchen",
+  "stance": "good",
+  "reason": "Parchment paper tested non detect for organic fluorine in Mamavation's certified lab screening. We feature If You Care, which also tested non detect and is unbleached, but GIFBERA passed the same test.",
+  "evidence": "Non detect for organic fluorine (Mamavation lab screening)",
+  "alternative": "",
+  "sources": [
+   "best-non-toxic-bakeware.html",
+   "https://mamavation.com/food/safest-non-toxic-parchment-paper-without-pfas-forever-chemicals.html"
+  ],
+  "fronts": {
+   "formula": {
+    "status": "none",
+    "note": "A durable good has no ingredient list. What it is made of is the materials check.",
+    "origin": "database"
+   },
+   "materials": {
+    "status": "pass",
+    "note": "Silicone coated parchment, no fluorochemical treatment",
+    "origin": "extracted"
+   },
+   "legal": {
+    "status": "unknown",
+    "note": "",
+    "origin": "none"
+   },
+   "testing": {
+    "status": "pass",
+    "note": "Non detect for organic fluorine in Mamavation screening",
+    "origin": "extracted"
+   }
+  },
+  "reviewed": true,
+  "article": "best-non-toxic-bakeware.html",
+  "generalises": false
+ },
+ {
+  "id": "reynolds",
+  "brand": "Reynolds",
+  "category": "Kitchen",
+  "stance": "careful",
+  "reason": "Reynolds Kitchens parchment tested at 14 ppm organic fluorine in Mamavation's certified lab screening. That level points to contamination rather than intentional PFAS treatment, but non detect alternatives cost the same.",
+  "evidence": "14 ppm organic fluorine (Mamavation lab screening)",
+  "alternative": "If You Care unbleached parchment",
+  "sources": [
+   "best-non-toxic-bakeware.html",
+   "https://mamavation.com/food/reynolds-parchment-paper-pfas-results.html"
+  ],
+  "fronts": {
+   "formula": {
+    "status": "none",
+    "note": "A durable good has no ingredient list. What it is made of is the materials check.",
+    "origin": "database"
+   },
+   "materials": {
+    "status": "unknown",
+    "note": "",
+    "origin": "none"
+   },
+   "legal": {
+    "status": "unknown",
+    "note": "",
+    "origin": "none"
+   },
+   "testing": {
+    "status": "fail",
+    "note": "14 ppm organic fluorine detected in Mamavation parchment screening",
+    "origin": "extracted"
+   }
+  },
+  "reviewed": true,
+  "article": "best-non-toxic-bakeware.html",
+  "generalises": false,
+  "products": [
+   {
+    "name": "Reynolds Kitchens Parchment Paper",
+    "asins": [],
+    "verdict": "careful",
+    "note": "14 ppm organic fluorine detected; likely contamination, not treatment. Non detect brands exist at the same price."
+   }
+  ]
+ },
+ {
+  "id": "biocean",
+  "brand": "Biocean",
+  "category": "Kitchen",
+  "stance": "careful",
+  "reason": "Parchment paper tested at 12 ppm organic fluorine in Mamavation's certified lab screening. That level points to contamination rather than intentional PFAS treatment, but non detect alternatives cost the same.",
+  "evidence": "12 ppm organic fluorine (Mamavation lab screening)",
+  "alternative": "If You Care unbleached parchment",
+  "sources": [
+   "best-non-toxic-bakeware.html",
+   "https://mamavation.com/food/safest-non-toxic-parchment-paper-without-pfas-forever-chemicals.html"
+  ],
+  "fronts": {
+   "formula": {
+    "status": "none",
+    "note": "A durable good has no ingredient list. What it is made of is the materials check.",
+    "origin": "database"
+   },
+   "materials": {
+    "status": "unknown",
+    "note": "",
+    "origin": "none"
+   },
+   "legal": {
+    "status": "unknown",
+    "note": "",
+    "origin": "none"
+   },
+   "testing": {
+    "status": "fail",
+    "note": "12 ppm organic fluorine detected in Mamavation parchment screening",
+    "origin": "extracted"
+   }
+  },
+  "reviewed": true,
+  "article": "best-non-toxic-bakeware.html",
+  "generalises": false
+ },
+ {
+  "id": "verdessa",
+  "brand": "VERDESSA",
+  "category": "Bakeware",
+  "stance": "neutral",
+  "reason": "Researched as a possible glass bakeware pick: a borosilicate 9 x 13 dish with a glass lid and plastic free claims. The listing is new with a tiny review base and no independent vetting yet, so we have not rated it.",
+  "evidence": "Borosilicate glass with glass lid claimed; not independently vetted",
+  "alternative": "Simax borosilicate, or any plain clear glass dish",
+  "sources": [],
+  "fronts": {
+   "formula": {
+    "status": "none",
+    "note": "A durable good has no ingredient list. What it is made of is the materials check.",
+    "origin": "database"
+   },
+   "materials": {
+    "status": "unknown",
+    "note": "",
+    "origin": "none"
+   },
+   "legal": {
+    "status": "unknown",
+    "note": "",
+    "origin": "none"
+   },
+   "testing": {
+    "status": "unknown",
+    "note": "",
+    "origin": "none"
+   }
+  },
+  "reviewed": false,
+  "generalises": false
  }
 ]
