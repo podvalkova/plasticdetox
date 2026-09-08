@@ -48,78 +48,10 @@ def main():
     ap.add_argument("--zip", action="store_true", help="package into dist/")
     args = ap.parse_args()
 
-    # Shapes first, before any tool can propagate a malformed field. This is
-    # the gate a hand edit or an AI research run has to clear.
-    run("validate-data.py", "--stage", "pre")
-    run("backfill-fronts.py", "--write")
-    run("link-articles.py", "--write")
-    run("mark-scope.py", "--write")
-    # A store listing is a vetted pick, so every store brand needs an entry.
-    # Runs before store-to-products, which resolves brands through the ASIN map.
-    run("store-to-brands.py", "--write")
-    run("store-to-products.py", "--write")
-    run("articles-to-products.py", "--write")
-    run("registry-to-products.py", "--write")
-    run("brand-lines.py", "--write")
-    # Give hand-researched rows a way to fire, then stamp the strict per-product
-    # verdict the extension reads, then roll products up into the brand stance
-    # Brand Check shows. Order matters: the rollup reads product verdicts, and
-    # apply-product-rules is what collapses duplicate rows.
-    run("name-to-match.py", "--write")
-    # The five bestsellers in each category we have a guide for.
-    run("add-category-top5.py", "--write")
-    run("add-article-top5.py", "--write")
-    run("fix-row-copy.py", "--write")
-    run("normalise-categories.py", "--write")
-    # The category belongs on the product, because that is where search intent
-    # is: nobody searches "baby skincare", they search "diaper cream".
-    run("product-categories.py", "--write")
-    run("apply-product-rules.py", "--write")
-    run("brand-rollup.py", "--write")
-    # After apply-product-rules, which regenerates ext wholesale and would
-    # otherwise wipe the checked legal and testing fronts these two set.
-    run("extract-testing.py", "--write")
-    run("check-recalls.py", "--write")
-    # Before the gate, because the gate now caps a verdict on the fronts and an
-    # unsourced fail would quietly delete a good pick from the site.
-    run("front-evidence.py", "--write")
-    # Materials a product states in its own name, then the fronts derived from
-    # every recorded material and ingredient list. Both read data/front-evidence
-    # .json, which is input: established once, re-read on every build, never
-    # re-argued from prose.
-    # Exposure is decided once per product type, then stamped onto every row of
-    # that type. It has to run after apply-product-rules, which rebuilds ext, or
-    # the stamp is written and then thrown away: that is why 660 of 823 rows
-    # showed no exposure while this was never in the build at all. It also has
-    # to run BEFORE apply-front-evidence, which asks the exposure type whether a
-    # product is a durable good. Run after, and that test finds nothing and
-    # falls back to matching category words, which is the test it replaced.
-    run("exposure.py", "--write")
-    run("formula/materials-from-name.py", "--write")
-    run("apply-front-evidence.py", "--write")
-    # What we know about a KIND of product, for the rows nobody has tested.
-    # After front-evidence, which blanks unsourced adverse fronts, because a
-    # class finding carries its own citation and must not be swept up as one.
-    # It only ever fills a gap: a real test of the product always wins.
-    run("apply-class-evidence.py", "--write")
-    # Last, after every tool that fills a front. A recommendation needs all four.
-    run("enforce-scorecard.py", "--write")
-    # Last, so it sees every product row the steps above created. Run earlier it
-    # harvested the file as it stood before the rows existed, and the ASINs on
-    # them never reached the map.
-    run("harvest-asins.py")
-    # Never ship a card whose "Better:" line points at something we flag.
-    run("audit-alternatives.py", "--strict")
-    # Nothing we flag may also be recommended. Not --strict yet: three known
-    # editorial conflicts are open and awaiting a decision.
-    run("audit-recommendations.py")
-    run("audit-store-coverage.py")
-    # The standard is the source of truth; the site must agree with it.
-    run("audit-site-alignment.py")
-    # And the shipped file has to hold every invariant the standard promises:
-    # every row stamped, no good on inherited evidence, no adverse verdict
-    # without a reason, no two rules answering one listing differently.
-    run("validate-data.py", "--stage", "post")
+    # The data pipeline is defined once, in tools/pipeline.py, so a release
+    # and a data refresh cannot drift apart the way the rulebook and the
+    # code did. Run it there to see what it would change without changing it.
+    run("pipeline.py", "--write", "--quiet")
     # The public ledger regenerates from the same file, so it can never again
     # drift 287 rows behind what the extension actually asserts.
     run("build-verdict-standard.py")

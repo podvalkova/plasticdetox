@@ -55,10 +55,20 @@ def main():
             continue
         hay = " " + words(alt) + " "
         seen = set()
+        # Longest first, and a shorter brand name sitting INSIDE a longer one
+        # that already matched is not a second brand. "One Degree Organics"
+        # contains "Degree", so recommending the grain brand read as
+        # recommending the deodorant brand, and three entries were reported as
+        # pointing at a skip the moment Degree was added to the database.
+        claimed = []
         for w, target in lookup:
             if target["id"] == b["id"] or target["id"] in seen:
                 continue
-            if re.search(r"(?<![a-z0-9])" + re.escape(w) + r"(?![a-z0-9])", hay):
+            m = re.search(r"(?<![a-z0-9])" + re.escape(w) + r"(?![a-z0-9])", hay)
+            if m:
+                if any(m.start() >= lo and m.end() <= hi for lo, hi in claimed):
+                    continue
+                claimed.append((m.start(), m.end()))
                 seen.add(target["id"])
                 stance = target.get("stance")
                 if stance == "skip":
