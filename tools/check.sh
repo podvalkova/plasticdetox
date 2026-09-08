@@ -32,6 +32,15 @@ if [ "${1:-}" = "--fix" ]; then
   echo
 fi
 
+echo "==> 0. does the rulebook still match the code?"
+if python3 tools/sync-rulebook.py > /tmp/pd-rules.log 2>&1; then
+  sed 's/^/    /' /tmp/pd-rules.log
+else
+  sed 's/^/    /' /tmp/pd-rules.log
+  fail=1
+fi
+
+echo
 echo "==> 1. does the stored data break a rule?"
 if python3 tools/validate-data.py > /tmp/pd-validate.log 2>&1; then
   tail -2 /tmp/pd-validate.log | sed 's/^/    /'

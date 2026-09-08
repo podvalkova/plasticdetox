@@ -127,6 +127,22 @@ the path that reaches a person, fails the front on its own.
 > skipping one for containing "aluminium" would be reading the periodic table
 > rather than the research.
 
+<!-- hazard-list:start -->
+
+**The 61 named hazards the engine enforces.** Generated from `HAZARD` in
+`tools/audit-product-rules.py` by `tools/sync-rulebook.py`, so this list and the
+code cannot say different things. Un-negated, in the path that reaches a person,
+any one of these fails the front on its own.
+
+> `acrylic`, `aluminium chlorohydrate`, `aluminium zirconium`, `aluminum chlorohydrate`, `aluminum zirconium`, `avobenzone`, `azo`, `benzene`, `bpa`, `bpf`, `bps`, `bronopol`, `butylparaben`, `cadmium`, `chemical filter`, `chemical sunscreen`, `cyclohexasiloxane`, `cyclomethicone`, `cyclopentasiloxane`, `cyclotetrasiloxane`, `diazolidinyl urea`, `dmdm hydantoin`, `elastane`, `ethylparaben`, `flame retardant`, `formaldehyde`, `homosalate`, `imidazolidinyl urea`, `isobutylparaben`, `lead`, `melamine`, `methylparaben`, `neoprene`, `non-stick`, `nonstick`, `nylon`, `octinoxate`, `octisalate`, `octocrylene`, `oxybenzone`, `paraben`, `pfas`, `pfoa`, `phthalate`, `plastic`, `polycarbonate`, `polyester`, `polyethylene`, `polypropylene`, `polystyrene`, `propylparaben`, `ptfe`, `pvc`, `quaternium-15`, `rayon`, `spandex`, `styrene`, `talc`, `teflon`, `triclosan`, `viscose`
+
+**The 8 disclosure failures.** These name no harmful substance; they say we
+cannot check. Each caps at careful and never fails a front alone.
+
+> `artificial flavors`, `fragrance`, `gum base`, `natural flavors`, `natural flavour`, `parfum`, `proprietary blend`, `undisclosed`
+
+<!-- hazard-list:end -->
+
 **Disclosure failures.** A legal umbrella that hides composition: "fragrance"
 and "parfum", "gum base", "proprietary blend", "natural flavors". These name no
 harmful substance. What they say is that we cannot check.
