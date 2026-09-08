@@ -16844,7 +16844,8 @@
      "frontNotes": {
       "materials": "tritan in contact, with repeated contact over time.",
       "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
-      "formula": "An object has no ingredient list. What it is made of is the materials check."
+      "formula": "An object has no ingredient list. What it is made of is the materials check.",
+      "testing": "Tested to NSF/ANSI 42, 53, 401 and 473 standards. One Tap Score owner test found 0.0054 ppm cobalt appear after filtration, well under the 0.07 ppm EWG guideline; later tests measured lower and the brand's data claims over 98% cobalt reduction."
      },
      "inheritedFronts": [
       "formula",
@@ -16852,9 +16853,10 @@
       "formula",
       "formula"
      ],
-     "verdict": "unrated",
-     "dated": "2026-08-28",
-     "why": "the note reads adversely on formula, needs a human look",
+     "verdict": "careful",
+     "dated": "2026-09-08",
+     "authored": true,
+     "why": "Tritan plastic pitcher holds the filtered water, the same class of contact that holds our other plastic path filters at careful. Filtration itself is tested to NSF standards on four protocols; a trace cobalt anomaly in one third party test sits below health guidelines and was not reproduced.",
      "fronts": {
       "formula": "none",
       "materials": "caution",
@@ -16863,7 +16865,7 @@
      },
      "frontOrigin": {
       "legal": "database",
-      "testing": "inferred",
+      "testing": "hand",
       "materials": "database",
       "formula": "hand"
      },
@@ -16871,6 +16873,73 @@
      "basis": "direct",
      "disclose": false,
      "rules": []
+    },
+    "cat": "Water filters"
+   },
+   {
+    "name": "3-Stage Under the Sink System",
+    "asins": [
+     "B01MY31GHU"
+    ],
+    "matchAll": [
+     [
+      "clearly",
+      "filtered",
+      "under",
+      "sink"
+     ],
+     [
+      "clearly",
+      "filtered",
+      "3",
+      "stage"
+     ]
+    ],
+    "verdict": "good",
+    "note": "Three cartridge under sink system tested to NSF/ANSI 42, 53, 401 and 473 standards at an IAPMO accredited lab. Mamavation and The Water Map independent test (Sept 2026) cut microplastics from 14 particles to 1. Worth knowing: BPA free plastic filter housings sit in the water path.",
+    "origin": "hand",
+    "source": "how-to-filter-pfas-and-microplastics-from-water.html",
+    "ext": {
+     "verdict": "careful",
+     "why": "BPA free plastic filter housings sit in the water path, the same class of contact that holds the APEC at careful. Filtration itself is independently tested to NSF standards on four protocols, with the Mamavation microplastic result on top.",
+     "fronts": {
+      "formula": "none",
+      "materials": "caution",
+      "legal": "none",
+      "testing": "pass"
+     },
+     "frontNotes": {
+      "formula": "An object has no ingredient list. What it is made of is the materials check.",
+      "materials": "BPA free plastic filter housings in the water path; supply lines are braided stainless steel.",
+      "legal": "Checked, nothing found. Not named in the 2020 under sink housing class action investigation (GE, Aquasana, Culligan and others), and no recall or regulatory action on record.",
+      "testing": "Tested to NSF/ANSI 42, 53, 401 and 473 standards at an IAPMO accredited ISO 17025 lab (PFOA over 99.62%, PFOS over 99.81%, lead over 99.34%). Mamavation and The Water Map independent test (Sept 2026) cut microplastics from 14 particles to 1, one of the lowest results in the lab's database."
+     },
+     "legalNote": "Checked CPSC recall listings, recall news and class action records by web search on 2026-09-08. No recall, lawsuit or regulatory action affecting this brand found.",
+     "frontOrigin": {
+      "formula": "hand",
+      "materials": "hand",
+      "legal": "hand",
+      "testing": "hand"
+     },
+     "scope": "sku",
+     "basis": "direct",
+     "disclose": false,
+     "authored": true,
+     "dated": "2026-09-08",
+     "rules": [],
+     "exposure": {
+      "type": "drinking water",
+      "level": "high",
+      "score": 8.0,
+      "baby": false,
+      "route": "ingestion",
+      "duration": "all day",
+      "retained": "swallowed",
+      "frequency": "daily",
+      "heat": false,
+      "fat": false,
+      "why": "Drunk in quantity, every day, for years."
+     }
     },
     "cat": "Water filters"
    },
@@ -16944,8 +17013,8 @@
    }
   ],
   "rollup": {
-   "products": 2,
-   "researched": 2,
+   "products": 3,
+   "researched": 3,
    "flagged": 0,
    "worst": null
   }
