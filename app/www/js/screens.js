@@ -1659,9 +1659,9 @@ export function unknown(root, { scan, brand, product, hasPass, onCheck, onReques
     named ? `We have not checked ${named} yet.` : "We could not identify that barcode."));
   if (!named) {
     head.appendChild(el("p", "verdict-reason",
-      "The open barcode databases cover food well and personal care poorly, so this "
-      + "one is not in them. That is a gap in the barcode, not a verdict: search the "
-      + "brand name below and we may well have it."));
+      "The open barcode database did not answer, either because it does not have this "
+      + "code or because it was briefly down. That is a gap in the lookup, not a verdict: "
+      + "search the brand name below and we may well have it."));
   }
   card.appendChild(head);
   root.appendChild(card);
