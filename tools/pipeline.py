@@ -82,6 +82,8 @@ AUDITS = [
     ("validate-data.py", ["--stage", "post"], ""),
     ("evidence-gaps.py", [],
      "how far the data is from rating itself, so the number is visible every build"),
+    ("retire-authored.py", [],
+     "reports which hand-set rows the engine could now derive on its own"),
 ]
 
 
