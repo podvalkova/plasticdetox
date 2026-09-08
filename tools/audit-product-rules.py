@@ -236,6 +236,15 @@ HAZARD = [
     "aluminum chlorohydrate", "aluminium chlorohydrate",
     "aluminum zirconium", "aluminium zirconium",
     "talc", "benzene",
+    # Cyclic volatile methyl siloxanes. The EU restricted D5 and D6 to 0.1% in
+    # leave-on cosmetics under Regulation 2024/1328, in force 6 June 2026, on
+    # very persistent and very bioaccumulative grounds, and D4 has been banned
+    # in EU cosmetics since January 2022. That is rule 2.1's second test met by
+    # a serious regulator, the route is dermal on a leave-on product, and the
+    # name is on the label. "Cyclomethicone" is the older umbrella term for the
+    # same mixture and is usually D5, so it is listed with them.
+    "cyclotetrasiloxane", "cyclopentasiloxane", "cyclohexasiloxane",
+    "cyclomethicone",
 ]
 
 # A disclosure failure is a legal umbrella that hides composition. It names no

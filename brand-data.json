@@ -3691,8 +3691,10 @@
       "legal": "Certified carbon block for PFAS, but the plastic filter housing drew a class action investigation over cracking and property damage.",
       "formula": "An object has no ingredient list. What it is made of is the materials check."
      },
+     "cappedFrom": "careful",
+     "capRestoreWhy": "adverse finding stands",
      "verdict": "skip",
-     "dated": "2026-09-02",
+     "dated": "2026-09-08",
      "why": "section 6 ceiling: materials is fail, legal is caution",
      "fronts": {
       "formula": "none",
@@ -3708,9 +3710,7 @@
      "scope": "line",
      "basis": "direct",
      "disclose": false,
-     "rules": [],
-     "cappedFrom": "careful",
-     "capRestoreWhy": "adverse finding stands"
+     "rules": []
     },
     "origin": "hand",
     "matchAll": [
@@ -4122,7 +4122,6 @@
      "scope": "sku",
      "basis": "direct",
      "disclose": false,
-     "authored": true,
      "fronts": {
       "formula": "pass",
       "materials": "pass",
@@ -4152,8 +4151,10 @@
       "heat": false,
       "fat": false,
       "why": "Applied daily to skin and left there."
-     }
-    }
+     },
+     "authored": true
+    },
+    "research": "Ingredients: dipropylene glycol, water, propylene glycol, sodium stearate, sodium bicarbonate, ethylene brassylate, guaiacwood oil, cedarwood oil, ethylhexylglycerin, octenidine HCl, tetrasodium EDTA, allantoin."
    }
   ],
   "fronts": {
@@ -16337,6 +16338,8 @@
     "verdict": "good",
     "note": "Featured wooden spoon pick.",
     "ext": {
+     "heldFrom": "good",
+     "restoreWhy": "direct evidence at sku scope on formula, materials",
      "verdict": "unrated",
      "dated": "2026-09-08",
      "why": "a recommendation needs its checks done; still to do: legal",
@@ -16357,8 +16360,6 @@
       "2 formula-read-from-materials",
       "5.4 durable-good-is-its-own-packaging"
      ],
-     "heldFrom": "good",
-     "restoreWhy": "direct evidence at sku scope on formula, materials",
      "heldBack": [
       "legal"
      ]
@@ -21644,7 +21645,6 @@
      "scope": "sku",
      "basis": "direct",
      "disclose": false,
-     "authored": true,
      "fronts": {
       "formula": "fail",
       "materials": "caution",
@@ -21674,8 +21674,10 @@
       "heat": false,
       "fat": false,
       "why": "Applied daily to skin and left there."
-     }
-    }
+     },
+     "authored": true
+    },
+    "research": "Ingredients from the FDA DailyMed label: aluminum zirconium tetrachlorohydrex gly 18.2%, cyclopentasiloxane, stearyl alcohol, PPG-14 butyl ether, hydrogenated castor oil, talc, PEG-8 distearate, fragrance, BHT."
    }
   ]
  },
@@ -23120,7 +23122,8 @@
      "disclose": false,
      "rules": [
       "5.1 filed-suit-caps-at-caution"
-     ]
+     ],
+     "authored": true
     },
     "origin": "hand",
     "matchAll": [
@@ -23222,7 +23225,7 @@
     "asins": [
      "B00I69TI5K"
     ],
-    "verdict": "careful",
+    "verdict": "skip",
     "note": "Unilever's mainstream antiperspirant stick in plastic. Aluminium active with fragrance alongside it. Worth knowing: fragrance is an undisclosed mixture left on skin all day.",
     "origin": "hand",
     "cat": "Deodorant",
@@ -23237,15 +23240,14 @@
      ]
     ],
     "ext": {
-     "verdict": "careful",
-     "why": "fragrance is a disclosure failure, which caps at careful",
+     "verdict": "skip",
+     "why": "cyclopentasiloxane, restricted by the EU to 0.1 percent in leave-on cosmetics since June 2026, as the first inactive ingredient",
      "dated": "2026-09-08",
      "scope": "sku",
      "basis": "direct",
      "disclose": false,
-     "authored": true,
      "fronts": {
-      "formula": "caution",
+      "formula": "fail",
       "materials": "caution",
       "legal": "none",
       "testing": "unassessed"
@@ -23273,8 +23275,10 @@
       "heat": false,
       "fat": false,
       "why": "Applied daily to skin and left there."
-     }
-    }
+     },
+     "authored": true
+    },
+    "research": "Ingredients: an aluminium salt active with cyclopentasiloxane and fragrance among the inactives."
    }
   ],
   "fronts": {
@@ -24909,6 +24913,8 @@
     "verdict": "good",
     "note": "Uncoated food grade stainless steel, rated to 450F. Featured muffin pan pick.",
     "ext": {
+     "heldFrom": "good",
+     "restoreWhy": "direct evidence at sku scope on formula, materials",
      "verdict": "unrated",
      "dated": "2026-09-08",
      "why": "a recommendation needs its checks done; still to do: legal",
@@ -24928,8 +24934,6 @@
      "rules": [
       "5.4 durable-good-is-its-own-packaging"
      ],
-     "heldFrom": "good",
-     "restoreWhy": "direct evidence at sku scope on formula, materials",
      "heldBack": [
       "legal"
      ]
@@ -24943,6 +24947,8 @@
     "verdict": "good",
     "note": "Uncoated stainless steel layer cake pans. Featured cake pan pick.",
     "ext": {
+     "heldFrom": "good",
+     "restoreWhy": "direct evidence at sku scope on formula, materials",
      "verdict": "unrated",
      "dated": "2026-09-08",
      "why": "a recommendation needs its checks done; still to do: legal",
@@ -24962,8 +24968,6 @@
      "rules": [
       "5.4 durable-good-is-its-own-packaging"
      ],
-     "heldFrom": "good",
-     "restoreWhy": "direct evidence at sku scope on formula, materials",
      "heldBack": [
       "legal"
      ]
@@ -25087,8 +25091,8 @@
      "heldBack": [
       "materials"
      ],
-     "authored": true,
-     "tradeoff": "Kept under rule 5.7 as the baking soda free option. Wild is the better package, a paper refill rather than a plastic tube, but it is a baking soda formula and a minority of people get a rash from that under the arm. Each & Every is baking soda free, which is a real constraint rather than a preference, and it is the best we hold under it. The plastic tube is stated on the card."
+     "tradeoff": "Kept under rule 5.7 as the baking soda free option. Wild is the better package, a paper refill rather than a plastic tube, but it is a baking soda formula and a minority of people get a rash from that under the arm. Each & Every is baking soda free, which is a real constraint rather than a preference, and it is the best we hold under it. The plastic tube is stated on the card.",
+     "authored": true
     },
     "cat": "Deodorant",
     "research": "Packaging: Twist-up stick; brand states packaging is made from recycled materials and is curbside recyclable with cap attached, material type unstated. Contents are a solid deodorant stick.",
@@ -26042,8 +26046,10 @@
      "frontNotes": {
       "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
      },
+     "cappedFrom": "careful",
+     "capRestoreWhy": "adverse finding stands",
      "verdict": "skip",
-     "dated": "2026-09-02",
+     "dated": "2026-09-08",
      "why": "section 6 ceiling: testing is fail",
      "fronts": {
       "formula": "unassessed",
@@ -26058,9 +26064,7 @@
      "scope": "line",
      "basis": "direct",
      "disclose": false,
-     "rules": [],
-     "cappedFrom": "careful",
-     "capRestoreWhy": "adverse finding stands"
+     "rules": []
     },
     "matchAll": [
      [
@@ -30218,6 +30222,8 @@
     "verdict": "good",
     "note": "Six nesting stainless bowls, no lids, no plastic. Featured mixing bowl pick.",
     "ext": {
+     "heldFrom": "good",
+     "restoreWhy": "direct evidence at sku scope on formula, materials",
      "verdict": "unrated",
      "dated": "2026-09-08",
      "why": "a recommendation needs its checks done; still to do: legal",
@@ -30238,8 +30244,6 @@
       "2 formula-read-from-materials",
       "5.4 durable-good-is-its-own-packaging"
      ],
-     "heldFrom": "good",
-     "restoreWhy": "direct evidence at sku scope on formula, materials",
      "heldBack": [
       "legal"
      ]
@@ -39053,7 +39057,6 @@
      "scope": "sku",
      "basis": "direct",
      "disclose": false,
-     "authored": true,
      "fronts": {
       "formula": "pass",
       "materials": "caution",
@@ -39083,8 +39086,10 @@
       "heat": false,
       "fat": false,
       "why": "Applied daily to skin and left there."
-     }
-    }
+     },
+     "authored": true
+    },
+    "research": "Ingredients: fractionated coconut oil, non-GMO corn starch, candelilla wax, magnesium hydroxide, essential oils."
    }
   ]
  },
@@ -48072,6 +48077,8 @@
     "verdict": "good",
     "note": "Pre seasoned bare cast iron, made without PFAS. Featured bread pick in the bakeware guide.",
     "ext": {
+     "heldFrom": "good",
+     "restoreWhy": "direct evidence at sku scope on formula, materials",
      "verdict": "unrated",
      "dated": "2026-09-08",
      "why": "a recommendation needs its checks done; still to do: legal",
@@ -48091,8 +48098,6 @@
      "rules": [
       "5.4 durable-good-is-its-own-packaging"
      ],
-     "heldFrom": "good",
-     "restoreWhy": "direct evidence at sku scope on formula, materials",
      "heldBack": [
       "legal"
      ]
@@ -55666,7 +55671,6 @@
      "scope": "line",
      "basis": "direct",
      "disclose": false,
-     "authored": true,
      "frontNotes": {
       "legal": "Under pre-litigation investigation for PFAS in personal care products marketed as clean.",
       "formula": "The published ingredient list hides composition behind fragrance."
@@ -55699,7 +55703,8 @@
       ],
       "source": "amazon:B07GB3NVN1",
       "checked": "2026-09-04"
-     }
+     },
+     "authored": true
     }
    }
   ]
@@ -60227,7 +60232,7 @@
   "id": "old-spice",
   "brand": "Old Spice",
   "category": "Personal care",
-  "stance": "careful",
+  "stance": "skip",
   "reason": "Conventional antiperspirant and deodorant. Fragrance is what holds it at careful, alongside cyclopentasiloxane, mineral oil and petrolatum. The 2021 aerosol benzene recall is real but rule 5.2 has decayed it to informational, so it no longer sets the verdict.",
   "evidence": "Benzene aerosol recall 2021",
   "alternative": "Each & Every aluminum free deodorant",
@@ -60271,7 +60276,7 @@
     "asins": [
      "B08NYHVJ5N"
     ],
-    "verdict": "careful",
+    "verdict": "skip",
     "note": "Conventional stick in plastic. The aluminium free versions drop the antiperspirant active and keep the fragrance. Worth knowing: the 2021 benzene recall covered aerosol sprays, not sticks.",
     "origin": "hand",
     "cat": "Deodorant",
@@ -60288,15 +60293,14 @@
      ]
     ],
     "ext": {
-     "verdict": "careful",
-     "why": "cyclopentasiloxane above the EU leave-on limit, plus fragrance",
+     "verdict": "skip",
+     "why": "cyclopentasiloxane, restricted by the EU to 0.1 percent in leave-on cosmetics since June 2026, as the first inactive ingredient",
      "dated": "2026-09-08",
      "scope": "sku",
      "basis": "direct",
      "disclose": false,
-     "authored": true,
      "fronts": {
-      "formula": "caution",
+      "formula": "fail",
       "materials": "caution",
       "legal": "none",
       "testing": "unassessed"
@@ -60324,8 +60328,10 @@
       "heat": false,
       "fat": false,
       "why": "Applied daily to skin and left there."
-     }
-    }
+     },
+     "authored": true
+    },
+    "research": "Ingredients from the FDA DailyMed label: cyclopentasiloxane, stearyl alcohol, mineral oil, dimethicone, petrolatum, hydrogenated castor oil, PPG-14 butyl ether, fragrance, behenyl alcohol."
    }
   ]
  },
@@ -62392,6 +62398,8 @@
     "verdict": "good",
     "note": "Uncoated stainless steel muffin pan, a fine alternative to the featured E-far.",
     "ext": {
+     "heldFrom": "good",
+     "restoreWhy": "direct evidence at sku scope on formula, materials",
      "verdict": "unrated",
      "dated": "2026-09-08",
      "why": "a recommendation needs its checks done; still to do: legal",
@@ -62411,8 +62419,6 @@
      "rules": [
       "5.4 durable-good-is-its-own-packaging"
      ],
-     "heldFrom": "good",
-     "restoreWhy": "direct evidence at sku scope on formula, materials",
      "heldBack": [
       "legal"
      ]
@@ -65778,7 +65784,6 @@
      "scope": "line",
      "basis": "direct",
      "disclose": false,
-     "authored": true,
      "frontNotes": {
       "formula": "Aluminium free tallow based stick with a short, fully disclosed ingredient list and no synthetic fragrance.",
       "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
@@ -65801,7 +65806,8 @@
       "heat": false,
       "fat": true,
       "why": "Left on the skin, so contact runs for hours."
-     }
+     },
+     "authored": true
     },
     "origin": "hand",
     "matchAll": [
@@ -71778,7 +71784,7 @@
   "id": "secret",
   "brand": "Secret",
   "category": "Personal care",
-  "stance": "careful",
+  "stance": "skip",
   "reason": "Conventional antiperspirant. Fragrance is what holds it at careful. The 2021 benzene recall named Secret powder fresh directly, which is worth knowing, but rule 5.2 decays a closed recall past 24 months to informational.",
   "evidence": "Benzene aerosol recall",
   "alternative": "Each & Every aluminum free deodorant",
@@ -71822,7 +71828,7 @@
     "asins": [
      "B07QT9TDT9"
     ],
-    "verdict": "careful",
+    "verdict": "skip",
     "note": "Conventional line in a plastic stick, with an aluminium free variant that keeps the fragrance. Worth knowing: a 2021 benzene recall named the Secret powder fresh antiperspirant directly.",
     "origin": "hand",
     "cat": "Deodorant",
@@ -71837,15 +71843,14 @@
      ]
     ],
     "ext": {
-     "verdict": "careful",
-     "why": "cyclopentasiloxane above the EU leave-on limit, plus fragrance",
+     "verdict": "skip",
+     "why": "cyclopentasiloxane, restricted by the EU to 0.1 percent in leave-on cosmetics since June 2026, as the first inactive ingredient",
      "dated": "2026-09-08",
      "scope": "sku",
      "basis": "direct",
      "disclose": false,
-     "authored": true,
      "fronts": {
-      "formula": "caution",
+      "formula": "fail",
       "materials": "caution",
       "legal": "none",
       "testing": "unassessed"
@@ -71873,8 +71878,10 @@
       "heat": false,
       "fat": false,
       "why": "Applied daily to skin and left there."
-     }
-    }
+     },
+     "authored": true
+    },
+    "research": "Ingredients from the FDA DailyMed label: cyclopentasiloxane, stearyl alcohol, mineral oil, dimethicone, petrolatum, hydrogenated castor oil, PPG-14 butyl ether, fragrance, cyclodextrin, behenyl alcohol."
    }
   ]
  },
@@ -74586,7 +74593,7 @@
   "id": "speed-stick",
   "brand": "Speed Stick",
   "category": "Personal care",
-  "stance": "careful",
+  "stance": "skip",
   "reason": "Conventional antiperspirant from Colgate-Palmolive. Fragrance holds it at careful; nothing else in the stick is on our hazard list.",
   "evidence": "Fragrance; FDA label",
   "alternative": "",
@@ -74623,7 +74630,7 @@
     "asins": [
      "B08ZH6P1NY"
     ],
-    "verdict": "careful",
+    "verdict": "skip",
     "note": "Colgate's mainstream stick in plastic. Aluminium free versions exist and still carry fragrance. Worth knowing: fragrance is the only finding here.",
     "origin": "hand",
     "matchAll": [
@@ -74640,15 +74647,14 @@
     ],
     "cat": "Deodorant",
     "ext": {
-     "verdict": "careful",
-     "why": "cyclomethicone above the EU leave-on limit, plus fragrance and an ethoxylated PEG",
+     "verdict": "skip",
+     "why": "cyclopentasiloxane, restricted by the EU to 0.1 percent in leave-on cosmetics since June 2026, as the first inactive ingredient",
      "dated": "2026-09-08",
      "scope": "sku",
      "basis": "direct",
      "disclose": false,
-     "authored": true,
      "fronts": {
-      "formula": "caution",
+      "formula": "fail",
       "materials": "caution",
       "legal": "none",
       "testing": "unassessed"
@@ -74676,8 +74682,10 @@
       "heat": false,
       "fat": false,
       "why": "Applied daily to skin and left there."
-     }
-    }
+     },
+     "authored": true
+    },
+    "research": "Ingredients from the FDA DailyMed label: palm kernel oil, stearyl alcohol, cyclomethicone, C12-15 alkyl benzoate, PPG-14 butyl ether, hydrogenated castor oil, hydrogenated soybean oil, PEG-8 distearate, fragrance, behenyl alcohol, citric acid."
    }
   ]
  },
@@ -77261,6 +77269,8 @@
     "verdict": "good",
     "note": "Two uncoated 9 x 5 inch stainless loaf pans. Featured loaf pan pick.",
     "ext": {
+     "heldFrom": "good",
+     "restoreWhy": "direct evidence at sku scope on formula, materials",
      "verdict": "unrated",
      "dated": "2026-09-08",
      "why": "a recommendation needs its checks done; still to do: legal",
@@ -77280,8 +77290,6 @@
      "rules": [
       "5.4 durable-good-is-its-own-packaging"
      ],
-     "heldFrom": "good",
-     "restoreWhy": "direct evidence at sku scope on formula, materials",
      "heldBack": [
       "legal"
      ]
@@ -80063,7 +80071,6 @@
      "scope": "sku",
      "basis": "direct",
      "disclose": false,
-     "authored": true,
      "fronts": {
       "formula": "pass",
       "materials": "pass",
@@ -80093,8 +80100,10 @@
       "heat": false,
       "fat": false,
       "why": "Applied daily to skin and left there."
-     }
-    }
+     },
+     "authored": true
+    },
+    "research": "Ingredients: propylene glycol, water, sodium stearate, organic aloe, zinc ricinoleate, glyceryl laurate, hops CO2 extract, sunflower seed oil, ascorbic acid, lemongrass oil."
    }
   ],
   "rollup": {

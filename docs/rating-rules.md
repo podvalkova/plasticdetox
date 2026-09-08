@@ -107,8 +107,25 @@ The list then has **two kinds of entry**, and they behave differently.
 
 **Named hazards.** A specific substance with evidence behind it: PTFE and the
 other PFAS, PVC, polycarbonate and BPA, polystyrene, melamine, phthalates,
-formaldehyde releasers, triclosan, lead, cadmium. One of these, un-negated, in
+formaldehyde releasers, triclosan, lead, cadmium, talc, the aluminium salts that make an
+antiperspirant, and the cyclic siloxanes D4, D5 and D6. One of these, un-negated, in
 the path that reaches a person, fails the front on its own.
+
+> Talc joined the list in July 2024, when IARC reclassified it Group 2A,
+> probably carcinogenic to humans. The cyclic siloxanes joined in June 2026,
+> when the EU restriction on D5 and D6 in leave-on cosmetics took effect at 0.1
+> percent, D4 having been banned in cosmetics since 2022. Both entered by the
+> three tests above rather than by anybody's preference, and the second is the
+> reason most mainstream antiperspirants are a skip: cyclopentasiloxane is
+> usually their first inactive ingredient, at far above that limit.
+>
+> Note what is NOT here. Bare "aluminium" is not a named hazard, and neither is
+> potassium alum. The list names aluminium chlorohydrate and aluminium
+> zirconium, the salts that plug a sweat duct, because those are what the
+> evidence is about. A crystal deodorant is alum, a different chemistry with no
+> regulator restriction and no published evidence of harm behind it, and
+> skipping one for containing "aluminium" would be reading the periodic table
+> rather than the research.
 
 **Disclosure failures.** A legal umbrella that hides composition: "fragrance"
 and "parfum", "gum base", "proprietary blend", "natural flavors". These name no
