@@ -24053,7 +24053,7 @@
           "fronts": {
             "formula": "none",
             "materials": "fail",
-            "legal": "unassessed",
+            "legal": "pass",
             "testing": "caution"
           },
           "scope": "line",
@@ -24064,7 +24064,8 @@
           "frontNotes": {
             "formula": "An object has no ingredient list. What it is made of is the materials check.",
             "materials": "Emulsion contents in unspecified plastic, heated in use.",
-            "testing": "Polypropylene baby bottles release up to 16.2 million microplastic particles per litre at formula temperature (Trinity College Dublin, Nature Food, 2020). This is about baby bottles generally. We have not confirmed it for this product."
+            "testing": "Polypropylene baby bottles release up to 16.2 million microplastic particles per litre at formula temperature (Trinity College Dublin, Nature Food, 2020). This is about baby bottles generally. We have not confirmed it for this product.",
+            "legal": "Checked recall records on 2026-08-31. One 2018 recall of the Lovey pacifier holder for a detaching snap, resolved; bottles were never involved."
           },
           "exposure": {
             "type": "heated vessel",
@@ -24081,7 +24082,8 @@
           },
           "frontOrigin": {
             "formula": "hand",
-            "testing": "class"
+            "testing": "class",
+            "legal": "database"
           },
           "materialAnswers": {
             "contact": "",
@@ -24106,7 +24108,8 @@
             "confirmedBy": "",
             "escape": "Glass, stainless and silicone bottles are not the polymer that was measured.",
             "alternative": ""
-          }
+          },
+          "legalNote": "Checked recall records on 2026-08-31. One 2018 recall of the Lovey pacifier holder for a detaching snap, resolved; bottles were never involved."
         },
         "matchNot": [
           "glass"
@@ -40475,17 +40478,22 @@
         "verdict": "good",
         "note": "Grease resistant without fluorochemical treatment, chlorine free, compostable.",
         "ext": {
+          "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
+          "frontNotes": {
+            "legal": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found."
+          },
           "verdict": "unrated",
           "dated": "2026-09-08",
           "why": "no direct pass on materials, and no lab result standing in for one",
           "fronts": {
             "formula": "pass",
             "materials": "unassessed",
-            "legal": "unassessed",
+            "legal": "pass",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "formula": "inferred"
+            "formula": "inferred",
+            "legal": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -49016,27 +49024,29 @@
         "ext": {
           "heldFrom": "good",
           "restoreWhy": "direct evidence at sku scope on formula, materials",
-          "verdict": "unrated",
+          "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
+          "frontNotes": {
+            "legal": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found."
+          },
+          "verdict": "good",
           "dated": "2026-09-08",
-          "why": "a recommendation needs its checks done; still to do: legal",
+          "why": "direct evidence at sku scope on formula, materials",
           "fronts": {
             "formula": "pass",
             "materials": "pass",
-            "legal": "unassessed",
+            "legal": "pass",
             "testing": "unassessed"
           },
           "frontOrigin": {
             "formula": "inferred",
-            "materials": "inferred"
+            "materials": "inferred",
+            "legal": "database"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
           "rules": [
             "5.4 durable-good-is-its-own-packaging"
-          ],
-          "heldBack": [
-            "legal"
           ]
         },
         "matchAll": [
@@ -65077,7 +65087,7 @@
           "fronts": {
             "formula": "none",
             "materials": "fail",
-            "legal": "unassessed",
+            "legal": "pass",
             "testing": "caution"
           },
           "scope": "line",
@@ -65088,7 +65098,8 @@
           "frontNotes": {
             "formula": "An object has no ingredient list. What it is made of is the materials check.",
             "testing": "Polypropylene baby bottles release up to 16.2 million microplastic particles per litre at formula temperature (Trinity College Dublin, Nature Food, 2020). This is about baby bottles generally. We have not confirmed it for this product.",
-            "materials": "Emulsion contents in unspecified plastic, heated in use."
+            "materials": "Emulsion contents in unspecified plastic, heated in use.",
+            "legal": "Checked recall records on 2026-08-31. Philips recalls (Respironics breathing devices from 2021, Avent video monitors in 2023) are in other product lines; the Soothie pacifier has never been recalled."
           },
           "exposure": {
             "type": "heated vessel",
@@ -65105,7 +65116,8 @@
           },
           "frontOrigin": {
             "formula": "hand",
-            "testing": "class"
+            "testing": "class",
+            "legal": "database"
           },
           "classEvidence": {
             "id": "heated-polypropylene-bottle",
@@ -65118,7 +65130,8 @@
             "confirmedBy": "",
             "escape": "Glass, stainless and silicone bottles are not the polymer that was measured.",
             "alternative": ""
-          }
+          },
+          "legalNote": "Checked recall records on 2026-08-31. Philips recalls (Respironics breathing devices from 2021, Avent video monitors in 2023) are in other product lines; the Soothie pacifier has never been recalled."
         },
         "matchNot": [
           "glass"

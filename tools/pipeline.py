@@ -80,6 +80,8 @@ AUDITS = [
     ("audit-store-coverage.py", [], ""),
     ("audit-site-alignment.py", [], ""),
     ("validate-data.py", ["--stage", "post"], ""),
+    ("evidence-gaps.py", [],
+     "how far the data is from rating itself, so the number is visible every build"),
 ]
 
 
