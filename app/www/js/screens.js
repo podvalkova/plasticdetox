@@ -1647,16 +1647,45 @@ export function unknown(root, { scan, brand, product, hasPass, onCheck, onReques
   const card = el("div", "verdict");
   root.classList.add("tinted");
   const head = el("div", "verdict-head");
-  head.appendChild(el("span", "badge neutral", "Not reviewed yet"));
+  // Two different situations wore the same sentence. Not knowing a product and
+  // not being able to READ one are not the same claim, and the second was
+  // asserting the first: a Native deodorant scanned to "We have not checked
+  // that yet" while the app held a careful verdict on Native, because the open
+  // barcode databases are food first and personal care barely appears in them.
+  // Typing the brand would have answered instantly, so say that.
+  head.appendChild(el("span", "badge neutral",
+    named ? "Not reviewed yet" : "Product not identified"));
   head.appendChild(el("div", "verdict-brand",
-    named ? `We have not checked ${named} yet.` : "We have not checked that yet."));
+    named ? `We have not checked ${named} yet.` : "We could not identify that barcode."));
+  if (!named) {
+    head.appendChild(el("p", "verdict-reason",
+      "The open barcode databases cover food well and personal care poorly, so this "
+      + "one is not in them. That is a gap in the barcode, not a verdict: search the "
+      + "brand name below and we may well have it."));
+  }
   card.appendChild(head);
   root.appendChild(card);
+
+  // The search block, built here so it can lead when we could not name the
+  // product. Searching is free and, for anything the open databases miss but
+  // we hold, it is the answer: offering a paid check first would be selling
+  // someone a lookup we can already do for nothing.
+  const results = el("div", "results");
+  const box = el("div", "search");
+  box.appendChild(icon(ICONS.search, 18));
+  const searchInput = el("input");
+  searchInput.type = "search";
+  searchInput.placeholder = named ? "Search our database instead" : "Type the brand name";
+  searchInput.value = brand || "";
+  searchInput.autocapitalize = "none";
+  searchInput.oninput = () => onSearch(searchInput.value, results);
+  box.appendChild(searchInput);
+  if (!named) { root.appendChild(box); root.appendChild(results); }
 
   // Same two ways forward as the site: pay for the automated check now, or ask
   // a person to do it for free and wait two business days.
   const now = el("div", "card");
-  now.appendChild(el("h2", null, "Get it checked now"));
+  now.appendChild(el("h2", null, named ? "Get it checked now" : "Or get it checked now"));
   now.appendChild(el("p", null,
     "Our research system runs the same four checks we use for every verdict: formula, materials, recalls and lawsuits, independent tests. It answers in about a minute and shows its sources."));
 
@@ -1697,18 +1726,7 @@ export function unknown(root, { scan, brand, product, hasPass, onCheck, onReques
 
   if (scan) root.appendChild(materialsCard(scan, onOpen));
 
-  const box = el("div", "search");
-  box.appendChild(icon(ICONS.search, 18));
-  const input = el("input");
-  input.type = "search";
-  input.placeholder = "Search our database instead";
-  input.value = brand || "";
-  input.autocapitalize = "none";
-  input.oninput = () => onSearch(input.value, results);
-  box.appendChild(input);
-  root.appendChild(box);
-  const results = el("div", "results");
-  root.appendChild(results);
+  if (named) { root.appendChild(box); root.appendChild(results); }
   if (brand) onSearch(brand, results);
 }
 
