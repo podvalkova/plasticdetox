@@ -154,8 +154,15 @@ def main():
                 p.pop("matchAll", None)
                 made -= 1
                 continue
+            # Two ways a generated phrase can answer for a sibling: the
+            # sibling's NAME satisfies it, or the sibling already carries the
+            # same phrase. The first check alone let ['clearly','filtered',
+            # 'pitcher'] land on a careful row while a good row already held it.
+            key = lambda g: tuple(sorted(stem(w) for w in g))
+            mine = key(group)
             hit = next((q for q in rows if q is not p
-                        and resolves(group, f"{b['brand']} {q.get('name')}")), None)
+                        and (resolves(group, f"{b['brand']} {q.get('name')}")
+                             or any(key(g) == mine for g in (q.get("matchAll") or [])))), None)
             if hit:
                 dropped.append((b["brand"], p["name"], f"also answers for {hit.get('name')}"))
                 p.pop("matchAll", None)

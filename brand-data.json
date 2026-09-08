@@ -220,7 +220,13 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Water bottles"
+    "cat": "Water bottles",
+    "matchAll": [
+     [
+      "24bottles",
+      "bottle"
+     ]
+    ]
    }
   ],
   "rollup": {
@@ -429,9 +435,9 @@
     "origin": "extracted"
    },
    "materials": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Original diaper rash ointment: polyethylene in contact, with an oil based formula, which is the strongest extractant there is.",
+    "origin": "rollup"
    },
    "legal": {
     "status": "pass",
@@ -1411,7 +1417,14 @@
       "legal"
      ]
     },
-    "cat": "Tableware"
+    "cat": "Tableware",
+    "matchAll": [
+     [
+      "all",
+      "metal",
+      "utensil"
+     ]
+    ]
    }
   ],
   "cautions": [
@@ -1604,7 +1617,13 @@
      }
     },
     "cat": "Menstrual cups",
-    "catAuthored": true
+    "catAuthored": true,
+    "matchAll": [
+     [
+      "allmatters",
+      "cup"
+     ]
+    ]
    }
   ],
   "rollup": {
@@ -2206,9 +2225,9 @@
     "origin": "none"
    },
    "materials": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Amazon Grocery spring water: Aqueous contents in pet, heated in use.",
+    "origin": "rollup"
    },
    "legal": {
     "status": "unknown",
@@ -2216,9 +2235,9 @@
     "origin": "none"
    },
    "testing": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Amazon Grocery sea salt: Sea salt is the most microplastic contaminated salt, because it is evaporated seawater (Environmental Science & Technology, 39 brands across 21 countries). This product's own materials put it in that class.",
+    "origin": "rollup"
    }
   },
   "scopeNote": "Our verdict varies across this brand's range.",
@@ -2247,9 +2266,9 @@
     "origin": "extracted"
    },
    "materials": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Amazon Basics exercise and yoga mats: Leachy, contents not described.",
+    "origin": "rollup"
    },
    "legal": {
     "status": "unknown",
@@ -2967,9 +2986,9 @@
   ],
   "fronts": {
    "formula": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Conditioner bars: The published ingredient list hides composition behind parfum.",
+    "origin": "rollup"
    },
    "materials": {
     "status": "caution",
@@ -3092,7 +3111,13 @@
       "legal"
      ]
     },
-    "cat": "Pantry"
+    "cat": "Pantry",
+    "matchAll": [
+     [
+      "anthony",
+      "kernels"
+     ]
+    ]
    }
   ],
   "cautions": [
@@ -3198,9 +3223,9 @@
     "origin": "extracted"
    },
    "materials": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From APEC Reverse Osmosis System: plastic in contact, with repeated contact over time.",
+    "origin": "rollup"
    },
    "legal": {
     "status": "unknown",
@@ -3263,7 +3288,13 @@
      ]
     },
     "cat": "Water filters",
-    "research": "Packaging: Under-sink durable unit; water path uses food-grade plastic tubing, a pressurized steel storage tank, a stainless steel check valve, and a lead-free faucet. Filter housing resin unstated. Materials: Five stages: polypropylene sediment filter, two extruded activated carbon block filters, TFC reverse osmosis membrane, coconut-shell refining carbon post-filter."
+    "research": "Packaging: Under-sink durable unit; water path uses food-grade plastic tubing, a pressurized steel storage tank, a stainless steel check valve, and a lead-free faucet. Filter housing resin unstated. Materials: Five stages: polypropylene sediment filter, two extruded activated carbon block filters, TFC reverse osmosis membrane, coconut-shell refining carbon post-filter.",
+    "matchAll": [
+     [
+      "apec",
+      "system"
+     ]
+    ]
    }
   ],
   "rollup": {
@@ -3464,7 +3495,14 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Baby lotion"
+    "cat": "Baby lotion",
+    "matchAll": [
+     [
+      "aquaphor",
+      "ointment",
+      "healing"
+     ]
+    ]
    },
    {
     "name": "Baby diaper rash paste with zinc oxide",
@@ -3680,7 +3718,14 @@
       "5.4 durable-good-is-its-own-packaging"
      ]
     },
-    "cat": "Water filters"
+    "cat": "Water filters",
+    "matchAll": [
+     [
+      "aquasana",
+      "filter",
+      "shower"
+     ]
+    ]
    },
    {
     "name": "AQ-5200 / Claryum under sink",
@@ -4447,7 +4492,14 @@
      ]
     },
     "cat": "Laundry detergent",
-    "research": "Packaging: Contents are liquid laundry detergent in an HDPE #2 bottle; brand sells boxed eco-refills so the bottle is reused."
+    "research": "Packaging: Contents are liquid laundry detergent in an HDPE #2 bottle; brand sells boxed eco-refills so the bottle is reused.",
+    "matchAll": [
+     [
+      "attitude",
+      "detergent",
+      "laundry"
+     ]
+    ]
    },
    {
     "name": "Eco diapers",
@@ -4551,14 +4603,14 @@
     "origin": "extracted"
    },
    "materials": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Eco diapers: Topsheet 100 percent bamboo fibre, core 57.4 percent SAP with 33 percent FSC wood pulp that is oxygen bleached and totally chlorine free, backsheet 70.7 percent bamboo fabric and 29 percent polyethylene. The pulp is the good half; bamboo fibre is regenerated viscose rather than the plant",
+    "origin": "rollup"
    },
    "legal": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Bathroom and all purpose cleaner: Health Canada recalled a lot of ATTITUDE Bathroom Cleaner in July 2026 for a missing expiry date, a labeling compliance issue with no injuries; the recall is recent and appears open. It names the bathroom cleaner lot only, not the rest of the range.",
+    "origin": "rollup"
    },
    "testing": {
     "status": "pass",
@@ -4683,7 +4735,14 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Air purifiers"
+    "cat": "Air purifiers",
+    "matchAll": [
+     [
+      "austin",
+      "air",
+      "healthmate"
+     ]
+    ]
    },
    {
     "name": "Austin Air water filters",
@@ -4883,7 +4942,13 @@
       "5.4 durable-good-is-its-own-packaging"
      ]
     },
-    "cat": "Tableware"
+    "cat": "Tableware",
+    "matchAll": [
+     [
+      "avanchy",
+      "handle"
+     ]
+    ]
    },
    {
     "name": "Avanchy Bamboo + Silicone Suction Plate",
@@ -5120,7 +5185,14 @@
       "2.1 disclosure-failure-caps-at-caution"
      ]
     },
-    "cat": "Baby lotion"
+    "cat": "Baby lotion",
+    "matchAll": [
+     [
+      "aveeno",
+      "shampoo",
+      "wash"
+     ]
+    ]
    },
    {
     "name": "Daily Moisturizing body lotion",
@@ -5194,14 +5266,14 @@
   ],
   "fronts": {
    "formula": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Aveeno Baby lotions: Reformulated and cleaner than Johnson's but retains fragrance and behentrimonium methosulfate.",
+    "origin": "rollup"
    },
    "materials": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Daily Moisturizing body lotion: Emulsion contents in unspecified plastic.",
+    "origin": "rollup"
    },
    "legal": {
     "status": "fail",
@@ -5306,7 +5378,15 @@
       "5.4 durable-good-is-its-own-packaging"
      ]
     },
-    "cat": "Crib mattresses"
+    "cat": "Crib mattresses",
+    "matchAll": [
+     [
+      "avocado",
+      "green",
+      "mattress",
+      "crib"
+     ]
+    ]
    }
   ],
   "rollup": {
@@ -5423,9 +5503,9 @@
     "origin": "none"
    },
    "materials": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "fail",
+    "note": "From Sensitive Baby Lotion: We have not established what the product actually touches.",
+    "origin": "rollup"
    },
    "legal": {
     "status": "unknown",
@@ -5481,7 +5561,15 @@
      ]
     },
     "cat": "Baby lotion",
-    "research": "Packaging: Contents are a lotion in a plastic squeeze/pump bottle; brand page cites 100% post-consumer recycled plastic, resin unstated. Materials: Water plus safflower and sunflower seed oil base with 2% colloidal oat, shea butter, jojoba oil, calendula and chamomile extracts; fragrance-free."
+    "research": "Packaging: Contents are a lotion in a plastic squeeze/pump bottle; brand page cites 100% post-consumer recycled plastic, resin unstated. Materials: Water plus safflower and sunflower seed oil base with 2% colloidal oat, shea butter, jojoba oil, calendula and chamomile extracts; fragrance-free.",
+    "matchAll": [
+     [
+      "babo",
+      "botanicals",
+      "lotion",
+      "sensitive"
+     ]
+    ]
    },
    {
     "name": "Babo Botanicals baby lotion",
@@ -5827,9 +5915,9 @@
     "origin": "database"
    },
    "materials": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Nursery Glider (upholstered): Polyurethane foam cushions, polyester or rayon upholstery.",
+    "origin": "rollup"
    },
    "legal": {
     "status": "unknown",
@@ -5881,7 +5969,15 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Cribs & nursery"
+    "cat": "Cribs & nursery",
+    "matchAll": [
+     [
+      "babyletto",
+      "upholstered",
+      "nursery",
+      "glider"
+     ]
+    ]
    },
    {
     "name": "Babyletto Hudson Crib",
@@ -5923,7 +6019,14 @@
       "5.4 durable-good-is-its-own-packaging"
      ]
     },
-    "cat": "Cribs & nursery"
+    "cat": "Cribs & nursery",
+    "matchAll": [
+     [
+      "babyletto",
+      "crib",
+      "hudson"
+     ]
+    ]
    }
   ],
   "scopeNote": "Our verdict varies across this brand's range.",
@@ -6005,7 +6108,13 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Strollers"
+    "cat": "Strollers",
+    "matchAll": [
+     [
+      "babyzen",
+      "stroller"
+     ]
+    ]
    }
   ],
   "rollup": {
@@ -6175,9 +6284,9 @@
     "origin": "none"
    },
    "materials": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Zinc diaper cream: Emulsion contents in unspecified plastic.",
+    "origin": "rollup"
    },
    "legal": {
     "status": "unknown",
@@ -6978,9 +7087,9 @@
     "origin": "none"
    },
    "legal": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Bamboo Toddler Plate Set: FDA issued warning letters from 2021 to 2023 on bamboo melamine composite dishware",
+    "origin": "rollup"
    },
    "testing": {
     "status": "unknown",
@@ -7065,7 +7174,13 @@
       "3 packaging-matrix-caution"
      ]
     },
-    "cat": "Tableware"
+    "cat": "Tableware",
+    "matchAll": [
+     [
+      "bambooware",
+      "plate"
+     ]
+    ]
    }
   ],
   "rollup": {
@@ -7089,9 +7204,9 @@
   ],
   "fronts": {
    "formula": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Baby Sunscreen Spray: The listing we hold for this product serves a different item, Baby Bum SPF 50 Sunscreen Spray - Mineral UVA/UVB Face and Body Protection for Sensitive Skin - Travel Size - 3 oz.",
+    "origin": "rollup"
    },
    "materials": {
     "status": "unknown",
@@ -7286,7 +7401,15 @@
      ]
     },
     "cat": "Supplements",
-    "research": "Packaging: Contents are unflavored creatine powder in a plastic tub (per prior note); tub resin unstated by brand or retailers. Materials: Single ingredient: Creapure micronized creatine monohydrate, 5 g per serving; brand page states NSF Certified for Sport (note previously recorded Informed Sport)."
+    "research": "Packaging: Contents are unflavored creatine powder in a plastic tub (per prior note); tub resin unstated by brand or retailers. Materials: Single ingredient: Creapure micronized creatine monohydrate, 5 g per serving; brand page states NSF Certified for Sport (note previously recorded Informed Sport).",
+    "matchAll": [
+     [
+      "bare",
+      "performance",
+      "nutrition",
+      "creatine"
+     ]
+    ]
    }
   ],
   "rollup": {
@@ -7501,7 +7624,15 @@
       "2 formula-read-from-materials"
      ]
     },
-    "cat": "Soap"
+    "cat": "Soap",
+    "matchAll": [
+     [
+      "bathing",
+      "culture",
+      "mind",
+      "wash"
+     ]
+    ]
    }
   ],
   "cautions": [
@@ -7743,7 +7874,16 @@
       "5.4 durable-good-is-its-own-packaging"
      ]
     },
-    "cat": "Pantry"
+    "cat": "Pantry",
+    "matchAll": [
+     [
+      "bean",
+      "products",
+      "panel",
+      "cotton",
+      "stall"
+     ]
+    ]
    },
    {
     "name": "Bean Products Hemp Curtain",
@@ -8250,7 +8390,14 @@
       "materials"
      ]
     },
-    "cat": "Makeup"
+    "cat": "Makeup",
+    "matchAll": [
+     [
+      "beauty",
+      "sunday",
+      "polish"
+     ]
+    ]
    }
   ],
   "rollup": {
@@ -8499,9 +8646,9 @@
     "origin": "none"
    },
    "materials": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Baby food pouches: plastic in contact with water contents.",
+    "origin": "rollup"
    },
    "legal": {
     "status": "fail",
@@ -8554,7 +8701,16 @@
       "2 formula-read-from-materials"
      ]
     },
-    "cat": "Pantry"
+    "cat": "Pantry",
+    "matchAll": [
+     [
+      "beech",
+      "nut",
+      "cereal",
+      "infant",
+      "rice"
+     ]
+    ]
    },
    {
     "name": "Stage 1 Organic Single Ingredient Glass Jars",
@@ -8894,9 +9050,9 @@
     "origin": "extracted"
    },
    "materials": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Benebone nylon chew toys: Nylon, and the product is designed to be chewed, so the polymer is the surface in the mouth rather than a container.",
+    "origin": "rollup"
    },
    "legal": {
     "status": "unknown",
@@ -9207,9 +9363,9 @@
     "origin": "none"
    },
    "legal": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Easy Open & Close pressure cooker (BH-1438, Granit Diamond line): Recalled in France in 2020 and again in 2021 for the same uncertified CE mark problem.",
+    "origin": "rollup"
    },
    "testing": {
     "status": "unknown",
@@ -9436,7 +9592,13 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Coffee"
+    "cat": "Coffee",
+    "matchAll": [
+     [
+      "bialetti",
+      "cup"
+     ]
+    ]
    }
   ],
   "rollup": {
@@ -9474,9 +9636,9 @@
     "origin": "none"
    },
    "testing": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Bigelow tea bags: Tea bags with a plastic seam or mesh release 11.6 billion microplastic particles per cup (McGill University, Environmental Science and Technology, 2019). This is about tea generally. We have not confirmed it for this product.",
+    "origin": "rollup"
    }
   },
   "reviewed": true,
@@ -10157,9 +10319,9 @@
     "origin": "none"
    },
    "legal": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Blessed Nest nursing pillows: CPSC issued a standing category wide warning in October 2020 that nursing pillows must never be used for infant sleep after suffocation deaths across brands. No Blessed Nest specific recall exists; the warning covers the whole category, this product included.",
+    "origin": "rollup"
    },
    "testing": {
     "status": "unknown",
@@ -10551,9 +10713,9 @@
   "buy": "https://www.amazon.com/dp/B09W7TD9C4?tag=plasticdetox-20",
   "fronts": {
    "formula": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Blueland Clean Home Kit: The published ingredient list hides composition behind fragrance.",
+    "origin": "rollup"
    },
    "materials": {
     "status": "caution",
@@ -10566,9 +10728,9 @@
     "origin": "none"
    },
    "testing": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Blueland baby bottles: Polypropylene baby bottles release up to 16.2 million microplastic particles per litre at formula temperature (Trinity College Dublin, Nature Food, 2020). This is about baby bottles generally. We have not confirmed it for this product.",
+    "origin": "rollup"
    }
   },
   "reviewed": true,
@@ -10620,7 +10782,15 @@
       "2 formula-read-from-materials"
      ]
     },
-    "cat": "Cleaning products"
+    "cat": "Cleaning products",
+    "matchAll": [
+     [
+      "blueland",
+      "kit",
+      "clean",
+      "home"
+     ]
+    ]
    },
    {
     "name": "Blueland baby bottles",
@@ -11083,7 +11253,14 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Baby formula"
+    "cat": "Baby formula",
+    "matchAll": [
+     [
+      "bobbie",
+      "formula",
+      "infant"
+     ]
+    ]
    },
    {
     "name": "Bobbie baby formula",
@@ -11257,7 +11434,15 @@
       "5.4 durable-good-is-its-own-packaging"
      ]
     },
-    "cat": "Coffee"
+    "cat": "Coffee",
+    "matchAll": [
+     [
+      "bodum",
+      "press",
+      "chambord",
+      "french"
+     ]
+    ]
    },
    {
     "name": "BARISTA and OTTONI electric milk frothers",
@@ -11353,9 +11538,9 @@
     "origin": "extracted"
    },
    "materials": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "fail",
+    "note": "From BARISTA and OTTONI electric milk frothers: Intentionally added PFAS, disclosed by the maker under California AB 1200",
+    "origin": "rollup"
    },
    "legal": {
     "status": "unknown",
@@ -11568,9 +11753,9 @@
     "origin": "none"
    },
    "testing": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Ela Mint: Independent lab testing published by Lead Safe Mama in 2025.",
+    "origin": "rollup"
    }
   },
   "article": "best-non-toxic-toothpaste-guide.html",
@@ -11963,7 +12148,15 @@
       "3 packaging-matrix-caution"
      ]
     },
-    "cat": "Baby bottles"
+    "cat": "Baby bottles",
+    "matchAll": [
+     [
+      "boon",
+      "bottle",
+      "nursh",
+      "silicone"
+     ]
+    ]
    },
    {
     "name": "Cacti Bottle Cleaning Brush",
@@ -11995,7 +12188,15 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Cleaning products"
+    "cat": "Cleaning products",
+    "matchAll": [
+     [
+      "boon",
+      "brush",
+      "cacti",
+      "cleaning"
+     ]
+    ]
    }
   ],
   "scopeNote": "Our verdict varies across this brand's range.",
@@ -12282,9 +12483,9 @@
     "origin": "extracted"
    },
    "materials": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Branch Basics Concentrate Refill: We have not established what the product actually touches.",
+    "origin": "rollup"
    },
    "legal": {
     "status": "unknown",
@@ -12335,7 +12536,14 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Cleaning products"
+    "cat": "Cleaning products",
+    "matchAll": [
+     [
+      "branch",
+      "basics",
+      "refill"
+     ]
+    ]
    },
    {
     "name": "Branch Basics Concentrate",
@@ -12728,9 +12936,9 @@
     "origin": "database"
    },
    "materials": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Pitchers and dispensers on the standard filter: plastic in contact, with repeated contact over time.",
+    "origin": "rollup"
    },
    "legal": {
     "status": "unknown",
@@ -12738,9 +12946,9 @@
     "origin": "none"
    },
    "testing": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Elite and Longlast+ filters: The Elite and Longlast filters are certified under NSF/ANSI 53 for lead, which is real and is more than the standard filter does.",
+    "origin": "rollup"
    }
   },
   "reviewed": true,
@@ -12996,7 +13204,13 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Strollers"
+    "cat": "Strollers",
+    "matchAll": [
+     [
+      "bugaboo",
+      "stroller"
+     ]
+    ]
    }
   ],
   "rollup": {
@@ -13234,7 +13448,13 @@
       "5.1 filed-suit-caps-at-caution"
      ]
     },
-    "cat": "Tableware"
+    "cat": "Tableware",
+    "matchAll": [
+     [
+      "bumkins",
+      "plate"
+     ]
+    ]
    }
   ],
   "rollup": {
@@ -13291,7 +13511,13 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Pantry"
+    "cat": "Pantry",
+    "matchAll": [
+     [
+      "burlap",
+      "seasoning"
+     ]
+    ]
    }
   ],
   "cautions": [
@@ -13381,7 +13607,15 @@
      ]
     },
     "cat": "Pantry",
-    "research": "Packaging: Whole shelled almonds ship in resealable bags (1 lb and 5 lb on the farm site); bag material unstated by brand. Materials: Sole ingredient is certified Regenerative Organic almonds from one California farm; Amazon-listed lots are steam pasteurized, the farm-site truly raw line is untreated."
+    "research": "Packaging: Whole shelled almonds ship in resealable bags (1 lb and 5 lb on the farm site); bag material unstated by brand. Materials: Sole ingredient is certified Regenerative Organic almonds from one California farm; Amazon-listed lots are steam pasteurized, the farm-site truly raw line is untreated.",
+    "matchAll": [
+     [
+      "burroughs",
+      "family",
+      "farms",
+      "almonds"
+     ]
+    ]
    }
   ],
   "cautions": [
@@ -13485,9 +13719,9 @@
     "origin": "none"
    },
    "testing": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Whitening toothpaste: Lead about 446 ppb in the whitening paste.",
+    "origin": "rollup"
    }
   },
   "article": "best-non-toxic-toothpaste-guide.html",
@@ -14142,9 +14376,9 @@
     "origin": "none"
    },
    "legal": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Caboo Tree Free Baby Wipes: A California Prop 65 notice filed August 2025 alleged PFOS in Caboo bamboo baby wipes sold without a warning, and the docket shows a settlement. That is a recent, settled finding about this product category.",
+    "origin": "rollup"
    },
    "testing": {
     "status": "pass",
@@ -14276,9 +14510,9 @@
     "origin": "extracted"
    },
    "materials": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "fail",
+    "note": "From California Baby Super Sensitive Diaper Rash Cream: We have not established what the product actually touches.",
+    "origin": "rollup"
    },
    "legal": {
     "status": "unknown",
@@ -14332,7 +14566,16 @@
      ]
     },
     "cat": "Diaper cream",
-    "research": "Packaging: Ships in an 82 g / 2.9 oz plastic squeeze tube with a plastic cap; resin unstated. Contents are a water-free zinc oxide ointment."
+    "research": "Packaging: Ships in an 82 g / 2.9 oz plastic squeeze tube with a plastic cap; resin unstated. Contents are a water-free zinc oxide ointment.",
+    "matchAll": [
+     [
+      "california",
+      "baby",
+      "cream",
+      "diaper",
+      "rash"
+     ]
+    ]
    },
    {
     "name": "California Baby Super Sensitive SPF 30+",
@@ -14875,7 +15118,13 @@
       "2 formula-read-from-materials"
      ]
     },
-    "cat": "Supplements"
+    "cat": "Supplements",
+    "matchAll": [
+     [
+      "carlson",
+      "liquid"
+     ]
+    ]
    }
   ],
   "fronts": {
@@ -14932,9 +15181,9 @@
     "origin": "database"
    },
    "materials": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "fail",
+    "note": "From CAROTE granite nonstick pans: aluminum in contact, with an oil based formula, which is the strongest extractant there is, heat, repeated contact over time.",
+    "origin": "rollup"
    },
    "legal": {
     "status": "pass",
@@ -15043,14 +15292,14 @@
     "origin": "extracted"
    },
    "materials": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Flame Resistant Polyester Pajamas: Polyester meets the flame standard through the fibre itself, but brushed variants may use chemical treatments per SKU",
+    "origin": "rollup"
    },
    "legal": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Baby Onesies (cotton blend): Brand level recall record across multiple chemistries.",
+    "origin": "rollup"
    },
    "testing": {
     "status": "unknown",
@@ -15096,7 +15345,15 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Clothing"
+    "cat": "Clothing",
+    "matchAll": [
+     [
+      "carter",
+      "blend",
+      "baby",
+      "onesies"
+     ]
+    ]
    },
    {
     "name": "Flame Resistant Polyester Pajamas",
@@ -15167,7 +15424,15 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Clothing"
+    "cat": "Clothing",
+    "matchAll": [
+     [
+      "carter",
+      "pajamas",
+      "flame",
+      "resistant"
+     ]
+    ]
    }
   ],
   "rollup": {
@@ -15475,9 +15740,9 @@
     "origin": "none"
    },
    "materials": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Daily Moisturizing Lotion: Emulsion contents in unspecified plastic.",
+    "origin": "rollup"
    },
    "legal": {
     "status": "pass",
@@ -15870,7 +16135,14 @@
       "2 formula-read-from-materials"
      ]
     },
-    "cat": "Baby food"
+    "cat": "Baby food",
+    "matchAll": [
+     [
+      "chagrin",
+      "valley",
+      "soap"
+     ]
+    ]
    }
   ],
   "rollup": {
@@ -16363,7 +16635,14 @@
      "heldBack": [
       "legal"
      ]
-    }
+    },
+    "matchAll": [
+     [
+      "chef",
+      "pomodoro",
+      "spoons"
+     ]
+    ]
    }
   ]
  },
@@ -16564,7 +16843,13 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Car seats"
+    "cat": "Car seats",
+    "matchAll": [
+     [
+      "chicco",
+      "seat"
+     ]
+    ]
    }
   ],
   "rollup": {
@@ -16651,7 +16936,13 @@
       "5.4 durable-good-is-its-own-packaging"
      ]
     },
-    "cat": "Bath accessories"
+    "cat": "Bath accessories",
+    "matchAll": [
+     [
+      "chill",
+      "loofah"
+     ]
+    ]
    }
   ],
   "rollup": {
@@ -16813,9 +17104,9 @@
     "origin": "extracted"
    },
    "materials": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Clearly Filtered Pitcher: tritan in contact, with repeated contact over time.",
+    "origin": "rollup"
    },
    "legal": {
     "status": "unknown",
@@ -17096,7 +17387,14 @@
       "5.4 durable-good-is-its-own-packaging"
      ]
     },
-    "cat": "Car seats"
+    "cat": "Car seats",
+    "matchAll": [
+     [
+      "clek",
+      "seat",
+      "foonf"
+     ]
+    ]
    },
    {
     "name": "Clek Fllo Convertible Car Seat",
@@ -17136,7 +17434,14 @@
       "5.4 durable-good-is-its-own-packaging"
      ]
     },
-    "cat": "Car seats"
+    "cat": "Car seats",
+    "matchAll": [
+     [
+      "clek",
+      "seat",
+      "fllo"
+     ]
+    ]
    },
    {
     "name": "Clek car seats",
@@ -17548,9 +17853,9 @@
     "origin": "extracted"
    },
    "materials": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Cocofloss: The listing describes plastic, polyester in contact, recorded from the listing rather than an established contact material",
+    "origin": "rollup"
    },
    "legal": {
     "status": "unknown",
@@ -17899,7 +18204,13 @@
      "rules": []
     },
     "cat": "Coffee",
-    "research": "Packaging: Burrs are Nitro Rex high-alloy steel; grounds collect in the included dark glass jar with lid or a transparent QTP polymer jar. Body is a powder-coated metal cylinder; crank has a lacquered oak knob."
+    "research": "Packaging: Burrs are Nitro Rex high-alloy steel; grounds collect in the included dark glass jar with lid or a transparent QTP polymer jar. Body is a powder-coated metal cylinder; crank has a lacquered oak knob.",
+    "matchAll": [
+     [
+      "comandante",
+      "grinder"
+     ]
+    ]
    }
   ],
   "rollup": {
@@ -18134,7 +18445,14 @@
       "2 formula-read-from-materials"
      ]
     },
-    "cat": "Pantry"
+    "cat": "Pantry",
+    "matchAll": [
+     [
+      "comsaf",
+      "jars",
+      "square"
+     ]
+    ]
    },
    {
     "name": "ComSaf Airtight Glass Canisters (Set)",
@@ -18175,7 +18493,14 @@
       "2 formula-read-from-materials"
      ]
     },
-    "cat": "Coffee"
+    "cat": "Coffee",
+    "matchAll": [
+     [
+      "comsaf",
+      "canisters",
+      "airtight"
+     ]
+    ]
    }
   ],
   "cautions": [
@@ -18592,9 +18917,9 @@
   ],
   "fronts": {
    "formula": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "fail",
+    "note": "From Sport Mineral Sunscreen SPF 50: The published ingredient list names polyester.",
+    "origin": "rollup"
    },
    "materials": {
     "status": "unknown",
@@ -18765,9 +19090,9 @@
   ],
   "fronts": {
    "formula": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Cora Organic Cotton Topsheet Pads and Liners: The organic cotton topsheet is real and is the layer against skin. The core and leakproof backsheet are synthetic, and the organic framing on the box covers only the cover.",
+    "origin": "rollup"
    },
    "materials": {
     "status": "unknown",
@@ -19026,7 +19351,15 @@
       "2 formula-read-from-materials"
      ]
     },
-    "cat": "Coffee"
+    "cat": "Coffee",
+    "matchAll": [
+     [
+      "cosori",
+      "kettle",
+      "glass",
+      "electric"
+     ]
+    ]
    },
    {
     "name": "Cosori Double Wall Stainless Kettle",
@@ -19066,7 +19399,15 @@
       "5.4 durable-good-is-its-own-packaging"
      ]
     },
-    "cat": "Coffee"
+    "cat": "Coffee",
+    "matchAll": [
+     [
+      "cosori",
+      "kettle",
+      "double",
+      "wall"
+     ]
+    ]
    },
    {
     "name": "TurboBlaze and Iconic air fryers",
@@ -19934,9 +20275,9 @@
     "origin": "none"
    },
    "testing": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "fail",
+    "note": "From Crayons: EWG 2018 and US PIRG testing found asbestos fibers in some Crayola branded crayons sourced from China. A recurring lab signal across five years on a product that goes in toddler hands and mouths is the SKIP signal.",
+    "origin": "rollup"
    }
   },
   "reviewed": true,
@@ -19977,7 +20318,13 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Toys"
+    "cat": "Toys",
+    "matchAll": [
+     [
+      "crayola",
+      "crayons"
+     ]
+    ]
    }
   ],
   "rollup": {
@@ -20590,7 +20937,15 @@
      ]
     },
     "cat": "Electrolytes",
-    "research": "Packaging: Powder comes in single-serve 0.28 oz film stick packets, 14 to a resealable stand-up plastic pouch; packet film resin unstated."
+    "research": "Packaging: Powder comes in single-serve 0.28 oz film stick packets, 14 to a resealable stand-up plastic pouch; packet film resin unstated.",
+    "matchAll": [
+     [
+      "cure",
+      "hydration",
+      "mix",
+      "electrolyte"
+     ]
+    ]
    },
    {
     "name": "Cure Hydration electrolytes",
@@ -21150,7 +21505,14 @@
      ]
     },
     "cat": "Cribs & nursery",
-    "research": "Packaging: Durable good, no contents; body is 100% solid New Zealand pine wood with a non-toxic multi-step painted finish, stated lead and phthalate safe. Materials: 100% solid FSC certified New Zealand pine, non-toxic paint, GREENGUARD Gold certified; retailer specs also list a TSCA compliant MDF board over the metal mattress support."
+    "research": "Packaging: Durable good, no contents; body is 100% solid New Zealand pine wood with a non-toxic multi-step painted finish, stated lead and phthalate safe. Materials: 100% solid FSC certified New Zealand pine, non-toxic paint, GREENGUARD Gold certified; retailer specs also list a TSCA compliant MDF board over the metal mattress support.",
+    "matchAll": [
+     [
+      "davinci",
+      "kalani",
+      "crib"
+     ]
+    ]
    }
   ],
   "cautions": [
@@ -22075,9 +22437,9 @@
     "origin": "extracted"
    },
    "testing": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "fail",
+    "note": "From Diaper Rash Cream: About 3,300 ppb lead reported in 2025 independent testing",
+    "origin": "rollup"
    }
   },
   "reviewed": true,
@@ -22329,9 +22691,9 @@
     "origin": "none"
    },
    "testing": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Diamond Crystal sea salt: Sea salt is the most microplastic contaminated salt, because it is evaporated seawater (Environmental Science & Technology, 39 brands across 21 countries). This product's own materials put it in that class.",
+    "origin": "rollup"
    }
   },
   "reviewed": true,
@@ -22564,7 +22926,14 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Pantry"
+    "cat": "Pantry",
+    "matchAll": [
+     [
+      "diaspora",
+      "pragati",
+      "turmeric"
+     ]
+    ]
    }
   ],
   "cautions": [
@@ -22676,7 +23045,16 @@
      ]
     },
     "cat": "Laundry detergent",
-    "research": "Packaging: Liquid detergent ships in a recyclable aluminum bottle, not glass; the companion baby booster powder comes in a recyclable cardboard tube."
+    "research": "Packaging: Liquid detergent ships in a recyclable aluminum bottle, not glass; the companion baby booster powder comes in a recyclable cardboard tube.",
+    "matchAll": [
+     [
+      "dirty",
+      "labs",
+      "laundry",
+      "bio",
+      "enzyme"
+     ]
+    ]
    },
    {
     "name": "Dirty Labs laundry detergent",
@@ -22888,7 +23266,13 @@
      }
     },
     "cat": "Menstrual cups",
-    "catAuthored": true
+    "catAuthored": true,
+    "matchAll": [
+     [
+      "divacup",
+      "model"
+     ]
+    ]
    }
   ],
   "rollup": {
@@ -23283,14 +23667,14 @@
   ],
   "fronts": {
    "formula": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "fail",
+    "note": "From Dove Antiperspirant Deodorant Stick: Aluminium salt as the active, with fragrance among the inactives. Rule 2.1: 'fragrance' is a legal umbrella standing in for a mixture of tens to hundreds of ingredients, historically a phthalate carrier, on skin left on all day. A disclosure failure caps at careful.",
+    "origin": "rollup"
    },
    "materials": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Dove Antiperspirant Deodorant Stick: A plastic twist up tube holding a wax and silicone solid, which rule 3.1 pairs with a polyolefin as a caution on a leave-on product.",
+    "origin": "rollup"
    },
    "legal": {
     "status": "fail",
@@ -23359,8 +23743,8 @@
     "note": "Independent testing reported trace lead, mercury and arsenic, and a class action followed. The soaps are a separate matter and remain a pick.",
     "ext": {
      "frontNotes": {
-      "legal": "Independent testing reported trace lead, mercury and arsenic, and a class action followed.",
-      "testing": "Independent testing reported trace lead, mercury and arsenic, and a class action followed."
+      "legal": "A class action followed that testing.",
+      "testing": "Independent testing reported trace lead, mercury and arsenic in the toothpaste."
      },
      "legalNote": "Our own research records an action here, and the note on this product describes it. Nothing further is open in the FDA enforcement database, and under rule 5.2 a remedied action over 24 months old is informational rather than a finding against the product today.",
      "verdict": "careful",
@@ -23379,7 +23763,8 @@
      "scope": "line",
      "basis": "direct",
      "disclose": false,
-     "rules": []
+     "rules": [],
+     "authored": true
     },
     "origin": "hand",
     "matchAll": [
@@ -23426,7 +23811,14 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Soap"
+    "cat": "Soap",
+    "matchAll": [
+     [
+      "bronner",
+      "soap",
+      "unscented"
+     ]
+    ]
    },
    {
     "name": "Dr. Bronner's Pure Castile Bar Soap",
@@ -23461,7 +23853,15 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Soap"
+    "cat": "Soap",
+    "matchAll": [
+     [
+      "bronner",
+      "soap",
+      "pure",
+      "bar"
+     ]
+    ]
    }
   ],
   "reviewed": true,
@@ -23803,9 +24203,9 @@
     "origin": "extracted"
    },
    "materials": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "fail",
+    "note": "From Options+ plastic baby bottles: Emulsion contents in unspecified plastic, heated in use.",
+    "origin": "rollup"
    },
    "legal": {
     "status": "fail",
@@ -23880,7 +24280,14 @@
      ]
     },
     "cat": "Makeup",
-    "research": "Packaging: 6 ml plastic mascara tube, resin unstated (brand converting to 100% recycled plastic); outer folding box is 100% recycled FSC board. Contents are cream mascara."
+    "research": "Packaging: 6 ml plastic mascara tube, resin unstated (brand converting to 100% recycled plastic); outer folding box is 100% recycled FSC board. Contents are cream mascara.",
+    "matchAll": [
+     [
+      "hauschka",
+      "mascara",
+      "defining"
+     ]
+    ]
    },
    {
     "name": "Dr. Hauschka Eye Definer",
@@ -23916,7 +24323,14 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Makeup"
+    "cat": "Makeup",
+    "matchAll": [
+     [
+      "hauschka",
+      "definer",
+      "eye"
+     ]
+    ]
    },
    {
     "name": "Dr. Hauschka Liquid Eyeliner",
@@ -23953,7 +24367,14 @@
      "rules": []
     },
     "cat": "Makeup",
-    "research": "Packaging: Brand states all its make-up products are packaged in plastic, resin unstated; contents are liquid eyeliner."
+    "research": "Packaging: Brand states all its make-up products are packaged in plastic, resin unstated; contents are liquid eyeliner.",
+    "matchAll": [
+     [
+      "hauschka",
+      "eyeliner",
+      "liquid"
+     ]
+    ]
    }
   ],
   "cautions": [
@@ -23968,14 +24389,14 @@
   },
   "fronts": {
    "formula": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Dr. Hauschka Defining Mascara: The published ingredient list hides composition behind fragrance, parfum.",
+    "origin": "rollup"
    },
    "materials": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "fail",
+    "note": "From Dr. Hauschka Defining Mascara: We have not established what the product actually touches.",
+    "origin": "rollup"
    },
    "legal": {
     "status": "unknown",
@@ -24168,9 +24589,9 @@
   ],
   "fronts": {
    "formula": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "Baby Laundry Detergent carries a finding on this front.",
+    "origin": "rollup"
    },
    "materials": {
     "status": "unknown",
@@ -24224,7 +24645,13 @@
       "2.1 disclosure-failure-caps-at-caution"
      ]
     },
-    "cat": "Laundry detergent"
+    "cat": "Laundry detergent",
+    "matchAll": [
+     [
+      "dreft",
+      "detergent"
+     ]
+    ]
    }
   ],
   "rollup": {
@@ -24937,7 +25364,15 @@
      "heldBack": [
       "legal"
      ]
-    }
+    },
+    "matchAll": [
+     [
+      "far",
+      "cup",
+      "stainless",
+      "steel"
+     ]
+    ]
    },
    {
     "name": "E-far 8 Inch Cake Pan Set (3)",
@@ -24971,7 +25406,14 @@
      "heldBack": [
       "legal"
      ]
-    }
+    },
+    "matchAll": [
+     [
+      "far",
+      "pan",
+      "cake"
+     ]
+    ]
    }
   ]
  },
@@ -24995,9 +25437,9 @@
     "origin": "none"
    },
    "materials": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Each & Every Aluminum Free Deodorant: A black plastic twist up tube holding an anhydrous stick. Rule 3.1: an oil and wax solid is the strongest extractant there is and this is left on the skin, so the pairing is a caution. Rule 3.6 does not rescue it, because plastic free deodorant is sold: Wild's paper refills and Lafe's paper tube are the same product in a package that gives nothing up.",
+    "origin": "rollup"
    },
    "legal": {
     "status": "unknown",
@@ -25196,7 +25638,13 @@
       "materials"
      ]
     },
-    "cat": "Tableware"
+    "cat": "Tableware",
+    "matchAll": [
+     [
+      "earlywood",
+      "utensils"
+     ]
+    ]
    }
   ],
   "rollup": {
@@ -25403,9 +25851,9 @@
     "origin": "none"
    },
    "testing": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Earth Harbor baby bottles: Polypropylene baby bottles release up to 16.2 million microplastic particles per litre at formula temperature (Trinity College Dublin, Nature Food, 2020). This is about baby bottles generally. We have not confirmed it for this product.",
+    "origin": "rollup"
    }
   },
   "reviewed": true,
@@ -25548,7 +25996,16 @@
       "2 formula-read-from-materials"
      ]
     },
-    "cat": "Skincare"
+    "cat": "Skincare",
+    "matchAll": [
+     [
+      "earth",
+      "harbor",
+      "serum",
+      "marina",
+      "biome"
+     ]
+    ]
    },
    {
     "name": "Earth Harbor baby bottles",
@@ -25881,7 +26338,16 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Body lotion"
+    "cat": "Body lotion",
+    "matchAll": [
+     [
+      "earth",
+      "mama",
+      "organics",
+      "butter",
+      "body"
+     ]
+    ]
    },
    {
     "name": "Calendula Baby Lotion",
@@ -25924,7 +26390,16 @@
      ]
     },
     "cat": "Baby lotion",
-    "research": "Packaging: Now sold as Simply Non-Scents Baby Lotion in an 8 oz squeeze bottle; bottle material unstated by brand. Contents are a lotion. Materials: Water and organic aloe juice base with organic olive oil, shea butter, oat protein, and organic calendula flower extract; NSF/ANSI 305 organic certified by Oregon Tilth."
+    "research": "Packaging: Now sold as Simply Non-Scents Baby Lotion in an 8 oz squeeze bottle; bottle material unstated by brand. Contents are a lotion. Materials: Water and organic aloe juice base with organic olive oil, shea butter, oat protein, and organic calendula flower extract; NSF/ANSI 305 organic certified by Oregon Tilth.",
+    "matchAll": [
+     [
+      "earth",
+      "mama",
+      "organics",
+      "lotion",
+      "calendula"
+     ]
+    ]
    }
   ],
   "fronts": {
@@ -25934,9 +26409,9 @@
     "origin": "none"
    },
    "materials": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "fail",
+    "note": "From Organic Diaper Balm: PET in contact, with an oil based formula, which is the strongest extractant there is, repeated contact over time.",
+    "origin": "rollup"
    },
    "legal": {
     "status": "unknown",
@@ -25988,9 +26463,9 @@
     "origin": "none"
    },
    "testing": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "fail",
+    "note": "Organic Infant Formula carries a finding on this front.",
+    "origin": "rollup"
    }
   },
   "reviewed": true,
@@ -26032,7 +26507,14 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Baby food"
+    "cat": "Baby food",
+    "matchAll": [
+     [
+      "earth",
+      "oatmeal",
+      "baby"
+     ]
+    ]
    },
    {
     "name": "Organic Infant Formula",
@@ -27437,7 +27919,14 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Razors"
+    "cat": "Razors",
+    "matchAll": [
+     [
+      "edwin",
+      "jagger",
+      "razor"
+     ]
+    ]
    }
   ],
   "rollup": {
@@ -27524,9 +28013,9 @@
     "origin": "extracted"
    },
    "materials": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From EHZNZIE PEVA shower curtain liner: Leachy, contents not described.",
+    "origin": "rollup"
    },
    "legal": {
     "status": "unknown",
@@ -27927,7 +28416,13 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Toys"
+    "cat": "Toys",
+    "matchAll": [
+     [
+      "elmer",
+      "products"
+     ]
+    ]
    }
   ],
   "rollup": {
@@ -28147,7 +28642,13 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Baby formula"
+    "cat": "Baby formula",
+    "matchAll": [
+     [
+      "enfamil",
+      "stage"
+     ]
+    ]
    }
   ],
   "rollup": {
@@ -28390,7 +28891,15 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Strollers"
+    "cat": "Strollers",
+    "matchAll": [
+     [
+      "ergobaby",
+      "carrier",
+      "omni",
+      "breeze"
+     ]
+    ]
    },
    {
     "name": "Ergobaby Embrace Organic Cotton",
@@ -28696,7 +29205,15 @@
      "rules": []
     },
     "cat": "Shampoo",
-    "research": "Materials: ASIN now sells the renamed Scalp Health bar: sodium coco-sulfate and sodium cocoyl isethionate surfactant base with decyl glucoside, oatmeal, karanja oil, neem seed oil, and cocoa butter."
+    "research": "Materials: ASIN now sells the renamed Scalp Health bar: sodium coco-sulfate and sodium cocoyl isethionate surfactant base with decyl glucoside, oatmeal, karanja oil, neem seed oil, and cocoa butter.",
+    "matchAll": [
+     [
+      "ethique",
+      "bar",
+      "heali",
+      "kiwi"
+     ]
+    ]
    },
    {
     "name": "Ethique Guardian Conditioner Bar",
@@ -28740,7 +29257,15 @@
      ]
     },
     "cat": "Conditioner",
-    "research": "Materials: Solid 60 g conditioner bar; base is behentrimonium methosulfate with brassica alcohol, hydrogenated castor oil, glycerine, coconut oil, and cocoa seed butter."
+    "research": "Materials: Solid 60 g conditioner bar; base is behentrimonium methosulfate with brassica alcohol, hydrogenated castor oil, glycerine, coconut oil, and cocoa seed butter.",
+    "matchAll": [
+     [
+      "ethique",
+      "bar",
+      "guardian",
+      "conditioner"
+     ]
+    ]
    }
   ],
   "rollup": {
@@ -28976,9 +29501,9 @@
     "origin": "database"
    },
    "materials": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "fail",
+    "note": "From Classic tinted plastic bottles: Anhydrous contents in unspecified plastic, heated in use.",
+    "origin": "rollup"
    },
    "legal": {
     "status": "pass",
@@ -28986,9 +29511,9 @@
     "origin": "extracted"
    },
    "testing": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "fail",
+    "note": "From Classic tinted plastic bottles: Polypropylene baby bottles release up to 16.2 million microplastic particles per litre at formula temperature (Trinity College Dublin, Nature Food, 2020). This product's own materials put it in that class.",
+    "origin": "rollup"
    }
   },
   "reviewed": true,
@@ -29593,7 +30118,15 @@
       "5.4 durable-good-is-its-own-packaging"
      ]
     },
-    "cat": "Cleaning products"
+    "cat": "Cleaning products",
+    "matchAll": [
+     [
+      "ezpz",
+      "cup",
+      "tiny",
+      "open"
+     ]
+    ]
    }
   ],
   "rollup": {
@@ -29810,7 +30343,15 @@
      ],
      "authored": true
     },
-    "cat": "Coffee"
+    "cat": "Coffee",
+    "matchAll": [
+     [
+      "fellow",
+      "kettle",
+      "pro",
+      "gooseneck"
+     ]
+    ]
    },
    {
     "name": "Fellow Stagg EKG Pour Over Kettle",
@@ -29851,7 +30392,15 @@
      ]
     },
     "cat": "Coffee",
-    "research": "Packaging: Kettle body and water interior are 304 18/8 stainless steel; handle and lid pull are BPA-free polypropylene; silicone ring around the internal temperature probe."
+    "research": "Packaging: Kettle body and water interior are 304 18/8 stainless steel; handle and lid pull are BPA-free polypropylene; silicone ring around the internal temperature probe.",
+    "matchAll": [
+     [
+      "fellow",
+      "kettle",
+      "pour",
+      "over"
+     ]
+    ]
    },
    {
     "name": "Fellow coffee",
@@ -30247,7 +30796,13 @@
      "heldBack": [
       "legal"
      ]
-    }
+    },
+    "matchAll": [
+     [
+      "finedine",
+      "bowls"
+     ]
+    ]
    }
   ]
  },
@@ -30598,7 +31153,14 @@
      ]
     },
     "cat": "Coffee",
-    "research": "Packaging: Durable brewer, no contents; cast aluminum press stand with stainless steel brew head, removable stainless steel spout, and all-stainless bottomless portafilter."
+    "research": "Packaging: Durable brewer, no contents; cast aluminum press stand with stainless steel brew head, removable stainless steel spout, and all-stainless bottomless portafilter.",
+    "matchAll": [
+     [
+      "flair",
+      "maker",
+      "pro"
+     ]
+    ]
    },
    {
     "name": "Flair Classic Manual Lever Espresso Maker",
@@ -30639,7 +31201,14 @@
      ]
     },
     "cat": "Coffee",
-    "research": "Packaging: Durable brewer, no contents; die-cast aluminum stand and post with a stainless steel brewing head; Flair does not itemize piston or seal materials."
+    "research": "Packaging: Durable brewer, no contents; die-cast aluminum stand and post with a stainless steel brewing head; Flair does not itemize piston or seal materials.",
+    "matchAll": [
+     [
+      "flair",
+      "maker",
+      "classic"
+     ]
+    ]
    },
    {
     "name": "Flair coffee",
@@ -30911,7 +31480,14 @@
      ]
     },
     "cat": "Pantry",
-    "research": "Packaging: Sold frozen in a clear plastic bread bag with plastic closure; resin unstated. Contents are sprouted whole grain sesame bread."
+    "research": "Packaging: Sold frozen in a clear plastic bread bag with plastic closure; resin unstated. Contents are sprouted whole grain sesame bread.",
+    "matchAll": [
+     [
+      "food",
+      "life",
+      "bread"
+     ]
+    ]
    }
   ],
   "rollup": {
@@ -31085,7 +31661,13 @@
      ]
     },
     "cat": "Tea",
-    "research": "Packaging: Durable infuser, no contents; extra-fine perforated stainless steel basket and stainless steel lid; lid edge carries a black trim ring, material unstated."
+    "research": "Packaging: Durable infuser, no contents; extra-fine perforated stainless steel basket and stainless steel lid; lid edge carries a black trim ring, material unstated.",
+    "matchAll": [
+     [
+      "forlife",
+      "infuser"
+     ]
+    ]
    }
   ],
   "rollup": {
@@ -31173,7 +31755,13 @@
       "materials"
      ]
     },
-    "cat": "Food storage"
+    "cat": "Food storage",
+    "matchAll": [
+     [
+      "formaticum",
+      "paper"
+     ]
+    ]
    }
   ],
   "rollup": {
@@ -31312,7 +31900,16 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Teethers"
+    "cat": "Teethers",
+    "matchAll": [
+     [
+      "frida",
+      "baby",
+      "thermometer",
+      "quick",
+      "read"
+     ]
+    ]
    },
    {
     "name": "Frida Baby Electric Nail File",
@@ -31346,7 +31943,16 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Teethers"
+    "cat": "Teethers",
+    "matchAll": [
+     [
+      "frida",
+      "baby",
+      "file",
+      "electric",
+      "nail"
+     ]
+    ]
    }
   ],
   "fronts": {
@@ -31889,7 +32495,13 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Coffee"
+    "cat": "Coffee",
+    "matchAll": [
+     [
+      "gaggia",
+      "pro"
+     ]
+    ]
    }
   ],
   "fronts": {
@@ -32109,9 +32721,9 @@
     "origin": "extracted"
    },
    "materials": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Gaiam Premium PVC mats: Leachy, contents not described.",
+    "origin": "rollup"
    },
    "legal": {
     "status": "unknown",
@@ -32247,9 +32859,9 @@
     "origin": "extracted"
    },
    "testing": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Vitamin Code RAW Prenatal: Highest arsenic of any prenatal in Lead Safe Mama's testing (Nov 2024), plus lead and cadmium.",
+    "origin": "rollup"
    }
   },
   "reviewed": true,
@@ -32886,7 +33498,15 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Baby food"
+    "cat": "Baby food",
+    "matchAll": [
+     [
+      "gerber",
+      "others",
+      "sweet",
+      "potato"
+     ]
+    ]
    },
    {
     "name": "Gerber pouches and puffs",
@@ -32969,9 +33589,9 @@
     "origin": "extracted"
    },
    "materials": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Stage 2 Pouches (various flavors): Multilayer plastic pouch in contact with acidic fruit and vegetable puree, often heated during pasteurization then shelf stable for months.",
+    "origin": "rollup"
    },
    "legal": {
     "status": "unknown",
@@ -32979,9 +33599,9 @@
     "origin": "none"
    },
    "testing": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Stage 2 Pouches (various flavors): 2023 Consumer Reports testing found phthalates in pouches that were not in the same brand's jarred versions.",
+    "origin": "rollup"
    }
   },
   "reviewed": true,
@@ -33657,9 +34277,9 @@
     "origin": "none"
    },
    "materials": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "GOODONYA Organic Hydration carries a finding on this front.",
+    "origin": "rollup"
    },
    "legal": {
     "status": "unknown",
@@ -34122,9 +34742,9 @@
     "origin": "database"
    },
    "materials": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Crib Mattress (standard): Polyurethane foam typically contains flame retardants (TDCPP, TCEP historically.",
+    "origin": "rollup"
    },
    "legal": {
     "status": "unknown",
@@ -34132,9 +34752,9 @@
     "origin": "none"
    },
    "testing": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "fail",
+    "note": "From Convertible Car Seat: Ecology Center 2018 car seat testing found brominated and chlorinated flame retardants in major car seats including Graco. Until per SKU verification confirms FR free, the lab finding is the relevant signal.",
+    "origin": "rollup"
    }
   },
   "reviewed": true,
@@ -34173,7 +34793,13 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Crib mattresses"
+    "cat": "Crib mattresses",
+    "matchAll": [
+     [
+      "graco",
+      "standard"
+     ]
+    ]
    },
    {
     "name": "Convertible Car Seat",
@@ -34208,7 +34834,15 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Car seats"
+    "cat": "Car seats",
+    "matchAll": [
+     [
+      "graco",
+      "seat",
+      "convertible",
+      "car"
+     ]
+    ]
    },
    {
     "name": "Premium foam crib mattress",
@@ -35605,9 +36239,9 @@
     "origin": "none"
    },
    "materials": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "Organic Pouches carries a finding on this front.",
+    "origin": "rollup"
    },
    "legal": {
     "status": "unknown",
@@ -35719,7 +36353,15 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Teethers"
+    "cat": "Teethers",
+    "matchAll": [
+     [
+      "happy",
+      "baby",
+      "wafers",
+      "teething"
+     ]
+    ]
    },
    {
     "name": "Whole range",
@@ -36115,7 +36757,15 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Coffee"
+    "cat": "Coffee",
+    "matchAll": [
+     [
+      "hario",
+      "kettle",
+      "buono",
+      "stovetop"
+     ]
+    ]
    },
    {
     "name": "Hario V60 Ceramic Dripper (02)",
@@ -36151,7 +36801,15 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Coffee"
+    "cat": "Coffee",
+    "matchAll": [
+     [
+      "hario",
+      "dripper",
+      "v60",
+      "ceramic"
+     ]
+    ]
    },
    {
     "name": "Hario Chacha Kyusu Glass Teapot",
@@ -36189,7 +36847,15 @@
      "rules": []
     },
     "cat": "Tea",
-    "research": "Packaging: Teapot body and lid are heatproof borosilicate glass; built-in strainer is stainless steel. Durable teapot, no contents."
+    "research": "Packaging: Teapot body and lid are heatproof borosilicate glass; built-in strainer is stainless steel. Durable teapot, no contents.",
+    "matchAll": [
+     [
+      "hario",
+      "teapot",
+      "chacha",
+      "kyusu"
+     ]
+    ]
    },
    {
     "name": "Hario coffee",
@@ -36438,7 +37104,15 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Baby sleep"
+    "cat": "Baby sleep",
+    "matchAll": [
+     [
+      "hatch",
+      "light",
+      "plug",
+      "night"
+     ]
+    ]
    },
    {
     "name": "Hatch Rest+ White Noise Machine",
@@ -36469,7 +37143,15 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Baby sleep"
+    "cat": "Baby sleep",
+    "matchAll": [
+     [
+      "hatch",
+      "machine",
+      "rest",
+      "white"
+     ]
+    ]
    }
   ],
   "scopeNote": "Our verdict varies across this brand's range.",
@@ -36958,9 +37640,9 @@
     "origin": "extracted"
    },
    "testing": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "Fluoride Free Kids Toothpaste carries a finding on this front.",
+    "origin": "rollup"
    }
   },
   "reviewed": true,
@@ -37749,9 +38431,9 @@
   "buy": "https://www.amazon.com/dp/B08S3FTX35?tag=plasticdetox-20",
   "fronts": {
    "formula": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From HiBAR Shampoo Bar: The published ingredient list hides composition behind fragrance.",
+    "origin": "rollup"
    },
    "materials": {
     "status": "unknown",
@@ -37834,7 +38516,13 @@
      "cappedFrom": "good",
      "capRestoreWhy": ""
     },
-    "cat": "Shampoo"
+    "cat": "Shampoo",
+    "matchAll": [
+     [
+      "hibar",
+      "bar"
+     ]
+    ]
    }
   ],
   "rollup": {
@@ -38098,7 +38786,13 @@
      ],
      "authored": true
     },
-    "cat": "Tea"
+    "cat": "Tea",
+    "matchAll": [
+     [
+      "hiware",
+      "infuser"
+     ]
+    ]
    }
   ],
   "rollup": {
@@ -38571,7 +39265,14 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Bedding"
+    "cat": "Bedding",
+    "matchAll": [
+     [
+      "hudson",
+      "baby",
+      "towel"
+     ]
+    ]
    }
   ],
   "rollup": {
@@ -38645,9 +39346,9 @@
     "origin": "extracted"
    },
    "materials": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Little Snugglers: Wood pulp core with SAP, polypropylene and polyethylene fibres and films, polyurethane and polyolefin elastics. Kimberly-Clark says made without elemental chlorine, which is the ECF claim rather than totally chlorine free",
+    "origin": "rollup"
    },
    "legal": {
     "status": "fail",
@@ -38655,9 +39356,9 @@
     "origin": "extracted"
    },
    "testing": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "fail",
+    "note": "From Little Snugglers: ANSES 2020 testing flagged Huggies alongside Pampers for trace dioxins, furans, PCBs and glyphosate",
+    "origin": "rollup"
    }
   },
   "aliases": [
@@ -39435,9 +40136,9 @@
   ],
   "fronts": {
    "formula": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Ice Cubes and Ice Breakers gum: The published ingredient list hides composition behind gum base.",
+    "origin": "rollup"
    },
    "materials": {
     "status": "unknown",
@@ -39660,7 +40361,15 @@
       "5.4 durable-good-is-its-own-packaging"
      ]
     },
-    "cat": "Coffee"
+    "cat": "Coffee",
+    "matchAll": [
+     [
+      "you",
+      "care",
+      "filters",
+      "coffee"
+     ]
+    ]
    },
    {
     "name": "If You Care Sponge Cloths",
@@ -39700,7 +40409,15 @@
       "5.4 durable-good-is-its-own-packaging"
      ]
     },
-    "cat": "Cleaning products"
+    "cat": "Cleaning products",
+    "matchAll": [
+     [
+      "you",
+      "care",
+      "cloths",
+      "sponge"
+     ]
+    ]
    },
    {
     "name": "If You Care Unbleached Parchment Paper",
@@ -39740,7 +40457,15 @@
       "5.4 durable-good-is-its-own-packaging"
      ]
     },
-    "cat": "Coffee"
+    "cat": "Coffee",
+    "matchAll": [
+     [
+      "you",
+      "care",
+      "paper",
+      "parchment"
+     ]
+    ]
    },
    {
     "name": "If You Care Unbleached Baking Cups (60 ct, 3 pk)",
@@ -39768,7 +40493,15 @@
      "rules": [
       "2 formula-read-from-materials"
      ]
-    }
+    },
+    "matchAll": [
+     [
+      "you",
+      "care",
+      "cups",
+      "baking"
+     ]
+    ]
    }
   ],
   "rollup": {
@@ -39896,7 +40629,13 @@
       "materials"
      ]
     },
-    "cat": "Cribs & nursery"
+    "cat": "Cribs & nursery",
+    "matchAll": [
+     [
+      "ikea",
+      "chair"
+     ]
+    ]
    }
   ],
   "rollup": {
@@ -40219,7 +40958,15 @@
       "materials"
      ]
     },
-    "cat": "Makeup"
+    "cat": "Makeup",
+    "matchAll": [
+     [
+      "inika",
+      "foundation",
+      "loose",
+      "mineral"
+     ]
+    ]
    },
    {
     "name": "INIKA Organic Long Lash Mascara",
@@ -40253,7 +41000,15 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Makeup"
+    "cat": "Makeup",
+    "matchAll": [
+     [
+      "inika",
+      "mascara",
+      "long",
+      "lash"
+     ]
+    ]
    },
    {
     "name": "INIKA Organic Certified Organic Lipstick",
@@ -40296,7 +41051,13 @@
      ]
     },
     "cat": "Makeup",
-    "research": "Packaging: Solid lipstick bullet in an aluminum tube; brand states it is housed in sustainable aluminium packaging."
+    "research": "Packaging: Solid lipstick bullet in an aluminum tube; brand states it is housed in sustainable aluminium packaging.",
+    "matchAll": [
+     [
+      "inika",
+      "lipstick"
+     ]
+    ]
    }
   ],
   "cautions": [
@@ -41360,7 +42121,13 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Coffee"
+    "cat": "Coffee",
+    "matchAll": [
+     [
+      "joco",
+      "cup"
+     ]
+    ]
    }
   ],
   "cautions": [
@@ -41582,7 +42349,13 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Baby lotion"
+    "cat": "Baby lotion",
+    "matchAll": [
+     [
+      "johnson",
+      "lotion"
+     ]
+    ]
    },
    {
     "name": "Baby Powder (cornstarch)",
@@ -41617,7 +42390,13 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Baby lotion"
+    "cat": "Baby lotion",
+    "matchAll": [
+     [
+      "johnson",
+      "cornstarch"
+     ]
+    ]
    },
    {
     "name": "Baby Powder (talc)",
@@ -41653,7 +42432,13 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Baby lotion"
+    "cat": "Baby lotion",
+    "matchAll": [
+     [
+      "johnson",
+      "talc"
+     ]
+    ]
    }
   ],
   "rollup": {
@@ -41843,7 +42628,15 @@
       "4.3 non-detect-without-lod"
      ]
     },
-    "cat": "Pantry"
+    "cat": "Pantry",
+    "matchAll": [
+     [
+      "jovial",
+      "einkorn",
+      "all",
+      "flour"
+     ]
+    ]
    }
   ],
   "cautions": [
@@ -42606,7 +43399,15 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Baby food"
+    "cat": "Baby food",
+    "matchAll": [
+     [
+      "keababies",
+      "tray",
+      "silicone",
+      "freezer"
+     ]
+    ]
    },
    {
     "name": "Glass baby food storage jars",
@@ -42753,7 +43554,13 @@
      ]
     },
     "cat": "Coffee",
-    "research": "Packaging: Cup is tempered soda-lime glass, 25% recovered content, lead and cadmium free; lid is PP alloy, sipper plug is LDPE, band is 100% recovered cork."
+    "research": "Packaging: Cup is tempered soda-lime glass, 25% recovered content, lead and cadmium free; lid is PP alloy, sipper plug is LDPE, band is 100% recovered cork.",
+    "matchAll": [
+     [
+      "keepcup",
+      "glass"
+     ]
+    ]
    }
   ],
   "rollup": {
@@ -42850,7 +43657,15 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Vacuums"
+    "cat": "Vacuums",
+    "matchAll": [
+     [
+      "kenmore",
+      "away",
+      "intuition",
+      "bu4050"
+     ]
+    ]
    },
    {
     "name": "Kenmore 600 Series Bagged Canister",
@@ -42880,7 +43695,14 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Vacuums"
+    "cat": "Vacuums",
+    "matchAll": [
+     [
+      "kenmore",
+      "canister",
+      "series"
+     ]
+    ]
    }
   ],
   "cautions": [
@@ -43082,7 +43904,14 @@
      ]
     },
     "cat": "Coffee",
-    "research": "Packaging: Whole beans ship in a foil-lined bag; brand states the lining makes bags non-recyclable; liner resin unstated. Materials: Whole bean dark roast, 100% organic Arabica, Swiss Water Process decaf; certified organic, Fairtrade, and kosher."
+    "research": "Packaging: Whole beans ship in a foil-lined bag; brand states the lining makes bags non-recyclable; liner resin unstated. Materials: Whole bean dark roast, 100% organic Arabica, Swiss Water Process decaf; certified organic, Fairtrade, and kosher.",
+    "matchAll": [
+     [
+      "kicking",
+      "horse",
+      "water"
+     ]
+    ]
    }
   ],
   "rollup": {
@@ -43165,7 +43994,14 @@
      "rules": [
       "4.3 non-detect-with-lod-is-a-pass"
      ]
-    }
+    },
+    "matchAll": [
+     [
+      "kirkland",
+      "signature",
+      "parchment"
+     ]
+    ]
    }
   ]
  },
@@ -43393,9 +44229,9 @@
   ],
   "fronts": {
    "formula": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Shampoo and conditioner bars: The published ingredient list hides composition behind fragrance.",
+    "origin": "rollup"
    },
    "materials": {
     "status": "caution",
@@ -43602,7 +44438,14 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Cookware"
+    "cat": "Cookware",
+    "matchAll": [
+     [
+      "kjaer",
+      "weis",
+      "eyeshadow"
+     ]
+    ]
    },
    {
     "name": "Kjaer Weis cookware",
@@ -43755,7 +44598,14 @@
       "materials"
      ]
     },
-    "cat": "Supplements"
+    "cat": "Supplements",
+    "matchAll": [
+     [
+      "klean",
+      "athlete",
+      "magnesium"
+     ]
+    ]
    },
    {
     "name": "Klean Athlete supplements",
@@ -43964,7 +44814,15 @@
       "2 formula-read-from-materials"
      ]
     },
-    "cat": "Baby bottles"
+    "cat": "Baby bottles",
+    "matchAll": [
+     [
+      "klean",
+      "kanteen",
+      "classic",
+      "12oz"
+     ]
+    ]
    },
    {
     "name": "Klean Kanteen Insulated Food Canister",
@@ -44001,7 +44859,16 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Baby food"
+    "cat": "Baby food",
+    "matchAll": [
+     [
+      "klean",
+      "kanteen",
+      "canister",
+      "insulated",
+      "food"
+     ]
+    ]
    },
    {
     "name": "Klean Kanteen Baby Bottle",
@@ -44041,7 +44908,15 @@
       "5.4 durable-good-is-its-own-packaging"
      ]
     },
-    "cat": "Baby bottles"
+    "cat": "Baby bottles",
+    "matchAll": [
+     [
+      "klean",
+      "kanteen",
+      "bottle",
+      "baby"
+     ]
+    ]
    },
    {
     "name": "Klean Kanteen Kid Kanteen with Silicone Straw",
@@ -44163,9 +45038,9 @@
   ],
   "fronts": {
    "formula": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Knix Period Underwear: The laminated leakproof layer is the layer PFAS turn up in on reusable period products.",
+    "origin": "rollup"
    },
    "materials": {
     "status": "unknown",
@@ -44178,9 +45053,9 @@
     "origin": "extracted"
    },
    "testing": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Knix Period Underwear: 373 ppm organic fluorine in one style against a 10 ppm reporting limit. The settlement obliged expanded testing afterwards, so the current product is likely better than that figure, but we have no post settlement result to point at.",
+    "origin": "rollup"
    }
   },
   "reviewed": "2026-08-29",
@@ -44840,7 +45715,14 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Baby sleep"
+    "cat": "Baby sleep",
+    "matchAll": [
+     [
+      "kyte",
+      "baby",
+      "sack"
+     ]
+    ]
    }
   ],
   "rollup": {
@@ -44928,7 +45810,13 @@
      ]
     },
     "cat": "Coffee",
-    "research": "Packaging: Boiler, brewing group, and steam wand are chromed brass; base and lever are chromed steel; lever handle is Bakelite; drip-tray drawer is ABS."
+    "research": "Packaging: Boiler, brewing group, and steam wand are chromed brass; base and lever are chromed steel; lever handle is Bakelite; drip-tray drawer is ABS.",
+    "matchAll": [
+     [
+      "pavoni",
+      "machine"
+     ]
+    ]
    }
   ],
   "rollup": {
@@ -45020,7 +45908,14 @@
      ]
     },
     "cat": "Diaper cream",
-    "research": "Packaging: Balm/cream ships in a 1 oz jar (4 oz jar also sold); jar material not stated by the brand."
+    "research": "Packaging: Balm/cream ships in a 1 oz jar (4 oz jar also sold); jar material not stated by the brand.",
+    "matchAll": [
+     [
+      "petite",
+      "creme",
+      "balm"
+     ]
+    ]
    },
    {
     "name": "La Petite Creme diaper cream",
@@ -45272,9 +46167,9 @@
     "origin": "database"
    },
    "materials": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "fail",
+    "note": "From Breast Milk Storage Bags: Anhydrous contents in unspecified plastic.",
+    "origin": "rollup"
    },
    "legal": {
     "status": "unknown",
@@ -45338,7 +46233,13 @@
       "why": "for a baby, which is high whatever the arithmetic says"
      }
     },
-    "cat": "Breast milk storage"
+    "cat": "Breast milk storage",
+    "matchAll": [
+     [
+      "lansinoh",
+      "bags"
+     ]
+    ]
    }
   ],
   "scopeNote": "Our verdict varies across this brand's range.",
@@ -45395,7 +46296,15 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Makeup"
+    "cat": "Makeup",
+    "matchAll": [
+     [
+      "lavera",
+      "foundation",
+      "hyaluron",
+      "liquid"
+     ]
+    ]
    },
    {
     "name": "Lavera Soft Eyeliner",
@@ -45435,7 +46344,14 @@
       "materials"
      ]
     },
-    "cat": "Makeup"
+    "cat": "Makeup",
+    "matchAll": [
+     [
+      "lavera",
+      "eyeliner",
+      "soft"
+     ]
+    ]
    },
    {
     "name": "Lavera Volume Mascara",
@@ -45470,7 +46386,14 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Makeup"
+    "cat": "Makeup",
+    "matchAll": [
+     [
+      "lavera",
+      "mascara",
+      "volume"
+     ]
+    ]
    }
   ],
   "cautions": [
@@ -45698,7 +46621,15 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Razors"
+    "cat": "Razors",
+    "matchAll": [
+     [
+      "leaf",
+      "razor",
+      "thorn",
+      "single"
+     ]
+    ]
    }
   ],
   "rollup": {
@@ -46137,7 +47068,13 @@
      "rules": []
     },
     "cat": "Coffee",
-    "research": "Packaging: Body is a stainless steel mesh cone with a metal cup stand and cleaning brush; no contents; steel grade not stated in the listing."
+    "research": "Packaging: Body is a stainless steel mesh cone with a metal cup stand and cleaning brush; no contents; steel grade not stated in the listing.",
+    "matchAll": [
+     [
+      "lhs",
+      "filter"
+     ]
+    ]
    }
   ],
   "cautions": [
@@ -46288,9 +47225,9 @@
   "buy": "https://www.amazon.com/dp/B0899ZYXXN?tag=plasticdetox-20",
   "fronts": {
    "formula": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Lifeboost Coffee: The listing publishes no ingredient list, only description copy, which can warn but cannot clear.",
+    "origin": "rollup"
    },
    "materials": {
     "status": "unknown",
@@ -46389,9 +47326,9 @@
     "origin": "none"
    },
    "testing": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Lifefactory baby bottles: Polypropylene baby bottles release up to 16.2 million microplastic particles per litre at formula temperature (Trinity College Dublin, Nature Food, 2020). This is about baby bottles generally. We have not confirmed it for this product.",
+    "origin": "rollup"
    }
   },
   "reviewed": true,
@@ -47004,9 +47941,9 @@
     "origin": "extracted"
    },
    "materials": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Lipton tea bags: Dry contents in pet, heated in use.",
+    "origin": "rollup"
    },
    "legal": {
     "status": "unknown",
@@ -47014,9 +47951,9 @@
     "origin": "none"
    },
    "testing": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Lipton tea bags: Tea bags with a plastic seam or mesh release 11.6 billion microplastic particles per cup (McGill University, Environmental Science and Technology, 2019). This is about tea generally. We have not confirmed it for this product.",
+    "origin": "rollup"
    }
   },
   "reviewed": true,
@@ -48101,7 +49038,14 @@
      "heldBack": [
       "legal"
      ]
-    }
+    },
+    "matchAll": [
+     [
+      "lodge",
+      "pan",
+      "loaf"
+     ]
+    ]
    }
   ],
   "rollup": {
@@ -48934,7 +49878,13 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Pantry"
+    "cat": "Pantry",
+    "matchAll": [
+     [
+      "lundberg",
+      "rice"
+     ]
+    ]
    }
   ],
   "cautions": [
@@ -49307,7 +50257,15 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Baby wipes"
+    "cat": "Baby wipes",
+    "matchAll": [
+     [
+      "lysol",
+      "surfaces",
+      "antibacterial",
+      "wipes"
+     ]
+    ]
    },
    {
     "name": "All Purpose Cleaner spray",
@@ -49681,9 +50639,9 @@
     "origin": "none"
    },
    "legal": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Magnetic Tiles: CPSC has long recall history of high powered magnet sets (Buckyballs era).",
+    "origin": "rollup"
    },
    "testing": {
     "status": "unknown",
@@ -49727,7 +50685,14 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Toys"
+    "cat": "Toys",
+    "matchAll": [
+     [
+      "magna",
+      "tiles",
+      "magnetic"
+     ]
+    ]
    }
   ],
   "rollup": {
@@ -50295,9 +51260,9 @@
     "origin": "extracted"
    },
    "legal": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Feel Good glass bottle: MAM USA settled a class action for $2.75M in 2024 over unsupported orthodontic and oral development marketing claims on its pacifiers and bottles, the exact products this page covers. Under our rules a settled representation suit means the brand's own claims need third party proof.",
+    "origin": "rollup"
    },
    "testing": {
     "status": "pass",
@@ -50615,9 +51580,9 @@
     "origin": "none"
    },
    "testing": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From MARA supplements: Polypropylene baby bottles release up to 16.2 million microplastic particles per litre at formula temperature (Trinity College Dublin, Nature Food, 2020). This is about baby bottles generally. We have not confirmed it for this product.",
+    "origin": "rollup"
    }
   },
   "reviewed": true,
@@ -51608,7 +52573,14 @@
       "2 formula-read-from-materials"
      ]
     },
-    "cat": "Laundry detergent"
+    "cat": "Laundry detergent",
+    "matchAll": [
+     [
+      "meliora",
+      "unscented",
+      "powder"
+     ]
+    ]
    },
    {
     "name": "Meliora Dish Soap Bar",
@@ -51646,7 +52618,15 @@
      ]
     },
     "cat": "Cleaning products",
-    "research": "Materials: Vegetable soap: sodium cocoate, sodium sunflowerate, glycerin, water, organic coconut oil, organic sunflower seed oil; lemon version adds organic lemon peel oil. No synthetic fragrance, preservatives, dyes, or palm oil."
+    "research": "Materials: Vegetable soap: sodium cocoate, sodium sunflowerate, glycerin, water, organic coconut oil, organic sunflower seed oil; lemon version adds organic lemon peel oil. No synthetic fragrance, preservatives, dyes, or palm oil.",
+    "matchAll": [
+     [
+      "meliora",
+      "bar",
+      "dish",
+      "soap"
+     ]
+    ]
    },
    {
     "name": "Meliora laundry detergent",
@@ -51723,9 +52703,9 @@
     "origin": "extracted"
    },
    "materials": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "Meliora Dish Soap Bar carries a finding on this front.",
+    "origin": "rollup"
    },
    "legal": {
     "status": "unknown",
@@ -52200,9 +53180,9 @@
     "origin": "database"
    },
    "materials": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "Miele Complete C3 Canister carries a finding on this front.",
+    "origin": "rollup"
    },
    "legal": {
     "status": "pass",
@@ -52253,7 +53233,14 @@
      "rules": []
     },
     "cat": "Vacuums",
-    "research": "Materials: Canister housing is ABS plastic per multiple vacuum retailers; Miele itself does not state the resin. Bagged design with sealed AirClean HEPA filtration."
+    "research": "Materials: Canister housing is ABS plastic per multiple vacuum retailers; Miele itself does not state the resin. Bagged design with sealed AirClean HEPA filtration.",
+    "matchAll": [
+     [
+      "miele",
+      "canister",
+      "complete"
+     ]
+    ]
    },
    {
     "name": "Classic C1 canister",
@@ -52394,7 +53381,15 @@
       "materials"
      ]
     },
-    "cat": "Air purifiers"
+    "cat": "Air purifiers",
+    "matchAll": [
+     [
+      "miele",
+      "filter",
+      "hepa",
+      "airclean"
+     ]
+    ]
    }
   ],
   "rollup": {
@@ -53351,7 +54346,16 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Baby formula"
+    "cat": "Baby formula",
+    "matchAll": [
+     [
+      "molly",
+      "suds",
+      "powder",
+      "unscented",
+      "super"
+     ]
+    ]
    },
    {
     "name": "Baby Liquid Laundry Detergent",
@@ -53499,9 +54503,9 @@
     "origin": "database"
    },
    "materials": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "fail",
+    "note": "From Breastmilk storage bags: Anhydrous contents in unspecified plastic.",
+    "origin": "rollup"
    },
    "legal": {
     "status": "unknown",
@@ -53853,14 +54857,14 @@
   ],
   "fronts": {
    "formula": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "fail",
+    "note": "From Diaper Balm, 4 oz value size (plastic jar): The published ingredient list names paraben, phthalate.",
+    "origin": "rollup"
    },
    "materials": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "fail",
+    "note": "From Diaper Balm, 4 oz value size (plastic jar): plastic in contact, with an oil based formula, which is the strongest extractant there is, repeated contact over time.",
+    "origin": "rollup"
    },
    "legal": {
     "status": "pass",
@@ -54087,7 +55091,14 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Pantry"
+    "cat": "Pantry",
+    "matchAll": [
+     [
+      "motherlove",
+      "cream",
+      "nipple"
+     ]
+    ]
    },
    {
     "name": "Motherlove diaper cream",
@@ -54240,9 +55251,9 @@
     "origin": "database"
    },
    "materials": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "fail",
+    "note": "From Breastmilk storage bags: Anhydrous contents in unspecified plastic.",
+    "origin": "rollup"
    },
    "legal": {
     "status": "unknown",
@@ -54790,9 +55801,9 @@
     "origin": "extracted"
    },
    "materials": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "fail",
+    "note": "From 360 Spoutless Training Cup: A plastic body in daily contact with liquids, and Mamavation rounds have found undisclosed plastic chemistry across the training cup category",
+    "origin": "rollup"
    },
    "legal": {
     "status": "unknown",
@@ -54800,9 +55811,9 @@
     "origin": "none"
    },
    "testing": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "fail",
+    "note": "From 360 Spoutless Training Cup: Polypropylene baby bottles release up to 16.2 million microplastic particles per litre at formula temperature (Trinity College Dublin, Nature Food, 2020). This is about baby bottles generally. We have not confirmed it for this product.",
+    "origin": "rollup"
    }
   },
   "reviewed": true,
@@ -54884,7 +55895,15 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Tableware"
+    "cat": "Tableware",
+    "matchAll": [
+     [
+      "munchkin",
+      "utensils",
+      "plastic",
+      "toddler"
+     ]
+    ]
    },
    {
     "name": "Snack Catcher Cup",
@@ -54920,7 +55939,15 @@
       "3 packaging-matrix-pass"
      ]
     },
-    "cat": "Tableware"
+    "cat": "Tableware",
+    "matchAll": [
+     [
+      "munchkin",
+      "cup",
+      "snack",
+      "catcher"
+     ]
+    ]
    },
    {
     "name": "Bath Toys (squirty animals)",
@@ -54959,7 +55986,15 @@
       "3 packaging-matrix-caution"
      ]
     },
-    "cat": "Toys"
+    "cat": "Toys",
+    "matchAll": [
+     [
+      "munchkin",
+      "animals",
+      "bath",
+      "toys"
+     ]
+    ]
    }
   ],
   "scopeNote": "Our verdict varies across this brand's range.",
@@ -55351,9 +56386,9 @@
     "origin": "extracted"
    },
    "materials": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Foam loofah bath sponge: Sold as a loofah and made of plastic foam. A synthetic sponge abrades against wet skin for its whole life and sheds as it degrades",
+    "origin": "rollup"
    },
    "legal": {
     "status": "unknown",
@@ -55606,9 +56641,9 @@
   ],
   "fronts": {
    "formula": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Native deodorant sticks: The published ingredient list hides composition behind fragrance.",
+    "origin": "rollup"
    },
    "materials": {
     "status": "unknown",
@@ -56200,7 +57235,13 @@
      ]
     },
     "cat": "Coffee",
-    "research": "Packaging: Ships in a nitrogen-flushed coffee bag (10 oz ground; whole bean also sold); neither brand nor retailer states the bag material. Contents are roasted ground coffee. Materials: 100% USDA Organic specialty-grade arabica beans; decaf is Swiss Water Process; lab tested for mold, mycotoxins, and pesticides."
+    "research": "Packaging: Ships in a nitrogen-flushed coffee bag (10 oz ground; whole bean also sold); neither brand nor retailer states the bag material. Contents are roasted ground coffee. Materials: 100% USDA Organic specialty-grade arabica beans; decaf is Swiss Water Process; lab tested for mold, mycotoxins, and pesticides.",
+    "matchAll": [
+     [
+      "force",
+      "decaf"
+     ]
+    ]
    }
   ],
   "cautions": [
@@ -56478,7 +57519,14 @@
       "materials"
      ]
     },
-    "cat": "Crib mattresses"
+    "cat": "Crib mattresses",
+    "matchAll": [
+     [
+      "naturepedic",
+      "mattress",
+      "classic"
+     ]
+    ]
    },
    {
     "name": "Naturepedic Organic Contoured Changing Pad",
@@ -56518,7 +57566,15 @@
       "materials"
      ]
     },
-    "cat": "Crib mattresses"
+    "cat": "Crib mattresses",
+    "matchAll": [
+     [
+      "naturepedic",
+      "pad",
+      "contoured",
+      "changing"
+     ]
+    ]
    },
    {
     "name": "Organic 2 Stage Baby Crib Mattress",
@@ -57031,7 +58087,13 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Prenatal vitamins"
+    "cat": "Prenatal vitamins",
+    "matchAll": [
+     [
+      "needed",
+      "powder"
+     ]
+    ]
    },
    {
     "name": "Prenatal Multi Capsules",
@@ -57645,9 +58707,9 @@
     "origin": "none"
    },
    "testing": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "fail",
+    "note": "From Perfect Prenatal: Moved from careful to skip in September 2026 when direct phthalate data arrived: Mamavation measured 1,492… (Recorded for New Chapter as a whole rather than this product specifically.)",
+    "origin": "rollup"
    }
   },
   "products": [
@@ -57805,9 +58867,9 @@
     "origin": "database"
    },
    "materials": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "fail",
+    "note": "Newton Baby Original Crib Mattress carries a finding on this front.",
+    "origin": "rollup"
    },
    "legal": {
     "status": "unknown",
@@ -57859,7 +58921,14 @@
      "rules": []
     },
     "cat": "Crib mattresses",
-    "research": "Packaging: Core body is 100% polyethylene Wovenaire (label reads Polyethylene Pad 100%); sleep-surface cover fabric is 84% polyester, 16% viscose. Materials: Woven food-grade polyethylene core, 90% air by volume, with a quilted polyester/viscose spacer-fabric cover; no foam, latex, springs, or chemical flame retardants."
+    "research": "Packaging: Core body is 100% polyethylene Wovenaire (label reads Polyethylene Pad 100%); sleep-surface cover fabric is 84% polyester, 16% viscose. Materials: Woven food-grade polyethylene core, 90% air by volume, with a quilted polyester/viscose spacer-fabric cover; no foam, latex, springs, or chemical flame retardants.",
+    "matchAll": [
+     [
+      "newton",
+      "baby",
+      "mattress"
+     ]
+    ]
    }
   ],
   "rollup": {
@@ -58062,7 +59131,13 @@
      "rules": [
       "2 formula-read-from-materials"
      ]
-    }
+    },
+    "matchAll": [
+     [
+      "nilehome",
+      "whisk"
+     ]
+    ]
    }
   ]
  },
@@ -58309,9 +59384,9 @@
     "origin": "extracted"
    },
    "materials": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Standard basket air fryers: PTFE coated baskets.",
+    "origin": "rollup"
    },
    "legal": {
     "status": "unknown",
@@ -58411,7 +59486,14 @@
      ]
     },
     "cat": "Cleaning products",
-    "research": "Packaging: Ships in a recyclable, compostable paper box with no plastic or shrink wrap; contents are a solid dish soap bar."
+    "research": "Packaging: Ships in a recyclable, compostable paper box with no plastic or shrink wrap; contents are a solid dish soap bar.",
+    "matchAll": [
+     [
+      "tox",
+      "life",
+      "block"
+     ]
+    ]
    }
   ],
   "rollup": {
@@ -58563,7 +59645,15 @@
       "2 formula-read-from-materials"
      ]
     },
-    "cat": "Supplements"
+    "cat": "Supplements",
+    "matchAll": [
+     [
+      "nordic",
+      "naturals",
+      "omega",
+      "algae"
+     ]
+    ]
    },
    {
     "name": "Prenatal Multivitamin",
@@ -58710,9 +59800,9 @@
     "origin": "none"
    },
    "testing": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Prenatal Multivitamin: Middle tier in Mamavation's September 2026 study: 218 ppb ortho-phthalates and mid pack metals.",
+    "origin": "rollup"
    }
   },
   "reviewed": true,
@@ -58822,7 +59912,14 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Pantry"
+    "cat": "Pantry",
+    "matchAll": [
+     [
+      "now",
+      "foods",
+      "almonds"
+     ]
+    ]
    }
   ],
   "cautions": [
@@ -58919,9 +60016,9 @@
     "origin": "database"
    },
    "materials": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Nananubs banana teether: A silicone brush head on a rigid plastic handle, chewed, so the handle is plastic in the mouth",
+    "origin": "rollup"
    },
    "legal": {
     "status": "unknown",
@@ -59032,9 +60129,9 @@
     "origin": "none"
    },
    "testing": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Straw Cup (plastic): Polypropylene baby bottles release up to 16.2 million microplastic particles per litre at formula temperature (Trinity College Dublin, Nature Food, 2020). This is about baby bottles generally. We have not confirmed it for this product.",
+    "origin": "rollup"
    }
   },
   "reviewed": true,
@@ -59076,7 +60173,15 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Baby bottles"
+    "cat": "Baby bottles",
+    "matchAll": [
+     [
+      "nuk",
+      "plastic",
+      "straw",
+      "cup"
+     ]
+    ]
    },
    {
     "name": "Timeless one piece silicone pacifier",
@@ -59244,9 +60349,9 @@
     "origin": "database"
    },
    "materials": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "fail",
+    "note": "From Breastmilk storage bags: Anhydrous contents in unspecified plastic.",
+    "origin": "rollup"
    },
    "legal": {
     "status": "unknown",
@@ -59336,9 +60441,9 @@
     "origin": "none"
    },
    "legal": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Nuna car seats: NHTSA recall 24C-002, opened December 2024, covers 608,786 RAVA convertible seats (2016 to 2023 production) whose harness can fail to stay tight; the remedy is still being distributed and a related class action was filed in 2025. The RAVA is part of the car seat line this page covers.",
+    "origin": "rollup"
    },
    "testing": {
     "status": "pass",
@@ -60206,9 +61311,9 @@
     "origin": "extracted"
    },
    "materials": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Olay body lotion: Emulsion contents in unspecified plastic.",
+    "origin": "rollup"
    },
    "legal": {
     "status": "unknown",
@@ -60246,9 +61351,9 @@
     "origin": "stated"
    },
    "materials": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Old Spice Aluminum Free Deodorant: A plastic twist up tube holding a wax and silicone solid, which rule 3.1 pairs with a polyolefin as a caution on a leave-on product.",
+    "origin": "rollup"
    },
    "legal": {
     "status": "fail",
@@ -60763,7 +61868,15 @@
      ]
     },
     "cat": "Pantry",
-    "research": "Packaging: Ships in a resealable multi-layer plastic pouch (resin unstated, brand FAQ confirms multi-layer material); contents are dry rolled oats. Materials: Single ingredient: organic sprouted gluten-free non-GMO oats; USDA Organic, Glyphosate Free certified, Certified Vegan, nut-free facility."
+    "research": "Packaging: Ships in a resealable multi-layer plastic pouch (resin unstated, brand FAQ confirms multi-layer material); contents are dry rolled oats. Materials: Single ingredient: organic sprouted gluten-free non-GMO oats; USDA Organic, Glyphosate Free certified, Certified Vegan, nut-free facility.",
+    "matchAll": [
+     [
+      "one",
+      "degree",
+      "organics",
+      "oats"
+     ]
+    ]
    },
    {
     "name": "Whole range",
@@ -60915,7 +62028,15 @@
       "2 formula-read-from-materials"
      ]
     },
-    "cat": "Soap"
+    "cat": "Soap",
+    "matchAll": [
+     [
+      "one",
+      "love",
+      "organics",
+      "cleanser"
+     ]
+    ]
    }
   ],
   "rollup": {
@@ -61344,14 +62465,14 @@
   ],
   "fronts": {
    "formula": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Organyc Organic Cotton Tampons: Certified organic cotton, but the applicator is a bioplastic and conventional plastic mix.",
+    "origin": "rollup"
    },
    "materials": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Organyc Organic Cotton Tampons: Cardboard carton. The applicator is scored on formula because it is inserted.",
+    "origin": "rollup"
    },
    "legal": {
     "status": "unknown",
@@ -61635,7 +62756,15 @@
       "2 formula-read-from-materials"
      ]
     },
-    "cat": "Soap"
+    "cat": "Soap",
+    "matchAll": [
+     [
+      "osea",
+      "cleanser",
+      "seaglow",
+      "resurfacing"
+     ]
+    ]
    },
    {
     "name": "Osea Atmosphere Protection Cream",
@@ -61790,7 +62919,15 @@
       "2 formula-read-from-materials"
      ]
     },
-    "cat": "Skincare"
+    "cat": "Skincare",
+    "matchAll": [
+     [
+      "osea",
+      "oil",
+      "undaria",
+      "algae"
+     ]
+    ]
    },
    {
     "name": "Osea Salts of the Earth Body Scrub",
@@ -61830,7 +62967,15 @@
       "2 formula-read-from-materials"
      ]
     },
-    "cat": "Bath accessories"
+    "cat": "Bath accessories",
+    "matchAll": [
+     [
+      "osea",
+      "scrub",
+      "salts",
+      "earth"
+     ]
+    ]
    }
   ],
   "rollup": {
@@ -61916,7 +63061,13 @@
       "2 formula-read-from-materials"
      ]
     },
-    "cat": "Skincare"
+    "cat": "Skincare",
+    "matchAll": [
+     [
+      "osmia",
+      "soap"
+     ]
+    ]
    }
   ],
   "rollup": {
@@ -62422,7 +63573,13 @@
      "heldBack": [
       "legal"
      ]
-    }
+    },
+    "matchAll": [
+     [
+      "chef",
+      "pan"
+     ]
+    ]
    }
   ]
  },
@@ -62957,7 +64114,15 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Diapers"
+    "cat": "Diapers",
+    "matchAll": [
+     [
+      "pampers",
+      "diapers",
+      "baby",
+      "dry"
+     ]
+    ]
    },
    {
     "name": "Swaddlers",
@@ -63035,7 +64200,13 @@
       "2.1 disclosure-failure-caps-at-caution"
      ]
     },
-    "cat": "Baby sleep"
+    "cat": "Baby sleep",
+    "matchAll": [
+     [
+      "pampers",
+      "swaddlers"
+     ]
+    ]
    },
    {
     "name": "Whole range",
@@ -63233,9 +64404,9 @@
     "origin": "extracted"
    },
    "materials": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Patagonia Baby Reversible Tribbles Jacket: The listing describes nylon, polyester in contact, recorded from the listing rather than an established contact material",
+    "origin": "rollup"
    },
    "legal": {
     "status": "caution",
@@ -63286,7 +64457,13 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Clothing"
+    "cat": "Clothing",
+    "matchAll": [
+     [
+      "patagonia",
+      "jacket"
+     ]
+    ]
    }
   ],
   "rollup": {
@@ -63764,7 +64941,14 @@
       "materials"
      ]
     },
-    "cat": "Pacifiers"
+    "cat": "Pacifiers",
+    "matchAll": [
+     [
+      "philips",
+      "pacifier",
+      "soothie"
+     ]
+    ]
    },
    {
     "name": "Natural Glass Baby Bottle (painted markings)",
@@ -64412,9 +65596,9 @@
   "buy": "https://www.amazon.com/dp/B0774WQY7T?tag=plasticdetox-20",
   "fronts": {
    "formula": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Plaine Products Refillable Shampoo: No ingredient list recorded.",
+    "origin": "rollup"
    },
    "materials": {
     "status": "unknown",
@@ -64472,7 +65656,14 @@
      ]
     },
     "cat": "Shampoo",
-    "research": "Materials: Aloe vera leaf juice base cleansing with saponified coconut and safflower oils plus quillaja saponin; botanical oils and extracts; sulfate, silicone, paraben, and synthetic fragrance free."
+    "research": "Materials: Aloe vera leaf juice base cleansing with saponified coconut and safflower oils plus quillaja saponin; botanical oils and extracts; sulfate, silicone, paraben, and synthetic fragrance free.",
+    "matchAll": [
+     [
+      "plaine",
+      "products",
+      "shampoo"
+     ]
+    ]
    },
    {
     "name": "Plaine Products Face Moisturizer",
@@ -64514,7 +65705,15 @@
      ]
     },
     "cat": "Skincare",
-    "research": "Materials: Aloe vera leaf juice base with safflower, apricot kernel, jojoba, and avocado oils, olive-derived emulsifiers, and shea butter; preserved with phenoxyethanol and benzoic acid."
+    "research": "Materials: Aloe vera leaf juice base with safflower, apricot kernel, jojoba, and avocado oils, olive-derived emulsifiers, and shea butter; preserved with phenoxyethanol and benzoic acid.",
+    "matchAll": [
+     [
+      "plaine",
+      "products",
+      "moisturizer",
+      "face"
+     ]
+    ]
    },
    {
     "name": "Plaine Products Refillable Conditioner",
@@ -64556,7 +65755,14 @@
      ]
     },
     "cat": "Conditioner",
-    "research": "Materials: Aloe vera leaf juice base with cetyl and stearyl fatty alcohols, glycerin, shea and mango butters, and botanical extracts; silicone and sulfate free."
+    "research": "Materials: Aloe vera leaf juice base with cetyl and stearyl fatty alcohols, glycerin, shea and mango butters, and botanical extracts; silicone and sulfate free.",
+    "matchAll": [
+     [
+      "plaine",
+      "products",
+      "conditioner"
+     ]
+    ]
    }
   ],
   "rollup": {
@@ -64977,9 +66183,9 @@
     "origin": "none"
    },
    "testing": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "fail",
+    "note": "Organic Baby Food Pouches carries a finding on this front.",
+    "origin": "rollup"
    }
   },
   "reviewed": true,
@@ -66865,9 +68071,9 @@
     "origin": "none"
    },
    "testing": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Prenatal Nutrients: Mid tier result in Mamavation's September 2026 study (334 ppb phthalates, 40 ppb lead), which neither rescues nor sinks it: the skip is brand level, from Lead Safe Mama's 2025 XRF lead pattern across the line and the absence of per batch published numbers.",
+    "origin": "rollup"
    }
   },
   "reviewed": true,
@@ -67245,7 +68451,15 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Coffee"
+    "cat": "Coffee",
+    "matchAll": [
+     [
+      "purity",
+      "coffee",
+      "bean",
+      "whole"
+     ]
+    ]
    },
    {
     "name": "Purity Coffee Calm Decaf",
@@ -67279,7 +68493,15 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Coffee"
+    "cat": "Coffee",
+    "matchAll": [
+     [
+      "purity",
+      "coffee",
+      "decaf",
+      "calm"
+     ]
+    ]
    }
   ],
   "rollup": {
@@ -67613,9 +68835,9 @@
   ],
   "fronts": {
    "formula": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Rael Organic Cotton Cover Pads and Liners: Organic cotton cover, synthetic core and backsheet. The cover is the part the label describes.",
+    "origin": "rollup"
    },
    "materials": {
     "status": "unknown",
@@ -67623,14 +68845,14 @@
     "origin": "none"
    },
    "legal": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Rael Organic Cotton Cover Pads and Liners: A California appellate ruling in November 2025 revived claims that products labelled organic contain far less certified organic material than stated plus prohibited synthetics. Revived rather than dismissed means the claims are live.",
+    "origin": "rollup"
    },
    "testing": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "fail",
+    "note": "From Rael Organic Cotton Cover Pads and Liners: Mamavation 2024: Rael Organic Cotton Cover Panty Liners, 15 ppm organic fluorine against a 10 ppm reporting limit.",
+    "origin": "rollup"
    }
   },
   "reviewed": "2026-08-29",
@@ -68332,7 +69554,13 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Tableware"
+    "cat": "Tableware",
+    "matchAll": [
+     [
+      "play",
+      "plates"
+     ]
+    ]
    }
   ],
   "scopeNote": "Our verdict varies across this brand's range.",
@@ -68467,7 +69695,15 @@
      ]
     },
     "cat": "Cleaning products",
-    "research": "Packaging: Brush body and handle are beechwood; bristles are natural tampico plant fiber, usable in boiling water; no plastic parts stated."
+    "research": "Packaging: Brush body and handle are beechwood; bristles are natural tampico plant fiber, usable in boiling water; no plastic parts stated.",
+    "matchAll": [
+     [
+      "redecker",
+      "brush",
+      "tampico",
+      "fiber"
+     ]
+    ]
    },
    {
     "name": "REDECKER Bottle Brush Cleaner",
@@ -68509,7 +69745,14 @@
      ]
     },
     "cat": "Cleaning products",
-    "research": "Packaging: Handle is beechwood; bristles are light horsehair; made in Germany; wire core material not stated on the listing."
+    "research": "Packaging: Handle is beechwood; bristles are light horsehair; made in Germany; wire core material not stated on the listing.",
+    "matchAll": [
+     [
+      "redecker",
+      "cleaner",
+      "bottle"
+     ]
+    ]
    },
    {
     "name": "Natural bristle bath brush",
@@ -68726,9 +69969,9 @@
     "origin": "none"
    },
    "testing": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Earthpaste: About 3,500 ppb lead, roughly seven times the worst conventional paste.",
+    "origin": "rollup"
    }
   },
   "article": "best-non-toxic-toothpaste-guide.html",
@@ -68872,9 +70115,9 @@
     "origin": "extracted"
    },
    "materials": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Solana foam mats: Leachy, contents not described.",
+    "origin": "rollup"
    },
    "legal": {
     "status": "unknown",
@@ -69127,7 +70370,13 @@
      "rules": [
       "2 formula-read-from-materials"
      ]
-    }
+    },
+    "matchAll": [
+     [
+      "reynolds",
+      "paper"
+     ]
+    ]
    }
   ]
  },
@@ -69234,9 +70483,9 @@
   ],
   "fronts": {
    "formula": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "Mineral toothpaste carries a finding on this front.",
+    "origin": "rollup"
    },
    "materials": {
     "status": "unknown",
@@ -69308,7 +70557,13 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Tea"
+    "cat": "Tea",
+    "matchAll": [
+     [
+      "rishi",
+      "tea"
+     ]
+    ]
    }
   ],
   "cautions": [
@@ -69532,7 +70787,14 @@
       "2 formula-read-from-materials"
      ]
     },
-    "cat": "Makeup"
+    "cat": "Makeup",
+    "matchAll": [
+     [
+      "rms",
+      "beauty",
+      "lip2cheek"
+     ]
+    ]
    }
   ],
   "rollup": {
@@ -69589,7 +70851,13 @@
       "2 formula-read-from-materials"
      ]
     },
-    "cat": "Supplements"
+    "cat": "Supplements",
+    "matchAll": [
+     [
+      "rosita",
+      "oil"
+     ]
+    ]
    }
   ],
   "fronts": {
@@ -70130,9 +71398,9 @@
     "origin": "extracted"
    },
    "materials": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Rumparooz One Size: Water resistant polyester laminated with thermoplastic polyurethane by heat rather than solvent, which is a cleaner laminate than conventional PUL, and it tested non detect where covers were the worst performing category. Still a polyester layer",
+    "origin": "rollup"
    },
    "legal": {
     "status": "unknown",
@@ -70786,7 +72054,13 @@
      ]
     },
     "cat": "Cleaning products",
-    "research": "Packaging: Pad body is 100% coconut coir fiber bound with a non-toxic adhesive (type unstated); no plastic in the pad; retail wrap material unverified."
+    "research": "Packaging: Pad body is 100% coconut coir fiber bound with a non-toxic adhesive (type unstated); no plastic in the pad; retail wrap material unverified.",
+    "matchAll": [
+     [
+      "safix",
+      "pad"
+     ]
+    ]
    }
   ],
   "cautions": [
@@ -71711,9 +72985,9 @@
     "origin": "extracted"
    },
    "materials": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Plant based bamboo toothbrush: Castor bean bristles are still a nylon polymer and shed some microplastic, which is true of every bristle on the market",
+    "origin": "rollup"
    },
    "legal": {
     "status": "unknown",
@@ -71798,9 +73072,9 @@
     "origin": "stated"
    },
    "materials": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Secret Aluminum Free Deodorant: A plastic twist up tube holding a wax and silicone solid, which rule 3.1 pairs with a polyolefin as a caution on a leave-on product.",
+    "origin": "rollup"
    },
    "legal": {
     "status": "fail",
@@ -72537,7 +73811,14 @@
       "2 formula-read-from-materials"
      ]
     },
-    "cat": "Diapers"
+    "cat": "Diapers",
+    "matchAll": [
+     [
+      "seventh",
+      "generation",
+      "diapers"
+     ]
+    ]
    },
    {
     "name": "Seventh Generation laundry detergent",
@@ -72633,9 +73914,9 @@
     "origin": "none"
    },
    "legal": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Laundry detergent: Seventh Generation settled a class action in 2016 over natural and non toxic marketing claims ($4.5M), which under our rules means its own claims need third party proof, and a 2024 class action about overstated loads per bottle appears still open. No safety recall is on record.",
+    "origin": "rollup"
    },
    "testing": {
     "status": "unknown",
@@ -72757,7 +74038,15 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Vacuums"
+    "cat": "Vacuums",
+    "matchAll": [
+     [
+      "shark",
+      "adv",
+      "rotator",
+      "la502"
+     ]
+    ]
    },
    {
     "name": "Shark Navigator Lift-Away Professional NV356E",
@@ -73038,7 +74327,13 @@
      "rules": [
       "2 formula-read-from-materials"
      ]
-    }
+    },
+    "matchAll": [
+     [
+      "simax",
+      "pan"
+     ]
+    ]
    }
   ]
  },
@@ -73113,7 +74408,13 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Baby formula"
+    "cat": "Baby formula",
+    "matchAll": [
+     [
+      "similac",
+      "stage"
+     ]
+    ]
    }
   ],
   "rollup": {
@@ -73210,7 +74511,15 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Vacuums"
+    "cat": "Vacuums",
+    "matchAll": [
+     [
+      "simplicity",
+      "allergy",
+      "s20ezm",
+      "upright"
+     ]
+    ]
    }
   ],
   "cautions": [
@@ -73297,7 +74606,13 @@
      ]
     },
     "cat": "Cleaning products",
-    "research": "Materials: Saponified bar of sugar, sea salt, water, coconut oil, lemon-peel oil, grape seed oil, jojoba oil, plant extracts, tocopherol, sodium hydroxide, sodium bicarbonate, lauric acid."
+    "research": "Materials: Saponified bar of sugar, sea salt, water, coconut oil, lemon-peel oil, grape seed oil, jojoba oil, plant extracts, tocopherol, sodium hydroxide, sodium bicarbonate, lauric acid.",
+    "matchAll": [
+     [
+      "simplut",
+      "bar"
+     ]
+    ]
    }
   ],
   "cautions": [
@@ -73317,9 +74632,9 @@
     "origin": "none"
    },
    "materials": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "SIMPLUT Zero Waste Dish Soap Bar (3 Pack) carries a finding on this front.",
+    "origin": "rollup"
    },
    "legal": {
     "status": "unknown",
@@ -73386,7 +74701,14 @@
      ]
     },
     "cat": "Pantry",
-    "research": "Packaging: Ships in a glass bottle (2.31 oz); lid material unstated; contents are ground cumin powder. Materials: Single ingredient: certified organic ground cumin seed; QAI certified organic, kosher, not irradiated, no ethylene oxide."
+    "research": "Packaging: Ships in a glass bottle (2.31 oz); lid material unstated; contents are ground cumin powder. Materials: Single ingredient: certified organic ground cumin seed; QAI certified organic, kosher, not irradiated, no ethylene oxide.",
+    "matchAll": [
+     [
+      "simply",
+      "cumin",
+      "ground"
+     ]
+    ]
    },
    {
     "name": "Simply pantry",
@@ -73888,9 +75210,9 @@
     "origin": "none"
    },
    "testing": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Organic Prenatal gummy: At the clean end of the category on metals (7.77 ppb lead, Lead Safe Mama Aug 2024), but the gummy format adds sugar and cannot carry therapeutic doses of choline, iron, or minerals.",
+    "origin": "rollup"
    }
   },
   "products": [
@@ -75067,7 +76389,15 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Toothpaste"
+    "cat": "Toothpaste",
+    "matchAll": [
+     [
+      "spry",
+      "gel",
+      "kids",
+      "tooth"
+     ]
+    ]
    },
    {
     "name": "Spry toothpaste",
@@ -75287,7 +76617,15 @@
       "legal"
      ]
     },
-    "cat": "Kitchen appliances"
+    "cat": "Kitchen appliances",
+    "matchAll": [
+     [
+      "stainless",
+      "steel",
+      "slow",
+      "pot"
+     ]
+    ]
    }
   ],
   "cautions": [
@@ -75710,7 +77048,14 @@
       "materials"
      ]
     },
-    "cat": "Cribs & nursery"
+    "cat": "Cribs & nursery",
+    "matchAll": [
+     [
+      "stokke",
+      "bath",
+      "flexi"
+     ]
+    ]
    }
   ],
   "rollup": {
@@ -76987,7 +78332,15 @@
       "2 formula-read-from-materials"
      ]
     },
-    "cat": "Soap"
+    "cat": "Soap",
+    "matchAll": [
+     [
+      "tata",
+      "harper",
+      "cleanser",
+      "regenerating"
+     ]
+    ]
    },
    {
     "name": "Tata Harper Water Lock Moisturizer",
@@ -77026,7 +78379,16 @@
       "2 formula-read-from-materials"
      ]
     },
-    "cat": "Skincare"
+    "cat": "Skincare",
+    "matchAll": [
+     [
+      "tata",
+      "harper",
+      "moisturizer",
+      "water",
+      "lock"
+     ]
+    ]
    }
   ],
   "rollup": {
@@ -77293,7 +78655,13 @@
      "heldBack": [
       "legal"
      ]
-    }
+    },
+    "matchAll": [
+     [
+      "teamfar",
+      "pans"
+     ]
+    ]
    }
   ]
  },
@@ -77481,7 +78849,15 @@
      ]
     },
     "cat": "Pantry",
-    "research": "Packaging: Zip-top stand-up pouch with a clear plastic film window (resin unstated); contents are raw whole almonds, dry goods. Materials: Single ingredient: certified organic raw almonds (Prunus dulcis); unpasteurized line is imported from Spain, never irradiated, heat-, steam-, or chemically treated; Non-GMO Project Verified."
+    "research": "Packaging: Zip-top stand-up pouch with a clear plastic film window (resin unstated); contents are raw whole almonds, dry goods. Materials: Single ingredient: certified organic raw almonds (Prunus dulcis); unpasteurized line is imported from Spain, never irradiated, heat-, steam-, or chemically treated; Non-GMO Project Verified.",
+    "matchAll": [
+     [
+      "terrasoul",
+      "superfoods",
+      "raw",
+      "almonds"
+     ]
+    ]
    }
   ],
   "cautions": [
@@ -77501,9 +78877,9 @@
     "origin": "none"
    },
    "materials": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "Terrasoul Superfoods Raw Almonds carries a finding on this front.",
+    "origin": "rollup"
    },
    "legal": {
     "status": "unknown",
@@ -77826,7 +79202,16 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Diapers"
+    "cat": "Diapers",
+    "matchAll": [
+     [
+      "honest",
+      "company",
+      "diapers",
+      "clean",
+      "conscious"
+     ]
+    ]
    },
    {
     "name": "Whole range",
@@ -78121,9 +79506,9 @@
   ],
   "fronts": {
    "formula": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From The Honey Pot Organic Cotton Cover Liners: Organic cotton cover, synthetic core and backsheet. The organic claim covers the cover.",
+    "origin": "rollup"
    },
    "materials": {
     "status": "unknown",
@@ -78136,9 +79521,9 @@
     "origin": "extracted"
    },
    "testing": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "fail",
+    "note": "From The Honey Pot Organic Cotton Cover Liners: 38 ppm organic fluorine in the 100% Organic Cotton Cover everyday liners, against a 10 ppm reporting limit. The brand's tampons were non detect.",
+    "origin": "rollup"
    }
   },
   "generalises": false,
@@ -78292,7 +79677,13 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Supplements"
+    "cat": "Supplements",
+    "matchAll": [
+     [
+      "theralogix",
+      "complete"
+     ]
+    ]
    }
   ],
   "fronts": {
@@ -78302,9 +79693,9 @@
     "origin": "none"
    },
    "materials": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "Theranatal Complete carries a finding on this front.",
+    "origin": "rollup"
    },
    "legal": {
     "status": "unknown",
@@ -78644,9 +80035,9 @@
   ],
   "fronts": {
    "formula": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "fail",
+    "note": "From Thinx Period Underwear: The laminated leakproof layer is where PFAS turn up in reusable period products.",
+    "origin": "rollup"
    },
    "materials": {
     "status": "unknown",
@@ -78941,9 +80332,9 @@
     "origin": "none"
    },
    "legal": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From L. Pure Cotton Ultra Thin Pads: Class actions over the 100% organic claim on products listing polyester, paraffin and titanium dioxide, and separately over pigment in products marketed dye free. The Paulson complaint on the organic claim was voluntarily dismissed with prejudice on 23 July 2025. Nothing has been adjudicated against the product, which is why this is a caution and not a finding.",
+    "origin": "rollup"
    },
    "testing": {
     "status": "unknown",
@@ -79083,7 +80474,14 @@
      ]
     },
     "cat": "Supplements",
-    "research": "Packaging: 1 fl oz (30 mL) amber bottle with metered self-dispensing drop top; bottle material not stated by brand; contents are D3/K2 drops in MCT oil."
+    "research": "Packaging: 1 fl oz (30 mL) amber bottle with metered self-dispensing drop top; bottle material not stated by brand; contents are D3/K2 drops in MCT oil.",
+    "matchAll": [
+     [
+      "thorne",
+      "liquid",
+      "vitamin"
+     ]
+    ]
    },
    {
     "name": "Thorne Magnesium Bisglycinate Powder",
@@ -79124,7 +80522,15 @@
      ]
     },
     "cat": "Supplements",
-    "research": "Packaging: White plastic screw-top tub (resin unstated), 7.98 oz (226.2 g); contents are flavored drink powder. Materials: Magnesium bisglycinate providing 200 mg elemental magnesium per scoop; other ingredients are citric acid and monk fruit concentrate; NSF Certified for Sport."
+    "research": "Packaging: White plastic screw-top tub (resin unstated), 7.98 oz (226.2 g); contents are flavored drink powder. Materials: Magnesium bisglycinate providing 200 mg elemental magnesium per scoop; other ingredients are citric acid and monk fruit concentrate; NSF Certified for Sport.",
+    "matchAll": [
+     [
+      "thorne",
+      "powder",
+      "magnesium",
+      "bisglycinate"
+     ]
+    ]
    },
    {
     "name": "Thorne Creatine",
@@ -79412,7 +80818,14 @@
       "2 formula-read-from-materials"
      ]
     },
-    "cat": "Skincare"
+    "cat": "Skincare",
+    "matchAll": [
+     [
+      "three",
+      "ships",
+      "serum"
+     ]
+    ]
    }
   ],
   "rollup": {
@@ -79747,7 +81160,13 @@
      "basis": "direct",
      "disclose": false,
      "rules": []
-    }
+    },
+    "matchAll": [
+     [
+      "tiluck",
+      "spoons"
+     ]
+    ]
    }
   ]
  },
@@ -79827,7 +81246,13 @@
       "5.4 durable-good-is-its-own-packaging"
      ]
     },
-    "cat": "Coffee"
+    "cat": "Coffee",
+    "matchAll": [
+     [
+      "timemore",
+      "grinder"
+     ]
+    ]
    }
   ],
   "rollup": {
@@ -79992,9 +81417,9 @@
     "origin": "none"
    },
    "legal": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Kids toothpaste: Lead about 240 ppb in the kids paste, and the company settled a class action over heavy metals.",
+    "origin": "rollup"
    },
    "testing": {
     "status": "caution",
@@ -80019,8 +81444,8 @@
     "source": "best-non-toxic-toothpaste-guide.html",
     "ext": {
      "frontNotes": {
-      "legal": "Lead about 240 ppb in the kids paste, and the company settled a class action over heavy metals.",
-      "testing": "Lead about 240 ppb in the kids paste, and the company settled a class action over heavy metals."
+      "legal": "The company settled a class action over heavy metals in it.",
+      "testing": "Independent testing put lead at about 240 ppb in the kids paste."
      },
      "legalNote": "Our own research records an action here, and the note on this product describes it. Nothing further is open in the FDA enforcement database, and under rule 5.2 a remedied action over 24 months old is informational rather than a finding against the product today.",
      "verdict": "skip",
@@ -80039,7 +81464,8 @@
      "scope": "line",
      "basis": "direct",
      "disclose": false,
-     "rules": []
+     "rules": [],
+     "authored": true
     },
     "cat": "Toothpaste"
    },
@@ -80131,9 +81557,9 @@
     "origin": "extracted"
    },
    "materials": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "fail",
+    "note": "From Natural Start plastic bottles: Emulsion contents in unspecified plastic, heated in use.",
+    "origin": "rollup"
    },
    "legal": {
     "status": "fail",
@@ -80141,9 +81567,9 @@
     "origin": "extracted"
    },
    "testing": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "fail",
+    "note": "From Natural Start plastic bottles: Polypropylene baby bottles release up to 16.2 million microplastic particles per litre at formula temperature (Trinity College Dublin, Nature Food, 2020). This product's own materials put it in that class.",
+    "origin": "rollup"
    }
   },
   "reviewed": true,
@@ -80612,9 +82038,9 @@
     "origin": "none"
    },
    "testing": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Traditional Medicinals tea: Tea bags with a plastic seam or mesh release 11.6 billion microplastic particles per cup (McGill University, Environmental Science and Technology, 2019). This is about tea generally. We have not confirmed it for this product.",
+    "origin": "rollup"
    }
   },
   "reviewed": true,
@@ -80930,7 +82356,14 @@
      ]
     },
     "cat": "Supplements",
-    "research": "Packaging: White plastic wide-mouth screw-top tub (resin unstated); contents are whey protein drink powder. Materials: 100% grass-fed whey protein isolate, naturally flavored, 28 g protein per serving; brand states no artificial sweeteners, food dyes, fillers, gluten, or preservatives."
+    "research": "Packaging: White plastic wide-mouth screw-top tub (resin unstated); contents are whey protein drink powder. Materials: 100% grass-fed whey protein isolate, naturally flavored, 28 g protein per serving; brand states no artificial sweeteners, food dyes, fillers, gluten, or preservatives.",
+    "matchAll": [
+     [
+      "transparent",
+      "labs",
+      "vanilla"
+     ]
+    ]
    },
    {
     "name": "Transparent Labs Grass Fed Whey Isolate",
@@ -80968,7 +82401,16 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Supplements"
+    "cat": "Supplements",
+    "matchAll": [
+     [
+      "transparent",
+      "labs",
+      "isolate",
+      "grass",
+      "fed"
+     ]
+    ]
    },
    {
     "name": "Transparent Labs supplements",
@@ -82147,7 +83589,16 @@
       "materials"
      ]
     },
-    "cat": "Skincare"
+    "cat": "Skincare",
+    "matchAll": [
+     [
+      "true",
+      "botanicals",
+      "cream",
+      "renew",
+      "eye"
+     ]
+    ]
    },
    {
     "name": "True Botanicals Pure Radiance Oil",
@@ -82581,9 +84032,9 @@
     "origin": "extracted"
    },
    "materials": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Twinings tea bags: Dry contents in pet, heated in use.",
+    "origin": "rollup"
    },
    "legal": {
     "status": "unknown",
@@ -82591,9 +84042,9 @@
     "origin": "none"
    },
    "testing": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Twinings tea bags: Tea bags with a plastic seam or mesh release 11.6 billion microplastic particles per cup (McGill University, Environmental Science and Technology, 2019). This is about tea generally. We have not confirmed it for this product.",
+    "origin": "rollup"
    }
   },
   "reviewed": true,
@@ -83112,11 +84563,9 @@
    },
    {
     "name": "Under the Nile Organic Cotton Stuffies",
-    "asins": [
-     "B07VYNFKPC"
-    ],
+    "asins": [],
     "verdict": "good",
-    "note": "GOTS organic cotton with cotton stuffing. Safe for crib age, machine washable. Badges: GOTS organic. Worth knowing: the Amazon listing we had for this is dead, so there is no buy link until we find a live one.",
+    "note": "GOTS organic cotton with cotton stuffing. Safe for crib age, machine washable. Badges: GOTS organic. Worth knowing: the Amazon listing we had for this is dead, so there is no buy link until we find a live one. Worth knowing: the Amazon listing we linked has been withdrawn, so buy direct.",
     "origin": "registry",
     "ext": {
      "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
@@ -83146,7 +84595,8 @@
      "rules": [
       "2 formula-read-from-materials",
       "5.4 durable-good-is-its-own-packaging"
-     ]
+     ],
+     "authored": true
     },
     "cat": "Cribs & nursery",
     "matchAll": [
@@ -83332,9 +84782,9 @@
     "origin": "none"
    },
    "legal": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From UPPAbaby Mesa Max Infant Car Seat (Henna): A federal class action filed in 2025 and still open alleges the Mesa Max, Mesa V2 and Aria car seats can let infants sink into a chin to chest position. A filed suit is an allegation, so it caps at caution. Three older recalls (2015 Vista bumper bar, 2021 RumbleSeat adapters, 2022 RIDGE) all completed their remedies.",
+    "origin": "rollup"
    },
    "testing": {
     "status": "pass",
@@ -83385,7 +84835,14 @@
      ]
     },
     "cat": "Strollers",
-    "research": "Packaging: Durable stroller; frame metal not specified on the product page; textile seat fabrics with full-grain REACH-compliant leather accents; GREENGUARD Gold certified for low chemical emissions. Materials: Fabric fiber content not published; fabrics are GREENGUARD Gold certified; full-grain REACH-compliant leather details."
+    "research": "Packaging: Durable stroller; frame metal not specified on the product page; textile seat fabrics with full-grain REACH-compliant leather accents; GREENGUARD Gold certified for low chemical emissions. Materials: Fabric fiber content not published; fabrics are GREENGUARD Gold certified; full-grain REACH-compliant leather details.",
+    "matchAll": [
+     [
+      "uppababy",
+      "stroller",
+      "vista"
+     ]
+    ]
    },
    {
     "name": "UPPAbaby Mesa Max Infant Car Seat (Henna)",
@@ -83426,7 +84883,15 @@
       "5.4 durable-good-is-its-own-packaging"
      ]
     },
-    "cat": "Car seats"
+    "cat": "Car seats",
+    "matchAll": [
+     [
+      "uppababy",
+      "henna",
+      "mesa",
+      "max"
+     ]
+    ]
    }
   ],
   "rollup": {
@@ -83940,7 +85405,13 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Tea"
+    "cat": "Tea",
+    "matchAll": [
+     [
+      "vahdam",
+      "sampler"
+     ]
+    ]
    }
   ],
   "rollup": {
@@ -84442,7 +85913,14 @@
      ]
     },
     "cat": "Shampoo",
-    "research": "Packaging: Contents are a solid shampoo bar; product pages state plastic-free and the sustainability page states PLASTIC FREE PACKAGING; box material is not named by the brand."
+    "research": "Packaging: Contents are a solid shampoo bar; product pages state plastic-free and the sustainability page states PLASTIC FREE PACKAGING; box material is not named by the brand.",
+    "matchAll": [
+     [
+      "viori",
+      "bar",
+      "shampoo"
+     ]
+    ]
    },
    {
     "name": "Unscented conditioner bar",
@@ -85222,7 +86700,15 @@
      ]
     },
     "cat": "Makeup",
-    "research": "Packaging: Cream mascara in a tube; tube material is not stated on the brand product page or the Amazon listing. Materials: Water-based mascara with Copernicia cerifera (carnauba) plant wax, hydrogenated jojoba oil, glyceryl stearate, glycerin, and acacia senegal gum; vegan and EWG Verified."
+    "research": "Packaging: Cream mascara in a tube; tube material is not stated on the brand product page or the Amazon listing. Materials: Water-based mascara with Copernicia cerifera (carnauba) plant wax, hydrogenated jojoba oil, glyceryl stearate, glycerin, and acacia senegal gum; vegan and EWG Verified.",
+    "matchAll": [
+     [
+      "w3ll",
+      "people",
+      "mascara",
+      "expressionist"
+     ]
+    ]
    },
    {
     "name": "W3LL PEOPLE makeup",
@@ -85856,7 +87342,15 @@
       "2 formula-read-from-materials"
      ]
     },
-    "cat": "Baby food"
+    "cat": "Baby food",
+    "matchAll": [
+     [
+      "weck",
+      "jars",
+      "glass",
+      "storage"
+     ]
+    ]
    }
   ],
   "rollup": {
@@ -86038,7 +87532,15 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Diaper cream"
+    "cat": "Diaper cream",
+    "matchAll": [
+     [
+      "weleda",
+      "cream",
+      "calendula",
+      "diaper"
+     ]
+    ]
    },
    {
     "name": "Weleda Skin Food",
@@ -86081,7 +87583,14 @@
      ]
     },
     "cat": "Baby lotion",
-    "research": "Packaging: Cream in an aluminum tube; Weleda states the tube is made of 95% recycled aluminum and easily recyclable; cap material not stated. Materials: Plant-oil base of sunflower and sweet almond oils with lanolin and beeswax; rosemary, chamomile, calendula, and pansy extracts; NATRUE certified."
+    "research": "Packaging: Cream in an aluminum tube; Weleda states the tube is made of 95% recycled aluminum and easily recyclable; cap material not stated. Materials: Plant-oil base of sunflower and sweet almond oils with lanolin and beeswax; rosemary, chamomile, calendula, and pansy extracts; NATRUE certified.",
+    "matchAll": [
+     [
+      "weleda",
+      "food",
+      "skin"
+     ]
+    ]
    },
    {
     "name": "Salt Toothpaste",
@@ -86327,7 +87836,14 @@
       "5.4 durable-good-is-its-own-packaging"
      ]
     },
-    "cat": "Cleaning products"
+    "cat": "Cleaning products",
+    "matchAll": [
+     [
+      "wettex",
+      "sponge",
+      "cloth"
+     ]
+    ]
    }
   ],
   "cautions": [
@@ -86488,7 +88004,13 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Pantry"
+    "cat": "Pantry",
+    "matchAll": [
+     [
+      "wholesome",
+      "sugar"
+     ]
+    ]
    }
   ],
   "cautions": [
@@ -86508,9 +88030,9 @@
     "origin": "extracted"
    },
    "materials": {
-    "status": "unknown",
-    "note": "",
-    "origin": "none"
+    "status": "caution",
+    "note": "From Wholesome Organic Cane Sugar: Conventional white and brown sugar have tested positive for PET and polypropylene particles, so a less… (Recorded for Wholesome as a whole rather than this product specifically.)",
+    "origin": "rollup"
    },
    "legal": {
     "status": "unknown",
@@ -86734,7 +88256,13 @@
      "rules": [
       "2 formula-read-from-materials"
      ]
-    }
+    },
+    "matchAll": [
+     [
+      "wildone",
+      "sheet"
+     ]
+    ]
    }
   ]
  },
@@ -87650,7 +89178,13 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Baby sleep"
+    "cat": "Baby sleep",
+    "matchAll": [
+     [
+      "yogasleep",
+      "machine"
+     ]
+    ]
    }
   ],
   "scopeNote": "Our verdict varies across this brand's range.",
@@ -88110,7 +89644,13 @@
      "disclose": false,
      "rules": []
     },
-    "cat": "Water bottles"
+    "cat": "Water bottles",
+    "matchAll": [
+     [
+      "zojirushi",
+      "mug"
+     ]
+    ]
    }
   ],
   "rollup": {
@@ -88195,7 +89735,13 @@
       "materials"
      ]
     },
-    "cat": "Makeup"
+    "cat": "Makeup",
+    "matchAll": [
+     [
+      "zoya",
+      "polish"
+     ]
+    ]
    }
   ],
   "rollup": {

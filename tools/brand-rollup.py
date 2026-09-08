@@ -115,3 +115,51 @@ def main():
 
 if __name__ == "__main__":
     sys.exit(main())
+
+
+# ---------------------------------------------------------------- fronts
+def roll_fronts(brands):
+    """Adverse product findings surface on the brand's own scorecard.
+
+    The verdict rollup above answers "is the brand careful". This answers the
+    next question a Brand Check page asks, which is why, and it was silent: 130
+    brand fronts read unknown while one of that brand's own product rows
+    carried a caution or a fail. Someone looking up the brand saw four blanks
+    and no hint that we had found something.
+
+    Same asymmetry as everywhere else, rule 1.1. Adverse evidence rolls up,
+    because a finding on one product is a fact about the brand worth showing.
+    Favourable evidence does not, because one product passing says nothing
+    about the next one, and a brand scorecard full of borrowed passes is the
+    exact thing the extension's strict per-product rule exists to prevent.
+
+    The note names the product, so a reader can see the finding is about one
+    thing rather than the whole range.
+    """
+    RANK = {"caution": 1, "fail": 2}
+    filled = 0
+    for b in brands:
+        fronts = b.setdefault("fronts", {})
+        for f in ("formula", "materials", "legal", "testing"):
+            cur = fronts.get(f)
+            status = cur.get("status") if isinstance(cur, dict) else None
+            if status not in (None, "", "unknown"):
+                continue
+            worst, source = None, None
+            for p in (b.get("products") or []):
+                if p.get("origin") == "brand-line":
+                    continue
+                v = ((p.get("ext") or {}).get("fronts") or {}).get(f)
+                if v in RANK and RANK[v] > RANK.get(worst or "", 0):
+                    worst, source = v, p
+            if not worst:
+                continue
+            note = ((source.get("ext") or {}).get("frontNotes") or {}).get(f) or ""
+            fronts[f] = {
+                "status": worst,
+                "note": (f"From {source.get('name')}: {note}" if note
+                         else f"{source.get('name')} carries a finding on this front.")[:400],
+                "origin": "rollup",
+            }
+            filled += 1
+    return filled
