@@ -466,7 +466,19 @@ async function handleBrandReports(request, env) {
    chain is required to end at Apple's own root.
    ------------------------------------------------------------------------ */
 
-const APPLE_ROOT_G3_SPKI_START = "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE";
+// Apple Root CA G3's public key, whole, from
+// https://www.apple.com/certificateauthority/AppleRootCA-G3.cer
+//
+// This was a PREFIX, and the prefix was of a P-256 key: MFkwEwYHKoZIzj0CAQYI
+// KoZIzj0DAQcDQgAE. Apple's root is P-384, whose SPKI begins MHYwEAYHKoZIzj0C
+// AQYFK4EEACIDYgAE, so startsWith was false for every receipt Apple has ever
+// issued. Every purchase threw "not apple", every redeem returned 400, and the
+// app told the buyer "Paid, but it did not open". It had never once worked.
+//
+// The whole key rather than a prefix, because a prefix only says which curve
+// the key uses, and every P-384 key in the world shares it. That is not a test
+// of whether the certificate is Apple's.
+const APPLE_ROOT_G3_SPKI = "MHYwEAYHKoZIzj0CAQYFK4EEACIDYgAEmOkvPUBypO2TInKBExzdEJXxxaNOcdwUFtkO5aYFKndke19OONO7HES1f/UftjJiXcnphFtPME8RWgD9WFgMpfUPLE0HRxN12peXl28xXO0rnXsgO9i5VNlemaQ6UQox";
 
 const b64urlToBytes = (s) => {
   const b = atob(s.replace(/-/g, "+").replace(/_/g, "/").padEnd(Math.ceil(s.length / 4) * 4, "="));
@@ -513,7 +525,7 @@ async function verifyAppleJws(jws) {
   // The chain has to end at Apple's root, not merely be a well formed chain.
   const rootSpki = spkiFromCert(b64urlToBytes(chain[chain.length - 1].replace(/\s/g, "")));
   const rootB64 = btoa(String.fromCharCode(...rootSpki));
-  if (!rootB64.startsWith(APPLE_ROOT_G3_SPKI_START)) throw new Error("not apple");
+  if (rootB64 !== APPLE_ROOT_G3_SPKI) throw new Error("not apple");
 
   const leafSpki = spkiFromCert(b64urlToBytes(chain[0].replace(/\s/g, "")));
   const key = await crypto.subtle.importKey(

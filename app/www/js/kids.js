@@ -129,7 +129,17 @@ async function redeem(proof) {
     body: JSON.stringify(proof),
   });
   const d = await r.json().catch(() => ({}));
-  if (!d || !d.ok || !d.pass) return false;
+  // Keep what the server said. It answers with a specific reason -- "Unverified
+  // receipt", "Wrong product", "Wrong app", "Refunded" -- and this threw all of
+  // them away and returned a bare false. So a receipt rejected because the
+  // worker was checking Apple's root key against a P-256 prefix, when Apple's
+  // root is P-384, was indistinguishable from a network blip, and the screen
+  // could only say "it did not open".
+  if (!d || !d.ok || !d.pass) {
+    redeem.lastError = String((d && d.error) || `HTTP ${r.status}`);
+    return false;
+  }
+  redeem.lastError = "";
   setPass(d.pass);
   await load();
   return true;
@@ -181,7 +191,7 @@ export async function buyInApp() {
   if (!proof) return { state: "paid-unproven", why: "no jws on the transaction" };
   try {
     if (await redeem(proof)) return { state: "ok" };
-    return { state: "paid-unopened", why: "server declined the receipt" };
+    return { state: "paid-unopened", why: redeem.lastError || "server declined the receipt" };
   } catch (e) {
     return { state: "paid-unopened", why: String((e && e.message) || e || "network") };
   }
