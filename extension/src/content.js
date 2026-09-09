@@ -320,9 +320,12 @@
       const tick = el("span", "pd-tick");
       tick.style.background = {
         pass: "#16a34a", caution: "#b45309", fail: "#dc2626",
-        unknown: "#d6d3d1", none: "#86efac",
+        unknown: "#d6d3d1", none: "#d6d3d1",
       }[st] || "#d6d3d1";
-      tick.title = st === "none" ? "checked, nothing applies" : st;
+      // A check that does not apply is not a check that passed. This drew a
+      // durable good's formula in a pale green that reads as a fourth tick
+      // earned, on the 377 rows where no ingredient list exists to check.
+      tick.title = st === "none" ? "does not apply to this product" : st;
       wrap.appendChild(tick);
     }
     return wrap;

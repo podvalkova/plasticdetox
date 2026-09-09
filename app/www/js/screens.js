@@ -1054,14 +1054,22 @@ function shopCard({ brand: b, row }, { onOpen, onProduct, eager = false }) {
   body.appendChild(el("div", "pcard-name", label));
 
   const fr = (row.ext || {}).fronts || {};
-  const done = FRONTS.filter(([k]) => ["pass", "none"].includes(fr[k])).length;
+  // A front that does not apply is not a check that passed. A play mat has no
+  // ingredient list, so its formula front reads "none", and this drew that as
+  // a green tick out of four: 152 of the 233 products on the shelf claimed a
+  // check that cannot exist for them, 26 of them reading a full 4/4 while only
+  // three checks applied and two had passed. So it leaves the colour and the
+  // denominator both, and a durable good reads 2/3. Same call the product
+  // screen already makes, where a "none" formula is not drawn at all.
+  const applies = FRONTS.filter(([k]) => fr[k] !== "none");
+  const done = applies.filter(([k]) => fr[k] === "pass").length;
   const marks = el("div", "pcard-checks");
-  for (const [k] of FRONTS) {
+  for (const [k] of applies) {
     const dot = el("i");
-    dot.className = ["pass", "none"].includes(fr[k]) ? "on" : "";
+    dot.className = fr[k] === "pass" ? "on" : "";
     marks.appendChild(dot);
   }
-  marks.appendChild(el("em", null, `${done}/4`));
+  marks.appendChild(el("em", null, `${done}/${applies.length}`));
   body.appendChild(marks);
   card.appendChild(body);
 
@@ -1776,8 +1784,15 @@ export function unknown(root, { scan, brand, product, hasPass, onCheck, onReques
 
 /** One front as it arrives from the check stream. */
 export function checkRow(step, front, label) {
+  // "none" on the formula front means the check does not apply to this kind of
+  // product, not that we failed to run it. Drawing it as the "?" of an
+  // unfinished check asked the reader to wait for an answer that is never
+  // coming. It is a dash, greyed, the way vet.html and the database view have
+  // always shown it. On testing, "none" means we searched and found nothing
+  // published, which is a real finding and keeps its own mark.
+  const na = front.status === "none" && step === "formula";
   const row = el("div", `front ${front.status === "none" ? "unknown" : front.status}`);
-  const glyph = { pass: "\u2713", caution: "!", fail: "\u2715" }[front.status] || "?";
+  const glyph = na ? "\u2013" : ({ pass: "\u2713", caution: "!", fail: "\u2715" }[front.status] || "?");
   row.appendChild(el("span", `front-mark ${front.status === "none" ? "unknown" : front.status}`, glyph));
   const body = el("div", "row-body");
   body.appendChild(el("div", "front-name", label));
