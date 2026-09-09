@@ -217,14 +217,21 @@ export const KIDS = {
   {
    "id": "Kids::Replace foam play mats",
    "swap": "Replace foam play mats",
-   "why": "EVA foam mats offgas into the exact 30cm of air where a crawling baby breathes, all day.",
+   "why": "EVA foam mats offgas formamide into the exact 30cm of air where a crawling baby breathes, and 2022 lab testing still found it in 15 of 20 foam mats.",
    "heat": false,
-   "free": "A cotton quilt or wool rug on the floor does the same job.",
+   "free": "A clean cotton quilt covers the floor until a proper mat arrives.",
    "picks": [
     {
-     "label": "Guide",
-     "name": "Read the full guide",
-     "url": "https://plasticdetox.org/articles/non-toxic-baby-toddler-products-guide.html"
+     "label": "$",
+     "name": "Woolino Merino Sheepskin",
+     "url": "https://www.amazon.com/dp/B00L9HYDLU?tag=plasticdetox-20",
+     "note": "Top pick, awake floor time"
+    },
+    {
+     "label": "$$$",
+     "name": "Lorena Canals ABC Washable Rug",
+     "url": "https://www.amazon.com/dp/B01MRI290Z?tag=plasticdetox-20",
+     "note": "Best washable play rug"
     }
    ]
   },
