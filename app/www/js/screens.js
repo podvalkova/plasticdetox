@@ -1363,6 +1363,14 @@ export function result(root, { index, match, scan, product, query, productNamed,
     head.appendChild(el("div", "verdict-scope",
       `This is our finding on ${v.brand.brand} ${String(v.brand.category || "").toLowerCase()} generally. We have not researched this exact product.`));
   } else if (v.level === "brand") {
+    // A prefix match knows the maker and nothing else. Say which it was, so
+    // "this is our read on the brand" is not mistaken for having read the code.
+    if (match && match.via === "barcode-prefix") {
+      head.appendChild(el("div", "verdict-scope",
+        `That barcode is not in any database we can reach, but its manufacturer `
+        + `code belongs to ${v.brand.brand}. So this is what we make of the brand, `
+        + `not of the exact product in your hand.`));
+    }
     // Knowing the brand is not knowing the product. Say so rather than let a
     // brand judgement pass itself off as a verdict on the thing being held.
     head.appendChild(el("div", "verdict-scope",

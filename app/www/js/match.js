@@ -41,6 +41,24 @@ export class Index {
     this.brands = brands || [];
     this.asins = asins || {};
     this.barcodes = barcodes || {};
+    // Company prefixes, kept only where every barcode under one belongs to a
+    // single brand. Built here rather than shipped, so it cannot drift from the
+    // map it is derived from.
+    this.prefixes = {};
+    {
+      const seen = {};
+      for (const code of Object.keys(this.barcodes)) {
+        const bare = String(code).replace(/\D/g, "").replace(/^0+/, "");
+        for (const n of [6, 7, 8]) {
+          if (bare.length <= n) continue;
+          const k = bare.slice(0, n);
+          const id = this.barcodes[code].brandId;
+          if (!(k in seen)) seen[k] = id;
+          else if (seen[k] !== id) seen[k] = null;
+        }
+      }
+      for (const k of Object.keys(seen)) if (seen[k]) this.prefixes[k] = seen[k];
+    }
     this.byId = new Map();
     this.byCollapsed = new Map();
     for (const b of this.brands) {
@@ -63,10 +81,36 @@ export class Index {
   // ---------------------------------------------------------------- lookups
 
   fromBarcode(code) {
-    const hit = code && this.barcodes[String(code).replace(/\D/g, "")];
-    if (!hit) return null;
-    const brand = this.byId.get(hit.brandId);
-    return brand ? { brand, hint: hit, via: "barcode" } : null;
+    const digits = code && String(code).replace(/\D/g, "");
+    if (!digits) return null;
+    const hit = this.barcodes[digits];
+    if (hit) {
+      const brand = this.byId.get(hit.brandId);
+      if (brand) return { brand, hint: hit, via: "barcode" };
+    }
+    // The manufacturer, when the exact code is unknown to everyone.
+    //
+    // A barcode opens with a GS1 company prefix, so everything a company makes
+    // shares its leading digits. Native's Coconut & Vanilla scanned to nothing
+    // because neither we nor any of the three open databases hold
+    // 030772233559, while we already held 0030772245439 under the same prefix
+    // and a careful verdict on Native. Saying "we could not identify that" when
+    // we know whose product it is throws away the answer we have.
+    //
+    // Only prefixes that resolve to ONE brand are used. A company prefix can
+    // carry several: Procter & Gamble's covers Old Spice and Secret, and
+    // guessing between them would put one brand's verdict on another's
+    // product. Those stay unresolved on purpose.
+    const bare = digits.replace(/^0+/, "");
+    for (const n of [8, 7, 6]) {
+      if (bare.length <= n) continue;
+      const id = this.prefixes[bare.slice(0, n)];
+      const brand = id && this.byId.get(id);
+      // No hint is returned: a prefix names the maker, never the product, so
+      // the screen must not read it as a verdict on what is in someone's hand.
+      if (brand) return { brand, via: "barcode-prefix" };
+    }
+    return null;
   }
 
   fromAsin(asin) {
