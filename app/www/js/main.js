@@ -557,10 +557,18 @@ function draw() {
         showBusy(`Talking to ${kids.storeName()}`);
         const r = await kids.buyInApp();
         hideBusy();
-        if (r === "ok") { track("kids_unlocked", { via: "iap" }); toast("Opened. The room is on your list"); render(); }
-        else if (r === "cancelled") { /* their choice, say nothing */ }
-        else if (r === "unavailable") toast("Not available on this device");
-        else toast("That did not go through");
+        if (r.state === "ok") { track("kids_unlocked", { via: "iap" }); toast("Opened. The room is on your list"); render(); }
+        else if (r.state === "cancelled") { /* their choice, say nothing */ }
+        else if (r.state === "unavailable") toast("Not available on this device");
+        else {
+          // Log the store's own words. Without them a failed purchase is
+          // unreadable from here: the tap was tracked and the reason was not.
+          track("kids_buy_failed", { state: r.state, why: String(r.why || "").slice(0, 120) });
+          // Having paid and not received it is a different problem from not
+          // having paid, and it has a different fix.
+          if (r.state === "store-refused") toast("The App Store would not take that");
+          else toast("Paid, but it did not open. Tap Restore a purchase");
+        }
       },
       onRestore: async () => {
         showBusy(`Checking with ${kids.storeName()}`);

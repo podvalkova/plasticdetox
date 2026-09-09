@@ -144,17 +144,40 @@ function proofFrom(t) {
   return jws ? { jws } : null;
 }
 
+/**
+ * Buy it, and say what happened if it does not work.
+ *
+ * This used to answer "failed" to three different situations and the screen
+ * printed one sentence for all of them, so a purchase that did not go through
+ * was indistinguishable from one that DID and that we then failed to open. The
+ * second is the one that matters: Apple has the money and the reader has
+ * nothing, and the fix on their side is Restore, which the old message never
+ * hinted at. It also swallowed StoreKit's own reason, which is the only thing
+ * that says whether the store refused us or the device was never signed in.
+ *
+ * Returns { state, why }. `why` is for the log and never for the reader.
+ */
 export async function buyInApp() {
   const p = purchases();
-  if (!p) return "unavailable";
+  if (!p) return { state: "unavailable" };
+  let t;
   try {
-    const t = await p.purchaseProduct({ productIdentifier: PRODUCT, productType: "inapp" });
-    const proof = proofFrom(t);
-    if (!proof) return "failed";
-    return (await redeem(proof)) ? "ok" : "failed";
+    t = await p.purchaseProduct({ productIdentifier: PRODUCT, productType: "inapp" });
   } catch (e) {
+    const why = String((e && (e.message || e.errorMessage)) || e || "unknown");
     // A cancelled purchase is a normal outcome, not an error to shout about.
-    return /cancel/i.test(String((e && e.message) || e)) ? "cancelled" : "failed";
+    if (/cancel/i.test(why)) return { state: "cancelled" };
+    return { state: "store-refused", why };
+  }
+  const proof = proofFrom(t);
+  // The store said yes and handed us nothing we can prove it with. Restore
+  // reads the same purchase back, so it is the way out rather than paying again.
+  if (!proof) return { state: "paid-unproven", why: "no jws on the transaction" };
+  try {
+    if (await redeem(proof)) return { state: "ok" };
+    return { state: "paid-unopened", why: "server declined the receipt" };
+  } catch (e) {
+    return { state: "paid-unopened", why: String((e && e.message) || e || "network") };
   }
 }
 
