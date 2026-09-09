@@ -334,7 +334,7 @@ NO_INGREDIENT_CATS = {
     "Breast milk storage", "Car seats", "Clothing", "Cookware",
     "Crib mattresses", "Cribs & nursery", "Cutting boards", "Dental floss",
     "Diapers", "Food storage", "Kitchen appliances", "Menstrual cups",
-    "Pacifiers", "Razors", "Shower curtains", "Strollers", "Tableware",
+    "Pacifiers", "Play mats", "Razors", "Shower curtains", "Strollers", "Tableware",
     "Teethers", "Toothbrushes", "Toys", "Vacuums", "Water bottles",
     "Water filters", "Yoga mats",
 }
