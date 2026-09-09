@@ -310,38 +310,6 @@ const articleBits = (slug, swap = "", why = "", soleOwner = true, pick = null) =
   }
 };
 
-// How many swaps each guide backs. A guide used once was written for that
-// swap and every question in it is on subject; a guide used five times is a
-// survey, and only the questions matching this swap belong on this card.
-const GUIDE_USE = {};
-for (const ph of PHASES) {
-  for (const st of ph.steps) {
-    const ex = EXTRAS[st.swap];
-    if (ex && ex.article) GUIDE_USE[ex.article] = (GUIDE_USE[ex.article] || 0) + 1;
-  }
-}
-
-let extraCount = 0;
-let faqCount = 0;
-for (const ph of PHASES) {
-  for (const st of ph.steps) {
-    const ex = EXTRAS[st.swap];
-    if (!ex) continue;
-    if (ex.tip) st.tip = ex.tip;
-    if (ex.order) st.order = ex.order;
-    if (ex.article) {
-      const bits = articleBits(ex.article, st.swap, st.why, GUIDE_USE[ex.article] === 1, ex.faqs);
-      if (bits) {
-        st.article = { slug: ex.article, title: bits.title };
-        if (bits.faqs.length) { st.faqs = bits.faqs; faqCount += bits.faqs.length; }
-      }
-    }
-    extraCount++;
-  }
-}
-console.log(`swap FAQs            ${faqCount} questions lifted from the guides`);
-console.log(`step extras          ${extraCount} swaps carry a tip or an order`);
-
 // ---- The Kids room, lifted from baby-kids-101 rather than written twice ----
 //
 // The article already carries "The 23 baby and kid swaps, in priority order",
@@ -397,6 +365,45 @@ for (const m of kidsSrc.matchAll(/<h3[^>]*>([\s\S]*?)<\/h3>([\s\S]*?)(?=<h3|<h2|
     picks,
   });
 }
+
+// How many swaps each guide backs. A guide used once was written for that
+// swap and every question in it is on subject; a guide used five times is a
+// survey, and only the questions matching this swap belong on this card.
+//
+// The room counts too. It is the paid half of the same plan, and it was built
+// after this ran, so EXTRAS was never consulted for a single one of its 23
+// swaps: no guide, no FAQ, no tip, however much anyone wrote in the file.
+// Nothing reported it, because a swap with no extras is what an unwritten swap
+// also looks like.
+const ALL_STEPS = [...PHASES.flatMap((p) => p.steps), ...kidsSteps];
+// A room swap is keyed "Kids::Change your wipes" so it can differ from a free
+// swap of the same name, and falls back to the bare title where it need not.
+const extrasFor = (st) => EXTRAS[st.id] || EXTRAS[st.swap];
+const GUIDE_USE = {};
+for (const st of ALL_STEPS) {
+  const ex = extrasFor(st);
+  if (ex && ex.article) GUIDE_USE[ex.article] = (GUIDE_USE[ex.article] || 0) + 1;
+}
+
+let extraCount = 0;
+let faqCount = 0;
+for (const st of ALL_STEPS) {
+  const ex = extrasFor(st);
+  if (!ex) continue;
+  if (ex.tip) st.tip = ex.tip;
+  if (ex.order) st.order = ex.order;
+  if (ex.article) {
+    const bits = articleBits(ex.article, st.swap, st.why, GUIDE_USE[ex.article] === 1, ex.faqs);
+    if (bits) {
+      st.article = { slug: ex.article, title: bits.title };
+      if (bits.faqs.length) { st.faqs = bits.faqs; faqCount += bits.faqs.length; }
+    }
+  }
+  extraCount++;
+}
+console.log(`swap FAQs            ${faqCount} questions lifted from the guides`);
+console.log(`step extras          ${extraCount} swaps carry a tip or an order`);
+
 // The Kids room is paid, so it does not go in the bundle. Bundles are served
 // from a public URL: shipping the swaps inside one and hiding them behind a
 // flag would put the whole thing a single unzip away from anyone who found the

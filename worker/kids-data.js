@@ -19,6 +19,12 @@ export const KIDS = {
      "note": "Best value glass bottle"
     },
     {
+     "label": "$$",
+     "name": "Lifefactory Glass Bottle with Silicone Sleeve (9oz)",
+     "url": "https://www.amazon.com/dp/B001J8D72U?tag=plasticdetox-20",
+     "note": "Best glass bottle with etched markings"
+    },
+    {
      "label": "$",
      "name": "Klean Kanteen Kid Classic (12oz)",
      "url": "https://www.amazon.com/dp/B0DK7J39YJ?tag=plasticdetox-20",
@@ -29,6 +35,36 @@ export const KIDS = {
      "name": "REDECKER Bottle Brush Cleaner",
      "url": "https://www.amazon.com/dp/B002HORIN4?tag=plasticdetox-20",
      "note": "Best plastic free bottle brush"
+    }
+   ],
+   "tip": {
+    "title": "Glass solves the plastic, and the paint can undo it",
+    "body": "Glass is the right answer for the bottle. The catch is what is printed on it. Independent XRF screening of 32 bottles found detectable lead in 91 percent of glass bottles carrying painted logos or measurement markings, about a third of them over the 90 ppm federal limit for paint on children's products. NUK recalled its First Choice glass bottles in 2022 for exactly this. Pigeon, which also makes Lansinoh's glass bottles, measured lead in the thousands of ppm and paused US glass bottle sales in April 2024; it says the print has changed, but that retest was brand commissioned, there was never a recall, and nothing on the box tells old print from new.",
+    "look": [
+     "Markings that are etched or embossed into the glass, or no markings at all",
+     "A silicone sleeve, which protects the bottle and covers nothing you need to read"
+    ],
+    "skip": [
+     "Painted measurement lines or a painted logo, whoever makes it",
+     "A secondhand or older glass bottle with printed markings, where you cannot know which print run it is"
+    ]
+   },
+   "article": {
+    "slug": "best-non-toxic-baby-bottles.html",
+    "title": "Best Non Toxic Baby Bottles (2026): Microplastics, Materials, and What Actually Passed"
+   },
+   "faqs": [
+    {
+     "q": "What is the safest baby bottle material?",
+     "a": "Plain, unpainted glass. Glass is inert, does not degrade at formula preparation temperatures, and releases no microplastics no matter how hot the water is or how many times it is sterilised. Stainless steel is the next best and is far more durable, with one caveat about the sealing dot on some insulated models. The important detail with glass is to choose a bottle without painted decoration or painted measurement markings, because independent XRF testing has repeatedly found lead in that paint."
+    },
+    {
+     "q": "Are glass baby bottles safe from lead?",
+     "a": "The glass itself is fine. The paint is the problem. Independent XRF screening of 32 bottles found detectable lead in 91 percent of glass bottles carrying painted logos or measurement markings, with about a third over the 90 ppm federal limit for paint on children's products. NUK recalled its First Choice glass bottles in 2022 for exactly this reason. Choose glass with etched or embossed markings, or plain undecorated glass, and the issue disappears."
+    },
+    {
+     "q": "Do Pigeon glass baby bottles contain lead?",
+     "a": "Independent XRF screening measured lead in the painted markings of Pigeon glass bottles at thousands of parts per million against a 90 ppm legal limit, and a 2022 test of the same style of bottle also picked up arsenic, cadmium, and mercury in the paint. Pigeon, which also manufactures Lansinoh's glass bottles, paused US glass bottle sales in April 2024 after the results were published, and told Consumer Reports in June 2024 that it had changed the print and had a CPSC accredited laboratory confirm no detectable lead on the updated bottles. That retest is brand commissioned rather than independent, there was never a recall, and nothing on the packaging distinguishes old print from new. If you bought Pigeon glass bottles before mid 2024, those are the ones the testing failed."
     }
    ]
   },
@@ -45,6 +81,20 @@ export const KIDS = {
      "url": "https://www.amazon.com/dp/B0DY1V2T7H?tag=plasticdetox-20",
      "note": "Best clean tested formula"
     }
+   ],
+   "article": {
+    "slug": "microplastics-in-baby-food.html",
+    "title": "Microplastics in Baby Food: What Parents Need to Know (and the Safest Feeding Setup)"
+   },
+   "faqs": [
+    {
+     "q": "Are plastic baby bottles safe?",
+     "a": "A landmark 2020 study from Trinity College Dublin found that polypropylene baby bottles release up to 16 million microplastic particles per liter when exposed to hot water at formula preparation temperatures. Even BPA free plastic bottles release millions of particles. Glass or stainless steel bottles eliminate this exposure entirely."
+    },
+    {
+     "q": "Does heating baby food in plastic increase microplastic exposure?",
+     "a": "Yes, dramatically. A 2023 University of Nebraska study found that microwaving food in plastic containers released up to 4.2 million microplastic and 2.1 billion nanoplastic particles per square centimeter. Heat accelerates the breakdown of plastic polymers. Always transfer baby food to glass or ceramic before heating."
+    }
    ]
   },
   {
@@ -60,6 +110,38 @@ export const KIDS = {
      "url": "https://www.amazon.com/dp/B0B4V5TBLJ?tag=plasticdetox-20",
      "note": "Best glyphosate tested baby oats"
     }
+   ],
+   "tip": {
+    "title": "Three separate questions, and they have different answers",
+    "body": "Buying baby food well is not one decision. The package is a microplastics question: a pouch is plastic against warm puree, and squeezing it warm is the worst case. The grain is a pesticide question: oats, wheat and legumes are the crops routinely desiccated with glyphosate before harvest, so organic alone is not the same as tested. And the produce is a heavy metals question: rice takes up arsenic from soil regardless of how it was farmed, which is why rice cereal is the one staple worth rotating out rather than upgrading.",
+    "look": [
+     "Glass jars for anything premade, which is the whole fix for the packaging question",
+     "Certified Glyphosate Residue Free from the Detox Project on oats, flour and pasta, which is a measured result rather than a farming method",
+     "Single ingredient jars, where you can see what you are buying"
+    ],
+    "skip": [
+     "Pouches, particularly warmed, and particularly fed straight from the spout",
+     "Rice cereal as a daily staple, whatever the brand",
+     "\"Organic\" read as a heavy metals claim, because it is a claim about pesticides and nothing else"
+    ]
+   },
+   "article": {
+    "slug": "microplastics-in-baby-food.html",
+    "title": "Microplastics in Baby Food: What Parents Need to Know (and the Safest Feeding Setup)"
+   },
+   "faqs": [
+    {
+     "q": "Do baby food pouches contain microplastics?",
+     "a": "Yes, and in large amounts. A 2025 laboratory study by SINTEF Ocean, commissioned by Greenpeace, tested popular pouches sold as is without heating and found microplastics in every sample. Gerber pouches contained up to 54 particles per gram (over 5,000 per pouch) and Happy Baby Organics pouches contained up to 99 particles per gram (over 11,000 per pouch). The contamination was traced to the polyethylene lining of the pouch itself. The food sits in direct contact with that plastic for weeks or months at room temperature, and squeezing the pouch adds mechanical release. Glass jars or homemade food in glass containers are far safer alternatives."
+    },
+    {
+     "q": "Does heating baby food in plastic increase microplastic exposure?",
+     "a": "Yes, dramatically. A 2023 University of Nebraska study found that microwaving food in plastic containers released up to 4.2 million microplastic and 2.1 billion nanoplastic particles per square centimeter. Heat accelerates the breakdown of plastic polymers. Always transfer baby food to glass or ceramic before heating."
+    },
+    {
+     "q": "Is store bought baby food safer than homemade?",
+     "a": "From a microplastic perspective, homemade baby food stored in glass containers is generally safer than store bought food in plastic packaging. However, store bought baby food in glass jars can be a good option too. The key factor is not whether the food is homemade or store bought, but whether it has been processed and stored in contact with plastic."
+    }
    ]
   },
   {
@@ -71,6 +153,12 @@ export const KIDS = {
    "picks": [
     {
      "label": "$",
+     "name": "Mushie Silicone Teethers",
+     "url": "https://www.amazon.com/dp/B0CFGCDSDR?tag=plasticdetox-20",
+     "note": "Best silicone option"
+    },
+    {
+     "label": "$",
      "name": "Untreated Hardwood Teether",
      "url": "https://www.amazon.com/dp/B004P9S8W4?tag=plasticdetox-20",
      "note": "Best wooden teether"
@@ -80,6 +168,24 @@ export const KIDS = {
      "name": "Medical Grade Silicone Teether",
      "url": "https://www.amazon.com/dp/B09BVXG63Z?tag=plasticdetox-20",
      "note": "Best medical grade option"
+    }
+   ],
+   "article": {
+    "slug": "non-toxic-baby-toddler-products-guide.html",
+    "title": "The Complete Parent's Guide to Replacing Toxic Baby and Toddler Products (2026)"
+   },
+   "faqs": [
+    {
+     "q": "What materials are safest for baby products?",
+     "a": "Ranked by how well they hold up to heat, wear and a baby's mouth: borosilicate glass and 18/8 stainless steel first, because neither leaches and neither degrades with sterilising; then food grade silicone, which is stable and heat tolerant but softer and eventually cloudy; then, if you must, polypropylene, marked with a 5, which is the least bad plastic and the one used in most bottles. Avoid PVC, which needs plasticisers to stay soft, melamine, which is a common toddler plate material that degrades with heat, and anything labelled only BPA free, since BPS and BPF replaced BPA and behave similarly. The rule that covers most cases is simple: heat, fat and time are what pull chemicals out of plastic, so the items that get heated, hold oily food, or spend hours in a mouth are where material matters most."
+    },
+    {
+     "q": "Are silicone baby products safe?",
+     "a": "Food grade silicone (especially platinum cured) is significantly safer than plastic. It does not release traditional microplastics and does not contain BPA, phthalates, or other endocrine disruptors. Some studies suggest silicone can release siloxanes when heated to high temperatures. For items contacting hot food or liquids, glass and stainless steel remain the gold standard. For room temperature use like plates, bibs, and teethers, food grade silicone is a good choice."
+    },
+    {
+     "q": "Are BPA free baby products safe?",
+     "a": "Not necessarily. BPA free often means the manufacturer replaced BPA with structurally similar chemicals like BPS or BPF, which have shown similar endocrine disrupting effects in studies. A 2020 study from Trinity College Dublin found that BPA free polypropylene baby bottles still released up to 16 million microplastic particles per liter. The safest approach is to avoid plastic entirely and use glass, stainless steel, or certified food grade silicone. For more on why BPA free is not enough, see our article on why BPA free is not safe."
     }
    ]
   },
@@ -108,6 +214,24 @@ export const KIDS = {
      "url": "https://www.amazon.com/dp/B0C6SVTQ3Q?tag=plasticdetox-20",
      "note": "Best stainless tableware"
     }
+   ],
+   "article": {
+    "slug": "best-plastic-free-food-storage-containers.html",
+    "title": "Best Glass Food Storage Containers With Glass Lids (2026): Plastic Free, Plus Stainless and Silicone"
+   },
+   "faqs": [
+    {
+     "q": "Do stainless steel containers leach anything into food?",
+     "a": "Food grade 304 stainless steel leaches negligible amounts of nickel and chromium, well within safety limits set by regulatory agencies. For cold food storage (fridge and pantry), leaching is essentially zero. Stainless steel does not leach endocrine disruptors, microplastics, or BPA. If you have a nickel allergy, choose 18/0 stainless steel, which is nickel free."
+    },
+    {
+     "q": "What is the best plastic free container for kids lunches?",
+     "a": "Stainless steel bento boxes are the best choice for children. They are unbreakable, lightweight, and easy for small hands to open. Brands like LunchBots and PlanetBox make compartmented containers that keep foods separated. Avoid glass for young children due to the weight and breakage risk. Silicone containers are also a good option for snacks and soft foods."
+    },
+    {
+     "q": "Is silicone food storage really plastic free?",
+     "a": "Silicone is a synthetic polymer made from silica (sand), not petroleum. It does not contain BPA, BPS, phthalates, or other endocrine disruptors found in plastic. Food grade platinum cured silicone does not shed microplastics. While it is technically a synthetic material, its chemical behavior is fundamentally different from plastic and it is considered safe for food contact by the FDA and European food safety agencies."
+    }
    ]
   },
   {
@@ -134,6 +258,24 @@ export const KIDS = {
      "name": "Seventh Generation Sensitive Skin Diapers",
      "url": "https://www.amazon.com/dp/B084H4H6HR?tag=plasticdetox-20",
      "note": "Easiest to find"
+    }
+   ],
+   "article": {
+    "slug": "best-non-toxic-diapers.html",
+    "title": "Best Non Toxic Diapers: What Tested Clean and What to Watch (2026)"
+   },
+   "faqs": [
+    {
+     "q": "What is the most non toxic diaper brand?",
+     "a": "Coterie is our best overall pick. It is EWG Verified in every size from newborn to size 7, uses totally chlorine free pulp, publishes a full layer by layer material list, tested non detect for PFAS markers in independent 2023 testing, and absorbs more than anything else in the category. HealthyBaby matches it on every one of those safety measures and costs about the same, so it is the better choice if you specifically want organic cotton in the outer cover. If price is the deciding factor, Eco by Naty is totally chlorine free and tested non detect at roughly $0.44 a diaper, and Seventh Generation is the easiest clean diaper to find in ordinary grocery stores. For reusables, pair natural fiber prefolds or hemp inserts with a cover from a brand that tested non detect, because the waterproof cover is where cloth testing found problems."
+    },
+    {
+     "q": "Do diapers contain PFAS?",
+     "a": "Some do. In 2023 an EPA certified laboratory commissioned by Mamavation tested 65 diapers from 40 brands for organic fluorine, a screening marker for PFAS. Twenty three percent of products showed organic fluorine above the 10 ppm detection threshold, including 17 percent of disposables and 30 percent of cloth diapers and accessories. Results ranged from 10 to 323 ppm. Organic fluorine is a marker rather than a per compound PFAS measurement, so a detection is a reason to ask questions rather than proof of a specific chemical."
+    },
+    {
+     "q": "Are Millie Moon diapers safe?",
+     "a": "Millie Moon tested non detect for PFAS markers in 2023 independent testing and is fragrance and lotion free, but two separate problems have accumulated. A class action filed in Massachusetts alleges Target continued marketing the diapers as totally chlorine free after the pulp process moved to elemental chlorine free. Separately, consumer law firms are reviewing a cluster of severe rash and chemical burn reports from parents, at least one complaint has been filed with the Consumer Product Safety Commission, and the reports drew local news coverage in May 2026. There has been no recall and no finding of liability, but that is enough uncertainty that we do not list Millie Moon as a clean pick."
     }
    ]
   },
@@ -162,6 +304,24 @@ export const KIDS = {
      "url": "https://www.amazon.com/dp/B0BGNJVWTH?tag=plasticdetox-20",
      "note": "Best reusable cloth wipes"
     }
+   ],
+   "article": {
+    "slug": "best-non-toxic-baby-wipes.html",
+    "title": "Best Non Toxic Baby Wipes: Plastic Free Picks and the Brands Facing Lawsuits (2026)"
+   },
+   "faqs": [
+    {
+     "q": "What are the safest baby wipes?",
+     "a": "Coterie is our best overall pick: an EWG Verified formula of six ingredients on a plastic free lyocell and viscose cloth, with no PFAS detected in Consumer Reports 2026 testing and the strongest owner reviews in the category. HealthyBaby is the only wipe with both EWG Verified and MADE SAFE certification, on an FSC certified wood pulp cloth. Caboo is the best value clean wipe, a MADE SAFE certified bamboo wipe with the largest review base of our picks. Natracare is the purist option, the only wipe made from certified organic cotton, though its lotion includes essential oils. The genuinely zero exposure option is reusable cotton cloth wipes with plain water."
+    },
+    {
+     "q": "Do baby wipes contain PFAS?",
+     "a": "The best available testing says mostly no. In June 2026 Consumer Reports tested 19 wipe products from 18 companies for 30 individual PFAS compounds using an EPA drinking water method and found no detectable PFAS in any of them, including Pampers, Huggies, Kirkland, WaterWipes, and every clean brand we recommend. Two lawsuits allege trace PFAS in specific wipes, 3.7 parts per billion in Kirkland Signature wipes and 305 parts per trillion in Huggies Simply Clean, levels below what the Consumer Reports method would flag. Unlike diapers, where lab testing found organic fluorine in 23 percent of products, wipes look like one of the cleaner categories on this specific question."
+    },
+    {
+     "q": "Are WaterWipes really just water?",
+     "a": "The label is honest but incomplete. WaterWipes are 99.9 percent water plus grapefruit seed extract, and the label itself notes the extract contains a trace of benzalkonium chloride, a synthetic preservative that published chemical analyses have repeatedly found as a major constituent of commercial grapefruit seed extract. The cloth switched from an 80 percent polyester blend to 100 percent viscose in 2022. Since 2025 the brand has faced two lawsuits, one from a consumer group and one class action, alleging that lab testing found microplastics in wipes marketed as plastic free. Nothing has been proven in court, but for a product whose entire pitch is purity, that is enough open questions that we list WaterWipes as a caution rather than a pick."
+    }
    ]
   },
   {
@@ -182,6 +342,36 @@ export const KIDS = {
      "name": "Motherlove Diaper Balm",
      "url": "https://www.amazon.com/dp/B000XJ2LDW?tag=plasticdetox-20",
      "note": "Best for cloth diapers"
+    }
+   ],
+   "tip": {
+    "title": "The lead comes with the zinc, and the jar depends on the formula",
+    "body": "Every zinc oxide diaper cream in Lead Safe Mama's 2025 to 2026 series tested positive for lead, most for cadmium too: Triple Paste 40 percent zinc over 4,000 ppb, Desitin Maximum Strength around 3,300, Burt's Bees Baby over 2,500, Aquaphor Healing Paste around 1,400. That is not contamination anyone chose. Zinc is refined from mined ore that carries lead and cadmium, and pharmaceutical grade zinc oxide may legally contain up to roughly 10,000 ppb. The only product in the series that tested completely clean was a zinc free balm. So: a zinc free barrier balm for everyday prevention, and zinc kept for an active flare, where it genuinely works. Separately, the container follows the formula. An oil or wax based balm pulls plasticisers out of a plastic jar, because nearly everything that migrates out of a polymer is fat soluble. A water based cream does not, so water in plastic is a reasonable trade and oil in plastic is not.",
+    "look": [
+     "A zinc free balm for daily use, in glass or metal if it is oil or wax based",
+     "For a flare, the zinc cream with the lowest independently tested lead, used for the days it is needed"
+    ],
+    "skip": [
+     "Talc, which Desitin's own drug label lists among the inactives",
+     "An oil or balm formula sold in a plastic jar, where the fat and the polymer are in contact for months"
+    ]
+   },
+   "article": {
+    "slug": "best-non-toxic-diaper-rash-creams.html",
+    "title": "Best Non Toxic Diaper Rash Creams and Baby Balms: The Lead Problem and What Tested Clean (2026)"
+   },
+   "faqs": [
+    {
+     "q": "Do diaper rash creams contain lead?",
+     "a": "Every zinc oxide diaper cream tested in Lead Safe Mama's 2025 to 2026 series came back positive for lead, and most also for cadmium. Reported results include Triple Paste 40 percent zinc at over 4,000 parts per billion, the highest the project has found in the category, Desitin Maximum Strength at about 3,300 ppb, Burt's Bees Baby at over 2,500 ppb, Honest Sensitive at over 1,600 ppb, and Aquaphor Healing Paste Baby at roughly 1,400 ppb. The lead comes with the zinc: zinc ore naturally carries lead and cadmium, and pharmaceutical grade zinc oxide is allowed to contain up to roughly 10,000 ppb lead. The only diaper product in the series that tested completely clean was a zinc free balm, La Petite Creme."
+    },
+    {
+     "q": "Is zinc oxide safe for babies?",
+     "a": "Zinc oxide itself is what pediatricians recommend for diaper rash, it is FDA recognized as safe and effective as a skin protectant, and it works. The problem is not the zinc, it is what rides along with it. Zinc oxide is refined from mined ore that naturally contains lead and cadmium, pharmaceutical grade zinc oxide may legally carry up to roughly 10,000 ppb lead, and independent testing has found lead in every zinc diaper cream tested. Our approach: use a zinc free barrier balm for everyday prevention, reserve zinc cream for active rash flares where it genuinely helps, and choose the zinc cream with the lowest tested lead."
+    },
+    {
+     "q": "Is Desitin safe for babies?",
+     "a": "Desitin Maximum Strength is effective at its job, 40 percent zinc oxide is a genuinely strong barrier, but its current label lists talc and undisclosed fragrance among the inactive ingredients, and independent testing measured about 3,300 parts per billion lead in it. Talc is the ingredient at the center of the Johnson and Johnson baby powder litigation, and fragrance on broken diaper area skin is an unnecessary allergen risk. Similar zinc concentrations exist in formulas without talc or fragrance, so there is no reason to accept those tradeoffs."
     }
    ]
   },
@@ -212,6 +402,24 @@ export const KIDS = {
      "url": "https://www.amazon.com/dp/B00HD0ELFK?tag=plasticdetox-20",
      "note": "Best mechanical white noise"
     }
+   ],
+   "article": {
+    "slug": "non-toxic-nursery-setup.html",
+    "title": "Non Toxic Nursery Setup: What Actually Matters, In Order (2026)"
+   },
+   "faqs": [
+    {
+     "q": "What is the most important thing to get right in a nursery?",
+     "a": "The crib mattress, by a wide margin. A newborn sleeps 14 to 17 hours a day with their face inches from its surface, which is more contact time than any other object in the house. It is also the item most likely to contain polyurethane foam, added flame retardants, or a fiberglass flame barrier. After the mattress, the order that matters is air quality, then the floor the baby crawls on, then the crib frame, then bedding."
+    },
+    {
+     "q": "Is GREENGUARD Gold worth looking for on nursery furniture?",
+     "a": "Yes, it is the most useful single label in the category. GREENGUARD Gold was designed for spaces holding vulnerable occupants such as children, it caps formaldehyde at roughly half the level basic GREENGUARD allows, and it screens for more than 360 individual volatile organic compounds. That is meaningfully stricter than CARB Phase 2, which is a legal emissions limit on composite wood rather than a low emissions guarantee. CARB Phase 2 compliant does not mean formaldehyde free."
+    },
+    {
+     "q": "How long should a nursery air out before the baby arrives?",
+     "a": "Give new furniture, mattresses and paint as long as you can, ideally several weeks with the windows open and the door shut to the rest of the house. Off gassing is heaviest in the first weeks after manufacture and drops sharply after that, so a nursery assembled two months before the due date is meaningfully cleaner than one assembled the week of. If the timing is tight, prioritize airing out the mattress, since it sits closest to the baby's face for the longest."
+    }
    ]
   },
   {
@@ -232,6 +440,24 @@ export const KIDS = {
      "name": "Lorena Canals ABC Washable Rug",
      "url": "https://www.amazon.com/dp/B01MRI290Z?tag=plasticdetox-20",
      "note": "Best washable play rug"
+    }
+   ],
+   "article": {
+    "slug": "best-non-toxic-play-mats.html",
+    "title": "Best Non Toxic Play Mats: The Foam Problem and the Natural Mats That Pass (2026)"
+   },
+   "faqs": [
+    {
+     "q": "Are EVA foam play mats safe?",
+     "a": "EVA foam puzzle mats carry a documented formamide problem. Formamide, classified in the EU as toxic to reproduction, is a residue of foam manufacturing most often linked to the blowing agents, and it offgasses into the low layer of air where a baby breathes. France suspended foam puzzle mats over it in 2010, and the EU now requires any foam toy material over 200 mg/kg of formamide to pass a strict emission test. The concern is not historical: in 2022 the Hong Kong Consumer Council tested 20 foam play mats and detected formamide in 15 of them, with 6 exceeding the EU limit, the worst at 2,000 mg/kg. The United States has no formamide limit at all, so a US shelf mat has never been screened for it unless the brand chose to test."
+    },
+    {
+     "q": "What is the safest play mat material?",
+     "a": "Natural fibers with nothing added: wool, organic cotton, and natural latex. A merino sheepskin with an OEKO-TEX Leather Standard baby class certificate, a GOTS certified organic cotton quilted mat, a washable cotton rug, or a mat with a natural latex core and an organic cotton cover all keep synthetic foam out of the layer your baby touches. If a household needs foam anyway, a 2025 peer reviewed screening of 34 play mats ranked the foam families by volatile substances: expanded polyethylene cleanest, then cross linked polyethylene, then PVC, with EVA last."
+    },
+    {
+     "q": "Are PVC baby play mats safe?",
+     "a": "PVC is the one plastic that cannot be soft without additives, so a padded vinyl mat is by definition a plasticized product. US law caps eight phthalates at 0.1 percent in children's toys, and the big Korean style one piece mats advertise phthalate free formulations tested to European toy standards. But phthalate free PVC still requires substitute plasticizers and stabilizers that do not appear on any label, and a play mat is a surface babies press their faces against and mouth for hours. On a site about reducing plastic exposure, a soft vinyl floor for an infant is an easy no."
     }
    ]
   },
@@ -254,6 +480,24 @@ export const KIDS = {
      "url": "https://www.amazon.com/dp/B0FL7K9WMX?tag=plasticdetox-20",
      "note": "Best all in one with stainless steel pathway"
     }
+   ],
+   "article": {
+    "slug": "best-plastic-free-food-storage-containers.html",
+    "title": "Best Glass Food Storage Containers With Glass Lids (2026): Plastic Free, Plus Stainless and Silicone"
+   },
+   "faqs": [
+    {
+     "q": "Can I put glass containers in the freezer?",
+     "a": "Yes, but follow three rules: leave at least one inch of headspace for liquid expansion, let hot food cool to room temperature before freezing, and avoid moving glass directly from the freezer to a hot oven (let it temper first). Borosilicate glass handles freezing better than soda lime glass, but both work if you follow these precautions."
+    },
+    {
+     "q": "Is it safe to microwave glass food containers?",
+     "a": "Yes. Both borosilicate and tempered soda lime glass are microwave safe. Always remove metal lids before microwaving. Let glass temper briefly if moving from the fridge to the microwave. The glass will not leach anything into your food at any microwave temperature."
+    },
+    {
+     "q": "Is silicone food storage really plastic free?",
+     "a": "Silicone is a synthetic polymer made from silica (sand), not petroleum. It does not contain BPA, BPS, phthalates, or other endocrine disruptors found in plastic. Food grade platinum cured silicone does not shed microplastics. While it is technically a synthetic material, its chemical behavior is fundamentally different from plastic and it is considered safe for food contact by the FDA and European food safety agencies."
+    }
    ]
   },
   {
@@ -264,9 +508,10 @@ export const KIDS = {
    "free": "An old cotton towel tucked into the collar.",
    "picks": [
     {
-     "label": "Guide",
-     "name": "Read the full guide",
-     "url": "https://plasticdetox.org/articles/non-toxic-baby-toddler-products-guide.html"
+     "label": "$",
+     "name": "Mushie Silicone Bibs",
+     "url": "https://www.amazon.com/dp/B0BBPXMN7V?tag=plasticdetox-20",
+     "note": "Best design options"
     }
    ]
   },
@@ -278,9 +523,16 @@ export const KIDS = {
    "free": "Throw out the squeeze toys. Cups and a ladle are better bath toys anyway.",
    "picks": [
     {
-     "label": "Guide",
-     "name": "Read the full guide",
-     "url": "https://plasticdetox.org/articles/non-toxic-baby-toddler-products-guide.html"
+     "label": "$",
+     "name": "Little Unicorn Cotton Muslin",
+     "url": "https://www.amazon.com/dp/B0CBQG57KY?tag=plasticdetox-20",
+     "note": "Best washcloths"
+    },
+    {
+     "label": "$$",
+     "name": "Natemia Organic Cotton Hooded Towels",
+     "url": "https://www.amazon.com/dp/B084R9D4S6?tag=plasticdetox-20",
+     "note": "Best premium towel"
     }
    ]
   },
@@ -313,9 +565,34 @@ export const KIDS = {
    "free": "Stop buying new plastic toys. Attrition handles the rest without a single purchase.",
    "picks": [
     {
-     "label": "Guide",
-     "name": "Read the full guide",
-     "url": "https://plasticdetox.org/articles/non-toxic-baby-toddler-products-guide.html"
+     "label": "$$",
+     "name": "PlanToys",
+     "url": "https://www.amazon.com/dp/B01D8Y8SMQ?tag=plasticdetox-20",
+     "note": "Best sustainable wooden toys"
+    },
+    {
+     "label": "$$",
+     "name": "Grimm's Rainbow Stacker",
+     "url": "https://www.amazon.com/dp/B07DLNFK1M?tag=plasticdetox-20",
+     "note": "Best European quality"
+    }
+   ],
+   "article": {
+    "slug": "non-toxic-baby-toddler-products-guide.html",
+    "title": "The Complete Parent's Guide to Replacing Toxic Baby and Toddler Products (2026)"
+   },
+   "faqs": [
+    {
+     "q": "How do I know if a wooden toy is safe?",
+     "a": "Look for FSC certified wood (sustainably sourced) with natural finishes like beeswax, plant oils, or water based lacquers. Avoid painted wooden toys unless the paint is explicitly certified non toxic and lead free (EN 71 European toy safety standard is the most rigorous). Solid wood is always safer than MDF or particle board, which contain formaldehyde based adhesives."
+    },
+    {
+     "q": "Are silicone baby products safe?",
+     "a": "Food grade silicone (especially platinum cured) is significantly safer than plastic. It does not release traditional microplastics and does not contain BPA, phthalates, or other endocrine disruptors. Some studies suggest silicone can release siloxanes when heated to high temperatures. For items contacting hot food or liquids, glass and stainless steel remain the gold standard. For room temperature use like plates, bibs, and teethers, food grade silicone is a good choice."
+    },
+    {
+     "q": "Is it safe to buy secondhand baby products?",
+     "a": "It depends on the product. Secondhand clothing, strollers manufactured after 2015, and high chairs are generally safe. Never buy secondhand crib mattresses (accumulated allergens, mold, degraded chemicals), car seats (unknown crash history, expired materials), or breast pumps (hygiene and motor degradation concerns)."
     }
    ]
   },
@@ -328,9 +605,52 @@ export const KIDS = {
    "picks": [
     {
      "label": "$",
+     "name": "Little Unicorn GOTS Swaddles",
+     "url": "https://www.amazon.com/dp/B0CBQG57KY?tag=plasticdetox-20",
+     "note": "Best organic swaddle"
+    },
+    {
+     "label": "$",
      "name": "aden + anais Cotton Muslin Swaddle",
      "url": "https://www.amazon.com/dp/B0DVCGX73C?tag=plasticdetox-20",
      "note": "Best breathable swaddle"
+    },
+    {
+     "label": "$$",
+     "name": "Colored Organics",
+     "url": "https://www.amazon.com/dp/B0G2MSDHKN?tag=plasticdetox-20",
+     "note": "Best organic basics"
+    }
+   ],
+   "tip": {
+    "title": "Organic cotton is about the finishing, not the fibre",
+    "body": "Cotton and organic cotton shed the same nothing: neither is plastic, so for microplastics any cotton beats any polyester. What organic changes is everything done to the cloth after the field. Conventional cotton is grown with pesticides and then finished with formaldehyde resins, chlorine bleaching and heavy metal dyes, and on a small child that finish is against skin for most of the day, frequently in the mouth. GOTS is the certification that covers the whole chain and bans those finishes. OEKO-TEX is a reasonable second: it tests the finished fabric, which catches the residue, but says nothing about how the cotton was grown.",
+    "look": [
+     "GOTS on the label, which covers field to finished garment",
+     "Plain undyed or lightly dyed fabric, where there is simply less finish to react to"
+    ],
+    "skip": [
+     "\"Made with organic cotton\", which is a marketing phrase and not a certification",
+     "\"Wrinkle resistant\", \"easy care\" or \"stain release\", which usually means a formaldehyde based resin",
+     "Flame resistant sleepwear in polyester, where the fibre and the treatment are both the problem"
+    ]
+   },
+   "article": {
+    "slug": "microplastics-in-clothing-and-laundry.html",
+    "title": "Microplastics in Clothing and Laundry: How to Reduce Fiber Shedding (2026)"
+   },
+   "faqs": [
+    {
+     "q": "What are the best natural fabric alternatives to synthetic clothing?",
+     "a": "Organic cotton, linen (made from flax), hemp, wool, and Tencel (lyocell, made from sustainably harvested wood pulp) are the best alternatives. These natural and semi synthetic fibers biodegrade and do not release persistent microplastic particles. They also tend to be more breathable and comfortable than polyester."
+    },
+    {
+     "q": "How can I tell if my clothes are made from synthetic fabric?",
+     "a": "Check the care label inside your garment. Look for materials listed as polyester, nylon, acrylic, spandex, elastane, lycra, or polypropylene. If the label says any percentage of these materials, the garment will shed microplastic fibers when washed. About 60% of all clothing produced globally contains synthetic fibers."
+    },
+    {
+     "q": "How many microplastic fibers does a single load of laundry release?",
+     "a": "A single load of synthetic clothing can shed between 700,000 and 12 million microplastic fibers per wash, depending on the fabric type, wash temperature, and cycle length. Research from Plymouth University found that acrylic fabrics shed the most, followed by polyester and polyester cotton blends."
     }
    ]
   },
@@ -342,9 +662,10 @@ export const KIDS = {
    "free": "Put a plate on the tray instead of food directly on it.",
    "picks": [
     {
-     "label": "Guide",
-     "name": "Read the full guide",
-     "url": "https://plasticdetox.org/articles/non-toxic-baby-toddler-products-guide.html"
+     "label": "$$$",
+     "name": "Stokke Tripp Trapp",
+     "url": "https://www.amazon.com/dp/B0D5KC6Q4R?tag=plasticdetox-20",
+     "note": "Gold standard, grows to adulthood"
     }
    ]
   },
@@ -384,9 +705,16 @@ export const KIDS = {
    "free": "A woven cotton wrap is the cheapest carrier and the most natural.",
    "picks": [
     {
-     "label": "Guide",
-     "name": "Read the full guide",
-     "url": "https://plasticdetox.org/articles/non-toxic-baby-toddler-products-guide.html"
+     "label": "$$",
+     "name": "Solly Baby Wrap",
+     "url": "https://www.amazon.com/dp/B0DBN1CQ76?tag=plasticdetox-20",
+     "note": "Best organic wrap"
+    },
+    {
+     "label": "$$",
+     "name": "Ergobaby Embrace",
+     "url": "https://www.amazon.com/dp/B08Z1L1M18?tag=plasticdetox-20",
+     "note": "Best structured organic carrier"
     }
    ]
   },
@@ -402,6 +730,20 @@ export const KIDS = {
      "name": "Clek Foonf Convertible Car Seat",
      "url": "https://www.amazon.com/dp/B0CZPCGF51?tag=plasticdetox-20",
      "note": "Best flame retardant free car seat"
+    }
+   ],
+   "article": {
+    "slug": "non-toxic-baby-toddler-products-guide.html",
+    "title": "The Complete Parent's Guide to Replacing Toxic Baby and Toddler Products (2026)"
+   },
+   "faqs": [
+    {
+     "q": "What is the safest car seat for babies?",
+     "a": "Nuna is the only car seat brand that is entirely flame retardant free across its full lineup, with GREENGUARD Gold certification and no PFAS. Clek uses wool batting instead of synthetic foam in their Mammoth line. All car seats must meet the same federal crash safety standards regardless of brand, so choosing a cleaner option does not mean compromising on crash protection."
+    },
+    {
+     "q": "What certifications should I look for on baby products?",
+     "a": "The most meaningful certifications are GREENGUARD Gold (low chemical emissions, especially for furniture and mattresses), GOTS (organic textiles from field to finished product), OEKO-TEX Standard 100 (tested for harmful substances in fabrics), MADE SAFE (screened for known toxic chemicals), and EWG Verified (strict health criteria for personal care). Multiple certifications on a single product is the strongest signal of safety."
     }
    ]
   },
