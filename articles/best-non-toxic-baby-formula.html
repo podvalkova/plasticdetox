@@ -145,6 +145,15 @@
     .data-table td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
     .table-scroll { overflow-x: auto; }
     .table-scroll table { min-width: 520px; }
+    /* Scannable visual helpers */
+    .stat-band { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+    .stat-box { background: var(--surface); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.25rem 1rem; text-align: center; }
+    .stat-num { font-size: 2rem; font-weight: 800; color: #dc2626; line-height: 1.1; }
+    .stat-num.good { color: #7c3aed; }
+    .stat-label { font-size: 0.82rem; color: var(--text-muted); margin-top: 0.35rem; line-height: 1.35; }
+    .keytake { display: flex; gap: 0.75rem; align-items: flex-start; background: #f5f3ff; border-left: 4px solid #7c3aed; border-radius: 8px; padding: 1rem 1.15rem; margin: 1.25rem 0; }
+    .keytake .kt-emoji { font-size: 1.4rem; line-height: 1.2; }
+    .keytake p { margin: 0; font-size: 0.95rem; line-height: 1.55; }
     .check-pass { color: #15803d; font-weight: 700; }
     .check-flag { color: #b45309; font-weight: 700; }
     .check-fail { color: #b91c1c; font-weight: 700; }
@@ -211,6 +220,13 @@
 
     <p>Most categories we cover are barely regulated. Formula is the opposite: it is one of the most tightly controlled foods in the American supply, with mandatory nutrient minimums, facility registration, and premarket notification to the FDA. In April 2026 the agency published the results of its largest formula testing program ever, over 300 samples collected from 2023 to 2025 and more than 120,000 data points: <a href="https://www.fda.gov/news-events/press-announcements/fda-releases-results-largest-ever-testing-infant-formula-us" target="_blank" rel="noopener">lead, arsenic, cadmium and mercury all came in below EPA drinking water limits</a>, 99 percent of samples had no detectable pesticides, and 25 of 30 <a href="what-are-pfas.html">PFAS</a> compounds tested were never detected at all.</p>
 
+    <div class="stat-band">
+      <div class="stat-box"><div class="stat-num good">90</div><div class="stat-label">formulas tested by Consumer Reports across two rounds</div></div>
+      <div class="stat-box"><div class="stat-num">19.7 ppb</div><div class="stat-label">worst inorganic arsenic reading, against 10 ppb allowed in drinking water</div></div>
+      <div class="stat-box"><div class="stat-num">16.2M</div><div class="stat-label">microplastic particles per liter from a polypropylene bottle during prep</div></div>
+      <div class="stat-box"><div class="stat-num good">1</div><div class="stat-label">brand family cleared all four of our checks</div></div>
+    </div>
+
     <p>We lead with that because formula anxiety has real casualties. Parents scared off the regulated shelf have diluted formula, mixed homemade recipes from internet instructions, and bought unregistered imports, and each of those moves has hurt babies in documented cases. So the ground rules for everything that follows: <strong>every FDA registered formula is nutritionally complete, and feeding one, even the cheapest store brand, is always safer than diluting formula or making it at home. Never do either, and talk to your pediatrician before switching a formula that is working.</strong> Decisions about preterm and medically fragile infants belong to your medical team, full stop.</p>
 
     <p>And still, registration is a floor, not a guarantee: the recall timeline later in this article happened entirely inside the regulated system, and independent testing keeps finding real differences between brands that all meet the same federal requirements. The FDA's surveillance answers the question is the supply broadly safe. It does not answer the question we get constantly from readers building a registry: <em>if I am choosing anyway, which formula has the cleanest record?</em> That question has a real answer, because two large independent testing rounds, a botulism outbreak, a toxin recall, and the largest settlement in formula litigation history all landed in the last eighteen months, and they did not land evenly.</p>
@@ -219,18 +235,57 @@
 
     <p>Every verdict on this site, from the <a href="../brand-check.html">Product Check</a> tool to the <a href="top-100-baby-kids-products-amazon.html">Top 100</a>, comes from the same four checks. Formula is unusual in that all four carry real weight in one category:</p>
 
-    <ol>
-      <li><strong>The ingredient list.</strong> What the recipe is: the carbohydrate source, the fat blend, how the DHA is extracted, whether the recipe leans on ingredients a baby does not need.</li>
-      <li><strong>The packaging.</strong> What the food touches before it reaches your baby: the can lining, the container material, and what independent labs find migrating from both.</li>
-      <li><strong>Independent tests.</strong> Not the brand's own lab reports. Watchdog results from Consumer Reports and Clean Label Project, plus the FDA's own surveillance, on the actual powder in the actual can.</li>
-      <li><strong>Recalls and lawsuits.</strong> The track record: what has been pulled from shelves, what regulators wrote warning letters about, and what courts are being asked to decide.</li>
-    </ol>
+    <div class="infographic">
+      <div class="infographic-title">The Four Point Formula Check</div>
+      <svg viewBox="0 0 520 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Four checks for a non toxic formula. One, the ingredient list: lactose as the carbohydrate rather than corn or glucose syrup, no palm oil, DHA without hexane. Two, the packaging: a steel can rather than a composite box, with no BPA detected in testing. Three, independent tests: watchdog results from Consumer Reports and Clean Label Project, not the brand's own lab reports. Four, recalls and lawsuits: the track record, and the check most brands fail.">
+        <rect x="0" y="0" width="520" height="260" fill="#fafaf9" rx="8"/>
+        <circle cx="46" cy="46" r="18" fill="#ede9fe"/>
+        <text x="46" y="53" text-anchor="middle" font-family="Inter,sans-serif" font-size="17" font-weight="800" fill="#7c3aed">1</text>
+        <text x="78" y="42" font-family="Inter,sans-serif" font-size="12" fill="#1c1917" font-weight="700">Ingredient list: lactose, not syrups</text>
+        <text x="78" y="60" font-family="Inter,sans-serif" font-size="10" fill="#78716c">The carbohydrate source, the fat blend, how the DHA is extracted. No corn syrup, no palm oil.</text>
+        <circle cx="46" cy="110" r="18" fill="#ede9fe"/>
+        <text x="46" y="117" text-anchor="middle" font-family="Inter,sans-serif" font-size="17" font-weight="800" fill="#7c3aed">2</text>
+        <text x="78" y="106" font-family="Inter,sans-serif" font-size="12" fill="#1c1917" font-weight="700">Packaging: a steel can, BPA non detect</text>
+        <text x="78" y="124" font-family="Inter,sans-serif" font-size="10" fill="#78716c">What the food touches for its whole shelf life. Cans shed the least; composite boxes the most.</text>
+        <circle cx="46" cy="174" r="18" fill="#ede9fe"/>
+        <text x="46" y="181" text-anchor="middle" font-family="Inter,sans-serif" font-size="17" font-weight="800" fill="#7c3aed">3</text>
+        <text x="78" y="170" font-family="Inter,sans-serif" font-size="12" fill="#1c1917" font-weight="700">Independent tests: watchdogs, not brand reports</text>
+        <text x="78" y="188" font-family="Inter,sans-serif" font-size="10" fill="#78716c">Consumer Reports and Clean Label Project results on the actual powder in the actual can.</text>
+        <circle cx="46" cy="238" r="18" fill="#ede9fe"/>
+        <text x="46" y="245" text-anchor="middle" font-family="Inter,sans-serif" font-size="17" font-weight="800" fill="#7c3aed">4</text>
+        <text x="78" y="234" font-family="Inter,sans-serif" font-size="12" fill="#1c1917" font-weight="700">Recalls and lawsuits: the track record</text>
+        <text x="78" y="252" font-family="Inter,sans-serif" font-size="10" fill="#78716c">What was pulled from shelves and what courts are deciding. The check most brands fail.</text>
+      </svg>
+    </div>
 
     <p>A featured pick has to clear all four. In most categories that bar eliminates a few brands. In formula it eliminated almost everyone.</p>
 
     <h2 id="ingredients">Check 1: The Ingredient List</h2>
 
     <p>The carbohydrate in breast milk is lactose. It is also the most expensive carbohydrate a formula maker can buy, which is why many US formulas, especially sensitive, soy and budget varieties, replace some or all of it with corn syrup solids, glucose syrup solids or maltodextrin. European regulators require formula to be mostly lactose; the US sets no such rule. This is the single clearest label test you can run in the store aisle: <strong>read the first three ingredients and look for lactose, not a syrup</strong>.</p>
+
+    <div class="infographic">
+      <div class="infographic-title">The 5 Second Label Check</div>
+      <svg viewBox="0 0 520 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Formula label check guide. Green flag: lactose leads the ingredient list, the carbohydrate breast milk uses. Red flag: corn syrup solids, glucose syrup solids or maltodextrin high on the list. Red flag: palm oil or palm olein in the fat blend. Red flag: a soy or rice protein base chosen without a medical reason, because every plant based formula Consumer Reports tested was flagged for inorganic arsenic.">
+        <rect x="0" y="0" width="520" height="320" fill="#fafaf9" rx="8"/>
+        <rect x="20" y="22" width="480" height="60" fill="#ffffff" rx="8" stroke="#86efac" stroke-width="1.5"/>
+        <text x="36" y="46" font-family="Inter,sans-serif" font-size="18" fill="#16a34a" font-weight="700">&#x2714;</text>
+        <text x="62" y="46" font-family="Inter,sans-serif" font-size="13" fill="#1c1917" font-weight="700">GREEN FLAG: lactose leads the ingredient list</text>
+        <text x="62" y="66" font-family="Inter,sans-serif" font-size="10" fill="#78716c">The carbohydrate breast milk uses, and the most expensive one a formula maker can buy.</text>
+        <rect x="20" y="92" width="480" height="60" fill="#ffffff" rx="8" stroke="#fca5a5" stroke-width="1.5"/>
+        <text x="36" y="116" font-family="Inter,sans-serif" font-size="18" fill="#dc2626" font-weight="700">&#x2718;</text>
+        <text x="62" y="116" font-family="Inter,sans-serif" font-size="13" fill="#1c1917" font-weight="700">RED FLAG: corn syrup solids, glucose syrup, maltodextrin</text>
+        <text x="62" y="136" font-family="Inter,sans-serif" font-size="10" fill="#78716c">Cheap lactose substitutes. EU rules require mostly lactose; US rules do not.</text>
+        <rect x="20" y="162" width="480" height="60" fill="#ffffff" rx="8" stroke="#fca5a5" stroke-width="1.5"/>
+        <text x="36" y="186" font-family="Inter,sans-serif" font-size="18" fill="#dc2626" font-weight="700">&#x2718;</text>
+        <text x="62" y="186" font-family="Inter,sans-serif" font-size="13" fill="#1c1917" font-weight="700">RED FLAG: palm oil or palm olein in the fat blend</text>
+        <text x="62" y="206" font-family="Inter,sans-serif" font-size="10" fill="#78716c">Repeatedly linked to lower calcium and fat absorption. European style recipes leave it out.</text>
+        <rect x="20" y="232" width="480" height="60" fill="#ffffff" rx="8" stroke="#fca5a5" stroke-width="1.5"/>
+        <text x="36" y="256" font-family="Inter,sans-serif" font-size="18" fill="#dc2626" font-weight="700">&#x2718;</text>
+        <text x="62" y="256" font-family="Inter,sans-serif" font-size="13" fill="#1c1917" font-weight="700">RED FLAG: soy or rice base without a medical reason</text>
+        <text x="62" y="276" font-family="Inter,sans-serif" font-size="10" fill="#78716c">Every plant based formula CR tested was flagged for inorganic arsenic. Pediatrician only.</text>
+      </svg>
+    </div>
 
     <p>The fat blend is the second read. Palm oil or palm olein appears in many US formulas because it mimics one of breast milk's fatty acids, but clinical studies have repeatedly associated it with lower calcium and fat absorption and firmer stools, and several European style recipes simply leave it out. Then there is the DHA: the EU requires DHA in formula at 20 mg per 100 kcal or more, the US does not require it at all, and most brands that do add it extract it from algae with hexane, a petroleum solvent. Hexane free DHA exists; almost nobody uses it.</p>
 
@@ -322,6 +377,11 @@
           <tr><td>Soy and plant based (category)</td><td class="check-flag">Arsenic concentrating ingredients</td><td class="check-pass">Pass</td><td class="check-fail">Every one tested was flagged</td><td class="check-pass">Varies</td></tr>
         </tbody>
       </table>
+    </div>
+
+    <div class="keytake">
+      <span class="kt-emoji">&#x1F50D;</span>
+      <p>Formula brands land in our <a href="../brand-check.html">Product Check</a> tool constantly, and every brand in this table now has a current entry. Type any brand in there for our verdict, and the reasoning, in ten seconds.</p>
     </div>
 
     <h2 id="pick">Why Bobbie Is the Recommendation</h2>
@@ -417,6 +477,24 @@
     <h2 id="prep">The Prep Setup Sheds More Plastic Than the Powder</h2>
 
     <p>Here is the part of formula feeding this site exists to cover, and it is not the brand on the can. In 2020, researchers at Trinity College Dublin prepared formula in polypropylene baby bottles following standard WHO guidance and measured what came off the plastic: <a href="https://www.nature.com/articles/s43016-020-00171-y" target="_blank" rel="noopener">up to 16.2 million microplastic particles per liter</a>. Heat drove the release: raising water temperature from 25 to 95 degrees Celsius pushed shedding from 0.6 million to 55 million particles per liter, and sterilizing the bottle made it worse. Their global estimate put the average bottle fed infant at about 1.6 million ingested particles a day, and over 4 million in the highest regions.</p>
+
+    <div class="infographic">
+      <div class="infographic-title">Where Formula Microplastics Actually Come From</div>
+      <svg viewBox="0 0 520 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Comparison of microplastic sources in formula feeding, drawn on a log scale. The powder itself from a steel can: about 49 particles a day. Feeding from a polypropylene bottle: about 1.6 million particles a day on the global average. Hot preparation water in that bottle: up to 55 million particles per liter. On a linear scale the powder bar would be invisible.">
+        <rect x="0" y="0" width="520" height="240" fill="#fafaf9" rx="8"/>
+        <text x="40" y="42" font-family="Inter,sans-serif" font-size="12" fill="#1c1917" font-weight="700">The powder itself, from a steel can</text>
+        <rect x="40" y="50" width="96" height="18" fill="#16a34a" rx="4"/>
+        <text x="144" y="64" font-family="Inter,sans-serif" font-size="11" fill="#1c1917" font-weight="700">&#8776;49 particles a day</text>
+        <text x="40" y="102" font-family="Inter,sans-serif" font-size="12" fill="#1c1917" font-weight="700">Feeding from a polypropylene bottle</text>
+        <rect x="40" y="110" width="352" height="18" fill="#d97706" rx="4"/>
+        <text x="384" y="124" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#ffffff" font-weight="700">&#8776;1.6 million a day</text>
+        <text x="40" y="162" font-family="Inter,sans-serif" font-size="12" fill="#1c1917" font-weight="700">Hot prep water in that bottle, per liter</text>
+        <rect x="40" y="170" width="440" height="18" fill="#dc2626" rx="4"/>
+        <text x="472" y="184" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#ffffff" font-weight="700">up to 55 million</text>
+        <text x="40" y="218" font-family="Inter,sans-serif" font-size="10" fill="#78716c">Bar lengths are on a log scale: each equal step is 10 times more. On a linear scale,</text>
+        <text x="40" y="232" font-family="Inter,sans-serif" font-size="10" fill="#78716c">the powder bar would be invisible. The bottle, not the powder, is the plastic story.</text>
+      </svg>
+    </div>
 
     <p>Compare the numbers: roughly 49 particles a day from the powder, potentially millions from the bottle. Choosing the cleanest powder and preparing it in polypropylene is optimizing the wrong variable. The fix costs two swaps and no safety compromise:</p>
 
