@@ -9257,7 +9257,8 @@
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
             "materials": "We have not established what the product actually touches.",
-            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
+            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
+            "formula": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear."
           },
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
@@ -11125,7 +11126,8 @@
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
             "materials": "We have not established what the product actually touches.",
-            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
+            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
+            "formula": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear."
           },
           "heldFrom": "good",
           "restoreWhy": "direct evidence at sku scope on formula, materials",
@@ -16039,13 +16041,13 @@
           "dated": "2026-09-08",
           "why": "a recommendation needs its checks done; still to do: legal",
           "fronts": {
-            "formula": "pass",
+            "formula": "none",
             "materials": "pass",
             "legal": "unassessed",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "formula": "inferred",
+            "formula": "database",
             "materials": "inferred"
           },
           "scope": "sku",
@@ -17567,7 +17569,8 @@
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
             "materials": "We have not established what the product actually touches.",
-            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
+            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
+            "formula": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear."
           },
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
@@ -17862,7 +17865,7 @@
           "dated": "2026-08-29",
           "why": "a vetted store pick, chosen by a person at product scope",
           "fronts": {
-            "formula": "pass",
+            "formula": "none",
             "materials": "pass",
             "legal": "none",
             "testing": "unassessed"
@@ -17870,7 +17873,7 @@
           "frontOrigin": {
             "legal": "database",
             "materials": "database",
-            "formula": "inferred"
+            "formula": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -18674,7 +18677,8 @@
           "legalNote": "Checked recall records on 2026-08-31. The February 2023 recall of 2 million Cosori air fryers (overheating connectors) was remedied by replacement and did not cover the kettles we feature; over 24 months, now informational.",
           "frontNotes": {
             "materials": "Nothing the product touches is plastic.",
-            "legal": "Checked recall records on 2026-08-31. The February 2023 recall of 2 million Cosori air fryers (overheating connectors) was remedied by replacement and did not cover the kettles we feature; over 24 months, now informational."
+            "legal": "Checked recall records on 2026-08-31. The February 2023 recall of 2 million Cosori air fryers (overheating connectors) was remedied by replacement and did not cover the kettles we feature; over 24 months, now informational.",
+            "formula": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear."
           },
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
@@ -18729,7 +18733,7 @@
           "dated": "2026-08-29",
           "why": "a vetted store pick, chosen by a person at product scope",
           "fronts": {
-            "formula": "pass",
+            "formula": "none",
             "materials": "pass",
             "legal": "pass",
             "testing": "unassessed"
@@ -18737,7 +18741,7 @@
           "frontOrigin": {
             "legal": "database",
             "materials": "database",
-            "formula": "inferred"
+            "formula": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -23358,18 +23362,25 @@
           ]
         ],
         "ext": {
+          "frontNotes": {
+            "formula": "The published ingredient list carries nothing on the hazard list.",
+            "testing": "Consumer Reports 2025 placed Dr. Brown's SoothePro in the worse choices tier for contaminant levels."
+          },
+          "testingNote": "Consumer Reports 2025 placed Dr. Brown's SoothePro in the worse choices tier for contaminant levels.",
+          "testingDate": "2026-09-09",
           "verdict": "skip",
           "dated": "2026-09-09",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "pass",
             "materials": "unassessed",
             "legal": "fail",
-            "testing": "caution"
+            "testing": "fail"
           },
           "frontOrigin": {
             "legal": "inferred",
-            "testing": "inferred"
+            "testing": "database",
+            "formula": "database"
           },
           "scope": "line",
           "basis": "direct",
@@ -24527,13 +24538,13 @@
           "dated": "2026-09-08",
           "why": "a recommendation needs its checks done; still to do: legal",
           "fronts": {
-            "formula": "pass",
+            "formula": "none",
             "materials": "pass",
             "legal": "unassessed",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "formula": "inferred",
+            "formula": "database",
             "materials": "inferred"
           },
           "scope": "sku",
@@ -24572,13 +24583,13 @@
           "dated": "2026-09-08",
           "why": "a recommendation needs its checks done; still to do: legal",
           "fronts": {
-            "formula": "pass",
+            "formula": "none",
             "materials": "pass",
             "legal": "unassessed",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "formula": "inferred",
+            "formula": "database",
             "materials": "inferred"
           },
           "scope": "sku",
@@ -25550,7 +25561,7 @@
     "brand": "Earth's Best",
     "category": "Baby food / formula",
     "stance": "careful",
-    "reason": "Organic oatmeal and organic formula are better than conventional on pesticides, and the formula tested low concern in both Consumer Reports rounds (Organic Dairy 2025, Organic Sensitivity 2026). The formula still relies on glucose syrup solids rather than lactose, which keeps it off our picks list, and the oatmeal carries no glyphosate specific certification.",
+    "reason": "Organic oatmeal and organic formula are better than conventional on pesticides, and the formula tested low concern in both Consumer Reports rounds (Organic Dairy 2025, Organic Sensitivity 2026). Label correction (2026-09): the Dairy formula is organic lactose first, not glucose syrup solids, but blends palm or palm olein oil; the Sensitivity formula does lead with organic glucose syrup solids. The palm blend and the syrup led Sensitivity keep it off our picks list; the oatmeal carries no glyphosate specific certification.",
     "evidence": "organic; uses glucose syrup solids",
     "alternative": "",
     "sources": [
@@ -25631,28 +25642,31 @@
         "name": "Organic Infant Formula",
         "asins": [],
         "verdict": "careful",
-        "note": "Organic but uses glucose syrup solids. Better than conventional on pesticide residue.",
+        "note": "Tested low concern in both Consumer Reports rounds (Organic Dairy 2025, Organic Sensitivity 2026). Label read 2026-09: Dairy is organic lactose first with a palm or palm olein oil blend; Sensitivity leads with organic glucose syrup solids. Better than conventional on pesticide residue; not a pick because of the palm blend and the syrup led Sensitivity recipe.",
         "origin": "article",
         "source": "top-100-baby-kids-products-amazon.html",
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
-            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
+            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
+            "formula": "The published ingredient list carries nothing on the hazard list.",
+            "testing": "Consumer Reports low concern in both rounds: Organic Dairy (2025) and Organic Sensitivity (2026)."
           },
-          "cappedFrom": "careful",
-          "capRestoreWhy": "adverse finding stands",
-          "verdict": "skip",
+          "testingNote": "Consumer Reports low concern in both rounds: Organic Dairy (2025) and Organic Sensitivity (2026).",
+          "testingDate": "2026-09-09",
+          "verdict": "careful",
           "dated": "2026-09-09",
-          "why": "section 6 ceiling: testing is fail",
+          "why": "adverse finding stands",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "pass",
             "materials": "unassessed",
             "legal": "none",
-            "testing": "fail"
+            "testing": "pass"
           },
           "frontOrigin": {
             "legal": "database",
-            "testing": "inferred"
+            "testing": "database",
+            "formula": "database"
           },
           "scope": "line",
           "basis": "direct",
@@ -27733,22 +27747,27 @@
           "frontNotes": {
             "legal": "Same manufacturer's ProSobee recalled in 2023 for Cronobacter (Recorded for Enfamil as a whole rather than this product specifically.)",
             "materials": "We have not established what the product actually touches.",
-            "formula": "The listing we hold for this product serves a different item, Similac 360 Total Care Baby Formula Powder, Exclusive 5 Prebiotic Blend."
+            "formula": "The published ingredient list carries nothing on the hazard list.",
+            "testing": "Consumer Reports: Enfamil NeuroPro varieties tested low concern in the 2025 round."
           },
           "inheritedFronts": [
             "legal"
           ],
+          "testingNote": "Consumer Reports: Enfamil NeuroPro varieties tested low concern in the 2025 round.",
+          "testingDate": "2026-09-09",
           "verdict": "skip",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "pass",
             "materials": "unassessed",
             "legal": "fail",
-            "testing": "unassessed"
+            "testing": "pass"
           },
           "frontOrigin": {
-            "legal": "stated"
+            "legal": "stated",
+            "formula": "database",
+            "testing": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -27781,18 +27800,24 @@
           ]
         ],
         "ext": {
+          "frontNotes": {
+            "formula": "The published ingredient list carries nothing on the hazard list.",
+            "testing": "Consumer Reports 2025: the only formula of 41 with detectable BPA and acrylamide; Mead Johnson disputes the finding."
+          },
+          "testingNote": "Consumer Reports 2025: the only formula of 41 with detectable BPA and acrylamide; Mead Johnson disputes the finding.",
+          "testingDate": "2026-09-09",
           "verdict": "skip",
           "dated": "2026-09-09",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "fail",
+            "formula": "pass",
             "materials": "unassessed",
             "legal": "unassessed",
             "testing": "fail"
           },
           "frontOrigin": {
-            "formula": "inferred",
-            "testing": "inferred"
+            "formula": "database",
+            "testing": "database"
           },
           "scope": "line",
           "basis": "direct",
@@ -27818,18 +27843,25 @@
           ]
         ],
         "ext": {
+          "frontNotes": {
+            "formula": "The published ingredient list carries nothing on the hazard list.",
+            "testing": "Consumer Reports worse choices tier; part of the pattern in which every plant based formula tested was flagged for inorganic arsenic."
+          },
+          "testingNote": "Consumer Reports worse choices tier; part of the pattern in which every plant based formula tested was flagged for inorganic arsenic.",
+          "testingDate": "2026-09-09",
           "verdict": "skip",
           "dated": "2026-09-09",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "pass",
             "materials": "unassessed",
             "legal": "fail",
             "testing": "fail"
           },
           "frontOrigin": {
             "legal": "inferred",
-            "testing": "inferred"
+            "testing": "database",
+            "formula": "database"
           },
           "scope": "line",
           "basis": "direct",
@@ -29458,7 +29490,8 @@
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
           "frontNotes": {
             "materials": "A verified 304 stainless steel water path: stainless interior, spout and lid interior, so nothing plastic touches the water",
-            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
+            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
+            "formula": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear."
           },
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
@@ -29873,13 +29906,13 @@
           "dated": "2026-09-08",
           "why": "a recommendation needs its checks done; still to do: legal",
           "fronts": {
-            "formula": "pass",
+            "formula": "none",
             "materials": "pass",
             "legal": "unassessed",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "formula": "inferred",
+            "formula": "database",
             "materials": "inferred"
           },
           "scope": "sku",
@@ -30222,7 +30255,8 @@
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
           "frontNotes": {
             "materials": "We have not established what the product actually touches.",
-            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
+            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
+            "formula": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear."
           },
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
@@ -30269,7 +30303,8 @@
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
           "frontNotes": {
             "materials": "We have not established what the product actually touches.",
-            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
+            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
+            "formula": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear."
           },
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
@@ -32613,17 +32648,25 @@
           ]
         ],
         "ext": {
+          "frontNotes": {
+            "formula": "The published ingredient list carries nothing on the hazard list.",
+            "testing": "Checked both Consumer Reports rounds: the Gerber branded SoothePro was not itself tested; the identical Perrigo recipe sold as Dr. Brown's SoothePro landed in the worse choices tier."
+          },
+          "testingNote": "Checked both Consumer Reports rounds: the Gerber branded SoothePro was not itself tested; the identical Perrigo recipe sold as Dr. Brown's SoothePro landed in the worse choices tier.",
+          "testingDate": "2026-09-09",
           "verdict": "skip",
           "dated": "2026-09-09",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "pass",
             "materials": "unassessed",
             "legal": "fail",
-            "testing": "unassessed"
+            "testing": "none"
           },
           "frontOrigin": {
-            "legal": "inferred"
+            "legal": "inferred",
+            "formula": "database",
+            "testing": "database"
           },
           "scope": "line",
           "basis": "direct",
@@ -35759,7 +35802,8 @@
         "ext": {
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
           "frontNotes": {
-            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
+            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
+            "formula": "No ingredient list recorded."
           },
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
@@ -35807,18 +35851,19 @@
             "materials": "Made of ceramic, which the product name states, and which puts nothing into what it touches.",
             "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
           },
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-09-09",
-          "why": "no front is directly evidenced by the note",
+          "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "none",
             "materials": "pass",
             "legal": "none",
             "testing": "unassessed"
           },
           "frontOrigin": {
             "legal": "database",
-            "materials": "database"
+            "materials": "database",
+            "formula": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -39226,7 +39271,8 @@
         "ext": {
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
           "frontNotes": {
-            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
+            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
+            "formula": "No ingredient list recorded."
           },
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
@@ -39320,7 +39366,8 @@
         "ext": {
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
           "frontNotes": {
-            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
+            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
+            "formula": "No ingredient list recorded."
           },
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
@@ -39372,14 +39419,14 @@
           "dated": "2026-09-08",
           "why": "no direct pass on materials, and no lab result standing in for one",
           "fronts": {
-            "formula": "pass",
+            "formula": "none",
             "materials": "unassessed",
             "legal": "pass",
             "testing": "unassessed"
           },
           "frontOrigin": {
             "legal": "database",
-            "formula": "inferred"
+            "formula": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -40941,7 +40988,8 @@
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
-            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
+            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
+            "formula": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear."
           },
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
@@ -41887,21 +41935,25 @@
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
-            "testing": "Consumer Reports 2025 placed Kabrita in the Worse Choices tier after detecting both arsenic and lead in their independent testing.",
-            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
+            "testing": "Consumer Reports 2025 worse choices tier after detecting both inorganic arsenic and lead; Kabrita's self published batch data is brand commissioned, the weakest evidence tier.",
+            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
+            "formula": "The published ingredient list carries nothing on the hazard list."
           },
+          "testingNote": "Consumer Reports 2025 worse choices tier after detecting both inorganic arsenic and lead; Kabrita's self published batch data is brand commissioned, the weakest evidence tier.",
+          "testingDate": "2026-09-09",
           "verdict": "skip",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "pass",
             "materials": "unassessed",
             "legal": "none",
-            "testing": "caution"
+            "testing": "fail"
           },
           "frontOrigin": {
             "legal": "database",
-            "testing": "hand"
+            "testing": "database",
+            "formula": "database"
           },
           "scope": "line",
           "basis": "direct",
@@ -42382,7 +42434,7 @@
           "dated": "2026-08-29",
           "why": "a vetted store pick, chosen by a person at product scope",
           "fronts": {
-            "formula": "pass",
+            "formula": "none",
             "materials": "pass",
             "legal": "none",
             "testing": "pass"
@@ -42391,7 +42443,7 @@
             "legal": "database",
             "testing": "inferred",
             "materials": "database",
-            "formula": "inferred"
+            "formula": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -42872,24 +42924,32 @@
           ]
         ],
         "ext": {
+          "cappedFrom": "careful",
+          "capRestoreWhy": "adverse finding stands",
+          "frontNotes": {
+            "formula": "The published ingredient list carries nothing on the hazard list.",
+            "testing": "Consumer Reports 2025 cleanest tier (little to no detectable heavy metals); not retested in the 2026 round."
+          },
+          "testingNote": "Consumer Reports 2025 cleanest tier (little to no detectable heavy metals); not retested in the 2026 round.",
+          "testingDate": "2026-09-09",
           "verdict": "skip",
           "dated": "2026-09-09",
           "why": "section 6 ceiling: legal is fail",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "pass",
             "materials": "unassessed",
             "legal": "fail",
-            "testing": "unassessed"
+            "testing": "pass"
           },
           "frontOrigin": {
-            "legal": "inferred"
+            "legal": "inferred",
+            "formula": "database",
+            "testing": "database"
           },
           "scope": "line",
           "basis": "direct",
           "disclose": false,
-          "rules": [],
-          "cappedFrom": "careful",
-          "capRestoreWhy": "adverse finding stands"
+          "rules": []
         }
       }
     ]
@@ -44622,7 +44682,8 @@
         "ext": {
           "legalNote": "Our own research records an action here, and the note on this product describes it. Nothing further is open in the FDA enforcement database, and under rule 5.2 a remedied action over 24 months old is informational rather than a finding against the product today.",
           "frontNotes": {
-            "legal": "Our own research records an action here, and the note on this product describes it. Nothing further is open in the FDA enforcement database, and under rule 5.2 a remedied action over 24 months old is informational rather than a finding against the product today."
+            "legal": "Our own research records an action here, and the note on this product describes it. Nothing further is open in the FDA enforcement database, and under rule 5.2 a remedied action over 24 months old is informational rather than a finding against the product today.",
+            "formula": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear."
           },
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
@@ -45887,7 +45948,7 @@
           "dated": "2026-08-29",
           "why": "a vetted store pick, chosen by a person at product scope",
           "fronts": {
-            "formula": "pass",
+            "formula": "none",
             "materials": "pass",
             "legal": "none",
             "testing": "unassessed"
@@ -45895,7 +45956,7 @@
           "frontOrigin": {
             "legal": "database",
             "materials": "database",
-            "formula": "inferred"
+            "formula": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -53097,7 +53158,7 @@
           "disclose": false,
           "rules": []
         },
-        "cat": "Baby formula",
+        "cat": "Laundry detergent",
         "matchAll": [
           [
             "molly",
@@ -57624,14 +57685,14 @@
           "dated": "2026-09-08",
           "why": "no direct pass on materials, and no lab result standing in for one",
           "fronts": {
-            "formula": "pass",
+            "formula": "none",
             "materials": "pass",
             "legal": "unassessed",
             "testing": "unassessed"
           },
           "frontOrigin": {
             "materials": "database",
-            "formula": "inferred"
+            "formula": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -61956,13 +62017,13 @@
           "dated": "2026-09-08",
           "why": "a recommendation needs its checks done; still to do: legal",
           "fronts": {
-            "formula": "pass",
+            "formula": "none",
             "materials": "pass",
             "legal": "unassessed",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "formula": "inferred",
+            "formula": "database",
             "materials": "inferred"
           },
           "scope": "sku",
@@ -68639,7 +68700,7 @@
           ]
         ],
         "matchFrom": "name",
-        "cat": "Baby formula"
+        "cat": "Skincare"
       }
     ],
     "sources": [
@@ -68729,13 +68790,13 @@
           "dated": "2026-09-08",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "pass",
+            "formula": "none",
             "materials": "unassessed",
             "legal": "unassessed",
             "testing": "caution"
           },
           "frontOrigin": {
-            "formula": "inferred",
+            "formula": "database",
             "testing": "inferred"
           },
           "scope": "line",
@@ -72611,14 +72672,14 @@
           "dated": "2026-09-08",
           "why": "no direct pass on materials, and no lab result standing in for one",
           "fronts": {
-            "formula": "pass",
+            "formula": "none",
             "materials": "pass",
             "legal": "unassessed",
             "testing": "unassessed"
           },
           "frontOrigin": {
             "materials": "database",
-            "formula": "inferred"
+            "formula": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -72681,17 +72742,20 @@
           "B0CLXZJK1M"
         ],
         "verdict": "skip",
-        "note": "2022 Abbott Sturgis plant Cronobacter recall pulled Similac and other Abbott powdered formulas after multiple infant illnesses and deaths. Abbott resumed production after FDA inspection but the recall record is the relevant signal. Composition also relies on corn syrup solids and palm olein.",
+        "note": "2022 Abbott Sturgis plant Cronobacter recall pulled Similac and other Abbott powdered formulas after multiple infant illnesses and deaths. Abbott resumed production after FDA inspection but the recall record is the relevant signal. Composition correction (2026-09): Similac Advance and 360 Total Care are lactose based with no palm olein; the syrup recipes sit in the Sensitive, Total Comfort and Alimentum lines.",
         "origin": "article",
         "source": "top-100-baby-kids-products-amazon.html",
         "ext": {
           "frontNotes": {
             "legal": "Pulled in the 2022 Abbott Sturgis Cronobacter recall after infant illnesses and deaths (Recorded for Similac as a whole rather than this product specifically.)",
-            "formula": "The published ingredient list carries nothing on the hazard list."
+            "formula": "The published ingredient list carries nothing on the hazard list.",
+            "testing": "Consumer Reports 2025: Similac Advance among the formulas with little to no detectable heavy metals; 360 Total Care also low concern."
           },
           "inheritedFronts": [
             "legal"
           ],
+          "testingNote": "Consumer Reports 2025: Similac Advance among the formulas with little to no detectable heavy metals; 360 Total Care also low concern.",
+          "testingDate": "2026-09-09",
           "verdict": "skip",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
@@ -72699,11 +72763,12 @@
             "formula": "pass",
             "materials": "unassessed",
             "legal": "fail",
-            "testing": "unassessed"
+            "testing": "pass"
           },
           "frontOrigin": {
             "legal": "stated",
-            "formula": "database"
+            "formula": "database",
+            "testing": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -72733,17 +72798,24 @@
           ]
         ],
         "ext": {
+          "frontNotes": {
+            "formula": "The published ingredient list carries nothing on the hazard list.",
+            "testing": "Consumer Reports 2025: 15.1 ppb inorganic arsenic, second highest of 41 formulas; the EPA drinking water limit is 10 ppb."
+          },
+          "testingNote": "Consumer Reports 2025: 15.1 ppb inorganic arsenic, second highest of 41 formulas; the EPA drinking water limit is 10 ppb.",
+          "testingDate": "2026-09-09",
           "verdict": "skip",
           "dated": "2026-09-09",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "pass",
             "materials": "unassessed",
             "legal": "unassessed",
-            "testing": "caution"
+            "testing": "fail"
           },
           "frontOrigin": {
-            "testing": "inferred"
+            "testing": "database",
+            "formula": "database"
           },
           "scope": "line",
           "basis": "direct",
@@ -72766,24 +72838,32 @@
           ]
         ],
         "ext": {
+          "cappedFrom": "careful",
+          "capRestoreWhy": "adverse finding stands",
+          "frontNotes": {
+            "formula": "The published ingredient list carries nothing on the hazard list.",
+            "testing": "Consumer Reports Top Choices tier: low or undetectable contaminants in both rounds."
+          },
+          "testingNote": "Consumer Reports Top Choices tier: low or undetectable contaminants in both rounds.",
+          "testingDate": "2026-09-09",
           "verdict": "skip",
           "dated": "2026-09-09",
           "why": "section 6 ceiling: legal is fail",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "pass",
             "materials": "unassessed",
             "legal": "fail",
-            "testing": "unassessed"
+            "testing": "pass"
           },
           "frontOrigin": {
-            "legal": "inferred"
+            "legal": "inferred",
+            "formula": "database",
+            "testing": "database"
           },
           "scope": "line",
           "basis": "direct",
           "disclose": false,
-          "rules": [],
-          "cappedFrom": "careful",
-          "capRestoreWhy": "adverse finding stands"
+          "rules": []
         }
       }
     ],
@@ -76984,13 +77064,13 @@
           "dated": "2026-09-08",
           "why": "a recommendation needs its checks done; still to do: legal",
           "fronts": {
-            "formula": "pass",
+            "formula": "none",
             "materials": "pass",
             "legal": "unassessed",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "formula": "inferred",
+            "formula": "database",
             "materials": "inferred"
           },
           "scope": "sku",
@@ -79461,13 +79541,14 @@
           "dated": "2026-09-08",
           "why": "no front is directly evidenced by the note",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "none",
             "materials": "pass",
             "legal": "unassessed",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "materials": "database"
+            "materials": "database",
+            "formula": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -79533,7 +79614,8 @@
         "ext": {
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
           "frontNotes": {
-            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
+            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
+            "formula": "No ingredient list recorded."
           },
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
@@ -83009,16 +83091,16 @@
           "dated": "2026-09-09",
           "why": "independent lab result at sku scope",
           "fronts": {
-            "formula": "pass",
+            "formula": "none",
             "materials": "pass",
             "legal": "pass",
             "testing": "pass"
           },
           "frontOrigin": {
-            "formula": "inferred",
             "materials": "database",
             "testing": "database",
-            "legal": "database"
+            "legal": "database",
+            "formula": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -86590,14 +86672,14 @@
           "dated": "2026-09-08",
           "why": "no direct pass on materials, and no lab result standing in for one",
           "fronts": {
-            "formula": "pass",
+            "formula": "none",
             "materials": "pass",
             "legal": "unassessed",
             "testing": "unassessed"
           },
           "frontOrigin": {
             "materials": "database",
-            "formula": "inferred"
+            "formula": "database"
           },
           "scope": "sku",
           "basis": "direct",

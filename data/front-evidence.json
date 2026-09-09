@@ -3359,14 +3359,21 @@
  "B09F5X1JVR": {
   "_product": "Enfamil Infant Formula Stage 1",
   "formula": {
-   "asinMismatch": "Similac 360 Total Care Baby Formula Powder, Exclusive 5 Prebiotic Blend",
-   "checkedListing": "2026-09-03",
-   "complete": false,
+   "checkedListing": "2026-09-09",
+   "complete": true,
+   "ingredients": "Nonfat Milk, Lactose, Vegetable Oil (palm olein, coconut, soy, high oleic sunflower), Whey Protein Concentrate; MFGM, DHA, ARA, soy lecithin. NeuroPro Infant is lactose based; the Gentlease variant uses corn syrup solids.",
+   "kind": "ingredients",
    "prose": "",
-   "source": "amazon:B09F5X1JVR"
+   "source": "enfamil.com NeuroPro Infant product page, read 2026-09-09"
   },
   "materials": {
    "checkedListing": "2026-09-02"
+  },
+  "testing": {
+   "checked": "2026-09-09",
+   "note": "Consumer Reports: Enfamil NeuroPro varieties tested low concern in the 2025 round.",
+   "source": "consumerreports.org baby formula test results (March 2025 and March 2026 rounds)",
+   "status": "pass"
   }
  },
  "B09F6YC4MS": {
@@ -4167,6 +4174,12 @@
    "kind": "ingredients",
    "prose": "",
    "source": "openfacts:0055325002413"
+  },
+  "testing": {
+   "checked": "2026-09-09",
+   "note": "Consumer Reports 2025: Similac Advance among the formulas with little to no detectable heavy metals; 360 Total Care also low concern.",
+   "source": "consumerreports.org baby formula test results (March 2025 and March 2026 rounds)",
+   "status": "pass"
   }
  },
  "B0CMVJXXZ2": {
@@ -5362,6 +5375,23 @@
    "source": "product name"
   }
  },
+ "Dr. Brown's::SoothePro infant formula (Perrigo made)": {
+  "_product": "Dr. Brown's SoothePro infant formula (Perrigo made)",
+  "formula": {
+   "checkedListing": "2026-09-09",
+   "complete": true,
+   "ingredients": "Corn Maltodextrin, Whey Protein Concentrate from milk (enzymatically hydrolyzed, reduced in minerals), Vegetable Oils (palm olein, soy, coconut, high oleic safflower or sunflower); 2'-FL HMO, probiotics. Same Perrigo recipe family as Gerber Good Start SoothePro.",
+   "kind": "ingredients",
+   "prose": "",
+   "source": "goodstartbaby.com Soothe Pro infant formula product page, read 2026-09-09"
+  },
+  "testing": {
+   "checked": "2026-09-09",
+   "note": "Consumer Reports 2025 placed Dr. Brown's SoothePro in the worse choices tier for contaminant levels.",
+   "source": "consumerreports.org baby formula test results (March 2025 and March 2026 rounds)",
+   "status": "fail"
+  }
+ },
  "Dr. Brown's::Wide Neck Glass Baby Bottle (painted markings)": {
   "_product": "Dr. Brown's Wide Neck Glass Baby Bottle (painted markings)",
   "materials": {
@@ -5370,12 +5400,114 @@
    "source": "product name"
   }
  },
+ "Earth's Best::Organic Infant Formula": {
+  "_product": "Earth's Best Organic Infant Formula",
+  "formula": {
+   "checkedListing": "2026-09-09",
+   "complete": true,
+   "ingredients": "Organic Lactose, Organic Nonfat Milk, Organic Oils (organic palm or palm olein, organic soy, organic coconut, organic high oleic safflower or sunflower), Organic Whey Protein Concentrate; DHA and ARA. This is the Dairy formula label; the separate Sensitivity formula's first ingredient is organic glucose syrup solids.",
+   "kind": "ingredients",
+   "prose": "",
+   "source": "earthsbest.com Organic Dairy Infant Formula product page, read 2026-09-09"
+  },
+  "testing": {
+   "checked": "2026-09-09",
+   "note": "Consumer Reports low concern in both rounds: Organic Dairy (2025) and Organic Sensitivity (2026).",
+   "source": "consumerreports.org baby formula test results (March 2025 and March 2026 rounds)",
+   "status": "pass"
+  }
+ },
+ "Enfamil::Enfamil Nutramigen": {
+  "_product": "Enfamil Enfamil Nutramigen",
+  "formula": {
+   "checkedListing": "2026-09-09",
+   "complete": true,
+   "ingredients": "Corn Syrup Solids (47%), Vegetable Oil incl. Palm Olein (26%), Casein Hydrolysate from milk (17%); DHA, ARA, probiotic LGG. Hypoallergenic, lactose free.",
+   "kind": "ingredients",
+   "prose": "",
+   "source": "hcp.meadjohnson.com Nutramigen with Probiotic LGG product page, read 2026-09-09"
+  },
+  "testing": {
+   "checked": "2026-09-09",
+   "note": "Consumer Reports 2025: the only formula of 41 with detectable BPA and acrylamide; Mead Johnson disputes the finding.",
+   "source": "consumerreports.org baby formula test results (March 2025 and March 2026 rounds)",
+   "status": "fail"
+  }
+ },
+ "Enfamil::Enfamil ProSobee Simply Plant Based": {
+  "_product": "Enfamil Enfamil ProSobee Simply Plant Based",
+  "formula": {
+   "checkedListing": "2026-09-09",
+   "complete": true,
+   "ingredients": "Corn Syrup Solids (54%), Vegetable Oil (26%: palm olein, coconut, soy, high oleic sunflower), Soy Protein Isolate (14%); DHA and ARA. Soy based, dairy and lactose free.",
+   "kind": "ingredients",
+   "prose": "",
+   "source": "hcp.meadjohnson.com Enfamil ProSobee product page, read 2026-09-09"
+  },
+  "testing": {
+   "checked": "2026-09-09",
+   "note": "Consumer Reports worse choices tier; part of the pattern in which every plant based formula tested was flagged for inorganic arsenic.",
+   "source": "consumerreports.org baby formula test results (March 2025 and March 2026 rounds)",
+   "status": "fail"
+  }
+ },
  "Gerber::Flame resistant polyester pajamas": {
   "_product": "Gerber Flame resistant polyester pajamas",
   "materials": {
    "contactFrom": "stated in the product name",
    "material": "polyester",
    "source": "product name"
+  }
+ },
+ "Gerber::Good Start SoothePro powdered formula": {
+  "_product": "Gerber Good Start SoothePro powdered formula",
+  "formula": {
+   "checkedListing": "2026-09-09",
+   "complete": true,
+   "ingredients": "Corn Maltodextrin, Whey Protein Concentrate from milk (enzymatically hydrolyzed, reduced in minerals), Vegetable Oils (palm olein, soy, coconut, high oleic safflower or sunflower), Lactose (about 30% of the carbohydrate blend); 2'-FL HMO, L. reuteri probiotic.",
+   "kind": "ingredients",
+   "prose": "",
+   "source": "gerber.com Good Start SoothePro product page, read 2026-09-09"
+  },
+  "testing": {
+   "checked": "2026-09-09",
+   "note": "Checked both Consumer Reports rounds: the Gerber branded SoothePro was not itself tested; the identical Perrigo recipe sold as Dr. Brown's SoothePro landed in the worse choices tier.",
+   "source": "consumerreports.org baby formula test results (March 2025 and March 2026 rounds)",
+   "status": "none"
+  }
+ },
+ "Kabrita::Goat Milk Infant Formula": {
+  "_product": "Kabrita Goat Milk Infant Formula",
+  "formula": {
+   "checkedListing": "2026-09-09",
+   "complete": true,
+   "ingredients": "Lactose, Nonfat Dry Goat Milk, Vegetable Oils (soybean, high oleic sunflower, coconut, high 2-palmitic vegetable oil i.e. palm), Goat Whey Protein Concentrate; DHA and ARA. No corn syrup.",
+   "kind": "ingredients",
+   "prose": "",
+   "source": "kabrita.com ingredients and nutrition page, read 2026-09-09"
+  },
+  "testing": {
+   "checked": "2026-09-09",
+   "note": "Consumer Reports 2025 worse choices tier after detecting both inorganic arsenic and lead; Kabrita's self published batch data is brand commissioned, the weakest evidence tier.",
+   "source": "consumerreports.org baby formula test results (March 2025 and March 2026 rounds)",
+   "status": "fail"
+  }
+ },
+ "Kirkland Signature::ProCare infant formula": {
+  "_product": "Kirkland Signature ProCare infant formula",
+  "formula": {
+   "checkedListing": "2026-09-09",
+   "complete": true,
+   "ingredients": "Lactose, Skim Milk Powder, High Oleic (Safflower or Sunflower) Oil, Soybean Oil, Whey Protein Concentrate, Coconut Oil, Corn Maltodextrin (minor); dual HMO prebiotics. Lactose first, no palm olein.",
+   "kind": "ingredients",
+   "prose": "",
+   "source": "Costco listing and Open Food Facts label scan, read 2026-09-09"
+  },
+  "testing": {
+   "checked": "2026-09-09",
+   "note": "Consumer Reports 2025 cleanest tier (little to no detectable heavy metals); not retested in the 2026 round.",
+   "source": "consumerreports.org baby formula test results (March 2025 and March 2026 rounds)",
+   "status": "pass"
   }
  },
  "KitchenAid::Artisan stand mixer with stainless bowl": {
@@ -5440,6 +5572,40 @@
    "contactFrom": "stated in the product name",
    "material": "stainless steel",
    "source": "product name"
+  }
+ },
+ "Similac::Similac 360 Total Care": {
+  "_product": "Similac Similac 360 Total Care",
+  "formula": {
+   "checkedListing": "2026-09-09",
+   "complete": true,
+   "ingredients": "Nonfat Milk, Lactose, High Oleic Safflower Oil, Whey Protein Concentrate, Soy Oil, Coconut Oil; five HMO prebiotics (2'-FL, LNT, 3-FL, 6'-SL, 3'-SL); less than 2% incl. DHA and ARA oils. Lactose based, no palm olein, no corn syrup.",
+   "kind": "ingredients",
+   "prose": "",
+   "source": "similac.com 360 Total Care powder product page, read 2026-09-09"
+  },
+  "testing": {
+   "checked": "2026-09-09",
+   "note": "Consumer Reports Top Choices tier: low or undetectable contaminants in both rounds.",
+   "source": "consumerreports.org baby formula test results (March 2025 and March 2026 rounds)",
+   "status": "pass"
+  }
+ },
+ "Similac::Similac Alimentum": {
+  "_product": "Similac Similac Alimentum",
+  "formula": {
+   "checkedListing": "2026-09-09",
+   "complete": true,
+   "ingredients": "Corn Maltodextrin (39%), Casein Hydrolysate from milk (17%), High Oleic Safflower Oil (9%), Medium Chain Triglycerides (9%), Sugar (9%), Soy Oil (8%); less than 2% incl. 2'-FL HMO, DHA, ARA. Hypoallergenic, lactose free, no palm olein.",
+   "kind": "ingredients",
+   "prose": "",
+   "source": "similac.com Alimentum powder product page, read 2026-09-09"
+  },
+  "testing": {
+   "checked": "2026-09-09",
+   "note": "Consumer Reports 2025: 15.1 ppb inorganic arsenic, second highest of 41 formulas; the EPA drinking water limit is 10 ppb.",
+   "source": "consumerreports.org baby formula test results (March 2025 and March 2026 rounds)",
+   "status": "fail"
   }
  },
  "Skip Hop::Skip Hop Playspot Foam Tiles": {
