@@ -47862,9 +47862,12 @@
           "frontNotes": {
             "materials": "In contact with cotton, which puts nothing into what it holds.",
             "legal": "Checked recall and litigation records on 2026-09-09: searches for lawsuits, class actions, CPSC recalls and complaint clusters found nothing for this brand.",
-            "formula": "An object has no ingredient list. What it is made of is the materials check."
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "testing": "Searched September 2026: no independent test results and no certification found for this rug; the non toxic dyes claim is the brand's own."
           },
           "legalNote": "Checked recall and litigation records on 2026-09-09: searches for lawsuits, class actions, CPSC recalls and complaint clusters found nothing for this brand.",
+          "testingNote": "Searched September 2026: no independent test results and no certification found for this rug; the non toxic dyes claim is the brand's own.",
+          "testingDate": "2026-09-09",
           "verdict": "good",
           "dated": "2026-09-09",
           "why": "direct evidence at sku scope on formula, materials",
@@ -47872,12 +47875,13 @@
             "formula": "none",
             "materials": "pass",
             "legal": "pass",
-            "testing": "unassessed"
+            "testing": "none"
           },
           "frontOrigin": {
             "formula": "hand",
             "materials": "database",
-            "legal": "database"
+            "legal": "database",
+            "testing": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -89265,9 +89269,12 @@
         "ext": {
           "frontNotes": {
             "formula": "An object has no ingredient list. What it is made of is the materials check.",
-            "legal": "Checked recall and litigation records on 2026-09-09: searches for lawsuits, class actions, CPSC recalls and complaint clusters found nothing for this brand."
+            "legal": "Checked recall and litigation records on 2026-09-09: searches for lawsuits, class actions, CPSC recalls and complaint clusters found nothing for this brand.",
+            "testing": "Searched September 2026: no independent tests and no certifications exist for this product. Looked, nothing exists, which is different from nobody having looked."
           },
           "legalNote": "Checked recall and litigation records on 2026-09-09: searches for lawsuits, class actions, CPSC recalls and complaint clusters found nothing for this brand.",
+          "testingNote": "Searched September 2026: no independent tests and no certifications exist for this product. Looked, nothing exists, which is different from nobody having looked.",
+          "testingDate": "2026-09-09",
           "verdict": "unrated",
           "dated": "2026-09-09",
           "why": "neutral is not a verdict, nothing is being asserted",
@@ -89275,12 +89282,13 @@
             "formula": "none",
             "materials": "pass",
             "legal": "pass",
-            "testing": "unassessed"
+            "testing": "none"
           },
           "frontOrigin": {
             "formula": "hand",
             "materials": "inferred",
-            "legal": "database"
+            "legal": "database",
+            "testing": "database"
           },
           "scope": "sku",
           "basis": "direct",
