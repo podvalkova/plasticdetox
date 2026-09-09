@@ -15721,7 +15721,7 @@
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
           "verdict": "good",
           "dated": "2026-09-09",
-          "why": "no direct pass on formula, and no lab result standing in for one",
+          "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
             "materials": "pass",
@@ -27676,6 +27676,8 @@
             "formula",
             "materials"
           ],
+          "cappedFrom": "careful",
+          "capRestoreWhy": "adverse finding stands",
           "verdict": "skip",
           "dated": "2026-09-09",
           "why": "section 6 ceiling: formula is caution, materials is fail",
@@ -27694,9 +27696,7 @@
           "disclose": false,
           "rules": [
             "3 packaging-matrix-fail"
-          ],
-          "cappedFrom": "careful",
-          "capRestoreWhy": "adverse finding stands"
+          ]
         },
         "cat": "Body lotion"
       }
@@ -52809,6 +52809,8 @@
           },
           "heldFrom": "good",
           "restoreWhy": "independent lab result at sku scope",
+          "cappedFrom": "good",
+          "capRestoreWhy": "independent lab result at sku scope",
           "verdict": "careful",
           "dated": "2026-08-29",
           "why": "section 6 ceiling: formula is caution",
@@ -52826,9 +52828,7 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": [],
-          "cappedFrom": "good",
-          "capRestoreWhy": "independent lab result at sku scope"
+          "rules": []
         },
         "origin": "hand",
         "matchAll": [
@@ -79363,7 +79363,47 @@
       "flagged": 0,
       "worst": null
     },
-    "buy": "https://tokikids.com/"
+    "buy": "https://tokikids.com/",
+    "products": [
+      {
+        "name": "Toki Mat",
+        "verdict": "good",
+        "note": "Cleanest padded pick: GOTS organic cotton cover over a natural Dunlop latex core, OEKO-TEX certified. Sold direct at tokikids.com; check latex allergies first.",
+        "matchAll": [
+          [
+            "toki",
+            "mat"
+          ]
+        ],
+        "ext": {
+          "verdict": "unrated",
+          "dated": "2026-09-09",
+          "why": "a recommendation needs its checks done; still to do: legal",
+          "fronts": {
+            "formula": "pass",
+            "materials": "pass",
+            "legal": "unassessed",
+            "testing": "pass"
+          },
+          "frontOrigin": {
+            "formula": "inferred",
+            "materials": "inferred",
+            "testing": "inferred"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "rules": [
+            "5.4 durable-good-is-its-own-packaging"
+          ],
+          "heldFrom": "good",
+          "restoreWhy": "independent lab result at line scope",
+          "heldBack": [
+            "legal"
+          ]
+        }
+      }
+    ]
   },
   {
     "id": "tom-s-of-maine",
@@ -85553,6 +85593,8 @@
           },
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
+          "cappedFrom": "good",
+          "capRestoreWhy": "a vetted store pick, chosen by a person at product scope",
           "verdict": "careful",
           "dated": "2026-08-29",
           "why": "section 6 ceiling: formula is caution",
@@ -85572,9 +85614,7 @@
           "disclose": false,
           "rules": [
             "2 formula-read-from-materials"
-          ],
-          "cappedFrom": "good",
-          "capRestoreWhy": "a vetted store pick, chosen by a person at product scope"
+          ]
         },
         "cat": "Baby lotion",
         "research": "Packaging: Cream in an aluminum tube; Weleda states the tube is made of 95% recycled aluminum and easily recyclable; cap material not stated. Materials: Plant-oil base of sunflower and sweet almond oils with lanolin and beeswax; rosemary, chamomile, calendula, and pansy extracts; NATRUE certified.",
@@ -85604,6 +85644,8 @@
           },
           "heldFrom": "good",
           "restoreWhy": "independent lab result at sku scope",
+          "cappedFrom": "good",
+          "capRestoreWhy": "independent lab result at sku scope",
           "verdict": "careful",
           "dated": "2026-08-29",
           "why": "section 6 ceiling: formula is caution",
@@ -85623,9 +85665,7 @@
           "disclose": false,
           "rules": [
             "4.3 non-detect-with-lod-is-a-pass"
-          ],
-          "cappedFrom": "good",
-          "capRestoreWhy": "independent lab result at sku scope"
+          ]
         },
         "asins": [
           "B000Q46K86",
@@ -88144,7 +88184,55 @@
       "researched": 0,
       "flagged": 0,
       "worst": null
-    }
+    },
+    "products": [
+      {
+        "name": "Wee Gallery Explore Playmat",
+        "asins": [
+          "B077CPK2NK"
+        ],
+        "verdict": "good",
+        "note": "100% organic cotton outer with an OEKO-TEX certified polyester fiber filling, disclosed. Reversible, machine washable.",
+        "matchAll": [
+          [
+            "wee",
+            "gallery",
+            "playmat"
+          ],
+          [
+            "wee",
+            "gallery",
+            "play",
+            "mat"
+          ]
+        ],
+        "ext": {
+          "verdict": "unrated",
+          "dated": "2026-09-09",
+          "why": "a recommendation needs its checks done; still to do: materials, legal",
+          "fronts": {
+            "formula": "pass",
+            "materials": "unassessed",
+            "legal": "unassessed",
+            "testing": "pass"
+          },
+          "frontOrigin": {
+            "formula": "inferred",
+            "testing": "inferred"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": [],
+          "heldFrom": "good",
+          "restoreWhy": "independent lab result at sku scope",
+          "heldBack": [
+            "materials",
+            "legal"
+          ]
+        }
+      }
+    ]
   },
   {
     "id": "skip-hop",
@@ -88187,7 +88275,35 @@
       "researched": 0,
       "flagged": 0,
       "worst": null
-    }
+    },
+    "products": [
+      {
+        "name": "Skip Hop Playspot Foam Tiles",
+        "verdict": "careful",
+        "note": "EVA foam tiles with no published formamide testing, in a category where 2022 lab testing found formamide in 15 of 20 foam mats.",
+        "matchAll": [
+          [
+            "playspot"
+          ]
+        ],
+        "ext": {
+          "verdict": "careful",
+          "dated": "2026-09-09",
+          "why": "adverse finding stands",
+          "fronts": {
+            "formula": "unassessed",
+            "materials": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "frontOrigin": {},
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
+      }
+    ]
   },
   {
     "id": "toddlekind",
@@ -88403,7 +88519,41 @@
       "researched": 0,
       "flagged": 0,
       "worst": null
-    }
+    },
+    "products": [
+      {
+        "name": "Gathre Mat",
+        "asins": [
+          "B0C1TM1GLW"
+        ],
+        "verdict": "careful",
+        "note": "Bonded leather surface: 72% polyurethane with 28% genuine leather fibers per the brand's own materials page. A wipe clean surface is a plastic film.",
+        "matchAll": [
+          [
+            "gathre",
+            "mat"
+          ]
+        ],
+        "ext": {
+          "verdict": "careful",
+          "dated": "2026-09-09",
+          "why": "adverse finding stands",
+          "fronts": {
+            "formula": "unassessed",
+            "materials": "caution",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "frontOrigin": {
+            "materials": "inferred"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
+      }
+    ]
   },
   {
     "id": "baby-care-mats",
@@ -88527,7 +88677,43 @@
       "researched": 0,
       "flagged": 0,
       "worst": null
-    }
+    },
+    "products": [
+      {
+        "name": "Dwinguler Play Mat",
+        "asins": [
+          "B004PA9ZY8"
+        ],
+        "verdict": "careful",
+        "note": "PVC one piece mat. Phthalate free claims, and plasticized vinyl is still not a material we recommend for a mouthing age surface.",
+        "matchAll": [
+          [
+            "dwinguler"
+          ]
+        ],
+        "ext": {
+          "verdict": "careful",
+          "dated": "2026-09-09",
+          "why": "adverse finding stands",
+          "fronts": {
+            "formula": "pass",
+            "materials": "caution",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "frontOrigin": {
+            "formula": "inferred",
+            "materials": "inferred"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": [
+            "3 packaging-matrix-caution"
+          ]
+        }
+      }
+    ]
   },
   {
     "id": "creamhaus",
@@ -88570,7 +88756,38 @@
       "researched": 0,
       "flagged": 0,
       "worst": null
-    }
+    },
+    "products": [
+      {
+        "name": "CreamHaus Inua Folding Mat",
+        "verdict": "careful",
+        "note": "Closed cell PE foam core, the cleanest foam family, under a PU vegan leather cover (OEKO-TEX Class I, cover only). The cover is still a plastic film.",
+        "matchAll": [
+          [
+            "creamhaus"
+          ]
+        ],
+        "ext": {
+          "verdict": "careful",
+          "dated": "2026-09-09",
+          "why": "adverse finding stands",
+          "fronts": {
+            "formula": "unassessed",
+            "materials": "caution",
+            "legal": "unassessed",
+            "testing": "pass"
+          },
+          "frontOrigin": {
+            "materials": "inferred",
+            "testing": "inferred"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
+      }
+    ]
   },
   {
     "id": "yay-mats",
@@ -88613,7 +88830,39 @@
       "researched": 0,
       "flagged": 0,
       "worst": null
-    }
+    },
+    "products": [
+      {
+        "name": "Yay Mats Play Mat Tiles",
+        "asins": [
+          "B07DM2PW4G"
+        ],
+        "verdict": "careful",
+        "note": "EVA foam puzzle tiles marketed as non toxic with no published certifications or test results found.",
+        "matchAll": [
+          [
+            "yay",
+            "mats"
+          ]
+        ],
+        "ext": {
+          "verdict": "careful",
+          "dated": "2026-09-09",
+          "why": "adverse finding stands",
+          "fronts": {
+            "formula": "unassessed",
+            "materials": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "frontOrigin": {},
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
+      }
+    ]
   },
   {
     "id": "balancefrom",
@@ -88656,7 +88905,43 @@
       "researched": 0,
       "flagged": 0,
       "worst": null
-    }
+    },
+    "products": [
+      {
+        "name": "BalanceFrom Puzzle Mat Tiles",
+        "asins": [
+          "B013A4ASRW"
+        ],
+        "verdict": "careful",
+        "note": "The category's best selling EVA tiles, with no published certifications or chemistry found. The US has no formamide limit to hold them to.",
+        "matchAll": [
+          [
+            "balancefrom",
+            "mat"
+          ],
+          [
+            "balancefrom",
+            "tiles"
+          ]
+        ],
+        "ext": {
+          "verdict": "careful",
+          "dated": "2026-09-09",
+          "why": "adverse finding stands",
+          "fronts": {
+            "formula": "unassessed",
+            "materials": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "frontOrigin": {},
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
+      }
+    ]
   },
   {
     "id": "hakuna-matte",
@@ -88699,7 +88984,42 @@
       "researched": 0,
       "flagged": 0,
       "worst": null
-    }
+    },
+    "products": [
+      {
+        "name": "Hakuna Matte CloudSoft Mat",
+        "asins": [
+          "B0C9X7DSVS"
+        ],
+        "verdict": "careful",
+        "note": "Polyester velvet top over polyurethane memory foam. The listing's OEKO-TEX claim could not be verified against the official site.",
+        "matchAll": [
+          [
+            "hakuna",
+            "matte"
+          ]
+        ],
+        "ext": {
+          "verdict": "careful",
+          "dated": "2026-09-09",
+          "why": "adverse finding stands",
+          "fronts": {
+            "formula": "caution",
+            "materials": "unassessed",
+            "legal": "unassessed",
+            "testing": "pass"
+          },
+          "frontOrigin": {
+            "formula": "inferred",
+            "testing": "inferred"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
+      }
+    ]
   },
   {
     "id": "snuggle-me-organic",
@@ -88822,6 +89142,45 @@
       "researched": 0,
       "flagged": 0,
       "worst": null
-    }
+    },
+    "products": [
+      {
+        "name": "Crane Baby Activity Mat",
+        "asins": [
+          "B09T2F97C9"
+        ],
+        "verdict": "neutral",
+        "note": "Conventional (not organic) cotton exterior with a polyester fill. Clean record, no certifications; not a pick and nothing disqualifying.",
+        "matchAll": [
+          [
+            "crane",
+            "baby",
+            "mat"
+          ]
+        ],
+        "ext": {
+          "verdict": "unrated",
+          "dated": "2026-09-09",
+          "why": "neutral is not a verdict, nothing is being asserted",
+          "fronts": {
+            "formula": "pass",
+            "materials": "pass",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "frontOrigin": {
+            "formula": "inferred",
+            "materials": "inferred"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": [
+            "2 formula-read-from-materials",
+            "5.4 durable-good-is-its-own-packaging"
+          ]
+        }
+      }
+    ]
   }
 ]
