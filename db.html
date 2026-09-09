@@ -458,8 +458,13 @@ function passes(r){
   if(state.work && !(r[3]==="unrated" || !r[4])) return false;
   if(state.v.size && !state.v.has(r[3])) return false;
   if(state.q){
-    const q = state.q.toLowerCase();
-    if(!(r[0]+" "+r[1]+" "+r[2]+" "+r[4]).toLowerCase().includes(q)) return false;
+    // Every word must appear somewhere, in any order: "Woolino Sheepskin"
+    // has to find "Woolino Merino Sheepskin Rug". A single substring test
+    // silently returned nothing for any query with a word missing between.
+    const hay = (r[0]+" "+r[1]+" "+r[2]+" "+r[4]).toLowerCase();
+    for(const w of state.q.toLowerCase().split(/\s+/)){
+      if(w && !hay.includes(w)) return false;
+    }
   }
   return true;
 }
