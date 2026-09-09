@@ -27,6 +27,11 @@ fail=0
 
 if [ "${1:-}" = "--fix" ]; then
   echo "==> applying the rules"
+  # Read the evidence file first. --fix ran only the rules, so a material
+  # recorded in data/front-evidence.json never reached the front it answers:
+  # TILUCK's 18/8 stainless sat in the file while the row still read
+  # unassessed. Verified safe to add, it moves no verdict on its own.
+  python3 tools/apply-front-evidence.py --write || exit 1
   python3 tools/apply-product-rules.py --write || exit 1
   python3 tools/enforce-scorecard.py --write || exit 1
   echo
