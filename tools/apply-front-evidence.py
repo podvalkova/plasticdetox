@@ -79,7 +79,16 @@ INERT = {"glass", "borosilicate", "tempered glass", "stainless", "stainless stee
 POLYMER = {
     "pvc": 2, "ps": 2, "polystyrene": 2, "pc": 2, "polycarbonate": 2, "other": 2,
     "melamine": 2, "non stick": 2, "nonstick": 2, "ptfe": 2,
+    # The foams. EVA carries the formamide story and ranked below PVC in the
+    # 2025 Ecotoxicology and Environmental Safety volatile screening of 34 play
+    # mats; polyurethane foam is the nap mat flame retardant category (22 of 24
+    # mats in the 2013 Duke analysis) and memory foam is polyurethane by
+    # another name.
+    "eva": 2, "polyurethane": 2, "memory foam": 2,
     "pet": 1.5, "pete": 1.5, "tritan": 1.5, "acrylic": 1.5, "nylon": 1.5,
+    # Polyester is PET as a fiber, and TPU is the plasticizer-free film family:
+    # both shed, neither carries PVC's additive package.
+    "polyester": 1.5, "tpu": 1.5,
     "pp": 1, "polypropylene": 1, "hdpe": 1, "ldpe": 1, "polyethylene": 1,
     "aluminum": 1, "aluminium": 1,
     "paper-coated": 1, "paperboard": 1, "carton": 1, "cardboard": 1,

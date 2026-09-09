@@ -2840,9 +2840,9 @@
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
           "cappedFrom": "good",
           "capRestoreWhy": "",
-          "verdict": "careful",
+          "verdict": "unrated",
           "dated": "2026-09-09",
-          "why": "section 6 ceiling: formula is caution",
+          "why": "no direct pass on formula, and no lab result standing in for one",
           "fronts": {
             "formula": "caution",
             "materials": "pass",
@@ -8442,19 +8442,21 @@
           "why": "adverse finding stands",
           "fronts": {
             "formula": "pass",
-            "materials": "unassessed",
+            "materials": "pass",
             "legal": "pass",
             "testing": "unassessed"
           },
           "frontOrigin": {
             "legal": "database",
-            "formula": "database"
+            "formula": "database",
+            "materials": "inferred"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
           "rules": [
-            "2 formula-read-from-materials"
+            "2 formula-read-from-materials",
+            "5.4 durable-good-is-its-own-packaging"
           ]
         },
         "cat": "Pantry",
@@ -14602,24 +14604,26 @@
             "formula": "The published ingredient list carries nothing on the hazard list.",
             "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
           },
-          "verdict": "unrated",
-          "dated": "2026-08-28",
-          "why": "consumable with only a formula read, no second front",
+          "verdict": "good",
+          "dated": "2026-09-09",
+          "why": "direct evidence at sku scope on formula, materials",
           "fronts": {
             "formula": "pass",
-            "materials": "unassessed",
+            "materials": "pass",
             "legal": "none",
             "testing": "unassessed"
           },
           "frontOrigin": {
             "legal": "database",
-            "formula": "database"
+            "formula": "database",
+            "materials": "inferred"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
           "rules": [
-            "2 formula-read-from-materials"
+            "2 formula-read-from-materials",
+            "5.4 durable-good-is-its-own-packaging"
           ]
         },
         "cat": "Supplements",
@@ -15721,7 +15725,7 @@
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
           "verdict": "good",
           "dated": "2026-09-09",
-          "why": "direct evidence on formula, recorded rather than read off a note",
+          "why": "direct evidence at sku scope on materials",
           "fronts": {
             "formula": "pass",
             "materials": "pass",
@@ -22295,14 +22299,14 @@
         "note": "Medical grade silicone menstrual cup sized for teens and first time users (ages 19 and under, or those with lighter flow). BPA free, latex free, plastic free, dye free, and fragrance free. Medical grade silicone, dye and fragrance free. Worth knowing: Smaller capacity than Model 1 and 2, Learning curve to insert and remove, Requires boiling between cycles.",
         "origin": "store",
         "ext": {
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: materials",
+          "why": "a recommendation needs all four checks; still to do: packaging, legal, testing",
           "fronts": {
             "formula": "none",
             "legal": "pass",
             "testing": "none",
-            "materials": "unassessed"
+            "materials": "pass"
           },
           "scope": "sku",
           "basis": "direct",
@@ -22311,20 +22315,15 @@
           "frontNotes": {
             "legal": "Menstrual cups are FDA class II devices cleared through 510(k). Searched the FDA enforcement and device records on 2026-08-29: no recall, and no filing against the brand.",
             "testing": "No independent lab testing exists, and none is expected. The organic fluorine panels screen absorbent products, where PFAS would sit in a coating or a laminate. Medical grade silicone has neither, so there is nothing for that method to find.",
-            "materials": "We have not established what the product actually touches.",
+            "materials": "Materials named in the listing.",
             "formula": "An object has no ingredient list. What it is made of is the materials check."
           },
-          "restoreWhy": "a recommendation needs all four checks; still to do: packaging, legal, testing",
           "authored": true,
           "frontOrigin": {
             "legal": "hand",
             "testing": "stated",
             "formula": "hand"
           },
-          "heldFrom": "good",
-          "heldBack": [
-            "materials"
-          ],
           "exposure": {
             "type": "absorbent worn",
             "level": "high",
@@ -23805,23 +23804,19 @@
         "source": "alternative",
         "note": "Named as a powder detergent in cardboard packaging that avoids plastic.",
         "ext": {
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: materials",
+          "why": "",
           "fronts": {
             "formula": "pass",
             "legal": "none",
             "testing": "unassessed",
-            "materials": "unassessed"
+            "materials": "pass"
           },
           "scope": "line",
           "basis": "direct",
           "disclose": false,
           "authored": true,
-          "heldBack": [
-            "materials"
-          ],
-          "heldFrom": "good",
           "frontNotes": {
             "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
           },
@@ -23967,7 +23962,8 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
-            "4.3 non-detect-without-lod"
+            "4.3 non-detect-without-lod",
+            "5.4 durable-good-is-its-own-packaging"
           ]
         },
         "cat": "Diapers",
@@ -24538,7 +24534,8 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
-            "2 formula-read-from-materials"
+            "2 formula-read-from-materials",
+            "5.4 durable-good-is-its-own-packaging"
           ]
         },
         "cat": "Deodorant",
@@ -25032,27 +25029,24 @@
         "source": "alternative",
         "note": "Recommended cleansers, serums, and milk in glass bottles with short vegan ingredient lists.",
         "ext": {
-          "verdict": "unrated",
+          "verdict": "careful",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: materials",
+          "why": "section 6 ceiling: testing is caution",
           "fronts": {
             "formula": "none",
             "legal": "none",
             "testing": "caution",
-            "materials": "unassessed"
+            "materials": "pass"
           },
           "scope": "line",
           "basis": "direct",
           "disclose": false,
           "authored": true,
-          "heldBack": [
-            "materials"
-          ],
-          "heldFrom": "good",
           "frontNotes": {
             "testing": "Polypropylene baby bottles release up to 16.2 million microplastic particles per litre at formula temperature (Trinity College Dublin, Nature Food, 2020). This is about baby bottles generally. We have not confirmed it for this product.",
             "formula": "An object has no ingredient list. What it is made of is the materials check.",
-            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
+            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
+            "materials": "Materials named in the listing."
           },
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontOrigin": {
@@ -25084,7 +25078,9 @@
             "confirmedBy": "",
             "escape": "Glass, stainless and silicone bottles are not the polymer that was measured.",
             "alternative": ""
-          }
+          },
+          "cappedFrom": "good",
+          "capRestoreWhy": ""
         },
         "research": "Packaging: Skincare ships in flint glass containers, including recycled glass, with aluminum and post-consumer resin closures; contents are liquid cleansers, serums, and lotions."
       }
@@ -25824,7 +25820,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "5.4 durable-good-is-its-own-packaging"
+          ]
         },
         "cat": "Diapers",
         "matchAll": [
@@ -26152,7 +26150,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "5.4 durable-good-is-its-own-packaging"
+          ]
         },
         "cat": "Clothing",
         "matchAll": [
@@ -31444,26 +31444,23 @@
         "source": "alternative",
         "note": "Most established boar bristle bamboo toothbrush, 100% boar hair with no petrochemicals.",
         "ext": {
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: materials",
+          "why": "",
           "fronts": {
             "formula": "none",
             "legal": "none",
             "testing": "unassessed",
-            "materials": "unassessed"
+            "materials": "pass"
           },
           "scope": "line",
           "basis": "direct",
           "disclose": false,
           "authored": true,
-          "heldBack": [
-            "materials"
-          ],
-          "heldFrom": "good",
           "frontNotes": {
             "formula": "An object has no ingredient list. What it is made of is the materials check.",
-            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
+            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
+            "materials": "Materials named in the listing."
           },
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontOrigin": {
@@ -32192,7 +32189,7 @@
         "note": "Brushed variants may use chemical flame retardant treatments per SKU.",
         "ext": {
           "frontNotes": {
-            "materials": "We have not established what the product actually touches.",
+            "materials": "polyester in contact, and we have not recorded what it holds, so the matrix has only one of the two axes it needs.",
             "formula": "An object has no ingredient list. What it is made of is the materials check."
           },
           "verdict": "skip",
@@ -32701,7 +32698,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "5.4 durable-good-is-its-own-packaging"
+          ]
         },
         "cat": "Reusable cloth pads",
         "catAuthored": true,
@@ -37459,14 +37458,15 @@
         "ext": {
           "frontNotes": {
             "materials": "Borosilicate glass with an 18/10 stainless mesh infuser. Both are inert, so every part the tea touches puts nothing into it.",
-            "legal": "Checked against the CPSC recall database on 2026-09-06. No recall on record."
+            "legal": "Checked against the CPSC recall database on 2026-09-06. No recall on record.",
+            "formula": "Materials named in the listing."
           },
           "legalNote": "Checked against the CPSC recall database on 2026-09-06. No recall on record.",
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-09-06",
           "why": "a recommendation needs its checks done; still to do: formula",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "pass",
             "materials": "pass",
             "legal": "none",
             "testing": "unassessed"
@@ -37494,11 +37494,6 @@
             "fat": false,
             "why": "Brewed hot, which pulls more out of whatever it is brewed in."
           },
-          "heldFrom": "good",
-          "restoreWhy": "a recommendation needs its checks done; still to do: formula",
-          "heldBack": [
-            "formula"
-          ],
           "authored": true
         },
         "cat": "Tea",
@@ -39559,27 +39554,26 @@
           },
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: materials",
+          "why": "a vetted store pick, chosen by a person at product scope",
           "fronts": {
             "formula": "pass",
-            "materials": "unassessed",
+            "materials": "pass",
             "legal": "none",
             "testing": "unassessed"
           },
           "frontOrigin": {
             "legal": "database",
-            "formula": "database"
+            "formula": "database",
+            "materials": "inferred"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
           "rules": [
-            "2 formula-read-from-materials"
-          ],
-          "heldBack": [
-            "materials"
+            "2 formula-read-from-materials",
+            "5.4 durable-good-is-its-own-packaging"
           ]
         },
         "cat": "Makeup",
@@ -39650,28 +39644,27 @@
           },
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: materials",
+          "why": "a vetted store pick, chosen by a person at product scope",
           "fronts": {
             "formula": "pass",
-            "materials": "unassessed",
+            "materials": "pass",
             "legal": "none",
             "testing": "pass"
           },
           "frontOrigin": {
             "legal": "database",
             "testing": "inferred",
-            "formula": "inferred"
+            "formula": "inferred",
+            "materials": "inferred"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
           "rules": [
-            "2 formula-read-from-materials"
-          ],
-          "heldBack": [
-            "materials"
+            "2 formula-read-from-materials",
+            "5.4 durable-good-is-its-own-packaging"
           ]
         },
         "cat": "Makeup",
@@ -42758,9 +42751,9 @@
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
           "cappedFrom": "good",
           "capRestoreWhy": "",
-          "verdict": "careful",
+          "verdict": "unrated",
           "dated": "2026-09-09",
-          "why": "section 6 ceiling: formula is caution",
+          "why": "no direct pass on formula, and no lab result standing in for one",
           "fronts": {
             "formula": "caution",
             "materials": "pass",
@@ -43004,26 +42997,23 @@
         "source": "alternative",
         "note": "Recommended refillable cream foundation, mascara, lip tint, blush, and eyeshadow in refillable metal compacts with certified organic ingredients.",
         "ext": {
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: materials",
+          "why": "",
           "fronts": {
             "formula": "none",
             "legal": "none",
             "testing": "unassessed",
-            "materials": "unassessed"
+            "materials": "pass"
           },
           "scope": "line",
           "basis": "direct",
           "disclose": false,
           "authored": true,
-          "heldBack": [
-            "materials"
-          ],
-          "heldFrom": "good",
           "frontNotes": {
             "formula": "An object has no ingredient list. What it is made of is the materials check.",
-            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
+            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
+            "materials": "Materials named in the listing."
           },
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontOrigin": {
@@ -44414,29 +44404,28 @@
           },
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: materials",
+          "why": "a vetted store pick, chosen by a person at product scope",
           "fronts": {
             "formula": "pass",
-            "materials": "unassessed",
+            "materials": "pass",
             "legal": "none",
             "testing": "pass"
           },
           "frontOrigin": {
             "legal": "database",
             "formula": "database",
-            "testing": "hand"
+            "testing": "hand",
+            "materials": "inferred"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
           "rules": [
             "4.3 non-detect-without-lod",
-            "2 formula-read-from-materials"
-          ],
-          "heldBack": [
-            "materials"
+            "2 formula-read-from-materials",
+            "5.4 durable-good-is-its-own-packaging"
           ]
         },
         "cat": "Diaper cream",
@@ -44483,23 +44472,19 @@
         "source": "alternative",
         "note": "The only diaper product with a published independent heavy metals result showing nothing detected: non detect for lead, cadmium, arsenic, and mercury. A zinc free French style liniment of five ingredients (organic olive oil, water, beeswax, glycerin, lime water), USDA Organic and EWG Verified. Our top diaper balm pick.",
         "ext": {
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: materials",
+          "why": "",
           "fronts": {
             "formula": "pass",
             "legal": "none",
             "testing": "unassessed",
-            "materials": "unassessed"
+            "materials": "pass"
           },
           "scope": "line",
           "basis": "direct",
           "disclose": false,
           "authored": true,
-          "heldBack": [
-            "materials"
-          ],
-          "heldFrom": "good",
           "frontNotes": {
             "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
           },
@@ -48047,20 +48032,26 @@
         ],
         "ext": {
           "frontNotes": {
-            "formula": "An object has no ingredient list. What it is made of is the materials check."
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "materials": "polyester in direct contact.",
+            "testing": "Brand marketing describes the polyester mat as OEKO-TEX tested and batch tested; not verified against a certificate registry."
           },
+          "testingNote": "Brand marketing describes the polyester mat as OEKO-TEX tested and batch tested; not verified against a certificate registry.",
+          "testingDate": "2026-09-09",
           "verdict": "careful",
           "dated": "2026-09-09",
           "why": "adverse finding stands",
           "fronts": {
             "formula": "none",
-            "materials": "unassessed",
+            "materials": "caution",
             "legal": "pass",
-            "testing": "unassessed"
+            "testing": "caution"
           },
           "frontOrigin": {
             "formula": "hand",
-            "legal": "inferred"
+            "legal": "inferred",
+            "materials": "database",
+            "testing": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -49030,7 +49021,7 @@
         "ext": {
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
           "frontNotes": {
-            "materials": "We have not established what the product actually touches.",
+            "materials": "polyester in contact, and we have not recorded what it holds, so the matrix has only one of the two axes it needs.",
             "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
             "formula": "An object has no ingredient list. What it is made of is the materials check."
           },
@@ -50424,7 +50415,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "5.4 durable-good-is-its-own-packaging"
+          ]
         },
         "cat": "Baby wipes",
         "research": "Packaging: Minimal packaging: 100% FSC-certified recycled and recyclable cardstock with paper tape; orders ship plastic free with paper or fabric padding. Contents are dry organic cotton flannel wipes.",
@@ -51006,24 +50999,26 @@
             "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
             "formula": "The published ingredient list carries nothing on the hazard list."
           },
-          "verdict": "unrated",
-          "dated": "2026-08-28",
-          "why": "consumable with only a formula read, no second front",
+          "verdict": "good",
+          "dated": "2026-09-09",
+          "why": "direct evidence at sku scope on formula, materials",
           "fronts": {
             "formula": "pass",
-            "materials": "unassessed",
+            "materials": "pass",
             "legal": "none",
             "testing": "unassessed"
           },
           "frontOrigin": {
             "legal": "database",
-            "formula": "database"
+            "formula": "database",
+            "materials": "inferred"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
           "rules": [
-            "2 formula-read-from-materials"
+            "2 formula-read-from-materials",
+            "5.4 durable-good-is-its-own-packaging"
           ]
         },
         "cat": "Laundry detergent",
@@ -51389,7 +51384,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "5.4 durable-good-is-its-own-packaging"
+          ]
         },
         "cat": "Razors",
         "research": "Packaging: Body is chrome-plated metal, not stainless: head is cast zinc alloy (zamak); retailers describe the handle as brass or zinc alloy. No plastic in the razor body.",
@@ -53356,7 +53353,8 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
-            "2 formula-read-from-materials"
+            "2 formula-read-from-materials",
+            "5.4 durable-good-is-its-own-packaging"
           ]
         },
         "cat": "Diaper cream",
@@ -53487,23 +53485,19 @@
         "source": "alternative",
         "note": "USDA Organic (Oregon Tilth) and Leaping Bunny certified diaper balm: olive oil and beeswax with Oregon grape root, myrrh, yarrow, and calendula. No zinc, petroleum, lanolin, or fragrance, and safe for cloth diapers. No lawsuits or recalls found.",
         "ext": {
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: materials",
+          "why": "",
           "fronts": {
             "formula": "pass",
             "legal": "none",
             "testing": "unassessed",
-            "materials": "unassessed"
+            "materials": "pass"
           },
           "scope": "line",
           "basis": "direct",
           "disclose": false,
           "authored": true,
-          "heldBack": [
-            "materials"
-          ],
-          "heldFrom": "good",
           "frontNotes": {
             "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
           },
@@ -55196,7 +55190,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "5.4 durable-good-is-its-own-packaging"
+          ]
         },
         "cat": "Tampons",
         "catAuthored": true
@@ -55236,7 +55232,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "5.4 durable-good-is-its-own-packaging"
+          ]
         },
         "cat": "Period pads",
         "catAuthored": true,
@@ -57772,24 +57770,26 @@
             "formula": "No ingredient list recorded.",
             "legal": "Checked the FDA enforcement database on 2026-08-31. Two closed and remedied recalls on record for the firm: elevated vitamin D3 in Baby's D3 liquid (2024, over 24 months, now informational) and a mislabeled kids gummy (2025, a different product line whose defect does not transfer). Neither is open."
           },
-          "verdict": "unrated",
-          "dated": "2026-09-02",
-          "why": "consumable with only a formula read, no second front",
+          "verdict": "good",
+          "dated": "2026-09-09",
+          "why": "direct evidence at sku scope on formula, materials",
           "fronts": {
             "formula": "pass",
-            "materials": "unassessed",
+            "materials": "pass",
             "legal": "pass",
             "testing": "unassessed"
           },
           "frontOrigin": {
             "legal": "database",
-            "formula": "inferred"
+            "formula": "inferred",
+            "materials": "inferred"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
           "rules": [
-            "2 formula-read-from-materials"
+            "2 formula-read-from-materials",
+            "5.4 durable-good-is-its-own-packaging"
           ]
         },
         "origin": "hand",
@@ -57827,24 +57827,26 @@
             "formula": "No ingredient list recorded.",
             "legal": "Checked the FDA enforcement database on 2026-08-31. Two closed and remedied recalls on record for the firm: elevated vitamin D3 in Baby's D3 liquid (2024, over 24 months, now informational) and a mislabeled kids gummy (2025, a different product line whose defect does not transfer). Neither is open."
           },
-          "verdict": "unrated",
-          "dated": "2026-08-28",
-          "why": "consumable with only a formula read, no second front",
+          "verdict": "good",
+          "dated": "2026-09-09",
+          "why": "direct evidence at sku scope on formula, materials",
           "fronts": {
             "formula": "pass",
-            "materials": "unassessed",
+            "materials": "pass",
             "legal": "pass",
             "testing": "unassessed"
           },
           "frontOrigin": {
             "legal": "database",
-            "formula": "inferred"
+            "formula": "inferred",
+            "materials": "inferred"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
           "rules": [
-            "2 formula-read-from-materials"
+            "2 formula-read-from-materials",
+            "5.4 durable-good-is-its-own-packaging"
           ]
         },
         "cat": "Supplements",
@@ -59237,7 +59239,8 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
-            "2 formula-read-from-materials"
+            "2 formula-read-from-materials",
+            "5.4 durable-good-is-its-own-packaging"
           ]
         },
         "cat": "Makeup",
@@ -68900,22 +68903,29 @@
             "formula": "The published ingredient list carries nothing on the hazard list."
           },
           "verdict": "unrated",
-          "dated": "2026-08-28",
-          "why": "consumable with only a formula read, no second front",
+          "dated": "2026-09-09",
+          "why": "a recommendation needs its checks done; still to do: legal",
           "fronts": {
             "formula": "pass",
-            "materials": "unassessed",
+            "materials": "pass",
             "legal": "unassessed",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "formula": "database"
+            "formula": "database",
+            "materials": "inferred"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
           "rules": [
-            "2 formula-read-from-materials"
+            "2 formula-read-from-materials",
+            "5.4 durable-good-is-its-own-packaging"
+          ],
+          "heldFrom": "good",
+          "restoreWhy": "direct evidence at sku scope on formula, materials",
+          "heldBack": [
+            "legal"
           ]
         },
         "cat": "Supplements",
@@ -71809,9 +71819,9 @@
           "cappedFrom": "good",
           "capRestoreWhy": "direct evidence at sku scope on formula",
           "legalDate": "2024",
-          "verdict": "unrated",
-          "dated": "2026-09-03",
-          "why": "no direct pass on materials, and no lab result standing in for one",
+          "verdict": "careful",
+          "dated": "2026-09-09",
+          "why": "section 6 ceiling: legal is caution",
           "fronts": {
             "formula": "none",
             "materials": "pass",
@@ -71829,7 +71839,8 @@
           "disclose": false,
           "rules": [
             "4.3 non-detect-without-lod",
-            "2 formula-read-from-materials"
+            "2 formula-read-from-materials",
+            "5.4 durable-good-is-its-own-packaging"
           ]
         },
         "cat": "Diapers",
@@ -78432,28 +78443,27 @@
           },
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: materials",
+          "why": "a vetted store pick, chosen by a person at product scope",
           "fronts": {
             "formula": "pass",
-            "materials": "unassessed",
+            "materials": "pass",
             "legal": "pass",
             "testing": "pass"
           },
           "frontOrigin": {
             "legal": "database",
             "testing": "inferred",
-            "formula": "inferred"
+            "formula": "inferred",
+            "materials": "inferred"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
           "rules": [
-            "2 formula-read-from-materials"
-          ],
-          "heldBack": [
-            "materials"
+            "2 formula-read-from-materials",
+            "5.4 durable-good-is-its-own-packaging"
           ]
         },
         "cat": "Supplements",
@@ -79534,7 +79544,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "5.4 durable-good-is-its-own-packaging"
+          ]
         },
         "research": "Ingredients: propylene glycol, water, sodium stearate, organic aloe, zinc ricinoleate, glyceryl laurate, hops CO2 extract, sunflower seed oil, ascorbic acid, lemongrass oil."
       }
@@ -80567,7 +80579,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "5.4 durable-good-is-its-own-packaging"
+          ]
         },
         "cat": "Dental floss",
         "research": "Packaging: Refillable stainless steel floss dispenser; refills are 33 yd spools of pure silk floss waxed with candelilla wax, mint flavor.",
@@ -80933,27 +80947,26 @@
           },
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-08-31",
-          "why": "a recommendation needs its checks done; still to do: materials",
+          "why": "a vetted store pick, chosen by a person at product scope",
           "fronts": {
             "formula": "pass",
-            "materials": "unassessed",
+            "materials": "pass",
             "legal": "none",
             "testing": "unassessed"
           },
           "frontOrigin": {
             "legal": "database",
-            "formula": "inferred"
+            "formula": "inferred",
+            "materials": "inferred"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
           "rules": [
-            "2 formula-read-from-materials"
-          ],
-          "heldBack": [
-            "materials"
+            "2 formula-read-from-materials",
+            "5.4 durable-good-is-its-own-packaging"
           ]
         },
         "cat": "Electrolytes"
@@ -81578,28 +81591,27 @@
           },
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-08-28",
-          "why": "a recommendation needs its checks done; still to do: materials",
+          "why": "a vetted store pick, chosen by a person at product scope",
           "fronts": {
             "formula": "pass",
-            "materials": "unassessed",
+            "materials": "pass",
             "legal": "none",
             "testing": "pass"
           },
           "frontOrigin": {
             "legal": "database",
             "testing": "inferred",
-            "formula": "inferred"
+            "formula": "inferred",
+            "materials": "inferred"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
           "rules": [
-            "2 formula-read-from-materials"
-          ],
-          "heldBack": [
-            "materials"
+            "2 formula-read-from-materials",
+            "5.4 durable-good-is-its-own-packaging"
           ]
         },
         "cat": "Skincare",
@@ -84719,28 +84731,27 @@
           },
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: materials",
+          "why": "a vetted store pick, chosen by a person at product scope",
           "fronts": {
             "formula": "pass",
-            "materials": "unassessed",
+            "materials": "pass",
             "legal": "none",
             "testing": "pass"
           },
           "frontOrigin": {
             "legal": "database",
             "testing": "inferred",
-            "formula": "inferred"
+            "formula": "inferred",
+            "materials": "inferred"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
           "rules": [
-            "2 formula-read-from-materials"
-          ],
-          "heldBack": [
-            "materials"
+            "2 formula-read-from-materials",
+            "5.4 durable-good-is-its-own-packaging"
           ]
         },
         "cat": "Makeup",
@@ -84789,23 +84800,19 @@
         "source": "alternative",
         "note": "Recommended Expressionist mascara pick.",
         "ext": {
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: materials",
+          "why": "",
           "fronts": {
             "formula": "pass",
             "legal": "none",
             "testing": "unassessed",
-            "materials": "unassessed"
+            "materials": "pass"
           },
           "scope": "line",
           "basis": "direct",
           "disclose": false,
           "authored": true,
-          "heldBack": [
-            "materials"
-          ],
-          "heldFrom": "good",
           "frontNotes": {
             "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
           },
@@ -85610,20 +85617,22 @@
           "why": "section 6 ceiling: formula is caution",
           "fronts": {
             "formula": "caution",
-            "materials": "unassessed",
+            "materials": "pass",
             "legal": "pass",
             "testing": "pass"
           },
           "frontOrigin": {
             "legal": "database",
             "testing": "inferred",
-            "formula": "database"
+            "formula": "database",
+            "materials": "inferred"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
           "rules": [
-            "2 formula-read-from-materials"
+            "2 formula-read-from-materials",
+            "5.4 durable-good-is-its-own-packaging"
           ]
         },
         "cat": "Baby lotion",
@@ -88323,21 +88332,27 @@
         "ext": {
           "frontNotes": {
             "formula": "An object has no ingredient list. What it is made of is the materials check.",
-            "legal": "Checked recall records on 2026-09-09. 2023 recall of 472,850 Silver Lining Cloud activity gyms (detaching raindrop pieces, choking, 12 reports, no injuries); 2019 Tuo convertible high chair recall (legs detach). No chemical violations and no lawsuits found, but two recalls in adjacent baby product lines within five years is a pattern worth carrying."
+            "legal": "Checked recall records on 2026-09-09. 2023 recall of 472,850 Silver Lining Cloud activity gyms (detaching raindrop pieces, choking, 12 reports, no injuries); 2019 Tuo convertible high chair recall (legs detach). No chemical violations and no lawsuits found, but two recalls in adjacent baby product lines within five years is a pattern worth carrying.",
+            "materials": "eva in direct contact.",
+            "testing": "Searched September 2026: no published certifications or chemical test results exist for the Playspot tiles."
           },
           "legalNote": "Checked recall records on 2026-09-09. 2023 recall of 472,850 Silver Lining Cloud activity gyms (detaching raindrop pieces, choking, 12 reports, no injuries); 2019 Tuo convertible high chair recall (legs detach). No chemical violations and no lawsuits found, but two recalls in adjacent baby product lines within five years is a pattern worth carrying.",
+          "testingNote": "Searched September 2026: no published certifications or chemical test results exist for the Playspot tiles.",
+          "testingDate": "2026-09-09",
           "verdict": "careful",
           "dated": "2026-09-09",
           "why": "adverse finding stands",
           "fronts": {
             "formula": "none",
-            "materials": "unassessed",
+            "materials": "caution",
             "legal": "caution",
-            "testing": "unassessed"
+            "testing": "none"
           },
           "frontOrigin": {
             "formula": "hand",
-            "legal": "database"
+            "legal": "database",
+            "materials": "database",
+            "testing": "database"
           },
           "scope": "line",
           "basis": "direct",
@@ -88415,21 +88430,27 @@
         "ext": {
           "frontNotes": {
             "formula": "An object has no ingredient list. What it is made of is the materials check.",
-            "legal": "Checked recall and litigation records on 2026-09-09: searches for lawsuits, class actions, CPSC recalls and complaint clusters found nothing for this brand. The caution on this brand is a materials finding (EVA foam), not a legal one."
+            "legal": "Checked recall and litigation records on 2026-09-09: searches for lawsuits, class actions, CPSC recalls and complaint clusters found nothing for this brand. The caution on this brand is a materials finding (EVA foam), not a legal one.",
+            "materials": "eva in direct contact.",
+            "testing": "Brand commissioned annual SGS screening against EU toy limits, formamide often not detected; not an independent watchdog result."
           },
           "legalNote": "Checked recall and litigation records on 2026-09-09: searches for lawsuits, class actions, CPSC recalls and complaint clusters found nothing for this brand. The caution on this brand is a materials finding (EVA foam), not a legal one.",
+          "testingNote": "Brand commissioned annual SGS screening against EU toy limits, formamide often not detected; not an independent watchdog result.",
+          "testingDate": "2026-09-09",
           "verdict": "careful",
           "dated": "2026-09-09",
           "why": "adverse finding stands",
           "fronts": {
             "formula": "none",
-            "materials": "unassessed",
+            "materials": "caution",
             "legal": "pass",
-            "testing": "unassessed"
+            "testing": "caution"
           },
           "frontOrigin": {
             "formula": "hand",
-            "legal": "database"
+            "legal": "database",
+            "materials": "database",
+            "testing": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -88502,21 +88523,27 @@
         "ext": {
           "frontNotes": {
             "formula": "An object has no ingredient list. What it is made of is the materials check.",
-            "legal": "Checked recall and litigation records on 2026-09-09: searches for lawsuits, class actions, CPSC recalls and complaint clusters found nothing for this brand. The caution on this brand is a materials finding (EVA foam under printed film), not a legal one."
+            "legal": "Checked recall and litigation records on 2026-09-09: searches for lawsuits, class actions, CPSC recalls and complaint clusters found nothing for this brand. The caution on this brand is a materials finding (EVA foam under printed film), not a legal one.",
+            "materials": "polyurethane in direct contact.",
+            "testing": "Brand states ASTM F963, CPSIA, EN 71 and REACH testing; nothing published, and the GREENGUARD and CertiPUR certificates on its site belong to the furniture line."
           },
           "legalNote": "Checked recall and litigation records on 2026-09-09: searches for lawsuits, class actions, CPSC recalls and complaint clusters found nothing for this brand. The caution on this brand is a materials finding (EVA foam under printed film), not a legal one.",
+          "testingNote": "Brand states ASTM F963, CPSIA, EN 71 and REACH testing; nothing published, and the GREENGUARD and CertiPUR certificates on its site belong to the furniture line.",
+          "testingDate": "2026-09-09",
           "verdict": "careful",
           "dated": "2026-09-09",
           "why": "adverse finding stands",
           "fronts": {
             "formula": "none",
-            "materials": "unassessed",
+            "materials": "caution",
             "legal": "pass",
-            "testing": "unassessed"
+            "testing": "caution"
           },
           "frontOrigin": {
             "formula": "hand",
-            "legal": "database"
+            "legal": "database",
+            "materials": "database",
+            "testing": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -88585,9 +88612,13 @@
         "ext": {
           "frontNotes": {
             "formula": "An object has no ingredient list. What it is made of is the materials check.",
-            "legal": "Checked recall and litigation records on 2026-09-09: searches for lawsuits, class actions, CPSC recalls and complaint clusters found nothing for this brand. The caution on this brand is a materials finding (bonded PU leather), not a legal one."
+            "legal": "Checked recall and litigation records on 2026-09-09: searches for lawsuits, class actions, CPSC recalls and complaint clusters found nothing for this brand. The caution on this brand is a materials finding (bonded PU leather), not a legal one.",
+            "materials": "polyurethane in direct contact.",
+            "testing": "Searched September 2026: no third party chemistry published; the brand claims Prop 65 compliance, which is a legal floor, not a test result."
           },
           "legalNote": "Checked recall and litigation records on 2026-09-09: searches for lawsuits, class actions, CPSC recalls and complaint clusters found nothing for this brand. The caution on this brand is a materials finding (bonded PU leather), not a legal one.",
+          "testingNote": "Searched September 2026: no third party chemistry published; the brand claims Prop 65 compliance, which is a legal floor, not a test result.",
+          "testingDate": "2026-09-09",
           "verdict": "careful",
           "dated": "2026-09-09",
           "why": "adverse finding stands",
@@ -88595,12 +88626,13 @@
             "formula": "none",
             "materials": "caution",
             "legal": "pass",
-            "testing": "unassessed"
+            "testing": "none"
           },
           "frontOrigin": {
-            "materials": "inferred",
+            "materials": "database",
             "formula": "hand",
-            "legal": "database"
+            "legal": "database",
+            "testing": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -88761,9 +88793,12 @@
           "frontNotes": {
             "materials": "PVC in direct contact.",
             "legal": "Checked recall and litigation records on 2026-09-09: searches for lawsuits, class actions, CPSC recalls and complaint clusters found nothing for this brand. The caution on this brand is a materials finding (PVC), not a legal one.",
-            "formula": "An object has no ingredient list. What it is made of is the materials check."
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "testing": "Brand cites EN71 toy standard testing; no independent watchdog results found."
           },
           "legalNote": "Checked recall and litigation records on 2026-09-09: searches for lawsuits, class actions, CPSC recalls and complaint clusters found nothing for this brand. The caution on this brand is a materials finding (PVC), not a legal one.",
+          "testingNote": "Brand cites EN71 toy standard testing; no independent watchdog results found.",
+          "testingDate": "2026-09-09",
           "verdict": "careful",
           "dated": "2026-09-09",
           "why": "adverse finding stands",
@@ -88771,12 +88806,13 @@
             "formula": "none",
             "materials": "caution",
             "legal": "pass",
-            "testing": "unassessed"
+            "testing": "caution"
           },
           "frontOrigin": {
             "formula": "hand",
             "materials": "database",
-            "legal": "database"
+            "legal": "database",
+            "testing": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -88843,7 +88879,8 @@
         "ext": {
           "frontNotes": {
             "formula": "An object has no ingredient list. What it is made of is the materials check.",
-            "legal": "Checked recall and litigation records on 2026-09-09: no US recalls or lawsuits found. A 2017 Korean lab reported dimethylacetamide at 157 and 243 ppm at two of four tested spots on a mat; CreamHaus disputed the methodology, stopped using the solvent, and no US action ever resulted. Recorded under testing, not as a legal action."
+            "legal": "Checked recall and litigation records on 2026-09-09: no US recalls or lawsuits found. A 2017 Korean lab reported dimethylacetamide at 157 and 243 ppm at two of four tested spots on a mat; CreamHaus disputed the methodology, stopped using the solvent, and no US action ever resulted. Recorded under testing, not as a legal action.",
+            "materials": "polyurethane in direct contact."
           },
           "legalNote": "Checked recall and litigation records on 2026-09-09: no US recalls or lawsuits found. A 2017 Korean lab reported dimethylacetamide at 157 and 243 ppm at two of four tested spots on a mat; CreamHaus disputed the methodology, stopped using the solvent, and no US action ever resulted. Recorded under testing, not as a legal action.",
           "verdict": "careful",
@@ -88856,7 +88893,7 @@
             "testing": "pass"
           },
           "frontOrigin": {
-            "materials": "inferred",
+            "materials": "database",
             "testing": "inferred",
             "formula": "hand",
             "legal": "database"
@@ -88928,21 +88965,27 @@
         "ext": {
           "frontNotes": {
             "formula": "An object has no ingredient list. What it is made of is the materials check.",
-            "legal": "Checked recall and litigation records on 2026-09-09: searches for lawsuits, class actions, CPSC recalls and complaint clusters found nothing for this brand. The caution on this brand is the absence of published chemistry, not a legal finding."
+            "legal": "Checked recall and litigation records on 2026-09-09: searches for lawsuits, class actions, CPSC recalls and complaint clusters found nothing for this brand. The caution on this brand is the absence of published chemistry, not a legal finding.",
+            "materials": "eva in direct contact.",
+            "testing": "Searched September 2026: no certifications or test results published anywhere we could find."
           },
           "legalNote": "Checked recall and litigation records on 2026-09-09: searches for lawsuits, class actions, CPSC recalls and complaint clusters found nothing for this brand. The caution on this brand is the absence of published chemistry, not a legal finding.",
+          "testingNote": "Searched September 2026: no certifications or test results published anywhere we could find.",
+          "testingDate": "2026-09-09",
           "verdict": "careful",
           "dated": "2026-09-09",
           "why": "adverse finding stands",
           "fronts": {
             "formula": "none",
-            "materials": "unassessed",
+            "materials": "caution",
             "legal": "pass",
-            "testing": "unassessed"
+            "testing": "none"
           },
           "frontOrigin": {
             "formula": "hand",
-            "legal": "database"
+            "legal": "database",
+            "materials": "database",
+            "testing": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -89015,21 +89058,27 @@
         "ext": {
           "frontNotes": {
             "formula": "An object has no ingredient list. What it is made of is the materials check.",
-            "legal": "Checked recall and litigation records on 2026-09-09: searches for lawsuits, class actions, CPSC recalls and complaint clusters found nothing for this brand. The caution on this brand is the absence of published chemistry, not a legal finding."
+            "legal": "Checked recall and litigation records on 2026-09-09: searches for lawsuits, class actions, CPSC recalls and complaint clusters found nothing for this brand. The caution on this brand is the absence of published chemistry, not a legal finding.",
+            "materials": "eva in direct contact.",
+            "testing": "Searched September 2026: no certifications, CPSIA documentation, or formamide results published."
           },
           "legalNote": "Checked recall and litigation records on 2026-09-09: searches for lawsuits, class actions, CPSC recalls and complaint clusters found nothing for this brand. The caution on this brand is the absence of published chemistry, not a legal finding.",
+          "testingNote": "Searched September 2026: no certifications, CPSIA documentation, or formamide results published.",
+          "testingDate": "2026-09-09",
           "verdict": "careful",
           "dated": "2026-09-09",
           "why": "adverse finding stands",
           "fronts": {
             "formula": "none",
-            "materials": "unassessed",
+            "materials": "caution",
             "legal": "pass",
-            "testing": "unassessed"
+            "testing": "none"
           },
           "frontOrigin": {
             "formula": "hand",
-            "legal": "database"
+            "legal": "database",
+            "materials": "database",
+            "testing": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -89099,21 +89148,26 @@
           "legalNote": "Checked recall and litigation records on 2026-09-09: searches for lawsuits, class actions, CPSC recalls and complaint clusters found nothing for this brand. The caution on this brand is a materials finding (polyester over PU memory foam), not a legal one.",
           "frontNotes": {
             "legal": "Checked recall and litigation records on 2026-09-09: searches for lawsuits, class actions, CPSC recalls and complaint clusters found nothing for this brand. The caution on this brand is a materials finding (polyester over PU memory foam), not a legal one.",
-            "formula": "An object has no ingredient list. What it is made of is the materials check."
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "materials": "memory foam in direct contact.",
+            "testing": "Listing claims OEKO-TEX Standard 100 and freedom from BPA, phthalates and formamide; the certificate could not be verified against the official site, and which component it covers is unclear."
           },
+          "testingNote": "Listing claims OEKO-TEX Standard 100 and freedom from BPA, phthalates and formamide; the certificate could not be verified against the official site, and which component it covers is unclear.",
+          "testingDate": "2026-09-09",
           "verdict": "careful",
           "dated": "2026-09-09",
           "why": "adverse finding stands",
           "fronts": {
             "formula": "none",
-            "materials": "unassessed",
+            "materials": "caution",
             "legal": "pass",
-            "testing": "pass"
+            "testing": "caution"
           },
           "frontOrigin": {
             "formula": "hand",
-            "testing": "inferred",
-            "legal": "database"
+            "testing": "database",
+            "legal": "database",
+            "materials": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -89184,20 +89238,26 @@
           "legalNote": "Checked recall and litigation records on 2026-09-09. No product has ever been recalled. A 2024 wrongful death lawsuit over the original infant lounger (S.D. Tex., filed July 2024) was settled and the lounger retired; the company is the lead petitioner challenging the CPSC infant support cushion rule (16 CFR 1243) in the D.C. Circuit. Litigation posture on a padded infant product line is a finding for the padded play mat and gym we researched.",
           "frontNotes": {
             "legal": "Checked recall and litigation records on 2026-09-09. No product has ever been recalled. A 2024 wrongful death lawsuit over the original infant lounger (S.D. Tex., filed July 2024) was settled and the lounger retired; the company is the lead petitioner challenging the CPSC infant support cushion rule (16 CFR 1243) in the D.C. Circuit. Litigation posture on a padded infant product line is a finding for the padded play mat and gym we researched.",
-            "formula": "An object has no ingredient list. What it is made of is the materials check."
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "materials": "The 100% organic cotton claim attaches to the outer twill only; neither the official page nor the listings disclose what the fill is, on a padded product for infants. Undisclosed composition is the finding, not a gap waiting to be filled.",
+            "testing": "Brand claims 16 CFR 1243 and ASTM F963 compliance; no GOTS, no OEKO-TEX, and the fill is undisclosed."
           },
+          "testingNote": "Brand claims 16 CFR 1243 and ASTM F963 compliance; no GOTS, no OEKO-TEX, and the fill is undisclosed.",
+          "testingDate": "2026-09-09",
           "verdict": "careful",
           "dated": "2026-09-09",
           "why": "adverse finding stands",
           "fronts": {
             "formula": "none",
-            "materials": "unassessed",
+            "materials": "caution",
             "legal": "caution",
-            "testing": "unassessed"
+            "testing": "caution"
           },
           "frontOrigin": {
             "formula": "hand",
-            "legal": "database"
+            "legal": "database",
+            "materials": "hand",
+            "testing": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -89213,8 +89273,8 @@
     "id": "crane-baby",
     "brand": "Crane Baby",
     "category": "Play mats",
-    "stance": "neutral",
-    "reason": "Conventional (not organic) cotton exterior with a polyester fill, machine washable, no certifications claimed. Clean record: no recalls or lawsuits found in September 2026 searches. Researched for our play mats guide but not a pick; nothing disqualifying, just a mainstream construction without the certs our picks carry.",
+    "stance": "good",
+    "reason": "Every front we checked came back clean: 100% cotton contact surface over a disclosed polyester fill, no recalls, no lawsuits, and we searched for tests and certifications and found that none exist, which is a completed check, not a gap. Not featured in our guide because nothing distinguishes it: the cotton is conventional rather than organic and no certificate stands behind any component.",
     "evidence": "100% cotton exterior (not organic), polyester fill; no certs; no recalls or lawsuits found",
     "alternative": "",
     "sources": [
@@ -89257,8 +89317,8 @@
         "asins": [
           "B09T2F97C9"
         ],
-        "verdict": "neutral",
-        "note": "Conventional (not organic) cotton exterior with a polyester fill. Clean record, no certifications; not a pick and nothing disqualifying.",
+        "verdict": "good",
+        "note": "Conventional cotton exterior over a disclosed polyester fill. Clean on every checked front; carries no certifications.",
         "matchAll": [
           [
             "crane",
@@ -89270,14 +89330,15 @@
           "frontNotes": {
             "formula": "An object has no ingredient list. What it is made of is the materials check.",
             "legal": "Checked recall and litigation records on 2026-09-09: searches for lawsuits, class actions, CPSC recalls and complaint clusters found nothing for this brand.",
-            "testing": "Searched September 2026: no independent tests and no certifications exist for this product. Looked, nothing exists, which is different from nobody having looked."
+            "testing": "Searched September 2026: no independent tests and no certifications exist for this product. Looked, nothing exists, which is different from nobody having looked.",
+            "materials": "In contact with cotton, which puts nothing into what it holds."
           },
           "legalNote": "Checked recall and litigation records on 2026-09-09: searches for lawsuits, class actions, CPSC recalls and complaint clusters found nothing for this brand.",
           "testingNote": "Searched September 2026: no independent tests and no certifications exist for this product. Looked, nothing exists, which is different from nobody having looked.",
           "testingDate": "2026-09-09",
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-09-09",
-          "why": "neutral is not a verdict, nothing is being asserted",
+          "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
             "materials": "pass",
@@ -89286,17 +89347,14 @@
           },
           "frontOrigin": {
             "formula": "hand",
-            "materials": "inferred",
+            "materials": "database",
             "legal": "database",
             "testing": "database"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": [
-            "2 formula-read-from-materials",
-            "5.4 durable-good-is-its-own-packaging"
-          ]
+          "rules": []
         }
       }
     ]
