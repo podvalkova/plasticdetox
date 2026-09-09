@@ -141,6 +141,14 @@ cannot check. Each caps at careful and never fails a front alone.
 
 > `artificial flavors`, `fragrance`, `gum base`, `natural flavors`, `natural flavour`, `parfum`, `proprietary blend`, `undisclosed`
 
+**Category scoped cautions.** Generated from `CATEGORY_CAUTION` in the same
+file. A term here is a documented downside in one category and unremarkable
+elsewhere, so it cautions only inside the category it names, caps at careful,
+and never fails a front alone. The evidence behind each term lives as a
+comment on the code entry and as prose in 2.1b.
+
+> **Baby formula**: `palm`
+
 <!-- hazard-list:end -->
 
 **Disclosure failures.** A legal umbrella that hides composition: "fragrance"
@@ -194,6 +202,39 @@ And the practical consequence, which is the point of the rule:
 
 > Where a brand sells an unscented version of the same product, that is the pick.
 > Where it does not, the product leaves and we recommend somebody who does.
+
+### 2.1b Category scoped cautions: palm oil in infant formula
+
+Some ingredients are a documented problem in exactly one category and
+unremarkable everywhere else. Palm oil is the type specimen: in a bar of soap
+it is saponified stock, in a pantry item it is a quality question, and in
+infant formula it is the subject of randomized trials and an EU contaminant
+regulation. A site wide rule would convict the soap to catch the formula, so
+these terms live in `CATEGORY_CAUTION`, scoped to the category they name.
+
+The palm evidence, both lines category specific. First, absorption: palm
+olein puts palmitic acid at the sn-1/3 positions where breast milk carries it
+at sn-2, the freed palmitic acid forms insoluble calcium soaps in the infant
+gut, and randomized trials plus the Koo 2006 systematic review measured the
+result: fat absorption of 90.4 percent on a palm olein formula against 97.6
+percent on an sn-2 blend, lower calcium absorption, lower bone
+mineralization, harder stools. Second, process contaminants: refining palm
+oil at high heat creates 3-MCPD and glycidyl esters, palm carries 6 to 10
+times more of them than other oils, EFSA names formula fed infants the
+maximally exposed group, glycidol is IARC group 2A, and the EU set infant
+formula specific limits in Regulation 2018/290 while the US has none.
+
+Why caution and not fail: palm olein is permitted by every regulator,
+deliberately used to match breast milk's palmitic acid content, and fed to
+healthy babies by the billion. The findings are a measured disadvantage and
+an elevated contaminant load, not a named toxin in the 2.1 sense. A caution
+caps the product at careful, which is the verdict the evidence supports.
+
+The boundary, stated so this rule does not grow by vibes: soy, sunflower and
+coconut oils are not on the list, because no comparable body of evidence
+exists for them in formula and a rule needs a finding, not a food trend.
+sn-2 structured palm (the Kabrita style beta palmitate) still cautions: it
+answers the absorption objection but not the refining contaminants.
 
 ### 2.2 Conditional failures
 

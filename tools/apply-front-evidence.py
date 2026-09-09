@@ -377,7 +377,7 @@ CONSUMABLE = re.compile(
     r"conditioner|deodorant|wipe|honey|chocolate|diaper|period", re.I)
 
 
-def read_formula(entry):
+def read_formula(entry, cat=""):
     """
     Return (status, why, origin) for the formula front from a recorded list.
 
@@ -451,6 +451,11 @@ def read_formula(entry):
 
     named = hits(_apr.HAZARD)
     hidden = hits(_apr.DISCLOSURE_FAILURE)
+    # Category scoped cautions: a documented downside in this category only.
+    # Runs on the recorded list like the hazard scan, with the same negation
+    # guard, so "no palm oil" on a clean label never trips it.
+    scoped_cautions = _apr.CATEGORY_CAUTION.get(cat, {})
+    scoped = hits(list(scoped_cautions))
 
     if not complete:
         # A hazard word in description copy is not a formula finding, and the
@@ -472,6 +477,9 @@ def read_formula(entry):
     if named:
         return ("fail", "The published ingredient list names "
                 + ", ".join(sorted(named)[:4]), "database", sorted(named))
+    if scoped:
+        return ("caution", "The published ingredient list includes "
+                + scoped_cautions[sorted(scoped)[0]], "database", sorted(scoped))
     if hidden:
         return ("caution", "The published ingredient list hides composition behind "
                 + ", ".join(sorted(hidden)[:3]), "database", sorted(hidden))
@@ -530,12 +538,14 @@ def main():
                 continue
 
             # Formula reads its own recorded list and is independent of the
-            # material, so it runs whether or not a material is on file.
-            f_status, f_why, f_origin, f_terms = read_formula(entry)
+            # material, so it runs whether or not a material is on file. The
+            # category rides along for the category scoped cautions.
+            cat = p.get("cat") or b.get("category") or ""
+            f_status, f_why, f_origin, f_terms = read_formula(entry, cat)
             # A thing has no ingredient list, so there is nothing for the reader
             # to return and nothing to overwrite. Without this the reader cleared
             # 40 diapers back to unassessed on every run.
-            if (p.get("cat") or b.get("category") or "") in NO_INGREDIENT_CATS:
+            if cat in NO_INGREDIENT_CATS:
                 e = p.setdefault("ext", {})
                 e.setdefault("fronts", {})["formula"] = "none"
                 e.setdefault("frontNotes", {})["formula"] = (

@@ -257,6 +257,38 @@ DISCLOSURE_FAILURE = [
     "natural flavour", "artificial flavors", "undisclosed",
 ]
 
+# A category scoped caution is a documented downside in one category and
+# unremarkable everywhere else, so it cautions only inside the category it
+# names and never fails a front alone. It is the written-rule home for
+# findings that are real but not a named toxin.
+#
+# Palm oil in infant formula, added 2026-09 at Anya's request, on two
+# category specific evidence lines. (a) Absorption: randomized trials and the
+# Koo 2006 systematic review show palm olein formulas cut fat absorption
+# (90.4% vs 97.6% against sn-2 palmitate blends) and calcium absorption, and
+# lower bone mineralization, because sn-1/3 palmitic acid forms insoluble
+# calcium soaps in the infant gut. (b) Process contaminants: refined palm
+# carries 6 to 10 times the 3-MCPD and glycidyl esters of other oils (EFSA
+# 2016/2018; glycidol is IARC group 2A), formula fed infants are the
+# maximally exposed group, and the EU set infant formula specific limits
+# (Regulation 2018/290) while the US has none. Bare "palm" is safe at word
+# boundary inside this category, where the word can only mean the oil, and
+# the negation guard clears "no palm oil" labels. Deliberately NOT included:
+# soy, sunflower and coconut oils, which carry no comparable evidence in
+# formula, and a rule needs a finding. sn-2 structured palm (Kabrita style)
+# still cautions: the absorption objection falls away but the refining
+# contaminant load does not.
+CATEGORY_CAUTION = {
+    "Baby formula": {
+        "palm": ("palm based oils, a documented downside in infant formula: "
+                 "randomized trials show lower calcium and fat absorption than "
+                 "sn-2 fat blends, and refined palm carries the highest 3-MCPD "
+                 "and glycidyl ester load of the common formula oils (the EU "
+                 "sets infant formula limits for these contaminants, the US "
+                 "sets none)"),
+    },
+}
+
 
 # For a durable good the object IS its material, so formula and packaging are one
 # front and a fully specified inert material is the complete safety case. A

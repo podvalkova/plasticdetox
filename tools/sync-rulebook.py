@@ -37,6 +37,21 @@ def terms(name):
     return sorted({t for t in re.findall(r'"([^"]+)"', body)}, key=str.lower)
 
 
+def scoped_terms():
+    """CATEGORY_CAUTION is a dict of category -> {term: note}, so the flat
+    terms() reader cannot see it. Parsed here the same way: from the code,
+    comments skipped, so a note never becomes a rule."""
+    src = CODE.read_text()
+    m = re.search(r"CATEGORY_CAUTION = \{(.*?)\n\}\n", src, re.S)
+    if not m:
+        return {}
+    body = "\n".join(l for l in m.group(1).splitlines() if not l.strip().startswith("#"))
+    out = {}
+    for cm in re.finditer(r'"([^"]+)":\s*\{(.*?)\}', body, re.S):
+        out[cm.group(1)] = sorted(re.findall(r'"([^"]+)":', cm.group(2)), key=str.lower)
+    return out
+
+
 def block():
     hz, df = terms("HAZARD"), terms("DISCLOSURE_FAILURE")
     out = [START, "",
@@ -47,8 +62,18 @@ def block():
            "> " + ", ".join(f"`{t}`" for t in hz), "",
            f"**The {len(df)} disclosure failures.** These name no harmful substance; they say we",
            "cannot check. Each caps at careful and never fails a front alone.", "",
-           "> " + ", ".join(f"`{t}`" for t in df), "",
-           END]
+           "> " + ", ".join(f"`{t}`" for t in df), ""]
+    sc = scoped_terms()
+    if sc:
+        out += ["**Category scoped cautions.** Generated from `CATEGORY_CAUTION` in the same",
+                "file. A term here is a documented downside in one category and unremarkable",
+                "elsewhere, so it cautions only inside the category it names, caps at careful,",
+                "and never fails a front alone. The evidence behind each term lives as a",
+                "comment on the code entry and as prose in 2.1b.", ""]
+        for cat in sorted(sc):
+            out.append("> **" + cat + "**: " + ", ".join(f"`{t}`" for t in sc[cat]))
+        out.append("")
+    out.append(END)
     return "\n".join(out)
 
 
