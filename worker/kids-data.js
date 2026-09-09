@@ -71,29 +71,60 @@ export const KIDS = {
   {
    "id": "Kids::Choose a cleaner formula",
    "swap": "Choose a cleaner formula",
-   "why": "The entire diet for months, and formula has tested for heavy metals and seed oil contaminants.",
+   "why": "The entire diet for months, and independent testing keeps finding real differences between brands.",
    "heat": false,
    "free": "None, but preparing with filtered water is the cheapest improvement you can make.",
    "picks": [
     {
      "label": "$$$",
-     "name": "Bobbie Organic Infant Formula",
+     "name": "Bobbie Organic Original",
+     "url": "https://www.amazon.com/dp/B0D2RK7LYW?tag=plasticdetox-20",
+     "note": "Best cleared all four checks"
+    },
+    {
+     "label": "$$$",
+     "name": "Bobbie Organic Gentle",
+     "url": "https://www.amazon.com/dp/B0D2RJYS5Y?tag=plasticdetox-20",
+     "note": "Best for sensitive digestion"
+    },
+    {
+     "label": "$$$",
+     "name": "Bobbie Organic Whole Milk",
      "url": "https://www.amazon.com/dp/B0DY1V2T7H?tag=plasticdetox-20",
-     "note": "Best clean tested formula"
+     "note": "Best for twelve months and up"
     }
    ],
+   "tip": {
+    "title": "The baseline is good, and the brands still differ",
+    "body": "Hear the reassuring part first, because this is the one swap where worrying can do real harm. The FDA's largest formula testing programme ever, over 300 samples and 120,000 data points released in April 2026, found heavy metals below EPA drinking water limits across the board. Every formula on the regulated US shelf is nutritionally complete, and feeding one is always safer than diluting it or making your own. Never do either, whatever you read. Inside that baseline the brands are not the same, and independent testing shows where. Across two Consumer Reports rounds, 41 formulas in 2025 and 49 more in 2026, roughly half carried at least one contaminant at a level CR flags, and the worst arsenic readings, 19.7 and 15.1 ppb in two Abbott hypoallergenic formulas, would fail the 10 ppb standard for drinking water. One brand family cleared all four of our checks: lactose as the only carbohydrate with no palm oil, a steel can that tested non detect for BPA, Top Choices in both CR rounds plus Clean Label Project certification, and a clean current recall and lawsuit record. That last one is the check most brands fail.",
+    "look": [
+     "Lactose as the only carbohydrate, rather than corn syrup solids or maltodextrin",
+     "A steel can, and a brand that has published what the lining tested at",
+     "An independent result you can read: Consumer Reports, Clean Label Project, a named lab",
+     "A recall history you can check, because it is the check most brands fail"
+    ],
+    "skip": [
+     "Diluting formula or making it at home, which is the one genuinely dangerous option here",
+     "Reading a European label as automatically cleaner, which is a different regulator rather than a better result",
+     "\"FDA registered\" read as a safety ranking, since every formula on the shelf clears that floor and it does not sort them"
+    ]
+   },
    "article": {
-    "slug": "microplastics-in-baby-food.html",
-    "title": "Microplastics in Baby Food: What Parents Need to Know (and the Safest Feeding Setup)"
+    "slug": "best-non-toxic-baby-formula.html",
+    "title": "Best Non Toxic Baby Formula: Four Checks, One Brand Left Standing (2026)"
    },
    "faqs": [
     {
-     "q": "Are plastic baby bottles safe?",
-     "a": "A landmark 2020 study from Trinity College Dublin found that polypropylene baby bottles release up to 16 million microplastic particles per liter when exposed to hot water at formula preparation temperatures. Even BPA free plastic bottles release millions of particles. Glass or stainless steel bottles eliminate this exposure entirely."
+     "q": "What is the safest baby formula in 2026?",
+     "a": "Start with the reassuring baseline: the FDA's largest formula testing program ever, over 300 samples and 120,000 data points released in April 2026, found heavy metals below EPA drinking water limits across the board, and every formula on the regulated US shelf is nutritionally complete. Registration is a floor rather than a guarantee, though: independent testing keeps finding real differences between brands, and the recent recalls all happened inside the regulated system. Bobbie was the only brand family that cleared all four of our checks: lactose as the only carbohydrate with no palm oil, a steel can that tested non detect for BPA, Consumer Reports Top Choices placement in both the 2025 and 2026 rounds plus Clean Label Project certification, and a clean current recall and lawsuit record. Always talk to your pediatrician before switching a formula that is working."
     },
     {
-     "q": "Does heating baby food in plastic increase microplastic exposure?",
-     "a": "Yes, dramatically. A 2023 University of Nebraska study found that microwaving food in plastic containers released up to 4.2 million microplastic and 2.1 billion nanoplastic particles per square centimeter. Heat accelerates the breakdown of plastic polymers. Always transfer baby food to glass or ceramic before heating."
+     "q": "Is homemade or diluted baby formula ever safe?",
+     "a": "No. This is the one place where the do it yourself instinct that serves you well everywhere else on this site can seriously hurt a baby. Homemade formula recipes have repeatedly caused hospitalizations for nutrient deficiencies, and diluting formula to stretch a can disrupts an infant's electrolyte balance. Nothing in this article is a reason to make either move. If cost is the constraint, several store brand formulas tested clean for heavy metals in Consumer Reports testing, WIC covers formula for qualifying families, and your pediatrician has seen this problem before and can help. A budget formula from a regulated US shelf, ideally one that tested clean, is a far safer way to feed a baby than homemade formula will ever be."
+    },
+    {
+     "q": "Which baby formulas did Consumer Reports flag?",
+     "a": "In the March 2025 round of 41 powders, the highest inorganic arsenic readings were Abbott EleCare Hypoallergenic at 19.7 ppb and Similac Alimentum at 15.1 ppb, against the 10 ppb the EPA allows in drinking water. The other formulas on the worse choices list were Enfamil Nutramigen, the only formula where BPA and acrylamide were detected, Enfamil ProSobee Simply Plant Based, PurAmino Hypoallergenic, Similac NeoSure, Similac Total Comfort, Kabrita goat milk formula, Dr. Browns SoothePro, and Up and Up Soy. In the March 2026 round of 49 more formulas, 26 contained at least one contaminant at a level CR considers concerning, three powders exceeded its lead threshold, and every plant based formula tested was flagged for inorganic arsenic. Many formulas in both rounds also tested clean, including every Bobbie formula."
     }
    ]
   },
