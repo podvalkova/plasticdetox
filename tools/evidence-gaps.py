@@ -43,18 +43,26 @@ EV = ROOT / "data" / "front-evidence.json"
 RECALLS = ROOT / "data" / "recall-cache.json"
 
 
-def has_formula(e):
-    f = (e or {}).get("formula") or {}
-    return bool((f.get("ingredients") or "").strip())
+# Where an answer came from. A front is only "data" when its origin says a
+# lookup or a stated fact produced it; anything else is the prose classifier
+# guessing, which is what we are trying to stop relying on.
+DATA_ORIGINS = {"database", "stated", "class", "rollup", "hand"}
 
 
-def has_materials(e):
-    m = (e or {}).get("materials") or {}
-    return bool((m.get("material") or "").strip() or (m.get("contact") or "").strip())
+def state(product, front):
+    """answered-from-data / answered-from-prose / unanswered, for one front.
 
-
-def has_testing(e):
-    return bool((e or {}).get("testing"))
+    Measuring "is it in front-evidence.json" was wrong twice. check-recalls
+    writes the legal front directly rather than into that file, and
+    apply-front-evidence writes a materials front without keeping its input, so
+    the file held 147 materials answers while 481 rows actually had one. The
+    front and its recorded origin are the only honest test.
+    """
+    e = product.get("ext") or {}
+    v = (e.get("fronts") or {}).get(front)
+    if v in (None, "", "unassessed", "unknown"):
+        return "unanswered"
+    return "data" if (e.get("frontOrigin") or {}).get(front) in DATA_ORIGINS else "prose"
 
 
 def main():
@@ -84,20 +92,18 @@ def main():
             # tested and the maker does not control whether a lab looked, so an
             # absent test is disclosed rather than held against the product.
             miss = []
-            if not has_materials(e):
+            if state(p, "materials") != "data":
                 miss.append("materials")
             # The legal front is data when it came from a database lookup.
             # check-recalls writes the front directly rather than into the
             # cache, so testing the cache asked the wrong question and reported
             # 164 gaps that were already closed.
-            fr = (p.get("ext") or {}).get("fronts") or {}
-            fo = (p.get("ext") or {}).get("frontOrigin") or {}
-            if fr.get("legal") in (None, "", "unassessed", "unknown") or fo.get("legal") not in ("database", "stated"):
+            if state(p, "legal") != "data":
                 miss.append("legal")
             if CONSUMABLE.search(f"{p.get('cat') or ''} {b.get('category') or ''}") \
-               and not has_formula(e):
+               and state(p, "formula") != "data":
                 miss.append("formula")
-            if not has_testing(e):
+            if state(p, "testing") == "unanswered":
                 optional.append(p)
             for m in miss:
                 gaps[m] += 1

@@ -2845,7 +2845,7 @@
      "cappedFrom": "good",
      "capRestoreWhy": "",
      "verdict": "careful",
-     "dated": "2026-09-08",
+     "dated": "2026-09-09",
      "why": "section 6 ceiling: formula is caution",
      "fronts": {
       "formula": "caution",
@@ -3149,7 +3149,7 @@
      "cappedFrom": "good",
      "capRestoreWhy": "a vetted store pick, chosen by a person at product scope",
      "verdict": "careful",
-     "dated": "2026-09-08",
+     "dated": "2026-09-09",
      "why": "section 6 ceiling: materials is caution",
      "fronts": {
       "formula": "none",
@@ -3587,7 +3587,7 @@
      "cappedFrom": "careful",
      "capRestoreWhy": "adverse finding stands",
      "verdict": "skip",
-     "dated": "2026-09-08",
+     "dated": "2026-09-09",
      "why": "section 6 ceiling: materials is fail, legal is caution",
      "fronts": {
       "formula": "none",
@@ -4391,7 +4391,7 @@
      "capRestoreWhy": "independent lab result at line scope",
      "legalDate": "2026-07",
      "verdict": "careful",
-     "dated": "2026-09-08",
+     "dated": "2026-09-09",
      "why": "section 6 ceiling: legal is caution",
      "fronts": {
       "formula": "pass",
@@ -6261,7 +6261,7 @@
       "formula": "An object has no ingredient list. What it is made of is the materials check."
      },
      "verdict": "good",
-     "dated": "2026-09-08",
+     "dated": "2026-09-09",
      "why": "direct evidence on materials, recorded rather than read off a note",
      "fronts": {
       "formula": "none",
@@ -10523,7 +10523,7 @@
       "formula": "An object has no ingredient list. What it is made of is the materials check."
      },
      "verdict": "good",
-     "dated": "2026-09-08",
+     "dated": "2026-09-09",
      "why": "direct evidence on materials, recorded rather than read off a note",
      "fronts": {
       "formula": "none",
@@ -15274,8 +15274,7 @@
      "disclose": false,
      "rules": [
       "2 formula-read-from-materials"
-     ],
-     "authored": true
+     ]
     },
     "cat": "Sunscreen"
    }
@@ -15699,7 +15698,7 @@
      },
      "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
      "verdict": "good",
-     "dated": "2026-09-08",
+     "dated": "2026-09-09",
      "why": "direct evidence on formula, recorded rather than read off a note",
      "fronts": {
       "formula": "pass",
@@ -21157,12 +21156,15 @@
     ],
     "cat": "Deodorant",
     "ext": {
+     "frontNotes": {
+      "formula": "Aluminium zirconium tetrachlorohydrex gly 18.2% as the active, then cyclopentasiloxane, stearyl alcohol, PPG-14 butyl ether, hydrogenated castor oil, TALC, PEG-8 distearate, fragrance (parfum), BHT. Read from the FDA DailyMed label. Talc is in the stick. IARC reclassified talc as Group 2A, probably carcinogenic to humans, on 5 July 2024, on limited human evidence, sufficient animal evidence and strong mechanistic evidence. Cosmetic talc also carries an asbestos contamination question, which is the J&J litigation. We already skip Desitin partly for talc, and this is the same ingredient in a product applied daily to skin. Cyclopentasiloxane (D5) is the first inactive ingredient. The EU restricted D5 and D6 to a maximum of 0.1 percent in leave-on cosmetics under Regulation 2024/1328, in force since 6 June 2026, on very persistent and very bioaccumulative grounds, and it names deodorant as a target category. D4 has been banned in EU cosmetics since January 2022. There is no US restriction, so this is legal here and present at far above 0.1 percent. 'Fragrance' hides a mixture that can run to hundreds of ingredients. Rule 2.1 makes that a disclosure failure, capping at careful.",
+      "materials": "A plastic twist up tube. The stick is a wax and silicone solid, which the matrix in rule 3.1 pairs with a polyolefin as a caution on a leave-on product.",
+      "legal": "Checked the FDA drug enforcement database on 2026-09-08. Unilever recalled Suave 24-Hour aerosol antiperspirant in 2021 for benzene. Degree was not in that recall, and rule 5.2 decays a closed recall past 24 months to informational."
+     },
+     "legalNote": "Checked the FDA drug enforcement database on 2026-09-08. Unilever recalled Suave 24-Hour aerosol antiperspirant in 2021 for benzene. Degree was not in that recall, and rule 5.2 decays a closed recall past 24 months to informational.",
      "verdict": "skip",
-     "why": "talc, which IARC calls probably carcinogenic, in a product used daily on skin",
      "dated": "2026-09-08",
-     "scope": "sku",
-     "basis": "direct",
-     "disclose": false,
+     "why": "adverse finding stands",
      "fronts": {
       "formula": "fail",
       "materials": "caution",
@@ -21174,26 +21176,12 @@
       "materials": "stated",
       "legal": "database"
      },
-     "frontNotes": {
-      "formula": "Aluminium zirconium tetrachlorohydrex gly 18.2% as the active, then cyclopentasiloxane, stearyl alcohol, PPG-14 butyl ether, hydrogenated castor oil, TALC, PEG-8 distearate, fragrance (parfum), BHT. Read from the FDA DailyMed label. Talc is in the stick. IARC reclassified talc as Group 2A, probably carcinogenic to humans, on 5 July 2024, on limited human evidence, sufficient animal evidence and strong mechanistic evidence. Cosmetic talc also carries an asbestos contamination question, which is the J&J litigation. We already skip Desitin partly for talc, and this is the same ingredient in a product applied daily to skin. Cyclopentasiloxane (D5) is the first inactive ingredient. The EU restricted D5 and D6 to a maximum of 0.1 percent in leave-on cosmetics under Regulation 2024/1328, in force since 6 June 2026, on very persistent and very bioaccumulative grounds, and it names deodorant as a target category. D4 has been banned in EU cosmetics since January 2022. There is no US restriction, so this is legal here and present at far above 0.1 percent. 'Fragrance' hides a mixture that can run to hundreds of ingredients. Rule 2.1 makes that a disclosure failure, capping at careful.",
-      "materials": "A plastic twist up tube. The stick is a wax and silicone solid, which the matrix in rule 3.1 pairs with a polyolefin as a caution on a leave-on product.",
-      "legal": "Checked the FDA drug enforcement database on 2026-09-08. Unilever recalled Suave 24-Hour aerosol antiperspirant in 2021 for benzene. Degree was not in that recall, and rule 5.2 decays a closed recall past 24 months to informational."
-     },
-     "legalNote": "Checked the FDA drug enforcement database on 2026-09-08. Unilever recalled Suave 24-Hour aerosol antiperspirant in 2021 for benzene. Degree was not in that recall, and rule 5.2 decays a closed recall past 24 months to informational.",
-     "exposure": {
-      "type": "leave-on skin",
-      "level": "medium",
-      "score": 6.0,
-      "baby": false,
-      "route": "skin",
-      "duration": "hours",
-      "retained": "leave-on",
-      "frequency": "daily",
-      "heat": false,
-      "fat": false,
-      "why": "Applied daily to skin and left there."
-     },
-     "authored": true
+     "scope": "sku",
+     "basis": "direct",
+     "disclose": false,
+     "rules": [
+      "3 packaging-matrix-fail"
+     ]
     },
     "research": "Ingredients from the FDA DailyMed label: aluminum zirconium tetrachlorohydrex gly 18.2%, cyclopentasiloxane, stearyl alcohol, PPG-14 butyl ether, hydrogenated castor oil, talc, PEG-8 distearate, fragrance, BHT."
    }
@@ -21837,7 +21825,7 @@
       "formula"
      ],
      "verdict": "good",
-     "dated": "2026-09-08",
+     "dated": "2026-09-09",
      "why": "direct evidence on formula, recorded rather than read off a note",
      "fronts": {
       "formula": "pass",
@@ -23181,7 +23169,7 @@
      },
      "legalNote": "Checked recall records on 2026-08-31. One 2018 recall of the Lovey pacifier holder for a detaching snap, resolved; bottles were never involved.",
      "verdict": "good",
-     "dated": "2026-09-08",
+     "dated": "2026-09-09",
      "why": "direct evidence on materials, recorded rather than read off a note",
      "fronts": {
       "formula": "none",
@@ -24192,7 +24180,7 @@
      "testingNote": "Checked. No independent particle count testing of this model is published. The 99.99% at 0.1 micron figure is Dyson's own specification, which under rule 4.2 is a manufacturer disclosure rather than third party evidence. The Shark Navigator is the model reviewers have measured at the exhaust.",
      "testingDate": "2026-09-03",
      "verdict": "good",
-     "dated": "2026-09-08",
+     "dated": "2026-09-09",
      "why": "direct evidence on materials, recorded rather than read off a note",
      "fronts": {
       "formula": "none",
@@ -25462,7 +25450,7 @@
      "cappedFrom": "careful",
      "capRestoreWhy": "adverse finding stands",
      "verdict": "skip",
-     "dated": "2026-09-08",
+     "dated": "2026-09-09",
      "why": "section 6 ceiling: testing is fail",
      "fronts": {
       "formula": "unassessed",
@@ -27636,7 +27624,7 @@
      "cappedFrom": "careful",
      "capRestoreWhy": "adverse finding stands",
      "verdict": "skip",
-     "dated": "2026-09-08",
+     "dated": "2026-09-09",
      "why": "section 6 ceiling: formula is caution, materials is fail",
      "fronts": {
       "formula": "caution",
@@ -32775,7 +32763,7 @@
       "formula": "An object has no ingredient list. What it is made of is the materials check."
      },
      "verdict": "good",
-     "dated": "2026-09-08",
+     "dated": "2026-09-09",
      "why": "direct evidence on materials, recorded rather than read off a note",
      "fronts": {
       "formula": "none",
@@ -34471,7 +34459,7 @@
       "formula": "An object has no ingredient list. What it is made of is the materials check."
      },
      "verdict": "good",
-     "dated": "2026-09-08",
+     "dated": "2026-09-09",
      "why": "direct evidence on materials, recorded rather than read off a note",
      "fronts": {
       "formula": "none",
@@ -34780,7 +34768,7 @@
       "formula": "An object has no ingredient list. What it is made of is the materials check."
      },
      "verdict": "good",
-     "dated": "2026-09-08",
+     "dated": "2026-09-09",
      "why": "direct evidence on materials, recorded rather than read off a note",
      "fronts": {
       "formula": "none",
@@ -35934,7 +35922,7 @@
       "testing": "No detectable PFAS in Consumer Reports' June 2026 round: 19 wipe products from 18 companies, 30 individual PFAS compounds, EPA drinking water method at a 2.3 ng per sample detection limit"
      },
      "verdict": "good",
-     "dated": "2026-09-08",
+     "dated": "2026-09-09",
      "why": "direct evidence on formula, recorded rather than read off a note",
      "fronts": {
       "formula": "pass",
@@ -40096,7 +40084,7 @@
      },
      "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
      "verdict": "good",
-     "dated": "2026-09-08",
+     "dated": "2026-09-09",
      "why": "direct evidence on materials, recorded rather than read off a note",
      "fronts": {
       "formula": "none",
@@ -42707,7 +42695,7 @@
      "cappedFrom": "good",
      "capRestoreWhy": "",
      "verdict": "careful",
-     "dated": "2026-09-08",
+     "dated": "2026-09-09",
      "why": "section 6 ceiling: formula is caution",
      "fronts": {
       "formula": "caution",
@@ -51820,7 +51808,7 @@
       "formula": "An object has no ingredient list. What it is made of is the materials check."
      },
      "verdict": "good",
-     "dated": "2026-09-08",
+     "dated": "2026-09-09",
      "why": "direct evidence on materials, recorded rather than read off a note",
      "fronts": {
       "formula": "none",
@@ -52011,7 +51999,7 @@
      "cappedFrom": "good",
      "capRestoreWhy": "a vetted store pick, chosen by a person at product scope",
      "verdict": "careful",
-     "dated": "2026-09-08",
+     "dated": "2026-09-09",
      "why": "section 6 ceiling: formula is caution",
      "fronts": {
       "formula": "caution",
@@ -53276,7 +53264,7 @@
      "cappedFrom": "careful",
      "capRestoreWhy": "section 6 ceiling: packaging is caution",
      "verdict": "skip",
-     "dated": "2026-09-08",
+     "dated": "2026-09-09",
      "why": "section 6 ceiling: formula is fail, materials is fail",
      "fronts": {
       "formula": "fail",
@@ -55005,7 +54993,7 @@
      "cappedFrom": "good",
      "capRestoreWhy": "",
      "verdict": "careful",
-     "dated": "2026-09-08",
+     "dated": "2026-09-09",
      "why": "section 6 ceiling: formula is caution",
      "fronts": {
       "formula": "caution",
@@ -55416,7 +55404,7 @@
      "cappedFrom": "careful",
      "capRestoreWhy": "Reviewed by hand from our published research on this category.",
      "verdict": "skip",
-     "dated": "2026-09-08",
+     "dated": "2026-09-09",
      "why": "section 6 ceiling: legal is fail",
      "fronts": {
       "formula": "pass",
@@ -55711,7 +55699,7 @@
       "formula": "An object has no ingredient list. What it is made of is the materials check."
      },
      "verdict": "good",
-     "dated": "2026-09-08",
+     "dated": "2026-09-09",
      "why": "direct evidence on materials, recorded rather than read off a note",
      "fronts": {
       "formula": "none",
@@ -58282,7 +58270,7 @@
      },
      "legalNote": "Checked recall records on 2026-08-31. A 2022 recall covered about 100 gray imported UK bottles whose exterior markings exceeded the lead content ban, refunded and resolved; the products we cover were not involved.",
      "verdict": "good",
-     "dated": "2026-09-08",
+     "dated": "2026-09-09",
      "why": "direct evidence on materials, recorded rather than read off a note",
      "fronts": {
       "formula": "none",
@@ -68384,7 +68372,7 @@
      "cappedFrom": "careful",
      "capRestoreWhy": "adverse finding stands",
      "verdict": "skip",
-     "dated": "2026-09-08",
+     "dated": "2026-09-09",
      "why": "section 6 ceiling: formula is caution, testing is fail",
      "fronts": {
       "formula": "caution",
@@ -69201,7 +69189,7 @@
      "cappedFrom": "good",
      "capRestoreWhy": "a vetted store pick, chosen by a person at product scope",
      "verdict": "careful",
-     "dated": "2026-09-08",
+     "dated": "2026-09-09",
      "why": "section 6 ceiling: materials is caution",
      "fronts": {
       "formula": "none",
@@ -71625,7 +71613,7 @@
      "capRestoreWhy": "direct evidence at sku scope on formula, packaging",
      "legalDate": "2024",
      "verdict": "careful",
-     "dated": "2026-09-08",
+     "dated": "2026-09-09",
      "why": "section 6 ceiling: legal is caution",
      "fronts": {
       "formula": "pass",
@@ -77802,54 +77790,32 @@
     "origin": "hand",
     "source": null,
     "ext": {
-     "verdict": "skip",
-     "why": "Reviewed by hand from our published research on this category.",
-     "fronts": {
-      "formula": "unassessed",
-      "materials": "unassessed",
-      "legal": "pass",
-      "testing": "caution"
-     },
-     "scope": "line",
-     "basis": "direct",
-     "disclose": false,
-     "authored": true,
-     "dated": "2026-09-08",
      "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
      "frontNotes": {
       "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
       "testing": "Independent third-party lab testing (Lead Safe Mama, June 2025) found the highest lead level of any baby… (Recorded for Thinkbaby as a whole rather than this product specifically.)",
       "formula": "No ingredient list recorded."
      },
-     "frontOrigin": {
-      "legal": "database"
-     },
      "inheritedFronts": [
       "testing"
      ],
-     "exposure": {
-      "type": "sunscreen",
-      "level": "medium",
-      "score": 7.0,
-      "baby": false,
-      "route": "skin",
-      "duration": "hours",
-      "retained": "leave-on",
-      "frequency": "daily",
-      "heat": false,
-      "fat": true,
-      "why": "Applied thickly over a large area and left there."
+     "verdict": "skip",
+     "dated": "2026-09-08",
+     "why": "adverse finding stands",
+     "fronts": {
+      "formula": "unassessed",
+      "materials": "unassessed",
+      "legal": "pass",
+      "testing": "caution"
      },
-     "formulaAnswers": {
-      "ingredients": "",
-      "prose": "",
-      "complete": false,
-      "verdict": "open",
-      "summary": "No ingredient list recorded.",
-      "flagged": [],
-      "source": "amazon:B00K3JQO9Y",
-      "checked": ""
-     }
+     "frontOrigin": {
+      "legal": "database",
+      "testing": "inferred"
+     },
+     "scope": "sku",
+     "basis": "direct",
+     "disclose": false,
+     "rules": []
     },
     "cat": "Sunscreen"
    }
@@ -78870,8 +78836,10 @@
       "materials": "Surfactant contents in unspecified plastic, diluted and rinsed, never left on skin.",
       "formula": "No ingredient list recorded."
      },
+     "cappedFrom": "careful",
+     "capRestoreWhy": "adverse finding stands",
      "verdict": "skip",
-     "dated": "2026-09-08",
+     "dated": "2026-09-09",
      "why": "section 6 ceiling: formula is fail",
      "fronts": {
       "formula": "fail",
@@ -78888,10 +78856,7 @@
      "disclose": false,
      "rules": [
       "3 packaging-matrix-pass"
-     ],
-     "cappedFrom": "careful",
-     "capRestoreWhy": "adverse finding stands",
-     "authored": true
+     ]
     },
     "cat": "Laundry detergent"
    }
@@ -82678,7 +82643,7 @@
      "capRestoreWhy": "direct evidence at sku scope on formula, packaging",
      "legalDate": "2025",
      "verdict": "careful",
-     "dated": "2026-09-08",
+     "dated": "2026-09-09",
      "why": "section 6 ceiling: legal is caution",
      "fronts": {
       "formula": "none",
