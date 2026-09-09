@@ -3136,7 +3136,7 @@
     "ext": {
      "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
      "frontNotes": {
-      "materials": "plastic in contact, with repeated contact over time.",
+      "materials": "No reverse osmosis system is plastic free: the membrane itself is a polymer, so every system on the market has plastic in the water path and rule 3.6 would excuse that. What this is cautioned for is different and avoidable. A pressure tank stores filtered water against an internal bladder, so it sits in contact for hours or days before you draw it, and dwell time is what drives migration. A tankless system filters on demand and never stores it. We carry one, so the better format exists and 3.6 does not apply.",
       "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
       "formula": "An object has no ingredient list. What it is made of is the materials check."
      },
@@ -3150,7 +3150,7 @@
      "capRestoreWhy": "a vetted store pick, chosen by a person at product scope",
      "verdict": "careful",
      "dated": "2026-09-09",
-     "why": "section 6 ceiling: materials is caution",
+     "why": "filtered water stored against a tank bladder, where a tankless system does not store it",
      "fronts": {
       "formula": "none",
       "materials": "caution",
@@ -3160,7 +3160,7 @@
      "frontOrigin": {
       "legal": "database",
       "testing": "inferred",
-      "materials": "database",
+      "materials": "stated",
       "formula": "hand"
      },
      "scope": "sku",
@@ -3168,7 +3168,8 @@
      "disclose": false,
      "rules": [
       "3 packaging-matrix-pass"
-     ]
+     ],
+     "authored": true
     },
     "cat": "Water filters",
     "research": "Packaging: Under-sink durable unit; water path uses food-grade plastic tubing, a pressurized steel storage tank, a stainless steel check valve, and a lead-free faucet. Filter housing resin unstated. Materials: Five stages: polypropylene sediment filter, two extruded activated carbon block filters, TFC reverse osmosis membrane, coconut-shell refining carbon post-filter.",
@@ -51993,17 +51994,15 @@
     "ext": {
      "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
      "frontNotes": {
-      "formula": "The published ingredient list hides composition behind gum base.",
+      "formula": "The published ingredient list carries nothing on the hazard list",
       "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
      },
-     "cappedFrom": "good",
-     "capRestoreWhy": "a vetted store pick, chosen by a person at product scope",
-     "verdict": "careful",
+     "verdict": "good",
      "dated": "2026-09-09",
-     "why": "section 6 ceiling: formula is caution",
+     "why": "a vetted store pick, chosen by a person at product scope",
      "fronts": {
-      "formula": "caution",
-      "materials": "unassessed",
+      "formula": "pass",
+      "materials": "pass",
       "legal": "none",
       "testing": "unassessed"
      },
@@ -52014,7 +52013,8 @@
      "scope": "sku",
      "basis": "direct",
      "disclose": false,
-     "rules": []
+     "rules": [],
+     "authored": true
     },
     "cat": "Pantry"
    },
@@ -54986,17 +54986,15 @@
      "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
      "frontNotes": {
       "materials": "The wipe is 100% organic cotton and genuinely plastic free, which is the part that touches skin. The pack itself is recyclable plastic film, and the brand's plastic free claim is about the wipe rather than the packet. Aqueous contents in film is the low migration end of the matrix.",
-      "formula": "The published ingredient list hides composition behind parfum.",
+      "formula": "The published ingredient list carries nothing on the hazard list",
       "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
       "testing": "No detectable PFAS in Consumer Reports' June 2026 round: 19 wipe products from 18 companies, 30 individual PFAS compounds, EPA drinking water method at a 2.3 ng per sample detection limit"
      },
-     "cappedFrom": "good",
-     "capRestoreWhy": "",
-     "verdict": "careful",
+     "verdict": "good",
      "dated": "2026-09-09",
-     "why": "section 6 ceiling: formula is caution",
+     "why": "",
      "fronts": {
-      "formula": "caution",
+      "formula": "pass",
       "materials": "pass",
       "legal": "none",
       "testing": "pass"
@@ -55010,7 +55008,8 @@
      "scope": "sku",
      "basis": "direct",
      "disclose": false,
-     "rules": []
+     "rules": [],
+     "authored": true
     },
     "cat": "Baby wipes",
     "matchAll": [
@@ -71599,7 +71598,7 @@
    {
     "name": "Laundry detergent",
     "verdict": "good",
-    "note": "EPA Safer Choice plant based formula with a fragrance free option.",
+    "note": "EPA Safer Choice plant based formula with a fragrance free option. Removed from our picks: the brand's own representations are under an adverse finding, so its claims need third party proof.",
     "asins": [
      "B07FVX9Z9H"
     ],
@@ -71634,7 +71633,8 @@
      ]
     },
     "cat": "Laundry detergent",
-    "research": "Packaging: The 90 fl oz bottle is 100% post-consumer recycled plastic (resin unstated); cap is plastic; contents are liquid laundry detergent."
+    "research": "Packaging: The 90 fl oz bottle is 100% post-consumer recycled plastic (resin unstated); cap is plastic; contents are liquid laundry detergent.",
+    "tradeoff": ""
    },
    {
     "name": "Diapers",
@@ -71714,7 +71714,7 @@
     "cat": "Laundry detergent",
     "origin": "hand",
     "source": "alternative",
-    "note": "Clean across both lines we have tested. The detergent is EPA Safer Choice plant based with a fragrance free option, and the diapers are one of the few using totally chlorine free wood pulp with no fragrance or lotion, non detect for PFAS markers, and the widest ordinary retail availability of any clean diaper.",
+    "note": "Clean across both lines we have tested. The detergent is EPA Safer Choice plant based with a fragrance free option, and the diapers are one of the few using totally chlorine free wood pulp with no fragrance or lotion, non detect for PFAS markers, and the widest ordinary retail availability of any clean diaper. Removed from our picks: the brand's own representations are under an adverse finding, so its claims need third party proof.",
     "ext": {
      "verdict": "careful",
      "dated": "2026-08-29",
@@ -71765,7 +71765,8 @@
        "lod": null
       }
      ]
-    }
+    },
+    "tradeoff": ""
    }
   ],
   "fronts": {

@@ -165,6 +165,36 @@ our practice already reflects this: no product on the site is a skip for
 fragrance alone. Every skip that mentions it carries a second, named finding
 beside it, and that is the rule, not a coincidence.
 
+### 2.1a Fragrance is not promotable
+
+A disclosure failure caps at careful, and careful is not a recommendation. So the
+rule that follows from it, set by Anya in September 2026:
+
+> **We do not promote a product whose scent is undisclosed.** It leaves the store
+> and every article pick. Brand Check keeps it with an accurate status, as it
+> keeps anything else we do not recommend.
+
+Two things escape it, and both are disclosure rather than exceptions:
+
+**The umbrella names its own contents.** "Parfum (Citrus Dulcis Extract, Amyris
+Balsamifera Bark Oil, Coriandrum Sativum Fruit Oil, Juniperus Virginiana)" hides
+nothing. Every component is on the label, which is the whole thing rule 2.1 asks
+for, and reading the word alone had held Natracare's baby wipes at careful for a
+list that spells itself out. The test is mechanical: the term is followed by a
+bracket naming two or more components. "Fragrance (natural)" does not pass it.
+
+**The maker states the composition elsewhere, specifically.** Milliways' INCI
+line says "natural gum base", and the company publishes that the base is chicle,
+the sap of the sapodilla tree. That is disclosed, just not on the ingredient
+line, so the fact is recorded as evidence and the rule reads it there. Marketing
+adjectives are not composition: "naturally derived" or "clean scent" names
+nothing and does not qualify.
+
+And the practical consequence, which is the point of the rule:
+
+> Where a brand sells an unscented version of the same product, that is the pick.
+> Where it does not, the product leaves and we recommend somebody who does.
+
 ### 2.2 Conditional failures
 
 Some failures are not a property of the product as sold. They depend on how it is

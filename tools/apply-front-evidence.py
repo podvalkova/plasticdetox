@@ -397,14 +397,47 @@ def read_formula(entry):
 
     low = text.lower()
 
+    def spelled_out(text, end):
+        """Does the umbrella name its own contents right after itself?
+
+        "Parfum (Citrus Dulcis Extract, Amyris Balsamifera Bark Oil, Coriandrum
+        Sativum Fruit Oil...)" is not a disclosure failure. Rule 2.1 objects to
+        the standing in, and here nothing stands in: every component is named.
+        Natracare's baby wipes were held at careful for a word that is followed
+        by its own seven-ingredient breakdown.
+
+        Two or more comma separated items in the bracket, so "fragrance (natural)"
+        still counts as hiding.
+        """
+        rest = text[end:end + 400].lstrip()
+        if not rest.startswith("("):
+            return False
+        depth, inner = 0, []
+        for ch in rest:
+            if ch == "(":
+                depth += 1
+                if depth == 1:
+                    continue
+            elif ch == ")":
+                depth -= 1
+                if depth == 0:
+                    break
+            if depth >= 1:
+                inner.append(ch)
+        body = "".join(inner)
+        return len([x for x in body.split(",") if x.strip()]) >= 2
+
     def hits(terms):
         out = []
         for t in terms:
             rx = re.compile(r"(?<![a-z0-9])" + re.escape(t) + r"s?(?![a-z0-9])")
             for m in rx.finditer(low):
-                if not _bf.is_negated(low, m.start(), m.end()):
-                    out.append(t)
-                    break
+                if _bf.is_negated(low, m.start(), m.end()):
+                    continue
+                if t in _apr.DISCLOSURE_FAILURE and spelled_out(low, m.end()):
+                    continue
+                out.append(t)
+                break
         return out
 
     named = hits(_apr.HAZARD)
