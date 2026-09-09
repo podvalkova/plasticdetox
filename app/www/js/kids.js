@@ -167,6 +167,12 @@ export async function buyInApp() {
     const why = String((e && (e.message || e.errorMessage)) || e || "unknown");
     // A cancelled purchase is a normal outcome, not an error to shout about.
     if (/cancel/i.test(why)) return { state: "cancelled" };
+    // The room is a non consumable, and a store will not sell one twice. An
+    // account that already owns it is refused at the till, which is correct
+    // and which the reader reads as "broken". So before reporting a failure,
+    // look for the purchase they already have and just open it.
+    const held = await ownedProof(p).catch(() => null);
+    if (held && await redeem(held).catch(() => false)) return { state: "ok" };
     return { state: "store-refused", why };
   }
   const proof = proofFrom(t);
@@ -182,6 +188,29 @@ export async function buyInApp() {
 }
 
 /**
+ * The purchase this Apple ID or Google account already holds, if any.
+ *
+ * One call for both stores. The iOS half used to ask getProduct, which answers
+ * with { product } and describes what is for SALE: a Product carries a price
+ * and a title and has never carried a receipt. Reading jwsRepresentation off
+ * it, off the wrapper at that, was undefined every time, so restore on iPhone
+ * could only ever answer "none" however many purchases the account held.
+ * getPurchases is the one that returns transactions, and it works on both.
+ */
+async function ownedProof(p) {
+  const r = await p.getPurchases(
+    store() === "play" ? { productType: "inapp" }
+                       : { onlyCurrentEntitlements: true }).catch(() => null);
+  const mine = ((r && r.purchases) || []).filter(
+    (t) => (t.productIdentifier || t.productId) === PRODUCT);
+  for (const t of mine) {
+    const proof = proofFrom(t);
+    if (proof) return proof;
+  }
+  return null;
+}
+
+/**
  * Restore. Both stores require this for a non consumable, and it is the whole
  * account system: the store account is the login, so a new phone needs no
  * email, no password and nothing typed.
@@ -190,18 +219,11 @@ export async function restore() {
   const p = purchases();
   if (!p) return "unavailable";
   try {
-    if (store() === "play") {
-      const r = await p.getPurchases({ productType: "inapp" }).catch(() => null);
-      const owned = ((r && r.purchases) || []).find(
-        (t) => (t.productIdentifier || t.productId) === PRODUCT && t.purchaseToken);
-      const proof = owned && proofFrom(owned);
-      if (proof && await redeem(proof)) return "ok";
-      return "none";
-    }
-    await p.restorePurchases();
-    const owned = await p.getProduct({ productIdentifier: PRODUCT }).catch(() => null);
-    const jws = owned && (owned.jwsRepresentation || owned.transactionReceipt);
-    if (jws && await redeem({ jws })) return "ok";
+    // Ask Apple to put past purchases back on the device first. Android needs
+    // no equivalent: getPurchases already reads the account.
+    if (store() !== "play") await p.restorePurchases().catch(() => {});
+    const proof = await ownedProof(p);
+    if (proof && await redeem(proof)) return "ok";
     return "none";
   } catch {
     return "failed";
