@@ -334,6 +334,7 @@ document.getElementById("gate-form").addEventListener("submit", async (e)=>{
   else err.textContent = "That password is not right.";
 });
 
+let loadedLM = null;
 async function open_(){
   document.getElementById("gate").hidden = true;
   document.getElementById("app").hidden = false;
@@ -341,10 +342,23 @@ async function open_(){
   const brands = await res.json();
   build(brands);
   const when = res.headers.get("last-modified");
+  loadedLM = when;
   document.getElementById("stamp").textContent =
     when ? new Date(when).toLocaleString(undefined,{dateStyle:"medium",timeStyle:"short"}) : "live";
 }
 if(sessionStorage.getItem(KEY) === "1") open_();
+
+// A tab left open renders the load it was born with, and a newer deploy looks
+// like work not done. When the tab comes back into view, ask the server if the
+// file moved on, and reload the page (the session key survives) if it has.
+document.addEventListener("visibilitychange", async ()=>{
+  if(document.hidden || sessionStorage.getItem(KEY) !== "1" || !loadedLM) return;
+  try{
+    const r = await fetch("brand-data.json", {method:"HEAD", cache:"no-cache"});
+    const lm = r.headers.get("last-modified");
+    if(lm && lm !== loadedLM) location.reload();
+  }catch(e){}
+});
 
 function build(brands){
   let prods = 0;
