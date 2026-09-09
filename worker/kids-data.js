@@ -105,7 +105,7 @@ export const KIDS = {
     ],
     "skip": [
      "Diluting or home-making formula, the one real danger here",
-     "A European label read as automatically cleaner",
+     "Assuming a European brand is cleaner. Different regulator, not a better result",
      "\"FDA registered\" as a ranking. Every formula clears it"
     ]
    },
@@ -150,16 +150,16 @@ export const KIDS = {
    ],
    "tip": {
     "title": "Three questions, not one",
-    "body": "The pouch is a plastics question. The oats are a pesticide question. The rice is a heavy metals question. Organic only answers the middle one.",
+    "body": "The pouch is a plastics question. The fruit and veg are a pesticide question, and organic is the answer to that one. The rice is a heavy metals question, which organic cannot answer, because arsenic comes from the soil.",
     "look": [
-     "Glass jars for anything premade",
+     "Organic for fruit and veg, which is the pesticide question",
      "Certified Glyphosate Residue Free on oats and pasta",
-     "Single ingredient labels"
+     "Glass jars for anything premade",
+     "Single ingredient labels, so you can see what you are buying"
     ],
     "skip": [
      "Pouches, especially warmed or fed from the spout",
-     "Rice cereal as a daily staple, any brand",
-     "\"Organic\" read as a heavy metals claim"
+     "Rice cereal as a daily staple, organic included"
     ]
    },
    "article": {
