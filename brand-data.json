@@ -47860,20 +47860,23 @@
           "heldFrom": "good",
           "restoreWhy": "direct evidence at sku scope on formula, materials",
           "frontNotes": {
-            "formula": "A durable good has no ingredient list. What it is made of is the materials check."
+            "materials": "In contact with cotton, which puts nothing into what it holds.",
+            "legal": "Checked recall and litigation records on 2026-09-09: searches for lawsuits, class actions, CPSC recalls and complaint clusters found nothing for this brand."
           },
-          "verdict": "unrated",
+          "legalNote": "Checked recall and litigation records on 2026-09-09: searches for lawsuits, class actions, CPSC recalls and complaint clusters found nothing for this brand.",
+          "verdict": "good",
           "dated": "2026-09-09",
-          "why": "a recommendation needs its checks done; still to do: legal",
+          "why": "direct evidence at sku scope on formula, materials",
           "fronts": {
             "formula": "none",
             "materials": "pass",
-            "legal": "unassessed",
+            "legal": "pass",
             "testing": "unassessed"
           },
           "frontOrigin": {
             "formula": "database",
-            "materials": "inferred"
+            "materials": "database",
+            "legal": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -47881,9 +47884,6 @@
           "rules": [
             "2 formula-read-from-materials",
             "5.4 durable-good-is-its-own-packaging"
-          ],
-          "heldBack": [
-            "legal"
           ]
         }
       }
@@ -79372,30 +79372,33 @@
           "heldFrom": "good",
           "restoreWhy": "independent lab result at line scope",
           "frontNotes": {
-            "formula": "A durable good has no ingredient list. What it is made of is the materials check."
+            "testing": "OEKO-TEX certificate on the natural latex insert; GOTS certification on the cotton cover; brand states testing for phthalates, PFAS, BPA and heavy metals.",
+            "materials": "In contact with cotton, which puts nothing into what it holds.",
+            "legal": "Checked recall and litigation records on 2026-09-09: searches for lawsuits, class actions, CPSC recalls and complaint clusters found nothing for this brand."
           },
-          "verdict": "unrated",
+          "testingNote": "OEKO-TEX certificate on the natural latex insert; GOTS certification on the cotton cover; brand states testing for phthalates, PFAS, BPA and heavy metals.",
+          "testingDate": "2026-09-09",
+          "legalNote": "Checked recall and litigation records on 2026-09-09: searches for lawsuits, class actions, CPSC recalls and complaint clusters found nothing for this brand.",
+          "verdict": "good",
           "dated": "2026-09-09",
-          "why": "a recommendation needs its checks done; still to do: legal",
+          "why": "independent lab result at line scope",
           "fronts": {
             "formula": "none",
             "materials": "pass",
-            "legal": "unassessed",
+            "legal": "pass",
             "testing": "pass"
           },
           "frontOrigin": {
             "formula": "database",
-            "materials": "inferred",
-            "testing": "inferred"
+            "materials": "database",
+            "testing": "database",
+            "legal": "database"
           },
           "scope": "line",
           "basis": "direct",
           "disclose": false,
           "rules": [
             "5.4 durable-good-is-its-own-packaging"
-          ],
-          "heldBack": [
-            "legal"
           ]
         }
       }
@@ -82646,21 +82649,27 @@
           "heldFrom": "good",
           "restoreWhy": "independent lab result at sku scope",
           "frontNotes": {
-            "formula": "A durable good has no ingredient list. What it is made of is the materials check."
+            "testing": "GOTS certified organic Egyptian cotton (brand holds GOTS certification).",
+            "materials": "In contact with cotton, which puts nothing into what it holds.",
+            "legal": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found."
           },
-          "verdict": "unrated",
+          "testingNote": "GOTS certified organic Egyptian cotton (brand holds GOTS certification).",
+          "testingDate": "2026-09-09",
+          "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
+          "verdict": "good",
           "dated": "2026-09-09",
-          "why": "a recommendation needs its checks done; still to do: legal",
+          "why": "independent lab result at sku scope",
           "fronts": {
             "formula": "none",
             "materials": "pass",
-            "legal": "unassessed",
+            "legal": "pass",
             "testing": "pass"
           },
           "frontOrigin": {
             "formula": "database",
-            "materials": "inferred",
-            "testing": "inferred"
+            "materials": "database",
+            "testing": "database",
+            "legal": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -82668,9 +82677,6 @@
           "rules": [
             "2 formula-read-from-materials",
             "5.4 durable-good-is-its-own-packaging"
-          ],
-          "heldBack": [
-            "legal"
           ]
         }
       }
@@ -88032,19 +88038,27 @@
         ],
         "ext": {
           "frontNotes": {
-            "formula": "A durable good has no ingredient list. What it is made of is the materials check."
+            "testing": "OEKO-TEX Leather Standard baby class certificate (BJ044 136313 TESTEX) on the tanned sheepskin itself, which screens for chromium VI and harmful residues.",
+            "materials": "In contact with wool, which puts nothing into what it holds.",
+            "legal": "Checked recall and litigation records on 2026-09-09. One CPSC recall on file: ~4,100 children's wool footed pajamas in November 2017 (recall 18-042) for failing the federal sleepwear flammability standard, no incidents or injuries. The merino sheepskin rug we cover was never involved, and no lawsuits were found."
           },
-          "verdict": "unrated",
+          "testingNote": "OEKO-TEX Leather Standard baby class certificate (BJ044 136313 TESTEX) on the tanned sheepskin itself, which screens for chromium VI and harmful residues.",
+          "testingDate": "2026-09-09",
+          "legalNote": "Checked recall and litigation records on 2026-09-09. One CPSC recall on file: ~4,100 children's wool footed pajamas in November 2017 (recall 18-042) for failing the federal sleepwear flammability standard, no incidents or injuries. The merino sheepskin rug we cover was never involved, and no lawsuits were found.",
+          "verdict": "good",
           "dated": "2026-09-09",
-          "why": "no direct pass on materials, and no lab result standing in for one",
+          "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
-            "materials": "unassessed",
-            "legal": "unassessed",
-            "testing": "unassessed"
+            "materials": "pass",
+            "legal": "pass",
+            "testing": "pass"
           },
           "frontOrigin": {
-            "formula": "database"
+            "formula": "database",
+            "testing": "database",
+            "materials": "database",
+            "legal": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -88116,19 +88130,27 @@
         ],
         "ext": {
           "frontNotes": {
-            "formula": "A durable good has no ingredient list. What it is made of is the materials check."
+            "testing": "GOTS certification on the organic cotton shell; OEKO-TEX Standard 100 on the enclosed polyester batting.",
+            "materials": "In contact with cotton, which puts nothing into what it holds.",
+            "legal": "Checked recall and litigation records on 2026-09-09: searches for lawsuits, class actions, CPSC recalls and complaint clusters found nothing for this brand."
           },
-          "verdict": "unrated",
+          "testingNote": "GOTS certification on the organic cotton shell; OEKO-TEX Standard 100 on the enclosed polyester batting.",
+          "testingDate": "2026-09-09",
+          "legalNote": "Checked recall and litigation records on 2026-09-09: searches for lawsuits, class actions, CPSC recalls and complaint clusters found nothing for this brand.",
+          "verdict": "good",
           "dated": "2026-09-09",
-          "why": "no direct pass on materials, and no lab result standing in for one",
+          "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
-            "materials": "unassessed",
-            "legal": "unassessed",
-            "testing": "unassessed"
+            "materials": "pass",
+            "legal": "pass",
+            "testing": "pass"
           },
           "frontOrigin": {
-            "formula": "database"
+            "formula": "database",
+            "testing": "database",
+            "materials": "database",
+            "legal": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -88205,29 +88227,32 @@
           "heldFrom": "good",
           "restoreWhy": "independent lab result at sku scope",
           "frontNotes": {
-            "formula": "A durable good has no ingredient list. What it is made of is the materials check."
+            "testing": "OEKO-TEX certificate on the polyester filling; organic cotton outer.",
+            "materials": "In contact with cotton, which puts nothing into what it holds.",
+            "legal": "Checked recall and litigation records on 2026-09-09: searches for lawsuits, class actions, CPSC recalls and complaint clusters found nothing for this brand."
           },
-          "verdict": "unrated",
+          "testingNote": "OEKO-TEX certificate on the polyester filling; organic cotton outer.",
+          "testingDate": "2026-09-09",
+          "legalNote": "Checked recall and litigation records on 2026-09-09: searches for lawsuits, class actions, CPSC recalls and complaint clusters found nothing for this brand.",
+          "verdict": "good",
           "dated": "2026-09-09",
-          "why": "a recommendation needs its checks done; still to do: materials, legal",
+          "why": "independent lab result at sku scope",
           "fronts": {
             "formula": "none",
-            "materials": "unassessed",
-            "legal": "unassessed",
+            "materials": "pass",
+            "legal": "pass",
             "testing": "pass"
           },
           "frontOrigin": {
             "formula": "database",
-            "testing": "inferred"
+            "testing": "database",
+            "materials": "database",
+            "legal": "database"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": [],
-          "heldBack": [
-            "materials",
-            "legal"
-          ]
+          "rules": []
         }
       }
     ]
@@ -88286,19 +88311,22 @@
         ],
         "ext": {
           "frontNotes": {
-            "formula": "A durable good has no ingredient list. What it is made of is the materials check."
+            "formula": "A durable good has no ingredient list. What it is made of is the materials check.",
+            "legal": "Checked recall records on 2026-09-09. 2023 recall of 472,850 Silver Lining Cloud activity gyms (detaching raindrop pieces, choking, 12 reports, no injuries); 2019 Tuo convertible high chair recall (legs detach). No chemical violations and no lawsuits found, but two recalls in adjacent baby product lines within five years is a pattern worth carrying."
           },
+          "legalNote": "Checked recall records on 2026-09-09. 2023 recall of 472,850 Silver Lining Cloud activity gyms (detaching raindrop pieces, choking, 12 reports, no injuries); 2019 Tuo convertible high chair recall (legs detach). No chemical violations and no lawsuits found, but two recalls in adjacent baby product lines within five years is a pattern worth carrying.",
           "verdict": "careful",
           "dated": "2026-09-09",
           "why": "adverse finding stands",
           "fronts": {
             "formula": "none",
             "materials": "unassessed",
-            "legal": "unassessed",
+            "legal": "caution",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "formula": "database"
+            "formula": "database",
+            "legal": "database"
           },
           "scope": "line",
           "basis": "direct",
@@ -88375,19 +88403,22 @@
         ],
         "ext": {
           "frontNotes": {
-            "formula": "A durable good has no ingredient list. What it is made of is the materials check."
+            "formula": "A durable good has no ingredient list. What it is made of is the materials check.",
+            "legal": "Checked recall and litigation records on 2026-09-09: searches for lawsuits, class actions, CPSC recalls and complaint clusters found nothing for this brand. The caution on this brand is a materials finding (EVA foam), not a legal one."
           },
+          "legalNote": "Checked recall and litigation records on 2026-09-09: searches for lawsuits, class actions, CPSC recalls and complaint clusters found nothing for this brand. The caution on this brand is a materials finding (EVA foam), not a legal one.",
           "verdict": "careful",
           "dated": "2026-09-09",
           "why": "adverse finding stands",
           "fronts": {
             "formula": "none",
             "materials": "unassessed",
-            "legal": "unassessed",
+            "legal": "pass",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "formula": "database"
+            "formula": "database",
+            "legal": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -88459,19 +88490,22 @@
         ],
         "ext": {
           "frontNotes": {
-            "formula": "A durable good has no ingredient list. What it is made of is the materials check."
+            "formula": "A durable good has no ingredient list. What it is made of is the materials check.",
+            "legal": "Checked recall and litigation records on 2026-09-09: searches for lawsuits, class actions, CPSC recalls and complaint clusters found nothing for this brand. The caution on this brand is a materials finding (EVA foam under printed film), not a legal one."
           },
+          "legalNote": "Checked recall and litigation records on 2026-09-09: searches for lawsuits, class actions, CPSC recalls and complaint clusters found nothing for this brand. The caution on this brand is a materials finding (EVA foam under printed film), not a legal one.",
           "verdict": "careful",
           "dated": "2026-09-09",
           "why": "adverse finding stands",
           "fronts": {
             "formula": "none",
             "materials": "unassessed",
-            "legal": "unassessed",
+            "legal": "pass",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "formula": "database"
+            "formula": "database",
+            "legal": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -88539,20 +88573,23 @@
         ],
         "ext": {
           "frontNotes": {
-            "formula": "A durable good has no ingredient list. What it is made of is the materials check."
+            "formula": "A durable good has no ingredient list. What it is made of is the materials check.",
+            "legal": "Checked recall and litigation records on 2026-09-09: searches for lawsuits, class actions, CPSC recalls and complaint clusters found nothing for this brand. The caution on this brand is a materials finding (bonded PU leather), not a legal one."
           },
+          "legalNote": "Checked recall and litigation records on 2026-09-09: searches for lawsuits, class actions, CPSC recalls and complaint clusters found nothing for this brand. The caution on this brand is a materials finding (bonded PU leather), not a legal one.",
           "verdict": "careful",
           "dated": "2026-09-09",
           "why": "adverse finding stands",
           "fronts": {
             "formula": "none",
             "materials": "caution",
-            "legal": "unassessed",
+            "legal": "pass",
             "testing": "unassessed"
           },
           "frontOrigin": {
             "materials": "inferred",
-            "formula": "database"
+            "formula": "database",
+            "legal": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -88620,18 +88657,28 @@
           ]
         ],
         "ext": {
+          "frontNotes": {
+            "testing": "Brand cites EN71 and AS/NZS ISO 8124 testing; no independent watchdog results found in September 2026 searches.",
+            "materials": "PVC in direct contact.",
+            "legal": "Checked recall and litigation records on 2026-09-09: searches for lawsuits, class actions, CPSC recalls and complaint clusters found nothing for this brand. The caution on this brand is a materials finding (PVC), not a legal one."
+          },
+          "testingNote": "Brand cites EN71 and AS/NZS ISO 8124 testing; no independent watchdog results found in September 2026 searches.",
+          "testingDate": "2026-09-09",
+          "legalNote": "Checked recall and litigation records on 2026-09-09: searches for lawsuits, class actions, CPSC recalls and complaint clusters found nothing for this brand. The caution on this brand is a materials finding (PVC), not a legal one.",
           "verdict": "careful",
           "dated": "2026-09-09",
           "why": "adverse finding stands",
           "fronts": {
             "formula": "caution",
             "materials": "caution",
-            "legal": "unassessed",
-            "testing": "unassessed"
+            "legal": "pass",
+            "testing": "caution"
           },
           "frontOrigin": {
             "formula": "inferred",
-            "materials": "inferred"
+            "materials": "database",
+            "testing": "database",
+            "legal": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -88700,20 +88747,23 @@
         ],
         "ext": {
           "frontNotes": {
-            "formula": "A durable good has no ingredient list. What it is made of is the materials check."
+            "materials": "PVC in direct contact.",
+            "legal": "Checked recall and litigation records on 2026-09-09: searches for lawsuits, class actions, CPSC recalls and complaint clusters found nothing for this brand. The caution on this brand is a materials finding (PVC), not a legal one."
           },
+          "legalNote": "Checked recall and litigation records on 2026-09-09: searches for lawsuits, class actions, CPSC recalls and complaint clusters found nothing for this brand. The caution on this brand is a materials finding (PVC), not a legal one.",
           "verdict": "careful",
           "dated": "2026-09-09",
           "why": "adverse finding stands",
           "fronts": {
             "formula": "none",
             "materials": "caution",
-            "legal": "unassessed",
+            "legal": "pass",
             "testing": "unassessed"
           },
           "frontOrigin": {
             "formula": "database",
-            "materials": "inferred"
+            "materials": "database",
+            "legal": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -88779,21 +88829,24 @@
         ],
         "ext": {
           "frontNotes": {
-            "formula": "A durable good has no ingredient list. What it is made of is the materials check."
+            "formula": "A durable good has no ingredient list. What it is made of is the materials check.",
+            "legal": "Checked recall and litigation records on 2026-09-09: no US recalls or lawsuits found. A 2017 Korean lab reported dimethylacetamide at 157 and 243 ppm at two of four tested spots on a mat; CreamHaus disputed the methodology, stopped using the solvent, and no US action ever resulted. Recorded under testing, not as a legal action."
           },
+          "legalNote": "Checked recall and litigation records on 2026-09-09: no US recalls or lawsuits found. A 2017 Korean lab reported dimethylacetamide at 157 and 243 ppm at two of four tested spots on a mat; CreamHaus disputed the methodology, stopped using the solvent, and no US action ever resulted. Recorded under testing, not as a legal action.",
           "verdict": "careful",
           "dated": "2026-09-09",
           "why": "adverse finding stands",
           "fronts": {
             "formula": "none",
             "materials": "caution",
-            "legal": "unassessed",
+            "legal": "pass",
             "testing": "pass"
           },
           "frontOrigin": {
             "materials": "inferred",
             "testing": "inferred",
-            "formula": "database"
+            "formula": "database",
+            "legal": "database"
           },
           "scope": "line",
           "basis": "direct",
@@ -88861,19 +88914,22 @@
         ],
         "ext": {
           "frontNotes": {
-            "formula": "A durable good has no ingredient list. What it is made of is the materials check."
+            "formula": "A durable good has no ingredient list. What it is made of is the materials check.",
+            "legal": "Checked recall and litigation records on 2026-09-09: searches for lawsuits, class actions, CPSC recalls and complaint clusters found nothing for this brand. The caution on this brand is the absence of published chemistry, not a legal finding."
           },
+          "legalNote": "Checked recall and litigation records on 2026-09-09: searches for lawsuits, class actions, CPSC recalls and complaint clusters found nothing for this brand. The caution on this brand is the absence of published chemistry, not a legal finding.",
           "verdict": "careful",
           "dated": "2026-09-09",
           "why": "adverse finding stands",
           "fronts": {
             "formula": "none",
             "materials": "unassessed",
-            "legal": "unassessed",
+            "legal": "pass",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "formula": "database"
+            "formula": "database",
+            "legal": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -88945,19 +89001,22 @@
         ],
         "ext": {
           "frontNotes": {
-            "formula": "A durable good has no ingredient list. What it is made of is the materials check."
+            "formula": "A durable good has no ingredient list. What it is made of is the materials check.",
+            "legal": "Checked recall and litigation records on 2026-09-09: searches for lawsuits, class actions, CPSC recalls and complaint clusters found nothing for this brand. The caution on this brand is the absence of published chemistry, not a legal finding."
           },
+          "legalNote": "Checked recall and litigation records on 2026-09-09: searches for lawsuits, class actions, CPSC recalls and complaint clusters found nothing for this brand. The caution on this brand is the absence of published chemistry, not a legal finding.",
           "verdict": "careful",
           "dated": "2026-09-09",
           "why": "adverse finding stands",
           "fronts": {
             "formula": "none",
             "materials": "unassessed",
-            "legal": "unassessed",
+            "legal": "pass",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "formula": "database"
+            "formula": "database",
+            "legal": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -89024,18 +89083,23 @@
           ]
         ],
         "ext": {
+          "legalNote": "Checked recall and litigation records on 2026-09-09: searches for lawsuits, class actions, CPSC recalls and complaint clusters found nothing for this brand. The caution on this brand is a materials finding (polyester over PU memory foam), not a legal one.",
+          "frontNotes": {
+            "legal": "Checked recall and litigation records on 2026-09-09: searches for lawsuits, class actions, CPSC recalls and complaint clusters found nothing for this brand. The caution on this brand is a materials finding (polyester over PU memory foam), not a legal one."
+          },
           "verdict": "careful",
           "dated": "2026-09-09",
           "why": "adverse finding stands",
           "fronts": {
             "formula": "caution",
             "materials": "unassessed",
-            "legal": "unassessed",
+            "legal": "pass",
             "testing": "pass"
           },
           "frontOrigin": {
             "formula": "inferred",
-            "testing": "inferred"
+            "testing": "inferred",
+            "legal": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -89103,17 +89167,22 @@
           ]
         ],
         "ext": {
+          "legalNote": "Checked recall and litigation records on 2026-09-09. No product has ever been recalled. A 2024 wrongful death lawsuit over the original infant lounger (S.D. Tex., filed July 2024) was settled and the lounger retired; the company is the lead petitioner challenging the CPSC infant support cushion rule (16 CFR 1243) in the D.C. Circuit. Litigation posture on a padded infant product line is a finding for the padded play mat and gym we researched.",
+          "frontNotes": {
+            "legal": "Checked recall and litigation records on 2026-09-09. No product has ever been recalled. A 2024 wrongful death lawsuit over the original infant lounger (S.D. Tex., filed July 2024) was settled and the lounger retired; the company is the lead petitioner challenging the CPSC infant support cushion rule (16 CFR 1243) in the D.C. Circuit. Litigation posture on a padded infant product line is a finding for the padded play mat and gym we researched."
+          },
           "verdict": "careful",
           "dated": "2026-09-09",
           "why": "adverse finding stands",
           "fronts": {
             "formula": "caution",
             "materials": "unassessed",
-            "legal": "unassessed",
+            "legal": "caution",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "formula": "inferred"
+            "formula": "inferred",
+            "legal": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -89184,20 +89253,23 @@
         ],
         "ext": {
           "frontNotes": {
-            "formula": "A durable good has no ingredient list. What it is made of is the materials check."
+            "formula": "A durable good has no ingredient list. What it is made of is the materials check.",
+            "legal": "Checked recall and litigation records on 2026-09-09: searches for lawsuits, class actions, CPSC recalls and complaint clusters found nothing for this brand."
           },
+          "legalNote": "Checked recall and litigation records on 2026-09-09: searches for lawsuits, class actions, CPSC recalls and complaint clusters found nothing for this brand.",
           "verdict": "unrated",
           "dated": "2026-09-09",
           "why": "neutral is not a verdict, nothing is being asserted",
           "fronts": {
             "formula": "none",
             "materials": "pass",
-            "legal": "unassessed",
+            "legal": "pass",
             "testing": "unassessed"
           },
           "frontOrigin": {
             "formula": "database",
-            "materials": "inferred"
+            "materials": "inferred",
+            "legal": "database"
           },
           "scope": "sku",
           "basis": "direct",
