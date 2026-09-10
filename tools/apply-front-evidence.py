@@ -321,7 +321,41 @@ def assess(pack):
         status = softer[status]
     if relief:
         bits.append("diluted and rinsed, never left on skin" if relief == 2 else "rinsed off")
+
+    # Rule 3.6. Where the format has no non plastic version on the market, the
+    # polymer is a note and not a cap: the shopper could not have done anything
+    # about it, so flagging it ranks a good product level with a bad one and
+    # tells them nothing. The rule was written in docs/rating-rules.md months
+    # ago and implemented in none of the three rule files, which is why APEC's
+    # reverse osmosis system sat at careful for the only way an undersink RO is
+    # built. Availability is the test, not inconvenience: deodorant sticks are
+    # NOT here, because Wild sells one in a paperboard cartridge.
+    if status in ("caution", "fail") and no_alternative(pack):
+        return "pass", (", ".join(bits) + ", and no version of this format exists without it, "
+                        "so it is recorded rather than counted")
     return status, ", ".join(bits)
+
+
+# Formats that do not exist without plastic in the contact path. Each one is
+# here because we looked for a version without it and there is not one, not
+# because a better version would be inconvenient.
+NO_PLASTIC_ALTERNATIVE = (
+    # Every undersink reverse osmosis system on the market uses polymer
+    # housings, a polyamide membrane and plastic tubing. There is no steel or
+    # glass equivalent, and filtering through plastic removes far more than the
+    # housing can contribute, which is the rule 5.7 trade off.
+    "reverse osmosis", "under sink", "undersink", "under the sink",
+    # Stick foundation, cream blush and mineral bronzer, the worked example in
+    # the rulebook: an anhydrous formula in a twist up tube is the only way the
+    # format exists.
+    "stick foundation", "foundation stick", "cream blush", "mineral bronzer",
+    "bronzer stick", "concealer stick",
+)
+
+
+def no_alternative(pack):
+    hay = " ".join(str(pack.get(k) or "") for k in ("product", "_product", "format", "category")).lower()
+    return any(w in hay for w in NO_PLASTIC_ALTERNATIVE)
 
 
 # Exposure types that name a thing you swallow or leave on your body. These
@@ -445,6 +479,41 @@ def read_formula(entry, cat=""):
 
     low = text.lower()
 
+    # The 26 fragrance allergens the EU requires to be listed separately once
+    # they pass a threshold. INCI puts them after the umbrella as their own
+    # entries rather than inside a bracket, which is the convention almost every
+    # brand follows, and spelled_out only ever looked inside the bracket.
+    EU_ALLERGENS = (
+        "limonene", "linalool", "citral", "citronellol", "geraniol", "eugenol",
+        "coumarin", "farnesol", "benzyl alcohol", "benzyl benzoate",
+        "benzyl salicylate", "benzyl cinnamate", "cinnamal", "cinnamyl alcohol",
+        "hydroxycitronellal", "isoeugenol", "amyl cinnamal", "anise alcohol",
+        "hexyl cinnamal", "butylphenyl methylpropional", "alpha-isomethyl ionone",
+        "methyl 2-octynoate", "evernia prunastri", "evernia furfuracea",
+        "amylcinnamyl alcohol", "cinnamyl cinnamate",
+    )
+    SOURCE_STATED = (
+        "essential oil", "natural essential", "from natural", "plant derived",
+        "plant-derived", "derived from natural", "of natural origin",
+    )
+
+    def allergens_named(text):
+        """Rule 2.1a. Umbrella term, but the allergens are named and sourced.
+
+        Weleda's Salt Toothpaste ends "Flavor (Aroma)*, Limonene*, Linalool*"
+        with "*From natural essential oils". Nothing is concealed that the
+        reader could act on: the two sensitisers present are named, and the
+        source is stated. It was held at careful anyway, because our check only
+        looked inside a bracket immediately after the word.
+
+        Both halves are required. Naming allergens without a source still
+        leaves the mixture unexplained, and claiming a natural source without
+        naming anything is marketing, which is what Wild does.
+        """
+        named = sum(1 for a in EU_ALLERGENS if a in text)
+        sourced = any(p in text for p in SOURCE_STATED)
+        return named >= 1 and sourced
+
     def spelled_out(text, end):
         """Does the umbrella name its own contents right after itself?
 
@@ -482,7 +551,8 @@ def read_formula(entry, cat=""):
             for m in rx.finditer(low):
                 if _bf.is_negated(low, m.start(), m.end()):
                     continue
-                if t in _apr.DISCLOSURE_FAILURE and spelled_out(low, m.end()):
+                if t in _apr.DISCLOSURE_FAILURE and (
+                        spelled_out(low, m.end()) or allergens_named(low)):
                     continue
                 out.append(t)
                 break
@@ -651,6 +721,11 @@ def main():
             pack = entry.get("materials") or {}
             if not pack:
                 continue
+            # Rule 3.6 asks what the format is, and the format is named on the
+            # entry rather than inside the materials block. Without this the
+            # rule could never fire on anything.
+            pack = dict(pack, _product=entry.get("_product") or "",
+                        category=(b.get("category") or ""))
             status, reason = assess(pack)
             filled += 1
             if status is None:

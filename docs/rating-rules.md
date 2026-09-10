@@ -174,6 +174,30 @@ our practice already reflects this: no product on the site is a skip for
 fragrance alone. Every skip that mentions it carries a second, named finding
 beside it, and that is the rule, not a coincidence.
 
+### 2.1a-i What counts as disclosed
+
+"Undisclosed" has to mean something checkable, and until September 2026 our
+check was narrower than the rule it enforced. It exempted a fragrance only when
+the umbrella named its own contents inside a bracket immediately after itself,
+`Parfum (Citrus Dulcis Extract, Amyris Balsamifera Bark Oil, ...)`, which is
+how Natracare writes it and how almost nobody else does.
+
+The convention nearly every brand follows is the EU one: the 26 regulated
+fragrance allergens are listed as their own INCI entries after the umbrella,
+with a footnote naming the source. Weleda's Salt Toothpaste ends `Flavor
+(Aroma)*, Limonene*, Linalool*` over `*From natural essential oils`. Nothing
+the reader could act on is hidden, and it sat at careful for a bracket it
+never used.
+
+> **A fragrance is disclosed when at least one of the EU regulated allergens is
+> named AND the source is stated.** Both halves are required. Named allergens
+> with no source still leaves the mixture unexplained. A claimed natural source
+> with nothing named is marketing, which is what Wild does: `Parfum
+> (Fragrance)` plus a sentence on the website saying it is natural. That stays
+> a disclosure failure.
+
+Enforced by `allergens_named` in `tools/apply-front-evidence.py`.
+
 ### 2.1a Fragrance is not promotable
 
 A disclosure failure caps at careful, and careful is not a recommendation. So the
@@ -459,7 +483,11 @@ brand at the same grade as an uncertified one and tells a shopper nothing about
 either.
 
 So: **where a format has no non plastic version on the market, the polymer is a
-note, not a cap.** Formula and independent testing carry the verdict, and the
+note, not a cap.** Enforced by `no_alternative` and `NO_PLASTIC_ALTERNATIVE` in
+`tools/apply-front-evidence.py`. This rule was written in June 2026 and
+implemented in none of the three rule files until September, which is why the
+APEC reverse osmosis system sat at careful for the only way an undersink RO is
+built. Formula and independent testing carry the verdict, and the
 packaging is recorded in the caveats where a shopper can still read it.
 
 This is narrow on purpose, and it turns on availability rather than on

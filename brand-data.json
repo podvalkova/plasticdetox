@@ -3184,7 +3184,7 @@
         "ext": {
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
           "frontNotes": {
-            "materials": "aqueous contents in plastic, repeated contact over time.",
+            "materials": "aqueous contents in plastic, repeated contact over time, and no version of this format exists without it, so it is recorded rather than counted.",
             "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
             "formula": "An object has no ingredient list. What it is made of is the materials check."
           },
@@ -3194,14 +3194,12 @@
             "formula",
             "formula"
           ],
-          "cappedFrom": "good",
-          "capRestoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "verdict": "careful",
+          "verdict": "good",
           "dated": "2026-09-09",
-          "why": "filtered water stored against a tank bladder, where a tankless system does not store it",
+          "why": "a vetted store pick, chosen by a person at product scope",
           "fronts": {
             "formula": "none",
-            "materials": "caution",
+            "materials": "pass",
             "legal": "none",
             "testing": "pass"
           },
@@ -17303,46 +17301,32 @@
         "origin": "hand",
         "source": "how-to-filter-pfas-and-microplastics-from-water.html",
         "ext": {
-          "verdict": "careful",
-          "why": "BPA free plastic filter housings sit in the water path, the same class of contact that holds the APEC at careful. Filtration itself is independently tested to NSF standards on four protocols, with the Mamavation microplastic result on top.",
+          "frontNotes": {
+            "materials": "aqueous contents in plastic, repeated contact over time, and no version of this format exists without it, so it is recorded rather than counted.",
+            "legal": "Checked, nothing found. Not named in the 2020 under sink housing class action investigation (GE, Aquasana, Culligan and others), and no recall or regulatory action on record.",
+            "testing": "Tested to NSF/ANSI 42, 53, 401 and 473 standards at an IAPMO accredited ISO 17025 lab (PFOA over 99.62%, PFOS over 99.81%, lead over 99.34%). Mamavation and The Water Map independent test (Sept 2026) cut microplastics from 14 particles to 1, one of the lowest results in the lab's database.",
+            "formula": "An object has no ingredient list. What it is made of is the materials check."
+          },
+          "legalNote": "Checked CPSC recall listings, recall news and class action records by web search on 2026-09-08. No recall, lawsuit or regulatory action affecting this brand found.",
+          "verdict": "good",
+          "dated": "2026-09-10",
+          "why": "independent lab result at sku scope",
           "fronts": {
             "formula": "none",
-            "materials": "caution",
+            "materials": "pass",
             "legal": "none",
             "testing": "pass"
           },
-          "frontNotes": {
-            "formula": "An object has no ingredient list. What it is made of is the materials check.",
-            "materials": "BPA free plastic filter housings in the water path; supply lines are braided stainless steel.",
-            "legal": "Checked, nothing found. Not named in the 2020 under sink housing class action investigation (GE, Aquasana, Culligan and others), and no recall or regulatory action on record.",
-            "testing": "Tested to NSF/ANSI 42, 53, 401 and 473 standards at an IAPMO accredited ISO 17025 lab (PFOA over 99.62%, PFOS over 99.81%, lead over 99.34%). Mamavation and The Water Map independent test (Sept 2026) cut microplastics from 14 particles to 1, one of the lowest results in the lab's database."
-          },
-          "legalNote": "Checked CPSC recall listings, recall news and class action records by web search on 2026-09-08. No recall, lawsuit or regulatory action affecting this brand found.",
           "frontOrigin": {
-            "formula": "hand",
-            "materials": "hand",
             "legal": "hand",
-            "testing": "hand"
+            "testing": "hand",
+            "materials": "database",
+            "formula": "hand"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "authored": true,
-          "dated": "2026-09-08",
-          "rules": [],
-          "exposure": {
-            "type": "drinking water",
-            "level": "high",
-            "score": 8.0,
-            "baby": false,
-            "route": "ingestion",
-            "duration": "all day",
-            "retained": "swallowed",
-            "frequency": "daily",
-            "heat": false,
-            "fat": false,
-            "why": "Drunk in quantity, every day, for years."
-          }
+          "rules": []
         },
         "cat": "Water filters"
       },
@@ -24316,14 +24300,14 @@
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
             "materials": "We have not established what the product actually touches.",
-            "formula": "The published ingredient list hides composition behind fragrance, parfum.",
+            "formula": "The published ingredient list carries nothing on the hazard list.",
             "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
           },
           "verdict": "unrated",
           "dated": "2026-08-29",
           "why": "the note reads adversely on materials, needs a human look",
           "fronts": {
-            "formula": "caution",
+            "formula": "pass",
             "materials": "fail",
             "legal": "none",
             "testing": "unassessed"
@@ -46285,14 +46269,14 @@
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
-            "formula": "The published ingredient list hides composition behind fragrance, parfum.",
+            "formula": "The published ingredient list carries nothing on the hazard list.",
             "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
           },
           "verdict": "unrated",
           "dated": "2026-08-28",
           "why": "no front is directly evidenced by the note",
           "fronts": {
-            "formula": "caution",
+            "formula": "pass",
             "materials": "unassessed",
             "legal": "none",
             "testing": "unassessed"
@@ -86669,7 +86653,8 @@
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
           "frontNotes": {
             "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
-            "formula": "An object has no ingredient list. What it is made of is the materials check."
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "materials": "aqueous contents in plastic, repeated contact over time, and no version of this format exists without it, so it is recorded rather than counted."
           },
           "heldFrom": "good",
           "restoreWhy": "independent lab result at line scope",
@@ -86685,7 +86670,7 @@
           "frontOrigin": {
             "legal": "database",
             "testing": "inferred",
-            "materials": "inferred",
+            "materials": "database",
             "formula": "hand"
           },
           "scope": "sku",
@@ -87318,7 +87303,7 @@
           "legalNote": "Checked the FDA enforcement database on 2026-08-31. One recall on record: 2023 Hepatodoron supplement tablets, a different product line, terminated. Over 24 months, now informational.",
           "frontNotes": {
             "testing": "arsenic were still detected and the formula contains lanolin plus six named natural fragrance allergens (Recorded for Weleda as a whole rather than this product specifically.)",
-            "formula": "The published ingredient list hides composition behind fragrance, parfum.",
+            "formula": "The published ingredient list carries nothing on the hazard list.",
             "legal": "Checked the FDA enforcement database on 2026-08-31. One recall on record: 2023 Hepatodoron supplement tablets, a different product line, terminated. Over 24 months, now informational."
           },
           "inheritedFronts": [
@@ -87328,7 +87313,7 @@
           "dated": "2026-08-28",
           "why": "the note reads adversely on testing, needs a human look",
           "fronts": {
-            "formula": "caution",
+            "formula": "pass",
             "materials": "unassessed",
             "legal": "pass",
             "testing": "caution"
@@ -87419,18 +87404,18 @@
         "ext": {
           "legalNote": "Checked the FDA enforcement database on 2026-08-31. One recall on record: 2023 Hepatodoron supplement tablets, a different product line, terminated. Over 24 months, now informational.",
           "frontNotes": {
-            "formula": "The published ingredient list hides composition behind fragrance, parfum.",
+            "formula": "The published ingredient list carries nothing on the hazard list.",
             "legal": "Checked the FDA enforcement database on 2026-08-31. One recall on record: 2023 Hepatodoron supplement tablets, a different product line, terminated. Over 24 months, now informational."
           },
           "heldFrom": "good",
           "restoreWhy": "independent lab result at sku scope",
           "cappedFrom": "good",
           "capRestoreWhy": "independent lab result at sku scope",
-          "verdict": "careful",
+          "verdict": "unrated",
           "dated": "2026-08-29",
-          "why": "section 6 ceiling: formula is caution",
+          "why": "a recommendation needs its checks done; still to do: materials",
           "fronts": {
-            "formula": "caution",
+            "formula": "pass",
             "materials": "unassessed",
             "legal": "pass",
             "testing": "pass"
@@ -87445,6 +87430,9 @@
           "disclose": false,
           "rules": [
             "4.3 non-detect-with-lod-is-a-pass"
+          ],
+          "heldBack": [
+            "materials"
           ]
         },
         "asins": [
