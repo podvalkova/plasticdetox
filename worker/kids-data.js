@@ -101,9 +101,22 @@ export const KIDS = {
    "free": "Transfer to glass immediately after pumping instead of storing in the plastic bottle.",
    "picks": [
     {
-     "label": "Guide",
-     "name": "Read the full guide",
-     "url": "https://plasticdetox.org/articles/best-non-toxic-baby-bottles.html"
+     "label": "$",
+     "name": "Evenflo Classic Glass Bottles (6 pack)",
+     "url": "https://www.amazon.com/dp/B019PG0FPO?tag=plasticdetox-20",
+     "note": "Best glass collection bottles, standard neck"
+    },
+    {
+     "label": "$$",
+     "name": "Lifefactory Glass Bottle with Silicone Sleeve",
+     "url": "https://www.amazon.com/dp/B001J8D72U?tag=plasticdetox-20",
+     "note": "Best protected glass for the fridge"
+    },
+    {
+     "label": "$$",
+     "name": "Mila's Keeper Silicone Storage Containers",
+     "url": "https://www.amazon.com/dp/B0G3XG9QKY?tag=plasticdetox-20",
+     "note": "Best breast milk storage"
     }
    ],
    "tip": {
@@ -881,6 +894,49 @@ export const KIDS = {
    ]
   },
   {
+   "id": "Kids::Skip the plastic baby bath",
+   "swap": "Skip the plastic baby bath",
+   "why": "Most infant tubs are PVC or ABS, and warm water is the condition that pulls plasticisers out of PVC fastest, with the baby sitting in it.",
+   "heat": true,
+   "impact": "Medium impact",
+   "free": "The kitchen sink with a folded cotton towel on the bottom. Stainless or porcelain, no plastic at all, and it works until they outgrow it.",
+   "picks": [
+    {
+     "label": "Guide",
+     "name": "Read the full guide",
+     "url": "https://plasticdetox.org/articles/non-toxic-baby-toddler-products-guide.html"
+    }
+   ],
+   "tip": {
+    "title": "The sink beats every tub on the market",
+    "body": "We looked for a plastic free baby tub worth recommending and there is not one. Almost every infant tub is PVC or ABS, and warm water is the condition that pulls plasticisers out of PVC fastest, with the baby sitting in it.",
+    "look": [
+     "The kitchen sink, which is stainless or porcelain, with a folded cotton towel on the bottom",
+     "A plain hard plastic tub in polypropylene if you need one, which needs no phthalate plasticisers",
+     "Emptying and drying whatever you use, because the mould question is real too"
+    ],
+    "skip": [
+     "PVC and soft flexible plastic tubs and inserts",
+     "Inflatable tubs, which are almost always vinyl",
+     "Foam inserts and slings that stay damp"
+    ]
+   },
+   "article": {
+    "slug": "non-toxic-baby-toddler-products-guide.html",
+    "title": "The Complete Parent's Guide to Replacing Toxic Baby and Toddler Products (2026)"
+   },
+   "faqs": [
+    {
+     "q": "What materials are safest for baby products?",
+     "a": "Ranked by how well they hold up to heat, wear and a baby's mouth: borosilicate glass and 18/8 stainless steel first, because neither leaches and neither degrades with sterilising; then food grade silicone, which is stable and heat tolerant but softer and eventually cloudy; then, if you must, polypropylene, marked with a 5, which is the least bad plastic and the one used in most bottles. Avoid PVC, which needs plasticisers to stay soft, melamine, which is a common toddler plate material that degrades with heat, and anything labelled only BPA free, since BPS and BPF replaced BPA and behave similarly. The rule that covers most cases is simple: heat, fat and time are what pull chemicals out of plastic, so the items that get heated, hold oily food, or spend hours in a mouth are where material matters most."
+    },
+    {
+     "q": "Are BPA free baby products safe?",
+     "a": "Not necessarily. BPA free often means the manufacturer replaced BPA with structurally similar chemicals like BPS or BPF, which have shown similar endocrine disrupting effects in studies. A 2020 study from Trinity College Dublin found that BPA free polypropylene baby bottles still released up to 16 million microplastic particles per liter. The safest approach is to avoid plastic entirely and use glass, stainless steel, or certified food grade silicone. For more on why BPA free is not enough, see our article on why BPA free is not safe."
+    }
+   ]
+  },
+  {
    "id": "Kids::Choose a natural fiber carrier",
    "swap": "Choose a natural fiber carrier",
    "why": "Hours of direct contact against a newborn's face and hands, usually in synthetic mesh.",
@@ -905,15 +961,42 @@ export const KIDS = {
   {
    "id": "Kids::Choose an organic nursing pillow",
    "swap": "Choose an organic nursing pillow",
-   "why": "Polyurethane foam pressed against both of you for hours a day during the newborn months.",
+   "why": "Polyurethane foam pressed against both of you for hours a day during the newborn months, and a category the CPSC has warned about since 2020.",
    "heat": false,
    "impact": "Lower impact",
-   "free": "Stacked pillows you already own work, and many people prefer them.",
+   "free": "Stacked pillows you already own work, cost nothing, and many people prefer them.",
    "picks": [
     {
      "label": "Guide",
      "name": "Read the full guide",
      "url": "https://plasticdetox.org/articles/non-toxic-baby-toddler-products-guide.html"
+    }
+   ],
+   "tip": {
+    "title": "We recommend no nursing pillow, and that is the finding",
+    "body": "The CPSC has warned since October 2020 that nursing pillows must never be used for infant sleep, after suffocation deaths across brands. That warning covers the whole category, so no nursing pillow clears our checks, including the ones made of organic cotton and buckwheat.",
+    "look": [
+     "Stacked pillows you already own, which is what many people end up preferring",
+     "If you do buy one: buckwheat, kapok or wool fill rather than polyurethane foam",
+     "A cover you can strip and hot wash"
+    ],
+    "skip": [
+     "Using one for sleep, or leaving a baby on one unattended. This is the whole warning",
+     "Polyurethane foam, which is the fill flame retardants are added to"
+    ]
+   },
+   "article": {
+    "slug": "non-toxic-baby-toddler-products-guide.html",
+    "title": "The Complete Parent's Guide to Replacing Toxic Baby and Toddler Products (2026)"
+   },
+   "faqs": [
+    {
+     "q": "What materials are safest for baby products?",
+     "a": "Ranked by how well they hold up to heat, wear and a baby's mouth: borosilicate glass and 18/8 stainless steel first, because neither leaches and neither degrades with sterilising; then food grade silicone, which is stable and heat tolerant but softer and eventually cloudy; then, if you must, polypropylene, marked with a 5, which is the least bad plastic and the one used in most bottles. Avoid PVC, which needs plasticisers to stay soft, melamine, which is a common toddler plate material that degrades with heat, and anything labelled only BPA free, since BPS and BPF replaced BPA and behave similarly. The rule that covers most cases is simple: heat, fat and time are what pull chemicals out of plastic, so the items that get heated, hold oily food, or spend hours in a mouth are where material matters most."
+    },
+    {
+     "q": "Is it safe to buy secondhand baby products?",
+     "a": "It depends on the product. Secondhand clothing, strollers manufactured after 2015, and high chairs are generally safe. Never buy secondhand crib mattresses (accumulated allergens, mold, degraded chemicals), car seats (unknown crash history, expired materials), or breast pumps (hygiene and motor degradation concerns)."
     }
    ]
   },
