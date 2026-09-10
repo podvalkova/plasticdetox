@@ -1117,3 +1117,21 @@ body.has-tabs .screen { padding-bottom: calc(var(--safe-bottom) + 4rem); }
 
 .dx-room-top { min-width: 0; }
 .dx-below { display: flex; flex-direction: column; gap: 16px; }
+
+/* How much a swap is worth doing, on the swap itself. The room is 25 items
+   long and position alone did not say which ones carry the weight. */
+.dx-impact {
+  display: inline-block; margin: 0 0 .75rem; padding: .2rem .55rem;
+  border-radius: 999px; font-size: 11px; font-weight: 750;
+  letter-spacing: .04em; text-transform: uppercase;
+}
+.dx-impact.critical { background: #fee2e2; color: #b91c1c; }
+.dx-impact.high     { background: #ffedd5; color: #c2410c; }
+.dx-impact.medium   { background: #fef9c3; color: #a16207; }
+.dx-impact.lower    { background: #dcfce7; color: #15803d; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .dx-impact.critical { background: #4c1d1d; color: #fca5a5; }
+  :root:not([data-theme="light"]) .dx-impact.high     { background: #4a2410; color: #fdba74; }
+  :root:not([data-theme="light"]) .dx-impact.medium   { background: #43391a; color: #fde047; }
+  :root:not([data-theme="light"]) .dx-impact.lower    { background: #14361f; color: #86efac; }
+}

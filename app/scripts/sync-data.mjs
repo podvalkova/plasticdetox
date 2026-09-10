@@ -356,11 +356,18 @@ for (const m of kidsSrc.matchAll(/<h3[^>]*>([\s\S]*?)<\/h3>([\s\S]*?)(?=<h3|<h2|
         url: href.startsWith("http") ? href : `https://plasticdetox.org/articles/${href}` });
     }
   }
+  // The guide ranks every swap by contact hours per day, how direct the route
+  // is, and how vulnerable the system still developing is. That ranking is the
+  // most useful thing on the page for someone deciding what to do first, and
+  // it was being dropped on the floor: the room listed 25 swaps in order with
+  // nothing saying which ones actually matter most.
+  const impact = text((body.match(/class="step-impact[^"]*"[^>]*>[\s\S]*?<\/span>\s*([^<]*)</) || [])[1] || "");
   kidsSteps.push({
     id: `Kids::${text(m[1])}`.slice(0, 120),
     swap: text(m[1]),
     why,
     heat: /heat|warm|hot/i.test(why),
+    impact,
     free,
     picks,
   });

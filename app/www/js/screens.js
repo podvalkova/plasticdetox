@@ -583,6 +583,15 @@ export function detoxStep(root, { phase, step, isDone, isSeen, onDone, onUndo, o
   row.appendChild(el("span", "dx-heat", step.heat ? "Heat driven" : "Contact driven"));
   root.appendChild(row);
 
+  // How much this one is worth doing, ranked by hours of contact a day, how
+  // direct the route is, and how vulnerable the system still developing is.
+  // The room lists 25 swaps in order and said nothing about which ones carry
+  // the weight, so the order was the only signal and it is easy to miss.
+  if (step.impact) {
+    const tier = step.impact.toLowerCase().split(" ")[0];
+    root.appendChild(el("span", `dx-impact ${tier}`, step.impact));
+  }
+
   if (step.why) {
     root.appendChild(el("div", "dx-k", "Why it matters"));
     root.appendChild(el("p", "dx-why", step.why));
