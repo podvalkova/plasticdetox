@@ -307,15 +307,22 @@ export const KIDS = {
   {
    "id": "Kids::Change baby wash and shampoo",
    "swap": "Change baby wash and shampoo",
-   "why": "Thinner skin, higher surface area relative to body weight, and a developing system. Fragrance is the main issue.",
+   "why": "Infant skin is about 30 percent thinner than yours and spends its first weeks settling from neutral to a mildly acidic pH. Fragrance is the main issue, then ethoxylated ingredients and synthetic polymers.",
    "heat": false,
    "impact": "High impact",
-   "free": "Bathe with water only for the first months. Recommended anyway, and free.",
+   "free": "Three baths a week, water for most of it. Recommended anyway, and free.",
    "picks": [
     {
-     "label": "Guide",
-     "name": "Read the full guide",
-     "url": "https://plasticdetox.org/articles/baby-kids-101.html"
+     "label": "$$",
+     "name": "Babo Botanicals Sensitive Baby Fragrance Free 2 in 1",
+     "url": "https://www.amazon.com/dp/B0756548HD?tag=plasticdetox-20",
+     "note": "Top pick, EWG Verified, no ethoxylates"
+    },
+    {
+     "label": "$",
+     "name": "ATTITUDE Baby 2 in 1, Unscented",
+     "url": "https://www.amazon.com/dp/B07JVK3FBY?tag=plasticdetox-20",
+     "note": "Best value, EWG Verified"
     }
    ]
   },
@@ -413,12 +420,6 @@ export const KIDS = {
    "impact": "High impact",
    "free": "Plain zinc oxide or lanolin. The simplest formulas are usually the cheapest ones.",
    "picks": [
-    {
-     "label": "$$",
-     "name": "La Petite Creme Organic Diaper Balm",
-     "url": "https://www.amazon.com/dp/B07HM7KVKW?tag=plasticdetox-20",
-     "note": "Only diaper balm lab tested clean, our top pick"
-    },
     {
      "label": "$$",
      "name": "Motherlove Diaper Balm",
