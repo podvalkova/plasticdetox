@@ -56,6 +56,21 @@ else
 fi
 
 echo
+echo "==> 1b. does the store only sell what Brand Check stands behind?"
+# Nothing had ever asked. validate-data checks brand-data against itself and
+# never opens store.html, so the shelf and the verdicts drifted apart in
+# silence: 113 of 293 store products could not be stood behind, 9 of them
+# actively flagged careful. The first person to find out was a customer
+# tapping Klean Athlete Magnesium and reading "no verdict".
+if python3 tools/store-verdicts.py > /tmp/pd-store.log 2>&1; then
+  head -5 /tmp/pd-store.log | sed 's/^/    /'
+else
+  grep '!!' /tmp/pd-store.log | head -8 | sed 's/^/    /'
+  echo "    ... $(grep -c '!!' /tmp/pd-store.log) products. Fix the verdict or take it off the shelf."
+  fail=1
+fi
+
+echo
 echo "==> 2. would running the rules change a verdict?"
 before=$(python3 - <<'PY'
 import json,hashlib
