@@ -338,12 +338,6 @@ export const KIDS = {
      "name": "Eco by Naty Diapers",
      "url": "https://www.amazon.com/dp/B07FTPBBK9?tag=plasticdetox-20",
      "note": "Cheapest clean diaper"
-    },
-    {
-     "label": "$$",
-     "name": "Seventh Generation Sensitive Skin Diapers",
-     "url": "https://www.amazon.com/dp/B084H4H6HR?tag=plasticdetox-20",
-     "note": "Easiest to find"
     }
    ],
    "article": {
@@ -666,12 +660,6 @@ export const KIDS = {
      "name": "Untreated Hardwood Teether",
      "url": "https://www.amazon.com/dp/B004P9S8W4?tag=plasticdetox-20",
      "note": "Best wooden teether"
-    },
-    {
-     "label": "$",
-     "name": "Medical Grade Silicone Teether",
-     "url": "https://www.amazon.com/dp/B09BVXG63Z?tag=plasticdetox-20",
-     "note": "Best medical grade option"
     }
    ],
    "article": {
@@ -888,12 +876,6 @@ export const KIDS = {
      "name": "EcoAble Hemp Inserts",
      "url": "https://www.amazon.com/dp/B07PPQ3Y2S?tag=plasticdetox-20",
      "note": "Best overnight booster"
-    },
-    {
-     "label": "$$",
-     "name": "Rumparooz One Size",
-     "url": "https://www.amazon.com/dp/B0GH5JMW2K?tag=plasticdetox-20",
-     "note": "Best waterproof layer"
     }
    ]
   },
