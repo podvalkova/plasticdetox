@@ -3413,35 +3413,44 @@
         "asins": [
           "B0194EGJRK"
         ],
-        "verdict": "careful",
-        "note": "Petrolatum base (USP grade petroleum derivative). Safe per FDA but not preferred by clean skincare standards. Lanolin is an allergen for some.",
+        "verdict": "skip",
+        "note": "41% petrolatum with lanolin alcohol, a wool allergen, and no zinc oxide, so it was not part of the 2025 lead findings. It is an anhydrous ointment sold in plastic tubes and jars, which our packaging matrix fails, the same reading that removed La Petite Creme's balm; and a 2025 suit alleges the hypoallergenic claim is false because of the lanolin alcohol. Skip. Plant based balms in glass do the same barrier job.",
         "origin": "article",
         "source": "top-100-baby-kids-products-amazon.html",
         "ext": {
           "legalNote": "Checked on 2026-09-10. Hicks v. Beiersdorf (E.D. Cal. 1:25-cv-01208), filed September 2025 and ongoing, alleges the Baby Healing Ointment is labeled hypoallergenic while containing lanolin alcohol; an allegation on the ointment. The zinc paste reported about 1,400 ppb lead in 2025 independent testing. No action names the baby wash.",
           "frontNotes": {
-            "materials": "We have not established what the product actually touches.",
+            "materials": "anhydrous contents in plastic.",
             "formula": "The published ingredient list carries nothing on the hazard list.",
-            "legal": "Checked on 2026-09-10. Hicks v. Beiersdorf (E.D. Cal. 1:25-cv-01208), filed September 2025 and ongoing, alleges the Baby Healing Ointment is labeled hypoallergenic while containing lanolin alcohol; an allegation on the ointment. The zinc paste reported about 1,400 ppb lead in 2025 independent testing. No action names the baby wash."
+            "legal": "Checked on 2026-09-10. Hicks v. Beiersdorf (E.D. Cal. 1:25-cv-01208), filed September 2025 and ongoing, alleges the Baby Healing Ointment is labeled hypoallergenic while containing lanolin alcohol; an allegation on the ointment. The zinc paste reported about 1,400 ppb lead in 2025 independent testing. No action names the baby wash.",
+            "testing": "No independent lab test of this product found as of September 2026 (searched Lead Safe Mama, Mamavation, Consumer Reports, Valisure, Clean Label Project). The zinc oxide Healing Paste Baby, a different product, reported about 1,400 ppb lead in the 2025 Lead Safe Mama diaper cream series; the plain zinc free ointment was not part of those findings."
           },
           "legalDate": "2025-09",
-          "verdict": "careful",
+          "testingNote": "No independent lab test of this product found as of September 2026 (searched Lead Safe Mama, Mamavation, Consumer Reports, Valisure, Clean Label Project). The zinc oxide Healing Paste Baby, a different product, reported about 1,400 ppb lead in the 2025 Lead Safe Mama diaper cream series; the plain zinc free ointment was not part of those findings.",
+          "testingDate": "2026-09-10",
+          "cappedFrom": "careful",
+          "capRestoreWhy": "adverse finding stands",
+          "verdict": "skip",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
             "formula": "pass",
-            "materials": "unassessed",
+            "materials": "fail",
             "legal": "caution",
-            "testing": "unassessed"
+            "testing": "none"
           },
           "frontOrigin": {
             "legal": "database",
-            "formula": "database"
+            "formula": "database",
+            "testing": "database",
+            "materials": "database"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "3 packaging-matrix-fail"
+          ]
         },
         "cat": "Baby lotion",
         "matchAll": [
@@ -5115,31 +5124,33 @@
       {
         "name": "Aveeno Baby lotions",
         "verdict": "careful",
-        "note": "Reformulated and cleaner than Johnson's but retains fragrance and behentrimonium methosulfate.",
+        "note": "Daily Moisture Body Lotion, fragrance free: dimethicone 1.2% as the active, petrolatum, distearyldimonium chloride, benzyl alcohol, oat flour; no fragrance, no ethoxylated ingredients. The Calming Comfort version adds fragrance. An emulsion in a plastic pump bottle, which our packaging matrix caps at careful.",
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
-            "formula": "Reformulated and cleaner than Johnson's but retains fragrance and behentrimonium methosulfate.",
-            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
+            "formula": "The published ingredient list carries nothing on the hazard list.",
+            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
+            "materials": "emulsion contents in plastic."
           },
           "verdict": "careful",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "caution",
-            "materials": "unassessed",
+            "formula": "pass",
+            "materials": "caution",
             "legal": "none",
             "testing": "unassessed"
           },
           "frontOrigin": {
             "legal": "database",
-            "formula": "hand"
+            "formula": "database",
+            "materials": "database"
           },
-          "scope": "line",
+          "scope": "sku",
           "basis": "direct",
           "disclose": false,
           "rules": [
-            "2.1 disclosure-failure-caps-at-caution"
+            "3 packaging-matrix-fail"
           ]
         },
         "origin": "hand",
@@ -5154,7 +5165,11 @@
           ]
         ],
         "matchFrom": "name",
-        "cat": "Baby lotion"
+        "cat": "Baby lotion",
+        "asins": [
+          "B004H4N67Y",
+          "B0CH1NYCV1"
+        ]
       },
       {
         "name": "Baby Wash & Shampoo",
@@ -5578,23 +5593,23 @@
         "asins": [
           "B07NJPR4TN"
         ],
-        "verdict": "good",
-        "note": "EWG Verified, no fragrance, no sulfates, no PEGs.",
+        "verdict": "careful",
+        "note": "EWG Verified, fragrance free, no sulfates or PEGs: a clean formula. It is an emulsion in a plastic bottle (100% recycled plastic, resin not stated), which our packaging matrix caps at careful; our cleanest moisturizer picks are balms and oils in glass.",
         "origin": "article",
         "source": "top-100-baby-kids-products-amazon.html",
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
-            "materials": "We have not established what the product actually touches.",
+            "materials": "emulsion contents in plastic.",
             "formula": "The published ingredient list carries nothing on the hazard list.",
             "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
           },
-          "verdict": "unrated",
-          "dated": "2026-08-29",
-          "why": "the note reads adversely on materials, needs a human look",
+          "verdict": "careful",
+          "dated": "2026-09-10",
+          "why": "adverse finding stands",
           "fronts": {
             "formula": "pass",
-            "materials": "fail",
+            "materials": "caution",
             "legal": "none",
             "testing": "pass"
           },
@@ -5602,7 +5617,7 @@
             "legal": "database",
             "testing": "inferred",
             "formula": "database",
-            "materials": "inferred"
+            "materials": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -13849,7 +13864,7 @@
         "ext": {
           "legalNote": "Checked recall records on 2026-08-31. One 2017 recall of an infant coverall set for a choking hazard, resolved; the textiles we cover were not involved.",
           "frontNotes": {
-            "materials": "We have not established what the product actually touches.",
+            "materials": "emulsion contents in plastic.",
             "formula": "The published ingredient list carries nothing on the hazard list.",
             "legal": "Checked recall records on 2026-08-31. One 2017 recall of an infant coverall set for a choking hazard, resolved; the textiles we cover were not involved."
           },
@@ -13858,13 +13873,14 @@
           "why": "adverse finding stands",
           "fronts": {
             "formula": "pass",
-            "materials": "unassessed",
+            "materials": "caution",
             "legal": "pass",
             "testing": "unassessed"
           },
           "frontOrigin": {
             "legal": "database",
-            "formula": "database"
+            "formula": "database",
+            "materials": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -26323,16 +26339,16 @@
         ]
       },
       {
-        "name": "Calendula Baby Lotion",
-        "verdict": "good",
-        "note": "EWG Verified, organic certified, no fragrance, full disclosure.",
+        "name": "Simply Non-Scents Baby Lotion",
+        "verdict": "careful",
+        "note": "Fragrance free lotion of eleven organic ingredients: aloe, olive oil, rooibos, calendula, shea, oat protein, cetearyl alcohol, glyceryl oleate and stearate, glycerin, xanthan gum. Clean label; an emulsion in a plastic bottle, which our packaging matrix caps at careful. The brand sits at careful site wide over its sunscreen's lead result.",
         "origin": "article",
         "source": "top-100-baby-kids-products-amazon.html",
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
-            "materials": "plastic in contact with surfactant contents, rinsed off.",
-            "formula": "The published ingredient list hides composition behind fragrance.",
+            "materials": "emulsion contents in plastic.",
+            "formula": "The published ingredient list carries nothing on the hazard list.",
             "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
           },
           "heldFrom": "good",
@@ -26341,10 +26357,10 @@
           "capRestoreWhy": "independent lab result at line scope",
           "verdict": "careful",
           "dated": "2026-08-29",
-          "why": "section 6 ceiling: formula is caution",
+          "why": "adverse finding stands",
           "fronts": {
-            "formula": "caution",
-            "materials": "pass",
+            "formula": "pass",
+            "materials": "caution",
             "legal": "none",
             "testing": "pass"
           },
@@ -26354,10 +26370,12 @@
             "formula": "database",
             "materials": "database"
           },
-          "scope": "line",
+          "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "3 packaging-matrix-fail"
+          ]
         },
         "cat": "Baby lotion",
         "research": "Packaging: Now sold as Simply Non-Scents Baby Lotion in an 8 oz squeeze bottle; bottle material unstated by brand. Contents are a lotion. Materials: Water and organic aloe juice base with organic olive oil, shea butter, oat protein, and organic calendula flower extract; NSF/ANSI 305 organic certified by Oregon Tilth.",
@@ -26365,10 +26383,11 @@
           [
             "earth",
             "mama",
-            "organics",
-            "lotion",
-            "calendula"
+            "lotion"
           ]
+        ],
+        "asins": [
+          "B00T9SBS3C"
         ]
       }
     ],
@@ -42143,7 +42162,7 @@
       {
         "name": "Baby Lotion (original)",
         "verdict": "skip",
-        "note": "Historical formaldehyde releaser and 1,4 dioxane concerns. Brand reformulated 2014 to 2017. Current formula still uses fragrance with undisclosed components.",
+        "note": "The current original, sold as Baby Lotion with Coconut Oil: fragrance, dimethicone, phenoxyethanol, polysorbate 20 (ethoxylated), carbomer and titanium dioxide, an emulsion in a plastic pump bottle. Undisclosed fragrance and the ethoxylate cap it at careful on formula; the brand is a skip for the talc record.",
         "origin": "article",
         "source": "top-100-baby-kids-products-amazon.html",
         "ext": {
@@ -42151,7 +42170,7 @@
           "frontNotes": {
             "formula": "The published ingredient list includes ethoxylated ingredients, a documented downside in products for infant skin: ethoxylation leaves 1,4-dioxane behind, which the FDA found in 47 of 82 children's bath and hair products in its 2018 survey and which New York now caps at 1 ppm in anything that cleans skin or hair; no label can show whether a batch was stripped of it.",
             "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
-            "materials": "plastic in contact with surfactant contents, rinsed off."
+            "materials": "emulsion contents in plastic."
           },
           "inheritedFronts": [
             "formula",
@@ -42181,7 +42200,7 @@
           "why": "adverse finding stands",
           "fronts": {
             "formula": "caution",
-            "materials": "pass",
+            "materials": "caution",
             "legal": "none",
             "testing": "unassessed"
           },
@@ -42190,10 +42209,12 @@
             "legal": "database",
             "materials": "database"
           },
-          "scope": "line",
+          "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "3 packaging-matrix-fail"
+          ]
         },
         "cat": "Baby lotion",
         "matchAll": [
@@ -42201,6 +42222,9 @@
             "johnson",
             "lotion"
           ]
+        ],
+        "asins": [
+          "B07DGKXBD7"
         ]
       },
       {
@@ -42216,20 +42240,26 @@
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
             "formula": "The published ingredient list hides composition behind fragrance.",
-            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
+            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
+            "testing": "No independent lab test of this product found as of September 2026 (searched Lead Safe Mama, Mamavation, Consumer Reports, Valisure, Clean Label Project). The asbestos findings concerned the talc version, a different product; the cornstarch powder has no published lab result.",
+            "materials": "dry contents in plastic."
           },
+          "testingNote": "No independent lab test of this product found as of September 2026 (searched Lead Safe Mama, Mamavation, Consumer Reports, Valisure, Clean Label Project). The asbestos findings concerned the talc version, a different product; the cornstarch powder has no published lab result.",
+          "testingDate": "2026-09-10",
           "verdict": "skip",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
             "formula": "caution",
-            "materials": "unassessed",
+            "materials": "pass",
             "legal": "none",
-            "testing": "unassessed"
+            "testing": "none"
           },
           "frontOrigin": {
             "legal": "database",
-            "formula": "database"
+            "formula": "database",
+            "testing": "database",
+            "materials": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -54271,6 +54301,47 @@
         "asins": [
           "B0CQBF47VV"
         ]
+      },
+      {
+        "name": "Unscented Baby Laundry Detergent",
+        "asins": [
+          "B09QLJRDJK"
+        ],
+        "verdict": "unrated",
+        "note": "The fragrance free version of the baby liquid detergent.",
+        "origin": "store",
+        "matchAll": [
+          [
+            "molly",
+            "suds",
+            "unscented",
+            "baby"
+          ]
+        ],
+        "ext": {
+          "verdict": "unrated",
+          "dated": "2026-09-10",
+          "why": "a recommendation needs its checks done; still to do: materials, legal",
+          "fronts": {
+            "formula": "pass",
+            "materials": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "frontOrigin": {
+            "formula": "inferred"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": [],
+          "heldFrom": "good",
+          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
+          "heldBack": [
+            "materials",
+            "legal"
+          ]
+        }
       }
     ],
     "aliases": [
