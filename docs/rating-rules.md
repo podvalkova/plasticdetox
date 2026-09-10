@@ -395,6 +395,12 @@ plastic is lipophilic, so oil pulls it out and water largely does not.
 | emulsion   | pass | caution | caution | **fail** |
 | anhydrous  | pass | caution | **fail** | **fail** |
 
+Since September 2026 the evidence applier (`tools/apply-front-evidence.py`) reads this
+exact grid from the recorded `base` (dry, aqueous, surfactant, alcohol, acidic,
+emulsion, anhydrous) and the recorded material, then applies 3.2 and 3.3 below;
+before that it scored by adding weights and cautioned aqueous contents in a
+polyolefin bottle that this table passes.
+
 So the case that prompted this: **water based skincare or makeup in a plastic
 bottle passes.** The exceptions are the anhydrous ones, face oils, cleansing
 balms and lip products, which are all oil and in the case of lip products also

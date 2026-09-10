@@ -226,23 +226,14 @@ def assess(pack):
     mouthed = bool(pack.get("mouthed"))
     repeated = str(pack.get("reuse") or "").strip().lower() in ("repeated", "reused", "daily", "years")
 
-    # Weighted, not counted. Fat and heat are the two that actually drive
-    # migration, and counting every driver alike left a warmed plastic baby
-    # bottle at caution, which is the exact case our own research is loudest
-    # about: 16.2 million particles per litre in the Nature Food work.
-    drivers, weight = [], 0.0
-    if base in OILY:
-        drivers.append("an oil based formula, which is the strongest extractant there is")
-        weight += 2
-    if heated:
-        drivers.append("heat")
-        weight += 2
-    if mouthed:
-        drivers.append("being mouthed or chewed")
-        weight += 1.5
-    if repeated:
-        drivers.append("repeated contact over time")
-        weight += 1
+    # Rule 3.3, exposure route gives relief. What migrates out of the bottle
+    # only matters in proportion to how much of it stays on a person: a body
+    # wash is diluted and rinsed down the drain, a laundry powder never touches
+    # skin at all. Recorded as a fact, `use`, so a person states the route
+    # rather than a regex guessing it from the name.
+    use = str(pack.get("use") or "").strip().lower().replace("_", "-").replace(" ", "-")
+    relief = 2 if use in ("never-on-body", "not-on-body", "no-body-contact") else (
+        1 if use in ("rinse-off", "rinsed-off", "rinse") else 0)
 
     # An object is not a container.
     #
@@ -254,43 +245,24 @@ def assess(pack):
     # standard forbids everywhere else, and it did it to every disposable
     # diaper equally, which tells a shopper nothing about any of them.
     if str(pack.get("holds") or "").strip().lower() == "none":
+        drivers = []
+        if heated:
+            drivers.append("heat")
+        if mouthed:
+            drivers.append("being mouthed or chewed")
+        if repeated:
+            drivers.append("repeated contact over time")
         if rank <= 1 and not drivers:
             return "pass", (f"Made of {pretty(term)}, with nothing inside it to pull anything "
                             "out. What that contact means is the exposure read")
         if rank <= 1:
             return "caution", (f"{pretty(term)} against the skin, with "
                                + ", ".join(drivers))
-        return ("fail" if rank + weight >= 4 else "caution"), (
+        return ("fail" if rank >= 2 and len(drivers) >= 2 else "caution"), (
             f"{pretty(term)} in direct contact"
             + (", with " + ", ".join(drivers) if drivers else ""))
 
-    # Rule 3.3, exposure route gives relief. What migrates out of the bottle
-    # only matters in proportion to how much of it stays on a person: a body
-    # wash is diluted and rinsed down the drain, a laundry powder never touches
-    # skin at all. The prose classifier in audit-product-rules.py has applied
-    # this since it was written; the recorded-evidence path never did, so a
-    # baby wash whose PET bottle was recorded as a fact scored one step worse
-    # than the same bottle described in a note. Recorded as a fact, `use`, so
-    # a person states the route rather than a regex guessing it from the name.
-    use = str(pack.get("use") or "").strip().lower().replace("_", "-").replace(" ", "-")
-    relief = 2 if use in ("never-on-body", "not-on-body", "no-body-contact") else (
-        1 if use in ("rinse-off", "rinsed-off", "rinse") else 0)
-    softer = {"fail": "caution", "caution": "pass", "pass": "pass"}
-
-    def relieved(status, reason):
-        for _ in range(relief):
-            status = softer[status]
-        if relief:
-            reason += (", diluted and rinsed, never left on skin" if relief == 2
-                       else ", rinsed off")
-        return status, reason
-
-    if not drivers and base in DRY:
-        return "pass", (f"{pretty(term)} in contact, but dry contents at room temperature "
-                        "give it little to migrate into")
-    if not drivers and base:
-        return relieved("caution", f"{pretty(term)} in contact with {base} contents")
-    if not drivers:
+    if not base:
         # An unrecorded contents field is a gap, not a finding. The matrix
         # needs two axes and we only have one: without knowing whether the
         # tube holds a dry stick or a face oil, "caution" is not a reading of
@@ -301,9 +273,55 @@ def assess(pack):
         return None, (f"{pretty(term)} in contact, and we have not recorded what it "
                       "holds, so the matrix has only one of the two axes it needs")
 
-    score = rank + weight
-    reason = f"{pretty(term)} in contact, with " + ", ".join(drivers)
-    return relieved("fail" if score >= 4 else "caution", reason)
+    # Rule 3.1, the matrix itself, exactly as the rulebook prints it. Contents
+    # down the side by how hard they pull, polymer across by what it has to
+    # give. Until September 2026 this function scored by adding weights, which
+    # agreed with the matrix on oils and heat but cautioned every aqueous
+    # toner and every leave-on wash in a polyolefin bottle that the rulebook
+    # passes, and never said what it did with an emulsion at all. The prose
+    # classifier in audit-product-rules.py had the grid all along; the
+    # recorded-evidence path now reads the same one.
+    PULL = {
+        "dry": 0, "solid": 0, "powder": 0, "dry powder": 0, "bar": 0, "tablet": 0,
+        "aqueous": 1, "water": 1, "gel": 1, "toner": 1, "hydrosol": 1,
+        "surfactant": 2, "wash": 2, "cleanser": 2, "shampoo": 2,
+        "alcohol": 2, "spray": 2, "sanitizer": 2, "acidic": 2, "acid": 2,
+        "emulsion": 3, "lotion": 3, "cream": 3, "conditioner": 3, "milk": 3,
+        "anhydrous": 4, "oil": 4, "oily": 4, "fatty": 4, "balm": 4, "butter": 4,
+        "salve": 4, "ointment": 4,
+    }
+    if base not in PULL:
+        return None, (f"{pretty(term)} in contact with contents recorded as \"{base}\", which "
+                      "is not a row of the matrix (dry, aqueous, surfactant, alcohol, acidic, "
+                      "emulsion or anhydrous)")
+    pull = PULL[base]
+    col = 3 if rank >= 2 else (2 if rank > 1 else 1)
+    GRID = {
+        (0, 1): "pass", (0, 2): "pass", (0, 3): "caution",
+        (1, 1): "pass", (1, 2): "pass", (1, 3): "caution",
+        (2, 1): "pass", (2, 2): "caution", (2, 3): "fail",
+        (3, 1): "caution", (3, 2): "caution", (3, 3): "fail",
+        (4, 1): "caution", (4, 2): "fail", (4, 3): "fail",
+    }
+    ROW = {0: "dry", 1: "aqueous", 2: "surfactant or alcohol", 3: "emulsion", 4: "anhydrous"}
+    status = GRID[(pull, col)]
+    bits = [f"{ROW[pull]} contents in {pretty(term)}"]
+    worse = {"pass": "caution", "caution": "fail", "fail": "fail"}
+    softer = {"fail": "caution", "caution": "pass", "pass": "pass"}
+    # Rule 3.2, heat moves everything one step worse; a chewed spout is
+    # abrasion, and time multiplies all of it (a bottle refilled daily for
+    # years is not a bottle used once).
+    if heated:
+        status = worse[status]; bits.append("heated in use")
+    if mouthed:
+        status = worse[status]; bits.append("mouthed or chewed")
+    if repeated:
+        status = worse[status]; bits.append("repeated contact over time")
+    for _ in range(relief):
+        status = softer[status]
+    if relief:
+        bits.append("diluted and rinsed, never left on skin" if relief == 2 else "rinsed off")
+    return status, ", ".join(bits)
 
 
 # Exposure types that name a thing you swallow or leave on your body. These
