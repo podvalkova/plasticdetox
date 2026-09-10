@@ -264,11 +264,32 @@ def assess(pack):
             f"{pretty(term)} in direct contact"
             + (", with " + ", ".join(drivers) if drivers else ""))
 
+    # Rule 3.3, exposure route gives relief. What migrates out of the bottle
+    # only matters in proportion to how much of it stays on a person: a body
+    # wash is diluted and rinsed down the drain, a laundry powder never touches
+    # skin at all. The prose classifier in audit-product-rules.py has applied
+    # this since it was written; the recorded-evidence path never did, so a
+    # baby wash whose PET bottle was recorded as a fact scored one step worse
+    # than the same bottle described in a note. Recorded as a fact, `use`, so
+    # a person states the route rather than a regex guessing it from the name.
+    use = str(pack.get("use") or "").strip().lower().replace("_", "-").replace(" ", "-")
+    relief = 2 if use in ("never-on-body", "not-on-body", "no-body-contact") else (
+        1 if use in ("rinse-off", "rinsed-off", "rinse") else 0)
+    softer = {"fail": "caution", "caution": "pass", "pass": "pass"}
+
+    def relieved(status, reason):
+        for _ in range(relief):
+            status = softer[status]
+        if relief:
+            reason += (", diluted and rinsed, never left on skin" if relief == 2
+                       else ", rinsed off")
+        return status, reason
+
     if not drivers and base in DRY:
         return "pass", (f"{pretty(term)} in contact, but dry contents at room temperature "
                         "give it little to migrate into")
     if not drivers and base:
-        return "caution", f"{pretty(term)} in contact with {base} contents"
+        return relieved("caution", f"{pretty(term)} in contact with {base} contents")
     if not drivers:
         # An unrecorded contents field is a gap, not a finding. The matrix
         # needs two axes and we only have one: without knowing whether the
@@ -282,7 +303,7 @@ def assess(pack):
 
     score = rank + weight
     reason = f"{pretty(term)} in contact, with " + ", ".join(drivers)
-    return ("fail" if score >= 4 else "caution"), reason
+    return relieved("fail" if score >= 4 else "caution", reason)
 
 
 # Exposure types that name a thing you swallow or leave on your body. These
@@ -644,6 +665,7 @@ def main():
                     "heated": bool(pack.get("heated")),
                     "mouthed": bool(pack.get("mouthed")),
                     "reuse": pack.get("reuse") or "",
+                    "use": pack.get("use") or "",
                     "material": pack.get("material") or "",
                     "source": pack.get("source") or "",
                     "checked": pack.get("checked") or pack.get("checkedListing") or "",
@@ -668,6 +690,7 @@ def main():
                 "heated": bool(pack.get("heated")),
                 "mouthed": bool(pack.get("mouthed")),
                 "reuse": pack.get("reuse") or "",
+                "use": pack.get("use") or "",
                 "material": pack.get("material") or "",
                 "source": pack.get("source") or "",
                 "checked": pack.get("checked") or pack.get("checkedListing") or "",

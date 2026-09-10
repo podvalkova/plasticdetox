@@ -148,6 +148,7 @@ and never fails a front alone. The evidence behind each term lives as a
 comment on the code entry and as prose in 2.1b.
 
 > **Baby formula**: `palm`
+> **Baby lotion**: 
 
 <!-- hazard-list:end -->
 
@@ -235,6 +236,29 @@ coconut oils are not on the list, because no comparable body of evidence
 exists for them in formula and a rule needs a finding, not a food trend.
 sn-2 structured palm (the Kabrita style beta palmitate) still cautions: it
 answers the absorption objection but not the refining contaminants.
+
+**Ethoxylated ingredients in baby wash, shampoo and lotion (September 2026).**
+The second entry, scoped to the category the classifier files every baby wash
+and shampoo under. Ethoxylation, the step that reacts a surfactant or
+emulsifier with ethylene oxide to make it milder, leaves 1,4-dioxane behind,
+a Prop 65 carcinogen that never appears on a label. The evidence is category
+specific and measured, not modelled: the 2009 Campaign for Safe Cosmetics
+round found it in 32 of 48 children's bath products (0.27 to 35 ppm); the
+FDA's own 2018 survey found it in 47 of 82 children's bath and hair products,
+two above 10 ppm; New York caps it at 1 ppm in any product that cleans skin
+or hair from the end of 2023, and Galderma disclosed 1.1 ppm in Cetaphil Baby
+Wash under that law. Why caution and not fail: it is a manufacturing residue
+that vacuum stripping removes, the FDA treats trace levels as acceptable, and
+no label read can tell a stripped batch from an unstripped one, so the
+ingredient is a risk marker rather than a named toxin. The terms are the label
+tells for ethoxylation and propoxylation: `peg`, `ppg`, the `-eth` family
+(`laureth`, `myreth`, `trideceth`, `ceteareth`, `steareth`, `oleth`,
+`gluceth`), `polysorbate` and `sorbeth`. The boundary: plain sulfates (sodium
+coco-sulfate, SLS) and betaines are made without ethylene oxide and stay off
+the list, because the finding is about the process, not about lather. Baby
+wipes are deliberately not in scope: Consumer Reports' 2026 round lab tested
+the category and the featured wipes carry clean results, which under 5.5
+outrank a label read.
 
 ### 2.2 Conditional failures
 
@@ -392,6 +416,12 @@ drain while the other is spread on skin and left there.
 - **Rinsed off**: one step better. Shampoo, body wash, cleanser, toothpaste.
 - **Never touches a person**: two steps better. Laundry, dish soap, surface
   cleaners.
+
+In the evidence file the route is a recorded fact, `use`, on the materials
+record: `"rinse-off"` for the one step, `"never-on-body"` for the two. The
+applier reads it there rather than guessing it from a name, so a body wash
+whose PET bottle was recorded as a fact scores the same as one described in a
+note, which until September 2026 it did not.
 
 ### 3.4 What does not count
 

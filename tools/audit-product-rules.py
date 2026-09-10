@@ -278,6 +278,23 @@ DISCLOSURE_FAILURE = [
 # formula, and a rule needs a finding. sn-2 structured palm (Kabrita style)
 # still cautions: the absorption objection falls away but the refining
 # contaminant load does not.
+# Ethoxylated ingredients in baby wash, shampoo and lotion ("Baby lotion" is
+# the category the classifier files every baby wash and shampoo under). The
+# process that makes a surfactant mild, reacting it with ethylene oxide, leaves
+# 1,4-dioxane behind, a Prop 65 carcinogen that never appears on a label. The
+# evidence is category specific: the 2009 Campaign for Safe Cosmetics lab
+# round found it in 32 of 48 children's bath products; the FDA's own 2018
+# survey (Zhou, J Chromatogr A 2019) found it in 47 of 82 children's bath and
+# hair products, two above 10 ppm; New York caps it at 1 ppm in anything that
+# cleans skin or hair and Galderma disclosed 1.1 ppm in Cetaphil Baby Wash
+# under that law. Why caution and not fail: the contaminant is a manufacturing
+# residue that vacuum stripping removes, the FDA treats trace levels as
+# acceptable, and no label read can tell a stripped batch from an unstripped
+# one, so the ingredient is a risk marker rather than a named toxin. The
+# terms are the label tells for ethoxylation and propoxylation: PEG, PPG, the
+# -eth suffix family, polysorbate and sorbeth. The boundary: plain sulfates
+# (sodium coco-sulfate, SLS) and betaines are not ethoxylated and stay off
+# this list, because the finding is about the process, not about lather.
 CATEGORY_CAUTION = {
     "Baby formula": {
         "palm": ("palm based oils, a documented downside in infant formula: "
@@ -286,6 +303,15 @@ CATEGORY_CAUTION = {
                  "and glycidyl ester load of the common formula oils (the EU "
                  "sets infant formula limits for these contaminants, the US "
                  "sets none)"),
+    },
+    "Baby lotion": {
+        t: ("ethoxylated ingredients, a documented downside in products for "
+            "infant skin: ethoxylation leaves 1,4-dioxane behind, which the FDA "
+            "found in 47 of 82 children's bath and hair products in its 2018 "
+            "survey and which New York now caps at 1 ppm in anything that cleans "
+            "skin or hair; no label can show whether a batch was stripped of it")
+        for t in ("peg", "ppg", "laureth", "myreth", "trideceth", "ceteareth",
+                  "steareth", "oleth", "gluceth", "polysorbate", "sorbeth")
     },
 }
 
