@@ -2790,5 +2790,12 @@
   "status": "pass",
   "resolved": true,
   "note": "FDA device enforcement and recall databases and the CPSC recall database queried on 2026-09-11 with nothing on record for COMI (two CPSC hits name unrelated firms), and web searches found no recall or suit. The lead finding is a test result, recorded under testing."
+ },
+ "Sages of the Ages": {
+  "checked": "2026-09-11",
+  "resolved": true,
+  "status": "pass",
+  "note": "Checked on 2026-09-11. openFDA drug enforcement has no recall for the firm; a web search for recall, lawsuit, FDA warning letter or Proposition 65 notice against Sages of the Ages or Sages Nutrition found nothing, and the Prop 65 60-day notice search returns no defendant by that name. Results for 'Sage Products', a Stryker unit with a 2017 warning letter and B. cepacia recall, are an unrelated company.",
+  "source": "https://api.fda.gov/drug/enforcement.json?search=recalling_firm:%22sages%22"
  }
 }
