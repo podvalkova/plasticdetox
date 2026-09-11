@@ -333,8 +333,10 @@ for (const m of kidsSrc.matchAll(/<h3[^>]*>([\s\S]*?)<\/h3>([\s\S]*?)(?=<h3|<h2|
   if (!free) continue;
   const why = text(desc.replace(/<b>Free version:<\/b>[\s\S]*$/, ""));
   const picks = [];
+  // Brand direct picks count too: Primally Pure sells through its own site,
+  // on an Awin link, and the room showed only the Amazon half of a swap.
   for (const c of body.matchAll(
-      /href="(https:\/\/www\.amazon\.com\/dp\/[^"]+)"[\s\S]*?product-card-tier">([^<]*)<[\s\S]*?product-card-name">([^<]*)<(?:[\s\S]*?product-card-best">([^<]*)<)?/g)) {
+      /href="(https:\/\/(?:www\.amazon\.com\/dp\/|www\.awin1\.com\/cread\.php\?)[^"]+)"[\s\S]*?product-card-tier">([^<]*)<[\s\S]*?product-card-name">([^<]*)<(?:[\s\S]*?product-card-best">([^<]*)<)?/g)) {
     // The store shows a price tier and a line saying what the pick is best for.
     // Cutting that line down to two words gave "Best glyphosate" and "Easiest
     // to", so the tier becomes the chip and the line stays whole as the note,
@@ -344,6 +346,9 @@ for (const m of kidsSrc.matchAll(/<h3[^>]*>([\s\S]*?)<\/h3>([\s\S]*?)(?=<h3|<h2|
       name: text(c[3]),
       url: c[1],
       note: text(c[4] || ""),
+      // An Amazon pick draws its photo from the ASIN. A brand direct pick has
+      // no ASIN, so it carries the card's own image or shows a blank tile.
+      ...(/amazon\.com\/dp\//.test(c[1]) ? {} : { img: (c[0].match(/<img src="([^"]+)"/) || [])[1] }),
     });
   }
   // A swap whose picks live in its own guide gets the guide, the way the

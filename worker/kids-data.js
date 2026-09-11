@@ -102,9 +102,27 @@ export const KIDS = {
    "picks": [
     {
      "label": "$",
+     "name": "Matyz Glass Bottles (6 pack)",
+     "url": "https://www.amazon.com/dp/B081C8VTRV?tag=plasticdetox-20",
+     "note": "Best glass for Spectra, converter for Medela"
+    },
+    {
+     "label": "$",
      "name": "Evenflo Classic Glass Bottles (6 pack)",
      "url": "https://www.amazon.com/dp/B019PG0FPO?tag=plasticdetox-20",
      "note": "Best glass collection bottles, standard neck"
+    },
+    {
+     "label": "$",
+     "name": "Haakaa Silicone Manual Pump",
+     "url": "https://www.amazon.com/dp/B07CWK4S5W?tag=plasticdetox-20",
+     "note": "Best pump with no plastic parts"
+    },
+    {
+     "label": "$",
+     "name": "Haakaa Petal Milk Collector (2 pack)",
+     "url": "https://www.amazon.com/dp/B0FJXTZFPZ?tag=plasticdetox-20",
+     "note": "Best let down catcher"
     },
     {
      "label": "$$",
@@ -438,6 +456,13 @@ export const KIDS = {
      "name": "Motherlove Diaper Balm",
      "url": "https://www.amazon.com/dp/B000XJ2LDW?tag=plasticdetox-20",
      "note": "Best for cloth diapers"
+    },
+    {
+     "label": "$$$",
+     "name": "Primally Pure Baby Balm",
+     "url": "https://www.awin1.com/cread.php?awinmid=112758&awinaffid=2925861&ued=https%3A%2F%2Fprimallypure.com%2Fproducts%2Fbaby-balm",
+     "note": "Best tallow balm, fragrance free, glass jar",
+     "img": "https://primallypure.com/cdn/shop/files/2024_Baby_Balm_1oz_PDP.webp?v=1775659607"
     }
    ],
    "tip": {

@@ -18434,10 +18434,11 @@
     "brand": "COMI",
     "category": "Pumping",
     "stance": "skip",
-    "reason": "Independent XRF testing found high lead in the exterior painted measurement markings of the glass collection bottles, over 20 times the federal limit for children's items.",
-    "evidence": "~2,000 ppm lead in exterior painted markings (Lead Safe Mama)",
-    "alternative": "Mila's Keeper etched-marking glass collection bottles",
+    "reason": "Independent XRF testing reported by Mamavation found 1,987 to 4,796 ppm lead on COMI's wide neck glass collection bottles, pink and blue versions, against a 90 ppm limit for children's products. The report does not say which part carried it.",
+    "evidence": "XRF by Eric Ritter, published by Mamavation in March 2024: 4,796 and 2,827 ppm lead (pink), 2,000 and 1,987 ppm lead (blue)",
+    "alternative": "Matyz wide neck glass bottles, XRF tested with no lead detected",
     "sources": [
+      "https://mamavation.com/motherhood/safest-baby-bottles-sans-lead-microplastics-baby-registry.html",
       "non-toxic-baby-toddler-products-guide.html"
     ],
     "fronts": {
@@ -18470,7 +18471,56 @@
       "researched": 0,
       "flagged": 0,
       "worst": null
-    }
+    },
+    "products": [
+      {
+        "name": "COMI Wide Neck Glass Breastmilk Collection Bottles (6 oz)",
+        "asins": [
+          "B0CCNGVN8D",
+          "B0BN8442ZP"
+        ],
+        "verdict": "unrated",
+        "origin": "research",
+        "note": "Glass collection bottles with printed measurement marks for wide neck pumps. Independent XRF found lead far above the children's product limit.",
+        "matchAll": [
+          [
+            "comi",
+            "breastmilk"
+          ]
+        ],
+        "cat": "Pumping",
+        "ext": {
+          "legalNote": "FDA device enforcement and recall databases and the CPSC recall database queried on 2026-09-11 with nothing on record for COMI (two CPSC hits name unrelated firms), and web searches found no recall or suit. The lead finding is a test result, recorded under testing.",
+          "frontNotes": {
+            "legal": "FDA device enforcement and recall databases and the CPSC recall database queried on 2026-09-11 with nothing on record for COMI (two CPSC hits name unrelated firms), and web searches found no recall or suit. The lead finding is a test result, recorded under testing.",
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "testing": "XRF by Eric Ritter, published by Mamavation on 13 March 2024: pink bottle 4,796 and 2,827 ppm lead, blue bottle 2,000 and 1,987 ppm lead, on COMI Wide Neck Glass Breastmilk Collection n Storage Bottles. The federal limit for lead in children's products is 90 ppm in paint and coatings. The report does not name the part tested, so the finding stands on the bottle as sold.",
+            "materials": "In contact with borosilicate, which puts nothing into what it holds."
+          },
+          "testingNote": "XRF by Eric Ritter, published by Mamavation on 13 March 2024: pink bottle 4,796 and 2,827 ppm lead, blue bottle 2,000 and 1,987 ppm lead, on COMI Wide Neck Glass Breastmilk Collection n Storage Bottles. The federal limit for lead in children's products is 90 ppm in paint and coatings. The report does not name the part tested, so the finding stands on the bottle as sold.",
+          "testingDate": "2026-09-11",
+          "verdict": "skip",
+          "dated": "2026-09-11",
+          "why": "section 6 ceiling: testing is fail, on recorded evidence",
+          "fronts": {
+            "formula": "none",
+            "materials": "pass",
+            "legal": "pass",
+            "testing": "fail"
+          },
+          "frontOrigin": {
+            "legal": "database",
+            "formula": "hand",
+            "testing": "database",
+            "materials": "database"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
+      }
+    ]
   },
   {
     "id": "commercial-chef",
@@ -35882,7 +35932,8 @@
       {
         "name": "Haakaa Silicone Milk Collectors",
         "asins": [
-          "B0FJXVJQK5"
+          "B0FJXVJQK5",
+          "B0FJXTZFPZ"
         ],
         "verdict": "good",
         "note": "Food grade silicone catches let down on the opposite breast while nursing. Saves milk that would otherwise soak into a pad. Badges: Food grade silicone.",
@@ -35890,10 +35941,13 @@
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
-            "materials": "Made of silicone, which the product name states, and which puts nothing into what it touches.",
+            "materials": "In contact with silicone, which puts nothing into what it holds.",
             "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
-            "formula": "An object has no ingredient list. What it is made of is the materials check."
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "testing": "No independent lab test of this product found as of September 2026 (searched Lead Safe Mama, Mamavation, Consumer Reports). Lead Safe Mama's XRF of Haakaa's glass bottle is a different product, and a clean result does not transfer to a sibling (rule 1.1)."
           },
+          "testingNote": "No independent lab test of this product found as of September 2026 (searched Lead Safe Mama, Mamavation, Consumer Reports). Lead Safe Mama's XRF of Haakaa's glass bottle is a different product, and a clean result does not transfer to a sibling (rule 1.1).",
+          "testingDate": "2026-09-11",
           "verdict": "good",
           "dated": "2026-09-11",
           "why": "direct evidence on materials, recorded rather than read off a note",
@@ -35901,12 +35955,13 @@
             "formula": "none",
             "materials": "pass",
             "legal": "none",
-            "testing": "unassessed"
+            "testing": "none"
           },
           "frontOrigin": {
             "legal": "database",
             "materials": "database",
-            "formula": "hand"
+            "formula": "hand",
+            "testing": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -35922,6 +35977,55 @@
             "collectors"
           ]
         ]
+      },
+      {
+        "name": "Haakaa Silicone Manual Breast Pump (4 oz)",
+        "asins": [
+          "B07CWK4S5W"
+        ],
+        "verdict": "unrated",
+        "origin": "research",
+        "note": "One piece food grade silicone pump that works by suction, with no valves or plastic parts. Also catches let down on the other side while nursing.",
+        "matchAll": [
+          [
+            "haakaa",
+            "pump"
+          ]
+        ],
+        "cat": "Pumping",
+        "ext": {
+          "legalNote": "FDA device enforcement and recall databases and the CPSC recall database queried on 2026-09-11 with nothing on record for Haakaa, and web searches for recalls, lawsuits or class actions naming Haakaa found none.",
+          "frontNotes": {
+            "legal": "FDA device enforcement and recall databases and the CPSC recall database queried on 2026-09-11 with nothing on record for Haakaa, and web searches for recalls, lawsuits or class actions naming Haakaa found none.",
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "testing": "No independent lab test of this product found as of September 2026 (searched Lead Safe Mama, Mamavation, Consumer Reports). Lead Safe Mama's XRF of Haakaa's glass bottle is a different product, and a clean result does not transfer to a sibling (rule 1.1).",
+            "materials": "In contact with silicone, which puts nothing into what it holds."
+          },
+          "testingNote": "No independent lab test of this product found as of September 2026 (searched Lead Safe Mama, Mamavation, Consumer Reports). Lead Safe Mama's XRF of Haakaa's glass bottle is a different product, and a clean result does not transfer to a sibling (rule 1.1).",
+          "testingDate": "2026-09-11",
+          "verdict": "good",
+          "dated": "2026-09-11",
+          "why": "direct evidence at sku scope on formula, materials",
+          "fronts": {
+            "formula": "none",
+            "materials": "pass",
+            "legal": "pass",
+            "testing": "none"
+          },
+          "frontOrigin": {
+            "legal": "database",
+            "testing": "database",
+            "materials": "database",
+            "formula": "hand"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": [
+            "2 formula-read-from-materials",
+            "5.4 durable-good-is-its-own-packaging"
+          ]
+        }
       }
     ],
     "rollup": {
@@ -60283,7 +60387,7 @@
           "why": "section 6 ceiling: materials is fail",
           "fronts": {
             "formula": "none",
-            "legal": "unassessed",
+            "legal": "pass",
             "testing": "unassessed",
             "materials": "fail"
           },
@@ -60293,13 +60397,15 @@
           "authored": true,
           "frontNotes": {
             "materials": "Anhydrous contents in unspecified plastic.",
-            "formula": "An object has no ingredient list. What it is made of is the materials check."
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "legal": "FDA device enforcement and recall databases and the CPSC recall database queried on 2026-09-11 with nothing on record for Nuliie, and web searches for recalls, lawsuits or class actions naming Nuliie found none."
           },
           "cappedFrom": "careful",
           "capRestoreWhy": "Reviewed by hand against the standard.",
           "frontOrigin": {
             "materials": "stated",
-            "formula": "hand"
+            "formula": "hand",
+            "legal": "database"
           },
           "exposure": {
             "type": "food vessel",
@@ -60313,7 +60419,56 @@
             "heat": false,
             "fat": false,
             "why": "for a baby, which is high whatever the arithmetic says"
-          }
+          },
+          "legalNote": "FDA device enforcement and recall databases and the CPSC recall database queried on 2026-09-11 with nothing on record for Nuliie, and web searches for recalls, lawsuits or class actions naming Nuliie found none."
+        }
+      },
+      {
+        "name": "Nuliie Silicone Breastmilk Storage Bags (reusable, 8 oz)",
+        "asins": [
+          "B0BBW3M6YM"
+        ],
+        "verdict": "unrated",
+        "origin": "research",
+        "note": "Reusable food grade silicone bags with a double seal. The ABS sealing rod clamps the top, above the milk, and comes off before warming.",
+        "matchAll": [
+          [
+            "nuliie",
+            "silicone"
+          ]
+        ],
+        "cat": "Breast milk storage",
+        "ext": {
+          "legalNote": "FDA device enforcement and recall databases and the CPSC recall database queried on 2026-09-11 with nothing on record for Nuliie, and web searches for recalls, lawsuits or class actions naming Nuliie found none.",
+          "frontNotes": {
+            "legal": "FDA device enforcement and recall databases and the CPSC recall database queried on 2026-09-11 with nothing on record for Nuliie, and web searches for recalls, lawsuits or class actions naming Nuliie found none.",
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "testing": "No independent lab test of this product found as of September 2026 (searched Lead Safe Mama, Mamavation, Consumer Reports).",
+            "materials": "In contact with silicone, which puts nothing into what it holds."
+          },
+          "testingNote": "No independent lab test of this product found as of September 2026 (searched Lead Safe Mama, Mamavation, Consumer Reports).",
+          "testingDate": "2026-09-11",
+          "verdict": "good",
+          "dated": "2026-09-11",
+          "why": "direct evidence on materials, recorded rather than read off a note",
+          "fronts": {
+            "formula": "none",
+            "materials": "pass",
+            "legal": "pass",
+            "testing": "none"
+          },
+          "frontOrigin": {
+            "legal": "database",
+            "formula": "hand",
+            "testing": "database",
+            "materials": "database"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": [
+            "3 packaging-matrix-caution"
+          ]
         }
       }
     ],
@@ -92720,6 +92875,64 @@
           "rules": [
             "2 formula-read-from-materials"
           ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "matyz",
+    "brand": "Matyz",
+    "category": "Breast milk storage",
+    "stance": "good",
+    "reason": "Borosilicate glass breast milk bottles for wide neck pumps. Lead Safe Mama's XRF found no lead in the glass, the painted logo or the caps.",
+    "evidence": "XRF, October 2022: lead non detect; cadmium 24 ppm and antimony 25 ppm in the glass body",
+    "sources": [
+      "https://tamararubin.com/2022/10/xrf-test-results-for-matyz-brand-wide-neck-glass-breast-milk-storage-bottle/"
+    ],
+    "products": [
+      {
+        "name": "Matyz Glass Breastmilk Storage Bottles (6 pack, 6 oz)",
+        "asins": [
+          "B081C8VTRV"
+        ],
+        "verdict": "unrated",
+        "origin": "research",
+        "note": "Borosilicate glass wide neck bottles that thread onto Spectra and other wide neck pumps; a converter for Medela is included. Silicone sealing disc under a plastic cap.",
+        "matchAll": [
+          [
+            "matyz"
+          ]
+        ],
+        "cat": "Breast milk storage",
+        "ext": {
+          "legalNote": "FDA device enforcement and recall databases and the CPSC recall database queried on 2026-09-11 with nothing on record for Matyz, and web searches for recalls, lawsuits or class actions naming Matyz found none.",
+          "frontNotes": {
+            "legal": "FDA device enforcement and recall databases and the CPSC recall database queried on 2026-09-11 with nothing on record for Matyz, and web searches for recalls, lawsuits or class actions naming Matyz found none.",
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "testing": "Lead Safe Mama XRF of this bottle, 1 October 2022: lead non detect in the glass, the painted logo and both caps; cadmium 24 +/- 5 ppm and antimony 25 +/- 11 ppm in the glass body, which the tester rates within every U.S. and international standard. XRF measures what the item is made of, which for lead in glass and paint is the hazard itself.",
+            "materials": "In contact with borosilicate, which puts nothing into what it holds."
+          },
+          "testingNote": "Lead Safe Mama XRF of this bottle, 1 October 2022: lead non detect in the glass, the painted logo and both caps; cadmium 24 +/- 5 ppm and antimony 25 +/- 11 ppm in the glass body, which the tester rates within every U.S. and international standard. XRF measures what the item is made of, which for lead in glass and paint is the hazard itself.",
+          "testingDate": "2026-09-11",
+          "verdict": "good",
+          "dated": "2026-09-11",
+          "why": "direct evidence on materials, recorded rather than read off a note",
+          "fronts": {
+            "formula": "none",
+            "materials": "pass",
+            "legal": "pass",
+            "testing": "pass"
+          },
+          "frontOrigin": {
+            "legal": "database",
+            "formula": "hand",
+            "testing": "database",
+            "materials": "database"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
         }
       }
     ]

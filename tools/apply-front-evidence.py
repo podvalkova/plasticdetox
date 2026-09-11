@@ -351,6 +351,10 @@ NO_PLASTIC_ALTERNATIVE = (
     # glass equivalent, and filtering through plastic removes far more than the
     # housing can contribute, which is the rule 5.7 trade off.
     "reverse osmosis", "under sink", "undersink", "under the sink",
+    # Breast pumps and passive milk collectors: every one sold is silicone or
+    # plastic. A search on 2026-09-11 for glass or steel versions returned
+    # bottles and pitchers, never a pump or a collector.
+    "breast pump", "milk collector", "milk catcher",
     # Stick foundation, cream blush and mineral bronzer, the worked example in
     # the rulebook: an anhydrous formula in a twist up tube is the only way the
     # format exists.
@@ -422,7 +426,7 @@ NO_INGREDIENT_CATS = {
     "Breast milk storage", "Car seats", "Clothing", "Cookware",
     "Crib mattresses", "Cribs & nursery", "Cutting boards", "Dental floss",
     "Diapers", "Food storage", "Kitchen appliances", "Menstrual cups",
-    "Pacifiers", "Play mats", "Razors", "Shower curtains", "Strollers", "Tableware",
+    "Pacifiers", "Play mats", "Pumping", "Razors", "Shower curtains", "Strollers", "Tableware",
     "Teethers", "Toothbrushes", "Toys", "Vacuums", "Water bottles",
     "Water filters", "Yoga mats",
 }
