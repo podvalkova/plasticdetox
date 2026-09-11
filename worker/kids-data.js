@@ -6,28 +6,6 @@ export const KIDS = {
  "focus": "Bottles and feeding, the nursery, wipes and creams, in the order that matters for someone that small.",
  "steps": [
   {
-   "id": "Kids::Change the crib mattress",
-   "swap": "Change the crib mattress",
-   "why": "Fourteen hours a day, face down, on the single largest piece of foam and vinyl in the house. Most crib mattresses are polyurethane foam under a PVC or TPU waterproof cover, warmed all night by the baby lying on it.",
-   "heat": true,
-   "impact": "Critical",
-   "free": "Air a new mattress out of its wrapping for a week with the window open before it is slept on.",
-   "picks": [
-    {
-     "label": "$$$",
-     "name": "Avocado Eco Organic Crib Mattress",
-     "url": "https://www.amazon.com/dp/B0DXPDLDBL?tag=plasticdetox-20",
-     "note": "Best organic, GOTS and GREENGUARD Gold"
-    },
-    {
-     "label": "$$$",
-     "name": "Naturepedic Organic 2 Stage Crib Mattress",
-     "url": "https://www.amazon.com/dp/B01D5805B2?tag=plasticdetox-20",
-     "note": "Best waterproof without PVC"
-    }
-   ]
-  },
-  {
    "id": "Kids::Move bottles and cups to glass or steel",
    "swap": "Move bottles and cups to glass or steel",
    "why": "Heated formula in a plastic bottle is one of the highest microplastic doses measured anywhere, up to 16 million particles per liter.",
@@ -89,6 +67,28 @@ export const KIDS = {
     {
      "q": "Do Pigeon glass baby bottles contain lead?",
      "a": "Independent XRF screening measured lead in the painted markings of Pigeon glass bottles at thousands of parts per million against a 90 ppm legal limit, and a 2022 test of the same style of bottle also picked up arsenic, cadmium, and mercury in the paint. Pigeon, which also manufactures Lansinoh's glass bottles, paused US glass bottle sales in April 2024 after the results were published, and told Consumer Reports in June 2024 that it had changed the print and had a CPSC accredited laboratory confirm no detectable lead on the updated bottles. That retest is brand commissioned rather than independent, there was never a recall, and nothing on the packaging distinguishes old print from new. If you bought Pigeon glass bottles before mid 2024, those are the ones the testing failed."
+    }
+   ]
+  },
+  {
+   "id": "Kids::Change the crib mattress",
+   "swap": "Change the crib mattress",
+   "why": "Fourteen hours a day, face down, on the single largest piece of foam and vinyl in the house. Most crib mattresses are polyurethane foam under a PVC or TPU waterproof cover, warmed all night by the baby lying on it.",
+   "heat": false,
+   "impact": "Critical",
+   "free": "Air a new mattress out of its wrapping for a week with the window open before it is slept on.",
+   "picks": [
+    {
+     "label": "$$$",
+     "name": "Avocado Eco Organic Crib Mattress",
+     "url": "https://www.amazon.com/dp/B0DXPDLDBL?tag=plasticdetox-20",
+     "note": "Best organic, GOTS and GREENGUARD Gold"
+    },
+    {
+     "label": "$$$",
+     "name": "Naturepedic Organic 2 Stage Crib Mattress",
+     "url": "https://www.amazon.com/dp/B01D5805B2?tag=plasticdetox-20",
+     "note": "Best waterproof without PVC"
     }
    ]
   },
@@ -517,7 +517,7 @@ export const KIDS = {
    "id": "Kids::Choose a flame retardant free car seat",
    "swap": "Choose a flame retardant free car seat",
    "why": "Enclosed, heated by sun, and federally required to meet flammability standards that many brands still meet chemically.",
-   "heat": true,
+   "heat": false,
    "impact": "Medium impact",
    "free": "Air out a new seat outside for two weeks, and crack the windows on hot days before the child gets in.",
    "picks": [

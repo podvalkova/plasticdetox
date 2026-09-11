@@ -366,7 +366,13 @@ for (const m of kidsSrc.matchAll(/<h3[^>]*>([\s\S]*?)<\/h3>([\s\S]*?)(?=<h3|<h2|
     id: `Kids::${text(m[1])}`.slice(0, 120),
     swap: text(m[1]),
     why,
-    heat: /heat|warm|hot/i.test(why),
+    // Heat driven means something heated goes into or onto the item as it is
+    // used: hot food, warm milk or formula, steam, bath water. The page tags
+    // those swaps. Reading "heat|warm|hot" off the copy tagged the crib
+    // mattress, whose copy mentions body warmth, but every contact item sits at
+    // body temperature, so that tells nothing apart. Its driver is hours of
+    // contact. The car seat's sun heating is not part of using it either.
+    heat: /data-heat="true"/.test(m[0]),
     impact,
     free,
     picks,
