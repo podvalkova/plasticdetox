@@ -856,9 +856,12 @@
   "status": "pass"
  },
  "Ethique": {
-  "checked": "2026-08-28",
+  "checked": "2026-09-11",
   "latest": null,
-  "total": 0
+  "total": 0,
+  "status": "pass",
+  "resolved": true,
+  "note": "FDA enforcement database checked on 2026-08-28 with nothing on record, and a search on 2026-09-11 for recalls, lawsuits or class actions naming Ethique found none."
  },
  "Ettitude": {
   "checked": "2026-08-31",
@@ -1075,9 +1078,15 @@
   "total": 0
  },
  "HiBAR": {
-  "checked": "2026-08-28",
+  "checked": "2026-09-11",
   "latest": null,
-  "total": 0
+  "total": 0,
+  "status": "caution",
+  "resolved": true,
+  "eventDate": "2024-12",
+  "appliesTo": [],
+  "source": "https://www.cosmeticsandtoiletries.com/regulations/safety/news/22934327/7-recent-recalls-babygenics-toms-of-maine-amika-hibar-and-others",
+  "note": "HiBAR recalled its Volumize Solid Conditioner Bar (UPC 854323007099) on 9 December 2024, FDA classified 7 January 2025, for Lactiplantibacillus pentosus in one raw material, Rice Tein NPNF (a rice protein). The mechanism is that ingredient, so under rule 611 it reaches only products containing it; no HiBAR product we rate lists rice protein."
  },
  "Hiware": {
   "checked": "2026-09-06",
@@ -2032,12 +2041,16 @@
   "total": 0
  },
  "Seventh Generation": {
-  "checked": "2026-08-31",
+  "checked": "2026-09-11",
   "eventDate": "2024",
-  "note": "Seventh Generation settled a class action in 2016 over natural and non toxic marketing claims ($4.5M), which under our rules means its own claims need third party proof, and a 2024 class action about overstated loads per bottle appears still open. No safety recall is on record.",
+  "note": "A 2024 class action (Butler v. Seventh Generation, California federal court), apparently still open, alleges its EasyDose, Clean with Purpose and Power+ laundry detergents hold fewer loads than advertised; it concerns the detergents only. A 2016 settlement over natural and non toxic marketing ($4.5M) is resolved and over ten years old, so it is informational. No safety recall is on record.",
   "resolved": true,
-  "source": "https://topclassactions.com/lawsuit-settlements/closed-settlements/seventh-generation-natural-products-class-action-settlement/",
-  "status": "caution"
+  "source": "https://topclassactions.com/lawsuit-settlements/consumer-products/household/seventh-generation-falsely-advertises-amount-of-loads-in-bottle-class-action-claims/",
+  "status": "caution",
+  "appliesTo": [
+   "Laundry detergent",
+   "Seventh Generation laundry detergent"
+  ]
  },
  "Shark": {
   "checked": "2026-08-31",
@@ -2745,5 +2758,16 @@
   "resolved": true,
   "source": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts",
   "note": "Checked, nothing found. No FDA recall, warning letter or lawsuit on record for H. Hazel (formerly Honest Hazel) eye gels as of 2026-09-11. A separate company from The Honest Company, whose recalls do not apply."
+ },
+ "Arm & Hammer": {
+  "checked": "2026-09-11",
+  "eventDate": "2026-08",
+  "status": "caution",
+  "resolved": true,
+  "appliesTo": [
+   "Essentials Deodorant, Unscented"
+  ],
+  "source": "https://topclassactions.com/lawsuit-settlements/lawsuit-news/consumers-allege-pg-arm-hammer-unscented-deodorants-contain-fragrance/",
+  "note": "Class action filed 12 August 2026 in the Eastern District of New York (2:26-cv-04936), pending, naming Arm & Hammer Essentials Unscented and UltraMax Unscented: it alleges ethylene brassylate, a fragrance ingredient, in products sold as unscented. A filed and unresolved suit is an allegation, which caps at careful under rule 5.1. Separately, a 2012 class action over 'natural' marketing on Essentials, when it still contained triclosan, settled in 2015 for 1.9 million dollars and the labels changed; resolved and over ten years old, it is informational only."
  }
 }

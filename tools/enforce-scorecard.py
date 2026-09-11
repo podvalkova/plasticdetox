@@ -178,7 +178,17 @@ def main():
             # result both on record, stayed on sale as backlog instead of careful.
             adverse_here = [k for k in FRONTS if f.get(k) in ("caution", "fail")]
             og = e.get("frontOrigin") or {}
-            if (str(e.get("why") or "").startswith("the note reads adversely")
+            # Any unrated row, not only one parked for a human look. A product
+            # we stop selling loses the "vetted store pick" good the ceiling
+            # used to lower, and fell to unrated: Each & Every's bioplastic
+            # tube and La Petite Creme's plastic tube, both on record, read as
+            # never assessed. A recorded finding is a verdict with or without
+            # the shelf. Recorded means front-evidence or the recall cache only:
+            # "stated" also covers brand notes read as a whole, and four of those
+            # were favourable sentences stored as cautions ("lab tested for
+            # lead", "top 10% in contaminant testing").
+            if ((str(e.get("why") or "").startswith("the note reads adversely")
+                    or e.get("verdict") == "unrated")
                     and adverse_here
                     and all(og.get(k) in ("database", "hand") for k in adverse_here)):
                 e["verdict"] = "skip" if any(f.get(k) == "fail" for k in adverse_here) else "careful"

@@ -43,6 +43,7 @@ _spec.loader.exec_module(_a)
 FRONTS = _a.FRONTS
 
 
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--write", action="store_true")
@@ -171,7 +172,7 @@ def main():
                 v, why, disclose = _a.correct(p.get("verdict"), f,
                                               _a.evidence_text(p),
                                               scope, basis, consumable=consumable,
-                                              origin=p.get("origin"))
+                                              origin=_a.on_sale_origin(p))
             prev = (p.get("ext") or {})
             # Track when a verdict last CHANGED, not when the build last ran.
             # A date that moves on every rebuild tells you nothing; one that moves

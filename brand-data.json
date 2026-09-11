@@ -3994,17 +3994,19 @@
           "inheritedFronts": [
             "testing"
           ],
+          "legalNote": "Checked. What is on record concerns other Arm & Hammer products, not this one: Class action filed 12 August 2026 in the Eastern District of New York (2:26-cv-04936), pending, naming Arm & Hammer Essentials Unscented and UltraMax Unscented: it alleges ethylene brassylate, a fragrance ingredient, in products sold as unscented. A filed and unresolved suit is an allegation, which caps at careful under rule 5.1. Separately, a 2012 class action over 'natural' marketing on Essentials, when it still contained triclosan, settled in 2015 for 1.9 million dollars and the labels changed; resolved and over ten years old, it is informational only.",
           "verdict": "careful",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
             "formula": "unassessed",
             "materials": "unassessed",
-            "legal": "unassessed",
+            "legal": "pass",
             "testing": "caution"
           },
           "frontOrigin": {
-            "testing": "stated"
+            "testing": "stated",
+            "legal": "database"
           },
           "scope": "line",
           "basis": "direct",
@@ -4053,7 +4055,7 @@
           "fronts": {
             "formula": "unassessed",
             "materials": "unassessed",
-            "legal": "unassessed",
+            "legal": "pass",
             "testing": "caution"
           },
           "scope": "line",
@@ -4082,7 +4084,9 @@
             "fat": false,
             "why": "Against the skin all day."
           },
-          "frontOrigin": {},
+          "frontOrigin": {
+            "legal": "database"
+          },
           "formulaAnswers": {
             "ingredients": "",
             "prose": "About this item Removes tough odors: 200.2 fl oz bottle of ARM & HAMMER Plus OxiClean with Odor Blasters Liquid Laundry Detergent in a Fresh Burst Scent 3X odor power: Concentrated with 3X odor fighters in every load (vs. leading value detergent) for fresh, clean laundry Fights tough odors: Powered by Odor Blasters, this liquid detergent tackles tough odors like pet odors, damp clothes, sweat, musty towels, and body odor Triple power action: Powered by OxiClean, this dermatologist-tested detergent fights tough odors, boosts lasting freshness, and blasts away stains Trusted ARM & HAMMER Plus OxiClean: Harness the power of OxiClean plus the cleaning power you know and trust from ARM & HAMMER Show more",
@@ -4105,7 +4109,8 @@
             "source": "",
             "checked": "2026-09-02",
             "open": "We have not established what the product actually touches"
-          }
+          },
+          "legalNote": "Checked. What is on record concerns other Arm & Hammer products, not this one: Class action filed 12 August 2026 in the Eastern District of New York (2:26-cv-04936), pending, naming Arm & Hammer Essentials Unscented and UltraMax Unscented: it alleges ethylene brassylate, a fragrance ingredient, in products sold as unscented. A filed and unresolved suit is an allegation, which caps at careful under rule 5.1. Separately, a 2012 class action over 'natural' marketing on Essentials, when it still contained triclosan, settled in 2015 for 1.9 million dollars and the labels changed; resolved and over ten years old, it is informational only."
         },
         "cat": "Laundry detergent"
       },
@@ -4191,7 +4196,7 @@
           "B00E3B47ZQ"
         ],
         "verdict": "unrated",
-        "origin": "store",
+        "origin": "research",
         "note": "Unscented, aluminum free, every ingredient named.",
         "matchAll": [
           [
@@ -4204,31 +4209,30 @@
         "ext": {
           "frontNotes": {
             "formula": "The published ingredient list carries nothing on the hazard list.",
-            "materials": "aqueous contents in plastic."
+            "materials": "aqueous contents in plastic.",
+            "legal": "Class action filed 12 August 2026 in the Eastern District of New York (2:26-cv-04936), pending, naming Arm & Hammer Essentials Unscented and UltraMax Unscented: it alleges ethylene brassylate, a fragrance ingredient, in products sold as unscented. A filed and unresolved suit is an allegation, which caps at careful under rule 5.1. Separately, a 2012 class action over 'natural' marketing on Essentials, when it still contained triclosan, settled in 2015 for 1.9 million dollars and the labels changed; resolved and over ten years old, it is informational only."
           },
-          "verdict": "unrated",
+          "legalNote": "Class action filed 12 August 2026 in the Eastern District of New York (2:26-cv-04936), pending, naming Arm & Hammer Essentials Unscented and UltraMax Unscented: it alleges ethylene brassylate, a fragrance ingredient, in products sold as unscented. A filed and unresolved suit is an allegation, which caps at careful under rule 5.1. Separately, a 2012 class action over 'natural' marketing on Essentials, when it still contained triclosan, settled in 2015 for 1.9 million dollars and the labels changed; resolved and over ten years old, it is informational only.",
+          "legalDate": "2026-08",
+          "verdict": "careful",
           "dated": "2026-09-11",
-          "why": "a recommendation needs its checks done; still to do: legal",
+          "why": "section 6 ceiling: legal is caution, on recorded evidence",
           "fronts": {
             "formula": "pass",
             "materials": "pass",
-            "legal": "unassessed",
+            "legal": "caution",
             "testing": "unassessed"
           },
           "frontOrigin": {
             "formula": "database",
-            "materials": "database"
+            "materials": "database",
+            "legal": "database"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
           "rules": [
             "2 formula-read-from-materials"
-          ],
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "heldBack": [
-            "legal"
           ]
         }
       }
@@ -14719,9 +14723,9 @@
             "testing": "No detectable PFAS in Consumer Reports' June 2026 round: 19 wipe products from 18 companies, 30 individual PFAS compounds, EPA drinking water method at a 2.3 ng per sample detection limit. A clean sweep across the whole market"
           },
           "legalDate": "2025-08",
-          "verdict": "unrated",
-          "dated": "2026-08-28",
-          "why": "a recommendation cannot rest on inherited evidence",
+          "verdict": "careful",
+          "dated": "2026-09-11",
+          "why": "section 6 ceiling: legal is caution, on recorded evidence",
           "fronts": {
             "formula": "pass",
             "materials": "pass",
@@ -19053,7 +19057,7 @@
           },
           "verdict": "good",
           "dated": "2026-08-29",
-          "why": "a vetted store pick, chosen by a person at product scope",
+          "why": "direct evidence at line scope on formula, materials",
           "fronts": {
             "formula": "none",
             "materials": "pass",
@@ -22939,7 +22943,7 @@
             "testing"
           ],
           "verdict": "unrated",
-          "dated": "2026-08-28",
+          "dated": "2026-09-11",
           "why": "the note reads adversely on testing, needs a human look",
           "fronts": {
             "formula": "pass",
@@ -23754,9 +23758,9 @@
           "legalDate": "2026-05",
           "testingNote": "No independent lab test of this product exists as of September 2026. Searched Lead Safe Mama, Mamavation, Consumer Reports (2024 lotion round and 2026 baby products round, no wash tested), Valisure and Clean Label Project. The FDA's 2018 1,4-dioxane survey of 82 children's products did not publish product names, and no US watchdog has lab tested a named baby wash since the 2009 Campaign for Safe Cosmetics report.",
           "testingDate": "2026-09-10",
-          "verdict": "unrated",
-          "dated": "2026-09-10",
-          "why": "neutral is not a verdict, nothing is being asserted",
+          "verdict": "careful",
+          "dated": "2026-09-11",
+          "why": "section 6 ceiling: legal is caution, on recorded evidence",
           "fronts": {
             "formula": "pass",
             "materials": "pass",
@@ -24501,9 +24505,9 @@
             "formula": "The published ingredient list hides composition behind fragrance, parfum.",
             "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
           },
-          "verdict": "unrated",
-          "dated": "2026-08-28",
-          "why": "no front is directly evidenced by the note",
+          "verdict": "careful",
+          "dated": "2026-09-11",
+          "why": "section 6 ceiling: formula is caution, on recorded evidence",
           "fronts": {
             "formula": "caution",
             "materials": "unassessed",
@@ -25666,17 +25670,15 @@
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
-            "materials": "A black plastic twist up tube holding an anhydrous stick. Rule 3.1: an oil and wax solid is the strongest extractant there is and this is left on the skin, so the pairing is a caution. Rule 3.6 does not rescue it, because plastic free deodorant is sold: Wild's paper refills and Lafe's paper tube are the same product in a package that gives nothing up.",
+            "materials": "anhydrous contents in polyethylene.",
             "formula": "The published ingredient list carries nothing on the hazard list.",
             "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
           },
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
           "cappedFrom": "good",
           "capRestoreWhy": "a vetted store pick, chosen by a person at product scope",
           "verdict": "careful",
-          "dated": "2026-09-08",
-          "why": "section 6 ceiling: materials is caution",
+          "dated": "2026-09-11",
+          "why": "section 6 ceiling: materials is caution, on recorded evidence",
           "fronts": {
             "formula": "pass",
             "materials": "caution",
@@ -25686,7 +25688,7 @@
           "frontOrigin": {
             "legal": "database",
             "formula": "database",
-            "materials": "stated"
+            "materials": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -29483,6 +29485,55 @@
             "conditioner"
           ]
         ]
+      },
+      {
+        "name": "Ethique Minimalist Unscented Deodorant Stick",
+        "asins": [
+          "B0CZQJGN56"
+        ],
+        "verdict": "unrated",
+        "origin": "research",
+        "note": "Unscented, aluminum and baking soda free, in a home compostable paper push up tube.",
+        "matchAll": [
+          [
+            "ethique",
+            "minimalist",
+            "deodorant"
+          ]
+        ],
+        "ext": {
+          "legalNote": "FDA enforcement database checked on 2026-08-28 with nothing on record, and a search on 2026-09-11 for recalls, lawsuits or class actions naming Ethique found none.",
+          "frontNotes": {
+            "legal": "FDA enforcement database checked on 2026-08-28 with nothing on record, and a search on 2026-09-11 for recalls, lawsuits or class actions naming Ethique found none.",
+            "formula": "The published ingredient list carries nothing on the hazard list.",
+            "testing": "No independent lab test of this product found as of September 2026 (searched Mamavation, Lead Safe Mama, Consumer Reports, Valisure). Mamavation's PFAS in deodorants round measured non detect organic fluorine in the Ethique Vanilla + Lavender stick, a sibling scent; under rule 1.1 a clean result does not transfer to siblings, so it is noted, not counted.",
+            "materials": "In contact with paper, which puts nothing into what it holds."
+          },
+          "testingNote": "No independent lab test of this product found as of September 2026 (searched Mamavation, Lead Safe Mama, Consumer Reports, Valisure). Mamavation's PFAS in deodorants round measured non detect organic fluorine in the Ethique Vanilla + Lavender stick, a sibling scent; under rule 1.1 a clean result does not transfer to siblings, so it is noted, not counted.",
+          "testingDate": "2026-09-11",
+          "verdict": "good",
+          "dated": "2026-09-11",
+          "why": "direct evidence at sku scope on formula, materials",
+          "fronts": {
+            "formula": "pass",
+            "materials": "pass",
+            "legal": "pass",
+            "testing": "none"
+          },
+          "frontOrigin": {
+            "legal": "database",
+            "formula": "database",
+            "testing": "database",
+            "materials": "database"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": [
+            "3 packaging-stated-plastic-free",
+            "2 formula-read-from-materials"
+          ]
+        }
       }
     ],
     "rollup": {
@@ -31878,13 +31929,11 @@
             "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
             "formula": "An object has no ingredient list. What it is made of is the materials check."
           },
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
           "cappedFrom": "good",
           "capRestoreWhy": "a vetted store pick, chosen by a person at product scope",
           "verdict": "careful",
-          "dated": "2026-09-02",
-          "why": "section 6 ceiling: materials is caution",
+          "dated": "2026-09-11",
+          "why": "section 6 ceiling: materials is caution, on recorded evidence",
           "fronts": {
             "formula": "none",
             "materials": "caution",
@@ -37670,7 +37719,7 @@
           },
           "verdict": "good",
           "dated": "2026-08-28",
-          "why": "a vetted store pick, chosen by a person at product scope",
+          "why": "independent lab result at sku scope",
           "fronts": {
             "formula": "pass",
             "materials": "pass",
@@ -38672,6 +38721,51 @@
             "bar"
           ]
         ]
+      },
+      {
+        "name": "HiBAR Fragrance Free Sensitive Deodorant",
+        "asins": [
+          "B0CB4HYDG9"
+        ],
+        "verdict": "unrated",
+        "origin": "research",
+        "note": "Fragrance free, aluminum and baking soda free, in a plastic free cardboard push up tube.",
+        "matchAll": [
+          [
+            "hibar",
+            "deodorant",
+            "fragrance"
+          ]
+        ],
+        "ext": {
+          "legalNote": "Checked. What is on record concerns other HiBAR products, not this one: HiBAR recalled its Volumize Solid Conditioner Bar (UPC 854323007099) on 9 December 2024, FDA classified 7 January 2025, for Lactiplantibacillus pentosus in one raw material, Rice Tein NPNF (a rice protein). The mechanism is that ingredient, so under rule 611 it reaches only products containing it; no HiBAR product we rate lists rice protein.",
+          "frontNotes": {
+            "formula": "The published ingredient list carries nothing on the hazard list.",
+            "testing": "No independent lab test of this product found as of September 2026. HiBAR is not in Mamavation's PFAS in deodorants round or its benzene round (searched also Lead Safe Mama, Consumer Reports, Valisure).",
+            "materials": "In contact with cardboard, which puts nothing into what it holds."
+          },
+          "testingNote": "No independent lab test of this product found as of September 2026. HiBAR is not in Mamavation's PFAS in deodorants round or its benzene round (searched also Lead Safe Mama, Consumer Reports, Valisure).",
+          "testingDate": "2026-09-11",
+          "verdict": "good",
+          "dated": "2026-09-11",
+          "why": "direct evidence on formula, recorded rather than read off a note",
+          "fronts": {
+            "formula": "pass",
+            "materials": "pass",
+            "legal": "pass",
+            "testing": "none"
+          },
+          "frontOrigin": {
+            "legal": "database",
+            "formula": "database",
+            "testing": "database",
+            "materials": "database"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
       }
     ],
     "rollup": {
@@ -43294,9 +43388,9 @@
             "legal": "Checked recall listings and class action reporting in September 2026. No recall or action found on this brand's diapers, which in a barely regulated category means no regulator was looking rather than a clean bill",
             "formula": "An object has no ingredient list. What it is made of is the materials check."
           },
-          "verdict": "unrated",
-          "dated": "2026-08-28",
-          "why": "a recommendation cannot rest on inherited evidence",
+          "verdict": "careful",
+          "dated": "2026-09-11",
+          "why": "section 6 ceiling: materials is caution, on recorded evidence",
           "fronts": {
             "formula": "none",
             "materials": "caution",
@@ -45325,7 +45419,7 @@
           },
           "verdict": "good",
           "dated": "2026-08-29",
-          "why": "a vetted store pick, chosen by a person at product scope",
+          "why": "independent lab result at line scope",
           "fronts": {
             "formula": "none",
             "materials": "pass",
@@ -46026,13 +46120,11 @@
             "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
             "materials": "anhydrous contents in plastic, repeated contact over time."
           },
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
           "cappedFrom": "good",
           "capRestoreWhy": "a vetted store pick, chosen by a person at product scope",
           "verdict": "skip",
-          "dated": "2026-08-29",
-          "why": "section 6 ceiling: materials is fail",
+          "dated": "2026-09-11",
+          "why": "section 6 ceiling: materials is fail, on recorded evidence",
           "fronts": {
             "formula": "pass",
             "materials": "fail",
@@ -46510,9 +46602,9 @@
             "formula": "The published ingredient list hides composition behind fragrance.",
             "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
           },
-          "verdict": "unrated",
-          "dated": "2026-08-28",
-          "why": "no front is directly evidenced by the note",
+          "verdict": "careful",
+          "dated": "2026-09-11",
+          "why": "section 6 ceiling: formula is caution, on recorded evidence",
           "fronts": {
             "formula": "caution",
             "materials": "unassessed",
@@ -50908,7 +51000,7 @@
           },
           "verdict": "good",
           "dated": "2026-08-29",
-          "why": "a vetted store pick, chosen by a person at product scope",
+          "why": "direct evidence at sku scope on formula, materials",
           "fronts": {
             "formula": "none",
             "materials": "pass",
@@ -51210,9 +51302,9 @@
           "cappedFrom": "good",
           "capRestoreWhy": "direct evidence at line scope on formula, packaging",
           "legalDate": "2024",
-          "verdict": "unrated",
-          "dated": "2026-09-03",
-          "why": "no direct pass on materials, and no lab result standing in for one",
+          "verdict": "careful",
+          "dated": "2026-09-11",
+          "why": "section 6 ceiling: legal is caution, on recorded evidence",
           "fronts": {
             "formula": "none",
             "materials": "pass",
@@ -59678,9 +59770,9 @@
             "legal": "Checked the FDA enforcement database on 2026-08-31. Two closed and remedied recalls on record for the firm: elevated vitamin D3 in Baby's D3 liquid (2024, over 24 months, now informational) and a mislabeled kids gummy (2025, a different product line whose defect does not transfer). Neither is open."
           },
           "legalNote": "Checked the FDA enforcement database on 2026-08-31. Two closed and remedied recalls on record for the firm: elevated vitamin D3 in Baby's D3 liquid (2024, over 24 months, now informational) and a mislabeled kids gummy (2025, a different product line whose defect does not transfer). Neither is open.",
-          "verdict": "unrated",
+          "verdict": "careful",
           "dated": "2026-09-11",
-          "why": "no front is directly evidenced by the note",
+          "why": "section 6 ceiling: formula is caution, on recorded evidence",
           "fronts": {
             "formula": "caution",
             "materials": "pass",
@@ -59811,7 +59903,7 @@
             "testing"
           ],
           "verdict": "unrated",
-          "dated": "2026-08-28",
+          "dated": "2026-09-11",
           "why": "the note reads adversely on testing, needs a human look",
           "fronts": {
             "formula": "pass",
@@ -65059,7 +65151,7 @@
             "testing"
           ],
           "verdict": "unrated",
-          "dated": "2026-08-28",
+          "dated": "2026-09-11",
           "why": "the note reads adversely on testing, needs a human look",
           "fronts": {
             "formula": "pass",
@@ -70661,9 +70753,9 @@
           "legalNote": "Checked, nothing found. No FDA recall, warning letter or lawsuit on record for Rosita Real Foods; the arsenic result sits under testing, not legal.",
           "cappedFrom": "good",
           "capRestoreWhy": "consumable with only a formula read, no second front",
-          "verdict": "unrated",
+          "verdict": "careful",
           "dated": "2026-09-11",
-          "why": "consumable with only a formula read, no second front",
+          "why": "section 6 ceiling: testing is caution, on recorded evidence",
           "fronts": {
             "formula": "pass",
             "materials": "pass",
@@ -73523,23 +73615,22 @@
           "B084H4H6HR"
         ],
         "ext": {
-          "legalNote": "Seventh Generation settled a class action in 2016 over natural and non toxic marketing claims ($4.5M), which under our rules means its own claims need third party proof, and a 2024 class action about overstated loads per bottle appears still open. No safety recall is on record.",
+          "legalNote": "Checked. What is on record concerns other Seventh Generation products, not this one: A 2024 class action (Butler v. Seventh Generation, California federal court), apparently still open, alleges its EasyDose, Clean with Purpose and Power+ laundry detergents hold fewer loads than advertised; it concerns the detergents only. A 2016 settlement over natural and non toxic marketing ($4.5M) is resolved and over ten years old, so it is informational. No safety recall is on record.",
           "frontNotes": {
             "materials": "Totally chlorine free pulp, no fragrance, lotion or added dyes on the topsheet",
             "testing": "Non detect for organic fluorine inside and outside (2023 Mamavation round, EPA certified lab, 10 ppm threshold)",
-            "legal": "Seventh Generation settled a class action in 2016 over natural and non toxic marketing claims ($4.5M), which under our rules means its own claims need third party proof, and a 2024 class action about overstated loads per bottle appears still open. No safety recall is on record.",
             "formula": "An object has no ingredient list. What it is made of is the materials check."
           },
           "cappedFrom": "good",
           "capRestoreWhy": "direct evidence at sku scope on formula",
           "legalDate": "2024",
-          "verdict": "unrated",
-          "dated": "2026-09-09",
-          "why": "no direct pass on materials, and no lab result standing in for one",
+          "verdict": "good",
+          "dated": "2026-09-11",
+          "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
             "materials": "pass",
-            "legal": "caution",
+            "legal": "pass",
             "testing": "pass"
           },
           "frontOrigin": {
@@ -76175,15 +76266,15 @@
           "testingNote": "Lab tested. From top-100-baby-kids-products-amazon.html: Xylitol based kids tooth gel in strawberry banana flavor, safe to swallow. Lead Safe Mama 2025 third party lab testing returned non detect for lead, mercury, cadmium, and arsenic on Spry brand xylitol toothpaste. Xylitol",
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
-            "formula": "The published ingredient list names polyethylene.",
+            "formula": "The published ingredient list carries nothing on the hazard list.",
             "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
           },
           "testingDate": "2025",
           "verdict": "unrated",
-          "dated": "2026-08-28",
+          "dated": "2026-09-11",
           "why": "no front is directly evidenced by the note",
           "fronts": {
-            "formula": "fail",
+            "formula": "pass",
             "materials": "unassessed",
             "legal": "none",
             "testing": "pass"
@@ -78961,9 +79052,9 @@
           },
           "legalNote": "Checked on 2026-09-10. Record across the baby and bath lines: 2015 nationwide wipes mold recall, 2017 baby powder recall for microorganisms, January 2021 Health Canada recall of two bubble bath lots for Pluralibacter gergoviae; a 1.55 million dollar settlement in June 2017 over 'SLS free' claims on cleaning products, and a reported 7 million dollar settlement the same year over 'natural' claims across 41 products. A 2020 Proposition 65 notice over lead in the diaper rash ointment. No action names the current fragrance free shampoo and body wash.",
           "legalDate": "2021-01",
-          "verdict": "unrated",
-          "dated": "2026-08-28",
-          "why": "no front is directly evidenced by the note",
+          "verdict": "careful",
+          "dated": "2026-09-11",
+          "why": "section 6 ceiling: legal is caution, on recorded evidence",
           "fronts": {
             "formula": "unassessed",
             "materials": "unassessed",
@@ -82271,7 +82362,7 @@
             "testing"
           ],
           "verdict": "unrated",
-          "dated": "2026-08-28",
+          "dated": "2026-09-11",
           "why": "the note reads adversely on testing, needs a human look",
           "fronts": {
             "formula": "unassessed",
@@ -88075,7 +88166,7 @@
             "formula"
           ],
           "verdict": "unrated",
-          "dated": "2026-08-28",
+          "dated": "2026-09-11",
           "why": "the note reads adversely on formula, needs a human look",
           "fronts": {
             "formula": "pass",
@@ -88184,7 +88275,7 @@
         "ext": {
           "legalNote": "FDA database matches reviewed on 2026-08-31: the recalling firms, Wild Foods and Wild Blue Yonder Foods, are unrelated food companies. No recall on record for this deodorant brand.",
           "frontNotes": {
-            "materials": "The deodorant sits in a paperboard refill cartridge that slots into a reusable case, so the thing touching the product is paper rather than a plastic twist up tube. Read from the product photography, which shows matte paperboard refills.",
+            "materials": "In contact with paper, which puts nothing into what it holds.",
             "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
             "formula": "The published ingredient list hides composition behind parfum."
           },
@@ -88204,7 +88295,7 @@
           "frontOrigin": {
             "legal": "database",
             "formula": "database",
-            "materials": "stated",
+            "materials": "database",
             "testing": "inferred"
           },
           "scope": "sku",
@@ -89274,7 +89365,7 @@
           },
           "verdict": "good",
           "dated": "2026-08-29",
-          "why": "a vetted store pick, chosen by a person at product scope",
+          "why": "direct evidence at line scope on formula, materials",
           "fronts": {
             "formula": "none",
             "materials": "pass",
@@ -89670,7 +89761,7 @@
             "packaging"
           ],
           "verdict": "unrated",
-          "dated": "2026-08-28",
+          "dated": "2026-09-11",
           "why": "the note reads adversely on materials, needs a human look",
           "fronts": {
             "formula": "none",

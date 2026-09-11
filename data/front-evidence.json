@@ -758,12 +758,11 @@
  "B004769M8E": {
   "_product": "Spry Spry Kids Tooth Gel",
   "formula": {
-   "checkedListing": "2026-09-09",
+   "checkedListing": "2026-09-11",
    "complete": true,
-   "ingredients": "Active: dasatinib. Inactive: lactose monohydrate, MICROCRYSTALLINE CELLULOSE, croscarmellose sodium, HYDROXYPROPYL CELLULOSE (1600000 WAMW), magnesium stearate, HYPROMELLOSE, UNSPECIFIED, titanium dioxide, POLYETHYLENE GLYCOL, UNSPECIFIED",
    "kind": "ingredients",
-   "prose": "",
-   "source": "dailymed:4764f37b-c9e6-4ede-bcc2-8a03b7c521df"
+   "ingredients": "Purified water, xylitol, calcium glycerophosphate, cellulose gum, natural strawberry and banana flavoring, grapefruit seed extract",
+   "source": "xlear.com Spry Kids Tooth Gel, Strawberry Banana (the flavour this ASIN sells); the earlier DailyMed record was SPRYCEL, a dasatinib tablet, matched on the name prefix"
   }
  },
  "B004H4N67Y": {
@@ -4602,10 +4601,12 @@
    "source": "amazon:B09SGXS4PZ"
   },
   "materials": {
-   "checkedListing": "2026-09-02",
-   "contactFrom": "stated in the product name",
-   "material": "aluminum",
-   "source": "product name"
+   "checked": "2026-09-11",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "base": "anhydrous",
+   "material": "polyethylene",
+   "source": "Each & Every sells the stick in a sugarcane based bioplastic tube: polyethylene made from plant ethanol, the same polymer as fossil polyethylene. The earlier record read 'aluminum' off the words 'Aluminum Free' in the product name"
   }
  },
  "B09T2F97C9": {
@@ -6171,9 +6172,12 @@
    "source": "openfacts:5060968411565"
   },
   "materials": {
-   "contactFrom": "stated in the product name",
-   "material": "aluminum",
-   "source": "product name"
+   "checked": "2026-09-11",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "base": "anhydrous",
+   "material": "paper",
+   "source": "Wild's refill is bamboo pulp and bagasse with a wax coating, plastic free and home compostable (Packaging World; Wild support); the aluminium case holds the refill and never touches the stick. The earlier record read 'aluminum' off 'Aluminum Free' in the product name"
   }
  },
  "B0DVC3VB5Q": {
@@ -7763,6 +7767,54 @@
    "base": "aqueous",
    "material": "plastic",
    "source": "Plastic twist up tube holding a water and glycol soap stick, with no oils or waxes for the tube to give up to"
+  }
+ },
+ "B0CZQJGN56": {
+  "_product": "Ethique Minimalist Unscented Deodorant Stick",
+  "formula": {
+   "checkedListing": "2026-09-11",
+   "complete": true,
+   "kind": "ingredients",
+   "ingredients": "Caprylic/capric triglyceride, tapioca starch, brassica alcohol, magnesium hydroxide, Prunus amygdalus dulcis (sweet almond) oil, Euphorbia cerifera cera (candelilla wax), hydrated silica, Bambusa arundinacea (bamboo) stem extract, jojoba esters, tapioca starch polymethylsilsesquioxane, zinc oxide",
+   "source": "Amazon listing B0CZQJGN56, Important information panel, matching ethique.com; no fragrance of any kind"
+  },
+  "materials": {
+   "checked": "2026-09-11",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "base": "anhydrous",
+   "material": "paper",
+   "source": "Listing: plastic free packaging, recyclable and home compostable; Ethique ships the stick in a compostable paper push up tube"
+  },
+  "testing": {
+   "status": "none",
+   "checked": "2026-09-11",
+   "source": "mamavation.com/beauty/pfas-forever-chemicals-in-deodorants.html; mamavation.com benzene in deodorants",
+   "note": "No independent lab test of this product found as of September 2026 (searched Mamavation, Lead Safe Mama, Consumer Reports, Valisure). Mamavation's PFAS in deodorants round measured non detect organic fluorine in the Ethique Vanilla + Lavender stick, a sibling scent; under rule 1.1 a clean result does not transfer to siblings, so it is noted, not counted."
+  }
+ },
+ "B0CB4HYDG9": {
+  "_product": "HiBAR Fragrance Free Sensitive Deodorant",
+  "formula": {
+   "checkedListing": "2026-09-11",
+   "complete": true,
+   "kind": "ingredients",
+   "ingredients": "Caprylic/Capric Triglyceride (Coconut Oil & Glycerin), Maranta Arundinacea (Arrowroot) Root Powder, Helianthus Annuus (Sunflower) Seed Wax, Lauryl Laurate, Cocos Nucifera (Coconut) Oil, Butyrospermum Parkii (Shea) Butter, Diatomaceous Earth, Magnesium Hydroxide, Oryza Sativa (Rice) Bran Wax, Zinc Ricinoleate, Diglycerin, Polyglyceryl-2 Laurate, Triethyl Citrate, Methylheptylglycerin",
+   "source": "Amazon listing B0CB4HYDG9, Important information panel, matching hellohibar.com where the fragrance is marked not in Fragrance-Free"
+  },
+  "materials": {
+   "checked": "2026-09-11",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "base": "anhydrous",
+   "material": "cardboard",
+   "source": "hellohibar.com: 'packaged in a plastic-free, recyclable cardboard tube'; listing title: Plastic-Free"
+  },
+  "testing": {
+   "status": "none",
+   "checked": "2026-09-11",
+   "source": "mamavation.com/beauty/pfas-forever-chemicals-in-deodorants.html; mamavation.com benzene in deodorants",
+   "note": "No independent lab test of this product found as of September 2026. HiBAR is not in Mamavation's PFAS in deodorants round or its benzene round (searched also Lead Safe Mama, Consumer Reports, Valisure)."
   }
  }
 }

@@ -687,6 +687,28 @@ WEAK_ONLY = re.compile(
     r"ab ?1200|discloses|non[\s-]?detect)\b[^.]*[.]?\s*)+$")
 
 
+
+# "store" means we sell it, and a verdict built on that claim has to be built on
+# it being true today. It was a label written once and never re-checked: 28 rows
+# kept it after they left the shelf or were added off it, and three read good as
+# "a vetted store pick" for products the store does not carry. Arm & Hammer's
+# unscented deodorant was one, added as research and labelled store by mistake.
+# So the origin is derived from store.html every time the rules run.
+_STORE_ASINS = None
+def on_sale_origin(p):
+    global _STORE_ASINS
+    if _STORE_ASINS is None:
+        import re as _re
+        try:
+            _STORE_ASINS = set(_re.findall(r'asin:\s*"([A-Z0-9]{10})"',
+                (pathlib.Path(__file__).resolve().parent.parent / "store.html").read_text()))
+        except Exception:
+            _STORE_ASINS = set()
+    o = p.get("origin")
+    if o == "store" and not (set(p.get("asins") or []) & _STORE_ASINS):
+        return "research"
+    return o
+
 def correct(old, f, note, scope, basis, strict=False, lenient=False, consumable=True,
             origin=None):
     """
@@ -834,7 +856,7 @@ def main():
             new, why, disclose = correct(p.get("verdict"), f, cleaned,
                                          scope, basis, args.strict, args.lenient,
                                          is_consumable(b.get("category"), p.get("name")),
-                                         p.get("origin"))
+                                         on_sale_origin(p))
             # A hand-authored scorecard outranks anything inferred from prose.
             if authored:
                 new, why, disclose = p.get("verdict"), "hand authored scorecard, left alone", False

@@ -140,7 +140,9 @@ def main():
         for row in search(b["brand"]):
             title = row.get("title") or ""
             # the label must name the brand, or it belongs to someone else
-            if not bkey or bkey not in norm(title):
+            # As a whole word: a substring test matched "spry" inside
+            # "sprycel", and Spry's kids tooth gel was recorded as dasatinib.
+            if not bkey or not re.search(rf"(?<![a-z0-9]){re.escape(bkey)}(?![a-z0-9])", norm(title)):
                 continue
             overlap = len(want & words(title))
             if best is None or overlap > score:

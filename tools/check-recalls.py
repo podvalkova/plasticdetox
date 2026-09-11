@@ -204,7 +204,14 @@ def main():
                 # recall names the Disinfectant lot, and the unscented Nature+
                 # cleaners added later sat blank on a check that had been done.
                 held = e["fronts"].get("legal")
-                if ((held == "caution" and e.get("legalNote") == (c.get("note") or ""))
+                # This tool is the only database writer of the legal front, so a
+                # database caution on a row outside the finding came from this
+                # entry even after its note was reworded. Matching the note text
+                # alone left Seventh Generation's diapers carrying a detergent
+                # suit once the note was corrected to name the detergents.
+                from_here = (e.get("legalNote") == (c.get("note") or "")
+                             or (e.get("frontOrigin") or {}).get("legal") == "database")
+                if ((held == "caution" and from_here)
                         or held in (None, "unassessed", "unknown")):
                     e["fronts"]["legal"] = "pass"
                     # Recorded, so the rules that run after this read it as a
@@ -239,8 +246,15 @@ def main():
 
             unexplained = (e["fronts"].get("legal") == "pass"
                            and not str(e.get("legalNote") or "").strip())
+            # The same gap from the other side: the note already quotes the
+            # finding and the front still reads pass. Arm & Hammer's unscented
+            # deodorant carried the pending suit word for word under a legal
+            # pass, so it read good on a check that says caution.
+            contradicted = (bool(c.get("note")) and e.get("legalNote") == c.get("note")
+                            and e["fronts"].get("legal") != c.get("status"))
             if e["fronts"].get("legal") not in ("unassessed", "unknown", None):
-                if not (scoped and unexplained and c.get("status") in ("caution", "fail")):
+                if not (scoped and (unexplained or contradicted)
+                        and c.get("status") in ("caution", "fail")):
                     continue
             # Only two states get written. Nothing resembling the brand appeared
             # at all, which is a genuine "checked, nothing found". Or something

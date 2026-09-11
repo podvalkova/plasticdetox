@@ -91,9 +91,15 @@ POLYMER = {
     "polyester": 1.5, "tpu": 1.5,
     "pp": 1, "polypropylene": 1, "hdpe": 1, "ldpe": 1, "polyethylene": 1,
     "aluminum": 1, "aluminium": 1,
-    "paper-coated": 1, "paperboard": 1, "carton": 1, "cardboard": 1,
+    # Coated board only. Plain cardboard sat here and in INERT at once, so a
+    # brand stated plastic free cardboard tube (HiBAR) failed where the same
+    # tube recorded as paper (Ethique) passed. The coating is the hazard.
+    "paper-coated": 1, "paperboard": 1, "carton": 1,
     "plastic": 1.5,      # named as plastic and no more
 }
+
+# A material is inert or ranked, never both.
+assert not (INERT & set(POLYMER)), sorted(INERT & set(POLYMER))
 
 ACRONYMS = {"pet", "pete", "pvc", "ps", "pc", "pp", "hdpe", "ldpe", "ptfe"}
 OILY = {"anhydrous", "oil", "oily", "fatty", "balm", "alcohol"}
