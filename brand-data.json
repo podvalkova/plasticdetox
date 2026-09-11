@@ -4672,6 +4672,8 @@
             "formula": "A durable good has no ingredient list. What it is made of is the materials check.",
             "materials": "surfactant or alcohol contents in plastic, diluted and rinsed, never left on skin."
           },
+          "heldFrom": "good",
+          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
           "verdict": "unrated",
           "dated": "2026-09-11",
           "why": "a recommendation needs its checks done; still to do: legal",
@@ -4690,8 +4692,6 @@
           "basis": "direct",
           "disclose": false,
           "rules": [],
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
           "heldBack": [
             "legal"
           ]
@@ -59623,20 +59623,23 @@
         "ext": {
           "frontNotes": {
             "formula": "The published ingredient list hides composition behind natural flavor.",
-            "materials": "dry contents in HDPE."
+            "materials": "dry contents in HDPE.",
+            "legal": "Checked the FDA enforcement database on 2026-08-31. Two closed and remedied recalls on record for the firm: elevated vitamin D3 in Baby's D3 liquid (2024, over 24 months, now informational) and a mislabeled kids gummy (2025, a different product line whose defect does not transfer). Neither is open."
           },
+          "legalNote": "Checked the FDA enforcement database on 2026-08-31. Two closed and remedied recalls on record for the firm: elevated vitamin D3 in Baby's D3 liquid (2024, over 24 months, now informational) and a mislabeled kids gummy (2025, a different product line whose defect does not transfer). Neither is open.",
           "verdict": "unrated",
           "dated": "2026-09-11",
           "why": "no front is directly evidenced by the note",
           "fronts": {
             "formula": "caution",
             "materials": "pass",
-            "legal": "unassessed",
+            "legal": "pass",
             "testing": "unassessed"
           },
           "frontOrigin": {
             "formula": "database",
-            "materials": "database"
+            "materials": "database",
+            "legal": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -92020,31 +92023,31 @@
         "ext": {
           "frontNotes": {
             "formula": "An object has no ingredient list. What it is made of is the materials check.",
-            "materials": "In contact with silicone, which puts nothing into what it holds."
+            "materials": "In contact with silicone, which puts nothing into what it holds.",
+            "legal": "Checked, nothing found. No CPSC recall, lawsuit or class action on record for Arudyo teethers as of 2026-09-11 (CPSC recall search and web search)."
           },
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "verdict": "unrated",
+          "legalNote": "Checked, nothing found. No CPSC recall, lawsuit or class action on record for Arudyo teethers as of 2026-09-11 (CPSC recall search and web search).",
+          "verdict": "good",
           "dated": "2026-09-11",
-          "why": "a recommendation needs its checks done; still to do: legal",
+          "why": "a vetted store pick, chosen by a person at product scope",
           "fronts": {
             "formula": "none",
             "materials": "pass",
-            "legal": "unassessed",
+            "legal": "pass",
             "testing": "unassessed"
           },
           "frontOrigin": {
             "formula": "hand",
-            "materials": "database"
+            "materials": "database",
+            "legal": "database"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
           "rules": [
             "5.4 durable-good-is-its-own-packaging"
-          ],
-          "heldBack": [
-            "legal"
           ]
         }
       }
@@ -92105,30 +92108,30 @@
         "ext": {
           "frontNotes": {
             "formula": "No ingredient list recorded.",
-            "materials": "In contact with wool, which puts nothing into what it holds."
+            "materials": "In contact with wool, which puts nothing into what it holds.",
+            "legal": "Checked, nothing found. No CPSC recall, lawsuit or class action on record for Handy Laundry wool dryer balls as of 2026-09-11 (CPSC recall search and web search)."
           },
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "verdict": "unrated",
+          "legalNote": "Checked, nothing found. No CPSC recall, lawsuit or class action on record for Handy Laundry wool dryer balls as of 2026-09-11 (CPSC recall search and web search).",
+          "verdict": "good",
           "dated": "2026-09-11",
-          "why": "a recommendation needs its checks done; still to do: legal",
+          "why": "a vetted store pick, chosen by a person at product scope",
           "fronts": {
             "formula": "pass",
             "materials": "pass",
-            "legal": "unassessed",
+            "legal": "pass",
             "testing": "unassessed"
           },
           "frontOrigin": {
             "materials": "database",
+            "legal": "database",
             "formula": "inferred"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": [],
-          "heldBack": [
-            "legal"
-          ]
+          "rules": []
         }
       }
     ]
@@ -92188,31 +92191,31 @@
         "ext": {
           "frontNotes": {
             "formula": "An object has no ingredient list. What it is made of is the materials check.",
-            "materials": "In contact with cotton, which puts nothing into what it holds."
+            "materials": "In contact with cotton, which puts nothing into what it holds.",
+            "legal": "Checked, nothing found. No CPSC recall, lawsuit or class action on record for Organic Cotton Mart produce bags as of 2026-09-11 (CPSC recall search and web search)."
           },
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "verdict": "unrated",
+          "legalNote": "Checked, nothing found. No CPSC recall, lawsuit or class action on record for Organic Cotton Mart produce bags as of 2026-09-11 (CPSC recall search and web search).",
+          "verdict": "good",
           "dated": "2026-09-11",
-          "why": "a recommendation needs its checks done; still to do: legal",
+          "why": "a vetted store pick, chosen by a person at product scope",
           "fronts": {
             "formula": "none",
             "materials": "pass",
-            "legal": "unassessed",
+            "legal": "pass",
             "testing": "unassessed"
           },
           "frontOrigin": {
             "formula": "hand",
-            "materials": "database"
+            "materials": "database",
+            "legal": "database"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
           "rules": [
             "5.4 durable-good-is-its-own-packaging"
-          ],
-          "heldBack": [
-            "legal"
           ]
         }
       }
@@ -92273,23 +92276,26 @@
         "ext": {
           "frontNotes": {
             "formula": "An object has no ingredient list. What it is made of is the materials check.",
-            "materials": "In contact with cotton, which puts nothing into what it holds."
+            "materials": "In contact with cotton, which puts nothing into what it holds.",
+            "legal": "Checked, nothing found. No CPSC recall, lawsuit or class action on record for LANE LINEN bedding as of 2026-09-11 (CPSC recall search and web search)."
           },
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "verdict": "unrated",
+          "legalNote": "Checked, nothing found. No CPSC recall, lawsuit or class action on record for LANE LINEN bedding as of 2026-09-11 (CPSC recall search and web search).",
+          "verdict": "good",
           "dated": "2026-09-11",
-          "why": "a recommendation needs its checks done; still to do: legal",
+          "why": "a vetted store pick, chosen by a person at product scope",
           "fronts": {
             "formula": "none",
             "materials": "pass",
-            "legal": "unassessed",
+            "legal": "pass",
             "testing": "pass"
           },
           "frontOrigin": {
             "formula": "hand",
             "materials": "database",
-            "testing": "inferred"
+            "testing": "inferred",
+            "legal": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -92297,9 +92303,6 @@
           "rules": [
             "2 formula-read-from-materials",
             "5.4 durable-good-is-its-own-packaging"
-          ],
-          "heldBack": [
-            "legal"
           ]
         }
       }
@@ -92359,31 +92362,31 @@
         "ext": {
           "frontNotes": {
             "formula": "An object has no ingredient list. What it is made of is the materials check.",
-            "materials": "In contact with borosilicate, which puts nothing into what it holds."
+            "materials": "In contact with borosilicate, which puts nothing into what it holds.",
+            "legal": "Checked, nothing found. No CPSC recall, lawsuit or class action on record for Verel glass food storage as of 2026-09-11 (CPSC recall search and web search)."
           },
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "verdict": "unrated",
+          "legalNote": "Checked, nothing found. No CPSC recall, lawsuit or class action on record for Verel glass food storage as of 2026-09-11 (CPSC recall search and web search).",
+          "verdict": "good",
           "dated": "2026-09-11",
-          "why": "a recommendation needs its checks done; still to do: legal",
+          "why": "a vetted store pick, chosen by a person at product scope",
           "fronts": {
             "formula": "none",
             "materials": "pass",
-            "legal": "unassessed",
+            "legal": "pass",
             "testing": "unassessed"
           },
           "frontOrigin": {
             "formula": "hand",
-            "materials": "database"
+            "materials": "database",
+            "legal": "database"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
           "rules": [
             "5.4 durable-good-is-its-own-packaging"
-          ],
-          "heldBack": [
-            "legal"
           ]
         }
       }
@@ -92446,6 +92449,8 @@
             "formula": "A durable good has no ingredient list. What it is made of is the materials check.",
             "materials": "anhydrous contents in plastic."
           },
+          "cappedFrom": "good",
+          "capRestoreWhy": "a vetted store pick, chosen by a person at product scope",
           "verdict": "skip",
           "dated": "2026-09-11",
           "why": "section 6 ceiling: materials is fail",
@@ -92463,9 +92468,7 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": [],
-          "cappedFrom": "good",
-          "capRestoreWhy": "a vetted store pick, chosen by a person at product scope"
+          "rules": []
         }
       }
     ]
@@ -92522,29 +92525,33 @@
           ]
         ],
         "ext": {
-          "verdict": "unrated",
+          "heldFrom": "good",
+          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
+          "frontNotes": {
+            "formula": "The published ingredient list carries nothing on the hazard list.",
+            "materials": "aqueous contents in plastic.",
+            "legal": "Checked, nothing found. No FDA recall, warning letter or lawsuit on record for H. Hazel (formerly Honest Hazel) eye gels as of 2026-09-11. A separate company from The Honest Company, whose recalls do not apply."
+          },
+          "legalNote": "Checked, nothing found. No FDA recall, warning letter or lawsuit on record for H. Hazel (formerly Honest Hazel) eye gels as of 2026-09-11. A separate company from The Honest Company, whose recalls do not apply.",
+          "verdict": "good",
           "dated": "2026-09-11",
-          "why": "a recommendation needs its checks done; still to do: materials, legal",
+          "why": "a vetted store pick, chosen by a person at product scope",
           "fronts": {
             "formula": "pass",
-            "materials": "unassessed",
-            "legal": "unassessed",
+            "materials": "pass",
+            "legal": "pass",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "formula": "inferred"
+            "formula": "database",
+            "materials": "database",
+            "legal": "database"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
           "rules": [
             "2 formula-read-from-materials"
-          ],
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "heldBack": [
-            "materials",
-            "legal"
           ]
         }
       }
