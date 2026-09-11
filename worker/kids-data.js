@@ -95,7 +95,7 @@ export const KIDS = {
   {
    "id": "Kids::Pump into glass",
    "swap": "Pump into glass",
-   "why": "Warm milk into plastic flanges and bottles, several times a day. Milk is high fat, which pulls more out of plastic.",
+   "why": "Warm milk into plastic flanges and bottles, several times a day. Milk is high fat, which pulls more out of plastic. For the freezer, glass is the cleanest but costs more and takes space; reusable silicone bags are the practical pick, and the cold slows what silicone gives off.",
    "heat": true,
    "impact": "Critical",
    "free": "Transfer to glass immediately after pumping instead of storing in the plastic bottle.",
@@ -123,6 +123,12 @@ export const KIDS = {
      "name": "Haakaa Petal Milk Collector (2 pack)",
      "url": "https://www.amazon.com/dp/B0FJXTZFPZ?tag=plasticdetox-20",
      "note": "Best let down catcher"
+    },
+    {
+     "label": "$$",
+     "name": "Nuliie Silicone Milk Storage Bags (7 pack)",
+     "url": "https://www.amazon.com/dp/B0BBW3M6YM?tag=plasticdetox-20",
+     "note": "Best for the freezer, reusable and flat"
     },
     {
      "label": "$$",

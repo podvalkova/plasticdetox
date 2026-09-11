@@ -402,8 +402,8 @@ plastic is lipophilic, so oil pulls it out and water largely does not.
 
 | | Polymer | Concern |
 |---|---|---|
-| 0 | Glass, stainless, foil lined, ceramic | Inert |
-| 1 | HDPE, LDPE, PP, platinum silicone | Slip agents and antioxidants only |
+| 0 | Glass, stainless, foil lined, ceramic, food grade silicone | Inert, silicone by decision (below) |
+| 1 | HDPE, LDPE, PP | Slip agents and antioxidants only |
 | 2 | PET, Tritan, copolyester | Antimony trioxide catalyst, acetaldehyde |
 | 3 | PVC, polycarbonate, polystyrene, melamine | Phthalates, BPA, styrene, melamine monomer |
 
@@ -429,6 +429,15 @@ So the case that prompted this: **water based skincare or makeup in a plastic
 bottle passes.** The exceptions are the anhydrous ones, face oils, cleansing
 balms and lip products, which are all oil and in the case of lip products also
 swallowed, and acidic actives in PET.
+
+**Silicone is scored with the inert column, by decision (September 2026).** What
+silicone can give up is leftover cyclic siloxanes (D4, D5, D6). They move into fat
+and with heat, and barely at all into water or at fridge and freezer temperatures;
+one study found none in milk after six hours of contact. That makes food grade
+silicone far closer to glass than to a polyolefin for how it is actually used:
+snacks, cold storage, frozen breast milk. Where a use is hot and fatty (baking,
+cooking in the bag) the card says so, rather than the verdict. Glass stays the
+first choice in copy, named honestly as more expensive and bulkier to store.
 
 ### 3.2 Heat moves everything one step worse
 
