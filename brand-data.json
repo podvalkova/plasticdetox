@@ -1590,13 +1590,10 @@
         "ext": {
           "frontNotes": {
             "formula": "An object has no ingredient list. What it is made of is the materials check.",
-            "materials": "Made of stainless steel, which the product name states, and which puts nothing into what it touches."
+            "materials": "In contact with stainless steel, which puts nothing into what it holds.",
+            "legal": "Searched on 2026-09-11 for recalls, lawsuits and class actions naming the brand and found none. The CPSC web service did not respond on the day, so this rests on the web search rather than a database query.",
+            "testing": "No independent lab test of this product found as of September 2026 (searched Lead Safe Mama, Mamavation, Consumer Reports)."
           },
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "heldBack": [
-            "legal"
-          ],
           "exposure": {
             "type": "food surface",
             "level": "low",
@@ -1612,29 +1609,34 @@
           },
           "materialsList": "stainless steel",
           "materialAnswers": {
-            "contact": null,
-            "contactFrom": "stated in the product name",
-            "base": "",
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "aqueous",
             "heated": false,
             "mouthed": false,
             "reuse": "",
             "use": "",
             "material": "stainless steel",
-            "source": "product name",
-            "checked": ""
+            "source": "Listing specification: 18/10 stainless steel, including the handles",
+            "checked": "2026-09-11"
           },
-          "verdict": "unrated",
-          "dated": "2026-09-06",
-          "why": "no front is directly evidenced by the note",
+          "legalNote": "Searched on 2026-09-11 for recalls, lawsuits and class actions naming the brand and found none. The CPSC web service did not respond on the day, so this rests on the web search rather than a database query.",
+          "testingNote": "No independent lab test of this product found as of September 2026 (searched Lead Safe Mama, Mamavation, Consumer Reports).",
+          "testingDate": "2026-09-11",
+          "verdict": "good",
+          "dated": "2026-09-11",
+          "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
             "materials": "pass",
-            "legal": "unassessed",
-            "testing": "unassessed"
+            "legal": "pass",
+            "testing": "none"
           },
           "frontOrigin": {
             "materials": "database",
-            "formula": "hand"
+            "formula": "hand",
+            "legal": "database",
+            "testing": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -15412,6 +15414,7 @@
       {
         "name": "Branch Basics Concentrate Refill",
         "asins": [
+          "B0H7SZP94J",
           "B0D9WG23V6"
         ],
         "verdict": "good",
@@ -15420,9 +15423,10 @@
         "ext": {
           "legalNote": "Checked on 2026-08-31. The 2015 dispute over all natural claims led to a voluntary withdrawal and an 18 month reformulation; the current formula postdates it and no recall or regulatory action is on record.",
           "frontNotes": {
-            "materials": "We have not established what the product actually touches.",
+            "materials": "surfactant or alcohol contents in plastic, diluted and rinsed, never left on skin.",
             "formula": "The published ingredient list carries nothing on the hazard list.",
-            "legal": "Checked on 2026-08-31. The 2015 dispute over all natural claims led to a voluntary withdrawal and an 18 month reformulation; the current formula postdates it and no recall or regulatory action is on record."
+            "legal": "Checked on 2026-08-31. The 2015 dispute over all natural claims led to a voluntary withdrawal and an 18 month reformulation; the current formula postdates it and no recall or regulatory action is on record.",
+            "testing": "No independent lab test of this product found as of September 2026 (searched Lead Safe Mama, Mamavation, Consumer Reports)."
           },
           "exposure": {
             "type": "sprayed",
@@ -15438,41 +15442,44 @@
             "why": "Aerosolised on purpose, into the air in front of you."
           },
           "formulaAnswers": {
-            "ingredients": "Concentrate- Purified Water, Decyl Glucoside, Organic Chamomile Flower Extract, Coco-Glucoside, Sodium Citrate, Sodium Bicarbonate, Sodium Phytate",
+            "ingredients": "Purified water, decyl glucoside, organic chamomile flower extract, coco-glucoside, sodium citrate, sodium bicarbonate, sodium phytate",
             "prose": "",
             "complete": true,
             "verdict": "good",
             "summary": "The published ingredient list carries nothing on the hazard list.",
             "flagged": [],
-            "source": "amazon:B0D9WG23V6",
-            "checked": "2026-09-03"
+            "source": "Amazon listing B0H7SZP94J, Important information panel",
+            "checked": "2026-09-11"
           },
           "materialAnswers": {
-            "contact": "",
-            "contactFrom": "",
-            "base": "",
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "surfactant",
             "heated": false,
             "mouthed": false,
             "reuse": "",
-            "use": "",
-            "material": "",
-            "source": "",
-            "checked": "2026-09-02",
-            "open": "We have not established what the product actually touches"
+            "use": "not-on-body",
+            "material": "plastic",
+            "source": "Listing: concentrate refill bottle. The concentrate is diluted into refillable bottles and rinsed off surfaces, never left on skin",
+            "checked": "2026-09-11"
           },
-          "verdict": "unrated",
-          "dated": "2026-08-28",
-          "why": "the note reads adversely on materials, needs a human look",
+          "testingNote": "No independent lab test of this product found as of September 2026 (searched Lead Safe Mama, Mamavation, Consumer Reports).",
+          "testingDate": "2026-09-11",
+          "materialsList": "plastic",
+          "verdict": "good",
+          "dated": "2026-09-11",
+          "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
-            "materials": "caution",
+            "materials": "pass",
             "legal": "pass",
-            "testing": "unassessed"
+            "testing": "none"
           },
           "frontOrigin": {
             "legal": "database",
             "formula": "database",
-            "materials": "inferred"
+            "materials": "database",
+            "testing": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -34377,8 +34384,9 @@
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
-            "materials": "We have not established what the product actually touches.",
+            "materials": "In contact with metal, which puts nothing into what it holds.",
             "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
+            "testing": "No independent lab test of this product found as of September 2026 (searched Lead Safe Mama, Mamavation, Consumer Reports).",
             "formula": "An object has no ingredient list. What it is made of is the materials check."
           },
           "exposure": {
@@ -34395,29 +34403,33 @@
             "why": "Rinsed off, so most of it never stays."
           },
           "materialAnswers": {
-            "contact": "",
-            "contactFrom": "",
-            "base": "",
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "aqueous",
             "heated": false,
             "mouthed": false,
             "reuse": "",
             "use": "",
-            "material": "",
-            "source": "",
-            "checked": "2026-09-02",
-            "open": "We have not established what the product actually touches"
+            "material": "metal",
+            "source": "Listing: chrome plated metal handle and head, with a replaceable steel blade. No plastic in the shaving path",
+            "checked": "2026-09-11"
           },
-          "verdict": "unrated",
-          "dated": "2026-08-28",
-          "why": "no front is directly evidenced by the note",
+          "testingNote": "No independent lab test of this product found as of September 2026 (searched Lead Safe Mama, Mamavation, Consumer Reports).",
+          "testingDate": "2026-09-11",
+          "materialsList": "metal",
+          "verdict": "good",
+          "dated": "2026-09-11",
+          "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
-            "materials": "unassessed",
+            "materials": "pass",
             "legal": "none",
-            "testing": "unassessed"
+            "testing": "none"
           },
           "frontOrigin": {
             "legal": "database",
+            "testing": "database",
+            "materials": "database",
             "formula": "hand"
           },
           "scope": "sku",
@@ -47372,22 +47384,25 @@
         "origin": "vetted",
         "ext": {
           "frontNotes": {
-            "materials": "Borosilicate glass with an 18/10 stainless mesh infuser. Both are inert, so every part the tea touches puts nothing into it.",
-            "legal": "Checked against the CPSC recall database on 2026-09-06. No recall on record."
+            "materials": "In contact with borosilicate, which puts nothing into what it holds.",
+            "legal": "Checked against the CPSC recall database on 2026-09-06. No recall on record.",
+            "testing": "No independent lab test of this product found as of September 2026 (searched Lead Safe Mama, Mamavation, Consumer Reports)."
           },
           "legalNote": "Checked against the CPSC recall database on 2026-09-06. No recall on record.",
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-09-06",
           "why": "a recommendation needs its checks done; still to do: formula",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "none",
             "materials": "pass",
             "legal": "none",
-            "testing": "unassessed"
+            "testing": "none"
           },
           "frontOrigin": {
-            "materials": "stated",
-            "legal": "database"
+            "materials": "database",
+            "legal": "database",
+            "testing": "database",
+            "formula": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -47396,24 +47411,44 @@
             "5.4 durable-good-is-its-own-packaging"
           ],
           "exposure": {
-            "type": "hot drink",
+            "type": "heated vessel",
             "level": "medium",
-            "score": 7.5,
+            "score": 5.7,
             "baby": false,
             "route": "ingestion",
             "duration": "minutes",
-            "retained": "swallowed",
+            "retained": "transfer",
             "frequency": "daily",
             "heat": true,
             "fat": false,
-            "why": "Brewed hot, which pulls more out of whatever it is brewed in."
+            "why": "Heat drives whatever is in the surface into the water."
           },
           "authored": true,
-          "heldFrom": "good",
-          "restoreWhy": "a recommendation needs its checks done; still to do: formula",
-          "heldBack": [
-            "formula"
-          ]
+          "formulaAnswers": {
+            "ingredients": "",
+            "prose": "",
+            "complete": false,
+            "verdict": "n/a",
+            "summary": "A durable good has no ingredient list. What it is made of is the materials check.",
+            "flagged": [],
+            "source": "",
+            "checked": ""
+          },
+          "testingNote": "No independent lab test of this product found as of September 2026 (searched Lead Safe Mama, Mamavation, Consumer Reports).",
+          "testingDate": "2026-09-11",
+          "materialsList": "borosilicate glass, stainless steel",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "aqueous",
+            "heated": false,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "borosilicate glass, stainless steel",
+            "source": "Listing: heat resistant borosilicate glass body with a removable 18/10 stainless steel mesh infuser",
+            "checked": "2026-09-11"
+          }
         },
         "cat": "Tea",
         "matchAll": [
@@ -63618,7 +63653,9 @@
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
           "frontNotes": {
             "formula": "The published ingredient list carries nothing on the hazard list.",
-            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
+            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
+            "testing": "No independent lab test of this product found as of September 2026 (searched Lead Safe Mama, Mamavation, Consumer Reports).",
+            "materials": "In contact with paper, which puts nothing into what it holds."
           },
           "exposure": {
             "type": "sprayed",
@@ -63643,19 +63680,35 @@
             "source": "amazon:B07V582TF1",
             "checked": "2026-09-04"
           },
-          "verdict": "unrated",
-          "dated": "2026-08-29",
-          "why": "the note reads adversely on materials, needs a human look",
+          "testingNote": "No independent lab test of this product found as of September 2026 (searched Lead Safe Mama, Mamavation, Consumer Reports).",
+          "testingDate": "2026-09-11",
+          "materialsList": "paper",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "dry",
+            "heated": false,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "paper",
+            "source": "meliorameansbetter.com: each plastic free bar comes in a recyclable paperboard box printed with vegetable based inks, with no plastic lacquers, liners or coatings",
+            "checked": "2026-09-11"
+          },
+          "verdict": "good",
+          "dated": "2026-09-11",
+          "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
-            "materials": "caution",
+            "materials": "pass",
             "legal": "none",
-            "testing": "unassessed"
+            "testing": "none"
           },
           "frontOrigin": {
             "legal": "database",
-            "materials": "inferred",
-            "formula": "database"
+            "materials": "database",
+            "formula": "database",
+            "testing": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -68809,8 +68862,9 @@
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
-            "formula": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear.",
-            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
+            "formula": "The published ingredient list carries nothing on the hazard list.",
+            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
+            "materials": "dry contents in plastic."
           },
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
@@ -68832,27 +68886,42 @@
             "why": "Brewed hot, which pulls more out of whatever it is brewed in."
           },
           "formulaAnswers": {
-            "ingredients": "",
-            "prose": "About this item Organic Medium Roast Whole Bean Clean Decaf - As much as 70% of all coffee is contaminated with mold, and other toxins. These toxins can cause brain fog, stomach irritation, and other serious health concerns. That is why we created Natural Force Clean Decaf, the first decaf coffee consciously crafted to be toxin-free from source to sip! Tested for Mold, Mycotoxins, Gluten, & More - Natural Force Clean Decaf is 3rd-partly lab tested and independently analyzed for the presence of mold, mycotoxins (ochratoxin A, aflatoxin), acrylamide, heavy metals, gluten and more - we freely share the results of our testing because we have nothing to hide! Swiss Water Decaffeinated - Unlike other decaffeination methods, the Swiss Water Process uses pure water to remove 99.9% of the caffeine naturally present in coffee. Because the Swiss Water decaffeination process is solvent and chemical-free, this coffee is the smart choice for health-conscious decaf coffee drinkers. Certified USDA Organic, Keto, Paleo, & Vegan - All Natural Force Clean Coffees are 3rd-party certified by top organizations like The Paleo Foundation and Vegan Action. Nutrition You Can Trust - Natural Force values the",
-            "complete": false,
-            "verdict": "open",
-            "summary": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear.",
+            "ingredients": "Organic coffee",
+            "prose": "",
+            "complete": true,
+            "verdict": "good",
+            "summary": "The published ingredient list carries nothing on the hazard list.",
             "flagged": [],
-            "source": "amazon:B0BTJZF2SS",
-            "checked": "2026-09-04"
+            "source": "Listing: single ingredient organic water process decaf coffee beans, no other ingredient listed",
+            "checked": "2026-09-11"
           },
-          "verdict": "unrated",
+          "materialsList": "plastic",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "dry",
+            "heated": false,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "plastic",
+            "source": "Whole bean coffee in a bag with a degassing valve; the laminate is not published",
+            "checked": "2026-09-11"
+          },
+          "verdict": "good",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: materials, formula",
+          "why": "a vetted store pick, chosen by a person at product scope",
           "fronts": {
-            "formula": "unassessed",
-            "materials": "unassessed",
+            "formula": "pass",
+            "materials": "pass",
             "legal": "none",
             "testing": "pass"
           },
           "frontOrigin": {
             "legal": "database",
-            "testing": "inferred"
+            "testing": "inferred",
+            "formula": "database",
+            "materials": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -71989,7 +72058,7 @@
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
-            "testing": "Organic almonds cannot be fumigated with propylene oxide and are steam pasteurized instead, avoiding the… (Recorded for NOW Foods Certified as a whole rather than this product specifically.)",
+            "testing": "No independent lab test of this product found as of September 2026 (searched Lead Safe Mama, Mamavation, Consumer Reports). Organic certification bars propylene oxide fumigation and the almonds are steam pasteurized instead; both are process facts, not test results, and the earlier caution read them as a finding.",
             "formula": "The published ingredient list carries nothing on the hazard list.",
             "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
             "materials": "dry contents in plastic."
@@ -72033,18 +72102,20 @@
             "source": "Dry contents; the container polymer is not published or not confirmed. Dry contents pass the rule 3.1 matrix in HDPE, PET, polypropylene, paper, metal and glass, which covers every material this kind of product is packed in. Only PVC or polystyrene would score caution, and neither is used for it.",
             "checked": "2026-09-11"
           },
-          "verdict": "unrated",
+          "testingNote": "No independent lab test of this product found as of September 2026 (searched Lead Safe Mama, Mamavation, Consumer Reports). Organic certification bars propylene oxide fumigation and the almonds are steam pasteurized instead; both are process facts, not test results, and the earlier caution read them as a finding.",
+          "testingDate": "2026-09-11",
+          "verdict": "good",
           "dated": "2026-09-11",
-          "why": "the note reads adversely on testing, needs a human look",
+          "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
             "materials": "pass",
             "legal": "none",
-            "testing": "caution"
+            "testing": "none"
           },
           "frontOrigin": {
             "legal": "database",
-            "testing": "stated",
+            "testing": "database",
             "formula": "database",
             "materials": "database"
           },
@@ -74266,6 +74337,90 @@
           "rules": []
         },
         "cat": "Baby food"
+      },
+      {
+        "name": "One Degree Organics Sprouted Whole Wheat Flour (32oz)",
+        "asins": [
+          "B071RHJXVG"
+        ],
+        "verdict": "unrated",
+        "origin": "research",
+        "note": "Single ingredient sprouted whole wheat flour. The bag carries a glyphosate free claim and a traceable source code for the farm.",
+        "matchAll": [
+          [
+            "one degree",
+            "flour"
+          ]
+        ],
+        "cat": "Pantry",
+        "ext": {
+          "exposure": {
+            "type": "food",
+            "level": "high",
+            "score": 6.0,
+            "baby": true,
+            "route": "ingestion",
+            "duration": "minutes",
+            "retained": "swallowed",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "for a baby, which is high whatever the arithmetic says"
+          },
+          "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
+          "frontNotes": {
+            "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
+            "formula": "The published ingredient list carries nothing on the hazard list.",
+            "testing": "No independent lab test of this product found as of September 2026 (searched Lead Safe Mama, Mamavation, Consumer Reports). The bag carries a glyphosate free claim, which is a label claim rather than a lab result we hold.",
+            "materials": "dry contents in plastic."
+          },
+          "formulaAnswers": {
+            "ingredients": "Organic sprouted whole wheat kernels",
+            "prose": "",
+            "complete": true,
+            "verdict": "good",
+            "summary": "The published ingredient list carries nothing on the hazard list.",
+            "flagged": [],
+            "source": "Amazon listing B071RHJXVG, Important information panel",
+            "checked": "2026-09-11"
+          },
+          "testingNote": "No independent lab test of this product found as of September 2026 (searched Lead Safe Mama, Mamavation, Consumer Reports). The bag carries a glyphosate free claim, which is a label claim rather than a lab result we hold.",
+          "testingDate": "2026-09-11",
+          "materialsList": "plastic",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "dry",
+            "heated": false,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "plastic",
+            "source": "Dry flour in a printed bag; the bag polymer is not published. Dry contents are the mildest pairing in the packaging matrix",
+            "checked": "2026-09-11"
+          },
+          "verdict": "good",
+          "dated": "2026-09-11",
+          "why": "independent lab result at sku scope",
+          "fronts": {
+            "formula": "pass",
+            "materials": "pass",
+            "legal": "pass",
+            "testing": "none"
+          },
+          "frontOrigin": {
+            "legal": "database",
+            "formula": "database",
+            "testing": "database",
+            "materials": "database"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": [
+            "2 formula-read-from-materials"
+          ]
+        }
       }
     ],
     "rollup": {
@@ -81550,8 +81705,10 @@
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
-            "formula": "No ingredient list recorded.",
-            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
+            "formula": "The published ingredient list carries nothing on the hazard list.",
+            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
+            "testing": "Mamavation, 19 August 2024, EPA certified labs: Purity Coffee placed in the 'not our favorite' tier. 2-phenylphenol, a post harvest fungicide, at 0.015 mg/kg in Purity Flow, and 187 ppm organic fluorine in the Ease sachet material. Mycotoxins, mold, yeast and 40 PFAS analytes were non detect. A pesticide residue rides in on the beans, which under rule 4 is ingredient borne and reaches the line rather than one bag.",
+            "materials": "dry contents in plastic."
           },
           "exposure": {
             "type": "hot drink",
@@ -81567,26 +81724,44 @@
             "why": "Brewed hot, which pulls more out of whatever it is brewed in."
           },
           "formulaAnswers": {
-            "ingredients": "",
+            "ingredients": "100% organic arabica coffee, mountain water process decaffeinated",
             "prose": "",
-            "complete": false,
-            "verdict": "open",
-            "summary": "No ingredient list recorded.",
+            "complete": true,
+            "verdict": "good",
+            "summary": "The published ingredient list carries nothing on the hazard list.",
             "flagged": [],
-            "source": "amazon:B0D8K3G9L1",
-            "checked": ""
+            "source": "Amazon listing B0D683FKMP, Important information panel",
+            "checked": "2026-09-11"
           },
-          "verdict": "unrated",
-          "dated": "2026-08-28",
-          "why": "no front is directly evidenced by the note",
+          "testingNote": "Mamavation, 19 August 2024, EPA certified labs: Purity Coffee placed in the 'not our favorite' tier. 2-phenylphenol, a post harvest fungicide, at 0.015 mg/kg in Purity Flow, and 187 ppm organic fluorine in the Ease sachet material. Mycotoxins, mold, yeast and 40 PFAS analytes were non detect. A pesticide residue rides in on the beans, which under rule 4 is ingredient borne and reaches the line rather than one bag.",
+          "testingDate": "2026-09-11",
+          "materialsList": "plastic",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "dry",
+            "heated": false,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "plastic",
+            "source": "Ground coffee in a 12 oz bag with a degassing valve; the laminate is not published",
+            "checked": "2026-09-11"
+          },
+          "verdict": "careful",
+          "dated": "2026-09-11",
+          "why": "section 6 ceiling: testing is caution, on recorded evidence",
           "fronts": {
-            "formula": "unassessed",
-            "materials": "unassessed",
+            "formula": "pass",
+            "materials": "pass",
             "legal": "none",
-            "testing": "unassessed"
+            "testing": "caution"
           },
           "frontOrigin": {
-            "legal": "database"
+            "legal": "database",
+            "formula": "database",
+            "testing": "database",
+            "materials": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -91297,7 +91472,6 @@
           "legalNote": "Checked recall records on 2026-08-31. Four recalls since 2019 (Newborn Set accessory, Steps Bouncer, white Clikk chair, YOYO3 stroller), each remedied; only two fall inside the last five years, and the Tripp Trapp chair itself has never been recalled.",
           "frontNotes": {
             "legal": "Checked recall records on 2026-08-31. Four recalls since 2019 (Newborn Set accessory, Steps Bouncer, white Clikk chair, YOYO3 stroller), each remedied; only two fall inside the last five years, and the Tripp Trapp chair itself has never been recalled.",
-            "formula": "A durable good has no ingredient list. What it is made of is the materials check.",
             "testing": "No independent lab test of this product found as of September 2026.",
             "materials": "aqueous contents in plastic."
           },
@@ -93275,7 +93449,8 @@
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
             "formula": "The published ingredient list carries nothing on the hazard list.",
-            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
+            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
+            "materials": "dry contents in plastic."
           },
           "exposure": {
             "type": "food",
@@ -93300,19 +93475,32 @@
             "source": "Amazon listing B00EGXGKHE, Important information panel",
             "checked": "2026-09-11"
           },
-          "verdict": "unrated",
-          "dated": "2026-08-29",
-          "why": "the note reads adversely on materials, needs a human look",
+          "materialsList": "plastic",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "dry",
+            "heated": false,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "plastic",
+            "source": "Listing: resealable bag. Dry nuts, the mildest pairing in the packaging matrix",
+            "checked": "2026-09-11"
+          },
+          "verdict": "good",
+          "dated": "2026-09-11",
+          "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
-            "materials": "caution",
+            "materials": "pass",
             "legal": "none",
             "testing": "pass"
           },
           "frontOrigin": {
             "legal": "database",
             "testing": "inferred",
-            "materials": "inferred",
+            "materials": "database",
             "formula": "database"
           },
           "scope": "sku",
@@ -104250,8 +104438,10 @@
         ],
         "ext": {
           "frontNotes": {
-            "materials": "Conventional white and brown sugar have tested positive for PET and polypropylene particles, so a less… (Recorded for Wholesome as a whole rather than this product specifically.)",
-            "formula": "The published ingredient list carries nothing on the hazard list."
+            "materials": "dry contents in plastic.",
+            "formula": "The published ingredient list carries nothing on the hazard list.",
+            "legal": "openFDA food enforcement queried on 2026-09-11: no record for Wholesome Sweeteners.",
+            "testing": "No independent lab test of this product found as of September 2026 (searched Lead Safe Mama, Mamavation, Consumer Reports)."
           },
           "inheritedFronts": [
             "formula",
@@ -104305,27 +104495,45 @@
             "why": "Eaten, so whatever is in it arrives whole."
           },
           "formulaAnswers": {
-            "ingredients": "Organic coconut palm sugar",
+            "ingredients": "Organic cane sugar",
             "prose": "",
             "complete": true,
             "verdict": "good",
             "summary": "The published ingredient list carries nothing on the hazard list.",
             "flagged": [],
-            "source": "openfacts:0012511921064",
-            "checked": "2026-09-08"
+            "source": "Amazon listing B0BLHLZCLH. The earlier record came from an Open Food Facts barcode for coconut palm sugar, a different product",
+            "checked": "2026-09-11"
           },
-          "verdict": "unrated",
+          "legalNote": "openFDA food enforcement queried on 2026-09-11: no record for Wholesome Sweeteners.",
+          "testingNote": "No independent lab test of this product found as of September 2026 (searched Lead Safe Mama, Mamavation, Consumer Reports).",
+          "testingDate": "2026-09-11",
+          "materialsList": "plastic",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "dry",
+            "heated": false,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "plastic",
+            "source": "Dry sugar in a bag; the polymer is not published. Dry contents are the mildest pairing in the packaging matrix",
+            "checked": "2026-09-11"
+          },
+          "verdict": "good",
           "dated": "2026-09-11",
-          "why": "the note reads adversely on formula, needs a human look",
+          "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
-            "materials": "caution",
-            "legal": "unassessed",
-            "testing": "unassessed"
+            "materials": "pass",
+            "legal": "pass",
+            "testing": "none"
           },
           "frontOrigin": {
             "formula": "database",
-            "materials": "stated"
+            "materials": "database",
+            "legal": "database",
+            "testing": "database"
           },
           "scope": "sku",
           "basis": "direct",

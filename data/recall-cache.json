@@ -828,9 +828,10 @@
   "total": 0
  },
  "Edwin Jagger": {
-  "checked": "2026-08-28",
-  "latest": null,
-  "total": 0
+  "checked": "2026-09-11",
+  "status": "pass",
+  "resolved": true,
+  "note": "Searched on 2026-09-11 for recalls, lawsuits and class actions naming the brand and found none. The CPSC web service did not respond on the day, so this rests on the web search rather than a database query."
  },
  "Elk and Friends": {
   "checked": "2026-08-31",
@@ -902,11 +903,11 @@
   "status": "pass"
  },
  "Food For Life": {
-  "checked": "2026-08-31",
-  "note": "Checked recall records on 2026-08-31. One 2013 recall of a sprouted grain cereal for an undeclared allergen, long resolved; the breads were not involved.",
+  "checked": "2026-09-11",
+  "status": "pass",
   "resolved": true,
-  "source": "https://www.foodforlife.com/recall",
-  "status": "pass"
+  "eventDate": "2013",
+  "note": "openFDA food enforcement queried on 2026-09-11: three records for Food For Life Baking, all from 2013 and all terminated, naming Ezekiel 4:9 cereal. Over 24 months old, so informational under rule 5.2."
  },
  "Forlife": {
   "checked": "2026-08-28",
@@ -1092,10 +1093,10 @@
   "note": "HiBAR recalled its Volumize Solid Conditioner Bar (UPC 854323007099) on 9 December 2024, FDA classified 7 January 2025, for Lactiplantibacillus pentosus in one raw material, Rice Tein NPNF (a rice protein). The mechanism is that ingredient, so under rule 611 it reaches only products containing it; no HiBAR product we rate lists rice protein."
  },
  "Hiware": {
-  "checked": "2026-09-06",
-  "examined": 0,
-  "latest": null,
-  "total": 0
+  "checked": "2026-09-11",
+  "status": "pass",
+  "resolved": true,
+  "note": "Searched on 2026-09-11 for recalls, lawsuits and class actions naming the brand and found none. The CPSC web service did not respond on the day, so this rests on the web search rather than a database query."
  },
  "House of Noa": {
   "checked": "2026-09-09",
@@ -1545,9 +1546,10 @@
   "status": "pass"
  },
  "NOW Foods Certified": {
-  "checked": "2026-08-28",
-  "latest": null,
-  "total": 0
+  "checked": "2026-09-11",
+  "status": "pass",
+  "resolved": true,
+  "note": "openFDA food enforcement queried on 2026-09-11: 14 records for NOW Foods, the most recent from 2018 and all terminated, none of them naming almonds (a product description query for almond returns nothing)."
  },
  "NUK": {
   "checked": "2026-08-31",
@@ -1579,10 +1581,10 @@
   "total": 0
  },
  "Natural Force": {
-  "checked": "2026-09-06",
-  "examined": 0,
-  "latest": null,
-  "total": 0
+  "checked": "2026-09-11",
+  "status": "pass",
+  "resolved": true,
+  "note": "openFDA food enforcement queried on 2026-09-11: no record for Natural Force."
  },
  "Natural Force Clean": {
   "checked": "2026-08-28",
@@ -1883,9 +1885,10 @@
   "status": "pass"
  },
  "Purity Coffee": {
-  "checked": "2026-08-28",
-  "latest": null,
-  "total": 0
+  "checked": "2026-09-11",
+  "status": "pass",
+  "resolved": true,
+  "note": "openFDA food enforcement queried on 2026-09-11: no record for Purity Coffee. The pesticide finding is a test result, recorded under testing."
  },
  "REDECKER": {
   "checked": "2026-08-31",
@@ -2178,9 +2181,10 @@
   "status": "pass"
  },
  "Terrasoul Superfoods Raw": {
-  "checked": "2026-08-28",
-  "latest": null,
-  "total": 0
+  "checked": "2026-09-11",
+  "status": "pass",
+  "resolved": true,
+  "note": "openFDA food enforcement queried on 2026-09-11: no record for Terrasoul."
  },
  "Theralogix": {
   "checked": "2026-08-28",
@@ -2463,15 +2467,10 @@
   "status": "pass"
  },
  "Wholesome": {
-  "checked": "2026-08-28",
-  "examined": 8,
-  "latest": [
-   "20190331",
-   "Undeclared flaxseed. Flaxseed was used in the products but is not listed on the product labels.",
-   "Terminated",
-   "Wholesome Treats, Inc."
-  ],
-  "total": 8
+  "checked": "2026-09-11",
+  "status": "pass",
+  "resolved": true,
+  "note": "openFDA food enforcement queried on 2026-09-11: no record for Wholesome Sweeteners."
  },
  "Wild": {
   "checked": "2026-08-31",
@@ -2812,5 +2811,11 @@
   "eventDate": "2022",
   "note": "CPSC recalls on record: toddler stainless steel bottles and cups on 23 November 2022, for lead solder under a base that could detach, remedied and now over 24 months old; and i play glass food storage cubes in 2016. Neither covers bibs or any product we rate, and under rule 5.2 both are informational.",
   "source": "https://www.cpsc.gov/Recalls/2023/Green-Sprouts-Recalls-Toddlers-Stainless-Steel-Bottles-and-Cups-Due-to-Lead-Poisoning-Hazard-Recall-Alert"
+ },
+ "All Metal": {
+  "checked": "2026-09-11",
+  "status": "pass",
+  "resolved": true,
+  "note": "Searched on 2026-09-11 for recalls, lawsuits and class actions naming the brand and found none. The CPSC web service did not respond on the day, so this rests on the web search rather than a database query."
  }
 }
