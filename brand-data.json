@@ -244,7 +244,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         },
         "cat": "Water bottles",
         "matchAll": [
@@ -623,7 +625,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         },
         "cat": "Diaper cream"
       }
@@ -1087,6 +1091,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -1292,6 +1297,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -1527,18 +1533,18 @@
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "pass",
+            "formula": "unassessed",
             "materials": "unassessed",
             "legal": "unassessed",
             "testing": "unassessed"
           },
-          "frontOrigin": {
-            "formula": "inferred"
-          },
+          "frontOrigin": {},
           "scope": "line",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         },
         "matchAll": [
           [
@@ -1619,7 +1625,7 @@
           },
           "verdict": "unrated",
           "dated": "2026-09-06",
-          "why": "no direct pass on materials, and no lab result standing in for one",
+          "why": "no front is directly evidenced by the note",
           "fronts": {
             "formula": "none",
             "materials": "pass",
@@ -1633,7 +1639,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         },
         "cat": "Tableware",
         "matchAll": [
@@ -2788,7 +2796,7 @@
           },
           "verdict": "good",
           "dated": "2026-08-29",
-          "why": "direct evidence at sku scope on formula, materials",
+          "why": "direct evidence at sku scope on materials",
           "fronts": {
             "formula": "none",
             "materials": "pass",
@@ -2803,7 +2811,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         },
         "cat": "Tableware"
       }
@@ -3385,7 +3395,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         },
         "cat": "Pantry",
         "matchAll": [
@@ -3854,6 +3866,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "3 packaging-matrix-caution"
           ]
         },
@@ -3943,7 +3956,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         },
         "cat": "Diaper cream"
       },
@@ -5181,6 +5196,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "3 packaging-matrix-pass"
           ]
         },
@@ -5287,20 +5303,21 @@
           "dated": "2026-09-11",
           "why": "section 6 ceiling: legal is caution",
           "fronts": {
-            "formula": "pass",
+            "formula": "unassessed",
             "materials": "unassessed",
             "legal": "caution",
             "testing": "pass"
           },
           "frontOrigin": {
-            "formula": "inferred",
             "legal": "database",
             "testing": "inferred"
           },
           "scope": "line",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         },
         "origin": "hand",
         "matchAll": [
@@ -5398,7 +5415,10 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula",
+            "2 formula-read-from-materials"
+          ]
         }
       },
       {
@@ -5915,6 +5935,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -5987,6 +6008,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -6041,7 +6063,7 @@
           },
           "verdict": "good",
           "dated": "2026-08-29",
-          "why": "direct evidence at sku scope on formula, materials",
+          "why": "direct evidence at sku scope on materials",
           "fronts": {
             "formula": "none",
             "materials": "pass",
@@ -6057,6 +6079,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -6112,7 +6135,7 @@
           },
           "verdict": "good",
           "dated": "2026-08-29",
-          "why": "direct evidence at sku scope on formula, materials",
+          "why": "direct evidence at sku scope on materials",
           "fronts": {
             "formula": "none",
             "materials": "pass",
@@ -6128,6 +6151,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -6289,6 +6313,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "3 packaging-matrix-fail"
           ]
         },
@@ -6574,7 +6599,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         }
       }
     ],
@@ -6715,6 +6742,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -6939,6 +6967,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "4.3 non-detect-without-lod",
             "3 packaging-matrix-fail"
           ]
@@ -7036,6 +7065,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "3 packaging-matrix-caution"
           ]
         }
@@ -7562,7 +7592,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         }
       },
       {
@@ -9976,6 +10008,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -10051,6 +10084,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -10218,30 +10252,29 @@
           "legalNote": "FDA database matches reviewed on 2026-08-31: the recalling firm, Bear Stewart Co, is a commercial bakery unrelated to this appliance brand. No recall on record for this brand.",
           "frontNotes": {
             "materials": "In contact with stainless steel, which puts nothing into what it holds.",
-            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
-            "formula": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear."
+            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
           },
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
           "exposure": {
-            "type": "food",
+            "type": "heated cookware",
             "level": "high",
-            "score": 6.0,
+            "score": 6.6,
             "baby": true,
             "route": "ingestion",
             "duration": "minutes",
-            "retained": "swallowed",
+            "retained": "transfer",
             "frequency": "daily",
-            "heat": false,
-            "fat": false,
+            "heat": true,
+            "fat": true,
             "why": "for a baby, which is high whatever the arithmetic says"
           },
           "formulaAnswers": {
             "ingredients": "",
             "prose": "About this item 𝗧𝗿𝘂𝗹𝘆 𝗔𝗹𝗹-𝗶𝗻-𝗼𝗻𝗲 𝗕𝗮𝗯𝘆 𝗙𝗼𝗼𝗱 𝗠𝗮𝗸𝗲𝗿 – The Bear baby food maker is your ultimate kitchen partner, combining a steamer and blender into one compact device(just 6.7x6.7x9.2inches). With three age stage settings(4-7, 8-10, 11 month+) and one-touch digital menu programs(veggie, fruits, root, meat, fish, and stew), making healthy homemade baby food has never been easier and more efficient for new parents or busy parents. Reclaim precious time and spend less time in the kitchen and more with your little one 𝗖𝘂𝘀𝘁𝗼𝗺𝗶𝘇𝗲 𝗜𝗱𝗲𝗮 𝗙𝗼𝗼𝗱 𝗖𝗼𝗻𝘀𝗶𝘀𝘁𝗲𝗻𝗰𝘆 – Choose between auto or manual mixing modes to precisely control food consistency, meeting your baby's taste preferences. Baby food puree maker comes with upgrade 3D floating stainless steel blades create ultra-smooth purees and adjustable textures, perfectly tailored for your baby's developing palate from 4 to 12 months 𝗦𝘂𝗽𝗲𝗿𝗶𝗼𝗿 & 𝗦𝗮𝗳𝗲 𝗦𝘁𝗮𝗶𝗻𝗹𝗲𝘀𝘀 𝗦𝘁𝗲𝗲𝗹 𝗖𝗼𝗻𝘀𝘁𝗿𝘂𝗰𝘁𝗶𝗼𝗻 – Durable, non-toxic, and premium, our stainless steel bowl, cover and blade are free from harmful chemicals like BPA, Lead, and Phthalates. Designed for long-lasting use without wear, tea",
             "complete": false,
-            "verdict": "open",
-            "summary": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear.",
+            "verdict": "n/a",
+            "summary": "A durable good has no ingredient list. What it is made of is the materials check.",
             "flagged": [],
             "source": "amazon:B0FL7K9WMX",
             "checked": "2026-09-03"
@@ -10263,7 +10296,7 @@
           "dated": "2026-08-29",
           "why": "a vetted store pick, chosen by a person at product scope",
           "fronts": {
-            "formula": "pass",
+            "formula": "none",
             "materials": "pass",
             "legal": "none",
             "testing": "unassessed"
@@ -10271,12 +10304,13 @@
           "frontOrigin": {
             "legal": "database",
             "materials": "database",
-            "formula": "inferred"
+            "formula": "database"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -10594,7 +10628,7 @@
           },
           "verdict": "unrated",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: materials",
+          "why": "no front is directly evidenced by the note",
           "fronts": {
             "formula": "pass",
             "materials": "unassessed",
@@ -10608,7 +10642,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         },
         "cat": "Makeup",
         "matchAll": [
@@ -10839,8 +10875,8 @@
             "checked": "2026-09-02"
           },
           "verdict": "good",
-          "dated": "2026-09-02",
-          "why": "a vetted store pick, chosen by a person at product scope",
+          "dated": "2026-09-11",
+          "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
             "materials": "pass",
@@ -10855,7 +10891,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         },
         "cat": "Food storage",
         "matchAll": [
@@ -11549,7 +11587,9 @@
           "scope": "line",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         },
         "origin": "hand",
         "matchAll": [
@@ -11958,7 +11998,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         },
         "cat": "Coffee",
         "matchAll": [
@@ -13613,6 +13655,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -14171,7 +14214,7 @@
           },
           "verdict": "good",
           "dated": "2026-08-29",
-          "why": "direct evidence at sku scope on formula, materials",
+          "why": "direct evidence at sku scope on materials",
           "fronts": {
             "formula": "none",
             "materials": "pass",
@@ -14187,6 +14230,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -14294,7 +14338,9 @@
           "scope": "line",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         },
         "origin": "hand",
         "matchAll": [
@@ -16437,6 +16483,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.1 filed-suit-caps-at-caution"
           ]
         },
@@ -17250,7 +17297,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         }
       }
     ],
@@ -17796,6 +17845,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "3 packaging-matrix-pass"
           ]
         },
@@ -17982,6 +18032,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "3 packaging-matrix-caution"
           ]
         },
@@ -18069,6 +18120,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "3 packaging-matrix-caution"
           ]
         },
@@ -18238,6 +18290,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "3 packaging-matrix-pass"
           ]
         }
@@ -18531,7 +18584,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         },
         "cat": "Food storage",
         "matchAll": [
@@ -18898,7 +18953,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         },
         "cat": "Cookware"
       }
@@ -19490,7 +19547,7 @@
           },
           "verdict": "unrated",
           "dated": "2026-09-08",
-          "why": "the note reads adversely on materials, needs a human look",
+          "why": "the note reads adversely on formula, materials, needs a human look",
           "fronts": {
             "formula": "pass",
             "materials": "caution",
@@ -19506,6 +19563,8 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
+            "2 non-disclosure-is-a-caution",
             "3 packaging-matrix-caution"
           ]
         },
@@ -20111,7 +20170,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         }
       }
     ],
@@ -20198,6 +20259,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -21536,6 +21598,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -21593,7 +21656,7 @@
           },
           "verdict": "good",
           "dated": "2026-08-29",
-          "why": "direct evidence at sku scope on formula, materials",
+          "why": "direct evidence at sku scope on materials",
           "fronts": {
             "formula": "none",
             "materials": "pass",
@@ -21609,6 +21672,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -22029,20 +22093,20 @@
           "dated": "2026-09-11",
           "why": "section 6 ceiling: materials is caution, on recorded evidence",
           "fronts": {
-            "formula": "pass",
+            "formula": "unassessed",
             "materials": "caution",
             "legal": "none",
             "testing": "unassessed"
           },
           "frontOrigin": {
             "legal": "database",
-            "materials": "hand",
-            "formula": "inferred"
+            "materials": "hand"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "3 packaging-matrix-fail"
           ]
         },
@@ -22465,7 +22529,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         },
         "cat": "Coffee",
         "research": "Packaging: Burrs are Nitro Rex high-alloy steel; grounds collect in the included dark glass jar with lid or a transparent QTP polymer jar. Body is a powder-coated metal cylinder; crank has a lacquered oak knob.",
@@ -23057,6 +23123,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -23297,7 +23364,7 @@
           },
           "verdict": "good",
           "dated": "2026-08-29",
-          "why": "direct evidence at line scope on formula, materials",
+          "why": "direct evidence at line scope on materials",
           "fronts": {
             "formula": "none",
             "materials": "pass",
@@ -23313,6 +23380,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -23869,30 +23937,29 @@
           "legalNote": "Checked recall records on 2026-08-31. The February 2023 recall of 2 million Cosori air fryers (overheating connectors) was remedied by replacement and did not cover the kettles we feature; over 24 months, now informational.",
           "frontNotes": {
             "materials": "Made of stainless steel, which the product name states, and which puts nothing into what it touches.",
-            "legal": "Checked recall records on 2026-08-31. The February 2023 recall of 2 million Cosori air fryers (overheating connectors) was remedied by replacement and did not cover the kettles we feature; over 24 months, now informational.",
-            "formula": "No ingredient list recorded."
+            "legal": "Checked recall records on 2026-08-31. The February 2023 recall of 2 million Cosori air fryers (overheating connectors) was remedied by replacement and did not cover the kettles we feature; over 24 months, now informational."
           },
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
           "exposure": {
-            "type": "hot drink",
+            "type": "heated vessel",
             "level": "medium",
-            "score": 7.5,
+            "score": 5.7,
             "baby": false,
             "route": "ingestion",
             "duration": "minutes",
-            "retained": "swallowed",
+            "retained": "transfer",
             "frequency": "daily",
             "heat": true,
             "fat": false,
-            "why": "Brewed hot, which pulls more out of whatever it is brewed in."
+            "why": "Heat drives whatever is in the surface into the water."
           },
           "formulaAnswers": {
             "ingredients": "",
             "prose": "",
             "complete": false,
-            "verdict": "open",
-            "summary": "No ingredient list recorded.",
+            "verdict": "n/a",
+            "summary": "A durable good has no ingredient list. What it is made of is the materials check.",
             "flagged": [],
             "source": "amazon:B0BZDFXLYX",
             "checked": ""
@@ -23914,7 +23981,7 @@
           "dated": "2026-08-29",
           "why": "a vetted store pick, chosen by a person at product scope",
           "fronts": {
-            "formula": "pass",
+            "formula": "none",
             "materials": "pass",
             "legal": "pass",
             "testing": "unassessed"
@@ -23922,12 +23989,13 @@
           "frontOrigin": {
             "legal": "database",
             "materials": "database",
-            "formula": "inferred"
+            "formula": "database"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -24130,6 +24198,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "4.3 non-detect-without-lod",
             "3 packaging-matrix-pass"
           ]
@@ -24195,6 +24264,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "3 packaging-matrix-pass"
           ]
         },
@@ -24716,6 +24786,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -25345,6 +25416,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "3 packaging-matrix-caution"
           ]
         },
@@ -26536,6 +26608,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -26602,6 +26675,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -27012,6 +27086,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -27142,6 +27217,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -27313,7 +27389,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         },
         "cat": "Dental floss",
         "research": "Packaging: Refillable glass container with a stainless steel cap and cutter holds the silk floss spool; refills ship in compostable PLA bags inside a recyclable paperboard box.",
@@ -28978,7 +29056,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         }
       },
       {
@@ -29276,6 +29356,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "3 packaging-matrix-pass"
           ]
         },
@@ -29362,6 +29443,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "3 packaging-stated-plastic-free"
           ]
         },
@@ -29715,7 +29797,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         }
       },
       {
@@ -30688,6 +30772,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "4.3 non-detect-without-lod"
           ]
         },
@@ -31165,7 +31250,7 @@
         "note": "Uncoated food grade stainless steel, rated to 450F. Featured muffin pan pick.",
         "ext": {
           "heldFrom": "good",
-          "restoreWhy": "direct evidence at sku scope on formula, materials",
+          "restoreWhy": "direct evidence at sku scope on materials",
           "frontNotes": {
             "formula": "A durable good has no ingredient list. What it is made of is the materials check."
           },
@@ -31202,6 +31287,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -31223,7 +31309,7 @@
         "note": "Uncoated stainless steel layer cake pans. Featured cake pan pick.",
         "ext": {
           "heldFrom": "good",
-          "restoreWhy": "direct evidence at sku scope on formula, materials",
+          "restoreWhy": "direct evidence at sku scope on materials",
           "frontNotes": {
             "formula": "A durable good has no ingredient list. What it is made of is the materials check."
           },
@@ -31260,6 +31346,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -32245,20 +32332,21 @@
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
-            "formula": "pass",
+            "formula": "unassessed",
             "materials": "unassessed",
             "legal": "caution",
             "testing": "caution"
           },
           "frontOrigin": {
             "legal": "database",
-            "testing": "inferred",
-            "formula": "inferred"
+            "testing": "inferred"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         },
         "origin": "hand",
         "matchAll": [
@@ -32525,6 +32613,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "3 packaging-matrix-fail"
           ]
         },
@@ -33066,8 +33155,8 @@
             "why": "for a baby, which is high whatever the arithmetic says"
           },
           "verdict": "good",
-          "dated": "2026-08-29",
-          "why": "a vetted store pick, chosen by a person at product scope",
+          "dated": "2026-09-11",
+          "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
             "materials": "pass",
@@ -33083,7 +33172,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         },
         "cat": "Diapers",
         "matchAll": [
@@ -33417,8 +33508,6 @@
             "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
             "formula": "An object has no ingredient list. What it is made of is the materials check."
           },
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
           "exposure": {
             "type": "worn textile",
             "level": "high",
@@ -33446,8 +33535,8 @@
             "checked": "2026-09-02"
           },
           "verdict": "good",
-          "dated": "2026-08-29",
-          "why": "a vetted store pick, chosen by a person at product scope",
+          "dated": "2026-09-11",
+          "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
             "materials": "pass",
@@ -33463,7 +33552,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         },
         "cat": "Clothing",
         "matchAll": [
@@ -33933,7 +34024,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         },
         "cat": "Food storage",
         "matchAll": [
@@ -34004,7 +34097,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         },
         "cat": "Food storage",
         "matchAll": [
@@ -34704,7 +34799,7 @@
           },
           "verdict": "good",
           "dated": "2026-08-29",
-          "why": "direct evidence at sku scope on formula, materials",
+          "why": "direct evidence at sku scope on materials",
           "fronts": {
             "formula": "none",
             "materials": "pass",
@@ -34720,6 +34815,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -35651,7 +35747,7 @@
           },
           "verdict": "good",
           "dated": "2026-08-29",
-          "why": "direct evidence at sku scope on formula, materials",
+          "why": "direct evidence at sku scope on materials",
           "fronts": {
             "formula": "none",
             "materials": "pass",
@@ -35667,6 +35763,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -37018,6 +37115,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -37084,7 +37182,7 @@
           },
           "verdict": "good",
           "dated": "2026-08-29",
-          "why": "direct evidence at sku scope on formula, materials",
+          "why": "direct evidence at sku scope on materials",
           "fronts": {
             "formula": "none",
             "materials": "pass",
@@ -37100,6 +37198,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -37393,6 +37492,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "3 packaging-matrix-pass"
           ]
         },
@@ -38175,8 +38275,6 @@
             "materials": "In contact with stainless steel, which puts nothing into what it holds.",
             "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
           },
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
           "exposure": {
             "type": "heated vessel",
             "level": "medium",
@@ -38214,8 +38312,8 @@
             "checked": "2026-09-11"
           },
           "verdict": "good",
-          "dated": "2026-08-29",
-          "why": "a vetted store pick, chosen by a person at product scope",
+          "dated": "2026-09-11",
+          "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
             "materials": "pass",
@@ -38230,7 +38328,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         },
         "cat": "Coffee",
         "research": "Packaging: Durable brewer, no contents; cast aluminum press stand with stainless steel brew head, removable stainless steel spout, and all-stainless bottomless portafilter.",
@@ -38256,8 +38356,6 @@
             "materials": "In contact with stainless steel, which puts nothing into what it holds.",
             "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
           },
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
           "exposure": {
             "type": "heated vessel",
             "level": "medium",
@@ -38295,8 +38393,8 @@
             "checked": "2026-09-11"
           },
           "verdict": "good",
-          "dated": "2026-08-29",
-          "why": "a vetted store pick, chosen by a person at product scope",
+          "dated": "2026-09-11",
+          "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
             "materials": "pass",
@@ -38311,7 +38409,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         },
         "cat": "Coffee",
         "research": "Packaging: Durable brewer, no contents; die-cast aluminum stand and post with a stainless steel brewing head; Flair does not itemize piston or seal materials.",
@@ -38613,7 +38713,7 @@
           },
           "verdict": "unrated",
           "dated": "2026-09-02",
-          "why": "a recommendation needs its checks done; still to do: materials",
+          "why": "no front is directly evidenced by the note",
           "fronts": {
             "formula": "pass",
             "materials": "unassessed",
@@ -38627,7 +38727,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         },
         "cat": "Pantry",
         "research": "Packaging: Sold frozen in a clear plastic bread bag with plastic closure; resin unstated. Contents are sprouted whole grain sesame bread.",
@@ -39422,6 +39524,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -41459,8 +41562,8 @@
             "checked": "2026-09-04"
           },
           "verdict": "good",
-          "dated": "2026-08-29",
-          "why": "a vetted store pick, chosen by a person at product scope",
+          "dated": "2026-09-11",
+          "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
             "materials": "pass",
@@ -41476,7 +41579,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         },
         "cat": "Reusable cloth pads",
         "catAuthored": true,
@@ -42209,6 +42314,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -43476,6 +43582,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "3 packaging-matrix-caution"
           ]
         },
@@ -43943,6 +44050,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -44644,7 +44752,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         },
         "cat": "Coffee",
         "matchAll": [
@@ -44791,7 +44901,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         },
         "cat": "Tea",
         "research": "Packaging: Teapot body and lid are heatproof borosilicate glass; built-in strainer is stainless steel. Durable teapot, no contents.",
@@ -45318,6 +45430,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "3 packaging-stated-plastic-free"
           ]
         },
@@ -45479,7 +45592,9 @@
           "scope": "line",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         }
       }
     ],
@@ -46107,7 +46222,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         }
       }
     ],
@@ -46178,7 +46295,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         },
         "cat": "Dental floss",
         "research": "Packaging: Floss ships in a refillable glass container; refills come as a compostable 3-pack; contents are natural silk floss spools.",
@@ -46939,7 +47058,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         }
       }
     ],
@@ -47590,7 +47711,8 @@
         "ext": {
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
           "frontNotes": {
-            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
+            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
+            "formula": "The published ingredient list carries nothing on the hazard list."
           },
           "exposure": {
             "type": "food",
@@ -47605,18 +47727,29 @@
             "fat": false,
             "why": "Eaten, so whatever is in it arrives whole."
           },
+          "formulaAnswers": {
+            "ingredients": "Food grade mineral oil (USP), vitamin E, beeswax, carnauba wax",
+            "prose": "",
+            "complete": true,
+            "verdict": "good",
+            "summary": "The published ingredient list carries nothing on the hazard list.",
+            "flagged": [],
+            "source": "Howard Products page for Butcher Block Conditioner",
+            "checked": "2026-09-11"
+          },
           "verdict": "good",
           "dated": "2026-09-11",
           "why": "a vetted store pick, chosen by a person at product scope",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "pass",
             "materials": "pass",
             "legal": "none",
             "testing": "unassessed"
           },
           "frontOrigin": {
             "legal": "database",
-            "materials": "inferred"
+            "materials": "inferred",
+            "formula": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -48497,7 +48630,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         },
         "cat": "Baby bottles",
         "matchAll": [
@@ -48660,7 +48795,10 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula",
+            "2.1 disclosure-failure-caps-at-caution"
+          ]
         },
         "cat": "Chewing gum"
       }
@@ -48924,6 +49062,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -49263,7 +49402,7 @@
           },
           "verdict": "unrated",
           "dated": "2026-08-29",
-          "why": "no direct pass on materials, and no lab result standing in for one",
+          "why": "no front is directly evidenced by the note",
           "fronts": {
             "formula": "none",
             "materials": "unassessed",
@@ -49277,7 +49416,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         },
         "cat": "Cribs & nursery",
         "matchAll": [
@@ -50570,6 +50711,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -50933,7 +51075,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         },
         "cat": "Coffee",
         "matchAll": [
@@ -51076,6 +51220,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -52670,7 +52815,7 @@
           },
           "verdict": "good",
           "dated": "2026-08-29",
-          "why": "direct evidence at sku scope on formula, materials",
+          "why": "direct evidence at sku scope on materials",
           "fronts": {
             "formula": "none",
             "materials": "pass",
@@ -52685,7 +52830,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         },
         "cat": "Baby food",
         "matchAll": [
@@ -53503,7 +53650,7 @@
           },
           "verdict": "good",
           "dated": "2026-08-29",
-          "why": "direct evidence at line scope on formula, materials",
+          "why": "direct evidence at line scope on materials",
           "fronts": {
             "formula": "none",
             "materials": "pass",
@@ -53519,6 +53666,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -53576,6 +53724,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -54328,6 +54477,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -54455,7 +54605,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         },
         "cat": "Baby food",
         "matchAll": [
@@ -54500,7 +54652,7 @@
           },
           "verdict": "good",
           "dated": "2026-09-08",
-          "why": "direct evidence at sku scope on formula, materials",
+          "why": "direct evidence at sku scope on materials",
           "fronts": {
             "formula": "none",
             "materials": "pass",
@@ -54516,6 +54668,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -54558,7 +54711,7 @@
           },
           "verdict": "good",
           "dated": "2026-08-29",
-          "why": "direct evidence at sku scope on formula, materials",
+          "why": "direct evidence at sku scope on materials",
           "fronts": {
             "formula": "none",
             "materials": "pass",
@@ -54574,6 +54727,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -54834,6 +54988,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -56158,7 +56313,7 @@
           },
           "verdict": "unrated",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: materials",
+          "why": "no front is directly evidenced by the note",
           "fronts": {
             "formula": "pass",
             "materials": "unassessed",
@@ -56172,7 +56327,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         },
         "cat": "Makeup",
         "matchAll": [
@@ -56924,30 +57081,27 @@
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
             "materials": "Made of stainless steel, which the product name states, and which puts nothing into what it touches.",
-            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
-            "formula": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear."
+            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
           },
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
           "exposure": {
-            "type": "hot drink",
+            "type": "heated vessel",
             "level": "medium",
-            "score": 7.5,
+            "score": 5.7,
             "baby": false,
             "route": "ingestion",
             "duration": "minutes",
-            "retained": "swallowed",
+            "retained": "transfer",
             "frequency": "daily",
             "heat": true,
             "fat": false,
-            "why": "Brewed hot, which pulls more out of whatever it is brewed in."
+            "why": "Heat drives whatever is in the surface into the water."
           },
           "formulaAnswers": {
             "ingredients": "",
             "prose": "About this item 【TOP QUALITY】Our fine mesh stainless steel coffee filter is made of the highest quality stainless steel without using paper filters; the bottom base will stay on and not break; the extra fine wire mesh at the lower part of the filter ensure no grounds end up in your cup. 【SIMPLE TO USE】Simply heat the pour over coffee filter with hot water and rinse out, add coffee grounds, slowly pour in the hot water, let the coffee maker drip out the water through the fine pour over filter, and remove the coffee dripper when done, ready to enjoy your drink. 【WIDE​ ​CUP​ ​STAND】​A​ ​wide​ ​metal​ ​cup​ ​stand​ ​makes​ ​our​ ​over​ ​coffee​ ​filter​ ​strong,​ ​stable​ ​and​ ​safe to​ ​use​ ​while​ ​you​ ​pour​ ​the​ ​water;​ ​It’s​ ​sized​ ​to​ ​sit​ ​over​ ​most​ ​single​ ​cup​ ​mugs​ ​and​ ​smaller​ ​travel canteens. 【PORTABLE】Compact and lightweight, the coffee dripper works great at home or work or while traveling or camping. 【EASY​ ​TO​ ​CLEAN】You​ ​can​ ​easily​ ​clean​ ​our ​coffee​ filter, just​ ​rinse​ ​and​ ​wipe​ ​it​ ​dry​ ​or​ ​place​ ​it​ ​inside your dishwasher, and small brush is a gift for you. › See more product details",
             "complete": false,
-            "verdict": "open",
-            "summary": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear.",
+            "verdict": "n/a",
+            "summary": "A durable good has no ingredient list. What it is made of is the materials check.",
             "flagged": [],
             "source": "amazon:B07MX87HH9",
             "checked": "2026-09-04"
@@ -56966,10 +57120,10 @@
             "checked": ""
           },
           "verdict": "good",
-          "dated": "2026-08-29",
-          "why": "a vetted store pick, chosen by a person at product scope",
+          "dated": "2026-09-11",
+          "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
-            "formula": "pass",
+            "formula": "none",
             "materials": "pass",
             "legal": "none",
             "testing": "unassessed"
@@ -56977,12 +57131,14 @@
           "frontOrigin": {
             "legal": "database",
             "materials": "database",
-            "formula": "inferred"
+            "formula": "database"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         },
         "cat": "Coffee",
         "research": "Packaging: Body is a stainless steel mesh cone with a metal cup stand and cleaning brush; no contents; steel grade not stated in the listing.",
@@ -57316,8 +57472,8 @@
             "checked": ""
           },
           "verdict": "good",
-          "dated": "2026-08-29",
-          "why": "a vetted store pick, chosen by a person at product scope",
+          "dated": "2026-09-11",
+          "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
             "materials": "pass",
@@ -57332,7 +57488,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         },
         "cat": "Baby bottles",
         "matchAll": [
@@ -57455,7 +57613,7 @@
           },
           "verdict": "good",
           "dated": "2026-08-29",
-          "why": "direct evidence at sku scope on formula, materials",
+          "why": "direct evidence at sku scope on materials",
           "fronts": {
             "formula": "none",
             "materials": "pass",
@@ -57471,6 +57629,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -57645,6 +57804,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "3 packaging-matrix-pass"
           ]
         },
@@ -57879,6 +58039,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -57974,8 +58135,8 @@
             "checked": ""
           },
           "verdict": "good",
-          "dated": "2026-08-29",
-          "why": "a vetted store pick, chosen by a person at product scope",
+          "dated": "2026-09-11",
+          "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
             "materials": "pass",
@@ -57990,7 +58151,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         },
         "cat": "Food storage",
         "research": "Packaging: Bag body is unbleached natural linen fabric with a drawstring closure, 11 x 15 in, 2-pack; fiber percentage not stated; contents are bread loaves."
@@ -59086,6 +59249,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -59156,6 +59320,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -59259,7 +59424,7 @@
           },
           "verdict": "good",
           "dated": "2026-09-08",
-          "why": "direct evidence at sku scope on formula, materials",
+          "why": "direct evidence at sku scope on materials",
           "fronts": {
             "formula": "none",
             "materials": "pass",
@@ -59275,6 +59440,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -60105,7 +60271,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         },
         "cat": "Food storage",
         "matchAll": [
@@ -61323,7 +61491,7 @@
           },
           "verdict": "good",
           "dated": "2026-08-29",
-          "why": "direct evidence at sku scope on formula, materials",
+          "why": "direct evidence at sku scope on materials",
           "fronts": {
             "formula": "none",
             "materials": "pass",
@@ -61338,7 +61506,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         },
         "cat": "Air fryers",
         "matchAll": [
@@ -62105,7 +62275,10 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula",
+            "2 non-disclosure-is-a-caution"
+          ]
         },
         "cat": "Baby wipes"
       }
@@ -62169,7 +62342,7 @@
           },
           "verdict": "unrated",
           "dated": "2026-08-29",
-          "why": "no direct pass on materials, and no lab result standing in for one",
+          "why": "no front is directly evidenced by the note",
           "fronts": {
             "formula": "none",
             "materials": "unassessed",
@@ -62183,7 +62356,9 @@
           "scope": "line",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         },
         "cat": "Baby wipes"
       }
@@ -62626,30 +62801,29 @@
           "frontNotes": {
             "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
             "materials": "100 percent organic cotton flannel, single layer, sewn in Oregon",
-            "testing": "Not among the 19 wet wipe products in Consumer Reports' June 2026 round, which tested pre-moistened wipes rather than reusable cloth, and no testing of this product exists",
-            "formula": "No ingredient list recorded."
+            "testing": "Not among the 19 wet wipe products in Consumer Reports' June 2026 round, which tested pre-moistened wipes rather than reusable cloth, and no testing of this product exists"
           },
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
           "exposure": {
-            "type": "leave-on skin",
+            "type": "worn textile",
             "level": "high",
-            "score": 8.0,
+            "score": 7.0,
             "baby": true,
             "route": "skin",
-            "duration": "hours",
-            "retained": "leave-on",
-            "frequency": "several daily",
+            "duration": "all day",
+            "retained": "prolonged",
+            "frequency": "daily",
             "heat": false,
-            "fat": true,
-            "why": "Left on the skin, so contact runs for hours."
+            "fat": false,
+            "why": "for a baby, which is high whatever the arithmetic says"
           },
           "formulaAnswers": {
             "ingredients": "",
             "prose": "",
             "complete": false,
-            "verdict": "open",
-            "summary": "No ingredient list recorded.",
+            "verdict": "n/a",
+            "summary": "A durable good has no ingredient list. What it is made of is the materials check.",
             "flagged": [],
             "source": "amazon:B0BGNJVWTH",
             "checked": ""
@@ -62658,7 +62832,7 @@
           "dated": "2026-08-29",
           "why": "a vetted store pick, chosen by a person at product scope",
           "fronts": {
-            "formula": "pass",
+            "formula": "none",
             "materials": "pass",
             "legal": "none",
             "testing": "none"
@@ -62667,12 +62841,14 @@
             "legal": "database",
             "testing": "hand",
             "materials": "hand",
-            "formula": "inferred"
+            "formula": "database"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         },
         "cat": "Baby wipes",
         "research": "Packaging: Minimal packaging: 100% FSC-certified recycled and recyclable cardstock with paper tape; orders ship plastic free with paper or fabric padding. Contents are dry organic cotton flannel wipes.",
@@ -63723,8 +63899,6 @@
             "materials": "German made stainless steel handle taking a plain steel blade",
             "formula": "An object has no ingredient list. What it is made of is the materials check."
           },
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
           "exposure": {
             "type": "rinse-off skin",
             "level": "low",
@@ -63739,8 +63913,8 @@
             "why": "Rinsed off, so most of it never stays."
           },
           "verdict": "good",
-          "dated": "2026-08-29",
-          "why": "a vetted store pick, chosen by a person at product scope",
+          "dated": "2026-09-11",
+          "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
             "materials": "pass",
@@ -63755,7 +63929,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         },
         "cat": "Razors",
         "research": "Packaging: Body is chrome-plated metal, not stainless: head is cast zinc alloy (zamak); retailers describe the handle as brass or zinc alloy. No plastic in the razor body.",
@@ -64411,6 +64587,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "3 packaging-matrix-caution"
           ]
         },
@@ -65435,7 +65612,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         },
         "origin": "hand",
         "matchAll": [
@@ -65471,8 +65650,6 @@
           ]
         ],
         "ext": {
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
           "frontNotes": {
             "legal": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
@@ -65516,8 +65693,8 @@
             "checked": "2026-09-11"
           },
           "verdict": "good",
-          "dated": "2026-09-10",
-          "why": "a vetted store pick, chosen by a person at product scope",
+          "dated": "2026-09-11",
+          "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
             "materials": "pass",
@@ -65532,7 +65709,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         }
       }
     ],
@@ -66004,6 +66183,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -67388,7 +67568,7 @@
           },
           "verdict": "good",
           "dated": "2026-08-29",
-          "why": "direct evidence at sku scope on formula, materials",
+          "why": "direct evidence at sku scope on materials",
           "fronts": {
             "formula": "none",
             "materials": "pass",
@@ -67404,6 +67584,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -67458,7 +67639,7 @@
           },
           "verdict": "good",
           "dated": "2026-08-29",
-          "why": "direct evidence at sku scope on formula, materials",
+          "why": "direct evidence at sku scope on materials",
           "fronts": {
             "formula": "none",
             "materials": "pass",
@@ -67474,6 +67655,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -68268,7 +68450,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         },
         "cat": "Tampons",
         "catAuthored": true
@@ -68314,8 +68498,8 @@
             "checked": "2026-09-04"
           },
           "verdict": "good",
-          "dated": "2026-08-29",
-          "why": "a vetted store pick, chosen by a person at product scope",
+          "dated": "2026-09-11",
+          "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
             "materials": "pass",
@@ -68331,7 +68515,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         },
         "cat": "Period pads",
         "catAuthored": true,
@@ -68401,7 +68587,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         },
         "cat": "Tampons",
         "catAuthored": true,
@@ -68844,6 +69032,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -68917,7 +69106,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         },
         "cat": "Crib mattresses",
         "matchAll": [
@@ -68943,8 +69134,6 @@
             "formula": "An object has no ingredient list. What it is made of is the materials check.",
             "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
           },
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
           "exposure": {
             "type": "slept on",
             "level": "high",
@@ -68972,8 +69161,8 @@
             "checked": "2026-09-11"
           },
           "verdict": "good",
-          "dated": "2026-08-29",
-          "why": "a vetted store pick, chosen by a person at product scope",
+          "dated": "2026-09-11",
+          "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
             "materials": "pass",
@@ -68988,7 +69177,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         },
         "cat": "Crib mattresses",
         "matchAll": [
@@ -69048,6 +69239,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -69119,7 +69311,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         },
         "cat": "Crib mattresses",
         "matchAll": [
@@ -69293,6 +69487,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -71111,7 +71306,7 @@
         "ext": {
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
           "frontNotes": {
-            "formula": "No ingredient list recorded.",
+            "formula": "The published ingredient list carries nothing on the hazard list.",
             "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
           },
           "heldFrom": "good",
@@ -71130,15 +71325,18 @@
             "why": "Aerosolised on purpose, into the air in front of you."
           },
           "formulaAnswers": {
-            "ingredients": "",
+            "ingredients": "Sodium ester salts, sodium salts, cocoyl alkyl sulfonates, alkyl polyglucosides, sodium carbonate, vegetable glycerol, quillaja saponaria, aloe vera leaf, sodium citrate, sodium gluconate, sodium benzoate, purified water",
             "prose": "",
-            "complete": false,
-            "verdict": "open",
-            "summary": "No ingredient list recorded.",
+            "complete": true,
+            "verdict": "good",
+            "summary": "The published ingredient list carries nothing on the hazard list.",
             "flagged": [],
-            "source": "amazon:B082LPCF4M",
-            "checked": ""
+            "source": "notoxlife.com Dish Block product page; fragrance free. The Amazon listing's ingredient field repeats the title",
+            "checked": "2026-09-11"
           },
+          "heldBack": [
+            "formula"
+          ],
           "verdict": "good",
           "dated": "2026-08-29",
           "why": "a vetted store pick, chosen by a person at product scope",
@@ -71151,12 +71349,13 @@
           "frontOrigin": {
             "legal": "database",
             "materials": "inferred",
-            "formula": "inferred"
+            "formula": "database"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "3 packaging-stated-plastic-free"
           ]
         },
@@ -72133,7 +72332,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         }
       }
     ],
@@ -73850,7 +74051,7 @@
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
-            "formula": "No ingredient list recorded.",
+            "formula": "The published ingredient list carries nothing on the hazard list.",
             "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
           },
           "heldFrom": "good",
@@ -73869,14 +74070,14 @@
             "why": "for a baby, which is high whatever the arithmetic says"
           },
           "formulaAnswers": {
-            "ingredients": "",
+            "ingredients": "Sprouted organic gluten-free oats",
             "prose": "",
-            "complete": false,
-            "verdict": "open",
-            "summary": "No ingredient list recorded.",
+            "complete": true,
+            "verdict": "good",
+            "summary": "The published ingredient list carries nothing on the hazard list.",
             "flagged": [],
-            "source": "amazon:B0B4V5TBLJ",
-            "checked": ""
+            "source": "Amazon listing B0B4V5TBLJ, Important information panel",
+            "checked": "2026-09-11"
           },
           "verdict": "good",
           "dated": "2026-08-29",
@@ -73891,7 +74092,7 @@
             "legal": "database",
             "testing": "inferred",
             "materials": "inferred",
-            "formula": "inferred"
+            "formula": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -75788,7 +75989,7 @@
         "note": "Uncoated stainless steel muffin pan, a fine alternative to the featured E-far.",
         "ext": {
           "heldFrom": "good",
-          "restoreWhy": "direct evidence at sku scope on formula, materials",
+          "restoreWhy": "direct evidence at sku scope on materials",
           "frontNotes": {
             "formula": "A durable good has no ingredient list. What it is made of is the materials check."
           },
@@ -75825,6 +76026,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -77354,7 +77556,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         },
         "cat": "Pacifiers",
         "matchAll": [
@@ -77730,7 +77934,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         },
         "origin": "hand",
         "matchAll": [
@@ -77881,7 +78087,10 @@
           "scope": "line",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula",
+            "2 formula-read-from-materials"
+          ]
         }
       }
     ],
@@ -78545,7 +78754,7 @@
           },
           "verdict": "good",
           "dated": "2026-08-29",
-          "why": "direct evidence at sku scope on formula, materials",
+          "why": "direct evidence at sku scope on materials",
           "fronts": {
             "formula": "none",
             "materials": "pass",
@@ -78561,6 +78770,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -79554,8 +79764,8 @@
             "checked": "2026-09-10"
           },
           "verdict": "good",
-          "dated": "2026-09-10",
-          "why": "direct evidence at line scope on formula, materials",
+          "dated": "2026-09-11",
+          "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
             "materials": "pass",
@@ -79571,7 +79781,9 @@
           "scope": "line",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         },
         "origin": "hand",
         "matchAll": [
@@ -80563,7 +80775,7 @@
           },
           "verdict": "good",
           "dated": "2026-09-01",
-          "why": "direct evidence at sku scope on formula, materials",
+          "why": "direct evidence at sku scope on materials",
           "fronts": {
             "formula": "none",
             "materials": "pass",
@@ -80579,6 +80791,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -80997,6 +81210,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -81492,7 +81706,7 @@
           },
           "verdict": "unrated",
           "dated": "2026-09-02",
-          "why": "no direct pass on materials, and no lab result standing in for one",
+          "why": "no front is directly evidenced by the note",
           "fronts": {
             "formula": "none",
             "materials": "unassessed",
@@ -81505,7 +81719,9 @@
           "scope": "line",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         },
         "origin": "hand",
         "matchAll": [
@@ -82416,7 +82632,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         },
         "cat": "Tableware",
         "matchAll": [
@@ -84480,6 +84698,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "4.3 non-detect-with-lod-is-a-pass"
           ]
         },
@@ -84650,6 +84869,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -85035,6 +85255,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -85368,8 +85589,8 @@
             "checked": ""
           },
           "verdict": "good",
-          "dated": "2026-08-29",
-          "why": "a vetted store pick, chosen by a person at product scope",
+          "dated": "2026-09-11",
+          "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
             "materials": "pass",
@@ -85384,7 +85605,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         },
         "cat": "Tableware",
         "research": "Packaging: Body is a collapsible stainless steel steamer basket, dishwasher safe; steel grade and any plastic or silicone parts not stated on the listing.",
@@ -85530,7 +85753,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         }
       }
     ]
@@ -87201,6 +87426,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "3 packaging-matrix-pass"
           ]
         },
@@ -88383,7 +88609,7 @@
         "ext": {
           "legalNote": "Checked recall records on 2026-08-31. Frontier Co-op recalled many Simply Organic seasoning mixes in 2015 over salmonella in a garlic powder ingredient; resolved a decade ago, now informational, and the single ingredient spices we cover were not implicated.",
           "frontNotes": {
-            "formula": "No ingredient list recorded.",
+            "formula": "The published ingredient list carries nothing on the hazard list.",
             "legal": "Checked recall records on 2026-08-31. Frontier Co-op recalled many Simply Organic seasoning mixes in 2015 over salmonella in a garlic powder ingredient; resolved a decade ago, now informational, and the single ingredient spices we cover were not implicated."
           },
           "heldFrom": "good",
@@ -88402,14 +88628,14 @@
             "why": "Eaten, so whatever is in it arrives whole."
           },
           "formulaAnswers": {
-            "ingredients": "",
+            "ingredients": "Organic Cumin",
             "prose": "",
-            "complete": false,
-            "verdict": "open",
-            "summary": "No ingredient list recorded.",
+            "complete": true,
+            "verdict": "good",
+            "summary": "The published ingredient list carries nothing on the hazard list.",
             "flagged": [],
-            "source": "amazon:B000WS3AJS",
-            "checked": ""
+            "source": "Amazon listing B000WS3AJS, Important information panel",
+            "checked": "2026-09-11"
           },
           "verdict": "good",
           "dated": "2026-08-29",
@@ -88424,7 +88650,7 @@
             "legal": "database",
             "testing": "inferred",
             "materials": "inferred",
-            "formula": "inferred"
+            "formula": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -88618,6 +88844,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "3 packaging-stated-plastic-free"
           ]
         },
@@ -89403,7 +89630,7 @@
           },
           "verdict": "good",
           "dated": "2026-08-29",
-          "why": "direct evidence at sku scope on formula, materials",
+          "why": "direct evidence at sku scope on materials",
           "fronts": {
             "formula": "none",
             "materials": "pass",
@@ -89419,6 +89646,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -89488,11 +89716,9 @@
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
-            "formula": "No ingredient list recorded.",
+            "formula": "The published ingredient list carries nothing on the hazard list.",
             "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
           },
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
           "exposure": {
             "type": "leave-on face",
             "level": "medium",
@@ -89507,18 +89733,18 @@
             "why": "Left on the face all day."
           },
           "formulaAnswers": {
-            "ingredients": "",
+            "ingredients": "Water, acrylates copolymer, neem oil. May contain (depending on shade): ultramarines, iron oxide, titanium dioxide, mica, red 28, red 34, red 7, yellow 10",
             "prose": "",
-            "complete": false,
-            "verdict": "open",
-            "summary": "No ingredient list recorded.",
+            "complete": true,
+            "verdict": "good",
+            "summary": "The published ingredient list carries nothing on the hazard list.",
             "flagged": [],
-            "source": "amazon:B01KU7T7MY",
-            "checked": ""
+            "source": "Amazon listing B01KU7T7MY, Important information panel",
+            "checked": "2026-09-11"
           },
           "verdict": "good",
-          "dated": "2026-08-29",
-          "why": "a vetted store pick, chosen by a person at product scope",
+          "dated": "2026-09-11",
+          "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
             "materials": "pass",
@@ -89528,12 +89754,15 @@
           "frontOrigin": {
             "legal": "database",
             "materials": "inferred",
-            "formula": "inferred"
+            "formula": "database"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula",
+            "2.1 disclosure-failure-caps-at-caution"
+          ]
         },
         "cat": "Makeup",
         "research": "Packaging: 0.5 fl oz clear glass nail-polish bottle with screw cap and brush; cap material unstated; contents are water-based liquid polish."
@@ -90346,6 +90575,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -90473,6 +90703,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -90735,6 +90966,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -90931,7 +91163,7 @@
           },
           "verdict": "unrated",
           "dated": "2026-08-29",
-          "why": "no direct pass on materials, and no lab result standing in for one",
+          "why": "no front is directly evidenced by the note",
           "fronts": {
             "formula": "none",
             "materials": "unassessed",
@@ -90945,7 +91177,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         },
         "cat": "Cribs & nursery",
         "matchAll": [
@@ -91061,6 +91295,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -92552,6 +92787,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -92672,7 +92908,7 @@
         "note": "Two uncoated 9 x 5 inch stainless loaf pans. Featured loaf pan pick.",
         "ext": {
           "heldFrom": "good",
-          "restoreWhy": "direct evidence at sku scope on formula, materials",
+          "restoreWhy": "direct evidence at sku scope on materials",
           "frontNotes": {
             "formula": "A durable good has no ingredient list. What it is made of is the materials check."
           },
@@ -92709,6 +92945,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -92878,7 +93115,7 @@
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
-            "formula": "No ingredient list recorded.",
+            "formula": "The published ingredient list carries nothing on the hazard list.",
             "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
           },
           "exposure": {
@@ -92895,14 +93132,14 @@
             "why": "Eaten, so whatever is in it arrives whole."
           },
           "formulaAnswers": {
-            "ingredients": "",
+            "ingredients": "Organic Almonds (Tree Nuts) (Prunus dulcis)",
             "prose": "",
-            "complete": false,
-            "verdict": "open",
-            "summary": "No ingredient list recorded.",
+            "complete": true,
+            "verdict": "good",
+            "summary": "The published ingredient list carries nothing on the hazard list.",
             "flagged": [],
-            "source": "amazon:B00EGXGKHE",
-            "checked": ""
+            "source": "Amazon listing B00EGXGKHE, Important information panel",
+            "checked": "2026-09-11"
           },
           "verdict": "unrated",
           "dated": "2026-08-29",
@@ -92917,7 +93154,7 @@
             "legal": "database",
             "testing": "inferred",
             "materials": "inferred",
-            "formula": "inferred"
+            "formula": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -93559,7 +93796,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         }
       }
     ],
@@ -94885,7 +95124,7 @@
         "ext": {
           "legalNote": "Checked the FDA enforcement database on 2026-08-31. Only 2014 recalls of the discontinued Captomer DMSA products, terminated over a decade ago. Now informational.",
           "frontNotes": {
-            "formula": "No ingredient list recorded.",
+            "formula": "The published ingredient list carries nothing on the hazard list.",
             "legal": "Checked the FDA enforcement database on 2026-08-31. Only 2014 recalls of the discontinued Captomer DMSA products, terminated over a decade ago. Now informational."
           },
           "heldFrom": "good",
@@ -94904,14 +95143,14 @@
             "why": "Swallowed whole, daily, indefinitely."
           },
           "formulaAnswers": {
-            "ingredients": "",
+            "ingredients": "Creatine monohydrate",
             "prose": "",
-            "complete": false,
-            "verdict": "open",
-            "summary": "No ingredient list recorded.",
+            "complete": true,
+            "verdict": "good",
+            "summary": "The published ingredient list carries nothing on the hazard list.",
             "flagged": [],
-            "source": "amazon:B07978VPPH",
-            "checked": ""
+            "source": "Amazon listing B07978VPPH, Important information panel",
+            "checked": "2026-09-11"
           },
           "verdict": "good",
           "dated": "2026-08-29",
@@ -94926,7 +95165,7 @@
             "legal": "database",
             "testing": "inferred",
             "materials": "inferred",
-            "formula": "inferred"
+            "formula": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -95089,6 +95328,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -95763,6 +96003,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -95981,6 +96222,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         }
@@ -96147,7 +96389,10 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula",
+            "2 formula-read-from-materials"
+          ]
         },
         "research": "Ingredients: propylene glycol, water, sodium stearate, organic aloe, zinc ricinoleate, glyceryl laurate, hops CO2 extract, sunflower seed oil, ascorbic acid, lemongrass oil."
       }
@@ -96459,6 +96704,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -96893,6 +97139,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -97288,8 +97535,6 @@
             "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
             "formula": "An object has no ingredient list. What it is made of is the materials check."
           },
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
           "exposure": {
             "type": "floss",
             "level": "low",
@@ -97317,8 +97562,8 @@
             "checked": ""
           },
           "verdict": "good",
-          "dated": "2026-08-29",
-          "why": "a vetted store pick, chosen by a person at product scope",
+          "dated": "2026-09-11",
+          "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
             "materials": "pass",
@@ -97333,7 +97578,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         },
         "cat": "Dental floss",
         "research": "Packaging: Refillable stainless steel floss dispenser; refills are 33 yd spools of pure silk floss waxed with candelilla wax, mint flavor.",
@@ -97694,7 +97941,7 @@
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
-            "formula": "No ingredient list recorded.",
+            "formula": "The published ingredient list carries nothing on the hazard list.",
             "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
             "materials": "dry contents in plastic."
           },
@@ -97714,14 +97961,14 @@
             "why": "Drunk in quantity, every day, for years."
           },
           "formulaAnswers": {
-            "ingredients": "",
+            "ingredients": "Glucose anhydrous, Trisodium Citrate Dehydrate, Sodium Chloride, Potassium Chloride",
             "prose": "",
-            "complete": false,
-            "verdict": "open",
-            "summary": "No ingredient list recorded.",
+            "complete": true,
+            "verdict": "good",
+            "summary": "The published ingredient list carries nothing on the hazard list.",
             "flagged": [],
-            "source": "amazon:B0BT2TW1WG",
-            "checked": ""
+            "source": "Amazon listing B0BT2TW1WG, Important information panel",
+            "checked": "2026-09-11"
           },
           "materialsList": "plastic",
           "materialAnswers": {
@@ -97748,7 +97995,7 @@
           "frontOrigin": {
             "legal": "database",
             "materials": "database",
-            "formula": "inferred"
+            "formula": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -99363,6 +99610,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -99462,8 +99710,8 @@
             "checked": ""
           },
           "verdict": "good",
-          "dated": "2026-08-29",
-          "why": "a vetted store pick, chosen by a person at product scope",
+          "dated": "2026-09-11",
+          "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
             "materials": "pass",
@@ -99478,7 +99726,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         },
         "cat": "Bedding",
         "research": "Packaging: Rings are rust-resistant stainless steel with a chrome finish; roller glide ball material unstated; durable object with no contents.",
@@ -100011,8 +100261,6 @@
             "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
             "materials": "In contact with maple wood, which puts nothing into what it holds."
           },
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
           "exposure": {
             "type": "mouthed object",
             "level": "high",
@@ -100040,8 +100288,8 @@
             "checked": "2026-09-10"
           },
           "verdict": "good",
-          "dated": "2026-08-29",
-          "why": "a vetted store pick, chosen by a person at product scope",
+          "dated": "2026-09-11",
+          "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
             "materials": "pass",
@@ -100056,7 +100304,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         },
         "cat": "Teethers",
         "research": "Packaging: Solid maple hardwood teether, sold only unfinished, sanded smooth; no coating on the mouth-contact wood; made by Maple Landmark (Schoolhouse Naturals) in Middlebury, Vermont."
@@ -100255,6 +100505,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -100740,6 +100991,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -101347,7 +101599,7 @@
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
-            "formula": "No ingredient list recorded.",
+            "formula": "The published ingredient list hides composition behind fragrance.",
             "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
             "materials": "dry contents in plastic."
           },
@@ -101367,14 +101619,16 @@
             "why": "Rinsed off, so most of it never stays."
           },
           "formulaAnswers": {
-            "ingredients": "",
+            "ingredients": "Sodium Cocoyl Isethionate, Behentrimonium Methosulfate, Longsheng Rice Water, Cocoa Butter, Cetyl Alcohol, Shea Butter, Stearic Acid, Rice Bran Oil, Hydrolyzed Rice Protein, Vitamin B8, Vitamin B5, Bamboo Extract, Broccoli Seed Oil, Vegetable Glycerin, Sodium Lactate, Aloe Vera, Vitamin E Acetate, Jojoba Oil, *Fragrance",
             "prose": "",
-            "complete": false,
-            "verdict": "open",
-            "summary": "No ingredient list recorded.",
-            "flagged": [],
-            "source": "amazon:B099KWKY36",
-            "checked": ""
+            "complete": true,
+            "verdict": "careful",
+            "summary": "The published ingredient list hides composition behind fragrance.",
+            "flagged": [
+              "fragrance"
+            ],
+            "source": "Amazon listing B099KWKY36, Important information panel",
+            "checked": "2026-09-11"
           },
           "materialsList": "plastic",
           "materialAnswers": {
@@ -101389,11 +101643,11 @@
             "source": "Dry contents; the container polymer is not published or not confirmed. Dry contents pass the rule 3.1 matrix in HDPE, PET, polypropylene, paper, metal and glass, which covers every material this kind of product is packed in. Only PVC or polystyrene would score caution, and neither is used for it.",
             "checked": "2026-09-11"
           },
-          "verdict": "good",
-          "dated": "2026-08-29",
-          "why": "a vetted store pick, chosen by a person at product scope",
+          "verdict": "careful",
+          "dated": "2026-09-11",
+          "why": "section 6 ceiling: formula is caution, on recorded evidence",
           "fronts": {
-            "formula": "pass",
+            "formula": "caution",
             "materials": "pass",
             "legal": "none",
             "testing": "unassessed"
@@ -101401,12 +101655,14 @@
           "frontOrigin": {
             "legal": "database",
             "materials": "database",
-            "formula": "inferred"
+            "formula": "database"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         },
         "cat": "Shampoo",
         "research": "Packaging: Contents are a solid shampoo bar; product pages state plastic-free and the sustainability page states PLASTIC FREE PACKAGING; box material is not named by the brand.",
@@ -104073,7 +104329,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         },
         "cat": "Deodorant",
         "research": "Packaging: Solid deodorant stick sold as refill pods for a reusable case; Wild states refills are compostable material, plastic free and recyclable, with paper or cardboard; case material not stated.",
@@ -104668,7 +104926,7 @@
           },
           "verdict": "good",
           "dated": "2026-08-29",
-          "why": "direct evidence at sku scope on formula, materials",
+          "why": "direct evidence at sku scope on materials",
           "fronts": {
             "formula": "none",
             "materials": "pass",
@@ -104684,6 +104942,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -104740,7 +104999,7 @@
           },
           "verdict": "good",
           "dated": "2026-08-29",
-          "why": "direct evidence at sku scope on formula, materials",
+          "why": "direct evidence at sku scope on materials",
           "fronts": {
             "formula": "none",
             "materials": "pass",
@@ -104756,6 +105015,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -105784,7 +106044,8 @@
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
           "heldBack": [
-            "materials"
+            "materials",
+            "formula"
           ],
           "exposure": {
             "type": "leave-on face",
@@ -105811,21 +106072,22 @@
           },
           "verdict": "unrated",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: materials",
+          "why": "no front is directly evidenced by the note",
           "fronts": {
-            "formula": "pass",
+            "formula": "unassessed",
             "materials": "unassessed",
             "legal": "none",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "legal": "database",
-            "formula": "inferred"
+            "legal": "database"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         },
         "cat": "Makeup",
         "matchAll": [
@@ -106023,7 +106285,7 @@
           },
           "verdict": "good",
           "dated": "2026-08-29",
-          "why": "direct evidence at sku scope on formula, materials",
+          "why": "direct evidence at sku scope on materials",
           "fronts": {
             "formula": "none",
             "materials": "pass",
@@ -106039,6 +106301,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         },
@@ -106334,7 +106597,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         }
       }
     ]
@@ -106458,7 +106723,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         }
       }
     ]
@@ -107160,6 +107427,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "3 packaging-matrix-caution"
           ]
         }
@@ -107944,6 +108212,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "3 packaging-matrix-caution"
           ]
         }
@@ -108052,6 +108321,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "3 packaging-matrix-fail"
           ]
         }
@@ -108456,7 +108726,9 @@
           "scope": "line",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         }
       },
       {
@@ -108655,7 +108927,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         }
       }
     ]
@@ -108760,7 +109034,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         }
       }
     ]
@@ -108863,7 +109139,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         }
       }
     ]
@@ -108971,6 +109249,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         }
@@ -109034,8 +109313,6 @@
             "materials": "In contact with wool, which puts nothing into what it holds.",
             "legal": "Checked, nothing found. No CPSC recall, lawsuit or class action on record for Handy Laundry wool dryer balls as of 2026-09-11 (CPSC recall search and web search)."
           },
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
           "legalNote": "Checked, nothing found. No CPSC recall, lawsuit or class action on record for Handy Laundry wool dryer balls as of 2026-09-11 (CPSC recall search and web search).",
           "exposure": {
             "type": "equipment",
@@ -109075,7 +109352,7 @@
           },
           "verdict": "good",
           "dated": "2026-09-11",
-          "why": "a vetted store pick, chosen by a person at product scope",
+          "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
             "materials": "pass",
@@ -109090,7 +109367,9 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
         }
       }
     ]
@@ -109200,6 +109479,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         }
@@ -109422,6 +109702,7 @@
           "basis": "direct",
           "disclose": false,
           "rules": [
+            "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
         }

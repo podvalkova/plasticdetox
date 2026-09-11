@@ -564,6 +564,15 @@ def apply_rules(fronts, note, scope, basis, context="", formula_text=""):
     f = {k: {"status": "unassessed", "note": "", "origin": "none"} for k in FRONTS}
     f.update({k: dict(v) for k, v in fronts.items() if k in FRONTS})
 
+    # Section 2: a prose summary may warn but never clear a formula. The
+    # classifier read "clean ingredients" and "no harsh chemicals" as a pass,
+    # and fifteen rows carried that pass beside a note saying no ingredient
+    # list was on file. A recorded list, or a stated single ingredient, is
+    # still read below.
+    if f["formula"]["status"] == "pass" and f["formula"].get("origin") == "extracted":
+        f["formula"] = {"status": "unassessed", "note": "", "origin": "none"}
+        fired.append("2 prose-cannot-clear-formula")
+
     # 5.3  absence of a recall is not a pass. Barely regulated categories produce
     #      no recalls because nobody is looking, not because nothing is wrong.
     if f["legal"]["status"] == "pass" and NO_RECALL.search(low) and not RESOLVED.search(low):

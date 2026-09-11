@@ -667,8 +667,10 @@ def main():
             f_status, f_why, f_origin, f_terms = read_formula(entry, cat)
             # A thing has no ingredient list, so there is nothing for the reader
             # to return and nothing to overwrite. Without this the reader cleared
-            # 40 diapers back to unassessed on every run.
-            if cat in NO_INGREDIENT_CATS:
+            # 40 diapers back to unassessed on every run. A product recorded as
+            # consumed is not a thing, whatever its category: Howard's mineral
+            # oil conditioner sits under Cutting boards and has a label.
+            if cat in NO_INGREDIENT_CATS and PRODUCT_TYPES.get(f"{b['brand']}::{p.get('name')}") not in CONSUMED:
                 e = p.setdefault("ext", {})
                 e.setdefault("fronts", {})["formula"] = "none"
                 e.setdefault("frontNotes", {})["formula"] = (
