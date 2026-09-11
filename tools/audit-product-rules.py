@@ -509,7 +509,7 @@ FULL_LIST = re.compile(
     r"\b(?:full|complete)\s+ingredient\s+list\b|\b(?:ingredients|inci)\s*:", re.I)
 
 
-def formula_from_materials(note):
+def formula_from_materials(note, materials_ok=False):
     """
     ('pass', why) when the note names an inert material or a single disclosed
     ingredient and no hazard; ('caution', why) on a disclosure failure;
@@ -529,7 +529,12 @@ def formula_from_materials(note):
         for m in re.finditer(r"(?<![a-z0-9])" + re.escape(t) + r"(?![a-z0-9])", low):
             if not _bf.is_negated(low, m.start(), m.end()):
                 return "caution", "Carries an undisclosed mixture, so the formula cannot be checked."
-    if any(_bf.has(low, t) for t in INERT):
+    # Naming a material answers what an object is made of, which is the
+    # materials check under rule 5.4. It says nothing about a formula, and
+    # section 2 lets only a recorded list clear one: 87 rows read a formula
+    # pass off words like "glass bottle" on a soap. Only the rule 5.4 caller
+    # asks for this.
+    if materials_ok and any(_bf.has(low, t) for t in INERT):
         return "pass", "Materials named in the listing."
     if SINGLE_INGREDIENT.search(low):
         return "pass", "A single disclosed ingredient, with nothing on the hazard list."
@@ -666,9 +671,12 @@ def apply_rules(fronts, note, scope, basis, context="", formula_text=""):
     # contradicts it, the packaging front is answered by the same fact rather
     # than left blank next to a recommendation.
     if (not is_consumable(context)
-            and f["formula"]["status"] in ("pass", "none")
+            # Not gated on a formula pass. That pass was the material word read
+            # writing a formula it had no business writing, and once it stopped,
+            # every crib and wooden toy lost its materials answer with it.
+            and f["formula"]["status"] not in ("caution", "fail")
             and f["materials"]["status"] in ("unknown", "unassessed")
-            and formula_from_materials(low)[0] == "pass"
+            and formula_from_materials(low, materials_ok=True)[0] == "pass"
             and not GENERIC_PLASTIC.search(low)):
         f["materials"] = {"status": "pass",
                           "note": "The object is its own contact surface, and the material reads clean.",

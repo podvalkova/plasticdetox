@@ -407,6 +407,10 @@ DURABLE_BRAND_CATS = {
     "Beach bags", "Bath accessories", "Razors", "Pumping",
 }
 
+# Types recorded for one product in data/exposure.json. They outrank the
+# category, which files jars, kettles and brushes beside food and soap.
+PRODUCT_TYPES = json.load(open(ROOT / "data" / "exposure.json")).get("products", {})
+
 DEVICE_CATS = {
     "Water filters", "Air purifiers", "Vacuums", "Air fryers",
     "Kitchen appliances", "Humidifiers", "Toothbrushes",
@@ -861,11 +865,30 @@ def main():
                 undone += 1
 
             cat = p.get("cat") or b.get("category") or ""
+            # A type recorded for this product outranks its category, both
+            # ways. Pantry and Coffee sent ComSaf's jars and Forlife's infuser
+            # down the formulation branch; Cutting boards called Howard's
+            # mineral oil conditioner an object with no ingredient list.
+            ptype = PRODUCT_TYPES.get(f"{b['brand']}::{p.get('name')}")
+            # Only a type that is eaten, drunk or put on skin makes it a
+            # formulation. "diaper" is neither an object nor consumed, and the
+            # Diapers category already answers it.
+            if ptype and ptype in CONSUMED:
+                e = p.setdefault("ext", {})
+                if (e.get("fronts") or {}).get("formula") == "none":
+                    e["fronts"]["formula"] = "unassessed"
+                    (e.get("frontNotes") or {}).pop("formula", None)
+                    (e.get("frontOrigin") or {}).pop("formula", None)
+                continue
+            if ptype in DURABLE_TYPES:
+                etype = ptype
+            else:
+                ptype = None
             # Category decides whether the formula question applies, because
             # the exposure type names the route rather than the thing. Keyed on
             # type, a laundry detergent is a "worn textile" and got marked as
             # having no ingredient list, seventeen times over.
-            if cat in NO_INGREDIENT_CATS:
+            if not ptype and cat in NO_INGREDIENT_CATS:
                 e = p.setdefault("ext", {})
                 e.setdefault("fronts", {})["formula"] = "none"
                 e.setdefault("frontNotes", {})["formula"] = (
@@ -873,7 +896,7 @@ def main():
                     "the materials check.")
                 e.setdefault("frontOrigin", {})["formula"] = "hand"
                 continue
-            if cat in FORMULA_CATS:
+            if not ptype and cat in FORMULA_CATS:
                 # A formulation. Only a real label read may answer this, and a
                 # stored "none" is the exposure type talking, so clear it and
                 # leave the question open rather than assert an absence.

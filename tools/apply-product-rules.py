@@ -206,11 +206,15 @@ def main():
                     else:
                         origin.pop(k, None)
 
+            # Keep every field this tool does not own. The allowlist it replaced
+            # named the ones someone remembered, and dropped the rest on every
+            # run: exposure types among them, stamped on 925 rows and cut back
+            # to 222, so the applier judged kettles and jars by their category
+            # and asked them for an ingredient list.
+            OWNED = ("verdict", "dated", "why", "fronts", "frontOrigin", "scope",
+                     "basis", "disclose", "rules")
             p["ext"] = {
-                **{key: val for key, val in prev.items()
-                   if key in ("legalNote", "legalDate", "testingNote", "testingDate",
-                              "frontNotes", "cappedFrom", "capRestoreWhy", "heldFrom",
-                              "restoreWhy", "legalSuperseded", "authored", "inheritedFronts")},
+                **{key: val for key, val in prev.items() if key not in OWNED},
                 "verdict": v,
                 "dated": dated or TODAY,
                 "why": why,
