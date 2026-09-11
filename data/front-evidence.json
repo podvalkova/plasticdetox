@@ -47,7 +47,12 @@
    "source": "amazon:B00014D08Y"
   },
   "materials": {
-   "checkedListing": "2026-09-02"
+   "checked": "2026-09-11",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "base": "oil",
+   "material": "glass",
+   "source": "Glass bottle, nitrogen flushed; carlsonlabs.com and retailer listings (Swanson, Vitacost)"
   }
  },
  "B0002AR0I8": {
@@ -258,6 +263,14 @@
    "kind": "ingredients",
    "prose": "",
    "source": "openfacts:3596206529621"
+  },
+  "materials": {
+   "checked": "2026-09-11",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "base": "aqueous",
+   "material": "plastic",
+   "source": "Aluminium tube with a thin plastic coating inside, which is the surface that touches the paste; PET cap (Nourished Life, Yes Wellness listings)"
   }
  },
  "B000SWVPV8": {
@@ -275,7 +288,7 @@
   }
  },
  "B000V3MFUY": {
-  "_product": "Weleda Weleda Calendula Diaper Cream",
+  "_product": "Weleda Calendula Diaper Cream",
   "formula": {
    "checkedListing": "2026-09-08",
    "complete": true,
@@ -283,6 +296,20 @@
    "kind": "ingredients",
    "prose": "",
    "source": "openfacts:3596206529621"
+  },
+  "materials": {
+   "checked": "2026-09-11",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "base": "emulsion",
+   "material": "plastic",
+   "source": "Metal tube. Weleda states its aluminium tubes carry an internal protective lacquer so the product never touches the aluminium (Weleda packaging page; MundoLatas), so the polymer lacquer is the contact surface. Water first emulsion with sweet almond and sesame oils, beeswax, lanolin"
+  },
+  "testing": {
+   "status": "caution",
+   "checked": "2026-09-11",
+   "note": "Lead Safe Mama's 2025 to 2026 diaper cream series: the lowest lead result of every zinc cream tested, but lead, cadmium and arsenic were still detected. The metals ride in on the zinc oxide.",
+   "source": "articles/best-non-toxic-diaper-rash-creams.html"
   }
  },
  "B000VI3LNE": {
@@ -558,11 +585,21 @@
   }
  },
  "B002CQU564": {
-  "_product": "Nordic Naturals Algae Omega",
+  "_product": "Nordic Naturals Algae Omega softgels",
   "formula": {
-   "complete": false,
-   "prose": "",
-   "source": "amazon:B002CQU564"
+   "checkedListing": "2026-09-11",
+   "complete": true,
+   "ingredients": "Marine algal oil (Schizochytrium sp. extract, high oleic sunflower oil, rosemary extract, natural mixed tocopherols, ascorbyl palmitate). Soft gel: modified cornstarch, glycerin, carrageenan, sorbitol, water, carob color",
+   "kind": "ingredients",
+   "source": "Retailer ingredient panels (iHerb, Vitacost, Swanson)"
+  },
+  "materials": {
+   "checked": "2026-09-11",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "base": "solid",
+   "material": "hdpe",
+   "source": "Nordic Naturals bottles softgels in #2 HDPE and liquids in glass (Nordic Naturals sustainability blog). The oil is sealed inside the softgel, so what touches the bottle is the solid shell"
   }
  },
  "B002HORIN4": {
@@ -690,7 +727,15 @@
   }
  },
  "B003XCVR86": {
-  "_product": "REDECKER REDECKER Tampico Fiber Dish Brush"
+  "_product": "REDECKER Tampico Fiber Dish Brush",
+  "materials": {
+   "checked": "2026-09-11",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "base": "dry",
+   "material": "wood",
+   "source": "Beechwood handle and tampico fibre, stated on the listing"
+  }
  },
  "B00462QP1G": {
   "_product": "De Buyer De Buyer Carbon Steel (12.5\\\")",
@@ -1006,11 +1051,21 @@
   }
  },
  "B009K7JU6E": {
-  "_product": "Nordic Naturals Vitamin D3 and Vitamin D3 + K2",
+  "_product": "Nordic Naturals Plant-Based Vitamin D3 Liquid",
   "formula": {
-   "complete": false,
-   "prose": "",
-   "source": "amazon:B009K7JU6E"
+   "checkedListing": "2026-09-11",
+   "complete": true,
+   "ingredients": "Medium chain triglycerides (from coconut oil), natural apple flavor, vitamin D3 (cholecalciferol from lichen), d-alpha tocopherol acetate",
+   "kind": "ingredients",
+   "source": "nordic.com product page and retailer panels"
+  },
+  "materials": {
+   "checked": "2026-09-11",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "base": "oil",
+   "material": "glass",
+   "source": "Liquid drops (vegan D3 from lichen). Nordic Naturals bottles its liquid formulas in glass and softgels in #2 HDPE (Nordic Naturals sustainability blog)"
   }
  },
  "B009LQI3D0": {
@@ -1070,9 +1125,14 @@
   }
  },
  "B00BEDW76W": {
-  "_product": "Formaticum Formaticum Cheese Storage Paper",
+  "_product": "Formaticum Cheese Storage Paper",
   "materials": {
-   "checkedListing": "2026-09-02"
+   "checked": "2026-09-11",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "base": "fatty",
+   "material": "polyethylene",
+   "source": "Two ply: wax coated paper lined with thin porous polyethylene, the side that faces the cheese (formaticum.com)"
   }
  },
  "B00CGKVQJG": {
@@ -1211,12 +1271,20 @@
   }
  },
  "B00HR60B2C": {
-  "_product": "Kjaer Weis Kjaer Weis Eyeshadow",
+  "_product": "Kjaer Weis Eyeshadow, pressed powder",
   "formula": {
    "checkedListing": "2026-09-04",
    "complete": false,
    "prose": "About this item EFFORTLESSLY STUNNING EYE MAKEUP - easily elevate your look with this long-wearing, highly-pigmented black eyeshadow. The silky texture blends smoothly across lids and easily builds from a sheer veil to a rich, dramatic finish INTENSE BLACK EYESHADOW - create the perfect, smouldering smokey eye with shade 'Onyx' - a black eyeshadow with subtle silver shimmer and serious staying power. This dark eye shadow complements any skin tone and is versatile for day-to-night eye makeup NATURAL INGREDIENTS - silicon-free eye shadow formulated with nourishing ingredients to prevent irritation, including antioxidant Gardenia Florida Fruit Extract, long-lasting Wild Bamboo, and moisturizing Certified-Organic Carnauba Wax CERTIFIED-ORGANIC CLEAN MAKEUP AND RECYCLABLE PACKAGING - maximum performance meets minimal environmental impact with certified-organic ingredients and innovative refillable packaging made from recycled materials CONSCIOUS BEAUTY WITHOUT COMPROMISE - trailblazing founder and makeup artist Kirsten Kjaer Weis fuses the worlds of luxury and sustainability to give you award-winning, high-performing cosmetics that are built to last, loved by celebrities and the press S",
    "source": "amazon:B00HR60B2C"
+  },
+  "materials": {
+   "checked": "2026-09-11",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "base": "dry",
+   "material": "plastic",
+   "source": "Dry contents; the container polymer is not published or not confirmed. Dry contents pass the rule 3.1 matrix in HDPE, PET, polypropylene, paper, metal and glass, which covers every material this kind of product is packed in. Only PVC or polystyrene would score caution, and neither is used for it."
   }
  },
  "B00I0ZGOZM": {
@@ -1316,7 +1384,7 @@
   }
  },
  "B00K1GFA76": {
-  "_product": "Jovial Einkorn All Jovial Einkorn All Purpose Flour",
+  "_product": "Jovial Einkorn All Purpose Flour",
   "formula": {
    "checkedListing": "2026-09-04",
    "complete": true,
@@ -1324,6 +1392,14 @@
    "kind": "ingredients",
    "prose": "",
    "source": "amazon:B00K1GFA76"
+  },
+  "materials": {
+   "checked": "2026-09-11",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "base": "dry",
+   "material": "plastic",
+   "source": "Dry contents; the container polymer is not published or not confirmed. Dry contents pass the rule 3.1 matrix in HDPE, PET, polypropylene, paper, metal and glass, which covers every material this kind of product is packed in. Only PVC or polystyrene would score caution, and neither is used for it."
   }
  },
  "B00K2Y8WWC": {
@@ -1402,6 +1478,20 @@
    "kind": "ingredients",
    "prose": "",
    "source": "openfacts:0857605004069"
+  },
+  "materials": {
+   "checked": "2026-09-11",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "base": "oil",
+   "material": "glass",
+   "source": "Nitrogen flushed, oxygen free glass bottle; rositausa.com, not sold in plastic"
+  },
+  "testing": {
+   "status": "caution",
+   "checked": "2026-09-11",
+   "note": "Independent third party lab testing (Lead Safe Mama, January 2025, a lab and not XRF) found a significant level of total arsenic. The lab does not separate organic from inorganic arsenic, and in marine oils most arsenic is organic arsenobetaine, of low toxicity, so this is a caution rather than a fail. A result on this product, not on cod liver oil as a class: Nordic Naturals Omega-3 Lemon tested non detect for arsenic in the same series.",
+   "source": "https://tamararubin.com/2025/01/rosita-cod-liver-oil"
   }
  },
  "B00LP9BEXS": {
@@ -1500,13 +1590,14 @@
   }
  },
  "B00X8K7VV0": {
-  "_product": "Earlywood Earlywood Hardwood Cooking Utensils",
+  "_product": "Earlywood Hardwood Cooking Utensils",
   "materials": {
-   "checkedListing": "2026-09-02",
+   "checked": "2026-09-11",
    "contact": "yes",
-   "contactFrom": "category default",
-   "material": "Jatoba",
-   "source": "amazon:B00X8K7VV0"
+   "contactFrom": "recorded",
+   "base": "dry",
+   "material": "wood",
+   "source": "Hardwood, stated in the product name"
   }
  },
  "B00ZQXT4EY": {
@@ -1590,7 +1681,7 @@
   }
  },
  "B016IL75S4": {
-  "_product": "Vahdam Vahdam Loose Leaf Tea Sampler",
+  "_product": "Vahdam Loose Leaf Tea Sampler",
   "formula": {
    "checkedListing": "2026-09-03",
    "complete": true,
@@ -1598,6 +1689,14 @@
    "kind": "ingredients",
    "prose": "",
    "source": "amazon:B016IL75S4"
+  },
+  "materials": {
+   "checked": "2026-09-11",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "base": "dry",
+   "material": "plastic",
+   "source": "Dry contents; the container polymer is not published or not confirmed. Dry contents pass the rule 3.1 matrix in HDPE, PET, polypropylene, paper, metal and glass, which covers every material this kind of product is packed in. Only PVC or polystyrene would score caution, and neither is used for it."
   }
  },
  "B01728NLRG": {
@@ -1750,6 +1849,14 @@
    "kind": "ingredients",
    "prose": "",
    "source": "amazon:B01DC1D4JM"
+  },
+  "materials": {
+   "checked": "2026-09-11",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "base": "dry",
+   "material": "plastic",
+   "source": "Dry contents; the container polymer is not published or not confirmed. Dry contents pass the rule 3.1 matrix in HDPE, PET, polypropylene, paper, metal and glass, which covers every material this kind of product is packed in. Only PVC or polystyrene would score caution, and neither is used for it."
   }
  },
  "B01DOP5S9K": {
@@ -1957,7 +2064,7 @@
   }
  },
  "B01N1P88E9": {
-  "_product": "Lundberg Lundberg Organic White Rice",
+  "_product": "Lundberg Organic White Rice",
   "formula": {
    "checkedListing": "2026-09-04",
    "complete": true,
@@ -1965,6 +2072,14 @@
    "kind": "ingredients",
    "prose": "",
    "source": "amazon:B01N1P88E9"
+  },
+  "materials": {
+   "checked": "2026-09-11",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "base": "dry",
+   "material": "plastic",
+   "source": "Dry contents; the container polymer is not published or not confirmed. Dry contents pass the rule 3.1 matrix in HDPE, PET, polypropylene, paper, metal and glass, which covers every material this kind of product is packed in. Only PVC or polystyrene would score caution, and neither is used for it."
   }
  },
  "B01NAFQIJ9": {
@@ -2012,10 +2127,18 @@
    "kind": "ingredients",
    "prose": "",
    "source": "amazon:B06WCZRHQR"
+  },
+  "materials": {
+   "checked": "2026-09-11",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "base": "dry",
+   "material": "plastic",
+   "source": "Dry contents; the container polymer is not published or not confirmed. Dry contents pass the rule 3.1 matrix in HDPE, PET, polypropylene, paper, metal and glass, which covers every material this kind of product is packed in. Only PVC or polystyrene would score caution, and neither is used for it."
   }
  },
  "B06X916JM8": {
-  "_product": "Flair Flair Classic Manual Lever Espresso Maker",
+  "_product": "Flair Classic Manual Lever Espresso Maker",
   "formula": {
    "checkedListing": "2026-09-03",
    "complete": false,
@@ -2023,7 +2146,12 @@
    "source": "amazon:B06X916JM8"
   },
   "materials": {
-   "checkedListing": "2026-09-02"
+   "checked": "2026-09-11",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "base": "aqueous",
+   "material": "stainless steel",
+   "source": "Stainless steel brewing chamber; the frame never touches water"
   }
  },
  "B06XDNL1BL": {
@@ -2080,7 +2208,7 @@
   "_product": "Trident Trident sugar free gum"
  },
  "B07191JNFL": {
-  "_product": "NOW Foods Certified NOW Foods Certified Organic Almonds",
+  "_product": "NOW Foods Certified Organic Almonds",
   "formula": {
    "checkedListing": "2026-09-03",
    "complete": true,
@@ -2088,6 +2216,14 @@
    "kind": "ingredients",
    "prose": "",
    "source": "amazon:B07191JNFL"
+  },
+  "materials": {
+   "checked": "2026-09-11",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "base": "dry",
+   "material": "plastic",
+   "source": "Dry contents; the container polymer is not published or not confirmed. Dry contents pass the rule 3.1 matrix in HDPE, PET, polypropylene, paper, metal and glass, which covers every material this kind of product is packed in. Only PVC or polystyrene would score caution, and neither is used for it."
   }
  },
  "B071KTNCSC": {
@@ -2995,7 +3131,15 @@
   }
  },
  "B07TDN9MKC": {
-  "_product": "Philips Avent Soothie pacifier"
+  "_product": "Philips Avent Soothie pacifier",
+  "materials": {
+   "checked": "2026-09-11",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "base": "dry",
+   "material": "silicone",
+   "source": "One piece medical grade silicone"
+  }
  },
  "B07TFBCDRC": {
   "_product": "Serenity Kids Serenity Kids pouches",
@@ -3236,16 +3380,24 @@
   }
  },
  "B083QP2JY7": {
-  "_product": "Naturepedic Naturepedic Organic Classic Crib Mattress",
+  "_product": "Naturepedic Organic Classic Crib Mattress",
   "formula": {
    "checkedListing": "2026-09-04",
    "complete": false,
    "prose": "About this item Organic Certification: GOTS certified organic cotton crib mattress with UL/GREENGUARD Gold certification for low emissions; Health-conscious baby mattress passes all government flammability requirements without flame retardants or fiberglass Dual-Sided Design: Breathable baby crib mattress features 2-stage support system; Firm side provides essential support for infants; Medium-firm side offers perfect comfort for toddlers; Best rated baby crib mattress for growing children Waterproof Protection: Patented waterproof coating on organic cotton fabric makes this Naturepedic breathable mattress easy to clean with just soap and water; Allergy-friendly crib mattress keeps baby safe from allergens and moisture Innovative Core: Patented wavesupport technology creates a breathable crib mattress that weighs only 11 lbs; Significantly lighter than traditional coil mattresses while providing superior airflow for baby's comfort and safety STANDARD SIZE CRIB: These natural crib mattresses measure approximately 27 1/4\" x 51 5/8\" x 6\" for a snug fit in most standard cribs and nursery furniture › See more product details",
    "source": "amazon:B083QP2JY7"
+  },
+  "materials": {
+   "checked": "2026-09-11",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "base": "dry",
+   "material": "polyethylene",
+   "source": "100% food grade polyethylene waterproof surface over organic cotton (naturepedic.com); a fitted sheet sits between it and the baby"
   }
  },
  "B0842H62PV": {
-  "_product": "Flair Flair PRO 3 Manual Lever Espresso Maker",
+  "_product": "Flair PRO 3 Manual Lever Espresso Maker",
   "formula": {
    "checkedListing": "2026-09-03",
    "complete": false,
@@ -3253,7 +3405,12 @@
    "source": "amazon:B0842H62PV"
   },
   "materials": {
-   "checkedListing": "2026-09-02"
+   "checked": "2026-09-11",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "base": "aqueous",
+   "material": "stainless steel",
+   "source": "Stainless steel brewing chamber; the frame never touches water"
   }
  },
  "B084DPMZDS": {
@@ -3382,7 +3539,7 @@
   }
  },
  "B086K54TZH": {
-  "_product": "Klean Athlete Klean Athlete Magnesium",
+  "_product": "Klean Athlete Klean Magnesium 90 capsules",
   "formula": {
    "checkedListing": "2026-09-04",
    "complete": true,
@@ -3390,6 +3547,14 @@
    "kind": "ingredients",
    "prose": "",
    "source": "amazon:B086K54TZH"
+  },
+  "materials": {
+   "checked": "2026-09-11",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "base": "dry",
+   "material": "plastic",
+   "source": "Dry vegetarian capsules (magnesium glycinate, HPMC shell, ascorbyl palmitate) in a supplement bottle filled once. Klean does not publish the bottle polymer: kleanathlete.com returns 403, and thefeed, pureformulas and professionalsupplementcenter do not state it. Recorded as plastic because dry contents pass the rule 3.1 matrix in HDPE, PET, polypropylene and glass alike, which covers every material supplement bottles are made of. Only PVC or polystyrene would score caution, and neither is used for supplement bottles."
   }
  },
  "B086W2S5LV": {
@@ -3458,7 +3623,7 @@
   }
  },
  "B086XGH24W": {
-  "_product": "Maldon Maldon Sea Salt Flakes",
+  "_product": "Maldon Sea Salt Flakes",
   "formula": {
    "checkedListing": "2026-09-04",
    "complete": true,
@@ -3468,10 +3633,18 @@
    "source": "amazon:B086XGH24W"
   },
   "materials": {
-   "checkedListing": "2026-09-08",
+   "checked": "2026-09-11",
    "contact": "yes",
-   "material": "paperboard, polypropylene",
-   "source": "openfacts:5011428100048"
+   "contactFrom": "recorded",
+   "base": "dry",
+   "material": "paperboard",
+   "source": "Flakes sold in Maldon's cardboard box"
+  },
+  "testing": {
+   "status": "pass",
+   "checked": "2026-09-11",
+   "note": "Maldon publishes its own lab report: 2024 results show lead around 114 ppb, arsenic around 11 ppb, cadmium and mercury non detect, among the cleanest sea salts for heavy metals. It is the sea salt our salt guide recommends for finishing; as a sea salt it carries more microplastics than mined salt, which the guide states.",
+   "source": "articles/microplastics-in-salt-and-pantry-staples.html"
   }
  },
  "B0874HWG4Z": {
@@ -4190,11 +4363,19 @@
   }
  },
  "B099KWKY36": {
-  "_product": "Viori Viori Shampoo Bar",
+  "_product": "Viori Shampoo Bar",
   "formula": {
    "complete": false,
    "prose": "",
    "source": "amazon:B099KWKY36"
+  },
+  "materials": {
+   "checked": "2026-09-11",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "base": "dry",
+   "material": "plastic",
+   "source": "Dry contents; the container polymer is not published or not confirmed. Dry contents pass the rule 3.1 matrix in HDPE, PET, polypropylene, paper, metal and glass, which covers every material this kind of product is packed in. Only PVC or polystyrene would score caution, and neither is used for it."
   }
  },
  "B099LR5JDB": {
@@ -4259,7 +4440,7 @@
   }
  },
  "B09CPJSX9D": {
-  "_product": "Rishi Rishi Organic Loose Leaf Tea",
+  "_product": "Rishi Organic Loose Leaf Tea",
   "formula": {
    "checkedListing": "2026-09-08",
    "complete": true,
@@ -4267,6 +4448,14 @@
    "kind": "ingredients",
    "prose": "",
    "source": "openfacts:0741391973817"
+  },
+  "materials": {
+   "checked": "2026-09-11",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "base": "dry",
+   "material": "plastic",
+   "source": "Dry contents; the container polymer is not published or not confirmed. Dry contents pass the rule 3.1 matrix in HDPE, PET, polypropylene, paper, metal and glass, which covers every material this kind of product is packed in. Only PVC or polystyrene would score caution, and neither is used for it."
   }
  },
  "B09F5X1JVR": {
@@ -4624,7 +4813,7 @@
   }
  },
  "B0B926HSGZ": {
-  "_product": "INIKA INIKA Organic Loose Mineral Foundation",
+  "_product": "INIKA Organic Loose Mineral Foundation",
   "formula": {
    "checkedListing": "2026-09-04",
    "complete": true,
@@ -4632,6 +4821,14 @@
    "kind": "ingredients",
    "prose": "",
    "source": "amazon:B0B926HSGZ"
+  },
+  "materials": {
+   "checked": "2026-09-11",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "base": "dry",
+   "material": "plastic",
+   "source": "Dry contents; the container polymer is not published or not confirmed. Dry contents pass the rule 3.1 matrix in HDPE, PET, polypropylene, paper, metal and glass, which covers every material this kind of product is packed in. Only PVC or polystyrene would score caution, and neither is used for it."
   }
  },
  "B0BB5NBPTQ": {
@@ -4773,11 +4970,19 @@
   }
  },
  "B0BT2TW1WG": {
-  "_product": "TRIORAL TRIORAL Oral Rehydration Salts",
+  "_product": "TRIORAL Oral Rehydration Salts",
   "formula": {
    "complete": false,
    "prose": "",
    "source": "amazon:B0BT2TW1WG"
+  },
+  "materials": {
+   "checked": "2026-09-11",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "base": "dry",
+   "material": "plastic",
+   "source": "Dry contents; the container polymer is not published or not confirmed. Dry contents pass the rule 3.1 matrix in HDPE, PET, polypropylene, paper, metal and glass, which covers every material this kind of product is packed in. Only PVC or polystyrene would score caution, and neither is used for it."
   }
  },
  "B0BT4FYHFJ": {
@@ -5015,7 +5220,7 @@
   }
  },
  "B0C7LPMB1Y": {
-  "_product": "FullWell Prenatal",
+  "_product": "FullWell Prenatal capsules",
   "formula": {
    "checkedListing": "2026-09-03",
    "complete": true,
@@ -5023,6 +5228,14 @@
    "kind": "ingredients",
    "prose": "",
    "source": "amazon:B0C7LPMB1Y"
+  },
+  "materials": {
+   "checked": "2026-09-11",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "base": "dry",
+   "material": "plastic",
+   "source": "Dry contents; the container polymer is not published or not confirmed. Dry contents pass the rule 3.1 matrix in HDPE, PET, polypropylene, paper, metal and glass, which covers every material this kind of product is packed in. Only PVC or polystyrene would score caution, and neither is used for it."
   }
  },
  "B0C7SFV8RH": {
@@ -5219,7 +5432,7 @@
   }
  },
  "B0CKLTF246": {
-  "_product": "Diaspora Co Pragati Diaspora Co Pragati Turmeric",
+  "_product": "Diaspora Co Pragati Turmeric",
   "formula": {
    "checkedListing": "2026-09-03",
    "complete": true,
@@ -5229,7 +5442,12 @@
    "source": "amazon:B0CKLTF246"
   },
   "materials": {
-   "checkedListing": "2026-09-02"
+   "checked": "2026-09-11",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "base": "dry",
+   "material": "plastic",
+   "source": "Dry contents; the container polymer is not published or not confirmed. Dry contents pass the rule 3.1 matrix in HDPE, PET, polypropylene, paper, metal and glass, which covers every material this kind of product is packed in. Only PVC or polystyrene would score caution, and neither is used for it."
   }
  },
  "B0CLQ7RY6C": {
@@ -5314,14 +5532,22 @@
   }
  },
  "B0CQBF47VV": {
-  "_product": "Molly's Suds Molly's Suds Baby Laundry Detergent",
+  "_product": "Molly's Suds Baby Liquid Laundry Detergent, Fragrance Free",
   "formula": {
-   "checkedListing": "2026-09-08",
+   "checkedListing": "2026-09-11",
    "complete": true,
-   "ingredients": "WATER, SODIUM C14-16 OLEFIN SULFONATE, AMINE OXIDES, GLYCERIN, SODIUM CHLORIDE, SODIUM CARBONATE, CAPRYLYL/CAPRYL GLUCOSIDE, NATURAL FRAGRANCE¹ (¹Derived from natural plant essences & oils. ISO-16128 compliant.), PROTEASE, MANNANASE, SODIUM GLUCONATE, PHENOXYETHANOL, ETHYLHEXYLGLYCERIN",
+   "ingredients": "Water, sodium C14-16 olefin sulfonate, amine oxides, glycerin, sodium chloride, sodium carbonate, caprylyl/capryl glucoside, lipase, protease, mannanase, sodium gluconate, phenoxyethanol, ethylhexylglycerin",
    "kind": "ingredients",
-   "prose": "",
-   "source": "openfacts:0852835006661"
+   "source": "mollyssuds.com: natural fragrance goes in the scented Sweet Baby Shea variant only; this ASIN is the Fragrance Free variant per its Amazon title. The earlier record carried the scented variant's list"
+  },
+  "materials": {
+   "checked": "2026-09-11",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "base": "surfactant",
+   "material": "plastic",
+   "source": "Detergent bottle, polymer not published. It is dosed into the wash water and rinsed out of the fabric, never applied to skin",
+   "use": "not-on-body"
   }
  },
  "B0CQG6QDJQ": {
@@ -5847,12 +6073,19 @@
  "B0DLJ2S4GS": {
   "_product": "Molly's Suds Unscented Super Powder",
   "formula": {
-   "checkedListing": "2026-09-08",
+   "checkedListing": "2026-09-11",
    "complete": true,
-   "ingredients": "WATER, SODIUM C14-16 OLEFIN SULFONATE, AMINE OXIDES, GLYCERIN, SODIUM CHLORIDE, SODIUM CARBONATE, CAPRYLYL/CAPRYL GLUCOSIDE, NATURAL FRAGRANCE¹ (¹Derived from natural plant essences & oils. ISO-16128 compliant.), PROTEASE, MANNANASE, SODIUM GLUCONATE, PHENOXYETHANOL, ETHYLHEXYLGLYCERIN",
+   "ingredients": "Sodium carbonate, sodium bicarbonate, sea salt, disodium lauryl sulfosuccinate, enzymes (protease, mannanase, amylase, cellulase)",
    "kind": "ingredients",
-   "prose": "",
-   "source": "openfacts:0852835006661"
+   "source": "mollyssuds.com Super Powder page, Vitacost. The earlier record carried the scented baby liquid's list, a different product"
+  },
+  "materials": {
+   "checked": "2026-09-11",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "base": "dry",
+   "material": "plastic",
+   "source": "Dry contents; the container polymer is not published. Dry contents pass the rule 3.1 matrix in HDPE, PET, polypropylene, paper, metal and glass. Only PVC or polystyrene would score caution, and neither is used for it."
   }
  },
  "B0DLLL4GX2": {
@@ -6012,9 +6245,14 @@
   }
  },
  "B0DXPDLDBL": {
-  "_product": "Avocado Green Mattress Avocado Eco Organic Crib Mattress",
+  "_product": "Avocado Eco Organic Crib Mattress",
   "materials": {
-   "checkedListing": "2026-09-02"
+   "checked": "2026-09-11",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "base": "dry",
+   "material": "organic cotton, wool",
+   "source": "Sleep surface is GOTS organic cotton and wool over organic latex and coconut coir, with no built in waterproof layer; waterproofing is a separate optional protector (avocadogreenmattress.com)"
   }
  },
  "B0DXPWTSG1": {
@@ -6349,7 +6587,7 @@
   }
  },
  "B0G3Q18F5S": {
-  "_product": "True Gum True Gum",
+  "_product": "True Gum",
   "formula": {
    "checkedListing": "2026-09-08",
    "complete": true,
@@ -6357,10 +6595,18 @@
    "kind": "ingredients",
    "prose": "",
    "source": "openfacts:5700002082534"
+  },
+  "materials": {
+   "checked": "2026-09-11",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "base": "dry",
+   "material": "paperboard",
+   "source": "Cardboard box with no foil wrappers or plastic strips (truecompany.com); chicle gum base"
   }
  },
  "B0G3QQBGVY": {
-  "_product": "Burlap & Burlap & Barrel Umami Steak Seasoning",
+  "_product": "Burlap & Barrel Umami Steak Seasoning",
   "formula": {
    "checkedListing": "2026-09-03",
    "complete": true,
@@ -6370,7 +6616,12 @@
    "source": "amazon:B0G3QQBGVY"
   },
   "materials": {
-   "checkedListing": "2026-09-02"
+   "checked": "2026-09-11",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "base": "dry",
+   "material": "plastic",
+   "source": "Dry contents; the container polymer is not published or not confirmed. Dry contents pass the rule 3.1 matrix in HDPE, PET, polypropylene, paper, metal and glass, which covers every material this kind of product is packed in. Only PVC or polystyrene would score caution, and neither is used for it."
   }
  },
  "B0G3XG9QKY": {
@@ -7265,6 +7516,199 @@
    "reuse": "repeated",
    "material": "plastic",
    "source": "brand spec: polymer housings and a polyamide RO membrane, which is how every undersink RO is built"
+  }
+ },
+ "B001AV40Z4": {
+  "_product": "Naturepedic Organic Contoured Changing Pad",
+  "materials": {
+   "checked": "2026-09-11",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "base": "dry",
+   "material": "polyethylene",
+   "source": "Food grade polyethylene waterproof coating over organic cotton, with a polyethylene core (naturepedic.com)"
+  }
+ },
+ "B0D9XS9VXL": {
+  "_product": "UPPAbaby Vista Stroller",
+  "materials": {
+   "checked": "2026-09-11",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "base": "dry",
+   "material": "polyester",
+   "source": "Fabric is 100% recycled PET polyester, OEKO-TEX certified, GREENGUARD Gold, made without PFAS or added flame retardants (Strolleria, UPPAbaby chemistry statement)"
+  }
+ },
+ "B09QLJRDJK": {
+  "_product": "Molly's Suds Baby Laundry Detergent Powder, Fragrance Free",
+  "formula": {
+   "checkedListing": "2026-09-11",
+   "complete": true,
+   "kind": "ingredients",
+   "ingredients": "Sodium carbonate, sodium bicarbonate, magnesium sulfate, unrefined sea salt, protease, mannanase, amylase",
+   "source": "EWG cleaners listing and SkinSafe panel for the Fragrance Free baby powder, 120 loads"
+  },
+  "materials": {
+   "checked": "2026-09-11",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "base": "dry",
+   "material": "plastic",
+   "source": "Dry powder in a bag, polymer not published. Dry contents pass the rule 3.1 matrix in every material a detergent bag is made of"
+  }
+ },
+ "B09BVXG63Z": {
+  "_product": "Arudyo Silicone Teether",
+  "materials": {
+   "checked": "2026-09-11",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "base": "dry",
+   "material": "silicone, beechwood",
+   "source": "100% food grade silicone and natural beech, stated on the listing",
+   "mouthed": true
+  }
+ },
+ "B014WOWNAY": {
+  "_product": "Handy Laundry Wool Dryer Balls",
+  "materials": {
+   "checked": "2026-09-11",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "base": "dry",
+   "material": "wool",
+   "source": "100% premium New Zealand wool, stated on the listing"
+  }
+ },
+ "B07CK2TJKL": {
+  "_product": "Organic Cotton Mart Produce Bags",
+  "materials": {
+   "checked": "2026-09-11",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "base": "dry",
+   "material": "organic cotton",
+   "source": "100% organic cotton knit fabric, stated on the listing"
+  }
+ },
+ "B07RY59C3W": {
+  "_product": "LANE LINEN Organic Cotton Sheets",
+  "materials": {
+   "checked": "2026-09-11",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "base": "dry",
+   "material": "organic cotton",
+   "source": "GOTS certified 100% organic cotton percale, stated on the listing"
+  }
+ },
+ "B084H7K9LY": {
+  "_product": "Verel Glass Containers with Bamboo Lids",
+  "materials": {
+   "checked": "2026-09-11",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "base": "fatty",
+   "material": "borosilicate glass, silicone",
+   "source": "Food sits in borosilicate glass; the lid seals with silicone, and the bamboo lid is not in routine contact (listing)"
+  }
+ },
+ "B09XJKHCXZ": {
+  "_product": "Dr. Brown's HappyPaci",
+  "materials": {
+   "checked": "2026-09-11",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "base": "dry",
+   "material": "silicone",
+   "source": "One piece 100% silicone, stated on the listing",
+   "mouthed": true
+  }
+ },
+ "B0GX7MVP6V": {
+  "_product": "Delta Children CleanEarth Crib Mattress",
+  "materials": {
+   "checked": "2026-09-11",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "base": "dry",
+   "material": "polyethylene",
+   "source": "Organic cotton, organic wool, organic latex over innersprings; food grade polyethylene waterproofing rather than vinyl (deltachildren.com)"
+  }
+ },
+ "B0CXS576KL": {
+  "_product": "Nordic Naturals Vitamin D3 + K2 Softgels",
+  "formula": {
+   "checkedListing": "2026-09-11",
+   "complete": true,
+   "ingredients": "Vitamin D3, vitamin K2 (MK-7), organic extra virgin olive oil, soft gel capsule (gelatin, glycerin, water, natural flavor), RRR-alpha tocopherol, natural flavor",
+   "kind": "ingredients",
+   "source": "Amazon listing B0CXS576KL, iHerb panel"
+  },
+  "materials": {
+   "checked": "2026-09-11",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "base": "solid",
+   "material": "hdpe",
+   "source": "Nordic Naturals bottles softgels in #2 HDPE (Nordic Naturals sustainability blog)"
+  }
+ },
+ "B08T32QLNY": {
+  "_product": "ATTITUDE All Purpose Cleaner, Unscented",
+  "formula": {
+   "checkedListing": "2026-09-11",
+   "complete": true,
+   "ingredients": "Caprylyl glucoside, myristyl glucoside, water, propanediol, sodium citrate, sapindus mukorossi fruit extract, sodium carbonate",
+   "kind": "ingredients",
+   "source": "EWG Cleaners, ATTITUDE Nature+ All Purpose Cleaner Unscented (EWG Verified)"
+  },
+  "materials": {
+   "checked": "2026-09-11",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "base": "surfactant",
+   "material": "plastic",
+   "source": "Spray bottle, polymer not published. Sprayed on surfaces and wiped, never applied to skin",
+   "use": "not-on-body"
+  }
+ },
+ "B08T3379L7": {
+  "_product": "ATTITUDE Bathroom Cleaner, Unscented",
+  "formula": {
+   "checkedListing": "2026-09-11",
+   "complete": true,
+   "kind": "ingredients",
+   "ingredients": "Caprylyl glucoside, myristyl glucoside, water, citric acid, propanediol, xanthan gum, sapindus mukorossi fruit extract",
+   "source": "EWG Cleaners, ATTITUDE Nature+ Bathroom Cleaner Unscented (EWG Verified)"
+  },
+  "materials": {
+   "checked": "2026-09-11",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "base": "surfactant",
+   "material": "plastic",
+   "use": "not-on-body",
+   "source": "Spray bottle, polymer not published. Sprayed on bathroom surfaces and rinsed, never applied to skin"
+  }
+ },
+ "B01B5ECU3O": {
+  "_product": "Thirteen Chefs Food Grade Mineral Oil",
+  "formula": {
+   "checkedListing": "2026-09-11",
+   "complete": true,
+   "kind": "ingredients",
+   "ingredients": "100% USP food grade white mineral oil",
+   "source": "Thirteen Chefs listing"
+  },
+  "materials": {
+   "checked": "2026-09-11",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "base": "oil",
+   "material": "plastic",
+   "source": "Plastic squeeze bottle with a push applicator cap (Thirteen Chefs listings); the oil is stored in it and then spread on boards that touch food. Board butters sold in metal tins exist, so rule 3.6 does not apply"
   }
  }
 }

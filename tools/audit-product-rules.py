@@ -254,7 +254,7 @@ HAZARD = [
 # list above would have failed a product on a word that means "undisclosed".
 DISCLOSURE_FAILURE = [
     "fragrance", "parfum", "gum base", "proprietary blend", "natural flavors",
-    "natural flavour", "artificial flavors", "undisclosed",
+    "natural flavour", "natural flavor", "artificial flavor", "artificial flavors", "undisclosed",
 ]
 
 # A category scoped caution is a documented downside in one category and
