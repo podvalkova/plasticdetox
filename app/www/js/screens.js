@@ -626,7 +626,9 @@ export function detoxStep(root, { phase, step, isDone, isSeen, onDone, onUndo, o
         thumb.classList.add("bare");
       }
       p.appendChild(thumb);
-      const notes = asin ? productNotes(asin) : null;
+      // A brand direct pick has no ASIN; the build attaches its catalog notes.
+      const notes = asin ? productNotes(asin)
+        : ((pick.pros || []).length || (pick.cons || []).length ? { pros: pick.pros || [], cons: pick.cons || [] } : null);
       const body = el("div", "row-body");
       body.appendChild(el("div", "prow-name", pick.name));
       // The line the store shows under a name, when the plan does not carry

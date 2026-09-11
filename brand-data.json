@@ -43067,16 +43067,18 @@
             "fat": false,
             "why": "for a baby, which is high whatever the arithmetic says"
           },
+          "legalNote": "Checked. What is on record concerns other Green Sprouts products, not this one: CPSC recalls on record: toddler stainless steel bottles and cups on 23 November 2022, for lead solder under a base that could detach, remedied and now over 24 months old; and i play glass food storage cubes in 2016. Neither covers bibs or any product we rate, and under rule 5.2 both are informational.",
           "verdict": "unrated",
           "dated": "2026-09-06",
           "why": "a recommendation cannot rest on inherited evidence",
           "fronts": {
             "formula": "none",
             "materials": "unassessed",
-            "legal": "unassessed",
+            "legal": "pass",
             "testing": "unassessed"
           },
           "frontOrigin": {
+            "legal": "database",
             "formula": "hand"
           },
           "scope": "brand",
@@ -43085,6 +43087,79 @@
           "rules": []
         },
         "cat": "Diapers"
+      },
+      {
+        "name": "Green Sprouts Organic Cotton Muslin Bibs (5 pack)",
+        "asins": [
+          "B01ABQBI6W"
+        ],
+        "verdict": "unrated",
+        "origin": "research",
+        "note": "Four layers of organic cotton muslin with an adjustable snap closure. No plastic backing.",
+        "matchAll": [
+          [
+            "green sprouts",
+            "bib"
+          ]
+        ],
+        "cat": "Tableware",
+        "ext": {
+          "legalNote": "Checked. What is on record concerns other Green Sprouts products, not this one: CPSC recalls on record: toddler stainless steel bottles and cups on 23 November 2022, for lead solder under a base that could detach, remedied and now over 24 months old; and i play glass food storage cubes in 2016. Neither covers bibs or any product we rate, and under rule 5.2 both are informational.",
+          "frontNotes": {
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "testing": "No independent lab test of this product found as of September 2026 (searched Lead Safe Mama, Mamavation, Consumer Reports).",
+            "materials": "In contact with cotton, which puts nothing into what it holds."
+          },
+          "testingNote": "No independent lab test of this product found as of September 2026 (searched Lead Safe Mama, Mamavation, Consumer Reports).",
+          "testingDate": "2026-09-11",
+          "materialsList": "organic cotton",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "aqueous",
+            "heated": false,
+            "mouthed": true,
+            "reuse": "",
+            "use": "",
+            "material": "organic cotton",
+            "source": "Listing: 100% organic cotton muslin, four absorbent layers, adjustable snap closure",
+            "checked": "2026-09-11"
+          },
+          "exposure": {
+            "type": "food surface",
+            "level": "high",
+            "score": 3.8,
+            "baby": true,
+            "route": "ingestion",
+            "duration": "seconds",
+            "retained": "transfer",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "for a baby, which is high whatever the arithmetic says"
+          },
+          "verdict": "good",
+          "dated": "2026-09-11",
+          "why": "direct evidence on materials, recorded rather than read off a note",
+          "fronts": {
+            "formula": "none",
+            "materials": "pass",
+            "legal": "pass",
+            "testing": "none"
+          },
+          "frontOrigin": {
+            "legal": "database",
+            "formula": "hand",
+            "testing": "database",
+            "materials": "database"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
+        }
       }
     ]
   },
@@ -45823,7 +45898,7 @@
           },
           "verdict": "good",
           "dated": "2026-08-28",
-          "why": "independent lab result at sku scope",
+          "why": "a vetted store pick, chosen by a person at product scope",
           "fronts": {
             "formula": "pass",
             "materials": "pass",
@@ -91189,6 +91264,90 @@
             "flexi"
           ]
         ]
+      },
+      {
+        "name": "Stokke Flexi Bath Bundle (with Newborn Support)",
+        "asins": [
+          "B0CWJVS6S8"
+        ],
+        "verdict": "unrated",
+        "origin": "research",
+        "note": "Foldable baby bath: polypropylene sides and base, thermoplastic elastomer folds, free of PVC, BPA and phthalates. Newborn support included.",
+        "matchAll": [
+          [
+            "stokke",
+            "flexi bath"
+          ]
+        ],
+        "cat": "Bath accessories",
+        "ext": {
+          "exposure": {
+            "type": "equipment",
+            "level": "high",
+            "score": 2.0,
+            "baby": true,
+            "route": "none",
+            "duration": "seconds",
+            "retained": "none",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "for a baby, which is high whatever the arithmetic says"
+          },
+          "legalNote": "Checked recall records on 2026-08-31. Four recalls since 2019 (Newborn Set accessory, Steps Bouncer, white Clikk chair, YOYO3 stroller), each remedied; only two fall inside the last five years, and the Tripp Trapp chair itself has never been recalled.",
+          "frontNotes": {
+            "legal": "Checked recall records on 2026-08-31. Four recalls since 2019 (Newborn Set accessory, Steps Bouncer, white Clikk chair, YOYO3 stroller), each remedied; only two fall inside the last five years, and the Tripp Trapp chair itself has never been recalled.",
+            "formula": "A durable good has no ingredient list. What it is made of is the materials check.",
+            "testing": "No independent lab test of this product found as of September 2026.",
+            "materials": "aqueous contents in plastic."
+          },
+          "formulaAnswers": {
+            "ingredients": "",
+            "prose": "",
+            "complete": false,
+            "verdict": "n/a",
+            "summary": "A durable good has no ingredient list. What it is made of is the materials check.",
+            "flagged": [],
+            "source": "",
+            "checked": ""
+          },
+          "testingNote": "No independent lab test of this product found as of September 2026.",
+          "testingDate": "2026-09-11",
+          "materialsList": "polypropylene, thermoplastic elastomer",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "aqueous",
+            "heated": false,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "polypropylene, thermoplastic elastomer",
+            "source": "Stokke Flexi Bath FAQ (stokke.com): polypropylene sides and bottom, thermoplastic elastomer on the folding corners and base, BPA and phthalate free. Amazon lists the material as plastic",
+            "checked": "2026-09-11"
+          },
+          "verdict": "good",
+          "dated": "2026-09-11",
+          "why": "direct evidence on materials, recorded rather than read off a note",
+          "fronts": {
+            "formula": "none",
+            "materials": "pass",
+            "legal": "pass",
+            "testing": "none"
+          },
+          "frontOrigin": {
+            "legal": "database",
+            "testing": "database",
+            "materials": "database",
+            "formula": "database"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
+        }
       }
     ],
     "rollup": {
@@ -110026,6 +110185,103 @@
           "basis": "direct",
           "disclose": false,
           "rules": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "butterr",
+    "brand": "Butterr",
+    "category": "Nursing pillows",
+    "stance": "good",
+    "reason": "Nursing pillow with a natural latex core and a GOTS certified organic cotton cover, so no polyurethane foam and no polyester fill.",
+    "evidence": "Natural latex core; removable GOTS organic cotton cover",
+    "sources": [
+      "https://www.butterr.co/"
+    ],
+    "products": [
+      {
+        "name": "Butterr Natural Latex Nursing Pillow",
+        "asins": [
+          "B0CF2TYPJK",
+          "B0CF34B2V7"
+        ],
+        "verdict": "unrated",
+        "origin": "research",
+        "note": "Natural latex core in a removable, machine washable GOTS organic cotton cover. No polyurethane foam, no polyester fill.",
+        "matchAll": [
+          [
+            "butterr"
+          ]
+        ],
+        "cat": "Nursing pillows",
+        "ext": {
+          "legalNote": "CPSC recall database queried on 2026-09-11 with nothing on record for Butterr, and a web search for recalls or lawsuits found none.",
+          "frontNotes": {
+            "legal": "CPSC recall database queried on 2026-09-11 with nothing on record for Butterr, and a web search for recalls or lawsuits found none.",
+            "testing": "No independent lab test of this product found as of September 2026 (searched Lead Safe Mama, Mamavation, Consumer Reports).",
+            "materials": "In contact with cotton, which puts nothing into what it holds."
+          },
+          "formulaAnswers": {
+            "ingredients": "",
+            "prose": "",
+            "complete": false,
+            "verdict": "n/a",
+            "summary": "A durable good has no ingredient list. What it is made of is the materials check.",
+            "flagged": [],
+            "source": "",
+            "checked": ""
+          },
+          "testingNote": "No independent lab test of this product found as of September 2026 (searched Lead Safe Mama, Mamavation, Consumer Reports).",
+          "testingDate": "2026-09-11",
+          "materialsList": "organic cotton",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "dry",
+            "heated": false,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "organic cotton",
+            "source": "Listing: removable GOTS certified organic cotton cover over a natural latex core; no polyurethane foam or polyester fill",
+            "checked": "2026-09-11"
+          },
+          "exposure": {
+            "type": "slept on",
+            "level": "high",
+            "score": 8.0,
+            "baby": false,
+            "route": "inhalation",
+            "duration": "overnight",
+            "retained": "breathed",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "Eight hours a night, close to the face."
+          },
+          "verdict": "good",
+          "dated": "2026-09-11",
+          "why": "independent lab result at sku scope",
+          "fronts": {
+            "formula": "none",
+            "materials": "pass",
+            "legal": "pass",
+            "testing": "none"
+          },
+          "frontOrigin": {
+            "legal": "database",
+            "testing": "database",
+            "materials": "database",
+            "formula": "database"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": [
+            "2 prose-cannot-clear-formula",
+            "5.4 durable-good-is-its-own-packaging"
+          ]
         }
       }
     ]

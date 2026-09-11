@@ -71,6 +71,18 @@ else
 fi
 
 echo
+echo "==> 1c. does every app swap pick carry a photo, pros and cons, and its guide?"
+# The app draws a pick's photo and its pros and cons from the catalog, keyed by
+# ASIN, so a pick the catalog did not hold showed a bare row: 28 of 61 Kids
+# room picks. The catalog had also drifted from the store page both ways.
+if python3 tools/app-picks.py > /tmp/pd-picks.log 2>&1; then
+  head -4 /tmp/pd-picks.log | sed 's/^/    /'
+else
+  grep '!!' /tmp/pd-picks.log | head -12 | sed 's/^/    /'
+  echo "    ... $(grep -c '!!' /tmp/pd-picks.log) problems. Add the catalog entry, or fix the swap."
+  fail=1
+fi
+echo
 echo "==> 2. would running the rules change a verdict?"
 before=$(python3 - <<'PY'
 import json,hashlib

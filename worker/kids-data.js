@@ -6,6 +6,7 @@ export const KIDS = {
  "focus": "Bottles and feeding, the nursery, wipes and creams, in the order that matters for someone that small.",
  "steps": [
   {
+   "guide": "best-non-toxic-baby-bottles.html",
    "id": "Kids::Move bottles and cups to glass or steel",
    "swap": "Move bottles and cups to glass or steel",
    "why": "Heated formula in a plastic bottle is one of the highest microplastic doses measured anywhere, up to 16 million particles per liter.",
@@ -71,6 +72,7 @@ export const KIDS = {
    ]
   },
   {
+   "guide": "non-toxic-nursery-setup.html",
    "id": "Kids::Change the crib mattress",
    "swap": "Change the crib mattress",
    "why": "Fourteen hours a day, face down, on the single largest piece of foam and vinyl in the house. Most crib mattresses are polyurethane foam under a PVC or TPU waterproof cover, warmed all night by the baby lying on it.",
@@ -90,9 +92,14 @@ export const KIDS = {
      "url": "https://www.amazon.com/dp/B01D5805B2?tag=plasticdetox-20",
      "note": "Best waterproof without PVC"
     }
-   ]
+   ],
+   "article": {
+    "slug": "non-toxic-nursery-setup.html",
+    "title": "Non Toxic Nursery Setup: What Actually Matters, In Order (2026)"
+   }
   },
   {
+   "guide": "best-non-toxic-baby-bottles.html",
    "id": "Kids::Pump into glass",
    "swap": "Pump into glass",
    "why": "Warm milk into plastic flanges and bottles, several times a day. Milk is high fat, which pulls more out of plastic. For the freezer, glass is the cleanest but costs more and takes space; reusable silicone bags are the practical pick, and the cold slows what silicone gives off.",
@@ -176,6 +183,7 @@ export const KIDS = {
    ]
   },
   {
+   "guide": "best-non-toxic-baby-formula.html",
    "id": "Kids::Choose a cleaner formula",
    "swap": "Choose a cleaner formula",
    "why": "The entire diet for months, and independent testing keeps finding real differences between brands.",
@@ -236,6 +244,7 @@ export const KIDS = {
    ]
   },
   {
+   "guide": "microplastics-in-baby-food.html",
    "id": "Kids::Change how you buy baby food",
    "swap": "Change how you buy baby food",
    "why": "Pouches are plastic against warm puree, and commercial baby food has repeatedly tested high for heavy metals.",
@@ -290,6 +299,7 @@ export const KIDS = {
    ]
   },
   {
+   "guide": "microplastics-in-baby-food.html",
    "id": "Kids::Make and store baby food in glass",
    "swap": "Make and store baby food in glass",
    "why": "Steaming and blending in a plastic chamber puts heat, fat, and plastic together at once.",
@@ -342,6 +352,7 @@ export const KIDS = {
    ]
   },
   {
+   "guide": "best-non-toxic-baby-wash-and-shampoo.html",
    "id": "Kids::Change baby wash and shampoo",
    "swap": "Change baby wash and shampoo",
    "why": "Infant skin is about 30 percent thinner than yours and spends its first weeks settling from neutral to a mildly acidic pH. Fragrance is the main issue, then ethoxylated ingredients and synthetic polymers.",
@@ -361,9 +372,28 @@ export const KIDS = {
      "url": "https://www.amazon.com/dp/B07JVK3FBY?tag=plasticdetox-20",
      "note": "Best value, EWG Verified"
     }
+   ],
+   "article": {
+    "slug": "best-non-toxic-baby-wash-and-shampoo.html",
+    "title": "Best Non Toxic Baby Wash and Shampoo: What Newborn Skin Actually Needs (2026)"
+   },
+   "faqs": [
+    {
+     "q": "Do newborns need baby wash at all?",
+     "a": "Mostly no. The American Academy of Pediatrics says three baths a week is enough during the first year, that more frequent bathing dries a baby's skin, and that any soap should be mild, neutral in pH, fragrance free and rinsed off right away. Warm water handles most of a newborn's cleaning. A small amount of a mild, fragrance free cleanser is for the creases and the diaper area when water is not enough, and for hair two or three times a week. The single most effective way to lower a baby's exposure to wash ingredients is to use less wash."
+    },
+    {
+     "q": "What ingredients should I avoid in baby shampoo?",
+     "a": "Four things cover most of the risk. Undisclosed fragrance or parfum, because a 2008 Pediatrics study of 163 infants tied baby shampoo and lotion use to higher urinary phthalate levels, strongest under eight months. Formaldehyde releasing preservatives such as DMDM hydantoin, quaternium 15, imidazolidinyl urea and diazolidinyl urea. Ethoxylated ingredients, which you can spot by PEG, the suffix eth as in sodium laureth sulfate, polysorbate and sorbeth, because ethoxylation leaves behind the contaminant 1,4 dioxane. And synthetic polymers such as acrylates copolymer, carbomer and styrene/acrylates copolymer, which are plastic thickeners and opacifiers in a rinse off product."
+    },
+    {
+     "q": "Is Johnson's Baby Shampoo safe now?",
+     "a": "It is better than it was, and still not something we recommend. In 2009 independent testing found the original formula contained both formaldehyde, released by the preservative quaternium 15, and 1,4 dioxane. Johnson and Johnson committed in 2011 to remove formaldehyde releasers from its baby line and to cut 1,4 dioxane below 4 ppm, and delivered the reformulation by the end of 2013. The current Head to Toe wash lists no formaldehyde releaser, but it still carries undisclosed fragrance, three ethoxylated ingredients (PEG 80 sorbitan laurate, PEG 150 pentaerythrityl tetrastearate and PPG 2 hydroxyethyl cocamide) and phenoxyethanol. A fragrance free wash built on glucosides and isethionates has none of those, at a similar price."
+    }
    ]
   },
   {
+   "guide": "best-non-toxic-diapers.html",
    "id": "Kids::Change your diaper brand",
    "swap": "Change your diaper brand",
    "why": "Against the most permeable skin on the body, 24 hours a day, for roughly three years. Several major brands have tested positive for PFAS.",
@@ -404,6 +434,7 @@ export const KIDS = {
    ]
   },
   {
+   "guide": "best-non-toxic-baby-wipes.html",
    "id": "Kids::Change your wipes",
    "swap": "Change your wipes",
    "why": "Most wipes are polyester fabric soaked in preservative solution, used dozens of times a day on broken skin.",
@@ -450,6 +481,7 @@ export const KIDS = {
    ]
   },
   {
+   "guide": "best-non-toxic-diaper-rash-creams.html",
    "id": "Kids::Change your diaper cream",
    "swap": "Change your diaper cream",
    "why": "Applied thickly to already irritated skin, which absorbs far more than intact skin does.",
@@ -464,11 +496,26 @@ export const KIDS = {
      "note": "Best for cloth diapers"
     },
     {
+     "label": "$$",
+     "name": "Sages of the Ages Baby Tallow Balm",
+     "url": "https://www.amazon.com/dp/B0H6XRYYCJ?tag=plasticdetox-20",
+     "note": "Zinc for an active rash. Not lab tested, and every zinc cream tested so far had some lead"
+    },
+    {
      "label": "$$$",
      "name": "Primally Pure Baby Balm",
      "url": "https://www.awin1.com/cread.php?awinmid=112758&awinaffid=2925861&ued=https%3A%2F%2Fprimallypure.com%2Fproducts%2Fbaby-balm",
      "note": "Best tallow balm, fragrance free, glass jar",
-     "img": "https://primallypure.com/cdn/shop/files/2024_Baby_Balm_1oz_PDP.webp?v=1775659607"
+     "img": "https://primallypure.com/cdn/shop/files/2024_Baby_Balm_1oz_PDP.webp?v=1775659607",
+     "pros": [
+      "Six whole ingredients",
+      "Tallow base close to skin's own lipids",
+      "Multi use: diaper area, cradle cap, dry skin"
+     ],
+     "cons": [
+      "Smallest jar, highest price per ounce",
+      "Direct from brand only"
+     ]
     }
    ],
    "tip": {
@@ -505,6 +552,7 @@ export const KIDS = {
    ]
   },
   {
+   "guide": "non-toxic-baby-toddler-products-guide.html",
    "id": "Kids::Set up the nursery without offgassing",
    "swap": "Set up the nursery without offgassing",
    "why": "New furniture, foam, and paint offgas hardest in the first months, straight into a small room where an infant sleeps 16 hours a day.",
@@ -545,6 +593,7 @@ export const KIDS = {
    ]
   },
   {
+   "guide": "non-toxic-baby-toddler-products-guide.html",
    "id": "Kids::Choose a flame retardant free car seat",
    "swap": "Choose a flame retardant free car seat",
    "why": "Enclosed, heated by sun, and federally required to meet flammability standards that many brands still meet chemically.",
@@ -557,6 +606,12 @@ export const KIDS = {
      "name": "Clek Foonf Convertible Car Seat",
      "url": "https://www.amazon.com/dp/B0CZPCGF51?tag=plasticdetox-20",
      "note": "Best flame retardant free car seat"
+    },
+    {
+     "label": "$$$",
+     "name": "Clek Fllo Convertible Car Seat",
+     "url": "https://www.amazon.com/dp/B0CZPCLYW7?tag=plasticdetox-20",
+     "note": "Best compact, fits three across"
     }
    ],
    "article": {
@@ -575,6 +630,7 @@ export const KIDS = {
    ]
   },
   {
+   "guide": "closet-101.html",
    "id": "Kids::Move kids clothing to natural fiber",
    "swap": "Move kids clothing to natural fiber",
    "why": "Polyester against skin all day, and flame retardant treatments are still common in children's sleepwear.",
@@ -640,6 +696,7 @@ export const KIDS = {
    ]
   },
   {
+   "guide": "non-toxic-baby-toddler-products-guide.html",
    "id": "Kids::Choose a wood or steel high chair",
    "swap": "Choose a wood or steel high chair",
    "why": "A plastic tray holding hot food, every meal, for two years.",
@@ -687,6 +744,7 @@ export const KIDS = {
    ]
   },
   {
+   "guide": "non-toxic-baby-toddler-products-guide.html",
    "id": "Kids::Replace plastic teethers",
    "swap": "Replace plastic teethers",
    "why": "An object designed to be chewed on for hours, by someone who cannot tell you it tastes wrong.",
@@ -727,6 +785,7 @@ export const KIDS = {
    ]
   },
   {
+   "guide": "non-toxic-baby-toddler-products-guide.html",
    "id": "Kids::Shift toys to wood and natural fiber",
    "swap": "Shift toys to wood and natural fiber",
    "why": "Anything a small child holds ends up in the mouth, and soft plastic toys are a phthalate source.",
@@ -767,6 +826,7 @@ export const KIDS = {
    ]
   },
   {
+   "guide": "best-non-toxic-play-mats.html",
    "id": "Kids::Replace foam play mats",
    "swap": "Replace foam play mats",
    "why": "EVA foam mats offgas formamide into the exact 30cm of air where a crawling baby breathes, and 2022 lab testing still found it in 15 of 20 foam mats.",
@@ -813,6 +873,7 @@ export const KIDS = {
    ]
   },
   {
+   "guide": "non-toxic-baby-toddler-products-guide.html",
    "id": "Kids::Replace plates, bowls, and utensils",
    "swap": "Replace plates, bowls, and utensils",
    "why": "Hot food on plastic plates, every meal, for years. Melamine kids dishes leach more the hotter the food.",
@@ -859,6 +920,7 @@ export const KIDS = {
    ]
   },
   {
+   "guide": "non-toxic-baby-toddler-products-guide.html",
    "id": "Kids::Replace plastic and silicone bibs",
    "swap": "Replace plastic and silicone bibs",
    "why": "PVC bibs sit against the neck and chest through every meal, and end up in the mouth constantly.",
@@ -871,10 +933,21 @@ export const KIDS = {
      "name": "Mushie Silicone Bibs",
      "url": "https://www.amazon.com/dp/B0BBPXMN7V?tag=plasticdetox-20",
      "note": "Best design options"
+    },
+    {
+     "label": "$",
+     "name": "Green Sprouts Organic Cotton Muslin Bibs",
+     "url": "https://www.amazon.com/dp/B01ABQBI6W?tag=plasticdetox-20",
+     "note": "Best cotton bib, no plastic backing"
     }
-   ]
+   ],
+   "article": {
+    "slug": "non-toxic-baby-toddler-products-guide.html",
+    "title": "The Complete Parent's Guide to Replacing Toxic Baby and Toddler Products (2026)"
+   }
   },
   {
+   "guide": "non-toxic-baby-toddler-products-guide.html",
    "id": "Kids::Replace bath toys and tub gear",
    "swap": "Replace bath toys and tub gear",
    "why": "Squeeze toys hold warm water and grow mold inside, and most are PVC that a child puts in their mouth.",
@@ -906,25 +979,14 @@ export const KIDS = {
      "url": "https://www.amazon.com/dp/B084R9D4S6?tag=plasticdetox-20",
      "note": "Best premium towel"
     }
-   ]
+   ],
+   "article": {
+    "slug": "non-toxic-baby-toddler-products-guide.html",
+    "title": "The Complete Parent's Guide to Replacing Toxic Baby and Toddler Products (2026)"
+   }
   },
   {
-   "id": "Kids::Consider cloth for part of the day",
-   "swap": "Consider cloth for part of the day",
-   "why": "Removes the disposable question entirely for the hours you use it, and pays back over three years.",
-   "heat": false,
-   "impact": "Lower impact",
-   "free": "Even part time cloth, at home only, cuts disposable contact substantially.",
-   "picks": [
-    {
-     "label": "$",
-     "name": "EcoAble Hemp Inserts",
-     "url": "https://www.amazon.com/dp/B07PPQ3Y2S?tag=plasticdetox-20",
-     "note": "Best overnight booster"
-    }
-   ]
-  },
-  {
+   "guide": "non-toxic-baby-toddler-products-guide.html",
    "id": "Kids::Skip the plastic baby bath",
    "swap": "Skip the plastic baby bath",
    "why": "Most infant tubs are PVC or ABS, and warm water is the condition that pulls plasticisers out of PVC fastest, with the baby sitting in it.",
@@ -933,9 +995,10 @@ export const KIDS = {
    "free": "The kitchen sink with a folded cotton towel on the bottom. Stainless or porcelain, no plastic at all, and it works until they outgrow it.",
    "picks": [
     {
-     "label": "Guide",
-     "name": "Read the full guide",
-     "url": "https://plasticdetox.org/articles/non-toxic-baby-toddler-products-guide.html"
+     "label": "$$",
+     "name": "Stokke Flexi Bath",
+     "url": "https://www.amazon.com/dp/B0CWJVS6S8?tag=plasticdetox-20",
+     "note": "No PVC or phthalates. Not plastic free; the sink is"
     }
    ],
    "tip": {
@@ -968,6 +1031,7 @@ export const KIDS = {
    ]
   },
   {
+   "guide": "non-toxic-baby-toddler-products-guide.html",
    "id": "Kids::Choose a natural fiber carrier",
    "swap": "Choose a natural fiber carrier",
    "why": "Hours of direct contact against a newborn's face and hands, usually in synthetic mesh.",
@@ -987,20 +1051,26 @@ export const KIDS = {
      "url": "https://www.amazon.com/dp/B08Z1L1M18?tag=plasticdetox-20",
      "note": "Best structured organic carrier"
     }
-   ]
+   ],
+   "article": {
+    "slug": "non-toxic-baby-toddler-products-guide.html",
+    "title": "The Complete Parent's Guide to Replacing Toxic Baby and Toddler Products (2026)"
+   }
   },
   {
+   "guide": "non-toxic-baby-toddler-products-guide.html",
    "id": "Kids::Choose an organic nursing pillow",
    "swap": "Choose an organic nursing pillow",
-   "why": "Polyurethane foam pressed against both of you for hours a day during the newborn months, and a category the CPSC has warned about since 2020.",
+   "why": "Held against you and the baby through every feed, several times a day in the newborn months, and most are polyurethane foam or polyester fill in a synthetic cover. A natural fill and an organic cotton cover avoid both.",
    "heat": false,
    "impact": "Lower impact",
    "free": "Stacked pillows you already own work, cost nothing, and many people prefer them.",
    "picks": [
     {
-     "label": "Guide",
-     "name": "Read the full guide",
-     "url": "https://plasticdetox.org/articles/non-toxic-baby-toddler-products-guide.html"
+     "label": "$$$",
+     "name": "Butterr Natural Latex Nursing Pillow",
+     "url": "https://www.amazon.com/dp/B0CF2TYPJK?tag=plasticdetox-20",
+     "note": "Best without foam, organic cotton cover"
     }
    ],
    "tip": {
@@ -1032,6 +1102,7 @@ export const KIDS = {
    ]
   },
   {
+   "guide": "best-non-toxic-laundry-detergent.html",
    "id": "Kids::Change the laundry detergent",
    "swap": "Change the laundry detergent",
    "why": "Everything the baby wears and sleeps on is washed in it, and the residue stays in the fibre against skin. Most detergents carry undisclosed fragrance and optical brighteners that are designed not to rinse out.",
@@ -1041,13 +1112,24 @@ export const KIDS = {
    "picks": [
     {
      "label": "$$",
-     "name": "Dirty Labs Bio Enzyme Baby Laundry",
-     "url": "https://www.amazon.com/dp/B09B85YVMD?tag=plasticdetox-20",
-     "note": "Best fragrance free baby detergent"
+     "name": "Meliora Laundry Powder, Unscented",
+     "url": "https://www.amazon.com/dp/B01DC1D4JM?tag=plasticdetox-20",
+     "note": "Best overall, paper and steel packaging"
+    },
+    {
+     "label": "$",
+     "name": "Molly's Suds Unscented Super Powder",
+     "url": "https://www.amazon.com/dp/B0DLJ2S4GS?tag=plasticdetox-20",
+     "note": "Best value, fragrance free with enzymes"
     }
-   ]
+   ],
+   "article": {
+    "slug": "best-non-toxic-laundry-detergent.html",
+    "title": "Best Non Toxic Laundry Detergent: The Plastic Free Sheet Problem (2026)"
+   }
   },
   {
+   "guide": "non-toxic-nursery-setup.html",
    "id": "Kids::Add an air purifier to the nursery",
    "swap": "Add an air purifier to the nursery",
    "why": "Indoor air carries the offgassing from everything else in the room, plus the microplastic fibres shed by carpet and bedding. A purifier does not fix the source, and it lowers what is in the air while the source is still there.",
@@ -1060,8 +1142,18 @@ export const KIDS = {
      "name": "Coway Airmega Mighty AP-1512HH",
      "url": "https://www.amazon.com/dp/B01728NLRG?tag=plasticdetox-20",
      "note": "Best true HEPA for a nursery"
+    },
+    {
+     "label": "$$$",
+     "name": "Austin Air HealthMate",
+     "url": "https://www.amazon.com/dp/B008QWUWP2?tag=plasticdetox-20",
+     "note": "Best steel body, medical grade HEPA, no ionizer"
     }
-   ]
+   ],
+   "article": {
+    "slug": "non-toxic-nursery-setup.html",
+    "title": "Non Toxic Nursery Setup: What Actually Matters, In Order (2026)"
+   }
   }
  ]
 };

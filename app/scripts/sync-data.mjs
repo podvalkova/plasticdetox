@@ -51,6 +51,15 @@ console.log(`campaign-links.json  ${Object.keys(campaigns).length} products`);
 // already holds an Amazon image id for most of what we recommend, and a shop
 // that is a wall of text is a list rather than a shelf.
 const store = fs.readFileSync(path.join(REPO, "data", "store-products.js"), "utf8");
+// A brand direct pick has no ASIN, so the app cannot look its notes up the way
+// it does for an Amazon pick. The catalog row of the same name carries them.
+const catalogNotes = (name) => {
+  const line = store.split("\n").find((l) => l.includes(`name: ${JSON.stringify(name)}`));
+  if (!line) return {};
+  const arr = (k) => ((((line.match(new RegExp(k + ": \\[([^\\]]*)\\]")) || [])[1]) || "")
+    .match(/"([^"]*)"/g) || []).map((s) => s.slice(1, -1));
+  return { pros: arr("pros"), cons: arr("cons") };
+};
 // The store carries two image forms and store.html reads both: img is an
 // Amazon image id, imgUrl is a full URL for products whose photo we host
 // ourselves. Harvesting only img left six picks showing the woven placeholder
@@ -189,6 +198,7 @@ for (const block of planSrc.split(/\n\s*\{\s*(?=days:\s*")/).slice(1)) {
         // A pick that is not an Amazon product has no ASIN to look an image up
         // by, so it may carry its own.
         if (one[5]) pick.img = one[5];
+        if (!/amazon\.com\/dp\//.test(url)) Object.assign(pick, catalogNotes(pick.name));
         picks.push(pick);
       }
     }
@@ -348,7 +358,7 @@ for (const m of kidsSrc.matchAll(/<h3[^>]*>([\s\S]*?)<\/h3>([\s\S]*?)(?=<h3|<h2|
       note: text(c[4] || ""),
       // An Amazon pick draws its photo from the ASIN. A brand direct pick has
       // no ASIN, so it carries the card's own image or shows a blank tile.
-      ...(/amazon\.com\/dp\//.test(c[1]) ? {} : { img: (c[0].match(/<img src="([^"]+)"/) || [])[1] }),
+      ...(/amazon\.com\/dp\//.test(c[1]) ? {} : { img: (c[0].match(/<img src="([^"]+)"/) || [])[1], ...catalogNotes(text(c[3])) }),
     });
   }
   // A swap whose picks live in its own guide gets the guide, the way the
@@ -367,7 +377,10 @@ for (const m of kidsSrc.matchAll(/<h3[^>]*>([\s\S]*?)<\/h3>([\s\S]*?)(?=<h3|<h2|
   // it was being dropped on the floor: the room listed 25 swaps in order with
   // nothing saying which ones actually matter most.
   const impact = text((body.match(/class="step-impact[^"]*"[^>]*>[\s\S]*?<\/span>\s*([^<]*)</) || [])[1] || "");
+  const guideLink = (body.match(/class="step-link"[^>]*href="([^"]+)"|href="([^"]+)"[^>]*class="step-link"/) || []);
+  const guide = guideLink[1] || guideLink[2] || "";
   kidsSteps.push({
+    guide,
     id: `Kids::${text(m[1])}`.slice(0, 120),
     swap: text(m[1]),
     why,
@@ -399,21 +412,25 @@ const ALL_STEPS = [...PHASES.flatMap((p) => p.steps), ...kidsSteps];
 const extrasFor = (st) => EXTRAS[st.id] || EXTRAS[st.swap];
 const GUIDE_USE = {};
 for (const st of ALL_STEPS) {
-  const ex = extrasFor(st);
-  if (ex && ex.article) GUIDE_USE[ex.article] = (GUIDE_USE[ex.article] || 0) + 1;
+  const art = (extrasFor(st) || {}).article || st.guide;
+  if (art) GUIDE_USE[art] = (GUIDE_USE[art] || 0) + 1;
 }
 
 let extraCount = 0;
 let faqCount = 0;
 for (const st of ALL_STEPS) {
-  const ex = extrasFor(st);
-  if (!ex) continue;
+  // A swap links its own guide on the page; the extras file only adds FAQs and
+  // a tip. So a swap nobody wrote extras for showed no article at all: the baby
+  // wash swap links its guide and the app said nothing.
+  const ex = extrasFor(st) || {};
+  const art = ex.article || st.guide;
+  if (!art && !ex.tip && !ex.order) continue;
   if (ex.tip) st.tip = ex.tip;
   if (ex.order) st.order = ex.order;
-  if (ex.article) {
-    const bits = articleBits(ex.article, st.swap, st.why, GUIDE_USE[ex.article] === 1, ex.faqs);
+  if (art) {
+    const bits = articleBits(art, st.swap, st.why, GUIDE_USE[art] === 1, ex.faqs);
     if (bits) {
-      st.article = { slug: ex.article, title: bits.title };
+      st.article = { slug: art, title: bits.title };
       if (bits.faqs.length) { st.faqs = bits.faqs; faqCount += bits.faqs.length; }
     }
   }
