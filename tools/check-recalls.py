@@ -198,7 +198,14 @@ def main():
             if scoped and p.get("name") not in applies:
                 # Not this product. We did look, so this is a finding, not a
                 # blank: checked, and what is on record is about other lines.
-                if e["fronts"].get("legal") == "caution" and e.get("legalNote") == (c.get("note") or ""):
+                # A row added after the check ran has no inherited caution to
+                # rescope, only a blank. It is outside the finding just the same,
+                # so it gets the same checked result: ATTITUDE's Health Canada
+                # recall names the Disinfectant lot, and the unscented Nature+
+                # cleaners added later sat blank on a check that had been done.
+                held = e["fronts"].get("legal")
+                if ((held == "caution" and e.get("legalNote") == (c.get("note") or ""))
+                        or held in (None, "unassessed", "unknown")):
                     e["fronts"]["legal"] = "pass"
                     e["legalNote"] = (
                         f"Checked. What is on record concerns other {b['brand']} "
