@@ -490,7 +490,7 @@ export const KIDS = {
     },
     {
      "q": "Is zinc oxide safe for babies?",
-     "a": "Zinc oxide itself is what pediatricians recommend for diaper rash, it is FDA recognized as safe and effective as a skin protectant, and it works. The problem is not the zinc, it is what rides along with it. Zinc oxide is refined from mined ore that naturally contains lead and cadmium, pharmaceutical grade zinc oxide may legally carry up to roughly 10,000 ppb lead, and independent testing has found lead in every zinc diaper cream tested. Our approach: use a zinc free barrier balm for everyday prevention, reserve zinc cream for active rash flares where it genuinely helps, and choose the zinc cream with the lowest tested lead."
+     "a": "Zinc oxide itself is what pediatricians recommend for diaper rash, it is FDA recognized as safe and effective as a skin protectant, and it works. The problem is not the zinc, it is what rides along with it. Zinc oxide is refined from mined ore that naturally contains lead and cadmium, pharmaceutical grade zinc oxide may legally carry up to roughly 10,000 ppb lead, and independent testing has found lead in every zinc diaper cream tested. Our approach: use a zinc free barrier balm in glass for everyday prevention, reserve zinc for active rash flares where it genuinely helps, and choose a low percentage zinc balm in glass with nothing else in the formula."
     },
     {
      "q": "Is Desitin safe for babies?",
