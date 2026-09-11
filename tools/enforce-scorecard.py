@@ -169,6 +169,23 @@ def main():
                             + ", ".join(blank)) if blank else ""
                 cleared_stale += 1
 
+            # The review queue is for readings nobody has confirmed. A caution
+            # that came from recorded evidence, front-evidence.json or the recall
+            # cache, has been confirmed: somebody looked, found it, and wrote down
+            # where. The ceiling below only ever lowers a good or a careful, so a
+            # row parked at unrated on recorded evidence was out of its reach
+            # forever. Weleda's diaper cream, with a lacquered tube and a lead
+            # result both on record, stayed on sale as backlog instead of careful.
+            adverse_here = [k for k in FRONTS if f.get(k) in ("caution", "fail")]
+            og = e.get("frontOrigin") or {}
+            if (str(e.get("why") or "").startswith("the note reads adversely")
+                    and adverse_here
+                    and all(og.get(k) in ("database", "hand") for k in adverse_here)):
+                e["verdict"] = "skip" if any(f.get(k) == "fail" for k in adverse_here) else "careful"
+                e["why"] = ("section 6 ceiling: "
+                            + ", ".join(f"{k} is {f.get(k)}" for k in adverse_here)
+                            + ", on recorded evidence")
+
             # Give a held back row its verdict back once the checks arrive.
             if e.get("verdict") == "unrated" and e.get("heldFrom") and not blank:
                 e["verdict"] = e.pop("heldFrom")

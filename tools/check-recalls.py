@@ -207,6 +207,10 @@ def main():
                 if ((held == "caution" and e.get("legalNote") == (c.get("note") or ""))
                         or held in (None, "unassessed", "unknown")):
                     e["fronts"]["legal"] = "pass"
+                    # Recorded, so the rules that run after this read it as a
+                    # checked result. Without the origin the next pass rebuilt
+                    # the front from the row's own note and blanked it again.
+                    e.setdefault("frontOrigin", {})["legal"] = "database"
                     e["legalNote"] = (
                         f"Checked. What is on record concerns other {b['brand']} "
                         f"products, not this one: {c.get('note') or ''}")
