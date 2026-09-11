@@ -17348,7 +17348,7 @@
             "formula"
           ],
           "verdict": "careful",
-          "dated": "2026-09-08",
+          "dated": "2026-09-11",
           "why": "section 6 ceiling: materials is caution, on recorded evidence",
           "fronts": {
             "formula": "none",
@@ -17999,7 +17999,7 @@
             "formula": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear."
           },
           "verdict": "careful",
-          "dated": "2026-08-29",
+          "dated": "2026-09-11",
           "why": "section 6 ceiling: materials is caution, on recorded evidence",
           "fronts": {
             "formula": "pass",
@@ -19161,7 +19161,7 @@
           "cappedFrom": "good",
           "capRestoreWhy": "Reviewed by hand from our published research on this category.",
           "verdict": "skip",
-          "dated": "2026-09-08",
+          "dated": "2026-09-11",
           "why": "section 6 ceiling: formula is fail, on recorded evidence",
           "fronts": {
             "formula": "fail",
@@ -39256,7 +39256,6 @@
         "ext": {
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
           "frontNotes": {
-            "materials": "What this is made of has not been established. The earlier reading described its packaging, which is a different question.",
             "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
             "formula": "An object has no ingredient list. What it is made of is the materials check."
           },
@@ -39271,8 +39270,8 @@
           },
           "frontOrigin": {
             "legal": "database",
-            "materials": "inferred",
-            "formula": "hand"
+            "formula": "hand",
+            "materials": "inferred"
           },
           "scope": "sku",
           "basis": "direct",
@@ -39280,8 +39279,7 @@
           "rules": [
             "2 formula-read-from-materials",
             "5.4 durable-good-is-its-own-packaging"
-          ],
-          "authored": true
+          ]
         },
         "cat": "Cutting boards",
         "matchAll": [
@@ -64202,7 +64200,7 @@
             "formula"
           ],
           "verdict": "careful",
-          "dated": "2026-08-28",
+          "dated": "2026-09-11",
           "why": "section 6 ceiling: materials is caution, on recorded evidence",
           "fronts": {
             "formula": "none",
@@ -66719,27 +66717,27 @@
         "verdict": "good",
         "note": "Aluminium free tallow based stick with a short, fully disclosed ingredient list and no synthetic fragrance. Tallow and arrowroot rather than a polymer thickener.",
         "ext": {
-          "verdict": "good",
+          "verdict": "skip",
           "dated": "2026-08-29",
-          "why": "",
+          "why": "section 6 ceiling: materials is fail",
           "fronts": {
             "formula": "pass",
             "legal": "pass",
             "testing": "unassessed",
-            "materials": "pass"
+            "materials": "fail"
           },
           "scope": "line",
           "basis": "direct",
           "disclose": false,
           "frontNotes": {
-            "formula": "Aluminium free tallow based stick with a short, fully disclosed ingredient list and no synthetic fragrance.",
-            "legal": "Checked. What is on record concerns other Primally Pure products, not this one: Checked on 2026-09-10. No recall, class action, FDA warning letter or Proposition 65 notice found. On 2025-09-04 the National Advertising Division referred Primally Pure to the FTC and to ad platforms after the company did not respond to a challenge of its Sun Cream claims that the product is a safer alternative to conventional sunscreens with toxic ingredients; an advertising claims referral, scoped to the sun cream. A blog's mention of a 2018 'all natural' suit could not be substantiated in any court record and is not recorded."
+            "legal": "Checked. What is on record concerns other Primally Pure products, not this one: Checked on 2026-09-10. No recall, class action, FDA warning letter or Proposition 65 notice found. On 2025-09-04 the National Advertising Division referred Primally Pure to the FTC and to ad platforms after the company did not respond to a challenge of its Sun Cream claims that the product is a safer alternative to conventional sunscreens with toxic ingredients; an advertising claims referral, scoped to the sun cream. A blog's mention of a 2018 'all natural' suit could not be substantiated in any court record and is not recorded.",
+            "materials": "anhydrous contents in plastic."
           },
           "legalNote": "Checked. What is on record concerns other Primally Pure products, not this one: Checked on 2026-09-10. No recall, class action, FDA warning letter or Proposition 65 notice found. On 2025-09-04 the National Advertising Division referred Primally Pure to the FTC and to ad platforms after the company did not respond to a challenge of its Sun Cream claims that the product is a safer alternative to conventional sunscreens with toxic ingredients; an advertising claims referral, scoped to the sun cream. A blog's mention of a 2018 'all natural' suit could not be substantiated in any court record and is not recorded.",
           "frontOrigin": {
             "formula": "stated",
             "legal": "hand",
-            "materials": "inferred"
+            "materials": "database"
           },
           "exposure": {
             "type": "leave-on skin",
@@ -66754,7 +66752,32 @@
             "fat": true,
             "why": "Left on the skin, so contact runs for hours."
           },
-          "authored": true
+          "authored": true,
+          "formulaAnswers": {
+            "ingredients": "",
+            "prose": "",
+            "complete": false,
+            "verdict": "good",
+            "summary": "No ingredient list recorded.",
+            "flagged": [],
+            "source": "",
+            "checked": ""
+          },
+          "materialsList": "plastic",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "anhydrous",
+            "heated": false,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "plastic",
+            "source": "BPA free plastic twist up tube with a screw cap (EWG Skin Deep, Skinsort); the stick is arrowroot, coconut oil, grass fed tallow, beeswax, baking soda, zinc oxide and kaolin, an anhydrous solid. Wild sells a deodorant in a paperboard cartridge, so rule 3.6 does not apply",
+            "checked": "2026-09-11"
+          },
+          "cappedFrom": "good",
+          "capRestoreWhy": ""
         },
         "origin": "hand",
         "matchAll": [
@@ -87471,7 +87494,7 @@
           "testingNote": "Lead Safe Mama's 2025 to 2026 diaper cream series: the lowest lead result of every zinc cream tested, but lead, cadmium and arsenic were still detected. The metals ride in on the zinc oxide.",
           "testingDate": "2026-09-11",
           "verdict": "careful",
-          "dated": "2026-08-28",
+          "dated": "2026-09-11",
           "why": "section 6 ceiling: materials is caution, testing is caution, on recorded evidence",
           "fronts": {
             "formula": "pass",
