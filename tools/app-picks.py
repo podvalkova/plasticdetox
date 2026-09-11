@@ -17,6 +17,9 @@ Rules, each a failure:
   5  every app swap pick has a brand-data row and is not careful or skip;
      picks still unrated may not grow past data/app-picks-backlog.json
      (--accept locks in a lower count)
+  6  a careful or skip verdict names the check it rests on. 126 rows carried
+     one with all four checks blank, so a card showed CAREFUL over a single
+     green tick and three gaps. Capped by data/verdict-anchor-backlog.json
 
 It reads the generated app data (app/www/data/plan.json and
 worker/kids-data.js), so run app/scripts/sync-data.mjs after editing a swap.
@@ -85,6 +88,26 @@ def main():
                         bad.append(f"!! pick with no brand-data row: {where} / {p.get('name')} ({asin})")
                     elif v != "good":
                         unrated.append(f"{where} / {p.get('name')}")
+    # Rule 6: a verdict has to name the check behind it.
+    FRONTS = ("formula", "materials", "legal", "testing")
+    unanchored = []
+    for b in json.loads((ROOT / "brand-data.json").read_text()):
+        for p in b.get("products") or []:
+            e = p.get("ext") or {}
+            fr = e.get("fronts") or {}
+            if e.get("verdict") in ("careful", "skip") and not [
+                    k for k in FRONTS if fr.get(k) in ("caution", "fail")]:
+                unanchored.append(f"{b['brand']} / {p.get('name')}")
+    anchor_file = ROOT / "data" / "verdict-anchor-backlog.json"
+    anchor_ceiling = (json.loads(anchor_file.read_text()).get("unanchored")
+                      if anchor_file.exists() else None)
+    if "--accept" in sys.argv:
+        anchor_file.write_text(json.dumps({"unanchored": len(unanchored)}) + "\n")
+        anchor_ceiling = len(unanchored)
+    if anchor_ceiling is not None and len(unanchored) > anchor_ceiling:
+        bad.append(f"!! verdicts with no check behind them grew: "
+                   f"{len(unanchored)} > {anchor_ceiling}")
+
     no_row = [a for a in catalog if re.fullmatch(r"[A-Z0-9]{10}", a) and a not in verdict]
     ceiling_file = ROOT / "data" / "app-picks-backlog.json"
     ceiling = json.loads(ceiling_file.read_text()).get("unrated", 0) if ceiling_file.exists() else None
@@ -99,6 +122,7 @@ def main():
     print(f"{picks} swap picks, each with a photo, pros and cons; every swap has its guide")
     print(f"catalog holds every store product and nothing careful or skip ({len(catalog)} entries)")
     print(f"unrated swap picks: {len(unrated)} (ceiling {ceiling})")
+    print(f"verdicts with no check behind them: {len(unanchored)} (ceiling {anchor_ceiling})")
     if no_row:
         print(f"note: {len(no_row)} catalog products have no brand-data row: {', '.join(no_row)}")
     return 0

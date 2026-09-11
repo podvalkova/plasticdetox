@@ -130,8 +130,20 @@ def main():
                 # they act on stated materials and containers, never on the
                 # prose classifier's guesswork, and they never touch a front
                 # the author actually set.
-                cleaned = _a.evidence_text(p)
+                cleaned = _a.evidence_text(p) or _a.clean_note(b.get("reason"))
                 ctx = f"{p.get('name') or ''} {b.get('category') or ''}"
+                # A person's verdict stands, and the card still has to show the
+                # check behind it. Where their own note names one and they left
+                # it blank, mark it, inferred, so a careful is not a badge over
+                # four gaps. Never touches a front they set.
+                if p["ext"].get("verdict") in ("careful", "skip") and not [
+                        k for k in _a.FRONTS if fr.get(k) in ("caution", "fail")]:
+                    for k, rx in _a.NOTE_CONCERNS.items():
+                        if fr.get(k) in (None, "", "unassessed", "unknown") and rx.search(cleaned.lower()):
+                            fr[k] = "caution"
+                            p["ext"].setdefault("frontNotes", {})[k] = \
+                                "The note on this row reads adversely here."
+                            p["ext"].setdefault("frontOrigin", {})[k] = "inferred"
                 if fr.get("materials") in (None, "unassessed", "unknown"):
                     pk, pk_why = _a.packaging_severity(cleaned, ctx)
                     if pk:
@@ -169,8 +181,13 @@ def main():
                 # The same cleaned text apply_rules read. The raw note carries
                 # caveat lists and contrast clauses that are not claims about
                 # this product, and correct() must not trip on them either.
+                #
+                # A brand line row ("Whole range") carries no note of its own:
+                # its finding is the brand's reason, which is what the card
+                # prints. The anchor has to read the text the reader sees, or
+                # Aquafina's skip points at nothing.
                 v, why, disclose = _a.correct(p.get("verdict"), f,
-                                              _a.evidence_text(p),
+                                              _a.evidence_text(p) or _a.clean_note(b.get("reason")),
                                               scope, basis, consumable=consumable,
                                               origin=_a.on_sale_origin(p))
             prev = (p.get("ext") or {})

@@ -726,6 +726,29 @@ def on_sale_origin(p):
         return "research"
     return o
 
+# Which check a row's own note is talking about, for rule 6's anchor above.
+# Written from the notes that actually carry these verdicts: coatings and
+# nonstick, foam cores, chemical sunscreen filters, an unnamed gum base,
+# viscose processing, and claims with no third party behind them.
+NOTE_CONCERNS = {
+    "materials": re.compile(
+        r"plastic|polypropylene|polyethylene|\bpvc\b|\bpet\b|\babs\b|phthalate|\bbpa\b|"
+        r"fibre|fiber|bottle|tube|jar|packag|lining|liner|laminat|silicone|"
+        r"coat(ed|ing)|nonstick|non stick|ptfe|teflon|foam|polyurethane|vinyl|"
+        r"viscose|rayon|melamine|aluminium|aluminum|cavity|mould|mold", re.I),
+    "legal": re.compile(
+        r"lawsuit|class action|recall|settle|attorney general|prop(osition)? 65|"
+        r"warning letter|\bsued\b|consent decree", re.I),
+    "testing": re.compile(
+        r"tested|testing|lab\b|\bppb\b|\bppm\b|detect|study|screening|"
+        r"no third party|not verified|manufacturer's own|unverified", re.I),
+    "formula": re.compile(
+        r"ingredient|fragrance|parfum|formula|preservative|\bdye\b|\bsls\b|paraben|"
+        r"undisclosed|chemical (filter|sunscreen)|octinoxate|oxybenzone|avobenzone|"
+        r"gum base|aspartame|artificial", re.I),
+}
+
+
 def correct(old, f, note, scope, basis, strict=False, lenient=False, consumable=True,
             origin=None):
     """
@@ -759,6 +782,26 @@ def correct(old, f, note, scope, basis, strict=False, lenient=False, consumable=
                 adverse = [k for k in FRONTS if st[k] in ("fail", "caution")]
                 if adverse in ([], ["legal"]):
                     return "unrated", f"recall closed and remedied in {max(years)}, now informational", False
+        # A verdict has to point at the check that produced it.
+        #
+        # 126 rows carried a careful or a skip with all four fronts blank, so
+        # the Huggies wipes card showed CAREFUL above a single green formula
+        # tick and three gaps. The finding is in the row's own text; it belongs
+        # on the front it concerns. This only ever fills a blank with a caution
+        # and never moves the verdict: an earlier version held the row when the
+        # text named no front, which dropped real warnings on brand line rows
+        # whose finding lives in the brand reason, and let the ceiling re-award
+        # two capped cutting boards. Prose may warn and may never clear, so the
+        # front stays `inferred`, below any recorded answer.
+        if not [k for k in FRONTS if st[k] in ("fail", "caution")]:
+            concerns = [k for k, rx in NOTE_CONCERNS.items() if rx.search(low)]
+            for k in concerns:
+                if st[k] in ("unassessed", "unknown", None, ""):
+                    f[k] = {"status": "caution",
+                            "note": "The note on this row reads adversely here.",
+                            "origin": "rule-6-anchor"}
+            if concerns:
+                return old, f"adverse finding stands, on {', '.join(concerns)}", basis != "direct"
         return old, "adverse finding stands", basis != "direct"
 
     # ---- neutral ----------------------------------------------------------

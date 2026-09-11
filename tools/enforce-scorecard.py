@@ -147,6 +147,34 @@ def main():
     by_cat = collections.Counter()
     examples = []
 
+    # The brand card is a recommendation too.
+    #
+    # A brand stance is shown wherever we have no product row: the app, the
+    # site and the extension all print "Good choice" off it. HealthyBaby's card
+    # said that over three blank checks and a fourth our own prose implied,
+    # which is the thing this file exists to stop on products. Section 2 lets
+    # only recorded evidence clear, so a positive brand stance needs at least
+    # one check actually recorded: a lab result, a database answer, or a
+    # person's research. Prose we wrote does not count. An adverse stance is
+    # untouched, because rule 1.1 lets a warning rest on a single finding.
+    RECORDED = {"database", "hand", "stated", "rollup"}
+    brand_held = brand_back = 0
+    for b in brands:
+        fronts = b.get("fronts") or {}
+        recorded = [k for k in FRONTS
+                    if isinstance(fronts.get(k), dict)
+                    and fronts[k].get("status") in ("pass", "caution", "fail", "none")
+                    and fronts[k].get("origin") in RECORDED]
+        if b.get("stance") == "good" and not recorded:
+            b["stanceHeld"] = "good"
+            b["stance"] = "neutral"
+            brand_held += 1
+        elif b.get("stanceHeld") and recorded:
+            b["stance"] = b.pop("stanceHeld")
+            brand_back += 1
+    print(f"  brand stances held for want of a recorded check: {brand_held}"
+          f"{f', restored: {brand_back}' if brand_back else ''}")
+
     for b in brands:
         for p in (b.get("products") or []):
             e = p.get("ext")
