@@ -4131,26 +4131,27 @@
           ]
         ],
         "ext": {
-          "verdict": "good",
-          "why": "named ingredients with no fragrance umbrella, on an aqueous formula the plastic does not extract",
+          "verdict": "careful",
+          "why": "section 6 ceiling: formula is caution",
           "dated": "2026-09-08",
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
           "fronts": {
-            "formula": "pass",
+            "formula": "caution",
             "materials": "pass",
             "legal": "none",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "formula": "stated",
+            "formula": "database",
             "materials": "stated",
             "legal": "database"
           },
           "frontNotes": {
             "materials": "A plastic twist up tube holding a water and glycol based stick. Rule 3.1: an aqueous formula is a poor solvent for what a polyolefin sheds, so this pairing passes.",
-            "legal": "Checked the FDA drug enforcement database on 2026-09-08. Church & Dwight's records are a sodium bicarbonate raw material and Orajel Baby swabs, neither of them deodorant."
+            "legal": "Checked the FDA drug enforcement database on 2026-09-08. Church & Dwight's records are a sodium bicarbonate raw material and Orajel Baby swabs, neither of them deodorant.",
+            "formula": "The published ingredient list hides composition behind fragrance."
           },
           "legalNote": "Checked the FDA drug enforcement database on 2026-09-08. Church & Dwight's records are a sodium bicarbonate raw material and Orajel Baby swabs, neither of them deodorant.",
           "exposure": {
@@ -4168,17 +4169,68 @@
           },
           "authored": true,
           "formulaAnswers": {
-            "ingredients": "",
+            "ingredients": "Propylene glycol, water, sodium stearate, sodium bicarbonate, bergamot peel oil, coconut oil, geranium flower oil, fragrance, ethylhexylglycerin, octenidine HCl, tetrasodium EDTA, allantoin",
             "prose": "",
-            "complete": false,
-            "verdict": "good",
-            "summary": "No ingredient list recorded.",
-            "flagged": [],
-            "source": "",
-            "checked": ""
-          }
+            "complete": true,
+            "verdict": "careful",
+            "summary": "The published ingredient list hides composition behind fragrance.",
+            "flagged": [
+              "fragrance"
+            ],
+            "source": "SkinSafe and retailer panels for the Coconut Geranium variant, which is the ASIN we sold",
+            "checked": "2026-09-11"
+          },
+          "cappedFrom": "good",
+          "capRestoreWhy": "named ingredients with no fragrance umbrella, on an aqueous formula the plastic does not extract"
         },
         "research": "Ingredients: dipropylene glycol, water, propylene glycol, sodium stearate, sodium bicarbonate, ethylene brassylate, guaiacwood oil, cedarwood oil, ethylhexylglycerin, octenidine HCl, tetrasodium EDTA, allantoin."
+      },
+      {
+        "name": "Essentials Deodorant, Unscented",
+        "asins": [
+          "B00E3B47ZQ"
+        ],
+        "verdict": "unrated",
+        "origin": "store",
+        "note": "Unscented, aluminum free, every ingredient named.",
+        "matchAll": [
+          [
+            "arm",
+            "hammer",
+            "essentials",
+            "unscented"
+          ]
+        ],
+        "ext": {
+          "frontNotes": {
+            "formula": "The published ingredient list carries nothing on the hazard list.",
+            "materials": "aqueous contents in plastic."
+          },
+          "verdict": "unrated",
+          "dated": "2026-09-11",
+          "why": "a recommendation needs its checks done; still to do: legal",
+          "fronts": {
+            "formula": "pass",
+            "materials": "pass",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "frontOrigin": {
+            "formula": "database",
+            "materials": "database"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": [
+            "2 formula-read-from-materials"
+          ],
+          "heldFrom": "good",
+          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
+          "heldBack": [
+            "legal"
+          ]
+        }
       }
     ],
     "fronts": {
