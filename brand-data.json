@@ -4441,12 +4441,12 @@
       },
       {
         "name": "Classic",
-        "verdict": "careful",
-        "note": "Same certification set, but stores filtered water in a plastic tank.",
+        "verdict": "good",
+        "note": "Countertop reverse osmosis with the same certification set as the Glass Carafe. It stores filtered water in a plastic tank, which every reverse osmosis system does: under rule 3.6 that is recorded, not counted, because no glass or steel RO exists and filtering removes far more than the tank contributes.",
         "ext": {
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
           "frontNotes": {
-            "materials": "What this is made of has not been established. The earlier reading described its packaging, which is a different question.",
+            "materials": "aqueous contents in plastic.",
             "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
             "formula": "An object has no ingredient list. What it is made of is the materials check."
           },
@@ -4463,9 +4463,22 @@
             "fat": false,
             "why": "Drunk in quantity, every day, for years."
           },
-          "verdict": "careful",
+          "materialsList": "plastic",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "water",
+            "heated": false,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "plastic",
+            "source": "Countertop reverse osmosis: polymer housings, a polyamide membrane and a plastic storage tank. No glass or steel RO system is sold, so under rule 3.6 the polymer is a note rather than a cap, and filtering removes far more than the tank contributes",
+            "checked": "2026-09-11"
+          },
+          "verdict": "good",
           "dated": "2026-08-28",
-          "why": "adverse finding stands, on materials",
+          "why": "independent lab result at line scope",
           "fronts": {
             "formula": "none",
             "materials": "pass",
@@ -4475,7 +4488,7 @@
           "frontOrigin": {
             "legal": "database",
             "testing": "inferred",
-            "materials": "inferred",
+            "materials": "database",
             "formula": "hand"
           },
           "scope": "line",
@@ -12462,7 +12475,7 @@
           "why": "Reviewed by hand from our published research on this category.",
           "fronts": {
             "formula": "none",
-            "materials": "caution",
+            "materials": "unassessed",
             "legal": "caution",
             "testing": "unassessed"
           },
@@ -12473,7 +12486,7 @@
           "dated": "2026-09-08",
           "frontNotes": {
             "formula": "An object has no ingredient list. What it is made of is the materials check.",
-            "materials": "The note on this row reads adversely here.",
+            "materials": "We have not established what the product actually touches.",
             "legal": "The note on this row reads adversely here."
           },
           "exposure": {
@@ -12491,7 +12504,6 @@
           },
           "frontOrigin": {
             "formula": "hand",
-            "materials": "inferred",
             "legal": "inferred"
           },
           "materialAnswers": {
@@ -24102,7 +24114,7 @@
           "why": "Reviewed by hand from our published research on this category.",
           "fronts": {
             "formula": "none",
-            "materials": "caution",
+            "materials": "unassessed",
             "legal": "pass",
             "testing": "caution"
           },
@@ -24115,13 +24127,12 @@
           "frontNotes": {
             "legal": "Checked recall records on 2026-08-31. The February 2023 recall of 2 million Cosori air fryers (overheating connectors) was remedied by replacement and did not cover the kettles we feature; over 24 months, now informational.",
             "formula": "An object has no ingredient list. What it is made of is the materials check.",
-            "materials": "The note on this row reads adversely here.",
+            "materials": "We have not established what the product actually touches.",
             "testing": "The note on this row reads adversely here."
           },
           "frontOrigin": {
             "legal": "database",
             "formula": "hand",
-            "materials": "inferred",
             "testing": "inferred"
           },
           "exposure": {
@@ -26868,7 +26879,7 @@
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
             "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-            "materials": "Made of glass, which the product name states, and which puts nothing into what it touches.",
+            "materials": "aqueous contents in plastic, heated in use.",
             "formula": "An object has no ingredient list. What it is made of is the materials check."
           },
           "inheritedFronts": [
@@ -26887,25 +26898,27 @@
             "fat": false,
             "why": "Food sits in it, often for hours."
           },
-          "materialsList": "glass",
+          "materialsList": "glass, plastic",
           "materialAnswers": {
-            "contact": null,
-            "contactFrom": "stated in the product name",
-            "base": "",
-            "heated": false,
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "aqueous",
+            "heated": true,
             "mouthed": false,
             "reuse": "",
             "use": "",
-            "material": "glass",
-            "source": "product name",
-            "checked": "2026-09-02"
+            "material": "glass, plastic",
+            "source": "Borosilicate glass body with a plastic lid. Food is reheated in the box, and the steam reaches the lid, so the lid is the contact part that decides",
+            "checked": "2026-09-11"
           },
+          "cappedFrom": "careful",
+          "capRestoreWhy": "adverse finding stands",
           "verdict": "careful",
-          "dated": "2026-09-08",
+          "dated": "2026-09-11",
           "why": "adverse finding stands",
           "fronts": {
             "formula": "none",
-            "materials": "pass",
+            "materials": "caution",
             "legal": "pass",
             "testing": "unassessed"
           },
@@ -36519,7 +36532,7 @@
           "why": "Reviewed by hand from our published research on this category.",
           "fronts": {
             "formula": "none",
-            "materials": "caution",
+            "materials": "unassessed",
             "legal": "caution",
             "testing": "unassessed"
           },
@@ -36530,7 +36543,7 @@
           "dated": "2026-09-08",
           "frontNotes": {
             "formula": "An object has no ingredient list. What it is made of is the materials check.",
-            "materials": "The note on this row reads adversely here.",
+            "materials": "We have not established what the product actually touches.",
             "legal": "The note on this row reads adversely here."
           },
           "exposure": {
@@ -36548,7 +36561,6 @@
           },
           "frontOrigin": {
             "formula": "hand",
-            "materials": "inferred",
             "legal": "inferred"
           },
           "materialAnswers": {
@@ -58097,6 +58109,7 @@
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
           "frontNotes": {
             "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
+            "materials": "aqueous contents in plastic.",
             "formula": "An object has no ingredient list. What it is made of is the materials check."
           },
           "exposure": {
@@ -58112,17 +58125,31 @@
             "fat": false,
             "why": "Drunk in quantity, every day, for years."
           },
+          "materialsList": "plastic",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "water",
+            "heated": false,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "plastic",
+            "source": "Hollow fibre membrane in a plastic bottle. No glass or steel filter bottle exists, so under rule 3.6 the polymer is recorded rather than counted",
+            "checked": "2026-09-11"
+          },
           "verdict": "careful",
           "dated": "2026-08-28",
           "why": "adverse finding stands",
           "fronts": {
             "formula": "none",
-            "materials": "unassessed",
+            "materials": "pass",
             "legal": "none",
             "testing": "unassessed"
           },
           "frontOrigin": {
             "legal": "database",
+            "materials": "database",
             "formula": "hand"
           },
           "scope": "line",
@@ -84416,7 +84443,7 @@
           "why": "Reviewed by hand from our published research on this category.",
           "fronts": {
             "formula": "unassessed",
-            "materials": "pass",
+            "materials": "caution",
             "legal": "pass",
             "testing": "unassessed"
           },
@@ -84429,10 +84456,11 @@
           "frontNotes": {
             "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
             "formula": "No ingredient list recorded.",
-            "materials": "Dry contents in unspecified plastic, diluted and rinsed, never left on skin."
+            "materials": "dry contents in plastic, repeated contact over time."
           },
           "frontOrigin": {
-            "legal": "database"
+            "legal": "database",
+            "materials": "database"
           },
           "exposure": {
             "type": "supplement",
@@ -84456,6 +84484,19 @@
             "flagged": [],
             "source": "amazon:B09W363MVD",
             "checked": ""
+          },
+          "materialsList": "plastic",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "dry",
+            "heated": false,
+            "mouthed": false,
+            "reuse": "daily",
+            "use": "",
+            "material": "plastic",
+            "source": "Delayed release capsules in a single day plastic packet: one dose per packet is the highest packaging surface area to dose ratio in the category",
+            "checked": "2026-09-11"
           }
         },
         "cat": "Prenatal vitamins"
@@ -85032,7 +85073,7 @@
           "frontNotes": {
             "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
             "formula": "An object has no ingredient list. What it is made of is the materials check.",
-            "materials": "Made of glass, which the product name states, and which puts nothing into what it touches."
+            "materials": "aqueous contents in plastic, heated in use."
           },
           "exposure": {
             "type": "food vessel",
@@ -85047,25 +85088,27 @@
             "fat": false,
             "why": "Food sits in it, often for hours."
           },
-          "materialsList": "glass",
+          "materialsList": "glass, plastic",
           "materialAnswers": {
-            "contact": null,
-            "contactFrom": "stated in the product name",
-            "base": "",
-            "heated": false,
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "aqueous",
+            "heated": true,
             "mouthed": false,
             "reuse": "",
             "use": "",
-            "material": "glass",
-            "source": "product name",
-            "checked": ""
+            "material": "glass, plastic",
+            "source": "Borosilicate glass body with a plastic lid. Food is reheated in the box, and the steam reaches the lid, so the lid is the contact part that decides",
+            "checked": "2026-09-11"
           },
+          "cappedFrom": "careful",
+          "capRestoreWhy": "adverse finding stands",
           "verdict": "careful",
-          "dated": "2026-09-08",
+          "dated": "2026-09-11",
           "why": "adverse finding stands",
           "fronts": {
             "formula": "none",
-            "materials": "pass",
+            "materials": "caution",
             "legal": "pass",
             "testing": "unassessed"
           },
@@ -90361,7 +90404,7 @@
           "fronts": {
             "formula": "none",
             "legal": "unassessed",
-            "testing": "unassessed",
+            "testing": "caution",
             "materials": "pass"
           },
           "scope": "line",
@@ -90370,10 +90413,13 @@
           "authored": true,
           "frontNotes": {
             "formula": "An object has no ingredient list. What it is made of is the materials check.",
-            "materials": "What this is made of has not been established. The earlier reading described its packaging, which is a different question."
+            "materials": "In contact with rubber, which puts nothing into what it holds.",
+            "testing": "A sealed interior cavity fills with water during washing and cannot be dried. Cut open examples showed mould colonies growing inside a toy that is chewed daily. The finding is the design, not the rubber"
           },
           "frontOrigin": {
-            "formula": "hand"
+            "formula": "hand",
+            "testing": "database",
+            "materials": "database"
           },
           "exposure": {
             "type": "mouthed object",
@@ -90387,6 +90433,21 @@
             "heat": false,
             "fat": false,
             "why": "In a baby's mouth for hours, and being chewed."
+          },
+          "testingNote": "A sealed interior cavity fills with water during washing and cannot be dried. Cut open examples showed mould colonies growing inside a toy that is chewed daily. The finding is the design, not the rubber",
+          "testingDate": "2026-09-11",
+          "materialsList": "natural rubber",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "saliva",
+            "heated": false,
+            "mouthed": true,
+            "reuse": "",
+            "use": "",
+            "material": "natural rubber",
+            "source": "Natural rubber with food grade paint. The material itself is sound",
+            "checked": "2026-09-11"
           }
         },
         "cat": "Teethers"
@@ -98311,8 +98372,7 @@
           "disclose": false,
           "authored": true,
           "frontNotes": {
-            "materials": "Emulsion contents in unspecified plastic, rinsed off.",
-            "formula": "The note on this row reads adversely here."
+            "materials": "Emulsion contents in unspecified plastic, rinsed off."
           },
           "frontOrigin": {
             "materials": "stated",
@@ -98335,7 +98395,7 @@
             "ingredients": "",
             "prose": "",
             "complete": false,
-            "verdict": "open",
+            "verdict": "careful",
             "summary": "No ingredient list recorded.",
             "flagged": [],
             "source": "amazon:B00GJ7XDU2",
@@ -98860,7 +98920,6 @@
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
             "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
-            "formula": "The note on this row reads adversely here.",
             "testing": "The note on this row reads adversely here."
           },
           "frontOrigin": {
@@ -98885,7 +98944,7 @@
             "ingredients": "",
             "prose": "",
             "complete": false,
-            "verdict": "open",
+            "verdict": "careful",
             "summary": "No ingredient list recorded.",
             "flagged": [],
             "source": "amazon:B000GCL2B8",

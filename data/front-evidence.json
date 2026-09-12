@@ -3995,9 +3995,13 @@
  "B08BR9HBZ3": {
   "_product": "Rubbermaid Brilliance glass containers with plastic lids",
   "materials": {
-   "contactFrom": "stated in the product name",
-   "material": "glass",
-   "source": "product name"
+   "checked": "2026-09-11",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "base": "aqueous",
+   "heated": true,
+   "material": "glass, plastic",
+   "source": "Borosilicate glass body with a plastic lid. Food is reheated in the box, and the steam reaches the lid, so the lid is the contact part that decides"
   }
  },
  "B08CRPWQHB": {
@@ -4989,6 +4993,15 @@
    "complete": false,
    "prose": "",
    "source": "amazon:B09W363MVD"
+  },
+  "materials": {
+   "checked": "2026-09-11",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "base": "dry",
+   "reuse": "daily",
+   "material": "plastic",
+   "source": "Delayed release capsules in a single day plastic packet: one dose per packet is the highest packaging surface area to dose ratio in the category"
   }
  },
  "B09W4PLVQP": {
@@ -7315,10 +7328,13 @@
  "B0GRTKQBCN": {
   "_product": "Dealusy Dealusy glass containers with plastic lids",
   "materials": {
-   "checkedListing": "2026-09-02",
-   "contactFrom": "stated in the product name",
-   "material": "glass",
-   "source": "product name"
+   "checked": "2026-09-11",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "base": "aqueous",
+   "heated": true,
+   "material": "glass, plastic",
+   "source": "Borosilicate glass body with a plastic lid. Food is reheated in the box, and the steam reaches the lid, so the lid is the contact part that decides"
   }
  },
  "B0GSPD9FZ6": {
@@ -8268,6 +8284,48 @@
    "checked": "2026-09-11",
    "source": "https://mamavation.com/food/premium-coffee-tested-for-mycotoxins-pesticides.html",
    "note": "Mamavation, 19 August 2024, EPA certified labs: Purity Coffee placed in the 'not our favorite' tier. 2-phenylphenol, a post harvest fungicide, at 0.015 mg/kg in Purity Flow, and 187 ppm organic fluorine in the Ease sachet material. Mycotoxins, mold, yeast and 40 PFAS analytes were non detect. A pesticide residue rides in on the beans, which under rule 4 is ingredient borne and reaches the line rather than one bag."
+  }
+ },
+ "AquaTru::Classic": {
+  "_product": "AquaTru Classic countertop reverse osmosis",
+  "materials": {
+   "checked": "2026-09-11",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "base": "water",
+   "material": "plastic",
+   "format": "countertop reverse osmosis",
+   "source": "Countertop reverse osmosis: polymer housings, a polyamide membrane and a plastic storage tank. No glass or steel RO system is sold, so under rule 3.6 the polymer is a note rather than a cap, and filtering removes far more than the tank contributes"
+  }
+ },
+ "LifeStraw::Filter bottles and straws": {
+  "_product": "LifeStraw filter bottles and straws",
+  "materials": {
+   "checked": "2026-09-11",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "base": "water",
+   "material": "plastic",
+   "format": "filter bottle",
+   "source": "Hollow fibre membrane in a plastic bottle. No glass or steel filter bottle exists, so under rule 3.6 the polymer is recorded rather than counted"
+  }
+ },
+ "B000IDSLOG": {
+  "_product": "Sophie la Girafe teether",
+  "materials": {
+   "checked": "2026-09-11",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "base": "saliva",
+   "material": "natural rubber",
+   "mouthed": true,
+   "source": "Natural rubber with food grade paint. The material itself is sound"
+  },
+  "testing": {
+   "status": "caution",
+   "checked": "2026-09-11",
+   "source": "Le Parisien laboratory examination, 2017, reported widely; owner reports of the same",
+   "note": "A sealed interior cavity fills with water during washing and cannot be dried. Cut open examples showed mould colonies growing inside a toy that is chewed daily. The finding is the design, not the rubber"
   }
  }
 }
