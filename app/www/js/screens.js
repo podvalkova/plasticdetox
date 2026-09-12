@@ -1399,7 +1399,15 @@ function worthKnowing(ext, fronts, shown = []) {
 
 export function result(root, { index, match, scan, product, query, productNamed, onArticle,
   onOpen, onPick, onProduct, onSave, isSaved, onRequest }) {
-  const v = verdictFor(match, { title: (scan && scan.title) || query || "", product, productNamed });
+  // A barcode bound to an ASIN names the exact product, which is better than
+  // any title match: productFor prefers `asins` and falls back to phrases.
+  // Without this the binding sat in the data and the card still read the
+  // manufacturer's words off the label.
+  const v = verdictFor(match, {
+    title: (scan && scan.title) || query || "",
+    asin: (match && match.hint && match.hint.asin) || (scan && scan.asin) || "",
+    product, productNamed,
+  });
 
   const stanceClass = v.asserted && ["good", "careful", "skip"].includes(v.stance)
     ? ` v-${v.stance}` : "";

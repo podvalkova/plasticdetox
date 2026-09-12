@@ -17989,12 +17989,28 @@
         "matchAll": [
           [
             "caboo",
+            "baby",
             "wipe"
           ],
           [
             "caboo",
+            "baby",
             "wipes"
+          ],
+          [
+            "caboo",
+            "tree",
+            "free",
+            "wipe"
           ]
+        ],
+        "matchNot": [
+          "pet",
+          "cleaning",
+          "flushable",
+          "paper towel",
+          "napkin",
+          "toilet"
         ]
       },
       {
@@ -21507,7 +21523,14 @@
           "disclose": false,
           "rules": []
         },
-        "cat": "Water filters"
+        "cat": "Water filters",
+        "matchAll": [
+          [
+            "clearly",
+            "filtered",
+            "pitcher"
+          ]
+        ]
       },
       {
         "name": "3-Stage Under the Sink System",
@@ -21595,11 +21618,6 @@
             "clearly",
             "filtered",
             "filter"
-          ],
-          [
-            "clearly",
-            "filtered",
-            "pitcher"
           ],
           [
             "clearly",
@@ -42330,7 +42348,14 @@
           ]
         },
         "cat": "Electrolytes",
-        "research": "Packaging: Electrolyte drink-mix powder (11.8 oz, 42 servings) in a resealable stand-up plastic film pouch; resin unstated."
+        "research": "Packaging: Electrolyte drink-mix powder (11.8 oz, 42 servings) in a resealable stand-up plastic film pouch; resin unstated.",
+        "matchAll": [
+          [
+            "goodonya",
+            "organic",
+            "hydration"
+          ]
+        ]
       },
       {
         "name": "GOODONYA electrolytes",
@@ -42338,10 +42363,6 @@
           [
             "goodonya",
             "electrolyte"
-          ],
-          [
-            "goodonya",
-            "hydration"
           ]
         ],
         "verdict": "good",

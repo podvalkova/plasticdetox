@@ -126,6 +126,33 @@ def main():
                                  f"{ov.get('verdict')} - {ov.get('reason')} ({ov.get('dated')})")
 
     no_row = [a for a in catalog if re.fullmatch(r"[A-Z0-9]{10}", a) and a not in verdict]
+    # Rule 7: a product we recommend has to be reachable by the scanner.
+    #
+    # The scanner's promise is "check it before you buy it", and it could not
+    # keep it for our own shelf: every barcode we held came from the open facts
+    # databases, which name products in the maker's words, while our rows name
+    # them in ours. Zero of 323 shop products had a barcode, so scanning one
+    # fell through to a brand card. Binding by name would have been worse, so
+    # the binding is by ASIN, which is identity rather than resemblance.
+    import re as _re
+    shop_asins = set(_re.findall(r'asin:\s*"([A-Z0-9]{10})"',
+                                 (ROOT / "data" / "store-products.js").read_text()))
+    codes = json.loads((ROOT / "data" / "barcodes.json").read_text())
+    bound = {v.get("asin") for v in codes.values() if isinstance(v, dict) and v.get("asin")}
+    unscannable = sorted(shop_asins - bound)
+    scan_file = ROOT / "data" / "barcode-coverage-backlog.json"
+    scan_ceiling = (json.loads(scan_file.read_text()).get("unscannable")
+                    if scan_file.exists() else None)
+    if "--accept" in sys.argv:
+        scan_file.write_text(json.dumps(
+            {"unscannable": len(unscannable),
+             "note": "Shop products a scan cannot resolve to their row. It may fall and never rise."},
+            indent=1) + "\n")
+        scan_ceiling = len(unscannable)
+    if scan_ceiling is not None and len(unscannable) > scan_ceiling:
+        bad.append(f"!! shop products a scan cannot reach grew: "
+                   f"{len(unscannable)} > {scan_ceiling}")
+
     ceiling_file = ROOT / "data" / "app-picks-backlog.json"
     ceiling = json.loads(ceiling_file.read_text()).get("unrated", 0) if ceiling_file.exists() else None
     if "--accept" in sys.argv:
@@ -138,6 +165,8 @@ def main():
         return 1
     print(f"{picks} swap picks, each with a photo, pros and cons; every swap has its guide")
     print(f"catalog holds every store product and nothing careful or skip ({len(catalog)} entries)")
+    print(f"shop products a scan can reach: {len(shop_asins) - len(unscannable)} "
+          f"of {len(shop_asins)} (unreachable {len(unscannable)}, ceiling {scan_ceiling})")
     print(f"unrated swap picks: {len(unrated)} (ceiling {ceiling})")
     print(f"verdicts with no check behind them: {len(unanchored)} (ceiling {anchor_ceiling})")
     print(f"manual overrides: {len(overrides)}")

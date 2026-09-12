@@ -560,8 +560,13 @@ for (const { from, to } of SOURCES) {
 
 // Barcodes we have mapped ourselves. Empty until we start collecting them from
 // scans, and kept as its own file so the app can refresh it on its own clock.
+// Copied from the repo root like every other research file. It used to be
+// created empty here and edited in place, which put it under the generated
+// folder's blanket ignore rule: the bindings we harvest were never committed.
 const barcodes = path.join(OUT, "barcodes.json");
-if (!fs.existsSync(barcodes)) fs.writeFileSync(barcodes, "{}\n");
+const barcodeSrc = path.join(REPO, "data", "barcodes.json");
+if (fs.existsSync(barcodeSrc)) fs.copyFileSync(barcodeSrc, barcodes);
+else if (!fs.existsSync(barcodes)) fs.writeFileSync(barcodes, "{}\n");
 
 const stamp = {
   brands,

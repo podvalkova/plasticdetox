@@ -11,6 +11,7 @@ import { lookup, cleanCode } from "./upc.js";
 import { el, toast } from "./ui.js";
 import { roomName } from "./detox-content.js";
 import * as notify from "./notify.js";
+import { verdictFor } from "./match.js";
 import { track, setBundle, flush } from "./track.js";
 import * as kids from "./kids.js";
 
@@ -929,6 +930,22 @@ async function resolveCode(rawCode) {
 
   const mapped = index.fromBarcode(code);
   if (mapped) {
+    // What a scan actually produced. Nothing recorded this: the success path
+    // returned early with no event and the only barcode logging sat on the
+    // failure branch, so thirty days of data showed 1634 app opens and not one
+    // scan, and "should we drop the scanner" had no evidence either way.
+    // `via` separates our own binding from a manufacturer prefix guess, and
+    // `level` says whether it reached the exact product or only the brand.
+    const v = verdictFor(mapped, {
+      title: (mapped.hint && mapped.hint.name) || "",
+      asin: (mapped.hint && mapped.hint.asin) || "",
+      productNamed: true,
+    });
+    track("scan_resolved", {
+      via: mapped.via,
+      level: v.asserted ? v.level : "none",
+      stance: v.asserted ? v.stance : "",
+    });
     go({ screen: "result", match: mapped, scan: null });
     return;
   }
@@ -940,17 +957,25 @@ async function resolveCode(rawCode) {
   if (!hit) {
     go({ screen: "unknown", scan: { code, packaging: [] }, brand: "", product: "" });
     logSearch(`barcode ${code}`, false);
+    track("scan_resolved", { via: "none", level: "none", stance: "" });
     return;
   }
 
   const match = index.resolve({ brandName: hit.brandName, title: hit.title });
   if (match) {
+    const v = verdictFor(match, { title: hit.title || "", productNamed: true });
+    track("scan_resolved", {
+      via: "lookup",
+      level: v.asserted ? v.level : "none",
+      stance: v.asserted ? v.stance : "",
+    });
     go({ screen: "result", match, scan: hit });
     logSearch(hit.brandName || hit.title, true, match.brand.stance);
   } else {
     // The barcode database splits these the same way we ask people to.
     go({ screen: "unknown", scan: hit, brand: hit.brandName || "", product: hit.title || "" });
     logSearch(hit.brandName || hit.title, false);
+    track("scan_resolved", { via: "lookup", level: "none", stance: "" });
   }
 }
 

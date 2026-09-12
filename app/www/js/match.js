@@ -254,7 +254,27 @@ export function productFor(brand, { asin, title } = {}) {
     const f = (p.ext && p.ext.fronts) || {};
     return Object.values(f).filter((v) => v && v !== "unassessed" && v !== "unknown").length;
   };
+  // Rule 1.1, inside the matcher. A title that names one product must never be
+  // answered by a sibling carrying a BETTER verdict: "Clearly Filtered Pitcher"
+  // is a careful, and it was resolving to the brand's water filters row, which
+  // is a good, so a cautioned product wore a recommendation it had not earned.
+  // Seven rows did this. A worse sibling may still answer, because adverse
+  // evidence is allowed to travel and a warning shown in error costs nobody
+  // their health.
+  const RANK = { skip: 0, careful: 1, unrated: 2, good: 3 };
+  const rankOf = (p) => RANK[(p.ext || {}).verdict] ?? 2;
+  const namesItself = (p) => {
+    const n = norm(p.name || "");
+    return !!n && low.includes(" " + n + " ");
+  };
   const better = (p, len, d) => {
+    // Where the title literally spells out a row's own name, that row wins
+    // outright. Both directions: Honest's "Sensitive diaper rash cream" is a
+    // skip and was losing to the brand's "Diapers" row, a careful, purely
+    // because Diapers happened to be evaluated first and the guard only ran
+    // one way.
+    if (best && namesItself(best) && !namesItself(p) && rankOf(p) > rankOf(best)) return false;
+    if (namesItself(p) && best && !namesItself(best)) return true;
     if (d !== bestDirect) return d;
     const e = evidenceOf(p);
     if (e !== bestEvidence) return e > bestEvidence;
@@ -302,6 +322,48 @@ export function productVerdict(row) {
  * `level` is the honest scope of the answer: "product" when we researched this
  * exact thing, "brand" when all we hold is a judgement about the maker.
  */
+/**
+ * A finding the researcher recorded about the whole range, not one SKU.
+ *
+ * Rule 1.1 lets adverse evidence reach a product we have not researched, and
+ * 1.2 makes the copy name the scope it came from. That is the difference
+ * between an answer and a leak: scanning a Pampers variant we never opened
+ * still meets a recorded finding about Pampers diapers, while scanning an
+ * Optimum Nutrition tub meets nothing, because all we hold there is one SKU
+ * that happens to be careful. Agreement between SKUs is not a range finding.
+ *
+ * Favourable never travels this way. `good` is excluded outright: a
+ * recommendation has to rest on evidence about the exact thing.
+ *
+ * And it stays silent wherever the brand has a product we rated good. A range
+ * finding speaks for the part of the range nobody researched, so the moment an
+ * unmatched scan could plausibly BE the good one, it must not answer: Caboo's
+ * whole range is careful while its wipes are a good we sell, and telling a
+ * shopper "Careful" over a product on our own shelf is worse than telling them
+ * we do not know which one they are holding. 92 of 457 scans sat in that trap,
+ * Dr. Bronner's, Aveeno and Caboo the largest.
+ */
+function rangeFinding(brand) {
+  const rows = brand.products || [];
+  const researchedGood = rows.some((p) => (p.ext || {}).verdict === "good"
+    && !(String(p.name || "").trim().toLowerCase() === "whole range" || p.origin === "brand-line"));
+  if (researchedGood) return null;
+  const standIn = (p) => String(p.name || "").trim().toLowerCase() === "whole range"
+    || p.origin === "brand-line"
+    || (((p.ext || {}).scope === "brand") && !(p.asins || []).length);
+  let best = null;
+  for (const p of rows) {
+    const v = (p.ext || {}).verdict;
+    if (v !== "careful" && v !== "skip") continue;
+    const scope = (p.ext || {}).scope;
+    if (scope !== "line" && scope !== "brand" && !standIn(p)) continue;
+    // Skip outranks careful: the worst recorded range finding is the one the
+    // reader needs before buying.
+    if (!best || (v === "skip" && (best.ext || {}).verdict === "careful")) best = p;
+  }
+  return best;
+}
+
 export function verdictFor(match, ctx = {}) {
   const brand = match.brand;
   const title = ctx.title || (match.hint && match.hint.name) || brand.brand;
@@ -321,7 +383,14 @@ export function verdictFor(match, ctx = {}) {
   // answered "Good choice" over two unassessed checks. That is the gate the
   // site spent a release building, and the extension has always held: where
   // there is no product verdict there is no verdict, only context.
-  const asserted = productNamed ? !!productStance : !!(productStance || brand.stance);
+  // Where the scan named a product and no row answers for it, a recorded range
+  // finding still does. Read the verdict off that row, never off brand.stance:
+  // Caboo's stance is good while its wipes are the thing being asked about.
+  const range = (productNamed && !productStance) ? rangeFinding(brand) : null;
+  const rangeStance = range ? (range.ext || {}).verdict : null;
+  const asserted = productNamed
+    ? !!(productStance || rangeStance)
+    : !!(productStance || brand.stance);
   const productNote = (row && row.note) || "";
   const brandNote = brand.reason || "";
   // Fifteen percent of our product rows carry the brand's own sentence
@@ -337,11 +406,12 @@ export function verdictFor(match, ctx = {}) {
     product: row,
     level: productStance ? "product" : "brand",
     asserted,
-    stance: asserted ? (productStance || brand.stance || "neutral") : "neutral",
-    fronts: (row && row.ext && expandFronts(row.ext, brand)) || brand.fronts || {},
-    reason: productNote || brandNote,
+    stance: asserted ? (productStance || rangeStance || brand.stance || "neutral") : "neutral",
+    fronts: (row && row.ext && expandFronts(row.ext, brand))
+      || (range && expandFronts(range.ext, brand)) || brand.fronts || {},
+    reason: productNote || (range && range.note) || brandNote,
     brandReason: brandAdds ? brandNote : "",
-    scoped: brandCopyOnly || !!(row && row.ext && row.ext.disclose),
+    scoped: brandCopyOnly || !!rangeStance || !!(row && row.ext && row.ext.disclose),
     heldBack: (row && row.ext && row.ext.heldBack) || [],
     // The row's own record, for the blocks that only exist where we did the
     // work: the exposure line, the ingredient list, the story worth telling.
