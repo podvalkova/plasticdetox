@@ -129,12 +129,12 @@ the path that reaches a person, fails the front on its own.
 
 <!-- hazard-list:start -->
 
-**The 61 named hazards the engine enforces.** Generated from `HAZARD` in
+**The 66 named hazards the engine enforces.** Generated from `HAZARD` in
 `tools/audit-product-rules.py` by `tools/sync-rulebook.py`, so this list and the
 code cannot say different things. Un-negated, in the path that reaches a person,
 any one of these fails the front on its own.
 
-> `acrylic`, `aluminium chlorohydrate`, `aluminium zirconium`, `aluminum chlorohydrate`, `aluminum zirconium`, `avobenzone`, `azo`, `benzene`, `bpa`, `bpf`, `bps`, `bronopol`, `butylparaben`, `cadmium`, `chemical filter`, `chemical sunscreen`, `cyclohexasiloxane`, `cyclomethicone`, `cyclopentasiloxane`, `cyclotetrasiloxane`, `diazolidinyl urea`, `dmdm hydantoin`, `elastane`, `ethylparaben`, `flame retardant`, `formaldehyde`, `homosalate`, `imidazolidinyl urea`, `isobutylparaben`, `lead`, `melamine`, `methylparaben`, `neoprene`, `non-stick`, `nonstick`, `nylon`, `octinoxate`, `octisalate`, `octocrylene`, `oxybenzone`, `paraben`, `pfas`, `pfoa`, `phthalate`, `plastic`, `polycarbonate`, `polyester`, `polyethylene`, `polypropylene`, `polystyrene`, `propylparaben`, `ptfe`, `pvc`, `quaternium-15`, `rayon`, `spandex`, `styrene`, `talc`, `teflon`, `triclosan`, `viscose`
+> `acrylic`, `aluminium chlorohydrate`, `aluminium zirconium`, `aluminum chlorohydrate`, `aluminum zirconium`, `avobenzone`, `azo`, `benzalkonium chloride`, `benzene`, `benzethonium chloride`, `bpa`, `bpf`, `bps`, `bronopol`, `butylparaben`, `cadmium`, `chemical filter`, `chemical sunscreen`, `cyclohexasiloxane`, `cyclomethicone`, `cyclopentasiloxane`, `cyclotetrasiloxane`, `diazolidinyl urea`, `didecyldimethylammonium chloride`, `dimethyl benzyl ammonium chloride`, `dmdm hydantoin`, `elastane`, `ethylparaben`, `flame retardant`, `formaldehyde`, `homosalate`, `imidazolidinyl urea`, `isobutylparaben`, `lead`, `melamine`, `methylparaben`, `neoprene`, `non-stick`, `nonstick`, `nylon`, `octinoxate`, `octisalate`, `octocrylene`, `oxybenzone`, `paraben`, `pfas`, `pfoa`, `phthalate`, `plastic`, `polycarbonate`, `polyester`, `polyethylene`, `polypropylene`, `polystyrene`, `propylparaben`, `ptfe`, `pvc`, `quaternary ammonium`, `quaternium-15`, `rayon`, `spandex`, `styrene`, `talc`, `teflon`, `triclosan`, `viscose`
 
 **The 10 disclosure failures.** These name no harmful substance; they say we
 cannot check. Each caps at careful and never fails a front alone.
@@ -510,6 +510,21 @@ The reverse case is the same principle: a plastic that never touches the
 contents is already excluded by 3.4, and a blank contents field is a gap under
 5.6. Neither is a caution.
 
+### 3.7 A composite is held together by something
+
+Bamboo, cork and plywood boards are sold on the material in their name, and that
+material is real: bamboo puts nothing into what it touches. But a board built
+from strips is a composite, and the strips are held together with an adhesive
+sitting in the same contact path as the wood. The stated material answers for
+the strips and says nothing about the glue.
+
+> **Where a composite's binder is undisclosed, the materials front is `caution`,
+> under rule 2.1. It is a disclosure failure, not a hazard finding.**
+
+Naming it clears it. A food grade or formaldehyde free adhesive the maker states
+is a stated material like any other, and the row then reads pass on the whole
+object rather than on the half of it anyone bothered to mention.
+
 ## 4. Independent tests
 
 The hard one. Here is the governing principle:
@@ -576,6 +591,32 @@ When a brand publicly disputes a result, the note says so, every time. This is
 both accurate and legally necessary, since thirteen states have food
 disparagement statutes and we are asserting a negative about a named product at
 the moment of purchase.
+
+### 4.6 A certification is scoped to what it certifies
+
+A filter is bought to remove something. A vacuum is bought to keep hold of what
+it picks up. Where the certification on the box covers a different thing from
+the one the category exists for, the product is not certified for its own job,
+and the honest rendering is that the job is unverified.
+
+> **A certification covering something other than what the category is bought to
+> remove leaves the testing front at `caution`, never `pass`.**
+
+"Certified for taste, odour and lead reduction, not for sub micron particles" is
+a pass and the finding in the same sentence. Read as a keyword it clears the row;
+read as a claim it says this is not a microplastics filter. A vacuum with no
+sealed path is the same shape: it cleans, and it returns a share of what it
+lifts to the room.
+
+This does not contradict 5.6. An *absent* test is a gap and stays `unassessed`.
+A *present* certification for the wrong contaminant is a finding about scope, and
+the product carries it.
+
+A certification named inside a denial is not a certification. "No Brita filter
+carries NSF/ANSI 401" contains the string and asserts its opposite, so only an
+unnegated sentence may clear the rule. Sentence, not clause: splitting that one
+on its commas leaves "carries NSF/ANSI 401 certification" standing alone, which
+reads as proof of the thing the sentence denies.
 
 ---
 

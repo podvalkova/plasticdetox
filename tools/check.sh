@@ -33,6 +33,11 @@ if [ "${1:-}" = "--fix" ]; then
   # unassessed. Verified safe to add, it moves no verdict on its own.
   python3 tools/apply-front-evidence.py --write || exit 1
   python3 tools/apply-product-rules.py --write || exit 1
+  # Class findings: what is known about this KIND of product. This ran by hand
+  # only, so a finding recorded on a row never reached the front it answers.
+  # Huggies held the ANSES 2020 diaper finding and still showed a skip over
+  # four blank fronts.
+  python3 tools/apply-class-evidence.py --write || exit 1
   python3 tools/enforce-scorecard.py --write || exit 1
   echo
 fi
@@ -94,6 +99,7 @@ PY
 )
 cp brand-data.json /tmp/pd-bd.json
 python3 tools/apply-product-rules.py --write > /dev/null 2>&1
+python3 tools/apply-class-evidence.py --write > /dev/null 2>&1
 python3 tools/enforce-scorecard.py --write > /dev/null 2>&1
 after=$(python3 - <<'PY'
 import json,hashlib

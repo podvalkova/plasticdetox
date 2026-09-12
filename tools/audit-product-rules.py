@@ -232,6 +232,17 @@ HAZARD = [
     "methylparaben", "propylparaben", "butylparaben", "ethylparaben",
     "isobutylparaben",
     "dmdm hydantoin", "quaternium-15", "imidazolidinyl urea",
+    # The disinfectant quats, by the names a label uses. Respiratory and skin
+    # sensitisers, sprayed or wiped onto surfaces a child then touches, and
+    # the reason Lysol's wipes were carrying a hand written verdict with no
+    # check behind them. "quaternium-15" above is a formaldehyde releaser and
+    # a different substance entirely.
+    "quaternary ammonium", "benzalkonium chloride",
+    # Matched on the fragment a label prints: Lysol's panel reads "Alkyl
+    # (50% C14, 40% C12, 10% C16) dimethyl benzyl ammonium chloride", which
+    # the full INCI string never matches literally.
+    "dimethyl benzyl ammonium chloride", "benzethonium chloride",
+    "didecyldimethylammonium chloride",
     "diazolidinyl urea", "bronopol",
     "aluminum chlorohydrate", "aluminium chlorohydrate",
     "aluminum zirconium", "aluminium zirconium",
@@ -551,7 +562,52 @@ def fronts_for(prod, brand):
     return _bf.build_fronts(pseudo), False
 
 
-def apply_rules(fronts, note, scope, basis, context="", formula_text=""):
+# Rule 4.6, certification scope: a device bought to remove something, whose
+# certification covers something else.
+#
+# A filter certified for chlorine taste, or a vacuum with no sealed HEPA path
+# anyone has verified, fails at the one job its category exists for. That is a
+# gap on the testing front, not a materials finding: nothing is wrong with the
+# plastic. Brita's standard filter, Waterdrop's gravity pitchers, ZeroWater,
+# Dyson's cordless line and Shark's NV352 each carried a hand written verdict
+# for this with no recorded check behind it.
+#
+# It fires on a classifier `pass` too. "Certified for taste, odour and lead
+# reduction, not for sub micron particles" is a pass and the finding in one
+# sentence, and Waterdrop's gravity pitchers sat on the pass half of it.
+SCOPE_GAP = re.compile(
+    r"chlorine taste only|taste and od(o|ou)r only|taste, od(o|ou)r and lead reduction, not|"
+    r"not certified (for|under)|no whole machine hepa|not sealed|washable filter rather than|"
+    r"but not the certified hepa|(no|without|lacking|lacks) (a )?sealed hepa|not a microplastics filter|"
+    r"certified for taste and pfas, not")
+CERTIFIED = re.compile(
+    r"nsf/ansi 53|nsf/ansi 401|nsf/ansi 58|nsf/ansi 42|p473|astm f1977|sealed hepa system")
+# A certification named inside a denial is not a certification. "No Brita filter
+# carries NSF/ANSI 401" contains the string and asserts its opposite.
+NEGATOR = re.compile(r"\b(no|not|never|without|lacks|nor|neither)\b|n't\b")
+SCOPE_CATEGORIES = ("water filter", "vacuum")
+
+
+def certification_scope(note, context, status):
+    """Returns (status, reason) or (None, None). Rule 4.6."""
+    if status not in ("unknown", "unassessed", "pass", None, ""):
+        return None, None
+    low = (note or "").lower()
+    if not any(w in (context or "").lower() for w in SCOPE_CATEGORIES):
+        return None, None
+    if not SCOPE_GAP.search(low):
+        return None, None
+    # Sentence level, not clause level. Splitting on commas tore "No Brita
+    # filter, on any line, carries NSF/ANSI 401" into a fragment that reads as
+    # proof of the certification it denies.
+    for sentence in re.split(r"[.;\n]", low):
+        if CERTIFIED.search(sentence) and not NEGATOR.search(sentence):
+            return None, None          # certified for the thing itself
+    return "caution", ("Certified for something other than what this category is "
+                       "bought to remove, so the one job it exists for is unverified.")
+
+
+def apply_rules(fronts, note, scope, basis, context="", formula_text="", raw_note=""):
     """
     Fold the rules document's per-front corrections into a classified scorecard.
     Returns the corrected fronts plus the list of rules that fired.
@@ -653,6 +709,36 @@ def apply_rules(fronts, note, scope, basis, context="", formula_text=""):
                           "note": "Packaging is stated as plastic free.",
                           "origin": "rule-3-plastic-free-packaging"}
         fired.append("3 packaging-stated-plastic-free")
+
+    # Rule 4.6, certification scope. Shared with the authored row path in
+    # apply-product-rules, which skips this engine entirely: that is why Brita
+    # and ZeroWater carried a verdict over four blank fronts.
+    sc, sc_why = certification_scope(raw_note or low, context, f["testing"]["status"])
+    if sc:
+        f["testing"] = {"status": sc, "note": sc_why, "origin": "rule-4.6-scope"}
+        fired.append("4.6 certification-scope")
+
+    # Rule 2.1, disclosure, applied to an object's materials.
+    #
+    # A composite object is glued together, and the adhesive is in the food or
+    # mouth path as much as the wood is. Where the note says the binder is
+    # undisclosed, that is a disclosure failure and caps at caution, exactly as
+    # an unnamed fragrance does on a formula. Astercook and Kitsure carried a
+    # hand written careful for this with no check behind it, while Totally
+    # Bamboo names its adhesive as formaldehyde free and keeps its pass.
+    if f["materials"]["status"] in ("unknown", "unassessed", "pass"):
+        raw_low = (raw_note or low).lower()
+        binder = re.search(r"\b(adhesive|glue|binder|resin|laminat\w*)\b", raw_low)
+        unnamed = re.search(r"\b(undisclosed|not disclosed|unnamed|unspecified|"
+                            r"does not (say|name|disclose)|no\w* (named|disclosed))\b", raw_low)
+        named_safe = re.search(r"\b(formaldehyde free|no added formaldehyde|"
+                               r"food grade adhesive|soy based adhesive)\b", raw_low)
+        if binder and unnamed and not named_safe:
+            f["materials"] = {"status": "caution",
+                              "note": ("A composite held together with an adhesive nobody names. "
+                                       "The binder is in the contact path with the wood."),
+                              "origin": "rule-2.1-binder"}
+            fired.append("2.1 undisclosed-binder")
 
     # Rule 2: formula is always resolvable, so read the material directly when
     # the classifier's polarity test found nothing to grip on.

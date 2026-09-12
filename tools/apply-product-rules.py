@@ -144,6 +144,18 @@ def main():
                             p["ext"].setdefault("frontNotes", {})[k] = \
                                 "The note on this row reads adversely here."
                             p["ext"].setdefault("frontOrigin", {})[k] = "inferred"
+                # Rule 4.6 on an authored row. The author's verdict stands;
+                # what changes is that the check behind it gets recorded. These
+                # rows return before the rule engine, which is why Brita's and
+                # ZeroWater's pitchers showed a verdict over four blank fronts.
+                if fr.get("testing") in (None, "", "unassessed", "unknown"):
+                    sc, sc_why = _a.certification_scope(
+                        str(p.get("note") or "") or cleaned, ctx, fr.get("testing"))
+                    if sc:
+                        fr["testing"] = sc
+                        p["ext"].setdefault("frontNotes", {})["testing"] = sc_why
+                        p["ext"].setdefault("frontOrigin", {})["testing"] = "inferred"
+
                 if fr.get("materials") in (None, "unassessed", "unknown"):
                     pk, pk_why = _a.packaging_severity(cleaned, ctx)
                     if pk:
@@ -209,7 +221,11 @@ def main():
             # A front derived from note text is the weakest evidence we have, so
             # it may fill a blank and may correct another inference, but it does
             # not get to overwrite a database answer or a person's judgement.
-            RANK = {"inferred": 0, "stated": 1, "database": 2, "hand": 3}
+            # "class" is a recorded finding about a kind of product, from a
+            # regulator or a published study. It ranks with "database": it is
+            # not an inference off this row's prose, and it must survive a
+            # rebuild the way any other recorded answer does.
+            RANK = {"inferred": 0, "stated": 1, "class": 2, "database": 2, "hand": 3}
             origin = dict(prev.get("frontOrigin") or {})
             merged = {}
             for k in FRONTS:

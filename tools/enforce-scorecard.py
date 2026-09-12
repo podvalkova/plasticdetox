@@ -157,7 +157,7 @@ def main():
     # one check actually recorded: a lab result, a database answer, or a
     # person's research. Prose we wrote does not count. An adverse stance is
     # untouched, because rule 1.1 lets a warning rest on a single finding.
-    RECORDED = {"database", "hand", "stated", "rollup"}
+    RECORDED = {"database", "hand", "stated", "rollup", "class"}
     brand_held = brand_back = 0
     for b in brands:
         fronts = b.get("fronts") or {}

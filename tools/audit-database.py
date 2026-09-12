@@ -213,7 +213,7 @@ def check(brands, rows):
         if e.get("verdict") != "good":
             continue
         og = e.get("frontOrigin") or {}
-        if not any(v in ("database", "hand", "stated") for v in og.values()):
+        if not any(v in ("database", "hand", "stated", "class") for v in og.values()):
             thin.append(f"{b['brand']} / {p.get('name')}")
     add("provenance", "Recommended, with no front from a recorded source", thin,
         "Rule 1.1: a recommendation needs direct evidence. A scorecard entirely "

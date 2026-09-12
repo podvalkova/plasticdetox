@@ -224,6 +224,15 @@ def assess(pack):
     term, rank = classify(material)
     if term is None:
         return None, "The contact material is not recorded"
+    # Rule 2.1 disclosure, on an object rather than a recipe. A composite is
+    # glued, and the glue is in the contact path with the wood. Where the record
+    # says the binder is undisclosed, that is a recorded finding and caps at
+    # caution: Astercook and Kitsure carried a hand written careful for exactly
+    # this while their evidence described only the bamboo.
+    if str(pack.get("binder") or "").strip().lower() in ("undisclosed", "unnamed", "unknown"):
+        return "caution", (f"{pretty(term)} bonded with an adhesive the maker does not name, "
+                           "in the same contact path as the wood")
+
     if rank == 0:
         return "pass", f"In contact with {pretty(term)}, which puts nothing into what it holds"
 
@@ -485,6 +494,17 @@ def read_formula(entry, cat=""):
                       f"{fm['asinMismatch']}"), None, []
 
     text = fm.get("ingredients") or ""
+    # A recorded "list" that is only a web address, or the scraper's own "no
+    # ingredients found", is not a list. Lysol's spray carried
+    # "Visit www.rbnainfo.com" and passed its formula check on it.
+    if (re.fullmatch(r"[\s\W]*(visit\s+)?(https?://)?(www\.)?[\w.-]+\.(com|org|net)[\s\W]*",
+                     text.strip(), re.I)
+            or text.strip().lower() == "no ingredients found"):
+        text = ""
+    # The scraper appends its own "No ingredients found" after a list it did
+    # find. Blanking the whole value on that substring threw away Lysol's real
+    # panel, quat and all, and left the stale pass standing.
+    text = re.sub(r",?\s*no ingredients found\s*$", "", text, flags=re.I)
     complete = bool(fm.get("complete")) and bool(text)
     if not complete:
         text = fm.get("prose") or ""
@@ -609,9 +629,22 @@ def read_formula(entry, cat=""):
     return "pass", "The published ingredient list carries nothing on the hazard list", "database", []
 
 
-def keys_for(brand, product):
+def keys_for(brand, product, ev=None):
+    """The evidence keys for a row, best first.
+
+    A row carries several ASINs for the same product: a two pack, a single, a
+    variant. The first one listed is not the best one. Lysol's spray listed a
+    two pack whose panel is a web address ahead of the single bottle that
+    prints the real ingredient list, so the reader took the empty one and the
+    quat conviction never landed. An entry with a complete formula comes first.
+    """
     out = list(product.get("asins") or [])
     out.append(f"{brand}::{product.get('name')}")
+    if ev:
+        def rank(k):
+            fm = (ev.get(k) or {}).get("formula") or {}
+            return 0 if fm.get("complete") and fm.get("ingredients") else 1
+        out.sort(key=rank)
     return out
 
 
@@ -656,7 +689,7 @@ def main():
     filled = 0
     for b in brands:
         for p in (b.get("products") or []):
-            entry = next((ev[k] for k in keys_for(b["brand"], p) if k in ev), None)
+            entry = next((ev[k] for k in keys_for(b["brand"], p, ev) if k in ev), None)
             if not entry:
                 continue
 
@@ -775,6 +808,7 @@ def main():
                     "mouthed": bool(pack.get("mouthed")),
                     "reuse": pack.get("reuse") or "",
                     "use": pack.get("use") or "",
+                    "binder": pack.get("binder") or "",
                     "material": pack.get("material") or "",
                     "source": pack.get("source") or "",
                     "checked": pack.get("checked") or pack.get("checkedListing") or "",
@@ -926,7 +960,7 @@ def main():
                 if etype not in DURABLE_TYPES:
                     continue
             else:
-                entry = next((ev[k] for k in keys_for(b["brand"], p) if k in ev), None)
+                entry = next((ev[k] for k in keys_for(b["brand"], p, ev) if k in ev), None)
                 named = str(((entry or {}).get("materials") or {}).get("source") or "") == "product name"
                 if not named and CONSUMABLE.search(f"{p.get('cat') or ''} {b.get('category') or ''}"):
                     continue

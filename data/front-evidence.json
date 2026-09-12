@@ -5308,12 +5308,10 @@
  "B0BNP5QQ53": {
   "_product": "Lysol All Purpose Cleaner spray",
   "formula": {
-   "checkedListing": "2026-09-04",
-   "complete": true,
-   "ingredients": "Visit www.rbnainfo.com",
-   "kind": "ingredients",
+   "checkedListing": "2026-09-11",
+   "complete": false,
    "prose": "",
-   "source": "amazon:B0BNP5QQ53"
+   "source": "The listing prints 'Visit www.rbnainfo.com' where the ingredient panel belongs; the single bottle listing B00QIT9NDW carries the real panel"
   },
   "materials": {
    "checkedListing": "2026-09-08",
@@ -6533,21 +6531,38 @@
   }
  },
  "B0DK78SY1R": {
-  "_product": "Klean Kanteen Klean Kanteen Baby Bottle",
+  "_product": "Klean Kanteen Baby Bottle",
   "formula": {
    "checkedListing": "2026-09-04",
    "complete": false,
    "prose": "About this item Narrow profile for easy grip Certified 90% post-consumer recycled 18/8 stainless steel Slim design fits in most cup holders Chip-resistant Klean Coat finish BPA Free and Lead Free › See more product details",
    "source": "amazon:B0DK78SY1R"
+  },
+  "materials": {
+   "checked": "2026-09-12",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "material": "stainless steel, silicone",
+   "base": "aqueous",
+   "mouthed": true,
+   "source": "Listing states an 18/8 stainless steel body with a medical grade silicone nipple. Both parts of the contact path are stated"
   }
  },
  "B0DK7J39YJ": {
-  "_product": "Klean Kanteen Klean Kanteen Kid Classic (12oz)",
+  "_product": "Klean Kanteen Kid Classic (12oz)",
   "formula": {
    "checkedListing": "2026-09-04",
    "complete": false,
    "prose": "About this item High-Quality Stainless Steel: This Classic Kid's Sippy Bottle is made from food-grade, high-quality 18/8 food-grade stainless steel and has a chip-resistant Klean Coat finish Durable & Spill-Resistant: The spill-proof sippy cap and sturdy, stainless steel bottle will withstand drops and tumbles; perfect for active kids at home, outdoors, or in school Easy to Clean & Maintain: Opening fits ice and allows easy filling and pouring, and all components are dishwasher safe for convenience and hygiene BPA-Free & Safe Materials: Crafted from BPA-free, non-toxic materials for a clean taste; ideal for commuting, workouts, travel, and everyday hydration Klean Kanteen: We've built our business by prioritizing the well-being of people and the planet by designing sustainable, high-performance products › See more product details",
    "source": "amazon:B0DK7J39YJ"
+  },
+  "materials": {
+   "checked": "2026-09-12",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "material": "stainless steel",
+   "base": "aqueous",
+   "source": "Listing states a single wall 18/8 stainless body, no vacuum seal and no sealing pellet. The spill resistant sippy cap's own material is not stated on the listing"
   }
  },
  "B0DK7KWSRD": {
@@ -6787,9 +6802,13 @@
    "source": "amazon:B0DXPWTSG1"
   },
   "materials": {
-   "contactFrom": "stated in the product name",
+   "checked": "2026-09-12",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "base": "food",
    "material": "bamboo",
-   "source": "product name"
+   "binder": "undisclosed",
+   "source": "Bamboo strips laminated with an adhesive the maker does not name. The board is a food contact surface, so the adhesive is in the contact path"
   }
  },
  "B0DY1V2T7H": {
@@ -6901,13 +6920,13 @@
    "source": "amazon:B0FH6YL3XC"
   },
   "materials": {
-   "base": "water",
-   "checkedListing": "2026-09-02",
+   "checked": "2026-09-12",
    "contact": "yes",
-   "contactFrom": "category default",
-   "material": "Bamboo",
-   "reuse": "repeated",
-   "source": "amazon:B0FH6YL3XC"
+   "contactFrom": "recorded",
+   "base": "food",
+   "material": "bamboo",
+   "binder": "undisclosed",
+   "source": "Bamboo strips laminated with an adhesive the maker does not name. The board is a food contact surface, so the adhesive is in the contact path"
   }
  },
  "B0FHBBTK6W": {
@@ -8326,6 +8345,40 @@
    "checked": "2026-09-11",
    "source": "Le Parisien laboratory examination, 2017, reported widely; owner reports of the same",
    "note": "A sealed interior cavity fills with water during washing and cannot be dried. Cut open examples showed mould colonies growing inside a toy that is chewed daily. The finding is the design, not the rubber"
+  }
+ },
+ "B00QIT9NDW": {
+  "_product": "Lysol All Purpose Cleaner Spray",
+  "formula": {
+   "checkedListing": "2026-09-11",
+   "complete": true,
+   "kind": "ingredients",
+   "ingredients": "Active: alkyl (C12 67%, C14 25%, C16 7%, C8-C10-C12 1%) dimethyl benzyl ammonium chloride 0.0860%, alkyl (C14 50%, C12 40%, C16 10%) dimethyl benzyl ammonium chloride 0.0216%. Other ingredients 99.8924%",
+   "source": "Amazon listing B00QIT9NDW, Important information panel. The 2 pack listing (B0BNP5QQ53) prints only a web address in place of a panel"
+  }
+ },
+ "Brita::Pitchers, dispensers, and cups on the standard filter": {
+  "_product": "Brita Pitchers, dispensers, and cups on the standard filter",
+  "materials": {
+   "base": "water",
+   "checkedListing": "2026-09-02",
+   "contact": "yes",
+   "contactFrom": "category default",
+   "material": "Plastic",
+   "reuse": "repeated",
+   "source": "amazon:B09W4PLVQP Same pitcher body as the row holding the ASINs; recorded here because this duplicate row carries none."
+  }
+ },
+ "Lifefactory::Lifefactory baby bottles": {
+  "_product": "Lifefactory baby bottles",
+  "materials": {
+   "checked": "2026-09-12",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "material": "borosilicate glass, silicone",
+   "base": "aqueous",
+   "mouthed": true,
+   "source": "Borosilicate glass body with a removable silicone sleeve and no painted markings. Both parts of the contact path are stated"
   }
  }
 }

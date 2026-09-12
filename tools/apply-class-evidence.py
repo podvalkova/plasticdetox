@@ -47,6 +47,25 @@ HELD = ("pass", "caution", "fail")
 OPEN = (None, "", "unknown", "unassessed", "none")
 
 
+try:
+    EVIDENCE = json.loads((ROOT / "data" / "front-evidence.json").read_text())
+except Exception:
+    EVIDENCE = {}
+
+
+def recorded_material(brand, product):
+    """The material recorded for this row, by ASIN or by Brand::Product."""
+    keys = list(product.get("asins") or [])
+    keys.append(f"{brand.get('brand') if isinstance(brand, dict) else brand}::{product.get('name')}")
+    out = []
+    for k in keys:
+        m = (EVIDENCE.get(k) or {}).get("materials") or {}
+        for field in ("material", "base", "source"):
+            if m.get(field):
+                out.append(str(m[field]))
+    return " ".join(out)
+
+
 def haystack(brand, product):
     """
     What the product IS: its name and the material we recorded for it.
@@ -63,6 +82,12 @@ def haystack(brand, product):
     parts = [product.get("name") or "",
              e.get("materialsList") or "",
              (e.get("materialAnswers") or {}).get("material") or ""]
+    # And the material we recorded in the evidence file, which is the same kind
+    # of fact and the place most of them actually live. Without it the matcher
+    # was blind to its own records: a finding about polypropylene bottles
+    # attached to two Klean Kanteen rows that are single wall 18/8 stainless,
+    # while "stainless" sat in the escape list doing nothing.
+    parts.append(recorded_material(brand, product))
     return " " + " ".join(parts).lower() + " "
 
 
@@ -82,6 +107,10 @@ def main():
     applied = collections.Counter()
     per = collections.Counter()
     skipped_flat = []
+    # Which rows still belong to a finding after this pass. Anything holding a
+    # class finding that is not in here has stopped belonging to it.
+    still_applies = {}
+    front_of = {f["id"]: f["front"] for f in findings}
 
     for f in findings:
         cats = set(f.get("appliesTo", {}).get("cats") or [])
@@ -101,7 +130,7 @@ def main():
             # the sea salt finding on the strength of an empty field.
             if not note and not origin:
                 return False
-            return held in HELD and origin != "inferred"
+            return held in HELD and origin not in ("inferred", "class")
 
         # A product somebody actually tested escapes a claim about its class by
         # definition, and that counts for the guard too. Saalt's period
@@ -132,11 +161,13 @@ def main():
             origin = (e.get("frontOrigin") or {}).get(f["front"])
             held = fronts.get(f["front"])
             # A real test of this product answers the question already.
-            if held in HELD and origin and origin != "inferred":
+            if held in HELD and origin and origin not in ("inferred", "class"):
                 per[f["id"] + " has its own test"] += 1
+                still_applies[id(p)] = f["id"]
                 continue
-            if held not in OPEN and held in HELD:
+            if held not in OPEN and held in HELD and origin != "class":
                 per[f["id"] + " has its own test"] += 1
+                still_applies[id(p)] = f["id"]
                 continue
 
             confirmed = hit(text, confirm)
@@ -161,6 +192,29 @@ def main():
             }
             applied[status] += 1
             per[f["id"]] += 1
+            still_applies[id(p)] = f["id"]
+
+    # A finding that no longer applies has to come off the row. Membership can
+    # end: a category gets corrected, a material gets recorded, escape terms
+    # get fixed. Nothing removed a stale finding, so MARA's supplements kept a
+    # baby bottle finding after its category moved, and the caution it set
+    # would have outlived every correction we make.
+    cleared = 0
+    for b_, p in rows:
+        e = p.get("ext") or {}
+        ce = e.get("classEvidence") or {}
+        if not ce or still_applies.get(id(p)) == ce.get("id"):
+            continue   # still a member, whether re-applied or already answered
+        front = front_of.get(ce.get("id"))
+        if front and (e.get("frontOrigin") or {}).get(front) == "class":
+            (e.get("fronts") or {})[front] = "unassessed"
+            (e.get("frontOrigin") or {}).pop(front, None)
+            (e.get("frontNotes") or {}).pop(front, None)
+        e.pop("classEvidence", None)
+        cleared += 1
+        print(f"  cleared {ce.get('id')} from {b_['brand']} / {p.get('name')}")
+    if cleared:
+        print(f"class findings no longer applying, cleared: {cleared}")
 
     print(f"class findings: {len(findings)}")
     for f in findings:
