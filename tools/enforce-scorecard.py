@@ -356,6 +356,30 @@ def main():
             if len(examples) < 8:
                 examples.append((b["brand"], p.get("name"), blank))
 
+    # The manual layer, applied last.
+    #
+    # Some verdicts are about something none of the four checks measures: a
+    # brand that has shut down, a filter certified for the wrong contaminant,
+    # a vacuum without sealed HEPA. Before this they were a badge over four
+    # blank checks, which is the thing rule 6 exists to stop. An override says
+    # so out loud: a verdict, a written reason and a date, set by a person and
+    # applied after every rule above so nothing quietly undoes it. It never
+    # writes a front, because it is not evidence.
+    overridden = 0
+    for b in brands:
+        for p in (b.get("products") or []):
+            e = p.get("ext") or {}
+            ov = e.get("override") or {}
+            if not ov.get("verdict"):
+                continue
+            if e.get("verdict") != ov["verdict"] or e.get("why") != ov.get("reason"):
+                e["verdict"] = ov["verdict"]
+                e["why"] = ov.get("reason") or ""
+                p["verdict"] = ov["verdict"]
+            overridden += 1
+    if overridden:
+        print(f"manual overrides applied:                   {overridden}\n")
+
     print(f"recommendations with all four checks, kept: {kept}")
     print(f"held back for an incomplete scorecard:      {gated}")
     print(f"restored once the missing checks arrived:   {restored}")

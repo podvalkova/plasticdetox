@@ -19,7 +19,11 @@ Rules, each a failure:
      (--accept locks in a lower count)
   6  a careful or skip verdict names the check it rests on. 126 rows carried
      one with all four checks blank, so a card showed CAREFUL over a single
-     green tick and three gaps. Capped by data/verdict-anchor-backlog.json
+     green tick and three gaps. Capped by data/verdict-anchor-backlog.json.
+     A row whose reason is genuinely outside the four checks (a brand that
+     shut down, a filter certified for the wrong contaminant) carries
+     ext.override instead: a written reason and a date, listed in full below
+     so every one of them stays visible and countable.
 
 It reads the generated app data (app/www/data/plan.json and
 worker/kids-data.js), so run app/scripts/sync-data.mjs after editing a swap.
@@ -108,6 +112,14 @@ def main():
         bad.append(f"!! verdicts with no check behind them grew: "
                    f"{len(unanchored)} > {anchor_ceiling}")
 
+    overrides = []
+    for b in json.loads((ROOT / "brand-data.json").read_text()):
+        for p in b.get("products") or []:
+            ov = (p.get("ext") or {}).get("override")
+            if ov:
+                overrides.append(f"{b['brand']} / {p.get('name')}: "
+                                 f"{ov.get('verdict')} - {ov.get('reason')} ({ov.get('dated')})")
+
     no_row = [a for a in catalog if re.fullmatch(r"[A-Z0-9]{10}", a) and a not in verdict]
     ceiling_file = ROOT / "data" / "app-picks-backlog.json"
     ceiling = json.loads(ceiling_file.read_text()).get("unrated", 0) if ceiling_file.exists() else None
@@ -123,6 +135,9 @@ def main():
     print(f"catalog holds every store product and nothing careful or skip ({len(catalog)} entries)")
     print(f"unrated swap picks: {len(unrated)} (ceiling {ceiling})")
     print(f"verdicts with no check behind them: {len(unanchored)} (ceiling {anchor_ceiling})")
+    print(f"manual overrides: {len(overrides)}")
+    for line in sorted(overrides):
+        print(f"   {line}")
     if no_row:
         print(f"note: {len(no_row)} catalog products have no brand-data row: {', '.join(no_row)}")
     return 0
