@@ -318,6 +318,54 @@ await screen("about", async (p) => {
   await need(p, ".card", "about card");
 });
 
+// A guide opens as a screen of its own, not as the website. The Learn tab was
+// a list of links to plasticdetox.org, which is what a reviewer sees when they
+// judge whether an app is more than a browser, and it was judged so.
+await screen("a guide opens in the app", async (p) => {
+  await p.evaluate(() => [...document.querySelectorAll(".tab")]
+    .find((t) => /Learn/.test(t.textContent)).click());
+  await new Promise((r) => setTimeout(r, 500));
+  await need(p, ".acard", "guide cards");
+  await tap(p, ".acard");
+  // The guide is fetched, then drawn into a frame that sizes to its page.
+  for (let i = 0; i < 30; i++) {
+    if (await p.$(".reader-frame")) break;
+    await new Promise((r) => setTimeout(r, 200));
+  }
+  await need(p, ".reader-frame", "the guide's frame");
+  await new Promise((r) => setTimeout(r, 1200));
+  const got = await p.evaluate(() => {
+    const f = document.querySelector(".reader-frame");
+    const d = f && f.contentDocument;
+    const h1 = d && d.querySelector("h1");
+    return {
+      height: f ? f.getBoundingClientRect().height : 0,
+      title: h1 ? h1.textContent.trim() : "",
+      chrome: d ? d.querySelectorAll(".email-cta, .pin-button, footer, script").length : -1,
+    };
+  });
+  if (!got.title) throw new Error("the guide has no heading");
+  if (got.height < 1000) throw new Error(`the frame did not grow to its page (${got.height}px)`);
+  if (got.chrome) throw new Error(`site chrome shipped inside the guide (${got.chrome} nodes)`);
+  // A link to another guide opens another screen, still inside the app.
+  const opened = await p.evaluate(() => {
+    const d = document.querySelector(".reader-frame").contentDocument;
+    const a = [...d.querySelectorAll("a[href]")].find((x) => /^[\w-]+\.html$/.test(x.getAttribute("href")));
+    if (!a) return "none";
+    a.click();
+    return a.getAttribute("href");
+  });
+  if (opened !== "none") {
+    for (let i = 0; i < 30; i++) {
+      const on = await p.evaluate(() => document.getElementById("screen").dataset.article || "");
+      if (on === opened) break;
+      await new Promise((r) => setTimeout(r, 200));
+    }
+    const on = await p.evaluate(() => document.getElementById("screen").dataset.article || "");
+    if (on !== opened) throw new Error(`the link to ${opened} did not open it in the app (on ${on || "nothing"})`);
+  }
+});
+
 await browser.close();
 stop();
 

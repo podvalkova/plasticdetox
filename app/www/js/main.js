@@ -191,6 +191,7 @@ function rememberPlace() {
       query: s.query || null,
       q: s.q || null,
       room: s.room || null,
+      slug: s.slug || null,
     })).slice(-4);
     localStorage.setItem(PLACE_KEY, JSON.stringify({ trail, at: Date.now() }));
   } catch {
@@ -217,6 +218,10 @@ function restorePlace() {
     }
     if (step.screen === "shopCategory" && step.category) {
       rebuilt.push({ screen: "shopCategory", category: step.category });
+      continue;
+    }
+    if (step.screen === "article" && step.slug) {
+      rebuilt.push({ screen: "article", slug: step.slug });
       continue;
     }
     if (step.screen === "result" && step.brandId) {
@@ -309,6 +314,14 @@ function render() {
 
 function draw() {
   const state = stack[stack.length - 1];
+  // A guide being read survives a render nothing on it asked for. The data
+  // refresh after boot and the kids room loading both redraw the screen, and
+  // redrawing a frame throws away the reader's place in it.
+  if (state.screen === "article" && state.guide && view.dataset.article === state.slug) {
+    backBtn.hidden = stack.length <= 1;
+    return;
+  }
+  delete view.dataset.article;
   view.replaceChildren();
   // replaceChildren empties the children and leaves the classes, so a screen
   // that tints itself or pins a footer was handing that on to the next one.
@@ -354,6 +367,7 @@ function draw() {
       query: state.query,
       productNamed: !!(state.scan || state.productNamed),
       onOpen: openExternal,
+      onArticle: openArticle,
       onPick: openHit,
       onSave: toggleSaved,
       isSaved,
@@ -600,6 +614,7 @@ function draw() {
       onUndo: () => toggleDone(step.id),
       onLater: () => { track("swap_later", { step: step.id }); markSeen(step.id); back(); },
       onOpen: openExternal,
+      onArticle: openArticle,
       // A pick can be kept without buying it now. Plan picks are not database
       // rows, so they save under the pick's own name with the ASIN off its
       // link, which is what the Saved tab needs to draw the row.
@@ -627,6 +642,30 @@ function draw() {
       articles: data.allArticles(),
       query: state.q || "",
       onQuery: (q) => { state.q = q; render(); view.querySelector(".shop-search input")?.focus(); },
+      onArticle: openArticle,
+    });
+  } else if (state.screen === "article") {
+    const meta = data.allArticles().find((a) => a.slug === state.slug) || { slug: state.slug, title: "" };
+    if (!state.guide) {
+      loadGuide(state.slug).then((guide) => {
+        // Only if this is still the screen on top. Otherwise the reader would
+        // draw over whatever replaced it.
+        if (stack[stack.length - 1] !== state) return;
+        state.guide = guide;
+        render();
+      }).catch((err) => {
+        // A bundle without the guide, or a broken file: the site still has it.
+        console.error("guide failed", err);
+        if (stack[stack.length - 1] !== state) return;
+        back();
+        openExternal(`https://plasticdetox.org/articles/${state.slug}?app=1`);
+      });
+    }
+    screens.article(view, {
+      meta,
+      body: state.guide && state.guide.body,
+      css: state.guide && state.guide.css,
+      onArticle: openArticle,
       onOpen: openExternal,
     });
   } else if (state.screen === "shopCategory") {
@@ -1017,6 +1056,43 @@ async function openExternal(url) {
     }
   }
   window.open(url, "_blank", "noopener");
+}
+
+// ----------------------------------------------------------------- guides
+
+// The guides ship in the bundle, one file each, and load on first open. Held
+// once loaded so going back and forth costs nothing, and the site's stylesheet
+// is fetched once for all of them.
+const guides = new Map();
+let guideCss = null;
+
+async function fetchText(url) {
+  const r = await fetch(url);
+  if (!r.ok) throw new Error(`${url}: ${r.status}`);
+  return r.text();
+}
+
+function loadGuide(slug) {
+  if (!guides.has(slug)) {
+    const p = Promise.all([
+      guideCss ? Promise.resolve(guideCss) : fetchText("./data/article.css"),
+      fetchText(`./data/articles/${encodeURIComponent(slug)}`),
+    ]).then(([css, body]) => { guideCss = css; return { css, body }; });
+    p.catch(() => guides.delete(slug));
+    guides.set(slug, p);
+  }
+  return guides.get(slug);
+}
+
+/** A guide as a screen, or on the site when this bundle does not hold it. */
+function openArticle(slug) {
+  const clean = String(slug || "").replace(/^.*\//, "");
+  if (!data.allArticles().some((a) => a.slug === clean)) {
+    openExternal(`https://plasticdetox.org/articles/${clean}?app=1`);
+    return;
+  }
+  track("guide_opened", { slug: clean });
+  go({ screen: "article", slug: clean });
 }
 
 // ------------------------------------------------------------- deep links

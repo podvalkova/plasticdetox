@@ -569,7 +569,7 @@ export function detoxKids(root, { unlocked, onBuyApp, onRestore, canBuyInApp, on
  * notes and links, and the free version where one exists, because the cheapest
  * swap is usually a habit and it counts the same. One button marks it done.
  */
-export function detoxStep(root, { phase, step, isDone, isSeen, onDone, onUndo, onLater, onOpen, onSavePick, isPickSaved }) {
+export function detoxStep(root, { phase, step, isDone, isSeen, onDone, onUndo, onLater, onOpen, onArticle, onSavePick, isPickSaved }) {
   const c = stepContent(step);
   root.classList.add("with-foot");
 
@@ -728,7 +728,7 @@ export function detoxStep(root, { phase, step, isDone, isSeen, onDone, onUndo, o
     a.type = "button";
     a.appendChild(el("span", "read-more-k", "The full guide"));
     a.appendChild(el("span", "read-more-t", step.article.title));
-    a.onclick = () => onOpen(`https://plasticdetox.org/articles/${step.article.slug}?app=1`);
+    a.onclick = () => onArticle(step.article.slug);
     root.appendChild(a);
   }
 
@@ -901,7 +901,7 @@ export function saved(root, { items, index, onProduct, onOpen, onShop }) {
 
 // ------------------------------------------------------------------ learn
 
-export function learn(root, { articles, onOpen, query, onQuery }) {
+export function learn(root, { articles, onArticle, query, onQuery }) {
   const hero = el("div", "hero shop-hero");
   hero.appendChild(el("h1", null, "Learn"));
   hero.appendChild(el("p", null,
@@ -935,7 +935,7 @@ export function learn(root, { articles, onOpen, query, onQuery }) {
       card.appendChild(el("div", "start-k", "Start here \u00b7 5 min"));
       card.appendChild(el("div", "start-h", start.title));
       card.appendChild(el("p", "start-p", start.blurb));
-      card.onclick = () => onOpen(`https://plasticdetox.org/articles/${start.slug}`);
+      card.onclick = () => onArticle(start.slug);
       root.appendChild(card);
     }
   }
@@ -966,12 +966,81 @@ export function learn(root, { articles, onOpen, query, onQuery }) {
       im.onerror = () => im.remove();
       card.appendChild(im);
     }
-    // app=1 tells the article the app already has a nav, so it drops the
-    // site's own header, footer and newsletter block and reads as one screen
-    // rather than as a website we sent you to.
-    card.onclick = () => onOpen(`https://plasticdetox.org/articles/${a.slug}?app=1`);
+    card.onclick = () => onArticle(a.slug);
     root.appendChild(card);
   });
+}
+
+// ----------------------------------------------------------------- reader
+
+/**
+ * A guide, read here.
+ *
+ * Every guide used to open the website in a browser sheet, which made the
+ * Learn tab a list of links and the app, to anyone judging it by that tab, a
+ * wrapper around a site. The guides ship in the bundle now, as the site's own
+ * markup and styles, and render in a frame of their own so the site's
+ * stylesheet never meets the app's. The frame grows to fit its page and the
+ * screen scrolls, so it reads as one page rather than a box inside one.
+ *
+ * Every tap on a link is decided here: another guide opens as another screen,
+ * an anchor scrolls to its heading, and anything else leaves through the same
+ * door as before.
+ */
+const READER_CSS = `
+html { scroll-behavior: auto; }
+body { background: transparent; min-height: 0; margin: 0; overflow: hidden; }
+.article, main, .hub { max-width: none !important; padding: .25rem 1rem 1.5rem !important; }
+img, picture, video, svg { max-width: 100%; }
+.pin-container { margin: .75rem 0 1.25rem; }
+.pin-img { height: auto; }
+table { display: block; overflow-x: auto; }
+`;
+
+export function article(root, { meta, body, css, onArticle, onOpen }) {
+  root.classList.add("reader");
+  if (!body) {
+    root.appendChild(el("div", "reader-wait", "Opening the guide"));
+    return;
+  }
+  const frame = el("iframe", "reader-frame");
+  frame.title = (meta && meta.title) || "Guide";
+  frame.setAttribute("scrolling", "no");
+  frame.onload = () => {
+    const doc = frame.contentDocument;
+    if (!doc || !doc.body) return;
+    const fit = () => { frame.style.height = `${doc.documentElement.scrollHeight}px`; };
+    fit();
+    // Images arrive after the first fit and each one makes the page taller.
+    if (window.ResizeObserver) new ResizeObserver(fit).observe(doc.body);
+    doc.addEventListener("click", (e) => {
+      const a = e.target && e.target.closest ? e.target.closest("a[href]") : null;
+      if (!a) return;
+      e.preventDefault();
+      const href = a.getAttribute("href") || "";
+      if (href.startsWith("#")) {
+        const t = doc.getElementById(href.slice(1));
+        if (t) {
+          const y = frame.getBoundingClientRect().top + window.scrollY
+            + t.getBoundingClientRect().top - 72;
+          window.scrollTo({ top: Math.max(0, y), behavior: "smooth" });
+        }
+        return;
+      }
+      // A bare filename is a sibling guide; so is the same file spelt out in full.
+      const sibling = href.match(/^([\w-]+\.html)(?:[?#].*)?$/)
+        || href.match(/^https?:\/\/plasticdetox\.org\/articles\/([\w-]+\.html)(?:[?#].*)?$/);
+      if (sibling) { onArticle(sibling[1]); return; }
+      onOpen(/^(https?:|mailto:)/.test(href) ? href : `${SITE}/${href.replace(/^\/+/, "")}`);
+    });
+  };
+  frame.srcdoc = `<!doctype html><html class="in-app"><head><meta charset="utf-8">`
+    + `<meta name="viewport" content="width=device-width, initial-scale=1">`
+    + `<style>${css}</style><style>${READER_CSS}</style></head><body>${body}</body></html>`;
+  root.appendChild(frame);
+  // Marks the frame as showing this guide, so a render nothing on this screen
+  // asked for can leave it alone rather than throw away the reader's place.
+  root.dataset.article = (meta && meta.slug) || "";
 }
 
 // ------------------------------------------------------------------- shop
@@ -1328,7 +1397,7 @@ function worthKnowing(ext, fronts, shown = []) {
   return box;
 }
 
-export function result(root, { index, match, scan, product, query, productNamed,
+export function result(root, { index, match, scan, product, query, productNamed, onArticle,
   onOpen, onPick, onProduct, onSave, isSaved, onRequest }) {
   const v = verdictFor(match, { title: (scan && scan.title) || query || "", product, productNamed });
 
@@ -1567,7 +1636,7 @@ export function result(root, { index, match, scan, product, query, productNamed,
   const know = worthKnowing(v.ext, v.fronts, printed);
   if (know) root.appendChild(know);
 
-  if (scan) root.appendChild(materialsCard(scan, onOpen));
+  if (scan) root.appendChild(materialsCard(scan, onOpen, onArticle));
 
   const alts = v.stance === "good"
     ? []
@@ -1614,7 +1683,7 @@ export function result(root, { index, match, scan, product, query, productNamed,
   if (v.article) {
     const a = el("a", asin && v.stance === "good" ? "cta ghost" : "cta", "Read the research");
     a.href = `${SITE}/articles/${v.article}`;
-    a.onclick = (e) => { e.preventDefault(); onOpen(a.href); };
+    a.onclick = (e) => { e.preventDefault(); onArticle(v.article); };
     root.appendChild(a);
   }
 
@@ -1638,7 +1707,7 @@ function describeFront(status) {
  * Shown on every scan, brand known or not, because it is the one answer we can
  * give about a product nobody has researched.
  */
-function materialsCard(scan, onOpen) {
+function materialsCard(scan, onOpen, onArticle) {
   const box = el("div", "card");
   box.appendChild(el("h2", null, "The materials"));
 
@@ -1661,7 +1730,10 @@ function materialsCard(scan, onOpen) {
   if (withArticle) {
     const a = el("a", "cta ghost", "Why this plastic matters");
     a.href = `${SITE}/${withArticle.article}`;
-    a.onclick = (e) => { e.preventDefault(); onOpen(a.href); };
+    // A material's article is a site path. The ones under articles/ are
+    // guides the bundle holds; anything else still goes to the site.
+    const slug = (withArticle.article.match(/^articles\/([\w-]+\.html)$/) || [])[1];
+    a.onclick = (e) => { e.preventDefault(); slug && onArticle ? onArticle(slug) : onOpen(a.href); };
     box.appendChild(a);
   }
   return box;

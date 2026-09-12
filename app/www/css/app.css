@@ -1135,3 +1135,13 @@ body.has-tabs .screen { padding-bottom: calc(var(--safe-bottom) + 4rem); }
   :root:not([data-theme="light"]) .dx-impact.medium   { background: #43391a; color: #fde047; }
   :root:not([data-theme="light"]) .dx-impact.lower    { background: #14361f; color: #86efac; }
 }
+
+/* ---------------------------------------------------------------- reader */
+
+/* A guide runs edge to edge; the frame inside carries the page's own padding. */
+.screen.reader { padding: 0 0 calc(var(--safe-bottom) + 1rem); }
+.reader-frame { display: block; width: 100%; border: 0; min-height: 70vh; background: transparent; }
+.reader-wait {
+  padding: 4rem 1rem; text-align: center; color: var(--muted);
+  font-size: 14px; font-weight: 600;
+}

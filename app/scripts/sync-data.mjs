@@ -134,6 +134,85 @@ articles.sort((a, b) => (b.date || "").localeCompare(a.date || ""));
 fs.writeFileSync(path.join(OUT, "articles.json"), JSON.stringify(articles, null, 1) + "\n");
 console.log(`articles.json        ${articles.length} articles`);
 
+// The guides themselves, so one opens inside the app.
+//
+// The Learn tab used to hand every guide to a browser sheet, which made it a
+// list of links to a website, and the app, to anyone judging it by that tab, a
+// wrapper around one. So each guide ships in the bundle as the site's own
+// markup, its inline styles included, with the chrome a phone screen has no
+// use for cut out: breadcrumbs, pin buttons, newsletter forms, the plan and
+// package banners, scripts, the footer. The shared stylesheet ships once
+// beside them. Relative paths become the site's, and links between guides
+// stay as bare filenames so the reader can tell a guide from the wider site.
+const ARTICLE_OUT = path.join(OUT, "articles");
+fs.rmSync(ARTICLE_OUT, { recursive: true, force: true });
+fs.mkdirSync(ARTICLE_OUT, { recursive: true });
+fs.copyFileSync(path.join(REPO, "css", "article.css"), path.join(OUT, "article.css"));
+
+// Remove a marker comment and the element that follows it, however deeply that
+// element nests its own kind. The banners are divs with divs inside, so a non
+// greedy match would stop at the first inner close and leave half a banner.
+const cutMarked = (html, marker, tag = "div") => {
+  const open = new RegExp(`<${tag}\\b[^>]*>`, "g");
+  const close = new RegExp(`</${tag}>`, "g");
+  let out = html;
+  for (;;) {
+    const at = out.indexOf(marker);
+    if (at < 0) return out;
+    open.lastIndex = at;
+    const first = open.exec(out);
+    if (!first) return out.slice(0, at) + out.slice(at + marker.length);
+    let depth = 1, pos = first.index + first[0].length;
+    while (depth) {
+      open.lastIndex = pos; close.lastIndex = pos;
+      const o = open.exec(out), c = close.exec(out);
+      if (!c) { pos = -1; break; }
+      if (o && o.index < c.index) { depth++; pos = o.index + o[0].length; }
+      else { depth--; pos = c.index + c[0].length; }
+    }
+    if (pos < 0) return out.slice(0, at) + out.slice(at + marker.length);
+    out = out.slice(0, at) + out.slice(pos);
+  }
+};
+
+const SITE_URL = "https://plasticdetox.org/";
+let guideBytes = 0, guides = 0;
+for (const a of articles) {
+  const raw = fs.readFileSync(path.join(ARTICLES, a.slug), "utf8");
+  const styles = [...raw.matchAll(/<style[^>]*>[\s\S]*?<\/style>/g)].map((m) => m[0]).join("\n");
+  let start = raw.indexOf('<article class="article">'), end = raw.lastIndexOf("</article>");
+  let closer = "</article>";
+  if (start >= 0 && end < 0) {
+    // One guide never closes its article. The footer is where it would have.
+    end = raw.indexOf("<footer", start); closer = "</article>";
+  }
+  if (start < 0) {
+    const m = raw.match(/<main\b[^>]*>/);
+    start = m ? m.index : -1; end = raw.lastIndexOf("</main>"); closer = "</main>";
+  }
+  if (start < 0 || end < start) { console.warn(`no body found in ${a.slug}, not shipped`); continue; }
+  let body = (raw.slice(start, end) + closer)
+    .replace(/<script[\s\S]*?<\/script>/g, "")
+    .replace(/<iframe[\s\S]*?<\/iframe>/g, "")
+    .replace(/<aside class="email-cta[^"]*"[\s\S]*?<\/aside>/g, "")
+    .replace(/<a class="pin-button"[\s\S]*?<\/a>/g, "")
+    .replace(/<div class="(?:article-)?breadcrumb">[\s\S]*?<\/div>/g, "")
+    .replace(/<footer[\s\S]*?<\/footer>/g, "");
+  for (const marker of ["<!-- custom-plan-cta -->", "<!-- custom-plan-cta-mid -->",
+                        "<!-- baby-package-cta -->", "<!-- baby-package-cta-mid -->"]) {
+    body = cutMarked(body, marker);
+  }
+  body = body
+    .replace(/(\s(?:src|href|poster)=")\.\.\//g, `$1${SITE_URL}`)
+    .replace(/(\ssrcset=")([^"]*)"/g, (m, k, v) =>
+      `${k}${v.replace(/(^|,\s*)\.\.\//g, `$1${SITE_URL}`)}"`);
+  const out = `${styles}\n${body}\n`;
+  fs.writeFileSync(path.join(ARTICLE_OUT, a.slug), out);
+  guideBytes += out.length;
+  guides++;
+}
+console.log(`articles/            ${guides} guides, ${(guideBytes / 1024).toFixed(0)} KB`);
+
 // The 365 daily tips. Authored once and kept at the repo root like every other
 // source of truth, because www/data is generated and gitignored: a file that
 // lives only there is one `npm run sync-data` away from being lost.
