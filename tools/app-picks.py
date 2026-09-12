@@ -99,8 +99,13 @@ def main():
         for p in b.get("products") or []:
             e = p.get("ext") or {}
             fr = e.get("fronts") or {}
-            if e.get("verdict") in ("careful", "skip") and not [
-                    k for k in FRONTS if fr.get(k) in ("caution", "fail")]:
+            # An override is the answer to this, not an instance of it: the
+            # reason is written down, dated and printed below. Counting those
+            # rows here would have left the ceiling stuck at 47 and made the
+            # manual layer look like the problem it solves.
+            if (e.get("verdict") in ("careful", "skip")
+                    and not (e.get("override") or {}).get("verdict")
+                    and not [k for k in FRONTS if fr.get(k) in ("caution", "fail")]):
                 unanchored.append(f"{b['brand']} / {p.get('name')}")
     anchor_file = ROOT / "data" / "verdict-anchor-backlog.json"
     anchor_ceiling = (json.loads(anchor_file.read_text()).get("unanchored")
