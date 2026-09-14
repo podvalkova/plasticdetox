@@ -72,7 +72,7 @@ export const KIDS = {
    ]
   },
   {
-   "guide": "non-toxic-nursery-setup.html",
+   "guide": "best-non-toxic-crib-mattresses.html",
    "id": "Kids::Change the crib mattress",
    "swap": "Change the crib mattress",
    "why": "Fourteen hours a day, face down, on the single largest piece of foam and vinyl in the house. Most crib mattresses are polyurethane foam under a PVC or TPU waterproof cover, warmed all night by the baby lying on it.",
@@ -81,22 +81,36 @@ export const KIDS = {
    "free": "Air a new mattress out of its wrapping for a week with the window open before it is slept on.",
    "picks": [
     {
-     "label": "$$$",
-     "name": "Avocado Eco Organic Crib Mattress",
-     "url": "https://www.amazon.com/dp/B0DXPDLDBL?tag=plasticdetox-20",
-     "note": "Best organic, GOTS and GREENGUARD Gold"
+     "label": "$$",
+     "name": "Naturepedic Organic Classic Crib Mattress",
+     "url": "https://www.amazon.com/dp/B083QP2JY7?tag=plasticdetox-20",
+     "note": "Best wipe clean, MADE SAFE, no polyurethane or vinyl"
     },
     {
-     "label": "$$$",
-     "name": "Naturepedic Organic 2 Stage Crib Mattress",
-     "url": "https://www.amazon.com/dp/B01D5805B2?tag=plasticdetox-20",
-     "note": "Best waterproof without PVC"
+     "label": "$$",
+     "name": "KATU Organic 2 Stage Crib Mattress",
+     "url": "https://www.amazon.com/dp/B0DJVHDVQ7?tag=plasticdetox-20",
+     "note": "No plastic layers, GOTS and GOLS"
     }
    ],
    "article": {
-    "slug": "non-toxic-nursery-setup.html",
-    "title": "Non Toxic Nursery Setup: What Actually Matters, In Order (2026)"
-   }
+    "slug": "best-non-toxic-crib-mattresses.html",
+    "title": "Best Non Toxic Crib Mattresses: What Testing Found in the Cover, the Core and the Waterproofing (2026)"
+   },
+   "faqs": [
+    {
+     "q": "Are crib mattresses exempt from federal flammability rules?",
+     "a": "No. Both federal mattress fire standards, the cigarette test in 16 CFR 1632 and the open flame test in 16 CFR 1633, name crib mattresses, including portable ones. Only mattress pads, toppers and juvenile product pads are excluded. Mattresses without a fire barrier pass because of what they are made of: the Ecology Center found barrier wraps on every polyurethane foam crib mattress it tested and none on polyester fiber or polyethylene cores, and organic mattresses use wool. California has also barred more than 1,000 ppm of flame retardant chemicals in any component of a crib mattress since 2020."
+    },
+    {
+     "q": "Is a polyethylene waterproof crib mattress safe?",
+     "a": "Polyethylene is not vinyl, and vinyl covers are the ones testing keeps finding plasticizers in: 17 of 20 covers in a 2015 study and all 6 PVC covers the Ecology Center tested. Naturepedic's polyethylene surface is listed by UL as GREENGUARD Gold and non detectable for PFAS, which is why it is our top pick for a wipe clean mattress. It is still plastic, and a 2025 study found that moving away from PVC did not reliably remove phthalates from covers. For no plastic in the mattress, choose coconut coir and latex with a thin fitted protector."
+    },
+    {
+     "q": "Do breathable crib mattresses reduce the risk of SIDS?",
+     "a": "There is no evidence that they do. The American Academy of Pediatrics 2022 safe sleep statement never uses the word breathable and endorses no mattress type for lowering SIDS risk. It recommends a firm, flat, noninclined surface, a fitted sheet, a thin tightly fitting cover if you need one for wetness, and nothing else in the crib, and it warns that soft mattresses, including memory foam, could create a pocket that raises the risk of suffocation. A breathable design can be firm and meet the federal standard, but the airflow claim is marketing, not a safety finding."
+    }
+   ]
   },
   {
    "guide": "best-non-toxic-baby-bottles.html",
