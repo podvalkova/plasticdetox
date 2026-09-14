@@ -785,6 +785,16 @@ def main():
                 }
 
             test = entry.get("testing") or {}
+            # The measurements themselves, where a person recorded them from the
+            # lab report. A card that says "independent testing found lead" is
+            # weaker than one that shows 76.53 ppb at a stated limit, and the app
+            # already renders ext.testingResults as "What the lab measured".
+            # Carried whether or not a status is set: a number is a fact before
+            # anyone decides what it means.
+            if test.get("results"):
+                p.setdefault("ext", {})["testingResults"] = test["results"]
+                if test.get("lod"):
+                    p["ext"]["testingLod"] = test["lod"]
             if test.get("status"):
                 te = p.setdefault("ext", {})
                 te.setdefault("fronts", {})["testing"] = test["status"]

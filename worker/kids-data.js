@@ -336,7 +336,7 @@ export const KIDS = {
     {
      "label": "$$",
      "name": "Weck Canning Jars",
-     "url": "https://www.amazon.com/dp/B00E9E45JA?tag=plasticdetox-20",
+     "url": "https://www.amazon.com/dp/B08DDD6T1R?tag=plasticdetox-20",
      "note": "Best glass jar for purees, glass lid"
     },
     {

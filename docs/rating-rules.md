@@ -637,6 +637,89 @@ reads as proof of the thing the sentence denies.
 
 ---
 
+### 4.7 What a measured level means
+
+A lab result is a number. What the number means depends on how the product
+reaches the body, so the bar is set by exposure route, and every bar below is a
+published figure rather than one we drew. Before this section each adverse
+testing record was judged one at a time, and the judgements drifted: a
+toothpaste at 32 ppb lead read caution while a sunscreen at 77 ppb read pass.
+
+**Eaten or swallowed**: food, drink, supplements, infant formula, and
+toothpaste, which children swallow. The levels proposed in the Baby Food Safety
+Act of 2021, which the independent testers our verdicts cite apply to
+everything ingested:
+
+| Metal | Bar |
+|---|---|
+| Lead | 5 ppb |
+| Cadmium | 5 ppb |
+| Arsenic (total, unless the lab speciated it) | 10 ppb |
+| Mercury | 2 ppb |
+
+> **At or above any bar: `caution`.** The Act never passed, so none of these is
+> a legal limit, and a proposed level cannot make a `fail` on its own.
+
+- Above a limit a regulator applies to that product type: `fail`. For food
+  intended for babies and young children that is FDA's lead action level
+  (January 2025): 10 ppb, and 20 ppb for single ingredient root vegetables and
+  dry infant cereals.
+- Non-detect for lead, cadmium and arsenic at limits at or below their bars:
+  `pass`. Commercial metals panels rarely report mercury below 5 ppb, so a
+  mercury non-detect at up to 5 ppb counts, and the card says its limit sat
+  above 2 ppb. A mercury limit above 5 ppb leaves mercury unjudged.
+- Detected, but below every bar: `pass`, with the numbers on the card.
+
+**Left on the skin**: sunscreen, lotion, balm, diaper cream. Looser than
+eaten, because skin takes in far less than a gut does, and stricter for
+products made for babies than for adults, because a baby's hands, and whatever
+is on them, go to the mouth. Both columns are published figures for the heavy
+metal levels good manufacturing can avoid in cosmetics. The baby column is
+Germany's (BVL, 2017, as tabulated by the UK Office for Product Safety and
+Standards), taking its stricter toothpaste figure for lead because toothpaste is
+the one cosmetic BVL treats as reaching the mouth. The adult column is Health
+Canada's guidance on heavy metal impurities in cosmetics (2017):
+
+| Metal | Made for babies and children | Adults |
+|---|---|---|
+| Lead | 500 ppb | 10,000 ppb |
+| Cadmium | 100 ppb | 3,000 ppb |
+| Arsenic | 500 ppb | 3,000 ppb |
+| Mercury | 100 ppb | 1,000 ppb |
+
+- At or above a bar: `caution`.
+- Lead above 10 ppm (10,000 ppb), FDA's recommended maximum for externally
+  applied cosmetics: `fail`, in either column.
+- A product that clears the adult column but not the baby column is not a pick
+  for babies, and the card says so.
+- Below every bar, or non-detect at those limits: `pass`, with the numbers on
+  the card. A tester that applies its food levels to sunscreen may still call
+  such a product unsafe for babies, and where it does, the card says so.
+
+**Durable goods measured by XRF**, in ppm, on the material or the surface:
+
+- Lead at or above 90 ppm in paint, glaze or coating, or 100 ppm in the
+  substrate: on a product for children `fail` (CPSIA); on any other product
+  that touches food, the mouth or the skin, `caution`.
+- Cadmium at or above 40 ppm, the strictest limit in force (Washington State):
+  `caution`.
+- Below those it is trace, recorded and not a finding. A non-detect is a
+  `pass`; the instrument's limit is single digit ppm, as the tester states it.
+
+**Who paid.** A result the brand funded keeps its tier when the tester chose
+the lab, bought the product at retail, sent it blind and published regardless
+of the outcome; the card names the funder. Where the brand chose the samples it
+is a certificate of analysis, tier 3 under 4.2. A tester's affiliate or
+advertising relationship with the brand is named the same way.
+
+**Age.** Section 7's 36 months applies. An older result is recorded, and
+carries nothing in either direction.
+
+**Transfer.** A result on one product reaches another only under 4.1: as a
+caution, never a skip, and only through an ingredient the two share. Rice
+carries arsenic and cadmium in from the soil, so one rice from a grower speaks
+for the grower's other rice. A clean result never transfers.
+
 ## 5. Lawsuits and recalls
 
 These behave completely differently and should never have shared a front's logic.
