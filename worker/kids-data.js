@@ -513,7 +513,7 @@ export const KIDS = {
      "label": "$$",
      "name": "Motherlove Diaper Balm",
      "url": "https://www.amazon.com/dp/B000XJ2LDW?tag=plasticdetox-20",
-     "note": "Best for cloth diapers"
+     "note": "Best for cloth diapers. Buy the 2 oz glass jar; the 4 oz may come in plastic"
     },
     {
      "label": "$$",
@@ -548,7 +548,7 @@ export const KIDS = {
     ],
     "skip": [
      "Talc, which Desitin's own label lists",
-     "The same balm in a plastic jar. Motherlove's glass 1oz passes and its 4oz plastic does not",
+     "The same balm in a plastic jar. Motherlove's 1 oz and 2 oz glass jars pass; its 4 oz may come in plastic",
      "Water based creams worry less. Fat is what pulls plasticisers out"
     ]
    },

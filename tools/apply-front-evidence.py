@@ -583,7 +583,7 @@ def read_formula(entry, cat=""):
         for t in terms:
             rx = re.compile(r"(?<![a-z0-9])" + re.escape(t) + r"s?(?![a-z0-9])")
             for m in rx.finditer(low):
-                if _bf.is_negated(low, m.start(), m.end()):
+                if _bf.is_negated(low, m.start(), m.end(), lists=True):
                     continue
                 if t in _apr.DISCLOSURE_FAILURE and (
                         spelled_out(low, m.end()) or allergens_named(low)):

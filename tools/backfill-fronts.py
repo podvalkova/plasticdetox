@@ -184,6 +184,8 @@ NEGATORS = [
 ]
 # ...unless the sentence turns back on itself in between.
 CONTRAST = ["but", "however", "though", "although", "while", "still", "yet", "despite"]
+# Words that end a "free of" list and start saying what IS in the product.
+LIST_BREAKS = ["with", "contains", "containing", "including", "plus", "except", "added"]
 
 # Legal events serious enough to fail the front on a single un-negated mention.
 HARD_LEGAL = [
@@ -245,7 +247,7 @@ def score_fragment(fragment):
     return scores, low
 
 
-def is_negated(low, start, end):
+def is_negated(low, start, end, lists=False):
     """True when a hazard word at [start:end] is being ruled out rather than reported."""
     ahead = low[end:end + 26]
     # Trailing "-free" / " free", including slash-joined lists where one suffix
@@ -264,6 +266,28 @@ def is_negated(low, start, end):
     # into an unrelated "BPA free" later in the sentence.
     if re.match(r"^[\w\s,/&+-]{0,45}?[\s-]free\b", ahead):
         return True
+    # One "free of" heading a long written list: "Free of petroleum and
+    # petroleum by-products, lanolin, parabens, phthalates, and synthetic
+    # fillers". The 45 character window below ends before the fourth item, so
+    # Motherlove's 4 oz balm was convicted of the parabens and phthalates its
+    # label rules out. Held to one clause: list words and punctuation only, no
+    # sentence break, and no contrast or inclusion word between the two.
+    #
+    # Only for a recorded ingredient panel (lists=True), where "free of" heads a
+    # label claim. In a prose note the same reach cleared the wrong word:
+    # Beauty's Sunday's "Free of the toxic trio and most of the additional film
+    # formers found in conventional polish" read "conventional" as ruled out
+    # and turned an unrated nail polish good.
+    if lists:
+        lead = low[max(0, start - 160):start]
+        opener = None
+        for opener in re.finditer(r"(?<![a-z0-9])free\s+(?:of|from)\s+", lead):
+            pass
+        if opener:
+            span = lead[opener.end():]
+            if (re.fullmatch(r"[\w\s,/&+-]*", span)
+                    and not any(has(span, w) for w in CONTRAST + LIST_BREAKS)):
+                return True
     window = low[max(0, start - 45):start]
     hit = -1
     for n in NEGATORS:
