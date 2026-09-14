@@ -6800,12 +6800,14 @@
     "brand": "Avocado Green Mattress",
     "category": "Mattress",
     "stance": "good",
-    "reason": "Organic latex, wool, and cotton mattresses with no polyurethane foam and the strongest certification stack we track, GOLS, GOTS, GREENGUARD Gold, MADE SAFE, EWG Verified. Both the adult mattress and the crib mattress are featured picks.",
-    "evidence": "GOLS + GOTS + GREENGUARD Gold + MADE SAFE + EWG Verified",
+    "reason": "Organic cotton, wool, coconut husk and latex mattresses with no polyurethane foam and no built in waterproofing. The Organic Crib Mattress carries MADE SAFE, GREENGUARD Gold and EWG Verified on the crib model, plus GOTS and GOLS; its only synthetics are a polypropylene lining on the side panels and 3% elastane in the cover. The Eco Organic crib mattress is pocketed coils in a polypropylene nonwoven under latex bound coir, not a latex core. Legal: a 2023 suit over material claims named the crib mattresses and was dismissed; a 2026 federal class action is about website reference pricing; a 2024 recall covered adult mattress pads. Its optional crib protector uses a polyurethane film.",
+    "evidence": "MADE SAFE + GREENGUARD Gold + EWG Verified + GOTS + GOLS on the Organic Crib Mattress",
     "alternative": "",
     "sources": [
       "microplastics-in-bedroom-air.html",
-      "non-toxic-baby-toddler-products-guide.html"
+      "non-toxic-baby-toddler-products-guide.html",
+      "best-non-toxic-crib-mattresses.html",
+      "https://www.avocadogreenmattress.com/products/affordable-organic-crib-mattress"
     ],
     "aliases": [
       "Avocado",
@@ -6840,33 +6842,22 @@
       {
         "name": "Avocado Eco Organic Crib Mattress",
         "asins": [
-          "B0DXPDLDBL"
+          "B0FPJ93BLC"
         ],
         "verdict": "good",
-        "note": "GOTS certified organic cotton with natural latex core. No polyurethane foam, no chemical flame retardants. Badges: GOLS latex, GOTS.",
-        "origin": "registry",
+        "note": "242 pocketed recycled steel coils in a polypropylene nonwoven with an EVA based adhesive, latex bound GOLS coconut husk pads, and a GOTS organic cotton and wool cover. No latex foam layer, no polyurethane, no waterproofing. MADE SAFE and GREENGUARD Gold. Amazon listing unavailable on 2026-09-14.",
+        "origin": "article",
+        "cat": "Crib mattresses",
+        "source": "best-non-toxic-crib-mattresses.html",
         "ext": {
-          "legalNote": "Checked recall records on 2026-08-31. A 2024 recall of Avocado mattress pads for a flammability standard violation completed its remedy, and a 2023 marketing suit was dismissed; the crib mattress was not part of either.",
           "frontNotes": {
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "testing": "UL SPOT lists GREENGUARD Gold for the Avocado Eco Organic Crib Mattress; MADE SAFE index lists it. Certifier results, not a watchdog lab test.",
             "materials": "In contact with cotton, which puts nothing into what it holds.",
-            "legal": "Checked recall records on 2026-08-31. A 2024 recall of Avocado mattress pads for a flammability standard violation completed its remedy, and a 2023 marketing suit was dismissed; the crib mattress was not part of either.",
-            "formula": "An object has no ingredient list. What it is made of is the materials check."
+            "legal": "Checked 2026-09-14. CPSC recall 24-330 (Aug 2024) covered about 55,480 adult organic cotton mattress pad protectors for a flammability violation, not crib products. Roberts v. Avocado Mattress (N.D. Cal. 3:23-cv-02072) named the crib mattresses among its products; individual claims were dismissed with prejudice in August 2023. Davis v. Avocado Mattress (E.D. Cal. 2:26-cv-01390, filed April 2026) is a reference pricing class action, not about materials; the clerk entered default on 2026-08-31."
           },
-          "heldFrom": "good",
-          "restoreWhy": "independent lab result at sku scope",
-          "exposure": {
-            "type": "slept on",
-            "level": "high",
-            "score": 8.0,
-            "baby": true,
-            "route": "inhalation",
-            "duration": "overnight",
-            "retained": "breathed",
-            "frequency": "daily",
-            "heat": false,
-            "fat": false,
-            "why": "Eight hours a night, close to the face."
-          },
+          "testingNote": "UL SPOT lists GREENGUARD Gold for the Avocado Eco Organic Crib Mattress; MADE SAFE index lists it. Certifier results, not a watchdog lab test.",
+          "testingDate": "2026-09-14",
           "materialsList": "organic cotton, wool",
           "materialAnswers": {
             "contact": "yes",
@@ -6877,12 +6868,13 @@
             "reuse": "",
             "use": "",
             "material": "organic cotton, wool",
-            "source": "Sleep surface is GOTS organic cotton and wool over organic latex and coconut coir, with no built in waterproof layer; waterproofing is a separate optional protector (avocadogreenmattress.com)",
-            "checked": "2026-09-11"
+            "source": "avocadogreenmattress.com: GOTS organic cotton (3% elastane) quilted over wool is the sleep surface; interior coils float in a polypropylene nonwoven with an EVA based adhesive",
+            "checked": "2026-09-14"
           },
+          "legalNote": "Checked 2026-09-14. CPSC recall 24-330 (Aug 2024) covered about 55,480 adult organic cotton mattress pad protectors for a flammability violation, not crib products. Roberts v. Avocado Mattress (N.D. Cal. 3:23-cv-02072) named the crib mattresses among its products; individual claims were dismissed with prejudice in August 2023. Davis v. Avocado Mattress (E.D. Cal. 2:26-cv-01390, filed April 2026) is a reference pricing class action, not about materials; the clerk entered default on 2026-08-31.",
           "verdict": "good",
-          "dated": "2026-08-29",
-          "why": "independent lab result at sku scope",
+          "dated": "2026-09-14",
+          "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
             "materials": "pass",
@@ -6890,28 +6882,75 @@
             "testing": "pass"
           },
           "frontOrigin": {
-            "legal": "database",
-            "testing": "inferred",
             "formula": "hand",
-            "materials": "database"
+            "testing": "database",
+            "materials": "database",
+            "legal": "database"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": [
-            "2 prose-cannot-clear-formula",
-            "5.4 durable-good-is-its-own-packaging"
-          ]
-        },
+          "rules": []
+        }
+      },
+      {
+        "name": "Avocado Organic Crib Mattress",
+        "verdict": "good",
+        "origin": "store",
+        "note": "Latex bound GOLS organic coconut husk (infant side) and organic Dunlop latex (toddler side) under a GOTS organic cotton and wool cover. No coils, no polyurethane, no waterproofing; polypropylene nonwoven on the side panels and 3% elastane in the cover. MADE SAFE, GREENGUARD Gold, EWG Verified. Consumer Reports Top Choice. Sold direct.",
         "cat": "Crib mattresses",
         "matchAll": [
           [
             "avocado",
-            "green",
-            "mattress",
+            "organic",
             "crib"
           ]
-        ]
+        ],
+        "ext": {
+          "frontNotes": {
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "testing": "MADE SAFE certified (index.madeworks.com), GREENGUARD Gold on UL SPOT and EWG Verified (product 29, reviewed 2024-08-29) for the Organic Crib Mattress, all verified 2026-09-14.",
+            "materials": "Made of polypropylene, with nothing inside it to pull anything out. What that contact means is the exposure read.",
+            "legal": "Checked 2026-09-14. CPSC recall 24-330 (Aug 2024) covered about 55,480 adult organic cotton mattress pad protectors for a flammability violation, not crib products. Roberts v. Avocado Mattress (N.D. Cal. 3:23-cv-02072) named the crib mattresses among its products; individual claims were dismissed with prejudice in August 2023. Davis v. Avocado Mattress (E.D. Cal. 2:26-cv-01390, filed April 2026) is a reference pricing class action, not about materials; the clerk entered default on 2026-08-31."
+          },
+          "testingNote": "MADE SAFE certified (index.madeworks.com), GREENGUARD Gold on UL SPOT and EWG Verified (product 29, reviewed 2024-08-29) for the Organic Crib Mattress, all verified 2026-09-14.",
+          "testingDate": "2026-09-14",
+          "materialsList": "organic cotton, wool, natural rubber latex, coconut coir, polypropylene",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "dry",
+            "heated": false,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "organic cotton, wool, natural rubber latex, coconut coir, polypropylene",
+            "source": "avocadogreenmattress.com law label: natural latex foam rubber, cocofiber infused with organic latex, organic wool, organic cotton and elastane cover; polypropylene nonwoven side panels",
+            "checked": "2026-09-14"
+          },
+          "legalNote": "Checked 2026-09-14. CPSC recall 24-330 (Aug 2024) covered about 55,480 adult organic cotton mattress pad protectors for a flammability violation, not crib products. Roberts v. Avocado Mattress (N.D. Cal. 3:23-cv-02072) named the crib mattresses among its products; individual claims were dismissed with prejudice in August 2023. Davis v. Avocado Mattress (E.D. Cal. 2:26-cv-01390, filed April 2026) is a reference pricing class action, not about materials; the clerk entered default on 2026-08-31.",
+          "verdict": "good",
+          "dated": "2026-09-14",
+          "why": "independent lab result at line scope",
+          "fronts": {
+            "formula": "none",
+            "materials": "pass",
+            "legal": "pass",
+            "testing": "pass"
+          },
+          "frontOrigin": {
+            "formula": "hand",
+            "testing": "database",
+            "materials": "database",
+            "legal": "database"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
+        }
       }
     ],
     "rollup": {
@@ -7854,12 +7893,13 @@
     "brand": "Babyletto",
     "category": "Nursery furniture",
     "stance": "careful",
-    "reason": "GREENGUARD Gold certified solid New Zealand pine crib with a water-based finish.",
+    "reason": "Our verdict varies across the range. The Hudson crib is GREENGUARD Gold solid pine with a water based finish, and the Babyletto x Avocado crib mattress (coconut husk, pocketed coils, GOTS cotton and wool, GREENGUARD Gold) is a pick. The upholstered glider uses polyurethane foam cushions.",
     "evidence": "GREENGUARD Gold certified, solid wood, water-based finish",
     "alternative": "",
     "sources": [
       "non-toxic-baby-toddler-products-guide.html",
-      "non-toxic-nursery-setup.html"
+      "non-toxic-nursery-setup.html",
+      "best-non-toxic-crib-mattresses.html"
     ],
     "fronts": {
       "formula": {
@@ -8019,6 +8059,62 @@
             "hudson"
           ]
         ]
+      },
+      {
+        "name": "Babyletto x Avocado Organic Crib Mattress",
+        "asins": [
+          "B0DXPDLDBL"
+        ],
+        "verdict": "good",
+        "origin": "store",
+        "note": "Made with Avocado: GOTS organic cotton cover and wool batting over latex bound coconut husk fiber and individually wrapped coils, organic latex as the binder. No polyurethane foam, vinyl or built in waterproofing. GREENGUARD Gold (UL SPOT lists Avocado x Babyletto Organic Crib Mattress). Two stage, 23 lb.",
+        "cat": "Crib mattresses",
+        "ext": {
+          "frontNotes": {
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "testing": "UL SPOT lists GREENGUARD Gold for the Avocado x Babyletto Organic Crib Mattress; Avocado's GOTS scope (GOTS-18148) covers mattresses. Certifier results, not a lab test.",
+            "materials": "In contact with cotton, which puts nothing into what it holds.",
+            "legal": "Checked recall records on 2026-08-31. A July 2025 recall of Kiwi electric gliders (USB port overheating) was remedied with a repair kit; no Babyletto crib has been recalled, and the electrical mechanism does not transfer to furniture without electronics."
+          },
+          "testingNote": "UL SPOT lists GREENGUARD Gold for the Avocado x Babyletto Organic Crib Mattress; Avocado's GOTS scope (GOTS-18148) covers mattresses. Certifier results, not a lab test.",
+          "testingDate": "2026-09-14",
+          "materialsList": "organic cotton, wool",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "dry",
+            "heated": false,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "organic cotton, wool",
+            "source": "amazon B0DXPDLDBL and babyletto.com (M53102A): organic cotton cover and wool batting over coconut husk fibers and individually wrapped coils, organic latex as the coir binder; no waterproof layer",
+            "checked": "2026-09-14"
+          },
+          "legalNote": "Checked recall records on 2026-08-31. A July 2025 recall of Kiwi electric gliders (USB port overheating) was remedied with a repair kit; no Babyletto crib has been recalled, and the electrical mechanism does not transfer to furniture without electronics.",
+          "verdict": "good",
+          "dated": "2026-09-14",
+          "why": "a vetted store pick, chosen by a person at product scope",
+          "fronts": {
+            "formula": "none",
+            "materials": "pass",
+            "legal": "pass",
+            "testing": "pass"
+          },
+          "frontOrigin": {
+            "formula": "hand",
+            "testing": "database",
+            "materials": "database",
+            "legal": "database"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": [
+            "2 prose-cannot-clear-formula",
+            "5.4 durable-good-is-its-own-packaging"
+          ]
+        }
       }
     ],
     "scopeNote": "Our verdict varies across this brand's range.",
@@ -12220,9 +12316,9 @@
         "verdict": "careful",
         "note": "About 85,000 Bialetti branded glass presses were recalled in May 2017 by licensee Bradshaw International after beakers broke during normal use; the recall was remedied by replacement. Our Bialetti pick is the all stainless Venus moka pot, not a glass press.",
         "ext": {
-          "legalNote": "CPSC, May 2017: ~85,000 Bialetti branded glass coffee presses recalled by licensee Bradshaw International after beakers broke during normal use.",
+          "legalNote": "CPSC recall page read 2026-09-14: May 16 2017, about 85,000 Bialetti coffee presses recalled by licensee Bradshaw International (glass beakers can break during normal use; three reports, two needing stitches). Remedied by replacement and more than two years old, so informational under rule 5.2. The Venus moka pot line was never recalled.",
           "frontNotes": {
-            "legal": "2017 CPSC recall of ~85,000 units, beakers broke in normal use"
+            "legal": "CPSC recall page read 2026-09-14: May 16 2017, about 85,000 Bialetti coffee presses recalled by licensee Bradshaw International (glass beakers can break during normal use; three reports, two needing stitches). Remedied by replacement and more than two years old, so informational under rule 5.2. The Venus moka pot line was never recalled."
           },
           "exposure": {
             "type": "hot drink",
@@ -12239,15 +12335,16 @@
           },
           "verdict": "unrated",
           "dated": "2026-09-14",
-          "why": "recall closed and remedied in 20, now informational",
+          "why": "recall closed and remedied in 2017, now informational",
           "fronts": {
             "formula": "unassessed",
             "materials": "pass",
-            "legal": "unassessed",
+            "legal": "pass",
             "testing": "unassessed"
           },
           "frontOrigin": {
-            "materials": "inferred"
+            "materials": "inferred",
+            "legal": "database"
           },
           "scope": "none",
           "basis": "direct",
@@ -27599,38 +27696,34 @@
     "brand": "Delta Children",
     "category": "Nursery",
     "stance": "careful",
-    "reason": "Its CleanEarth crib mattress is fully GOTS certified with organic cotton, an organic wool flame barrier and organic latex over innersprings, no polyurethane and no fiberglass, and it is the most affordable fully organic crib mattress we found. Brand level caution is historical: Delta recalled about 1.5 million drop side cribs in 2008 to 2010 after infant deaths. Drop side cribs were federally banned in 2011 and no Delta mattress has been recalled.",
-    "evidence": "CleanEarth mattress fully GOTS certified; 2008-2010 drop side crib recalls",
-    "alternative": "Naturepedic Organic Classic if budget allows.",
+    "reason": "The CleanEarth organic crib mattress is sold as fully GOTS certified, but Delta's GOTS certificate (GOTS-27210) lists only organic cotton and wool, the \"organic latex\" has no GOLS certificate, the waterproof barrier's polymer is not disclosed, and no UL SPOT listing was found for its GREENGUARD Gold claim. It is not two stage. A Prop 65 notice (August 2026) alleges PFOA in Delta changing pads. No Delta mattress has been recalled; its drop side crib recalls (2008 to 2011) and 2020 inclined sleeper recall are long remedied. Delta also makes Serta and Beautyrest crib mattresses.",
+    "evidence": "GOTS covers cotton and wool only; waterproof layer undisclosed; PFOA notice on changing pads",
+    "alternative": "Naturepedic Organic Classic or KATU",
     "sources": [
-      "non-toxic-nursery-setup.html"
+      "non-toxic-nursery-setup.html",
+      "best-non-toxic-crib-mattresses.html"
     ],
     "products": [
       {
         "name": "CleanEarth Certified Organic Crib Mattress",
-        "verdict": "good",
-        "note": "GOTS organic cotton, organic wool flame barrier, organic latex over innersprings. Contains natural latex, an allergen for some families.",
+        "verdict": "careful",
+        "note": "Organic cotton cover, organic wool, latex over innersprings, and a waterproof surface whose polymer is not disclosed. GOTS certificate covers cotton and wool only; no GOLS for the latex; GREENGUARD Gold claim not found on UL SPOT. Same firmness both sides.",
+        "origin": "hand",
+        "matchFrom": "name",
+        "cat": "Crib mattresses",
+        "asins": [
+          "B0GX7MVP6V"
+        ],
         "ext": {
-          "legalNote": "Checked recall records on 2026-08-31. The 2008 drop side crib recall and the 2019 industry wide incline sleeper recall are both long remedied, and no recall affects the crib mattresses we cover.",
           "frontNotes": {
-            "materials": "dry contents in polyethylene.",
             "formula": "An object has no ingredient list. What it is made of is the materials check.",
-            "legal": "Checked recall records on 2026-08-31. The 2008 drop side crib recall and the 2019 industry wide incline sleeper recall are both long remedied, and no recall affects the crib mattresses we cover."
+            "testing": "GOTS-27210 (expires 2026-10-01) lists only organic cotton and wool; no GOLS certificate found for the latex; UL SPOT searches for CleanEarth, Clean Earth and PureEarth returned no listing for the claimed GREENGUARD Gold (2026-09-14).",
+            "materials": "plastic in direct contact.",
+            "legal": "Checked 2026-09-14. Delta Enterprise drop side crib recalls: Oct 2008 (985,000 and about 600,000), June 2010 (about 747,000), re-announced March 2011; inclined sleeper recall 20-061, January 2020 (about 5,900). All long remedied, and no Delta crib mattress has been recalled. Prop 65 notice 2026-04188 (Aug 27, 2026) alleges PFOA in Delta Children changing pads, a different product."
           },
-          "exposure": {
-            "type": "slept on",
-            "level": "high",
-            "score": 8.0,
-            "baby": true,
-            "route": "inhalation",
-            "duration": "overnight",
-            "retained": "breathed",
-            "frequency": "daily",
-            "heat": false,
-            "fat": false,
-            "why": "Eight hours a night, close to the face."
-          },
-          "materialsList": "polyethylene",
+          "testingNote": "GOTS-27210 (expires 2026-10-01) lists only organic cotton and wool; no GOLS certificate found for the latex; UL SPOT searches for CleanEarth, Clean Earth and PureEarth returned no listing for the claimed GREENGUARD Gold (2026-09-14).",
+          "testingDate": "2026-09-14",
+          "materialsList": "cotton, wool, plastic",
           "materialAnswers": {
             "contact": "yes",
             "contactFrom": "recorded",
@@ -27639,48 +27732,34 @@
             "mouthed": false,
             "reuse": "",
             "use": "",
-            "material": "polyethylene",
-            "source": "Organic cotton, organic wool, organic latex over innersprings; food grade polyethylene waterproofing rather than vinyl (deltachildren.com)",
-            "checked": "2026-09-11"
+            "material": "cotton, wool, plastic",
+            "source": "deltachildren.com and amazon B0GX7MVP6V: organic cotton, organic wool, latex foam, Bonnell coils, and an easy to clean waterproof surface whose material is not named anywhere",
+            "checked": "2026-09-14"
           },
-          "verdict": "good",
-          "dated": "2026-08-29",
-          "why": "independent lab result at sku scope",
+          "legalNote": "Checked 2026-09-14. Delta Enterprise drop side crib recalls: Oct 2008 (985,000 and about 600,000), June 2010 (about 747,000), re-announced March 2011; inclined sleeper recall 20-061, January 2020 (about 5,900). All long remedied, and no Delta crib mattress has been recalled. Prop 65 notice 2026-04188 (Aug 27, 2026) alleges PFOA in Delta Children changing pads, a different product.",
+          "verdict": "careful",
+          "dated": "2026-09-14",
+          "why": "adverse finding stands",
           "fronts": {
             "formula": "none",
-            "materials": "pass",
+            "materials": "caution",
             "legal": "pass",
-            "testing": "pass"
+            "testing": "caution"
           },
           "frontOrigin": {
             "formula": "hand",
-            "legal": "database",
-            "testing": "inferred",
-            "materials": "database"
+            "testing": "database",
+            "materials": "database",
+            "legal": "database"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
           "rules": [
             "2 prose-cannot-clear-formula",
-            "5.4 durable-good-is-its-own-packaging"
+            "2 non-disclosure-is-a-caution"
           ]
-        },
-        "origin": "hand",
-        "matchAll": [
-          [
-            "delta",
-            "children",
-            "cleanearth",
-            "certified",
-            "organic"
-          ]
-        ],
-        "matchFrom": "name",
-        "cat": "Crib mattresses",
-        "asins": [
-          "B0GX7MVP6V"
-        ]
+        }
       }
     ],
     "fronts": {
@@ -30692,15 +30771,17 @@
     "brand": "Dream On Me",
     "category": "Nursery",
     "stance": "careful",
-    "reason": "GREENGUARD Gold certified, which tests for VOC emissions and is a real certification. The fill is still polyurethane foam, so the certification covers what comes off it rather than what it is made of.",
-    "evidence": "GREENGUARD Gold certified; polyurethane foam core",
+    "reason": "The best selling Twilight crib mattress is steel coils and fiber padding under a vinyl cover, and the Ecology Center found that cover carried the plasticizer DOTP and antimony at levels indicating antimony trioxide. In 2017 Dream On Me recalled about 23,400 crib and toddler mattresses for failing the federal flammability standard. Its foam models hold GREENGUARD Gold, which is an emissions test.",
+    "evidence": "Ecology Center 2020: vinyl cover with DOTP and antimony; CPSC 18-058",
     "sources": [
-      "non-toxic-nursery-setup.html"
+      "non-toxic-nursery-setup.html",
+      "best-non-toxic-crib-mattresses.html",
+      "https://www.ecocenter.org/our-work/healthy-stuff-lab/reports/crib-mattress-report/crib-mattress-study"
     ],
     "article": "non-toxic-nursery-setup.html",
     "reviewed": true,
     "generalises": true,
-    "alternative": "Naturepedic or Avocado organic crib mattress",
+    "alternative": "Naturepedic or KATU",
     "products": [
       {
         "name": "Nap Nest crib mattress",
@@ -30781,6 +30862,61 @@
           "legalDate": "2017-12"
         },
         "cat": "Crib mattresses"
+      },
+      {
+        "name": "Twilight 5 inch 88 coil crib mattress",
+        "asins": [
+          "B00F18FMZ4",
+          "B073VQ9F9S"
+        ],
+        "verdict": "careful",
+        "origin": "article",
+        "source": "best-non-toxic-crib-mattresses.html",
+        "note": "88 Bonnell coils and fiber padding under a waterproof vinyl cover. Ecology Center found DOTP and antimony indicating antimony trioxide in the tested cover. GREENGUARD Gold. Consumer Reports Worse Choices.",
+        "cat": "Crib mattresses",
+        "ext": {
+          "frontNotes": {
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "testing": "Ecology Center 2020 (Twilight bought 2018 to 2019): vinyl cover with DOTP, antimony indicating antimony trioxide, and chlorine; no detection limits published.",
+            "materials": "PVC in direct contact.",
+            "legal": "Checked 2026-09-14. CPSC recall 18-058 (Dec 2017): about 23,400 Dream On Me crib and toddler mattresses failed the federal flammability standard; remedy was a free cover, over 24 months ago, informational. The Twilight was not among the recalled models."
+          },
+          "testingNote": "Ecology Center 2020 (Twilight bought 2018 to 2019): vinyl cover with DOTP, antimony indicating antimony trioxide, and chlorine; no detection limits published.",
+          "testingDate": "2026-09-14",
+          "materialsList": "pvc",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "dry",
+            "heated": false,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "pvc",
+            "source": "amazon B00F18FMZ4: waterproof vinyl cover over 88 coils and two fiber padding layers",
+            "checked": "2026-09-14"
+          },
+          "legalNote": "Checked 2026-09-14. CPSC recall 18-058 (Dec 2017): about 23,400 Dream On Me crib and toddler mattresses failed the federal flammability standard; remedy was a free cover, over 24 months ago, informational. The Twilight was not among the recalled models.",
+          "verdict": "careful",
+          "dated": "2026-09-14",
+          "why": "adverse finding stands, on materials, testing",
+          "fronts": {
+            "formula": "none",
+            "materials": "caution",
+            "legal": "pass",
+            "testing": "caution"
+          },
+          "frontOrigin": {
+            "formula": "hand",
+            "testing": "database",
+            "materials": "database",
+            "legal": "database"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
       }
     ],
     "fronts": {
@@ -43348,11 +43484,13 @@
     "brand": "Graco",
     "category": "Car seats / sleep",
     "stance": "skip",
-    "reason": "Ecology Center 2018 testing found brominated and chlorinated flame retardants in major Graco car seats, and the Premium Foam crib mattress uses polyurethane foam with flame retardants and VOC off-gassing.",
-    "evidence": "Ecology Center 2018 flame retardants; polyurethane foam",
-    "alternative": "Nuna (car seat) / Naturepedic (mattress)",
+    "reason": "Ecology Center 2018 testing found brominated and chlorinated flame retardants in major Graco car seats. The Premium Foam crib mattress (made under license by Stork Craft) is 100% polyurethane foam by its law label; when the Ecology Center tested a unit bought in 2018 or 2019, the foam held chlorine and antimony, markers of a flame retardant, and antimony was found in a barrier the company had said contained none. Current labels say no added flame retardants. Graco boxed Stork Craft foam crib mattresses were recalled in 2015 for failing the federal open flame standard.",
+    "evidence": "Ecology Center car seats 2018; Ecology Center crib mattress 2019 (Cl, Sb); CPSC 15-203",
+    "alternative": "Nuna (car seat) / Naturepedic or KATU (mattress)",
     "sources": [
-      "top-100-baby-kids-products-amazon.html"
+      "top-100-baby-kids-products-amazon.html",
+      "best-non-toxic-crib-mattresses.html",
+      "https://www.ecocenter.org/our-work/healthy-stuff-lab/reports/crib-mattress-report/crib-mattress-study"
     ],
     "fronts": {
       "formula": {
@@ -43380,63 +43518,6 @@
     "article": "top-100-baby-kids-products-amazon.html",
     "generalises": false,
     "products": [
-      {
-        "name": "Crib Mattress (standard)",
-        "asins": [
-          "B08KH54YK6"
-        ],
-        "verdict": "skip",
-        "note": "Polyurethane foam typically contains flame retardants (TDCPP, TCEP historically. Newer alternatives less studied). VOC off gassing documented.",
-        "origin": "article",
-        "source": "top-100-baby-kids-products-amazon.html",
-        "ext": {
-          "frontNotes": {
-            "formula": "An object has no ingredient list. What it is made of is the materials check.",
-            "materials": "Polyurethane foam typically contains flame retardants (TDCPP, TCEP historically.",
-            "legal": "Checked CPSC recall records on 2026-09-14. Graco Recalls 11 Models of Strollers Due to Fingertip Amputation Hazard (2014-11). https://www.cpsc.gov/Recalls/2015/Graco-Recalls-11-Models-of-Strollers Remedied: Contact Graco immediately for a free repair kit. Repair kits will be available from the firm at the beginning of Decembe. Over 24 months old, so under rule 5.2 it is informational rather than a finding against the product today."
-          },
-          "exposure": {
-            "type": "slept on",
-            "level": "high",
-            "score": 8.0,
-            "baby": true,
-            "route": "inhalation",
-            "duration": "overnight",
-            "retained": "breathed",
-            "frequency": "daily",
-            "heat": false,
-            "fat": false,
-            "why": "Eight hours a night, close to the face."
-          },
-          "legalNote": "Checked CPSC recall records on 2026-09-14. Graco Recalls 11 Models of Strollers Due to Fingertip Amputation Hazard (2014-11). https://www.cpsc.gov/Recalls/2015/Graco-Recalls-11-Models-of-Strollers Remedied: Contact Graco immediately for a free repair kit. Repair kits will be available from the firm at the beginning of Decembe. Over 24 months old, so under rule 5.2 it is informational rather than a finding against the product today.",
-          "legalDate": "2014-11",
-          "verdict": "skip",
-          "dated": "2026-08-28",
-          "why": "adverse finding stands, on materials",
-          "fronts": {
-            "formula": "none",
-            "materials": "caution",
-            "legal": "pass",
-            "testing": "unassessed"
-          },
-          "frontOrigin": {
-            "materials": "hand",
-            "formula": "hand",
-            "legal": "database"
-          },
-          "scope": "sku",
-          "basis": "direct",
-          "disclose": false,
-          "rules": []
-        },
-        "cat": "Crib mattresses",
-        "matchAll": [
-          [
-            "graco",
-            "standard"
-          ]
-        ]
-      },
       {
         "name": "Convertible Car Seat",
         "asins": [
@@ -43499,6 +43580,14 @@
       },
       {
         "name": "Premium foam crib mattress",
+        "asins": [
+          "B010S7VZI0"
+        ],
+        "verdict": "careful",
+        "note": "100% polyurethane foam core (law label) under a polyester cover with an undisclosed waterproof backing. Ecology Center test of a 2018 or 2019 unit: chlorine and antimony in the foam, antimony in the fire barrier. Current labels say no added flame retardants. Consumer Reports Worse Choices on materials.",
+        "origin": "hand",
+        "source": "top-100-baby-kids-products-amazon.html",
+        "cat": "Crib mattresses",
         "matchAll": [
           [
             "graco",
@@ -43507,70 +43596,56 @@
           [
             "graco",
             "crib"
+          ],
+          [
+            "graco",
+            "standard"
           ]
         ],
-        "asins": [
-          "B010S7VZI0"
-        ],
-        "verdict": "careful",
-        "note": "A polyurethane foam core, which is the standard budget construction and the thing organic crib mattresses exist to avoid. No GREENGUARD or organic certification on this model, and a baby sleeps on it for twelve hours a day.",
-        "origin": "hand",
-        "source": "top-100-baby-kids-products-amazon.html",
         "ext": {
-          "verdict": "careful",
-          "why": "Reviewed by hand from our published research on this category.",
-          "fronts": {
-            "formula": "none",
-            "materials": "caution",
-            "legal": "pass",
-            "testing": "unassessed"
-          },
-          "scope": "line",
-          "basis": "direct",
-          "disclose": false,
-          "authored": true,
-          "dated": "2026-09-08",
           "frontNotes": {
             "formula": "An object has no ingredient list. What it is made of is the materials check.",
-            "materials": "The note on this row reads adversely here.",
+            "testing": "Ecology Center, The Mattress Still Matters (2020, units bought 2018 to 2019): chlorine and antimony in the polyurethane foam, antimony in the fire barrier the company said had none; no specific flame retardant compound identified and no detection limits published.",
+            "materials": "polyurethane in direct contact.",
             "legal": "Checked CPSC recall records on 2026-09-14. Graco Recalls 11 Models of Strollers Due to Fingertip Amputation Hazard (2014-11). https://www.cpsc.gov/Recalls/2015/Graco-Recalls-11-Models-of-Strollers Remedied: Contact Graco immediately for a free repair kit. Repair kits will be available from the firm at the beginning of Decembe. Over 24 months old, so under rule 5.2 it is informational rather than a finding against the product today."
           },
-          "exposure": {
-            "type": "slept on",
-            "level": "high",
-            "score": 8.0,
-            "baby": true,
-            "route": "inhalation",
-            "duration": "overnight",
-            "retained": "breathed",
-            "frequency": "daily",
-            "heat": false,
-            "fat": false,
-            "why": "Eight hours a night, close to the face."
-          },
-          "frontOrigin": {
-            "formula": "hand",
-            "legal": "database",
-            "materials": "inferred"
-          },
-          "legalNote": "Checked CPSC recall records on 2026-09-14. Graco Recalls 11 Models of Strollers Due to Fingertip Amputation Hazard (2014-11). https://www.cpsc.gov/Recalls/2015/Graco-Recalls-11-Models-of-Strollers Remedied: Contact Graco immediately for a free repair kit. Repair kits will be available from the firm at the beginning of Decembe. Over 24 months old, so under rule 5.2 it is informational rather than a finding against the product today.",
-          "legalDate": "2014-11",
+          "testingNote": "Ecology Center, The Mattress Still Matters (2020, units bought 2018 to 2019): chlorine and antimony in the polyurethane foam, antimony in the fire barrier the company said had none; no specific flame retardant compound identified and no detection limits published.",
+          "testingDate": "2026-09-14",
+          "materialsList": "polyurethane, polyester",
           "materialAnswers": {
             "contact": "yes",
-            "contactFrom": "listing",
-            "base": "",
+            "contactFrom": "recorded",
+            "base": "dry",
             "heated": false,
             "mouthed": false,
             "reuse": "",
             "use": "",
-            "binder": "",
-            "material": "polyurethane",
-            "source": "amazon:B010S7VZI0 listing states: NON-TOXIC, OEKO-TEX STANDARD 100 CERTIFIED COVER: Tested against a list of 1,000+ harmful substances, the soft cover is non-toxic and gentle on a newborn's delicate skin — safe for your baby and family. Best for parents who want a chemical-screened sleep surface from day one. | 100% WATERPROOF SLEEP",
-            "checked": "2026-09-14",
-            "open": "polyurethane in contact, and we have not recorded what it holds, so the matrix has only one of the two axes it needs"
-          }
-        },
-        "cat": "Crib mattresses"
+            "material": "polyurethane, polyester",
+            "source": "gracobaby.com and law label (rev 2023): 100% polyurethane foam pad; 100% polyester cover; waterproof backing polymer not disclosed (Ecology Center found PET backed by polyurethane)",
+            "checked": "2026-09-14"
+          },
+          "legalNote": "Checked CPSC recall records on 2026-09-14. Graco Recalls 11 Models of Strollers Due to Fingertip Amputation Hazard (2014-11). https://www.cpsc.gov/Recalls/2015/Graco-Recalls-11-Models-of-Strollers Remedied: Contact Graco immediately for a free repair kit. Repair kits will be available from the firm at the beginning of Decembe. Over 24 months old, so under rule 5.2 it is informational rather than a finding against the product today.",
+          "legalDate": "2014-11",
+          "verdict": "careful",
+          "dated": "2026-09-14",
+          "why": "adverse finding stands",
+          "fronts": {
+            "formula": "none",
+            "materials": "caution",
+            "legal": "pass",
+            "testing": "caution"
+          },
+          "frontOrigin": {
+            "formula": "hand",
+            "testing": "database",
+            "materials": "database",
+            "legal": "database"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
       }
     ],
     "rollup": {
@@ -45699,7 +45774,8 @@
     "sources": [
       "how-to-avoid-microplastics-in-tea.html",
       "toxic-kitchen-appliances-ranked.html",
-      "best-plastic-free-coffee-makers.html"
+      "best-plastic-free-coffee-makers.html",
+      "how-to-enjoy-coffee-without-plastic.html"
     ],
     "buy": "https://www.amazon.com/dp/B0BWGXG5GN?tag=plasticdetox-20",
     "fronts": {
@@ -48500,11 +48576,12 @@
     "brand": "Holy Lamb Organics",
     "category": "Pillow / bedding",
     "stance": "good",
-    "reason": "Top-pick wool pillow with organic cotton cover and no synthetic fill.",
+    "reason": "Top-pick wool pillow with organic cotton cover and no synthetic fill. It no longer sells a crib mattress (checked 2026-09-14); its crib toppers are not an infant sleep surface, since the AAP advises against mattress toppers before age one.",
     "evidence": "Wool fill, organic cotton cover",
     "alternative": "",
     "sources": [
-      "microplastics-in-bedroom-air.html"
+      "microplastics-in-bedroom-air.html",
+      "best-non-toxic-crib-mattresses.html"
     ],
     "fronts": {
       "formula": {
@@ -48536,7 +48613,8 @@
       "researched": 0,
       "flagged": 0,
       "worst": null
-    }
+    },
+    "products": []
   },
   {
     "id": "home-it",
@@ -50503,12 +50581,13 @@
     "id": "ikea",
     "brand": "Ikea",
     "category": "Cookware",
-    "stance": "good",
-    "reason": "Reviewed in Defend Our Health's cookware directory: discloses no intentionally added PFAS forever chemicals in its cookware under California's AB 1200 law.",
+    "stance": "careful",
+    "reason": "Reviewed in Defend Our Health's cookware directory: discloses no intentionally added PFAS forever chemicals in its cookware under California's AB 1200 law. Our verdict varies across the range: the Pelleplutt foam crib mattress is polyurethane foam with a polypropylene core cover and polyester, with no certifications, and Consumer Reports rated its materials possible risks. Our verdict varies across the range: the Pelleplutt foam crib mattress is polyurethane foam with a polypropylene core cover and polyester, with no certifications, and Consumer Reports rated its materials possible risks.",
     "evidence": "No PFAS disclosed (California AB 1200)",
     "alternative": "",
     "sources": [
-      "pfas-in-cookware-brands.html"
+      "pfas-in-cookware-brands.html",
+      "best-non-toxic-crib-mattresses.html"
     ],
     "fronts": {
       "formula": {
@@ -50591,6 +50670,58 @@
             "chair"
           ]
         ]
+      },
+      {
+        "name": "IKEA Pelleplutt foam crib mattress",
+        "verdict": "careful",
+        "origin": "article",
+        "source": "best-non-toxic-crib-mattresses.html",
+        "note": "Polyurethane foam with a polypropylene core cover and polyester ticking (ikea.com); no certifications. Consumer Reports Good Choices with materials possible risks.",
+        "cat": "Crib mattresses",
+        "matchAll": [
+          [
+            "pelleplutt"
+          ]
+        ],
+        "ext": {
+          "frontNotes": {
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "materials": "polyurethane in direct contact.",
+            "legal": "Checked recall records on 2026-08-31. The Antilop high chair had a 2010 recall to repair its restraint buckle, remedied with free replacement restraints; sixteen years on and resolved, it is informational."
+          },
+          "materialsList": "polyurethane, polypropylene, polyester",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "dry",
+            "heated": false,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "polyurethane, polypropylene, polyester",
+            "source": "ikea.com Pelleplutt product details: polyurethane foam, polypropylene core cover, polyester",
+            "checked": "2026-09-14"
+          },
+          "legalNote": "Checked recall records on 2026-08-31. The Antilop high chair had a 2010 recall to repair its restraint buckle, remedied with free replacement restraints; sixteen years on and resolved, it is informational.",
+          "verdict": "careful",
+          "dated": "2026-09-14",
+          "why": "adverse finding stands",
+          "fronts": {
+            "formula": "none",
+            "materials": "caution",
+            "legal": "pass",
+            "testing": "unassessed"
+          },
+          "frontOrigin": {
+            "formula": "hand",
+            "materials": "database",
+            "legal": "database"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
       }
     ],
     "rollup": {
@@ -52728,7 +52859,7 @@
           },
           "verdict": "skip",
           "dated": "2026-08-28",
-          "why": "adverse finding stands, on legal, testing, formula",
+          "why": "adverse finding stands",
           "fronts": {
             "formula": "fail",
             "materials": "pass",
@@ -52744,9 +52875,7 @@
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": [
-            "5.2 recall-decayed"
-          ]
+          "rules": []
         },
         "cat": "Baby lotion",
         "matchAll": [
@@ -58427,7 +58556,8 @@
     "reason": "Paperless stainless steel cone filter that sits directly on your mug. Eliminates single use paper filters entirely. Includes a non slip cup stand and cleaning brush. Lets coffee oils through for a fuller bodied cup. Zero waste, zero plastic. Vetted for the store; this verdict covers the product we listed, not the brand's whole range.",
     "evidence": "Zero waste, zero plastic",
     "sources": [
-      "store"
+      "store",
+      "how-to-enjoy-coffee-without-plastic.html"
     ],
     "reviewed": true,
     "generalises": true,
@@ -70624,13 +70754,16 @@
     "brand": "Naturepedic",
     "category": "Baby sleep",
     "stance": "good",
-    "reason": "GREENGUARD Gold, MADE SAFE, and GOTS certified crib mattress with food-grade PE waterproof layer and no flame retardants.",
-    "evidence": "GREENGUARD Gold + MADE SAFE + GOTS, food-grade PE",
-    "alternative": "",
+    "reason": "Crib mattresses with full law label disclosure, a MADE SAFE certificate naming the crib models (valid through February 2027), UL listings for GREENGUARD Gold and non detectable PFAS, and no recall, Prop 65 notice or product lawsuit. Every current crib model has a polyethylene foam core, PLA batting in the two stage models and a sugarcane polyethylene waterproof surface, so they are wipe clean rather than plastic free. No current crib model contains wool. Lullaby Earth, its budget line, is rated separately.",
+    "evidence": "MADE SAFE + UL GREENGUARD Gold + UL non detectable PFAS; law label: PE foam and PLA core",
+    "alternative": "KATU or Avocado Organic Crib Mattress for no plastic in the mattress",
     "sources": [
       "microplastics-in-bedroom-air.html",
       "non-toxic-baby-toddler-products-guide.html",
-      "non-toxic-nursery-setup.html"
+      "non-toxic-nursery-setup.html",
+      "best-non-toxic-crib-mattresses.html",
+      "https://www.naturepedic.com/products/organic-cotton-classic-seamless-baby-crib-mattress-buy",
+      "https://www.consumerreports.org/babies-kids/crib-mattresses/best-crib-mattresses-a9683309833/"
     ],
     "buy": "https://www.amazon.com/dp/B07PWH9HLJ?tag=plasticdetox-20",
     "fronts": {
@@ -70725,31 +70858,19 @@
           "B083QP2JY7"
         ],
         "verdict": "good",
-        "note": "GOTS organic cotton fill with a food grade polyethylene waterproof surface. No polyurethane foam, no fiberglass, no added flame retardants. GOTS, GREENGUARD Gold, MADE SAFE. Worth knowing: Most expensive crib mattress here.",
+        "note": "Lightweight 2 Stage (MC34). GOTS organic cotton cover and batting over a polyethylene foam core with PLA batting (law label: cotton 41%, PE foam 40%, PLA 19%), under a sugarcane polyethylene waterproof surface. No polyurethane foam, fiberglass or flame retardants. MADE SAFE, GREENGUARD Gold and UL non detectable PFAS. Consumer Reports Top Choice (materials review with MADE SAFE).",
         "origin": "store",
+        "cat": "Crib mattresses",
         "ext": {
-          "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
           "frontNotes": {
-            "materials": "dry contents in polyethylene.",
-            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
-            "formula": "An object has no ingredient list. What it is made of is the materials check."
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "testing": "MADE SAFE certificate naming the Classic Seamless Lightweight 2 stage, valid through Feb 2027; UL SPOT lists GREENGUARD Gold, Formaldehyde Free and Non Detectable PFAS for the Lightweight Classic 2 Stage. Certifier results, not a watchdog lab test.",
+            "materials": "Made of polyethylene, with nothing inside it to pull anything out. What that contact means is the exposure read.",
+            "legal": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found."
           },
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "exposure": {
-            "type": "slept on",
-            "level": "high",
-            "score": 8.0,
-            "baby": true,
-            "route": "inhalation",
-            "duration": "overnight",
-            "retained": "breathed",
-            "frequency": "daily",
-            "heat": false,
-            "fat": false,
-            "why": "Eight hours a night, close to the face."
-          },
-          "materialsList": "polyethylene",
+          "testingNote": "MADE SAFE certificate naming the Classic Seamless Lightweight 2 stage, valid through Feb 2027; UL SPOT lists GREENGUARD Gold, Formaldehyde Free and Non Detectable PFAS for the Lightweight Classic 2 Stage. Certifier results, not a watchdog lab test.",
+          "testingDate": "2026-09-14",
+          "materialsList": "cotton, polyethylene",
           "materialAnswers": {
             "contact": "yes",
             "contactFrom": "recorded",
@@ -70758,40 +70879,33 @@
             "mouthed": false,
             "reuse": "",
             "use": "",
-            "material": "polyethylene",
-            "source": "100% food grade polyethylene waterproof surface over organic cotton (naturepedic.com); a fitted sheet sits between it and the baby",
-            "checked": "2026-09-11"
+            "material": "cotton, polyethylene",
+            "source": "naturepedic.com and law label MC34: GOTS organic cotton fabric over cotton batting 41%, polyethylene foam pad 40%, PLA batting 19%; waterproof surface is polyethylene made from sugarcane; a fitted sheet sits between it and the baby",
+            "checked": "2026-09-14"
           },
+          "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
           "verdict": "good",
-          "dated": "2026-08-29",
-          "why": "a vetted store pick, chosen by a person at product scope",
+          "dated": "2026-09-14",
+          "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
             "materials": "pass",
-            "legal": "none",
+            "legal": "pass",
             "testing": "pass"
           },
           "frontOrigin": {
-            "legal": "database",
-            "testing": "inferred",
             "formula": "hand",
-            "materials": "database"
+            "testing": "database",
+            "materials": "database",
+            "legal": "database"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
           "rules": [
-            "2 prose-cannot-clear-formula"
+            "4.3 non-detect-without-lod"
           ]
-        },
-        "cat": "Crib mattresses",
-        "matchAll": [
-          [
-            "naturepedic",
-            "mattress",
-            "classic"
-          ]
-        ]
+        }
       },
       {
         "name": "Naturepedic Organic Contoured Changing Pad",
@@ -70799,27 +70913,14 @@
           "B001AV40Z4"
         ],
         "verdict": "good",
-        "note": "Organic cotton fill with food grade polyethylene waterproofing. No polyurethane foam, no PVC, no added flame retardants. No PU foam, no PVC. Worth knowing: Costs several times a vinyl pad.",
+        "note": "GOTS organic cotton over a food grade polyethylene foam core with a sugarcane polyethylene waterproof coating; polypropylene straps and buckles, polyester seam binding. No polyurethane foam, PVC or flame retardants. MADE SAFE, GREENGUARD Gold.",
         "origin": "store",
+        "cat": "Crib mattresses",
         "ext": {
-          "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
           "frontNotes": {
-            "materials": "dry contents in polyethylene.",
             "formula": "An object has no ingredient list. What it is made of is the materials check.",
-            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
-          },
-          "exposure": {
-            "type": "slept on",
-            "level": "high",
-            "score": 8.0,
-            "baby": true,
-            "route": "inhalation",
-            "duration": "overnight",
-            "retained": "breathed",
-            "frequency": "daily",
-            "heat": false,
-            "fat": false,
-            "why": "Eight hours a night, close to the face."
+            "materials": "dry contents in polyethylene.",
+            "legal": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found."
           },
           "materialsList": "polyethylene",
           "materialAnswers": {
@@ -70834,19 +70935,21 @@
             "source": "Food grade polyethylene waterproof coating over organic cotton, with a polyethylene core (naturepedic.com)",
             "checked": "2026-09-11"
           },
+          "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
           "verdict": "good",
           "dated": "2026-09-14",
-          "why": "direct evidence on materials, recorded rather than read off a note",
+          "why": "a vetted store pick, chosen by a person at product scope",
           "fronts": {
             "formula": "none",
             "materials": "pass",
-            "legal": "none",
-            "testing": "unassessed"
+            "legal": "pass",
+            "testing": "pass"
           },
           "frontOrigin": {
             "formula": "hand",
+            "materials": "database",
             "legal": "database",
-            "materials": "database"
+            "testing": "inferred"
           },
           "scope": "sku",
           "basis": "direct",
@@ -70854,78 +70957,61 @@
           "rules": [
             "2 prose-cannot-clear-formula"
           ]
-        },
-        "cat": "Crib mattresses",
-        "matchAll": [
-          [
-            "naturepedic",
-            "pad",
-            "contoured",
-            "changing"
-          ]
-        ]
+        }
       },
       {
-        "name": "Organic 2 Stage Baby Crib Mattress",
+        "name": "Naturepedic Organic Breathable 2 Stage Crib Mattress",
         "asins": [
           "B01D5805B2"
         ],
-        "verdict": "good",
-        "note": "GOTS organic cotton, no polyurethane foam, no chemical flame retardants, ultra breathable waterproof food grade PE pad. GREENGUARD Gold certified.",
+        "verdict": "careful",
+        "note": "Breathable 2 Stage Lightweight (MC46): the same certified body as the Classic (cotton 41%, PE foam 40%, PLA 19%) plus a removable breathable cover of organic cotton, 3D polyester lattice and TPU waterproofing on the sleep surface. Its Amazon listing had no featured offer on 2026-09-14.",
         "origin": "article",
         "source": "top-100-baby-kids-products-amazon.html",
+        "cat": "Crib mattresses",
         "ext": {
-          "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
           "frontNotes": {
-            "materials": "What this is made of has not been established. The earlier reading described its packaging, which is a different question.",
-            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
-            "formula": "An object has no ingredient list. What it is made of is the materials check."
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "testing": "MADE SAFE certificate (valid through Feb 2027) and UL SPOT GREENGUARD Gold and Non Detectable PFAS listing for the Breathable 2 Stage.",
+            "materials": "tpu in direct contact.",
+            "legal": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found."
           },
-          "exposure": {
-            "type": "slept on",
-            "level": "high",
-            "score": 8.0,
-            "baby": true,
-            "route": "inhalation",
-            "duration": "overnight",
-            "retained": "breathed",
-            "frequency": "daily",
-            "heat": false,
-            "fat": false,
-            "why": "Eight hours a night, close to the face."
+          "testingNote": "MADE SAFE certificate (valid through Feb 2027) and UL SPOT GREENGUARD Gold and Non Detectable PFAS listing for the Breathable 2 Stage.",
+          "testingDate": "2026-09-14",
+          "materialsList": "cotton, polyester, tpu, polyethylene",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "dry",
+            "heated": false,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "cotton, polyester, tpu, polyethylene",
+            "source": "naturepedic.com: removable breathable cover of organic cotton, 3D polyester lattice and TPU waterproofing over the polyethylene surfaced mattress",
+            "checked": "2026-09-14"
           },
-          "verdict": "good",
-          "dated": "2026-08-29",
-          "why": "independent lab result at sku scope",
+          "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
+          "verdict": "careful",
+          "dated": "2026-09-14",
+          "why": "adverse finding stands, on materials",
           "fronts": {
             "formula": "none",
-            "materials": "pass",
-            "legal": "none",
+            "materials": "caution",
+            "legal": "pass",
             "testing": "pass"
           },
           "frontOrigin": {
-            "legal": "database",
-            "testing": "inferred",
-            "materials": "inferred",
-            "formula": "hand"
+            "formula": "hand",
+            "testing": "database",
+            "materials": "database",
+            "legal": "database"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": [
-            "2 prose-cannot-clear-formula",
-            "5.4 durable-good-is-its-own-packaging"
-          ]
-        },
-        "cat": "Crib mattresses",
-        "matchAll": [
-          [
-            "naturepedic",
-            "mattress",
-            "stage",
-            "baby"
-          ]
-        ]
+          "rules": []
+        }
       },
       {
         "name": "Naturepedic Organic Cotton Waterproof Mattress Pad",
@@ -71001,6 +71087,11 @@
       },
       {
         "name": "Naturepedic crib mattresses",
+        "verdict": "good",
+        "cat": "Crib mattresses",
+        "origin": "hand",
+        "source": "alternative",
+        "note": "MADE SAFE and UL GREENGUARD Gold certified crib mattresses with no polyurethane foam, vinyl or flame retardants. The cores are polyethylene foam with PLA batting under a polyethylene waterproof surface.",
         "matchAll": [
           [
             "naturepedic",
@@ -71011,48 +71102,48 @@
             "pad"
           ]
         ],
-        "verdict": "good",
-        "cat": "Crib mattresses",
-        "origin": "hand",
-        "source": "alternative",
-        "note": "GREENGUARD Gold, MADE SAFE, and GOTS certified crib mattress with food-grade PE waterproof layer and no flame retardants.",
         "ext": {
+          "frontNotes": {
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "testing": "MADE SAFE certificate naming the Classic, Breathable, Mini and Oval crib lines (valid through Feb 2027); UL SPOT GREENGUARD Gold listings for the crib lines.",
+            "materials": "Made of polyethylene, with nothing inside it to pull anything out. What that contact means is the exposure read.",
+            "legal": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found."
+          },
+          "testingNote": "MADE SAFE certificate naming the Classic, Breathable, Mini and Oval crib lines (valid through Feb 2027); UL SPOT GREENGUARD Gold listings for the crib lines.",
+          "testingDate": "2026-09-14",
+          "materialsList": "cotton, polyethylene",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "dry",
+            "heated": false,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "cotton, polyethylene",
+            "source": "naturepedic.com crib lineup: GOTS organic cotton fabric and batting, food grade polyethylene foam, PLA batting in two stage models, polyethylene waterproofing made from sugarcane",
+            "checked": "2026-09-14"
+          },
+          "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
           "verdict": "good",
-          "dated": "2026-08-29",
-          "why": "",
+          "dated": "2026-09-14",
+          "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
-            "legal": "none",
-            "testing": "unassessed",
-            "materials": "pass"
+            "materials": "pass",
+            "legal": "pass",
+            "testing": "pass"
+          },
+          "frontOrigin": {
+            "formula": "hand",
+            "testing": "database",
+            "materials": "database",
+            "legal": "database"
           },
           "scope": "line",
           "basis": "direct",
           "disclose": false,
-          "authored": true,
-          "frontNotes": {
-            "materials": "What this is made of has not been established. The earlier reading described its packaging, which is a different question.",
-            "formula": "An object has no ingredient list. What it is made of is the materials check.",
-            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
-          },
-          "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
-          "frontOrigin": {
-            "formula": "hand",
-            "legal": "database"
-          },
-          "exposure": {
-            "type": "slept on",
-            "level": "high",
-            "score": 8.0,
-            "baby": true,
-            "route": "inhalation",
-            "duration": "overnight",
-            "retained": "breathed",
-            "frequency": "daily",
-            "heat": false,
-            "fat": false,
-            "why": "Eight hours a night, close to the face."
-          }
+          "rules": []
         }
       }
     ],
@@ -83097,11 +83188,12 @@
     "brand": "Pure Green",
     "category": "Mattress",
     "stance": "good",
-    "reason": "Recommended natural latex mattress with no polyurethane foam or fiberglass.",
+    "reason": "Recommended natural latex mattress with no polyurethane foam or fiberglass. Sleep On Latex makes Pure Green and sells no crib mattress (checked 2026-09-14).",
     "evidence": "GOLS organic latex, GOTS cotton and wool",
     "alternative": "",
     "sources": [
-      "bedroom-air-101.html"
+      "bedroom-air-101.html",
+      "best-non-toxic-crib-mattresses.html"
     ],
     "buy": "https://www.amazon.com/dp/B01KPWG11O?tag=plasticdetox-20",
     "fronts": {
@@ -83196,7 +83288,10 @@
       "researched": 1,
       "flagged": 0,
       "worst": null
-    }
+    },
+    "aliases": [
+      "Sleep On Latex"
+    ]
   },
   {
     "id": "purely-elizabeth",
@@ -89366,18 +89461,29 @@
     "brand": "Serta",
     "category": "Nursery",
     "stance": "careful",
-    "reason": "A polyurethane foam core with a waterproof layer, which on crib mattresses is usually a vinyl or polyurethane film. No GREENGUARD or organic certification on the mainstream models.",
-    "evidence": "Polyurethane foam; waterproof film layer",
+    "reason": "Serta crib mattresses are made and sold by Delta Children. The Perfect Slumber models list a waterproof vinyl cover over a recycled polyester fiber core, and the Serta PVC cover the Ecology Center tested carried 143 ppm of EHDP, a plasticizer that can act as a flame retardant. Fabric covered Perfect Sleeper models add memory foam and an undisclosed waterproof backing. GREENGUARD Gold is an emissions test.",
+    "evidence": "Vinyl covers; Ecology Center 2020 EHDP in a Serta PVC cover",
     "sources": [
-      "non-toxic-nursery-setup.html"
+      "non-toxic-nursery-setup.html",
+      "best-non-toxic-crib-mattresses.html",
+      "https://www.ecocenter.org/our-work/healthy-stuff-lab/reports/crib-mattress-report/crib-mattress-study"
     ],
     "article": "non-toxic-nursery-setup.html",
     "reviewed": true,
     "generalises": true,
-    "alternative": "Naturepedic or Avocado organic crib mattress",
+    "alternative": "Naturepedic or KATU",
     "products": [
       {
         "name": "Perfect Slumber and Perfect Start crib mattresses",
+        "asins": [
+          "B08KRD7LNX",
+          "B0FHXLNXXY"
+        ],
+        "verdict": "careful",
+        "note": "Perfect Slumber: waterproof vinyl cover over a recycled polyester fiber core (deltachildren.com). The tested Serta Nightstar PVC cover had 143 ppm EHDP. GREENGUARD Gold only.",
+        "origin": "hand",
+        "source": "non-toxic-nursery-setup.html",
+        "cat": "Crib mattresses",
         "matchAll": [
           [
             "serta",
@@ -89388,69 +89494,52 @@
             "mattress"
           ]
         ],
-        "asins": [
-          "B08KRD7LNX",
-          "B0FHXLNXXY"
-        ],
-        "verdict": "careful",
-        "note": "A polyurethane foam core with a waterproof layer, which on crib mattresses is usually a vinyl or polyurethane film. No GREENGUARD or organic certification on the mainstream models.",
-        "origin": "hand",
-        "source": "non-toxic-nursery-setup.html",
         "ext": {
-          "verdict": "careful",
-          "why": "Reviewed by hand from our published research on this category.",
-          "fronts": {
-            "formula": "none",
-            "materials": "caution",
-            "legal": "pass",
-            "testing": "unassessed"
-          },
-          "scope": "line",
-          "basis": "direct",
-          "disclose": false,
-          "authored": true,
-          "dated": "2026-09-08",
           "frontNotes": {
             "formula": "An object has no ingredient list. What it is made of is the materials check.",
-            "materials": "The note on this row reads adversely here.",
+            "testing": "Ecology Center 2020 tested a Serta Nightstar (different model, same brand and cover type): PVC cover with 143 ppm EHDP. Class evidence, not this model.",
+            "materials": "PVC in direct contact.",
             "legal": "Checked CPSC recall records on 2026-09-14. Serta Recalls Mattresses Due to Violation of Federal Mattress Flammability Standard and Fire Hazard (Recall Alert) (2022-02). https://www.cpsc.gov/Recalls/2022/Serta-Recalls-Mattresses-Due-to-Violation-of-Federal-Mattress-Flammability-Standard-and-Fire-Hazard-Recall-Alert Remedied: Consumers should immediately stop using the recalled mattresses and contact Serta to verify whether their mattress is in. Over 24 months old, so under rule 5.2 it is informational rather than a finding against the product today."
           },
-          "exposure": {
-            "type": "slept on",
-            "level": "high",
-            "score": 8.0,
-            "baby": true,
-            "route": "inhalation",
-            "duration": "overnight",
-            "retained": "breathed",
-            "frequency": "daily",
-            "heat": false,
-            "fat": false,
-            "why": "Eight hours a night, close to the face."
-          },
-          "frontOrigin": {
-            "formula": "hand",
-            "legal": "database",
-            "materials": "inferred"
-          },
-          "legalNote": "Checked CPSC recall records on 2026-09-14. Serta Recalls Mattresses Due to Violation of Federal Mattress Flammability Standard and Fire Hazard (Recall Alert) (2022-02). https://www.cpsc.gov/Recalls/2022/Serta-Recalls-Mattresses-Due-to-Violation-of-Federal-Mattress-Flammability-Standard-and-Fire-Hazard-Recall-Alert Remedied: Consumers should immediately stop using the recalled mattresses and contact Serta to verify whether their mattress is in. Over 24 months old, so under rule 5.2 it is informational rather than a finding against the product today.",
-          "legalDate": "2022-02",
+          "testingNote": "Ecology Center 2020 tested a Serta Nightstar (different model, same brand and cover type): PVC cover with 143 ppm EHDP. Class evidence, not this model.",
+          "testingDate": "2026-09-14",
+          "materialsList": "pvc, polyester",
           "materialAnswers": {
             "contact": "yes",
-            "contactFrom": "listing",
-            "base": "",
+            "contactFrom": "recorded",
+            "base": "dry",
             "heated": false,
             "mouthed": false,
             "reuse": "",
             "use": "",
-            "binder": "",
-            "material": "memory foam, plastic",
-            "source": "amazon:B08KRD7LNX listing states: SAFEST OPTION: Non-toxic construction is free from harmful materials/chemicals; Meets or exceeds flammability, lead, phthalate and CPSIA testing and does not contain toxic fire retardants.General Note: Please allow 24 - 72 hours for your Mattress to regain its full shape. Any memory foam will expand",
-            "checked": "2026-09-14",
-            "open": "memory foam in contact, and we have not recorded what it holds, so the matrix has only one of the two axes it needs"
-          }
-        },
-        "cat": "Crib mattresses"
+            "material": "pvc, polyester",
+            "source": "deltachildren.com: durable, waterproof vinyl cover over a firm fiber core made from recycled bottles",
+            "checked": "2026-09-14"
+          },
+          "legalNote": "Checked CPSC recall records on 2026-09-14. Serta Recalls Mattresses Due to Violation of Federal Mattress Flammability Standard and Fire Hazard (Recall Alert) (2022-02). https://www.cpsc.gov/Recalls/2022/Serta-Recalls-Mattresses-Due-to-Violation-of-Federal-Mattress-Flammability-Standard-and-Fire-Hazard-Recall-Alert Remedied: Consumers should immediately stop using the recalled mattresses and contact Serta to verify whether their mattress is in. Over 24 months old, so under rule 5.2 it is informational rather than a finding against the product today.",
+          "legalDate": "2022-02",
+          "verdict": "careful",
+          "dated": "2026-09-14",
+          "why": "adverse finding stands",
+          "fronts": {
+            "formula": "none",
+            "materials": "caution",
+            "legal": "pass",
+            "testing": "caution"
+          },
+          "frontOrigin": {
+            "formula": "hand",
+            "testing": "database",
+            "materials": "database",
+            "legal": "database"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": [
+            "3 packaging-matrix-caution"
+          ]
+        }
       }
     ],
     "fronts": {
@@ -113071,5 +113160,915 @@
         }
       }
     ]
+  },
+  {
+    "id": "katu",
+    "brand": "KATU",
+    "category": "Baby sleep",
+    "stance": "neutral",
+    "reason": "Organic crib mattress with no plastic in its layer list: organic cotton cover, organic wool, latex bound organic coconut coir on the infant side and organic latex on the toddler side, no waterproof film. GOTS certificate GOTS-28903 (lists mattresses) and GOLS certificate 912089 are in the brand's own name. No recall, Prop 65 notice or lawsuit found. Caveats: the Amazon spec table says \"Fire Retardant\", which the brand's layer list does not explain (GOTS prohibits halogenated, phosphate and antimony flame retardants; wool is the likely barrier); only 27 Amazon ratings; contains latex.",
+    "evidence": "GOTS + GOLS certificates in the brand's name; no plastic layers",
+    "alternative": "",
+    "sources": [
+      "best-non-toxic-crib-mattresses.html",
+      "https://getkatu.com/"
+    ],
+    "products": [
+      {
+        "name": "KATU Organic 2 Stage Crib Mattress",
+        "asins": [
+          "B0DJVHDVQ7"
+        ],
+        "verdict": "good",
+        "origin": "store",
+        "note": "Organic cotton cover, organic wool layer, latex bound organic coconut coir (infant side) and organic latex (toddler side). No waterproof film, no polyurethane. GOTS and GOLS certified. Contains latex.",
+        "cat": "Crib mattresses",
+        "ext": {
+          "frontNotes": {
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "testing": "GOTS scope certificate GOTS-28903 listing mattresses (valid to 2026-11-05) and GOLS certificate 912089, both in KATU's name, verified in the registries on 2026-09-14. Certifier scope, not a lab test of this mattress.",
+            "materials": "In contact with cotton, which puts nothing into what it holds.",
+            "legal": "Checked the CPSC recall API and California Prop 65 notices on 2026-09-14: no recall, notice or lawsuit found for KATU."
+          },
+          "testingNote": "GOTS scope certificate GOTS-28903 listing mattresses (valid to 2026-11-05) and GOLS certificate 912089, both in KATU's name, verified in the registries on 2026-09-14. Certifier scope, not a lab test of this mattress.",
+          "testingDate": "2026-09-14",
+          "materialsList": "organic cotton, wool, natural rubber latex, coconut coir",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "dry",
+            "heated": false,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "organic cotton, wool, natural rubber latex, coconut coir",
+            "source": "getkatu.com layer list: organic cotton cover, organic wool comfort layer, organic latex, organic coconut fibre; brand states zero plastic",
+            "checked": "2026-09-14"
+          },
+          "legalNote": "Checked the CPSC recall API and California Prop 65 notices on 2026-09-14: no recall, notice or lawsuit found for KATU.",
+          "verdict": "good",
+          "dated": "2026-09-14",
+          "why": "direct evidence on materials, recorded rather than read off a note",
+          "fronts": {
+            "formula": "none",
+            "materials": "pass",
+            "legal": "pass",
+            "testing": "pass"
+          },
+          "frontOrigin": {
+            "formula": "hand",
+            "testing": "database",
+            "materials": "database",
+            "legal": "database"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
+      }
+    ],
+    "stanceHeld": "good"
+  },
+  {
+    "id": "my-green-mattress",
+    "brand": "My Green Mattress",
+    "category": "Baby sleep",
+    "stance": "neutral",
+    "reason": "The Emily organic crib mattress is GOTS organic cotton and wool over latex bound organic coconut coir and a steel innerspring, with no synthetic waterproofing. GOTS scope certificate valid to 2027-08-31, MADE SAFE statement valid through May 2027, GREENGUARD Gold on UL SPOT, Consumer Reports Top Choice. No recall or lawsuit found. Gap: the GOLS certificate posted on its site expired 2026-09-05 and no renewal was posted when checked.",
+    "evidence": "GOTS + MADE SAFE + GREENGUARD Gold; GOLS certificate lapsed 2026-09-05",
+    "alternative": "",
+    "sources": [
+      "best-non-toxic-crib-mattresses.html",
+      "https://www.mygreenmattress.com/product/emily-organic-crib-mattress/"
+    ],
+    "products": [
+      {
+        "name": "Emily Organic Crib Mattress",
+        "verdict": "good",
+        "origin": "store",
+        "note": "GOTS organic cotton cover quilted over organic wool, latex bound organic coconut coir and a steel innerspring. No synthetic waterproofing (a separate protector is recommended). MADE SAFE, GREENGUARD Gold. Same firmness both sides. Made in Illinois.",
+        "cat": "Crib mattresses",
+        "matchAll": [
+          [
+            "emily",
+            "crib"
+          ]
+        ],
+        "ext": {
+          "frontNotes": {
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "testing": "GOTS scope certificate CU1015428GOTS-2026-00091418 (mattresses, valid to 2027-08-31); MADE SAFE statement dated 2026-08-06 naming the Emily, valid through May 2027; GREENGUARD Gold on UL SPOT. GOLS certificate C865932GOLS-01.2025 expired 2026-09-05.",
+            "materials": "In contact with cotton, which puts nothing into what it holds.",
+            "legal": "Checked the CPSC recall API and California Prop 65 notices (My Green Mattress, Quality Sleep Shop) and searched for lawsuits on 2026-09-14: nothing found."
+          },
+          "testingNote": "GOTS scope certificate CU1015428GOTS-2026-00091418 (mattresses, valid to 2027-08-31); MADE SAFE statement dated 2026-08-06 naming the Emily, valid through May 2027; GREENGUARD Gold on UL SPOT. GOLS certificate C865932GOLS-01.2025 expired 2026-09-05.",
+          "testingDate": "2026-09-14",
+          "materialsList": "organic cotton, wool, natural rubber latex, coconut coir, steel",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "dry",
+            "heated": false,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "organic cotton, wool, natural rubber latex, coconut coir, steel",
+            "source": "mygreenmattress.com: GOTS organic cotton cover (1% elastane) with organic wool, GOLS organic coconut coir bound with organic latex, innerspring; no synthetic waterproofing",
+            "checked": "2026-09-14"
+          },
+          "legalNote": "Checked the CPSC recall API and California Prop 65 notices (My Green Mattress, Quality Sleep Shop) and searched for lawsuits on 2026-09-14: nothing found.",
+          "verdict": "good",
+          "dated": "2026-09-14",
+          "why": "independent lab result at line scope",
+          "fronts": {
+            "formula": "none",
+            "materials": "pass",
+            "legal": "pass",
+            "testing": "pass"
+          },
+          "frontOrigin": {
+            "formula": "hand",
+            "testing": "database",
+            "materials": "database",
+            "legal": "database"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "rules": [
+            "2 prose-cannot-clear-formula",
+            "5.4 durable-good-is-its-own-packaging"
+          ]
+        }
+      }
+    ],
+    "stanceHeld": "good"
+  },
+  {
+    "id": "obasan",
+    "brand": "Obasan",
+    "category": "Baby sleep",
+    "stance": "neutral",
+    "reason": "Canadian maker whose organic crib mattress is 2 inches of organic latex over 2 inches of coconut coir with a wool moisture pad in place of a plastic barrier. GOTS scope certificate valid to 2027-06-29 and GOLS certificate valid to 2027-06-18. No recall, notice or lawsuit found in Canada or the US. The coir layer's certification and binder are not itemized; ships from Canada.",
+    "evidence": "GOTS + GOLS certificates; wool moisture pad, no plastic",
+    "alternative": "",
+    "sources": [
+      "best-non-toxic-crib-mattresses.html",
+      "https://obasan.com/products/baby-organic-rubber-crib-mattress"
+    ],
+    "products": [
+      {
+        "name": "Organic Crib Mattress",
+        "verdict": "good",
+        "origin": "article",
+        "source": "best-non-toxic-crib-mattresses.html",
+        "note": "2 inch GOLS organic latex over 2 inch coconut coir, GOTS organic cotton and wool, with a 0.5 inch wool moisture pad. No synthetic foam, flame retardants or glues stated. Single firmness.",
+        "cat": "Crib mattresses",
+        "matchAll": [
+          [
+            "obasan",
+            "crib"
+          ]
+        ],
+        "ext": {
+          "frontNotes": {
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "testing": "GOTS scope certificate CU1010074GOTS-2026-00066526 (mattresses, valid to 2027-06-29) and GOLS certificate C864899GOLS-01.2026 (latex mattress, valid to 2027-06-18), verified 2026-09-14.",
+            "materials": "In contact with cotton, which puts nothing into what it holds.",
+            "legal": "Checked Health Canada recalls, the CPSC recall API and California Prop 65 notices on 2026-09-14, and searched for lawsuits: nothing found."
+          },
+          "testingNote": "GOTS scope certificate CU1010074GOTS-2026-00066526 (mattresses, valid to 2027-06-29) and GOLS certificate C864899GOLS-01.2026 (latex mattress, valid to 2027-06-18), verified 2026-09-14.",
+          "testingDate": "2026-09-14",
+          "materialsList": "organic cotton, wool, natural rubber latex, coconut coir",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "dry",
+            "heated": false,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "organic cotton, wool, natural rubber latex, coconut coir",
+            "source": "obasan.com: organic latex, coconut coir, organic wool and cotton; wool moisture pad included; made without synthetic foams, flame retardants, glues",
+            "checked": "2026-09-14"
+          },
+          "legalNote": "Checked Health Canada recalls, the CPSC recall API and California Prop 65 notices on 2026-09-14, and searched for lawsuits: nothing found.",
+          "verdict": "good",
+          "dated": "2026-09-14",
+          "why": "independent lab result at line scope",
+          "fronts": {
+            "formula": "none",
+            "materials": "pass",
+            "legal": "pass",
+            "testing": "pass"
+          },
+          "frontOrigin": {
+            "formula": "hand",
+            "testing": "database",
+            "materials": "database",
+            "legal": "database"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "rules": [
+            "2 prose-cannot-clear-formula",
+            "5.4 durable-good-is-its-own-packaging"
+          ]
+        }
+      }
+    ],
+    "stanceHeld": "good"
+  },
+  {
+    "id": "lullaby-earth",
+    "brand": "Lullaby Earth",
+    "category": "Baby sleep",
+    "stance": "careful",
+    "reason": "Naturepedic's budget crib mattress line is entirely polyethylene foam, polyester fiber and a polyethylene waterproof coating, with a polyester and TPU cover on the breathable models. It holds GREENGUARD Gold and EWG Verified and has a clean recall and legal record, but it has no organic content, the mattresses are not MADE SAFE certified, and Consumer Reports rated its materials possible risks.",
+    "evidence": "All polyethylene and polyester; GREENGUARD Gold; CR possible risks",
+    "alternative": "Naturepedic Organic Classic or KATU",
+    "sources": [
+      "best-non-toxic-crib-mattresses.html",
+      "https://www.lullabyearth.com/certifications",
+      "https://www.consumerreports.org/babies-kids/crib-mattresses/best-crib-mattresses-a9683309833/"
+    ],
+    "products": [
+      {
+        "name": "Lullaby Earth crib mattresses",
+        "asins": [
+          "B007I0K4S8",
+          "B0CT3WN5Q4",
+          "B0CZMBNLM7"
+        ],
+        "verdict": "careful",
+        "origin": "article",
+        "source": "best-non-toxic-crib-mattresses.html",
+        "note": "Healthy Support, Gentle Start and Breathe Safe: food grade polyethylene core, polyester fiber fill, polyethylene waterproof coating, polyester and TPU breathable cover. No polyurethane foam, vinyl or flame retardants. GREENGUARD Gold, EWG Verified.",
+        "cat": "Crib mattresses",
+        "ext": {
+          "frontNotes": {
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "testing": "Searched Lead Safe Mama and Mamavation on 2026-09-14: no lab test of Lullaby Earth (Mamavation mentions it only in disclosure roundups). Consumer Reports' 2025 review is a materials review.",
+            "materials": "polyester in direct contact.",
+            "legal": "Checked the CPSC recall API, Health Canada and California Prop 65 notices on 2026-09-14: no recall or notice. One 2020 SaferProducts report of an arm wedged between a Breeze mattress and crib slats, not a defect finding."
+          },
+          "testingNote": "Searched Lead Safe Mama and Mamavation on 2026-09-14: no lab test of Lullaby Earth (Mamavation mentions it only in disclosure roundups). Consumer Reports' 2025 review is a materials review.",
+          "testingDate": "2026-09-14",
+          "materialsList": "polyethylene, polyester",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "dry",
+            "heated": false,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "polyethylene, polyester",
+            "source": "EWG Verified listing and lullabyearth.com: polyethylene support, polyester fill and encasement, polyethylene waterproof coating",
+            "checked": "2026-09-14"
+          },
+          "legalNote": "Checked the CPSC recall API, Health Canada and California Prop 65 notices on 2026-09-14: no recall or notice. One 2020 SaferProducts report of an arm wedged between a Breeze mattress and crib slats, not a defect finding.",
+          "verdict": "careful",
+          "dated": "2026-09-14",
+          "why": "adverse finding stands",
+          "fronts": {
+            "formula": "none",
+            "materials": "caution",
+            "legal": "pass",
+            "testing": "none"
+          },
+          "frontOrigin": {
+            "formula": "hand",
+            "testing": "database",
+            "materials": "database",
+            "legal": "database"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "saatva",
+    "brand": "Saatva",
+    "category": "Mattress",
+    "stance": "careful",
+    "reason": "A 2024 complaint in DC Superior Court (Toxin Free USA and Beyond Pesticides v. Saatva, 2024-CAB-005259) alleges lab testing found eight PFAS and 949 ppm total organic fluorine in the Saatva crib mattress, whose cover is treated with a water repellent finish. Saatva says it adds no PFAS. The claim is an allegation; the waterproof barrier polymer is undisclosed, the flame barrier contains polyester, and no UL SPOT listing was found for the crib model's GREENGUARD Gold claim.",
+    "evidence": "PFAS complaint on the crib mattress (allegation); water repellent cover",
+    "alternative": "KATU or Avocado Organic Crib Mattress",
+    "sources": [
+      "best-non-toxic-crib-mattresses.html",
+      "https://www.beyondpesticides.org/assets/media/documents/TFUSA%20and%20BP%20v.%20Saatva%20Draft%20Complaint_Final.pdf"
+    ],
+    "products": [
+      {
+        "name": "Saatva Crib Mattress",
+        "verdict": "careful",
+        "origin": "article",
+        "source": "best-non-toxic-crib-mattresses.html",
+        "note": "Organic cotton blend cover with a water repellent treatment, eucalyptus fiber layers, coils, latex, wool, a thistle flame barrier bonded with polyester, and an undisclosed waterproof barrier. Subject of a 2024 PFAS complaint.",
+        "cat": "Crib mattresses",
+        "matchAll": [
+          [
+            "saatva",
+            "crib"
+          ]
+        ],
+        "ext": {
+          "frontNotes": {
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "materials": "polyester in direct contact.",
+            "legal": "Checked 2026-09-14. GMO Free USA d/b/a Toxin Free USA and Beyond Pesticides v. Saatva (DC Superior Court 2024-CAB-005259, filed Aug 16, 2024) alleges eight PFAS and 949 ppm total organic fluorine in the crib mattress; allegation, outcome not found. No CPSC recall or Prop 65 notice."
+          },
+          "materialsList": "cotton, polyester",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "dry",
+            "heated": false,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "cotton, polyester",
+            "source": "saatva.com: cover blend including organic cotton treated with a water repellent; thistle flame barrier bonded with a small amount of polyester; waterproof barrier material not disclosed",
+            "checked": "2026-09-14"
+          },
+          "legalNote": "Checked 2026-09-14. GMO Free USA d/b/a Toxin Free USA and Beyond Pesticides v. Saatva (DC Superior Court 2024-CAB-005259, filed Aug 16, 2024) alleges eight PFAS and 949 ppm total organic fluorine in the crib mattress; allegation, outcome not found. No CPSC recall or Prop 65 notice.",
+          "verdict": "careful",
+          "dated": "2026-09-14",
+          "why": "adverse finding stands",
+          "fronts": {
+            "formula": "none",
+            "materials": "caution",
+            "legal": "caution",
+            "testing": "unassessed"
+          },
+          "frontOrigin": {
+            "formula": "hand",
+            "materials": "database",
+            "legal": "database"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "safety-1st",
+    "brand": "Safety 1st",
+    "category": "Nursery",
+    "stance": "careful",
+    "reason": "Dorel's Heavenly Dreams crib mattress is described as a 100% vinyl cover over a polyester fiber core while its listing also claims to be PVC free. The Safety 1st crib mattress cover the Ecology Center tested (Little Dreamer, since discontinued) carried DOTP, 411 ppm EHDP and fluorine indicating PFAS. No GREENGUARD listing was found on UL SPOT. Only the crib mattress was researched; other Safety 1st products are unrated.",
+    "evidence": "Vinyl cover; Ecology Center 2020 DOTP, EHDP, PFAS signal",
+    "alternative": "Naturepedic or KATU",
+    "sources": [
+      "best-non-toxic-crib-mattresses.html",
+      "https://www.ecocenter.org/our-work/healthy-stuff-lab/reports/crib-mattress-report/crib-mattress-study"
+    ],
+    "products": [
+      {
+        "name": "Heavenly Dreams crib mattress",
+        "asins": [
+          "B004044LD4"
+        ],
+        "verdict": "careful",
+        "origin": "article",
+        "source": "best-non-toxic-crib-mattresses.html",
+        "note": "100% vinyl cover over a high density polyester fiber core; the listing also claims PVC free. Consumer Reports Worse Choices. Currently unavailable on Amazon.",
+        "cat": "Crib mattresses",
+        "ext": {
+          "frontNotes": {
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "testing": "Ecology Center 2020 tested the Safety 1st Little Dreamer (discontinued): vinyl cover with DOTP, 411 ppm EHDP and fluorine indicating PFAS. Class evidence for the brand's vinyl covers, not this model.",
+            "materials": "PVC in direct contact.",
+            "legal": "Checked the CPSC recall API and California Prop 65 notices on 2026-09-14: no Safety 1st or Dorel crib mattress recall. Dorel settled a 2014 Prop 65 case over TDCPP in foam nap pads, a different product."
+          },
+          "testingNote": "Ecology Center 2020 tested the Safety 1st Little Dreamer (discontinued): vinyl cover with DOTP, 411 ppm EHDP and fluorine indicating PFAS. Class evidence for the brand's vinyl covers, not this model.",
+          "testingDate": "2026-09-14",
+          "materialsList": "pvc, polyester",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "dry",
+            "heated": false,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "pvc, polyester",
+            "source": "amazon B004044LD4 and target.com: tear resistant 100% vinyl outer cover, high density thermo bonded polyester core",
+            "checked": "2026-09-14"
+          },
+          "legalNote": "Checked the CPSC recall API and California Prop 65 notices on 2026-09-14: no Safety 1st or Dorel crib mattress recall. Dorel settled a 2014 Prop 65 case over TDCPP in foam nap pads, a different product.",
+          "verdict": "careful",
+          "dated": "2026-09-14",
+          "why": "adverse finding stands",
+          "fronts": {
+            "formula": "none",
+            "materials": "caution",
+            "legal": "pass",
+            "testing": "caution"
+          },
+          "frontOrigin": {
+            "formula": "hand",
+            "testing": "database",
+            "materials": "database",
+            "legal": "database"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "sealy-baby",
+    "brand": "Sealy Baby",
+    "category": "Nursery",
+    "stance": "careful",
+    "aliases": [
+      "Sealy"
+    ],
+    "reason": "Sealy Baby crib mattresses are made by Kolcraft. The Soybean Foam Core model is 76% polyurethane foam by its law label with the soy share undisclosed, and Amazon lists a vinyl cover; the Cozy Cool hybrid uses gel polyurethane memory foam and an undisclosed waterproof layer. GREENGUARD Gold only, no independent test of either model. A law firm is investigating PFAS in Sealy Baby crib mattress pad covers; no suit has been filed.",
+    "evidence": "76% polyurethane foam; vinyl cover; GREENGUARD Gold only",
+    "alternative": "Naturepedic or KATU",
+    "sources": [
+      "best-non-toxic-crib-mattresses.html"
+    ],
+    "products": [
+      {
+        "name": "Sealy Soybean Foam-Core crib mattress",
+        "asins": [
+          "B001N4LE5M"
+        ],
+        "verdict": "careful",
+        "origin": "article",
+        "source": "best-non-toxic-crib-mattresses.html",
+        "note": "Law label: polyurethane foam 76%, blended rayon, cotton and polyester batting 24%; soy content undisclosed; vinyl cover per Amazon. GREENGUARD Gold. Consumer Reports Worse Choices.",
+        "cat": "Crib mattresses",
+        "ext": {
+          "frontNotes": {
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "testing": "GREENGUARD Gold (UL SPOT 20929-420) is an emissions certification; nothing tests what the foam or vinyl cover contain. No independent test of this model.",
+            "materials": "PVC in direct contact.",
+            "legal": "Checked the CPSC recall API on 2026-09-14: no Sealy Baby or Kolcraft crib mattress recall. Prop 65 PFOA notices name Kolcraft crib mattress pads (2022, withdrawn; 2023-01128), not mattresses."
+          },
+          "testingNote": "GREENGUARD Gold (UL SPOT 20929-420) is an emissions certification; nothing tests what the foam or vinyl cover contain. No independent test of this model.",
+          "testingDate": "2026-09-14",
+          "materialsList": "polyurethane, pvc",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "dry",
+            "heated": false,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "polyurethane, pvc",
+            "source": "sealybaby.com law label EM710: polyurethane foam 76%, blended fiber batting 24%; amazon B001N4LE5M cover material vinyl",
+            "checked": "2026-09-14"
+          },
+          "legalNote": "Checked the CPSC recall API on 2026-09-14: no Sealy Baby or Kolcraft crib mattress recall. Prop 65 PFOA notices name Kolcraft crib mattress pads (2022, withdrawn; 2023-01128), not mattresses.",
+          "verdict": "careful",
+          "dated": "2026-09-14",
+          "why": "adverse finding stands",
+          "fronts": {
+            "formula": "none",
+            "materials": "caution",
+            "legal": "pass",
+            "testing": "caution"
+          },
+          "frontOrigin": {
+            "formula": "hand",
+            "testing": "database",
+            "materials": "database",
+            "legal": "database"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "kolcraft",
+    "brand": "Kolcraft",
+    "category": "Nursery",
+    "stance": "careful",
+    "reason": "Kolcraft makes Sealy Baby and Babylist's Soundly crib mattresses and its own Pure Sleep line. The Pure Sleep Therapeutic 150 is coils and polyester batting under a vinyl cover; Soundly has a polyester fiber core and an unnamed PVC free waterproof layer. Both hold GREENGUARD Gold, which is an emissions test. A 2023 Prop 65 notice alleges PFOA in Kolcraft crib mattress pads.",
+    "evidence": "Vinyl or undisclosed waterproof layers; PFOA notice on crib mattress pads",
+    "alternative": "Naturepedic or KATU",
+    "sources": [
+      "best-non-toxic-crib-mattresses.html"
+    ],
+    "products": [
+      {
+        "name": "Kolcraft Pure Sleep Therapeutic 150 crib mattress",
+        "asins": [
+          "B004HKK5TK"
+        ],
+        "verdict": "careful",
+        "origin": "article",
+        "source": "best-non-toxic-crib-mattresses.html",
+        "note": "Law label: 100% polyester fiber batting and an innerspring unit, under a vinyl Perma-Dri cover. GREENGUARD Gold. Unavailable on Amazon.",
+        "cat": "Crib mattresses",
+        "ext": {
+          "frontNotes": {
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "testing": "GREENGUARD Gold (UL SPOT 20928-420) is an emissions certification; the vinyl cover's contents are untested.",
+            "materials": "PVC in direct contact.",
+            "legal": "Checked the CPSC recall API on 2026-09-14: 17 Kolcraft records (strollers, play yards, bassinets, inclined sleeper accessories, walkers, car seats), no crib mattress. Prop 65 notice 2023-01128 alleges PFOA in Kolcraft crib mattress pads, a different product."
+          },
+          "testingNote": "GREENGUARD Gold (UL SPOT 20928-420) is an emissions certification; the vinyl cover's contents are untested.",
+          "testingDate": "2026-09-14",
+          "materialsList": "pvc, polyester",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "dry",
+            "heated": false,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "pvc, polyester",
+            "source": "kolcraft.com law label KM301: polyester fiber batting 100%, innerspring; amazon cover material vinyl",
+            "checked": "2026-09-14"
+          },
+          "legalNote": "Checked the CPSC recall API on 2026-09-14: 17 Kolcraft records (strollers, play yards, bassinets, inclined sleeper accessories, walkers, car seats), no crib mattress. Prop 65 notice 2023-01128 alleges PFOA in Kolcraft crib mattress pads, a different product.",
+          "verdict": "careful",
+          "dated": "2026-09-14",
+          "why": "adverse finding stands",
+          "fronts": {
+            "formula": "none",
+            "materials": "caution",
+            "legal": "pass",
+            "testing": "caution"
+          },
+          "frontOrigin": {
+            "formula": "hand",
+            "testing": "database",
+            "materials": "database",
+            "legal": "database"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
+      },
+      {
+        "name": "Soundly Waterproof Breathable Crib Mattress",
+        "verdict": "careful",
+        "origin": "article",
+        "source": "best-non-toxic-crib-mattresses.html",
+        "note": "Babylist exclusive made by Kolcraft: polyester fiber core with a PVC free waterproof layer whose polymer is not named. GREENGUARD Gold on UL SPOT.",
+        "cat": "Crib mattresses",
+        "matchAll": [
+          [
+            "soundly",
+            "crib"
+          ]
+        ],
+        "ext": {
+          "frontNotes": {
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "testing": "GREENGUARD Gold on UL SPOT is an emissions certification; the waterproof layer is unnamed and untested.",
+            "materials": "polyester in direct contact.",
+            "legal": "Checked the CPSC recall API on 2026-09-14: 17 Kolcraft records (strollers, play yards, bassinets, inclined sleeper accessories, walkers, car seats), no crib mattress. Prop 65 notice 2023-01128 alleges PFOA in Kolcraft crib mattress pads, a different product."
+          },
+          "testingNote": "GREENGUARD Gold on UL SPOT is an emissions certification; the waterproof layer is unnamed and untested.",
+          "testingDate": "2026-09-14",
+          "materialsList": "polyester",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "dry",
+            "heated": false,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "polyester",
+            "source": "babylist.com law tag and listing: polyester fiber core, PVC free waterproof layer, polymer not named",
+            "checked": "2026-09-14"
+          },
+          "legalNote": "Checked the CPSC recall API on 2026-09-14: 17 Kolcraft records (strollers, play yards, bassinets, inclined sleeper accessories, walkers, car seats), no crib mattress. Prop 65 notice 2023-01128 alleges PFOA in Kolcraft crib mattress pads, a different product.",
+          "verdict": "careful",
+          "dated": "2026-09-14",
+          "why": "adverse finding stands, on materials",
+          "fronts": {
+            "formula": "none",
+            "materials": "caution",
+            "legal": "pass",
+            "testing": "caution"
+          },
+          "frontOrigin": {
+            "formula": "hand",
+            "testing": "database",
+            "materials": "database",
+            "legal": "database"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "moonlight-slumber",
+    "brand": "Moonlight Slumber",
+    "category": "Nursery",
+    "stance": "careful",
+    "reason": "The Little Dreamer crib mattress uses a fiberglass free fire sock and holds GREENGUARD Gold, and the Ecology Center flagged nothing in its test. But in a 2017 FTC case settled by consent order, the FTC charged that Moonlight's organic, natural, plant based foam and no VOC claims were misleading, including plant based foam claims for the Little Dreamer, whose cores were substantially polyurethane. The waterproof knit and antimicrobial treatment are undisclosed.",
+    "evidence": "FTC 2017 consent order over green claims; polyurethane core",
+    "alternative": "Naturepedic or KATU",
+    "sources": [
+      "best-non-toxic-crib-mattresses.html",
+      "https://www.ftc.gov/news-events/news/press-releases/2017/09/illinois-firm-barred-making-misleading-baby-mattress-claims"
+    ],
+    "products": [
+      {
+        "name": "Little Dreamer Crib Mattress",
+        "asins": [
+          "B003XT43MG"
+        ],
+        "verdict": "careful",
+        "origin": "article",
+        "source": "best-non-toxic-crib-mattresses.html",
+        "note": "Foam core the FTC described as substantially polyurethane, a waterproof antimicrobial stretch knit cover (polymer and agent undisclosed), and a fiberglass free fire sock. GREENGUARD Gold.",
+        "cat": "Crib mattresses",
+        "ext": {
+          "frontNotes": {
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "testing": "Ecology Center 2020 tested the Little Dreamer and named no chemical of concern, but published no detection limits, so it is not citable as a pass. Mamavation has run no crib mattress lab test of its own.",
+            "materials": "polyurethane in direct contact.",
+            "legal": "Checked 2026-09-14. FTC In the Matter of Moonlight Slumber, LLC (file 162 3128), announced Sept 2017, final consent order: barred misleading organic, natural, plant based foam and VOC claims for baby mattresses. No CPSC recall or Prop 65 notice."
+          },
+          "testingNote": "Ecology Center 2020 tested the Little Dreamer and named no chemical of concern, but published no detection limits, so it is not citable as a pass. Mamavation has run no crib mattress lab test of its own.",
+          "testingDate": "2026-09-14",
+          "materialsList": "polyurethane",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "dry",
+            "heated": false,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "polyurethane",
+            "source": "FTC complaint 162 3128 para 7 and 8 (cores substantially polyurethane, Little Dreamer named); sleepmoonlight.com: waterproof stretch knit, antimicrobial",
+            "checked": "2026-09-14"
+          },
+          "legalNote": "Checked 2026-09-14. FTC In the Matter of Moonlight Slumber, LLC (file 162 3128), announced Sept 2017, final consent order: barred misleading organic, natural, plant based foam and VOC claims for baby mattresses. No CPSC recall or Prop 65 notice.",
+          "verdict": "careful",
+          "dated": "2026-09-14",
+          "why": "adverse finding stands",
+          "fronts": {
+            "formula": "none",
+            "materials": "caution",
+            "legal": "caution",
+            "testing": "none"
+          },
+          "frontOrigin": {
+            "formula": "hand",
+            "testing": "database",
+            "materials": "database",
+            "legal": "database"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": [
+            "2 non-disclosure-is-a-caution"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "milliard",
+    "brand": "Milliard",
+    "category": "Nursery",
+    "stance": "careful",
+    "reason": "Milliard crib mattresses are polyurethane foam topped with memory foam, with an undisclosed fire barrier and waterproof layer, no emissions certification and no independent test. The AAP warns that soft mattresses, including memory foam, can create a pocket that raises suffocation risk. Milliard states there is no fiberglass.",
+    "evidence": "Polyurethane and memory foam; undisclosed barrier and waterproof layer",
+    "alternative": "Naturepedic or KATU",
+    "sources": [
+      "best-non-toxic-crib-mattresses.html"
+    ],
+    "products": [
+      {
+        "name": "Milliard Premium crib mattress",
+        "asins": [
+          "B06X9DXBT2",
+          "B01HSIQYTM"
+        ],
+        "verdict": "careful",
+        "origin": "article",
+        "source": "best-non-toxic-crib-mattresses.html",
+        "note": "Firm polyurethane foam base topped with 3 lb memory foam, CertiPUR-US; removable waterproof cover (bamboo and polyester or cotton) with an undisclosed waterproof layer. No GREENGUARD. Consumer Reports Worse Choices.",
+        "cat": "Crib mattresses",
+        "ext": {
+          "frontNotes": {
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "testing": "CertiPUR-US covers only the foam and is a second party mark; no emissions certification and no independent test of the mattress.",
+            "materials": "polyurethane in direct contact.",
+            "legal": "Checked the CPSC recall API and California Prop 65 notices on 2026-09-14: no recall, notice or lawsuit found for Milliard."
+          },
+          "testingNote": "CertiPUR-US covers only the foam and is a second party mark; no emissions certification and no independent test of the mattress.",
+          "testingDate": "2026-09-14",
+          "materialsList": "polyurethane, memory foam, polyester",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "dry",
+            "heated": false,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "polyurethane, memory foam, polyester",
+            "source": "amazon B06X9DXBT2: firmer foam base topped with memory foam, cover bamboo and polyester, waterproof; milliardbrands.com: 4.5 in polyurethane foam plus 1 in memory foam",
+            "checked": "2026-09-14"
+          },
+          "legalNote": "Checked the CPSC recall API and California Prop 65 notices on 2026-09-14: no recall, notice or lawsuit found for Milliard.",
+          "verdict": "careful",
+          "dated": "2026-09-14",
+          "why": "adverse finding stands",
+          "fronts": {
+            "formula": "none",
+            "materials": "caution",
+            "legal": "pass",
+            "testing": "caution"
+          },
+          "frontOrigin": {
+            "formula": "hand",
+            "testing": "database",
+            "materials": "database",
+            "legal": "database"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "organic-dream",
+    "brand": "Organic Dream",
+    "category": "Baby sleep",
+    "stance": "careful",
+    "reason": "Organic Dream crib mattresses describe a \"food grade polymer\" core without naming the polymer, the flame barrier or the maker, and no UL SPOT listing was found for the GREENGUARD Gold claim. Disclosure gaps cap the verdict.",
+    "evidence": "Undisclosed core polymer and fire barrier; GREENGUARD claim not on UL SPOT",
+    "alternative": "Naturepedic or KATU",
+    "sources": [
+      "best-non-toxic-crib-mattresses.html"
+    ],
+    "products": [
+      {
+        "name": "Organic Dream Classic Cotton Lightweight crib mattress",
+        "asins": [
+          "B082MT1MQY"
+        ],
+        "verdict": "careful",
+        "origin": "article",
+        "source": "best-non-toxic-crib-mattresses.html",
+        "note": "Organic cotton cover over a food grade polymer core whose polymer is not named; flame barrier and maker undisclosed.",
+        "cat": "Crib mattresses",
+        "ext": {
+          "frontNotes": {
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "materials": "plastic in direct contact.",
+            "legal": "Checked the CPSC recall API and California Prop 65 notices on 2026-09-14: no recall or notice found."
+          },
+          "materialsList": "cotton, plastic",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "dry",
+            "heated": false,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "cotton, plastic",
+            "source": "amazon B082MT1MQY: organic cotton cover, food grade polymer core (polymer not named)",
+            "checked": "2026-09-14"
+          },
+          "legalNote": "Checked the CPSC recall API and California Prop 65 notices on 2026-09-14: no recall or notice found.",
+          "verdict": "careful",
+          "dated": "2026-09-14",
+          "why": "adverse finding stands",
+          "fronts": {
+            "formula": "none",
+            "materials": "caution",
+            "legal": "pass",
+            "testing": "unassessed"
+          },
+          "frontOrigin": {
+            "formula": "hand",
+            "materials": "database",
+            "legal": "database"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": [
+            "2 prose-cannot-clear-formula",
+            "2 non-disclosure-is-a-caution"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "love-to-dream",
+    "brand": "Love To Dream",
+    "category": "Baby sleep",
+    "stance": "neutral",
+    "reason": "Researched for its Gro crib mattress only, which has an undisclosed fiber core and water repellent finish, a GREENGUARD claim not found on UL SPOT and a dead Amazon listing. The brand's swaddles and sleep bags are not rated.",
+    "evidence": "Crib mattress materials undisclosed",
+    "alternative": "",
+    "sources": [
+      "best-non-toxic-crib-mattresses.html"
+    ],
+    "products": []
+  },
+  {
+    "id": "nature-bee-organics",
+    "brand": "Nature Bee Organic's",
+    "category": "Baby sleep",
+    "stance": "neutral",
+    "reason": "Researched for its Deluxe Breathable crib mattress, but materials and maker are undisclosed, the brand site is password protected and the Amazon listing is gone, so the vet could not be completed.",
+    "evidence": "Could not complete: materials undisclosed",
+    "alternative": "",
+    "sources": [
+      "best-non-toxic-crib-mattresses.html"
+    ],
+    "products": []
+  },
+  {
+    "id": "happsy",
+    "brand": "Happsy",
+    "category": "Mattress",
+    "stance": "neutral",
+    "reason": "Naturepedic's adult organic mattress brand. It sells no crib mattress (checked 2026-09-14); no recall or Prop 65 notice found.",
+    "evidence": "No crib mattress sold",
+    "alternative": "",
+    "sources": [
+      "best-non-toxic-crib-mattresses.html"
+    ],
+    "products": []
+  },
+  {
+    "id": "brentwood-home",
+    "brand": "Brentwood Home",
+    "category": "Mattress",
+    "stance": "neutral",
+    "reason": "Owned by Avocado Green Brands. It sells no crib mattress now, only a crib protector (checked 2026-09-14); no recall or Prop 65 notice found.",
+    "evidence": "No crib mattress sold",
+    "alternative": "",
+    "sources": [
+      "best-non-toxic-crib-mattresses.html"
+    ],
+    "products": []
+  },
+  {
+    "id": "nest-bedding",
+    "brand": "Nest Bedding",
+    "category": "Mattress",
+    "stance": "neutral",
+    "reason": "Its Stork organic crib mattress is discontinued and nothing replaces it (checked 2026-09-14); no recall or Prop 65 notice found.",
+    "evidence": "No crib mattress sold",
+    "alternative": "",
+    "sources": [
+      "best-non-toxic-crib-mattresses.html"
+    ],
+    "products": []
+  },
+  {
+    "id": "plushbeds",
+    "brand": "PlushBeds",
+    "category": "Mattress",
+    "stance": "neutral",
+    "reason": "Kids mattresses start at twin size; no crib mattress (checked 2026-09-14). No FTC action, recall or Prop 65 notice found.",
+    "evidence": "No crib mattress sold",
+    "alternative": "",
+    "sources": [
+      "best-non-toxic-crib-mattresses.html"
+    ],
+    "products": []
   }
 ]
