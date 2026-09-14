@@ -166,7 +166,8 @@
           },
           "frontNotes": {
             "materials": "dry contents in aluminum.",
-            "legal": "Checked CPSC recall listings and recall news by web search on 2026-09-14. No CPSC recall or lawsuit found. The brand itself withdrew early X-Ultra units over metal shavings, a different model, so it is not a finding against the J."
+            "legal": "Checked CPSC recall listings and recall news by web search on 2026-09-14. No CPSC recall or lawsuit found. The brand itself withdrew early X-Ultra units over metal shavings, a different model, so it is not a finding against the J.",
+            "testing": "Checked Lead Safe Mama and Mamavation on 2026-09-14. No independent test of 1Zpresso on record at either. Not a pass: nothing has been measured. It means the gap is known rather than unexamined."
           },
           "formulaAnswers": {
             "ingredients": "",
@@ -199,12 +200,13 @@
             "formula": "none",
             "materials": "pass",
             "legal": "pass",
-            "testing": "unassessed"
+            "testing": "none"
           },
           "frontOrigin": {
             "materials": "database",
             "formula": "database",
-            "legal": "database"
+            "legal": "database",
+            "testing": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -581,7 +583,7 @@
     "stance": "careful",
     "reason": "The original lanolin and petrolatum ointment was recalled in 2017 because it contained trace diethyl phthalate despite a phthalate free label claim. Petroleum based formula with lanolin, a wool allergen for some children.",
     "evidence": "2017 recall: trace DEP despite phthalate free label",
-    "alternative": "Motherlove Diaper Balm (glass 1 oz and 2 oz)",
+    "alternative": "Motherlove Diaper Balm, 2 oz glass jar (the 4 oz may come in plastic)",
     "sources": [
       "best-non-toxic-diaper-rash-creams.html"
     ],
@@ -1350,7 +1352,8 @@
           "frontNotes": {
             "materials": "Made of stainless steel, which the product name states, and which puts nothing into what it touches.",
             "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
-            "formula": "An object has no ingredient list. What it is made of is the materials check."
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "testing": "Lead Safe Mama XRF, published 2023-12-15, the plain Classic set this listing sells, repeated 60 second readings: lead, cadmium, arsenic, mercury and antimony all non detect; the Blue and Rainbow finishes tested the same. Ahimsa was a paid affiliate partner of Lead Safe Mama when these were published (the relationship ended August 2025). Expires December 2026 under section 7."
           },
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
@@ -1380,6 +1383,29 @@
             "source": "product name",
             "checked": "2026-09-02"
           },
+          "testingResults": [
+            {
+              "analyte": "lead",
+              "lab": "Lead Safe Mama (XRF)",
+              "lod": "single digit ppm",
+              "outcome": "non-detect",
+              "unit": "ppm",
+              "value": null,
+              "year": 2023
+            },
+            {
+              "analyte": "cadmium",
+              "lab": "Lead Safe Mama (XRF)",
+              "lod": "single digit ppm",
+              "outcome": "non-detect",
+              "unit": "ppm",
+              "value": null,
+              "year": 2023
+            }
+          ],
+          "testingLod": "single digit ppm (Niton XL3t XRF, as the tester states)",
+          "testingNote": "Lead Safe Mama XRF, published 2023-12-15, the plain Classic set this listing sells, repeated 60 second readings: lead, cadmium, arsenic, mercury and antimony all non detect; the Blue and Rainbow finishes tested the same. Ahimsa was a paid affiliate partner of Lead Safe Mama when these were published (the relationship ended August 2025). Expires December 2026 under section 7.",
+          "testingDate": "2026-09-14",
           "verdict": "good",
           "dated": "2026-08-29",
           "why": "a vetted store pick, chosen by a person at product scope",
@@ -1387,12 +1413,13 @@
             "formula": "none",
             "materials": "pass",
             "legal": "none",
-            "testing": "unassessed"
+            "testing": "pass"
           },
           "frontOrigin": {
             "legal": "database",
             "materials": "database",
-            "formula": "hand"
+            "formula": "hand",
+            "testing": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -3891,7 +3918,7 @@
     "stance": "careful",
     "reason": "Two products share the name. The classic Baby Healing Ointment is 41% petrolatum with no zinc, petroleum derived with lanolin alcohol (a wool allergen), and was not part of the lead findings. The newer zinc based Healing Paste Baby reported roughly 1,400 ppb lead in 2025 independent testing. If using the brand, use the original zinc free ointment.",
     "evidence": "Healing Paste Baby ~1,400 ppb lead (LSM); classic ointment zinc free",
-    "alternative": "Motherlove Diaper Balm (glass 1 oz and 2 oz)",
+    "alternative": "Motherlove Diaper Balm, 2 oz glass jar (the 4 oz may come in plastic)",
     "sources": [
       "best-non-toxic-diaper-rash-creams.html",
       "https://tamararubin.com/2025/09/aquaphor-healing-paste-baby/",
@@ -6872,6 +6899,19 @@
             "checked": "2026-09-14"
           },
           "legalNote": "Checked 2026-09-14. CPSC recall 24-330 (Aug 2024) covered about 55,480 adult organic cotton mattress pad protectors for a flammability violation, not crib products. Roberts v. Avocado Mattress (N.D. Cal. 3:23-cv-02072) named the crib mattresses among its products; individual claims were dismissed with prejudice in August 2023. Davis v. Avocado Mattress (E.D. Cal. 2:26-cv-01390, filed April 2026) is a reference pricing class action, not about materials; the clerk entered default on 2026-08-31.",
+          "exposure": {
+            "type": "slept on",
+            "level": "high",
+            "score": 8.0,
+            "baby": true,
+            "route": "inhalation",
+            "duration": "overnight",
+            "retained": "breathed",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "Eight hours a night, close to the face."
+          },
           "verdict": "good",
           "dated": "2026-09-14",
           "why": "direct evidence on materials, recorded rather than read off a note",
@@ -6929,6 +6969,19 @@
             "checked": "2026-09-14"
           },
           "legalNote": "Checked 2026-09-14. CPSC recall 24-330 (Aug 2024) covered about 55,480 adult organic cotton mattress pad protectors for a flammability violation, not crib products. Roberts v. Avocado Mattress (N.D. Cal. 3:23-cv-02072) named the crib mattresses among its products; individual claims were dismissed with prejudice in August 2023. Davis v. Avocado Mattress (E.D. Cal. 2:26-cv-01390, filed April 2026) is a reference pricing class action, not about materials; the clerk entered default on 2026-08-31.",
+          "exposure": {
+            "type": "slept on",
+            "level": "high",
+            "score": 8.0,
+            "baby": true,
+            "route": "inhalation",
+            "duration": "overnight",
+            "retained": "breathed",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "Eight hours a night, close to the face."
+          },
           "verdict": "good",
           "dated": "2026-09-14",
           "why": "independent lab result at line scope",
@@ -7056,7 +7109,7 @@
     "stance": "careful",
     "reason": "The verdict depends on the product. The fragrance free Sensitive Baby 2 in 1 shampoo and wash is our top baby wash pick and the matching wash bar is our zero plastic pick: EWG Verified, no fragrance or essential oils, no ethoxylated ingredients, no synthetic polymers, sold in 100% recycled plastic or a paperboard box. The lotions remain good. The exception is the Sensitive Baby zinc diaper cream: 2025 independent testing reported lead in it, a mineral contamination story that does not transfer to the washes, which contain no zinc oxide. Brand record: a 2016 'all natural' class action settled with label changes and no payment; owned by Laboratoires Expanscience, Mustela's parent, since 2018.",
     "evidence": "EWG Verified fragrance free wash and bar; diaper cream reported lead in 2025 testing",
-    "alternative": "Motherlove Diaper Balm for diaper care",
+    "alternative": "Motherlove Diaper Balm, 2 oz glass jar (the 4 oz may come in plastic), for diaper care",
     "sources": [
       "best-non-toxic-diaper-rash-creams.html",
       "https://tamararubin.com/2025/11/babo-botanicals-fragrance-free-diaper-cream",
@@ -7893,7 +7946,7 @@
     "brand": "Babyletto",
     "category": "Nursery furniture",
     "stance": "careful",
-    "reason": "Our verdict varies across the range. The Hudson crib is GREENGUARD Gold solid pine with a water based finish, and the Babyletto x Avocado crib mattress (coconut husk, pocketed coils, GOTS cotton and wool, GREENGUARD Gold) is a pick. The upholstered glider uses polyurethane foam cushions.",
+    "reason": "Our verdict varies across the range. The Hudson crib is GREENGUARD Gold solid pine with a water based finish, and the Babyletto x Avocado crib mattress (coconut husk, pocketed coils, GOTS cotton and wool, GREENGUARD Gold) is a pick. The Pure Core crib mattress is synthetic throughout: a polyester fiber core and 80% modacrylic batting, whose antimony content is not stated, with a polyethylene waterproof backing. The upholstered glider uses polyurethane foam cushions.",
     "evidence": "GREENGUARD Gold certified, solid wood, water-based finish",
     "alternative": "",
     "sources": [
@@ -8092,6 +8145,19 @@
             "checked": "2026-09-14"
           },
           "legalNote": "Checked recall records on 2026-08-31. A July 2025 recall of Kiwi electric gliders (USB port overheating) was remedied with a repair kit; no Babyletto crib has been recalled, and the electrical mechanism does not transfer to furniture without electronics.",
+          "exposure": {
+            "type": "slept on",
+            "level": "high",
+            "score": 8.0,
+            "baby": true,
+            "route": "inhalation",
+            "duration": "overnight",
+            "retained": "breathed",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "Eight hours a night, close to the face."
+          },
           "verdict": "good",
           "dated": "2026-09-14",
           "why": "a vetted store pick, chosen by a person at product scope",
@@ -8114,6 +8180,73 @@
             "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
+        }
+      },
+      {
+        "name": "Babyletto Pure Core Crib Mattress",
+        "asins": [
+          "B01EJC9BWM"
+        ],
+        "verdict": "careful",
+        "origin": "article",
+        "source": "best-non-toxic-crib-mattresses.html",
+        "note": "Law label: core 100% polyester fiber; batting 80% modacrylic, 20% polyester; Hybrid cover with a food grade polyethylene waterproof backing. GREENGUARD Gold. Modacrylic's antimony trioxide status undisclosed.",
+        "cat": "Crib mattresses",
+        "ext": {
+          "frontNotes": {
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "testing": "GREENGUARD Gold on UL SPOT for six Pure Core models is an emissions certification. The modacrylic fire barrier's antimony trioxide content is not disclosed (California AB 1059 exempts only modacrylic made without it).",
+            "materials": "polyester in direct contact.",
+            "legal": "Checked recall records on 2026-08-31. A July 2025 recall of Kiwi electric gliders (USB port overheating) was remedied with a repair kit; no Babyletto crib has been recalled, and the electrical mechanism does not transfer to furniture without electronics."
+          },
+          "testingNote": "GREENGUARD Gold on UL SPOT for six Pure Core models is an emissions certification. The modacrylic fire barrier's antimony trioxide content is not disclosed (California AB 1059 exempts only modacrylic made without it).",
+          "testingDate": "2026-09-14",
+          "materialsList": "cotton, polyester, polyethylene",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "dry",
+            "heated": false,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "cotton, polyester, polyethylene",
+            "source": "babyletto.com law label (M5321C and related): core 100% polyester fiber, batting 80% modacrylic and 20% polyester fiber, cover cotton; Hybrid cover waterproof backing food grade polyethylene",
+            "checked": "2026-09-14"
+          },
+          "legalNote": "Checked recall records on 2026-08-31. A July 2025 recall of Kiwi electric gliders (USB port overheating) was remedied with a repair kit; no Babyletto crib has been recalled, and the electrical mechanism does not transfer to furniture without electronics.",
+          "exposure": {
+            "type": "slept on",
+            "level": "high",
+            "score": 8.0,
+            "baby": true,
+            "route": "inhalation",
+            "duration": "overnight",
+            "retained": "breathed",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "Eight hours a night, close to the face."
+          },
+          "verdict": "careful",
+          "dated": "2026-09-14",
+          "why": "adverse finding stands",
+          "fronts": {
+            "formula": "none",
+            "materials": "caution",
+            "legal": "pass",
+            "testing": "caution"
+          },
+          "frontOrigin": {
+            "formula": "hand",
+            "testing": "database",
+            "materials": "database",
+            "legal": "database"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
         }
       }
     ],
@@ -12254,7 +12387,7 @@
         "ext": {
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-09-14. No recall on the moka pot line. Separately, ~85,000 Bialetti branded GLASS presses were recalled May 2017 (licensee Bradshaw International); the earlier note here cited an FDA database check, the wrong regulator for housewares.",
           "frontNotes": {
-            "materials": "The recorded material this front rested on was withdrawn, and nothing has replaced it.",
+            "materials": "In contact with stainless steel, which puts nothing into what it holds.",
             "legal": "Moka pot line clean; the brand's licensed glass press line was recalled in 2017"
           },
           "heldFrom": "good",
@@ -12282,6 +12415,19 @@
             "source": "amazon:B07ZKZXM4B",
             "checked": "2026-09-03"
           },
+          "materialsList": "stainless steel, rubber",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "aqueous",
+            "heated": true,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "stainless steel, rubber",
+            "source": "amazon:B07ZKZXM4B listing: made in 18/10 stainless steel, Material Stainless Steel; retailer specs (Whole Latte Love, Bialetti Philippines): handle and knob thermoplastic, outside the coffee; rubber gasket between boiler and collector in the brew path",
+            "checked": "2026-09-14"
+          },
           "verdict": "good",
           "dated": "2026-08-29",
           "why": "a vetted store pick, chosen by a person at product scope",
@@ -12294,7 +12440,7 @@
           "frontOrigin": {
             "legal": "database",
             "formula": "database",
-            "materials": "inferred"
+            "materials": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -14163,12 +14309,12 @@
         "ext": {
           "frontNotes": {
             "formula": "The published ingredient list carries nothing on the hazard list.",
-            "testing": "Consumer Reports Top Choices tier in both the March 2025 and March 2026 rounds: non detect or low for lead, inorganic arsenic, cadmium, mercury, BPA and acrylamide. Clean Label Project Purity Award and Pesticide Free certification reissued 2026-03-20.",
+            "testing": "Lead Safe Mama, published 2026-04-10. Purity Laboratories ICP-MS, case 2603461, lot 2026_065, tested 2026-03-26: lead below 5 ppb, cadmium below 5 ppb, arsenic below 10 ppb, mercury below 2 ppb, all non detect. A pass under rule 4.7 with every limit at or below its bar. Sku scope. Bobbie funded this testing, as it did the November 2024 round; Lead Safe Mama chose the lab, bought the formula at retail and sent it blind, and published regardless of outcome (rule 4.7, who paid). The State of Florida reported 2 ppb mercury in one Bobbie formula without publishing its lab reports or method; Lead Safe Mama disputes that result. Consumer Reports placed Bobbie in its Top Choices tier in March 2025 and March 2026.",
             "materials": "In contact with steel, which puts nothing into what it holds.",
             "legal": "Checked the FDA enforcement database on 2026-08-31. One recall on record: the original 2019 launch formula, for inadequate nutrition labeling, closed and remedied before the current FDA compliant formula launched in 2021. Now informational."
           },
-          "testingNote": "Consumer Reports Top Choices tier in both the March 2025 and March 2026 rounds: non detect or low for lead, inorganic arsenic, cadmium, mercury, BPA and acrylamide. Clean Label Project Purity Award and Pesticide Free certification reissued 2026-03-20.",
-          "testingDate": "2026-09-09",
+          "testingNote": "Lead Safe Mama, published 2026-04-10. Purity Laboratories ICP-MS, case 2603461, lot 2026_065, tested 2026-03-26: lead below 5 ppb, cadmium below 5 ppb, arsenic below 10 ppb, mercury below 2 ppb, all non detect. A pass under rule 4.7 with every limit at or below its bar. Sku scope. Bobbie funded this testing, as it did the November 2024 round; Lead Safe Mama chose the lab, bought the formula at retail and sent it blind, and published regardless of outcome (rule 4.7, who paid). The State of Florida reported 2 ppb mercury in one Bobbie formula without publishing its lab reports or method; Lead Safe Mama disputes that result. Consumer Reports placed Bobbie in its Top Choices tier in March 2025 and March 2026.",
+          "testingDate": "2026-09-14",
           "legalNote": "Checked the FDA enforcement database on 2026-08-31. One recall on record: the original 2019 launch formula, for inadequate nutrition labeling, closed and remedied before the current FDA compliant formula launched in 2021. Now informational.",
           "exposure": {
             "type": "food",
@@ -14206,6 +14352,45 @@
             "source": "Steel can with foil seal; plastic overcap and calibrated scoop touch dry powder only. Steel cans carried the lowest microplastic counts in the 2023 infant milk powder packaging study (composite boxes highest).",
             "checked": "2026-09-09"
           },
+          "testingResults": [
+            {
+              "analyte": "lead",
+              "lab": "Purity Laboratories for Lead Safe Mama",
+              "lod": "5 ppb",
+              "outcome": "non-detect",
+              "unit": "ppb",
+              "value": null,
+              "year": 2026
+            },
+            {
+              "analyte": "cadmium",
+              "lab": "Purity Laboratories for Lead Safe Mama",
+              "lod": "5 ppb",
+              "outcome": "non-detect",
+              "unit": "ppb",
+              "value": null,
+              "year": 2026
+            },
+            {
+              "analyte": "arsenic",
+              "lab": "Purity Laboratories for Lead Safe Mama",
+              "lod": "10 ppb",
+              "outcome": "non-detect",
+              "unit": "ppb",
+              "value": null,
+              "year": 2026
+            },
+            {
+              "analyte": "mercury",
+              "lab": "Purity Laboratories for Lead Safe Mama",
+              "lod": "2 ppb",
+              "outcome": "non-detect",
+              "unit": "ppb",
+              "value": null,
+              "year": 2026
+            }
+          ],
+          "testingLod": "5 ppb lead and cadmium, 10 ppb arsenic, 2 ppb mercury",
           "verdict": "good",
           "dated": "2026-09-09",
           "why": "independent lab result at sku scope",
@@ -14246,12 +14431,12 @@
         "ext": {
           "frontNotes": {
             "formula": "The published ingredient list carries nothing on the hazard list.",
-            "testing": "Consumer Reports Top Choices tier in both the March 2025 and March 2026 rounds: non detect or low for lead, inorganic arsenic, cadmium, mercury, BPA and acrylamide. Clean Label Project Purity Award and Pesticide Free certification reissued 2026-03-20.",
+            "testing": "Lead Safe Mama, published 2026-04-09. Purity Laboratories ICP-MS, case 2603125, lot 2026_054, tested 2026-03-11: lead below 5 ppb, cadmium below 5 ppb, arsenic below 10 ppb, mercury below 2 ppb, all non detect. A pass under rule 4.7 with every limit at or below its bar. Sku scope. Bobbie funded this testing, as it did the November 2024 round; Lead Safe Mama chose the lab, bought the formula at retail and sent it blind, and published regardless of outcome (rule 4.7, who paid). The State of Florida reported 2 ppb mercury in one Bobbie formula without publishing its lab reports or method; Lead Safe Mama disputes that result. Consumer Reports placed Bobbie in its Top Choices tier in March 2025 and March 2026.",
             "materials": "In contact with steel, which puts nothing into what it holds.",
             "legal": "Checked the FDA enforcement database on 2026-08-31. One recall on record: the original 2019 launch formula, for inadequate nutrition labeling, closed and remedied before the current FDA compliant formula launched in 2021. Now informational."
           },
-          "testingNote": "Consumer Reports Top Choices tier in both the March 2025 and March 2026 rounds: non detect or low for lead, inorganic arsenic, cadmium, mercury, BPA and acrylamide. Clean Label Project Purity Award and Pesticide Free certification reissued 2026-03-20.",
-          "testingDate": "2026-09-09",
+          "testingNote": "Lead Safe Mama, published 2026-04-09. Purity Laboratories ICP-MS, case 2603125, lot 2026_054, tested 2026-03-11: lead below 5 ppb, cadmium below 5 ppb, arsenic below 10 ppb, mercury below 2 ppb, all non detect. A pass under rule 4.7 with every limit at or below its bar. Sku scope. Bobbie funded this testing, as it did the November 2024 round; Lead Safe Mama chose the lab, bought the formula at retail and sent it blind, and published regardless of outcome (rule 4.7, who paid). The State of Florida reported 2 ppb mercury in one Bobbie formula without publishing its lab reports or method; Lead Safe Mama disputes that result. Consumer Reports placed Bobbie in its Top Choices tier in March 2025 and March 2026.",
+          "testingDate": "2026-09-14",
           "legalNote": "Checked the FDA enforcement database on 2026-08-31. One recall on record: the original 2019 launch formula, for inadequate nutrition labeling, closed and remedied before the current FDA compliant formula launched in 2021. Now informational.",
           "exposure": {
             "type": "food",
@@ -14289,6 +14474,45 @@
             "source": "Steel can with foil seal; plastic overcap and calibrated scoop touch dry powder only. Steel cans carried the lowest microplastic counts in the 2023 infant milk powder packaging study (composite boxes highest).",
             "checked": "2026-09-09"
           },
+          "testingResults": [
+            {
+              "analyte": "lead",
+              "lab": "Purity Laboratories for Lead Safe Mama",
+              "lod": "5 ppb",
+              "outcome": "non-detect",
+              "unit": "ppb",
+              "value": null,
+              "year": 2026
+            },
+            {
+              "analyte": "cadmium",
+              "lab": "Purity Laboratories for Lead Safe Mama",
+              "lod": "5 ppb",
+              "outcome": "non-detect",
+              "unit": "ppb",
+              "value": null,
+              "year": 2026
+            },
+            {
+              "analyte": "arsenic",
+              "lab": "Purity Laboratories for Lead Safe Mama",
+              "lod": "10 ppb",
+              "outcome": "non-detect",
+              "unit": "ppb",
+              "value": null,
+              "year": 2026
+            },
+            {
+              "analyte": "mercury",
+              "lab": "Purity Laboratories for Lead Safe Mama",
+              "lod": "2 ppb",
+              "outcome": "non-detect",
+              "unit": "ppb",
+              "value": null,
+              "year": 2026
+            }
+          ],
+          "testingLod": "5 ppb lead and cadmium, 10 ppb arsenic, 2 ppb mercury",
           "verdict": "good",
           "dated": "2026-09-14",
           "why": "direct evidence on formula, recorded rather than read off a note",
@@ -14330,12 +14554,12 @@
         "ext": {
           "frontNotes": {
             "formula": "The published ingredient list carries nothing on the hazard list.",
-            "testing": "Consumer Reports Top Choices tier in both the March 2025 and March 2026 rounds: non detect or low for lead, inorganic arsenic, cadmium, mercury, BPA and acrylamide. Clean Label Project Purity Award and Pesticide Free certification reissued 2026-03-20.",
+            "testing": "Lead Safe Mama, published 2026-04-10, 2026 lab round: lead below 5 ppb, cadmium below 5 ppb, arsenic below 10 ppb, mercury below 2 ppb, all non detect. Read from the results chart; this post does not reproduce the lab report page as the other two do. A pass under rule 4.7. Sku scope. Bobbie funded this testing, as it did the November 2024 round; Lead Safe Mama chose the lab, bought the formula at retail and sent it blind, and published regardless of outcome (rule 4.7, who paid). The State of Florida reported 2 ppb mercury in one Bobbie formula without publishing its lab reports or method; Lead Safe Mama disputes that result. Consumer Reports placed Bobbie in its Top Choices tier in March 2025 and March 2026.",
             "materials": "In contact with steel, which puts nothing into what it holds.",
             "legal": "Checked the FDA enforcement database on 2026-08-31. One recall on record: the original 2019 launch formula, for inadequate nutrition labeling, closed and remedied before the current FDA compliant formula launched in 2021. Now informational."
           },
-          "testingNote": "Consumer Reports Top Choices tier in both the March 2025 and March 2026 rounds: non detect or low for lead, inorganic arsenic, cadmium, mercury, BPA and acrylamide. Clean Label Project Purity Award and Pesticide Free certification reissued 2026-03-20.",
-          "testingDate": "2026-09-09",
+          "testingNote": "Lead Safe Mama, published 2026-04-10, 2026 lab round: lead below 5 ppb, cadmium below 5 ppb, arsenic below 10 ppb, mercury below 2 ppb, all non detect. Read from the results chart; this post does not reproduce the lab report page as the other two do. A pass under rule 4.7. Sku scope. Bobbie funded this testing, as it did the November 2024 round; Lead Safe Mama chose the lab, bought the formula at retail and sent it blind, and published regardless of outcome (rule 4.7, who paid). The State of Florida reported 2 ppb mercury in one Bobbie formula without publishing its lab reports or method; Lead Safe Mama disputes that result. Consumer Reports placed Bobbie in its Top Choices tier in March 2025 and March 2026.",
+          "testingDate": "2026-09-14",
           "legalNote": "Checked the FDA enforcement database on 2026-08-31. One recall on record: the original 2019 launch formula, for inadequate nutrition labeling, closed and remedied before the current FDA compliant formula launched in 2021. Now informational.",
           "exposure": {
             "type": "food",
@@ -14373,6 +14597,45 @@
             "source": "Steel can with foil seal; plastic overcap and calibrated scoop touch dry powder only. Steel cans carried the lowest microplastic counts in the 2023 infant milk powder packaging study (composite boxes highest).",
             "checked": "2026-09-09"
           },
+          "testingResults": [
+            {
+              "analyte": "lead",
+              "lab": "Purity Laboratories for Lead Safe Mama",
+              "lod": "5 ppb",
+              "outcome": "non-detect",
+              "unit": "ppb",
+              "value": null,
+              "year": 2026
+            },
+            {
+              "analyte": "cadmium",
+              "lab": "Purity Laboratories for Lead Safe Mama",
+              "lod": "5 ppb",
+              "outcome": "non-detect",
+              "unit": "ppb",
+              "value": null,
+              "year": 2026
+            },
+            {
+              "analyte": "arsenic",
+              "lab": "Purity Laboratories for Lead Safe Mama",
+              "lod": "10 ppb",
+              "outcome": "non-detect",
+              "unit": "ppb",
+              "value": null,
+              "year": 2026
+            },
+            {
+              "analyte": "mercury",
+              "lab": "Purity Laboratories for Lead Safe Mama",
+              "lod": "2 ppb",
+              "outcome": "non-detect",
+              "unit": "ppb",
+              "value": null,
+              "year": 2026
+            }
+          ],
+          "testingLod": "5 ppb lead and cadmium, 10 ppb arsenic, 2 ppb mercury",
           "verdict": "good",
           "dated": "2026-09-14",
           "why": "direct evidence on formula, recorded rather than read off a note",
@@ -15587,7 +15850,7 @@
     "stance": "skip",
     "reason": "Original contains Balsam of Peru, a top five pediatric contact allergen, an odd choice for inflamed skin, and even the Natural Aloe line still lists Peruvian balsam oil. The parent company was named in a 2020 Prop 65 notice over lead in a diaper rash ointment. Not part of the recent independent testing series.",
     "evidence": "Balsam of Peru even in the Natural line",
-    "alternative": "Motherlove for prevention, Sages of the Ages zinc tallow balm for rash",
+    "alternative": "Motherlove Diaper Balm, 2 oz glass jar (the 4 oz may come in plastic), for prevention; Sages of the Ages zinc tallow balm for rash",
     "sources": [
       "best-non-toxic-diaper-rash-creams.html"
     ],
@@ -18485,7 +18748,8 @@
           "frontNotes": {
             "materials": "We have not established what the product actually touches.",
             "formula": "The published ingredient list names cyclomethicone.",
-            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
+            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
+            "testing": "Lead Safe Mama, published 2025-07-11. Purity Laboratories ICP-MS, case 2506210, lot 2025-136, tested 2025-06-12: lead 76.53 ppb, cadmium below 5 ppb, mercury below 5 ppb, arsenic below 10 ppb. Made for babies, so judged by the baby column of rule 4.7: lead is below the 500 ppb bar and the other three are non detect. Lead Safe Mama applies its food levels to sunscreen as a guide and would not call this safe for babies; the number is on the card. Sku scope."
           },
           "exposure": {
             "type": "sunscreen",
@@ -18526,6 +18790,47 @@
             "checked": "2026-09-02",
             "open": "We have not established what the product actually touches"
           },
+          "testingResults": [
+            {
+              "analyte": "lead",
+              "lab": "Purity Laboratories for Lead Safe Mama",
+              "lod": "n/a",
+              "outcome": "detected",
+              "unit": "ppb",
+              "value": 76.53,
+              "year": 2025
+            },
+            {
+              "analyte": "cadmium",
+              "lab": "Purity Laboratories for Lead Safe Mama",
+              "lod": "5 ppb",
+              "outcome": "non-detect",
+              "unit": "ppb",
+              "value": null,
+              "year": 2025
+            },
+            {
+              "analyte": "mercury",
+              "lab": "Purity Laboratories for Lead Safe Mama",
+              "lod": "5 ppb",
+              "outcome": "non-detect",
+              "unit": "ppb",
+              "value": null,
+              "year": 2025
+            },
+            {
+              "analyte": "arsenic",
+              "lab": "Purity Laboratories for Lead Safe Mama",
+              "lod": "10 ppb",
+              "outcome": "non-detect",
+              "unit": "ppb",
+              "value": null,
+              "year": 2025
+            }
+          ],
+          "testingLod": "5 ppb cadmium and mercury, 10 ppb arsenic",
+          "testingNote": "Lead Safe Mama, published 2025-07-11. Purity Laboratories ICP-MS, case 2506210, lot 2025-136, tested 2025-06-12: lead 76.53 ppb, cadmium below 5 ppb, mercury below 5 ppb, arsenic below 10 ppb. Made for babies, so judged by the baby column of rule 4.7: lead is below the 500 ppb bar and the other three are non detect. Lead Safe Mama applies its food levels to sunscreen as a guide and would not call this safe for babies; the number is on the card. Sku scope.",
+          "testingDate": "2026-09-14",
           "verdict": "unrated",
           "dated": "2026-08-29",
           "why": "the note reads adversely on materials, needs a human look",
@@ -18537,7 +18842,7 @@
           },
           "frontOrigin": {
             "legal": "database",
-            "testing": "inferred",
+            "testing": "database",
             "formula": "database",
             "materials": "inferred"
           },
@@ -24745,7 +25050,7 @@
         "ext": {
           "legalNote": "Checked on 2026-08-31. A 2024 suit alleging false PFAS free marketing was dismissed for lack of standing, with no adverse finding entered and no recall; refiling was left open.",
           "frontNotes": {
-            "materials": "The recorded material this front rested on was withdrawn, and nothing has replaced it.",
+            "materials": "Made of polypropylene, with nothing inside it to pull anything out. What that contact means is the exposure read.",
             "testing": "Non detect for organic fluorine inside and outside (2023 Mamavation round, EPA certified lab, 10 ppm threshold). EWG Verified across every size from newborn to size 7 as of June 2026",
             "legal": "Checked on 2026-08-31. A 2024 suit alleging false PFAS free marketing was dismissed for lack of standing, with no adverse finding entered and no recall; refiling was left open.",
             "formula": "An object has no ingredient list. What it is made of is the materials check."
@@ -24767,6 +25072,19 @@
             "fat": false,
             "why": "for a baby, which is high whatever the arithmetic says"
           },
+          "materialsList": "polypropylene",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "",
+            "heated": false,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "polypropylene",
+            "source": "Coterie's own published layer list (coterie.com/blog/full-materials-list): topsheet polypropylene 99%, transfer layer PET, core TCF cellulose with sodium polyacrylate, waistband polypropylene with polyethylene and polystyrene 5%, backsheet polyethylene with calcium carbonate. Totally chlorine free pulp, no lotion or fragrance, and the list is published in full, which is what separates it from the category rather than the fact that it is plastic: every disposable diaper has a polypropylene topsheet, so that is context and not a finding. (record moved 2026-09-14 from B0C2DCB188, which now sells a wipes and diapers kit, to B0DKPJHFGS, the ASIN the row and the site link)",
+            "checked": "2026-09-03"
+          },
           "verdict": "good",
           "dated": "2026-08-29",
           "why": "independent lab result at sku scope",
@@ -24779,7 +25097,7 @@
           "frontOrigin": {
             "legal": "database",
             "testing": "hand",
-            "materials": "inferred",
+            "materials": "database",
             "formula": "hand"
           },
           "scope": "sku",
@@ -27737,6 +28055,19 @@
             "checked": "2026-09-14"
           },
           "legalNote": "Checked 2026-09-14. Delta Enterprise drop side crib recalls: Oct 2008 (985,000 and about 600,000), June 2010 (about 747,000), re-announced March 2011; inclined sleeper recall 20-061, January 2020 (about 5,900). All long remedied, and no Delta crib mattress has been recalled. Prop 65 notice 2026-04188 (Aug 27, 2026) alleges PFOA in Delta Children changing pads, a different product.",
+          "exposure": {
+            "type": "slept on",
+            "level": "high",
+            "score": 8.0,
+            "baby": true,
+            "route": "inhalation",
+            "duration": "overnight",
+            "retained": "breathed",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "Eight hours a night, close to the face."
+          },
           "verdict": "careful",
           "dated": "2026-09-14",
           "why": "adverse finding stands",
@@ -30897,6 +31228,19 @@
             "checked": "2026-09-14"
           },
           "legalNote": "Checked 2026-09-14. CPSC recall 18-058 (Dec 2017): about 23,400 Dream On Me crib and toddler mattresses failed the federal flammability standard; remedy was a free cover, over 24 months ago, informational. The Twilight was not among the recalled models.",
+          "exposure": {
+            "type": "slept on",
+            "level": "high",
+            "score": 8.0,
+            "baby": true,
+            "route": "inhalation",
+            "duration": "overnight",
+            "retained": "breathed",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "Eight hours a night, close to the face."
+          },
           "verdict": "careful",
           "dated": "2026-09-14",
           "why": "adverse finding stands, on materials, testing",
@@ -40736,7 +41080,8 @@
           "frontNotes": {
             "formula": "The published ingredient list carries nothing on the hazard list.",
             "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
-            "materials": "dry contents in plastic."
+            "materials": "dry contents in plastic.",
+            "testing": "Lead Safe Mama, published 2025-02-04. SGS North America via SimpleLab, report 4TP4D6, reported 2025-01-31, AOAC 2015.01: arsenic 900 ppb (total, not speciated), cadmium 82 ppb, lead 9 ppb, mercury non detect below 25 ppb. Cadmium, lead and arsenic are at or above the rule 4.7 bars for anything swallowed; mercury's limit is too high to judge. Sku scope."
           },
           "exposure": {
             "type": "supplement",
@@ -40774,19 +41119,61 @@
             "source": "Dry contents; the container polymer is not published or not confirmed. Dry contents pass the rule 3.1 matrix in HDPE, PET, polypropylene, paper, metal and glass, which covers every material this kind of product is packed in. Only PVC or polystyrene would score caution, and neither is used for it.",
             "checked": "2026-09-11"
           },
-          "verdict": "good",
+          "testingResults": [
+            {
+              "analyte": "arsenic",
+              "lab": "SGS North America for Lead Safe Mama",
+              "lod": "5 ppb",
+              "outcome": "detected",
+              "unit": "ppb",
+              "value": 900,
+              "year": 2025
+            },
+            {
+              "analyte": "cadmium",
+              "lab": "SGS North America for Lead Safe Mama",
+              "lod": "5 ppb",
+              "outcome": "detected",
+              "unit": "ppb",
+              "value": 82,
+              "year": 2025
+            },
+            {
+              "analyte": "lead",
+              "lab": "SGS North America for Lead Safe Mama",
+              "lod": "5 ppb",
+              "outcome": "detected",
+              "unit": "ppb",
+              "value": 9,
+              "year": 2025
+            },
+            {
+              "analyte": "mercury",
+              "lab": "SGS North America for Lead Safe Mama",
+              "lod": "25 ppb",
+              "outcome": "non-detect",
+              "unit": "ppb",
+              "value": null,
+              "year": 2025
+            }
+          ],
+          "testingLod": "5 ppb lead, cadmium, arsenic; 25 ppb mercury",
+          "testingNote": "Lead Safe Mama, published 2025-02-04. SGS North America via SimpleLab, report 4TP4D6, reported 2025-01-31, AOAC 2015.01: arsenic 900 ppb (total, not speciated), cadmium 82 ppb, lead 9 ppb, mercury non detect below 25 ppb. Cadmium, lead and arsenic are at or above the rule 4.7 bars for anything swallowed; mercury's limit is too high to judge. Sku scope.",
+          "testingDate": "2026-09-14",
+          "verdict": "careful",
           "dated": "2026-09-14",
-          "why": "direct evidence on formula, recorded rather than read off a note",
+          "why": "section 6 ceiling: testing is caution, on recorded evidence",
           "fronts": {
             "formula": "pass",
             "materials": "pass",
             "legal": "none",
-            "testing": "unassessed"
+            "testing": "caution"
           },
           "frontOrigin": {
             "legal": "database",
             "formula": "database",
-            "materials": "database"
+            "materials": "database",
+            "testing": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -43626,6 +44013,19 @@
           },
           "legalNote": "Checked CPSC recall records on 2026-09-14. Graco Recalls 11 Models of Strollers Due to Fingertip Amputation Hazard (2014-11). https://www.cpsc.gov/Recalls/2015/Graco-Recalls-11-Models-of-Strollers Remedied: Contact Graco immediately for a free repair kit. Repair kits will be available from the firm at the beginning of Decembe. Over 24 months old, so under rule 5.2 it is informational rather than a finding against the product today.",
           "legalDate": "2014-11",
+          "exposure": {
+            "type": "slept on",
+            "level": "high",
+            "score": 8.0,
+            "baby": true,
+            "route": "inhalation",
+            "duration": "overnight",
+            "retained": "breathed",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "Eight hours a night, close to the face."
+          },
           "verdict": "careful",
           "dated": "2026-09-14",
           "why": "adverse finding stands",
@@ -43837,7 +44237,7 @@
     "stance": "skip",
     "reason": "Its Baby Balm lists comfrey, which contains pyrrolizidine alkaloids that are toxic to the liver; absorption increases through broken skin, infants are uniquely susceptible, and standard references contraindicate comfrey for children entirely. Herbal is not a synonym for safe.",
     "evidence": "Comfrey in a baby balm, contraindicated for infants",
-    "alternative": "Motherlove Diaper Balm",
+    "alternative": "Motherlove Diaper Balm, 2 oz glass jar (the 4 oz may come in plastic)",
     "sources": [
       "best-non-toxic-diaper-rash-creams.html"
     ],
@@ -45816,7 +46216,7 @@
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
           "frontNotes": {
             "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
-            "materials": "The recorded material this front rested on was withdrawn, and nothing has replaced it."
+            "materials": "In contact with stainless steel, which puts nothing into what it holds."
           },
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
@@ -45843,6 +46243,19 @@
             "source": "",
             "checked": ""
           },
+          "materialsList": "stainless steel",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "aqueous",
+            "heated": true,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "stainless steel",
+            "source": "Hario spec (hario-asia-official.com, Drip Kettle Buono VKB-120): body and lid stainless steel; handle and lid knob phenol resin, outside the water. Amazon listing Material line: Stainless Steel, Phenolic resin",
+            "checked": "2026-09-14"
+          },
           "verdict": "good",
           "dated": "2026-08-29",
           "why": "a vetted store pick, chosen by a person at product scope",
@@ -45855,7 +46268,7 @@
           "frontOrigin": {
             "legal": "database",
             "formula": "database",
-            "materials": "inferred"
+            "materials": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -45966,7 +46379,7 @@
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
           "frontNotes": {
             "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
-            "materials": "The recorded material this front rested on was withdrawn, and nothing has replaced it."
+            "materials": "In contact with glass, which puts nothing into what it holds."
           },
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
@@ -45993,6 +46406,19 @@
             "source": "amazon:B0007WTBQ0",
             "checked": ""
           },
+          "materialsList": "glass, stainless steel",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "aqueous",
+            "heated": true,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "glass, stainless steel",
+            "source": "amazon:B0007WTBQ0 listing product details: glass teapot and lid made in Japan; stainless steel strainer made in China. Hario USA: heatproof glass pot and lid",
+            "checked": "2026-09-14"
+          },
           "verdict": "good",
           "dated": "2026-08-29",
           "why": "a vetted store pick, chosen by a person at product scope",
@@ -46005,7 +46431,7 @@
           "frontOrigin": {
             "legal": "database",
             "formula": "database",
-            "materials": "inferred"
+            "materials": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -49718,7 +50144,7 @@
       {
         "name": "Hydro Flask Wide Mouth (32oz)",
         "asins": [
-          "B07YXMJ5WF"
+          "B0DSQ8PJTG"
         ],
         "verdict": "good",
         "note": "Double wall vacuum insulated 18/8 stainless steel with a lead free TempShield seal, used since 2012. Bare steel interior, no liner. Lead free seal since 2012, cold 24hrs. Worth knowing: Heavier than basic bottles.",
@@ -49726,7 +50152,7 @@
         "ext": {
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
           "frontNotes": {
-            "materials": "The recorded material this front rested on was withdrawn, and nothing has replaced it.",
+            "materials": "In contact with stainless steel, which puts nothing into what it holds.",
             "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
             "formula": "An object has no ingredient list. What it is made of is the materials check."
           },
@@ -49743,6 +50169,19 @@
             "fat": false,
             "why": "Carried and refilled all day, every day."
           },
+          "materialsList": "stainless steel",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "aqueous",
+            "heated": false,
+            "mouthed": true,
+            "reuse": "repeated",
+            "use": "",
+            "material": "stainless steel",
+            "source": "amazon:B0DSQ8PJTG title: Hydro Flask 32 Oz Lightweight Wide Flex Cap; pro-grade stainless steel. You drink from the steel rim; the Flex Cap is a screw cap above the waterline, which rule 3.8 excludes from the drink path",
+            "checked": "2026-09-14"
+          },
           "verdict": "good",
           "dated": "2026-08-29",
           "why": "a vetted store pick, chosen by a person at product scope",
@@ -49755,7 +50194,7 @@
           "frontOrigin": {
             "legal": "database",
             "formula": "hand",
-            "materials": "inferred"
+            "materials": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -50582,7 +51021,7 @@
     "brand": "Ikea",
     "category": "Cookware",
     "stance": "careful",
-    "reason": "Reviewed in Defend Our Health's cookware directory: discloses no intentionally added PFAS forever chemicals in its cookware under California's AB 1200 law. Our verdict varies across the range: the Pelleplutt foam crib mattress is polyurethane foam with a polypropylene core cover and polyester, with no certifications, and Consumer Reports rated its materials possible risks. Our verdict varies across the range: the Pelleplutt foam crib mattress is polyurethane foam with a polypropylene core cover and polyester, with no certifications, and Consumer Reports rated its materials possible risks.",
+    "reason": "Reviewed in Defend Our Health's cookware directory: discloses no intentionally added PFAS forever chemicals in its cookware under California's AB 1200 law. Our verdict varies across the range: the Pelleplutt foam crib mattress is polyurethane foam with a polypropylene core cover and polyester, with no certifications, and Consumer Reports rated its materials possible risks. Our verdict varies across the range: the Pelleplutt foam crib mattress is polyurethane foam with a polypropylene core cover and polyester, with no certifications, and Consumer Reports rated its materials possible risks. Our verdict varies across the range: the Pelleplutt foam crib mattress is polyurethane foam with a polypropylene core cover and polyester, with no certifications, and Consumer Reports rated its materials possible risks. Our verdict varies across the range: the Pelleplutt foam crib mattress is polyurethane foam with a polypropylene core cover and polyester, with no certifications, and Consumer Reports rated its materials possible risks.",
     "evidence": "No PFAS disclosed (California AB 1200)",
     "alternative": "",
     "sources": [
@@ -50617,46 +51056,57 @@
     "products": [
       {
         "name": "IKEA Antilop High Chair",
-        "asins": [
-          "B0BB5NBPTQ"
-        ],
         "verdict": "good",
         "note": "Honest pick at thirty dollars. Polypropylene tray but easy to replace and inexpensive. Avoid heavily padded plastic chairs. Badges: PP, BPA free.",
         "origin": "registry",
         "ext": {
           "legalNote": "Checked recall records on 2026-08-31. The Antilop high chair had a 2010 recall to repair its restraint buckle, remedied with free replacement restraints; sixteen years on and resolved, it is informational.",
           "frontNotes": {
-            "materials": "The recorded material this front rested on was withdrawn, and nothing has replaced it.",
+            "materials": "emulsion contents in polypropylene, mouthed or chewed, repeated contact over time.",
             "legal": "Checked recall records on 2026-08-31. The Antilop high chair had a 2010 recall to repair its restraint buckle, remedied with free replacement restraints; sixteen years on and resolved, it is informational.",
             "formula": "An object has no ingredient list. What it is made of is the materials check."
           },
           "exposure": {
-            "type": "slept on",
+            "type": "food surface",
             "level": "high",
-            "score": 8.0,
+            "score": 3.8,
             "baby": true,
-            "route": "inhalation",
-            "duration": "overnight",
-            "retained": "breathed",
+            "route": "ingestion",
+            "duration": "seconds",
+            "retained": "transfer",
             "frequency": "daily",
             "heat": false,
             "fat": false,
-            "why": "Eight hours a night, close to the face."
+            "why": "for a baby, which is high whatever the arithmetic says"
           },
-          "verdict": "unrated",
+          "materialsList": "polypropylene",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "emulsion",
+            "heated": false,
+            "mouthed": true,
+            "reuse": "repeated",
+            "use": "",
+            "material": "polypropylene",
+            "source": "ikea.com ANTILOP seat shell and high chair tray: polypropylene; legs steel with epoxy/polyester powder coating; feet polypropylene. Food sits directly on the tray and the child mouths it",
+            "checked": "2026-09-14"
+          },
+          "verdict": "skip",
           "dated": "2026-09-14",
-          "why": "no front is directly evidenced by the note",
+          "why": "section 6 ceiling: materials is fail, on recorded evidence",
           "fronts": {
             "formula": "none",
-            "materials": "unassessed",
+            "materials": "fail",
             "legal": "pass",
             "testing": "unassessed"
           },
           "frontOrigin": {
             "legal": "database",
-            "formula": "hand"
+            "formula": "hand",
+            "materials": "database"
           },
-          "scope": "sku",
+          "scope": "line",
           "basis": "direct",
           "disclose": false,
           "rules": [
@@ -50686,9 +51136,12 @@
         "ext": {
           "frontNotes": {
             "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "testing": "Ecology Center 2020 tested the Pelleplutt and reported only that IKEA's incomplete disclosure matched its findings; no chemical of concern named and no detection limits, so not citable as a pass. No Lead Safe Mama or Mamavation test.",
             "materials": "polyurethane in direct contact.",
             "legal": "Checked recall records on 2026-08-31. The Antilop high chair had a 2010 recall to repair its restraint buckle, remedied with free replacement restraints; sixteen years on and resolved, it is informational."
           },
+          "testingNote": "Ecology Center 2020 tested the Pelleplutt and reported only that IKEA's incomplete disclosure matched its findings; no chemical of concern named and no detection limits, so not citable as a pass. No Lead Safe Mama or Mamavation test.",
+          "testingDate": "2026-09-14",
           "materialsList": "polyurethane, polypropylene, polyester",
           "materialAnswers": {
             "contact": "yes",
@@ -50703,6 +51156,19 @@
             "checked": "2026-09-14"
           },
           "legalNote": "Checked recall records on 2026-08-31. The Antilop high chair had a 2010 recall to repair its restraint buckle, remedied with free replacement restraints; sixteen years on and resolved, it is informational.",
+          "exposure": {
+            "type": "slept on",
+            "level": "high",
+            "score": 8.0,
+            "baby": true,
+            "route": "inhalation",
+            "duration": "overnight",
+            "retained": "breathed",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "Eight hours a night, close to the face."
+          },
           "verdict": "careful",
           "dated": "2026-09-14",
           "why": "adverse finding stands",
@@ -50710,10 +51176,11 @@
             "formula": "none",
             "materials": "caution",
             "legal": "pass",
-            "testing": "unassessed"
+            "testing": "none"
           },
           "frontOrigin": {
             "formula": "hand",
+            "testing": "database",
             "materials": "database",
             "legal": "database"
           },
@@ -52353,7 +52820,8 @@
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
-            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
+            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
+            "materials": "In contact with borosilicate, which puts nothing into what it holds."
           },
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
@@ -52380,6 +52848,19 @@
             "source": "amazon:B0DZ61ZTZW",
             "checked": "2026-09-04"
           },
+          "materialsList": "borosilicate, silicone",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "aqueous",
+            "heated": true,
+            "mouthed": true,
+            "reuse": "repeated",
+            "use": "",
+            "material": "borosilicate, silicone",
+            "source": "amazon:B0DZ61ZTZW listing Material: Borosilicate Glass; bullets: crafted from borosilicate glass and premium silicone, silicone sleeve and lid; amazon:B07RRR1P2B: 100% plastic free",
+            "checked": "2026-09-14"
+          },
           "verdict": "good",
           "dated": "2026-08-29",
           "why": "a vetted store pick, chosen by a person at product scope",
@@ -52391,7 +52872,7 @@
           },
           "frontOrigin": {
             "legal": "database",
-            "materials": "inferred",
+            "materials": "database",
             "formula": "database"
           },
           "scope": "sku",
@@ -53237,7 +53718,8 @@
           "frontNotes": {
             "formula": "The published ingredient list carries nothing on the hazard list.",
             "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
-            "materials": "dry contents in plastic."
+            "materials": "dry contents in plastic.",
+            "testing": "Lead Safe Mama 2025 retest, published 2025-12-24. Purity Laboratories ICP-MS, case 2508385, lot 2025-202, tested 2025-08-27: lead 6.12 ppb, cadmium 5.03 ppb, mercury below 5 ppb, arsenic below 10 ppb. Lead and cadmium are at or above the rule 4.7 bars. The June 2024 test of the same flour was non detect for all four; the newer result stands. Sku scope."
           },
           "exposure": {
             "type": "food",
@@ -53275,19 +53757,61 @@
             "source": "Dry contents; the container polymer is not published or not confirmed. Dry contents pass the rule 3.1 matrix in HDPE, PET, polypropylene, paper, metal and glass, which covers every material this kind of product is packed in. Only PVC or polystyrene would score caution, and neither is used for it.",
             "checked": "2026-09-11"
           },
-          "verdict": "good",
+          "testingResults": [
+            {
+              "analyte": "lead",
+              "lab": "Purity Laboratories for Lead Safe Mama",
+              "lod": "5 ppb",
+              "outcome": "detected",
+              "unit": "ppb",
+              "value": 6.12,
+              "year": 2025
+            },
+            {
+              "analyte": "cadmium",
+              "lab": "Purity Laboratories for Lead Safe Mama",
+              "lod": "5 ppb",
+              "outcome": "detected",
+              "unit": "ppb",
+              "value": 5.03,
+              "year": 2025
+            },
+            {
+              "analyte": "mercury",
+              "lab": "Purity Laboratories for Lead Safe Mama",
+              "lod": "5 ppb",
+              "outcome": "non-detect",
+              "unit": "ppb",
+              "value": null,
+              "year": 2025
+            },
+            {
+              "analyte": "arsenic",
+              "lab": "Purity Laboratories for Lead Safe Mama",
+              "lod": "10 ppb",
+              "outcome": "non-detect",
+              "unit": "ppb",
+              "value": null,
+              "year": 2025
+            }
+          ],
+          "testingLod": "5 ppb lead, cadmium, mercury; 10 ppb arsenic",
+          "testingNote": "Lead Safe Mama 2025 retest, published 2025-12-24. Purity Laboratories ICP-MS, case 2508385, lot 2025-202, tested 2025-08-27: lead 6.12 ppb, cadmium 5.03 ppb, mercury below 5 ppb, arsenic below 10 ppb. Lead and cadmium are at or above the rule 4.7 bars. The June 2024 test of the same flour was non detect for all four; the newer result stands. Sku scope.",
+          "testingDate": "2026-09-14",
+          "verdict": "careful",
           "dated": "2026-09-14",
-          "why": "direct evidence on formula, recorded rather than read off a note",
+          "why": "section 6 ceiling: testing is caution, on recorded evidence",
           "fronts": {
             "formula": "pass",
             "materials": "pass",
             "legal": "none",
-            "testing": "unassessed"
+            "testing": "caution"
           },
           "frontOrigin": {
             "legal": "database",
             "formula": "database",
-            "materials": "database"
+            "materials": "database",
+            "testing": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -61948,7 +62472,8 @@
           "frontNotes": {
             "formula": "The published ingredient list carries nothing on the hazard list.",
             "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
-            "materials": "dry contents in plastic."
+            "materials": "dry contents in plastic.",
+            "testing": "Measured on Lundberg's Organic California White Basmati, not this rice: Lead Safe Mama, published 2024-10-29, SGS North America via SimpleLab, report ZYB3E6, reported 2024-10-28: arsenic 89 ppb (total, not speciated), cadmium 9 ppb, lead and mercury non detect below 5 ppb. Rice takes up arsenic and cadmium from the soil, so under rules 4.1 and 4.7 the finding reaches the grower's other rice as a caution, never as a skip. No test of this rice itself."
           },
           "exposure": {
             "type": "food",
@@ -61986,19 +62511,22 @@
             "source": "Dry contents; the container polymer is not published or not confirmed. Dry contents pass the rule 3.1 matrix in HDPE, PET, polypropylene, paper, metal and glass, which covers every material this kind of product is packed in. Only PVC or polystyrene would score caution, and neither is used for it.",
             "checked": "2026-09-11"
           },
-          "verdict": "good",
+          "testingNote": "Measured on Lundberg's Organic California White Basmati, not this rice: Lead Safe Mama, published 2024-10-29, SGS North America via SimpleLab, report ZYB3E6, reported 2024-10-28: arsenic 89 ppb (total, not speciated), cadmium 9 ppb, lead and mercury non detect below 5 ppb. Rice takes up arsenic and cadmium from the soil, so under rules 4.1 and 4.7 the finding reaches the grower's other rice as a caution, never as a skip. No test of this rice itself.",
+          "testingDate": "2026-09-14",
+          "verdict": "careful",
           "dated": "2026-09-14",
-          "why": "direct evidence on formula, recorded rather than read off a note",
+          "why": "section 6 ceiling: testing is caution, on recorded evidence",
           "fronts": {
             "formula": "pass",
             "materials": "pass",
             "legal": "none",
-            "testing": "unassessed"
+            "testing": "caution"
           },
           "frontOrigin": {
             "legal": "database",
             "formula": "database",
-            "materials": "database"
+            "materials": "database",
+            "testing": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -64612,7 +65140,7 @@
           "fronts": {
             "formula": "unassessed",
             "legal": "none",
-            "testing": "caution",
+            "testing": "pass",
             "materials": "caution"
           },
           "scope": "sku",
@@ -64623,13 +65151,14 @@
           "frontNotes": {
             "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
             "materials": "The note on this row reads adversely here.",
-            "testing": "The note on this row reads adversely here."
+            "testing": "Mamavation, published 2026-09-01, EPA certified lab, strawberry gummies: lead 0.004 µg/g (4 ppb), cadmium 0.0007 µg/g (0.7 ppb), arsenic 0.001 µg/g (1 ppb), mercury non detect, total phthalates 10 ppb, no PFAS or pesticides. Lead, cadmium and arsenic are detected below the rule 4.7 bars, so a pass; mercury is unjudged because no limit of detection was published. Mamavation lists a discount code for this brand (rule 4.7, who paid). Sku scope.",
+            "formula": "No ingredient list recorded."
           },
           "legalNote": "Checked against the FDA enforcement database on 2026-09-01. No recall on record, and no firm with a similar name either.",
           "frontOrigin": {
             "legal": "database",
             "materials": "inferred",
-            "testing": "inferred"
+            "testing": "database"
           },
           "exposure": {
             "type": "supplement",
@@ -64646,26 +65175,61 @@
           },
           "testingResults": [
             {
-              "analyte": "phthalates",
-              "value": 10.0,
-              "unit": "ppb",
+              "analyte": "lead",
+              "lab": "Mamavation (EPA certified lab)",
+              "lod": "n/a",
               "outcome": "detected",
-              "lab": "Mamavation",
-              "year": 2026,
-              "lod": null
+              "unit": "ppb",
+              "value": 4,
+              "year": 2026
             },
             {
-              "analyte": "lead",
-              "value": 4.0,
-              "unit": "ppb",
+              "analyte": "cadmium",
+              "lab": "Mamavation (EPA certified lab)",
+              "lod": "n/a",
               "outcome": "detected",
-              "lab": "Mamavation",
-              "year": 2026,
-              "lod": null
+              "unit": "ppb",
+              "value": 0.7,
+              "year": 2026
+            },
+            {
+              "analyte": "arsenic",
+              "lab": "Mamavation (EPA certified lab)",
+              "lod": "n/a",
+              "outcome": "detected",
+              "unit": "ppb",
+              "value": 1,
+              "year": 2026
+            },
+            {
+              "analyte": "mercury",
+              "lab": "Mamavation (EPA certified lab)",
+              "lod": "not published",
+              "outcome": "non-detect",
+              "unit": "ppb",
+              "value": null,
+              "year": 2026
             }
-          ]
+          ],
+          "formulaAnswers": {
+            "ingredients": "",
+            "prose": "",
+            "complete": false,
+            "verdict": "open",
+            "summary": "No ingredient list recorded.",
+            "flagged": [],
+            "source": "",
+            "checked": ""
+          },
+          "testingLod": "not published for metals",
+          "testingNote": "Mamavation, published 2026-09-01, EPA certified lab, strawberry gummies: lead 0.004 µg/g (4 ppb), cadmium 0.0007 µg/g (0.7 ppb), arsenic 0.001 µg/g (1 ppb), mercury non detect, total phthalates 10 ppb, no PFAS or pesticides. Lead, cadmium and arsenic are detected below the rule 4.7 bars, so a pass; mercury is unjudged because no limit of detection was published. Mamavation lists a discount code for this brand (rule 4.7, who paid). Sku scope.",
+          "testingDate": "2026-09-14"
         },
-        "cat": "Prenatal vitamins"
+        "cat": "Prenatal vitamins",
+        "asins": [
+          "B0DJWL2RSY"
+        ],
+        "tradeoff": "Kept under rule 5.7 as the lowest measured prenatal: lead 4 ppb, cadmium 0.7 ppb and arsenic 1 ppb, below every rule 4.7 bar (Mamavation, September 2026). It is careful on its plastic jar, and a gummy cannot carry useful doses of choline, iron, calcium or magnesium, so those gaps are for your provider to fill."
       }
     ],
     "rollup": {
@@ -67919,13 +68483,13 @@
     ],
     "fronts": {
       "formula": {
-        "status": "fail",
-        "note": "From Diaper Balm, 4 oz value size (plastic jar): The published ingredient list names paraben, phthalate.",
-        "origin": "rollup"
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
       },
       "materials": {
         "status": "fail",
-        "note": "From Diaper Balm, 4 oz value size (plastic jar): plastic in contact, with an oil based formula, which is the strongest extractant there is, repeated contact over time.",
+        "note": "From Diaper Balm, 4 oz value size (may come in plastic): anhydrous contents in plastic, repeated contact over time.",
         "origin": "rollup"
       },
       "legal": {
@@ -67950,7 +68514,7 @@
           "B000XJ2LDW"
         ],
         "verdict": "good",
-        "note": "Olive oil and beeswax base with Oregon grape root, myrrh, yarrow, and calendula. USDA Organic via Oregon Tilth, Leaping Bunny. USDA Organic, cloth diaper safe. Worth knowing: Small jar, Herbal scent from the plants themselves.",
+        "note": "Olive oil and beeswax with Oregon grape root, myrrh, yarrow, and calendula. USDA Organic via Oregon Tilth, Leaping Bunny. USDA Organic, cloth diaper safe. Worth knowing: The 4 oz may come in plastic, so buy the 2 oz glass jar.",
         "origin": "store",
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
@@ -68030,19 +68594,20 @@
         ]
       },
       {
-        "name": "Diaper Balm, 4 oz value size (plastic jar)",
+        "name": "Diaper Balm, 4 oz value size (may come in plastic)",
         "asins": [
           "B08KSQV695"
         ],
         "verdict": "good",
-        "note": "Olive oil and beeswax base with Oregon grape root, myrrh, yarrow, and calendula. USDA Organic via Oregon Tilth, Leaping Bunny. USDA Organic, cloth diaper safe. Worth knowing: Small jar, Herbal scent from the plants themselves.",
+        "note": "The same olive oil and beeswax balm as the glass 1 oz and 2 oz jars, but the 4 oz may come in plastic, and an oil balm in plastic is the one pairing we avoid. Buy the 2 oz glass jar.",
         "origin": "store",
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
             "materials": "anhydrous contents in plastic, repeated contact over time.",
-            "formula": "The published ingredient list names paraben, phthalate.",
-            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
+            "formula": "The published ingredient list carries nothing on the hazard list.",
+            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
+            "testing": "Checked Lead Safe Mama and Mamavation on 2026-09-14. No independent test of Motherlove on record at either. Not a pass: nothing has been measured. It means the gap is known rather than unexamined."
           },
           "cappedFrom": "careful",
           "capRestoreWhy": "section 6 ceiling: packaging is caution",
@@ -68063,12 +68628,9 @@
             "ingredients": "Extra virgin olive oil*, beeswax*, Oregon grape root*, myrrh gum*, yarrow herb*, and calendula flower*. *USDA Certified Organic ingredients. Free of petroleum and petroleum by-products, lanolin, parabens, phthalates, and synthetic fillers. Please note: since we use only natural ingredients, the consistency of the product may vary.",
             "prose": "",
             "complete": true,
-            "verdict": "bad",
-            "summary": "The published ingredient list names paraben, phthalate.",
-            "flagged": [
-              "paraben",
-              "phthalate"
-            ],
+            "verdict": "good",
+            "summary": "The published ingredient list carries nothing on the hazard list.",
+            "flagged": [],
             "source": "amazon:B08KSQV695",
             "checked": "2026-09-04"
           },
@@ -68082,28 +68644,30 @@
             "reuse": "repeated",
             "use": "",
             "material": "plastic",
-            "source": "motherlove.com FAQ",
-            "checked": "2026-09-02"
+            "source": "Amazon 4 oz listing, reported shipping in a plastic jar on 2026-09-14; brand FAQ says glass",
+            "checked": "2026-09-14"
           },
           "verdict": "skip",
           "dated": "2026-09-14",
-          "why": "section 6 ceiling: formula is fail, materials is fail",
+          "why": "section 6 ceiling: materials is fail, on recorded evidence",
           "fronts": {
-            "formula": "fail",
+            "formula": "pass",
             "materials": "fail",
             "legal": "none",
-            "testing": "pass"
+            "testing": "none"
           },
           "frontOrigin": {
             "legal": "database",
-            "testing": "inferred",
             "materials": "database",
-            "formula": "database"
+            "formula": "database",
+            "testing": "database"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
+          "rules": [
+            "3 packaging-matrix-fail"
+          ]
         },
         "cat": "Diaper cream",
         "matchAll": [
@@ -68244,7 +68808,7 @@
             "why": "Left on the skin, so contact runs for hours."
           }
         },
-        "research": "Packaging: Ships in a glass jar (1, 2, or 4 oz sizes); brand FAQ says it packages in glass except liquid soaps. Contents are an olive oil and beeswax herbal balm."
+        "research": "Packaging: glass jar in the 1 oz and 2 oz sizes; the 4 oz sold on Amazon may come in plastic, even though the brand FAQ says it packages in glass except liquid soaps. Contents are an olive oil and beeswax herbal balm."
       }
     ],
     "rollup": {
@@ -70884,6 +71448,19 @@
             "checked": "2026-09-14"
           },
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
+          "exposure": {
+            "type": "slept on",
+            "level": "high",
+            "score": 8.0,
+            "baby": true,
+            "route": "inhalation",
+            "duration": "overnight",
+            "retained": "breathed",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "Eight hours a night, close to the face."
+          },
           "verdict": "good",
           "dated": "2026-09-14",
           "why": "direct evidence on materials, recorded rather than read off a note",
@@ -70936,6 +71513,19 @@
             "checked": "2026-09-11"
           },
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
+          "exposure": {
+            "type": "slept on",
+            "level": "high",
+            "score": 8.0,
+            "baby": true,
+            "route": "inhalation",
+            "duration": "overnight",
+            "retained": "breathed",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "Eight hours a night, close to the face."
+          },
           "verdict": "good",
           "dated": "2026-09-14",
           "why": "a vetted store pick, chosen by a person at product scope",
@@ -70992,6 +71582,19 @@
             "checked": "2026-09-14"
           },
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
+          "exposure": {
+            "type": "slept on",
+            "level": "high",
+            "score": 8.0,
+            "baby": true,
+            "route": "inhalation",
+            "duration": "overnight",
+            "retained": "breathed",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "Eight hours a night, close to the face."
+          },
           "verdict": "careful",
           "dated": "2026-09-14",
           "why": "adverse finding stands, on materials",
@@ -71125,6 +71728,19 @@
             "checked": "2026-09-14"
           },
           "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
+          "exposure": {
+            "type": "slept on",
+            "level": "high",
+            "score": 8.0,
+            "baby": true,
+            "route": "inhalation",
+            "duration": "overnight",
+            "retained": "breathed",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "Eight hours a night, close to the face."
+          },
           "verdict": "good",
           "dated": "2026-09-14",
           "why": "direct evidence on materials, recorded rather than read off a note",
@@ -71522,7 +72138,8 @@
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
             "formula": "The published ingredient list carries nothing on the hazard list.",
-            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
+            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
+            "testing": "No independent test of the powder itself. Its sibling on the same Needed prenatal line, the Prenatal Multi Capsules, measured lead 25 ppb, cadmium 20 ppb and arsenic 88 ppb (Lead Safe Mama, September 2024), above the rule 4.7 bars. The powder is a different formula, 22 nutrients against 26 and no calcium, per Needed's product page, but shares magnesium, zinc, copper, manganese and selenium, and which ingredient carries the metals is not identified. Under section 4's unknown mechanism row the finding reaches the same line only, as a caution, never a skip. A test of the powder would replace this."
           },
           "exposure": {
             "type": "supplement",
@@ -71547,18 +72164,21 @@
             "source": "amazon:B0GM2HYZ9G listing ingredients block",
             "checked": "2026-09-14"
           },
-          "verdict": "unrated",
-          "dated": "2026-08-28",
-          "why": "no front is directly evidenced by the note",
+          "testingNote": "No independent test of the powder itself. Its sibling on the same Needed prenatal line, the Prenatal Multi Capsules, measured lead 25 ppb, cadmium 20 ppb and arsenic 88 ppb (Lead Safe Mama, September 2024), above the rule 4.7 bars. The powder is a different formula, 22 nutrients against 26 and no calcium, per Needed's product page, but shares magnesium, zinc, copper, manganese and selenium, and which ingredient carries the metals is not identified. Under section 4's unknown mechanism row the finding reaches the same line only, as a caution, never a skip. A test of the powder would replace this.",
+          "testingDate": "2026-09-14",
+          "verdict": "careful",
+          "dated": "2026-09-14",
+          "why": "section 6 ceiling: testing is caution, on recorded evidence",
           "fronts": {
             "formula": "pass",
             "materials": "unassessed",
             "legal": "none",
-            "testing": "unassessed"
+            "testing": "caution"
           },
           "frontOrigin": {
             "legal": "database",
-            "formula": "database"
+            "formula": "database",
+            "testing": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -71584,7 +72204,8 @@
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
             "formula": "The published ingredient list carries nothing on the hazard list.",
-            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
+            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
+            "testing": "Lead Safe Mama, published 2024-10-13. Certified Laboratories via SimpleLab, report 35MGKE, reported 2024-09-12: lead 25 ppb, cadmium 20 ppb, arsenic 88 ppb (total), mercury non detect below 10 ppb. Lead, cadmium and arsenic are at or above the rule 4.7 bars; mercury's limit is above 5 ppb, so mercury is unjudged. Sku scope. Needed's Prenatal Multi Powder is a different formula (22 nutrients, no calcium) on the same line, and carries this as a caution under the unknown mechanism row of rule 4."
           },
           "exposure": {
             "type": "supplement",
@@ -71609,9 +72230,50 @@
             "source": "amazon:B097SSXB34",
             "checked": "2026-09-04"
           },
-          "verdict": "unrated",
-          "dated": "2026-09-08",
-          "why": "the note reads adversely on testing, needs a human look",
+          "testingResults": [
+            {
+              "analyte": "lead",
+              "lab": "Certified Laboratories for Lead Safe Mama",
+              "lod": "10 ppb",
+              "outcome": "detected",
+              "unit": "ppb",
+              "value": 25,
+              "year": 2024
+            },
+            {
+              "analyte": "cadmium",
+              "lab": "Certified Laboratories for Lead Safe Mama",
+              "lod": "10 ppb",
+              "outcome": "detected",
+              "unit": "ppb",
+              "value": 20,
+              "year": 2024
+            },
+            {
+              "analyte": "arsenic",
+              "lab": "Certified Laboratories for Lead Safe Mama",
+              "lod": "10 ppb",
+              "outcome": "detected",
+              "unit": "ppb",
+              "value": 88,
+              "year": 2024
+            },
+            {
+              "analyte": "mercury",
+              "lab": "Certified Laboratories for Lead Safe Mama",
+              "lod": "10 ppb",
+              "outcome": "non-detect",
+              "unit": "ppb",
+              "value": null,
+              "year": 2024
+            }
+          ],
+          "testingLod": "10 ppb each metal",
+          "testingNote": "Lead Safe Mama, published 2024-10-13. Certified Laboratories via SimpleLab, report 35MGKE, reported 2024-09-12: lead 25 ppb, cadmium 20 ppb, arsenic 88 ppb (total), mercury non detect below 10 ppb. Lead, cadmium and arsenic are at or above the rule 4.7 bars; mercury's limit is above 5 ppb, so mercury is unjudged. Sku scope. Needed's Prenatal Multi Powder is a different formula (22 nutrients, no calcium) on the same line, and carries this as a caution under the unknown mechanism row of rule 4.",
+          "testingDate": "2026-09-14",
+          "verdict": "careful",
+          "dated": "2026-09-14",
+          "why": "section 6 ceiling: testing is caution, on recorded evidence",
           "fronts": {
             "formula": "pass",
             "materials": "pass",
@@ -71620,7 +72282,7 @@
           },
           "frontOrigin": {
             "legal": "database",
-            "testing": "inferred",
+            "testing": "database",
             "materials": "inferred",
             "formula": "database"
           },
@@ -72403,14 +73065,16 @@
     "id": "newton-baby",
     "brand": "Newton Baby",
     "category": "Baby sleep",
-    "stance": "good",
-    "reason": "Food-grade Wovenaire polymer core crib mattress with no foam or flame retardants, GREENGUARD Gold.",
-    "evidence": "food-grade polymer core, no FRs, GREENGUARD Gold",
-    "alternative": "",
+    "stance": "careful",
+    "reason": "Washable crib mattresses with a Wovenaire core that Newton describes as 90% air and 10% food grade polymer; the Ecology Center identified it as polyethylene containing a built in phosphorus flame retardant, which Newton had disclosed and has not said was removed. Viscose inner cover; the Waterproof model adds a TPU layer. GREENGUARD Gold on UL SPOT, no recall, and no product lawsuit (one website accessibility case, closed in 2025). A real step up from foam and vinyl, but a plastic core.",
+    "evidence": "Polyethylene core with a disclosed phosphorus flame retardant (Ecology Center 2020); TPU on the Waterproof model",
+    "alternative": "KATU or Naturepedic Organic Classic",
     "sources": [
-      "top-100-baby-kids-products-amazon.html"
+      "top-100-baby-kids-products-amazon.html",
+      "best-non-toxic-crib-mattresses.html",
+      "https://www.ecocenter.org/our-work/healthy-stuff-lab/reports/crib-mattress-report/crib-mattress-study",
+      "https://www.newtonbaby.com/products/newton-crib-mattress"
     ],
-    "buy": "https://www.amazon.com/dp/B08BMT1MB5?tag=plasticdetox-20",
     "fronts": {
       "formula": {
         "status": "none",
@@ -72440,17 +73104,36 @@
       {
         "name": "Newton Baby Original Crib Mattress",
         "asins": [
-          "B08BMT1MB5"
+          "B00WR958TA"
         ],
-        "verdict": "good",
-        "note": "Food grade polymer Wovenaire core with no foam and no chemical flame retardants. Fully washable and breathable. GREENGUARD Gold, no foam or flame retardants. Worth knowing: Premium price.",
-        "origin": "store",
+        "verdict": "careful",
+        "note": "Wovenaire core (90% air, 10% food grade polymer; polyethylene with a built in phosphorus flame retardant per the Ecology Center), dual layer quilted cover with a viscose inner cover. Fully washable. GREENGUARD Gold.",
+        "origin": "article",
+        "cat": "Crib mattresses",
+        "source": "best-non-toxic-crib-mattresses.html",
         "ext": {
-          "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
           "frontNotes": {
             "formula": "An object has no ingredient list. What it is made of is the materials check.",
-            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
+            "testing": "Ecology Center, The Mattress Still Matters (2020): the Newton polyethylene network core contained phosphorus, apparently a built in or reactive flame retardant, which Newton had disclosed. Newton's current pages credit a viscose inner cover for flammability and make no statement about the core additive. No detection limits published.",
+            "materials": "Made of polyethylene, with nothing inside it to pull anything out. What that contact means is the exposure read.",
+            "legal": "Checked the CPSC recall API, Health Canada and California Prop 65 notices on 2026-09-14: no recall or notice. Only lawsuit found: Booker v. Newton Baby (W.D. Pa. 2025), a website accessibility case closed within a month. No NAD, FTC or court action on its breathability marketing."
           },
+          "testingNote": "Ecology Center, The Mattress Still Matters (2020): the Newton polyethylene network core contained phosphorus, apparently a built in or reactive flame retardant, which Newton had disclosed. Newton's current pages credit a viscose inner cover for flammability and make no statement about the core additive. No detection limits published.",
+          "testingDate": "2026-09-14",
+          "materialsList": "polyethylene, viscose",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "dry",
+            "heated": false,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "polyethylene, viscose",
+            "source": "newtonbaby.com: Wovenaire core, 90% air and 10% food grade polymer; viscose inner cover; outer cover fiber content not published. Ecology Center 2020 identified the core as polyethylene",
+            "checked": "2026-09-14"
+          },
+          "legalNote": "Checked the CPSC recall API, Health Canada and California Prop 65 notices on 2026-09-14: no recall or notice. Only lawsuit found: Booker v. Newton Baby (W.D. Pa. 2025), a website accessibility case closed within a month. No NAD, FTC or court action on its breathability marketing.",
           "exposure": {
             "type": "slept on",
             "level": "high",
@@ -72464,35 +73147,160 @@
             "fat": false,
             "why": "Eight hours a night, close to the face."
           },
-          "verdict": "unrated",
-          "dated": "2026-08-29",
-          "why": "the note reads adversely on formula, materials, needs a human look",
+          "verdict": "careful",
+          "dated": "2026-09-14",
+          "why": "adverse finding stands",
           "fronts": {
             "formula": "none",
-            "materials": "fail",
-            "legal": "none",
-            "testing": "pass"
+            "materials": "pass",
+            "legal": "pass",
+            "testing": "caution"
           },
           "frontOrigin": {
-            "legal": "database",
-            "testing": "inferred",
             "formula": "hand",
-            "materials": "inferred"
+            "testing": "database",
+            "materials": "database",
+            "legal": "database"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
           "rules": []
-        },
+        }
+      },
+      {
+        "name": "Newton Baby Waterproof Crib Mattress",
+        "asins": [
+          "B08BMT1MB5"
+        ],
+        "verdict": "careful",
+        "origin": "article",
+        "source": "best-non-toxic-crib-mattresses.html",
+        "note": "The Original's Wovenaire polyethylene core and viscose inner cover, plus a waterproof TPU barrier on the toddler side of the cover. GREENGUARD Gold.",
         "cat": "Crib mattresses",
-        "research": "Packaging: Core body is 100% polyethylene Wovenaire (label reads Polyethylene Pad 100%); sleep-surface cover fabric is 84% polyester, 16% viscose. Materials: Woven food-grade polyethylene core, 90% air by volume, with a quilted polyester/viscose spacer-fabric cover; no foam, latex, springs, or chemical flame retardants.",
-        "matchAll": [
-          [
-            "newton",
-            "baby",
-            "mattress"
-          ]
-        ]
+        "ext": {
+          "frontNotes": {
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "testing": "Ecology Center, The Mattress Still Matters (2020): the Newton polyethylene network core contained phosphorus, apparently a built in or reactive flame retardant, which Newton had disclosed. Newton's current pages credit a viscose inner cover for flammability and make no statement about the core additive. No detection limits published.",
+            "materials": "tpu in direct contact.",
+            "legal": "Checked the CPSC recall API, Health Canada and California Prop 65 notices on 2026-09-14: no recall or notice. Only lawsuit found: Booker v. Newton Baby (W.D. Pa. 2025), a website accessibility case closed within a month. No NAD, FTC or court action on its breathability marketing."
+          },
+          "testingNote": "Ecology Center, The Mattress Still Matters (2020): the Newton polyethylene network core contained phosphorus, apparently a built in or reactive flame retardant, which Newton had disclosed. Newton's current pages credit a viscose inner cover for flammability and make no statement about the core additive. No detection limits published.",
+          "testingDate": "2026-09-14",
+          "materialsList": "polyethylene, tpu, viscose",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "dry",
+            "heated": false,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "polyethylene, tpu, viscose",
+            "source": "newtonbaby.com waterproof crib mattress: Wovenaire core, viscose inner cover, waterproof TPU barrier added to the toddler side of the cover",
+            "checked": "2026-09-14"
+          },
+          "legalNote": "Checked the CPSC recall API, Health Canada and California Prop 65 notices on 2026-09-14: no recall or notice. Only lawsuit found: Booker v. Newton Baby (W.D. Pa. 2025), a website accessibility case closed within a month. No NAD, FTC or court action on its breathability marketing.",
+          "exposure": {
+            "type": "slept on",
+            "level": "high",
+            "score": 8.0,
+            "baby": true,
+            "route": "inhalation",
+            "duration": "overnight",
+            "retained": "breathed",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "Eight hours a night, close to the face."
+          },
+          "verdict": "careful",
+          "dated": "2026-09-14",
+          "why": "adverse finding stands",
+          "fronts": {
+            "formula": "none",
+            "materials": "caution",
+            "legal": "pass",
+            "testing": "caution"
+          },
+          "frontOrigin": {
+            "formula": "hand",
+            "testing": "database",
+            "materials": "database",
+            "legal": "database"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
+      },
+      {
+        "name": "Newton Baby Essential Crib Mattress",
+        "asins": [
+          "B08BVWGPZ8"
+        ],
+        "verdict": "careful",
+        "origin": "article",
+        "source": "best-non-toxic-crib-mattresses.html",
+        "note": "4 inch Wovenaire polyethylene core under a single layer eyelet cover with a viscose lining. GREENGUARD Gold.",
+        "cat": "Crib mattresses",
+        "ext": {
+          "frontNotes": {
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "testing": "Ecology Center, The Mattress Still Matters (2020): the Newton polyethylene network core contained phosphorus, apparently a built in or reactive flame retardant, which Newton had disclosed. Newton's current pages credit a viscose inner cover for flammability and make no statement about the core additive. No detection limits published.",
+            "materials": "Made of polyethylene, with nothing inside it to pull anything out. What that contact means is the exposure read.",
+            "legal": "Checked the CPSC recall API, Health Canada and California Prop 65 notices on 2026-09-14: no recall or notice. Only lawsuit found: Booker v. Newton Baby (W.D. Pa. 2025), a website accessibility case closed within a month. No NAD, FTC or court action on its breathability marketing."
+          },
+          "testingNote": "Ecology Center, The Mattress Still Matters (2020): the Newton polyethylene network core contained phosphorus, apparently a built in or reactive flame retardant, which Newton had disclosed. Newton's current pages credit a viscose inner cover for flammability and make no statement about the core additive. No detection limits published.",
+          "testingDate": "2026-09-14",
+          "materialsList": "polyethylene, viscose",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "dry",
+            "heated": false,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "polyethylene, viscose",
+            "source": "newtonbaby.com essential crib mattress: Wovenaire core, single layer eyelet cover with a viscose lining",
+            "checked": "2026-09-14"
+          },
+          "legalNote": "Checked the CPSC recall API, Health Canada and California Prop 65 notices on 2026-09-14: no recall or notice. Only lawsuit found: Booker v. Newton Baby (W.D. Pa. 2025), a website accessibility case closed within a month. No NAD, FTC or court action on its breathability marketing.",
+          "exposure": {
+            "type": "slept on",
+            "level": "high",
+            "score": 8.0,
+            "baby": true,
+            "route": "inhalation",
+            "duration": "overnight",
+            "retained": "breathed",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "Eight hours a night, close to the face."
+          },
+          "verdict": "careful",
+          "dated": "2026-09-14",
+          "why": "adverse finding stands",
+          "fronts": {
+            "formula": "none",
+            "materials": "pass",
+            "legal": "pass",
+            "testing": "caution"
+          },
+          "frontOrigin": {
+            "formula": "hand",
+            "testing": "database",
+            "materials": "database",
+            "legal": "database"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
       }
     ],
     "rollup": {
@@ -79890,7 +80698,7 @@
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
-            "testing": "Its SPF 50 tested at 949 ppb lead, the highest of the mineral sunscreens we still recommend (Recorded for Pipette as a whole rather than this product specifically.)",
+            "testing": "Lead Safe Mama, published 2025-07-17. Purity Laboratories ICP-MS, case 2507154, lot 2025-145, tested 2025-07-14, Mineral Sunscreen Broad Spectrum SPF 50 Fragrance Free: lead 948.9 ppb, cadmium 98.14 ppb, arsenic below 10 ppb, mercury below 5 ppb. Pipette is a baby care brand, so judged by the baby column of rule 4.7: lead is above the 500 ppb bar, cadmium just below 100. Sku scope.",
             "formula": "The published ingredient list carries nothing on the hazard list.",
             "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
           },
@@ -79920,9 +80728,50 @@
             "source": "openfacts:0850008525919",
             "checked": "2026-09-08"
           },
-          "verdict": "unrated",
-          "dated": "2026-09-11",
-          "why": "the note reads adversely on testing, needs a human look",
+          "testingResults": [
+            {
+              "analyte": "lead",
+              "lab": "Purity Laboratories for Lead Safe Mama",
+              "lod": "n/a",
+              "outcome": "detected",
+              "unit": "ppb",
+              "value": 948.9,
+              "year": 2025
+            },
+            {
+              "analyte": "cadmium",
+              "lab": "Purity Laboratories for Lead Safe Mama",
+              "lod": "n/a",
+              "outcome": "detected",
+              "unit": "ppb",
+              "value": 98.14,
+              "year": 2025
+            },
+            {
+              "analyte": "arsenic",
+              "lab": "Purity Laboratories for Lead Safe Mama",
+              "lod": "10 ppb",
+              "outcome": "non-detect",
+              "unit": "ppb",
+              "value": null,
+              "year": 2025
+            },
+            {
+              "analyte": "mercury",
+              "lab": "Purity Laboratories for Lead Safe Mama",
+              "lod": "5 ppb",
+              "outcome": "non-detect",
+              "unit": "ppb",
+              "value": null,
+              "year": 2025
+            }
+          ],
+          "testingLod": "5 ppb mercury, 10 ppb arsenic",
+          "testingNote": "Lead Safe Mama, published 2025-07-17. Purity Laboratories ICP-MS, case 2507154, lot 2025-145, tested 2025-07-14, Mineral Sunscreen Broad Spectrum SPF 50 Fragrance Free: lead 948.9 ppb, cadmium 98.14 ppb, arsenic below 10 ppb, mercury below 5 ppb. Pipette is a baby care brand, so judged by the baby column of rule 4.7: lead is above the 500 ppb bar, cadmium just below 100. Sku scope.",
+          "testingDate": "2026-09-14",
+          "verdict": "careful",
+          "dated": "2026-09-14",
+          "why": "section 6 ceiling: testing is caution, on recorded evidence",
           "fronts": {
             "formula": "pass",
             "materials": "unassessed",
@@ -79931,7 +80780,7 @@
           },
           "frontOrigin": {
             "legal": "database",
-            "testing": "stated",
+            "testing": "database",
             "formula": "database"
           },
           "scope": "sku",
@@ -81977,7 +82826,9 @@
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
-            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
+            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
+            "formula": "No ingredient list recorded.",
+            "testing": "Lead Safe Mama, published 2025-07-17. Purity Laboratories ICP-MS, case 2507153, lot 2025-144, tested 2025-07-14, Sheer Zinc and Tallow Sun Cream SPF 30 in Lavender Mint: lead 466.5 ppb, cadmium 273.1 ppb, mercury below 5 ppb, arsenic below 10 ppb. An adult sunscreen under rule 4.7: lead and cadmium are below the adult bars (10,000 and 3,000 ppb, Health Canada). Cadmium is above the 100 ppb baby bar, so it is not a pick for babies. Sku scope."
           },
           "exposure": {
             "type": "sunscreen",
@@ -81992,17 +82843,69 @@
             "fat": true,
             "why": "Applied thickly over a large area and left there."
           },
+          "formulaAnswers": {
+            "ingredients": "",
+            "prose": "",
+            "complete": false,
+            "verdict": "open",
+            "summary": "No ingredient list recorded.",
+            "flagged": [],
+            "source": "",
+            "checked": ""
+          },
+          "testingResults": [
+            {
+              "analyte": "lead",
+              "lab": "Purity Laboratories for Lead Safe Mama",
+              "lod": "n/a",
+              "outcome": "detected",
+              "unit": "ppb",
+              "value": 466.5,
+              "year": 2025
+            },
+            {
+              "analyte": "cadmium",
+              "lab": "Purity Laboratories for Lead Safe Mama",
+              "lod": "n/a",
+              "outcome": "detected",
+              "unit": "ppb",
+              "value": 273.1,
+              "year": 2025
+            },
+            {
+              "analyte": "mercury",
+              "lab": "Purity Laboratories for Lead Safe Mama",
+              "lod": "5 ppb",
+              "outcome": "non-detect",
+              "unit": "ppb",
+              "value": null,
+              "year": 2025
+            },
+            {
+              "analyte": "arsenic",
+              "lab": "Purity Laboratories for Lead Safe Mama",
+              "lod": "10 ppb",
+              "outcome": "non-detect",
+              "unit": "ppb",
+              "value": null,
+              "year": 2025
+            }
+          ],
+          "testingLod": "5 ppb mercury, 10 ppb arsenic",
+          "testingNote": "Lead Safe Mama, published 2025-07-17. Purity Laboratories ICP-MS, case 2507153, lot 2025-144, tested 2025-07-14, Sheer Zinc and Tallow Sun Cream SPF 30 in Lavender Mint: lead 466.5 ppb, cadmium 273.1 ppb, mercury below 5 ppb, arsenic below 10 ppb. An adult sunscreen under rule 4.7: lead and cadmium are below the adult bars (10,000 and 3,000 ppb, Health Canada). Cadmium is above the 100 ppb baby bar, so it is not a pick for babies. Sku scope.",
+          "testingDate": "2026-09-14",
           "verdict": "unrated",
-          "dated": "2026-08-28",
+          "dated": "2026-09-14",
           "why": "no front is directly evidenced by the note",
           "fronts": {
             "formula": "unassessed",
             "materials": "unassessed",
             "legal": "none",
-            "testing": "unassessed"
+            "testing": "pass"
           },
           "frontOrigin": {
-            "legal": "database"
+            "legal": "database",
+            "testing": "database"
           },
           "scope": "line",
           "basis": "direct",
@@ -86064,7 +86967,7 @@
             "formula": "pass",
             "materials": "caution",
             "legal": "pass",
-            "testing": "unassessed"
+            "testing": "caution"
           },
           "scope": "line",
           "basis": "direct",
@@ -86075,12 +86978,14 @@
           "frontNotes": {
             "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
             "formula": "The published ingredient list carries nothing on the hazard list.",
-            "materials": "dry contents in plastic, repeated contact over time."
+            "materials": "dry contents in plastic, repeated contact over time.",
+            "testing": "Lead Safe Mama, published 2024-10-27. SGS North America via SimpleLab, report UXA2LK, reported 2024-10-22, Ritual Essential for Women Prenatal, mint: lead 10 ppb, arsenic, cadmium and mercury non detect below 5 ppb. Lead is twice the rule 4.7 bar, and the lowest of every complete capsule prenatal in Lead Safe Mama's 25 product comparison. Sku scope."
           },
           "frontOrigin": {
             "legal": "database",
             "materials": "database",
-            "formula": "database"
+            "formula": "database",
+            "testing": "database"
           },
           "exposure": {
             "type": "supplement",
@@ -86117,9 +87022,51 @@
             "material": "plastic",
             "source": "Delayed release capsules in a single day plastic packet: one dose per packet is the highest packaging surface area to dose ratio in the category",
             "checked": "2026-09-11"
-          }
+          },
+          "testingResults": [
+            {
+              "analyte": "lead",
+              "lab": "SGS North America for Lead Safe Mama",
+              "lod": "5 ppb",
+              "outcome": "detected",
+              "unit": "ppb",
+              "value": 10,
+              "year": 2024
+            },
+            {
+              "analyte": "cadmium",
+              "lab": "SGS North America for Lead Safe Mama",
+              "lod": "5 ppb",
+              "outcome": "non-detect",
+              "unit": "ppb",
+              "value": null,
+              "year": 2024
+            },
+            {
+              "analyte": "arsenic",
+              "lab": "SGS North America for Lead Safe Mama",
+              "lod": "5 ppb",
+              "outcome": "non-detect",
+              "unit": "ppb",
+              "value": null,
+              "year": 2024
+            },
+            {
+              "analyte": "mercury",
+              "lab": "SGS North America for Lead Safe Mama",
+              "lod": "5 ppb",
+              "outcome": "non-detect",
+              "unit": "ppb",
+              "value": null,
+              "year": 2024
+            }
+          ],
+          "testingLod": "5 ppb each metal",
+          "testingNote": "Lead Safe Mama, published 2024-10-27. SGS North America via SimpleLab, report UXA2LK, reported 2024-10-22, Ritual Essential for Women Prenatal, mint: lead 10 ppb, arsenic, cadmium and mercury non detect below 5 ppb. Lead is twice the rule 4.7 bar, and the lowest of every complete capsule prenatal in Lead Safe Mama's 25 product comparison. Sku scope.",
+          "testingDate": "2026-09-14"
         },
-        "cat": "Prenatal vitamins"
+        "cat": "Prenatal vitamins",
+        "tradeoff": "Kept under rule 5.7. No prenatal with a complete formula has cleared rule 4.7 in independent testing, and Ritual measured the lowest lead of every capsule prenatal Lead Safe Mama tested: 10 ppb, with cadmium, arsenic and mercury non detect (October 2024). Its formula is minimal, 55 mg choline and no calcium, so the gaps are for your provider to fill."
       }
     ],
     "fronts": {
@@ -89518,6 +90465,19 @@
           },
           "legalNote": "Checked CPSC recall records on 2026-09-14. Serta Recalls Mattresses Due to Violation of Federal Mattress Flammability Standard and Fire Hazard (Recall Alert) (2022-02). https://www.cpsc.gov/Recalls/2022/Serta-Recalls-Mattresses-Due-to-Violation-of-Federal-Mattress-Flammability-Standard-and-Fire-Hazard-Recall-Alert Remedied: Consumers should immediately stop using the recalled mattresses and contact Serta to verify whether their mattress is in. Over 24 months old, so under rule 5.2 it is informational rather than a finding against the product today.",
           "legalDate": "2022-02",
+          "exposure": {
+            "type": "slept on",
+            "level": "high",
+            "score": 8.0,
+            "baby": true,
+            "route": "inhalation",
+            "duration": "overnight",
+            "retained": "breathed",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "Eight hours a night, close to the face."
+          },
           "verdict": "careful",
           "dated": "2026-09-14",
           "why": "adverse finding stands",
@@ -101556,7 +102516,7 @@
     "stance": "careful",
     "reason": "The verdict depends on the product. Sweet Cheeks Diaper Paste reported over 550 ppb lead plus cadmium in 2025 independent testing, lower than the mainstream pastes but not clean. The fragrance free Hair + Body Wash carries the National Eczema Association seal and no fragrance, and lists disodium laureth sulfosuccinate, an ethoxylated ingredient, alongside cocamidopropyl betaine, which caps it at careful under our baby wash rule; the original scent adds fragrance from natural raw materials. A 2022 Proposition 65 notice over DEHP in the vinyl travel bag settled in 2023. Majority owned by NexPhase Capital since 2022.",
     "evidence": "Diaper paste >550 ppb lead (LSM)",
-    "alternative": "Motherlove Diaper Balm (glass 1 oz and 2 oz)",
+    "alternative": "Motherlove Diaper Balm, 2 oz glass jar (the 4 oz may come in plastic)",
     "sources": [
       "best-non-toxic-diaper-rash-creams.html",
       "https://tamararubin.com/2025/12/tubby-todd-bath-co-sweet-cheeks-diaper-paste/",
@@ -101831,7 +102791,6 @@
         "origin": "store",
         "source": "store",
         "asins": [
-          "B0H4FW2VGQ",
           "B08JCLTWSL"
         ],
         "ext": {
@@ -101839,7 +102798,7 @@
           "frontNotes": {
             "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
             "formula": "An object has no ingredient list. What it is made of is the materials check.",
-            "materials": "The recorded material this front rested on was withdrawn, and nothing has replaced it."
+            "materials": "In contact with borosilicate, which puts nothing into what it holds."
           },
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
@@ -101856,6 +102815,19 @@
             "fat": false,
             "why": "Carried and refilled all day, every day."
           },
+          "materialsList": "borosilicate, silicone",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "aqueous",
+            "heated": true,
+            "mouthed": true,
+            "reuse": "repeated",
+            "use": "",
+            "material": "borosilicate, silicone",
+            "source": "amazon:B08JCLTWSL listing: hand blown double wall borosilicate glass, all glass lid, FDA food grade silicone seal",
+            "checked": "2026-09-14"
+          },
           "verdict": "good",
           "dated": "2026-08-29",
           "why": "a vetted store pick, chosen by a person at product scope",
@@ -101868,7 +102840,7 @@
           "frontOrigin": {
             "legal": "database",
             "formula": "hand",
-            "materials": "inferred"
+            "materials": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -105842,7 +106814,7 @@
           },
           "verdict": "good",
           "dated": "2026-08-29",
-          "why": "a vetted store pick, chosen by a person at product scope",
+          "why": "direct evidence at sku scope on materials",
           "fronts": {
             "formula": "none",
             "materials": "pass",
@@ -106112,7 +107084,7 @@
         "ext": {
           "legalNote": "Checked the FDA enforcement database on 2026-08-31. One recall on record: 2023 Hepatodoron supplement tablets, a different product line, terminated. Over 24 months, now informational.",
           "frontNotes": {
-            "testing": "Lead Safe Mama's 2025 to 2026 diaper cream series: the lowest lead result of every zinc cream tested, but lead, cadmium and arsenic were still detected. The metals ride in on the zinc oxide.",
+            "testing": "Lead Safe Mama, published 2025-11-15. Purity Laboratories ICP-MS, case 2509616, lot 2025-220, tested 2025-10-02, Baby Calendula Diaper Cream with 12% zinc oxide: lead 136.3 ppb, cadmium 105.4 ppb, arsenic 52.17 ppb, mercury below 5 ppb. The lowest lead of the zinc creams tested. Made for babies, so judged by the baby column of rule 4.7: lead and arsenic are below their bars, cadmium is above the 100 ppb bar. Sku scope.",
             "formula": "The published ingredient list carries nothing on the hazard list.",
             "legal": "Checked the FDA enforcement database on 2026-08-31. One recall on record: 2023 Hepatodoron supplement tablets, a different product line, terminated. Over 24 months, now informational.",
             "materials": "emulsion contents in plastic."
@@ -106120,8 +107092,8 @@
           "inheritedFronts": [
             "testing"
           ],
-          "testingNote": "Lead Safe Mama's 2025 to 2026 diaper cream series: the lowest lead result of every zinc cream tested, but lead, cadmium and arsenic were still detected. The metals ride in on the zinc oxide.",
-          "testingDate": "2026-09-11",
+          "testingNote": "Lead Safe Mama, published 2025-11-15. Purity Laboratories ICP-MS, case 2509616, lot 2025-220, tested 2025-10-02, Baby Calendula Diaper Cream with 12% zinc oxide: lead 136.3 ppb, cadmium 105.4 ppb, arsenic 52.17 ppb, mercury below 5 ppb. The lowest lead of the zinc creams tested. Made for babies, so judged by the baby column of rule 4.7: lead and arsenic are below their bars, cadmium is above the 100 ppb bar. Sku scope.",
+          "testingDate": "2026-09-14",
           "exposure": {
             "type": "leave-on skin",
             "level": "high",
@@ -106158,6 +107130,45 @@
             "source": "Metal tube. Weleda states its aluminium tubes carry an internal protective lacquer so the product never touches the aluminium (Weleda packaging page; MundoLatas), so the polymer lacquer is the contact surface. Water first emulsion with sweet almond and sesame oils, beeswax, lanolin",
             "checked": "2026-09-11"
           },
+          "testingResults": [
+            {
+              "analyte": "lead",
+              "lab": "Purity Laboratories for Lead Safe Mama",
+              "lod": "n/a",
+              "outcome": "detected",
+              "unit": "ppb",
+              "value": 136.3,
+              "year": 2025
+            },
+            {
+              "analyte": "cadmium",
+              "lab": "Purity Laboratories for Lead Safe Mama",
+              "lod": "n/a",
+              "outcome": "detected",
+              "unit": "ppb",
+              "value": 105.4,
+              "year": 2025
+            },
+            {
+              "analyte": "arsenic",
+              "lab": "Purity Laboratories for Lead Safe Mama",
+              "lod": "n/a",
+              "outcome": "detected",
+              "unit": "ppb",
+              "value": 52.17,
+              "year": 2025
+            },
+            {
+              "analyte": "mercury",
+              "lab": "Purity Laboratories for Lead Safe Mama",
+              "lod": "5 ppb",
+              "outcome": "non-detect",
+              "unit": "ppb",
+              "value": null,
+              "year": 2025
+            }
+          ],
+          "testingLod": "5 ppb mercury",
           "verdict": "careful",
           "dated": "2026-09-11",
           "why": "adverse finding stands",
@@ -106292,9 +107303,10 @@
         "ext": {
           "legalNote": "Checked the FDA enforcement database on 2026-08-31. One recall on record: 2023 Hepatodoron supplement tablets, a different product line, terminated. Over 24 months, now informational.",
           "frontNotes": {
-            "formula": "The published ingredient list carries nothing on the hazard list.",
             "legal": "Checked the FDA enforcement database on 2026-08-31. One recall on record: 2023 Hepatodoron supplement tablets, a different product line, terminated. Over 24 months, now informational.",
-            "materials": "aqueous contents in plastic."
+            "materials": "aqueous contents in plastic.",
+            "testing": "Lead Safe Mama, published 2025-11-14. Purity Laboratories ICP-MS, case 2509170, lot 2025-211, tested 2025-09-16: lead below 5 ppb, cadmium below 5 ppb, mercury below 5 ppb, arsenic below 10 ppb, all non detect. A pass under rule 4.7; mercury's limit sits above the 2 ppb bar. Sku scope.",
+            "formula": "The published ingredient list carries nothing on the hazard list."
           },
           "heldFrom": "good",
           "restoreWhy": "independent lab result at sku scope",
@@ -106323,6 +107335,50 @@
             "source": "openfacts:3596206529621",
             "checked": "2026-09-08"
           },
+          "testingResults": [
+            {
+              "analyte": "lead",
+              "lab": "Purity Laboratories for Lead Safe Mama",
+              "lod": "5 ppb",
+              "outcome": "non-detect",
+              "unit": "ppb",
+              "value": null,
+              "year": 2025
+            },
+            {
+              "analyte": "cadmium",
+              "lab": "Purity Laboratories for Lead Safe Mama",
+              "lod": "5 ppb",
+              "outcome": "non-detect",
+              "unit": "ppb",
+              "value": null,
+              "year": 2025
+            },
+            {
+              "analyte": "mercury",
+              "lab": "Purity Laboratories for Lead Safe Mama",
+              "lod": "5 ppb",
+              "outcome": "non-detect",
+              "unit": "ppb",
+              "value": null,
+              "year": 2025
+            },
+            {
+              "analyte": "arsenic",
+              "lab": "Purity Laboratories for Lead Safe Mama",
+              "lod": "10 ppb",
+              "outcome": "non-detect",
+              "unit": "ppb",
+              "value": null,
+              "year": 2025
+            }
+          ],
+          "testingLod": "5 ppb lead, cadmium, mercury; 10 ppb arsenic",
+          "testingNote": "Lead Safe Mama, published 2025-11-14. Purity Laboratories ICP-MS, case 2509170, lot 2025-211, tested 2025-09-16: lead below 5 ppb, cadmium below 5 ppb, mercury below 5 ppb, arsenic below 10 ppb, all non detect. A pass under rule 4.7; mercury's limit sits above the 2 ppb bar. Sku scope.",
+          "testingDate": "2026-09-14",
+          "heldBack": [
+            "materials"
+          ],
           "materialsList": "plastic",
           "materialAnswers": {
             "contact": "yes",
@@ -106347,7 +107403,7 @@
           },
           "frontOrigin": {
             "legal": "database",
-            "testing": "inferred",
+            "testing": "database",
             "formula": "database",
             "materials": "database"
           },
@@ -106359,7 +107415,7 @@
           ]
         },
         "asins": [
-          "B000Q46K86",
+          "B000FQVR1U",
           "B0BP4VXJ6X"
         ],
         "cat": "Toothpaste",
@@ -113165,7 +114221,7 @@
     "id": "katu",
     "brand": "KATU",
     "category": "Baby sleep",
-    "stance": "neutral",
+    "stance": "good",
     "reason": "Organic crib mattress with no plastic in its layer list: organic cotton cover, organic wool, latex bound organic coconut coir on the infant side and organic latex on the toddler side, no waterproof film. GOTS certificate GOTS-28903 (lists mattresses) and GOLS certificate 912089 are in the brand's own name. No recall, Prop 65 notice or lawsuit found. Caveats: the Amazon spec table says \"Fire Retardant\", which the brand's layer list does not explain (GOTS prohibits halogenated, phosphate and antimony flame retardants; wool is the likely barrier); only 27 Amazon ratings; contains latex.",
     "evidence": "GOTS + GOLS certificates in the brand's name; no plastic layers",
     "alternative": "",
@@ -113206,6 +114262,19 @@
             "checked": "2026-09-14"
           },
           "legalNote": "Checked the CPSC recall API and California Prop 65 notices on 2026-09-14: no recall, notice or lawsuit found for KATU.",
+          "exposure": {
+            "type": "slept on",
+            "level": "high",
+            "score": 8.0,
+            "baby": true,
+            "route": "inhalation",
+            "duration": "overnight",
+            "retained": "breathed",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "Eight hours a night, close to the face."
+          },
           "verdict": "good",
           "dated": "2026-09-14",
           "why": "direct evidence on materials, recorded rather than read off a note",
@@ -113228,13 +114297,34 @@
         }
       }
     ],
-    "stanceHeld": "good"
+    "fronts": {
+      "formula": {
+        "status": "none",
+        "note": "A durable good has no ingredient list. What it is made of is the materials check.",
+        "origin": "database"
+      },
+      "materials": {
+        "status": "pass",
+        "note": "Organic cotton, wool, latex bound coconut coir and organic latex; no plastic layers stated.",
+        "origin": "hand"
+      },
+      "legal": {
+        "status": "pass",
+        "note": "No recall, Prop 65 notice or lawsuit found (2026-09-14).",
+        "origin": "hand"
+      },
+      "testing": {
+        "status": "pass",
+        "note": "GOTS-28903 and GOLS 912089 certificates in the brand's name.",
+        "origin": "hand"
+      }
+    }
   },
   {
     "id": "my-green-mattress",
     "brand": "My Green Mattress",
     "category": "Baby sleep",
-    "stance": "neutral",
+    "stance": "good",
     "reason": "The Emily organic crib mattress is GOTS organic cotton and wool over latex bound organic coconut coir and a steel innerspring, with no synthetic waterproofing. GOTS scope certificate valid to 2027-08-31, MADE SAFE statement valid through May 2027, GREENGUARD Gold on UL SPOT, Consumer Reports Top Choice. No recall or lawsuit found. Gap: the GOLS certificate posted on its site expired 2026-09-05 and no renewal was posted when checked.",
     "evidence": "GOTS + MADE SAFE + GREENGUARD Gold; GOLS certificate lapsed 2026-09-05",
     "alternative": "",
@@ -113278,6 +114368,19 @@
             "checked": "2026-09-14"
           },
           "legalNote": "Checked the CPSC recall API and California Prop 65 notices (My Green Mattress, Quality Sleep Shop) and searched for lawsuits on 2026-09-14: nothing found.",
+          "exposure": {
+            "type": "slept on",
+            "level": "high",
+            "score": 8.0,
+            "baby": true,
+            "route": "inhalation",
+            "duration": "overnight",
+            "retained": "breathed",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "Eight hours a night, close to the face."
+          },
           "verdict": "good",
           "dated": "2026-09-14",
           "why": "independent lab result at line scope",
@@ -113303,13 +114406,34 @@
         }
       }
     ],
-    "stanceHeld": "good"
+    "fronts": {
+      "formula": {
+        "status": "none",
+        "note": "A durable good has no ingredient list. What it is made of is the materials check.",
+        "origin": "database"
+      },
+      "materials": {
+        "status": "pass",
+        "note": "Organic cotton, wool, latex bound coconut coir and steel innerspring; no synthetic waterproofing.",
+        "origin": "hand"
+      },
+      "legal": {
+        "status": "pass",
+        "note": "No recall, Prop 65 notice or lawsuit found (2026-09-14).",
+        "origin": "hand"
+      },
+      "testing": {
+        "status": "pass",
+        "note": "GOTS scope to 2027-08-31, MADE SAFE to May 2027, GREENGUARD Gold on UL SPOT; GOLS lapsed 2026-09-05.",
+        "origin": "hand"
+      }
+    }
   },
   {
     "id": "obasan",
     "brand": "Obasan",
     "category": "Baby sleep",
-    "stance": "neutral",
+    "stance": "good",
     "reason": "Canadian maker whose organic crib mattress is 2 inches of organic latex over 2 inches of coconut coir with a wool moisture pad in place of a plastic barrier. GOTS scope certificate valid to 2027-06-29 and GOLS certificate valid to 2027-06-18. No recall, notice or lawsuit found in Canada or the US. The coir layer's certification and binder are not itemized; ships from Canada.",
     "evidence": "GOTS + GOLS certificates; wool moisture pad, no plastic",
     "alternative": "",
@@ -113354,6 +114478,19 @@
             "checked": "2026-09-14"
           },
           "legalNote": "Checked Health Canada recalls, the CPSC recall API and California Prop 65 notices on 2026-09-14, and searched for lawsuits: nothing found.",
+          "exposure": {
+            "type": "slept on",
+            "level": "high",
+            "score": 8.0,
+            "baby": true,
+            "route": "inhalation",
+            "duration": "overnight",
+            "retained": "breathed",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "Eight hours a night, close to the face."
+          },
           "verdict": "good",
           "dated": "2026-09-14",
           "why": "independent lab result at line scope",
@@ -113379,7 +114516,28 @@
         }
       }
     ],
-    "stanceHeld": "good"
+    "fronts": {
+      "formula": {
+        "status": "none",
+        "note": "A durable good has no ingredient list. What it is made of is the materials check.",
+        "origin": "database"
+      },
+      "materials": {
+        "status": "pass",
+        "note": "Organic latex over coconut coir with organic cotton and wool and a wool moisture pad.",
+        "origin": "hand"
+      },
+      "legal": {
+        "status": "pass",
+        "note": "No recall, notice or lawsuit found in Canada or the US (2026-09-14).",
+        "origin": "hand"
+      },
+      "testing": {
+        "status": "pass",
+        "note": "GOTS scope to 2027-06-29 and GOLS to 2027-06-18.",
+        "origin": "hand"
+      }
+    }
   },
   {
     "id": "lullaby-earth",
@@ -113430,6 +114588,19 @@
             "checked": "2026-09-14"
           },
           "legalNote": "Checked the CPSC recall API, Health Canada and California Prop 65 notices on 2026-09-14: no recall or notice. One 2020 SaferProducts report of an arm wedged between a Breeze mattress and crib slats, not a defect finding.",
+          "exposure": {
+            "type": "slept on",
+            "level": "high",
+            "score": 8.0,
+            "baby": true,
+            "route": "inhalation",
+            "duration": "overnight",
+            "retained": "breathed",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "Eight hours a night, close to the face."
+          },
           "verdict": "careful",
           "dated": "2026-09-14",
           "why": "adverse finding stands",
@@ -113451,7 +114622,29 @@
           "rules": []
         }
       }
-    ]
+    ],
+    "fronts": {
+      "formula": {
+        "status": "none",
+        "note": "A durable good has no ingredient list. What it is made of is the materials check.",
+        "origin": "database"
+      },
+      "materials": {
+        "status": "caution",
+        "note": "Polyethylene core, polyester fill and polyester and TPU covers.",
+        "origin": "hand"
+      },
+      "legal": {
+        "status": "pass",
+        "note": "No recall or notice (2026-09-14).",
+        "origin": "hand"
+      },
+      "testing": {
+        "status": "none",
+        "note": "No lab test at Lead Safe Mama or Mamavation.",
+        "origin": "hand"
+      }
+    }
   },
   {
     "id": "saatva",
@@ -113482,9 +114675,12 @@
         "ext": {
           "frontNotes": {
             "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "testing": "Searched Lead Safe Mama and Mamavation on 2026-09-14: 6 hits, none a test of Saatva's crib mattress. The only lab data sits inside the 2024 complaint, recorded on the legal front.",
             "materials": "polyester in direct contact.",
             "legal": "Checked 2026-09-14. GMO Free USA d/b/a Toxin Free USA and Beyond Pesticides v. Saatva (DC Superior Court 2024-CAB-005259, filed Aug 16, 2024) alleges eight PFAS and 949 ppm total organic fluorine in the crib mattress; allegation, outcome not found. No CPSC recall or Prop 65 notice."
           },
+          "testingNote": "Searched Lead Safe Mama and Mamavation on 2026-09-14: 6 hits, none a test of Saatva's crib mattress. The only lab data sits inside the 2024 complaint, recorded on the legal front.",
+          "testingDate": "2026-09-14",
           "materialsList": "cotton, polyester",
           "materialAnswers": {
             "contact": "yes",
@@ -113499,6 +114695,19 @@
             "checked": "2026-09-14"
           },
           "legalNote": "Checked 2026-09-14. GMO Free USA d/b/a Toxin Free USA and Beyond Pesticides v. Saatva (DC Superior Court 2024-CAB-005259, filed Aug 16, 2024) alleges eight PFAS and 949 ppm total organic fluorine in the crib mattress; allegation, outcome not found. No CPSC recall or Prop 65 notice.",
+          "exposure": {
+            "type": "slept on",
+            "level": "high",
+            "score": 8.0,
+            "baby": true,
+            "route": "inhalation",
+            "duration": "overnight",
+            "retained": "breathed",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "Eight hours a night, close to the face."
+          },
           "verdict": "careful",
           "dated": "2026-09-14",
           "why": "adverse finding stands",
@@ -113506,10 +114715,11 @@
             "formula": "none",
             "materials": "caution",
             "legal": "caution",
-            "testing": "unassessed"
+            "testing": "none"
           },
           "frontOrigin": {
             "formula": "hand",
+            "testing": "database",
             "materials": "database",
             "legal": "database"
           },
@@ -113519,7 +114729,29 @@
           "rules": []
         }
       }
-    ]
+    ],
+    "fronts": {
+      "formula": {
+        "status": "none",
+        "note": "A durable good has no ingredient list. What it is made of is the materials check.",
+        "origin": "database"
+      },
+      "materials": {
+        "status": "caution",
+        "note": "Water repellent treated cover; polyester in the flame barrier; waterproof barrier undisclosed.",
+        "origin": "hand"
+      },
+      "legal": {
+        "status": "caution",
+        "note": "2024 DC complaint alleging eight PFAS in the crib mattress.",
+        "origin": "hand"
+      },
+      "testing": {
+        "status": "none",
+        "note": "No independent published test.",
+        "origin": "hand"
+      }
+    }
   },
   {
     "id": "safety-1st",
@@ -113567,6 +114799,19 @@
             "checked": "2026-09-14"
           },
           "legalNote": "Checked the CPSC recall API and California Prop 65 notices on 2026-09-14: no Safety 1st or Dorel crib mattress recall. Dorel settled a 2014 Prop 65 case over TDCPP in foam nap pads, a different product.",
+          "exposure": {
+            "type": "slept on",
+            "level": "high",
+            "score": 8.0,
+            "baby": true,
+            "route": "inhalation",
+            "duration": "overnight",
+            "retained": "breathed",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "Eight hours a night, close to the face."
+          },
           "verdict": "careful",
           "dated": "2026-09-14",
           "why": "adverse finding stands",
@@ -113588,7 +114833,29 @@
           "rules": []
         }
       }
-    ]
+    ],
+    "fronts": {
+      "formula": {
+        "status": "none",
+        "note": "A durable good has no ingredient list. What it is made of is the materials check.",
+        "origin": "database"
+      },
+      "materials": {
+        "status": "caution",
+        "note": "100% vinyl cover over polyester fiber.",
+        "origin": "hand"
+      },
+      "legal": {
+        "status": "pass",
+        "note": "No crib mattress recall (2026-09-14).",
+        "origin": "hand"
+      },
+      "testing": {
+        "status": "caution",
+        "note": "Ecology Center 2020: DOTP, EHDP and a PFAS signal on the brand's tested vinyl cover.",
+        "origin": "hand"
+      }
+    }
   },
   {
     "id": "sealy-baby",
@@ -113638,6 +114905,19 @@
             "checked": "2026-09-14"
           },
           "legalNote": "Checked the CPSC recall API on 2026-09-14: no Sealy Baby or Kolcraft crib mattress recall. Prop 65 PFOA notices name Kolcraft crib mattress pads (2022, withdrawn; 2023-01128), not mattresses.",
+          "exposure": {
+            "type": "slept on",
+            "level": "high",
+            "score": 8.0,
+            "baby": true,
+            "route": "inhalation",
+            "duration": "overnight",
+            "retained": "breathed",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "Eight hours a night, close to the face."
+          },
           "verdict": "careful",
           "dated": "2026-09-14",
           "why": "adverse finding stands",
@@ -113659,7 +114939,29 @@
           "rules": []
         }
       }
-    ]
+    ],
+    "fronts": {
+      "formula": {
+        "status": "none",
+        "note": "A durable good has no ingredient list. What it is made of is the materials check.",
+        "origin": "database"
+      },
+      "materials": {
+        "status": "caution",
+        "note": "76% polyurethane foam with a vinyl cover (Soybean Foam Core).",
+        "origin": "hand"
+      },
+      "legal": {
+        "status": "pass",
+        "note": "No crib mattress recall (2026-09-14).",
+        "origin": "hand"
+      },
+      "testing": {
+        "status": "caution",
+        "note": "Emissions certification only.",
+        "origin": "hand"
+      }
+    }
   },
   {
     "id": "kolcraft",
@@ -113706,6 +115008,19 @@
             "checked": "2026-09-14"
           },
           "legalNote": "Checked the CPSC recall API on 2026-09-14: 17 Kolcraft records (strollers, play yards, bassinets, inclined sleeper accessories, walkers, car seats), no crib mattress. Prop 65 notice 2023-01128 alleges PFOA in Kolcraft crib mattress pads, a different product.",
+          "exposure": {
+            "type": "slept on",
+            "level": "high",
+            "score": 8.0,
+            "baby": true,
+            "route": "inhalation",
+            "duration": "overnight",
+            "retained": "breathed",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "Eight hours a night, close to the face."
+          },
           "verdict": "careful",
           "dated": "2026-09-14",
           "why": "adverse finding stands",
@@ -113763,6 +115078,19 @@
             "checked": "2026-09-14"
           },
           "legalNote": "Checked the CPSC recall API on 2026-09-14: 17 Kolcraft records (strollers, play yards, bassinets, inclined sleeper accessories, walkers, car seats), no crib mattress. Prop 65 notice 2023-01128 alleges PFOA in Kolcraft crib mattress pads, a different product.",
+          "exposure": {
+            "type": "slept on",
+            "level": "high",
+            "score": 8.0,
+            "baby": true,
+            "route": "inhalation",
+            "duration": "overnight",
+            "retained": "breathed",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "Eight hours a night, close to the face."
+          },
           "verdict": "careful",
           "dated": "2026-09-14",
           "why": "adverse finding stands, on materials",
@@ -113784,7 +115112,29 @@
           "rules": []
         }
       }
-    ]
+    ],
+    "fronts": {
+      "formula": {
+        "status": "none",
+        "note": "A durable good has no ingredient list. What it is made of is the materials check.",
+        "origin": "database"
+      },
+      "materials": {
+        "status": "caution",
+        "note": "Vinyl or unnamed waterproof layers over polyester fiber.",
+        "origin": "hand"
+      },
+      "legal": {
+        "status": "pass",
+        "note": "No crib mattress recall (2026-09-14).",
+        "origin": "hand"
+      },
+      "testing": {
+        "status": "caution",
+        "note": "Emissions certification only.",
+        "origin": "hand"
+      }
+    }
   },
   {
     "id": "moonlight-slumber",
@@ -113832,6 +115182,19 @@
             "checked": "2026-09-14"
           },
           "legalNote": "Checked 2026-09-14. FTC In the Matter of Moonlight Slumber, LLC (file 162 3128), announced Sept 2017, final consent order: barred misleading organic, natural, plant based foam and VOC claims for baby mattresses. No CPSC recall or Prop 65 notice.",
+          "exposure": {
+            "type": "slept on",
+            "level": "high",
+            "score": 8.0,
+            "baby": true,
+            "route": "inhalation",
+            "duration": "overnight",
+            "retained": "breathed",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "Eight hours a night, close to the face."
+          },
           "verdict": "careful",
           "dated": "2026-09-14",
           "why": "adverse finding stands",
@@ -113855,7 +115218,29 @@
           ]
         }
       }
-    ]
+    ],
+    "fronts": {
+      "formula": {
+        "status": "none",
+        "note": "A durable good has no ingredient list. What it is made of is the materials check.",
+        "origin": "database"
+      },
+      "materials": {
+        "status": "caution",
+        "note": "Polyurethane foam core per the FTC complaint; undisclosed waterproof knit.",
+        "origin": "hand"
+      },
+      "legal": {
+        "status": "caution",
+        "note": "2017 FTC consent order over green claims.",
+        "origin": "hand"
+      },
+      "testing": {
+        "status": "none",
+        "note": "Ecology Center flagged nothing but published no detection limits.",
+        "origin": "hand"
+      }
+    }
   },
   {
     "id": "milliard",
@@ -113903,6 +115288,19 @@
             "checked": "2026-09-14"
           },
           "legalNote": "Checked the CPSC recall API and California Prop 65 notices on 2026-09-14: no recall, notice or lawsuit found for Milliard.",
+          "exposure": {
+            "type": "slept on",
+            "level": "high",
+            "score": 8.0,
+            "baby": true,
+            "route": "inhalation",
+            "duration": "overnight",
+            "retained": "breathed",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "Eight hours a night, close to the face."
+          },
           "verdict": "careful",
           "dated": "2026-09-14",
           "why": "adverse finding stands",
@@ -113924,7 +115322,29 @@
           "rules": []
         }
       }
-    ]
+    ],
+    "fronts": {
+      "formula": {
+        "status": "none",
+        "note": "A durable good has no ingredient list. What it is made of is the materials check.",
+        "origin": "database"
+      },
+      "materials": {
+        "status": "caution",
+        "note": "Polyurethane and memory foam; undisclosed barrier and waterproof layer.",
+        "origin": "hand"
+      },
+      "legal": {
+        "status": "pass",
+        "note": "No recall or notice (2026-09-14).",
+        "origin": "hand"
+      },
+      "testing": {
+        "status": "caution",
+        "note": "CertiPUR-US covers only the foam.",
+        "origin": "hand"
+      }
+    }
   },
   {
     "id": "organic-dream",
@@ -113951,9 +115371,12 @@
         "ext": {
           "frontNotes": {
             "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "testing": "Searched Lead Safe Mama and Mamavation on 2026-09-14: 35 hits, none naming the brand as tested; Mamavation mentions it only in a disclosure based roundup.",
             "materials": "plastic in direct contact.",
             "legal": "Checked the CPSC recall API and California Prop 65 notices on 2026-09-14: no recall or notice found."
           },
+          "testingNote": "Searched Lead Safe Mama and Mamavation on 2026-09-14: 35 hits, none naming the brand as tested; Mamavation mentions it only in a disclosure based roundup.",
+          "testingDate": "2026-09-14",
           "materialsList": "cotton, plastic",
           "materialAnswers": {
             "contact": "yes",
@@ -113968,6 +115391,19 @@
             "checked": "2026-09-14"
           },
           "legalNote": "Checked the CPSC recall API and California Prop 65 notices on 2026-09-14: no recall or notice found.",
+          "exposure": {
+            "type": "slept on",
+            "level": "high",
+            "score": 8.0,
+            "baby": true,
+            "route": "inhalation",
+            "duration": "overnight",
+            "retained": "breathed",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "Eight hours a night, close to the face."
+          },
           "verdict": "careful",
           "dated": "2026-09-14",
           "why": "adverse finding stands",
@@ -113975,10 +115411,11 @@
             "formula": "none",
             "materials": "caution",
             "legal": "pass",
-            "testing": "unassessed"
+            "testing": "none"
           },
           "frontOrigin": {
             "formula": "hand",
+            "testing": "database",
             "materials": "database",
             "legal": "database"
           },
@@ -113991,7 +115428,29 @@
           ]
         }
       }
-    ]
+    ],
+    "fronts": {
+      "formula": {
+        "status": "none",
+        "note": "A durable good has no ingredient list. What it is made of is the materials check.",
+        "origin": "database"
+      },
+      "materials": {
+        "status": "caution",
+        "note": "Food grade polymer core with the polymer undisclosed.",
+        "origin": "hand"
+      },
+      "legal": {
+        "status": "pass",
+        "note": "No recall or notice (2026-09-14).",
+        "origin": "hand"
+      },
+      "testing": {
+        "status": "none",
+        "note": "No lab test at Lead Safe Mama or Mamavation.",
+        "origin": "hand"
+      }
+    }
   },
   {
     "id": "love-to-dream",
@@ -114070,5 +115529,227 @@
       "best-non-toxic-crib-mattresses.html"
     ],
     "products": []
+  },
+  {
+    "id": "nook-sleep-systems",
+    "brand": "Nook Sleep Systems",
+    "category": "Baby sleep",
+    "stance": "skip",
+    "aliases": [
+      "Nook Sleep"
+    ],
+    "reason": "The Ecology Center's 2020 test of the Nook Pebble Lite crib mattress found fluorine indicating PFAS waterproofing, additional PFAS, and undisclosed chloroprene and a benzoate plasticizer in air spacers sold as recycled PET. A 2023 complaint alleged 896 ppm fluorine on the Pebble Pure organic cover. Nook filed for Chapter 7 liquidation in September 2023 (Bankr. S.D. Tex. 23-33527, final decree August 2026), so only old or secondhand stock remains.",
+    "evidence": "Ecology Center 2020 PFAS finding; Chapter 7 liquidation 2023",
+    "alternative": "KATU or Avocado Organic Crib Mattress",
+    "sources": [
+      "best-non-toxic-crib-mattresses.html",
+      "https://www.ecocenter.org/our-work/healthy-stuff-lab/reports/crib-mattress-report/crib-mattress-study"
+    ],
+    "products": [
+      {
+        "name": "Nook Pebble crib mattresses",
+        "verdict": "skip",
+        "origin": "article",
+        "source": "best-non-toxic-crib-mattresses.html",
+        "note": "Pebble Lite (tested 2020): cover with fluorine indicating PFAS treatment and additional PFAS found; air spacers with undisclosed chloroprene and a benzoate plasticizer. Company liquidated in 2023.",
+        "cat": "Crib mattresses",
+        "matchAll": [
+          [
+            "nook",
+            "pebble"
+          ]
+        ],
+        "ext": {
+          "frontNotes": {
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "testing": "Ecology Center 2020 (Pebble Lite bought 2018 to 2019): cover fluorine high enough to indicate intentional PFAS treatment, and additional PFAS identified in the mattress.",
+            "materials": "polyester in direct contact.",
+            "legal": "Checked 2026-09-14. Chapter 7 case 23-33527 (Bankr. S.D. Tex.), filed 2023-09-11, final decree 2026-08-19. Toxin Free USA said on 2023-11-30 that its PFAS lawsuit would be dropped because of the liquidation. No CPSC recall or Prop 65 notice."
+          },
+          "testingNote": "Ecology Center 2020 (Pebble Lite bought 2018 to 2019): cover fluorine high enough to indicate intentional PFAS treatment, and additional PFAS identified in the mattress.",
+          "testingDate": "2026-09-14",
+          "materialsList": "polyester, neoprene",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "dry",
+            "heated": false,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "polyester, neoprene",
+            "source": "Ecology Center 2020 teardown of the Pebble Lite: PET air spacers containing chloroprene (neoprene) and a benzoate ester plasticizer",
+            "checked": "2026-09-14"
+          },
+          "legalNote": "Checked 2026-09-14. Chapter 7 case 23-33527 (Bankr. S.D. Tex.), filed 2023-09-11, final decree 2026-08-19. Toxin Free USA said on 2023-11-30 that its PFAS lawsuit would be dropped because of the liquidation. No CPSC recall or Prop 65 notice.",
+          "exposure": {
+            "type": "slept on",
+            "level": "high",
+            "score": 8.0,
+            "baby": true,
+            "route": "inhalation",
+            "duration": "overnight",
+            "retained": "breathed",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "Eight hours a night, close to the face."
+          },
+          "verdict": "skip",
+          "dated": "2026-09-14",
+          "why": "adverse finding stands",
+          "fronts": {
+            "formula": "none",
+            "materials": "caution",
+            "legal": "pass",
+            "testing": "fail"
+          },
+          "frontOrigin": {
+            "formula": "hand",
+            "testing": "database",
+            "materials": "database",
+            "legal": "database"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "rules": [
+            "2 non-disclosure-is-a-caution"
+          ]
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "none",
+        "note": "A durable good has no ingredient list. What it is made of is the materials check.",
+        "origin": "database"
+      },
+      "materials": {
+        "status": "caution",
+        "note": "Polyester air spacers with undisclosed chloroprene and a plasticizer.",
+        "origin": "hand"
+      },
+      "legal": {
+        "status": "pass",
+        "note": "Chapter 7 liquidation 2023; PFAS suit dropped.",
+        "origin": "hand"
+      },
+      "testing": {
+        "status": "fail",
+        "note": "Ecology Center 2020: PFAS treatment and additional PFAS on the Pebble Lite.",
+        "origin": "hand"
+      }
+    }
+  },
+  {
+    "id": "colgate-mattress",
+    "brand": "Colgate Mattress",
+    "category": "Baby sleep",
+    "stance": "skip",
+    "reason": "The Atlanta crib mattress maker, unrelated to the toothpaste company. The Ecology Center's 2020 test of its Royale crib mattress found fluorine consistent with PFAS waterproofing on the cover, additional PFAS, and elevated antimony in a padding layer. Its remaining Amazon bassinet mattress lists a vinyl cover. Colgate Mattress announced it was closing in 2024, so any stock for sale is old.",
+    "evidence": "Ecology Center 2020 PFAS and antimony findings; vinyl cover; closed 2024",
+    "alternative": "KATU or Naturepedic Organic Classic",
+    "sources": [
+      "best-non-toxic-crib-mattresses.html",
+      "https://www.ecocenter.org/our-work/healthy-stuff-lab/reports/crib-mattress-report/crib-mattress-study"
+    ],
+    "products": [
+      {
+        "name": "Colgate Mattress crib and bassinet mattresses",
+        "asins": [
+          "B001KYJZRE"
+        ],
+        "verdict": "skip",
+        "origin": "article",
+        "source": "best-non-toxic-crib-mattresses.html",
+        "note": "Royale crib mattress (tested 2020): PFAS indicating fluorine on the cover and elevated antimony in padding. The cradle and bassinet mattress still listed on Amazon has a vinyl cover. Company closed in 2024.",
+        "cat": "Crib mattresses",
+        "matchAll": [
+          [
+            "colgate",
+            "mattress"
+          ]
+        ],
+        "ext": {
+          "frontNotes": {
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "testing": "Ecology Center 2020 (Colgate Royale crib mattress bought 2018 to 2019): cover fluorine consistent with intentional PFAS waterproofing, additional PFAS identified, and elevated antimony in one padding layer. Brand line evidence applied to the listing still sold.",
+            "materials": "PVC in direct contact.",
+            "legal": "Checked the CPSC recall API and California Prop 65 notices on 2026-09-14: no recall or notice. The company posted a farewell letter announcing its closure in early 2024."
+          },
+          "testingNote": "Ecology Center 2020 (Colgate Royale crib mattress bought 2018 to 2019): cover fluorine consistent with intentional PFAS waterproofing, additional PFAS identified, and elevated antimony in one padding layer. Brand line evidence applied to the listing still sold.",
+          "testingDate": "2026-09-14",
+          "materialsList": "pvc",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "dry",
+            "heated": false,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "pvc",
+            "source": "amazon B001KYJZRE: cover material vinyl, quilted waterproof cover over cotton fill",
+            "checked": "2026-09-14"
+          },
+          "legalNote": "Checked the CPSC recall API and California Prop 65 notices on 2026-09-14: no recall or notice. The company posted a farewell letter announcing its closure in early 2024.",
+          "exposure": {
+            "type": "slept on",
+            "level": "high",
+            "score": 8.0,
+            "baby": true,
+            "route": "inhalation",
+            "duration": "overnight",
+            "retained": "breathed",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "Eight hours a night, close to the face."
+          },
+          "verdict": "skip",
+          "dated": "2026-09-14",
+          "why": "adverse finding stands, on materials, testing",
+          "fronts": {
+            "formula": "none",
+            "materials": "caution",
+            "legal": "pass",
+            "testing": "fail"
+          },
+          "frontOrigin": {
+            "formula": "hand",
+            "testing": "database",
+            "materials": "database",
+            "legal": "database"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "none",
+        "note": "A durable good has no ingredient list. What it is made of is the materials check.",
+        "origin": "database"
+      },
+      "materials": {
+        "status": "caution",
+        "note": "Vinyl cover on the remaining listing.",
+        "origin": "hand"
+      },
+      "legal": {
+        "status": "pass",
+        "note": "No recall; company closed 2024.",
+        "origin": "hand"
+      },
+      "testing": {
+        "status": "fail",
+        "note": "Ecology Center 2020: PFAS waterproofing and elevated antimony on the Royale.",
+        "origin": "hand"
+      }
+    }
   }
 ]
