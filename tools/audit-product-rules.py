@@ -100,7 +100,11 @@ AB1200_ONLY = re.compile(r"\bab ?1200\b")
 NO_INGREDIENTS = re.compile(
     r"\b(does not (publish|disclose)|undisclosed|not disclosed|proprietary blend|"
     r"no ingredient list|does not list)\b")
-RECALL_YEAR = re.compile(r"\b(19|20)\d{2}\b")
+# Non-capturing on purpose. With a capturing group findall returns the group,
+# so every year read as "20" or "19", and rule 5.2's "older than 24 months"
+# test was true of a recall from last spring. The Bialetti row said "remedied
+# in 20". Both callers below took max() of those and decayed live recalls.
+RECALL_YEAR = re.compile(r"\b(?:19|20)\d{2}\b")
 
 
 # Store and registry notes carry two kinds of text that are not claims about the
