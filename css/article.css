@@ -216,6 +216,9 @@ body {
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
+.tldr-card > :first-child {
+  margin-top: 0;
+}
 .tldr-card ul {
   margin: 0;
   padding-left: 1.25rem;

@@ -91,6 +91,12 @@ export const KIDS = {
      "name": "KATU Organic 2 Stage Crib Mattress",
      "url": "https://www.amazon.com/dp/B0DJVHDVQ7?tag=plasticdetox-20",
      "note": "No plastic layers, GOTS and GOLS"
+    },
+    {
+     "label": "$$$",
+     "name": "Babyletto x Avocado Organic Crib Mattress",
+     "url": "https://www.amazon.com/dp/B0DXPDLDBL?tag=plasticdetox-20",
+     "note": "Coconut husk and coils, GOTS cotton, GREENGUARD Gold"
     }
    ],
    "article": {
