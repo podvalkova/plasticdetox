@@ -525,6 +525,23 @@ Naming it clears it. A food grade or formaldehyde free adhesive the maker states
 is a stated material like any other, and the row then reads pass on the whole
 object rather than on the half of it anyone bothered to mention.
 
+### 3.8 Plastic in the drink path is a fail
+
+The drinkware standard has stood since the Owala picks and every straw tumbler
+were removed for it: no plastic in the drink path, ever. It applies to the part
+that is in the mouth or that the drink passes through on its way there, a
+spout, a straw, a mouthpiece, a bite valve. It does not apply to a cap on a
+bottle you drink from the rim of.
+
+> **On drinkware, a plastic spout, straw or mouthpiece is a `fail` on
+> materials.** A stainless body does not offset it; the body is not the part
+> in the mouth.
+
+This was a standard in prose and an inference in the data, which is how the
+FreeSip softened from skip to careful the moment a rebuild touched its row. It
+is a rule now, and it reads the note sentence by sentence, so a note that
+states the standard is not mistaken for a note that denies the finding.
+
 ## 4. Independent tests
 
 The hard one. Here is the governing principle:
@@ -776,6 +793,14 @@ distinguishing anything.
 
 The reverse still holds, from 4.3: a clean result cannot be *cited* without its
 limit of detection. Not citable and not a failing are different states.
+
+What "looked" means, so that `none` is a claim and not a shrug: a dated search
+of the independent testers our verdicts already cite, Lead Safe Mama and
+Mamavation, with nothing returned at either. That is recorded on the row with
+the date and both names. A hit at either is never a front: a full text search
+cannot tell a mercury result from a coffee guide that mentions the brand in
+passing, so a hit is a lead for a person to read, and only what they record
+sets the front.
 
 ## 5.7 A trade-off pick may stay
 

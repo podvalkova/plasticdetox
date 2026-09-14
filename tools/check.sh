@@ -32,6 +32,12 @@ if [ "${1:-}" = "--fix" ]; then
   # TILUCK's 18/8 stainless sat in the file while the row still read
   # unassessed. Verified safe to add, it moves no verdict on its own.
   python3 tools/apply-front-evidence.py --write || exit 1
+  # Checks that live in their own caches: recalls from openFDA and CPSC, and
+  # the dated search of the independent testers. --apply re-reads the cache
+  # and never touches the network, so a build waits on nobody, and a front a
+  # check set survives every rebuild instead of being re-derived from prose.
+  python3 tools/check-recalls.py --apply --write > /dev/null || exit 1
+  python3 tools/check-testing-sources.py --apply --write > /dev/null || exit 1
   python3 tools/apply-product-rules.py --write || exit 1
   # Class findings: what is known about this KIND of product. This ran by hand
   # only, so a finding recorded on a row never reached the front it answers.
@@ -98,6 +104,8 @@ print(hashlib.sha1("\n".join(sorted(v)).encode()).hexdigest())
 PY
 )
 cp brand-data.json /tmp/pd-bd.json
+python3 tools/check-recalls.py --apply --write > /dev/null 2>&1
+python3 tools/check-testing-sources.py --apply --write > /dev/null 2>&1
 python3 tools/apply-product-rules.py --write > /dev/null 2>&1
 python3 tools/apply-class-evidence.py --write > /dev/null 2>&1
 python3 tools/enforce-scorecard.py --write > /dev/null 2>&1

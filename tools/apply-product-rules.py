@@ -156,6 +156,16 @@ def main():
                         p["ext"].setdefault("frontNotes", {})["testing"] = sc_why
                         p["ext"].setdefault("frontOrigin", {})["testing"] = "inferred"
 
+                # Rule 3.8 on an authored row. An inferred caution on the
+                # materials front is not the author's answer, and the standard
+                # says fail: the FreeSip sat at careful on exactly that.
+                if (fr.get("materials") != "fail"
+                        and (p["ext"].get("frontOrigin") or {}).get("materials") not in ("hand", "database")):
+                    dp, dp_why = _a.drink_path(ctx, str(p.get("note") or ""))
+                    if dp:
+                        fr["materials"] = dp
+                        p["ext"].setdefault("frontNotes", {})["materials"] = dp_why
+                        p["ext"].setdefault("frontOrigin", {})["materials"] = "inferred"
                 if fr.get("materials") in (None, "unassessed", "unknown"):
                     pk, pk_why = _a.packaging_severity(cleaned, ctx)
                     if pk:

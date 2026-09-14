@@ -98,6 +98,106 @@ def query(brand):
     return total, latest, examined
 
 
+# --------------------------------------------------------------------------
+# CPSC, for everything openFDA cannot answer
+# --------------------------------------------------------------------------
+#
+# The docstring above says CPSC's API returns 404 on every endpoint. It did.
+# It does not now: saferproducts.gov answers a title search with full recall
+# records, including the manufacturer, the remedy and the date, which is
+# exactly what turns a durable good's legal front from a blank into a check.
+# 165 rows sat unassessed on legal, every one of them a crib, a kettle, a
+# vacuum or a bottle, because this file believed a 404 from months ago.
+#
+# The guard is the FDA leg's guard: the manufacturer's name must begin with
+# our brand. A title search for "Simple" returns LIVEHOM dressers and one for
+# "Native" returns Native Creation sweaters; neither manufacturer begins with
+# the brand, so neither becomes a recall against a company we rate. A hit the
+# manufacturer test rejects but the title names is left for a person, the
+# same review queue the FDA leg uses, because a brand sold under another
+# company's name (Cosori, made by Atekcity) is real and a coincidence of words
+# is also real, and only a person can tell them apart.
+#
+# A verified hit is adjudicated under rule 5.2 the way the hand written Cosori
+# entry already was: remedied and older than 24 months is informational and
+# the front reads pass with the recall cited; anything newer is a caution.
+
+CPSC = "https://www.saferproducts.gov/RestWebServices/Recall?format=json&RecallTitle="
+COMMON_WORD_BRANDS = {"simple", "native", "honest", "always", "pure", "real", "true",
+                      "natural", "organic", "basic", "classic", "original", "essential"}
+
+
+def cpsc_manufacturer(rec):
+    names = []
+    for m in rec.get("Manufacturers") or []:
+        n = str(m.get("Name") or "")
+        names.append(n.split(", of ")[0])
+    return names
+
+
+def query_cpsc(brand):
+    """Verified CPSC recalls for this brand: (total, latest, examined, ambiguous, records)."""
+    url = CPSC + urllib.parse.quote(brand)
+    try:
+        req = urllib.request.Request(url, headers={"User-Agent": "plasticdetox research (anya@washos.com)"})
+        with urllib.request.urlopen(req, timeout=30) as r:
+            recs = json.loads(r.read())
+    except Exception:
+        return None
+    total, latest, examined, ambiguous, verified = 0, None, 0, 0, []
+    for rec in recs or []:
+        examined += 1
+        by_maker = any(is_the_brand(brand, n) for n in cpsc_manufacturer(rec))
+        title = re.sub(r"[\u00ae\u2122]", "", str(rec.get("Title") or ""))
+        in_title = bool(re.search(r"(?<![A-Za-z])" + re.escape(brand) + r"(?![A-Za-z])", title, re.I))
+        if by_maker:
+            verified.append(rec)
+        elif in_title and brand.lower() not in COMMON_WORD_BRANDS:
+            ambiguous += 1
+    for rec in verified:
+        total += 1
+        dt = str(rec.get("RecallDate") or "")[:10].replace("-", "")
+        if dt and (latest is None or dt > latest[0]):
+            remedy = str(((rec.get("Remedies") or [{}])[0]).get("Name") or "")[:120]
+            latest = (dt, str(rec.get("Title") or "")[:160], remedy,
+                      (cpsc_manufacturer(rec) or [""])[0], rec.get("URL") or "")
+    return total, latest, examined, ambiguous, verified
+
+
+def adjudicate_cpsc(brand, res, checked):
+    """A cache entry the apply pass already knows how to read."""
+    total, latest, examined, ambiguous, _ = res
+    entry = {"total": total, "examined": examined, "checked": checked, "source": "cpsc",
+             "latest": list(latest) if latest else None}
+    if ambiguous and not total:
+        # A title names the brand and the manufacturer does not: a person decides.
+        entry["examined"] = examined
+        return entry
+    if not total:
+        entry["examined"] = ambiguous
+        entry["note"] = f"Checked CPSC recall records on {checked}. No recall on record for {brand}."
+        return entry
+    dt, title, remedy, maker, url = latest
+    year, month = int(dt[:4]), int(dt[4:6])
+    age_months = (datetime.date.today().year - year) * 12 + (datetime.date.today().month - month)
+    cite = f"{title} ({dt[:4]}-{dt[4:6]}). {url}".strip()
+    # Age decides. A remedy field left empty on a 1989 record is how old CPSC
+    # entries are kept, not evidence the recall was never remedied: Chicco's
+    # Spinning Bee toy went to caution on that alone.
+    if age_months > 24:
+        remedied = f"Remedied: {remedy}. " if remedy else "Remedy not recorded in the CPSC entry. "
+        entry.update(resolved=True, status="pass", eventDate=f"{dt[:4]}-{dt[4:6]}",
+                     note=(f"Checked CPSC recall records on {checked}. {cite} {remedied}"
+                           f"Over 24 months old, so under rule 5.2 it is informational "
+                           f"rather than a finding against the product today."))
+    else:
+        entry.update(resolved=True, status="caution", eventDate=f"{dt[:4]}-{dt[4:6]}",
+                     note=(f"Checked CPSC recall records on {checked}. {cite} "
+                           + (f"Remedy: {remedy}. " if remedy else "")
+                           + "Within 24 months, so it stands as a caution under rule 5.2."))
+    return entry
+
+
 # Our own research is a record too.
 #
 # A clean FDA search says the database holds nothing today, which is not the
@@ -158,6 +258,33 @@ def main():
         if i % 10 == 0:
             print(f"  … {i}/{len(todo)}")
         time.sleep(0.3)
+
+    # Everything openFDA cannot answer goes to CPSC.
+    todo_cpsc = [] if args.apply else [b for b in brands
+                 if b.get("products") and not FDA_CATS.search(b.get("category") or "")
+                 and b["brand"] not in cache]
+    if args.limit:
+        todo_cpsc = todo_cpsc[:args.limit]
+    print(f"brands outside FDA's categories with no cached answer, for CPSC: {len(todo_cpsc)}")
+    today = datetime.date.today().isoformat()
+    review_cpsc = 0
+    for i, b in enumerate(todo_cpsc, 1):
+        res = query_cpsc(b["brand"])
+        if res is None:
+            continue                       # the API did not answer; try next run
+        entry = adjudicate_cpsc(b["brand"], res, today)
+        cache[b["brand"]] = entry
+        if entry.get("total"):
+            print(f"  {b['brand']}: {entry['total']} verified CPSC recall(s), latest "
+                  f"{entry['latest'][0][:4]} -> {entry['status']}  [{entry['latest'][1][:50]}]")
+        elif not entry.get("resolved"):
+            review_cpsc += 1
+            print(f"  {b['brand']}: title names the brand, manufacturer does not; for review")
+        if i % 25 == 0:
+            print(f"  … {i}/{len(todo_cpsc)}")
+        time.sleep(0.5)
+    if review_cpsc:
+        print(f"  {review_cpsc} CPSC hits left for a person")
 
     CACHE.parent.mkdir(exist_ok=True)
     CACHE.write_text(json.dumps(cache, indent=1, ensure_ascii=False) + "\n")
@@ -267,6 +394,12 @@ def main():
             # run looked at the actual records and decided, and the note says
             # what they found. It carries its own status because the answer is
             # not always a clean pass: a recent remedied recall is a caution.
+            if (c.get("resolved") and c.get("source") == "cpsc" and c.get("status") == "pass"
+                    and documents_action(p) and e["fronts"].get("legal") in ("caution", "fail")):
+                # An old remedied recall does not answer for a lawsuit the row's
+                # own note describes. The recall is informational; the action
+                # the note records still stands on this front.
+                continue
             if c.get("resolved"):
                 e["fronts"]["legal"] = c.get("status") or "pass"
                 e["legalNote"] = c.get("note") or ""

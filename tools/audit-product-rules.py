@@ -588,6 +588,25 @@ NEGATOR = re.compile(r"\b(no|not|never|without|lacks|nor|neither)\b|n't\b")
 SCOPE_CATEGORIES = ("water filter", "vacuum")
 
 
+DRINKWARE = re.compile(r"\b(bottle|bottles|tumbler|cup|cups|flask|canteen|mug|sippy|straw|thermos|drinkware)\b", re.I)
+DRINK_PATH = re.compile(
+    r"\bplastic\b[^.;]{0,40}\b(spout|straw|mouthpiece|nozzle|bite valve|sip lid|drink path)\b"
+    r"|\b(spout|straw|mouthpiece|nozzle|bite valve)\b[^.;]{0,40}\bplastic\b", re.I)
+DRINK_PATH_NEG = re.compile(r"\b(no|without|zero|not|never)\s+(\w+\s+){0,2}plastic\b|plastic[\s-]*free", re.I)
+
+
+def drink_path(context, raw_note):
+    """Rule 3.8. Shared with the authored row path in apply-product-rules,
+    which skips this engine: the FreeSip is an authored row, so the rule
+    fired in every dry run and reached nothing. Returns (status, note)."""
+    if not DRINKWARE.search(context or ""):
+        return None, None
+    for sentence in re.split(r"[.;\n]", raw_note or ""):
+        if DRINK_PATH.search(sentence) and not DRINK_PATH_NEG.search(sentence):
+            return "fail", "Plastic in the drink path. The drinkware standard is none, ever."
+    return None, None
+
+
 def certification_scope(note, context, status):
     """Returns (status, reason) or (None, None). Rule 4.6."""
     if status not in ("unknown", "unassessed", "pass", None, ""):
@@ -717,6 +736,22 @@ def apply_rules(fronts, note, scope, basis, context="", formula_text="", raw_not
     if sc:
         f["testing"] = {"status": sc, "note": sc_why, "origin": "rule-4.6-scope"}
         fired.append("4.6 certification-scope")
+
+    # Rule 3.8, the drinkware standard: no plastic in the drink path, ever.
+    #
+    # The rulebook has said this since the Owala picks and every straw tumbler
+    # were removed for it, and nothing in the code enforced it: the FreeSip's
+    # fail was an old unexplained inference, and the moment a rebuild touched
+    # the row it softened to careful. A spout, straw or mouthpiece is the part
+    # in the mouth; a plastic one on drinkware is a fail on materials. Read
+    # sentence by sentence, because a note that states the standard ("no
+    # plastic in the drink path at all") must not read as a negation of the
+    # finding in the sentence before it.
+    if f["materials"]["status"] != "fail":
+        dp, dp_why = drink_path(context, raw_note or low)
+        if dp:
+            f["materials"] = {"status": dp, "note": dp_why, "origin": "rule-3.8-drink-path"}
+            fired.append("3.8 drink-path")
 
     # Rule 2.1, disclosure, applied to an object's materials.
     #

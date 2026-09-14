@@ -662,6 +662,35 @@ def main():
     brands = json.loads(DATA.read_text())
     ev = load()
 
+    # Orphaned records first, before anything reads the file. A record keyed
+    # by an ASIN the row has since dropped is still true of the product; only
+    # the join broke. Under the Nile's cotton stuffies lost their listing, the
+    # ASIN came off the row, and a GOTS cotton pass fell to unassessed. Every
+    # record carries the product's label, so find it by that and re-key it to
+    # the name, which a row cannot lose. Done here so the loop below reads the
+    # recovered record in the same run rather than the next one.
+    rekeyed = 0
+    for b in brands:
+        for p in b.get("products") or []:
+            e = p.get("ext") or {}
+            fr = e.get("fronts") or {}
+            if fr.get("materials") not in (None, "", "unassessed", "unknown") \
+                    and (e.get("frontOrigin") or {}).get("materials") != "database":
+                continue
+            keys = keys_for(b["brand"], p, ev)
+            if any((ev.get(k) or {}).get("materials") for k in keys):
+                continue
+            label = f"{b['brand']} {p.get('name') or ''}".strip().lower()
+            orphan = next((v for k, v in ev.items()
+                           if isinstance(v, dict) and v.get("materials") and k not in keys
+                           and str(v.get("_product") or "").strip().lower() == label), None)
+            if orphan:
+                ev[f"{b['brand']}::{p.get('name')}"] = orphan
+                rekeyed += 1
+    if rekeyed:
+        print(f"  orphaned records re-keyed to the product name: {rekeyed}")
+        EVIDENCE.write_text(json.dumps(ev, indent=1, ensure_ascii=False, sort_keys=True) + "\n")
+
     if args.seed:
         added = 0
         for b in brands:
@@ -999,6 +1028,31 @@ def main():
     print(f"  formula marked none on durable goods: {nofm}")
     if undone:
         print(f"  stale none cleared off non-durables:   {undone}")
+
+    # A "database" origin promises a record in this file. Where the record is
+    # gone, because a harvester took back a reading its later guard rejected,
+    # the front is standing on nothing and has to say so. The loop above only
+    # visits rows that HAVE a record, so without this the Owala FreeSip kept a
+    # stainless steel pass after the record behind it was withdrawn, and a
+    # skip for plastic in the drink path had softened to careful.
+    withdrawn = 0
+    for b in brands:
+        for p in b.get("products") or []:
+            e = p.get("ext") or {}
+            if (e.get("frontOrigin") or {}).get("materials") != "database":
+                continue
+            if any((ev.get(k) or {}).get("materials") for k in keys_for(b["brand"], p, ev)):
+                continue
+            e["fronts"]["materials"] = "unassessed"
+            e["frontOrigin"].pop("materials", None)
+            e.setdefault("frontNotes", {})["materials"] = (
+                "The recorded material this front rested on was withdrawn, and nothing "
+                "has replaced it.")
+            e.pop("materialsList", None)
+            e.pop("materialAnswers", None)
+            withdrawn += 1
+    if withdrawn:
+        print(f"  materials fronts reset, their record withdrawn: {withdrawn}")
 
     total = sum(v for k, v in applied.items() if k != "skipped")
     print(f"entries in {EVIDENCE.relative_to(ROOT)}: {len(ev)}")
