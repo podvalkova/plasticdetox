@@ -72,7 +72,12 @@ INERT = {"glass", "borosilicate", "tempered glass", "stainless", "stainless stee
          "cork", "linen", "hemp", "silk", "jute", "wool", "leather", "felt",
          "aluminum foil", "paper", "cardboard", "glass-ceramic",
          # A dried plant sponge, the fibre of the luffa gourd, not a processed polymer.
-         "loofah"}
+         "loofah",
+         # Lyocell (TENCEL Lyocell) is spun from a closed solvent loop without
+         # carbon disulfide. Cellulose here is plant pulp. A bare "TENCEL" names
+         # Lenzing's brand, which covers both lyocell and modal, so it is rule
+         # 3.11 below until the maker says which.
+         "lyocell", "cellulose"}
 
 # How much of a problem the polymer is before the contents are considered. PVC
 # carries phthalate plasticisers, polystyrene leaches styrene, 7 is the catch all
@@ -86,7 +91,7 @@ POLYMER = {
     # mats; polyurethane foam is the nap mat flame retardant category (22 of 24
     # mats in the 2013 Duke analysis) and memory foam is polyurethane by
     # another name.
-    "eva": 2, "polyurethane": 2, "memory foam": 2,
+    "eva": 2, "polyurethane": 2, "memory foam": 2, "spandex": 2, "elastane": 2,
     "pet": 1.5, "pete": 1.5, "tritan": 1.5, "acrylic": 1.5, "nylon": 1.5,
     # Polyester is PET as a fiber, and TPU is the plasticizer-free film family:
     # both shed, neither carries PVC's additive package.
@@ -102,6 +107,12 @@ POLYMER = {
 
 # A material is inert or ranked, never both.
 assert not (INERT & set(POLYMER)), sorted(INERT & set(POLYMER))
+
+# Rule 3.11. Viscose, rayon and modal are cellulose once made, but no published
+# study has measured what carbon disulfide or finish they leave on skin. Worn for
+# hours they need a certification that tests the finished product.
+VISCOSE_FIBRE = re.compile(r"\b(viscose|rayon|modal)\b|\btencel\b(?!.*\blyocell\b)", re.I)
+FINISHED_PRODUCT_CERT = re.compile(r"oeko.?tex\W*standard\W*100|made safe|\bgots\b|eu ecolabel", re.I)
 
 ACRONYMS = {"pet", "pete", "pvc", "ps", "pc", "pp", "hdpe", "ldpe", "ptfe"}
 OILY = {"anhydrous", "oil", "oily", "fatty", "balm", "alcohol"}
@@ -197,7 +208,8 @@ def _assess_container(pack):
     # the complete safety case. Only a single material qualifies; the moment a
     # name lists two, which one is in contact is a real question again.
     single = [m.strip() for m in re.split(r"[,^/;+&]|\band\b", raw) if m.strip()]
-    if len(single) == 1 and str(pack.get("source") or "") == "product name":
+    if (len(single) == 1 and str(pack.get("source") or "") == "product name"
+            and not VISCOSE_FIBRE.search(single[0])):
         term, rank = classify(single[0])
         if term is not None and rank == 0:
             return "pass", (f"Made of {pretty(term)}, which the product name states, "
@@ -226,6 +238,33 @@ def _assess_container(pack):
                             "a named hazard, in the part that touches a person")
 
     parts = [m.strip() for m in re.split(r"[,^/;+&]|\band\b", raw) if m.strip()]
+    # Rule 3.11. A viscose process fibre against the skin for hours is a caution
+    # unless a certification that tests the finished product is recorded; off the
+    # body it is plant fibre. Judged apart from the other parts, then combined.
+    vis = [m for m in parts if VISCOSE_FIBRE.search(m)]
+    fibre = (f"{vis[0]} (the maker does not say whether it is lyocell or modal)"
+             if vis and not re.search(r"viscose|rayon|modal", vis[0], re.I) else (vis[0] if vis else ""))
+    if vis:
+        use = str(pack.get("use") or "").strip().lower().replace("_", "-").replace(" ", "-")
+        cert = str(pack.get("certification") or "").strip()
+        certified = bool(FINISHED_PRODUCT_CERT.search(cert)) and bool(str(pack.get("certificationSource") or "").strip())
+        if use in ("never-on-body", "not-on-body", "no-body-contact"):
+            vstatus, vreason = "pass", f"{fibre}, a plant fibre off the body"
+        elif certified:
+            vstatus, vreason = "pass", f"{fibre} against the skin, with {cert} testing the finished product"
+        else:
+            vstatus, vreason = "caution", (f"{fibre} against the skin with no certification that "
+                                           "tests the finished product (rule 3.11)")
+        rest = [m for m in parts if m not in vis]
+        if not rest:
+            return vstatus, vreason
+        rstatus, rreason = _assess_container(dict(pack, material=", ".join(rest)))
+        order = {"fail": 3, "caution": 2, "pass": 1}
+        if rstatus is None:
+            return (vstatus, vreason) if vstatus == "caution" else (None, rreason)
+        if order[rstatus] >= order[vstatus]:
+            return rstatus, f"{rreason}; {vreason}"
+        return vstatus, f"{vreason}; {rreason}"
     ranks = [classify(m) for m in parts]
     mixed = any(r for t, r in ranks if r) and any(t and r == 0 for t, r in ranks)
     if mixed and pack.get("contactFrom") != "recorded":
@@ -889,6 +928,8 @@ def main():
                     "treatmentSource": pack.get("treatmentSource") or "",
                     "dispenser": pack.get("dispenser") or "",
                     "lining": pack.get("lining") or "",
+                    "certification": pack.get("certification") or "",
+                    "certificationSource": pack.get("certificationSource") or "",
                     "source": pack.get("source") or "",
                     "checked": pack.get("checked") or pack.get("checkedListing") or "",
                     "open": reason,
@@ -918,6 +959,8 @@ def main():
                 "treatmentSource": pack.get("treatmentSource") or "",
                     "dispenser": pack.get("dispenser") or "",
                     "lining": pack.get("lining") or "",
+                    "certification": pack.get("certification") or "",
+                    "certificationSource": pack.get("certificationSource") or "",
                 "source": pack.get("source") or "",
                 "checked": pack.get("checked") or pack.get("checkedListing") or "",
             }

@@ -129,12 +129,12 @@ the path that reaches a person, fails the front on its own.
 
 <!-- hazard-list:start -->
 
-**The 66 named hazards the engine enforces.** Generated from `HAZARD` in
+**The 64 named hazards the engine enforces.** Generated from `HAZARD` in
 `tools/audit-product-rules.py` by `tools/sync-rulebook.py`, so this list and the
 code cannot say different things. Un-negated, in the path that reaches a person,
 any one of these fails the front on its own.
 
-> `acrylic`, `aluminium chlorohydrate`, `aluminium zirconium`, `aluminum chlorohydrate`, `aluminum zirconium`, `avobenzone`, `azo`, `benzalkonium chloride`, `benzene`, `benzethonium chloride`, `bpa`, `bpf`, `bps`, `bronopol`, `butylparaben`, `cadmium`, `chemical filter`, `chemical sunscreen`, `cyclohexasiloxane`, `cyclomethicone`, `cyclopentasiloxane`, `cyclotetrasiloxane`, `diazolidinyl urea`, `didecyldimethylammonium chloride`, `dimethyl benzyl ammonium chloride`, `dmdm hydantoin`, `elastane`, `ethylparaben`, `flame retardant`, `formaldehyde`, `homosalate`, `imidazolidinyl urea`, `isobutylparaben`, `lead`, `melamine`, `methylparaben`, `neoprene`, `non-stick`, `nonstick`, `nylon`, `octinoxate`, `octisalate`, `octocrylene`, `oxybenzone`, `paraben`, `pfas`, `pfoa`, `phthalate`, `plastic`, `polycarbonate`, `polyester`, `polyethylene`, `polypropylene`, `polystyrene`, `propylparaben`, `ptfe`, `pvc`, `quaternary ammonium`, `quaternium-15`, `rayon`, `spandex`, `styrene`, `talc`, `teflon`, `triclosan`, `viscose`
+> `acrylic`, `aluminium chlorohydrate`, `aluminium zirconium`, `aluminum chlorohydrate`, `aluminum zirconium`, `avobenzone`, `azo`, `benzalkonium chloride`, `benzene`, `benzethonium chloride`, `bpa`, `bpf`, `bps`, `bronopol`, `butylparaben`, `cadmium`, `chemical filter`, `chemical sunscreen`, `cyclohexasiloxane`, `cyclomethicone`, `cyclopentasiloxane`, `cyclotetrasiloxane`, `diazolidinyl urea`, `didecyldimethylammonium chloride`, `dimethyl benzyl ammonium chloride`, `dmdm hydantoin`, `elastane`, `ethylparaben`, `flame retardant`, `formaldehyde`, `homosalate`, `imidazolidinyl urea`, `isobutylparaben`, `lead`, `melamine`, `methylparaben`, `neoprene`, `non-stick`, `nonstick`, `nylon`, `octinoxate`, `octisalate`, `octocrylene`, `oxybenzone`, `paraben`, `pfas`, `pfoa`, `phthalate`, `plastic`, `polycarbonate`, `polyester`, `polyethylene`, `polypropylene`, `polystyrene`, `propylparaben`, `ptfe`, `pvc`, `quaternary ammonium`, `quaternium-15`, `spandex`, `styrene`, `talc`, `teflon`, `triclosan`
 
 **The 10 disclosure failures.** These name no harmful substance; they say we
 cannot check. Each caps at careful and never fails a front alone.
@@ -592,6 +592,35 @@ A spout, straw or mouthpiece on drinkware is not a dispenser: it is the drink
 path, and 3.8 governs it. Recorded as `dispenser` on the materials record,
 apart from `material`. Set by Anya in September 2026, replacing the reading
 that scored Osea's glass bottles on their plastic pumps.
+
+### 3.11 Viscose against the skin needs a tested finished product
+
+Viscose, rayon and modal are made by dissolving wood or bamboo pulp with carbon
+disulfide and spinning it back into fibre. What comes out is cellulose, the
+same molecule as cotton, and it sheds no plastic. The documented harm is to
+factory workers and waterways. For the wearer the evidence is a gap, not a
+finding: no published study has measured the carbon disulfide or finish left
+in finished fabric or how much reaches skin, US and Canadian regulators require
+no test for it, and FDA's 2024 review of tampons, the closest intimate use,
+found no clear risk but major gaps.
+
+> **A viscose process fibre worn or held against the skin for hours, in
+> underwear, sleepwear, swaddles, carriers, wipes, pads or tampons, is a
+> `caution` unless a certification that tests the finished product is
+> recorded: OEKO-TEX Standard 100, MADE SAFE, GOTS or the EU Ecolabel.** Off
+> the body, as a cleaning cloth, it is plant fibre and passes.
+
+Lyocell (TENCEL Lyocell) is made in a closed solvent loop without carbon
+disulfide and scores with the inert fibres. A bare "TENCEL" names Lenzing's
+brand, which covers both lyocell and modal, so it is read as undisclosed and
+this rule applies until the maker says lyocell. Spandex and elastane are
+polyurethane and score in that row of the table. "Bamboo" on a textile is rayon
+under US labelling rules and is recorded as bamboo viscose. On a tampon or pad
+ingredient list the same fibres are a category caution. Rayon and viscose left
+the named hazard list in September 2026, because the list requires a documented
+route into a person and the finished fibre has none on record. Recorded as
+`certification` with `certificationSource` on the materials record. Set by Anya
+in September 2026.
 
 ## 4. Independent tests
 

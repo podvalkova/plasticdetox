@@ -222,7 +222,7 @@ HAZARD = [
     "plastic", "polyester", "nylon", "acrylic", "spandex", "elastane",
     "ptfe", "teflon", "nonstick", "non-stick", "pfoa", "pfas", "pvc",
     "polycarbonate", "polypropylene", "polyethylene", "polystyrene", "styrene",
-    "melamine", "viscose", "rayon", "neoprene", "phthalate", "paraben",
+    "melamine", "neoprene", "phthalate", "paraben",
     "formaldehyde", "triclosan", "flame retardant",
     "bpa", "bps", "bpf", "lead", "cadmium", "azo", "chemical filter",
     # The substances the published research actually judged on, by name, so an
@@ -311,6 +311,17 @@ DISCLOSURE_FAILURE = [
 # (sodium coco-sulfate, SLS) and betaines are not ethoxylated and stay off
 # this list, because the finding is about the process, not about lather.
 CATEGORY_CAUTION = {
+    # Rule 3.11 on an ingredient list. Tampons and pads list their fibres as
+    # ingredients, and a viscose process fibre worn internally or against the
+    # most absorbent skin for hours carries the evidence gap 3.11 names. Rayon
+    # and viscose left the named hazard list in September 2026, so this is a
+    # caution in these two categories, never a fail on its own.
+    **{cat: {t: ("viscose process fibre, worn against the most absorbent skin for hours: "
+                 "no published study has measured the carbon disulfide or finish left in "
+                 "the finished fibre, and FDA's 2024 tampon review found no clear risk but "
+                 "major gaps in the evidence")
+             for t in ("rayon", "viscose", "modal")}
+       for cat in ("Tampons", "Period pads")},
     "Baby formula": {
         "palm": ("palm based oils, a documented downside in infant formula: "
                  "randomized trials show lower calcium and fat absorption than "

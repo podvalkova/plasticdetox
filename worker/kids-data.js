@@ -1054,6 +1054,12 @@ export const KIDS = {
    "picks": [
     {
      "label": "$$",
+     "name": "Solly Baby Wrap",
+     "url": "https://www.amazon.com/dp/B0DBN1CQ76?tag=plasticdetox-20",
+     "note": "TENCEL Modal, OEKO-TEX Standard 100"
+    },
+    {
+     "label": "$$",
      "name": "Ergobaby Embrace",
      "url": "https://www.amazon.com/dp/B08Z1L1M18?tag=plasticdetox-20",
      "note": "Best structured organic carrier"
