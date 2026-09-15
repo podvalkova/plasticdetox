@@ -555,9 +555,13 @@ export function detoxKids(root, { unlocked, onBuyApp, onRestore, canBuyInApp, on
   foot.appendChild(buy);
   // Both stores require this on a non consumable, and it is the whole account
   // system: the store account is the login, so a new phone needs nothing typed.
-  const restore = el("button", "dx-ghost", "Restore a purchase");
+  // A button, not grey text: App Review looked at the grey text on an iPad and
+  // reported that the app has no way to restore a purchase.
+  const restore = el("button", "cta outline", "Restore purchases");
+  restore.type = "button";
   restore.onclick = onRestore;
   foot.appendChild(restore);
+  root.classList.add("two-foot");
   root.appendChild(foot);
 }
 
@@ -1916,7 +1920,7 @@ export function checkVerdict(event) {
 
 // ------------------------------------------------------------------ about
 
-export function about(root, { meta, bundle, onOpen, notify }) {
+export function about(root, { meta, bundle, onOpen, notify, purchases }) {
   root.appendChild(el("div", "hero")).appendChild(el("h1", null, "How this works"));
 
   const how = el("div", "card");
@@ -1947,6 +1951,23 @@ export function about(root, { meta, bundle, onOpen, notify }) {
       : "App build: bundled version.";
   }).catch(() => { line.textContent = "App build: bundled version."; });
   root.appendChild(data);
+
+  // Restore, somewhere that is always there. The Kids room offers it too, but
+  // only while the room is locked: a reviewer who had just bought the room in
+  // the sandbox went looking for a Restore button and the only one had gone
+  // with the paywall. This one stays, bought or not.
+  if (purchases && purchases.available) {
+    const box = el("div", "card");
+    box.appendChild(el("h2", null, "Your purchase"));
+    box.appendChild(el("p", null,
+      `The kids room is bought once and belongs to your ${purchases.accountName}. `
+      + "Reinstalled the app, or on a new device? Restore it here."));
+    const btn = el("button", "cta outline", "Restore purchases");
+    btn.type = "button";
+    btn.onclick = () => purchases.onRestore();
+    box.appendChild(btn);
+    root.appendChild(box);
+  }
 
   if (notify && notify.available) {
     const box = el("div", "card");

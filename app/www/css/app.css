@@ -538,6 +538,8 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 /* The screen ends above the pinned footer rather than behind it. */
 .with-foot { padding-bottom: calc(var(--safe-bottom) + 8rem); }
+/* Two full buttons in the footer, so the copy ends above both. */
+.with-foot.two-foot { padding-bottom: calc(var(--safe-bottom) + 11.5rem); }
 .dx-ghost {
   display: block; width: 100%; background: none; border: none; color: var(--muted);
   font-size: 14.5px; font-weight: 700; padding: .3rem; text-align: center;

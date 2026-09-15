@@ -419,6 +419,11 @@ function draw() {
       bundle: currentBundle,
       onOpen: openExternal,
       notify: notifyProps(),
+      purchases: {
+        available: kids.OFFERED && kids.canBuyInApp(),
+        accountName: kids.accountName(),
+        onRestore: restorePurchases,
+      },
     });
   } else if (state.screen === "shop") {
     screens.shopIndex(view, {
@@ -582,17 +587,10 @@ function draw() {
           // Having paid and not received it is a different problem from not
           // having paid, and it has a different fix.
           if (r.state === "store-refused") toast("The App Store would not take that");
-          else toast("Paid, but it did not open. Tap Restore a purchase");
+          else toast("Paid, but it did not open. Tap Restore purchases");
         }
       },
-      onRestore: async () => {
-        showBusy(`Checking with ${kids.storeName()}`);
-        const r = await kids.restore();
-        hideBusy();
-        if (r === "ok") { track("kids_unlocked", { via: "restore" }); toast("Restored"); render(); }
-        else if (r === "none") toast(`No purchase found on this ${kids.accountName()}`);
-        else toast("Could not check right now");
-      },
+      onRestore: restorePurchases,
     });
   } else if (state.screen === "detoxStep") {
     // Resolve the step fresh each render, so ticking it re-renders this same
@@ -1118,6 +1116,21 @@ function openArticle(slug) {
   }
   track("guide_opened", { slug: clean });
   go({ screen: "article", slug: clean });
+}
+
+// -------------------------------------------------------------- restore
+
+/**
+ * Restore the kids room from the store account. Offered in two places, the
+ * Kids room while it is locked and the About screen always, so one routine.
+ */
+async function restorePurchases() {
+  showBusy(`Checking with ${kids.storeName()}`);
+  const r = await kids.restore();
+  hideBusy();
+  if (r === "ok") { track("kids_unlocked", { via: "restore" }); toast("Restored"); render(); }
+  else if (r === "none") toast(`No purchase found on this ${kids.accountName()}`);
+  else toast("Could not check right now");
 }
 
 // ------------------------------------------------------------- deep links
