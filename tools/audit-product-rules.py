@@ -925,9 +925,29 @@ def correct(old, f, note, scope, basis, strict=False, lenient=False, consumable=
                     f[k] = {"status": "caution",
                             "note": "The note on this row reads adversely here.",
                             "origin": "rule-6-anchor"}
-            if concerns:
-                return old, f"adverse finding stands, on {', '.join(concerns)}", basis != "direct"
-        return old, "adverse finding stands", basis != "direct"
+        # Section 6 binds a verdict a person wrote. This used to return the old
+        # verdict whatever the checks said ("adverse finding stands"), and 112
+        # rows read skip over checks that reached only caution, eight over no
+        # finding at all. A skip needs a failed check; a caution is careful.
+        #
+        # Only ever lowered here. These fronts are read before recorded
+        # evidence is merged over them, so a prose reading can show a fail the
+        # record answers as caution; raising on it put Aveeno's baby lotion at
+        # skip mid run. A recorded fail still lands: the gate in
+        # enforce-scorecard.py caps a careful at skip on the merged fronts.
+        fails = [k for k in FRONTS if f[k]["status"] == "fail"]
+        cautions = [k for k in FRONTS if f[k]["status"] == "caution"]
+        if old == "skip" and not fails and cautions:
+            return ("careful", "section 6: " + ", ".join(f"{k} is caution" for k in cautions),
+                    basis != "direct")
+        # No finding in these fronts is not no finding: a recorded fail or
+        # caution may still be merged over them (Philips' painted bottle read
+        # blank here over a recorded testing fail). The gate settles a careful
+        # or skip with nothing behind it once the fronts are merged.
+        if not fails and not cautions:
+            return old, "section 6: awaiting the recorded checks", basis != "direct"
+        return old, "section 6: " + ", ".join(
+            f"{k} {'failed' if k in fails else 'is caution'}" for k in fails + cautions), basis != "direct"
 
     # ---- neutral ----------------------------------------------------------
     # Not a verdict in the rules vocabulary. It asserts nothing, so it renders

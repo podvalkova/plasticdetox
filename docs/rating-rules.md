@@ -715,6 +715,14 @@ advertising relationship with the brand is named the same way.
 **Age.** Section 7's 36 months applies. An older result is recorded, and
 carries nothing in either direction.
 
+The exception is a durable good measured by XRF. That reading is of what the
+object is made of, the glass, glaze, enamel or metal, which is a property of
+the product line rather than of a batch or a harvest. It stands for that line
+until a newer reading of the same line replaces it, and the card gives its
+date. Set in September 2026, when Weck's jars had read 142 ppm lead in the
+glass in 2017 and up to 159 ppm in a newer jar in 2019, with nothing since
+measuring the line lower.
+
 **Transfer.** A result on one product reaches another only under 4.1: as a
 caution, never a skip, and only through an ingredient the two share. Rice
 carries arsenic and cadmium in from the soil, so one rice from a grower speaks
@@ -916,6 +924,13 @@ formula is a direct pass plus one other front        -> good
 a store pick, chosen by a person at product scope    -> good
 otherwise                                            -> unrated
 ```
+
+The table binds a verdict typed by hand as much as one the rules derive. A
+`skip` needs a failed check and a `careful` needs a caution. Until September
+2026 a hand written verdict stood whatever its checks said, and 112 rows read
+skip over checks that reached only caution. They now read what the checks
+carry, and a warning with nothing recorded behind it is `unrated` until the
+check that justifies it is recorded; it is never promoted to `good` on the way.
 
 Then the completeness gate, `tools/enforce-scorecard.py`, which runs last and
 closes every route at once:

@@ -239,7 +239,11 @@ def assess(pack):
     base = str(pack.get("base") or "").strip().lower()
     heated = bool(pack.get("heated"))
     mouthed = bool(pack.get("mouthed"))
-    repeated = str(pack.get("reuse") or "").strip().lower() in ("repeated", "reused", "daily", "years")
+    # `reuse` is recorded but moves nothing. A pitcher refilled daily for years
+    # holds the same water in the same polymer as one filled once, and rule 3.1
+    # scores that pairing. Counting repetition as a step worse was never written
+    # in the rulebook; it held the Clearly Filtered pitcher at careful for water
+    # in Tritan, which the matrix passes.
 
     # Rule 3.3, exposure route gives relief. What migrates out of the bottle
     # only matters in proportion to how much of it stays on a person: a body
@@ -265,8 +269,6 @@ def assess(pack):
             drivers.append("heat")
         if mouthed:
             drivers.append("being mouthed or chewed")
-        if repeated:
-            drivers.append("repeated contact over time")
         if rank <= 1 and not drivers:
             return "pass", (f"Made of {pretty(term)}, with nothing inside it to pull anything "
                             "out. What that contact means is the exposure read")
@@ -324,14 +326,11 @@ def assess(pack):
     worse = {"pass": "caution", "caution": "fail", "fail": "fail"}
     softer = {"fail": "caution", "caution": "pass", "pass": "pass"}
     # Rule 3.2, heat moves everything one step worse; a chewed spout is
-    # abrasion, and time multiplies all of it (a bottle refilled daily for
-    # years is not a bottle used once).
+    # abrasion.
     if heated:
         status = worse[status]; bits.append("heated in use")
     if mouthed:
         status = worse[status]; bits.append("mouthed or chewed")
-    if repeated:
-        status = worse[status]; bits.append("repeated contact over time")
     for _ in range(relief):
         status = softer[status]
     if relief:

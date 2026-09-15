@@ -68,20 +68,49 @@ def main():
         print(f"  !! NO VERDICT AT ALL: {a}")
         fail = True
 
-    ceiling = 10**9
-    if BASELINE.exists():
-        ceiling = json.loads(BASELINE.read_text()).get("unrated", ceiling)
+    # The homepage carries its own copy of the shop, `storeProducts` in
+    # index.html, and nothing here read it. In September 2026 it still sold the
+    # Clearly Filtered pitcher, Viori's scented bar and Blueland's scented kit
+    # at careful, and 18 products with no Brand Check row at all. Same rule as
+    # the store: careful or skip fails; a missing row or an unrated one is a
+    # backlog that may fall and never rise.
+    home_src = (ROOT / "index.html").read_text()
+    k = home_src.find("const storeProducts = [")
+    home = sorted(set(re.findall(r'asin:\s*"([A-Z0-9]{10})"',
+                                 home_src[k:home_src.find("];", k)]))) if k >= 0 else []
+    home_flagged, home_unfinished = [], []
+    for a in home:
+        hit = by.get(a)
+        if hit and hit[0] in NEVER:
+            home_flagged.append((a, hit))
+        elif not hit or hit[0] != "good":
+            home_unfinished.append(a)
+    print(f"homepage lists {len(home)} products")
+    print(f"  careful or skip          {len(home_flagged)}")
+    print(f"  unrated or no row        {len(home_unfinished)}")
+    for a, hit in home_flagged:
+        print(f"  !! {hit[0].upper()} ON THE HOMEPAGE: {a}  {hit[1]} / {hit[2]}")
+        fail = True
+
+    base = json.loads(BASELINE.read_text()) if BASELINE.exists() else {}
+    ceiling = base.get("unrated", 10**9)
+    home_ceiling = base.get("home", 10**9)
     if args.accept:
-        BASELINE.write_text(json.dumps({"unrated": len(backlog),
-                                        "note": "Ceiling for store products whose checks are unfinished. "
-                                                "It may fall and never rise."}, indent=1) + "\n")
-        print(f"\naccepted {len(backlog)} as the ceiling")
+        BASELINE.write_text(json.dumps({"unrated": len(backlog), "home": len(home_unfinished),
+                                        "note": "Ceilings for store and homepage products whose checks are "
+                                                "unfinished. They may fall and never rise."}, indent=1) + "\n")
+        print(f"\naccepted {len(backlog)} (store) and {len(home_unfinished)} (homepage) as the ceilings")
         return 0
     if len(backlog) > ceiling:
         print(f"  !! the unfinished backlog grew: {len(backlog)} > {ceiling}")
         fail = True
     elif len(backlog) < ceiling:
         print(f"  backlog fell from {ceiling} to {len(backlog)}. Run --accept to lock it in.")
+    if len(home_unfinished) > home_ceiling:
+        print(f"  !! the homepage backlog grew: {len(home_unfinished)} > {home_ceiling}")
+        fail = True
+    elif len(home_unfinished) < home_ceiling and home_ceiling < 10**9:
+        print(f"  homepage backlog fell from {home_ceiling} to {len(home_unfinished)}. Run --accept to lock it in.")
 
     print("\nnot clean." if fail else "\nclean.")
     return 1 if fail else 0

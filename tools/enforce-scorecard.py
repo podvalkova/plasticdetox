@@ -142,6 +142,7 @@ def main():
     brands = json.loads(DATA.read_text())
     gated, kept, restored, capped, released = 0, 0, 0, 0, 0
     awarded = 0
+    floored = 0
     cleared_stale = 0
     missing = collections.Counter()
     by_cat = collections.Counter()
@@ -330,6 +331,24 @@ def main():
                                 + ", ".join(f"{k} is {f.get(k)}" for k in flagged))
                     capped += 1
 
+            # Section 6 in the other direction: a skip needs a failed check and
+            # a careful needs a caution. Rows written by hand reach here with
+            # whatever verdict they were typed with, which is how 112 skips
+            # stood over checks that reached only caution. The findings stay on
+            # the card; the verdict follows them.
+            #
+            # After the award above, on purpose. A typed warning with nothing
+            # recorded behind it becomes unrated, never good: run first, it
+            # handed good to LifeStraw's plastic bottles and two bamboo
+            # toothbrushes on a materials read that never looked at the bottle
+            # or the nylon bristles.
+            if e.get("verdict") in ("skip", "careful") and RANK[e["verdict"]] < RANK[ceiling]:
+                flagged = [k for k in FRONTS if effective.get(k) in ("caution", "fail")]
+                e["verdict"] = "careful" if flagged else "unrated"
+                e["why"] = ("section 6: " + ", ".join(f"{k} is {f.get(k)}" for k in flagged)
+                            if flagged else "section 6: no check carries a finding")
+                floored += 1
+
             # Rows capped by an earlier version of this tool, which changed the
             # verdict without writing a reason. Give them the reason now.
             if (e.get("cappedFrom") and e.get("verdict") in ("careful", "skip")
@@ -384,6 +403,7 @@ def main():
     print(f"held back for an incomplete scorecard:      {gated}")
     print(f"restored once the missing checks arrived:   {restored}")
     print(f"capped by a fail or caution (section 6):    {capped}")
+    print(f"raised to what the checks carry (section 6): {floored}")
     print(f"released once that finding was withdrawn:   {released}\n")
     if missing:
         print("the check that is missing:")

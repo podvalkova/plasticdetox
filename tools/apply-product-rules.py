@@ -188,6 +188,22 @@ def main():
                     if read == "pass":
                         fr[target] = "pass"
                         p["ext"].setdefault("frontNotes", {})[target] = read_why
+                # Section 6 binds an authored verdict as well: a skip needs a
+                # failed check and a careful needs a caution. Written by hand
+                # is how 112 skips came to stand over checks that reached only
+                # caution. These fronts are the recorded ones, and the verdict is
+                # only ever lowered to what they carry.
+                v0 = p["ext"].get("verdict")
+                fails = [k for k in _a.FRONTS if fr.get(k) == "fail"]
+                cautions = [k for k in _a.FRONTS if fr.get(k) == "caution"]
+                if v0 == "skip" and not fails:
+                    p["ext"]["verdict"] = "careful" if cautions else "unrated"
+                elif v0 == "careful" and not fails and not cautions:
+                    p["ext"]["verdict"] = "unrated"
+                if p["ext"]["verdict"] != v0:
+                    p["verdict"] = p["ext"]["verdict"]
+                    p["ext"]["why"] = ("section 6: " + ", ".join(f"{k} is caution" for k in cautions)
+                                       if cautions else "section 6: no check carries a finding")
                 p["ext"].setdefault("dated", TODAY)
                 dist[p["ext"].get("verdict")] += 1
                 hand_kept += 1
@@ -199,6 +215,17 @@ def main():
                                       formula_text=_a.formula_evidence(p))
             if authored:
                 v, why, disclose = p.get("verdict"), "hand authored scorecard", False
+                # Section 6 binds a hand authored scorecard too: a skip needs a
+                # failed check and a careful needs a caution. Letting these
+                # through here and correcting them only in the final gate put
+                # near duplicate rows at different verdicts mid run.
+                fails = [k for k in _a.FRONTS if f[k]["status"] == "fail"]
+                cautions = [k for k in _a.FRONTS if f[k]["status"] == "caution"]
+                if v == "skip" and not fails:
+                    v, why = (("careful", "section 6: " + ", ".join(f"{k} is caution" for k in cautions))
+                              if cautions else ("unrated", "section 6: no check carries a finding"))
+                elif v == "careful" and not fails and not cautions:
+                    v, why = "unrated", "section 6: no check carries a finding"
             else:
                 # The same cleaned text apply_rules read. The raw note carries
                 # caveat lists and contrast clauses that are not claims about

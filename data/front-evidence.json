@@ -402,6 +402,42 @@
    "contactFrom": "stated in the product name",
    "material": "cast iron",
    "source": "product name"
+  },
+  "testing": {
+   "checked": "2026-09-14",
+   "status": "caution",
+   "lod": "single digit ppm (XRF, as the tester states)",
+   "source": "https://tamararubin.com/2019/01/dark-blue-white-lodge-cast-iron-enameled-dutch-oven-1693-ppm-lead-555-ppm-arsenic/",
+   "note": "Lead Safe Mama XRF, published 2019-01-14. A Lodge enameled cast iron Dutch oven bought around 2006 and tested in 2016 read 1,693 ppm lead and 508 ppm arsenic on its white interior enamel, the cooking surface; its blue exterior read lead non detect. A light blue Lodge enameled lid tested in 2015 read 48 ppm lead on its white interior enamel (https://tamararubin.com/2019/01/light-blue-white-lodge-cast-iron-enameled-dutch-oven-48-ppm-lead-35-ppm-arsenic/). The pot this listing sells has the same light cream interior enamel. Lead at or above 90 ppm in a coating on a product that touches food is a caution under rule 4.7; it is not a children's product, so not a fail. A durable material reading, so it stands for the line until a newer reading replaces it (rule 4.7, Age), and no reading of current Lodge enamel has been published. Line scope.",
+   "results": [
+    {
+     "analyte": "lead",
+     "value": 1693,
+     "unit": "ppm",
+     "outcome": "detected",
+     "lab": "Lead Safe Mama (XRF)",
+     "lod": "single digit ppm",
+     "year": 2019
+    },
+    {
+     "analyte": "arsenic",
+     "value": 508,
+     "unit": "ppm",
+     "outcome": "detected",
+     "lab": "Lead Safe Mama (XRF)",
+     "lod": "single digit ppm",
+     "year": 2019
+    },
+    {
+     "analyte": "lead",
+     "value": 48,
+     "unit": "ppm",
+     "outcome": "detected",
+     "lab": "Lead Safe Mama (XRF)",
+     "lod": "single digit ppm",
+     "year": 2019
+    }
+   ]
   }
  },
  "B000P4D5HG": {
@@ -1481,7 +1517,10 @@
    "contact": "yes",
    "contactFrom": "listing",
    "material": "nonstick",
-   "source": "amazon:B009HBKQ16 listing states: A Kitchen Essential for Daily Use: Designed for versatility, this 10-inch omelette and fry pan is perfect for flipping fluffy omelettes, searing proteins, and everyday cooking needs in any kitchen. | Reinforced Non-Stick Coating: Provides superior food release for cooking with less oil and effortles"
+   "source": "Tramontina: \"Reinforced nonstick coating\" (tramontina.com/products/pro-series-nonstick-fry-pan; Amazon B009HBKQ16). A pan or air fryer basket holds food with its fats while heated, so the contents are recorded as anhydrous and heated. The coating is the contact surface; nonstick is a named hazard term under rule 2.1.",
+   "base": "anhydrous",
+   "heated": true,
+   "checked": "2026-09-14"
   }
  },
  "B009K7JU6E": {
@@ -1651,7 +1690,34 @@
   }
  },
  "B00E9E45JA": {
-  "_product": "Weck Weck Canning Jars"
+  "_product": "Weck Weck Canning Jars",
+  "testing": {
+   "checked": "2026-09-14",
+   "status": "caution",
+   "lod": "single digit ppm (XRF, as the tester states)",
+   "source": "https://tamararubin.com/2019/11/small-newer-weck-baby-food-canning-jar-with-glass-lid-as-high-as-159-18-ppm-lead-100-is-unsafe-for-kids/",
+   "note": "Lead Safe Mama XRF. A 2014 Weck canning jar read 142 ppm lead (published 2017-11-21, https://tamararubin.com/2017/11/2014-weck-canning-jar-142-ppm-lead-context-90-ppm-lead-is-considered-unsafe-in-items-intended-for-use-by-children/), and a newer small Weck jar with a glass lid read as high as 159 ± 18 ppm lead in the glass (published 2019-11-17); the steel lid clips were non detect. The tester notes Weck glass has consistently read higher in lead than other jar brands and does not recommend it. Lead at or above 100 ppm in the substrate of a product that touches food is a caution under rule 4.7; the jars are sold for general kitchen use rather than as a children's product, so not a fail. A durable material reading, so it stands for the line until a newer reading replaces it (rule 4.7, Age). Line scope.",
+   "results": [
+    {
+     "analyte": "lead",
+     "value": 159,
+     "unit": "ppm",
+     "outcome": "detected",
+     "lab": "Lead Safe Mama (XRF)",
+     "lod": "single digit ppm",
+     "year": 2019
+    },
+    {
+     "analyte": "lead",
+     "value": 142,
+     "unit": "ppm",
+     "outcome": "detected",
+     "lab": "Lead Safe Mama (XRF)",
+     "lod": "single digit ppm",
+     "year": 2017
+    }
+   ]
+  }
  },
  "B00E9M4XEE": {
   "_product": "BulkSupplements BulkSupplements creatine monohydrate",
@@ -3134,7 +3200,10 @@
    "contact": "yes",
    "contactFrom": "listing",
    "material": "nonstick",
-   "source": "amazon:B073WFLD35 listing states: GLAMORIZE YOUR KITCHEN – Dive into the art of culinary finesse, with our nonstick chef essential set, comprising of a set of 3 Frying Pans, measuring 8 inch, 9.5 inch and 11 inch. | HARBORING A CULINARY HAVEN – Explore new recipes and savor the delectable aroma, with the impeccably fabricated, nonst"
+   "source": "Amazon B073WFLD35: \"DURABLE NON-STICK COATING\", \"Material Aluminum\". A pan or air fryer basket holds food with its fats while heated, so the contents are recorded as anhydrous and heated. The coating is the contact surface; nonstick is a named hazard term under rule 2.1.",
+   "base": "anhydrous",
+   "heated": true,
+   "checked": "2026-09-14"
   }
  },
  "B074J7X1DW": {
@@ -3536,8 +3605,12 @@
   "materials": {
    "checkedListing": "2026-09-08",
    "contact": "yes",
-   "material": "plastic",
-   "source": "openfacts:0037000792437"
+   "material": "nylon, polyethylene coating",
+   "source": "Oral-B: \"The floss is made from a gentle nylon and elastic material\" (oralb.com, updated 06/2025); Amazon B07K2JP5CN Ingredients: \"Nylon (floss), Polyethylene (floss coating), Flavoring agents\". Held in the mouth, with nothing inside it to extract; the polymer is the surface.",
+   "holds": "none",
+   "mouthed": true,
+   "contactFrom": "listing",
+   "checked": "2026-09-14"
   }
  },
  "B07FTPBBK9": {
@@ -4045,9 +4118,13 @@
  "B07RYB63DC": {
   "_product": "SPOT Bam-Bones bamboo fibre and nylon chews",
   "materials": {
-   "contactFrom": "stated in the product name",
-   "material": "bamboo",
-   "source": "product name"
+   "contactFrom": "listing",
+   "material": "nylon",
+   "source": "Ethical Pet: \"Popular Bam-Bones now made with nylon and bamboo fibers.\" (ethicalpet.com/product/bambone-plus-bamboo-stick-5-25-chk/). A chew toy. Held in the mouth or chewed, with nothing inside it to extract; the polymer is the surface.",
+   "holds": "none",
+   "mouthed": true,
+   "contact": "yes",
+   "checked": "2026-09-14"
   }
  },
  "B07SCL613T": {
@@ -4601,7 +4678,10 @@
    "contact": "yes",
    "contactFrom": "listing",
    "material": "nonstick",
-   "source": "amazon:B086PHS2V8 listing states: SWISS NON-STICK COATING - Switzerland ILAG nonstick coating, PFOA free, safe and healthy. | WOODGRAIN BAKELITE HANDLE - The bakelite handle features woodgrain design, it is comfortable to grip and stays cool while cooking. Oven safe to 302°F. | HIGH MAGNETIC CONDUCTIVE BASE - High magnetic conductiv"
+   "source": "Sensarte: \"Switzerland ILAG Nonstick Coating. SGS Approved. PFOA Free.\" (sensarte.com; Amazon B086PHS2V8); PTFE content not stated. A pan or air fryer basket holds food with its fats while heated, so the contents are recorded as anhydrous and heated. The coating is the contact surface; nonstick is a named hazard term under rule 2.1.",
+   "base": "anhydrous",
+   "heated": true,
+   "checked": "2026-09-14"
   }
  },
  "B086W2S5LV": {
@@ -4688,10 +4768,49 @@
    "source": "Flakes sold in Maldon's cardboard box"
   },
   "testing": {
-   "checked": "2026-09-11",
-   "note": "Maldon publishes its own lab report: 2024 results show lead around 114 ppb, arsenic around 11 ppb, cadmium and mercury non detect, among the cleanest sea salts for heavy metals. It is the sea salt our salt guide recommends for finishing; as a sea salt it carries more microplastics than mined salt, which the guide states.",
-   "source": "articles/microplastics-in-salt-and-pantry-staples.html",
-   "status": "pass"
+   "checked": "2026-09-14",
+   "status": "pass",
+   "lod": "5 ppb lead, cadmium and mercury; 10 ppb arsenic",
+   "source": "https://tamararubin.com/2025/09/maldon-sea-salt-flakes/",
+   "note": "Lead Safe Mama, published 2025-09-06. Purity Laboratories ICP-MS, case 2503452, lot 2025-045, tested 2025-03-25, Maldon Sea Salt Flakes: lead below 5 ppb, cadmium below 5 ppb, mercury below 5 ppb, arsenic below 10 ppb, all non detect. A pass under rule 4.7 with every limit at or below its bar; mercury's limit sits above the 2 ppb bar. Our earlier record gave this row 114 ppb lead and 11 ppb arsenic, which is Baja Gold's September 2024 result. Sku scope.",
+   "results": [
+    {
+     "analyte": "lead",
+     "value": null,
+     "unit": "ppb",
+     "outcome": "non-detect",
+     "lab": "Purity Laboratories for Lead Safe Mama",
+     "lod": "5 ppb",
+     "year": 2025
+    },
+    {
+     "analyte": "cadmium",
+     "value": null,
+     "unit": "ppb",
+     "outcome": "non-detect",
+     "lab": "Purity Laboratories for Lead Safe Mama",
+     "lod": "5 ppb",
+     "year": 2025
+    },
+    {
+     "analyte": "mercury",
+     "value": null,
+     "unit": "ppb",
+     "outcome": "non-detect",
+     "lab": "Purity Laboratories for Lead Safe Mama",
+     "lod": "5 ppb",
+     "year": 2025
+    },
+    {
+     "analyte": "arsenic",
+     "value": null,
+     "unit": "ppb",
+     "outcome": "non-detect",
+     "lab": "Purity Laboratories for Lead Safe Mama",
+     "lod": "10 ppb",
+     "year": 2025
+    }
+   ]
   }
  },
  "B0874HWG4Z": {
@@ -4923,6 +5042,33 @@
    "contactFrom": "listing",
    "material": "glass",
    "source": "amazon:B08DDD6T1R listing states: Includes Set of 2 Weck Canning Jars 742 - 1/2 Liters | These wide mouth mold jars are made of thick, sturdy and durable glass that is heat resistant - safe for microwave and dishwasher use! | Having the lid, gaskets and jar as separate pieces does make it easier for pouring and washing. The small gl"
+  },
+  "testing": {
+   "checked": "2026-09-14",
+   "status": "caution",
+   "lod": "single digit ppm (XRF, as the tester states)",
+   "source": "https://tamararubin.com/2019/11/small-newer-weck-baby-food-canning-jar-with-glass-lid-as-high-as-159-18-ppm-lead-100-is-unsafe-for-kids/",
+   "note": "Lead Safe Mama XRF. A 2014 Weck canning jar read 142 ppm lead (published 2017-11-21, https://tamararubin.com/2017/11/2014-weck-canning-jar-142-ppm-lead-context-90-ppm-lead-is-considered-unsafe-in-items-intended-for-use-by-children/), and a newer small Weck jar with a glass lid read as high as 159 ± 18 ppm lead in the glass (published 2019-11-17); the steel lid clips were non detect. The tester notes Weck glass has consistently read higher in lead than other jar brands and does not recommend it. Lead at or above 100 ppm in the substrate of a product that touches food is a caution under rule 4.7; the jars are sold for general kitchen use rather than as a children's product, so not a fail. A durable material reading, so it stands for the line until a newer reading replaces it (rule 4.7, Age). Line scope.",
+   "results": [
+    {
+     "analyte": "lead",
+     "value": 159,
+     "unit": "ppm",
+     "outcome": "detected",
+     "lab": "Lead Safe Mama (XRF)",
+     "lod": "single digit ppm",
+     "year": 2019
+    },
+    {
+     "analyte": "lead",
+     "value": 142,
+     "unit": "ppm",
+     "outcome": "detected",
+     "lab": "Lead Safe Mama (XRF)",
+     "lod": "single digit ppm",
+     "year": 2017
+    }
+   ]
   }
  },
  "B08DNLH4QD": {
@@ -5552,8 +5698,11 @@
    "checkedListing": "2026-09-14",
    "contact": "yes",
    "contactFrom": "listing",
-   "material": "plastic, silicone",
-   "source": "amazon:B09782KNVH listing states: BABY/TODDLER SAFE: The Elk and Friends spoons + forks feature a stainless steel narrow tips and an easy to grip ergonomic anti-slip silicone handle making it easy for small hands to hold | INNOVATIVE + FUN: Elk and Friends puts the fun back into feeding with this colorful and cute cutlery; An innova"
+   "material": "plastic",
+   "source": "Amazon (Munchkin Soft Tip spoons, B000LSL5ZK): \"Material Plastic\", \"made from flexible yet durable BPA and phthalate free plastic\"; Munchkin names no polymer. Held in the mouth or chewed, with nothing inside it to extract; the polymer is the surface.",
+   "holds": "none",
+   "mouthed": true,
+   "checked": "2026-09-14"
   }
  },
  "B097CJG15S": {
@@ -7010,6 +7159,51 @@
   },
   "materials": {
    "checkedListing": "2026-09-02"
+  },
+  "testing": {
+   "checked": "2026-09-14",
+   "status": "caution",
+   "lod": "10 ppb cadmium and mercury",
+   "source": "https://tamararubin.com/2024/09/baja-gold-salt-co-mineral-sea-salt-fine-grind-from-mexico-tests-positive-for-lead-and-arsenic-september-2024-lab-report/",
+   "note": "Lead Safe Mama, published 2024-09-18, September 2024 testing, Baja Gold Mineral Sea Salt Fine Grind: lead 114 ppb, arsenic 11 ppb, cadmium and mercury non detect below 10 ppb. Lead is above the 5 ppb bar and arsenic above the 10 ppb bar for what is eaten, a caution under rule 4.7; the cadmium and mercury limits sit above their bars, so those two are unjudged. Sku scope.",
+   "results": [
+    {
+     "analyte": "lead",
+     "value": 114,
+     "unit": "ppb",
+     "outcome": "detected",
+     "lab": "Lead Safe Mama (independent lab)",
+     "lod": "n/a",
+     "year": 2024
+    },
+    {
+     "analyte": "arsenic",
+     "value": 11,
+     "unit": "ppb",
+     "outcome": "detected",
+     "lab": "Lead Safe Mama (independent lab)",
+     "lod": "n/a",
+     "year": 2024
+    },
+    {
+     "analyte": "cadmium",
+     "value": null,
+     "unit": "ppb",
+     "outcome": "non-detect",
+     "lab": "Lead Safe Mama (independent lab)",
+     "lod": "10 ppb",
+     "year": 2024
+    },
+    {
+     "analyte": "mercury",
+     "value": null,
+     "unit": "ppb",
+     "outcome": "non-detect",
+     "lab": "Lead Safe Mama (independent lab)",
+     "lod": "10 ppb",
+     "year": 2024
+    }
+   ]
   }
  },
  "B0CBQG57KY": {
@@ -7288,7 +7482,10 @@
    "contact": "yes",
    "contactFrom": "listing",
    "material": "nonstick",
-   "source": "amazon:B0CNY1F31S listing states: FAST AND EASY: This compact air fryer handles any culinary challenge. Customize cooking time and temperature with the digital touch screen display or use one of four preset functions for quick, one-touch meals. Perfect for serving 2-4 people | 450°F HI-FRY TECHNOLOGY: Achieve the perfect finishing c"
+   "source": "Amazon B0CNY1F31S: \"The 4-quart nonstick basket and rack are both dishwasher safe\". A pan or air fryer basket holds food with its fats while heated, so the contents are recorded as anhydrous and heated. The coating is the contact surface; nonstick is a named hazard term under rule 2.1.",
+   "base": "anhydrous",
+   "heated": true,
+   "checked": "2026-09-14"
   }
  },
  "B0CPQ7V5Z8": {
@@ -10167,6 +10364,236 @@
    "use": "",
    "source": "ikea.com ANTILOP seat shell and high chair tray: polypropylene; legs steel with epoxy/polyester powder coating; feet polypropylene. Food sits directly on the tray and the child mouths it",
    "checked": "2026-09-14"
+  }
+ },
+ "Badger::Baby Mineral Sunscreen SPF 40": {
+  "_product": "Badger Baby Mineral Sunscreen SPF 40",
+  "testing": {
+   "checked": "2026-09-14",
+   "status": "caution",
+   "lod": "n/a, all four metals quantified",
+   "source": "https://tamararubin.com/2025/08/badger-baby-mineral-sunscreen-spf-40/",
+   "note": "Lead Safe Mama, published 2025-08-16. Purity Laboratories ICP-MS, case 2506183, lot 2025-109, tested 2025-06-12: lead 297.9 ppb, cadmium 343.2 ppb, mercury 7.88 ppb, arsenic 14.92 ppb. Made for babies, so judged by the baby column of rule 4.7: cadmium is above the 100 ppb bar, a caution; lead, mercury and arsenic are below theirs. Sku scope.",
+   "results": [
+    {
+     "analyte": "lead",
+     "value": 297.9,
+     "unit": "ppb",
+     "outcome": "detected",
+     "lab": "Purity Laboratories for Lead Safe Mama",
+     "lod": "n/a",
+     "year": 2025
+    },
+    {
+     "analyte": "cadmium",
+     "value": 343.2,
+     "unit": "ppb",
+     "outcome": "detected",
+     "lab": "Purity Laboratories for Lead Safe Mama",
+     "lod": "n/a",
+     "year": 2025
+    },
+    {
+     "analyte": "mercury",
+     "value": 7.88,
+     "unit": "ppb",
+     "outcome": "detected",
+     "lab": "Purity Laboratories for Lead Safe Mama",
+     "lod": "n/a",
+     "year": 2025
+    },
+    {
+     "analyte": "arsenic",
+     "value": 14.92,
+     "unit": "ppb",
+     "outcome": "detected",
+     "lab": "Purity Laboratories for Lead Safe Mama",
+     "lod": "n/a",
+     "year": 2025
+    }
+   ]
+  }
+ },
+ "Revision Skincare::Intellishade TruPhysical": {
+  "_product": "Revision Skincare Intellishade TruPhysical",
+  "formula": {
+   "checkedListing": "2026-09-14",
+   "complete": true,
+   "kind": "ingredients",
+   "ingredients": "Active Ingredients: Titanium Dioxide 5.5%, Zinc Oxide 14.5%. Inactive Ingredients: Water (Aqua), Caprylic/Capric Triglyceride, Thermus Thermophillus Ferment, Polyglyceryl-2 Dipolyhydroxystearate, C12-15 Alkyl Benzoate, Dicaprylyl Carbonate, Cyclopentasiloxane, Dimethicone, Polyglyceryl-3 Diisostearate, Glycerin, Hydrogenated Starch Hydrolysate, Butylene Glycol, Aloe Barbadensis Leaf Juice, Betula Alba Bark Extract, Camellia Sinensis Leaf Extract, Plankton Extract, Beeswax (Cera Alba), Acrylates/Dimethicone Copolymer, Squalane, Tocopheryl Acetate, Tetrahexyldecyl Ascorbate, Tocopherol, Palmitoyl Tripeptide-5, Dimethicone/Vinyl Dimethicone Crosspolymer, Lecithin, Palmitoyl Dipeptide-5 Diaminobutyroyl Hydroxythreonine, Leuconostoc/Radish Root Ferment Filtrate, Tetradecyl Aminobutyroylvalylaminobutyric Urea Acetate, Yeast Extract (Faex), Boron Nitride, Epigallocatechin Gallate, Ubiquinone, Simmondsia Chinensis (Jojoba) Meal Extract, Melanin, Phenoxyethanol, Silica, Chlorphenesin, Polyhydroxystearic Acid, Xanthan Gum, Magnesium Chloride, Benzoic Acid, Sorbic Acid, Triethoxycaprylylsilane, Magnesium Sulfate, Iron Oxides (CI 77491, CI 77492, CI 77499)",
+   "source": "https://revisionskincare.com/products/intellishade-truphysical-spf-45"
+  }
+ },
+ "Revision Skincare::Intellishade Original and Matte SPF 45": {
+  "_product": "Revision Skincare Intellishade Original SPF 45",
+  "formula": {
+   "checkedListing": "2026-09-14",
+   "complete": true,
+   "kind": "ingredients",
+   "ingredients": "Active Ingredients: Octinoxate 7.5%, Octisalate 5%, Titanium Dioxide 3.5%, Zinc Oxide 3%. Inactive Ingredients: Water (Aqua), Cyclopentasiloxane, Jojoba Esters, Hydrogenated Starch Hydrolysate, Caprylic/Capric Triglyceride, Glycerin, Cetyl PEG/PPG-10/1 Dimethicone, Hexyl Laurate, Polyglyceryl-4 Isostearate, Butylene Glycol, Cetyl Dimethicone, Ethylhexyl Palmitate, Ethylhexyl Stearate, Aloe Barbadensis Leaf Juice, Betula Alba Bark Extract, Camellia Sinensis Leaf Extract, Plankton Extract, Beeswax (Cera Alba), Squalane, Tocopheryl Acetate, Tetrahexyldecyl Ascorbate, Tocopherol, Palmitoyl Tripeptide-5, Hydrogenated Castor Oil, Lecithin, Palmitoyl Dipeptide-5 Diaminobutyroyl Hydroxythreonine, Glyceryl Caprylate, Tetradecyl Aminobutyroylvalylaminobutyric Urea Acetate, Yeast Extract (Faex), Boron Nitride, Epigallocatechin Gallate, Ubiquinone, Simmondsia Chinensis (Jojoba) Meal Extract, Sodium Chloride, Phenoxyethanol, Glyceryl Isostearate, Chlorphenesin, Polyhydroxystearic Acid, Xanthan Gum, Magnesium Chloride, Triethoxycaprylylsilane, Benzoic Acid, Sorbic Acid, Iron Oxides (CI 77491, CI 77492, CI 77499)",
+   "source": "https://revisionskincare.com/products/intellishade-original-spf-45"
+  }
+ },
+ "B099LHG42F": {
+  "_product": "Viori Fragrance Free Rice Water Shampoo Bar (Native Essence)",
+  "formula": {
+   "checkedListing": "2026-09-14",
+   "complete": true,
+   "kind": "ingredients",
+   "ingredients": "Sodium Cocoyl Isethionate, Behentrimonium Methosulfate, Longsheng Rice Water, Cocoa Butter, Jojoba Oil, Sodium Lactate, Glycerin, Cetyl Alcohol, Shea Butter, Butylene Glycol (Plant-Based), Stearic Acid, Vitamin B8, Vitamin B5, Rice Bran Oil, Hydrolyzed Rice Protein, Broccoli Seed Oil, Bamboo Extract, Vitamin E, Aloe Vera",
+   "source": "https://viori.com/products/native-essence-unscented-shampoo-bar (the list ends with the footnote Fragrance Free; no scent is added)"
+  },
+  "materials": {
+   "base": "dry",
+   "checked": "2026-09-14",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "material": "plastic",
+   "source": "A solid bar; Viori states the packaging is plastic free but does not name the box material. Dry contents pass the rule 3.1 matrix in every material this kind of product is packed in, so the worst case is recorded and still passes."
+  }
+ },
+ "Neutrogena::Whole range": {
+  "_product": "Neutrogena Whole range",
+  "formula": {
+   "checkedListing": "2026-09-14",
+   "complete": true,
+   "kind": "ingredients",
+   "ingredients": "Active Ingredients: Avobenzone (3%), Homosalate (15%), Octisalate (5%), Octocrylene (10%)",
+   "partial": "active ingredients only; they decide the front",
+   "source": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=c5a67314-e5b2-4dd6-94e9-39c2f286c346",
+   "note": "The brand's current US flagship, Ultra Sheer Dry-Touch SPF 70, read 2026-09-14. A range row: the finding is the flagship's actives and the card names that scope."
+  }
+ },
+ "Banana Boat::Whole range": {
+  "_product": "Banana Boat Whole range",
+  "formula": {
+   "checkedListing": "2026-09-14",
+   "complete": true,
+   "kind": "ingredients",
+   "ingredients": "Active Ingredients: Avobenzone 2.7%, Homosalate 9.0%, Octisalate 4.5%, Octocrylene 6.5%",
+   "partial": "active ingredients only; they decide the front",
+   "source": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=97b5aba8-3ba8-1c93-e053-2a95a90a3f57",
+   "note": "The brand's current US flagship, Sport Ultra SPF 50, read 2026-09-14. A range row: the finding is the flagship's actives and the card names that scope."
+  }
+ },
+ "Coppertone::Whole range": {
+  "_product": "Coppertone Whole range",
+  "formula": {
+   "checkedListing": "2026-09-14",
+   "complete": true,
+   "kind": "ingredients",
+   "ingredients": "Active Ingredients: Avobenzone 3%, Homosalate 10%, Octisalate 4.5%, Octocrylene 8%",
+   "partial": "active ingredients only; they decide the front",
+   "source": "https://www.coppertone.com/-/media/coppertone/products/01_sport/coppertone_sport_sunscreen_lotion_spf_50.pdf",
+   "note": "The brand's current US flagship, Sport Lotion SPF 50, read 2026-09-14. A range row: the finding is the flagship's actives and the card names that scope."
+  }
+ },
+ "Sun Bum::Whole range": {
+  "_product": "Sun Bum Whole range",
+  "formula": {
+   "checkedListing": "2026-09-14",
+   "complete": true,
+   "kind": "ingredients",
+   "ingredients": "Active Ingredients: Avobenzone 3%, Homosalate 5%, Octisalate 3%, Octocrylene 10%",
+   "partial": "active ingredients only; they decide the front",
+   "source": "https://www.sunbum.com/products/original-spf-30-sunscreen-lotion",
+   "note": "The brand's current US flagship, Original SPF 30, read 2026-09-14. A range row: the finding is the flagship's actives and the card names that scope."
+  }
+ },
+ "CVS Health::Whole range": {
+  "_product": "CVS Health Whole range",
+  "formula": {
+   "checkedListing": "2026-09-14",
+   "complete": true,
+   "kind": "ingredients",
+   "ingredients": "Active Ingredients: Avobenzone 3.0%, Homosalate 15.0%, Octisalate 5.0%, Octocrylene 5.0%",
+   "partial": "active ingredients only; they decide the front",
+   "source": "https://www.cvs.com/shop/ingredients/cvs-sport-lotion-spf-50-prodid-1016982",
+   "note": "The brand's current US flagship, Sport Lotion SPF 50, read 2026-09-14. A range row: the finding is the flagship's actives and the card names that scope."
+  }
+ },
+ "Fruit of the Earth::Whole range": {
+  "_product": "Fruit of the Earth Whole range",
+  "formula": {
+   "checkedListing": "2026-09-14",
+   "complete": true,
+   "kind": "ingredients",
+   "ingredients": "Active Ingredients: Avobenzone 3.0%, Homosalate 10.0%, Octisalate 4.5%, Octocrylene 8.0%",
+   "partial": "active ingredients only; they decide the front",
+   "source": "https://fote.com/product/sun-town-city-sport-spf-50-lotion-3-4-oz/",
+   "note": "The brand's current US flagship, Sun Town City Sport SPF 50, read 2026-09-14. A range row: the finding is the flagship's actives and the card names that scope."
+  }
+ },
+ "Aveeno::Sunscreens": {
+  "_product": "Aveeno Sunscreens",
+  "formula": {
+   "checkedListing": "2026-09-14",
+   "complete": true,
+   "kind": "ingredients",
+   "ingredients": "Active Ingredients: Avobenzone 3%, Homosalate 13.5%, Octisalate 5%, Octocrylene 10%",
+   "partial": "active ingredients only; they decide the front",
+   "source": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=615c5349-7fff-4145-9d65-1687247163be",
+   "note": "The brand's current US flagship, Protect + Hydrate SPF 60, read 2026-09-14. A range row: the finding is the flagship's actives and the card names that scope."
+  }
+ },
+ "Black Girl Sunscreen::Whole range": {
+  "_product": "Black Girl Sunscreen Whole range",
+  "formula": {
+   "checkedListing": "2026-09-14",
+   "complete": true,
+   "kind": "ingredients",
+   "ingredients": "Active Ingredients: Avobenzone 3%, Homosalate 10%, Octisalate 5%, Octocrylene 2.75%",
+   "partial": "active ingredients only; they decide the front",
+   "source": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=2bc42f6f-4eaf-fa28-e063-6294a90a93fb",
+   "note": "The brand's current US flagship, SPF 30, read 2026-09-14. A range row: the finding is the flagship's actives and the card names that scope."
+  }
+ },
+ "Supergoop!::Whole range": {
+  "_product": "Supergoop! Whole range",
+  "formula": {
+   "checkedListing": "2026-09-14",
+   "complete": true,
+   "kind": "ingredients",
+   "ingredients": "Active Ingredients: Avobenzone (3%), Homosalate (10%), Octisalate (5%), Octocrylene (7.5%)",
+   "partial": "active ingredients only; they decide the front",
+   "source": "https://supergoop.com/products/everyday-sunscreen",
+   "note": "The brand's current US flagship, PLAY Everyday Lotion SPF 50, read 2026-09-14. A range row: the finding is the flagship's actives and the card names that scope."
+  }
+ },
+ "Dove::Dove Antiperspirant Deodorant Stick": {
+  "_product": "Dove Antiperspirant Deodorant Stick",
+  "formula": {
+   "checkedListing": "2026-09-14",
+   "complete": true,
+   "kind": "ingredients",
+   "ingredients": "Active Ingredient: Aluminum Zirconium Tetrachlorohydrex GLY (15.2%). Inactive Ingredients: Cyclopentasiloxane, Stearyl Alcohol, Isopropyl Palmitate, PPG-14 Butyl Ether, Talc, Mineral Oil",
+   "partial": "active ingredients only; they decide the front",
+   "source": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=9ecf7eb9-2620-406a-bdab-55f25610ae16",
+   "note": "Original Clean stick label on DailyMed. The newer Advanced Care label (November 2024) keeps the aluminum zirconium active and cyclopentasiloxane and drops talc."
+  }
+ },
+ "Oral-B::Glide and Essential floss": {
+  "_product": "Oral-B Glide floss",
+  "formula": {
+   "checkedListing": "2026-09-14",
+   "complete": true,
+   "kind": "ingredients",
+   "ingredients": "Nylon (floss), Polyethylene (floss coating), Flavoring agents",
+   "partial": "active ingredients only; they decide the front",
+   "source": "https://www.amazon.com/dp/B07K2JP5CN (Ingredients panel); Oral-B: \"The floss is made from a gentle nylon and elastic material\" https://oralb.com/en-us/oral-health/why-oral-b/floss/benefits-of-oral-b-glide-floss/",
+   "note": "Current Glide. Earlier Glide was PTFE: all three Glide products carried fluorine in Boronow 2019 (https://pmc.ncbi.nlm.nih.gov/articles/PMC6380931/)."
+  }
+ },
+ "Berlinger Haus::Marble and granite coated cookware": {
+  "_product": "Berlinger Haus marble and granite coated cookware",
+  "materials": {
+   "material": "nonstick",
+   "base": "anhydrous",
+   "heated": true,
+   "contact": "yes",
+   "contactFrom": "listing",
+   "checked": "2026-09-14",
+   "source": "Amazon B08917SZSY: \"3-Layer Marble Coating ... PFOA, Lead, Cadmium Free\"; berlingerhaus.co.za: \"3-Layer Marble Non-Stick Coating\". PTFE content not stated. A pan or air fryer basket holds food with its fats while heated, so the contents are recorded as anhydrous and heated. The coating is the contact surface; nonstick is a named hazard term under rule 2.1."
   }
  }
 }

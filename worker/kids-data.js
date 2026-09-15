@@ -335,9 +335,9 @@ export const KIDS = {
     },
     {
      "label": "$$",
-     "name": "Weck Canning Jars",
-     "url": "https://www.amazon.com/dp/B08DDD6T1R?tag=plasticdetox-20",
-     "note": "Best glass jar for purees, glass lid"
+     "name": "Urban Green Glass Containers with Glass Lids (3 Pack)",
+     "url": "https://www.amazon.com/dp/B0D9QHTF6X?tag=plasticdetox-20",
+     "note": "Best glass storage for purees, glass lid"
     },
     {
      "label": "$",
