@@ -70,7 +70,9 @@ INERT = {"glass", "borosilicate", "tempered glass", "stainless", "stainless stee
          "maple wood", "beeswax", "paper-uncoated", "silicone", "cotton", "metal",
          "rubber", "cast iron", "carbon steel", "titanium",
          "cork", "linen", "hemp", "silk", "jute", "wool", "leather", "felt",
-         "aluminum foil", "paper", "cardboard", "glass-ceramic"}
+         "aluminum foil", "paper", "cardboard", "glass-ceramic",
+         # A dried plant sponge, the fibre of the luffa gourd, not a processed polymer.
+         "loofah"}
 
 # How much of a problem the polymer is before the contents are considered. PVC
 # carries phthalate plasticisers, polystyrene leaches styrene, 7 is the catch all

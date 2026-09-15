@@ -728,6 +728,39 @@ caution, never a skip, and only through an ingredient the two share. Rice
 carries arsenic and cadmium in from the soil, so one rice from a grower speaks
 for the grower's other rice. A clean result never transfers.
 
+### 4.8 Ceramic that touches food or drink needs a lead result
+
+Lead in kitchenware lives in glaze, enamel and the pigments that colour or
+decorate them, which is why most of Lead Safe Mama's XRF archive is ceramic: a
+gold Starbucks mug at 15,700 ppm, a souvenir mug at 6,151 ppm on the drinking
+surface, a Lodge enameled pot at 1,693 ppm inside, beside Japanese Hasami
+porcelain that read non detect. The risk belongs to the material class, and
+whether one piece carries it cannot be seen.
+
+> **A ceramic, porcelain, stoneware, earthenware or enamel surface, or a
+> ceramic coating, that touches food or drink needs a lead result on record
+> before it can be recommended.** Without one it is held at `unrated`, whatever
+> else it passes.
+
+What counts: an XRF reading of the food or drink surface, or a laboratory total
+content or leach result naming the lab, the method and the limit of detection.
+A tester's result keeps its tier under 4.2; a brand's own lab report is tier 3
+and the card says it is the brand's. The number is then judged by 4.7.
+
+What does not count: "lead free" or "lead safe" on a label or listing,
+Proposition 65 or FDA compliance, the country or region of manufacture, or that
+country's law. Those are a claim or a legal floor, not a measurement (4.2, tier
+4).
+
+Rule 5.6 does not apply. Elsewhere "nobody has tested it" is a gap we disclose
+and do not count against a product; for ceramic in the food path it is the gap
+this rule closes, so a testing `none` does not satisfy it.
+
+Outside the rule: engineering ceramics with no glaze or pigment, such as a
+grinder's ceramic burrs or a ceramic knife blade, and plain clear glass.
+
+Enforced by `lead_check_required` in `tools/enforce-scorecard.py`.
+
 ## 5. Lawsuits and recalls
 
 These behave completely differently and should never have shared a front's logic.
@@ -975,6 +1008,13 @@ is done and what is still open.
 - A classifier reading of a note may flag a published good for review. It may
   never convict it: the ceiling for an inferred adverse reading is `unrated`
   and a person looks at it.
+- It may never clear one either. A check passes only on a recorded source: a
+  record in the evidence file, research a person recorded, or a class finding.
+  A pass read off our own description is stored as `unassessed`, and a
+  recommendation resting on it is held until the source is recorded. Set in
+  September 2026, when 140 recommendations were found resting on such readings,
+  among them Naturepedic's Serenade, whose materials pass sat over a note saying
+  the material had not been established.
 
 ---
 

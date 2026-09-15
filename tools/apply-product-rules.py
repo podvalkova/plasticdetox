@@ -185,9 +185,9 @@ def main():
                     read, read_why = _a.formula_from_materials(cleaned + " " + ctx)
                     if read is None:
                         read, read_why = _a.formula_from_materials(_a.formula_evidence(p))
-                    if read == "pass":
-                        fr[target] = "pass"
-                        p["ext"].setdefault("frontNotes", {})[target] = read_why
+                    # A pass read off the note is not recorded evidence, so it
+                    # no longer fills the front; the materials harvest records
+                    # what a listing states, with its source.
                 # Section 6 binds an authored verdict as well: a skip needs a
                 # failed check and a careful needs a caution. Written by hand
                 # is how 112 skips came to stand over checks that reached only
@@ -271,6 +271,13 @@ def main():
                     merged[k] = held          # better evidence already stands
                 else:
                     merged[k] = f[k]["status"]
+                    # A reading of note text may warn and never clear, so a
+                    # pass read off prose stays unassessed until a source is
+                    # recorded. Filling blanks with it put a materials pass on
+                    # Naturepedic's Serenade over a note saying the material had
+                    # not been established.
+                    if merged[k] == "pass":
+                        merged[k] = "unassessed"
                     if merged[k] not in (None, "unassessed", "unknown"):
                         origin[k] = "inferred"
                     else:

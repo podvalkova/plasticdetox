@@ -619,19 +619,12 @@ export const KIDS = {
    "why": "Enclosed, heated by sun, and federally required to meet flammability standards that many brands still meet chemically.",
    "heat": false,
    "impact": "Medium impact",
-   "free": "Air out a new seat outside for two weeks, and crack the windows on hot days before the child gets in.",
+   "free": "Park in the shade, and on hot drives open the windows instead of recirculating the cabin air.",
    "picks": [
     {
-     "label": "$$$",
-     "name": "Clek Foonf Convertible Car Seat",
-     "url": "https://www.amazon.com/dp/B0CZPCGF51?tag=plasticdetox-20",
-     "note": "Best flame retardant free car seat"
-    },
-    {
-     "label": "$$$",
-     "name": "Clek Fllo Convertible Car Seat",
-     "url": "https://www.amazon.com/dp/B0CZPCLYW7?tag=plasticdetox-20",
-     "note": "Best compact, fits three across"
+     "label": "Guide",
+     "name": "Read the full guide",
+     "url": "https://plasticdetox.org/articles/non-toxic-baby-toddler-products-guide.html"
     }
    ],
    "article": {
@@ -727,7 +720,7 @@ export const KIDS = {
     {
      "label": "$$$",
      "name": "Stokke Tripp Trapp",
-     "url": "https://www.amazon.com/dp/B0D5KC6Q4R?tag=plasticdetox-20",
+     "url": "https://www.amazon.com/dp/B07KQQHX6H?tag=plasticdetox-20",
      "note": "Gold standard, grows to adulthood"
     }
    ],
@@ -821,9 +814,9 @@ export const KIDS = {
     },
     {
      "label": "$$",
-     "name": "Grimm's Rainbow Stacker",
-     "url": "https://www.amazon.com/dp/B07DLNFK1M?tag=plasticdetox-20",
-     "note": "Best European quality"
+     "name": "Grimm's Large Rainbow Stacker (Natural)",
+     "url": "https://www.amazon.com/dp/B01CHCMSH6?tag=plasticdetox-20",
+     "note": "Unstained FSC wood, plant oil finish"
     }
    ],
    "article": {
@@ -1059,12 +1052,6 @@ export const KIDS = {
    "impact": "Lower impact",
    "free": "A woven cotton wrap is the cheapest carrier and the most natural.",
    "picks": [
-    {
-     "label": "$$",
-     "name": "Solly Baby Wrap",
-     "url": "https://www.amazon.com/dp/B0DBN1CQ76?tag=plasticdetox-20",
-     "note": "Best organic wrap"
-    },
     {
      "label": "$$",
      "name": "Ergobaby Embrace",

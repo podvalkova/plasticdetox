@@ -104,6 +104,33 @@ def blocking_for(brand, product):
     return BLOCKING + (CONSUMABLE_ONLY if consumable else ())
 
 
+# Rule 4.8. Lead in kitchenware lives in glaze, enamel and the pigments that
+# colour them, so a ceramic surface that touches food or drink needs a lead
+# result on record before it can be recommended, and a testing `none` does not
+# answer it. Engineering ceramics with no glaze, a grinder's burrs or a knife
+# blade, are outside it. The Hario V60 sat at good on six pages with nothing
+# measured, on the strength of "made in Japan".
+CERAMIC = re.compile(r"\b(ceramic|porcelain|stoneware|earthenware|terra ?cotta|"
+                     r"enamel(?:ed|ware)?|glazed?|vitreous)\b", re.I)
+NOT_GLAZE = re.compile(r"ceramic (?:burrs?|blades?|knife|knives|grinding)", re.I)
+FOOD_OR_DRINK = re.compile(
+    r"cook|\bpans?\b|\bpots?\b|skillet|dutch oven|bak|dish|plate|bowl|mug|\bcups?\b|"
+    r"\btea|coffee|dripper|pour over|kettle|slow cooker|crock|fryer|food|kitchen|"
+    r"tableware|drink|pitcher|carafe|\bjars?\b|canister|butter|ramekin|tagine|"
+    r"feeding|utensil|spoon", re.I)
+
+
+def lead_check_required(brand, product):
+    e = product.get("ext") or {}
+    material = NOT_GLAZE.sub(" ", " ".join(str(x or "") for x in (
+        product.get("name"), product.get("materialsList"),
+        (e.get("materialAnswers") or {}).get("material"))))
+    context = " ".join(str(x or "") for x in (
+        product.get("name"), product.get("cat"), brand.get("category"),
+        (e.get("exposure") or {}).get("type")))
+    return bool(CERAMIC.search(material)) and bool(FOOD_OR_DRINK.search(context))
+
+
 def _when(value):
     """A year and month from a date we may only know to the year."""
     text = str(value or "").strip()
@@ -143,6 +170,8 @@ def main():
     gated, kept, restored, capped, released = 0, 0, 0, 0, 0
     awarded = 0
     floored = 0
+    unrecorded = 0
+    lead_held = 0
     cleared_stale = 0
     missing = collections.Counter()
     by_cat = collections.Counter()
@@ -182,7 +211,27 @@ def main():
             if not e:
                 continue
             f = e.get("fronts") or {}
+            # Section 6: a reading of our own note may warn and never clear. A
+            # pass with no recorded source behind it is not a finding, so it
+            # reads unassessed and a recommendation resting on it is held.
+            # Naturepedic's Serenade showed a materials pass over a note saying
+            # the material had not been established, and 140 recommendations
+            # rested on passes like it.
+            og0 = e.get("frontOrigin") or {}
+            for k in FRONTS:
+                if f.get(k) == "pass" and og0.get(k) not in RECORDED:
+                    f[k] = "unassessed"
+                    og0.pop(k, None)
+                    notes = e.setdefault("frontNotes", {})
+                    if not re.search(r"not (?:been )?established|not recorded|have not", str(notes.get(k) or "")):
+                        notes[k] = ("Not recorded yet. Our description says so, but no source is on "
+                                    "file, and a description cannot clear a check.")
+                    unrecorded += 1
             blank = [k for k in blocking_for(b, p) if f.get(k) in BLANK]
+            if lead_check_required(b, p) and (f.get("testing") in BLANK or f.get("testing") == "none"):
+                if "testing" not in blank:
+                    blank.append("testing")
+                lead_held += 1
 
             # A reason has to outlive its cause or die with it.
             #
@@ -404,6 +453,8 @@ def main():
     print(f"restored once the missing checks arrived:   {restored}")
     print(f"capped by a fail or caution (section 6):    {capped}")
     print(f"raised to what the checks carry (section 6): {floored}")
+    print(f"passes with no recorded source, now open:    {unrecorded}")
+    print(f"ceramic in the food path without a lead result: {lead_held}")
     print(f"released once that finding was withdrawn:   {released}\n")
     if missing:
         print("the check that is missing:")
