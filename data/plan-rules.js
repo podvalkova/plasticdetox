@@ -434,8 +434,8 @@ window.PLAN_RULES = [
 
   { key:"Kids|Car Seats", swap:"Choose a flame retardant free car seat", room:"nursery", stage:"expecting,baby,toddler", needs:null, rank:57, est:350,
     why:"Enclosed, heated by sun, and federally required to meet flammability standards that many brands still meet chemically.",
-    free:"Air out a new seat outside for two weeks, and crack the windows on hot days before the child gets in.",
-    article:"articles/non-toxic-baby-toddler-products-guide.html" },
+    free:"Park in the shade, and on hot drives open the windows instead of recirculating the cabin air.",
+    article:"articles/best-non-toxic-car-seats.html" },
 
   { key:"Kids|Strollers", swap:"Choose a cleaner stroller fabric", room:"nursery", stage:"expecting,baby,toddler", needs:null, rank:45, est:600,
     why:"Lowest priority kids purchase here. Real exposure, but far less contact time than anything above it.",

@@ -517,11 +517,12 @@
   "status": "pass"
  },
  "Clek": {
-  "checked": "2026-08-31",
-  "note": "Checked recall records on 2026-08-31. The 2021 Foonf and Fllo recall (foam choking hazard) was remedied with a free insert kit and covers only seats made before May 2021; over 24 months and remedied, now informational.",
+  "checked": "2026-09-15",
+  "note": "Checked NHTSA recall records on 2026-09-15. Four distinct Clek car seat recalls in five years, across three product families: 21C005 (December 2021, Foonf and Fllo made before May 21, 2021, foam a child can pick loose, free insert kit, 5.4 percent completion reported in January 2025), 21C006 (December 2021, Liing and Liingo canopy support piece), 21C007 (December 2021, Liing and Liingo cover labels) and 22C002 (June 2022, Olli and Ozzi missing belt routing label). Three or more distinct recalls in five years is evidence about the quality system, so this finding is brand scoped until the December 2021 recalls pass five years. No lawsuit or Prop 65 notice found.",
   "resolved": true,
-  "source": "https://static.nhtsa.gov/odi/rcl/2021/RCONL-21C005-2098.pdf",
-  "status": "pass"
+  "status": "caution",
+  "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=21C005000",
+  "eventDate": "2022-06"
  },
  "Cocofloss": {
   "checked": "2026-08-28",
@@ -873,13 +874,15 @@
   "status": "pass"
  },
  "Evenflo": {
-  "appliesTo": [],
-  "checked": "2026-08-31",
-  "eventDate": "2026",
-  "note": "Six distinct Evenflo car seat recalls ran through 2025 and 2026 (Revolve360 Slim, All4One, Titan 65, LiteMax 30, REO, Revolve180 LiteMax NXT), several with remedies still open. Three or more distinct recalls in five years is evidence about the quality system, so this finding is brand scoped even though no recall touches the product on this page.",
+  "checked": "2026-09-15",
+  "note": "Checked NHTSA records on 2026-09-15. Nine distinct Evenflo car seat recalls in five years, eight of them in 2025 and 2026: 23C005, 25C008 and 26C001 (Titan 65 labels, manual and tether strap), 25C003 (registration cards, including the Gold Revolve360 Extend), 25C010 (Revolve360 Slim headrest foam), 25C011 (All4One recline), 26C002 (LiteMax manual), 26C004 (Reo headrest) and 26C005 (Revolve180 LiteMax NXT level indicator, remedy expected November 2026). Three or more distinct recalls in five years is evidence about the quality system, so this finding covers Evenflo's car seats. The Big Kid booster marketing litigation ended in a $3.5 million class settlement.",
   "resolved": true,
-  "source": "https://www.evenflo.com/pages/product-notices-recalls",
-  "status": "caution"
+  "status": "caution",
+  "source": "https://www.nhtsa.gov/recalls",
+  "eventDate": "2026",
+  "appliesTo": [
+   "Evenflo Revolve360 Extend with Green and Gentle Fabric"
+  ]
  },
  "Extra": {
   "checked": "2026-08-28",
@@ -1663,12 +1666,15 @@
   "total": 2
  },
  "Nuna": {
-  "checked": "2026-09-10",
-  "eventDate": "2024-12",
-  "note": "NHTSA recall 24C-002, opened December 2024, covers 608,786 RAVA convertible seats built July 2016 to October 2023, whose front harness adjuster can stop clamping when debris gets into the teeth. Nuna did publish a remedy: a kit with a new seat pad, a stiff brush and a screwdriver to clean the adjuster, with owner letters mailed 14 February 2025. It published no independent testing of the fix. Multiple class actions filed through 2025 argue the remedy is inadequate because it cleans rather than replaces the mechanism, and none had been dismissed or settled as of February 2026. Flame retardants are not the issue here and the brand is genuinely strong on those; this is a mechanical safety finding on the convertible seat.",
-  "resolved": false,
-  "source": "https://static.nhtsa.gov/odi/rcl/2024/RCLRPT-24C002-8642.PDF",
-  "status": "caution"
+  "checked": "2026-09-15",
+  "note": "Checked NHTSA records and federal dockets on 2026-09-15. NHTSA 24C002 (November 2024) covers 608,786 RAVA seats with the plastic harness adjuster button made July 2016 to October 2023, whose adjuster can stop gripping; a cleaning kit and new pad were mailed from February 2025, with 11 percent completion in the only published quarterly report. Consolidated class actions over the RAVA continue after 2026 rulings let omission claims proceed. No PIPA recall.",
+  "resolved": true,
+  "status": "caution",
+  "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=24C002000",
+  "eventDate": "2024-11",
+  "appliesTo": [
+   "Nuna RAVA Convertible Car Seat"
+  ]
  },
  "Nutricost": {
   "checked": "2026-08-28",
@@ -2337,15 +2343,15 @@
   "total": 0
  },
  "UPPAbaby": {
-  "appliesTo": [
-   "UPPAbaby Mesa Max Infant Car Seat (Henna)"
-  ],
-  "checked": "2026-08-31",
-  "eventDate": "2025",
-  "note": "A federal class action filed in 2025 and still open alleges the Mesa Max, Mesa V2 and Aria car seats can let infants sink into a chin to chest position. A filed suit is an allegation, so it caps at caution. Three older recalls (2015 Vista bumper bar, 2021 RumbleSeat adapters, 2022 RIDGE) all completed their remedies.",
+  "checked": "2026-09-15",
+  "note": "Checked NHTSA records and federal dockets on 2026-09-15. UPPAbaby has never filed a car seat recall with NHTSA. Mossazadeh v. Monahan (C.D. Cal., May 2025) alleges the Mesa Max, Mesa V2 and Aria let infants sink into a chin to chest position and continues; Jacobs v. Monahan (D.N.J.) was dismissed without prejudice in July 2026. A filed suit is an allegation, so it caps at caution. Its CPSC recalls concern strollers.",
   "resolved": true,
-  "source": "https://www.cpsc.gov/Recalls/2015/UPPAbaby-Recalls-Strollers-and-RumbleSeats",
-  "status": "caution"
+  "status": "caution",
+  "source": "https://www.courtlistener.com/?q=Mossazadeh+Monahan",
+  "eventDate": "2025-05",
+  "appliesTo": [
+   "UPPAbaby Mesa Max Infant Car Seat (Greyson)"
+  ]
  },
  "Uigos": {
   "checked": "2026-08-28",
@@ -3081,21 +3087,13 @@
   "note": "Checked CPSC recall records on 2026-09-14. No recall on record for Chefman."
  },
  "Chicco": {
-  "total": 2,
-  "examined": 4,
-  "checked": "2026-09-14",
-  "source": "cpsc",
-  "latest": [
-   "19890528",
-   "Spinning Bee Toy Recalled by Artsana Of America (Chicco)",
-   "",
-   "Artsana",
-   "https://www.cpsc.gov/Recalls/1989/Artsana-Of-America-Chicco-Voluntarily-Begins-A-Corrective-Action-On-Spinning-Bee-Toy"
-  ],
+  "checked": "2026-09-15",
+  "note": "Checked NHTSA records and federal dockets on 2026-09-15. One Chicco car seat recall in five years: 25C005 (April 2025), MyFit Zip Air harness boosters that allow excess chest movement in a crash, a product we do not rate. Jimenez v. Artsana over KidFit booster marketing ended in a class settlement approved in April 2025, and Seidl v. Artsana over regular fabric KeyFit 30 disclosures was dismissed in 2022.",
   "resolved": true,
   "status": "caution",
-  "eventDate": "1989-05",
-  "note": "Checked CPSC recall records on 2026-09-14. Spinning Bee Toy Recalled by Artsana Of America (Chicco) (1989-05). https://www.cpsc.gov/Recalls/1989/Artsana-Of-America-Chicco-Voluntarily-Begins-A-Corrective-Action-On-Spinning-Bee-Toy Within 24 months, so it stands as a caution under rule 5.2."
+  "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=25C005000",
+  "eventDate": "2025-04",
+  "appliesTo": []
  },
  "Cloth-eez": {
   "total": 0,
@@ -3352,21 +3350,13 @@
   "note": "Checked CPSC recall records on 2026-09-14. No recall on record for Gorilla Grip."
  },
  "Graco": {
-  "total": 25,
-  "examined": 33,
-  "checked": "2026-09-14",
-  "source": "cpsc",
-  "latest": [
-   "20141120",
-   "Graco Recalls 11 Models of Strollers Due to Fingertip Amputation Hazard",
-   "Contact Graco immediately for a free repair kit. Repair kits will be available from the firm at the beginning of Decembe",
-   "Graco Children's Products",
-   "https://www.cpsc.gov/Recalls/2015/Graco-Recalls-11-Models-of-Strollers"
-  ],
+  "checked": "2026-09-15",
+  "note": "Checked NHTSA records and federal dockets on 2026-09-15. NHTSA 26C003 (April 2026) covers 5,126 SnugRide Turn and Slide and Modes Nest seats whose carrier may detach from the base, with replacement seats offered. Francoforte v. Graco (N.D. Ga.), over boosters marketed as side impact tested, had a class certified in part in January 2026 and has not reached judgment. Neither concerns a product we rate.",
   "resolved": true,
-  "status": "pass",
-  "eventDate": "2014-11",
-  "note": "Checked CPSC recall records on 2026-09-14. Graco Recalls 11 Models of Strollers Due to Fingertip Amputation Hazard (2014-11). https://www.cpsc.gov/Recalls/2015/Graco-Recalls-11-Models-of-Strollers Remedied: Contact Graco immediately for a free repair kit. Repair kits will be available from the firm at the beginning of Decembe. Over 24 months old, so under rule 5.2 it is informational rather than a finding against the product today."
+  "status": "caution",
+  "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=26C003000",
+  "eventDate": "2026-04",
+  "appliesTo": []
  },
  "GroVia": {
   "total": 0,
@@ -4134,10 +4124,15 @@
   "source": "https://www.beyondpesticides.org/assets/media/documents/TFUSA%20and%20BP%20v.%20Saatva%20Draft%20Complaint_Final.pdf"
  },
  "Safety 1st": {
-  "checked": "2026-09-14",
-  "note": "Checked the CPSC recall API and California Prop 65 notices on 2026-09-14: no Safety 1st or Dorel crib mattress recall. Dorel settled a 2014 Prop 65 case over TDCPP in foam nap pads, a different product.",
+  "checked": "2026-09-15",
+  "note": "Checked NHTSA records on 2026-09-15. Three distinct Safety 1st car seat recalls in five years: 23C002 (March 2023, onBoard 35 SecureTech base lower anchors), 25C004 (harness booster height labels) and 25C006 (2025, 179,845 Grow and Go Sprint seats whose headrest foam a child can pick off). Three or more distinct recalls in five years is evidence about the quality system, so this finding covers Safety 1st car seats. No crib mattress recall.",
   "resolved": true,
-  "status": "pass"
+  "status": "caution",
+  "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=25C006000",
+  "eventDate": "2025",
+  "appliesTo": [
+   "Safety 1st Grow and Go All in One Convertible Car Seat"
+  ]
  },
  "Sealy Baby": {
   "checked": "2026-09-14",
@@ -4223,5 +4218,84 @@
   "note": "Checked the CPSC recall API and California Prop 65 notices on 2026-09-14: no recall or notice found.",
   "resolved": true,
   "status": "pass"
+ },
+ "Britax": {
+  "checked": "2026-09-15",
+  "note": "Checked NHTSA records on 2026-09-15. NHTSA 26C006 (August 20, 2026) is an open recall of 114,660 B Safe Gen 2, Gen 2 FlexFit, FlexFit Plus, B Safe 35, B Safe Ultra and Endeavours infant seats whose handle screw can loosen; the remedy is still being developed, with owner letters due by October 19, 2026. 24C001 (November 2024) replaced lower anchor weight labels on 1,286 One4Life Slim seats.",
+  "resolved": true,
+  "status": "fail",
+  "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=26C006000",
+  "eventDate": "2026-08",
+  "appliesTo": [
+   "Britax B Safe Gen 2 Infant Car Seat"
+  ]
+ },
+ "Maxi Cosi": {
+  "checked": "2026-09-15",
+  "note": "Checked NHTSA records on 2026-09-15. Two Maxi Cosi car seat recalls in five years, both March 2023: 23C002 (infant base lower anchors on the Coral XP, Mico XP, Mico XP Max and Mico Luxe+) and 23C003 (Coral XP inner carrier), over 24 months old and informational under rule 5.2. No lawsuit names a Maxi Cosi car seat, and no Prop 65 notice.",
+  "resolved": true,
+  "status": "pass",
+  "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=23C002000",
+  "eventDate": "2023-03",
+  "appliesTo": []
+ },
+ "Cybex": {
+  "checked": "2026-09-15",
+  "note": "Checked NHTSA records and federal dockets on 2026-09-15. Three distinct Cybex car seat recalls in five years, from its US distributor Columbus Trading Partners: 22C001 (April 2022, Sirona M headrest foam a child can pick off), 23C001 (February 2023, Aton family harness webbing may fray) and 25C002 (February 2025, Aton G hip anchor hooks may bend). Three or more distinct recalls in five years is evidence about the quality system, so this finding is brand scoped.",
+  "resolved": true,
+  "status": "caution",
+  "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=25C002000",
+  "eventDate": "2025-02"
+ },
+ "Doona": {
+  "checked": "2026-09-15",
+  "note": "Checked the NHTSA recall file, federal dockets and California Prop 65 notices on 2026-09-15: no recall, notice or car seat lawsuit found for Doona.",
+  "resolved": true,
+  "status": "pass",
+  "source": "https://www.nhtsa.gov/recalls"
+ },
+ "Joie": {
+  "checked": "2026-09-15",
+  "note": "Checked the NHTSA recall file, federal dockets and California Prop 65 notices on 2026-09-15: no recall, notice or car seat lawsuit found for Joie.",
+  "resolved": true,
+  "status": "pass",
+  "source": "https://www.nhtsa.gov/recalls"
+ },
+ "Peg Perego": {
+  "checked": "2026-09-15",
+  "note": "Checked the NHTSA recall file, federal dockets and California Prop 65 notices on 2026-09-15: no recall, notice or car seat lawsuit found for Peg Perego.",
+  "resolved": true,
+  "status": "pass",
+  "source": "https://www.nhtsa.gov/recalls"
+ },
+ "Babyark": {
+  "checked": "2026-09-15",
+  "note": "Checked the NHTSA recall file, federal dockets and California Prop 65 notices on 2026-09-15: no recall, notice or car seat lawsuit found for Babyark.",
+  "resolved": true,
+  "status": "pass",
+  "source": "https://www.nhtsa.gov/recalls"
+ },
+ "Diono": {
+  "checked": "2026-09-15",
+  "note": "Checked the NHTSA recall file, federal dockets and California Prop 65 notices on 2026-09-15: no Diono car seat recall in the last five years and no lawsuit found. The last recall, 21C002 for the Cambria 2 headrest, dates to March 2021.",
+  "resolved": true,
+  "status": "pass",
+  "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=21C002000"
+ },
+ "Baby Trend": {
+  "checked": "2026-09-15",
+  "note": "Checked NHTSA records on 2026-09-15. One Baby Trend car seat recall in five years: 23C004 (2023), LATCH webbing that can fray on 2,600 Hybrid 3 in 1 seats, a product we do not rate. No lawsuit or Prop 65 notice found.",
+  "resolved": true,
+  "status": "pass",
+  "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=23C004000",
+  "eventDate": "2023",
+  "appliesTo": []
+ },
+ "Cosco": {
+  "checked": "2026-09-15",
+  "note": "Checked the NHTSA recall file on 2026-09-15: no Cosco branded car seat recall in the last five years.",
+  "resolved": true,
+  "status": "pass",
+  "source": "https://www.nhtsa.gov/recalls"
  }
 }

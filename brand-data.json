@@ -16829,11 +16829,14 @@
     "brand": "Britax",
     "category": "Car seats",
     "stance": "careful",
-    "reason": "Has made commitments to FR-free textiles across portions of its lineup.",
-    "evidence": "FR-free commitment on part of lineup",
+    "reason": "Britax sells covers made naturally flame retardant free on most current seats, a cover only claim on polyester fabric with no PFAS statement, and its StayClean fabrics still use flame retardants. The B Safe Gen 2 infant seats are under an open August 2026 recall (26C006) for a handle screw that can loosen.",
+    "evidence": "Naturally FR covers; NHTSA 26C006",
     "alternative": "",
     "sources": [
-      "non-toxic-baby-toddler-products-guide.html"
+      "non-toxic-baby-toddler-products-guide.html",
+      "best-non-toxic-car-seats.html",
+      "https://us.britax.com/shop/naturally-fr",
+      "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=26C006000"
     ],
     "fronts": {
       "formula": {
@@ -16842,30 +16845,140 @@
         "origin": "database"
       },
       "materials": {
-        "status": "unknown",
-        "note": "",
-        "origin": "none"
+        "status": "caution",
+        "note": "Polyester covers; the flame retardant free claim covers the cover only.",
+        "origin": "hand"
       },
       "legal": {
-        "status": "unknown",
-        "note": "",
-        "origin": "none"
+        "status": "caution",
+        "note": "Open recall 26C006 on the B Safe Gen 2 infant seats.",
+        "origin": "hand"
       },
       "testing": {
-        "status": "unknown",
-        "note": "",
-        "origin": "none"
+        "status": "none",
+        "note": "No test within 36 months.",
+        "origin": "hand"
       }
     },
     "reviewed": true,
-    "article": "non-toxic-baby-toddler-products-guide.html",
-    "generalises": true,
+    "article": "best-non-toxic-car-seats.html",
+    "generalises": false,
     "rollup": {
       "products": 0,
       "researched": 0,
       "flagged": 0,
       "worst": null
-    }
+    },
+    "products": [
+      {
+        "name": "Britax One4Life All in One Car Seat",
+        "asins": [
+          "B0FY4868XJ",
+          "B0FY48LLRR"
+        ],
+        "verdict": "careful",
+        "note": "SafeWash cover sold as naturally flame retardant free; the claim covers the cover only. No PFAS statement.",
+        "origin": "article",
+        "source": "best-non-toxic-car-seats.html",
+        "cat": "Car seats",
+        "matchAll": [
+          [
+            "britax",
+            "one4life"
+          ]
+        ],
+        "ext": {
+          "frontNotes": {
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "testing": "This seat has not been tested. SafeWash B Safe Gen 2 and Emblem seats rated low concern in 2022, results over 36 months old, so under rule 4.7 recorded and carrying nothing. Searched the Ecology Center, Mamavation and Consumer Reports on 2026-09-15; nothing newer found.",
+            "materials": "polyester in direct contact, with heat."
+          },
+          "testingNote": "This seat has not been tested. SafeWash B Safe Gen 2 and Emblem seats rated low concern in 2022, results over 36 months old, so under rule 4.7 recorded and carrying nothing. Searched the Ecology Center, Mamavation and Consumer Reports on 2026-09-15; nothing newer found.",
+          "testingDate": "2026-09-15",
+          "materialsList": "polyester",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "dry",
+            "heated": true,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "polyester",
+            "source": "Amazon B0FY4868XJ Material: Steel, Plastic, & Polyester",
+            "checked": "2026-09-15"
+          },
+          "legalNote": "Checked. What is on record concerns other Britax products, not this one: Checked NHTSA records on 2026-09-15. NHTSA 26C006 (August 20, 2026) is an open recall of 114,660 B Safe Gen 2, Gen 2 FlexFit, FlexFit Plus, B Safe 35, B Safe Ultra and Endeavours infant seats whose handle screw can loosen; the remedy is still being developed, with owner letters due by October 19, 2026. 24C001 (November 2024) replaced lower anchor weight labels on 1,286 One4Life Slim seats.",
+          "verdict": "careful",
+          "dated": "2026-09-15",
+          "why": "section 6: awaiting the recorded checks",
+          "fronts": {
+            "formula": "none",
+            "materials": "caution",
+            "legal": "pass",
+            "testing": "none"
+          },
+          "frontOrigin": {
+            "formula": "hand",
+            "testing": "database",
+            "materials": "database",
+            "legal": "database"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
+        }
+      },
+      {
+        "name": "Britax B Safe Gen 2 Infant Car Seat",
+        "verdict": "careful",
+        "note": "SafeWash infant seat under an open NHTSA recall for a handle screw that can loosen.",
+        "origin": "article",
+        "source": "best-non-toxic-car-seats.html",
+        "cat": "Car seats",
+        "matchAll": [
+          [
+            "britax",
+            "safe",
+            "gen"
+          ]
+        ],
+        "ext": {
+          "frontNotes": {
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "testing": "No independent test of this seat was found. Searched the Ecology Center, Mamavation and Consumer Reports on 2026-09-15; nothing newer found.",
+            "legal": "Checked NHTSA records on 2026-09-15. NHTSA 26C006 (August 20, 2026) is an open recall of 114,660 B Safe Gen 2, Gen 2 FlexFit, FlexFit Plus, B Safe 35, B Safe Ultra and Endeavours infant seats whose handle screw can loosen; the remedy is still being developed, with owner letters due by October 19, 2026. 24C001 (November 2024) replaced lower anchor weight labels on 1,286 One4Life Slim seats."
+          },
+          "testingNote": "No independent test of this seat was found. Searched the Ecology Center, Mamavation and Consumer Reports on 2026-09-15; nothing newer found.",
+          "testingDate": "2026-09-15",
+          "legalNote": "Checked NHTSA records on 2026-09-15. NHTSA 26C006 (August 20, 2026) is an open recall of 114,660 B Safe Gen 2, Gen 2 FlexFit, FlexFit Plus, B Safe 35, B Safe Ultra and Endeavours infant seats whose handle screw can loosen; the remedy is still being developed, with owner letters due by October 19, 2026. 24C001 (November 2024) replaced lower anchor weight labels on 1,286 One4Life Slim seats.",
+          "legalDate": "2026-08",
+          "cappedFrom": "careful",
+          "capRestoreWhy": "section 6: legal failed",
+          "verdict": "skip",
+          "dated": "2026-09-15",
+          "why": "section 6 ceiling: legal is fail",
+          "fronts": {
+            "formula": "none",
+            "materials": "unassessed",
+            "legal": "fail",
+            "testing": "none"
+          },
+          "frontOrigin": {
+            "formula": "hand",
+            "testing": "database",
+            "legal": "database"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
+      }
+    ]
   },
   {
     "id": "broil-king",
@@ -17001,12 +17114,13 @@
     "brand": "Bugaboo",
     "category": "Strollers",
     "stance": "good",
-    "reason": "Premium stroller with fully disclosed materials, a differentiator in a category that mostly does not disclose.",
+    "reason": "Premium stroller with fully disclosed materials, a differentiator in a category that mostly does not disclose. Its Turtle Air car seat, made by Nuna, has a polyester seat pad and no flame retardant free claim we could find.",
     "evidence": "fully disclosed materials",
     "alternative": "",
     "sources": [
       "https://www.cpsc.gov/Recalls/2013/Bugaboo-Recalls-Strollers-Due-to-Fall-and-Choking-Hazards/http:",
-      "top-100-baby-kids-products-amazon.html"
+      "top-100-baby-kids-products-amazon.html",
+      "best-non-toxic-car-seats.html"
     ],
     "buy": "https://www.amazon.com/dp/B0F1DPY9QC?tag=plasticdetox-20",
     "fronts": {
@@ -17104,6 +17218,67 @@
             "stroller"
           ]
         ]
+      },
+      {
+        "name": "Bugaboo Turtle Air Shield by Nuna Car Seat",
+        "asins": [
+          "B0DG6JDL1M"
+        ],
+        "verdict": "careful",
+        "note": "Polyester seat pad with a merino wool blend insert; no flame retardant free claim found.",
+        "origin": "article",
+        "source": "best-non-toxic-car-seats.html",
+        "cat": "Car seats",
+        "matchAll": [
+          [
+            "bugaboo",
+            "turtle"
+          ]
+        ],
+        "ext": {
+          "frontNotes": {
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "testing": "No independent test of this seat was found. Searched the Ecology Center, Mamavation and Consumer Reports on 2026-09-15; nothing newer found.",
+            "materials": "polyester in direct contact, with heat.",
+            "legal": "Checked CPSC recall records on 2026-09-14. Bugaboo Recalls Cameleon3 Strollers Due to Fall Hazard (2013-03). https://www.cpsc.gov/Recalls/2013/Bugaboo-Recalls-Cameleon3-Strollers Remedied: Consumers should immediately remove the carry handle from the stroller's bassinet or seat and contact Bugaboo for a free. Over 24 months old and remedied, so under rule 5.2 it is informational rather than a finding against the product today."
+          },
+          "testingNote": "No independent test of this seat was found. Searched the Ecology Center, Mamavation and Consumer Reports on 2026-09-15; nothing newer found.",
+          "testingDate": "2026-09-15",
+          "materialsList": "polyester",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "dry",
+            "heated": true,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "polyester",
+            "source": "bugaboo.com US: seat pad 100% polyester; Amazon B0DG6JDL1M Material: Polyester",
+            "checked": "2026-09-15"
+          },
+          "legalNote": "Checked CPSC recall records on 2026-09-14. Bugaboo Recalls Cameleon3 Strollers Due to Fall Hazard (2013-03). https://www.cpsc.gov/Recalls/2013/Bugaboo-Recalls-Cameleon3-Strollers Remedied: Consumers should immediately remove the carry handle from the stroller's bassinet or seat and contact Bugaboo for a free. Over 24 months old and remedied, so under rule 5.2 it is informational rather than a finding against the product today.",
+          "legalDate": "2013-03",
+          "verdict": "careful",
+          "dated": "2026-09-15",
+          "why": "section 6: awaiting the recorded checks",
+          "fronts": {
+            "formula": "none",
+            "materials": "caution",
+            "legal": "pass",
+            "testing": "none"
+          },
+          "frontOrigin": {
+            "formula": "hand",
+            "testing": "database",
+            "materials": "database",
+            "legal": "database"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
       }
     ],
     "rollup": {
@@ -21905,12 +22080,15 @@
     "id": "chicco",
     "brand": "Chicco",
     "category": "Car seats",
-    "stance": "skip",
-    "reason": "ClearTex line is a cleaner FR-free option, but the KeyFit 35 was flagged by Ecology Center 2018 testing for brominated flame retardants with no brand-wide FR-free commitment.",
-    "evidence": "Ecology Center 2018 brominated flame retardants",
-    "alternative": "Nuna or Clek",
+    "stance": "careful",
+    "reason": "The verdict depends on the product. ClearTex seats are made without flame retardant treatments in fabric, foam and labels, Chicco's policy says no car seat contains added PFAS, and UL lists them for GREENGUARD Gold; the fabric is polyester, so they are careful picks we recommend as a stated compromise. Regular fabric seats make no such claim, and a regular fabric KeyFit 30 rated high concern with likely PFAS in 2018 and 2022 testing.",
+    "evidence": "ClearTex policy; UL SPOT GREENGUARD Gold; Ecology Center 2018 and 2022",
+    "alternative": "",
     "sources": [
-      "top-100-baby-kids-products-amazon.html"
+      "top-100-baby-kids-products-amazon.html",
+      "best-non-toxic-car-seats.html",
+      "https://www.chiccousa.com/cleartex/",
+      "https://www.chiccousa.com/responsible-value-chain/"
     ],
     "fronts": {
       "formula": {
@@ -21919,99 +22097,253 @@
         "origin": "database"
       },
       "materials": {
-        "status": "unknown",
-        "note": "",
-        "origin": "none"
+        "status": "caution",
+        "note": "Car seat fabrics, ClearTex included, are polyester.",
+        "origin": "hand"
       },
       "legal": {
-        "status": "unknown",
-        "note": "",
-        "origin": "none"
+        "status": "pass",
+        "note": "One car seat recall in five years (25C005), a product we do not rate.",
+        "origin": "hand"
       },
       "testing": {
-        "status": "caution",
-        "note": "the KeyFit 35 was flagged by Ecology Center 2018 testing for brominated flame retardants with no brand-wide…",
-        "origin": "extracted"
+        "status": "none",
+        "note": "No car seat test within 36 months.",
+        "origin": "hand"
       }
     },
     "reviewed": true,
-    "article": "top-100-baby-kids-products-amazon.html",
-    "generalises": true,
+    "article": "best-non-toxic-car-seats.html",
+    "generalises": false,
     "products": [
       {
-        "name": "Infant Car Seat",
-        "asins": [
-          "B0BYTJDL71"
-        ],
-        "verdict": "skip",
-        "note": "Same Ecology Center 2018 testing flagged Chicco for brominated flame retardants. Brand has not publicly committed to FR free across the line. Lab finding plus absence of brand commitment is the SKIP signal.",
+        "name": "Chicco KeyFit 30 Infant Car Seat (regular fabric)",
+        "verdict": "careful",
+        "note": "Regular Chicco fabric, which carries no flame retardant free claim. Buy the ClearTex version by name.",
         "origin": "article",
-        "source": "top-100-baby-kids-products-amazon.html",
+        "source": "best-non-toxic-car-seats.html",
+        "cat": "Car seats",
+        "matchAll": [
+          [
+            "chicco",
+            "keyfit",
+            "30"
+          ]
+        ],
         "ext": {
           "frontNotes": {
-            "testing": "the KeyFit 35 was flagged by Ecology Center 2018 testing for brominated flame retardants with no brand-wide… (Recorded for Chicco as a whole rather than this product specifically.)",
-            "materials": "We have not established what the product actually touches.",
             "formula": "An object has no ingredient list. What it is made of is the materials check.",
-            "legal": "Checked CPSC recall records on 2026-09-14. Spinning Bee Toy Recalled by Artsana Of America (Chicco) (1989-05). https://www.cpsc.gov/Recalls/1989/Artsana-Of-America-Chicco-Voluntarily-Begins-A-Corrective-Action-On-Spinning-Bee-Toy Within 24 months, so it stands as a caution under rule 5.2."
+            "testing": "The Ecology Center rated regular fabric KeyFit 30 seats high concern in 2018 and 2022, with likely PFAS in 2022, results over 36 months old, so under rule 4.7 recorded and carrying nothing. Searched the Ecology Center, Mamavation and Consumer Reports on 2026-09-15; nothing newer found."
           },
-          "inheritedFronts": [
-            "testing"
-          ],
-          "exposure": {
-            "type": "worn gear",
-            "level": "high",
-            "score": 5.0,
-            "baby": true,
-            "route": "skin",
-            "duration": "hours",
-            "retained": "prolonged",
-            "frequency": "weekly",
-            "heat": false,
-            "fat": false,
-            "why": "for a baby, which is high whatever the arithmetic says"
-          },
-          "materialAnswers": {
-            "contact": "",
-            "contactFrom": "",
-            "base": "",
-            "heated": false,
-            "mouthed": false,
-            "reuse": "",
-            "use": "",
-            "binder": "",
-            "material": "",
-            "source": "",
-            "checked": "2026-09-02",
-            "open": "We have not established what the product actually touches"
-          },
-          "legalNote": "Checked CPSC recall records on 2026-09-14. Spinning Bee Toy Recalled by Artsana Of America (Chicco) (1989-05). https://www.cpsc.gov/Recalls/1989/Artsana-Of-America-Chicco-Voluntarily-Begins-A-Corrective-Action-On-Spinning-Bee-Toy Within 24 months, so it stands as a caution under rule 5.2.",
-          "legalDate": "1989-05",
-          "verdict": "careful",
-          "dated": "2026-09-14",
-          "why": "section 6: testing is caution",
+          "testingNote": "The Ecology Center rated regular fabric KeyFit 30 seats high concern in 2018 and 2022, with likely PFAS in 2022, results over 36 months old, so under rule 4.7 recorded and carrying nothing. Searched the Ecology Center, Mamavation and Consumer Reports on 2026-09-15; nothing newer found.",
+          "testingDate": "2026-09-15",
+          "legalNote": "Checked. What is on record concerns other Chicco products, not this one: Checked NHTSA records and federal dockets on 2026-09-15. One Chicco car seat recall in five years: 25C005 (April 2025), MyFit Zip Air harness boosters that allow excess chest movement in a crash, a product we do not rate. Jimenez v. Artsana over KidFit booster marketing ended in a class settlement approved in April 2025, and Seidl v. Artsana over regular fabric KeyFit 30 disclosures was dismissed in 2022.",
+          "verdict": "unrated",
+          "dated": "2026-09-15",
+          "why": "section 6: no check carries a finding",
           "fronts": {
             "formula": "none",
             "materials": "unassessed",
-            "legal": "caution",
-            "testing": "caution"
+            "legal": "pass",
+            "testing": "none"
           },
           "frontOrigin": {
-            "testing": "stated",
             "formula": "hand",
+            "testing": "database",
+            "legal": "database"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
+      },
+      {
+        "name": "Chicco Fit360 ClearTex Rotating Convertible Car Seat",
+        "asins": [
+          "B0H9NM5CBJ"
+        ],
+        "verdict": "careful",
+        "note": "ClearTex knit fabric, foam and labels, flame retardant free by Chicco's statement and PFAS free by its policy. GREENGUARD Gold listed in UL SPOT. EPP crash foam and 360 degree rotation.",
+        "origin": "article",
+        "source": "best-non-toxic-car-seats.html",
+        "cat": "Car seats",
+        "matchAll": [
+          [
+            "chicco",
+            "fit360"
+          ]
+        ],
+        "tradeoff": "Kept under rule 5.7. A car seat is required, every car seat is plastic in its shell, crash foam and harness, and every flame retardant free fabric except Clek's Mammoth is polyester. ClearTex carries the broadest written claim we found (fabric, foam and labels made without flame retardant treatments, no added PFAS by policy, GREENGUARD Gold listed), and the polyester is stated on the card.",
+        "ext": {
+          "frontNotes": {
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "testing": "No independent test of current ClearTex production exists. The Ecology Center rated a ClearTex KeyFit 35 made in April 2021 low concern with every minor part clean in its 2022 report, a result over 36 months old, so under rule 4.7 recorded and carrying nothing. Searched the Ecology Center, Mamavation and Consumer Reports on 2026-09-15; nothing newer found.",
+            "materials": "polyester in direct contact, with heat."
+          },
+          "testingNote": "No independent test of current ClearTex production exists. The Ecology Center rated a ClearTex KeyFit 35 made in April 2021 low concern with every minor part clean in its 2022 report, a result over 36 months old, so under rule 4.7 recorded and carrying nothing. Searched the Ecology Center, Mamavation and Consumer Reports on 2026-09-15; nothing newer found.",
+          "testingDate": "2026-09-15",
+          "materialsList": "polyester",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "dry",
+            "heated": true,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "polyester",
+            "source": "chiccousa.com/cleartex: ClearTex is a construction of polyester fibers; Amazon B0H9NM5CBJ Material: Alloy Steel, Plastic, Polyester",
+            "checked": "2026-09-15"
+          },
+          "legalNote": "Checked. What is on record concerns other Chicco products, not this one: Checked NHTSA records and federal dockets on 2026-09-15. One Chicco car seat recall in five years: 25C005 (April 2025), MyFit Zip Air harness boosters that allow excess chest movement in a crash, a product we do not rate. Jimenez v. Artsana over KidFit booster marketing ended in a class settlement approved in April 2025, and Seidl v. Artsana over regular fabric KeyFit 30 disclosures was dismissed in 2022.",
+          "verdict": "careful",
+          "dated": "2026-09-15",
+          "why": "section 6: materials is caution",
+          "fronts": {
+            "formula": "none",
+            "materials": "caution",
+            "legal": "pass",
+            "testing": "none"
+          },
+          "frontOrigin": {
+            "formula": "hand",
+            "testing": "database",
+            "materials": "database",
             "legal": "database"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": []
-        },
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
+        }
+      },
+      {
+        "name": "Chicco KeyFit Max ClearTex Infant Car Seat",
+        "asins": [
+          "B0DTLLTJ1X"
+        ],
+        "verdict": "careful",
+        "note": "ClearTex knit fabric, foam and labels, flame retardant free by Chicco's statement and PFAS free by its policy. GREENGUARD Gold listed in UL SPOT. EPS lined shell and anti rebound bar.",
+        "origin": "article",
+        "source": "best-non-toxic-car-seats.html",
         "cat": "Car seats",
         "matchAll": [
           [
             "chicco",
-            "seat"
+            "keyfit",
+            "max"
           ]
-        ]
+        ],
+        "tradeoff": "Kept under rule 5.7. A car seat is required, every car seat is plastic in its shell, crash foam and harness, and every flame retardant free fabric except Clek's Mammoth is polyester. ClearTex carries the broadest written claim we found (fabric, foam and labels made without flame retardant treatments, no added PFAS by policy, GREENGUARD Gold listed), and the polyester is stated on the card.",
+        "ext": {
+          "frontNotes": {
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "testing": "No independent test of current ClearTex production exists. The Ecology Center rated a ClearTex KeyFit 35 made in April 2021 low concern with every minor part clean in its 2022 report, a result over 36 months old, so under rule 4.7 recorded and carrying nothing. Searched the Ecology Center, Mamavation and Consumer Reports on 2026-09-15; nothing newer found.",
+            "materials": "polyester in direct contact, with heat."
+          },
+          "testingNote": "No independent test of current ClearTex production exists. The Ecology Center rated a ClearTex KeyFit 35 made in April 2021 low concern with every minor part clean in its 2022 report, a result over 36 months old, so under rule 4.7 recorded and carrying nothing. Searched the Ecology Center, Mamavation and Consumer Reports on 2026-09-15; nothing newer found.",
+          "testingDate": "2026-09-15",
+          "materialsList": "polyester",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "dry",
+            "heated": true,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "polyester",
+            "source": "chiccousa.com/cleartex: ClearTex is a construction of polyester fibers; Amazon B0DTLLTJ1X Material: Metal, Plastic, Polyester",
+            "checked": "2026-09-15"
+          },
+          "legalNote": "Checked. What is on record concerns other Chicco products, not this one: Checked NHTSA records and federal dockets on 2026-09-15. One Chicco car seat recall in five years: 25C005 (April 2025), MyFit Zip Air harness boosters that allow excess chest movement in a crash, a product we do not rate. Jimenez v. Artsana over KidFit booster marketing ended in a class settlement approved in April 2025, and Seidl v. Artsana over regular fabric KeyFit 30 disclosures was dismissed in 2022.",
+          "verdict": "careful",
+          "dated": "2026-09-15",
+          "why": "section 6: materials is caution",
+          "fronts": {
+            "formula": "none",
+            "materials": "caution",
+            "legal": "pass",
+            "testing": "none"
+          },
+          "frontOrigin": {
+            "formula": "hand",
+            "testing": "database",
+            "materials": "database",
+            "legal": "database"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
+        }
+      },
+      {
+        "name": "Chicco OneFit LX ClearTex All in One Car Seat",
+        "asins": [
+          "B0DQRCZ8LD"
+        ],
+        "verdict": "careful",
+        "note": "ClearTex knit fabric, foam and labels, flame retardant free by Chicco's statement and PFAS free by its policy. GREENGUARD Gold listed in UL SPOT. Rear facing from 5 lb, booster to 100 lb.",
+        "origin": "article",
+        "source": "best-non-toxic-car-seats.html",
+        "cat": "Car seats",
+        "matchAll": [
+          [
+            "chicco",
+            "onefit"
+          ]
+        ],
+        "tradeoff": "Kept under rule 5.7. A car seat is required, every car seat is plastic in its shell, crash foam and harness, and every flame retardant free fabric except Clek's Mammoth is polyester. ClearTex carries the broadest written claim we found (fabric, foam and labels made without flame retardant treatments, no added PFAS by policy, GREENGUARD Gold listed), and the polyester is stated on the card.",
+        "ext": {
+          "frontNotes": {
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "testing": "No independent test of current ClearTex production exists. The Ecology Center rated a ClearTex KeyFit 35 made in April 2021 low concern with every minor part clean in its 2022 report, a result over 36 months old, so under rule 4.7 recorded and carrying nothing. Searched the Ecology Center, Mamavation and Consumer Reports on 2026-09-15; nothing newer found.",
+            "materials": "polyester in direct contact, with heat."
+          },
+          "testingNote": "No independent test of current ClearTex production exists. The Ecology Center rated a ClearTex KeyFit 35 made in April 2021 low concern with every minor part clean in its 2022 report, a result over 36 months old, so under rule 4.7 recorded and carrying nothing. Searched the Ecology Center, Mamavation and Consumer Reports on 2026-09-15; nothing newer found.",
+          "testingDate": "2026-09-15",
+          "materialsList": "polyester",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "dry",
+            "heated": true,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "polyester",
+            "source": "chiccousa.com/cleartex: ClearTex is a construction of polyester fibers; Amazon B0DQRCZ8LD Material: Metal, Plastic, Polyester",
+            "checked": "2026-09-15"
+          },
+          "legalNote": "Checked. What is on record concerns other Chicco products, not this one: Checked NHTSA records and federal dockets on 2026-09-15. One Chicco car seat recall in five years: 25C005 (April 2025), MyFit Zip Air harness boosters that allow excess chest movement in a crash, a product we do not rate. Jimenez v. Artsana over KidFit booster marketing ended in a class settlement approved in April 2025, and Seidl v. Artsana over regular fabric KeyFit 30 disclosures was dismissed in 2022.",
+          "verdict": "careful",
+          "dated": "2026-09-15",
+          "why": "section 6: materials is caution",
+          "fronts": {
+            "formula": "none",
+            "materials": "caution",
+            "legal": "pass",
+            "testing": "none"
+          },
+          "frontOrigin": {
+            "formula": "hand",
+            "testing": "database",
+            "materials": "database",
+            "legal": "database"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
+        }
       }
     ],
     "rollup": {
@@ -22019,7 +22351,8 @@
       "researched": 1,
       "flagged": 1,
       "worst": "skip"
-    }
+    },
+    "buy": "https://www.amazon.com/dp/B0H9NM5CBJ?tag=plasticdetox-20"
   },
   {
     "id": "chill-ah",
@@ -22560,14 +22893,17 @@
     "id": "clek",
     "brand": "Clek",
     "category": "Car seats",
-    "stance": "good",
-    "reason": "Uses merino wool batting that meets flammability standards naturally with no added flame retardants.",
-    "evidence": "merino wool, no added flame retardants",
+    "stance": "careful",
+    "reason": "Every current Clek fabric is sold flame retardant free and PFAS free, and Mammoth, 70% merino wool and 30% TENCEL, is the only car seat fabric we found with no polyester; Clek's other fabrics are 99 to 100% polyester. Four NHTSA recalls between December 2021 and June 2022, across the Foonf and Fllo, the Liing and Liingo, and the Olli and Ozzi, each with a free remedy, put the brand at caution until they pass five years.",
+    "evidence": "Mammoth 70% merino 30% TENCEL; NHTSA 21C005, 21C006, 21C007, 22C002",
     "alternative": "",
     "sources": [
-      "non-toxic-baby-toddler-products-guide.html"
+      "non-toxic-baby-toddler-products-guide.html",
+      "best-non-toxic-car-seats.html",
+      "https://clekinc.com/pages/our-fabric",
+      "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=21C005000"
     ],
-    "buy": "https://www.amazon.com/dp/B0CZPCGF51?tag=plasticdetox-20",
+    "buy": "https://www.amazon.com/dp/B0DQ1F9937?tag=plasticdetox-20",
     "fronts": {
       "formula": {
         "status": "none",
@@ -22575,84 +22911,80 @@
         "origin": "database"
       },
       "materials": {
-        "status": "unknown",
-        "note": "",
-        "origin": "none"
+        "status": "caution",
+        "note": "Mammoth is merino wool and TENCEL; other fabrics are polyester.",
+        "origin": "hand"
       },
       "legal": {
-        "status": "unknown",
-        "note": "",
-        "origin": "none"
+        "status": "caution",
+        "note": "Four distinct car seat recalls in five years (21C005, 21C006, 21C007, 22C002).",
+        "origin": "hand"
       },
       "testing": {
-        "status": "unknown",
-        "note": "",
-        "origin": "none"
+        "status": "none",
+        "note": "No test within 36 months.",
+        "origin": "hand"
       }
     },
     "reviewed": true,
-    "article": "non-toxic-baby-toddler-products-guide.html",
+    "article": "best-non-toxic-car-seats.html",
     "generalises": true,
     "products": [
       {
-        "name": "Clek Foonf Convertible Car Seat",
+        "name": "Clek Foonf Convertible Car Seat, Railroad",
         "asins": [
           "B0CZPCGF51"
         ],
-        "verdict": "good",
-        "note": "Merino wool fabric meets the federal flammability standard naturally with no chemical flame retardants. Steel anti rebound bar and rear facing to 50 lbs. Worth knowing: Premium price.",
-        "origin": "store",
+        "verdict": "careful",
+        "note": "Railroad fabric, 99% synthetic and 1% wool, flame retardant free and PFAS free by Clek's statement. Choose Mammoth for a fabric with no synthetic fiber.",
+        "origin": "article",
+        "source": "best-non-toxic-car-seats.html",
+        "cat": "Car seats",
+        "matchAll": [
+          [
+            "clek",
+            "foonf",
+            "railroad"
+          ]
+        ],
         "ext": {
-          "legalNote": "Checked recall records on 2026-08-31. The 2021 Foonf and Fllo recall (foam choking hazard) was remedied with a free insert kit and covers only seats made before May 2021; over 24 months and remedied, now informational.",
           "frontNotes": {
-            "materials": "We have not established what the product actually touches.",
-            "legal": "Checked recall records on 2026-08-31. The 2021 Foonf and Fllo recall (foam choking hazard) was remedied with a free insert kit and covers only seats made before May 2021; over 24 months and remedied, now informational.",
-            "formula": "An object has no ingredient list. What it is made of is the materials check."
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "testing": "No test of current production exists. The Ecology Center found a whole Fllo in Mammoth clean in 2018 and two Liing seats clean in 2022, results over 36 months old, so under rule 4.7 recorded and carrying nothing. Searched the Ecology Center, Mamavation and Consumer Reports on 2026-09-15; nothing newer found.",
+            "materials": "polyester in direct contact, with heat.",
+            "legal": "Checked NHTSA recall records on 2026-09-15. Four distinct Clek car seat recalls in five years, across three product families: 21C005 (December 2021, Foonf and Fllo made before May 21, 2021, foam a child can pick loose, free insert kit, 5.4 percent completion reported in January 2025), 21C006 (December 2021, Liing and Liingo canopy support piece), 21C007 (December 2021, Liing and Liingo cover labels) and 22C002 (June 2022, Olli and Ozzi missing belt routing label). Three or more distinct recalls in five years is evidence about the quality system, so this finding is brand scoped until the December 2021 recalls pass five years. No lawsuit or Prop 65 notice found."
           },
-          "heldFrom": "good",
-          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
-          "exposure": {
-            "type": "worn gear",
-            "level": "high",
-            "score": 5.0,
-            "baby": true,
-            "route": "skin",
-            "duration": "hours",
-            "retained": "prolonged",
-            "frequency": "weekly",
-            "heat": false,
-            "fat": false,
-            "why": "for a baby, which is high whatever the arithmetic says"
-          },
+          "testingNote": "No test of current production exists. The Ecology Center found a whole Fllo in Mammoth clean in 2018 and two Liing seats clean in 2022, results over 36 months old, so under rule 4.7 recorded and carrying nothing. Searched the Ecology Center, Mamavation and Consumer Reports on 2026-09-15; nothing newer found.",
+          "testingDate": "2026-09-15",
+          "materialsList": "polyester, wool",
           "materialAnswers": {
-            "contact": "",
-            "contactFrom": "",
-            "base": "",
-            "heated": false,
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "dry",
+            "heated": true,
             "mouthed": false,
             "reuse": "",
             "use": "",
-            "binder": "",
-            "material": "",
-            "source": "",
-            "checked": "2026-09-02",
-            "open": "We have not established what the product actually touches"
+            "material": "polyester, wool",
+            "source": "clekinc.com/pages/our-fabric: Railroad 99% Polyester / 1% wool; Amazon B0CZPCGF51 title names Railroad Ziip",
+            "checked": "2026-09-15"
           },
-          "heldBack": [
-            "materials"
-          ],
-          "verdict": "unrated",
-          "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: materials",
+          "legalNote": "Checked NHTSA recall records on 2026-09-15. Four distinct Clek car seat recalls in five years, across three product families: 21C005 (December 2021, Foonf and Fllo made before May 21, 2021, foam a child can pick loose, free insert kit, 5.4 percent completion reported in January 2025), 21C006 (December 2021, Liing and Liingo canopy support piece), 21C007 (December 2021, Liing and Liingo cover labels) and 22C002 (June 2022, Olli and Ozzi missing belt routing label). Three or more distinct recalls in five years is evidence about the quality system, so this finding is brand scoped until the December 2021 recalls pass five years. No lawsuit or Prop 65 notice found.",
+          "legalDate": "2022-06",
+          "verdict": "careful",
+          "dated": "2026-09-15",
+          "why": "section 6: awaiting the recorded checks",
           "fronts": {
             "formula": "none",
-            "materials": "unassessed",
-            "legal": "pass",
-            "testing": "unassessed"
+            "materials": "caution",
+            "legal": "caution",
+            "testing": "none"
           },
           "frontOrigin": {
-            "legal": "database",
-            "formula": "hand"
+            "formula": "hand",
+            "testing": "database",
+            "materials": "database",
+            "legal": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -22661,75 +22993,63 @@
             "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
-        },
-        "cat": "Car seats",
-        "matchAll": [
-          [
-            "clek",
-            "seat",
-            "foonf"
-          ]
-        ]
+        }
       },
       {
-        "name": "Clek Fllo Convertible Car Seat",
+        "name": "Clek Fllo Convertible Car Seat, Railroad",
         "asins": [
           "B0CZPCLYW7"
         ],
-        "verdict": "good",
-        "note": "The slim version of the Foonf, three across friendly. Merino wool fabric, no added flame retardants. Badges: Merino wool.",
-        "origin": "registry",
+        "verdict": "careful",
+        "note": "Railroad fabric, 99% synthetic and 1% wool, flame retardant free and PFAS free by Clek's statement. Choose Mammoth for a fabric with no synthetic fiber.",
+        "origin": "article",
+        "source": "best-non-toxic-car-seats.html",
+        "cat": "Car seats",
+        "matchAll": [
+          [
+            "clek",
+            "fllo",
+            "railroad"
+          ]
+        ],
         "ext": {
-          "legalNote": "Checked recall records on 2026-08-31. The 2021 Foonf and Fllo recall (foam choking hazard) was remedied with a free insert kit and covers only seats made before May 2021; over 24 months and remedied, now informational.",
           "frontNotes": {
-            "materials": "We have not established what the product actually touches.",
-            "legal": "Checked recall records on 2026-08-31. The 2021 Foonf and Fllo recall (foam choking hazard) was remedied with a free insert kit and covers only seats made before May 2021; over 24 months and remedied, now informational.",
-            "formula": "An object has no ingredient list. What it is made of is the materials check."
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "testing": "No test of current production exists. The Ecology Center found a whole Fllo in Mammoth clean in 2018 and two Liing seats clean in 2022, results over 36 months old, so under rule 4.7 recorded and carrying nothing. Searched the Ecology Center, Mamavation and Consumer Reports on 2026-09-15; nothing newer found.",
+            "materials": "polyester in direct contact, with heat.",
+            "legal": "Checked NHTSA recall records on 2026-09-15. Four distinct Clek car seat recalls in five years, across three product families: 21C005 (December 2021, Foonf and Fllo made before May 21, 2021, foam a child can pick loose, free insert kit, 5.4 percent completion reported in January 2025), 21C006 (December 2021, Liing and Liingo canopy support piece), 21C007 (December 2021, Liing and Liingo cover labels) and 22C002 (June 2022, Olli and Ozzi missing belt routing label). Three or more distinct recalls in five years is evidence about the quality system, so this finding is brand scoped until the December 2021 recalls pass five years. No lawsuit or Prop 65 notice found."
           },
-          "heldFrom": "good",
-          "restoreWhy": "direct evidence at sku scope on materials",
-          "exposure": {
-            "type": "worn gear",
-            "level": "high",
-            "score": 5.0,
-            "baby": true,
-            "route": "skin",
-            "duration": "hours",
-            "retained": "prolonged",
-            "frequency": "weekly",
-            "heat": false,
-            "fat": false,
-            "why": "for a baby, which is high whatever the arithmetic says"
-          },
+          "testingNote": "No test of current production exists. The Ecology Center found a whole Fllo in Mammoth clean in 2018 and two Liing seats clean in 2022, results over 36 months old, so under rule 4.7 recorded and carrying nothing. Searched the Ecology Center, Mamavation and Consumer Reports on 2026-09-15; nothing newer found.",
+          "testingDate": "2026-09-15",
+          "materialsList": "polyester, wool",
           "materialAnswers": {
-            "contact": "",
-            "contactFrom": "",
-            "base": "",
-            "heated": false,
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "dry",
+            "heated": true,
             "mouthed": false,
             "reuse": "",
             "use": "",
-            "binder": "",
-            "material": "",
-            "source": "",
-            "checked": "2026-09-02",
-            "open": "We have not established what the product actually touches"
+            "material": "polyester, wool",
+            "source": "clekinc.com/pages/our-fabric: Railroad 99% Polyester / 1% wool; Amazon B0CZPCLYW7 title names Railroad Ziip",
+            "checked": "2026-09-15"
           },
-          "heldBack": [
-            "materials"
-          ],
-          "verdict": "unrated",
-          "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: materials",
+          "legalNote": "Checked NHTSA recall records on 2026-09-15. Four distinct Clek car seat recalls in five years, across three product families: 21C005 (December 2021, Foonf and Fllo made before May 21, 2021, foam a child can pick loose, free insert kit, 5.4 percent completion reported in January 2025), 21C006 (December 2021, Liing and Liingo canopy support piece), 21C007 (December 2021, Liing and Liingo cover labels) and 22C002 (June 2022, Olli and Ozzi missing belt routing label). Three or more distinct recalls in five years is evidence about the quality system, so this finding is brand scoped until the December 2021 recalls pass five years. No lawsuit or Prop 65 notice found.",
+          "legalDate": "2022-06",
+          "verdict": "careful",
+          "dated": "2026-09-15",
+          "why": "section 6: awaiting the recorded checks",
           "fronts": {
             "formula": "none",
-            "materials": "unassessed",
-            "legal": "pass",
-            "testing": "unassessed"
+            "materials": "caution",
+            "legal": "caution",
+            "testing": "none"
           },
           "frontOrigin": {
-            "legal": "database",
-            "formula": "hand"
+            "formula": "hand",
+            "testing": "database",
+            "materials": "database",
+            "legal": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -22738,15 +23058,7 @@
             "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
-        },
-        "cat": "Car seats",
-        "matchAll": [
-          [
-            "clek",
-            "seat",
-            "fllo"
-          ]
-        ]
+        }
       },
       {
         "name": "Clek car seats",
@@ -22802,6 +23114,270 @@
           "restoreWhy": "",
           "heldBack": [
             "materials"
+          ]
+        }
+      },
+      {
+        "name": "Clek Foonf Convertible Car Seat, Mammoth",
+        "asins": [
+          "B0DQ1F9937"
+        ],
+        "verdict": "careful",
+        "note": "Mammoth fabric, 70% merino wool and 30% TENCEL, flame retardant free and PFAS free by Clek's statement. EPP foam, steel and magnesium substructure, rear facing to 50 lb.",
+        "origin": "article",
+        "source": "best-non-toxic-car-seats.html",
+        "cat": "Car seats",
+        "matchAll": [
+          [
+            "clek",
+            "foonf",
+            "mammoth"
+          ]
+        ],
+        "tradeoff": "Kept under rule 5.7 as the only car seat fabric we found with no polyester (70% merino wool, 30% TENCEL), flame retardant free and PFAS free by Clek's statement. The caution is Clek's four NHTSA recalls between December 2021 and June 2022, each with a free remedy, stated in the article.",
+        "ext": {
+          "frontNotes": {
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "testing": "No test of current production exists. The Ecology Center found a whole Fllo in Mammoth clean in 2018 and two Liing seats clean in 2022, results over 36 months old, so under rule 4.7 recorded and carrying nothing. Searched the Ecology Center, Mamavation and Consumer Reports on 2026-09-15; nothing newer found.",
+            "materials": "In contact with wool, which puts nothing into what it holds.",
+            "legal": "Checked NHTSA recall records on 2026-09-15. Four distinct Clek car seat recalls in five years, across three product families: 21C005 (December 2021, Foonf and Fllo made before May 21, 2021, foam a child can pick loose, free insert kit, 5.4 percent completion reported in January 2025), 21C006 (December 2021, Liing and Liingo canopy support piece), 21C007 (December 2021, Liing and Liingo cover labels) and 22C002 (June 2022, Olli and Ozzi missing belt routing label). Three or more distinct recalls in five years is evidence about the quality system, so this finding is brand scoped until the December 2021 recalls pass five years. No lawsuit or Prop 65 notice found."
+          },
+          "testingNote": "No test of current production exists. The Ecology Center found a whole Fllo in Mammoth clean in 2018 and two Liing seats clean in 2022, results over 36 months old, so under rule 4.7 recorded and carrying nothing. Searched the Ecology Center, Mamavation and Consumer Reports on 2026-09-15; nothing newer found.",
+          "testingDate": "2026-09-15",
+          "materialsList": "merino wool, tencel",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "dry",
+            "heated": true,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "merino wool, tencel",
+            "source": "clekinc.com/products/foonf: Mammoth 70% Merino Wool + 30% Tencel; Amazon B0DQ1F9937 title names Mammoth Ziip",
+            "checked": "2026-09-15"
+          },
+          "legalNote": "Checked NHTSA recall records on 2026-09-15. Four distinct Clek car seat recalls in five years, across three product families: 21C005 (December 2021, Foonf and Fllo made before May 21, 2021, foam a child can pick loose, free insert kit, 5.4 percent completion reported in January 2025), 21C006 (December 2021, Liing and Liingo canopy support piece), 21C007 (December 2021, Liing and Liingo cover labels) and 22C002 (June 2022, Olli and Ozzi missing belt routing label). Three or more distinct recalls in five years is evidence about the quality system, so this finding is brand scoped until the December 2021 recalls pass five years. No lawsuit or Prop 65 notice found.",
+          "legalDate": "2022-06",
+          "verdict": "careful",
+          "dated": "2026-09-15",
+          "why": "section 6: awaiting the recorded checks",
+          "fronts": {
+            "formula": "none",
+            "materials": "pass",
+            "legal": "caution",
+            "testing": "none"
+          },
+          "frontOrigin": {
+            "formula": "hand",
+            "testing": "database",
+            "materials": "database",
+            "legal": "database"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": [
+            "2 prose-cannot-clear-formula",
+            "5.4 durable-good-is-its-own-packaging"
+          ]
+        }
+      },
+      {
+        "name": "Clek Fllo Convertible Car Seat, Mammoth",
+        "asins": [
+          "B0DQ1NH9K5"
+        ],
+        "verdict": "careful",
+        "note": "Mammoth fabric, 70% merino wool and 30% TENCEL, flame retardant free and PFAS free by Clek's statement. Steel reinforced substructure, rear facing to 50 lb, fits three across.",
+        "origin": "article",
+        "source": "best-non-toxic-car-seats.html",
+        "cat": "Car seats",
+        "matchAll": [
+          [
+            "clek",
+            "fllo",
+            "mammoth"
+          ]
+        ],
+        "tradeoff": "Kept under rule 5.7 as the only car seat fabric we found with no polyester (70% merino wool, 30% TENCEL), flame retardant free and PFAS free by Clek's statement. The caution is Clek's four NHTSA recalls between December 2021 and June 2022, each with a free remedy, stated in the article.",
+        "ext": {
+          "frontNotes": {
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "testing": "No test of current production exists. The Ecology Center found a whole Fllo in Mammoth clean in 2018 and two Liing seats clean in 2022, results over 36 months old, so under rule 4.7 recorded and carrying nothing. Searched the Ecology Center, Mamavation and Consumer Reports on 2026-09-15; nothing newer found.",
+            "materials": "In contact with wool, which puts nothing into what it holds.",
+            "legal": "Checked NHTSA recall records on 2026-09-15. Four distinct Clek car seat recalls in five years, across three product families: 21C005 (December 2021, Foonf and Fllo made before May 21, 2021, foam a child can pick loose, free insert kit, 5.4 percent completion reported in January 2025), 21C006 (December 2021, Liing and Liingo canopy support piece), 21C007 (December 2021, Liing and Liingo cover labels) and 22C002 (June 2022, Olli and Ozzi missing belt routing label). Three or more distinct recalls in five years is evidence about the quality system, so this finding is brand scoped until the December 2021 recalls pass five years. No lawsuit or Prop 65 notice found."
+          },
+          "testingNote": "No test of current production exists. The Ecology Center found a whole Fllo in Mammoth clean in 2018 and two Liing seats clean in 2022, results over 36 months old, so under rule 4.7 recorded and carrying nothing. Searched the Ecology Center, Mamavation and Consumer Reports on 2026-09-15; nothing newer found.",
+          "testingDate": "2026-09-15",
+          "materialsList": "merino wool, tencel",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "dry",
+            "heated": true,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "merino wool, tencel",
+            "source": "clekinc.com/pages/our-fabric: Mammoth Merino wool + TENCEL blend; Amazon B0DQ1NH9K5 bullets: Merino wool + TENCEL fabric blend",
+            "checked": "2026-09-15"
+          },
+          "legalNote": "Checked NHTSA recall records on 2026-09-15. Four distinct Clek car seat recalls in five years, across three product families: 21C005 (December 2021, Foonf and Fllo made before May 21, 2021, foam a child can pick loose, free insert kit, 5.4 percent completion reported in January 2025), 21C006 (December 2021, Liing and Liingo canopy support piece), 21C007 (December 2021, Liing and Liingo cover labels) and 22C002 (June 2022, Olli and Ozzi missing belt routing label). Three or more distinct recalls in five years is evidence about the quality system, so this finding is brand scoped until the December 2021 recalls pass five years. No lawsuit or Prop 65 notice found.",
+          "legalDate": "2022-06",
+          "verdict": "careful",
+          "dated": "2026-09-15",
+          "why": "section 6: awaiting the recorded checks",
+          "fronts": {
+            "formula": "none",
+            "materials": "pass",
+            "legal": "caution",
+            "testing": "none"
+          },
+          "frontOrigin": {
+            "formula": "hand",
+            "testing": "database",
+            "materials": "database",
+            "legal": "database"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": [
+            "2 prose-cannot-clear-formula",
+            "5.4 durable-good-is-its-own-packaging"
+          ]
+        }
+      },
+      {
+        "name": "Clek Liing Infant Car Seat, Mammoth",
+        "asins": [
+          "B0DQ1J2MPW"
+        ],
+        "verdict": "careful",
+        "note": "Mammoth fabric, 70% merino wool and 30% TENCEL, flame retardant free and PFAS free by Clek's statement. EPP lined shell on a load leg base.",
+        "origin": "article",
+        "source": "best-non-toxic-car-seats.html",
+        "cat": "Car seats",
+        "matchAll": [
+          [
+            "clek",
+            "liing",
+            "mammoth"
+          ]
+        ],
+        "tradeoff": "Kept under rule 5.7 as the only car seat fabric we found with no polyester (70% merino wool, 30% TENCEL), flame retardant free and PFAS free by Clek's statement. The caution is Clek's four NHTSA recalls between December 2021 and June 2022, each with a free remedy, stated in the article.",
+        "ext": {
+          "frontNotes": {
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "testing": "No test of current production exists. The Ecology Center found a whole Fllo in Mammoth clean in 2018 and two Liing seats clean in 2022, results over 36 months old, so under rule 4.7 recorded and carrying nothing. Searched the Ecology Center, Mamavation and Consumer Reports on 2026-09-15; nothing newer found.",
+            "materials": "In contact with wool, which puts nothing into what it holds.",
+            "legal": "Checked NHTSA recall records on 2026-09-15. Four distinct Clek car seat recalls in five years, across three product families: 21C005 (December 2021, Foonf and Fllo made before May 21, 2021, foam a child can pick loose, free insert kit, 5.4 percent completion reported in January 2025), 21C006 (December 2021, Liing and Liingo canopy support piece), 21C007 (December 2021, Liing and Liingo cover labels) and 22C002 (June 2022, Olli and Ozzi missing belt routing label). Three or more distinct recalls in five years is evidence about the quality system, so this finding is brand scoped until the December 2021 recalls pass five years. No lawsuit or Prop 65 notice found."
+          },
+          "testingNote": "No test of current production exists. The Ecology Center found a whole Fllo in Mammoth clean in 2018 and two Liing seats clean in 2022, results over 36 months old, so under rule 4.7 recorded and carrying nothing. Searched the Ecology Center, Mamavation and Consumer Reports on 2026-09-15; nothing newer found.",
+          "testingDate": "2026-09-15",
+          "materialsList": "merino wool, tencel",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "dry",
+            "heated": true,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "merino wool, tencel",
+            "source": "clekinc.com/pages/our-fabric: Mammoth Merino wool + TENCEL blend; Amazon B0DQ1J2MPW title names Mammoth Ziip",
+            "checked": "2026-09-15"
+          },
+          "legalNote": "Checked NHTSA recall records on 2026-09-15. Four distinct Clek car seat recalls in five years, across three product families: 21C005 (December 2021, Foonf and Fllo made before May 21, 2021, foam a child can pick loose, free insert kit, 5.4 percent completion reported in January 2025), 21C006 (December 2021, Liing and Liingo canopy support piece), 21C007 (December 2021, Liing and Liingo cover labels) and 22C002 (June 2022, Olli and Ozzi missing belt routing label). Three or more distinct recalls in five years is evidence about the quality system, so this finding is brand scoped until the December 2021 recalls pass five years. No lawsuit or Prop 65 notice found.",
+          "legalDate": "2022-06",
+          "verdict": "careful",
+          "dated": "2026-09-15",
+          "why": "section 6: awaiting the recorded checks",
+          "fronts": {
+            "formula": "none",
+            "materials": "pass",
+            "legal": "caution",
+            "testing": "none"
+          },
+          "frontOrigin": {
+            "formula": "hand",
+            "testing": "database",
+            "materials": "database",
+            "legal": "database"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": [
+            "2 prose-cannot-clear-formula",
+            "5.4 durable-good-is-its-own-packaging"
+          ]
+        }
+      },
+      {
+        "name": "Clek Oobr High Back Booster, Mammoth",
+        "asins": [
+          "B0FKPDBSX7"
+        ],
+        "verdict": "careful",
+        "note": "Mammoth fabric, 70% merino wool and 30% TENCEL, flame retardant free and PFAS free by Clek's statement. Copolymer frame with a steel substructure.",
+        "origin": "article",
+        "source": "best-non-toxic-car-seats.html",
+        "cat": "Car seats",
+        "matchAll": [
+          [
+            "clek",
+            "oobr",
+            "mammoth"
+          ]
+        ],
+        "tradeoff": "Kept under rule 5.7 as the only car seat fabric we found with no polyester (70% merino wool, 30% TENCEL), flame retardant free and PFAS free by Clek's statement. The caution is Clek's four NHTSA recalls between December 2021 and June 2022, each with a free remedy, stated in the article.",
+        "ext": {
+          "frontNotes": {
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "testing": "No test of current production exists. The Ecology Center found a whole Fllo in Mammoth clean in 2018 and two Liing seats clean in 2022, results over 36 months old, so under rule 4.7 recorded and carrying nothing. Searched the Ecology Center, Mamavation and Consumer Reports on 2026-09-15; nothing newer found.",
+            "materials": "In contact with wool, which puts nothing into what it holds.",
+            "legal": "Checked NHTSA recall records on 2026-09-15. Four distinct Clek car seat recalls in five years, across three product families: 21C005 (December 2021, Foonf and Fllo made before May 21, 2021, foam a child can pick loose, free insert kit, 5.4 percent completion reported in January 2025), 21C006 (December 2021, Liing and Liingo canopy support piece), 21C007 (December 2021, Liing and Liingo cover labels) and 22C002 (June 2022, Olli and Ozzi missing belt routing label). Three or more distinct recalls in five years is evidence about the quality system, so this finding is brand scoped until the December 2021 recalls pass five years. No lawsuit or Prop 65 notice found."
+          },
+          "testingNote": "No test of current production exists. The Ecology Center found a whole Fllo in Mammoth clean in 2018 and two Liing seats clean in 2022, results over 36 months old, so under rule 4.7 recorded and carrying nothing. Searched the Ecology Center, Mamavation and Consumer Reports on 2026-09-15; nothing newer found.",
+          "testingDate": "2026-09-15",
+          "materialsList": "merino wool, tencel",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "dry",
+            "heated": true,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "merino wool, tencel",
+            "source": "clekinc.com/pages/our-fabric: Mammoth Merino wool + TENCEL blend; Amazon B0FKPDBSX7 title names Mammoth Ziip",
+            "checked": "2026-09-15"
+          },
+          "legalNote": "Checked NHTSA recall records on 2026-09-15. Four distinct Clek car seat recalls in five years, across three product families: 21C005 (December 2021, Foonf and Fllo made before May 21, 2021, foam a child can pick loose, free insert kit, 5.4 percent completion reported in January 2025), 21C006 (December 2021, Liing and Liingo canopy support piece), 21C007 (December 2021, Liing and Liingo cover labels) and 22C002 (June 2022, Olli and Ozzi missing belt routing label). Three or more distinct recalls in five years is evidence about the quality system, so this finding is brand scoped until the December 2021 recalls pass five years. No lawsuit or Prop 65 notice found.",
+          "legalDate": "2022-06",
+          "verdict": "careful",
+          "dated": "2026-09-15",
+          "why": "section 6: awaiting the recorded checks",
+          "fronts": {
+            "formula": "none",
+            "materials": "pass",
+            "legal": "caution",
+            "testing": "none"
+          },
+          "frontOrigin": {
+            "formula": "hand",
+            "testing": "database",
+            "materials": "database",
+            "legal": "database"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": [
+            "2 prose-cannot-clear-formula",
+            "5.4 durable-good-is-its-own-packaging"
           ]
         }
       }
@@ -37933,11 +38509,12 @@
     "brand": "Evenflo",
     "category": "Baby bottles",
     "stance": "careful",
-    "reason": "Classic Glass bottles are tempered glass with etched rather than painted markings, release no microplastics at any temperature, and cost about two dollars per bottle. Listed lead free in independent XRF screening.",
+    "reason": "Classic Glass bottles are tempered glass with etched rather than painted markings, release no microplastics at any temperature, and cost about two dollars per bottle. Listed lead free in independent XRF screening. Its car seats are polyester; Green and Gentle fabric is sold flame retardant free on seven models, and NHTSA records nine Evenflo car seat recalls since 2021.",
     "evidence": "Glass body, etched markings, listed lead free (Lead Safe Mama); no litigation or recalls on the glass line",
     "alternative": "",
     "sources": [
-      "best-non-toxic-baby-bottles.html"
+      "best-non-toxic-baby-bottles.html",
+      "best-non-toxic-car-seats.html"
     ],
     "buy": "https://www.amazon.com/dp/B019PG0FPO?tag=plasticdetox-20",
     "fronts": {
@@ -38123,6 +38700,67 @@
           "legalNote": "Checked. What is on record concerns other Evenflo products, not this one: Six distinct Evenflo car seat recalls ran through 2025 and 2026 (Revolve360 Slim, All4One, Titan 65, LiteMax 30, REO, Revolve180 LiteMax NXT), several with remedies still open. Three or more distinct recalls in five years is evidence about the quality system, so this finding is brand scoped even though no recall touches the product on this page."
         },
         "cat": "Baby bottles"
+      },
+      {
+        "name": "Evenflo Revolve360 Extend with Green and Gentle Fabric",
+        "asins": [
+          "B0G367V5ZQ"
+        ],
+        "verdict": "careful",
+        "note": "Green and Gentle fabric from recycled bottles, sold as flame retardant free; the claim does not cover the foam.",
+        "origin": "article",
+        "source": "best-non-toxic-car-seats.html",
+        "cat": "Car seats",
+        "matchAll": [
+          [
+            "evenflo",
+            "revolve360"
+          ]
+        ],
+        "ext": {
+          "frontNotes": {
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "testing": "No Green and Gentle model has been tested. Budget Evenflo seats were flagged in 2016, 2018 and 2022, results over 36 months old, so under rule 4.7 recorded and carrying nothing. Searched the Ecology Center, Mamavation and Consumer Reports on 2026-09-15; nothing newer found.",
+            "materials": "polyester in direct contact, with heat.",
+            "legal": "Checked NHTSA records on 2026-09-15. Nine distinct Evenflo car seat recalls in five years, eight of them in 2025 and 2026: 23C005, 25C008 and 26C001 (Titan 65 labels, manual and tether strap), 25C003 (registration cards, including the Gold Revolve360 Extend), 25C010 (Revolve360 Slim headrest foam), 25C011 (All4One recline), 26C002 (LiteMax manual), 26C004 (Reo headrest) and 26C005 (Revolve180 LiteMax NXT level indicator, remedy expected November 2026). Three or more distinct recalls in five years is evidence about the quality system, so this finding covers Evenflo's car seats. The Big Kid booster marketing litigation ended in a $3.5 million class settlement."
+          },
+          "testingNote": "No Green and Gentle model has been tested. Budget Evenflo seats were flagged in 2016, 2018 and 2022, results over 36 months old, so under rule 4.7 recorded and carrying nothing. Searched the Ecology Center, Mamavation and Consumer Reports on 2026-09-15; nothing newer found.",
+          "testingDate": "2026-09-15",
+          "materialsList": "polyester",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "dry",
+            "heated": true,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "polyester",
+            "source": "Amazon B0G367V5ZQ Material: Polyester; evenflo.com Green and Gentle: woven from recycled plastic bottles",
+            "checked": "2026-09-15"
+          },
+          "legalNote": "Checked NHTSA records on 2026-09-15. Nine distinct Evenflo car seat recalls in five years, eight of them in 2025 and 2026: 23C005, 25C008 and 26C001 (Titan 65 labels, manual and tether strap), 25C003 (registration cards, including the Gold Revolve360 Extend), 25C010 (Revolve360 Slim headrest foam), 25C011 (All4One recline), 26C002 (LiteMax manual), 26C004 (Reo headrest) and 26C005 (Revolve180 LiteMax NXT level indicator, remedy expected November 2026). Three or more distinct recalls in five years is evidence about the quality system, so this finding covers Evenflo's car seats. The Big Kid booster marketing litigation ended in a $3.5 million class settlement.",
+          "legalDate": "2026",
+          "verdict": "careful",
+          "dated": "2026-09-15",
+          "why": "section 6: materials is caution",
+          "fronts": {
+            "formula": "none",
+            "materials": "caution",
+            "legal": "caution",
+            "testing": "none"
+          },
+          "frontOrigin": {
+            "formula": "hand",
+            "testing": "database",
+            "materials": "database",
+            "legal": "database"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
       }
     ],
     "rollup": {
@@ -44288,14 +44926,15 @@
     "id": "graco",
     "brand": "Graco",
     "category": "Car seats / sleep",
-    "stance": "skip",
-    "reason": "Ecology Center 2018 testing found brominated and chlorinated flame retardants in major Graco car seats. The Premium Foam crib mattress (made under license by Stork Craft) is 100% polyurethane foam by its law label; when the Ecology Center tested a unit bought in 2018 or 2019, the foam held chlorine and antimony, markers of a flame retardant, and antimony was found in a barrier the company had said contained none. Current labels say no added flame retardants. Graco boxed Stork Craft foam crib mattresses were recalled in 2015 for failing the federal open flame standard.",
-    "evidence": "Ecology Center car seats 2018; Ecology Center crib mattress 2019 (Cl, Sb); CPSC 15-203",
-    "alternative": "Nuna (car seat) / Naturepedic or KATU (mattress)",
+    "stance": "careful",
+    "reason": "Graco's car seats are polyester and, apart from the GoMax infant seat's fabric, carry no flame retardant free claim; every Graco seat the Ecology Center tested from 2014 to 2022 was flagged, results now over three years old. The Premium Foam crib mattress (made under license by Stork Craft) is 100% polyurethane foam by its law label; when the Ecology Center tested a unit bought in 2018 or 2019, the foam held chlorine and antimony, markers of a flame retardant, and antimony was found in a barrier the company had said contained none. Current labels say no added flame retardants. Graco boxed Stork Craft foam crib mattresses were recalled in 2015 for failing the federal open flame standard.",
+    "evidence": "Ecology Center car seats 2014 to 2022; Ecology Center crib mattress 2019 (Cl, Sb); CPSC 15-203",
+    "alternative": "Chicco ClearTex or Clek Mammoth (car seat) / Naturepedic or KATU (mattress)",
     "sources": [
       "top-100-baby-kids-products-amazon.html",
       "best-non-toxic-crib-mattresses.html",
-      "https://www.ecocenter.org/our-work/healthy-stuff-lab/reports/crib-mattress-report/crib-mattress-study"
+      "https://www.ecocenter.org/our-work/healthy-stuff-lab/reports/crib-mattress-report/crib-mattress-study",
+      "best-non-toxic-car-seats.html"
     ],
     "fronts": {
       "formula": {
@@ -44305,18 +44944,18 @@
       },
       "materials": {
         "status": "caution",
-        "note": "From Crib Mattress (standard): Polyurethane foam typically contains flame retardants (TDCPP, TCEP historically.",
-        "origin": "rollup"
+        "note": "Car seat fabrics are polyester; the Premium Foam crib mattress is polyurethane foam.",
+        "origin": "hand"
       },
       "legal": {
-        "status": "unknown",
-        "note": "",
-        "origin": "none"
+        "status": "caution",
+        "note": "Francoforte v. Graco booster marketing class action continues; recall 26C003 (April 2026) on the SnugRide Turn and Slide.",
+        "origin": "hand"
       },
       "testing": {
-        "status": "fail",
-        "note": "From Convertible Car Seat: Ecology Center 2018 car seat testing found brominated and chlorinated flame retardants in major car seats including Graco. Until per SKU verification confirms FR free, the lab finding is the relevant signal.",
-        "origin": "rollup"
+        "status": "caution",
+        "note": "Ecology Center, The Mattress Still Matters (2020, units bought 2018 to 2019): chlorine and antimony in the polyurethane foam, antimony in the fire barrier the company said had none; no specific flame retardant compound identified and no detection limits published.",
+        "origin": "hand"
       }
     },
     "reviewed": true,
@@ -44324,66 +44963,63 @@
     "generalises": false,
     "products": [
       {
-        "name": "Convertible Car Seat",
+        "name": "Graco 4Ever DLX 4 in 1 Convertible Car Seat",
         "asins": [
-          "B0DHLR4M9Z"
+          "B0DHLSJM7Q"
         ],
-        "verdict": "skip",
-        "note": "Ecology Center 2018 car seat testing found brominated and chlorinated flame retardants in major car seats including Graco. Some lines have shifted since 2015 but Graco has not publicly committed to FR free across the 4Ever line. Until per SKU verification confirms FR free, the lab finding is the relevant signal.",
+        "verdict": "careful",
+        "note": "Synthetic fabric. Graco makes no flame retardant free claim for this seat.",
         "origin": "article",
-        "source": "top-100-baby-kids-products-amazon.html",
+        "source": "best-non-toxic-car-seats.html",
+        "cat": "Car seats",
+        "matchAll": [
+          [
+            "graco",
+            "4ever"
+          ]
+        ],
         "ext": {
-          "testingNote": "Lab tested. From top-100-baby-kids-products-amazon.html: Ecology Center 2018 car seat testing found brominated and chlorinated flame retardants in major car seats including Graco. Some lines have shifted since 2015 but Graco has not publicly committed to FR free across the 4Ev",
           "frontNotes": {
             "formula": "An object has no ingredient list. What it is made of is the materials check.",
-            "testing": "Ecology Center 2018 car seat testing found brominated and chlorinated flame retardants in major car seats including Graco. Until per SKU verification confirms FR free, the lab finding is the relevant signal.",
-            "legal": "Checked CPSC recall records on 2026-09-14. Graco Recalls 11 Models of Strollers Due to Fingertip Amputation Hazard (2014-11). https://www.cpsc.gov/Recalls/2015/Graco-Recalls-11-Models-of-Strollers Remedied: Contact Graco immediately for a free repair kit. Repair kits will be available from the firm at the beginning of Decembe. Over 24 months old, so under rule 5.2 it is informational rather than a finding against the product today."
+            "testing": "This seat has no test. Every Graco seat the Ecology Center tested in 2014, 2016, 2018 and 2022 was flagged, including an Extend2Fit made in July 2020, results over 36 months old, so under rule 4.7 recorded and carrying nothing. Searched the Ecology Center, Mamavation and Consumer Reports on 2026-09-15; nothing newer found.",
+            "materials": "polyester in direct contact, with heat."
           },
-          "exposure": {
-            "type": "worn gear",
-            "level": "high",
-            "score": 5.0,
-            "baby": true,
-            "route": "skin",
-            "duration": "hours",
-            "retained": "prolonged",
-            "frequency": "weekly",
-            "heat": false,
-            "fat": false,
-            "why": "for a baby, which is high whatever the arithmetic says"
+          "testingNote": "This seat has no test. Every Graco seat the Ecology Center tested in 2014, 2016, 2018 and 2022 was flagged, including an Extend2Fit made in July 2020, results over 36 months old, so under rule 4.7 recorded and carrying nothing. Searched the Ecology Center, Mamavation and Consumer Reports on 2026-09-15; nothing newer found.",
+          "testingDate": "2026-09-15",
+          "materialsList": "polyester",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "dry",
+            "heated": true,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "polyester",
+            "source": "Amazon B0DHLSJM7Q Material: Polyester",
+            "checked": "2026-09-15"
           },
-          "legalNote": "Checked CPSC recall records on 2026-09-14. Graco Recalls 11 Models of Strollers Due to Fingertip Amputation Hazard (2014-11). https://www.cpsc.gov/Recalls/2015/Graco-Recalls-11-Models-of-Strollers Remedied: Contact Graco immediately for a free repair kit. Repair kits will be available from the firm at the beginning of Decembe. Over 24 months old, so under rule 5.2 it is informational rather than a finding against the product today.",
-          "legalDate": "2014-11",
-          "cappedFrom": "careful",
-          "capRestoreWhy": "section 6: testing is caution",
-          "verdict": "skip",
+          "legalNote": "Checked. What is on record concerns other Graco products, not this one: Checked NHTSA records and federal dockets on 2026-09-15. NHTSA 26C003 (April 2026) covers 5,126 SnugRide Turn and Slide and Modes Nest seats whose carrier may detach from the base, with replacement seats offered. Francoforte v. Graco (N.D. Ga.), over boosters marketed as side impact tested, had a class certified in part in January 2026 and has not reached judgment. Neither concerns a product we rate.",
+          "verdict": "careful",
           "dated": "2026-09-15",
-          "why": "section 6 ceiling: testing is fail",
+          "why": "section 6: awaiting the recorded checks",
           "fronts": {
             "formula": "none",
-            "materials": "unassessed",
+            "materials": "caution",
             "legal": "pass",
-            "testing": "fail"
+            "testing": "none"
           },
           "frontOrigin": {
-            "testing": "stated",
             "formula": "hand",
+            "testing": "database",
+            "materials": "database",
             "legal": "database"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
           "rules": []
-        },
-        "cat": "Car seats",
-        "matchAll": [
-          [
-            "graco",
-            "seat",
-            "convertible",
-            "car"
-          ]
-        ]
+        }
       },
       {
         "name": "Premium foam crib mattress",
@@ -44454,6 +45090,124 @@
             "materials": "caution",
             "legal": "pass",
             "testing": "caution"
+          },
+          "frontOrigin": {
+            "formula": "hand",
+            "testing": "database",
+            "materials": "database",
+            "legal": "database"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
+      },
+      {
+        "name": "Graco Extend2Fit 2 in 1 Convertible Car Seat",
+        "asins": [
+          "B0DHLSX7GQ"
+        ],
+        "verdict": "careful",
+        "note": "Synthetic fabric. Graco makes no flame retardant free claim for this seat.",
+        "origin": "article",
+        "source": "best-non-toxic-car-seats.html",
+        "cat": "Car seats",
+        "matchAll": [
+          [
+            "graco",
+            "extend2fit"
+          ]
+        ],
+        "ext": {
+          "frontNotes": {
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "testing": "This seat has no test. Every Graco seat the Ecology Center tested in 2014, 2016, 2018 and 2022 was flagged, including an Extend2Fit made in July 2020, results over 36 months old, so under rule 4.7 recorded and carrying nothing. Searched the Ecology Center, Mamavation and Consumer Reports on 2026-09-15; nothing newer found.",
+            "materials": "polyester in direct contact, with heat."
+          },
+          "testingNote": "This seat has no test. Every Graco seat the Ecology Center tested in 2014, 2016, 2018 and 2022 was flagged, including an Extend2Fit made in July 2020, results over 36 months old, so under rule 4.7 recorded and carrying nothing. Searched the Ecology Center, Mamavation and Consumer Reports on 2026-09-15; nothing newer found.",
+          "testingDate": "2026-09-15",
+          "materialsList": "polyester",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "dry",
+            "heated": true,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "polyester",
+            "source": "Amazon B0DHLSX7GQ Material: Polyester",
+            "checked": "2026-09-15"
+          },
+          "legalNote": "Checked. What is on record concerns other Graco products, not this one: Checked NHTSA records and federal dockets on 2026-09-15. NHTSA 26C003 (April 2026) covers 5,126 SnugRide Turn and Slide and Modes Nest seats whose carrier may detach from the base, with replacement seats offered. Francoforte v. Graco (N.D. Ga.), over boosters marketed as side impact tested, had a class certified in part in January 2026 and has not reached judgment. Neither concerns a product we rate.",
+          "verdict": "careful",
+          "dated": "2026-09-15",
+          "why": "section 6: awaiting the recorded checks",
+          "fronts": {
+            "formula": "none",
+            "materials": "caution",
+            "legal": "pass",
+            "testing": "none"
+          },
+          "frontOrigin": {
+            "formula": "hand",
+            "testing": "database",
+            "materials": "database",
+            "legal": "database"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
+      },
+      {
+        "name": "Graco GoMax Infant Car Seat",
+        "asins": [
+          "B0DM6P4FYX"
+        ],
+        "verdict": "careful",
+        "note": "PureProtect fabric sold as flame retardant free by Graco; the claim does not mention the foam.",
+        "origin": "article",
+        "source": "best-non-toxic-car-seats.html",
+        "cat": "Car seats",
+        "matchAll": [
+          [
+            "graco",
+            "gomax"
+          ]
+        ],
+        "ext": {
+          "frontNotes": {
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "testing": "The GoMax has not been tested. Every Graco seat the Ecology Center tested in 2014, 2016, 2018 and 2022 was flagged, including an Extend2Fit made in July 2020, results over 36 months old, so under rule 4.7 recorded and carrying nothing. Searched the Ecology Center, Mamavation and Consumer Reports on 2026-09-15; nothing newer found.",
+            "materials": "polyester in direct contact, with heat."
+          },
+          "testingNote": "The GoMax has not been tested. Every Graco seat the Ecology Center tested in 2014, 2016, 2018 and 2022 was flagged, including an Extend2Fit made in July 2020, results over 36 months old, so under rule 4.7 recorded and carrying nothing. Searched the Ecology Center, Mamavation and Consumer Reports on 2026-09-15; nothing newer found.",
+          "testingDate": "2026-09-15",
+          "materialsList": "polyester",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "dry",
+            "heated": true,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "polyester",
+            "source": "Amazon B0DM6P4FYX Material: Polyester; help.gracobaby.com GoMax: PureProtect fabrics fire resistant without chemical additives",
+            "checked": "2026-09-15"
+          },
+          "legalNote": "Checked. What is on record concerns other Graco products, not this one: Checked NHTSA records and federal dockets on 2026-09-15. NHTSA 26C003 (April 2026) covers 5,126 SnugRide Turn and Slide and Modes Nest seats whose carrier may detach from the base, with replacement seats offered. Francoforte v. Graco (N.D. Ga.), over boosters marketed as side impact tested, had a class certified in part in January 2026 and has not reached judgment. Neither concerns a product we rate.",
+          "verdict": "careful",
+          "dated": "2026-09-15",
+          "why": "section 6: materials is caution",
+          "fronts": {
+            "formula": "none",
+            "materials": "caution",
+            "legal": "pass",
+            "testing": "none"
           },
           "frontOrigin": {
             "formula": "hand",
@@ -46974,6 +47728,94 @@
           "restoreWhy": "",
           "heldBack": [
             "materials"
+          ]
+        }
+      },
+      {
+        "name": "Hario V60 Metal Dripper (02)",
+        "asins": [
+          "B0BWH5N65J"
+        ],
+        "verdict": "good",
+        "origin": "store",
+        "cat": "Coffee",
+        "note": "Uncoated stainless steel V60 cone with a silicone holder, made in Japan. Water touches only steel and a paper filter.",
+        "matchAll": [
+          [
+            "hario",
+            "v60",
+            "metal",
+            "dripper"
+          ]
+        ],
+        "ext": {
+          "frontNotes": {
+            "formula": "A durable good has no ingredient list. What it is made of is the materials check.",
+            "materials": "In contact with stainless steel, which puts nothing into what it holds.",
+            "legal": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found."
+          },
+          "formulaAnswers": {
+            "ingredients": "",
+            "prose": "",
+            "complete": false,
+            "verdict": "n/a",
+            "summary": "A durable good has no ingredient list. What it is made of is the materials check.",
+            "flagged": [],
+            "source": "",
+            "checked": ""
+          },
+          "materialsList": "stainless steel, silicone",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "aqueous",
+            "heated": true,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "stainless steel, silicone",
+            "source": "hario-usa.com/products/v60-metal-coffee-dripper-02: \"Materials: Stainless Steel, No Coating Holder: Silicone Rubber\" (the matte black version is powder coated and is not this listing); amazon:B0BWH5N65J \"Hario V60 Metal Coffee Dripper\", Color Silver.",
+            "checked": "2026-09-15"
+          },
+          "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found.",
+          "heldFrom": "good",
+          "restoreWhy": "a vetted store pick, chosen by a person at product scope",
+          "heldBack": [
+            "formula"
+          ],
+          "exposure": {
+            "type": "heated vessel",
+            "level": "medium",
+            "score": 5.7,
+            "baby": false,
+            "route": "ingestion",
+            "duration": "minutes",
+            "retained": "transfer",
+            "frequency": "daily",
+            "heat": true,
+            "fat": false,
+            "why": "Heat drives whatever is in the surface into the water."
+          },
+          "verdict": "good",
+          "dated": "2026-09-15",
+          "why": "a vetted store pick, chosen by a person at product scope",
+          "fronts": {
+            "formula": "none",
+            "materials": "pass",
+            "legal": "pass",
+            "testing": "unassessed"
+          },
+          "frontOrigin": {
+            "materials": "database",
+            "legal": "database",
+            "formula": "database"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": [
+            "2 prose-cannot-clear-formula",
+            "5.4 durable-good-is-its-own-packaging"
           ]
         }
       }
@@ -66108,11 +66950,13 @@
     "brand": "Maxi Cosi",
     "category": "Car seats",
     "stance": "careful",
-    "reason": "Has made commitments to FR-free textiles across portions of its lineup.",
-    "evidence": "FR-free commitment on part of lineup",
+    "reason": "PureCosi fabric, and padding on some models, is made without added fire retardant treatment on nearly every current Maxi Cosi seat. The fabric is recycled polyester, there is no PFAS statement or certification, and in 2022 testing the seat pad elastic of a PureCosi Pria Max carried 23,032 ppm of bromine.",
+    "evidence": "PureCosi claim; Ecology Center 2022",
     "alternative": "",
     "sources": [
-      "non-toxic-baby-toddler-products-guide.html"
+      "non-toxic-baby-toddler-products-guide.html",
+      "best-non-toxic-car-seats.html",
+      "https://maxicosi.com/pages/purecosi"
     ],
     "fronts": {
       "formula": {
@@ -66121,30 +66965,92 @@
         "origin": "database"
       },
       "materials": {
-        "status": "unknown",
-        "note": "",
-        "origin": "none"
+        "status": "caution",
+        "note": "PureCosi fabric is recycled polyester.",
+        "origin": "hand"
       },
       "legal": {
-        "status": "unknown",
-        "note": "",
-        "origin": "none"
+        "status": "pass",
+        "note": "Two March 2023 recalls on products we do not rate, over 24 months old.",
+        "origin": "hand"
       },
       "testing": {
-        "status": "unknown",
-        "note": "",
-        "origin": "none"
+        "status": "none",
+        "note": "No test within 36 months.",
+        "origin": "hand"
       }
     },
     "reviewed": true,
-    "article": "non-toxic-baby-toddler-products-guide.html",
+    "article": "best-non-toxic-car-seats.html",
     "generalises": true,
     "rollup": {
       "products": 0,
       "researched": 0,
       "flagged": 0,
       "worst": null
-    }
+    },
+    "products": [
+      {
+        "name": "Maxi Cosi Pria All in One Car Seat (PureCosi)",
+        "asins": [
+          "B0FJYMBV53"
+        ],
+        "verdict": "careful",
+        "note": "PureCosi fabric and padding made without added fire retardant treatment. No PFAS statement or certification.",
+        "origin": "article",
+        "source": "best-non-toxic-car-seats.html",
+        "cat": "Car seats",
+        "matchAll": [
+          [
+            "maxi",
+            "cosi",
+            "pria"
+          ]
+        ],
+        "ext": {
+          "frontNotes": {
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "testing": "The Pria All in One has not been tested. Three PureCosi seats rated low concern in 2022, with bromine in some minor parts, results over 36 months old, so under rule 4.7 recorded and carrying nothing. Searched the Ecology Center, Mamavation and Consumer Reports on 2026-09-15; nothing newer found.",
+            "materials": "polyester in direct contact, with heat."
+          },
+          "testingNote": "The Pria All in One has not been tested. Three PureCosi seats rated low concern in 2022, with bromine in some minor parts, results over 36 months old, so under rule 4.7 recorded and carrying nothing. Searched the Ecology Center, Mamavation and Consumer Reports on 2026-09-15; nothing newer found.",
+          "testingDate": "2026-09-15",
+          "materialsList": "polyester",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "dry",
+            "heated": true,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "polyester",
+            "source": "Amazon B0FJYMBV53 Material: Polyester",
+            "checked": "2026-09-15"
+          },
+          "legalNote": "Checked. What is on record concerns other Maxi Cosi products, not this one: Checked NHTSA records on 2026-09-15. Two Maxi Cosi car seat recalls in five years, both March 2023: 23C002 (infant base lower anchors on the Coral XP, Mico XP, Mico XP Max and Mico Luxe+) and 23C003 (Coral XP inner carrier), over 24 months old and informational under rule 5.2. No lawsuit names a Maxi Cosi car seat, and no Prop 65 notice.",
+          "verdict": "careful",
+          "dated": "2026-09-15",
+          "why": "section 6: awaiting the recorded checks",
+          "fronts": {
+            "formula": "none",
+            "materials": "caution",
+            "legal": "pass",
+            "testing": "none"
+          },
+          "frontOrigin": {
+            "formula": "hand",
+            "testing": "database",
+            "materials": "database",
+            "legal": "database"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
+      }
+    ]
   },
   {
     "id": "maytex",
@@ -76053,12 +76959,15 @@
     "id": "nuna",
     "brand": "Nuna",
     "category": "Car seats",
-    "stance": "good",
-    "reason": "Only car seat brand entirely flame-retardant-free across its full lineup, GREENGUARD Gold certified, and PFAS-free, using inherently flame-resistant wool blends.",
-    "evidence": "100% FR-free lineup, GREENGUARD Gold, no PFAS",
+    "stance": "careful",
+    "reason": "Nuna says every car seat in its line is made without added fire retardant chemicals in fabric and foam, and UL lists all 11 current models for GREENGUARD Gold. It publishes no fiber content for its main knit fabrics and no PFAS statement. The RAVA was recalled in November 2024 over a harness adjuster, and consolidated class actions over it continue; the PIPA line is not affected.",
+    "evidence": "Nuna FR free statement; UL SPOT GREENGUARD Gold; NHTSA 24C002",
     "alternative": "",
     "sources": [
-      "non-toxic-baby-toddler-products-guide.html"
+      "non-toxic-baby-toddler-products-guide.html",
+      "best-non-toxic-car-seats.html",
+      "https://nunababy.com/usa/pipa-aire-rx",
+      "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=24C002000"
     ],
     "fronts": {
       "formula": {
@@ -76067,23 +76976,23 @@
         "origin": "database"
       },
       "materials": {
-        "status": "unknown",
-        "note": "",
-        "origin": "none"
+        "status": "caution",
+        "note": "RAVA and EXEC fabric is a bamboo polyester knit; other fiber not published.",
+        "origin": "hand"
       },
       "legal": {
         "status": "caution",
-        "note": "From Nuna car seats: NHTSA recall 24C-002, opened December 2024, covers 608,786 RAVA convertible seats (2016 to 2023 production) whose harness can fail to stay tight; the remedy is still being distributed and a related class action was filed in 2025. The RAVA is part of the car seat line this page covers.",
-        "origin": "rollup"
+        "note": "RAVA recall 24C002 and consolidated class actions.",
+        "origin": "hand"
       },
       "testing": {
-        "status": "pass",
-        "note": "Only car seat brand entirely flame-retardant-free across its full lineup, GREENGUARD Gold certified",
-        "origin": "extracted"
+        "status": "none",
+        "note": "No test within 36 months.",
+        "origin": "hand"
       }
     },
     "reviewed": true,
-    "article": "non-toxic-baby-toddler-products-guide.html",
+    "article": "best-non-toxic-car-seats.html",
     "generalises": false,
     "scopeNote": "Our verdict covers part of this brand's range, not all of it.",
     "rollup": {
@@ -76095,57 +77004,147 @@
     "products": [
       {
         "name": "Nuna car seats",
+        "verdict": "careful",
+        "note": "Nuna says every seat in its line is made without added fire retardant chemicals in fabric and foam, and UL lists all 11 models for GREENGUARD Gold. No PFAS statement.",
+        "origin": "article",
+        "source": "best-non-toxic-car-seats.html",
+        "cat": "Car seats",
         "matchAll": [
           [
             "nuna",
             "seat"
           ]
         ],
-        "verdict": "good",
-        "cat": "Car seats",
-        "origin": "hand",
-        "source": "alternative",
-        "note": "Only car seat brand entirely flame-retardant-free across its full lineup, GREENGUARD Gold certified, and PFAS-free, using inherently flame-resistant wool blends.",
         "ext": {
+          "frontNotes": {
+            "formula": "An object has no ingredient list. What it is made of is the materials check."
+          },
+          "legalNote": "Checked. What is on record concerns other Nuna products, not this one: Checked NHTSA records and federal dockets on 2026-09-15. NHTSA 24C002 (November 2024) covers 608,786 RAVA seats with the plastic harness adjuster button made July 2016 to October 2023, whose adjuster can stop gripping; a cleaning kit and new pad were mailed from February 2025, with 11 percent completion in the only published quarterly report. Consolidated class actions over the RAVA continue after 2026 rulings let omission claims proceed. No PIPA recall.",
           "verdict": "careful",
-          "dated": "2026-08-29",
-          "why": "section 6 ceiling: legal is caution",
+          "dated": "2026-09-15",
+          "why": "section 6: materials is caution",
           "fronts": {
             "formula": "none",
-            "legal": "caution",
-            "testing": "unassessed",
-            "materials": "unassessed"
+            "materials": "caution",
+            "legal": "pass",
+            "testing": "unassessed"
+          },
+          "frontOrigin": {
+            "formula": "hand",
+            "legal": "database",
+            "materials": "inferred"
           },
           "scope": "line",
           "basis": "direct",
           "disclose": false,
-          "authored": true,
+          "rules": [
+            "2 prose-cannot-clear-formula"
+          ]
+        }
+      },
+      {
+        "name": "Nuna RAVA Convertible Car Seat",
+        "verdict": "careful",
+        "note": "Bamboo and synthetic knit fabric, sold free of added fire retardant chemicals in fabric and foam. GREENGUARD Gold listed. No PFAS statement.",
+        "origin": "article",
+        "source": "best-non-toxic-car-seats.html",
+        "cat": "Car seats",
+        "matchAll": [
+          [
+            "nuna",
+            "rava"
+          ]
+        ],
+        "ext": {
           "frontNotes": {
-            "materials": "What this is made of has not been established. The earlier reading described its packaging, which is a different question.",
             "formula": "An object has no ingredient list. What it is made of is the materials check.",
-            "legal": "NHTSA recall 24C-002, opened December 2024, covers 608,786 RAVA convertible seats (2016 to 2023 production) whose harness can fail to stay tight; the remedy is still being distributed and a related class action was filed in 2025. The RAVA is part of the car seat line this page covers."
+            "testing": "The RAVA has not been tested. A PIPA Lite in Fog tested clean in 2018 and a Pipa in Granite in 2022, results over 36 months old, so under rule 4.7 recorded and carrying nothing. Searched the Ecology Center, Mamavation and Consumer Reports on 2026-09-15; nothing newer found.",
+            "materials": "polyester in direct contact, with heat.",
+            "legal": "Checked NHTSA records and federal dockets on 2026-09-15. NHTSA 24C002 (November 2024) covers 608,786 RAVA seats with the plastic harness adjuster button made July 2016 to October 2023, whose adjuster can stop gripping; a cleaning kit and new pad were mailed from February 2025, with 11 percent completion in the only published quarterly report. Consolidated class actions over the RAVA continue after 2026 rulings let omission claims proceed. No PIPA recall."
           },
-          "legalNote": "NHTSA recall 24C-002, opened December 2024, covers 608,786 RAVA convertible seats (2016 to 2023 production) whose harness can fail to stay tight; the remedy is still being distributed and a related class action was filed in 2025. The RAVA is part of the car seat line this page covers.",
-          "cappedFrom": "good",
-          "capRestoreWhy": "",
-          "legalDate": "2024-12",
+          "testingNote": "The RAVA has not been tested. A PIPA Lite in Fog tested clean in 2018 and a Pipa in Granite in 2022, results over 36 months old, so under rule 4.7 recorded and carrying nothing. Searched the Ecology Center, Mamavation and Consumer Reports on 2026-09-15; nothing newer found.",
+          "testingDate": "2026-09-15",
+          "materialsList": "bamboo, polyester",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "dry",
+            "heated": true,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "bamboo, polyester",
+            "source": "usasupport.nunababy.com RAVA vs EXEC article: bamboo polyester blend knit fabric",
+            "checked": "2026-09-15"
+          },
+          "legalNote": "Checked NHTSA records and federal dockets on 2026-09-15. NHTSA 24C002 (November 2024) covers 608,786 RAVA seats with the plastic harness adjuster button made July 2016 to October 2023, whose adjuster can stop gripping; a cleaning kit and new pad were mailed from February 2025, with 11 percent completion in the only published quarterly report. Consolidated class actions over the RAVA continue after 2026 rulings let omission claims proceed. No PIPA recall.",
+          "legalDate": "2024-11",
+          "verdict": "careful",
+          "dated": "2026-09-15",
+          "why": "section 6: awaiting the recorded checks",
+          "fronts": {
+            "formula": "none",
+            "materials": "caution",
+            "legal": "caution",
+            "testing": "none"
+          },
           "frontOrigin": {
             "formula": "hand",
+            "testing": "database",
+            "materials": "database",
             "legal": "database"
           },
-          "exposure": {
-            "type": "worn gear",
-            "level": "high",
-            "score": 5.0,
-            "baby": true,
-            "route": "skin",
-            "duration": "hours",
-            "retained": "prolonged",
-            "frequency": "weekly",
-            "heat": false,
-            "fat": false,
-            "why": "for a baby, which is high whatever the arithmetic says"
-          }
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "rules": [
+            "2 prose-cannot-clear-formula",
+            "5.4 durable-good-is-its-own-packaging"
+          ]
+        }
+      },
+      {
+        "name": "Nuna PIPA aire rx Infant Car Seat",
+        "verdict": "careful",
+        "note": "Micro knit fabric of unpublished fiber with merino wool and TENCEL inserts, sold free of added fire retardant chemicals in fabric and foam. GREENGUARD Gold listed. No PFAS statement.",
+        "origin": "article",
+        "source": "best-non-toxic-car-seats.html",
+        "cat": "Car seats",
+        "matchAll": [
+          [
+            "nuna",
+            "pipa"
+          ]
+        ],
+        "ext": {
+          "frontNotes": {
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "testing": "A PIPA Lite in Fog tested clean in 2018 and a Pipa in Granite in 2022, and Mamavation reported no detectable PFAS in three Pipa fabric samples in 2022, results over 36 months old, so under rule 4.7 recorded and carrying nothing. Searched the Ecology Center, Mamavation and Consumer Reports on 2026-09-15; nothing newer found."
+          },
+          "testingNote": "A PIPA Lite in Fog tested clean in 2018 and a Pipa in Granite in 2022, and Mamavation reported no detectable PFAS in three Pipa fabric samples in 2022, results over 36 months old, so under rule 4.7 recorded and carrying nothing. Searched the Ecology Center, Mamavation and Consumer Reports on 2026-09-15; nothing newer found.",
+          "testingDate": "2026-09-15",
+          "legalNote": "Checked. What is on record concerns other Nuna products, not this one: Checked NHTSA records and federal dockets on 2026-09-15. NHTSA 24C002 (November 2024) covers 608,786 RAVA seats with the plastic harness adjuster button made July 2016 to October 2023, whose adjuster can stop gripping; a cleaning kit and new pad were mailed from February 2025, with 11 percent completion in the only published quarterly report. Consolidated class actions over the RAVA continue after 2026 rulings let omission claims proceed. No PIPA recall.",
+          "verdict": "unrated",
+          "dated": "2026-09-15",
+          "why": "section 6: no check carries a finding",
+          "fronts": {
+            "formula": "none",
+            "materials": "unassessed",
+            "legal": "pass",
+            "testing": "none"
+          },
+          "frontOrigin": {
+            "formula": "hand",
+            "testing": "database",
+            "legal": "database"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "rules": [
+            "2 prose-cannot-clear-formula",
+            "5.4 durable-good-is-its-own-packaging"
+          ]
         }
       }
     ]
@@ -78620,7 +79619,8 @@
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
-            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
+            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
+            "materials": "surfactant or alcohol contents in plastic, rinsed off."
           },
           "exposure": {
             "type": "rinse-off skin",
@@ -78650,18 +79650,32 @@
           "heldBack": [
             "materials"
           ],
-          "verdict": "unrated",
+          "materialsList": "glass, plastic",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "surfactant",
+            "heated": false,
+            "mouthed": false,
+            "reuse": "",
+            "use": "rinse-off",
+            "material": "glass, plastic",
+            "source": "oseamalibu.com/products/ocean-cleanser: \"Bottle is made of frosted glass and pump is made with 50% PCR (post-consumer recycled) plastic.\" The pump polymer is not named.",
+            "checked": "2026-09-15"
+          },
+          "verdict": "good",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: materials",
+          "why": "a vetted store pick, chosen by a person at product scope",
           "fronts": {
             "formula": "pass",
-            "materials": "unassessed",
+            "materials": "pass",
             "legal": "none",
             "testing": "unassessed"
           },
           "frontOrigin": {
             "legal": "database",
-            "formula": "hand"
+            "formula": "hand",
+            "materials": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -78826,11 +79840,11 @@
         "note": "Seaweed based eye serum with a glass roller applicator. MADE SAFE certified. Glass roller, no synthetic polymers. Worth knowing: Cap is plastic, Premium price, Smaller bottle size.",
         "origin": "store",
         "ext": {
-          "verdict": "unrated",
+          "verdict": "good",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: formula",
+          "why": "",
           "fronts": {
-            "formula": "unassessed",
+            "formula": "pass",
             "legal": "none",
             "testing": "unassessed",
             "materials": "pass"
@@ -78845,13 +79859,14 @@
           "frontNotes": {
             "materials": "Frosted glass roller bottle. Osea packages in glass across the range; the caveat they publish themselves is that frosted glass is not accepted by every kerbside programme.",
             "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
-            "formula": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear.",
+            "formula": "The published ingredient list carries nothing on the hazard list.",
             "testing": "Not recorded yet. Our description says so, but no source is on file, and a description cannot clear a check."
           },
           "authored": true,
           "frontOrigin": {
             "legal": "database",
-            "materials": "stated"
+            "materials": "stated",
+            "formula": "database"
           },
           "exposure": {
             "type": "leave-on face",
@@ -78867,20 +79882,15 @@
             "why": "Left on the face all day."
           },
           "formulaAnswers": {
-            "ingredients": "",
-            "prose": "A wake up call for tired eyes! This lightweight, hydrating gel serum is clinically shown to visibly reduce dark circles, under eye puffiness, fine lines and crow’s feet with a high-performance blend of seaweed, hyaluronic acid, caffeine + a firming peptide. Cooling applicator instantly refreshes. | Results You Can Sea: After 1 use, 100% showed improvement in hydration (around eye area); 97% showed visible improvement in crow's feet, fine lines & wrinkles.* *Based on an independent third-party clinical study conducted on 31 women. | Key Ingredients: Powered by seaweed, caffeine & a biomimetic tetrapeptide to visibly reduce dark circles, under eye puffiness, fine lines & crow’s feet, while hyaluronic acid delivers lasting hydration to visibly smooth, depuff and awaken with every drop. | How to Use: On clean, dry skin, gently roll under eyes 2-3 times, moving from the inner to outer corner, avoiding eyelids. Use morning and night, after cleanser and face serum but before face moisturizer. | Skincare from the Sea: OSEA is clean, clinically tested skincare from the sea. Our formulas are powered by a unique blend of pure, potent seaweed and active botanicals for Results You Can Sea.",
-            "complete": false,
-            "verdict": "open",
-            "summary": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear.",
+            "ingredients": "Water / Aqua / Eau, Glycerin, Caffeine, Sodium Hyaluronate, Albizia Julibrissin Bark Extract, Dextran, Darutoside, Caprooyl Tetrapeptide-3, Undaria Pinnatifida Extract, Corallina Officinalis Extract, Chenopodium Quinoa Seed Extract, Hydrolyzed Gardenia Florida Extract, Maltodextrin, Tocopherol, Ethylhexylglycerin, Xanthan Gum, Sodium Benzoate, Potassium Sorbate, Citric Acid",
+            "prose": "",
+            "complete": true,
+            "verdict": "good",
+            "summary": "The published ingredient list carries nothing on the hazard list.",
             "flagged": [],
-            "source": "amazon:B0BXQT82Y7 listing bullets",
-            "checked": "2026-09-14"
-          },
-          "heldFrom": "good",
-          "restoreWhy": "",
-          "heldBack": [
-            "formula"
-          ]
+            "source": "oseamalibu.com/products/ocean-eyes (ingredient list)",
+            "checked": "2026-09-15"
+          }
         },
         "cat": "Skincare",
         "matchAll": [
@@ -105148,12 +106158,13 @@
     "id": "uppababy",
     "brand": "UPPAbaby",
     "category": "Car seats / strollers",
-    "stance": "good",
-    "reason": "Mesa V3 car seat is FR-free and GREENGUARD Gold certified, and the Vista stroller is a recommended pick.",
-    "evidence": "FR-free fabric, GREENGUARD Gold",
+    "stance": "careful",
+    "reason": "The verdict depends on the product. The Vista stroller remains a pick. Current car seat fabrics are sold free of fire retardant chemicals, with foam included on the Rove and Aria V2, but the fabrics are polyester, there is no PFAS statement, and a California class action over infant positioning in the Mesa Max, Mesa V2 and Aria continues. UPPAbaby has never filed a car seat recall.",
+    "evidence": "FR free fabrics; Mossazadeh v. Monahan",
     "alternative": "",
     "sources": [
-      "non-toxic-baby-toddler-products-guide.html"
+      "non-toxic-baby-toddler-products-guide.html",
+      "best-non-toxic-car-seats.html"
     ],
     "buy": "https://www.amazon.com/dp/B0D9XS9VXL?tag=plasticdetox-20",
     "fronts": {
@@ -105163,24 +106174,24 @@
         "origin": "database"
       },
       "materials": {
-        "status": "unknown",
-        "note": "",
-        "origin": "none"
+        "status": "caution",
+        "note": "Car seat fabrics are polyester.",
+        "origin": "hand"
       },
       "legal": {
         "status": "caution",
-        "note": "From UPPAbaby Mesa Max Infant Car Seat (Henna): A federal class action filed in 2025 and still open alleges the Mesa Max, Mesa V2 and Aria car seats can let infants sink into a chin to chest position. A filed suit is an allegation, so it caps at caution. Three older recalls (2015 Vista bumper bar, 2021 RumbleSeat adapters, 2022 RIDGE) all completed their remedies.",
-        "origin": "rollup"
+        "note": "Mossazadeh v. Monahan (C.D. Cal.) over the Mesa Max, Mesa V2 and Aria.",
+        "origin": "hand"
       },
       "testing": {
-        "status": "pass",
-        "note": "Mesa V3 car seat is FR-free and GREENGUARD Gold certified",
-        "origin": "extracted"
+        "status": "none",
+        "note": "No current car seat test within 36 months.",
+        "origin": "hand"
       }
     },
     "reviewed": true,
     "article": "non-toxic-baby-toddler-products-guide.html",
-    "generalises": true,
+    "generalises": false,
     "products": [
       {
         "name": "UPPAbaby Vista Stroller",
@@ -105255,47 +106266,44 @@
         ]
       },
       {
-        "name": "UPPAbaby Mesa Max Infant Car Seat (Henna)",
+        "name": "UPPAbaby Mesa Max Infant Car Seat (Greyson)",
         "asins": [
           "B0BTJGBN8K"
         ],
-        "verdict": "good",
-        "note": "Merino wool fabric meets flammability standards naturally. Verify the current model is the merino Henna version, earlier Evo Pro versions had FR disclosure issues. Badges: Merino wool.",
-        "origin": "registry",
+        "verdict": "careful",
+        "note": "Fabric and foam sold free of fire retardant chemicals; the Greyson fashion features merino wool. No longer in UPPAbaby's current lineup.",
+        "origin": "article",
+        "source": "best-non-toxic-car-seats.html",
+        "cat": "Car seats",
+        "matchAll": [
+          [
+            "uppababy",
+            "mesa",
+            "max"
+          ]
+        ],
         "ext": {
-          "legalNote": "A federal class action filed in 2025 and still open alleges the Mesa Max, Mesa V2 and Aria car seats can let infants sink into a chin to chest position. A filed suit is an allegation, so it caps at caution. Three older recalls (2015 Vista bumper bar, 2021 RumbleSeat adapters, 2022 RIDGE) all completed their remedies.",
           "frontNotes": {
-            "materials": "What this is made of has not been established. The earlier reading described its packaging, which is a different question.",
             "formula": "An object has no ingredient list. What it is made of is the materials check.",
-            "legal": "A federal class action filed in 2025 and still open alleges the Mesa Max, Mesa V2 and Aria car seats can let infants sink into a chin to chest position. A filed suit is an allegation, so it caps at caution. Three older recalls (2015 Vista bumper bar, 2021 RumbleSeat adapters, 2022 RIDGE) all completed their remedies."
+            "testing": "No current UPPAbaby car seat has been tested. A MESA in Jordan tested clean in 2018 and a KNOX in Jordan in 2022, results over 36 months old, so under rule 4.7 recorded and carrying nothing. Searched the Ecology Center, Mamavation and Consumer Reports on 2026-09-15; nothing newer found.",
+            "legal": "Checked NHTSA records and federal dockets on 2026-09-15. UPPAbaby has never filed a car seat recall with NHTSA. Mossazadeh v. Monahan (C.D. Cal., May 2025) alleges the Mesa Max, Mesa V2 and Aria let infants sink into a chin to chest position and continues; Jacobs v. Monahan (D.N.J.) was dismissed without prejudice in July 2026. A filed suit is an allegation, so it caps at caution. Its CPSC recalls concern strollers."
           },
-          "cappedFrom": "good",
-          "capRestoreWhy": "direct evidence at sku scope on formula, packaging",
-          "legalDate": "2025",
-          "exposure": {
-            "type": "worn gear",
-            "level": "high",
-            "score": 5.0,
-            "baby": true,
-            "route": "skin",
-            "duration": "hours",
-            "retained": "prolonged",
-            "frequency": "weekly",
-            "heat": false,
-            "fat": false,
-            "why": "for a baby, which is high whatever the arithmetic says"
-          },
+          "testingNote": "No current UPPAbaby car seat has been tested. A MESA in Jordan tested clean in 2018 and a KNOX in Jordan in 2022, results over 36 months old, so under rule 4.7 recorded and carrying nothing. Searched the Ecology Center, Mamavation and Consumer Reports on 2026-09-15; nothing newer found.",
+          "testingDate": "2026-09-15",
+          "legalNote": "Checked NHTSA records and federal dockets on 2026-09-15. UPPAbaby has never filed a car seat recall with NHTSA. Mossazadeh v. Monahan (C.D. Cal., May 2025) alleges the Mesa Max, Mesa V2 and Aria let infants sink into a chin to chest position and continues; Jacobs v. Monahan (D.N.J.) was dismissed without prejudice in July 2026. A filed suit is an allegation, so it caps at caution. Its CPSC recalls concern strollers.",
+          "legalDate": "2025-05",
           "verdict": "careful",
           "dated": "2026-09-15",
-          "why": "section 6 ceiling: legal is caution",
+          "why": "section 6: awaiting the recorded checks",
           "fronts": {
             "formula": "none",
             "materials": "unassessed",
             "legal": "caution",
-            "testing": "unassessed"
+            "testing": "none"
           },
           "frontOrigin": {
             "formula": "hand",
+            "testing": "database",
             "legal": "database"
           },
           "scope": "sku",
@@ -105305,16 +106313,188 @@
             "2 prose-cannot-clear-formula",
             "5.4 durable-good-is-its-own-packaging"
           ]
-        },
+        }
+      },
+      {
+        "name": "UPPAbaby Rove Convertible Car Seat (Greyson)",
+        "asins": [
+          "B0DPGLWBZK"
+        ],
+        "verdict": "careful",
+        "note": "PureTech merino wool fabric, listed on Amazon as a synthetic blend, with fabric and foam sold free of fire retardant chemicals. No PFAS statement.",
+        "origin": "article",
+        "source": "best-non-toxic-car-seats.html",
         "cat": "Car seats",
         "matchAll": [
           [
             "uppababy",
-            "henna",
-            "mesa",
-            "max"
+            "rove"
           ]
-        ]
+        ],
+        "ext": {
+          "frontNotes": {
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "testing": "No current UPPAbaby car seat has been tested. A MESA in Jordan tested clean in 2018 and a KNOX in Jordan in 2022, results over 36 months old, so under rule 4.7 recorded and carrying nothing. Searched the Ecology Center, Mamavation and Consumer Reports on 2026-09-15; nothing newer found.",
+            "materials": "polyester in direct contact, with heat."
+          },
+          "testingNote": "No current UPPAbaby car seat has been tested. A MESA in Jordan tested clean in 2018 and a KNOX in Jordan in 2022, results over 36 months old, so under rule 4.7 recorded and carrying nothing. Searched the Ecology Center, Mamavation and Consumer Reports on 2026-09-15; nothing newer found.",
+          "testingDate": "2026-09-15",
+          "materialsList": "merino wool, polyester",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "dry",
+            "heated": true,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "merino wool, polyester",
+            "source": "Amazon B0DPGLWBZK Material: Plastic, Alloy Steel, Polyester; uppababy.com: Greyson is PureTech merino wool",
+            "checked": "2026-09-15"
+          },
+          "legalNote": "Checked. What is on record concerns other UPPAbaby products, not this one: Checked NHTSA records and federal dockets on 2026-09-15. UPPAbaby has never filed a car seat recall with NHTSA. Mossazadeh v. Monahan (C.D. Cal., May 2025) alleges the Mesa Max, Mesa V2 and Aria let infants sink into a chin to chest position and continues; Jacobs v. Monahan (D.N.J.) was dismissed without prejudice in July 2026. A filed suit is an allegation, so it caps at caution. Its CPSC recalls concern strollers.",
+          "verdict": "careful",
+          "dated": "2026-09-15",
+          "why": "section 6: awaiting the recorded checks",
+          "fronts": {
+            "formula": "none",
+            "materials": "caution",
+            "legal": "pass",
+            "testing": "none"
+          },
+          "frontOrigin": {
+            "formula": "hand",
+            "testing": "database",
+            "materials": "database",
+            "legal": "database"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": [
+            "2 prose-cannot-clear-formula",
+            "5.4 durable-good-is-its-own-packaging"
+          ]
+        }
+      },
+      {
+        "name": "UPPAbaby Mesa V3 Infant Car Seat",
+        "asins": [
+          "B0FFHN5R2X"
+        ],
+        "verdict": "careful",
+        "note": "SafeTech fabric sold free of fire retardant chemicals; the claim does not cover the foam. GREENGUARD Gold listed.",
+        "origin": "article",
+        "source": "best-non-toxic-car-seats.html",
+        "cat": "Car seats",
+        "matchAll": [
+          [
+            "uppababy",
+            "mesa",
+            "v3"
+          ]
+        ],
+        "ext": {
+          "frontNotes": {
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "testing": "No current UPPAbaby car seat has been tested. A MESA in Jordan tested clean in 2018 and a KNOX in Jordan in 2022, results over 36 months old, so under rule 4.7 recorded and carrying nothing. Searched the Ecology Center, Mamavation and Consumer Reports on 2026-09-15; nothing newer found.",
+            "materials": "polyester in direct contact, with heat."
+          },
+          "testingNote": "No current UPPAbaby car seat has been tested. A MESA in Jordan tested clean in 2018 and a KNOX in Jordan in 2022, results over 36 months old, so under rule 4.7 recorded and carrying nothing. Searched the Ecology Center, Mamavation and Consumer Reports on 2026-09-15; nothing newer found.",
+          "testingDate": "2026-09-15",
+          "materialsList": "polyester",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "dry",
+            "heated": true,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "polyester",
+            "source": "Amazon B0FFHN5R2X Material: Polyester",
+            "checked": "2026-09-15"
+          },
+          "legalNote": "Checked. What is on record concerns other UPPAbaby products, not this one: Checked NHTSA records and federal dockets on 2026-09-15. UPPAbaby has never filed a car seat recall with NHTSA. Mossazadeh v. Monahan (C.D. Cal., May 2025) alleges the Mesa Max, Mesa V2 and Aria let infants sink into a chin to chest position and continues; Jacobs v. Monahan (D.N.J.) was dismissed without prejudice in July 2026. A filed suit is an allegation, so it caps at caution. Its CPSC recalls concern strollers.",
+          "verdict": "careful",
+          "dated": "2026-09-15",
+          "why": "section 6: materials is caution",
+          "fronts": {
+            "formula": "none",
+            "materials": "caution",
+            "legal": "pass",
+            "testing": "none"
+          },
+          "frontOrigin": {
+            "formula": "hand",
+            "testing": "database",
+            "materials": "database",
+            "legal": "database"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
+      },
+      {
+        "name": "UPPAbaby Aria V2 Infant Car Seat",
+        "asins": [
+          "B0FM9SWHMK"
+        ],
+        "verdict": "careful",
+        "note": "DualTech fabric and foam sold free of fire retardant chemicals. GREENGUARD Gold listed.",
+        "origin": "article",
+        "source": "best-non-toxic-car-seats.html",
+        "cat": "Car seats",
+        "matchAll": [
+          [
+            "uppababy",
+            "aria"
+          ]
+        ],
+        "ext": {
+          "frontNotes": {
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "testing": "No current UPPAbaby car seat has been tested. A MESA in Jordan tested clean in 2018 and a KNOX in Jordan in 2022, results over 36 months old, so under rule 4.7 recorded and carrying nothing. Searched the Ecology Center, Mamavation and Consumer Reports on 2026-09-15; nothing newer found.",
+            "materials": "polyester in direct contact, with heat."
+          },
+          "testingNote": "No current UPPAbaby car seat has been tested. A MESA in Jordan tested clean in 2018 and a KNOX in Jordan in 2022, results over 36 months old, so under rule 4.7 recorded and carrying nothing. Searched the Ecology Center, Mamavation and Consumer Reports on 2026-09-15; nothing newer found.",
+          "testingDate": "2026-09-15",
+          "materialsList": "polyester",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "dry",
+            "heated": true,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "polyester",
+            "source": "Amazon B0FM9SWHMK Material: Polyester",
+            "checked": "2026-09-15"
+          },
+          "legalNote": "Checked. What is on record concerns other UPPAbaby products, not this one: Checked NHTSA records and federal dockets on 2026-09-15. UPPAbaby has never filed a car seat recall with NHTSA. Mossazadeh v. Monahan (C.D. Cal., May 2025) alleges the Mesa Max, Mesa V2 and Aria let infants sink into a chin to chest position and continues; Jacobs v. Monahan (D.N.J.) was dismissed without prejudice in July 2026. A filed suit is an allegation, so it caps at caution. Its CPSC recalls concern strollers.",
+          "verdict": "careful",
+          "dated": "2026-09-15",
+          "why": "section 6: materials is caution",
+          "fronts": {
+            "formula": "none",
+            "materials": "caution",
+            "legal": "pass",
+            "testing": "none"
+          },
+          "frontOrigin": {
+            "formula": "hand",
+            "testing": "database",
+            "materials": "database",
+            "legal": "database"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
       }
     ],
     "rollup": {
@@ -116150,12 +117330,13 @@
     "brand": "Safety 1st",
     "category": "Nursery",
     "stance": "careful",
-    "reason": "Dorel's Heavenly Dreams crib mattress is described as a 100% vinyl cover over a polyester fiber core while its listing also claims to be PVC free. The Safety 1st crib mattress cover the Ecology Center tested (Little Dreamer, since discontinued) carried DOTP, 411 ppm EHDP and fluorine indicating PFAS. No GREENGUARD listing was found on UL SPOT. Only the crib mattress was researched; other Safety 1st products are unrated.",
+    "reason": "Dorel's Heavenly Dreams crib mattress is described as a 100% vinyl cover over a polyester fiber core while its listing also claims to be PVC free. The Safety 1st crib mattress cover the Ecology Center tested (Little Dreamer, since discontinued) carried DOTP, 411 ppm EHDP and fluorine indicating PFAS. No GREENGUARD listing was found on UL SPOT. The Grow and Go car seat is polyester with no flame retardant free claim, and Safety 1st has filed three car seat recalls since 2023.",
     "evidence": "Vinyl cover; Ecology Center 2020 DOTP, EHDP, PFAS signal",
     "alternative": "Naturepedic or KATU",
     "sources": [
       "best-non-toxic-crib-mattresses.html",
-      "https://www.ecocenter.org/our-work/healthy-stuff-lab/reports/crib-mattress-report/crib-mattress-study"
+      "https://www.ecocenter.org/our-work/healthy-stuff-lab/reports/crib-mattress-report/crib-mattress-study",
+      "best-non-toxic-car-seats.html"
     ],
     "products": [
       {
@@ -116224,6 +117405,68 @@
           "disclose": false,
           "rules": []
         }
+      },
+      {
+        "name": "Safety 1st Grow and Go All in One Convertible Car Seat",
+        "asins": [
+          "B0FC44HB9X"
+        ],
+        "verdict": "careful",
+        "note": "Synthetic fabric. Safety 1st makes no flame retardant free claim for this seat.",
+        "origin": "article",
+        "source": "best-non-toxic-car-seats.html",
+        "cat": "Car seats",
+        "matchAll": [
+          [
+            "safety",
+            "1st",
+            "grow"
+          ]
+        ],
+        "ext": {
+          "frontNotes": {
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "testing": "The Grow and Go was flagged in the Ecology Center's 2016 and 2018 rounds, results over 36 months old, so under rule 4.7 recorded and carrying nothing. Searched the Ecology Center, Mamavation and Consumer Reports on 2026-09-15; nothing newer found.",
+            "materials": "polyester in direct contact, with heat.",
+            "legal": "Checked NHTSA records on 2026-09-15. Three distinct Safety 1st car seat recalls in five years: 23C002 (March 2023, onBoard 35 SecureTech base lower anchors), 25C004 (harness booster height labels) and 25C006 (2025, 179,845 Grow and Go Sprint seats whose headrest foam a child can pick off). Three or more distinct recalls in five years is evidence about the quality system, so this finding covers Safety 1st car seats. No crib mattress recall."
+          },
+          "testingNote": "The Grow and Go was flagged in the Ecology Center's 2016 and 2018 rounds, results over 36 months old, so under rule 4.7 recorded and carrying nothing. Searched the Ecology Center, Mamavation and Consumer Reports on 2026-09-15; nothing newer found.",
+          "testingDate": "2026-09-15",
+          "materialsList": "polyester",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "dry",
+            "heated": true,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "polyester",
+            "source": "Amazon B0FC44HB9X Material: Polyester",
+            "checked": "2026-09-15"
+          },
+          "legalNote": "Checked NHTSA records on 2026-09-15. Three distinct Safety 1st car seat recalls in five years: 23C002 (March 2023, onBoard 35 SecureTech base lower anchors), 25C004 (harness booster height labels) and 25C006 (2025, 179,845 Grow and Go Sprint seats whose headrest foam a child can pick off). Three or more distinct recalls in five years is evidence about the quality system, so this finding covers Safety 1st car seats. No crib mattress recall.",
+          "legalDate": "2025",
+          "verdict": "careful",
+          "dated": "2026-09-15",
+          "why": "section 6: awaiting the recorded checks",
+          "fronts": {
+            "formula": "none",
+            "materials": "caution",
+            "legal": "caution",
+            "testing": "none"
+          },
+          "frontOrigin": {
+            "formula": "hand",
+            "testing": "database",
+            "materials": "database",
+            "legal": "database"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
       }
     ],
     "fronts": {
@@ -116238,8 +117481,8 @@
         "origin": "hand"
       },
       "legal": {
-        "status": "pass",
-        "note": "No crib mattress recall (2026-09-14).",
+        "status": "caution",
+        "note": "Three distinct car seat recalls since 2023 (23C002, 25C004, 25C006).",
         "origin": "hand"
       },
       "testing": {
@@ -117147,5 +118390,654 @@
         "origin": "hand"
       }
     }
+  },
+  {
+    "id": "cybex",
+    "brand": "Cybex",
+    "category": "Car seats",
+    "stance": "careful",
+    "reason": "Cybex says the fabrics on eight current US seats pass the federal fire test without added fire retardant chemicals, a fabric only claim with no fiber content or PFAS statement; UL lists three Cybex seats for GREENGUARD Gold, not the four more it claims. Three NHTSA recalls in five years (22C001, 23C001, 25C002) put the brand at caution.",
+    "evidence": "Fabric only FR free claim; NHTSA 22C001, 23C001, 25C002",
+    "alternative": "Chicco ClearTex or Clek Mammoth",
+    "sources": [
+      "best-non-toxic-car-seats.html",
+      "https://www.cybex-online.com/en/us/p/cs-go-callisto-g-360-sensorsafe-3.html",
+      "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=25C002000"
+    ],
+    "fronts": {
+      "formula": {
+        "status": "none",
+        "note": "A durable good has no ingredient list. What it is made of is the materials check.",
+        "origin": "database"
+      },
+      "materials": {
+        "status": "unknown",
+        "note": "Fabric fiber content not published.",
+        "origin": "hand"
+      },
+      "legal": {
+        "status": "caution",
+        "note": "Three distinct car seat recalls in five years (22C001, 23C001, 25C002).",
+        "origin": "hand"
+      },
+      "testing": {
+        "status": "none",
+        "note": "No test since the Ecology Center's 2014 round.",
+        "origin": "hand"
+      }
+    },
+    "reviewed": true,
+    "article": "best-non-toxic-car-seats.html",
+    "generalises": true,
+    "products": [
+      {
+        "name": "Cybex Callisto G 360 All in One Car Seat",
+        "asins": [
+          "B0FPXKZXZ4"
+        ],
+        "verdict": "careful",
+        "note": "Fabric sold without added fire retardant chemicals by Cybex; fiber content not published.",
+        "origin": "article",
+        "source": "best-non-toxic-car-seats.html",
+        "cat": "Car seats",
+        "matchAll": [
+          [
+            "cybex",
+            "callisto"
+          ]
+        ],
+        "ext": {
+          "frontNotes": {
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "testing": "No Cybex car seat has been tested since the Ecology Center's 2014 round, a result over 36 months old, so under rule 4.7 recorded and carrying nothing. Searched the Ecology Center, Mamavation and Consumer Reports on 2026-09-15; nothing newer found.",
+            "legal": "Checked NHTSA records and federal dockets on 2026-09-15. Three distinct Cybex car seat recalls in five years, from its US distributor Columbus Trading Partners: 22C001 (April 2022, Sirona M headrest foam a child can pick off), 23C001 (February 2023, Aton family harness webbing may fray) and 25C002 (February 2025, Aton G hip anchor hooks may bend). Three or more distinct recalls in five years is evidence about the quality system, so this finding is brand scoped."
+          },
+          "testingNote": "No Cybex car seat has been tested since the Ecology Center's 2014 round, a result over 36 months old, so under rule 4.7 recorded and carrying nothing. Searched the Ecology Center, Mamavation and Consumer Reports on 2026-09-15; nothing newer found.",
+          "testingDate": "2026-09-15",
+          "legalNote": "Checked NHTSA records and federal dockets on 2026-09-15. Three distinct Cybex car seat recalls in five years, from its US distributor Columbus Trading Partners: 22C001 (April 2022, Sirona M headrest foam a child can pick off), 23C001 (February 2023, Aton family harness webbing may fray) and 25C002 (February 2025, Aton G hip anchor hooks may bend). Three or more distinct recalls in five years is evidence about the quality system, so this finding is brand scoped.",
+          "legalDate": "2025-02",
+          "verdict": "careful",
+          "dated": "2026-09-15",
+          "why": "section 6: materials is caution",
+          "fronts": {
+            "formula": "none",
+            "materials": "caution",
+            "legal": "caution",
+            "testing": "none"
+          },
+          "frontOrigin": {
+            "formula": "hand",
+            "testing": "database",
+            "legal": "database",
+            "materials": "inferred"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "doona",
+    "brand": "Doona",
+    "category": "Car seats",
+    "stance": "careful",
+    "reason": "Doona's safety FAQ says its car seat materials meet every requirement and do have flame retardants. The fabric is polyester, there is no PFAS statement, and no independent lab has tested it. No recall or lawsuit found.",
+    "evidence": "Doona safety FAQ: materials do have flame retardants",
+    "alternative": "Chicco ClearTex or Clek Mammoth",
+    "sources": [
+      "best-non-toxic-car-seats.html",
+      "https://doona.shop/pages/faqs-safety-features-of-the-doona-2"
+    ],
+    "fronts": {
+      "formula": {
+        "status": "none",
+        "note": "A durable good has no ingredient list. What it is made of is the materials check.",
+        "origin": "database"
+      },
+      "materials": {
+        "status": "caution",
+        "note": "Polyester fabric; Doona says its materials include flame retardants.",
+        "origin": "hand"
+      },
+      "legal": {
+        "status": "pass",
+        "note": "No recall, notice or lawsuit found (2026-09-15).",
+        "origin": "hand"
+      },
+      "testing": {
+        "status": "none",
+        "note": "Not independently tested.",
+        "origin": "hand"
+      }
+    },
+    "reviewed": true,
+    "article": "best-non-toxic-car-seats.html",
+    "generalises": true,
+    "products": [
+      {
+        "name": "Doona Car Seat and Stroller",
+        "asins": [
+          "B07HML1BT5"
+        ],
+        "verdict": "careful",
+        "note": "Polyester fabric. Doona's safety FAQ says its materials do have flame retardants. Not independently tested.",
+        "origin": "article",
+        "source": "best-non-toxic-car-seats.html",
+        "cat": "Car seats",
+        "matchAll": [
+          [
+            "doona"
+          ]
+        ],
+        "ext": {
+          "frontNotes": {
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "testing": "No independent test of this seat was found. Searched the Ecology Center, Mamavation and Consumer Reports on 2026-09-15; nothing newer found.",
+            "materials": "polyester in direct contact, with heat.",
+            "legal": "Checked the NHTSA recall file, federal dockets and California Prop 65 notices on 2026-09-15: no recall, notice or car seat lawsuit found for Doona."
+          },
+          "testingNote": "No independent test of this seat was found. Searched the Ecology Center, Mamavation and Consumer Reports on 2026-09-15; nothing newer found.",
+          "testingDate": "2026-09-15",
+          "materialsList": "polyester",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "dry",
+            "heated": true,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "polyester",
+            "source": "Amazon B07HML1BT5 Material: PA+GF, PP, Al, PU, EPS, Polyester; doona.shop safety FAQ: materials meet all the requirements and do have flame retardants",
+            "checked": "2026-09-15"
+          },
+          "legalNote": "Checked the NHTSA recall file, federal dockets and California Prop 65 notices on 2026-09-15: no recall, notice or car seat lawsuit found for Doona.",
+          "verdict": "careful",
+          "dated": "2026-09-15",
+          "why": "section 6: formula is caution",
+          "fronts": {
+            "formula": "none",
+            "materials": "caution",
+            "legal": "pass",
+            "testing": "none"
+          },
+          "frontOrigin": {
+            "formula": "hand",
+            "testing": "database",
+            "materials": "database",
+            "legal": "database"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "diono",
+    "brand": "Diono",
+    "category": "Car seats",
+    "stance": "careful",
+    "reason": "Diono says its car seat fabrics contain flame retardants, though none brominated or chlorinated. When the Ecology Center tested its Rainier in 2016, the foam held 11,000 ppm of the flame retardant TPP, a result now too old to carry a verdict. No recall in five years.",
+    "evidence": "Diono support article; Ecology Center 2016",
+    "alternative": "Chicco ClearTex or Clek Mammoth",
+    "sources": [
+      "best-non-toxic-car-seats.html",
+      "https://diono.zendesk.com/hc/en-us/articles/31809379816723"
+    ],
+    "fronts": {
+      "formula": {
+        "status": "none",
+        "note": "A durable good has no ingredient list. What it is made of is the materials check.",
+        "origin": "database"
+      },
+      "materials": {
+        "status": "caution",
+        "note": "Diono says its car seat fabrics contain flame retardants.",
+        "origin": "hand"
+      },
+      "legal": {
+        "status": "pass",
+        "note": "No car seat recall in five years; last was 21C002 in March 2021.",
+        "origin": "hand"
+      },
+      "testing": {
+        "status": "none",
+        "note": "Only test is from 2016.",
+        "origin": "hand"
+      }
+    },
+    "reviewed": true,
+    "article": "best-non-toxic-car-seats.html",
+    "generalises": true,
+    "products": [
+      {
+        "name": "Diono Radian 3R Convertible Car Seat",
+        "asins": [
+          "B083F5P7VP"
+        ],
+        "verdict": "careful",
+        "note": "Diono says its car seat fabrics contain flame retardants, none brominated or chlorinated.",
+        "origin": "article",
+        "source": "best-non-toxic-car-seats.html",
+        "cat": "Car seats",
+        "matchAll": [
+          [
+            "diono",
+            "radian"
+          ]
+        ],
+        "ext": {
+          "frontNotes": {
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "testing": "The Diono Rainier was flagged in the Ecology Center's 2016 round, a result over 36 months old, so under rule 4.7 recorded and carrying nothing. Searched the Ecology Center, Mamavation and Consumer Reports on 2026-09-15; nothing newer found.",
+            "legal": "Checked the NHTSA recall file, federal dockets and California Prop 65 notices on 2026-09-15: no Diono car seat recall in the last five years and no lawsuit found. The last recall, 21C002 for the Cambria 2 headrest, dates to March 2021."
+          },
+          "testingNote": "The Diono Rainier was flagged in the Ecology Center's 2016 round, a result over 36 months old, so under rule 4.7 recorded and carrying nothing. Searched the Ecology Center, Mamavation and Consumer Reports on 2026-09-15; nothing newer found.",
+          "testingDate": "2026-09-15",
+          "legalNote": "Checked the NHTSA recall file, federal dockets and California Prop 65 notices on 2026-09-15: no Diono car seat recall in the last five years and no lawsuit found. The last recall, 21C002 for the Cambria 2 headrest, dates to March 2021.",
+          "verdict": "unrated",
+          "dated": "2026-09-15",
+          "why": "section 6: no check carries a finding",
+          "fronts": {
+            "formula": "none",
+            "materials": "unassessed",
+            "legal": "pass",
+            "testing": "none"
+          },
+          "frontOrigin": {
+            "formula": "hand",
+            "testing": "database",
+            "legal": "database"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "joie",
+    "brand": "Joie",
+    "category": "Car seats",
+    "stance": "careful",
+    "reason": "Joie's FAQ says all its US car seat covers contain flame retardants to meet the federal fire test. The US seats, including the Rue and Chili Spin, are polyester, and no US Joie seat has been independently tested. No recall or lawsuit found.",
+    "evidence": "Joie car seat FAQ: US covers contain flame retardants",
+    "alternative": "Chicco ClearTex or Clek Mammoth",
+    "sources": [
+      "best-non-toxic-car-seats.html",
+      "https://joiebaby.com/us/faq/carseats/?p=3"
+    ],
+    "fronts": {
+      "formula": {
+        "status": "none",
+        "note": "A durable good has no ingredient list. What it is made of is the materials check.",
+        "origin": "database"
+      },
+      "materials": {
+        "status": "caution",
+        "note": "Polyester covers; Joie says all US covers contain flame retardants.",
+        "origin": "hand"
+      },
+      "legal": {
+        "status": "pass",
+        "note": "No recall, notice or car seat lawsuit found (2026-09-15).",
+        "origin": "hand"
+      },
+      "testing": {
+        "status": "none",
+        "note": "No US Joie seat tested.",
+        "origin": "hand"
+      }
+    },
+    "reviewed": true,
+    "article": "best-non-toxic-car-seats.html",
+    "generalises": true,
+    "products": [
+      {
+        "name": "Joie Rue Infant Car Seat",
+        "asins": [
+          "B0F1RVK4XN"
+        ],
+        "verdict": "careful",
+        "note": "Polyester fabric. Joie's FAQ says all its US car seat covers contain flame retardants.",
+        "origin": "article",
+        "source": "best-non-toxic-car-seats.html",
+        "cat": "Car seats",
+        "matchAll": [
+          [
+            "joie",
+            "rue"
+          ]
+        ],
+        "ext": {
+          "frontNotes": {
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "testing": "No independent test of this seat was found. Searched the Ecology Center, Mamavation and Consumer Reports on 2026-09-15; nothing newer found.",
+            "materials": "polyester in direct contact, with heat.",
+            "legal": "Checked the NHTSA recall file, federal dockets and California Prop 65 notices on 2026-09-15: no recall, notice or car seat lawsuit found for Joie."
+          },
+          "testingNote": "No independent test of this seat was found. Searched the Ecology Center, Mamavation and Consumer Reports on 2026-09-15; nothing newer found.",
+          "testingDate": "2026-09-15",
+          "materialsList": "polyester",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "dry",
+            "heated": true,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "polyester",
+            "source": "Amazon B0F1RVK4XN Material: Polyester; joiebaby.com US car seat FAQ",
+            "checked": "2026-09-15"
+          },
+          "legalNote": "Checked the NHTSA recall file, federal dockets and California Prop 65 notices on 2026-09-15: no recall, notice or car seat lawsuit found for Joie.",
+          "verdict": "careful",
+          "dated": "2026-09-15",
+          "why": "section 6: formula is caution",
+          "fronts": {
+            "formula": "none",
+            "materials": "caution",
+            "legal": "pass",
+            "testing": "none"
+          },
+          "frontOrigin": {
+            "formula": "hand",
+            "testing": "database",
+            "materials": "database",
+            "legal": "database"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "baby-trend",
+    "brand": "Baby Trend",
+    "category": "Car seats",
+    "stance": "careful",
+    "reason": "Baby Trend makes no flame retardant free claim for its car seats, which are polyester, and its seats were flagged in every Ecology Center round from 2014 to 2022, results now too old to carry a verdict alone. One car seat recall in five years, on a model we do not rate.",
+    "evidence": "No FR free claim; Ecology Center 2014 to 2022",
+    "alternative": "Chicco ClearTex or Clek Mammoth",
+    "sources": [
+      "best-non-toxic-car-seats.html",
+      "https://www.ecocenter.org/our-work/healthy-stuff-lab/reports/toxic-inequities-2022-car-seat-report"
+    ],
+    "fronts": {
+      "formula": {
+        "status": "none",
+        "note": "A durable good has no ingredient list. What it is made of is the materials check.",
+        "origin": "database"
+      },
+      "materials": {
+        "status": "caution",
+        "note": "Polyester fabric with no flame retardant free claim.",
+        "origin": "hand"
+      },
+      "legal": {
+        "status": "pass",
+        "note": "One recall in five years (23C004), a product we do not rate.",
+        "origin": "hand"
+      },
+      "testing": {
+        "status": "none",
+        "note": "Flagged 2014 to 2022; results over 36 months old.",
+        "origin": "hand"
+      }
+    },
+    "reviewed": true,
+    "article": "best-non-toxic-car-seats.html",
+    "generalises": true,
+    "products": [
+      {
+        "name": "Baby Trend EZ Lift Plus Infant Car Seat",
+        "asins": [
+          "B0BYTJDL71"
+        ],
+        "verdict": "careful",
+        "note": "Synthetic fabric. Baby Trend makes no flame retardant free claim.",
+        "origin": "article",
+        "source": "best-non-toxic-car-seats.html",
+        "cat": "Car seats",
+        "matchAll": [
+          [
+            "baby",
+            "trend",
+            "ez"
+          ]
+        ],
+        "ext": {
+          "frontNotes": {
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "testing": "This seat has not been tested. Baby Trend seats were flagged in every Ecology Center round from 2014 to 2022, results over 36 months old, so under rule 4.7 recorded and carrying nothing. Searched the Ecology Center, Mamavation and Consumer Reports on 2026-09-15; nothing newer found.",
+            "materials": "polyester in direct contact, with heat."
+          },
+          "testingNote": "This seat has not been tested. Baby Trend seats were flagged in every Ecology Center round from 2014 to 2022, results over 36 months old, so under rule 4.7 recorded and carrying nothing. Searched the Ecology Center, Mamavation and Consumer Reports on 2026-09-15; nothing newer found.",
+          "testingDate": "2026-09-15",
+          "materialsList": "polyester",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "dry",
+            "heated": true,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "polyester",
+            "source": "Amazon B0BYTJDL71 Material: Metal, Plastic, Polyester",
+            "checked": "2026-09-15"
+          },
+          "legalNote": "Checked. What is on record concerns other Baby Trend products, not this one: Checked NHTSA records on 2026-09-15. One Baby Trend car seat recall in five years: 23C004 (2023), LATCH webbing that can fray on 2,600 Hybrid 3 in 1 seats, a product we do not rate. No lawsuit or Prop 65 notice found.",
+          "verdict": "careful",
+          "dated": "2026-09-15",
+          "why": "section 6: awaiting the recorded checks",
+          "fronts": {
+            "formula": "none",
+            "materials": "caution",
+            "legal": "pass",
+            "testing": "none"
+          },
+          "frontOrigin": {
+            "formula": "hand",
+            "testing": "database",
+            "materials": "database",
+            "legal": "database"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "peg-perego",
+    "brand": "Peg Perego",
+    "category": "Car seats",
+    "stance": "careful",
+    "reason": "Peg Perego says its Primo Viaggio Nido infant seat is flame retardant free in fabric and foam. The fabric is a polyester blend over polyurethane foam, there is no PFAS statement or certification, and the seat has not been independently tested. No car seat recall or lawsuit found.",
+    "evidence": "Brand FR free claim, fabric and foam",
+    "alternative": "Chicco ClearTex or Clek Mammoth",
+    "sources": [
+      "best-non-toxic-car-seats.html",
+      "https://www.pegperego.com/en_us/baby/primo-viaggio-nido-pcode-000000000710.html"
+    ],
+    "fronts": {
+      "formula": {
+        "status": "none",
+        "note": "A durable good has no ingredient list. What it is made of is the materials check.",
+        "origin": "database"
+      },
+      "materials": {
+        "status": "caution",
+        "note": "Polyester blend fabric over polyurethane foam.",
+        "origin": "hand"
+      },
+      "legal": {
+        "status": "pass",
+        "note": "No car seat recall, notice or product lawsuit found (2026-09-15).",
+        "origin": "hand"
+      },
+      "testing": {
+        "status": "none",
+        "note": "Not independently tested.",
+        "origin": "hand"
+      }
+    },
+    "reviewed": true,
+    "article": "best-non-toxic-car-seats.html",
+    "generalises": false,
+    "products": [
+      {
+        "name": "Peg Perego Primo Viaggio Nido Infant Car Seat",
+        "asins": [
+          "B0CRG5RDRC"
+        ],
+        "verdict": "careful",
+        "note": "Polyester blend fabric over polyurethane foam, sold as flame retardant free in fabric and foam by Peg Perego. No PFAS statement.",
+        "origin": "article",
+        "source": "best-non-toxic-car-seats.html",
+        "cat": "Car seats",
+        "matchAll": [
+          [
+            "peg",
+            "perego",
+            "viaggio"
+          ]
+        ],
+        "ext": {
+          "frontNotes": {
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "testing": "No independent test of this seat was found. Searched the Ecology Center, Mamavation and Consumer Reports on 2026-09-15; nothing newer found.",
+            "materials": "polyester in direct contact, with heat.",
+            "legal": "Checked the NHTSA recall file, federal dockets and California Prop 65 notices on 2026-09-15: no recall, notice or car seat lawsuit found for Peg Perego."
+          },
+          "testingNote": "No independent test of this seat was found. Searched the Ecology Center, Mamavation and Consumer Reports on 2026-09-15; nothing newer found.",
+          "testingDate": "2026-09-15",
+          "materialsList": "polyester",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "dry",
+            "heated": true,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "polyester",
+            "source": "Amazon B0CRG5RDRC Material: Metal, Plastic, Polyester Blend, Polyurethane Foam",
+            "checked": "2026-09-15"
+          },
+          "legalNote": "Checked the NHTSA recall file, federal dockets and California Prop 65 notices on 2026-09-15: no recall, notice or car seat lawsuit found for Peg Perego.",
+          "verdict": "careful",
+          "dated": "2026-09-15",
+          "why": "section 6: formula is caution",
+          "fronts": {
+            "formula": "none",
+            "materials": "caution",
+            "legal": "pass",
+            "testing": "none"
+          },
+          "frontOrigin": {
+            "formula": "hand",
+            "testing": "database",
+            "materials": "database",
+            "legal": "database"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "cosco",
+    "brand": "Cosco",
+    "category": "Car seats",
+    "stance": "neutral",
+    "reason": "Cosco, a Dorel brand, sells no flame retardant free car seat, and its Scenera Next and Lift and Stroll were flagged in Ecology Center testing in 2016, 2018 and 2022. Those results are over three years old, so under our standard they are recorded and set no verdict; no current material or test record exists yet.",
+    "evidence": "Ecology Center 2016, 2018, 2022",
+    "alternative": "Chicco ClearTex or Clek Mammoth",
+    "sources": [
+      "best-non-toxic-car-seats.html",
+      "https://www.ecocenter.org/our-work/healthy-stuff-lab/reports/toxic-inequities-2022-car-seat-report"
+    ],
+    "fronts": {
+      "formula": {
+        "status": "none",
+        "note": "A durable good has no ingredient list. What it is made of is the materials check.",
+        "origin": "database"
+      },
+      "materials": {
+        "status": "unknown",
+        "note": "No current material record.",
+        "origin": "hand"
+      },
+      "legal": {
+        "status": "pass",
+        "note": "No Cosco branded car seat recall in five years.",
+        "origin": "hand"
+      },
+      "testing": {
+        "status": "none",
+        "note": "Flagged 2016 to 2022; results over 36 months old.",
+        "origin": "hand"
+      }
+    },
+    "reviewed": true,
+    "article": "best-non-toxic-car-seats.html",
+    "generalises": true
+  },
+  {
+    "id": "babyark",
+    "brand": "Babyark",
+    "category": "Car seats",
+    "stance": "neutral",
+    "reason": "Babyark, sold direct, says its convertible car seats use naturally flame resistant fabrics with no added chemicals, but publishes no fiber content or PFAS statement, and the seat has not been independently tested. No recall or lawsuit found.",
+    "evidence": "Brand FAQ: naturally flame resistant fabrics",
+    "alternative": "Chicco ClearTex or Clek Mammoth",
+    "sources": [
+      "best-non-toxic-car-seats.html",
+      "https://babyark.com/pages/faq"
+    ],
+    "fronts": {
+      "formula": {
+        "status": "none",
+        "note": "A durable good has no ingredient list. What it is made of is the materials check.",
+        "origin": "database"
+      },
+      "materials": {
+        "status": "unknown",
+        "note": "Fabric fiber content not published.",
+        "origin": "hand"
+      },
+      "legal": {
+        "status": "pass",
+        "note": "No recall, notice or lawsuit found (2026-09-15).",
+        "origin": "hand"
+      },
+      "testing": {
+        "status": "none",
+        "note": "Not independently tested.",
+        "origin": "hand"
+      }
+    },
+    "reviewed": true,
+    "article": "best-non-toxic-car-seats.html",
+    "generalises": true
   }
 ]

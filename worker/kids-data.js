@@ -613,7 +613,7 @@ export const KIDS = {
    ]
   },
   {
-   "guide": "non-toxic-baby-toddler-products-guide.html",
+   "guide": "best-non-toxic-car-seats.html",
    "id": "Kids::Choose a flame retardant free car seat",
    "swap": "Choose a flame retardant free car seat",
    "why": "Enclosed, heated by sun, and federally required to meet flammability standards that many brands still meet chemically.",
@@ -624,21 +624,21 @@ export const KIDS = {
     {
      "label": "Guide",
      "name": "Read the full guide",
-     "url": "https://plasticdetox.org/articles/non-toxic-baby-toddler-products-guide.html"
+     "url": "https://plasticdetox.org/articles/best-non-toxic-car-seats.html"
     }
    ],
    "article": {
-    "slug": "non-toxic-baby-toddler-products-guide.html",
-    "title": "The Complete Parent's Guide to Replacing Toxic Baby and Toddler Products (2026)"
+    "slug": "best-non-toxic-car-seats.html",
+    "title": "Best Non Toxic Car Seats: What Testing Found in the Fabric, the Foam and the Finish (2026)"
    },
    "faqs": [
     {
-     "q": "What is the safest car seat for babies?",
-     "a": "Nuna is the only car seat brand that is entirely flame retardant free across its full lineup, with GREENGUARD Gold certification and no PFAS. Clek uses wool batting instead of synthetic foam in their Mammoth line. All car seats must meet the same federal crash safety standards regardless of brand, so choosing a cleaner option does not mean compromising on crash protection."
+     "q": "Are flame retardant free car seats as safe in a crash?",
+     "a": "Yes, by the same measure as every other seat. Every car seat sold in the US must pass the same federal crash test, FMVSS 213, and the same flammability test, FMVSS 302, whether it passes the fire test with added chemicals or with wool and knit fabrics. The fabric does not change the crash requirements. Crash protection comes from the shell, the energy absorbing foam, the harness and correct installation, and a flame retardant free seat installed correctly and used rear facing as long as the seat allows is the safe choice."
     },
     {
-     "q": "What certifications should I look for on baby products?",
-     "a": "The most meaningful certifications are GREENGUARD Gold (low chemical emissions, especially for furniture and mattresses), GOTS (organic textiles from field to finished product), OEKO-TEX Standard 100 (tested for harmful substances in fabrics), MADE SAFE (screened for known toxic chemicals), and EWG Verified (strict health criteria for personal care). Multiple certifications on a single product is the strongest signal of safety."
+     "q": "Can I put a merino wool or organic cover on the car seat I already have?",
+     "a": "No. NHTSA advises against aftermarket products unless the seat's manufacturer made or approved them, and the American Academy of Pediatrics says not to use extra products that did not come with the seat. Britax's manual warns that covers or inserts from another maker could cause the seat to fail federal safety standards. A thick cover can also change how the harness fits. If the seat's fabric worries you, buy a replacement cover from the same manufacturer, or choose a flame retardant free seat when this one expires."
     }
    ]
   },
