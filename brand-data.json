@@ -47750,7 +47750,6 @@
         ],
         "ext": {
           "frontNotes": {
-            "formula": "A durable good has no ingredient list. What it is made of is the materials check.",
             "materials": "In contact with stainless steel, which puts nothing into what it holds.",
             "legal": "Checked CPSC recall listings and recall news by web search on 2026-08-31. No recall, safety warning or regulatory action affecting this brand found."
           },
@@ -101086,7 +101085,8 @@
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
             "formula": "The published ingredient list carries nothing on the hazard list.",
-            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
+            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
+            "materials": "In contact with glass, which puts nothing into what it holds."
           },
           "heldFrom": "good",
           "restoreWhy": "a vetted store pick, chosen by a person at product scope",
@@ -101116,18 +101116,32 @@
           "heldBack": [
             "materials"
           ],
-          "verdict": "unrated",
+          "materialsList": "glass",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "aqueous",
+            "heated": false,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "glass",
+            "source": "threeshipsbeauty.com/products/jelly-drops-mushroom-hyaluronic-acid-vitamin-c-serum, Sustainability tab: \"outer packaging is cardboard, and inner components are glass bottles\". A water based hyaluronic acid serum; the dropper parts are not named, and aqueous contents pass the rule 3.1 matrix in any of them.",
+            "checked": "2026-09-15"
+          },
+          "verdict": "good",
           "dated": "2026-08-29",
-          "why": "a recommendation needs its checks done; still to do: materials",
+          "why": "a vetted store pick, chosen by a person at product scope",
           "fronts": {
             "formula": "pass",
-            "materials": "unassessed",
+            "materials": "pass",
             "legal": "none",
             "testing": "unassessed"
           },
           "frontOrigin": {
             "legal": "database",
-            "formula": "database"
+            "formula": "database",
+            "materials": "database"
           },
           "scope": "sku",
           "basis": "direct",
