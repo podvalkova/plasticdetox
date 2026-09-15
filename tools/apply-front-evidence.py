@@ -210,6 +210,21 @@ def assess(pack):
     if contact not in ("yes", "true"):
         return None, "We have not established what the product actually touches"
 
+    # Rule 3.9, a treatment the maker states is part of the material. A car seat
+    # cover reads polyester whether or not a flame retardant was added to it, so
+    # the fibre alone could not tell Doona's seat, whose FAQ says its materials
+    # "do have flame retardants", from a seat sold free of them, and it sat at
+    # careful. The maker's own statement is a primary source for a named hazard
+    # in the part that touches a person, which fails the front under rule 2.1.
+    # Recorded as `treatment` with `treatmentSource`; a denial ("flame retardant
+    # free") is stripped before matching, and nothing is read off our own prose.
+    treatment = NEGATED.sub(" ", str(pack.get("treatment") or "").lower())
+    if treatment.strip() and str(pack.get("treatmentSource") or "").strip():
+        named = [h for h in _apr.HAZARD if h in treatment]
+        if named:
+            return "fail", (f"The maker states it is treated with {max(named, key=len)}, "
+                            "a named hazard, in the part that touches a person")
+
     parts = [m.strip() for m in re.split(r"[,^/;+&]|\band\b", raw) if m.strip()]
     ranks = [classify(m) for m in parts]
     mixed = any(r for t, r in ranks if r) and any(t and r == 0 for t, r in ranks)
@@ -850,6 +865,8 @@ def main():
                     "use": pack.get("use") or "",
                     "binder": pack.get("binder") or "",
                     "material": pack.get("material") or "",
+                    "treatment": pack.get("treatment") or "",
+                    "treatmentSource": pack.get("treatmentSource") or "",
                     "source": pack.get("source") or "",
                     "checked": pack.get("checked") or pack.get("checkedListing") or "",
                     "open": reason,
@@ -875,6 +892,8 @@ def main():
                 "reuse": pack.get("reuse") or "",
                 "use": pack.get("use") or "",
                 "material": pack.get("material") or "",
+                "treatment": pack.get("treatment") or "",
+                "treatmentSource": pack.get("treatmentSource") or "",
                 "source": pack.get("source") or "",
                 "checked": pack.get("checked") or pack.get("checkedListing") or "",
             }

@@ -542,6 +542,33 @@ FreeSip softened from skip to careful the moment a rebuild touched its row. It
 is a rule now, and it reads the note sentence by sentence, so a note that
 states the standard is not mistaken for a note that denies the finding.
 
+### 3.9 A treatment the maker states is part of the material
+
+A fibre name cannot tell two car seat covers apart when one had a flame
+retardant added and the other did not: both read polyester. What separates them
+is what the maker says about the treatment, and a maker's own statement about
+its own product is a primary source.
+
+> **Where the maker states that the part touching a person carries a named
+> hazard as an added treatment, flame retardants for example, the materials
+> front is `fail`, under rule 2.1.** The statement is recorded as `treatment`,
+> with `treatmentSource` quoting where the maker says it.
+
+A denial is not a treatment. "Flame retardant free" and "no added flame
+retardants" name the chemistry and assert its absence, so only an unnegated
+statement fails the front. A treatment on a part that never touches a person is
+excluded by 3.4. A laboratory finding of the same chemistry belongs to section 4,
+and a maker who will not say what a part is made of is a disclosure failure, a
+`caution`, as in 3.7. The statement ages like other materials evidence, 24 months
+under section 7.
+
+Set in September 2026, when three car seat makers answered the question in their
+own words. Doona's safety FAQ says its materials "do have flame retardants",
+Joie's FAQ says all its US car seat covers contain them, and Diono says its
+fabrics do, though none brominated or chlorinated. All three had sat at careful
+or unrated, because the fibre alone could not carry what the maker had already
+said.
+
 ## 4. Independent tests
 
 The hard one. Here is the governing principle:
