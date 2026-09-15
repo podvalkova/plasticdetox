@@ -169,7 +169,7 @@ def worst(materials):
     return inert[0] if inert else ""
 
 
-def assess(pack):
+def _assess_container(pack):
     """The four questions, in order, with unknown allowed at each one.
 
     1  Does it touch the contents, the mouth or the skin? A plastic kettle body
@@ -239,6 +239,11 @@ def assess(pack):
 
     material = worst(raw)
     term, rank = classify(material)
+    # Aluminium is scored as its lining (rule 3.1): bottles, cans and tubes are
+    # coated inside with a resin, so it sits with the polyolefins. Only a maker's
+    # statement that the container is unlined makes it bare metal, and inert.
+    if term in ("aluminum", "aluminium") and str(pack.get("lining") or "").strip().lower() in ("none", "unlined", "uncoated"):
+        term, rank = "metal", 0
     if term is None:
         return None, "The contact material is not recorded"
     # Rule 2.1 disclosure, on an object rather than a recipe. A composite is
@@ -365,6 +370,21 @@ def assess(pack):
         return "pass", (", ".join(bits) + ", and no version of this format exists without it, "
                         "so it is recorded rather than counted")
     return status, ", ".join(bits)
+
+
+def assess(pack):
+    """Rule 3.10 wraps the four questions: a dispenser is noted, not counted.
+
+    `dispenser` is recorded apart from `material`, so the container decides the
+    front and the pump, dip tube, dropper or spray head only reaches the card.
+    Osea's glass bottles had been scored on their plastic pumps, a part no
+    shopper can buy without and a surface far smaller than the bottle's.
+    """
+    status, reason = _assess_container(pack)
+    disp = str(pack.get("dispenser") or "").strip()
+    if disp and status is not None:
+        reason = f"{reason}; the {disp} is noted and does not count (rule 3.10)"
+    return status, reason
 
 
 # Formats that do not exist without plastic in the contact path. Each one is
@@ -867,6 +887,8 @@ def main():
                     "material": pack.get("material") or "",
                     "treatment": pack.get("treatment") or "",
                     "treatmentSource": pack.get("treatmentSource") or "",
+                    "dispenser": pack.get("dispenser") or "",
+                    "lining": pack.get("lining") or "",
                     "source": pack.get("source") or "",
                     "checked": pack.get("checked") or pack.get("checkedListing") or "",
                     "open": reason,
@@ -894,6 +916,8 @@ def main():
                 "material": pack.get("material") or "",
                 "treatment": pack.get("treatment") or "",
                 "treatmentSource": pack.get("treatmentSource") or "",
+                    "dispenser": pack.get("dispenser") or "",
+                    "lining": pack.get("lining") or "",
                 "source": pack.get("source") or "",
                 "checked": pack.get("checked") or pack.get("checkedListing") or "",
             }

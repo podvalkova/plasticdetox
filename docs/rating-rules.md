@@ -365,10 +365,9 @@ One question now covers everything:
 - For a **durable**, it is the object and every part of it that touches a
   person or what they consume. A part counts even when it is small. Evenflo's
   glass bottle was rated on the glass while the thing in the baby's mouth is
-  the silicone teat; Osea's cleanser was rated on the glass bottle while the
-  acidic formula runs through a plastic pump. Both fell through because
-  neither part was packaging in any natural sense, and so neither had a front
-  to land on.
+  the silicone teat, which fell through because the teat was not packaging in
+  any natural sense and so had no front to land on. A dispenser on a container
+  is the one exception, in 3.10.
 
 The retail box is not this front and is not rated. A wrapper a dry product
 comes in extracts nothing and is recorded as `none`, which is a finding.
@@ -403,9 +402,17 @@ plastic is lipophilic, so oil pulls it out and water largely does not.
 | | Polymer | Concern |
 |---|---|---|
 | 0 | Glass, stainless, foil lined, ceramic, food grade silicone | Inert, silicone by decision (below) |
-| 1 | HDPE, LDPE, PP | Slip agents and antioxidants only |
+| 1 | HDPE, LDPE, PP, aluminium | Slip agents and antioxidants; aluminium is scored as its resin lining |
 | 2 | PET, Tritan, copolyester | Antimony trioxide catalyst, acetaldehyde |
 | 3 | PVC, polycarbonate, polystyrene, melamine | Phthalates, BPA, styrene, melamine monomer |
+
+**Aluminium is scored as its lining.** Bare aluminium corrodes and reacts with
+what it holds, so aluminium bottles, cans and tubes are coated inside with a
+resin, for decades usually a BPA based epoxy, and the contents touch that
+coating rather than the metal. It sits in the polyolefin column: dry, water
+based and surfactant contents pass, emulsions and oils are a caution. Where
+the maker states the container is unlined, it is bare metal and inert.
+Recorded as `lining` on the materials record. Set by Anya in September 2026.
 
 **The matrix:**
 
@@ -568,6 +575,23 @@ Joie's FAQ says all its US car seat covers contain them, and Diono says its
 fabrics do, though none brominated or chlorinated. All three had sat at careful
 or unrated, because the fibre alone could not carry what the maker had already
 said.
+
+### 3.10 A dispenser is noted, not counted
+
+A pump, its dip tube, a dropper bulb or a spray head touches the contents, and
+a dip tube sits in them the whole time. But its surface is a small fraction of
+the container's, and no pump sold on the products we rate is made without
+plastic, so counting it marked down every glass bottle with a pump for a part
+no shopper can avoid.
+
+> **Where the container itself passes, a plastic dispenser is recorded on the
+> card and does not lower the materials front.** Where the container is
+> plastic, the container decides.
+
+A spout, straw or mouthpiece on drinkware is not a dispenser: it is the drink
+path, and 3.8 governs it. Recorded as `dispenser` on the materials record,
+apart from `material`. Set by Anya in September 2026, replacing the reading
+that scored Osea's glass bottles on their plastic pumps.
 
 ## 4. Independent tests
 
