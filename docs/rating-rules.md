@@ -622,6 +622,33 @@ route into a person and the finished fibre has none on record. Recorded as
 `certification` with `certificationSource` on the materials record. Set by Anya
 in September 2026.
 
+### 3.12 A car seat's fabric is judged like clothing
+
+A clothed child sits on a car seat and nothing is eaten, which is the clothing
+question, not the container question. The testing agrees. In the Ecology
+Center's 2022 round all 10 seats sold flame retardant free tested clean, most of
+them polyester, and all 12 conventional seats carried flame retardants. What
+separated them was treatment, not fibre, and scoring the fibre left every seat
+but one at careful for polyester.
+
+> **On a car seat the fibre is disclosed, not scored. The materials front
+> passes only when the maker states that the fabric and the foam carry no added
+> flame retardants and that the seat is PFAS free, and either a certificate that
+> tests the finished fabric (OEKO-TEX Standard 100, GOTS, MADE SAFE or bluesign,
+> with its number) or an independent test under 36 months old verifies it.
+> Otherwise it is `caution`.**
+
+GREENGUARD Gold measures emissions and does not verify content, and a screen the
+brand commissioned is a certificate of analysis under 4.2. A maker admitting
+flame retardants still fails first, under 3.9. The polymer table and 3.11 do not
+run on a car seat, so a bare TENCEL passes on a qualifying certificate like any
+other fibre. The plastic shell, crash foam and harness are in every seat sold
+and are noted, not scored, under 3.6. Heat in a parked car stays a caveat in the
+copy. Keyed on the row's own category, and recorded as `frFree`, `frFreeSource`,
+`pfasFree`, `pfasFreeSource` and `certificateNumber` beside `certification` and
+`certificationSource` on the materials record. Set by Anya in September 2026,
+when every car seat on the market read careful for its fibre.
+
 ## 4. Independent tests
 
 The hard one. Here is the governing principle:

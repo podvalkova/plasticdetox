@@ -113,6 +113,50 @@ assert not (INERT & set(POLYMER)), sorted(INERT & set(POLYMER))
 # hours they need a certification that tests the finished product.
 VISCOSE_FIBRE = re.compile(r"\b(viscose|rayon|modal)\b|\btencel\b(?!.*\blyocell\b)", re.I)
 FINISHED_PRODUCT_CERT = re.compile(r"oeko.?tex\W*standard\W*100|made safe|\bgots\b|eu ecolabel", re.I)
+# Rule 3.12's list is its own, so widening it never moves 3.11 on a wrap or a wipe.
+CAR_SEAT_CERT = re.compile(r"oeko.?tex\W*standard\W*100|made safe|\bgots\b|\bbluesign\b", re.I)
+
+
+def _car_seat_front(pack):
+    """Rule 3.12, a car seat's fabric is judged like clothing.
+
+    A clothed child sits on the fabric and nothing is eaten, and the testing
+    split on chemistry, not fibre: in the Ecology Center's 2022 round all 10
+    seats sold flame retardant free tested clean, most of them polyester, and
+    all 12 conventional seats were flagged. Scoring the fibre left every seat
+    but one at careful for polyester. So the fibre is disclosed and not scored,
+    and the front rests on the maker's statement that the fabric and the foam
+    carry no added flame retardants and that the seat is PFAS free, verified by
+    a certificate that tests the finished fabric (with its number) or an
+    independent test under 36 months old. Rule 3.9 has already failed a maker
+    who admits flame retardants before this runs.
+    """
+    fr = str(pack.get("frFree") or "").lower()
+    stated_fr = (bool(re.search(r"\bfabric", fr)) and bool(re.search(r"\bfoam", fr))
+                 and bool(str(pack.get("frFreeSource") or "").strip()))
+    stated_pfas = (bool(str(pack.get("pfasFree") or "").strip())
+                   and bool(str(pack.get("pfasFreeSource") or "").strip()))
+    cert = str(pack.get("certification") or "").strip()
+    certified = (bool(CAR_SEAT_CERT.search(cert))
+                 and bool(str(pack.get("certificateNumber") or "").strip())
+                 and bool(str(pack.get("certificationSource") or "").strip()))
+    tested = str((pack.get("_testing") or {}).get("status") or "") == "pass"
+    fibre = str(pack.get("material") or "").strip()
+    shown = (f"The fabric is {fibre}, disclosed and not scored" if fibre
+             else "The maker does not publish the fibre")
+    missing = []
+    if not stated_fr:
+        missing.append("a maker statement that the fabric and the foam carry no added flame retardants")
+    if not stated_pfas:
+        missing.append("a PFAS free statement")
+    if not (certified or tested):
+        missing.append("a certificate that tests the finished fabric, with its number, or an "
+                       "independent test under 36 months old, to verify it")
+    if missing:
+        return "caution", f"Missing {'; '.join(missing)} (rule 3.12). {shown}"
+    how = f"{cert} {pack.get('certificateNumber')}" if certified else "an independent test"
+    return "pass", ("No added flame retardants in fabric or foam and no PFAS by the maker's "
+                    f"statement, verified by {how} (rule 3.12). {shown}")
 
 ACRONYMS = {"pet", "pete", "pvc", "ps", "pc", "pp", "hdpe", "ldpe", "ptfe"}
 OILY = {"anhydrous", "oil", "oily", "fatty", "balm", "alcohol"}
@@ -236,6 +280,12 @@ def _assess_container(pack):
         if named:
             return "fail", (f"The maker states it is treated with {max(named, key=len)}, "
                             "a named hazard, in the part that touches a person")
+
+    # Rule 3.12. Keyed on the row's own category, not the brand's, which files
+    # Evenflo's seat under baby bottles. The polymer matrix and 3.11 never run on
+    # a car seat: its fibre is a disclosed fact, not the verdict.
+    if str(pack.get("rowCategory") or "").strip().lower() == "car seats":
+        return _car_seat_front(pack)
 
     parts = [m.strip() for m in re.split(r"[,^/;+&]|\band\b", raw) if m.strip()]
     # Rule 3.11. A viscose process fibre against the skin for hours is a caution
@@ -888,7 +938,11 @@ def main():
             # entry rather than inside the materials block. Without this the
             # rule could never fire on anything.
             pack = dict(pack, _product=entry.get("_product") or "",
-                        category=(b.get("category") or ""))
+                        category=(b.get("category") or ""),
+                        # Rule 3.12 reads the row's own category and its test
+                        # record; `category` stays the brand's, which 3.6 reads.
+                        rowCategory=(p.get("cat") or ""),
+                        _testing=(entry.get("testing") or {}))
             status, reason = assess(pack)
             filled += 1
             if status is None:
@@ -933,6 +987,9 @@ def main():
                     "source": pack.get("source") or "",
                     "checked": pack.get("checked") or pack.get("checkedListing") or "",
                     "open": reason,
+                    # Rule 3.12's facts, only where recorded, so other rows do not churn.
+                    **{k: pack[k] for k in ("certificateNumber", "frFree", "frFreeSource",
+                                            "pfasFree", "pfasFreeSource") if pack.get(k)},
                 }
                 continue
             e = p.setdefault("ext", {})
@@ -963,6 +1020,8 @@ def main():
                     "certificationSource": pack.get("certificationSource") or "",
                 "source": pack.get("source") or "",
                 "checked": pack.get("checked") or pack.get("checkedListing") or "",
+                **{k: pack[k] for k in ("certificateNumber", "frFree", "frFreeSource",
+                                        "pfasFree", "pfasFreeSource") if pack.get(k)},
             }
             applied[status] += 1
 
