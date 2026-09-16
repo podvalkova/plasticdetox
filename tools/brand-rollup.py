@@ -43,6 +43,27 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "brand-data.json"
 
 RANK = {"good": 0, "neutral": 0, "careful": 1, "skip": 2}
+VRANK = {"skip": 0, "careful": 1, "neutral": 2, "good": 3}
+
+
+def shown_verdict(p):
+    """The verdict Product Check shows for a product.
+
+    brand-check.html draws the stricter of the verdict typed for a row and the
+    one its recorded checks produce (ext.verdict), because Product Check is the
+    source of truth and a finding the checks recorded must not hide behind an
+    older typed answer. Rolling up the typed field alone left 32 brands at good
+    or context over a product the page itself showed as careful or skip. There
+    is deliberately no fallback to the brand's own stance here: a brand cannot
+    be evidence about itself.
+    """
+    typed = p.get("verdict")
+    ruled = (p.get("ext") or {}).get("verdict")
+    if ruled not in VRANK:
+        return typed
+    if typed not in VRANK:
+        return ruled
+    return ruled if VRANK[ruled] < VRANK[typed] else typed
 
 
 def main():
@@ -60,13 +81,13 @@ def main():
         rows = b.get("products") or []
         # Only independently researched rows count as evidence about the brand.
         researched = [p for p in rows if p.get("origin") != "brand-line"]
-        flagged = [p for p in researched if p.get("verdict") in ("careful", "skip")]
+        flagged = [p for p in researched if shown_verdict(p) in ("careful", "skip")]
 
         b["rollup"] = {
             "products": len(rows),
             "researched": len(researched),
             "flagged": len(flagged),
-            "worst": max((p.get("verdict") for p in flagged),
+            "worst": max((shown_verdict(p) for p in flagged),
                          key=lambda v: RANK.get(v, 0), default=None),
         }
 
