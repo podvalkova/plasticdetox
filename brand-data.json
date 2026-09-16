@@ -24686,9 +24686,10 @@
         "ext": {
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
-            "materials": "The listing describes plastic, polyester in contact, recorded from the listing rather than an established contact material",
+            "materials": "polyester in direct contact, with being mouthed or chewed.",
             "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
-            "formula": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear."
+            "formula": "The listing publishes no ingredient list, only description copy, which can warn but cannot clear.",
+            "testing": "Mamavation, published 2024-08-26: COCOLAB Cocofloss Delicious Mint read non detect for total organic fluorine at a 10 ppm detection limit, so no sign of PFAS. A PFAS screen only; no heavy metal test found."
           },
           "exposure": {
             "type": "rinse-off skin",
@@ -24713,6 +24714,38 @@
             "source": "amazon:B0108T9C2E listing bullets",
             "checked": "2026-09-14"
           },
+          "testingResults": [
+            {
+              "analyte": "total organic fluorine",
+              "value": null,
+              "unit": "ppm",
+              "lod": "10 ppm",
+              "lab": "EPA certified lab for Mamavation",
+              "year": 2024,
+              "outcome": "non-detect"
+            }
+          ],
+          "testingNote": "Mamavation, published 2024-08-26: COCOLAB Cocofloss Delicious Mint read non detect for total organic fluorine at a 10 ppm detection limit, so no sign of PFAS. A PFAS screen only; no heavy metal test found.",
+          "testingDate": "2026-09-16",
+          "materialsList": "recycled polyester fibers, coated with coconut oil and microcrystalline wax",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "",
+            "heated": false,
+            "mouthed": true,
+            "reuse": "",
+            "use": "",
+            "material": "recycled polyester fibers, coated with coconut oil and microcrystalline wax",
+            "treatment": "",
+            "treatmentSource": "",
+            "dispenser": "",
+            "lining": "",
+            "certification": "",
+            "certificationSource": "",
+            "source": "cocofloss.com/products/delicious-mint-cocofloss: \"crafted from recycled polyester fibers\"; \"Infused with gum-loving coconut oil and microcrystalline wax\"",
+            "checked": "2026-09-16"
+          },
           "verdict": "careful",
           "dated": "2026-09-16",
           "why": "section 6 ceiling: materials is caution, on recorded evidence",
@@ -24720,11 +24753,12 @@
             "formula": "unassessed",
             "materials": "caution",
             "legal": "none",
-            "testing": "unassessed"
+            "testing": "pass"
           },
           "frontOrigin": {
             "legal": "database",
-            "materials": "hand"
+            "materials": "database",
+            "testing": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -24735,7 +24769,8 @@
           ]
         },
         "cat": "Bath accessories",
-        "research": "Packaging: Floss spool sits in a refillable plastic dispenser; resin unstated; brand calls the plastic dispensers endlessly refillable. Shipping boxes are 100% recycled paper."
+        "research": "Packaging: Floss spool sits in a refillable plastic dispenser; resin unstated; brand calls the plastic dispensers endlessly refillable. Shipping boxes are 100% recycled paper.",
+        "tradeoff": "Kept in the store as a labelled trade off under rule 5.7: no vegan floss rates good, because every vegan strand we found is nylon, polyester, corn PLA or an undisclosed bamboo fiber (research 2026-09-16). Cocofloss's strand is recycled polyester, so materials stays a caution, but Mamavation's 2024 testing found no organic fluorine at a 10 ppm limit. Anya asked for a vegan option on 2026-09-16, and the store card says Careful: polyester strand."
       }
     ],
     "cautions": [

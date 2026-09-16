@@ -2304,7 +2304,32 @@
    "source": "amazon:B0108T9C2E listing bullets"
   },
   "materials": {
+   "material": "recycled polyester fibers, coated with coconut oil and microcrystalline wax",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "holds": "none",
+   "mouthed": true,
+   "heated": false,
+   "source": "cocofloss.com/products/delicious-mint-cocofloss: \"crafted from recycled polyester fibers\"; \"Infused with gum-loving coconut oil and microcrystalline wax\"",
+   "checked": "2026-09-16",
    "checkedListing": "2026-09-02"
+  },
+  "testing": {
+   "status": "pass",
+   "checked": "2026-09-16",
+   "source": "https://mamavation.com/beauty/toxic-pfas-dental-floss-tooth-floss.html",
+   "note": "Mamavation, published 2024-08-26: COCOLAB Cocofloss Delicious Mint read non detect for total organic fluorine at a 10 ppm detection limit, so no sign of PFAS. A PFAS screen only; no heavy metal test found.",
+   "results": [
+    {
+     "analyte": "total organic fluorine",
+     "value": null,
+     "unit": "ppm",
+     "lod": "10 ppm",
+     "lab": "EPA certified lab for Mamavation",
+     "year": 2024,
+     "outcome": "non-detect"
+    }
+   ]
   }
  },
  "B010S7VZI0": {
