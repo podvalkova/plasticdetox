@@ -168,7 +168,31 @@
     .data-table td.bad { color: #b91c1c; font-weight: 600; }
     .table-scroll { overflow-x: auto; }
     .table-scroll table { min-width: 560px; }
-    .table-scroll.wide table { min-width: 720px; }
+    .bm-legend { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 1.25rem 0 0.5rem; }
+    .bm-wrap { overflow-x: auto; }
+    .bm { width: 100%; border-collapse: collapse; margin: 0.5rem 0 1.5rem; font-size: 0.86rem; }
+    .bm th { text-align: left; vertical-align: bottom; padding: 0 0.5rem 0.6rem 0; font-size: 0.66rem; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-muted); border-bottom: 2px solid var(--border, #e7e5e4); }
+    .bm td { vertical-align: top; padding: 0.7rem 0.5rem 0.7rem 0; border-bottom: 1px solid var(--border, #e7e5e4); }
+    .bm tr.bm-tier td { padding: 1.2rem 0 0.45rem; border-bottom: 0; }
+    .bm-brand { display: flex; align-items: center; gap: 0.45rem; font-weight: 800; font-size: 0.95rem; line-height: 1.2; }
+    .bm-rank { flex: none; display: inline-grid; place-items: center; width: 1.5rem; height: 1.5rem; border-radius: 999px; background: #1c1917; color: #fff; font-size: 0.72rem; font-weight: 800; }
+    .bm-sub, .bm-note { display: block; margin-top: 0.3rem; font-size: 0.76rem; line-height: 1.35; color: var(--text-muted); }
+    .pill { display: inline-block; padding: 0.15rem 0.55rem; border-radius: 999px; font-size: 0.74rem; font-weight: 800; line-height: 1.35; white-space: nowrap; }
+    .pill.g { background: #dcfce7; color: #166534; }
+    .pill.a { background: #fef3c7; color: #92400e; }
+    .pill.r { background: #fee2e2; color: #991b1b; }
+    .pill.n { background: #f5f5f4; color: #57534e; }
+    @media (max-width: 760px) {
+      .bm thead { display: none; }
+      .bm, .bm tbody { display: block; width: 100%; }
+      .bm tr { display: block; }
+      .bm tr.bm-row { border: 1px solid var(--border, #e7e5e4); border-radius: 12px; padding: 0.8rem 0.9rem 0.5rem; margin-bottom: 0.7rem; background: var(--surface, #fff); }
+      .bm td { display: grid; grid-template-columns: 7rem 1fr; gap: 0.6rem; padding: 0.4rem 0; border-bottom: 0; }
+      .bm td::before { content: attr(data-label); padding-top: 0.2rem; font-size: 0.64rem; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text-muted); }
+      .bm td.bm-b, .bm tr.bm-tier td { display: block; }
+      .bm td.bm-b { padding-bottom: 0.55rem; }
+      .bm td.bm-b::before, .bm tr.bm-tier td::before { content: none; }
+    }
     .stat-band { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
     .stat-box { background: var(--surface); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.25rem 1rem; text-align: center; }
     .stat-num { font-size: 2rem; font-weight: 800; color: #dc2626; line-height: 1.1; }
@@ -377,27 +401,9 @@
 
     <h2 id="claims">Reading a Flame Retardant Free Claim</h2>
 
-    <p>Three questions separate the claims. Does it cover the foam as well as the fabric? Is there a written PFAS statement? Is there a certificate you can look up? GREENGUARD Gold, the certificate car seat brands cite most, is an emissions test: UL measures what the finished seat releases into the air, not whether a flame retardant or PFAS is in the material.</p>
+    <p>Three questions separate the claims. Does it cover the foam as well as the fabric? Is there a written PFAS statement? And can anyone check it? The <a href="#brands">brand table below</a> answers the first two for the ten biggest brands. The third has the same answer for all of them: not yet.</p>
 
-    <div class="table-scroll">
-      <table class="data-table">
-        <thead>
-          <tr><th>Brand</th><th>What the claim covers</th><th>PFAS statement</th><th>Verified by a certificate or a current test</th><th>Main fabric</th></tr>
-        </thead>
-        <tbody>
-          <tr><td><strong>Chicco ClearTex</strong></td><td>Fabric, foam, inserts and labels</td><td class="good">No added PFAS in any car seat</td><td class="bad">No</td><td>Polyester knit</td></tr>
-          <tr><td><strong>Clek</strong></td><td>Fabric and the foam laminated to it</td><td class="good">PFAS free and fluorine free</td><td class="bad">No, claim dropped in 2025</td><td>Mammoth: 70% merino, 30% TENCEL. Others: polyester</td></tr>
-          <tr><td><strong>Nuna</strong></td><td>Fabric and foam, whole line</td><td class="bad">None found</td><td class="bad">No</td><td>Knit, fiber not published</td></tr>
-          <tr><td><strong>UPPAbaby</strong></td><td>Fabric; foam on Rove, Aria V2 and Mesa Max</td><td class="bad">None found</td><td class="bad">No</td><td>Polyester; Rove Greyson a merino blend</td></tr>
-          <tr><td><strong>Orbit Baby</strong></td><td>Fabric; the toddler seat's foam is qualified</td><td class="bad">None found</td><td class="bad">Claimed, no number</td><td>65% merino, 35% polyester</td></tr>
-          <tr><td><strong>Maxi-Cosi PureCosi</strong></td><td>Fabric; padding on some models</td><td class="bad">None found</td><td class="bad">No</td><td>Recycled polyester</td></tr>
-          <tr><td><strong>Britax</strong></td><td>The cover</td><td class="bad">PFOS and PFOA only</td><td class="bad">No</td><td>Polyester</td></tr>
-          <tr><td><strong>Cybex</strong></td><td>Fabric</td><td class="bad">None found</td><td class="bad">No</td><td>Not published</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <p>GREENGUARD Gold, which most of these brands hold, is an emissions test: UL measures what the finished seat releases into the air, not what is in the material. Searching OEKO-TEX's own database for every brand and parent company returned no Standard 100 certificate covering car seat textiles, and the claims that retailers repeat carry no certificate number to check.</p>
+    <p>Checking a claim takes one of two things: a certificate that tests the finished fabric and carries a number you can look up, or an independent lab test from the last three years. Searching OEKO-TEX's database for every brand and parent company returned no Standard 100 certificate covering car seat textiles, and no lab has published child car seat testing since 2022. GREENGUARD Gold, which most brands hold, is an emissions test: UL measures what a finished seat releases into the air, not what is in the material.</p>
 
     <div class="keytake">
       <span class="kt-emoji">&#x1F50D;</span>
@@ -406,29 +412,41 @@
 
     <h2 id="brands">The Big Brands at a Glance</h2>
 
-    <p>Two things separate car seat brands in practice: whether the maker says the seat is made without added flame retardants, and how it behaves when something goes wrong. Fabric and foam are separate columns because most claims cover only the cover you can see, while the foam underneath is where a treatment is just as likely to sit. Brands are ordered by how much of the seat the claim covers, which is not the same as our verdict: no brand's claim is backed by a certificate or a test from the last three years. Recalls cover the two years to September 2026, from NHTSA's file.</p>
+    <p>The ten biggest car seat brands, ranked in the order we would choose them. The flame retardant columns show what each maker says, and the PFAS column adds what testing found. We weigh a written PFAS statement above an old test, because a 2022 result describes seats built in 2020 and 2021, while only a statement covers the seat you would buy today. Recalls cover the two years to September 2026, from NHTSA's file.</p>
 
-    <div class="table-scroll wide">
-      <table class="data-table">
+    <div class="bm-legend">
+      <span class="pill g">Good sign</span>
+      <span class="pill a">Partial or mixed</span>
+      <span class="pill r">Bad sign</span>
+      <span class="pill n">Nothing on record</span>
+    </div>
+
+    <div class="bm-wrap">
+      <table class="bm" aria-label="Ten car seat brands ranked in the order we would choose them">
         <thead>
-          <tr><th>Brand</th><th>Fabric free of added flame retardants?</th><th>Foam free of added flame retardants?</th><th>Recalls since September 2024</th><th>What the maker did</th></tr>
+          <tr><th>Brand</th><th>Flame retardants, foam</th><th>Flame retardants, fabric</th><th>PFAS</th><th>Recalls, last 2 years</th><th>Company's response</th></tr>
         </thead>
         <tbody>
-          <tr><td><strong>Nuna</strong></td><td>Yes, the whole line</td><td>Yes, the whole line</td><td>1, the RAVA</td><td>Cleaning kit and a new pad, 11 percent done</td></tr>
-          <tr><td><strong>Clek</strong></td><td>Yes, all fabrics</td><td>Yes, the foam laminated to it</td><td>None since 2022</td><td>Insert kits and replacements in 2021</td></tr>
-          <tr><td><strong>UPPAbaby</strong></td><td>Yes, all fabrics</td><td>Yes, except the Mesa V3</td><td>None ever</td><td>Not applicable</td></tr>
-          <tr><td><strong>Chicco</strong></td><td>Yes, ClearTex and ClearLux</td><td>Yes, ClearTex only</td><td>1, the MyFit Zip Air</td><td>Free remedy kit</td></tr>
-          <tr><td><strong>Maxi-Cosi</strong></td><td>Yes, PureCosi fabric</td><td>Yes, the padding on some models</td><td>None since 2023</td><td>Not applicable</td></tr>
-          <tr><td><strong>Britax</strong></td><td>Yes, the cover only</td><td>No</td><td>2, including the open B Safe Gen 2</td><td>New labels. Handle fix still in development</td></tr>
-          <tr><td><strong>Evenflo</strong></td><td>Yes, on seven products</td><td>No</td><td>8, the most of any brand</td><td>Mixed. Two remedies still not shipped</td></tr>
-          <tr><td><strong>Graco</strong></td><td>No, except the GoMax</td><td>No</td><td>1, the SnugRide Turn and Slide</td><td>Replacement seats</td></tr>
-          <tr><td><strong>Safety 1st</strong></td><td>No</td><td>No</td><td>2, including the Grow and Go Sprint</td><td>New labels and a pad kit</td></tr>
-          <tr><td><strong>Doona</strong></td><td>No, the maker confirms they are used</td><td>No</td><td>None</td><td>Not applicable</td></tr>
+          <tr class="bm-tier"><td colspan="6"><span class="pill g">Closest we found</span></td></tr>
+          <tr class="bm-row"><td class="bm-b"><div class="bm-brand"><span class="bm-rank">1</span>Chicco ClearTex</div><span class="bm-sub">ClearTex seats only. Regular Chicco seats make no claim</span></td><td data-label="Flame retardants, foam"><div><span class="pill g">Says free</span><span class="bm-note">Foam, inserts and labels too</span></div></td><td data-label="Flame retardants, fabric"><div><span class="pill g">Says free</span></div></td><td data-label="PFAS"><div><span class="pill g">Says free</span><span class="bm-note">Clean in 2022. A regular KeyFit 30 showed likely PFAS</span></div></td><td data-label="Recalls, last 2 years"><div><span class="pill a">1</span><span class="bm-note">MyFit Zip Air booster</span></div></td><td data-label="Company's response"><div><span class="pill g">Fixed</span><span class="bm-note">Free remedy kit</span></div></td></tr>
+          <tr class="bm-row"><td class="bm-b"><div class="bm-brand"><span class="bm-rank">2</span>Clek</div><span class="bm-sub">Mammoth fabric: 70% merino, 30% TENCEL</span></td><td data-label="Flame retardants, foam"><div><span class="pill g">Says free</span><span class="bm-note">Foam laminated to the fabric</span></div></td><td data-label="Flame retardants, fabric"><div><span class="pill g">Says free</span><span class="bm-note">All fabrics</span></div></td><td data-label="PFAS"><div><span class="pill g">Says free</span><span class="bm-note">For its fabrics. Liing seats clean in 2022</span></div></td><td data-label="Recalls, last 2 years"><div><span class="pill g">None</span><span class="bm-note">Four in 2021 and 2022</span></div></td><td data-label="Company's response"><div><span class="pill n">None needed</span><span class="bm-note">Earlier kits had low uptake</span></div></td></tr>
+          <tr class="bm-tier"><td colspan="6"><span class="pill a">Strong claim, no PFAS statement</span></td></tr>
+          <tr class="bm-row"><td class="bm-b"><div class="bm-brand"><span class="bm-rank">3</span>Nuna</div><span class="bm-sub">Every seat in the line</span></td><td data-label="Flame retardants, foam"><div><span class="pill g">Says free</span></div></td><td data-label="Flame retardants, fabric"><div><span class="pill g">Says free</span></div></td><td data-label="PFAS"><div><span class="pill a">Tested clean</span><span class="bm-note">Two 2022 tests, no written statement</span></div></td><td data-label="Recalls, last 2 years"><div><span class="pill a">1</span><span class="bm-note">RAVA, with class actions ongoing</span></div></td><td data-label="Company's response"><div><span class="pill a">Cleaning kit</span><span class="bm-note">Not a new part. 11 percent done</span></div></td></tr>
+          <tr class="bm-row"><td class="bm-b"><div class="bm-brand"><span class="bm-rank">4</span>UPPAbaby</div><span class="bm-sub">A lawsuit over the Mesa Max continues</span></td><td data-label="Flame retardants, foam"><div><span class="pill a">Partly</span><span class="bm-note">All but the Mesa V3</span></div></td><td data-label="Flame retardants, fabric"><div><span class="pill g">Says free</span><span class="bm-note">All fabrics</span></div></td><td data-label="PFAS"><div><span class="pill a">Tested clean</span><span class="bm-note">2022 test, no written statement</span></div></td><td data-label="Recalls, last 2 years"><div><span class="pill g">None</span><span class="bm-note">Never filed one</span></div></td><td data-label="Company's response"><div><span class="pill n">None needed</span></div></td></tr>
+          <tr class="bm-tier"><td colspan="6"><span class="pill a">Partial claim</span></td></tr>
+          <tr class="bm-row"><td class="bm-b"><div class="bm-brand"><span class="bm-rank">5</span>Maxi-Cosi</div><span class="bm-sub">PureCosi seats</span></td><td data-label="Flame retardants, foam"><div><span class="pill a">Partly</span><span class="bm-note">Padding on some models</span></div></td><td data-label="Flame retardants, fabric"><div><span class="pill g">Says free</span><span class="bm-note">PureCosi fabric</span></div></td><td data-label="PFAS"><div><span class="pill a">Tested clean</span><span class="bm-note">2022 test, no written statement</span></div></td><td data-label="Recalls, last 2 years"><div><span class="pill g">None</span><span class="bm-note">Last two in 2023</span></div></td><td data-label="Company's response"><div><span class="pill n">None needed</span></div></td></tr>
+          <tr class="bm-row"><td class="bm-b"><div class="bm-brand"><span class="bm-rank">6</span>Britax</div></td><td data-label="Flame retardants, foam"><div><span class="pill r">No claim</span></div></td><td data-label="Flame retardants, fabric"><div><span class="pill a">Partly</span><span class="bm-note">The cover only. StayClean fabrics use flame retardants</span></div></td><td data-label="PFAS"><div><span class="pill a">Partly</span><span class="bm-note">Statement covers PFOS and PFOA only</span></div></td><td data-label="Recalls, last 2 years"><div><span class="pill r">2</span><span class="bm-note">One still open, the B Safe Gen 2</span></div></td><td data-label="Company's response"><div><span class="pill a">Not yet</span><span class="bm-note">Handle fix still in development</span></div></td></tr>
+          <tr class="bm-tier"><td colspan="6"><span class="pill r">Little or no claim</span></td></tr>
+          <tr class="bm-row"><td class="bm-b"><div class="bm-brand"><span class="bm-rank">7</span>Evenflo</div></td><td data-label="Flame retardants, foam"><div><span class="pill r">No claim</span></div></td><td data-label="Flame retardants, fabric"><div><span class="pill a">Partly</span><span class="bm-note">Seven Green and Gentle products</span></div></td><td data-label="PFAS"><div><span class="pill r">Likely PFAS</span><span class="bm-note">Found in the Nurture, 2022</span></div></td><td data-label="Recalls, last 2 years"><div><span class="pill r">8</span><span class="bm-note">The most of any brand</span></div></td><td data-label="Company's response"><div><span class="pill a">Mixed</span><span class="bm-note">Two remedies not shipped yet</span></div></td></tr>
+          <tr class="bm-row"><td class="bm-b"><div class="bm-brand"><span class="bm-rank">8</span>Graco</div></td><td data-label="Flame retardants, foam"><div><span class="pill r">No claim</span></div></td><td data-label="Flame retardants, fabric"><div><span class="pill r">No claim</span><span class="bm-note">Except the GoMax infant seat</span></div></td><td data-label="PFAS"><div><span class="pill r">Likely PFAS</span><span class="bm-note">Found in the Verb, 2022</span></div></td><td data-label="Recalls, last 2 years"><div><span class="pill a">1</span><span class="bm-note">SnugRide Turn and Slide</span></div></td><td data-label="Company's response"><div><span class="pill g">Fixed</span><span class="bm-note">Replacement seats</span></div></td></tr>
+          <tr class="bm-row"><td class="bm-b"><div class="bm-brand"><span class="bm-rank">9</span>Safety 1st</div></td><td data-label="Flame retardants, foam"><div><span class="pill r">No claim</span></div></td><td data-label="Flame retardants, fabric"><div><span class="pill r">No claim</span></div></td><td data-label="PFAS"><div><span class="pill n">Unknown</span><span class="bm-note">No statement, no result</span></div></td><td data-label="Recalls, last 2 years"><div><span class="pill r">2</span><span class="bm-note">Three in five years</span></div></td><td data-label="Company's response"><div><span class="pill g">Fixed</span><span class="bm-note">New labels and a pad kit</span></div></td></tr>
+          <tr class="bm-tier"><td colspan="6"><span class="pill r">Avoid</span></td></tr>
+          <tr class="bm-row"><td class="bm-b"><div class="bm-brand"><span class="bm-rank">10</span>Doona</div><span class="bm-sub">The maker says its materials have flame retardants</span></td><td data-label="Flame retardants, foam"><div><span class="pill r">Treated</span></div></td><td data-label="Flame retardants, fabric"><div><span class="pill r">Treated</span></div></td><td data-label="PFAS"><div><span class="pill n">Unknown</span><span class="bm-note">No statement, no test found</span></div></td><td data-label="Recalls, last 2 years"><div><span class="pill g">None</span></div></td><td data-label="Company's response"><div><span class="pill n">None needed</span></div></td></tr>
         </tbody>
       </table>
     </div>
 
-    <p>A recall is not automatically a mark against a brand: a maker that finds a fault and fixes it quickly is behaving well, and UPPAbaby's clean sheet and Evenflo's eight recalls are not the same kind of fact. What matters is the pattern and the fix. Three or more recalls in five years is our line for treating it as a brand problem, which is where Evenflo, Safety 1st and Cybex sit, and a remedy that cleans a part rather than replacing it, as on Nuna's RAVA, is worth knowing before you buy.</p>
+    <p>A recall is not automatically a mark against a brand: a maker that finds a fault and fixes it quickly is behaving well, and UPPAbaby's clean sheet and Evenflo's eight recalls are not the same kind of fact. What matters is the pattern and the fix. Three or more recalls in five years is our line for treating it as a brand problem, which is where Evenflo, Safety 1st, Cybex and, until December 2026, Clek sit. A remedy that cleans a part rather than replacing it, as on Nuna's RAVA, is also worth knowing before you buy.</p>
 
     <h2 id="picks">The Closest We Found</h2>
 
@@ -446,7 +464,7 @@
         <div class="product-card-body">
           <span class="product-card-tier">$$$ · CLOSEST, WHOLE SEAT CLAIM</span>
           <h3 class="product-card-name">Chicco Fit360 ClearTex Rotating Convertible</h3>
-          <p class="product-card-best">ClearTex fabric, foam, inserts and labels made without flame retardant treatments, and no added PFAS by policy. EPP crash foam, rotates 360 degrees. Unverified: no certificate and no current test.</p>
+          <p class="product-card-best">ClearTex fabric, foam, inserts and labels made without flame retardant treatments, and no added PFAS by policy. EPP crash foam, rotates 360 degrees. No certificate or current test.</p>
           <span class="product-card-cta">View &rarr;</span>
         </div>
       </a>
@@ -455,7 +473,7 @@
         <div class="product-card-body">
           <span class="product-card-tier">$$$ · NO POLYESTER IN THE FABRIC</span>
           <h3 class="product-card-name">Clek Foonf Convertible, Mammoth</h3>
-          <p class="product-card-best">70% merino wool and 30% TENCEL over EPP foam and a steel and magnesium substructure. Fabric and laminated foam claimed flame retardant and PFAS free. Unverified, and four recalls in 2021 and 2022.</p>
+          <p class="product-card-best">70% merino, 30% TENCEL over EPP foam and a steel and magnesium substructure. Fabric and foam claimed flame retardant free, fabric PFAS free. No certificate or current test, and four recalls in 2021 and 2022.</p>
           <span class="product-card-cta">View &rarr;</span>
         </div>
       </a>
@@ -464,7 +482,7 @@
         <div class="product-card-body">
           <span class="product-card-tier">$$ · INFANT SEAT</span>
           <h3 class="product-card-name">Chicco KeyFit Max ClearTex Infant</h3>
-          <p class="product-card-best">ClearTex fabric, foam and labels made without flame retardant treatments, no added PFAS by policy. EPS lined shell and anti rebound bar, for babies to 32 inches. Unverified: no certificate or current test.</p>
+          <p class="product-card-best">ClearTex fabric, foam and labels made without flame retardant treatments, no added PFAS by policy. EPS lined shell and anti rebound bar, for babies to 32 inches. No certificate or current test.</p>
           <span class="product-card-cta">View &rarr;</span>
         </div>
       </a>
@@ -473,7 +491,7 @@
         <div class="product-card-body">
           <span class="product-card-tier">$$$ · MERINO INFANT SEAT</span>
           <h3 class="product-card-name">Clek Liing Infant, Mammoth</h3>
-          <p class="product-card-best">70% merino wool and 30% TENCEL over an EPP lined shell, on a load leg base with rigid LATCH. 9 lb carrier. Same unverified claim as the Foonf, and the same recall record.</p>
+          <p class="product-card-best">70% merino wool and 30% TENCEL over an EPP lined shell, on a load leg base with rigid LATCH. 9 lb carrier. Same claim and recall record as the Foonf, no certificate or current test.</p>
           <span class="product-card-cta">View &rarr;</span>
         </div>
       </a>
@@ -482,7 +500,7 @@
         <div class="product-card-body">
           <span class="product-card-tier">$$ · BIRTH TO BOOSTER</span>
           <h3 class="product-card-name">Chicco OneFit LX ClearTex All in One</h3>
-          <p class="product-card-best">ClearTex fabric, foam and labels made without flame retardant treatments, no added PFAS by policy. Rear facing 5 to 40 lb, forward facing to 65 lb, booster to 100 lb. Unverified.</p>
+          <p class="product-card-best">ClearTex fabric, foam and labels made without flame retardant treatments, no added PFAS by policy. Rear facing 5 to 40 lb, forward facing to 65 lb, booster to 100 lb. No certificate or current test.</p>
           <span class="product-card-cta">View &rarr;</span>
         </div>
       </a>
@@ -513,14 +531,14 @@
     <div class="table-scroll">
       <table class="data-table">
         <thead>
-          <tr><th>Seat</th><th>Stage</th><th>Fabric</th><th>Crash foam</th><th>Flame retardant free claim covers</th><th>Verified</th></tr>
+          <tr><th>Seat</th><th>Stage</th><th>Fabric</th><th>Crash foam</th><th>Flame retardant free claim covers</th></tr>
         </thead>
         <tbody>
-          <tr><td><strong>Chicco Fit360 ClearTex</strong></td><td>Convertible</td><td>Polyester knit</td><td>EPP</td><td>Fabric, foam, labels</td><td class="bad">No</td></tr>
-          <tr><td><strong>Clek Foonf, Mammoth</strong></td><td>Convertible</td><td>70% merino, 30% TENCEL</td><td>EPP</td><td>Fabric and laminated foam</td><td class="bad">No</td></tr>
-          <tr><td><strong>Chicco KeyFit Max ClearTex</strong></td><td>Infant</td><td>Polyester knit</td><td>EPS</td><td>Fabric, foam, labels</td><td class="bad">No</td></tr>
-          <tr><td><strong>Clek Liing, Mammoth</strong></td><td>Infant</td><td>70% merino, 30% TENCEL</td><td>EPP</td><td>Fabric and laminated foam</td><td class="bad">No</td></tr>
-          <tr><td><strong>Chicco OneFit LX ClearTex</strong></td><td>Birth to booster</td><td>Polyester knit</td><td>Not stated</td><td>Fabric, foam, labels</td><td class="bad">No</td></tr>
+          <tr><td><strong>Chicco Fit360 ClearTex</strong></td><td>Convertible</td><td>Polyester knit</td><td>EPP</td><td>Fabric, foam, labels</td></tr>
+          <tr><td><strong>Clek Foonf, Mammoth</strong></td><td>Convertible</td><td>70% merino, 30% TENCEL</td><td>EPP</td><td>Fabric and laminated foam</td></tr>
+          <tr><td><strong>Chicco KeyFit Max ClearTex</strong></td><td>Infant</td><td>Polyester knit</td><td>EPS</td><td>Fabric, foam, labels</td></tr>
+          <tr><td><strong>Clek Liing, Mammoth</strong></td><td>Infant</td><td>70% merino, 30% TENCEL</td><td>EPP</td><td>Fabric and laminated foam</td></tr>
+          <tr><td><strong>Chicco OneFit LX ClearTex</strong></td><td>Birth to booster</td><td>Polyester knit</td><td>Not stated</td><td>Fabric, foam, labels</td></tr>
         </tbody>
       </table>
     </div>
