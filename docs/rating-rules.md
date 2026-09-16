@@ -819,8 +819,12 @@ of the outcome; the card names the funder. Where the brand chose the samples it
 is a certificate of analysis, tier 3 under 4.2. A tester's affiliate or
 advertising relationship with the brand is named the same way.
 
-**Age.** Section 7's 36 months applies. An older result is recorded, and
-carries nothing in either direction.
+**Age.** A clean result expires after section 7's 36 months, because it
+describes older production, and a maker can change a material or add a finish
+without saying so. A bad result does not expire. It stands however old it is,
+until a newer independent test of the same product, under 36 months old, finds
+it clean. Set in September 2026, when a regular Chicco KeyFit 30 that read 118
+ppm organic fluorine in 2022 rated the same as a seat nobody had tested.
 
 The exception is a durable good measured by XRF. That reading is of what the
 object is made of, the glass, glaze, enamel or metal, which is a property of
@@ -830,10 +834,33 @@ date. Set in September 2026, when Weck's jars had read 142 ppm lead in the
 glass in 2017 and up to 159 ppm in a newer jar in 2019, with nothing since
 measuring the line lower.
 
+**Flame retardants and PFAS in a textile or foam**, in a part that touches the
+child: for a car seat, the seat pad, the harness covers and the fabric around
+them. An internal component that never touches skin or mouth, such as crash
+foam, is left out, as California's law leaves it out (Health and Safety Code
+108945(c)(2)(C)).
+
+- Total organic fluorine at or above 100 ppm: `fail`. That is California's
+  limit for regulated PFAS in juvenile products, car seats included (Health and
+  Safety Code 108945).
+- A flame retardant compound the lab names: `fail`, the same finding rule 3.9
+  fails when a maker states it. Where the lab measured it, the level must reach
+  1,000 ppm, the level Washington's limit on flame retardants in car seats uses
+  (RCW 70A.430.030); a named compound measured below that is `caution`.
+- Element readings alone, phosphorus, bromine, chlorine or antimony by XRF
+  with no compound named: `caution`, because the lab could not say what they
+  came from. A non detect for an element does not clear a part: in 2018 a
+  KeyFit 30 fabric showed no phosphorus by XRF and 3,590 ppm of a phosphonate
+  flame retardant by mass spectrometry.
+
 **Transfer.** A result on one product reaches another only under 4.1: as a
 caution, never a skip, and only through an ingredient the two share. Rice
 carries arsenic and cadmium in from the soil, so one rice from a grower speaks
-for the grower's other rice. A clean result never transfers.
+for the grower's other rice. A clean result never transfers. For a textile or foam the shared ingredient is
+the material: a finding on one model reaches another model of the same brand
+only when both are sold in the same kind of fabric, so Graco's flagged seats in
+regular fabric reach the 4Ever DLX but not the GoMax, whose PureProtect fabric
+none of them used.
 
 ### 4.8 Ceramic that touches food or drink needs a lead result
 
@@ -1134,7 +1161,7 @@ rather than silently asserting something old.
 |---|---|---|
 | Formula | 24 months | Reformulations happen quietly and are never announced |
 | Packaging | 24 months | Container changes are common and unannounced |
-| Testing | 36 months | Results age slowly, but supply chains change |
+| Testing | 36 months for a clean result; a bad result stands until a newer test clears it (4.7) | Results age slowly, but supply chains change |
 | Legal | 12 months, rolling | New filings and recalls appear continuously |
 
 **Implementation status.** What ships today: `ext.dated` records when a
