@@ -574,6 +574,9 @@
     .mk-badge.cert-natural { background: #ede9fe; color: #6d28d9; }
     .mk-badge.cert-none { background: #f5f5f4; color: #78716c; }
     .mk-badge.clean { background: #e0f2fe; color: #075985; }
+    .a-card-careful { display: inline-block; align-self: flex-start; margin: 0.15rem 0 0.35rem; padding: 0.2rem 0.5rem;
+      border-radius: 5px; background: #fef3c7; color: #92400e; font-size: 0.64rem; font-weight: 800;
+      letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.35; }
     .mk-badge .mk-tick { font-size: 0.72rem; line-height: 1; }
 
     .a-card-cta-row {
@@ -1058,7 +1061,8 @@
       { cat: "Coffee", sub: "Grinders", img: "411sOVanUML", name: "Comandante C40 Nitro Blade Hand Grinder", asin: "B07JQ4P976", bestFor: "Best premium hand grinder", tier: "$$$$", effectiveness: "Steel and glass, no plastic contact", desc: "German engineered hand grinder with high nitrogen stainless steel burrs. Glass catch jar and stainless steel body ensure zero plastic contact with your coffee. Renowned for exceptionally uniform grind quality.", pros: ["Extremely uniform grind", "Glass catch jar included", "Built to last decades"], cons: ["Premium price point", "Manual effort required", "Can be hard to find in stock"] },
       { cat: "Coffee", sub: "Grinders", img: "61ecLFaOwmL", name: "TIMEMORE Chestnut C2S Hand Grinder", asin: "B0CGTYT12R", bestFor: "Best value hand grinder", tier: "$", effectiveness: "Stainless steel burrs, no plastic contact", desc: "Affordable hand grinder with stainless steel conical burrs and an aluminum alloy body. Features a dual bearing stabilization system for consistent grinding. No plastic in the grind path. A great entry point for quality hand grinding.", pros: ["Lowest price in category", "Stainless steel burr set", "Dual bearing for stability"], cons: ["Manual effort required", "Smaller capacity", "Adjustment dial takes practice"] },
 
-      // Coffee > Travel Mugs      { cat: "Coffee", sub: "Travel Mugs", img: "51FBKB-158L", name: "JOCO Reusable Glass Cup (12oz)", asin: "B07RRR1P2B", bestFor: "Best glass cup", tier: "$", effectiveness: "Zero plastic contact", desc: "Borosilicate glass body with a medical grade silicone lid and sleeve. The brand states it is 100 percent plastic free, so nothing but glass and silicone touches your drink. Barista friendly sizing.", pros: ["Glass and silicone only, no plastic", "See through glass body", "Fits under most espresso machines"], cons: ["Not insulated", "Glass can break if dropped", "Not fully leakproof"] },
+      // Coffee > Travel Mugs
+      { cat: "Coffee", sub: "Travel Mugs", img: "51FBKB-158L", name: "JOCO Reusable Glass Cup (12oz)", asin: "B07RRR1P2B", bestFor: "Best glass cup", tier: "$", effectiveness: "Zero plastic contact", desc: "Borosilicate glass body with a medical grade silicone lid and sleeve. The brand states it is 100 percent plastic free, so nothing but glass and silicone touches your drink. Barista friendly sizing.", pros: ["Glass and silicone only, no plastic", "See through glass body", "Fits under most espresso machines"], cons: ["Not insulated", "Glass can break if dropped", "Not fully leakproof"] },
       { cat: "Coffee", sub: "Travel Mugs", img: "71phyKmiizL", name: "Tupkee Double Wall Glass Tumbler (8oz)", asin: "B08JCLTWSL", bestFor: "Best all glass, glass lid", tier: "$", effectiveness: "Zero plastic contact", desc: "Hand blown double wall borosilicate glass with an all glass lid and a food grade silicone seal. Even the lid is glass, so your drink touches only glass and silicone. Double wall keeps it warm without burning your hand.", pros: ["Glass body and a glass lid", "Double wall insulated glass", "No plastic or metal aftertaste"], cons: ["Small 8oz size", "Glass is fragile", "Silicone seal only, not fully leakproof"] },
 
       // Coffee > Beans
@@ -1718,6 +1722,7 @@
           <div class="a-card-body">
             ${p.top ? `<span class="a-card-toptag">Our top pick</span>` : ''}
             ${p.bestFor ? `<span class="a-card-bestfor">${p.bestFor}</span>` : ''}
+            ${p.careful ? `<span class="a-card-careful">Careful: ${p.careful}</span>` : ''}
             <h3 class="a-card-name"><a href="${p._link}" target="_blank" rel="noopener sponsored">${p.name}</a></h3>
             ${p.cert ? `<div class="mk-badges">
                 <span class="mk-badge cert-${p.certTier}">${p.certTier === 'organic' ? '✓ ' : ''}${p.cert}</span>

@@ -44,7 +44,8 @@ def entries(text):
         key = (re.search(r'asin: "([A-Z0-9]{10})"', line) or re.search(r'name: "([^"]*)"', line)).group(1)
         arr = lambda k: re.findall(r'"([^"]*)"', (re.search(k + r": \[([^\]]*)\]", line) or [None, ""])[1])
         out[key] = {"img": (re.search(r'img: "([^"]*)"', line) or [None, ""])[1],
-                    "pros": arr("pros"), "cons": arr("cons")}
+                    "pros": arr("pros"), "cons": arr("cons"),
+                    "careful": (re.search(r'careful: "([^"]*)"', line) or [None, ""])[1]}
     return out
 
 
@@ -52,9 +53,13 @@ def main():
     catalog = entries((ROOT / "data" / "store-products.js").read_text())
     shelf = set(re.findall(r'asin: "([A-Z0-9]{10})"', (ROOT / "store.html").read_text()))
     extra = json.loads((ROOT / "data" / "extra-product-images.json").read_text())
-    verdict = {a: (p.get("ext") or {}).get("verdict")
-               for b in json.loads((ROOT / "brand-data.json").read_text())
-               for p in b.get("products") or [] for a in p.get("asins") or []}
+    rows = [p for b in json.loads((ROOT / "brand-data.json").read_text()) for p in b.get("products") or []]
+    verdict = {a: (p.get("ext") or {}).get("verdict") for p in rows for a in p.get("asins") or []}
+    # The one careful product a catalog may hold: a labelled trade off, where the
+    # card names it and the Product Check row carries the written reason. Same
+    # rule as tools/store-verdicts.py; a vegan floss with a polyester strand.
+    traded = {a for p in rows for a in p.get("asins") or []
+              if (p.get("tradeoff") or "").strip()}
     kids = (ROOT / "worker" / "kids-data.js").read_text()
     kids = json.loads(kids[kids.index("export const KIDS = ") + 20: kids.rindex(";")])
     rooms = json.loads((ROOT / "app" / "www" / "data" / "plan.json").read_text()) + [kids]
@@ -62,7 +67,8 @@ def main():
     bad = []
     for a in sorted(shelf - set(catalog)):
         bad.append(f"!! on the store page but not in the catalog: {a}")
-    for a in sorted(k for k in catalog if verdict.get(k) in ("careful", "skip")):
+    for a in sorted(k for k in catalog if verdict.get(k) in ("careful", "skip")
+                    and not (verdict.get(k) == "careful" and catalog[k].get("careful") and k in traded)):
         bad.append(f"!! {verdict[a]} product still in the catalog: {a}")
     picks = 0
     unrated = []
