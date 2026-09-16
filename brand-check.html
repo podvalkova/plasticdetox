@@ -817,14 +817,27 @@
         .filter(p => p.origin !== "brand-line" && !isAlias(p));
       if (shownProducts.length) {
         const RANK = { skip: 0, careful: 1, neutral: 2, good: 3 };
+        // Product Check is the source of truth, so it shows the stricter of the
+        // verdict typed for a product and the one its recorded checks produce
+        // (ext.verdict), which the extension, the app and the store already read.
+        // A finding the rules recorded is never hidden behind an older typed
+        // answer. An unrated check adds nothing, and a typed "unrated" has no
+        // badge, so the recorded verdict stands in for it.
+        const shownVerdict = (p) => {
+          const typed = p.verdict || b.stance;
+          const ruled = p.ext && p.ext.verdict;
+          if (!(ruled in RANK)) return typed;
+          if (!(typed in RANK)) return ruled;
+          return RANK[ruled] < RANK[typed] ? ruled : typed;
+        };
         // Worst first. The reason a brand carries a per-product list at all is
         // that the answer depends which one you pick, so the exception is the
         // thing worth seeing, not the ninth product that was fine.
         const ordered = shownProducts.slice().sort((x, y) =>
-          (RANK[x.verdict] ?? 2) - (RANK[y.verdict] ?? 2));
+          (RANK[shownVerdict(x)] ?? 2) - (RANK[shownVerdict(y)] ?? 2));
         productsHtml = '<div class="meta-block"><div class="meta-label">By product</div><div class="product-list">' +
           ordered.map(p => {
-            const st = p.verdict || b.stance;
+            const st = shownVerdict(p);
             return '<div class="product-row ' + st + '">' +
               '<span class="mini-badge ' + st + '"><span class="dot"></span>' + STANCE_LABEL[st] + '</span>' +
               '<div class="product-info"><span class="product-name">' + esc(p.name) + '</span>' +
