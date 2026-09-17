@@ -55,11 +55,35 @@ def main():
     extra = json.loads((ROOT / "data" / "extra-product-images.json").read_text())
     rows = [p for b in json.loads((ROOT / "brand-data.json").read_text()) for p in b.get("products") or []]
     verdict = {a: (p.get("ext") or {}).get("verdict") for p in rows for a in p.get("asins") or []}
+    # A product sold only on its maker's own site has no ASIN, and every lookup
+    # here was keyed on one, so those picks were never verdict checked at all:
+    # the Nuna car seat is careful with a trade off and passed in silence, and
+    # about 45 catalog rows carry no ASIN. Resolve them the way the catalog
+    # already resolves pros and cons, by URL first and then by name.
+    by_url = {u: (p.get("ext") or {}).get("verdict") for p in rows for u in p.get("urls") or []}
+    by_name = {}
+    for p in rows:
+        n = (p.get("name") or "").strip().lower()
+        if n:
+            by_name.setdefault(n, (p.get("ext") or {}).get("verdict"))
+
+    def resolve(asin, url, name):
+        """The verdict for a pick or a catalog row, and the key it answered to."""
+        if asin:
+            return verdict.get(asin), asin
+        if url and url in by_url:
+            return by_url[url], url
+        key = (name or "").strip().lower()
+        if key in by_name:
+            return by_name[key], key
+        return None, key or url
     # The one careful product a catalog may hold: a labelled trade off, where the
     # card names it and the Product Check row carries the written reason. Same
     # rule as tools/store-verdicts.py; a vegan floss with a polyester strand.
     traded = {a for p in rows for a in p.get("asins") or []
               if (p.get("tradeoff") or "").strip()}
+    traded |= {u for p in rows for u in p.get("urls") or [] if (p.get("tradeoff") or "").strip()}
+    traded |= {(p.get("name") or "").strip().lower() for p in rows if (p.get("tradeoff") or "").strip()}
     kids = (ROOT / "worker" / "kids-data.js").read_text()
     kids = json.loads(kids[kids.index("export const KIDS = ") + 20: kids.rindex(";")])
     rooms = json.loads((ROOT / "app" / "www" / "data" / "plan.json").read_text()) + [kids]
@@ -67,9 +91,11 @@ def main():
     bad = []
     for a in sorted(shelf - set(catalog)):
         bad.append(f"!! on the store page but not in the catalog: {a}")
-    for a in sorted(k for k in catalog if verdict.get(k) in ("careful", "skip")
-                    and not (verdict.get(k) == "careful" and catalog[k].get("careful") and k in traded)):
-        bad.append(f"!! {verdict[a]} product still in the catalog: {a}")
+    for k in sorted(catalog):
+        v, key = resolve(k if re.fullmatch(r"[A-Z0-9]{10}", k) else None,
+                         catalog[k].get("url"), catalog[k].get("name") or k)
+        if v in ("careful", "skip") and not (v == "careful" and catalog[k].get("careful") and key in traded):
+            bad.append(f"!! {v} product still in the catalog: {k}")
     picks = 0
     unrated = []
     traded_picks = []
@@ -91,8 +117,8 @@ def main():
                 cons = p.get("cons") or row.get("cons")
                 if not (pros and cons):
                     bad.append(f"!! no pros and cons: {where} / {p.get('name')}")
-                if asin:
-                    v = verdict.get(asin)
+                v, key = resolve(asin, url, p.get("name"))
+                if True:
                     # Rule 5.7: a careful product may stay a published pick when it
                     # is the best available option under a stated constraint and the
                     # caveat is stated with it. The store already sells three that
@@ -100,12 +126,12 @@ def main():
                     # an empty car seat swap while the article named three seats.
                     # Same condition as the catalog rule above: a written tradeoff
                     # on the row, and a careful line on the card.
-                    if v == "careful" and asin in traded and (row.get("careful") or p.get("careful")):
+                    if v == "careful" and key in traded and (row.get("careful") or p.get("careful")):
                         traded_picks.append(f"{where} / {p.get('name')}")
                     elif v in ("careful", "skip"):
-                        bad.append(f"!! {v} pick: {where} / {p.get('name')} ({asin})")
+                        bad.append(f"!! {v} pick: {where} / {p.get('name')} ({key})")
                     elif v is None:
-                        bad.append(f"!! pick with no brand-data row: {where} / {p.get('name')} ({asin})")
+                        bad.append(f"!! pick with no brand-data row: {where} / {p.get('name')} ({key})")
                     elif v != "good":
                         unrated.append(f"{where} / {p.get('name')}")
     # Rule 6: a verdict has to name the check behind it.

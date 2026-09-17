@@ -50007,8 +50007,8 @@
   {
     "id": "guppyfriend",
     "brand": "Guppyfriend",
-    "category": "Cleaning",
-    "stance": "neutral",
+    "category": "Laundry microfiber filter",
+    "stance": "good",
     "reason": "Recommended wash bag that catches about 54% of synthetic microfibers shed during washing.",
     "evidence": "Captures ~54% of microfibers (independent testing)",
     "alternative": "",
@@ -50020,9 +50020,9 @@
     "buy": "https://guppyfriend.us/products/guppyfriend-washing-bag?sca_ref=11095270.1J77JIl7LBc",
     "fronts": {
       "formula": {
-        "status": "unknown",
-        "note": "",
-        "origin": "none"
+        "status": "none",
+        "note": "A durable good has no ingredient list. What it is made of is the materials check.",
+        "origin": "database"
       },
       "materials": {
         "status": "unknown",
@@ -50049,7 +50049,6 @@
       "flagged": 0,
       "worst": null
     },
-    "stanceHeld": "good",
     "products": [
       {
         "name": "Guppyfriend Washing Bag",
@@ -50062,47 +50061,50 @@
         "ext": {
           "frontNotes": {
             "testing": "No chemical safety test applies to a laundry bag that does not touch the person. The maker cites Fraunhofer UMSICHT tests showing 79% (partly synthetic) and 86% (fully synthetic) less fiber breakage, which is an efficacy claim commissioned by the maker, not an independent safety test. Lead Safe Mama site search (tamararubin.com/?s=) returned no results for every brand queried on 2026-09-16, including brands she is known to have covered, so it could not confirm absence. Consumer Reports and Clean Label Project could not be searched this session (web search budget exhausted).",
-            "materials": "Nothing the product touches is plastic.",
-            "legal": "Checked on 2026-09-16: CPSC recall API (saferproducts.gov): none; Health Canada recalls site search (recalls-rappels.canada.ca): none; California Prop 65 60 day notice search (oag.ca.gov/prop65): no notice naming Guppyfriend; CourtListener RECAP dockets: not searched (API rate limit)."
+            "materials": "polyamide in direct contact.",
+            "legal": "Checked on 2026-09-16: CPSC recall API (saferproducts.gov): none; Health Canada recalls site search (recalls-rappels.canada.ca): none; California Prop 65 60 day notice search (oag.ca.gov/prop65): no notice naming Guppyfriend; CourtListener RECAP dockets: not searched (API rate limit).",
+            "formula": "A durable good has no ingredient list. What it is made of is the materials check."
           },
           "formulaAnswers": {
             "ingredients": "",
             "prose": "",
             "complete": false,
-            "verdict": "bad",
-            "summary": "No ingredient list recorded.",
+            "verdict": "n/a",
+            "summary": "A durable good has no ingredient list. What it is made of is the materials check.",
             "flagged": [],
             "source": "",
             "checked": ""
           },
           "testingNote": "No chemical safety test applies to a laundry bag that does not touch the person. The maker cites Fraunhofer UMSICHT tests showing 79% (partly synthetic) and 86% (fully synthetic) less fiber breakage, which is an efficacy claim commissioned by the maker, not an independent safety test. Lead Safe Mama site search (tamararubin.com/?s=) returned no results for every brand queried on 2026-09-16, including brands she is known to have covered, so it could not confirm absence. Consumer Reports and Clean Label Project could not be searched this session (web search budget exhausted).",
           "testingDate": "2026-09-16",
-          "materialsList": "polyester monofilament filter mesh, polyester woven tape, edging tape and zip (maker FAQ), filter material untreated, undyed, no additives",
+          "materialsList": "polyamide",
           "materialAnswers": {
-            "contact": "no",
+            "contact": "yes",
             "contactFrom": "recorded",
             "base": "aqueous",
             "heated": false,
             "mouthed": false,
             "reuse": "",
-            "use": "",
-            "material": "polyester monofilament filter mesh, polyester woven tape, edging tape and zip (maker FAQ); filter material untreated, undyed, no additives",
+            "use": "never-on-body",
+            "material": "polyamide",
             "treatment": "",
             "treatmentSource": "",
             "dispenser": "",
             "lining": "",
             "certification": "",
             "certificationSource": "",
-            "source": "https://en.guppyfriend.com/pages/faq-guppyfriend-washing-bag (\"The GUPPYFRIEND Washing Bag is made entirely of polyester, including woven tape, edging tape and zip.\"; \"The filter material is untreated, undyed and contains no additives.\"; \"The fabric is made of monofilaments.\"; \"we do not recommend washing hotter than 40°\"); https://guppyfriend.us/products/guppyfriend-washing-bag (\"Size 50 x 74 cm\", \"Made in EU\")",
-            "checked": "2026-09-16"
+            "source": "The maker's description, quoted by its retailers: \"Apart from the zip, the Guppyfriend Washing Bag is made entirely of polyamide 6.6\", untreated, undyed, no additives, woven from monofilaments so it sheds nothing itself. guppyfriend.com's own materials page did not load on 2026-09-17; guppyfriend.us states \"High-tech filter material that doesn't lose fibres itself\" without naming the polymer.",
+            "checked": "2026-09-17"
           },
           "legalNote": "Checked on 2026-09-16: CPSC recall API (saferproducts.gov): none; Health Canada recalls site search (recalls-rappels.canada.ca): none; California Prop 65 60 day notice search (oag.ca.gov/prop65): no notice naming Guppyfriend; CourtListener RECAP dockets: not searched (API rate limit).",
-          "verdict": "unrated",
-          "dated": "2026-09-16",
-          "why": "the note reads adversely on formula, needs a human look",
+          "cappedFrom": "careful",
+          "capRestoreWhy": "section 6 ceiling: materials is caution, on recorded evidence",
+          "verdict": "careful",
+          "dated": "2026-09-17",
+          "why": "section 6 ceiling: materials is caution, on recorded evidence",
           "fronts": {
-            "formula": "fail",
-            "materials": "pass",
+            "formula": "none",
+            "materials": "caution",
             "legal": "pass",
             "testing": "none"
           },
@@ -50110,7 +50112,7 @@
             "testing": "database",
             "materials": "database",
             "legal": "database",
-            "formula": "inferred"
+            "formula": "database"
           },
           "scope": "line",
           "basis": "direct",
@@ -50124,7 +50126,8 @@
             "bag"
           ]
         ],
-        "matchFrom": "name"
+        "matchFrom": "name",
+        "tradeoff": "Kept under rule 5.7. The bag is polyamide 6.6 and there is no non plastic version of a fibre catching wash bag. It is woven from monofilaments so it sheds nothing itself, and it catches what the clothes shed."
       }
     ]
   },
@@ -91269,7 +91272,7 @@
             "legal": "Checked. What is on record concerns other Primally Pure products, not this one: Checked on 2026-09-10. No recall, class action, FDA warning letter or Proposition 65 notice found. On 2025-09-04 the National Advertising Division referred Primally Pure to the FTC and to ad platforms after the company did not respond to a challenge of its Sun Cream claims that the product is a safer alternative to conventional sunscreens with toxic ingredients; an advertising claims referral, scoped to the sun cream. A blog's mention of a 2018 'all natural' suit could not be substantiated in any court record and is not recorded.",
             "formula": "The published ingredient list carries nothing on the hazard list.",
             "testing": "Searched Mamavation (no post names Primally Pure); no independent test of Primally Pure Baby Balm found. Consumer Reports and Clean Label Project could not be searched this session (web search budget exhausted).",
-            "materials": "The contact material is not recorded."
+            "materials": "In contact with glass, which puts nothing into what it holds."
           },
           "testingNote": "Searched Mamavation (no post names Primally Pure); no independent test of Primally Pure Baby Balm found. Consumer Reports and Clean Label Project could not be searched this session (web search budget exhausted).",
           "testingDate": "2026-09-16",
@@ -91293,8 +91296,8 @@
             "verdict": "good",
             "summary": "The published ingredient list carries nothing on the hazard list.",
             "flagged": [],
-            "source": "https://primallypure.com/products/baby-balm (\"All Ingredients\" panel)",
-            "checked": "2026-09-16"
+            "source": "https://primallypure.com/products/baby-balm (Ingredients). Six ingredients, no fragrance, no preservative system, no zinc.",
+            "checked": ""
           },
           "materialAnswers": {
             "contact": "yes",
@@ -91304,31 +91307,31 @@
             "mouthed": false,
             "reuse": "",
             "use": "leave-on",
-            "binder": "",
-            "material": "jar; jar and lid material not stated on the product page",
+            "material": "glass",
             "treatment": "",
             "treatmentSource": "",
             "dispenser": "",
             "lining": "",
             "certification": "",
             "certificationSource": "",
-            "source": "https://primallypure.com/products/baby-balm (\"Take care to avoid getting water into the jar as it is a preservative-free formula\"; variants 1 oz and 2 oz)",
-            "checked": "2026-09-16",
-            "open": "The contact material is not recorded"
+            "source": "https://primallypure.com/products/baby-balm: sold in a glass jar, 1 oz and 2 oz.",
+            "checked": "2026-09-17"
           },
-          "verdict": "unrated",
-          "dated": "2026-09-16",
-          "why": "no direct pass on formula, and no lab result standing in for one",
+          "materialsList": "glass",
+          "verdict": "good",
+          "dated": "2026-09-17",
+          "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
-            "materials": "unassessed",
+            "materials": "pass",
             "legal": "pass",
             "testing": "none"
           },
           "frontOrigin": {
             "legal": "hand",
             "formula": "database",
-            "testing": "database"
+            "testing": "database",
+            "materials": "database"
           },
           "scope": "line",
           "basis": "direct",

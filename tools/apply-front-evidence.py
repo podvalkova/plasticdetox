@@ -95,7 +95,7 @@ POLYMER = {
     # mats in the 2013 Duke analysis) and memory foam is polyurethane by
     # another name.
     "eva": 2, "polyurethane": 2, "memory foam": 2, "spandex": 2, "elastane": 2,
-    "pet": 1.5, "pete": 1.5, "tritan": 1.5, "acrylic": 1.5, "nylon": 1.5,
+    "pet": 1.5, "pete": 1.5, "tritan": 1.5, "acrylic": 1.5, "nylon": 1.5, "polyamide": 1.5,
     # Polyester is PET as a fiber, and TPU is the plasticizer-free film family:
     # both shed, neither carries PVC's additive package.
     "polyester": 1.5, "tpu": 1.5,
