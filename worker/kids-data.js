@@ -232,7 +232,7 @@ export const KIDS = {
    ],
    "tip": {
     "title": "The floor is high. The brands still differ.",
-    "body": "The FDA's 2026 testing found heavy metals below drinking water limits in every formula. Never dilute it or make your own. Within that floor, half the formulas Consumer Reports tested carried a flagged contaminant.",
+    "body": "The FDA's 2026 program, over 300 samples, found heavy metals below EPA drinking water limits across the board. Never dilute formula or make your own. Brands still differ: across two Consumer Reports rounds about half the formulas carried a flagged contaminant, and two Abbott hypoallergenic formulas read 19.7 and 15.1 ppb arsenic, above the 10 ppb drinking water standard.",
     "look": [
      "Lactose as the only carbohydrate, no palm oil",
      "A steel can with a published lining result",
@@ -627,6 +627,20 @@ export const KIDS = {
      "url": "https://plasticdetox.org/articles/best-non-toxic-car-seats.html"
     }
    ],
+   "tip": {
+    "title": "No seat passes yet, and that is the finding",
+    "body": "In the Ecology Center's 2022 round all 12 conventional US seats carried flame retardants or high bromine in the upholstery, and all 10 seats sold flame retardant free were clean in fabric, crash foam and canopy. No brand holds a certificate that tests its finished fabric, so no seat meets our standard. The closest are Nuna's PIPA aire rx, the Chicco ClearTex seats and Clek's Mammoth. Fit and installation still matter more than fabric.",
+    "look": [
+     "A maker statement covering the fabric and the foam, not just the cover",
+     "An independent test from the last three years",
+     "A seat that fits your car and that you can install correctly every time"
+    ],
+    "skip": [
+     "Clean, natural or eco with nothing behind it",
+     "GREENGUARD Gold on its own, which tests emissions, not content",
+     "Aftermarket covers and inserts, however natural"
+    ]
+   },
    "article": {
     "slug": "best-non-toxic-car-seats.html",
     "title": "Best Non Toxic Car Seats: What Testing Found in the Fabric, the Foam and the Finish (2026)"
@@ -646,7 +660,7 @@ export const KIDS = {
    "guide": "closet-101.html",
    "id": "Kids::Move kids clothing to natural fiber",
    "swap": "Move kids clothing to natural fiber",
-   "why": "Polyester against skin all day, and flame retardant treatments are still common in children's sleepwear.",
+   "why": "Polyester against skin all day. Sleepwear must be either flame resistant or snug fitting, so a loose pair is the treated one and snug cotton is not treated at all.",
    "heat": false,
    "impact": "Medium impact",
    "free": "Wash everything new before first wear, and buy secondhand cotton. Used natural fiber beats new synthetic.",
@@ -957,7 +971,17 @@ export const KIDS = {
    "article": {
     "slug": "non-toxic-baby-toddler-products-guide.html",
     "title": "The Complete Parent's Guide to Replacing Toxic Baby and Toddler Products (2026)"
-   }
+   },
+   "faqs": [
+    {
+     "q": "Are silicone baby products safe?",
+     "a": "Food grade silicone (especially platinum cured) is significantly safer than plastic. It does not release traditional microplastics and does not contain BPA, phthalates, or other endocrine disruptors. Some studies suggest silicone can release siloxanes when heated to high temperatures. For items contacting hot food or liquids, glass and stainless steel remain the gold standard. For room temperature use like plates, bibs, and teethers, food grade silicone is a good choice."
+    },
+    {
+     "q": "Are BPA free baby products safe?",
+     "a": "Not necessarily. BPA free often means the manufacturer replaced BPA with structurally similar chemicals like BPS or BPF, which have shown similar endocrine disrupting effects in studies. A 2020 study from Trinity College Dublin found that BPA free polypropylene baby bottles still released up to 16 million microplastic particles per liter. The safest approach is to avoid plastic entirely and use glass, stainless steel, or certified food grade silicone. For more on why BPA free is not enough, see our article on why BPA free is not safe."
+    }
+   ]
   },
   {
    "guide": "non-toxic-baby-toddler-products-guide.html",
@@ -996,7 +1020,17 @@ export const KIDS = {
    "article": {
     "slug": "non-toxic-baby-toddler-products-guide.html",
     "title": "The Complete Parent's Guide to Replacing Toxic Baby and Toddler Products (2026)"
-   }
+   },
+   "faqs": [
+    {
+     "q": "What materials are safest for baby products?",
+     "a": "Ranked by how well they hold up to heat, wear and a baby's mouth: borosilicate glass and 18/8 stainless steel first, because neither leaches and neither degrades with sterilising; then food grade silicone, which is stable and heat tolerant but softer and eventually cloudy; then, if you must, polypropylene, marked with a 5, which is the least bad plastic and the one used in most bottles. Avoid PVC, which needs plasticisers to stay soft, melamine, which is a common toddler plate material that degrades with heat, and anything labelled only BPA free, since BPS and BPF replaced BPA and behave similarly. The rule that covers most cases is simple: heat, fat and time are what pull chemicals out of plastic, so the items that get heated, hold oily food, or spend hours in a mouth are where material matters most."
+    },
+    {
+     "q": "Is it safe to buy secondhand baby products?",
+     "a": "It depends on the product. Secondhand clothing, strollers manufactured after 2015, and high chairs are generally safe. Never buy secondhand crib mattresses (accumulated allergens, mold, degraded chemicals), car seats (unknown crash history, expired materials), or breast pumps (hygiene and motor degradation concerns)."
+    }
+   ]
   },
   {
    "guide": "non-toxic-baby-toddler-products-guide.html",
@@ -1011,12 +1045,12 @@ export const KIDS = {
      "label": "$$",
      "name": "Stokke Flexi Bath",
      "url": "https://www.amazon.com/dp/B0CWJVS6S8?tag=plasticdetox-20",
-     "note": "No PVC or phthalates. Not plastic free; the sink is"
+     "note": "Foldable polypropylene tub with thermoplastic elastomer folds that stores flat. Stokke does not state BPA, PVC or phthalate content. Not plastic free; a clean kitchen sink is."
     }
    ],
    "tip": {
-    "title": "The sink beats every tub on the market",
-    "body": "We looked for a plastic free baby tub worth recommending and there is not one. Almost every infant tub is PVC or ABS, and warm water is the condition that pulls plasticisers out of PVC fastest, with the baby sitting in it.",
+    "title": "No plastic free tub exists, so the sink wins",
+    "body": "There is no plastic free baby tub on the market. Almost every infant tub is PVC or ABS, and warm water is the condition that pulls plasticisers out of PVC fastest, with the baby sitting in it. The Stokke is polypropylene, which is the better plastic if you want a tub, and a clean kitchen sink is better still and free.",
     "look": [
      "The kitchen sink, which is stainless or porcelain, with a folded cotton towel on the bottom",
      "A plain hard plastic tub in polypropylene if you need one, which needs no phthalate plasticisers",
@@ -1053,15 +1087,39 @@ export const KIDS = {
    "free": "A woven cotton wrap is the cheapest carrier and the most natural.",
    "picks": [
     {
-     "label": "Guide",
-     "name": "Read the full guide",
-     "url": "https://plasticdetox.org/articles/non-toxic-baby-toddler-products-guide.html"
+     "label": "$$",
+     "name": "Solly Baby Wrap",
+     "url": "https://www.amazon.com/dp/B0DBN1CQ76?tag=plasticdetox-20",
+     "note": "TENCEL Modal, OEKO-TEX Standard 100"
     }
    ],
+   "tip": {
+    "title": "Modal is fine here, because the fabric is certified",
+    "body": "Modal is made by dissolving wood pulp, and no study has measured what the finished fibre leaves on skin, so we ask for a certificate that tests the finished fabric. Solly states OEKO-TEX Standard 100 for its wrap, which clears it. The Ergobaby Embrace knit is 79% polyester with no certificate, and a woven cotton wrap needs no certificate at all.",
+    "look": [
+     "Organic cotton, linen or hemp, woven",
+     "OEKO-TEX Standard 100, GOTS or MADE SAFE where the fabric is modal or viscose",
+     "No foam, no padded synthetic straps"
+    ],
+    "skip": [
+     "Mesh panels and polyester knits",
+     "Bamboo or modal with no certificate behind it"
+    ]
+   },
    "article": {
     "slug": "non-toxic-baby-toddler-products-guide.html",
     "title": "The Complete Parent's Guide to Replacing Toxic Baby and Toddler Products (2026)"
-   }
+   },
+   "faqs": [
+    {
+     "q": "What certifications should I look for on baby products?",
+     "a": "The most meaningful certifications are GREENGUARD Gold (low chemical emissions, especially for furniture and mattresses), GOTS (organic textiles from field to finished product), OEKO-TEX Standard 100 (tested for harmful substances in fabrics), MADE SAFE (screened for known toxic chemicals), and EWG Verified (strict health criteria for personal care). Multiple certifications on a single product is the strongest signal of safety."
+    },
+    {
+     "q": "Do I need to replace everything at once?",
+     "a": "No. Prioritize by exposure time and route. Sleep environment first (mattress, sheets, pajamas) since babies spend the most time there. Feeding second (bottles, pump parts, food storage). Skin contact third (personal care, diapers). Replace other items as they wear out or as budget allows. Every single swap makes a difference."
+    }
+   ]
   },
   {
    "guide": "non-toxic-baby-toddler-products-guide.html",
@@ -1080,16 +1138,16 @@ export const KIDS = {
     }
    ],
    "tip": {
-    "title": "We recommend no nursing pillow, and that is the finding",
-    "body": "The CPSC has warned since October 2020 that nursing pillows must never be used for infant sleep, after suffocation deaths across brands. That warning covers the whole category, so no nursing pillow clears our checks, including the ones made of organic cotton and buckwheat.",
+    "title": "Feed on it, never let the baby sleep on it",
+    "body": "A nursing pillow is for feeding while you are awake and holding the baby. The CPSC has warned since October 2020 that they must never be used for sleep, after 154 infant deaths tied to the category between 2010 and 2022, and a federal safety standard followed in 2024. Used as intended it is fine, so the question we answer here is what it is made of.",
     "look": [
-     "Stacked pillows you already own, which is what many people end up preferring",
-     "If you do buy one: buckwheat, kapok or wool fill rather than polyurethane foam",
-     "A cover you can strip and hot wash"
+     "A natural fill such as latex, kapok or buckwheat",
+     "An organic cotton cover you can wash",
+     "Firm enough to hold its shape under the baby"
     ],
     "skip": [
-     "Using one for sleep, or leaving a baby on one unattended. This is the whole warning",
-     "Polyurethane foam, which is the fill flame retardants are added to"
+     "Polyurethane foam and polyester fill",
+     "Any use for sleep, propping or lounging, however briefly"
     ]
    },
    "article": {
@@ -1132,10 +1190,24 @@ export const KIDS = {
    "article": {
     "slug": "best-non-toxic-laundry-detergent.html",
     "title": "Best Non Toxic Laundry Detergent: The Plastic Free Sheet Problem (2026)"
-   }
+   },
+   "faqs": [
+    {
+     "q": "What is the best non toxic laundry detergent?",
+     "a": "Meliora Laundry Powder is our best overall pick. It is MADE SAFE certified, rated A by EWG, and it is the only detergent here that ships fully plastic free, in a paper can with steel ends and a stainless steel scoop. The formula is four things: baking soda, washing soda, real coconut oil soap, and water. Molly's Suds Original Powder is the best value and by far the most reviewed clean detergent, with a four ingredient formula, though it contains no surfactant so it is the weakest option on oily stains. Molly's Suds Unscented Super Powder adds enzymes for tougher loads. Charlie's Soap is the highest rated of the group and the strongest on hard water, but its surfactants are ethoxylated, which is the chemistry that produces 1,4-dioxane as a byproduct."
+    },
+    {
+     "q": "Are optical brighteners in detergent bad for you?",
+     "a": "Optical brighteners are fluorescent dyes designed to stay on fabric after rinsing, where they absorb ultraviolet light and re-emit it as blue so that white fabric looks whiter. They are not a cleaning agent. Their entire function depends on remaining on the cloth that sits against your skin all day, and they are a recognized cause of contact dermatitis in sensitive people. They also pass through wastewater treatment into waterways. None of the detergents we recommend contain them, and any detergent that promises whiter whites without listing a bleach is worth checking."
+    },
+    {
+     "q": "Does laundry detergent cause microplastics in clothing?",
+     "a": "No, and this is the most common misunderstanding in the category. The microplastic fibers that leave your washing machine come from the clothes themselves, not from the detergent. A polyester shirt sheds plastic fiber whether you wash it with a premium plant based detergent or nothing at all. Changing detergent improves what touches your skin and what leaves your drain chemically, but it does nothing about fiber shedding. For that you need a filter bag such as the Guppyfriend, an external machine filter, or fewer synthetic garments in the wardrobe to begin with."
+    }
+   ]
   },
   {
-   "guide": "non-toxic-nursery-setup.html",
+   "guide": "best-air-purifiers-for-microplastics.html",
    "id": "Kids::Add an air purifier to the nursery",
    "swap": "Add an air purifier to the nursery",
    "why": "Indoor air carries the offgassing from everything else in the room, plus the microplastic fibres shed by carpet and bedding. A purifier does not fix the source, and it lowers what is in the air while the source is still there.",
@@ -1157,9 +1229,119 @@ export const KIDS = {
     }
    ],
    "article": {
-    "slug": "non-toxic-nursery-setup.html",
-    "title": "Non Toxic Nursery Setup: What Actually Matters, In Order (2026)"
-   }
+    "slug": "best-air-purifiers-for-microplastics.html",
+    "title": "Best Air Purifiers for Microplastics (2026): The Sealed HEPA Units That Actually Capture Airborne Plastic"
+   },
+   "faqs": [
+    {
+     "q": "Do air purifiers remove microplastics from the air?",
+     "a": "Yes. A True HEPA filter captures 99.97% of particles at 0.3 microns, and airborne microplastic fibers are almost all larger than that, so a sealed HEPA purifier removes them from the air on each pass. For best results, size the unit to your room so it can cycle the air around five times an hour, and run it continuously."
+    },
+    {
+     "q": "What HEPA grade do I need?",
+     "a": "Look for True HEPA at H13 or H14. These grades capture 99.97% or more of fine particles. Avoid anything labeled HEPA type, HEPA like, or 99% HEPA, which are lower grade filters that let a meaningful share of fine particles pass through."
+    },
+    {
+     "q": "Are ionizing or ozone air purifiers safe?",
+     "a": "No. Ionizers, plasma, bipolar, and devices marketed as producing activated or energized oxygen release ozone, a lung irritant that can cause inflammation and breathing problems. The California Air Resources Board regulates these devices for that reason. Choose mechanical filtration only, meaning sealed HEPA and carbon with no ion or ozone function."
+    }
+   ]
+  },
+  {
+   "guide": "best-mineral-sunscreen-guide.html",
+   "id": "Kids::Switch to a mineral sunscreen for kids",
+   "swap": "Switch to a mineral sunscreen for kids",
+   "why": "Spread over most of the body, left on for hours and reapplied, on the thinnest skin there is. Chemical filters are absorbed into blood, and zinc and titanium sit on top instead.",
+   "heat": false,
+   "impact": "Medium impact",
+   "free": "Shade, a hat and long sleeves between ten and four. Cover what you can, then use sunscreen on the rest.",
+   "picks": [
+    {
+     "label": "Guide",
+     "name": "Read the full guide",
+     "url": "https://plasticdetox.org/articles/best-mineral-sunscreen-guide.html"
+    }
+   ],
+   "tip": {
+    "title": "No kids sunscreen is a pick yet, and here is why",
+    "body": "California Baby SPF 30+ is the cleanest formula we found, non nano titanium dioxide with no fragrance, and the lowest lead of any sunscreen tested at 77 ppb. It comes in a plastic tube, so it rates careful rather than good and we do not put it in the store. A tin is the cleaner container if you can find one that also has a clean formula.",
+    "look": [
+     "Zinc oxide or titanium dioxide as the only active filter",
+     "Fragrance free, and a short ingredient list",
+     "A metal tin over a plastic tube where the formula is equal"
+    ],
+    "skip": [
+     "Oxybenzone, octinoxate, homosalate and avobenzone",
+     "Sprays, which you breathe and cannot apply evenly",
+     "Baby sunscreen claims with no test behind them"
+    ]
+   },
+   "article": {
+    "slug": "best-mineral-sunscreen-guide.html",
+    "title": "Best Mineral Sunscreens (2026): Chemical vs Mineral, Zinc vs Non Zinc, and Everything You Need to Know"
+   },
+   "faqs": [
+    {
+     "q": "What sunscreen is safe for babies?",
+     "a": "For babies under 6 months, the FDA recommends avoiding sun exposure entirely and using shade, hats, and clothing instead. If sunscreen is necessary, zinc oxide is the only ingredient approved for babies this young. For babies 6 months and older, use a mineral sunscreen with non nano zinc oxide that is fragrance free and hypoallergenic. California Baby Super Sensitive SPF 30+ is the trade off we keep, since it had the lowest tested lead of any mineral sunscreen we reviewed (77 ppb) and is fragrance free, though its active is titanium dioxide rather than zinc. It comes in a plastic tube, and Lead Safe Mama, who measured that lead, still advises against it for babies."
+    },
+    {
+     "q": "Is nano zinc oxide safe in sunscreen?",
+     "a": "Studies show that neither nano nor non nano zinc oxide penetrates through healthy, intact skin in any meaningful amount. A real world study found less than 0.01% of zinc entering the bloodstream after five days of twice daily application. Nano zinc oxide provides a more cosmetically elegant finish with less white cast, while non nano is preferred for reef safety."
+    },
+    {
+     "q": "Which sunscreen ingredients should I avoid?",
+     "a": "Avoid oxybenzone (linked to endocrine disruption and found in breast milk), avobenzone (detected at nine times the FDA safety threshold in blood), octinoxate (endocrine disruptor with no UVA protection), octocrylene (degrades into benzophenone, a suspected carcinogen), and homosalate (remains above FDA safety levels for weeks after last use)."
+    }
+   ]
+  },
+  {
+   "guide": "best-non-toxic-toothpaste-guide.html",
+   "id": "Kids::Pick a kids toothpaste that has been tested",
+   "swap": "Pick a kids toothpaste that has been tested",
+   "why": "A young child swallows most of what goes on the brush, twice a day for years, and lab testing published in 2025 found detectable lead in about 90 percent of 51 toothpastes.",
+   "heat": false,
+   "impact": "Medium impact",
+   "free": "Brush with water and a soft brush until they can spit reliably. Technique matters more than paste at that age.",
+   "picks": [
+    {
+     "label": "Guide",
+     "name": "Read the full guide",
+     "url": "https://plasticdetox.org/articles/best-non-toxic-toothpaste-guide.html"
+    }
+   ],
+   "tip": {
+    "title": "The paste a child swallows needs a published result",
+    "body": "Lead Safe Mama's 2025 testing found detectable lead in about 90 percent of 51 toothpastes. Tom's of Maine kids read about 240 ppb and the company settled a class action over heavy metals, so it is a skip for us. The kids pastes our guide names, Dr. Brown's Baby and Spry Kids, have not been through all four of our checks yet, so no kids toothpaste is a pick today.",
+    "look": [
+     "A published heavy metals result for that exact paste",
+     "Nano hydroxyapatite or plain xylitol for a child who cannot spit",
+     "A simple ingredient list you can read"
+    ],
+    "skip": [
+     "Charcoal pastes and clay powders, which scrub enamel away",
+     "Fruit flavours that encourage swallowing",
+     "Clean or natural claims with no test behind them"
+    ]
+   },
+   "article": {
+    "slug": "best-non-toxic-toothpaste-guide.html",
+    "title": "Best Non Toxic Toothpaste (2026): Why It Is So Hard to Find a Good One, the Truth About Fluoride and Hydroxyapatite"
+   },
+   "faqs": [
+    {
+     "q": "What is the best toothpaste for kids who swallow it?",
+     "a": "Nano hydroxyapatite toothpaste is the cleanest fit for young children who cannot reliably spit, because hydroxyapatite dissolves in stomach acid and carries no fluorosis or swallowing limit. Good fluoride free options include Boka Kids and RiseWell Kids. If you prefer fluoride, use only a rice grain smear under age 3 and a pea sized amount for ages 3 to 6, and supervise brushing so they spit. Avoid clay based tooth powders for children, which test highest for heavy metals."
+    },
+    {
+     "q": "Do toothpastes really contain lead and heavy metals?",
+     "a": "Independent lab testing published by Lead Safe Mama in 2025 found detectable lead in about 90 percent of the 51 toothpastes tested, along with arsenic, mercury, and cadmium in smaller fractions. That included popular natural and hydroxyapatite brands like Davids, RiseWell, Boka, Bite, Dr. Bronner's, and Tom's, plus mainstream tubes like Colgate and Crest. The metals are not added on purpose. They are trace contaminants that come with earth mined mineral ingredients like calcium carbonate, bentonite clay, and some hydroxyapatite. The levels in most pastes are very low, the product is spit out, and the largest values by far were in clay based tooth powders. A few brands did test non detect, including Weleda Salt, Dr. Brown's Baby, and Spry Kids."
+    },
+    {
+     "q": "Is charcoal toothpaste safe?",
+     "a": "Charcoal toothpaste is best avoided for daily use. It is abrasive enough to wear enamel over time, which can expose the yellower dentin underneath and cause sensitivity, the opposite of the whiter look people want. It does not remineralize teeth, it binds fluoride so it carries it poorly, and no charcoal toothpaste has ever received the ADA Seal of Acceptance. The American Dental Association advises caution."
+    }
+   ]
   }
  ]
 };
