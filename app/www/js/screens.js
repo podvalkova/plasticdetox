@@ -2007,16 +2007,25 @@ export function about(root, { meta, bundle, onOpen, notify, purchases, onFeedbac
     btn.type = "button";
     btn.onclick = () => onFeedback();
     say.appendChild(btn);
-    // And the other half of the same thought. Both stores forbid an app from
-    // firing their rating prompt off a button, so this opens the listing,
-    // where the stars are, and the prompt itself is asked for elsewhere.
-    if (onRate) {
-      const rate = el("button", "cta ghost", "Rate the app");
-      rate.type = "button";
-      rate.onclick = () => onRate();
-      say.appendChild(rate);
-    }
     root.appendChild(say);
+  }
+
+  // Asking, in the voice the newsletter is written in. The store prompt is
+  // fixed wording we cannot touch and Google forbids putting a question in
+  // front of it, so this card is the one place the ask can sound like a person.
+  // An honest review, never a good one: soliciting positive reviews is against
+  // both stores' rules and would be worth less anyway.
+  if (onRate) {
+    const box = el("div", "card");
+    box.appendChild(el("h2", null, "If it has been useful"));
+    box.appendChild(el("p", null,
+      "I research every verdict here by hand. Reviews are how other people find "
+      + "the app, so an honest one helps more than anything we could buy."));
+    const rate = el("button", "cta outline", "Leave a review");
+    rate.type = "button";
+    rate.onclick = () => onRate();
+    box.appendChild(rate);
+    root.appendChild(box);
   }
 
   const links = el("div", "card");

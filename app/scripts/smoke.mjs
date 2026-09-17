@@ -320,7 +320,7 @@ await screen("about", async (p) => {
   const ctas = await p.$$eval(".card button", (ns) => ns.map((n) => n.textContent));
   if (!ctas.some((t) => t.includes("Send feedback"))) throw new Error("no way to send feedback");
   // Both stores want a way to reach the listing that is not a prompt.
-  if (!ctas.some((t) => t.includes("Rate the app"))) throw new Error("no way to rate the app");
+  if (!ctas.some((t) => t.includes("Leave a review"))) throw new Error("no way to rate the app");
 });
 
 // A guide opens as a screen of its own, not as the website. The Learn tab was
