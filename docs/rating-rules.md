@@ -136,10 +136,10 @@ any one of these fails the front on its own.
 
 > `acrylic`, `aluminium chlorohydrate`, `aluminium zirconium`, `aluminum chlorohydrate`, `aluminum zirconium`, `avobenzone`, `azo`, `benzalkonium chloride`, `benzene`, `benzethonium chloride`, `bpa`, `bpf`, `bps`, `bronopol`, `butylparaben`, `cadmium`, `chemical filter`, `chemical sunscreen`, `cyclohexasiloxane`, `cyclomethicone`, `cyclopentasiloxane`, `cyclotetrasiloxane`, `diazolidinyl urea`, `didecyldimethylammonium chloride`, `dimethyl benzyl ammonium chloride`, `dmdm hydantoin`, `elastane`, `ethylparaben`, `flame retardant`, `formaldehyde`, `homosalate`, `imidazolidinyl urea`, `isobutylparaben`, `lead`, `melamine`, `methylparaben`, `neoprene`, `non-stick`, `nonstick`, `nylon`, `octinoxate`, `octisalate`, `octocrylene`, `oxybenzone`, `paraben`, `pfas`, `pfoa`, `phthalate`, `plastic`, `polycarbonate`, `polyester`, `polyethylene`, `polypropylene`, `polystyrene`, `propylparaben`, `ptfe`, `pvc`, `quaternary ammonium`, `quaternium-15`, `spandex`, `styrene`, `talc`, `teflon`, `triclosan`
 
-**The 10 disclosure failures.** These name no harmful substance; they say we
+**The 12 disclosure failures.** These name no harmful substance; they say we
 cannot check. Each caps at careful and never fails a front alone.
 
-> `artificial flavor`, `artificial flavors`, `fragrance`, `gum base`, `natural flavor`, `natural flavors`, `natural flavour`, `parfum`, `proprietary blend`, `undisclosed`
+> `artificial flavor`, `artificial flavors`, `blend of essential oils`, `essential oil blend`, `fragrance`, `gum base`, `natural flavor`, `natural flavors`, `natural flavour`, `parfum`, `proprietary blend`, `undisclosed`
 
 **Category scoped cautions.** Generated from `CATEGORY_CAUTION` in the same
 file. A term here is a documented downside in one category and unremarkable

@@ -73,6 +73,9 @@ INERT = {"glass", "borosilicate", "tempered glass", "stainless", "stainless stee
          "aluminum foil", "paper", "cardboard", "glass-ceramic",
          # A dried plant sponge, the fibre of the luffa gourd, not a processed polymer.
          "loofah",
+         # Coconut husk fibre, a plant fibre like jute. A coir pad is bonded, so
+         # rule 3.7's binder question is what decides it.
+         "coir",
          # Lyocell (TENCEL Lyocell) is spun from a closed solvent loop without
          # carbon disulfide. Cellulose here is plant pulp. A bare "TENCEL" names
          # Lenzing's brand, which covers both lyocell and modal, so it is rule
@@ -200,12 +203,29 @@ def classify(name):
 
     best = None
     for term, rank in POLYMER.items():
-        if term in n and (best is None or len(term) > len(best[0])):
+        if names(term, n) and (best is None or len(term) > len(best[0])):
             best = (term, rank)
     for term in INERT:
-        if term in n and (best is None or len(term) > len(best[0])):
+        if names(term, n) and (best is None or len(term) > len(best[0])):
             best = (term, 0)
     return best if best else (None, None)
+
+
+def names(term, n):
+    """Is the material a word of the text, not letters inside another word?
+
+    A bare substring match read "pp" in "applicator" and "copper", "ps" in
+    "pumps", "pet" in "pipette" and "tin" in "listing". So a record saying the
+    maker names no material scored as polypropylene, polystyrene, PET or tin:
+    MARA's face oil failed on its dropper pipette, a Gaia Guy boar bristle brush
+    read polypropylene off its copper staples, and Transparent Labs' tub passed
+    as tin because the note mentioned the listing. Wood keeps its compounds
+    (beechwood), and "other" counts only as resin code 7, never the English word.
+    """
+    if term == "other":
+        return re.search(r"#\s*7\b|\b7\s*\(?\s*other\b|\bother\s+plastics?\b", n) is not None
+    lead = "" if term == "wood" else r"(?<![a-z0-9])"
+    return re.search(lead + re.escape(term) + r"(?:e?s)?(?![a-z0-9])", n) is not None
 
 
 def worst(materials):
@@ -342,7 +362,7 @@ def _assess_container(pack):
     # this while their evidence described only the bamboo.
     if str(pack.get("binder") or "").strip().lower() in ("undisclosed", "unnamed", "unknown"):
         return "caution", (f"{pretty(term)} bonded with an adhesive the maker does not name, "
-                           "in the same contact path as the wood")
+                           f"in the same contact path as the {pretty(term)}")
 
     if rank == 0:
         return "pass", f"In contact with {pretty(term)}, which puts nothing into what it holds"
@@ -927,8 +947,16 @@ def main():
                 if test.get("note"):
                     te.setdefault("frontNotes", {})["testing"] = test["note"]
                     te["testingNote"] = test["note"]
-                if test.get("checked"):
-                    te["testingDate"] = test["checked"]
+                # When the lab measured it, not when we read the result. The
+                # ceiling weighs this date against a legal finding's, and our
+                # own reading date made Lead Safe Mama's July 2025 test of
+                # Primally Pure's sun cream look newer than the NAD referral of
+                # September 2025 that it could not have answered.
+                years = [int(str(r.get("year"))[:4]) for r in (test.get("results") or [])
+                         if str(r.get("year") or "")[:4].isdigit()]
+                when = test.get("tested") or (str(max(years)) if years else test.get("checked"))
+                if when:
+                    te["testingDate"] = when
                 testing[test["status"]] += 1
 
             pack = entry.get("materials") or {}
@@ -948,7 +976,13 @@ def main():
             if status is None:
                 held = (p.get("ext", {}).get("fronts") or {}).get("materials")
                 held_origin = (p.get("ext", {}).get("frontOrigin") or {}).get("materials")
-                if held in ("pass", "caution", "fail") and held_origin != "inferred":
+                # A "database" answer can only have come from this record, read
+                # the way it used to be read. When the same record now answers
+                # nothing, that answer is stale: MARA's face oil kept a fail
+                # for a dropper "pipette" read as PET after the word match was
+                # fixed and the record said, as it always had, that no material
+                # is published.
+                if held in ("pass", "caution", "fail") and held_origin not in ("inferred", "database"):
                     # Rule 5.4 answers a durable good's material from the object
                     # itself, and a person may have answered it by hand. Having
                     # no row in the evidence file is not a finding against

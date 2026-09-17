@@ -379,8 +379,17 @@ def main():
             # pass, so it read good on a check that says caution.
             contradicted = (bool(c.get("note")) and e.get("legalNote") == c.get("note")
                             and e["fronts"].get("legal") != c.get("status"))
+            # A resolved finding that names this row in `appliesTo` is an
+            # adjudication of this exact product, and newer than a blanket
+            # "nothing found". Plaine's face moisturizer kept an August FDA
+            # database "no recall" under a September research record of the
+            # warning letter to the plant that fills it, and Primally Pure's sun
+            # cream kept one under its NAD referral. Only a front a person set by
+            # hand outranks it.
+            named = (scoped and c.get("resolved") and c.get("status") in ("caution", "fail")
+                     and (e.get("frontOrigin") or {}).get("legal") != "hand")
             if e["fronts"].get("legal") not in ("unassessed", "unknown", None):
-                if not (scoped and (unexplained or contradicted)
+                if not (scoped and (unexplained or contradicted or named)
                         and c.get("status") in ("caution", "fail")):
                     continue
             # Only two states get written. Nothing resembling the brand appeared

@@ -303,12 +303,11 @@
   "total": 0
  },
  "Blessed Nest": {
-  "checked": "2026-08-31",
-  "eventDate": "2020-10",
-  "note": "CPSC issued a standing category wide warning in October 2020 that nursing pillows must never be used for infant sleep after suffocation deaths across brands. No Blessed Nest specific recall exists; the warning covers the whole category, this product included.",
+  "checked": "2026-09-16",
+  "note": "Checked on 2026-09-16: CPSC recall API (saferproducts.gov): none for Blessed Nest; Health Canada recalls site search (recalls-rappels.canada.ca): none; California Prop 65 60 day notice search (oag.ca.gov/prop65): no notice naming Blessed Nest; category wide advice, separately: CPSC warns that nursing pillows must never be used for infant sleep, which applies to every nursing pillow and is not a finding against this product; CourtListener RECAP dockets: not searched, the CourtListener API rate limit was exhausted on 2026-09-16. The CPSC warning is a use warning for the whole category, the Butterr pillow's included, so it is shown on the card and does not set the verdict.",
   "resolved": true,
-  "source": "https://www.hlmlawfirm.com/blog/cpsc-warns-parents-nursing-pillows-pose-suffocation-hazard-to-infants/",
-  "status": "caution"
+  "status": "pass",
+  "source": "https://www.saferproducts.gov/RestWebServices/Recall; https://recalls-rappels.canada.ca/en/search/site; https://oag.ca.gov/prop65/60-day-notice-search; https://www.courtlistener.com/api/rest/v4/search/"
  },
  "Blue Lizard": {
   "checked": "2026-08-28",
@@ -853,11 +852,15 @@
   "total": 0
  },
  "Ergobaby": {
-  "checked": "2026-08-31",
-  "note": "Checked recall records on 2026-08-31. A 2021 recall of 2,800 Metro strollers (buckle button) was remedied with replacement harnesses; no Ergobaby carrier has been recalled, and the recall is over 24 months old.",
+  "checked": "2026-09-16",
+  "note": "Prop 65: 60 day notice AG 2025-04958 filed 12/11/2025 by Ecological Alliance, LLC against The Ergo Baby Carrier, Inc. and Amazon.com, Inc., chemical Perfluorooctanoic Acid (PFOA), source \"Ergobaby carriers\"; the notice names \"Ergobaby Carriers, including but not limited to ASIN # B0B94RVGHW\" (Amazon title: Ergobaby Water Resistant Baby Carrier Rain and Wind Cover). Settled out of court 07/13/2026 (settlement 2025-04958S8062): covered Products are \"Ergobaby Carriers\" sold in California \"including but not limited to ASIN# B0B94RVGHW\"; injunctive relief warning labels; $100 civil penalty and $9,000 fees; within 30 days Ergo Baby must not make Products for California with added PFOA or an added fluorinated ingredient causing PFOA (for example C9-15 fluoroalcohol phosphate) unless warned; Ergo Baby denies all allegations. The only product named is a rain cover, not the Embrace, so this is recorded as a brand scoped allegation and settlement (caution), not a finding against the Embrace. Older Prop 65 notices 2013-01051 and 2016-00155 (TDCPP, Orbit Baby bassinets and car seats) concern other products and are over 24 months old. CPSC (saferproducts.gov API): 1 recall, 2021-05-26 Ergobaby Metrous strollers, choking hazard, not a carrier and over 24 months (informational). Health Canada: 0. CourtListener (Ergo Baby: 21 dockets): mostly patent and trademark suits; Scarlett Briceno v. The Ergo Baby Carrier Inc., C.D. Cal. 2:26-cv-05588, filed 2026-05-26, nature of suit not recorded on the docket and the complaint was not read (CourtListener throttled); Clark v. The Ergo Baby Carrier (2021, ADA). openFDA device and food enforcement: NOT_FOUND. FDA warning letters: 0. Searched 2026-09-16.",
   "resolved": true,
-  "source": "https://recalls.justia.com/infants-and-children/babies-and-kids/21-139/index.html",
-  "status": "pass"
+  "status": "caution",
+  "source": "https://oag.ca.gov/prop65/60-Day-Notice-2025-04958 ; https://oag.ca.gov/system/files/prop65/notices/2025-04958.pdf ; https://oag.ca.gov/system/files/prop65/settlements/2025-04958S8062.pdf ; https://www.saferproducts.gov/RestWebServices/Recall?format=json&RecallTitle=Ergobaby ; https://recalls-rappels.canada.ca/en/search/site?search_api_fulltext=%22Ergobaby%22 ; https://www.courtlistener.com/docket/73389118/scarlett-briceno-v-the-ergo-baby-carrier-inc/ ; https://api.fda.gov/device/enforcement.json?search=recalling_firm:%22Ergobaby%22",
+  "eventDate": "2026-07-13",
+  "appliesTo": [
+   "Ergobaby Embrace Organic Cotton"
+  ]
  },
  "Ethique": {
   "checked": "2026-09-11",
@@ -1202,9 +1205,12 @@
   "total": 0
  },
  "Juice Beauty PHYTO-PIGMENTS": {
-  "checked": "2026-08-28",
-  "latest": null,
-  "total": 0
+  "checked": "2026-09-16",
+  "note": "Brand scoped representation suits, all closed, none about this product: CourtListener lists Rodriguez v. Juice Beauty, Inc. (E.D.N.Y. 1:17-cv-05187, filed 2017-09-01, terminated 2018-02-05) and Manier v. Juice Beauty, Inc. (N.D. Cal. 3:18-cv-06834, dismissed for lack of CAFA jurisdiction 2019-05-06), both alleging the Juice Organics \"Repairing\" shampoo, conditioner and hair mask cannot repair hair; and Som-Dotson v. Juice Beauty, Inc. (C.D. Cal. 2:20-cv-09402, filed 2020-10-13, terminated 2021-02-03) alleging moisturizers labelled \"oil-free\" contain oils. Figueroa v. Juice Beauty (S.D.N.Y. 2019) was a website accessibility (ADA) case. No false \"organic\" or \"natural\" class action naming Juice Beauty was found on CourtListener; a 2008 Cornucopia Institute report on Dr. Bronner's organic claims suit criticises Juice \"Organics\" cleansers, but Juice Beauty is not in the party list of the removed federal docket (N.D. Cal. 3:09-cv-03517), so its defendant status is unconfirmed. FDA: untitled letter to Juice Beauty Inc. dated 2015-04-16 after a Class II recall of Juice Beauty Illuminating Eye Shadow (chocolate, cappuccino, champagne) contaminated with Bacillus cereus, made at contract manufacturer Gemdo Cosmetics; closed and over 24 months old, informational, not this product. Checked, nothing else found on 2026-09-16: Prop 65 notices (exact phrase \"Juice Beauty\" absent from the 1,000 word matched notices the site returns, and product text search returned no records), Health Canada recalls (zero), CPSC recall API (empty), openFDA food and drug enforcement (no matches). None of these suits reached a settlement, judgment or finding, so under rule 5.1 there is no adverse finding on the brand's representations, and there is no recall, suit or notice about this product.",
+  "resolved": true,
+  "status": "pass",
+  "source": "https://www.fda.gov/cosmetics/warning-letters-related-cosmetics/untitled-letter-juice-beauty-inc-41615 ; https://www.courtlistener.com/api/rest/v4/search/?q=%22Juice%20Beauty%22&type=r ; https://www.courtlistener.com/docket/6153215/rodriguez-v-juice-beauty-inc/ ; https://www.courtlistener.com/docket/14602904/manier-v-juice-beauty-inc/ ; https://storage.courtlistener.com/recap/gov.uscourts.cand.334623/gov.uscourts.cand.334623.29.0.pdf ; https://www.courtlistener.com/docket/18536301/sarah-som-dotson-v-juice-beauty-inc/ ; https://www.courtlistener.com/docket/14914526/figueroa-v-juice-beauty-inc/ ; https://www.cornucopia.org/2008/05/dr-bronner%E2%80%99s-files-lawsuit-against-major-%E2%80%98organic%E2%80%99-cheater-brands/ ; https://oag.ca.gov/prop65/60-day-notice-search-results?field_prop65_defendant_value=Juice%20Beauty ; https://recalls-rappels.canada.ca/en/search/site?search_api_fulltext=%22Juice%20Beauty%22 ; https://www.saferproducts.gov/RestWebServices/Recall?format=json&RecallTitle=Juice%20Beauty ; https://api.fda.gov/food/enforcement.json?search=recalling_firm:%22Juice%20Beauty%22",
+  "eventDate": "2020-10-13"
  },
  "Kabrita": {
   "checked": "2026-08-28",
@@ -1278,10 +1284,15 @@
   "total": 0
  },
  "La Pavoni": {
-  "checked": "2026-08-28",
-  "examined": 0,
-  "latest": null,
-  "total": 0
+  "checked": "2026-09-16",
+  "note": "California Prop 65 notice 2007-00126 (Mateel Environmental Justice Foundation, filed 2007-06-27) alleged \"Lead and lead compounds\" from \"Brass plumbing in espresso machines\" and named La Pavoni SPA. In MEJF v. Briel-Industria de Electrodomesticos SA et al. (San Francisco Superior Court 07-468856) an Amended Default Judgment filed 2009-11-17 permanently enjoined La Pavoni SpA (quoted from the scanned judgment, OCR errors corrected) from offering \"espresso machines that utilize leaded brass plumbing, including without limitation, LA PAVONI EUROPICCOLA or LA PAVONI ROMANTICA MODEL EPC-8 espresso machines, or similar\" without clear and reasonable warnings of the cancer and reproductive harm caused by lead, ordered it to contact California purchasers with that warning, and imposed civil penalties (the judgment text reads $4,780,000; the Attorney General summary lists $1,000,000) plus $36,907 in fees. The judgment names this exact model for leaded brass. It is over 24 months old, but it was a default judgment and no maker statement that the Europiccola now uses lead free brass was found, so remediation is not established. Also checked on 2026-09-16: CPSC recalls, none; FDA warning letters, none; Health Canada recalls, none; CourtListener, one unrelated contract case (Eastern Funding LLC v. Triple J Industries).",
+  "resolved": true,
+  "status": "caution",
+  "source": "https://oag.ca.gov/prop65/60-day-notice-2007-00126 ; https://oag.ca.gov/system/files/prop65/judgments/2007-00126J960.pdf ; https://oag.ca.gov/system/files/prop65/judgments/2007-00126J942.pdf ; https://www.saferproducts.gov/RestWebServices/Recall?format=json&RecallTitle=La%20Pavoni",
+  "eventDate": "2009-11-17",
+  "appliesTo": [
+   "La Pavoni Europiccola Lever Espresso Machine"
+  ]
  },
  "La Petite Creme": {
   "checked": "2026-08-28",
@@ -1818,9 +1829,17 @@
   "total": 0
  },
  "Plaine Products": {
-  "checked": "2026-08-28",
-  "latest": null,
-  "total": 0
+  "checked": "2026-09-16",
+  "note": "Checked on 2026-09-16: openFDA drug, food and device enforcement (recalling firm and product description), FDA recalls page and FDA warning letters full text, CPSC recall API (title and product name), Health Canada recalls including archived, California Prop 65 60-day notice database (defendant and product fields), and CourtListener dockets and opinions for Plaine Products and Absolutely Natural (the manufacturer named on the Amazon listings). No recall, Health Canada record or Prop 65 notice names Plaine Products, and no CourtListener case names the brand. However FDA Warning Letter 320-26-35 (MARCS-CMS 715690, dated 2025-12-30, posted 2026-01-06) went to Absolutely Natural, 640 Atlantis Road, Melbourne, FL, after an April 22 to 24, 2025 inspection, citing CGMP violations for its over the counter drug products: failure to investigate a July 2024 batch that failed microbial testing for total plate count and Pseudomonas aeruginosa, unvalidated rapid microbiological test methods, and missing identity testing of high risk components; the letter also reminds the firm that cosmetics it makes must comply with the FD&C Act and MoCRA. Plaine products are not named in the letter; the link rests on the Amazon Manufacturer field (Absolutely Natural) and Plaine's FAQ saying a US family owned private label company makes its products.",
+  "resolved": true,
+  "status": "caution",
+  "source": "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/absolutely-natural-715690-12302025; https://api.fda.gov/drug/enforcement.json; https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts; https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/compliance-actions-and-activities/warning-letters; https://www.saferproducts.gov/RestWebServices/Recall; https://recalls-rappels.canada.ca/en/search/site; https://oag.ca.gov/prop65/60-day-notice-search; https://www.courtlistener.com/",
+  "eventDate": "2025-12-30",
+  "appliesTo": [
+   "Plaine Products Face Moisturizer",
+   "Plaine Products Refillable Conditioner",
+   "Plaine Products Refillable Shampoo"
+  ]
  },
  "PlanToys": {
   "checked": "2026-08-31",
@@ -4304,5 +4323,100 @@
   "resolved": true,
   "status": "pass",
   "source": "https://www.nhtsa.gov/recalls"
+ },
+ "Biodynamic Coffee": {
+  "checked": "2026-09-16",
+  "note": "Checked on 2026-09-16: openFDA enforcement reports for food, drug and device (Holistic Roasters, Biodynamic Coffee): none; CPSC recall API (saferproducts.gov): none; Health Canada recalls site search (recalls-rappels.canada.ca): none; California Prop 65 60 day notice search (oag.ca.gov/prop65): no notice naming Holistic Roasters (only unrelated \"Wholistic\" firms matched); CourtListener RECAP dockets: not searched (API rate limit).",
+  "resolved": true,
+  "status": "pass",
+  "source": "['https://api.fda.gov/food/enforcement.json', 'https://www.saferproducts.gov/RestWebServices/Recall', 'https://recalls-rappels.canada.ca/en/search/site', 'https://oag.ca.gov/prop65/60-day-notice-search', 'https://www.courtlistener.com/api/rest/v4/search/']"
+ },
+ "Berard": {
+  "checked": "2026-09-16",
+  "note": "Checked on 2026-09-16: CPSC recall API (saferproducts.gov): none; Health Canada recalls site search (recalls-rappels.canada.ca): none; California Prop 65 60 day notice search (oag.ca.gov/prop65): no notice naming Berard; CourtListener RECAP dockets: not searched (API rate limit).",
+  "resolved": true,
+  "status": "pass",
+  "source": "['https://www.saferproducts.gov/RestWebServices/Recall', 'https://recalls-rappels.canada.ca/en/search/site', 'https://oag.ca.gov/prop65/60-day-notice-search', 'https://www.courtlistener.com/api/rest/v4/search/']"
+ },
+ "Guppyfriend": {
+  "checked": "2026-09-16",
+  "note": "Checked on 2026-09-16: CPSC recall API (saferproducts.gov): none; Health Canada recalls site search (recalls-rappels.canada.ca): none; California Prop 65 60 day notice search (oag.ca.gov/prop65): no notice naming Guppyfriend; CourtListener RECAP dockets: not searched (API rate limit).",
+  "resolved": true,
+  "status": "pass",
+  "source": "['https://www.saferproducts.gov/RestWebServices/Recall', 'https://recalls-rappels.canada.ca/en/search/site', 'https://oag.ca.gov/prop65/60-day-notice-search', 'https://www.courtlistener.com/api/rest/v4/search/']"
+ },
+ "American Baby Company": {
+  "checked": "2026-09-16",
+  "note": "Checked on 2026-09-16: CPSC recall API (saferproducts.gov): none; Health Canada recalls site search (recalls-rappels.canada.ca): none; California Prop 65 60 day notice search (oag.ca.gov/prop65): no notice naming American Baby Company; CourtListener RECAP dockets: not searched (API rate limit).",
+  "resolved": true,
+  "status": "pass",
+  "source": "['https://www.saferproducts.gov/RestWebServices/Recall', 'https://recalls-rappels.canada.ca/en/search/site', 'https://oag.ca.gov/prop65/60-day-notice-search', 'https://www.courtlistener.com/api/rest/v4/search/']"
+ },
+ "Colored Organics": {
+  "checked": "2026-09-16",
+  "note": "Checked on 2026-09-16: CPSC recall API (saferproducts.gov): none; Health Canada recalls site search (recalls-rappels.canada.ca): none; California Prop 65 60 day notice search (oag.ca.gov/prop65): no notice naming Colored Organics; CourtListener RECAP dockets: not searched (API rate limit).",
+  "resolved": true,
+  "status": "pass",
+  "source": "['https://www.saferproducts.gov/RestWebServices/Recall', 'https://recalls-rappels.canada.ca/en/search/site', 'https://oag.ca.gov/prop65/60-day-notice-search', 'https://www.courtlistener.com/api/rest/v4/search/']"
+ },
+ "HABA": {
+  "checked": "2026-09-16",
+  "note": "Checked on 2026-09-16: CPSC recall API (saferproducts.gov): recall 26-719 on 2026-08-27, HABA Rainbow Rattle Grasping and Teething Toy (item 2012261001, batch 0925, about 2,000 units, sold Dec 2025 to Jul 2026): \"The glued knot on the elastic cord can become untied\", exposing small wooden and plastic pieces, a choking and ingestion hazard, two reports, no injuries, refund remedy; earlier recall 23714 (Dec 2022) of Discovery Cubes fabric activity toys; Health Canada recalls site search (recalls-rappels.canada.ca): Discovery Cubes recall (2022); California Prop 65 60 day notice search (oag.ca.gov/prop65): one old notice, AG 2009-00389 (2009-08-28) against HABA USA and Habermaass for a HABA Ball track, cadmium; CourtListener RECAP dockets: not searched (API rate limit).",
+  "resolved": true,
+  "status": "caution",
+  "source": "['https://www.saferproducts.gov/RestWebServices/Recall', 'https://www.cpsc.gov/Recalls/2026/HABA-USA-Recalls-Rainbow-Rattle-Grasping-and-Teething-Toys-Due-to-Risk-of-Serious-Injury-or-Death-from-Choking-and-Ingestion-Hazards', 'https://recalls-rappels.canada.ca/en/search/site', 'https://oag.ca.gov/prop65/60-day-notice-search', 'https://www.courtlistener.com/api/rest/v4/search/']",
+  "eventDate": "2026-08-27",
+  "appliesTo": [
+   "HABA Wooden Toys"
+  ]
+ },
+ "All Clad": {
+  "checked": "2026-09-16",
+  "note": "Checked, nothing found about this blender. CPSC (saferproducts.gov API): only recall 09-139 of March 4, 2009 for All-Clad 4 Square Belgian Waffle Makers (shock), over 24 months old and a different product, informational. Health Canada: no All-Clad results. Prop 65: no notices naming All-Clad. openFDA food and device enforcement: no records. CourtListener: MDL 2988, In re All-Clad Metalcrafters Cookware Marketing and Sales Practices Litigation (W.D. Pa.), a settled class action over 'dishwasher safe' marketing of multi ply cookware with aluminium layers (fairness hearing Jan 26, 2023); it concerns cookware, not this appliance, and is not a health or ingredient representation. Other docket hits are trademark suits and ADA website suits. Suits naming Groupe SEB USA (All-Clad's US parent, which also sells other brands) were not attributed to this blender. No immersion blender recall or suit found.",
+  "resolved": true,
+  "status": "pass",
+  "source": "https://www.saferproducts.gov/RestWebServices/Recall?format=json&RecallTitle=All-Clad ; https://recalls-rappels.canada.ca/en/search/site?search_api_fulltext=%22All-Clad%22 ; https://oag.ca.gov/prop65/60-day-notice-search-results?field_prop65_defendant_value=All-Clad ; https://api.fda.gov/food/enforcement.json?search=recalling_firm:%22All-Clad%22 ; https://www.courtlistener.com/api/rest/v4/search/?q=caseName%3A(%22All-Clad%22)&type=r ; https://www.pawd.uscourts.gov/mdl-2988-re-all-clad-metalcrafters-llc-cookware-marketing-and-sales-practices-litigation"
+ },
+ "Dualit": {
+  "checked": "2026-09-16",
+  "note": "Checked, nothing found about this toaster. CPSC (saferproducts.gov API): recall 95-036 of Dec 1, 1994, CPSC and Waring recall of electronic 'Dualit-Plus' toasters, over 24 months old and a different electronic model, informational. Health Canada: no Dualit results. UK OPSS product safety alerts (GOV.UK search API): no Dualit results. Prop 65: notice 2007-00242 (Oct 17, 2007, Mateel) named Dualit Ltd among many makers over lead in espresso and coffee machines with brass fittings; a different product line, recorded as informational. CourtListener: Siegel v. Dualit Ltd, S.D.N.Y. 1:17-cv-01299, Magnuson-Moss warranty claim filed Feb 21, 2017 and terminated Apr 11, 2017, subject product not established; other Dualit dockets are 1990s contract disputes. openFDA not applicable to a toaster.",
+  "resolved": true,
+  "status": "pass",
+  "source": "https://www.saferproducts.gov/RestWebServices/Recall?format=json&RecallTitle=Dualit ; https://www.cpsc.gov/Recalls/1995/CPSC-And-Waring-Recall-Electronic-Dualit-Plus-Toasters ; https://recalls-rappels.canada.ca/en/search/site?search_api_fulltext=Dualit ; https://www.gov.uk/api/search.json?filter_format=product_safety_alert_report_recall&q=Dualit ; https://oag.ca.gov/prop65/60-day-notice-search-results?field_prop65_defendant_value=Dualit ; https://www.courtlistener.com/docket/6074335/siegel-v-dualit-ltd/"
+ },
+ "Araza": {
+  "checked": "2026-09-16",
+  "note": "Checked, nothing found. On 2026-09-16: CourtListener federal dockets for \"Araza Natural Beauty\" and \"Araza Beauty\" returned 0 dockets (a loose search for Araza cosmetics returned 4 unrelated dockets); California Prop 65 60 day notices, alleged violator \"Araza\" and product text \"Araza\": no matching records; Health Canada recalls, exact phrase \"Araza\": zero results; CPSC recall API (saferproducts.gov) for Araza: empty; openFDA food and drug enforcement (recall) reports with recalling firm Araza: no matches. The FDA warning letter index was not searched separately for Araza. Absence of a recall is not proof of safety (rule 5.3).",
+  "resolved": true,
+  "status": "pass",
+  "source": "https://www.courtlistener.com/api/rest/v4/search/?q=%22Araza%20Natural%20Beauty%22&type=r ; https://www.courtlistener.com/api/rest/v4/search/?q=%22Araza%20Beauty%22&type=r ; https://oag.ca.gov/prop65/60-day-notice-search-results?field_prop65_defendant_value=Araza ; https://recalls-rappels.canada.ca/en/search/site?search_api_fulltext=%22Araza%22 ; https://www.saferproducts.gov/RestWebServices/Recall?format=json&RecallTitle=Araza ; https://api.fda.gov/food/enforcement.json?search=recalling_firm:%22Araza%22 ; https://api.fda.gov/drug/enforcement.json?search=recalling_firm:%22Araza%22"
+ },
+ "With Simplicity": {
+  "checked": "2026-09-16",
+  "note": "Checked, nothing found. CPSC recalls API 'Simplicity': 13 title hits, all unrelated (Simplicity cribs, bassinets and play yards 2007 to 2010, Briggs & Stratton Simplicity mowers, Sanus Simplicity wall mounts). openFDA drug, food and device enforcement \"withSimplicity\" and \"With Simplicity\": NOT_FOUND. FDA warning letter index: 0 records for both spellings. Health Canada recalls \"withSimplicity\": zero matches; \"With Simplicity\": 2 unrelated hits (Briggs & Stratton riding mowers 2018, Keystone vehicle recall 2018). CourtListener \"withSimplicity\": 0 dockets, 0 opinions; the phrase \"With Simplicity\" returns only unrelated uses of the words. Prop 65 60 day notices: 'withSimplicity' no matching records; 'With Simplicity' word search returned 32 notices, none contains the phrase. All searched 2026-09-16. Absence of a recall is not proof of safety (rule 5.3).",
+  "resolved": true,
+  "status": "pass",
+  "source": "https://www.saferproducts.gov/RestWebServices/Recall?format=json&RecallTitle=Simplicity ; https://api.fda.gov/drug/enforcement.json?search=recalling_firm:%22withSimplicity%22 ; https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/compliance-actions-and-activities/warning-letters ; https://recalls-rappels.canada.ca/en/search/site?search_api_fulltext=%22withSimplicity%22 ; https://www.courtlistener.com/api/rest/v4/search/?q=%22withSimplicity%22&type=r ; https://oag.ca.gov/prop65/60-day-notice-search-results?field_prop65_defendant_value=withSimplicity"
+ },
+ "Axiology": {
+  "checked": "2026-09-16",
+  "note": "Checked, nothing found. CPSC recalls API ('Axiology' in RecallTitle and ProductName): 0. openFDA drug, food and device enforcement (\"Axiology\"): NOT_FOUND. FDA warning letter index (\"Axiology\"): 0 records. Health Canada recalls (\"Axiology\"): zero matches. CourtListener: RECAP \"Axiology Beauty\" 0 dockets; RECAP \"Axiology\" 14 dockets, none with Axiology as a party (the only beauty related hit, Portia Mason v. Echo-Chic LLC, C.D. Cal. 2:21-cv-07827, filed 2021-09-30, is an Americans with Disabilities Act suit against Echo-Chic LLC whose complaint lists Axiology among brands; it is not a product suit against Axiology); opinions for \"Axiology\" are unrelated uses of the word. California Prop 65 60 day notices, alleged violator 'Axiology': no matching records. All searched 2026-09-16. Absence of a recall is not proof of safety (rule 5.3).",
+  "resolved": true,
+  "status": "pass",
+  "source": "https://www.saferproducts.gov/RestWebServices/Recall?format=json&RecallTitle=Axiology ; https://api.fda.gov/drug/enforcement.json?search=recalling_firm:%22Axiology%22 ; https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/compliance-actions-and-activities/warning-letters ; https://recalls-rappels.canada.ca/en/search/site?search_api_fulltext=%22Axiology%22 ; https://www.courtlistener.com/api/rest/v4/search/?q=%22Axiology%22&type=r ; https://www.courtlistener.com/docket/60517085/portia-mason-v-echo-chic-llc/ ; https://oag.ca.gov/prop65/60-day-notice-search-results?field_prop65_defendant_value=Axiology"
+ },
+ "Simplicity Allergy S20EZM": {
+  "checked": "2026-09-16",
+  "note": "Checked on 2026-09-16: CPSC recalls API (saferproducts.gov), openFDA food, drug and device enforcement reports, Health Canada recalls (recalls-rappels.canada.ca), CourtListener RECAP dockets, and California Prop 65 60 day notices (oag.ca.gov/prop65). Nothing found against this vacuum. CPSC 'Simplicity' recalls concern Simplicity Inc. cribs and play yards and Briggs & Stratton Simplicity mowers, unrelated companies. Prop 65 notice 2006-00665 (filed 10/19/2006) names Tacony Corporation (the simplicityvac.com site runs on a Tacony theme) and Riccar America among makers of cords with lead; 20 years old and not this model, informational. No openFDA, Health Canada or CourtListener matter names Simplicity Vacuums.",
+  "resolved": true,
+  "status": "pass",
+  "source": "https://www.saferproducts.gov/RestWebServices/Recall ; https://api.fda.gov/food/enforcement.json ; https://api.fda.gov/drug/enforcement.json ; https://recalls-rappels.canada.ca/en/search/site ; https://www.courtlistener.com/ ; https://oag.ca.gov/prop65/60-day-notice-search-results ; https://oag.ca.gov/prop65/60-Day-Notice-2006-00665"
+ },
+ "LAJDL": {
+  "checked": "2026-09-16",
+  "note": "Searched on 2026-09-16 and found nothing naming LAJDL, its brand owner Shenzhen Xinruihua Industrial Co., Ltd., or the Amazon seller Princess life museum. CPSC recall database through the SaferProducts.gov recall API: queries RecallTitle=LAJDL, ProductName=LAJDL and Manufacturer=Xinruihua returned 0 recalls, and none of the 187 recalls matching ProductName=candle name the brand, company or seller (the cpsc.gov website itself, including unilateral warnings, returned HTTP 403 on the day). Health Canada recalls and safety alerts, including archived records: no results for LAJDL or Xinruihua. FDA enforcement API (drug, food, device): no matches for LAJDL; candles are not FDA regulated. CourtListener RECAP and opinions: 0 results for Xinruihua, Shenzhen Xinruihua and Princess life museum; 6 RECAP hits for the string LAJDL are OCR noise in unrelated cases (Social Security, criminal, prisoner and 9/11 dockets). California Prop 65 60 day notice database: no notice with LAJDL, Xinruihua or Princess life as alleged violator or product. Category context, not a finding against this product: Prop 65 lead notices have been filed against other companies for \"Candles With Exterior Designs\" (for example 2026-01481 and 2025-01583) and in 2006 for \"Candles, Soaps and Other Aromatics w/Decorative Metal\" (Votivo, 2006-00547); candles with lead cored wicks have been banned in the US since 2003 (16 CFR 1500.17(a)(13)), so a lead free wick claim is a regulatory floor.",
+  "resolved": true,
+  "status": "pass",
+  "source": "https://www.saferproducts.gov/RestWebServices/Recall?format=json&ProductName=candle ; https://recalls-rappels.canada.ca/en/search/site?search_api_fulltext=LAJDL&archive=1 ; https://api.fda.gov/drug/enforcement.json?search=%22LAJDL%22 ; https://www.courtlistener.com/api/rest/v4/search/?q=Xinruihua&type=r ; https://oag.ca.gov/prop65/60-day-notice-search-results?field_prop65_defendant_value=LAJDL ; https://oag.ca.gov/prop65/60-day-notice-search-results?field_prop65_product_value=Candles"
  }
 }

@@ -270,6 +270,11 @@ HAZARD = [
 DISCLOSURE_FAILURE = [
     "fragrance", "parfum", "gum base", "proprietary blend", "natural flavors",
     "natural flavour", "natural flavor", "artificial flavor", "artificial flavors", "undisclosed",
+    # The scent umbrella a natural brand writes instead of "parfum". Araza's
+    # cream foundation, concealer and lip balm each end "Essential Oil Blend"
+    # with no oil named, which is rule 2.1a's claimed natural source with
+    # nothing named.
+    "essential oil blend", "blend of essential oils",
 ]
 
 # A category scoped caution is a documented downside in one category and

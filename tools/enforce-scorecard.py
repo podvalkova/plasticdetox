@@ -265,13 +265,19 @@ def main():
             # "stated" also covers brand notes read as a whole, and four of those
             # were favourable sentences stored as cautions ("lab tested for
             # lead", "top 10% in contaminant testing").
+            # Recorded findings decide on their own. Requiring every adverse
+            # front to be recorded let one inferred caution veto a recorded
+            # fail: California Baby's SPF 30+ lists cyclomethicone, a named
+            # hazard on a leave on product, and stayed unrated because its
+            # materials caution was only inferred, so Product Check showed it
+            # as a good choice while it sat in the store.
+            recorded_adverse = [k for k in adverse_here if og.get(k) in ("database", "hand")]
             if ((str(e.get("why") or "").startswith("the note reads adversely")
                     or e.get("verdict") == "unrated")
-                    and adverse_here
-                    and all(og.get(k) in ("database", "hand") for k in adverse_here)):
-                e["verdict"] = "skip" if any(f.get(k) == "fail" for k in adverse_here) else "careful"
+                    and recorded_adverse):
+                e["verdict"] = "skip" if any(f.get(k) == "fail" for k in recorded_adverse) else "careful"
                 e["why"] = ("section 6 ceiling: "
-                            + ", ".join(f"{k} is {f.get(k)}" for k in adverse_here)
+                            + ", ".join(f"{k} is {f.get(k)}" for k in recorded_adverse)
                             + ", on recorded evidence")
 
             # Give a held back row its verdict back once the checks arrive.

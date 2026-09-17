@@ -27,10 +27,10 @@ export const KIDS = {
      "note": "Best glass bottle with etched markings"
     },
     {
-     "label": "$",
-     "name": "Klean Kanteen Kid Classic (12oz)",
-     "url": "https://www.amazon.com/dp/B0DK7J39YJ?tag=plasticdetox-20",
-     "note": "Best kids stainless bottle"
+     "label": "$$",
+     "name": "Pura Kiki Stainless Steel, Non Insulated (9oz)",
+     "url": "https://www.amazon.com/dp/B0B1PFSQB6?tag=plasticdetox-20",
+     "note": "Best grow with baby system"
     },
     {
      "label": "$",
@@ -428,10 +428,10 @@ export const KIDS = {
      "note": "Best overall diaper"
     },
     {
-     "label": "$",
-     "name": "Eco by Naty Diapers",
-     "url": "https://www.amazon.com/dp/B07FTPBBK9?tag=plasticdetox-20",
-     "note": "Cheapest clean diaper"
+     "label": "$$",
+     "name": "HealthyBaby Diapers",
+     "url": "https://www.amazon.com/dp/B0GFXCRB12?tag=plasticdetox-20&amp;th=1",
+     "note": "EWG Verified diaper"
     }
    ],
    "article": {
@@ -990,7 +990,7 @@ export const KIDS = {
      "label": "$$",
      "name": "Natemia Organic Cotton Hooded Towels",
      "url": "https://www.amazon.com/dp/B084R9D4S6?tag=plasticdetox-20",
-     "note": "Best premium towel"
+     "note": "Best hooded towel"
     }
    ],
    "article": {
@@ -1053,16 +1053,9 @@ export const KIDS = {
    "free": "A woven cotton wrap is the cheapest carrier and the most natural.",
    "picks": [
     {
-     "label": "$$",
-     "name": "Solly Baby Wrap",
-     "url": "https://www.amazon.com/dp/B0DBN1CQ76?tag=plasticdetox-20",
-     "note": "TENCEL Modal, OEKO-TEX Standard 100"
-    },
-    {
-     "label": "$$",
-     "name": "Ergobaby Embrace",
-     "url": "https://www.amazon.com/dp/B08Z1L1M18?tag=plasticdetox-20",
-     "note": "Best structured organic carrier"
+     "label": "Guide",
+     "name": "Read the full guide",
+     "url": "https://plasticdetox.org/articles/non-toxic-baby-toddler-products-guide.html"
     }
    ],
    "article": {
