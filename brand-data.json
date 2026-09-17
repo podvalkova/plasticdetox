@@ -130321,5 +130321,93 @@
       }
     ],
     "stanceHeld": "good"
+  },
+  {
+    "id": "dr-green-mom",
+    "brand": "Dr. Green Mom",
+    "category": "Supplements",
+    "stance": "careful",
+    "reason": "FDA issued Dr. Green Mom, LLC a warning letter on 30 January 2023 that names its Vitamin D among six products sold with disease treatment claims, citing 'disease prevention like autoimmune and cancer', 'Alleviates Cold/Flu' and 'Alleviates Depression'. The letter concerns marketing rather than contamination or manufacturing, and FDA singled out the risk of selling products this way to children. Under rule 5.1 a finding on a brand's own representations means a self reported claim from it cannot clear a front. Its babies and kids D3 with K2 drops also list only MCT oil on the Amazon listing rather than a full ingredient list, and carry a thin review record.",
+    "evidence": "FDA warning letter 30 Jan 2023 naming its Vitamin D as an unapproved new drug over disease claims; no complete ingredient list on the listing",
+    "alternative": "Baby Ddrops Organic 400 IU or Wellements Organic Vitamin D Drops",
+    "sources": [
+      "best-non-toxic-vitamin-d-for-kids.html",
+      "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/dr-green-mom-llc-644546-01302023"
+    ],
+    "aliases": [
+      "Dr Green Mom",
+      "Dr. Green Mom, LLC",
+      "Dr. Green Life Organics"
+    ],
+    "products": [
+      {
+        "name": "Liquid Vitamin D3 K2 Drops for Babies and Kids",
+        "verdict": "skip",
+        "note": "Named in the January 2023 FDA warning letter as sold with disease treatment claims. The listing gives no complete ingredient list, only MCT oil, and the product has a thin review record.",
+        "asins": [
+          "B0FPW5LSTN"
+        ],
+        "cat": "Supplements",
+        "matchAll": [
+          [
+            "green mom",
+            "vitamin"
+          ]
+        ],
+        "ext": {
+          "verdict": "skip",
+          "dated": "2026-09-17",
+          "why": "section 6 ceiling: legal is fail",
+          "fronts": {
+            "formula": "unassessed",
+            "materials": "unassessed",
+            "legal": "fail",
+            "testing": "unassessed"
+          },
+          "frontOrigin": {
+            "legal": "inferred"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": [
+            "2 formula-read-from-materials"
+          ],
+          "cappedFrom": "careful",
+          "capRestoreWhy": "section 6: legal failed"
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "materials": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "reviewed": true,
+    "article": "best-non-toxic-vitamin-d-for-kids.html",
+    "generalises": true,
+    "rollup": {
+      "products": 1,
+      "researched": 0,
+      "flagged": 0,
+      "worst": null
+    }
   }
 ]
