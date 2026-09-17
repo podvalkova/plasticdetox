@@ -276,6 +276,7 @@ function allPhases() {
 }
 
 let kidsPrice = null;
+let kidsWeb = null;
 
 function notifyProps() {
   return {
@@ -572,8 +573,19 @@ function draw() {
       kidsPrice = "";
       kids.price().then((p) => { if (p && p !== kidsPrice) { kidsPrice = p; render(); } });
     }
+    // Asked once per screen, like the price: the answer needs a round trip to
+    // StoreKit and the screen must not wait on it.
+    if (kidsWeb === null) {
+      kidsWeb = "";
+      kids.webBuyUrl().then((u) => { if (u && u !== kidsWeb) { kidsWeb = u; render(); } });
+    }
     screens.detoxKids(view, {
       price: kidsPrice,
+      webBuy: kidsWeb,
+      onWebBuy: () => {
+        track("kids_buy_web", {});
+        openExternal(kidsWeb);
+      },
       unlocked: kids.unlocked(),
       canBuyInApp: kids.canBuyInApp(),
       accountName: kids.accountName(),
@@ -1198,6 +1210,17 @@ export async function openDeepLink(search) {
 
   // plasticdetox://pass?pass=... is how a pass bought on the website reaches
   // the app without anyone copying a token by hand.
+  // plasticdetox://kids?kids=... is the kids room bought on the website coming
+  // home. Checked before the check pass, since both arrive the same way.
+  const kidsPass = params.get("kids");
+  if (kidsPass) {
+    await kids.claimWeb(kidsPass).catch(() => false);
+    track("kids_unlocked", { via: "web" });
+    toast("The kids room is open");
+    render();
+    return;
+  }
+
   const pass = params.get("pass") || params.get("token");
   if (pass) {
     check.setPass(pass);

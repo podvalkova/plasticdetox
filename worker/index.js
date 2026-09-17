@@ -567,6 +567,15 @@ async function handleKidsClaim(request, env, corsOrigin) {
   if (!res.ok || ses.payment_status !== "paid") {
     return json({ ok: false, error: "Payment not found" }, 404, corsOrigin);
   }
+  // Paid is not the same as paid for this. Every product in the account mints
+  // the same shape of session id, so without this a five dollar pack of checks
+  // could be redeemed here for the kids room, once per session, forever. The
+  // session has to name the payment link the room is sold through.
+  const wantedLink = env.KIDS_PAYMENT_LINK || "";
+  if (!wantedLink) return json({ ok: false, error: "Not configured" }, 503, corsOrigin);
+  if (ses.payment_link !== wantedLink) {
+    return json({ ok: false, error: "Wrong product" }, 400, corsOrigin);
+  }
   const pass = await mintKidsPass(env, "web", sid);
   await env.BRAND_SEARCHES.put("kidssession:" + sid, pass);
   return json({ ok: true, pass }, 200, corsOrigin);

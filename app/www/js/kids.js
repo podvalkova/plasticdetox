@@ -15,6 +15,8 @@ const WORKER = "https://plasticdetox-quiz-email.plasticdetox.workers.dev";
 const PASS_KEY = "pd.kids.pass.v1";
 const PLAN_KEY = "pd.kids.plan.v1";
 const PRODUCT = "org.plasticdetox.app.baby";
+// Sold on our own site as well, for people Apple's rules allow us to tell.
+const WEB_BUY = "https://buy.stripe.com/00wbIU0XB7WB5RV9KYfEk04";
 
 /**
  * Whether the room is offered at all.
@@ -28,6 +30,55 @@ const PRODUCT = "org.plasticdetox.app.baby";
 export const OFFERED = true;
 
 let phase = null;
+let storefront = null;
+
+/**
+ * Which App Store this account buys from, as StoreKit reports it.
+ *
+ * Guideline 3.1.1(a) allows a link to a purchase outside the app on the United
+ * States storefront and forbids it in every other one. Storefront belongs to
+ * the Apple account rather than to the phone, so the device's region, language
+ * and timezone all answer a different question. Silence is treated as "not the
+ * United States", which closes the door rather than opening it.
+ */
+async function storefrontCountry() {
+  if (storefront !== null) return storefront;
+  const cap = window.Capacitor;
+  const plugin = cap && cap.Plugins && cap.Plugins.Storefront;
+  if (!plugin || !plugin.country) { storefront = ""; return storefront; }
+  try {
+    const r = await plugin.country();
+    storefront = String((r && r.country) || "").toUpperCase();
+  } catch {
+    storefront = "";
+  }
+  return storefront;
+}
+
+/**
+ * The web purchase, where it is allowed at all, and "" everywhere else.
+ *
+ * Android sells through Play and nothing else for now: Play's own rules on
+ * external links are their own, the app is not public there yet, and shipping
+ * an untested second way to pay into a store review we have not had is how the
+ * last three weeks went.
+ */
+export async function webBuyUrl() {
+  const cap = window.Capacitor;
+  if (!cap || !cap.Plugins) return "";
+  if (cap.getPlatform && cap.getPlatform() === "android") return "";
+  const c = await storefrontCountry();
+  // StoreKit 2 answers in three letters, the older API in two.
+  return c === "USA" || c === "US" ? WEB_BUY : "";
+}
+
+/** A pass bought on the web, arriving back through the app's own URL scheme. */
+export async function claimWeb(token) {
+  const clean = setPass(token);
+  if (!clean) return false;
+  await load();
+  return true;
+}
 
 export function getPass() {
   try { return localStorage.getItem(PASS_KEY) || ""; } catch { return ""; }

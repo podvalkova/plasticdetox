@@ -510,7 +510,7 @@ export function detox(root, { phases, done, seen, room, onRoom, onStep, onKids, 
  * only exists where StoreKit does; anywhere else the room says so quietly
  * rather than showing a button that cannot work.
  */
-export function detoxKids(root, { unlocked, onBuyApp, onRestore, canBuyInApp, onLater, price, accountName }) {
+export function detoxKids(root, { unlocked, onBuyApp, onRestore, canBuyInApp, onLater, price, accountName, webBuy, onWebBuy }) {
   root.classList.add("with-foot");
   root.appendChild(el("div", "dx-k", unlocked ? "Kids \u00b7 open" : "Kids \u00b7 locked"));
   const row = el("div", "dx-titrow");
@@ -561,6 +561,15 @@ export function detoxKids(root, { unlocked, onBuyApp, onRestore, canBuyInApp, on
   restore.type = "button";
   restore.onclick = onRestore;
   foot.appendChild(restore);
+  // The other way to pay, offered only where Apple's rules allow us to mention
+  // it at all. It says where it goes, because a button that leaves the app
+  // without warning is the kind of surprise people report rather than use.
+  if (webBuy && onWebBuy) {
+    const web = el("button", "dx-ghost", "Or buy it on our website");
+    web.type = "button";
+    web.onclick = onWebBuy;
+    foot.appendChild(web);
+  }
   root.classList.add("two-foot");
   root.appendChild(foot);
 }

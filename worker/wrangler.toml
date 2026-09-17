@@ -8,6 +8,12 @@ SENDER_NAME = "Plastic Detox"
 # Team notifications use a distinct sender so they don't look like self-addressed spoofed mail
 NOTIFY_EMAIL = "noreply@plasticdetox.org"
 NOTIFY_NAME = "Plastic Detox Website"
+# The Stripe payment link the kids room is sold through, outside the App Store.
+# /kids-claim refuses any session that does not name it, so a pack of checks
+# cannot be redeemed for the room. Dashboard, Payment links, open the link:
+# the id is the plink_... in the browser address bar. Empty means the web
+# purchase is closed, which is the safe default.
+KIDS_PAYMENT_LINK = ""
 
 [[kv_namespaces]]
 binding = "BRAND_SEARCHES"

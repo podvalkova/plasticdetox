@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kids room unlocked | Plastic Detox</title>
+<meta name="description" content="Your kids room purchase, activated. Open the app to start the baby and kid swaps.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://plasticdetox.org/kids-unlock.html">
+<link rel="icon" type="image/png" sizes="48x48" href="favicon.png">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BBCB36BGP2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-BBCB36BGP2');
+</script>
+<style>
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    background:#EAE8E1; color:#12130F; line-height:1.6;
+    min-height:100vh; display:grid; place-items:center; padding:1.5rem;
+  }
+  .card {
+    background:#fff; border-radius:24px; padding:2rem 1.75rem; max-width:32rem; width:100%;
+    box-shadow:0 1px 3px rgba(0,0,0,0.06);
+  }
+  .kicker { font-size:0.75rem; font-weight:800; letter-spacing:0.08em; text-transform:uppercase; color:#6A2BF0; }
+  h1 { font-size:1.6rem; font-weight:800; letter-spacing:-0.02em; line-height:1.2; margin:0.5rem 0 0.75rem; }
+  p { color:#5B5C55; margin-bottom:1rem; }
+  .cta {
+    display:block; text-align:center; background:#12130F; color:#fff; text-decoration:none;
+    font-weight:700; padding:1rem; border-radius:32px; margin-top:1.25rem;
+  }
+  .token {
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:0.95rem; word-break:break-all;
+    background:#F7F6F2; border:1px solid #E7E3D9; border-radius:12px; padding:0.9rem; margin-top:1rem;
+  }
+  .muted { font-size:0.85rem; color:#8A8981; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="kicker" id="kicker">Activating</div>
+  <h1 id="head">One moment</h1>
+  <p id="body">Checking your payment with Stripe.</p>
+  <div id="extra"></div>
+</div>
+<script>
+// The landing page after a kids room bought outside the App Store.
+//
+// The worker verifies the payment with Stripe and mints the pass; this page
+// hands it to the app through its own URL scheme. The token is printed as well,
+// because a deep link that does not fire leaves somebody who has paid with no
+// way in, and they can paste it in the app instead.
+(function () {
+  var WORKER = "https://plasticdetox-quiz-email.plasticdetox.workers.dev";
+  var qs = new URLSearchParams(location.search);
+  var sid = qs.get("session_id") || qs.get("session") || "";
+  var kicker = document.getElementById("kicker");
+  var head = document.getElementById("head");
+  var body = document.getElementById("body");
+  var extra = document.getElementById("extra");
+
+  function fail(title, text) {
+    kicker.textContent = "Something went wrong";
+    head.textContent = title;
+    body.textContent = text;
+    extra.innerHTML = '<a class="cta" href="mailto:hello@plasticdetox.org?subject=Kids%20room%20purchase">Email us and we will sort it</a>';
+  }
+
+  if (!sid) {
+    fail("We could not find that payment", "This page opens by itself after checkout. If you have paid and landed here, send us the receipt and we will open the room by hand.");
+    return;
+  }
+
+  fetch(WORKER + "/kids-claim?session=" + encodeURIComponent(sid))
+    .then(function (r) { return r.json(); })
+    .then(function (d) {
+      if (!d || !d.ok || !d.pass) throw new Error((d && d.error) || "no pass");
+      var link = "plasticdetox://kids?kids=" + encodeURIComponent(d.pass);
+      kicker.textContent = "Paid";
+      head.textContent = "The kids room is yours";
+      body.textContent = "Open the app and it will be on your Detox tab with the other rooms.";
+      extra.innerHTML = '<a class="cta" id="open">Open the app</a>'
+        + '<p class="muted" style="margin-top:1rem;">If the button does nothing, open Plastic Detox, tap the question mark, and paste this key:</p>'
+        + '<div class="token" id="tok"></div>';
+      document.getElementById("open").href = link;
+      document.getElementById("tok").textContent = d.pass;
+      if (window.gtag) gtag("event", "kids_web_unlock", { method: "stripe" });
+      // One attempt at opening it automatically. Safari ignores this without a
+      // gesture often enough that the button has to exist either way.
+      setTimeout(function () { location.href = link; }, 700);
+    })
+    .catch(function () {
+      fail("We could not confirm that payment yet",
+        "Stripe may still be settling it. Wait a minute and reload this page. If it still fails, email us the receipt and we will open the room by hand.");
+    });
+})();
+</script>
+</body>
+</html>
