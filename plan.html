@@ -53,6 +53,13 @@
   h1{font-size:clamp(2rem,4.5vw,3rem);font-weight:800;letter-spacing:-.035em;line-height:1.05;margin-bottom:.85rem;text-wrap:balance;max-width:18ch;margin-left:auto;margin-right:auto}
   h1 em{font-style:italic;color:var(--accent-dark)}
   .hero-sub{font-size:1.1rem;color:var(--text-muted);max-width:54ch;margin:0 auto}
+  .plan-app{max-width:760px;margin:2rem auto 0;background:linear-gradient(160deg,#7c3aed,#6d28d9);color:#fff;border-radius:var(--radius);padding:2rem 1.75rem;text-align:center}
+  .plan-app-eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#ede9fe;margin-bottom:.55rem}
+  .plan-app h2{font-size:1.45rem;font-weight:800;letter-spacing:-.02em;line-height:1.2;margin:0 0 .55rem;color:#fff}
+  .plan-app p{font-size:1rem;line-height:1.55;color:#ede9fe;max-width:50ch;margin:0 auto 1.35rem}
+  .plan-app-btn{display:inline-flex;align-items:center;gap:.5rem;background:#fff;color:var(--accent-dark);text-decoration:none;font-weight:700;font-size:1rem;padding:.85rem 1.9rem;border-radius:60px}
+  .plan-app-fine{font-size:.8rem;line-height:1.5;color:#ddd6fe;margin:1.05rem auto 0}
+  @media print{ .plan-app{display:none!important} }
   .updated{margin-top:1.1rem;font-size:.82rem;color:var(--text-muted)}
   .updated b{color:var(--accent-dark)}
 
@@ -303,6 +310,17 @@
     <p class="updated">Last updated <b>July 20, 2026</b></p>
   </div>
 </header>
+
+<!-- app-cta-unlocked: first thing after the gate drops -->
+<div class="narrow">
+  <div class="plan-app">
+    <div class="plan-app-eyebrow">Your plan travels</div>
+    <h2>Take this plan with you, free on iPhone.</h2>
+    <p>The app is this plan on your phone: the same steps in the same order, with your progress saved as you tick them off. Check any product by name, or scan its barcode while you are standing in the shop.</p>
+    <a class="plan-app-btn" id="planAppBtn" href="https://apps.apple.com/app/id6807191826?ct=plan-unlocked" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor" aria-hidden="true" style="flex-shrink:0;"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01M12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg> Download on the App Store</a>
+    <p class="plan-app-fine">Free forever. No account, no ads, nothing sponsored.</p>
+  </div>
+</div>
 
 <!-- OUR APPROACH -->
 <section class="approach">
@@ -660,6 +678,10 @@
         });
         if(!res.ok) throw new Error('bad');
         if (window.gtag) gtag('event', 'plan_signup', { method: 'plan_gate' });
+        var pab = document.getElementById('planAppBtn');
+        if (pab) pab.addEventListener('click', function(){
+          if (window.gtag) gtag('event', 'app_cta_click', { placement: 'plan_unlocked' });
+        });
         try { localStorage.setItem(FKEY, '1'); } catch(e){}
         gate.classList.add('hide');
         window.scrollTo({top:0});

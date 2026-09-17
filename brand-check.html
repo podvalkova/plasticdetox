@@ -294,6 +294,11 @@
     .legend-item p { font-size: 16.5px; line-height: 1.62; color: var(--body); margin-top: 18px; }
 
     /* ===== EXTENSION BAND (desktop Chromium only, revealed by JS) ===== */
+    .app-band { margin-top: 104px; background: linear-gradient(180deg, #F1ECFE 0%, #EDE9FE 100%); scroll-margin-top: 70px; }
+    .app-inner { padding-top: 72px; padding-bottom: 72px; max-width: 46em; }
+    .app-install { display: inline-flex; align-items: center; gap: 10px; background: var(--text); color: #fff; padding: 19px 34px; border-radius: 999px; font-size: 17px; font-weight: 700; transition: background 0.15s; }
+    .app-install:hover { background: var(--accent); color: #fff; }
+    @media (max-width: 860px) { .app-band { margin-top: 76px; } .app-inner { padding-top: 48px; padding-bottom: 48px; } }
     .ext-band { margin-top: 104px; background: linear-gradient(180deg, #F1ECFE 0%, #EDE9FE 100%); scroll-margin-top: 70px; }
     .ext-grid { display: grid; grid-template-columns: 1.04fr 1fr; gap: 72px; align-items: center; padding-top: 88px; padding-bottom: 88px; }
     .ext-kicker { font-size: 13.5px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); }
@@ -410,6 +415,7 @@
             <button class="check-btn" onclick="if(searchEl.value.trim())lookup(searchEl.value)">Check it</button>
           </div>
           <div class="chips-row" id="quickRow"></div>
+          <a class="ext-teaser" id="appTeaser" href="#appband" hidden>Checking while you shop? The free iPhone app works offline&nbsp;<b>&darr;</b></a>
           <a class="ext-teaser" id="extTeaser" href="#extension" hidden>Shopping on Amazon? Our free extension shows verdicts right on the page&nbsp;<b>&darr;</b></a>
           <div class="assurances">
             <div><b>&#10003;</b>Four checks per product</div>
@@ -446,6 +452,44 @@
 
     <!-- Extension band. Shown only to desktop Chromium, because nobody else can
          install it and an offer you cannot accept is just noise. -->
+    <div class="app-band" id="appband" hidden>
+      <div class="shell app-inner">
+        <div class="ext-kicker">Free iPhone app</div>
+        <h2 class="ext-title">The whole detox, <em>in your pocket</em>.</h2>
+        <p class="ext-lede">The app opens on your home detox, the plastic sources in your home in the order that cuts exposure fastest. The verdicts you are searching here come with it, so you can settle a question in the aisle instead of at your desk.</p>
+
+        <div class="ext-steps">
+          <div class="ext-step">
+            <span class="ext-step-num">01</span>
+            <div>
+              <b>A plan, not a list</b>
+              <p>Work through your home one swap at a time, with a vetted swap at every step and a free option that counts the same.</p>
+            </div>
+          </div>
+          <div class="ext-step">
+            <span class="ext-step-num">02</span>
+            <div>
+              <b>The same verdict, in your hand</b>
+              <p>Check any product by name, or scan its barcode. Formula, packaging, recalls, and independent lab tests, with the source behind each one.</p>
+            </div>
+          </div>
+          <div class="ext-step">
+            <span class="ext-step-num">03</span>
+            <div>
+              <b>Works with no signal</b>
+              <p>The whole database lives on your phone, so a basement aisle is not a problem. Recalls reach you in the background.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="ext-cta-row">
+          <a class="app-install" id="appInstallBtn" href="https://apps.apple.com/app/id6807191826?ct=brand-check" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor" aria-hidden="true" style="flex-shrink:0;"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01M12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg> Download on the App Store</a>
+          <span class="ext-note">Free &middot; no account &middot; nothing sponsored</span>
+        </div>
+        <p class="ext-fine">No ads and no affiliate links in the app, ever. Every verdict is the one published here, updated in the background.</p>
+      </div>
+    </div>
+
     <div class="ext-band" id="extension" hidden>
       <div class="shell ext-grid">
         <div>
@@ -614,6 +658,30 @@
         gtag('event', 'extension_cta_click', {
           placement: 'brand_check',
           // what they had just looked up, so we can see whether a verdict drives installs
+          last_brand: (searchEl && searchEl.value ? searchEl.value.trim().slice(0, 60) : '')
+        });
+      });
+    })();
+
+    (function appCta() {
+      const ua = navigator.userAgent;
+      const mobile = /Android|iPhone|iPad|iPod|Mobile/i.test(ua);
+      const chromium = /Chrome\/|Chromium\/|Edg\//.test(ua) && !/OPR\//.test(ua);
+      // The extension band already owns this slot on desktop Chromium. Everywhere
+      // else it stays hidden, which is exactly where the app belongs.
+      if (!mobile && chromium) return;
+      const band = $("appband");
+      if (!band) return;
+      band.hidden = false;
+      $("appTeaser").hidden = false;
+      gtag('event', 'app_cta_view', { placement: 'brand_check' });
+      $("appTeaser").addEventListener('click', function () {
+        gtag('event', 'app_teaser_click', { placement: 'brand_check_hero' });
+      });
+      $("appInstallBtn").addEventListener('click', function () {
+        gtag('event', 'app_cta_click', {
+          placement: 'brand_check',
+          // same idea as the extension: does a verdict drive the install?
           last_brand: (searchEl && searchEl.value ? searchEl.value.trim().slice(0, 60) : '')
         });
       });
