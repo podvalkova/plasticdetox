@@ -203,6 +203,73 @@ export const KIDS = {
    ]
   },
   {
+   "guide": "best-non-toxic-vitamin-d-for-kids.html",
+   "id": "Kids::Give vitamin D drops from a glass bottle",
+   "swap": "Give vitamin D drops from a glass bottle",
+   "why": "Nearly every breastfed newborn is told to take this daily for a year, and nine of twelve children's vitamins sent to an independent lab tested positive for lead. Both of the two that came back non detect were liquid drops, and the highest results were chewables and gummies. D3 has to ride in an oil, and oil is the solvent that pulls additives out of plastic, so the bottle matters.",
+   "heat": false,
+   "impact": "High impact",
+   "free": "None, this is a supplement a doctor asked you to give. Choose the dropper that cannot overdose: one drop, one dose, rather than a squeeze bottle or a graduated syringe holding several days at once.",
+   "picks": [
+    {
+     "label": "$$",
+     "name": "Baby Ddrops Organic 400 IU",
+     "url": "https://www.amazon.com/dp/B003CT36NE?tag=plasticdetox-20",
+     "note": "Top pick. Two ingredients, and the only published non detect on all four metals"
+    },
+    {
+     "label": "$",
+     "name": "Carlson Baby's Super Daily D3",
+     "url": "https://www.amazon.com/dp/B003BVIBMO?tag=plasticdetox-20",
+     "note": "Best value, a year of drops in one bottle"
+    },
+    {
+     "label": "$",
+     "name": "Wellements Organic Vitamin D Drops",
+     "url": "https://www.amazon.com/dp/B07DHXSY6G?tag=plasticdetox-20",
+     "note": "Best organic olive oil base"
+    },
+    {
+     "label": "$$",
+     "name": "Ddrops Kids Booster 600 IU",
+     "url": "https://www.amazon.com/dp/B00843E5NS?tag=plasticdetox-20",
+     "note": "Best from the first birthday, 600 IU per drop"
+    }
+   ],
+   "tip": {
+    "title": "The dropper decides the worst case dose",
+    "body": "The FDA asked in 2010 that an infant dropper hold no more than 400 IU, one day's dose. It was guidance and never became a rule, so squeeze bottles and graduated syringes still hold several days at once, and the published overdose cases are concentration errors rather than deliberate ones. A bottle where one drop is one dose removes that whole class of mistake. Nine of twelve children's vitamins tested positive for lead, and the highest results were all chewables, gummies and powders.",
+    "look": [
+     "One drop, one dose, rather than a squeeze bottle or a syringe",
+     "Amber glass, because D3 rides in an oil",
+     "A published independent test for that exact product"
+    ],
+    "skip": [
+     "Gummies and chewables, the highest lead results in the panel",
+     "Plastic bottles, since oil pulls additives out of plastic",
+     "Multivitamins where vitamin D is what the baby actually needs"
+    ]
+   },
+   "article": {
+    "slug": "best-non-toxic-vitamin-d-for-kids.html",
+    "title": "Best Non Toxic Vitamin D for Babies and Kids: What Testing Found, and What the Dropper Gives (2026)"
+   },
+   "faqs": [
+    {
+     "q": "Are vitamin D drops better than gummies for kids?",
+     "a": "On the evidence so far, yes. In Lead Safe Mama's 2024 panel of twelve children's vitamins, nine tested positive for lead, and the two products that came back non detect for lead, cadmium, arsenic and mercury were both liquids. The lowest results in the panel were drops and the highest were chewables and gummies, which carry far more non vitamin material per dose: sugars, starches, gelling agents, colours and flavours, each one a separate supply chain. Drops also let you give an exact dose to a six month old, which a gummy cannot."
+    },
+    {
+     "q": "Why does the dropper matter more than the brand?",
+     "a": "Because the dispenser sets the worst case dose. In June 2010 the FDA warned that droppers packed with liquid vitamin D can hold considerably more than an infant should get, and asked manufacturers to mark droppers clearly for 400 IU and to make infant droppers hold no more than 400 IU. That was guidance, not a rule, and it still is. A bottle where one drop is exactly one dose cannot be overdosed by a tired parent at 3am. A squeeze bottle or a graduated syringe can."
+    },
+    {
+     "q": "Does the bottle material matter for vitamin D?",
+     "a": "More than for most supplements. Vitamin D3 is fat soluble, so it has to be carried in an oil, and oil is the solvent that pulls plasticisers and other additives out of plastic. That is the same fat, heat and time model that explains plastic in jar lids. A daily infant supplement sits open on a shelf for one to twelve months, which is the time half of the equation. Amber glass removes the question, which is why all four of our picks are in glass. The dropper insert or cap is still plastic, but it holds no reservoir of oil."
+    }
+   ]
+  },
+  {
    "guide": "best-non-toxic-baby-formula.html",
    "id": "Kids::Choose a cleaner formula",
    "swap": "Choose a cleaner formula",
