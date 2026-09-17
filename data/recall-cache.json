@@ -4418,5 +4418,165 @@
   "resolved": true,
   "status": "pass",
   "source": "https://www.saferproducts.gov/RestWebServices/Recall?format=json&ProductName=candle ; https://recalls-rappels.canada.ca/en/search/site?search_api_fulltext=LAJDL&archive=1 ; https://api.fda.gov/drug/enforcement.json?search=%22LAJDL%22 ; https://www.courtlistener.com/api/rest/v4/search/?q=Xinruihua&type=r ; https://oag.ca.gov/prop65/60-day-notice-search-results?field_prop65_defendant_value=LAJDL ; https://oag.ca.gov/prop65/60-day-notice-search-results?field_prop65_product_value=Candles"
+ },
+ "Ddrops": {
+  "total": 0,
+  "latest": null,
+  "examined": 0,
+  "checked": "2026-09-17"
+ },
+ "Wellements": {
+  "total": 3,
+  "latest": [
+   "20200724",
+   "Product contains undeclared milk",
+   "Terminated",
+   "Wellements LLC"
+  ],
+  "examined": 3,
+  "checked": "2026-09-17",
+  "note": "Checked the FDA enforcement database on 2026-09-17. Three closed and remedied recalls on record for the firm, none on the vitamin D drops: Iron Drops and the Iron Drops sampler in August 2020 for undeclared milk in two lots (Class I), and Baby Move prune concentrate in 2012 (Class I). The newest is over five years old, so informational under rule 5.2, and two of the three are the same event on one product, so the three in five years pattern rule does not reach brand scope.",
+  "resolved": true,
+  "status": "pass"
+ },
+ "Mommy's Bliss": {
+  "total": 2,
+  "examined": 2,
+  "latest": [
+   "20251015",
+   "Potential yeast contamination.",
+   "Ongoing",
+   "M.O.M Enterprises, LLC."
+  ],
+  "checked": "2026-09-17",
+  "note": "Checked the FDA enforcement database on 2026-09-17 under the firm name M.O.M Enterprises, LLC., which is how the recalls are filed; a search on the brand name alone returns nothing. Two open Class II recalls of Organic Baby Bedtime Drops for potential yeast contamination, reported 2025-09-17 and 2025-10-15, both listed as ongoing. Separately, FDA issued the firm a warning letter on 2025-04-22 over cGMP failures and unreported serious adverse events.",
+  "source": "https://api.fda.gov/food/enforcement.json?search=recalling_firm:%22M.O.M%20Enterprises%22",
+  "resolved": true,
+  "status": "fail"
+ },
+ "ChildLife Essentials": {
+  "total": 0,
+  "latest": null,
+  "examined": 0,
+  "checked": "2026-09-17"
+ },
+ "Zarbee's": {
+  "total": 2,
+  "latest": [
+   "20150921",
+   "Some units of each lot may contain contaminants (elevated aerobic plate count) and do not meet acceptable visual appearance standards for the product.",
+   "Terminated",
+   "Zarbee's Naturals Inc."
+  ],
+  "examined": 2,
+  "checked": "2026-09-17",
+  "note": "Checked the FDA enforcement database on 2026-09-17 under the firm name Zarbee's Naturals. Two closed and remedied recalls, both reported 2016-07-13 and both Class III: Baby Vitamin D and Baby Omega 3 liquids, for units that may contain contaminants at an elevated aerobic plate count. Nine years old and terminated, so informational under rule 5.2.",
+  "resolved": true,
+  "status": "pass"
+ },
+ "Hiya": {
+  "total": 0,
+  "latest": null,
+  "examined": 0,
+  "checked": "2026-09-17"
+ },
+ "Renzo's": {
+  "total": 0,
+  "latest": null,
+  "examined": 0,
+  "checked": "2026-09-17"
+ },
+ "EllaOla": {
+  "total": 0,
+  "latest": null,
+  "examined": 0,
+  "checked": "2026-09-17"
+ },
+ "Seeking Health": {
+  "total": 1,
+  "latest": [
+   "20220916",
+   "The product label claim for copper is 0.5mg, but third-party lab results revealed product contains higher levels of copper.",
+   "Terminated",
+   "Seeking Health LLC"
+  ],
+  "examined": 1,
+  "checked": "2026-09-17"
+ },
+ "VitaKlenz": {
+  "total": 0,
+  "latest": null,
+  "examined": 0,
+  "checked": "2026-09-17"
+ },
+ "NovaFerrum": {
+  "total": 0,
+  "latest": null,
+  "examined": 0,
+  "checked": "2026-09-17"
+ },
+ "Flintstones": {
+  "total": 0,
+  "latest": null,
+  "examined": 0,
+  "checked": "2026-09-17"
+ },
+ "Genexa": {
+  "total": 0,
+  "latest": null,
+  "examined": 0,
+  "checked": "2026-09-17"
+ },
+ "San Pellegrino": {
+  "total": 0,
+  "examined": 0,
+  "checked": "2026-09-17",
+  "source": "cpsc",
+  "latest": null,
+  "note": "Checked CPSC recall records on 2026-09-17. No recall on record for San Pellegrino."
+ },
+ "Saratoga Spring Water": {
+  "total": 0,
+  "examined": 0,
+  "checked": "2026-09-17",
+  "source": "cpsc",
+  "latest": null,
+  "note": "Checked CPSC recall records on 2026-09-17. No recall on record for Saratoga Spring Water."
+ },
+ "Sensarte": {
+  "total": 0,
+  "examined": 0,
+  "checked": "2026-09-17",
+  "source": "cpsc",
+  "latest": null,
+  "note": "Checked CPSC recall records on 2026-09-17. No recall on record for Sensarte."
+ },
+ "Simax": {
+  "total": 0,
+  "examined": 0,
+  "checked": "2026-09-17",
+  "source": "cpsc",
+  "latest": null,
+  "note": "Checked CPSC recall records on 2026-09-17. No recall on record for Simax."
+ },
+ "Axkid": {
+  "total": 0,
+  "examined": 0,
+  "checked": "2026-09-17",
+  "source": "cpsc",
+  "latest": null,
+  "note": "Checked CPSC recall records on 2026-09-17. No recall on record for Axkid."
+ },
+ "Moby": {
+  "checked": "2026-09-17",
+  "note": "Checked CPSC recall listings and recall news by web search on 2026-09-17. No recall, safety warning or regulatory action affecting Moby found. CPSC's 2010 sling warning and the 2010 federal sling standard cover the category, not this brand.",
+  "resolved": true,
+  "status": "pass"
+ },
+ "WildBird": {
+  "checked": "2026-09-17",
+  "note": "Checked CPSC recall listings and recall news by web search on 2026-09-17. No recall, safety warning or regulatory action affecting WildBird found. CPSC's sling warnings and the federal sling standard cover the category, not this brand.",
+  "resolved": true,
+  "status": "pass"
  }
 }

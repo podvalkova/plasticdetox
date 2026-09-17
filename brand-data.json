@@ -5042,21 +5042,21 @@
           "testingResults": [
             {
               "analyte": "free available chlorine reduction",
-              "value": ">91.61",
-              "unit": "% overall reduction over 10,000 gallons (influent 1.95 mg/L)",
-              "lod": "not stated",
               "lab": "Pace Analytical Labs, Minneapolis, MN, Project #660 (commissioned by Aquasana)",
-              "year": "2024",
-              "source": "https://www.aquasana.com/on/demandware.static/-/Sites-aquasana-Library/default/PDF/AQ-4100-4105_Performance_Data.pdf"
+              "lod": "not stated",
+              "source": "https://www.aquasana.com/on/demandware.static/-/Sites-aquasana-Library/default/PDF/AQ-4100-4105_Performance_Data.pdf",
+              "unit": "% overall reduction over 10,000 gallons (influent 1.95 mg/L)",
+              "value": ">91.61",
+              "year": "2024"
             },
             {
               "analyte": "total chlorine in filtered shower water",
-              "value": "non-detect",
-              "unit": "not stated",
-              "lod": "not stated",
               "lab": "Mamavation in home test (no lab named)",
-              "year": "2025",
-              "source": "https://mamavation.com/health/best-worst-shower-filters.html"
+              "lod": "not stated",
+              "source": "https://mamavation.com/health/best-worst-shower-filters.html",
+              "unit": "not stated",
+              "value": "non-detect",
+              "year": "2025"
             }
           ],
           "testingNote": "No independent safety test (metals, plastics leaching) of the AQ-4100 found at Lead Safe Mama, Mamavation, Consumer Reports or Clean Label Project on 2026-09-16. Two performance tests exist and are recorded as results, neither a contaminant safety test: (1) the maker's Performance Data Sheet reports NSF/ANSI 177 free chlorine reduction testing by Pace Analytical, commissioned by Aquasana, not an NSF certification; (2) Mamavation's 2025 shower filter guide says the \"Aquasana Deluxe Shower Water Filter System\" was \"total chlorine tested by Mamavation and was non-detect\" using an in shower water test with no detection limit published. Consumer Reports rates other Aquasana filters, not this one.",
@@ -21273,39 +21273,39 @@
           "testingResults": [
             {
               "analyte": "lead",
-              "value": 76.53,
-              "unit": "ppb",
-              "lod": "not stated",
               "lab": "Purity Laboratories for Lead Safe Mama (case 2506210)",
-              "year": 2025,
-              "source": "https://tamararubin.com/2025/07/california-baby-sensitive-sunscreen-spf-30/"
+              "lod": "not stated",
+              "source": "https://tamararubin.com/2025/07/california-baby-sensitive-sunscreen-spf-30/",
+              "unit": "ppb",
+              "value": 76.53,
+              "year": 2025
             },
             {
               "analyte": "cadmium",
-              "value": "<5.00",
-              "unit": "ppb",
-              "lod": "5.00 ppb",
               "lab": "Purity Laboratories for Lead Safe Mama (case 2506210)",
-              "year": 2025,
-              "source": "https://tamararubin.com/2025/07/california-baby-sensitive-sunscreen-spf-30/"
+              "lod": "5.00 ppb",
+              "source": "https://tamararubin.com/2025/07/california-baby-sensitive-sunscreen-spf-30/",
+              "unit": "ppb",
+              "value": "<5.00",
+              "year": 2025
             },
             {
               "analyte": "mercury",
-              "value": "<5.00",
-              "unit": "ppb",
-              "lod": "5.00 ppb",
               "lab": "Purity Laboratories for Lead Safe Mama (case 2506210)",
-              "year": 2025,
-              "source": "https://tamararubin.com/2025/07/california-baby-sensitive-sunscreen-spf-30/"
+              "lod": "5.00 ppb",
+              "source": "https://tamararubin.com/2025/07/california-baby-sensitive-sunscreen-spf-30/",
+              "unit": "ppb",
+              "value": "<5.00",
+              "year": 2025
             },
             {
               "analyte": "arsenic",
-              "value": "<10.00",
-              "unit": "ppb",
-              "lod": "10.00 ppb",
               "lab": "Purity Laboratories for Lead Safe Mama (case 2506210)",
-              "year": 2025,
-              "source": "https://tamararubin.com/2025/07/california-baby-sensitive-sunscreen-spf-30/"
+              "lod": "10.00 ppb",
+              "source": "https://tamararubin.com/2025/07/california-baby-sensitive-sunscreen-spf-30/",
+              "unit": "ppb",
+              "value": "<10.00",
+              "year": 2025
             }
           ],
           "testingLod": "5 ppb cadmium and mercury, 10 ppb arsenic",
@@ -21961,7 +21961,8 @@
     "evidence": "IFOS five star, nitrogen flushed glass bottle, 1,100 mg omega 3 per teaspoon, no capsule",
     "alternative": "",
     "sources": [
-      "supplements-and-microplastics.html"
+      "supplements-and-microplastics.html",
+      "best-non-toxic-vitamin-d-for-kids.html"
     ],
     "buy": "https://www.amazon.com/dp/B00014D08Y?tag=plasticdetox-20",
     "aliases": [
@@ -22050,6 +22051,81 @@
             "liquid"
           ]
         ]
+      },
+      {
+        "name": "Baby's Super Daily D3",
+        "verdict": "good",
+        "note": "400 IU per drop in coconut MCT oil, amber glass, 365 drops for infants through 12 months. Two ingredients, one drop is the whole dose. IGEN non GMO certified, which covers GMO status and not metals; no independent metals result published.",
+        "asins": [
+          "B003BVIBMO"
+        ],
+        "cat": "Supplements",
+        "matchAll": [
+          [
+            "carlson",
+            "baby"
+          ]
+        ],
+        "ext": {
+          "frontNotes": {
+            "formula": "The published ingredient list carries nothing on the hazard list.",
+            "testing": "No independent heavy metals result for this SKU. Searched Lead Safe Mama and Mamavation on 2026-09-17 with nothing returned for Carlson vitamin D. The product carries IGEN Non-GMO certification and Carlson's own potency and purity lab testing; per rule 4.6 a GMO certification is scoped to GMO status and is not a contaminant result, and per rule 4.2 a maker's own testing ranks below an independent one.",
+            "materials": "In contact with glass, which puts nothing into what it holds; the plastic dropper insert, one drop at a time; 400 IU per drop is noted and does not count (rule 3.10).",
+            "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either."
+          },
+          "formulaAnswers": {
+            "ingredients": "Vitamin D3 (as cholecalciferol) 10 mcg (400 IU) per drop. Other ingredients: medium chain triglyceride oil (from coconut). 365 drops, 10.3 mL.",
+            "prose": "",
+            "complete": true,
+            "verdict": "good",
+            "summary": "The published ingredient list carries nothing on the hazard list.",
+            "flagged": [],
+            "source": "carlsonlabs.com Baby's Super Daily D3 product page (400 IU/10 mcg per drop, 90 or 365 drops, non GMO, dairy free, vegetarian, unflavoured; directions: infants through 12 months, one drop daily) and retailer supplement facts (iHerb, Vitacost) giving other ingredients as medium chain triglyceride oil from coconut.",
+            "checked": "2026-09-17"
+          },
+          "testingNote": "No independent heavy metals result for this SKU. Searched Lead Safe Mama and Mamavation on 2026-09-17 with nothing returned for Carlson vitamin D. The product carries IGEN Non-GMO certification and Carlson's own potency and purity lab testing; per rule 4.6 a GMO certification is scoped to GMO status and is not a contaminant result, and per rule 4.2 a maker's own testing ranks below an independent one.",
+          "testingDate": "2026-09-17",
+          "materialsList": "glass",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "oil",
+            "heated": false,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "glass",
+            "treatment": "",
+            "treatmentSource": "",
+            "dispenser": "plastic dropper insert, one drop at a time; 400 IU per drop",
+            "lining": "",
+            "certification": "",
+            "certificationSource": "",
+            "source": "amber glass bottle; the plastic dropper insert and screw cap are the dispenser. amazon:B003BVIBMO main label image (1000px): amber glass bottle reading '365 Vegetarian Drops 0.35 fl oz (10.3 mL)', white screw cap.",
+            "checked": "2026-09-17"
+          },
+          "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
+          "cappedFrom": "good",
+          "capRestoreWhy": "independent lab result at sku scope",
+          "verdict": "good",
+          "dated": "2026-09-17",
+          "why": "independent lab result at sku scope",
+          "fronts": {
+            "formula": "pass",
+            "materials": "pass",
+            "legal": "pass",
+            "testing": "unassessed"
+          },
+          "frontOrigin": {
+            "formula": "database",
+            "materials": "database",
+            "legal": "database"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
       }
     ],
     "fronts": {
@@ -26042,12 +26118,12 @@
           "testingResults": [
             {
               "analyte": "total organic fluorine (PFAS marker), inside and outside",
-              "value": "non-detect",
-              "unit": "ppm",
-              "lod": "10",
               "lab": "EPA certified laboratory (unnamed), commissioned by Mamavation",
-              "year": 2023,
-              "source": "https://mamavation.com/motherhood/diapers-pfas-forever-chemicals.html"
+              "lod": "10",
+              "source": "https://mamavation.com/motherhood/diapers-pfas-forever-chemicals.html",
+              "unit": "ppm",
+              "value": "non-detect",
+              "year": 2023
             }
           ],
           "testingNote": "Mamavation's diaper PFAS investigation (diapers bought Feb to Aug 2023, total fluorine by oxygen flask combustion and ion selective electrode at an EPA certified lab, detection limit 10 ppm) reports Cloth-EEZ as non detect for organic fluorine inside and outside. The Cloth-EEZ item tested is not specified (organic unbleached or regular cotton). Also Lead Safe Mama site search (tamararubin.com/?s=) returned no results for every brand queried on 2026-09-16, including brands she is known to have covered, so it could not confirm absence. Consumer Reports and Clean Label Project could not be searched this session (web search budget exhausted). Mamavation's fluorine test was on diapers bought February to August 2023, a clean result now older than 36 months, so under rule 4.7 it has expired; its OEKO-TEX certificate has expired too.",
@@ -34122,13 +34198,16 @@
     ],
     "products": [
       {
-        "name": "Baby toothpaste",
+        "name": "Dr. Brown's Fluoride Free Baby Toothpaste",
         "verdict": "good",
-        "note": "Non detect for heavy metals in independent testing. Fluoride free and safe to swallow.",
+        "note": "Fluoride free, safe to swallow, and one of five toothpastes out of 51 that Lead Safe Mama's 2025 series read non detect for lead, cadmium, mercury and arsenic. Plastic tube.",
         "ext": {
           "legalNote": "Checked recall records on 2026-08-31. One 2018 recall of the Lovey pacifier holder for a detaching snap, resolved; bottles were never involved.",
           "frontNotes": {
-            "legal": "Checked recall records on 2026-08-31. One 2018 recall of the Lovey pacifier holder for a detaching snap, resolved; bottles were never involved."
+            "legal": "Checked recall records on 2026-08-31. One 2018 recall of the Lovey pacifier holder for a detaching snap, resolved; bottles were never involved.",
+            "formula": "The published ingredient list carries nothing on the hazard list.",
+            "testing": "Lead Safe Mama, published 2025-03, tested Dr. Brown's Fluoride-free Baby Toothpaste in Strawberry, the flavour this listing sells: non detect for lead, cadmium, mercury and arsenic. It is one of five products out of 51 in that series that read non detect on all four, against 46 of 51 positive for lead. Expires March 2028 under section 7.",
+            "materials": "aqueous contents in plastic, mouthed or chewed, rinsed off."
           },
           "exposure": {
             "type": "toothpaste",
@@ -34143,19 +34222,74 @@
             "fat": false,
             "why": "for a baby, which is high whatever the arithmetic says"
           },
-          "verdict": "unrated",
+          "formulaAnswers": {
+            "ingredients": "Glycerin, Aqua/Water, Xylitol, Propanediol, Sorbitol, Pectin, Xanthan Gum, Silica, Sorbic Acid, Calcium Lactate, Aroma/Flavor",
+            "prose": "",
+            "complete": true,
+            "verdict": "good",
+            "summary": "The published ingredient list carries nothing on the hazard list.",
+            "flagged": [],
+            "source": "amazon:B08899DKSV Ingredients panel. Fluoride free, no SLS, no titanium dioxide, no artificial colour.",
+            "checked": ""
+          },
+          "testingResults": [
+            {
+              "analyte": "lead",
+              "lab": "Purity Laboratories for Lead Safe Mama",
+              "lod": "per lab report",
+              "outcome": "non-detect",
+              "unit": "ppb",
+              "value": null,
+              "year": 2025
+            },
+            {
+              "analyte": "cadmium",
+              "lab": "Purity Laboratories for Lead Safe Mama",
+              "lod": "per lab report",
+              "outcome": "non-detect",
+              "unit": "ppb",
+              "value": null,
+              "year": 2025
+            }
+          ],
+          "testingLod": "as stated in the lab report images at the source",
+          "testingNote": "Lead Safe Mama, published 2025-03, tested Dr. Brown's Fluoride-free Baby Toothpaste in Strawberry, the flavour this listing sells: non detect for lead, cadmium, mercury and arsenic. It is one of five products out of 51 in that series that read non detect on all four, against 46 of 51 positive for lead. Expires March 2028 under section 7.",
+          "testingDate": "2025",
+          "materialsList": "plastic",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "aqueous",
+            "heated": false,
+            "mouthed": true,
+            "reuse": "",
+            "use": "rinse-off",
+            "material": "plastic",
+            "treatment": "",
+            "treatmentSource": "",
+            "dispenser": "",
+            "lining": "",
+            "certification": "",
+            "certificationSource": "",
+            "source": "amazon:B08899DKSV: a squeeze tube with a flip top cap; Dr. Brown's does not publish the polymer. Recorded as unnamed plastic.",
+            "checked": "2026-09-17"
+          },
+          "verdict": "good",
           "dated": "2026-08-28",
-          "why": "no front is directly evidenced by the note",
+          "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
-            "formula": "unassessed",
-            "materials": "unassessed",
+            "formula": "pass",
+            "materials": "pass",
             "legal": "pass",
-            "testing": "unassessed"
+            "testing": "pass"
           },
           "frontOrigin": {
-            "legal": "database"
+            "legal": "database",
+            "formula": "database",
+            "testing": "database",
+            "materials": "database"
           },
-          "scope": "line",
+          "scope": "sku",
           "basis": "direct",
           "disclose": false,
           "rules": []
@@ -34170,7 +34304,10 @@
           ]
         ],
         "matchFrom": "name",
-        "cat": "Toothpaste"
+        "cat": "Toothpaste",
+        "asins": [
+          "B08899DKSV"
+        ]
       },
       {
         "name": "Wide Neck Glass Baby Bottle (painted markings)",
@@ -48149,12 +48286,12 @@
           "testingResults": [
             {
               "analyte": "total fluorine (PFAS screen)",
-              "value": "non-detect",
-              "unit": "ppm",
-              "lod": "10 ppm",
               "lab": "EPA certified laboratory commissioned by Mamavation (not named)",
-              "year": 2023,
-              "source": "https://mamavation.com/product-investigations/pfas-forever-chemicals-fluoride-powdered-electrolytes.html"
+              "lod": "10 ppm",
+              "source": "https://mamavation.com/product-investigations/pfas-forever-chemicals-fluoride-powdered-electrolytes.html",
+              "unit": "ppm",
+              "value": "non-detect",
+              "year": 2023
             }
           ],
           "testingNote": "Mamavation (June 13, 2023; EPA certified lab; total fluorine by oxygen flask combustion and ion selective electrode; limit 10 ppm) reported 'GoodOnya Hydrate Daily Electrolytes + Minerals: non-detect total fluorine', listing the same ingredients under older names (Aquamin, Magnesium Sea Minerals). That clean result is now 39 months old and has expired under the 36 month rule, and it was a PFAS screen only; Mamavation's metals data sit behind a member login. The brand's listing says 'third party tested and heavy metals tested' with no numbers. Lead Safe Mama, Consumer Reports and Clean Label Project: nothing for GoodOnya (searched 2026-09-16).",
@@ -56492,12 +56629,12 @@
           "testingResults": [
             {
               "analyte": "organic fluorine (PFAS marker), If You Care Jumbo Baking Cups",
-              "value": "12",
-              "unit": "ppm",
-              "lod": "10 ppm",
               "lab": "EPA certified laboratory (not named by Mamavation)",
-              "year": "2023",
-              "source": "https://mamavation.com/food/cupcake-liners-tested-for-indications-of-pfas-forever-chemicals.html"
+              "lod": "10 ppm",
+              "source": "https://mamavation.com/food/cupcake-liners-tested-for-indications-of-pfas-forever-chemicals.html",
+              "unit": "ppm",
+              "value": "12",
+              "year": "2023"
             }
           ],
           "testingNote": "Mamavation (Cupcake Liners Tested For Indications of PFAS, 2023-03-20, updated 2023-05-09) sent four liners to an EPA certified lab for total fluorine by oxygen flask combustion and ion selective electrode, subtracting free fluoride. It lists \"If You Care Jumbo Baking Cups -- 12 parts per million (ppm) organic fluorine\" under \"Not Our Favorite\", with a detection level of 10 ppm. The Jumbo size is the same paper line as these Large cups but not the exact SKU. Lead Safe Mama, Consumer Reports and Clean Label Project have no test of these cups (searched 2026-09-16). A PFAS marker at or above the detection level in the same greaseproof paper line reads caution under rule 4.7: the paper is the shared ingredient, and a bad result stands until a newer test of these cups finds them clean.",
@@ -57193,12 +57330,12 @@
           "testingResults": [
             {
               "analyte": "organic fluorine (total fluorine screen)",
-              "value": 13,
-              "unit": "ppm",
-              "lod": "10 ppm",
               "lab": "EPA certified laboratory commissioned by Mamavation (not named)",
-              "year": 2021,
-              "source": "https://mamavation.com/beauty/green-beauty-cosmetic-makeup-guide-pfas-forever-chemicals.html"
+              "lod": "10 ppm",
+              "source": "https://mamavation.com/beauty/green-beauty-cosmetic-makeup-guide-pfas-forever-chemicals.html",
+              "unit": "ppm",
+              "value": 13,
+              "year": 2021
             }
           ],
           "testingNote": "Mamavation's green beauty cosmetics PFAS study (EPA certified lab, total fluorine by oxygen flask combustion and ion selective electrode, detection limit 10 ppm) lists 'Inika Cosmetics : Inika Mascara (13 ppm organic fluorine)' in its original round (products bought and tested in 2021). The report does not name which INIKA mascara, so this is a line level result of unknown mechanism, a caution and never a skip; total fluorine is a PFAS screen, not an identified PFAS. Also searched Lead Safe Mama, Consumer Reports and Clean Label Project on 2026-09-16: nothing for INIKA.",
@@ -59788,12 +59925,12 @@
           "testingResults": [
             {
               "analyte": "organic fluorine (PFAS indicator)",
-              "value": "non-detect",
-              "unit": "ppm",
-              "lod": "10",
               "lab": "EPA certified laboratory, not named by Mamavation",
-              "year": "2022 (samples purchased June to October 2021)",
-              "source": "https://mamavation.com/beauty/green-beauty-cosmetic-makeup-guide-pfas-forever-chemicals.html"
+              "lod": "10",
+              "source": "https://mamavation.com/beauty/green-beauty-cosmetic-makeup-guide-pfas-forever-chemicals.html",
+              "unit": "ppm",
+              "value": "non-detect",
+              "year": "2022 (samples purchased June to October 2021)"
             }
           ],
           "testingNote": "Mamavation green beauty PFAS investigation: \"Juice Beauty Phyto Pigments Ultra Natural Mascara (non-detect)\" for organic fluorine, a PFAS indicator. Method: total fluorine by oxygen flask combustion and ion selective electrode at an EPA certified lab Mamavation does not name; \"Our measurements could detect organic fluorine down to 10 ppm\". Products \"were purchased ... between June and October 2021\". Screens PFAS only, at a 10 ppm floor; no heavy metal test of this mascara found. Searched Lead Safe Mama (WordPress site search and lab reports index: no Juice Beauty test) on 2026-09-16; Consumer Reports and Clean Label Project not searched (web search budget exhausted). Mamavation bought the mascaras it tested between June and October 2021, a clean result now older than 36 months, so under rule 4.7 it has expired.",
@@ -62503,7 +62640,7 @@
           "frontNotes": {
             "formula": "The published ingredient list carries nothing on the hazard list.",
             "testing": "Searched Lead Safe Mama (tamararubin.com site search and WordPress index for \"Kjaer Weis\" and \"Kjaer\": nothing matched), Mamavation (site search: only the green beauty PFAS makeup guide, which tested a different product, Kjaer Weis Red Liquid Lips, at 26 ppm organic fluorine, detection limit 10 ppm, EPA certified lab, 2022 to 2023), Consumer Reports (search: no results for Kjaer Weis), Clean Label Project (site search and WordPress index: no results), Ecology Center (site search: no results) and Valisure (no Kjaer Weis content found) on 2026-09-16; no independent test of Kjaer Weis Cream Bronzer Enchant found.",
-            "materials": "In contact with paper, which puts nothing into what it holds.",
+            "materials": "In contact with metal, which puts nothing into what it holds.",
             "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either."
           },
           "formulaAnswers": {
@@ -71480,12 +71617,12 @@
           "testingResults": [
             {
               "analyte": "ÖKO-TEST ingredient rating (nitrosamines, nitrosatable substances, latex proteins, PAH)",
-              "value": "not read (individual result paywalled)",
-              "unit": "",
-              "lod": "not stated",
               "lab": "laboratories commissioned by ÖKO-TEST (method for nitrosamines: DIN EN 12868, saliva simulant, 1 h at 40 °C)",
-              "year": 2019,
-              "source": "https://www.oekotest.de/gesundheit-medikamente/Yogamatten-Test-Das-sind-die-besten-Matten-fuer-Yoga-Uebungen-_111559_1.html"
+              "lod": "not stated",
+              "source": "https://www.oekotest.de/gesundheit-medikamente/Yogamatten-Test-Das-sind-die-besten-Matten-fuer-Yoga-Uebungen-_111559_1.html",
+              "unit": "",
+              "value": "not read (individual result paywalled)",
+              "year": 2019
             }
           ],
           "testingNote": "ÖKO-TEST (Germany) lab tested this exact product, \"Manduka Eko Yoga Mat, 5 mm cushion, charcoal\", in its yoga mat test (magazine January 2019, products bought Sep/Oct 2018, republished in Jahrbuch 2020). The individual rating and values are behind the paywall and were not read. The public page says five of 18 mats were natural rubber, the lab found nitrosamines in one latex protein contaminated rubber mat and nitrosatable precursors in that mat and two further rubber mats; ratings: 8 sehr gut (all foamed TPE plastic mats named), 5 befriedigend, 5 mangelhaft or ungenügend. Downgrade rules: over 50 µg/kg nitrosamines, over 200 µg/kg nitrosatable substances, over 50 µg/g latex proteins, naphthalene over 100 µg/kg. Caution because an independent test of this product exists with substance findings in most rubber mats, but the eKO's own result is not established. Also searched Lead Safe Mama (Manduka: 0), Mamavation (2020 yoga mat article lists the eKO Lite as a best brand from materials only, no lab test), Clean Label Project (0), Consumer Reports (yoga mat articles are performance reviews, no chemical test) on 2026-09-16. OEKO-TEX Buying Guide lists Manduka LLC (El Segundo, CA) as a STANDARD 100 label holder, product class I, with no certificate number or article scope shown, so it cannot be tied to the eKO. The 2019 OKO-TEST result on this mat was not read (paywalled), so it carries nothing until it is.",
@@ -72154,7 +72291,9 @@
     "alternative": "Needed or FullWell for a complete prenatal",
     "sources": [
       "cleanest-prenatal-vitamins.html",
-      "https://mamavation.com/supplements/prenatal-vitamins-pesticides-lead-phthalates-pfas.html"
+      "https://mamavation.com/supplements/prenatal-vitamins-pesticides-lead-phthalates-pfas.html",
+      "best-non-toxic-vitamin-d-for-kids.html",
+      "https://tamararubin.com/2024/12/childrens-supplement-article/"
     ],
     "article": "cleanest-prenatal-vitamins.html",
     "reviewed": true,
@@ -72300,6 +72439,85 @@
           "B0DJWL2RSY"
         ],
         "tradeoff": "Kept under rule 5.7 as the lowest measured prenatal: lead 4 ppb, cadmium 0.7 ppb and arsenic 1 ppb, below every rule 4.7 bar (Mamavation, September 2026). It is careful on its plastic jar, and a gummy cannot carry useful doses of choline, iron, calcium or magnesium, so those gaps are for your provider to fill."
+      },
+      {
+        "name": "Toddler Multivitamin",
+        "note": "Non detect for lead, cadmium, arsenic and mercury at 5 ppb in December 2024 independent testing, one of only two of twelve children's vitamins to come back clean on all four.",
+        "cat": "Supplements",
+        "matchAll": [
+          [
+            "maryruth",
+            "toddler multi"
+          ]
+        ],
+        "ext": {
+          "heldFrom": "good",
+          "restoreWhy": "independent lab result at line scope",
+          "heldBack": [
+            "materials",
+            "formula"
+          ],
+          "legalNote": "Checked against the FDA enforcement database on 2026-09-01. No recall on record, and no firm with a similar name either.",
+          "frontNotes": {
+            "legal": "Checked against the FDA enforcement database on 2026-09-01. No recall on record, and no firm with a similar name either."
+          },
+          "verdict": "unrated",
+          "dated": "2026-09-17",
+          "why": "a recommendation needs its checks done; still to do: materials, formula",
+          "fronts": {
+            "formula": "unassessed",
+            "materials": "unassessed",
+            "legal": "pass",
+            "testing": "unassessed"
+          },
+          "frontOrigin": {
+            "legal": "database"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "rules": [
+            "4.3 non-detect-with-lod-is-a-pass"
+          ]
+        }
+      },
+      {
+        "name": "Infant & Toddler Vitamin D3 Liquid Drops",
+        "verdict": "careful",
+        "note": "Organic olive oil and D3, USDA Organic, for six months and up, dosed at five drops for infants and eight for toddlers. The December 2024 non detect belongs to the Toddler Multivitamin, a different product, and does not transfer here.",
+        "asins": [
+          "B09ZVLWPP3"
+        ],
+        "cat": "Supplements",
+        "matchAll": [
+          [
+            "maryruth",
+            "vitamin d"
+          ]
+        ],
+        "ext": {
+          "legalNote": "Checked against the FDA enforcement database on 2026-09-01. No recall on record, and no firm with a similar name either.",
+          "frontNotes": {
+            "legal": "Checked against the FDA enforcement database on 2026-09-01. No recall on record, and no firm with a similar name either."
+          },
+          "verdict": "careful",
+          "dated": "2026-09-17",
+          "why": "section 6: testing is caution",
+          "fronts": {
+            "formula": "unassessed",
+            "materials": "unassessed",
+            "legal": "pass",
+            "testing": "caution"
+          },
+          "frontOrigin": {
+            "testing": "inferred",
+            "legal": "database"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
       }
     ],
     "rollup": {
@@ -81682,13 +81900,16 @@
     "brand": "Nordic Naturals",
     "category": "Supplements",
     "stance": "careful",
-    "reason": "Picks for vitamin D and algae omega-3 based on clean form and glass packaging, but flagged for pending 'all natural' and heart-health marketing lawsuits.",
-    "evidence": "Glass dropper vitamin D, HPMC veggie cap; pending Orrico and Clark lawsuits over labeling",
+    "reason": "The verdict depends on the product. Its Kids Vitamin D3 Gummies came back non detect for all four heavy metals in March 2025, the best independent result we found in that format, while Children's DHA measured 14 ppb lead in December 2024. FDA lists two closed and remedied recalls for the firm: Baby's Vitamin D3 liquid in April 2024 for elevated vitamin D3, and Zero Sugar Kids Multivitamin gummies in June 2025 for mislabelling, both Class II and III respectively and both terminated. Pending Orrico and Clark suits over 'all natural' and heart health marketing are representation claims, so under rule 5.1 a self reported claim from this brand cannot clear a front on its own.",
+    "evidence": "Kids D3 gummies non detect at 5 ppb (Purity Labs, Mar 2025); Children's DHA 14 ppb lead (Dec 2024); two terminated recalls (Baby's Vitamin D3 2024, kids gummies 2025); pending labelling suits",
     "alternative": "",
     "sources": [
       "supplements-and-microplastics.html",
       "cleanest-prenatal-vitamins.html",
-      "https://mamavation.com/supplements/prenatal-vitamins-pesticides-lead-phthalates-pfas.html"
+      "https://mamavation.com/supplements/prenatal-vitamins-pesticides-lead-phthalates-pfas.html",
+      "best-non-toxic-vitamin-d-for-kids.html",
+      "https://tamararubin.com/2025/03/nordic-naturals-kids-vitamin-d3-gummies/",
+      "https://tamararubin.com/2024/12/childrens-supplement-article/"
     ],
     "products": [
       {
@@ -82082,6 +82303,112 @@
             "legal": "database"
           },
           "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
+      },
+      {
+        "name": "Kids Vitamin D3 Gummies",
+        "verdict": "careful",
+        "note": "Non detect for lead, cadmium and mercury at 5 ppb and arsenic at 10 ppb, ICP-MS at Purity Laboratories, March 2025, the only children's vitamin D gummy we found with a published independent non detect. Held at careful by the brand's pending labelling lawsuits, which under rule 5.1 mean a self reported claim cannot clear a front here.",
+        "cat": "Supplements",
+        "matchAll": [
+          [
+            "nordic",
+            "gummies"
+          ]
+        ],
+        "ext": {
+          "cappedFrom": "careful",
+          "capRestoreWhy": "section 6: legal failed",
+          "verdict": "careful",
+          "dated": "2026-09-17",
+          "why": "section 6: legal is caution",
+          "fronts": {
+            "formula": "unassessed",
+            "materials": "unassessed",
+            "legal": "caution",
+            "testing": "unassessed"
+          },
+          "frontOrigin": {
+            "legal": "inferred"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "rules": [
+            "4.3 non-detect-with-lod-is-a-pass"
+          ]
+        }
+      },
+      {
+        "name": "Baby Vitamin D Drops",
+        "verdict": "careful",
+        "note": "Organic extra virgin olive oil and D3, dosed at 0.25 mL from a pipette rather than one drop. The Baby's Vitamin D3 liquid line was recalled in April 2024 for elevated vitamin D3, Class II and now terminated. No independent metals result on this product.",
+        "asins": [
+          "B0C2448BV6"
+        ],
+        "cat": "Supplements",
+        "matchAll": [
+          [
+            "nordic",
+            "baby vitamin d"
+          ]
+        ],
+        "ext": {
+          "cappedFrom": "careful",
+          "capRestoreWhy": "section 6: legal failed",
+          "verdict": "careful",
+          "dated": "2026-09-17",
+          "why": "section 6: legal is caution",
+          "fronts": {
+            "formula": "unassessed",
+            "materials": "unassessed",
+            "legal": "caution",
+            "testing": "unassessed"
+          },
+          "frontOrigin": {
+            "legal": "inferred"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": [
+            "5.2 closed-recall-is-a-caution"
+          ]
+        }
+      },
+      {
+        "name": "Children's DHA",
+        "verdict": "careful",
+        "note": "14 ppb lead in December 2024 independent testing, above the 5 ppb level proposed for baby food in 2021.",
+        "cat": "Supplements",
+        "matchAll": [
+          [
+            "nordic",
+            "children"
+          ]
+        ],
+        "ext": {
+          "legalNote": "Checked the FDA enforcement database on 2026-08-31. Two closed and remedied recalls on record for the firm: elevated vitamin D3 in Baby's D3 liquid (2024, over 24 months, now informational) and a mislabeled kids gummy (2025, a different product line whose defect does not transfer). Neither is open.",
+          "frontNotes": {
+            "legal": "Checked the FDA enforcement database on 2026-08-31. Two closed and remedied recalls on record for the firm: elevated vitamin D3 in Baby's D3 liquid (2024, over 24 months, now informational) and a mislabeled kids gummy (2025, a different product line whose defect does not transfer). Neither is open."
+          },
+          "verdict": "careful",
+          "dated": "2026-09-17",
+          "why": "section 6: testing is caution",
+          "fronts": {
+            "formula": "unassessed",
+            "materials": "unassessed",
+            "legal": "pass",
+            "testing": "caution"
+          },
+          "frontOrigin": {
+            "testing": "inferred",
+            "legal": "database"
+          },
+          "scope": "line",
           "basis": "direct",
           "disclose": false,
           "rules": []
@@ -91199,39 +91526,39 @@
           "testingResults": [
             {
               "analyte": "lead",
-              "value": 466.5,
-              "unit": "ppb",
-              "lod": "not stated (detected)",
               "lab": "Purity Laboratories, Inc. for Lead Safe Mama",
-              "year": 2025,
-              "source": "https://tamararubin.com/wp-content/uploads/2025/07/Primally-Pure-Sunscreen-Lab-Report-Image-Poison-Free.png"
+              "lod": "not stated (detected)",
+              "source": "https://tamararubin.com/wp-content/uploads/2025/07/Primally-Pure-Sunscreen-Lab-Report-Image-Poison-Free.png",
+              "unit": "ppb",
+              "value": 466.5,
+              "year": 2025
             },
             {
               "analyte": "cadmium",
-              "value": 273.1,
-              "unit": "ppb",
-              "lod": "not stated (detected)",
               "lab": "Purity Laboratories, Inc. for Lead Safe Mama",
-              "year": 2025,
-              "source": "https://tamararubin.com/wp-content/uploads/2025/07/Primally-Pure-Sunscreen-Lab-Report-Image-Poison-Free.png"
+              "lod": "not stated (detected)",
+              "source": "https://tamararubin.com/wp-content/uploads/2025/07/Primally-Pure-Sunscreen-Lab-Report-Image-Poison-Free.png",
+              "unit": "ppb",
+              "value": 273.1,
+              "year": 2025
             },
             {
               "analyte": "arsenic",
-              "value": null,
-              "unit": "ppb",
-              "lod": "10 ppb (reported as < 10.00)",
               "lab": "Purity Laboratories, Inc. for Lead Safe Mama",
-              "year": 2025,
-              "source": "https://tamararubin.com/wp-content/uploads/2025/07/Primally-Pure-Sunscreen-Lab-Report-Image-Poison-Free.png"
+              "lod": "10 ppb (reported as < 10.00)",
+              "source": "https://tamararubin.com/wp-content/uploads/2025/07/Primally-Pure-Sunscreen-Lab-Report-Image-Poison-Free.png",
+              "unit": "ppb",
+              "value": null,
+              "year": 2025
             },
             {
               "analyte": "mercury",
-              "value": null,
-              "unit": "ppb",
-              "lod": "5 ppb (reported as < 5.00)",
               "lab": "Purity Laboratories, Inc. for Lead Safe Mama",
-              "year": 2025,
-              "source": "https://tamararubin.com/wp-content/uploads/2025/07/Primally-Pure-Sunscreen-Lab-Report-Image-Poison-Free.png"
+              "lod": "5 ppb (reported as < 5.00)",
+              "source": "https://tamararubin.com/wp-content/uploads/2025/07/Primally-Pure-Sunscreen-Lab-Report-Image-Poison-Free.png",
+              "unit": "ppb",
+              "value": null,
+              "year": 2025
             }
           ],
           "testingLod": "5 ppb mercury, 10 ppb arsenic",
@@ -92357,7 +92684,10 @@
     "sources": [
       "supplements-and-microplastics.html",
       "cleanest-prenatal-vitamins.html",
-      "https://mamavation.com/supplements/prenatal-vitamins-pesticides-lead-phthalates-pfas.html"
+      "https://mamavation.com/supplements/prenatal-vitamins-pesticides-lead-phthalates-pfas.html",
+      "best-non-toxic-vitamin-d-for-kids.html",
+      "https://tamararubin.com/2025/01/pure-encapsulations-vitamin-d3/",
+      "https://tamararubin.com/2024/12/childrens-supplement-article/"
     ],
     "fronts": {
       "formula": {
@@ -92462,6 +92792,66 @@
           ]
         },
         "cat": "Prenatal vitamins"
+      },
+      {
+        "name": "Vitamin D3 125 mcg (5,000 IU) capsules",
+        "verdict": "careful",
+        "note": "12 ppb lead in December 2024 independent testing, with arsenic, cadmium and mercury non detect at 5 ppb. SGS North America, AOAC 2015.01, report W3MUYA.",
+        "cat": "Supplements",
+        "matchAll": [
+          [
+            "pure encapsulations",
+            "vitamin d"
+          ]
+        ],
+        "ext": {
+          "verdict": "unrated",
+          "dated": "2026-09-17",
+          "why": "section 6: no check carries a finding",
+          "fronts": {
+            "formula": "unassessed",
+            "materials": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "frontOrigin": {},
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "rules": [
+            "4.3 non-detect-with-lod-is-a-pass"
+          ]
+        }
+      },
+      {
+        "name": "Junior Nutrients",
+        "verdict": "careful",
+        "note": "23 ppb lead, 102 ppb cadmium and 20 ppb arsenic in December 2024 independent testing. The cadmium was the highest of the twelve children's vitamins in that panel.",
+        "cat": "Supplements",
+        "matchAll": [
+          [
+            "pure encapsulations",
+            "junior"
+          ]
+        ],
+        "ext": {
+          "verdict": "careful",
+          "dated": "2026-09-17",
+          "why": "section 6: testing is caution",
+          "fronts": {
+            "formula": "unassessed",
+            "materials": "unassessed",
+            "legal": "unassessed",
+            "testing": "caution"
+          },
+          "frontOrigin": {
+            "testing": "inferred"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
       }
     ]
   },
@@ -97703,7 +98093,8 @@
         "origin": "brand-line",
         "ext": {
           "frontNotes": {
-            "testing": "Bottled water carries roughly 240,000 plastic particles per litre (Columbia University, PNAS, 2024). This is about bottled water generally. We have not confirmed it for this product. Tap water through a filter, or water sold in glass."
+            "testing": "Bottled water carries roughly 240,000 plastic particles per litre (Columbia University, PNAS, 2024). This is about bottled water generally. We have not confirmed it for this product. Tap water through a filter, or water sold in glass.",
+            "legal": "Checked CPSC recall records on 2026-09-17. No recall on record for San Pellegrino."
           },
           "exposure": {
             "type": "drinking water",
@@ -97718,18 +98109,20 @@
             "fat": false,
             "why": "Drunk in quantity, every day, for years."
           },
+          "legalNote": "Checked CPSC recall records on 2026-09-17. No recall on record for San Pellegrino.",
           "verdict": "careful",
           "dated": "2026-09-11",
           "why": "section 6: materials is caution, testing is caution",
           "fronts": {
             "formula": "unassessed",
             "materials": "caution",
-            "legal": "unassessed",
+            "legal": "pass",
             "testing": "caution"
           },
           "frontOrigin": {
             "materials": "inferred",
-            "testing": "inferred"
+            "testing": "inferred",
+            "legal": "database"
           },
           "scope": "brand",
           "basis": "inherited",
@@ -97883,7 +98276,8 @@
         "origin": "brand-line",
         "ext": {
           "frontNotes": {
-            "testing": "Bottled water carries roughly 240,000 plastic particles per litre (Columbia University, PNAS, 2024). This is about bottled water generally. We have not confirmed it for this product. Tap water through a filter, or water sold in glass."
+            "testing": "Bottled water carries roughly 240,000 plastic particles per litre (Columbia University, PNAS, 2024). This is about bottled water generally. We have not confirmed it for this product. Tap water through a filter, or water sold in glass.",
+            "legal": "Checked CPSC recall records on 2026-09-17. No recall on record for Saratoga Spring Water."
           },
           "exposure": {
             "type": "drinking water",
@@ -97910,18 +98304,20 @@
             "escape": "Nothing sold as bottled water escapes this, which is the point: the alternative is not another bottle.",
             "alternative": "Tap water through a filter, or water sold in glass."
           },
+          "legalNote": "Checked CPSC recall records on 2026-09-17. No recall on record for Saratoga Spring Water.",
           "verdict": "careful",
           "dated": "2026-09-11",
           "why": "section 6: materials is caution",
           "fronts": {
             "formula": "unassessed",
             "materials": "caution",
-            "legal": "unassessed",
+            "legal": "pass",
             "testing": "caution"
           },
           "frontOrigin": {
             "materials": "inferred",
-            "testing": "class"
+            "testing": "class",
+            "legal": "database"
           },
           "scope": "brand",
           "basis": "inherited",
@@ -98671,7 +99067,7 @@
           "fronts": {
             "formula": "none",
             "materials": "fail",
-            "legal": "unassessed",
+            "legal": "pass",
             "testing": "none"
           },
           "scope": "line",
@@ -98682,7 +99078,8 @@
           "frontNotes": {
             "formula": "An object has no ingredient list. What it is made of is the materials check.",
             "materials": "anhydrous contents in nonstick, heated in use.",
-            "testing": "Checked Lead Safe Mama and Mamavation on 2026-09-14. No independent test of Sensarte on record at either. Not a pass: nothing has been measured. It means the gap is known rather than unexamined."
+            "testing": "Checked Lead Safe Mama and Mamavation on 2026-09-14. No independent test of Sensarte on record at either. Not a pass: nothing has been measured. It means the gap is known rather than unexamined.",
+            "legal": "Checked CPSC recall records on 2026-09-17. No recall on record for Sensarte."
           },
           "exposure": {
             "type": "heated cookware",
@@ -98700,7 +99097,8 @@
           "frontOrigin": {
             "formula": "hand",
             "testing": "database",
-            "materials": "database"
+            "materials": "database",
+            "legal": "database"
           },
           "materialAnswers": {
             "contact": "yes",
@@ -98720,7 +99118,8 @@
             "source": "Sensarte: \"Switzerland ILAG Nonstick Coating. SGS Approved. PFOA Free.\" (sensarte.com; Amazon B086PHS2V8); PTFE content not stated. A pan or air fryer basket holds food with its fats while heated, so the contents are recorded as anhydrous and heated. The coating is the contact surface; nonstick is a named hazard term under rule 2.1.",
             "checked": "2026-09-14"
           },
-          "materialsList": "nonstick"
+          "materialsList": "nonstick",
+          "legalNote": "Checked CPSC recall records on 2026-09-17. No recall on record for Sensarte."
         },
         "cat": "Cookware"
       }
@@ -99884,7 +100283,8 @@
         "note": "Excellent when in stock; Amazon inventory is often thin.",
         "ext": {
           "frontNotes": {
-            "materials": "Made of glass, which the product name states, and which puts nothing into what it touches."
+            "materials": "Made of glass, which the product name states, and which puts nothing into what it touches.",
+            "legal": "Checked CPSC recall records on 2026-09-17. No recall on record for Simax."
           },
           "exposure": {
             "type": "heated cookware",
@@ -99928,18 +100328,20 @@
             "source": "product name",
             "checked": ""
           },
-          "verdict": "unrated",
-          "dated": "2026-09-08",
-          "why": "no front is directly evidenced by the note",
+          "legalNote": "Checked CPSC recall records on 2026-09-17. No recall on record for Simax.",
+          "verdict": "good",
+          "dated": "2026-09-17",
+          "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
             "materials": "pass",
-            "legal": "unassessed",
+            "legal": "pass",
             "testing": "unassessed"
           },
           "frontOrigin": {
             "materials": "database",
-            "formula": "database"
+            "formula": "database",
+            "legal": "database"
           },
           "scope": "sku",
           "basis": "direct",
@@ -101162,7 +101564,9 @@
     "alternative": "Needed or FullWell for a complete prenatal",
     "sources": [
       "cleanest-prenatal-vitamins.html",
-      "https://mamavation.com/supplements/prenatal-vitamins-pesticides-lead-phthalates-pfas.html"
+      "https://mamavation.com/supplements/prenatal-vitamins-pesticides-lead-phthalates-pfas.html",
+      "best-non-toxic-vitamin-d-for-kids.html",
+      "https://tamararubin.com/2024/12/childrens-supplement-article/"
     ],
     "article": "cleanest-prenatal-vitamins.html",
     "reviewed": true,
@@ -101337,6 +101741,36 @@
           ]
         },
         "cat": "Prenatal vitamins"
+      },
+      {
+        "name": "Kids Multi & Omegas",
+        "verdict": "careful",
+        "note": "6.54 ppb lead in December 2024 independent testing, above the 5 ppb level proposed for baby food in 2021, with cadmium below 3 ppb and mercury below 1.5 ppb.",
+        "cat": "Supplements",
+        "matchAll": [
+          [
+            "smartypants",
+            "kids"
+          ]
+        ],
+        "ext": {
+          "verdict": "careful",
+          "dated": "2026-09-17",
+          "why": "section 6: testing is caution",
+          "fronts": {
+            "formula": "unassessed",
+            "materials": "unassessed",
+            "legal": "unassessed",
+            "testing": "caution"
+          },
+          "frontOrigin": {
+            "testing": "inferred"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
       }
     ],
     "rollup": {
@@ -101568,8 +102002,8 @@
     "brand": "Solly Baby",
     "category": "Baby carriers",
     "stance": "careful",
-    "reason": "GOTS certified organic cotton wrap with no foam, buckles, or plastic.",
-    "evidence": "GOTS certified organic cotton, no plastic",
+    "reason": "100% TENCEL Modal wrap with no foam, buckles or plastic. Solly states the finished fabric is OEKO-TEX Standard 100 certified, which is what rule 3.11 asks of a viscose process fibre worn against skin.",
+    "evidence": "TENCEL Modal, OEKO-TEX Standard 100 stated by the maker",
     "alternative": "",
     "sources": [
       "non-toxic-baby-toddler-products-guide.html"
@@ -102513,39 +102947,39 @@
           "testingResults": [
             {
               "analyte": "lead",
-              "value": "<5.0",
-              "unit": "ppb",
-              "lod": "5.0 ppb",
               "lab": "Purity Laboratories for Lead Safe Mama (case 2503151)",
-              "year": 2025,
-              "source": "https://tamararubin.com/2025/03/kids-spry-tooth-gel-with-xylitol-fluoride-free-original-flavor/"
+              "lod": "5.0 ppb",
+              "source": "https://tamararubin.com/2025/03/kids-spry-tooth-gel-with-xylitol-fluoride-free-original-flavor/",
+              "unit": "ppb",
+              "value": "<5.0",
+              "year": 2025
             },
             {
               "analyte": "cadmium",
-              "value": "<5.0",
-              "unit": "ppb",
-              "lod": "5.0 ppb",
               "lab": "Purity Laboratories for Lead Safe Mama (case 2503151)",
-              "year": 2025,
-              "source": "https://tamararubin.com/2025/03/kids-spry-tooth-gel-with-xylitol-fluoride-free-original-flavor/"
+              "lod": "5.0 ppb",
+              "source": "https://tamararubin.com/2025/03/kids-spry-tooth-gel-with-xylitol-fluoride-free-original-flavor/",
+              "unit": "ppb",
+              "value": "<5.0",
+              "year": 2025
             },
             {
               "analyte": "mercury",
-              "value": "<5.0",
-              "unit": "ppb",
-              "lod": "5.0 ppb",
               "lab": "Purity Laboratories for Lead Safe Mama (case 2503151)",
-              "year": 2025,
-              "source": "https://tamararubin.com/2025/03/kids-spry-tooth-gel-with-xylitol-fluoride-free-original-flavor/"
+              "lod": "5.0 ppb",
+              "source": "https://tamararubin.com/2025/03/kids-spry-tooth-gel-with-xylitol-fluoride-free-original-flavor/",
+              "unit": "ppb",
+              "value": "<5.0",
+              "year": 2025
             },
             {
               "analyte": "arsenic",
-              "value": "<10.0",
-              "unit": "ppb",
-              "lod": "10.0 ppb",
               "lab": "Purity Laboratories for Lead Safe Mama (case 2503151)",
-              "year": 2025,
-              "source": "https://tamararubin.com/2025/03/kids-spry-tooth-gel-with-xylitol-fluoride-free-original-flavor/"
+              "lod": "10.0 ppb",
+              "source": "https://tamararubin.com/2025/03/kids-spry-tooth-gel-with-xylitol-fluoride-free-original-flavor/",
+              "unit": "ppb",
+              "value": "<10.0",
+              "year": 2025
             }
           ],
           "materialAnswers": {
@@ -107433,12 +107867,12 @@
           "testingResults": [
             {
               "analyte": "total organic fluorine (PFAS marker), inside and outside",
-              "value": "non-detect",
-              "unit": "ppm",
-              "lod": "10",
               "lab": "EPA certified laboratory (unnamed), commissioned by Mamavation",
-              "year": 2023,
-              "source": "https://mamavation.com/motherhood/diapers-pfas-forever-chemicals.html"
+              "lod": "10",
+              "source": "https://mamavation.com/motherhood/diapers-pfas-forever-chemicals.html",
+              "unit": "ppm",
+              "value": "non-detect",
+              "year": 2023
             }
           ],
           "testingNote": "Mamavation's diaper PFAS investigation (bought Feb to Aug 2023, total fluorine at an EPA certified lab, detection limit 10 ppm) reports \"Thirsties Natural One Size Diaper (cloth)\" as non detect for organic fluorine inside and outside. Lead Safe Mama site search (tamararubin.com/?s=) returned no results for every brand queried on 2026-09-16, including brands she is known to have covered, so it could not confirm absence. Consumer Reports and Clean Label Project could not be searched this session (web search budget exhausted). Mamavation's fluorine test was on diapers bought February to August 2023, a clean result now older than 36 months, so under rule 4.7 it has expired.",
@@ -107748,48 +108182,48 @@
           "testingResults": [
             {
               "analyte": "total phthalates (DEHP 127, DIBP 41)",
-              "value": 170,
-              "unit": "ppb",
-              "lod": "not stated",
               "lab": "EPA certified laboratory commissioned by Mamavation (not named)",
-              "year": 2026,
-              "source": "https://mamavation.com/supplements/vitamin-d.html"
+              "lod": "not stated",
+              "source": "https://mamavation.com/supplements/vitamin-d.html",
+              "unit": "ppb",
+              "value": 170,
+              "year": 2026
             },
             {
               "analyte": "fluxapyroxad (fluorinated pesticide)",
-              "value": 0.022,
-              "unit": "mg/kg",
-              "lod": "mostly 10 ppb (18 to 25 ppb for a few analytes)",
               "lab": "EPA certified laboratory commissioned by Mamavation (not named)",
-              "year": 2026,
-              "source": "https://mamavation.com/supplements/vitamin-d.html"
+              "lod": "mostly 10 ppb (18 to 25 ppb for a few analytes)",
+              "source": "https://mamavation.com/supplements/vitamin-d.html",
+              "unit": "mg/kg",
+              "value": 0.022,
+              "year": 2026
             },
             {
               "analyte": "bixafen",
-              "value": 0.01,
-              "unit": "mg/kg",
-              "lod": "mostly 10 ppb (18 to 25 ppb for a few analytes)",
               "lab": "EPA certified laboratory commissioned by Mamavation (not named)",
-              "year": 2026,
-              "source": "https://mamavation.com/supplements/vitamin-d.html"
+              "lod": "mostly 10 ppb (18 to 25 ppb for a few analytes)",
+              "source": "https://mamavation.com/supplements/vitamin-d.html",
+              "unit": "mg/kg",
+              "value": 0.01,
+              "year": 2026
             },
             {
               "analyte": "lead, arsenic, cadmium, mercury",
-              "value": "non-detect",
-              "unit": null,
-              "lod": "not stated",
               "lab": "EPA certified laboratory commissioned by Mamavation (not named)",
-              "year": 2026,
-              "source": "https://mamavation.com/supplements/vitamin-d.html"
+              "lod": "not stated",
+              "source": "https://mamavation.com/supplements/vitamin-d.html",
+              "unit": null,
+              "value": "non-detect",
+              "year": 2026
             },
             {
               "analyte": "PFAS (targeted analytes) and glyphosate",
-              "value": "non-detect",
-              "unit": null,
-              "lod": "glyphosate 10 ppb; PFAS limit not stated",
               "lab": "EPA certified laboratory commissioned by Mamavation (not named)",
-              "year": 2026,
-              "source": "https://mamavation.com/supplements/vitamin-d.html"
+              "lod": "glyphosate 10 ppb; PFAS limit not stated",
+              "source": "https://mamavation.com/supplements/vitamin-d.html",
+              "unit": null,
+              "value": "non-detect",
+              "year": 2026
             }
           ],
           "testingNote": "Mamavation's vitamin D study (published June 8, 2026; eleven products; two EPA certified labs; glyphosate by LC-MS/MS at 10 ppb; 587 pesticides mostly at 10 ppb) tested 'Thorne Vitamin D + K2 (drops)', the SKU the store names, in the same medium chain triglyceride and mixed tocopherol base as this D3 only SKU: PFAS non detect; 'Non-detect lead, non-detect arsenic, non-detect cadmium, & non-detect mercury' (metal detection limits not stated, so not citable as a pass); 'Phthalates : 170 ppb (127 ppb DEHP, 41 ppb DIBP)'; '500+ Pesticides : 0.010 mg/kg Bixafen, 0.022 mg/kg Fluxapyroxad (PFAS \"forever pesticide\")'; glyphosate non detect. Mamavation placed it under 'Not Our Favorite'. For the D3 only liquid this is a sibling result with an unknown mechanism (possibly the shared oil base), so it reads caution, never skip. Lead Safe Mama, Consumer Reports and Clean Label Project: no test of either Thorne vitamin D liquid (searched 2026-09-16). Mamavation's June 2026 phthalate result was on Thorne's D plus K2 drops, not this D3 only liquid.",
@@ -110356,39 +110790,39 @@
           "testingResults": [
             {
               "analyte": "cadmium (brand COA, Oatmeal Chocolate Chip flavor)",
-              "value": 0.465,
-              "unit": "mcg/serving (about 12.7 ppb at 36.5 g)",
-              "lod": "not stated",
               "lab": "Summit Nutritional Laboratories (brand commissioned)",
-              "year": 2026,
-              "source": "https://cdn.shopify.com/s/files/1/0866/7664/files/WPI_WS_Oatmeal_Chocolate_Chip_30_Serv_TPL_GF_WPI_WS_Oatmeal_Chocolate_Chip_30_Serv_-_26030431_-_Heavy_Metals_Micro.pdf?v=1779717456"
+              "lod": "not stated",
+              "source": "https://cdn.shopify.com/s/files/1/0866/7664/files/WPI_WS_Oatmeal_Chocolate_Chip_30_Serv_TPL_GF_WPI_WS_Oatmeal_Chocolate_Chip_30_Serv_-_26030431_-_Heavy_Metals_Micro.pdf?v=1779717456",
+              "unit": "mcg/serving (about 12.7 ppb at 36.5 g)",
+              "value": 0.465,
+              "year": 2026
             },
             {
               "analyte": "lead (brand COA, Oatmeal Chocolate Chip flavor)",
-              "value": 0.161,
-              "unit": "mcg/serving (about 4.4 ppb)",
-              "lod": "not stated",
               "lab": "Summit Nutritional Laboratories (brand commissioned)",
-              "year": 2026,
-              "source": "https://cdn.shopify.com/s/files/1/0866/7664/files/WPI_WS_Oatmeal_Chocolate_Chip_30_Serv_TPL_GF_WPI_WS_Oatmeal_Chocolate_Chip_30_Serv_-_26030431_-_Heavy_Metals_Micro.pdf?v=1779717456"
+              "lod": "not stated",
+              "source": "https://cdn.shopify.com/s/files/1/0866/7664/files/WPI_WS_Oatmeal_Chocolate_Chip_30_Serv_TPL_GF_WPI_WS_Oatmeal_Chocolate_Chip_30_Serv_-_26030431_-_Heavy_Metals_Micro.pdf?v=1779717456",
+              "unit": "mcg/serving (about 4.4 ppb)",
+              "value": 0.161,
+              "year": 2026
             },
             {
               "analyte": "arsenic (brand COA, Oatmeal Chocolate Chip flavor)",
-              "value": 0.107,
-              "unit": "mcg/serving (about 2.9 ppb)",
-              "lod": "not stated",
               "lab": "Summit Nutritional Laboratories (brand commissioned)",
-              "year": 2026,
-              "source": "https://cdn.shopify.com/s/files/1/0866/7664/files/WPI_WS_Oatmeal_Chocolate_Chip_30_Serv_TPL_GF_WPI_WS_Oatmeal_Chocolate_Chip_30_Serv_-_26030431_-_Heavy_Metals_Micro.pdf?v=1779717456"
+              "lod": "not stated",
+              "source": "https://cdn.shopify.com/s/files/1/0866/7664/files/WPI_WS_Oatmeal_Chocolate_Chip_30_Serv_TPL_GF_WPI_WS_Oatmeal_Chocolate_Chip_30_Serv_-_26030431_-_Heavy_Metals_Micro.pdf?v=1779717456",
+              "unit": "mcg/serving (about 2.9 ppb)",
+              "value": 0.107,
+              "year": 2026
             },
             {
               "analyte": "mercury (brand COA, Oatmeal Chocolate Chip flavor)",
-              "value": 0.107,
-              "unit": "mcg/serving (about 2.9 ppb)",
-              "lod": "not stated",
               "lab": "Summit Nutritional Laboratories (brand commissioned)",
-              "year": 2026,
-              "source": "https://cdn.shopify.com/s/files/1/0866/7664/files/WPI_WS_Oatmeal_Chocolate_Chip_30_Serv_TPL_GF_WPI_WS_Oatmeal_Chocolate_Chip_30_Serv_-_26030431_-_Heavy_Metals_Micro.pdf?v=1779717456"
+              "lod": "not stated",
+              "source": "https://cdn.shopify.com/s/files/1/0866/7664/files/WPI_WS_Oatmeal_Chocolate_Chip_30_Serv_TPL_GF_WPI_WS_Oatmeal_Chocolate_Chip_30_Serv_-_26030431_-_Heavy_Metals_Micro.pdf?v=1779717456",
+              "unit": "mcg/serving (about 2.9 ppb)",
+              "value": 0.107,
+              "year": 2026
             }
           ],
           "testingNote": "Correction of the recorded basis. The BarBend claim cannot set a front: its review (updated May 22, 2025) says 'BarBend worked with an accredited lab to gather testing data on heavy metal content' and 'The powder scored in the top 10% of all tested protein supplements for label accuracy as well as the presence of pesticides, phthalates, and bisphenols' with no lab name, flavor, numbers or limits, and BarBend earns affiliate income from the brand. Clean Label Project's protein study (one sheet dated June 2025) lists 'Transparent Labs Whey Protein Isolate' among 165 products tested but not among the Clean Sixteen that were non detect for all four metals; individual results are not published, and absence from the list is not a finding. The evidence that reads caution: the Amazon listing for this ASIN carries 'WARNING: Consuming this product can expose you to chemicals including lead', and the brand's own certificate of analysis (tier 3) for a sibling cocoa containing flavor, Oatmeal Chocolate Chip lot 26030431 (Summit Nutritional Laboratories, ISO/IEC 17025, tested 03/26/2026 to 04/02/2026, serving 36.5 g), reports cadmium 0.465 mcg/serving (about 12.7 ppb, above the 5 ppb bar in rule 4.7), lead 0.161 mcg/serving (about 4.4 ppb), arsenic 0.107 and mercury 0.107 mcg/serving (about 2.9 ppb each). Cocoa is a known cadmium carrier and this ASIN contains cocoa. Lead Safe Mama and Mamavation have not tested this product; Consumer Reports' site search was unavailable on 2026-09-16.",
@@ -111113,12 +111547,12 @@
           "testingResults": [
             {
               "analyte": "total fluorine (PFAS screen)",
-              "value": "non-detect",
-              "unit": "ppm",
-              "lod": "10 ppm",
               "lab": "EPA certified laboratory commissioned by Mamavation (not named)",
-              "year": 2023,
-              "source": "https://mamavation.com/product-investigations/pfas-forever-chemicals-fluoride-powdered-electrolytes.html"
+              "lod": "10 ppm",
+              "source": "https://mamavation.com/product-investigations/pfas-forever-chemicals-fluoride-powdered-electrolytes.html",
+              "unit": "ppm",
+              "value": "non-detect",
+              "year": 2023
             }
           ],
           "testingNote": "Mamavation (June 13, 2023; EPA certified lab; limit 10 ppm) reported 'Trioral Oral Rehydration Salts: non-detect total fluorine' with this same four ingredient formula (pack size not stated). The result is 39 months old and has expired under the 36 month rule; it was a PFAS screen only, and the metals data are member only. Lead Safe Mama, Consumer Reports and Clean Label Project: nothing for TRIORAL (searched 2026-09-16).",
@@ -118571,39 +119005,39 @@
           "testingResults": [
             {
               "analyte": "lead",
-              "value": "non detect",
-              "unit": "ppm",
-              "lod": "not stated in post; LSM methodology says generally single digit ppm",
               "lab": "Lead Safe Mama (Tamara Rubin), XRF, consumer goods mode",
-              "year": 2021,
-              "source": "https://tamararubin.com/2021/01/i-bought-a-set-of-three-of-these-stainless-baking-sheets-for-my-sons-college-apartment-he-loves-them/"
+              "lod": "not stated in post; LSM methodology says generally single digit ppm",
+              "source": "https://tamararubin.com/2021/01/i-bought-a-set-of-three-of-these-stainless-baking-sheets-for-my-sons-college-apartment-he-loves-them/",
+              "unit": "ppm",
+              "value": "non detect",
+              "year": 2021
             },
             {
               "analyte": "cadmium",
-              "value": "non detect",
-              "unit": "ppm",
-              "lod": "not stated in post; LSM methodology says generally single digit ppm",
               "lab": "Lead Safe Mama (Tamara Rubin), XRF, consumer goods mode",
-              "year": 2021,
-              "source": "https://tamararubin.com/2021/01/i-bought-a-set-of-three-of-these-stainless-baking-sheets-for-my-sons-college-apartment-he-loves-them/"
+              "lod": "not stated in post; LSM methodology says generally single digit ppm",
+              "source": "https://tamararubin.com/2021/01/i-bought-a-set-of-three-of-these-stainless-baking-sheets-for-my-sons-college-apartment-he-loves-them/",
+              "unit": "ppm",
+              "value": "non detect",
+              "year": 2021
             },
             {
               "analyte": "nickel",
-              "value": "1092",
-              "unit": "ppm",
-              "lod": "+/- 234 ppm reading error; LOD not stated",
               "lab": "Lead Safe Mama (Tamara Rubin), XRF, consumer goods mode",
-              "year": 2021,
-              "source": "https://tamararubin.com/2021/01/i-bought-a-set-of-three-of-these-stainless-baking-sheets-for-my-sons-college-apartment-he-loves-them/"
+              "lod": "+/- 234 ppm reading error; LOD not stated",
+              "source": "https://tamararubin.com/2021/01/i-bought-a-set-of-three-of-these-stainless-baking-sheets-for-my-sons-college-apartment-he-loves-them/",
+              "unit": "ppm",
+              "value": "1092",
+              "year": 2021
             },
             {
               "analyte": "chromium",
-              "value": "131500",
-              "unit": "ppm",
-              "lod": "+/- 2,000 ppm reading error; LOD not stated",
               "lab": "Lead Safe Mama (Tamara Rubin), XRF, consumer goods mode",
-              "year": 2021,
-              "source": "https://tamararubin.com/2021/01/i-bought-a-set-of-three-of-these-stainless-baking-sheets-for-my-sons-college-apartment-he-loves-them/"
+              "lod": "+/- 2,000 ppm reading error; LOD not stated",
+              "source": "https://tamararubin.com/2021/01/i-bought-a-set-of-three-of-these-stainless-baking-sheets-for-my-sons-college-apartment-he-loves-them/",
+              "unit": "ppm",
+              "value": "131500",
+              "year": 2021
             }
           ],
           "testingNote": "Lead Safe Mama XRF test (posted Jan 16, 2021) of the Wildone Baking Sheet Set of 3, 9/12/16 inch (Amazon B07NNQWMCW, the same Wildone stainless baking sheet line, not this 2 pack ASIN): chromium 131,500 +/- 2,000 ppm, nickel 1,092 +/- 234 ppm, iron 861,000 ppm, manganese 4,065 ppm, vanadium 1,028 ppm; 'No other metals were detected in consumer goods mode', so lead, cadmium, mercury and arsenic were non detect. The post gives no limit; Lead Safe Mama's methodology page says a non detect is 'below the threshold of detection of the XRF instrument, which is generally below the range of single-digit parts per million'. Rule 4.7 treats a durable XRF non detect as a pass for the line. The chromium and nickel readings show a low nickel steel, not 18/8. Also searched Mamavation, Consumer Reports and Clean Label Project on 2026-09-16: nothing for Wildone.",
@@ -127982,7 +128416,8 @@
         "ext": {
           "frontNotes": {
             "formula": "An object has no ingredient list. What it is made of is the materials check.",
-            "materials": "Missing a maker statement that the fabric and the foam carry no added flame retardants; a certificate that tests the finished fabric, with its number, or an independent test under 36 months old, to verify it (rule 3.12). The maker does not publish the fibre."
+            "materials": "Missing a maker statement that the fabric and the foam carry no added flame retardants; a certificate that tests the finished fabric, with its number, or an independent test under 36 months old, to verify it (rule 3.12). The maker does not publish the fibre.",
+            "legal": "Checked CPSC recall records on 2026-09-17. No recall on record for Axkid."
           },
           "materialAnswers": {
             "contact": "yes",
@@ -128006,18 +128441,20 @@
             "pfasFree": "PFAS free, PFOA free, PFOS free, PFC free, fluorine free fabrics",
             "pfasFreeSource": "axkid.com/us/product/one-3/, read 2026-09-15"
           },
+          "legalNote": "Checked CPSC recall records on 2026-09-17. No recall on record for Axkid.",
           "verdict": "careful",
           "dated": "2026-09-15",
           "why": "section 6: materials is caution",
           "fronts": {
             "formula": "none",
             "materials": "caution",
-            "legal": "unassessed",
+            "legal": "pass",
             "testing": "unassessed"
           },
           "frontOrigin": {
             "formula": "hand",
-            "materials": "database"
+            "materials": "database",
+            "legal": "database"
           },
           "scope": "line",
           "basis": "direct",
@@ -128077,57 +128514,57 @@
           "testingResults": [
             {
               "analyte": "ochratoxin A",
-              "value": "<0.003",
-              "unit": "ppm",
-              "lod": "0.003 (reporting limit)",
               "lab": "Actlabs Agriculture, commissioned by the maker via Eurofins (not independent)",
-              "year": 2025,
-              "source": "https://cdn.shopify.com/s/files/1/0484/7475/1135/files/Mycotoxin_Analysis_-_Hondo_Bio_Decaf_90-3309.pdf"
+              "lod": "0.003 (reporting limit)",
+              "source": "https://cdn.shopify.com/s/files/1/0484/7475/1135/files/Mycotoxin_Analysis_-_Hondo_Bio_Decaf_90-3309.pdf",
+              "unit": "ppm",
+              "value": "<0.003",
+              "year": 2025
             },
             {
               "analyte": "aflatoxins B1, B2, G1, G2 (each)",
-              "value": "<1",
-              "unit": "ppb",
-              "lod": "1 (reporting limit)",
               "lab": "Actlabs Agriculture, commissioned by the maker via Eurofins (not independent)",
-              "year": 2025,
-              "source": "https://cdn.shopify.com/s/files/1/0484/7475/1135/files/Mycotoxin_Analysis_-_Hondo_Bio_Decaf_90-3309.pdf"
+              "lod": "1 (reporting limit)",
+              "source": "https://cdn.shopify.com/s/files/1/0484/7475/1135/files/Mycotoxin_Analysis_-_Hondo_Bio_Decaf_90-3309.pdf",
+              "unit": "ppb",
+              "value": "<1",
+              "year": 2025
             },
             {
               "analyte": "lead",
-              "value": "<0.017",
-              "unit": "mg/kg",
-              "lod": "0.017 (reported as less than)",
               "lab": "Eurofins Essais Alimentaires, Longueuil (ICP-MS, AOAC 2011.14), commissioned by the maker (not independent)",
-              "year": 2025,
-              "source": "https://cdn.shopify.com/s/files/1/0484/7475/1135/files/Chemical_Analysis_-_Hondo_Bio_Decaf_90-3309.pdf"
+              "lod": "0.017 (reported as less than)",
+              "source": "https://cdn.shopify.com/s/files/1/0484/7475/1135/files/Chemical_Analysis_-_Hondo_Bio_Decaf_90-3309.pdf",
+              "unit": "mg/kg",
+              "value": "<0.017",
+              "year": 2025
             },
             {
               "analyte": "cadmium",
-              "value": "<0.008",
-              "unit": "mg/kg",
-              "lod": "0.008 (reported as less than)",
               "lab": "Eurofins Essais Alimentaires, commissioned by the maker (not independent)",
-              "year": 2025,
-              "source": "https://cdn.shopify.com/s/files/1/0484/7475/1135/files/Chemical_Analysis_-_Hondo_Bio_Decaf_90-3309.pdf"
+              "lod": "0.008 (reported as less than)",
+              "source": "https://cdn.shopify.com/s/files/1/0484/7475/1135/files/Chemical_Analysis_-_Hondo_Bio_Decaf_90-3309.pdf",
+              "unit": "mg/kg",
+              "value": "<0.008",
+              "year": 2025
             },
             {
               "analyte": "mercury",
-              "value": "<0.01",
-              "unit": "mg/kg",
-              "lod": "0.01 (reported as less than)",
               "lab": "Eurofins Essais Alimentaires, commissioned by the maker (not independent)",
-              "year": 2025,
-              "source": "https://cdn.shopify.com/s/files/1/0484/7475/1135/files/Chemical_Analysis_-_Hondo_Bio_Decaf_90-3309.pdf"
+              "lod": "0.01 (reported as less than)",
+              "source": "https://cdn.shopify.com/s/files/1/0484/7475/1135/files/Chemical_Analysis_-_Hondo_Bio_Decaf_90-3309.pdf",
+              "unit": "mg/kg",
+              "value": "<0.01",
+              "year": 2025
             },
             {
               "analyte": "arsenic",
-              "value": "0.03",
-              "unit": "mg/kg",
-              "lod": "not stated",
               "lab": "Eurofins Essais Alimentaires, commissioned by the maker (not independent)",
-              "year": 2025,
-              "source": "https://cdn.shopify.com/s/files/1/0484/7475/1135/files/Chemical_Analysis_-_Hondo_Bio_Decaf_90-3309.pdf"
+              "lod": "not stated",
+              "source": "https://cdn.shopify.com/s/files/1/0484/7475/1135/files/Chemical_Analysis_-_Hondo_Bio_Decaf_90-3309.pdf",
+              "unit": "mg/kg",
+              "value": "0.03",
+              "year": 2025
             }
           ],
           "testingNote": "Searched Mamavation (coffee investigations, including the Aug 2024 premium coffee round, which tested 11 brands and not this one) and Lead Safe Mama site search (tamararubin.com/?s=) returned no results for every brand queried on 2026-09-16, including brands she is known to have covered, so it could not confirm absence; no independent test of Biodynamic Décaf found. Consumer Reports and Clean Label Project could not be searched this session (web search budget exhausted). The results below are maker commissioned certificates for lot 90-3309 (HONDO BIO DECAF), published on biodynamic.coffee/pages/lab-results: Actlabs Agriculture mycotoxin panel (report CA25-D-DEC03-023, Dec 2025) all below reporting limits, and Eurofins Essais Alimentaires metals by ICP-MS (certificate M2589098, Dec 2025). They are not independent watchdog tests, cover one lot, and include no acrylamide, glyphosate or pesticide results.",
@@ -128286,5 +128723,1600 @@
     },
     "rollupApplied": true,
     "rollupNote": "1 of 1 products we have reviewed under this brand are flagged: Soy Wax Candle Set (12 Pack). The verdict depends which one you pick."
+  },
+  {
+    "id": "ddrops",
+    "brand": "Ddrops",
+    "category": "Supplements",
+    "stance": "neutral",
+    "reason": "Liquid vitamin D3 in amber glass, two ingredients, and a Euro dropper that releases one drop at a time so a drop is the whole dose. The Organic Baby 400 IU is the only infant vitamin D we found with a published independent result: non detect for lead, cadmium, arsenic and mercury, each at a 5 ppb limit, at SGS North America in December 2024. No recall on the FDA enforcement record and none found at Health Canada for the Toronto based firm.",
+    "evidence": "Non detect for all four heavy metals at 5 ppb (SGS via SimpleLab, Dec 2024); amber glass, two ingredients, 400 IU per drop",
+    "alternative": "",
+    "sources": [
+      "best-non-toxic-vitamin-d-for-kids.html",
+      "https://tamararubin.com/2024/12/baby-ddrops-organic-vitamin-d3",
+      "https://tamararubin.com/2024/12/childrens-supplement-article/"
+    ],
+    "buy": "https://www.amazon.com/dp/B003CT36NE?tag=plasticdetox-20",
+    "aliases": [
+      "Ddrops Company",
+      "Baby Ddrops",
+      "Kids Ddrops"
+    ],
+    "products": [
+      {
+        "name": "Baby Ddrops Organic Vitamin D3 400 IU",
+        "verdict": "good",
+        "note": "Organic fractionated coconut oil and D3 only, amber glass, one drop is 400 IU. Non detect for lead, cadmium, arsenic and mercury at 5 ppb, AOAC 2015.01, SGS North America, report G3WR5S.",
+        "asins": [
+          "B003CT36NE"
+        ],
+        "cat": "Supplements",
+        "matchAll": [
+          [
+            "ddrops",
+            "baby"
+          ]
+        ],
+        "ext": {
+          "frontNotes": {
+            "formula": "The published ingredient list carries nothing on the hazard list.",
+            "testing": "Non detect for arsenic, cadmium, lead and mercury, each at a method detection limit and reporting limit of 5 ug/kg, by AOAC 2015.01. SimpleLab report G3WR5S, testing facility SGS North America Inc., Harrisburg PA; sample 'Organic Baby Ddrops Liquid Vitamin D3 Vitamin Supplement' collected 2024-11-30, reported 2024-12-11, commissioned by Lead Safe Mama. Meets the ingested bars of rule 4.7 for lead, cadmium and arsenic; the mercury limit sat at 5 ppb, above the 2 ppb bar.",
+            "materials": "In contact with glass, which puts nothing into what it holds; the plastic Euro dropper insert, one drop at a time; the label directs the drop onto a clean surface, a washed finger, a pacifier or food rather than into the mouth is noted and does not count (rule 3.10).",
+            "legal": "Checked against the FDA enforcement database on 2026-09-17. No recall on record, and no firm with a similar name either."
+          },
+          "formulaAnswers": {
+            "ingredients": "Ingredients: Organic fractionated coconut oil, vitamin D3 (cholecalciferol). 400 IU (10 mcg) vitamin D3 per drop. 90 drops, 2.5 mL.",
+            "prose": "",
+            "complete": true,
+            "verdict": "good",
+            "summary": "The published ingredient list carries nothing on the hazard list.",
+            "flagged": [],
+            "source": "amazon:B003CT36NE Important information, Ingredients: 'Organic fractionated coconut'; label photo on the listing reads 'ORGANIC Liquid vitamin D3 400 IU per drop, 90 drops 2.5 mL (0.08 fl. oz.)' with the USDA Organic seal and 'For ages 0 months+'.",
+            "checked": "2026-09-17"
+          },
+          "testingNote": "Non detect for arsenic, cadmium, lead and mercury, each at a method detection limit and reporting limit of 5 ug/kg, by AOAC 2015.01. SimpleLab report G3WR5S, testing facility SGS North America Inc., Harrisburg PA; sample 'Organic Baby Ddrops Liquid Vitamin D3 Vitamin Supplement' collected 2024-11-30, reported 2024-12-11, commissioned by Lead Safe Mama. Meets the ingested bars of rule 4.7 for lead, cadmium and arsenic; the mercury limit sat at 5 ppb, above the 2 ppb bar.",
+          "testingDate": "2026-09-17",
+          "materialsList": "glass",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "oil",
+            "heated": false,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "glass",
+            "treatment": "",
+            "treatmentSource": "",
+            "dispenser": "plastic Euro dropper insert, one drop at a time; the label directs the drop onto a clean surface, a washed finger, a pacifier or food rather than into the mouth",
+            "lining": "",
+            "certification": "",
+            "certificationSource": "",
+            "source": "amber glass bottle; the plastic Euro Ddropper insert and screw cap are the dispenser. amazon:B003CT36NE main label image (1000px): amber glass bottle, white ribbed cap. Euro dropper: a snap in dripper insert over the bottle mouth that releases a single drop when inverted.",
+            "checked": "2026-09-17"
+          },
+          "legalNote": "Checked against the FDA enforcement database on 2026-09-17. No recall on record, and no firm with a similar name either.",
+          "cappedFrom": "good",
+          "capRestoreWhy": "independent lab result at sku scope",
+          "verdict": "good",
+          "dated": "2026-09-17",
+          "why": "independent lab result at sku scope",
+          "fronts": {
+            "formula": "pass",
+            "materials": "pass",
+            "legal": "pass",
+            "testing": "pass"
+          },
+          "frontOrigin": {
+            "formula": "database",
+            "testing": "database",
+            "materials": "database",
+            "legal": "database"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": [
+            "4.3 non-detect-with-lod-is-a-pass"
+          ]
+        }
+      },
+      {
+        "name": "Ddrops Kids Booster Vitamin D3 600 IU",
+        "verdict": "good",
+        "note": "Fractionated coconut oil and D3 only, amber glass, one drop is 600 IU, ages one and up. A different SKU from the one the lab tested, so the non detect does not transfer to it.",
+        "asins": [
+          "B00843E5NS"
+        ],
+        "cat": "Supplements",
+        "matchAll": [
+          [
+            "ddrops",
+            "booster"
+          ]
+        ],
+        "ext": {
+          "frontNotes": {
+            "formula": "The published ingredient list carries nothing on the hazard list.",
+            "testing": "No independent heavy metals result for this SKU. The Lead Safe Mama non detect of December 2024 was on the Organic Baby Ddrops 400 IU liquid, a different SKU, and per rule 1.1 a favourable result never transfers to a sibling. Searched Lead Safe Mama and Mamavation on 2026-09-17 with nothing returned for this product.",
+            "materials": "In contact with glass, which puts nothing into what it holds; the plastic Euro dropper insert, one drop at a time; 600 IU per drop is noted and does not count (rule 3.10).",
+            "legal": "Checked against the FDA enforcement database on 2026-09-17. No recall on record, and no firm with a similar name either."
+          },
+          "formulaAnswers": {
+            "ingredients": "Ingredients: Fractionated coconut oil, vitamin D (as cholecalciferol). 600 IU vitamin D3 per drop. 100 drops, 2.8 mL. Not intended for infants under 12 months unless directed by a healthcare practitioner.",
+            "prose": "",
+            "complete": true,
+            "verdict": "good",
+            "summary": "The published ingredient list carries nothing on the hazard list.",
+            "flagged": [],
+            "source": "amazon:B00843E5NS Important information, Ingredients: 'Fractionated coconut oil, vitamin D (as cholecalciferol)'; Directions: 'Take 1 drop daily. Our dispensing technology is designed to allow the exact dosage to come out of the Euro Ddropper each and every drop.' Label photo reads 'Kids Ddrops Booster Liquid vitamin D3 600 IU, 100 drops 2.8 mL, For ages 1 year+' with an ORGANIC flash.",
+            "checked": "2026-09-17"
+          },
+          "testingNote": "No independent heavy metals result for this SKU. The Lead Safe Mama non detect of December 2024 was on the Organic Baby Ddrops 400 IU liquid, a different SKU, and per rule 1.1 a favourable result never transfers to a sibling. Searched Lead Safe Mama and Mamavation on 2026-09-17 with nothing returned for this product.",
+          "testingDate": "2026-09-17",
+          "materialsList": "glass",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "oil",
+            "heated": false,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "glass",
+            "treatment": "",
+            "treatmentSource": "",
+            "dispenser": "plastic Euro dropper insert, one drop at a time; 600 IU per drop",
+            "lining": "",
+            "certification": "",
+            "certificationSource": "",
+            "source": "amber glass bottle; the plastic Euro Ddropper insert and screw cap are the dispenser. amazon:B00843E5NS main label image (1000px): amber glass bottle reading '100 drops 2.8 mL (0.09 fl. oz.)', white ribbed cap.",
+            "checked": "2026-09-17"
+          },
+          "legalNote": "Checked against the FDA enforcement database on 2026-09-17. No recall on record, and no firm with a similar name either.",
+          "verdict": "good",
+          "dated": "2026-09-17",
+          "why": "direct evidence on formula, recorded rather than read off a note",
+          "fronts": {
+            "formula": "pass",
+            "materials": "pass",
+            "legal": "pass",
+            "testing": "unassessed"
+          },
+          "frontOrigin": {
+            "formula": "database",
+            "materials": "database",
+            "legal": "database"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "materials": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "reviewed": true,
+    "article": "best-non-toxic-vitamin-d-for-kids.html",
+    "generalises": true,
+    "rollup": {
+      "products": 2,
+      "researched": 0,
+      "flagged": 0,
+      "worst": null
+    },
+    "stanceHeld": "good"
+  },
+  {
+    "id": "wellements",
+    "brand": "Wellements",
+    "category": "Supplements",
+    "stance": "neutral",
+    "reason": "Organic vitamin D3 in organic extra virgin olive oil and palm MCT, 400 IU in a single drop, newborn to three years. The whole Wellements baby line is bottled in glass and sold free of dyes, parabens, alcohol and preservatives. Two Class I recalls sit on the FDA record, both terminated and both on other products: Iron Drops for undeclared milk in two lots in 2020, and Baby Move prune concentrate in 2012. Over five years old, so informational rather than a live caution. No independent heavy metals result has been published for the vitamin D drops.",
+    "evidence": "USDA Organic and Non GMO Project Verified, amber glass, 400 IU per drop; two terminated recalls on other products (2012, 2020)",
+    "alternative": "",
+    "sources": [
+      "best-non-toxic-vitamin-d-for-kids.html",
+      "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/wellements-llc-issues-allergy-alert-undeclared-milk-allergen-two-lots-iron-drops-and-iron-drops"
+    ],
+    "buy": "https://www.amazon.com/dp/B07DHXSY6G?tag=plasticdetox-20",
+    "products": [
+      {
+        "name": "Organic Vitamin D Drops",
+        "verdict": "good",
+        "note": "Organic D3 in organic extra virgin olive oil and palm MCT, amber glass, one drop is 400 IU, newborn to three years. No published independent metals result.",
+        "asins": [
+          "B07DHXSY6G"
+        ],
+        "cat": "Supplements",
+        "matchAll": [
+          [
+            "wellements",
+            "vitamin"
+          ]
+        ],
+        "ext": {
+          "frontNotes": {
+            "formula": "The published ingredient list carries nothing on the hazard list.",
+            "testing": "No independent heavy metals result for this SKU. Searched Lead Safe Mama and Mamavation on 2026-09-17 with nothing returned for Wellements. The maker states third party testing in ISO/IEC 17025 accredited labs for quality, safety and label claims and publishes no heavy metals numbers, which per rule 4.2 ranks below an independent result and cannot set this front.",
+            "materials": "In contact with glass, which puts nothing into what it holds; the plastic dropper insert, one drop at a time; 400 IU = 1 drop, printed on the bottle is noted and does not count (rule 3.10).",
+            "legal": "Checked the FDA enforcement database on 2026-09-17. Three closed and remedied recalls on record for the firm, none on the vitamin D drops: Iron Drops and the Iron Drops sampler in August 2020 for undeclared milk in two lots (Class I), and Baby Move prune concentrate in 2012 (Class I). The newest is over five years old, so informational under rule 5.2, and two of the three are the same event on one product, so the three in five years pattern rule does not reach brand scope."
+          },
+          "formulaAnswers": {
+            "ingredients": "Ingredients: Organic Vitamin D3 (as Cholecalciferol), Organic Extra Virgin Olive Oil, Palm Medium Chain Triglyceride Oil (also known as MCT+ Oil). 400 IU per drop, one drop daily. 90 servings, 4.5 mL.",
+            "prose": "",
+            "complete": true,
+            "verdict": "good",
+            "summary": "The published ingredient list carries nothing on the hazard list.",
+            "flagged": [],
+            "source": "wellements.com/products/organic-baby-vitamin-d-drops : ingredient list as quoted; 'One drop provides 400 IU'; newborn+, to three years; 'Free from sugar, gluten, dairy, soy, dyes, parabens, alcohol, artificial colors & flavors' and free of the top 9 allergens. Amazon listing B07DHXSY6G gives the shorter list (vitamin D3, organic extra virgin olive oil); the maker's page is taken as current.",
+            "checked": "2026-09-17"
+          },
+          "testingNote": "No independent heavy metals result for this SKU. Searched Lead Safe Mama and Mamavation on 2026-09-17 with nothing returned for Wellements. The maker states third party testing in ISO/IEC 17025 accredited labs for quality, safety and label claims and publishes no heavy metals numbers, which per rule 4.2 ranks below an independent result and cannot set this front.",
+          "testingDate": "2026-09-17",
+          "materialsList": "glass",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "oil",
+            "heated": false,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "glass",
+            "treatment": "",
+            "treatmentSource": "",
+            "dispenser": "plastic dropper insert, one drop at a time; 400 IU = 1 drop, printed on the bottle",
+            "lining": "",
+            "certification": "",
+            "certificationSource": "",
+            "source": "amber glass bottle; the plastic dropper insert and screw cap are the dispenser. wellements.com : the Organic baby care line is 'always natural, preservative-free, and bottled in glass'. amazon:B07DHXSY6G main label image (1000px): amber glass bottle, 0.15 FL OZ (4.50 mL), black screw cap. FDA enforcement report for the firm's Iron Drops also describes a '1 oz/30 mL amber glass bottle'.",
+            "checked": "2026-09-17"
+          },
+          "legalNote": "Checked the FDA enforcement database on 2026-09-17. Three closed and remedied recalls on record for the firm, none on the vitamin D drops: Iron Drops and the Iron Drops sampler in August 2020 for undeclared milk in two lots (Class I), and Baby Move prune concentrate in 2012 (Class I). The newest is over five years old, so informational under rule 5.2, and two of the three are the same event on one product, so the three in five years pattern rule does not reach brand scope.",
+          "verdict": "good",
+          "dated": "2026-09-17",
+          "why": "direct evidence on formula, recorded rather than read off a note",
+          "fronts": {
+            "formula": "pass",
+            "materials": "pass",
+            "legal": "pass",
+            "testing": "unassessed"
+          },
+          "frontOrigin": {
+            "formula": "database",
+            "materials": "database",
+            "legal": "database"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
+      },
+      {
+        "name": "Iron Drops",
+        "note": "Recalled in August 2020, two lots, for undeclared milk. Class I, terminated.",
+        "cat": "Supplements",
+        "matchAll": [
+          [
+            "wellements",
+            "iron"
+          ]
+        ],
+        "ext": {
+          "cappedFrom": "careful",
+          "capRestoreWhy": "section 6: legal failed",
+          "legalNote": "Checked the FDA enforcement database on 2026-09-17. Three closed and remedied recalls on record for the firm, none on the vitamin D drops: Iron Drops and the Iron Drops sampler in August 2020 for undeclared milk in two lots (Class I), and Baby Move prune concentrate in 2012 (Class I). The newest is over five years old, so informational under rule 5.2, and two of the three are the same event on one product, so the three in five years pattern rule does not reach brand scope.",
+          "frontNotes": {
+            "legal": "Checked the FDA enforcement database on 2026-09-17. Three closed and remedied recalls on record for the firm, none on the vitamin D drops: Iron Drops and the Iron Drops sampler in August 2020 for undeclared milk in two lots (Class I), and Baby Move prune concentrate in 2012 (Class I). The newest is over five years old, so informational under rule 5.2, and two of the three are the same event on one product, so the three in five years pattern rule does not reach brand scope."
+          },
+          "verdict": "unrated",
+          "dated": "2026-09-17",
+          "why": "no front is directly evidenced by the note",
+          "fronts": {
+            "formula": "unassessed",
+            "materials": "unassessed",
+            "legal": "pass",
+            "testing": "unassessed"
+          },
+          "frontOrigin": {
+            "legal": "database"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "rules": [
+            "5.2 recall-decayed"
+          ]
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "materials": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "reviewed": true,
+    "article": "best-non-toxic-vitamin-d-for-kids.html",
+    "generalises": true,
+    "rollup": {
+      "products": 2,
+      "researched": 0,
+      "flagged": 0,
+      "worst": null
+    },
+    "stanceHeld": "good"
+  },
+  {
+    "id": "mommys-bliss",
+    "brand": "Mommy's Bliss",
+    "category": "Supplements",
+    "stance": "careful",
+    "reason": "The vitamin D drops themselves read well, two ingredients and 400 IU in one drop, but they come in a soft plastic squeeze bottle holding an MCT oil, and the maker is under an open regulatory file. FDA issued M.O.M. Enterprises a warning letter on 22 April 2025 after an inspection of its Richmond, California facility, citing failure to extend a spoilage complaint investigation to all relevant batches, failure to follow its own written complaint procedures, and failure to report serious adverse events including infants who choked, stopped breathing or were hospitalised after Gripe Water. Two recalls of Organic Baby Bedtime Drops for potential yeast contamination, reported in September and October 2025, are still listed as ongoing. Neither action names the vitamin D drops; both concern the same facility and the same liquid baby drops format.",
+    "evidence": "FDA warning letter 22 Apr 2025 (cGMP and serious adverse event reporting); two ongoing Class II recalls of Baby Bedtime Drops for yeast contamination (2025)",
+    "alternative": "Baby Ddrops Organic 400 IU or Wellements Organic Vitamin D Drops, both in glass",
+    "sources": [
+      "best-non-toxic-vitamin-d-for-kids.html",
+      "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/mom-enterprises-llc-698651-04222025"
+    ],
+    "aliases": [
+      "M.O.M. Enterprises",
+      "MOM Enterprises",
+      "Mommys Bliss",
+      "M.O.M Enterprises",
+      "M.O.M Enterprises, LLC"
+    ],
+    "products": [
+      {
+        "name": "Organic Baby Vitamin D Drops",
+        "verdict": "skip",
+        "note": "Organic MCT oil and D3, one drop is 400 IU, but the oil sits in a soft plastic squeeze bottle, which fails the materials check for an anhydrous product, and the maker is under an April 2025 FDA warning letter with two ongoing recalls on a sibling baby drops product.",
+        "asins": [
+          "B01FSY52FK"
+        ],
+        "cat": "Supplements",
+        "matchAll": [
+          [
+            "mommy",
+            "vitamin"
+          ]
+        ],
+        "ext": {
+          "cappedFrom": "careful",
+          "capRestoreWhy": "section 6: materials failed, legal failed",
+          "verdict": "skip",
+          "dated": "2026-09-17",
+          "why": "section 6: materials failed, legal failed",
+          "fronts": {
+            "formula": "unassessed",
+            "materials": "fail",
+            "legal": "fail",
+            "testing": "unassessed"
+          },
+          "frontOrigin": {
+            "materials": "inferred",
+            "legal": "inferred"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": [
+            "3 packaging-matrix-fail"
+          ]
+        }
+      },
+      {
+        "name": "Organic Baby Bedtime Drops",
+        "verdict": "skip",
+        "note": "Recalled twice in 2025 for potential yeast contamination. Class II, both still listed as ongoing.",
+        "cat": "Supplements",
+        "matchAll": [
+          [
+            "mommy",
+            "bedtime"
+          ]
+        ],
+        "ext": {
+          "verdict": "skip",
+          "dated": "2026-09-17",
+          "why": "section 6: legal failed",
+          "fronts": {
+            "formula": "unassessed",
+            "materials": "unassessed",
+            "legal": "fail",
+            "testing": "unassessed"
+          },
+          "frontOrigin": {
+            "legal": "inferred"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
+      },
+      {
+        "name": "Gripe Water",
+        "verdict": "skip",
+        "note": "Named in the April 2025 FDA warning letter over unreported serious adverse events, including infants who choked or stopped breathing, and over disease treatment claims.",
+        "cat": "Supplements",
+        "matchAll": [
+          [
+            "mommy",
+            "gripe"
+          ]
+        ],
+        "ext": {
+          "verdict": "skip",
+          "dated": "2026-09-17",
+          "why": "section 6: legal failed",
+          "fronts": {
+            "formula": "unassessed",
+            "materials": "unassessed",
+            "legal": "fail",
+            "testing": "unassessed"
+          },
+          "frontOrigin": {
+            "legal": "inferred"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "materials": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "reviewed": true,
+    "article": "best-non-toxic-vitamin-d-for-kids.html",
+    "generalises": true,
+    "rollup": {
+      "products": 3,
+      "researched": 0,
+      "flagged": 0,
+      "worst": null
+    }
+  },
+  {
+    "id": "childlife-essentials",
+    "brand": "ChildLife Essentials",
+    "category": "Supplements",
+    "stance": "careful",
+    "reason": "Its Baby Vitamin D3 Drops are built on vegetable glycerin and deionised water rather than an oil, and add a natural mixed berry flavour, an undisclosed mixture behind a single word, which caps the formula front at caution under rule 2.1. The dose is also five drops for infants 6 to 12 months and eight drops for children 1 to 12, so the bottle has to be counted rather than tipped once, which is the design FDA asked makers to move away from in 2010. No recall on the FDA enforcement record and no independent heavy metals result published.",
+    "evidence": "Glycerin and water base with an undisclosed berry flavour; dose is 5 to 8 drops rather than one",
+    "alternative": "Baby Ddrops Organic 400 IU, two ingredients and one drop per dose",
+    "sources": [
+      "best-non-toxic-vitamin-d-for-kids.html"
+    ],
+    "aliases": [
+      "ChildLife"
+    ],
+    "products": [
+      {
+        "name": "Baby Vitamin D3 Drops",
+        "verdict": "careful",
+        "note": "Vegetable glycerin, deionised water and natural mixed berry flavour. Five drops for infants, eight for children. No oil carrier and no published metals result.",
+        "asins": [
+          "B002CPXL52"
+        ],
+        "cat": "Supplements",
+        "matchAll": [
+          [
+            "childlife",
+            "vitamin d"
+          ]
+        ],
+        "ext": {
+          "legalNote": "Checked against the FDA enforcement database on 2026-09-17. No recall on record, and no firm with a similar name either.",
+          "frontNotes": {
+            "legal": "Checked against the FDA enforcement database on 2026-09-17. No recall on record, and no firm with a similar name either."
+          },
+          "verdict": "unrated",
+          "dated": "2026-09-17",
+          "why": "section 6: no check carries a finding",
+          "fronts": {
+            "formula": "unassessed",
+            "materials": "unassessed",
+            "legal": "pass",
+            "testing": "unassessed"
+          },
+          "frontOrigin": {
+            "legal": "database"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "materials": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "reviewed": true,
+    "article": "best-non-toxic-vitamin-d-for-kids.html",
+    "generalises": true,
+    "rollup": {
+      "products": 1,
+      "researched": 0,
+      "flagged": 0,
+      "worst": null
+    }
+  },
+  {
+    "id": "zarbees",
+    "brand": "Zarbee's",
+    "category": "Supplements",
+    "stance": "neutral",
+    "reason": "Its Baby Vitamin D is a clean two ingredient formula, medium chain triglycerides and cholecalciferol, in a 14 mL amber glass bottle. Two things sit on its record. FDA lists a July 2016 Class III recall covering Zarbee's Baby Vitamin D and Baby Omega 3 liquids, for units that may contain contaminants at an elevated aerobic plate count; both are terminated and, at nine years old, informational rather than a live caution. And the dose is 0.25 mL read off an enclosed 0.5 mL oral syringe, so the barrel holds twice a day's vitamin D and the dose depends on reading a graduation every time. No independent heavy metals result has been published.",
+    "evidence": "Two ingredients in amber glass; July 2016 Class III recall of Baby Vitamin D and Baby Omega 3 for elevated aerobic plate count, terminated; 0.25 mL dose measured on a 0.5 mL syringe",
+    "alternative": "",
+    "sources": [
+      "best-non-toxic-vitamin-d-for-kids.html",
+      "https://api.fda.gov/food/enforcement.json?search=recalling_firm:%22Zarbee%27s%20Naturals%22"
+    ],
+    "aliases": [
+      "Zarbees",
+      "Zarbee's Naturals"
+    ],
+    "products": [
+      {
+        "name": "Baby Vitamin D Drops",
+        "note": "MCT oil and D3 only, amber glass. Recalled July 2016, Class III and terminated, for units that may contain contaminants at an elevated aerobic plate count. The 400 IU dose is 0.25 mL measured on the enclosed 0.5 mL syringe rather than a single drop.",
+        "asins": [
+          "B01F2H982Q"
+        ],
+        "cat": "Supplements",
+        "matchAll": [
+          [
+            "zarbee",
+            "vitamin d"
+          ]
+        ],
+        "ext": {
+          "legalNote": "Checked the FDA enforcement database on 2026-09-17 under the firm name Zarbee's Naturals. Two closed and remedied recalls, both reported 2016-07-13 and both Class III: Baby Vitamin D and Baby Omega 3 liquids, for units that may contain contaminants at an elevated aerobic plate count. Nine years old and terminated, so informational under rule 5.2.",
+          "frontNotes": {
+            "legal": "Checked the FDA enforcement database on 2026-09-17 under the firm name Zarbee's Naturals. Two closed and remedied recalls, both reported 2016-07-13 and both Class III: Baby Vitamin D and Baby Omega 3 liquids, for units that may contain contaminants at an elevated aerobic plate count. Nine years old and terminated, so informational under rule 5.2."
+          },
+          "verdict": "unrated",
+          "dated": "2026-09-17",
+          "why": "no front is directly evidenced by the note",
+          "fronts": {
+            "formula": "unassessed",
+            "materials": "unassessed",
+            "legal": "pass",
+            "testing": "unassessed"
+          },
+          "frontOrigin": {
+            "legal": "database"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": [
+            "5.2 recall-decayed"
+          ]
+        }
+      },
+      {
+        "name": "Baby Omega 3",
+        "note": "Recalled July 2016 alongside Baby Vitamin D, Class III and terminated, for units that may contain contaminants at an elevated aerobic plate count.",
+        "cat": "Supplements",
+        "matchAll": [
+          [
+            "zarbee",
+            "omega"
+          ]
+        ],
+        "ext": {
+          "cappedFrom": "careful",
+          "capRestoreWhy": "section 6: legal failed",
+          "legalNote": "Checked the FDA enforcement database on 2026-09-17 under the firm name Zarbee's Naturals. Two closed and remedied recalls, both reported 2016-07-13 and both Class III: Baby Vitamin D and Baby Omega 3 liquids, for units that may contain contaminants at an elevated aerobic plate count. Nine years old and terminated, so informational under rule 5.2.",
+          "frontNotes": {
+            "legal": "Checked the FDA enforcement database on 2026-09-17 under the firm name Zarbee's Naturals. Two closed and remedied recalls, both reported 2016-07-13 and both Class III: Baby Vitamin D and Baby Omega 3 liquids, for units that may contain contaminants at an elevated aerobic plate count. Nine years old and terminated, so informational under rule 5.2."
+          },
+          "verdict": "unrated",
+          "dated": "2026-09-17",
+          "why": "no front is directly evidenced by the note",
+          "fronts": {
+            "formula": "unassessed",
+            "materials": "unassessed",
+            "legal": "pass",
+            "testing": "unassessed"
+          },
+          "frontOrigin": {
+            "legal": "database"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "rules": [
+            "5.2 recall-decayed"
+          ]
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "materials": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "reviewed": true,
+    "article": "best-non-toxic-vitamin-d-for-kids.html",
+    "generalises": true,
+    "rollup": {
+      "products": 2,
+      "researched": 0,
+      "flagged": 0,
+      "worst": null
+    }
+  },
+  {
+    "id": "hiya",
+    "brand": "Hiya",
+    "category": "Supplements",
+    "stance": "careful",
+    "reason": "Independent testing of Hiya Kids Daily Multivitamins in September 2024 measured 30 ppb lead, 20 ppb cadmium and 310 ppb arsenic, the highest arsenic of the twelve children's vitamins in that panel. Hiya disputes the finding and points to its own heavy metals testing, and in May 2025 it became Clean Label Project Certified with a Purity Award on the Kids Daily Multivitamin. That is a real independent programme and it is newer than the 2024 test, but it publishes no per product numbers, so there is no measurement to set beside the one we can see. Both findings stand together. No FDA recall on record.",
+    "evidence": "30 ppb lead, 20 ppb cadmium, 310 ppb arsenic (Lead Safe Mama, Sept 2024); Clean Label Project Certified May 2025, numbers not published; brand disputes the 2024 result",
+    "alternative": "A single nutrient drop rather than a multivitamin, where the supply chain is one oil and one vitamin",
+    "sources": [
+      "best-non-toxic-vitamin-d-for-kids.html",
+      "https://tamararubin.com/2024/09/hiya-kids-daily-multivitamins-test-positive-for-lead-cadmium-arsenic-laboratory-report-here/",
+      "https://tamararubin.com/2024/12/childrens-supplement-article/"
+    ],
+    "aliases": [
+      "Hiya Health"
+    ],
+    "products": [
+      {
+        "name": "Kids Daily Multivitamin",
+        "verdict": "careful",
+        "note": "30 ppb lead, 20 ppb cadmium, 310 ppb arsenic in September 2024 independent testing, the highest arsenic in a twelve product panel. Clean Label Project Certified in May 2025, numbers not published. Hiya disputes the finding.",
+        "cat": "Supplements",
+        "matchAll": [
+          [
+            "hiya",
+            "multivitamin"
+          ]
+        ],
+        "ext": {
+          "legalNote": "Checked against the FDA enforcement database on 2026-09-17. No recall on record, and no firm with a similar name either.",
+          "frontNotes": {
+            "legal": "Checked against the FDA enforcement database on 2026-09-17. No recall on record, and no firm with a similar name either."
+          },
+          "verdict": "careful",
+          "dated": "2026-09-17",
+          "why": "section 6: testing is caution",
+          "fronts": {
+            "formula": "unassessed",
+            "materials": "unassessed",
+            "legal": "pass",
+            "testing": "caution"
+          },
+          "frontOrigin": {
+            "testing": "inferred",
+            "legal": "database"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "materials": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "reviewed": true,
+    "article": "best-non-toxic-vitamin-d-for-kids.html",
+    "generalises": true,
+    "rollup": {
+      "products": 1,
+      "researched": 0,
+      "flagged": 0,
+      "worst": null
+    }
+  },
+  {
+    "id": "renzos",
+    "brand": "Renzo's",
+    "category": "Supplements",
+    "stance": "careful",
+    "reason": "Renzo's Picky Eater Multi with Iron measured 21 ppb lead and 9 ppb cadmium in December 2024 independent testing, both at or above the levels Congress proposed for baby food in 2021. No FDA recall on record. Nothing is illegal about those levels, because no regulator sets a limit on lead in a children's supplement.",
+    "evidence": "21 ppb lead, 9 ppb cadmium (Lead Safe Mama, Dec 2024)",
+    "alternative": "A single nutrient drop rather than a chewable multivitamin",
+    "sources": [
+      "best-non-toxic-vitamin-d-for-kids.html",
+      "https://tamararubin.com/2024/12/childrens-supplement-article/"
+    ],
+    "aliases": [
+      "Renzo's Vitamins",
+      "Renzos"
+    ],
+    "products": [
+      {
+        "name": "Picky Eater Multi with Iron",
+        "verdict": "careful",
+        "note": "21 ppb lead and 9 ppb cadmium in December 2024 independent testing.",
+        "cat": "Supplements",
+        "matchAll": [
+          [
+            "renzo",
+            "multi"
+          ]
+        ],
+        "ext": {
+          "legalNote": "Checked against the FDA enforcement database on 2026-09-17. No recall on record, and no firm with a similar name either.",
+          "frontNotes": {
+            "legal": "Checked against the FDA enforcement database on 2026-09-17. No recall on record, and no firm with a similar name either."
+          },
+          "verdict": "careful",
+          "dated": "2026-09-17",
+          "why": "section 6: testing is caution",
+          "fronts": {
+            "formula": "unassessed",
+            "materials": "unassessed",
+            "legal": "pass",
+            "testing": "caution"
+          },
+          "frontOrigin": {
+            "testing": "inferred",
+            "legal": "database"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "materials": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "reviewed": true,
+    "article": "best-non-toxic-vitamin-d-for-kids.html",
+    "generalises": true,
+    "rollup": {
+      "products": 1,
+      "researched": 0,
+      "flagged": 0,
+      "worst": null
+    }
+  },
+  {
+    "id": "ellaola",
+    "brand": "EllaOla",
+    "category": "Supplements",
+    "stance": "careful",
+    "reason": "EllaOla's Toddlers' Multivitamin measured 50 ppb lead, 20 ppb cadmium and 120 ppb arsenic in December 2024 independent testing, the second highest lead of the twelve children's vitamins in that panel. The brand markets its own third party testing. No FDA recall on record.",
+    "evidence": "50 ppb lead, 20 ppb cadmium, 120 ppb arsenic (Lead Safe Mama, Dec 2024)",
+    "alternative": "A single nutrient drop rather than a toddler multivitamin",
+    "sources": [
+      "best-non-toxic-vitamin-d-for-kids.html",
+      "https://tamararubin.com/2024/12/childrens-supplement-article/"
+    ],
+    "products": [
+      {
+        "name": "Toddlers' Multivitamin",
+        "verdict": "careful",
+        "note": "50 ppb lead, 20 ppb cadmium and 120 ppb arsenic in December 2024 independent testing.",
+        "cat": "Supplements",
+        "matchAll": [
+          [
+            "ellaola",
+            "multivitamin"
+          ]
+        ],
+        "ext": {
+          "legalNote": "Checked against the FDA enforcement database on 2026-09-17. No recall on record, and no firm with a similar name either.",
+          "frontNotes": {
+            "legal": "Checked against the FDA enforcement database on 2026-09-17. No recall on record, and no firm with a similar name either."
+          },
+          "verdict": "careful",
+          "dated": "2026-09-17",
+          "why": "section 6: testing is caution",
+          "fronts": {
+            "formula": "unassessed",
+            "materials": "unassessed",
+            "legal": "pass",
+            "testing": "caution"
+          },
+          "frontOrigin": {
+            "testing": "inferred",
+            "legal": "database"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "materials": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "reviewed": true,
+    "article": "best-non-toxic-vitamin-d-for-kids.html",
+    "generalises": true,
+    "rollup": {
+      "products": 1,
+      "researched": 0,
+      "flagged": 0,
+      "worst": null
+    }
+  },
+  {
+    "id": "seeking-health",
+    "brand": "Seeking Health",
+    "category": "Supplements",
+    "stance": "careful",
+    "reason": "Its Kids Multivitamin Chewables measured 24 ppb lead, 25 ppb cadmium and 62 ppb arsenic in December 2024 independent testing. The firm also recalled its Optimal Multivitamin Chewable in October 2022, Class II and now terminated, after third party lab results showed copper above the label claim.",
+    "evidence": "24 ppb lead, 25 ppb cadmium, 62 ppb arsenic (Lead Safe Mama, Dec 2024); 2022 copper over label recall, terminated",
+    "alternative": "A single nutrient drop rather than a chewable multivitamin",
+    "sources": [
+      "best-non-toxic-vitamin-d-for-kids.html",
+      "https://tamararubin.com/2024/12/childrens-supplement-article/"
+    ],
+    "aliases": [
+      "SeekingHealth"
+    ],
+    "products": [
+      {
+        "name": "Kids Multivitamin Chewable",
+        "verdict": "careful",
+        "note": "24 ppb lead, 25 ppb cadmium and 62 ppb arsenic in December 2024 independent testing.",
+        "cat": "Supplements",
+        "matchAll": [
+          [
+            "seeking",
+            "kids"
+          ]
+        ],
+        "ext": {
+          "verdict": "careful",
+          "dated": "2026-09-17",
+          "why": "section 6: testing is caution",
+          "fronts": {
+            "formula": "unassessed",
+            "materials": "unassessed",
+            "legal": "unassessed",
+            "testing": "caution"
+          },
+          "frontOrigin": {
+            "testing": "inferred"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
+      },
+      {
+        "name": "Optimal Multivitamin Chewable",
+        "note": "Recalled October 2022, Class II, terminated: copper measured above the 0.5 mg label claim.",
+        "cat": "Supplements",
+        "matchAll": [
+          [
+            "seeking",
+            "optimal"
+          ]
+        ],
+        "ext": {
+          "cappedFrom": "careful",
+          "capRestoreWhy": "section 6: legal failed",
+          "verdict": "unrated",
+          "dated": "2026-09-17",
+          "why": "no front is directly evidenced by the note",
+          "fronts": {
+            "formula": "unassessed",
+            "materials": "unassessed",
+            "legal": "unassessed",
+            "testing": "unassessed"
+          },
+          "frontOrigin": {},
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "rules": [
+            "5.2 recall-decayed"
+          ]
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "materials": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "reviewed": true,
+    "article": "best-non-toxic-vitamin-d-for-kids.html",
+    "generalises": true,
+    "rollup": {
+      "products": 2,
+      "researched": 0,
+      "flagged": 0,
+      "worst": null
+    }
+  },
+  {
+    "id": "vitaklenz",
+    "brand": "VitaKlenz",
+    "category": "Supplements",
+    "stance": "careful",
+    "reason": "VitaKlenz for Kidz measured 23 ppb lead and 39 ppb arsenic in December 2024 independent testing, both above the levels Congress proposed for baby food in 2021. No FDA recall on record.",
+    "evidence": "23 ppb lead, 39 ppb arsenic (Lead Safe Mama, Dec 2024)",
+    "alternative": "A single nutrient drop rather than a multi ingredient kids supplement",
+    "sources": [
+      "best-non-toxic-vitamin-d-for-kids.html",
+      "https://tamararubin.com/2024/12/childrens-supplement-article/"
+    ],
+    "aliases": [
+      "VitaKlenz for Kidz"
+    ],
+    "products": [
+      {
+        "name": "VitaKlenz for Kidz",
+        "verdict": "careful",
+        "note": "23 ppb lead and 39 ppb arsenic in December 2024 independent testing.",
+        "cat": "Supplements",
+        "matchAll": [
+          [
+            "vitaklenz"
+          ]
+        ],
+        "ext": {
+          "legalNote": "Checked against the FDA enforcement database on 2026-09-17. No recall on record, and no firm with a similar name either.",
+          "frontNotes": {
+            "legal": "Checked against the FDA enforcement database on 2026-09-17. No recall on record, and no firm with a similar name either."
+          },
+          "verdict": "careful",
+          "dated": "2026-09-17",
+          "why": "section 6: testing is caution",
+          "fronts": {
+            "formula": "unassessed",
+            "materials": "unassessed",
+            "legal": "pass",
+            "testing": "caution"
+          },
+          "frontOrigin": {
+            "testing": "inferred",
+            "legal": "database"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "materials": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "reviewed": true,
+    "article": "best-non-toxic-vitamin-d-for-kids.html",
+    "generalises": true,
+    "rollup": {
+      "products": 1,
+      "researched": 0,
+      "flagged": 0,
+      "worst": null
+    }
+  },
+  {
+    "id": "novaferrum",
+    "brand": "NovaFerrum",
+    "category": "Supplements",
+    "stance": "careful",
+    "reason": "Its Yummy liquid iron for children measured 43 ppb arsenic in December 2024 independent testing, above the 10 ppb level proposed for baby food in 2021. Lead, cadmium and mercury came back below 10 ppb, a detection limit too high to judge them against the 5, 5 and 2 ppb bars. No FDA recall on record.",
+    "evidence": "43 ppb arsenic (Lead Safe Mama, Dec 2024); lead, cadmium and mercury limits too high to judge",
+    "alternative": "",
+    "sources": [
+      "best-non-toxic-vitamin-d-for-kids.html",
+      "https://tamararubin.com/2024/12/childrens-supplement-article/"
+    ],
+    "aliases": [
+      "Yummy NovaFerrum"
+    ],
+    "products": [
+      {
+        "name": "Yummy Liquid Iron for Children",
+        "verdict": "careful",
+        "note": "43 ppb arsenic in December 2024 independent testing. The lead, cadmium and mercury detection limits sat at 10 ppb, too high to compare against the ingested bars.",
+        "cat": "Supplements",
+        "matchAll": [
+          [
+            "novaferrum"
+          ]
+        ],
+        "ext": {
+          "legalNote": "Checked against the FDA enforcement database on 2026-09-17. No recall on record, and no firm with a similar name either.",
+          "frontNotes": {
+            "legal": "Checked against the FDA enforcement database on 2026-09-17. No recall on record, and no firm with a similar name either."
+          },
+          "verdict": "careful",
+          "dated": "2026-09-17",
+          "why": "section 6: testing is caution",
+          "fronts": {
+            "formula": "unassessed",
+            "materials": "unassessed",
+            "legal": "pass",
+            "testing": "caution"
+          },
+          "frontOrigin": {
+            "testing": "inferred",
+            "legal": "database"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "materials": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "reviewed": true,
+    "article": "best-non-toxic-vitamin-d-for-kids.html",
+    "generalises": true,
+    "rollup": {
+      "products": 1,
+      "researched": 0,
+      "flagged": 0,
+      "worst": null
+    }
+  },
+  {
+    "id": "flintstones",
+    "brand": "Flintstones",
+    "category": "Supplements",
+    "stance": "careful",
+    "reason": "Flintstones Vitamin + Extra Iron measured 60 ppb lead in December 2024 independent testing, the highest of the twelve children's vitamins in that panel, alongside 30 ppb arsenic. That is twelve times the level Congress proposed for baby food in 2021 and six times FDA's 2025 action level for processed food intended for babies and young children, though neither figure is a legal limit for a supplement. No FDA recall on record.",
+    "evidence": "60 ppb lead, the highest in a twelve product panel, and 30 ppb arsenic (Lead Safe Mama, Dec 2024)",
+    "alternative": "A single nutrient drop rather than a chewable multivitamin",
+    "sources": [
+      "best-non-toxic-vitamin-d-for-kids.html",
+      "https://tamararubin.com/2024/12/childrens-supplement-article/"
+    ],
+    "aliases": [
+      "Flintstones Vitamins"
+    ],
+    "products": [
+      {
+        "name": "Vitamin + Extra Iron",
+        "verdict": "careful",
+        "note": "60 ppb lead and 30 ppb arsenic in December 2024 independent testing, the highest lead in the panel.",
+        "cat": "Supplements",
+        "matchAll": [
+          [
+            "flintstones"
+          ]
+        ],
+        "ext": {
+          "legalNote": "Checked against the FDA enforcement database on 2026-09-17. No recall on record, and no firm with a similar name either.",
+          "frontNotes": {
+            "legal": "Checked against the FDA enforcement database on 2026-09-17. No recall on record, and no firm with a similar name either."
+          },
+          "verdict": "careful",
+          "dated": "2026-09-17",
+          "why": "section 6: testing is caution",
+          "fronts": {
+            "formula": "unassessed",
+            "materials": "unassessed",
+            "legal": "pass",
+            "testing": "caution"
+          },
+          "frontOrigin": {
+            "testing": "inferred",
+            "legal": "database"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "materials": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "reviewed": true,
+    "article": "best-non-toxic-vitamin-d-for-kids.html",
+    "generalises": true,
+    "rollup": {
+      "products": 1,
+      "researched": 0,
+      "flagged": 0,
+      "worst": null
+    }
+  },
+  {
+    "id": "genexa",
+    "brand": "Genexa",
+    "category": "Supplements",
+    "stance": "careful",
+    "reason": "Its infant vitamin D drops are D3 in organic sunflower seed oil, which is a sound base, but the list ends in an organic vanilla flavour, an undisclosed mixture behind a single word, which caps the formula front at caution under rule 2.1. The dose is also two drops rather than one. No FDA recall on record and no independent heavy metals result published.",
+    "evidence": "Undisclosed vanilla flavour in an infant supplement; two drop dose; no independent metals result",
+    "alternative": "Baby Ddrops Organic 400 IU, two ingredients and one drop per dose",
+    "sources": [
+      "best-non-toxic-vitamin-d-for-kids.html"
+    ],
+    "products": [
+      {
+        "name": "Vitamin D Drops for Infants",
+        "verdict": "careful",
+        "note": "D3 in organic sunflower seed oil plus an organic vanilla flavour. Dose is two drops. No published metals result.",
+        "asins": [
+          "B07P9FH379"
+        ],
+        "cat": "Supplements",
+        "matchAll": [
+          [
+            "genexa",
+            "vitamin d"
+          ]
+        ],
+        "ext": {
+          "legalNote": "Checked against the FDA enforcement database on 2026-09-17. No recall on record, and no firm with a similar name either.",
+          "frontNotes": {
+            "legal": "Checked against the FDA enforcement database on 2026-09-17. No recall on record, and no firm with a similar name either."
+          },
+          "verdict": "careful",
+          "dated": "2026-09-17",
+          "why": "section 6: formula is caution",
+          "fronts": {
+            "formula": "caution",
+            "materials": "unassessed",
+            "legal": "pass",
+            "testing": "unassessed"
+          },
+          "frontOrigin": {
+            "formula": "inferred",
+            "legal": "database"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
+      }
+    ],
+    "fronts": {
+      "formula": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "materials": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "legal": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      },
+      "testing": {
+        "status": "unknown",
+        "note": "",
+        "origin": "none"
+      }
+    },
+    "reviewed": true,
+    "article": "best-non-toxic-vitamin-d-for-kids.html",
+    "generalises": true,
+    "rollup": {
+      "products": 1,
+      "researched": 0,
+      "flagged": 0,
+      "worst": null
+    }
+  },
+  {
+    "id": "moby",
+    "brand": "Moby",
+    "category": "Baby carriers",
+    "stance": "neutral",
+    "reason": "The Classic wrap is a single piece of 100% cotton with no buckles, foam or fill.",
+    "evidence": "100% cotton stated on the listing",
+    "alternative": "",
+    "sources": [
+      "non-toxic-baby-toddler-products-guide.html"
+    ],
+    "products": [
+      {
+        "name": "Moby Classic Wrap",
+        "asins": [
+          "B000OY539A"
+        ],
+        "verdict": "good",
+        "note": "A single piece of 100% cotton, no buckles, foam or fill. Takes practice to tie and holds up to about 33 lb.",
+        "origin": "store",
+        "cat": "Baby carriers",
+        "matchAll": [
+          [
+            "moby",
+            "wrap"
+          ]
+        ],
+        "ext": {
+          "frontNotes": {
+            "formula": "A durable good has no ingredient list. What it is made of is the materials check.",
+            "materials": "In contact with cotton, which puts nothing into what it holds.",
+            "legal": "Checked CPSC recall listings and recall news by web search on 2026-09-17. No recall, safety warning or regulatory action affecting Moby found. CPSC's 2010 sling warning and the 2010 federal sling standard cover the category, not this brand."
+          },
+          "formulaAnswers": {
+            "ingredients": "",
+            "prose": "",
+            "complete": false,
+            "verdict": "n/a",
+            "summary": "A durable good has no ingredient list. What it is made of is the materials check.",
+            "flagged": [],
+            "source": "",
+            "checked": ""
+          },
+          "materialsList": "cotton",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "dry",
+            "heated": false,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "cotton",
+            "treatment": "",
+            "treatmentSource": "",
+            "dispenser": "",
+            "lining": "",
+            "certification": "",
+            "certificationSource": "",
+            "source": "amazon:B000OY539A Material Type \"Cotton\", listing states \"100% Cotton\"; Moby Classic wrap, a single piece of woven fabric with no buckles, foam or fill.",
+            "checked": "2026-09-17"
+          },
+          "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-09-17. No recall, safety warning or regulatory action affecting Moby found. CPSC's 2010 sling warning and the 2010 federal sling standard cover the category, not this brand.",
+          "verdict": "good",
+          "dated": "2026-09-17",
+          "why": "direct evidence at sku scope on materials",
+          "fronts": {
+            "formula": "none",
+            "materials": "pass",
+            "legal": "pass",
+            "testing": "unassessed"
+          },
+          "frontOrigin": {
+            "materials": "database",
+            "formula": "database",
+            "legal": "database"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": [
+            "2 prose-cannot-clear-formula",
+            "5.4 durable-good-is-its-own-packaging"
+          ]
+        }
+      }
+    ],
+    "stanceHeld": "good"
+  },
+  {
+    "id": "wildbird",
+    "brand": "WildBird",
+    "category": "Baby carriers",
+    "stance": "neutral",
+    "reason": "Ring slings in linen, with aluminium rings that never touch the baby.",
+    "evidence": "Linen stated on the listing",
+    "alternative": "",
+    "sources": [
+      "non-toxic-baby-toddler-products-guide.html"
+    ],
+    "products": [
+      {
+        "name": "WildBird Ring Sling",
+        "asins": [
+          "B087SFJFV5"
+        ],
+        "verdict": "good",
+        "note": "Linen ring sling with aluminium rings. Nothing synthetic against the baby, and one shoulder carry suits short trips more than long walks.",
+        "origin": "store",
+        "cat": "Baby carriers",
+        "matchAll": [
+          [
+            "wildbird",
+            "sling"
+          ]
+        ],
+        "ext": {
+          "frontNotes": {
+            "formula": "A durable good has no ingredient list. What it is made of is the materials check.",
+            "materials": "In contact with metal, which puts nothing into what it holds.",
+            "legal": "Checked CPSC recall listings and recall news by web search on 2026-09-17. No recall, safety warning or regulatory action affecting WildBird found. CPSC's sling warnings and the federal sling standard cover the category, not this brand."
+          },
+          "formulaAnswers": {
+            "ingredients": "",
+            "prose": "",
+            "complete": false,
+            "verdict": "n/a",
+            "summary": "A durable good has no ingredient list. What it is made of is the materials check.",
+            "flagged": [],
+            "source": "",
+            "checked": ""
+          },
+          "materialsList": "linen, aluminum",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "dry",
+            "heated": false,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "linen, aluminum",
+            "treatment": "",
+            "treatmentSource": "",
+            "dispenser": "",
+            "lining": "unlined",
+            "certification": "",
+            "certificationSource": "",
+            "source": "amazon:B087SFJFV5 Material Type \"Linen\"; WildBird ring sling, linen fabric with two aluminium rings that never touch the baby.",
+            "checked": "2026-09-17"
+          },
+          "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-09-17. No recall, safety warning or regulatory action affecting WildBird found. CPSC's sling warnings and the federal sling standard cover the category, not this brand.",
+          "verdict": "good",
+          "dated": "2026-09-17",
+          "why": "direct evidence at sku scope on materials",
+          "fronts": {
+            "formula": "none",
+            "materials": "pass",
+            "legal": "pass",
+            "testing": "unassessed"
+          },
+          "frontOrigin": {
+            "materials": "database",
+            "formula": "database",
+            "legal": "database"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": [
+            "2 prose-cannot-clear-formula",
+            "5.4 durable-good-is-its-own-packaging"
+          ]
+        }
+      }
+    ],
+    "stanceHeld": "good"
   }
 ]

@@ -688,10 +688,21 @@ def apply_rules(fronts, note, scope, basis, context="", formula_text="", raw_not
     if f["legal"]["status"] in ("fail", "caution") and "recall" in low:
         years = [int(y) for y in RECALL_YEAR.findall(low)]
         if years and max(years) <= TODAY.year - 3 and re.search(
-                r"\b(closed|remedied|resolved|fixed|corrected|since)\b", low):
+                r"\b(closed|remedied|resolved|fixed|corrected|terminated|since)\b", low):
             f["legal"] = {"status": "unassessed",
                           "note": f["legal"].get("note", ""), "origin": "rule-5.2"}
             fired.append("5.2 recall-decayed")
+        elif years and re.search(
+                r"\b(closed|remedied|resolved|fixed|corrected|terminated)\b", low):
+            # 5.2's other row. A recall that is closed and remedied but too
+            # recent to decay is a `caution` with its date and defect, not a
+            # `fail`: `fail` is the line for an open or active recall. Only the
+            # decay branch was implemented, so a closed recall from last year
+            # ceilinged its row to skip, which is the verdict for a live one.
+            if f["legal"]["status"] == "fail":
+                f["legal"] = {"status": "caution",
+                              "note": f["legal"].get("note", ""), "origin": "rule-5.2"}
+                fired.append("5.2 closed-recall-is-a-caution")
 
     # 4.3  a non detect is not comparable, and not citable, without its limit.
     if f["testing"]["status"] == "pass" and NON_DETECT.search(low) and not HAS_LOD.search(low):
@@ -918,7 +929,10 @@ def correct(old, f, note, scope, basis, strict=False, lenient=False, consumable=
         # 5.2 a closed and remedied recall over 24 months old is informational.
         if "recall" in low:
             years = [int(y) for y in RECALL_YEAR.findall(low)]
-            remedied = re.search(r"\b(closed|remedied|resolved|fixed|corrected)\b", low)
+            # "Terminated" is FDA's own word for a recall it has closed out, and it
+            # is what an openFDA record says, so a note written from the enforcement
+            # database read as an unresolved recall and ceilinged five rows to skip.
+            remedied = re.search(r"\b(closed|remedied|resolved|fixed|corrected|terminated)\b", low)
             if years and remedied and max(years) <= TODAY.year - 3:
                 adverse = [k for k in FRONTS if st[k] in ("fail", "caution")]
                 if adverse in ([], ["legal"]):
