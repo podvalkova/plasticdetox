@@ -206,10 +206,10 @@ export const KIDS = {
    "guide": "best-non-toxic-baby-formula.html",
    "id": "Kids::Choose a cleaner formula",
    "swap": "Choose a cleaner formula",
-   "why": "The entire diet for months, and independent testing keeps finding real differences between brands.",
+   "why": "The entire diet for months, and independent testing keeps finding real differences between brands. Mixing water is half the feed: lead comes from the plumbing rather than the utility, so it is invisible on a water quality report, and boiling concentrates it instead of removing it.",
    "heat": false,
    "impact": "High impact",
-   "free": "None, but preparing with filtered water is the cheapest improvement you can make.",
+   "free": "Run the tap cold for two minutes before you draw mixing water, and never mix with hot tap water. Both are free and both cut lead.",
    "picks": [
     {
      "label": "$$$",
@@ -261,6 +261,12 @@ export const KIDS = {
       "Newer recipe with less track record",
       "Check with your pediatrician before switching"
      ]
+    },
+    {
+     "label": "$$$",
+     "name": "Bluevua RO100ROPOT Countertop RO",
+     "url": "https://www.amazon.com/dp/B09KRDK677?tag=plasticdetox-20",
+     "note": "Filtered mixing water, no plumbing work"
     }
    ],
    "tip": {
@@ -269,7 +275,7 @@ export const KIDS = {
     "look": [
      "Lactose as the only carbohydrate, no palm oil",
      "A steel can with a published lining result",
-     "A clean recall record, the check most brands fail"
+     "Filtered water for mixing, and a cold tap run for two minutes first"
     ],
     "skip": [
      "Diluting or home-making formula, the one real danger here",
@@ -300,10 +306,10 @@ export const KIDS = {
    "guide": "microplastics-in-baby-food.html",
    "id": "Kids::Change how you buy baby food",
    "swap": "Change how you buy baby food",
-   "why": "Pouches are plastic against warm puree, and commercial baby food has repeatedly tested high for heavy metals.",
+   "why": "Pouches are plastic against warm puree, and commercial baby food has repeatedly tested high for heavy metals. Organic cannot answer that part: arsenic, lead and cadmium come out of the soil, so what matters is which foods you buy, not which label. Rice takes up more arsenic than any other grain, and rice cereal and rice puffs concentrate it.",
    "heat": true,
    "impact": "High impact",
-   "free": "Mash whatever you are eating. Free, and better food than any jar.",
+   "free": "Mash whatever you are eating, and feed oats, barley or quinoa instead of rice cereal. If you do serve rice, rinse it and boil it in plenty of water, then drain, which removes a good share of the arsenic.",
    "picks": [
     {
      "label": "$",
@@ -322,14 +328,14 @@ export const KIDS = {
     "title": "Three questions, not one",
     "body": "The pouch is a plastics question. The fruit and veg are a pesticide question, and organic is the answer to that one. The rice is a heavy metals question, which organic cannot answer, because arsenic comes from the soil.",
     "look": [
-     "Organic for fruit and veg, which is the pesticide question",
-     "Certified Glyphosate Residue Free on oats and pasta",
-     "Glass jars for anything premade",
-     "Single ingredient labels, so you can see what you are buying"
+     "Glass jars over pouches",
+     "Oats, barley or quinoa in place of rice cereal",
+     "Organic for the fruit and veg, where pesticides are the question"
     ],
     "skip": [
-     "Pouches, especially warmed or fed from the spout",
-     "Rice cereal as a daily staple, organic included"
+     "Rice cereal and rice puffs, the most concentrated arsenic a baby eats",
+     "Fruit pouches as a meal, which teach sucking rather than eating",
+     "Organic as an answer to heavy metals, which come from the soil"
     ]
    },
    "article": {
@@ -671,23 +677,46 @@ export const KIDS = {
    "free": "Park in the shade, and on hot drives open the windows instead of recirculating the cabin air.",
    "picks": [
     {
-     "label": "Guide",
-     "name": "Read the full guide",
-     "url": "https://plasticdetox.org/articles/best-non-toxic-car-seats.html"
+     "label": "$$$",
+     "name": "Nuna PIPA aire rx",
+     "url": "https://nunababy.com/usa/pipa-aire-rx",
+     "note": "The only fabric independently PFAS tested, clean in 2022. Careful: no finished fabric certificate",
+     "img": "../images/nuna-pipa-aire-rx.webp",
+     "pros": [
+      "Fabric tested clean for PFAS",
+      "No added flame retardants stated",
+      "Light for an infant seat"
+     ],
+     "cons": [
+      "No certificate testing the finished fabric",
+      "Expensive"
+     ]
+    },
+    {
+     "label": "$$$",
+     "name": "Chicco Fit360 ClearTex",
+     "url": "https://www.amazon.com/dp/B0H9NM5CBJ?tag=plasticdetox-20",
+     "note": "Rotates, and the easiest to install correctly. Careful: polyester fabric, no PFAS test"
+    },
+    {
+     "label": "$$$",
+     "name": "Clek Foonf, Mammoth",
+     "url": "https://www.amazon.com/dp/B0DQ1F9937?tag=plasticdetox-20",
+     "note": "The only fabric with no polyester in it. Careful: Clek does not say which TENCEL, and no certificate"
     }
    ],
    "tip": {
-    "title": "No seat passes yet, and that is the finding",
-    "body": "In the Ecology Center's 2022 round all 12 conventional US seats carried flame retardants or high bromine in the upholstery, and all 10 seats sold flame retardant free were clean in fabric, crash foam and canopy. No brand holds a certificate that tests its finished fabric, so no seat meets our standard. The closest are Nuna's PIPA aire rx, the Chicco ClearTex seats and Clek's Mammoth. Fit and installation still matter more than fabric.",
+    "title": "Buy on the claim, then on the fit",
+    "body": "In the Ecology Center's 2022 round every conventional seat carried flame retardants or high bromine, and every seat sold flame retardant free came back clean in fabric, foam and canopy. So the maker's claim is worth something. None of the three we name holds a certificate testing its finished fabric, which is why all three are labelled careful rather than good.",
     "look": [
-     "A maker statement covering the fabric and the foam, not just the cover",
-     "An independent test from the last three years",
-     "A seat that fits your car and that you can install correctly every time"
+     "A claim that covers the fabric and the foam, not just the cover",
+     "Nuna PIPA aire rx if PFAS is your worry, the only fabric independently tested",
+     "Clek Mammoth if polyester is your worry, the only fabric without it"
     ],
     "skip": [
-     "Clean, natural or eco with nothing behind it",
      "GREENGUARD Gold on its own, which tests emissions, not content",
-     "Aftermarket covers and inserts, however natural"
+     "Aftermarket covers, inserts and strap pads, however natural",
+     "A seat that does not fit your car, whatever its fabric"
     ]
    },
    "article": {
@@ -1117,8 +1146,8 @@ export const KIDS = {
   },
   {
    "guide": "non-toxic-baby-toddler-products-guide.html",
-   "id": "Kids::Skip the plastic baby bath",
-   "swap": "Skip the plastic baby bath",
+   "id": "Kids::Bathe in the sink, or pick the cleanest tub",
+   "swap": "Bathe in the sink, or pick the cleanest tub",
    "why": "Most infant tubs are PVC or ABS, and warm water is the condition that pulls plasticisers out of PVC fastest, with the baby sitting in it.",
    "heat": true,
    "impact": "Medium impact",
@@ -1174,6 +1203,18 @@ export const KIDS = {
      "name": "Solly Baby Wrap",
      "url": "https://www.amazon.com/dp/B0DBN1CQ76?tag=plasticdetox-20",
      "note": "TENCEL Modal, OEKO-TEX Standard 100"
+    },
+    {
+     "label": "$",
+     "name": "Moby Classic Wrap",
+     "url": "https://www.amazon.com/dp/B000OY539A?tag=plasticdetox-20",
+     "note": "100% cotton, the cheapest clean wrap"
+    },
+    {
+     "label": "$$",
+     "name": "WildBird Ring Sling",
+     "url": "https://www.amazon.com/dp/B087SFJFV5?tag=plasticdetox-20",
+     "note": "Linen, quickest on and off for short trips"
     }
    ],
    "tip": {
@@ -1340,23 +1381,24 @@ export const KIDS = {
    "free": "Shade, a hat and long sleeves between ten and four. Cover what you can, then use sunscreen on the rest.",
    "picks": [
     {
-     "label": "Guide",
-     "name": "Read the full guide",
-     "url": "https://plasticdetox.org/articles/best-mineral-sunscreen-guide.html"
+     "label": "$$",
+     "name": "California Baby SPF 30+",
+     "url": "https://www.amazon.com/dp/B003X5B81Y?tag=plasticdetox-20",
+     "note": "Cleanest formula, lowest tested lead at 77 ppb. Careful: plastic tube"
     }
    ],
    "tip": {
-    "title": "No kids sunscreen is a pick yet, and here is why",
-    "body": "California Baby SPF 30+ is the cleanest formula we found, non nano titanium dioxide with no fragrance, and the lowest lead of any sunscreen tested at 77 ppb. It comes in a plastic tube, so it rates careful rather than good and we do not put it in the store. A tin is the cleaner container if you can find one that also has a clean formula.",
+    "title": "The formula is clean, the tube is the compromise",
+    "body": "California Baby SPF 30+ is non nano titanium dioxide with no fragrance, and at 77 ppb it had the lowest lead of the mineral sunscreens in Lead Safe Mama's testing, against 2,140 ppb for Earth Mama Baby. It comes in a plastic tube, so we label it careful rather than good. For babies under six months the FDA says shade and clothing rather than sunscreen.",
     "look": [
-     "Zinc oxide or titanium dioxide as the only active filter",
-     "Fragrance free, and a short ingredient list",
-     "A metal tin over a plastic tube where the formula is equal"
+     "Zinc oxide or titanium dioxide as the only active",
+     "Fragrance free, with a short ingredient list",
+     "A tin rather than a tube where the formula is equal"
     ],
     "skip": [
      "Oxybenzone, octinoxate, homosalate and avobenzone",
      "Sprays, which you breathe and cannot apply evenly",
-     "Baby sunscreen claims with no test behind them"
+     "Sunscreen on a baby under six months, rather than shade and clothing"
     ]
    },
    "article": {
@@ -1388,23 +1430,30 @@ export const KIDS = {
    "free": "Brush with water and a soft brush until they can spit reliably. Technique matters more than paste at that age.",
    "picks": [
     {
-     "label": "Guide",
-     "name": "Read the full guide",
-     "url": "https://plasticdetox.org/articles/best-non-toxic-toothpaste-guide.html"
+     "label": "$",
+     "name": "Dr. Brown's Baby Toothpaste",
+     "url": "https://www.amazon.com/dp/B08899DKSV?tag=plasticdetox-20",
+     "note": "Tested non detect on all four metals, safe to swallow"
+    },
+    {
+     "label": "$",
+     "name": "Weleda Salt Toothpaste",
+     "url": "https://www.amazon.com/dp/B000FQVR1U?tag=plasticdetox-20",
+     "note": "Non detect too, in an aluminium tube, once they can take the taste"
     }
    ],
    "tip": {
-    "title": "The paste a child swallows needs a published result",
-    "body": "Lead Safe Mama's 2025 testing found detectable lead in about 90 percent of 51 toothpastes. Tom's of Maine kids read about 240 ppb and the company settled a class action over heavy metals, so it is a skip for us. The kids pastes our guide names, Dr. Brown's Baby and Spry Kids, have not been through all four of our checks yet, so no kids toothpaste is a pick today.",
+    "title": "Five of 51 came back clean, and two are for children",
+    "body": "Lead Safe Mama's 2025 series tested 51 toothpastes: 46 had detectable lead. Five read non detect on lead, cadmium, mercury and arsenic, and Dr. Brown's Baby in strawberry is one of them, which is the flavour sold here. Weleda Salt is another, in an aluminium tube, once a child can take the salty taste. Tom's of Maine kids read about 240 ppb and the company settled a class action over heavy metals.",
     "look": [
-     "A published heavy metals result for that exact paste",
-     "Nano hydroxyapatite or plain xylitol for a child who cannot spit",
-     "A simple ingredient list you can read"
+     "A published result for that exact paste and flavour",
+     "Fluoride free for a child who cannot spit yet",
+     "A rice grain of paste under three, a pea from three to six"
     ],
     "skip": [
-     "Charcoal pastes and clay powders, which scrub enamel away",
-     "Fruit flavours that encourage swallowing",
-     "Clean or natural claims with no test behind them"
+     "Clay tooth powders, the worst results in the series",
+     "Daily charcoal pastes, which scrub enamel away",
+     "Hydroxyapatite brands sold as clean swaps: Davids read about 457 ppb, Dr. Bronner's about 160"
     ]
    },
    "article": {

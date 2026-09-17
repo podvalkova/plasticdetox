@@ -72,6 +72,7 @@ def main():
         bad.append(f"!! {verdict[a]} product still in the catalog: {a}")
     picks = 0
     unrated = []
+    traded_picks = []
     for room in rooms:
         for st in room.get("steps") or []:
             where = f"{room.get('title')} / {st.get('swap')}"
@@ -92,7 +93,16 @@ def main():
                     bad.append(f"!! no pros and cons: {where} / {p.get('name')}")
                 if asin:
                     v = verdict.get(asin)
-                    if v in ("careful", "skip"):
+                    # Rule 5.7: a careful product may stay a published pick when it
+                    # is the best available option under a stated constraint and the
+                    # caveat is stated with it. The store already sells three that
+                    # way; this check refused them as picks, so the Kids room showed
+                    # an empty car seat swap while the article named three seats.
+                    # Same condition as the catalog rule above: a written tradeoff
+                    # on the row, and a careful line on the card.
+                    if v == "careful" and asin in traded and (row.get("careful") or p.get("careful")):
+                        traded_picks.append(f"{where} / {p.get('name')}")
+                    elif v in ("careful", "skip"):
                         bad.append(f"!! {v} pick: {where} / {p.get('name')} ({asin})")
                     elif v is None:
                         bad.append(f"!! pick with no brand-data row: {where} / {p.get('name')} ({asin})")
@@ -174,6 +184,9 @@ def main():
     print(f"shop products a scan can reach: {len(shop_asins) - len(unscannable)} "
           f"of {len(shop_asins)} (unreachable {len(unscannable)}, ceiling {scan_ceiling})")
     print(f"unrated swap picks: {len(unrated)} (ceiling {ceiling})")
+    print(f"picks kept as a labelled trade off (rule 5.7): {len(traded_picks)}")
+    for line in sorted(traded_picks):
+        print(f"   {line}")
     print(f"verdicts with no check behind them: {len(unanchored)} (ceiling {anchor_ceiling})")
     print(f"manual overrides: {len(overrides)}")
     for line in sorted(overrides):
