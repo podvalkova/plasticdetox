@@ -424,6 +424,7 @@ function draw() {
         accountName: kids.accountName(),
         onRestore: restorePurchases,
       },
+      onFeedback: sendFeedback,
     });
   } else if (state.screen === "shop") {
     screens.shopIndex(view, {
@@ -1116,6 +1117,26 @@ function openArticle(slug) {
   }
   track("guide_opened", { slug: clean });
   go({ screen: "article", slug: clean });
+}
+
+// ------------------------------------------------------------- feedback
+
+/**
+ * Whatever they want to say, with the two facts we would otherwise have to ask
+ * for: which build it happened on and which phone. A mail draft rather than a
+ * form, the same as the correction card on a verdict, so it cannot fail
+ * silently and they keep a copy of what they sent.
+ */
+async function sendFeedback() {
+  const cap = window.Capacitor;
+  const platform = (cap && cap.getPlatform && cap.getPlatform()) || "web";
+  const info = await currentBundle().catch(() => null);
+  const build = info ? `${info.version}${info.builtin ? " (shipped with the app)" : ""}` : "unknown";
+  track("feedback_opened", { platform });
+  const body = ["", "", "---", `App build ${build}`, `Platform ${platform}`].join("\n");
+  openExternal("mailto:hello@plasticdetox.org"
+    + `?subject=${encodeURIComponent("App feedback")}`
+    + `&body=${encodeURIComponent(body)}`);
 }
 
 // -------------------------------------------------------------- restore

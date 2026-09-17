@@ -316,6 +316,9 @@ await screen("about", async (p) => {
   await tap(p, "#info");
   await new Promise((r) => setTimeout(r, 300));
   await need(p, ".card", "about card");
+  // Anything a person wants to say that is not a wrong verdict.
+  const ctas = await p.$$eval(".card button", (ns) => ns.map((n) => n.textContent));
+  if (!ctas.some((t) => t.includes("Send feedback"))) throw new Error("no way to send feedback");
 });
 
 // A guide opens as a screen of its own, not as the website. The Learn tab was

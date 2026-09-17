@@ -1920,7 +1920,7 @@ export function checkVerdict(event) {
 
 // ------------------------------------------------------------------ about
 
-export function about(root, { meta, bundle, onOpen, notify, purchases }) {
+export function about(root, { meta, bundle, onOpen, notify, purchases, onFeedback }) {
   root.appendChild(el("div", "hero")).appendChild(el("h1", null, "How this works"));
 
   const how = el("div", "card");
@@ -1980,6 +1980,22 @@ export function about(root, { meta, bundle, onOpen, notify, purchases }) {
     btn.onclick = () => notify.onToggle();
     box.appendChild(btn);
     root.appendChild(box);
+  }
+
+  // Somewhere to say anything at all. Every verdict already carries "Something
+  // wrong here?", and an unresearched product offers a free check, so the two
+  // things people had a route for were a wrong verdict and a missing one. A
+  // bug, a confusing screen or an idea had nowhere to go.
+  if (onFeedback) {
+    const say = el("div", "card");
+    say.appendChild(el("h2", null, "Tell us what you think"));
+    say.appendChild(el("p", null,
+      "A bug, a product we are missing, or an idea for the app. It reaches us at hello@plasticdetox.org."));
+    const btn = el("button", "cta outline", "Send feedback");
+    btn.type = "button";
+    btn.onclick = () => onFeedback();
+    say.appendChild(btn);
+    root.appendChild(say);
   }
 
   const links = el("div", "card");
