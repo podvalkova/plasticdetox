@@ -424,8 +424,13 @@ for (const m of kidsSrc.matchAll(/<h3[^>]*>([\s\S]*?)<\/h3>([\s\S]*?)(?=<h3|<h2|
   const picks = [];
   // Brand direct picks count too: Primally Pure sells through its own site,
   // on an Awin link, and the room showed only the Amazon half of a swap.
+  // A pick is a product card, whatever it links to. Matching on the two hosts we
+  // happened to use meant a brand that sells only from its own site could not be
+  // a pick at all: Bobbie's three formulas had to point at Amazon listings with
+  // no buy box. Anchoring on the card's own class keeps the guide link out, which
+  // a bare href match would have swallowed.
   for (const c of body.matchAll(
-      /href="(https:\/\/(?:www\.amazon\.com\/dp\/|www\.awin1\.com\/cread\.php\?)[^"]+)"[\s\S]*?product-card-tier">([^<]*)<[\s\S]*?product-card-name">([^<]*)<(?:[\s\S]*?product-card-best">([^<]*)<)?/g)) {
+      /href="(https:\/\/[^"]+)"[^>]*class="product-card-mini"[\s\S]*?product-card-tier">([^<]*)<[\s\S]*?product-card-name">([^<]*)<(?:[\s\S]*?product-card-best">([^<]*)<)?/g)) {
     // The store shows a price tier and a line saying what the pick is best for.
     // Cutting that line down to two words gave "Best glyphosate" and "Easiest
     // to", so the tier becomes the chip and the line stays whole as the note,

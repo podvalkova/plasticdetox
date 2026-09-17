@@ -213,21 +213,54 @@ export const KIDS = {
    "picks": [
     {
      "label": "$$$",
-     "name": "Bobbie Organic Original",
-     "url": "https://www.amazon.com/dp/B0D2RK7LYW?tag=plasticdetox-20",
-     "note": "Best cleared all four checks"
+     "name": "Bobbie Organic Original Infant Formula",
+     "url": "https://www.hibobbie.com/products/bobbie-organic-infant-formula",
+     "note": "Best cleared all four checks",
+     "img": "https://m.media-amazon.com/images/I/41cS4vT6jQL._AC_SL400_.jpg",
+     "pros": [
+      "Lactose only, no corn syrup solids",
+      "USDA Organic",
+      "Steel can, not a plastic tub"
+     ],
+     "cons": [
+      "Premium price",
+      "Check with your pediatrician before switching",
+      "Not a specialty formula for allergies"
+     ]
     },
     {
      "label": "$$$",
-     "name": "Bobbie Organic Gentle",
-     "url": "https://www.amazon.com/dp/B0D2RJYS5Y?tag=plasticdetox-20",
-     "note": "Best for sensitive digestion"
+     "name": "Bobbie Organic Gentle Infant Formula",
+     "url": "https://www.hibobbie.com/products/bobbie-organic-gentle-infant-formula",
+     "note": "Best for sensitive digestion",
+     "img": "https://m.media-amazon.com/images/I/41hAyL+gvWL._AC_SL400_.jpg",
+     "pros": [
+      "Partially hydrolyzed whey",
+      "USDA Organic, lactose based",
+      "Steel can, not a plastic tub"
+     ],
+     "cons": [
+      "Premium price",
+      "Not hypoallergenic for a diagnosed allergy",
+      "Check with your pediatrician before switching"
+     ]
     },
     {
      "label": "$$$",
-     "name": "Bobbie Organic Whole Milk",
-     "url": "https://www.amazon.com/dp/B0DY1V2T7H?tag=plasticdetox-20",
-     "note": "Best for twelve months and up"
+     "name": "Bobbie Organic Whole Milk Infant Formula",
+     "url": "https://www.hibobbie.com/products/organic-whole-milk-infant-formula",
+     "note": "Best for twelve months and up",
+     "img": "https://m.media-amazon.com/images/I/7106TknqbSL._AC_SL400_.jpg",
+     "pros": [
+      "Whole milk fat in the blend",
+      "USDA Organic, lactose based",
+      "Steel can, not a plastic tub"
+     ],
+     "cons": [
+      "Premium price",
+      "Newer recipe with less track record",
+      "Check with your pediatrician before switching"
+     ]
     }
    ],
    "tip": {
@@ -581,6 +614,22 @@ export const KIDS = {
    "free": "Assemble and air out everything for two to four weeks before the baby uses the room. Free and genuinely effective.",
    "picks": [
     {
+     "label": "$",
+     "name": "Burt's Bees Baby Organic Crib Sheets",
+     "url": "https://www.amazon.com/s?k=Burt%27s+Bees+Baby+organic+crib+sheets&amp;tag=plasticdetox-20",
+     "note": "Best affordable organic sheets",
+     "img": "https://m.media-amazon.com/images/I/61r3F05PnpL._AC_SL400_.jpg",
+     "pros": [
+      "GOTS certified",
+      "Widely available, affordable",
+      "Gets softer with washing"
+     ],
+     "cons": [
+      "Jersey knit may pill",
+      "No waterproof layer"
+     ]
+    },
+    {
      "label": "$$",
      "name": "Babyletto Hudson Crib",
      "url": "https://www.amazon.com/dp/B0148KHE7O?tag=plasticdetox-20",
@@ -685,8 +734,8 @@ export const KIDS = {
     },
     {
      "label": "$$",
-     "name": "Hanna Andersson Organic Onesies",
-     "url": "https://www.amazon.com/dp/B0G2MSDHKN?tag=plasticdetox-20",
+     "name": "Hanna Andersson Organic Zip Sleeper",
+     "url": "https://www.amazon.com/dp/B0G2MT4CYX?tag=plasticdetox-20",
      "note": "Best organic basics"
     }
    ],
@@ -831,6 +880,23 @@ export const KIDS = {
      "name": "Grimm's Large Rainbow Stacker (Natural)",
      "url": "https://www.amazon.com/dp/B01CHCMSH6?tag=plasticdetox-20",
      "note": "Unstained FSC wood, plant oil finish"
+    },
+    {
+     "label": "$$",
+     "name": "CaaOcho Natural Rubber Toys",
+     "url": "https://www.amazon.com/stores/page/CBC6FF38-3ECE-4BF4-A277-D713F8FB839E?tag=plasticdetox-20",
+     "note": "Best natural rubber toys",
+     "img": "https://m.media-amazon.com/images/I/71fskHrcq6L._AC_SL400_.jpg",
+     "pros": [
+      "100% natural rubber",
+      "Single piece, no mold spots",
+      "Food grade paints"
+     ],
+     "cons": [
+      "Higher price than plastic toys",
+      "Natural rubber scent when new",
+      "Limited color options"
+     ]
     }
    ],
    "article": {
@@ -875,6 +941,23 @@ export const KIDS = {
     },
     {
      "label": "$$$",
+     "name": "Toki Mats",
+     "url": "https://tokikids.com/",
+     "note": "Cleanest padded mat, natural latex core",
+     "img": "https://m.media-amazon.com/images/I/815gF9hP78L._AC_SL400_.jpg",
+     "pros": [
+      "Natural latex cushioning, no synthetic foam",
+      "GOTS certified organic cotton cover",
+      "Covers and inserts sold separately"
+     ],
+     "cons": [
+      "Check latex allergies first",
+      "Premium pricing",
+      "Spot clean the insert"
+     ]
+    },
+    {
+     "label": "$$$",
      "name": "Lorena Canals ABC Washable Rug",
      "url": "https://www.amazon.com/dp/B01MRI290Z?tag=plasticdetox-20",
      "note": "Best washable play rug"
@@ -910,9 +993,9 @@ export const KIDS = {
    "picks": [
     {
      "label": "$",
-     "name": "Avanchy Stainless Steel Baby Spoons",
-     "url": "https://www.amazon.com/dp/B07K1FFK6Z?tag=plasticdetox-20",
-     "note": "Best utensil pick"
+     "name": "Ahimsa Stainless Steel Kids Utensil Set",
+     "url": "https://www.amazon.com/dp/B0C6TWV93H?tag=plasticdetox-20",
+     "note": "Best utensil pick, steel fork and spoon"
     },
     {
      "label": "$",
@@ -995,7 +1078,7 @@ export const KIDS = {
     {
      "label": "$",
      "name": "CaaOcho Natural Rubber Bath Toy",
-     "url": "https://www.amazon.com/dp/B00KIZ9F44?tag=plasticdetox-20",
+     "url": "https://www.amazon.com/dp/B00KA3JEV8?tag=plasticdetox-20",
      "note": "Best sealed hole, no mould inside"
     },
     {

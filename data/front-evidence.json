@@ -14446,5 +14446,79 @@
    "checked": "2026-09-16",
    "tested": "2023"
   }
+ },
+ "B00KA3JEV8": {
+  "materials": {
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "holds": "none",
+   "base": "aqueous",
+   "heated": false,
+   "mouthed": true,
+   "reuse": "",
+   "use": "",
+   "material": "rubber",
+   "source": "amazon:B00KA3JEV8 Material Type \"Rubber\"; title \"caaocho Pure Natural Rubber Bath Toy, La The Butterfly Fish, Hole Free Bath Toys\". Same line as the sealed turtle, which is out of stock.",
+   "checked": "2026-09-17"
+  }
+ },
+ "B0G2MT4CYX": {
+  "materials": {
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "holds": "none",
+   "base": "dry",
+   "heated": false,
+   "mouthed": false,
+   "reuse": "",
+   "use": "",
+   "material": "cotton",
+   "certification": "GOTS, OEKO-TEX Standard 100",
+   "certificationSource": "amazon:B0G2MT4CYX: \"GOTS certified by OTCO. OEKO-TEX® STANDARD 100\"",
+   "source": "amazon:B0G2MT4CYX Fabric Type \"100% Cotton\", the 2-Way Zip Sleeper. Same product as B0G2MSDHKN, a variant that is in stock.",
+   "checked": "2026-09-17"
+  }
+ },
+ "B0C6TWV93H": {
+  "materials": {
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "holds": "none",
+   "base": "dry",
+   "heated": true,
+   "mouthed": true,
+   "reuse": "",
+   "use": "",
+   "material": "stainless steel",
+   "source": "amazon:B0C6TWV93H Material \"Stainless Steel\"; title \"Ahimsa Stainless Steel Kids Utensil Set, Classic, 2-Piece Set\"; listing highlight \"Includes 1 Fork and 1 Spoon\".",
+   "checked": "2026-09-17"
+  },
+  "testing": {
+   "status": "pass",
+   "checked": "2026-09-17",
+   "lod": "single digit ppm (Niton XL3t XRF, as the tester states)",
+   "note": "Lead Safe Mama XRF, published 2023-12-15, tested the Ahimsa plain Classic set item by item including the fork and the spoon: lead, cadmium, arsenic, mercury and antimony all non detect. Ahimsa was a paid affiliate partner of Lead Safe Mama when this was published (the relationship ended August 2025). Expires December 2026 under section 7.",
+   "source": "https://tamararubin.com/2023/12/ahimsa_classic/",
+   "results": [
+    {
+     "analyte": "lead",
+     "lab": "Lead Safe Mama (XRF)",
+     "lod": "single digit ppm",
+     "outcome": "non-detect",
+     "unit": "ppm",
+     "value": null,
+     "year": 2023
+    },
+    {
+     "analyte": "cadmium",
+     "lab": "Lead Safe Mama (XRF)",
+     "lod": "single digit ppm",
+     "outcome": "non-detect",
+     "unit": "ppm",
+     "value": null,
+     "year": 2023
+    }
+   ]
+  }
  }
 }
