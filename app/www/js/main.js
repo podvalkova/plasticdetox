@@ -1144,7 +1144,7 @@ async function shareVerdict(v) {
   const label = STANCE_LABEL[v.stance] || "Checked";
   const line = `${name}: ${label}. Checked on the formula, the materials, recalls and independent lab tests.`;
   track("share_opened", { stance: v.stance });
-  const how = await share.verdict({ name, line, url: share.brandUrl(v.brand.brand) });
+  const how = await share.verdict({ name, line, url: share.brandUrl(v.brand.brand), card: v });
   if (how === "failed") toast("Could not open the share sheet");
 }
 
