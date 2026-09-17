@@ -20,11 +20,13 @@
     "allowMixedContent": false,
     "captureInput": true,
     "includePlugins": [
+      "@capacitor-community/in-app-review",
       "@capacitor/app",
       "@capacitor/browser",
       "@capacitor/haptics",
       "@capacitor/local-notifications",
       "@capacitor/preferences",
+      "@capacitor/share",
       "@capgo/capacitor-updater",
       "@capgo/native-purchases"
     ]

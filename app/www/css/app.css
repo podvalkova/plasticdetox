@@ -1147,3 +1147,7 @@ body.has-tabs .screen { padding-bottom: calc(var(--safe-bottom) + 4rem); }
   padding: 4rem 1rem; text-align: center; color: var(--muted);
   font-size: 14px; font-weight: 600;
 }
+
+/* A share button says what it does twice, in a word and a glyph. */
+.share-cta { gap: 9px; }
+.share-cta svg { flex: none; }

@@ -1402,7 +1402,7 @@ function worthKnowing(ext, fronts, shown = []) {
 }
 
 export function result(root, { index, match, scan, product, query, productNamed, onArticle,
-  onOpen, onPick, onProduct, onSave, isSaved, onRequest }) {
+  onOpen, onPick, onProduct, onSave, isSaved, onRequest, onShare }) {
   // A barcode bound to an ASIN names the exact product, which is better than
   // any title match: productFor prefers `asins` and falls back to phrases.
   // Without this the binding sat in the data and the card still read the
@@ -1699,6 +1699,18 @@ export function result(root, { index, match, scan, product, query, productNamed,
     root.appendChild(a);
   }
 
+  // Worth passing on, but only where there is something to pass on. A product
+  // we have not reviewed, or one the gate did not let a verdict through for,
+  // would be shared as a verdict it does not have.
+  if (onShare && v.reviewed && v.asserted) {
+    const share = el("button", "cta ghost share-cta");
+    share.type = "button";
+    share.appendChild(icon(ICONS.share, 17));
+    share.appendChild(el("span", null, "Share this verdict"));
+    share.onclick = () => onShare(v);
+    root.appendChild(share);
+  }
+
   root.appendChild(reportCard(v, onOpen));
 
   return v;
@@ -1920,7 +1932,7 @@ export function checkVerdict(event) {
 
 // ------------------------------------------------------------------ about
 
-export function about(root, { meta, bundle, onOpen, notify, purchases, onFeedback }) {
+export function about(root, { meta, bundle, onOpen, notify, purchases, onFeedback, onRate }) {
   root.appendChild(el("div", "hero")).appendChild(el("h1", null, "How this works"));
 
   const how = el("div", "card");
@@ -1995,6 +2007,15 @@ export function about(root, { meta, bundle, onOpen, notify, purchases, onFeedbac
     btn.type = "button";
     btn.onclick = () => onFeedback();
     say.appendChild(btn);
+    // And the other half of the same thought. Both stores forbid an app from
+    // firing their rating prompt off a button, so this opens the listing,
+    // where the stars are, and the prompt itself is asked for elsewhere.
+    if (onRate) {
+      const rate = el("button", "cta ghost", "Rate the app");
+      rate.type = "button";
+      rate.onclick = () => onRate();
+      say.appendChild(rate);
+    }
     root.appendChild(say);
   }
 

@@ -14,6 +14,9 @@ import * as notify from "./notify.js";
 import { verdictFor } from "./match.js";
 import { track, setBundle, flush } from "./track.js";
 import * as kids from "./kids.js";
+import * as rate from "./rate.js";
+import * as share from "./share.js";
+import { STANCE_LABEL } from "./match.js";
 
 const WORKER = "https://plasticdetox-quiz-email.plasticdetox.workers.dev";
 const RECENTS_KEY = "pd.recents.v1";
@@ -369,6 +372,7 @@ function draw() {
       productNamed: !!(state.scan || state.productNamed),
       onOpen: openExternal,
       onArticle: openArticle,
+      onShare: share.available() ? shareVerdict : null,
       onPick: openHit,
       onSave: toggleSaved,
       isSaved,
@@ -425,6 +429,7 @@ function draw() {
         onRestore: restorePurchases,
       },
       onFeedback: sendFeedback,
+      onRate: () => { track("rate_link_opened", {}); openExternal(rate.storeUrl()); },
     });
   } else if (state.screen === "shop") {
     screens.shopIndex(view, {
@@ -610,6 +615,15 @@ function draw() {
         track("swap_done", { step: step.id, room: roomName(phase) });
         toggleDone(step.id);
         go({ screen: "detoxReward", stepId: step.id }, { replace: true });
+        // A few swaps in is the first moment the app has actually done
+        // something for somebody, so it is the moment worth asking on. After
+        // the screen has drawn, never over it, and rate.js decides whether
+        // this one counts.
+        setTimeout(() => {
+          rate.maybeAsk(readDone().size)
+            .then((asked) => { if (asked) track("rate_prompted", { done: readDone().size }); })
+            .catch(() => {});
+        }, 1400);
       },
       onUndo: () => toggleDone(step.id),
       onLater: () => { track("swap_later", { step: step.id }); markSeen(step.id); back(); },
@@ -1117,6 +1131,21 @@ function openArticle(slug) {
   }
   track("guide_opened", { slug: clean });
   go({ screen: "article", slug: clean });
+}
+
+// ---------------------------------------------------------------- share
+
+/**
+ * Pass a verdict on, with the link to the same verdict on the site so the
+ * person receiving it can read the reasoning without installing anything.
+ */
+async function shareVerdict(v) {
+  const name = v.product ? `${v.brand.brand} ${v.product.name}` : v.brand.brand;
+  const label = STANCE_LABEL[v.stance] || "Checked";
+  const line = `${name}: ${label}. Checked on the formula, the materials, recalls and independent lab tests.`;
+  track("share_opened", { stance: v.stance });
+  const how = await share.verdict({ name, line, url: share.brandUrl(v.brand.brand) });
+  if (how === "failed") toast("Could not open the share sheet");
 }
 
 // ------------------------------------------------------------- feedback
