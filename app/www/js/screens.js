@@ -1782,7 +1782,7 @@ function materialsCard(scan, onOpen, onArticle) {
  * often the thing the person actually wanted to know, and offers to put the
  * brand in the queue.
  */
-export function unknown(root, { scan, brand, product, hasPass, onCheck, onRequest, onBuy, onOpen, onSearch, onPaste }) {
+export function unknown(root, { scan, brand, product, hasPass, balance, onCheck, onRequest, onBuy, onOpen, onSearch, onPaste }) {
   const named = [brand, product].filter(Boolean).join(" ").trim()
     || (scan && (scan.brandName || scan.title)) || "";
 
@@ -1878,6 +1878,15 @@ export function unknown(root, { scan, brand, product, hasPass, onCheck, onReques
   now.appendChild(log);
 
   if (hasPass) {
+    // What the pass has left, where the pass is about to be spent. The app
+    // could always ask the worker this and never did, so somebody who bought a
+    // hundred checks had no way to know they were down to two.
+    if (typeof balance === "number") {
+      now.appendChild(el("div", "pkg-why",
+        balance > 0
+          ? `${balance} ${balance === 1 ? "check" : "checks"} left on your pass.`
+          : "No checks left on this pass."));
+    }
     const go = el("button", "cta", "Run the check");
     go.onclick = () => onCheck(go, log);
     now.appendChild(go);
@@ -1941,7 +1950,7 @@ export function checkVerdict(event) {
 
 // ------------------------------------------------------------------ about
 
-export function about(root, { meta, bundle, onOpen, notify, purchases, onFeedback, onRate }) {
+export function about(root, { meta, bundle, onOpen, notify, purchases, onFeedback, onRate, checks }) {
   root.appendChild(el("div", "hero")).appendChild(el("h1", null, "How this works"));
 
   const how = el("div", "card");
@@ -1972,6 +1981,30 @@ export function about(root, { meta, bundle, onOpen, notify, purchases, onFeedbac
       : "App build: bundled version.";
   }).catch(() => { line.textContent = "App build: bundled version."; });
   root.appendChild(data);
+
+  // The pass and what is left on it, next to the purchase it belongs with. A
+  // pass is a token rather than an account, so this screen is the only place it
+  // can be seen, replaced, or found at all.
+  if (checks && (checks.hasPass || checks.onPaste)) {
+    const box = el("div", "card");
+    box.appendChild(el("h2", null, "Your checks"));
+    box.appendChild(el("p", null, checks.hasPass
+      ? (typeof checks.balance === "number"
+        ? `${checks.balance} ${checks.balance === 1 ? "check" : "checks"} left on this pass. Each instant check on an unresearched product spends one.`
+        : "Your pass is saved on this phone. We could not reach the server to count what is left.")
+      : "Instant checks come from a pass bought on our website. If you have one already, add it here."));
+    const btn = el("button", "cta outline", checks.hasPass ? "Use a different pass" : "Add a pass");
+    btn.type = "button";
+    btn.onclick = () => checks.onPaste();
+    box.appendChild(btn);
+    if (checks.onBuy) {
+      const buy = el("button", "cta ghost", checks.hasPass ? "Buy more checks" : "Get checks");
+      buy.type = "button";
+      buy.onclick = () => checks.onBuy();
+      box.appendChild(buy);
+    }
+    root.appendChild(box);
+  }
 
   // Restore, somewhere that is always there. The Kids room offers it too, but
   // only while the room is locked: a reviewer who had just bought the room in

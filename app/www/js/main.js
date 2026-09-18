@@ -277,6 +277,9 @@ function allPhases() {
 
 let kidsPrice = null;
 let kidsWeb = null;
+// How many paid checks are left. null means we have not asked yet, which is a
+// different thing from nought and must not be drawn as one.
+let checkBalance = null;
 
 function notifyProps() {
   return {
@@ -388,6 +391,7 @@ function draw() {
       brand: state.brand || state.query || "",
       product: state.product || "",
       hasPass: !!check.getPass(),
+      balance: checkBalance,
       onCheck: (btn, log) => runInstantCheck(state, btn, log),
       // The screen now supplies a name when we could not read one off the
       // barcode, because a request to research "0812154030013" is not a
@@ -431,6 +435,12 @@ function draw() {
       },
       onFeedback: sendFeedback,
       onRate: () => { track("rate_link_opened", {}); openExternal(rate.storeUrl()); },
+      checks: {
+        hasPass: !!check.getPass(),
+        balance: checkBalance,
+        onPaste: promptForPass,
+        onBuy: () => openExternal(check.buyUrl("", "")),
+      },
     });
   } else if (state.screen === "shop") {
     screens.shopIndex(view, {
@@ -883,6 +893,10 @@ async function runInstantCheck(state, button, log) {
   button.textContent = "Checking";
   log.replaceChildren();
 
+  // A check costs one off the pass, so the number on screen is wrong the moment
+  // this finishes unless we ask again.
+  const spend = () => { refreshBalance(); };
+
   await check.run({
     brand,
     product,
@@ -892,6 +906,7 @@ async function runInstantCheck(state, button, log) {
     onDone: (event) => {
       button.disabled = false;
       button.textContent = "Run the check";
+      spend();
       if (event.needsCredits) {
         log.appendChild(el("p", "pkg-why", event.error || "No checks left on this pass."));
         button.remove();
@@ -911,6 +926,21 @@ async function runInstantCheck(state, button, log) {
 }
 
 /** A pass bought on the website, brought back by hand. */
+/**
+ * How many checks the pass has left.
+ *
+ * The app could always ask and never did, so somebody who had paid for a
+ * hundred checks had no way to know they had used ninety of them, and no way
+ * to know the pass had arrived at all beyond it not complaining. Asked on
+ * boot, after a pass arrives, and after every check, since every check spends
+ * one.
+ */
+async function refreshBalance() {
+  if (!check.getPass()) { checkBalance = null; return; }
+  const n = await check.balance().catch(() => null);
+  if (n !== checkBalance) { checkBalance = n; render(); }
+}
+
 function promptForPass() {
   const token = window.prompt("Paste your pass link or token");
   if (!token) return;
@@ -919,6 +949,7 @@ function promptForPass() {
   check.setPass(decodeURIComponent(value.trim()));
   toast("Pass saved.");
   render();
+  refreshBalance();
 }
 
 // ------------------------------------------------------------------- scan
@@ -1226,6 +1257,7 @@ export async function openDeepLink(search) {
     check.setPass(pass);
     toast("Pass saved.");
     render();
+    refreshBalance();
     return;
   }
 
@@ -1282,6 +1314,7 @@ async function start() {
   // this runs, so the schedule simply gets laid down.
   notify.autoStart().catch(() => {});
   if (kids.unlocked()) kids.load().then(() => render()).catch(() => {});
+  refreshBalance();
 
   // Refreshed after the first screen is up, never before it. A scan in a shop
   // with one bar of signal must not wait on a two megabyte download.

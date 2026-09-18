@@ -299,6 +299,29 @@ function showVet(balance){
   if (balance <= 0) showBuy();
 }
 
+// Somebody who arrived from the app has to leave with the pass, not with a
+// token to copy. Stripe's success URL is fixed, so app=1 cannot survive the
+// round trip on its own: it is remembered here and read back afterwards.
+var FROM_APP = false;
+try {
+  if (qs.get("app")) localStorage.setItem("pdFromApp", "1");
+  FROM_APP = localStorage.getItem("pdFromApp") === "1";
+} catch (e) {}
+
+function handToApp(pass) {
+  if (!FROM_APP || !pass) return;
+  var link = "plasticdetox://pass?pass=" + encodeURIComponent(pass);
+  var wrap = document.getElementById("banner");
+  var a = document.createElement("a");
+  a.href = link;
+  a.textContent = "Open the app with this pass";
+  a.style.cssText = "display:block;text-align:center;background:#12130F;color:#fff;text-decoration:none;font-weight:700;padding:0.9rem;border-radius:32px;margin-top:0.9rem;";
+  wrap.appendChild(a);
+  try { localStorage.removeItem("pdFromApp"); } catch (e) {}
+  // One attempt without a tap; iOS often wants the tap, so the button stays.
+  setTimeout(function () { location.href = link; }, 700);
+}
+
 async function init(){
   const banner = document.getElementById("banner");
 
@@ -317,6 +340,7 @@ async function init(){
         banner.className="banner ok";
         banner.textContent = "Payment received. Your pass is active with " + d.balance + " checks. A backup link is on its way to your email; either one works.";
         showVet(d.balance);
+        handToApp(PASS);
         return;
       }
     } catch(e){}

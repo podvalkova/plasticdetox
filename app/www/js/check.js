@@ -51,9 +51,19 @@ export async function balance() {
   }
 }
 
+/**
+ * Where checks are bought.
+ *
+ * app=1 tells the website that whoever lands there came from the app, so that
+ * after Stripe it offers the pass back through the app's own URL scheme rather
+ * than printing a token for somebody to copy. Buying a pass and then having to
+ * retype it into the app is the kind of step people simply do not complete.
+ */
 export function buyUrl(brand, product) {
   const q = [brand, product].filter(Boolean).join(" ").trim();
-  return `${SITE}/vet.html${q ? `?q=${encodeURIComponent(q)}` : ""}`;
+  const params = new URLSearchParams({ app: "1" });
+  if (q) params.set("q", q);
+  return `${SITE}/vet.html?${params.toString()}`;
 }
 
 /**
