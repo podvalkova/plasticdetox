@@ -149,12 +149,19 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .row-quiet { background: transparent; border-style: dashed; border-color: var(--border-strong); }
 .row-quiet .row-name { color: var(--accent); }
 
+/* A name we only know how to spell. Quieter than a verdict row on purpose:
+   a hollow dot, a lighter name, and no surface of its own, so nothing about
+   it reads as an answer. */
+.row.suggest { background: transparent; border-style: dashed; }
+.row.suggest .row-name { font-weight: 550; }
+
 .dot { width: 9px; height: 9px; border-radius: 999px; flex: none; }
 .dot.good { background: var(--good); }
 .dot.careful { background: var(--careful); }
 .dot.skip { background: var(--skip); }
 .dot.neutral { background: var(--faint); }
 .dot.brand { background: var(--accent); }
+.dot.none { background: transparent; border: 1.5px dashed var(--border-strong); }
 
 /* Recently checked: one row that scrolls sideways, however many there are. */
 .strip {

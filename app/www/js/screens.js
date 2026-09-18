@@ -82,6 +82,19 @@ export function home(root, {
   brand.input.oninput = () => onSearch(brand.input.value, results, () => ({
     brand: brand.input.value, product: product.input.value,
   }), (hit) => {
+    // A name out of the dictionary is a spelling, not a verdict. It fills the
+    // brand and hands straight to the product field, because the only way we
+    // can say anything about it is if somebody tells us what it is.
+    if (hit.suggest) {
+      brand.input.value = hit.suggest;
+      results.replaceChildren();
+      picker.replaceChildren();
+      product.wrap.hidden = false;
+      product.input.focus();
+      product.wrap.scrollIntoView({ block: "center", behavior: "smooth" });
+      armCheck();
+      return true;
+    }
     // A brand this phone has checked behaves like any other brand: the name
     // fills the field and its products are offered below. Filling both fields
     // instead, or jumping straight to the answer, made this one brand work
@@ -90,14 +103,16 @@ export function home(root, {
       brand.input.value = hit.checked.brand || "";
       results.replaceChildren();
       showProducts(hit.brand);
+      armCheck();
       return true;
     }
     if (hit.product || hit.scan) return false;
     brand.input.value = hit.brand.brand;
     results.replaceChildren();
     showProducts(hit.brand);
+    armCheck();
     return true;
-  }, 5);
+  }, 5, true);
   form.appendChild(results);
 
   // Which one of theirs is it?
@@ -243,14 +258,29 @@ function noCameraReason(reason) {
 export function renderResults(container, hits, onPick) {
   container.replaceChildren();
   if (!hits.length) return;
-  container.appendChild(el("div", "section-title", `${hits.length} match${hits.length === 1 ? "" : "es"}`));
+  // Two lists, never one. Above the line are brands we hold verdicts on; below
+  // it are names out of the dictionary, which we know how to spell and nothing
+  // more. Counting them together would have said "6 matches" over five brands
+  // and one name, which is the one thing this list must not claim.
+  const found = hits.filter((h) => !h.suggest);
+  if (found.length) {
+    container.appendChild(el("div", "section-title",
+      `${found.length} match${found.length === 1 ? "" : "es"}`));
+  }
+  let banner = false;
   for (const hit of hits) {
-    const row = el("button", "row");
-    row.appendChild(el("span", `dot ${hit.brand.stance || "neutral"}`));
+    if (hit.suggest && !banner) {
+      banner = true;
+      container.appendChild(el("div", "section-title", "Not checked yet"));
+    }
+    const row = el("button", `row${hit.suggest ? " suggest" : ""}`);
+    row.type = "button";
+    row.appendChild(el("span", `dot ${hit.suggest ? "none" : (hit.brand.stance || "neutral")}`));
     const body = el("div", "row-body");
     body.appendChild(el("div", "row-name", hit.brand.brand));
-    body.appendChild(el("div", "row-sub",
-      hit.product ? `${hit.product.name} · ${hit.brand.category}` : hit.brand.category));
+    body.appendChild(el("div", "row-sub", hit.suggest
+      ? "Tap, then tell us which product"
+      : hit.product ? `${hit.product.name} · ${hit.brand.category}` : hit.brand.category));
     row.appendChild(body);
     row.appendChild(el("span", "row-chev", "›"));
     row.onclick = () => onPick(hit);

@@ -67,7 +67,7 @@ else
 fi
 
 echo
-echo "==> 1b. does the store only sell what Brand Check stands behind?"
+echo "==> 1b. does the store only sell what Product Check stands behind?"
 # Nothing had ever asked. validate-data checks brand-data against itself and
 # never opens store.html, so the shelf and the verdicts drifted apart in
 # silence: 113 of 293 store products could not be stood behind, 9 of them

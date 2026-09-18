@@ -239,6 +239,40 @@ export class Index {
 }
 
 /**
+ * Brand names we hold nothing on, for the Brand field's type ahead.
+ *
+ * The field knew only the brands we have rated, so four letters of anything
+ * else left the dropdown empty. An empty dropdown reads as a broken field, not
+ * as "we have not checked that one", and the way out of it, typing the product
+ * and asking for a check, was invisible.
+ *
+ * These carry no verdict and never will: the dictionary is a list of names.
+ * The caller marks them as unchecked, and picking one fills the brand and
+ * leaves the product to the person holding it.
+ *
+ * `taken` holds the collapsed names already answered by the database, so a
+ * brand we rate is never shadowed by a bare name of itself.
+ */
+export function suggestNames(names, query, taken = null, limit = 5) {
+  const q = collapse(query);
+  if (q.length < 2 || !names || !names.length) return [];
+  const starts = [], inside = [];
+  for (const n of names) {
+    const k = collapse(n);
+    if (taken && taken.has(k)) continue;
+    if (k.startsWith(q)) starts.push(n);
+    else if (starts.length < limit && inside.length < limit && k.includes(q)) inside.push(n);
+    if (starts.length >= limit * 3) break;
+  }
+  // Shortest first: somebody typing "cera" wants CeraVe before Ceramic Glaze
+  // Imports, and the file is stored alphabetically so nothing else orders them.
+  const byLength = (a, b) => a.length - b.length || a.localeCompare(b);
+  starts.sort(byLength);
+  inside.sort(byLength);
+  return [...starts, ...inside].slice(0, limit);
+}
+
+/**
  * Close enough to be the same word: one edit away, or one edit away from the
  * start of it, so "woopsie" reaches "whoopsie" and "carlsen" reaches "carlson"
  * without "water" reaching "waxed".

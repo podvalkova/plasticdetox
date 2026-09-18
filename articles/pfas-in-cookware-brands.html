@@ -40,7 +40,7 @@
     "author": { "@type": "Organization", "name": "Plastic Detox Editorial Team", "url": "https://plasticdetox.org/about.html" },
     "publisher": { "@type": "Organization", "name": "Plastic Detox", "url": "https://plasticdetox.org" },
     "datePublished": "2026-07-21",
-    "dateModified": "2026-09-14",
+    "dateModified": "2026-09-18",
     "lastReviewed": "2026-07-21",
     "mainEntityOfPage": "https://plasticdetox.org/articles/pfas-in-cookware-brands.html"
   }
@@ -57,7 +57,7 @@
         "name": "How do I find out if my cookware brand uses PFAS?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Under California's AB 1200 law, cookware makers must publish online whether they intentionally add PFAS, lead, arsenic, or formaldehyde. Defend Our Health compiled these hard to find disclosures into a searchable directory covering more than 200 brands. You can also type any brand into the Plastic Detox Brand Check tool for an instant PFAS verdict."
+          "text": "Under California's AB 1200 law, cookware makers must publish online whether they intentionally add PFAS, lead, arsenic, or formaldehyde. Defend Our Health compiled these hard to find disclosures into a searchable directory covering more than 200 brands. You can also type any brand into the Plastic Detox Product Check tool for an instant PFAS verdict."
         }
       },
       {
@@ -387,7 +387,7 @@
       function showUnknown(q) {
         var clean = q.trim();
         if (window.gtag) gtag('event', 'brand_check_embed_unknown', { brand: clean });
-        res.innerHTML = '<div class="cbc-unknown"><h4>' + esc(clean) + ' is not in the cookware list</h4><p>It may be filed under another category, or not reviewed yet. Try the full <a href="../brand-check.html?b=' + encodeURIComponent(clean) + '" style="color:#7c3aed;font-weight:600;">Brand Check</a>, which covers 600+ brands across every category.</p></div>';
+        res.innerHTML = '<div class="cbc-unknown"><h4>' + esc(clean) + ' is not in the cookware list</h4><p>It may be filed under another category, or not reviewed yet. Try the full <a href="../brand-check.html?b=' + encodeURIComponent(clean) + '" style="color:#7c3aed;font-weight:600;">Product Check</a>, which covers every category we research.</p></div>';
       }
       var deb;
       inp.addEventListener("input", function () { clearTimeout(deb); var v = inp.value; deb = setTimeout(function () { if (v.trim().length >= 2) renderSugg(v); else sugg.classList.remove("show"); }, 80); });

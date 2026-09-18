@@ -573,6 +573,19 @@ const barcodeSrc = path.join(REPO, "data", "barcodes.json");
 if (fs.existsSync(barcodeSrc)) fs.copyFileSync(barcodeSrc, barcodes);
 else if (!fs.existsSync(barcodes)) fs.writeFileSync(barcodes, "{}\n");
 
+// Brand names we hold no verdict on, so the Brand field can suggest something
+// when somebody types a brand we have never rated. Names only: the app shows
+// them under "Not checked yet" and they carry nothing that could read as an
+// answer. Built by tools/build-brand-names.py from public registers.
+const namesSrc = path.join(REPO, "data", "brand-names.json");
+if (fs.existsSync(namesSrc)) {
+  const dict = JSON.parse(fs.readFileSync(namesSrc, "utf8"));
+  const names = (dict.names || []).filter((n) => typeof n === "string");
+  const body = JSON.stringify({ generated: dict.generated || "", names }) + "\n";
+  fs.writeFileSync(path.join(OUT, "brand-names.json"), body);
+  console.log(`${"brand-names.json".padEnd(18)} ${(body.length / 1024).toFixed(0)} KB, ${names.length} names`);
+}
+
 const stamp = {
   brands,
   built: new Date().toISOString(),

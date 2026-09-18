@@ -33,6 +33,7 @@ let productNotesById = {};
 let articles = [];
 let tips = [];
 let plan = [];
+let brandNames = [];
 
 /**
  * The buy link for an ASIN.
@@ -65,6 +66,18 @@ export function productImage(asin, px = 300) {
 
 /** The articles, newest first. */
 export function allArticles() { return articles; }
+
+/**
+ * Brand names we hold no verdict on.
+ *
+ * The Brand field used to know only the brands we have rated, so typing four
+ * letters of anything else left the dropdown empty, which reads as a broken
+ * field rather than as "we have not checked that one". These 7,700 names come
+ * from public registers (see tools/build-brand-names.py) and carry nothing
+ * else: no verdict, no category, no implication that we looked. Tapping one
+ * fills the brand and leaves the product to the person holding it.
+ */
+export function brandDictionary() { return brandNames; }
 
 /** What the store says about a product: tier, what it is best for, pros, cons. */
 export function productNotes(asin) { return (asin && productNotesById[asin]) || null; }
@@ -163,14 +176,17 @@ let lastBuild = "";
 async function sidecars() {
   if (sidecarsLoaded) return;
   sidecarsLoaded = true;
-  [campaignLinks, productImages, productNotesById, articles, plan, tips] = await Promise.all([
+  let dictionary;
+  [campaignLinks, productImages, productNotesById, articles, plan, tips, dictionary] = await Promise.all([
     readBundled("campaign-links").catch(() => ({})),
     readBundled("product-images").catch(() => ({})),
     readBundled("product-notes").catch(() => ({})),
     readBundled("articles").catch(() => []),
     readBundled("plan").catch(() => []),
     readBundled("tips").catch(() => []),
+    readBundled("brand-names").catch(() => null),
   ]);
+  brandNames = (dictionary && dictionary.names) || [];
 }
 
 export async function load() {

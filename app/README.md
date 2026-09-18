@@ -3,7 +3,7 @@
 One thing ships in the binary: the app. Scan a barcode or search, get the
 four front verdict, and work through the home detox.
 
-Brand Check for Safari used to ship alongside it, built from the same
+Product Check for Safari used to ship alongside it, built from the same
 `extension/` folder as the Chrome build. The target was removed 2026-09-04
 (it was not working on device); the Chrome extension is untouched. To bring
 it back, regenerate the shell with the converter command below and re-add

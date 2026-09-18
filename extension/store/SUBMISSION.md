@@ -1,6 +1,6 @@
 # Chrome Web Store submission pack
 
-Everything needed to publish **Plastic Detox Brand Check**. Fields below are
+Everything needed to publish **Plastic Detox Product Check**. Fields below are
 written to be pasted directly into the developer console.
 
 Build the upload file first:
@@ -78,7 +78,7 @@ question entirely, at the cost of that 8.3%.
 
 | Field | Value |
 |---|---|
-| Item name | `Plastic Detox Brand Check` |
+| Item name | `Plastic Detox Product Check` |
 | Summary (132 char max) | `Every Amazon listing checked on four fronts: formula, packaging, recalls and lawsuits, independent lab tests.` |
 | Category | **Shopping** |
 | Language | English (United States) |
@@ -241,7 +241,7 @@ authentication data, no financial data, no health data, and no communications.
 
 **Privacy policy URL**: `https://plasticdetox.org/privacy.html`
 
-> The privacy page now carries a section titled **"The Brand Check Browser
+> The privacy page now carries a section titled **"The Product Check Browser
 > Extension"** covering exactly this. Confirm it is live before submitting,
 > because a reviewer will open the URL and look for it.
 

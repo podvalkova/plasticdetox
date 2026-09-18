@@ -30,7 +30,7 @@
   <meta property="og:image:height" content="630">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Brand Check: Skip, Careful, or Good Choice?">
+  <meta name="twitter:title" content="Product Check: Skip, Careful, or Good Choice?">
   <meta name="twitter:description" content="Get an instant verdict on any product or brand: skip, careful, or good choice. 950+ brands checked.">
   <meta name="twitter:image" content="https://plasticdetox.org/images/social-share.png">
 
@@ -40,11 +40,11 @@
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "Plastic Detox Brand Check",
+    "name": "Plastic Detox Product Check",
     "applicationCategory": "HealthApplication",
     "operatingSystem": "Web",
     "url": "https://plasticdetox.org/brand-check.html",
-    "description": "Look up any brand for a skip, careful, or good choice verdict based on independent lab tests, recalls, lawsuits, ingredients, and materials.",
+    "description": "Look up any product for a skip, careful, or good choice verdict based on independent lab tests, recalls, lawsuits, ingredients, and materials.",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
     "isPartOf": { "@type": "WebSite", "name": "Plastic Detox", "url": "https://plasticdetox.org" }
   }
@@ -402,7 +402,7 @@
   <main>
     <section class="shell hero">
       <div>
-        <div class="kicker" id="statLine">Loading brand database…</div>
+        <div class="kicker" id="statLine">Loading the product database…</div>
         <h1>Is that product a <em>skip</em> or a <em>good choice</em>?</h1>
         <p class="sub">Type any product or brand and get a straight answer, drawn from independent lab tests, recalls, lawsuits, ingredients, and materials. No marketing spin.</p>
 
@@ -635,7 +635,7 @@
         if (q) { searchEl.value = q; lookup(q); }
         else showExample();
       })
-      .catch(() => { $("statLine").textContent = "Could not load the brand database. Please refresh."; });
+      .catch(() => { $("statLine").textContent = "Could not load the product database. Please refresh."; });
 
 
     // Only offer the extension to browsers that can actually run it: desktop

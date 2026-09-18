@@ -11,7 +11,7 @@ import { lookup, cleanCode } from "./upc.js";
 import { el, toast } from "./ui.js";
 import { roomName } from "./detox-content.js";
 import * as notify from "./notify.js";
-import { verdictFor } from "./match.js";
+import { verdictFor, suggestNames, collapse } from "./match.js";
 import { track, setBundle, flush, setContext } from "./track.js";
 import * as kids from "./kids.js";
 import * as rate from "./rate.js";
@@ -872,7 +872,7 @@ function toggleSaved(b, row) {
 // ----------------------------------------------------------------- search
 
 let searchTimer = null;
-function runSearch(query, container, getDraft, onHit, limit = 20) {
+function runSearch(query, container, getDraft, onHit, limit = 20, suggest = false) {
   clearTimeout(searchTimer);
   // Debounced because a search over 960 brands with their product rows is
   // cheap but not free, and a fast typist would otherwise run it per keystroke.
@@ -907,6 +907,17 @@ function runSearch(query, container, getDraft, onHit, limit = 20) {
       }
       hits.sort((a, b) => b.score - a.score);
     }
+    // What the database answered, before the dictionary is appended. A name we
+    // merely know how to spell is not a match, and must not stop a miss being
+    // logged: the misses are the research queue.
+    const found = hits.length;
+    if (suggest && found < limit) {
+      const taken = new Set(hits.map((h) => collapse(h.brand.brand)));
+      for (const b of index.brands) taken.add(collapse(b.brand));
+      for (const name of suggestNames(data.brandDictionary(), query, taken, limit - found)) {
+        hits.push({ suggest: name, brand: { brand: name }, score: -1 });
+      }
+    }
     screens.renderResults(container, hits, (hit) => {
       // The caller may want a suggestion to fill a field rather than answer
       // the question. On the two field form, picking a brand is not the same
@@ -916,6 +927,9 @@ function runSearch(query, container, getDraft, onHit, limit = 20) {
       // product to the person holding it. Jumping straight to the answer here
       // skipped the product field entirely.
       if (onHit && onHit(hit)) return;
+      // A dictionary name is not an answer, so there is nowhere to go with it.
+      // Only the screen that asked for suggestions knows what to do with one.
+      if (hit.suggest) return;
       if (hit.checked) {
         go({ screen: "unknown", brand: hit.checked.brand, product: hit.checked.product || "",
              scan: null, checkResult: hit.checked });
@@ -926,7 +940,7 @@ function runSearch(query, container, getDraft, onHit, limit = 20) {
     });
     // Only a query that found nothing is worth logging: that is the research
     // queue. A query that matched tells us nothing we do not already hold.
-    if (query.trim().length >= 3 && !hits.length) logSearch(query, false);
+    if (query.trim().length >= 3 && !found) logSearch(query, false);
   }, 120);
 }
 
