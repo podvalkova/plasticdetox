@@ -1410,8 +1410,35 @@ function worthKnowing(ext, fronts, shown = []) {
   return box;
 }
 
+/**
+ * A long note, shown short with a way to open the rest.
+ *
+ * Primally Pure's brand note runs to 900 characters. On a phone that is the
+ * whole screen between the verdict and the checks behind it, and the reader
+ * scrolls past all of it to reach what they came for.
+ */
+function clamped(text, limit = 220) {
+  const full = String(text || "").trim();
+  const frag = document.createDocumentFragment();
+  if (full.length <= limit) {
+    frag.appendChild(document.createTextNode(full));
+    return frag;
+  }
+  let cut = full.lastIndexOf(". ", limit);
+  if (cut < limit * 0.6) cut = full.lastIndexOf(" ", limit);
+  if (cut < 0) cut = limit;
+  const span = el("span", null, full.slice(0, cut + 1).trim() + " ");
+  const more = el("button", "more-toggle", "Read more");
+  more.type = "button";
+  more.onclick = () => { span.textContent = full + " "; more.remove(); };
+  frag.appendChild(span);
+  frag.appendChild(more);
+  return frag;
+}
+
 export function result(root, { index, match, scan, product, query, productNamed, onArticle,
-  onOpen, onPick, onProduct, onSave, isSaved, onRequest, onShare }) {
+  onOpen, onPick, onProduct, onSave, isSaved, onRequest, onShare,
+  hasPass, balance, onCheck, onBuy, onPaste }) {
   // A barcode bound to an ASIN names the exact product, which is better than
   // any title match: productFor prefers `asins` and falls back to phrases.
   // Without this the binding sat in the data and the card still read the
@@ -1450,24 +1477,36 @@ export function result(root, { index, match, scan, product, query, productNamed,
       : el("span", "badge neutral", "No verdict on this product"));
 
   head.appendChild(el("div", "verdict-brand", v.brand.brand));
-  head.appendChild(el("div", "verdict-cat",
-    v.level === "product" && v.product ? `${v.product.name} · ${v.brand.category}` : v.brand.category));
+  const catLine = (() => {
+    // Whenever we have the product in hand, the line names the product. Keying
+    // it on the verdict's level meant a card about the Body Oil was labelled
+    // "Sunscreen", which is the shelf the BRAND was rated on.
+    if (v.product && (v.product.name || "").trim()) {
+      const own = String(v.product.cat || "").trim();
+      const name = String(v.product.name || "").trim();
+      return own && own.toLowerCase() !== name.toLowerCase() ? `${name} · ${own}` : name;
+    }
+    return v.brand.category;
+  })();
+  head.appendChild(el("div", "verdict-cat", catLine));
   if (v.reason) head.appendChild(el("p", "verdict-reason", v.reason));
 
   const expo = exposureBlock(v.ext && v.ext.exposure);
   if (expo) head.appendChild(expo);
 
-  if (v.brandReason) {
-    const bl = el("div", "verdict-scope");
-    bl.appendChild(el("b", null, "About the brand: "));
-    bl.appendChild(document.createTextNode(v.brandReason));
-    head.appendChild(bl);
-  } else if (!v.asserted) {
-    // Say what is missing, in the data's own words where it has them.
+  if (!v.asserted) {
+    // Say what is missing first, in the data's own words where it has them.
+    // The brand note used to take this slot whenever there was one, so a card
+    // with no verdict opened with a paragraph of brand background instead.
     const box = el("div", "verdict-scope");
     box.appendChild(document.createTextNode(
       v.why || `We have researched ${v.brand.brand}, but not this exact product, so we are not putting a verdict on it.`));
     head.appendChild(box);
+  } else if (v.brandReason) {
+    const bl = el("div", "verdict-scope");
+    bl.appendChild(el("b", null, "About the brand: "));
+    bl.appendChild(clamped(v.brandReason));
+    head.appendChild(bl);
   } else if (v.scoped) {
     head.appendChild(el("div", "verdict-scope",
       `This is our finding on ${v.brand.brand} ${String(v.brand.category || "").toLowerCase()} generally. We have not researched this exact product.`));
@@ -1586,6 +1625,88 @@ export function result(root, { index, match, scan, product, query, productNamed,
 
   root.appendChild(card);
 
+  // With no verdict on this product, the two ways to get one come before
+  // anything else. They used to sit below the brand note and the product list,
+  // which is a lot of reading to reach the only thing that answers the
+  // question the person actually has.
+  if (!v.asserted) {
+    // We know the brand here. What we usually do not know is which of its
+    // products is in someone's hand, and that is the half that decides the
+    // answer, so ask for it rather than send the brand on its own.
+    const known = (v.product && v.product.name) || "";
+    let askProduct = null;
+    const productName = () => known || (askProduct ? askProduct.input.value.trim() : "");
+
+    if (onRequest) {
+      const ask = el("div", "card");
+      ask.appendChild(el("h2", null, "Want us to check this one?"));
+      ask.appendChild(el("p", null,
+        `Leave your email and we will research ${v.brand.brand}`
+        + `${known ? " " + known : ""} by hand `
+        + "and send you the verdict, usually within 2 business days."));
+      if (!known) {
+        askProduct = field("For example Coconut & Vanilla deodorant", query || "", "Which product");
+        ask.appendChild(askProduct.wrap);
+      }
+      const input = el("input");
+      input.type = "email";
+      input.placeholder = "you@email.com";
+      input.autocapitalize = "none";
+      input.autocomplete = "email";
+      ask.appendChild(input);
+      const btn = el("button", "cta ghost", "Request a free check");
+      btn.onclick = () => onRequest(v.brand.brand, productName(), input.value, btn);
+      ask.appendChild(btn);
+      root.appendChild(ask);
+    }
+
+    // And the answer in the aisle, for a pass that already has checks on it.
+    // The unknown screen has offered this for a while; a verdict card that
+    // said "no verdict on this product" sent the same person away empty.
+    if (onCheck || onBuy) {
+      const now = el("div", "card");
+      now.appendChild(el("h2", null, "Or get the answer now"));
+      now.appendChild(el("p", null,
+        "The same four checks we run on every verdict: formula, materials, recalls and lawsuits, "
+        + "independent tests. About a minute, and it shows its sources."));
+      const log = el("div", "checklog");
+      now.appendChild(log);
+      if (onCheck && hasPass) {
+        if (typeof balance === "number") {
+          now.appendChild(el("div", "pkg-why",
+            balance > 0
+              ? `${balance} ${balance === 1 ? "check" : "checks"} left on your pass.`
+              : "No checks left on this pass."));
+        }
+        const go = el("button", "cta", "Run the check");
+        go.onclick = () => onCheck(go, log, v.brand.brand, productName());
+        now.appendChild(go);
+      } else if (onBuy) {
+        now.appendChild(el("p", "pkg-why", "Checks come in packs, starting at $5 for 20."));
+        const buy = el("button", "cta", "Get checks");
+        buy.onclick = onBuy;
+        now.appendChild(buy);
+        if (onPaste) {
+          const paste = el("button", "cta ghost", "I already have a pass");
+          paste.onclick = onPaste;
+          now.appendChild(paste);
+        }
+      }
+      root.appendChild(now);
+    }
+
+    // The brand note last of the three, and clamped, because it is background
+    // rather than an answer.
+    if (v.brandReason) {
+      const about = el("div", "card");
+      about.appendChild(el("h2", null, "About the brand"));
+      const pp = el("p", null);
+      pp.appendChild(clamped(v.brandReason));
+      about.appendChild(pp);
+      root.appendChild(about);
+    }
+  }
+
   if (v.heldBack && v.heldBack.length) {
     const held = el("div", "card");
     held.appendChild(el("h2", null, "Why there is no recommendation"));
@@ -1616,39 +1737,6 @@ export function result(root, { index, match, scan, product, query, productNamed,
       }
       root.appendChild(box);
     }
-  }
-
-  // Knowing the brand is not knowing the product, and somebody standing in a
-  // shop with the thing in their hand is the best possible moment to ask. The
-  // unknown screen already offered this; a card that says "no verdict on this
-  // product" and then offers nothing was the dead end.
-  if (onRequest && !v.asserted) {
-    const ask = el("div", "card");
-    ask.appendChild(el("h2", null, "Want us to check this one?"));
-    ask.appendChild(el("p", null,
-      `Leave your email and we will research ${v.brand.brand}`
-      + `${v.product && v.product.name ? " " + v.product.name : ""} by hand `
-      + "and send you the verdict, usually within 2 business days."));
-    // We know the brand here. What we usually do not know is which of its
-    // products is in someone's hand, and that is the half that decides the
-    // answer, so ask for it rather than send the brand on its own.
-    const known = (v.product && v.product.name) || "";
-    let askProduct = null;
-    if (!known) {
-      askProduct = field("For example Coconut & Vanilla deodorant", query || "", "Which product");
-      ask.appendChild(askProduct.wrap);
-    }
-    const input = el("input");
-    input.type = "email";
-    input.placeholder = "you@email.com";
-    input.autocapitalize = "none";
-    input.autocomplete = "email";
-    ask.appendChild(input);
-    const btn = el("button", "cta ghost", "Request a free check");
-    btn.onclick = () => onRequest(
-      v.brand.brand, known || (askProduct ? askProduct.input.value.trim() : ""), input.value, btn);
-    ask.appendChild(btn);
-    root.appendChild(ask);
   }
 
   const ing = ingredientsCard(v.ext && v.ext.formulaAnswers);

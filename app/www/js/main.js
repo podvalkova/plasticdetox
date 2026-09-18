@@ -382,6 +382,15 @@ function draw() {
       isSaved,
       onRequest: (brand, product, email, btn) =>
         requestResearch({ brand, product }, email, btn),
+      // The same two ways out the unknown screen offers. A card that says it
+      // has no verdict on this product and offers only a two day wait sends
+      // somebody standing in a shop away with nothing.
+      hasPass: !!check.getPass(),
+      balance: checkBalance,
+      onCheck: (btn, log, brandName, productName) =>
+        runInstantCheck({ brand: brandName, product: productName }, btn, log),
+      onBuy: () => openExternal(check.buyUrl(state.query || "", "")),
+      onPaste: promptForPass,
       onProduct: (row) => go({ screen: "result", match: state.match, scan: state.scan, query: state.query, product: row }),
     });
     remember(state, v);
