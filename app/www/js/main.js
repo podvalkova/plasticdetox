@@ -443,6 +443,8 @@ function draw() {
       scan: state.scan,
       brand: state.brand || state.query || "",
       product: state.product || "",
+      checkResult: state.checkResult
+        || readCheck(state.brand || state.query || "", typeof state.product === "string" ? state.product : ""),
       hasPass: !!check.getPass(),
       balance: checkBalance,
       onCheck: (btn, log) => runInstantCheck(state, btn, log),
@@ -873,10 +875,31 @@ function runSearch(query, container, getDraft, onHit, limit = 20) {
   // cheap but not free, and a fast typist would otherwise run it per keystroke.
   searchTimer = setTimeout(() => {
     const hits = index.search(query, limit);
+    // A product somebody paid to research belongs in their own search results,
+    // whether or not we hold a row for its brand. Salt & Stone was checked,
+    // paid for, and then invisible to the field that had just researched it.
+    const q = String(query || "").trim().toLowerCase();
+    if (q.length >= 2) {
+      const seen = new Set(hits.map((h) => (h.brand.brand || "").toLowerCase()));
+      for (const c of Object.values(readChecks())) {
+        const name = String(c.brand || "");
+        if (!name || seen.has(name.toLowerCase())) continue;
+        if (!`${name} ${c.product || ""}`.toLowerCase().includes(q)) continue;
+        hits.push({ checked: c, brand: { brand: name, category: c.product || "Checked by you", products: [] },
+                    product: null, score: 950 });
+        seen.add(name.toLowerCase());
+      }
+      hits.sort((a, b) => b.score - a.score);
+    }
     screens.renderResults(container, hits, (hit) => {
       // The caller may want a suggestion to fill a field rather than answer
       // the question. On the two field form, picking a brand is not the same
       // as saying which product you are holding.
+      if (hit.checked) {
+        go({ screen: "unknown", brand: hit.checked.brand, product: hit.checked.product || "",
+             scan: null, checkResult: hit.checked });
+        return;
+      }
       if (onHit && onHit(hit)) return;
       const d = getDraft ? getDraft() : null;
       openHit(hit, d ? [d.brand, d.product].filter(Boolean).join(" ") : query);
@@ -1213,7 +1236,7 @@ function openRecent(entry) {
            query: `${entry.name} ${entry.sub || ""}`.trim(), checkResult: saved });
       return;
     }
-    go({ screen: "unknown", brand: entry.name, product: entry.sub || "", scan: null });
+    go({ screen: "unknown", brand: entry.name, product: entry.sub || "", scan: null, checkResult: saved });
     return;
   }
   const brand = index.brands.find((b) => b.id === entry.id);

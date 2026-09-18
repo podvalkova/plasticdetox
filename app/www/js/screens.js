@@ -1918,9 +1918,25 @@ function materialsCard(scan, onOpen, onArticle) {
  * often the thing the person actually wanted to know, and offers to put the
  * brand in the queue.
  */
-export function unknown(root, { scan, brand, product, hasPass, balance, onCheck, onRequest, onBuy, onOpen, onSearch, onPaste }) {
+export function unknown(root, { scan, brand, product, hasPass, balance, onCheck, onRequest, onBuy, onOpen, onSearch, onPaste, checkResult }) {
   const named = [brand, product].filter(Boolean).join(" ").trim()
     || (scan && (scan.brandName || scan.title)) || "";
+
+  // A check this person paid for, on a brand we hold nothing else about. It
+  // used to land here and be told we had not checked it, which is the one
+  // thing that is certainly untrue: they bought the research.
+  if (checkResult && checkResult.verdict) {
+    const mine = el("div", "card card-lead");
+    mine.appendChild(el("h2", null, "Your check"));
+    const log = el("div", "checklog");
+    for (const k of ["formula", "materials", "legal", "testing"]) {
+      const f = (checkResult.fronts || {})[k];
+      if (f) log.appendChild(checkRow(k, f, FRONT_LABEL[k] || k));
+    }
+    mine.appendChild(log);
+    mine.appendChild(checkVerdict(checkResult, onOpen));
+    root.appendChild(mine);
+  }
 
   // No verdict here, so no verdict colour on the edge. The wash still applies:
   // it is the brand, not a judgement.
