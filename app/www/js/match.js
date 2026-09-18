@@ -216,8 +216,54 @@ export class Index {
       out.push({ brand: b, product: bestProduct, score });
     }
 
+    // A letter out and the search gave up. "Woopsie" found nothing while
+    // "Whoopsie" was right there, and a brand name on a package is exactly the
+    // thing people mistype. Only when nothing else matched, so a real hit is
+    // never pushed down by a near miss.
+    if (!out.length && q.length >= 4) {
+      for (const b of this.brands) {
+        const name = norm(b.brand);
+        let best = near(q, name) ? 300 : 0;
+        let bestProduct = null;
+        if (!best) {
+          for (const p of b.products || []) {
+            if (near(q, norm(p.name))) { best = 260; bestProduct = p; break; }
+          }
+        }
+        if (best) out.push({ brand: b, product: bestProduct, score: best - name.length / 10 });
+      }
+    }
+
     return out.sort((a, b) => b.score - a.score).slice(0, limit);
   }
+}
+
+/**
+ * Close enough to be the same word: one edit away, or one edit away from the
+ * start of it, so "woopsie" reaches "whoopsie" and "carlsen" reaches "carlson"
+ * without "water" reaching "waxed".
+ */
+function near(q, name) {
+  if (!name) return false;
+  if (name.includes(q)) return true;
+  if (editsWithinOne(q, name)) return true;
+  const head = name.slice(0, q.length + 1);
+  return head.length >= 4 && editsWithinOne(q, head);
+}
+
+/** True when one insertion, deletion or substitution turns a into b. */
+function editsWithinOne(a, b) {
+  const la = a.length, lb = b.length;
+  if (Math.abs(la - lb) > 1) return false;
+  let i = 0, j = 0, edits = 0;
+  while (i < la && j < lb) {
+    if (a[i] === b[j]) { i++; j++; continue; }
+    if (++edits > 1) return false;
+    if (la > lb) i++;
+    else if (lb > la) j++;
+    else { i++; j++; }
+  }
+  return edits + (la - i) + (lb - j) <= 1;
 }
 
 // -------------------------------------------------------------- verdicts
