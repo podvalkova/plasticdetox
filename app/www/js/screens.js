@@ -1488,18 +1488,19 @@ export function result(root, { index, match, scan, product, query, productNamed,
       : el("span", "badge neutral", "No verdict on this product"));
 
   head.appendChild(el("div", "verdict-brand", v.brand.brand));
-  const catLine = (() => {
-    // Whenever we have the product in hand, the line names the product. Keying
-    // it on the verdict's level meant a card about the Body Oil was labelled
-    // "Sunscreen", which is the shelf the BRAND was rated on.
-    if (v.product && (v.product.name || "").trim()) {
-      const own = String(v.product.cat || "").trim();
-      const name = String(v.product.name || "").trim();
-      return own && own.toLowerCase() !== name.toLowerCase() ? `${name} · ${own}` : name;
-    }
-    return v.brand.category;
-  })();
-  head.appendChild(el("div", "verdict-cat", catLine));
+  // The product names the card; its category sits under it on its own line.
+  // They used to share a line with a separator, and on a phone the name wraps
+  // and leaves the dot stranded at the start of the next line.
+  const named = v.product && String(v.product.name || "").trim();
+  const kind = named
+    ? String(v.product.cat || "").trim()
+    : String(v.brand.category || "").trim();
+  const catWrap = el("div", "verdict-cat");
+  catWrap.appendChild(el("span", "verdict-cat-name", named || kind));
+  if (named && kind && kind.toLowerCase() !== named.toLowerCase()) {
+    catWrap.appendChild(el("span", "verdict-cat-kind", kind));
+  }
+  head.appendChild(catWrap);
   if (v.reason) {
     // On a brand card this is the brand note itself, which is where the 900
     // character blurbs live. Same treatment as "About the brand" below.

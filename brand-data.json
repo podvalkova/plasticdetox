@@ -62642,7 +62642,7 @@
           "frontNotes": {
             "formula": "The published ingredient list carries nothing on the hazard list.",
             "testing": "Searched Lead Safe Mama (tamararubin.com site search and WordPress index for \"Kjaer Weis\" and \"Kjaer\": nothing matched), Mamavation (site search: only the green beauty PFAS makeup guide, which tested a different product, Kjaer Weis Red Liquid Lips, at 26 ppm organic fluorine, detection limit 10 ppm, EPA certified lab, 2022 to 2023), Consumer Reports (search: no results for Kjaer Weis), Clean Label Project (site search and WordPress index: no results), Ecology Center (site search: no results) and Valisure (no Kjaer Weis content found) on 2026-09-16; no independent test of Kjaer Weis Cream Bronzer Enchant found.",
-            "materials": "In contact with paper, which puts nothing into what it holds.",
+            "materials": "In contact with metal, which puts nothing into what it holds.",
             "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either."
           },
           "formulaAnswers": {
@@ -130423,12 +130423,13 @@
     ],
     "products": [
       {
-        "name": "Whoopsie Wipes Dry Cotton Wipes (600 count)",
+        "name": "Whoopsie Wipes Dry Cotton Wipes",
         "asins": [
-          "B07SDLR1BC"
+          "B07SDLR1BC",
+          "B0CGBHJSMC"
         ],
         "verdict": "good",
-        "note": "100% cotton, dry, in a box of six 100 count packs. Nothing is added, so there is no preservative or fragrance to react to.",
+        "note": "100% cotton, dry, nothing added, so there is no preservative or fragrance to react to. Sold as a 600 count box of six packs or a 1200 count pouch; the wipe is the same.",
         "origin": "store",
         "cat": "Baby wipes",
         "matchAll": [
@@ -130488,79 +130489,8 @@
           "frontOrigin": {
             "testing": "database",
             "materials": "database",
-            "legal": "database",
-            "formula": "database"
-          },
-          "scope": "sku",
-          "basis": "direct",
-          "disclose": false,
-          "rules": [
-            "2 prose-cannot-clear-formula"
-          ]
-        }
-      },
-      {
-        "name": "Whoopsie Wipes Dry Cotton Wipes (1200 count)",
-        "asins": [
-          "B0CGBHJSMC"
-        ],
-        "verdict": "good",
-        "note": "The same wipe in a 1200 count pouch. 100% cotton, dry, nothing added.",
-        "origin": "store",
-        "cat": "Baby wipes",
-        "ext": {
-          "frontNotes": {
-            "formula": "A durable good has no ingredient list. What it is made of is the materials check.",
-            "testing": "Searched Lead Safe Mama, Mamavation and Consumer Reports on 2026-09-18; no independent test of Whoopsie Wipes found. Consumer Reports' 2025 baby wipe PFAS round did not include it. The listing's OEKO-TEX Standard 100 claim is a certification of the cotton, not an independent test of this product, and thewhoopsiewipes.com does not resolve, so the certificate cannot be read.",
-            "materials": "In contact with cotton, which puts nothing into what it holds.",
-            "legal": "Checked CPSC recall listings, FDA recalls and recall news by web search on 2026-09-18. No recall, safety warning or regulatory action affecting Whoopsie Wipes found. The 2026 baby wipe recalls on record are Target's Up & Up, for bacterial contamination of a wet wipe, which a dry wipe cannot have."
-          },
-          "formulaAnswers": {
-            "ingredients": "",
-            "prose": "",
-            "complete": false,
-            "verdict": "n/a",
-            "summary": "A durable good has no ingredient list. What it is made of is the materials check.",
-            "flagged": [],
-            "source": "amazon:B0CGBHJSMC: a dry cotton wipe with no liquid and no ingredient list. Listed as chemical free, fragrance free and preservative free, which here means nothing was added rather than a formula we have read.",
-            "checked": ""
-          },
-          "testingNote": "Searched Lead Safe Mama, Mamavation and Consumer Reports on 2026-09-18; no independent test of Whoopsie Wipes found. Consumer Reports' 2025 baby wipe PFAS round did not include it. The listing's OEKO-TEX Standard 100 claim is a certification of the cotton, not an independent test of this product, and thewhoopsiewipes.com does not resolve, so the certificate cannot be read.",
-          "testingDate": "2026-09-18",
-          "materialsList": "cotton",
-          "materialAnswers": {
-            "contact": "yes",
-            "contactFrom": "recorded",
-            "base": "dry",
-            "heated": false,
-            "mouthed": false,
-            "reuse": "",
-            "use": "",
-            "material": "cotton",
-            "treatment": "",
-            "treatmentSource": "",
-            "dispenser": "",
-            "lining": "",
-            "certification": "",
-            "certificationSource": "",
-            "source": "amazon:B0CGBHJSMC Material Type \"Cotton\"; title \"Whoopsie Wipes, The Original 100% Pure Cotton Dry Baby Wipes (1200 Count)\"; sold in a resealable pouch. A dry wipe: nothing is added, the water comes from you.",
-            "checked": "2026-09-18"
-          },
-          "legalNote": "Checked CPSC recall listings, FDA recalls and recall news by web search on 2026-09-18. No recall, safety warning or regulatory action affecting Whoopsie Wipes found. The 2026 baby wipe recalls on record are Target's Up & Up, for bacterial contamination of a wet wipe, which a dry wipe cannot have.",
-          "verdict": "good",
-          "dated": "2026-09-18",
-          "why": "direct evidence on materials, recorded rather than read off a note",
-          "fronts": {
-            "formula": "none",
-            "materials": "pass",
-            "legal": "pass",
-            "testing": "none"
-          },
-          "frontOrigin": {
-            "testing": "database",
-            "materials": "database",
-            "legal": "database",
-            "formula": "database"
+            "formula": "database",
+            "legal": "database"
           },
           "scope": "sku",
           "basis": "direct",

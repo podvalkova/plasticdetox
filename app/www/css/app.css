@@ -223,6 +223,8 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 .verdict-brand { font-size: 34px; font-weight: 900; letter-spacing: -.04em; line-height: 1.02; }
 .verdict-cat { color: var(--muted); font-size: 14.5px; font-weight: 500; line-height: 1.3; margin-top: -12px; }
+.verdict-cat-name { display: block; }
+.verdict-cat-kind { display: block; margin-top: 2px; font-size: 13px; opacity: .8; }
 .verdict-reason { font-size: 16px; line-height: 1.55; color: var(--text); }
 .pass-line {
   display: flex; align-items: center; gap: 8px; margin-top: 14px;
