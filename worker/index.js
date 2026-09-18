@@ -1742,12 +1742,36 @@ const PET_LIKE = /\b(pet|pete|polyester|acrylic|nylon|polyamide)\b/i;
  * table, not a judgement call. Salt and Stone's deodorant is an oil based stick
  * in plastic and the researcher called its materials a pass.
  */
+function asText(v) {
+  if (v == null) return "";
+  if (typeof v === "string") return v;
+  if (typeof v === "boolean") return v ? "yes" : "";
+  if (Array.isArray(v)) return v.map(asText).filter(Boolean).join(", ");
+  if (typeof v === "object") {
+    for (const k of ["material", "name", "type", "value", "polymer", "container", "base", "description"]) {
+      if (typeof v[k] === "string" && v[k].trim()) return v[k];
+    }
+    return Object.values(v).filter((x) => typeof x === "string").join(" ");
+  }
+  return String(v);
+}
+
+function isTrue(v) {
+  if (v === true) return true;
+  if (typeof v === "object" && v) return isTrue(asText(v));
+  return /^(true|yes)$/i.test(String(v || "").trim());
+}
+
 function matrixStatus({ container, base, heated, use }) {
-  const c = String(container || "").toLowerCase();
-  const b = String(base || "").toLowerCase();
+  container = asText(container).trim();
+  base = asText(base).trim();
+  heated = isTrue(heated);
+  use = asText(use);
+  const c = container.toLowerCase();
+  const b = base.toLowerCase();
   if (!c) return null;
   if (HAZARD_POLYMER.test(c)) {
-    return { status: "fail", why: `${container} in contact with the contents, a named hazard in the path that reaches a person` };
+    return { status: "fail", why: `${container} touches the contents, and that is a plastic we never recommend in a food or skin path` };
   }
   if (INERT_CONTACT.test(c) && !/plastic|polymer|resin|lined/.test(c)) {
     return { status: "pass", why: `${container}, which puts nothing into what it holds` };
@@ -1764,10 +1788,23 @@ function matrixStatus({ container, base, heated, use }) {
   if (heated) rank = Math.min(2, rank + 1);
   if (/rinse/.test(String(use || ""))) rank = Math.max(0, rank - 1);
   const status = ["pass", "caution", "fail"][rank];
-  const contents = b || "the contents";
+  const CONTENTS = [
+    [/anhydrous|oil|balm|butter|stick|wax/, "An oil based formula"],
+    [/emulsion|lotion|cream|sunscreen/, "A cream"],
+    [/surfactant|wash|shampoo|cleanser/, "A wash"],
+    [/aqueous|water/, "A water based formula"],
+    [/dry|powder|solid bar/, "A dry product"],
+    [/acid/, "An acidic formula"],
+  ];
+  const what = (CONTENTS.find(([re]) => re.test(b)) || [null, "The contents"])[1];
+  const cont = /^(a|an|the)\b/i.test(container) ? container
+    : `${/^[aeiou]/i.test(container) ? "an" : "a"} ${container}`;
+  const heat = heated ? ", used with heat" : "";
   const why = rank === 0
-    ? `${contents} in ${container}, which the matrix passes`
-    : `${contents} in ${container}${heated ? ", with heat" : ""}: rule 3.1 makes that a ${status}`;
+    ? `${what} in ${cont}${heat}, which does not pull anything measurable out of the packaging`
+    : rank === 1
+      ? `${what} in ${cont}${heat}, and oil pulls more out of plastic than water does`
+      : `${what} in ${cont}${heat}, which is the pairing that leaches most`;
   return { status, why };
 }
 

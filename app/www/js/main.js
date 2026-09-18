@@ -961,6 +961,13 @@ function runCheck({ brand, product }) {
     toast("Name the brand first.");
     return;
   }
+  // Half our product verdicts disagree with their own brand, so a brand on its
+  // own answers a different question from the one somebody holding a bottle is
+  // asking. Both fields, every time.
+  if (!product) {
+    toast("Which product? A brand on its own is not enough to check.");
+    return;
+  }
   const title = [brand, product].filter(Boolean).join(" ").trim();
   const match = index.resolve({ brandName: brand, title });
   if (match) {

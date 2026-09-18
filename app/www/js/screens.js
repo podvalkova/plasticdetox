@@ -165,6 +165,16 @@ export function home(root, {
   const go = el("button", "cta outline", "Check it");
   go.type = "submit";
   form.appendChild(go);
+  // Both fields or nothing: the button is dead until it has a brand and a
+  // product, because a brand on its own answers a question nobody asked.
+  const armCheck = () => {
+    const ready = !!brand.input.value.trim() && !!product.input.value.trim();
+    go.disabled = !ready;
+    go.classList.toggle("off", !ready);
+  };
+  brand.input.addEventListener("input", armCheck);
+  product.input.addEventListener("input", armCheck);
+  armCheck();
   form.onsubmit = (e) => {
     e.preventDefault();
     onCheck({ brand: brand.input.value.trim(), product: product.input.value.trim() });
