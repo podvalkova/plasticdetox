@@ -21,9 +21,7 @@ export function home(root, {
   const hero = el("div", "hero");
   hero.appendChild(el("h1", null, "Check it before you buy it"));
   hero.appendChild(el("p", null,
-    "Four checks on every product: what is in it, what it is made of, what it has "
-    + "been recalled or sued over, and what independent labs found. Nothing earns a "
-    + "recommendation until all four are done."));
+    "Four checks on every product: formula, materials, recalls and lawsuits, independent tests."));
   // A pass is a token rather than an account, so nothing on this screen said
   // one had been bought. Somebody who paid for checks had no way to see it
   // without opening Settings and scrolling to the bottom.
@@ -1665,9 +1663,12 @@ export function result(root, { index, match, scan, product, query, productNamed,
     let askProduct = null;
     const productName = () => known || (askProduct ? askProduct.input.value.trim() : "");
 
-    if (onRequest) {
+    const owns = !!(onCheck && hasPass);
+
+    const askCard = () => {
+      if (!onRequest) return null;
       const ask = el("div", "card");
-      ask.appendChild(el("h2", null, "Want us to check this one?"));
+      ask.appendChild(el("h2", null, owns ? "Or ask us to research it, free" : "Want us to check this one?"));
       ask.appendChild(el("p", null,
         `Leave your email and we will research ${v.brand.brand}`
         + `${known ? " " + known : ""} `
@@ -1685,26 +1686,28 @@ export function result(root, { index, match, scan, product, query, productNamed,
       const btn = el("button", "cta ghost", "Request a free check");
       btn.onclick = () => onRequest(v.brand.brand, productName(), input.value, btn);
       ask.appendChild(btn);
-      root.appendChild(ask);
-    }
+      return ask;
+    };
 
-    // And the answer in the aisle, for a pass that already has checks on it.
-    // The unknown screen has offered this for a while; a verdict card that
-    // said "no verdict on this product" sent the same person away empty.
-    if (onCheck || onBuy) {
-      const now = el("div", "card");
-      now.appendChild(el("h2", null, "Or get the answer now"));
+    // Somebody who has paid for checks should not have to read past a two day
+    // wait to find the answer they already own. With a pass this card leads,
+    // says how many are left in its own heading, and carries the solid button.
+    const nowCard = () => {
+      if (!onCheck && !onBuy) return null;
+      const now = el("div", `card${owns ? " card-lead" : ""}`);
+      now.appendChild(el("h2", null, owns
+        ? (typeof balance === "number"
+          ? `Run an instant check: ${balance} left on your pass`
+          : "Run an instant check with your pass")
+        : "Or get the answer now"));
       now.appendChild(el("p", null,
         "The same four checks we run on every verdict: formula, materials, recalls and lawsuits, "
         + "independent tests. About a minute, and it shows its sources."));
       const log = el("div", "checklog");
       now.appendChild(log);
-      if (onCheck && hasPass) {
-        if (typeof balance === "number") {
-          now.appendChild(el("div", "pkg-why",
-            balance > 0
-              ? `${balance} ${balance === 1 ? "check" : "checks"} left on your pass.`
-              : "No checks left on this pass."));
+      if (owns) {
+        if (typeof balance === "number" && balance <= 0) {
+          now.appendChild(el("p", "pkg-why", "No checks left on this pass."));
         }
         const go = el("button", "cta", "Run the check");
         go.onclick = () => onCheck(go, log, v.brand.brand, productName());
@@ -1722,7 +1725,11 @@ export function result(root, { index, match, scan, product, query, productNamed,
           now.appendChild(paste);
         }
       }
-      root.appendChild(now);
+      return now;
+    };
+
+    for (const card of (owns ? [nowCard(), askCard()] : [askCard(), nowCard()])) {
+      if (card) root.appendChild(card);
     }
 
     // The brand note last of the three, and clamped, because it is background

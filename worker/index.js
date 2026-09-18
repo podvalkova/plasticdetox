@@ -1845,6 +1845,12 @@ async function vetCore(env, brand, product, send, allowResearch) {
   }
 
   let labelOk = false;
+  // A leg that never reached the researcher is our failure, not a finding
+  // about the product. Anya ran a check while this worker's API key was being
+  // rejected and got three error rows under a verdict reading "not enough
+  // found", which is the card saying the product looks unproven when what
+  // actually happened is that we never asked.
+  let transportFailed = false;
   const finish = (key, r, aiKeys) => {
     // Claude legs return {data} | {error} | {unconfigured}; legal returns a front.
     for (const k of aiKeys) {
@@ -1852,6 +1858,7 @@ async function vetCore(env, brand, product, send, allowResearch) {
         fronts[k] = r.data[k];
         if (key === "label") labelOk = true;
       } else {
+        if (r.error || r.unconfigured) transportFailed = true;
         fronts[k] = { status: "unassessed",
           note: r.unconfigured
             ? "AI research is not configured on this worker yet (missing ANTHROPIC_API_KEY)."
@@ -1882,7 +1889,8 @@ async function vetCore(env, brand, product, send, allowResearch) {
   // A customer is charged only when the core of the card, the materials
   // research, actually delivered. A transport failure is our problem.
   return { fromDatabase: false, verdict, capNote, fronts,
-           chargeable: labelOk, elapsedMs: Date.now() - t0 };
+           chargeable: labelOk, researchFailed: !labelOk && transportFailed,
+           elapsedMs: Date.now() - t0 };
 }
 
 function sseResponse(corsOrigin) {
@@ -1914,6 +1922,13 @@ async function handleInstantVet(request, env, corsOrigin) {
   const s = sseResponse(corsOrigin);
   (async () => {
     const r = await vetCore(env, brand, product, s.send, true);
+    if (r.researchFailed) {
+      s.send({ done: true, elapsedMs: r.elapsedMs, consumed: false, 
+               error: "We could not reach our research service, so this check did not run and "
+                    + "nothing was taken off your pass. Please try again in a few minutes." });
+      await s.writer.close();
+      return;
+    }
     s.send({ done: true, elapsedMs: r.elapsedMs, verdict: r.verdict, capNote: r.capNote,
              label: r.fromDatabase ? "From our reviewed database, no credit consumed"
                                    : "Research, not yet reviewed",
@@ -2092,6 +2107,13 @@ async function handleCustomerVet(request, env, corsOrigin) {
       rec.history.push({ ts: new Date().toISOString(), brand, product, verdict: r.verdict });
       await env.BRAND_SEARCHES.put(key, JSON.stringify(rec));
       consumed = true;
+    }
+    if (r.researchFailed) {
+      s.send({ done: true, elapsedMs: r.elapsedMs, consumed: false, balance: rec.balance,
+               error: "We could not reach our research service, so this check did not run and "
+                    + "nothing was taken off your pass. Please try again in a few minutes." });
+      await s.writer.close();
+      return;
     }
     s.send({ done: true, elapsedMs: r.elapsedMs, verdict: r.verdict, capNote: r.capNote,
              label: r.fromDatabase ? "From our reviewed database, no credit consumed"
