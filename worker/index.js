@@ -1762,11 +1762,23 @@ function isTrue(v) {
   return /^(true|yes)$/i.test(String(v || "").trim());
 }
 
-function matrixStatus({ container, base, heated, use }) {
+function matrixStatus({ container, base, heated, use, filledBy }) {
   container = asText(container).trim();
   base = asText(base).trim();
   heated = isTrue(heated);
   use = asText(use);
+  // Rule 3.13. A container sold empty is filled by the shopper, so it is scored
+  // on the hardest use its maker markets. Two things follow, and they are
+  // enforced here rather than trusted to the field: the route is ingestion, so
+  // 3.3 gives no relief, and an unrecorded contents field reads as an emulsion
+  // because food carries fat. Ziploc's bags came back "dry", "not heated" and
+  // "never touches a person" for a polyethylene bag their own FAQ markets for
+  // meat and for reheating, and passed.
+  const buyerFilled = /^buyer$/i.test(asText(filledBy).trim());
+  if (buyerFilled) {
+    use = "";
+    if (!base) base = "emulsion";
+  }
   const c = container.toLowerCase();
   const b = base.toLowerCase();
   if (!c) return null;
@@ -1815,7 +1827,7 @@ function matrixStatus({ container, base, heated, use }) {
 
 async function vetLabel(env, brand, product) {
   const r = await vetClaude(env, VET_RULES,
-    `Product: ${brand} ${product}. Find (1) "formula": the ingredient list, and nothing else. Quote it verbatim behind the word Ingredients where you can find it. A durable good has no ingredient list, so its formula is status "none". Give formula a "finding": one short sentence naming what is wrong, or what is clean, in plain words, such as "Contains parfum, an undisclosed fragrance blend". Give formula a "flagged": an array of the exact ingredient names that earned the status, empty when none. (2) "materials": report FACTS, not a judgement. "container": what actually touches the contents, as specifically as the source allows (PET, HDPE, PP, unnamed plastic, glass, aluminium, steel, paper, cotton). "base": one of dry, aqueous, surfactant, emulsion, anhydrous, acidic, by what the contents are, an oil or balm or stick being anhydrous. "heated": true only when something hot goes in or on it in use. "use": leave-on, rinse-off or not-on-body. Add a "note" of what you found and where. We apply our own packaging table to those facts, so do not reason about pass or fail for materials yourself. Every field carries a "source" URL.`,
+    `Product: ${brand} ${product}. Find (1) "formula": the ingredient list, and nothing else. Quote it verbatim behind the word Ingredients where you can find it. A durable good has no ingredient list, so its formula is status "none". Give formula a "finding": one short sentence naming what is wrong, or what is clean, in plain words, such as "Contains parfum, an undisclosed fragrance blend". Give formula a "flagged": an array of the exact ingredient names that earned the status, empty when none. (2) "materials": report FACTS, not a judgement. "container": what actually touches the contents, as specifically as the source allows (PET, HDPE, PP, unnamed plastic, glass, aluminium, steel, paper, cotton). "filledBy": "maker" when the product is sold with its contents inside, "buyer" when it is sold empty for the shopper to fill, which is every storage bag, box, jar, wrap and bottle. "base": one of dry, aqueous, surfactant, emulsion, anhydrous, acidic, by what the contents are, an oil or balm or stick being anhydrous. Where filledBy is "buyer" the base is the hardest use the MAKER markets, not the gentlest: dry only where the maker restricts it to dry goods, anhydrous where it is marketed for oils, fats or cooking in the bag, and otherwise emulsion, because food carries fat. "heated": true only when something hot goes in or on it in use, and where filledBy is "buyer" that means the maker markets heating it, microwaving, boiling or the oven. "use": leave-on, rinse-off or not-on-body. Add a "note" of what you found and where. We apply our own packaging table to those facts, so do not reason about pass or fail for materials yourself. Every field carries a "source" URL.`,
     3);
   return r;
 }
@@ -1892,7 +1904,7 @@ function vetVerdict(fronts) {
 // Bumped whenever a rule the research applies changes. A stored answer from an
 // older engine is not reused: Salt and Stone's materials front was cached as a
 // pass, from before section 3.1 was computed here rather than asked for.
-const VET_ENGINE = 2;
+const VET_ENGINE = 3;
 
 /** One key per product, so the same thing asked twice finds the first answer. */
 function researchKey(brand, product) {

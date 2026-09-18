@@ -258,21 +258,16 @@ function noCameraReason(reason) {
 export function renderResults(container, hits, onPick) {
   container.replaceChildren();
   if (!hits.length) return;
-  // Two lists, never one. Above the line are brands we hold verdicts on; below
-  // it are names out of the dictionary, which we know how to spell and nothing
-  // more. Counting them together would have said "6 matches" over five brands
-  // and one name, which is the one thing this list must not claim.
+  // The count is of brands we hold verdicts on, never of dictionary names:
+  // "6 matches" over five brands and one name we only know how to spell is the
+  // one thing this list must not claim. The names themselves carry no heading,
+  // because a heading over a search box is a label on the box.
   const found = hits.filter((h) => !h.suggest);
   if (found.length) {
     container.appendChild(el("div", "section-title",
       `${found.length} match${found.length === 1 ? "" : "es"}`));
   }
-  let banner = false;
   for (const hit of hits) {
-    if (hit.suggest && !banner) {
-      banner = true;
-      container.appendChild(el("div", "section-title", "Not checked yet"));
-    }
     const row = el("button", `row${hit.suggest ? " suggest" : ""}`);
     row.type = "button";
     row.appendChild(el("span", `dot ${hit.suggest ? "none" : (hit.brand.stance || "neutral")}`));

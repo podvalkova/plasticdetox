@@ -385,6 +385,24 @@ def _assess_container(pack):
     relief = 2 if use in ("never-on-body", "not-on-body", "no-body-contact") else (
         1 if use in ("rinse-off", "rinsed-off", "rinse") else 0)
 
+    # Rule 3.13. A container sold empty is filled by the shopper, so what it
+    # holds is the hardest use its maker markets rather than whatever one
+    # evening's leftovers happen to be. Two things follow, and the engine
+    # enforces both rather than trusting the field:
+    #
+    #   the route is ingestion, so 3.3 gives no relief. A storage bag is not a
+    #   laundry powder, and Ziploc's was recorded "not-on-body" and took the
+    #   two steps that exist for surface cleaner;
+    #
+    #   an unrecorded contents field is emulsion, not a blank. Food carries
+    #   fat, and the same check recorded "dry" for a bag its own maker markets
+    #   for meat and for reheating.
+    filled_by_buyer = str(pack.get("filledBy") or "").strip().lower() == "buyer"
+    if filled_by_buyer:
+        relief = 0
+        if not base:
+            base = "emulsion"
+
     # An object is not a container.
     #
     # This matrix exists because contents extract from a polymer, so it asks
@@ -452,8 +470,13 @@ def _assess_container(pack):
         (4, 1): "caution", (4, 2): "fail", (4, 3): "fail",
     }
     ROW = {0: "dry", 1: "aqueous", 2: "surfactant or alcohol", 3: "emulsion", 4: "anhydrous"}
+    # A shopper reads this sentence. "Emulsion contents" is how the matrix
+    # names a row; it is not how anybody describes what goes in a freezer bag.
+    FILLED_ROW = {0: "Dry food", 1: "Watery food", 2: "Watery food",
+                  3: "Food with fat in it", 4: "Oils and fats"}
     status = GRID[(pull, col)]
-    bits = [f"{ROW[pull]} contents in {pretty(term)}"]
+    bits = [f"{FILLED_ROW[pull]} in {pretty(term)}, which is the hardest use its maker markets"
+            if filled_by_buyer else f"{ROW[pull]} contents in {pretty(term)}"]
     worse = {"pass": "caution", "caution": "fail", "fail": "fail"}
     softer = {"fail": "caution", "caution": "pass", "pass": "pass"}
     # Rule 3.2, heat moves everything one step worse; a chewed spout is
@@ -1021,9 +1044,10 @@ def main():
                     "source": pack.get("source") or "",
                     "checked": pack.get("checked") or pack.get("checkedListing") or "",
                     "open": reason,
-                    # Rule 3.12's facts, only where recorded, so other rows do not churn.
+                    # Rules 3.12 and 3.13's facts, only where recorded, so other
+                    # rows do not churn.
                     **{k: pack[k] for k in ("certificateNumber", "frFree", "frFreeSource",
-                                            "pfasFree", "pfasFreeSource") if pack.get(k)},
+                                            "pfasFree", "pfasFreeSource", "filledBy") if pack.get(k)},
                 }
                 continue
             e = p.setdefault("ext", {})
@@ -1055,7 +1079,7 @@ def main():
                 "source": pack.get("source") or "",
                 "checked": pack.get("checked") or pack.get("checkedListing") or "",
                 **{k: pack[k] for k in ("certificateNumber", "frFree", "frFreeSource",
-                                        "pfasFree", "pfasFreeSource") if pack.get(k)},
+                                        "pfasFree", "pfasFreeSource", "filledBy") if pack.get(k)},
             }
             applied[status] += 1
 

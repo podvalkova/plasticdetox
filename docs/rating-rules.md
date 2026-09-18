@@ -649,6 +649,35 @@ copy. Keyed on the row's own category, and recorded as `frFree`, `frFreeSource`,
 `certificationSource` on the materials record. Set by Anya in September 2026,
 when every car seat on the market read careful for its fibre.
 
+### 3.13 A container the buyer fills is scored on the hardest use its maker markets
+
+The matrix asks what is inside, and it was written for a formula somebody sells
+you in a bottle, where the answer is printed on the label. A storage bag, box or
+wrap is sold empty, and what goes in is whatever the shopper has that evening.
+Asked what it holds, the honest reading of the package is "anything", and a
+check asked that question answered "dry", which describes a bag of crackers
+rather than the product.
+
+> **Where the buyer fills the container, the contents row is the hardest use the
+> maker markets, and heat applies where the maker markets heating.** Marketed
+> for dry goods only: `dry`. Marketed for food generally: `emulsion`, because
+> food carries fat. Marketed for oils, fats or cooking in the bag: `anhydrous`.
+
+The route is ingestion, so 3.3 gives no relief. A food container never takes the
+never-on-body two steps, which exist for laundry powder and surface cleaner.
+Recorded as `filledBy` on the materials record, `"buyer"` or `"maker"`, with
+`heated` carrying the maker's own marketing rather than a guess about one
+shopper's habits.
+
+Ziploc prompted it in September 2026. The bags are polyethylene, and SC
+Johnson's own FAQ markets them for defrosting and reheating in a microwave, with
+the warning to "use caution when reheating foods with a lot of sugar or fat,
+because they heat up very quickly". The check recorded dry contents, no heat and
+a container that never touches a person, and passed a bag that the same database
+already fails in four breast milk versions, all of them recorded as anhydrous
+contents in plastic. Glass, steel and food grade silicone do not move: the inert
+column passes at every row.
+
 ## 4. Independent tests
 
 The hard one. Here is the governing principle:
