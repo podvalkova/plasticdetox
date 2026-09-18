@@ -395,7 +395,10 @@ function draw() {
       // A row chosen from the brand's own list needs no matching at all: the
       // person pointed at it. This is the path that used to depend on typing
       // words our matchAll happened to agree with.
-      onProduct: (b, row) => go({
+      onProduct: (b, row) => row.checked
+        ? go({ screen: "unknown", brand: row.checked.brand, product: row.checked.product || "",
+               scan: null, checkResult: row.checked })
+        : go({
         screen: "result",
         match: { brand: b, via: "picked" },
         scan: null,
@@ -885,8 +888,21 @@ function runSearch(query, container, getDraft, onHit, limit = 20) {
         const name = String(c.brand || "");
         if (!name || seen.has(name.toLowerCase())) continue;
         if (!`${name} ${c.product || ""}`.toLowerCase().includes(q)) continue;
-        hits.push({ checked: c, brand: { brand: name, category: c.product || "Checked by you", products: [] },
-                    product: null, score: 950 });
+        // Shaped like any other brand, with the products this phone has
+        // checked under it, so the picker renders it without knowing.
+        const mine = Object.values(readChecks())
+          .filter((x) => String(x.brand || "").toLowerCase() === name.toLowerCase());
+        hits.push({
+          checked: c,
+          brand: {
+            brand: name, category: "Checked by you",
+            products: mine.map((x) => ({
+              name: x.product || name, cat: "Checked by you",
+              checked: x, ext: { verdict: x.verdict },
+            })),
+          },
+          product: null, score: 950,
+        });
         seen.add(name.toLowerCase());
       }
       hits.sort((a, b) => b.score - a.score);

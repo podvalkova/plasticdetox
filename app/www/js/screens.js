@@ -82,13 +82,14 @@ export function home(root, {
   brand.input.oninput = () => onSearch(brand.input.value, results, () => ({
     brand: brand.input.value, product: product.input.value,
   }), (hit) => {
-    // Something this phone has already checked fills both fields and stops, so
-    // the person still says which product they are holding rather than being
-    // taken straight to an answer by a brand tap.
+    // A brand this phone has checked behaves like any other brand: the name
+    // fills the field and its products are offered below. Filling both fields
+    // instead, or jumping straight to the answer, made this one brand work
+    // differently from every other one on the same screen.
     if (hit.checked) {
       brand.input.value = hit.checked.brand || "";
-      product.input.value = hit.checked.product || "";
       results.replaceChildren();
+      showProducts(hit.brand);
       return true;
     }
     if (hit.product || hit.scan) return false;
@@ -132,7 +133,9 @@ export function home(root, {
       // An unrated row says so rather than showing its category as if it were a
       // finding. It is still worth opening: the screen behind it names which
       // checks are outstanding and offers the free one.
-      const sub1 = stance ? (hint1 || pr.cat) : "Checks in progress";
+      const sub1 = pr.checked
+        ? `Checked ${new Date(pr.checked.at || Date.now()).toLocaleDateString()}`
+        : stance ? (hint1 || pr.cat) : "Checks in progress";
       if (sub1) body.appendChild(el("div", "row-sub", sub1));
       line.appendChild(body);
       line.appendChild(el("span", "row-chev", "\u203a"));
