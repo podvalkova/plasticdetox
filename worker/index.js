@@ -1847,6 +1847,11 @@ function vetVerdict(fronts) {
 // The research pipeline shared by the private bench and the paid customer
 // endpoint. Sends step events as each check finishes; the caller sends the
 // final event, because only the caller knows about credits.
+// Bumped whenever a rule the research applies changes. A stored answer from an
+// older engine is not reused: Salt and Stone's materials front was cached as a
+// pass, from before section 3.1 was computed here rather than asked for.
+const VET_ENGINE = 2;
+
 /** One key per product, so the same thing asked twice finds the first answer. */
 function researchKey(brand, product) {
   return "vetdone:" + `${brand}::${product}`.toLowerCase()
@@ -1907,7 +1912,7 @@ async function vetCore(env, brand, product, send, allowResearch) {
   // card says when it was researched and that a person has not reviewed it.
   const cacheK = researchKey(brand, product);
   const cached = await env.BRAND_SEARCHES.get(cacheK, { type: "json" }).catch(() => null);
-  if (cached && cached.fronts) {
+  if (cached && cached.fronts && (cached.engine || 0) >= VET_ENGINE) {
     for (const [k, f] of Object.entries(cached.fronts)) {
       send({ step: k, front: f, ms: Date.now() - t0 });
     }
@@ -1990,7 +1995,7 @@ async function vetCore(env, brand, product, send, allowResearch) {
   // queue can lift it into the reviewed database.
   if (labelOk) {
     await env.BRAND_SEARCHES.put(cacheK, JSON.stringify({
-      brand, product, verdict, capNote, fronts, at: new Date().toISOString(),
+      brand, product, verdict, capNote, fronts, engine: VET_ENGINE, at: new Date().toISOString(),
     })).catch(() => {});
   }
   return { fromDatabase: false, verdict, capNote, fronts,

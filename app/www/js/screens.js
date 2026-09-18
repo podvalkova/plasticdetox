@@ -1949,10 +1949,17 @@ export function unknown(root, { scan, brand, product, hasPass, balance, onCheck,
   // that yet" while the app held a careful verdict on Native, because the open
   // barcode databases are food first and personal care barely appears in them.
   // Typing the brand would have answered instantly, so say that.
+  const researched = !!(checkResult && checkResult.verdict);
   head.appendChild(el("span", "badge neutral",
-    named ? "Not reviewed yet" : "Product not identified"));
+    researched ? "Research, not yet reviewed" : named ? "Not reviewed yet" : "Product not identified"));
   head.appendChild(el("div", "verdict-brand",
-    named ? `We have not checked ${named} yet.` : "We could not identify that barcode."));
+    researched ? `Your check on ${named} is above.`
+      : named ? `We have not checked ${named} yet.` : "We could not identify that barcode."));
+  if (researched) {
+    head.appendChild(el("p", "verdict-reason",
+      "A person has not reviewed it, so it is not one of our verdicts yet. Ask us to "
+      + "review it, or run it again if the product has changed."));
+  }
   if (!named) {
     head.appendChild(el("p", "verdict-reason",
       "The open barcode database did not answer, either because it does not have this "
@@ -2110,8 +2117,13 @@ export function checkVerdict(event, onOpen) {
     .sort((a, b) => (order[b.f.status] || 0) - (order[a.f.status] || 0))[0];
   if (decided && (decided.f.status === "fail" || decided.f.status === "caution")) {
     const label = { formula: "Formula", materials: "Materials", legal: "Recalls & lawsuits", testing: "Independent tests" }[decided.k];
-    const why = String(decided.f.note || "").split(". ")[0];
-    box.appendChild(el("p", "check-why", `${label}: ${why}.`));
+    const raw = String(decided.f.note || "");
+    const sentences = raw.split(/(?<=\.)\s+/).map((s) => s.trim()).filter(Boolean);
+    const why = String(decided.f.finding || "").trim()
+      || sentences.find((s) => !/^ingredients\b/i.test(s) && s.length < 220)
+      || sentences[sentences.length - 1]
+      || "";
+    if (why) box.appendChild(el("p", "check-why", `${label}: ${why.replace(/\.$/, "")}.`));
   }
   // The ingredients that earned it, named rather than described.
   const flagged = ((event.fronts || {}).formula || {}).flagged;
