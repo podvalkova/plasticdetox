@@ -1178,6 +1178,29 @@ async function handleStripeWebhook(request, env) {
           if (s.id) await env.BRAND_SEARCHES.put("vetsession:" + s.id, pass);
         }
         await sendPassEmail(env, email, pass, checks);
+        // Pass buyers are their own list (11). Their email was used to send the
+        // pass and then dropped, so nobody who bought checks could be reached
+        // again: no receipt, no top up, no word when a check they paid for
+        // becomes a published verdict. The kids package has done this since it
+        // launched, into list 8.
+        const nm = name.split(/\s+/);
+        const firstName = nm.shift() || "";
+        await fetch("https://api.brevo.com/v3/contacts", {
+          method: "POST",
+          headers: { "api-key": env.BREVO_API_KEY, "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email,
+            attributes: {
+              FIRSTNAME: firstName,
+              LASTNAME: nm.join(" "),
+              CHECKS_PURCHASED: checks,
+              CHECK_PACK: s.metadata.pack || "",
+              CHECK_PURCHASE_DATE: new Date().toISOString().split("T")[0],
+            },
+            listIds: [11],
+            updateEnabled: true,
+          }),
+        }).catch(() => {});
       }
       return new Response(JSON.stringify({ received: true }), { status: 200, headers: { "Content-Type": "application/json" } });
     }
@@ -1921,7 +1944,7 @@ async function sendPassEmail(env, email, token, checks) {
 
 async function handleVetCheckout(request, env, corsOrigin) {
   try {
-    const { pack } = await request.json();
+    const { pack, app } = await request.json();
     const p = VET_PACKS[pack];
     if (!p) return json({ ok: false, error: "Unknown pack" }, 400, corsOrigin);
     if (!env.STRIPE_SECRET_KEY) {
@@ -1932,8 +1955,13 @@ async function handleVetCheckout(request, env, corsOrigin) {
     // Stripe substitutes the {CHECKOUT_SESSION_ID} placeholder at redirect
     // time; vet.html trades it for the pass via /vet-claim so checks are
     // usable the moment the buyer lands back, email link as backup.
-    q.append("success_url", "https://plasticdetox.org/vet.html?paid=1&session={CHECKOUT_SESSION_ID}");
-    q.append("cancel_url", "https://plasticdetox.org/vet.html?canceled=1");
+    // A buyer who started in the app has to end in the app. The flag used to
+    // live in the browser's localStorage, which does not survive the hop out to
+    // Stripe and back in every in app browser, so the buyer landed on the
+    // website with a pass the app knew nothing about. It rides in the URL now.
+    const back = app ? "&app=1" : "";
+    q.append("success_url", `https://plasticdetox.org/vet.html?paid=1${back}&session={CHECKOUT_SESSION_ID}`);
+    q.append("cancel_url", `https://plasticdetox.org/vet.html?canceled=1${back}`);
     q.append("metadata[type]", "vet-pack");
     q.append("metadata[pack]", pack);
     q.append("metadata[checks]", String(p.checks));

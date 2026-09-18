@@ -390,7 +390,7 @@ async function requestFree(){
 
 async function checkout(pack){
   try {
-    const r = await fetch(WORKER + "/vet-checkout", {method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({pack})});
+    const r = await fetch(WORKER + "/vet-checkout", {method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({pack, app: FROM_APP ? 1 : 0})});
     const d = await r.json();
     if (d.ok && d.url) { location.href = d.url; return; }
     alert(d.error || "Checkout is unavailable right now.");

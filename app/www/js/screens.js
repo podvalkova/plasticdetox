@@ -16,7 +16,7 @@ const STATUS_GLYPH = { pass: "✓", caution: "!", fail: "✕", unknown: "?" };
 export function home(root, {
   onScan, onSearch, onPick, onStarter, onAllCategories,
   onCheck, onProduct, recents, starters, canScan, scanReason,
-  categoryCount, draft,
+  categoryCount, draft, checks, onChecks,
 }) {
   const hero = el("div", "hero");
   hero.appendChild(el("h1", null, "Check it before you buy it"));
@@ -24,6 +24,19 @@ export function home(root, {
     "Four checks on every product: what is in it, what it is made of, what it has "
     + "been recalled or sued over, and what independent labs found. Nothing earns a "
     + "recommendation until all four are done."));
+  // A pass is a token rather than an account, so nothing on this screen said
+  // one had been bought. Somebody who paid for checks had no way to see it
+  // without opening Settings and scrolling to the bottom.
+  if (checks && checks.hasPass) {
+    const pass = el("button", "pass-line");
+    pass.type = "button";
+    pass.appendChild(el("span", "pass-dot"));
+    pass.appendChild(el("span", null, typeof checks.balance === "number"
+      ? `${checks.balance} instant ${checks.balance === 1 ? "check" : "checks"} left on your pass`
+      : "Your check pass is saved on this phone"));
+    if (onChecks) pass.onclick = onChecks;
+    hero.appendChild(pass);
+  }
   root.appendChild(hero);
 
   // The scan card, which the canvas makes the hero: it is the fastest way to
@@ -1657,7 +1670,7 @@ export function result(root, { index, match, scan, product, query, productNamed,
       ask.appendChild(el("h2", null, "Want us to check this one?"));
       ask.appendChild(el("p", null,
         `Leave your email and we will research ${v.brand.brand}`
-        + `${known ? " " + known : ""} by hand `
+        + `${known ? " " + known : ""} `
         + "and send you the verdict, usually within 2 business days."));
       if (!known) {
         askProduct = field("For example Coconut & Vanilla deodorant", query || "", "Which product");
@@ -1697,7 +1710,9 @@ export function result(root, { index, match, scan, product, query, productNamed,
         go.onclick = () => onCheck(go, log, v.brand.brand, productName());
         now.appendChild(go);
       } else if (onBuy) {
-        now.appendChild(el("p", "pkg-why", "Checks come in packs, starting at $5 for 20."));
+        now.appendChild(el("p", "pkg-why",
+          "Checks are bought on our website. After paying, the page brings the pass "
+          + "straight back here, and the same link is emailed to you."));
         const buy = el("button", "cta", "Get checks");
         buy.onclick = onBuy;
         now.appendChild(buy);
@@ -1943,8 +1958,8 @@ export function unknown(root, { scan, brand, product, hasPass, balance, onCheck,
   const free = el("div", "card");
   free.appendChild(el("h2", null, "Ask us to check it, free"));
   free.appendChild(el("p", null, named
-    ? `Leave your email and our team will research ${named} by hand and email you the verdict, usually within 2 business days.`
-    : "Tell us what it is and our team will research it by hand and email you the verdict, usually within 2 business days."));
+    ? `Leave your email and our team will research ${named} and email you the verdict, usually within 2 business days.`
+    : "Tell us what it is and our team will research it and email you the verdict, usually within 2 business days."));
   // Brand and product as two fields, the same as the Check screen, and for the
   // same reason its comment gives: one box invites a brand name on its own, and
   // a brand is not a research request. "Native" could be any of a dozen sticks
@@ -1994,7 +2009,9 @@ export function unknown(root, { scan, brand, product, hasPass, balance, onCheck,
     go.onclick = () => onCheck(go, log);
     now.appendChild(go);
   } else {
-    now.appendChild(el("p", "pkg-why", "Checks come in packs, starting at $5 for 20."));
+    now.appendChild(el("p", "pkg-why",
+      "Checks are bought on our website. After paying, the page brings the pass "
+      + "straight back here, and the same link is emailed to you."));
     const buy = el("button", "cta", "Get checks");
     buy.onclick = onBuy;
     now.appendChild(buy);
@@ -2065,7 +2082,7 @@ export function about(root, { meta, bundle, onOpen, notify, purchases, onFeedbac
   const data = el("div", "card");
   data.appendChild(el("h2", null, "The database"));
   data.appendChild(el("p", null,
-    `${meta.brands} brands, researched and reviewed by hand. Verdicts refresh in the background, so a recall lands here without waiting for an app update.`));
+    `${meta.brands} brands, researched and reviewed. Verdicts refresh in the background, so a recall lands here without waiting for an app update.`));
   data.appendChild(el("p", "pkg-why", meta.fetched
     ? `Last updated ${new Date(meta.fetched).toLocaleDateString()}.`
     : "Using the version that shipped with the app."));
@@ -2164,7 +2181,7 @@ export function about(root, { meta, bundle, onOpen, notify, purchases, onFeedbac
     const box = el("div", "card");
     box.appendChild(el("h2", null, "If it has been useful"));
     box.appendChild(el("p", null,
-      "I research every verdict here by hand. Reviews are how other people find "
+      "I research every verdict here. Reviews are how other people find "
       + "the app, so an honest one helps more than anything we could buy."));
     const rate = el("button", "cta outline", "Leave a review");
     rate.type = "button";

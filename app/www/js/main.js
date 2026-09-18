@@ -345,6 +345,10 @@ function draw() {
       recents: readRecents(),
       starters: STARTERS,
       categoryCount: categoryGroups().length,
+      // A pass is a token with no account behind it, so this is the only place
+      // someone who bought checks can see that they have them.
+      checks: { hasPass: !!check.getPass(), balance: checkBalance },
+      onChecks: () => go({ screen: "about" }),
       // Only offered on a real device: the extension cannot be enabled on a
       // simulator, and on the web there is no extension to enable.
       onScan: startScan,
