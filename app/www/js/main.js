@@ -1241,6 +1241,22 @@ export async function openDeepLink(search) {
 
   // plasticdetox://pass?pass=... is how a pass bought on the website reaches
   // the app without anyone copying a token by hand.
+  // plasticdetox://reset?kids=1 puts this phone back to not having bought it.
+  //
+  // For testing, and deliberately not a button: a purchase is held here as a
+  // token, so the only way to see the buy screen again was to delete the app,
+  // which also throws away the detox progress. It refunds nothing and takes
+  // nothing away permanently, since Restore reads the purchase back from the
+  // store account.
+  if (params.get("reset")) {
+    if (params.get("kids")) { kids.setPass(""); try { localStorage.removeItem("pd.kids.plan.v1"); } catch {} }
+    if (params.get("checks")) check.setPass("");
+    checkBalance = null;
+    toast("Cleared on this phone. Restore brings a purchase back.");
+    go({ screen: "detox" });
+    return;
+  }
+
   // plasticdetox://kids?kids=... is the kids room bought on the website coming
   // home. Checked before the check pass, since both arrive the same way.
   const kidsPass = params.get("kids");
