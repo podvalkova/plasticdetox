@@ -74,6 +74,8 @@ function setRootRoom(room) {
 }
 
 function go(state, { replace = false } = {}) {
+  // Leaving the screen releases the hold a check result had on re-rendering.
+  resultOnScreen = false;
   if (replace) stack.pop();
   stack.push(state);
   // So a crash report says which screen was on screen when it happened.
@@ -393,8 +395,9 @@ function draw() {
       // somebody standing in a shop away with nothing.
       hasPass: !!check.getPass(),
       balance: checkBalance,
+      checkResult: state.checkResult || null,
       onCheck: (btn, log, brandName, productName) =>
-        runInstantCheck({ brand: brandName, product: productName }, btn, log),
+        runInstantCheck(state, btn, log, brandName, productName),
       onBuy: () => openExternal(check.buyUrl(state.query || "", "")),
       onPaste: promptForPass,
       onProduct: (row) => go({ screen: "result", match: state.match, scan: state.scan, query: state.query, product: row }),
@@ -889,9 +892,11 @@ function runCheck({ brand, product }) {
  * whole thing takes about a minute and watching it work is most of what makes
  * that minute bearable.
  */
-async function runInstantCheck(state, button, log) {
-  const brand = (state.brand || state.query || "").trim();
-  const product = (state.product || "").trim();
+async function runInstantCheck(state, button, log, brandName, productName) {
+  // The unknown screen passes its own two fields in state; the verdict card
+  // passes them as arguments, because its state.product is a product row.
+  const brand = (brandName || state.brand || state.query || "").toString().trim();
+  const product = (productName || (typeof state.product === "string" ? state.product : "")).toString().trim();
   // Both halves, or it is not a request anybody can action. A brand on its own
   // is the weakest thing we hold: our own product verdicts disagree with the
   // brand verdict often enough that "Native" could mean a good stick or a
@@ -907,6 +912,22 @@ async function runInstantCheck(state, button, log) {
   button.disabled = true;
   button.textContent = "Checking";
   log.replaceChildren();
+  resultOnScreen = true;
+
+  // Four legs run at once and the first can take half a minute, so without
+  // this the screen sat still with a disabled button and no sign of work.
+  const working = el("div", "check-working");
+  working.appendChild(el("span", "check-spinner"));
+  const workingText = el("span", null, "Reading the label, the recall record and the lab results");
+  working.appendChild(workingText);
+  log.appendChild(working);
+  const started = Date.now();
+  const tick = setInterval(() => {
+    const s = Math.round((Date.now() - started) / 1000);
+    workingText.textContent = s < 12
+      ? "Reading the label, the recall record and the lab results"
+      : `Still researching, ${s} seconds in. A full check takes about a minute.`;
+  }, 1000);
 
   // A check costs one off the pass, so the number on screen is wrong the moment
   // this finishes unless we ask again.
@@ -916,11 +937,16 @@ async function runInstantCheck(state, button, log) {
     brand,
     product,
     onFront: (step, front) => {
-      log.appendChild(screens.checkRow(step, front, check.STEP_LABEL[step] || "Database"));
+      log.insertBefore(screens.checkRow(step, front, check.STEP_LABEL[step] || "Database"), working);
     },
     onDone: (event) => {
+      clearInterval(tick);
+      working.remove();
       button.disabled = false;
       button.textContent = "Run the check";
+      // Keep the answer where a re-render cannot reach it, so leaving the
+      // screen and coming back shows what was paid for rather than a blank.
+      if (event.verdict) state.checkResult = event;
       spend();
       if (event.needsCredits) {
         log.appendChild(el("p", "pkg-why", event.error || "No checks left on this pass."));
@@ -950,10 +976,16 @@ async function runInstantCheck(state, button, log) {
  * boot, after a pass arrives, and after every check, since every check spends
  * one.
  */
+// A check result lives in the screen it was appended to, so anything that
+// re-renders mid flow throws it away. The balance refresh did exactly that at
+// the moment the verdict landed: the pass was spent, the card rebuilt, and the
+// answer was gone. While a result is on screen the balance updates quietly.
+let resultOnScreen = false;
+
 async function refreshBalance() {
   if (!check.getPass()) { checkBalance = null; return; }
   const n = await check.balance().catch(() => null);
-  if (n !== checkBalance) { checkBalance = n; render(); }
+  if (n !== checkBalance) { checkBalance = n; if (!resultOnScreen) render(); }
 }
 
 function promptForPass() {

@@ -234,6 +234,22 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 /* The card somebody has already paid to use leads the screen, so it says so
    rather than looking like the free request under it. */
+/* Four legs run at once and the first can take half a minute. Without a sign
+   of work the screen looked stuck, on the one action people pay for. */
+.check-working {
+  display: flex; align-items: center; gap: 10px; padding: 12px 2px;
+  font-size: 14px; color: var(--muted);
+}
+.check-spinner {
+  width: 16px; height: 16px; flex: 0 0 auto; border-radius: 50%;
+  border: 2px solid var(--border); border-top-color: var(--accent);
+  animation: pd-spin .8s linear infinite;
+}
+@keyframes pd-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) {
+  .check-spinner { animation-duration: 2.4s; }
+}
+
 .card-lead { border: 2px solid var(--accent); }
 .card-lead h2 { color: var(--accent); }
 

@@ -1449,7 +1449,7 @@ function clamped(text, limit = 220) {
 
 export function result(root, { index, match, scan, product, query, productNamed, onArticle,
   onOpen, onPick, onProduct, onSave, isSaved, onRequest, onShare,
-  hasPass, balance, onCheck, onBuy, onPaste }) {
+  hasPass, balance, onCheck, onBuy, onPaste, checkResult }) {
   // A barcode bound to an ASIN names the exact product, which is better than
   // any title match: productFor prefers `asins` and falls back to phrases.
   // Without this the binding sat in the data and the card still read the
@@ -1705,6 +1705,16 @@ export function result(root, { index, match, scan, product, query, productNamed,
         + "independent tests. About a minute, and it shows its sources."));
       const log = el("div", "checklog");
       now.appendChild(log);
+      // A check already run on this product stays on the card. It was being
+      // lost to the next re-render, which is what a spent credit looked like.
+      if (checkResult) {
+        for (const k of ["formula", "materials", "legal", "testing"]) {
+          const f = (checkResult.fronts || {})[k];
+          if (f) log.appendChild(checkRow(k, f, FRONT_LABEL[k] || k));
+        }
+        log.appendChild(checkVerdict(checkResult));
+        return now;
+      }
       if (owns) {
         if (typeof balance === "number" && balance <= 0) {
           now.appendChild(el("p", "pkg-why", "No checks left on this pass."));
@@ -2035,6 +2045,11 @@ export function unknown(root, { scan, brand, product, hasPass, balance, onCheck,
 }
 
 /** One front as it arrives from the check stream. */
+export const FRONT_LABEL = {
+  formula: "Formula", materials: "Materials",
+  legal: "Recalls & lawsuits", testing: "Independent tests",
+};
+
 export function checkRow(step, front, label) {
   // "none" on the formula front means the check does not apply to this kind of
   // product, not that we failed to run it. Drawing it as the "?" of an

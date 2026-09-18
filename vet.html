@@ -296,7 +296,11 @@ function showVet(balance){
   if (PRE_PRODUCT) document.getElementById("product").value = PRE_PRODUCT;
   paintBalance(balance);
   paintChecking(true);
-  if (balance <= 0) showBuy();
+  // The packs stay on the page whatever the balance. Hiding them until a pass
+  // ran dry meant "Buy more checks" from the app opened a page with no way to
+  // buy anything.
+  showBuy();
+  if (balance <= 0) window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 // Somebody who arrived from the app has to leave with the pass, not with a

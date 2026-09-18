@@ -110,6 +110,23 @@ export default {
       return handleVetBalance(request, env, corsOrigin);
     }
 
+    // ===== Every check anyone has paid for, for the review queue =====
+    if (path === "/vet-results" && request.method === "GET") {
+      const u = new URL(request.url);
+      if (!env.STATS_TOKEN || u.searchParams.get("token") !== env.STATS_TOKEN) {
+        return json({ ok: false, error: "Not authorized" }, 401, corsOrigin);
+      }
+      const out = [];
+      let cursor = u.searchParams.get("cursor") || undefined;
+      const page = await env.BRAND_SEARCHES.list({ prefix: "vetdone:", limit: 200, cursor });
+      for (const k of page.keys) {
+        const v = await env.BRAND_SEARCHES.get(k.name, { type: "json" }).catch(() => null);
+        if (v) out.push(v);
+      }
+      return json({ ok: true, count: out.length, cursor: page.cursor || null,
+                    complete: page.list_complete, results: out }, 200, corsOrigin);
+    }
+
     // ===== Claim a freshly paid pass by Stripe session, so the buyer lands
     // back on vet.html with checks live instead of waiting for the email =====
     if (path === "/vet-claim" && request.method === "GET") {
@@ -882,7 +899,7 @@ async function handleBrandRequest(request, env, corsOrigin) {
             BRAND_REQUEST: cleanBrand,
             BRAND_REQUEST_DATE: new Date().toISOString().split("T")[0],
           },
-          listIds: env.BREVO_LIST_ID ? [parseInt(env.BREVO_LIST_ID)] : [],
+          listIds: [12],
           updateEnabled: true,
         }),
       });
@@ -1789,6 +1806,12 @@ function vetVerdict(fronts) {
 // The research pipeline shared by the private bench and the paid customer
 // endpoint. Sends step events as each check finishes; the caller sends the
 // final event, because only the caller knows about credits.
+/** One key per product, so the same thing asked twice finds the first answer. */
+function researchKey(brand, product) {
+  return "vetdone:" + `${brand}::${product}`.toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 300);
+}
+
 async function vetCore(env, brand, product, send, allowResearch) {
   const t0 = Date.now();
   const fronts = {};
@@ -1836,6 +1859,20 @@ async function vetCore(env, brand, product, send, allowResearch) {
         + `Researching this exact product now.`,
       source: `https://plasticdetox.org/brand-check.html?b=${encodeURIComponent(b.brand)}` },
       ms: Date.now() - t0 });
+  }
+
+  // Research already done on this exact product, by whoever paid for it first.
+  // Everyone who asks afterwards gets that answer, free and instantly, and the
+  // card says when it was researched and that a person has not reviewed it.
+  const cacheK = researchKey(brand, product);
+  const cached = await env.BRAND_SEARCHES.get(cacheK, { type: "json" }).catch(() => null);
+  if (cached && cached.fronts) {
+    for (const [k, f] of Object.entries(cached.fronts)) {
+      send({ step: k, front: f, ms: Date.now() - t0 });
+    }
+    return { fromDatabase: false, fromResearch: true, researchedAt: cached.at,
+             verdict: cached.verdict, capNote: cached.capNote || "", fronts: cached.fronts,
+             chargeable: false, elapsedMs: Date.now() - t0 };
   }
 
   // Out of credits and not in the database: stop before spending anything.
@@ -1888,6 +1925,14 @@ async function vetCore(env, brand, product, send, allowResearch) {
   }
   // A customer is charged only when the core of the card, the materials
   // research, actually delivered. A transport failure is our problem.
+  // Keep what was researched. The next person to ask about this product, on
+  // any device, gets it without paying for the same work twice, and the review
+  // queue can lift it into the reviewed database.
+  if (labelOk) {
+    await env.BRAND_SEARCHES.put(cacheK, JSON.stringify({
+      brand, product, verdict, capNote, fronts, at: new Date().toISOString(),
+    })).catch(() => {});
+  }
   return { fromDatabase: false, verdict, capNote, fronts,
            chargeable: labelOk, researchFailed: !labelOk && transportFailed,
            elapsedMs: Date.now() - t0 };
@@ -1930,8 +1975,11 @@ async function handleInstantVet(request, env, corsOrigin) {
       return;
     }
     s.send({ done: true, elapsedMs: r.elapsedMs, verdict: r.verdict, capNote: r.capNote,
-             label: r.fromDatabase ? "From our reviewed database, no credit consumed"
-                                   : "Research, not yet reviewed",
+             label: r.fromDatabase
+               ? "From our reviewed database, no credit consumed"
+               : r.fromResearch
+                 ? `Researched ${String(r.researchedAt || "").slice(0, 10)} for someone else, not reviewed yet. No credit used.`
+                 : "Research, not yet reviewed",
              fronts: r.fronts, fromDatabase: r.fromDatabase });
     await s.writer.close();
   })().catch(async (e) => {
@@ -2116,8 +2164,11 @@ async function handleCustomerVet(request, env, corsOrigin) {
       return;
     }
     s.send({ done: true, elapsedMs: r.elapsedMs, verdict: r.verdict, capNote: r.capNote,
-             label: r.fromDatabase ? "From our reviewed database, no credit consumed"
-                                   : "Research, not yet reviewed",
+             label: r.fromDatabase
+               ? "From our reviewed database, no credit consumed"
+               : r.fromResearch
+                 ? `Researched ${String(r.researchedAt || "").slice(0, 10)} for someone else, not reviewed yet. No credit used.`
+                 : "Research, not yet reviewed",
              fronts: r.fronts, fromDatabase: r.fromDatabase,
              consumed, balance: rec.balance });
     await s.writer.close();
