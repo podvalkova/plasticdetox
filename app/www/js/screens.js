@@ -1922,25 +1922,14 @@ export function unknown(root, { scan, brand, product, hasPass, balance, onCheck,
   const named = [brand, product].filter(Boolean).join(" ").trim()
     || (scan && (scan.brandName || scan.title)) || "";
 
-  // A check this person paid for, on a brand we hold nothing else about. It
-  // used to land here and be told we had not checked it, which is the one
-  // thing that is certainly untrue: they bought the research.
-  if (checkResult && checkResult.verdict) {
-    const mine = el("div", "card card-lead");
-    mine.appendChild(el("h2", null, "Your check"));
-    const log = el("div", "checklog");
-    for (const k of ["formula", "materials", "legal", "testing"]) {
-      const f = (checkResult.fronts || {})[k];
-      if (f) log.appendChild(checkRow(k, f, FRONT_LABEL[k] || k));
-    }
-    mine.appendChild(log);
-    mine.appendChild(checkVerdict(checkResult, onOpen));
-    root.appendChild(mine);
-  }
+  const researched = !!(checkResult && checkResult.verdict);
 
-  // No verdict here, so no verdict colour on the edge. The wash still applies:
-  // it is the brand, not a judgement.
-  const card = el("div", "verdict");
+  // A product researched on this phone reads like every other verdict screen:
+  // the badge, the name, why, then the checks. It used to open with the raw
+  // check rows and then a card underneath saying we had not checked it, which
+  // is both the wrong order and the wrong claim.
+  const card = el("div", researched && checkResult.verdict !== "unrated"
+    ? `verdict v-${checkResult.verdict}` : "verdict");
   root.classList.add("tinted");
   const head = el("div", "verdict-head");
   // Two different situations wore the same sentence. Not knowing a product and
@@ -1949,16 +1938,27 @@ export function unknown(root, { scan, brand, product, hasPass, balance, onCheck,
   // that yet" while the app held a careful verdict on Native, because the open
   // barcode databases are food first and personal care barely appears in them.
   // Typing the brand would have answered instantly, so say that.
-  const researched = !!(checkResult && checkResult.verdict);
-  head.appendChild(el("span", "badge neutral",
-    researched ? "Research, not yet reviewed" : named ? "Not reviewed yet" : "Product not identified"));
+  const CHECK_NAMES = { good: "Good choice", careful: "Careful", skip: "Skip", unrated: "Not enough found" };
+  head.appendChild(el("span",
+    researched && checkResult.verdict !== "unrated" ? `badge ${checkResult.verdict}` : "badge neutral",
+    researched ? (CHECK_NAMES[checkResult.verdict] || "Research")
+      : named ? "Not reviewed yet" : "Product not identified"));
   head.appendChild(el("div", "verdict-brand",
-    researched ? `Your check on ${named} is above.`
-      : named ? `We have not checked ${named} yet.` : "We could not identify that barcode."));
+    named ? (researched ? String(brand || named) : `We have not checked ${named} yet.`)
+      : "We could not identify that barcode."));
+  if (researched && named) {
+    const sub = el("div", "verdict-cat");
+    sub.appendChild(el("span", "verdict-cat-name", String(product || named)));
+    sub.appendChild(el("span", "verdict-cat-kind", "Your check, not reviewed yet"));
+    head.appendChild(sub);
+  }
   if (researched) {
-    head.appendChild(el("p", "verdict-reason",
-      "A person has not reviewed it, so it is not one of our verdicts yet. Ask us to "
-      + "review it, or run it again if the product has changed."));
+    const why = checkWhy(checkResult);
+    if (why) head.appendChild(el("p", "verdict-reason", why));
+    head.appendChild(el("div", "verdict-scope",
+      `Researched ${String(checkResult.at || "").slice(0, 10)} from the sources below. `
+      + "A person has not reviewed it, so it is not one of our verdicts yet. Ask us to review "
+      + "it, or run it again if the product has changed."));
   }
   if (!named) {
     head.appendChild(el("p", "verdict-reason",
@@ -1967,7 +1967,19 @@ export function unknown(root, { scan, brand, product, hasPass, balance, onCheck,
       + "search the brand name below and we may well have it."));
   }
   card.appendChild(head);
+
+  // The four checks, in the same block the reviewed screens use.
+  if (researched) {
+    const fronts = el("div", "fronts");
+    fronts.appendChild(el("div", "fronts-label", "How we checked this product"));
+    for (const k of ["formula", "materials", "legal", "testing"]) {
+      const f = (checkResult.fronts || {})[k];
+      if (f) fronts.appendChild(checkRow(k, f, FRONT_LABEL[k] || k));
+    }
+    card.appendChild(fronts);
+  }
   root.appendChild(card);
+  if (researched) root.appendChild(checkReport(checkResult, onOpen));
 
   // The search block, built here so it can lead when we could not name the
   // product. Searching is free and, for anything the open databases miss but
@@ -2100,31 +2112,73 @@ export function checkRow(step, front, label) {
 }
 
 /** The verdict the check settled on, in the same words the site uses. */
+/**
+ * One line naming the check that decided the verdict.
+ *
+ * The note on the formula front opens with the ingredient list, so taking its
+ * first sentence printed the label rather than the finding.
+ */
+export function checkWhy(event) {
+  const fronts = (event && event.fronts) || {};
+  const order = { fail: 3, caution: 2, none: 1, pass: 0, unassessed: 0 };
+  const decided = ["formula", "materials", "legal", "testing"]
+    .map((k) => ({ k, f: fronts[k] || {} }))
+    .filter((x) => x.f.status)
+    .sort((a, b) => (order[b.f.status] || 0) - (order[a.f.status] || 0))[0];
+  if (!decided || !["fail", "caution"].includes(decided.f.status)) return "";
+  const label = FRONT_LABEL[decided.k] || decided.k;
+  const raw = String(decided.f.note || "");
+  const sentences = raw.split(/(?<=\.)\s+/).map((s) => s.trim()).filter(Boolean);
+  const why = String(decided.f.finding || "").trim()
+    || sentences.find((s) => !/^ingredients\b/i.test(s) && s.length < 220)
+    || sentences[sentences.length - 1] || "";
+  return why ? `${label}: ${why.replace(/\.$/, "")}.` : "";
+}
+
+/** Research is machine work until a person reviews it, so it can be reported. */
+export function checkReport(event, onOpen) {
+  const wrap = el("div", "report");
+  if (!onOpen) return wrap;
+  const open = el("button", "report-open", "Something wrong with this check? Tell us");
+  const form = el("div", "report-form");
+  form.hidden = true;
+  const ta = el("textarea");
+  ta.placeholder = "What did we get wrong?";
+  ta.rows = 3;
+  form.appendChild(ta);
+  const send = el("button", "cta ghost", "Send to our inbox");
+  send.onclick = () => {
+    const said = ta.value.trim();
+    if (!said) { ta.focus(); return; }
+    const name = [event.brand, event.product].filter(Boolean).join(" ") || "this product";
+    const fr = event.fronts || {};
+    const scorecard = ["formula", "materials", "legal", "testing"]
+      .map((k) => `${k}: ${(fr[k] || {}).status || "unknown"}`).join(", ");
+    const body = [said, "", "---", `Product: ${name}`,
+      `Instant check verdict: ${event.verdict || "none"}`,
+      `Checks: ${scorecard}`, `Checked: ${String(event.at || "").slice(0, 19)}`]
+      .filter(Boolean).join("\n");
+    onOpen("mailto:hello@plasticdetox.org"
+      + `?subject=${encodeURIComponent("Check correction: " + name)}`
+      + `&body=${encodeURIComponent(body)}`);
+    send.textContent = "Opening your mail app";
+  };
+  form.appendChild(send);
+  open.onclick = () => { form.hidden = !form.hidden; if (!form.hidden) ta.focus(); };
+  wrap.appendChild(open);
+  wrap.appendChild(form);
+  return wrap;
+}
+
 export function checkVerdict(event, onOpen) {
   const names = { good: "Good choice", careful: "Careful", skip: "Skip", unrated: "Not enough found" };
   const box = el("div", "check-result");
   box.appendChild(el("span", `badge ${event.verdict === "unrated" ? "neutral" : event.verdict}`,
     names[event.verdict] || event.verdict));
 
-  // Why, in one line, from the check that decided it. The card used to print
-  // four rows of research and leave the reader to work out which one carried
-  // the verdict, with the finding itself buried mid paragraph.
+  const why = checkWhy(event);
+  if (why) box.appendChild(el("p", "check-why", why));
   const fronts = event.fronts || {};
-  const order = { fail: 3, caution: 2, none: 1, pass: 0, unassessed: 0 };
-  const decided = ["formula", "materials", "legal", "testing"]
-    .map((k) => ({ k, f: fronts[k] || {} }))
-    .filter((x) => x.f.status)
-    .sort((a, b) => (order[b.f.status] || 0) - (order[a.f.status] || 0))[0];
-  if (decided && (decided.f.status === "fail" || decided.f.status === "caution")) {
-    const label = { formula: "Formula", materials: "Materials", legal: "Recalls & lawsuits", testing: "Independent tests" }[decided.k];
-    const raw = String(decided.f.note || "");
-    const sentences = raw.split(/(?<=\.)\s+/).map((s) => s.trim()).filter(Boolean);
-    const why = String(decided.f.finding || "").trim()
-      || sentences.find((s) => !/^ingredients\b/i.test(s) && s.length < 220)
-      || sentences[sentences.length - 1]
-      || "";
-    if (why) box.appendChild(el("p", "check-why", `${label}: ${why.replace(/\.$/, "")}.`));
-  }
   // The ingredients that earned it, named rather than described.
   const flagged = ((event.fronts || {}).formula || {}).flagged;
   if (Array.isArray(flagged) && flagged.length) {
@@ -2138,39 +2192,7 @@ export function checkVerdict(event, onOpen) {
     box.appendChild(el("p", "pkg-why",
       "1 check used. This research will join our public database after review, free for everyone."));
   }
-  // Research is machine work until a person reviews it, and the reader is
-  // holding the product, so they are the one who can see what we got wrong.
-  if (onOpen) {
-    const wrap = el("div", "report");
-    const open = el("button", "report-open", "Something wrong with this check? Tell us");
-    const form = el("div", "report-form");
-    form.hidden = true;
-    const ta = el("textarea");
-    ta.placeholder = "What did we get wrong?";
-    ta.rows = 3;
-    form.appendChild(ta);
-    const send = el("button", "cta ghost", "Send to our inbox");
-    send.onclick = () => {
-      const said = ta.value.trim();
-      if (!said) { ta.focus(); return; }
-      const name = [event.brand, event.product].filter(Boolean).join(" ") || "this product";
-      const scorecard = ["formula", "materials", "legal", "testing"]
-        .map((k) => `${k}: ${(fronts[k] || {}).status || "unknown"}`).join(", ");
-      const body = [said, "", "---", `Product: ${name}`,
-        `Instant check verdict: ${names[event.verdict] || event.verdict || "none"}`,
-        `Checks: ${scorecard}`, `Checked: ${String(event.at || "").slice(0, 19)}`]
-        .filter(Boolean).join("\n");
-      onOpen("mailto:hello@plasticdetox.org"
-        + `?subject=${encodeURIComponent("Check correction: " + name)}`
-        + `&body=${encodeURIComponent(body)}`);
-      send.textContent = "Opening your mail app";
-    };
-    form.appendChild(send);
-    open.onclick = () => { form.hidden = !form.hidden; if (!form.hidden) ta.focus(); };
-    wrap.appendChild(open);
-    wrap.appendChild(form);
-    box.appendChild(wrap);
-  }
+  if (onOpen) box.appendChild(checkReport(event, onOpen));
   return box;
 }
 
