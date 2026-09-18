@@ -895,12 +895,16 @@ function runSearch(query, container, getDraft, onHit, limit = 20) {
       // The caller may want a suggestion to fill a field rather than answer
       // the question. On the two field form, picking a brand is not the same
       // as saying which product you are holding.
+      // The screen gets first refusal, the same as any other suggestion: on the
+      // two field form a brand suggestion fills the brand and leaves the
+      // product to the person holding it. Jumping straight to the answer here
+      // skipped the product field entirely.
+      if (onHit && onHit(hit)) return;
       if (hit.checked) {
         go({ screen: "unknown", brand: hit.checked.brand, product: hit.checked.product || "",
              scan: null, checkResult: hit.checked });
         return;
       }
-      if (onHit && onHit(hit)) return;
       const d = getDraft ? getDraft() : null;
       openHit(hit, d ? [d.brand, d.product].filter(Boolean).join(" ") : query);
     });

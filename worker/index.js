@@ -2043,8 +2043,8 @@ async function handleInstantVet(request, env, corsOrigin) {
              label: r.fromDatabase
                ? "From our reviewed database, no credit consumed"
                : r.fromResearch
-                 ? `Researched ${String(r.researchedAt || "").slice(0, 10)} for someone else, not reviewed yet. No credit used.`
-                 : "Research, not yet reviewed",
+                 ? `Checked ${String(r.researchedAt || "").slice(0, 10)}, already researched for someone else. No credit used.`
+                 : "Checked just now, sources on every line",
              fronts: r.fronts, fromDatabase: r.fromDatabase });
     await s.writer.close();
   })().catch(async (e) => {
@@ -2232,8 +2232,8 @@ async function handleCustomerVet(request, env, corsOrigin) {
              label: r.fromDatabase
                ? "From our reviewed database, no credit consumed"
                : r.fromResearch
-                 ? `Researched ${String(r.researchedAt || "").slice(0, 10)} for someone else, not reviewed yet. No credit used.`
-                 : "Research, not yet reviewed",
+                 ? `Checked ${String(r.researchedAt || "").slice(0, 10)}, already researched for someone else. No credit used.`
+                 : "Checked just now, sources on every line",
              fronts: r.fronts, fromDatabase: r.fromDatabase,
              consumed, balance: rec.balance });
     await s.writer.close();

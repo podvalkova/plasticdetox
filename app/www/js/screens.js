@@ -82,6 +82,15 @@ export function home(root, {
   brand.input.oninput = () => onSearch(brand.input.value, results, () => ({
     brand: brand.input.value, product: product.input.value,
   }), (hit) => {
+    // Something this phone has already checked fills both fields and stops, so
+    // the person still says which product they are holding rather than being
+    // taken straight to an answer by a brand tap.
+    if (hit.checked) {
+      brand.input.value = hit.checked.brand || "";
+      product.input.value = hit.checked.product || "";
+      results.replaceChildren();
+      return true;
+    }
     if (hit.product || hit.scan) return false;
     brand.input.value = hit.brand.brand;
     results.replaceChildren();
@@ -1949,16 +1958,14 @@ export function unknown(root, { scan, brand, product, hasPass, balance, onCheck,
   if (researched && named) {
     const sub = el("div", "verdict-cat");
     sub.appendChild(el("span", "verdict-cat-name", String(product || named)));
-    sub.appendChild(el("span", "verdict-cat-kind", "Your check, not reviewed yet"));
+    sub.appendChild(el("span", "verdict-cat-kind",
+      checkResult.at ? `Checked ${new Date(checkResult.at).toLocaleDateString()}` : "Your check"));
     head.appendChild(sub);
   }
   if (researched) {
     const why = checkWhy(checkResult);
     if (why) head.appendChild(el("p", "verdict-reason", why));
-    head.appendChild(el("div", "verdict-scope",
-      `Researched ${String(checkResult.at || "").slice(0, 10)} from the sources below. `
-      + "A person has not reviewed it, so it is not one of our verdicts yet. Ask us to review "
-      + "it, or run it again if the product has changed."));
+
   }
   if (!named) {
     head.appendChild(el("p", "verdict-reason",
@@ -2190,7 +2197,7 @@ export function checkVerdict(event, onOpen) {
   if (event.capNote) box.appendChild(el("p", "pkg-why", event.capNote));
   if (event.consumed) {
     box.appendChild(el("p", "pkg-why",
-      "1 check used. This research will join our public database after review, free for everyone."));
+      "1 check used. It is saved, so the next person to ask about this product gets it free."));
   }
   if (onOpen) box.appendChild(checkReport(event, onOpen));
   return box;
