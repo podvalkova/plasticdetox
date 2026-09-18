@@ -70,3 +70,89 @@ export function flush() {
 document.addEventListener("visibilitychange", () => {
   if (document.visibilityState === "hidden") flush();
 });
+
+/**
+ * Crashes, for an app that almost never crashes the way a native app does.
+ *
+ * The screens are web, so the realistic failure is an uncaught exception that
+ * blanks a view while the process keeps running perfectly happily. Apple's
+ * crash reporting never sees one of those, and the catch blocks scattered
+ * through the app swallow most of the rest, so a broken screen on someone's
+ * phone used to be invisible. These two listeners are the whole of it: no SDK,
+ * no third party, nothing new in the bundle, and it ships over the air like
+ * any other change.
+ */
+const MAX_ERRORS = 8;
+let errorsSent = 0;
+const seenFaults = new Set();
+let context = {};
+
+/** Where the app was when it broke. Set from go(), the one navigation point. */
+export function setContext(o) { context = o || {}; }
+
+/**
+ * The top frames only, with the bundle's own path prefix dropped as noise.
+ *
+ * Mixpanel truncates any string property at 255 characters, silently, so the
+ * budget is spent rather than allocated: the "Error: ..." header line is
+ * dropped because `message` already carries it, and only the frames nearest
+ * the fault are kept, those being the ones that name the bug.
+ */
+const STACK_MAX = 250;
+function trimStack(s) {
+  if (!s) return "";
+  const frames = String(s).split("\n")
+    .map((l) => l.trim().replace(/https?:\/\/[^)\s]*\/js\//g, ""))
+    .filter((l) => l.startsWith("at "));
+  return (frames.length ? frames : [String(s).trim()])
+    .slice(0, 5)
+    .join(" | ")
+    .slice(0, STACK_MAX);
+}
+
+function shortSource(u) {
+  return String(u || "").replace(/^.*\/js\//, "").slice(0, 80);
+}
+
+function report(kind, message, extra) {
+  try {
+    const msg = String(message == null ? "" : message).slice(0, 300);
+    if (!msg) return;
+    // One report per distinct fault per run, and a ceiling on top of that. A
+    // render loop that throws on every frame must not spend the entire
+    // Mixpanel quota describing itself.
+    const sig = `${kind}|${msg}|${(extra && extra.line) || ""}`;
+    if (seenFaults.has(sig) || errorsSent >= MAX_ERRORS) return;
+    seenFaults.add(sig);
+    errorsSent++;
+    track("app_error", { kind, message: msg, screen: context.screen || "", ...(extra || {}) });
+    // Sent now rather than on the 4 second timer: whatever just broke may be
+    // about to take the rest of the app down with it.
+    flush();
+  } catch {
+    // Reporting a fault must never raise one.
+  }
+}
+
+window.addEventListener("error", (e) => {
+  // The same event also fires for an <img> or <script> that failed to load,
+  // where there is no exception to read and the target is the element.
+  const target = e && e.target;
+  if (target && target !== window && target.src) {
+    report("resource", `failed to load ${String(target.src).slice(0, 200)}`, {});
+    return;
+  }
+  const err = e && e.error;
+  report("error", (err && err.message) || (e && e.message), {
+    stack: trimStack(err && err.stack),
+    source: shortSource(e && e.filename),
+    line: (e && e.lineno) || 0,
+  });
+}, true);
+
+window.addEventListener("unhandledrejection", (e) => {
+  const reason = e && e.reason;
+  report("rejection", (reason && reason.message) || reason, {
+    stack: trimStack(reason && reason.stack),
+  });
+});

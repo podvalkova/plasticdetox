@@ -12,7 +12,7 @@ import { el, toast } from "./ui.js";
 import { roomName } from "./detox-content.js";
 import * as notify from "./notify.js";
 import { verdictFor } from "./match.js";
-import { track, setBundle, flush } from "./track.js";
+import { track, setBundle, flush, setContext } from "./track.js";
 import * as kids from "./kids.js";
 import * as rate from "./rate.js";
 import * as share from "./share.js";
@@ -76,6 +76,8 @@ function setRootRoom(room) {
 function go(state, { replace = false } = {}) {
   if (replace) stack.pop();
   stack.push(state);
+  // So a crash report says which screen was on screen when it happened.
+  setContext({ screen: (state && state.screen) || "" });
   render();
   rememberPlace();
 }

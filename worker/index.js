@@ -727,8 +727,12 @@ async function handleKidsPlan(request, env, corsOrigin) {
  * Properties allowed past the ordinary 200 character cut. A stack trace is the
  * one thing worth more than a couple of lines: truncate it at 200 and the
  * frame that actually names the bug is usually the one thrown away.
+ *
+ * 255 and not more, because that is where Mixpanel truncates a string property
+ * itself, without saying so. Sending 900 just moves the cut somewhere we
+ * cannot see it. Verified against the live project on 2026-09-18.
  */
-const WIDE_PROPS = { stack: 900, message: 320 };
+const WIDE_PROPS = { stack: 255, message: 255 };
 
 async function handleMixpanel(request, env, corsOrigin) {
   try {
