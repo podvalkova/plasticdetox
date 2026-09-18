@@ -544,6 +544,16 @@ async function mintKidsPass(env, source, ref) {
   return token;
 }
 
+/**
+ * What counts as settled.
+ *
+ * A session discounted to nothing by a 100% promotion code is never charged,
+ * and Stripe reports it as no_payment_required rather than paid. Checking for
+ * "paid" alone meant a free pass could be issued at the till and then mint
+ * nothing at all.
+ */
+const PAID = new Set(["paid", "no_payment_required"]);
+
 async function kidsPassValid(env, token) {
   if (!token || !/^k_[a-f0-9]{32}$/.test(token)) return false;
   return !!(await env.BRAND_SEARCHES.get("kidspass:" + token));
@@ -564,7 +574,7 @@ async function handleKidsClaim(request, env, corsOrigin) {
     headers: { Authorization: "Bearer " + env.STRIPE_SECRET_KEY },
   });
   const ses = await res.json().catch(() => ({}));
-  if (!res.ok || ses.payment_status !== "paid") {
+  if (!res.ok || !PAID.has(ses.payment_status)) {
     return json({ ok: false, error: "Payment not found" }, 404, corsOrigin);
   }
   // Paid is not the same as paid for this. Every product in the account mints
@@ -713,6 +723,13 @@ async function handleKidsPlan(request, env, corsOrigin) {
   return json({ ok: true, phase: KIDS }, 200, corsOrigin);
 }
 
+/**
+ * Properties allowed past the ordinary 200 character cut. A stack trace is the
+ * one thing worth more than a couple of lines: truncate it at 200 and the
+ * frame that actually names the bug is usually the one thrown away.
+ */
+const WIDE_PROPS = { stack: 900, message: 320 };
+
 async function handleMixpanel(request, env, corsOrigin) {
   try {
     if (!env.MIXPANEL_TOKEN) return json({ ok: false, error: "not configured" }, 200, corsOrigin);
@@ -732,7 +749,8 @@ async function handleMixpanel(request, env, corsOrigin) {
         if (n >= 12) break;
         const v = src[k];
         if (v === null || ["string", "number", "boolean"].includes(typeof v)) {
-          props[String(k).slice(0, 40)] = typeof v === "string" ? v.slice(0, 200) : v;
+          const key = String(k).slice(0, 40);
+          props[key] = typeof v === "string" ? v.slice(0, WIDE_PROPS[key] || 200) : v;
           n++;
         }
       }
@@ -1962,6 +1980,9 @@ async function handleVetCheckout(request, env, corsOrigin) {
     const back = app ? "&app=1" : "";
     q.append("success_url", `https://plasticdetox.org/vet.html?paid=1${back}&session={CHECKOUT_SESSION_ID}`);
     q.append("cancel_url", `https://plasticdetox.org/vet.html?canceled=1${back}`);
+    // Without this Stripe shows no promo code field at all, so a coupon in the
+    // dashboard is unusable: there is nowhere to type it.
+    q.append("allow_promotion_codes", "true");
     q.append("metadata[type]", "vet-pack");
     q.append("metadata[pack]", pack);
     q.append("metadata[checks]", String(p.checks));
@@ -2023,7 +2044,7 @@ async function handleVetClaim(request, env, corsOrigin) {
     headers: { Authorization: "Bearer " + env.STRIPE_SECRET_KEY },
   });
   const s = await res.json().catch(() => ({}));
-  if (!res.ok || s.payment_status !== "paid" || !s.metadata || s.metadata.type !== "vet-pack") {
+  if (!res.ok || !PAID.has(s.payment_status) || !s.metadata || s.metadata.type !== "vet-pack") {
     return json({ ok: false, error: "Payment not found" }, 404, corsOrigin);
   }
   const checks = Math.min(500, Math.max(1, Number(s.metadata.checks) || 0));
