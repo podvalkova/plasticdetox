@@ -1489,7 +1489,22 @@ export function result(root, { index, match, scan, product, query, productNamed,
     return v.brand.category;
   })();
   head.appendChild(el("div", "verdict-cat", catLine));
-  if (v.reason) head.appendChild(el("p", "verdict-reason", v.reason));
+  if (v.reason) {
+    // On a brand card this is the brand note itself, which is where the 900
+    // character blurbs live. Same treatment as "About the brand" below.
+    const rp = el("p", "verdict-reason");
+    rp.appendChild(clamped(v.reason, 260));
+    head.appendChild(rp);
+  }
+
+  // What follows a brand level reading depends on whether we hold verdicts on
+  // that brand's products. Saying "we have not researched this exact product"
+  // on a card that quotes a lab result for one of them reads as no research at
+  // all, and the rated products are listed further down the same screen.
+  const rated = knownProducts(v.brand).filter((r) => r.stance);
+  const pointToProducts = () => (rated.length
+    ? `We rate this brand's products separately, and ${rated.length === 1 ? "one is" : `${rated.length} are`} listed below. Open the one you are holding for its own verdict.`
+    : "We have not researched this exact product, so treat it as context rather than a verdict on what you are holding.");
 
   const expo = exposureBlock(v.ext && v.ext.exposure);
   if (expo) head.appendChild(expo);
@@ -1509,7 +1524,7 @@ export function result(root, { index, match, scan, product, query, productNamed,
     head.appendChild(bl);
   } else if (v.scoped) {
     head.appendChild(el("div", "verdict-scope",
-      `This is our finding on ${v.brand.brand} ${String(v.brand.category || "").toLowerCase()} generally. We have not researched this exact product.`));
+      `This is our finding on ${v.brand.brand} ${String(v.brand.category || "").toLowerCase()} generally. ${pointToProducts()}`));
   } else if (v.level === "brand") {
     // A prefix match knows the maker and nothing else. Say which it was, so
     // "this is our read on the brand" is not mistaken for having read the code.
@@ -1522,7 +1537,7 @@ export function result(root, { index, match, scan, product, query, productNamed,
     // Knowing the brand is not knowing the product. Say so rather than let a
     // brand judgement pass itself off as a verdict on the thing being held.
     head.appendChild(el("div", "verdict-scope",
-      "This is our read on the brand. We have not researched this exact product, so treat it as context rather than a verdict on what you are holding."));
+      `This is our read on the brand. ${pointToProducts()}`));
   }
   card.appendChild(head);
 
