@@ -20,6 +20,38 @@ import { STANCE_LABEL } from "./match.js";
 
 const WORKER = "https://plasticdetox-quiz-email.plasticdetox.workers.dev";
 const RECENTS_KEY = "pd.recents.v1";
+const CHECKS_KEY = "pd.checks.v1";
+
+/** Every instant check this phone has paid for, by brand and product. */
+function checkKey(brand, product) {
+  return `${brand}::${product}`.toLowerCase().replace(/\s+/g, " ").trim();
+}
+
+function readChecks() {
+  try { return JSON.parse(localStorage.getItem(CHECKS_KEY) || "{}"); } catch { return {}; }
+}
+
+function readCheck(brand, product) {
+  if (!brand) return null;
+  const all = readChecks();
+  return all[checkKey(brand, product || "")] || null;
+}
+
+function saveCheck(brand, product, event) {
+  try {
+    const all = readChecks();
+    all[checkKey(brand, product || "")] = { ...event, at: new Date().toISOString(), brand, product };
+    // Twenty is plenty to keep, and keeps the store small.
+    const keys = Object.keys(all);
+    if (keys.length > 20) {
+      keys.sort((a, b) => String(all[a].at || "").localeCompare(String(all[b].at || "")));
+      for (const k of keys.slice(0, keys.length - 20)) delete all[k];
+    }
+    localStorage.setItem(CHECKS_KEY, JSON.stringify(all));
+  } catch {
+    // A result we cannot store still shows on this screen.
+  }
+}
 
 // The categories people arrive asking about. Kept short on purpose: this is a
 // way in for someone who has nothing to scan yet, not a directory.
@@ -395,7 +427,10 @@ function draw() {
       // somebody standing in a shop away with nothing.
       hasPass: !!check.getPass(),
       balance: checkBalance,
-      checkResult: state.checkResult || null,
+      checkResult: state.checkResult
+        || readCheck((state.match && state.match.brand && state.match.brand.brand) || state.query || "",
+                     (state.product && state.product.name) || "")
+        || null,
       onCheck: (btn, log, brandName, productName) =>
         runInstantCheck(state, btn, log, brandName, productName),
       onBuy: () => openExternal(check.buyUrl(state.query || "", "")),
@@ -946,7 +981,13 @@ async function runInstantCheck(state, button, log, brandName, productName) {
       button.textContent = "Run the check";
       // Keep the answer where a re-render cannot reach it, so leaving the
       // screen and coming back shows what was paid for rather than a blank.
-      if (event.verdict) state.checkResult = event;
+      if (event.verdict) {
+        state.checkResult = event;
+        saveCheck(brand, product, event);
+        // And into Recently checked, which only ever knew about brands we hold
+        // a row for, so a product somebody paid to research left no trace.
+        rememberCheck(brand, product, event.verdict);
+      }
       spend();
       if (event.needsCredits) {
         log.appendChild(el("p", "pkg-why", event.error || "No checks left on this pass."));
@@ -1153,8 +1194,30 @@ function remember(state, verdict) {
 
 /** A recent row carries an id, so it reopens from the live index. */
 function openRecent(entry) {
+  // A checked product reopens onto the answer that was paid for, even where we
+  // hold no brand row at all, which is the usual case for one of these.
+  if (entry && String(entry.id || "").startsWith("check:")) {
+    const saved = readCheck(entry.name, entry.sub);
+    const brand = index.brands.find((b) => b.brand.toLowerCase() === String(entry.name).toLowerCase());
+    if (brand) {
+      go({ screen: "result", match: { brand, via: "recent" }, scan: null,
+           query: `${entry.name} ${entry.sub || ""}`.trim(), checkResult: saved });
+      return;
+    }
+    go({ screen: "unknown", brand: entry.name, product: entry.sub || "", scan: null });
+    return;
+  }
   const brand = index.brands.find((b) => b.id === entry.id);
   if (brand) go({ screen: "result", match: { brand, via: "recent" }, scan: null });
+}
+
+/** A checked product in the recents strip, with the verdict it came back with. */
+function rememberCheck(brand, product, verdict) {
+  const entry = { id: "check:" + checkKey(brand, product), name: brand, sub: product,
+                  stance: verdict === "unrated" ? "neutral" : verdict };
+  const list = readRecents().filter((r) => r.id !== entry.id);
+  list.unshift(entry);
+  try { localStorage.setItem(RECENTS_KEY, JSON.stringify(list.slice(0, 20))); } catch {}
 }
 
 // -------------------------------------------------------------- externals
