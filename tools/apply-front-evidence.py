@@ -114,6 +114,10 @@ assert not (INERT & set(POLYMER)), sorted(INERT & set(POLYMER))
 # Rule 3.11. Viscose, rayon and modal are cellulose once made, but no published
 # study has measured what carbon disulfide or finish they leave on skin. Worn for
 # hours they need a certification that tests the finished product.
+# What the container holds, where the answer is swallowed. Rule 3.3 gives no
+# relief to anything ingested, and the `use` field has no word for it.
+INGESTED = {"food", "drink", "water", "water and coffee", "supplement"}
+
 VISCOSE_FIBRE = re.compile(r"\b(viscose|rayon|modal)\b|\btencel\b(?!.*\blyocell\b)", re.I)
 FINISHED_PRODUCT_CERT = re.compile(r"oeko.?tex\W*standard\W*100|made safe|\bgots\b|eu ecolabel", re.I)
 # Rule 3.12's list is its own, so widening it never moves 3.11 on a wrap or a wipe.
@@ -385,18 +389,23 @@ def _assess_container(pack):
     relief = 2 if use in ("never-on-body", "not-on-body", "no-body-contact") else (
         1 if use in ("rinse-off", "rinsed-off", "rinse") else 0)
 
+    # Rule 3.3 again, the half of it the `use` field cannot say. It offers
+    # leave-on, rinse-off and not-on-body, and the rule's own words are "left on
+    # the body, OR INGESTED: no relief". A jar of sauce touches nobody's skin,
+    # so the only honest answer in that vocabulary is not-on-body, which is the
+    # two steps written for laundry powder going down a drain. Nothing recorded
+    # reads that way today; the field simply had no way to say what a food is.
+    if str(pack.get("holds") or "").strip().lower() in INGESTED:
+        relief = 0
+
     # Rule 3.13. A container sold empty is filled by the shopper, so what it
     # holds is the hardest use its maker markets rather than whatever one
     # evening's leftovers happen to be. Two things follow, and the engine
-    # enforces both rather than trusting the field:
-    #
-    #   the route is ingestion, so 3.3 gives no relief. A storage bag is not a
-    #   laundry powder, and Ziploc's was recorded "not-on-body" and took the
-    #   two steps that exist for surface cleaner;
-    #
-    #   an unrecorded contents field is emulsion, not a blank. Food carries
-    #   fat, and the same check recorded "dry" for a bag its own maker markets
-    #   for meat and for reheating.
+    # enforces both rather than trusting the field: the route is ingestion, so
+    # 3.3 gives no relief, and an unrecorded contents field is emulsion rather
+    # than a blank, because food carries fat. The check that prompted it
+    # recorded "dry" for a bag whose own maker markets it for meat and for
+    # reheating.
     filled_by_buyer = str(pack.get("filledBy") or "").strip().lower() == "buyer"
     if filled_by_buyer:
         relief = 0
