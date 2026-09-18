@@ -5063,6 +5063,8 @@
           "testingNote": "No independent safety test (metals, plastics leaching) of the AQ-4100 found at Lead Safe Mama, Mamavation, Consumer Reports or Clean Label Project on 2026-09-16. Two performance tests exist and are recorded as results, neither a contaminant safety test: (1) the maker's Performance Data Sheet reports NSF/ANSI 177 free chlorine reduction testing by Pace Analytical, commissioned by Aquasana, not an NSF certification; (2) Mamavation's 2025 shower filter guide says the \"Aquasana Deluxe Shower Water Filter System\" was \"total chlorine tested by Mamavation and was non-detect\" using an in shower water test with no detection limit published. Consumer Reports rates other Aquasana filters, not this one.",
           "testingDate": "2025",
           "materialsList": "filter media of copper zinc (KDF) and coconut shell carbon, housing and shower head listed only as metal and plastic (resins and alloys not stated), chrome collar at the inlet, gasket and upper housing O-ring (materials not stated)",
+          "cappedFrom": "good",
+          "capRestoreWhy": "hand authored scorecard",
           "verdict": "good",
           "dated": "2026-08-28",
           "why": "hand authored scorecard",
@@ -8020,9 +8022,7 @@
     "products": [
       {
         "name": "Avocado Eco Organic Crib Mattress",
-        "asins": [
-          "B0FPJ93BLC"
-        ],
+        "asins": [],
         "verdict": "good",
         "note": "242 pocketed recycled steel coils in a polypropylene nonwoven with an EVA based adhesive, latex bound GOLS coconut husk pads, and a GOTS organic cotton and wool cover. No latex foam layer, no polyurethane, no waterproofing. MADE SAFE and GREENGUARD Gold. Amazon listing unavailable on 2026-09-14.",
         "origin": "article",
@@ -8085,11 +8085,17 @@
             "materials": "database",
             "legal": "database"
           },
-          "scope": "sku",
+          "scope": "line",
           "basis": "direct",
           "disclose": false,
           "rules": []
-        }
+        },
+        "urls": [
+          "https://www.avocadogreenmattress.com/products/eco-organic-crib-mattress"
+        ],
+        "match": [
+          "eco organic crib mattress"
+        ]
       },
       {
         "name": "Avocado Organic Crib Mattress",

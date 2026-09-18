@@ -393,9 +393,14 @@ def _assess_container(pack):
     # leave-on, rinse-off and not-on-body, and the rule's own words are "left on
     # the body, OR INGESTED: no relief". A jar of sauce touches nobody's skin,
     # so the only honest answer in that vocabulary is not-on-body, which is the
-    # two steps written for laundry powder going down a drain. Nothing recorded
-    # reads that way today; the field simply had no way to say what a food is.
-    if str(pack.get("holds") or "").strip().lower() in INGESTED:
+    # two steps written for laundry powder going down a drain.
+    #
+    # Only that claim is refused, never a recorded rinse-off. Cancelling both
+    # took the Aquasana shower filter from pass to caution, and a shower filter
+    # is the rinse-off case exactly: the water it holds runs over somebody and
+    # down a drain, and nobody drinks it.
+    if (use in ("never-on-body", "not-on-body", "no-body-contact")
+            and str(pack.get("holds") or "").strip().lower() in INGESTED):
         relief = 0
 
     # Rule 3.13. A container sold empty is filled by the shopper, so what it

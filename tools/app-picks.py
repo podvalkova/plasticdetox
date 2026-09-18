@@ -195,6 +195,35 @@ def main():
         bad.append(f"!! shop products a scan cannot reach grew: "
                    f"{len(unscannable)} > {scan_ceiling}")
 
+    # Every shelf in the app shop needs a photograph.
+    #
+    # The app's shop is built from the database: any product row we rate good
+    # that carries an ASIN. The photographs are built from the STORE, which is a
+    # smaller set, with data/extra-product-images.json filling the gap by hand.
+    # So a product rated good and never added to the store had no picture, and
+    # the card fell back to a brand name on grey. Nineteen of 318 did, and
+    # nothing failed, because no check had ever compared the two lists.
+    store_imgs = set(re.findall(r'img:\s*"([^"]+)"',
+                                (ROOT / "data" / "store-products.js").read_text()))
+    have_img = {a for a, v in extra.items() if len(a) == 10 and v}
+    shopless = []
+    for p_ in rows:
+        if ((p_.get("ext") or {}).get("verdict")) != "good":
+            continue
+        asins = p_.get("asins") or []
+        if not asins:
+            continue
+        a = asins[0]
+        if a in catalog or a in have_img:
+            continue
+        shopless.append(f"{p_.get('name')} ({a})")
+    if shopless:
+        bad.append(f"!! {len(shopless)} products on the app shop shelf have no photograph: "
+                   + ", ".join(sorted(shopless)[:6])
+                   + (" ..." if len(shopless) > 6 else "")
+                   + ". Add the image id to data/extra-product-images.json, "
+                     "or the product to the store.")
+
     ceiling_file = ROOT / "data" / "app-picks-backlog.json"
     ceiling = json.loads(ceiling_file.read_text()).get("unrated", 0) if ceiling_file.exists() else None
     if "--accept" in sys.argv:
