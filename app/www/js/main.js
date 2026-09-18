@@ -1010,7 +1010,7 @@ async function runInstantCheck(state, button, log, brandName, productName) {
         log.appendChild(el("p", "pkg-why", event.error));
         return;
       }
-      log.appendChild(screens.checkVerdict(event));
+      log.appendChild(screens.checkVerdict({ ...event, brand, product }, openExternal));
       button.remove();
     },
   });

@@ -1730,9 +1730,50 @@ Packaging follows our matrix, by what the contents are, because what leaches fro
 For a durable good or appliance, "materials" means the surfaces that actually touch the water, food, drink, skin or mouth (the reservoir, tubing, brew chamber, cooking surface, drink path, teat, mouthpiece, pump), never the retail box. A part that touches the person or the contents is a material of the product even when it is small: a bottle's silicone teat and a cleanser's plastic pump both count. Well documented facts about a product category (how a pod machine brews, what a nonstick coating is) are evidence you may use; name the category fact in the note.
 Respond with ONLY a JSON object, no prose.`;
 
+const HAZARD_POLYMER = /\b(pvc|polyvinyl|polycarbonate|polystyrene|melamine|ptfe|teflon)\b/i;
+const INERT_CONTACT = /\b(glass|stainless|steel|aluminium|aluminum|tin|paper|paperboard|cardboard|cotton|linen|wood|bamboo|ceramic|porcelain|silicone)\b/i;
+const PET_LIKE = /\b(pet|pete|polyester|acrylic|nylon|polyamide)\b/i;
+
+/**
+ * The packaging matrix, section 3.1, computed here rather than asked for.
+ *
+ * What leaches out of a plastic is lipophilic: oil pulls it, water mostly does
+ * not. So the answer is the contents crossed with the polymer, and it is a
+ * table, not a judgement call. Salt and Stone's deodorant is an oil based stick
+ * in plastic and the researcher called its materials a pass.
+ */
+function matrixStatus({ container, base, heated, use }) {
+  const c = String(container || "").toLowerCase();
+  const b = String(base || "").toLowerCase();
+  if (!c) return null;
+  if (HAZARD_POLYMER.test(c)) {
+    return { status: "fail", why: `${container} in contact with the contents, a named hazard in the path that reaches a person` };
+  }
+  if (INERT_CONTACT.test(c) && !/plastic|polymer|resin|lined/.test(c)) {
+    return { status: "pass", why: `${container}, which puts nothing into what it holds` };
+  }
+  const pet = PET_LIKE.test(c);
+  let rank; // 0 pass, 1 caution, 2 fail
+  if (/dry|powder|solid bar/.test(b)) rank = 0;
+  else if (/aqueous|water/.test(b)) rank = 0;
+  else if (/surfactant|wash|shampoo|cleanser/.test(b)) rank = pet ? 1 : 0;
+  else if (/emulsion|lotion|cream|sunscreen/.test(b)) rank = 1;
+  else if (/anhydrous|oil|balm|butter|stick|wax/.test(b)) rank = pet ? 2 : 1;
+  else if (/acid/.test(b)) rank = 1;
+  else rank = 1;
+  if (heated) rank = Math.min(2, rank + 1);
+  if (/rinse/.test(String(use || ""))) rank = Math.max(0, rank - 1);
+  const status = ["pass", "caution", "fail"][rank];
+  const contents = b || "the contents";
+  const why = rank === 0
+    ? `${contents} in ${container}, which the matrix passes`
+    : `${contents} in ${container}${heated ? ", with heat" : ""}: rule 3.1 makes that a ${status}`;
+  return { status, why };
+}
+
 async function vetLabel(env, brand, product) {
   const r = await vetClaude(env, VET_RULES,
-    `Product: ${brand} ${product}. Find (1) "formula": the ingredient list, and nothing else. Quote it verbatim behind the word Ingredients where you can find it. A durable good has no ingredient list, so its formula is status "none". What a container does to the contents is the materials question, never formula's. (2) "materials": what the product is physically made of. For a durable good that is every surface touching the water, food, drink, skin or mouth, including small parts like a teat, mouthpiece or pump. For a consumable it is the container holding the contents. How the product is BUILT always belongs here, never under testing, and plastic in a hot water or drink path is a materials fail. Reply ONLY: {"formula":{"status":"pass|caution|fail|none|unassessed","note":"<one sentence of facts>","source":"<url>"},"materials":{"status":"...","note":"...","source":"..."}}`,
+    `Product: ${brand} ${product}. Find (1) "formula": the ingredient list, and nothing else. Quote it verbatim behind the word Ingredients where you can find it. A durable good has no ingredient list, so its formula is status "none". Give formula a "finding": one short sentence naming what is wrong, or what is clean, in plain words, such as "Contains parfum, an undisclosed fragrance blend". Give formula a "flagged": an array of the exact ingredient names that earned the status, empty when none. (2) "materials": report FACTS, not a judgement. "container": what actually touches the contents, as specifically as the source allows (PET, HDPE, PP, unnamed plastic, glass, aluminium, steel, paper, cotton). "base": one of dry, aqueous, surfactant, emulsion, anhydrous, acidic, by what the contents are, an oil or balm or stick being anhydrous. "heated": true only when something hot goes in or on it in use. "use": leave-on, rinse-off or not-on-body. Add a "note" of what you found and where. We apply our own packaging table to those facts, so do not reason about pass or fail for materials yourself. Every field carries a "source" URL.`,
     3);
   return r;
 }
@@ -1889,6 +1930,25 @@ async function vetCore(env, brand, product, send, allowResearch) {
   // actually happened is that we never asked.
   let transportFailed = false;
   const finish = (key, r, aiKeys) => {
+    // The researcher reports what the container is and what is inside it; the
+    // status comes from our table, not from its reading of our rules.
+    const m = r.data && r.data.materials;
+    if (m && (m.container || m.base)) {
+      const ruled = matrixStatus(m);
+      if (ruled) {
+        m.status = ruled.status;
+        m.note = `${ruled.why}. ${String(m.note || "").trim()}`.trim();
+      }
+    }
+    // Formula leads with the finding, so "contains parfum" is the first thing
+    // read rather than the fourth sentence of a paragraph.
+    const f = r.data && r.data.formula;
+    if (f && f.finding) {
+      const lead = String(f.finding).trim().replace(/\.$/, "");
+      if (lead && !String(f.note || "").startsWith(lead)) {
+        f.note = `${lead}. ${String(f.note || "").trim()}`.trim();
+      }
+    }
     // Claude legs return {data} | {error} | {unconfigured}; legal returns a front.
     for (const k of aiKeys) {
       if (r.data && r.data[k] && r.data[k].status) {

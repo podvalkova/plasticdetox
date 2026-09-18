@@ -1713,7 +1713,7 @@ export function result(root, { index, match, scan, product, query, productNamed,
           const f = (checkResult.fronts || {})[k];
           if (f) log.appendChild(checkRow(k, f, FRONT_LABEL[k] || k));
         }
-        log.appendChild(checkVerdict(checkResult));
+        log.appendChild(checkVerdict(checkResult, onOpen));
         return now;
       }
       if (owns) {
@@ -2077,16 +2077,71 @@ export function checkRow(step, front, label) {
 }
 
 /** The verdict the check settled on, in the same words the site uses. */
-export function checkVerdict(event) {
+export function checkVerdict(event, onOpen) {
   const names = { good: "Good choice", careful: "Careful", skip: "Skip", unrated: "Not enough found" };
   const box = el("div", "check-result");
   box.appendChild(el("span", `badge ${event.verdict === "unrated" ? "neutral" : event.verdict}`,
     names[event.verdict] || event.verdict));
+
+  // Why, in one line, from the check that decided it. The card used to print
+  // four rows of research and leave the reader to work out which one carried
+  // the verdict, with the finding itself buried mid paragraph.
+  const fronts = event.fronts || {};
+  const order = { fail: 3, caution: 2, none: 1, pass: 0, unassessed: 0 };
+  const decided = ["formula", "materials", "legal", "testing"]
+    .map((k) => ({ k, f: fronts[k] || {} }))
+    .filter((x) => x.f.status)
+    .sort((a, b) => (order[b.f.status] || 0) - (order[a.f.status] || 0))[0];
+  if (decided && (decided.f.status === "fail" || decided.f.status === "caution")) {
+    const label = { formula: "Formula", materials: "Materials", legal: "Recalls & lawsuits", testing: "Independent tests" }[decided.k];
+    const why = String(decided.f.note || "").split(". ")[0];
+    box.appendChild(el("p", "check-why", `${label}: ${why}.`));
+  }
+  // The ingredients that earned it, named rather than described.
+  const flagged = ((event.fronts || {}).formula || {}).flagged;
+  if (Array.isArray(flagged) && flagged.length) {
+    const row = el("div", "flag-row");
+    for (const f of flagged.slice(0, 6)) row.appendChild(el("span", "flag-chip", String(f)));
+    box.appendChild(row);
+  }
   if (event.label) box.appendChild(el("div", "check-label", event.label));
   if (event.capNote) box.appendChild(el("p", "pkg-why", event.capNote));
   if (event.consumed) {
     box.appendChild(el("p", "pkg-why",
       "1 check used. This research will join our public database after review, free for everyone."));
+  }
+  // Research is machine work until a person reviews it, and the reader is
+  // holding the product, so they are the one who can see what we got wrong.
+  if (onOpen) {
+    const wrap = el("div", "report");
+    const open = el("button", "report-open", "Something wrong with this check? Tell us");
+    const form = el("div", "report-form");
+    form.hidden = true;
+    const ta = el("textarea");
+    ta.placeholder = "What did we get wrong?";
+    ta.rows = 3;
+    form.appendChild(ta);
+    const send = el("button", "cta ghost", "Send to our inbox");
+    send.onclick = () => {
+      const said = ta.value.trim();
+      if (!said) { ta.focus(); return; }
+      const name = [event.brand, event.product].filter(Boolean).join(" ") || "this product";
+      const scorecard = ["formula", "materials", "legal", "testing"]
+        .map((k) => `${k}: ${(fronts[k] || {}).status || "unknown"}`).join(", ");
+      const body = [said, "", "---", `Product: ${name}`,
+        `Instant check verdict: ${names[event.verdict] || event.verdict || "none"}`,
+        `Checks: ${scorecard}`, `Checked: ${String(event.at || "").slice(0, 19)}`]
+        .filter(Boolean).join("\n");
+      onOpen("mailto:hello@plasticdetox.org"
+        + `?subject=${encodeURIComponent("Check correction: " + name)}`
+        + `&body=${encodeURIComponent(body)}`);
+      send.textContent = "Opening your mail app";
+    };
+    form.appendChild(send);
+    open.onclick = () => { form.hidden = !form.hidden; if (!form.hidden) ta.focus(); };
+    wrap.appendChild(open);
+    wrap.appendChild(form);
+    box.appendChild(wrap);
   }
   return box;
 }
