@@ -212,7 +212,7 @@ export async function refresh({ force = false, build = "" } = {}) {
       fetch(`${SITE}/app/data/barcodes.json`, { signal: ctl.signal }).then((r) => r.json()).catch(() => null),
     ]);
     clearTimeout(timer);
-    if (!Array.isArray(brands) || brands.length < 100) return { skipped: true };
+    if (!Array.isArray(brands) || brands.length < 100) return fallBackToBundle(stale);
 
     const current = readCache() || {};
     const payload = {
@@ -224,6 +224,33 @@ export async function refresh({ force = false, build = "" } = {}) {
     writeCache(payload);
     build(payload, "fresh");
     return { updated: true, brands: brands.length };
+  } catch {
+    return fallBackToBundle(stale);
+  }
+}
+
+/**
+ * The copy that shipped inside this bundle, when the network cannot be reached.
+ *
+ * A release carries the database as it stood when it was built, and the app
+ * preferred the cache over it: a phone holding a cache from before a verdict
+ * existed kept showing the old answer, with the new one sitting unread inside
+ * the bundle it had just downloaded. Whoopsie Wipes was in bundle 1.1.47 and
+ * invisible on a phone that had cached the database an hour earlier.
+ */
+async function fallBackToBundle(stale) {
+  if (!stale) return { skipped: true };
+  try {
+    const [brands, asins, barcodes] = await Promise.all([
+      readBundled("brand-data"),
+      readBundled("asin-map"),
+      readBundled("barcodes").catch(() => ({})),
+    ]);
+    if (!Array.isArray(brands) || brands.length < 100) return { skipped: true };
+    const payload = { brands, asins, barcodes, fetched: new Date().toISOString() };
+    writeCache(payload);
+    build(payload, "bundle");
+    return { updated: true, brands: brands.length, fromBundle: true };
   } catch {
     return { skipped: true };
   }

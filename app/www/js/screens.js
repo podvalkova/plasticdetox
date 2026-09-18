@@ -2092,7 +2092,7 @@ export function checkVerdict(event) {
 
 // ------------------------------------------------------------------ about
 
-export function about(root, { meta, bundle, onOpen, notify, purchases, onFeedback, onRate, checks }) {
+export function about(root, { meta, bundle, onOpen, notify, purchases, onFeedback, onRate, checks, onRefresh }) {
   root.appendChild(el("div", "hero")).appendChild(el("h1", null, "How this works"));
 
   // The pass, first thing on the screen. A pass is a token rather than an
@@ -2136,6 +2136,15 @@ export function about(root, { meta, bundle, onOpen, notify, purchases, onFeedbac
   data.appendChild(el("p", "pkg-why", meta.fetched
     ? `Last updated ${new Date(meta.fetched).toLocaleDateString()}.`
     : "Using the version that shipped with the app."));
+  // The database refreshes on its own, hourly and on every new build. This is
+  // for the moment somebody is standing in a shop looking at a verdict they
+  // know changed, which is not a moment to explain a cache to them.
+  if (onRefresh) {
+    const up = el("button", "cta ghost", "Update verdicts now");
+    up.type = "button";
+    up.onclick = () => onRefresh(up);
+    data.appendChild(up);
+  }
   // Which build is actually running.
   //
   // Neither of us could see this, so an update that never landed and an update

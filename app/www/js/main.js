@@ -487,6 +487,15 @@ function draw() {
         onRestore: restorePurchases,
       },
       onFeedback: sendFeedback,
+      onRefresh: async (btn) => {
+        btn.disabled = true;
+        btn.textContent = "Updating";
+        const r = await data.refresh({ force: true }).catch(() => null);
+        index = data.getIndex();
+        groupCache = null;
+        toast(r && r.updated ? `Updated: ${r.brands} brands.` : "Could not reach the database just now.");
+        render();
+      },
       onRate: () => { track("rate_link_opened", {}); openExternal(rate.storeUrl()); },
       checks: {
         hasPass: !!check.getPass(),
@@ -1457,7 +1466,13 @@ async function start() {
       groupCache = null;
       if (stack.length === 1) render();
     }
-  });
+  })
+    // Without this, a plugin that cannot answer which bundle is running took
+    // the refresh down with it, and the app kept whatever verdicts the cache
+    // held, forever.
+    .catch(() => data.refresh({ force: true }).then((r) => {
+      if (r && r.updated) { index = data.getIndex(); groupCache = null; render(); }
+    }).catch(() => {}));
 
   const cap = window.Capacitor;
   const appPlugin = cap && cap.Plugins && cap.Plugins.App;
