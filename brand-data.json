@@ -62642,7 +62642,7 @@
           "frontNotes": {
             "formula": "The published ingredient list carries nothing on the hazard list.",
             "testing": "Searched Lead Safe Mama (tamararubin.com site search and WordPress index for \"Kjaer Weis\" and \"Kjaer\": nothing matched), Mamavation (site search: only the green beauty PFAS makeup guide, which tested a different product, Kjaer Weis Red Liquid Lips, at 26 ppm organic fluorine, detection limit 10 ppm, EPA certified lab, 2022 to 2023), Consumer Reports (search: no results for Kjaer Weis), Clean Label Project (site search and WordPress index: no results), Ecology Center (site search: no results) and Valisure (no Kjaer Weis content found) on 2026-09-16; no independent test of Kjaer Weis Cream Bronzer Enchant found.",
-            "materials": "In contact with metal, which puts nothing into what it holds.",
+            "materials": "In contact with paper, which puts nothing into what it holds.",
             "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either."
           },
           "formulaAnswers": {
@@ -130440,7 +130440,6 @@
         ],
         "ext": {
           "frontNotes": {
-            "formula": "A durable good has no ingredient list. What it is made of is the materials check.",
             "testing": "Searched Lead Safe Mama, Mamavation and Consumer Reports on 2026-09-18; no independent test of Whoopsie Wipes found. Consumer Reports' 2025 baby wipe PFAS round did not include it. The listing's OEKO-TEX Standard 100 claim is a certification of the cotton, not an independent test of this product, and thewhoopsiewipes.com does not resolve, so the certificate cannot be read.",
             "materials": "In contact with cotton, which puts nothing into what it holds.",
             "legal": "Checked CPSC recall listings, FDA recalls and recall news by web search on 2026-09-18. No recall, safety warning or regulatory action affecting Whoopsie Wipes found. The 2026 baby wipe recalls on record are Target's Up & Up, for bacterial contamination of a wet wipe, which a dry wipe cannot have."
@@ -130502,5 +130501,196 @@
       }
     ],
     "stanceHeld": "good"
+  },
+  {
+    "id": "salt-and-stone",
+    "brand": "Salt & Stone",
+    "category": "Deodorant",
+    "stance": "careful",
+    "reason": "Aluminium free stick with a short, well chosen formula, and Fragrance (Parfum) as its seventh ingredient, which is an undisclosed blend. The barrel is plastic and the brand does not say which.",
+    "evidence": "Fragrance (Parfum) on the maker's own ingredient list",
+    "alternative": "",
+    "sources": [
+      "articles/microplastics-in-cosmetics-and-personal-care.html"
+    ],
+    "products": [
+      {
+        "name": "Salt & Stone Aluminum Free Deodorant",
+        "asins": [
+          "B08WYXNVQ7"
+        ],
+        "verdict": "careful",
+        "note": "Aluminium free, baking soda light and genuinely well formulated apart from one thing: Fragrance (Parfum), an undisclosed blend, with benzyl benzoate, geraniol and limonene declared. An oil based stick in an unnamed plastic barrel.",
+        "origin": "store",
+        "cat": "Deodorant",
+        "matchAll": [
+          [
+            "salt",
+            "stone",
+            "deodorant"
+          ]
+        ],
+        "ext": {
+          "frontNotes": {
+            "formula": "The published ingredient list hides composition behind fragrance, parfum.",
+            "testing": "Searched Lead Safe Mama, Mamavation and Consumer Reports on 2026-09-18; no independent test of Salt & Stone deodorant found.",
+            "materials": "anhydrous contents in plastic.",
+            "legal": "Checked FDA recalls, CPSC listings and recall news by web search on 2026-09-18. No recall, safety warning or class action affecting Salt & Stone found. The 2022 to 2026 hair care benzene cases are aerosol dry shampoos from other makers."
+          },
+          "formulaAnswers": {
+            "ingredients": "Caprylic/Capric Triglyceride, Tapioca Starch, Ozokerite, Magnesium Hydroxide, Sodium Bicarbonate, Cocos Nucifera (Coconut) Oil, Fragrance (Parfum), Butyrospermum Parkii (Shea) Butter, Niacinamide, Helianthus Annuus (Sunflower) Seed Oil, Tocopherol, Spirulina Platensis Extract, Lactobacillus Ferment, Maltodextrin, Benzyl Benzoate, Geraniol, Limonene",
+            "prose": "",
+            "complete": true,
+            "verdict": "careful",
+            "summary": "The published ingredient list hides composition behind fragrance, parfum.",
+            "flagged": [
+              "fragrance",
+              "parfum"
+            ],
+            "source": "https://www.saltandstone.com/products/natural-deodorant (Santal & Vetiver). Aluminium free and baking soda light, and the seventh ingredient is Fragrance (Parfum), an undisclosed blend; Benzyl Benzoate, Geraniol and Limonene are its declared allergens.",
+            "checked": ""
+          },
+          "testingNote": "Searched Lead Safe Mama, Mamavation and Consumer Reports on 2026-09-18; no independent test of Salt & Stone deodorant found.",
+          "testingDate": "2026-09-18",
+          "materialsList": "plastic",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "anhydrous",
+            "heated": false,
+            "mouthed": false,
+            "reuse": "",
+            "use": "leave-on",
+            "material": "plastic",
+            "treatment": "",
+            "treatmentSource": "",
+            "dispenser": "",
+            "lining": "",
+            "certification": "",
+            "certificationSource": "",
+            "source": "amazon:B08WYXNVQ7 Item Form \"Stick\": a twist up plastic barrel. Neither saltandstone.com nor the listing names the polymer, and the brand's recycled and ocean plastic claims are about recycled content, not which resin.",
+            "checked": "2026-09-18"
+          },
+          "legalNote": "Checked FDA recalls, CPSC listings and recall news by web search on 2026-09-18. No recall, safety warning or class action affecting Salt & Stone found. The 2022 to 2026 hair care benzene cases are aerosol dry shampoos from other makers.",
+          "verdict": "skip",
+          "dated": "2026-09-18",
+          "why": "section 6 ceiling: formula is caution, materials is fail",
+          "fronts": {
+            "formula": "caution",
+            "materials": "fail",
+            "legal": "pass",
+            "testing": "none"
+          },
+          "frontOrigin": {
+            "formula": "database",
+            "testing": "database",
+            "materials": "database",
+            "legal": "database"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": [
+            "3 packaging-matrix-fail"
+          ],
+          "cappedFrom": "careful",
+          "capRestoreWhy": "section 6: materials failed, formula is caution"
+        }
+      }
+    ]
+  },
+  {
+    "id": "ouai",
+    "brand": "OUAI",
+    "category": "Shampoo",
+    "stance": "careful",
+    "reason": "Fragrance (Parfum) sits seventh on the ingredient list, an undisclosed blend, alongside three PEGs and two ethoxylated surfactants that carry a 1,4-dioxane question nobody publishes a result for. The bottle itself is fine: a rinse off wash in plastic.",
+    "evidence": "Fragrance / Parfum and ethoxylates on the maker's own ingredient list",
+    "alternative": "",
+    "sources": [
+      "articles/microplastics-in-cosmetics-and-personal-care.html"
+    ],
+    "products": [
+      {
+        "name": "OUAI Fine Hair Shampoo (Biotin)",
+        "asins": [
+          "B084BW599K"
+        ],
+        "verdict": "careful",
+        "note": "Sulphate free and biotin based, with Fragrance (Parfum) seventh and benzyl salicylate, limonene and hexyl cinnamal declared. Three PEGs and two ethoxylated surfactants. The bottle passes: a wash that rinses off does not pull much out of plastic.",
+        "origin": "store",
+        "cat": "Shampoo",
+        "matchAll": [
+          [
+            "ouai",
+            "shampoo"
+          ]
+        ],
+        "ext": {
+          "frontNotes": {
+            "formula": "The published ingredient list hides composition behind fragrance, parfum.",
+            "testing": "Searched Lead Safe Mama, Mamavation and Consumer Reports on 2026-09-18; no independent test of this shampoo found. The 2022 benzene recalls in hair care were aerosol dry shampoos, a different product and a different maker.",
+            "materials": "surfactant or alcohol contents in plastic, rinsed off.",
+            "legal": "Checked FDA recalls, CPSC listings and recall news by web search on 2026-09-18. No recall, safety warning or class action affecting OUAI found. The 2022 to 2026 hair care benzene cases are aerosol dry shampoos from other makers."
+          },
+          "formulaAnswers": {
+            "ingredients": "Water / Aqua / Eau, Sodium C14-16 Olefin Sulfonate, Cocamidopropyl Betaine, Sodium Methyl Cocoyl Taurate, PEG-200 Hydrogenated Glyceryl Palmate, Cocamide MIPA, Fragrance / Parfum, Panthenol, Cocoglucosides Hydroxypropyltrimonium Chloride, Hydrolyzed Keratin, Biotin, Salvia Hispanica Seed Oil, Cetrimonium Chloride, Hydroxypropyl Guar Hydroxypropyltrimonium Chloride, Glycerin, Sodium Lauroyl Glycinate, PEG-150 Distearate, Propoxytetramethyl Piperidinyl Dimethicone, Trideceth-6, C11-15 Pareth-7, PEG-7 Glyceryl Cocoate, Sodium Chloride, Polyquaternium-7, Disodium EDTA, Citric Acid, Sodium Hydroxide, Tetrasodium EDTA, Potassium Sorbate, Sodium Benzoate, Phenoxyethanol, Benzyl Alcohol, Acetic Acid, Sodium Acetate, Benzyl Salicylate, Limonene, Hexyl Cinnamal",
+            "prose": "",
+            "complete": true,
+            "verdict": "careful",
+            "summary": "The published ingredient list hides composition behind fragrance, parfum.",
+            "flagged": [
+              "fragrance",
+              "parfum"
+            ],
+            "source": "https://theouai.com/products/fine-hair-shampoo (the biotin shampoo). Fragrance / Parfum is the seventh ingredient, an undisclosed blend, with Benzyl Salicylate, Limonene and Hexyl Cinnamal declared as its allergens. Also three PEGs and two ethoxylated surfactants, which carry a 1,4-dioxane question that no brand publishes a result for.",
+            "checked": ""
+          },
+          "testingNote": "Searched Lead Safe Mama, Mamavation and Consumer Reports on 2026-09-18; no independent test of this shampoo found. The 2022 benzene recalls in hair care were aerosol dry shampoos, a different product and a different maker.",
+          "testingDate": "2026-09-18",
+          "materialsList": "plastic",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "surfactant",
+            "heated": false,
+            "mouthed": false,
+            "reuse": "",
+            "use": "rinse-off",
+            "material": "plastic",
+            "treatment": "",
+            "treatmentSource": "",
+            "dispenser": "",
+            "lining": "",
+            "certification": "",
+            "certificationSource": "",
+            "source": "amazon:B084BW599K Item Form \"Liquid\" in a plastic bottle; theouai.com says the bottle is recyclable and names no resin. Recorded as unnamed plastic.",
+            "checked": "2026-09-18"
+          },
+          "legalNote": "Checked FDA recalls, CPSC listings and recall news by web search on 2026-09-18. No recall, safety warning or class action affecting OUAI found. The 2022 to 2026 hair care benzene cases are aerosol dry shampoos from other makers.",
+          "verdict": "careful",
+          "dated": "2026-09-18",
+          "why": "section 6: formula is caution",
+          "fronts": {
+            "formula": "caution",
+            "materials": "pass",
+            "legal": "pass",
+            "testing": "none"
+          },
+          "frontOrigin": {
+            "formula": "database",
+            "testing": "database",
+            "materials": "database",
+            "legal": "database"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": [
+            "2.1 disclosure-failure-caps-at-caution"
+          ]
+        }
+      }
+    ]
   }
 ]

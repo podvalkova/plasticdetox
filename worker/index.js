@@ -1776,7 +1776,12 @@ function matrixStatus({ container, base, heated, use }) {
   if (INERT_CONTACT.test(c) && !/plastic|polymer|resin|lined/.test(c)) {
     return { status: "pass", why: `${container}, which puts nothing into what it holds` };
   }
-  const pet = PET_LIKE.test(c);
+  // An unnamed plastic is read as the worst common case, which is what the
+  // database does: classify("plastic") lands in the PET column there, so an oil
+  // in a barrel nobody has named is a fail in both engines rather than a fail
+  // in one and a caution in the other.
+  const named = /hdpe|ldpe|polyethylene|polypropylene|\bpp\b|\bpe\b|silicone/.test(c);
+  const pet = PET_LIKE.test(c) || (/plastic|polymer|resin/.test(c) && !named);
   let rank; // 0 pass, 1 caution, 2 fail
   if (/dry|powder|solid bar/.test(b)) rank = 0;
   else if (/aqueous|water/.test(b)) rank = 0;
