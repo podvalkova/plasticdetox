@@ -2007,82 +2007,102 @@ export function unknown(root, { scan, brand, product, hasPass, balance, onCheck,
   box.appendChild(searchInput);
   if (!named) { root.appendChild(box); root.appendChild(results); }
 
-  // Free first, and never gated.
-  //
-  // This card used to be skipped whenever we could not name the product, which
-  // is exactly the case a scanner produces most: an unreadable barcode offered
-  // the $5 pack and nothing else, so the one free way forward disappeared at
-  // the moment it was most needed. It was gated because a request needs
-  // something to research and a bare barcode is not it. The answer is to ask
-  // for the name rather than to withdraw the offer.
-  //
-  // It is also placed above the paid check now. Leading with the pack while a
-  // free review exists sells something we give away.
-  const free = el("div", "card");
-  free.appendChild(el("h2", null, "Ask us to check it, free"));
-  free.appendChild(el("p", null, named
-    ? `Leave your email and our team will research ${named} and email you the verdict, usually within 2 business days.`
-    : "Tell us what it is and our team will research it and email you the verdict, usually within 2 business days."));
-  // Brand and product as two fields, the same as the Check screen, and for the
-  // same reason its comment gives: one box invites a brand name on its own, and
-  // a brand is not a research request. "Native" could be any of a dozen sticks
-  // with different formulas. Both are required below.
-  let brandField = null, productField = null;
-  if (!named) {
-    brandField = field("For example Native", brand || "", "Brand");
-    productField = field("For example Coconut & Vanilla deodorant", product || "", "Product");
-    free.appendChild(brandField.wrap);
-    free.appendChild(productField.wrap);
-  }
-  const emailInput = el("input");
-  emailInput.type = "email";
-  emailInput.placeholder = "you@email.com";
-  emailInput.autocapitalize = "none";
-  emailInput.autocomplete = "email";
-  free.appendChild(emailInput);
-  const freeBtn = el("button", "cta", "Request a free check");
-  freeBtn.onclick = () => onRequest(
-    brandField ? brandField.input.value.trim() : (brand || named),
-    productField ? productField.input.value.trim() : (product || ""),
-    emailInput.value, freeBtn);
-  free.appendChild(freeBtn);
-  root.appendChild(free);
-
-  // And the paid one, for someone who wants the answer in the aisle rather
-  // than in two days.
-  const now = el("div", "card");
-  now.appendChild(el("h2", null, "Or get the answer now"));
-  now.appendChild(el("p", null,
-    "Our research system runs the same four checks we use for every verdict: formula, materials, recalls and lawsuits, independent tests. It answers in about a minute and shows its sources."));
-
-  const log = el("div", "checklog");
-  now.appendChild(log);
-
-  if (hasPass) {
-    // What the pass has left, where the pass is about to be spent. The app
-    // could always ask the worker this and never did, so somebody who bought a
-    // hundred checks had no way to know they were down to two.
-    if (typeof balance === "number") {
-      now.appendChild(el("div", "pkg-why",
-        balance > 0
-          ? `${balance} ${balance === 1 ? "check" : "checks"} left on your pass.`
-          : "No checks left on this pass."));
+  // Already checked on this phone: the two offers below are for a product we
+  // have not researched, and next to a finished check they read as if we had
+  // not done the thing that is on screen. What is left is running it again,
+  // for a product that may have changed since.
+  if (researched) {
+    if (onCheck && hasPass) {
+      const again = el("div", "card");
+      again.appendChild(el("h2", null, "Run it again"));
+      again.appendChild(el("p", null,
+        "Formulas and packaging change. A fresh check spends one off your pass"
+        + (typeof balance === "number" ? `, and you have ${balance} left.` : ".")));
+      const log = el("div", "checklog");
+      again.appendChild(log);
+      const go2 = el("button", "cta ghost", "Check it again");
+      go2.onclick = () => onCheck(go2, log, brand || named, product || "");
+      again.appendChild(go2);
+      root.appendChild(again);
     }
-    const go = el("button", "cta", "Run the check");
-    go.onclick = () => onCheck(go, log);
-    now.appendChild(go);
   } else {
-    now.appendChild(el("p", "pkg-why",
-      "Checks are bought on our website. After paying, the page brings the pass "
-      + "straight back here, and the same link is emailed to you."));
-    const buy = el("button", "cta", "Get checks");
-    buy.onclick = onBuy;
-    now.appendChild(buy);
-    const paste = el("button", "cta ghost", "I already have a pass");
-    paste.onclick = onPaste;
-    now.appendChild(paste);
+    // Free first, and never gated.
+    //
+    // This card used to be skipped whenever we could not name the product, which
+    // is exactly the case a scanner produces most: an unreadable barcode offered
+    // the $5 pack and nothing else, so the one free way forward disappeared at
+    // the moment it was most needed. It was gated because a request needs
+    // something to research and a bare barcode is not it. The answer is to ask
+    // for the name rather than to withdraw the offer.
+    //
+    // It is also placed above the paid check now. Leading with the pack while a
+    // free review exists sells something we give away.
+    const free = el("div", "card");
+    free.appendChild(el("h2", null, "Ask us to check it, free"));
+    free.appendChild(el("p", null, named
+      ? `Leave your email and our team will research ${named} and email you the verdict, usually within 2 business days.`
+      : "Tell us what it is and our team will research it and email you the verdict, usually within 2 business days."));
+    // Brand and product as two fields, the same as the Check screen, and for the
+    // same reason its comment gives: one box invites a brand name on its own, and
+    // a brand is not a research request. "Native" could be any of a dozen sticks
+    // with different formulas. Both are required below.
+    let brandField = null, productField = null;
+    if (!named) {
+      brandField = field("For example Native", brand || "", "Brand");
+      productField = field("For example Coconut & Vanilla deodorant", product || "", "Product");
+      free.appendChild(brandField.wrap);
+      free.appendChild(productField.wrap);
+    }
+    const emailInput = el("input");
+    emailInput.type = "email";
+    emailInput.placeholder = "you@email.com";
+    emailInput.autocapitalize = "none";
+    emailInput.autocomplete = "email";
+    free.appendChild(emailInput);
+    const freeBtn = el("button", "cta", "Request a free check");
+    freeBtn.onclick = () => onRequest(
+      brandField ? brandField.input.value.trim() : (brand || named),
+      productField ? productField.input.value.trim() : (product || ""),
+      emailInput.value, freeBtn);
+    free.appendChild(freeBtn);
+    root.appendChild(free);
+
+    // And the paid one, for someone who wants the answer in the aisle rather
+    // than in two days.
+    const now = el("div", "card");
+    now.appendChild(el("h2", null, "Or get the answer now"));
+    now.appendChild(el("p", null,
+      "Our research system runs the same four checks we use for every verdict: formula, materials, recalls and lawsuits, independent tests. It answers in about a minute and shows its sources."));
+
+    const log = el("div", "checklog");
+    now.appendChild(log);
+
+    if (hasPass) {
+      // What the pass has left, where the pass is about to be spent. The app
+      // could always ask the worker this and never did, so somebody who bought a
+      // hundred checks had no way to know they were down to two.
+      if (typeof balance === "number") {
+        now.appendChild(el("div", "pkg-why",
+          balance > 0
+            ? `${balance} ${balance === 1 ? "check" : "checks"} left on your pass.`
+            : "No checks left on this pass."));
+      }
+      const go = el("button", "cta", "Run the check");
+      go.onclick = () => onCheck(go, log);
+      now.appendChild(go);
+    } else {
+      now.appendChild(el("p", "pkg-why",
+        "Checks are bought on our website. After paying, the page brings the pass "
+        + "straight back here, and the same link is emailed to you."));
+      const buy = el("button", "cta", "Get checks");
+      buy.onclick = onBuy;
+      now.appendChild(buy);
+      const paste = el("button", "cta ghost", "I already have a pass");
+      paste.onclick = onPaste;
+      now.appendChild(paste);
+    }
+    root.appendChild(now);
   }
-  root.appendChild(now);
 
   if (scan) root.appendChild(materialsCard(scan, onOpen));
 
