@@ -478,6 +478,20 @@ note, which until September 2026 it did not.
   sleeve, an appliance housing outside the food path.
 - "Plastic neutral certified", which is a carbon offset claim, not a material.
 
+**On an object, the part that never touches a person is the same exclusion.**
+The tyres of a balance bike run on the floor, the base of a yoga mat faces away
+from the body, and the foam core under a pram mattress sits below its cover.
+Recorded as `nonContact` beside `material`, and printed on the card rather than
+scored, the way rule 3.10 treats a pump. The record used to hold one flat list
+of every part, and the engine takes the worst of it, so a wooden bike read
+"EVA foam in direct contact" for tyres nobody touches. `contact: "no"` was the
+only lever and it is all or nothing: it says the whole product touches nobody,
+which is true of an air purifier housing and false of a bike with grips.
+
+The test is whether a shopper's skin or mouth meets that part in normal use, not
+whether the part exists. Where it is genuinely both, as a nappy's outer shell is
+at the leg cuffs, it stays in `material` and is scored.
+
 ### 3.5 Transfers
 
 **Across** every flavour and variant sold in the same container. **Never across
@@ -531,6 +545,14 @@ the strips and says nothing about the glue.
 Naming it clears it. A food grade or formaldehyde free adhesive the maker states
 is a stated material like any other, and the row then reads pass on the whole
 object rather than on the half of it anyone bothered to mention.
+
+**An unnamed part in the contact path is the same failure.** A binder is only
+the commonest case of it. Kinderfeets calls the grips on its balance bike
+"non-toxic" and never says what they are, and non-toxic is a claim, not a
+material, under 3.4. That is the part a child holds for as long as they ride,
+so the front is `caution` until the maker names it, recorded as
+`undisclosedPart`. Without it the engine read the bike as wood and passed,
+because an unnamed part classifies as nothing and nothing scores.
 
 ### 3.8 Plastic in the drink path is a fail
 

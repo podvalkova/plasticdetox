@@ -1801,11 +1801,22 @@ function worstMaterial(text) {
  * So the object path asks what it is actually made of, and what makes that
  * matter: heat, and a thing a small child puts in their mouth.
  */
-function objectStatus({ material, heated, mouthed }) {
+function objectStatus({ material, heated, mouthed, nonContact, undisclosedPart }) {
   const text = asText(material).trim();
   if (!text) return null;
+  // Rule 3.7 on a part rather than a binder: a contact part the maker will not
+  // name scores nothing, because there is no name to score, so the front would
+  // pass on the parts they did bother to mention.
+  const unnamed = asText(undisclosedPart).trim();
+  // Rule 3.4: a part nobody meets is printed, not scored.
+  const off = asText(nonContact).trim();
+  const noted = off ? `; noted and not counted: ${off}, out of the path a person touches` : "";
+  if (unnamed) {
+    return { status: "caution",
+             why: `The ${unnamed} the maker does not name, in the part a person holds. The rest is ${text}${noted}` };
+  }
   if (HAZARD_POLYMER.test(text)) {
-    return { status: "fail", why: `${text} against the skin, and that is a plastic we never recommend` };
+    return { status: "fail", why: `${text} against the skin, and that is a plastic we never recommend${noted}` };
   }
   const { rank, name } = worstMaterial(text);
   const drivers = [];
@@ -1813,24 +1824,26 @@ function objectStatus({ material, heated, mouthed }) {
   if (isTrue(mouthed)) drivers.push("being mouthed or chewed");
   const withDrivers = drivers.length ? `, with ${drivers.join(" and ")}` : "";
   if (rank <= 1 && !drivers.length) {
-    return { status: "pass", why: `Made of ${text}, with nothing inside it to pull anything out` };
+    return { status: "pass", why: `Made of ${text}, with nothing inside it to pull anything out${noted}` };
   }
   if (rank <= 1) {
-    return { status: "caution", why: `${text} against the skin${withDrivers}` };
+    return { status: "caution", why: `${text} against the skin${withDrivers}${noted}` };
   }
   if (rank >= 2 && drivers.length >= 2) {
-    return { status: "fail", why: `${name} in direct contact${withDrivers}` };
+    return { status: "fail", why: `${name} in direct contact${withDrivers}${noted}` };
   }
-  return { status: "caution", why: `${name} in the part that touches a person${withDrivers}` };
+  return { status: "caution", why: `${name} in the part that touches a person${withDrivers}${noted}` };
 }
 
-function matrixStatus({ container, base, heated, use, filledBy, holds, material, mouthed }) {
+function matrixStatus({ container, base, heated, use, filledBy, holds, material, mouthed,
+                        nonContact, undisclosedPart }) {
   // Rule 3.1 governs what migrates out of a container INTO what it holds. Where
   // there is nothing inside, the object path answers instead.
   const nothingInside = /^(none|nothing|n\/?a|not applicable)\b/i.test(asText(holds).trim())
     || /\bno (container|contents)\b/i.test(asText(container));
   if (nothingInside) {
-    return objectStatus({ material: asText(material) || asText(container), heated, mouthed });
+    return objectStatus({ material: asText(material) || asText(container), heated, mouthed,
+                          nonContact, undisclosedPart });
   }
   container = asText(container).trim();
   base = asText(base).trim();
@@ -1909,7 +1922,7 @@ function matrixStatus({ container, base, heated, use, filledBy, holds, material,
 
 async function vetLabel(env, brand, product) {
   const r = await vetClaude(env, VET_RULES,
-    `Product: ${brand} ${product}. Find (1) "formula": the ingredient list, and nothing else. Quote it verbatim behind the word Ingredients where you can find it. A durable good has no ingredient list, so its formula is status "none". Give formula a "finding": one short sentence naming what is wrong, or what is clean, in plain words, such as "Contains parfum, an undisclosed fragrance blend". Give formula a "flagged": an array of the exact ingredient names that earned the status, empty when none. (2) "materials": report FACTS, not a judgement. "holds": what is inside the product, and the single word "none" when the product is not a container at all, which covers every durable good, toy, garment, mat, nappy and piece of furniture. "material": what the product ITSELF is made of, naming the surfaces that touch a person, and required whenever holds is "none". "mouthed": true when a small child puts it in their mouth in normal use. "container": what actually touches the contents, as specifically as the source allows (PET, HDPE, PP, unnamed plastic, glass, aluminium, steel, paper, cotton), and empty when holds is "none". "filledBy": "maker" when the product is sold with its contents inside, "buyer" when it is sold empty for the shopper to fill, which is every storage bag, box, jar, wrap and bottle. "base": one of dry, aqueous, surfactant, emulsion, anhydrous, acidic, by what the contents are, an oil or balm or stick being anhydrous. Where filledBy is "buyer" the base is the hardest use the MAKER markets, not the gentlest: dry only where the maker restricts it to dry goods, anhydrous where it is marketed for oils, fats or cooking in the bag, and otherwise emulsion, because food carries fat. "heated": true only when something hot goes in or on it in use, and where filledBy is "buyer" that means the maker markets heating it, microwaving, boiling or the oven. "use": leave-on, rinse-off, ingested or not-on-body. Anything eaten, drunk or held in the mouth is "ingested", never "not-on-body": not-on-body is for laundry powder and surface cleaner, which are diluted and washed away. Add a "note" of what you found and where. We apply our own packaging table to those facts, so do not reason about pass or fail for materials yourself. Every field carries a "source" URL.`,
+    `Product: ${brand} ${product}. Find (1) "formula": the ingredient list, and nothing else. Quote it verbatim behind the word Ingredients where you can find it. A durable good has no ingredient list, so its formula is status "none". Give formula a "finding": one short sentence naming what is wrong, or what is clean, in plain words, such as "Contains parfum, an undisclosed fragrance blend". Give formula a "flagged": an array of the exact ingredient names that earned the status, empty when none. (2) "materials": report FACTS, not a judgement. "holds": what is inside the product, and the single word "none" when the product is not a container at all, which covers every durable good, toy, garment, mat, nappy and piece of furniture. "material": what the product ITSELF is made of, listing ONLY the surfaces a person's skin or mouth meets in normal use, and required whenever holds is "none". "nonContact": the parts a person never meets, such as the tyres of a balance bike, the base of a yoga mat or the foam sealed inside a mattress cover. Those are noted and never scored, so putting one in "material" marks a product down for a part nobody touches. "undisclosedPart": the name of a part in the CONTACT path the maker will not identify, such as grips it only calls "non-toxic", and empty where every contact part is named. "mouthed": true when a small child puts it in their mouth in normal use. "container": what actually touches the contents, as specifically as the source allows (PET, HDPE, PP, unnamed plastic, glass, aluminium, steel, paper, cotton), and empty when holds is "none". "filledBy": "maker" when the product is sold with its contents inside, "buyer" when it is sold empty for the shopper to fill, which is every storage bag, box, jar, wrap and bottle. "base": one of dry, aqueous, surfactant, emulsion, anhydrous, acidic, by what the contents are, an oil or balm or stick being anhydrous. Where filledBy is "buyer" the base is the hardest use the MAKER markets, not the gentlest: dry only where the maker restricts it to dry goods, anhydrous where it is marketed for oils, fats or cooking in the bag, and otherwise emulsion, because food carries fat. "heated": true only when something hot goes in or on it in use, and where filledBy is "buyer" that means the maker markets heating it, microwaving, boiling or the oven. "use": leave-on, rinse-off, ingested or not-on-body. Anything eaten, drunk or held in the mouth is "ingested", never "not-on-body": not-on-body is for laundry powder and surface cleaner, which are diluted and washed away. Add a "note" of what you found and where. We apply our own packaging table to those facts, so do not reason about pass or fail for materials yourself. Every field carries a "source" URL.`,
     3);
   return r;
 }
@@ -1986,7 +1999,7 @@ function vetVerdict(fronts) {
 // Bumped whenever a rule the research applies changes. A stored answer from an
 // older engine is not reused: Salt and Stone's materials front was cached as a
 // pass, from before section 3.1 was computed here rather than asked for.
-const VET_ENGINE = 4;
+const VET_ENGINE = 5;
 
 /** One key per product, so the same thing asked twice finds the first answer. */
 function researchKey(brand, product) {

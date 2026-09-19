@@ -390,6 +390,15 @@ def _assess_container(pack):
         return "caution", (f"{pretty(term)} bonded with an adhesive the maker does not name, "
                            f"in the same contact path as the {pretty(term)}")
 
+    # Rule 3.7 again, for a part rather than a binder. An unnamed part scores
+    # nothing, because classify() has no name to classify, so a bike whose grips
+    # the maker calls "non-toxic" and never identifies read as wood and passed.
+    # "Non-toxic" is a claim, not a material, which is 3.4's first line.
+    part = str(pack.get("undisclosedPart") or "").strip()
+    if part:
+        return "caution", (f"The {part} the maker does not name, in the part a person holds. "
+                           f"The rest is {pretty(term)}")
+
     if rank == 0:
         return "pass", f"In contact with {pretty(term)}, which puts nothing into what it holds"
 
@@ -558,6 +567,10 @@ def assess(pack):
     disp = str(pack.get("dispenser") or "").strip()
     if disp and status is not None:
         reason = f"{reason}; the {disp} is noted and does not count (rule 3.10)"
+    # Rule 3.4 on an object: a part a person never meets is printed, not scored.
+    off = str(pack.get("nonContact") or "").strip()
+    if off and status is not None:
+        reason = f"{reason}; noted and not counted: {off}, out of the path a person touches"
     return status, reason
 
 
@@ -1089,7 +1102,8 @@ def main():
                     # Rules 3.12 and 3.13's facts, only where recorded, so other
                     # rows do not churn.
                     **{k: pack[k] for k in ("certificateNumber", "frFree", "frFreeSource",
-                                            "pfasFree", "pfasFreeSource", "filledBy") if pack.get(k)},
+                                            "pfasFree", "pfasFreeSource", "filledBy",
+                                            "nonContact", "undisclosedPart") if pack.get(k)},
                 }
                 continue
             e = p.setdefault("ext", {})
@@ -1121,7 +1135,8 @@ def main():
                 "source": pack.get("source") or "",
                 "checked": pack.get("checked") or pack.get("checkedListing") or "",
                 **{k: pack[k] for k in ("certificateNumber", "frFree", "frFreeSource",
-                                        "pfasFree", "pfasFreeSource", "filledBy") if pack.get(k)},
+                                        "pfasFree", "pfasFreeSource", "filledBy",
+                                            "nonContact", "undisclosedPart") if pack.get(k)},
             }
             applied[status] += 1
 
