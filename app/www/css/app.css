@@ -134,6 +134,32 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   color: var(--muted); margin: 1.6rem 0 .65rem;
 }
 
+/* -------------------------------------------------------------- the link */
+/* First on the Check screen, because most shopping happens on a screen and a
+   link names one exact product where typing guesses at one. */
+.link-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 18px; padding: 1rem 1.05rem 1.1rem; margin-bottom: .75rem;
+}
+.link-h { font-weight: 700; font-size: 16px; letter-spacing: -.01em; }
+.link-p { color: var(--muted); font-size: 13.5px; margin-top: .2rem; line-height: 1.45; }
+.link-row { display: flex; gap: .5rem; margin-top: .7rem; }
+.link-row input {
+  flex: 1; min-width: 0; font: inherit; font-size: 16px; color: var(--text);
+  border: 1px solid var(--border-strong); border-radius: 999px;
+  background: var(--surface); outline: none; padding: .8rem 1.05rem;
+  transition: border-color .15s, box-shadow .15s;
+}
+.link-row input:focus { border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-light); }
+.link-go {
+  flex: none; font: inherit; font-weight: 650; font-size: 15px;
+  background: var(--accent); color: #fff;
+  border: none; border-radius: 999px; padding: .8rem 1.15rem;
+}
+.link-go:active { opacity: .8; }
+.link-note { margin-top: .55rem; font-size: 13px; color: var(--muted); line-height: 1.45; }
+.link-note.bad { color: var(--careful); }
+
 /* ------------------------------------------------------------------ rows */
 
 .row {

@@ -11,7 +11,7 @@ import { lookup, cleanCode } from "./upc.js";
 import { el, toast } from "./ui.js";
 import { roomName } from "./detox-content.js";
 import * as notify from "./notify.js";
-import { verdictFor, suggestNames, collapse } from "./match.js";
+import { verdictFor, suggestNames, collapse, parseProductLink } from "./match.js";
 import { track, setBundle, flush, setContext } from "./track.js";
 import * as kids from "./kids.js";
 import * as rate from "./rate.js";
@@ -390,6 +390,7 @@ function draw() {
       onScan: startScan,
       onSearch: runSearch,
       onPick: openRecent,
+      onLink: resolveLink,
       draft: state.draft,
       onCheck: runCheck,
       // A row chosen from the brand's own list needs no matching at all: the
@@ -942,6 +943,76 @@ function runSearch(query, container, getDraft, onHit, limit = 20, suggest = fals
     // queue. A query that matched tells us nothing we do not already hold.
     if (query.trim().length >= 3 && !found) logSearch(query, false);
   }, 120);
+}
+
+/**
+ * A pasted product link, resolved without asking anyone to type.
+ *
+ * Typing is where the check goes wrong. Somebody types "ointment", A+D's only
+ * product is "Original diaper rash ointment", and a full scorecard comes back
+ * as no verdict. A link names one thing exactly, and most of what we need is
+ * in the address itself, so this costs no request and works with no signal.
+ *
+ * Where the address carries an ASIN we already hold, this is also the cheapest
+ * answer in the app: the verdict comes off the phone, free, with no pass spent
+ * and no research run. That is the same key the Chrome extension has always
+ * read off an Amazon page; the Check screen simply never offered it.
+ */
+function resolveLink(raw) {
+  const p = parseProductLink(raw);
+  if (!p) {
+    return { error: "That does not look like a product link. Paste the whole address "
+                  + "from the shop, or from the brand's own page." };
+  }
+  if (p.shortened) {
+    return { error: "A short link hides the product. Open it, then paste the address "
+                  + "the page actually lands on." };
+  }
+  // An ASIN we have researched answers straight away, for nothing.
+  if (p.asin) {
+    const hit = index.fromAsin(p.asin);
+    if (hit) {
+      const row = (hit.brand.products || []).find((x) => (x.asins || []).includes(p.asin));
+      go({ screen: "result", match: { brand: hit.brand, via: "link" },
+           product: row || null, productNamed: true,
+           query: [hit.brand.brand, (row && row.name) || p.product].filter(Boolean).join(" ") });
+      return { navigated: true };
+    }
+  }
+  // The domain names the maker on a brand's own shop, but it spells it the way
+  // a domain has to: "ifyoucare.com". Where we know that brand, use our
+  // spelling of it, so the field reads "If You Care" and the picker opens.
+  let brand = p.brand;
+  if (brand) {
+    const known = index.fromBrandName(brand);
+    if (known) {
+      brand = known.brand.brand;
+    } else {
+      const same = collapse(brand);
+      const dict = (data.brandDictionary() || []).find((n) => collapse(n) === same);
+      if (dict) brand = dict;
+    }
+  }
+  // A marketplace address names the shop, never the maker, so the brand has to
+  // come out of the product line: "Ziploc Storage Bags Quart" opens on Ziploc.
+  if (!brand && p.product) {
+    const guess = index.fromTitle(p.product);
+    if (guess) brand = guess.brand.brand;
+  }
+  if (!brand && !p.product) {
+    return { error: "We could not read a product out of that address. Type the brand "
+                  + "and product below instead." };
+  }
+  // A marketplace slug repeats the maker: "Ziploc Storage Bags Quart" under a
+  // brand field that already says Ziploc. The product field asks which one of
+  // theirs it is, so the answer is "Storage Bags Quart".
+  let product = p.product || "";
+  if (brand && product) {
+    const lead = new RegExp(`^${brand.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\s+`, "i");
+    const cut = product.replace(lead, "").trim();
+    if (cut) product = cut.charAt(0).toUpperCase() + cut.slice(1);
+  }
+  return { brand: brand || "", product, asin: p.asin || "" };
 }
 
 function openHit(hit, query) {

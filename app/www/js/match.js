@@ -238,6 +238,88 @@ export class Index {
   }
 }
 
+// Shops that sell everybody's products, so the address names the shop and
+// never the maker. Anywhere else, the domain IS the brand.
+const MARKETPLACE = /^(amazon|amzn|a\.co|target|walmart|ebay|etsy|costco|samsclub|kroger|instacart|thrivemarket|iherb|vitacost|wayfair|overstock|shop|tiktok|temu|shein|aliexpress|google|bing)\b/i;
+
+// Path words that route rather than name: /dp/, /products/, /ip/.
+const PATH_NOISE = new Set([
+  "dp", "gp", "product", "products", "p", "ip", "d", "o", "item", "items",
+  "shop", "store", "collections", "catalog", "pd", "buy", "en", "en-us", "us",
+]);
+
+/**
+ * What a pasted product link tells us before anyone fetches anything.
+ *
+ * Typing is where the check goes wrong. Somebody types "ointment" and A+D's
+ * only product is "Original diaper rash ointment", so a full scorecard reads
+ * as no verdict. A link has none of that: it names one thing exactly.
+ *
+ * Most of what we need is in the address itself, so this is pure, instant,
+ * works with no signal and costs nothing. An Amazon link carries the ASIN,
+ * which is the key our whole database is built on, so a product we have
+ * already rated answers from the phone with no pass spent. A brand's own shop
+ * carries the maker in the domain and the product in the slug.
+ *
+ * It never guesses a verdict, only an identity, and the screen shows what it
+ * read so a person can correct it.
+ */
+export function parseProductLink(input) {
+  const raw = String(input || "").trim();
+  if (!/^https?:\/\//i.test(raw) && !/^[a-z0-9.-]+\.[a-z]{2,}\//i.test(raw)) return null;
+  // A shortened link is an address for an address. Nothing in it names a
+  // product, and following it needs a request, so say so rather than offering
+  // "2xY9abc" as a product name.
+  if (/^(https?:\/\/)?(a\.co|amzn\.to|amzn\.eu|bit\.ly|tinyurl\.com|t\.co|shorturl\.at|rstyle\.me|shop\.app)\b/i.test(raw)) {
+    return { shortened: true, url: raw, host: "", asin: "", brand: "", product: "", marketplace: true };
+  }
+  let url;
+  try {
+    url = new URL(/^https?:\/\//i.test(raw) ? raw : `https://${raw}`);
+  } catch {
+    return null;
+  }
+  const host = url.hostname.toLowerCase().replace(/^www\./, "");
+  const segs = url.pathname.split("/").map((s) => s.trim()).filter(Boolean);
+
+  // The ASIN, wherever it sits. Amazon puts it after /dp/, /gp/product/ or
+  // /product/, and a short a.co link has none at all.
+  const asin = (segs.find((s) => /^[A-Z0-9]{10}$/.test(s) && /[0-9]/.test(s)) || "");
+
+  // The slug is the longest segment that names rather than routes. Target
+  // writes /p/up-up-baby-wipes/-/A-79362508, Amazon writes the name BEFORE
+  // /dp/, and a brand shop writes it last, so position cannot be trusted.
+  const words = (s) => s.replace(/[-_+]+/g, " ").replace(/\.(html?|php|aspx)$/i, "").trim();
+  const named = segs
+    .filter((s) => !PATH_NOISE.has(s.toLowerCase()))
+    .filter((s) => !/^[A-Z0-9]{10}$/.test(s))
+    .filter((s) => !/^[-a-z]?\d[\d-]*$/i.test(s))
+    .filter((s) => !/^a-\d+$/i.test(s))
+    .map(words)
+    .filter((s) => s.length > 2 && /[a-z]{3}/i.test(s));
+  const slug = named.sort((a, b) => b.length - a.length)[0] || "";
+
+  const marketplace = MARKETPLACE.test(host);
+  // A brand's own shop names the maker in its address. "ifyoucare.com" is If
+  // You Care, and no amount of typing gets that more right.
+  const brand = marketplace ? "" : titleCase(host.split(".").slice(0, -1).pop() || "");
+  const product = tidy(slug);
+  if (!asin && !product) return null;
+  return { url: url.href, host, asin, brand, product, marketplace };
+}
+
+function titleCase(s) {
+  return String(s || "").replace(/[-_]+/g, " ").replace(/\b[a-z]/g, (c) => c.toUpperCase()).trim();
+}
+
+/** A slug reads as lowercase-with-hyphens. People read sentences. */
+function tidy(s) {
+  // A shop's own SKU rides at the end of most slugs: "balance-bike-black-03619".
+  const t = String(s || "").replace(/\s+\d[\d\s]*$/, "").replace(/\s+/g, " ").trim();
+  if (!t) return "";
+  return t.charAt(0).toUpperCase() + t.slice(1);
+}
+
 /**
  * Brand names we hold nothing on, for the Brand field's type ahead.
  *

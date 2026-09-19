@@ -15,7 +15,7 @@ const STATUS_GLYPH = { pass: "✓", caution: "!", fail: "✕", unknown: "?" };
 
 export function home(root, {
   onScan, onSearch, onPick, onStarter, onAllCategories,
-  onCheck, onProduct, recents, starters, canScan, scanReason,
+  onCheck, onProduct, onLink, recents, starters, canScan, scanReason,
   categoryCount, draft, checks, onChecks,
 }) {
   const hero = el("div", "hero");
@@ -37,8 +37,68 @@ export function home(root, {
   }
   root.appendChild(hero);
 
-  // The scan card, which the canvas makes the hero: it is the fastest way to
-  // an answer and it used to sit under the form as an afterthought.
+  // A link, first, because most shopping happens on a screen.
+  //
+  // The scanner used to lead here, on the reasoning that it is fastest. It is,
+  // in an aisle, and that is the smaller half of the problem: not everything
+  // carries a barcode, a barcode is only any use with the product in your hand,
+  // and most people are looking at a listing rather than a shelf. A link is
+  // better than typing anywhere: it names one exact product, it cannot be
+  // mistyped, and when it carries an ASIN we already hold, the verdict comes
+  // straight off the phone with no pass spent.
+  const linkCard = el("div", "link-card");
+  linkCard.appendChild(el("div", "link-h", "Paste a product link"));
+  linkCard.appendChild(el("div", "link-p",
+    "From a shop or the brand's own page. It names the exact product, so nothing is guessed."));
+  const linkRow = el("div", "link-row");
+  const linkInput = el("input");
+  linkInput.type = "url";
+  linkInput.placeholder = "https://";
+  linkInput.autocapitalize = "none";
+  linkInput.autocorrect = "off";
+  linkInput.spellcheck = false;
+  linkInput.inputMode = "url";
+  linkRow.appendChild(linkInput);
+  const linkGo = el("button", "link-go", "Read it");
+  linkGo.type = "button";
+  linkRow.appendChild(linkGo);
+  linkCard.appendChild(linkRow);
+  const linkNote = el("div", "link-note");
+  linkNote.hidden = true;
+  linkCard.appendChild(linkNote);
+
+  const readLink = () => {
+    const value = linkInput.value.trim();
+    if (!value) return;
+    const res = onLink ? onLink(value) : null;
+    if (!res || res.navigated) return;
+    if (res.error) {
+      linkNote.className = "link-note bad";
+      linkNote.textContent = res.error;
+      linkNote.hidden = false;
+      return;
+    }
+    brand.input.value = res.brand || "";
+    product.input.value = res.product || "";
+    product.wrap.hidden = false;
+    results.replaceChildren();
+    picker.replaceChildren();
+    linkNote.className = "link-note";
+    linkNote.textContent = "We read that as the product below. Change it if it is wrong.";
+    linkNote.hidden = false;
+    armCheck();
+    form.scrollIntoView({ block: "center", behavior: "smooth" });
+  };
+  linkGo.onclick = readLink;
+  linkInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") { e.preventDefault(); readLink(); }
+  });
+  // Pasting is the whole point, so it acts on the paste rather than waiting for
+  // a second tap.
+  linkInput.addEventListener("paste", () => setTimeout(readLink, 0));
+  root.appendChild(linkCard);
+
+  // Then the scanner, for the aisle.
   const scanCard = el("button", `scan-card${canScan ? "" : " off"}`);
   scanCard.type = "button";
   const glyph = el("div", "scan-glyph");
@@ -50,7 +110,7 @@ export function home(root, {
   scanCard.appendChild(glyph);
   const scanText = el("div", "scan-text");
   scanText.appendChild(el("div", "scan-h", canScan ? "Scan a barcode" : "Scanning unavailable"));
-  scanText.appendChild(el("div", "scan-p", canScan ? "or search by name below" : (scanReason || "Search by name below")));
+  scanText.appendChild(el("div", "scan-p", canScan ? "with the product in your hand" : (scanReason || "Search by name below")));
   scanCard.appendChild(scanText);
   scanCard.onclick = canScan ? onScan : null;
   scanCard.disabled = !canScan;
