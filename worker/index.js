@@ -1762,7 +1762,76 @@ function isTrue(v) {
   return /^(true|yes)$/i.test(String(v || "").trim());
 }
 
-function matrixStatus({ container, base, heated, use, filledBy }) {
+// How much a material has to give before anything is put in it. The same
+// ladder the database keeps in POLYMER, so an object scores the same in both.
+const POLYMER_RANK = [
+  [/\b(pvc|polyvinyl|polycarbonate|polystyrene|melamine|ptfe|teflon|eva|ethylene.vinyl.acetate|polyurethane|memory foam|spandex|elastane)\b/i, 2],
+  [/\b(pet|pete|tritan|acrylic|nylon|polyamide|polyester|tpu)\b/i, 1.5],
+  [/\b(pp|polypropylene|hdpe|ldpe|polyethylene|aluminium|aluminum|paperboard|carton)\b/i, 1],
+];
+
+/** The worst thing in a list of materials, and its name. */
+function worstMaterial(text) {
+  let rank = 0, name = "";
+  for (const [re, r] of POLYMER_RANK) {
+    const m = re.exec(text);
+    if (m && r > rank) { rank = r; name = m[0]; }
+  }
+  // A plastic nobody named is read as the worst common case, the way the
+  // database reads it.
+  if (!rank && /\b(plastic|polymer|resin|foam)\b/i.test(text)) {
+    rank = 1.5;
+    name = (/\b(plastic|polymer|resin|foam)\b/i.exec(text) || [""])[0];
+  }
+  return { rank, name };
+}
+
+/**
+ * An object is not a container.
+ *
+ * A balance bike has no contents, so the packaging table has only one of the
+ * two axes it needs and every question it asks is the wrong one. It used to run
+ * anyway: the container field came back "Not applicable, this is a durable good
+ * with no container", no contents matched, the default landed on caution, and
+ * the card told a shopper that "the contents in a Not applicable ... and oil
+ * pulls more out of plastic than water does" about a wooden bike. Careful was
+ * not a finding there. It was the default answer to a question that did not
+ * apply.
+ *
+ * So the object path asks what it is actually made of, and what makes that
+ * matter: heat, and a thing a small child puts in their mouth.
+ */
+function objectStatus({ material, heated, mouthed }) {
+  const text = asText(material).trim();
+  if (!text) return null;
+  if (HAZARD_POLYMER.test(text)) {
+    return { status: "fail", why: `${text} against the skin, and that is a plastic we never recommend` };
+  }
+  const { rank, name } = worstMaterial(text);
+  const drivers = [];
+  if (isTrue(heated)) drivers.push("heat");
+  if (isTrue(mouthed)) drivers.push("being mouthed or chewed");
+  const withDrivers = drivers.length ? `, with ${drivers.join(" and ")}` : "";
+  if (rank <= 1 && !drivers.length) {
+    return { status: "pass", why: `Made of ${text}, with nothing inside it to pull anything out` };
+  }
+  if (rank <= 1) {
+    return { status: "caution", why: `${text} against the skin${withDrivers}` };
+  }
+  if (rank >= 2 && drivers.length >= 2) {
+    return { status: "fail", why: `${name} in direct contact${withDrivers}` };
+  }
+  return { status: "caution", why: `${name} in the part that touches a person${withDrivers}` };
+}
+
+function matrixStatus({ container, base, heated, use, filledBy, holds, material, mouthed }) {
+  // Rule 3.1 governs what migrates out of a container INTO what it holds. Where
+  // there is nothing inside, the object path answers instead.
+  const nothingInside = /^(none|nothing|n\/?a|not applicable)\b/i.test(asText(holds).trim())
+    || /\bno (container|contents)\b/i.test(asText(container));
+  if (nothingInside) {
+    return objectStatus({ material: asText(material) || asText(container), heated, mouthed });
+  }
   container = asText(container).trim();
   base = asText(base).trim();
   heated = isTrue(heated);
@@ -1813,21 +1882,34 @@ function matrixStatus({ container, base, heated, use, filledBy }) {
     [/dry|powder|solid bar/, "A dry product"],
     [/acid/, "An acidic formula"],
   ];
-  const what = (CONTENTS.find(([re]) => re.test(b)) || [null, "The contents"])[1];
+  // A shopper reads this sentence. For a container they fill themselves, the
+  // matrix's own row names are the wrong words: nobody calls the leftovers in a
+  // freezer bag "a cream".
+  const FILLED = [
+    [/anhydrous|oil|balm|butter|stick|wax/, "Oils and fats"],
+    [/emulsion|lotion|cream|sunscreen/, "Food with fat in it"],
+    [/surfactant|wash|shampoo|cleanser|aqueous|water/, "Watery food"],
+    [/dry|powder|solid bar/, "Dry food"],
+    [/acid/, "Acidic food"],
+  ];
+  const what = buyerFilled
+    ? (FILLED.find(([re]) => re.test(b)) || [null, "Food"])[1]
+    : (CONTENTS.find(([re]) => re.test(b)) || [null, "The contents"])[1];
   const cont = /^(a|an|the)\b/i.test(container) ? container
     : `${/^[aeiou]/i.test(container) ? "an" : "a"} ${container}`;
   const heat = heated ? ", used with heat" : "";
+  const marketed = buyerFilled ? ", which is the hardest use its maker markets" : "";
   const why = rank === 0
-    ? `${what} in ${cont}${heat}, which does not pull anything measurable out of the packaging`
+    ? `${what} in ${cont}${marketed}${heat}, which does not pull anything measurable out of the packaging`
     : rank === 1
-      ? `${what} in ${cont}${heat}, and oil pulls more out of plastic than water does`
-      : `${what} in ${cont}${heat}, which is the pairing that leaches most`;
+      ? `${what} in ${cont}${marketed}${heat}, and oil pulls more out of plastic than water does`
+      : `${what} in ${cont}${marketed}${heat}, which is the pairing that leaches most`;
   return { status, why };
 }
 
 async function vetLabel(env, brand, product) {
   const r = await vetClaude(env, VET_RULES,
-    `Product: ${brand} ${product}. Find (1) "formula": the ingredient list, and nothing else. Quote it verbatim behind the word Ingredients where you can find it. A durable good has no ingredient list, so its formula is status "none". Give formula a "finding": one short sentence naming what is wrong, or what is clean, in plain words, such as "Contains parfum, an undisclosed fragrance blend". Give formula a "flagged": an array of the exact ingredient names that earned the status, empty when none. (2) "materials": report FACTS, not a judgement. "container": what actually touches the contents, as specifically as the source allows (PET, HDPE, PP, unnamed plastic, glass, aluminium, steel, paper, cotton). "filledBy": "maker" when the product is sold with its contents inside, "buyer" when it is sold empty for the shopper to fill, which is every storage bag, box, jar, wrap and bottle. "base": one of dry, aqueous, surfactant, emulsion, anhydrous, acidic, by what the contents are, an oil or balm or stick being anhydrous. Where filledBy is "buyer" the base is the hardest use the MAKER markets, not the gentlest: dry only where the maker restricts it to dry goods, anhydrous where it is marketed for oils, fats or cooking in the bag, and otherwise emulsion, because food carries fat. "heated": true only when something hot goes in or on it in use, and where filledBy is "buyer" that means the maker markets heating it, microwaving, boiling or the oven. "use": leave-on, rinse-off, ingested or not-on-body. Anything eaten, drunk or held in the mouth is "ingested", never "not-on-body": not-on-body is for laundry powder and surface cleaner, which are diluted and washed away. Add a "note" of what you found and where. We apply our own packaging table to those facts, so do not reason about pass or fail for materials yourself. Every field carries a "source" URL.`,
+    `Product: ${brand} ${product}. Find (1) "formula": the ingredient list, and nothing else. Quote it verbatim behind the word Ingredients where you can find it. A durable good has no ingredient list, so its formula is status "none". Give formula a "finding": one short sentence naming what is wrong, or what is clean, in plain words, such as "Contains parfum, an undisclosed fragrance blend". Give formula a "flagged": an array of the exact ingredient names that earned the status, empty when none. (2) "materials": report FACTS, not a judgement. "holds": what is inside the product, and the single word "none" when the product is not a container at all, which covers every durable good, toy, garment, mat, nappy and piece of furniture. "material": what the product ITSELF is made of, naming the surfaces that touch a person, and required whenever holds is "none". "mouthed": true when a small child puts it in their mouth in normal use. "container": what actually touches the contents, as specifically as the source allows (PET, HDPE, PP, unnamed plastic, glass, aluminium, steel, paper, cotton), and empty when holds is "none". "filledBy": "maker" when the product is sold with its contents inside, "buyer" when it is sold empty for the shopper to fill, which is every storage bag, box, jar, wrap and bottle. "base": one of dry, aqueous, surfactant, emulsion, anhydrous, acidic, by what the contents are, an oil or balm or stick being anhydrous. Where filledBy is "buyer" the base is the hardest use the MAKER markets, not the gentlest: dry only where the maker restricts it to dry goods, anhydrous where it is marketed for oils, fats or cooking in the bag, and otherwise emulsion, because food carries fat. "heated": true only when something hot goes in or on it in use, and where filledBy is "buyer" that means the maker markets heating it, microwaving, boiling or the oven. "use": leave-on, rinse-off, ingested or not-on-body. Anything eaten, drunk or held in the mouth is "ingested", never "not-on-body": not-on-body is for laundry powder and surface cleaner, which are diluted and washed away. Add a "note" of what you found and where. We apply our own packaging table to those facts, so do not reason about pass or fail for materials yourself. Every field carries a "source" URL.`,
     3);
   return r;
 }
@@ -1904,7 +1986,7 @@ function vetVerdict(fronts) {
 // Bumped whenever a rule the research applies changes. A stored answer from an
 // older engine is not reused: Salt and Stone's materials front was cached as a
 // pass, from before section 3.1 was computed here rather than asked for.
-const VET_ENGINE = 3;
+const VET_ENGINE = 4;
 
 /** One key per product, so the same thing asked twice finds the first answer. */
 function researchKey(brand, product) {

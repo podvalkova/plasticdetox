@@ -166,11 +166,33 @@ def _car_seat_front(pack):
                     f"statement, verified by {how} (rule 3.12). {shown}")
 
 ACRONYMS = {"pet", "pete", "pvc", "ps", "pc", "pp", "hdpe", "ldpe", "ptfe"}
+
+# Names a shopper can read. "eva in direct contact" is our filing term printed
+# at somebody deciding whether to buy a balance bike; it tells them nothing and
+# looks like a fault in the app.
+PLAIN_NAME = {
+    "eva": "EVA foam",
+    "pvc": "PVC",
+    "ps": "polystyrene",
+    "pc": "polycarbonate",
+    "pu": "polyurethane foam",
+    "memory foam": "polyurethane memory foam",
+    "tpu": "TPU film",
+    "pp": "polypropylene",
+    "pet": "PET",
+    "pete": "PET",
+    "hdpe": "HDPE",
+    "ldpe": "LDPE",
+    "ptfe": "PTFE, the non stick coating",
+    "plastic": "a plastic the maker does not name",
+}
 OILY = {"anhydrous", "oil", "oily", "fatty", "balm", "alcohol"}
 DRY = {"dry", "solid", "powder"}
 
 
 def pretty(m):
+    if m in PLAIN_NAME:
+        return PLAIN_NAME[m]
     return m.upper() if m in ACRONYMS else m
 
 
@@ -483,14 +505,20 @@ def _assess_container(pack):
         (3, 1): "caution", (3, 2): "caution", (3, 3): "fail",
         (4, 1): "caution", (4, 2): "fail", (4, 3): "fail",
     }
-    ROW = {0: "dry", 1: "aqueous", 2: "surfactant or alcohol", 3: "emulsion", 4: "anhydrous"}
-    # A shopper reads this sentence. "Emulsion contents" is how the matrix
-    # names a row; it is not how anybody describes what goes in a freezer bag.
+    # A shopper reads this sentence, so it says what the thing is rather than
+    # which row of the matrix it fell in. "Emulsion contents in plastic" is our
+    # filing language printed at somebody deciding whether to buy, and it is the
+    # same wording the worker's copy of this table already avoided.
+    ROW = {0: "A dry product", 1: "A water based formula",
+           2: "A wash or an alcohol based formula", 3: "A cream",
+           4: "An oil based formula"}
+    # And for a container the shopper fills, not even that: nobody calls the
+    # leftovers in a freezer bag a cream.
     FILLED_ROW = {0: "Dry food", 1: "Watery food", 2: "Watery food",
                   3: "Food with fat in it", 4: "Oils and fats"}
     status = GRID[(pull, col)]
     bits = [f"{FILLED_ROW[pull]} in {pretty(term)}, which is the hardest use its maker markets"
-            if filled_by_buyer else f"{ROW[pull]} contents in {pretty(term)}"]
+            if filled_by_buyer else f"{ROW[pull]} in {pretty(term)}"]
     worse = {"pass": "caution", "caution": "fail", "fail": "fail"}
     softer = {"fail": "caution", "caution": "pass", "pass": "pass"}
     # Rule 3.2, heat moves everything one step worse; a chewed spout is
