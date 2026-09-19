@@ -1804,6 +1804,13 @@ function worstMaterial(text) {
 function objectStatus({ material, heated, mouthed, nonContact, undisclosedPart }) {
   const text = asText(material).trim();
   if (!text) return null;
+  // A material we cannot place is not a safe one. "Proprietary bio-composite"
+  // matched no rank, fell to zero, and passed, which is the unnamed-grip bug
+  // wearing a different coat. The database has always returned unassessed here.
+  const known = INERT_CONTACT.test(text) || HAZARD_POLYMER.test(text)
+    || POLYMER_RANK.some(([re]) => re.test(text))
+    || /\b(plastic|polymer|resin|foam|rubber|leather|wax|felt|cork)\b/i.test(text);
+  if (!known) return null;
   // Rule 3.7 on a part rather than a binder: a contact part the maker will not
   // name scores nothing, because there is no name to score, so the front would
   // pass on the parts they did bother to mention.
@@ -1999,7 +2006,7 @@ function vetVerdict(fronts) {
 // Bumped whenever a rule the research applies changes. A stored answer from an
 // older engine is not reused: Salt and Stone's materials front was cached as a
 // pass, from before section 3.1 was computed here rather than asked for.
-const VET_ENGINE = 5;
+const VET_ENGINE = 6;
 
 /** One key per product, so the same thing asked twice finds the first answer. */
 function researchKey(brand, product) {
@@ -2083,15 +2090,33 @@ async function vetCore(env, brand, product, send, allowResearch) {
   // found", which is the card saying the product looks unproven when what
   // actually happened is that we never asked.
   let transportFailed = false;
+  // Our own table refusing to score facts the researcher DID return. That is a
+  // failure of ours, not a finding about the product, and it must not be paid
+  // for. Modera's changing pads came back with a formula and a legal check and
+  // "Could not complete this check (no result)" on materials, and the pass was
+  // spent on it.
+  let ruleFailed = false;
   const finish = (key, r, aiKeys) => {
-    // The researcher reports what the container is and what is inside it; the
-    // status comes from our table, not from its reading of our rules.
+    // The researcher reports what the product is made of; the status comes from
+    // our table, not from its reading of our rules.
     const m = r.data && r.data.materials;
-    if (m && (m.container || m.base)) {
+    if (m && (m.container || m.base || m.material || m.holds)) {
       const ruled = matrixStatus(m);
       if (ruled) {
         m.status = ruled.status;
         m.note = `${ruled.why}. ${String(m.note || "").trim()}`.trim();
+      } else if (!m.status) {
+        // Two different silences, and only one of them is the product's fault.
+        const said = asText(m.material) || asText(m.container);
+        m.status = "unassessed";
+        m.note = said
+          ? `We could not read a material we score out of "${said}". ${asText(m.note)}`.trim()
+          : ("Nobody publishes what this product is made of, so there is nothing to score. "
+             + "That is a gap in what the maker discloses, not a clean result. "
+             + asText(m.note)).trim();
+        // Only the first is ours. A maker who says nothing is the product's own
+        // answer, and the check still earned its credit.
+        if (said) ruleFailed = true;
       }
     }
     // Formula leads with the finding, so "contains parfum" is the first thing
@@ -2142,13 +2167,23 @@ async function vetCore(env, brand, product, send, allowResearch) {
   // Keep what was researched. The next person to ask about this product, on
   // any device, gets it without paying for the same work twice, and the review
   // queue can lift it into the reviewed database.
-  if (labelOk) {
+  if (labelOk && !ruleFailed) {
     await env.BRAND_SEARCHES.put(cacheK, JSON.stringify({
       brand, product, verdict, capNote, fronts, engine: VET_ENGINE, at: new Date().toISOString(),
     })).catch(() => {});
   }
   return { fromDatabase: false, verdict, capNote, fronts,
-           chargeable: labelOk, researchFailed: !labelOk && transportFailed,
+           chargeable: labelOk && !ruleFailed,
+           researchFailed: (!labelOk && transportFailed) || ruleFailed,
+           // Two failures, two honest sentences. Telling somebody we could not
+           // reach the research service when we reached it and then fumbled the
+           // answer ourselves is a wrong explanation, not a softer one.
+           failMessage: ruleFailed
+             ? ("The research came back, but we could not score what it found, so nothing was "
+                + "taken off your pass. That is a fault our side and it is logged. Please try "
+                + "again, or ask us to check it by hand and we will answer within 2 business days.")
+             : ("We could not reach our research service, so this check did not run and nothing "
+                + "was taken off your pass. Please try again in a few minutes."),
            elapsedMs: Date.now() - t0 };
 }
 
@@ -2183,8 +2218,7 @@ async function handleInstantVet(request, env, corsOrigin) {
     const r = await vetCore(env, brand, product, s.send, true);
     if (r.researchFailed) {
       s.send({ done: true, elapsedMs: r.elapsedMs, consumed: false, 
-               error: "We could not reach our research service, so this check did not run and "
-                    + "nothing was taken off your pass. Please try again in a few minutes." });
+               error: r.failMessage });
       await s.writer.close();
       return;
     }
@@ -2372,8 +2406,7 @@ async function handleCustomerVet(request, env, corsOrigin) {
     }
     if (r.researchFailed) {
       s.send({ done: true, elapsedMs: r.elapsedMs, consumed: false, balance: rec.balance,
-               error: "We could not reach our research service, so this check did not run and "
-                    + "nothing was taken off your pass. Please try again in a few minutes." });
+               error: r.failMessage });
       await s.writer.close();
       return;
     }
