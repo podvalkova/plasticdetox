@@ -1498,9 +1498,9 @@ export const KIDS = {
    "picks": [
     {
      "label": "$",
-     "name": "Dr. Brown's Baby Toothpaste",
-     "url": "https://www.amazon.com/dp/B08899DKSV?tag=plasticdetox-20",
-     "note": "Tested non detect on all four metals, safe to swallow"
+     "name": "Spry Kids Tooth Gel, Original",
+     "url": "https://www.amazon.com/dp/B000LSVJGK?tag=plasticdetox-20",
+     "note": "Tested non detect on all four metals, safe to swallow, no flavor ingredient to disclose"
     },
     {
      "label": "$",
@@ -1510,8 +1510,8 @@ export const KIDS = {
     }
    ],
    "tip": {
-    "title": "Five of 51 came back clean, and two are for children",
-    "body": "Lead Safe Mama's 2025 series tested 51 toothpastes: 46 had detectable lead. Five read non detect on lead, cadmium, mercury and arsenic, and Dr. Brown's Baby in strawberry is one of them, which is the flavour sold here. Weleda Salt is another, in an aluminium tube, once a child can take the salty taste. Tom's of Maine kids read about 240 ppb and the company settled a class action over heavy metals.",
+    "title": "Five of 51 came back clean, and one has nothing to hide",
+    "body": "Lead Safe Mama's 2025 series tested 51 toothpastes: 46 had detectable lead. Five read non detect on lead, cadmium, mercury and arsenic. Spry Kids in Original flavour is one of them, and Original has no flavour ingredient at all, so nothing about the taste is undisclosed. Weleda Salt is another, in an aluminium tube, once a child can take the salty taste. Tom's of Maine kids read about 240 ppb and the company settled a class action over heavy metals.",
     "look": [
      "A published result for that exact paste and flavour",
      "Fluoride free for a child who cannot spit yet",
@@ -1534,7 +1534,7 @@ export const KIDS = {
     },
     {
      "q": "Do toothpastes really contain lead and heavy metals?",
-     "a": "Independent lab testing published by Lead Safe Mama in 2025 found detectable lead in about 90 percent of the 51 toothpastes tested, along with arsenic, mercury, and cadmium in smaller fractions. That included popular natural and hydroxyapatite brands like Davids, RiseWell, Boka, Bite, Dr. Bronner's, and Tom's, plus mainstream tubes like Colgate and Crest. The metals are not added on purpose. They are trace contaminants that come with earth mined mineral ingredients like calcium carbonate, bentonite clay, and some hydroxyapatite. The levels in most pastes are very low, the product is spit out, and the largest values by far were in clay based tooth powders. A few brands did test non detect, including Weleda Salt, Dr. Brown's Baby, and Spry Kids."
+     "a": "Independent lab testing published by Lead Safe Mama in 2025 found detectable lead in about 90 percent of the 51 toothpastes tested, along with arsenic, mercury, and cadmium in smaller fractions. That included popular natural and hydroxyapatite brands like Davids, RiseWell, Boka, Bite, Dr. Bronner's, and Tom's, plus mainstream tubes like Colgate and Crest. The metals are not added on purpose. They are trace contaminants that come with earth mined mineral ingredients like calcium carbonate, bentonite clay, and some hydroxyapatite. The levels in most pastes are very low, the product is spit out, and the largest values by far were in clay based tooth powders. A few brands did test non detect, including Weleda Salt and Spry Kids."
     },
     {
      "q": "Is charcoal toothpaste safe?",

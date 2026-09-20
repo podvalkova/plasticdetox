@@ -26521,7 +26521,7 @@
     "stance": "skip",
     "reason": "Independent 2025 testing put lead at about 539 ppb in Total and Whitening, the highest of the mainstream pastes, alongside titanium dioxide and SLS. Named in consumer lawsuits over lead. Colgate disputes the testing.",
     "evidence": "Lead ~539 ppb (Lead Safe Mama 2025); titanium dioxide; SLS",
-    "alternative": "Weleda Salt Toothpaste, or Dr. Brown's and Spry for kids",
+    "alternative": "Weleda Salt Toothpaste, or Spry Kids Original for children",
     "sources": [
       "best-non-toxic-toothpaste-guide.html"
     ],
@@ -34281,7 +34281,7 @@
     "brand": "Dr. Brown's",
     "category": "Baby bottles",
     "stance": "careful",
-    "reason": "Verdict depends on the product line. The baby toothpaste is a featured pick, non detect for heavy metals in independent testing, fluoride free and safe to swallow for the youngest children. The bottles are the problem: a June 2024 class action alleges the BPA free polypropylene bottles release microplastics when heated, and the glass bottle carries painted exterior markings, which have tested positive for lead across the category.",
+    "reason": "Verdict depends on the product line. The baby toothpaste is non detect for heavy metals in independent testing, fluoride free and safe to swallow, but its only flavor ingredient is undisclosed (\"Aroma/Flavor\", rule 2.1), so Spry Kids Original, which carries no flavor ingredient at all, replaced it as the featured pick. The bottles are the problem: a June 2024 class action alleges the BPA free polypropylene bottles release microplastics when heated, and the glass bottle carries painted exterior markings, which have tested positive for lead across the category.",
     "evidence": "2024 microplastic class action (Handi-Craft); lead in painted markings on glass bottles (Lead Safe Mama)",
     "alternative": "Evenflo Classic Glass or Lifefactory glass bottle",
     "sources": [
@@ -34293,8 +34293,8 @@
     "products": [
       {
         "name": "Dr. Brown's Fluoride Free Baby Toothpaste",
-        "verdict": "good",
-        "note": "Fluoride free, safe to swallow, and one of five toothpastes out of 51 that Lead Safe Mama's 2025 series read non detect for lead, cadmium, mercury and arsenic. Plastic tube.",
+        "verdict": "careful",
+        "note": "Fluoride free, safe to swallow, and one of five toothpastes out of 51 that Lead Safe Mama's 2025 series read non detect for lead, cadmium, mercury and arsenic. Clean on metals, but its only flavor ingredient is labeled bare \"Aroma/Flavor\" with no source or components named, a disclosure failure under rule 2.1. Replaced as the featured pick (2026-09-20) by Spry Kids Original, which carries no flavor ingredient at all. Plastic tube.",
         "ext": {
           "legalNote": "Checked recall records on 2026-08-31. One 2018 recall of the Lovey pacifier holder for a detaching snap, resolved; bottles were never involved.",
           "frontNotes": {
@@ -34320,11 +34320,11 @@
             "ingredients": "Glycerin, Aqua/Water, Xylitol, Propanediol, Sorbitol, Pectin, Xanthan Gum, Silica, Sorbic Acid, Calcium Lactate, Aroma/Flavor",
             "prose": "",
             "complete": true,
-            "verdict": "good",
-            "summary": "The published ingredient list carries nothing on the hazard list.",
-            "flagged": [],
+            "verdict": "careful",
+            "summary": "No named hazard, but the flavor is listed only as bare \"Aroma/Flavor\" with no source or components named. A disclosure failure under rule 2.1: not evidence of harm, but the absence of evidence the maker controls, on a product an infant swallows daily.",
+            "flagged": ["aroma/flavor: undisclosed"],
             "source": "amazon:B08899DKSV Ingredients panel. Fluoride free, no SLS, no titanium dioxide, no artificial colour.",
-            "checked": ""
+            "checked": "2026-09-20"
           },
           "testingResults": [
             {
@@ -34368,9 +34368,9 @@
             "source": "amazon:B08899DKSV: a squeeze tube with a flip top cap; Dr. Brown's does not publish the polymer. Recorded as unnamed plastic.",
             "checked": "2026-09-17"
           },
-          "verdict": "good",
+          "verdict": "careful",
           "dated": "2026-09-20",
-          "why": "direct evidence on formula, recorded rather than read off a note",
+          "why": "rule 2.1, disclosure failure: flavor listed as bare \"Aroma/Flavor\", no source or components named",
           "fronts": {
             "formula": "pass",
             "materials": "pass",
@@ -34382,6 +34382,11 @@
             "formula": "database",
             "testing": "database",
             "materials": "database"
+          },
+          "override": {
+            "verdict": "careful",
+            "reason": "The ingredient classifier's term list catches 'natural flavor' and 'fragrance' but not bare 'Aroma/Flavor' with no qualifier, so the formula front still reads pass. The finding is real: no source or components named for the only flavor ingredient, on a toothpaste an infant swallows daily. Rule 2.1 disclosure failure, capped at careful by hand pending a classifier fix.",
+            "dated": "2026-09-20"
           },
           "scope": "sku",
           "basis": "direct",
@@ -95765,7 +95770,7 @@
     "stance": "careful",
     "reason": "Hydroxyapatite paste with lead detected in independent 2025 testing at an undisclosed concentration, and no published efficacy research on the formula. The kids version was among those showing lead.",
     "evidence": "Lead detected, concentration not disclosed (Lead Safe Mama 2025)",
-    "alternative": "Weleda Salt Toothpaste, or Dr. Brown's and Spry for kids",
+    "alternative": "Weleda Salt Toothpaste, or Spry Kids Original for children",
     "sources": [
       "best-non-toxic-toothpaste-guide.html"
     ],
@@ -103093,19 +103098,19 @@
       {
         "name": "Spry Kids Tooth Gel",
         "asins": [
-          "B004769M8E"
+          "B000LSVJGK"
         ],
         "verdict": "good",
-        "note": "Xylitol based natural tooth gel for children in strawberry banana flavor. Xylitol helps reduce cavity causing bacteria. Xylitol formula, safe to swallow. Worth knowing: Plastic tube packaging.",
+        "note": "Xylitol based natural tooth gel, Original flavor: no flavoring ingredient at all, so nothing about the taste to disclose. Xylitol helps reduce cavity causing bacteria. Safe to swallow, appropriate from 3 months. Worth knowing: Plastic tube packaging.",
         "origin": "store",
         "ext": {
-          "testingNote": "Lead Safe Mama, published 2025-03-20: Kid's Spry Tooth Gel with Xylitol, Fluoride-Free, Original flavor. Purity Laboratories ICP-MS, case 2503151, received 03/10/2025, tested 03/12/2025, sample \"Kids tooth gel Lot# 2025-005\": arsenic below 10.0 ppb, cadmium below 5.0 ppb, lead below 5.0 ppb, mercury below 5.0 ppb. Line scope: the tested flavor is Original, not Strawberry Banana (same base, different flavoring). Lead Safe Mama notes results apply only to the product tested; a different Spry product (Kid's Anti-Cavity Toothpaste with Fluoride, Natural Bubblegum, published 2025-04-19) tested positive for lead, mercury and arsenic. The independent test covers the Original flavor, not the Strawberry Banana flavor this ASIN sells.",
+          "testingNote": "Lead Safe Mama, published 2025-03-20: Kid's Spry Tooth Gel with Xylitol, Fluoride-Free, Original flavor. Purity Laboratories ICP-MS, case 2503151, received 03/10/2025, tested 03/12/2025, sample \"Kids tooth gel Lot# 2025-005\": arsenic below 10.0 ppb, cadmium below 5.0 ppb, lead below 5.0 ppb, mercury below 5.0 ppb. Corrected 2026-09-20: this ASIN previously sold Strawberry Banana flavor (a different, untested SKU with an undisclosed \"Natural Strawberry&Banana Flavoring\" ingredient) while carrying this Original-flavor test result. Swapped to ASIN B000LSVJGK, the actual Original-flavor product this test covers, so the tested SKU and the sold SKU now match.",
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
           "frontNotes": {
             "formula": "The published ingredient list carries nothing on the hazard list.",
             "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
-            "testing": "Lead Safe Mama, published 2025-03-20: Kid's Spry Tooth Gel with Xylitol, Fluoride-Free, Original flavor. Purity Laboratories ICP-MS, case 2503151, received 03/10/2025, tested 03/12/2025, sample \"Kids tooth gel Lot# 2025-005\": arsenic below 10.0 ppb, cadmium below 5.0 ppb, lead below 5.0 ppb, mercury below 5.0 ppb. Line scope: the tested flavor is Original, not Strawberry Banana (same base, different flavoring). Lead Safe Mama notes results apply only to the product tested; a different Spry product (Kid's Anti-Cavity Toothpaste with Fluoride, Natural Bubblegum, published 2025-04-19) tested positive for lead, mercury and arsenic. The independent test covers the Original flavor, not the Strawberry Banana flavor this ASIN sells.",
-            "materials": "The contact material is not recorded."
+            "testing": "Lead Safe Mama, published 2025-03-20: Kid's Spry Tooth Gel with Xylitol, Fluoride-Free, Original flavor. Purity Laboratories ICP-MS, case 2503151, received 03/10/2025, tested 03/12/2025, sample \"Kids tooth gel Lot# 2025-005\": arsenic below 10.0 ppb, cadmium below 5.0 ppb, lead below 5.0 ppb, mercury below 5.0 ppb. This is now the tested SKU itself, not a sibling flavor.",
+            "materials": "Squeeze tube with a flip top cap, resin not stated by the maker, recorded as unnamed plastic."
           },
           "testingDate": "2025",
           "exposure": {
@@ -103122,14 +103127,14 @@
             "why": "for a baby, which is high whatever the arithmetic says"
           },
           "formulaAnswers": {
-            "ingredients": "Natural Strawberry Banana : Purified Water, Xylitol, Calcium Glycerophosphate, Cellulose Gum, Natural Strawberry&Banana Flavoring, Grapefruit Seed Extract",
+            "ingredients": "Original: Purified Water, Xylitol, Calcium Glycerophosphate, Cellulose Gum, Grapefruit Seed Extract",
             "prose": "",
             "complete": true,
             "verdict": "good",
-            "summary": "The published ingredient list carries nothing on the hazard list.",
+            "summary": "The published ingredient list carries nothing on the hazard list. No flavor ingredient at all, so there is nothing undisclosed.",
             "flagged": [],
-            "source": "https://xlear.com/products/kids-xylitol-tooth-gel (Ingredients; variant SKU SBTGEL matches the Amazon part number)",
-            "checked": "2026-09-16"
+            "source": "https://xlear.com/products/kids-xylitol-tooth-gel (Ingredients, Original flavor), cross-checked verbatim at https://mannaharvest.com/products/spry-kids-xylitol-tooth-gel-original-fluoride-free",
+            "checked": "2026-09-20"
           },
           "testingResults": [
             {
@@ -103178,30 +103183,30 @@
             "reuse": "",
             "use": "rinse-off",
             "binder": "",
-            "material": "Not stated: squeeze tube with a flip top cap; tube and cap materials are not published",
+            "material": "plastic",
             "treatment": "",
             "treatmentSource": "",
             "dispenser": "",
             "lining": "",
             "certification": "",
             "certificationSource": "",
-            "source": "Amazon B004769M8E: \"The tooth gel squeezer features an easy open, flip-top cap.\"; \"Package Type Name Bottle\"; \"Packaging Feature Spout\"; \"safe to swallow\". https://xlear.com/products/kids-xylitol-tooth-gel: \"*Packaging may vary, but it's all the same great product!\" (no material stated). Used on gums and teeth of children from 3 months and labeled safe to swallow.",
-            "checked": "2026-09-16",
-            "open": "The contact material is not recorded"
+            "source": "Amazon B000LSVJGK: \"The tooth gel squeezer features an easy open, flip-top cap.\"; \"Package Type Name Bottle\"; \"Packaging Feature Spout\"; \"safe to swallow\". https://xlear.com/products/kids-xylitol-tooth-gel: \"*Packaging may vary, but it's all the same great product!\" Squeeze tube and flip-top cap, resin not stated by the maker, recorded as unnamed plastic per site convention. Used on gums and teeth of children from 3 months and labeled safe to swallow.",
+            "checked": "2026-09-20"
           },
-          "verdict": "unrated",
-          "dated": "2026-09-11",
-          "why": "no front is directly evidenced by the note",
+          "verdict": "good",
+          "dated": "2026-09-20",
+          "why": "direct evidence on formula, materials, testing and legal, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
-            "materials": "unassessed",
-            "legal": "none",
-            "testing": "none"
+            "materials": "pass",
+            "legal": "pass",
+            "testing": "pass"
           },
           "frontOrigin": {
             "legal": "database",
             "testing": "database",
-            "formula": "database"
+            "formula": "database",
+            "materials": "database"
           },
           "scope": "sku",
           "basis": "direct",
