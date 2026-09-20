@@ -1815,13 +1815,26 @@ function objectStatus({ material, heated, mouthed, nonContact, undisclosedPart }
   // Rule 3.7 on a part rather than a binder: a contact part the maker will not
   // name scores nothing, because there is no name to score, so the front would
   // pass on the parts they did bother to mention.
-  const unnamed = asText(undisclosedPart).trim();
+  // A part name, however much explanation came with it. The model returned
+  // "Waterproof backing material type not identified by maker" once, which the
+  // template below turned into "The Waterproof backing material type not
+  // identified by maker the maker does not name".
+  const unnamed = asText(undisclosedPart).trim()
+    .replace(/\s*[,(:].*$/, "")
+    .replace(/\s+(type|material)?\s*(not|un)(\s|-)?(identified|specified|stated|named|disclosed|known)\b.*$/i, "")
+    .replace(/^the\s+/i, "")
+    .split(/\s+/).slice(0, 4).join(" ")
+    .replace(/\s+(material|type|part|component)s?$/i, "")
+    .trim()
+    // Mid sentence, so it reads as a part and not as a heading. An acronym
+    // keeps its capitals: a PVC backing is still PVC.
+    .replace(/^[A-Z](?![A-Z])/, (c) => c.toLowerCase());
   // Rule 3.4: a part nobody meets is printed, not scored.
   const off = asText(nonContact).trim();
   const noted = off ? `; noted and not counted: ${off}, out of the path a person touches` : "";
   if (unnamed) {
     return { status: "caution",
-             why: `The ${unnamed} the maker does not name, in the part a person holds. The rest is ${text}${noted}` };
+             why: `The ${unnamed} the maker does not name, and it touches the person using it. The rest is ${text}${noted}` };
   }
   if (HAZARD_POLYMER.test(text)) {
     return { status: "fail", why: `${text} against the skin, and that is a plastic we never recommend${noted}` };
@@ -1951,14 +1964,14 @@ function vetSubject(brand, product, url) {
 
 async function vetLabel(env, brand, product, url = "") {
   const r = await vetClaude(env, VET_RULES,
-    `Product: ${vetSubject(brand, product, url)}. Find (1) "formula": the ingredient list, and nothing else. Quote it verbatim behind the word Ingredients where you can find it. A durable good has no ingredient list, so its formula is status "none". Give formula a "finding": one short sentence naming what is wrong, or what is clean, in plain words, such as "Contains parfum, an undisclosed fragrance blend". Give formula a "flagged": an array of the exact ingredient names that earned the status, empty when none. (2) "materials": report FACTS, not a judgement. "holds": what is inside the product, and the single word "none" when the product is not a container at all, which covers every durable good, toy, garment, mat, nappy and piece of furniture. "material": what the product ITSELF is made of, listing ONLY the surfaces a person's skin or mouth meets in normal use, and required whenever holds is "none". "nonContact": the parts a person never meets, such as the tyres of a balance bike, the base of a yoga mat or the foam sealed inside a mattress cover. Those are noted and never scored, so putting one in "material" marks a product down for a part nobody touches. "undisclosedPart": the name of a part in the CONTACT path the maker will not identify, such as grips it only calls "non-toxic", and empty where every contact part is named. "mouthed": true when a small child puts it in their mouth in normal use. "container": what actually touches the contents, as specifically as the source allows (PET, HDPE, PP, unnamed plastic, glass, aluminium, steel, paper, cotton), and empty when holds is "none". "filledBy": "maker" when the product is sold with its contents inside, "buyer" when it is sold empty for the shopper to fill, which is every storage bag, box, jar, wrap and bottle. "base": one of dry, aqueous, surfactant, emulsion, anhydrous, acidic, by what the contents are, an oil or balm or stick being anhydrous. Where filledBy is "buyer" the base is the hardest use the MAKER markets, not the gentlest: dry only where the maker restricts it to dry goods, anhydrous where it is marketed for oils, fats or cooking in the bag, and otherwise emulsion, because food carries fat. "heated": true only when something hot goes in or on it in use, and where filledBy is "buyer" that means the maker markets heating it, microwaving, boiling or the oven. "use": leave-on, rinse-off, ingested or not-on-body. Anything eaten, drunk or held in the mouth is "ingested", never "not-on-body": not-on-body is for laundry powder and surface cleaner, which are diluted and washed away. Add a "note" of what you found and where. We apply our own packaging table to those facts, so do not reason about pass or fail for materials yourself. Every field carries a "source" URL.`,
+    `Product: ${vetSubject(brand, product, url)}. Find (1) "formula": the ingredient list, and nothing else. Quote it verbatim behind the word Ingredients where you can find it. A durable good has no ingredient list, so its formula is status "none". Give formula a "finding": one short sentence naming what is wrong, or what is clean, in plain words, such as "Contains parfum, an undisclosed fragrance blend". Give formula a "flagged": an array of the exact ingredient names that earned the status, empty when none. (2) "materials": report FACTS, not a judgement. "holds": what is inside the product, and the single word "none" when the product is not a container at all, which covers every durable good, toy, garment, mat, nappy and piece of furniture. "material": what the product ITSELF is made of, listing ONLY the surfaces a person's skin or mouth meets in normal use, and required whenever holds is "none". "nonContact": the parts a person never meets, such as the tyres of a balance bike, the base of a yoga mat or the foam sealed inside a mattress cover. Those are noted and never scored, so putting one in "material" marks a product down for a part nobody touches. "undisclosedPart": the NAME OF THE PART ONLY, two or three words, where a part in the CONTACT path is one the maker will not identify: "grips", "the waterproof backing", "the coating". Not a sentence and not an explanation, because we put it in one. Empty where every contact part is named. "mouthed": true when a small child puts it in their mouth in normal use. "container": what actually touches the contents, as specifically as the source allows (PET, HDPE, PP, unnamed plastic, glass, aluminium, steel, paper, cotton), and empty when holds is "none". "filledBy": "maker" when the product is sold with its contents inside, "buyer" when it is sold empty for the shopper to fill, which is every storage bag, box, jar, wrap and bottle. "base": one of dry, aqueous, surfactant, emulsion, anhydrous, acidic, by what the contents are, an oil or balm or stick being anhydrous. Where filledBy is "buyer" the base is the hardest use the MAKER markets, not the gentlest: dry only where the maker restricts it to dry goods, anhydrous where it is marketed for oils, fats or cooking in the bag, and otherwise emulsion, because food carries fat. "heated": true only when something hot goes in or on it in use, and where filledBy is "buyer" that means the maker markets heating it, microwaving, boiling or the oven. "use": leave-on, rinse-off, ingested or not-on-body. Anything eaten, drunk or held in the mouth is "ingested", never "not-on-body": not-on-body is for laundry powder and surface cleaner, which are diluted and washed away. Add a "note" of what you found and where. We apply our own packaging table to those facts, so do not reason about pass or fail for materials yourself. Every field carries a "source" URL.`,
     3);
   return r;
 }
 
 async function vetTesting(env, brand, product, url = "") {
   const r = await vetClaude(env, VET_RULES,
-    `Product: ${vetSubject(brand, product, url)}. This front is ONLY for actual measurements and certifications: lab results, peer reviewed studies, certifications (Lead Safe Mama, Mamavation, Consumer Reports, NSF, OEKO-TEX, GOTS, EWG Verified), including studies that MEASURED this product category, which count at caution strength with the note saying it is a category measurement. A certification you verify (EWG Verified, NSF, OEKO-TEX, GOTS) is pass-level evidence. EWG Skin Deep pages and brand certification pages are public: FETCH them rather than reporting that they exist. If an assessment exists only behind a paywall (Consumer Reports), say so plainly: "Consumer Reports has tested this product; the results are subscription only and we could not verify them." What the product is made of is NOT testing evidence. A clean lab result needs its detection limit to count as pass. If you searched and nothing has been published, status is "none" with note "We searched; no independent testing of this product has been published." Use "unassessed" only if you could not complete the search. Reply ONLY: {"testing":{"status":"pass|caution|fail|none|unassessed","note":"<one sentence>","source":"<url or empty>"}}`,
+    `Product: ${vetSubject(brand, product, url)}. This front is ONLY for actual measurements and certifications: lab results, peer reviewed studies, certifications (Lead Safe Mama, Mamavation, Consumer Reports, NSF, OEKO-TEX, GOTS, EWG Verified), including studies that MEASURED this product category, which count at caution strength with the note saying it is a category measurement. A certification you verify (EWG Verified, NSF, OEKO-TEX, GOTS) is pass-level evidence. EWG Skin Deep pages and brand certification pages are public: FETCH them rather than reporting that they exist. If an assessment exists only behind a paywall (Consumer Reports), say so plainly: "Consumer Reports has tested this product; the results are subscription only and we could not verify them." What the product is made of is NOT testing evidence. A clean lab result needs its detection limit to count as pass. If you searched and nothing has been published, status is "none" with note "No independent testing of this product has been published." Use "unassessed" only if you could not complete the search. The note is read by a shopper deciding what to buy, so it says what is true of the PRODUCT in one plain sentence. Never narrate your own searching: which pages would not open, which names you tried, what you could not identify. All of that is our working, and none of it tells anybody anything about the thing in their hand. Reply ONLY: {"testing":{"status":"pass|caution|fail|none|unassessed","note":"<one sentence>","source":"<url or empty>"}}`,
     2);
   return r;
 }
@@ -2028,7 +2041,7 @@ function vetVerdict(fronts) {
 // Bumped whenever a rule the research applies changes. A stored answer from an
 // older engine is not reused: Salt and Stone's materials front was cached as a
 // pass, from before section 3.1 was computed here rather than asked for.
-const VET_ENGINE = 9;
+const VET_ENGINE = 10;
 
 /** One key per product, so the same thing asked twice finds the first answer. */
 function researchKey(brand, product) {
@@ -2154,8 +2167,14 @@ async function vetCore(env, brand, product, send, allowResearch, url = "") {
     // that is not a failed check, it is the one answer formula can have here:
     // the screen showed "Could not complete this check" beside a materials row
     // that had just explained the product is an object.
-    if (m && /^(none|nothing|n\/?a|not applicable)\b/i.test(asText(m.holds).trim())
-        && r.data && !r.data.formula) {
+    // An object, however it was described. The first version of this only fired
+    // on holds:"none", so a changing pad whose materials note said in so many
+    // words "No ingredient list provided by maker" still showed "Formula: could
+    // not complete this check" beside it.
+    const isObject = m && (/^(none|nothing|n\/?a|not applicable)\b/i.test(asText(m.holds).trim())
+      || (asText(m.material).trim() && !asText(m.base).trim() && !asText(m.container).trim())
+      || /no ingredient list|durable good|not applicable/i.test(asText(m.note)));
+    if (isObject && r.data && !r.data.formula) {
       r.data.formula = { status: "none", source: asText(m.source) || "",
         note: "A durable good has no ingredient list. What it is made of is the materials check." };
     }

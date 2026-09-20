@@ -396,8 +396,8 @@ def _assess_container(pack):
     # "Non-toxic" is a claim, not a material, which is 3.4's first line.
     part = str(pack.get("undisclosedPart") or "").strip()
     if part:
-        return "caution", (f"The {part} the maker does not name, in the part a person holds. "
-                           f"The rest is {pretty(term)}")
+        return "caution", (f"The {part} the maker does not name, and it touches the person "
+                           f"using it. The rest is {pretty(term)}")
 
     if rank == 0:
         return "pass", f"In contact with {pretty(term)}, which puts nothing into what it holds"

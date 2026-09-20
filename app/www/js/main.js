@@ -39,7 +39,7 @@ function readChecks() {
 // one: Modera's changing pads still read "could not complete" on a phone long
 // after the fault was fixed and the server's copy deleted. Raise this whenever
 // a worker rule change invalidates answers, and stale ones quietly disappear.
-const CHECK_ENGINE_MIN = 8;
+const CHECK_ENGINE_MIN = 10;
 
 function readCheck(brand, product) {
   if (!brand) return null;
