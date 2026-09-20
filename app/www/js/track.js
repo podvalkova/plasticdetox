@@ -17,6 +17,29 @@ let queue = [];
 let timer = null;
 let bundle = "";
 
+/**
+ * Whether this copy of the app is allowed to report at all.
+ *
+ * The worker URL above is the production one wherever the app runs, so the
+ * smoke test that walks twelve screens on every build was posting to the live
+ * project. It arrived as `platform: "web"` with an empty bundle and outnumbered
+ * the real phones seven to one, which made every figure wrong until it was
+ * filtered out by hand.
+ *
+ * Capacitor serves the real app from capacitor://localhost, so the hostname on
+ * its own would silence every phone. The bridge is what tells a device apart
+ * from a browser, and only a browser on a local server is refused.
+ */
+const LOCAL_HOSTS = ["localhost", "127.0.0.1", "0.0.0.0", ""];
+const SENDING = (function () {
+  try {
+    if (window.Capacitor) return true;
+    return LOCAL_HOSTS.indexOf(location.hostname) === -1;
+  } catch {
+    return false;
+  }
+})();
+
 /** The same anonymous id the notification counters already use. */
 export function who() {
   try {
@@ -40,7 +63,7 @@ export function setBundle(v) { bundle = String(v || ""); }
  * with keepalive so the last batch survives the app going away.
  */
 export function track(event, props) {
-  if (!event) return;
+  if (!event || !SENDING) return;
   queue.push({
     event,
     props: { ...(props || {}), bundle, platform: window.Capacitor ? window.Capacitor.getPlatform() : "web" },
@@ -82,6 +105,15 @@ document.addEventListener("visibilitychange", () => {
  * no third party, nothing new in the bundle, and it ships over the air like
  * any other change.
  */
+/**
+ * Faults with nothing in them. "ResizeObserver loop" fires whenever a resize
+ * callback causes another resize: every browser reports it, no tracker keeps
+ * it, and it arrived 23 times on the first day of reporting. A bare "Script
+ * error." is what a cross origin script leaves once the browser has stripped
+ * the message and the stack. Either one left in would eat the per run cap and
+ * hide something that mattered.
+ */
+const NOISE = /ResizeObserver loop|^Script error\.?$/i;
 const MAX_ERRORS = 8;
 let errorsSent = 0;
 const seenFaults = new Set();
@@ -117,7 +149,7 @@ function shortSource(u) {
 function report(kind, message, extra) {
   try {
     const msg = String(message == null ? "" : message).slice(0, 300);
-    if (!msg) return;
+    if (!msg || NOISE.test(msg)) return;
     // One report per distinct fault per run, and a ceiling on top of that. A
     // render loop that throws on every frame must not spend the entire
     // Mixpanel quota describing itself.
