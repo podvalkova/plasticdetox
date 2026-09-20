@@ -1916,13 +1916,19 @@ export function unknown(root, { scan, brand, product, hasPass, balance, onCheck,
   // barcode databases are food first and personal care barely appears in them.
   // Typing the brand would have answered instantly, so say that.
   const CHECK_NAMES = { good: "Good choice", careful: "Careful", skip: "Skip", unrated: "Not enough found" };
+  // Three ways to arrive with no name, and they are not the same thing. A
+  // barcode we could not read is a failed lookup. Somebody who tapped "no link
+  // or barcode" has not failed at anything, and telling them their barcode was
+  // unreadable when they never scanned one reads as a broken screen.
+  const why = scan ? "scan" : "asked";
   head.appendChild(el("span",
     researched && checkResult.verdict !== "unrated" ? `badge ${checkResult.verdict}` : "badge neutral",
     researched ? (CHECK_NAMES[checkResult.verdict] || "Research")
-      : named ? "Not reviewed yet" : "Product not identified"));
+      : named ? "Not reviewed yet" : why === "scan" ? "Product not identified" : "Tell us what it is"));
   head.appendChild(el("div", "verdict-brand",
     named ? (researched ? String(brand || named) : `We have not checked ${named} yet.`)
-      : "We could not identify that barcode."));
+      : why === "scan" ? "We could not identify that barcode."
+        : "What would you like us to check?"));
   if (researched && named) {
     const sub = el("div", "verdict-cat");
     sub.appendChild(el("span", "verdict-cat-name", String(product || named)));

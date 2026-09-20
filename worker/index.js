@@ -1927,16 +1927,24 @@ function matrixStatus({ container, base, heated, use, filledBy, holds, material,
   return { status, why };
 }
 
-async function vetLabel(env, brand, product) {
+/** The product, named however the person gave it to us. */
+function vetSubject(brand, product, url) {
+  const name = [brand, product].filter(Boolean).join(" ").trim();
+  if (url && name) return `${name} (this exact listing: ${url})`;
+  if (url) return `the product at this exact address: ${url}. Open it, and say in the note which brand and product it turned out to be`;
+  return name;
+}
+
+async function vetLabel(env, brand, product, url = "") {
   const r = await vetClaude(env, VET_RULES,
-    `Product: ${brand} ${product}. Find (1) "formula": the ingredient list, and nothing else. Quote it verbatim behind the word Ingredients where you can find it. A durable good has no ingredient list, so its formula is status "none". Give formula a "finding": one short sentence naming what is wrong, or what is clean, in plain words, such as "Contains parfum, an undisclosed fragrance blend". Give formula a "flagged": an array of the exact ingredient names that earned the status, empty when none. (2) "materials": report FACTS, not a judgement. "holds": what is inside the product, and the single word "none" when the product is not a container at all, which covers every durable good, toy, garment, mat, nappy and piece of furniture. "material": what the product ITSELF is made of, listing ONLY the surfaces a person's skin or mouth meets in normal use, and required whenever holds is "none". "nonContact": the parts a person never meets, such as the tyres of a balance bike, the base of a yoga mat or the foam sealed inside a mattress cover. Those are noted and never scored, so putting one in "material" marks a product down for a part nobody touches. "undisclosedPart": the name of a part in the CONTACT path the maker will not identify, such as grips it only calls "non-toxic", and empty where every contact part is named. "mouthed": true when a small child puts it in their mouth in normal use. "container": what actually touches the contents, as specifically as the source allows (PET, HDPE, PP, unnamed plastic, glass, aluminium, steel, paper, cotton), and empty when holds is "none". "filledBy": "maker" when the product is sold with its contents inside, "buyer" when it is sold empty for the shopper to fill, which is every storage bag, box, jar, wrap and bottle. "base": one of dry, aqueous, surfactant, emulsion, anhydrous, acidic, by what the contents are, an oil or balm or stick being anhydrous. Where filledBy is "buyer" the base is the hardest use the MAKER markets, not the gentlest: dry only where the maker restricts it to dry goods, anhydrous where it is marketed for oils, fats or cooking in the bag, and otherwise emulsion, because food carries fat. "heated": true only when something hot goes in or on it in use, and where filledBy is "buyer" that means the maker markets heating it, microwaving, boiling or the oven. "use": leave-on, rinse-off, ingested or not-on-body. Anything eaten, drunk or held in the mouth is "ingested", never "not-on-body": not-on-body is for laundry powder and surface cleaner, which are diluted and washed away. Add a "note" of what you found and where. We apply our own packaging table to those facts, so do not reason about pass or fail for materials yourself. Every field carries a "source" URL.`,
+    `Product: ${vetSubject(brand, product, url)}. Find (1) "formula": the ingredient list, and nothing else. Quote it verbatim behind the word Ingredients where you can find it. A durable good has no ingredient list, so its formula is status "none". Give formula a "finding": one short sentence naming what is wrong, or what is clean, in plain words, such as "Contains parfum, an undisclosed fragrance blend". Give formula a "flagged": an array of the exact ingredient names that earned the status, empty when none. (2) "materials": report FACTS, not a judgement. "holds": what is inside the product, and the single word "none" when the product is not a container at all, which covers every durable good, toy, garment, mat, nappy and piece of furniture. "material": what the product ITSELF is made of, listing ONLY the surfaces a person's skin or mouth meets in normal use, and required whenever holds is "none". "nonContact": the parts a person never meets, such as the tyres of a balance bike, the base of a yoga mat or the foam sealed inside a mattress cover. Those are noted and never scored, so putting one in "material" marks a product down for a part nobody touches. "undisclosedPart": the name of a part in the CONTACT path the maker will not identify, such as grips it only calls "non-toxic", and empty where every contact part is named. "mouthed": true when a small child puts it in their mouth in normal use. "container": what actually touches the contents, as specifically as the source allows (PET, HDPE, PP, unnamed plastic, glass, aluminium, steel, paper, cotton), and empty when holds is "none". "filledBy": "maker" when the product is sold with its contents inside, "buyer" when it is sold empty for the shopper to fill, which is every storage bag, box, jar, wrap and bottle. "base": one of dry, aqueous, surfactant, emulsion, anhydrous, acidic, by what the contents are, an oil or balm or stick being anhydrous. Where filledBy is "buyer" the base is the hardest use the MAKER markets, not the gentlest: dry only where the maker restricts it to dry goods, anhydrous where it is marketed for oils, fats or cooking in the bag, and otherwise emulsion, because food carries fat. "heated": true only when something hot goes in or on it in use, and where filledBy is "buyer" that means the maker markets heating it, microwaving, boiling or the oven. "use": leave-on, rinse-off, ingested or not-on-body. Anything eaten, drunk or held in the mouth is "ingested", never "not-on-body": not-on-body is for laundry powder and surface cleaner, which are diluted and washed away. Add a "note" of what you found and where. We apply our own packaging table to those facts, so do not reason about pass or fail for materials yourself. Every field carries a "source" URL.`,
     3);
   return r;
 }
 
-async function vetTesting(env, brand, product) {
+async function vetTesting(env, brand, product, url = "") {
   const r = await vetClaude(env, VET_RULES,
-    `Product: ${brand} ${product}. This front is ONLY for actual measurements and certifications: lab results, peer reviewed studies, certifications (Lead Safe Mama, Mamavation, Consumer Reports, NSF, OEKO-TEX, GOTS, EWG Verified), including studies that MEASURED this product category, which count at caution strength with the note saying it is a category measurement. A certification you verify (EWG Verified, NSF, OEKO-TEX, GOTS) is pass-level evidence. EWG Skin Deep pages and brand certification pages are public: FETCH them rather than reporting that they exist. If an assessment exists only behind a paywall (Consumer Reports), say so plainly: "Consumer Reports has tested this product; the results are subscription only and we could not verify them." What the product is made of is NOT testing evidence. A clean lab result needs its detection limit to count as pass. If you searched and nothing has been published, status is "none" with note "We searched; no independent testing of this product has been published." Use "unassessed" only if you could not complete the search. Reply ONLY: {"testing":{"status":"pass|caution|fail|none|unassessed","note":"<one sentence>","source":"<url or empty>"}}`,
+    `Product: ${vetSubject(brand, product, url)}. This front is ONLY for actual measurements and certifications: lab results, peer reviewed studies, certifications (Lead Safe Mama, Mamavation, Consumer Reports, NSF, OEKO-TEX, GOTS, EWG Verified), including studies that MEASURED this product category, which count at caution strength with the note saying it is a category measurement. A certification you verify (EWG Verified, NSF, OEKO-TEX, GOTS) is pass-level evidence. EWG Skin Deep pages and brand certification pages are public: FETCH them rather than reporting that they exist. If an assessment exists only behind a paywall (Consumer Reports), say so plainly: "Consumer Reports has tested this product; the results are subscription only and we could not verify them." What the product is made of is NOT testing evidence. A clean lab result needs its detection limit to count as pass. If you searched and nothing has been published, status is "none" with note "We searched; no independent testing of this product has been published." Use "unassessed" only if you could not complete the search. Reply ONLY: {"testing":{"status":"pass|caution|fail|none|unassessed","note":"<one sentence>","source":"<url or empty>"}}`,
     2);
   return r;
 }
@@ -2006,7 +2014,7 @@ function vetVerdict(fronts) {
 // Bumped whenever a rule the research applies changes. A stored answer from an
 // older engine is not reused: Salt and Stone's materials front was cached as a
 // pass, from before section 3.1 was computed here rather than asked for.
-const VET_ENGINE = 6;
+const VET_ENGINE = 7;
 
 /** One key per product, so the same thing asked twice finds the first answer. */
 function researchKey(brand, product) {
@@ -2014,7 +2022,7 @@ function researchKey(brand, product) {
     .replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 300);
 }
 
-async function vetCore(env, brand, product, send, allowResearch) {
+async function vetCore(env, brand, product, send, allowResearch, url = "") {
   const t0 = Date.now();
   const fronts = {};
   send({ step: "start", brand, product });
@@ -2146,8 +2154,8 @@ async function vetCore(env, brand, product, send, allowResearch) {
   };
 
   const legalP = vetLegal(brand).then((f) => { fronts.legal = f; send({ step: "legal", front: f, ms: Date.now() - t0 }); });
-  const labelP = vetLabel(env, brand, product).then((r) => finish("label", r, ["formula", "materials"]));
-  const testP = vetTesting(env, brand, product).then((r) => finish("testing", r, ["testing"]));
+  const labelP = vetLabel(env, brand, product, url).then((r) => finish("label", r, ["formula", "materials"]));
+  const testP = vetTesting(env, brand, product, url).then((r) => finish("testing", r, ["testing"]));
   await Promise.allSettled([legalP, labelP, testP]);
 
   for (const k of ["formula", "materials", "legal", "testing"]) {
@@ -2211,11 +2219,14 @@ async function handleInstantVet(request, env, corsOrigin) {
   const body = await request.json().catch(() => ({}));
   const brand = (body.brand || "").toString().trim().slice(0, 80);
   const product = (body.product || "").toString().trim().slice(0, 160);
-  if (!brand) return json({ ok: false, error: "brand is required" }, 400, corsOrigin);
+  // A link names one listing exactly, which beats a brand and a product typed
+  // from memory, and it is the only thing a bare Amazon /dp/ address carries.
+  const url = (body.url || "").toString().trim().slice(0, 500);
+  if (!brand && !url) return json({ ok: false, error: "brand is required" }, 400, corsOrigin);
 
   const s = sseResponse(corsOrigin);
   (async () => {
-    const r = await vetCore(env, brand, product, s.send, true);
+    const r = await vetCore(env, brand, product, s.send, true, url);
     if (r.researchFailed) {
       s.send({ done: true, elapsedMs: r.elapsedMs, consumed: false, 
                error: r.failMessage });
@@ -2381,14 +2392,15 @@ async function handleCustomerVet(request, env, corsOrigin) {
   const pass = (body.pass || "").toString().trim();
   const brand = (body.brand || "").toString().trim().slice(0, 80);
   const product = (body.product || "").toString().trim().slice(0, 160);
-  if (!brand) return json({ ok: false, error: "brand is required" }, 400, corsOrigin);
+  const url = (body.url || "").toString().trim().slice(0, 500);
+  if (!brand && !url) return json({ ok: false, error: "brand is required" }, 400, corsOrigin);
   const key = "vetpass:" + pass;
   const rec = pass && await env.BRAND_SEARCHES.get(key, { type: "json" });
   if (!rec) return json({ ok: false, error: "Pass not found" }, 401, corsOrigin);
 
   const s = sseResponse(corsOrigin);
   (async () => {
-    const r = await vetCore(env, brand, product, s.send, rec.balance > 0);
+    const r = await vetCore(env, brand, product, s.send, rec.balance > 0, url);
     let consumed = false;
     if (r.needsCredits) {
       s.send({ done: true, elapsedMs: r.elapsedMs, needsCredits: true, balance: rec.balance,

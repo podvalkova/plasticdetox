@@ -39,7 +39,7 @@ function readChecks() {
 // one: Modera's changing pads still read "could not complete" on a phone long
 // after the fault was fixed and the server's copy deleted. Raise this whenever
 // a worker rule change invalidates answers, and stale ones quietly disappear.
-const CHECK_ENGINE_MIN = 6;
+const CHECK_ENGINE_MIN = 7;
 
 function readCheck(brand, product) {
   if (!brand) return null;
@@ -457,8 +457,13 @@ function draw() {
       // was actually scanned without it standing in for a description.
       onRequest: (typedBrand, typedProduct, email, btn) => requestResearch({
         brand: typedBrand || state.brand || state.query || "",
+        // Whatever names the thing travels with the request: the barcode that
+        // was scanned, and the link that was pasted. A reviewer opening the
+        // link knows exactly which product to research, which is the whole
+        // reason somebody pasted one.
         product: [typedProduct || state.product,
-                  state.scan && state.scan.code ? `(scanned ${state.scan.code})` : ""]
+                  state.scan && state.scan.code ? `(scanned ${state.scan.code})` : "",
+                  state.url ? `(${state.url})` : ""]
                  .filter(Boolean).join(" "),
       }, email, btn),
       onBuy: () => openExternal(check.buyUrl(state.brand || state.query, state.product)),
@@ -997,10 +1002,7 @@ function resolveLink(raw) {
     const guess = index.fromTitle(p.product);
     if (guess) brand = guess.brand.brand;
   }
-  if (!brand && !p.product) {
-    return { error: "We could not read a product out of that address. Type the brand "
-                  + "and product below instead." };
-  }
+
   // A marketplace slug repeats the maker: "Ziploc Storage Bags Quart" under a
   // brand field that already says Ziploc. The product field asks which one of
   // theirs it is, so the answer is "Storage Bags Quart".
@@ -1013,7 +1015,18 @@ function resolveLink(raw) {
   // Straight on, with nothing to confirm. Reading the address costs nothing and
   // spends no check, so a wrong read shows up on the next screen, before anybody
   // has paid for anything.
-  runCheck({ brand: brand || "", product });
+  //
+  // A bare /dp/ link is an ASIN and nothing else, which is exactly what Amazon's
+  // share button hands you, and there is no brand in it to name. Demanding one
+  // sent people back to a form that no longer exists. The link itself is the
+  // better thing to research anyway: it names one listing exactly, and the
+  // researcher can open it.
+  if (!brand) {
+    const name = product || (p.asin ? `Amazon listing ${p.asin}` : p.host);
+    go({ screen: "unknown", scan: null, brand: "", product: name, url: p.url });
+    return { navigated: true };
+  }
+  runCheck({ brand, product, url: p.url });
   return { navigated: true };
 }
 
@@ -1043,7 +1056,7 @@ function openHit(hit, query) {
  * careful. Anything we cannot answer falls through to the screen that offers
  * an automated check or a person.
  */
-function runCheck({ brand, product }) {
+function runCheck({ brand, product, url = "" }) {
   if (!brand) {
     toast("Name the brand first.");
     return;
@@ -1058,10 +1071,10 @@ function runCheck({ brand, product }) {
   const title = [brand, product].filter(Boolean).join(" ").trim();
   const match = index.resolve({ brandName: brand, title });
   if (match) {
-    go({ screen: "result", match, scan: null, query: title, productNamed: !!product });
+    go({ screen: "result", match, scan: null, query: title, productNamed: !!product, url });
     logSearch(title, true, match.brand.stance);
   } else {
-    go({ screen: "unknown", scan: null, brand, product });
+    go({ screen: "unknown", scan: null, brand, product, url });
     logSearch(title, false);
   }
 }
@@ -1082,11 +1095,16 @@ async function runInstantCheck(state, button, log, brandName, productName) {
   // is the weakest thing we hold: our own product verdicts disagree with the
   // brand verdict often enough that "Native" could mean a good stick or a
   // cautioned one. Asking is better than queueing work that cannot be done.
-  if (!brand) {
+  // A link is a better name than a name. It points at one listing, the
+  // researcher can open it, and it is the whole reason somebody pasted it
+  // rather than typing. Where there is one, neither field is required: a bare
+  // Amazon /dp/ link carries an ASIN and no brand at all.
+  const url = (state.url || "").toString().trim();
+  if (!url && !brand) {
     toast("Which brand? We need that to look it up.");
     return;
   }
-  if (!product) {
+  if (!url && !product) {
     toast("Which product? A brand on its own is not enough to research.");
     return;
   }
@@ -1117,6 +1135,7 @@ async function runInstantCheck(state, button, log, brandName, productName) {
   await check.run({
     brand,
     product,
+    url,
     onFront: (step, front) => {
       log.insertBefore(screens.checkRow(step, front, check.STEP_LABEL[step] || "Database"), working);
     },

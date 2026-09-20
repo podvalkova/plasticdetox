@@ -76,14 +76,14 @@ export function buyUrl(brand, product) {
  * `onFront` is called per check, `onDone` once at the end. Errors arrive
  * through onDone too, so a caller only has to handle one ending.
  */
-export async function run({ brand, product, onFront, onDone }) {
+export async function run({ brand, product, url = "", onFront, onDone }) {
   const pass = getPass();
   let res;
   try {
     res = await fetch(`${WORKER}/vet`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ pass, brand, product }),
+      body: JSON.stringify({ pass, brand, product, url }),
     });
   } catch {
     onDone({ error: "No connection. Try again in a moment." });
