@@ -39,10 +39,14 @@ function readChecks() {
 // one: Modera's changing pads still read "could not complete" on a phone long
 // after the fault was fixed and the server's copy deleted. Raise this whenever
 // a worker rule change invalidates answers, and stale ones quietly disappear.
-const CHECK_ENGINE_MIN = 10;
+const CHECK_ENGINE_MIN = 12;
 
 function readCheck(brand, product) {
-  if (!brand) return null;
+  // A link-only check has no brand: an Amazon address carries an ASIN and
+  // nothing else. This refused an empty brand outright, so the check Anya's
+  // pass had just paid for could never be found again, and the screen went on
+  // saying "we have not checked this yet" over a finished answer.
+  if (!brand && !product) return null;
   const all = readChecks();
   const hit = all[checkKey(brand, product || "")];
   if (!hit) return null;
@@ -1151,11 +1155,23 @@ async function runInstantCheck(state, button, log, brandName, productName) {
       // Keep the answer where a re-render cannot reach it, so leaving the
       // screen and coming back shows what was paid for rather than a blank.
       if (event.verdict) {
+        // File it under what the research established, not under what we could
+        // scrape out of a URL. Given only a link the researcher works the brand
+        // and product out in order to search at all, and the answer used to be
+        // filed under an empty brand: unfindable afterwards on the very phone
+        // that paid for it, and a nameless dot in Recently checked.
+        const found = event.identified || {};
+        const filedBrand = brand || (found.brand || "").trim();
+        const filedProduct = product || (found.product || "").trim();
         state.checkResult = event;
-        saveCheck(brand, product, event);
+        state.brand = state.brand || filedBrand;
+        if (!state.product || typeof state.product === "string") {
+          state.product = state.product || filedProduct;
+        }
+        saveCheck(filedBrand, filedProduct, event);
         // And into Recently checked, which only ever knew about brands we hold
         // a row for, so a product somebody paid to research left no trace.
-        rememberCheck(brand, product, event.verdict);
+        rememberCheck(filedBrand, filedProduct, event.verdict);
       }
       spend();
       if (event.needsCredits) {
@@ -1382,7 +1398,12 @@ function openRecent(entry) {
 
 /** A checked product in the recents strip, with the verdict it came back with. */
 function rememberCheck(brand, product, verdict) {
-  const entry = { id: "check:" + checkKey(brand, product), name: brand, sub: product,
+  // Something to read on the chip. Where the research never worked out a brand,
+  // the product is the name: a chip that is only a coloured dot is the app
+  // saying it forgot what you checked.
+  const name = brand || product || "Checked product";
+  const sub = brand ? product : "";
+  const entry = { id: "check:" + checkKey(brand, product), name, sub,
                   stance: verdict === "unrated" ? "neutral" : verdict };
   const list = readRecents().filter((r) => r.id !== entry.id);
   list.unshift(entry);

@@ -379,6 +379,18 @@ def _assess_container(pack):
     # statement that the container is unlined makes it bare metal, and inert.
     if term in ("aluminum", "aluminium") and str(pack.get("lining") or "").strip().lower() in ("none", "unlined", "uncoated"):
         term, rank = "metal", 0
+    # Rule 3.7, for a part rather than a binder, and BEFORE the unclassifiable
+    # return below. An unnamed part in the contact path is the finding whether
+    # or not the rest of the list resolves: Modera's liners name no fibre at
+    # all, so "the contact material is not recorded" swallowed the very thing
+    # that was wrong with them. "Chemical free non-woven fibre" is a claim, not
+    # a material, which is 3.4's first line.
+    part = str(pack.get("undisclosedPart") or "").strip()
+    if part:
+        rest = f" The rest is {pretty(term)}" if term is not None else ""
+        return "caution", (f"The {part} the maker does not name, and it touches the person "
+                           f"using it.{rest}".rstrip())
+
     if term is None:
         return None, "The contact material is not recorded"
     # Rule 2.1 disclosure, on an object rather than a recipe. A composite is
@@ -389,15 +401,6 @@ def _assess_container(pack):
     if str(pack.get("binder") or "").strip().lower() in ("undisclosed", "unnamed", "unknown"):
         return "caution", (f"{pretty(term)} bonded with an adhesive the maker does not name, "
                            f"in the same contact path as the {pretty(term)}")
-
-    # Rule 3.7 again, for a part rather than a binder. An unnamed part scores
-    # nothing, because classify() has no name to classify, so a bike whose grips
-    # the maker calls "non-toxic" and never identifies read as wood and passed.
-    # "Non-toxic" is a claim, not a material, which is 3.4's first line.
-    part = str(pack.get("undisclosedPart") or "").strip()
-    if part:
-        return "caution", (f"The {part} the maker does not name, and it touches the person "
-                           f"using it. The rest is {pretty(term)}")
 
     if rank == 0:
         return "pass", f"In contact with {pretty(term)}, which puts nothing into what it holds"

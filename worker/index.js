@@ -1964,7 +1964,7 @@ function vetSubject(brand, product, url) {
 
 async function vetLabel(env, brand, product, url = "") {
   const r = await vetClaude(env, VET_RULES,
-    `Product: ${vetSubject(brand, product, url)}. Find (1) "formula": the ingredient list, and nothing else. Quote it verbatim behind the word Ingredients where you can find it. A durable good has no ingredient list, so its formula is status "none". Give formula a "finding": one short sentence naming what is wrong, or what is clean, in plain words, such as "Contains parfum, an undisclosed fragrance blend". Give formula a "flagged": an array of the exact ingredient names that earned the status, empty when none. (2) "materials": report FACTS, not a judgement. "holds": what is inside the product, and the single word "none" when the product is not a container at all, which covers every durable good, toy, garment, mat, nappy and piece of furniture. "material": what the product ITSELF is made of, listing ONLY the surfaces a person's skin or mouth meets in normal use, and required whenever holds is "none". "nonContact": the parts a person never meets, such as the tyres of a balance bike, the base of a yoga mat or the foam sealed inside a mattress cover. Those are noted and never scored, so putting one in "material" marks a product down for a part nobody touches. "undisclosedPart": the NAME OF THE PART ONLY, two or three words, where a part in the CONTACT path is one the maker will not identify: "grips", "the waterproof backing", "the coating". Not a sentence and not an explanation, because we put it in one. Empty where every contact part is named. "mouthed": true when a small child puts it in their mouth in normal use. "container": what actually touches the contents, as specifically as the source allows (PET, HDPE, PP, unnamed plastic, glass, aluminium, steel, paper, cotton), and empty when holds is "none". "filledBy": "maker" when the product is sold with its contents inside, "buyer" when it is sold empty for the shopper to fill, which is every storage bag, box, jar, wrap and bottle. "base": one of dry, aqueous, surfactant, emulsion, anhydrous, acidic, by what the contents are, an oil or balm or stick being anhydrous. Where filledBy is "buyer" the base is the hardest use the MAKER markets, not the gentlest: dry only where the maker restricts it to dry goods, anhydrous where it is marketed for oils, fats or cooking in the bag, and otherwise emulsion, because food carries fat. "heated": true only when something hot goes in or on it in use, and where filledBy is "buyer" that means the maker markets heating it, microwaving, boiling or the oven. "use": leave-on, rinse-off, ingested or not-on-body. Anything eaten, drunk or held in the mouth is "ingested", never "not-on-body": not-on-body is for laundry powder and surface cleaner, which are diluted and washed away. Add a "note" of what you found and where. We apply our own packaging table to those facts, so do not reason about pass or fail for materials yourself. Every field carries a "source" URL.`,
+    `Product: ${vetSubject(brand, product, url)}. Find (1) "formula": the ingredient list, and nothing else. Quote it verbatim behind the word Ingredients where you can find it. A durable good has no ingredient list, so its formula is status "none". Give formula a "finding": one short sentence naming what is wrong, or what is clean, in plain words, such as "Contains parfum, an undisclosed fragrance blend". Give formula a "flagged": an array of the exact ingredient names that earned the status, empty when none. (2) "materials": report FACTS, not a judgement. "holds": what is inside the product, and the single word "none" when the product is not a container at all, which covers every durable good, toy, garment, mat, nappy and piece of furniture. "material": what the product ITSELF is made of, listing ONLY the surfaces a person's skin or mouth meets in normal use, and required whenever holds is "none". "nonContact": the parts a person never meets, such as the tyres of a balance bike, the base of a yoga mat or the foam sealed inside a mattress cover. Those are noted and never scored, so putting one in "material" marks a product down for a part nobody touches. "undisclosedPart": the NAME OF THE PART ONLY, two or three words, where a part in the CONTACT path is one the maker will not identify: "grips", "the waterproof backing", "the coating". Not a sentence and not an explanation, because we put it in one. Empty where every contact part is named. "mouthed": true when a small child puts it in their mouth in normal use. "container": what actually touches the contents, as specifically as the source allows (PET, HDPE, PP, unnamed plastic, glass, aluminium, steel, paper, cotton), and empty when holds is "none". "filledBy": "maker" when the product is sold with its contents inside, "buyer" when it is sold empty for the shopper to fill, which is every storage bag, box, jar, wrap and bottle. "base": one of dry, aqueous, surfactant, emulsion, anhydrous, acidic, by what the contents are, an oil or balm or stick being anhydrous. Where filledBy is "buyer" the base is the hardest use the MAKER markets, not the gentlest: dry only where the maker restricts it to dry goods, anhydrous where it is marketed for oils, fats or cooking in the bag, and otherwise emulsion, because food carries fat. "heated": true only when something hot goes in or on it in use, and where filledBy is "buyer" that means the maker markets heating it, microwaving, boiling or the oven. "use": leave-on, rinse-off, ingested or not-on-body. Anything eaten, drunk or held in the mouth is "ingested", never "not-on-body": not-on-body is for laundry powder and surface cleaner, which are diluted and washed away. Add a "note" of what you found and where. We apply our own packaging table to those facts, so do not reason about pass or fail for materials yourself. Every field carries a "source" URL. (3) "identified": {"brand":"<the maker>","product":"<the product name>"}, always, and above all where you were given only a link: you work the name out in order to research it, and we need it to file the answer under.`,
     3);
   return r;
 }
@@ -2041,7 +2041,7 @@ function vetVerdict(fronts) {
 // Bumped whenever a rule the research applies changes. A stored answer from an
 // older engine is not reused: Salt and Stone's materials front was cached as a
 // pass, from before section 3.1 was computed here rather than asked for.
-const VET_ENGINE = 10;
+const VET_ENGINE = 12;
 
 /** One key per product, so the same thing asked twice finds the first answer. */
 function researchKey(brand, product) {
@@ -2119,6 +2119,11 @@ async function vetCore(env, brand, product, send, allowResearch, url = "") {
   }
 
   let labelOk = false;
+  // What the research established the product actually is. Given only a link,
+  // the researcher works this out in order to search at all, and we threw it
+  // away: a check came back filed under an empty brand, which made it
+  // unfindable on the phone that paid for it and a nameless dot in the history.
+  let identified = null;
   // A leg that never reached the researcher is our failure, not a finding
   // about the product. Anya ran a check while this worker's API key was being
   // rejected and got three error rows under a verdict reading "not enough
@@ -2132,6 +2137,11 @@ async function vetCore(env, brand, product, send, allowResearch, url = "") {
   // spent on it.
   let ruleFailed = false;
   const finish = (key, r, aiKeys) => {
+    const id = r.data && r.data.identified;
+    if (id && (asText(id.brand).trim() || asText(id.product).trim())) {
+      identified = { brand: asText(id.brand).trim().slice(0, 80),
+                     product: asText(id.product).trim().slice(0, 160) };
+    }
     // The researcher reports what the product is made of; the status comes from
     // our table, not from its reading of our rules.
     const m = r.data && r.data.materials;
@@ -2227,11 +2237,14 @@ async function vetCore(env, brand, product, send, allowResearch, url = "") {
   // any device, gets it without paying for the same work twice, and the review
   // queue can lift it into the reviewed database.
   if (labelOk && !ruleFailed) {
+    const filedBrand = brand || (identified && identified.brand) || "";
+    const filedProduct = product || (identified && identified.product) || "";
     await env.BRAND_SEARCHES.put(cacheK, JSON.stringify({
-      brand, product, verdict, capNote, fronts, engine: VET_ENGINE, at: new Date().toISOString(),
+      brand: filedBrand, product: filedProduct, verdict, capNote, fronts,
+      identified, engine: VET_ENGINE, at: new Date().toISOString(),
     })).catch(() => {});
   }
-  return { fromDatabase: false, verdict, capNote, fronts,
+  return { fromDatabase: false, verdict, capNote, fronts, identified,
            chargeable: labelOk && !ruleFailed,
            researchFailed: (!labelOk && transportFailed) || ruleFailed,
            // Two failures, two honest sentences. Telling somebody we could not
@@ -2290,7 +2303,8 @@ async function handleInstantVet(request, env, corsOrigin) {
                : r.fromResearch
                  ? `Checked ${String(r.researchedAt || "").slice(0, 10)}, already researched for someone else. No credit used.`
                  : "Checked just now, sources on every line",
-             fronts: r.fronts, fromDatabase: r.fromDatabase, engine: VET_ENGINE });
+             fronts: r.fronts, fromDatabase: r.fromDatabase, engine: VET_ENGINE,
+             identified: r.identified || null });
     await s.writer.close();
   })().catch(async (e) => {
     try { s.send({ done: true, error: String(e).slice(0, 200) }); await s.writer.close(); } catch (_) {}
@@ -2480,7 +2494,7 @@ async function handleCustomerVet(request, env, corsOrigin) {
                  ? `Checked ${String(r.researchedAt || "").slice(0, 10)}, already researched for someone else. No credit used.`
                  : "Checked just now, sources on every line",
              fronts: r.fronts, fromDatabase: r.fromDatabase, engine: VET_ENGINE,
-             consumed, balance: rec.balance });
+             identified: r.identified || null, consumed, balance: rec.balance });
     await s.writer.close();
   })().catch(async (e) => {
     try { s.send({ done: true, error: String(e).slice(0, 200) }); await s.writer.close(); } catch (_) {}
