@@ -1727,6 +1727,7 @@ Packaging follows our matrix, by what the contents are, because what leaches fro
 - pass: inert materials (glass, stainless, aluminum container, paper, cotton, wood); dry contents in any plastic; a full ingredient list with none of the above.
 - none: you checked, and nothing of this kind exists or applies. A durable good has no ingredient list, so its "formula" is none (note: "Not applicable: a durable good has no formula; what it is made of is the materials front"). A product nobody has lab tested is testing none. This is a completed check, not a gap.
 - unassessed: ONLY when you could not complete the check.
+One blocked page is never a finished search. Amazon, Target and Walmart serve most robots a wall, and that says nothing about the product. When a listing will not open, search for the product BY NAME instead: the maker's own site first, then other retailers, then anywhere the material is documented. A maker's own page is better evidence than a listing anyway, because it is the maker's own words. Report "we could not open the page" only after you have searched for the name and found nothing, and then say what you searched.
 For a durable good or appliance, "materials" means the surfaces that actually touch the water, food, drink, skin or mouth (the reservoir, tubing, brew chamber, cooking surface, drink path, teat, mouthpiece, pump), never the retail box. A part that touches the person or the contents is a material of the product even when it is small: a bottle's silicone teat and a cleanser's plastic pump both count. Well documented facts about a product category (how a pod machine brews, what a nonstick coating is) are evidence you may use; name the category fact in the note.
 Respond with ONLY a JSON object, no prose.`;
 
@@ -1927,11 +1928,24 @@ function matrixStatus({ container, base, heated, use, filledBy, holds, material,
   return { status, why };
 }
 
-/** The product, named however the person gave it to us. */
+/**
+ * The product, named however the person gave it to us.
+ *
+ * A link is how to IDENTIFY the product, never where the research has to stop.
+ * The first version of this said "open it", so when Amazon refused, the whole
+ * check stopped: Modera's changing pad liners came back "Amazon product page
+ * access denied" after the researcher had already worked out the full product
+ * name, with moderababy.com sitting there unread.
+ */
 function vetSubject(brand, product, url) {
   const name = [brand, product].filter(Boolean).join(" ").trim();
-  if (url && name) return `${name} (this exact listing: ${url})`;
-  if (url) return `the product at this exact address: ${url}. Open it, and say in the note which brand and product it turned out to be`;
+  const useLink = " The link identifies which product this is. It is not the only place to"
+    + " look, and it is usually not the best one: research the product by name the way you"
+    + " would any other, starting with the maker's own site.";
+  if (url && name) return `${name}, the one sold at ${url}.${useLink}`;
+  if (url) return `the product sold at ${url}. First work out the brand and product name, from`
+    + ` the address itself, from a web search for it, or from the page if it opens, and say in`
+    + ` the note what it turned out to be.${useLink}`;
   return name;
 }
 
@@ -2014,7 +2028,7 @@ function vetVerdict(fronts) {
 // Bumped whenever a rule the research applies changes. A stored answer from an
 // older engine is not reused: Salt and Stone's materials front was cached as a
 // pass, from before section 3.1 was computed here rather than asked for.
-const VET_ENGINE = 8;
+const VET_ENGINE = 9;
 
 /** One key per product, so the same thing asked twice finds the first answer. */
 function researchKey(brand, product) {
