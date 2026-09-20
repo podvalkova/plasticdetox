@@ -1941,7 +1941,7 @@ export function unknown(root, { scan, brand, product, hasPass, balance, onCheck,
     if (why) head.appendChild(el("p", "verdict-reason", why));
 
   }
-  if (!named) {
+  if (!named && why === "scan") {
     head.appendChild(el("p", "verdict-reason",
       "The open barcode database did not answer, either because it does not have this "
       + "code or because it was briefly down. That is a gap in the lookup, not a verdict: "
@@ -1976,7 +1976,7 @@ export function unknown(root, { scan, brand, product, hasPass, balance, onCheck,
   searchInput.autocapitalize = "none";
   searchInput.oninput = () => onSearch(searchInput.value, results);
   box.appendChild(searchInput);
-  if (!named) { root.appendChild(box); root.appendChild(results); }
+  if (!named && why === "scan") { root.appendChild(box); root.appendChild(results); }
 
   // Already checked on this phone: the two offers below are for a product we
   // have not researched, and next to a finished check they read as if we had
@@ -2008,22 +2008,26 @@ export function unknown(root, { scan, brand, product, hasPass, balance, onCheck,
     //
     // It is also placed above the paid check now. Leading with the pack while a
     // free review exists sells something we give away.
+    // Brand and product, once, and owned by the screen rather than by one of
+    // the two offers below. One box invites a brand name on its own, and a
+    // brand is not a research request: "Native" could be any of a dozen sticks
+    // with different formulas.
+    let brandField = null, productField = null;
+    if (!named) {
+      // No heading on this one. The card above it already asks the question,
+      // and asking twice on one screen is what made this read as clutter.
+      const ask = el("div", "card");
+      brandField = field("For example Native", brand || "", "Brand");
+      productField = field("For example Coconut & Vanilla deodorant", product || "", "Product");
+      ask.appendChild(brandField.wrap);
+      ask.appendChild(productField.wrap);
+      root.appendChild(ask);
+    }
     const free = el("div", "card");
     free.appendChild(el("h2", null, "Ask us to check it, free"));
     free.appendChild(el("p", null, named
       ? `Leave your email and our team will research ${named} and email you the verdict, usually within 2 business days.`
-      : "Tell us what it is and our team will research it and email you the verdict, usually within 2 business days."));
-    // Brand and product as two fields, the same as the Check screen, and for the
-    // same reason its comment gives: one box invites a brand name on its own, and
-    // a brand is not a research request. "Native" could be any of a dozen sticks
-    // with different formulas. Both are required below.
-    let brandField = null, productField = null;
-    if (!named) {
-      brandField = field("For example Native", brand || "", "Brand");
-      productField = field("For example Coconut & Vanilla deodorant", product || "", "Product");
-      free.appendChild(brandField.wrap);
-      free.appendChild(productField.wrap);
-    }
+      : "Leave your email and our team will research it and email you the verdict, usually within 2 business days."));
     const emailInput = el("input");
     emailInput.type = "email";
     emailInput.placeholder = "you@email.com";
@@ -2059,7 +2063,9 @@ export function unknown(root, { scan, brand, product, hasPass, balance, onCheck,
             : "No checks left on this pass."));
       }
       const go = el("button", "cta", "Run the check");
-      go.onclick = () => onCheck(go, log);
+      go.onclick = () => onCheck(go, log,
+        brandField ? brandField.input.value.trim() : "",
+        productField ? productField.input.value.trim() : "");
       now.appendChild(go);
     } else {
       now.appendChild(el("p", "pkg-why",

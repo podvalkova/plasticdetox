@@ -2014,7 +2014,7 @@ function vetVerdict(fronts) {
 // Bumped whenever a rule the research applies changes. A stored answer from an
 // older engine is not reused: Salt and Stone's materials front was cached as a
 // pass, from before section 3.1 was computed here rather than asked for.
-const VET_ENGINE = 7;
+const VET_ENGINE = 8;
 
 /** One key per product, so the same thing asked twice finds the first answer. */
 function researchKey(brand, product) {
@@ -2114,18 +2114,36 @@ async function vetCore(env, brand, product, send, allowResearch, url = "") {
         m.status = ruled.status;
         m.note = `${ruled.why}. ${String(m.note || "").trim()}`.trim();
       } else if (!m.status) {
-        // Two different silences, and only one of them is the product's fault.
-        const said = asText(m.material) || asText(m.container);
+        // Three silences, and only one of them is ours.
+        const said = (asText(m.material) || asText(m.container)).trim();
+        // The researcher answering "not accessible" or "not stated" IS an
+        // answer: it looked and the information is not published. Wrapping our
+        // own error around it produced the worst line this app has shipped,
+        // "We could not read a material we score out of 'unassessed, full
+        // product specifications not accessible'".
+        const nonAnswer = !said || /^(un|not |no |n\/?a|none|cannot|could not|unable)/i.test(said)
+          || /not (stated|available|accessible|published|disclosed|specified)|access denied|unknown/i.test(said);
         m.status = "unassessed";
-        m.note = said
-          ? `We could not read a material we score out of "${said}". ${asText(m.note)}`.trim()
-          : ("Nobody publishes what this product is made of, so there is nothing to score. "
+        m.note = nonAnswer
+          ? ("Nobody publishes what this is made of. We searched and could not find a "
+             + "materials list, and the listing itself is not readable by us. "
              + "That is a gap in what the maker discloses, not a clean result. "
-             + asText(m.note)).trim();
-        // Only the first is ours. A maker who says nothing is the product's own
-        // answer, and the check still earned its credit.
-        if (said) ruleFailed = true;
+             + asText(m.note)).trim()
+          : `We could not read a material we score out of "${said}". ${asText(m.note)}`.trim();
+        // Only the last is our failure. A product nobody documents is the
+        // product's own answer, and the check still earned its credit.
+        if (!nonAnswer) ruleFailed = true;
       }
+    }
+    // A durable good has no ingredient list, and the materials answer already
+    // said so. Where the researcher returned materials and left formula out,
+    // that is not a failed check, it is the one answer formula can have here:
+    // the screen showed "Could not complete this check" beside a materials row
+    // that had just explained the product is an object.
+    if (m && /^(none|nothing|n\/?a|not applicable)\b/i.test(asText(m.holds).trim())
+        && r.data && !r.data.formula) {
+      r.data.formula = { status: "none", source: asText(m.source) || "",
+        note: "A durable good has no ingredient list. What it is made of is the materials check." };
     }
     // Formula leads with the finding, so "contains parfum" is the first thing
     // read rather than the fourth sentence of a paragraph.

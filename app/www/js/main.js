@@ -39,7 +39,7 @@ function readChecks() {
 // one: Modera's changing pads still read "could not complete" on a phone long
 // after the fault was fixed and the server's copy deleted. Raise this whenever
 // a worker rule change invalidates answers, and stale ones quietly disappear.
-const CHECK_ENGINE_MIN = 7;
+const CHECK_ENGINE_MIN = 8;
 
 function readCheck(brand, product) {
   if (!brand) return null;
@@ -447,7 +447,11 @@ function draw() {
         || readCheck(state.brand || state.query || "", typeof state.product === "string" ? state.product : ""),
       hasPass: !!check.getPass(),
       balance: checkBalance,
-      onCheck: (btn, log) => runInstantCheck(state, btn, log),
+      // The screen's own two fields, forwarded. This dropped them, so on a
+      // screen with a brand typed into it "Run the check" answered "Which
+      // brand?" from empty state.
+      onCheck: (btn, log, typedBrand, typedProduct) =>
+        runInstantCheck(state, btn, log, typedBrand, typedProduct),
       // The screen now supplies a name when we could not read one off the
       // barcode, because a request to research "0812154030013" is not a
       // request anybody can action. The code still travels with it so the
