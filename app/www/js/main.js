@@ -31,10 +31,23 @@ function readChecks() {
   try { return JSON.parse(localStorage.getItem(CHECKS_KEY) || "{}"); } catch { return {}; }
 }
 
+// The oldest set of rules whose answers we will still show.
+//
+// A check is saved on the phone that paid for it, and it used to be saved with
+// no idea which rules produced it. So when a rule was fixed, the person who had
+// paid for the answer it broke was the one person who kept seeing the broken
+// one: Modera's changing pads still read "could not complete" on a phone long
+// after the fault was fixed and the server's copy deleted. Raise this whenever
+// a worker rule change invalidates answers, and stale ones quietly disappear.
+const CHECK_ENGINE_MIN = 6;
+
 function readCheck(brand, product) {
   if (!brand) return null;
   const all = readChecks();
-  return all[checkKey(brand, product || "")] || null;
+  const hit = all[checkKey(brand, product || "")];
+  if (!hit) return null;
+  if ((hit.engine || 0) < CHECK_ENGINE_MIN) return null;
+  return hit;
 }
 
 function saveCheck(brand, product, event) {
@@ -379,8 +392,6 @@ function draw() {
       canScan,
       scanReason: scanner.unavailableReason(),
       recents: readRecents(),
-      starters: STARTERS,
-      categoryCount: categoryGroups().length,
       // A pass is a token with no account behind it, so this is the only place
       // someone who bought checks can see that they have them.
       checks: { hasPass: !!check.getPass(), balance: checkBalance },
@@ -388,27 +399,12 @@ function draw() {
       // Only offered on a real device: the extension cannot be enabled on a
       // simulator, and on the web there is no extension to enable.
       onScan: startScan,
-      onSearch: runSearch,
       onPick: openRecent,
       onLink: resolveLink,
-      draft: state.draft,
-      onCheck: runCheck,
-      // A row chosen from the brand's own list needs no matching at all: the
-      // person pointed at it. This is the path that used to depend on typing
-      // words our matchAll happened to agree with.
-      onProduct: (b, row) => row.checked
-        ? go({ screen: "unknown", brand: row.checked.brand, product: row.checked.product || "",
-               scan: null, checkResult: row.checked })
-        : go({
-        screen: "result",
-        match: { brand: b, via: "picked" },
-        scan: null,
-        product: row,
-        productNamed: true,
-        query: `${b.brand} ${row.name}`,
-      }),
-      onStarter: (s) => go({ screen: "category", category: s.category, label: s.label }),
-      onAllCategories: () => go({ screen: "categories" }),
+      // Nothing to type on this screen any more, so the fallback for a product
+      // with no link and no barcode is the screen that was always the honest
+      // answer for one: tell us what it is, free, or spend a check on it now.
+      onManual: () => go({ screen: "unknown", scan: null, brand: "", product: "" }),
     });
   } else if (state.screen === "result") {
     const v = screens.result(view, {
@@ -886,12 +882,14 @@ function runSearch(query, container, getDraft, onHit, limit = 20, suggest = fals
     if (q.length >= 2) {
       const seen = new Set(hits.map((h) => (h.brand.brand || "").toLowerCase()));
       for (const c of Object.values(readChecks())) {
+        if ((c.engine || 0) < CHECK_ENGINE_MIN) continue;
         const name = String(c.brand || "");
         if (!name || seen.has(name.toLowerCase())) continue;
         if (!`${name} ${c.product || ""}`.toLowerCase().includes(q)) continue;
         // Shaped like any other brand, with the products this phone has
         // checked under it, so the picker renders it without knowing.
         const mine = Object.values(readChecks())
+          .filter((x) => (x.engine || 0) >= CHECK_ENGINE_MIN)
           .filter((x) => String(x.brand || "").toLowerCase() === name.toLowerCase());
         hits.push({
           checked: c,
@@ -1012,7 +1010,11 @@ function resolveLink(raw) {
     const cut = product.replace(lead, "").trim();
     if (cut) product = cut.charAt(0).toUpperCase() + cut.slice(1);
   }
-  return { brand: brand || "", product, asin: p.asin || "" };
+  // Straight on, with nothing to confirm. Reading the address costs nothing and
+  // spends no check, so a wrong read shows up on the next screen, before anybody
+  // has paid for anything.
+  runCheck({ brand: brand || "", product });
+  return { navigated: true };
 }
 
 function openHit(hit, query) {

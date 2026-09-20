@@ -2228,7 +2228,7 @@ async function handleInstantVet(request, env, corsOrigin) {
                : r.fromResearch
                  ? `Checked ${String(r.researchedAt || "").slice(0, 10)}, already researched for someone else. No credit used.`
                  : "Checked just now, sources on every line",
-             fronts: r.fronts, fromDatabase: r.fromDatabase });
+             fronts: r.fronts, fromDatabase: r.fromDatabase, engine: VET_ENGINE });
     await s.writer.close();
   })().catch(async (e) => {
     try { s.send({ done: true, error: String(e).slice(0, 200) }); await s.writer.close(); } catch (_) {}
@@ -2416,7 +2416,7 @@ async function handleCustomerVet(request, env, corsOrigin) {
                : r.fromResearch
                  ? `Checked ${String(r.researchedAt || "").slice(0, 10)}, already researched for someone else. No credit used.`
                  : "Checked just now, sources on every line",
-             fronts: r.fronts, fromDatabase: r.fromDatabase,
+             fronts: r.fronts, fromDatabase: r.fromDatabase, engine: VET_ENGINE,
              consumed, balance: rec.balance });
     await s.writer.close();
   })().catch(async (e) => {

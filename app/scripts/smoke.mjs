@@ -121,35 +121,47 @@ const need = async (page, sel, what) => {
   if (!found) throw new Error(`missing ${what} (${sel})`);
 };
 
+// Two ways in and no third. The typed brand and product fields are gone: a
+// link and a barcode each name one exact product, and typing guessed at one.
+const pasteLink = async (p, url) => {
+  await p.evaluate((v) => {
+    const el = document.querySelector(".link-row input");
+    if (!el) throw new Error("no link field on the Check screen");
+    el.value = v;
+    el.dispatchEvent(new Event("input", { bubbles: true }));
+  }, url);
+  await tap(p, ".link-go");
+};
+
 await screen("home", async (p) => {
   await toCheck(p);
   await new Promise((r) => setTimeout(r, 500));
-  await need(p, ".check-form", "check form");
-  const fields = await p.$$(".field input");
-  if (fields.length !== 2) throw new Error(`expected 2 fields, got ${fields.length}`);
+  await need(p, ".link-card", "the link field");
+  await need(p, ".scan-card", "the scan card");
+  await need(p, ".row-quiet", "the no link or barcode way out");
+  const typed = await p.$$(".check-form .field input");
+  if (typed.length) throw new Error(`the typed form is back: ${typed.length} fields`);
+  const label = await p.$eval(".link-go", (n) => n.textContent.trim());
+  if (label !== "Check it") throw new Error(`the link button says "${label}"`);
   await need(p, ".chip", "recent chip");
   // Browse moved out of Check and became the Shop tab, so the way to
   // everything we recommend is the bar rather than a row on this screen.
   await need(p, ".tabs", "tab bar");
 });
 
-await screen("known product", async (p) => {
+await screen("a link to a product we hold", async (p) => {
   await toCheck(p);
   await new Promise((r) => setTimeout(r, 500));
-  await fill(p, ".field input", 0, "Brita");
-  await fill(p, ".field input", 1, "Elite");
-  await tap(p, ".check-form .cta");
+  await pasteLink(p, "https://www.brita.com/products/elite-filter");
   await new Promise((r) => setTimeout(r, 700));
   await need(p, ".verdict-brand", "verdict");
   await need(p, ".front", "front rows");
 });
 
-await screen("unknown product", async (p) => {
+await screen("a link to a product we do not hold", async (p) => {
   await toCheck(p);
   await new Promise((r) => setTimeout(r, 500));
-  await fill(p, ".field input", 0, "Kelloggs");
-  await fill(p, ".field input", 1, "Corn Flakes");
-  await tap(p, ".check-form .cta");
+  await pasteLink(p, "https://kelloggs.com/products/corn-flakes-original");
   await new Promise((r) => setTimeout(r, 700));
   await need(p, ".badge", "not reviewed badge");
   const ctas = await p.$$eval(".card .cta", (ns) => ns.map((n) => n.textContent.trim()));

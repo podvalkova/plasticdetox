@@ -14,9 +14,8 @@ const STATUS_GLYPH = { pass: "✓", caution: "!", fail: "✕", unknown: "?" };
 // ------------------------------------------------------------------- home
 
 export function home(root, {
-  onScan, onSearch, onPick, onStarter, onAllCategories,
-  onCheck, onProduct, onLink, recents, starters, canScan, scanReason,
-  categoryCount, draft, checks, onChecks,
+  onScan, onPick, onLink, onManual, recents, canScan, scanReason,
+  checks, onChecks,
 }) {
   const hero = el("div", "hero");
   hero.appendChild(el("h1", null, "Check it before you buy it"));
@@ -59,7 +58,7 @@ export function home(root, {
   linkInput.spellcheck = false;
   linkInput.inputMode = "url";
   linkRow.appendChild(linkInput);
-  const linkGo = el("button", "link-go", "Read it");
+  const linkGo = el("button", "link-go", "Check it");
   linkGo.type = "button";
   linkRow.appendChild(linkGo);
   linkCard.appendChild(linkRow);
@@ -67,27 +66,17 @@ export function home(root, {
   linkNote.hidden = true;
   linkCard.appendChild(linkNote);
 
+  // One tap, and nothing to confirm. Reading the address costs nothing and
+  // spends no check, so the next screen is where a wrong read shows up, before
+  // anybody has paid for anything.
   const readLink = () => {
     const value = linkInput.value.trim();
     if (!value) return;
     const res = onLink ? onLink(value) : null;
     if (!res || res.navigated) return;
-    if (res.error) {
-      linkNote.className = "link-note bad";
-      linkNote.textContent = res.error;
-      linkNote.hidden = false;
-      return;
-    }
-    brand.input.value = res.brand || "";
-    product.input.value = res.product || "";
-    product.wrap.hidden = false;
-    results.replaceChildren();
-    picker.replaceChildren();
-    linkNote.className = "link-note";
-    linkNote.textContent = "We read that as the product below. Change it if it is wrong.";
-    linkNote.hidden = false;
-    armCheck();
-    form.scrollIntoView({ block: "center", behavior: "smooth" });
+    linkNote.className = `link-note${res.error ? " bad" : ""}`;
+    linkNote.textContent = res.error || "";
+    linkNote.hidden = !res.error;
   };
   linkGo.onclick = readLink;
   linkInput.addEventListener("keydown", (e) => {
@@ -116,145 +105,26 @@ export function home(root, {
   scanCard.disabled = !canScan;
   root.appendChild(scanCard);
 
-  // Brand and product are separate fields, as they are on the site. A single
-  // box invited a brand name on its own, and a brand verdict is the least
-  // useful answer we hold: half our product verdicts disagree with it.
-  const form = el("form", "check-form");
-  form.setAttribute("novalidate", "");
-
-  const brand = field("For example Pampers", (draft && draft.brand) || "", "Brand");
-  const product = field("For example Sensitive Wipes", (draft && draft.product) || "", "Product");
-  form.appendChild(brand.wrap);
-
-  // Type ahead on the brand only. A brand we already hold should never need
-  // the second field filled in to be found.
+  // No third way in.
   //
-  // Tapping a suggestion used to jump straight to a verdict, which skipped the
-  // product field entirely: you could name the brand and never get asked what
-  // you were holding. A brand suggestion now fills the field and moves you on.
-  // A suggestion that names a product still goes, because at that point you
-  // have said which one.
+  // There used to be a brand field and a product field under all this, with
+  // type ahead, a picker and a suggestion list. Anya's call, and it is right:
+  // that is a lot of screen asking somebody to spell what they are holding,
+  // and spelling it is exactly where the check went wrong. A link names the
+  // product exactly and a barcode names it exactly. Typing guesses at it.
   //
-  // Five, not twenty. The list sits between the two fields, so a long one
-  // pushed the product field off the screen, which is the other half of why
-  // there appeared to be nowhere to type it.
-  const results = el("div", "results");
-  brand.input.oninput = () => onSearch(brand.input.value, results, () => ({
-    brand: brand.input.value, product: product.input.value,
-  }), (hit) => {
-    // A name out of the dictionary is a spelling, not a verdict. It fills the
-    // brand and hands straight to the product field, because the only way we
-    // can say anything about it is if somebody tells us what it is.
-    if (hit.suggest) {
-      brand.input.value = hit.suggest;
-      results.replaceChildren();
-      picker.replaceChildren();
-      product.wrap.hidden = false;
-      product.input.focus();
-      product.wrap.scrollIntoView({ block: "center", behavior: "smooth" });
-      armCheck();
-      return true;
-    }
-    // A brand this phone has checked behaves like any other brand: the name
-    // fills the field and its products are offered below. Filling both fields
-    // instead, or jumping straight to the answer, made this one brand work
-    // differently from every other one on the same screen.
-    if (hit.checked) {
-      brand.input.value = hit.checked.brand || "";
-      results.replaceChildren();
-      showProducts(hit.brand);
-      armCheck();
-      return true;
-    }
-    if (hit.product || hit.scan) return false;
-    brand.input.value = hit.brand.brand;
-    results.replaceChildren();
-    showProducts(hit.brand);
-    armCheck();
-    return true;
-  }, 5, true);
-  form.appendChild(results);
-
-  // Which one of theirs is it?
-  //
-  // Typing the product was a guessing game against our own match rules. A+D
-  // has one product, "Original diaper rash ointment", and typing "ointment"
-  // matched nothing, because a matchAll group needs every word in it. The
-  // person then got "no verdict" on a product we hold a full scorecard for.
-  //
-  // So stop asking them to guess. Once the brand is known, list what we have
-  // and let them point at it, with a way out for anything we do not list.
-  const picker = el("div", "picker");
-  form.appendChild(picker);
-
-  function showProducts(b) {
-    picker.replaceChildren();
-    const rows = knownProducts(b);
-    if (!rows.length) {
-      product.wrap.hidden = false;
-      product.input.focus();
-      product.wrap.scrollIntoView({ block: "center", behavior: "smooth" });
-      return;
-    }
-    product.wrap.hidden = true;
-    picker.appendChild(el("div", "section-title", `Which ${b.brand}?`));
-    for (const { row: pr, stance } of rows) {
-      const line = el("button", "row");
-      line.type = "button";
-      line.appendChild(el("span", `dot ${stance || "neutral"}`));
-      const body = el("div", "row-body");
-      body.appendChild(el("div", "row-name", pr.name));
-      const hint1 = scopeHint(pr);
-      // An unrated row says so rather than showing its category as if it were a
-      // finding. It is still worth opening: the screen behind it names which
-      // checks are outstanding and offers the free one.
-      const sub1 = pr.checked
-        ? `Checked ${new Date(pr.checked.at || Date.now()).toLocaleDateString()}`
-        : stance ? (hint1 || pr.cat) : "Checks in progress";
-      if (sub1) body.appendChild(el("div", "row-sub", sub1));
-      line.appendChild(body);
-      line.appendChild(el("span", "row-chev", "\u203a"));
-      line.onclick = () => onProduct(b, pr);
-      picker.appendChild(line);
-    }
-    const other = el("button", "row");
-    other.type = "button";
-    other.appendChild(el("span", "dot neutral"));
-    const ob = el("div", "row-body");
-    ob.appendChild(el("div", "row-name", "Something else"));
-    ob.appendChild(el("div", "row-sub", "Type the product name"));
-    other.appendChild(ob);
-    other.appendChild(el("span", "row-chev", "\u203a"));
-    other.onclick = () => {
-      picker.replaceChildren();
-      product.wrap.hidden = false;
-      product.input.focus();
-      product.wrap.scrollIntoView({ block: "center", behavior: "smooth" });
-    };
-    picker.appendChild(other);
-    picker.scrollIntoView({ block: "center", behavior: "smooth" });
-  }
-
-  form.appendChild(product.wrap);
-
-  const go = el("button", "cta outline", "Check it");
-  go.type = "submit";
-  form.appendChild(go);
-  // Both fields or nothing: the button is dead until it has a brand and a
-  // product, because a brand on its own answers a question nobody asked.
-  const armCheck = () => {
-    const ready = !!brand.input.value.trim() && !!product.input.value.trim();
-    go.disabled = !ready;
-    go.classList.toggle("off", !ready);
-  };
-  brand.input.addEventListener("input", armCheck);
-  product.input.addEventListener("input", armCheck);
-  armCheck();
-  form.onsubmit = (e) => {
-    e.preventDefault();
-    onCheck({ brand: brand.input.value.trim(), product: product.input.value.trim() });
-  };
-  root.appendChild(form);
+  // What is left for a thing with neither, something already in a cupboard or
+  // a gift, is the screen that was always the honest answer for it: tell us
+  // what it is and we research it, free, or spend a check on it now.
+  const manual = el("button", "row row-quiet");
+  manual.type = "button";
+  const mb = el("div", "row-body");
+  mb.appendChild(el("div", "row-name", "No link or barcode?"));
+  mb.appendChild(el("div", "row-sub", "Tell us what it is and we will check it"));
+  manual.appendChild(mb);
+  manual.appendChild(el("span", "row-chev", "\u203a"));
+  manual.onclick = () => onManual && onManual();
+  root.appendChild(manual);
 
 
   if (!canScan) root.appendChild(el("p", "scan-why", noCameraReason(scanReason)));
