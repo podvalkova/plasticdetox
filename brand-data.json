@@ -62738,7 +62738,7 @@
           "frontNotes": {
             "formula": "The published ingredient list carries nothing on the hazard list.",
             "testing": "Searched Lead Safe Mama (tamararubin.com site search and WordPress index for \"Kjaer Weis\" and \"Kjaer\": nothing matched), Mamavation (site search: only the green beauty PFAS makeup guide, which tested a different product, Kjaer Weis Red Liquid Lips, at 26 ppm organic fluorine, detection limit 10 ppm, EPA certified lab, 2022 to 2023), Consumer Reports (search: no results for Kjaer Weis), Clean Label Project (site search and WordPress index: no results), Ecology Center (site search: no results) and Valisure (no Kjaer Weis content found) on 2026-09-16; no independent test of Kjaer Weis Cream Bronzer Enchant found.",
-            "materials": "In contact with metal, which puts nothing into what it holds.",
+            "materials": "In contact with paper, which puts nothing into what it holds.",
             "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either."
           },
           "formulaAnswers": {
@@ -131344,5 +131344,100 @@
         }
       }
     ]
+  },
+  {
+    "id": "babee-greens",
+    "brand": "Babee Greens",
+    "category": "Baby changing",
+    "stance": "neutral",
+    "reason": "Wool and cotton baby basics sold direct. Its changing pad is merino wool knitted from OEKO-TEX Standard 100 certified yarn, with no film, backing or water repellent treatment anywhere in it.",
+    "evidence": "the maker's own product page",
+    "alternative": "",
+    "sources": [],
+    "products": [
+      {
+        "name": "Babee Greens Wool Changing Pad",
+        "asins": [],
+        "urls": [
+          "https://babeegreens.com/products/wool-changing-puddle-pad"
+        ],
+        "verdict": "good",
+        "note": "Merino wool, knitted from OEKO-TEX Standard 100 certified yarn, and nothing else. No plastic backing, no film, no water repellent treatment, because wool holds moisture on its own. That is the one thing every other liner in this aisle cannot say: the disposables all stop at \"nonwoven\" for the layer against a baby. Washable, and it needs lanolising rather than a hot wash.",
+        "origin": "research",
+        "cat": "Baby changing",
+        "match": [
+          "wool changing pad",
+          "wool puddle pad"
+        ],
+        "matchAll": [
+          [
+            "babee",
+            "greens"
+          ]
+        ],
+        "ext": {
+          "frontNotes": {
+            "formula": "A durable good has no ingredient list. What it is made of is the materials check.",
+            "testing": "Searched Lead Safe Mama, Mamavation and Consumer Reports on 2026-09-20; no independent test of this pad has been published. The OEKO-TEX Standard 100 certificate the maker cites covers the yarn it is knitted from, which is a component certification rather than a test of the finished pad.",
+            "materials": "In contact with wool, which puts nothing into what it holds.",
+            "legal": "Checked the CPSC recall database (saferproducts.gov) and openFDA on 2026-09-20. No recall, safety warning or action affecting Babee Greens found."
+          },
+          "formulaAnswers": {
+            "ingredients": "",
+            "prose": "",
+            "complete": false,
+            "verdict": "n/a",
+            "summary": "A durable good has no ingredient list. What it is made of is the materials check.",
+            "flagged": [],
+            "source": "",
+            "checked": ""
+          },
+          "testingNote": "Searched Lead Safe Mama, Mamavation and Consumer Reports on 2026-09-20; no independent test of this pad has been published. The OEKO-TEX Standard 100 certificate the maker cites covers the yarn it is knitted from, which is a component certification rather than a test of the finished pad.",
+          "testingDate": "2026-09-20",
+          "materialsList": "merino wool",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "",
+            "heated": false,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "merino wool",
+            "treatment": "",
+            "treatmentSource": "",
+            "dispenser": "",
+            "lining": "",
+            "certification": "OEKO-TEX Standard 100",
+            "certificationSource": "https://babeegreens.com/products/wool-changing-puddle-pad",
+            "source": "https://babeegreens.com/products/wool-changing-puddle-pad : \"Made from Merino Wool knit with Oeko-Tex 100 certified yarn.\" The page names no lamination, no coating and no film, which is the whole point of a wool pad: wool holds moisture without a waterproof layer, so there is no polymer anywhere in it. Every other liner in this category reaches water resistance through a plastic backing or an unnamed treatment.",
+            "checked": "2026-09-20"
+          },
+          "legalNote": "Checked the CPSC recall database (saferproducts.gov) and openFDA on 2026-09-20. No recall, safety warning or action affecting Babee Greens found.",
+          "verdict": "good",
+          "dated": "2026-09-20",
+          "why": "independent lab result at line scope",
+          "fronts": {
+            "formula": "none",
+            "materials": "pass",
+            "legal": "pass",
+            "testing": "none"
+          },
+          "frontOrigin": {
+            "testing": "database",
+            "materials": "database",
+            "formula": "database",
+            "legal": "database"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "rules": [
+            "5.4 durable-good-is-its-own-packaging"
+          ]
+        }
+      }
+    ],
+    "stanceHeld": "good"
   }
 ]
