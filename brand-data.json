@@ -131377,7 +131377,6 @@
         ],
         "ext": {
           "frontNotes": {
-            "formula": "A durable good has no ingredient list. What it is made of is the materials check.",
             "testing": "Searched Lead Safe Mama, Mamavation and Consumer Reports on 2026-09-20; no independent test of this pad has been published. The OEKO-TEX Standard 100 certificate the maker cites covers the yarn it is knitted from, which is a component certification rather than a test of the finished pad.",
             "materials": "In contact with wool, which puts nothing into what it holds.",
             "legal": "Checked the CPSC recall database (saferproducts.gov) and openFDA on 2026-09-20. No recall, safety warning or action affecting Babee Greens found."
@@ -131439,5 +131438,145 @@
       }
     ],
     "stanceHeld": "good"
+  },
+  {
+    "id": "biloban",
+    "brand": "Biloban",
+    "category": "Baby changing",
+    "stance": "careful",
+    "reason": "Nursery textiles sold on Amazon. Its changing pad liners name both layers and carry an OEKO-TEX certificate with its number, which almost nothing else in that aisle does, and its pack and play mattresses were recalled in 2024 for a suffocation hazard.",
+    "evidence": "the maker's own product page and the CPSC recall record",
+    "alternative": "",
+    "sources": [],
+    "products": [
+      {
+        "name": "Biloban Cotton Terry Changing Pad Liners",
+        "asins": [
+          "B07K2NMCKB",
+          "B07K2MD373"
+        ],
+        "verdict": "good",
+        "note": "Both layers named, which no disposable liner manages: cotton terry against the baby, TPU facing the changing pad, and an OEKO-TEX Standard 100 certificate printed with its number. Washable, so it replaces a stack of disposables. Worth knowing: this brand recalled 20,000 pack and play mattresses in 2024 for a suffocation hazard, a different product.",
+        "origin": "research",
+        "cat": "Baby changing",
+        "match": [
+          "cotton terry changing pad liners"
+        ],
+        "matchAll": [
+          [
+            "biloban",
+            "liners"
+          ],
+          [
+            "biloban",
+            "changing"
+          ]
+        ],
+        "ext": {
+          "frontNotes": {
+            "testing": "Searched Lead Safe Mama, Mamavation and Consumer Reports on 2026-09-20; no independent test of these liners has been published. The OEKO-TEX Standard 100 certificate the maker prints, SH025 136940, is a certification of the textile's chemical content rather than a test of this product.",
+            "materials": "In contact with cotton, which puts nothing into what it holds; noted and not counted: the TPU backing, which faces the changing pad, out of the path a person touches."
+          },
+          "formulaAnswers": {
+            "ingredients": "",
+            "prose": "",
+            "complete": false,
+            "verdict": "n/a",
+            "summary": "A durable good has no ingredient list. What it is made of is the materials check.",
+            "flagged": [],
+            "source": "",
+            "checked": ""
+          },
+          "testingNote": "Searched Lead Safe Mama, Mamavation and Consumer Reports on 2026-09-20; no independent test of these liners has been published. The OEKO-TEX Standard 100 certificate the maker prints, SH025 136940, is a certification of the textile's chemical content rather than a test of this product.",
+          "testingDate": "2026-09-20",
+          "materialsList": "cotton terry",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "",
+            "heated": false,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "cotton terry",
+            "treatment": "",
+            "treatmentSource": "",
+            "dispenser": "",
+            "lining": "",
+            "certification": "OEKO-TEX Standard 100",
+            "certificationSource": "https://www.biloban.com/products/biloban-waterproof-washable-changing-pad-liners-100-cotton-5-pack",
+            "source": "https://www.biloban.com/products/biloban-waterproof-washable-changing-pad-liners-100-cotton-5-pack : \"Made from cotton, gives a super soft touch to your child's skin\", \"Waterproof and non-toxic TPU backing\", \"STANDARD 100 by OEKO-TEX certified: SH025 136940 /TESTEX\". Both layers are named, which is the thing the disposable liners will not do: cotton terry against the baby, TPU facing the changing pad, so under rule 3.4 the TPU is noted and not counted.",
+            "checked": "2026-09-20",
+            "certificateNumber": "SH025 136940 /TESTEX",
+            "nonContact": "the TPU backing, which faces the changing pad"
+          },
+          "legalNote": "Checked. What is on record concerns other Biloban products, not this one: Checked the CPSC recall database on 2026-09-20. Biloban recalled about 20,000 Spring Spirit and Biloban Pack and Play Mattresses on 2024-02-22, sold exclusively on Amazon: they \"violate multiple provisions of the federal safety regulation for crib mattresses, including the thickness test, and are missing warnings and labels\", posing a suffocation hazard to infants. https://www.cpsc.gov/Recalls/2024/Spring-Spirit-and-Biloban-Pack-and-Play-Mattresses-Recalled-Due-to-Suffocation-Hazard-to-Infants-Violations-of-the-Federal-Safety-Regulation-for-Crib-Mattresses-Sold-Exclusively-on-Amazon-com-by-Biloban-Recall-Alert",
+          "verdict": "good",
+          "dated": "2026-09-20",
+          "why": "independent lab result at sku scope",
+          "fronts": {
+            "formula": "none",
+            "materials": "pass",
+            "legal": "pass",
+            "testing": "none"
+          },
+          "frontOrigin": {
+            "testing": "database",
+            "materials": "database",
+            "formula": "database",
+            "legal": "database"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": [
+            "5.4 durable-good-is-its-own-packaging"
+          ]
+        }
+      },
+      {
+        "name": "Biloban Pack and Play Mattress",
+        "asins": [],
+        "verdict": "skip",
+        "note": "Recalled. The CPSC announced it on 22 February 2024, about 20,000 units sold exclusively on Amazon: the mattresses violate several provisions of the federal crib mattress regulation, including the thickness test, and are missing warnings and labels, posing a suffocation hazard to infants.",
+        "origin": "research",
+        "cat": "Crib mattresses",
+        "match": [
+          "pack and play mattress"
+        ],
+        "matchAll": [
+          [
+            "biloban",
+            "mattress"
+          ]
+        ],
+        "ext": {
+          "frontNotes": {
+            "formula": "An object has no ingredient list. What it is made of is the materials check.",
+            "legal": "Checked the CPSC recall database on 2026-09-20. Biloban recalled about 20,000 Spring Spirit and Biloban Pack and Play Mattresses on 2024-02-22, sold exclusively on Amazon: they \"violate multiple provisions of the federal safety regulation for crib mattresses, including the thickness test, and are missing warnings and labels\", posing a suffocation hazard to infants. https://www.cpsc.gov/Recalls/2024/Spring-Spirit-and-Biloban-Pack-and-Play-Mattresses-Recalled-Due-to-Suffocation-Hazard-to-Infants-Violations-of-the-Federal-Safety-Regulation-for-Crib-Mattresses-Sold-Exclusively-on-Amazon-com-by-Biloban-Recall-Alert"
+          },
+          "legalNote": "Checked the CPSC recall database on 2026-09-20. Biloban recalled about 20,000 Spring Spirit and Biloban Pack and Play Mattresses on 2024-02-22, sold exclusively on Amazon: they \"violate multiple provisions of the federal safety regulation for crib mattresses, including the thickness test, and are missing warnings and labels\", posing a suffocation hazard to infants. https://www.cpsc.gov/Recalls/2024/Spring-Spirit-and-Biloban-Pack-and-Play-Mattresses-Recalled-Due-to-Suffocation-Hazard-to-Infants-Violations-of-the-Federal-Safety-Regulation-for-Crib-Mattresses-Sold-Exclusively-on-Amazon-com-by-Biloban-Recall-Alert",
+          "cappedFrom": "careful",
+          "capRestoreWhy": "section 6: legal is caution",
+          "verdict": "skip",
+          "dated": "2026-09-20",
+          "why": "section 6 ceiling: legal is fail",
+          "fronts": {
+            "formula": "none",
+            "materials": "unassessed",
+            "legal": "fail",
+            "testing": "unassessed"
+          },
+          "frontOrigin": {
+            "formula": "hand",
+            "legal": "database"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
+      }
+    ]
   }
 ]
