@@ -2106,7 +2106,15 @@ export function checkRow(step, front, label) {
   row.appendChild(el("span", `front-mark ${front.status === "none" ? "unknown" : front.status}`, glyph));
   const body = el("div", "row-body");
   body.appendChild(el("div", "front-name", label));
-  if (front.note) body.appendChild(el("div", "front-note", front.note));
+  // A front note runs as long as the research wants it to. One came back at
+  // forty lines of listing transcript, which is not a summary of anything. The
+  // first sentence or two is the answer; the rest is there for anybody who
+  // wants it.
+  if (front.note) {
+    const note = el("div", "front-note");
+    note.appendChild(clamped(front.note, 180));
+    body.appendChild(note);
+  }
   if (front.source) {
     const a = el("a", "front-source", "source");
     a.href = front.source;

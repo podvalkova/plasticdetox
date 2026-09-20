@@ -118,6 +118,7 @@ assert not (INERT & set(POLYMER)), sorted(INERT & set(POLYMER))
 # relief to anything ingested, and the `use` field has no word for it.
 INGESTED = {"food", "drink", "water", "water and coffee", "supplement"}
 
+
 VISCOSE_FIBRE = re.compile(r"\b(viscose|rayon|modal)\b|\btencel\b(?!.*\blyocell\b)", re.I)
 FINISHED_PRODUCT_CERT = re.compile(r"oeko.?tex\W*standard\W*100|made safe|\bgots\b|eu ecolabel", re.I)
 # Rule 3.12's list is its own, so widening it never moves 3.11 on a wrap or a wipe.
@@ -573,7 +574,8 @@ def assess(pack):
     # Rule 3.4 on an object: a part a person never meets is printed, not scored.
     off = str(pack.get("nonContact") or "").strip()
     if off and status is not None:
-        reason = f"{reason}; noted and not counted: {off}, out of the path a person touches"
+        reason = (f"{reason.rstrip('.')}; noted and not counted: {off}, "
+                  "out of the path a person touches")
     return status, reason
 
 

@@ -20288,8 +20288,10 @@
             "checked": "2026-09-16"
           },
           "legalNote": "Checked. What is on record concerns other Burt's Bees Baby products, not this one: Checked on 2026-09-10. A September 2020 Proposition 65 notice over lead in the diaper rash ointments proceeded to a complaint in April 2021 (SF Superior CGC-21-591375), outcome not shown; the ointment reported over 2,500 ppb lead in 2025 independent testing. A 2017 infant coverall recall (choking hazard) is resolved. No action names the baby shampoo and wash.",
+          "cappedFrom": "good",
+          "capRestoreWhy": "direct evidence at line scope on materials",
           "verdict": "good",
-          "dated": "2026-09-16",
+          "dated": "2026-09-20",
           "why": "direct evidence at line scope on materials",
           "fronts": {
             "formula": "none",
@@ -61534,6 +61536,8 @@
             "checked": "2026-09-16",
             "open": "The contact material is not recorded"
           },
+          "cappedFrom": "good",
+          "capRestoreWhy": "a vetted store pick, chosen by a person at product scope",
           "verdict": "unrated",
           "dated": "2026-08-29",
           "why": "a recommendation needs its checks done; still to do: materials",
@@ -62734,7 +62738,7 @@
           "frontNotes": {
             "formula": "The published ingredient list carries nothing on the hazard list.",
             "testing": "Searched Lead Safe Mama (tamararubin.com site search and WordPress index for \"Kjaer Weis\" and \"Kjaer\": nothing matched), Mamavation (site search: only the green beauty PFAS makeup guide, which tested a different product, Kjaer Weis Red Liquid Lips, at 26 ppm organic fluorine, detection limit 10 ppm, EPA certified lab, 2022 to 2023), Consumer Reports (search: no results for Kjaer Weis), Clean Label Project (site search and WordPress index: no results), Ecology Center (site search: no results) and Valisure (no Kjaer Weis content found) on 2026-09-16; no independent test of Kjaer Weis Cream Bronzer Enchant found.",
-            "materials": "In contact with paper, which puts nothing into what it holds.",
+            "materials": "In contact with metal, which puts nothing into what it holds.",
             "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either."
           },
           "formulaAnswers": {
@@ -131103,7 +131107,7 @@
         "ext": {
           "frontNotes": {
             "testing": "Searched Lead Safe Mama, Mamavation and Consumer Reports on 2026-09-20. No independent test of these liners has been published.",
-            "materials": "The top layer the maker does not name, and it touches the person using it.; noted and not counted: the waterproof backing, which faces the changing surface, out of the path a person touches."
+            "materials": "The top layer the maker does not name, and it touches the person using it; noted and not counted: the waterproof backing, which faces the changing surface, out of the path a person touches."
           },
           "formulaAnswers": {
             "ingredients": "",
@@ -131233,6 +131237,107 @@
             "legal": "database"
           },
           "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "peekapoo",
+    "brand": "Peekapoo",
+    "category": "Baby changing",
+    "stance": "careful",
+    "reason": "Disposable changing pad liners, fragrance free and free of dyes, with the polyethylene backing named and the layer against the baby given only as \"nonwoven\".",
+    "evidence": "the maker's own listing",
+    "alternative": "",
+    "sources": [],
+    "products": [
+      {
+        "name": "Peekapoo Disposable Changing Pad Liners",
+        "asins": [
+          "B07NV7RX7H",
+          "B0C21PYV7S",
+          "B0CPD7DQQQ",
+          "B0CPD6C2N9"
+        ],
+        "verdict": "careful",
+        "note": "Better documented than most: fragrance free, no dyes or inks, and the maker names the polyethylene backing and says it is BPA and PFAS free. The gap is the layer that actually touches a baby, which is given only as \"nonwoven\". That is how it was made, not what it is made of, and a nonwoven can be polypropylene, polyester, viscose or cotton. Name the fibre and this passes.",
+        "origin": "research",
+        "cat": "Baby changing",
+        "match": [
+          "disposable changing pad liners"
+        ],
+        "matchAll": [
+          [
+            "peekapoo",
+            "liners"
+          ],
+          [
+            "peekapoo",
+            "changing"
+          ],
+          [
+            "peekapoo",
+            "pads"
+          ]
+        ],
+        "ext": {
+          "frontNotes": {
+            "testing": "Searched Lead Safe Mama, Mamavation and Consumer Reports on 2026-09-20. No independent test of these liners has been published. The CPSIA lead and phthalate testing the maker cites is the legal minimum every children's product sold here has to meet, so it is a floor rather than a distinction.",
+            "materials": "The top layer the maker does not name, and it touches the person using it; noted and not counted: the absorbent core and the polyethylene backing, which face away from the baby, out of the path a person touches.",
+            "legal": "Checked the CPSC recall database and openFDA on 2026-09-20. No recall, safety warning or action affecting Peekapoo found."
+          },
+          "formulaAnswers": {
+            "ingredients": "",
+            "prose": "",
+            "complete": false,
+            "verdict": "n/a",
+            "summary": "A durable good has no ingredient list. What it is made of is the materials check.",
+            "flagged": [],
+            "source": "",
+            "checked": ""
+          },
+          "testingNote": "Searched Lead Safe Mama, Mamavation and Consumer Reports on 2026-09-20. No independent test of these liners has been published. The CPSIA lead and phthalate testing the maker cites is the legal minimum every children's product sold here has to meet, so it is a floor rather than a distinction.",
+          "testingDate": "2026-09-20",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "",
+            "heated": false,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "nonwoven top layer, fibre not named",
+            "treatment": "",
+            "treatmentSource": "",
+            "dispenser": "",
+            "lining": "",
+            "certification": "",
+            "certificationSource": "",
+            "source": "https://www.amazon.com/Disposable-Changing-Liners-Absorbent-Waterproof/dp/B07NV7RX7H : \"Each liner uses a 5-ply build: a quilted ultra soft nonwoven top layer that sits gently against skin from the newborn stage through toddler diaper changes, an ultra absorbent core that traps liquid quickly, and a PE waterproof backing that blocks leaks from reaching any surface below.\" The listing also says the liners are \"BPA & PFAS Free\", fragrance free and made without dyes or inks, and \"third-party tested to meet CPSIA lead and phthalate standards\". Nonwoven is how the top layer is built, not what it is made of: a nonwoven can be polypropylene, polyester, viscose or cotton, and those are four different answers. The polymer is named for the backing, which faces the changing table, and never for the layer against the baby. peekapookids.com did not resolve on 2026-09-20, and no other source names the fibre.",
+            "checked": "2026-09-20",
+            "nonContact": "the absorbent core and the polyethylene backing, which face away from the baby",
+            "undisclosedPart": "top layer"
+          },
+          "legalNote": "Checked the CPSC recall database and openFDA on 2026-09-20. No recall, safety warning or action affecting Peekapoo found.",
+          "verdict": "careful",
+          "dated": "2026-09-20",
+          "why": "section 6: formula failed",
+          "fronts": {
+            "formula": "none",
+            "materials": "caution",
+            "legal": "pass",
+            "testing": "none"
+          },
+          "frontOrigin": {
+            "testing": "database",
+            "materials": "database",
+            "formula": "database",
+            "legal": "database"
+          },
+          "scope": "sku",
           "basis": "direct",
           "disclose": false,
           "rules": []

@@ -1732,7 +1732,7 @@ For a durable good or appliance, "materials" means the surfaces that actually to
 Respond with ONLY a JSON object, no prose.`;
 
 const HAZARD_POLYMER = /\b(pvc|polyvinyl|polycarbonate|polystyrene|melamine|ptfe|teflon)\b/i;
-const INERT_CONTACT = /\b(glass|stainless|steel|aluminium|aluminum|tin|paper|paperboard|cardboard|cotton|linen|wood|bamboo|ceramic|porcelain|silicone)\b/i;
+const INERT_CONTACT = /\b(glass|borosilicate|stainless|steel|cast iron|titanium|tin|aluminium|aluminum foil|paper|paperboard|cardboard|cork|cotton|linen|hemp|jute|wool|silk|felt|leather|rubber|latex|beeswax|wood|bamboo|maple|ceramic|porcelain|enamel|silicone|lyocell|cellulose|loofah|coir)\b/i;
 const PET_LIKE = /\b(pet|pete|polyester|acrylic|nylon|polyamide)\b/i;
 
 /**
@@ -1780,7 +1780,7 @@ function worstMaterial(text) {
   }
   // A plastic nobody named is read as the worst common case, the way the
   // database reads it.
-  if (!rank && /\b(plastic|polymer|resin|foam)\b/i.test(text)) {
+  if (!rank && /\b(plastic|polymer|resin|foam)\b/i.test(text) && !INERT_CONTACT.test(text)) {
     rank = 1.5;
     name = (/\b(plastic|polymer|resin|foam)\b/i.exec(text) || [""])[0];
   }
@@ -1802,16 +1802,21 @@ function worstMaterial(text) {
  * So the object path asks what it is actually made of, and what makes that
  * matter: heat, and a thing a small child puts in their mouth.
  */
-function objectStatus({ material, heated, mouthed, nonContact, undisclosedPart }) {
+function objectStatus({ material, heated, mouthed, nonContact, undisclosedPart, note }) {
   const text = asText(material).trim();
   if (!text) return null;
   // A material we cannot place is not a safe one. "Proprietary bio-composite"
   // matched no rank, fell to zero, and passed, which is the unnamed-grip bug
   // wearing a different coat. The database has always returned unassessed here.
+  //
+  // But this runs AFTER the unnamed-part check below, not before it. An unnamed
+  // contact part is the finding whether or not the rest of the list resolves,
+  // and putting this first swallowed it: "non-woven fibre top layer, fibre not
+  // named" placed nothing, returned null, and lost the very thing that was
+  // wrong with the product.
   const known = INERT_CONTACT.test(text) || HAZARD_POLYMER.test(text)
     || POLYMER_RANK.some(([re]) => re.test(text))
     || /\b(plastic|polymer|resin|foam|rubber|leather|wax|felt|cork)\b/i.test(text);
-  if (!known) return null;
   // Rule 3.7 on a part rather than a binder: a contact part the maker will not
   // name scores nothing, because there is no name to score, so the front would
   // pass on the parts they did bother to mention.
@@ -1819,7 +1824,30 @@ function objectStatus({ material, heated, mouthed, nonContact, undisclosedPart }
   // "Waterproof backing material type not identified by maker" once, which the
   // template below turned into "The Waterproof backing material type not
   // identified by maker the maker does not name".
-  const unnamed = asText(undisclosedPart).trim()
+  // A construction is not a material, but only where it describes the layer
+  // that touches somebody. The first cut of this fired on any unnamed part
+  // anywhere and took three products off our own shelf: Burt's Bees crib
+  // sheets, which are 100% organic cotton with only the elastic edge unnamed,
+  // and Manduka's mat, which is natural rubber with only its recycled content
+  // unnamed. In both, the surface against a person IS named.
+  //
+  // So look at the window around the contact layer itself. Peekapoo's reads
+  // "quilted ultra-soft nonwoven top layer": a construction, a contact layer,
+  // and no fibre in sight, while the polyethylene it does name is the backing
+  // that faces the table.
+  const FACE = /(top|face|surface|outer|inner)\s*(layer|sheet|side)|against (the )?skin|next to (the )?skin|sits against/i;
+  const BUILD = /\b(non-?woven|woven|quilted|fib(re|er)s?|foam|laminate|textile|jersey)\b/i;
+  const NAMED_FIBRE = /\b(cotton|linen|hemp|wool|silk|bamboo|viscose|rayon|modal|lyocell|tencel|polypropylene|polyethylene|polyester|nylon|polyamide|acrylic|rubber|latex|silicone|pla|pp|pe|pet)\b/i;
+  let impliedPart = "";
+  if (!asText(undisclosedPart).trim()) {
+    const m = FACE.exec(asText(material));
+    if (m) {
+      const at = m.index;
+      const window = asText(material).slice(Math.max(0, at - 60), at + 40);
+      if (BUILD.test(window) && !NAMED_FIBRE.test(window)) impliedPart = "layer against the skin";
+    }
+  }
+  const unnamed = (asText(undisclosedPart).trim() || impliedPart)
     .replace(/\s*[,(:].*$/, "")
     .replace(/\s+(type|material)?\s*(not|un)(\s|-)?(identified|specified|stated|named|disclosed|known)\b.*$/i, "")
     .replace(/^the\s+/i, "")
@@ -1833,9 +1861,12 @@ function objectStatus({ material, heated, mouthed, nonContact, undisclosedPart }
   const off = asText(nonContact).trim();
   const noted = off ? `; noted and not counted: ${off}, out of the path a person touches` : "";
   if (unnamed) {
+    // The rest, briefly. The whole material string here ran to forty words.
+    const rest = text.length > 70 ? "" : ` The rest is ${text.replace(/\.$/, "")}`;
     return { status: "caution",
-             why: `The ${unnamed} the maker does not name, and it touches the person using it. The rest is ${text}${noted}` };
+             why: `The ${unnamed} the maker does not name, and it touches the person using it.${rest}${noted}` };
   }
+  if (!known) return null;
   if (HAZARD_POLYMER.test(text)) {
     return { status: "fail", why: `${text} against the skin, and that is a plastic we never recommend${noted}` };
   }
@@ -1857,14 +1888,14 @@ function objectStatus({ material, heated, mouthed, nonContact, undisclosedPart }
 }
 
 function matrixStatus({ container, base, heated, use, filledBy, holds, material, mouthed,
-                        nonContact, undisclosedPart }) {
+                        nonContact, undisclosedPart, note }) {
   // Rule 3.1 governs what migrates out of a container INTO what it holds. Where
   // there is nothing inside, the object path answers instead.
   const nothingInside = /^(none|nothing|n\/?a|not applicable)\b/i.test(asText(holds).trim())
     || /\bno (container|contents)\b/i.test(asText(container));
   if (nothingInside) {
     return objectStatus({ material: asText(material) || asText(container), heated, mouthed,
-                          nonContact, undisclosedPart });
+                          nonContact, undisclosedPart, note });
   }
   container = asText(container).trim();
   base = asText(base).trim();
@@ -1964,7 +1995,7 @@ function vetSubject(brand, product, url) {
 
 async function vetLabel(env, brand, product, url = "") {
   const r = await vetClaude(env, VET_RULES,
-    `Product: ${vetSubject(brand, product, url)}. Find (1) "formula": the ingredient list, and nothing else. Quote it verbatim behind the word Ingredients where you can find it. A durable good has no ingredient list, so its formula is status "none". Give formula a "finding": one short sentence naming what is wrong, or what is clean, in plain words, such as "Contains parfum, an undisclosed fragrance blend". Give formula a "flagged": an array of the exact ingredient names that earned the status, empty when none. (2) "materials": report FACTS, not a judgement. "holds": what is inside the product, and the single word "none" when the product is not a container at all, which covers every durable good, toy, garment, mat, nappy and piece of furniture. "material": what the product ITSELF is made of, listing ONLY the surfaces a person's skin or mouth meets in normal use, and required whenever holds is "none". "nonContact": the parts a person never meets, such as the tyres of a balance bike, the base of a yoga mat or the foam sealed inside a mattress cover. Those are noted and never scored, so putting one in "material" marks a product down for a part nobody touches. "undisclosedPart": the NAME OF THE PART ONLY, two or three words, where a part in the CONTACT path is one the maker will not identify: "grips", "the waterproof backing", "the coating". Not a sentence and not an explanation, because we put it in one. Empty where every contact part is named. "mouthed": true when a small child puts it in their mouth in normal use. "container": what actually touches the contents, as specifically as the source allows (PET, HDPE, PP, unnamed plastic, glass, aluminium, steel, paper, cotton), and empty when holds is "none". "filledBy": "maker" when the product is sold with its contents inside, "buyer" when it is sold empty for the shopper to fill, which is every storage bag, box, jar, wrap and bottle. "base": one of dry, aqueous, surfactant, emulsion, anhydrous, acidic, by what the contents are, an oil or balm or stick being anhydrous. Where filledBy is "buyer" the base is the hardest use the MAKER markets, not the gentlest: dry only where the maker restricts it to dry goods, anhydrous where it is marketed for oils, fats or cooking in the bag, and otherwise emulsion, because food carries fat. "heated": true only when something hot goes in or on it in use, and where filledBy is "buyer" that means the maker markets heating it, microwaving, boiling or the oven. "use": leave-on, rinse-off, ingested or not-on-body. Anything eaten, drunk or held in the mouth is "ingested", never "not-on-body": not-on-body is for laundry powder and surface cleaner, which are diluted and washed away. Add a "note" of what you found and where. We apply our own packaging table to those facts, so do not reason about pass or fail for materials yourself. Every field carries a "source" URL. (3) "identified": {"brand":"<the maker>","product":"<the product name>"}, always, and above all where you were given only a link: you work the name out in order to research it, and we need it to file the answer under.`,
+    `Product: ${vetSubject(brand, product, url)}. Find (1) "formula": the ingredient list, and nothing else. Quote it verbatim behind the word Ingredients where you can find it. A durable good has no ingredient list, so its formula is status "none". Give formula a "finding": one short sentence naming what is wrong, or what is clean, in plain words, such as "Contains parfum, an undisclosed fragrance blend". Give formula a "flagged": an array of the exact ingredient names that earned the status, empty when none. (2) "materials": report FACTS, not a judgement. "holds": what is inside the product, and the single word "none" when the product is not a container at all, which covers every durable good, toy, garment, mat, nappy and piece of furniture. "material": what the product ITSELF is made of, listing ONLY the surfaces a person's skin or mouth meets in normal use, and required whenever holds is "none". "nonContact": the parts a person never meets, such as the tyres of a balance bike, the base of a yoga mat or the foam sealed inside a mattress cover. Those are noted and never scored, so putting one in "material" marks a product down for a part nobody touches. "undisclosedPart": the NAME OF THE PART ONLY, two or three words, where a part in the CONTACT path is one the maker will not identify: "grips", "the top layer", "the coating". Not a sentence and not an explanation, because we put it in one. Empty where every contact part is named. "Nonwoven", "woven", "quilted", "fibre", "foam", "laminate" and "textile" describe how a layer is BUILT, not what it is made of: a nonwoven can be polypropylene, polyester, viscose or cotton and those are four different answers. So a contact layer given only as "nonwoven" or "soft fibre" is an undisclosed part, however much is said about the OTHER layers. "mouthed": true when a small child puts it in their mouth in normal use. "container": what actually touches the contents, as specifically as the source allows (PET, HDPE, PP, unnamed plastic, glass, aluminium, steel, paper, cotton), and empty when holds is "none". "filledBy": "maker" when the product is sold with its contents inside, "buyer" when it is sold empty for the shopper to fill, which is every storage bag, box, jar, wrap and bottle. "base": one of dry, aqueous, surfactant, emulsion, anhydrous, acidic, by what the contents are, an oil or balm or stick being anhydrous. Where filledBy is "buyer" the base is the hardest use the MAKER markets, not the gentlest: dry only where the maker restricts it to dry goods, anhydrous where it is marketed for oils, fats or cooking in the bag, and otherwise emulsion, because food carries fat. "heated": true only when something hot goes in or on it in use, and where filledBy is "buyer" that means the maker markets heating it, microwaving, boiling or the oven. "use": leave-on, rinse-off, ingested or not-on-body. Anything eaten, drunk or held in the mouth is "ingested", never "not-on-body": not-on-body is for laundry powder and surface cleaner, which are diluted and washed away. Add a "note": AT MOST TWO SENTENCES, what you found and where, in plain words. It is read on a phone by somebody deciding what to buy, not by us, so it is not a transcript of the listing and not a record of your searching. We apply our own packaging table to those facts, so do not reason about pass or fail for materials yourself. Every field carries a "source" URL. (3) "identified": {"brand":"<the maker>","product":"<the product name>"}, always, and above all where you were given only a link: you work the name out in order to research it, and we need it to file the answer under.`,
     3);
   return r;
 }
@@ -2041,7 +2072,7 @@ function vetVerdict(fronts) {
 // Bumped whenever a rule the research applies changes. A stored answer from an
 // older engine is not reused: Salt and Stone's materials front was cached as a
 // pass, from before section 3.1 was computed here rather than asked for.
-const VET_ENGINE = 12;
+const VET_ENGINE = 13;
 
 /** One key per product, so the same thing asked twice finds the first answer. */
 function researchKey(brand, product) {
