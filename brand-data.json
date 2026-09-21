@@ -34322,7 +34322,9 @@
             "complete": true,
             "verdict": "careful",
             "summary": "No named hazard, but the flavor is listed only as bare \"Aroma/Flavor\" with no source or components named. A disclosure failure under rule 2.1: not evidence of harm, but the absence of evidence the maker controls, on a product an infant swallows daily.",
-            "flagged": ["aroma/flavor: undisclosed"],
+            "flagged": [
+              "aroma/flavor: undisclosed"
+            ],
             "source": "amazon:B08899DKSV Ingredients panel. Fluoride free, no SLS, no titanium dioxide, no artificial colour.",
             "checked": "2026-09-20"
           },
@@ -39518,13 +39520,14 @@
   {
     "id": "ecoroots",
     "brand": "EcoRoots",
-    "category": "Cleaning",
-    "stance": "neutral",
-    "reason": "Recommended solid dish soap bar with natural ingredients and zero waste packaging.",
-    "evidence": "Natural ingredients, zero waste packaging",
+    "category": "Multi-category",
+    "stance": "good",
+    "reason": "A zero waste personal care and cleaning brand spanning several categories, so a verdict on one product does not carry to another. The deodorant cream is a fully named, oil based formula in a glass jar. The dish soap bar carries no per product record yet.",
+    "evidence": "Verdicts here are per product",
     "alternative": "",
     "sources": [
-      "reduce-microplastics-in-cleaning-products.html"
+      "reduce-microplastics-in-cleaning-products.html",
+      "best-non-toxic-deodorants.html"
     ],
     "fronts": {
       "formula": {
@@ -39550,14 +39553,109 @@
     },
     "reviewed": true,
     "article": "reduce-microplastics-in-cleaning-products.html",
-    "generalises": true,
+    "generalises": false,
     "rollup": {
-      "products": 0,
-      "researched": 0,
+      "products": 1,
+      "researched": 1,
       "flagged": 0,
       "worst": null
     },
-    "stanceHeld": "good"
+    "stanceHeld": "good",
+    "products": [
+      {
+        "name": "EcoRoots Sensitive Deodorant Cream",
+        "asins": [
+          "B0BDMYF5C7"
+        ],
+        "verdict": "good",
+        "note": "Baking soda free deodorant cream in a glass jar with a metal lid. Coconut oil and arrowroot base with magnesium hydroxide, scented only with named basil and vetiver essential oils. Worth knowing: no antiperspirant function, apply with fingertips.",
+        "origin": "research",
+        "cat": "Deodorant",
+        "matchAll": [
+          [
+            "ecoroots",
+            "deodorant"
+          ],
+          [
+            "ecoroots",
+            "sensitive",
+            "deodorant"
+          ]
+        ],
+        "ext": {
+          "legalNote": "FDA enforcement database and a lawsuit, recall or class action search on 2026-09-21 found nothing on record for EcoRoots.",
+          "frontNotes": {
+            "formula": "The published ingredient list carries nothing on the hazard list.",
+            "materials": "In contact with glass, which puts nothing into what it holds.",
+            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
+            "testing": "No independent lab test of this product found as of September 2026 (searched Mamavation, Lead Safe Mama, Consumer Reports, Valisure)."
+          },
+          "testingNote": "No independent lab test of this product found as of September 2026 (searched Mamavation, Lead Safe Mama, Consumer Reports, Valisure).",
+          "testingDate": "2026-09-21",
+          "exposure": {
+            "type": "leave-on skin",
+            "level": "high",
+            "score": 8.0,
+            "baby": false,
+            "route": "skin",
+            "duration": "hours",
+            "retained": "leave-on",
+            "frequency": "several daily",
+            "heat": false,
+            "fat": true,
+            "why": "Left on the skin, so contact runs for hours."
+          },
+          "formulaAnswers": {
+            "ingredients": "Coconut Oil (Cocos nucifera), Arrowroot Powder (Maranta arundinacea), Magnesium Hydroxide, Beeswax (Cera alba), Essential Oil of Basil (Ocimum basilicum), Essential Oil of Vetiver (Chrysopogon zizanioides)",
+            "prose": "",
+            "complete": true,
+            "verdict": "good",
+            "summary": "The published ingredient list carries nothing on the hazard list.",
+            "flagged": [],
+            "source": "Amazon listing B0BDMYF5C7, matching ecoroots.us/products/sensitive-deodorant-cream",
+            "checked": "2026-09-21"
+          },
+          "materialsList": "glass",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "anhydrous",
+            "heated": false,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "glass",
+            "treatment": "",
+            "treatmentSource": "",
+            "dispenser": "",
+            "lining": "",
+            "certification": "",
+            "certificationSource": "",
+            "source": "ecoroots.us: 'Recyclable/Upcyclable Glass Jar with Metal Lid'",
+            "checked": "2026-09-21"
+          },
+          "verdict": "good",
+          "dated": "2026-09-21",
+          "why": "direct evidence on formula, recorded rather than read off a note",
+          "fronts": {
+            "formula": "pass",
+            "materials": "pass",
+            "legal": "pass",
+            "testing": "none"
+          },
+          "frontOrigin": {
+            "legal": "database",
+            "formula": "database",
+            "testing": "database",
+            "materials": "database"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
+      }
+    ]
   },
   {
     "id": "ecos",
