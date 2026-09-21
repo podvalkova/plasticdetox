@@ -1413,6 +1413,26 @@ function rememberCheck(brand, product, verdict) {
 // -------------------------------------------------------------- externals
 
 /**
+ * A same-site link opened from the app carries no referrer, so GA4 has no
+ * way to tell it apart from a person typing the URL in. Tagged as a
+ * referral from the app itself so it reads as its own source instead of
+ * diluting Direct.
+ */
+function tagAppReferral(url) {
+  try {
+    const u = new URL(url);
+    if (u.hostname !== "plasticdetox.org" && u.hostname !== "www.plasticdetox.org") return url;
+    if (!u.searchParams.has("utm_source")) {
+      u.searchParams.set("utm_source", "plasticdetox_ios_app");
+      u.searchParams.set("utm_medium", "referral");
+    }
+    return u.toString();
+  } catch {
+    return url;
+  }
+}
+
+/**
  * Links open in the system browser, not in the app.
  *
  * An in app webview of our own site would be signed out of everything and,
@@ -1426,6 +1446,7 @@ async function openExternal(url) {
     window.location.href = url;
     return;
   }
+  url = tagAppReferral(url);
   const cap = window.Capacitor;
   const browser = cap && cap.Plugins && cap.Plugins.Browser;
   if (browser) {
