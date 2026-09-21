@@ -1437,6 +1437,42 @@ export function result(root, { index, match, scan, product, query, productNamed,
     product, productNamed,
   });
 
+  // No brand page. Anya's rule, and the data agrees with it: nearly half our
+  // product verdicts disagree with their own brand, so a brand level answer
+  // asserts something about a bottle nobody has looked at. Where a link or a
+  // scan lands on a brand without naming which product, the screen is the
+  // question "which one do you have", not a verdict with a colour on it.
+  const pickable = !v.product && v.level === "brand" ? knownProducts(v.brand) : [];
+  const brandOnly = pickable.length > 0;
+  if (brandOnly) {
+    const ask = el("div", "verdict");
+    root.classList.add("tinted");
+    const h = el("div", "verdict-head");
+    h.appendChild(el("div", "verdict-brand", `Which ${v.brand.brand}?`));
+    h.appendChild(el("p", "verdict-reason",
+      "We rate these separately, because they do not all behave the same way. "
+      + "Open the one you have for its own verdict."));
+    ask.appendChild(h);
+    root.appendChild(ask);
+    const box = el("div", "card");
+    for (const { row, stance } of pickable) {
+      const line = el("button", "row");
+      line.type = "button";
+      line.appendChild(el("span", `dot ${stance || "neutral"}`));
+      const body = el("div", "row-body");
+      body.appendChild(el("div", "row-name", row.name));
+      const hint = scopeHint(row);
+      const label = stance ? (STANCE_LABEL[stance] || "Context") : "Checks in progress";
+      body.appendChild(el("div", "row-sub", hint ? `${label} \u00b7 ${hint}` : label));
+      line.appendChild(body);
+      line.appendChild(el("span", "row-chev", "\u203a"));
+      line.onclick = () => onProduct(row);
+      box.appendChild(line);
+    }
+    root.appendChild(box);
+    return v;
+  }
+
   const stanceClass = v.asserted && ["good", "careful", "skip"].includes(v.stance)
     ? ` v-${v.stance}` : "";
   const card = el("div", "verdict" + stanceClass);
@@ -1808,14 +1844,19 @@ export function result(root, { index, match, scan, product, query, productNamed,
   const asin = (v.product && (v.product.asins || [])[0])
     || ((v.brand.products || []).find((p) => (p.ext || {}).verdict === "good"
           && (p.asins || []).length) || {}).asins?.[0];
-  if (asin && v.stance === "good") {
+  // A product sold only on its maker's own site has no ASIN, and this asked for
+  // one before it would show a way to buy. So Babee Greens' wool changing pad,
+  // the one good answer in its whole aisle, sat on a card with nowhere to go.
+  // Rows carry `urls` for exactly this, and the store has read them for months.
+  const direct = !asin && v.product ? ((v.product.urls || [])[0] || "") : "";
+  if ((asin || direct) && v.stance === "good") {
     const buy = el("a", "cta", "View \u2192");
-    buy.href = buyLink(asin);
+    buy.href = direct || buyLink(asin);
     buy.onclick = (e) => { e.preventDefault(); onOpen(buy.href); };
     root.appendChild(buy);
   }
   if (v.article) {
-    const a = el("a", asin && v.stance === "good" ? "cta ghost" : "cta", "Read the research");
+    const a = el("a", (asin || direct) && v.stance === "good" ? "cta ghost" : "cta", "Read the research");
     a.href = `${SITE}/articles/${v.article}`;
     a.onclick = (e) => { e.preventDefault(); onArticle(v.article); };
     root.appendChild(a);
