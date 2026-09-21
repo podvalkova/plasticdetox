@@ -1079,7 +1079,7 @@ const ROOM_OF = {
   "Skincare": "Bathroom", "Dental floss": "Bathroom", "Makeup": "Bathroom",
   "Toothbrushes": "Bathroom", "Tampons": "Bathroom", "Menstrual cups": "Bathroom",
   "Reusable cloth pads": "Bathroom", "Period pads": "Bathroom", "Razors": "Bathroom",
-  "Conditioner": "Bathroom", "Prenatal vitamins": "Bathroom",
+  "Conditioner": "Bathroom", "Prenatal vitamins": "Bathroom", "Deodorants": "Bathroom",
   // Kids
   "Toys": "Kids", "Baby bottles": "Kids", "Baby sleep": "Kids",
   "Pacifiers": "Kids", "Cribs & nursery": "Kids", "Crib mattresses": "Kids",
