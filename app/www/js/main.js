@@ -12,7 +12,7 @@ import { el, toast } from "./ui.js";
 import { roomName } from "./detox-content.js";
 import * as notify from "./notify.js";
 import { verdictFor, suggestNames, collapse, parseProductLink } from "./match.js";
-import { track, setBundle, flush, setContext } from "./track.js";
+import { track, setBundle, flush, setContext, isFirstRun } from "./track.js";
 import * as kids from "./kids.js";
 import * as rate from "./rate.js";
 import * as share from "./share.js";
@@ -1659,7 +1659,7 @@ async function start() {
   // verdicts with it rather than waiting for the clock.
   currentBundle().then((info) => {
     setBundle((info && info.version) || "");
-    track("app_open", { notify_on: notify.isOn() });
+    track("app_open", { notify_on: notify.isOn(), first_run: isFirstRun() });
     return data.refresh({ build: (info && info.version) || "" });
   })
     .then((r) => {

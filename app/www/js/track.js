@@ -40,6 +40,32 @@ const SENDING = (function () {
   }
 })();
 
+/**
+ * Whether this launch is the first one after an install.
+ *
+ * Read once, at module load, and never again. It has to be: notify.js shares
+ * this exact storage key and mints the id inside autoStart(), which runs
+ * before the first app_open, so asking any later would report every install
+ * as a returning one.
+ *
+ * This exists because Apple's download figures are daily only and arrive a day
+ * behind, with no live option to request. An install that opens the app can say
+ * so within seconds instead. It is a pulse, not the books: it cannot see a
+ * download that never opens, and a reinstall or a cleared store reads as new,
+ * so Apple stays the source of truth. Over the first four days the two agreed
+ * exactly, at eight each.
+ */
+const FIRST_RUN = (function () {
+  try {
+    return !localStorage.getItem(WHO_KEY);
+  } catch {
+    return false;
+  }
+})();
+
+/** For the one event that should carry it. */
+export function isFirstRun() { return FIRST_RUN; }
+
 /** The same anonymous id the notification counters already use. */
 export function who() {
   try {
