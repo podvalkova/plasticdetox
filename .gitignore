@@ -35,3 +35,10 @@ tools/social/reddit-replies.html
 # the signing key, which stays in ~/.appstoreconnect/private_keys/).
 app/.env.local
 *.aab
+
+# Session handoff notes: account ids, credential file locations, unfixed bugs
+# and unresolved verdicts. Useful to us, not for a public repo.
+HANDOFF.md
+TODO.md
+tools/__pycache__/
+__pycache__/
