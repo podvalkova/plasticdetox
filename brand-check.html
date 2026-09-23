@@ -405,6 +405,14 @@
   .badge.pending{background:#f5f5f4;color:#78716c}
   .pending-note{color:#a8a29e;animation:pulse 1.4s ease-in-out infinite}
   @keyframes pulse{0%,100%{opacity:.45}50%{opacity:1}}
+
+  /* Category context, shown during the wait. Quieter than a finding, because
+     it is not one: it is true of everything of this kind. */
+  .cat-notes{margin-top:20px;padding:16px 18px;background:var(--accent-light,#ede9fe);border-radius:12px}
+  .cat-title{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-dark,#7c3aed);margin-bottom:10px}
+  .cat-note{margin:0 0 10px;font-size:14px;line-height:1.55;color:var(--ink,#1c1917)}
+  .cat-note:last-child{margin-bottom:0}
+  .cat-note a{color:var(--accent-dark,#7c3aed)}
 </style>
 </head>
 <body>
@@ -1177,6 +1185,42 @@
      * so this page and vet.html cannot drift apart about what a check is.
      */
 
+
+    /**
+     * What is true of the whole category, while the check runs.
+     *
+     * A check takes most of a minute and the reader spends it watching four
+     * rows say "searching". These are the facts that are true of every product
+     * of this kind, written by hand and sourced, so the wait teaches something
+     * instead of testing patience.
+     *
+     * They are deliberately kept out of the verdict. A fact true of every
+     * candle cannot separate two candles, and if it set a status the whole
+     * category would be capped at careful. Context here, evidence there.
+     */
+    let CATEGORY_NOTES = null;
+
+    async function showCategoryNotes(query) {
+      const box = $("catNotes");
+      if (!box) return;
+      box.hidden = true; box.innerHTML = "";
+      try {
+        if (!CATEGORY_NOTES) {
+          const r = await fetch("data/category-notes.json");
+          CATEGORY_NOTES = r.ok ? await r.json() : { categories: [] };
+        }
+        const hit = (CATEGORY_NOTES.categories || []).find(c => new RegExp(c.match, "i").test(query));
+        // No match means we say nothing, rather than guessing at a category.
+        if (!hit) return;
+        box.innerHTML = '<div class="cat-title">' + esc(hit.label) + "</div>"
+          + hit.notes.map(n => '<p class="cat-note">' + esc(n.text)
+              + (n.source ? ' <a href="' + esc(n.source) + '" target="_blank" rel="noopener">source</a>' : "")
+              + "</p>").join("");
+        box.hidden = false;
+        gtag('event', 'category_notes_shown', { category: hit.id });
+      } catch (e) { /* never let the reading material break the check */ }
+    }
+
     async function runCheckHere(brand) {
       const btn = $("runCheckBtn"), logEl = $("checkLog");
       if (!btn || !logEl) return;
@@ -1187,11 +1231,13 @@
       // check runs to a minute and a half and a blank card for that long reads
       // as broken. The rows fill in as each answer lands, so the wait is
       // visibly four things happening rather than one thing hanging.
-      const ORDER = ["formula", "materials", "legal", "testing"];
+        const ORDER = ["formula", "materials", "legal", "testing"];
       logEl.innerHTML = ORDER.map(k =>
         '<div class="check-row" id="row-' + k + '">'
         + '<span class="badge pending">checking</span> <strong>' + esc(VetRun.STEP[k]) + '</strong>'
-        + '<br><small class="pending-note">searching\u2026</small></div>').join("");
+        + '<br><small class="pending-note">searching\u2026</small></div>').join("")
+        + '<div class="cat-notes" id="catNotes" hidden></div>';
+      showCategoryNotes(brand);
 
       const t0 = Date.now();
       const tick = setInterval(() => {

@@ -1905,6 +1905,8 @@ async function vetClaude(env, system, userText, maxUses, budgetMs = VET_TIMEOUT_
   if (!env.ANTHROPIC_API_KEY) return { unconfigured: true };
   let messages = [{ role: "user", content: userText }];
   const spend = { in: 0, out: 0, cacheRead: 0, searches: 0, turns: 0, reads: 0 };
+  const startedAt = Date.now();
+  let attempts = 0;
   // Turns had to go up: reading a page costs a round trip that searching alone
   // did not, and three was already tight for search plus fetch.
   let reads = 0;
@@ -1949,7 +1951,19 @@ async function vetClaude(env, system, userText, maxUses, budgetMs = VET_TIMEOUT_
     });
     if (!res.ok) {
       const body = await res.text().catch(() => "");
-      return { error: `API ${res.status}: ${body.slice(0, 160)}` };
+      // A 520 from the API edge killed the formula and materials fronts of a
+      // live check while the other two succeeded beside them. Nothing retried,
+      // so one gateway hiccup lost half an answer and told the customer we
+      // could not reach our research service. Gateway and rate limit failures
+      // are transient by definition and get another go, inside the budget.
+      const transient = res.status === 429 || res.status >= 500;
+      if (transient && attempts < 2 && Date.now() - startedAt < budgetMs - 20000) {
+        attempts++;
+        await new Promise((r) => setTimeout(r, 1200 * attempts));
+        turn--;                                   // the retry is not a turn
+        continue;
+      }
+      return { error: `API ${res.status}: ${body.slice(0, 160)}`, spend };
     }
     const msg = await res.json();
     // Every turn's tokens, summed across the whole check, because until now
