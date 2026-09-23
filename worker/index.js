@@ -106,6 +106,12 @@ export default {
     }
 
     // ===== Check pass balance, read by vet.html on load =====
+    if (path === "/vet-login" && request.method === "POST") {
+      return handleVetLogin(request, env, corsOrigin);
+    }
+    if (path === "/vet-verify" && request.method === "POST") {
+      return handleVetVerify(request, env, corsOrigin);
+    }
     if (path === "/vet-restore" && request.method === "POST") {
       return handleVetRestore(request, env, corsOrigin);
     }
@@ -2871,6 +2877,122 @@ async function indexPassEmail(env, email, token) {
   } catch (e) { /* the index is a convenience; never fail a purchase over it */ }
 }
 
+
+/**
+ * Every pass an address owns, folded onto one. Newest survives; the rest keep
+ * their records and redirect, because their links are in people's inboxes.
+ */
+async function mergePassesForEmail(env, clean, tokens) {
+  const live = [];
+  for (const tk of tokens || []) {
+    const hit = await readPass(env, tk);
+    if (hit && !live.some((l) => l.token === hit.token)) live.push(hit);
+  }
+  if (!live.length) return null;
+  live.sort((a, b) => String(b.rec.created || "").localeCompare(String(a.rec.created || "")));
+  const keep = live[0];
+  for (const other of live.slice(1)) {
+    keep.rec.balance = (keep.rec.balance || 0) + (other.rec.balance || 0);
+    keep.rec.purchased = (keep.rec.purchased || 0) + (other.rec.purchased || 0);
+    keep.rec.used = (keep.rec.used || 0) + (other.rec.used || 0);
+    keep.rec.history = [...(other.rec.history || []), ...(keep.rec.history || [])].slice(-50);
+    await env.BRAND_SEARCHES.put("vetpass:" + other.token,
+      JSON.stringify({ ...other.rec, balance: 0, mergedInto: keep.token,
+                       mergedAt: new Date().toISOString() }));
+  }
+  await env.BRAND_SEARCHES.put("vetpass:" + keep.token, JSON.stringify(keep.rec));
+  await env.BRAND_SEARCHES.put(emailKey(clean), JSON.stringify([keep.token]));
+  return keep;
+}
+
+/** Passes an address owns, including ones bought before the index existed. */
+async function tokensForEmail(env, clean) {
+  let tokens = (await env.BRAND_SEARCHES.get(emailKey(clean), { type: "json" })) || [];
+  if (tokens.length) return tokens;
+  const listed = await env.BRAND_SEARCHES.list({ prefix: "vetpass:" });
+  for (const k of listed.keys) {
+    const rec = await env.BRAND_SEARCHES.get(k.name, { type: "json" }).catch(() => null);
+    if (rec && !rec.mergedInto && String(rec.email || "").toLowerCase() === clean) {
+      tokens.push(k.name.slice("vetpass:".length));
+    }
+  }
+  return tokens;
+}
+
+/**
+ * Signing in with a six digit code.
+ *
+ * A magic link cannot cross into the app without deep linking, which is the
+ * handover that has never worked, so the link model could never make the app
+ * and the website one thing. A code can be typed anywhere. Nothing to keep,
+ * nothing to forward, and the same six digits work in both.
+ *
+ * POST /vet-login { email } -> always the same answer, so this cannot be used
+ * to discover who has bought something.
+ */
+async function handleVetLogin(request, env, corsOrigin) {
+  const said = { ok: true, message: "If that address has a pass, the code is on its way." };
+  try {
+    const { email } = await request.json();
+    const clean = String(email || "").trim().toLowerCase();
+    if (!clean || !clean.includes("@")) {
+      return json({ ok: false, error: "Enter the email you paid with." }, 400, corsOrigin);
+    }
+    const tokens = await tokensForEmail(env, clean);
+    if (!tokens.length) return json(said, 200, corsOrigin);
+
+    const code = String(crypto.getRandomValues(new Uint32Array(1))[0] % 1000000).padStart(6, "0");
+    await env.BRAND_SEARCHES.put("vetcode:" + clean,
+      JSON.stringify({ code, tries: 0, at: Date.now() }), { expirationTtl: 900 });
+
+    await fetch("https://api.brevo.com/v3/smtp/email", {
+      method: "POST",
+      headers: { "api-key": env.BREVO_API_KEY, "Content-Type": "application/json" },
+      body: JSON.stringify({
+        sender: { name: env.SENDER_NAME, email: env.SENDER_EMAIL },
+        to: [{ email: clean }],
+        subject: `${code} is your Plastic Detox code`,
+        htmlContent: emailShell("Your code",
+          emailP(`Your sign in code is <b style="font-size:22px;letter-spacing:3px">${code}</b>`) +
+          emailP("It lasts fifteen minutes and works in the app and on the website.") +
+          emailP("If you did not ask for it, you can ignore this.")),
+      }),
+    }).catch(() => {});
+    return json(said, 200, corsOrigin);
+  } catch (e) { return json(said, 200, corsOrigin); }
+}
+
+/** POST /vet-verify { email, code } -> the merged pass, on success. */
+async function handleVetVerify(request, env, corsOrigin) {
+  try {
+    const { email, code } = await request.json();
+    const clean = String(email || "").trim().toLowerCase();
+    const given = String(code || "").replace(/\D/g, "");
+    const bad = { ok: false, error: "That code is wrong or has expired." };
+    if (!clean || given.length !== 6) return json(bad, 400, corsOrigin);
+
+    const k = "vetcode:" + clean;
+    const rec = await env.BRAND_SEARCHES.get(k, { type: "json" });
+    if (!rec) return json(bad, 400, corsOrigin);
+    // Six digits is a million combinations; five guesses makes it unguessable
+    // inside the fifteen minutes the code lives.
+    if ((rec.tries || 0) >= 5) { await env.BRAND_SEARCHES.delete(k); return json(bad, 400, corsOrigin); }
+    if (rec.code !== given) {
+      await env.BRAND_SEARCHES.put(k, JSON.stringify({ ...rec, tries: (rec.tries || 0) + 1 }),
+        { expirationTtl: 900 });
+      return json(bad, 400, corsOrigin);
+    }
+    await env.BRAND_SEARCHES.delete(k);
+
+    const keep = await mergePassesForEmail(env, clean, await tokensForEmail(env, clean));
+    if (!keep) return json(bad, 400, corsOrigin);
+    return json({ ok: true, pass: keep.token, balance: keep.rec.balance || 0, email: clean },
+      200, corsOrigin);
+  } catch (e) {
+    return json({ ok: false, error: "That code is wrong or has expired." }, 400, corsOrigin);
+  }
+}
+
 /**
  * POST /vet-restore { email } -> merges and emails the surviving pass.
  *
@@ -2886,39 +3008,10 @@ async function handleVetRestore(request, env, corsOrigin) {
       return json({ ok: false, error: "Enter the email you bought with." }, 400, corsOrigin);
     }
 
-    let tokens = (await env.BRAND_SEARCHES.get(emailKey(clean), { type: "json" })) || [];
-    if (!tokens.length) {
-      // Passes bought before the index existed. A handful of keys, one pass.
-      const listed = await env.BRAND_SEARCHES.list({ prefix: "vetpass:" });
-      for (const k of listed.keys) {
-        const rec = await env.BRAND_SEARCHES.get(k.name, { type: "json" }).catch(() => null);
-        if (rec && !rec.mergedInto && String(rec.email || "").toLowerCase() === clean) {
-          tokens.push(k.name.slice("vetpass:".length));
-        }
-      }
-    }
+    const tokens = await tokensForEmail(env, clean);
 
-    const live = [];
-    for (const tk of tokens) {
-      const hit = await readPass(env, tk);
-      if (hit && !live.some((l) => l.token === hit.token)) live.push(hit);
-    }
-    if (!live.length) return json(said, 200, corsOrigin);
-
-    // Newest survives, everything else folds into it and redirects.
-    live.sort((a, b) => String(b.rec.created || "").localeCompare(String(a.rec.created || "")));
-    const keep = live[0];
-    for (const other of live.slice(1)) {
-      keep.rec.balance = (keep.rec.balance || 0) + (other.rec.balance || 0);
-      keep.rec.purchased = (keep.rec.purchased || 0) + (other.rec.purchased || 0);
-      keep.rec.used = (keep.rec.used || 0) + (other.rec.used || 0);
-      keep.rec.history = [...(other.rec.history || []), ...(keep.rec.history || [])].slice(-50);
-      await env.BRAND_SEARCHES.put("vetpass:" + other.token,
-        JSON.stringify({ ...other.rec, balance: 0, mergedInto: keep.token,
-                         mergedAt: new Date().toISOString() }));
-    }
-    await env.BRAND_SEARCHES.put("vetpass:" + keep.token, JSON.stringify(keep.rec));
-    await env.BRAND_SEARCHES.put(emailKey(clean), JSON.stringify([keep.token]));
+    const keep = await mergePassesForEmail(env, clean, tokens);
+    if (!keep) return json(said, 200, corsOrigin);
     await sendPassEmail(env, clean, keep.token, keep.rec.balance);
     return json(said, 200, corsOrigin);
   } catch (e) {

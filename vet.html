@@ -195,17 +195,27 @@
     </div>
     <p class="trust">Checks never expire. A product already in our reviewed database never uses a check. Your pass activates right after payment, with a backup link sent to your email.</p>
     <p class="trust"><b>Every check helps everyone.</b> When you check a product, the verdict joins our public database after review, free for the next person who asks. You are not just buying answers, you are funding the open database.</p>
-    <!-- A pass was a bearer token in one browser's storage, so a new phone, a
-         cleared cache or switching between the app and the site lost it. The
-         email that bought it was on the record the whole time and nothing ever
-         looked it up. No account, just the address you paid with. -->
-    <div class="vetbox">
+    <!-- Signing in, rather than keeping a link.
+         A pass used to be a bearer token in one browser's storage: per device,
+         per origin, lost when storage cleared, and invisible to the app. A
+         magic link could never fix that, because a link cannot cross into the
+         app without deep linking. Six digits can be typed anywhere, so the same
+         code works in the app and here, and the balance follows the person. -->
+    <div class="vetbox" id="signinBox">
       <b>Already bought a pass?</b>
-      <p class="note" style="margin:.3rem 0 .6rem">Enter the email you paid with and we will send your pass link. If you have more than one, they are merged into a single pass and the checks are added together.</p>
-      <input id="restoreEmail" type="email" placeholder="you@email.com">
-      <button class="go" id="restoreBtn" onclick="restorePass()">Send me my pass</button>
-      <p class="note" id="restoreNote"></p>
+      <p class="note" style="margin:.3rem 0 .6rem">Sign in with the email you paid with. No password. If you have more than one pass, they are merged and the checks added together.</p>
+      <div id="signinStep1">
+        <input id="siEmail" type="email" placeholder="you@email.com" autocomplete="email">
+        <button class="go" id="siSend" onclick="sendCode()">Send me a code</button>
+      </div>
+      <div id="signinStep2" style="display:none">
+        <input id="siCode" inputmode="numeric" maxlength="6" placeholder="6 digit code" autocomplete="one-time-code">
+        <button class="go" id="siVerify" onclick="verifyCode()">Sign in</button>
+        <button class="go" style="background:transparent;color:inherit;border:1px solid #d6d3d1" onclick="backToEmail()">Use a different email</button>
+      </div>
+      <p class="note" id="siNote"></p>
     </div>
+
     <div class="vetbox">
       <b>Or request a free review</b>
       <p class="note" style="margin:.3rem 0 .6rem">Our team researches requested products by hand and emails you the verdict, usually within 2 business days.</p>
@@ -393,6 +403,55 @@ function paintBalance(n){
 
 // Getting a pass back from the email that bought it. The worker answers the
 // same either way, so this never reveals whether an address has one.
+
+// Signing in with a code. The pass token is still what the device holds, but
+// it now arrives by proving you own the address that paid, rather than by
+// keeping a link, and the same six digits work in the app.
+var SI_EMAIL = "";
+
+function backToEmail(){
+  document.getElementById("signinStep1").style.display="";
+  document.getElementById("signinStep2").style.display="none";
+  document.getElementById("siNote").textContent="";
+}
+
+async function sendCode(){
+  var email=(document.getElementById("siEmail").value||"").trim();
+  var note=document.getElementById("siNote"), btn=document.getElementById("siSend");
+  if(!email||email.indexOf("@")<0){note.textContent="Enter the email you paid with.";return;}
+  btn.disabled=true; note.textContent="Sending\u2026";
+  try{
+    var r=await fetch(WORKER+"/vet-login",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({email:email})});
+    var d=await r.json();
+    SI_EMAIL=email;
+    note.textContent=d.message||"If that address has a pass, the code is on its way.";
+    document.getElementById("signinStep1").style.display="none";
+    document.getElementById("signinStep2").style.display="";
+    document.getElementById("siCode").focus();
+  }catch(e){ note.textContent="Could not reach us just now. Please try again in a moment."; }
+  btn.disabled=false;
+}
+
+async function verifyCode(){
+  var code=(document.getElementById("siCode").value||"").trim();
+  var note=document.getElementById("siNote"), btn=document.getElementById("siVerify");
+  if(code.length!==6){note.textContent="The code is six digits.";return;}
+  btn.disabled=true; note.textContent="Checking\u2026";
+  try{
+    var r=await fetch(WORKER+"/vet-verify",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({email:SI_EMAIL,code:code})});
+    var d=await r.json();
+    if(!d.ok){ note.textContent=d.error||"That code is wrong or has expired."; btn.disabled=false; return; }
+    PASS=d.pass;
+    try{ localStorage.setItem("pdVetPass",PASS); localStorage.setItem("pdVetEmail",d.email||SI_EMAIL); }catch(e){}
+    document.getElementById("signinBox").innerHTML =
+      "<b>Signed in as "+(d.email||SI_EMAIL)+"</b>"
+      + "<p class=\"note\" style=\"margin:.3rem 0 0\">"+d.balance+" check"+(d.balance===1?"":"s")+" on your pass. It will be here on any device you sign in from.</p>";
+    paintBalance(d.balance);
+    document.getElementById("buy").style.display="none";
+  }catch(e){ note.textContent="Could not reach us just now. Please try again in a moment."; }
+  btn.disabled=false;
+}
+
 async function restorePass(){
   const email=(document.getElementById("restoreEmail").value||"").trim();
   const note=document.getElementById("restoreNote");
