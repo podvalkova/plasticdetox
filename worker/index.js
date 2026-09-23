@@ -1743,7 +1743,7 @@ async function vetLegal(brand) {
  * are checked before anything is fetched.
  */
 const PAGE_UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36";
-const PAGE_MAX_CHARS = 18000;
+const PAGE_MAX_CHARS = 8000;
 const PAGE_TIMEOUT_MS = 10000;
 const PAGE_MAX_READS = 4;
 
@@ -1862,9 +1862,15 @@ async function vetClaude(env, system, userText, maxUses) {
         "x-api-key": env.ANTHROPIC_API_KEY,
         "anthropic-version": "2023-06-01",
         "content-type": "application/json",
+        // Context editing. Without it a search result read on turn one is sent
+        // again on every turn after it, so a six turn check pays for the same
+        // page five times and the bill grows with the square of the work. This
+        // clears tool results the researcher has already read from.
+        "anthropic-beta": "context-management-2025-06-27",
       },
       body: JSON.stringify({
         model: VET_MODEL,
+        context_management: { edits: [{ type: "clear_tool_uses_20250919" }] },
         // The answer is a JSON object carrying a verbatim ingredient list and
         // fourteen materials fields. At 1200 it was truncated mid-object, and a
         // truncated object fails JSON.parse, which the caller reported as
@@ -1872,7 +1878,9 @@ async function vetClaude(env, system, userText, maxUses) {
         // answered. It was never a research failure at all.
         max_tokens: 8000,
         output_config: { effort: "medium" },
-        system,
+        // The rules are identical on every turn of every check, so they are
+        // cached rather than re-sent. Roughly two thousand words each time.
+        system: [{ type: "text", text: system, cache_control: { type: "ephemeral" } }],
         tools: [
           { type: "web_search_20260209", name: "web_search", max_uses: maxUses },
           // Search alone finds that a page exists; fetch lets the researcher
@@ -2228,14 +2236,14 @@ function vetSubject(brand, product, url) {
 async function vetLabel(env, brand, product, url = "") {
   const r = await vetClaude(env, VET_RULES,
     `Product: ${vetSubject(brand, product, url)}. Find (1) "formula": the ingredient list, and nothing else. Quote it verbatim behind the word Ingredients where you can find it. Formula is status "none" ONLY when nobody states what the product is made of, which is true of a chair or a knife and almost nothing else. If a composition is published anywhere, that is the formula, whatever kind of product it is. Search for it before concluding there is none. Where the product is burned, vaporised or sprayed, the formula is the front that decides the answer. Give formula a "finding": one short sentence naming what is wrong, or what is clean, in plain words, such as "Contains parfum, an undisclosed fragrance blend". Give formula a "flagged": an array of the exact ingredient names that earned the status, empty when none. (2) "materials": report FACTS, not a judgement. "holds": what is inside the product, and the single word "none" when the product is not a container at all, which covers every durable good, toy, garment, mat, nappy and piece of furniture. "material": what the product ITSELF is made of, listing ONLY the surfaces a person's skin or mouth meets in normal use, and required whenever holds is "none". "nonContact": the parts a person never meets, such as the tyres of a balance bike, the base of a yoga mat or the foam sealed inside a mattress cover. Those are noted and never scored, so putting one in "material" marks a product down for a part nobody touches. "undisclosedPart": the NAME OF THE PART ONLY, two or three words, where a part in the CONTACT path is one the maker will not identify: "grips", "the top layer", "the coating". Not a sentence and not an explanation, because we put it in one. Empty where every contact part is named. "Nonwoven", "woven", "quilted", "fibre", "foam", "laminate" and "textile" describe how a layer is BUILT, not what it is made of: a nonwoven can be polypropylene, polyester, viscose or cotton and those are four different answers. So a contact layer given only as "nonwoven" or "soft fibre" is an undisclosed part, however much is said about the OTHER layers. "mouthed": true when a small child puts it in their mouth in normal use. "container": what actually touches the contents, as specifically as the source allows (PET, HDPE, PP, unnamed plastic, glass, aluminium, steel, paper, cotton), and empty when holds is "none". "filledBy": "maker" when the product is sold with its contents inside, "buyer" when it is sold empty for the shopper to fill, which is every storage bag, box, jar, wrap and bottle. "base": one of dry, aqueous, surfactant, emulsion, anhydrous, acidic, by what the contents are, an oil or balm or stick being anhydrous. Where filledBy is "buyer" the base is the hardest use the MAKER markets, not the gentlest: dry only where the maker restricts it to dry goods, anhydrous where it is marketed for oils, fats or cooking in the bag, and otherwise emulsion, because food carries fat. "heated": true only when something hot goes in or on it in use, and where filledBy is "buyer" that means the maker markets heating it, microwaving, boiling or the oven. "use": leave-on, rinse-off, ingested or not-on-body. Anything eaten, drunk or held in the mouth is "ingested", never "not-on-body": not-on-body is for laundry powder and surface cleaner, which are diluted and washed away. Add a "note": AT MOST TWO SENTENCES, what you found and where, in plain words. It is read on a phone by somebody deciding what to buy, not by us, so it is not a transcript of the listing and not a record of your searching. We apply our own packaging table to those facts, so do not reason about pass or fail for materials yourself. Every field carries a "source" URL. (3) "identified": {"brand":"<the maker>","product":"<the product name>"}, always, and above all where you were given only a link: you work the name out in order to research it, and we need it to file the answer under.`,
-    10);
+    6);
   return r;
 }
 
 async function vetTesting(env, brand, product, url = "") {
   const r = await vetClaude(env, VET_RULES,
     `Product: ${vetSubject(brand, product, url)}. This front is ONLY for actual measurements and certifications: lab results, peer reviewed studies, certifications (Lead Safe Mama, Mamavation, Consumer Reports, NSF, OEKO-TEX, GOTS, EWG Verified), including studies that MEASURED this product category, which count at caution strength with the note saying it is a category measurement. A certification you verify (EWG Verified, NSF, OEKO-TEX, GOTS) is pass-level evidence. EWG Skin Deep pages and brand certification pages are public: FETCH them rather than reporting that they exist. If an assessment exists only behind a paywall (Consumer Reports), say so plainly: "Consumer Reports has tested this product; the results are subscription only and we could not verify them." What the product is made of is NOT testing evidence. A clean lab result needs its detection limit to count as pass. If you searched and nothing has been published, status is "none" with note "No independent testing of this product has been published." Use "unassessed" only if you could not complete the search. The note is read by a shopper deciding what to buy, so it says what is true of the PRODUCT in one plain sentence. Never narrate your own searching: which pages would not open, which names you tried, what you could not identify. All of that is our working, and none of it tells anybody anything about the thing in their hand. Reply ONLY: {"testing":{"status":"pass|caution|fail|none|unassessed","note":"<one sentence>","source":"<url or empty>"}}`,
-    6);
+    4);
   return r;
 }
 
@@ -2311,7 +2319,7 @@ function vetVerdict(fronts) {
 // burned, eaten or worn from being called a durable good with no formula.
 // Every one of those changed what the research finds, and none of them reached
 // a product already answered until this number moved.
-const VET_ENGINE = 16;
+const VET_ENGINE = 17;
 
 /** One key per product, so the same thing asked twice finds the first answer. */
 function researchKey(brand, product) {
@@ -2498,14 +2506,38 @@ async function vetCore(env, brand, product, send, allowResearch, url = "") {
     }
   };
 
+  // What a check costs, summed across both model calls. Anya measured almost a
+  // dollar on one candle and nothing in here was counting, so "what did that
+  // cost" had no answer at all. Prices are the published Sonnet 5 rates and the
+  // per search fee; they are constants here so the figure moves when they do.
+  const bill = { in: 0, out: 0, cacheRead: 0, searches: 0, reads: 0, turns: 0 };
+  const addSpend = (r) => {
+    const s = r && r.spend;
+    if (!s) return;
+    for (const k of Object.keys(bill)) bill[k] += s[k] || 0;
+  };
+
   const legalP = vetLegal(brand).then((f) => { fronts.legal = f; send({ step: "legal", front: f, ms: Date.now() - t0 }); });
-  const labelP = vetLabel(env, brand, product, url).then((r) => finish("label", r, ["formula", "materials"]));
-  const testP = vetTesting(env, brand, product, url).then((r) => finish("testing", r, ["testing"]));
+  const labelP = vetLabel(env, brand, product, url).then((r) => { addSpend(r); return finish("label", r, ["formula", "materials"]); });
+  const testP = vetTesting(env, brand, product, url).then((r) => { addSpend(r); return finish("testing", r, ["testing"]); });
   await Promise.allSettled([legalP, labelP, testP]);
+
+  const USD_IN = 2 / 1e6, USD_OUT = 10 / 1e6, USD_CACHE_READ = 0.2 / 1e6, USD_SEARCH = 0.01;
+  bill.usd = Number((bill.in * USD_IN + bill.out * USD_OUT
+    + bill.cacheRead * USD_CACHE_READ + bill.searches * USD_SEARCH).toFixed(4));
+  bill.ms = Date.now() - t0;
 
   for (const k of ["formula", "materials", "legal", "testing"]) {
     if (!fronts[k]) fronts[k] = { status: "unassessed", note: "Did not finish in time.", source: "" };
   }
+  try {
+    await env.BRAND_SEARCHES.put(
+      "vetcost:" + Date.now() + ":" + researchKey(brand, product).slice(8, 60),
+      JSON.stringify({ brand, product, at: new Date().toISOString(), ...bill }),
+      { expirationTtl: 60 * 60 * 24 * 180 }
+    );
+  } catch (e) { /* the cost note must never cost the customer their check */ }
+
   let verdict = vetVerdict(fronts);
   // Rule 1.1: adverse brand evidence propagates as a caution with its scope
   // named; favourable never does. A clean read on one product cannot
@@ -2525,7 +2557,7 @@ async function vetCore(env, brand, product, send, allowResearch, url = "") {
     const filedProduct = product || (identified && identified.product) || "";
     await env.BRAND_SEARCHES.put(cacheK, JSON.stringify({
       brand: filedBrand, product: filedProduct, verdict, capNote, fronts,
-      identified, engine: VET_ENGINE, at: new Date().toISOString(),
+      identified, engine: VET_ENGINE, at: new Date().toISOString(), bill,
     })).catch(() => {});
   }
   return { fromDatabase: false, verdict, capNote, fronts, identified,

@@ -401,6 +401,10 @@
   .check-row{padding:10px 0;border-top:1px solid var(--line, #e7e5e4);font-size:14px;line-height:1.5}
   .check-row:first-child{border-top:none}
   .check-row small{color:#78716c}
+
+  .badge.pending{background:#f5f5f4;color:#78716c}
+  .pending-note{color:#a8a29e;animation:pulse 1.4s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:.45}50%{opacity:1}}
 </style>
 </head>
 <body>
@@ -1152,32 +1156,65 @@
     async function runCheckHere(brand) {
       const btn = $("runCheckBtn"), logEl = $("checkLog");
       if (!btn || !logEl) return;
-      btn.disabled = true; btn.textContent = "Checking…"; logEl.innerHTML = ""; lastCheck = null;
+      btn.disabled = true; lastCheck = null;
       gtag('event', 'vet_run_inline', { brand: brand });
-      const line = html => { const d = document.createElement("div"); d.className = "check-row"; d.innerHTML = html; logEl.appendChild(d); };
+
+      // Every front is drawn as pending before anything is known, because a
+      // check runs to a minute and a half and a blank card for that long reads
+      // as broken. The rows fill in as each answer lands, so the wait is
+      // visibly four things happening rather than one thing hanging.
+      const ORDER = ["formula", "materials", "legal", "testing"];
+      logEl.innerHTML = ORDER.map(k =>
+        '<div class="check-row" id="row-' + k + '">'
+        + '<span class="badge pending">checking</span> <strong>' + esc(VetRun.STEP[k]) + '</strong>'
+        + '<br><small class="pending-note">searching\u2026</small></div>').join("");
+
+      const t0 = Date.now();
+      const tick = setInterval(() => {
+        btn.textContent = "Checking\u2026 " + ((Date.now() - t0) / 1000).toFixed(0) + "s";
+      }, 250);
+
+      const paint = (k, html) => {
+        const row = $("row-" + k);
+        if (row) row.innerHTML = html; else logEl.insertAdjacentHTML("beforeend", '<div class="check-row">' + html + "</div>");
+      };
 
       await VetRun.run({ pass: VetRun.getPass(), brand: brand, product: "" }, {
         onFront: e => {
           const f = e.front;
-          // Keep the answer as it lands, so a flag can carry what it disputes.
           lastCheck = (lastCheck ? lastCheck + "\n" : "")
             + (VetRun.STEP[e.step] || e.step) + ": " + f.status + " - " + (f.note || "");
           const label = f.status === "none" ? (e.step === "testing" ? "none found" : "N/A") : f.status;
-          line('<span class="badge ' + esc(f.status) + '">' + esc(label) + '</span> <strong>' + esc(VetRun.STEP[e.step] || "Database") + '</strong>'
-            + '<br><small>' + esc(f.note || "") + (f.source ? ' &middot; <a href="' + esc(f.source) + '" target="_blank" rel="noopener">source</a>' : "") + '</small>');
+          paint(e.step, '<span class="badge ' + esc(f.status) + '">' + esc(label) + '</span> <strong>'
+            + esc(VetRun.STEP[e.step] || "Database") + '</strong><br><small>' + esc(f.note || "")
+            + (f.source ? ' &middot; <a href="' + esc(f.source) + '" target="_blank" rel="noopener">source</a>' : "") + "</small>");
         },
         onDone: e => {
+          clearInterval(tick);
+          const secs = ((Date.now() - t0) / 1000).toFixed(0);
           btn.disabled = false; btn.textContent = "Run the check now";
-          if (e.needsCredits) { btn.hidden = true; line(esc(e.error || "No checks left on this pass.") + ' <a href="vet.html">Top up &rarr;</a>'); return; }
-          if (e.error) { line(esc(e.error)); return; }
+          // Any front still pending never answered; say so rather than leaving
+          // it spinning forever.
+          ORDER.forEach(k => {
+            const row = $("row-" + k);
+            if (row && row.querySelector(".pending")) {
+              paint(k, '<span class="badge unassessed">unassessed</span> <strong>' + esc(VetRun.STEP[k])
+                + '</strong><br><small>This check did not finish.</small>');
+            }
+          });
+          if (e.needsCredits) { btn.hidden = true; logEl.insertAdjacentHTML("beforeend",
+            '<div class="check-row">' + esc(e.error || "No checks left on this pass.") + ' <a href="vet.html">Top up &rarr;</a></div>'); return; }
+          if (e.error) { logEl.insertAdjacentHTML("beforeend", '<div class="check-row">' + esc(e.error) + "</div>"); return; }
           const names = { good: "Good choice", careful: "Careful", skip: "Skip", unrated: "Not enough found" };
           btn.hidden = true;
-          line('<div class="verdict-row" style="margin-top:14px"><span class="badge ' + esc(e.verdict) + '"><span class="dot"></span>'
-            + esc(names[e.verdict] || e.verdict) + '</span></div>'
-            + (e.label ? '<p class="reason">' + esc(e.label) + '</p>' : "")
-            + (e.capNote ? '<p class="form-note">' + esc(e.capNote) + '</p>' : "")
-            + (e.consumed ? '<p class="form-note">1 check used. This research joins our public database after review, free for everyone.</p>' : "")
-            + offerFlag(brand));
+          logEl.insertAdjacentHTML("beforeend", '<div class="check-row">'
+            + '<div class="verdict-row" style="margin-top:6px"><span class="badge ' + esc(e.verdict) + '"><span class="dot"></span>'
+            + esc(names[e.verdict] || e.verdict) + "</span></div>"
+            + (e.label ? '<p class="reason">' + esc(e.label) + "</p>" : "")
+            + (e.capNote ? '<p class="form-note">' + esc(e.capNote) + "</p>" : "")
+            + '<p class="form-note">Checked in ' + secs + "s"
+            + (e.consumed ? ". 1 check used. This research joins our public database after review, free for everyone." : ".") + "</p>"
+            + offerFlag(brand) + "</div>");
         },
       });
     }
