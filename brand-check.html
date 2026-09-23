@@ -1152,13 +1152,16 @@
     async function runCheckHere(brand) {
       const btn = $("runCheckBtn"), logEl = $("checkLog");
       if (!btn || !logEl) return;
-      btn.disabled = true; btn.textContent = "Checking…"; logEl.innerHTML = "";
+      btn.disabled = true; btn.textContent = "Checking…"; logEl.innerHTML = ""; lastCheck = null;
       gtag('event', 'vet_run_inline', { brand: brand });
       const line = html => { const d = document.createElement("div"); d.className = "check-row"; d.innerHTML = html; logEl.appendChild(d); };
 
       await VetRun.run({ pass: VetRun.getPass(), brand: brand, product: "" }, {
         onFront: e => {
           const f = e.front;
+          // Keep the answer as it lands, so a flag can carry what it disputes.
+          lastCheck = (lastCheck ? lastCheck + "\n" : "")
+            + (VetRun.STEP[e.step] || e.step) + ": " + f.status + " - " + (f.note || "");
           const label = f.status === "none" ? (e.step === "testing" ? "none found" : "N/A") : f.status;
           line('<span class="badge ' + esc(f.status) + '">' + esc(label) + '</span> <strong>' + esc(VetRun.STEP[e.step] || "Database") + '</strong>'
             + '<br><small>' + esc(f.note || "") + (f.source ? ' &middot; <a href="' + esc(f.source) + '" target="_blank" rel="noopener">source</a>' : "") + '</small>');
@@ -1173,7 +1176,8 @@
             + esc(names[e.verdict] || e.verdict) + '</span></div>'
             + (e.label ? '<p class="reason">' + esc(e.label) + '</p>' : "")
             + (e.capNote ? '<p class="form-note">' + esc(e.capNote) + '</p>' : "")
-            + (e.consumed ? '<p class="form-note">1 check used. This research joins our public database after review, free for everyone.</p>' : ""));
+            + (e.consumed ? '<p class="form-note">1 check used. This research joins our public database after review, free for everyone.</p>' : "")
+            + offerFlag(brand));
         },
       });
     }
@@ -1207,6 +1211,55 @@
       note.style.color = "var(--good)";
       note.textContent = "Thanks. We will review " + brand + " and email you.";
       $("reqEmail").disabled = true;
+    }
+
+    /**
+     * Telling us a check got it wrong.
+     *
+     * The same /brand-report endpoint the site already uses for a wrong brand
+     * verdict, because a correction should arrive in one place however it was
+     * reported. What is different here is that the machine wrote the answer, so
+     * the report carries the fronts it produced: a complaint about a verdict is
+     * only actionable if we can see the verdict that was complained about.
+     */
+    let lastCheck = null;
+
+    function offerFlag(brand) {
+      return '<div class="meta-block" style="margin-top:18px">'
+        + '<a class="cta-quiet" id="flagOpen" onclick="openFlag(\'' + jsAttr(brand) + '\')" '
+        + 'style="cursor:pointer;font-size:13px;color:#78716c">Something wrong with this? Tell us &rarr;</a>'
+        + '<div id="flagForm" hidden>'
+        + '<p class="reason" style="margin:10px 0 6px"><strong>What did we get wrong?</strong></p>'
+        + '<div class="request-form">'
+        + '<input id="flagDetail" type="text" placeholder="e.g. the ingredient list is on the listing" aria-label="What we got wrong">'
+        + '<button class="btn btn-ghost" onclick="sendFlag(\'' + jsAttr(brand) + '\')">Send</button>'
+        + '</div><p class="form-note" id="flagNote"></p></div></div>';
+    }
+
+    function openFlag(brand) {
+      $("flagForm").hidden = false;
+      $("flagOpen").hidden = true;
+      $("flagDetail").focus();
+      gtag('event', 'vet_flag_opened', { brand: brand });
+    }
+
+    function sendFlag(brand) {
+      const detail = ($("flagDetail").value || "").trim();
+      const note = $("flagNote");
+      if (!detail) { note.textContent = "Tell us what is wrong and we will look."; note.style.color = "var(--skip)"; return; }
+      gtag('event', 'vet_flag_sent', { brand: brand });
+      fetch(WORKER_URL + "/brand-report", {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          brand: brand,
+          issue: "check result disputed",
+          // The answer complained about, so it can be judged without rerunning it.
+          detail: detail + "\n\n--- the check returned ---\n" + (lastCheck || "(not captured)"),
+        }),
+      }).catch(() => {});
+      note.style.color = "var(--good)";
+      note.textContent = "Thank you. A person will read this and correct the record.";
+      $("flagDetail").disabled = true;
     }
 
     // helpers
