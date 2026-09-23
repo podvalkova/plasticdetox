@@ -1722,11 +1722,133 @@ async function vetLegal(brand) {
   };
 }
 
+
+/**
+ * Reading a product page the way a browser does.
+ *
+ * The researcher's own web_fetch cannot set headers, and every large retailer
+ * serves an ordinary robot a wall. A Bath & Body Works candle came back "not
+ * enough found" while its listing carried the whole ingredient list, paraffin
+ * and fragrance and BHT, because the page would not open for it. A Worker can
+ * send whatever headers it likes, so the Worker does the reading and hands
+ * back text.
+ *
+ * The model chooses the URL, so this is not a trusted input: scheme and host
+ * are checked before anything is fetched.
+ */
+const PAGE_UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36";
+const PAGE_MAX_CHARS = 18000;
+const PAGE_TIMEOUT_MS = 10000;
+const PAGE_MAX_READS = 4;
+
+const READ_PAGE_TOOL = {
+  name: "read_page",
+  description:
+    "Open a web page and return its readable text. Use this for any product listing or maker page. " +
+    "Large retailers (Amazon, Target, Walmart, Bath & Body Works, Ulta, Sephora) serve robots a blank " +
+    "wall to ordinary fetching; this reads them the way a browser does, so prefer it over web_fetch for " +
+    "them. Ingredient lists usually live on the listing or the maker's own product page. Give a full URL.",
+  input_schema: {
+    type: "object",
+    properties: { url: { type: "string", description: "The full URL of the page to open." } },
+    required: ["url"],
+  },
+};
+
+function htmlToText(html) {
+  return String(html)
+    .replace(/<script[\s\S]*?<\/script>/gi, " ")
+    .replace(/<style[\s\S]*?<\/style>/gi, " ")
+    .replace(/<noscript[\s\S]*?<\/noscript>/gi, " ")
+    .replace(/<!--[\s\S]*?-->/g, " ")
+    .replace(/<\/(p|div|li|tr|h[1-6]|section|article)\s*>/gi, "\n")
+    .replace(/<br\s*\/?>/gi, "\n")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/&nbsp;/gi, " ").replace(/&amp;/gi, "&").replace(/&lt;/gi, "<")
+    .replace(/&gt;/gi, ">").replace(/&quot;/gi, '"').replace(/&#0?39;|&apos;/gi, "'")
+    .replace(/[ \t ]+/g, " ")
+    .replace(/\n[ \t]*/g, "\n")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
+}
+
+
+/**
+ * A listing runs to forty thousand characters of delivery promises and cross
+ * sells, and the part a check needs is one paragraph somewhere in the middle.
+ * Taking the first eighteen thousand would reliably cut the ingredient list
+ * off, so the head is kept for identity and the rest of the budget goes to
+ * windows around the words that matter.
+ */
+function focusOnMaterials(text, cap) {
+  if (text.length <= cap) return text;
+  const head = text.slice(0, Math.floor(cap * 0.4));
+  const re = /(ingredient|material|composition|what.s inside|made (?:of|from|with)|wax|wick|fibre|fiber|fabric|bpa|phthalate|pfas|paraffin|contains)/gi;
+  const parts = [];
+  let budget = cap - head.length - 40;
+  let m;
+  while ((m = re.exec(text)) !== null && budget > 0) {
+    if (m.index < head.length) continue;
+    const slice = text.slice(Math.max(0, m.index - 150), m.index + 650);
+    parts.push(slice);
+    budget -= slice.length;
+    re.lastIndex = m.index + 650;
+  }
+  return parts.length ? head + "\n\n[...]\n\n" + parts.join("\n[...]\n") : text.slice(0, cap);
+}
+
+async function readPage(rawUrl) {
+  let u;
+  try { u = new URL(String(rawUrl || "")); } catch (e) { return "That is not a URL I can open."; }
+  if (u.protocol !== "https:" && u.protocol !== "http:") return "Only http and https pages can be opened.";
+  // Never let a model-chosen URL reach anything that is not the public web.
+  if (/^(localhost|\[?::1\]?|0\.0\.0\.0)$/i.test(u.hostname)
+      || /^(127|10)\./.test(u.hostname)
+      || /^192\.168\./.test(u.hostname)
+      || /^169\.254\./.test(u.hostname)
+      || /^172\.(1[6-9]|2\d|3[01])\./.test(u.hostname)) {
+    return "That address is not a public web page.";
+  }
+  try {
+    const res = await fetch(u.toString(), {
+      headers: {
+        "User-Agent": PAGE_UA,
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+        "Accept-Language": "en-US,en;q=0.9",
+        "Upgrade-Insecure-Requests": "1",
+      },
+      redirect: "follow",
+      signal: AbortSignal.timeout(PAGE_TIMEOUT_MS),
+    });
+    if (!res.ok) return `The page answered ${res.status}. Try the maker's own product page, or another retailer.`;
+    const raw = await res.text();
+    const text = htmlToText(raw);
+    // A page that renders in the browser sends a shell and fetches its own
+    // content afterwards, which no amount of headers will fix. Bath & Body
+    // Works answers 200 with three megabytes of markup and under five thousand
+    // characters of text, and the ingredient list is in none of it. Say so
+    // plainly rather than reporting an empty page as a finding about a product.
+    if (raw.length > 200000 && text.length < 6000) {
+      return "This page builds itself in the browser, so the server sent only a shell: "
+        + `${text.length} characters of text out of ${Math.round(raw.length / 1000)}KB of markup. `
+        + "The ingredient list is not in it and cannot be read this way. Try the product's Amazon or "
+        + "other retailer listing, which is usually sent whole.\n\nWhat the shell did carry:\n"
+        + text.slice(0, 1500);
+    }
+    return focusOnMaterials(text, PAGE_MAX_CHARS) || "The page opened but carried no readable text.";
+  } catch (e) {
+    return `The page could not be opened (${String((e && e.message) || e).slice(0, 80)}). Try another source.`;
+  }
+}
+
 // One Claude call with server-side web search. Returns parsed JSON or null.
 async function vetClaude(env, system, userText, maxUses) {
   if (!env.ANTHROPIC_API_KEY) return { unconfigured: true };
   let messages = [{ role: "user", content: userText }];
-  for (let turn = 0; turn < 3; turn++) {
+  // Turns had to go up: reading a page costs a round trip that searching alone
+  // did not, and three was already tight for search plus fetch.
+  let reads = 0;
+  for (let turn = 0; turn < 6; turn++) {
     const res = await fetch("https://api.anthropic.com/v1/messages", {
       method: "POST",
       headers: {
@@ -1743,6 +1865,9 @@ async function vetClaude(env, system, userText, maxUses) {
           // Search alone finds that a page exists; fetch lets the researcher
           // read it. EWG scores and brand ingredient pages are public.
           { type: "web_fetch_20250910", name: "web_fetch", max_uses: 3 },
+          // And when both of those meet a wall, which is every big retailer,
+          // we open the page ourselves with browser headers.
+          READ_PAGE_TOOL,
         ],
         messages,
       }),
@@ -1758,6 +1883,33 @@ async function vetClaude(env, system, userText, maxUses) {
       messages = messages.concat([{ role: "assistant", content: msg.content }]);
       continue;
     }
+    if (msg.stop_reason === "tool_use") {
+      // Server tools are answered by the API and never reach us, so anything
+      // here is ours to run.
+      const calls = (msg.content || []).filter((b) => b.type === "tool_use" && b.name === "read_page");
+      if (calls.length) {
+        const results = [];
+        for (const c of calls) {
+          // A whole check has 70 seconds. A researcher that keeps opening
+          // pages will spend all of it and answer nothing, so the reads are
+          // capped and it is told plainly when it has run out.
+          const body = reads >= PAGE_MAX_READS
+            ? "No more page reads left on this check. Answer from what you already have."
+            : await readPage(c.input && c.input.url);
+          reads++;
+          results.push({ type: "tool_result", tool_use_id: c.id, content: String(body) });
+        }
+        messages = messages.concat([
+          { role: "assistant", content: msg.content },
+          { role: "user", content: results },
+        ]);
+        continue;
+      }
+      // Tool use we did not ask for: hand the turn back rather than trying to
+      // read JSON out of a message that was never meant to carry any.
+      messages = messages.concat([{ role: "assistant", content: msg.content }]);
+      continue;
+    }
     const text = (msg.content || []).filter((b) => b.type === "text").map((b) => b.text).join("\n");
     const m = text.match(/\{[\s\S]*\}/);
     if (!m) return { error: "no JSON in reply" };
@@ -1765,7 +1917,7 @@ async function vetClaude(env, system, userText, maxUses) {
     try { return { data: JSON.parse(m[0].replace(/<\/?cite[^>]*>/g, "")) };
     } catch (e) { return { error: "unparseable JSON" }; }
   }
-  return { error: "search did not finish in three turns" };
+  return { error: "the research did not finish in time" };
 }
 
 const VET_RULES = `You are a researcher for Plastic Detox, a consumer safety site. Judge ONLY from what you actually find; when you cannot determine something, say "unassessed". Never guess.
@@ -1782,7 +1934,7 @@ Packaging follows our matrix, by what the contents are, because what leaches fro
 - pass: inert materials (glass, stainless, aluminum container, paper, cotton, wood); dry contents in any plastic; a full ingredient list with none of the above.
 - none: you checked, and nothing of this kind exists or applies. A durable good has no ingredient list, so its "formula" is none (note: "Not applicable: a durable good has no formula; what it is made of is the materials front"). A product nobody has lab tested is testing none. This is a completed check, not a gap.
 - unassessed: ONLY when you could not complete the check.
-One blocked page is never a finished search. Amazon, Target and Walmart serve most robots a wall, and that says nothing about the product. When a listing will not open, search for the product BY NAME instead: the maker's own site first, then other retailers, then anywhere the material is documented. A maker's own page is better evidence than a listing anyway, because it is the maker's own words. Report "we could not open the page" only after you have searched for the name and found nothing, and then say what you searched.
+One blocked page is never a finished search. Amazon, Target and Walmart serve most robots a wall, and that says nothing about the product. Use read_page on those: it opens pages with browser headers and gets through where web_fetch does not, and the ingredient list is usually right there on the listing. Read the listing before concluding anything is undisclosed. When a listing will not open, search for the product BY NAME instead: the maker's own site first, then other retailers, then anywhere the material is documented. A maker's own page is better evidence than a listing anyway, because it is the maker's own words. Report "we could not open the page" only after you have searched for the name and found nothing, and then say what you searched.
 For a durable good or appliance, "materials" means the surfaces that actually touch the water, food, drink, skin or mouth (the reservoir, tubing, brew chamber, cooking surface, drink path, teat, mouthpiece, pump), never the retail box. A part that touches the person or the contents is a material of the product even when it is small: a bottle's silicone teat and a cleanser's plastic pump both count. Well documented facts about a product category (how a pod machine brews, what a nonstick coating is) are evidence you may use; name the category fact in the note.
 Respond with ONLY a JSON object, no prose.`;
 
