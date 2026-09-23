@@ -45,8 +45,14 @@ A source that does not answer is reported as not answering and exits 2. It is
 never folded into "nothing new", because a watcher that reports a quiet day
 when it is actually blind is worse than no watcher.
 
-    python3 tools/check-news.py                 # the last 2 days
-    python3 tools/check-news.py --days 14
+The window is eight days rather than a day, on a check that runs daily. A
+scheduled task only runs while the app is open, so a long weekend with the
+laptop shut would otherwise be a hole nothing ever fills. The seen cache is what
+stops an item being reported twice, not the window, so widening it costs one
+extra page from each source and closes the hole.
+
+    python3 tools/check-news.py                 # the last 8 days
+    python3 tools/check-news.py --days 2
     python3 tools/check-news.py --all           # ignore the seen cache
     python3 tools/check-news.py --lane recall   # one lane only
 """
@@ -280,8 +286,8 @@ def on_beat(title, beat):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--days", type=int, default=2,
-                    help="how far back to look; 2 so a daily run overlaps itself")
+    ap.add_argument("--days", type=int, default=8,
+                    help="how far back to look; 8 so a week of missed runs leaves no gap")
     ap.add_argument("--all", action="store_true", help="ignore the seen cache")
     ap.add_argument("--lane", choices=LANES, action="append",
                     help="only these lanes; repeatable")
