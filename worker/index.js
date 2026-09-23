@@ -1901,7 +1901,7 @@ async function readPage(rawUrl) {
 }
 
 // One Claude call with server-side web search. Returns parsed JSON or null.
-async function vetClaude(env, system, userText, maxUses) {
+async function vetClaude(env, system, userText, maxUses, budgetMs = VET_TIMEOUT_MS) {
   if (!env.ANTHROPIC_API_KEY) return { unconfigured: true };
   let messages = [{ role: "user", content: userText }];
   const spend = { in: 0, out: 0, cacheRead: 0, searches: 0, turns: 0, reads: 0 };
@@ -1945,7 +1945,7 @@ async function vetClaude(env, system, userText, maxUses) {
         ],
         messages,
       }),
-      signal: AbortSignal.timeout(VET_TIMEOUT_MS - 5000),
+      signal: AbortSignal.timeout(Math.max(15000, budgetMs - 5000)),
     });
     if (!res.ok) {
       const body = await res.text().catch(() => "");
@@ -2018,10 +2018,10 @@ Packaging follows our matrix, by what the contents are, because what leaches fro
 - pass: inert materials (glass, stainless, aluminum container, paper, cotton, wood); dry contents in any plastic; a full ingredient list with none of the above.
 - none: you checked, and nothing of this kind exists or applies. A durable good has no ingredient list, so its "formula" is none (note: "Not applicable: a durable good has no formula; what it is made of is the materials front"). A product nobody has lab tested is testing none. This is a completed check, not a gap.
 **The test for a formula is one question: does anyone state what this is made of? If a composition is published anywhere, that is the formula.** It has nothing to do with the kind of product, nothing to do with cosmetics, and nothing to do with how it is used. Peanut butter, a candle, a floor cleaner, a protein powder, a laundry sheet and a lip balm all state their ingredients and all have a formula. Search for the list before deciding there is none. Only a thing nobody states a composition for, a chair, a knife, a bike, has formula "none", and even then say what it is made of under materials.
-**Where a product is burned, vaporised, sprayed or otherwise breathed, the formula is the front that matters most and the contact materials matter least.** Nobody touches candle wax; they breathe what it becomes. Judge such a product on what goes into the air, and say so in the note. Do not spend the answer on a lid.
+**Where a product is burned, vaporised, sprayed or otherwise breathed, the formula is the front that matters most and the contact materials matter least.** Be accurate about why: burning ANY wax produces VOCs and fine particulates, and the published measurements show the FRAGRANCE drives emissions far more than the wax type does, with unscented candles emitting by far the least. There is no sound peer reviewed basis for singling out paraffin over soy or beeswax, and the comparison usually cited for it was funded by a soy trade body. So write that burning any wax releases VOCs and the undisclosed fragrance is what raises them, never that paraffin releases VOCs as though the others do not. Nobody touches candle wax; they breathe what it becomes. Judge such a product on what goes into the air, and say so in the note. Do not spend the answer on a lid.
 - unassessed: ONLY when you could not complete the check.
 One blocked page is never a finished search. Amazon, Target and Walmart serve most robots a wall, and that says nothing about the product. Use read_page on those: it opens pages with browser headers and gets through where web_fetch does not, and the ingredient list is usually right there on the listing. Read the listing before concluding anything is undisclosed. When a listing will not open, search for the product BY NAME instead: the maker's own site first, then other retailers, then anywhere the material is documented. A maker's own page is better evidence than a listing anyway, because it is the maker's own words. Report "we could not open the page" only after you have searched for the name and found nothing, and then say what you searched.
-For a durable good or appliance, "materials" means the surfaces that actually touch the water, food, drink, skin or mouth (the reservoir, tubing, brew chamber, cooking surface, drink path, teat, mouthpiece, pump), never the retail box. A part that touches the person or the contents is a material of the product even when it is small: a bottle's silicone teat and a cleanser's plastic pump both count. Well documented facts about a product category (how a pod machine brews, what a nonstick coating is) are evidence you may use; name the category fact in the note.
+**Materials is not the formula and must never restate it.** Where a product has a formula, materials covers only the vessel and the parts that are not consumed: the jar, the bottle, the lid, the wick, the pump, the tube. A candle's materials answer is glass jar, cotton wick, metal lid, and nothing at all about the wax or the scent, because those are the formula and are reported there. Repeating them spends the one thing the reader has, which is attention.\nFor a durable good or appliance, "materials" means the surfaces that actually touch the water, food, drink, skin or mouth (the reservoir, tubing, brew chamber, cooking surface, drink path, teat, mouthpiece, pump), never the retail box. A part that touches the person or the contents is a material of the product even when it is small: a bottle's silicone teat and a cleanser's plastic pump both count. Well documented facts about a product category (how a pod machine brews, what a nonstick coating is) are evidence you may use; name the category fact in the note.
 Respond with ONLY a JSON object, no prose.`;
 
 const HAZARD_POLYMER = /\b(pvc|polyvinyl|polycarbonate|polystyrene|melamine|ptfe|teflon)\b/i;
@@ -2383,7 +2383,7 @@ async function vetLabel(env, brand, product, url = "") {
 async function vetTesting(env, brand, product, url = "") {
   const r = await vetClaude(env, VET_RULES,
     `Product: ${vetSubject(brand, product, url)}. This front is ONLY for actual measurements and certifications: lab results, peer reviewed studies, certifications (Lead Safe Mama, Mamavation, Consumer Reports, NSF, OEKO-TEX, GOTS, EWG Verified), including studies that MEASURED this product category, which count at caution strength with the note saying it is a category measurement. A certification you verify (EWG Verified, NSF, OEKO-TEX, GOTS) is pass-level evidence. EWG Skin Deep pages and brand certification pages are public: FETCH them rather than reporting that they exist. If an assessment exists only behind a paywall (Consumer Reports), say so plainly: "Consumer Reports has tested this product; the results are subscription only and we could not verify them." What the product is made of is NOT testing evidence. A clean lab result needs its detection limit to count as pass. If nothing has been published about THIS product, do not stop there: search for peer reviewed measurements of the PRODUCT CLASS before answering, because the rules count those at caution strength. Scented candles, gas stoves, nonstick pans, air fresheners and vinyl flooring all have published emissions or migration literature that applies to every product of that kind, and a shopper deciding what to buy needs it. Report it as "caution" with a note that names what was measured and says plainly that it is a measurement of the category rather than of this item. Only when neither the product nor its class has been measured is the status "none", with note "No independent testing of this product or its category has been published." Use "unassessed" only if you could not complete the search. The note is read by a shopper deciding what to buy, so it says what is true of the PRODUCT in one plain sentence. Never narrate your own searching: which pages would not open, which names you tried, what you could not identify. All of that is our working, and none of it tells anybody anything about the thing in their hand. Reply ONLY: {"testing":{"status":"pass|caution|fail|none|unassessed","note":"<one sentence>","source":"<url or empty>"}}`,
-    4);
+    4, 45000);
   return r;
 }
 
@@ -2459,7 +2459,7 @@ function vetVerdict(fronts) {
 // burned, eaten or worn from being called a durable good with no formula.
 // Every one of those changed what the research finds, and none of them reached
 // a product already answered until this number moved.
-const VET_ENGINE = 19;
+const VET_ENGINE = 20;
 
 /** One key per product, so the same thing asked twice finds the first answer. */
 function researchKey(brand, product) {
