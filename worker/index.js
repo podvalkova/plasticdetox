@@ -1851,6 +1851,7 @@ async function readPage(rawUrl) {
 async function vetClaude(env, system, userText, maxUses) {
   if (!env.ANTHROPIC_API_KEY) return { unconfigured: true };
   let messages = [{ role: "user", content: userText }];
+  const spend = { in: 0, out: 0, cacheRead: 0, searches: 0, turns: 0, reads: 0 };
   // Turns had to go up: reading a page costs a round trip that searching alone
   // did not, and three was already tight for search plus fetch.
   let reads = 0;
@@ -1890,6 +1891,16 @@ async function vetClaude(env, system, userText, maxUses) {
       return { error: `API ${res.status}: ${body.slice(0, 160)}` };
     }
     const msg = await res.json();
+    // Every turn's tokens, summed across the whole check, because until now
+    // nobody could answer what one check cost. Search fees are charged per
+    // search by the API and are not in here; the count of searches is.
+    if (msg.usage) {
+      spend.in += msg.usage.input_tokens || 0;
+      spend.out += msg.usage.output_tokens || 0;
+      spend.cacheRead += msg.usage.cache_read_input_tokens || 0;
+      spend.searches += (msg.usage.server_tool_use && msg.usage.server_tool_use.web_search_requests) || 0;
+      spend.turns++;
+    }
     if (msg.stop_reason === "pause_turn") {
       // A long search turn paused; hand the partial turn back and continue.
       messages = messages.concat([{ role: "assistant", content: msg.content }]);
@@ -1908,7 +1919,7 @@ async function vetClaude(env, system, userText, maxUses) {
           const body = reads >= PAGE_MAX_READS
             ? "No more page reads left on this check. Answer from what you already have."
             : await readPage(c.input && c.input.url);
-          reads++;
+          reads++; spend.reads++;
           results.push({ type: "tool_result", tool_use_id: c.id, content: String(body) });
         }
         messages = messages.concat([
@@ -1924,12 +1935,12 @@ async function vetClaude(env, system, userText, maxUses) {
     }
     const text = (msg.content || []).filter((b) => b.type === "text").map((b) => b.text).join("\n");
     const m = text.match(/\{[\s\S]*\}/);
-    if (!m) return { error: "no JSON in reply" };
+    if (!m) return { error: "no JSON in reply", spend };
     // Web search wraps quoted findings in <cite> tags; the card wants prose.
-    try { return { data: JSON.parse(m[0].replace(/<\/?cite[^>]*>/g, "")) };
-    } catch (e) { return { error: "unparseable JSON" }; }
+    try { return { data: JSON.parse(m[0].replace(/<\/?cite[^>]*>/g, "")), spend };
+    } catch (e) { return { error: "unparseable JSON", spend }; }
   }
-  return { error: "the research did not finish in time" };
+  return { error: "the research did not finish in time", spend };
 }
 
 const VET_RULES = `You are a researcher for Plastic Detox, a consumer safety site. Judge ONLY from what you actually find; when you cannot determine something, say "unassessed". Never guess.
@@ -1945,6 +1956,8 @@ Packaging follows our matrix, by what the contents are, because what leaches fro
 - glass, aluminum, steel, paper: pass for anything. Heat in use moves one step worse; rinse-off use one step better.
 - pass: inert materials (glass, stainless, aluminum container, paper, cotton, wood); dry contents in any plastic; a full ingredient list with none of the above.
 - none: you checked, and nothing of this kind exists or applies. A durable good has no ingredient list, so its "formula" is none (note: "Not applicable: a durable good has no formula; what it is made of is the materials front"). A product nobody has lab tested is testing none. This is a completed check, not a gap.
+**"Formula" is not a personal care idea and never means "an ingredient list of the kind cosmetics carry". It is whatever the product is made of chemically, wherever the maker states it.** Candles, wax melts, incense, air fresheners, cleaners, detergents, polishes and sprays all publish ingredient lists and all have a formula. A candle answered "no formula, this is not a leave-on or rinse-off product" is wrong: the list exists, it says paraffin and fragrance, and it is the most important thing about the product.
+**Where a product is burned, vaporised, sprayed or otherwise breathed, the formula is the front that matters most and the contact materials matter least.** Nobody touches candle wax; they breathe what it becomes. Judge such a product on what goes into the air, and say so in the note. Do not spend the answer on a lid.
 - unassessed: ONLY when you could not complete the check.
 One blocked page is never a finished search. Amazon, Target and Walmart serve most robots a wall, and that says nothing about the product. Use read_page on those: it opens pages with browser headers and gets through where web_fetch does not, and the ingredient list is usually right there on the listing. Read the listing before concluding anything is undisclosed. When a listing will not open, search for the product BY NAME instead: the maker's own site first, then other retailers, then anywhere the material is documented. A maker's own page is better evidence than a listing anyway, because it is the maker's own words. Report "we could not open the page" only after you have searched for the name and found nothing, and then say what you searched.
 For a durable good or appliance, "materials" means the surfaces that actually touch the water, food, drink, skin or mouth (the reservoir, tubing, brew chamber, cooking surface, drink path, teat, mouthpiece, pump), never the retail box. A part that touches the person or the contents is a material of the product even when it is small: a bottle's silicone teat and a cleanser's plastic pump both count. Well documented facts about a product category (how a pod machine brews, what a nonstick coating is) are evidence you may use; name the category fact in the note.
@@ -2214,7 +2227,7 @@ function vetSubject(brand, product, url) {
 
 async function vetLabel(env, brand, product, url = "") {
   const r = await vetClaude(env, VET_RULES,
-    `Product: ${vetSubject(brand, product, url)}. Find (1) "formula": the ingredient list, and nothing else. Quote it verbatim behind the word Ingredients where you can find it. A durable good has no ingredient list, so its formula is status "none". Give formula a "finding": one short sentence naming what is wrong, or what is clean, in plain words, such as "Contains parfum, an undisclosed fragrance blend". Give formula a "flagged": an array of the exact ingredient names that earned the status, empty when none. (2) "materials": report FACTS, not a judgement. "holds": what is inside the product, and the single word "none" when the product is not a container at all, which covers every durable good, toy, garment, mat, nappy and piece of furniture. "material": what the product ITSELF is made of, listing ONLY the surfaces a person's skin or mouth meets in normal use, and required whenever holds is "none". "nonContact": the parts a person never meets, such as the tyres of a balance bike, the base of a yoga mat or the foam sealed inside a mattress cover. Those are noted and never scored, so putting one in "material" marks a product down for a part nobody touches. "undisclosedPart": the NAME OF THE PART ONLY, two or three words, where a part in the CONTACT path is one the maker will not identify: "grips", "the top layer", "the coating". Not a sentence and not an explanation, because we put it in one. Empty where every contact part is named. "Nonwoven", "woven", "quilted", "fibre", "foam", "laminate" and "textile" describe how a layer is BUILT, not what it is made of: a nonwoven can be polypropylene, polyester, viscose or cotton and those are four different answers. So a contact layer given only as "nonwoven" or "soft fibre" is an undisclosed part, however much is said about the OTHER layers. "mouthed": true when a small child puts it in their mouth in normal use. "container": what actually touches the contents, as specifically as the source allows (PET, HDPE, PP, unnamed plastic, glass, aluminium, steel, paper, cotton), and empty when holds is "none". "filledBy": "maker" when the product is sold with its contents inside, "buyer" when it is sold empty for the shopper to fill, which is every storage bag, box, jar, wrap and bottle. "base": one of dry, aqueous, surfactant, emulsion, anhydrous, acidic, by what the contents are, an oil or balm or stick being anhydrous. Where filledBy is "buyer" the base is the hardest use the MAKER markets, not the gentlest: dry only where the maker restricts it to dry goods, anhydrous where it is marketed for oils, fats or cooking in the bag, and otherwise emulsion, because food carries fat. "heated": true only when something hot goes in or on it in use, and where filledBy is "buyer" that means the maker markets heating it, microwaving, boiling or the oven. "use": leave-on, rinse-off, ingested or not-on-body. Anything eaten, drunk or held in the mouth is "ingested", never "not-on-body": not-on-body is for laundry powder and surface cleaner, which are diluted and washed away. Add a "note": AT MOST TWO SENTENCES, what you found and where, in plain words. It is read on a phone by somebody deciding what to buy, not by us, so it is not a transcript of the listing and not a record of your searching. We apply our own packaging table to those facts, so do not reason about pass or fail for materials yourself. Every field carries a "source" URL. (3) "identified": {"brand":"<the maker>","product":"<the product name>"}, always, and above all where you were given only a link: you work the name out in order to research it, and we need it to file the answer under.`,
+    `Product: ${vetSubject(brand, product, url)}. Find (1) "formula": the ingredient list, and nothing else. Quote it verbatim behind the word Ingredients where you can find it. A TRUE durable good, an object with no stated composition, has no ingredient list, so its formula is status "none". A candle, wax melt, incense, air freshener, cleaner, detergent or polish is NOT that: each publishes an ingredient list and each has a formula. Search for the list before concluding there is none, and where the product is burned or sprayed treat the formula as the front that decides the answer. Give formula a "finding": one short sentence naming what is wrong, or what is clean, in plain words, such as "Contains parfum, an undisclosed fragrance blend". Give formula a "flagged": an array of the exact ingredient names that earned the status, empty when none. (2) "materials": report FACTS, not a judgement. "holds": what is inside the product, and the single word "none" when the product is not a container at all, which covers every durable good, toy, garment, mat, nappy and piece of furniture. "material": what the product ITSELF is made of, listing ONLY the surfaces a person's skin or mouth meets in normal use, and required whenever holds is "none". "nonContact": the parts a person never meets, such as the tyres of a balance bike, the base of a yoga mat or the foam sealed inside a mattress cover. Those are noted and never scored, so putting one in "material" marks a product down for a part nobody touches. "undisclosedPart": the NAME OF THE PART ONLY, two or three words, where a part in the CONTACT path is one the maker will not identify: "grips", "the top layer", "the coating". Not a sentence and not an explanation, because we put it in one. Empty where every contact part is named. "Nonwoven", "woven", "quilted", "fibre", "foam", "laminate" and "textile" describe how a layer is BUILT, not what it is made of: a nonwoven can be polypropylene, polyester, viscose or cotton and those are four different answers. So a contact layer given only as "nonwoven" or "soft fibre" is an undisclosed part, however much is said about the OTHER layers. "mouthed": true when a small child puts it in their mouth in normal use. "container": what actually touches the contents, as specifically as the source allows (PET, HDPE, PP, unnamed plastic, glass, aluminium, steel, paper, cotton), and empty when holds is "none". "filledBy": "maker" when the product is sold with its contents inside, "buyer" when it is sold empty for the shopper to fill, which is every storage bag, box, jar, wrap and bottle. "base": one of dry, aqueous, surfactant, emulsion, anhydrous, acidic, by what the contents are, an oil or balm or stick being anhydrous. Where filledBy is "buyer" the base is the hardest use the MAKER markets, not the gentlest: dry only where the maker restricts it to dry goods, anhydrous where it is marketed for oils, fats or cooking in the bag, and otherwise emulsion, because food carries fat. "heated": true only when something hot goes in or on it in use, and where filledBy is "buyer" that means the maker markets heating it, microwaving, boiling or the oven. "use": leave-on, rinse-off, ingested or not-on-body. Anything eaten, drunk or held in the mouth is "ingested", never "not-on-body": not-on-body is for laundry powder and surface cleaner, which are diluted and washed away. Add a "note": AT MOST TWO SENTENCES, what you found and where, in plain words. It is read on a phone by somebody deciding what to buy, not by us, so it is not a transcript of the listing and not a record of your searching. We apply our own packaging table to those facts, so do not reason about pass or fail for materials yourself. Every field carries a "source" URL. (3) "identified": {"brand":"<the maker>","product":"<the product name>"}, always, and above all where you were given only a link: you work the name out in order to research it, and we need it to file the answer under.`,
     10);
   return r;
 }
@@ -2298,7 +2311,7 @@ function vetVerdict(fronts) {
 // burned, eaten or worn from being called a durable good with no formula.
 // Every one of those changed what the research finds, and none of them reached
 // a product already answered until this number moved.
-const VET_ENGINE = 14;
+const VET_ENGINE = 15;
 
 /** One key per product, so the same thing asked twice finds the first answer. */
 function researchKey(brand, product) {
