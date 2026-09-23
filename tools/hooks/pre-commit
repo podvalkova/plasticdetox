@@ -7,7 +7,24 @@
 #
 # Only runs when brand-data.json is actually staged, so an unrelated commit is
 # not made to wait on it. Skip deliberately with: git commit --no-verify
-git diff --cached --name-only | grep -q '^brand-data\.json$' || exit 0
+staged=$(git diff --cached --name-only)
+
+# An article's date is written in four files and the rule to keep them together
+# was remembered rather than run, so 37 articles ended up telling readers they
+# were months older than they were. This hook never saw those commits, because
+# it only woke for brand-data.json. Now an article, a listing page or the
+# sitemap wakes it too, and it checks only the dates: a prose edit should not
+# wait on the whole database.
+if echo "$staged" | grep -qE '^(articles/.*\.html|index\.html|resources\.html|sitemap\.xml)$'; then
+  echo "an article or a listing is staged, checking its dates..."
+  if ! python3 tools/check-article-dates.py; then
+    echo
+    echo "Refusing the commit. Run tools/check-article-dates.py --fix, or --no-verify if you mean it."
+    exit 1
+  fi
+fi
+
+echo "$staged" | grep -q '^brand-data\.json$' || exit 0
 echo "brand-data.json is staged, checking it against the rules..."
 if ! tools/check.sh; then
   echo

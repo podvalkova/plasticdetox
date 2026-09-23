@@ -45,6 +45,11 @@ if [ "${1:-}" = "--fix" ]; then
   # four blank fronts.
   python3 tools/apply-class-evidence.py --write || exit 1
   python3 tools/enforce-scorecard.py --write || exit 1
+  # The article date lives in four files and only one of them was being kept
+  # up, so 37 articles were telling readers they were months older than they
+  # were. Same shape as everything else here: a written rule with nothing
+  # running it.
+  python3 tools/check-article-dates.py --fix || exit 1
   echo
 fi
 
@@ -93,6 +98,19 @@ else
   echo "    ... $(grep -c '!!' /tmp/pd-picks.log) problems. Add the catalog entry, or fix the swap."
   fail=1
 fi
+echo
+echo "==> 1d. does each article say the same date in all four places?"
+# dateModified, the visible Updated line, sitemap lastmod, and data-date on the
+# card in index.html and resources.html. Google reads the first, a person reads
+# the second, and for months they were making different claims about the same
+# page.
+if python3 tools/check-article-dates.py > /tmp/pd-dates.log 2>&1; then
+  sed 's/^/  /' /tmp/pd-dates.log
+else
+  sed 's/^/  /' /tmp/pd-dates.log
+  fail=1
+fi
+
 echo
 echo "==> 2. would running the rules change a verdict?"
 before=$(python3 - <<'PY'
