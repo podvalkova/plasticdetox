@@ -385,7 +385,16 @@
       .nav-home { display: none; }
       .card { padding: 26px 24px; }
     }
-  </style>
+  
+  /* The scan sheet. The button only appears on a browser that really has
+     BarcodeDetector, so there is no half working camera state to style. */
+  .scan-btn{display:inline-flex;align-items:center;gap:7px}
+  .scan-sheet{position:fixed;inset:0;z-index:999;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center}
+  .scan-sheet video{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+  .scan-frame{position:relative;width:min(78vw,320px);height:168px;border:3px solid #fff;border-radius:14px;box-shadow:0 0 0 100vmax rgba(0,0,0,.55)}
+  .scan-hint{position:relative;margin-top:22px;color:#fff;font-size:15px;text-align:center;padding:0 24px;line-height:1.5}
+  .scan-close{position:absolute;top:18px;right:18px;background:#fff;color:#1c1917;border:none;border-radius:60px;padding:10px 20px;font:inherit;font-weight:700;cursor:pointer}
+</style>
 </head>
 <body>
   <header class="site-head">
@@ -415,6 +424,8 @@
               <div class="suggestions" id="suggestions"></div>
             </div>
             <button class="check-btn" onclick="if(searchEl.value.trim())lookup(searchEl.value)">Check it</button>
+            <button id="scanBtn" class="check-btn scan-btn" hidden onclick="startScan()" aria-label="Scan a barcode">
+              <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2M7 8v8M11 8v8M15 8v8"/></svg>Scan</button>
           </div>
           <div class="chips-row" id="quickRow"></div>
           <a class="ext-teaser" id="appTeaser" href="#appband" hidden>Checking while you shop? The free iPhone app works offline&nbsp;<b>&darr;</b></a>
@@ -824,6 +835,111 @@
       suggEl.classList.add("show");
     }
 
+
+    /**
+     * Scanning a barcode in the browser.
+     *
+     * We hold verdicts on brands, never on barcodes, so a scan has to become a
+     * brand name before our own data can answer it. The app solves that with
+     * Open Food Facts and its sister databases; this reads the same three, in
+     * the same order, so the web and the app cannot give different answers to
+     * the same tin.
+     *
+     * The button is hidden unless BarcodeDetector is really present. Chrome on
+     * Android has it and Safari does not, and a Scan button that opens a camera
+     * and then never reads anything is worse than no button, so iOS is offered
+     * the app instead, which has a native scanner.
+     */
+    const UPC_HOSTS = [
+      "https://world.openfoodfacts.org",
+      "https://world.openproductsfacts.org",
+      "https://world.openbeautyfacts.org",
+    ];
+
+    let scanStream = null, scanTimer = null, scanDetector = null;
+
+    // A UPC-A printed on a US pack and the EAN-13 the databases store differ by
+    // a leading zero, so both spellings get asked for.
+    function codeVariants(code) {
+      const out = [code];
+      if (code.length === 12) out.push("0" + code);
+      if (code.length === 13 && code.startsWith("0")) out.push(code.slice(1));
+      return out;
+    }
+
+    async function barcodeToBrand(code) {
+      for (const host of UPC_HOSTS) {
+        for (const c of codeVariants(code)) {
+          const ctl = new AbortController();
+          // Each host gets its own timeout rather than one budget for all of
+          // them, so a hanging sister database cannot eat the whole scan.
+          const timer = setTimeout(() => ctl.abort(), 6000);
+          try {
+            const r = await fetch(host + "/api/v2/product/" + c + ".json?fields=brands,product_name", { signal: ctl.signal });
+            if (r.ok) {
+              const body = await r.json();
+              if (body && body.status === 1 && body.product) {
+                const brand = (body.product.brands || "").split(",")[0].trim();
+                if (brand) return brand;
+                if (body.product.product_name) return body.product.product_name.trim();
+              }
+            }
+          } catch (e) {
+            // Down, slow, or rate limited. Next host.
+          } finally {
+            clearTimeout(timer);
+          }
+        }
+      }
+      return null;
+    }
+
+    async function startScan() {
+      const sheet = $("scanSheet"), video = $("scanVideo"), hint = $("scanHint");
+      try {
+        scanStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } });
+      } catch (e) {
+        // Declined or no camera. Say so rather than opening a black rectangle.
+        hint.textContent = "No camera available. You can type the name instead.";
+        return;
+      }
+      gtag('event', 'scan_started', {});
+      sheet.hidden = false;
+      video.srcObject = scanStream;
+      await video.play().catch(() => {});
+      scanDetector = new BarcodeDetector({ formats: ["ean_13", "ean_8", "upc_a", "upc_e"] });
+      hint.textContent = "Point the camera at the barcode";
+      scanTimer = setInterval(async () => {
+        if (!scanDetector || video.readyState < 2) return;
+        let found;
+        try { found = await scanDetector.detect(video); } catch (e) { return; }
+        if (!found || !found.length) return;
+        const code = (found[0].rawValue || "").replace(/\D/g, "");
+        if (!code) return;
+        clearInterval(scanTimer); scanTimer = null;
+        hint.textContent = "Looking it up…";
+        const brand = await barcodeToBrand(code);
+        stopScan();
+        gtag('event', 'scan_result', { found: brand ? 'yes' : 'no' });
+        if (brand) { searchEl.value = brand; lookup(brand); }
+        else { searchEl.value = code; showUnknown(code); }
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 400);
+    }
+
+    function stopScan() {
+      if (scanTimer) { clearInterval(scanTimer); scanTimer = null; }
+      if (scanStream) { scanStream.getTracks().forEach(t => t.stop()); scanStream = null; }
+      scanDetector = null;
+      $("scanVideo").srcObject = null;
+      $("scanSheet").hidden = true;
+    }
+
+    // Only offer it where it will actually work.
+    if (window.BarcodeDetector && navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+      $("scanBtn").hidden = false;
+    }
+
     function lookup(query) {
       suggEl.classList.remove("show");
       const m = findExact(query);
@@ -1095,5 +1211,12 @@
     })();
   </script>
 
+
+<div id="scanSheet" class="scan-sheet" hidden>
+  <video id="scanVideo" playsinline muted></video>
+  <div class="scan-frame"></div>
+  <p id="scanHint" class="scan-hint">Point the camera at the barcode</p>
+  <button class="scan-close" onclick="stopScan()">Close</button>
+</div>
 </body>
 </html>
