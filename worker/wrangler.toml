@@ -14,6 +14,12 @@ NOTIFY_NAME = "Plastic Detox Website"
 # the id is the plink_... in the browser address bar. Empty means the web
 # purchase is closed, which is the safe default.
 KIDS_PAYMENT_LINK = "plink_1UGnfK6G2S5PJjkv7dNIFdph"
+# Brevo list for people who buy the kids room inside the app, so the $5 app
+# buyers and the $9.99 website package stop sharing list 8. The webhook tells
+# them apart by KIDS_PAYMENT_LINK above, not by price, because both sit under
+# the same $15 ceiling. Empty falls back to 8, which is wrong but never loses
+# a buyer.
+BREVO_LIST_KIDS_APP = ""
 
 [[kv_namespaces]]
 binding = "BRAND_SEARCHES"

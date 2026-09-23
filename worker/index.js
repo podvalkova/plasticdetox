@@ -1246,6 +1246,61 @@ async function handleStripeWebhook(request, env) {
 
     const amount = s.amount_total || 0; // cents
 
+    // ---- Kids room bought in the app ($5) -> its own list ----
+    // This has to come before the price branch below. The room is $5 and the
+    // package is $9.99, so both land under that branch's $15 ceiling, and the
+    // app buyer was being tagged as having bought the Baby & Expecting Package
+    // and emailed a hub, a registry and an article they had not paid for.
+    // Identify it the way /kids-claim does, by the payment link rather than by
+    // price: a price test cannot tell two products apart and a new product at
+    // any price under $15 would land here too.
+    if (env.KIDS_PAYMENT_LINK && s.payment_link === env.KIDS_PAYMENT_LINK) {
+      if (email) {
+        const nm = name.split(/\s+/);
+        const first = nm.shift() || "";
+        await fetch("https://api.brevo.com/v3/contacts", {
+          method: "POST",
+          headers: { "api-key": env.BREVO_API_KEY, "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email,
+            attributes: {
+              FIRSTNAME: first,
+              LASTNAME: nm.join(" "),
+              PLAN_PURCHASED: "Kids room (app)",
+              PURCHASE_DATE: new Date().toISOString().split("T")[0],
+            },
+            // Falls back to 8 until the app buyers' list exists, so a purchase
+            // is never dropped on the floor while a list id is missing.
+            listIds: [parseInt(env.BREVO_LIST_KIDS_APP || "8")],
+            updateEnabled: true,
+          }),
+        }).catch(() => {});
+
+        // The room unlocks through kids-unlock.html on the way back from
+        // Stripe. That redirect is the only thing standing between a paying
+        // customer and nothing, so the same link goes in an email they keep.
+        const greeting = first ? `Hi ${escHtml(first)},` : "Hi there,";
+        const back = `https://plasticdetox.org/kids-unlock.html?session_id=${encodeURIComponent(s.id || "")}`;
+        await fetch("https://api.brevo.com/v3/smtp/email", {
+          method: "POST",
+          headers: { "api-key": env.BREVO_API_KEY, "Content-Type": "application/json" },
+          body: JSON.stringify({
+            sender: { name: env.SENDER_NAME, email: env.SENDER_EMAIL },
+            to: [{ email, name }],
+            replyTo: { name: env.SENDER_NAME, email: env.SENDER_EMAIL },
+            subject: "Your kids room",
+            htmlContent: emailShell("Unlocked",
+              emailP(`${greeting}`) +
+              emailP("Thank you. The kids room is unlocked in the app.") +
+              emailP(`If it did not open by itself, tap this on the phone with the app installed: <a href="${back}">open the kids room</a>.`) +
+              emailP("It stays unlocked on that phone. Restore purchases brings it back on a new one.") +
+              emailP("Anya<br>plasticdetox.org")),
+          }),
+        }).catch(() => {});
+      }
+      return new Response(JSON.stringify({ received: true }), { status: 200, headers: { "Content-Type": "application/json" } });
+    }
+
     // ---- Baby & Expecting Package ($9.99) -> access email + Brevo list 8 ----
     // The old branch below emailed a plan-intake.html link, which belongs to
     // the retired $149 review. Anything at the package price is routed here.
