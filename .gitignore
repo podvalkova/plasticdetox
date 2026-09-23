@@ -43,3 +43,9 @@ TODO.md
 tools/__pycache__/
 __pycache__/
 _reports/
+
+# What the news and source watchers have already shown us. Local state with no
+# bearing on any verdict, and a daily routine writes to it, so tracking it
+# would mean an automated commit and a Pages rebuild every morning for nothing.
+data/news-seen.json
+data/source-feed-seen.json

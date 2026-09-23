@@ -1,0 +1,122 @@
+{
+ "_comment": "What tools/check-news.py reads every morning. Edit this rather than the script when you want a new source or a new search. A feed marked \"filter\": true is too broad to print whole, so only items naming a beat term survive; the narrow feeds are already on our beat and print in full.",
+ "feeds": [
+  {
+   "label": "Food Packaging Forum",
+   "url": "https://www.foodpackagingforum.org/news/feed",
+   "lane": "watchdog",
+   "filter": false
+  },
+  {
+   "label": "Toxic-Free Future",
+   "url": "https://www.toxicfreefuture.org/feed/",
+   "lane": "watchdog",
+   "filter": false
+  },
+  {
+   "label": "Beyond Plastics",
+   "url": "https://www.beyondplastics.org/news-stories?format=rss",
+   "lane": "watchdog",
+   "filter": false
+  },
+  {
+   "label": "Environmental Health News",
+   "url": "https://www.ehn.org/feeds/feed.rss",
+   "lane": "watchdog",
+   "filter": true
+  },
+  {
+   "label": "FDA recalls",
+   "url": "https://www.fda.gov/about-fda/contact-fda/stay-informed/rss-feeds/recalls/rss.xml",
+   "lane": "recall",
+   "filter": false
+  }
+ ],
+ "queries": [
+  {
+   "label": "PFAS class actions",
+   "q": "\"class action\" (PFAS OR \"forever chemicals\")",
+   "lane": "lawsuit"
+  },
+  {
+   "label": "Chemical suits over consumer goods",
+   "q": "lawsuit (phthalates OR benzene OR \"heavy metals\") (cosmetics OR sunscreen OR baby OR shampoo)",
+   "lane": "lawsuit"
+  },
+  {
+   "label": "Greenwashing suits",
+   "q": "\"false advertising\" lawsuit (\"non-toxic\" OR \"plastic free\" OR \"clean beauty\")",
+   "lane": "lawsuit"
+  },
+  {
+   "label": "Metals and plastics recalls",
+   "q": "recall (lead OR cadmium OR phthalates) (children OR toys OR kitchen OR cookware)",
+   "lane": "recall"
+  },
+  {
+   "label": "Reformulations and launches",
+   "q": "(\"PFAS free\" OR \"phthalate free\" OR \"plastic free\") (launches OR launch OR reformulated OR \"new line\")",
+   "lane": "announcement"
+  },
+  {
+   "label": "Regulation on our beat",
+   "q": "(ban OR restricts OR \"new rule\") (PFAS OR phthalates OR bisphenol OR \"flame retardants\") (products OR packaging)",
+   "lane": "announcement"
+  }
+ ],
+ "research": [
+  {
+   "label": "Microplastics in people",
+   "q": "(microplastic* OR nanoplastic*) AND (human OR blood OR placenta OR \"breast milk\" OR infant OR \"drinking water\" OR \"bottled water\")"
+  },
+  {
+   "label": "Food contact chemicals",
+   "q": "(phthalate* OR bisphenol* OR \"food contact\") AND (packaging OR migration OR \"food simulant\" OR diet)"
+  },
+  {
+   "label": "PFAS in products",
+   "q": "(PFAS OR polyfluoroalkyl) AND (textile* OR cosmetic* OR packaging OR \"consumer product*\" OR \"drinking water\")"
+  },
+  {
+   "label": "Metals in consumer goods",
+   "q": "(\"lead exposure\" OR \"lead contamination\" OR \"lead levels\" OR \"heavy metal*\" OR cadmium OR arsenic) AND (toy* OR cosmetic* OR \"baby food\" OR ceramic OR dinnerware OR spice* OR \"consumer product*\")"
+  },
+  {
+   "label": "Flame retardants in the home",
+   "q": "(\"flame retardant*\" OR \"organophosphate ester*\") AND (furniture OR textile* OR \"car seat*\" OR mattress* OR dust)"
+  }
+ ],
+ "beat": [
+  "microplastic",
+  "nanoplastic",
+  "plastic",
+  "phthalate",
+  "bisphenol",
+  "BPA",
+  "BPS",
+  "PFAS",
+  "forever chemical",
+  "polyfluoroalkyl",
+  "flame retardant",
+  "formaldehyde",
+  "endocrine",
+  "lead",
+  "cadmium",
+  "arsenic",
+  "mercury",
+  "heavy metal",
+  "glyphosate",
+  "benzene",
+  "recall",
+  "lawsuit",
+  "class action",
+  "packaging",
+  "cookware",
+  "sunscreen",
+  "diaper",
+  "formula",
+  "cosmetic",
+  "fragrance",
+  "parabens"
+ ]
+}
