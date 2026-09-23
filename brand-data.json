@@ -2623,9 +2623,9 @@
     "id": "alo-yoga",
     "brand": "Alo Yoga",
     "category": "Activewear",
-    "stance": "skip",
-    "reason": "Synthetic fabrics throughout, fashion-first not low-tox, with no GOTS or PFAS-free commitment.",
-    "evidence": "synthetic throughout, no PFAS-free commitment",
+    "stance": "neutral",
+    "reason": "We held this at skip for having no GOTS certification and no published PFAS commitment. An absence is not a finding, and rule 6 does not let a warning stand on one. The only lab that has looked found nothing: Mamavation read no fluorine in the Alosoft Flow legging at a 10 ppm limit of detection. That result is from 2021 and has expired, so it cannot earn a recommendation either. The fabrics are nylon and spandex, so they shed in the wash like every synthetic legging.",
+    "evidence": "Mamavation 2021: non detect, now expired under the 36 month clean result life; no certification; synthetic throughout",
     "alternative": "",
     "sources": [
       "sustainable-fabrics-that-arent.html"
@@ -2660,7 +2660,8 @@
       "researched": 0,
       "flagged": 0,
       "worst": null
-    }
+    },
+    "products": []
   },
   {
     "id": "alpha",
@@ -5043,21 +5044,21 @@
           "testingResults": [
             {
               "analyte": "free available chlorine reduction",
-              "value": ">91.61",
-              "unit": "% overall reduction over 10,000 gallons (influent 1.95 mg/L)",
-              "lod": "not stated",
               "lab": "Pace Analytical Labs, Minneapolis, MN, Project #660 (commissioned by Aquasana)",
-              "year": "2024",
-              "source": "https://www.aquasana.com/on/demandware.static/-/Sites-aquasana-Library/default/PDF/AQ-4100-4105_Performance_Data.pdf"
+              "lod": "not stated",
+              "source": "https://www.aquasana.com/on/demandware.static/-/Sites-aquasana-Library/default/PDF/AQ-4100-4105_Performance_Data.pdf",
+              "unit": "% overall reduction over 10,000 gallons (influent 1.95 mg/L)",
+              "value": ">91.61",
+              "year": "2024"
             },
             {
               "analyte": "total chlorine in filtered shower water",
-              "value": "non-detect",
-              "unit": "not stated",
-              "lod": "not stated",
               "lab": "Mamavation in home test (no lab named)",
-              "year": "2025",
-              "source": "https://mamavation.com/health/best-worst-shower-filters.html"
+              "lod": "not stated",
+              "source": "https://mamavation.com/health/best-worst-shower-filters.html",
+              "unit": "not stated",
+              "value": "non-detect",
+              "year": "2025"
             }
           ],
           "testingNote": "No independent safety test (metals, plastics leaching) of the AQ-4100 found at Lead Safe Mama, Mamavation, Consumer Reports or Clean Label Project on 2026-09-16. Two performance tests exist and are recorded as results, neither a contaminant safety test: (1) the maker's Performance Data Sheet reports NSF/ANSI 177 free chlorine reduction testing by Pace Analytical, commissioned by Aquasana, not an NSF certification; (2) Mamavation's 2025 shower filter guide says the \"Aquasana Deluxe Shower Water Filter System\" was \"total chlorine tested by Mamavation and was non-detect\" using an in shower water test with no detection limit published. Consumer Reports rates other Aquasana filters, not this one.",
@@ -6302,8 +6303,8 @@
     "brand": "Athleta",
     "category": "Activewear",
     "stance": "skip",
-    "reason": "Athleta's line is predominantly recycled and virgin polyester and nylon with no PFAS-free, Bluesign, or GOTS commitment, and its garments have tested positive for both PFAS and BPA.",
-    "evidence": "CEH testing found BPA up to 22x California limit in Athleta sports bras; PFAS detected in shorts; synthetics shed microplastics.",
+    "reason": "The Center for Environmental Health measured BPA coming off Athleta sports bras at up to 22 times California's safe daily dose for skin contact, sued, and the case ended in a consent judgment that holds the brand to 10 parts per billion and forbids swapping BPA for another bisphenol. A consent judgment is the one thing rule 5.1 says can carry a skip, and this is one. Athleta disputed the finding publicly at the time. Separately, Mamavation's lab read 17 ppm organic fluorine in an Athleta Girl short.",
+    "evidence": "CEH v Athleta LLC (SF Superior Court CGC-23-604604), consent judgment capping BPA at 10 ppb; brand disputed the finding; Mamavation 17 ppm organic fluorine",
     "alternative": "Pact (GOTS-certified organic cotton) or wool-based activewear like Woolly Clothing",
     "sources": [
       "sustainable-fabrics-that-arent.html"
@@ -6338,7 +6339,86 @@
       "researched": 0,
       "flagged": 0,
       "worst": null
-    }
+    },
+    "products": [
+      {
+        "name": "Athleta Girl Chit Chat Short",
+        "asins": [],
+        "verdict": "unrated",
+        "note": "",
+        "origin": "research",
+        "ext": {
+          "frontNotes": {
+            "testing": "Mamavation's EPA certified lab read 17 ppm organic fluorine in the Athleta Girl Chit Chat Short. Below the 100 ppm bar in rule 4.7, so a caution on its own. What carries this brand's verdict is the legal front, not this number. Sku scope.",
+            "materials": "polyester in direct contact."
+          },
+          "formulaAnswers": {
+            "ingredients": "",
+            "prose": "",
+            "complete": false,
+            "verdict": "n/a",
+            "summary": "A durable good has no ingredient list. What it is made of is the materials check.",
+            "flagged": [],
+            "source": "",
+            "checked": ""
+          },
+          "testingResults": [
+            {
+              "analyte": "organic fluorine",
+              "lab": "EPA certified laboratory for Mamavation",
+              "lod": "10 ppm",
+              "outcome": "detected",
+              "unit": "ppm",
+              "value": 17,
+              "year": 2021
+            }
+          ],
+          "testingLod": "10 ppm (ion selective electrode, oxygen flask combustion)",
+          "testingNote": "Mamavation's EPA certified lab read 17 ppm organic fluorine in the Athleta Girl Chit Chat Short. Below the 100 ppm bar in rule 4.7, so a caution on its own. What carries this brand's verdict is the legal front, not this number. Sku scope.",
+          "testingDate": "2021",
+          "materialsList": "recycled and virgin polyester with elastane, synthetic throughout",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "",
+            "heated": false,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "recycled and virgin polyester with elastane, synthetic throughout",
+            "treatment": "",
+            "treatmentSource": "",
+            "dispenser": "",
+            "lining": "",
+            "certification": "",
+            "certificationSource": "",
+            "source": "https://mamavation.com/product-investigations/non-toxic-activewear-guide-pfas-workout-leggings-yoga-pants.html",
+            "checked": "2026-09-23"
+          },
+          "verdict": "careful",
+          "dated": "2026-09-23",
+          "why": "section 6 ceiling: materials is caution, testing is caution, on recorded evidence",
+          "fronts": {
+            "formula": "none",
+            "materials": "caution",
+            "legal": "unassessed",
+            "testing": "caution"
+          },
+          "frontOrigin": {
+            "testing": "database",
+            "materials": "database",
+            "formula": "database"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        },
+        "match": [
+          "athleta girl chit chat"
+        ]
+      }
+    ]
   },
   {
     "id": "attitude",
@@ -17509,8 +17589,8 @@
     "brand": "Boody",
     "category": "Basics",
     "stance": "careful",
-    "reason": "OEKO-TEX Standard 100 certified bamboo viscose with elastane; the certification is real and better than generic bamboo, but it is still viscose, not lyocell.",
-    "evidence": "OEKO-TEX Standard 100; still viscose not lyocell",
+    "reason": "OEKO-TEX Standard 100 on the finished garment is a real certification and it is what rule 3.11 asks for before viscose goes against skin. It did not stop Mamavation's lab reading 17 ppm organic fluorine in the Motivate tights. A measurement of the garment outranks a certificate saying the garment was screened, so the testing front carries the number rather than the certificate. The fibre is still viscose rather than lyocell, which is the wetter, dirtier way to turn bamboo into cloth.",
+    "evidence": "OEKO-TEX Standard 100; Mamavation 2023: 17 ppm organic fluorine in the Motivate tights; viscose not lyocell",
     "alternative": "Ettitude CleanBamboo lyocell",
     "sources": [
       "sustainable-fabrics-that-arent.html"
@@ -17545,7 +17625,86 @@
       "researched": 0,
       "flagged": 0,
       "worst": null
-    }
+    },
+    "products": [
+      {
+        "name": "Boody Motivate 3/4 High Waist Tights",
+        "asins": [],
+        "verdict": "unrated",
+        "note": "",
+        "origin": "research",
+        "ext": {
+          "frontNotes": {
+            "testing": "Mamavation's EPA certified lab read 17 ppm organic fluorine in the crotch of the Motivate 3/4 High Waist Tights, updated March 2023. Boody holds OEKO-TEX Standard 100, which restricts PFAS, but a lab that measured the finished garment outranks a certificate that says the garment was screened (5.5), and an adverse result stands until a newer clean test of the same garment replaces it (4.7). Below the 100 ppm fail bar and no compound named, so a caution. Sku scope.",
+            "materials": "bamboo viscose with elastane against the skin with no certification that tests the finished product (rule 3.11)."
+          },
+          "formulaAnswers": {
+            "ingredients": "",
+            "prose": "",
+            "complete": false,
+            "verdict": "n/a",
+            "summary": "A durable good has no ingredient list. What it is made of is the materials check.",
+            "flagged": [],
+            "source": "",
+            "checked": ""
+          },
+          "testingResults": [
+            {
+              "analyte": "organic fluorine",
+              "lab": "EPA certified laboratory for Mamavation",
+              "lod": "10 ppm",
+              "outcome": "detected",
+              "unit": "ppm",
+              "value": 17,
+              "year": 2023
+            }
+          ],
+          "testingLod": "10 ppm (ion selective electrode, oxygen flask combustion)",
+          "testingNote": "Mamavation's EPA certified lab read 17 ppm organic fluorine in the crotch of the Motivate 3/4 High Waist Tights, updated March 2023. Boody holds OEKO-TEX Standard 100, which restricts PFAS, but a lab that measured the finished garment outranks a certificate that says the garment was screened (5.5), and an adverse result stands until a newer clean test of the same garment replaces it (4.7). Below the 100 ppm fail bar and no compound named, so a caution. Sku scope.",
+          "testingDate": "2023",
+          "materialsList": "bamboo viscose with elastane, OEKO-TEX Standard 100 certified finished garment",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "",
+            "heated": false,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "bamboo viscose with elastane, OEKO-TEX Standard 100 certified finished garment",
+            "treatment": "",
+            "treatmentSource": "",
+            "dispenser": "",
+            "lining": "",
+            "certification": "",
+            "certificationSource": "",
+            "source": "https://mamavation.com/product-investigations/non-toxic-activewear-guide-pfas-workout-leggings-yoga-pants.html",
+            "checked": "2026-09-23"
+          },
+          "verdict": "careful",
+          "dated": "2026-09-23",
+          "why": "section 6 ceiling: materials is caution, testing is caution, on recorded evidence",
+          "fronts": {
+            "formula": "none",
+            "materials": "caution",
+            "legal": "unassessed",
+            "testing": "caution"
+          },
+          "frontOrigin": {
+            "testing": "database",
+            "materials": "database",
+            "formula": "database"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        },
+        "match": [
+          "boody motivate"
+        ]
+      }
+    ]
   },
   {
     "id": "boon",
@@ -21382,39 +21541,39 @@
           "testingResults": [
             {
               "analyte": "lead",
-              "value": 76.53,
-              "unit": "ppb",
-              "lod": "not stated",
               "lab": "Purity Laboratories for Lead Safe Mama (case 2506210)",
-              "year": 2025,
-              "source": "https://tamararubin.com/2025/07/california-baby-sensitive-sunscreen-spf-30/"
+              "lod": "not stated",
+              "source": "https://tamararubin.com/2025/07/california-baby-sensitive-sunscreen-spf-30/",
+              "unit": "ppb",
+              "value": 76.53,
+              "year": 2025
             },
             {
               "analyte": "cadmium",
-              "value": "<5.00",
-              "unit": "ppb",
-              "lod": "5.00 ppb",
               "lab": "Purity Laboratories for Lead Safe Mama (case 2506210)",
-              "year": 2025,
-              "source": "https://tamararubin.com/2025/07/california-baby-sensitive-sunscreen-spf-30/"
+              "lod": "5.00 ppb",
+              "source": "https://tamararubin.com/2025/07/california-baby-sensitive-sunscreen-spf-30/",
+              "unit": "ppb",
+              "value": "<5.00",
+              "year": 2025
             },
             {
               "analyte": "mercury",
-              "value": "<5.00",
-              "unit": "ppb",
-              "lod": "5.00 ppb",
               "lab": "Purity Laboratories for Lead Safe Mama (case 2506210)",
-              "year": 2025,
-              "source": "https://tamararubin.com/2025/07/california-baby-sensitive-sunscreen-spf-30/"
+              "lod": "5.00 ppb",
+              "source": "https://tamararubin.com/2025/07/california-baby-sensitive-sunscreen-spf-30/",
+              "unit": "ppb",
+              "value": "<5.00",
+              "year": 2025
             },
             {
               "analyte": "arsenic",
-              "value": "<10.00",
-              "unit": "ppb",
-              "lod": "10.00 ppb",
               "lab": "Purity Laboratories for Lead Safe Mama (case 2506210)",
-              "year": 2025,
-              "source": "https://tamararubin.com/2025/07/california-baby-sensitive-sunscreen-spf-30/"
+              "lod": "10.00 ppb",
+              "source": "https://tamararubin.com/2025/07/california-baby-sensitive-sunscreen-spf-30/",
+              "unit": "ppb",
+              "value": "<10.00",
+              "year": 2025
             }
           ],
           "testingLod": "5 ppb cadmium and mercury, 10 ppb arsenic",
@@ -26228,12 +26387,12 @@
           "testingResults": [
             {
               "analyte": "total organic fluorine (PFAS marker), inside and outside",
-              "value": "non-detect",
-              "unit": "ppm",
-              "lod": "10",
               "lab": "EPA certified laboratory (unnamed), commissioned by Mamavation",
-              "year": 2023,
-              "source": "https://mamavation.com/motherhood/diapers-pfas-forever-chemicals.html"
+              "lod": "10",
+              "source": "https://mamavation.com/motherhood/diapers-pfas-forever-chemicals.html",
+              "unit": "ppm",
+              "value": "non-detect",
+              "year": 2023
             }
           ],
           "testingNote": "Mamavation's diaper PFAS investigation (diapers bought Feb to Aug 2023, total fluorine by oxygen flask combustion and ion selective electrode at an EPA certified lab, detection limit 10 ppm) reports Cloth-EEZ as non detect for organic fluorine inside and outside. The Cloth-EEZ item tested is not specified (organic unbleached or regular cotton). Also Lead Safe Mama site search (tamararubin.com/?s=) returned no results for every brand queried on 2026-09-16, including brands she is known to have covered, so it could not confirm absence. Consumer Reports and Clean Label Project could not be searched this session (web search budget exhausted). Mamavation's fluorine test was on diapers bought February to August 2023, a clean result now older than 36 months, so under rule 4.7 it has expired; its OEKO-TEX certificate has expired too.",
@@ -48506,12 +48665,12 @@
           "testingResults": [
             {
               "analyte": "total fluorine (PFAS screen)",
-              "value": "non-detect",
-              "unit": "ppm",
-              "lod": "10 ppm",
               "lab": "EPA certified laboratory commissioned by Mamavation (not named)",
-              "year": 2023,
-              "source": "https://mamavation.com/product-investigations/pfas-forever-chemicals-fluoride-powdered-electrolytes.html"
+              "lod": "10 ppm",
+              "source": "https://mamavation.com/product-investigations/pfas-forever-chemicals-fluoride-powdered-electrolytes.html",
+              "unit": "ppm",
+              "value": "non-detect",
+              "year": 2023
             }
           ],
           "testingNote": "Mamavation (June 13, 2023; EPA certified lab; total fluorine by oxygen flask combustion and ion selective electrode; limit 10 ppm) reported 'GoodOnya Hydrate Daily Electrolytes + Minerals: non-detect total fluorine', listing the same ingredients under older names (Aquamin, Magnesium Sea Minerals). That clean result is now 39 months old and has expired under the 36 month rule, and it was a PFAS screen only; Mamavation's metals data sit behind a member login. The brand's listing says 'third party tested and heavy metals tested' with no numbers. Lead Safe Mama, Consumer Reports and Clean Label Project: nothing for GoodOnya (searched 2026-09-16).",
@@ -57035,12 +57194,12 @@
           "testingResults": [
             {
               "analyte": "organic fluorine (PFAS marker), If You Care Jumbo Baking Cups",
-              "value": "12",
-              "unit": "ppm",
-              "lod": "10 ppm",
               "lab": "EPA certified laboratory (not named by Mamavation)",
-              "year": "2023",
-              "source": "https://mamavation.com/food/cupcake-liners-tested-for-indications-of-pfas-forever-chemicals.html"
+              "lod": "10 ppm",
+              "source": "https://mamavation.com/food/cupcake-liners-tested-for-indications-of-pfas-forever-chemicals.html",
+              "unit": "ppm",
+              "value": "12",
+              "year": "2023"
             }
           ],
           "testingNote": "Mamavation (Cupcake Liners Tested For Indications of PFAS, 2023-03-20, updated 2023-05-09) sent four liners to an EPA certified lab for total fluorine by oxygen flask combustion and ion selective electrode, subtracting free fluoride. It lists \"If You Care Jumbo Baking Cups -- 12 parts per million (ppm) organic fluorine\" under \"Not Our Favorite\", with a detection level of 10 ppm. The Jumbo size is the same paper line as these Large cups but not the exact SKU. Lead Safe Mama, Consumer Reports and Clean Label Project have no test of these cups (searched 2026-09-16). A PFAS marker at or above the detection level in the same greaseproof paper line reads caution under rule 4.7: the paper is the shared ingredient, and a bad result stands until a newer test of these cups finds them clean.",
@@ -57807,12 +57966,12 @@
           "testingResults": [
             {
               "analyte": "organic fluorine (total fluorine screen)",
-              "value": 13,
-              "unit": "ppm",
-              "lod": "10 ppm",
               "lab": "EPA certified laboratory commissioned by Mamavation (not named)",
-              "year": 2021,
-              "source": "https://mamavation.com/beauty/green-beauty-cosmetic-makeup-guide-pfas-forever-chemicals.html"
+              "lod": "10 ppm",
+              "source": "https://mamavation.com/beauty/green-beauty-cosmetic-makeup-guide-pfas-forever-chemicals.html",
+              "unit": "ppm",
+              "value": 13,
+              "year": 2021
             }
           ],
           "testingNote": "Mamavation's green beauty cosmetics PFAS study (EPA certified lab, total fluorine by oxygen flask combustion and ion selective electrode, detection limit 10 ppm) lists 'Inika Cosmetics : Inika Mascara (13 ppm organic fluorine)' in its original round (products bought and tested in 2021). The report does not name which INIKA mascara, so this is a line level result of unknown mechanism, a caution and never a skip; total fluorine is a PFAS screen, not an identified PFAS. Also searched Lead Safe Mama, Consumer Reports and Clean Label Project on 2026-09-16: nothing for INIKA.",
@@ -60402,12 +60561,12 @@
           "testingResults": [
             {
               "analyte": "organic fluorine (PFAS indicator)",
-              "value": "non-detect",
-              "unit": "ppm",
-              "lod": "10",
               "lab": "EPA certified laboratory, not named by Mamavation",
-              "year": "2022 (samples purchased June to October 2021)",
-              "source": "https://mamavation.com/beauty/green-beauty-cosmetic-makeup-guide-pfas-forever-chemicals.html"
+              "lod": "10",
+              "source": "https://mamavation.com/beauty/green-beauty-cosmetic-makeup-guide-pfas-forever-chemicals.html",
+              "unit": "ppm",
+              "value": "non-detect",
+              "year": "2022 (samples purchased June to October 2021)"
             }
           ],
           "testingNote": "Mamavation green beauty PFAS investigation: \"Juice Beauty Phyto Pigments Ultra Natural Mascara (non-detect)\" for organic fluorine, a PFAS indicator. Method: total fluorine by oxygen flask combustion and ion selective electrode at an EPA certified lab Mamavation does not name; \"Our measurements could detect organic fluorine down to 10 ppm\". Products \"were purchased ... between June and October 2021\". Screens PFAS only, at a 10 ppm floor; no heavy metal test of this mascara found. Searched Lead Safe Mama (WordPress site search and lab reports index: no Juice Beauty test) on 2026-09-16; Consumer Reports and Clean Label Project not searched (web search budget exhausted). Mamavation bought the mascaras it tested between June and October 2021, a clean result now older than 36 months, so under rule 4.7 it has expired.",
@@ -69701,9 +69860,9 @@
     "id": "lululemon",
     "brand": "Lululemon",
     "category": "Activewear",
-    "stance": "skip",
-    "reason": "100% synthetic fabrics with PFAS flagged in independent testing and no natural-fiber lines.",
-    "evidence": "PFAS flagged; 100% synthetic",
+    "stance": "careful",
+    "reason": "The verdict depends on the product. Mamavation's lab read 32 ppm total fluorine in the Align High Rise Pant and nothing at all in the Align High Rise Short with Pockets, so one garment carries a finding and its sibling does not. Our bar for failing a textile is 100 ppm organic fluorine, and this is a third of that measured the looser way, with no PFAS compound named. That is a caution, not a skip. The fabrics are synthetic throughout and shed microplastic fibres in the wash, which is the more reliable reason to wash them less and choose cotton where the activity allows it.",
+    "evidence": "Mamavation 2021: Align pant 32 ppm total fluorine, Align short non detect; synthetic throughout",
     "alternative": "Girlfriend Collective (cleanest synthetic) or natural fiber brands",
     "sources": [
       "sustainable-fabrics-that-arent.html"
@@ -69738,7 +69897,86 @@
       "researched": 0,
       "flagged": 0,
       "worst": null
-    }
+    },
+    "products": [
+      {
+        "name": "Lululemon Align High Rise Pant",
+        "asins": [],
+        "verdict": "unrated",
+        "note": "",
+        "origin": "research",
+        "ext": {
+          "frontNotes": {
+            "testing": "Mamavation's EPA certified lab read 32 ppm total fluorine in the crotch of the Align High Rise Pant, and non detect in the Align High Rise Short with Pockets. Total fluorine counts fluorine from any source, not just PFAS, and no compound was named, so rule 4.7 makes this a caution: the 100 ppm bar that fails a textile is for organic fluorine, and this is a third of it measured the looser way. The result is from 2021 and an adverse result does not expire (4.7, Age). Sku scope: the sister short was clean.",
+            "materials": "elastane in direct contact."
+          },
+          "formulaAnswers": {
+            "ingredients": "",
+            "prose": "",
+            "complete": false,
+            "verdict": "n/a",
+            "summary": "A durable good has no ingredient list. What it is made of is the materials check.",
+            "flagged": [],
+            "source": "",
+            "checked": ""
+          },
+          "testingResults": [
+            {
+              "analyte": "total fluorine",
+              "lab": "EPA certified laboratory for Mamavation",
+              "lod": "10 ppm",
+              "outcome": "detected",
+              "unit": "ppm",
+              "value": 32,
+              "year": 2021
+            }
+          ],
+          "testingLod": "10 ppm (ion selective electrode, oxygen flask combustion)",
+          "testingNote": "Mamavation's EPA certified lab read 32 ppm total fluorine in the crotch of the Align High Rise Pant, and non detect in the Align High Rise Short with Pockets. Total fluorine counts fluorine from any source, not just PFAS, and no compound was named, so rule 4.7 makes this a caution: the 100 ppm bar that fails a textile is for organic fluorine, and this is a third of it measured the looser way. The result is from 2021 and an adverse result does not expire (4.7, Age). Sku scope: the sister short was clean.",
+          "testingDate": "2021",
+          "materialsList": "nylon and Lycra elastane (Nulu and Luon knits), synthetic throughout",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "",
+            "heated": false,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "nylon and Lycra elastane (Nulu and Luon knits), synthetic throughout",
+            "treatment": "",
+            "treatmentSource": "",
+            "dispenser": "",
+            "lining": "",
+            "certification": "",
+            "certificationSource": "",
+            "source": "https://mamavation.com/product-investigations/non-toxic-activewear-guide-pfas-workout-leggings-yoga-pants.html",
+            "checked": "2026-09-23"
+          },
+          "verdict": "careful",
+          "dated": "2026-09-23",
+          "why": "section 6 ceiling: materials is caution, testing is caution, on recorded evidence",
+          "fronts": {
+            "formula": "none",
+            "materials": "caution",
+            "legal": "unassessed",
+            "testing": "caution"
+          },
+          "frontOrigin": {
+            "testing": "database",
+            "materials": "database",
+            "formula": "database"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        },
+        "match": [
+          "lululemon align"
+        ]
+      }
+    ]
   },
   {
     "id": "lunchbots",
@@ -72099,12 +72337,12 @@
           "testingResults": [
             {
               "analyte": "ÖKO-TEST ingredient rating (nitrosamines, nitrosatable substances, latex proteins, PAH)",
-              "value": "not read (individual result paywalled)",
-              "unit": "",
-              "lod": "not stated",
               "lab": "laboratories commissioned by ÖKO-TEST (method for nitrosamines: DIN EN 12868, saliva simulant, 1 h at 40 °C)",
-              "year": 2019,
-              "source": "https://www.oekotest.de/gesundheit-medikamente/Yogamatten-Test-Das-sind-die-besten-Matten-fuer-Yoga-Uebungen-_111559_1.html"
+              "lod": "not stated",
+              "source": "https://www.oekotest.de/gesundheit-medikamente/Yogamatten-Test-Das-sind-die-besten-Matten-fuer-Yoga-Uebungen-_111559_1.html",
+              "unit": "",
+              "value": "not read (individual result paywalled)",
+              "year": 2019
             }
           ],
           "testingNote": "ÖKO-TEST (Germany) lab tested this exact product, \"Manduka Eko Yoga Mat, 5 mm cushion, charcoal\", in its yoga mat test (magazine January 2019, products bought Sep/Oct 2018, republished in Jahrbuch 2020). The individual rating and values are behind the paywall and were not read. The public page says five of 18 mats were natural rubber, the lab found nitrosamines in one latex protein contaminated rubber mat and nitrosatable precursors in that mat and two further rubber mats; ratings: 8 sehr gut (all foamed TPE plastic mats named), 5 befriedigend, 5 mangelhaft or ungenügend. Downgrade rules: over 50 µg/kg nitrosamines, over 200 µg/kg nitrosatable substances, over 50 µg/g latex proteins, naphthalene over 100 µg/kg. Caution because an independent test of this product exists with substance findings in most rubber mats, but the eKO's own result is not established. Also searched Lead Safe Mama (Manduka: 0), Mamavation (2020 yoga mat article lists the eKO Lite as a best brand from materials only, no lab test), Clean Label Project (0), Consumer Reports (yoga mat articles are performance reviews, no chemical test) on 2026-09-16. OEKO-TEX Buying Guide lists Manduka LLC (El Segundo, CA) as a STANDARD 100 label holder, product class I, with no certificate number or article scope shown, so it cannot be tied to the eKO. The 2019 OKO-TEST result on this mat was not read (paywalled), so it carries nothing until it is.",
@@ -91386,11 +91624,12 @@
     "brand": "prAna",
     "category": "Apparel",
     "stance": "neutral",
-    "reason": "Mentioned as a brand offering comfortable hemp garments, without a detailed endorsement.",
-    "evidence": "hemp garments",
+    "reason": "Hemp and organic cotton run through parts of the range, which is the right direction for a fibre, but the brand publishes no third party chemical testing and holds no certification that covers the finished garment. Mamavation read no fluorine in the athletic pant at a 10 ppm limit of detection in 2021, which has since expired.",
+    "evidence": "Mamavation 2021: non detect, now expired; hemp and organic cotton lines; no finished garment certification",
     "alternative": "",
     "sources": [
-      "microplastics-in-clothing-and-laundry.html"
+      "microplastics-in-clothing-and-laundry.html",
+      "sustainable-fabrics-that-arent.html"
     ],
     "fronts": {
       "formula": {
@@ -91422,7 +91661,8 @@
       "researched": 0,
       "flagged": 0,
       "worst": null
-    }
+    },
+    "products": []
   },
   {
     "id": "prestige-earth-pan",
@@ -92018,39 +92258,39 @@
           "testingResults": [
             {
               "analyte": "lead",
-              "value": 466.5,
-              "unit": "ppb",
-              "lod": "not stated (detected)",
               "lab": "Purity Laboratories, Inc. for Lead Safe Mama",
-              "year": 2025,
-              "source": "https://tamararubin.com/wp-content/uploads/2025/07/Primally-Pure-Sunscreen-Lab-Report-Image-Poison-Free.png"
+              "lod": "not stated (detected)",
+              "source": "https://tamararubin.com/wp-content/uploads/2025/07/Primally-Pure-Sunscreen-Lab-Report-Image-Poison-Free.png",
+              "unit": "ppb",
+              "value": 466.5,
+              "year": 2025
             },
             {
               "analyte": "cadmium",
-              "value": 273.1,
-              "unit": "ppb",
-              "lod": "not stated (detected)",
               "lab": "Purity Laboratories, Inc. for Lead Safe Mama",
-              "year": 2025,
-              "source": "https://tamararubin.com/wp-content/uploads/2025/07/Primally-Pure-Sunscreen-Lab-Report-Image-Poison-Free.png"
+              "lod": "not stated (detected)",
+              "source": "https://tamararubin.com/wp-content/uploads/2025/07/Primally-Pure-Sunscreen-Lab-Report-Image-Poison-Free.png",
+              "unit": "ppb",
+              "value": 273.1,
+              "year": 2025
             },
             {
               "analyte": "arsenic",
-              "value": null,
-              "unit": "ppb",
-              "lod": "10 ppb (reported as < 10.00)",
               "lab": "Purity Laboratories, Inc. for Lead Safe Mama",
-              "year": 2025,
-              "source": "https://tamararubin.com/wp-content/uploads/2025/07/Primally-Pure-Sunscreen-Lab-Report-Image-Poison-Free.png"
+              "lod": "10 ppb (reported as < 10.00)",
+              "source": "https://tamararubin.com/wp-content/uploads/2025/07/Primally-Pure-Sunscreen-Lab-Report-Image-Poison-Free.png",
+              "unit": "ppb",
+              "value": null,
+              "year": 2025
             },
             {
               "analyte": "mercury",
-              "value": null,
-              "unit": "ppb",
-              "lod": "5 ppb (reported as < 5.00)",
               "lab": "Purity Laboratories, Inc. for Lead Safe Mama",
-              "year": 2025,
-              "source": "https://tamararubin.com/wp-content/uploads/2025/07/Primally-Pure-Sunscreen-Lab-Report-Image-Poison-Free.png"
+              "lod": "5 ppb (reported as < 5.00)",
+              "source": "https://tamararubin.com/wp-content/uploads/2025/07/Primally-Pure-Sunscreen-Lab-Report-Image-Poison-Free.png",
+              "unit": "ppb",
+              "value": null,
+              "year": 2025
             }
           ],
           "testingLod": "5 ppb mercury, 10 ppb arsenic",
@@ -103563,39 +103803,39 @@
           "testingResults": [
             {
               "analyte": "lead",
-              "value": "<5.0",
-              "unit": "ppb",
-              "lod": "5.0 ppb",
               "lab": "Purity Laboratories for Lead Safe Mama (case 2503151)",
-              "year": 2025,
-              "source": "https://tamararubin.com/2025/03/kids-spry-tooth-gel-with-xylitol-fluoride-free-original-flavor/"
+              "lod": "5.0 ppb",
+              "source": "https://tamararubin.com/2025/03/kids-spry-tooth-gel-with-xylitol-fluoride-free-original-flavor/",
+              "unit": "ppb",
+              "value": "<5.0",
+              "year": 2025
             },
             {
               "analyte": "cadmium",
-              "value": "<5.0",
-              "unit": "ppb",
-              "lod": "5.0 ppb",
               "lab": "Purity Laboratories for Lead Safe Mama (case 2503151)",
-              "year": 2025,
-              "source": "https://tamararubin.com/2025/03/kids-spry-tooth-gel-with-xylitol-fluoride-free-original-flavor/"
+              "lod": "5.0 ppb",
+              "source": "https://tamararubin.com/2025/03/kids-spry-tooth-gel-with-xylitol-fluoride-free-original-flavor/",
+              "unit": "ppb",
+              "value": "<5.0",
+              "year": 2025
             },
             {
               "analyte": "mercury",
-              "value": "<5.0",
-              "unit": "ppb",
-              "lod": "5.0 ppb",
               "lab": "Purity Laboratories for Lead Safe Mama (case 2503151)",
-              "year": 2025,
-              "source": "https://tamararubin.com/2025/03/kids-spry-tooth-gel-with-xylitol-fluoride-free-original-flavor/"
+              "lod": "5.0 ppb",
+              "source": "https://tamararubin.com/2025/03/kids-spry-tooth-gel-with-xylitol-fluoride-free-original-flavor/",
+              "unit": "ppb",
+              "value": "<5.0",
+              "year": 2025
             },
             {
               "analyte": "arsenic",
-              "value": "<10.0",
-              "unit": "ppb",
-              "lod": "10.0 ppb",
               "lab": "Purity Laboratories for Lead Safe Mama (case 2503151)",
-              "year": 2025,
-              "source": "https://tamararubin.com/2025/03/kids-spry-tooth-gel-with-xylitol-fluoride-free-original-flavor/"
+              "lod": "10.0 ppb",
+              "source": "https://tamararubin.com/2025/03/kids-spry-tooth-gel-with-xylitol-fluoride-free-original-flavor/",
+              "unit": "ppb",
+              "value": "<10.0",
+              "year": 2025
             }
           ],
           "materialAnswers": {
@@ -105344,9 +105584,9 @@
     "id": "sweaty-betty",
     "brand": "Sweaty Betty",
     "category": "Activewear",
-    "stance": "skip",
-    "reason": "Primarily synthetic with no GOTS or PFAS-free commitment.",
-    "evidence": "primarily synthetic, no certifications",
+    "stance": "neutral",
+    "reason": "Held at skip for being synthetic with no certification, which is a gap rather than a finding, and rule 6 does not let a warning rest on a gap. Mamavation read no fluorine in the Power Sculpt legging at a 10 ppm limit of detection, and that 2021 result has since expired, so nothing currently clears the brand and nothing convicts it. Recycled polyester with elastane, so it sheds.",
+    "evidence": "Mamavation 2021: non detect, now expired; no certification; synthetic throughout",
     "alternative": "",
     "sources": [
       "sustainable-fabrics-that-arent.html"
@@ -105381,7 +105621,8 @@
       "researched": 0,
       "flagged": 0,
       "worst": null
-    }
+    },
+    "products": []
   },
   {
     "id": "swiffer",
@@ -108484,12 +108725,12 @@
           "testingResults": [
             {
               "analyte": "total organic fluorine (PFAS marker), inside and outside",
-              "value": "non-detect",
-              "unit": "ppm",
-              "lod": "10",
               "lab": "EPA certified laboratory (unnamed), commissioned by Mamavation",
-              "year": 2023,
-              "source": "https://mamavation.com/motherhood/diapers-pfas-forever-chemicals.html"
+              "lod": "10",
+              "source": "https://mamavation.com/motherhood/diapers-pfas-forever-chemicals.html",
+              "unit": "ppm",
+              "value": "non-detect",
+              "year": 2023
             }
           ],
           "testingNote": "Mamavation's diaper PFAS investigation (bought Feb to Aug 2023, total fluorine at an EPA certified lab, detection limit 10 ppm) reports \"Thirsties Natural One Size Diaper (cloth)\" as non detect for organic fluorine inside and outside. Lead Safe Mama site search (tamararubin.com/?s=) returned no results for every brand queried on 2026-09-16, including brands she is known to have covered, so it could not confirm absence. Consumer Reports and Clean Label Project could not be searched this session (web search budget exhausted). Mamavation's fluorine test was on diapers bought February to August 2023, a clean result now older than 36 months, so under rule 4.7 it has expired.",
@@ -108799,48 +109040,48 @@
           "testingResults": [
             {
               "analyte": "total phthalates (DEHP 127, DIBP 41)",
-              "value": 170,
-              "unit": "ppb",
-              "lod": "not stated",
               "lab": "EPA certified laboratory commissioned by Mamavation (not named)",
-              "year": 2026,
-              "source": "https://mamavation.com/supplements/vitamin-d.html"
+              "lod": "not stated",
+              "source": "https://mamavation.com/supplements/vitamin-d.html",
+              "unit": "ppb",
+              "value": 170,
+              "year": 2026
             },
             {
               "analyte": "fluxapyroxad (fluorinated pesticide)",
-              "value": 0.022,
-              "unit": "mg/kg",
-              "lod": "mostly 10 ppb (18 to 25 ppb for a few analytes)",
               "lab": "EPA certified laboratory commissioned by Mamavation (not named)",
-              "year": 2026,
-              "source": "https://mamavation.com/supplements/vitamin-d.html"
+              "lod": "mostly 10 ppb (18 to 25 ppb for a few analytes)",
+              "source": "https://mamavation.com/supplements/vitamin-d.html",
+              "unit": "mg/kg",
+              "value": 0.022,
+              "year": 2026
             },
             {
               "analyte": "bixafen",
-              "value": 0.01,
-              "unit": "mg/kg",
-              "lod": "mostly 10 ppb (18 to 25 ppb for a few analytes)",
               "lab": "EPA certified laboratory commissioned by Mamavation (not named)",
-              "year": 2026,
-              "source": "https://mamavation.com/supplements/vitamin-d.html"
+              "lod": "mostly 10 ppb (18 to 25 ppb for a few analytes)",
+              "source": "https://mamavation.com/supplements/vitamin-d.html",
+              "unit": "mg/kg",
+              "value": 0.01,
+              "year": 2026
             },
             {
               "analyte": "lead, arsenic, cadmium, mercury",
-              "value": "non-detect",
-              "unit": null,
-              "lod": "not stated",
               "lab": "EPA certified laboratory commissioned by Mamavation (not named)",
-              "year": 2026,
-              "source": "https://mamavation.com/supplements/vitamin-d.html"
+              "lod": "not stated",
+              "source": "https://mamavation.com/supplements/vitamin-d.html",
+              "unit": null,
+              "value": "non-detect",
+              "year": 2026
             },
             {
               "analyte": "PFAS (targeted analytes) and glyphosate",
-              "value": "non-detect",
-              "unit": null,
-              "lod": "glyphosate 10 ppb; PFAS limit not stated",
               "lab": "EPA certified laboratory commissioned by Mamavation (not named)",
-              "year": 2026,
-              "source": "https://mamavation.com/supplements/vitamin-d.html"
+              "lod": "glyphosate 10 ppb; PFAS limit not stated",
+              "source": "https://mamavation.com/supplements/vitamin-d.html",
+              "unit": null,
+              "value": "non-detect",
+              "year": 2026
             }
           ],
           "testingNote": "Mamavation's vitamin D study (published June 8, 2026; eleven products; two EPA certified labs; glyphosate by LC-MS/MS at 10 ppb; 587 pesticides mostly at 10 ppb) tested 'Thorne Vitamin D + K2 (drops)', the SKU the store names, in the same medium chain triglyceride and mixed tocopherol base as this D3 only SKU: PFAS non detect; 'Non-detect lead, non-detect arsenic, non-detect cadmium, & non-detect mercury' (metal detection limits not stated, so not citable as a pass); 'Phthalates : 170 ppb (127 ppb DEHP, 41 ppb DIBP)'; '500+ Pesticides : 0.010 mg/kg Bixafen, 0.022 mg/kg Fluxapyroxad (PFAS \"forever pesticide\")'; glyphosate non detect. Mamavation placed it under 'Not Our Favorite'. For the D3 only liquid this is a sibling result with an unknown mechanism (possibly the shared oil base), so it reads caution, never skip. Lead Safe Mama, Consumer Reports and Clean Label Project: no test of either Thorne vitamin D liquid (searched 2026-09-16). Mamavation's June 2026 phthalate result was on Thorne's D plus K2 drops, not this D3 only liquid.",
@@ -111407,39 +111648,39 @@
           "testingResults": [
             {
               "analyte": "cadmium (brand COA, Oatmeal Chocolate Chip flavor)",
-              "value": 0.465,
-              "unit": "mcg/serving (about 12.7 ppb at 36.5 g)",
-              "lod": "not stated",
               "lab": "Summit Nutritional Laboratories (brand commissioned)",
-              "year": 2026,
-              "source": "https://cdn.shopify.com/s/files/1/0866/7664/files/WPI_WS_Oatmeal_Chocolate_Chip_30_Serv_TPL_GF_WPI_WS_Oatmeal_Chocolate_Chip_30_Serv_-_26030431_-_Heavy_Metals_Micro.pdf?v=1779717456"
+              "lod": "not stated",
+              "source": "https://cdn.shopify.com/s/files/1/0866/7664/files/WPI_WS_Oatmeal_Chocolate_Chip_30_Serv_TPL_GF_WPI_WS_Oatmeal_Chocolate_Chip_30_Serv_-_26030431_-_Heavy_Metals_Micro.pdf?v=1779717456",
+              "unit": "mcg/serving (about 12.7 ppb at 36.5 g)",
+              "value": 0.465,
+              "year": 2026
             },
             {
               "analyte": "lead (brand COA, Oatmeal Chocolate Chip flavor)",
-              "value": 0.161,
-              "unit": "mcg/serving (about 4.4 ppb)",
-              "lod": "not stated",
               "lab": "Summit Nutritional Laboratories (brand commissioned)",
-              "year": 2026,
-              "source": "https://cdn.shopify.com/s/files/1/0866/7664/files/WPI_WS_Oatmeal_Chocolate_Chip_30_Serv_TPL_GF_WPI_WS_Oatmeal_Chocolate_Chip_30_Serv_-_26030431_-_Heavy_Metals_Micro.pdf?v=1779717456"
+              "lod": "not stated",
+              "source": "https://cdn.shopify.com/s/files/1/0866/7664/files/WPI_WS_Oatmeal_Chocolate_Chip_30_Serv_TPL_GF_WPI_WS_Oatmeal_Chocolate_Chip_30_Serv_-_26030431_-_Heavy_Metals_Micro.pdf?v=1779717456",
+              "unit": "mcg/serving (about 4.4 ppb)",
+              "value": 0.161,
+              "year": 2026
             },
             {
               "analyte": "arsenic (brand COA, Oatmeal Chocolate Chip flavor)",
-              "value": 0.107,
-              "unit": "mcg/serving (about 2.9 ppb)",
-              "lod": "not stated",
               "lab": "Summit Nutritional Laboratories (brand commissioned)",
-              "year": 2026,
-              "source": "https://cdn.shopify.com/s/files/1/0866/7664/files/WPI_WS_Oatmeal_Chocolate_Chip_30_Serv_TPL_GF_WPI_WS_Oatmeal_Chocolate_Chip_30_Serv_-_26030431_-_Heavy_Metals_Micro.pdf?v=1779717456"
+              "lod": "not stated",
+              "source": "https://cdn.shopify.com/s/files/1/0866/7664/files/WPI_WS_Oatmeal_Chocolate_Chip_30_Serv_TPL_GF_WPI_WS_Oatmeal_Chocolate_Chip_30_Serv_-_26030431_-_Heavy_Metals_Micro.pdf?v=1779717456",
+              "unit": "mcg/serving (about 2.9 ppb)",
+              "value": 0.107,
+              "year": 2026
             },
             {
               "analyte": "mercury (brand COA, Oatmeal Chocolate Chip flavor)",
-              "value": 0.107,
-              "unit": "mcg/serving (about 2.9 ppb)",
-              "lod": "not stated",
               "lab": "Summit Nutritional Laboratories (brand commissioned)",
-              "year": 2026,
-              "source": "https://cdn.shopify.com/s/files/1/0866/7664/files/WPI_WS_Oatmeal_Chocolate_Chip_30_Serv_TPL_GF_WPI_WS_Oatmeal_Chocolate_Chip_30_Serv_-_26030431_-_Heavy_Metals_Micro.pdf?v=1779717456"
+              "lod": "not stated",
+              "source": "https://cdn.shopify.com/s/files/1/0866/7664/files/WPI_WS_Oatmeal_Chocolate_Chip_30_Serv_TPL_GF_WPI_WS_Oatmeal_Chocolate_Chip_30_Serv_-_26030431_-_Heavy_Metals_Micro.pdf?v=1779717456",
+              "unit": "mcg/serving (about 2.9 ppb)",
+              "value": 0.107,
+              "year": 2026
             }
           ],
           "testingNote": "Correction of the recorded basis. The BarBend claim cannot set a front: its review (updated May 22, 2025) says 'BarBend worked with an accredited lab to gather testing data on heavy metal content' and 'The powder scored in the top 10% of all tested protein supplements for label accuracy as well as the presence of pesticides, phthalates, and bisphenols' with no lab name, flavor, numbers or limits, and BarBend earns affiliate income from the brand. Clean Label Project's protein study (one sheet dated June 2025) lists 'Transparent Labs Whey Protein Isolate' among 165 products tested but not among the Clean Sixteen that were non detect for all four metals; individual results are not published, and absence from the list is not a finding. The evidence that reads caution: the Amazon listing for this ASIN carries 'WARNING: Consuming this product can expose you to chemicals including lead', and the brand's own certificate of analysis (tier 3) for a sibling cocoa containing flavor, Oatmeal Chocolate Chip lot 26030431 (Summit Nutritional Laboratories, ISO/IEC 17025, tested 03/26/2026 to 04/02/2026, serving 36.5 g), reports cadmium 0.465 mcg/serving (about 12.7 ppb, above the 5 ppb bar in rule 4.7), lead 0.161 mcg/serving (about 4.4 ppb), arsenic 0.107 and mercury 0.107 mcg/serving (about 2.9 ppb each). Cocoa is a known cadmium carrier and this ASIN contains cocoa. Lead Safe Mama and Mamavation have not tested this product; Consumer Reports' site search was unavailable on 2026-09-16.",
@@ -112164,12 +112405,12 @@
           "testingResults": [
             {
               "analyte": "total fluorine (PFAS screen)",
-              "value": "non-detect",
-              "unit": "ppm",
-              "lod": "10 ppm",
               "lab": "EPA certified laboratory commissioned by Mamavation (not named)",
-              "year": 2023,
-              "source": "https://mamavation.com/product-investigations/pfas-forever-chemicals-fluoride-powdered-electrolytes.html"
+              "lod": "10 ppm",
+              "source": "https://mamavation.com/product-investigations/pfas-forever-chemicals-fluoride-powdered-electrolytes.html",
+              "unit": "ppm",
+              "value": "non-detect",
+              "year": 2023
             }
           ],
           "testingNote": "Mamavation (June 13, 2023; EPA certified lab; limit 10 ppm) reported 'Trioral Oral Rehydration Salts: non-detect total fluorine' with this same four ingredient formula (pack size not stated). The result is 39 months old and has expired under the 36 month rule; it was a PFAS screen only, and the metals data are member only. Lead Safe Mama, Consumer Reports and Clean Label Project: nothing for TRIORAL (searched 2026-09-16).",
@@ -117258,9 +117499,9 @@
     "id": "vuori",
     "brand": "Vuori",
     "category": "Activewear",
-    "stance": "skip",
-    "reason": "Lifestyle-first synthetic brand with no natural-fiber focus and no PFAS or BPA commitments.",
-    "evidence": "synthetic, no PFAS/BPA commitments",
+    "stance": "careful",
+    "reason": "Mamavation's lab read 23 ppm organic fluorine in the Elevation legging. That is a real finding and it does not expire, but it sits well below the 100 ppm that fails a textile and no PFAS compound was named, so it caps the brand at careful rather than skip. Everything else about the range is synthetic, which is a microplastic shedding question rather than a chemistry one.",
+    "evidence": "Mamavation 2021: 23 ppm organic fluorine in the Elevation legging; synthetic throughout",
     "alternative": "",
     "sources": [
       "sustainable-fabrics-that-arent.html"
@@ -117295,7 +117536,86 @@
       "researched": 0,
       "flagged": 0,
       "worst": null
-    }
+    },
+    "products": [
+      {
+        "name": "Vuori Elevation Performance Legging",
+        "asins": [],
+        "verdict": "unrated",
+        "note": "",
+        "origin": "research",
+        "ext": {
+          "frontNotes": {
+            "testing": "Mamavation's EPA certified lab read 23 ppm organic fluorine in the crotch of the Elevation Performance Black Camo legging. Below the 100 ppm bar in rule 4.7 and no compound named, so a caution rather than a fail. From 2021, and an adverse result does not expire. Sku scope.",
+            "materials": "elastane in direct contact."
+          },
+          "formulaAnswers": {
+            "ingredients": "",
+            "prose": "",
+            "complete": false,
+            "verdict": "n/a",
+            "summary": "A durable good has no ingredient list. What it is made of is the materials check.",
+            "flagged": [],
+            "source": "",
+            "checked": ""
+          },
+          "testingResults": [
+            {
+              "analyte": "organic fluorine",
+              "lab": "EPA certified laboratory for Mamavation",
+              "lod": "10 ppm",
+              "outcome": "detected",
+              "unit": "ppm",
+              "value": 23,
+              "year": 2021
+            }
+          ],
+          "testingLod": "10 ppm (ion selective electrode, oxygen flask combustion)",
+          "testingNote": "Mamavation's EPA certified lab read 23 ppm organic fluorine in the crotch of the Elevation Performance Black Camo legging. Below the 100 ppm bar in rule 4.7 and no compound named, so a caution rather than a fail. From 2021, and an adverse result does not expire. Sku scope.",
+          "testingDate": "2021",
+          "materialsList": "polyester and elastane performance knits, synthetic throughout",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "",
+            "heated": false,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "polyester and elastane performance knits, synthetic throughout",
+            "treatment": "",
+            "treatmentSource": "",
+            "dispenser": "",
+            "lining": "",
+            "certification": "",
+            "certificationSource": "",
+            "source": "https://mamavation.com/product-investigations/non-toxic-activewear-guide-pfas-workout-leggings-yoga-pants.html",
+            "checked": "2026-09-23"
+          },
+          "verdict": "careful",
+          "dated": "2026-09-23",
+          "why": "section 6 ceiling: materials is caution, testing is caution, on recorded evidence",
+          "fronts": {
+            "formula": "none",
+            "materials": "caution",
+            "legal": "unassessed",
+            "testing": "caution"
+          },
+          "frontOrigin": {
+            "testing": "database",
+            "materials": "database",
+            "formula": "database"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        },
+        "match": [
+          "vuori elevation"
+        ]
+      }
+    ]
   },
   {
     "id": "w3ll-people",
@@ -119625,39 +119945,39 @@
           "testingResults": [
             {
               "analyte": "lead",
-              "value": "non detect",
-              "unit": "ppm",
-              "lod": "not stated in post; LSM methodology says generally single digit ppm",
               "lab": "Lead Safe Mama (Tamara Rubin), XRF, consumer goods mode",
-              "year": 2021,
-              "source": "https://tamararubin.com/2021/01/i-bought-a-set-of-three-of-these-stainless-baking-sheets-for-my-sons-college-apartment-he-loves-them/"
+              "lod": "not stated in post; LSM methodology says generally single digit ppm",
+              "source": "https://tamararubin.com/2021/01/i-bought-a-set-of-three-of-these-stainless-baking-sheets-for-my-sons-college-apartment-he-loves-them/",
+              "unit": "ppm",
+              "value": "non detect",
+              "year": 2021
             },
             {
               "analyte": "cadmium",
-              "value": "non detect",
-              "unit": "ppm",
-              "lod": "not stated in post; LSM methodology says generally single digit ppm",
               "lab": "Lead Safe Mama (Tamara Rubin), XRF, consumer goods mode",
-              "year": 2021,
-              "source": "https://tamararubin.com/2021/01/i-bought-a-set-of-three-of-these-stainless-baking-sheets-for-my-sons-college-apartment-he-loves-them/"
+              "lod": "not stated in post; LSM methodology says generally single digit ppm",
+              "source": "https://tamararubin.com/2021/01/i-bought-a-set-of-three-of-these-stainless-baking-sheets-for-my-sons-college-apartment-he-loves-them/",
+              "unit": "ppm",
+              "value": "non detect",
+              "year": 2021
             },
             {
               "analyte": "nickel",
-              "value": "1092",
-              "unit": "ppm",
-              "lod": "+/- 234 ppm reading error; LOD not stated",
               "lab": "Lead Safe Mama (Tamara Rubin), XRF, consumer goods mode",
-              "year": 2021,
-              "source": "https://tamararubin.com/2021/01/i-bought-a-set-of-three-of-these-stainless-baking-sheets-for-my-sons-college-apartment-he-loves-them/"
+              "lod": "+/- 234 ppm reading error; LOD not stated",
+              "source": "https://tamararubin.com/2021/01/i-bought-a-set-of-three-of-these-stainless-baking-sheets-for-my-sons-college-apartment-he-loves-them/",
+              "unit": "ppm",
+              "value": "1092",
+              "year": 2021
             },
             {
               "analyte": "chromium",
-              "value": "131500",
-              "unit": "ppm",
-              "lod": "+/- 2,000 ppm reading error; LOD not stated",
               "lab": "Lead Safe Mama (Tamara Rubin), XRF, consumer goods mode",
-              "year": 2021,
-              "source": "https://tamararubin.com/2021/01/i-bought-a-set-of-three-of-these-stainless-baking-sheets-for-my-sons-college-apartment-he-loves-them/"
+              "lod": "+/- 2,000 ppm reading error; LOD not stated",
+              "source": "https://tamararubin.com/2021/01/i-bought-a-set-of-three-of-these-stainless-baking-sheets-for-my-sons-college-apartment-he-loves-them/",
+              "unit": "ppm",
+              "value": "131500",
+              "year": 2021
             }
           ],
           "testingNote": "Lead Safe Mama XRF test (posted Jan 16, 2021) of the Wildone Baking Sheet Set of 3, 9/12/16 inch (Amazon B07NNQWMCW, the same Wildone stainless baking sheet line, not this 2 pack ASIN): chromium 131,500 +/- 2,000 ppm, nickel 1,092 +/- 234 ppm, iron 861,000 ppm, manganese 4,065 ppm, vanadium 1,028 ppm; 'No other metals were detected in consumer goods mode', so lead, cadmium, mercury and arsenic were non detect. The post gives no limit; Lead Safe Mama's methodology page says a non detect is 'below the threshold of detection of the XRF instrument, which is generally below the range of single-digit parts per million'. Rule 4.7 treats a durable XRF non detect as a pass for the line. The chromium and nickel readings show a low nickel steel, not 18/8. Also searched Mamavation, Consumer Reports and Clean Label Project on 2026-09-16: nothing for Wildone.",
@@ -129224,57 +129544,57 @@
           "testingResults": [
             {
               "analyte": "ochratoxin A",
-              "value": "<0.003",
-              "unit": "ppm",
-              "lod": "0.003 (reporting limit)",
               "lab": "Actlabs Agriculture, commissioned by the maker via Eurofins (not independent)",
-              "year": 2025,
-              "source": "https://cdn.shopify.com/s/files/1/0484/7475/1135/files/Mycotoxin_Analysis_-_Hondo_Bio_Decaf_90-3309.pdf"
+              "lod": "0.003 (reporting limit)",
+              "source": "https://cdn.shopify.com/s/files/1/0484/7475/1135/files/Mycotoxin_Analysis_-_Hondo_Bio_Decaf_90-3309.pdf",
+              "unit": "ppm",
+              "value": "<0.003",
+              "year": 2025
             },
             {
               "analyte": "aflatoxins B1, B2, G1, G2 (each)",
-              "value": "<1",
-              "unit": "ppb",
-              "lod": "1 (reporting limit)",
               "lab": "Actlabs Agriculture, commissioned by the maker via Eurofins (not independent)",
-              "year": 2025,
-              "source": "https://cdn.shopify.com/s/files/1/0484/7475/1135/files/Mycotoxin_Analysis_-_Hondo_Bio_Decaf_90-3309.pdf"
+              "lod": "1 (reporting limit)",
+              "source": "https://cdn.shopify.com/s/files/1/0484/7475/1135/files/Mycotoxin_Analysis_-_Hondo_Bio_Decaf_90-3309.pdf",
+              "unit": "ppb",
+              "value": "<1",
+              "year": 2025
             },
             {
               "analyte": "lead",
-              "value": "<0.017",
-              "unit": "mg/kg",
-              "lod": "0.017 (reported as less than)",
               "lab": "Eurofins Essais Alimentaires, Longueuil (ICP-MS, AOAC 2011.14), commissioned by the maker (not independent)",
-              "year": 2025,
-              "source": "https://cdn.shopify.com/s/files/1/0484/7475/1135/files/Chemical_Analysis_-_Hondo_Bio_Decaf_90-3309.pdf"
+              "lod": "0.017 (reported as less than)",
+              "source": "https://cdn.shopify.com/s/files/1/0484/7475/1135/files/Chemical_Analysis_-_Hondo_Bio_Decaf_90-3309.pdf",
+              "unit": "mg/kg",
+              "value": "<0.017",
+              "year": 2025
             },
             {
               "analyte": "cadmium",
-              "value": "<0.008",
-              "unit": "mg/kg",
-              "lod": "0.008 (reported as less than)",
               "lab": "Eurofins Essais Alimentaires, commissioned by the maker (not independent)",
-              "year": 2025,
-              "source": "https://cdn.shopify.com/s/files/1/0484/7475/1135/files/Chemical_Analysis_-_Hondo_Bio_Decaf_90-3309.pdf"
+              "lod": "0.008 (reported as less than)",
+              "source": "https://cdn.shopify.com/s/files/1/0484/7475/1135/files/Chemical_Analysis_-_Hondo_Bio_Decaf_90-3309.pdf",
+              "unit": "mg/kg",
+              "value": "<0.008",
+              "year": 2025
             },
             {
               "analyte": "mercury",
-              "value": "<0.01",
-              "unit": "mg/kg",
-              "lod": "0.01 (reported as less than)",
               "lab": "Eurofins Essais Alimentaires, commissioned by the maker (not independent)",
-              "year": 2025,
-              "source": "https://cdn.shopify.com/s/files/1/0484/7475/1135/files/Chemical_Analysis_-_Hondo_Bio_Decaf_90-3309.pdf"
+              "lod": "0.01 (reported as less than)",
+              "source": "https://cdn.shopify.com/s/files/1/0484/7475/1135/files/Chemical_Analysis_-_Hondo_Bio_Decaf_90-3309.pdf",
+              "unit": "mg/kg",
+              "value": "<0.01",
+              "year": 2025
             },
             {
               "analyte": "arsenic",
-              "value": "0.03",
-              "unit": "mg/kg",
-              "lod": "not stated",
               "lab": "Eurofins Essais Alimentaires, commissioned by the maker (not independent)",
-              "year": 2025,
-              "source": "https://cdn.shopify.com/s/files/1/0484/7475/1135/files/Chemical_Analysis_-_Hondo_Bio_Decaf_90-3309.pdf"
+              "lod": "not stated",
+              "source": "https://cdn.shopify.com/s/files/1/0484/7475/1135/files/Chemical_Analysis_-_Hondo_Bio_Decaf_90-3309.pdf",
+              "unit": "mg/kg",
+              "value": "0.03",
+              "year": 2025
             }
           ],
           "testingNote": "Searched Mamavation (coffee investigations, including the Aug 2024 premium coffee round, which tested 11 brands and not this one) and Lead Safe Mama site search (tamararubin.com/?s=) returned no results for every brand queried on 2026-09-16, including brands she is known to have covered, so it could not confirm absence; no independent test of Biodynamic Décaf found. Consumer Reports and Clean Label Project could not be searched this session (web search budget exhausted). The results below are maker commissioned certificates for lot 90-3309 (HONDO BIO DECAF), published on biodynamic.coffee/pages/lab-results: Actlabs Agriculture mycotoxin panel (report CA25-D-DEC03-023, Dec 2025) all below reporting limits, and Eurofins Essais Alimentaires metals by ICP-MS (certificate M2589098, Dec 2025). They are not independent watchdog tests, cover one lot, and include no acrylamide, glyphosate or pesticide results.",
@@ -133201,5 +133521,225 @@
         }
       }
     ]
+  },
+  {
+    "id": "lularoe",
+    "brand": "LuLaRoe",
+    "category": "Activewear",
+    "stance": "skip",
+    "reason": "The worst single result in Mamavation's study of 42 garments: 284 ppm organic fluorine in the crotch of the leggings, nearly three times the level that fails a textile under California's juvenile products law, which is the bar our rule 4.7 takes. The softness is the tell. The brand's own head of production wrote that the fibres are weakened to get the buttery hand that made them sell, and the same leggings drew class actions over holes and tears within a wear. Washington's attorney general separately took the company to a consent decree over running a pyramid scheme, so nothing the brand says about itself can clear a front.",
+    "evidence": "Mamavation 2021: 284 ppm organic fluorine, the study's highest; Washington AG consent decree February 2021 over pyramid scheme claims; defect class actions",
+    "alternative": "Maggie's Organics or PuraKai for an organic cotton legging",
+    "sources": [
+      "sustainable-fabrics-that-arent.html"
+    ],
+    "fronts": {
+      "formula": {
+        "status": "none",
+        "note": "A durable good has no ingredient list. What it is made of is the materials check.",
+        "origin": "database"
+      }
+    },
+    "reviewed": true,
+    "article": "sustainable-fabrics-that-arent.html",
+    "generalises": true,
+    "products": [
+      {
+        "name": "LuLaRoe Leggings",
+        "asins": [],
+        "verdict": "unrated",
+        "note": "",
+        "origin": "research",
+        "ext": {
+          "frontNotes": {
+            "testing": "Mamavation's EPA certified lab read 284 ppm organic fluorine in the crotch of LuLaRoe leggings, the highest result in a study of 42 garments and nearly three times the 100 ppm bar rule 4.7 takes from California Health and Safety Code 108945. A fail. From 2021, and an adverse result does not expire until a newer independent test of the same garment finds it clean. Line scope: LuLaRoe sells one legging in many prints.",
+            "materials": "spandex in direct contact.",
+            "legal": "Checked CPSC recall listings and recall news by web search on 2026-09-23. No product safety recall found. Two other things are on record. Washington's attorney general sued the company in January 2019 over pyramid scheme claims and it settled in February 2021 for 4.75 million dollars under a consent decree, four million of it restitution to retailers; the company denied wrongdoing. That is a representation finding under rule 5.1, so nothing the brand says about itself can clear a front on its own. Separately, buyers brought class actions alleging the leggings tore within a wear, which the head of production addressed internally by saying the fibres are weakened to make them soft. A durability complaint is not a safety finding and does not set this front by itself."
+          },
+          "formulaAnswers": {
+            "ingredients": "",
+            "prose": "",
+            "complete": false,
+            "verdict": "n/a",
+            "summary": "A durable good has no ingredient list. What it is made of is the materials check.",
+            "flagged": [],
+            "source": "",
+            "checked": ""
+          },
+          "testingResults": [
+            {
+              "analyte": "organic fluorine",
+              "lab": "EPA certified laboratory for Mamavation",
+              "lod": "10 ppm",
+              "outcome": "detected",
+              "unit": "ppm",
+              "value": 284,
+              "year": 2021
+            }
+          ],
+          "testingLod": "10 ppm (ion selective electrode, oxygen flask combustion)",
+          "testingNote": "Mamavation's EPA certified lab read 284 ppm organic fluorine in the crotch of LuLaRoe leggings, the highest result in a study of 42 garments and nearly three times the 100 ppm bar rule 4.7 takes from California Health and Safety Code 108945. A fail. From 2021, and an adverse result does not expire until a newer independent test of the same garment finds it clean. Line scope: LuLaRoe sells one legging in many prints.",
+          "testingDate": "2021",
+          "materialsList": "polyester and spandex brushed to a soft hand, synthetic throughout",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "",
+            "heated": false,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "material": "polyester and spandex brushed to a soft hand, synthetic throughout",
+            "treatment": "",
+            "treatmentSource": "",
+            "dispenser": "",
+            "lining": "",
+            "certification": "",
+            "certificationSource": "",
+            "source": "https://mamavation.com/product-investigations/non-toxic-activewear-guide-pfas-workout-leggings-yoga-pants.html",
+            "checked": "2026-09-23"
+          },
+          "legalNote": "Checked CPSC recall listings and recall news by web search on 2026-09-23. No product safety recall found. Two other things are on record. Washington's attorney general sued the company in January 2019 over pyramid scheme claims and it settled in February 2021 for 4.75 million dollars under a consent decree, four million of it restitution to retailers; the company denied wrongdoing. That is a representation finding under rule 5.1, so nothing the brand says about itself can clear a front on its own. Separately, buyers brought class actions alleging the leggings tore within a wear, which the head of production addressed internally by saying the fibres are weakened to make them soft. A durability complaint is not a safety finding and does not set this front by itself.",
+          "verdict": "skip",
+          "dated": "2026-09-23",
+          "why": "section 6 ceiling: materials is caution, legal is caution, testing is fail, on recorded evidence",
+          "fronts": {
+            "formula": "none",
+            "materials": "caution",
+            "legal": "caution",
+            "testing": "fail"
+          },
+          "frontOrigin": {
+            "testing": "database",
+            "materials": "database",
+            "formula": "database",
+            "legal": "database"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        },
+        "match": [
+          "lularoe leggings",
+          "lularoe legging"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "branwyn",
+    "brand": "BRANWYN",
+    "category": "Activewear",
+    "stance": "good",
+    "reason": "Merino wool rather than a petrochemical knit, which takes the shedding question off the table before any chemistry is measured. The wool is ZQ+ certified and the finished garments hold OEKO-TEX Standard 100. Intertek screened fabrics, trims and fasteners for BPA, PFAS and phthalates in 2024 and again in 2025 and found none, and the report is published rather than described. The brand chose those samples, so it counts as a certificate of analysis rather than an independent study, and the certification stack is what carries the verdict.",
+    "evidence": "ZQ+ merino, OEKO-TEX Standard 100, RWS; Intertek non detect for BPA, PFAS and phthalates 2024 and 2025 (brand commissioned)",
+    "alternative": "",
+    "sources": [
+      "sustainable-fabrics-that-arent.html"
+    ],
+    "fronts": {
+      "formula": {
+        "status": "none",
+        "note": "A durable good has no ingredient list. What it is made of is the materials check.",
+        "origin": "database"
+      }
+    },
+    "reviewed": true,
+    "article": "sustainable-fabrics-that-arent.html",
+    "generalises": true,
+    "products": []
+  },
+  {
+    "id": "maggies-organics",
+    "brand": "Maggie's Organics",
+    "category": "Activewear",
+    "stance": "good",
+    "reason": "GOTS certified organic cotton, and GOTS is the rare textile standard that bans fluorinated finishes outright rather than testing for them after the fact, so the certification answers the question the category is bought to answer. Some lines are Regenerative Organic Certified as well. Employee owned since 1992 and a Fair Trade Federation member. Mamavation's lab found no fluorine in the Blackout legging, though that 2021 result has since expired and the certification is what stands.",
+    "evidence": "GOTS certified organic cotton, some lines Regenerative Organic Certified, Fair Trade Federation; Mamavation 2021 non detect, now expired",
+    "alternative": "",
+    "sources": [
+      "sustainable-fabrics-that-arent.html"
+    ],
+    "fronts": {
+      "formula": {
+        "status": "none",
+        "note": "A durable good has no ingredient list. What it is made of is the materials check.",
+        "origin": "database"
+      }
+    },
+    "reviewed": true,
+    "article": "sustainable-fabrics-that-arent.html",
+    "generalises": true,
+    "products": []
+  },
+  {
+    "id": "purakai",
+    "brand": "PuraKai",
+    "category": "Activewear",
+    "stance": "good",
+    "reason": "The only legging here with a current independent fluorine number rather than a certificate or an expired one. Applied Technical Services screened the fabric in October 2024 and measured total fluorine below 2 parts per million, against the 100 ppm that fails a textile. The cloth is 92 percent GOTS certified organic cotton and 8 percent spandex, sewn with cotton thread, with no polyester in the garment, and it is knitted, cut, sewn and dyed in one Los Angeles factory.",
+    "evidence": "Applied Technical Services October 2024: total fluorine below 2 ppm; 92 percent GOTS organic cotton with 8 percent spandex; made in Los Angeles",
+    "alternative": "",
+    "sources": [
+      "sustainable-fabrics-that-arent.html"
+    ],
+    "fronts": {
+      "formula": {
+        "status": "none",
+        "note": "A durable good has no ingredient list. What it is made of is the materials check.",
+        "origin": "database"
+      }
+    },
+    "reviewed": true,
+    "article": "sustainable-fabrics-that-arent.html",
+    "generalises": true,
+    "products": []
+  },
+  {
+    "id": "definite-articles",
+    "brand": "Definite Articles",
+    "category": "Activewear",
+    "stance": "neutral",
+    "reason": "A certified B Corp that says every garment is independently tested for BPA, PFAS and fifty other substances, and will send the report if you ask. It names no laboratory, no date and no limit of detection, and publishes nothing, which makes it a claim rather than a document and leaves it unable to set a front under rule 4.2. The fabrics are engineered and recycled synthetics carrying CiCLO, so they shed. Mamavation rates the brand highly and carries a discount code with it; its 2021 non detect has expired.",
+    "evidence": "B Corp; PFAS free claim names no lab, date or detection limit and is unpublished (tier 4); recycled synthetics with CiCLO; Mamavation 2021 non detect, now expired, and Mamavation carries a discount code with the brand",
+    "alternative": "",
+    "sources": [
+      "sustainable-fabrics-that-arent.html"
+    ],
+    "fronts": {
+      "formula": {
+        "status": "none",
+        "note": "A durable good has no ingredient list. What it is made of is the materials check.",
+        "origin": "database"
+      }
+    },
+    "reviewed": true,
+    "article": "sustainable-fabrics-that-arent.html",
+    "generalises": true,
+    "products": []
+  },
+  {
+    "id": "groceries-apparel",
+    "brand": "Groceries Apparel",
+    "category": "Activewear",
+    "stance": "neutral",
+    "reason": "Organic cotton dyed with fruit and vegetable dyes and cut and sewn in Los Angeles, which is a genuinely short and visible supply chain. What is missing is the paperwork: no GOTS or OEKO-TEX certification and no published laboratory report could be found on the brand's own site, so the PFAS free position rests on the brand saying so. Mamavation's 2021 non detect has expired. Nothing adverse has been measured here; nothing current clears it either.",
+    "evidence": "Organic cotton with plant dyes, made in Los Angeles; no GOTS, OEKO-TEX or published lab report found; Mamavation 2021 non detect, now expired",
+    "alternative": "",
+    "sources": [
+      "sustainable-fabrics-that-arent.html"
+    ],
+    "fronts": {
+      "formula": {
+        "status": "none",
+        "note": "A durable good has no ingredient list. What it is made of is the materials check.",
+        "origin": "database"
+      }
+    },
+    "reviewed": true,
+    "article": "sustainable-fabrics-that-arent.html",
+    "generalises": true,
+    "products": []
   }
 ]
