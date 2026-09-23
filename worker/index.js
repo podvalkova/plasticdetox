@@ -2267,7 +2267,21 @@ async function vetCore(env, brand, product, send, allowResearch, url = "") {
     // on holds:"none", so a changing pad whose materials note said in so many
     // words "No ingredient list provided by maker" still showed "Formula: could
     // not complete this check" beside it.
-    const isObject = m && (/^(none|nothing|n\/?a|not applicable)\b/i.test(asText(m.holds).trim())
+    //
+    // Except that the researcher's word for it is not proof. A Bath & Body
+    // Works candle came back with the materials note calling it "a durable
+    // good", the regex below matched, and we manufactured "no formula to
+    // assess" onto a product whose listing carries a full ingredient list:
+    // paraffin, microcrystalline wax, fragrance and BHT. Somebody paid a check
+    // for that. A thing that is burned, eaten, washed with or put on skin has a
+    // formula whatever the researcher decided to call it, so the manufactured
+    // "none" is refused for those outright and the front stays unanswered,
+    // which is the truth and which blocks good.
+    const HAS_FORMULA = /\b(candle|incense|wax melt|diffuser|air freshener|soap|shampoo|conditioner|detergent|cleaner|cleaning|polish|lotion|cream|balm|serum|oil|deodorant|toothpaste|sunscreen|makeup|cosmetic|supplement|vitamin|powder|drink|food|snack|formula|tea|coffee)\b/i;
+    const subject = `${asText(r.identified && r.identified.brand)} ${asText(r.identified && r.identified.product)} ${asText(brand)} ${asText(product)}`;
+    const mustHaveFormula = HAS_FORMULA.test(subject);
+
+    const isObject = !mustHaveFormula && m && (/^(none|nothing|n\/?a|not applicable)\b/i.test(asText(m.holds).trim())
       || (asText(m.material).trim() && !asText(m.base).trim() && !asText(m.container).trim())
       || /no ingredient list|durable good|not applicable/i.test(asText(m.note)));
     if (isObject && r.data && !r.data.formula) {

@@ -1148,7 +1148,6 @@
      * broken. Only the drawing is here; the streaming lives in js/vet-run.js
      * so this page and vet.html cannot drift apart about what a check is.
      */
-    const CHECK_STEP = { formula: "Formula", materials: "Packaging", legal: "Lawsuits", recalls: "Recalls", testing: "Independent tests" };
 
     async function runCheckHere(brand) {
       const btn = $("runCheckBtn"), logEl = $("checkLog");
@@ -1161,7 +1160,7 @@
         onFront: e => {
           const f = e.front;
           const label = f.status === "none" ? (e.step === "testing" ? "none found" : "N/A") : f.status;
-          line('<span class="badge ' + esc(f.status) + '">' + esc(label) + '</span> <strong>' + esc(CHECK_STEP[e.step] || "Database") + '</strong>'
+          line('<span class="badge ' + esc(f.status) + '">' + esc(label) + '</span> <strong>' + esc(VetRun.STEP[e.step] || "Database") + '</strong>'
             + '<br><small>' + esc(f.note || "") + (f.source ? ' &middot; <a href="' + esc(f.source) + '" target="_blank" rel="noopener">source</a>' : "") + '</small>');
         },
         onDone: e => {

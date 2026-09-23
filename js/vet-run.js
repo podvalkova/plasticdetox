@@ -86,5 +86,16 @@ window.VetRun = (function () {
     } catch (err) { onDone({ error: lost }); }
   }
 
-  return { WORKER: WORKER, getPass: getPass, setPass: setPass, balance: balance, run: run };
+  // The worker answers with four step keys and both pages have to name them
+  // the same way. They did not: vet.html said "Recalls & lawsuits" and Product
+  // Check said "Lawsuits", so a recall finding was printed under a heading that
+  // claimed it was a lawsuit. One map, used by both.
+  var STEP = {
+    formula: "Formula",
+    materials: "Materials",
+    legal: "Recalls & lawsuits",
+    testing: "Independent tests",
+  };
+
+  return { WORKER: WORKER, getPass: getPass, setPass: setPass, balance: balance, run: run, STEP: STEP };
 })();
