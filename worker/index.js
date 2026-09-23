@@ -2291,7 +2291,14 @@ function vetVerdict(fronts) {
 // Bumped whenever a rule the research applies changes. A stored answer from an
 // older engine is not reused: Salt and Stone's materials front was cached as a
 // pass, from before section 3.1 was computed here rather than asked for.
-const VET_ENGINE = 13;
+// 14, 2026-09-23: Sonnet 5 in place of Haiku, max_tokens 1200 to 8000 (answers
+// were truncating mid JSON and being reported as unparseable), search budgets
+// 3 and 2 to 10 and 6, the 2026 search and fetch tools, a read_page tool that
+// opens retailer pages with browser headers, and a guard stopping anything
+// burned, eaten or worn from being called a durable good with no formula.
+// Every one of those changed what the research finds, and none of them reached
+// a product already answered until this number moved.
+const VET_ENGINE = 14;
 
 /** One key per product, so the same thing asked twice finds the first answer. */
 function researchKey(brand, product) {
