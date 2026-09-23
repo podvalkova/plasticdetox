@@ -119,10 +119,10 @@ export const KIDS = {
    ]
   },
   {
-   "guide": "best-non-toxic-baby-bottles.html",
+   "guide": "best-non-toxic-pumping-setup.html",
    "id": "Kids::Pump into glass",
    "swap": "Pump into glass",
-   "why": "Warm milk into plastic flanges and bottles, several times a day. Milk is high fat, which pulls more out of plastic. For the freezer, glass is the cleanest but costs more and takes space; reusable silicone bags are the practical pick, and the cold slows what silicone gives off.",
+   "why": "Warm milk into plastic flanges and bottles, several times a day. Milk is high fat, which pulls more out of plastic. A closed system is the one thing the pump itself decides: it keeps milk out of the tubing and the motor, which you cannot clean or replace. For the freezer, glass is the cleanest but costs more and takes space; reusable silicone bags are the practical pick, and the cold slows what silicone gives off.",
    "heat": true,
    "impact": "Critical",
    "free": "Transfer to glass immediately after pumping instead of storing in the plastic bottle.",
@@ -168,6 +168,12 @@ export const KIDS = {
      "name": "Mila's Keeper Silicone Storage Containers",
      "url": "https://www.amazon.com/dp/B0G3XG9QKY?tag=plasticdetox-20",
      "note": "Best breast milk storage"
+    },
+    {
+     "label": "$$$",
+     "name": "Spectra S2 Plus Closed System Pump",
+     "url": "https://www.amazon.com/dp/B00BLBLR1I?tag=plasticdetox-20",
+     "note": "Best closed system, milk never reaches the tubing"
     }
    ],
    "tip": {
