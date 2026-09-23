@@ -1685,6 +1685,44 @@ function isTheBrand(brand, firm) {
   return f === b || f.startsWith(b + " ");
 }
 
+
+/**
+ * CPSC recalls, which is where every product openFDA has never heard of lives.
+ *
+ * The legal front used to ask openFDA and nothing else. openFDA holds food,
+ * drugs and devices, so for a candle, a sofa, a rug, a toy, a pan or a kettle
+ * it answered "no recalls on record" without ever having been able to hold one.
+ * That is a false pass across most of the catalogue, and it is the same mistake
+ * as reading a blocked page as a clean result: a source that cannot contain the
+ * answer must never produce one.
+ *
+ * saferproducts.gov is public, needs no key, and had the 1996 Bath & Body Works
+ * candle recall the check missed.
+ */
+async function cpscRecalls(brand) {
+  const out = [];
+  try {
+    const url = "https://www.saferproducts.gov/RestWebServices/Recall?format=json&ProductName="
+      + encodeURIComponent(brand);
+    const res = await fetch(url, { headers: { "User-Agent": "PlasticDetox/1.0" }, signal: AbortSignal.timeout(9000) });
+    if (!res.ok) return null;                       // null means we could not look
+    const d = await res.json();
+    if (!Array.isArray(d)) return null;
+    for (const r of d) {
+      // The API matches loosely, so confirm the brand really is the subject.
+      const subject = `${r.Title || ""} ${(r.Manufacturers || []).map((m) => m.Name).join(" ")}`;
+      if (!isTheBrand(brand, subject)) continue;
+      out.push({
+        date: (r.RecallDate || "").slice(0, 10),
+        title: (r.Title || "").slice(0, 140),
+        hazard: ((r.Hazards || [])[0] || {}).Name || "",
+      });
+    }
+    out.sort((a, b) => (b.date || "").localeCompare(a.date || ""));
+    return out;
+  } catch (e) { return null; }
+}
+
 async function vetLegal(brand) {
   const t0 = Date.now();
   let total = 0, latest = null, examined = 0;
@@ -1705,10 +1743,25 @@ async function vetLegal(brand) {
       }
     } catch (e) { /* one slow endpoint must not sink the check */ }
   }
+  const cpsc = await cpscRecalls(brand);
   const ms = Date.now() - t0;
+  const BOTH = "https://www.saferproducts.gov/ and https://open.fda.gov/apis/";
+
+  if (cpsc && cpsc.length) {
+    const top = cpsc[0];
+    const more = cpsc.length > 1 ? ` ${cpsc.length - 1} other CPSC recall${cpsc.length > 2 ? "s" : ""} on record.` : "";
+    return { status: "caution", ms,
+      note: `CPSC recalled a ${brand} product in ${top.date.slice(0, 4)}: ${top.title}${top.hazard ? ` (${top.hazard.toLowerCase()})` : ""}.${more}`,
+      source: "https://www.saferproducts.gov/" };
+  }
   if (total === 0) {
-    return { status: "pass", ms, note: "No recalls on record.",
-      source: "https://open.fda.gov/apis/" };
+    // CPSC unreachable is not CPSC empty. Say which happened.
+    if (cpsc === null) {
+      return { status: "unassessed", ms,
+        note: "No recalls at the FDA, and the CPSC database could not be reached, so consumer product recalls are unchecked.",
+        source: "https://open.fda.gov/apis/" };
+    }
+    return { status: "pass", ms, note: "No recalls on record at the FDA or the CPSC.", source: BOTH };
   }
   // The customer card speaks plainly; the counting and the decay rule are our
   // business. openFDA dates are YYYYMMDD, so the 24 month line is exact.
@@ -1719,8 +1772,8 @@ async function vetLegal(brand) {
   const closed = /terminated|completed/i.test(latest.status);
   if (ageMonths > 24 && closed) {
     return { status: "pass", ms,
-      note: "No recalls in the last two years. Older recalls exist and were resolved.",
-      source: "https://open.fda.gov/apis/" };
+      note: "No recalls in the last two years at the FDA or the CPSC. Older recalls exist and were resolved.",
+      source: BOTH };
   }
   return { status: "caution", ms,
     note: `A ${closed ? "resolved " : ""}recall from ${d.slice(0, 4) || "recently"} is on record: ${latest.reason}`,
@@ -2233,6 +2286,43 @@ function vetSubject(brand, product, url) {
   return name;
 }
 
+
+/**
+ * The adversarial pass, whose only job is to disqualify the product.
+ *
+ * The house method says to run one before anything is rated good, searching the
+ * brand against lawsuit, class action, CPSC complaint, FDA warning letter,
+ * rash, chemical burn and attorney investigating. The check never did. A
+ * Bath & Body Works candle came back "no recalls on record" while two active
+ * suits over three-wick candles exploding and causing permanent scarring were a
+ * search away. Recalls are a database question; litigation is not, and nothing
+ * was asking it.
+ */
+async function vetAdverse(env, brand, product, url = "") {
+  return vetClaude(env, VET_RULES,
+    `Product: ${vetSubject(brand, product, url)}. Your ONLY job in this pass is to find what is WRONG. `
+    + `Search hard and adversarially: "<brand> lawsuit", "<brand> class action", "<brand> settlement", `
+    + `"<brand> attorney investigating", "<brand> FDA warning letter", "<brand> CPSC complaint", `
+    + `"<brand> injury", "<brand> burn", "<brand> rash", "<brand> recall". Search the PRODUCT LINE too, `
+    + `not only the company: a suit about this exact kind of product matters more than one about an unrelated one. `
+    + `Report only what you actually find, with the case or action named and dated, and never infer a suit from a complaint thread. `
+    + `An active or settled suit ABOUT THIS KIND OF PRODUCT is "caution" at least; a pattern of them, or a regulator finding against the maker, is "fail". `
+    + `Litigation about something the company sells that is unrelated to this product is noted in the sentence and does not by itself set the status. `
+    + `Nothing found after a real search is status "none", note "No lawsuits, warning letters or complaints found." `
+    + `Use "unassessed" only if you genuinely could not search. `
+    + `The note is one or two plain sentences a shopper would understand, naming the case and what it alleges. Never narrate your searching. `
+    + `Reply ONLY: {"adverse":{"status":"pass|caution|fail|none|unassessed","note":"<one or two sentences>","source":"<url or empty>"}}`,
+    6);
+}
+
+/** Worst wins, so a clean recall record cannot bury a live lawsuit. */
+const FRONT_RANK = { fail: 4, caution: 3, unassessed: 2, pass: 1, none: 0 };
+function worseFront(a, b) {
+  if (!a) return b;
+  if (!b) return a;
+  return (FRONT_RANK[b.status] || 0) > (FRONT_RANK[a.status] || 0) ? b : a;
+}
+
 async function vetLabel(env, brand, product, url = "") {
   const r = await vetClaude(env, VET_RULES,
     `Product: ${vetSubject(brand, product, url)}. Find (1) "formula": the ingredient list, and nothing else. Quote it verbatim behind the word Ingredients where you can find it. Formula is status "none" ONLY when nobody states what the product is made of, which is true of a chair or a knife and almost nothing else. If a composition is published anywhere, that is the formula, whatever kind of product it is. Search for it before concluding there is none. Where the product is burned, vaporised or sprayed, the formula is the front that decides the answer. Give formula a "finding": one short sentence naming what is wrong, or what is clean, in plain words, such as "Contains parfum, an undisclosed fragrance blend". Give formula a "flagged": an array of the exact ingredient names that earned the status, empty when none. (2) "materials": report FACTS, not a judgement. "holds": what is inside the product, and the single word "none" when the product is not a container at all, which covers every durable good, toy, garment, mat, nappy and piece of furniture. "material": what the product ITSELF is made of, listing ONLY the surfaces a person's skin or mouth meets in normal use, and required whenever holds is "none". "nonContact": the parts a person never meets, such as the tyres of a balance bike, the base of a yoga mat or the foam sealed inside a mattress cover. Those are noted and never scored, so putting one in "material" marks a product down for a part nobody touches. "undisclosedPart": the NAME OF THE PART ONLY, two or three words, where a part in the CONTACT path is one the maker will not identify: "grips", "the top layer", "the coating". Not a sentence and not an explanation, because we put it in one. Empty where every contact part is named. "Nonwoven", "woven", "quilted", "fibre", "foam", "laminate" and "textile" describe how a layer is BUILT, not what it is made of: a nonwoven can be polypropylene, polyester, viscose or cotton and those are four different answers. So a contact layer given only as "nonwoven" or "soft fibre" is an undisclosed part, however much is said about the OTHER layers. "mouthed": true when a small child puts it in their mouth in normal use. "container": what actually touches the contents, as specifically as the source allows (PET, HDPE, PP, unnamed plastic, glass, aluminium, steel, paper, cotton), and empty when holds is "none". "filledBy": "maker" when the product is sold with its contents inside, "buyer" when it is sold empty for the shopper to fill, which is every storage bag, box, jar, wrap and bottle. "base": one of dry, aqueous, surfactant, emulsion, anhydrous, acidic, by what the contents are, an oil or balm or stick being anhydrous. Where filledBy is "buyer" the base is the hardest use the MAKER markets, not the gentlest: dry only where the maker restricts it to dry goods, anhydrous where it is marketed for oils, fats or cooking in the bag, and otherwise emulsion, because food carries fat. "heated": true only when something hot goes in or on it in use, and where filledBy is "buyer" that means the maker markets heating it, microwaving, boiling or the oven. "use": leave-on, rinse-off, ingested or not-on-body. Anything eaten, drunk or held in the mouth is "ingested", never "not-on-body": not-on-body is for laundry powder and surface cleaner, which are diluted and washed away. Add a "note": AT MOST TWO SENTENCES, what you found and where, in plain words. It is read on a phone by somebody deciding what to buy, not by us, so it is not a transcript of the listing and not a record of your searching. We apply our own packaging table to those facts, so do not reason about pass or fail for materials yourself. Every field carries a "source" URL. (3) "identified": {"brand":"<the maker>","product":"<the product name>"}, always, and above all where you were given only a link: you work the name out in order to research it, and we need it to file the answer under.`,
@@ -2242,7 +2332,7 @@ async function vetLabel(env, brand, product, url = "") {
 
 async function vetTesting(env, brand, product, url = "") {
   const r = await vetClaude(env, VET_RULES,
-    `Product: ${vetSubject(brand, product, url)}. This front is ONLY for actual measurements and certifications: lab results, peer reviewed studies, certifications (Lead Safe Mama, Mamavation, Consumer Reports, NSF, OEKO-TEX, GOTS, EWG Verified), including studies that MEASURED this product category, which count at caution strength with the note saying it is a category measurement. A certification you verify (EWG Verified, NSF, OEKO-TEX, GOTS) is pass-level evidence. EWG Skin Deep pages and brand certification pages are public: FETCH them rather than reporting that they exist. If an assessment exists only behind a paywall (Consumer Reports), say so plainly: "Consumer Reports has tested this product; the results are subscription only and we could not verify them." What the product is made of is NOT testing evidence. A clean lab result needs its detection limit to count as pass. If you searched and nothing has been published, status is "none" with note "No independent testing of this product has been published." Use "unassessed" only if you could not complete the search. The note is read by a shopper deciding what to buy, so it says what is true of the PRODUCT in one plain sentence. Never narrate your own searching: which pages would not open, which names you tried, what you could not identify. All of that is our working, and none of it tells anybody anything about the thing in their hand. Reply ONLY: {"testing":{"status":"pass|caution|fail|none|unassessed","note":"<one sentence>","source":"<url or empty>"}}`,
+    `Product: ${vetSubject(brand, product, url)}. This front is ONLY for actual measurements and certifications: lab results, peer reviewed studies, certifications (Lead Safe Mama, Mamavation, Consumer Reports, NSF, OEKO-TEX, GOTS, EWG Verified), including studies that MEASURED this product category, which count at caution strength with the note saying it is a category measurement. A certification you verify (EWG Verified, NSF, OEKO-TEX, GOTS) is pass-level evidence. EWG Skin Deep pages and brand certification pages are public: FETCH them rather than reporting that they exist. If an assessment exists only behind a paywall (Consumer Reports), say so plainly: "Consumer Reports has tested this product; the results are subscription only and we could not verify them." What the product is made of is NOT testing evidence. A clean lab result needs its detection limit to count as pass. If nothing has been published about THIS product, do not stop there: search for peer reviewed measurements of the PRODUCT CLASS before answering, because the rules count those at caution strength. Scented candles, gas stoves, nonstick pans, air fresheners and vinyl flooring all have published emissions or migration literature that applies to every product of that kind, and a shopper deciding what to buy needs it. Report it as "caution" with a note that names what was measured and says plainly that it is a measurement of the category rather than of this item. Only when neither the product nor its class has been measured is the status "none", with note "No independent testing of this product or its category has been published." Use "unassessed" only if you could not complete the search. The note is read by a shopper deciding what to buy, so it says what is true of the PRODUCT in one plain sentence. Never narrate your own searching: which pages would not open, which names you tried, what you could not identify. All of that is our working, and none of it tells anybody anything about the thing in their hand. Reply ONLY: {"testing":{"status":"pass|caution|fail|none|unassessed","note":"<one sentence>","source":"<url or empty>"}}`,
     4);
   return r;
 }
@@ -2319,7 +2409,7 @@ function vetVerdict(fronts) {
 // burned, eaten or worn from being called a durable good with no formula.
 // Every one of those changed what the research finds, and none of them reached
 // a product already answered until this number moved.
-const VET_ENGINE = 17;
+const VET_ENGINE = 18;
 
 /** One key per product, so the same thing asked twice finds the first answer. */
 function researchKey(brand, product) {
@@ -2517,7 +2607,21 @@ async function vetCore(env, brand, product, send, allowResearch, url = "") {
     for (const k of Object.keys(bill)) bill[k] += s[k] || 0;
   };
 
-  const legalP = vetLegal(brand).then((f) => { fronts.legal = f; send({ step: "legal", front: f, ms: Date.now() - t0 }); });
+  // Recalls come from two databases; lawsuits come from searching. The front is
+  // called "Recalls & lawsuits" and until now only the first half was asked.
+  const legalP = Promise.all([
+    vetLegal(brand),
+    vetAdverse(env, brand, product, url).then((r) => { addSpend(r); return r && r.data && r.data.adverse; }).catch(() => null),
+  ]).then(([recalls, adverse]) => {
+    let f = worseFront(recalls, adverse);
+    if (recalls && adverse && recalls.status !== adverse.status) {
+      // Both looked and disagreed, so the card carries both sentences rather
+      // than silently dropping the quieter one.
+      f = { ...f, note: [adverse.note, recalls.note].filter(Boolean).join(" ") };
+    }
+    fronts.legal = f;
+    send({ step: "legal", front: f, ms: Date.now() - t0 });
+  });
   const labelP = vetLabel(env, brand, product, url).then((r) => { addSpend(r); return finish("label", r, ["formula", "materials"]); });
   const testP = vetTesting(env, brand, product, url).then((r) => { addSpend(r); return finish("testing", r, ["testing"]); });
   await Promise.allSettled([legalP, labelP, testP]);
