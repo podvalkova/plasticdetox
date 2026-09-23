@@ -2298,6 +2298,56 @@ function vetSubject(brand, product, url) {
  * search away. Recalls are a database question; litigation is not, and nothing
  * was asking it.
  */
+
+/**
+ * A cheap look before an expensive one.
+ *
+ * A check that finds nothing still cost about fifty cents, because it ran the
+ * full research to discover there was nothing to research. Not charging the
+ * customer for that only moves the loss onto us. So one small, fast call asks
+ * the only question that decides whether the rest is worth doing: can this
+ * product be identified at all, and does anyone publish what it is made of.
+ *
+ * Haiku, two searches, a couple of cents. When it says no, the customer gets an
+ * honest answer in seconds instead of ninety, and nobody pays for the silence.
+ */
+async function vetFeasible(env, brand, product, url = "") {
+  if (!env.ANTHROPIC_API_KEY) return { ok: true };
+  try {
+    const res = await fetch("https://api.anthropic.com/v1/messages", {
+      method: "POST",
+      headers: { "x-api-key": env.ANTHROPIC_API_KEY, "anthropic-version": "2023-06-01", "content-type": "application/json" },
+      body: JSON.stringify({
+        model: "claude-haiku-4-5",
+        max_tokens: 400,
+        system: "You decide only whether a product can be researched. You never judge it.",
+        tools: [{ type: "web_search_20250305", name: "web_search", max_uses: 2 }],
+        messages: [{ role: "user", content:
+          `Product: ${vetSubject(brand, product, url)}. Two questions only. `
+          + `(1) Does this name identify a real, specific product a person can buy? `
+          + `(2) Is there a page anywhere, a retailer or the maker, that exists for it? `
+          + `You are NOT deciding whether it is safe and NOT looking for ingredients. `
+          + `Be generous: if a plausible product page exists, the answer is yes. `
+          + `Reply ONLY: {"findable":true|false,"name":"<the product as you would name it>","why":"<one short sentence, only when false>"}` }],
+      }),
+      signal: AbortSignal.timeout(25000),
+    });
+    if (!res.ok) return { ok: true };                    // never block a check on this
+    const msg = await res.json();
+    const text = (msg.content || []).filter((b) => b.type === "text").map((b) => b.text).join("\n");
+    const m = text.match(/\{[\s\S]*\}/);
+    if (!m) return { ok: true };
+    const d = JSON.parse(m[0]);
+    const spend = {
+      in: (msg.usage && msg.usage.input_tokens) || 0,
+      out: (msg.usage && msg.usage.output_tokens) || 0,
+      searches: (msg.usage && msg.usage.server_tool_use && msg.usage.server_tool_use.web_search_requests) || 0,
+      cacheRead: 0, reads: 0, turns: 1,
+    };
+    return { ok: d.findable !== false, why: d.why || "", name: d.name || "", spend };
+  } catch (e) { return { ok: true }; }
+}
+
 async function vetAdverse(env, brand, product, url = "") {
   return vetClaude(env, VET_RULES,
     `Product: ${vetSubject(brand, product, url)}. Your ONLY job in this pass is to find what is WRONG. `
@@ -2409,7 +2459,7 @@ function vetVerdict(fronts) {
 // burned, eaten or worn from being called a durable good with no formula.
 // Every one of those changed what the research finds, and none of them reached
 // a product already answered until this number moved.
-const VET_ENGINE = 18;
+const VET_ENGINE = 19;
 
 /** One key per product, so the same thing asked twice finds the first answer. */
 function researchKey(brand, product) {
@@ -2606,6 +2656,29 @@ async function vetCore(env, brand, product, send, allowResearch, url = "") {
     if (!s) return;
     for (const k of Object.keys(bill)) bill[k] += s[k] || 0;
   };
+
+  // Nothing expensive runs until we know there is something to research. A
+  // product nobody can find is answered in seconds for a couple of cents rather
+  // than in ninety for fifty, and the caller is told not to charge for it.
+  const feas = await vetFeasible(env, brand, product, url);
+  addSpend(feas);
+  if (!feas.ok) {
+    const note = "We could not find this product at all"
+      + (feas.why ? ", " + feas.why.replace(/^[A-Z]/, (c) => c.toLowerCase()).replace(/\.$/, "") : "")
+      + ". Check the spelling, or paste a link to it, and we will look again. Nothing has been charged.";
+    for (const k of ["formula", "materials", "legal", "testing"]) {
+      fronts[k] = { status: "unassessed", note, source: "" };
+      send({ step: k, front: fronts[k], ms: Date.now() - t0 });
+    }
+    bill.usd = Number((bill.in * 2e-6 + bill.out * 1e-5 + bill.searches * 0.01).toFixed(4));
+    bill.ms = Date.now() - t0;
+    // chargeable false is what actually protects the customer's credit; it is
+    // stated rather than left to default, because this is the path where a
+    // wrong default costs somebody a check they paid for.
+    return { fromDatabase: false, fromResearch: false, notFound: true, bill,
+             chargeable: false, elapsedMs: Date.now() - t0,
+             verdict: "unrated", capNote: "", fronts, identified: null };
+  }
 
   // Recalls come from two databases; lawsuits come from searching. The front is
   // called "Recalls & lawsuits" and until now only the first half was asked.
