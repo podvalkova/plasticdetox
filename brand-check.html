@@ -425,6 +425,9 @@
     <section class="shell hero">
       <div>
         <div class="kicker" id="statLine">Loading the product database…</div>
+        <!-- A pass was invisible until a search happened to miss, so somebody
+             who had paid could not tell they still had checks left. -->
+        <div class="kicker" id="passLine" hidden></div>
         <h1>Is that product a <em>skip</em> or a <em>good choice</em>?</h1>
         <p class="sub">Type any product or brand and get a straight answer, drawn from independent lab tests, recalls, lawsuits, ingredients, and materials. No marketing spin.</p>
 
@@ -948,6 +951,27 @@
       $("scanVideo").srcObject = null;
       $("scanSheet").hidden = true;
     }
+
+    /**
+     * What is left on a pass, said out loud.
+     *
+     * The balance lived on vet.html and nowhere else, so on the page where
+     * people actually search, a pass they had paid for was invisible until a
+     * search happened to find nothing. Checks left and where to get more now
+     * sit under the count of brands.
+     */
+    (async function showPass() {
+      const pass = VetRun.getPass();
+      if (!pass) return;
+      const left = await VetRun.balance(pass);
+      const line = $("passLine");
+      if (left === null) return;
+      line.innerHTML = left > 0
+        ? '<strong>' + left + ' check' + (left === 1 ? "" : "s") + ' left</strong> on your pass \u00b7 '
+          + '<a href="vet.html">Top up &rarr;</a>'
+        : 'No checks left \u00b7 <a href="vet.html">Get more &rarr;</a>';
+      line.hidden = false;
+    })();
 
     // Only offer it where it will actually work, and only where anyone would
     // want it. A coarse pointer is the honest test for "this is a phone in a
