@@ -190,21 +190,21 @@ export const KIDS = {
     ]
    },
    "article": {
-    "slug": "microplastics-in-baby-food.html",
-    "title": "Microplastics in Baby Food: What Parents Need to Know (and the Safest Feeding Setup)"
+    "slug": "best-non-toxic-pumping-setup.html",
+    "title": "Best Non Toxic Pumping Setup: Glass Where the Milk Sits, Silicone Where It Passes Through (2026)"
    },
    "faqs": [
     {
-     "q": "Does heating baby food in plastic increase microplastic exposure?",
-     "a": "Yes, dramatically. A 2023 University of Nebraska study found that microwaving food in plastic containers released up to 4.2 million microplastic and 2.1 billion nanoplastic particles per square centimeter. Heat accelerates the breakdown of plastic polymers. Always transfer baby food to glass or ceramic before heating."
+     "q": "Can you pump directly into glass bottles?",
+     "a": "Yes, and it needs no adapter on most pumps. Wide neck glass bottles thread straight onto Spectra and other wide neck pumps, and standard neck glass bottles thread onto Medela and similar. That removes the warm plastic container the milk would otherwise sit in for the length of a session, which is the longest warm contact in the whole process apart from the feed itself. It does not remove the plastic connector and valve above the bottle, because no electric pump is sold without them."
     },
     {
-     "q": "Do silicone baby products release microplastics?",
-     "a": "Silicone is not technically a plastic. It is a synthetic polymer made from silicon, oxygen, carbon, and hydrogen. Food grade silicone is generally considered more stable than plastic and does not release traditional microplastics. However, some studies have found that silicone can release siloxanes when heated. For items that contact hot food, glass, stainless steel, and ceramic are still preferable. For room temperature use like bibs and placemats, food grade silicone is a reasonable choice."
+     "q": "Are disposable breast milk storage bags bad?",
+     "a": "They are the weakest link in the setup, and we rate them use carefully rather than skip, because nothing hazardous has been found in the bags themselves. The problem is the pairing. Milk is an emulsion, so it carries an oil phase that pulls more out of a plastic than water does, and a bag gets frozen, thawed and often warmed in water while the milk is still inside it. Heat drives migration harder than any other variable. Reusable silicone bags and glass bottles both avoid that, and if you do use a disposable bag, transfer the milk to glass before warming it."
     },
     {
-     "q": "Are plastic baby bottles safe?",
-     "a": "A landmark 2020 study from Trinity College Dublin found that polypropylene baby bottles release up to 16 million microplastic particles per liter when exposed to hot water at formula preparation temperatures. Even BPA free plastic bottles release millions of particles. Glass or stainless steel bottles eliminate this exposure entirely."
+     "q": "Which breast pump is the least plastic?",
+     "a": "Every electric pump on the market has polypropylene in the milk path, in the flange, the connector and the valve, and there is no glass or stainless electric pump to buy instead. Under our rule for formats with no alternative, that polymer is recorded on the card rather than counted against the verdict, because a shopper could not have done anything about it. What you can choose is a closed system, which keeps milk out of the tubing and the motor entirely. The one pump with no plastic anywhere in the milk path is a one piece silicone manual pump, which suits relief and let down rather than exclusive pumping."
     }
    ]
   },
