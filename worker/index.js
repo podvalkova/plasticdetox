@@ -1659,8 +1659,14 @@ function buildEmail({ score, total, level, levelColor, top3, swaps }) {
 // machine verdict never wears the badge.
 // ============================================================================
 
-const VET_MODEL = "claude-haiku-4-5";
-const VET_TIMEOUT_MS = 70000;
+// Haiku researched these until 2026-09-23, and a paid check on a Bath & Body
+// Works candle came back "not enough found" while one web search returns the
+// whole ingredient list, paraffin, fragrance, BHT and six named allergens.
+// The cheapest researcher is not the cheapest check: a check that answers
+// nothing costs a customer, and Sonnet costs about a cent more. Sonnet 5 also
+// carries the newer search and fetch tools, which Haiku cannot use.
+const VET_MODEL = "claude-sonnet-5";
+const VET_TIMEOUT_MS = 100000;
 
 // Same strict prefix rule as tools/check-recalls.py: the recalling firm must
 // BEGIN with the brand, or Crest matches Cedar Crest Specialties and we invent
@@ -1858,13 +1864,19 @@ async function vetClaude(env, system, userText, maxUses) {
       },
       body: JSON.stringify({
         model: VET_MODEL,
-        max_tokens: 1200,
+        // The answer is a JSON object carrying a verbatim ingredient list and
+        // fourteen materials fields. At 1200 it was truncated mid-object, and a
+        // truncated object fails JSON.parse, which the caller reported as
+        // "unparseable JSON" and the customer saw as a front that never
+        // answered. It was never a research failure at all.
+        max_tokens: 8000,
+        output_config: { effort: "medium" },
         system,
         tools: [
-          { type: "web_search_20250305", name: "web_search", max_uses: maxUses },
+          { type: "web_search_20260209", name: "web_search", max_uses: maxUses },
           // Search alone finds that a page exists; fetch lets the researcher
           // read it. EWG scores and brand ingredient pages are public.
-          { type: "web_fetch_20250910", name: "web_fetch", max_uses: 3 },
+          { type: "web_fetch_20260209", name: "web_fetch", max_uses: 6 },
           // And when both of those meet a wall, which is every big retailer,
           // we open the page ourselves with browser headers.
           READ_PAGE_TOOL,
@@ -2203,14 +2215,14 @@ function vetSubject(brand, product, url) {
 async function vetLabel(env, brand, product, url = "") {
   const r = await vetClaude(env, VET_RULES,
     `Product: ${vetSubject(brand, product, url)}. Find (1) "formula": the ingredient list, and nothing else. Quote it verbatim behind the word Ingredients where you can find it. A durable good has no ingredient list, so its formula is status "none". Give formula a "finding": one short sentence naming what is wrong, or what is clean, in plain words, such as "Contains parfum, an undisclosed fragrance blend". Give formula a "flagged": an array of the exact ingredient names that earned the status, empty when none. (2) "materials": report FACTS, not a judgement. "holds": what is inside the product, and the single word "none" when the product is not a container at all, which covers every durable good, toy, garment, mat, nappy and piece of furniture. "material": what the product ITSELF is made of, listing ONLY the surfaces a person's skin or mouth meets in normal use, and required whenever holds is "none". "nonContact": the parts a person never meets, such as the tyres of a balance bike, the base of a yoga mat or the foam sealed inside a mattress cover. Those are noted and never scored, so putting one in "material" marks a product down for a part nobody touches. "undisclosedPart": the NAME OF THE PART ONLY, two or three words, where a part in the CONTACT path is one the maker will not identify: "grips", "the top layer", "the coating". Not a sentence and not an explanation, because we put it in one. Empty where every contact part is named. "Nonwoven", "woven", "quilted", "fibre", "foam", "laminate" and "textile" describe how a layer is BUILT, not what it is made of: a nonwoven can be polypropylene, polyester, viscose or cotton and those are four different answers. So a contact layer given only as "nonwoven" or "soft fibre" is an undisclosed part, however much is said about the OTHER layers. "mouthed": true when a small child puts it in their mouth in normal use. "container": what actually touches the contents, as specifically as the source allows (PET, HDPE, PP, unnamed plastic, glass, aluminium, steel, paper, cotton), and empty when holds is "none". "filledBy": "maker" when the product is sold with its contents inside, "buyer" when it is sold empty for the shopper to fill, which is every storage bag, box, jar, wrap and bottle. "base": one of dry, aqueous, surfactant, emulsion, anhydrous, acidic, by what the contents are, an oil or balm or stick being anhydrous. Where filledBy is "buyer" the base is the hardest use the MAKER markets, not the gentlest: dry only where the maker restricts it to dry goods, anhydrous where it is marketed for oils, fats or cooking in the bag, and otherwise emulsion, because food carries fat. "heated": true only when something hot goes in or on it in use, and where filledBy is "buyer" that means the maker markets heating it, microwaving, boiling or the oven. "use": leave-on, rinse-off, ingested or not-on-body. Anything eaten, drunk or held in the mouth is "ingested", never "not-on-body": not-on-body is for laundry powder and surface cleaner, which are diluted and washed away. Add a "note": AT MOST TWO SENTENCES, what you found and where, in plain words. It is read on a phone by somebody deciding what to buy, not by us, so it is not a transcript of the listing and not a record of your searching. We apply our own packaging table to those facts, so do not reason about pass or fail for materials yourself. Every field carries a "source" URL. (3) "identified": {"brand":"<the maker>","product":"<the product name>"}, always, and above all where you were given only a link: you work the name out in order to research it, and we need it to file the answer under.`,
-    3);
+    10);
   return r;
 }
 
 async function vetTesting(env, brand, product, url = "") {
   const r = await vetClaude(env, VET_RULES,
     `Product: ${vetSubject(brand, product, url)}. This front is ONLY for actual measurements and certifications: lab results, peer reviewed studies, certifications (Lead Safe Mama, Mamavation, Consumer Reports, NSF, OEKO-TEX, GOTS, EWG Verified), including studies that MEASURED this product category, which count at caution strength with the note saying it is a category measurement. A certification you verify (EWG Verified, NSF, OEKO-TEX, GOTS) is pass-level evidence. EWG Skin Deep pages and brand certification pages are public: FETCH them rather than reporting that they exist. If an assessment exists only behind a paywall (Consumer Reports), say so plainly: "Consumer Reports has tested this product; the results are subscription only and we could not verify them." What the product is made of is NOT testing evidence. A clean lab result needs its detection limit to count as pass. If you searched and nothing has been published, status is "none" with note "No independent testing of this product has been published." Use "unassessed" only if you could not complete the search. The note is read by a shopper deciding what to buy, so it says what is true of the PRODUCT in one plain sentence. Never narrate your own searching: which pages would not open, which names you tried, what you could not identify. All of that is our working, and none of it tells anybody anything about the thing in their hand. Reply ONLY: {"testing":{"status":"pass|caution|fail|none|unassessed","note":"<one sentence>","source":"<url or empty>"}}`,
-    2);
+    6);
   return r;
 }
 
