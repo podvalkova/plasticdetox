@@ -413,6 +413,13 @@
   .cat-note{margin:0 0 10px;font-size:14px;line-height:1.55;color:var(--ink,#1c1917)}
   .cat-note:last-child{margin-bottom:0}
   .cat-note a{color:var(--accent-dark,#7c3aed)}
+
+  .search-hint{margin:12px 0 0;font-size:14px;color:var(--stone,#78716c)}
+  /* The pass, where somebody about to spend one will see it. */
+  .pass-panel{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:16px;padding:12px 16px;
+    background:#fff;border:1px solid var(--accent,#a78bfa);border-radius:12px;font-size:15px;color:var(--ink,#1c1917)}
+  .pass-panel .pass-count{font-weight:700;color:var(--accent-dark,#7c3aed)}
+  .pass-panel a{margin-left:auto;font-weight:600;color:var(--accent-dark,#7c3aed)}
 </style>
 </head>
 <body>
@@ -433,22 +440,23 @@
     <section class="shell hero">
       <div>
         <div class="kicker" id="statLine">Loading the product database…</div>
-        <!-- A pass was invisible until a search happened to miss, so somebody
-             who had paid could not tell they still had checks left. -->
-        <div class="kicker" id="passLine" hidden></div>
         <h1>Is that product a <em>skip</em> or a <em>good choice</em>?</h1>
         <p class="sub">Type any product or brand and get a straight answer, drawn from independent lab tests, recalls, lawsuits, ingredients, and materials. No marketing spin.</p>
 
         <div class="search-area">
           <div class="search-row">
             <div class="search-box">
-              <input id="search" class="search-input" type="text" placeholder="Try &ldquo;Brita&rdquo;, &ldquo;Stasher&rdquo;, &ldquo;Hydro Flask&rdquo;&hellip;" autocomplete="off" spellcheck="false" aria-label="Search a product or brand">
+              <input id="search" class="search-input" type="text" placeholder="Brand, product, or paste a link&hellip;" autocomplete="off" spellcheck="false" aria-label="Search a product or brand">
               <div class="suggestions" id="suggestions"></div>
             </div>
             <button class="check-btn" onclick="if(searchEl.value.trim())lookup(searchEl.value)">Check it</button>
             <button id="scanBtn" class="check-btn scan-btn" hidden onclick="startScan()" aria-label="Scan a barcode">
               <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2M7 8v8M11 8v8M15 8v8"/></svg>Scan</button>
           </div>
+          <p class="search-hint">Type a brand or product, or paste a link to it. On a phone you can scan the barcode.</p>
+          <!-- A pass was a footnote under the brand count and read as one. It
+               sits here now, beside the thing it pays for. -->
+          <div class="pass-panel" id="passLine" hidden></div>
           <div class="chips-row" id="quickRow"></div>
           <a class="ext-teaser" id="appTeaser" href="#appband" hidden>Checking while you shop? The free iPhone app works offline&nbsp;<b>&darr;</b></a>
           <a class="ext-teaser" id="extTeaser" href="#extension" hidden>Shopping on Amazon? Our free extension shows verdicts right on the page&nbsp;<b>&darr;</b></a>
@@ -975,9 +983,9 @@
       const line = $("passLine");
       if (left === null) return;
       line.innerHTML = left > 0
-        ? '<strong>' + left + ' check' + (left === 1 ? "" : "s") + ' left</strong> on your pass \u00b7 '
+        ? '<span class="pass-count">' + left + ' check' + (left === 1 ? "" : "s") + ' left</span> on your Check Pass'
           + '<a href="vet.html">Top up &rarr;</a>'
-        : 'No checks left \u00b7 <a href="vet.html">Get more &rarr;</a>';
+        : 'No checks left on your Check Pass<a href="vet.html">Get more &rarr;</a>';
       line.hidden = false;
     })();
 
