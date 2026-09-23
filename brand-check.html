@@ -935,16 +935,45 @@
       $("scanSheet").hidden = true;
     }
 
-    // Only offer it where it will actually work.
-    if (window.BarcodeDetector && navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+    // Only offer it where it will actually work, and only where anyone would
+    // want it. A coarse pointer is the honest test for "this is a phone in a
+    // shop" rather than a laptop, whose webcam points at the reader's face.
+    if (window.BarcodeDetector && navigator.mediaDevices && navigator.mediaDevices.getUserMedia
+        && window.matchMedia && window.matchMedia("(pointer: coarse)").matches) {
       $("scanBtn").hidden = false;
+    }
+
+    /**
+     * A pasted link is a URL to the matcher and a product name to the reader.
+     *
+     * Amazon puts the product name in the path before /dp/, so a link nobody
+     * has a verdict on can still say "Vanilla Berry Scented Candle" on the card
+     * rather than printing two hundred characters of tracking parameters at
+     * somebody. It also gives the text matcher a second chance: the slug often
+     * carries the brand even when the ASIN is not one of ours.
+     */
+    function prettyQuery(q) {
+      const s = q.trim();
+      if (!/^https?:\/\//i.test(s)) return s;
+      const slug = s.match(/amazon\.[a-z.]+\/([^\/]+)\/(?:dp|gp\/product)\//i);
+      if (slug) {
+        const words = decodeURIComponent(slug[1]).replace(/-/g, " ").trim();
+        if (words && !/^b0[a-z0-9]{8}$/i.test(words)) return words.slice(0, 70);
+      }
+      const asin = extractAsin(s);
+      if (asin) return asin;
+      try { return new URL(s).hostname.replace(/^www\./, ""); } catch (e) { return s.slice(0, 70); }
     }
 
     function lookup(query) {
       suggEl.classList.remove("show");
-      const m = findExact(query);
-      if (m) showResult(m);
-      else showUnknown(query);
+      const pretty = prettyQuery(query);
+      // The raw string first, because that is what carries the ASIN.
+      let m = findExact(query);
+      if (!m && pretty !== query) m = findExact(pretty);
+      if (m) return showResult(m);
+      if (pretty !== query) searchEl.value = pretty;
+      showUnknown(pretty);
     }
 
     // The example card teaches what a verdict looks like before the first
