@@ -394,6 +394,13 @@
   .scan-frame{position:relative;width:min(78vw,320px);height:168px;border:3px solid #fff;border-radius:14px;box-shadow:0 0 0 100vmax rgba(0,0,0,.55)}
   .scan-hint{position:relative;margin-top:22px;color:#fff;font-size:15px;text-align:center;padding:0 24px;line-height:1.5}
   .scan-close{position:absolute;top:18px;right:18px;background:#fff;color:#1c1917;border:none;border-radius:60px;padding:10px 20px;font:inherit;font-weight:700;cursor:pointer}
+
+  /* The inline check log. Fronts land one at a time over about a minute, so
+     each row appears as it arrives rather than all of them at the end. */
+  .check-log{margin-top:6px}
+  .check-row{padding:10px 0;border-top:1px solid var(--line, #e7e5e4);font-size:14px;line-height:1.5}
+  .check-row:first-child{border-top:none}
+  .check-row small{color:#78716c}
 </style>
 </head>
 <body>
@@ -609,7 +616,10 @@
     </div>
   </footer>
 
-  <script>
+  <!-- The Check Pass runner, shared with vet.html so the two cannot
+     drift apart about what a check is. -->
+<script src="js/vet-run.js"></script>
+<script>
     const WORKER_URL = "https://plasticdetox-quiz-email.plasticdetox.workers.dev";
     const STANCE_LABEL = { good: "Good choice", careful: "Careful", skip: "Skip", neutral: "Context" };
     const QUICK = ["Brita", "Stasher", "Native", "Pyrex", "Thinkbaby", "Hydro Flask", "Lululemon", "Earth Mama"];
@@ -1111,8 +1121,15 @@
         '<article class="card">' +
           '<div class="verdict-row"><span class="badge neutral"><span class="dot"></span>Not reviewed yet</span></div>' +
           '<h2 class="brand-name">We have not checked &ldquo;' + esc(clean) + '&rdquo; yet.</h2>' +
-          '<p class="reason"><strong>Get it checked now.</strong> Our research system runs the same four checks we use for every verdict, formula, packaging, recalls, independent tests, and answers in about a minute, with sources shown. Packs start at $5 for 20 checks.</p>' +
-          '<div class="meta-block"><a class="btn btn-primary" href="vet.html?q=' + encodeURIComponent(clean) + '">Check it now</a></div>' +
+          // Somebody holding a pass has already bought this and should not be
+          // sent to a second page to press a second button. Somebody without
+          // one has nothing to run, so for them the button is the pass page.
+          (VetRun.getPass()
+            ? '<p class="reason"><strong>You have a Check Pass.</strong> Run the same four checks we use for every verdict, formula, packaging, recalls and independent tests, right here. About a minute, with sources shown.</p>' +
+              '<div class="meta-block"><button class="btn btn-primary" id="runCheckBtn" onclick="runCheckHere(\'' + jsAttr(clean) + '\')">Run the check now</button></div>' +
+              '<div id="checkLog" class="check-log"></div>'
+            : '<p class="reason"><strong>Get it checked now.</strong> Our research system runs the same four checks we use for every verdict, formula, packaging, recalls, independent tests, and answers in about a minute, with sources shown. Packs start at $5 for 20 checks.</p>' +
+              '<div class="meta-block"><a class="btn btn-primary" href="vet.html?q=' + encodeURIComponent(clean) + '">See Check Passes</a></div>') +
           '<p class="reason" style="margin-top:22px;"><strong>Or request a free review.</strong> Leave your email and our team will research it by hand and email you the verdict, usually within 2 business days.</p>' +
           '<div class="request-form">' +
             '<input id="reqEmail" type="email" placeholder="you@email.com" aria-label="Your email">' +
@@ -1121,6 +1138,45 @@
           '<p class="form-note" id="reqNote"></p>' +
         '</article>';
       focusResult();
+    }
+
+    /**
+     * Run a Check Pass check without leaving the page.
+     *
+     * The fronts are drawn as they land rather than after, because the check
+     * takes about a minute and a button that goes quiet for a minute reads as
+     * broken. Only the drawing is here; the streaming lives in js/vet-run.js
+     * so this page and vet.html cannot drift apart about what a check is.
+     */
+    const CHECK_STEP = { formula: "Formula", materials: "Packaging", legal: "Lawsuits", recalls: "Recalls", testing: "Independent tests" };
+
+    async function runCheckHere(brand) {
+      const btn = $("runCheckBtn"), logEl = $("checkLog");
+      if (!btn || !logEl) return;
+      btn.disabled = true; btn.textContent = "Checking…"; logEl.innerHTML = "";
+      gtag('event', 'vet_run_inline', { brand: brand });
+      const line = html => { const d = document.createElement("div"); d.className = "check-row"; d.innerHTML = html; logEl.appendChild(d); };
+
+      await VetRun.run({ pass: VetRun.getPass(), brand: brand, product: "" }, {
+        onFront: e => {
+          const f = e.front;
+          const label = f.status === "none" ? (e.step === "testing" ? "none found" : "N/A") : f.status;
+          line('<span class="badge ' + esc(f.status) + '">' + esc(label) + '</span> <strong>' + esc(CHECK_STEP[e.step] || "Database") + '</strong>'
+            + '<br><small>' + esc(f.note || "") + (f.source ? ' &middot; <a href="' + esc(f.source) + '" target="_blank" rel="noopener">source</a>' : "") + '</small>');
+        },
+        onDone: e => {
+          btn.disabled = false; btn.textContent = "Run the check now";
+          if (e.needsCredits) { btn.hidden = true; line(esc(e.error || "No checks left on this pass.") + ' <a href="vet.html">Top up &rarr;</a>'); return; }
+          if (e.error) { line(esc(e.error)); return; }
+          const names = { good: "Good choice", careful: "Careful", skip: "Skip", unrated: "Not enough found" };
+          btn.hidden = true;
+          line('<div class="verdict-row" style="margin-top:14px"><span class="badge ' + esc(e.verdict) + '"><span class="dot"></span>'
+            + esc(names[e.verdict] || e.verdict) + '</span></div>'
+            + (e.label ? '<p class="reason">' + esc(e.label) + '</p>' : "")
+            + (e.capNote ? '<p class="form-note">' + esc(e.capNote) + '</p>' : "")
+            + (e.consumed ? '<p class="form-note">1 check used. This research joins our public database after review, free for everyone.</p>' : ""));
+        },
+      });
     }
 
     // On narrow screens the result renders below the search area, so bring it
