@@ -106,6 +106,9 @@ export default {
     }
 
     // ===== Check pass balance, read by vet.html on load =====
+    if (path === "/vet-restore" && request.method === "POST") {
+      return handleVetRestore(request, env, corsOrigin);
+    }
     if (path === "/vet-balance" && request.method === "GET") {
       return handleVetBalance(request, env, corsOrigin);
     }
@@ -2830,6 +2833,99 @@ const VET_PACKS = {
   p20: { usd: 2000, checks: 100, name: "Check Pass, 100 checks" },
 };
 
+
+/**
+ * Passes, found by the email that bought them.
+ *
+ * A pass was a bearer token and nothing else: whoever held the URL held the
+ * checks. That is per browser and per origin by construction, so the app and
+ * the website could never see each other's, clearing storage lost it, and a new
+ * phone lost it. Anya ended up with four passes and her credits scattered over
+ * all of them.
+ *
+ * The email was on the pass record the whole time and nothing ever looked it
+ * up. So: an index written at purchase, a restore that merges every pass an
+ * address owns onto one token, and merged records that redirect rather than
+ * disappear, because their links are already in people's inboxes.
+ *
+ * The free product still needs no account. This only exists where somebody paid.
+ */
+const emailKey = (email) => "vetemail:" + String(email || "").trim().toLowerCase();
+
+/** Read a pass, following a merge. Returns {token, rec} or null. */
+async function readPass(env, token, depth = 0) {
+  if (!token || depth > 3) return null;
+  const rec = await env.BRAND_SEARCHES.get("vetpass:" + token, { type: "json" }).catch(() => null);
+  if (!rec) return null;
+  if (rec.mergedInto) return readPass(env, rec.mergedInto, depth + 1);
+  return { token, rec };
+}
+
+async function indexPassEmail(env, email, token) {
+  if (!email) return;
+  try {
+    const k = emailKey(email);
+    const list = (await env.BRAND_SEARCHES.get(k, { type: "json" })) || [];
+    if (!list.includes(token)) list.push(token);
+    await env.BRAND_SEARCHES.put(k, JSON.stringify(list));
+  } catch (e) { /* the index is a convenience; never fail a purchase over it */ }
+}
+
+/**
+ * POST /vet-restore { email } -> merges and emails the surviving pass.
+ *
+ * Always answers the same whether or not the address has passes, so this
+ * cannot be used to find out who bought something.
+ */
+async function handleVetRestore(request, env, corsOrigin) {
+  const said = { ok: true, message: "If that address has a pass, we have emailed it." };
+  try {
+    const { email } = await request.json();
+    const clean = String(email || "").trim().toLowerCase();
+    if (!clean || !clean.includes("@")) {
+      return json({ ok: false, error: "Enter the email you bought with." }, 400, corsOrigin);
+    }
+
+    let tokens = (await env.BRAND_SEARCHES.get(emailKey(clean), { type: "json" })) || [];
+    if (!tokens.length) {
+      // Passes bought before the index existed. A handful of keys, one pass.
+      const listed = await env.BRAND_SEARCHES.list({ prefix: "vetpass:" });
+      for (const k of listed.keys) {
+        const rec = await env.BRAND_SEARCHES.get(k.name, { type: "json" }).catch(() => null);
+        if (rec && !rec.mergedInto && String(rec.email || "").toLowerCase() === clean) {
+          tokens.push(k.name.slice("vetpass:".length));
+        }
+      }
+    }
+
+    const live = [];
+    for (const tk of tokens) {
+      const hit = await readPass(env, tk);
+      if (hit && !live.some((l) => l.token === hit.token)) live.push(hit);
+    }
+    if (!live.length) return json(said, 200, corsOrigin);
+
+    // Newest survives, everything else folds into it and redirects.
+    live.sort((a, b) => String(b.rec.created || "").localeCompare(String(a.rec.created || "")));
+    const keep = live[0];
+    for (const other of live.slice(1)) {
+      keep.rec.balance = (keep.rec.balance || 0) + (other.rec.balance || 0);
+      keep.rec.purchased = (keep.rec.purchased || 0) + (other.rec.purchased || 0);
+      keep.rec.used = (keep.rec.used || 0) + (other.rec.used || 0);
+      keep.rec.history = [...(other.rec.history || []), ...(keep.rec.history || [])].slice(-50);
+      await env.BRAND_SEARCHES.put("vetpass:" + other.token,
+        JSON.stringify({ ...other.rec, balance: 0, mergedInto: keep.token,
+                         mergedAt: new Date().toISOString() }));
+    }
+    await env.BRAND_SEARCHES.put("vetpass:" + keep.token, JSON.stringify(keep.rec));
+    await env.BRAND_SEARCHES.put(emailKey(clean), JSON.stringify([keep.token]));
+    await sendPassEmail(env, clean, keep.token, keep.rec.balance);
+    return json(said, 200, corsOrigin);
+  } catch (e) {
+    return json(said, 200, corsOrigin);
+  }
+}
+
 async function mintVetPass(env, checks, email, pack) {
   const token = (crypto.randomUUID() + crypto.randomUUID()).replace(/-/g, "").slice(0, 40);
   await env.BRAND_SEARCHES.put("vetpass:" + token, JSON.stringify({
@@ -2837,6 +2933,7 @@ async function mintVetPass(env, checks, email, pack) {
     email: email || "", pack: pack || "", created: new Date().toISOString(),
     history: [],
   }));
+  await indexPassEmail(env, email, token);
   return token;
 }
 

@@ -195,6 +195,17 @@
     </div>
     <p class="trust">Checks never expire. A product already in our reviewed database never uses a check. Your pass activates right after payment, with a backup link sent to your email.</p>
     <p class="trust"><b>Every check helps everyone.</b> When you check a product, the verdict joins our public database after review, free for the next person who asks. You are not just buying answers, you are funding the open database.</p>
+    <!-- A pass was a bearer token in one browser's storage, so a new phone, a
+         cleared cache or switching between the app and the site lost it. The
+         email that bought it was on the record the whole time and nothing ever
+         looked it up. No account, just the address you paid with. -->
+    <div class="vetbox">
+      <b>Already bought a pass?</b>
+      <p class="note" style="margin:.3rem 0 .6rem">Enter the email you paid with and we will send your pass link. If you have more than one, they are merged into a single pass and the checks are added together.</p>
+      <input id="restoreEmail" type="email" placeholder="you@email.com">
+      <button class="go" id="restoreBtn" onclick="restorePass()">Send me my pass</button>
+      <p class="note" id="restoreNote"></p>
+    </div>
     <div class="vetbox">
       <b>Or request a free review</b>
       <p class="note" style="margin:.3rem 0 .6rem">Our team researches requested products by hand and emails you the verdict, usually within 2 business days.</p>
@@ -377,6 +388,23 @@ async function init(){
 
 function paintBalance(n){
   document.getElementById("balance").textContent = n + (n===1?" check":" checks") + " remaining on this pass";
+}
+
+
+// Getting a pass back from the email that bought it. The worker answers the
+// same either way, so this never reveals whether an address has one.
+async function restorePass(){
+  const email=(document.getElementById("restoreEmail").value||"").trim();
+  const note=document.getElementById("restoreNote");
+  if(!email||!email.includes("@")){note.textContent="Enter the email you paid with.";return;}
+  const btn=document.getElementById("restoreBtn");
+  btn.disabled=true; note.textContent="Looking\u2026";
+  try{
+    const r=await fetch(WORKER+"/vet-restore",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({email})});
+    const d=await r.json();
+    note.textContent=d.message||"If that address has a pass, we have emailed it.";
+  }catch(e){ note.textContent="Could not reach us just now. Please try again in a moment."; }
+  btn.disabled=false;
 }
 
 async function requestFree(){
