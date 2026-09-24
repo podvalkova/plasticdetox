@@ -2269,13 +2269,65 @@ export function about(root, { meta, bundle, onOpen, notify, purchases, onFeedbac
       : "Your checks"));
     box.appendChild(el("p", null, checks.hasPass
       ? (typeof checks.balance === "number"
-        ? `${checks.balance} ${checks.balance === 1 ? "check" : "checks"} left on this pass. Each instant check on a product we have no verdict on spends one.`
-        : "Your pass is saved on this phone. We could not reach the server to count what is left.")
-      : "Instant checks come from a pass bought on our website. Buying one from the app brings it back here by itself. If you bought one already, or you have the email, add it here."));
-    const btn = el("button", "cta outline", checks.hasPass ? "Use a different pass" : "Add a pass");
-    btn.type = "button";
-    btn.onclick = () => checks.onPaste();
-    box.appendChild(btn);
+        ? `${checks.balance} ${checks.balance === 1 ? "check" : "checks"} left. Each instant check on a product we have no verdict on spends one.`
+        : "Your checks are saved on this phone. We could not reach the server to count what is left.")
+      : "Instant checks are bought on our website and belong to the email you paid with, so they work here and there. Sign in below and they follow you to any phone."));
+    // Signing in with the email that paid, rather than pasting a token.
+    // Both fields are shown at once on purpose: hiding the code behind a
+    // button strands anyone who already has one from another device, and the
+    // two step version of this on the website had to be taken back out.
+    if (checks.onSendCode && checks.onSignIn) {
+      const form = el("div", "signin");
+      const email = el("input");
+      email.type = "email";
+      email.placeholder = "the email you paid with";
+      email.autocomplete = "email";
+      if (checks.email) email.value = checks.email;
+      form.appendChild(email);
+
+      const send = el("button", "cta outline", "Send me a code");
+      send.type = "button";
+      form.appendChild(send);
+
+      const code = el("input");
+      code.inputMode = "numeric";
+      code.maxLength = 6;
+      code.placeholder = "6 digit code";
+      code.autocomplete = "one-time-code";
+      form.appendChild(code);
+
+      const go = el("button", "cta outline", checks.hasPass ? "Use a different pass" : "Sign in");
+      go.type = "button";
+      form.appendChild(go);
+
+      const note = el("p", "pkg-why", "");
+      form.appendChild(note);
+
+      send.onclick = async () => {
+        const addr = (email.value || "").trim();
+        if (!addr || addr.indexOf("@") < 0) { note.textContent = "Enter the email you paid with."; return; }
+        send.disabled = true; note.textContent = "Sending\u2026";
+        const r = await checks.onSendCode(addr);
+        note.textContent = r.message;
+        send.disabled = false;
+        code.focus();
+      };
+      go.onclick = async () => {
+        const addr = (email.value || "").trim();
+        const c = (code.value || "").trim();
+        if (!addr || c.length !== 6) { note.textContent = "Enter your email and the six digit code."; return; }
+        go.disabled = true; note.textContent = "Checking\u2026";
+        const r = await checks.onSignIn(addr, c);
+        if (!r.ok) { note.textContent = r.error; go.disabled = false; return; }
+        note.textContent = `Signed in as ${r.email}. ${r.balance} ${r.balance === 1 ? "check" : "checks"} on your pass.`;
+      };
+      box.appendChild(form);
+    } else if (checks.onPaste) {
+      const btn = el("button", "cta outline", checks.hasPass ? "Use a different pass" : "Add a pass");
+      btn.type = "button";
+      btn.onclick = () => checks.onPaste();
+      box.appendChild(btn);
+    }
     if (checks.onBuy) {
       const buy = el("button", "cta ghost", checks.hasPass ? "Buy more checks" : "Get checks");
       buy.type = "button";

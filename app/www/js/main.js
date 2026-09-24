@@ -515,6 +515,25 @@ function draw() {
       checks: {
         hasPass: !!check.getPass(),
         balance: checkBalance,
+        // The email that paid is the identity now, not the token, so the same
+        // checks work here and on the website and survive a new phone.
+        email: readPassEmail(),
+        onSendCode: async (email) => {
+          track("vet_code_sent", {});
+          return check.sendCode(email);
+        },
+        onSignIn: async (email, code) => {
+          const r = await check.signIn(email, code);
+          if (r.ok) {
+            savePassEmail(r.email);
+            checkBalance = r.balance;
+            track("vet_signed_in", {});
+            // Repaint so the rest of the app sees the pass, but not before the
+            // card has shown its own confirmation.
+            setTimeout(render, 1200);
+          }
+          return r;
+        },
         onPaste: promptForPass,
         onBuy: () => openExternal(check.buyUrl("", "")),
       },
@@ -1212,6 +1231,16 @@ async function refreshBalance() {
   if (!check.getPass()) { checkBalance = null; return; }
   const n = await check.balance().catch(() => null);
   if (n !== checkBalance) { checkBalance = n; if (!resultOnScreen) render(); }
+}
+
+// The address a pass was signed in with, so a second sign in needs no typing.
+// Only the address; the pass itself lives in check.js.
+const PASS_EMAIL_KEY = "pd.pass.email.v1";
+function readPassEmail() {
+  try { return localStorage.getItem(PASS_EMAIL_KEY) || ""; } catch (e) { return ""; }
+}
+function savePassEmail(email) {
+  try { if (email) localStorage.setItem(PASS_EMAIL_KEY, email); } catch (e) {}
 }
 
 function promptForPass() {

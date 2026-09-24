@@ -59,6 +59,51 @@ export async function balance() {
  * than printing a token for somebody to copy. Buying a pass and then having to
  * retype it into the app is the kind of step people simply do not complete.
  */
+/**
+ * Signing in, so a pass belongs to the person rather than to this phone.
+ *
+ * The app keeps its pass at capacitor://localhost and the website keeps one at
+ * plasticdetox.org. Two origins, so they could never see each other: buying on
+ * the site left the app blank, and a new phone lost everything. The token was
+ * the only identity there was.
+ *
+ * A six digit code fixes that where a link cannot, because a link has to cross
+ * back into the app through a deep link and a code can just be typed. The same
+ * six digits work here and in a browser.
+ */
+export async function sendCode(email) {
+  try {
+    const r = await fetch(`${WORKER}/vet-login`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email }),
+    });
+    const d = await r.json();
+    // The worker answers the same whether or not the address owns anything, so
+    // this cannot be used to find out who has bought.
+    return { ok: r.ok, message: d.message || "If that address has a pass, the code is on its way." };
+  } catch (e) {
+    return { ok: false, message: "Could not reach us just now. Try again in a moment." };
+  }
+}
+
+/** Trade a code for the pass, and save it. Returns the balance on success. */
+export async function signIn(email, code) {
+  try {
+    const r = await fetch(`${WORKER}/vet-verify`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, code }),
+    });
+    const d = await r.json();
+    if (!d.ok || !d.pass) return { ok: false, error: d.error || "That code is wrong or has expired." };
+    setPass(d.pass);
+    return { ok: true, balance: d.balance || 0, email: d.email || email };
+  } catch (e) {
+    return { ok: false, error: "Could not reach us just now. Try again in a moment." };
+  }
+}
+
 export function buyUrl(brand, product) {
   const q = [brand, product].filter(Boolean).join(" ").trim();
   const params = new URLSearchParams({ app: "1" });
