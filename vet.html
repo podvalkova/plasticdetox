@@ -170,8 +170,7 @@
     <div class="vetbox">
       <div class="balance" id="balance">&nbsp;</div>
       <p class="note" id="whoami" style="margin:-.4rem 0 .8rem" hidden></p>
-      <input id="brand" placeholder="Brand, or paste a link to the product">
-      <input id="product" placeholder="Product name, if the box above is only a brand">
+      <input id="brand" placeholder="Paste a link, or type the brand and product">
       <button class="go" id="gobtn" onclick="vet()">Check it</button>
       <div class="clock" id="clock"></div>
       <div id="log"></div>
@@ -337,8 +336,9 @@ function showVet(balance){
       line.hidden = false;
     }
   } catch (e) {}
-  if (PRE_BRAND) document.getElementById("brand").value = PRE_BRAND;
-  if (PRE_PRODUCT) document.getElementById("product").value = PRE_PRODUCT;
+  // CHECK_QUERY already merges the brand and product from the URL into the one
+  // string a person would have typed, and was only ever used for the banner.
+  if (CHECK_QUERY) document.getElementById("brand").value = CHECK_QUERY;
   paintBalance(balance);
   paintChecking(true);
   // The packs stay on the page whatever the balance. Hiding them until a pass
@@ -608,10 +608,9 @@ function splitSubject(brandField, productField){
 }
 
 async function vet(){
-  const brand = document.getElementById("brand").value.trim();
-  const product = document.getElementById("product").value.trim();
-  if (!brand) { document.getElementById("brand").focus(); return; }
-  const subject = splitSubject(brand, product);
+  const typed = document.getElementById("brand").value.trim();
+  if (!typed) { document.getElementById("brand").focus(); return; }
+  const subject = splitSubject(typed, "");
   // A pasted link reads back as the product it points at, so the reader is not
   // watching us research a URL.
   if (subject.url && subject.brand) document.getElementById("brand").value = subject.brand;
