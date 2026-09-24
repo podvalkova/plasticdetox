@@ -486,12 +486,21 @@ async function verifyCode(){
     var d=await r.json();
     if(!d.ok){ note.textContent=d.error||"That code is wrong or has expired."; btn.disabled=false; return; }
     PASS=d.pass;
-    try{ localStorage.setItem("pdVetPass",PASS); localStorage.setItem("pdVetEmail",d.email||SI_EMAIL); }catch(e){}
+    try{ localStorage.setItem("pdVetPass",PASS); localStorage.setItem("pdVetEmail",d.email||SI_EMAIL); localStorage.setItem("pdVetEmailPrefill",d.email||SI_EMAIL); }catch(e){}
     document.getElementById("signinBox").innerHTML =
       "<b>Signed in as "+(d.email||SI_EMAIL)+"</b>"
       + "<p class=\"note\" style=\"margin:.3rem 0 0\">"+d.balance+" check"+(d.balance===1?"":"s")+" on your pass. It will be here on any device you sign in from.</p>";
-    paintBalance(d.balance);
-    document.getElementById("buy").style.display="none";
+    // showVet is what actually turns this page from a sales page into a working
+    // one: it reveals the check form and fills in the product from the ?q= that
+    // brought you here. Painting the balance alone left somebody signed in and
+    // staring at "Grab a pass below", with the only evidence of success buried
+    // at the bottom of the page.
+    showVet(d.balance);
+    var banner=document.getElementById("banner");
+    banner.className="banner ok";
+    banner.textContent="Signed in as "+(d.email||SI_EMAIL)+". You have "+d.balance+" check"+(d.balance===1?"":"s")+
+      ", and they will be here on any device you sign in from.";
+    window.scrollTo({top:0,behavior:"smooth"});
   }catch(e){ note.textContent="Could not reach us just now. Please try again in a moment."; }
   btn.disabled=false;
 }
