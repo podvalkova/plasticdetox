@@ -207,8 +207,10 @@
       <div id="signinStep1">
         <input id="siEmail" type="email" placeholder="you@email.com" autocomplete="email">
         <button class="go" id="siSend" onclick="sendCode()">Send me a code</button>
+        <p class="note" style="margin:.5rem 0 0"><a href="#" onclick="haveCode();return false">I already have a code</a></p>
       </div>
       <div id="signinStep2" style="display:none">
+        <p class="note" id="siFor" style="margin:0 0 .5rem"></p>
         <input id="siCode" inputmode="numeric" maxlength="6" placeholder="6 digit code" autocomplete="one-time-code">
         <button class="go" id="siVerify" onclick="verifyCode()">Sign in</button>
         <button class="go" style="background:transparent;color:inherit;border:1px solid #d6d3d1" onclick="backToEmail()">Use a different email</button>
@@ -352,6 +354,17 @@ function handToApp(pass) {
 async function init(){
   const banner = document.getElementById("banner");
 
+  // If a code was asked for and not used yet, land on the code step rather
+  // than on the email box. Somebody arriving from Product Check with a ?q= in
+  // the URL, or simply reloading, had a code in their inbox and nowhere on the
+  // page to type it.
+  const pending = readPending();
+  if (pending && !PASS) {
+    const em = document.getElementById("siEmail");
+    if (em) em.value = pending;
+    showCodeStep(pending);
+  }
+
   // Fresh from Stripe: claim the pass by session id so checks are usable
   // immediately, with the emailed link as the durable backup.
   const sid = qs.get("session") || "";
@@ -407,9 +420,48 @@ function paintBalance(n){
 // Signing in with a code. The pass token is still what the device holds, but
 // it now arrives by proving you own the address that paid, rather than by
 // keeping a link, and the same six digits work in the app.
+
+// The code step used to exist only in the same page session as the button that
+// sent it. Reload, or arrive from Product Check with a ?q= in the URL, and you
+// were back at the email box with a code in your inbox and nowhere to type it.
+// The pending address is remembered for twenty minutes, which is longer than
+// the code lives, so coming back lands you where you left off.
+function rememberPending(email){
+  try{ localStorage.setItem("pdVetPending", JSON.stringify({email:email, at:Date.now()})); }catch(e){}
+}
+function readPending(){
+  try{
+    var d=JSON.parse(localStorage.getItem("pdVetPending")||"null");
+    if(d && d.email && Date.now()-d.at < 20*60*1000) return d.email;
+  }catch(e){}
+  return "";
+}
+function clearPending(){ try{ localStorage.removeItem("pdVetPending"); }catch(e){} }
+
+function showCodeStep(email){
+  SI_EMAIL = email || SI_EMAIL;
+  document.getElementById("signinStep1").style.display="none";
+  document.getElementById("signinStep2").style.display="";
+  var lbl=document.getElementById("siFor");
+  if(lbl) lbl.textContent = SI_EMAIL ? "Code sent to "+SI_EMAIL : "";
+}
+
+// Somebody who has a code already, from an earlier visit or another device.
+function haveCode(){
+  var email = (document.getElementById("siEmail").value||"").trim() || readPending();
+  if(!email){
+    document.getElementById("siNote").textContent="Enter the email you paid with first, then your code.";
+    document.getElementById("siEmail").focus();
+    return;
+  }
+  showCodeStep(email);
+  document.getElementById("siCode").focus();
+}
+
 var SI_EMAIL = "";
 
 function backToEmail(){
+  clearPending();
   document.getElementById("signinStep1").style.display="";
   document.getElementById("signinStep2").style.display="none";
   document.getElementById("siNote").textContent="";
@@ -425,8 +477,8 @@ async function sendCode(){
     var d=await r.json();
     SI_EMAIL=email;
     note.textContent=d.message||"If that address has a pass, the code is on its way.";
-    document.getElementById("signinStep1").style.display="none";
-    document.getElementById("signinStep2").style.display="";
+    rememberPending(email);
+    showCodeStep(email);
     document.getElementById("siCode").focus();
   }catch(e){ note.textContent="Could not reach us just now. Please try again in a moment."; }
   btn.disabled=false;
@@ -443,6 +495,7 @@ async function verifyCode(){
     if(!d.ok){ note.textContent=d.error||"That code is wrong or has expired."; btn.disabled=false; return; }
     PASS=d.pass;
     try{ localStorage.setItem("pdVetPass",PASS); localStorage.setItem("pdVetEmail",d.email||SI_EMAIL); }catch(e){}
+    clearPending();
     document.getElementById("signinBox").innerHTML =
       "<b>Signed in as "+(d.email||SI_EMAIL)+"</b>"
       + "<p class=\"note\" style=\"margin:.3rem 0 0\">"+d.balance+" check"+(d.balance===1?"":"s")+" on your pass. It will be here on any device you sign in from.</p>";
