@@ -479,6 +479,7 @@ function draw() {
       onOpen: openExternal,
       onSearch: runSearch,
     });
+    hydrateSavedCheck(state);
   } else if (state.screen === "category") {
     screens.category(view, {
       label: state.label,
@@ -1165,11 +1166,14 @@ async function runInstantCheck(state, button, log, brandName, productName) {
   // facts that hold for every product of this kind, written by hand and
   // sourced. Deliberately outside the verdict: a fact true of every candle
   // cannot separate two candles, so it is context here and evidence there.
-  showCategoryNotes(log, working, `${brand} ${product}`);
-  // Given only a link there is no brand and no product name to match on, so the
-  // panel stays empty for the whole minute the reader is waiting. The first
-  // front that lands says what the thing is, so try again on that.
-  let notesShown = Boolean((brand + " " + product).trim());
+  // Given only a link there is no brand and no product name to match on, so
+  // there would be no tip at all for the whole minute the reader is waiting.
+  // The first front that lands says what the thing is, so try again on that.
+  let catHit = null;
+  const findCategory = (text) => categoryFor(text).then((hit) => {
+    if (hit && !catHit) { catHit = hit; startTips(log, working, hit); }
+  });
+  findCategory(`${brand} ${product}`);
 
   // A check costs one off the pass, so the number on screen is wrong the moment
   // this finishes unless we ask again.
@@ -1181,12 +1185,11 @@ async function runInstantCheck(state, button, log, brandName, productName) {
     url,
     onFront: (step, front) => {
       log.insertBefore(screens.checkRow(step, front, check.STEP_LABEL[step] || "Database"), working);
-      if (!notesShown && front && front.note) {
-        showCategoryNotes(log, working, front.note).then((shown) => { notesShown = notesShown || shown; });
-      }
+      if (!catHit && front && front.note) findCategory(front.note);
     },
     onDone: (event) => {
       clearInterval(tick);
+      stopTips();
       working.remove();
       button.disabled = false;
       button.textContent = "Run the check";
@@ -1225,6 +1228,9 @@ async function runInstantCheck(state, button, log, brandName, productName) {
         return;
       }
       log.appendChild(screens.checkVerdict({ ...event, brand, product }, openExternal));
+      // The verdict first, then the category facts folded under it. The other
+      // way round, the answer was the thing off the bottom of the screen.
+      notesDetails(log, catHit);
       button.remove();
     },
   });
@@ -1265,23 +1271,95 @@ const signInReviewed = () => NATIVE_BUILD >= SIGNIN_FROM_BUILD;
 
 // Read once per launch; it ships inside the app so it works with no signal.
 let CATEGORY_NOTES = null;
-async function showCategoryNotes(log, before, subject) {
+let tipTimer = null;
+
+async function categoryFor(subject) {
   try {
     if (!CATEGORY_NOTES) {
       const r = await fetch("data/category-notes.json");
       CATEGORY_NOTES = r.ok ? await r.json() : { categories: [] };
     }
-    const hit = (CATEGORY_NOTES.categories || []).find((c) => new RegExp(c.match, "i").test(subject));
     // No match says nothing, rather than guessing at a category.
-    if (!hit || !log.isConnected) return false;
-    const box = el("div", "cat-notes");
-    box.appendChild(el("div", "cat-title", hit.label));
-    for (const n of hit.notes) box.appendChild(el("p", "cat-note", n.text));
-    log.insertBefore(box, before);
-    track("category_notes_shown", { category: hit.id });
-    return true;
-  } catch (e) { /* reading material must never break a paid check */ }
-  return false;
+    return (CATEGORY_NOTES.categories || []).find((c) => new RegExp(c.match, "i").test(subject)) || null;
+  } catch (e) { return null; }   // reading material must never break a paid check
+}
+
+/**
+ * A check already paid for, from somewhere other than this phone.
+ *
+ * This phone remembers its own checks, so a screen it paid for came back with
+ * its answer. One paid for on the website, or before a reinstall, or on
+ * another phone signed in to the same pass, did not: the screen offered to
+ * sell the same research again. The worker has kept it all along, so ask.
+ *
+ * Silent on every failure. Nothing here is allowed to delay or break the
+ * screen, which draws its normal self first and gains an answer if there is
+ * one.
+ */
+function hydrateSavedCheck(state) {
+  if (state.checkResult || state._hydrated) return;
+  state._hydrated = true;
+  const brand = state.brand || state.query || "";
+  const product = typeof state.product === "string" ? state.product : "";
+  if (readCheck(brand, product)) return;
+  check.known({ brand, product, url: state.url || "" }).then((d) => {
+    if (!d || !d.verdict || state.screen !== "unknown") return;
+    const found = d.identified || {};
+    saveCheck(brand || found.brand || "", product || found.product || "", d);
+    state.checkResult = d;
+    render();
+  }).catch(() => {});
+}
+
+/**
+ * One fact at a time, where the reader is already looking.
+ *
+ * It used to be all of them at once, in a block. A check takes about a minute
+ * and five paragraphs is not what anybody reads while waiting; worse, when the
+ * answer landed the block stood between the last check and the verdict, so the
+ * thing that was paid for was the thing off the bottom of the screen.
+ */
+function startTips(log, before, hit) {
+  if (!hit || !hit.notes || !hit.notes.length || !log.isConnected) return;
+  const box = el("div", "check-tip");
+  box.id = "checkTip";
+  const label = el("span", "tip-label", hit.id);
+  const text = el("span", "tip-text");
+  box.appendChild(label);
+  box.appendChild(text);
+  log.insertBefore(box, before);
+  let i = 0;
+  const show = () => {
+    text.style.opacity = "0";
+    setTimeout(() => {
+      text.textContent = hit.notes[i++ % hit.notes.length].text;
+      text.style.opacity = "1";
+    }, 220);
+  };
+  show();
+  clearInterval(tipTimer);
+  tipTimer = setInterval(show, 5200);
+  track("category_notes_shown", { category: hit.id });
+}
+
+function stopTips() {
+  clearInterval(tipTimer);
+  tipTimer = null;
+  const box = document.getElementById("checkTip");
+  if (box) box.remove();
+}
+
+/** The same facts afterwards: folded away, under the answer, not over it. */
+function notesDetails(log, hit) {
+  if (!hit || !hit.notes || !log.isConnected) return;
+  const box = document.createElement("details");
+  box.className = "cat-notes";
+  const sum = document.createElement("summary");
+  sum.className = "cat-title";
+  sum.textContent = hit.label;
+  box.appendChild(sum);
+  for (const n of hit.notes) box.appendChild(el("p", "cat-note", n.text));
+  log.appendChild(box);
 }
 
 // The address a pass was signed in with, so a second sign in needs no typing.

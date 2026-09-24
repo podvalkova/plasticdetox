@@ -180,6 +180,31 @@ export async function run({ brand, product, url = "", onFront, onDone }) {
 }
 
 /** Ask a person to research it by hand. Free, answered in two business days. */
+/**
+ * An answer somebody has already paid for, read without spending a check.
+ *
+ * The research is kept on the worker and asking for it again was always free,
+ * but nothing asked before offering to run one, so a check that cost a credit
+ * looked from the outside as though it had never happened.
+ *
+ * Never throws and never blocks: no answer simply means the normal screen.
+ */
+export async function known({ brand, product, url = "" }) {
+  const qs = new URLSearchParams();
+  if (brand) qs.set("brand", brand);
+  if (product) qs.set("product", product);
+  if (url) qs.set("url", url);
+  if (![...qs.keys()].length) return null;
+  try {
+    const res = await fetch(`${WORKER}/vet-known?${qs.toString()}`);
+    if (!res.ok) return null;
+    const d = await res.json();
+    return d && d.found ? d : null;
+  } catch (e) {
+    return null;
+  }
+}
+
 export async function requestReview({ brand, product, email }) {
   const subject = [brand, product].filter(Boolean).join(" ").trim();
   const res = await fetch(`${WORKER}/brand-request`, {
