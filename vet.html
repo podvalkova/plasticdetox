@@ -392,16 +392,33 @@ async function init(){
   const rb = document.getElementById("reqBrand");
   if (rb && CHECK_QUERY) rb.value = CHECK_QUERY;
   if (PASS) {
+    // A stored pass used to be deleted whenever this lookup failed for ANY
+    // reason: a network blip, a slow worker, a 5xx, being offline for a second.
+    // So a momentary hiccup permanently destroyed somebody's pass on that
+    // device and made them sign in again, which is why signing in felt
+    // constant. Only the server positively saying "no such pass" clears it now.
+    let known = false;
     try {
       const r = await fetch(WORKER + "/vet-balance?pass=" + encodeURIComponent(PASS));
-      const d = await r.json();
-      if (d.ok) {
-        localStorage.setItem("pdVetPass", PASS);
-        showVet(d.balance);
-        return;
+      if (r.status === 404 || (r.status >= 400 && r.status < 500)) {
+        known = true;                       // definitively not a pass any more
+      } else if (r.ok) {
+        const d = await r.json();
+        if (d.ok) {
+          localStorage.setItem("pdVetPass", PASS);
+          showVet(d.balance);
+          return;
+        }
+        known = true;
       }
-    } catch(e){}
-    PASS = ""; localStorage.removeItem("pdVetPass");
+    } catch (e) { /* unreachable is not invalid; keep the pass */ }
+    if (known) { PASS = ""; localStorage.removeItem("pdVetPass"); }
+    else {
+      // Keep the pass and say so, rather than silently demanding a sign in.
+      document.getElementById("banner").className = "banner info";
+      document.getElementById("banner").textContent =
+        "Could not reach us just now. Your pass is still saved on this device; reload in a moment.";
+    }
   }
   document.getElementById("buy").style.display="block";
   paintChecking(false);
