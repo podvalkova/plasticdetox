@@ -111,7 +111,9 @@ export function buyUrl(brand, product) {
   const q = [brand, product].filter(Boolean).join(" ").trim();
   const params = new URLSearchParams({ app: "1" });
   if (q) params.set("q", q);
-  return `${SITE}/vet.html?${params.toString()}`;
+  // #buy, because this button is somebody asking for more checks. Without it
+  // they land on the check form with the packs folded away behind it.
+  return `${SITE}/vet.html?${params.toString()}#buy`;
 }
 
 /**

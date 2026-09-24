@@ -776,7 +776,7 @@
      separately for ten minutes each, so without it a browser can hold a new
      page against an old script and call a function that is not there yet.
      Bump it whenever vet-run.js changes. -->
-<script src="js/vet-run.js?v=4"></script>
+<script src="js/vet-run.js?v=5"></script>
 <script>
     const WORKER_URL = "https://plasticdetox-quiz-email.plasticdetox.workers.dev";
     // A product row can be unrated in the data (typed and ruled both), and
@@ -1135,9 +1135,9 @@
               : '<span><span class="pass-count">' + left + '</span> check' + plural + ' left</span>')
           + (known && info.used ? '<span class="pass-note">' + info.used + ' used</span>' : "")
           + '<span class="pass-note">Never expire</span>'
-          + '<a href="vet.html">Top up &rarr;</a>'
+          + '<a href="vet.html#buy">Top up &rarr;</a>'
         : '<span class="pass-label">Your pass</span><span>No check' + plural + ' left</span>'
-          + '<a href="vet.html">Get more &rarr;</a>';
+          + '<a href="vet.html#buy">Get more &rarr;</a>';
       line.hidden = false;
       // And in the nav, where it is on screen whatever somebody scrolls to.
       const nav = document.querySelector(".nav-links");
@@ -1356,7 +1356,7 @@
               '<div class="meta-block"><button class="btn btn-primary" id="runCheckBtn" onclick="runCheckHere()">Run the check now</button></div>' +
               '<div id="checkLog" class="check-log"></div>'
             : '<p class="reason" id="passPitch"><strong>Get it checked now.</strong> Our research system runs the same four checks we use for every verdict, formula, packaging, recalls, independent tests, and answers in about a minute, with sources shown. Packs start at $5 for 20 checks.</p>' +
-              '<div class="meta-block"><a class="btn btn-primary" id="runCheckBtn" href="vet.html?q=' + encodeURIComponent(raw) + '">See Check Passes</a></div>' +
+              '<div class="meta-block"><a class="btn btn-primary" id="runCheckBtn" href="vet.html?q=' + encodeURIComponent(raw) + '#buy">See Check Passes</a></div>' +
               // Research already paid for is free to everyone, so this reader
               // needs somewhere to draw it too.
               '<div id="checkLog" class="check-log"></div>') +
@@ -1579,7 +1579,7 @@
             }
           });
           if (e.needsCredits) { btn.hidden = true; logEl.insertAdjacentHTML("beforeend",
-            '<div class="check-note">' + esc(e.error || "No checks left on this pass.") + ' <a href="vet.html">Top up &rarr;</a></div>'); return; }
+            '<div class="check-note">' + esc(e.error || "No checks left on this pass.") + ' <a href="vet.html#buy">Top up &rarr;</a></div>'); return; }
           if (e.error) { logEl.insertAdjacentHTML("beforeend", '<div class="check-note">' + esc(e.error) + "</div>"); return; }
           btn.hidden = true;
           // The verdict goes above the category facts, and those fold away.

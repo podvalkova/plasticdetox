@@ -307,12 +307,15 @@
      separately for ten minutes each, so without it a browser can hold a new
      page against an old script and call a function that is not there yet.
      Bump it whenever vet-run.js changes. -->
-<script src="js/vet-run.js?v=4"></script>
+<script src="js/vet-run.js?v=5"></script>
 <script>
 const WORKER = "https://plasticdetox-quiz-email.plasticdetox.workers.dev";
 const qs = new URLSearchParams(location.search);
 let PASS = qs.get("pass") || localStorage.getItem("pdVetPass") || "";
 const PRE_BRAND = qs.get("brand") || qs.get("q") || "";
+// "Top up" means the packs, not the check form. It arrives as #buy so the link
+// still lands somewhere sensible on a page that has not loaded its script yet.
+const WANTS_BUY = location.hash === "#buy" || qs.get("buy") === "1";
 const PRE_PRODUCT = qs.get("product") || "";
 // One display string for "you are checking". Amazon titles usually repeat the
 // brand, so only prepend it when the product name does not already start with it.
@@ -345,6 +348,16 @@ function paintChecking(hasPass){
 
 function showVet(balance){
   document.getElementById("vet").style.display="block";
+  // Arrived on purpose to buy more. Somebody holding a pass would otherwise
+  // land on the check form with the packs hidden behind it, which is another
+  // check, not the thing they clicked for.
+  if (WANTS_BUY) {
+    document.getElementById("buy").style.display = "block";
+    requestAnimationFrame(function(){
+      var b = document.getElementById("buy");
+      if (b) b.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  }
   // Who you are, beside what you have left. Signed in is a state, and a page
   // that never mentions it leaves you guessing whether it worked.
   try {
@@ -469,6 +482,11 @@ async function init(){
     }
   }
   document.getElementById("buy").style.display="block";
+  // The browser's own jump to #buy fires while the section is still hidden, so
+  // it goes nowhere. Do it once the section exists on the page.
+  if (WANTS_BUY) requestAnimationFrame(function(){
+    document.getElementById("buy").scrollIntoView({ behavior: "smooth", block: "start" });
+  });
   paintChecking(false);
 }
 
