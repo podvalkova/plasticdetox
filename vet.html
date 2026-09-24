@@ -164,8 +164,9 @@
   <section id="vet" style="display:none">
     <div class="vetbox">
       <div class="balance" id="balance">&nbsp;</div>
+      <p class="note" id="whoami" style="margin:-.4rem 0 .8rem" hidden></p>
       <input id="brand" placeholder="Brand, or paste a link to the product">
-      <input id="product" placeholder="Product, for example Sizzle extra virgin olive oil">
+      <input id="product" placeholder="Product name, if the box above is only a brand">
       <button class="go" id="gobtn" onclick="vet()">Check it</button>
       <div class="clock" id="clock"></div>
       <div id="log"></div>
@@ -305,7 +306,12 @@ let timer;
 
 function showBuy(){ document.getElementById("buy").style.display="block"; window.scrollTo({top:0,behavior:"smooth"}); }
 
+// Worth keeping while somebody is signed out and looking at a sales page,
+// because then the product they arrived with is genuinely not on screen
+// anywhere. Once the form is up it is directly above the same words in an
+// input, so it stops being context and becomes noise.
 function paintChecking(hasPass){
+  if (hasPass) { document.getElementById("checking").hidden = true; return; }
   if (!CHECK_QUERY) return;
   document.getElementById("checking").hidden = false;
   document.getElementById("checkingName").textContent = CHECK_QUERY;
@@ -316,6 +322,16 @@ function paintChecking(hasPass){
 
 function showVet(balance){
   document.getElementById("vet").style.display="block";
+  // Who you are, beside what you have left. Signed in is a state, and a page
+  // that never mentions it leaves you guessing whether it worked.
+  try {
+    const who = localStorage.getItem("pdVetEmail") || "";
+    const line = document.getElementById("whoami");
+    if (who && line) {
+      line.textContent = "Signed in as " + who + ". These checks follow you to any device you sign in from.";
+      line.hidden = false;
+    }
+  } catch (e) {}
   if (PRE_BRAND) document.getElementById("brand").value = PRE_BRAND;
   if (PRE_PRODUCT) document.getElementById("product").value = PRE_PRODUCT;
   paintBalance(balance);
