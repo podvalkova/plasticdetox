@@ -90,6 +90,104 @@ window.VetRun = (function () {
     } catch (err) { onDone({ error: lost }); }
   }
 
+  /**
+   * What a pasted product link tells us before anyone fetches anything.
+   *
+   * Ported from the app's match.js, which learned all of this first. The web
+   * had a two line version of it that recognised a link only when the scheme
+   * was still on the front, and only on Amazon, and only when the product name
+   * sat in the path right before /dp/. A link copied off a phone arrives as
+   * "amazon.com/WoodWick-.../dp/B00E0KSLC0?pf_rd_p=..." with no scheme, so it
+   * was not recognised as a link at all and got printed as the product name,
+   * query string and all, across four lines of the card.
+   *
+   * It never guesses a verdict, only an identity, and the page shows what it
+   * read so a person can correct it.
+   *
+   * One deliberate difference from the app: this returns the address even when
+   * it can name nothing, because the worker can research a link it is handed
+   * and cannot research a link we threw away.
+   */
+  var MARKETPLACE = /^(amazon|amzn|a\.co|target|walmart|ebay|etsy|costco|samsclub|kroger|instacart|thrivemarket|iherb|vitacost|wayfair|overstock|shop|tiktok|temu|shein|aliexpress|google|bing)\b/i;
+  // Path words that route rather than name: /dp/, /products/, /ip/.
+  var PATH_NOISE = ["dp", "gp", "product", "products", "p", "ip", "d", "o", "item", "items",
+    "shop", "store", "collections", "catalog", "pd", "buy", "en", "en-us", "us"];
+  // An address for an address. Nothing in it names a product and following it
+  // needs a request, so we hand the whole thing to the check rather than
+  // offering "2xY9abc" as a product name.
+  var SHORTENER = /^(https?:\/\/)?(a\.co|amzn\.to|amzn\.eu|bit\.ly|tinyurl\.com|t\.co|shorturl\.at|rstyle\.me|shop\.app)\b/i;
+
+  /** Does this read as a web address, with or without the scheme in front. */
+  function linkish(s) {
+    s = String(s || "").trim();
+    return /^https?:\/\//i.test(s) || /^[a-z0-9.-]+\.[a-z]{2,}\//i.test(s);
+  }
+
+  function titleCase(s) {
+    return String(s || "").replace(/[-_]+/g, " ").replace(/\b[a-z]/g, function (c) { return c.toUpperCase(); }).trim();
+  }
+
+  /** A slug reads as lowercase-with-hyphens. People read sentences. */
+  function tidy(s) {
+    // A shop's own SKU rides at the end of most slugs: "balance-bike-black-03619".
+    var t = String(s || "").replace(/\s+\d[\d\s]*$/, "").replace(/\s+/g, " ").trim();
+    return t ? t.charAt(0).toUpperCase() + t.slice(1) : "";
+  }
+
+  function parseLink(input) {
+    var raw = String(input || "").trim();
+    if (!linkish(raw)) return null;
+    var href = /^https?:\/\//i.test(raw) ? raw : "https://" + raw;
+    if (SHORTENER.test(raw)) {
+      return { url: href, host: "", asin: "", brand: "", product: "", marketplace: true, shortened: true };
+    }
+    var url;
+    try { url = new URL(href); } catch (e) { return null; }
+    var host = url.hostname.toLowerCase().replace(/^www\./, "");
+    var segs = url.pathname.split("/").map(function (s) { return s.trim(); }).filter(Boolean);
+
+    // The ASIN, wherever it sits. Amazon puts it after /dp/, /gp/product/ or
+    // /product/, and a short a.co link has none at all.
+    var asin = "";
+    for (var i = 0; i < segs.length; i++) {
+      if (/^[A-Z0-9]{10}$/.test(segs[i]) && /[0-9]/.test(segs[i])) { asin = segs[i]; break; }
+    }
+
+    // The slug is the longest segment that names rather than routes. Target
+    // writes /p/up-up-baby-wipes/-/A-79362508, Amazon writes the name BEFORE
+    // /dp/, and a brand shop writes it last, so position cannot be trusted.
+    var named = segs.filter(function (s) { return PATH_NOISE.indexOf(s.toLowerCase()) < 0; })
+      .filter(function (s) { return !/^[A-Z0-9]{10}$/.test(s); })
+      .filter(function (s) { return !/^[-a-z]?\d[\d-]*$/i.test(s); })
+      .filter(function (s) { return !/^a-\d+$/i.test(s); })
+      // Amazon's tracking crumb sits in the path like any other segment, and on
+      // a link with no product name in it, "ref=pd_bxgy_d_sccl_1" was the
+      // longest thing left and would have become the product name.
+      .filter(function (s) { return !/^ref=/i.test(s); })
+      .map(function (s) { return s.replace(/[-_+]+/g, " ").replace(/\.(html?|php|aspx)$/i, "").trim(); })
+      .filter(function (s) { return s.length > 2 && /[a-z]{3}/i.test(s); });
+    named.sort(function (a, b) { return b.length - a.length; });
+
+    var marketplace = MARKETPLACE.test(host);
+    // A brand's own shop names the maker in its address. "ifyoucare.com" is If
+    // You Care, and no amount of typing gets that more right.
+    return {
+      url: url.href,
+      host: host,
+      asin: asin,
+      brand: marketplace ? "" : titleCase(host.split(".").slice(0, -1).pop() || ""),
+      product: tidy(named[0] || ""),
+      marketplace: marketplace,
+      shortened: false,
+    };
+  }
+
+  /** The product name a link carries, or "" when it carries none. */
+  function linkName(hit) {
+    if (!hit) return "";
+    return [hit.brand, hit.product].filter(Boolean).join(" ").trim().slice(0, 70);
+  }
+
   // The worker answers with four step keys and both pages have to name them
   // the same way. They did not: vet.html said "Recalls & lawsuits" and Product
   // Check said "Lawsuits", so a recall finding was printed under a heading that
@@ -101,5 +199,6 @@ window.VetRun = (function () {
     testing: "Independent tests",
   };
 
-  return { WORKER: WORKER, getPass: getPass, setPass: setPass, balance: balance, run: run, STEP: STEP };
+  return { WORKER: WORKER, getPass: getPass, setPass: setPass, balance: balance, run: run,
+           STEP: STEP, linkish: linkish, parseLink: parseLink, linkName: linkName };
 })();

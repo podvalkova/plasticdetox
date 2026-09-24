@@ -292,6 +292,7 @@
   </div>
 </footer>
 
+<script src="js/vet-run.js"></script>
 <script>
 const WORKER = "https://plasticdetox-quiz-email.plasticdetox.workers.dev";
 const qs = new URLSearchParams(location.search);
@@ -596,20 +597,16 @@ async function showCategoryNotes(log, subject){
   return false;
 }
 
+// The reading of a pasted link lives in VetRun.parseLink, shared with Product
+// Check and ported from the app. This page had its own two lines of it, which
+// wanted the scheme on the front of the address and knew only Amazon, so a
+// link copied off a phone went to the worker as a brand name. No name in a
+// link means no name: the worker is handed the address and works it out.
 function splitSubject(brandField, productField){
   var s=(brandField||"").trim();
-  if(!/^https?:\/\//i.test(s)) return {brand:s, product:(productField||"").trim(), url:""};
-  var name="";
-  var slug=s.match(/amazon\.[a-z.]+\/([^\/]+)\/(?:dp|gp\/product)\//i);
-  if(slug){
-    var words=decodeURIComponent(slug[1]).replace(/-/g," ").trim();
-    if(words && !/^b0[a-z0-9]{8}$/i.test(words)) name=words.slice(0,70);
-  }
-  // No name in the link means no name, not the hostname. Putting "amazon.com"
-  // in the brand field told the reader we were researching Amazon, and on
-  // Product Check the same fallback printed the ASIN where the product name
-  // goes. The worker is given the link and works the name out itself.
-  return {brand:name, product:(productField||"").trim(), url:s};
+  var hit=VetRun.parseLink(s);
+  if(!hit) return {brand:s, product:(productField||"").trim(), url:""};
+  return {brand:VetRun.linkName(hit), product:(productField||"").trim(), url:hit.url};
 }
 
 async function vet(){

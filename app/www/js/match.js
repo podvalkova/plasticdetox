@@ -295,6 +295,10 @@ export function parseProductLink(input) {
     .filter((s) => !/^[A-Z0-9]{10}$/.test(s))
     .filter((s) => !/^[-a-z]?\d[\d-]*$/i.test(s))
     .filter((s) => !/^a-\d+$/i.test(s))
+    // Amazon's tracking crumb sits in the path like any other segment, so on a
+    // link carrying no product name "ref=pd_bxgy_d_sccl_1" was the longest
+    // thing left standing and became the product name.
+    .filter((s) => !/^ref=/i.test(s))
     .map(words)
     .filter((s) => s.length > 2 && /[a-z]{3}/i.test(s));
   const slug = named.sort((a, b) => b.length - a.length)[0] || "";

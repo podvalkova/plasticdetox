@@ -1001,40 +1001,36 @@
     }
 
     /**
-     * A pasted link is a URL to the matcher and a product name to the reader.
+     * A pasted link is an address to the matcher and a product name to the
+     * reader, and sometimes it is only an address.
      *
-     * Amazon puts the product name in the path before /dp/, so a link nobody
-     * has a verdict on can still say "Vanilla Berry Scented Candle" on the card
-     * rather than printing two hundred characters of tracking parameters at
-     * somebody. It also gives the text matcher a second chance: the slug often
-     * carries the brand even when the ASIN is not one of ours.
+     * The reading is VetRun.parseLink, shared with vet.html and ported from the
+     * app. This page used to do it in two lines of its own and got three things
+     * wrong at once: it wanted the scheme on the front, which a link copied off
+     * a phone does not have; it only knew Amazon; and where it found no name it
+     * printed the ASIN, or the hostname, or, with no scheme, the entire address
+     * including the tracking parameters. A warehouse code is not a name and
+     * neither is a query string. Where a link names nothing, the honest answer
+     * is nothing, and the check reads the page and works it out.
      */
     function prettyQuery(q) {
-      const s = q.trim();
-      if (!/^https?:\/\//i.test(s)) return s;
-      const slug = s.match(/amazon\.[a-z.]+\/([^\/]+)\/(?:dp|gp\/product)\//i);
-      if (slug) {
-        const words = decodeURIComponent(slug[1]).replace(/-/g, " ").trim();
-        if (words && !/^b0[a-z0-9]{8}$/i.test(words)) return words.slice(0, 70);
-      }
-      // A short link carries no name, only a code, and the honest answer here
-      // is nothing. It used to fall through to the ASIN, which put "We have not
-      // checked B099LKZQJN yet" on screen: a warehouse number standing where a
-      // product name belongs. The name of that product genuinely is not known
-      // until the check runs and reads the page, so nothing is what we say
-      // until it does.
-      return "";
+      const hit = VetRun.parseLink(q);
+      return hit ? VetRun.linkName(hit) : q.trim();
     }
 
     function lookup(query) {
       suggEl.classList.remove("show");
-      const name = prettyQuery(query);
-      // The raw string first, because that is what carries the ASIN.
-      let m = findExact(query);
+      const hit = VetRun.parseLink(query);
+      const name = hit ? VetRun.linkName(hit) : query.trim();
+      // Downstream wants a real address, so a link that arrived without its
+      // scheme gets one here rather than in four places further on.
+      const raw = hit ? hit.url : query.trim();
+      // The ASIN first, because that is the key the database is built on.
+      let m = (hit && hit.asin && ASIN_INDEX[hit.asin]) || findExact(query);
       if (!m && name && name !== query) m = findExact(name);
       if (m) return showResult(m);
       if (name && name !== query) searchEl.value = name;
-      showUnknown(name, query);
+      showUnknown(name, raw);
     }
 
     // The example card teaches what a verdict looks like before the first
@@ -1177,7 +1173,7 @@
      * When there is no name we say there is no name, and the check works it out.
      */
     function showUnknown(name, raw) {
-      const clean = (name || "").trim();
+      const clean = (name || "").trim().slice(0, 90);
       raw = (raw || clean).trim();
       const anon = !clean;
       // What we file it under when there is no name: the ASIN if the link has
