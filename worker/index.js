@@ -121,6 +121,14 @@ export default {
     if (path === "/vet-known" && request.method === "GET") {
       return handleVetKnown(request, env, corsOrigin);
     }
+    // Can we reach the recall database at all. Answering that needed a paid
+    // check and a reading of the card, which is why it went unnoticed that the
+    // answer had been no since the day it was written.
+    if (path === "/recall-probe" && request.method === "GET") {
+      const brand = (new URL(request.url).searchParams.get("brand") || "Brita").slice(0, 60);
+      const r = await cpscRecalls(brand);
+      return json({ ok: true, reachable: r !== null, matches: r ? r.length : 0 }, 200, corsOrigin);
+    }
 
     // ===== Every check anyone has paid for, for the review queue =====
     if (path === "/vet-results" && request.method === "GET") {
@@ -1713,13 +1721,33 @@ function isTheBrand(brand, firm) {
  */
 async function cpscRecalls(brand) {
   const out = [];
+  // This reported "the CPSC database could not be reached" on real checks while
+  // the identical request from a laptop answered in 300ms, so recalls came back
+  // unassessed on a candle nobody has ever recalled. Which half was at fault,
+  // the datacentre address or a user agent reading "PlasticDetox/1.0", is not
+  // proven: what is established is that asking the way a browser asks, and
+  // asking twice, reaches it from the worker. /recall-probe says whether it
+  // still does, because the only way to find that out used to be to pay for a
+  // check and read the card.
+  const url = "https://www.saferproducts.gov/RestWebServices/Recall?format=json&ProductName="
+    + encodeURIComponent(brand);
+  const headers = {
+    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36"
+      + " (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36",
+    "Accept": "application/json, text/javascript, */*; q=0.01",
+    "Accept-Language": "en-US,en;q=0.9",
+  };
+  let d = null;
+  for (let attempt = 0; attempt < 2 && d === null; attempt++) {
+    try {
+      const res = await fetch(url, { headers, signal: AbortSignal.timeout(12000) });
+      if (!res.ok) continue;
+      const body = await res.json();
+      if (Array.isArray(body)) d = body;
+    } catch (e) { /* try once more, then give up honestly */ }
+  }
+  if (d === null) return null;                      // null means we could not look
   try {
-    const url = "https://www.saferproducts.gov/RestWebServices/Recall?format=json&ProductName="
-      + encodeURIComponent(brand);
-    const res = await fetch(url, { headers: { "User-Agent": "PlasticDetox/1.0" }, signal: AbortSignal.timeout(9000) });
-    if (!res.ok) return null;                       // null means we could not look
-    const d = await res.json();
-    if (!Array.isArray(d)) return null;
     for (const r of d) {
       // The API matches loosely, so confirm the brand really is the subject.
       const subject = `${r.Title || ""} ${(r.Manufacturers || []).map((m) => m.Name).join(" ")}`;
