@@ -70,9 +70,28 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--write", action="store_true")
     ap.add_argument("--show", action="store_true", help="list every brand that moves")
+    ap.add_argument("--fronts-only", action="store_true",
+                    help="fill blank brand scorecards from researched product rows "
+                         "and touch no stance")
     args = ap.parse_args()
 
     brands = json.loads(DATA.read_text())
+
+    # The stance rollup below rewrites b["stance"], which is why CLAUDE.md warns
+    # that running this file on its own once flipped about sixty unrelated store
+    # picks. Filling in a blank scorecard cannot do that: it only ever writes a
+    # front that was empty, and it never reads or sets a stance. So the safe
+    # half gets its own door, and check.sh walks through that one.
+    if args.fronts_only:
+        filled, adverse, favourable = roll_fronts(brands)
+        print(f"brand scorecard cells filled from researched rows: {filled}"
+              f"  ({adverse} adverse, {favourable} favourable)")
+        if args.write:
+            DATA.write_text(json.dumps(brands, indent=2, ensure_ascii=False) + "\n")
+            print(f"wrote {DATA.name}")
+        else:
+            print("dry run. re-run with --write to apply.")
+        return 0
     moved, moves = 0, []
     already = no_products = 0
     reasons = collections.Counter()
@@ -134,31 +153,50 @@ def main():
         print("\ndry run. re-run with --write to apply.")
 
 
-if __name__ == "__main__":
-    sys.exit(main())
-
-
 # ---------------------------------------------------------------- fronts
+# What a product row's front had to come from before it may appear on the
+# brand card. `inferred` is the classifier guessing from a product name and
+# `rollup` would be this function reading its own output, so neither counts.
+ROLLABLE = {"database", "hand", "stated", "class"}
+
+
 def roll_fronts(brands):
-    """Adverse product findings surface on the brand's own scorecard.
+    """A brand's own researched products fill in its scorecard.
 
     The verdict rollup above answers "is the brand careful". This answers the
-    next question a Brand Check page asks, which is why, and it was silent: 130
-    brand fronts read unknown while one of that brand's own product rows
-    carried a caution or a fail. Someone looking up the brand saw four blanks
-    and no hint that we had found something.
+    next question a Brand Check page asks, which is what we actually checked,
+    and until now it answered nothing at all: this function sat below the
+    __main__ guard and no caller ever reached it. Every brand card in the
+    database was showing four blanks over product rows that had four recorded
+    answers.
 
-    Same asymmetry as everywhere else, rule 1.1. Adverse evidence rolls up,
-    because a finding on one product is a fact about the brand worth showing.
-    Favourable evidence does not, because one product passing says nothing
-    about the next one, and a brand scorecard full of borrowed passes is the
-    exact thing the extension's strict per-product rule exists to prevent.
+    That silence had a visible cost. enforce-scorecard will not print "Good
+    choice" over an empty scorecard, which is the right rule and the reason
+    HealthyBaby cannot happen again. With nothing ever filling the scorecard,
+    184 brands had a stance a person had set to good parked at neutral, which
+    Brand Check renders as "Context". Matyz is the top pick of the pumping
+    guide and looked up as Context. So did Spectra, LacTeck, Thorne, Natracare,
+    Saalt, Bobbie, DivaCup and a hundred more: the site recommending a brand in
+    an article and declining to say so on its own brand page.
 
-    The note names the product, so a reader can see the finding is about one
-    thing rather than the whole range.
+    Adverse evidence still wins, rule 1.1, and a single caution on one product
+    is a fact about the brand worth showing. What is new is that a favourable
+    front rolls up too, because the brand card's scorecard is not a claim about
+    the rest of the range. It is the record of what was checked, which is
+    exactly the question the gate asks. Whether the verdict itself reaches an
+    unresearched product is decided by `generalises` and by the brand-line
+    rows, both of which are untouched here.
+
+    Two limits keep it honest. Only a front recorded by research counts, never
+    one the classifier inferred, so nothing is laundered onto a brand card by
+    guessing. And the note always names the product it came from, so a reader
+    sees the evidence is about one thing rather than the whole catalogue.
     """
     RANK = {"caution": 1, "fail": 2}
-    filled = 0
+    # A pass is stronger evidence of having looked than a `none`, which says
+    # only that no evidence of that kind exists. Either satisfies the gate.
+    GOOD = {"pass": 2, "none": 1}
+    filled = adverse = favourable = 0
     for b in brands:
         fronts = b.setdefault("fronts", {})
         for f in ("formula", "materials", "legal", "testing"):
@@ -167,20 +205,34 @@ def roll_fronts(brands):
             if status not in (None, "", "unknown"):
                 continue
             worst, source = None, None
+            best, bsource = None, None
             for p in (b.get("products") or []):
                 if p.get("origin") == "brand-line":
                     continue
-                v = ((p.get("ext") or {}).get("fronts") or {}).get(f)
+                e = p.get("ext") or {}
+                if (e.get("frontOrigin") or {}).get(f) not in ROLLABLE:
+                    continue
+                v = (e.get("fronts") or {}).get(f)
                 if v in RANK and RANK[v] > RANK.get(worst or "", 0):
                     worst, source = v, p
-            if not worst:
+                elif v in GOOD and GOOD[v] > GOOD.get(best or "", 0):
+                    best, bsource = v, p
+            if worst:
+                pick, source, adverse = worst, source, adverse + 1
+            elif best:
+                pick, source, favourable = best, bsource, favourable + 1
+            else:
                 continue
             note = ((source.get("ext") or {}).get("frontNotes") or {}).get(f) or ""
             fronts[f] = {
-                "status": worst,
+                "status": pick,
                 "note": (f"From {source.get('name')}: {note}" if note
-                         else f"{source.get('name')} carries a finding on this front.")[:400],
+                         else f"From {source.get('name')}.")[:400],
                 "origin": "rollup",
             }
             filled += 1
-    return filled
+    return filled, adverse, favourable
+
+
+if __name__ == "__main__":
+    sys.exit(main())

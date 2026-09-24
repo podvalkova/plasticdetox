@@ -44,6 +44,16 @@ if [ "${1:-}" = "--fix" ]; then
   # Huggies held the ANSES 2020 diaper finding and still showed a skip over
   # four blank fronts.
   python3 tools/apply-class-evidence.py --write || exit 1
+  # A brand card's four checks, filled from that brand's own researched rows.
+  # The function doing it had been written and left below the __main__ guard,
+  # so nothing ever called it and every brand card in the database showed four
+  # blanks over rows that had four answers. The gate below then refused to
+  # print "Good choice" over an empty scorecard, correctly, and parked 184
+  # brands at "Context" that a person had set to good, Matyz and Spectra and
+  # Thorne among them. --fronts-only is the half that cannot move a stance;
+  # the stance rollup in the same file is the one that flipped sixty store
+  # picks and is deliberately not run here.
+  python3 tools/brand-rollup.py --fronts-only --write > /dev/null || exit 1
   python3 tools/enforce-scorecard.py --write || exit 1
   # The article date lives in four files and only one of them was being kept
   # up, so 37 articles were telling readers they were months older than they
@@ -126,6 +136,7 @@ python3 tools/check-recalls.py --apply --write > /dev/null 2>&1
 python3 tools/check-testing-sources.py --apply --write > /dev/null 2>&1
 python3 tools/apply-product-rules.py --write > /dev/null 2>&1
 python3 tools/apply-class-evidence.py --write > /dev/null 2>&1
+python3 tools/brand-rollup.py --fronts-only --write > /dev/null 2>&1
 python3 tools/enforce-scorecard.py --write > /dev/null 2>&1
 after=$(python3 - <<'PY'
 import json,hashlib

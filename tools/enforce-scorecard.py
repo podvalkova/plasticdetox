@@ -188,7 +188,7 @@ def main():
     # person's research. Prose we wrote does not count. An adverse stance is
     # untouched, because rule 1.1 lets a warning rest on a single finding.
     RECORDED = {"database", "hand", "stated", "rollup", "class"}
-    brand_held = brand_back = 0
+    brand_held = brand_back = brand_stale = 0
     for b in brands:
         fronts = b.get("fronts") or {}
         recorded = [k for k in FRONTS
@@ -199,11 +199,25 @@ def main():
             b["stanceHeld"] = "good"
             b["stance"] = "neutral"
             brand_held += 1
+        elif b.get("stanceHeld") and b.get("stance") != "neutral":
+            # The stance moved on while it was parked, and the only thing that
+            # moves it is the verdict rollup tightening the brand to careful
+            # because one of its products is flagged. That is a finding, and a
+            # finding outranks a stale copy of the answer this gate took away.
+            #
+            # Restoring blindly put `good` back over it. LAJDL is careful for a
+            # candle whose scent it will not disclose and Wild is careful for
+            # "Parfum (Fragrance)", the example the rulebook itself uses, and
+            # both would have come back as recommendations. Twenty four brands
+            # would have, the moment their scorecards started filling in.
+            b.pop("stanceHeld")
+            brand_stale += 1
         elif b.get("stanceHeld") and recorded:
             b["stance"] = b.pop("stanceHeld")
             brand_back += 1
     print(f"  brand stances held for want of a recorded check: {brand_held}"
-          f"{f', restored: {brand_back}' if brand_back else ''}")
+          f"{f', restored: {brand_back}' if brand_back else ''}"
+          f"{f', stale hold dropped over a finding: {brand_stale}' if brand_stale else ''}")
 
     for b in brands:
         for p in (b.get("products") or []):
