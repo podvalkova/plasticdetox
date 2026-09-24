@@ -519,8 +519,11 @@ function draw() {
         // checks work here and on the website and survive a new phone.
         email: readPassEmail(),
         onSendCode: async (email) => {
-          track("vet_code_sent", {});
-          return check.sendCode(email);
+          const r = await check.sendCode(email);
+          // Only remember an address that owns a pass; a remembered typo gets
+          // offered back on every visit and makes one mistake permanent.
+          if (r.ok) { savePassEmail(email); track("vet_code_sent", {}); }
+          return r;
         },
         onSignIn: async (email, code) => {
           const r = await check.signIn(email, code);

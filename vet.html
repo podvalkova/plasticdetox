@@ -461,10 +461,15 @@ async function sendCode(){
     var r=await fetch(WORKER+"/vet-login",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({email:email})});
     var d=await r.json();
     SI_EMAIL=email;
-    note.textContent = d.ok ? (d.message||"Code sent. It lasts fifteen minutes.")
+    note.textContent = d.ok ? (d.message||"Code sent. Use the newest one; it lasts fifteen minutes.")
                             : (d.error||"We could not send a code to that address.");
-    try{ localStorage.setItem("pdVetEmailPrefill", email); }catch(e){}
-    document.getElementById("siCode").focus();
+    // Only remember an address that actually owns a pass. Remembering a typo
+    // prefilled it on every future visit, so one mistake became permanent:
+    // a.podvlkova@gmail.com for a.podvalkova@gmail.com, invisible at a glance
+    // and offered back helpfully every time.
+    if (d.ok) { try{ localStorage.setItem("pdVetEmailPrefill", email); }catch(e){} }
+    else { try{ localStorage.removeItem("pdVetEmailPrefill"); }catch(e){} }
+    if (d.ok) document.getElementById("siCode").focus();
   }catch(e){ note.textContent="Could not reach us just now. Please try again in a moment."; }
   btn.disabled=false;
 }
