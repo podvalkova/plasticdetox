@@ -292,7 +292,11 @@
   </div>
 </footer>
 
-<script src="js/vet-run.js"></script>
+<!-- The version token is not decoration. The page and this script are cached
+     separately for ten minutes each, so without it a browser can hold a new
+     page against an old script and call a function that is not there yet.
+     Bump it whenever vet-run.js changes. -->
+<script src="js/vet-run.js?v=2"></script>
 <script>
 const WORKER = "https://plasticdetox-quiz-email.plasticdetox.workers.dev";
 const qs = new URLSearchParams(location.search);

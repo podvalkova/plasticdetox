@@ -111,17 +111,34 @@ window.VetRun = (function () {
   var MARKETPLACE = /^(amazon|amzn|a\.co|target|walmart|ebay|etsy|costco|samsclub|kroger|instacart|thrivemarket|iherb|vitacost|wayfair|overstock|shop|tiktok|temu|shein|aliexpress|google|bing)\b/i;
   // Path words that route rather than name: /dp/, /products/, /ip/.
   var PATH_NOISE = ["dp", "gp", "product", "products", "p", "ip", "d", "o", "item", "items",
-    "shop", "store", "collections", "catalog", "pd", "buy", "en", "en-us", "us"];
+    "shop", "store", "collections", "catalog", "pd", "buy", "en", "en-us", "us",
+    // Amazon's sponsored hop and its shop fronts route too: /sspa/click, and
+    // /stores/WoodWick/page/1234. Without these, "Click" was offered as a
+    // product name.
+    "sspa", "click", "stores", "page", "slredirect"];
   // An address for an address. Nothing in it names a product and following it
   // needs a request, so we hand the whole thing to the check rather than
   // offering "2xY9abc" as a product name.
   var SHORTENER = /^(https?:\/\/)?(a\.co|amzn\.to|amzn\.eu|bit\.ly|tinyurl\.com|t\.co|shorturl\.at|rstyle\.me|shop\.app)\b/i;
+  // An address, wherever it sits in what was pasted. A phone's share sheet
+  // hands over the title and the link together, "WoodWick Hourglass Candle
+  // https://a.co/d/2xY9abc", and demanding the address come first read that
+  // whole string as a product name.
+  var ADDRESS = /(?:https?:\/\/|(?:[a-z0-9-]+\.)+[a-z]{2,}\/)[^\s<>"']*/i;
 
-  /** Does this read as a web address, with or without the scheme in front. */
-  function linkish(s) {
-    s = String(s || "").trim();
-    return /^https?:\/\//i.test(s) || /^[a-z0-9.-]+\.[a-z]{2,}\//i.test(s);
+  /** The address inside a pasted string, and whatever was pasted around it. */
+  function findAddress(input) {
+    var s = String(input || "").trim();
+    var m = s.match(ADDRESS);
+    if (!m) return null;
+    // Trailing punctuation belongs to the sentence, not to the address.
+    var href = m[0].replace(/[.,;:!?)\]]+$/, "");
+    var text = (s.slice(0, m.index) + " " + s.slice(m.index + m[0].length)).replace(/\s+/g, " ").trim();
+    return { href: /^https?:\/\//i.test(href) ? href : "https://" + href, text: text };
   }
+
+  /** Does this carry a web address at all. */
+  function linkish(s) { return Boolean(findAddress(s)); }
 
   function titleCase(s) {
     return String(s || "").replace(/[-_]+/g, " ").replace(/\b[a-z]/g, function (c) { return c.toUpperCase(); }).trim();
@@ -135,14 +152,21 @@ window.VetRun = (function () {
   }
 
   function parseLink(input) {
-    var raw = String(input || "").trim();
-    if (!linkish(raw)) return null;
-    var href = /^https?:\/\//i.test(raw) ? raw : "https://" + raw;
-    if (SHORTENER.test(raw)) {
-      return { url: href, host: "", asin: "", brand: "", product: "", marketplace: true, shortened: true };
+    var found = findAddress(input);
+    if (!found) return null;
+    if (SHORTENER.test(found.href)) {
+      return { url: found.href, host: "", asin: "", brand: "", product: "",
+               marketplace: true, shortened: true, text: found.text };
     }
     var url;
-    try { url = new URL(href); } catch (e) { return null; }
+    try { url = new URL(found.href); } catch (e) { return null; }
+    // A sponsored placement is a redirect wearing a product link's clothes: the
+    // real address is folded into its query string, and the path it shows says
+    // only "click".
+    if (/\/(?:sspa\/click|gp\/slredirect)/i.test(url.pathname)) {
+      var inner = url.searchParams.get("url") || url.searchParams.get("u");
+      if (inner) { try { url = new URL(inner, url.origin); } catch (e) {} }
+    }
     var host = url.hostname.toLowerCase().replace(/^www\./, "");
     var segs = url.pathname.split("/").map(function (s) { return s.trim(); }).filter(Boolean);
 
@@ -179,13 +203,19 @@ window.VetRun = (function () {
       product: tidy(named[0] || ""),
       marketplace: marketplace,
       shortened: false,
+      text: found.text,
     };
   }
 
   /** The product name a link carries, or "" when it carries none. */
   function linkName(hit) {
     if (!hit) return "";
-    return [hit.brand, hit.product].filter(Boolean).join(" ").trim().slice(0, 70);
+    var fromUrl = [hit.brand, hit.product].filter(Boolean).join(" ").trim();
+    if (fromUrl) return fromUrl.slice(0, 70);
+    // Nothing in the address names it, so fall back to whatever was pasted
+    // around the address: on a share sheet that text is the product's own
+    // title, and it is the only name anybody has.
+    return String(hit.text || "").replace(/[:\-–—]+\s*$/, "").trim().slice(0, 70);
   }
 
   // The worker answers with four step keys and both pages have to name them

@@ -642,7 +642,11 @@
 
   <!-- The Check Pass runner, shared with vet.html so the two cannot
      drift apart about what a check is. -->
-<script src="js/vet-run.js"></script>
+<!-- The version token is not decoration. The page and this script are cached
+     separately for ten minutes each, so without it a browser can hold a new
+     page against an old script and call a function that is not there yet.
+     Bump it whenever vet-run.js changes. -->
+<script src="js/vet-run.js?v=2"></script>
 <script>
     const WORKER_URL = "https://plasticdetox-quiz-email.plasticdetox.workers.dev";
     // A product row can be unrated in the data (typed and ruled both), and
