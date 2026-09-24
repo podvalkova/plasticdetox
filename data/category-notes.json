@@ -1,32 +1,33 @@
 {
-  "_comment": "What is true of a whole product category, written by hand and shown while a check runs. These are editorial positions, not machine output: every line is verified and sourced, and none of them decides a verdict. That separation is the point. A fact true of every candle cannot tell two candles apart, so it belongs here as context rather than in a front where it would cap the entire category at careful. Adding a category is a `match` regex and two to four lines. Keep them short: they are read during a wait, not studied.",
-  "categories": [
+ "_comment": "What is true of a whole product category, written by hand and shown while a check runs. These are editorial positions, not machine output: every line is verified and sourced, and none of them decides a verdict. That separation is the point. A fact true of every candle cannot tell two candles apart, so it belongs here as context rather than in a front where it would cap the entire category at careful. Adding a category is a `match` regex and two to four lines. Keep them short: they are read during a wait, not studied.",
+ "categories": [
+  {
+   "id": "candles",
+   "label": "What is true of every candle",
+   "match": "\\b(candle|candles|wax melt|wax melts|tea light|tealight|votive)\\b",
+   "notes": [
     {
-      "id": "candles",
-      "label": "What is true of every candle",
-      "match": "\\b(candle|candles|wax melt|wax melts|tea light|tealight|votive)\\b",
-      "notes": [
-        {
-          "text": "A lead free wick is the law, not a feature. The US banned lead cored wicks in October 2003, and testing finds no detectable airborne lead from metal wicks at the legal limit. Brands that advertise it are advertising compliance.",
-          "source": "https://www.federalregister.gov/documents/2003/04/18/03-9255/metal-cored-candlewicks-containing-lead-and-candles-with-such-wicks"
-        },
-        {
-          "text": "Soy is not measurably cleaner than paraffin. There is no sound peer reviewed comparison of wax types, and the study usually cited for it was funded by a soy trade body.",
-          "source": ""
-        },
-        {
-          "text": "The fragrance is what drives emissions, not the wax. Burning any wax releases VOCs and fine particulates, and measured emissions rise with fragrance load. Unscented candles emit by far the least.",
-          "source": "https://www.sciencedirect.com/science/article/pii/S0160412021002154"
-        },
-        {
-          "text": "Undisclosed fragrance is the thing worth checking. A screening of 47 branded perfumes found diethyl phthalate in all 47, and it is the usual solvent in fragrance oil. Named oils are a disclosure. The words natural or essential oils on their own are not.",
-          "source": "https://pubmed.ncbi.nlm.nih.gov/26310707/"
-        },
-        {
-          "text": "Ventilation does more than the product does. The newest measurements found emissions peaked in still, humid air and fell with airflow.",
-          "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13416868/"
-        }
-      ]
+     "text": "A lead free wick is the law, not a feature. Lead cored wicks were banned in 2003, so a brand advertising it is advertising compliance.",
+     "source": "https://www.federalregister.gov/documents/2003/04/18/03-9255/metal-cored-candlewicks-containing-lead-and-candles-with-such-wicks"
+    },
+    {
+     "text": "Soy is not measurably cleaner than paraffin. No sound study has ever shown it, and the one usually cited was funded by a soy trade body.",
+     "source": ""
+    },
+    {
+     "text": "Fragrance drives the emissions, not the wax. Every wax releases VOCs when it burns, and unscented candles release by far the least.",
+     "source": "https://www.sciencedirect.com/science/article/pii/S0160412021002154"
+    },
+    {
+     "text": "Undisclosed fragrance is what to check. Named oils are a disclosure. The words natural or essential oils on their own are not.",
+     "source": "https://pubmed.ncbi.nlm.nih.gov/26310707/"
+    },
+    {
+     "text": "Ventilation does more than the product does. Emissions peak in still, humid air and fall as soon as there is airflow.",
+     "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13416868/"
     }
-  ]
+   ],
+   "_comment": "Read one at a time, beside the timer, while a check runs. They are shown as a rotating tip rather than a block: five paragraphs at once sat below the fold during the wait and then pushed the verdict off the screen when the answer landed. Keep each one to about 25 words, one idea."
+  }
+ ]
 }

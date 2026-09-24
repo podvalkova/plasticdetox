@@ -134,10 +134,21 @@
   .footer a{color:var(--text-muted);text-decoration:none}
   .footer a:hover{color:var(--accent-dark)}
 
-  .cat-notes{margin:14px 0;padding:14px 16px;background:#ede9fe;border-radius:12px}
-  .cat-title{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#7c3aed;margin-bottom:8px}
+  /* One fact at a time while the check runs, beside the clock. A block of
+     five paragraphs sat below the fold through the wait and then stood
+     between the last check and the answer. */
+  .check-tip{display:flex;align-items:flex-start;gap:11px;margin:14px 0;padding:13px 15px;
+    background:#f1ecfe;border-radius:12px;min-height:46px}
+  .tip-label{flex:none;font-size:10.5px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:#7c3aed;padding-top:3px}
+  .tip-text{font-size:14.5px;line-height:1.5;transition:opacity .22s ease}
+  .cat-notes{margin:14px 0;border:1px solid #e7e5e4;border-radius:12px;padding:0 15px}
+  .cat-notes[open]{padding-bottom:4px}
+  .cat-title{cursor:pointer;padding:12px 0;font-size:11px;font-weight:700;letter-spacing:.05em;
+    text-transform:uppercase;color:#7c3aed;list-style:none}
+  .cat-title::-webkit-details-marker{display:none}
+  .cat-title::after{content:" +";font-weight:800}
+  .cat-notes[open] .cat-title::after{content:" \2212"}
   .cat-note{margin:0 0 9px;font-size:14px;line-height:1.5}
-  .cat-note:last-child{margin-bottom:0}
 </style>
 </head>
 <body>
@@ -310,7 +321,10 @@ const CHECK_QUERY = (() => {
   if (PRE_PRODUCT && PRE_BRAND && PRE_PRODUCT.toLowerCase().startsWith(PRE_BRAND.toLowerCase())) return PRE_PRODUCT;
   return (PRE_BRAND + " " + PRE_PRODUCT).trim();
 })();
-const NAME = {formula:"Formula", packaging:"Packaging", legal:"Recalls & lawsuits", testing:"Independent tests"};
+// The worker sends "materials"; this map still said "packaging", so every
+// materials row on this page has been printing under the heading "Database".
+// One map, shared with Product Check, is the whole reason VetRun.STEP exists.
+const NAME = VetRun.STEP;
 let timer;
 
 function showBuy(){ document.getElementById("buy").style.display="block"; window.scrollTo({top:0,behavior:"smooth"}); }
@@ -580,25 +594,52 @@ async function checkout(pack){
 // about what is true of a candle. Outside the verdict on purpose: a fact true
 // of every candle cannot separate two of them.
 var CATEGORY_NOTES = null;
+var tipTimer = null;
+
+/** One fact at a time, beside the clock, for as long as the check runs. */
+function startTips(log, hit){
+  if(!hit || !hit.notes || !hit.notes.length) return;
+  var box=document.createElement("div"); box.className="check-tip"; box.id="checkTip";
+  box.innerHTML='<span class="tip-label"></span><span class="tip-text"></span>';
+  box.querySelector(".tip-label").textContent = hit.id;
+  log.insertBefore(box, log.firstChild);
+  var el=box.querySelector(".tip-text"), i=0;
+  var show=function(){
+    el.style.opacity="0";
+    setTimeout(function(){ el.textContent=hit.notes[i++ % hit.notes.length].text; el.style.opacity="1"; }, 220);
+  };
+  show();
+  clearInterval(tipTimer);
+  tipTimer=setInterval(show, 5200);
+}
+
+function stopTips(){
+  clearInterval(tipTimer); tipTimer=null;
+  var box=document.getElementById("checkTip"); if(box) box.remove();
+}
+
+/** The same facts afterwards: folded away, under the answer, not over it. */
+function notesDetails(log, hit){
+  if(!hit || !hit.notes) return;
+  var box=document.createElement("details"); box.className="cat-notes";
+  box.innerHTML='<summary class="cat-title">'+hit.label+"</summary>"
+    + hit.notes.map(function(n){
+        return '<p class="cat-note">'+n.text
+          + (n.source?' <a href="'+n.source+'" target="_blank" rel="noopener">source</a>':"")+"</p>";
+      }).join("");
+  log.appendChild(box);
+}
+
 async function showCategoryNotes(log, subject){
   try{
     if(!CATEGORY_NOTES){
       var r=await fetch("data/category-notes.json");
       CATEGORY_NOTES = r.ok ? await r.json() : {categories:[]};
     }
-    var hit=(CATEGORY_NOTES.categories||[]).find(function(c){ return new RegExp(c.match,"i").test(subject); });
-    if(!hit) return false;              // no match says nothing, rather than guessing
-    var box=document.createElement("div");
-    box.className="cat-notes";
-    box.innerHTML='<div class="cat-title">'+hit.label+"</div>"
-      + hit.notes.map(function(n){
-          return '<p class="cat-note">'+n.text
-            + (n.source?' <a href="'+n.source+'" target="_blank" rel="noopener">source</a>':"")+"</p>";
-        }).join("");
-    log.appendChild(box);
-    return true;
+    // No match says nothing, rather than guessing at a category.
+    return (CATEGORY_NOTES.categories||[]).find(function(c){ return new RegExp(c.match,"i").test(subject); }) || null;
   }catch(e){ /* reading material must never break a paid check */ }
-  return false;
+  return null;
 }
 
 // The reading of a pasted link lives in VetRun.parseLink, shared with Product
@@ -623,10 +664,13 @@ async function vet(){
   const log = document.getElementById("log"), res = document.getElementById("result"), clock = document.getElementById("clock");
   const btn = document.getElementById("gobtn");
   log.innerHTML=""; res.innerHTML=""; btn.disabled = true;
-  showCategoryNotes(log, `${subject.brand} ${subject.product}`);
-  // A bare link matches no category, so the panel would stay empty for the
+  // A bare link matches no category, so there would be no tip at all for the
   // whole minute. The first front that lands names the product, so try on that.
-  let notesShown = Boolean(`${subject.brand} ${subject.product}`.trim());
+  let catHit = null;
+  const findCategory = (text) => showCategoryNotes(log, text).then(hit => {
+    if (hit && !catHit) { catHit = hit; startTips(log, hit); }
+  });
+  findCategory(`${subject.brand} ${subject.product}`);
   const t0 = Date.now();
   clearInterval(timer);
   timer = setInterval(()=>{clock.textContent=((Date.now()-t0)/1000).toFixed(1)+"s"},100);
@@ -647,12 +691,12 @@ async function vet(){
         if (e.internal) continue;
         if (e.front){
           const f = e.front;
-          if (!notesShown && f.note){ showCategoryNotes(log, f.note).then(function(s){ notesShown = notesShown || s; }); }
+          if (!catHit && f.note) findCategory(f.note);
           const lbl = f.status==="none" ? (e.step==="testing" ? "none found" : "N/A") : f.status;
           line('<span class="badge '+f.status+'">'+lbl+'</span> <b>'+(NAME[e.step]||"Database")+'</b><br><small>'+f.note+(f.source?' &middot; <a href="'+f.source+'" target="_blank" rel="noopener">source</a>':"")+'</small>');
         }
         if (e.done){
-          clearInterval(timer); btn.disabled = false;
+          clearInterval(timer); btn.disabled = false; stopTips(); notesDetails(log, catHit);
           if (e.needsCredits){ res.innerHTML='<p class="note">'+e.error+'</p>'; showBuy(); continue; }
           if (e.error){ line(e.error); continue; }
           // Given only a link, this is the first moment anybody knows what the

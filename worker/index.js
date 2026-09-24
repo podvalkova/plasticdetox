@@ -118,6 +118,9 @@ export default {
     if (path === "/vet-balance" && request.method === "GET") {
       return handleVetBalance(request, env, corsOrigin);
     }
+    if (path === "/vet-known" && request.method === "GET") {
+      return handleVetKnown(request, env, corsOrigin);
+    }
 
     // ===== Every check anyone has paid for, for the review queue =====
     if (path === "/vet-results" && request.method === "GET") {
@@ -2398,7 +2401,7 @@ function worseFront(a, b) {
 
 async function vetLabel(env, brand, product, url = "") {
   const r = await vetClaude(env, VET_RULES,
-    `Product: ${vetSubject(brand, product, url)}. Find (1) "formula": the ingredient list, and nothing else. Quote it verbatim behind the word Ingredients where you can find it. Formula is status "none" ONLY when nobody states what the product is made of, which is true of a chair or a knife and almost nothing else. If a composition is published anywhere, that is the formula, whatever kind of product it is. Search for it before concluding there is none. Where the product is burned, vaporised or sprayed, the formula is the front that decides the answer. Give formula a "finding": one short sentence naming what is wrong, or what is clean, in plain words, such as "Contains parfum, an undisclosed fragrance blend". Give formula a "flagged": an array of the exact ingredient names that earned the status, empty when none. (2) "materials": report FACTS, not a judgement. "holds": what is inside the product, and the single word "none" when the product is not a container at all, which covers every durable good, toy, garment, mat, nappy and piece of furniture. "material": what the product ITSELF is made of, listing ONLY the surfaces a person's skin or mouth meets in normal use, and required whenever holds is "none". "nonContact": the parts a person never meets, such as the tyres of a balance bike, the base of a yoga mat or the foam sealed inside a mattress cover. Those are noted and never scored, so putting one in "material" marks a product down for a part nobody touches. "undisclosedPart": the NAME OF THE PART ONLY, two or three words, where a part in the CONTACT path is one the maker will not identify: "grips", "the top layer", "the coating". Not a sentence and not an explanation, because we put it in one. Empty where every contact part is named. "Nonwoven", "woven", "quilted", "fibre", "foam", "laminate" and "textile" describe how a layer is BUILT, not what it is made of: a nonwoven can be polypropylene, polyester, viscose or cotton and those are four different answers. So a contact layer given only as "nonwoven" or "soft fibre" is an undisclosed part, however much is said about the OTHER layers. "mouthed": true when a small child puts it in their mouth in normal use. "container": what actually touches the contents, as specifically as the source allows (PET, HDPE, PP, unnamed plastic, glass, aluminium, steel, paper, cotton), and empty when holds is "none". "filledBy": "maker" when the product is sold with its contents inside, "buyer" when it is sold empty for the shopper to fill, which is every storage bag, box, jar, wrap and bottle. "base": one of dry, aqueous, surfactant, emulsion, anhydrous, acidic, by what the contents are, an oil or balm or stick being anhydrous. Where filledBy is "buyer" the base is the hardest use the MAKER markets, not the gentlest: dry only where the maker restricts it to dry goods, anhydrous where it is marketed for oils, fats or cooking in the bag, and otherwise emulsion, because food carries fat. "heated": true only when something hot goes in or on it in use, and where filledBy is "buyer" that means the maker markets heating it, microwaving, boiling or the oven. "use": leave-on, rinse-off, ingested or not-on-body. Anything eaten, drunk or held in the mouth is "ingested", never "not-on-body": not-on-body is for laundry powder and surface cleaner, which are diluted and washed away. Add a "note": AT MOST TWO SENTENCES, what you found and where, in plain words. It is read on a phone by somebody deciding what to buy, not by us, so it is not a transcript of the listing and not a record of your searching. We apply our own packaging table to those facts, so do not reason about pass or fail for materials yourself. Every field carries a "source" URL. (3) "identified": {"brand":"<the maker>","product":"<the product name>"}, always, and above all where you were given only a link: you work the name out in order to research it, and we need it to file the answer under.`,
+    `Product: ${vetSubject(brand, product, url)}. Find (1) "formula": the ingredient list, and nothing else. Quote it verbatim behind the word Ingredients where you can find it. Formula is status "none" ONLY when nobody states what the product is made of, which is true of a chair or a knife and almost nothing else. If a composition is published anywhere, that is the formula, whatever kind of product it is. Search for it before concluding there is none. Where the product is burned, vaporised or sprayed, the formula is the front that decides the answer. Give formula a "finding": one short sentence naming what is wrong, or what is clean, in plain words, such as "Contains parfum, an undisclosed fragrance blend". Give formula a "flagged": an array of the exact ingredient names that earned the status, empty when none. (2) "materials": report FACTS, not a judgement. "holds": what is inside the product, and the single word "none" when the product is not a container at all, which covers every durable good, toy, garment, mat, nappy and piece of furniture. "material": what the product ITSELF is made of, listing ONLY the surfaces a person's skin or mouth meets in normal use, and required whenever holds is "none". "nonContact": the parts a person never meets, such as the tyres of a balance bike, the base of a yoga mat or the foam sealed inside a mattress cover. Those are noted and never scored, so putting one in "material" marks a product down for a part nobody touches. "undisclosedPart": the NAME OF THE PART ONLY, two or three words, where a part in the CONTACT path is one the maker will not identify: "grips", "the top layer", "the coating". Not a sentence and not an explanation, because we put it in one. Empty where every contact part is named. "Nonwoven", "woven", "quilted", "fibre", "foam", "laminate" and "textile" describe how a layer is BUILT, not what it is made of: a nonwoven can be polypropylene, polyester, viscose or cotton and those are four different answers. So a contact layer given only as "nonwoven" or "soft fibre" is an undisclosed part, however much is said about the OTHER layers. "mouthed": true when a small child puts it in their mouth in normal use. "container": what actually touches the contents, as specifically as the source allows (PET, HDPE, PP, unnamed plastic, glass, aluminium, steel, paper, cotton), and empty when holds is "none". "filledBy": "maker" when the product is sold with its contents inside, "buyer" when it is sold empty for the shopper to fill, which is every storage bag, box, jar, wrap and bottle. "base": one of dry, aqueous, surfactant, emulsion, anhydrous, acidic, by what the contents are, an oil or balm or stick being anhydrous. Where filledBy is "buyer" the base is the hardest use the MAKER markets, not the gentlest: dry only where the maker restricts it to dry goods, anhydrous where it is marketed for oils, fats or cooking in the bag, and otherwise emulsion, because food carries fat. "heated": true only when something hot goes in or on it in use, and where filledBy is "buyer" that means the maker markets heating it, microwaving, boiling or the oven. "use": leave-on, rinse-off, ingested or not-on-body. Anything eaten, drunk or held in the mouth is "ingested", never "not-on-body": not-on-body is for laundry powder and surface cleaner, which are diluted and washed away. Add a "note": ONE SENTENCE, under 25 words, naming only what the product is physically made of. It is read on a phone next to three other lines, so it is not a transcript of the listing and not a record of your searching. It says nothing about the ingredients, the fragrance, emissions, VOCs, testing or any study: those are the formula and testing lines and repeating them here wastes the only line materials gets. If the materials are unremarkable, say so in five words. We apply our own packaging table to those facts, so do not reason about pass or fail for materials yourself. Every field carries a "source" URL. (3) "identified": {"brand":"<the maker>","product":"<the product name>"}, always, and above all where you were given only a link: you work the name out in order to research it, and we need it to file the answer under.`,
     6);
   return r;
 }
@@ -2482,12 +2485,43 @@ function vetVerdict(fronts) {
 // burned, eaten or worn from being called a durable good with no formula.
 // Every one of those changed what the research finds, and none of them reached
 // a product already answered until this number moved.
+// Not bumped for a change to how a note is WORDED. Bumping discards every
+// answer anyone has paid for, and a shorter materials sentence is not a
+// different verdict. Anya asked for the saved answers to stay saved on the
+// same day this number would otherwise have thrown them all away.
 const VET_ENGINE = 24;
 
 /** One key per product, so the same thing asked twice finds the first answer. */
 function researchKey(brand, product) {
   return "vetdone:" + `${brand}::${product}`.toLowerCase()
     .replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 300);
+}
+
+/**
+ * Every name the same answer should be findable under.
+ *
+ * The key is made of what the asker typed, so a candle checked from a pasted
+ * link was filed under the slug in that link and nothing else. Ask for it by
+ * the name the research itself established, or by its ASIN, or from a shorter
+ * link to the same product, and the answer somebody had already paid for was
+ * not there. So it is filed under all of them, and looked up under all of them.
+ */
+function researchKeys(brand, product, identified, asin) {
+  const keys = [researchKey(brand, product)];
+  const add = (b, p) => {
+    const k = researchKey(b || "", p || "");
+    if (k.length > 9 && keys.indexOf(k) < 0) keys.push(k);
+  };
+  if (identified) add(identified.brand, identified.product);
+  if (brand && product) add(`${brand} ${product}`, "");
+  if (asin) keys.push("vetdone:asin-" + String(asin).toLowerCase());
+  return keys;
+}
+
+/** The ASIN in a pasted address, or "". The key our database is built on. */
+function asinFromUrl(url) {
+  const m = String(url || "").match(/\/(?:dp|gp\/product|gp\/aw\/d|product)\/([A-Z0-9]{10})/i);
+  return m ? m[1].toUpperCase() : "";
 }
 
 async function vetCore(env, brand, product, send, allowResearch, url = "") {
@@ -2542,8 +2576,18 @@ async function vetCore(env, brand, product, send, allowResearch, url = "") {
   // Research already done on this exact product, by whoever paid for it first.
   // Everyone who asks afterwards gets that answer, free and instantly, and the
   // card says when it was researched and that a person has not reviewed it.
-  const cacheK = researchKey(brand, product);
-  const cached = await env.BRAND_SEARCHES.get(cacheK, { type: "json" }).catch(() => null);
+  const cacheKeys = researchKeys(brand, product, null, asinFromUrl(url));
+  const cacheK = cacheKeys[0];
+  let cached = null;
+  for (const k of cacheKeys) {
+    const hit = await env.BRAND_SEARCHES.get(k, { type: "json" }).catch(() => null);
+    // An alias key holds a pointer rather than a copy, so one answer cannot
+    // drift into several that disagree.
+    const rec = hit && hit.alias
+      ? await env.BRAND_SEARCHES.get(hit.alias, { type: "json" }).catch(() => null)
+      : hit;
+    if (rec && rec.fronts) { cached = rec; break; }
+  }
   if (cached && cached.fronts && (cached.engine || 0) >= VET_ENGINE) {
     for (const [k, f] of Object.entries(cached.fronts)) {
       send({ step: k, front: f, ms: Date.now() - t0 });
@@ -2590,7 +2634,12 @@ async function vetCore(env, brand, product, send, allowResearch, url = "") {
       const ruled = matrixStatus(m);
       if (ruled) {
         m.status = ruled.status;
-        m.note = `${ruled.why}. ${String(m.note || "").trim()}`.trim();
+        // The table's reason is written lowercase to sit inside a sentence, so
+        // pasting it at the front produced "glass, which puts nothing into what
+        // it holds. Sold as a filled candle...": a note opening in lower case
+        // and mid thought.
+        const why = String(ruled.why || "").trim();
+        m.note = `${why.charAt(0).toUpperCase()}${why.slice(1)}. ${String(m.note || "").trim()}`.trim();
       } else if (!m.status) {
         // Three silences, and only one of them is ours.
         const said = (asText(m.material) || asText(m.container)).trim();
@@ -2759,6 +2808,11 @@ async function vetCore(env, brand, product, send, allowResearch, url = "") {
       brand: filedBrand, product: filedProduct, verdict, capNote, fronts,
       identified, engine: VET_ENGINE, at: new Date().toISOString(), bill,
     })).catch(() => {});
+    // The other names this same product will be asked for under. Pointers, so
+    // there is still exactly one answer.
+    for (const k of researchKeys(brand, product, identified, asinFromUrl(url)).slice(1)) {
+      await env.BRAND_SEARCHES.put(k, JSON.stringify({ alias: cacheK })).catch(() => {});
+    }
   }
   return { fromDatabase: false, verdict, capNote, fronts, identified,
            chargeable: labelOk && !ruleFailed,
@@ -3201,6 +3255,38 @@ async function handleVetBalance(request, env, corsOrigin) {
   const rec = pass && await env.BRAND_SEARCHES.get("vetpass:" + pass, { type: "json" });
   if (!rec) return json({ ok: false, error: "Pass not found" }, 404, corsOrigin);
   return json({ ok: true, balance: rec.balance, purchased: rec.purchased, used: rec.used }, 200, corsOrigin);
+}
+
+/**
+ * An answer somebody has already paid for, read without spending anything.
+ *
+ * The research was always stored, and asking for it again returned it free.
+ * But the page never asked: it looked in our own reviewed database, found
+ * nothing, and printed "we have not checked this yet" over a button. So from
+ * the outside a check that cost a credit and took a hundred seconds had simply
+ * vanished. Anya checked a candle, came back to it, and was told it had never
+ * been checked.
+ *
+ * No pass is needed. The answer is already bought and paid for, and it is
+ * going into the public database after review anyway.
+ */
+async function handleVetKnown(request, env, corsOrigin) {
+  const u = new URL(request.url);
+  const brand = (u.searchParams.get("brand") || "").trim().slice(0, 80);
+  const product = (u.searchParams.get("product") || "").trim().slice(0, 160);
+  const url = (u.searchParams.get("url") || "").trim().slice(0, 500);
+  if (!brand && !product && !url) return json({ ok: true, found: false }, 200, corsOrigin);
+  for (const k of researchKeys(brand, product, null, asinFromUrl(url))) {
+    const hit = await env.BRAND_SEARCHES.get(k, { type: "json" }).catch(() => null);
+    const rec = hit && hit.alias
+      ? await env.BRAND_SEARCHES.get(hit.alias, { type: "json" }).catch(() => null)
+      : hit;
+    if (!rec || !rec.fronts || (rec.engine || 0) < VET_ENGINE) continue;
+    return json({ ok: true, found: true, verdict: rec.verdict, capNote: rec.capNote || "",
+                  fronts: rec.fronts, at: rec.at, identified: rec.identified || null },
+                200, corsOrigin);
+  }
+  return json({ ok: true, found: false }, 200, corsOrigin);
 }
 
 async function handleCustomerVet(request, env, corsOrigin) {
