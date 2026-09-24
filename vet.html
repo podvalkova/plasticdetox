@@ -461,7 +461,8 @@ async function sendCode(){
     var r=await fetch(WORKER+"/vet-login",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({email:email})});
     var d=await r.json();
     SI_EMAIL=email;
-    note.textContent=d.message||"If that address has a pass, the code is on its way.";
+    note.textContent = d.ok ? (d.message||"Code sent. It lasts fifteen minutes.")
+                            : (d.error||"We could not send a code to that address.");
     try{ localStorage.setItem("pdVetEmailPrefill", email); }catch(e){}
     document.getElementById("siCode").focus();
   }catch(e){ note.textContent="Could not reach us just now. Please try again in a moment."; }

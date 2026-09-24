@@ -2931,7 +2931,7 @@ async function tokensForEmail(env, clean) {
  * to discover who has bought something.
  */
 async function handleVetLogin(request, env, corsOrigin) {
-  const said = { ok: true, message: "If that address has a pass, the code is on its way." };
+  const said = { ok: true, message: "Code sent. It lasts fifteen minutes." };
   try {
     const { email } = await request.json();
     const clean = String(email || "").trim().toLowerCase();
@@ -2939,14 +2939,25 @@ async function handleVetLogin(request, env, corsOrigin) {
       return json({ ok: false, error: "Enter the email you paid with." }, 400, corsOrigin);
     }
     const tokens = await tokensForEmail(env, clean);
-    if (!tokens.length) return json(said, 200, corsOrigin);
+    // Saying nothing was meant to stop anyone learning who had bought. For a
+    // ten dollar punch card that protects almost nothing and costs a dead end:
+    // Anya typed the wrong address of her own, was told a code was on its way,
+    // and had no way on earth to find out why none arrived. Tell people.
+    if (!tokens.length) {
+      return json({ ok: false, error: "We have no pass for that address. Check the email you paid with, or the one your pass link was sent to." },
+        404, corsOrigin);
+    }
 
     // Only a real customer's address is ever emailed, which blocks the obvious
     // abuse, but without a cooldown somebody could still hammer one address and
     // both spam them and eat the monthly send allowance. A live code is reused
     // rather than replaced, so asking twice does not invalidate the first one.
     const existing = await env.BRAND_SEARCHES.get("vetcode:" + clean, { type: "json" });
-    if (existing && Date.now() - (existing.at || 0) < 60000) return json(said, 200, corsOrigin);
+    if (existing && Date.now() - (existing.at || 0) < 60000) {
+      // And say so, rather than swallowing it and looking like a failed send.
+      return json({ ok: true, message: "A code is already on its way. Check your inbox, including spam." },
+        200, corsOrigin);
+    }
 
     const code = existing ? existing.code
       : String(crypto.getRandomValues(new Uint32Array(1))[0] % 1000000).padStart(6, "0");

@@ -79,9 +79,12 @@ export async function sendCode(email) {
       body: JSON.stringify({ email }),
     });
     const d = await r.json();
-    // The worker answers the same whether or not the address owns anything, so
-    // this cannot be used to find out who has bought.
-    return { ok: r.ok, message: d.message || "If that address has a pass, the code is on its way." };
+    // An address with no pass is told so. Saying nothing protected almost
+    // nothing on a ten dollar pass and left anyone who mistyped their own
+    // address staring at a code that was never coming.
+    return { ok: r.ok && d.ok !== false,
+             message: (d.ok === false ? d.error : d.message)
+               || "Code sent. It lasts fifteen minutes." };
   } catch (e) {
     return { ok: false, message: "Could not reach us just now. Try again in a moment." };
   }
