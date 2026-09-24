@@ -227,7 +227,6 @@
     .assurances b { color: var(--accent); font-weight: 800; }
 
     /* ===== RESULT ===== */
-    .example-label { font-size: 13px; font-weight: 500; color: var(--mono-muted); margin-bottom: 12px; }
     .result { scroll-margin-top: 96px; }
     .card {
       background: var(--surface); border: 1px solid var(--border); border-radius: 22px;
@@ -585,12 +584,10 @@
           <div class="pass-panel" id="passLine" hidden></div>
           <div class="chips-row" id="quickRow"></div>
           <a class="ext-teaser" id="appTeaser" href="#appband" hidden>Checking while you shop? The free iPhone app works offline&nbsp;<b>&darr;</b></a>
-          <a class="ext-teaser" id="extTeaser" href="#extension" hidden>Shopping on Amazon? Our free extension shows verdicts right on the page&nbsp;<b>&darr;</b></a>
         </div>
       </div>
 
       <div class="hero-result">
-        <div class="example-label" id="exampleLabel" hidden>Example result: this is what a verdict looks like</div>
         <div class="result" id="result" aria-live="polite"></div>
       </div>
     </section>
@@ -779,13 +776,15 @@
      separately for ten minutes each, so without it a browser can hold a new
      page against an old script and call a function that is not there yet.
      Bump it whenever vet-run.js changes. -->
-<script src="js/vet-run.js?v=3"></script>
+<script src="js/vet-run.js?v=4"></script>
 <script>
     const WORKER_URL = "https://plasticdetox-quiz-email.plasticdetox.workers.dev";
     // A product row can be unrated in the data (typed and ruled both), and
     // it used to render the word "undefined" as its badge.
     const STANCE_LABEL = { good: "Good choice", careful: "Careful", skip: "Skip", neutral: "Context", unrated: "Not yet rated" };
-    const QUICK = ["Brita", "Stasher", "Native", "Pyrex", "Thinkbaby", "Hydro Flask", "Lululemon", "Earth Mama"];
+    // Five. Eight wrapped onto a second line and turned a quiet prompt into a
+    // block of the page.
+    const QUICK = ["Brita", "Stasher", "Native", "Pyrex", "Thinkbaby"];
 
     let BRANDS = [];
     let byId = {};
@@ -819,7 +818,6 @@
         // deep link ?b=
         const q = new URLSearchParams(location.search).get("b");
         if (q) { searchEl.value = q; lookup(q); }
-        else showExample();
       })
       .catch(() => { $("statLine").textContent = "Could not load the product database. Please refresh."; });
 
@@ -834,12 +832,11 @@
       if (mobile || !chromium) return;
       const band = $("extension");
       if (!band) return;
+      // The band lower down stays; the purple pill that used to sit under the
+      // field does not. Directly beneath the thing this page is for, it read as
+      // the page changing the subject.
       band.hidden = false;
-      $("extTeaser").hidden = false;
       gtag('event', 'extension_cta_view', { placement: 'brand_check' });
-      $("extTeaser").addEventListener('click', function () {
-        gtag('event', 'extension_teaser_click', { placement: 'brand_check_hero' });
-      });
       $("extInstallBtn").addEventListener('click', function () {
         gtag('event', 'extension_cta_click', {
           placement: 'brand_check',
@@ -1119,19 +1116,24 @@
     (async function showPass() {
       const pass = VetRun.getPass();
       if (!pass) return;
-      const left = await VetRun.balance(pass);
-      if (left === null) return;
+      const info = await VetRun.passInfo(pass);
+      if (!info) return;
+      const left = info.balance;
       const line = $("passLine");
       const plural = left === 1 ? "" : "s";
-      // The pack a pass was bought as, so the bar has something to be a
-      // fraction of. We are told what is left, not what was bought, so this
-      // rounds up to the pack it must have come from.
-      const packs = [20, 45, 100];
-      const bought = packs.find(n => n >= left) || left;
+      // What was actually bought, from the record, never inferred. Rounding the
+      // balance up to the nearest pack put "of 45" beside a pass nobody had
+      // bought 45 checks on, and reads as though we had handed somebody checks.
+      // Where the record does not say, the strip says what is left and stops.
+      const bought = info.purchased;
+      const known = typeof bought === "number" && bought >= left && bought > 0;
       line.innerHTML = left > 0
         ? '<span class="pass-label">Your pass</span>'
-          + '<span><span class="pass-count">' + left + '</span> of ' + bought + ' checks left</span>'
-          + '<span class="pass-bar"><i style="width:' + Math.round((left / bought) * 100) + '%"></i></span>'
+          + (known
+              ? '<span><span class="pass-count">' + left + '</span> of ' + bought + ' checks left</span>'
+                + '<span class="pass-bar"><i style="width:' + Math.round((left / bought) * 100) + '%"></i></span>'
+              : '<span><span class="pass-count">' + left + '</span> check' + plural + ' left</span>')
+          + (known && info.used ? '<span class="pass-note">' + info.used + ' used</span>' : "")
           + '<span class="pass-note">Never expire</span>'
           + '<a href="vet.html">Top up &rarr;</a>'
         : '<span class="pass-label">Your pass</span><span>No check' + plural + ' left</span>'
@@ -1188,22 +1190,14 @@
       showUnknown(name, raw);
     }
 
-    // The example card teaches what a verdict looks like before the first
-    // search. It must not log analytics or rewrite the URL.
-    function showExample() {
-      // Brita's entry copy is deduplicated so each fact appears once and the
-      // card stays near the height of the hero copy beside it.
-      const ex = BRANDS.find(b => b._collapse === "brita") || BRANDS[0];
-      if (!ex) return;
-      $("exampleLabel").hidden = false;
-      renderBrand(ex, true);
-    }
+    // A Brita card used to draw itself on load, to show what a verdict looks
+    // like. Under a centred field it is no longer beside the copy explaining
+    // it, it is simply an answer to a question nobody asked, sitting where the
+    // reader's own answer will go.
+    function showResult(b) { renderBrand(b); }
 
-    function showResult(b) { renderBrand(b, false); }
-
-    function renderBrand(b, isExample) {
-      if (!isExample) {
-        $("exampleLabel").hidden = true;
+    function renderBrand(b) {
+      {
         history.replaceState(null, "", "?b=" + encodeURIComponent(b.brand));
         gtag('event', 'brand_check', { brand: b.brand, verdict: b.stance });
         logSearch(b.brand, true, b.stance);
@@ -1310,7 +1304,7 @@
           '<p class="reason">' + esc(b.reason) + '</p>' +
           rollupHtml + productsHtml + cautionHtml + buyHtml + evHtml + altHtml + srcHtml +
         '</article>';
-      if (!isExample) focusResult();
+      focusResult();
     }
 
     // What is being checked, held in one place rather than threaded through
@@ -1340,7 +1334,6 @@
       // string full of tracking parameters.
       const subject = clean || extractAsin(raw) || raw.slice(0, 70);
       checkSubject = { name: clean, raw: raw, label: subject };
-      $("exampleLabel").hidden = true;
       history.replaceState(null, "", "?b=" + encodeURIComponent(subject));
       gtag('event', 'brand_check_unknown', { brand: subject });
       logSearch(subject, false, "");

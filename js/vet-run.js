@@ -26,15 +26,33 @@ window.VetRun = (function () {
     try { localStorage.setItem(PASS_KEY, p || ""); } catch (e) {}
   }
 
-  /** Checks left on a pass, or null when we cannot tell. Never throws. */
-  async function balance(pass) {
+  /**
+   * The whole pass: what is left, what was bought, what has been spent.
+   *
+   * `balance` alone was all this returned, so a page that wanted to draw a bar
+   * had nothing to make it a fraction of and guessed at the pack size. Guessing
+   * put a number on screen that nobody had bought. The worker has known the
+   * real figure all along.
+   *
+   * Null when we cannot tell. Never throws.
+   */
+  async function passInfo(pass) {
     if (!pass) return null;
     try {
       var r = await fetch(WORKER + "/vet-balance?pass=" + encodeURIComponent(pass));
       if (!r.ok) return null;
       var d = await r.json();
-      return typeof d.balance === "number" ? d.balance : null;
+      if (typeof d.balance !== "number") return null;
+      return { balance: d.balance,
+               purchased: typeof d.purchased === "number" ? d.purchased : null,
+               used: typeof d.used === "number" ? d.used : null };
     } catch (e) { return null; }
+  }
+
+  /** Checks left on a pass, or null when we cannot tell. Never throws. */
+  async function balance(pass) {
+    var info = await passInfo(pass);
+    return info ? info.balance : null;
   }
 
   /**
@@ -232,6 +250,6 @@ window.VetRun = (function () {
     testing: "Independent tests",
   };
 
-  return { WORKER: WORKER, getPass: getPass, setPass: setPass, balance: balance, run: run,
-           STEP: STEP, linkish: linkish, parseLink: parseLink, linkName: linkName };
+  return { WORKER: WORKER, getPass: getPass, setPass: setPass, balance: balance, passInfo: passInfo,
+           run: run, STEP: STEP, linkish: linkish, parseLink: parseLink, linkName: linkName };
 })();
