@@ -518,14 +518,16 @@ function draw() {
         // The email that paid is the identity now, not the token, so the same
         // checks work here and on the website and survive a new phone.
         email: readPassEmail(),
-        onSendCode: async (email) => {
+        // Absent until the reviewed build, which leaves the paste-a-token
+        // fallback in place, exactly as it is today.
+        onSendCode: !signInReviewed() ? null : async (email) => {
           const r = await check.sendCode(email);
           // Only remember an address that owns a pass; a remembered typo gets
           // offered back on every visit and makes one mistake permanent.
           if (r.ok) { savePassEmail(email); track("vet_code_sent", {}); }
           return r;
         },
-        onSignIn: async (email, code) => {
+        onSignIn: !signInReviewed() ? null : async (email, code) => {
           const r = await check.signIn(email, code);
           if (r.ok) {
             savePassEmail(r.email);
@@ -1244,6 +1246,16 @@ async function refreshBalance() {
 }
 
 
+// The native build this bundle finds itself in, and the build from which the
+// pass sign in is allowed to appear. Sign in is payment adjacent, so it goes
+// through review in a binary; gating it on the build number means the bundle
+// carrying it is still safe to ship over the air, because on every binary that
+// review has not seen it simply is not there. A reviewer runs the new build
+// and sees it, which is the whole point.
+let NATIVE_BUILD = 0;
+const SIGNIN_FROM_BUILD = 35;
+const signInReviewed = () => NATIVE_BUILD >= SIGNIN_FROM_BUILD;
+
 // Read once per launch; it ships inside the app so it works with no signal.
 let CATEGORY_NOTES = null;
 async function showCategoryNotes(log, before, subject) {
@@ -1737,6 +1749,21 @@ async function start() {
 
   const cap = window.Capacitor;
   const appPlugin = cap && cap.Plugins && cap.Plugins.App;
+
+  // Which binary we are running inside, so a bundle can carry code that only
+  // wakes up on a build a reviewer has actually seen. Without this, anything
+  // sitting in app/www blocks every over the air release until the next
+  // submission, and a recall waiting on App Review is the thing the OTA system
+  // exists to prevent.
+  if (appPlugin && appPlugin.getInfo) {
+    appPlugin.getInfo()
+      .then((info) => {
+        const n = parseInt(info && info.build, 10);
+        if (Number.isFinite(n)) { NATIVE_BUILD = n; render(); }
+      })
+      .catch(() => {});
+  }
+
   if (appPlugin && appPlugin.addListener) {
     appPlugin.addListener("appUrlOpen", ({ url }) => {
       try {
