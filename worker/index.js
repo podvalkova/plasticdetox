@@ -121,6 +121,9 @@ export default {
     if (path === "/vet-known" && request.method === "GET") {
       return handleVetKnown(request, env, corsOrigin);
     }
+    if (path === "/vet-history" && request.method === "GET") {
+      return handleVetHistory(request, env, corsOrigin);
+    }
     // Can we reach the recall database at all. Answering that needed a paid
     // check and a reading of the card, which is why it went unnoticed that the
     // answer had been no since the day it was written.
@@ -2558,9 +2561,24 @@ function researchKeys(brand, product, identified, asin) {
  */
 const OUR_FAULT = /could not be reached|could not complete this check|did not finish|not configured on this worker|could not reach our research service/i;
 
+const REPAIR_LIMIT = 2;
+
 function repairableFronts(fronts) {
   return Object.values(fronts || {}).some(
     (f) => f && f.status === "unassessed" && OUR_FAULT.test(f.note || ""));
+}
+
+/**
+ * Worth asking again, and not yet asked too many times.
+ *
+ * The card repairs itself now rather than waiting for somebody to press a
+ * button, so the cap is what stops a database that is still down from being
+ * re-asked on every view of the same product for the rest of time. Two goes.
+ * After that the hole stands and says so, which is at least honest.
+ */
+function canRepair(rec) {
+  return Boolean(rec && rec.fronts && repairableFronts(rec.fronts)
+    && (rec.repairs || 0) < REPAIR_LIMIT);
 }
 
 /** The ASIN in a pasted address, or "". The key our database is built on. */
@@ -2635,7 +2653,8 @@ async function vetCore(env, brand, product, send, allowResearch, url = "", fresh
   }
   // Asked for again on purpose: research it rather than handing back the same
   // answer. Free when what is being replaced was our own failure.
-  const repair = fresh && cached && cached.fronts && repairableFronts(cached.fronts);
+  const repair = fresh && canRepair(cached);
+  const repairsSoFar = (cached && cached.repairs) || 0;
   if (!fresh && cached && cached.fronts && (cached.engine || 0) >= VET_ENGINE) {
     for (const [k, f] of Object.entries(cached.fronts)) {
       send({ step: k, front: f, ms: Date.now() - t0 });
@@ -2857,6 +2876,8 @@ async function vetCore(env, brand, product, send, allowResearch, url = "", fresh
     await env.BRAND_SEARCHES.put(cacheK, JSON.stringify({
       brand: filedBrand, product: filedProduct, verdict, capNote, fronts,
       identified, engine: VET_ENGINE, at: new Date().toISOString(), bill,
+      // Counted, so a hole we cannot fill is not re-attempted forever.
+      repairs: repair ? repairsSoFar + 1 : repairsSoFar,
     })).catch(() => {});
     // The other names this same product will be asked for under. Pointers, so
     // there is still exactly one answer.
@@ -3336,10 +3357,39 @@ async function handleVetKnown(request, env, corsOrigin) {
                   fronts: rec.fronts, at: rec.at, identified: rec.identified || null,
                   // Whether asking again would repair our own failure, which is
                   // what decides whether it costs the customer anything.
-                  repairable: repairableFronts(rec.fronts) },
+                  repairable: canRepair(rec) },
                 200, corsOrigin);
   }
   return json({ ok: true, found: false }, 200, corsOrigin);
+}
+
+/**
+ * Everything one pass has spent, and on what.
+ *
+ * The pass record has kept a history all along and nothing could read it, so a
+ * person who had paid for twenty checks had no way to find the nineteenth one
+ * again. Newest first, and it carries the name the research established rather
+ * than whatever was typed, because that is the name the answer is filed under.
+ */
+async function handleVetHistory(request, env, corsOrigin) {
+  const pass = new URL(request.url).searchParams.get("pass") || "";
+  const rec = pass && await env.BRAND_SEARCHES.get("vetpass:" + pass, { type: "json" });
+  if (!rec) return json({ ok: false, error: "Pass not found" }, 404, corsOrigin);
+  const checks = (rec.history || []).slice().reverse().map((h) => {
+    const id = h.identified || {};
+    return {
+      at: h.ts || "",
+      brand: (id.brand || h.brand || "").slice(0, 80),
+      product: (id.product || h.product || "").slice(0, 160),
+      // What the person actually typed, so a link they pasted is still a link.
+      asked: [h.brand, h.product].filter(Boolean).join(" ").slice(0, 200),
+      verdict: h.verdict || "",
+      free: Boolean(h.free),
+    };
+  });
+  return json({ ok: true, balance: rec.balance, purchased: rec.purchased, used: rec.used,
+                email: rec.email ? true : false, created: rec.created || "",
+                lastPack: rec.lastPack || rec.pack || "", checks }, 200, corsOrigin);
 }
 
 async function handleCustomerVet(request, env, corsOrigin) {
@@ -3352,8 +3402,24 @@ async function handleCustomerVet(request, env, corsOrigin) {
   const fresh = body.fresh === true;
   if (!brand && !url) return json({ ok: false, error: "brand is required" }, 400, corsOrigin);
   const key = "vetpass:" + pass;
-  const rec = pass && await env.BRAND_SEARCHES.get(key, { type: "json" });
-  if (!rec) return json({ ok: false, error: "Pass not found" }, 401, corsOrigin);
+  let rec = pass && await env.BRAND_SEARCHES.get(key, { type: "json" });
+
+  // Repairing an answer our own outage left short needs no pass. The card does
+  // it by itself when it opens, and the person reading it may never have
+  // bought anything: the hole is ours, the answer is going into the public
+  // database anyway, and canRepair caps how often it can be attempted.
+  let repairOnly = false;
+  if (!rec && fresh) {
+    for (const k of researchKeys(brand, product, null, asinFromUrl(url))) {
+      const hit = await env.BRAND_SEARCHES.get(k, { type: "json" }).catch(() => null);
+      const stored = hit && hit.alias
+        ? await env.BRAND_SEARCHES.get(hit.alias, { type: "json" }).catch(() => null)
+        : hit;
+      if (canRepair(stored)) { repairOnly = true; break; }
+    }
+  }
+  if (!rec && !repairOnly) return json({ ok: false, error: "Pass not found" }, 401, corsOrigin);
+  if (!rec) rec = { balance: 0, used: 0, purchased: 0, history: [] };
 
   const s = sseResponse(corsOrigin);
   (async () => {
@@ -3365,13 +3431,21 @@ async function handleCustomerVet(request, env, corsOrigin) {
       await s.writer.close();
       return;
     }
-    if (!r.fromDatabase && r.chargeable) {
+    if (!repairOnly && !r.fromDatabase && r.chargeable) {
       rec.balance = Math.max(0, rec.balance - 1);
       rec.used = (rec.used || 0) + 1;
       rec.history = (rec.history || []).slice(-49);
-      rec.history.push({ ts: new Date().toISOString(), brand, product, verdict: r.verdict });
+      rec.history.push({ ts: new Date().toISOString(), brand, product, verdict: r.verdict,
+                         identified: r.identified || null });
       await env.BRAND_SEARCHES.put(key, JSON.stringify(rec));
       consumed = true;
+    } else if (!repairOnly && !r.fromDatabase && !r.needsCredits && r.verdict) {
+      // A free answer is still something this person looked at, and the
+      // history is the only place they can find it again.
+      rec.history = (rec.history || []).slice(-49);
+      rec.history.push({ ts: new Date().toISOString(), brand, product, verdict: r.verdict,
+                         identified: r.identified || null, free: true });
+      await env.BRAND_SEARCHES.put(key, JSON.stringify(rec));
     }
     if (r.researchFailed) {
       s.send({ done: true, elapsedMs: r.elapsedMs, consumed: false, balance: rec.balance,

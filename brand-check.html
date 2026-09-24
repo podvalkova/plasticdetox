@@ -1477,9 +1477,13 @@
 
     const FRONT_ORDER = ["formula", "materials", "legal", "testing"];
 
-    async function runCheckHere() {
-      const btn = $("runCheckBtn"), logEl = $("checkLog");
-      if (!btn || !logEl) return;
+    async function runCheckHere(opts) {
+      const silent = Boolean(opts && opts.silent);
+      const logEl = $("checkLog");
+      // A repair drives itself, so there is no button to disable and no timer
+      // to write into one.
+      const btn = $("runCheckBtn") || { style: {}, classList: { add() {}, remove() {} } };
+      if (!logEl) return;
       const name = checkSubject.name, raw = checkSubject.raw;
       // A link goes to the worker as a link. It already knows what to do with
       // one: work out the brand and product first, then research them by name.
@@ -1523,7 +1527,7 @@
 
       const t0 = Date.now();
       const tick = setInterval(() => {
-        btn.textContent = "Checking… " + ((Date.now() - t0) / 1000).toFixed(0) + "s";
+        if (!silent) btn.textContent = "Checking… " + ((Date.now() - t0) / 1000).toFixed(0) + "s";
       }, 250);
 
       const paint = (k, html) => {
@@ -1569,7 +1573,8 @@
             // there, the top of the card argued with the bottom of it.
             ["unknownBadge", "passPitch"].forEach(id => { const n = $(id); if (n) n.remove(); });
           }
-          btn.disabled = false; btn.textContent = asking ? "Check it again" : "Run the check now";
+          btn.disabled = false;
+          if (!silent) btn.textContent = asking ? "Check it again" : "Run the check now";
           // Any front still pending never answered; say so rather than leaving
           // it spinning forever.
           FRONT_ORDER.forEach(k => {
@@ -1652,22 +1657,47 @@
       const hit = await categoryFor([name, found, d.fronts.formula && d.fronts.formula.note].filter(Boolean).join(" "));
       if (hit) logEl.insertAdjacentHTML("beforeend", notesDetailsHtml(hit));
 
-      // An answer is only as good as the day it was made, and it was frozen
-      // there: asking again returned the same card forever, holes and all. So
-      // it can be asked again. Where the hole was ours, a database of ours
-      // being down, repairing it is not something to charge somebody for, and
-      // the worker settles that rather than this button.
-      if (btn && VetRun.getPass()) {
+      // An answer is only as good as the day it was made, and it used to be
+      // frozen there. Two different things follow from that, and they are not
+      // the same thing.
+      //
+      // A hole we left, a database of ours being down when the check ran, is
+      // ours to fill. Nobody should have to notice it, understand it and press
+      // a button about it, so the card repairs itself the moment it opens, for
+      // whoever opened it, pass or no pass. The worker caps the attempts.
+      if (d.repairable) {
+        repairNow(logEl);
+      } else if (btn && VetRun.getPass()) {
+        // A sound answer somebody simply wants looked at again is a purchase,
+        // and stays a button that says so.
         recheck = true;
         btn.hidden = false;
-        btn.textContent = d.repairable ? "Check it again, free" : "Check it again";
-        btn.className = d.repairable ? "btn btn-primary" : "btn btn-ghost";
-        btn.insertAdjacentHTML("afterend", '<p class="form-note" style="margin-top:8px">'
-          + (d.repairable
-              ? "Part of this answer is missing because a database of ours was down when it ran. Repairing that is on us, so this one is free."
-              : "Researches it again from scratch and uses 1 check.") + "</p>");
+        btn.textContent = "Check it again";
+        btn.className = "btn btn-ghost";
+        btn.insertAdjacentHTML("afterend",
+          '<p class="form-note" style="margin-top:8px">Researches it again from scratch and uses 1 check.</p>');
       }
       gtag('event', 'vet_saved_shown', { brand: checkSubject.label, repairable: !!d.repairable });
+    }
+
+    /**
+     * Filling in what our own outage left empty, without being asked.
+     *
+     * The alternative was a button reading "Check it again, free" over a
+     * paragraph explaining which of our databases had been down, which is our
+     * problem described at somebody rather than solved for them.
+     */
+    function repairNow(logEl) {
+      const banner = document.createElement("p");
+      banner.className = "form-note";
+      banner.style.margin = "10px 0 0";
+      banner.textContent = "One of these checks came back empty because a database of ours was down. Filling it in now, at no cost to you\u2026";
+      logEl.parentNode.insertBefore(banner, logEl);
+      gtag('event', 'vet_repair_started', { brand: checkSubject.label });
+      recheck = true;
+      const btn = $("runCheckBtn");
+      if (btn) { btn.hidden = true; }
+      runCheckHere({ silent: true }).then(() => banner.remove(), () => banner.remove());
     }
 
     // The result renders below the field on every width now, not beside it on
