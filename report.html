@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="apple-itunes-app" content="app-id=6807191826">
+  <title>Check report | Plastic Detox</title>
+  <meta name="description" content="The full record behind one product check: every front, what it found, and the source it came from.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/png" sizes="48x48" href="favicon.png">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BBCB36BGP2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-BBCB36BGP2');
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600;1,700;1,800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --accent: #7C3AED; --accent-deep: #5B21B6; --accent-light: #EDE9FE; --accent-wash: #F1ECFE;
+      --bg: #FAFAF9; --surface: #FFFFFF; --text: #0A0A0A; --body: #52524F; --muted: #71716E;
+      --faint: #8B8B88; --border: #EDEDEA; --border-strong: #E7E7E3; --chip: #F5F5F3;
+      --good: #047857; --good-bg: #ECFDF5;
+      --careful: #B45309; --careful-bg: #FFFBEB;
+      --skip: #B91C1C; --skip-bg: #FEF2F2;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    /* `hidden` loses to any class that sets display, and several of these do,
+       so an empty pass box sat on the page waiting for a number that never
+       came. Make the attribute mean what it says. */
+    [hidden] { display: none !important; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg);
+           color: var(--text); -webkit-font-smoothing: antialiased; line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+    .shell { max-width: 1180px; margin: 0 auto; padding: 0 40px; }
+    .site-head { border-bottom: 1px solid var(--border); background: rgba(250,250,249,.88);
+                 backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 40; }
+    .site-head-in { display: flex; align-items: center; justify-content: space-between; padding: 20px 0; }
+    .logo { font-size: 21px; font-weight: 800; letter-spacing: -0.03em; }
+    .logo span { color: var(--accent); }
+    .nav-links { display: flex; align-items: center; gap: 30px; font-size: 16px; font-weight: 500; }
+    .nav-links a { color: var(--muted); }
+    .nav-links a:hover, .nav-links a.active { color: var(--text); }
+    .nav-pass { display: inline-flex; align-items: center; gap: 8px; height: 38px; padding: 0 15px;
+                border-radius: 999px; background: var(--surface); border: 1px solid var(--border-strong);
+                font-size: 14px; font-weight: 650; color: var(--text); }
+    .nav-pass i { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+
+    /* Check another product, at the top, because a report is read on the way
+       to the next question rather than as a destination. */
+    .again { margin-top: 28px; background: var(--surface); border: 1px solid var(--border);
+             border-radius: 22px; padding: 22px 24px; display: flex; align-items: center; gap: 22px;
+             flex-wrap: wrap; box-shadow: 0 24px 60px -34px rgba(124,58,237,0.22); }
+    .again .lead { flex: 0 0 auto; }
+    .again .lead b { display: block; font-size: 18px; font-weight: 800; letter-spacing: -0.02em; }
+    .again .lead span { font-size: 14px; color: var(--muted); }
+    .again input { flex: 1 1 260px; min-width: 0; height: 56px; padding: 0 20px; font: inherit; font-size: 16px;
+                   border: 1px solid var(--border-strong); border-radius: 14px; background: var(--bg); outline: none; }
+    .again input:focus { border-color: var(--accent); }
+    .crumbs { padding: 24px 0 4px; font-size: 14px; color: var(--muted); display: flex; gap: 8px; }
+    .crumbs a { color: var(--accent); font-weight: 600; }
+
+    .btn { display: inline-flex; align-items: center; justify-content: center; border: 0; cursor: pointer;
+           border-radius: 999px; font: inherit; font-weight: 700; padding: 15px 28px; font-size: 16px; }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: var(--accent-deep); }
+    .btn-ghost { background: var(--surface); color: var(--text); border: 1px solid var(--border-strong);
+                 font-weight: 550; padding: 12px 20px; font-size: 14.5px; }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+    .cols { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 44px; align-items: start; padding-bottom: 20px; }
+    h1 { font-size: 42px; font-weight: 800; letter-spacing: -0.04em; line-height: 1.08; text-wrap: pretty; }
+    .meta { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 14px; font-size: 14px; color: var(--muted); }
+    .meta a { color: var(--accent); }
+    .acts { display: flex; gap: 10px; margin-top: 18px; flex-wrap: wrap; }
+
+    .verdict { margin-top: 26px; background: var(--surface); border: 1px solid var(--border);
+               border-left: 4px solid var(--border-strong); border-radius: 18px; padding: 28px 30px;
+               display: grid; grid-template-columns: 210px minmax(0, 1fr); gap: 28px; align-items: center; }
+    .verdict.good { border-left-color: var(--good); }
+    .verdict.careful { border-left-color: var(--careful); }
+    .verdict.skip { border-left-color: var(--skip); }
+    .verdict .eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .07em;
+                        text-transform: uppercase; color: var(--muted); }
+    .verdict .word { font-size: 48px; font-weight: 800; letter-spacing: -0.04em; line-height: 1; margin-top: 4px; }
+    .verdict p { font-size: 16.5px; line-height: 1.55; }
+    .counts { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+    .count { height: 28px; padding: 0 12px; border-radius: 999px; font-size: 12.5px; font-weight: 700;
+             display: inline-flex; align-items: center; background: var(--chip); color: var(--muted); }
+    .count.good { background: var(--good-bg); color: var(--good); }
+    .count.careful { background: var(--careful-bg); color: var(--careful); }
+    .count.skip { background: var(--skip-bg); color: var(--skip); }
+
+    h2 { font-size: 26px; font-weight: 800; letter-spacing: -0.035em; margin: 34px 0 0; }
+    .fronts { display: flex; flex-direction: column; gap: 12px; margin-top: 18px; }
+    .front { background: var(--surface); border: 1px solid var(--border); border-radius: 18px;
+             padding: 22px 24px; display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 18px; }
+    .mark { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center;
+            justify-content: center; flex: none; }
+    .mark svg { width: 19px; height: 19px; }
+    .mark.pass { background: var(--good-bg); color: var(--good); }
+    .mark.caution { background: var(--careful-bg); color: var(--careful); }
+    .mark.fail { background: var(--skip-bg); color: var(--skip); }
+    .mark.none, .mark.unassessed { background: var(--chip); color: var(--muted); }
+    .front-head { display: flex; justify-content: space-between; align-items: baseline; gap: 14px; }
+    .front-head h3 { font-size: 19px; font-weight: 650; }
+    .state { font-size: 13.5px; font-weight: 700; white-space: nowrap; }
+    .state.pass { color: var(--good); } .state.caution { color: var(--careful); }
+    .state.fail { color: var(--skip); } .state.none, .state.unassessed { color: var(--muted); }
+    .front p { margin-top: 8px; font-size: 16px; line-height: 1.6; color: var(--body); }
+    .src { margin-top: 10px; font-size: 13px; color: var(--muted); }
+    .src a { color: var(--accent); }
+
+    .side { display: flex; flex-direction: column; gap: 16px; position: sticky; top: 96px; }
+    .box { background: var(--surface); border: 1px solid var(--border); border-radius: 18px; padding: 24px; }
+    .box.wash { background: var(--accent-wash); border-color: transparent; }
+    .box h2 { font-size: 17px; font-weight: 700; margin: 0 0 10px; letter-spacing: -0.01em; }
+    .box p { font-size: 14.5px; line-height: 1.6; color: var(--body); }
+    .box .btn { width: 100%; margin-top: 14px; padding: 13px 18px; font-size: 15px; }
+    .box input { width: 100%; height: 46px; margin-top: 12px; padding: 0 14px; font: inherit; font-size: 15px;
+                 border: 1px solid var(--border-strong); border-radius: 12px; background: var(--surface); outline: none; }
+    .pass-box { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .pass-box .dim { font-size: 13.5px; color: var(--muted); }
+    .pass-box b { font-size: 16.5px; font-weight: 700; }
+    .pass-box a { color: var(--accent); font-weight: 650; font-size: 14.5px; }
+
+    .next { margin-top: 44px; background: var(--accent-wash); border-radius: 24px; padding: 34px 40px;
+            display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
+    .next b { font-size: 25px; font-weight: 800; letter-spacing: -0.035em; display: block; }
+    .next span { font-size: 15.5px; color: var(--muted); }
+    .how { margin-top: 44px; border-top: 1px solid var(--border); padding-top: 22px; max-width: 62em;
+           font-size: 14px; line-height: 1.65; color: var(--muted); }
+    .state-msg { padding: 70px 0 90px; text-align: center; }
+    .state-msg h1 { font-size: 34px; }
+    .state-msg p { margin: 14px auto 24px; max-width: 34em; font-size: 17px; color: var(--muted); }
+    footer { margin-top: 70px; border-top: 1px solid var(--border); padding: 28px 0 40px;
+             display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+             font-size: 14px; color: var(--muted); }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 960px) {
+      .shell { padding: 0 24px; }
+      .cols { grid-template-columns: 1fr; gap: 28px; }
+      .side { position: static; }
+      h1 { font-size: 32px; }
+      .verdict { grid-template-columns: 1fr; gap: 16px; padding: 22px 24px; }
+      .verdict .word { font-size: 38px; }
+      .front { grid-template-columns: 34px minmax(0, 1fr); gap: 14px; padding: 18px; }
+      .mark { width: 32px; height: 32px; } .mark svg { width: 16px; height: 16px; }
+      .front-head { flex-wrap: wrap; gap: 4px 12px; }
+      .nav-links { gap: 16px; font-size: 14.5px; flex-wrap: wrap; justify-content: flex-end; }
+      .again { padding: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-head">
+    <div class="shell site-head-in">
+      <a href="index.html" class="logo">plastic<span>detox</span></a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="custom-plan.html">App</a>
+        <a href="store.html">Store</a>
+        <a href="resources.html">Resources</a>
+        <a href="brand-check.html">Product Check</a>
+        <a class="nav-pass" id="navPass" href="my-checks.html" hidden><i></i><span id="navPassText"></span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="shell">
+    <form class="again" onsubmit="goCheck(event)">
+      <span class="lead"><b>Check another product</b><span>Free if it is already in our database</span></span>
+      <label for="nextq" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Next product link or name</label>
+      <input id="nextq" type="text" placeholder="Paste a product link, or type a brand">
+      <button class="btn btn-primary" type="submit">Run check &rarr;</button>
+    </form>
+
+    <div class="crumbs"><a href="my-checks.html">My checks</a><span>/</span><span>Report</span></div>
+
+    <div id="state" class="state-msg" hidden></div>
+
+    <div id="report" hidden>
+      <div class="cols">
+        <div>
+          <h1 id="title"></h1>
+          <div class="meta" id="meta"></div>
+          <div class="acts">
+            <button class="btn btn-ghost" type="button" onclick="shareReport()">Share report</button>
+            <button class="btn btn-ghost" type="button" onclick="document.getElementById('reqEmail').focus()">Request hand review</button>
+          </div>
+
+          <div class="verdict" id="verdict"></div>
+
+          <h2>The four checks</h2>
+          <div class="fronts" id="fronts"></div>
+        </div>
+
+        <aside class="side">
+          <div class="box wash">
+            <h2>Have a lab result we missed?</h2>
+            <p>Ask for a hand review. It is free, it does not use a check, and a person answers within about 2 business days.</p>
+            <input id="reqEmail" type="email" placeholder="you@email.com" aria-label="Your email">
+            <button class="btn btn-primary" type="button" onclick="requestReview()">Request hand review</button>
+            <p class="src" id="reqNote" style="margin-top:10px"></p>
+          </div>
+          <div class="box pass-box" id="passBox" hidden>
+            <span><span class="dim">Your pass &middot; never expires</span><br><b id="passLeft"></b></span>
+            <a href="my-checks.html">My checks &rarr;</a>
+          </div>
+          <div class="box">
+            <h2>Something wrong with this?</h2>
+            <p>Tell us what we got wrong and a person will read it and correct the record.</p>
+            <input id="flagDetail" type="text" placeholder="e.g. the ingredient list is on the listing" aria-label="What we got wrong">
+            <button class="btn btn-ghost" type="button" onclick="sendFlag()">Send</button>
+            <p class="src" id="flagNote" style="margin-top:10px"></p>
+          </div>
+        </aside>
+      </div>
+
+      <div class="next">
+        <span><b>Next product?</b><span>Paste another link. If we already have it, the answer is free and instant.</span></span>
+        <a class="btn btn-primary" href="brand-check.html">Check another product &rarr;</a>
+      </div>
+
+      <p class="how">How we decide: a verdict reflects the published evidence at the time of the check. Finding a material in a product is not the same as proving harm, and we say which is which. Every check joins our public database after a person reviews it, free for whoever asks next, and a report is updated if new evidence or a recall appears.</p>
+    </div>
+  </main>
+
+  <footer class="shell">
+    <span>plasticdetox &middot; No paid inclusion and no sponsored placement</span>
+    <span><a href="about.html">About</a> &nbsp; <a href="privacy.html">Privacy</a> &nbsp; <a href="mailto:hello@plasticdetox.org">hello@plasticdetox.org</a></span>
+  </footer>
+
+<script src="js/vet-run.js?v=5"></script>
+<script>
+  const $ = (id) => document.getElementById(id);
+  const esc = (s) => String(s == null ? "" : s).replace(/[&<>"']/g, (c) =>
+    ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+  const ORDER = ["formula", "materials", "legal", "testing"];
+  const MARKS = {
+    pass: '<path d="M5 12l5 5L20 7"/>',
+    caution: '<path d="M12 6.5v7"/><circle cx="12" cy="17.6" r="1.3" fill="currentColor" stroke="none"/>',
+    fail: '<path d="M6 6l12 12M18 6L6 18"/>',
+    none: '<path d="M6 12h12"/>',
+    unassessed: '<path d="M9 9a3 3 0 1 1 4 2.8V14"/><circle cx="12" cy="17.6" r="1.3" fill="currentColor" stroke="none"/>',
+  };
+  const STATE_WORD = { pass: "Clear", caution: "Caveat", fail: "Failed", unassessed: "Not checked" };
+  const VERDICT_LABEL = { good: "Good choice", careful: "Careful", skip: "Skip", unrated: "Not enough found" };
+
+  const qs = new URLSearchParams(location.search);
+  const SUBJECT = (qs.get("b") || qs.get("brand") || "").trim();
+  const LINK = (qs.get("url") || "").trim();
+  let SUBJECT_LABEL = SUBJECT, FRONTS = {};
+
+  function goCheck(e) {
+    e.preventDefault();
+    const q = $("nextq").value.trim();
+    if (q) location.href = "brand-check.html?b=" + encodeURIComponent(q);
+  }
+
+  function markHtml(status) {
+    return '<span class="mark ' + esc(status) + '"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"'
+      + ' stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+      + (MARKS[status] || MARKS.unassessed) + "</svg></span>";
+  }
+
+  function frontHtml(k, f, label) {
+    const word = f.status === "none"
+      ? (k === "testing" ? "None found" : "Not applicable")
+      : (STATE_WORD[f.status] || f.status);
+    return '<article class="front">' + markHtml(f.status)
+      + '<div><div class="front-head"><h3>' + esc(label) + "</h3>"
+      + '<span class="state ' + esc(f.status) + '">' + esc(word) + "</span></div>"
+      + "<p>" + esc(f.note || "") + "</p>"
+      + (f.source ? '<div class="src">Source: <a href="' + esc(f.source)
+          + '" target="_blank" rel="noopener">' + esc(hostOf(f.source)) + "</a></div>" : "")
+      + "</div></article>";
+  }
+
+  function hostOf(u) {
+    try { return new URL(u).hostname.replace(/^www\./, ""); } catch (e) { return "source"; }
+  }
+
+  function shareReport() {
+    const url = location.href;
+    if (navigator.share) { navigator.share({ title: SUBJECT_LABEL, url: url }).catch(() => {}); return; }
+    navigator.clipboard.writeText(url).then(
+      () => alert("Report link copied."),
+      () => prompt("Copy this link", url));
+    gtag('event', 'report_share', { brand: SUBJECT_LABEL });
+  }
+
+  function requestReview() {
+    const email = ($("reqEmail").value || "").trim();
+    const note = $("reqNote");
+    if (!email || !email.includes("@")) { note.textContent = "Please enter a valid email."; note.style.color = "var(--skip)"; return; }
+    fetch(VetRun.WORKER + "/brand-request", {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ brand: SUBJECT_LABEL, email: email }),
+    }).catch(() => {});
+    gtag('event', 'report_hand_review', { brand: SUBJECT_LABEL });
+    note.style.color = "var(--good)";
+    note.textContent = "Thank you. A person will research it and email you.";
+    $("reqEmail").disabled = true;
+  }
+
+  function sendFlag() {
+    const detail = ($("flagDetail").value || "").trim();
+    const note = $("flagNote");
+    if (!detail) { note.textContent = "Tell us what is wrong and we will look."; note.style.color = "var(--skip)"; return; }
+    const summary = ORDER.map((k) => FRONTS[k]
+      ? k + ": " + FRONTS[k].status + " - " + (FRONTS[k].note || "") : "").filter(Boolean).join("\n");
+    fetch(VetRun.WORKER + "/brand-report", {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ brand: SUBJECT_LABEL, issue: "check result disputed",
+                             detail: detail + "\n\n--- the check returned ---\n" + summary }),
+    }).catch(() => {});
+    gtag('event', 'report_flag', { brand: SUBJECT_LABEL });
+    note.style.color = "var(--good)";
+    note.textContent = "Thank you. A person will read this and correct the record.";
+    $("flagDetail").disabled = true;
+  }
+
+  function showState(title, body, cta) {
+    $("state").hidden = false;
+    $("state").innerHTML = "<h1>" + esc(title) + "</h1><p>" + esc(body) + "</p>" + (cta || "");
+  }
+
+  (async function init() {
+    // The pass, drawn whether or not the report loads, because somebody who
+    // arrived here from an email still wants to see what they hold.
+    VetRun.passInfo(VetRun.getPass()).then((info) => {
+      if (!info) return;
+      const left = info.balance;
+      $("passLeft").textContent = info.purchased
+        ? left + " of " + info.purchased + " checks left"
+        : left + " check" + (left === 1 ? "" : "s") + " left";
+      $("passBox").hidden = false;
+      $("navPassText").textContent = left + " check" + (left === 1 ? "" : "s") + " left";
+      $("navPass").hidden = false;
+    });
+
+    if (!SUBJECT && !LINK) {
+      showState("Which report?", "A report opens from a check. Run one, or pick a product from your checks.",
+        '<a class="btn btn-primary" href="brand-check.html">Run a check</a>');
+      return;
+    }
+    document.title = (SUBJECT || "Check report") + " | Plastic Detox";
+
+    const params = new URLSearchParams();
+    if (SUBJECT) params.set("brand", SUBJECT);
+    if (LINK) params.set("url", LINK);
+    let d = null;
+    try {
+      const r = await fetch(VetRun.WORKER + "/vet-known?" + params.toString());
+      if (r.ok) d = await r.json();
+    } catch (e) {}
+
+    if (!d || !d.found) {
+      showState("No report for that yet",
+        "Nobody has run a check on this product, so there is nothing to show. A check takes about a minute and joins the public database afterwards.",
+        '<a class="btn btn-primary" href="brand-check.html?b=' + encodeURIComponent(SUBJECT || LINK) + '">Check it now</a>');
+      return;
+    }
+
+    FRONTS = d.fronts || {};
+    const found = d.identified && [d.identified.brand, d.identified.product].filter(Boolean).join(" ").trim();
+    SUBJECT_LABEL = found || SUBJECT || "This product";
+    $("report").hidden = false;
+    $("title").textContent = SUBJECT_LABEL;
+    document.title = SUBJECT_LABEL + " | Plastic Detox";
+
+    const when = String(d.at || "").slice(0, 10);
+    $("meta").innerHTML = (when ? "<span>Checked " + esc(when) + "</span>" : "")
+      + "<span>Four checks, every one cited</span>"
+      + "<span>Awaiting review before it joins the public database</span>";
+
+    const v = d.verdict || "unrated";
+    const tally = { good: 0, careful: 0, other: 0 };
+    for (const k of ORDER) {
+      const f = FRONTS[k];
+      if (!f) continue;
+      if (f.status === "pass") tally.good++;
+      else if (f.status === "caution" || f.status === "fail") tally.careful++;
+      else tally.other++;
+    }
+    $("verdict").className = "verdict " + v;
+    $("verdict").innerHTML =
+      '<div><div class="eyebrow">Our verdict</div><div class="word">' + esc(VERDICT_LABEL[v] || v) + "</div></div>"
+      + "<div>" + (d.capNote ? "<p>" + esc(d.capNote) + "</p>" : "")
+      + '<div class="counts">'
+      + (tally.good ? '<span class="count good">' + tally.good + " clear</span>" : "")
+      + (tally.careful ? '<span class="count careful">' + tally.careful + " to weigh</span>" : "")
+      + (tally.other ? '<span class="count">' + tally.other + " not applicable</span>" : "")
+      + "</div></div>";
+
+    $("fronts").innerHTML = ORDER.filter((k) => FRONTS[k])
+      .map((k) => frontHtml(k, FRONTS[k], VetRun.STEP[k] || k)).join("");
+    gtag('event', 'report_view', { brand: SUBJECT_LABEL, verdict: v });
+  })();
+</script>
+</body>
+</html>

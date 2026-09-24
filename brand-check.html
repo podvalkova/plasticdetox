@@ -91,6 +91,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600;1,700;1,800&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    /* `hidden` loses to any class that sets display, and several of these do,
+       so an empty pass box sat on the page waiting for a number that never
+       came. Make the attribute mean what it says. */
     [hidden] { display: none !important; }
 
     :root {
@@ -1135,6 +1138,7 @@
               : '<span><span class="pass-count">' + left + '</span> check' + plural + ' left</span>')
           + (known && info.used ? '<span class="pass-note">' + info.used + ' used</span>' : "")
           + '<span class="pass-note">Never expire</span>'
+          + '<a href="my-checks.html">My checks &rarr;</a>'
           + '<a href="vet.html#buy">Top up &rarr;</a>'
         : '<span class="pass-label">Your pass</span><span>No check' + plural + ' left</span>'
           + '<a href="vet.html#buy">Get more &rarr;</a>';
@@ -1143,7 +1147,7 @@
       const nav = document.querySelector(".nav-links");
       if (nav && !document.getElementById("navPass")) {
         const a = document.createElement("a");
-        a.id = "navPass"; a.className = "nav-pass"; a.href = "vet.html";
+        a.id = "navPass"; a.className = "nav-pass"; a.href = "my-checks.html";
         a.innerHTML = '<i></i>' + left + ' check' + plural + ' left';
         nav.appendChild(a);
       }
@@ -1609,6 +1613,11 @@
         + (e.capNote ? '<p class="form-note">' + esc(e.capNote) + "</p>" : "")
         + (secs ? '<p class="form-note">Checked in ' + secs + "s"
             + (e.consumed ? ". 1 check used. This research joins our public database after review, free for everyone." : ".") + "</p>" : "")
+        + (checkSubject.label
+            ? '<p class="form-note" style="margin-top:12px"><a href="report.html?b='
+              + encodeURIComponent(checkSubject.label) + '" style="color:var(--accent);font-weight:650">'
+              + "Open the full report &rarr;</a></p>"
+            : "")
         + offerFlag() + "</div>";
     }
 

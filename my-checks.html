@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="apple-itunes-app" content="app-id=6807191826">
+  <title>My checks | Plastic Detox</title>
+  <meta name="description" content="What is left on your Check Pass, and every product you have checked with it.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/png" sizes="48x48" href="favicon.png">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BBCB36BGP2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-BBCB36BGP2');
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600;1,700;1,800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --accent: #7C3AED; --accent-deep: #5B21B6; --accent-light: #EDE9FE; --accent-wash: #F1ECFE;
+      --bg: #FAFAF9; --surface: #FFFFFF; --text: #0A0A0A; --body: #52524F; --muted: #71716E;
+      --faint: #8B8B88; --border: #EDEDEA; --border-strong: #E7E7E3; --chip: #F5F5F3;
+      --good: #047857; --good-bg: #ECFDF5;
+      --careful: #B45309; --careful-bg: #FFFBEB;
+      --skip: #B91C1C; --skip-bg: #FEF2F2;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    /* `hidden` loses to any class that sets display, and several of these do,
+       so an empty pass box sat on the page waiting for a number that never
+       came. Make the attribute mean what it says. */
+    [hidden] { display: none !important; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg);
+           color: var(--text); -webkit-font-smoothing: antialiased; line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+    .shell { max-width: 1180px; margin: 0 auto; padding: 0 40px; }
+    .site-head { border-bottom: 1px solid var(--border); background: rgba(250,250,249,.88);
+                 backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 40; }
+    .site-head-in { display: flex; align-items: center; justify-content: space-between; padding: 20px 0; }
+    .logo { font-size: 21px; font-weight: 800; letter-spacing: -0.03em; }
+    .logo span { color: var(--accent); }
+    .nav-links { display: flex; align-items: center; gap: 30px; font-size: 16px; font-weight: 500; }
+    .nav-links a { color: var(--muted); }
+    .nav-links a:hover, .nav-links a.active { color: var(--text); }
+    .nav-links a.active { font-weight: 700; }
+    .nav-pass { display: inline-flex; align-items: center; gap: 8px; height: 38px; padding: 0 15px;
+                border-radius: 999px; background: var(--surface); border: 1px solid var(--border-strong);
+                font-size: 14px; font-weight: 650; color: var(--text); }
+    .nav-pass i { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+
+    .head-row { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px;
+                flex-wrap: wrap; padding: 52px 0 28px; }
+    .eyebrow { font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+    h1 { font-size: 52px; font-weight: 800; letter-spacing: -0.04em; line-height: 1; margin-top: 10px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; border: 0; cursor: pointer;
+           border-radius: 999px; font: inherit; font-weight: 700; padding: 15px 28px; font-size: 16px; }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: var(--accent-deep); }
+    .btn-ghost { background: var(--surface); color: var(--text); border: 1px solid var(--border-strong); }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+    .panel { background: var(--surface); border: 1px solid var(--border); border-radius: 22px; padding: 34px 36px; }
+    .bal-grid { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 48px; align-items: center; }
+    .bal-num { display: flex; align-items: baseline; gap: 14px; }
+    .bal-num b { font-size: 84px; font-weight: 800; line-height: .9; letter-spacing: -0.04em; }
+    .bal-num span { font-size: 19px; color: var(--muted); }
+    .bal-bar { height: 13px; border-radius: 999px; background: var(--border-strong); display: flex;
+               overflow: hidden; margin-top: 20px; }
+    .bal-bar i.used { background: var(--faint); }
+    .bal-bar i.left { background: var(--accent); }
+    .bal-legend { display: flex; flex-wrap: wrap; gap: 10px 26px; margin-top: 16px; font-size: 14px; color: var(--muted); }
+    .bal-legend span { display: flex; align-items: center; gap: 8px; }
+    .key { width: 10px; height: 10px; border-radius: 3px; }
+    .tallies { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+    .tally { background: var(--bg); border-radius: 16px; padding: 20px; }
+    .tally b { display: block; font-size: 34px; font-weight: 800; letter-spacing: -0.03em; }
+    .tally span { font-size: 13px; color: var(--muted); }
+    .tally.good b { color: var(--good); } .tally.careful b { color: var(--careful); } .tally.skip b { color: var(--skip); }
+
+    .sec { padding: 52px 0 0; }
+    .sec-head { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+    h2 { font-size: 30px; font-weight: 800; letter-spacing: -0.035em; }
+    .filters { display: flex; gap: 8px; flex-wrap: wrap; }
+    .filters button { height: 38px; padding: 0 15px; border-radius: 999px; font: inherit; font-size: 14px;
+                      font-weight: 550; cursor: pointer; background: var(--surface); color: var(--text);
+                      border: 1px solid var(--border-strong); }
+    .filters button[aria-pressed="true"] { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+    .table { margin-top: 20px; background: var(--surface); border: 1px solid var(--border);
+             border-radius: 20px; overflow: hidden; }
+    .tr { display: grid; grid-template-columns: minmax(0, 2.2fr) 110px 150px 140px 110px; gap: 20px;
+          padding: 17px 26px; border-bottom: 1px solid var(--border); align-items: center; font-size: 15px; }
+    .tr:last-child { border-bottom: 0; }
+    .th { background: var(--bg); font-size: 12px; font-weight: 700; letter-spacing: .05em;
+          text-transform: uppercase; color: var(--muted); padding: 13px 26px; }
+    .tr .name { font-weight: 600; overflow-wrap: anywhere; }
+    .tr .dim { color: var(--muted); font-size: 14px; }
+    .tr .act { text-align: right; font-weight: 650; font-size: 14px; color: var(--accent); }
+    .pill { display: inline-flex; align-items: center; gap: 7px; height: 28px; padding: 0 11px;
+            border-radius: 999px; font-size: 12.5px; font-weight: 700; }
+    .pill i { width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+    .pill.good { background: var(--good-bg); color: var(--good); }
+    .pill.careful { background: var(--careful-bg); color: var(--careful); }
+    .pill.skip { background: var(--skip-bg); color: var(--skip); }
+    .pill.unrated { background: var(--chip); color: var(--muted); }
+    .free { color: var(--accent); font-weight: 650; font-size: 14px; }
+    .empty { padding: 40px 26px; text-align: center; color: var(--muted); font-size: 15px; }
+
+    .packs { display: grid; grid-template-columns: 320px minmax(0, 1fr); gap: 44px; margin-top: 20px; }
+    .packs p { font-size: 15px; line-height: 1.6; color: var(--muted); margin-top: 10px; }
+    .pack-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+    .pack { background: var(--surface); border: 1px solid var(--border); border-radius: 18px; padding: 26px;
+            display: flex; flex-direction: column; gap: 12px; }
+    .pack.pop { border: 2px solid var(--accent); }
+    .pack .price { font-size: 40px; font-weight: 800; letter-spacing: -0.04em; }
+    .pack .qty { color: var(--muted); font-size: 15px; }
+    .pack .btn { margin-top: auto; padding: 13px 20px; font-size: 15px; }
+    .tag { align-self: flex-start; font-size: 11.5px; font-weight: 700; padding: 4px 10px; border-radius: 999px;
+           background: var(--accent-wash); color: var(--accent); text-transform: uppercase; letter-spacing: .04em; }
+
+    .note { font-size: 14.5px; line-height: 1.65; color: var(--muted); }
+    .gate { text-align: center; padding: 80px 0 100px; }
+    .gate h1 { font-size: 38px; }
+    .gate p { margin: 16px auto 26px; max-width: 34em; font-size: 17px; color: var(--muted); }
+    footer { margin-top: 80px; border-top: 1px solid var(--border); padding: 28px 0 40px;
+             display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+             font-size: 14px; color: var(--muted); }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 899px) {
+      .shell { padding: 0 24px; }
+      h1 { font-size: 38px; }
+      .bal-grid, .packs { grid-template-columns: 1fr; gap: 28px; }
+      .pack-grid { grid-template-columns: 1fr; }
+      .nav-links { gap: 16px; font-size: 14.5px; flex-wrap: wrap; justify-content: flex-end; }
+      /* The table stops being a table. Five columns at phone width is five
+         columns of nothing, so each check becomes a small stacked card. */
+      .table { border: 0; background: none; }
+      .th { display: none; }
+      .tr { grid-template-columns: 1fr auto; gap: 8px 14px; background: var(--surface);
+            border: 1px solid var(--border); border-radius: 16px; margin-bottom: 10px; padding: 16px 18px; }
+      .tr .name { grid-column: 1 / -1; }
+      .tr .act { text-align: left; grid-column: 1 / -1; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-head">
+    <div class="shell site-head-in">
+      <a href="index.html" class="logo">plastic<span>detox</span></a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="custom-plan.html">App</a>
+        <a href="store.html">Store</a>
+        <a href="resources.html">Resources</a>
+        <a href="brand-check.html">Product Check</a>
+        <a class="nav-pass" id="navPass" href="vet.html#buy" hidden><i></i><span id="navPassText"></span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="shell">
+    <!-- Nothing here belongs to anybody without a pass, so the page says so
+         plainly rather than drawing an empty version of itself. -->
+    <div id="gate" class="gate" hidden>
+      <h1>Your checks live on your pass</h1>
+      <p>This page shows what is left on a Check Pass and every product it has been spent on. Sign in with the email you paid with, or get a pass, and it will be here.</p>
+      <a class="btn btn-primary" href="vet.html#buy">Get a pass or sign in</a>
+    </div>
+
+    <div id="page" hidden>
+      <div class="head-row">
+        <div>
+          <div class="eyebrow">Account</div>
+          <h1>My checks</h1>
+        </div>
+        <a class="btn btn-primary" href="brand-check.html">Run a new check</a>
+      </div>
+
+      <section class="panel">
+        <div class="bal-grid">
+          <div>
+            <div class="bal-num"><b id="balNum">0</b><span id="balOf"></span></div>
+            <div class="bal-bar" id="balBar" role="img" aria-label="Checks used and left"></div>
+            <div class="bal-legend" id="balLegend"></div>
+          </div>
+          <div class="tallies">
+            <div class="tally good"><b id="tGood">0</b><span>Good choice</span></div>
+            <div class="tally careful"><b id="tCareful">0</b><span>Careful</span></div>
+            <div class="tally skip"><b id="tSkip">0</b><span>Skip</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec">
+        <div class="sec-head">
+          <h2>Where your checks went</h2>
+          <div class="filters" id="filters"></div>
+        </div>
+        <div class="table" id="table"></div>
+      </section>
+
+      <section class="sec">
+        <div class="packs">
+          <div>
+            <h2>Get more checks</h2>
+            <p>New checks add to the pass you already have. They never expire, a product already in our reviewed database is always free, and so is a hand review.</p>
+          </div>
+          <div class="pack-grid">
+            <div class="pack">
+              <span class="qty">Starter</span>
+              <div class="price">$5</div><div class="qty">20 checks</div>
+              <a class="btn btn-ghost" href="vet.html#buy">Add 20 checks</a>
+            </div>
+            <div class="pack pop">
+              <span class="tag">Most popular</span>
+              <div class="price">$10</div><div class="qty">45 checks</div>
+              <a class="btn btn-primary" href="vet.html#buy">Add 45 checks</a>
+            </div>
+            <div class="pack">
+              <span class="qty">&nbsp;</span>
+              <div class="price">$20</div><div class="qty">100 checks</div>
+              <a class="btn btn-ghost" href="vet.html#buy">Add 100 checks</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <p class="note" style="margin-top:40px;max-width:62em">Every check you run joins our public database after a person reviews it, free for whoever asks next. A verdict reflects the published evidence at the time of the check: finding a material in a product is not the same as proving harm, and we say which is which.</p>
+    </div>
+  </main>
+
+  <footer class="shell">
+    <span>plasticdetox &middot; No paid inclusion and no sponsored placement</span>
+    <span><a href="about.html">About</a> &nbsp; <a href="privacy.html">Privacy</a> &nbsp; <a href="mailto:hello@plasticdetox.org">hello@plasticdetox.org</a></span>
+  </footer>
+
+<script src="js/vet-run.js?v=5"></script>
+<script>
+  const $ = (id) => document.getElementById(id);
+  const esc = (s) => String(s == null ? "" : s).replace(/[&<>"']/g, (c) =>
+    ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+  const VERDICT_LABEL = { good: "Good choice", careful: "Careful", skip: "Skip", unrated: "Not enough found" };
+  let CHECKS = [], filter = "all";
+
+  /** A date somebody can read, not an ISO string. */
+  function shortDate(iso) {
+    const d = new Date(iso);
+    if (isNaN(d)) return "";
+    return d.toLocaleDateString(undefined, { month: "short", day: "numeric" });
+  }
+
+  function rowHtml(c) {
+    const v = c.verdict || "unrated";
+    const name = [c.brand, c.product].filter(Boolean).join(" ").trim() || c.asked || "A product";
+    // Whatever was typed, when it was a link, is worth showing: it is how
+    // somebody recognises which of two similar things this was.
+    const asked = c.asked && VetRun.linkish(c.asked)
+      ? (VetRun.parseLink(c.asked) || {}).host || "" : "";
+    return '<div class="tr">'
+      + '<div class="name">' + esc(name) + "</div>"
+      + '<div class="dim">' + esc(shortDate(c.at)) + "</div>"
+      + '<div><span class="pill ' + esc(v) + '"><i></i>' + esc(VERDICT_LABEL[v] || v) + "</span></div>"
+      + (c.free ? '<div class="free">Free, in database</div>' : '<div class="dim">1 check</div>')
+      + '<a class="act" href="report.html?b=' + encodeURIComponent(name) + '">View report &rarr;</a>'
+      + "</div>";
+  }
+
+  function paintTable() {
+    const rows = CHECKS.filter((c) => filter === "all" || (c.verdict || "unrated") === filter);
+    $("table").innerHTML = rows.length
+      ? '<div class="tr th"><div>Product</div><div>Checked</div><div>Verdict</div><div>Cost</div><div></div></div>'
+        + rows.map(rowHtml).join("")
+      : '<div class="empty">' + (CHECKS.length ? "No checks with that verdict yet."
+          : "No checks on this pass yet. Paste a product link on Product Check and this fills in.") + "</div>";
+  }
+
+  function paintFilters() {
+    const counts = { all: CHECKS.length };
+    for (const c of CHECKS) {
+      const v = c.verdict || "unrated";
+      counts[v] = (counts[v] || 0) + 1;
+    }
+    // Only offer a filter that would find something. A row of buttons that all
+    // lead to "nothing here" is not a filter, it is four dead ends.
+    const defs = [["all", "All"], ["good", "Good choice"], ["careful", "Careful"],
+                  ["skip", "Skip"], ["unrated", "Not enough found"]];
+    $("filters").innerHTML = defs.filter(([id]) => counts[id])
+      .map(([id, label]) => '<button type="button" data-f="' + id + '" aria-pressed="'
+        + (filter === id) + '">' + esc(label) + " " + counts[id] + "</button>").join("");
+    $("filters").querySelectorAll("button").forEach((b) => {
+      b.onclick = () => { filter = b.dataset.f; paintFilters(); paintTable(); };
+    });
+  }
+
+  (async function init() {
+    const pass = VetRun.getPass();
+    if (!pass) { $("gate").hidden = false; return; }
+    let d = null;
+    try {
+      const r = await fetch(VetRun.WORKER + "/vet-history?pass=" + encodeURIComponent(pass));
+      if (r.ok) d = await r.json();
+    } catch (e) {}
+    if (!d || !d.ok) { $("gate").hidden = false; return; }
+
+    $("page").hidden = false;
+    CHECKS = d.checks || [];
+    const left = d.balance || 0;
+    const bought = typeof d.purchased === "number" && d.purchased >= left ? d.purchased : null;
+    const used = typeof d.used === "number" ? d.used : (bought === null ? null : bought - left);
+
+    $("balNum").textContent = left;
+    $("balOf").textContent = bought ? "of " + bought + " checks left" : (left === 1 ? "check left" : "checks left");
+    if (bought) {
+      const pct = Math.round(((used || 0) / bought) * 100);
+      $("balBar").innerHTML = '<i class="used" style="width:' + pct + '%"></i>'
+        + '<i class="left" style="width:' + (100 - pct) + '%"></i>';
+      $("balBar").setAttribute("aria-label", (used || 0) + " used, " + left + " left");
+    } else {
+      $("balBar").hidden = true;
+    }
+    const free = CHECKS.filter((c) => c.free).length;
+    $("balLegend").innerHTML =
+      (bought ? '<span><i class="key" style="background:var(--faint)"></i>' + (used || 0) + " used</span>"
+        + '<span><i class="key" style="background:var(--accent)"></i>' + left + " left</span>" : "")
+      + "<span>" + CHECKS.length + " product" + (CHECKS.length === 1 ? "" : "s") + " checked"
+      + (free ? ", " + free + " of them free" : "") + "</span>"
+      + '<span style="color:var(--accent);font-weight:650">Checks never expire</span>';
+
+    for (const [id, el] of [["good", "tGood"], ["careful", "tCareful"], ["skip", "tSkip"]]) {
+      $(el).textContent = CHECKS.filter((c) => c.verdict === id).length;
+    }
+    const nav = $("navPass");
+    $("navPassText").textContent = left + " check" + (left === 1 ? "" : "s") + " left";
+    nav.hidden = false;
+
+    paintFilters();
+    paintTable();
+    gtag('event', 'my_checks_view', { checks: CHECKS.length, balance: left });
+  })();
+</script>
+</body>
+</html>
