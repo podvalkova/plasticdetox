@@ -876,6 +876,34 @@ def keys_for(brand, product, ev=None):
     return out
 
 
+def has_recorded_list(brand, product, ev):
+    """Did somebody actually record what this is made of?
+
+    The durable rules below answer the formula question from the kind of thing
+    a product is: a yoga mat has no recipe, so its formula is `none` and that
+    is a finding rather than a gap. That reasoning is right about a yoga mat
+    and wrong the moment the maker publishes a list anyway.
+
+    Candles are where it broke. They sit in the Home category, which is on the
+    durable list, so every candle in the database was stamped "A durable good
+    has no ingredient list" over an ingredient list we had read off the label
+    and written down. On Fontana, whose entire distinction is that it names
+    every essential oil with its botanical name, the database ended up
+    asserting the exact opposite of the one fact the pick rests on.
+
+    The vet engine already settled this: if a composition is published
+    anywhere, that is the formula, whatever kind of product it is. A chair and
+    a knife have no list. A candle, a floor cleaner and a lip balm all do. So
+    a recorded list outranks the classification, and this says so in code
+    rather than leaving it to whichever category somebody filed the brand in.
+    """
+    for k in keys_for(brand, product, ev):
+        fm = (ev.get(k) or {}).get("formula") or {}
+        if str(fm.get("ingredients") or "").strip():
+            return True
+    return False
+
+
 def load():
     return json.loads(EVIDENCE.read_text()) if EVIDENCE.exists() else {}
 
@@ -1155,6 +1183,11 @@ def main():
         fr = b.get("fronts")
         if not isinstance(fr, dict):
             continue
+        # Same exception as the rows: a brand whose products publish a
+        # composition is not a brand with no ingredient list, whatever bucket
+        # its category sits in. Fontana files under Home beside the yoga mats.
+        if any(has_recorded_list(b["brand"], p, ev) for p in (b.get("products") or [])):
+            continue
         cur = fr.get("formula")
         status = cur.get("status") if isinstance(cur, dict) else cur
         if status in ("pass", "unknown", "unassessed", None, ""):
@@ -1278,6 +1311,8 @@ def main():
             # on one is the materials answer wearing the wrong label: Lodge
             # read "Formula: PFAS free" on cast iron. Filling only blanks left
             # every row the classifier had already guessed at.
+            if has_recorded_list(b["brand"], p, ev):
+                continue
             blank = fr.get("formula") in (None, "", "unknown", "unassessed")
             # The front's own provenance, not the row's. `authored` means a
             # person signed off the scorecard, which is not the same as having
