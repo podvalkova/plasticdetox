@@ -140,32 +140,63 @@
     .nav-links a:hover { color: var(--text); }
     .nav-links a.active { color: var(--text); font-weight: 700; }
 
+    /* What a check buys, said before somebody spends one. */
+    .covers { padding-top: 84px; }
+    .covers-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin-top: 34px; }
+    .cover-card { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 26px 24px; }
+    .cover-card h3 { font-size: 18px; font-weight: 800; letter-spacing: -0.02em; }
+    .cover-card p { margin-top: 8px; font-size: 15px; line-height: 1.6; color: var(--muted); }
+    @media (max-width: 899px) { .covers-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .covers { padding-top: 64px; } }
+    @media (max-width: 560px) { .covers-grid { grid-template-columns: 1fr; } }
+
     /* ===== HERO ===== */
-    .hero { display: grid; grid-template-columns: 1.02fr 1fr; gap: 72px; align-items: start; padding-top: 56px; }
+    /* The hero leads with the field, centred, because pasting a link is the
+       whole job of this page. It used to sit in the left half of a two column
+       split with an example verdict beside it, which gave equal weight to a
+       demonstration and to the thing people came to do. */
+    .hero { display: block; padding-top: 52px; }
+    .hero-top { max-width: 900px; margin: 0 auto; text-align: center; }
+    .hero-result { max-width: 860px; margin: 40px auto 0; scroll-margin-top: 84px; }
+    .hero-result:empty { margin: 0; }
     .kicker { font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
     h1 { font-size: 66px; font-weight: 800; line-height: 1.0; letter-spacing: -0.035em; margin-top: 20px; text-wrap: pretty; }
     h1 em, .sec-title em, .ext-title em { font-style: italic; color: var(--accent); }
-    .sub { font-size: 19px; line-height: 1.62; color: var(--muted); max-width: 30em; margin-top: 26px; text-wrap: pretty; }
+    .sub { font-size: 19px; line-height: 1.62; color: var(--muted); max-width: 40em; margin: 26px auto 0; text-wrap: pretty; }
 
-    .search-area { margin-top: 34px; max-width: 620px; }
-    .search-row { display: flex; gap: 12px; flex-wrap: wrap; }
-    .search-box { position: relative; flex: 1 1 300px; min-width: 0; }
+    .search-area { margin-top: 34px; }
+    .search-row { display: flex; justify-content: center; }
+    /* The button lives inside the pill rather than beside it, so the field and
+       the thing that acts on it read as one control. */
+    .search-box {
+      position: relative; display: flex; align-items: center; gap: 14px; width: 100%; max-width: 860px;
+      background: var(--surface); border: 2px solid var(--accent-light); border-radius: 999px;
+      padding: 9px 9px 9px 26px; box-sizing: border-box; text-align: left;
+      box-shadow: 0 30px 70px -34px rgba(124,58,237,0.40); transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .search-box:focus-within { border-color: var(--accent); box-shadow: 0 30px 70px -30px rgba(124,58,237,0.5); }
+    .search-icon { color: var(--accent); flex: none; }
     .search-input {
-      width: 100%; border: 1px solid var(--border-strong); background: var(--surface);
-      border-radius: 999px; padding: 19px 26px; font-size: 17px; outline: none; color: var(--text);
-      transition: border-color 0.15s, box-shadow 0.15s;
+      flex: 1 1 auto; min-width: 0; border: 0; background: transparent; outline: none;
+      padding: 17px 0; font-size: 18px; color: var(--text); font-family: inherit;
     }
-    .search-input:focus { border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-light); }
+    .search-input::placeholder { color: var(--faint); }
     .check-btn {
-      border: 0; background: var(--text); color: #fff; padding: 19px 34px; border-radius: 999px;
-      font-size: 17px; font-weight: 700; cursor: pointer; white-space: nowrap; transition: background 0.15s;
+      border: 0; background: var(--accent); color: #fff; padding: 18px 32px; border-radius: 999px;
+      font-size: 16.5px; font-weight: 700; cursor: pointer; white-space: nowrap; flex: none;
+      font-family: inherit; transition: background 0.15s;
     }
-    .check-btn:hover { background: var(--accent); }
+    .check-btn:hover { background: var(--accent-deep); }
+    .scan-btn {
+      flex: none; display: inline-flex; align-items: center; justify-content: center;
+      width: 46px; height: 46px; border-radius: 50%; border: 1px solid var(--border-strong);
+      background: var(--surface); color: var(--body); cursor: pointer;
+    }
+    .scan-btn:hover { border-color: var(--accent); color: var(--accent); }
 
     .suggestions {
-      position: absolute; top: calc(100% + 8px); left: 0; right: 0; background: var(--surface);
-      border: 1px solid var(--border); border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-      overflow: hidden; z-index: 30; display: none;
+      position: absolute; top: calc(100% + 10px); left: 0; right: 0; background: var(--surface);
+      border: 1px solid var(--border); border-radius: 18px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      overflow: hidden; z-index: 30; display: none; text-align: left;
     }
     .suggestions.show { display: block; }
     .sugg-item { padding: 0.7rem 1.3rem; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; border-bottom: 1px solid var(--border); }
@@ -175,7 +206,7 @@
     .sugg-cat { font-size: 12.5px; color: var(--mono-muted); }
     .sugg-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
 
-    .chips-row { display: flex; flex-wrap: wrap; align-items: center; gap: 9px; margin-top: 18px; }
+    .chips-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 9px; margin-top: 18px; }
     .chips-label { font-size: 13px; font-weight: 500; color: var(--mono-muted); margin-right: 3px; }
     .quick-chip {
       border: 1px solid var(--border-strong); background: var(--surface); color: var(--body);
@@ -191,8 +222,8 @@
     .ext-teaser:hover { background: var(--accent-light); color: var(--accent-deep); }
     .ext-teaser b { font-weight: 800; }
 
-    .assurances { display: flex; flex-wrap: wrap; gap: 26px; margin-top: 34px; padding-top: 26px; border-top: 1px solid var(--border); }
-    .assurances div { display: flex; align-items: center; gap: 10px; font-size: 15.5px; color: var(--body); }
+    .assurances { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 30px; margin-top: 22px; }
+    .assurances div { display: flex; align-items: flex-start; gap: 10px; font-size: 15.5px; color: var(--body); text-align: left; }
     .assurances b { color: var(--accent); font-weight: 800; }
 
     /* ===== RESULT ===== */
@@ -374,6 +405,25 @@
       .origins { padding-top: 64px; padding-bottom: 64px; }
       .faq { padding-bottom: 64px; }
       .faq .sec-title { font-size: 30px; }
+      /* The button sits inside the pill on a wide screen. At phone width there
+         is no room for both, so the pill unrolls: field over button, each the
+         full width, rather than a button squeezing the field to nothing. */
+      .search-box { flex-wrap: wrap; border-radius: 22px; padding: 14px 16px; gap: 10px; }
+      .search-input { flex: 1 1 100%; order: 2; padding: 4px 0 8px; font-size: 17px; }
+      .search-icon { order: 1; }
+      .scan-btn { order: 1; margin-left: auto; }
+      .check-btn { order: 3; flex: 1 1 100%; padding: 16px 24px; }
+      .suggestions { top: calc(100% + 8px); }
+      /* One per line, ticks in a column, so a line that wraps does not leave
+         its tick stranded halfway across the screen. */
+      .assurances { flex-direction: column; align-items: flex-start; width: fit-content; margin-inline: auto; gap: 9px; }
+      .step-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .check-row { grid-template-columns: 32px minmax(0, 1fr); gap: 12px; padding: 14px; }
+      .mark { width: 30px; height: 30px; }
+      .mark svg { width: 15px; height: 15px; }
+      .check-head { flex-wrap: wrap; gap: 4px 10px; }
+      .verdict-block .verdict-word { font-size: 32px; }
+      .pass-panel { gap: 10px; font-size: 14px; }
     }
     @media (max-width: 620px) {
       h1 { font-size: 34px; }
@@ -398,26 +448,51 @@
 
   /* The inline check log. Fronts land one at a time over about a minute, so
      each row appears as it arrives rather than all of them at the end. */
-  .check-log{margin-top:6px}
-  .check-row{padding:13px 0;border-top:1px solid var(--border);font-size:14.5px;line-height:1.55}
-  .check-row:first-child{border-top:none}
-  .check-row small{display:block;margin-top:6px;color:var(--body);font-size:14px}
-  .check-row strong{font-size:14px;font-weight:650}
-  /* A badge inside a row is a label, not a headline, so it does not wear the
-     verdict badge's padding. */
-  .check-row .badge{padding:4px 10px;font-size:10.5px;gap:6px;vertical-align:middle}
-
-  /* The four checks carry the same colours as a verdict, because they answer
-     the same question at a smaller scale. They had none: every row printed in
-     the body colour, so a pass and a caution looked identical and the card
-     read as four paragraphs of grey. */
-  .badge.pass{color:var(--good);background:var(--good-bg)}
-  .badge.caution{color:var(--careful);background:var(--careful-bg)}
-  .badge.fail{color:var(--skip);background:var(--skip-bg)}
-  .badge.none,.badge.unassessed{color:var(--muted);background:var(--chip)}
-  .badge.pending{background:var(--chip);color:var(--faint)}
+  /* Each check is a row with a mark, a name, and the word for how it came out
+     on the right. The mark carries the colour and the shape, so the four
+     answers are told apart at a glance and not only by reading them. */
+  .check-log{margin-top:10px;display:flex;flex-direction:column;gap:10px}
+  .check-row{display:grid;grid-template-columns:40px minmax(0,1fr);gap:16px;align-items:start;
+    padding:16px 18px;background:var(--surface);border:1px solid var(--border);border-radius:14px;
+    font-size:14.5px;line-height:1.55}
+  .check-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+  .check-row strong{font-size:15.5px;font-weight:650}
+  .check-row small{display:block;margin-top:6px;color:var(--body);font-size:14.5px}
+  .check-state{font-size:13px;font-weight:700;white-space:nowrap}
+  .mark{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none}
+  .mark svg{width:18px;height:18px}
+  .mark.pass{background:var(--good-bg);color:var(--good)}      .check-state.pass{color:var(--good)}
+  .mark.caution{background:var(--careful-bg);color:var(--careful)} .check-state.caution{color:var(--careful)}
+  .mark.fail{background:var(--skip-bg);color:var(--skip)}       .check-state.fail{color:var(--skip)}
+  .mark.none,.mark.unassessed{background:var(--chip);color:var(--muted)}
+  .check-state.none,.check-state.unassessed{color:var(--muted)}
+  .mark.pending{background:var(--chip);color:var(--faint)}
+  .check-state.pending{color:var(--faint)}
   .pending-note{color:var(--faint);animation:pulse 1.4s ease-in-out infinite}
   @keyframes pulse{0%,100%{opacity:.45}50%{opacity:1}}
+
+  /* While it runs: the four checks as a row of chips, so the wait shows what
+     has landed and what has not without four paragraphs of "searching". */
+  .step-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-bottom:4px}
+  .step{padding:10px 12px;border-radius:12px;border:1px solid var(--border);display:flex;
+    flex-direction:column;gap:2px;font-size:13px;line-height:1.3}
+  .step b{font-weight:650;color:var(--text)}
+  .step span{color:var(--faint)}
+  .step.now{border-color:var(--accent);background:var(--accent-wash)}
+  .step.now span{color:var(--accent);font-weight:650}
+  .step.done{border-color:transparent;background:var(--accent-wash)}
+  .step.done span{color:var(--accent);font-weight:650}
+
+  /* The answer, and anything else that is not one of the four checks. */
+  .check-note{margin-top:12px;padding:16px 18px;background:var(--surface);border:1px solid var(--border);
+    border-radius:14px;font-size:14.5px;line-height:1.55}
+  .verdict-block{margin-top:14px;padding:22px 22px 18px;background:var(--surface);
+    border:1px solid var(--border);border-left:3px solid var(--border-strong);border-radius:14px}
+  .verdict-block.good{border-left-color:var(--good)}
+  .verdict-block.careful{border-left-color:var(--careful)}
+  .verdict-block.skip{border-left-color:var(--skip)}
+  .verdict-block .verdict-word{font-size:40px;font-weight:800;letter-spacing:-0.035em;line-height:1.05;margin:2px 0 0}
+  .verdict-block .verdict-eyebrow{font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
 
   /* One fact at a time while the check runs. A block of five paragraphs was
      reading material nobody read: during the wait it sat below the fold, and
@@ -442,10 +517,24 @@
 
   .search-hint{margin:12px 0 0;font-size:14px;color:var(--stone,#78716c)}
   /* The pass, where somebody about to spend one will see it. */
-  .pass-panel{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:16px;padding:12px 16px;
-    background:#fff;border:1px solid var(--accent,#a78bfa);border-radius:12px;font-size:15px;color:var(--ink,#1c1917)}
-  .pass-panel .pass-count{font-weight:700;color:var(--accent-dark,#7c3aed)}
-  .pass-panel a{margin-left:auto;font-weight:600;color:var(--accent-dark,#7c3aed)}
+  /* What is left on the pass, as a bar rather than a number to be counted.
+     "18 checks" buried in a sentence under the brand count read as a footnote
+     and Anya could not find it at all. */
+  .pass-panel{display:inline-flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;
+    margin:20px auto 0;padding:10px 20px;max-width:100%;
+    background:var(--accent-wash);border-radius:999px;font-size:14.5px;color:var(--text)}
+  .pass-panel .pass-label{font-weight:700;color:var(--accent);letter-spacing:.02em}
+  .pass-panel .pass-count{font-weight:800}
+  .pass-panel .pass-bar{width:120px;height:6px;border-radius:999px;background:#fff;overflow:hidden;flex:none}
+  .pass-panel .pass-bar i{display:block;height:100%;background:var(--accent);border-radius:999px}
+  .pass-panel .pass-note{color:var(--muted)}
+  .pass-panel a{font-weight:700;color:var(--accent)}
+
+  /* What is left, in the nav, on every page view where there is a pass. */
+  .nav-pass{display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 15px;border-radius:999px;
+    background:var(--surface);border:1px solid var(--border-strong);font-size:14px;font-weight:650;color:var(--text)}
+  .nav-pass:hover{border-color:var(--accent);color:var(--accent)}
+  .nav-pass i{width:8px;height:8px;border-radius:50%;background:var(--accent);flex:none}
 </style>
 </head>
 <body>
@@ -464,37 +553,43 @@
 
   <main>
     <section class="shell hero">
-      <div>
-        <div class="kicker" id="statLine">Loading the product database…</div>
+      <div class="hero-top">
+        <div class="kicker" id="statLine">Loading the product database&hellip;</div>
         <h1>Is that product a <em>skip</em> or a <em>good choice</em>?</h1>
-        <p class="sub">Type any product or brand and get a straight answer, drawn from independent lab tests, recalls, lawsuits, ingredients, and materials. No marketing spin.</p>
+        <p class="sub">Paste a link to any product. We check the ingredients, what it is made of, recalls and lawsuits, and independent lab results, and cite every source.</p>
 
         <div class="search-area">
+          <!-- One field, and a link is the thing it wants. Everything else a
+               person can type still works, but the address of the exact item in
+               their hand is the answer with no ambiguity in it, so the field
+               asks for that first. -->
           <div class="search-row">
             <div class="search-box">
-              <input id="search" class="search-input" type="text" placeholder="Brand, product, or paste a link&hellip;" autocomplete="off" spellcheck="false" aria-label="Search a product or brand">
+              <svg class="search-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg>
+              <input id="search" class="search-input" type="text" placeholder="Paste a product link, or type a brand" autocomplete="off" spellcheck="false" aria-label="Product link, brand or product name">
+              <button id="scanBtn" class="scan-btn" hidden onclick="startScan()" aria-label="Scan a barcode">
+                <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2M7 8v8M11 8v8M15 8v8"/></svg>
+              </button>
+              <button class="check-btn" onclick="if(searchEl.value.trim())lookup(searchEl.value)">Check product &rarr;</button>
               <div class="suggestions" id="suggestions"></div>
             </div>
-            <button class="check-btn" onclick="if(searchEl.value.trim())lookup(searchEl.value)">Check it</button>
-            <button id="scanBtn" class="check-btn scan-btn" hidden onclick="startScan()" aria-label="Scan a barcode">
-              <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2M7 8v8M11 8v8M15 8v8"/></svg>Scan</button>
           </div>
-          <p class="search-hint">Type a brand or product, or paste a link to it. On a phone you can scan the barcode.</p>
+          <div class="assurances">
+            <div><b>&#10003;</b>Free if it is already in our database</div>
+            <div><b>&#10003;</b>A product nobody has checked uses 1 check</div>
+            <div><b>&#10003;</b>On a phone you can scan the barcode</div>
+          </div>
           <!-- A pass was a footnote under the brand count and read as one. It
-               sits here now, beside the thing it pays for. -->
+               sits here now, beside the thing it pays for, and says how much is
+               left rather than leaving somebody to count. -->
           <div class="pass-panel" id="passLine" hidden></div>
           <div class="chips-row" id="quickRow"></div>
           <a class="ext-teaser" id="appTeaser" href="#appband" hidden>Checking while you shop? The free iPhone app works offline&nbsp;<b>&darr;</b></a>
           <a class="ext-teaser" id="extTeaser" href="#extension" hidden>Shopping on Amazon? Our free extension shows verdicts right on the page&nbsp;<b>&darr;</b></a>
-          <div class="assurances">
-            <div><b>&#10003;</b>Four checks per product</div>
-            <div><b>&#10003;</b>Every verdict cites its source</div>
-            <div><b>&#10003;</b>No paid inclusion</div>
-          </div>
         </div>
       </div>
 
-      <div>
+      <div class="hero-result">
         <div class="example-label" id="exampleLabel" hidden>Example result: this is what a verdict looks like</div>
         <div class="result" id="result" aria-live="polite"></div>
       </div>
@@ -516,6 +611,19 @@
           <span class="badge skip"><span class="dot"></span>Skip</span>
           <p>Failed independent testing, named in a recall or lawsuit, or built from materials we steer away from.</p>
         </div>
+      </div>
+    </section>
+
+    <!-- What a check actually buys. Somebody about to spend one deserves to
+         know what it goes on before they spend it, not after. -->
+    <section class="shell covers">
+      <h2 class="sec-title">What one <em>check</em> covers</h2>
+      <p class="sec-sub">Four questions, asked in order, every one of them cited.</p>
+      <div class="covers-grid">
+        <div class="cover-card"><h3>Formula</h3><p>What it is made of, ingredient by ingredient, with anything we flag and the rule it broke.</p></div>
+        <div class="cover-card"><h3>Materials</h3><p>What the product itself is, and what touches whatever it holds.</p></div>
+        <div class="cover-card"><h3>Recalls &amp; lawsuits</h3><p>The CPSC and FDA recall databases, and a search for legal action naming the brand.</p></div>
+        <div class="cover-card"><h3>Independent tests</h3><p>Published lab results and measurements for the product, or for its category where that is all there is.</p></div>
       </div>
     </section>
 
@@ -1012,13 +1120,31 @@
       const pass = VetRun.getPass();
       if (!pass) return;
       const left = await VetRun.balance(pass);
-      const line = $("passLine");
       if (left === null) return;
+      const line = $("passLine");
+      const plural = left === 1 ? "" : "s";
+      // The pack a pass was bought as, so the bar has something to be a
+      // fraction of. We are told what is left, not what was bought, so this
+      // rounds up to the pack it must have come from.
+      const packs = [20, 45, 100];
+      const bought = packs.find(n => n >= left) || left;
       line.innerHTML = left > 0
-        ? '<span class="pass-count">' + left + ' check' + (left === 1 ? "" : "s") + ' left</span> on your Check Pass'
+        ? '<span class="pass-label">Your pass</span>'
+          + '<span><span class="pass-count">' + left + '</span> of ' + bought + ' checks left</span>'
+          + '<span class="pass-bar"><i style="width:' + Math.round((left / bought) * 100) + '%"></i></span>'
+          + '<span class="pass-note">Never expire</span>'
           + '<a href="vet.html">Top up &rarr;</a>'
-        : 'No checks left on your Check Pass<a href="vet.html">Get more &rarr;</a>';
+        : '<span class="pass-label">Your pass</span><span>No check' + plural + ' left</span>'
+          + '<a href="vet.html">Get more &rarr;</a>';
       line.hidden = false;
+      // And in the nav, where it is on screen whatever somebody scrolls to.
+      const nav = document.querySelector(".nav-links");
+      if (nav && !document.getElementById("navPass")) {
+        const a = document.createElement("a");
+        a.id = "navPass"; a.className = "nav-pass"; a.href = "vet.html";
+        a.innerHTML = '<i></i>' + left + ' check' + plural + ' left';
+        nav.appendChild(a);
+      }
     })();
 
     // Only offer it where it will actually work, and only where anyone would
@@ -1323,13 +1449,37 @@
         + "</details>";
     }
 
+    // A tick, an exclamation, a cross, a dash. The shape says as much as the
+    // colour does, which matters for anyone who cannot tell the greens from the
+    // amber.
+    const MARKS = {
+      pass: '<path d="M5 12l5 5L20 7"/>',
+      caution: '<path d="M12 6.5v7"/><circle cx="12" cy="17.6" r="1.3" fill="currentColor" stroke="none"/>',
+      fail: '<path d="M6 6l12 12M18 6L6 18"/>',
+      none: '<path d="M6 12h12"/>',
+      unassessed: '<path d="M9 9a3 3 0 1 1 4 2.8V14"/><circle cx="12" cy="17.6" r="1.3" fill="currentColor" stroke="none"/>',
+      pending: '<circle cx="12" cy="12" r="7"/>',
+    };
+    // How a check came out, in the reader's words rather than the engine's.
+    const STATE_WORD = { pass: "Clear", caution: "Caveat", fail: "Failed", unassessed: "Not checked" };
+
+    function markHtml(status) {
+      return '<span class="mark ' + esc(status) + '"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"'
+        + ' stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+        + (MARKS[status] || MARKS.unassessed) + "</svg></span>";
+    }
+
     /** One front, drawn the same way whether it just arrived or was saved. */
     function frontRowHtml(k, f) {
-      const label = f.status === "none" ? (k === "testing" ? "none found" : "N/A") : f.status;
-      return '<span class="badge ' + esc(f.status) + '">' + esc(label) + '</span> <strong>'
-        + esc(VetRun.STEP[k] || "Database") + '</strong><small>' + esc(f.note || "")
+      const word = f.status === "none"
+        ? (k === "testing" ? "None found" : "Not applicable")
+        : (STATE_WORD[f.status] || f.status);
+      return markHtml(f.status)
+        + '<div><div class="check-head"><strong>' + esc(VetRun.STEP[k] || "Database") + "</strong>"
+        + '<span class="check-state ' + esc(f.status) + '">' + esc(word) + "</span></div>"
+        + '<small>' + esc(f.note || "")
         + (f.source ? ' &middot; <a href="' + esc(f.source) + '" target="_blank" rel="noopener">source</a>' : "")
-        + "</small>";
+        + "</small></div>";
     }
 
     const FRONT_ORDER = ["formula", "materials", "legal", "testing"];
@@ -1356,10 +1506,16 @@
       logEl.innerHTML =
         '<div class="check-tip" id="checkTip" hidden><span class="tip-label" id="tipLabel"></span>'
         + '<span class="tip-text" id="tipText"></span></div>'
+        + '<div class="step-row" id="stepRow">' + FRONT_ORDER.map((k, i) =>
+            '<div class="step' + (i === 0 ? " now" : "") + '" id="step-' + k + '"><b>' + esc(VetRun.STEP[k])
+            + "</b><span>" + (i === 0 ? "Checking" : "Queued") + "</span></div>").join("")
+        + "</div>"
         + FRONT_ORDER.map(k =>
             '<div class="check-row" id="row-' + k + '">'
-            + '<span class="badge pending">checking</span> <strong>' + esc(VetRun.STEP[k]) + '</strong>'
-            + '<small class="pending-note">searching…</small></div>').join("")
+            + markHtml("pending")
+            + '<div><div class="check-head"><strong>' + esc(VetRun.STEP[k]) + "</strong>"
+            + '<span class="check-state pending">Checking</span></div>'
+            + '<small class="pending-note">searching…</small></div></div>').join("")
         + '<div id="catNotesSlot"></div>';
 
       // A pasted link says nothing about what kind of product it is, so there
@@ -1387,6 +1543,11 @@
         onFront: e => {
           const f = e.front;
           if (!catHit && f.note) findCategory(brand + " " + f.note);
+          const chip = $("step-" + e.step);
+          if (chip) { chip.className = "step done"; chip.lastElementChild.textContent = "Done"; }
+          // Whichever has not answered yet is the one being worked on.
+          const next = FRONT_ORDER.map(k => $("step-" + k)).find(n => n && n.className === "step");
+          if (next) { next.className = "step now"; next.lastElementChild.textContent = "Checking"; }
           lastCheck = (lastCheck ? lastCheck + "\n" : "")
             + (VetRun.STEP[e.step] || e.step) + ": " + f.status + " - " + (f.note || "");
           paint(e.step, frontRowHtml(e.step, f));
@@ -1421,17 +1582,17 @@
           FRONT_ORDER.forEach(k => {
             const row = $("row-" + k);
             if (row && row.querySelector(".pending")) {
-              paint(k, '<span class="badge unassessed">unassessed</span> <strong>' + esc(VetRun.STEP[k])
-                + '</strong><small>This check did not finish.</small>');
+              paint(k, frontRowHtml(k, { status: "unassessed", note: "This check did not finish.", source: "" }));
             }
           });
           if (e.needsCredits) { btn.hidden = true; logEl.insertAdjacentHTML("beforeend",
-            '<div class="check-row">' + esc(e.error || "No checks left on this pass.") + ' <a href="vet.html">Top up &rarr;</a></div>'); return; }
-          if (e.error) { logEl.insertAdjacentHTML("beforeend", '<div class="check-row">' + esc(e.error) + "</div>"); return; }
+            '<div class="check-note">' + esc(e.error || "No checks left on this pass.") + ' <a href="vet.html">Top up &rarr;</a></div>'); return; }
+          if (e.error) { logEl.insertAdjacentHTML("beforeend", '<div class="check-note">' + esc(e.error) + "</div>"); return; }
           btn.hidden = true;
           // The verdict goes above the category facts, and those fold away.
           // Five open paragraphs between the last check and the answer meant
           // Anya never saw the answer at all.
+          const steps = $("stepRow"); if (steps) steps.remove();
           const slot = $("catNotesSlot");
           if (slot) slot.innerHTML = verdictHtml(e, secs) + notesDetailsHtml(catHit);
         },
@@ -1441,9 +1602,11 @@
     /** The answer itself: badge, provenance, and how to tell us it is wrong. */
     function verdictHtml(e, secs) {
       const names = { good: "Good choice", careful: "Careful", skip: "Skip", unrated: "Not enough found" };
-      return '<div class="check-row">'
-        + '<div class="verdict-row" style="margin-top:6px"><span class="badge ' + esc(e.verdict) + '"><span class="dot"></span>'
-        + esc(names[e.verdict] || e.verdict) + "</span></div>"
+      // The word itself, at the size of an answer. A badge the size of a label
+      // was the smallest thing on a card whose whole purpose it is.
+      return '<div class="verdict-block ' + esc(e.verdict) + '">'
+        + '<div class="verdict-eyebrow">Our verdict</div>'
+        + '<div class="verdict-word">' + esc(names[e.verdict] || e.verdict) + "</div>"
         + (e.label ? '<p class="reason">' + esc(e.label) + "</p>" : "")
         + (e.capNote ? '<p class="form-note">' + esc(e.capNote) + "</p>" : "")
         + (secs ? '<p class="form-note">Checked in ' + secs + "s"
@@ -1514,10 +1677,12 @@
       gtag('event', 'vet_saved_shown', { brand: checkSubject.label, repairable: !!d.repairable });
     }
 
-    // On narrow screens the result renders below the search area, so bring it
-    // into view after a user-initiated lookup (never for the example card).
+    // The result renders below the field on every width now, not beside it on
+    // wide ones, so it is always off the bottom of the screen when it appears.
+    // Bring it into view after a lookup somebody asked for, never for the
+    // example card, which should not move the page out from under a reader.
     function focusResult() {
-      if (window.innerWidth < 900) resultEl.scrollIntoView({ behavior: "smooth", block: "start" });
+      resultEl.scrollIntoView({ behavior: "smooth", block: "start" });
     }
 
     // Fire-and-forget: record every brand searched on our backend (KV via the worker).
