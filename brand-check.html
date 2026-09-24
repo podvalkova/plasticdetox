@@ -671,7 +671,7 @@
      separately for ten minutes each, so without it a browser can hold a new
      page against an old script and call a function that is not there yet.
      Bump it whenever vet-run.js changes. -->
-<script src="js/vet-run.js?v=2"></script>
+<script src="js/vet-run.js?v=3"></script>
 <script>
     const WORKER_URL = "https://plasticdetox-quiz-email.plasticdetox.workers.dev";
     // A product row can be unrated in the data (typed and ruled both), and
@@ -1191,6 +1191,10 @@
     // inline onclick attributes. It stopped being safe to thread the moment the
     // value could be a pasted URL.
     let checkSubject = { name: "", raw: "", label: "" };
+    // True once the button on screen means "research this again" rather than
+    // "research this". The worker decides what that costs; the card only has to
+    // say so honestly before it is pressed.
+    let recheck = false;
 
     /**
      * The card for something we hold no verdict on.
@@ -1340,6 +1344,8 @@
       // what amazon.com is made of.
       const url = /^https?:\/\//i.test(raw || "") ? raw : "";
       let brand = name || (url ? "" : (raw || ""));
+      const asking = recheck;
+      recheck = false;
       btn.disabled = true; lastCheck = null;
       gtag('event', 'vet_run_inline', { brand: brand || url });
 
@@ -1377,7 +1383,7 @@
         else logEl.insertAdjacentHTML("beforeend", '<div class="check-row">' + html + "</div>");
       };
 
-      await VetRun.run({ pass: VetRun.getPass(), brand: brand, product: "", url: url }, {
+      await VetRun.run({ pass: VetRun.getPass(), brand: brand, product: "", url: url, fresh: asking }, {
         onFront: e => {
           const f = e.front;
           if (!catHit && f.note) findCategory(brand + " " + f.note);
@@ -1409,7 +1415,7 @@
             // there, the top of the card argued with the bottom of it.
             ["unknownBadge", "passPitch"].forEach(id => { const n = $(id); if (n) n.remove(); });
           }
-          btn.disabled = false; btn.textContent = "Run the check now";
+          btn.disabled = false; btn.textContent = asking ? "Check it again" : "Run the check now";
           // Any front still pending never answered; say so rather than leaving
           // it spinning forever.
           FRONT_ORDER.forEach(k => {
@@ -1489,7 +1495,23 @@
                         label: "Checked " + when + ". No credit used." }, "");
       const hit = await categoryFor([name, found, d.fronts.formula && d.fronts.formula.note].filter(Boolean).join(" "));
       if (hit) logEl.insertAdjacentHTML("beforeend", notesDetailsHtml(hit));
-      gtag('event', 'vet_saved_shown', { brand: checkSubject.label });
+
+      // An answer is only as good as the day it was made, and it was frozen
+      // there: asking again returned the same card forever, holes and all. So
+      // it can be asked again. Where the hole was ours, a database of ours
+      // being down, repairing it is not something to charge somebody for, and
+      // the worker settles that rather than this button.
+      if (btn && VetRun.getPass()) {
+        recheck = true;
+        btn.hidden = false;
+        btn.textContent = d.repairable ? "Check it again, free" : "Check it again";
+        btn.className = d.repairable ? "btn btn-primary" : "btn btn-ghost";
+        btn.insertAdjacentHTML("afterend", '<p class="form-note" style="margin-top:8px">'
+          + (d.repairable
+              ? "Part of this answer is missing because a database of ours was down when it ran. Repairing that is on us, so this one is free."
+              : "Researches it again from scratch and uses 1 check.") + "</p>");
+      }
+      gtag('event', 'vet_saved_shown', { brand: checkSubject.label, repairable: !!d.repairable });
     }
 
     // On narrow screens the result renders below the search area, so bring it

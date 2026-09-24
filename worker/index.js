@@ -2546,13 +2546,30 @@ function researchKeys(brand, product, identified, asin) {
   return keys;
 }
 
+/**
+ * A stored answer that is incomplete because of us, not because of the product.
+ *
+ * A front reading unassessed over "the CPSC database could not be reached" is
+ * our outage written onto somebody's card, and it sat there permanently: the
+ * answer is cached, so the same question returned the same hole forever. Asking
+ * again to repair our own failure is not a purchase, so it does not cost a
+ * check. A product that is genuinely unproven is a different thing and is not
+ * in here: this looks only for the sentences we write about ourselves.
+ */
+const OUR_FAULT = /could not be reached|could not complete this check|did not finish|not configured on this worker|could not reach our research service/i;
+
+function repairableFronts(fronts) {
+  return Object.values(fronts || {}).some(
+    (f) => f && f.status === "unassessed" && OUR_FAULT.test(f.note || ""));
+}
+
 /** The ASIN in a pasted address, or "". The key our database is built on. */
 function asinFromUrl(url) {
   const m = String(url || "").match(/\/(?:dp|gp\/product|gp\/aw\/d|product)\/([A-Z0-9]{10})/i);
   return m ? m[1].toUpperCase() : "";
 }
 
-async function vetCore(env, brand, product, send, allowResearch, url = "") {
+async function vetCore(env, brand, product, send, allowResearch, url = "", fresh = false) {
   const t0 = Date.now();
   const fronts = {};
   send({ step: "start", brand, product });
@@ -2616,7 +2633,10 @@ async function vetCore(env, brand, product, send, allowResearch, url = "") {
       : hit;
     if (rec && rec.fronts) { cached = rec; break; }
   }
-  if (cached && cached.fronts && (cached.engine || 0) >= VET_ENGINE) {
+  // Asked for again on purpose: research it rather than handing back the same
+  // answer. Free when what is being replaced was our own failure.
+  const repair = fresh && cached && cached.fronts && repairableFronts(cached.fronts);
+  if (!fresh && cached && cached.fronts && (cached.engine || 0) >= VET_ENGINE) {
     for (const [k, f] of Object.entries(cached.fronts)) {
       send({ step: k, front: f, ms: Date.now() - t0 });
     }
@@ -2625,8 +2645,10 @@ async function vetCore(env, brand, product, send, allowResearch, url = "") {
              chargeable: false, elapsedMs: Date.now() - t0 };
   }
 
-  // Out of credits and not in the database: stop before spending anything.
-  if (!allowResearch) {
+  // Out of credits and not in the database: stop before spending anything. A
+  // repair is the exception. An empty pass is no reason to leave somebody
+  // holding a card with our own outage written on it.
+  if (!allowResearch && !repair) {
     return { fromDatabase: false, verdict: null, capNote: "", fronts: {},
              chargeable: false, needsCredits: true, elapsedMs: Date.now() - t0 };
   }
@@ -2842,8 +2864,8 @@ async function vetCore(env, brand, product, send, allowResearch, url = "") {
       await env.BRAND_SEARCHES.put(k, JSON.stringify({ alias: cacheK })).catch(() => {});
     }
   }
-  return { fromDatabase: false, verdict, capNote, fronts, identified,
-           chargeable: labelOk && !ruleFailed,
+  return { fromDatabase: false, verdict, capNote, fronts, identified, repair,
+           chargeable: labelOk && !ruleFailed && !repair,
            researchFailed: (!labelOk && transportFailed) || ruleFailed,
            // Two failures, two honest sentences. Telling somebody we could not
            // reach the research service when we reached it and then fumbled the
@@ -3311,7 +3333,10 @@ async function handleVetKnown(request, env, corsOrigin) {
       : hit;
     if (!rec || !rec.fronts || (rec.engine || 0) < VET_ENGINE) continue;
     return json({ ok: true, found: true, verdict: rec.verdict, capNote: rec.capNote || "",
-                  fronts: rec.fronts, at: rec.at, identified: rec.identified || null },
+                  fronts: rec.fronts, at: rec.at, identified: rec.identified || null,
+                  // Whether asking again would repair our own failure, which is
+                  // what decides whether it costs the customer anything.
+                  repairable: repairableFronts(rec.fronts) },
                 200, corsOrigin);
   }
   return json({ ok: true, found: false }, 200, corsOrigin);
@@ -3323,6 +3348,8 @@ async function handleCustomerVet(request, env, corsOrigin) {
   const brand = (body.brand || "").toString().trim().slice(0, 80);
   const product = (body.product || "").toString().trim().slice(0, 160);
   const url = (body.url || "").toString().trim().slice(0, 500);
+  // Asked for again on purpose, rather than handed the answer we already have.
+  const fresh = body.fresh === true;
   if (!brand && !url) return json({ ok: false, error: "brand is required" }, 400, corsOrigin);
   const key = "vetpass:" + pass;
   const rec = pass && await env.BRAND_SEARCHES.get(key, { type: "json" });
@@ -3330,7 +3357,7 @@ async function handleCustomerVet(request, env, corsOrigin) {
 
   const s = sseResponse(corsOrigin);
   (async () => {
-    const r = await vetCore(env, brand, product, s.send, rec.balance > 0, url);
+    const r = await vetCore(env, brand, product, s.send, rec.balance > 0, url, fresh);
     let consumed = false;
     if (r.needsCredits) {
       s.send({ done: true, elapsedMs: r.elapsedMs, needsCredits: true, balance: rec.balance,
@@ -3353,7 +3380,9 @@ async function handleCustomerVet(request, env, corsOrigin) {
       return;
     }
     s.send({ done: true, elapsedMs: r.elapsedMs, verdict: r.verdict, capNote: r.capNote,
-             label: r.fromDatabase
+             label: r.repair
+               ? "Checked again just now. The last answer was short because a database of ours was down, so this one is free."
+               : r.fromDatabase
                ? "From our reviewed database, no credit consumed"
                : r.fromResearch
                  ? `Checked ${String(r.researchedAt || "").slice(0, 10)}, already researched for someone else. No credit used.`
