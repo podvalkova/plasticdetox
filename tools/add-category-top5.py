@@ -103,15 +103,15 @@ ROWS = {
         ("Little Snugglers diapers", [["huggies", "little", "snugglers"]], [], ["B07MB5PZBF", "B07MYW85VT", "B07M6FL57T"], "skip",
          "ANSES 2020 and Greenpeace testing flagged trace dioxins, furans, PCBs and glyphosate across the major disposables. Kimberly-Clark disputes the concentrations. The relevant fact is a recurring lab record on a product worn against skin around the clock for two to three years.",
          F(te="fail")),
-        ("Snug & Dry diapers", [["huggies", "snug", "dry"]], [], ["B0DFNRLHVY"], "skip",
+        ("Snug & Dry diapers", [["huggies", "snug", "dry"]], [], ["B0DFNRLHVY"], "careful",
          "Same ANSES 2020 finding as the rest of the mainstream disposable category, on the cheaper of the two Huggies lines. Kimberly-Clark disputes the concentrations.",
-         F(te="fail")),
+         F(te="caution")),
         ("Natural Care Sensitive wipes", [["huggies", "natural", "care"]], [], ["B07SCL613T", "B08QRT84WJ", "B00LSCGZMQ", "B0DJ3W24MV"], "careful",
          "Huggies describes its wipes as 70 percent or more plant based by weight, which is a precise way of saying up to about 30 percent plastic fibre. The cloth is the exposure, not the liquid, and it crosses a baby's skin roughly sixteen times a day.",
          F(fo="caution")),
-        ("Simply Clean wipes", [["huggies", "simply", "clean"]], [], ["B08QRKY3NJ", "B0795VNC6Z"], "careful",
+        ("Simply Clean wipes", [["huggies", "simply", "clean"]], [], ["B08QRKY3NJ", "B0795VNC6Z"], "unrated",
          "Same partly synthetic substrate as the Natural Care line, described by the manufacturer as 70 percent or more plant based by weight, which leaves up to about 30 percent plastic fibre.",
-         F(fo="caution")),
+         F()),
     ],
     # ----------------------------------------------------------- diaper cream
     "Desitin": [
@@ -128,9 +128,9 @@ ROWS = {
          F(te="fail", fo="caution")),
     ],
     "Aquaphor": [
-        ("Baby diaper rash paste with zinc oxide", [["aquaphor", "diaper", "rash"]], [], ["B082QBB8KQ", "B00Q2MYU9W"], "skip",
+        ("Baby diaper rash paste with zinc oxide", [["aquaphor", "diaper", "rash"]], [], ["B082QBB8KQ", "B00Q2MYU9W"], "careful",
          f"Aquaphor's zinc paste was among those returning lead in the 2025 to 2026 diaper cream series, alongside cadmium in most samples. The base also carries lanolin, a wool derived allergen for some children, on already broken skin. {LSM}",
-         F(te="fail", fo="caution")),
+         F(te="caution", fo="caution")),
     ],
     "Boudreaux's Butt Paste": [
         ("Butt Paste, including the Natural line", [["boudreaux", "butt", "paste"]], [], ["B00569GU18"], "skip",
@@ -171,9 +171,9 @@ ROWS = {
         ("Pitchers and dispensers on the standard filter",
          [["brita", "pitcher"], ["brita", "dispenser"], ["brita", "cup"]],
          ["elite", "longlast"],
-         ["B09W4PLVQP", "B0DG62Y3DM", "B09WBL9HCS", "B01FXN3E74", "B0DG63TFC3", "B0DG63C2M5", "B0B3GK9RW6"], "skip",
+         ["B09W4PLVQP", "B0DG62Y3DM", "B09WBL9HCS", "B01FXN3E74", "B0DG63TFC3", "B0DG63C2M5", "B0B3GK9RW6"], "careful",
          "No Brita filter, on any line, carries NSF/ANSI 401 certification for microplastics or the emerging contaminants people buy a pitcher to remove. On top of that the standard filter is not certified under NSF/ANSI 53 for lead either, which only the Elite and Longlast filters are.",
-         F(te="fail")),
+         F(te="caution")),
     ],
     "Waterdrop": [
         ("Pitcher filters", [["waterdrop", "pitcher"]], ["g3p800", "tankless", "reverse osmosis"],
@@ -210,7 +210,7 @@ ROWS = {
     ],
     # ------------------------------------------------------ prenatal vitamins
     "Nature Made": [
-        ("Prenatal + DHA softgel", [["nature", "made", "prenatal"]], [], ["B07BXVFC32", "B005DEK9KE"], "careful",
+        ("Prenatal + DHA softgel", [["nature", "made", "prenatal"]], [], ["B07BXVFC32", "B005DEK9KE"], "skip",
          "The SKU named in a 2025 Pharmavite class action over phthalates and BPA, following PlasticList's December 2024 testing, and positive for lead, cadmium and arsenic in February 2025 independent testing. Pharmavite disputes the claims. A softgel shell is also the worst format in our ranking for plastic contact.",
          F(te="fail", lg="caution")),
     ],
@@ -231,9 +231,9 @@ ROWS = {
     ],
     # ----------------------------------------------------------- chewing gum
     "Extra": [
-        ("Extra sugarfree gum", [["extra", "gum"], ["extra", "chewing", "gum"]], [], ["B001NI0MQ0", "B00N74QZBO", "B002DQ2F9S", "B001GM60J6"], "skip",
+        ("Extra sugarfree gum", [["extra", "gum"], ["extra", "chewing", "gum"]], [], ["B001NI0MQ0", "B00N74QZBO", "B002DQ2F9S", "B001GM60J6"], "careful",
          "Synthetic gum base. The label term covers polyethylene, polyvinyl acetate and polyisobutylene, the same polymer families used in shopping bags, wood glue and inner tubes. A 2025 UCLA pilot study measured a single piece shedding up to 3,000 microplastic particles into saliva.",
-         F(fo="fail")),
+         F(fo="caution")),
     ],
     "Trident": [
         ("Trident sugar free gum", [["trident", "gum"], ["trident", "sugar", "free"]], [], ["B0711V757H", "B00IO29CI2", "B071FC8VPH"], "skip",
@@ -241,19 +241,19 @@ ROWS = {
          F(fo="fail")),
     ],
     "Wrigley's": [
-        ("Doublemint and the Wrigley's range", [["wrigley", "gum"], ["wrigley", "doublemint"], ["doublemint", "chewing", "gum"]], [], ["B004OZDJW8"], "skip",
+        ("Doublemint and the Wrigley's range", [["wrigley", "gum"], ["wrigley", "doublemint"], ["doublemint", "chewing", "gum"]], [], ["B004OZDJW8"], "careful",
          "Synthetic gum base. The 2025 UCLA pilot study measured up to 3,000 microplastic particles from a single piece, and a regular habit works out at roughly 30,000 particles a year.",
-         F(fo="fail")),
+         F(fo="caution")),
     ],
     "Ice Breakers": [
-        ("Ice Cubes and Ice Breakers gum", [["ice", "breakers", "gum"], ["ice", "breakers", "cubes"]], [], ["B01J26RZVO"], "skip",
+        ("Ice Cubes and Ice Breakers gum", [["ice", "breakers", "gum"], ["ice", "breakers", "cubes"]], [], ["B01J26RZVO"], "careful",
          "Synthetic gum base the label does not specify, alongside aspartame. Our label rule is that an unnamed gum base is a petroleum polymer until the maker names a plant source.",
-         F(fo="fail")),
+         F(fo="caution")),
     ],
     "Mama Bear": [
-        ("Mama Bear baby wipes", [["mama", "bear", "wipe"]], [], ["B07XMFVN95", "B0G4W6H1F4"], "careful",
+        ("Mama Bear baby wipes", [["mama", "bear", "wipe"]], [], ["B07XMFVN95", "B0G4W6H1F4"], "unrated",
          "Amazon's own label wipes. Fragrance free, which is the right call, but the substrate is not disclosed as plant based and the category norm is a partly synthetic cloth. The wipe itself is the exposure, not the liquid.",
-         F(fo="caution")),
+         F()),
     ],
     # Amazon Basics spans every category, so a verdict on one of its lines says
     # nothing about another. These are scoped to the exact product.

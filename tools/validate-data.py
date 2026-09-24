@@ -137,6 +137,27 @@ def check_product(b, p, where, errs, stage):
         # Earth Mama's balm shipped a Careful badge with no stated reason.
         if v in ("careful", "skip") and not str(e.get("why") or "").strip():
             errs.append(f"{where}: ext.verdict {v} with an empty why")
+        # Section 6 binds the verdict a person typed as much as the one the
+        # rules derive, and until September 2026 only the second was checked.
+        # Brand Check shows the stricter of the two, so a typed skip stood
+        # over checks that reached only caution on 72 rows, and a typed good
+        # stood beside a recorded fail on 9 more. A skip needs a failed check,
+        # a careful needs a caution, and a good may not sit over either.
+        fr = e.get("fronts") or {}
+        fails = [k for k in FRONTS if fr.get(k) == "fail"]
+        adverse = [k for k in FRONTS if fr.get(k) in ("caution", "fail")]
+        # A brand-line row's typed verdict is the brand stance projected, by
+        # construction, and no surface displays it; the extension reads its
+        # ext.verdict, which can only ever warn. So the invariant is on real
+        # product rows.
+        typed = None if p.get("origin") == "brand-line" else p.get("verdict")
+        if typed == "skip" and not fails:
+            errs.append(f"{where}: typed verdict skip with no failed check "
+                        f"(fronts {fr}); record the finding or lower the verdict")
+        elif typed == "careful" and not adverse:
+            errs.append(f"{where}: typed verdict careful with no caution recorded")
+        elif typed == "good" and adverse and not (e.get("legalSuperseded") and adverse == ["legal"]):
+            errs.append(f"{where}: typed verdict good over adverse fronts {adverse}")
 
 
 def main():

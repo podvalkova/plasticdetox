@@ -29,7 +29,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "brand-data.json"
 ARTICLES = ROOT / "articles"
 
-VERDICT = {"GOOD CHOICE": "good", "USE CAREFULLY": "careful", "SKIP": "skip"}
+VERDICT = {"GOOD CHOICE": "good", "USE CAREFULLY": "careful", "SKIP": "skip", "NOT YET RATED": "unrated"}
 
 
 def collapse(s):

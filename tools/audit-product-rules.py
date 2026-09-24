@@ -277,6 +277,17 @@ DISCLOSURE_FAILURE = [
     "essential oil blend", "blend of essential oils",
 ]
 
+# The same failure, but only where the word can only be an umbrella. On an
+# ingredient panel "Aroma" (the INCI term) or a bare "Flavor" stands for a
+# mixture exactly as "fragrance" does; Dr. Brown's baby toothpaste ends its
+# list "Aroma/Flavor" and named nothing, and the front read pass because the
+# list above only knew "natural flavor". In a sentence the same words are
+# ordinary English ("the mint flavor comes from peppermint oil"), so these are
+# applied by the recorded list reader in apply-front-evidence.py and never by
+# the prose classifier below. The bracket and EU allergen exemptions of rule
+# 2.1a apply to them as to any umbrella.
+LABEL_DISCLOSURE = ["aroma", "flavor", "flavour"]
+
 # A category scoped caution is a documented downside in one category and
 # unremarkable everywhere else, so it cautions only inside the category it
 # names and never fails a front alone. It is the written-rule home for

@@ -30,6 +30,10 @@ def collapse(s):
     return re.sub(r"[^a-z0-9]+", "", (s or "").lower())
 
 
+def words(s):
+    return [w for w in re.sub(r"[^a-z0-9]+", " ", (s or "").lower()).split() if w]
+
+
 def registry_records():
     if not REGISTRY.exists():
         return []
@@ -64,7 +68,7 @@ def main():
         for label in [b["brand"]] + list(b.get("aliases") or []):
             key = collapse(label)
             if len(key) >= 4:
-                lookup.append((key, b))
+                lookup.append((key, b, words(label)))
     lookup.sort(key=lambda t: -len(t[0]))
 
     added = already = no_brand = conflict = 0
@@ -73,8 +77,12 @@ def main():
     for rec in registry_records():
         key = collapse(rec["name"])
         # Prefix only. Substring matching put "Awair Element" on LMNT, because
-        # "lmnt" happens to sit inside "element".
-        brand = next((b for k, b in lookup if key.startswith(k)), None)
+        # "lmnt" happens to sit inside "element". And the prefix has to end on
+        # a word: "Wool&" collapses to "wool", which is how Woolino's sleep
+        # sack was filed under a merino dress company. The brand's words must
+        # be the product's first words, not the first letters of them.
+        brand = next((b for k, b, bw in lookup
+                      if key.startswith(k) and words(rec["name"])[:len(bw)] == bw), None)
         if not brand:
             no_brand += 1
             unknown.append(rec["name"])

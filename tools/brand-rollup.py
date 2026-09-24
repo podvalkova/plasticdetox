@@ -196,14 +196,14 @@ def roll_fronts(brands):
     # A pass is stronger evidence of having looked than a `none`, which says
     # only that no evidence of that kind exists. Either satisfies the gate.
     GOOD = {"pass": 2, "none": 1}
-    filled = adverse = favourable = 0
+    filled = adverse = favourable = lowered = 0
     for b in brands:
         fronts = b.setdefault("fronts", {})
+        if fronts.get("authored"):
+            continue
         for f in ("formula", "materials", "legal", "testing"):
             cur = fronts.get(f)
-            status = cur.get("status") if isinstance(cur, dict) else None
-            if status not in (None, "", "unknown"):
-                continue
+            status = cur.get("status") if isinstance(cur, dict) else (cur if isinstance(cur, str) else None)
             worst, source = None, None
             best, bsource = None, None
             for p in (b.get("products") or []):
@@ -217,7 +217,21 @@ def roll_fronts(brands):
                     worst, source = v, p
                 elif v in GOOD and GOOD[v] > GOOD.get(best or "", 0):
                     best, bsource = v, p
-            if worst:
+            # A filled front is left alone, with one exception. Rule 1.1 says
+            # adverse evidence propagates, and a brand card reading "testing:
+            # pass" over a product of the same brand whose testing failed is
+            # that rule inverted: Babo Botanicals, Burt's Bees Baby, MAM,
+            # Momentous, Organyc and The Honest Company all showed a pass on
+            # the card above a fail in the rows, because this only ever filled
+            # blanks and the pass had been filled first. A worse researched
+            # front now replaces a better one; a better one never replaces a
+            # worse one, which is the asymmetry.
+            if status not in (None, "", "unknown"):
+                if worst and RANK[worst] > RANK.get(status, 0):
+                    pick, lowered = worst, lowered + 1
+                else:
+                    continue
+            elif worst:
                 pick, source, adverse = worst, source, adverse + 1
             elif best:
                 pick, source, favourable = best, bsource, favourable + 1
@@ -231,6 +245,8 @@ def roll_fronts(brands):
                 "origin": "rollup",
             }
             filled += 1
+    if lowered:
+        print(f"  brand fronts lowered under a product's worse finding: {lowered}")
     return filled, adverse, favourable
 
 

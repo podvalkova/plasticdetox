@@ -63,6 +63,13 @@ def recorded_material(brand, product):
         for field in ("material", "base", "source"):
             if m.get(field):
                 out.append(str(m[field]))
+        # The escape terms are mostly testing language ("non detect", a
+        # certifier's name), and a certification recorded as testing evidence
+        # is exactly the kind of fact that takes a product out of a class.
+        t = (EVIDENCE.get(k) or {}).get("testing") or {}
+        for field in ("note", "source"):
+            if t.get(field):
+                out.append(str(t[field]))
     return " ".join(out)
 
 
@@ -102,7 +109,13 @@ def main():
 
     brands = json.loads(DATA.read_text())
     findings = json.loads(TABLE.read_text())["findings"]
-    rows = [(b, p) for b in brands for p in (b.get("products") or [])]
+    # A class finding needs a product to be a member of the class, and rule 4.5
+    # reads membership from the product's name and recorded material. A
+    # brand-line row is "Whole range": it has neither, so the only thing it can
+    # match is the category, and that put the disposable diaper finding on
+    # seven cloth diaper brands' stand-in rows.
+    rows = [(b, p) for b in brands for p in (b.get("products") or [])
+            if p.get("origin") != "brand-line"]
 
     applied = collections.Counter()
     per = collections.Counter()
@@ -171,6 +184,14 @@ def main():
                 continue
 
             confirmed = hit(text, confirm)
+            # Rule 4's table: an ingredient borne finding reaches every SKU that
+            # contains the ingredient, and nothing else. A category match alone
+            # cannot say whether a jar of carrots contains oats, so a finding
+            # that travels on an ingredient lands only where the name or the
+            # recorded material carries it; a process or format finding keeps
+            # the category level caution, which is what a tea bag or a pouch is.
+            if f.get("mechanism") == "ingredient" and not confirmed:
+                continue
             status = f["status"] if confirmed else "caution"
             scope = ("This product's own materials put it in that class."
                      if confirmed else

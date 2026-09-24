@@ -49,6 +49,10 @@ RULES = [
     ("Period pads",         r"(period|sanitary|menstrual|maxi|ultra thin|overnight|day|night) pads?\b|"
                             r"sanitary (napkin|towel)|pads? with wings|pads and liners"),
     ("Diaper cream",        r"diaper (rash )?(cream|paste|balm|ointment)|butt paste|nappy cream"),
+    # A cloth wipe is a textile with nothing in it to list. It shares the
+    # search intent of a wet wipe and none of its formula, and the wet wipe
+    # class findings and ethoxylate caution must not land on it.
+    ("Cloth wipes",         r"cloth wipes?|dry (cotton |bamboo )?wipes?|reusable wipes?|washable wipes?"),
     ("Baby wipes",          r"\bwipes?\b"),
     ("Diapers",             r"\bdiapers?\b|nappy|nappies|pull[- ]ups?|training pant"),
     ("Baby bottles",        r"baby bottle|infant bottle|sippy|straw cup|training cup|"
@@ -57,6 +61,14 @@ RULES = [
     ("Teethers",            r"teether|teething"),
     ("Breast milk storage", r"breast milk|milk storage|milk collect"),
     ("Baby formula",        r"\bformula\b"),
+    # The machine that makes the puree is not the puree. Bear's baby food
+    # maker read as Baby food, which is a consumable aisle, and the audit then
+    # asked an appliance for its ingredient list.
+    ("Kitchen appliances",  r"food maker|food processor|steamer blender"),
+    # Sold empty, so scored under rule 3.13 on what the buyer puts in. A
+    # freezer tray, a canister and a jar were falling through to Baby food or
+    # Pantry off a note that named what they hold.
+    ("Food storage",        r"freezer tray|storage tray|food canister|storage jars?"),
     ("Baby food",           r"baby food|puree|pouch|puffs|teething wafer|infant cereal|oatmeal"),
     ("Prenatal vitamins",   r"prenatal"),
     # There was no skincare category at all, so a serum matched nothing by name
@@ -69,6 +81,9 @@ RULES = [
     ("Supplements",         r"creatine|omega|cod liver|vitamin|magnesium|probiotic|collagen|protein powder|whey"),
     ("Electrolytes",        r"electrolyte|hydration|rehydration"),
     ("Sunscreen",           r"sunscreen|\bspf\b|sunblock"),
+    # A loose powder is its own kind of thing: the finding about it is the
+    # format, breathed in near a face, and it must not land on lotions.
+    ("Baby powder",         r"baby powder|talc powder|body powder|dusting powder|\bpowder \((talc|cornstarch)\)"),
     ("Baby lotion",         r"baby (lotion|oil|balm|wash|shampoo)|calendula|healing ointment"),
     ("Body lotion",         r"\blotion\b|body butter|moisturiz|moisturis|body oil"),
     ("Deodorant",           r"deodorant|antiperspirant"),
@@ -76,7 +91,12 @@ RULES = [
                             r"\bpastes?\b|whitening|3d white|optic white|repair and protect"),
     ("Toothbrushes",        r"toothbrush"),
     ("Dental floss",        r"\bfloss\b"),
-    ("Cutting boards",      r"butcher block|board (oil|conditioner|cream)"),
+    # A board oil is a formula applied to a food surface, and the board is
+    # not. Filing the oil under Cutting boards, a category with no ingredient
+    # list, made its recorded formula read as an error.
+    ("Wood care",           r"board (oil|conditioner|cream)|butcher block (oil|conditioner)|"
+                            r"cutting board oil|food grade mineral oil"),
+    ("Cutting boards",      r"butcher block"),
     ("Conditioner",         r"conditioner"),
     ("Shampoo",             r"shampoo"),
     ("Razors",              r"razor|safety razor|shaving|shave"),
@@ -84,14 +104,19 @@ RULES = [
     ("Bath accessories",    r"loofah|loofa|bath sponge|body scrub|bath brush|washcloth|"
                             r"body brush|dry brush|shower steamer"),
     ("Soap",                r"castile|bar soap|hand soap|body wash|face wash|cleanser"),
-    ("Makeup",              r"mascara|lipstick|foundation|eyeliner|eye shadow|blush|lip balm|nail polish|concealer"),
+    ("Makeup",              r"mascara|lipstick|foundation|eyeliner|eye shadow|blush|lip balm|lip tint|lip gloss|"
+                            r"lip oil|bronzer|highlighter|nail polish|concealer"),
     ("Chewing gum",         r"\bgum\b"),
     # Salt has to be the product, not an ingredient. A bare \bsalt\b put
     # Play-Doh and a jar of marinara in this category, because both list salt,
     # and the sea salt class finding then landed on a toy and a pasta sauce.
     ("Sea salt",            r"(?:sea|kosher|table|rock|mineral|finishing|celtic|himalayan|flake)\s+salt\b|\bsalt\s*(?:flakes?|crystals?)\b|\bsalt\s*$"),
     ("Coffee",              r"coffee|espresso|french press|pour over|kettle|grinder|drip"),
-    ("Tea",                 r"\btea\b|infuser|teapot"),
+    # The pot and the infuser are objects; the leaf is the consumable. Filing
+    # both under Tea put a stainless infuser in a category the audit expects
+    # an ingredient list from.
+    ("Teaware",             r"infuser|teapot|tea kettle|tea strainer|kyusu"),
+    ("Tea",                 r"\btea\b"),
     ("Bottled water",       r"bottled water|spring water|purified water"),
     # Ahead of Air purifiers, Water filters and Cleaning products, which all
     # claimed vacuums first: every vacuum has a HEPA filter, a replacement
@@ -111,10 +136,19 @@ RULES = [
                             r"popcorn (popper|maker|machine)"),
     ("Cutting boards",      r"cutting board|chopping board|butcher block"),
     ("Food storage",        r"food storage|storage container|mason jar|jar lid|beeswax wrap|"
-                            r"food container|bento|lunch|bread box|produce bag|cheese"),
-    ("Tableware",           r"plate|bowl|utensil|spoon|fork|cup set|dinnerware|bib\b"),
+                            r"food container|bento|lunch|bread box|produce bag|cheese|"
+                            r"canister|\bjars?\b(?! candle)|sandwich bags?|snack bags?"),
+    # Parchment and baking cups touch food once and are not storage; they had
+    # no rule and fell to the brand's label, Pantry for Reynolds.
+    ("Kitchen",             r"parchment|baking cups?|baking paper|\bfoil\b"),
+    ("Tableware",           r"plate|bowl|utensil|spoon|fork|cup set|open cup|toddler cup|dinnerware|bib\b"),
     ("Laundry detergent",   r"laundry|detergent|dryer ball|fabric softener|stain remover"),
-    ("Cleaning products",   r"cleaner|cleaning|dish soap|dish block|dish brush|scrub|sponge|disinfect"),
+    # The brush and the cloth are objects that touch dishes; the soap is the
+    # formula. One bucket for both had the audit asking a coconut scrub pad
+    # for its ingredient list.
+    ("Cleaning tools",      r"dish brush|bottle brush|sponge cloths?|scrub pad|scrubber|scouring|"
+                            r"\bsponges?\b|dish cloth|swedish dishcloth"),
+    ("Cleaning products",   r"cleaner|cleaning|dish soap|dish block|scrub|disinfect"),
     ("Air purifiers",       r"air purifier|hepa|air filter"),
 
     ("Crib mattresses",     r"crib mattress|toddler mattress|changing pad|mattress"),
@@ -122,9 +156,20 @@ RULES = [
     ("Car seats",           r"car seat"),
     ("Strollers",           r"stroller|pram|carrier|babywearing|wrap\b"),
     ("Baby sleep",          r"swaddle|sleep sack|sleeping bag|white noise|night light"),
-    ("Shower curtains",     r"shower curtain|curtain liner"),
+    ("Shower curtains",     r"shower curtain|curtain liner|stall panel|shower panel"),
+    # Candles had no category at all and sat on the brand's "Home" label,
+    # which gave them no exposure type either. The vessel rule for jar candles
+    # is why "jar" is excluded from Food storage above.
+    ("Candles",             r"candle|\btapers?\b|pillar|tealight|votive"),
+    # A play mat is lain on awake and supervised, which is neither bedding
+    # nor a toy, and the sheepskin rug in the play mats guide is the same use.
+    ("Play mats",           r"play ?mats?|playmat|tumbling mat|activity mat|puzzle (play )?mats?|"
+                            r"foam tiles|folding mat|floor mat|sheepskin rug|cloudsoft mat|\bmat tiles\b"),
     ("Bedding",             r"\bsheets?\b|bed sheet|pillow|duvet|blanket|towel|bath mat|curtain|rug\b"),
-    ("Clothing",            r"clothing|pajama|pyjama|onesie|romper|hat\b|swimsuit|swim|sock|bodysuit"),
+    # "hat\b" without a leading boundary matched "that" and "what" in any
+    # note, which is how a breast pump and a balance bike read as Clothing.
+    ("Clothing",            r"clothing|pajama|pyjama|onesie|romper|\bhats?\b|swimsuit|swim|sock|bodysuit|"
+                            r"leggings?|tights|\bpants\b|shorts?\b|\btee\b|t-shirt"),
     ("Yoga mats",           r"yoga|exercise mat|pilates"),
     ("Toys",                r"\btoys?\b|teether|rattle|blocks|magnetic tile|doll|ball\b"),
     ("Pet supplies",        r"\bdog\b|\bcat\b|\bpet\b|chew toy"),
@@ -189,7 +234,8 @@ INSULATION = re.compile(r"vacuum[- ](insulat\w+|seal\w+|flask)")
 # kind of thing it is.
 # A note names salt as an ingredient constantly, so this category is decided
 # by the product name alone.
-NAME_ONLY = {"Vacuums", "Sea salt"}
+# Baby wipes joined for the yoga mat that mentions wiping itself down.
+NAME_ONLY = {"Vacuums", "Sea salt", "Baby wipes"}
 
 
 def categorise(name, note, brand_cat):
@@ -215,6 +261,15 @@ def categorise(name, note, brand_cat):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--write", action="store_true")
+    # Refile rows that already carry a category. Off by default since
+    # September 2026: a run moved 196 rows, and among them it took every baby
+    # wash out of the Baby lotion bucket that rule 2.1b scopes the ethoxylate
+    # caution to, and refiled a car seat under Baby bottles off a note that
+    # mentioned a bottle. Those categories had been set by research without
+    # `catAuthored`, and the patterns are guesses. A guess may fill a blank;
+    # it may not overwrite an answer.
+    ap.add_argument("--recategorise", action="store_true",
+                    help="also refile rows that already have a category")
     args = ap.parse_args()
 
     brands = json.loads(DATA.read_text())
@@ -231,7 +286,7 @@ def main():
             # a product is; the classifier is guessing from words. It read
             # "LIVLIT Organic Cotton Pads" as Pantry, because nothing in that
             # name says period care and the fallback took over.
-            if p.get("catAuthored") and p.get("cat"):
+            if p.get("cat") and (p.get("catAuthored") or not args.recategorise):
                 per[p["cat"]] += 1
                 set_count += 1
                 continue

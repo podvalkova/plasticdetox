@@ -27,29 +27,35 @@ START = "<!-- hazard-list:start -->"
 END = "<!-- hazard-list:end -->"
 
 
+def _engine():
+    """The tables as the engine actually holds them, not as the source reads.
+
+    This used to parse tools/audit-product-rules.py with a regular expression,
+    and a regular expression cannot see a dict comprehension. CATEGORY_CAUTION
+    builds the tampon and pad entries with one and the baby wash entry with
+    another, so the generated block published "Baby lotion:" with nothing after
+    it and never mentioned Tampons or Period pads at all, while the check
+    above reported that the rulebook matched the code. Fourteen of the
+    eighteen terms the engine enforces were missing from the standard that
+    claims to list them. Importing the module gives the real tables, and a
+    commented out line is invisible to an import, which is the property the
+    old parser was straining to keep.
+    """
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("apr", CODE)
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
+
 def terms(name):
-    src = CODE.read_text()
-    m = re.search(rf"{name} = \[(.*?)\n\]", src, re.S)
-    if not m:
-        raise SystemExit(f"could not find {name} in {CODE}")
-    # skip commented-out lines so a note never becomes a rule
-    body = "\n".join(l for l in m.group(1).splitlines() if not l.strip().startswith("#"))
-    return sorted({t for t in re.findall(r'"([^"]+)"', body)}, key=str.lower)
+    return sorted(set(getattr(_engine(), name)), key=str.lower)
 
 
 def scoped_terms():
-    """CATEGORY_CAUTION is a dict of category -> {term: note}, so the flat
-    terms() reader cannot see it. Parsed here the same way: from the code,
-    comments skipped, so a note never becomes a rule."""
-    src = CODE.read_text()
-    m = re.search(r"CATEGORY_CAUTION = \{(.*?)\n\}\n", src, re.S)
-    if not m:
-        return {}
-    body = "\n".join(l for l in m.group(1).splitlines() if not l.strip().startswith("#"))
-    out = {}
-    for cm in re.finditer(r'"([^"]+)":\s*\{(.*?)\}', body, re.S):
-        out[cm.group(1)] = sorted(re.findall(r'"([^"]+)":', cm.group(2)), key=str.lower)
-    return out
+    """CATEGORY_CAUTION is a dict of category -> {term: note}."""
+    return {cat: sorted(terms, key=str.lower)
+            for cat, terms in getattr(_engine(), "CATEGORY_CAUTION", {}).items()}
 
 
 def block():
@@ -63,6 +69,12 @@ def block():
            f"**The {len(df)} disclosure failures.** These name no harmful substance; they say we",
            "cannot check. Each caps at careful and never fails a front alone.", "",
            "> " + ", ".join(f"`{t}`" for t in df), ""]
+    ld = terms("LABEL_DISCLOSURE")
+    out += [f"**The {len(ld)} label only disclosure terms.** A bare umbrella that is only",
+            "an umbrella when it stands on an ingredient panel. Read on a recorded list",
+            "they are the same failure as `fragrance`; read in prose they are just words,",
+            "so the note classifier never sees them.", "",
+            "> " + ", ".join(f"`{t}`" for t in ld), ""]
     sc = scoped_terms()
     if sc:
         out += ["**Category scoped cautions.** Generated from `CATEGORY_CAUTION` in the same",

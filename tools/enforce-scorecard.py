@@ -285,7 +285,12 @@ def main():
             # hazard on a leave on product, and stayed unrated because its
             # materials caution was only inferred, so Product Check showed it
             # as a good choice while it sat in the store.
-            recorded_adverse = [k for k in adverse_here if og.get(k) in ("database", "hand")]
+            # A class finding is recorded too: dated, sourced, in
+            # data/class-evidence.json, and rule 4.5 says it warns. Leaving it
+            # out here parked Johnson's cornstarch powder at unrated over the
+            # aspiration finding, and every supermarket tea bag and bottled
+            # water carrying only the class caution showed no verdict at all.
+            recorded_adverse = [k for k in adverse_here if og.get(k) in ("database", "hand", "class")]
             if ((str(e.get("why") or "").startswith("the note reads adversely")
                     or e.get("verdict") == "unrated")
                     and recorded_adverse):

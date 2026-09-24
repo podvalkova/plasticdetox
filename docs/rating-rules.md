@@ -4,7 +4,7 @@ How a product gets a verdict. This is the editorial standard for Brand Check, th
 Amazon extension, and the paid API. If a rule here and a published page disagree,
 the page is wrong.
 
-Last revised 2026-09-03.
+Last revised 2026-09-24.
 
 ---
 
@@ -141,6 +141,13 @@ cannot check. Each caps at careful and never fails a front alone.
 
 > `artificial flavor`, `artificial flavors`, `blend of essential oils`, `essential oil blend`, `fragrance`, `gum base`, `natural flavor`, `natural flavors`, `natural flavour`, `parfum`, `proprietary blend`, `undisclosed`
 
+**The 3 label only disclosure terms.** A bare umbrella that is only
+an umbrella when it stands on an ingredient panel. Read on a recorded list
+they are the same failure as `fragrance`; read in prose they are just words,
+so the note classifier never sees them.
+
+> `aroma`, `flavor`, `flavour`
+
 **Category scoped cautions.** Generated from `CATEGORY_CAUTION` in the same
 file. A term here is a documented downside in one category and unremarkable
 elsewhere, so it cautions only inside the category it names, caps at careful,
@@ -148,7 +155,9 @@ and never fails a front alone. The evidence behind each term lives as a
 comment on the code entry and as prose in 2.1b.
 
 > **Baby formula**: `palm`
-> **Baby lotion**: 
+> **Baby lotion**: `ceteareth`, `gluceth`, `laureth`, `myreth`, `oleth`, `peg`, `polysorbate`, `ppg`, `sorbeth`, `steareth`, `trideceth`
+> **Period pads**: `modal`, `rayon`, `viscose`
+> **Tampons**: `modal`, `rayon`, `viscose`
 
 <!-- hazard-list:end -->
 
@@ -325,7 +334,15 @@ tea bag is not that. It is an object put inside the drink, at near boiling
 temperature, and then squeezed. The matrix is the wrong instrument, and reaching
 for it produced a caution where the standard's own rules give a skip.
 
-Run a supermarket tea bag through them properly:
+Run a supermarket tea bag through them properly, where the bag is what the
+rule describes. That is a fact about the bag, read from the maker's own
+statement of its material under rule 3.9 or from a test, and not from the
+category: Bigelow states that no bag it makes contains nylon, polypropylene or
+any petroleum based component, its folded paper carries no adhesive and its
+heat seal is a corn and sugarcane starch, and that statement takes Bigelow out
+of this rule. A maker that will not say what the seal is made of is a
+disclosure failure under 3.7, a caution, and the class finding of 4.5 keeps
+the category at caution until somebody looks:
 
 - **Named hazard.** Polypropylene, from the heat sealed seam. Section 2.1.
 - **In the ingested path.** You drink the water it steeped in.
@@ -336,6 +353,13 @@ Run a supermarket tea bag through them properly:
 
 Five rules, one answer. Where a product is put into the thing a person swallows,
 read it as formula and ingestion, never as a container.
+
+The same reading covers a part that is eaten rather than steeped. A nylon chew
+toy exists to be gnawed, and Benebone's own safety guide says pieces of it are
+swallowed, so the nylon is a named plastic in the ingested path and the
+materials front is `fail`. A toothbrush bristle is the same polymer, mouthed
+and spat, and stays a caution under 5.7. The difference is recorded as
+`swallowed` on the materials record, and the engine reads it there.
 
 This is also the mirror of 2.2, and the pair is worth holding together. Sophie la
 Girafe caps at careful because whether a given unit has mould is **not
@@ -436,6 +460,16 @@ So the case that prompted this: **water based skincare or makeup in a plastic
 bottle passes.** The exceptions are the anhydrous ones, face oils, cleansing
 balms and lip products, which are all oil and in the case of lip products also
 swallowed, and acidic actives in PET.
+
+**A plastic the maker does not name scores in the PET column.** "Plastic tube",
+"plastic jar", "plastic spout" is a material named and a polymer withheld, and
+the engine reads it as the middle of the table rather than either end: a pass
+with dry or water based contents, a caution with a surfactant, an acid or an
+emulsion, and a fail with an oil or an anhydrous formula, which is what puts
+Primally Pure's deodorant tube and La Petite Creme's balm jar at fail. Written
+down in September 2026 because it decides verdicts and the rulebook did not
+say so. It is not the 3.7 disclosure caution, which is for a part with no
+material named at all; a maker who says "plastic" has named the part.
 
 **Silicone is scored with the inert column, by decision (September 2026).** What
 silicone can give up is leftover cyclic siloxanes (D4, D5, D6). They move into fat
@@ -821,7 +855,18 @@ everything ingested:
 - Above a limit a regulator applies to that product type: `fail`. For food
   intended for babies and young children that is FDA's lead action level
   (January 2025): 10 ppb, and 20 ppb for single ingredient root vegetables and
-  dry infant cereals.
+  dry infant cereals. For infant rice cereal it is also FDA's action level for
+  inorganic arsenic (August 2020): 100 ppb, the level the State of Alaska's
+  routine testing found Beech-Nut's Single Grain Rice Cereal above in June
+  2021, which recalled the lot and ended the product.
+- Above the bar but under every limit a regulator applies: `caution`, however
+  far above. Colgate Total at 539 ppb lead and Redmond Earthpaste at 3,500 ppb
+  are both eighty and seven hundred times the ingested bar, and both are a
+  caution, because no regulator sets a lead limit for toothpaste below Health
+  Canada's 10 ppm. The card carries the number and the multiple. A number this
+  size reads as a skip and is not one under this table, which is the honest
+  state of the evidence rather than a gap in it: the bar is a proposal and a
+  limit is a law, and the table names only published figures.
 - Non-detect for lead, cadmium and arsenic at limits at or below their bars:
   `pass`. Commercial metals panels rarely report mercury below 5 ppb, so a
   mercury non-detect at up to 5 ppb counts, and the card says its limit sat
@@ -1149,6 +1194,16 @@ The table binds a verdict typed by hand as much as one the rules derive. A
 skip over checks that reached only caution. They now read what the checks
 carry, and a warning with nothing recorded behind it is `unrated` until the
 check that justifies it is recorded; it is never promoted to `good` on the way.
+
+That binds both verdict fields, not one. A product row carries `verdict`,
+which the site shows, beside `ext.verdict`, which the rules derive, and the
+first fix reached only the second: Brand Check displayed the stricter of the
+two, so a typed skip went on standing over checks that reached caution on 72
+rows, and a typed good sat beside a recorded fail on 9. Since 24 September
+2026 `validate-data` refuses a typed skip with no failed check, a typed careful
+with no caution, and a typed good over either, so the two fields can disagree
+only in the one direction the gate allows: a typed good held at `unrated`
+while its checks are still open.
 
 Then the completeness gate, `tools/enforce-scorecard.py`, which runs last and
 closes every route at once:

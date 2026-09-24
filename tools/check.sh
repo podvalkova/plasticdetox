@@ -44,6 +44,13 @@ if [ "${1:-}" = "--fix" ]; then
   # Huggies held the ANSES 2020 diaper finding and still showed a skip over
   # four blank fronts.
   python3 tools/apply-class-evidence.py --write || exit 1
+  # The category and the exposure level live on the row, and both were only
+  # ever written by the full pipeline, so 155 rows added since the last
+  # extension build carried no exposure level. The classifier fills only a
+  # blank category (it overwrote research when it refiled everything), and
+  # the exposure level is derived from the category, so both are safe here.
+  python3 tools/product-categories.py --write > /dev/null || exit 1
+  python3 tools/exposure.py --write > /dev/null || exit 1
   # A brand card's four checks, filled from that brand's own researched rows.
   # The function doing it had been written and left below the __main__ guard,
   # so nothing ever called it and every brand card in the database showed four

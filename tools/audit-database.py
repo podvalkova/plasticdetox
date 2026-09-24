@@ -56,7 +56,8 @@ NO_INGREDIENT_CATS = {
     "Diapers", "Food storage", "Kitchen appliances", "Menstrual cups",
     "Pacifiers", "Razors", "Shower curtains", "Strollers", "Tableware",
     "Teethers", "Toothbrushes", "Toys", "Vacuums", "Water bottles",
-    "Water filters", "Yoga mats",
+    "Water filters", "Yoga mats", "Baby changing", "Teaware", "Cleaning tools",
+    "Cloth wipes", "Kitchen",
 }
 # Formulations: the question applies, so `none` is the wrong answer here.
 FORMULA_CATS = {
@@ -71,13 +72,17 @@ FORMULA_CATS = {
 NAME_SIGNALS = [
     (r"\bserum\b|\bface oil\b|moisturi[sz]er|\beye cream\b", {"Skincare"}),
     (r"\btampons?\b", {"Tampons"}),
-    (r"\bdiapers?\b(?!.*(cream|balm|rash))", {"Diapers", "Cloth diapers", "Swim diapers"}),
-    (r"diaper (cream|balm|ointment|paste)", {"Diaper cream"}),
+    (r"\bdiapers?\b(?!.*(cream|balm|rash|ointment|paste))", {"Diapers", "Cloth diapers", "Swim diapers"}),
+    (r"diaper (rash )?(cream|balm|ointment|paste)", {"Diaper cream"}),
     (r"\bvacuum\b(?![- ](insulat|seal|flask))", {"Vacuums"}),
     (r"\bsunscreen\b|\bspf\b", {"Sunscreen"}),
     (r"\btoothpaste\b", {"Toothpaste"}),
-    (r"\bshampoo\b", {"Shampoo", "Conditioner"}),
-    (r"\bmattress\b", {"Crib mattresses", "Bedding"}),
+    # Every baby wash and shampoo is filed under Baby lotion on purpose: rule
+    # 2.1b scopes the ethoxylate caution to that bucket, and a wash for infant
+    # skin is the product the finding is about. Flagging the bucket the rule
+    # depends on reported twenty deliberate rows as mistakes.
+    (r"\bshampoo\b|\bbody wash\b", {"Shampoo", "Conditioner", "Baby lotion"}),
+    (r"\bmattress\b", {"Crib mattresses", "Bedding", "Mattresses"}),
     (r"\bskillet\b|\bdutch oven\b|\bfrying pan\b", {"Cookware"}),
     (r"\bwipes?\b", {"Baby wipes", "Cleaning products"}),
 ]
@@ -130,12 +135,20 @@ def check(brands, rows):
         # assertion nobody could have made. An adverse one is different: Luvs
         # and Pampers Swaddlers really do add lotion and fragrance, and that
         # finding is about something applied to skin, not about a recipe.
+        # A detergent is typed "worn textile" because its residue rides on
+        # clothes, and a formula category is a formula whatever its exposure
+        # type says, so the category decides before the type does.
+        if cat in FORMULA_CATS and t in DURABLE_TYPES:
+            continue
         if cat in NO_INGREDIENT_CATS:
             if f == "pass":
                 wrong.append(f"{b['brand']} / {p.get('name')} [{cat}] formula=pass")
             continue
         # A formulation may not answer "none"; the question applies to it.
-        if cat in FORMULA_CATS:
+        # Unless the row is an object that happens to live in a consumable
+        # aisle: a glass jar under Pantry or a teapot under Tea has no recipe,
+        # and its exposure type already says so.
+        if cat in FORMULA_CATS and t not in DURABLE_TYPES:
             if f == "none":
                 wrong.append(f"{b['brand']} / {p.get('name')} [{cat}] formula=none")
             continue

@@ -452,6 +452,16 @@ def _assess_container(pack):
         if not base:
             base = "emulsion"
 
+    # Rule 2.1 on a part that is eaten. A chew toy exists to be gnawed, and
+    # the maker's own safety guide says pieces of it are swallowed; a bristle
+    # is mouthed and spat. Both were scoring as "mouthed", one step worse in
+    # the matrix, so Benebone's nylon read the same caution as a toothbrush.
+    # Where the record says the part is swallowed by design, a polymer in it
+    # is a named plastic in the ingested path, and that fails on its own.
+    if bool(pack.get("swallowed")) and rank >= 1:
+        return "fail", (f"{pretty(term)} in a part that is swallowed in normal use, by design, "
+                        "which puts a plastic in the ingested path")
+
     # An object is not a container.
     #
     # This matrix exists because contents extract from a polymer, so it asks
@@ -670,6 +680,11 @@ NO_INGREDIENT_CATS = {
     "Pacifiers", "Play mats", "Pumping", "Razors", "Shower curtains", "Strollers", "Tableware",
     "Teethers", "Toothbrushes", "Toys", "Vacuums", "Water bottles",
     "Water filters", "Yoga mats",
+    # Objects that were sitting in consumable aisles until September 2026. A
+    # changing pad liner read as a formulation the moment its category was
+    # filled in, and the material read then landed its polyethylene backing on
+    # the formula front as a fail.
+    "Baby changing", "Teaware", "Cleaning tools", "Cloth wipes", "Kitchen",
 }
 
 # Formulations. The question applies and only a label read may answer it.
@@ -813,7 +828,7 @@ def read_formula(entry, cat=""):
             for m in rx.finditer(low):
                 if _bf.is_negated(low, m.start(), m.end(), lists=True):
                     continue
-                if t in _apr.DISCLOSURE_FAILURE and (
+                if (t in _apr.DISCLOSURE_FAILURE or t in _apr.LABEL_DISCLOSURE) and (
                         spelled_out(low, m.end()) or allergens_named(low)):
                     continue
                 out.append(t)
@@ -822,6 +837,30 @@ def read_formula(entry, cat=""):
 
     named = hits(_apr.HAZARD)
     hidden = hits(_apr.DISCLOSURE_FAILURE)
+
+    def label_hits():
+        """A bare "Aroma" or "Flavor" standing as its own list entry.
+
+        Only on a label, which is what this reader has in front of it, and
+        only when the word IS the entry: preceded by a list delimiter, with
+        at most "natural" or "artificial" in front of it, and followed by the
+        next delimiter. "Natural Lemon Flavor" names its source and is not an
+        umbrella; the first version of this matched the word inside it and
+        pulled Nordic Naturals' vitamin D and Carlson's cod liver oil off the
+        shelf for a flavor that says what it is. "Aroma/Flavor" on its own,
+        which is how Dr. Brown's baby toothpaste ends, is the umbrella.
+        """
+        rx = re.compile(r"(?:^|[,;(/])\s*(?:natural\s+|artificial\s+)?"
+                        r"(" + "|".join(map(re.escape, _apr.LABEL_DISCLOSURE)) + r")s?\s*(?=$|[,;)/.*])")
+        for m in rx.finditer(low):
+            if _bf.is_negated(low, m.start(1), m.end(1), lists=True):
+                continue
+            if spelled_out(low, m.end(1)) or allergens_named(low):
+                continue
+            return [m.group(1)]
+        return []
+
+    hidden = hidden or label_hits()
     # Category scoped cautions: a documented downside in this category only.
     # Runs on the recorded list like the hazard scan, with the same negation
     # guard, so "no palm oil" on a clean label never trips it.

@@ -238,6 +238,7 @@
     .mini-badge.good { color: var(--good); background: var(--good-bg); }
     .mini-badge.careful { color: var(--careful); background: var(--careful-bg); }
     .mini-badge.skip { color: var(--skip); background: var(--skip-bg); }
+    .mini-badge.unrated { color: var(--muted); background: var(--bg-2, var(--border)); }
     .product-info { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
     .product-name { font-size: 14.5px; font-weight: 650; color: var(--text); }
     .product-note { font-size: 13.5px; color: var(--muted); line-height: 1.5; }
@@ -644,7 +645,9 @@
 <script src="js/vet-run.js"></script>
 <script>
     const WORKER_URL = "https://plasticdetox-quiz-email.plasticdetox.workers.dev";
-    const STANCE_LABEL = { good: "Good choice", careful: "Careful", skip: "Skip", neutral: "Context" };
+    // A product row can be unrated in the data (typed and ruled both), and
+    // it used to render the word "undefined" as its badge.
+    const STANCE_LABEL = { good: "Good choice", careful: "Careful", skip: "Skip", neutral: "Context", unrated: "Not yet rated" };
     const QUICK = ["Brita", "Stasher", "Native", "Pyrex", "Thinkbaby", "Hydro Flask", "Lululemon", "Earth Mama"];
 
     let BRANDS = [];
