@@ -164,7 +164,7 @@
   <section id="vet" style="display:none">
     <div class="vetbox">
       <div class="balance" id="balance">&nbsp;</div>
-      <input id="brand" placeholder="Brand, for example Graza">
+      <input id="brand" placeholder="Brand, or paste a link to the product">
       <input id="product" placeholder="Product, for example Sizzle extra virgin olive oil">
       <button class="go" id="gobtn" onclick="vet()">Check it</button>
       <div class="clock" id="clock"></div>
@@ -543,10 +543,32 @@ async function checkout(pack){
   } catch(e){ alert("Checkout is unavailable right now."); }
 }
 
+
+// A pasted link, handled the way Product Check handles one. Amazon puts the
+// product name in the path before /dp/, so a link can be shown back as a
+// product rather than as two hundred characters of tracking parameters, and
+// the worker gets it as a url rather than as a brand name.
+function splitSubject(brandField, productField){
+  var s=(brandField||"").trim();
+  if(!/^https?:\/\//i.test(s)) return {brand:s, product:(productField||"").trim(), url:""};
+  var name="";
+  var slug=s.match(/amazon\.[a-z.]+\/([^\/]+)\/(?:dp|gp\/product)\//i);
+  if(slug){
+    var words=decodeURIComponent(slug[1]).replace(/-/g," ").trim();
+    if(words && !/^b0[a-z0-9]{8}$/i.test(words)) name=words.slice(0,70);
+  }
+  if(!name){ try{ name=new URL(s).hostname.replace(/^www\./,""); }catch(e){} }
+  return {brand:name, product:(productField||"").trim(), url:s};
+}
+
 async function vet(){
   const brand = document.getElementById("brand").value.trim();
   const product = document.getElementById("product").value.trim();
   if (!brand) { document.getElementById("brand").focus(); return; }
+  const subject = splitSubject(brand, product);
+  // A pasted link reads back as the product it points at, so the reader is not
+  // watching us research a URL.
+  if (subject.url && subject.brand) document.getElementById("brand").value = subject.brand;
   const log = document.getElementById("log"), res = document.getElementById("result"), clock = document.getElementById("clock");
   const btn = document.getElementById("gobtn");
   log.innerHTML=""; res.innerHTML=""; btn.disabled = true;
@@ -556,7 +578,7 @@ async function vet(){
   const line=(html)=>{const d=document.createElement("div");d.className="checkrow";d.innerHTML=html;log.appendChild(d)};
   try {
     const r = await fetch(WORKER + "/vet", {method:"POST",headers:{"Content-Type":"application/json"},
-      body:JSON.stringify({pass:PASS, brand, product})});
+      body:JSON.stringify({pass:PASS, brand:subject.brand, product:subject.product, url:subject.url})});
     if (!r.ok) { clearInterval(timer); btn.disabled=false; const d = await r.json().catch(()=>({})); line(d.error || ("Error " + r.status)); return; }
     const reader = r.body.getReader(); const dec = new TextDecoder(); let buf="";
     while(true){
