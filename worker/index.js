@@ -2931,7 +2931,7 @@ async function tokensForEmail(env, clean) {
  * to discover who has bought something.
  */
 async function handleVetLogin(request, env, corsOrigin) {
-  const said = { ok: true, message: "Code sent. It lasts fifteen minutes." };
+  const said = { ok: true, message: "Code sent. Use the newest one; it lasts fifteen minutes." };
   try {
     const { email } = await request.json();
     const clean = String(email || "").trim().toLowerCase();
@@ -2959,11 +2959,16 @@ async function handleVetLogin(request, env, corsOrigin) {
         200, corsOrigin);
     }
 
-    const code = existing ? existing.code
-      : String(crypto.getRandomValues(new Uint32Array(1))[0] % 1000000).padStart(6, "0");
+    // A genuinely new send means a genuinely new code, and the attempt count
+    // starts again. Reusing the old one carried its failed guesses forward, so
+    // somebody who mistyped a few times got a fresh code that was already
+    // locked out, with nothing on screen to say why.
+    const code = String(crypto.getRandomValues(new Uint32Array(1))[0] % 1000000).padStart(6, "0");
     await env.BRAND_SEARCHES.put("vetcode:" + clean,
-      JSON.stringify({ code, tries: (existing && existing.tries) || 0, at: Date.now() }),
+      JSON.stringify({ code, tries: 0, at: Date.now() }),
       { expirationTtl: 900 });
+    // Asking again replaces the code, so say so rather than leaving two in an
+    // inbox and no clue which one works.
 
     await fetch("https://api.brevo.com/v3/smtp/email", {
       method: "POST",
@@ -2993,14 +2998,27 @@ async function handleVetVerify(request, env, corsOrigin) {
 
     const k = "vetcode:" + clean;
     const rec = await env.BRAND_SEARCHES.get(k, { type: "json" });
-    if (!rec) return json(bad, 400, corsOrigin);
+    // "Wrong or expired" covered three different situations and so explained
+    // none of them. Anya had a valid code in her inbox and a stale address in
+    // the email box, and was told her code was expired. Name the address we
+    // looked under: the mismatch is invisible otherwise.
+    if (!rec) {
+      return json({ ok: false, error: `No code has been sent to ${clean}. Ask for one above, and check the address is the one you paid with.` },
+        400, corsOrigin);
+    }
     // Six digits is a million combinations; five guesses makes it unguessable
     // inside the fifteen minutes the code lives.
-    if ((rec.tries || 0) >= 5) { await env.BRAND_SEARCHES.delete(k); return json(bad, 400, corsOrigin); }
+    if ((rec.tries || 0) >= 5) {
+      await env.BRAND_SEARCHES.delete(k);
+      return json({ ok: false, error: "Too many wrong codes. Ask for a new one." }, 400, corsOrigin);
+    }
     if (rec.code !== given) {
+      const left = 5 - ((rec.tries || 0) + 1);
       await env.BRAND_SEARCHES.put(k, JSON.stringify({ ...rec, tries: (rec.tries || 0) + 1 }),
         { expirationTtl: 900 });
-      return json(bad, 400, corsOrigin);
+      return json({ ok: false, error: left > 0
+        ? `That code is not right. ${left} ${left === 1 ? "try" : "tries"} left, or ask for a new one.`
+        : "Too many wrong codes. Ask for a new one." }, 400, corsOrigin);
     }
     await env.BRAND_SEARCHES.delete(k);
 
