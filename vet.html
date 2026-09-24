@@ -133,6 +133,11 @@
   .footer{text-align:center;padding:3rem 1.5rem;border-top:1px solid var(--border);color:var(--text-muted);font-size:.9rem;margin-top:2rem}
   .footer a{color:var(--text-muted);text-decoration:none}
   .footer a:hover{color:var(--accent-dark)}
+
+  .cat-notes{margin:14px 0;padding:14px 16px;background:#ede9fe;border-radius:12px}
+  .cat-title{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#7c3aed;margin-bottom:8px}
+  .cat-note{margin:0 0 9px;font-size:14px;line-height:1.5}
+  .cat-note:last-child{margin-bottom:0}
 </style>
 </head>
 <body>
@@ -564,6 +569,31 @@ async function checkout(pack){
 // product name in the path before /dp/, so a link can be shown back as a
 // product rather than as two hundred characters of tracking parameters, and
 // the worker gets it as a url rather than as a brand name.
+
+// What holds for the whole category, while the research runs. The same hand
+// written file the website and the app read, so the three can never disagree
+// about what is true of a candle. Outside the verdict on purpose: a fact true
+// of every candle cannot separate two of them.
+var CATEGORY_NOTES = null;
+async function showCategoryNotes(log, subject){
+  try{
+    if(!CATEGORY_NOTES){
+      var r=await fetch("data/category-notes.json");
+      CATEGORY_NOTES = r.ok ? await r.json() : {categories:[]};
+    }
+    var hit=(CATEGORY_NOTES.categories||[]).find(function(c){ return new RegExp(c.match,"i").test(subject); });
+    if(!hit) return;                    // no match says nothing, rather than guessing
+    var box=document.createElement("div");
+    box.className="cat-notes";
+    box.innerHTML='<div class="cat-title">'+hit.label+"</div>"
+      + hit.notes.map(function(n){
+          return '<p class="cat-note">'+n.text
+            + (n.source?' <a href="'+n.source+'" target="_blank" rel="noopener">source</a>':"")+"</p>";
+        }).join("");
+    log.appendChild(box);
+  }catch(e){ /* reading material must never break a paid check */ }
+}
+
 function splitSubject(brandField, productField){
   var s=(brandField||"").trim();
   if(!/^https?:\/\//i.test(s)) return {brand:s, product:(productField||"").trim(), url:""};
@@ -588,6 +618,7 @@ async function vet(){
   const log = document.getElementById("log"), res = document.getElementById("result"), clock = document.getElementById("clock");
   const btn = document.getElementById("gobtn");
   log.innerHTML=""; res.innerHTML=""; btn.disabled = true;
+  showCategoryNotes(log, `${subject.brand} ${subject.product}`);
   const t0 = Date.now();
   clearInterval(timer);
   timer = setInterval(()=>{clock.textContent=((Date.now()-t0)/1000).toFixed(1)+"s"},100);

@@ -1158,6 +1158,13 @@ async function runInstantCheck(state, button, log, brandName, productName) {
       : `Still researching, ${s} seconds in. A full check takes about a minute.`;
   }, 1000);
 
+  // What is true of the whole category, while the research runs. A check takes
+  // about a minute and the reader spent it watching a spinner; these are the
+  // facts that hold for every product of this kind, written by hand and
+  // sourced. Deliberately outside the verdict: a fact true of every candle
+  // cannot separate two candles, so it is context here and evidence there.
+  showCategoryNotes(log, working, `${brand} ${product}`);
+
   // A check costs one off the pass, so the number on screen is wrong the moment
   // this finishes unless we ask again.
   const spend = () => { refreshBalance(); };
@@ -1234,6 +1241,26 @@ async function refreshBalance() {
   if (!check.getPass()) { checkBalance = null; return; }
   const n = await check.balance().catch(() => null);
   if (n !== checkBalance) { checkBalance = n; if (!resultOnScreen) render(); }
+}
+
+
+// Read once per launch; it ships inside the app so it works with no signal.
+let CATEGORY_NOTES = null;
+async function showCategoryNotes(log, before, subject) {
+  try {
+    if (!CATEGORY_NOTES) {
+      const r = await fetch("data/category-notes.json");
+      CATEGORY_NOTES = r.ok ? await r.json() : { categories: [] };
+    }
+    const hit = (CATEGORY_NOTES.categories || []).find((c) => new RegExp(c.match, "i").test(subject));
+    // No match says nothing, rather than guessing at a category.
+    if (!hit || !log.isConnected) return;
+    const box = el("div", "cat-notes");
+    box.appendChild(el("div", "cat-title", hit.label));
+    for (const n of hit.notes) box.appendChild(el("p", "cat-note", n.text));
+    log.insertBefore(box, before);
+    track("category_notes_shown", { category: hit.id });
+  } catch (e) { /* reading material must never break a paid check */ }
 }
 
 // The address a pass was signed in with, so a second sign in needs no typing.

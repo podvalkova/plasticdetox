@@ -149,6 +149,12 @@ fs.rmSync(ARTICLE_OUT, { recursive: true, force: true });
 fs.mkdirSync(ARTICLE_OUT, { recursive: true });
 fs.copyFileSync(path.join(REPO, "css", "article.css"), path.join(OUT, "article.css"));
 
+// What is true of a whole category, shown while a check runs. The website
+// reads it straight from data/; the app has to carry a copy because it works
+// with no signal, and it is one hand written file either way so the two can
+// never disagree about what a candle is.
+fs.copyFileSync(path.join(REPO, "data", "category-notes.json"), path.join(OUT, "category-notes.json"));
+
 // Remove a marker comment and the element that follows it, however deeply that
 // element nests its own kind. The banners are divs with divs inside, so a non
 // greedy match would stop at the first inner close and leave half a banner.
