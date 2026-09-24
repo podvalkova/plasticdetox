@@ -40,6 +40,10 @@ window.VetRun = (function () {
   /**
    * Run one check, streaming.
    *
+   * `req` is {pass, brand, product, url}. The url matters: the worker reads a
+   * pasted link to find out what the product is, and Product Check used to drop
+   * it and send the hostname as the brand instead.
+   *
    * The worker answers as server sent events: a `front` event per check as it
    * lands, then one `done`. onFront may be called several times, onDone exactly
    * once. This never throws; a dropped connection arrives as onDone({error}),
@@ -55,7 +59,7 @@ window.VetRun = (function () {
       r = await fetch(WORKER + "/vet", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ pass: req.pass, brand: req.brand, product: req.product }),
+        body: JSON.stringify({ pass: req.pass, brand: req.brand, product: req.product, url: req.url || "" }),
       });
     } catch (e) { onDone({ error: lost }); return; }
 

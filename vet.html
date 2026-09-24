@@ -582,7 +582,7 @@ async function showCategoryNotes(log, subject){
       CATEGORY_NOTES = r.ok ? await r.json() : {categories:[]};
     }
     var hit=(CATEGORY_NOTES.categories||[]).find(function(c){ return new RegExp(c.match,"i").test(subject); });
-    if(!hit) return;                    // no match says nothing, rather than guessing
+    if(!hit) return false;              // no match says nothing, rather than guessing
     var box=document.createElement("div");
     box.className="cat-notes";
     box.innerHTML='<div class="cat-title">'+hit.label+"</div>"
@@ -591,7 +591,9 @@ async function showCategoryNotes(log, subject){
             + (n.source?' <a href="'+n.source+'" target="_blank" rel="noopener">source</a>':"")+"</p>";
         }).join("");
     log.appendChild(box);
+    return true;
   }catch(e){ /* reading material must never break a paid check */ }
+  return false;
 }
 
 function splitSubject(brandField, productField){
@@ -603,7 +605,10 @@ function splitSubject(brandField, productField){
     var words=decodeURIComponent(slug[1]).replace(/-/g," ").trim();
     if(words && !/^b0[a-z0-9]{8}$/i.test(words)) name=words.slice(0,70);
   }
-  if(!name){ try{ name=new URL(s).hostname.replace(/^www\./,""); }catch(e){} }
+  // No name in the link means no name, not the hostname. Putting "amazon.com"
+  // in the brand field told the reader we were researching Amazon, and on
+  // Product Check the same fallback printed the ASIN where the product name
+  // goes. The worker is given the link and works the name out itself.
   return {brand:name, product:(productField||"").trim(), url:s};
 }
 
@@ -618,6 +623,9 @@ async function vet(){
   const btn = document.getElementById("gobtn");
   log.innerHTML=""; res.innerHTML=""; btn.disabled = true;
   showCategoryNotes(log, `${subject.brand} ${subject.product}`);
+  // A bare link matches no category, so the panel would stay empty for the
+  // whole minute. The first front that lands names the product, so try on that.
+  let notesShown = Boolean(`${subject.brand} ${subject.product}`.trim());
   const t0 = Date.now();
   clearInterval(timer);
   timer = setInterval(()=>{clock.textContent=((Date.now()-t0)/1000).toFixed(1)+"s"},100);
@@ -638,6 +646,7 @@ async function vet(){
         if (e.internal) continue;
         if (e.front){
           const f = e.front;
+          if (!notesShown && f.note){ showCategoryNotes(log, f.note).then(function(s){ notesShown = notesShown || s; }); }
           const lbl = f.status==="none" ? (e.step==="testing" ? "none found" : "N/A") : f.status;
           line('<span class="badge '+f.status+'">'+lbl+'</span> <b>'+(NAME[e.step]||"Database")+'</b><br><small>'+f.note+(f.source?' &middot; <a href="'+f.source+'" target="_blank" rel="noopener">source</a>':"")+'</small>');
         }
@@ -645,6 +654,11 @@ async function vet(){
           clearInterval(timer); btn.disabled = false;
           if (e.needsCredits){ res.innerHTML='<p class="note">'+e.error+'</p>'; showBuy(); continue; }
           if (e.error){ line(e.error); continue; }
+          // Given only a link, this is the first moment anybody knows what the
+          // product was. Put it in the field so the answer on screen is filed
+          // under a name rather than under a tracking URL.
+          const found = e.identified && [e.identified.brand, e.identified.product].filter(Boolean).join(" ").trim();
+          if (found && subject.url) document.getElementById("brand").value = found;
           const names = {good:"Good choice", careful:"Careful", skip:"Skip", unrated:"Not enough found"};
           res.innerHTML = '<div class="verdict '+e.verdict+'">'+(names[e.verdict]||e.verdict)+'</div>'
             + '<div class="unrev">'+e.label+'</div>'

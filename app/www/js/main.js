@@ -1166,6 +1166,10 @@ async function runInstantCheck(state, button, log, brandName, productName) {
   // sourced. Deliberately outside the verdict: a fact true of every candle
   // cannot separate two candles, so it is context here and evidence there.
   showCategoryNotes(log, working, `${brand} ${product}`);
+  // Given only a link there is no brand and no product name to match on, so the
+  // panel stays empty for the whole minute the reader is waiting. The first
+  // front that lands says what the thing is, so try again on that.
+  let notesShown = Boolean((brand + " " + product).trim());
 
   // A check costs one off the pass, so the number on screen is wrong the moment
   // this finishes unless we ask again.
@@ -1177,6 +1181,9 @@ async function runInstantCheck(state, button, log, brandName, productName) {
     url,
     onFront: (step, front) => {
       log.insertBefore(screens.checkRow(step, front, check.STEP_LABEL[step] || "Database"), working);
+      if (!notesShown && front && front.note) {
+        showCategoryNotes(log, working, front.note).then((shown) => { notesShown = notesShown || shown; });
+      }
     },
     onDone: (event) => {
       clearInterval(tick);
@@ -1266,13 +1273,15 @@ async function showCategoryNotes(log, before, subject) {
     }
     const hit = (CATEGORY_NOTES.categories || []).find((c) => new RegExp(c.match, "i").test(subject));
     // No match says nothing, rather than guessing at a category.
-    if (!hit || !log.isConnected) return;
+    if (!hit || !log.isConnected) return false;
     const box = el("div", "cat-notes");
     box.appendChild(el("div", "cat-title", hit.label));
     for (const n of hit.notes) box.appendChild(el("p", "cat-note", n.text));
     log.insertBefore(box, before);
     track("category_notes_shown", { category: hit.id });
+    return true;
   } catch (e) { /* reading material must never break a paid check */ }
+  return false;
 }
 
 // The address a pass was signed in with, so a second sign in needs no typing.

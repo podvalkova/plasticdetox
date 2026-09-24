@@ -958,7 +958,7 @@
         stopScan();
         gtag('event', 'scan_result', { found: brand ? 'yes' : 'no' });
         if (brand) { searchEl.value = brand; lookup(brand); }
-        else { searchEl.value = code; showUnknown(code); }
+        else { searchEl.value = code; showUnknown("", code); }
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }, 400);
     }
@@ -1017,20 +1017,24 @@
         const words = decodeURIComponent(slug[1]).replace(/-/g, " ").trim();
         if (words && !/^b0[a-z0-9]{8}$/i.test(words)) return words.slice(0, 70);
       }
-      const asin = extractAsin(s);
-      if (asin) return asin;
-      try { return new URL(s).hostname.replace(/^www\./, ""); } catch (e) { return s.slice(0, 70); }
+      // A short link carries no name, only a code, and the honest answer here
+      // is nothing. It used to fall through to the ASIN, which put "We have not
+      // checked B099LKZQJN yet" on screen: a warehouse number standing where a
+      // product name belongs. The name of that product genuinely is not known
+      // until the check runs and reads the page, so nothing is what we say
+      // until it does.
+      return "";
     }
 
     function lookup(query) {
       suggEl.classList.remove("show");
-      const pretty = prettyQuery(query);
+      const name = prettyQuery(query);
       // The raw string first, because that is what carries the ASIN.
       let m = findExact(query);
-      if (!m && pretty !== query) m = findExact(pretty);
+      if (!m && name && name !== query) m = findExact(name);
       if (m) return showResult(m);
-      if (pretty !== query) searchEl.value = pretty;
-      showUnknown(pretty);
+      if (name && name !== query) searchEl.value = name;
+      showUnknown(name, query);
     }
 
     // The example card teaches what a verdict looks like before the first
@@ -1158,29 +1162,57 @@
       if (!isExample) focusResult();
     }
 
-    function showUnknown(query) {
-      const clean = query.trim();
+    // What is being checked, held in one place rather than threaded through
+    // inline onclick attributes. It stopped being safe to thread the moment the
+    // value could be a pasted URL.
+    let checkSubject = { name: "", raw: "", label: "" };
+
+    /**
+     * The card for something we hold no verdict on.
+     *
+     * `name` is a product name and may be empty; `raw` is whatever the reader
+     * actually gave us, which can be a link or a barcode. Keeping them apart is
+     * the whole point. A short Amazon link has no name in it, and filling the
+     * gap with the ASIN printed a warehouse number where the product name goes.
+     * When there is no name we say there is no name, and the check works it out.
+     */
+    function showUnknown(name, raw) {
+      const clean = (name || "").trim();
+      raw = (raw || clean).trim();
+      const anon = !clean;
+      // What we file it under when there is no name: the ASIN if the link has
+      // one, so a reload lands on the same product rather than on a query
+      // string full of tracking parameters.
+      const subject = clean || extractAsin(raw) || raw.slice(0, 70);
+      checkSubject = { name: clean, raw: raw, label: subject };
       $("exampleLabel").hidden = true;
-      history.replaceState(null, "", "?b=" + encodeURIComponent(clean));
-      gtag('event', 'brand_check_unknown', { brand: clean });
-      logSearch(clean, false, "");
+      history.replaceState(null, "", "?b=" + encodeURIComponent(subject));
+      gtag('event', 'brand_check_unknown', { brand: subject });
+      logSearch(subject, false, "");
       resultEl.innerHTML =
         '<article class="card">' +
-          '<div class="verdict-row"><span class="badge neutral"><span class="dot"></span>Not reviewed yet</span></div>' +
-          '<h2 class="brand-name">We have not checked &ldquo;' + esc(clean) + '&rdquo; yet.</h2>' +
+          '<div class="verdict-row" id="unknownBadge"><span class="badge neutral"><span class="dot"></span>Not reviewed yet</span></div>' +
+          '<h2 class="brand-name" id="unknownName">' + (anon
+            ? "We have not checked this product yet."
+            : "We have not checked &ldquo;" + esc(clean) + "&rdquo; yet.") + '</h2>' +
+          (anon
+            ? '<p class="form-note" style="margin:-6px 0 12px">' + esc(/^https?:/i.test(raw)
+                ? "That link does not carry the product name, so we cannot show it yet. The check reads the page and works out what it is."
+                : "Barcode " + subject + " is not in our database yet.") + '</p>'
+            : "") +
           // Somebody holding a pass has already bought this and should not be
           // sent to a second page to press a second button. Somebody without
           // one has nothing to run, so for them the button is the pass page.
           (VetRun.getPass()
-            ? '<p class="reason"><strong>You have a Check Pass.</strong> Run the same four checks we use for every verdict, formula, packaging, recalls and independent tests, right here. About a minute, with sources shown.</p>' +
-              '<div class="meta-block"><button class="btn btn-primary" id="runCheckBtn" onclick="runCheckHere(\'' + jsAttr(clean) + '\')">Run the check now</button></div>' +
+            ? '<p class="reason" id="passPitch"><strong>You have a Check Pass.</strong> Run the same four checks we use for every verdict, formula, packaging, recalls and independent tests, right here. About a minute, with sources shown.</p>' +
+              '<div class="meta-block"><button class="btn btn-primary" id="runCheckBtn" onclick="runCheckHere()">Run the check now</button></div>' +
               '<div id="checkLog" class="check-log"></div>'
             : '<p class="reason"><strong>Get it checked now.</strong> Our research system runs the same four checks we use for every verdict, formula, packaging, recalls, independent tests, and answers in about a minute, with sources shown. Packs start at $5 for 20 checks.</p>' +
-              '<div class="meta-block"><a class="btn btn-primary" href="vet.html?q=' + encodeURIComponent(clean) + '">See Check Passes</a></div>') +
+              '<div class="meta-block"><a class="btn btn-primary" href="vet.html?q=' + encodeURIComponent(raw) + '">See Check Passes</a></div>') +
           '<p class="reason" style="margin-top:22px;"><strong>Or request a free review.</strong> Leave your email and our team will research it by hand and email you the verdict, usually within 2 business days.</p>' +
           '<div class="request-form">' +
             '<input id="reqEmail" type="email" placeholder="you@email.com" aria-label="Your email">' +
-            '<button class="btn btn-ghost" onclick="requestReview(\'' + jsAttr(clean) + '\')">Request free review</button>' +
+            '<button class="btn btn-ghost" onclick="requestReview()">Request free review</button>' +
           '</div>' +
           '<p class="form-note" id="reqNote"></p>' +
         '</article>';
@@ -1213,7 +1245,7 @@
 
     async function showCategoryNotes(query) {
       const box = $("catNotes");
-      if (!box) return;
+      if (!box) return false;
       box.hidden = true; box.innerHTML = "";
       try {
         if (!CATEGORY_NOTES) {
@@ -1222,21 +1254,30 @@
         }
         const hit = (CATEGORY_NOTES.categories || []).find(c => new RegExp(c.match, "i").test(query));
         // No match means we say nothing, rather than guessing at a category.
-        if (!hit) return;
+        if (!hit) return false;
         box.innerHTML = '<div class="cat-title">' + esc(hit.label) + "</div>"
           + hit.notes.map(n => '<p class="cat-note">' + esc(n.text)
               + (n.source ? ' <a href="' + esc(n.source) + '" target="_blank" rel="noopener">source</a>' : "")
               + "</p>").join("");
         box.hidden = false;
         gtag('event', 'category_notes_shown', { category: hit.id });
+        return true;
       } catch (e) { /* never let the reading material break the check */ }
+      return false;
     }
 
-    async function runCheckHere(brand) {
+    async function runCheckHere() {
       const btn = $("runCheckBtn"), logEl = $("checkLog");
       if (!btn || !logEl) return;
+      const name = checkSubject.name, raw = checkSubject.raw;
+      // A link goes to the worker as a link. It already knows what to do with
+      // one: work out the brand and product first, then research them by name.
+      // Sending it as the brand instead had the researcher trying to find out
+      // what amazon.com is made of.
+      const url = /^https?:\/\//i.test(raw || "") ? raw : "";
+      let brand = name || (url ? "" : (raw || ""));
       btn.disabled = true; lastCheck = null;
-      gtag('event', 'vet_run_inline', { brand: brand });
+      gtag('event', 'vet_run_inline', { brand: brand || url });
 
       // Every front is drawn as pending before anything is known, because a
       // check runs to a minute and a half and a blank card for that long reads
@@ -1249,6 +1290,11 @@
         + '<br><small class="pending-note">searching\u2026</small></div>').join("")
         + '<div class="cat-notes" id="catNotes" hidden></div>';
       showCategoryNotes(brand);
+      // A pasted link tells us nothing about what kind of product it is, so the
+      // category notes have nothing to match on and the reader waits a minute
+      // in front of an empty panel. The first front that lands names the thing,
+      // so we try again on what it says.
+      let notesShown = false;
 
       const t0 = Date.now();
       const tick = setInterval(() => {
@@ -1260,9 +1306,12 @@
         if (row) row.innerHTML = html; else logEl.insertAdjacentHTML("beforeend", '<div class="check-row">' + html + "</div>");
       };
 
-      await VetRun.run({ pass: VetRun.getPass(), brand: brand, product: "" }, {
+      await VetRun.run({ pass: VetRun.getPass(), brand: brand, product: "", url: url }, {
         onFront: e => {
           const f = e.front;
+          if (!notesShown && f.note) {
+            showCategoryNotes(brand + " " + f.note).then(shown => { notesShown = notesShown || shown; });
+          }
           lastCheck = (lastCheck ? lastCheck + "\n" : "")
             + (VetRun.STEP[e.step] || e.step) + ": " + f.status + " - " + (f.note || "");
           const label = f.status === "none" ? (e.step === "testing" ? "none found" : "N/A") : f.status;
@@ -1273,6 +1322,26 @@
         onDone: e => {
           clearInterval(tick);
           const secs = ((Date.now() - t0) / 1000).toFixed(0);
+          // The check is the thing that learns the product name from a bare
+          // link, so this is the first moment the card can say it. The heading
+          // becomes the name, the way a verdict card's heading is: leaving "we
+          // have not checked this yet" above a verdict we just produced had the
+          // card contradicting itself.
+          const found = e.identified && [e.identified.brand, e.identified.product].filter(Boolean).join(" ").trim();
+          if (found) { brand = found; checkSubject.label = found; }
+          const heading = found || checkSubject.name;
+          if (e.verdict) {
+            if (heading) {
+              const h = $("unknownName");
+              if (h) h.textContent = String(heading).slice(0, 90);
+              const hint = h && h.nextElementSibling;
+              if (hint && hint.classList.contains("form-note")) hint.remove();
+            }
+            // The "not reviewed yet" badge and the invitation to run a check
+            // are both answered by what is now on the card below them. Left
+            // there, the top of the card argued with the bottom of it.
+            ["unknownBadge", "passPitch"].forEach(id => { const n = $(id); if (n) n.remove(); });
+          }
           btn.disabled = false; btn.textContent = "Run the check now";
           // Any front still pending never answered; say so rather than leaving
           // it spinning forever.
@@ -1295,7 +1364,7 @@
             + (e.capNote ? '<p class="form-note">' + esc(e.capNote) + "</p>" : "")
             + '<p class="form-note">Checked in ' + secs + "s"
             + (e.consumed ? ". 1 check used. This research joins our public database after review, free for everyone." : ".") + "</p>"
-            + offerFlag(brand) + "</div>");
+            + offerFlag() + "</div>");
         },
       });
     }
@@ -1317,7 +1386,8 @@
       } catch (e) {}
     }
 
-    function requestReview(brand) {
+    function requestReview() {
+      const brand = checkSubject.label;
       const email = ($("reqEmail").value || "").trim();
       const note = $("reqNote");
       if (!email || !email.includes("@")) { note.textContent = "Please enter a valid email."; note.style.color = "var(--skip)"; return; }
@@ -1342,26 +1412,28 @@
      */
     let lastCheck = null;
 
-    function offerFlag(brand) {
+    function offerFlag() {
       return '<div class="meta-block" style="margin-top:18px">'
-        + '<a class="cta-quiet" id="flagOpen" onclick="openFlag(\'' + jsAttr(brand) + '\')" '
+        + '<a class="cta-quiet" id="flagOpen" onclick="openFlag()" '
         + 'style="cursor:pointer;font-size:13px;color:#78716c">Something wrong with this? Tell us &rarr;</a>'
         + '<div id="flagForm" hidden>'
         + '<p class="reason" style="margin:10px 0 6px"><strong>What did we get wrong?</strong></p>'
         + '<div class="request-form">'
         + '<input id="flagDetail" type="text" placeholder="e.g. the ingredient list is on the listing" aria-label="What we got wrong">'
-        + '<button class="btn btn-ghost" onclick="sendFlag(\'' + jsAttr(brand) + '\')">Send</button>'
+        + '<button class="btn btn-ghost" onclick="sendFlag()">Send</button>'
         + '</div><p class="form-note" id="flagNote"></p></div></div>';
     }
 
-    function openFlag(brand) {
+    function openFlag() {
+      const brand = checkSubject.label;
       $("flagForm").hidden = false;
       $("flagOpen").hidden = true;
       $("flagDetail").focus();
       gtag('event', 'vet_flag_opened', { brand: brand });
     }
 
-    function sendFlag(brand) {
+    function sendFlag() {
+      const brand = checkSubject.label;
       const detail = ($("flagDetail").value || "").trim();
       const note = $("flagNote");
       if (!detail) { note.textContent = "Tell us what is wrong and we will look."; note.style.color = "var(--skip)"; return; }
@@ -1394,7 +1466,12 @@
       }
       return out + esc((s || "").slice(last));
     }
-    function jsAttr(s) { return (s || "").replace(/\\/g, "\\\\").replace(/'/g, "\\'"); }
+    // A string going into an inline onclick crosses two grammars, and this only
+    // escaped for one of them. A value carrying a double quote closed the
+    // attribute early and the handler silently became a fragment, so the button
+    // did nothing. Escape for JavaScript first, then for the attribute; the
+    // browser decodes the entities back before it parses the script.
+    function jsAttr(s) { return esc((s || "").replace(/\\/g, "\\\\").replace(/'/g, "\\'")); }
     function articleTitle(file) {
       return file.replace(/\.html$/, "").replace(/-/g, " ").replace(/\b\w/g, c => c.toUpperCase())
         .replace(/Pfas/g, "PFAS").replace(/Bpa/g, "BPA").replace(/101/g, "101");
