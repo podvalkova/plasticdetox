@@ -3029,6 +3029,22 @@ async function handleVetRestore(request, env, corsOrigin) {
 }
 
 async function mintVetPass(env, checks, email, pack) {
+  // Buying a second pack used to mint a second token, so somebody who bought
+  // twice owned two passes and the browser kept whichever it claimed last. A
+  // purchase now tops up whatever that address already owns, which is what a
+  // customer means by buying more checks.
+  const clean = String(email || "").trim().toLowerCase();
+  if (clean) {
+    const existing = await mergePassesForEmail(env, clean, await tokensForEmail(env, clean));
+    if (existing) {
+      existing.rec.balance = (existing.rec.balance || 0) + checks;
+      existing.rec.purchased = (existing.rec.purchased || 0) + checks;
+      existing.rec.lastPack = pack || "";
+      existing.rec.toppedUp = new Date().toISOString();
+      await env.BRAND_SEARCHES.put("vetpass:" + existing.token, JSON.stringify(existing.rec));
+      return existing.token;
+    }
+  }
   const token = (crypto.randomUUID() + crypto.randomUUID()).replace(/-/g, "").slice(0, 40);
   await env.BRAND_SEARCHES.put("vetpass:" + token, JSON.stringify({
     balance: checks, purchased: checks, used: 0,
@@ -3130,7 +3146,7 @@ async function handleVetClaim(request, env, corsOrigin) {
     const token = await env.BRAND_SEARCHES.get("vetsession:" + sid);
     if (token) {
       const rec = await env.BRAND_SEARCHES.get("vetpass:" + token, { type: "json" });
-      if (rec) return json({ ok: true, pass: token, balance: rec.balance }, 200, corsOrigin);
+      if (rec) return json({ ok: true, pass: token, balance: rec.balance, email: rec.email || "" }, 200, corsOrigin);
     }
     if (attempt < 3) await new Promise((r) => setTimeout(r, 1200));
   }

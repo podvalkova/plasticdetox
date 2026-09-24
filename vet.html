@@ -374,18 +374,26 @@ async function init(){
       if (d.ok && d.pass) {
         PASS = d.pass;
         localStorage.setItem("pdVetPass", PASS);
-        history.replaceState(null, "", "vet.html?pass=" + encodeURIComponent(PASS));
+        // The token used to be written into the address bar, which put a
+        // credential in a URL people copy, screenshot and share by accident,
+        // and taught them to think of themselves as holding a token. They are
+        // signed in; there is nothing for them to keep.
+        history.replaceState(null, "", "vet.html");
+        // Remember who bought, so signing in on a second device needs no
+        // typing and no hunting for which address was used.
+        try { if (d.email) localStorage.setItem("pdVetEmailPrefill", d.email); } catch (e) {}
         banner.className="banner ok";
-        banner.textContent = "Payment received. Your pass is active with " + d.balance + " checks. A backup link is on its way to your email; either one works.";
+        banner.textContent = "Payment received. You have " + d.balance + " checks, saved on this device. "
+          + "To use them on another device, sign in with " + (d.email || "the email you paid with") + ".";
         showVet(d.balance);
         handToApp(PASS);
         return;
       }
     } catch(e){}
     banner.className="banner ok";
-    banner.textContent="Payment received. Your pass link is on its way to your email, usually within a minute. Open it and you are ready to check.";
+    banner.textContent="Payment received. Your checks are ready. Sign in below with the email you paid with, or open the link we have emailed you.";
   } else if (qs.get("paid")) {
-    banner.className="banner ok"; banner.textContent="Payment received. Your pass link is on its way to your email, usually within a minute.";
+    banner.className="banner ok"; banner.textContent="Payment received. Sign in below with the email you paid with to use your checks.";
   }
   if (qs.get("canceled")) { banner.className="banner info"; banner.textContent="Checkout was canceled. No charge was made."; }
 
