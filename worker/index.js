@@ -2941,9 +2941,18 @@ async function handleVetLogin(request, env, corsOrigin) {
     const tokens = await tokensForEmail(env, clean);
     if (!tokens.length) return json(said, 200, corsOrigin);
 
-    const code = String(crypto.getRandomValues(new Uint32Array(1))[0] % 1000000).padStart(6, "0");
+    // Only a real customer's address is ever emailed, which blocks the obvious
+    // abuse, but without a cooldown somebody could still hammer one address and
+    // both spam them and eat the monthly send allowance. A live code is reused
+    // rather than replaced, so asking twice does not invalidate the first one.
+    const existing = await env.BRAND_SEARCHES.get("vetcode:" + clean, { type: "json" });
+    if (existing && Date.now() - (existing.at || 0) < 60000) return json(said, 200, corsOrigin);
+
+    const code = existing ? existing.code
+      : String(crypto.getRandomValues(new Uint32Array(1))[0] % 1000000).padStart(6, "0");
     await env.BRAND_SEARCHES.put("vetcode:" + clean,
-      JSON.stringify({ code, tries: 0, at: Date.now() }), { expirationTtl: 900 });
+      JSON.stringify({ code, tries: (existing && existing.tries) || 0, at: Date.now() }),
+      { expirationTtl: 900 });
 
     await fetch("https://api.brevo.com/v3/smtp/email", {
       method: "POST",
