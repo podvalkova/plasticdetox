@@ -1227,9 +1227,10 @@ async function runInstantCheck(state, button, log, brandName, productName) {
         log.appendChild(el("p", "pkg-why", event.error));
         return;
       }
-      log.appendChild(screens.checkVerdict({ ...event, brand, product }, openExternal));
-      // The verdict first, then the category facts folded under it. The other
-      // way round, the answer was the thing off the bottom of the screen.
+      // Above the four checks, not below them. The research happens in that
+      // order; nobody reads in it. Somebody who has waited a minute wants the
+      // word first and the working underneath.
+      log.insertBefore(screens.checkVerdict({ ...event, brand, product }, openExternal), log.firstChild);
       notesDetails(log, catHit);
       button.remove();
     },

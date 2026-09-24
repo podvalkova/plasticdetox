@@ -488,7 +488,7 @@
   /* The answer, and anything else that is not one of the four checks. */
   .check-note{margin-top:12px;padding:16px 18px;background:var(--surface);border:1px solid var(--border);
     border-radius:14px;font-size:14.5px;line-height:1.55}
-  .verdict-block{margin-top:14px;padding:22px 22px 18px;background:var(--surface);
+  .verdict-block{margin:4px 0 18px;padding:22px 22px 18px;background:var(--surface);
     border:1px solid var(--border);border-left:3px solid var(--border-strong);border-radius:14px}
   .verdict-block.good{border-left-color:var(--good)}
   .verdict-block.careful{border-left-color:var(--careful)}
@@ -1315,9 +1315,9 @@
     // inline onclick attributes. It stopped being safe to thread the moment the
     // value could be a pasted URL.
     let checkSubject = { name: "", raw: "", label: "" };
-    // True once the button on screen means "research this again" rather than
-    // "research this". The worker decides what that costs; the card only has to
-    // say so honestly before it is pressed.
+    // True while a card is repairing itself: the run asks for the product to be
+    // researched again rather than answered from what we hold. Only a repair
+    // sets it, and a repair is never charged for.
     let recheck = false;
 
     /**
@@ -1507,6 +1507,7 @@
       logEl.innerHTML =
         '<div class="check-tip" id="checkTip" hidden><span class="tip-label" id="tipLabel"></span>'
         + '<span class="tip-text" id="tipText"></span></div>'
+        + '<div id="verdictSlot"></div>'
         + '<div class="step-row" id="stepRow">' + FRONT_ORDER.map((k, i) =>
             '<div class="step' + (i === 0 ? " now" : "") + '" id="step-' + k + '"><b>' + esc(VetRun.STEP[k])
             + "</b><span>" + (i === 0 ? "Checking" : "Queued") + "</span></div>").join("")
@@ -1578,7 +1579,7 @@
             ["unknownBadge", "passPitch"].forEach(id => { const n = $(id); if (n) n.remove(); });
           }
           btn.disabled = false;
-          if (!silent) btn.textContent = asking ? "Check it again" : "Run the check now";
+          if (!silent) btn.textContent = "Run the check now";
           // Any front still pending never answered; say so rather than leaving
           // it spinning forever.
           FRONT_ORDER.forEach(k => {
@@ -1595,13 +1596,23 @@
           // Five open paragraphs between the last check and the answer meant
           // Anya never saw the answer at all.
           const steps = $("stepRow"); if (steps) steps.remove();
+          const top = $("verdictSlot");
+          if (top) top.innerHTML = verdictHtml(e, secs);
           const slot = $("catNotesSlot");
-          if (slot) slot.innerHTML = verdictHtml(e, secs) + notesDetailsHtml(catHit);
+          if (slot) slot.innerHTML = afterHtml() + notesDetailsHtml(catHit);
         },
       });
     }
 
     /** The answer itself: badge, provenance, and how to tell us it is wrong. */
+    /**
+     * The answer, above the working that produced it.
+     *
+     * It used to sit under all four checks, which is the order the research
+     * happens in and the wrong order to read it in: somebody who has waited a
+     * minute wants the word first and the evidence underneath, not four
+     * paragraphs before the thing they were waiting for.
+     */
     function verdictHtml(e, secs) {
       const names = { good: "Good choice", careful: "Careful", skip: "Skip", unrated: "Not enough found" };
       // The word itself, at the size of an answer. A badge the size of a label
@@ -1613,12 +1624,16 @@
         + (e.capNote ? '<p class="form-note">' + esc(e.capNote) + "</p>" : "")
         + (secs ? '<p class="form-note">Checked in ' + secs + "s"
             + (e.consumed ? ". 1 check used. This research joins our public database after review, free for everyone." : ".") + "</p>" : "")
-        + (checkSubject.label
-            ? '<p class="form-note" style="margin-top:12px"><a href="report.html?b='
-              + encodeURIComponent(checkSubject.label) + '" style="color:var(--accent);font-weight:650">'
-              + "Open the full report &rarr;</a></p>"
-            : "")
-        + offerFlag() + "</div>";
+        + "</div>";
+    }
+
+    /** What to do about the answer, which belongs after the evidence for it. */
+    function afterHtml() {
+      return (checkSubject.label
+        ? '<p class="form-note" style="margin-top:16px"><a href="report.html?b='
+          + encodeURIComponent(checkSubject.label) + '" style="color:var(--accent);font-weight:650">'
+          + "Open the full report &rarr;</a></p>"
+        : "") + offerFlag();
     }
 
     /**
@@ -1659,10 +1674,11 @@
       lastCheck = FRONT_ORDER.map(k => d.fronts[k]
         ? (VetRun.STEP[k] || k) + ": " + d.fronts[k].status + " - " + (d.fronts[k].note || "") : "")
         .filter(Boolean).join("\n");
-      logEl.innerHTML = FRONT_ORDER.filter(k => d.fronts[k])
-        .map(k => '<div class="check-row">' + frontRowHtml(k, d.fronts[k]) + "</div>").join("")
-        + verdictHtml({ verdict: d.verdict, capNote: d.capNote,
-                        label: "Checked " + when + ". No credit used." }, "");
+      logEl.innerHTML = verdictHtml({ verdict: d.verdict, capNote: d.capNote,
+                                      label: "Checked " + when + ". No credit used." }, "")
+        + FRONT_ORDER.filter(k => d.fronts[k])
+            .map(k => '<div class="check-row">' + frontRowHtml(k, d.fronts[k]) + "</div>").join("")
+        + afterHtml();
       const hit = await categoryFor([name, found, d.fronts.formula && d.fronts.formula.note].filter(Boolean).join(" "));
       if (hit) logEl.insertAdjacentHTML("beforeend", notesDetailsHtml(hit));
 
@@ -1674,18 +1690,12 @@
       // ours to fill. Nobody should have to notice it, understand it and press
       // a button about it, so the card repairs itself the moment it opens, for
       // whoever opened it, pass or no pass. The worker caps the attempts.
-      if (d.repairable) {
-        repairNow(logEl);
-      } else if (btn && VetRun.getPass()) {
-        // A sound answer somebody simply wants looked at again is a purchase,
-        // and stays a button that says so.
-        recheck = true;
-        btn.hidden = false;
-        btn.textContent = "Check it again";
-        btn.className = "btn btn-ghost";
-        btn.insertAdjacentHTML("afterend",
-          '<p class="form-note" style="margin-top:8px">Researches it again from scratch and uses 1 check.</p>');
-      }
+      //
+      // There is deliberately no "check it again" for a sound answer. Selling
+      // somebody the same research twice is not a product, it is a way of
+      // charging for our own doubt. Where an answer is wrong, the way to say
+      // so is the form below it, which is free and reaches a person.
+      if (d.repairable) repairNow(logEl);
       gtag('event', 'vet_saved_shown', { brand: checkSubject.label, repairable: !!d.repairable });
     }
 
