@@ -1324,7 +1324,15 @@
    "source": "amazon:B001A3OADO"
   },
   "materials": {
-   "checkedListing": "2026-09-02"
+   "base": "aqueous",
+   "checked": "2026-09-24",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "heated": true,
+   "holds": "hot water, drunk",
+   "material": "plastic free tea bag paper: wood pulp and abaca fibre, machine folded without adhesive (90 percent of production); heat seal bags sealed with corn and sugarcane starch (10 percent); pyramid bags a plant starch mesh",
+   "note": "The maker states that no Bigelow tea bag contains nylon, polypropylene or any petroleum based component, the materials the McGill and Barcelona studies measured. Rule 3.9: a maker's statement about its own material is a primary source, and it takes Bigelow out of rule 2.3.",
+   "source": "https://www.bigelowtea.com/blogs/tea-education/are-bigelow-tea-bags-plastic-free (updated 2026-07-30): \"All Bigelow tea bags are biodegradable, compostable, and contain no plastic\"; non heat seal paper \"wood pulp and abaca fiber\", \"machine-folded and sealed requiring no adhesives\"; heat seal paper \"wood pulp, abaca fiber and plant-based starches derived from corn and sugarcane\"."
   }
  },
  "B001AV40Z4": {
@@ -2446,14 +2454,14 @@
    "source": "amazon:B00CPDWT2M"
   },
   "materials": {
-   "checkedListing": "2026-09-02",
+   "checked": "2026-09-24",
    "contact": "yes",
-   "contactFrom": "stated in the product name",
-   "heated": false,
+   "contactFrom": "recorded",
    "holds": "none",
    "material": "nylon",
    "mouthed": true,
-   "source": "product name"
+   "source": "https://www.benebone.com/pages/nylon-safety: \"Benebone durable chews are made of nylon, which is a hard substance\"; \"Benebone nylon chew toys are not edible\"; \"As any chew toy or bone wears down, it is possible that some of it may be eaten\". A product made to be gnawed, so the fragments are swallowed.",
+   "swallowed": true
   }
  },
  "B00CRUDO0Y": {
@@ -3023,6 +3031,33 @@
   },
   "materials": {
    "checkedListing": "2026-09-02"
+  },
+  "testing": {
+   "checked": "2026-09-24",
+   "status": "caution",
+   "tested": "2025",
+   "results": [
+    {
+     "analyte": "lead",
+     "lab": "Lead Safe Mama community laboratory testing initiative (ICP-MS, third party laboratory)",
+     "outcome": "detected",
+     "unit": "ppb",
+     "value": 1200,
+     "qualifier": "over",
+     "year": 2025,
+     "product": "Desitin Daily Defense 13% Zinc Oxide Diaper Rash Cream"
+    },
+    {
+     "analyte": "cadmium",
+     "lab": "Lead Safe Mama community laboratory testing initiative",
+     "outcome": "detected",
+     "unit": "ppb",
+     "value": null,
+     "year": 2025
+    }
+   ],
+   "source": "https://tamararubin.com/2025/12/desitin-daily-defense-13-zinc-oxide-diaper-rash-cream (December 2025); chart https://tamararubin.com/2025/09/diaper-cream-chart",
+   "note": "Lead Safe Mama's third party laboratory testing of Desitin Daily Defense 13% zinc oxide cream, published December 2025, found lead at over 1,200 ppb and cadmium detected, with the figures for cadmium and the limits of detection in the lab report image rather than the text. Left on a baby's skin, so the rule 4.7 baby column applies: lead is above the 500 ppb bar and below the 10,000 ppb fail line, a caution. The lead rides in on the zinc oxide, the same mechanism as the Aquaphor and Tubby Todd results in the same series. Tier 2."
   }
  },
  "B00M0SPI2U": {
@@ -4076,14 +4111,13 @@
  "B06XJ88HNG": {
   "_product": "Avanchy Silicone Baby Spoons with Bamboo Handle (5 pack)",
   "materials": {
-   "base": "water",
-   "checkedListing": "2026-09-02",
+   "checked": "2026-09-24",
    "contact": "yes",
-   "contactFrom": "category default",
-   "material": "Bamboo",
+   "contactFrom": "recorded",
+   "holds": "none",
    "mouthed": true,
-   "reuse": "repeated",
-   "source": "amazon:B06XJ88HNG"
+   "material": "food grade silicone spoon tip, in the mouth; bamboo handle",
+   "source": "amazon:B06XJ88HNG listing: silicone tips on bamboo handles for baby led weaning. The part in the mouth is silicone, scored inert by decision (rule 3.1); the bamboo is held."
   }
  },
  "B06XNR2QVH": {
@@ -4495,17 +4529,6 @@
   },
   "materials": {
    "checkedListing": "2026-09-02"
-  }
- },
- "B077XHLXT3": {
-  "_product": "Once Upon a Farm Squeeze Pouches (refrigerated)",
-  "formula": {
-   "checkedListing": "2026-09-14",
-   "complete": false,
-   "ingredients": "",
-   "kind": "prose",
-   "prose": "Ingredients: Apples, Pears, Peaches, Vitamin C (Ascorbic Acid). CONVENIENT BABY FOOD: Our Gerber Apple Pear Peach Puree Pouch is designed for ease and convenience. This Gerber baby food is portable, re-closeable and easy-to-store, for busy parents | NUTRITIOUS: This baby food fruit option has 30% of the daily value of vitamin C and two servings* of fruit per pouch | STAGE TWO: This Gerber pouch is a stage 2 baby food puree. It has been designed for babies who are ready to explore new textures and flavors, making it a great addition to your baby's diet | PUREED FRUIT: With your child in mind, our Gerber baby food offers a delightful blend of 1/3 apple, 1/4 pear and one tablespoon of peach in each pouch | NO ADDED SWEETENERS OR ARTIFICIAL COLORS OR FLAVORS: Our baby food fruit pouches are a great and convenient choice for your child. This baby food pouch has no added sweeteners, and no artificial colors or flavors | TRUSTED FAMILY FAVORITE: We are leading the way in quality and testing standards for babies. Our dedication to quality ensures that your baby receives the finest food available. Our Gerber pouches are a trusted choice for countless families",
-   "source": "amazon:B077XHLXT3 listing bullets"
   }
  },
  "B078NVJ47N": {
@@ -4973,7 +4996,7 @@
   }
  },
  "B07FTPBBK9": {
-  "_product": "Eco by Naty Eco by Naty Diapers",
+  "_product": "Eco by Naty Diapers",
   "formula": {
    "checkedListing": "2026-09-03",
    "complete": true,
@@ -4982,7 +5005,12 @@
    "source": "amazon:B07FTPBBK9"
   },
   "materials": {
-   "checkedListing": "2026-09-02"
+   "checked": "2026-09-24",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "holds": "none",
+   "material": "totally chlorine free (TCF) FSC certified cellulose core with a superabsorbent polymer; plant based polyethylene topsheet, leg cuffs, ears and outer layer; polypropylene inside; no fragrance or lotion",
+   "source": "amazon:B07FTPBBK9 maker listing, read 2026-09-24: \"100% plant based materials on skin, topsheet, leg cuffs, ears, and outer layer, certified by DIN CERTCO\"; \"absorbents: FSC and TCF certified cellulose and SAP super absorbent\"; \"plant-based PE non-woven\"; \"totally chlorine-free\". OEKO-TEX Standard 100 stated on the listing."
   },
   "testing": {
    "checked": "2026-09-16",
@@ -5708,13 +5736,14 @@
  "B07RYB63DC": {
   "_product": "SPOT Bam-Bones bamboo fibre and nylon chews",
   "materials": {
-   "checked": "2026-09-14",
+   "checked": "2026-09-24",
    "contact": "yes",
-   "contactFrom": "listing",
+   "contactFrom": "recorded",
    "holds": "none",
-   "material": "nylon",
+   "material": "nylon, bamboo fibre",
    "mouthed": true,
-   "source": "Ethical Pet: \"Popular Bam-Bones now made with nylon and bamboo fibers.\" (ethicalpet.com/product/bambone-plus-bamboo-stick-5-25-chk/). A chew toy. Held in the mouth or chewed, with nothing inside it to extract; the polymer is the surface."
+   "source": "amazon:B07RYB63DC title and bullets: \"SPOT Bam-Bones Plus T-Bone Dog Chew ... Bamboo Fiber & Nylon\". Made to be gnawed, so the fragments are swallowed.",
+   "swallowed": true
   }
  },
  "B07SCL613T": {
@@ -5957,16 +5986,15 @@
   }
  },
  "B08172V3Y5": {
-  "_product": "VIVAGO VIVAGO bamboo toothbrushes",
-  "formula": {
-   "complete": false,
-   "prose": "",
-   "source": "amazon:B08172V3Y5"
-  },
+  "_product": "VIVAGO bamboo toothbrushes",
   "materials": {
-   "contactFrom": "stated in the product name",
-   "material": "bamboo",
-   "source": "product name"
+   "checked": "2026-09-24",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "holds": "none",
+   "material": "bamboo handle; nylon bristles",
+   "mouthed": true,
+   "source": "amazon:B08172V3Y5 bullets: \"our high-quality nylon bristles are soft\", \"the handle is fully compostable\". Rule 5.7: nylon is the best available vegan bristle and the row is a labelled trade off."
   }
  },
  "B081C8VTRV": {
@@ -6116,16 +6144,6 @@
    "checkedListing": "2026-09-02"
   }
  },
- "B08398HJRD": {
-  "_product": "NUK Straw Cup (plastic)",
-  "materials": {
-   "checkedListing": "2026-09-14",
-   "contact": "yes",
-   "contactFrom": "listing",
-   "material": "plastic, silicone",
-   "source": "amazon:B08398HJRD listing states: SPILL-PROOF FROM FIRST SIP — NO MESS, NO STRESS: Designed for babies beginning their cup journey at 6+ months. The spill-proof +Cut straw and flip-top lid help prevent leaks when your little one tips, drops, or carries the cup. Built for the messy moments of learning to drink—without the mess. | SAF"
-  }
- },
  "B083F5P7VP": {
   "_product": "Diono Radian 3R Convertible Car Seat",
   "materials": {
@@ -6262,6 +6280,14 @@
    "source": "https://mamavation.com/motherhood/diapers-pfas-forever-chemicals.html",
    "status": "none",
    "tested": "2023"
+  },
+  "materials": {
+   "checked": "2026-09-24",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "holds": "none",
+   "material": "totally chlorine free FSC certified wood fluff pulp core, not bleached or processed with chlorine chemistry; polypropylene topsheet and polyethylene backsheet; no fragrance, lotion or dye",
+   "source": "amazon:B084H4H6HR maker listing, read 2026-09-24: \"the absorbent core in our diapers is not bleached or processed with chemicals containing chlorine\"; \"made free & clear with 0% fragrances, lotions, or chlorine bleaching\"; \"FSC certified, sustainably harvested plant-based pulp\". seventhgeneration.com, All About Our Free & Clear Diapers: \"made without chlorine bleaching\", \"made without any lotions or fragrances\"."
   }
  },
  "B084H7K9LY": {
@@ -8137,6 +8163,19 @@
    "source": "Dry contents; the container polymer is not published or not confirmed. Dry contents pass the rule 3.1 matrix in HDPE, PET, polypropylene, paper, metal and glass, which covers every material this kind of product is packed in. Only PVC or polystyrene would score caution, and neither is used for it."
   }
  },
+ "B09DJ6CD2B": {
+  "_product": "Benebone nylon chew toys",
+  "materials": {
+   "checked": "2026-09-24",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "holds": "none",
+   "material": "nylon",
+   "mouthed": true,
+   "source": "https://www.benebone.com/pages/nylon-safety: \"Benebone durable chews are made of nylon, which is a hard substance\"; \"Benebone nylon chew toys are not edible\"; \"As any chew toy or bone wears down, it is possible that some of it may be eaten\". A product made to be gnawed, so the fragments are swallowed.",
+   "swallowed": true
+  }
+ },
  "B09F5X1JVR": {
   "_product": "Enfamil Infant Formula Stage 1",
   "formula": {
@@ -8696,8 +8735,8 @@
    "checked": "2026-09-15",
    "contact": "yes",
    "contactFrom": "recorded",
-   "material": "plastic",
-   "source": "amazon:B0B4V5TBLJ listing: \"on every bag\"; rolled oats. The container material is not stated. Dry contents pass the rule 3.1 matrix in every material this kind of product is packed in; only PVC or polystyrene would score caution, and neither is used for it."
+   "material": "BioChecked Glyphosate Residue Free certified sprouted oats, in a plastic bag",
+   "source": "amazon:B0B4V5TBLJ listing: \"on every bag\"; rolled oats. The container material is not stated. Dry contents pass the rule 3.1 matrix in every material this kind of product is packed in; only PVC or polystyrene would score caution, and neither is used for it. onedegreeorganics.com/testing-transparency and the listing title, read 2026-09-24: the oats are BioChecked Non Glyphosate Certified, a third party residue certification on the harvest, which takes them out of the organic oats glyphosate class finding."
   }
  },
  "B0B72G8KXM": {
@@ -8717,20 +8756,21 @@
   }
  },
  "B0B7TX9H3P": {
-  "_product": "Bambooware Bamboo Toddler Plate Set",
+  "_product": "WeeSprout Divided Bamboo & Melamine Plates",
   "formula": {
    "asinMismatch": "WeeSprout Divided Bamboo & Melamine Plates for Kids - Set of 4 Toddler Dinnerware, Food Grade, Kid Safe with Divided Des",
    "checkedListing": "2026-09-03"
   },
   "materials": {
-   "base": "water",
-   "checkedListing": "2026-09-02",
+   "base": "emulsion",
+   "checked": "2026-09-24",
    "contact": "yes",
-   "contactFrom": "category default",
-   "material": "Bamboo",
+   "contactFrom": "recorded",
+   "filledBy": "buyer",
+   "heated": true,
+   "material": "bamboo fibre and melamine resin composite",
    "mouthed": true,
-   "reuse": "repeated",
-   "source": "amazon:B0B7TX9H3P"
+   "source": "amazon:B0B7TX9H3P Material line: \"Bamboo, Melamine\" (WeeSprout Divided Bamboo & Melamine Plates for Kids). FDA warning letters 2021 to 2023 on bamboo melamine composite dishware for melamine and formaldehyde migration into hot or acidic food."
   }
  },
  "B0B8PHGCDV": {
@@ -10589,9 +10629,14 @@
    "source": "amazon:B0D13T3XWX"
   },
   "materials": {
-   "contactFrom": "stated in the product name",
-   "material": "bamboo",
-   "source": "product name"
+   "checked": "2026-09-24",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "holds": "none",
+   "material": "bamboo handle; the bristles are described only as BPA free soft bristles",
+   "mouthed": true,
+   "source": "amazon:B0D13T3XWX: \"100% biodegradable bamboo handles\", \"BPA free soft bristles\"; no bristle material is named on the listing. Rule 3.7: the part in the mouth is unnamed.",
+   "undisclosedPart": "bristles"
   }
  },
  "B0D1W4Y3LH": {
@@ -11818,10 +11863,15 @@
    "source": "amazon:B0DX5XQNRH"
   },
   "materials": {
-   "checkedListing": "2026-09-08",
+   "base": "aqueous",
+   "checked": "2026-09-24",
    "contact": "yes",
-   "material": "aluminium",
-   "source": "openfacts:3168930159896"
+   "contactFrom": "recorded",
+   "heated": true,
+   "holds": "hot water, drunk",
+   "material": "tea bag paper the maker describes as plant based; the seal material is not stated",
+   "source": "https://www.lipton.com/us/en/faqs/ read 2026-09-24: Lipton says its teabags are made from plant based material and says nothing about how the bag is sealed; plant based covers both paper and PLA. The openfacts record previously held here (aluminium) described the outer packet, not the bag. Rule 3.7: an unnamed part in the drink.",
+   "undisclosedPart": "tea bag seal"
   }
  },
  "B0DX7846R5": {
@@ -12009,20 +12059,6 @@
    "checked": "2026-09-15",
    "note": "No independent test of this seat was found. Searched the Ecology Center, Mamavation and Consumer Reports on 2026-09-15; nothing newer found.",
    "status": "none"
-  }
- },
- "B0F8YP6PDW": {
-  "_product": "Beech-Nut Infant Rice Cereal",
-  "formula": {
-   "checkedListing": "2026-09-08",
-   "complete": true,
-   "ingredients": "contains wheat ngredients: vhole grain oat flour (contains wheat), sunflower lecithin vitamins & minerals: tricalcium phosphate, electrolytic iron, d-alpha-tocopheryl acetate (vitamin e), zinc sulfate, niacinamide abita cholecalciferol (vitamin d3), calcium d-pantothenate, pyridoxine hydrochloride (vitamin b6), riboflavin vitamin b2), thiamine mononitre (vitamin b1), folic acid (a b vitamin), cha cobalamin vitamin b",
-   "kind": "ingredients",
-   "prose": "",
-   "source": "openfacts:0052200034729"
-  },
-  "materials": {
-   "checkedListing": "2026-09-02"
   }
  },
  "B0F9K2KXZV": {
@@ -13189,6 +13225,39 @@
    "status": "none"
   }
  },
+ "Beech-Nut::Infant Rice Cereal": {
+  "_product": "Beech-Nut Infant Rice Cereal",
+  "formula": {
+   "checkedListing": "2026-09-08",
+   "complete": true,
+   "ingredients": "contains wheat ngredients: vhole grain oat flour (contains wheat), sunflower lecithin vitamins & minerals: tricalcium phosphate, electrolytic iron, d-alpha-tocopheryl acetate (vitamin e), zinc sulfate, niacinamide abita cholecalciferol (vitamin d3), calcium d-pantothenate, pyridoxine hydrochloride (vitamin b6), riboflavin vitamin b2), thiamine mononitre (vitamin b1), folic acid (a b vitamin), cha cobalamin vitamin b",
+   "kind": "ingredients",
+   "prose": "",
+   "source": "openfacts:0052200034729"
+  },
+  "materials": {
+   "checkedListing": "2026-09-02"
+  },
+  "testing": {
+   "checked": "2026-09-24",
+   "status": "fail",
+   "tested": "2021",
+   "results": [
+    {
+     "analyte": "inorganic arsenic",
+     "lab": "State of Alaska routine testing",
+     "outcome": "detected",
+     "unit": "ppb",
+     "value": null,
+     "above": "100 ppb, FDA action level for infant rice cereal",
+     "year": 2021,
+     "product": "Beech-Nut Stage 1 Single Grain Rice Cereal, product codes 103470XXXX and 093470XXXX"
+    }
+   ],
+   "source": "FDA recall notice, Beech-Nut Nutrition Company, 2021-06-08; Healthy Babies Bright Futures statement 2021-06; Consumer Reports 2021-06-09",
+   "note": "The State of Alaska's routine testing found inorganic arsenic above 100 ppb, FDA's action level for infant rice cereal (August 2020), in two product codes; Beech-Nut recalled them on 2021-06-08 and then left the rice cereal category, saying it could not consistently source rice flour well below the level. Rule 4.7: above a limit a regulator applies to the product type, a fail. Tier 1, a state laboratory. The exact figure was not published."
+  }
+ },
  "Berard::Berard Olive Wood Utensils": {
   "_product": "Berard Berard Olive Wood Utensils",
   "materials": {
@@ -13910,6 +13979,26 @@
    "status": "fail"
   }
  },
+ "Enfamil::Infant Formula Stage 1": {
+  "_product": "Enfamil Infant Formula Stage 1",
+  "formula": {
+   "checkedListing": "2026-09-09",
+   "complete": true,
+   "ingredients": "Nonfat Milk, Lactose, Vegetable Oil (palm olein, coconut, soy, high oleic sunflower), Whey Protein Concentrate; MFGM, DHA, ARA, soy lecithin. NeuroPro Infant is lactose based; the Gentlease variant uses corn syrup solids.",
+   "kind": "ingredients",
+   "prose": "",
+   "source": "enfamil.com NeuroPro Infant product page, read 2026-09-09"
+  },
+  "materials": {
+   "checkedListing": "2026-09-02"
+  },
+  "testing": {
+   "checked": "2026-09-09",
+   "note": "Consumer Reports: Enfamil NeuroPro varieties tested low concern in the 2025 round.",
+   "source": "consumerreports.org baby formula test results (March 2025 and March 2026 rounds)",
+   "status": "pass"
+  }
+ },
  "Eucerin::Baby Wash & Shampoo": {
   "_product": "Eucerin Baby Wash & Shampoo",
   "formula": {
@@ -14068,6 +14157,91 @@
    "checked": "2026-09-09",
    "note": "Checked both Consumer Reports rounds: the Gerber branded SoothePro was not itself tested; the identical Perrigo recipe sold as Dr. Brown's SoothePro landed in the worse choices tier.",
    "source": "consumerreports.org baby formula test results (March 2025 and March 2026 rounds)",
+   "status": "none"
+  }
+ },
+ "Green Beaver::Green Beaver Fluoride Free Natural Toothpaste": {
+  "_product": "Green Beaver Green Beaver Fluoride Free Natural Toothpaste",
+  "formula": {
+   "checkedListing": "2026-09-24",
+   "complete": true,
+   "ingredients": "Calcium Carbonate, Aqua/Water, Sorbitol, Glycerin, Hydrated Silica, Aroma (Natural Orange), Citrus Aurantium Dulcis (Orange) Peel Oil, Mentha Piperita (Peppermint) Leaf Oil, Menthol, Xylitol, Citrus Grandis (Grapefruit) Seed Extract, Xanthan Gum, Coco-Glucoside, Melaleuca Alternifolia (Tea Tree) Leaf Oil, Geraniol, Limonene, Linalool.",
+   "kind": "ingredients",
+   "source": "greenbeaver.com/en-us/products/fluoride-free-natural-toothpaste-zesty-orange. Calcium carbonate is the first ingredient, with hydrated silica second as the other abrasive. The page states 'Great for Kids and Safe to Swallow' and 'Let your children brush with real toothpaste'."
+  },
+  "materials": {
+   "base": "aqueous",
+   "checked": "2026-09-24",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "heated": false,
+   "material": "plastic",
+   "source": "Laminate toothpaste tube with a screw cap, read off the brand's own product photograph. Rule 3.1 pairs an aqueous paste with a polyolefin as a pass. The packaging is not what is wrong with this product.",
+   "use": "rinse-off"
+  },
+  "testing": {
+   "checked": "2026-09-24",
+   "note": "Independent laboratory testing commissioned by Lead Safe Mama and published 2025-04-25. Purity Laboratories case 2503147, sample 2503147-01, tested 2025-03-12 by ICP MS: lead 195.8 ppb, cadmium 26.3 ppb, arsenic 53.7 ppb, mercury under the 5.0 ppb limit of detection. Read off the lab report itself rather than a summary. Rule 4.7 for anything swallowed sets the bars at 5 ppb lead, 5 ppb cadmium and 10 ppb arsenic, so this is a caution on all three. It is far below the FDA limit of 10,000 ppb that applies to fluoride free toothpaste, which is why it is a caution and not a fail. Rule 4.1 carries the finding across the fluoride free line, because lead in toothpaste rides in on the abrasive and calcium carbonate is the first ingredient in all three flavours.",
+   "results": [
+    {
+     "analyte": "lead",
+     "lab": "Purity Laboratories (ICP MS)",
+     "sample": "Zesty Orange, lot 2025-001",
+     "unit": "ppb",
+     "value": 195.8
+    },
+    {
+     "analyte": "cadmium",
+     "lab": "Purity Laboratories (ICP MS)",
+     "sample": "Zesty Orange, lot 2025-001",
+     "unit": "ppb",
+     "value": 26.3
+    },
+    {
+     "analyte": "arsenic",
+     "lab": "Purity Laboratories (ICP MS)",
+     "sample": "Zesty Orange, lot 2025-001",
+     "unit": "ppb",
+     "value": 53.7
+    },
+    {
+     "analyte": "mercury",
+     "lab": "Purity Laboratories (ICP MS)",
+     "lod": 5.0,
+     "note": "non detect at a 5.0 ppb limit",
+     "sample": "Zesty Orange, lot 2025-001",
+     "unit": "ppb",
+     "value": null
+    }
+   ],
+   "source": "https://tamararubin.com/2025/04/canadian-the-green-beaver-company-fluoride-free-toothpaste-in-zesty-orange-flavor/ and the lab report image published with it, Report-Image-The-Green-Beaver-Company-Zesty-Orange.png",
+   "status": "caution"
+  }
+ },
+ "Green Beaver::Green Beaver Natural Deodorant": {
+  "_product": "Green Beaver Green Beaver Natural Deodorant",
+  "formula": {
+   "checkedListing": "2026-09-24",
+   "complete": true,
+   "ingredients": "Propanediol, Aloe Barbadensis Leaf Juice, Glycerin, Sodium Stearate, Polyglycerin-10 Caprylate/Caprate, Tapioca Starch, Sodium Caproyl/Lauroyl Lactyl Lactate, Triethyl Citrate, Salvia Officinalis (Sage) Oil, Ledum Groenlandicum (Labrador Tea) Extract, Citrus Limonum (Lemon) Peel Oil, Citrus Aurantium Dulcis (Orange) Peel Oil, Citrus Bergamia (Bergamot) Peel Oil, Melaleuca Alternifolia (Tea Tree) Leaf Oil, Aqua, Glyceryl Laurate, Citral, Geraniol, Limonene, Linalool.",
+   "kind": "ingredients",
+   "source": "greenbeaver.com/en-us/products/natural-deodorant-citrus, ingredients panel. The Fragrance Free variant is the same base without the citrus oils and the four declared allergens. Every scent ingredient is named to the individual essential oil and the allergens are declared separately, so nothing sits behind parfum or fragrance."
+  },
+  "materials": {
+   "base": "aqueous",
+   "checked": "2026-09-24",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "heated": false,
+   "material": "plastic",
+   "source": "White plastic twist up stick tube, read off the listing photograph for B006C5WM80; the maker does not name the resin, so it stays in the harsher unnamed plastic column. The stick is propanediol, aloe juice, glycerin and water gelled with sodium stearate, with polyglycerin-10 caprylate/caprate and glyceryl laurate. Recorded as aqueous rather than surfactant: the soap here is the structurant that makes the stick hold its shape, not a cleansing system, and this is the same construction as the Tom's of Maine aluminium free stick already recorded as a water and glycol based stick. Rule 3.1 pairs a water based formula with plastic as a pass, so the tube that makes the anhydrous Humble and Each & Every sticks a caution does not make one here.",
+   "use": "leave-on"
+  },
+  "testing": {
+   "checked": "2026-09-24",
+   "note": "Searched Lead Safe Mama, Mamavation, Consumer Reports and Clean Label Project on 2026-09-24. No independent test of any Green Beaver deodorant found. The Lead Safe Mama post index for 'Green Beaver' returns five posts, all of them the toothpaste testing and its charts. Mamavation's deodorant PFAS investigation, updated through June 2026, names neither this brand nor any of its products in any of its three result groups.",
+   "results": [],
+   "source": "https://tamararubin.com/wp-json/wp/v2/posts?search=Green%20Beaver ; https://mamavation.com/beauty/pfas-forever-chemicals-in-deodorants.html",
    "status": "none"
   }
  },
@@ -14647,15 +14821,17 @@
   }
  },
  "LifeStraw::Filter bottles and straws": {
-  "_product": "LifeStraw filter bottles and straws",
+  "_product": "LifeStraw Filter bottles and straws",
   "materials": {
-   "base": "water",
-   "checked": "2026-09-11",
+   "checked": "2026-09-24",
    "contact": "yes",
    "contactFrom": "recorded",
+   "base": "aqueous",
+   "holds": "water",
+   "mouthed": true,
    "format": "filter bottle",
-   "material": "plastic",
-   "source": "Hollow fibre membrane in a plastic bottle. No glass or steel filter bottle exists, so under rule 3.6 the polymer is recorded rather than counted"
+   "material": "plastic bottle, polymer not named beyond BPA free and 50 percent recycled; silicone mouthpiece drunk through like a straw; plastic filter housing",
+   "source": "https://lifestraw.com/products/lifestraw-go-series read 2026-09-24: \"BPA-free\", \"50% recycled materials\", \"color-matched silicone mouthpiece\", water is drawn \"up and through the filter\" through the mouthpiece. LifeStraw sells the same filter in Stainless Steel 18 oz, 24 oz and 1L bottles, so rule 3.6 does not apply and the polymer counts. The mouthpiece is silicone, so rule 3.8 does not fire."
   }
  },
  "Lifefactory::Lifefactory baby bottles": {
@@ -15058,6 +15234,26 @@
    "note": "Current Glide. Earlier Glide was PTFE: all three Glide products carried fluorine in Boronow 2019 (https://pmc.ncbi.nlm.nih.gov/articles/PMC6380931/).",
    "partial": "active ingredients only; they decide the front",
    "source": "https://www.amazon.com/dp/B07K2JP5CN (Ingredients panel); Oral-B: \"The floss is made from a gentle nylon and elastic material\" https://oralb.com/en-us/oral-health/why-oral-b/floss/benefits-of-oral-b-glide-floss/"
+  },
+  "testing": {
+   "checked": "2026-09-24",
+   "lod": "10 ppm (ion selective electrode, oxygen flask combustion)",
+   "note": "Mamavation's EPA certified lab read 248,900 ppm organic fluorine in Oral-B Glide Pro-Health Deep Clean Floss, about 24 percent by weight and the highest reading Mamavation has published for any product; Oral-B Superfloss for braces was non detect at 10 ppm. Format scope: the Glide line shares the PTFE construction the reading measures, so it reaches the other Glide SKUs on this row as a fail under 4.7, and this row says so. Oral-B states it removed PTFE from Glide in 2023 and that no Oral-B floss is made with PFAS; that is a maker statement, tier 4, and no independent test of the reformulated floss is on record, so under 4.7 the 2024 result stands until one is.",
+   "results": [
+    {
+     "analyte": "organic fluorine",
+     "lab": "EPA certified laboratory for Mamavation",
+     "lod": "10 ppm",
+     "outcome": "detected",
+     "product": "Oral-B Glide Pro-Health Deep Clean Floss",
+     "unit": "ppm",
+     "value": 248900,
+     "year": 2024
+    }
+   ],
+   "source": "https://mamavation.com/beauty/toxic-pfas-dental-floss-tooth-floss.html (published 2024-08-26)",
+   "status": "fail",
+   "tested": "2024"
   }
  },
  "Orbit Baby::Orbit Baby G5+ Merino Wool Infant Car Seat": {
@@ -15379,6 +15575,34 @@
    "source": "https://revisionskincare.com/products/intellishade-truphysical-spf-45"
   }
  },
+ "Routine::Routine Natural Deodorant, The Curator": {
+  "_product": "Routine Routine Natural Deodorant, The Curator",
+  "formula": {
+   "checkedListing": "2026-09-24",
+   "complete": true,
+   "ingredients": "cocos nucifera (coconut) oil, magnesium hydroxide, kaolin, zea mays (corn) starch (non-gmo), maranta arundinacea root powder, cera alba/beeswax, theobroma cacao (cocoa) seed butter, butyrospermum parkii (shea) butter, caprylic/capric triglyceride, olea europaea (olive) fruit oil, tocopherol, cetearyl olivate, brassica glycerides, sorbitan olivate, pelargonium roseum leaf oil, eucalyptus globulus oil, helianthus annuus (sunflower) seed oil, pogostemon cablin oil, theobroma cacao (cocoa) extract, calendula officinalis flower extract, picea mariana leaf oil, rosmarinus officinalis (rosemary) leaf extract",
+   "kind": "ingredients",
+   "source": "routinenaturalbeauty.com/products/deo-the-curator, ingredients panel. Magnesium hydroxide is the active and there is no baking soda. Every scent ingredient is named to the individual essential oil, with nothing behind parfum or fragrance."
+  },
+  "materials": {
+   "base": "anhydrous",
+   "checked": "2026-09-24",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "heated": false,
+   "material": "glass",
+   "nonContact": "plastic screw lid",
+   "source": "Frosted glass jar with a white plastic screw lid, in a paper carton, read off the listing photograph for B01KJ106V2. The cream sits in the glass; the lid closes over the headspace above it, recorded the same way as the RMS Beauty Lip2Cheek jar, whose plastic cap sits over a coconut oil balm in glass. Rule 3.1 pairs an anhydrous formula with glass as a pass. Routine also runs a refill programme at more than 260 locations where the same jar is refilled.",
+   "use": "leave-on"
+  },
+  "testing": {
+   "checked": "2026-09-24",
+   "note": "Searched Lead Safe Mama, Mamavation, Consumer Reports and Clean Label Project on 2026-09-24. No independent test of this brand found. The Lead Safe Mama post index returns nothing for this brand, and Mamavation's deodorant PFAS investigation, updated through June 2026, does not name it in any result group.",
+   "results": [],
+   "source": "https://tamararubin.com/wp-json/wp/v2/posts?search=Routine%20deodorant ; https://mamavation.com/beauty/pfas-forever-chemicals-in-deodorants.html",
+   "status": "none"
+  }
+ },
  "Saatva::Saatva Crib Mattress": {
   "_product": "Saatva Crib Mattress",
   "materials": {
@@ -15619,6 +15843,20 @@
    "note": "2025 independent testing (Lead Safe Mama diaper cream series) reported over 550 ppb lead plus cadmium, lower than the mainstream zinc pastes but not clean. Lead rides in on the zinc oxide, a mineral contamination mechanism that does not transfer to the brand's washes.",
    "source": "best-non-toxic-diaper-rash-creams.html",
    "status": "caution"
+  }
+ },
+ "Twinings::Twinings tea bags": {
+  "_product": "Twinings tea bags",
+  "materials": {
+   "base": "aqueous",
+   "checked": "2026-09-24",
+   "contact": "yes",
+   "contactFrom": "recorded",
+   "heated": true,
+   "holds": "hot water, drunk",
+   "material": "tea bag material not stated by Twinings USA",
+   "source": "https://twiningsusa.com/pages/faqs read 2026-09-24: the FAQ describes the paper and foil envelopes and does not say what the bag itself is made of or how it is sealed. Rule 3.7: an unnamed part in the drink.",
+   "undisclosedPart": "tea bag"
   }
  },
  "Under the Nile::Under the Nile Organic Cotton Stuffies": {
@@ -15869,117 +16107,19 @@
    "tested": "2021"
   }
  },
- "Green Beaver::Green Beaver Natural Deodorant": {
-  "_product": "Green Beaver Green Beaver Natural Deodorant",
-  "formula": {
-   "checkedListing": "2026-09-24",
-   "complete": true,
-   "ingredients": "Propanediol, Aloe Barbadensis Leaf Juice, Glycerin, Sodium Stearate, Polyglycerin-10 Caprylate/Caprate, Tapioca Starch, Sodium Caproyl/Lauroyl Lactyl Lactate, Triethyl Citrate, Salvia Officinalis (Sage) Oil, Ledum Groenlandicum (Labrador Tea) Extract, Citrus Limonum (Lemon) Peel Oil, Citrus Aurantium Dulcis (Orange) Peel Oil, Citrus Bergamia (Bergamot) Peel Oil, Melaleuca Alternifolia (Tea Tree) Leaf Oil, Aqua, Glyceryl Laurate, Citral, Geraniol, Limonene, Linalool.",
-   "kind": "ingredients",
-   "source": "greenbeaver.com/en-us/products/natural-deodorant-citrus, ingredients panel. The Fragrance Free variant is the same base without the citrus oils and the four declared allergens. Every scent ingredient is named to the individual essential oil and the allergens are declared separately, so nothing sits behind parfum or fragrance."
-  },
+ "B0CN1738PV": {
+  "_product": "Munchkin Snack Catcher Cup",
   "materials": {
-   "base": "aqueous",
    "checked": "2026-09-24",
    "contact": "yes",
    "contactFrom": "recorded",
-   "heated": false,
-   "material": "plastic",
-   "source": "White plastic twist up stick tube, read off the listing photograph for B006C5WM80; the maker does not name the resin, so it stays in the harsher unnamed plastic column. The stick is propanediol, aloe juice, glycerin and water gelled with sodium stearate, with polyglycerin-10 caprylate/caprate and glyceryl laurate. Recorded as aqueous rather than surfactant: the soap here is the structurant that makes the stick hold its shape, not a cleansing system, and this is the same construction as the Tom's of Maine aluminium free stick already recorded as a water and glycol based stick. Rule 3.1 pairs a water based formula with plastic as a pass, so the tube that makes the anhydrous Humble and Each & Every sticks a caution does not make one here.",
-   "use": "leave-on"
-  },
-  "testing": {
-   "checked": "2026-09-24",
-   "note": "Searched Lead Safe Mama, Mamavation, Consumer Reports and Clean Label Project on 2026-09-24. No independent test of any Green Beaver deodorant found. The Lead Safe Mama post index for 'Green Beaver' returns five posts, all of them the toothpaste testing and its charts. Mamavation's deodorant PFAS investigation, updated through June 2026, names neither this brand nor any of its products in any of its three result groups.",
-   "results": [],
-   "source": "https://tamararubin.com/wp-json/wp/v2/posts?search=Green%20Beaver ; https://mamavation.com/beauty/pfas-forever-chemicals-in-deodorants.html",
-   "status": "none"
-  }
- },
- "Green Beaver::Green Beaver Fluoride Free Natural Toothpaste": {
-  "_product": "Green Beaver Green Beaver Fluoride Free Natural Toothpaste",
-  "formula": {
-   "checkedListing": "2026-09-24",
-   "complete": true,
-   "ingredients": "Calcium Carbonate, Aqua/Water, Sorbitol, Glycerin, Hydrated Silica, Aroma (Natural Orange), Citrus Aurantium Dulcis (Orange) Peel Oil, Mentha Piperita (Peppermint) Leaf Oil, Menthol, Xylitol, Citrus Grandis (Grapefruit) Seed Extract, Xanthan Gum, Coco-Glucoside, Melaleuca Alternifolia (Tea Tree) Leaf Oil, Geraniol, Limonene, Linalool.",
-   "kind": "ingredients",
-   "source": "greenbeaver.com/en-us/products/fluoride-free-natural-toothpaste-zesty-orange. Calcium carbonate is the first ingredient, with hydrated silica second as the other abrasive. The page states 'Great for Kids and Safe to Swallow' and 'Let your children brush with real toothpaste'."
-  },
-  "materials": {
-   "base": "aqueous",
-   "checked": "2026-09-24",
-   "contact": "yes",
-   "contactFrom": "recorded",
-   "heated": false,
-   "material": "plastic",
-   "source": "Laminate toothpaste tube with a screw cap, read off the brand's own product photograph. Rule 3.1 pairs an aqueous paste with a polyolefin as a pass. The packaging is not what is wrong with this product.",
-   "use": "rinse-off"
-  },
-  "testing": {
-   "checked": "2026-09-24",
-   "note": "Independent laboratory testing commissioned by Lead Safe Mama and published 2025-04-25. Purity Laboratories case 2503147, sample 2503147-01, tested 2025-03-12 by ICP MS: lead 195.8 ppb, cadmium 26.3 ppb, arsenic 53.7 ppb, mercury under the 5.0 ppb limit of detection. Read off the lab report itself rather than a summary. Rule 4.7 for anything swallowed sets the bars at 5 ppb lead, 5 ppb cadmium and 10 ppb arsenic, so this is a caution on all three. It is far below the FDA limit of 10,000 ppb that applies to fluoride free toothpaste, which is why it is a caution and not a fail. Rule 4.1 carries the finding across the fluoride free line, because lead in toothpaste rides in on the abrasive and calcium carbonate is the first ingredient in all three flavours.",
-   "results": [
-    {
-     "analyte": "lead",
-     "value": 195.8,
-     "unit": "ppb",
-     "lab": "Purity Laboratories (ICP MS)",
-     "sample": "Zesty Orange, lot 2025-001"
-    },
-    {
-     "analyte": "cadmium",
-     "value": 26.3,
-     "unit": "ppb",
-     "lab": "Purity Laboratories (ICP MS)",
-     "sample": "Zesty Orange, lot 2025-001"
-    },
-    {
-     "analyte": "arsenic",
-     "value": 53.7,
-     "unit": "ppb",
-     "lab": "Purity Laboratories (ICP MS)",
-     "sample": "Zesty Orange, lot 2025-001"
-    },
-    {
-     "analyte": "mercury",
-     "value": null,
-     "unit": "ppb",
-     "lod": 5.0,
-     "lab": "Purity Laboratories (ICP MS)",
-     "sample": "Zesty Orange, lot 2025-001",
-     "note": "non detect at a 5.0 ppb limit"
-    }
-   ],
-   "source": "https://tamararubin.com/2025/04/canadian-the-green-beaver-company-fluoride-free-toothpaste-in-zesty-orange-flavor/ and the lab report image published with it, Report-Image-The-Green-Beaver-Company-Zesty-Orange.png",
-   "status": "caution"
-  }
- },
- "Routine::Routine Natural Deodorant, The Curator": {
-  "_product": "Routine Routine Natural Deodorant, The Curator",
-  "formula": {
-   "checkedListing": "2026-09-24",
-   "complete": true,
-   "ingredients": "cocos nucifera (coconut) oil, magnesium hydroxide, kaolin, zea mays (corn) starch (non-gmo), maranta arundinacea root powder, cera alba/beeswax, theobroma cacao (cocoa) seed butter, butyrospermum parkii (shea) butter, caprylic/capric triglyceride, olea europaea (olive) fruit oil, tocopherol, cetearyl olivate, brassica glycerides, sorbitan olivate, pelargonium roseum leaf oil, eucalyptus globulus oil, helianthus annuus (sunflower) seed oil, pogostemon cablin oil, theobroma cacao (cocoa) extract, calendula officinalis flower extract, picea mariana leaf oil, rosmarinus officinalis (rosemary) leaf extract",
-   "kind": "ingredients",
-   "source": "routinenaturalbeauty.com/products/deo-the-curator, ingredients panel. Magnesium hydroxide is the active and there is no baking soda. Every scent ingredient is named to the individual essential oil, with nothing behind parfum or fragrance."
-  },
-  "materials": {
-   "base": "anhydrous",
-   "checked": "2026-09-24",
-   "contact": "yes",
-   "contactFrom": "recorded",
-   "heated": false,
-   "material": "glass",
-   "nonContact": "plastic screw lid",
-   "source": "Frosted glass jar with a white plastic screw lid, in a paper carton, read off the listing photograph for B01KJ106V2. The cream sits in the glass; the lid closes over the headspace above it, recorded the same way as the RMS Beauty Lip2Cheek jar, whose plastic cap sits over a coconut oil balm in glass. Rule 3.1 pairs an anhydrous formula with glass as a pass. Routine also runs a refill programme at more than 260 locations where the same jar is refilled.",
-   "use": "leave-on"
-  },
-  "testing": {
-   "checked": "2026-09-24",
-   "note": "Searched Lead Safe Mama, Mamavation, Consumer Reports and Clean Label Project on 2026-09-24. No independent test of this brand found. The Lead Safe Mama post index returns nothing for this brand, and Mamavation's deodorant PFAS investigation, updated through June 2026, does not name it in any result group.",
-   "results": [],
-   "source": "https://tamararubin.com/wp-json/wp/v2/posts?search=Routine%20deodorant ; https://mamavation.com/beauty/pfas-forever-chemicals-in-deodorants.html",
-   "status": "none"
+   "base": "dry",
+   "holds": "dry snacks",
+   "filledBy": "buyer",
+   "mouthed": true,
+   "material": "polypropylene cup; thermoplastic elastomer flaps the child's hand and mouth pass through, composition not stated",
+   "undisclosedPart": "the TPE flaps",
+   "source": "amazon:B0CN1738PV listing: BPA free polypropylene cup with soft flexible flaps; the flap polymer is described only as soft plastic. Munchkin does not name the elastomer. Rule 3.7: an unnamed part in the contact path."
   }
  }
 }

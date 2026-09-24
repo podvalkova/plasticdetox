@@ -359,6 +359,54 @@
    "note": "In the mouth twice a day, shedding from the part doing the scrubbing.",
    "level": "low",
    "score": 4.75
+  },
+  "burned indoors": {
+   "route": "inhalation",
+   "amount": "—",
+   "duration": "hours",
+   "retained": "breathed",
+   "frequency": "weekly",
+   "heat": true,
+   "fat": false,
+   "note": "Lit in a closed room and breathed for as long as it burns; the wax, wick and fragrance all go into the air.",
+   "level": "medium",
+   "score": 7.5
+  },
+  "milk path": {
+   "route": "ingestion",
+   "amount": "—",
+   "duration": "minutes",
+   "retained": "swallowed",
+   "frequency": "several daily",
+   "heat": false,
+   "fat": true,
+   "note": "Breast milk passes through it on the way to a baby, several times a day, and milk carries fat.",
+   "level": "high",
+   "score": 8.5
+  },
+  "lain on": {
+   "route": "skin",
+   "amount": "—",
+   "duration": "minutes",
+   "retained": "transfer",
+   "frequency": "several daily",
+   "heat": false,
+   "fat": false,
+   "note": "Bare skin on it for minutes at a time, several times a day.",
+   "level": "medium",
+   "score": 5.2
+  },
+  "dusted": {
+   "route": "inhalation",
+   "amount": "—",
+   "duration": "minutes",
+   "retained": "breathed",
+   "frequency": "daily",
+   "heat": false,
+   "fat": false,
+   "note": "Shaken out as a loose powder at arm's length from a face, and breathed.",
+   "level": "medium",
+   "score": 6.0
   }
  },
  "categories": {
@@ -481,7 +529,17 @@
   "Kitchen appliances": "heated vessel",
   "Vacuums": "equipment",
   "Cleaning products": "sprayed",
-  "Laundry detergent": "worn textile"
+  "Laundry detergent": "worn textile",
+  "Candles": "burned indoors",
+  "Home": "burned indoors",
+  "Pumping": "milk path",
+  "Baby changing": "lain on",
+  "Teaware": "heated vessel",
+  "Cleaning tools": "food surface",
+  "Wood care": "food surface",
+  "Cloth wipes": "rinse-off skin",
+  "Store": "food",
+  "Baby powder": "dusted"
  },
  "products": {
   "365 by Whole Foods Market::365 sea salt": "food",
@@ -575,6 +633,8 @@
   "SIMPLUT::SIMPLUT Zero Waste Dish Soap Bar (3 Pack)": "rinse-off skin",
   "Gaggia::Classic Pro E24": "heated vessel",
   "Guppyfriend::Guppyfriend Washing Bag": "equipment",
-  "Whoopsie::Whoopsie Wipes Dry Cotton Wipes": "worn textile"
+  "Whoopsie::Whoopsie Wipes Dry Cotton Wipes": "worn textile",
+  "Hario::Hario V60 Metal Dripper (02)": "heated vessel",
+  "Mushie::Mushie Organic Cotton Washcloths": "rinse-off skin"
  }
 }

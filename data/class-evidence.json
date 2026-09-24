@@ -228,6 +228,73 @@
     ]
    },
    "escapeNote": "Cloth diapers and the lines certified totally chlorine free or EWG Verified are outside it."
+  },
+  {
+   "id": "infant-powder-aspiration",
+   "front": "testing",
+   "status": "caution",
+   "headline": "Loose powder near an infant's face is breathed in, whatever it is made of",
+   "detail": "The American Academy of Pediatrics advises against using any baby powder on infants: the particles drift into the airway during application, and aspiration of cornstarch and talc powders is documented in case reports with respiratory injury and deaths. The finding is about the format, a loose powder shaken out near a face, not about the chemistry of the powder, and cornstarch is not a hazard on the list.",
+   "source": "American Academy of Pediatrics, HealthyChildren.org, Diaper Rash; Mofenson et al., Baby powder, a hazard, Pediatrics 1981; Pairaudeau et al., Inhalation of baby powder, BMJ 1991",
+   "year": 2023,
+   "mechanism": "process",
+   "appliesTo": {
+    "cats": [
+     "Baby powder"
+    ]
+   },
+   "confirmedBy": {
+    "any": [
+     "powder",
+     "talc",
+     "cornstarch",
+     "corn starch"
+    ]
+   },
+   "escapedBy": {
+    "any": [
+     "cream",
+     "balm",
+     "paste",
+     "lotion",
+     "ointment",
+     "liquid"
+    ]
+   },
+   "escapeNote": "A cream, balm or paste does the same job with nothing to breathe in."
+  },
+  {
+   "id": "organic-oats-glyphosate",
+   "front": "testing",
+   "status": "caution",
+   "headline": "Organic oats carried detectable glyphosate in 5 of 16 samples EWG tested",
+   "detail": "EWG's 2018 and 2019 rounds found glyphosate in 5 of 16 organic oat based products, none above EWG's 160 ppb children's benchmark, alongside 43 of 45 conventional samples. USDA Organic forbids the herbicide on the crop and does not test the harvest for drift or storage contamination, so the certification is not a residue result. The finding is ingredient borne: it reaches a product because it contains oats, not because of who makes it.",
+   "source": "Environmental Working Group, Breakfast With a Dose of Roundup? (August 2018) and the October 2018 and June 2019 follow ups",
+   "year": 2019,
+   "mechanism": "ingredient",
+   "appliesTo": {
+    "cats": [
+     "Baby food",
+     "Pantry"
+    ]
+   },
+   "confirmedBy": {
+    "any": [
+     "oat",
+     "oats",
+     "oatmeal"
+    ]
+   },
+   "escapedBy": {
+    "any": [
+     "glyphosate residue free",
+     "glyphosate-residue-free",
+     "biochecked",
+     "detox project",
+     "glyphosate non detect"
+    ]
+   },
+   "escapeNote": "A Detox Project Glyphosate Residue Free or BioChecked certificate tests the harvest itself."
   }
  ],
  "_guard": "A finding must name what escapes it. Usually that is a sibling in the same category: loose leaf has no bag, glass is not the measured polymer. Where the whole category carries it, the finding must instead name an alternative outside the category, or it is a fact about the world rather than a way to tell two products apart, and it belongs in an article."
