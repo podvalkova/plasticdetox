@@ -128497,7 +128497,13 @@
       "flagged": 0,
       "worst": null
     },
-    "fronts": {}
+    "fronts": {
+      "formula": {
+        "status": "none",
+        "note": "A durable good has no ingredient list. What it is made of is the materials check.",
+        "origin": "database"
+      }
+    }
   },
   {
     "id": "nature-bee-organics",
@@ -128517,7 +128523,13 @@
       "flagged": 0,
       "worst": null
     },
-    "fronts": {}
+    "fronts": {
+      "formula": {
+        "status": "none",
+        "note": "A durable good has no ingredient list. What it is made of is the materials check.",
+        "origin": "database"
+      }
+    }
   },
   {
     "id": "happsy",
@@ -128537,7 +128549,13 @@
       "flagged": 0,
       "worst": null
     },
-    "fronts": {}
+    "fronts": {
+      "formula": {
+        "status": "none",
+        "note": "A durable good has no ingredient list. What it is made of is the materials check.",
+        "origin": "database"
+      }
+    }
   },
   {
     "id": "brentwood-home",
@@ -128557,7 +128575,13 @@
       "flagged": 0,
       "worst": null
     },
-    "fronts": {}
+    "fronts": {
+      "formula": {
+        "status": "none",
+        "note": "A durable good has no ingredient list. What it is made of is the materials check.",
+        "origin": "database"
+      }
+    }
   },
   {
     "id": "nest-bedding",
@@ -128577,7 +128601,13 @@
       "flagged": 0,
       "worst": null
     },
-    "fronts": {}
+    "fronts": {
+      "formula": {
+        "status": "none",
+        "note": "A durable good has no ingredient list. What it is made of is the materials check.",
+        "origin": "database"
+      }
+    }
   },
   {
     "id": "plushbeds",
@@ -128597,7 +128627,13 @@
       "flagged": 0,
       "worst": null
     },
-    "fronts": {}
+    "fronts": {
+      "formula": {
+        "status": "none",
+        "note": "A durable good has no ingredient list. What it is made of is the materials check.",
+        "origin": "database"
+      }
+    }
   },
   {
     "id": "nook-sleep-systems",
@@ -134748,7 +134784,13 @@
         }
       }
     ],
-    "fronts": {}
+    "fronts": {
+      "formula": {
+        "status": "none",
+        "note": "A durable good has no ingredient list. What it is made of is the materials check.",
+        "origin": "database"
+      }
+    }
   },
   {
     "id": "capri-blue",
@@ -134811,6 +134853,11 @@
         "status": "pass",
         "note": "From Capri Blue Glass Jar Candle: Searched on 2026-09-23. CPSC recall database through the SaferProducts.gov recall API: the 187 recalls matching ProductName=candle were read in full and none names this brand; the 20 candle recalls since 2020 are all fire, burn or laceration hazards. Health Canada recalls and safety alerts: no result. CourtListener RECAP and opinions: no case naming the brand in a",
         "origin": "rollup"
+      },
+      "formula": {
+        "status": "none",
+        "note": "A durable good has no ingredient list. What it is made of is the materials check.",
+        "origin": "database"
       }
     }
   },
@@ -134986,6 +135033,11 @@
         "status": "pass",
         "note": "From Claricomb Beeswax Candle: Searched on 2026-09-24. CPSC recall database through the SaferProducts.gov recall API: the 187 recalls matching ProductName=candle were read in full and none names this brand. Health Canada recalls and safety alerts: no result. CourtListener RECAP and opinions: no case naming the brand in a candle matter. California Proposition 65 sixty day notice list: no notice nam",
         "origin": "rollup"
+      },
+      "formula": {
+        "status": "none",
+        "note": "A durable good has no ingredient list. What it is made of is the materials check.",
+        "origin": "database"
       }
     }
   },
@@ -135048,7 +135100,355 @@
         "status": "pass",
         "note": "From Big Dipper Wax Works Beeswax Aromatherapy Candles: CPSC recall database through the SaferProducts.gov recall API (the 187 recalls matching ProductName=candle read in full), Health Canada, CourtListener RECAP and opinions, and the California Proposition 65 sixty day notice list, all searched 2026-09-24. Nothing names this brand in a product matter; the three CourtListener hits are creditor fil",
         "origin": "rollup"
+      },
+      "formula": {
+        "status": "none",
+        "note": "A durable good has no ingredient list. What it is made of is the materials check.",
+        "origin": "database"
       }
     }
+  },
+  {
+    "id": "green-beaver",
+    "brand": "Green Beaver",
+    "aliases": [
+      "The Green Beaver Company"
+    ],
+    "category": "Personal care",
+    "stance": "careful",
+    "reason": "The verdict depends on the product. The deodorant is one of the more honest sticks in the aisle: every scent ingredient named down to the individual essential oil, allergens declared, nothing behind parfum, and a water and glycerin base gelled with soap rather than the coconut oil and wax paste most natural deodorants use, which is why its plastic tube passes where an oil stick's would not. The toothpaste is the problem. Independent laboratory testing published by Lead Safe Mama in April 2025 measured 195.8 ppb lead, 26.3 ppb cadmium and 53.7 ppb arsenic in the Zesty Orange fluoride free paste, a product the brand markets as great for kids and safe to swallow.",
+    "evidence": "Lead 195.8 ppb in the Zesty Orange toothpaste (Lead Safe Mama, 2025); the deodorant passes on formula and packaging",
+    "alternative": "For toothpaste, Spry Kids Original or Weleda Salt Toothpaste, both of which tested non detect",
+    "sources": [],
+    "fronts": {
+      "formula": {
+        "status": "pass",
+        "note": "From Green Beaver Natural Deodorant: The published ingredient list carries nothing on the hazard list.",
+        "origin": "rollup"
+      },
+      "materials": {
+        "status": "caution",
+        "note": "From Green Beaver Natural Deodorant: A wash or an alcohol based formula in a plastic the maker does not name.",
+        "origin": "rollup"
+      },
+      "legal": {
+        "status": "pass",
+        "note": "From Green Beaver Natural Deodorant: Checked the openFDA food and drug enforcement databases for the recalling firm, the Health Canada recalls and safety alerts database, and a lawsuit and class action search on 2026-09-24. No recall, advisory or action naming this brand found. The lead result on its toothpaste is a testing finding, not a regulatory one.",
+        "origin": "rollup"
+      },
+      "testing": {
+        "status": "caution",
+        "note": "From Green Beaver Fluoride Free Natural Toothpaste: Independent laboratory testing commissioned by Lead Safe Mama and published 2025-04-25. Purity Laboratories case 2503147, sample 2503147-01, tested 2025-03-12 by ICP MS: lead 195.8 ppb, cadmium 26.3 ppb, arsenic 53.7 ppb, mercury under the 5.0 ppb limit of detection. Read off the lab report itself rather than a summary. Rule 4.7 for anything swal",
+        "origin": "rollup"
+      }
+    },
+    "reviewed": true,
+    "generalises": false,
+    "products": [
+      {
+        "name": "Green Beaver Natural Deodorant",
+        "asins": [
+          "B006C5WM80",
+          "B006C5WLEU"
+        ],
+        "matchAll": [
+          [
+            "green beaver",
+            "deodorant"
+          ]
+        ],
+        "verdict": "good",
+        "note": "A water and glycerin stick gelled with sodium stearate, not the coconut oil and wax paste most natural deodorants are, in a plastic twist up tube. Rule 3.1 pairs a water based formula with a polyolefin as a pass, so the tube that makes an oil stick a caution does not make one here. Every scent ingredient is named to the individual essential oil, the allergens are declared, and nothing hides behind parfum. No independent lab has tested it.",
+        "origin": "research",
+        "cat": "Deodorant",
+        "ext": {
+          "frontNotes": {
+            "formula": "The published ingredient list carries nothing on the hazard list.",
+            "testing": "Searched Lead Safe Mama, Mamavation, Consumer Reports and Clean Label Project on 2026-09-24. No independent test of any Green Beaver deodorant found. The Lead Safe Mama post index for 'Green Beaver' returns five posts, all of them the toothpaste testing and its charts. Mamavation's deodorant PFAS investigation, updated through June 2026, names neither this brand nor any of its products in any of its three result groups.",
+            "materials": "A water based formula in a plastic the maker does not name.",
+            "legal": "Checked the openFDA food and drug enforcement databases for the recalling firm, the Health Canada recalls and safety alerts database, and a lawsuit and class action search on 2026-09-24. No recall, advisory or action naming this brand found. The lead result on its toothpaste is a testing finding, not a regulatory one."
+          },
+          "formulaAnswers": {
+            "ingredients": "Propanediol, Aloe Barbadensis Leaf Juice, Glycerin, Sodium Stearate, Polyglycerin-10 Caprylate/Caprate, Tapioca Starch, Sodium Caproyl/Lauroyl Lactyl Lactate, Triethyl Citrate, Salvia Officinalis (Sage) Oil, Ledum Groenlandicum (Labrador Tea) Extract, Citrus Limonum (Lemon) Peel Oil, Citrus Aurantium Dulcis (Orange) Peel Oil, Citrus Bergamia (Bergamot) Peel Oil, Melaleuca Alternifolia (Tea Tree) Leaf Oil, Aqua, Glyceryl Laurate, Citral, Geraniol, Limonene, Linalool.",
+            "prose": "",
+            "complete": true,
+            "verdict": "good",
+            "summary": "The published ingredient list carries nothing on the hazard list.",
+            "flagged": [],
+            "source": "greenbeaver.com/en-us/products/natural-deodorant-citrus, ingredients panel. The Fragrance Free variant is the same base without the citrus oils and the four declared allergens. Every scent ingredient is named to the individual essential oil and the allergens are declared separately, so nothing sits behind parfum or fragrance.",
+            "checked": "2026-09-24"
+          },
+          "testingNote": "Searched Lead Safe Mama, Mamavation, Consumer Reports and Clean Label Project on 2026-09-24. No independent test of any Green Beaver deodorant found. The Lead Safe Mama post index for 'Green Beaver' returns five posts, all of them the toothpaste testing and its charts. Mamavation's deodorant PFAS investigation, updated through June 2026, names neither this brand nor any of its products in any of its three result groups.",
+          "testingDate": "2026-09-24",
+          "materialsList": "plastic",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "aqueous",
+            "heated": false,
+            "mouthed": false,
+            "reuse": "",
+            "use": "leave-on",
+            "material": "plastic",
+            "treatment": "",
+            "treatmentSource": "",
+            "dispenser": "",
+            "lining": "",
+            "certification": "",
+            "certificationSource": "",
+            "source": "White plastic twist up stick tube, read off the listing photograph for B006C5WM80; the maker does not name the resin, so it stays in the harsher unnamed plastic column. The stick is propanediol, aloe juice, glycerin and water gelled with sodium stearate, with polyglycerin-10 caprylate/caprate and glyceryl laurate. Recorded as aqueous rather than surfactant: the soap here is the structurant that makes the stick hold its shape, not a cleansing system, and this is the same construction as the Tom's of Maine aluminium free stick already recorded as a water and glycol based stick. Rule 3.1 pairs a water based formula with plastic as a pass, so the tube that makes the anhydrous Humble and Each & Every sticks a caution does not make one here.",
+            "checked": "2026-09-24"
+          },
+          "legalNote": "Checked the openFDA food and drug enforcement databases for the recalling firm, the Health Canada recalls and safety alerts database, and a lawsuit and class action search on 2026-09-24. No recall, advisory or action naming this brand found. The lead result on its toothpaste is a testing finding, not a regulatory one.",
+          "verdict": "good",
+          "dated": "2026-09-24",
+          "why": "direct evidence on formula, recorded rather than read off a note",
+          "fronts": {
+            "formula": "pass",
+            "materials": "pass",
+            "legal": "pass",
+            "testing": "none"
+          },
+          "frontOrigin": {
+            "formula": "database",
+            "testing": "database",
+            "materials": "database",
+            "legal": "database"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": [
+            "3 packaging-matrix-fail"
+          ]
+        }
+      },
+      {
+        "name": "Green Beaver Fluoride Free Natural Toothpaste",
+        "matchAll": [
+          [
+            "green beaver",
+            "toothpaste"
+          ]
+        ],
+        "verdict": "careful",
+        "note": "Independent testing published by Lead Safe Mama in April 2025 measured 195.8 ppb lead, 26.3 ppb cadmium and 53.7 ppb arsenic in the Zesty Orange flavour, by ICP MS at Purity Laboratories, with mercury non detect at a 5 ppb limit. That sits far below the FDA limit of 10,000 ppb for fluoride free toothpaste, so it is a caution rather than a fail, and far above the 5 ppb lead and cadmium and 10 ppb arsenic levels our standard applies to anything swallowed. Lead in toothpaste rides in on the abrasive, and calcium carbonate is the first ingredient in all three flavours, so the caution covers the line. The brand markets the paste as great for kids and safe to swallow.",
+        "origin": "research",
+        "cat": "Toothpaste",
+        "ext": {
+          "frontNotes": {
+            "formula": "The published ingredient list carries nothing on the hazard list.",
+            "testing": "Independent laboratory testing commissioned by Lead Safe Mama and published 2025-04-25. Purity Laboratories case 2503147, sample 2503147-01, tested 2025-03-12 by ICP MS: lead 195.8 ppb, cadmium 26.3 ppb, arsenic 53.7 ppb, mercury under the 5.0 ppb limit of detection. Read off the lab report itself rather than a summary. Rule 4.7 for anything swallowed sets the bars at 5 ppb lead, 5 ppb cadmium and 10 ppb arsenic, so this is a caution on all three. It is far below the FDA limit of 10,000 ppb that applies to fluoride free toothpaste, which is why it is a caution and not a fail. Rule 4.1 carries the finding across the fluoride free line, because lead in toothpaste rides in on the abrasive and calcium carbonate is the first ingredient in all three flavours.",
+            "materials": "A water based formula in a plastic the maker does not name, rinsed off.",
+            "legal": "Checked the openFDA food and drug enforcement databases for the recalling firm, the Health Canada recalls and safety alerts database, and a lawsuit and class action search on 2026-09-24. No recall, advisory or action naming this brand found. The lead result on its toothpaste is a testing finding, not a regulatory one."
+          },
+          "formulaAnswers": {
+            "ingredients": "Calcium Carbonate, Aqua/Water, Sorbitol, Glycerin, Hydrated Silica, Aroma (Natural Orange), Citrus Aurantium Dulcis (Orange) Peel Oil, Mentha Piperita (Peppermint) Leaf Oil, Menthol, Xylitol, Citrus Grandis (Grapefruit) Seed Extract, Xanthan Gum, Coco-Glucoside, Melaleuca Alternifolia (Tea Tree) Leaf Oil, Geraniol, Limonene, Linalool.",
+            "prose": "",
+            "complete": true,
+            "verdict": "good",
+            "summary": "The published ingredient list carries nothing on the hazard list.",
+            "flagged": [],
+            "source": "greenbeaver.com/en-us/products/fluoride-free-natural-toothpaste-zesty-orange. Calcium carbonate is the first ingredient, with hydrated silica second as the other abrasive. The page states 'Great for Kids and Safe to Swallow' and 'Let your children brush with real toothpaste'.",
+            "checked": "2026-09-24"
+          },
+          "testingResults": [
+            {
+              "analyte": "lead",
+              "value": 195.8,
+              "unit": "ppb",
+              "lab": "Purity Laboratories (ICP MS)",
+              "sample": "Zesty Orange, lot 2025-001"
+            },
+            {
+              "analyte": "cadmium",
+              "value": 26.3,
+              "unit": "ppb",
+              "lab": "Purity Laboratories (ICP MS)",
+              "sample": "Zesty Orange, lot 2025-001"
+            },
+            {
+              "analyte": "arsenic",
+              "value": 53.7,
+              "unit": "ppb",
+              "lab": "Purity Laboratories (ICP MS)",
+              "sample": "Zesty Orange, lot 2025-001"
+            },
+            {
+              "analyte": "mercury",
+              "value": null,
+              "unit": "ppb",
+              "lod": 5.0,
+              "lab": "Purity Laboratories (ICP MS)",
+              "sample": "Zesty Orange, lot 2025-001",
+              "note": "non detect at a 5.0 ppb limit"
+            }
+          ],
+          "testingNote": "Independent laboratory testing commissioned by Lead Safe Mama and published 2025-04-25. Purity Laboratories case 2503147, sample 2503147-01, tested 2025-03-12 by ICP MS: lead 195.8 ppb, cadmium 26.3 ppb, arsenic 53.7 ppb, mercury under the 5.0 ppb limit of detection. Read off the lab report itself rather than a summary. Rule 4.7 for anything swallowed sets the bars at 5 ppb lead, 5 ppb cadmium and 10 ppb arsenic, so this is a caution on all three. It is far below the FDA limit of 10,000 ppb that applies to fluoride free toothpaste, which is why it is a caution and not a fail. Rule 4.1 carries the finding across the fluoride free line, because lead in toothpaste rides in on the abrasive and calcium carbonate is the first ingredient in all three flavours.",
+          "testingDate": "2026-09-24",
+          "materialsList": "plastic",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "aqueous",
+            "heated": false,
+            "mouthed": false,
+            "reuse": "",
+            "use": "rinse-off",
+            "material": "plastic",
+            "treatment": "",
+            "treatmentSource": "",
+            "dispenser": "",
+            "lining": "",
+            "certification": "",
+            "certificationSource": "",
+            "source": "Laminate toothpaste tube with a screw cap, read off the brand's own product photograph. Rule 3.1 pairs an aqueous paste with a polyolefin as a pass. The packaging is not what is wrong with this product.",
+            "checked": "2026-09-24"
+          },
+          "legalNote": "Checked the openFDA food and drug enforcement databases for the recalling firm, the Health Canada recalls and safety alerts database, and a lawsuit and class action search on 2026-09-24. No recall, advisory or action naming this brand found. The lead result on its toothpaste is a testing finding, not a regulatory one.",
+          "verdict": "careful",
+          "dated": "2026-09-24",
+          "why": "section 6: testing is caution",
+          "fronts": {
+            "formula": "pass",
+            "materials": "pass",
+            "legal": "pass",
+            "testing": "caution"
+          },
+          "frontOrigin": {
+            "formula": "database",
+            "testing": "database",
+            "materials": "database",
+            "legal": "database"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "routine",
+    "brand": "Routine",
+    "aliases": [
+      "Routine Natural Beauty"
+    ],
+    "category": "Personal care",
+    "stance": "good",
+    "reason": "Deodorant creams in a glass jar, made in Calgary. The formula is fully disclosed, with every essential oil named and nothing behind parfum, and the baking soda free line runs on magnesium hydroxide, the same active as the deodorants we recommend. A cream is anhydrous, which is the strongest extractant a container can hold, so the glass is doing real work here in a way it would not for a water based product. The screw lid is plastic and closes over the headspace rather than sitting in the cream, and the carton is paper. Nothing against the company appears in the FDA enforcement database, the Health Canada recall database or a lawsuit search. The verdict covers the deodorants, which is what we checked.",
+    "evidence": "Fully disclosed formula on a magnesium hydroxide active, anhydrous cream in glass",
+    "alternative": "",
+    "sources": [],
+    "fronts": {
+      "formula": {
+        "status": "pass",
+        "note": "From Routine Natural Deodorant, The Curator: The published ingredient list carries nothing on the hazard list.",
+        "origin": "rollup"
+      },
+      "materials": {
+        "status": "pass",
+        "note": "From Routine Natural Deodorant, The Curator: In contact with glass, which puts nothing into what it holds; noted and not counted: plastic screw lid, out of the path a person touches.",
+        "origin": "rollup"
+      },
+      "legal": {
+        "status": "pass",
+        "note": "From Routine Natural Deodorant, The Curator: Checked the openFDA food and drug enforcement databases for the recalling firm, the Health Canada recalls and safety alerts database, and a lawsuit and class action search on 2026-09-24. No recall, advisory or action naming this Calgary company found. The BBB profile that appears under the name Routine belongs to an unrelated Texas business.",
+        "origin": "rollup"
+      },
+      "testing": {
+        "status": "none",
+        "note": "From Routine Natural Deodorant, The Curator: Searched Lead Safe Mama, Mamavation, Consumer Reports and Clean Label Project on 2026-09-24. No independent test of this brand found. The Lead Safe Mama post index returns nothing for this brand, and Mamavation's deodorant PFAS investigation, updated through June 2026, does not name it in any result group.",
+        "origin": "rollup"
+      }
+    },
+    "reviewed": true,
+    "generalises": false,
+    "products": [
+      {
+        "name": "Routine Natural Deodorant, The Curator",
+        "asins": [
+          "B01KJ106V2"
+        ],
+        "matchAll": [
+          [
+            "routine",
+            "curator"
+          ],
+          [
+            "routine",
+            "deodorant",
+            "cream"
+          ]
+        ],
+        "verdict": "good",
+        "note": "Coconut oil, magnesium hydroxide and kaolin with cocoa and shea butters, scented only with named essential oils. Baking soda free, which is what separates it from the sticks behind the rash people usually blame on the oils. The jar is glass and the carton is paper, and rule 3.1 pairs an anhydrous cream with glass as a pass; the screw lid is plastic and closes above the cream rather than in it. No independent lab has tested it.",
+        "origin": "research",
+        "cat": "Deodorant",
+        "ext": {
+          "frontNotes": {
+            "formula": "The published ingredient list carries nothing on the hazard list.",
+            "testing": "Searched Lead Safe Mama, Mamavation, Consumer Reports and Clean Label Project on 2026-09-24. No independent test of this brand found. The Lead Safe Mama post index returns nothing for this brand, and Mamavation's deodorant PFAS investigation, updated through June 2026, does not name it in any result group.",
+            "materials": "In contact with glass, which puts nothing into what it holds; noted and not counted: plastic screw lid, out of the path a person touches.",
+            "legal": "Checked the openFDA food and drug enforcement databases for the recalling firm, the Health Canada recalls and safety alerts database, and a lawsuit and class action search on 2026-09-24. No recall, advisory or action naming this Calgary company found. The BBB profile that appears under the name Routine belongs to an unrelated Texas business."
+          },
+          "formulaAnswers": {
+            "ingredients": "cocos nucifera (coconut) oil, magnesium hydroxide, kaolin, zea mays (corn) starch (non-gmo), maranta arundinacea root powder, cera alba/beeswax, theobroma cacao (cocoa) seed butter, butyrospermum parkii (shea) butter, caprylic/capric triglyceride, olea europaea (olive) fruit oil, tocopherol, cetearyl olivate, brassica glycerides, sorbitan olivate, pelargonium roseum leaf oil, eucalyptus globulus oil, helianthus annuus (sunflower) seed oil, pogostemon cablin oil, theobroma cacao (cocoa) extract, calendula officinalis flower extract, picea mariana leaf oil, rosmarinus officinalis (rosemary) leaf extract",
+            "prose": "",
+            "complete": true,
+            "verdict": "good",
+            "summary": "The published ingredient list carries nothing on the hazard list.",
+            "flagged": [],
+            "source": "routinenaturalbeauty.com/products/deo-the-curator, ingredients panel. Magnesium hydroxide is the active and there is no baking soda. Every scent ingredient is named to the individual essential oil, with nothing behind parfum or fragrance.",
+            "checked": "2026-09-24"
+          },
+          "testingNote": "Searched Lead Safe Mama, Mamavation, Consumer Reports and Clean Label Project on 2026-09-24. No independent test of this brand found. The Lead Safe Mama post index returns nothing for this brand, and Mamavation's deodorant PFAS investigation, updated through June 2026, does not name it in any result group.",
+          "testingDate": "2026-09-24",
+          "materialsList": "glass",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "anhydrous",
+            "heated": false,
+            "mouthed": false,
+            "reuse": "",
+            "use": "leave-on",
+            "material": "glass",
+            "treatment": "",
+            "treatmentSource": "",
+            "dispenser": "",
+            "lining": "",
+            "certification": "",
+            "certificationSource": "",
+            "source": "Frosted glass jar with a white plastic screw lid, in a paper carton, read off the listing photograph for B01KJ106V2. The cream sits in the glass; the lid closes over the headspace above it, recorded the same way as the RMS Beauty Lip2Cheek jar, whose plastic cap sits over a coconut oil balm in glass. Rule 3.1 pairs an anhydrous formula with glass as a pass. Routine also runs a refill programme at more than 260 locations where the same jar is refilled.",
+            "checked": "2026-09-24",
+            "nonContact": "plastic screw lid"
+          },
+          "legalNote": "Checked the openFDA food and drug enforcement databases for the recalling firm, the Health Canada recalls and safety alerts database, and a lawsuit and class action search on 2026-09-24. No recall, advisory or action naming this Calgary company found. The BBB profile that appears under the name Routine belongs to an unrelated Texas business.",
+          "verdict": "good",
+          "dated": "2026-09-24",
+          "why": "direct evidence on formula, recorded rather than read off a note",
+          "fronts": {
+            "formula": "pass",
+            "materials": "pass",
+            "legal": "pass",
+            "testing": "none"
+          },
+          "frontOrigin": {
+            "formula": "database",
+            "testing": "database",
+            "materials": "database",
+            "legal": "database"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "rules": [
+            "3 packaging-matrix-fail"
+          ]
+        }
+      }
+    ]
   }
 ]
