@@ -96,7 +96,7 @@
   "status": "pass"
  },
  "Anthony's": {
-  "checked": "2026-08-28",
+  "checked": "2026-09-25",
   "examined": 1,
   "latest": [
    "20251107",
@@ -104,7 +104,11 @@
    "Terminated",
    "Anthony's BBQ"
   ],
-  "total": 1
+  "total": 1,
+  "resolved": true,
+  "status": "pass",
+  "note": "Checked against the FDA enforcement database on 2026-09-25. The one match, a 2025-11-07 undeclared allergen recall of Anthony's Barbecue and Dip-It Sauce by Anthony's BBQ, is a different company from Anthony's Goods. No recall on record for Anthony's Goods.",
+  "adjudicated": "2026-09-25"
  },
  "AquaTru": {
   "checked": "2026-08-31",
@@ -1326,10 +1330,14 @@
   "total": 0
  },
  "Leaf": {
-  "checked": "2026-08-28",
+  "checked": "2026-09-25",
   "examined": 2,
   "latest": null,
-  "total": 0
+  "total": 0,
+  "resolved": true,
+  "status": "pass",
+  "note": "Checked against the FDA enforcement database on 2026-09-25. The firms matching Leaf, Little Leaf Farms and Mighty Leaf Tea, are not Leaf Shave. No recall on record for Leaf Shave, and no CPSC recall of its razors.",
+  "adjudicated": "2026-09-25"
  },
  "Lezat": {
   "checked": "2026-08-31",
@@ -3017,9 +3025,14 @@
  "Boon": {
   "total": 0,
   "examined": 3,
-  "checked": "2026-09-14",
+  "checked": "2026-09-25",
   "source": "cpsc",
-  "latest": null
+  "latest": null,
+  "resolved": true,
+  "status": "caution",
+  "note": "Checked CPSC recall records on 2026-09-25. TOMY International, Boon's owner, recalled the Boon NURSH 8 oz reusable baby bottles on 2026-06-04 for a choking hazard (sold at Walmart), recalled the Boon PIVOT collapsible toddler tower step stools on 2026-07-16 for a risk of serious injury, and recalled the Boon Flair and Flair Elite highchairs on 2023-08-31 for a fall hazard. The NURSH recall is within 24 months and covers the bottle on this row, so it stands as a caution under rule 5.2; three recalls across different products in five years is also the brand pattern rule 5.2 names. https://www.saferproducts.gov/",
+  "adjudicated": "2026-09-25",
+  "eventDate": "2026-06"
  },
  "Brita": {
   "total": 0,
@@ -3056,9 +3069,13 @@
  "CAP": {
   "total": 0,
   "examined": 57,
-  "checked": "2026-09-14",
+  "checked": "2026-09-25",
   "source": "cpsc",
-  "latest": null
+  "latest": null,
+  "resolved": true,
+  "status": "pass",
+  "note": "Checked CPSC recall records on 2026-09-25. The title matches are Time-Cap Labs pharmaceutical packaging recalls and other firms with cap in the name, none of them CAP Barbell. No recall on record for CAP Barbell.",
+  "adjudicated": "2026-09-25"
  },
  "Carote": {
   "total": 0,
@@ -3408,9 +3425,14 @@
  "Hatch": {
   "total": 0,
   "examined": 3,
-  "checked": "2026-09-14",
+  "checked": "2026-09-25",
   "source": "cpsc",
-  "latest": null
+  "latest": null,
+  "resolved": true,
+  "status": "pass",
+  "note": "Checked CPSC recall records on 2026-09-25. Hatch Baby recalled the power adapters sold with the Rest 1st generation sound machine on 2024-07-03 for a shock hazard; the Rest+ on this row is a later generation with its own adapter, and the recall is over 24 months old, so under rule 5.2 it is informational rather than a finding against the product today. A 2013 Brower egg incubator recall matched the word Hatch and is not this company.",
+  "adjudicated": "2026-09-25",
+  "eventDate": "2024-07"
  },
  "Hildon": {
   "total": 0,
@@ -3512,9 +3534,14 @@
  "Kirkland Signature": {
   "total": 0,
   "examined": 3,
-  "checked": "2026-09-14",
+  "checked": "2026-09-25",
   "source": "cpsc",
-  "latest": null
+  "latest": null,
+  "resolved": true,
+  "status": "pass",
+  "note": "Checked CPSC recall records on 2026-09-25. Two 2025-11-06 recalls of Kirkland Signature Valdobbiadene Prosecco bottles (F&F Fine Wines, laceration and closure hazards) and a 2012 Meyer Marketing recall of Kirkland Signature saute pans are different products with no shared mechanism with parchment paper, so under rule 5.2 they do not transfer; the two 2025 recalls are one event and do not make the three in five years the brand pattern rule asks for.",
+  "adjudicated": "2026-09-25",
+  "eventDate": "2025-11"
  },
  "Knix": {
   "total": 0,
@@ -4002,9 +4029,14 @@
  "Tide": {
   "total": 0,
   "examined": 3,
-  "checked": "2026-09-14",
+  "checked": "2026-09-25",
   "source": "cpsc",
-  "latest": null
+  "latest": null,
+  "resolved": true,
+  "status": "pass",
+  "note": "Checked CPSC recall records on 2026-09-25. Procter & Gamble recalled 8.2 million bags of Tide, Gain, Ace and Ariel laundry detergent packets on 2024-04-05 because the outer bag could split and fail child resistant packaging; remedied with a repair kit. Over 24 months old, so under rule 5.2 it is informational rather than a finding against the product today.",
+  "adjudicated": "2026-09-25",
+  "eventDate": "2024-04"
  },
  "TILUCK": {
   "total": 0,
@@ -4817,5 +4849,52 @@
   "note": "Checked the CPSC saferproducts.gov recall service on 2026-09-25. One recall on record for illycaffe S.p.A: 2018-05-10, 8.8 ounce whole bean coffee cans, lid could detach suddenly with force on opening, an injury hazard rather than a contamination one. Closed and more than 24 months old, so informational under rule 5.2 and it does not set the verdict. Three of the four name matches returned belong to other companies (Lilly of New York, Little Willy's, Billy Goat) and were discarded. No lawsuits or regulatory actions found.",
   "resolved": true,
   "status": "pass"
+ },
+ "Athleta": {
+  "total": 0,
+  "examined": 0,
+  "checked": "2026-09-25",
+  "source": "cpsc",
+  "latest": null,
+  "note": "Checked CPSC recall records on 2026-09-25. No recall on record for Athleta."
+ },
+ "Boody": {
+  "total": 0,
+  "examined": 0,
+  "checked": "2026-09-25",
+  "source": "cpsc",
+  "latest": null,
+  "note": "Checked CPSC recall records on 2026-09-25. No recall on record for Boody."
+ },
+ "Lululemon": {
+  "total": 0,
+  "examined": 1,
+  "checked": "2026-09-25",
+  "source": "cpsc",
+  "latest": null
+ },
+ "Vuori": {
+  "total": 0,
+  "examined": 0,
+  "checked": "2026-09-25",
+  "source": "cpsc",
+  "latest": null,
+  "note": "Checked CPSC recall records on 2026-09-25. No recall on record for Vuori."
+ },
+ "TILLYOU": {
+  "total": 0,
+  "examined": 0,
+  "checked": "2026-09-25",
+  "source": "cpsc",
+  "latest": null,
+  "note": "Checked CPSC recall records on 2026-09-25. No recall on record for TILLYOU."
+ },
+ "Redwood Cloth Co": {
+  "total": 0,
+  "examined": 0,
+  "checked": "2026-09-25",
+  "source": "cpsc",
+  "latest": null,
+  "note": "Checked CPSC recall records on 2026-09-25. No recall on record for Redwood Cloth Co."
  }
 }
