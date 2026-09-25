@@ -685,6 +685,7 @@ NO_INGREDIENT_CATS = {
     # filled in, and the material read then landed its polyethylene backing on
     # the formula front as a fail.
     "Baby changing", "Teaware", "Cleaning tools", "Cloth wipes", "Kitchen",
+    "Reusable cloth pads",
 }
 
 # Formulations. The question applies and only a label read may answer it.
@@ -831,6 +832,17 @@ def read_formula(entry, cat=""):
                 if (t in _apr.DISCLOSURE_FAILURE or t in _apr.LABEL_DISCLOSURE) and (
                         spelled_out(low, m.end()) or allergens_named(low)):
                     continue
+                # "Styrene/Acrylates Copolymer" is a film former, a finished
+                # polymer that names its monomer the way "polyester" does, and
+                # the hazard entry is for polystyrene in contact. Reading the
+                # word inside the copolymer's INCI name failed Zoya's polish
+                # on a term meant for a takeaway cup.
+                if t == "styrene" and re.search(r"styrene\s*/\s*acrylates?\s+copolymer", low[max(0, m.start()-2):m.end()+24]):
+                    continue
+                # Rule 2.1a's Milliways case: "gum base" is an umbrella until
+                # the maker says what it is, and "chicle gum base" says it.
+                if t == "gum base" and re.search(r"chicle[^,;()]{0,40}gum base|gum base[^,;]{0,20}\(?chicle", low):
+                    continue
                 out.append(t)
                 break
         return out
@@ -894,6 +906,89 @@ def read_formula(entry, cat=""):
         return ("caution", "The published ingredient list hides composition behind "
                 + ", ".join(sorted(hidden)[:3]), "database", sorted(hidden))
     return "pass", "The published ingredient list carries nothing on the hazard list", "database", []
+
+
+RANKS = {"pass": 1, "none": 1, "caution": 2, "fail": 3}
+INGESTED_CATS = {"Toothpaste", "Baby food", "Baby formula", "Formula", "Supplements",
+                 "Prenatal vitamins", "Electrolytes", "Pantry", "Sea salt", "Bottled water",
+                 "Tea", "Coffee", "Chewing gum", "Oral care", "Kids oral care"}
+SKIN_CATS = {"Sunscreen", "Diaper cream", "Body lotion", "Baby lotion", "Skincare", "Makeup",
+             "Deodorant", "Baby wipes", "Personal care", "Soap", "Shampoo", "Conditioner",
+             "Cosmetics", "Baby skincare"}
+BABY_WORDS = re.compile(r"\b(baby|babies|infant|newborn|toddler|kids?|children|child)\b", re.I)
+
+
+def _ppb(r):
+    """A result's value in ppb, or None where there is no number to judge."""
+    v = r.get("value")
+    if v in (None, "") or str(r.get("outcome") or "").lower().startswith("non"):
+        return None
+    try:
+        v = float(str(v).replace(",", ""))
+    except ValueError:
+        return None
+    unit = str(r.get("unit") or "ppb").lower().replace("µ", "u")
+    if unit in ("ppm", "mg/kg", "mg/l", "ug/g"):
+        return v * 1000
+    return v
+
+
+def floor_from_results(results, product, brand):
+    """The lowest status rule 4.7 allows for these measurements.
+
+    Ingested: the Baby Food Safety Act levels are a caution bar (lead and
+    cadmium 5 ppb, arsenic 10, mercury 2), and a limit a regulator applies to
+    the product type is a fail: FDA's lead action levels for baby food (10
+    ppb, 20 for root vegetables and dry cereal), FDA's 100 ppb inorganic
+    arsenic level for infant rice cereal, and Germany's BVL 500 ppb lead
+    figure for toothpaste, the line its enforcement applies to the EU ban.
+    On skin: the BVL baby column and Health Canada adult column are caution
+    bars, and FDA's 10 ppm lead maximum for cosmetics is a fail.
+    """
+    cat = product.get("cat") or brand.get("category") or ""
+    name = product.get("name") or ""
+    baby = bool(((product.get("ext") or {}).get("exposure") or {}).get("baby")) \
+        or cat in ("Diaper cream", "Baby lotion", "Baby wipes", "Baby food", "Baby formula") \
+        or bool(BABY_WORDS.search(f"{name} {cat}"))
+    worst, why = None, []
+    for r in results:
+        a = str(r.get("analyte") or "").lower()
+        v = _ppb(r)
+        if v is None:
+            continue
+        metal = next((m for m in ("lead", "cadmium", "arsenic", "mercury") if m in a), None)
+        if not metal:
+            continue
+        status = None
+        if cat in INGESTED_CATS:
+            bar = {"lead": 5, "cadmium": 5, "arsenic": 10, "mercury": 2}[metal]
+            if v >= bar:
+                status = "caution"
+                why.append(f"{metal} {v:g} ppb is above the {bar} ppb ingested bar")
+            if cat == "Toothpaste" and metal == "lead" and v >= 500:
+                status = "fail"
+                why.append("and above the 500 ppb lead figure Germany's BVL applies to toothpaste, rule 4.7: fail")
+            if cat in ("Baby food",) and metal == "lead":
+                limit = 20 if re.search(r"cereal|sweet potato|carrot|root", name, re.I) else 10
+                if v >= limit:
+                    status = "fail"
+                    why.append(f"and above FDA's {limit} ppb lead action level for this baby food, rule 4.7: fail")
+            if "inorganic" in a and metal == "arsenic" and re.search(r"rice cereal", name, re.I) and v >= 100:
+                status = "fail"
+                why.append("and above FDA's 100 ppb inorganic arsenic level for infant rice cereal, rule 4.7: fail")
+        elif cat in SKIN_CATS:
+            col = ({"lead": 500, "cadmium": 100, "arsenic": 500, "mercury": 100} if baby
+                   else {"lead": 10000, "cadmium": 3000, "arsenic": 3000, "mercury": 1000})
+            if v >= col[metal]:
+                status = "caution"
+                why.append(f"{metal} {v:g} ppb is above the {col[metal]} ppb "
+                           f"{'baby' if baby else 'adult'} column bar for a product left on skin")
+            if metal == "lead" and v >= 10000:
+                status = "fail"
+                why.append("and above FDA's 10 ppm lead maximum for cosmetics, rule 4.7: fail")
+        if status and RANKS[status] > RANKS.get(worst, 0):
+            worst = status
+    return worst, ("Judged against rule 4.7: " + "; ".join(why) + ".") if worst else ""
 
 
 def keys_for(brand, product, ev=None):
@@ -1090,6 +1185,16 @@ def main():
                 p.setdefault("ext", {})["testingResults"] = test["results"]
                 if test.get("lod"):
                     p["ext"]["testingLod"] = test["lod"]
+            # Rule 4.7 as arithmetic. Every bar in that section is a published
+            # figure, and until September 2026 each record's status was judged
+            # by whoever wrote it, which is how a toothpaste at 32 ppb read
+            # caution while a sunscreen at 77 ppb read pass. The numbers are
+            # judged here against the written table and can only tighten what
+            # a person recorded, never loosen it.
+            floor, floor_why = floor_from_results(test.get("results") or [], p, b)
+            if floor and RANKS.get(floor, 0) > RANKS.get(test.get("status"), 0):
+                test = dict(test, status=floor,
+                            note=((test.get("note") or "").rstrip() + " " + floor_why).strip())
             if test.get("status"):
                 te = p.setdefault("ext", {})
                 te.setdefault("fronts", {})["testing"] = test["status"]

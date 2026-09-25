@@ -859,14 +859,25 @@ everything ingested:
   inorganic arsenic (August 2020): 100 ppb, the level the State of Alaska's
   routine testing found Beech-Nut's Single Grain Rice Cereal above in June
   2021, which recalled the lot and ended the product.
-- Above the bar but under every limit a regulator applies: `caution`, however
-  far above. Colgate Total at 539 ppb lead and Redmond Earthpaste at 3,500 ppb
-  are both eighty and seven hundred times the ingested bar, and both are a
-  caution, because no regulator sets a lead limit for toothpaste below Health
-  Canada's 10 ppm. The card carries the number and the multiple. A number this
-  size reads as a skip and is not one under this table, which is the honest
-  state of the evidence rather than a gap in it: the bar is a proposal and a
-  limit is a law, and the table names only published figures.
+- For toothpaste, lead at or above 500 ppb: `fail`. That is the figure
+  Germany's BVL published in 2017 as the technically avoidable level for lead
+  in toothpaste, the line its enforcement applies to the EU ban on lead in
+  cosmetics, and the strictest published toothpaste figure there is; the same
+  document supplies the baby skin column below. Set by Anya on 25 September
+  2026, when the only alternative was leaving Redmond Earthpaste at 3,500 ppb
+  and Colgate Total at 539 ppb reading careful beside Crest at 399, because
+  no regulator on this continent sets a toothpaste limit under 10 ppm. Crest,
+  Burt's Bees at 446 and Davids at 457 sit under the line and stay a caution,
+  with the number and the multiple on the card.
+- Above the bar but under every published limit: `caution`, however far
+  above. The bar is a proposal and a limit is a law, and the table names only
+  published figures.
+
+Since 25 September 2026 `tools/apply-front-evidence.py` judges every recorded
+measurement against this table and can only tighten the status a person
+recorded, never loosen it. Before that each record was judged by whoever wrote
+it, and a toothpaste at 32 ppb read caution while a sunscreen at 77 ppb read
+pass.
 - Non-detect for lead, cadmium and arsenic at limits at or below their bars:
   `pass`. Commercial metals panels rarely report mercury below 5 ppb, so a
   mercury non-detect at up to 5 ppb counts, and the card says its limit sat
