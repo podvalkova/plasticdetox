@@ -3346,15 +3346,29 @@ async function handleVetKnown(request, env, corsOrigin) {
   const brand = (u.searchParams.get("brand") || "").trim().slice(0, 80);
   const product = (u.searchParams.get("product") || "").trim().slice(0, 160);
   const url = (u.searchParams.get("url") || "").trim().slice(0, 500);
-  if (!brand && !product && !url) return json({ ok: true, found: false }, 200, corsOrigin);
-  for (const k of researchKeys(brand, product, null, asinFromUrl(url))) {
+  // What the person originally typed or pasted. A record is keyed on that, and
+  // the page asking for it usually only knows the name the research settled on.
+  const asked = (u.searchParams.get("q") || "").trim().slice(0, 200);
+  if (!brand && !product && !url && !asked) return json({ ok: true, found: false }, 200, corsOrigin);
+  const keys = researchKeys(brand, product, null, asinFromUrl(url || asked));
+  if (asked) for (const k of researchKeys(asked, "", null, "")) {
+    if (!keys.includes(k)) keys.push(k);
+  }
+  for (const k of keys) {
     const hit = await env.BRAND_SEARCHES.get(k, { type: "json" }).catch(() => null);
     const rec = hit && hit.alias
       ? await env.BRAND_SEARCHES.get(hit.alias, { type: "json" }).catch(() => null)
       : hit;
-    if (!rec || !rec.fronts || (rec.engine || 0) < VET_ENGINE) continue;
+    if (!rec || !rec.fronts) continue;
+    // An answer from an older engine is still the answer somebody paid for.
+    // The engine gate belongs on REUSING one for a new check, where a stale
+    // method should be re-run; refusing to SHOW it just made a paid report
+    // disappear, which is how Anya's own past checks came back "no report for
+    // that yet". It is shown, and marked as researched under an older method.
+    const stale = (rec.engine || 0) < VET_ENGINE;
     return json({ ok: true, found: true, verdict: rec.verdict, capNote: rec.capNote || "",
                   fronts: rec.fronts, at: rec.at, identified: rec.identified || null,
+                  stale: stale, engine: rec.engine || 0,
                   // Whether asking again would repair our own failure, which is
                   // what decides whether it costs the customer anything.
                   repairable: canRepair(rec) },

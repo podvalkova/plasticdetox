@@ -278,6 +278,10 @@
   const qs = new URLSearchParams(location.search);
   const SUBJECT = (qs.get("b") || qs.get("brand") || "").trim();
   const LINK = (qs.get("url") || "").trim();
+  // What was originally typed or pasted, when the page that linked here knows
+  // it. A record is keyed on that, and the name the research settled on is
+  // often not the same string.
+  const ASKED = (qs.get("q") || "").trim();
   let SUBJECT_LABEL = SUBJECT, FRONTS = {};
 
   function goCheck(e) {
@@ -368,7 +372,7 @@
       $("navPass").hidden = false;
     });
 
-    if (!SUBJECT && !LINK) {
+    if (!SUBJECT && !LINK && !ASKED) {
       showState("Which report?", "A report opens from a check. Run one, or pick a product from your checks.",
         '<a class="btn btn-primary" href="brand-check.html">Run a check</a>');
       return;
@@ -378,6 +382,7 @@
     const params = new URLSearchParams();
     if (SUBJECT) params.set("brand", SUBJECT);
     if (LINK) params.set("url", LINK);
+    if (ASKED) params.set("q", ASKED);
     let d = null;
     try {
       const r = await fetch(VetRun.WORKER + "/vet-known?" + params.toString());
@@ -387,7 +392,7 @@
     if (!d || !d.found) {
       showState("No report for that yet",
         "Nobody has run a check on this product, so there is nothing to show. A check takes about a minute and joins the public database afterwards.",
-        '<a class="btn btn-primary" href="brand-check.html?b=' + encodeURIComponent(SUBJECT || LINK) + '">Check it now</a>');
+        '<a class="btn btn-primary" href="brand-check.html?b=' + encodeURIComponent(SUBJECT || ASKED || LINK) + '">Check it now</a>');
       return;
     }
 
@@ -401,7 +406,11 @@
     const when = String(d.at || "").slice(0, 10);
     $("meta").innerHTML = (when ? "<span>Checked " + esc(when) + "</span>" : "")
       + "<span>Four checks, every one cited</span>"
-      + "<span>Awaiting review before it joins the public database</span>";
+      + "<span>Awaiting review before it joins the public database</span>"
+      // An older answer is still the answer that was paid for, and saying which
+      // it is costs nothing. Checking the product again on Product Check
+      // researches it fresh, because the engine gate still applies there.
+      + (d.stale ? '<span style="color:var(--careful)">Researched under an earlier version of our method</span>' : "");
 
     const v = d.verdict || "unrated";
     const tally = { good: 0, careful: 0, other: 0 };

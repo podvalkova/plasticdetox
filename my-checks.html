@@ -287,7 +287,9 @@
       + '<div class="dim">' + esc(shortDate(c.at)) + "</div>"
       + '<div><span class="pill ' + esc(v) + '"><i></i>' + esc(VERDICT_LABEL[v] || v) + "</span></div>"
       + (c.free ? '<div class="free">Free, in database</div>' : '<div class="dim">1 check</div>')
-      + '<a class="act" href="report.html?b=' + encodeURIComponent(name) + '">View report &rarr;</a>'
+      + '<a class="act" href="report.html?b=' + encodeURIComponent(name)
+        + (c.asked && c.asked !== name ? "&q=" + encodeURIComponent(c.asked) : "")
+        + '">View report &rarr;</a>'
       + "</div>";
   }
 
