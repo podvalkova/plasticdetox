@@ -133,8 +133,12 @@
     .box h2 { font-size: 17px; font-weight: 700; margin: 0 0 10px; letter-spacing: -0.01em; }
     .box p { font-size: 14.5px; line-height: 1.6; color: var(--body); }
     .box .btn { width: 100%; margin-top: 14px; padding: 13px 18px; font-size: 15px; }
-    .box input { width: 100%; height: 46px; margin-top: 12px; padding: 0 14px; font: inherit; font-size: 15px;
-                 border: 1px solid var(--border-strong); border-radius: 12px; background: var(--surface); outline: none; }
+    .box input, .box textarea { width: 100%; margin-top: 12px; padding: 12px 14px; font: inherit; font-size: 15px;
+                 border: 1px solid var(--border-strong); border-radius: 12px; background: var(--surface);
+                 outline: none; color: var(--text); }
+    .box input { height: 46px; padding: 0 14px; }
+    .box textarea { resize: vertical; min-height: 84px; line-height: 1.5; }
+    .box input:focus, .box textarea:focus { border-color: var(--accent); }
     .pass-box { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
     .pass-box .dim { font-size: 13.5px; color: var(--muted); }
     .pass-box b { font-size: 16.5px; font-weight: 700; }
@@ -213,7 +217,7 @@
           <div class="meta" id="meta"></div>
           <div class="acts">
             <button class="btn btn-ghost" type="button" onclick="shareReport()">Share report</button>
-            <button class="btn btn-ghost" type="button" onclick="document.getElementById('reqEmail').focus()">Ask a person to look</button>
+            <button class="btn btn-ghost" type="button" onclick="document.getElementById('tellDetail').focus()">Tell us something</button>
           </div>
 
           <div class="verdict" id="verdict"></div>
@@ -223,26 +227,22 @@
         </div>
 
         <aside class="side">
-          <!-- "Have a lab result we missed" asked for the one thing almost
-               nobody has, and read as a door only a chemist could open. The
-               offer is wider than that and always was. -->
+          <!-- One box, not two. "Have a lab result we missed" asked for the one
+               thing almost nobody has and read as a door only a chemist could
+               open; beside it sat a second box that also said "tell us this is
+               wrong". They were the same conversation split in half, and a
+               reader had to guess which half they were in. -->
           <div class="box wash">
             <h2>Know something we missed?</h2>
-            <p>A test result, a recall, a reformulation, a label that says something different from the listing, or a hunch that this answer is not right. Ask for a hand review: it is free, it does not use a check, and a person answers within about 2 business days.</p>
-            <input id="reqEmail" type="email" placeholder="you@email.com" aria-label="Your email">
-            <button class="btn btn-primary" type="button" onclick="requestReview()">Request hand review</button>
-            <p class="src" id="reqNote" style="margin-top:10px"></p>
+            <p>A test result, a recall, a reformulation, a label that says something different from the listing, or simply an answer that does not look right. A person reads every one of these and corrects the record.</p>
+            <textarea id="tellDetail" rows="3" placeholder="What did we get wrong, or what should we look at?" aria-label="What we missed or got wrong"></textarea>
+            <input id="tellEmail" type="email" placeholder="Email, if you want the answer back" aria-label="Your email, optional">
+            <button class="btn btn-primary" type="button" onclick="sendTell()">Send</button>
+            <p class="src" id="tellNote" style="margin-top:10px">Leaving an email is optional. With one, we answer within about 2 business days. Either way it costs nothing and uses no check.</p>
           </div>
           <div class="box pass-box" id="passBox" hidden>
             <span><span class="dim">Your pass &middot; never expires</span><br><b id="passLeft"></b></span>
             <a href="my-checks.html">My checks &rarr;</a>
-          </div>
-          <div class="box">
-            <h2>Spotted an error on this page?</h2>
-            <p>A wrong source, a mixed up product, a sentence that does not read right. This goes straight to whoever reviews the record, and needs no email from you.</p>
-            <input id="flagDetail" type="text" placeholder="e.g. the ingredient list is on the listing" aria-label="What we got wrong">
-            <button class="btn btn-ghost" type="button" onclick="sendFlag()">Send</button>
-            <p class="src" id="flagNote" style="margin-top:10px"></p>
           </div>
         </aside>
       </div>
@@ -325,35 +325,48 @@
     gtag('event', 'report_share', { brand: SUBJECT_LABEL });
   }
 
-  function requestReview() {
-    const email = ($("reqEmail").value || "").trim();
-    const note = $("reqNote");
-    if (!email || !email.includes("@")) { note.textContent = "Please enter a valid email."; note.style.color = "var(--skip)"; return; }
-    fetch(VetRun.WORKER + "/brand-request", {
-      method: "POST", headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ brand: SUBJECT_LABEL, email: email }),
-    }).catch(() => {});
-    gtag('event', 'report_hand_review', { brand: SUBJECT_LABEL });
-    note.style.color = "var(--good)";
-    note.textContent = "Thank you. A person will research it and email you.";
-    $("reqEmail").disabled = true;
-  }
-
-  function sendFlag() {
-    const detail = ($("flagDetail").value || "").trim();
-    const note = $("flagNote");
-    if (!detail) { note.textContent = "Tell us what is wrong and we will look."; note.style.color = "var(--skip)"; return; }
+  /**
+   * One way to tell us anything about this report.
+   *
+   * There were two, a hand review request and an error report, which did
+   * different things at our end and read identically at the reader's. The
+   * email is what separates them now, and it is the reader's choice rather
+   * than a fork they have to understand: with one we answer, without one it is
+   * still read and still corrects the record.
+   *
+   * The answer we gave travels with it either way. A complaint about a verdict
+   * cannot be judged without the verdict that was complained about.
+   */
+  function sendTell() {
+    const detail = ($("tellDetail").value || "").trim();
+    const email = ($("tellEmail").value || "").trim();
+    const note = $("tellNote");
+    if (!detail) {
+      note.textContent = "Tell us what to look at and a person will.";
+      note.style.color = "var(--skip)";
+      $("tellDetail").focus();
+      return;
+    }
+    if (email && !email.includes("@")) {
+      note.textContent = "That email does not look right. Leave it blank if you would rather not.";
+      note.style.color = "var(--skip)";
+      return;
+    }
     const summary = ORDER.map((k) => FRONTS[k]
       ? k + ": " + FRONTS[k].status + " - " + (FRONTS[k].note || "") : "").filter(Boolean).join("\n");
     fetch(VetRun.WORKER + "/brand-report", {
       method: "POST", headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ brand: SUBJECT_LABEL, issue: "check result disputed",
+      body: JSON.stringify({ brand: SUBJECT_LABEL, email: email,
+                             issue: email ? "report disputed, reply wanted" : "report disputed",
                              detail: detail + "\n\n--- the check returned ---\n" + summary }),
     }).catch(() => {});
-    gtag('event', 'report_flag', { brand: SUBJECT_LABEL });
+    gtag('event', 'report_tell', { brand: SUBJECT_LABEL, reply: Boolean(email) });
     note.style.color = "var(--good)";
-    note.textContent = "Thank you. A person will read this and correct the record.";
-    $("flagDetail").disabled = true;
+    note.textContent = email
+      ? "Thank you. A person will look at this and email you, usually within 2 business days."
+      : "Thank you. A person will read this and correct the record.";
+    $("tellDetail").disabled = true;
+    $("tellEmail").disabled = true;
   }
 
   function showState(title, body, cta) {
