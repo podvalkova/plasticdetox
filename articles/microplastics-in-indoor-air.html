@@ -3,8 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Native App Store banner, iPhone and iPad Safari only. -->
-  <meta name="apple-itunes-app" content="app-id=6807191826">
+  <!-- Our own app banner, not Apple's. Apple's prints the App Store seller
+       name and gives the page no say in it, which on an individual developer
+       account is a person's legal name above every page on the site. -->
+  <script src="/js/app-banner.js" defer></script>
   <title>Microplastics in Indoor Air: Sources and Fixes | Plastic Detox</title>
   <meta name="description" content="Indoor air contains thousands of microplastic particles per cubic meter. Learn where airborne microplastics come from, which rooms are worst, and practical steps to reduce your exposure at home.">
   <link rel="icon" type="image/png" sizes="48x48" href="../favicon.png">
@@ -314,40 +316,6 @@
 
     <p><strong>Kitchens and bathrooms</strong> with hard flooring and fewer textiles generally have lower concentrations, though plastic cutting boards, synthetic sponges, and plastic containers still contribute.</p>
 
-    <div class="infographic">
-      <div class="infographic-title">Microplastic Fiber Concentration by Room</div>
-      <svg viewBox="0 0 520 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bar chart comparing microplastic fiber concentration in different rooms. Bedroom with carpet: 8,000 to 17,000 fibers per cubic meter. Living room with carpet: 5,000 to 12,000. Laundry room during dryer use: 4,000 to 15,000. Bedroom with hard floor: 2,000 to 6,000. Kitchen: 1,500 to 4,000. Bathroom: 1,000 to 3,000.">
-        <rect x="0" y="0" width="520" height="340" fill="#fafaf9" rx="8"/>
-        <text x="130" y="28" font-family="Inter,sans-serif" font-size="10" fill="#78716c" font-weight="600">MICROPLASTIC FIBERS PER CUBIC METER (APPROXIMATE)</text>
-
-        <text x="15" y="73" font-family="Inter,sans-serif" font-size="10.5" fill="#1c1917" font-weight="600">Bedroom (carpet)</text>
-        <rect x="175" y="58" width="280" height="22" fill="#dc2626" rx="4"/>
-        <text x="460" y="73" font-family="Inter,sans-serif" font-size="10" fill="#dc2626" font-weight="700">17K</text>
-
-        <text x="15" y="118" font-family="Inter,sans-serif" font-size="10.5" fill="#1c1917" font-weight="600">Laundry (dryer on)</text>
-        <rect x="175" y="103" width="247" height="22" fill="#dc2626" rx="4"/>
-        <text x="427" y="118" font-family="Inter,sans-serif" font-size="10" fill="#dc2626" font-weight="700">15K</text>
-
-        <text x="15" y="163" font-family="Inter,sans-serif" font-size="10.5" fill="#1c1917" font-weight="600">Living room (carpet)</text>
-        <rect x="175" y="148" width="198" height="22" fill="#d97706" rx="4"/>
-        <text x="378" y="163" font-family="Inter,sans-serif" font-size="10" fill="#d97706" font-weight="700">12K</text>
-
-        <text x="15" y="208" font-family="Inter,sans-serif" font-size="10.5" fill="#1c1917" font-weight="600">Bedroom (hard floor)</text>
-        <rect x="175" y="193" width="99" height="22" fill="#7c3aed" rx="4"/>
-        <text x="279" y="208" font-family="Inter,sans-serif" font-size="10" fill="#7c3aed" font-weight="700">6K</text>
-
-        <text x="15" y="253" font-family="Inter,sans-serif" font-size="10.5" fill="#1c1917" font-weight="600">Kitchen</text>
-        <rect x="175" y="238" width="66" height="22" fill="#16a34a" rx="4"/>
-        <text x="246" y="253" font-family="Inter,sans-serif" font-size="10" fill="#16a34a" font-weight="700">4K</text>
-
-        <text x="15" y="298" font-family="Inter,sans-serif" font-size="10.5" fill="#1c1917" font-weight="600">Bathroom</text>
-        <rect x="175" y="283" width="49" height="22" fill="#16a34a" rx="4"/>
-        <text x="229" y="298" font-family="Inter,sans-serif" font-size="10" fill="#16a34a" font-weight="700">3K</text>
-
-        <text x="15" y="332" font-family="Inter,sans-serif" font-size="9" fill="#78716c">Upper range values shown. Ranges vary widely by home setup, flooring, and textile density.</text>
-      </svg>
-      <p style="font-size:0.75rem;color:var(--text-muted);margin-top:0.75rem;margin-bottom:0;">Data from Dris et al. (2017), Vianello et al. (2019), and Zhang et al. (2020). Values represent approximate upper ranges and vary significantly based on flooring type, furnishings, and ventilation.</p>
-    </div>
 
     <div class="callout callout-warning">
       <div class="callout-title">Bedrooms Deserve the Most Attention</div>
