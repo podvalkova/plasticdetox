@@ -50,6 +50,12 @@
     .nav-links a { color: var(--muted); transition: color 0.15s; }
     .nav-links a:hover { color: var(--text); }
     .nav-links a.active { color: var(--text); font-weight: 700; }
+    /* The pass sits beside the nav on a wide screen and under it on a phone,
+       where the nav is a single non wrapping line that scrolls: inside it, the
+       pill was simply cut off at the right edge. It is a sibling of the nav
+       rather than a child of it, so the column layout below puts it on its own
+       line without any of this having to fight the overflow. */
+    .nav-links { margin-left: auto; }
     .nav-pass { display: inline-flex; align-items: center; gap: 8px; height: 38px; padding: 0 15px;
       border-radius: 999px; background: var(--surface); border: 1px solid var(--border-strong);
       font-size: 14px; font-weight: 650; color: var(--text); }
@@ -159,6 +165,7 @@
       .nav-links::-webkit-scrollbar { display: none; }
       .nav-links a { font-size: 14px; white-space: nowrap; }
       .nav-home { display: none; }
+      .nav-pass { order: 3; }
       .shell { padding: 0 24px; }
       .cols { grid-template-columns: 1fr; gap: 28px; }
       .side { position: static; }
@@ -182,8 +189,8 @@
         <a href="store.html">Store</a>
         <a href="resources.html">Resources</a>
         <a href="brand-check.html">Product Check</a>
-        <a class="nav-pass" id="navPass" href="my-checks.html" hidden><i></i><span id="navPassText"></span></a>
       </nav>
+      <a class="nav-pass" id="navPass" href="my-checks.html" hidden><i></i><span id="navPassText"></span></a>
     </div>
   </header>
 

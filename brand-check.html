@@ -144,6 +144,12 @@
     .nav-links a { color: var(--muted); transition: color 0.15s; }
     .nav-links a:hover { color: var(--text); }
     .nav-links a.active { color: var(--text); font-weight: 700; }
+    /* The pass sits beside the nav on a wide screen and under it on a phone,
+       where the nav is a single non wrapping line that scrolls: inside it, the
+       pill was simply cut off at the right edge. It is a sibling of the nav
+       rather than a child of it, so the column layout below puts it on its own
+       line without any of this having to fight the overflow. */
+    .nav-links { margin-left: auto; }
 
     /* What a check buys, said before somebody spends one. */
     .covers { padding-top: 84px; }
@@ -432,6 +438,7 @@
       .nav-links::-webkit-scrollbar { display: none; }
       .nav-links a { font-size: 14px; white-space: nowrap; }
       .nav-home { display: none; }
+      .nav-pass { order: 3; }
       .card { padding: 26px 24px; }
     }
   
@@ -1169,12 +1176,12 @@
           + '<a href="vet.html#buy">Get more &rarr;</a>';
       line.hidden = false;
       // And in the nav, where it is on screen whatever somebody scrolls to.
-      const nav = document.querySelector(".nav-links");
-      if (nav && !document.getElementById("navPass")) {
+      const head = document.querySelector(".site-head-in");
+      if (head && !document.getElementById("navPass")) {
         const a = document.createElement("a");
         a.id = "navPass"; a.className = "nav-pass"; a.href = "my-checks.html";
         a.innerHTML = '<i></i>' + left + ' check' + plural + ' left';
-        nav.appendChild(a);
+        head.appendChild(a);
       }
     })();
 
