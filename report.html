@@ -213,7 +213,7 @@
           <div class="meta" id="meta"></div>
           <div class="acts">
             <button class="btn btn-ghost" type="button" onclick="shareReport()">Share report</button>
-            <button class="btn btn-ghost" type="button" onclick="document.getElementById('reqEmail').focus()">Request hand review</button>
+            <button class="btn btn-ghost" type="button" onclick="document.getElementById('reqEmail').focus()">Ask a person to look</button>
           </div>
 
           <div class="verdict" id="verdict"></div>
@@ -223,9 +223,12 @@
         </div>
 
         <aside class="side">
+          <!-- "Have a lab result we missed" asked for the one thing almost
+               nobody has, and read as a door only a chemist could open. The
+               offer is wider than that and always was. -->
           <div class="box wash">
-            <h2>Have a lab result we missed?</h2>
-            <p>Ask for a hand review. It is free, it does not use a check, and a person answers within about 2 business days.</p>
+            <h2>Know something we missed?</h2>
+            <p>A test result, a recall, a reformulation, a label that says something different from the listing, or a hunch that this answer is not right. Ask for a hand review: it is free, it does not use a check, and a person answers within about 2 business days.</p>
             <input id="reqEmail" type="email" placeholder="you@email.com" aria-label="Your email">
             <button class="btn btn-primary" type="button" onclick="requestReview()">Request hand review</button>
             <p class="src" id="reqNote" style="margin-top:10px"></p>
@@ -235,8 +238,8 @@
             <a href="my-checks.html">My checks &rarr;</a>
           </div>
           <div class="box">
-            <h2>Something wrong with this?</h2>
-            <p>Tell us what we got wrong and a person will read it and correct the record.</p>
+            <h2>Spotted an error on this page?</h2>
+            <p>A wrong source, a mixed up product, a sentence that does not read right. This goes straight to whoever reviews the record, and needs no email from you.</p>
             <input id="flagDetail" type="text" placeholder="e.g. the ingredient list is on the listing" aria-label="What we got wrong">
             <button class="btn btn-ghost" type="button" onclick="sendFlag()">Send</button>
             <p class="src" id="flagNote" style="margin-top:10px"></p>
