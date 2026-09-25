@@ -225,9 +225,6 @@
     .ext-teaser:hover { background: var(--accent-light); color: var(--accent-deep); }
     .ext-teaser b { font-weight: 800; }
 
-    .assurances { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 30px; margin-top: 22px; }
-    .assurances div { display: flex; align-items: flex-start; gap: 10px; font-size: 15.5px; color: var(--body); text-align: left; }
-    .assurances b { color: var(--accent); font-weight: 800; }
 
     /* ===== RESULT ===== */
     .result { scroll-margin-top: 96px; }
@@ -416,9 +413,6 @@
       .scan-btn { order: 1; margin-left: auto; }
       .check-btn { order: 3; flex: 1 1 100%; padding: 16px 24px; }
       .suggestions { top: calc(100% + 8px); }
-      /* One per line, ticks in a column, so a line that wraps does not leave
-         its tick stranded halfway across the screen. */
-      .assurances { flex-direction: column; align-items: flex-start; width: fit-content; margin-inline: auto; gap: 9px; }
       .step-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .check-row { grid-template-columns: 32px minmax(0, 1fr); gap: 12px; padding: 14px; }
       .mark { width: 30px; height: 30px; }
@@ -575,11 +569,6 @@
               <button class="check-btn" onclick="if(searchEl.value.trim())lookup(searchEl.value)">Check product &rarr;</button>
               <div class="suggestions" id="suggestions"></div>
             </div>
-          </div>
-          <div class="assurances">
-            <div><b>&#10003;</b>Free if it is already in our database</div>
-            <div><b>&#10003;</b>A product nobody has checked uses 1 check</div>
-            <div><b>&#10003;</b>On a phone you can scan the barcode</div>
           </div>
           <!-- A pass was a footnote under the brand count and read as one. It
                sits here now, beside the thing it pays for, and says how much is
@@ -1067,8 +1056,42 @@
       return null;
     }
 
+    /**
+     * A barcode reader for the browsers that do not ship one.
+     *
+     * Chrome and Android have BarcodeDetector built in. Safari does not, which
+     * is most of the phones anybody would scan a shelf with. The polyfill is
+     * about 200KB, so it is never part of the page: it arrives on the first tap
+     * of Scan, on the device that needs it, and the sheet says so while it
+     * loads rather than showing a black rectangle.
+     */
+    let detectorReady = null;
+    function loadDetector() {
+      if (window.BarcodeDetector) return Promise.resolve(true);
+      if (detectorReady) return detectorReady;
+      detectorReady = new Promise((resolve) => {
+        // Pinned, and the plain script build rather than the module one, so it
+        // runs in every Safari that gets this far and cannot change under us.
+        const s = document.createElement("script");
+        s.src = "https://cdn.jsdelivr.net/npm/barcode-detector@3.2.2/dist/iife/polyfill.js";
+        s.onload = () => resolve(Boolean(window.BarcodeDetector));
+        s.onerror = () => resolve(false);
+        document.head.appendChild(s);
+      });
+      return detectorReady;
+    }
+
     async function startScan() {
       const sheet = $("scanSheet"), video = $("scanVideo"), hint = $("scanHint");
+      if (!window.BarcodeDetector) {
+        sheet.hidden = false;
+        hint.textContent = "Getting the scanner ready\u2026";
+        const ok = await loadDetector();
+        if (!ok) {
+          hint.textContent = "Scanning is not available in this browser. You can type the name instead.";
+          return;
+        }
+      }
       try {
         scanStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } });
       } catch (e) {
@@ -1153,10 +1176,15 @@
       }
     })();
 
-    // Only offer it where it will actually work, and only where anyone would
-    // want it. A coarse pointer is the honest test for "this is a phone in a
-    // shop" rather than a laptop, whose webcam points at the reader's face.
-    if (window.BarcodeDetector && navigator.mediaDevices && navigator.mediaDevices.getUserMedia
+    // Offered wherever there is a camera and a coarse pointer, which is the
+    // honest test for "a phone in a shop" rather than a laptop whose webcam
+    // points at the reader's face.
+    //
+    // It used to also require window.BarcodeDetector, which Safari does not
+    // have, so the one device this feature exists for was the one device that
+    // never saw the button. The decoder is fetched on the first tap instead,
+    // and only where the browser has none of its own.
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia
         && window.matchMedia && window.matchMedia("(pointer: coarse)").matches) {
       $("scanBtn").hidden = false;
     }
