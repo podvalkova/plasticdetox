@@ -1903,6 +1903,10 @@
      * links live and they pay differently.
      */
     function productBuyUrl(brand, p) {
+      // A product sold only by its maker has no ASIN and a URL of its own.
+      // Avocado, Obasan, Toki Mats and the rest are not on Amazon, and a
+      // tagged search for them would be both forbidden and useless.
+      if (p.buy && !isSearchUrl(p.buy)) return p.buy;
       const asin = (p.asins || [])[0];
       if (!asin) return "";
       const chosen = brand.buy || "";

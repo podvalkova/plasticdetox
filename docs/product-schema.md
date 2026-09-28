@@ -41,6 +41,7 @@ Last revised 2026-08-31.
 {
   "name": "Coterie Diapers",
   "asins": ["B0C2DCB188"],       // exact listings this row speaks about
+  "buy": "https://…",            // only for a product Amazon does not sell
   "match": ["colgate total"],    // adjacent phrase in a listing title
   "matchAll": [["pampers","diaper"]],  // words that must all appear, any order
   "verdict": "good",             // EDITORIAL. what the site says.
@@ -59,6 +60,7 @@ Three mechanisms, most specific first:
 | Field | Matches | Use for |
 |---|---|---|
 | `asins` | that exact listing | a product we researched by hand |
+| `buy` | nothing, it is not a matcher | where to buy a product sold only direct |
 | `match` | an adjacent phrase in the title | a named line, "Colgate Total" |
 | `matchAll` | every word present, any order | a whole line, `["pampers","diaper"]` |
 
