@@ -280,6 +280,8 @@
     .product-info { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
     .product-name { font-size: 14.5px; font-weight: 650; color: var(--text); }
     .product-note { font-size: 13.5px; color: var(--muted); line-height: 1.5; }
+    .brand-context { font-size: 14.5px; line-height: 1.6; color: var(--body); background: var(--chip);
+                     border-radius: 12px; padding: 13px 16px; }
     .product-buy { align-self: flex-start; margin-top: 6px; font-size: 13.5px; font-weight: 650;
                    color: var(--accent); }
     .product-buy:hover { color: var(--accent-deep); text-decoration: underline; }
@@ -780,7 +782,7 @@
      separately for ten minutes each, so without it a browser can hold a new
      page against an old script and call a function that is not there yet.
      Bump it whenever vet-run.js changes. -->
-<script src="js/vet-run.js?v=5"></script>
+<script src="js/vet-run.js?v=8"></script>
 <script>
     const WORKER_URL = "https://plasticdetox-quiz-email.plasticdetox.workers.dev";
     // A product row can be unrated in the data (typed and ruled both), and
@@ -1229,7 +1231,22 @@
       // The ASIN first, because that is the key the database is built on.
       let m = (hit && hit.asin && ASIN_INDEX[hit.asin]) || findExact(query);
       if (!m && name && name !== query) m = findExact(name);
-      if (m) return showResult(m);
+      if (m) {
+        // Which of that brand's products they actually asked about. Somebody
+        // typing a whole product name was getting the brand's verdict, which
+        // is a different answer and sometimes a harsher one: the Cuisinart
+        // PerfecTemp kettle is a careful and the brand is a skip.
+        //
+        // Only when the query says more than the brand name does. Typing
+        // "24Bottles" is a question about 24Bottles, and answering it with
+        // their one bottle is answering a question nobody asked.
+        const said = norm(name || query), brandWords = norm(m.brand).split(" ");
+        const extra = said.split(" ").filter(w => w && brandWords.indexOf(w) < 0);
+        const asked = extra.length || (hit && hit.asin)
+          ? VetRun.productFor(m, { asin: hit && hit.asin, title: name || query })
+          : null;
+        return showResult(m, asked);
+      }
       if (name && name !== query) searchEl.value = name;
       showUnknown(name, raw);
     }
@@ -1238,9 +1255,9 @@
     // like. Under a centred field it is no longer beside the copy explaining
     // it, it is simply an answer to a question nobody asked, sitting where the
     // reader's own answer will go.
-    function showResult(b) { renderBrand(b); }
+    function showResult(b, p) { renderBrand(b, p); }
 
-    function renderBrand(b) {
+    function renderBrand(b, asked) {
       {
         history.replaceState(null, "", "?b=" + encodeURIComponent(b.brand));
         gtag('event', 'brand_check', { brand: b.brand, verdict: b.stance });
@@ -1359,12 +1376,27 @@
           realSrc.map(sourceLink).join("") +
           '</div></div>';
       }
+      // What the reader asked about decides the headline. Asking about one
+      // kettle and being shown the whole company's verdict is a different
+      // answer, and where the brand is the harsher of the two it is a worse
+      // one that product has not earned.
+      const askedVerdict = asked
+        ? ((asked.ext && asked.ext.verdict) || asked.verdict || b.stance)
+        : b.stance;
+      const headStance = asked ? askedVerdict : b.stance;
+      const headName = asked ? asked.name : b.brand;
+      const headReason = asked && asked.note ? asked.note : b.reason;
       resultEl.innerHTML =
         '<article class="card">' +
-          '<div class="verdict-row"><span class="badge ' + b.stance + '"><span class="dot"></span>' + STANCE_LABEL[b.stance] + '</span>' +
+          '<div class="verdict-row"><span class="badge ' + headStance + '"><span class="dot"></span>' + (STANCE_LABEL[headStance] || headStance) + '</span>' +
           '<span class="brand-cat">' + esc(b.category) + '</span></div>' +
-          '<h2 class="brand-name">' + esc(b.brand) + '</h2>' +
-          '<p class="reason">' + esc(b.reason) + '</p>' +
+          '<h2 class="brand-name">' + esc(headName) + '</h2>' +
+          '<p class="reason">' + esc(headReason) + '</p>' +
+          (asked
+            ? '<div class="meta-block"><div class="brand-context">This is one ' + esc(b.brand)
+              + ' product. The brand overall is <span class="badge ' + b.stance + '" style="padding:3px 9px;font-size:10.5px">'
+              + (STANCE_LABEL[b.stance] || b.stance) + '</span> ' + esc(b.reason) + '</div></div>'
+            : "") +
           rollupHtml + productsHtml + cautionHtml + buyHtml + evHtml + altHtml + srcHtml +
         '</article>';
       focusResult();

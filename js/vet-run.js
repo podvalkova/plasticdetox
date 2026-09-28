@@ -239,6 +239,137 @@ window.VetRun = (function () {
     return String(hit.text || "").replace(/[:\-–—]+\s*$/, "").trim().slice(0, 70);
   }
 
+
+  /**
+   * Which product row a typed query is actually about.
+   *
+   * Ported from the app's match.js, which has had this right for a while. The
+   * website did not use it, so Product Check found the brand and stopped:
+   * somebody typing "Cuisinart PerfecTemp 1.7-Liter Electric Kettle" got
+   * Cuisinart the brand, a skip, when that kettle's own row says careful. They
+   * asked about one kettle and were handed a harsher verdict belonging to the
+   * company's other products.
+   *
+   * Rule 1.1 is inside the matcher, in the same form the app uses: a title
+   * naming one product must never be answered by a sibling carrying a BETTER
+   * verdict. A worse sibling may still answer, because adverse evidence is
+   * allowed to travel and a warning shown in error costs nobody their health.
+   */
+  function pnorm(s) {
+    return String(s || "").toLowerCase().replace(/[^a-z0-9]+/g, " ").replace(/\s+/g, " ").trim();
+  }
+
+  function productFor(brand, opts) {
+    var o = opts || {};
+    var rows = (brand && brand.products) || [];
+    if (o.asin) {
+      var exact = rows.find(function (p) {
+        return Array.isArray(p.asins) && p.asins.indexOf(o.asin) >= 0;
+      });
+      if (exact) return exact;
+    }
+    if (!o.title) return null;
+    var low = " " + pnorm(o.title) + " ";
+
+    // Tolerate the singular/plural split between an editorial name and a real
+    // listing title: we write "Aveeno Sunscreens", the label says "Sunscreen".
+    // A unit written the way a listing writes it, and the way a person types
+    // it, are the same word. The matchers are authored from Amazon titles, so
+    // the Cuisinart kettle's group asks for "7l" while somebody searching
+    // types "1.7 Liter", and one token out of four missing threw the whole
+    // match away: they got the brand's skip instead of that kettle's careful.
+    var UNIT = { l: ["liter", "litre"], ml: ["milliliter", "millilitre"], oz: ["ounce", "ounces"],
+                 qt: ["quart", "quarts"], g: ["gram", "grams"], kg: ["kilogram", "kilograms"] };
+    var hasWord = function (w) {
+      var n = pnorm(w);
+      if (!n) return false;
+      if (low.indexOf(" " + n + " ") >= 0) return true;
+      if (n.slice(-1) === "s" && low.indexOf(" " + n.slice(0, -1) + " ") >= 0) return true;
+      if (low.indexOf(" " + n + "s ") >= 0) return true;
+      var m = n.match(/^(\d+)(l|ml|oz|qt|g|kg)$/);
+      if (m && UNIT[m[2]]) {
+        return UNIT[m[2]].concat([m[2]]).some(function (word) {
+          return low.indexOf(" " + m[1] + " " + word + " ") >= 0;
+        });
+      }
+      return false;
+    };
+
+    var best = null, bestLen = 0, bestDirect = false, bestEvidence = -1;
+    var isDirect = function (p) { return p.origin !== "brand-line"; };
+    var evidenceOf = function (p) {
+      var f = (p.ext && p.ext.fronts) || {};
+      return Object.keys(f).filter(function (k) {
+        var v = f[k];
+        return v && v !== "unassessed" && v !== "unknown";
+      }).length;
+    };
+    var RANK = { skip: 0, careful: 1, unrated: 2, good: 3 };
+    var rankOf = function (p) {
+      var v = (p.ext || {}).verdict;
+      return RANK[v] === undefined ? 2 : RANK[v];
+    };
+    var namesItself = function (p) {
+      var n = pnorm(p.name || "");
+      return !!n && low.indexOf(" " + n + " ") >= 0;
+    };
+    var better = function (p, len, d) {
+      if (best && namesItself(best) && !namesItself(p) && rankOf(p) > rankOf(best)) return false;
+      if (namesItself(p) && best && !namesItself(best)) return true;
+      if (d !== bestDirect) return d;
+      var e = evidenceOf(p);
+      if (e !== bestEvidence) return e > bestEvidence;
+      return len > bestLen;
+    };
+
+    rows.forEach(function (p) {
+      if ((p.matchNot || []).some(hasWord)) return;
+      (p.match || []).forEach(function (phrase) {
+        var needle = pnorm(phrase);
+        if (!needle || low.indexOf(needle) < 0) return;
+        var d = isDirect(p);
+        if (better(p, needle.length, d)) {
+          best = p; bestLen = needle.length; bestDirect = d; bestEvidence = evidenceOf(p);
+        }
+      });
+      (p.matchAll || []).forEach(function (group) {
+        if (!group.length || !group.every(hasWord)) return;
+        var weight = group.join("").length;
+        var d = isDirect(p);
+        if (better(p, weight, d)) {
+          best = p; bestLen = weight; bestDirect = d; bestEvidence = evidenceOf(p);
+        }
+      });
+      // The row's own name, which the app gets from `match` and we often do
+      // not: "Foton Pearled Candle, scented" is a row nobody wrote a matcher
+      // for, and typing it should still find it.
+      var own = pnorm(p.name || "");
+      if (own && own.split(" ").length > 1 && own.split(" ").every(hasWord)) {
+        var d2 = isDirect(p);
+        if (better(p, own.length, d2)) {
+          best = p; bestLen = own.length; bestDirect = d2; bestEvidence = evidenceOf(p);
+        }
+      }
+      // A model name is an identifier, and one is enough. "PerfecTemp" belongs
+      // to exactly one Cuisinart row, so somebody typing it has named that
+      // kettle whether or not they also typed its capacity. The test is that
+      // the word tells this row apart from its siblings: a long word every row
+      // shares, "stainless", identifies nothing and is ignored.
+      own.split(" ").forEach(function (word) {
+        if (word.length < 8 || !hasWord(word)) return;
+        var owners = rows.filter(function (q) {
+          return pnorm(q.name || "").split(" ").indexOf(word) >= 0;
+        });
+        if (owners.length !== 1) return;
+        var d3 = isDirect(p);
+        if (better(p, word.length, d3)) {
+          best = p; bestLen = word.length; bestDirect = d3; bestEvidence = evidenceOf(p);
+        }
+      });
+    });
+    return best;
+  }
+
   // The worker answers with four step keys and both pages have to name them
   // the same way. They did not: vet.html said "Recalls & lawsuits" and Product
   // Check said "Lawsuits", so a recall finding was printed under a heading that
@@ -251,5 +382,6 @@ window.VetRun = (function () {
   };
 
   return { WORKER: WORKER, getPass: getPass, setPass: setPass, balance: balance, passInfo: passInfo,
-           run: run, STEP: STEP, linkish: linkish, parseLink: parseLink, linkName: linkName };
+           run: run, STEP: STEP, linkish: linkish, parseLink: parseLink, linkName: linkName,
+           productFor: productFor };
 })();
