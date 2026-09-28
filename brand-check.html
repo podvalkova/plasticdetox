@@ -280,6 +280,9 @@
     .product-info { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
     .product-name { font-size: 14.5px; font-weight: 650; color: var(--text); }
     .product-note { font-size: 13.5px; color: var(--muted); line-height: 1.5; }
+    .product-buy { align-self: flex-start; margin-top: 6px; font-size: 13.5px; font-weight: 650;
+                   color: var(--accent); }
+    .product-buy:hover { color: var(--accent-deep); text-decoration: underline; }
 
     .rollup-note {
       background: var(--careful-bg); border: 1px solid var(--careful-border); border-left: 3px solid var(--careful);
@@ -1248,11 +1251,13 @@
         const altMatch = findAltBrand(b.alternative);
         const altLabel = "Better: " + esc(b.alternative);
         let altInner;
-        if (altMatch && altMatch.stance === "good" && !altMatch.nobuy) {
-          // The alternative is a vetted good brand, so send the click straight
-          // to its product page through our affiliate link (its curated buy
-          // URL when one exists, campaign links included).
-          const altUrl = altMatch.buy || ("https://www.amazon.com/s?k=" + encodeURIComponent(altMatch.brand) + "&tag=plasticdetox-20");
+        const altUrl = altMatch && altMatch.stance === "good" && !altMatch.nobuy
+          && altMatch.buy && !isSearchUrl(altMatch.buy) ? altMatch.buy : "";
+        if (altUrl) {
+          // The alternative is a vetted good brand with a link somebody chose,
+          // so send the click straight there. Where there is no chosen link we
+          // used to invent a tagged Amazon search; now the reader gets that
+          // brand's own card instead, which is more use to them anyway.
           altInner = '<a class="alt-link" href="' + esc(altUrl) + '" target="_blank" rel="noopener sponsored" onclick="gtag(\'event\',\'brand_alt_click\',{brand:\'' + jsAttr(b.brand) + '\',alt:\'' + jsAttr(altMatch.brand) + '\'})">' + altLabel + ' &rarr;</a>';
         } else if (altMatch) {
           altInner = '<a class="alt-link" onclick="searchEl.value=\'' + jsAttr(altMatch.brand) + '\';lookup(\'' + jsAttr(altMatch.brand) + '\');window.scrollTo({top:0,behavior:\'smooth\'})">' + altLabel + ' &rarr;</a>';
@@ -1262,6 +1267,10 @@
         altHtml = '<div class="meta-block"><div class="meta-label">Better alternative</div>' + altInner + '</div>';
       }
       let productsHtml = "";
+      // Whether any product on this card carries its own link. A brand link is
+      // only ever a fallback for a brand whose products we do not list, which
+      // is mostly the direct sold ones with no ASIN to point at.
+      let hasProductLink = false;
       // Rows that are not products. "Whole range" and other generated rows are
       // this brand's own verdict projected onto a category, so listing them
       // would repeat the headline back as if it were a second finding.
@@ -1300,10 +1309,18 @@
         productsHtml = '<div class="meta-block"><div class="meta-label">By product</div><div class="product-list">' +
           ordered.map(p => {
             const st = shownVerdict(p);
+            // A good product is a thing somebody can go and buy, and this is
+            // the only row on the card that names one. The link used to sit on
+            // the brand instead, which is not a thing anybody buys, and it
+            // never once got clicked.
+            const link = st === "good" ? productBuyUrl(b, p) : "";
+            if (link) hasProductLink = true;
             return '<div class="product-row ' + st + '">' +
               '<span class="mini-badge ' + st + '"><span class="dot"></span>' + STANCE_LABEL[st] + '</span>' +
               '<div class="product-info"><span class="product-name">' + esc(p.name) + '</span>' +
               (p.note ? '<span class="product-note">' + esc(p.note) + '</span>' : '') +
+              (link ? '<a class="product-buy" href="' + esc(link) + '" target="_blank" rel="noopener sponsored"'
+                + ' onclick="gtag(\'event\',\'product_buy\',{brand:\'' + jsAttr(b.brand) + '\'})">Buy it &rarr;</a>' : '') +
               '</div></div>';
           }).join("") +
           '</div></div>';
@@ -1324,8 +1341,13 @@
       }
       let evHtml = b.evidence ? '<div class="meta-block"><div class="meta-label">Evidence</div><span class="evidence-chip">' + esc(b.evidence) + '</span></div>' : "";
       let buyHtml = "";
-      if (b.stance === "good" && !b.nobuy) {
-        const buyUrl = b.buy || ("https://www.amazon.com/s?k=" + encodeURIComponent(b.brand) + "&tag=plasticdetox-20");
+      // Only where somebody has chosen the link by hand. There used to be a
+      // fallback that searched Amazon for the brand name with our tag on it,
+      // which published a tagged search URL on 241 cards, and the house rule
+      // forbids exactly that. A brand with no chosen link now gets no link,
+      // and its products carry their own.
+      if (b.stance === "good" && !b.nobuy && b.buy && !isSearchUrl(b.buy) && !hasProductLink) {
+        const buyUrl = b.buy;
         buyHtml = '<div class="meta-block"><a class="buy-link" href="' + esc(buyUrl) + '" target="_blank" rel="noopener sponsored" onclick="gtag(\'event\',\'brand_buy\',{brand:\'' + jsAttr(b.brand) + '\'})">' +
           '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>' +
           'Shop ' + esc(b.brand) + ' &rarr;</a></div>';
@@ -1861,6 +1883,32 @@
     // did nothing. Escape for JavaScript first, then for the attribute; the
     // browser decodes the entities back before it parses the script.
     function jsAttr(s) { return esc((s || "").replace(/\\/g, "\\\\").replace(/'/g, "\\'")); }
+
+    /**
+     * A tagged Amazon search link is the one link the house rules forbid.
+     *
+     * It reads as a recommendation and lands on a results page we do not
+     * control, next to whatever Amazon decides to put there, including the
+     * products we tell people to avoid. Anything matching this is dropped
+     * rather than published.
+     */
+    function isSearchUrl(u) { return /amazon\.[a-z.]+\/s(\?|\/)/i.test(String(u || "")); }
+
+    /**
+     * Where to buy one vetted product.
+     *
+     * The ASIN is already on the row: 369 good products carry one and not a
+     * single one of them was a link until now. A brand's own chosen URL wins
+     * when it names this same product, because that is where the campaign
+     * links live and they pay differently.
+     */
+    function productBuyUrl(brand, p) {
+      const asin = (p.asins || [])[0];
+      if (!asin) return "";
+      const chosen = brand.buy || "";
+      if (chosen && !isSearchUrl(chosen) && chosen.indexOf(asin) >= 0) return chosen;
+      return "https://www.amazon.com/dp/" + encodeURIComponent(asin) + "?tag=plasticdetox-20";
+    }
     function articleTitle(file) {
       return file.replace(/\.html$/, "").replace(/-/g, " ").replace(/\b\w/g, c => c.toUpperCase())
         .replace(/Pfas/g, "PFAS").replace(/Bpa/g, "BPA").replace(/101/g, "101");
