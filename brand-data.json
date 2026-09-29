@@ -482,7 +482,7 @@
     "brand": "365 by Whole Foods Market",
     "category": "Multi-category",
     "stance": "careful",
-    "reason": "A store label spanning many categories, so a verdict on one product does not carry to another. The sea salt carries no published third party heavy metal or microplastic testing.",
+    "reason": "A store label spanning many categories, so a verdict on one product does not carry to another. The sea salt carries no published third party heavy metal or microplastic testing. Its 365 Organic Ground Cinnamon fared worse in Lead Safe Mama's testing: 16 ppb lead and 120 ppb cadmium in 2024, then 109.6 ppb lead and 165.7 ppb cadmium in a 2025 retest of the same product, showing that one clean-ish result does not hold from batch to batch.",
     "evidence": "Verdicts here are per product",
     "sources": [
       "microplastics-in-salt-and-pantry-staples.html"
@@ -605,6 +605,103 @@
           }
         },
         "cat": "Sea salt"
+      },
+      {
+        "name": "365 Organic Ground Cinnamon",
+        "asins": [],
+        "verdict": "careful",
+        "note": "Lead Safe Mama, LLC independent third-party lab testing (2025): lead 109.6 ppb, cadmium 165.7 ppb, mercury <5, arsenic <10. The proposed 2021 action levels for food ingested by children are 5 ppb lead, 5 ppb cadmium, 2 ppb mercury and 10 ppb arsenic; this result is at or above the bar on lead, cadmium, mercury.",
+        "origin": "hand",
+        "source": "lead-tested-cinnamon-and-spice-brands.html",
+        "cat": "Pantry",
+        "ext": {
+          "frontNotes": {
+            "formula": "No ingredient list recorded.",
+            "legal": "Checked recall records on 2026-08-31. The 365 label has routine food recalls on other products (2025 allergen and salad kit recalls, resolved); none involve the sea salt, and a recall on a sibling product does not transfer.",
+            "testing": "Lead Safe Mama, LLC independent third-party lab testing (2025): lead 109.6 ppb, cadmium 165.7 ppb, mercury <5, arsenic <10. The proposed 2021 action levels for food ingested by children are 5 ppb lead, 5 ppb cadmium, 2 ppb mercury and 10 ppb arsenic; this result is at or above the bar on lead, cadmium, mercury."
+          },
+          "formulaAnswers": {
+            "ingredients": "",
+            "prose": "",
+            "complete": false,
+            "verdict": "open",
+            "summary": "No ingredient list recorded.",
+            "flagged": [],
+            "source": "",
+            "checked": ""
+          },
+          "legalNote": "Checked recall records on 2026-08-31. The 365 label has routine food recalls on other products (2025 allergen and salad kit recalls, resolved); none involve the sea salt, and a recall on a sibling product does not transfer.",
+          "testingResults": [
+            {
+              "analyte": "lead",
+              "lab": "independent third-party laboratory for Lead Safe Mama, LLC",
+              "lod": "5 ppb",
+              "outcome": "detected",
+              "unit": "ppb",
+              "value": 109.6,
+              "year": 2025
+            },
+            {
+              "analyte": "cadmium",
+              "lab": "independent third-party laboratory for Lead Safe Mama, LLC",
+              "lod": "5 ppb",
+              "outcome": "detected",
+              "unit": "ppb",
+              "value": 165.7,
+              "year": 2025
+            },
+            {
+              "analyte": "mercury",
+              "lab": "independent third-party laboratory for Lead Safe Mama, LLC",
+              "lod": "5 ppb",
+              "outcome": "non-detect",
+              "unit": "ppb",
+              "value": null,
+              "year": 2025
+            },
+            {
+              "analyte": "arsenic (total)",
+              "lab": "independent third-party laboratory for Lead Safe Mama, LLC",
+              "lod": "10 ppb",
+              "outcome": "non-detect",
+              "unit": "ppb",
+              "value": null,
+              "year": 2025
+            }
+          ],
+          "testingNote": "Lead Safe Mama, LLC independent third-party lab testing (2025): lead 109.6 ppb, cadmium 165.7 ppb, mercury <5, arsenic <10. The proposed 2021 action levels for food ingested by children are 5 ppb lead, 5 ppb cadmium, 2 ppb mercury and 10 ppb arsenic; this result is at or above the bar on lead, cadmium, mercury.",
+          "testingDate": "2025",
+          "exposure": {
+            "type": "food",
+            "level": "medium",
+            "score": 6.0,
+            "baby": false,
+            "route": "ingestion",
+            "duration": "minutes",
+            "retained": "swallowed",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "Eaten, so whatever is in it arrives whole."
+          },
+          "verdict": "careful",
+          "dated": "2026-09-29",
+          "why": "section 6: testing is caution",
+          "fronts": {
+            "formula": "unassessed",
+            "materials": "unassessed",
+            "legal": "pass",
+            "testing": "caution"
+          },
+          "frontOrigin": {
+            "legal": "database",
+            "testing": "database"
+          },
+          "scope": "none",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
       }
     ],
     "fronts": {
@@ -1139,7 +1236,7 @@
             "why": "Left on the face all day."
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -1232,7 +1329,7 @@
             "why": "Left on the face all day."
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -2025,7 +2122,7 @@
             "why": "for a baby, which is high whatever the arithmetic says"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -2410,7 +2507,7 @@
           "testingNote": "No independent lab test of this product found as of September 2026 (searched Lead Safe Mama, Mamavation, Consumer Reports).",
           "testingDate": "2026-09-11",
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -2977,9 +3074,10 @@
     "brand": "Amazon Grocery",
     "category": "Multi-category",
     "stance": "careful",
-    "reason": "Amazon's own grocery label across many categories, so a finding on one product says nothing about another. The bottled water is single use PET; the sea salt has no published third party metal testing.",
+    "reason": "Amazon's own grocery label across many categories, so a finding on one product says nothing about another. The bottled water is single use PET; the sea salt has no published third party metal testing. Its Amazon Grocery Ground Cinnamon fared worse: Lead Safe Mama's October 2025 independent lab test found lead at 545.4 ppb and cadmium at 301.2 ppb, both well above the proposed action level, plus the highest arsenic reading of any cinnamon tested to date.",
     "evidence": "Verdicts here are per product",
     "sources": [
+      "lead-tested-cinnamon-and-spice-brands.html",
       "plastic-in-groceries-what-really-matters.html"
     ],
     "article": "plastic-in-groceries-what-really-matters.html",
@@ -3265,6 +3363,103 @@
           }
         },
         "cat": "Tea"
+      },
+      {
+        "name": "Amazon Grocery Ground Cinnamon",
+        "asins": [],
+        "verdict": "careful",
+        "note": "Lead Safe Mama, LLC independent third-party lab testing (2025): lead 545.4 ppb, cadmium 301.2 ppb, mercury 10.55 ppb, arsenic 31.38 ppb. The proposed 2021 action levels for food ingested by children are 5 ppb lead, 5 ppb cadmium, 2 ppb mercury and 10 ppb arsenic; this result is at or above the bar on lead, cadmium, mercury, arsenic.",
+        "origin": "hand",
+        "source": "lead-tested-cinnamon-and-spice-brands.html",
+        "cat": "Pantry",
+        "ext": {
+          "frontNotes": {
+            "formula": "No ingredient list recorded.",
+            "testing": "Lead Safe Mama, LLC independent third-party lab testing (2025): lead 545.4 ppb, cadmium 301.2 ppb, mercury 10.55 ppb, arsenic 31.38 ppb. The proposed 2021 action levels for food ingested by children are 5 ppb lead, 5 ppb cadmium, 2 ppb mercury and 10 ppb arsenic; this result is at or above the bar on lead, cadmium, mercury, arsenic.",
+            "legal": "Checked recall records on 2026-08-31. Predecessor private labels had 2025 food recalls, resolved; none involve sea salt."
+          },
+          "formulaAnswers": {
+            "ingredients": "",
+            "prose": "",
+            "complete": false,
+            "verdict": "open",
+            "summary": "No ingredient list recorded.",
+            "flagged": [],
+            "source": "",
+            "checked": ""
+          },
+          "testingResults": [
+            {
+              "analyte": "lead",
+              "lab": "independent third-party laboratory for Lead Safe Mama, LLC",
+              "lod": "5 ppb",
+              "outcome": "detected",
+              "unit": "ppb",
+              "value": 545.4,
+              "year": 2025
+            },
+            {
+              "analyte": "cadmium",
+              "lab": "independent third-party laboratory for Lead Safe Mama, LLC",
+              "lod": "5 ppb",
+              "outcome": "detected",
+              "unit": "ppb",
+              "value": 301.2,
+              "year": 2025
+            },
+            {
+              "analyte": "mercury",
+              "lab": "independent third-party laboratory for Lead Safe Mama, LLC",
+              "lod": "2 ppb",
+              "outcome": "detected",
+              "unit": "ppb",
+              "value": 10.55,
+              "year": 2025
+            },
+            {
+              "analyte": "arsenic (total)",
+              "lab": "independent third-party laboratory for Lead Safe Mama, LLC",
+              "lod": "10 ppb",
+              "outcome": "detected",
+              "unit": "ppb",
+              "value": 31.38,
+              "year": 2025
+            }
+          ],
+          "testingNote": "Lead Safe Mama, LLC independent third-party lab testing (2025): lead 545.4 ppb, cadmium 301.2 ppb, mercury 10.55 ppb, arsenic 31.38 ppb. The proposed 2021 action levels for food ingested by children are 5 ppb lead, 5 ppb cadmium, 2 ppb mercury and 10 ppb arsenic; this result is at or above the bar on lead, cadmium, mercury, arsenic.",
+          "testingDate": "2025",
+          "exposure": {
+            "type": "food",
+            "level": "medium",
+            "score": 6.0,
+            "baby": false,
+            "route": "ingestion",
+            "duration": "minutes",
+            "retained": "swallowed",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "Eaten, so whatever is in it arrives whole."
+          },
+          "legalNote": "Checked recall records on 2026-08-31. Predecessor private labels had 2025 food recalls, resolved; none involve sea salt.",
+          "verdict": "careful",
+          "dated": "2026-09-29",
+          "why": "section 6: testing is caution",
+          "fronts": {
+            "formula": "unassessed",
+            "materials": "unassessed",
+            "legal": "pass",
+            "testing": "caution"
+          },
+          "frontOrigin": {
+            "testing": "database",
+            "legal": "database"
+          },
+          "scope": "none",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
       }
     ],
     "fronts": {
@@ -5799,7 +5994,7 @@
           },
           "materialsList": "plastic sifter jar, material not stated, dry loose powder",
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -6327,7 +6522,7 @@
             "checked": "2026-09-11"
           },
           "verdict": "careful",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: legal is caution, on recorded evidence",
           "fronts": {
             "formula": "pass",
@@ -6667,7 +6862,7 @@
           },
           "legalNote": "Checked CPSC recall records on 2026-09-25. No recall on record for Athleta.",
           "verdict": "careful",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: materials is caution, testing is caution, on recorded evidence",
           "fronts": {
             "formula": "none",
@@ -6998,7 +7193,7 @@
             "checked": "2026-09-10"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -7315,7 +7510,7 @@
             "checked": "2026-09-09"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -7383,7 +7578,7 @@
             "checked": "2026-09-09"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -8304,7 +8499,7 @@
             "checked": "2026-09-10"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -8455,7 +8650,7 @@
             "why": "Eight hours a night, close to the face."
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -9158,7 +9353,7 @@
             "checked": "2026-09-10"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -9341,7 +9536,7 @@
           "cappedFrom": "careful",
           "capRestoreWhy": "section 6: formula is caution",
           "verdict": "skip",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: materials is caution, testing is fail",
           "fronts": {
             "formula": "pass",
@@ -10464,7 +10659,7 @@
             "checked": "2026-09-25"
           },
           "verdict": "skip",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: materials is fail, on recorded evidence",
           "fronts": {
             "formula": "pass",
@@ -10849,7 +11044,7 @@
             "filledBy": "buyer"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -11421,7 +11616,7 @@
             "filledBy": "buyer"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -11801,7 +11996,7 @@
           "cappedFrom": "careful",
           "capRestoreWhy": "section 6: legal is caution",
           "verdict": "skip",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: formula is fail",
           "fronts": {
             "formula": "fail",
@@ -13187,7 +13382,7 @@
           "testingDate": "2026-09-16",
           "materialsList": "glass nail polish bottle",
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -13594,7 +13789,7 @@
             "filledBy": "buyer"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -14131,7 +14326,7 @@
           "cappedFrom": "careful",
           "capRestoreWhy": "section 6: formula is caution",
           "verdict": "skip",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: materials is fail",
           "fronts": {
             "formula": "none",
@@ -14330,7 +14525,7 @@
           },
           "verdict": "good",
           "dated": "2026-09-16",
-          "why": "direct evidence at line scope on materials",
+          "why": "direct evidence at sku scope on materials",
           "fronts": {
             "formula": "none",
             "materials": "pass",
@@ -14343,7 +14538,7 @@
             "formula": "hand",
             "legal": "database"
           },
-          "scope": "line",
+          "scope": "sku",
           "basis": "direct",
           "disclose": false,
           "rules": [
@@ -14472,7 +14667,7 @@
           "cappedFrom": "careful",
           "capRestoreWhy": "section 6: materials is caution",
           "verdict": "skip",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: materials is fail",
           "fronts": {
             "formula": "none",
@@ -15656,7 +15851,7 @@
           "cappedFrom": "careful",
           "capRestoreWhy": "section 6: formula is caution",
           "verdict": "skip",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: formula is fail",
           "fronts": {
             "formula": "fail",
@@ -16741,7 +16936,7 @@
             "checked": "2026-09-02"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -17346,7 +17541,7 @@
           ],
           "testingLod": "5 ppb lead and cadmium, 10 ppb arsenic, 2 ppb mercury",
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -17478,7 +17673,7 @@
           ],
           "testingLod": "5 ppb lead and cadmium, 10 ppb arsenic, 2 ppb mercury",
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -17753,7 +17948,7 @@
           "cappedFrom": "careful",
           "capRestoreWhy": "section 6: formula is caution",
           "verdict": "skip",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: materials is fail",
           "fronts": {
             "formula": "none",
@@ -18529,7 +18724,7 @@
           },
           "legalNote": "Checked CPSC recall records on 2026-09-25. No recall on record for Boody.",
           "verdict": "careful",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: materials is caution, testing is caution, on recorded evidence",
           "fronts": {
             "formula": "none",
@@ -19132,7 +19327,7 @@
           "testingDate": "2026-09-11",
           "materialsList": "plastic",
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -19218,7 +19413,7 @@
           },
           "materialsList": "plastic bag, polymer not named, dry laundry powder",
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -20570,7 +20765,7 @@
             "checked": "2026-09-11"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -21156,7 +21351,7 @@
           "cappedFrom": "careful",
           "capRestoreWhy": "section 6: testing is caution",
           "verdict": "skip",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: legal is caution, testing is fail",
           "fronts": {
             "formula": "unassessed",
@@ -21369,7 +21564,7 @@
             "checked": "2026-09-10"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -22988,7 +23183,7 @@
           },
           "legalNote": "Checked CPSC recall records on 2026-09-25. The title matches are Time-Cap Labs pharmaceutical packaging recalls and other firms with cap in the name, none of them CAP Barbell. No recall on record for CAP Barbell.",
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -23329,7 +23524,7 @@
             "checked": "2026-09-11"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -23580,7 +23775,7 @@
           "cappedFrom": "careful",
           "capRestoreWhy": "section 6: testing is caution",
           "verdict": "skip",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: materials is fail, testing is caution",
           "fronts": {
             "formula": "none",
@@ -24227,7 +24422,7 @@
           },
           "materialsList": "plastic pump bottle whose polymer the maker does not name, holding a lotion emulsion left on skin",
           "verdict": "careful",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: materials is caution, on recorded evidence",
           "fronts": {
             "formula": "pass",
@@ -24323,7 +24518,7 @@
           },
           "materialsList": "plastic squeeze tube whose polymer the maker does not name, holding a sunscreen emulsion left on skin",
           "verdict": "careful",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: materials is caution, on recorded evidence",
           "fronts": {
             "formula": "pass",
@@ -24414,7 +24609,7 @@
             "checked": "2026-09-10"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -24874,7 +25069,7 @@
             "checked": "2026-09-10"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -25220,7 +25415,7 @@
           },
           "materialsList": "plastic",
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -26473,7 +26668,7 @@
             "checked": "2026-09-02"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -28011,7 +28206,7 @@
           "cappedFrom": "careful",
           "capRestoreWhy": "section 6: formula is caution, testing is caution",
           "verdict": "skip",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: formula is caution, testing is fail",
           "fronts": {
             "formula": "caution",
@@ -28138,7 +28333,7 @@
           "cappedFrom": "careful",
           "capRestoreWhy": "section 6: formula is caution, testing is caution",
           "verdict": "skip",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: formula is caution, testing is fail",
           "fronts": {
             "formula": "caution",
@@ -28564,7 +28759,7 @@
             "why": "Breast milk passes through it on the way to a baby, several times a day, and milk carries fat."
           },
           "verdict": "skip",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: testing is fail, on recorded evidence",
           "fronts": {
             "formula": "none",
@@ -29325,7 +29520,7 @@
           },
           "verdict": "good",
           "dated": "2026-08-29",
-          "why": "direct evidence at line scope on materials",
+          "why": "direct evidence at sku scope on materials",
           "fronts": {
             "formula": "none",
             "materials": "pass",
@@ -29337,7 +29532,7 @@
             "materials": "database",
             "formula": "hand"
           },
-          "scope": "line",
+          "scope": "sku",
           "basis": "direct",
           "disclose": false,
           "rules": [
@@ -29480,7 +29675,7 @@
           "cappedFrom": "careful",
           "capRestoreWhy": "section 6: legal is caution",
           "verdict": "skip",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: formula is fail",
           "fronts": {
             "formula": "fail",
@@ -29570,7 +29765,7 @@
             "open": "We have not established what the product actually touches"
           },
           "verdict": "skip",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: formula is fail",
           "fronts": {
             "formula": "fail",
@@ -31133,7 +31328,7 @@
           "cappedFrom": "careful",
           "capRestoreWhy": "section 6: materials is caution, testing is caution",
           "verdict": "skip",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: materials is caution, testing is fail",
           "fronts": {
             "formula": "none",
@@ -32252,7 +32447,7 @@
           "cappedFrom": "careful",
           "capRestoreWhy": "section 6: testing is caution",
           "verdict": "skip",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: formula is fail, testing is caution",
           "fronts": {
             "formula": "fail",
@@ -34078,7 +34273,7 @@
           "cappedFrom": "careful",
           "capRestoreWhy": "section 6: testing is caution",
           "verdict": "skip",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: formula is fail, testing is caution",
           "fronts": {
             "formula": "fail",
@@ -34336,7 +34531,7 @@
             "checked": "2026-09-03"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -34535,7 +34730,7 @@
           "testingNote": "Correction of the recorded caution, which was read off our own store copy. No independent test of Diaspora Co. Pragati Turmeric exists: searched Lead Safe Mama, Mamavation, Consumer Reports (its 2021 spice test covered nine turmerics, none from Diaspora) and Clean Label Project on 2026-09-16. The brand says 'we conduct thorough testing on every batch we procure' and 'always lab tested' but publishes no results, which is a marketing claim and not evidence. Turmeric is a documented lead adulteration category, so the gap matters.",
           "testingDate": "2026-09-16",
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -35603,7 +35798,7 @@
             "checked": "2026-09-10"
           },
           "verdict": "careful",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: legal is caution, on recorded evidence",
           "fronts": {
             "formula": "pass",
@@ -36487,7 +36682,7 @@
             "checked": "2026-09-02"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -36684,7 +36879,7 @@
           },
           "materialsList": "plastic mascara tube and wand whose polymer the maker does not name, holding a water and alcohol based emulsion",
           "verdict": "careful",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: formula is caution, materials is caution, on recorded evidence",
           "fronts": {
             "formula": "caution",
@@ -37606,7 +37801,7 @@
           "materialsList": "stainless steel body with cast aluminium ends, the bread sits against stainless steel wire guards and ProHeat elements",
           "verdict": "good",
           "dated": "2026-09-16",
-          "why": "direct evidence at line scope on materials",
+          "why": "direct evidence at sku scope on materials",
           "fronts": {
             "formula": "none",
             "materials": "pass",
@@ -37619,7 +37814,7 @@
             "legal": "database",
             "materials": "database"
           },
-          "scope": "line",
+          "scope": "sku",
           "basis": "direct",
           "disclose": false,
           "rules": [
@@ -38105,7 +38300,7 @@
             "checked": "2026-09-03"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -38689,7 +38884,7 @@
             "checked": "2026-09-11"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -39393,7 +39588,7 @@
             "checked": "2026-09-02"
           },
           "verdict": "skip",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: formula is caution, materials is fail",
           "fronts": {
             "formula": "caution",
@@ -39597,7 +39792,7 @@
             "checked": "2026-09-10"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -39966,7 +40161,7 @@
           "cappedFrom": "good",
           "capRestoreWhy": "independent lab result at sku scope",
           "verdict": "careful",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: testing is caution",
           "fronts": {
             "formula": "pass",
@@ -40387,7 +40582,7 @@
             "checked": "2026-09-24"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -40790,7 +40985,7 @@
           "testingNote": "Four layer hemp and organic cotton doublers, non detect for organic fluorine (2023 Mamavation round, EPA certified lab, 10 ppm threshold). Those diapers were bought in 2023, so this clean result is now older than the 36 months a clean result counts for under rule 4.7.",
           "testingDate": "2023",
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -41138,7 +41333,7 @@
           "cappedFrom": "careful",
           "capRestoreWhy": "section 6: awaiting the recorded checks",
           "verdict": "skip",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: materials is fail",
           "fronts": {
             "formula": "none",
@@ -41908,7 +42103,7 @@
           "testingDate": "2026-09-11",
           "materialsList": "metal",
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -42691,7 +42886,7 @@
           "cappedFrom": "careful",
           "capRestoreWhy": "section 6: formula is caution",
           "verdict": "skip",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: formula is fail",
           "fronts": {
             "formula": "fail",
@@ -43541,7 +43736,7 @@
             "alternative": ""
           },
           "verdict": "careful",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: testing is caution, on recorded evidence",
           "fronts": {
             "formula": "none",
@@ -43779,7 +43974,7 @@
           "testingDate": "2026-09-16",
           "materialsList": "Solid bar with no container in use, sold in a home compostable paper carton (PEFC certified papers, plastic free and PFAS free inks per the maker)",
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -43973,7 +44168,7 @@
             "checked": "2026-09-11"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -46522,7 +46717,7 @@
             "checked": "2026-09-11"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -46609,7 +46804,7 @@
             "checked": "2026-09-11"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -46959,7 +47154,7 @@
           },
           "materialsList": "sliced sprouted grain bread in a polyethylene bread bag, sold frozen",
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -48122,7 +48317,7 @@
           "cappedFrom": "careful",
           "capRestoreWhy": "section 6: testing is caution",
           "verdict": "skip",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: formula is fail, testing is caution",
           "fronts": {
             "formula": "fail",
@@ -48479,7 +48674,7 @@
           "cappedFrom": "careful",
           "capRestoreWhy": "section 6: formula is caution, testing is caution",
           "verdict": "skip",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: formula is caution, materials is fail",
           "fronts": {
             "formula": "caution",
@@ -48717,7 +48912,7 @@
             "why": "In the mouth twice a day, shedding from the part doing the scrubbing."
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -48731,7 +48926,7 @@
             "legal": "database",
             "formula": "hand"
           },
-          "scope": "line",
+          "scope": "sku",
           "basis": "direct",
           "disclose": false,
           "rules": []
@@ -50461,7 +50656,7 @@
             "filledBy": "buyer"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -50767,7 +50962,7 @@
           },
           "materialsList": "dry electrolyte powder in a plastic tub or stick packs, polymer not named on the listing",
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -52141,7 +52336,7 @@
             "why": "for a baby, which is high whatever the arithmetic says"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -52766,7 +52961,7 @@
             "filledBy": "buyer"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -53279,7 +53474,7 @@
             "checked": ""
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -54778,7 +54973,7 @@
           "legalNote": "Checked CPSC recall records on 2026-09-25. Hatch Baby recalled the power adapters sold with the Rest 1st generation sound machine on 2024-07-03 for a shock hazard; the Rest+ on this row is a later generation with its own adapter, and the recall is over 24 months old, so under rule 5.2 it is informational rather than a finding against the product today. A 2013 Brower egg incubator recall matched the word Hatch and is not this company.",
           "legalDate": "2024-07",
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -54897,7 +55092,7 @@
             "checked": "2026-09-04"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -55352,7 +55547,7 @@
             "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
             "formula": "The published ingredient list carries nothing on the hazard list.",
             "testing": "Searched Lead Safe Mama, Mamavation, Consumer Reports and Clean Label Project on 2026-09-16; no independent test of Heavenly Organics Raw White Honey found. Mamavation's 2023 sweetener ranking lists \"Heavenly Organics Raw White Honey\" without a lab result. The Glyphosate Residue Free certification is recorded under certificates.",
-            "materials": "In contact with metal, which puts nothing into what it holds."
+            "materials": "In contact with glass, which puts nothing into what it holds."
           },
           "exposure": {
             "type": "food",
@@ -55592,7 +55787,7 @@
           "testingNote": "Hello Fluoride Free Fresh Watermelon, a kids paste: lead 493.0 ppb, mercury 19.0 ppb and arsenic 6.0 ppb. The Dragon Dazzle fluoride variant read 428.4 ppb lead and 11.8 ppb mercury. Under the 500 ppb toothpaste line, rule 4.7: caution.",
           "testingDate": "2025",
           "verdict": "skip",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: legal is fail, testing is caution",
           "fronts": {
             "formula": "pass",
@@ -56685,7 +56880,7 @@
             "checked": "2026-09-04"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -56778,7 +56973,7 @@
             "checked": "2026-09-11"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -56870,7 +57065,7 @@
             "checked": "2026-09-21"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -56961,7 +57156,7 @@
             "checked": "2026-09-21"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -59704,7 +59899,7 @@
           "cappedFrom": "careful",
           "capRestoreWhy": "section 6: materials is caution",
           "verdict": "skip",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: materials is fail",
           "fronts": {
             "formula": "none",
@@ -60193,7 +60388,7 @@
             "checked": "2026-09-11"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -60607,7 +60802,7 @@
             "checked": "2026-09-16"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -60806,7 +61001,7 @@
             "legal": "database",
             "formula": "hand"
           },
-          "scope": "line",
+          "scope": "sku",
           "basis": "direct",
           "disclose": false,
           "rules": []
@@ -60973,7 +61168,7 @@
             "checked": ""
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -61409,7 +61604,7 @@
             "checked": "2026-09-08"
           },
           "verdict": "skip",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: formula is fail, materials is caution",
           "fronts": {
             "formula": "fail",
@@ -62043,7 +62238,7 @@
             "alternative": ""
           },
           "verdict": "careful",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: testing is caution, on recorded evidence",
           "fronts": {
             "formula": "pass",
@@ -63341,7 +63536,7 @@
           "cappedFrom": "careful",
           "capRestoreWhy": "section 6: testing is caution",
           "verdict": "skip",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: formula is caution, testing is fail",
           "fronts": {
             "formula": "caution",
@@ -64132,7 +64327,7 @@
             "checked": "2026-09-25"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -64211,7 +64406,7 @@
           "testingDate": "2026-09-16",
           "materialsList": "aluminum telescoping wand, handle, hose and body materials not stated",
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -64540,9 +64735,9 @@
         "origin": "extracted"
       },
       "testing": {
-        "status": "pass",
-        "note": "Consumer Reports 2026 testing found no PFAS at its detection limit",
-        "origin": "extracted"
+        "status": "caution",
+        "note": "From Kirkland Signature Organic Ground Saigon Cinnamon: Lead Safe Mama, LLC independent third-party lab testing (2025): lead 493.4 ppb, cadmium 382.7 ppb, mercury 12.79 ppb, arsenic 14.94 ppb. The proposed 2021 action levels for food ingested by children are 5 ppb lead, 5 ppb cadmium, 2 ppb mercury and 10 ppb arsenic; this result is at or above the bar on lead, cadmium, mercury, arsenic.",
+        "origin": "rollup"
       }
     },
     "reviewed": true,
@@ -64698,6 +64893,104 @@
             "testing": "database"
           },
           "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
+      },
+      {
+        "name": "Kirkland Signature Organic Ground Saigon Cinnamon",
+        "asins": [],
+        "verdict": "careful",
+        "note": "Lead Safe Mama, LLC independent third-party lab testing (2025): lead 493.4 ppb, cadmium 382.7 ppb, mercury 12.79 ppb, arsenic 14.94 ppb. The proposed 2021 action levels for food ingested by children are 5 ppb lead, 5 ppb cadmium, 2 ppb mercury and 10 ppb arsenic; this result is at or above the bar on lead, cadmium, mercury, arsenic.",
+        "origin": "hand",
+        "source": "lead-tested-cinnamon-and-spice-brands.html",
+        "cat": "Pantry",
+        "ext": {
+          "frontNotes": {
+            "formula": "No ingredient list recorded.",
+            "legal": "Checked CPSC recall records on 2026-09-25. Two 2025-11-06 recalls of Kirkland Signature Valdobbiadene Prosecco bottles (F&F Fine Wines, laceration and closure hazards) and a 2012 Meyer Marketing recall of Kirkland Signature saute pans are different products with no shared mechanism with parchment paper, so under rule 5.2 they do not transfer; the two 2025 recalls are one event and do not make the three in five years the brand pattern rule asks for.",
+            "testing": "Lead Safe Mama, LLC independent third-party lab testing (2025): lead 493.4 ppb, cadmium 382.7 ppb, mercury 12.79 ppb, arsenic 14.94 ppb. The proposed 2021 action levels for food ingested by children are 5 ppb lead, 5 ppb cadmium, 2 ppb mercury and 10 ppb arsenic; this result is at or above the bar on lead, cadmium, mercury, arsenic."
+          },
+          "formulaAnswers": {
+            "ingredients": "",
+            "prose": "",
+            "complete": false,
+            "verdict": "open",
+            "summary": "No ingredient list recorded.",
+            "flagged": [],
+            "source": "",
+            "checked": ""
+          },
+          "legalNote": "Checked CPSC recall records on 2026-09-25. Two 2025-11-06 recalls of Kirkland Signature Valdobbiadene Prosecco bottles (F&F Fine Wines, laceration and closure hazards) and a 2012 Meyer Marketing recall of Kirkland Signature saute pans are different products with no shared mechanism with parchment paper, so under rule 5.2 they do not transfer; the two 2025 recalls are one event and do not make the three in five years the brand pattern rule asks for.",
+          "legalDate": "2025-11",
+          "testingResults": [
+            {
+              "analyte": "lead",
+              "lab": "independent third-party laboratory for Lead Safe Mama, LLC",
+              "lod": "5 ppb",
+              "outcome": "detected",
+              "unit": "ppb",
+              "value": 493.4,
+              "year": 2025
+            },
+            {
+              "analyte": "cadmium",
+              "lab": "independent third-party laboratory for Lead Safe Mama, LLC",
+              "lod": "5 ppb",
+              "outcome": "detected",
+              "unit": "ppb",
+              "value": 382.7,
+              "year": 2025
+            },
+            {
+              "analyte": "mercury",
+              "lab": "independent third-party laboratory for Lead Safe Mama, LLC",
+              "lod": "2 ppb",
+              "outcome": "detected",
+              "unit": "ppb",
+              "value": 12.79,
+              "year": 2025
+            },
+            {
+              "analyte": "arsenic (total)",
+              "lab": "independent third-party laboratory for Lead Safe Mama, LLC",
+              "lod": "10 ppb",
+              "outcome": "detected",
+              "unit": "ppb",
+              "value": 14.94,
+              "year": 2025
+            }
+          ],
+          "testingNote": "Lead Safe Mama, LLC independent third-party lab testing (2025): lead 493.4 ppb, cadmium 382.7 ppb, mercury 12.79 ppb, arsenic 14.94 ppb. The proposed 2021 action levels for food ingested by children are 5 ppb lead, 5 ppb cadmium, 2 ppb mercury and 10 ppb arsenic; this result is at or above the bar on lead, cadmium, mercury, arsenic.",
+          "testingDate": "2025",
+          "exposure": {
+            "type": "food",
+            "level": "medium",
+            "score": 6.0,
+            "baby": false,
+            "route": "ingestion",
+            "duration": "minutes",
+            "retained": "swallowed",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "Eaten, so whatever is in it arrives whole."
+          },
+          "verdict": "careful",
+          "dated": "2026-09-29",
+          "why": "section 6: testing is caution",
+          "fronts": {
+            "formula": "unassessed",
+            "materials": "unassessed",
+            "legal": "pass",
+            "testing": "caution"
+          },
+          "frontOrigin": {
+            "legal": "database",
+            "testing": "database"
+          },
+          "scope": "none",
           "basis": "direct",
           "disclose": false,
           "rules": []
@@ -65243,7 +65536,7 @@
             "checked": "2026-09-11"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -65430,7 +65723,7 @@
             "why": "Left on the face all day."
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -65798,7 +66091,7 @@
             "why": "Left on the face all day."
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -65889,7 +66182,7 @@
             "why": "Left on the face all day."
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -67784,7 +68077,7 @@
             "checked": "2026-09-10"
           },
           "verdict": "skip",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: materials is fail",
           "fronts": {
             "formula": "pass",
@@ -68661,7 +68954,7 @@
           "testingDate": "2026-09-16",
           "legalNote": "Checked against the FDA enforcement database on 2026-09-25. The firms matching Leaf, Little Leaf Farms and Mighty Leaf Tea, are not Leaf Shave. No recall on record for Leaf Shave, and no CPSC recall of its razors.",
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -69201,7 +69494,7 @@
             "checked": ""
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -69586,7 +69879,7 @@
             "checked": ""
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -69997,7 +70290,7 @@
             "checked": "2026-09-24"
           },
           "verdict": "careful",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: materials is caution, on recorded evidence",
           "fronts": {
             "formula": "none",
@@ -70273,7 +70566,7 @@
             "filledBy": "buyer"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -71213,7 +71506,7 @@
             "checked": "2026-09-25"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -72653,7 +72946,7 @@
             "why": "Against the skin all day."
           },
           "verdict": "careful",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: materials is caution, testing is caution, on recorded evidence",
           "fronts": {
             "formula": "none",
@@ -73360,7 +73653,7 @@
           "cappedFrom": "careful",
           "capRestoreWhy": "section 6: formula is caution",
           "verdict": "skip",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: materials is fail, testing is caution",
           "fronts": {
             "formula": "none",
@@ -73623,7 +73916,7 @@
           "cappedFrom": "careful",
           "capRestoreWhy": "section 6: formula is caution",
           "verdict": "skip",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: formula is fail",
           "fronts": {
             "formula": "fail",
@@ -73872,7 +74165,7 @@
           },
           "materialsList": "polyester fabric shower curtains in a wet room",
           "verdict": "careful",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: materials is caution, on recorded evidence",
           "fronts": {
             "formula": "none",
@@ -74526,7 +74819,7 @@
           ],
           "testingLod": "5 ppb lead, cadmium and mercury; 10 ppb arsenic",
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -74690,7 +74983,7 @@
             "alternative": ""
           },
           "verdict": "skip",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: materials is caution, legal is caution, testing is fail",
           "fronts": {
             "formula": "none",
@@ -75170,7 +75463,7 @@
             "checked": "2026-09-16"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -76652,7 +76945,7 @@
             "checked": "2026-09-11"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -76740,7 +77033,7 @@
             "checked": "2026-09-11"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -77137,7 +77430,7 @@
             "why": "Rinsed off, so most of it never stays."
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -77306,7 +77599,7 @@
           "legalNote": "Checked CPSC recall records on 2026-09-14. No recall on record for Method.",
           "materialsList": "PET spray bottle with a plastic trigger, a surface cleaner sprayed and wiped, never left on a person",
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -77488,7 +77781,7 @@
             "checked": "2026-09-25"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -77891,7 +78184,7 @@
             "filledBy": "buyer"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -78874,7 +79167,7 @@
             "checked": "2026-09-11"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -78951,7 +79244,7 @@
             "checked": "2026-09-11"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -79141,7 +79434,7 @@
             "checked": "2026-09-11"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -80981,7 +81274,7 @@
             "undisclosedPart": "the TPE flaps"
           },
           "verdict": "careful",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: materials is caution, on recorded evidence",
           "fronts": {
             "formula": "none",
@@ -81046,7 +81339,7 @@
           "cappedFrom": "careful",
           "capRestoreWhy": "section 6: formula is caution, materials is caution",
           "verdict": "skip",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: materials is fail, testing is fail",
           "fronts": {
             "formula": "none",
@@ -81478,7 +81771,7 @@
           },
           "verdict": "good",
           "dated": "2026-09-16",
-          "why": "direct evidence at line scope on materials",
+          "why": "direct evidence at sku scope on materials",
           "fronts": {
             "formula": "unassessed",
             "materials": "pass",
@@ -81490,7 +81783,7 @@
             "materials": "database",
             "legal": "database"
           },
-          "scope": "line",
+          "scope": "sku",
           "basis": "direct",
           "disclose": false,
           "rules": [
@@ -81564,7 +81857,7 @@
           "cappedFrom": "careful",
           "capRestoreWhy": "section 6: formula is caution",
           "verdict": "skip",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: materials is fail",
           "fronts": {
             "formula": "none",
@@ -82374,7 +82667,7 @@
             "checked": "2026-09-04"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -83034,7 +83327,7 @@
             "why": "Eight hours a night, close to the face."
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -83255,7 +83548,7 @@
             "checked": ""
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -83345,7 +83638,7 @@
             "why": "Eight hours a night, close to the face."
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -84521,7 +84814,7 @@
           "cappedFrom": "careful",
           "capRestoreWhy": "section 6: legal is caution, testing is caution",
           "verdict": "skip",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: formula is fail, testing is caution",
           "fronts": {
             "formula": "fail",
@@ -85218,7 +85511,7 @@
           },
           "legalNote": "Checked CPSC recall records on 2026-09-14. No recall on record for NileHome.",
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -85848,7 +86141,7 @@
             "checked": "2026-09-11"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -85945,7 +86238,7 @@
             "checked": "2026-09-11"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -86171,7 +86464,7 @@
             "checked": "2026-09-11"
           },
           "verdict": "careful",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: formula is caution, on recorded evidence",
           "fronts": {
             "formula": "caution",
@@ -86493,7 +86786,7 @@
           "testingNote": "No independent lab test of this product found as of September 2026 (searched Lead Safe Mama, Mamavation, Consumer Reports). Organic certification bars propylene oxide fumigation and the almonds are steam pasteurized instead; both are process facts, not test results, and the earlier caution read them as a finding.",
           "testingDate": "2026-09-11",
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -86875,7 +87168,7 @@
             "checked": ""
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -87036,7 +87329,7 @@
             "filledBy": "buyer"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -88007,7 +88300,7 @@
             "checked": "2026-09-11"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -92050,7 +92343,7 @@
           "cappedFrom": "careful",
           "capRestoreWhy": "section 6: materials is caution, testing is caution",
           "verdict": "skip",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: materials is caution, legal is caution, testing is fail",
           "fronts": {
             "formula": "none",
@@ -92747,7 +93040,7 @@
             "checked": "2026-09-25"
           },
           "verdict": "careful",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: materials is caution, on recorded evidence",
           "fronts": {
             "formula": "none",
@@ -92830,7 +93123,7 @@
             "checked": "2026-09-11"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -93414,7 +93707,7 @@
             "checked": "2026-09-10"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -95212,7 +95505,7 @@
           },
           "verdict": "good",
           "dated": "2026-09-16",
-          "why": "direct evidence at line scope on materials",
+          "why": "direct evidence at sku scope on materials",
           "fronts": {
             "formula": "none",
             "materials": "pass",
@@ -95225,7 +95518,7 @@
             "formula": "hand",
             "legal": "database"
           },
-          "scope": "line",
+          "scope": "sku",
           "basis": "direct",
           "disclose": false,
           "rules": [
@@ -95407,7 +95700,7 @@
           },
           "materialsList": "glass",
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -95496,7 +95789,7 @@
             "checked": "2026-09-25"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -96273,7 +96566,7 @@
             "why": "Breast milk passes through it on the way to a baby, several times a day, and milk carries fat."
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -99062,7 +99355,7 @@
             "checked": "2026-09-11"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -99152,7 +99445,7 @@
             "checked": "2026-09-10"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -99385,7 +99678,7 @@
           "cappedFrom": "careful",
           "capRestoreWhy": "section 6: testing is caution",
           "verdict": "skip",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: testing is fail",
           "fronts": {
             "formula": "unassessed",
@@ -99751,7 +100044,7 @@
           "cappedFrom": "careful",
           "capRestoreWhy": "section 6: formula is caution",
           "verdict": "skip",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: formula is fail",
           "fronts": {
             "formula": "fail",
@@ -100257,7 +100550,7 @@
             "checked": "2026-09-11"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -102227,7 +102520,7 @@
             "checked": ""
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -104357,7 +104650,7 @@
             "checked": "2026-09-24"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -104639,7 +104932,7 @@
             "checked": "2026-09-25"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -105002,7 +105295,7 @@
           },
           "legalNote": "Checked CPSC recall records on 2026-09-17. No recall on record for Simax.",
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -105192,7 +105485,7 @@
           "cappedFrom": "careful",
           "capRestoreWhy": "section 6: testing is caution",
           "verdict": "skip",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: testing is fail",
           "fronts": {
             "formula": "pass",
@@ -105394,7 +105687,7 @@
           "materialsList": "metal handle tube, wand and brushroll (the listing says aluminum telescopic wand), comfort grip handle material not stated, the listing names plastic in its form factor text",
           "legalNote": "Checked on 2026-09-16: CPSC recalls API (saferproducts.gov), openFDA food, drug and device enforcement reports, Health Canada recalls (recalls-rappels.canada.ca), CourtListener RECAP dockets, and California Prop 65 60 day notices (oag.ca.gov/prop65). Nothing found against this vacuum. CPSC 'Simplicity' recalls concern Simplicity Inc. cribs and play yards and Briggs & Stratton Simplicity mowers, unrelated companies. Prop 65 notice 2006-00665 (filed 10/19/2006) names Tacony Corporation (the simplicityvac.com site runs on a Tacony theme) and Riccar America among makers of cords with lead; 20 years old and not this model, informational. No openFDA, Health Canada or CourtListener matter names Simplicity Vacuums.",
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -105533,7 +105826,7 @@
             "checked": "2026-09-16"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -105599,14 +105892,14 @@
     "id": "simply",
     "brand": "Simply",
     "category": "Pantry",
-    "stance": "good",
-    "reason": "Certified organic ground cumin. Organic spices cannot be sterilized with ethylene oxide or irradiated the way conventional ground spices routinely are. Glass jar. Organic, no ethylene oxide. Vetted for the store; this verdict covers the product we listed, not the brand's whole range.",
-    "evidence": "Organic, no ethylene oxide",
+    "stance": "careful",
+    "reason": "The verdict depends on the product. Simply Organic Ground Cumin is a vetted store pick, organic and additive free in a glass jar. Its cinnamon is a different story: Lead Safe Mama's independent lab testing found Simply Organic Cinnamon Sticks and Simply Organic Ground Ceylon Cinnamon both above the proposed action level for cadmium, and the Ceylon ground also above it for lead, at 543.2 ppb.",
+    "evidence": "Cumin vetted good; cinnamon tests above the cadmium action level",
     "sources": [
       "store"
     ],
     "reviewed": true,
-    "generalises": true,
+    "generalises": false,
     "products": [
       {
         "name": "Simply Organic Ground Cumin",
@@ -105773,6 +106066,200 @@
           }
         },
         "research": "Packaging: Bottled spice line ships in glass bottles; lid material unstated; contents are dry ground spices."
+      },
+      {
+        "name": "Simply Organic Cinnamon Sticks",
+        "asins": [],
+        "verdict": "careful",
+        "note": "Lead Safe Mama, LLC independent third-party lab testing (2024): lead 17.0 ppb, cadmium 131.0 ppb, mercury <5, arsenic <5. The proposed 2021 action levels for food ingested by children are 5 ppb lead, 5 ppb cadmium, 2 ppb mercury and 10 ppb arsenic; this result is at or above the bar on lead, cadmium, mercury.",
+        "origin": "hand",
+        "source": "lead-tested-cinnamon-and-spice-brands.html",
+        "cat": "Pantry",
+        "ext": {
+          "frontNotes": {
+            "formula": "No ingredient list recorded.",
+            "legal": "Checked recall records on 2026-08-31. Frontier Co-op recalled many Simply Organic seasoning mixes in 2015 over salmonella in a garlic powder ingredient; resolved a decade ago, now informational, and the single ingredient spices we cover were not implicated.",
+            "testing": "Lead Safe Mama, LLC independent third-party lab testing (2024): lead 17.0 ppb, cadmium 131.0 ppb, mercury <5, arsenic <5. The proposed 2021 action levels for food ingested by children are 5 ppb lead, 5 ppb cadmium, 2 ppb mercury and 10 ppb arsenic; this result is at or above the bar on lead, cadmium, mercury."
+          },
+          "formulaAnswers": {
+            "ingredients": "",
+            "prose": "",
+            "complete": false,
+            "verdict": "open",
+            "summary": "No ingredient list recorded.",
+            "flagged": [],
+            "source": "",
+            "checked": ""
+          },
+          "legalNote": "Checked recall records on 2026-08-31. Frontier Co-op recalled many Simply Organic seasoning mixes in 2015 over salmonella in a garlic powder ingredient; resolved a decade ago, now informational, and the single ingredient spices we cover were not implicated.",
+          "testingResults": [
+            {
+              "analyte": "lead",
+              "lab": "independent third-party laboratory for Lead Safe Mama, LLC",
+              "lod": "5 ppb",
+              "outcome": "detected",
+              "unit": "ppb",
+              "value": 17.0,
+              "year": 2024
+            },
+            {
+              "analyte": "cadmium",
+              "lab": "independent third-party laboratory for Lead Safe Mama, LLC",
+              "lod": "5 ppb",
+              "outcome": "detected",
+              "unit": "ppb",
+              "value": 131.0,
+              "year": 2024
+            },
+            {
+              "analyte": "mercury",
+              "lab": "independent third-party laboratory for Lead Safe Mama, LLC",
+              "lod": "5 ppb",
+              "outcome": "non-detect",
+              "unit": "ppb",
+              "value": null,
+              "year": 2024
+            },
+            {
+              "analyte": "arsenic (total)",
+              "lab": "independent third-party laboratory for Lead Safe Mama, LLC",
+              "lod": "5 ppb",
+              "outcome": "non-detect",
+              "unit": "ppb",
+              "value": null,
+              "year": 2024
+            }
+          ],
+          "testingNote": "Lead Safe Mama, LLC independent third-party lab testing (2024): lead 17.0 ppb, cadmium 131.0 ppb, mercury <5, arsenic <5. The proposed 2021 action levels for food ingested by children are 5 ppb lead, 5 ppb cadmium, 2 ppb mercury and 10 ppb arsenic; this result is at or above the bar on lead, cadmium, mercury.",
+          "testingDate": "2024",
+          "exposure": {
+            "type": "food",
+            "level": "medium",
+            "score": 6.0,
+            "baby": false,
+            "route": "ingestion",
+            "duration": "minutes",
+            "retained": "swallowed",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "Eaten, so whatever is in it arrives whole."
+          },
+          "verdict": "careful",
+          "dated": "2026-09-29",
+          "why": "section 6: testing is caution",
+          "fronts": {
+            "formula": "unassessed",
+            "materials": "unassessed",
+            "legal": "pass",
+            "testing": "caution"
+          },
+          "frontOrigin": {
+            "legal": "database",
+            "testing": "database"
+          },
+          "scope": "none",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
+      },
+      {
+        "name": "Simply Organic Ground Ceylon Cinnamon",
+        "asins": [],
+        "verdict": "careful",
+        "note": "Lead Safe Mama, LLC independent third-party lab testing (2025): lead 543.2 ppb, cadmium 131.7 ppb, mercury 7.16 ppb, arsenic 16.71 ppb. The proposed 2021 action levels for food ingested by children are 5 ppb lead, 5 ppb cadmium, 2 ppb mercury and 10 ppb arsenic; this result is at or above the bar on lead, cadmium, mercury, arsenic.",
+        "origin": "hand",
+        "source": "lead-tested-cinnamon-and-spice-brands.html",
+        "cat": "Pantry",
+        "ext": {
+          "frontNotes": {
+            "formula": "No ingredient list recorded.",
+            "legal": "Checked recall records on 2026-08-31. Frontier Co-op recalled many Simply Organic seasoning mixes in 2015 over salmonella in a garlic powder ingredient; resolved a decade ago, now informational, and the single ingredient spices we cover were not implicated.",
+            "testing": "Lead Safe Mama, LLC independent third-party lab testing (2025): lead 543.2 ppb, cadmium 131.7 ppb, mercury 7.16 ppb, arsenic 16.71 ppb. The proposed 2021 action levels for food ingested by children are 5 ppb lead, 5 ppb cadmium, 2 ppb mercury and 10 ppb arsenic; this result is at or above the bar on lead, cadmium, mercury, arsenic."
+          },
+          "formulaAnswers": {
+            "ingredients": "",
+            "prose": "",
+            "complete": false,
+            "verdict": "open",
+            "summary": "No ingredient list recorded.",
+            "flagged": [],
+            "source": "",
+            "checked": ""
+          },
+          "legalNote": "Checked recall records on 2026-08-31. Frontier Co-op recalled many Simply Organic seasoning mixes in 2015 over salmonella in a garlic powder ingredient; resolved a decade ago, now informational, and the single ingredient spices we cover were not implicated.",
+          "testingResults": [
+            {
+              "analyte": "lead",
+              "lab": "independent third-party laboratory for Lead Safe Mama, LLC",
+              "lod": "5 ppb",
+              "outcome": "detected",
+              "unit": "ppb",
+              "value": 543.2,
+              "year": 2025
+            },
+            {
+              "analyte": "cadmium",
+              "lab": "independent third-party laboratory for Lead Safe Mama, LLC",
+              "lod": "5 ppb",
+              "outcome": "detected",
+              "unit": "ppb",
+              "value": 131.7,
+              "year": 2025
+            },
+            {
+              "analyte": "mercury",
+              "lab": "independent third-party laboratory for Lead Safe Mama, LLC",
+              "lod": "2 ppb",
+              "outcome": "detected",
+              "unit": "ppb",
+              "value": 7.16,
+              "year": 2025
+            },
+            {
+              "analyte": "arsenic (total)",
+              "lab": "independent third-party laboratory for Lead Safe Mama, LLC",
+              "lod": "10 ppb",
+              "outcome": "detected",
+              "unit": "ppb",
+              "value": 16.71,
+              "year": 2025
+            }
+          ],
+          "testingNote": "Lead Safe Mama, LLC independent third-party lab testing (2025): lead 543.2 ppb, cadmium 131.7 ppb, mercury 7.16 ppb, arsenic 16.71 ppb. The proposed 2021 action levels for food ingested by children are 5 ppb lead, 5 ppb cadmium, 2 ppb mercury and 10 ppb arsenic; this result is at or above the bar on lead, cadmium, mercury, arsenic.",
+          "testingDate": "2025",
+          "exposure": {
+            "type": "food",
+            "level": "medium",
+            "score": 6.0,
+            "baby": false,
+            "route": "ingestion",
+            "duration": "minutes",
+            "retained": "swallowed",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "Eaten, so whatever is in it arrives whole."
+          },
+          "verdict": "careful",
+          "dated": "2026-09-29",
+          "why": "section 6: testing is caution",
+          "fronts": {
+            "formula": "unassessed",
+            "materials": "unassessed",
+            "legal": "pass",
+            "testing": "caution"
+          },
+          "frontOrigin": {
+            "legal": "database",
+            "testing": "database"
+          },
+          "scope": "none",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
       }
     ],
     "cautions": [
@@ -105802,9 +106289,9 @@
         "origin": "rollup"
       },
       "testing": {
-        "status": "pass",
-        "note": "Certified organic ground cumin",
-        "origin": "extracted"
+        "status": "caution",
+        "note": "From Simply Organic Cinnamon Sticks: Lead Safe Mama, LLC independent third-party lab testing (2024): lead 17.0 ppb, cadmium 131.0 ppb, mercury <5, arsenic <5. The proposed 2021 action levels for food ingested by children are 5 ppb lead, 5 ppb cadmium, 2 ppb mercury and 10 ppb arsenic; this result is at or above the bar on lead, cadmium, mercury.",
+        "origin": "rollup"
       }
     }
   },
@@ -106943,7 +107430,7 @@
           },
           "materialsList": "glass nail polish bottle",
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -107523,7 +108010,7 @@
           "cappedFrom": "careful",
           "capRestoreWhy": "section 6: formula is caution",
           "verdict": "skip",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: materials is fail",
           "fronts": {
             "formula": "none",
@@ -107711,7 +108198,7 @@
           },
           "materialsList": "plastic",
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -107913,7 +108400,7 @@
           "cappedFrom": "careful",
           "capRestoreWhy": "section 6: testing is caution",
           "verdict": "skip",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: testing is fail",
           "fronts": {
             "formula": "unassessed",
@@ -108681,7 +109168,7 @@
             "checked": "2026-09-16"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -108781,7 +109268,7 @@
             "checked": "2026-09-11"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -109119,7 +109606,7 @@
           "cappedFrom": "careful",
           "capRestoreWhy": "section 6: testing is caution",
           "verdict": "skip",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: formula is fail, testing is caution",
           "fronts": {
             "formula": "fail",
@@ -109204,7 +109691,7 @@
           },
           "legalNote": "Checked CPSC recall records on 2026-09-14. No recall on record for Sunnylife.",
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -109369,7 +109856,7 @@
           "cappedFrom": "careful",
           "capRestoreWhy": "section 6: formula is caution",
           "verdict": "skip",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: formula is fail",
           "fronts": {
             "formula": "fail",
@@ -110982,7 +111469,7 @@
             "checked": "2026-09-11"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -111305,7 +111792,7 @@
           "cappedFrom": "careful",
           "capRestoreWhy": "section 6: testing is caution",
           "verdict": "skip",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: legal is caution, testing is fail",
           "fronts": {
             "formula": "unassessed",
@@ -112066,7 +112553,7 @@
           },
           "materialsList": "tablets and softgels in a plastic bottle, polymer not named, dry contents",
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -114101,7 +114588,7 @@
           },
           "legalNote": "Checked CPSC recall records on 2026-09-14. No recall on record for TILUCK.",
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -116008,7 +116495,7 @@
             "checked": ""
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -116534,7 +117021,7 @@
           },
           "materialsList": "aluminium foil laminate sachets, dry powder",
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -117570,7 +118057,7 @@
             "checked": "2026-09-11"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -118483,7 +118970,7 @@
             "checked": ""
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -119111,7 +119598,7 @@
             "checked": "2026-09-10"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -120298,7 +120785,7 @@
             "checked": "2026-09-11"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -121052,7 +121539,7 @@
             "why": "Rinsed off, so most of it never stays."
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -121873,7 +122360,7 @@
           },
           "legalNote": "Checked CPSC recall records on 2026-09-25. No recall on record for Vuori.",
           "verdict": "careful",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: materials is caution, testing is caution, on recorded evidence",
           "fronts": {
             "formula": "none",
@@ -123044,7 +123531,7 @@
           "cappedFrom": "careful",
           "capRestoreWhy": "section 6: formula is caution, materials is caution",
           "verdict": "skip",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: materials is fail",
           "fronts": {
             "formula": "none",
@@ -124025,7 +124512,7 @@
             "checked": "2026-09-11"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -124375,7 +124862,7 @@
           "testingNote": "Lead Safe Mama XRF test (posted Jan 16, 2021) of the Wildone Baking Sheet Set of 3, 9/12/16 inch (Amazon B07NNQWMCW, the same Wildone stainless baking sheet line, not this 2 pack ASIN): chromium 131,500 +/- 2,000 ppm, nickel 1,092 +/- 234 ppm, iron 861,000 ppm, manganese 4,065 ppm, vanadium 1,028 ppm; 'No other metals were detected in consumer goods mode', so lead, cadmium, mercury and arsenic were non detect. The post gives no limit; Lead Safe Mama's methodology page says a non detect is 'below the threshold of detection of the XRF instrument, which is generally below the range of single-digit parts per million'. Rule 4.7 treats a durable XRF non detect as a pass for the line. The chromium and nickel readings show a low nickel steel, not 18/8. Also searched Mamavation, Consumer Reports and Clean Label Project on 2026-09-16: nothing for Wildone.",
           "testingDate": "2021",
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -124644,7 +125131,7 @@
             "why": "Left on the face all day."
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -125405,7 +125892,7 @@
             "checked": "2026-09-16"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -125968,7 +126455,7 @@
             "checked": "2026-09-25"
           },
           "verdict": "skip",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: materials is fail, on recorded evidence",
           "fronts": {
             "formula": "none",
@@ -126101,7 +126588,7 @@
           },
           "materialsList": "glass nail polish bottle",
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -126533,7 +127020,7 @@
             "checked": "2026-09-09"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -126754,7 +127241,7 @@
             "checked": ""
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -126846,7 +127333,7 @@
             "why": "Bare skin on it for minutes at a time, several times a day."
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -128561,7 +129048,7 @@
             "checked": "2026-09-10"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -128704,7 +129191,7 @@
             "checked": "2026-09-10"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -129459,7 +129946,7 @@
             "checked": "2026-09-10"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -129600,7 +130087,7 @@
             "checked": "2026-09-10"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -129739,7 +130226,7 @@
             "checked": "2026-09-10"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -130017,7 +130504,7 @@
             "checked": "2026-09-11"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -130527,7 +131014,7 @@
           },
           "legalNote": "Checked CPSC recall records on 2026-09-14. No recall on record for Thirteen Chefs.",
           "verdict": "skip",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: materials is fail",
           "fronts": {
             "formula": "pass",
@@ -130760,7 +131247,7 @@
             "filledBy": "buyer"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -131333,7 +131820,7 @@
             "why": "Eight hours a night, close to the face."
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -132958,7 +133445,7 @@
           "cappedFrom": "careful",
           "capRestoreWhy": "section 6: formula is caution",
           "verdict": "skip",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: materials is caution, testing is fail",
           "fronts": {
             "formula": "none",
@@ -133084,7 +133571,7 @@
           "cappedFrom": "careful",
           "capRestoreWhy": "section 6: materials is caution, testing is caution",
           "verdict": "skip",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: materials is caution, testing is fail",
           "fronts": {
             "formula": "none",
@@ -133360,7 +133847,7 @@
             "why": "for a baby, which is high whatever the arithmetic says"
           },
           "verdict": "skip",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: materials is fail",
           "fronts": {
             "formula": "none",
@@ -133611,7 +134098,7 @@
             "why": "for a baby, which is high whatever the arithmetic says"
           },
           "verdict": "skip",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: materials is fail",
           "fronts": {
             "formula": "none",
@@ -134877,7 +135364,7 @@
             "why": "for a baby, which is high whatever the arithmetic says"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -135010,7 +135497,7 @@
             "why": "Swallowed whole, daily, indefinitely."
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -135074,7 +135561,7 @@
             "legal": "database",
             "testing": "database"
           },
-          "scope": "line",
+          "scope": "sku",
           "basis": "direct",
           "disclose": false,
           "rules": [
@@ -135388,7 +135875,7 @@
             "checked": "2026-09-25"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -136834,7 +137321,7 @@
             "why": "for a baby, which is high whatever the arithmetic says"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -137229,7 +137716,7 @@
             "why": "Food sits in it, often for hours."
           },
           "verdict": "skip",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: materials is fail",
           "fronts": {
             "formula": "none",
@@ -137676,7 +138163,7 @@
             "why": "Eight hours a night, close to the face."
           },
           "verdict": "skip",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: materials is caution, legal is fail",
           "fronts": {
             "formula": "none",
@@ -138141,7 +138628,7 @@
             "why": "Eight hours a night, close to the face."
           },
           "verdict": "skip",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: legal is fail",
           "fronts": {
             "formula": "none",
@@ -138590,7 +139077,7 @@
             "checked": "2026-09-21"
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -138943,7 +139430,7 @@
             "checked": "2026-09-25"
           },
           "verdict": "careful",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: materials is caution, on recorded evidence",
           "fronts": {
             "formula": "none",
@@ -139002,7 +139489,7 @@
           },
           "legalNote": "Checked CPSC recall records on 2026-09-25. No recall on record for Redwood Cloth Co.",
           "verdict": "careful",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: testing is caution, on recorded evidence",
           "fronts": {
             "formula": "none",
@@ -139103,7 +139590,7 @@
             "why": "Breast milk passes through it on the way to a baby, several times a day, and milk carries fat."
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -139215,7 +139702,7 @@
             "why": "Breast milk passes through it on the way to a baby, several times a day, and milk carries fat."
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on materials, recorded rather than read off a note",
           "fronts": {
             "formula": "none",
@@ -139552,7 +140039,7 @@
             "why": "Against the skin all day."
           },
           "verdict": "skip",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: materials is caution, legal is caution, testing is fail, on recorded evidence",
           "fronts": {
             "formula": "none",
@@ -140428,7 +140915,7 @@
             "why": "Left on the skin, so contact runs for hours."
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -140680,7 +141167,7 @@
             "why": "Left on the skin, so contact runs for hours."
           },
           "verdict": "good",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "direct evidence on formula, recorded rather than read off a note",
           "fronts": {
             "formula": "pass",
@@ -141001,7 +141488,7 @@
           "capRestoreWhy": "section 6: materials is caution",
           "legalNote": "Checked the CPSC saferproducts.gov recall service on 2026-09-25. One recall on record for illycaffe S.p.A: 2018-05-10, 8.8 ounce whole bean coffee cans, lid could detach suddenly with force on opening, an injury hazard rather than a contamination one. Closed and more than 24 months old, so informational under rule 5.2 and it does not set the verdict. Three of the four name matches returned belong to other companies (Lilly of New York, Little Willy's, Billy Goat) and were discarded. No lawsuits or regulatory actions found.",
           "verdict": "skip",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: materials is fail",
           "fronts": {
             "formula": "unassessed",
@@ -141087,7 +141574,7 @@
           "legalNote": "Checked the CPSC saferproducts.gov recall service on 2026-09-25. One recall on record for illycaffe S.p.A: 2018-05-10, 8.8 ounce whole bean coffee cans, lid could detach suddenly with force on opening, an injury hazard rather than a contamination one. Closed and more than 24 months old, so informational under rule 5.2 and it does not set the verdict. Three of the four name matches returned belong to other companies (Lilly of New York, Little Willy's, Billy Goat) and were discarded. No lawsuits or regulatory actions found.",
           "materialsList": "polypropylene iperespresso capsules through which near boiling water is forced under pressure",
           "verdict": "careful",
-          "dated": "2026-09-25",
+          "dated": "2026-09-29",
           "why": "section 6 ceiling: materials is caution, on recorded evidence",
           "fronts": {
             "formula": "unassessed",
@@ -141107,5 +141594,605 @@
         "cat": "Coffee"
       }
     ]
+  },
+  {
+    "id": "sonnentor",
+    "brand": "SonnentoR",
+    "category": "Pantry",
+    "stance": "careful",
+    "reason": "Austrian import ground Ceylon cinnamon. Lead Safe Mama's January 2025 independent lab test found lead at 1000 ppb, the highest of eleven cinnamon products tested to date, alongside the highest mercury and arsenic in that set.",
+    "evidence": "Independent lab testing found lead and/or cadmium above the proposed action level",
+    "sources": [
+      "lead-tested-cinnamon-and-spice-brands.html"
+    ],
+    "article": "lead-tested-cinnamon-and-spice-brands.html",
+    "reviewed": true,
+    "generalises": false,
+    "products": [
+      {
+        "name": "SonnentoR Zimt Ceylon Gemahlen Organic Ceylon Cinnamon",
+        "asins": [],
+        "verdict": "careful",
+        "note": "Lead Safe Mama, LLC independent third-party lab testing (2025): lead 1000 ppb, cadmium 52.0 ppb, mercury 149.0 ppb, arsenic 24.0 ppb. The proposed 2021 action levels for food ingested by children are 5 ppb lead, 5 ppb cadmium, 2 ppb mercury and 10 ppb arsenic; this result is at or above the bar on lead, cadmium, mercury, arsenic.",
+        "origin": "hand",
+        "source": "lead-tested-cinnamon-and-spice-brands.html",
+        "cat": "Pantry",
+        "ext": {
+          "frontNotes": {
+            "formula": "No ingredient list recorded.",
+            "testing": "Lead Safe Mama, LLC independent third-party lab testing (2025): lead 1000 ppb, cadmium 52.0 ppb, mercury 149.0 ppb, arsenic 24.0 ppb. The proposed 2021 action levels for food ingested by children are 5 ppb lead, 5 ppb cadmium, 2 ppb mercury and 10 ppb arsenic; this result is at or above the bar on lead, cadmium, mercury, arsenic."
+          },
+          "formulaAnswers": {
+            "ingredients": "",
+            "prose": "",
+            "complete": false,
+            "verdict": "open",
+            "summary": "No ingredient list recorded.",
+            "flagged": [],
+            "source": "",
+            "checked": ""
+          },
+          "testingResults": [
+            {
+              "analyte": "lead",
+              "lab": "independent third-party laboratory for Lead Safe Mama, LLC",
+              "lod": "5 ppb",
+              "outcome": "detected",
+              "unit": "ppb",
+              "value": 1000,
+              "year": 2025
+            },
+            {
+              "analyte": "cadmium",
+              "lab": "independent third-party laboratory for Lead Safe Mama, LLC",
+              "lod": "5 ppb",
+              "outcome": "detected",
+              "unit": "ppb",
+              "value": 52.0,
+              "year": 2025
+            },
+            {
+              "analyte": "mercury",
+              "lab": "independent third-party laboratory for Lead Safe Mama, LLC",
+              "lod": "2 ppb",
+              "outcome": "detected",
+              "unit": "ppb",
+              "value": 149.0,
+              "year": 2025
+            },
+            {
+              "analyte": "arsenic (total)",
+              "lab": "independent third-party laboratory for Lead Safe Mama, LLC",
+              "lod": "10 ppb",
+              "outcome": "detected",
+              "unit": "ppb",
+              "value": 24.0,
+              "year": 2025
+            }
+          ],
+          "testingNote": "Lead Safe Mama, LLC independent third-party lab testing (2025): lead 1000 ppb, cadmium 52.0 ppb, mercury 149.0 ppb, arsenic 24.0 ppb. The proposed 2021 action levels for food ingested by children are 5 ppb lead, 5 ppb cadmium, 2 ppb mercury and 10 ppb arsenic; this result is at or above the bar on lead, cadmium, mercury, arsenic.",
+          "testingDate": "2025",
+          "exposure": {
+            "type": "food",
+            "level": "medium",
+            "score": 6.0,
+            "baby": false,
+            "route": "ingestion",
+            "duration": "minutes",
+            "retained": "swallowed",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "Eaten, so whatever is in it arrives whole."
+          },
+          "verdict": "careful",
+          "dated": "2026-09-29",
+          "why": "section 6: testing is caution",
+          "fronts": {
+            "formula": "unassessed",
+            "materials": "unassessed",
+            "legal": "unassessed",
+            "testing": "caution"
+          },
+          "frontOrigin": {
+            "testing": "database"
+          },
+          "scope": "none",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
+      }
+    ],
+    "fronts": {
+      "testing": {
+        "status": "caution",
+        "note": "From SonnentoR Zimt Ceylon Gemahlen Organic Ceylon Cinnamon: Lead Safe Mama, LLC independent third-party lab testing (2025): lead 1000 ppb, cadmium 52.0 ppb, mercury 149.0 ppb, arsenic 24.0 ppb. The proposed 2021 action levels for food ingested by children are 5 ppb lead, 5 ppb cadmium, 2 ppb mercury and 10 ppb arsenic; this result is at or above the bar on lead, cadmium, mercury, arsenic.",
+        "origin": "rollup"
+      }
+    }
+  },
+  {
+    "id": "frontier-co-op",
+    "brand": "Frontier Co-Op",
+    "category": "Pantry",
+    "stance": "careful",
+    "reason": "Frontier Co-Op cinnamon, sticks and ground, sold under its own name and behind Simply Organic. Every one of the three products Lead Safe Mama has independently lab tested cleared the 5 ppb proposed action level for cadmium; the stick that tested non-detect for lead carried the second highest mercury reading of any cinnamon in the dataset.",
+    "evidence": "Independent lab testing found lead and/or cadmium above the proposed action level",
+    "sources": [
+      "lead-tested-cinnamon-and-spice-brands.html"
+    ],
+    "article": "lead-tested-cinnamon-and-spice-brands.html",
+    "reviewed": true,
+    "generalises": false,
+    "products": [
+      {
+        "name": "Frontier Co-Op Organic Ceylon Cinnamon (Ground)",
+        "asins": [],
+        "verdict": "careful",
+        "note": "Lead Safe Mama, LLC independent third-party lab testing (2024): lead 243.0 ppb, cadmium 84.0 ppb, mercury <5, arsenic 12.0 ppb. The proposed 2021 action levels for food ingested by children are 5 ppb lead, 5 ppb cadmium, 2 ppb mercury and 10 ppb arsenic; this result is at or above the bar on lead, cadmium, mercury, arsenic.",
+        "origin": "hand",
+        "source": "lead-tested-cinnamon-and-spice-brands.html",
+        "cat": "Pantry",
+        "ext": {
+          "frontNotes": {
+            "formula": "No ingredient list recorded.",
+            "testing": "Lead Safe Mama, LLC independent third-party lab testing (2024): lead 243.0 ppb, cadmium 84.0 ppb, mercury <5, arsenic 12.0 ppb. The proposed 2021 action levels for food ingested by children are 5 ppb lead, 5 ppb cadmium, 2 ppb mercury and 10 ppb arsenic; this result is at or above the bar on lead, cadmium, mercury, arsenic."
+          },
+          "formulaAnswers": {
+            "ingredients": "",
+            "prose": "",
+            "complete": false,
+            "verdict": "open",
+            "summary": "No ingredient list recorded.",
+            "flagged": [],
+            "source": "",
+            "checked": ""
+          },
+          "testingResults": [
+            {
+              "analyte": "lead",
+              "lab": "independent third-party laboratory for Lead Safe Mama, LLC",
+              "lod": "5 ppb",
+              "outcome": "detected",
+              "unit": "ppb",
+              "value": 243.0,
+              "year": 2024
+            },
+            {
+              "analyte": "cadmium",
+              "lab": "independent third-party laboratory for Lead Safe Mama, LLC",
+              "lod": "5 ppb",
+              "outcome": "detected",
+              "unit": "ppb",
+              "value": 84.0,
+              "year": 2024
+            },
+            {
+              "analyte": "mercury",
+              "lab": "independent third-party laboratory for Lead Safe Mama, LLC",
+              "lod": "5 ppb",
+              "outcome": "non-detect",
+              "unit": "ppb",
+              "value": null,
+              "year": 2024
+            },
+            {
+              "analyte": "arsenic (total)",
+              "lab": "independent third-party laboratory for Lead Safe Mama, LLC",
+              "lod": "10 ppb",
+              "outcome": "detected",
+              "unit": "ppb",
+              "value": 12.0,
+              "year": 2024
+            }
+          ],
+          "testingNote": "Lead Safe Mama, LLC independent third-party lab testing (2024): lead 243.0 ppb, cadmium 84.0 ppb, mercury <5, arsenic 12.0 ppb. The proposed 2021 action levels for food ingested by children are 5 ppb lead, 5 ppb cadmium, 2 ppb mercury and 10 ppb arsenic; this result is at or above the bar on lead, cadmium, mercury, arsenic.",
+          "testingDate": "2024",
+          "exposure": {
+            "type": "food",
+            "level": "medium",
+            "score": 6.0,
+            "baby": false,
+            "route": "ingestion",
+            "duration": "minutes",
+            "retained": "swallowed",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "Eaten, so whatever is in it arrives whole."
+          },
+          "verdict": "careful",
+          "dated": "2026-09-29",
+          "why": "section 6: testing is caution",
+          "fronts": {
+            "formula": "unassessed",
+            "materials": "unassessed",
+            "legal": "unassessed",
+            "testing": "caution"
+          },
+          "frontOrigin": {
+            "testing": "database"
+          },
+          "scope": "none",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
+      },
+      {
+        "name": "Frontier Co-Op Ceylon Cinnamon Sticks Organic",
+        "asins": [],
+        "verdict": "careful",
+        "note": "Lead Safe Mama, LLC independent third-party lab testing (2024): lead <5, cadmium 146.0 ppb, mercury 103.0 ppb, arsenic <10. The proposed 2021 action levels for food ingested by children are 5 ppb lead, 5 ppb cadmium, 2 ppb mercury and 10 ppb arsenic; this result is at or above the bar on cadmium, mercury.",
+        "origin": "hand",
+        "source": "lead-tested-cinnamon-and-spice-brands.html",
+        "cat": "Pantry",
+        "ext": {
+          "frontNotes": {
+            "formula": "No ingredient list recorded.",
+            "testing": "Lead Safe Mama, LLC independent third-party lab testing (2024): lead <5, cadmium 146.0 ppb, mercury 103.0 ppb, arsenic <10. The proposed 2021 action levels for food ingested by children are 5 ppb lead, 5 ppb cadmium, 2 ppb mercury and 10 ppb arsenic; this result is at or above the bar on cadmium, mercury."
+          },
+          "formulaAnswers": {
+            "ingredients": "",
+            "prose": "",
+            "complete": false,
+            "verdict": "open",
+            "summary": "No ingredient list recorded.",
+            "flagged": [],
+            "source": "",
+            "checked": ""
+          },
+          "testingResults": [
+            {
+              "analyte": "lead",
+              "lab": "independent third-party laboratory for Lead Safe Mama, LLC",
+              "lod": "5 ppb",
+              "outcome": "non-detect",
+              "unit": "ppb",
+              "value": null,
+              "year": 2024
+            },
+            {
+              "analyte": "cadmium",
+              "lab": "independent third-party laboratory for Lead Safe Mama, LLC",
+              "lod": "5 ppb",
+              "outcome": "detected",
+              "unit": "ppb",
+              "value": 146.0,
+              "year": 2024
+            },
+            {
+              "analyte": "mercury",
+              "lab": "independent third-party laboratory for Lead Safe Mama, LLC",
+              "lod": "2 ppb",
+              "outcome": "detected",
+              "unit": "ppb",
+              "value": 103.0,
+              "year": 2024
+            },
+            {
+              "analyte": "arsenic (total)",
+              "lab": "independent third-party laboratory for Lead Safe Mama, LLC",
+              "lod": "10 ppb",
+              "outcome": "non-detect",
+              "unit": "ppb",
+              "value": null,
+              "year": 2024
+            }
+          ],
+          "testingNote": "Lead Safe Mama, LLC independent third-party lab testing (2024): lead <5, cadmium 146.0 ppb, mercury 103.0 ppb, arsenic <10. The proposed 2021 action levels for food ingested by children are 5 ppb lead, 5 ppb cadmium, 2 ppb mercury and 10 ppb arsenic; this result is at or above the bar on cadmium, mercury.",
+          "testingDate": "2024",
+          "exposure": {
+            "type": "food",
+            "level": "medium",
+            "score": 6.0,
+            "baby": false,
+            "route": "ingestion",
+            "duration": "minutes",
+            "retained": "swallowed",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "Eaten, so whatever is in it arrives whole."
+          },
+          "verdict": "careful",
+          "dated": "2026-09-29",
+          "why": "section 6: testing is caution",
+          "fronts": {
+            "formula": "unassessed",
+            "materials": "unassessed",
+            "legal": "unassessed",
+            "testing": "caution"
+          },
+          "frontOrigin": {
+            "testing": "database"
+          },
+          "scope": "none",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
+      },
+      {
+        "name": "Frontier Co-Op Vera Grade AA Cinnamon Sticks",
+        "asins": [],
+        "verdict": "careful",
+        "note": "Lead Safe Mama, LLC independent third-party lab testing (2024): lead 26.0 ppb, cadmium 165.0 ppb, mercury <5, arsenic <10. The proposed 2021 action levels for food ingested by children are 5 ppb lead, 5 ppb cadmium, 2 ppb mercury and 10 ppb arsenic; this result is at or above the bar on lead, cadmium, mercury.",
+        "origin": "hand",
+        "source": "lead-tested-cinnamon-and-spice-brands.html",
+        "cat": "Pantry",
+        "ext": {
+          "frontNotes": {
+            "formula": "No ingredient list recorded.",
+            "testing": "Lead Safe Mama, LLC independent third-party lab testing (2024): lead 26.0 ppb, cadmium 165.0 ppb, mercury <5, arsenic <10. The proposed 2021 action levels for food ingested by children are 5 ppb lead, 5 ppb cadmium, 2 ppb mercury and 10 ppb arsenic; this result is at or above the bar on lead, cadmium, mercury."
+          },
+          "formulaAnswers": {
+            "ingredients": "",
+            "prose": "",
+            "complete": false,
+            "verdict": "open",
+            "summary": "No ingredient list recorded.",
+            "flagged": [],
+            "source": "",
+            "checked": ""
+          },
+          "testingResults": [
+            {
+              "analyte": "lead",
+              "lab": "independent third-party laboratory for Lead Safe Mama, LLC",
+              "lod": "5 ppb",
+              "outcome": "detected",
+              "unit": "ppb",
+              "value": 26.0,
+              "year": 2024
+            },
+            {
+              "analyte": "cadmium",
+              "lab": "independent third-party laboratory for Lead Safe Mama, LLC",
+              "lod": "5 ppb",
+              "outcome": "detected",
+              "unit": "ppb",
+              "value": 165.0,
+              "year": 2024
+            },
+            {
+              "analyte": "mercury",
+              "lab": "independent third-party laboratory for Lead Safe Mama, LLC",
+              "lod": "5 ppb",
+              "outcome": "non-detect",
+              "unit": "ppb",
+              "value": null,
+              "year": 2024
+            },
+            {
+              "analyte": "arsenic (total)",
+              "lab": "independent third-party laboratory for Lead Safe Mama, LLC",
+              "lod": "10 ppb",
+              "outcome": "non-detect",
+              "unit": "ppb",
+              "value": null,
+              "year": 2024
+            }
+          ],
+          "testingNote": "Lead Safe Mama, LLC independent third-party lab testing (2024): lead 26.0 ppb, cadmium 165.0 ppb, mercury <5, arsenic <10. The proposed 2021 action levels for food ingested by children are 5 ppb lead, 5 ppb cadmium, 2 ppb mercury and 10 ppb arsenic; this result is at or above the bar on lead, cadmium, mercury.",
+          "testingDate": "2024",
+          "exposure": {
+            "type": "food",
+            "level": "medium",
+            "score": 6.0,
+            "baby": false,
+            "route": "ingestion",
+            "duration": "minutes",
+            "retained": "swallowed",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "Eaten, so whatever is in it arrives whole."
+          },
+          "verdict": "careful",
+          "dated": "2026-09-29",
+          "why": "section 6: testing is caution",
+          "fronts": {
+            "formula": "unassessed",
+            "materials": "unassessed",
+            "legal": "unassessed",
+            "testing": "caution"
+          },
+          "frontOrigin": {
+            "testing": "database"
+          },
+          "scope": "none",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
+      }
+    ],
+    "fronts": {
+      "testing": {
+        "status": "caution",
+        "note": "From Frontier Co-Op Organic Ceylon Cinnamon (Ground): Lead Safe Mama, LLC independent third-party lab testing (2024): lead 243.0 ppb, cadmium 84.0 ppb, mercury <5, arsenic 12.0 ppb. The proposed 2021 action levels for food ingested by children are 5 ppb lead, 5 ppb cadmium, 2 ppb mercury and 10 ppb arsenic; this result is at or above the bar on lead, cadmium, mercury, arsenic.",
+        "origin": "rollup"
+      }
+    }
+  },
+  {
+    "id": "mccormick",
+    "brand": "McCormick",
+    "category": "Pantry",
+    "stance": "careful",
+    "reason": "McCormick Gourmet Organic Saigon Cinnamon Sticks. Lead Safe Mama's October 2024 independent lab test found cadmium at 289 ppb, well above the 5 ppb proposed action level, alongside detectable lead, mercury and arsenic.",
+    "evidence": "Independent lab testing found lead and/or cadmium above the proposed action level",
+    "sources": [
+      "lead-tested-cinnamon-and-spice-brands.html"
+    ],
+    "article": "lead-tested-cinnamon-and-spice-brands.html",
+    "reviewed": true,
+    "generalises": false,
+    "products": [
+      {
+        "name": "McCormick Gourmet Organic Saigon Cinnamon Sticks",
+        "asins": [],
+        "verdict": "careful",
+        "note": "Lead Safe Mama, LLC independent third-party lab testing (2024): lead 56.0 ppb, cadmium 289.0 ppb, mercury 8.0 ppb, arsenic 5.0 ppb. The proposed 2021 action levels for food ingested by children are 5 ppb lead, 5 ppb cadmium, 2 ppb mercury and 10 ppb arsenic; this result is at or above the bar on lead, cadmium, mercury.",
+        "origin": "hand",
+        "source": "lead-tested-cinnamon-and-spice-brands.html",
+        "cat": "Pantry",
+        "ext": {
+          "frontNotes": {
+            "formula": "No ingredient list recorded.",
+            "testing": "Lead Safe Mama, LLC independent third-party lab testing (2024): lead 56.0 ppb, cadmium 289.0 ppb, mercury 8.0 ppb, arsenic 5.0 ppb. The proposed 2021 action levels for food ingested by children are 5 ppb lead, 5 ppb cadmium, 2 ppb mercury and 10 ppb arsenic; this result is at or above the bar on lead, cadmium, mercury."
+          },
+          "formulaAnswers": {
+            "ingredients": "",
+            "prose": "",
+            "complete": false,
+            "verdict": "open",
+            "summary": "No ingredient list recorded.",
+            "flagged": [],
+            "source": "",
+            "checked": ""
+          },
+          "testingResults": [
+            {
+              "analyte": "lead",
+              "lab": "independent third-party laboratory for Lead Safe Mama, LLC",
+              "lod": "5 ppb",
+              "outcome": "detected",
+              "unit": "ppb",
+              "value": 56.0,
+              "year": 2024
+            },
+            {
+              "analyte": "cadmium",
+              "lab": "independent third-party laboratory for Lead Safe Mama, LLC",
+              "lod": "5 ppb",
+              "outcome": "detected",
+              "unit": "ppb",
+              "value": 289.0,
+              "year": 2024
+            },
+            {
+              "analyte": "mercury",
+              "lab": "independent third-party laboratory for Lead Safe Mama, LLC",
+              "lod": "2 ppb",
+              "outcome": "detected",
+              "unit": "ppb",
+              "value": 8.0,
+              "year": 2024
+            },
+            {
+              "analyte": "arsenic (total)",
+              "lab": "independent third-party laboratory for Lead Safe Mama, LLC",
+              "lod": "10 ppb",
+              "outcome": "detected",
+              "unit": "ppb",
+              "value": 5.0,
+              "year": 2024
+            }
+          ],
+          "testingNote": "Lead Safe Mama, LLC independent third-party lab testing (2024): lead 56.0 ppb, cadmium 289.0 ppb, mercury 8.0 ppb, arsenic 5.0 ppb. The proposed 2021 action levels for food ingested by children are 5 ppb lead, 5 ppb cadmium, 2 ppb mercury and 10 ppb arsenic; this result is at or above the bar on lead, cadmium, mercury.",
+          "testingDate": "2024",
+          "exposure": {
+            "type": "food",
+            "level": "medium",
+            "score": 6.0,
+            "baby": false,
+            "route": "ingestion",
+            "duration": "minutes",
+            "retained": "swallowed",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "Eaten, so whatever is in it arrives whole."
+          },
+          "verdict": "careful",
+          "dated": "2026-09-29",
+          "why": "section 6: testing is caution",
+          "fronts": {
+            "formula": "unassessed",
+            "materials": "unassessed",
+            "legal": "unassessed",
+            "testing": "caution"
+          },
+          "frontOrigin": {
+            "testing": "database"
+          },
+          "scope": "none",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
+      }
+    ],
+    "fronts": {
+      "testing": {
+        "status": "caution",
+        "note": "From McCormick Gourmet Organic Saigon Cinnamon Sticks: Lead Safe Mama, LLC independent third-party lab testing (2024): lead 56.0 ppb, cadmium 289.0 ppb, mercury 8.0 ppb, arsenic 5.0 ppb. The proposed 2021 action levels for food ingested by children are 5 ppb lead, 5 ppb cadmium, 2 ppb mercury and 10 ppb arsenic; this result is at or above the bar on lead, cadmium, mercury.",
+        "origin": "rollup"
+      }
+    }
+  },
+  {
+    "id": "galil-importing",
+    "brand": "Galil Importing Corp",
+    "category": "Pantry",
+    "stance": "skip",
+    "reason": "Recalled its Lior Cinnamon Ground Seasoning on September 24, 2026 after Maryland Department of Health testing found elevated lead. Distributed to retail stores, grocery stores, delis and supermarkets in New York, New Jersey, Pennsylvania, Texas, Florida and Illinois between November 18, 2025 and September 7, 2026 under lot GAP11304, UPC 794711005484. No illnesses reported at the time of the recall.",
+    "evidence": "Active FDA recall, September 2026, elevated lead",
+    "sources": [
+      "lead-tested-cinnamon-and-spice-brands.html"
+    ],
+    "article": "lead-tested-cinnamon-and-spice-brands.html",
+    "reviewed": true,
+    "generalises": false,
+    "products": [
+      {
+        "name": "Lior Cinnamon Ground Seasoning",
+        "asins": [],
+        "verdict": "skip",
+        "note": "Recalled its Lior Cinnamon Ground Seasoning on September 24, 2026 after Maryland Department of Health testing found elevated lead. Distributed to retail stores, grocery stores, delis and supermarkets in New York, New Jersey, Pennsylvania, Texas, Florida and Illinois between November 18, 2025 and September 7, 2026 under lot GAP11304, UPC 794711005484. No illnesses reported at the time of the recall.",
+        "origin": "hand",
+        "source": "lead-tested-cinnamon-and-spice-brands.html",
+        "cat": "Pantry",
+        "ext": {
+          "exposure": {
+            "type": "food",
+            "level": "medium",
+            "score": 6.0,
+            "baby": false,
+            "route": "ingestion",
+            "duration": "minutes",
+            "retained": "swallowed",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "Eaten, so whatever is in it arrives whole."
+          },
+          "verdict": "skip",
+          "dated": "2026-09-29",
+          "why": "section 6: legal failed, testing is caution",
+          "fronts": {
+            "formula": "unassessed",
+            "materials": "unassessed",
+            "legal": "fail",
+            "testing": "caution"
+          },
+          "frontOrigin": {
+            "legal": "inferred",
+            "testing": "inferred"
+          },
+          "scope": "none",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        }
+      }
+    ],
+    "aliases": [
+      "Lior"
+    ],
+    "fronts": {}
   }
 ]
