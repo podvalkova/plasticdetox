@@ -48,13 +48,20 @@ export const ICONS = {
 };
 
 let toastTimer = null;
-export function toast(message) {
+/**
+ * A message, for as long as it takes to read it.
+ *
+ * 2.6 seconds is right for "Saved" and far too short for an instruction with
+ * a path in it, which is the one kind of toast somebody has to act on after
+ * it has gone.
+ */
+export function toast(message, ms) {
   const old = document.querySelector(".toast");
   if (old) old.remove();
   clearTimeout(toastTimer);
   const t = el("div", "toast", message);
   document.body.appendChild(t);
-  toastTimer = setTimeout(() => t.remove(), 2600);
+  toastTimer = setTimeout(() => t.remove(), ms || 2600);
 }
 
 /**

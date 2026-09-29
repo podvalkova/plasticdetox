@@ -266,6 +266,18 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   color: var(--body); cursor: pointer;
 }
 .pass-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--good, #1b9c62); flex: 0 0 auto; }
+.pass-line.empty .pass-dot { background: var(--accent-dark, #7c3aed); }
+
+/* What each of the four checks catches. Left aligned inside a centred hero,
+   because a two column list of facts is read, and centred text is skimmed. */
+.fronts { margin: 14px auto 0; max-width: 34em; text-align: left; display: flex;
+  flex-direction: column; gap: 8px; }
+.front-line { display: flex; gap: 10px; align-items: baseline; font-size: 14.5px; line-height: 1.45; }
+.front-k { flex: 0 0 auto; font-weight: 700; color: var(--ink, #1c1917); }
+.front-v { color: var(--muted); }
+@media (max-width: 380px) {
+  .front-line { flex-direction: column; gap: 1px; }
+}
 
 /* The card somebody has already paid to use leads the screen, so it says so
    rather than looking like the free request under it. */
@@ -998,26 +1010,32 @@ body.has-tabs .screen { padding-bottom: calc(var(--safe-bottom) + 4rem); }
 .start-p { font-size: 14.5px; line-height: 1.5; color: var(--body); }
 
 .plist { display: flex; flex-direction: column; }
+/* Tiles, two across, because a column of long titles reads as a list of
+   homework and the images we already have were doing nothing at 56px. The
+   picture leads and the subject sits under it, so the eye picks a guide by
+   what it is about rather than by reading eleven words of title. */
+.acards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 .acard {
-  display: flex; gap: 16px; align-items: center; width: 100%; text-align: left;
+  display: flex; flex-direction: column; gap: 0; width: 100%; text-align: left;
   background: var(--surface); border: 1.5px solid rgba(0, 0, 0, .07);
-  border-radius: 22px; padding: 16px; margin-bottom: 12px;
+  border-radius: 20px; padding: 0; overflow: hidden; margin-bottom: 0;
 }
 .acard:active { border-color: rgba(0, 0, 0, .2); }
-.acard-body { flex: 1; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.acard-body { display: flex; flex-direction: column; gap: 4px; min-width: 0; padding: 12px 13px 14px; }
 .acard-k {
   font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
   color: var(--accent);
 }
-.acard-title { font-size: 16px; font-weight: 800; letter-spacing: -.02em; line-height: 1.2; }
+.acard-title { font-size: 15px; font-weight: 800; letter-spacing: -.02em; line-height: 1.22; }
 .acard-blurb {
   font-size: 12.5px; font-weight: 600; color: var(--muted); line-height: 1.35;
   display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
 }
 .acard img {
-  flex: none; width: 56px; height: 56px; border-radius: 16px; object-fit: cover;
-  object-position: 78% center; background: var(--chip);
+  order: -1; width: 100%; height: 108px; object-fit: cover;
+  object-position: 60% center; background: var(--chip);
 }
+@media (max-width: 340px) { .acards { grid-template-columns: 1fr; } }
 
 
 /* A set aside swap is not a completed one, so it does not wear the green. */
