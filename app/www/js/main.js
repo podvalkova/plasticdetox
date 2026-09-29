@@ -1390,7 +1390,12 @@ async function startScan() {
   let code;
   try {
     if (!(await scanner.permit())) {
-      toast("Camera access is off. Turn it on in Settings.");
+      // iOS asks once. After a no it never asks again, and only the Settings
+      // app can undo it, so "turn it on in Settings" without naming the path
+      // sends somebody hunting through a screen we do not control. A reviewer
+      // went looking for a Settings section inside the app, which is not a
+      // thing any app has.
+      toast("Camera is off for this app. iPhone Settings, then Plastic Detox, then Camera.", 6000);
       return;
     }
     code = await scanner.scan();
@@ -1798,12 +1803,15 @@ async function start() {
   canScan = await scanner.available();
   boot.classList.add("gone");
   setTimeout(() => boot.remove(), 300);
-  // Open on Detox, not Check. Check answers a question you already have, which
-  // means you arrive at it deliberately; Detox is the thing with something to
-  // show someone who opened the app without one. Resuming still wins, so
-  // anyone who was mid task lands back where they were.
+  // Open on Check. It used to open on Detox, on the reasoning that Check
+  // answers a question you already have while Detox has something to show
+  // somebody who arrived without one. That reasoning holds for a reader with
+  // time; it does not hold for the ten seconds somebody has a product in their
+  // hand, which is when this app earns its place. Check is also the busiest
+  // page on the website by a wide margin, and the only part anyone has paid
+  // for. Resuming still wins, so anyone mid task lands back where they were.
   if (restorePlace()) render();
-  else go({ screen: "detox" });
+  else go({ screen: "home" });   // "home" is the Check tab's screen, see ROOTS
   openDeepLink(location.search).catch((err) => console.error("deep link failed", err));
 
   // Nothing to tap. Provisional authorisation is already granted by the time

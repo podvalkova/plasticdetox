@@ -73,6 +73,11 @@ window.VetRun = (function () {
   async function run(req, handlers) {
     var onFront = (handlers && handlers.onFront) || function () {};
     var onDone = (handlers && handlers.onDone) || function () {};
+    // Things the worker learns before it has settled anything: the product's
+    // real name, and the recall databases answering ahead of the lawsuit
+    // search. They carry a step but no front, so they never reach onFront and
+    // never settle a row. A page that does not want them simply omits this.
+    var onProgress = (handlers && handlers.onProgress) || function () {};
     var lost = "Connection lost. Your check was not charged unless the full card was delivered.";
     var r;
     try {
@@ -105,7 +110,8 @@ window.VetRun = (function () {
           try { e = JSON.parse(chunk.slice(6)); } catch (err) { continue; }
           if (e.internal) continue;
           if (e.front) onFront(e);
-          if (e.done) onDone(e);
+          else if (e.done) onDone(e);
+          else if (e.step) onProgress(e);
         }
       }
     } catch (err) { onDone({ error: lost }); }

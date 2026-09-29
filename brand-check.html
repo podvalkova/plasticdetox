@@ -507,11 +507,22 @@
   /* One fact at a time while the check runs. A block of five paragraphs was
      reading material nobody read: during the wait it sat below the fold, and
      when the answer landed it pushed the verdict off the screen. */
-  .check-tip{display:flex;align-items:flex-start;gap:11px;margin:0 0 16px;padding:13px 15px;
-    background:var(--accent-wash);border-radius:12px;min-height:46px}
-  .tip-label{flex:none;font-size:10.5px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;
-    color:var(--accent);padding-top:3px}
-  .tip-text{font-size:14.5px;line-height:1.5;color:var(--body);transition:opacity .22s ease}
+  .check-tip{margin:0 0 16px;padding:13px 15px 11px;background:var(--accent-wash);border-radius:14px}
+  .tip-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:8px}
+  .tip-label{font-size:10.5px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--accent)}
+  .tip-count{font-size:11.5px;font-weight:650;color:var(--muted);font-variant-numeric:tabular-nums}
+  /* One card per screen, snapped, so a swipe lands on a whole fact rather than
+     between two. Nothing advances on its own. */
+  .tip-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;
+    -webkit-overflow-scrolling:touch;gap:0}
+  .tip-track::-webkit-scrollbar{display:none}
+  .tip-card{flex:0 0 100%;scroll-snap-align:start;font-size:14.5px;line-height:1.5;color:var(--body);
+    padding-right:2px}
+  .tip-card a{color:var(--accent);font-weight:650}
+  .tip-dots{display:flex;gap:6px;justify-content:center;margin-top:10px}
+  .tip-dots i{width:6px;height:6px;border-radius:50%;background:var(--accent-light);cursor:pointer;
+    transition:background .15s,transform .15s}
+  .tip-dots i.on{background:var(--accent);transform:scale(1.25)}
 
   /* Afterwards the same facts are reference, not reading material, so they
      fold away and the verdict is the thing on the screen. */
@@ -782,7 +793,7 @@
      separately for ten minutes each, so without it a browser can hold a new
      page against an old script and call a function that is not there yet.
      Bump it whenever vet-run.js changes. -->
-<script src="js/vet-run.js?v=8"></script>
+<script src="js/vet-run.js?v=10"></script>
 <script>
     const WORKER_URL = "https://plasticdetox-quiz-email.plasticdetox.workers.dev";
     // A product row can be unrated in the data (typed and ruled both), and
@@ -1489,7 +1500,7 @@
      * candle cannot separate two candles, and if it set a status the whole
      * category would be capped at careful. Context here, evidence there.
      */
-    let CATEGORY_NOTES = null, tipTimer = null;
+    let CATEGORY_NOTES = null;
 
     async function categoryFor(query) {
       try {
@@ -1502,29 +1513,48 @@
       } catch (e) { return null; }   // reading material must never break a paid check
     }
 
-    /** One fact at a time, beside the timer, for as long as the check runs. */
+    /**
+     * Something to read while the check runs, at the reader's own pace.
+     *
+     * These used to rotate on a timer. Anya watched a fact disappear before she
+     * had finished it, which is the one thing a five second carousel reliably
+     * does: it takes the decision about reading speed away from the person
+     * reading. They are cards you swipe now, all of them present from the
+     * start, and nothing moves unless a thumb moves it.
+     */
     function startTips(hit) {
-      const box = $("checkTip"), el = $("tipText"), lab = $("tipLabel");
-      if (!box || !el || !hit || !hit.notes || !hit.notes.length) return;
-      lab.textContent = hit.id;
-      let i = 0;
-      const show = () => {
-        el.style.opacity = "0";
-        setTimeout(() => {
-          el.textContent = hit.notes[i++ % hit.notes.length].text;
-          el.style.opacity = "1";
-        }, 220);
-      };
+      const box = $("checkTip");
+      if (!box || !hit || !hit.notes || !hit.notes.length) return;
+      box.innerHTML =
+        '<div class="tip-head"><span class="tip-label">Learn while waiting</span>'
+        + '<span class="tip-count" id="tipCount">1 of ' + hit.notes.length + "</span></div>"
+        + '<div class="tip-track" id="tipTrack">'
+        + hit.notes.map(n => '<div class="tip-card">' + esc(n.text)
+            + (n.source ? ' <a href="' + esc(n.source) + '" target="_blank" rel="noopener">source</a>' : "")
+            + "</div>").join("")
+        + "</div>"
+        + '<div class="tip-dots" id="tipDots">'
+        + hit.notes.map((_, i) => '<i' + (i ? "" : ' class="on"') + "></i>").join("")
+        + "</div>";
       box.hidden = false;
-      show();
-      clearInterval(tipTimer);
-      tipTimer = setInterval(show, 5200);
+
+      // Which card is in view, read off the scroll rather than tracked, so a
+      // flick, a drag and a tap on a dot all stay in agreement.
+      const track = $("tipTrack"), dots = $("tipDots"), count = $("tipCount");
+      track.addEventListener("scroll", () => {
+        const i = Math.round(track.scrollLeft / track.clientWidth);
+        [...dots.children].forEach((d, n) => d.classList.toggle("on", n === i));
+        count.textContent = (i + 1) + " of " + hit.notes.length;
+      }, { passive: true });
+      [...dots.children].forEach((d, i) => {
+        d.onclick = () => track.scrollTo({ left: i * track.clientWidth, behavior: "smooth" });
+      });
       gtag('event', 'category_notes_shown', { category: hit.id });
     }
 
     function stopTips() {
-      clearInterval(tipTimer); tipTimer = null;
-      const box = $("checkTip"); if (box) box.hidden = true;
+      const box = $("checkTip");
+      if (box) box.hidden = true;
     }
 
     /** The same facts afterwards: folded away, under the answer, not over it. */
@@ -1599,9 +1629,14 @@
         '<div class="check-tip" id="checkTip" hidden><span class="tip-label" id="tipLabel"></span>'
         + '<span class="tip-text" id="tipText"></span></div>'
         + '<div id="verdictSlot"></div>'
-        + '<div class="step-row" id="stepRow">' + FRONT_ORDER.map((k, i) =>
-            '<div class="step' + (i === 0 ? " now" : "") + '" id="step-' + k + '"><b>' + esc(VetRun.STEP[k])
-            + "</b><span>" + (i === 0 ? "Checking" : "Queued") + "</span></div>").join("")
+        // All four at once, because that is what happens: the worker fires the
+        // label, legal and testing calls in parallel and they land within
+        // seconds of each other. Showing three of them "Queued" behind a first
+        // one invented a queue that does not exist, and then the answers all
+        // appeared together and made the queue look broken.
+        + '<div class="step-row" id="stepRow">' + FRONT_ORDER.map((k) =>
+            '<div class="step now" id="step-' + k + '"><b>' + esc(VetRun.STEP[k])
+            + "</b><span>Checking</span></div>").join("")
         + "</div>"
         + FRONT_ORDER.map(k =>
             '<div class="check-row" id="row-' + k + '">'
@@ -1633,14 +1668,28 @@
       };
 
       await VetRun.run({ pass: VetRun.getPass(), brand: brand, product: "", url: url, fresh: asking }, {
+        // What the worker knows before it knows a verdict. None of this
+        // settles a row: it fills the waiting with the two real things that
+        // are ready early, the product's name and the recall databases.
+        onProgress: e => {
+          if (e.step === "identified" && e.name) {
+            brand = e.name;
+            checkSubject.label = e.name;
+            const h = $("unknownName");
+            if (h) h.textContent = String(e.name).slice(0, 90);
+            if (!catHit) findCategory(e.name);
+            return;
+          }
+          if (e.partial && e.note) {
+            const note = document.querySelector("#row-" + e.step + " .pending-note");
+            if (note) note.textContent = e.note;
+          }
+        },
         onFront: e => {
           const f = e.front;
           if (!catHit && f.note) findCategory(brand + " " + f.note);
           const chip = $("step-" + e.step);
           if (chip) { chip.className = "step done"; chip.lastElementChild.textContent = "Done"; }
-          // Whichever has not answered yet is the one being worked on.
-          const next = FRONT_ORDER.map(k => $("step-" + k)).find(n => n && n.className === "step");
-          if (next) { next.className = "step now"; next.lastElementChild.textContent = "Checking"; }
           lastCheck = (lastCheck ? lastCheck + "\n" : "")
             + (VetRun.STEP[e.step] || e.step) + ": " + f.status + " - " + (f.note || "");
           paint(e.step, frontRowHtml(e.step, f));

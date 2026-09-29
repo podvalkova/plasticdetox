@@ -19,21 +19,45 @@ export function home(root, {
 }) {
   const hero = el("div", "hero");
   hero.appendChild(el("h1", null, "Check it before you buy it"));
+  // What each check catches, not what it is called. The four were a single
+  // comma list, and a reader who liked the app enough to write three pages of
+  // notes still came away thinking it was a barcode scanner. A scanner reads
+  // the label. None of these four are on the label.
   hero.appendChild(el("p", null,
-    "Four checks on every product: formula, materials, recalls and lawsuits, independent tests."));
+    "A label will not tell you a product failed a lab test. These four will."));
+  const fronts = el("div", "fronts");
+  for (const [name, catches] of [
+    ["Formula", "every ingredient, and the ones we flag"],
+    ["Materials", "what it is made of, and what touches your food"],
+    ["Recalls and lawsuits", "the CPSC and FDA records, and who is being sued"],
+    ["Independent tests", "published lab results, lead and PFAS included"],
+  ]) {
+    const row = el("div", "front-line");
+    row.appendChild(el("span", "front-k", name));
+    row.appendChild(el("span", "front-v", catches));
+    fronts.appendChild(row);
+  }
+  hero.appendChild(fronts);
   // A pass is a token rather than an account, so nothing on this screen said
   // one had been bought. Somebody who paid for checks had no way to see it
   // without opening Settings and scrolling to the bottom.
+  // Shown whether or not one is owned. It only ever appeared to people who
+  // already had a pass, so the thing we sell was invisible to everybody who
+  // had not bought it yet, which is everybody who might.
+  const pass = el("button", "pass-line");
+  pass.type = "button";
+  pass.appendChild(el("span", "pass-dot"));
   if (checks && checks.hasPass) {
-    const pass = el("button", "pass-line");
-    pass.type = "button";
-    pass.appendChild(el("span", "pass-dot"));
     pass.appendChild(el("span", null, typeof checks.balance === "number"
       ? `${checks.balance} instant ${checks.balance === 1 ? "check" : "checks"} left on your pass`
       : "Your check pass is saved on this phone"));
-    if (onChecks) pass.onclick = onChecks;
-    hero.appendChild(pass);
+  } else {
+    pass.classList.add("empty");
+    pass.appendChild(el("span", null,
+      "A product we already hold is free. A pass researches one we do not."));
   }
+  if (onChecks) pass.onclick = onChecks;
+  hero.appendChild(pass);
   root.appendChild(hero);
 
   // A link, first, because most shopping happens on a screen.
@@ -220,8 +244,12 @@ export function renderResults(container, hits, onPick) {
 export function tabs(current, onTab) {
   const bar = el("div", "tabs");
   for (const [key, label, path] of [
-    ["detox", "Detox", ICONS.detox],
+    // Check first. The app led with Detox on the reasoning that a plan is
+    // worth more than a lookup, which is true over months and wrong in the
+    // ten seconds somebody has a product in their hand. Check is also the
+    // busiest page on the website by a distance.
     ["check", "Check", ICONS.check],
+    ["detox", "Detox", ICONS.detox],
     ["shop", "Shop", ICONS.shop],
     ["saved", "Saved", ICONS.saved],
     ["learn", "Learn", ICONS.learn],
@@ -902,6 +930,26 @@ export function saved(root, { items, index, onProduct, onOpen, onShop }) {
 
 // ------------------------------------------------------------------ learn
 
+/**
+ * An article title, cut down to what a tile can hold.
+ *
+ * Our titles are written for search: "Best Non Toxic Baby Wash and Shampoo
+ * (2026): What Newborn Skin Actually Needs". That is the right title on the
+ * website and four lines of grey on a phone tile. The part before the colon,
+ * minus the year and the SEO throat clearing, is what somebody is choosing
+ * between.
+ */
+function shortTitle(title) {
+  let s = String(title || "").split(/[:\u2013\u2014]/)[0];
+  s = s.replace(/\s*\(20\d\d\)\s*/g, " ")
+       .replace(/\s+(for|in)?\s*20\d\d\s*$/i, "")
+       .replace(/^(the\s+)?(best|complete|ultimate|definitive)\s+/i, "")
+       .replace(/\bnon[\s-]?toxic\b/gi, "")
+       .replace(/\s{2,}/g, " ")
+       .trim();
+  return s.charAt(0).toUpperCase() + s.slice(1);
+}
+
 export function learn(root, { articles, onArticle, query, onQuery }) {
   const hero = el("div", "hero shop-hero");
   hero.appendChild(el("h1", null, "Learn"));
@@ -947,29 +995,32 @@ export function learn(root, { articles, onArticle, query, onQuery }) {
   }
   root.appendChild(el("div", "section-title", `All articles \u00b7 ${list.length}`));
 
+  const grid = el("div", "acards");
   list.forEach((a, i) => {
     const card = el("button", "acard");
     card.type = "button";
     const body = el("div", "acard-body");
-    // The canvas leads each row with a kicker. Ours is the article's own
-    // subject, taken off the slug, so it names the thing rather than a number.
+    // The subject, taken off the slug, so it names the thing rather than a
+    // number. On a tile this is the line that does the work: "Baby Pump" and
+    // "Candles" are read at a glance where eleven words of title are not.
     const kicker = (a.slug || "").replace(/\.html$/, "").split("-")
       .filter((w) => !/^(best|non|toxic|the|a|for|and|to|in|of|guide|2026)$/i.test(w))
       .slice(0, 2).join(" ");
     if (kicker) body.appendChild(el("div", "acard-k", kicker));
-    body.appendChild(el("div", "acard-title", a.title));
+    body.appendChild(el("div", "acard-title", shortTitle(a.title)));
     if (a.blurb) body.appendChild(el("div", "acard-blurb", a.blurb));
     card.appendChild(body);
     if (a.image) {
       const im = el("img");
       im.src = a.image; im.alt = "";
-      if (i >= 6) im.loading = "lazy";
+      if (i >= 4) im.loading = "lazy";
       im.onerror = () => im.remove();
       card.appendChild(im);
     }
     card.onclick = () => onArticle(a.slug);
-    root.appendChild(card);
+    grid.appendChild(card);
   });
+  root.appendChild(grid);
 }
 
 // ----------------------------------------------------------------- reader
