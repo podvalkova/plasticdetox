@@ -2428,7 +2428,13 @@ async function vetFeasible(env, brand, product, url = "") {
 
 async function vetAdverse(env, brand, product, url = "") {
   return vetClaude(env, VET_RULES,
-    `Product: ${vetSubject(brand, product, url)}. Your ONLY job in this pass is to find what is WRONG. `
+    `Product: ${vetSubject(brand, product, url)}. THE NOTE IS AT MOST TWO SENTENCES AND REPORTS ONLY WHAT YOU FOUND. `
+    + `THE FIRST SENTENCE IS THE ANSWER. If you found nothing against this product, the first sentence says so, and where `
+    + `you found nothing at all the entire note is "No recalls or lawsuits on record." A recall you examined and ruled out `
+    + `is not a finding and does not belong in the note: it is our working, and a note that opens with two sentences about `
+    + `another company's recall reads as though we found something and buries the answer at the end. Mention a ruled-out `
+    + `recall only where a shopper searching this exact product name would hit it themselves, and then only after the `
+    + `answer, in one trailing clause. Your ONLY job in this pass is to find what is WRONG. `
     + `Search hard and adversarially: "<brand> lawsuit", "<brand> class action", "<brand> settlement", `
     + `"<brand> attorney investigating", "<brand> FDA warning letter", "<brand> CPSC complaint", `
     + `"<brand> injury", "<brand> burn", "<brand> rash", "<brand> recall". Search the PRODUCT LINE too, `
@@ -2453,14 +2459,14 @@ function worseFront(a, b) {
 
 async function vetLabel(env, brand, product, url = "") {
   const r = await vetClaude(env, VET_RULES,
-    `Product: ${vetSubject(brand, product, url)}. Find (1) "formula": the ingredient list, and nothing else. Quote it verbatim behind the word Ingredients where you can find it. Formula is status "none" ONLY when nobody states what the product is made of, which is true of a chair or a knife and almost nothing else. If a composition is published anywhere, that is the formula, whatever kind of product it is. Search for it before concluding there is none. Where the product is burned, vaporised or sprayed, the formula is the front that decides the answer. Give formula a "finding": one short sentence naming what is wrong, or what is clean, in plain words, such as "Contains parfum, an undisclosed fragrance blend". Give formula a "flagged": an array of the exact ingredient names that earned the status, empty when none. (2) "materials": report FACTS, not a judgement. "holds": what is inside the product, and the single word "none" when the product is not a container at all, which covers every durable good, toy, garment, mat, nappy and piece of furniture. "material": what the product ITSELF is made of, listing ONLY the surfaces a person's skin or mouth meets in normal use, and required whenever holds is "none". "nonContact": the parts a person never meets, such as the tyres of a balance bike, the base of a yoga mat or the foam sealed inside a mattress cover. Those are noted and never scored, so putting one in "material" marks a product down for a part nobody touches. "undisclosedPart": the NAME OF THE PART ONLY, two or three words, where a part in the CONTACT path is one the maker will not identify: "grips", "the top layer", "the coating". Not a sentence and not an explanation, because we put it in one. Empty where every contact part is named. "Nonwoven", "woven", "quilted", "fibre", "foam", "laminate" and "textile" describe how a layer is BUILT, not what it is made of: a nonwoven can be polypropylene, polyester, viscose or cotton and those are four different answers. So a contact layer given only as "nonwoven" or "soft fibre" is an undisclosed part, however much is said about the OTHER layers. "mouthed": true when a small child puts it in their mouth in normal use. "container": what actually touches the contents, as specifically as the source allows (PET, HDPE, PP, unnamed plastic, glass, aluminium, steel, paper, cotton), and empty when holds is "none". "filledBy": "maker" when the product is sold with its contents inside, "buyer" when it is sold empty for the shopper to fill, which is every storage bag, box, jar, wrap and bottle. "base": one of dry, aqueous, surfactant, emulsion, anhydrous, acidic, by what the contents are, an oil or balm or stick being anhydrous. Where filledBy is "buyer" the base is the hardest use the MAKER markets, not the gentlest: dry only where the maker restricts it to dry goods, anhydrous where it is marketed for oils, fats or cooking in the bag, and otherwise emulsion, because food carries fat. "heated": true only when something hot goes in or on it in use, and where filledBy is "buyer" that means the maker markets heating it, microwaving, boiling or the oven. "use": leave-on, rinse-off, ingested or not-on-body. Anything eaten, drunk or held in the mouth is "ingested", never "not-on-body": not-on-body is for laundry powder and surface cleaner, which are diluted and washed away. Add a "note": ONE SENTENCE, under 25 words, naming only what the product is physically made of. It is read on a phone next to three other lines, so it is not a transcript of the listing and not a record of your searching. It says nothing about the ingredients, the fragrance, emissions, VOCs, testing or any study: those are the formula and testing lines and repeating them here wastes the only line materials gets. If the materials are unremarkable, say so in five words. We apply our own packaging table to those facts, so do not reason about pass or fail for materials yourself. Every field carries a "source" URL. (3) "identified": {"brand":"<the maker>","product":"<the product name>"}, always, and above all where you were given only a link: you work the name out in order to research it, and we need it to file the answer under.`,
+    `Product: ${vetSubject(brand, product, url)}. Find (1) "formula": the ingredient list, and nothing else. Quote it verbatim behind the word Ingredients where you can find it. Formula is status "none" ONLY when nobody states what the product is made of, which is true of a chair or a knife and almost nothing else. If a composition is published anywhere, that is the formula, whatever kind of product it is. Search for it before concluding there is none. Where the product is burned, vaporised or sprayed, the formula is the front that decides the answer. AN ALLERGEN DECLARATION IS NOT DISCLOSURE. Naming the allergens a fragrance contains (linalool, limonene, citronellol, eugenol and the rest of the EU list) is a legal warning to allergic people, not a statement of what the fragrance is made of, so the umbrella still stands and the front still caps at caution. The same holds for "essential oil blend", "natural fragrance" and "proprietary scent". Only the oils themselves being named clears a scented product. Say which it is in the finding: "The fragrance is named only by its allergens, not by its oils". Give formula a "finding": one short sentence naming what is wrong, or what is clean, in plain words, such as "Contains parfum, an undisclosed fragrance blend". Give formula a "flagged": an array of the exact ingredient names that earned the status, empty when none. (2) "materials": report FACTS, not a judgement. "holds": what is inside the product, and the single word "none" when the product is not a container at all, which covers every durable good, toy, garment, mat, nappy and piece of furniture. "material": what the product ITSELF is made of, listing ONLY the surfaces a person's skin or mouth meets in normal use, and required whenever holds is "none". "nonContact": the parts a person never meets, such as the tyres of a balance bike, the base of a yoga mat or the foam sealed inside a mattress cover. Those are noted and never scored, so putting one in "material" marks a product down for a part nobody touches. "undisclosedPart": the NAME OF THE PART ONLY, two or three words, where a part in the CONTACT path is one the maker will not identify: "grips", "the top layer", "the coating". Not a sentence and not an explanation, because we put it in one. Empty where every contact part is named. "Nonwoven", "woven", "quilted", "fibre", "foam", "laminate" and "textile" describe how a layer is BUILT, not what it is made of: a nonwoven can be polypropylene, polyester, viscose or cotton and those are four different answers. So a contact layer given only as "nonwoven" or "soft fibre" is an undisclosed part, however much is said about the OTHER layers. "mouthed": true when a small child puts it in their mouth in normal use. "container": what actually touches the contents, as specifically as the source allows (PET, HDPE, PP, unnamed plastic, glass, aluminium, steel, paper, cotton), and empty when holds is "none". "filledBy": "maker" when the product is sold with its contents inside, "buyer" when it is sold empty for the shopper to fill, which is every storage bag, box, jar, wrap and bottle. "base": one of dry, aqueous, surfactant, emulsion, anhydrous, acidic, by what the contents are, an oil or balm or stick being anhydrous. Where filledBy is "buyer" the base is the hardest use the MAKER markets, not the gentlest: dry only where the maker restricts it to dry goods, anhydrous where it is marketed for oils, fats or cooking in the bag, and otherwise emulsion, because food carries fat. "heated": true only when something hot goes in or on it in use, and where filledBy is "buyer" that means the maker markets heating it, microwaving, boiling or the oven. "use": leave-on, rinse-off, ingested or not-on-body. Anything eaten, drunk or held in the mouth is "ingested", never "not-on-body": not-on-body is for laundry powder and surface cleaner, which are diluted and washed away. Add a "note": ONE SENTENCE, under 25 words, naming only what the product is physically made of. It is read on a phone next to three other lines, so it is not a transcript of the listing and not a record of your searching. It says nothing about the ingredients, the fragrance, emissions, VOCs, testing or any study: those are the formula and testing lines and repeating them here wastes the only line materials gets. If the materials are unremarkable, say so in five words. We apply our own packaging table to those facts, so do not reason about pass or fail for materials yourself. Every field carries a "source" URL. (3) "identified": {"brand":"<the maker>","product":"<the product name>"}, always, and above all where you were given only a link: you work the name out in order to research it, and we need it to file the answer under.`,
     6);
   return r;
 }
 
 async function vetTesting(env, brand, product, url = "") {
   const r = await vetClaude(env, VET_RULES,
-    `Product: ${vetSubject(brand, product, url)}. This front is ONLY for actual measurements and certifications: lab results, peer reviewed studies, certifications (Lead Safe Mama, Mamavation, Consumer Reports, NSF, OEKO-TEX, GOTS, EWG Verified), including studies that MEASURED this product category, which count at caution strength with the note saying it is a category measurement. A certification you verify (EWG Verified, NSF, OEKO-TEX, GOTS) is pass-level evidence. EWG Skin Deep pages and brand certification pages are public: FETCH them rather than reporting that they exist. If an assessment exists only behind a paywall (Consumer Reports), say so plainly: "Consumer Reports has tested this product; the results are subscription only and we could not verify them." What the product is made of is NOT testing evidence. A clean lab result needs its detection limit to count as pass. If nothing has been published about THIS product, do not stop there: search for peer reviewed measurements of the PRODUCT CLASS before answering, because the rules count those at caution strength. Scented candles, gas stoves, nonstick pans, air fresheners and vinyl flooring all have published emissions or migration literature that applies to every product of that kind, and a shopper deciding what to buy needs it. Report it with a note that names what was measured and says plainly that it is a measurement of the category rather than of this item. **But the status must reflect where THIS product sits on what was measured, not merely that the category was measured at all.** A finding true of every member of a category cannot separate them, and if it sets a caution then every member is capped at careful and the verdict tells a shopper nothing. The candle literature does not say candles emit; it says FRAGRANCE LOAD drives emissions and unscented candles emit by far the least. So a heavily scented candle sits badly on the measured axis and takes the caution, and an unscented or lightly, openly scented one sits well on it and takes a pass with the same literature cited. Read the finding for what it distinguishes, and say which end of it this product is at. Only when neither the product nor its class has been measured is the status "none", with note "No independent testing of this product or its category has been published." Use "unassessed" only if you could not complete the search. The note is read by a shopper deciding what to buy, so it says what is true of the PRODUCT in one plain sentence. Never narrate your own searching: which pages would not open, which names you tried, what you could not identify. All of that is our working, and none of it tells anybody anything about the thing in their hand. Reply ONLY: {"testing":{"status":"pass|caution|fail|none|unassessed","note":"<one sentence>","source":"<url or empty>"}}`,
+    `Product: ${vetSubject(brand, product, url)}. This front is ONLY for actual measurements and certifications: lab results, peer reviewed studies, certifications (Lead Safe Mama, Mamavation, Consumer Reports, NSF, OEKO-TEX, GOTS, EWG Verified), including studies that MEASURED this product category, which count at caution strength with the note saying it is a category measurement. A certification you verify (EWG Verified, NSF, OEKO-TEX, GOTS) is pass-level evidence. EWG Skin Deep pages and brand certification pages are public: FETCH them rather than reporting that they exist. If an assessment exists only behind a paywall (Consumer Reports), say so plainly: "Consumer Reports has tested this product; the results are subscription only and we could not verify them." What the product is made of is NOT testing evidence. A clean lab result needs its detection limit to count as pass. If nothing has been published about THIS product, do not stop there: search for peer reviewed measurements of the PRODUCT CLASS before answering, because the rules count those at caution strength. Scented candles, gas stoves, nonstick pans, air fresheners and vinyl flooring all have published emissions or migration literature that applies to every product of that kind, and a shopper deciding what to buy needs it. Report it with a note that names what was measured and says plainly that it is a measurement of the category rather than of this item. **But the status must reflect where THIS product sits on what was measured, not merely that the category was measured at all.** A finding true of every member of a category cannot separate them, and if it sets a caution then every member is capped at careful and the verdict tells a shopper nothing. The candle literature does not say candles emit; it says FRAGRANCE LOAD drives emissions and unscented candles emit by far the least. So a heavily scented candle sits badly on the measured axis and takes the caution, and an unscented or lightly, openly scented one sits well on it and takes a pass with the same literature cited. Read the finding for what it distinguishes, and say which end of it this product is at. Only when neither the product nor its class has been measured is the status "none", with note "No independent testing of this product or its category has been published." Use "unassessed" only if you could not complete the search. The note is read by a shopper deciding what to buy, so it says what is true of the PRODUCT in one plain sentence. THE FIRST SENTENCE IS THE ANSWER, and where nobody has tested this item it opens by saying so, in those words: "No independent test of this product was found." The category measurement is the SECOND sentence, not a subordinate clause inside a long first one. A reader who wants to know whether anyone tested the thing in their hand should learn it from the first six words, not from the middle of a sixty word sentence. Never narrate your own searching: which pages would not open, which names you tried, what you could not identify. All of that is our working, and none of it tells anybody anything about the thing in their hand. Reply ONLY: {"testing":{"status":"pass|caution|fail|none|unassessed","note":"<one sentence>","source":"<url or empty>"}}`,
     4, 45000);
   return r;
 }
@@ -2520,8 +2526,18 @@ function vetVerdict(fronts) {
   // "none" satisfies a check the way the pipeline's gate treats it: we
   // looked, and nothing of this kind applies. Only "unassessed" blocks.
   const blocking = ["formula", "materials", "legal"];
-  if (blocking.every((k) => st(k) === "pass" || st(k) === "none")) return "good";
-  return "unrated";
+  // Testing stays outside the gate, per rule 5.6: almost nothing in these
+  // categories is independently tested and the maker does not control that, so
+  // a genuine "none" must not hold a recommendation back.
+  //
+  // A testing check that never ran is a different thing. 5.6 excuses an absent
+  // TEST, not an absent LOOK, and a candle came back "Good choice" over a
+  // fourth row reading "This check did not finish", which is a recommendation
+  // awarded off three quarters of a run.
+  const testingRan = Boolean(fronts.testing && fronts.testing.status
+    && fronts.testing.status !== "unassessed");
+  if (!blocking.every((k) => st(k) === "pass" || st(k) === "none")) return "unrated";
+  return testingRan ? "good" : "unrated";
 }
 
 // The research pipeline shared by the private bench and the paid customer
@@ -2537,11 +2553,16 @@ function vetVerdict(fronts) {
 // burned, eaten or worn from being called a durable good with no formula.
 // Every one of those changed what the research finds, and none of them reached
 // a product already answered until this number moved.
-// Not bumped for a change to how a note is WORDED. Bumping discards every
-// answer anyone has paid for, and a shorter materials sentence is not a
-// different verdict. Anya asked for the saved answers to stay saved on the
-// same day this number would otherwise have thrown them all away.
-const VET_ENGINE = 24;
+// 25 because two rules the research applies actually changed: an allergen
+// declaration no longer clears a fragrance, and a testing check that never ran
+// no longer leaves a recommendation standing. Both change verdicts, which is
+// what this number is for.
+//
+// It is still not bumped for wording. A shorter materials sentence is not a
+// different verdict, and bumping costs every stored answer its reuse. Those
+// answers are not lost: /vet-known still shows an older one and says which
+// method produced it, so a report somebody paid for keeps working.
+const VET_ENGINE = 25;
 
 /** One key per product, so the same thing asked twice finds the first answer. */
 function researchKey(brand, product) {
@@ -2842,10 +2863,30 @@ async function vetCore(env, brand, product, send, allowResearch, url = "", fresh
              verdict: "unrated", capNote: "", fronts, identified: null };
   }
 
+  // Feasibility already knows what the thing is, about four seconds in, and we
+  // used to sit on that for another minute and hand the name over with the
+  // verdict. The card can say what it is checking while it checks it, and the
+  // reading material can match a category on a real product name instead of on
+  // a pasted URL.
+  if (feas.name) send({ step: "identified", name: feas.name, ms: Date.now() - t0 });
+
   // Recalls come from two databases; lawsuits come from searching. The front is
   // called "Recalls & lawsuits" and until now only the first half was asked.
+  //
+  // The two halves do not take remotely the same time: the databases answer in
+  // seconds and the lawsuit search is a model call that takes most of a minute.
+  // Holding the database answer until the search returns was the largest part
+  // of "everything arrived at once", so it goes out as soon as it lands. It is
+  // sent as a partial, which says what we know so far without settling the
+  // front, because a row that reads pass and then turns fail is worse than a
+  // row that waits.
   const legalP = Promise.all([
-    vetLegal(brand),
+    vetLegal(brand).then((recalls) => {
+      if (recalls && recalls.note) {
+        send({ step: "legal", partial: true, note: recalls.note, ms: Date.now() - t0 });
+      }
+      return recalls;
+    }),
     vetAdverse(env, brand, product, url).then((r) => { addSpend(r); return r && r.data && r.data.adverse; }).catch(() => null),
   ]).then(([recalls, adverse]) => {
     let f = worseFront(recalls, adverse);
@@ -2853,6 +2894,17 @@ async function vetCore(env, brand, product, send, allowResearch, url = "", fresh
       // Both looked and disagreed, so the card carries both sentences rather
       // than silently dropping the quieter one.
       f = { ...f, note: [adverse.note, recalls.note].filter(Boolean).join(" ") };
+    }
+    // When nothing was found against the product, the note says nothing was
+    // found, in one sentence, and we write it rather than ask for it. Three
+    // rounds of prompting could not stop the model explaining at length why a
+    // recall it had ruled out did not apply: WoodWick Fireside came back clean
+    // and spent forty of its sixty words on a Target recall of a different
+    // candle. That explanation is our working. A recall we examined and
+    // dismissed is not a finding, and at pass or none there is by definition
+    // no finding to report, so there is nothing for prose to add.
+    if (f && (f.status === "pass" || f.status === "none")) {
+      f = { ...f, note: "No recalls, lawsuits or regulatory actions on record." };
     }
     fronts.legal = f;
     send({ step: "legal", front: f, ms: Date.now() - t0 });
