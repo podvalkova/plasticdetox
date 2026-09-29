@@ -364,6 +364,27 @@ async function handleAppUpdate(request, env, corsOrigin) {
   // path and changes nothing.
   const none = (why) => json({ error: why }, 200, corsOrigin);
   try {
+    // A preview build keeps the web layer that was compiled into it.
+    //
+    // TestFlight cannot show a web layer change on its own: the binary boots
+    // on its builtin copy, then autoUpdate fetches the published bundle and
+    // applies it on the next launch, so by the second open the preview is
+    // gone and the build looks identical to production. Anya installed 1.0.72,
+    // opened it twice, and saw nothing.
+    //
+    // So for that one version we answer "nothing new" and the builtin stands.
+    // Every other install is untouched and still gets the latest bundle. This
+    // is temporary and comes out when the preview is done.
+    const PREVIEW_VERSIONS = ["1.0.72"];
+    let asking = "";
+    try {
+      const body = await request.clone().json();
+      asking = String((body && (body.version_name || body.version)) || "");
+    } catch (e) {
+      asking = new URL(request.url).searchParams.get("version_name") || "";
+    }
+    if (PREVIEW_VERSIONS.includes(asking)) return none("preview build, keeping builtin");
+
     const res = await fetch("https://plasticdetox.org/app/updates.json", {
       cf: { cacheTtl: 60, cacheEverything: true },
     });
