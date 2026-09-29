@@ -21,6 +21,26 @@ import { STANCE_LABEL } from "./match.js";
 const WORKER = "https://plasticdetox-quiz-email.plasticdetox.workers.dev";
 const RECENTS_KEY = "pd.recents.v1";
 const CHECKS_KEY = "pd.checks.v1";
+const INTRO_KEY = "pd.check.intro.v1";
+
+/**
+ * The explainer sheet, and whether it has already been read.
+ *
+ * Bumping the key reshows it to everybody, which is the right lever if what a
+ * check covers ever changes. A phone with storage blocked reads as unseen, so
+ * the worst case is somebody seeing it twice rather than a crash on launch.
+ */
+function introSeen() {
+  try { return !!localStorage.getItem(INTRO_KEY); } catch (e) { return false; }
+}
+
+function showCheckIntro() {
+  try { localStorage.setItem(INTRO_KEY, "1"); } catch (e) {}
+  const close = () => {
+    for (const n of view.querySelectorAll(".sheet-veil, .intro-sheet")) n.remove();
+  };
+  screens.checkIntro(view, { onClose: close });
+}
 
 /** Every instant check this phone has paid for, by brand and product. */
 function checkKey(brand, product) {
@@ -400,6 +420,7 @@ function draw() {
       // someone who bought checks can see that they have them.
       checks: { hasPass: !!check.getPass(), balance: checkBalance },
       onChecks: () => go({ screen: "about" }),
+      onExplain: () => showCheckIntro(),
       // Only offered on a real device: the extension cannot be enabled on a
       // simulator, and on the web there is no extension to enable.
       onScan: startScan,
@@ -410,6 +431,11 @@ function draw() {
       // answer for one: tell us what it is, free, or spend a check on it now.
       onManual: () => go({ screen: "unknown", scan: null, brand: "", product: "" }),
     });
+    // Once, on the first visit, and never again unless it is asked for. It is
+    // drawn over the screen rather than pushed as one so that dismissing it
+    // leaves somebody on Check with the input in front of them, rather than
+    // on whatever they were looking at before.
+    if (!introSeen()) showCheckIntro();
   } else if (state.screen === "result") {
     const v = screens.result(view, {
       index,

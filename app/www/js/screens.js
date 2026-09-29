@@ -11,51 +11,62 @@ import { stepContent, roomName } from "./detox-content.js";
 const SITE = "https://plasticdetox.org";
 const STATUS_GLYPH = { pass: "✓", caution: "!", fail: "✕", unknown: "?" };
 
+// The four fronts, worded as what each one catches rather than what it is
+// called. Product Check says the same four things in the same four cards, so
+// this is the one list and both the intro sheet and anything else that needs
+// it read from here.
+const CHECK_COVERS = [
+  ["Formula", "Every ingredient, and the ones we flag."],
+  ["Materials", "What it is made of, and what touches your food."],
+  ["Recalls and lawsuits", "The CPSC and FDA records, and who is being sued."],
+  ["Independent tests", "Published lab results, lead and PFAS included."],
+];
+
 // ------------------------------------------------------------------- home
 
 export function home(root, {
   onScan, onPick, onLink, onManual, recents, canScan, scanReason,
-  checks, onChecks,
+  checks, onChecks, onExplain,
 }) {
   const hero = el("div", "hero");
   hero.appendChild(el("h1", null, "Check it before you buy it"));
-  // What each check catches, not what it is called. The four were a single
-  // comma list, and a reader who liked the app enough to write three pages of
-  // notes still came away thinking it was a barcode scanner. A scanner reads
-  // the label. None of these four are on the label.
+  // What a check catches, not what it is called. A reader who liked the app
+  // enough to write three pages of notes still came away thinking it was a
+  // barcode scanner. A scanner reads the label, and none of the four things we
+  // check are on the label. The four themselves are in the intro sheet: spelled
+  // out here they were four lines of grey text under a headline, which is
+  // exactly how small print looks and exactly how it gets read.
   hero.appendChild(el("p", null,
-    "A label will not tell you a product failed a lab test. These four will."));
-  const fronts = el("div", "fronts");
-  for (const [name, catches] of [
-    ["Formula", "every ingredient, and the ones we flag"],
-    ["Materials", "what it is made of, and what touches your food"],
-    ["Recalls and lawsuits", "the CPSC and FDA records, and who is being sued"],
-    ["Independent tests", "published lab results, lead and PFAS included"],
-  ]) {
-    const row = el("div", "front-line");
-    row.appendChild(el("span", "front-k", name));
-    row.appendChild(el("span", "front-v", catches));
-    fronts.appendChild(row);
+    "A label will not tell you a product failed a lab test, was recalled, or is being sued over. We will."));
+  if (onExplain) {
+    const what = el("button", "hero-link", "What we check →");
+    what.type = "button";
+    what.onclick = onExplain;
+    hero.appendChild(what);
   }
-  hero.appendChild(fronts);
   // A pass is a token rather than an account, so nothing on this screen said
   // one had been bought. Somebody who paid for checks had no way to see it
-  // without opening Settings and scrolling to the bottom.
-  // Shown whether or not one is owned. It only ever appeared to people who
-  // already had a pass, so the thing we sell was invisible to everybody who
-  // had not bought it yet, which is everybody who might.
+  // without opening Settings and scrolling to the bottom. It is shown whether
+  // or not one is owned, because it only ever appeared to people who already
+  // had a pass, which made the thing we sell invisible to everybody who had
+  // not bought it yet.
+  //
+  // One line, always. The empty state used to carry two sentences explaining
+  // the free tier, which wrapped to three lines inside a pill built for one
+  // and left the dot floating against the middle of a paragraph. The
+  // explanation belongs in the sheet, where there is room for it.
   const pass = el("button", "pass-line");
   pass.type = "button";
   pass.appendChild(el("span", "pass-dot"));
   if (checks && checks.hasPass) {
     pass.appendChild(el("span", null, typeof checks.balance === "number"
-      ? `${checks.balance} instant ${checks.balance === 1 ? "check" : "checks"} left on your pass`
-      : "Your check pass is saved on this phone"));
+      ? `${checks.balance} ${checks.balance === 1 ? "check" : "checks"} left`
+      : "Your pass is saved on this phone"));
   } else {
     pass.classList.add("empty");
-    pass.appendChild(el("span", null,
-      "A product we already hold is free. A pass researches one we do not."));
+    pass.appendChild(el("span", null, "Get check passes"));
   }
+  pass.appendChild(el("span", "pass-go", "→"));
   if (onChecks) pass.onclick = onChecks;
   hero.appendChild(pass);
   root.appendChild(hero);
@@ -859,6 +870,87 @@ export function detoxCleared(root, { rows, onUndo, onClose, title, empty, action
     row.appendChild(undo);
     sheet.appendChild(row);
   }
+  root.appendChild(sheet);
+}
+
+/**
+ * What a check covers, once, the first time somebody opens the tab.
+ *
+ * This started life as four lines of plain text under the headline, and it
+ * looked like the small print it was: a reader who liked the app enough to
+ * write three pages of notes still came away calling it a barcode scanner,
+ * and the fix for that was not a smaller font. It is also the wrong thing to
+ * read on the two hundredth visit, so it is shown once and then lives behind
+ * the "What we check" link.
+ *
+ * The cards are the site's, deliberately. Product Check explains the same four
+ * fronts in the same four cards, and somebody who has used one should not have
+ * to learn the other.
+ */
+export function checkIntro(root, { onClose }) {
+  const veil = el("div", "sheet-veil");
+  veil.onclick = onClose;
+  root.appendChild(veil);
+  const sheet = el("div", "sheet intro-sheet");
+  sheet.appendChild(el("div", "sheet-grab"));
+
+  sheet.appendChild(el("h1", "sheet-h", "What one check covers"));
+  sheet.appendChild(el("p", "intro-sub",
+    "Four questions, asked in order. None of them answered by the label."));
+
+  // The cards scroll, the title and the button do not. A sticky button laid
+  // over the end of the scroll hid the line about the free tier, which is the
+  // one line here worth money, and on a short phone the way out of a sheet
+  // should never be the thing below the fold.
+  const body = el("div", "intro-body");
+  const grid = el("div", "intro-grid");
+  for (const [name, catches] of CHECK_COVERS) {
+    const card = el("div", "intro-card");
+    card.appendChild(el("h3", null, name));
+    card.appendChild(el("p", null, catches));
+    grid.appendChild(card);
+  }
+  body.appendChild(grid);
+
+  // The money question, answered before it is asked. Most of what anybody
+  // scans is already rated and costs nothing; a pass is for the rest. Saying
+  // that here is the difference between a paywall and a price.
+  const free = el("div", "intro-free");
+  free.appendChild(el("span", "intro-free-dot"));
+  free.appendChild(el("p", null,
+    "Over a thousand brands are already rated, and those answers are free. "
+    + "A pass researches one nobody has looked at yet, while you wait."));
+  body.appendChild(free);
+  sheet.appendChild(body);
+
+  const go = el("button", "cta", "Start checking");
+  go.type = "button";
+  go.onclick = onClose;
+  sheet.appendChild(go);
+
+  // The grabber promises a drag, the same as the cleared sheet does, and a
+  // webview has no edge swipe to fall back on. It reads the scrolling body
+  // rather than the sheet, which no longer scrolls: reading the sheet would
+  // make every downward swipe inside the cards drag the whole thing away.
+  let startY = 0, dragging = false;
+  sheet.addEventListener("touchstart", (e) => {
+    dragging = body.scrollTop <= 0;
+    startY = e.touches[0].clientY;
+  }, { passive: true });
+  sheet.addEventListener("touchmove", (e) => {
+    if (!dragging) return;
+    const dy = e.touches[0].clientY - startY;
+    if (dy > 0) sheet.style.transform = `translateY(${dy}px)`;
+  }, { passive: true });
+  sheet.addEventListener("touchend", (e) => {
+    if (!dragging) return;
+    const dy = (e.changedTouches[0] || {}).clientY - startY;
+    sheet.style.transition = "transform .18s";
+    sheet.style.transform = "";
+    setTimeout(() => { sheet.style.transition = ""; }, 200);
+    if (dy > 90) onClose();
+  }, { passive: true });
+
   root.appendChild(sheet);
 }
 
