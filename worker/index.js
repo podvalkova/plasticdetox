@@ -364,27 +364,17 @@ async function handleAppUpdate(request, env, corsOrigin) {
   // path and changes nothing.
   const none = (why) => json({ error: why }, 200, corsOrigin);
   try {
-    // A preview build keeps the web layer that was compiled into it.
+    // There used to be a list of preview versions here, answered with "nothing
+    // new" so that a TestFlight build kept the web layer compiled into it.
+    // TestFlight cannot otherwise show a web layer change: the binary boots on
+    // its builtin copy, autoUpdate fetches the published bundle, and by the
+    // second open the preview looks identical to production. It held 1.0.72
+    // while 1.0.71 was still in review.
     //
-    // TestFlight cannot show a web layer change on its own: the binary boots
-    // on its builtin copy, then autoUpdate fetches the published bundle and
-    // applies it on the next launch, so by the second open the preview is
-    // gone and the build looks identical to production. Anya installed 1.0.72,
-    // opened it twice, and saw nothing.
-    //
-    // So for that one version we answer "nothing new" and the builtin stands.
-    // Every other install is untouched and still gets the latest bundle. This
-    // is temporary and comes out when the preview is done.
-    const PREVIEW_VERSIONS = ["1.0.72"];
-    let asking = "";
-    try {
-      const body = await request.clone().json();
-      asking = String((body && (body.version_name || body.version)) || "");
-    } catch (e) {
-      asking = new URL(request.url).searchParams.get("version_name") || "";
-    }
-    if (PREVIEW_VERSIONS.includes(asking)) return none("preview build, keeping builtin");
-
+    // 1.0.71 is live and nothing is in review, so the list is empty and gone.
+    // If another preview ever needs holding, it is a version check right here
+    // and it comes out again the moment the preview is done: leaving one in
+    // means an install that silently stops taking updates.
     const res = await fetch("https://plasticdetox.org/app/updates.json", {
       cf: { cacheTtl: 60, cacheEverything: true },
     });
