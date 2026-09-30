@@ -616,7 +616,8 @@ window.addEventListener("load", function(){ setTimeout(preselectPack, 60); });
 
 function preselectPack(){
   try {
-    var want = new URLSearchParams(location.search).get("pack") || "";
+    var qp = new URLSearchParams(location.search);
+    var want = qp.get("pack") || "";
     if (!/^p(5|10|20)$/.test(want)) return false;
     var card = document.querySelector('.pack[data-pack="' + want + '"]');
     if (!card) return false;
@@ -628,6 +629,19 @@ function preselectPack(){
     var btn = card.querySelector(".buy");
     if (btn) btn.textContent = "Continue with " + card.querySelector(".checks").textContent;
     card.scrollIntoView({ behavior: "smooth", block: "center" });
+    // go=1 means they already chose this pack on a screen that showed them the
+    // price, which is the app's packs screen. Showing them the same three
+    // packs again is asking twice, so this goes straight to payment. The card
+    // stays marked underneath, so a checkout that will not open leaves them
+    // looking at the pack they picked rather than at nothing.
+    if (qp.get("go") === "1" && btn) {
+      btn.textContent = "Opening checkout\u2026";
+      btn.disabled = true;
+      checkout(want).finally(function(){
+        btn.disabled = false;
+        btn.textContent = "Continue with " + card.querySelector(".checks").textContent;
+      });
+    }
     return true;
   } catch (e) { return false; }
 }

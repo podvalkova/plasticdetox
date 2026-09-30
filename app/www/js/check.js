@@ -37,17 +37,49 @@ export function setPass(token) {
   return clean;
 }
 
-/** How many checks are left, or null when we cannot say. */
-export async function balance() {
-  const pass = getPass();
-  if (!pass) return null;
+const BAL_KEY = "pd.balance.v1";
+
+/**
+ * The last balance we were told, kept on the phone.
+ *
+ * The count used to live in a variable and nowhere else, so every launch began
+ * with no number and the home screen said "your pass is saved on this phone"
+ * until a network call came back. On a bad connection it said that forever,
+ * and somebody holding 28 checks was looking at a screen that would not tell
+ * them so. A number that is a few minutes stale is worth more than no number,
+ * and the real one replaces it as soon as it arrives.
+ */
+export function lastBalance() {
   try {
-    const r = await fetch(`${WORKER}/vet-balance?pass=${encodeURIComponent(pass)}`);
-    if (!r.ok) return null;
-    const d = await r.json();
-    return typeof d.balance === "number" ? d.balance : null;
+    const n = parseInt(localStorage.getItem(BAL_KEY), 10);
+    return Number.isFinite(n) ? n : null;
   } catch {
     return null;
+  }
+}
+
+function rememberBalance(n) {
+  try {
+    if (typeof n === "number") localStorage.setItem(BAL_KEY, String(n));
+    else localStorage.removeItem(BAL_KEY);
+  } catch {
+    // Not being able to remember it is not a reason to fail the call.
+  }
+}
+
+/** How many checks are left, or the last number we knew when we cannot say. */
+export async function balance() {
+  const pass = getPass();
+  if (!pass) { rememberBalance(null); return null; }
+  try {
+    const r = await fetch(`${WORKER}/vet-balance?pass=${encodeURIComponent(pass)}`);
+    if (!r.ok) return lastBalance();
+    const d = await r.json();
+    if (typeof d.balance !== "number") return lastBalance();
+    rememberBalance(d.balance);
+    return d.balance;
+  } catch {
+    return lastBalance();
   }
 }
 
@@ -135,9 +167,10 @@ export function buyUrl(brand, product, pack = "") {
   const q = [brand, product].filter(Boolean).join(" ").trim();
   const params = new URLSearchParams({ app: "1" });
   if (q) params.set("q", q);
-  // Which pack they already chose, so the website opens on that one rather
-  // than asking again. It highlights and scrolls; it never charges by itself.
-  if (pack) params.set("pack", pack);
+  // Which pack they already chose. go=1 says they chose it deliberately, on a
+  // screen that showed them the price, so the website opens Stripe for that
+  // pack instead of showing them the same three packs a second time.
+  if (pack) { params.set("pack", pack); params.set("go", "1"); }
   // #buy, because this button is somebody asking for more checks. Without it
   // they land on the check form with the packs folded away behind it.
   return `${SITE}/vet.html?${params.toString()}#buy`;

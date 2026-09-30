@@ -273,6 +273,24 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .pass-line.nopass .pass-dot { background: var(--accent); }
 .pass-go { color: var(--faint); font-weight: 700; margin-left: -2px; }
 
+/* The card somebody who has paid actually sees. A pass is a token with no
+   account behind it, so if this does not say what they hold, nothing does. */
+.pass-card {
+  display: flex; align-items: center; gap: 14px; width: 100%; text-align: left;
+  margin: 16px 0 0; padding: 14px 16px; font: inherit; cursor: pointer;
+  background: var(--accent-wash); border: 1px solid var(--accent-light);
+  border-radius: 20px;
+}
+.pass-card:active { border-color: var(--accent); }
+.pass-card-l { flex: 1 1 auto; min-width: 0; }
+.pass-k {
+  font-size: 10.5px; font-weight: 800; letter-spacing: .07em;
+  text-transform: uppercase; color: var(--accent);
+}
+.pass-n { margin-top: 3px; font-size: 20px; font-weight: 850; letter-spacing: -.03em; color: var(--text); }
+.pass-sub { margin-top: 2px; font-size: 12.5px; color: var(--muted); }
+.pass-card-go { flex: 0 0 auto; font-size: 13.5px; font-weight: 750; color: var(--accent); }
+
 /* The way back into the explainer once it has been dismissed. A quiet link
    rather than a button: the screen already has one thing to press. */
 .hero-link {

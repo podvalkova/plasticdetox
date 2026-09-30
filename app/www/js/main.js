@@ -352,7 +352,11 @@ let kidsPrice = null;
 let kidsWeb = null;
 // How many paid checks are left. null means we have not asked yet, which is a
 // different thing from nought and must not be drawn as one.
-let checkBalance = null;
+// Seeded from the last number this phone was told, so the pass card has a
+// figure on it before any network call returns. refreshBalance replaces it
+// with the live one a moment later, and on a dead connection the stale number
+// stands, which is worth more to somebody holding a pass than "Active".
+let checkBalance = check.lastBalance();
 
 function notifyProps() {
   return {
@@ -573,7 +577,10 @@ function draw() {
           return r;
         },
         onPaste: promptForPass,
-        onBuy: () => openExternal(check.buyUrl("", "")),
+        onHistory: () => go({ screen: "myChecks" }),
+        onBuy: packsReviewed()
+          ? () => go({ screen: "passes" })
+          : () => openExternal(check.buyUrl("", "")),
       },
     });
   } else if (state.screen === "myChecks") {

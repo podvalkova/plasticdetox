@@ -44,34 +44,44 @@ export function home(root, {
     what.onclick = onExplain;
     hero.appendChild(what);
   }
-  // A pass is a token rather than an account, so nothing on this screen said
-  // one had been bought. Somebody who paid for checks had no way to see it
-  // without opening Settings and scrolling to the bottom. It is shown whether
-  // or not one is owned, because it only ever appeared to people who already
-  // had a pass, which made the thing we sell invisible to everybody who had
-  // not bought it yet.
+  // A pass is a token rather than an account, so without this nothing on the
+  // screen says one has been bought at all.
   //
-  // One line, always. The empty state used to carry two sentences explaining
-  // the free tier, which wrapped to three lines inside a pill built for one
-  // and left the dot floating against the middle of a paragraph. The
-  // explanation belongs in the sheet, where there is room for it.
-  const pass = el("button", "pass-line");
-  pass.type = "button";
-  pass.appendChild(el("span", "pass-dot"));
+  // It was a quiet pill and that was wrong in both states. Somebody holding a
+  // pass got a 14px line reading "your pass is saved on this phone" whenever
+  // the balance had not arrived, which is every launch and permanently on a
+  // bad connection: the one person who has paid us could not see what they
+  // had paid for. A pass gets a card with the number on it now, big enough to
+  // read at arm's length, and a way into what it has been spent on. Without a
+  // pass it stays a pill, because then it is an advert and not a status.
   if (checks && checks.hasPass) {
-    pass.appendChild(el("span", null, typeof checks.balance === "number"
-      ? `${checks.balance} ${checks.balance === 1 ? "check" : "checks"} left`
-      : "Your pass is saved on this phone"));
+    const card = el("button", "pass-card");
+    card.type = "button";
+    const left = el("div", "pass-card-l");
+    left.appendChild(el("div", "pass-k", "Your check pass"));
+    const n = typeof checks.balance === "number" ? checks.balance : null;
+    left.appendChild(el("div", "pass-n", n === null
+      ? "Active"
+      : `${n} ${n === 1 ? "check" : "checks"} left`));
+    // Said only when it is true, and never instead of the number.
+    if (n === null) left.appendChild(el("div", "pass-sub", "Counting what is left\u2026"));
+    else if (n === 0) left.appendChild(el("div", "pass-sub", "Top up to check something new"));
+    card.appendChild(left);
+    card.appendChild(el("span", "pass-card-go", "My checks \u2192"));
+    if (onChecks) card.onclick = onChecks;
+    hero.appendChild(card);
   } else {
     // Not "empty": there is a global .empty for empty state blocks, carrying
     // 2.2rem of top padding, and a pill that borrowed the word inherited it,
     // stood at 74px instead of 38, and pushed its own text to the bottom.
-    pass.classList.add("nopass");
+    const pass = el("button", "pass-line nopass");
+    pass.type = "button";
+    pass.appendChild(el("span", "pass-dot"));
     pass.appendChild(el("span", null, "Get check passes"));
+    pass.appendChild(el("span", "pass-go", "\u2192"));
+    if (onChecks) pass.onclick = onChecks;
+    hero.appendChild(pass);
   }
-  pass.appendChild(el("span", "pass-go", "→"));
-  if (onChecks) pass.onclick = onChecks;
-  hero.appendChild(pass);
   root.appendChild(hero);
 
   // A link, first, because most shopping happens on a screen.
@@ -2473,6 +2483,16 @@ export function about(root, { meta, bundle, onOpen, notify, purchases, onFeedbac
       btn.type = "button";
       btn.onclick = () => checks.onPaste();
       box.appendChild(btn);
+    }
+    // A second way in. The home card is the obvious one, and somebody who has
+    // come to Settings looking for what they bought should find the list of
+    // what it went on in the same card as the balance, not back on the tab
+    // they left.
+    if (checks.onHistory && checks.hasPass) {
+      const seen = el("button", "cta ghost", "My checks");
+      seen.type = "button";
+      seen.onclick = () => checks.onHistory();
+      box.appendChild(seen);
     }
     if (checks.onBuy) {
       const buy = el("button", "cta ghost", checks.hasPass ? "Buy more checks" : "Get checks");
