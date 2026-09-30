@@ -297,6 +297,10 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   margin-top: 10px; background: none; border: 0; padding: 4px 2px; font: inherit;
   font-size: 14.5px; font-weight: 700; color: var(--accent); cursor: pointer;
 }
+/* The second door, under the one that sells. Quieter, because most people
+   arriving here have not bought anything and only one of these is for them. */
+.hero-link.quiet { display: block; margin: 8px auto 0; font-size: 13.5px; font-weight: 650; color: var(--muted); }
+.hero-link.quiet:active { color: var(--accent); }
 
 /* ------------------------------------------- the first run explainer sheet */
 

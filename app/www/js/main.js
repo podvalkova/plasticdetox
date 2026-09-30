@@ -431,6 +431,10 @@ function draw() {
         screen: check.getPass() ? "myChecks" : (packsReviewed() ? "passes" : "about"),
       }),
       onExplain: () => showCheckIntro(),
+      // Only offered when there is no pass here and signing in exists on this
+      // binary. Settings is where the form lives; this is a shortcut to it,
+      // not a second copy of it.
+      onSignIn: !check.getPass() && signInReviewed() ? () => go({ screen: "about" }) : null,
       // Only offered on a real device: the extension cannot be enabled on a
       // simulator, and on the web there is no extension to enable.
       onScan: startScan,

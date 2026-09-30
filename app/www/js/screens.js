@@ -26,7 +26,7 @@ const CHECK_COVERS = [
 
 export function home(root, {
   onScan, onPick, onLink, onManual, recents, canScan, scanReason,
-  checks, onChecks, onExplain,
+  checks, onChecks, onExplain, onSignIn,
 }) {
   const hero = el("div", "hero");
   hero.appendChild(el("h1", null, "Check it before you buy it"));
@@ -81,6 +81,18 @@ export function home(root, {
     pass.appendChild(el("span", "pass-go", "\u2192"));
     if (onChecks) pass.onclick = onChecks;
     hero.appendChild(pass);
+    // The other door, and for a while there was not one. A pass belongs to the
+    // email that paid, not to the phone, so somebody who bought one on the
+    // website and then opened the app holds a pass the app has never seen.
+    // Every route we offered them said "get check passes", which is the wrong
+    // question to ask the one person who has already answered it, and the sign
+    // in that fixes it was three taps deep in Settings.
+    if (onSignIn) {
+      const back = el("button", "hero-link quiet", "Already have a pass? Sign in →");
+      back.type = "button";
+      back.onclick = onSignIn;
+      hero.appendChild(back);
+    }
   }
   root.appendChild(hero);
 
