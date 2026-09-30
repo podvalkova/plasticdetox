@@ -63,7 +63,10 @@ export function home(root, {
       ? `${checks.balance} ${checks.balance === 1 ? "check" : "checks"} left`
       : "Your pass is saved on this phone"));
   } else {
-    pass.classList.add("empty");
+    // Not "empty": there is a global .empty for empty state blocks, carrying
+    // 2.2rem of top padding, and a pill that borrowed the word inherited it,
+    // stood at 74px instead of 38, and pushed its own text to the bottom.
+    pass.classList.add("nopass");
     pass.appendChild(el("span", null, "Get check passes"));
   }
   pass.appendChild(el("span", "pass-go", "→"));
@@ -2664,5 +2667,202 @@ export function categoryIndex(root, { groups, onPick }) {
     row.appendChild(el("span", "row-chev", "›"));
     row.onclick = () => onPick(g);
     root.appendChild(row);
+  }
+}
+
+// -------------------------------------------------------------- my checks
+
+/**
+ * Every check this pass has paid for.
+ *
+ * The website has had this page since passes shipped and the app had nothing,
+ * so a check that cost a credit and took a minute existed only for as long as
+ * it was on screen. Anya opened the app looking for one she had run and there
+ * was nowhere to look.
+ *
+ * Laid out as the website lays it out: what is left of the pass, then what the
+ * verdicts came to, then the list. A row reopens the answer, which is free
+ * because the worker already holds it.
+ */
+export function myChecks(root, { loading, data, error, onOpen, onBuy, onNew, onSignIn }) {
+  const hero = el("div", "hero");
+  hero.appendChild(el("h1", null, "My checks"));
+
+  if (loading) {
+    hero.appendChild(el("p", null, "Reading your pass…"));
+    root.appendChild(hero);
+    return;
+  }
+
+  // No pass at all. Not an error: most people arrive here before they have
+  // bought anything, and the honest answer is what a pass is for.
+  if (!data) {
+    hero.appendChild(el("p", null, error
+      ? "We could not reach your pass just now. It is safe, and the checks on it are too."
+      : "Your checks live on your pass, so they follow you to any phone."));
+    root.appendChild(hero);
+    const empty = el("div", "empty");
+    empty.appendChild(el("h2", null, error ? "Nothing to show yet" : "No pass on this phone"));
+    empty.appendChild(el("p", null, error
+      ? "Try again in a moment. Nothing has been lost."
+      : "A pass buys instant checks on products nobody has looked at yet. Everything already rated stays free."));
+    if (!error && onBuy) {
+      const go = el("button", "cta", "Get check passes");
+      go.type = "button";
+      go.onclick = onBuy;
+      empty.appendChild(go);
+    }
+    if (!error && onSignIn) {
+      const already = el("button", "hero-link", "Already bought one? Sign in →");
+      already.type = "button";
+      already.onclick = onSignIn;
+      empty.appendChild(already);
+    }
+    root.appendChild(empty);
+    return;
+  }
+
+  const rows = data.checks || [];
+  const left = typeof data.balance === "number" ? data.balance : null;
+  const used = typeof data.used === "number" ? data.used : rows.length;
+  const total = left === null ? null : left + used;
+  hero.appendChild(el("p", null, left === null
+    ? "What this pass has been spent on."
+    : `${left} ${left === 1 ? "check" : "checks"} left of ${total}.`));
+  root.appendChild(hero);
+
+  // How much of the pass is gone, as a bar rather than a second number. The
+  // website draws the same thing and it is the one part of this screen people
+  // read without stopping.
+  if (total) {
+    const bal = el("div", "bal-card");
+    const bar = el("div", "bal-bar");
+    const fill = el("span");
+    fill.style.width = `${Math.round((used / total) * 100)}%`;
+    bar.appendChild(fill);
+    bal.appendChild(bar);
+    bal.appendChild(el("div", "bal-legend",
+      `${used} used, ${left} left`));
+    root.appendChild(bal);
+  }
+
+  // What the verdicts came to. A pass is easier to justify when you can see
+  // that it caught something.
+  const tally = { good: 0, careful: 0, skip: 0 };
+  for (const r of rows) if (tally[r.verdict] !== undefined) tally[r.verdict] += 1;
+  if (rows.length) {
+    const grid = el("div", "tallies");
+    for (const k of ["good", "careful", "skip"]) {
+      const t = el("div", `tally ${k}`);
+      t.appendChild(el("b", null, String(tally[k])));
+      t.appendChild(el("span", null, STANCE_LABEL[k]));
+      grid.appendChild(t);
+    }
+    root.appendChild(grid);
+  }
+
+  if (!rows.length) {
+    const empty = el("div", "empty");
+    empty.appendChild(el("h2", null, "No checks run yet"));
+    empty.appendChild(el("p", null,
+      "Paste a product link or scan a barcode, and whatever we find lands here."));
+    if (onNew) {
+      const go = el("button", "cta", "Check something");
+      go.type = "button";
+      go.onclick = onNew;
+      empty.appendChild(go);
+    }
+    root.appendChild(empty);
+    return;
+  }
+
+  root.appendChild(el("div", "section-title", "Where your checks went"));
+  const list = el("div", "chk-list");
+  for (const r of rows) {
+    const row = el("button", "chk");
+    row.type = "button";
+    const body = el("div", "chk-body");
+    const name = [r.brand, r.product].filter(Boolean).join(" ").trim() || r.asked || "A product";
+    body.appendChild(el("div", "chk-t", name));
+    const meta = [];
+    if (r.at) meta.push(shortDate(r.at));
+    if (r.free) meta.push("no check spent");
+    body.appendChild(el("div", "chk-m", meta.join(" · ")));
+    row.appendChild(body);
+    const v = r.verdict && STANCE_LABEL[r.verdict] ? r.verdict : "neutral";
+    row.appendChild(el("span", `chk-v ${v}`, STANCE_LABEL[v] || "Checked"));
+    if (onOpen) row.onclick = () => onOpen(r);
+    list.appendChild(row);
+  }
+  root.appendChild(list);
+
+  if (onBuy) {
+    const more = el("button", "cta outline wide", "Get more checks");
+    more.type = "button";
+    more.onclick = onBuy;
+    root.appendChild(more);
+  }
+}
+
+/** A date somebody reads, not one they parse. */
+function shortDate(iso) {
+  try {
+    const d = new Date(iso);
+    if (Number.isNaN(d.getTime())) return "";
+    return d.toLocaleDateString(undefined, { day: "numeric", month: "short" });
+  } catch (e) { return ""; }
+}
+
+// ---------------------------------------------------------------- passes
+
+/**
+ * The packs, so that "get check passes" lands on something you can buy.
+ *
+ * It used to open How this works, whose first card is a sign in form, with the
+ * buy button below the fold under it. Anya tapped a button that said get check
+ * passes and arrived somewhere that explained the product instead of selling
+ * it.
+ *
+ * Buying still happens on the website, as it always has. This screen only
+ * makes the choice legible before the browser opens, so that nobody leaves the
+ * app to find out what a pack costs. Because it is payment adjacent it is
+ * gated on the native build number, the same way the pass sign in is: on every
+ * binary review has not seen, main.js does not pass onBuy and this screen is
+ * never reached.
+ */
+export function passes(root, { packs, onBuy, onSignIn, balance, hasPass }) {
+  const hero = el("div", "hero");
+  hero.appendChild(el("h1", null, "Check passes"));
+  hero.appendChild(el("p", null, hasPass && typeof balance === "number"
+    ? `${balance} ${balance === 1 ? "check" : "checks"} left. Top up whenever you run low.`
+    : "Everything already rated is free. A pass is for a product nobody has looked at yet."));
+  root.appendChild(hero);
+
+  const grid = el("div", "packs");
+  for (const p of packs) {
+    const card = el("div", `pack${p.popular ? " pop" : ""}`);
+    if (p.popular) card.appendChild(el("span", "pack-tag", "Most popular"));
+    card.appendChild(el("div", "pack-price", p.price));
+    card.appendChild(el("div", "pack-qty", `${p.checks} checks`));
+    card.appendChild(el("div", "pack-each", p.each));
+    const go = el("button", `cta${p.popular ? "" : " outline"}`, "Choose");
+    go.type = "button";
+    if (onBuy) go.onclick = () => onBuy(p);
+    card.appendChild(go);
+    grid.appendChild(card);
+  }
+  root.appendChild(grid);
+
+  // Said plainly rather than discovered at the browser. Somebody who expects
+  // an App Store sheet and gets Safari has been surprised by their own app.
+  root.appendChild(el("p", "pack-note",
+    "Checkout opens on our website, and the pass comes straight back to the app. "
+    + "A pass never expires, and whatever we research for you joins the free database afterwards."));
+
+  if (onSignIn) {
+    const already = el("button", "hero-link wide", "Already bought one? Sign in →");
+    already.type = "button";
+    already.onclick = onSignIn;
+    root.appendChild(already);
   }
 }

@@ -52,6 +52,30 @@ export async function balance() {
 }
 
 /**
+ * Every check this pass has paid for, newest first.
+ *
+ * The website has had this page since the passes shipped and the app had
+ * nothing: a check cost a credit, took a minute, and then existed only as
+ * whatever was still on screen. The worker holds the history against the
+ * pass, so it survives a new phone the same way the balance does.
+ *
+ * Returns null rather than throwing, because a history that will not load is
+ * a quieter screen, not an error somebody has to dismiss.
+ */
+export async function history() {
+  const pass = getPass();
+  if (!pass) return null;
+  try {
+    const r = await fetch(`${WORKER}/vet-history?pass=${encodeURIComponent(pass)}`);
+    if (!r.ok) return null;
+    const d = await r.json();
+    return d && d.ok ? d : null;
+  } catch {
+    return null;
+  }
+}
+
+/**
  * Where checks are bought.
  *
  * app=1 tells the website that whoever lands there came from the app, so that
@@ -107,10 +131,13 @@ export async function signIn(email, code) {
   }
 }
 
-export function buyUrl(brand, product) {
+export function buyUrl(brand, product, pack = "") {
   const q = [brand, product].filter(Boolean).join(" ").trim();
   const params = new URLSearchParams({ app: "1" });
   if (q) params.set("q", q);
+  // Which pack they already chose, so the website opens on that one rather
+  // than asking again. It highlights and scrolls; it never charges by itself.
+  if (pack) params.set("pack", pack);
   // #buy, because this button is somebody asking for more checks. Without it
   // they land on the check form with the packs folded away behind it.
   return `${SITE}/vet.html?${params.toString()}#buy`;

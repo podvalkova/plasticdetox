@@ -264,12 +264,13 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
    hanging off the left edge under a centred headline. */
 .pass-line {
   display: flex; align-items: center; gap: 8px; margin: 14px auto 0;
-  background: var(--surface-sunk); border: 0; border-radius: 32px;
-  padding: 10px 16px; font: inherit; font-size: 14px; font-weight: 600;
-  color: var(--body); cursor: pointer;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 999px;
+  padding: 0 15px; height: 38px; font: inherit; font-size: 14px; line-height: 1;
+  font-weight: 650; color: var(--body); cursor: pointer;
 }
+.pass-line:active { border-color: var(--accent); color: var(--accent); }
 .pass-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--good, #1b9c62); flex: 0 0 auto; }
-.pass-line.empty .pass-dot { background: var(--accent); }
+.pass-line.nopass .pass-dot { background: var(--accent); }
 .pass-go { color: var(--faint); font-weight: 700; margin-left: -2px; }
 
 /* The way back into the explainer once it has been dismissed. A quiet link
@@ -1299,7 +1300,7 @@ body.has-tabs .screen { padding-bottom: calc(var(--safe-bottom) + 4rem); }
   .field input { height: 48px; }
   .field-k { margin-bottom: 3px; }
   .section-title { margin: .9rem 0 .4rem; }
-  .pass-line { margin: 10px auto 0; padding: 8px 14px; }
+  .pass-line { margin: 10px auto 0; height: 34px; }
 }
 
 /* Category context during a check. Quieter than a finding, because it is not
@@ -1318,3 +1319,65 @@ body.has-tabs .screen { padding-bottom: calc(var(--safe-bottom) + 4rem); }
 .cat-title::after { content: " +"; font-weight: 800; }
 .cat-notes[open] .cat-title::after { content: " \2212"; }
 .cat-note { margin: 0 0 9px; font-size: 14px; line-height: 1.5; }
+
+/* --------------------------------------------------- my checks and passes */
+
+/* How much of the pass is gone, as a bar rather than a second number. Two
+   numbers side by side get compared; a bar gets understood. */
+.bal-card { background: var(--surface); border: 1px solid var(--border); border-radius: 20px;
+  padding: 16px 18px; margin-bottom: 12px; }
+.bal-bar { height: 10px; border-radius: 999px; background: var(--accent-wash); overflow: hidden; }
+.bal-bar span { display: block; height: 100%; background: var(--accent); border-radius: 999px; }
+.bal-legend { margin-top: 9px; font-size: 13.5px; font-weight: 650; color: var(--muted); }
+
+.tallies { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px; }
+.tally { border-radius: 18px; padding: 13px 10px; text-align: center; border: 1px solid transparent; }
+.tally b { display: block; font-size: 22px; font-weight: 850; letter-spacing: -.03em; }
+.tally span { display: block; margin-top: 2px; font-size: 12px; font-weight: 650; }
+.tally.good { background: var(--good-bg); border-color: var(--good-border); color: var(--good); }
+.tally.careful { background: var(--careful-bg); border-color: var(--careful-border); color: var(--careful); }
+.tally.skip { background: var(--skip-bg); border-color: var(--skip-border); color: var(--skip); }
+
+.chk-list { display: flex; flex-direction: column; gap: 8px; }
+.chk {
+  display: flex; align-items: center; gap: 12px; width: 100%; text-align: left;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 18px;
+  padding: 13px 15px; font: inherit; cursor: pointer;
+}
+.chk:active { border-color: var(--accent); }
+.chk-body { flex: 1 1 auto; min-width: 0; }
+.chk-t { font-size: 15px; font-weight: 700; color: var(--text); line-height: 1.3;
+  overflow: hidden; text-overflow: ellipsis; display: -webkit-box;
+  -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+.chk-m { margin-top: 3px; font-size: 12.5px; color: var(--muted); }
+.chk-v {
+  flex: 0 0 auto; padding: 5px 11px; border-radius: 999px;
+  font-size: 12px; font-weight: 750; border: 1px solid transparent;
+}
+.chk-v.good { background: var(--good-bg); border-color: var(--good-border); color: var(--good); }
+.chk-v.careful { background: var(--careful-bg); border-color: var(--careful-border); color: var(--careful); }
+.chk-v.skip { background: var(--skip-bg); border-color: var(--skip-border); color: var(--skip); }
+.chk-v.neutral { background: var(--neutral-bg); border-color: var(--neutral-border); color: var(--neutral); }
+
+/* The packs. One column, because three cards side by side on a phone makes
+   three unreadable cards and the middle one is the one we want read. */
+.packs { display: flex; flex-direction: column; gap: 11px; }
+.pack {
+  position: relative; background: var(--surface); border: 1px solid var(--border);
+  border-radius: 22px; padding: 18px 20px;
+}
+.pack.pop { border-color: var(--accent); border-width: 2px; padding: 17px 19px; }
+.pack-tag {
+  position: absolute; top: -9px; right: 18px; padding: 3px 10px; border-radius: 999px;
+  background: var(--accent); color: #fff; font-size: 11px; font-weight: 800;
+  letter-spacing: .03em; text-transform: uppercase;
+}
+.pack-price { font-size: 30px; font-weight: 850; letter-spacing: -.04em; color: var(--text); line-height: 1; }
+.pack-qty { margin-top: 5px; font-size: 15.5px; font-weight: 700; color: var(--text); }
+.pack-each { margin-top: 2px; font-size: 13px; color: var(--muted); }
+.pack .cta { width: 100%; margin-top: 14px; }
+.pack-note { margin-top: 18px; font-size: 13.5px; line-height: 1.55; color: var(--muted); }
+
+.cta.wide, .hero-link.wide { width: 100%; }
+.cta.wide { margin-top: 18px; }
+.hero-link.wide { display: block; margin-top: 14px; text-align: center; }

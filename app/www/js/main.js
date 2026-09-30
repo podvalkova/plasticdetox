@@ -419,7 +419,13 @@ function draw() {
       // A pass is a token with no account behind it, so this is the only place
       // someone who bought checks can see that they have them.
       checks: { hasPass: !!check.getPass(), balance: checkBalance },
-      onChecks: () => go({ screen: "about" }),
+      // With a pass, the pill is a receipt and goes to what it bought. Without
+      // one it is the only thing on the screen selling anything, so on a
+      // reviewed build it goes to the packs. On an older binary it still goes
+      // to How this works, which is where the buy button has always lived.
+      onChecks: () => go({
+        screen: check.getPass() ? "myChecks" : (packsReviewed() ? "passes" : "about"),
+      }),
       onExplain: () => showCheckIntro(),
       // Only offered on a real device: the extension cannot be enabled on a
       // simulator, and on the web there is no extension to enable.
@@ -569,6 +575,49 @@ function draw() {
         onPaste: promptForPass,
         onBuy: () => openExternal(check.buyUrl("", "")),
       },
+    });
+  } else if (state.screen === "myChecks") {
+    // Drawn straight away with what is already known, then again when the
+    // worker answers. A spinner that owns the whole screen for a second is
+    // worse than a screen that fills in.
+    screens.myChecks(view, {
+      loading: state.history === undefined && !!check.getPass(),
+      data: state.history || null,
+      error: state.history === null && !!check.getPass(),
+      onOpen: (row) => go({
+        screen: "unknown",
+        scan: null,
+        brand: row.brand || row.asked || "",
+        product: row.product || "",
+      }),
+      onNew: () => go({ screen: "home" }),
+      onBuy: packsReviewed()
+        ? () => go({ screen: "passes" })
+        : () => openExternal(check.buyUrl("", "")),
+      onSignIn: !check.getPass() ? () => go({ screen: "about" }) : null,
+    });
+    if (state.history === undefined && check.getPass()) {
+      check.history().then((d) => {
+        // null is a real answer here: it means we asked and could not say.
+        state.history = d || null;
+        if (state.screen === "myChecks") render();
+      });
+    }
+  } else if (state.screen === "passes") {
+    screens.passes(view, {
+      packs: CHECK_PACKS,
+      hasPass: !!check.getPass(),
+      balance: checkBalance,
+      // Still the website, still the same URL the About screen has always
+      // opened. This screen changes what you know before you tap it, not
+      // where the money goes.
+      // The pack goes with them. Choosing $10 here and then being shown three
+      // packs again on the website is asking the same question twice.
+      onBuy: (pack) => {
+        track("vet_pack_chosen", { pack: pack.id });
+        openExternal(check.buyUrl("", "", pack.id));
+      },
+      onSignIn: !check.getPass() ? () => go({ screen: "about" }) : null,
     });
   } else if (state.screen === "shop") {
     screens.shopIndex(view, {
@@ -1295,6 +1344,23 @@ async function refreshBalance() {
 let NATIVE_BUILD = 0;
 const SIGNIN_FROM_BUILD = 35;
 const signInReviewed = () => NATIVE_BUILD >= SIGNIN_FROM_BUILD;
+// The packs screen is the same shape of thing: it shows what a pack costs
+// before the browser opens, which is payment adjacent even though the buying
+// still happens on the website exactly as it did. Gated the same way, so this
+// bundle stays safe to ship over the air and the screen appears only on a
+// binary that review has run.
+const PACKS_FROM_BUILD = 37;
+const packsReviewed = () => NATIVE_BUILD >= PACKS_FROM_BUILD;
+
+// What the website sells, named here so the app can show it without a network
+// call. Kept in step with the packs on vet.html by hand; they have changed
+// once in the product's life and a fetch to render three prices is a screen
+// that can arrive empty.
+const CHECK_PACKS = [
+  { id: "p5", price: "$5", checks: 20, each: "25\u00a2 per check" },
+  { id: "p10", price: "$10", checks: 45, each: "22\u00a2 per check", popular: true },
+  { id: "p20", price: "$20", checks: 100, each: "20\u00a2 per check" },
+];
 
 // Read once per launch; it ships inside the app so it works with no signal.
 let CATEGORY_NOTES = null;

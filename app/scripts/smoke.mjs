@@ -111,8 +111,9 @@ const fill = (page, sel, i, text) => page.evaluate((s, n, t) => {
   el.dispatchEvent(new Event("change", { bubbles: true }));
 }, sel, i, text);
 
-// The app opens on Detox now, so anything testing the Check screen has to go
-// there first rather than assuming it is what loads.
+// Check leads again, so it is what loads. Kept as a helper anyway, because a
+// test that has been to another tab still has to come back deliberately rather
+// than assume where it is.
 const toCheck = (page) => page.evaluate(() => [...document.querySelectorAll(".tab")]
   .find((t) => /Check/.test(t.textContent)).click());
 
@@ -205,18 +206,19 @@ await screen("unreadable barcode still offers the free check", async (p) => {
   }
 });
 
-await screen("opens on detox", async (p) => {
-  // A fresh open lands on the plan, not the lookup. Asserted because three
-  // other screens quietly depended on the opposite. Pages in this run share an
-  // origin and therefore localStorage, so this relies on the seeding step
-  // clearing pd.place.v1: without that a previous screen's remembered place is
-  // restored and this reads as Check no matter what the default is.
+await screen("opens on check", async (p) => {
+  // A fresh open lands on Check. It went to Detox for a while and came back
+  // when Check became the primary tab, and this assertion is what stops it
+  // drifting again: three other screens quietly depend on which one loads.
+  // Pages in this run share an origin and therefore localStorage, so it relies
+  // on the seeding step clearing pd.place.v1; without that a previous screen's
+  // remembered place is restored and this reads as whatever was open last.
   const on = await p.evaluate(() => {
     const t = document.querySelector(".tab.on");
     return t ? t.textContent.trim() : "(none)";
   });
-  if (on !== "Detox") throw new Error(`opened on ${on}, expected Detox`);
-  await need(p, ".dx-ring, .dx-alldone", "the detox screen");
+  if (on !== "Check") throw new Error(`opened on ${on}, expected Check`);
+  await need(p, ".link-card, .scan-btn", "the check screen");
 });
 
 await screen("detox", async (p) => {

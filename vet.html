@@ -82,6 +82,9 @@
   .packs{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1rem;margin:0 0 1.4rem}
   .pack{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem 1.2rem;text-align:center;box-shadow:var(--shadow);position:relative}
   .pack.popular{border-color:var(--accent);box-shadow:var(--shadow-lg)}
+    /* The pack chosen back in the app, so the page opens on the answer they
+       already gave rather than on the question again. */
+    .pack.chosen { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-light); }
   .pop-tag{position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:var(--accent-dark);color:#fff;font-size:.72rem;font-weight:700;padding:2px 12px;border-radius:99px;letter-spacing:.04em;white-space:nowrap}
   .pack .price{font-size:2.1rem;font-weight:800;letter-spacing:-.02em}
   .pack .checks{color:var(--text);font-weight:600;margin:.15rem 0 .05rem}
@@ -197,16 +200,16 @@
     <h2 class="section-title">Get a check pass</h2>
     <p class="section-sub">Buy once, spend checks whenever a product makes you pause. No subscription and no password: your checks belong to the email you pay with, on any device.</p>
     <div class="packs">
-      <div class="pack">
+      <div class="pack" data-pack="p5">
         <div class="price">$5</div><div class="checks">20 checks</div><div class="per">25&cent; per check</div>
         <button class="buy" onclick="checkout('p5')">Get 20 checks</button>
       </div>
-      <div class="pack popular">
+      <div class="pack popular" data-pack="p10">
         <span class="pop-tag">MOST POPULAR</span>
         <div class="price">$10</div><div class="checks">45 checks</div><div class="per">22&cent; per check</div>
         <button class="buy" onclick="checkout('p10')">Get 45 checks</button>
       </div>
-      <div class="pack">
+      <div class="pack" data-pack="p20">
         <div class="price">$20</div><div class="checks">100 checks</div><div class="per">20&cent; per check</div>
         <button class="buy" onclick="checkout('p20')">Get 100 checks</button>
       </div>
@@ -487,6 +490,9 @@ async function init(){
   // The browser's own jump to #buy fires while the section is still hidden, so
   // it goes nowhere. Do it once the section exists on the page.
   if (WANTS_BUY) requestAnimationFrame(function(){
+    // A chosen pack owns the scroll. Doing both meant the smooth jump to the
+    // top of the section overrode the jump to the card and landed on neither.
+    if (preselectPack()) return;
     document.getElementById("buy").scrollIntoView({ behavior: "smooth", block: "start" });
   });
   paintChecking(false);
@@ -592,6 +598,38 @@ async function requestFree(){
     note.textContent = d.ok ? "Thanks. We will research it and email you the verdict, usually within 2 business days." : (d.error || "Could not send just now.");
   } catch(e){ note.textContent = "Could not send just now. Please try again."; }
   btn.disabled = false;
+}
+
+/**
+ * The pack somebody already chose in the app.
+ *
+ * The app now shows the three packs itself, so that nobody leaves it to find
+ * out what a pack costs. Landing here and being asked the same question again
+ * undoes that, so ?pack= marks the one they picked and scrolls to it. It
+ * deliberately does not start checkout: a page that charges on load is a
+ * surprise, and the tap that spends money should happen where it is read.
+ */
+// Run once the page has settled, because which boot path revealed the packs
+// depends on whether there is a pass on the device and only one of them knew
+// to ask about this.
+window.addEventListener("load", function(){ setTimeout(preselectPack, 60); });
+
+function preselectPack(){
+  try {
+    var want = new URLSearchParams(location.search).get("pack") || "";
+    if (!/^p(5|10|20)$/.test(want)) return false;
+    var card = document.querySelector('.pack[data-pack="' + want + '"]');
+    if (!card) return false;
+    // Somebody carrying a pack came here to buy, so the section is open
+    // whichever of the two boot paths got here first. Both of them reveal it
+    // on their own terms and only one of them was calling this.
+    document.getElementById("buy").style.display = "block";
+    card.classList.add("chosen");
+    var btn = card.querySelector(".buy");
+    if (btn) btn.textContent = "Continue with " + card.querySelector(".checks").textContent;
+    card.scrollIntoView({ behavior: "smooth", block: "center" });
+    return true;
+  } catch (e) { return false; }
 }
 
 async function checkout(pack){
