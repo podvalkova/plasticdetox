@@ -144509,5 +144509,230 @@
         "origin": "rollup"
       }
     }
+  },
+  {
+    "id": "emerson-creek-pottery",
+    "brand": "Emerson Creek Pottery",
+    "category": "Pets",
+    "stance": "good",
+    "reason": "Handmade stoneware from Bedford, Virginia, with an independent lead result on record rather than just a lead free claim. Lead Safe Mama's 2018 XRF test of this glaze pattern found the food surface non detect for lead, with only trace lead in the unglazed rim, both well under the bars a glaze and a substrate are judged against.",
+    "evidence": "Independently tested, food surface non detect for lead",
+    "sources": [
+      "hand"
+    ],
+    "reviewed": true,
+    "generalises": false,
+    "products": [
+      {
+        "name": "Emerson Creek Pottery Classic Pet Bowl",
+        "buy": "https://emersoncreekpottery.com/product-category/home-goods/dog-bowls/",
+        "verdict": "good",
+        "note": "Handmade stoneware from Bedford, Virginia. Lead Safe Mama's 2018 XRF test of this Iris pattern bowl found the glazed food surface non detect for lead, with 17 to 27 ppm in the unglazed rim and underside, both well under the bars a glaze and a substrate are judged against. Sold direct; Emerson Creek is not on Amazon. This verdict covers the classic glaze that was actually tested; other colors have not been individually verified.",
+        "origin": "hand",
+        "source": "hand",
+        "ext": {
+          "verdict": "good",
+          "why": "Independent XRF test of the exact product: lead non detect on the glazed food surface, trace only in the unglazed substrate, both under the published bars.",
+          "fronts": {
+            "formula": "none",
+            "materials": "pass",
+            "legal": "none",
+            "testing": "pass"
+          },
+          "frontOrigin": {
+            "materials": "stated",
+            "legal": "database",
+            "testing": "hand"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        },
+        "cat": "Tableware"
+      }
+    ]
+  },
+  {
+    "id": "frisco",
+    "brand": "Frisco",
+    "category": "Pets",
+    "stance": "careful",
+    "reason": "Chewy's house brand. An independent XRF test of its ceramic dog bowl found cadmium at 85 to 103 ppm across the glaze and the printed logo, more than double Washington State's own 40 ppm limit, the strictest cadmium bar in force anywhere. Lead was non detect on the same bowl. Frisco covers hundreds of products across many materials; this finding is about the ceramic bowl specifically, not the brand's stainless or plastic lines.",
+    "evidence": "Cadmium over twice the strictest state limit, in one tested bowl",
+    "sources": [
+      "hand"
+    ],
+    "reviewed": true,
+    "generalises": false,
+    "products": [
+      {
+        "name": "Frisco ceramic dog bowl",
+        "buy": "https://www.chewy.com/f/frisco-dog-bowls_c1422_f1v396533",
+        "verdict": "careful",
+        "note": "Lead Safe Mama's XRF test of this ceramic bowl found cadmium at 85 ppm on the glazed food surface, 96 ppm on the printed logo, and 103 ppm on the unglazed edge, all above Washington State's 40 ppm cadmium bar. Lead was non detect at every spot. Chewy exclusive; not sold on Amazon.",
+        "origin": "hand",
+        "source": "hand",
+        "ext": {
+          "verdict": "careful",
+          "why": "Independent XRF test found cadmium above the strictest published bar on the food contact glaze.",
+          "fronts": {
+            "formula": "none",
+            "materials": "pass",
+            "legal": "none",
+            "testing": "caution"
+          },
+          "frontOrigin": {
+            "materials": "stated",
+            "legal": "database",
+            "testing": "hand"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        },
+        "cat": "Tableware"
+      }
+    ]
+  },
+  {
+    "id": "winifred-lily",
+    "brand": "Winifred & Lily",
+    "category": "Pets",
+    "stance": "careful",
+    "reason": "An independent XRF test of this ceramic bowl found 190 ppm lead on the actual glazed food surface, a level that would fail outright if this were sold as a children's product, and 495 ppm on the printed logo on the bottom. There is no legal lead limit for pet dishware, so nothing about this sale is unlawful. That gap between what the law requires and what the bowl measured is the finding.",
+    "evidence": "190 ppm lead measured on the food surface itself",
+    "sources": [
+      "hand"
+    ],
+    "reviewed": true,
+    "generalises": false,
+    "products": [
+      {
+        "name": "Winifred & Lily ceramic pet bowl",
+        "asins": [
+          "B071FTY8MJ"
+        ],
+        "verdict": "careful",
+        "note": "Lead Safe Mama's XRF test of a pink glazed Winifred & Lily bowl found 190 ppm lead on the actual food contact surface and 495 ppm on the printed logo on the bottom. 90 ppm is the bar CPSIA sets for a glaze on a children's product; pet dishware has no equivalent legal limit, so this sale is lawful even though the number would not clear that bar. Cadmium read 20 ppm at both spots, under every published limit.",
+        "origin": "hand",
+        "source": "hand",
+        "ext": {
+          "verdict": "careful",
+          "why": "Independent XRF test found lead on the food contact glaze at a level that would fail a children's product standard, though no such standard applies to pet dishware.",
+          "fronts": {
+            "formula": "none",
+            "materials": "pass",
+            "legal": "none",
+            "testing": "caution"
+          },
+          "frontOrigin": {
+            "materials": "stated",
+            "legal": "database",
+            "testing": "hand"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        },
+        "cat": "Tableware"
+      }
+    ]
+  },
+  {
+    "id": "west-paw",
+    "brand": "West Paw",
+    "category": "Pets",
+    "stance": "careful",
+    "reason": "Zogoflex chew toys are 100 percent synthetic thermoplastic elastomer, not rubber, marketed in the same natural, eco friendly tone as rubber alternatives. West Paw states the material is BPA and phthalate free and made in the USA, but does not say what happens to a piece a dog bites off, and publishes no independent test of the material. Owner reports of strong chewers breaking off and swallowing pieces are common enough that the brand's own chew guide tells owners to match toy strength to the dog and retire a damaged toy.",
+    "evidence": "A synthetic plastic marketed as natural, no ingestion safety statement or independent test",
+    "sources": [
+      "hand"
+    ],
+    "reviewed": true,
+    "generalises": true,
+    "products": [
+      {
+        "name": "West Paw Zogoflex toys",
+        "matchAll": [
+          [
+            "west",
+            "paw"
+          ],
+          [
+            "zogoflex"
+          ]
+        ],
+        "verdict": "careful",
+        "note": "Zogoflex is a synthetic thermoplastic elastomer, not natural rubber, though it is marketed in the same tone. West Paw states it is BPA and phthalate free, made in the USA, and recyclable through its own return program, but publishes no independent test and no statement about what happens to a bitten off piece. Owner reports of strong chewers breaking off and swallowing pieces are common enough that the brand's own chew guide tells owners to match toy strength to the dog and retire a damaged toy, the right precaution, but not a guarantee the product itself can give.",
+        "origin": "hand",
+        "source": "hand",
+        "ext": {
+          "verdict": "careful",
+          "why": "A synthetic plastic mouthed for hours daily, with a documented but conditional and avoidable ingestion risk not detectable from the product as sold.",
+          "fronts": {
+            "formula": "none",
+            "materials": "caution",
+            "legal": "none",
+            "testing": "none"
+          },
+          "frontOrigin": {
+            "materials": "stated",
+            "legal": "database"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        },
+        "cat": "Toys"
+      }
+    ]
+  },
+  {
+    "id": "mammoth-flossy-chews",
+    "brand": "Mammoth Flossy Chews",
+    "category": "Pets",
+    "stance": "good",
+    "reason": "100 percent cotton rope, a plant fiber with no named hazard chemistry and nothing for chewing or water to leach. The verdict covers the plain white undyed rope; Mammoth also sells colored and cotton poly blend rope under the same Flossy Chews name, which this does not cover.",
+    "evidence": "100 percent cotton, undyed",
+    "sources": [
+      "hand"
+    ],
+    "reviewed": true,
+    "generalises": false,
+    "products": [
+      {
+        "name": "Mammoth Flossy Chews 100% Cotton Rope Tug",
+        "asins": [
+          "B000634LKG"
+        ],
+        "verdict": "good",
+        "note": "Plain white, 100 percent cotton rope, a plant fiber with no named hazard chemistry. Mammoth also sells colored and cotton poly blend rope toys under the same Flossy Chews name; this verdict covers the plain white 100 percent cotton rope only.",
+        "origin": "hand",
+        "source": "hand",
+        "ext": {
+          "verdict": "good",
+          "why": "100 percent cotton, a plant fiber with no route onto the hazard list, dry and mouthed with no heat.",
+          "fronts": {
+            "formula": "none",
+            "materials": "pass",
+            "legal": "none",
+            "testing": "none"
+          },
+          "frontOrigin": {
+            "materials": "stated",
+            "legal": "database"
+          },
+          "scope": "sku",
+          "basis": "direct",
+          "disclose": false,
+          "authored": true
+        },
+        "cat": "Toys"
+      }
+    ]
   }
 ]
