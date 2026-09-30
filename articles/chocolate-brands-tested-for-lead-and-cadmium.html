@@ -195,6 +195,15 @@
     .tldr-picks-title { font-weight: 800; font-size: 0.95rem; margin-bottom: 0.5rem; }
     .tldr-picks ul { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 0.35rem 1.5rem; list-style: none; padding: 0; margin: 0; }
     .tldr-picks li { font-size: 0.92rem; line-height: 1.4; }
+    .stat-band { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin: 1.75rem 0; }
+    .stat-box { background: var(--surface); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.25rem 1rem; text-align: center; }
+    .stat-num { font-size: 2rem; font-weight: 800; color: #dc2626; line-height: 1.1; }
+    .stat-num.good { color: #7c3aed; }
+    .stat-label { font-size: 0.82rem; color: var(--text-muted); margin-top: 0.35rem; line-height: 1.35; }
+    .reduce-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; margin: 1.5rem 0 2rem; }
+    .reduce-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.1rem 1.2rem; display: flex; gap: 0.9rem; align-items: flex-start; }
+    .reduce-num { flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; background: #7c3aed; color: #fff; font-weight: 800; font-size: 0.85rem; display: flex; align-items: center; justify-content: center; }
+    .reduce-card p { margin: 0; font-size: 0.9rem; line-height: 1.5; }
   </style>
   <style>@media(max-width:640px){.nav-hide-mobile{display:none!important}}</style>
 <script id="pd-app-mode">if(location.search.indexOf("app=1")>-1)document.documentElement.classList.add("in-app")</script>
@@ -234,6 +243,13 @@
     </div>
 
     <p>Consumer Reports sent 28 dark chocolate bars to an independent lab in 2022 and detected both lead and cadmium in every one of them. For 23 of the 28, an ounce a day was enough to exceed California's own legal threshold for at least one of the two metals, the level that by law has to trigger a cancer and reproductive harm warning label. This is not a new scare or a single bad batch. It is a decade old, heavily litigated, extensively tested problem that the chocolate industry itself has funded research into and still has not fixed. Here is what the actual numbers show, brand by brand, and what to do with that information.</p>
+
+    <div class="stat-band">
+      <div class="stat-box"><div class="stat-num good">28</div><div class="stat-label">dark chocolate bars independently lab tested for lead and cadmium</div></div>
+      <div class="stat-box"><div class="stat-num">23</div><div class="stat-label">broke California's own legal warning threshold</div></div>
+      <div class="stat-box"><div class="stat-num good">2</div><div class="stat-label">completely different ways the two metals actually get in</div></div>
+      <div class="stat-box"><div class="stat-num">0</div><div class="stat-label">bars that tested clean on both metals at once</div></div>
+    </div>
 
     <div class="tldr-card">
       <h2>The 30 Second Summary</h2>
@@ -296,6 +312,43 @@
 
     <p>Lead works differently. It is not inside the bean at all, but on its outer shell. Freshly picked beans test low for lead. But cacao beans are coated in a sticky pulp, and after harvest they are typically fermented and dried in the open air for days, on tarps, concrete patios, drying tables, or directly on the ground, sometimes along roadsides. During that time, lead laden dust and dirt, much of it from decades of leaded gasoline residue still present in soil, industrial pollution, and burning garbage or plastic, sticks to the bean's shell. "We collected beans on the ground that were heavily loaded with lead on the outer shell," said Michael J. DiBartolomeis, the toxicologist who led that research.</p>
 
+    <div class="infographic">
+      <div class="infographic-title">Two Metals, Two Routes Into the Bean</div>
+      <svg viewBox="0 0 560 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram showing cadmium entering through soil, tree roots, and the growing bean before harvest, and lead entering through harvest, outdoor drying, and dust landing on the shell after harvest.">
+        <defs>
+          <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="#a78bfa"/>
+          </marker>
+        </defs>
+        <text x="0" y="18" font-family="Inter,sans-serif" font-size="13" font-weight="800" fill="#1c1917">CADMIUM</text>
+        <text x="90" y="18" font-family="Inter,sans-serif" font-size="10" fill="#78716c">in the bean, before harvest</text>
+        <line x1="103" y1="85" x2="252" y2="85" stroke="#a78bfa" stroke-width="2" marker-end="url(#arrow)"/>
+        <line x1="308" y1="85" x2="457" y2="85" stroke="#a78bfa" stroke-width="2" marker-end="url(#arrow)"/>
+        <circle cx="75" cy="85" r="28" fill="#ffffff" stroke="#7c3aed" stroke-width="2"/>
+        <text x="75" y="89" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="#1c1917">Soil</text>
+        <circle cx="280" cy="85" r="28" fill="#ffffff" stroke="#7c3aed" stroke-width="2"/>
+        <text x="280" y="83" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="#1c1917">Tree</text>
+        <text x="280" y="95" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="#1c1917">roots</text>
+        <circle cx="485" cy="85" r="28" fill="#ffffff" stroke="#7c3aed" stroke-width="2"/>
+        <text x="485" y="89" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="#1c1917">Bean</text>
+
+        <line x1="0" y1="135" x2="560" y2="135" stroke="#e7e5e4" stroke-width="1"/>
+
+        <text x="0" y="158" font-family="Inter,sans-serif" font-size="13" font-weight="800" fill="#1c1917">LEAD</text>
+        <text x="65" y="158" font-family="Inter,sans-serif" font-size="10" fill="#78716c">on the shell, after harvest</text>
+        <line x1="103" y1="215" x2="252" y2="215" stroke="#a78bfa" stroke-width="2" marker-end="url(#arrow)"/>
+        <line x1="308" y1="215" x2="457" y2="215" stroke="#a78bfa" stroke-width="2" marker-end="url(#arrow)"/>
+        <circle cx="75" cy="215" r="28" fill="#ffffff" stroke="#7c3aed" stroke-width="2"/>
+        <text x="75" y="219" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="#1c1917">Harvest</text>
+        <circle cx="280" cy="215" r="28" fill="#ffffff" stroke="#7c3aed" stroke-width="2"/>
+        <text x="280" y="213" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="#1c1917">Dried</text>
+        <text x="280" y="225" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="#1c1917">outdoors</text>
+        <circle cx="485" cy="215" r="28" fill="#ffffff" stroke="#7c3aed" stroke-width="2"/>
+        <text x="485" y="213" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="#1c1917">Dust on</text>
+        <text x="485" y="225" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="#1c1917">shell</text>
+      </svg>
+    </div>
+
     <div class="callout">
       <div class="callout-title">Two Metals, Two Different Fixes</div>
       Because the mechanisms differ, so do the fixes. Lead is a handling problem: drying beans on clean tables or covered surfaces away from roads, and cleaning beans at the factory, can measurably lower it within about a year of changing practice. Cadmium is a growing problem: it requires different rootstock, younger trees, treated soil, or blending beans from lower cadmium regions with higher cadmium ones, all of which take years to show up in a bar.
@@ -305,6 +358,40 @@
     <h2 id="results">3. The Full Results: 28 Dark Chocolate Bars</h2>
 
     <p>Consumer Reports measured each bar against California's Proposition 65 maximum allowable dose level (MADL), the state's own legal threshold for how much lead or cadmium a food can expose someone to before a warning label is required by law. The bar for lead is 0.5 micrograms a day, for cadmium 4.1 micrograms a day, both applied to a one ounce serving. There is no federal limit for either metal in chocolate, so CR used California's figures because its scientists consider them the most health protective published numbers available. Results below 100 percent are under that legal threshold; anything at or above it is not just "high," it is over the line California itself uses to require a warning.</p>
+
+    <div class="infographic">
+      <div class="infographic-title">Lead, Lowest 3 vs. Highest 3 (% of California's Legal Limit)</div>
+      <svg viewBox="0 0 560 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bar chart. Lowest lead: Mast 14 percent, Taza 33 percent, Ghirardelli 86 percent Cacao 36 percent. Highest lead: Hu 210 percent, Chocolove Extreme Dark 240 percent, Hershey's Special Dark 265 percent. A reference line marks California's 100 percent legal threshold.">
+        <line x1="295" y1="6" x2="295" y2="184" stroke="#78716c" stroke-width="1.5" stroke-dasharray="3,3"/>
+        <text x="295" y="196" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#78716c">100% = CA legal limit</text>
+
+        <text x="0" y="17" font-family="Inter,sans-serif" font-size="10" fill="#1c1917">Mast</text>
+        <rect x="170" y="8" width="17.5" height="14" rx="4" fill="#16a34a"/>
+        <text x="193" y="18" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="#16a34a">14%</text>
+
+        <text x="0" y="43" font-family="Inter,sans-serif" font-size="10" fill="#1c1917">Taza</text>
+        <rect x="170" y="34" width="41.25" height="14" rx="4" fill="#16a34a"/>
+        <text x="217" y="44" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="#16a34a">33%</text>
+
+        <text x="0" y="69" font-family="Inter,sans-serif" font-size="9" fill="#1c1917">Ghirardelli 86%</text>
+        <rect x="170" y="60" width="45" height="14" rx="4" fill="#16a34a"/>
+        <text x="221" y="70" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="#16a34a">36%</text>
+
+        <line x1="0" y1="88" x2="560" y2="88" stroke="#e7e5e4" stroke-width="1"/>
+
+        <text x="0" y="111" font-family="Inter,sans-serif" font-size="10" fill="#1c1917">Hu</text>
+        <rect x="170" y="102" width="262.5" height="14" rx="4" fill="#dc2626"/>
+        <text x="438" y="112" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="#dc2626">210%</text>
+
+        <text x="0" y="137" font-family="Inter,sans-serif" font-size="9" fill="#1c1917">Chocolove Extreme</text>
+        <rect x="170" y="128" width="300" height="14" rx="4" fill="#dc2626"/>
+        <text x="476" y="138" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="#dc2626">240%</text>
+
+        <text x="0" y="163" font-family="Inter,sans-serif" font-size="9" fill="#1c1917">Hershey's Special Dark</text>
+        <rect x="170" y="154" width="331.25" height="14" rx="4" fill="#dc2626"/>
+        <text x="507" y="164" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="#dc2626">265%</text>
+      </svg>
+    </div>
 
     <table class="comparison-table">
       <thead>
@@ -399,15 +486,15 @@
     <!-- SECTION 7 -->
     <h2 id="reduce">8. What Actually Reduces Your Risk</h2>
 
-    <ol>
-      <li><strong>Choose a lower cacao percentage for cadmium specifically.</strong> CR's data and other testing both show cadmium tends to rise with cacao content, so a 70 percent bar is generally lower than an 85 percent bar of the same brand. Lead does not follow the same pattern, so this only helps with one of the two metals.</li>
-      <li><strong>Alternate with milk chocolate.</strong> Milk chocolate has far less cacao and, in CR's 2023 test, none of the five milk bars broke either threshold. It also carries a lot more added sugar, so this is a trade, not a free pass, best used as an occasional swap rather than a daily habit either way.</li>
-      <li><strong>Do not assume organic or "ethically sourced" means lower metals.</strong> Several of the worst results in this dataset, Alter Eco, Equal Exchange, Endangered Species, and Theo, are organic and marketed on direct trade or ethical sourcing. Those labels govern pesticides and labor practices, not heavy metal content, which is a different check entirely.</li>
-      <li><strong>Treat dark chocolate as a treat, not a daily supplement.</strong> An occasional ounce, even from a bar with a higher reading, is unlikely to cause immediate harm. The risk builds with frequent, years long exposure, which is exactly the pattern a "square of 85 percent dark chocolate every day for the antioxidants" habit creates.</li>
-      <li><strong>Go easier during pregnancy and with young children.</strong> Both metals cross into fetal development and a child's smaller body carries the same dose further. This is the group every source in this article, Consumer Reports, As You Sow, and Lead Safe Mama, singles out for extra caution.</li>
-      <li><strong>Skip hot cocoa pods.</strong> Make it with loose cocoa powder and hot milk or water heated on a stovetop or kettle instead of a K-Cup, for the same reason we recommend skipping plastic coffee pods.</li>
-      <li><strong>Do not let bars sit for months in a hot car or a sunny counter.</strong> Migration from a fatty food into its wrapper rises with heat and with time, so buying what you will actually eat soon and keeping it somewhere cool matters more than which specific wrapper a brand uses, since most do not disclose that anyway.</li>
-    </ol>
+    <div class="reduce-grid">
+      <div class="reduce-card"><div class="reduce-num">1</div><p><strong>Choose a lower cacao percentage for cadmium specifically.</strong> Cadmium tends to rise with cacao content, so a 70 percent bar is generally lower than an 85 percent bar of the same brand. Lead does not follow the same pattern, so this only helps with one of the two metals.</p></div>
+      <div class="reduce-card"><div class="reduce-num">2</div><p><strong>Alternate with milk chocolate.</strong> None of the five milk bars in CR's 2023 test broke either threshold. It carries a lot more added sugar too, so this is a trade, best used as an occasional swap rather than a daily habit.</p></div>
+      <div class="reduce-card"><div class="reduce-num">3</div><p><strong>Do not assume organic or "ethically sourced" means lower metals.</strong> Alter Eco, Equal Exchange, Endangered Species, and Theo are all organic and marketed on ethical sourcing, and all four are among the worst results in this dataset.</p></div>
+      <div class="reduce-card"><div class="reduce-num">4</div><p><strong>Treat dark chocolate as a treat, not a daily supplement.</strong> An occasional ounce is unlikely to cause immediate harm. The risk builds with the "a square a day for the antioxidants" habit.</p></div>
+      <div class="reduce-card"><div class="reduce-num">5</div><p><strong>Go easier during pregnancy and with young children.</strong> Both metals cross into fetal development, and a child's smaller body carries the same dose further.</p></div>
+      <div class="reduce-card"><div class="reduce-num">6</div><p><strong>Skip hot cocoa pods.</strong> Make it with loose cocoa powder and hot milk or water heated on a stovetop or kettle instead of a K-Cup, for the same reason we recommend skipping plastic coffee pods.</p></div>
+      <div class="reduce-card"><div class="reduce-num">7</div><p><strong>Do not let bars sit for months in a hot car or a sunny counter.</strong> Migration from a fatty food into its wrapper rises with heat and time, more than which wrapper a brand uses, since most do not disclose that anyway.</p></div>
+    </div>
 
     <!-- SECTION 8 -->
     <h2 id="buying">9. If You Are Buying Chocolate Anyway</h2>
