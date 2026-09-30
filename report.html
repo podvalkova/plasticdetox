@@ -405,6 +405,18 @@
       if (r.ok) d = await r.json();
     } catch (e) {}
 
+    // Already reviewed by a person, which is a better answer than an automated
+    // one and must never read as an absence. Whoopsie Wipes sat in the database
+    // as good with no research record, so My checks said Good choice and this
+    // page said nobody had ever checked it.
+    if (d && d.found && d.fromDatabase) {
+      showState("Already in our database",
+        (d.row || d.brand || SUBJECT_LABEL) + " is rated " + (VERDICT_LABEL[d.verdict] || d.verdict)
+          + ". " + (d.note || ""),
+        '<a class="btn btn-primary" href="' + esc(d.source) + '">See the full card &rarr;</a>');
+      return;
+    }
+
     if (!d || !d.found) {
       showState("No report for that yet",
         "Nobody has run a check on this product, so there is nothing to show. A check takes about a minute and joins the public database afterwards.",

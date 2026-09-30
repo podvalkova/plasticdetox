@@ -3509,6 +3509,19 @@ async function handleVetKnown(request, env, corsOrigin) {
                   repairable: canRepair(rec) },
                 200, corsOrigin);
   }
+  // No research record, which is not the same as nothing known. Whoopsie Wipes
+  // is in brand-data as good and has never been researched, so the pass history
+  // said Good choice and the report said nobody has ever checked this, about
+  // the same product, one tap apart. A reviewed verdict is a better answer than
+  // an automated one and it should never read as an absence.
+  const ruled = await dbAnswer(brand || asked, product || "");
+  if (ruled && ruled.covered && ruled.verdict) {
+    return json({ ok: true, found: true, fromDatabase: true,
+                  verdict: ruled.verdict, note: ruled.note,
+                  brand: ruled.brand.brand, row: (ruled.row && ruled.row.name) || "",
+                  source: dbSource(ruled.brand), fronts: {}, capNote: "" },
+                200, corsOrigin);
+  }
   return json({ ok: true, found: false }, 200, corsOrigin);
 }
 

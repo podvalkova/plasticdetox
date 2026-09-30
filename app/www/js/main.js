@@ -595,12 +595,26 @@ function draw() {
       loading: state.history === undefined && !!check.getPass(),
       data: state.history || null,
       error: state.history === null && !!check.getPass(),
-      onOpen: (row) => go({
-        screen: "unknown",
-        scan: null,
-        brand: row.brand || row.asked || "",
-        product: row.product || "",
-      }),
+      // Opened the way a search opens, through the database first.
+      //
+      // Every row went to the unknown screen, which is the one that says a
+      // product has not been reviewed and offers to check it. Whoopsie Wipes
+      // is in brand-data as good and has no research record at all, so the
+      // list said Good choice and the tap said never reviewed, about the same
+      // product, one after the other. A row the database answers is an
+      // ordinary verdict and belongs on the result screen; unknown is the
+      // fallback, not the destination.
+      onOpen: (row) => {
+        const brand = row.brand || "";
+        const product = row.product || "";
+        const title = [brand, product].filter(Boolean).join(" ").trim() || row.asked || "";
+        const match = index.resolve({ brandName: brand || title, title });
+        if (match) {
+          go({ screen: "result", match, scan: null, query: title, productNamed: !!product });
+          return;
+        }
+        go({ screen: "unknown", scan: null, brand: brand || title, product });
+      },
       onNew: () => go({ screen: "home" }),
       onBuy: packsReviewed()
         ? () => go({ screen: "passes" })
