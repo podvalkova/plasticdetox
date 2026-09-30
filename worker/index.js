@@ -2490,10 +2490,34 @@ async function vetDbLookup(brand, product) {
       }
       VET_DB = { at: Date.now(), byLabel: map };
     }
-    const hit = VET_DB.byLabel.get(vetCollapse(brand));
+    // The label as typed, then the same label with trailing words dropped.
+    //
+    // Lookup was exact equality on the collapsed string, so "Ziploc Bags" as a
+    // brand missed a database that has Ziploc, the database never answered,
+    // and the research ran from scratch and returned good for a row the
+    // standard calls skip. People type the product into the brand box all the
+    // time; a brand is the leading token, so try the longest match first and
+    // work back. Never below three characters, which is short enough for Ubu
+    // and long enough not to catch a stray word.
+    const words = String(brand || "").trim().split(/\s+/).filter(Boolean);
+    let hit = null, used = words.length;
+    for (let n = words.length; n > 0; n--) {
+      const k = vetCollapse(words.slice(0, n).join(" "));
+      if (k.length < 3 && n !== words.length) continue;
+      const found = VET_DB.byLabel.get(k);
+      if (found) { hit = found; used = n; break; }
+    }
     if (!hit) return null;
     // Cheap product row match: every match/matchAll word present in the title.
-    const low = " " + (product || "").toLowerCase().replace(/[^a-z0-9]+/g, " ") + " ";
+    //
+    // Matched against the brand as well as the product, because that is how the
+    // rows are written: every Ziploc group is ["ziploc", something], and
+    // matching the product alone meant brand "Ziploc" product "Bags" could
+    // never hit the row for Ziploc bags. It fell through to the brand stance,
+    // which is careful, for a product recorded as skip.
+    const leftover = words.slice(used).join(" ");
+    const subject = [brand, leftover, product].filter(Boolean).join(" ");
+    const low = " " + subject.toLowerCase().replace(/[^a-z0-9]+/g, " ") + " ";
     let row = null;
     for (const p of hit.products || []) {
       const phrases = (p.match || []).map((x) => " " + String(x).toLowerCase() + " ");
@@ -2505,6 +2529,54 @@ async function vetDbLookup(brand, product) {
     }
     return { brand: hit, row };
   } catch (e) { return null; }
+}
+
+
+// brand-data.json is the single source of truth, and it has to be that on
+// every path, not only on the one that spends money.
+//
+// The live check consulted the database before researching. A saved report and
+// the pass history did not, so they answered from the stored research alone.
+// Ziploc bags were researched on 18 September, before rule 3.13 existed, and
+// the check read the empty bag as "a dry product in a Polyethylene plastic"
+// and passed it good. The database says that exact row is a skip, because SC
+// Johnson markets the bags for the freezer, for raw meat and for reheating in
+// a microwave. So the app showed good for a product the standard calls skip,
+// which is the worst direction this can fail in.
+//
+// One answer, asked the same way everywhere.
+const STANCE_BADGE = { good: "pass", careful: "caution", skip: "fail" };
+
+// Only product-type words may prove coverage. "with" matched a fryer verdict
+// to a kettle; generic adjectives and materials are just as bad.
+const DB_GENERIC_WORDS = new Set(["with", "without", "this", "that", "from",
+  "have", "your", "temperature", "control", "electric", "digital",
+  "programmable", "adjustable", "stainless", "steel", "glass", "black",
+  "white", "large", "small", "inch", "quart", "liter", "ounce", "pack",
+  "count", "piece", "premium", "classic", "original", "series", "model"]);
+
+const dbSource = (b) =>
+  `https://plasticdetox.org/brand-check.html?b=${encodeURIComponent(b.brand)}`;
+
+/**
+ * What the database says about this exact product.
+ *
+ * `covered` false means the brand is known but this product is not: the brand
+ * verdict is context and never the answer, because Chefman is a skip for its
+ * air fryer coatings and asserting that against a kettle is the brand-is-not-a
+ * -product mistake the standard forbids.
+ */
+async function dbAnswer(brand, product) {
+  const db = await vetDbLookup(brand, product);
+  if (!db) return null;
+  const b = db.brand, row = db.row;
+  const scopeText = ((b.reason || "") + " " + (b.category || "")).toLowerCase();
+  const covered = row || (product || "").toLowerCase().split(/[^a-z0-9]+/)
+    .some((w) => w.length > 3 && !DB_GENERIC_WORDS.has(w) && scopeText.includes(w));
+  if (!covered) return { covered: false, brand: b, row: null, verdict: "", note: "" };
+  const verdict = (row && row.ext && row.ext.verdict && row.ext.verdict !== "unrated")
+    ? row.ext.verdict : b.stance;
+  return { covered: true, brand: b, row, verdict, note: (row && row.note) || b.reason || "" };
 }
 
 // The section 6 ladder plus the completeness gate, as the extension applies it.
@@ -2631,41 +2703,24 @@ async function vetCore(env, brand, product, send, allowResearch, url = "", fresh
   // Otherwise the brand verdict is context, never the answer: Chefman is a
   // skip for its air fryer coatings, and asserting that against a kettle is
   // the exact brand-is-not-a-product mistake the standard forbids.
-  const STANCE_BADGE = { good: "pass", careful: "caution", skip: "fail" };
-  const db = await vetDbLookup(brand, product);
+  const db = await dbAnswer(brand, product);
   let brandStance = null;
   if (db) {
-    const b = db.brand, row = db.row;
-    const scopeText = ((b.reason || "") + " " + (b.category || "")).toLowerCase();
-    // Only product-type words may prove coverage. "with" matched a fryer
-    // verdict to a kettle; generic adjectives and materials are just as bad.
-    const GENERIC_WORDS = new Set(["with", "without", "this", "that", "from",
-      "have", "your", "temperature", "control", "electric", "digital",
-      "programmable", "adjustable", "stainless", "steel", "glass", "black",
-      "white", "large", "small", "inch", "quart", "liter", "ounce", "pack",
-      "count", "piece", "premium", "classic", "original", "series", "model"]);
-    const covered = row || (product || "").toLowerCase().split(/[^a-z0-9]+/)
-      .some((w) => w.length > 3 && !GENERIC_WORDS.has(w) && scopeText.includes(w));
-    if (covered) {
-      const verdict = (row && row.ext && row.ext.verdict && row.ext.verdict !== "unrated")
-        ? row.ext.verdict : b.stance;
-      const note = (row && row.note) || b.reason || "";
-      send({ step: "database", front: { status: STANCE_BADGE[verdict] || "unassessed",
-        note: `Already in our database${row ? ` (${row.name})` : ""}: ${note}`.slice(0, 400),
-        source: `https://plasticdetox.org/brand-check.html?b=${encodeURIComponent(b.brand)}` },
-        ms: Date.now() - t0 });
-      return { fromDatabase: true, verdict, capNote: "", fronts: {},
+    if (db.covered) {
+      send({ step: "database", front: { status: STANCE_BADGE[db.verdict] || "unassessed",
+        note: `Already in our database${db.row ? ` (${db.row.name})` : ""}: ${db.note}`.slice(0, 400),
+        source: dbSource(db.brand) }, ms: Date.now() - t0 });
+      return { fromDatabase: true, verdict: db.verdict, capNote: "", fronts: {},
                chargeable: false, elapsedMs: Date.now() - t0 };
     }
-    brandStance = b.stance;
+    brandStance = db.brand.stance;
     // Internal context: it steers the verdict cap below, and the review
     // queue will want it, but the customer card never shows it.
     send({ step: "database", internal: true,
-      front: { status: STANCE_BADGE[b.stance] || "unassessed",
-      note: `Brand context (internal): we rate ${b.brand} ${b.stance}. `
+      front: { status: STANCE_BADGE[db.brand.stance] || "unassessed",
+      note: `Brand context (internal): we rate ${db.brand.brand} ${db.brand.stance}. `
         + `Researching this exact product now.`,
-      source: `https://plasticdetox.org/brand-check.html?b=${encodeURIComponent(b.brand)}` },
-      ms: Date.now() - t0 });
+      source: dbSource(db.brand) }, ms: Date.now() - t0 });
   }
 
   // Research already done on this exact product, by whoever paid for it first.
@@ -3429,8 +3484,25 @@ async function handleVetKnown(request, env, corsOrigin) {
     // disappear, which is how Anya's own past checks came back "no report for
     // that yet". It is shown, and marked as researched under an older method.
     const stale = (rec.engine || 0) < VET_ENGINE;
-    return json({ ok: true, found: true, verdict: rec.verdict, capNote: rec.capNote || "",
+    // The database outranks the research, always. This is a saved answer and
+    // the standard may have moved under it: Ziploc bags were researched as
+    // good before rule 3.13 said a bag sold empty scores on the hardest use its
+    // maker markets, and brand-data has had that exact row at skip ever since.
+    // Showing the old answer because it happens to be the one we stored is how
+    // the app ends up contradicting the site about the same product.
+    const id = rec.identified || {};
+    const ruling = await dbAnswer(id.brand || brand, id.product || product || brand);
+    const overruled = ruling && ruling.covered && ruling.verdict
+      && ruling.verdict !== rec.verdict;
+    return json({ ok: true, found: true,
+                  verdict: overruled ? ruling.verdict : rec.verdict,
+                  capNote: rec.capNote || "",
                   fronts: rec.fronts, at: rec.at, identified: rec.identified || null,
+                  // Said out loud rather than swapped silently, so the card can
+                  // explain why it no longer matches what somebody remembers.
+                  overruled: overruled
+                    ? { was: rec.verdict, note: ruling.note, source: dbSource(ruling.brand) }
+                    : null,
                   stale: stale, engine: rec.engine || 0,
                   // Whether asking again would repair our own failure, which is
                   // what decides whether it costs the customer anything.
@@ -3469,6 +3541,11 @@ async function handleVetHistory(request, env, corsOrigin) {
   const known = new Map();
   const currentVerdict = async (h) => {
     const id = h.identified || {};
+    // The database first, for the same reason the live check asks it first: it
+    // is the source of truth and a stored research answer never outranks it.
+    const ruling = await dbAnswer(id.brand || h.brand || "",
+                                  id.product || h.product || h.brand || "");
+    if (ruling && ruling.covered && ruling.verdict) return ruling.verdict;
     for (const k of researchKeys(h.brand || "", h.product || "", id, "")) {
       if (known.has(k)) {
         const v = known.get(k);
@@ -3479,7 +3556,21 @@ async function handleVetHistory(request, env, corsOrigin) {
       const stored = hit && hit.alias
         ? await env.BRAND_SEARCHES.get(hit.alias, { type: "json" }).catch(() => null)
         : hit;
-      const v = (stored && stored.verdict) || null;
+      if (!stored) { known.set(k, null); continue; }
+      // The research record knows what the product turned out to be even when
+      // the history row does not, because somebody typed a bare product name
+      // and the research identified the brand afterwards. Ask the database
+      // again with that, so a row typed as "disposable changing liners" still
+      // reaches the brand the standard has a verdict for.
+      const sid = stored.identified || {};
+      if (sid.brand) {
+        const better = await dbAnswer(sid.brand, sid.product || "");
+        if (better && better.covered && better.verdict) {
+          known.set(k, better.verdict);
+          return better.verdict;
+        }
+      }
+      const v = stored.verdict || null;
       known.set(k, v);
       if (v) return v;
     }
