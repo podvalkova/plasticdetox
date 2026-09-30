@@ -3452,18 +3452,55 @@ async function handleVetHistory(request, env, corsOrigin) {
   const pass = new URL(request.url).searchParams.get("pass") || "";
   const rec = pass && await env.BRAND_SEARCHES.get("vetpass:" + pass, { type: "json" });
   if (!rec) return json({ ok: false, error: "Pass not found" }, 404, corsOrigin);
-  const checks = (rec.history || []).slice().reverse().map((h) => {
+  // The verdict as it stands now, not as it stood the day it was bought.
+  //
+  // A history row froze the verdict at the moment of the check, and the report
+  // card reads the stored research, so the moment a rule changed and a product
+  // was checked again the two disagreed about the same product on two screens
+  // of the same app. WoodWick Fireside was good on Sep 29 under a rule that let
+  // an allergen declaration clear a fragrance; it is careful now. My checks
+  // still said good. Four surfaces ship from this repo and none of them may
+  // disagree about a verdict, and a list of what somebody paid for is one of
+  // them.
+  //
+  // The recorded verdict is kept as `was` when it differs, so the change can be
+  // shown as a change rather than looking like a second bug.
+  const rows = (rec.history || []).slice().reverse().slice(0, 50);
+  const known = new Map();
+  const currentVerdict = async (h) => {
     const id = h.identified || {};
-    return {
+    for (const k of researchKeys(h.brand || "", h.product || "", id, "")) {
+      if (known.has(k)) {
+        const v = known.get(k);
+        if (v) return v;
+        continue;
+      }
+      const hit = await env.BRAND_SEARCHES.get(k, { type: "json" }).catch(() => null);
+      const stored = hit && hit.alias
+        ? await env.BRAND_SEARCHES.get(hit.alias, { type: "json" }).catch(() => null)
+        : hit;
+      const v = (stored && stored.verdict) || null;
+      known.set(k, v);
+      if (v) return v;
+    }
+    return null;
+  };
+  const checks = [];
+  for (const h of rows) {
+    const id = h.identified || {};
+    const now = await currentVerdict(h);
+    const recorded = h.verdict || "";
+    checks.push({
       at: h.ts || "",
       brand: (id.brand || h.brand || "").slice(0, 80),
       product: (id.product || h.product || "").slice(0, 160),
       // What the person actually typed, so a link they pasted is still a link.
       asked: [h.brand, h.product].filter(Boolean).join(" ").slice(0, 200),
-      verdict: h.verdict || "",
+      verdict: now || recorded,
+      was: now && recorded && now !== recorded ? recorded : "",
       free: Boolean(h.free),
-    };
-  });
+    });
+  }
   return json({ ok: true, balance: rec.balance, purchased: rec.purchased, used: rec.used,
                 email: rec.email ? true : false, created: rec.created || "",
                 lastPack: rec.lastPack || rec.pack || "", checks }, 200, corsOrigin);

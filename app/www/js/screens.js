@@ -2814,10 +2814,13 @@ export function myChecks(root, { loading, data, error, onOpen, onBuy, onNew, onS
     const row = el("button", "chk");
     row.type = "button";
     const body = el("div", "chk-body");
-    const name = [r.brand, r.product].filter(Boolean).join(" ").trim() || r.asked || "A product";
-    body.appendChild(el("div", "chk-t", name));
+    body.appendChild(el("div", "chk-t", checkTitle(r)));
     const meta = [];
     if (r.at) meta.push(shortDate(r.at));
+    // A verdict that has moved since the day it was bought says so, because
+    // remembering "good" and being shown "careful" with no explanation reads
+    // as a bug rather than as the rules having caught up.
+    if (r.was && STANCE_LABEL[r.was]) meta.push(`was ${STANCE_LABEL[r.was]}`);
     if (r.free) meta.push("no check spent");
     body.appendChild(el("div", "chk-m", meta.join(" · ")));
     row.appendChild(body);
@@ -2834,6 +2837,23 @@ export function myChecks(root, { loading, data, error, onOpen, onBuy, onNew, onS
     more.onclick = onBuy;
     root.appendChild(more);
   }
+}
+
+/**
+ * One name, not the brand twice.
+ *
+ * The research returns a brand and a product and the product often carries the
+ * brand inside it, so joining them printed "WoodWick WoodWick Fireside Large
+ * Hourglass Jar Candle". Fixed where it is read rather than where it is
+ * written: the stored records already say it both ways and both are correct.
+ */
+function checkTitle(r) {
+  const brand = (r.brand || "").trim();
+  const product = (r.product || "").trim();
+  if (!product) return brand || r.asked || "A product";
+  if (!brand) return product;
+  const flat = (x) => x.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+  return flat(product).startsWith(flat(brand)) ? product : `${brand} ${product}`;
 }
 
 /** A date somebody reads, not one they parse. */
