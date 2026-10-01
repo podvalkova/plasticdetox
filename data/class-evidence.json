@@ -333,6 +333,43 @@
     ]
    },
    "escapeNote": "A published non detect for the four metals, or a certification that tests each lot for them, answers it."
+  },
+  {
+   "id": "dark-chocolate-cadmium-lead",
+   "front": "testing",
+   "status": "caution",
+   "headline": "Dark chocolate carries cadmium and lead because cocoa solids do, so an untested dark bar is an unknown",
+   "detail": "Consumer Reports tested 28 dark chocolate bars in 2022 and 23 of them exceeded California's Proposition 65 maximum allowable dose level for lead, cadmium or both in a single one ounce serving. Its 2023 follow up found the same pattern across cocoa powders and chocolate chips. As You Sow has filed Proposition 65 notices against more than 20 companies over cadmium or lead in chocolate. The metals ride in on the cocoa rather than the recipe: cadmium is drawn out of the soil by the cacao tree and concentrates in the bean, and lead settles onto the beans after harvest while they dry. The more cocoa solids a bar carries, the more it brings with it. This is about dark chocolate generally. We have not confirmed it for any individual untested product.",
+   "source": "Consumer Reports, 28 dark chocolate bars (December 2022) and the 2023 cocoa follow up; As You Sow Proposition 65 notices against more than 20 companies",
+   "year": 2022,
+   "mechanism": "ingredient",
+   "appliesTo": {
+    "cats": [
+     "Pantry"
+    ]
+   },
+   "confirmedBy": {
+    "any": [
+     "dark chocolate",
+     "cacao",
+     "cocoa powder",
+     "cocoa solids",
+     "semisweet",
+     "semi-sweet",
+     "bittersweet",
+     "extra dark",
+     "deeper dark"
+    ]
+   },
+   "escapedBy": {
+    "any": [
+     "milk chocolate",
+     "white chocolate",
+     "non detect",
+     "non-detect"
+    ]
+   },
+   "escapeNote": "Milk chocolate carries a fraction of the cocoa solids and a fraction of the metals: all five milk chocolate bars Consumer Reports tested stayed under the dose level, and white chocolate has no cocoa solids at all. A published result for the bar itself answers the question directly and outranks this."
   }
  ],
  "_guard": "A finding must name what escapes it. Usually that is a sibling in the same category: loose leaf has no bag, glass is not the measured polymer. Where the whole category carries it, the finding must instead name an alternative outside the category, or it is a fact about the world rather than a way to tell two products apart, and it belongs in an article."
