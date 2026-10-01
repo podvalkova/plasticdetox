@@ -779,6 +779,16 @@ function draw() {
       onClose: back,
     });
   } else if (state.screen === "detoxKids") {
+    // Somebody reached the offer. Counted once per visit, not per render, and
+    // the screen redraws twice on its own while StoreKit answers about the
+    // price and the web link.
+    //
+    // There was no event for this at all, which made the only number anybody
+    // could quote unreadable: the room has sold nothing since it shipped, and
+    // without this there is no way to tell whether that is because nobody is
+    // being shown it or because the people shown it are saying no. Those have
+    // completely different fixes.
+    if (!state.seen) { state.seen = true; track("kids_room_seen", {}); }
     // Ask StoreKit what it costs here, then redraw with it. Drawn without a
     // price first so the screen is never blank waiting on the App Store.
     if (kidsPrice === null) {
