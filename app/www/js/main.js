@@ -1367,15 +1367,38 @@ async function refreshBalance() {
 // review has not seen it simply is not there. A reviewer runs the new build
 // and sees it, which is the whole point.
 let NATIVE_BUILD = 0;
-const SIGNIN_FROM_BUILD = 35;
-const signInReviewed = () => NATIVE_BUILD >= SIGNIN_FROM_BUILD;
+let NATIVE_PLATFORM = "web";
+
+// The thresholds are per store, because the two numbers are unrelated.
+//
+// This was one number compared against NATIVE_BUILD, written when iOS was the
+// only binary. An iOS build number and an Android versionCode are separate
+// counters that happen to overlap: Android shipped as versionCode 47 while the
+// iOS gates were 35 and 37, so both gates stood open on Android by arithmetic
+// accident. The Android binary is versionName 1.0.70 and its own web layer has
+// no packs screen in it at all, so an over the air bundle would have put a
+// payment screen in front of Play users inside a binary Google reviewed before
+// that screen existed. That is the exact thing these gates exist to prevent,
+// and on the store with the harsher penalty for it.
+//
+// A number here means "the first build of THIS store that was reviewed with
+// the feature in it". Android is set beyond the live versionCode until a build
+// carrying these actually goes through Play review.
+const REVIEWED_FROM = {
+  ios: { signin: 35, packs: 37 },
+  android: { signin: 48, packs: 48 },
+};
+const reviewed = (feature) => {
+  const gate = REVIEWED_FROM[NATIVE_PLATFORM];
+  return Boolean(gate) && NATIVE_BUILD >= gate[feature];
+};
+const signInReviewed = () => reviewed("signin");
 // The packs screen is the same shape of thing: it shows what a pack costs
 // before the browser opens, which is payment adjacent even though the buying
 // still happens on the website exactly as it did. Gated the same way, so this
 // bundle stays safe to ship over the air and the screen appears only on a
 // binary that review has run.
-const PACKS_FROM_BUILD = 37;
-const packsReviewed = () => NATIVE_BUILD >= PACKS_FROM_BUILD;
+const packsReviewed = () => reviewed("packs");
 
 // What the website sells, named here so the app can show it without a network
 // call. Kept in step with the packs on vet.html by hand; they have changed
@@ -1972,6 +1995,7 @@ async function start() {
     appPlugin.getInfo()
       .then((info) => {
         const n = parseInt(info && info.build, 10);
+        NATIVE_PLATFORM = (cap && cap.getPlatform && cap.getPlatform()) || "web";
         if (Number.isFinite(n)) { NATIVE_BUILD = n; render(); }
       })
       .catch(() => {});
