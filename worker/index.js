@@ -759,6 +759,20 @@ async function handleKidsVerify(request, env, corsOrigin) {
     if (seen) return json({ ok: true, pass: seen }, 200, corsOrigin);
     const pass = await mintKidsPass(env, "iap", original);
     await env.BRAND_SEARCHES.put("kidsapple:" + original, pass);
+    // Which store this came from, and when, written beside the mapping rather
+    // than into it so nothing that reads the pass has to change.
+    //
+    // The receipt carries `environment`, Sandbox or Production, and we were
+    // throwing it away. Asked later whether two unlocks were real money or
+    // test purchases, there was nothing in our own data that could answer it:
+    // the verifier treats a sandbox receipt exactly like a paid one, which is
+    // correct for unlocking and useless for accounting. Recorded from here on.
+    await env.BRAND_SEARCHES.put("kidsmeta:" + original, JSON.stringify({
+      environment: claim.environment || "unknown",
+      productId: claim.productId,
+      purchasedAt: claim.purchaseDate || null,
+      at: new Date().toISOString(),
+    })).catch(() => {});
     return json({ ok: true, pass }, 200, corsOrigin);
   } catch (e) {
     return json({ ok: false, error: "Bad receipt" }, 400, corsOrigin);
