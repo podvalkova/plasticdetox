@@ -389,24 +389,19 @@ export const KIDS = {
      "name": "One Degree Organics Sprouted Rolled Oats",
      "url": "https://www.amazon.com/dp/B0B4V5TBLJ?tag=plasticdetox-20",
      "note": "Best glyphosate tested baby oats"
-    },
-    {
-     "label": "$",
-     "name": "Beech-Nut Stage 1 Organic Glass Jars",
-     "url": "https://www.amazon.com/dp/B0FBCNTMCM?tag=plasticdetox-20",
-     "note": "Best premade, in glass not a pouch"
     }
    ],
    "tip": {
     "title": "Three questions, not one",
     "body": "The pouch is a plastics question. The fruit and veg are a pesticide question, and organic is the answer to that one. The rice is a heavy metals question, which organic cannot answer, because arsenic comes from the soil.",
     "look": [
-     "Glass jars over pouches",
+     "Puree you make yourself, kept in glass",
      "Oats, barley or quinoa in place of rice cereal",
      "Organic for the fruit and veg, where pesticides are the question"
     ],
     "skip": [
      "Rice cereal and rice puffs, the most concentrated arsenic a baby eats",
+     "Jars as the easy fix, since Consumer Reports counted particles in every one it tested in 2026",
      "Fruit pouches as a meal, which teach sucking rather than eating",
      "Organic as an answer to heavy metals, which come from the soil"
     ]
@@ -418,7 +413,7 @@ export const KIDS = {
    "faqs": [
     {
      "q": "Do baby food pouches contain microplastics?",
-     "a": "Yes, and in large amounts. A 2025 laboratory study by SINTEF Ocean, commissioned by Greenpeace, tested popular pouches sold as is without heating and found microplastics in every sample. Gerber pouches contained up to 54 particles per gram (over 5,000 per pouch) and Happy Baby Organics pouches contained up to 99 particles per gram (over 11,000 per pouch). The contamination was traced to the polyethylene lining of the pouch itself. The food sits in direct contact with that plastic for weeks or months at room temperature, and squeezing the pouch adds mechanical release. Glass jars or homemade food in glass containers are far safer alternatives."
+     "a": "Yes, and in large amounts. A 2025 laboratory study by SINTEF Ocean, commissioned by Greenpeace, tested popular pouches sold as is without heating and found microplastics in every sample. Gerber pouches contained up to 54 particles per gram (over 5,000 per pouch) and Happy Baby Organics pouches contained up to 99 particles per gram (over 11,000 per pouch). The contamination was traced to the polyethylene lining of the pouch itself. The food sits in direct contact with that plastic for weeks or months at room temperature, and squeezing the pouch adds mechanical release. Homemade food in glass containers is the reliable alternative. A glass jar avoids the pouch lining, but Consumer Reports found in 2026 that jars carry particles of their own, from the lid liner and the production line."
     },
     {
      "q": "Does heating baby food in plastic increase microplastic exposure?",
@@ -426,7 +421,7 @@ export const KIDS = {
     },
     {
      "q": "Is store bought baby food safer than homemade?",
-     "a": "From a microplastic perspective, homemade baby food stored in glass containers is generally safer than store bought food in plastic packaging. However, store bought baby food in glass jars can be a good option too. The key factor is not whether the food is homemade or store bought, but whether it has been processed and stored in contact with plastic."
+     "a": "Homemade baby food stored in glass is the safer route, and the gap is wider than we used to say. Consumer Reports counted microplastic particles in 15 of the 16 packaged baby foods it tested in 2026, and the glass jars were not cleaner than the pouches. Four jars ran between 59,834 and 330,079 particles a serving, while the lowest count that registered at all was a pouch at 17,177. The glass itself is inert. The particles come from the plastic lined lid and from the equipment the food meets on the production line, which is why the container alone no longer tells you much. Homemade is the only version where you choose the equipment."
     }
    ]
   },

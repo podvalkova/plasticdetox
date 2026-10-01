@@ -13970,8 +13970,8 @@
         "asins": [
           "B0FBCNTMCM"
         ],
-        "verdict": "good",
-        "note": "Glass jar packaging skips the multilayer plastic concern entirely. Heavy metal load varies by ingredient. Lowest in fruit varieties (avocado, banana, pear, applesauce). Higher in root vegetables (carrot, sweet potato) and rice based items. Choose accordingly.",
+        "verdict": "careful",
+        "note": "Consumer Reports counted microplastic particles in these jars in September 2026: 94,892 a serving in the Organics Stage 1 Apple jar and 301,974 in the Organics Stage 2 Apple, Pea, Kiwi, higher than most of the pouches in the same study. The glass is inert; Consumer Reports points at the plastic lined lid and the production line. A jar still avoids the multilayer pouch on chemistry, and heavy metal load still varies by ingredient, lowest in fruit varieties and higher in root vegetables, but the particle count is why this no longer reads good.",
         "origin": "article",
         "source": "top-100-baby-kids-products-amazon.html",
         "ext": {
@@ -13979,7 +13979,8 @@
           "frontNotes": {
             "materials": "In contact with glass, which puts nothing into what it holds.",
             "formula": "The published ingredient list carries nothing on the hazard list.",
-            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill"
+            "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
+            "testing": "Consumer Reports counted microplastic particles in 15 of the 16 packaged baby foods it tested in September 2026, and the Beech-Nut glass jars were the high end rather than the clean end: 94,892 particles a serving in the Organics Stage 1 Apple jar, 301,974 in the Organics Stage 2 Apple, Pea, Kiwi jar, 59,834 in the Classics Stage 2 Sweet Potato jar, and 330,079 in the Classics Stage 1 Chicken jar, against 17,177 in the lowest pouch that registered at all. Caution, not fail, because no regulator publishes a limit for particle counts in food and rule 4.7 has no bar to breach; this is a measured adverse result without a threshold. It is the reason the jars no longer read good. Until now the PVC plastisol lid liner was treated as a non contact part under rule 3.4, which is what kept the glass jars clear of the rule 3.1 matrix. The count shows particles reach the food anyway, and Consumer Reports names the lid liner and the production line as the likely sources, so the non contact reading no longer holds for this product. Sku scope, and under rule 4.7 an adverse result stands until a newer clean test of the same thing replaces it."
           },
           "heldFrom": "good",
           "restoreWhy": "direct evidence at sku scope on formula, materials",
@@ -14025,26 +14026,59 @@
             "source": "beechnut.com/type/jars/",
             "checked": "2026-09-02"
           },
-          "verdict": "good",
+          "testingResults": [
+            {
+              "analyte": "microplastic particles",
+              "lab": "Consumer Reports",
+              "outcome": "detected",
+              "unit": "particles per serving",
+              "value": 94892,
+              "year": 2026,
+              "product": "Beech-Nut Organics Stage 1 Apple, glass jar, 113 g"
+            },
+            {
+              "analyte": "microplastic particles",
+              "lab": "Consumer Reports",
+              "outcome": "detected",
+              "unit": "particles per serving",
+              "value": 301974,
+              "year": 2026,
+              "product": "Beech-Nut Organics Stage 2 Apple, Pea, Kiwi, glass jar, 113 g"
+            },
+            {
+              "analyte": "microplastic particles",
+              "lab": "Consumer Reports",
+              "outcome": "detected",
+              "unit": "particles per serving",
+              "value": 59834,
+              "year": 2026,
+              "product": "Beech-Nut Classics Stage 2 Sweet Potato, glass jar, 113 g"
+            }
+          ],
+          "testingLod": "particle count per serving as sold, no detection limit published",
+          "testingNote": "Consumer Reports counted microplastic particles in 15 of the 16 packaged baby foods it tested in September 2026, and the Beech-Nut glass jars were the high end rather than the clean end: 94,892 particles a serving in the Organics Stage 1 Apple jar, 301,974 in the Organics Stage 2 Apple, Pea, Kiwi jar, 59,834 in the Classics Stage 2 Sweet Potato jar, and 330,079 in the Classics Stage 1 Chicken jar, against 17,177 in the lowest pouch that registered at all. Caution, not fail, because no regulator publishes a limit for particle counts in food and rule 4.7 has no bar to breach; this is a measured adverse result without a threshold. It is the reason the jars no longer read good. Until now the PVC plastisol lid liner was treated as a non contact part under rule 3.4, which is what kept the glass jars clear of the rule 3.1 matrix. The count shows particles reach the food anyway, and Consumer Reports names the lid liner and the production line as the likely sources, so the non contact reading no longer holds for this product. Sku scope, and under rule 4.7 an adverse result stands until a newer clean test of the same thing replaces it.",
+          "testingDate": "2026",
+          "cappedFrom": "good",
+          "capRestoreWhy": "direct evidence at sku scope on formula, materials",
+          "verdict": "careful",
           "dated": "2026-08-29",
-          "why": "direct evidence at sku scope on formula, materials",
+          "why": "section 6: materials is caution, testing is caution",
           "fronts": {
             "formula": "pass",
             "materials": "pass",
             "legal": "none",
-            "testing": "unassessed"
+            "testing": "caution"
           },
           "frontOrigin": {
             "legal": "database",
             "materials": "database",
-            "formula": "database"
+            "formula": "database",
+            "testing": "database"
           },
           "scope": "sku",
           "basis": "direct",
           "disclose": false,
-          "rules": [
-            "2 formula-read-from-materials"
-          ]
+          "rules": []
         },
         "cat": "Pantry",
         "matchAll": [
