@@ -65603,7 +65603,7 @@
           "authored": true,
           "frontNotes": {
             "legal": "Checked, nothing found. No recall or action on record, which in a barely regulated category means no regulator was looking rather than a clean bill",
-            "materials": "In contact with metal, which puts nothing into what it holds.",
+            "materials": "In contact with paper, which puts nothing into what it holds.",
             "formula": "No ingredient list recorded."
           },
           "legalNote": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either.",
@@ -66133,7 +66133,7 @@
           "frontNotes": {
             "formula": "The published ingredient list carries nothing on the hazard list.",
             "testing": "Searched Lead Safe Mama (tamararubin.com site search and WordPress index for \"Kjaer Weis\" and \"Kjaer\": nothing matched), Mamavation (site search: only the green beauty PFAS makeup guide, which tested a different product, Kjaer Weis Red Liquid Lips, at 26 ppm organic fluorine, detection limit 10 ppm, EPA certified lab, 2022 to 2023), Consumer Reports (search: no results for Kjaer Weis), Clean Label Project (site search and WordPress index: no results), Ecology Center (site search: no results) and Valisure (no Kjaer Weis content found) on 2026-09-16; no independent test of Kjaer Weis Cream Bronzer Enchant found.",
-            "materials": "In contact with metal, which puts nothing into what it holds.",
+            "materials": "In contact with paper, which puts nothing into what it holds.",
             "legal": "Checked against the FDA enforcement database on 2026-08-28. No recall on record, and no firm with a similar name either."
           },
           "formulaAnswers": {
@@ -143252,8 +143252,8 @@
       },
       {
         "name": "Dove Promises Dark Chocolate Lovers Variety Mix",
-        "verdict": "careful",
-        "note": "Not the bar our skip rests on. The tested product was Dove Promises Deeper Dark Chocolate 70% Cacao, at 112% of California's cadmium dose level in Consumer Reports' 2022 round. This mix is a different recipe: semisweet Promises, plus a white and dark swirl and a sea salt caramel, and Mars publishes no cacao percentage for any of them. Semisweet carries less cocoa than a 70% bar, so it carries less of the metals question, but it is the same brand drawing on the same cocoa and nobody has tested it. Untested in a category where 23 of 28 bars failed, rather than failing itself.",
+        "verdict": "skip",
+        "note": "Mars publishes no cacao percentage for anything in this mix, and it has not been tested as a mix, but Dove's dark chocolate has now failed twice over, with two testers and three measurements. Consumer Reports put Promises Deeper Dark 70% Cacao at 112% of California's cadmium limit in 2022. As You Sow measured the Silky Smooth Dark Chocolate Bar at 127% and 141% of the same limit in March 2022. The mix is built on Dove Promises dark chocolate, so this is the brand's own dark line rather than an inference about chocolate in general.",
         "origin": "hand",
         "source": "chocolate-brands-tested-for-lead-and-cadmium.html",
         "matchAll": [
@@ -143278,9 +143278,289 @@
             "fat": false,
             "why": "Eaten, so whatever is in it arrives whole."
           },
+          "frontNotes": {
+            "formula": "No ingredient list recorded.",
+            "testing": "INHERITED, and the scope is Dove's dark chocolate line rather than this mix, which nobody has tested. Three measurements by two independent testers, all above California's maximum allowable dose level for cadmium of 4.1 ug per serving: Consumer Reports put Promises Deeper Dark 70% Cacao at 112% of it in 2022, and As You Sow measured the Silky Smooth Dark Chocolate Bar at 127% and 141% in March 2022. The mix is built on Dove Promises dark chocolate, so this is the brand's own dark line and not an inference about dark chocolate in general. Rule 1.1 lets adverse evidence propagate and rule 1.2 requires the scope to be named, which this note does. Read from As You Sow's own chocolate tracker table on 2026-10-01, filtered to the brand, not from a secondhand summary. As You Sow states the thresholds on the same page: at or below 0.5 ug per serving of lead and 4.1 ug of cadmium is green, above is red. Its 2015 and 2016 rows are filed under the company name Lindt & Sprungli, which is why a brand name search misses them.",
+            "materials": "The contact material is not recorded."
+          },
+          "formulaAnswers": {
+            "ingredients": "",
+            "prose": "",
+            "complete": false,
+            "verdict": "open",
+            "summary": "No ingredient list recorded.",
+            "flagged": [],
+            "source": "",
+            "checked": ""
+          },
+          "testingNote": "INHERITED, and the scope is Dove's dark chocolate line rather than this mix, which nobody has tested. Three measurements by two independent testers, all above California's maximum allowable dose level for cadmium of 4.1 ug per serving: Consumer Reports put Promises Deeper Dark 70% Cacao at 112% of it in 2022, and As You Sow measured the Silky Smooth Dark Chocolate Bar at 127% and 141% in March 2022. The mix is built on Dove Promises dark chocolate, so this is the brand's own dark line and not an inference about dark chocolate in general. Rule 1.1 lets adverse evidence propagate and rule 1.2 requires the scope to be named, which this note does. Read from As You Sow's own chocolate tracker table on 2026-10-01, filtered to the brand, not from a secondhand summary. As You Sow states the thresholds on the same page: at or below 0.5 ug per serving of lead and 4.1 ug of cadmium is green, above is red. Its 2015 and 2016 rows are filed under the company name Lindt & Sprungli, which is why a brand name search misses them.",
+          "testingDate": "2022",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "anhydrous",
+            "heated": false,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "binder": "",
+            "material": "Wrapper film not named by the maker. Contents are chocolate, a fat, which rule 3.1 reads as the strongest extractant against a polymer. Recorded as undisclosed.",
+            "treatment": "",
+            "treatmentSource": "",
+            "dispenser": "",
+            "lining": "",
+            "certification": "",
+            "certificationSource": "",
+            "source": "Mars publishes no cacao percentage for any component of this mix. Checked 2026-10-01.",
+            "checked": "2026-10-01",
+            "open": "The contact material is not recorded"
+          },
+          "cappedFrom": "careful",
+          "capRestoreWhy": "section 6: testing is caution",
+          "verdict": "skip",
+          "dated": "2026-10-01",
+          "why": "section 6 ceiling: testing is fail",
+          "fronts": {
+            "formula": "unassessed",
+            "materials": "unassessed",
+            "legal": "unassessed",
+            "testing": "fail"
+          },
+          "frontOrigin": {
+            "testing": "database"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        },
+        "cat": "Pantry"
+      },
+      {
+        "name": "Dove Silky Smooth Dark Chocolate Bar",
+        "verdict": "skip",
+        "note": "As You Sow, March 2022, two samples: 5.2 and 5.8 micrograms of cadmium per serving against California's 4.1 limit, which is 127% and 141% of it, with lead at 0.4 against a 0.5 limit. A second independent tester reaching the same verdict as Consumer Reports did on the Promises bar, on a different product, is what moves this from one bad bar to a line.",
+        "origin": "hand",
+        "source": "chocolate-brands-tested-for-lead-and-cadmium.html",
+        "matchAll": [
+          [
+            "dove",
+            "silky",
+            "smooth",
+            "dark",
+            "chocolate",
+            "bar"
+          ]
+        ],
+        "ext": {
+          "frontNotes": {
+            "formula": "No ingredient list recorded.",
+            "testing": "As You Sow independent state certified laboratory testing, March 2022, two samples: cadmium 5.2 and 5.8 ug per serving, lead 0.4 in both. Both cadmium results are above California's Proposition 65 maximum allowable dose level of 4.1 ug, at 127% and 141% of it, the threshold that legally triggers a cancer and reproductive harm warning label. Read from As You Sow's own chocolate tracker table on 2026-10-01, filtered to the brand, not from a secondhand summary. As You Sow states the thresholds on the same page: at or below 0.5 ug per serving of lead and 4.1 ug of cadmium is green, above is red. Its 2015 and 2016 rows are filed under the company name Lindt & Sprungli, which is why a brand name search misses them.",
+            "materials": "The contact material is not recorded."
+          },
+          "formulaAnswers": {
+            "ingredients": "",
+            "prose": "",
+            "complete": false,
+            "verdict": "open",
+            "summary": "No ingredient list recorded.",
+            "flagged": [],
+            "source": "",
+            "checked": ""
+          },
+          "testingResults": [
+            {
+              "analyte": "lead",
+              "lab": "As You Sow, independent state certified laboratory (chocolate tracker)",
+              "lod": "not stated",
+              "source": "https://www.asyousow.org/environmental-health/toxic-enforcement/toxic-chocolate",
+              "unit": "ug/serving",
+              "value": "0.4",
+              "year": 2022
+            },
+            {
+              "analyte": "cadmium",
+              "lab": "As You Sow, independent state certified laboratory (chocolate tracker)",
+              "lod": "not stated",
+              "source": "https://www.asyousow.org/environmental-health/toxic-enforcement/toxic-chocolate",
+              "unit": "ug/serving",
+              "value": "5.8",
+              "year": 2022
+            },
+            {
+              "analyte": "lead",
+              "lab": "As You Sow, independent state certified laboratory (chocolate tracker)",
+              "lod": "not stated",
+              "source": "https://www.asyousow.org/environmental-health/toxic-enforcement/toxic-chocolate",
+              "unit": "ug/serving",
+              "value": "0.4",
+              "year": 2022
+            },
+            {
+              "analyte": "cadmium",
+              "lab": "As You Sow, independent state certified laboratory (chocolate tracker)",
+              "lod": "not stated",
+              "source": "https://www.asyousow.org/environmental-health/toxic-enforcement/toxic-chocolate",
+              "unit": "ug/serving",
+              "value": "5.2",
+              "year": 2022
+            }
+          ],
+          "testingNote": "As You Sow independent state certified laboratory testing, March 2022, two samples: cadmium 5.2 and 5.8 ug per serving, lead 0.4 in both. Both cadmium results are above California's Proposition 65 maximum allowable dose level of 4.1 ug, at 127% and 141% of it, the threshold that legally triggers a cancer and reproductive harm warning label. Read from As You Sow's own chocolate tracker table on 2026-10-01, filtered to the brand, not from a secondhand summary. As You Sow states the thresholds on the same page: at or below 0.5 ug per serving of lead and 4.1 ug of cadmium is green, above is red. Its 2015 and 2016 rows are filed under the company name Lindt & Sprungli, which is why a brand name search misses them.",
+          "testingDate": "2022",
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "anhydrous",
+            "heated": false,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "binder": "",
+            "material": "Wrapper film not named by the maker. Contents are chocolate, a fat, which rule 3.1 reads as the strongest extractant against a polymer. Recorded as undisclosed.",
+            "treatment": "",
+            "treatmentSource": "",
+            "dispenser": "",
+            "lining": "",
+            "certification": "",
+            "certificationSource": "",
+            "source": "Wrapper film not named by the maker. Checked 2026-10-01.",
+            "checked": "2026-10-01",
+            "open": "The contact material is not recorded"
+          },
+          "exposure": {
+            "type": "food",
+            "level": "medium",
+            "score": 6.0,
+            "baby": false,
+            "route": "ingestion",
+            "duration": "minutes",
+            "retained": "swallowed",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "Eaten, so whatever is in it arrives whole."
+          },
+          "verdict": "skip",
+          "dated": "2026-10-01",
+          "why": "section 6: awaiting the recorded checks",
+          "fronts": {
+            "formula": "unassessed",
+            "materials": "unassessed",
+            "legal": "unassessed",
+            "testing": "fail"
+          },
+          "frontOrigin": {
+            "testing": "database"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        },
+        "cat": "Pantry"
+      },
+      {
+        "name": "Dove Silky Smooth Solid Dark Chocolate Bunny",
+        "verdict": "careful",
+        "note": "The one Dove dark product that came in under both limits, twice: 0.3 micrograms of lead and 3.8 of cadmium per serving in March 2022, against limits of 0.5 and 4.1. Under, but cadmium at 93% of the limit is not far under, and rule 1.1 means a favourable result on this one does not clear the bars that failed.",
+        "origin": "hand",
+        "source": "chocolate-brands-tested-for-lead-and-cadmium.html",
+        "matchAll": [
+          [
+            "dove",
+            "solid",
+            "dark",
+            "chocolate",
+            "bunny"
+          ]
+        ],
+        "ext": {
+          "frontNotes": {
+            "formula": "No ingredient list recorded.",
+            "materials": "The contact material is not recorded.",
+            "testing": "As You Sow independent state certified laboratory testing, March 2022, two samples, both lead 0.3 ug per serving and cadmium 3.8 ug, against maximum allowable dose levels of 0.5 and 4.1. Below both, with cadmium at 93% of its level. Under rule 1.1 a favourable result here does not clear the Dove dark products that failed. Read from As You Sow's own chocolate tracker table on 2026-10-01, filtered to the brand, not from a secondhand summary. As You Sow states the thresholds on the same page: at or below 0.5 ug per serving of lead and 4.1 ug of cadmium is green, above is red. Its 2015 and 2016 rows are filed under the company name Lindt & Sprungli, which is why a brand name search misses them."
+          },
+          "formulaAnswers": {
+            "ingredients": "",
+            "prose": "",
+            "complete": false,
+            "verdict": "open",
+            "summary": "No ingredient list recorded.",
+            "flagged": [],
+            "source": "",
+            "checked": ""
+          },
+          "testingResults": [
+            {
+              "analyte": "lead",
+              "lab": "As You Sow, independent state certified laboratory (chocolate tracker)",
+              "lod": "not stated",
+              "source": "https://www.asyousow.org/environmental-health/toxic-enforcement/toxic-chocolate",
+              "unit": "ug/serving",
+              "value": "0.3",
+              "year": 2022
+            },
+            {
+              "analyte": "cadmium",
+              "lab": "As You Sow, independent state certified laboratory (chocolate tracker)",
+              "lod": "not stated",
+              "source": "https://www.asyousow.org/environmental-health/toxic-enforcement/toxic-chocolate",
+              "unit": "ug/serving",
+              "value": "3.8",
+              "year": 2022
+            }
+          ],
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "anhydrous",
+            "heated": false,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "binder": "",
+            "material": "Wrapper film not named by the maker. Contents are chocolate, a fat, which rule 3.1 reads as the strongest extractant against a polymer. Recorded as undisclosed.",
+            "treatment": "",
+            "treatmentSource": "",
+            "dispenser": "",
+            "lining": "",
+            "certification": "",
+            "certificationSource": "",
+            "source": "Wrapper film not named by the maker. Checked 2026-10-01.",
+            "checked": "2026-10-01",
+            "open": "The contact material is not recorded"
+          },
+          "exposure": {
+            "type": "food",
+            "level": "medium",
+            "score": 6.0,
+            "baby": false,
+            "route": "ingestion",
+            "duration": "minutes",
+            "retained": "swallowed",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "Eaten, so whatever is in it arrives whole."
+          },
+          "classEvidence": {
+            "id": "dark-chocolate-cadmium-lead",
+            "headline": "Dark chocolate carries cadmium and lead because cocoa solids do, so an untested dark bar is an unknown",
+            "detail": "Consumer Reports tested 28 dark chocolate bars in 2022 and 23 of them exceeded California's maximum allowable dose level for lead, cadmium or both in a single one ounce serving. As You Sow has tested more than 469 chocolate products since 2014 and found 285 of them above those levels. The two metals arrive by different routes, which is why they behave differently: cadmium is drawn out of the soil by the cacao tree and concentrates in the bean, so it tracks how much cocoa a product carries, while lead settles onto the beans after harvest while they dry, so it does not. This is about dark chocolate generally. We have not confirmed it for any individual untested product.",
+            "source": "Consumer Reports, 28 dark chocolate bars (December 2022) and the 2023 cocoa follow up; As You Sow chocolate tracker, more than 469 products tested since 2014, 285 above California's levels",
+            "year": 2022,
+            "status": "caution",
+            "membership": "confirmed",
+            "confirmedBy": "dark chocolate",
+            "escape": "Milk chocolate escapes the cadmium half of this and not the lead half. It carries a fraction of the cocoa, so all five milk bars Consumer Reports tested came in under the cadmium level, and As You Sow's milk chocolate results sit far below it. Lead is a different story: As You Sow has measured milk chocolate at and just under California's lead level, because lead lands on the bean after harvest rather than coming up through the plant. White chocolate has no cocoa solids at all. A published result for the product itself answers the question directly and outranks this.",
+            "alternative": ""
+          },
+          "testingNote": "As You Sow independent state certified laboratory testing, March 2022, two samples, both lead 0.3 ug per serving and cadmium 3.8 ug, against maximum allowable dose levels of 0.5 and 4.1. Below both, with cadmium at 93% of its level. Under rule 1.1 a favourable result here does not clear the Dove dark products that failed. Read from As You Sow's own chocolate tracker table on 2026-10-01, filtered to the brand, not from a secondhand summary. As You Sow states the thresholds on the same page: at or below 0.5 ug per serving of lead and 4.1 ug of cadmium is green, above is red. Its 2015 and 2016 rows are filed under the company name Lindt & Sprungli, which is why a brand name search misses them.",
+          "testingDate": "2022",
           "verdict": "careful",
           "dated": "2026-10-01",
-          "why": "section 6: testing is caution",
+          "why": "section 6: awaiting the recorded checks",
           "fronts": {
             "formula": "unassessed",
             "materials": "unassessed",
@@ -143288,7 +143568,7 @@
             "testing": "caution"
           },
           "frontOrigin": {
-            "testing": "inferred"
+            "testing": "database"
           },
           "scope": "line",
           "basis": "direct",
@@ -144976,12 +145256,13 @@
     "id": "russell-stover",
     "brand": "Russell Stover",
     "category": "Pantry",
-    "stance": "careful",
-    "reason": "The verdict depends on the product, and it is the cocoa that decides. Nobody independent has tested Russell Stover: it was not among the 28 bars Consumer Reports tested in 2022, not in the 2023 cocoa round, and not among the companies As You Sow has filed Proposition 65 notices against. So its dark bars are not failing a test, they are untested in a category where 23 of 28 bars exceeded California's dose level for lead or cadmium. Cadmium and lead ride in on cocoa solids, so the 90% cacao bar carries the most exposure to the question and the milk chocolate the least.",
-    "evidence": "Untested by Consumer Reports and As You Sow; dark bars carry the category's cadmium and lead question, milk chocolate largely escapes it.",
-    "alternative": "Milk chocolate if you want the metals question off the table, or a dark bar with a published result for the bar itself",
+    "stance": "skip",
+    "reason": "The verdict depends on the product, and the dark chocolate is the problem. As You Sow has tested Russell Stover since 2015, and in March 2022 the darkest chocolate in its Assorted Fine Chocolates measured 0.6 micrograms of lead per serving against California's limit of 0.5, which is 120% of it. Whitman's, the sister brand, measured 0.7 in 2015. The milk chocolate is the better half and still not clean: the Milk Chocolate Bunny came in at 0.3 micrograms of lead and the 2016 Break-It Rabbit sat exactly on the 0.5 limit. Cadmium stayed low throughout, which is what you would expect from chocolate that is not mostly cocoa.",
+    "evidence": "As You Sow 2022: darkest Assorted Fine Chocolates at 0.6 ug lead per serving, 120% of California's limit.",
+    "alternative": "",
     "sources": [
-      "chocolate-brands-tested-for-lead-and-cadmium.html"
+      "chocolate-brands-tested-for-lead-and-cadmium.html",
+      "https://www.asyousow.org/environmental-health/toxic-enforcement/toxic-chocolate"
     ],
     "fronts": {
       "formula": {
@@ -144996,12 +145277,12 @@
       },
       "legal": {
         "status": "pass",
-        "note": "Two allergen recalls on record, February 2023 for undeclared pecan in Sugar Free Peanut Butter Cups where the wrong sweet was inside the wrapper, and 2008 for undeclared hazelnut in Private Reserve Assorted. Both are labelling failures rather than contamination, both closed and far older than 24 months, so informational under rule 5.2. Two recalls fifteen years apart does not meet the three in five years pattern rule. No heavy metals suit or Proposition 65 notice found against Russell Stover.",
+        "note": "Two allergen recalls on record, February 2023 for undeclared pecan in Sugar Free Peanut Butter Cups where the wrong sweet was inside the wrapper, and 2008 for undeclared hazelnut in Private Reserve Assorted. Both are labelling failures rather than contamination, both closed and far older than 24 months, so informational under rule 5.2. Two recalls fifteen years apart does not meet the three in five years pattern rule. As You Sow's Proposition 65 notices named Lindt among more than 20 companies, and the Russell Stover and Whitman's rows in its tracker are filed under the Lindt & Sprungli company name.",
         "origin": "research"
       },
       "testing": {
-        "status": "unknown",
-        "note": "Searched Consumer Reports 2022 and 2023, As You Sow's Proposition 65 notices, Mamavation and Lead Safe Mama on 1 October 2026. Russell Stover appears in none of them. Chocolate is swallowed, so this stays unassessed rather than none, and the dark rows take the category finding instead.",
+        "status": "fail",
+        "note": "As You Sow, independent state certified lab, eight results across 2015, 2016 and 2022. The darkest chocolate in the Assorted Fine Chocolates box measured 0.6 ug lead per serving in March 2022, above California's 0.5 ug limit, and Whitman's Sampler darkest measured 0.7 in January 2015. Milk chocolate results ran 0.3 to 0.5 ug lead, at or under the limit, with cadmium 0.4 to 1.2 ug against a 4.1 limit. Not in Consumer Reports 2022 or 2023. Checked Lead Safe Mama's chocolate archive on 2026-10-01: no Russell Stover, Whitman's or Dove entry there.",
         "origin": "research"
       }
     },
@@ -145009,109 +145290,24 @@
     "generalises": false,
     "products": [
       {
-        "name": "Russell Stover 90% Cacao Sugar Free Dark Chocolate Bar",
-        "verdict": "careful",
-        "note": "At 90% cacao this is close to the top of the cocoa solids range, which is where Consumer Reports found the metals ran highest. Russell Stover has never been tested, so this is the category finding rather than a result for this bar: cadmium is drawn from soil into the bean and lead settles on beans while they dry, and both scale with how much cocoa a bar carries. A published result for this bar would answer it directly and would outrank the inference in either direction.",
-        "research": "Ingredients: Dark Chocolate {Maltitol, Chocolate (Processed with Alkali), Cocoa Butter, Milk Fat, Soy Lecithin (Emulsifier), Rebiana (Stevia Extract), Vanilla, Salt}.",
+        "name": "Russell Stover Assorted Fine Chocolates, darkest piece",
+        "verdict": "skip",
+        "note": "As You Sow tested the darkest chocolate in the box twice. In January 2015 it measured 0.4 micrograms of lead per serving, under California's 0.5 limit. In March 2022 the same product measured 0.6, which is 120% of the limit. Cadmium was low both times, 0.4 then 0.7 against a 4.1 limit, which fits the mechanism: cadmium comes up out of the soil into the bean and tracks how much cocoa is in the sweet, while lead settles onto beans after harvest and does not. The newer result is the adverse one and nothing has retested it clean since.",
         "origin": "hand",
         "source": "chocolate-brands-tested-for-lead-and-cadmium.html",
         "matchAll": [
           [
             "russell",
             "stover",
-            "dark"
-          ]
-        ],
-        "ext": {
-          "frontNotes": {
-            "formula": "The published ingredient list carries nothing on the hazard list.",
-            "materials": "The contact material is not recorded.",
-            "legal": "Checked FDA recall listings and recall news on 2026-10-01. Two allergen recalls on record: February 2023, Sugar Free Peanut Butter Cups with undeclared pecan because Sugar Free Pecan Delights were inside the wrapper; and 2008, undeclared hazelnut in Private Reserve Assorted. Both labelling failures rather than contamination, both closed and over 24 months old, so informational under rule 5.2, and fifteen years apart so the three in five years pattern rule does not fire. No heavy metals litigation or Proposition 65 notice found."
-          },
-          "formulaAnswers": {
-            "ingredients": "INGREDIENTS: Dark Chocolate {Maltitol, Chocolate (Processed with Alkali), Cocoa Butter, Milk Fat, Soy Lecithin (Emulsifier), Rebiana (Stevia Extract), Vanilla, Salt}.",
-            "prose": "",
-            "complete": true,
-            "verdict": "good",
-            "summary": "The published ingredient list carries nothing on the hazard list.",
-            "flagged": [],
-            "source": "Ingredient list read from retail listings for the Sugar Free dark line on 2026-10-01. Cacao percentages published by the maker on the 90% Cacao Sugar Free bar and the Private Reserve 70% Cacao. Wrapper film not named anywhere by the maker.",
-            "checked": "2026-10-01"
-          },
-          "materialAnswers": {
-            "contact": "yes",
-            "contactFrom": "recorded",
-            "base": "anhydrous",
-            "heated": false,
-            "mouthed": false,
-            "reuse": "",
-            "use": "",
-            "binder": "",
-            "material": "Bar wrapper film not named by the maker. Contents are chocolate, a fat, which rule 3.1 reads as the strongest extractant against a polymer. Recorded as undisclosed.",
-            "treatment": "",
-            "treatmentSource": "",
-            "dispenser": "",
-            "lining": "",
-            "certification": "",
-            "certificationSource": "",
-            "source": "Ingredient list read from retail listings for the Sugar Free dark line on 2026-10-01. Cacao percentages published by the maker on the 90% Cacao Sugar Free bar and the Private Reserve 70% Cacao. Wrapper film not named anywhere by the maker.",
-            "checked": "2026-10-01",
-            "open": "The contact material is not recorded"
-          },
-          "legalNote": "Checked FDA recall listings and recall news on 2026-10-01. Two allergen recalls on record: February 2023, Sugar Free Peanut Butter Cups with undeclared pecan because Sugar Free Pecan Delights were inside the wrapper; and 2008, undeclared hazelnut in Private Reserve Assorted. Both labelling failures rather than contamination, both closed and over 24 months old, so informational under rule 5.2, and fifteen years apart so the three in five years pattern rule does not fire. No heavy metals litigation or Proposition 65 notice found.",
-          "exposure": {
-            "type": "food",
-            "level": "medium",
-            "score": 6.0,
-            "baby": false,
-            "route": "ingestion",
-            "duration": "minutes",
-            "retained": "swallowed",
-            "frequency": "daily",
-            "heat": false,
-            "fat": false,
-            "why": "Eaten, so whatever is in it arrives whole."
-          },
-          "verdict": "careful",
-          "dated": "2026-10-01",
-          "why": "section 6: testing is caution",
-          "fronts": {
-            "formula": "pass",
-            "materials": "unassessed",
-            "legal": "pass",
-            "testing": "caution"
-          },
-          "frontOrigin": {
-            "formula": "database",
-            "legal": "database",
-            "testing": "inferred"
-          },
-          "scope": "line",
-          "basis": "direct",
-          "disclose": false,
-          "rules": []
-        },
-        "cat": "Pantry"
-      },
-      {
-        "name": "Russell Stover Private Reserve Dark Chocolate 70% Cacao",
-        "verdict": "careful",
-        "note": "Same question as the 90% bar and the same answer: 70% cacao is exactly the band where Consumer Reports found most of its failures, and Russell Stover has no published result of its own. Untested rather than cleared, and untested rather than failed.",
-        "origin": "hand",
-        "source": "chocolate-brands-tested-for-lead-and-cadmium.html",
-        "matchAll": [
-          [
-            "russell",
-            "stover",
-            "private",
-            "reserve"
+            "assorted"
           ]
         ],
         "ext": {
           "frontNotes": {
             "formula": "No ingredient list recorded.",
             "materials": "The contact material is not recorded.",
-            "legal": "Checked FDA recall listings and recall news on 2026-10-01. Two allergen recalls on record: February 2023, Sugar Free Peanut Butter Cups with undeclared pecan because Sugar Free Pecan Delights were inside the wrapper; and 2008, undeclared hazelnut in Private Reserve Assorted. Both labelling failures rather than contamination, both closed and over 24 months old, so informational under rule 5.2, and fifteen years apart so the three in five years pattern rule does not fire. No heavy metals litigation or Proposition 65 notice found."
+            "legal": "Checked FDA recall listings and recall news on 2026-10-01. Two allergen recalls on record: February 2023, Sugar Free Peanut Butter Cups with undeclared pecan because Sugar Free Pecan Delights were inside the wrapper; and 2008, undeclared hazelnut in Private Reserve Assorted. Both labelling failures rather than contamination, both closed and over 24 months old, so informational under rule 5.2, and fifteen years apart so the three in five years pattern rule does not fire. No heavy metals litigation or Proposition 65 notice found.",
+            "testing": "As You Sow independent state certified laboratory testing of the darkest chocolate in the box, reported as micrograms per serving. January 2015: lead 0.4, cadmium 0.4. March 2022: lead 0.6, cadmium 0.7. The 2022 lead result is above California's Proposition 65 maximum allowable dose level of 0.5 ug, at 120% of it, the threshold that legally triggers a cancer and reproductive harm warning label. Nothing has retested it clean since, so under rule 4.7 the adverse result stands. Read from As You Sow's own chocolate tracker table on 2026-10-01, filtered to the brand, not from a secondhand summary. As You Sow states the thresholds on the same page: at or below 0.5 ug per serving of lead and 4.1 ug of cadmium is green, above is red. Its 2015 and 2016 rows are filed under the company name Lindt & Sprungli, which is why a brand name search misses them."
           },
           "formulaAnswers": {
             "ingredients": "",
@@ -145123,6 +145319,44 @@
             "source": "",
             "checked": ""
           },
+          "testingResults": [
+            {
+              "analyte": "lead",
+              "lab": "As You Sow, independent state certified laboratory (chocolate tracker)",
+              "lod": "not stated",
+              "source": "https://www.asyousow.org/environmental-health/toxic-enforcement/toxic-chocolate",
+              "unit": "ug/serving",
+              "value": "0.6",
+              "year": 2022
+            },
+            {
+              "analyte": "cadmium",
+              "lab": "As You Sow, independent state certified laboratory (chocolate tracker)",
+              "lod": "not stated",
+              "source": "https://www.asyousow.org/environmental-health/toxic-enforcement/toxic-chocolate",
+              "unit": "ug/serving",
+              "value": "0.7",
+              "year": 2022
+            },
+            {
+              "analyte": "lead",
+              "lab": "As You Sow, independent state certified laboratory (chocolate tracker)",
+              "lod": "not stated",
+              "source": "https://www.asyousow.org/environmental-health/toxic-enforcement/toxic-chocolate",
+              "unit": "ug/serving",
+              "value": "0.4",
+              "year": 2015
+            },
+            {
+              "analyte": "cadmium",
+              "lab": "As You Sow, independent state certified laboratory (chocolate tracker)",
+              "lod": "not stated",
+              "source": "https://www.asyousow.org/environmental-health/toxic-enforcement/toxic-chocolate",
+              "unit": "ug/serving",
+              "value": "0.4",
+              "year": 2015
+            }
+          ],
           "materialAnswers": {
             "contact": "yes",
             "contactFrom": "recorded",
@@ -145132,14 +145366,14 @@
             "reuse": "",
             "use": "",
             "binder": "",
-            "material": "Bar wrapper film not named by the maker. Recorded as undisclosed.",
+            "material": "Wrapper film not named by the maker. Contents are chocolate, a fat, which rule 3.1 reads as the strongest extractant against a polymer. Recorded as undisclosed.",
             "treatment": "",
             "treatmentSource": "",
             "dispenser": "",
             "lining": "",
             "certification": "",
             "certificationSource": "",
-            "source": "Ingredient list read from retail listings for the Sugar Free dark line on 2026-10-01. Cacao percentages published by the maker on the 90% Cacao Sugar Free bar and the Private Reserve 70% Cacao. Wrapper film not named anywhere by the maker.",
+            "source": "Wrapper film not named by the maker. Checked 2026-10-01.",
             "checked": "2026-10-01",
             "open": "The contact material is not recorded"
           },
@@ -145157,18 +145391,22 @@
             "fat": false,
             "why": "Eaten, so whatever is in it arrives whole."
           },
-          "verdict": "careful",
+          "testingNote": "As You Sow independent state certified laboratory testing of the darkest chocolate in the box, reported as micrograms per serving. January 2015: lead 0.4, cadmium 0.4. March 2022: lead 0.6, cadmium 0.7. The 2022 lead result is above California's Proposition 65 maximum allowable dose level of 0.5 ug, at 120% of it, the threshold that legally triggers a cancer and reproductive harm warning label. Nothing has retested it clean since, so under rule 4.7 the adverse result stands. Read from As You Sow's own chocolate tracker table on 2026-10-01, filtered to the brand, not from a secondhand summary. As You Sow states the thresholds on the same page: at or below 0.5 ug per serving of lead and 4.1 ug of cadmium is green, above is red. Its 2015 and 2016 rows are filed under the company name Lindt & Sprungli, which is why a brand name search misses them.",
+          "testingDate": "2022",
+          "cappedFrom": "careful",
+          "capRestoreWhy": "section 6: legal is caution, testing is caution",
+          "verdict": "skip",
           "dated": "2026-10-01",
-          "why": "section 6: testing is caution",
+          "why": "section 6 ceiling: testing is fail",
           "fronts": {
             "formula": "unassessed",
             "materials": "unassessed",
             "legal": "pass",
-            "testing": "caution"
+            "testing": "fail"
           },
           "frontOrigin": {
             "legal": "database",
-            "testing": "inferred"
+            "testing": "database"
           },
           "scope": "line",
           "basis": "direct",
@@ -145178,9 +145416,116 @@
         "cat": "Pantry"
       },
       {
-        "name": "Russell Stover Milk Chocolate",
-        "verdict": "neutral",
-        "note": "Milk chocolate largely steps out of the question the dark bars sit in. It carries a fraction of the cocoa solids, and all five milk chocolate bars Consumer Reports tested stayed under California's dose level for both metals. No finding against it, and no test of this one either, so neutral rather than a recommendation.",
+        "name": "Whitman's Sampler, darkest piece",
+        "verdict": "skip",
+        "note": "The sister brand under the same owner, and the worst single result in this family: 0.7 micrograms of lead per serving in January 2015, 140% of California's limit, with cadmium at 1.2 against a 4.1 limit. Nobody has retested it, so under rule 4.7 the result stands until a clean one of the same product replaces it.",
+        "origin": "hand",
+        "source": "chocolate-brands-tested-for-lead-and-cadmium.html",
+        "matchAll": [
+          [
+            "whitman",
+            "sampler"
+          ]
+        ],
+        "ext": {
+          "frontNotes": {
+            "formula": "No ingredient list recorded.",
+            "materials": "The contact material is not recorded.",
+            "legal": "Checked FDA recall listings and recall news on 2026-10-01. Two allergen recalls on record: February 2023, Sugar Free Peanut Butter Cups with undeclared pecan because Sugar Free Pecan Delights were inside the wrapper; and 2008, undeclared hazelnut in Private Reserve Assorted. Both labelling failures rather than contamination, both closed and over 24 months old, so informational under rule 5.2, and fifteen years apart so the three in five years pattern rule does not fire. No heavy metals litigation or Proposition 65 notice found.",
+            "testing": "As You Sow independent state certified laboratory testing of the darkest chocolate in the sampler, January 2015: lead 0.7 ug per serving, cadmium 1.2 ug. Lead is above California's Proposition 65 maximum allowable dose level of 0.5 ug, at 140% of it, the threshold that legally triggers a cancer and reproductive harm warning label. Never retested. Read from As You Sow's own chocolate tracker table on 2026-10-01, filtered to the brand, not from a secondhand summary. As You Sow states the thresholds on the same page: at or below 0.5 ug per serving of lead and 4.1 ug of cadmium is green, above is red. Its 2015 and 2016 rows are filed under the company name Lindt & Sprungli, which is why a brand name search misses them."
+          },
+          "formulaAnswers": {
+            "ingredients": "",
+            "prose": "",
+            "complete": false,
+            "verdict": "open",
+            "summary": "No ingredient list recorded.",
+            "flagged": [],
+            "source": "",
+            "checked": ""
+          },
+          "testingResults": [
+            {
+              "analyte": "lead",
+              "lab": "As You Sow, independent state certified laboratory (chocolate tracker)",
+              "lod": "not stated",
+              "source": "https://www.asyousow.org/environmental-health/toxic-enforcement/toxic-chocolate",
+              "unit": "ug/serving",
+              "value": "0.7",
+              "year": 2015
+            },
+            {
+              "analyte": "cadmium",
+              "lab": "As You Sow, independent state certified laboratory (chocolate tracker)",
+              "lod": "not stated",
+              "source": "https://www.asyousow.org/environmental-health/toxic-enforcement/toxic-chocolate",
+              "unit": "ug/serving",
+              "value": "1.2",
+              "year": 2015
+            }
+          ],
+          "materialAnswers": {
+            "contact": "yes",
+            "contactFrom": "recorded",
+            "base": "anhydrous",
+            "heated": false,
+            "mouthed": false,
+            "reuse": "",
+            "use": "",
+            "binder": "",
+            "material": "Wrapper film not named by the maker. Contents are chocolate, a fat, which rule 3.1 reads as the strongest extractant against a polymer. Recorded as undisclosed.",
+            "treatment": "",
+            "treatmentSource": "",
+            "dispenser": "",
+            "lining": "",
+            "certification": "",
+            "certificationSource": "",
+            "source": "Wrapper film not named by the maker. Checked 2026-10-01.",
+            "checked": "2026-10-01",
+            "open": "The contact material is not recorded"
+          },
+          "legalNote": "Checked FDA recall listings and recall news on 2026-10-01. Two allergen recalls on record: February 2023, Sugar Free Peanut Butter Cups with undeclared pecan because Sugar Free Pecan Delights were inside the wrapper; and 2008, undeclared hazelnut in Private Reserve Assorted. Both labelling failures rather than contamination, both closed and over 24 months old, so informational under rule 5.2, and fifteen years apart so the three in five years pattern rule does not fire. No heavy metals litigation or Proposition 65 notice found.",
+          "exposure": {
+            "type": "food",
+            "level": "medium",
+            "score": 6.0,
+            "baby": false,
+            "route": "ingestion",
+            "duration": "minutes",
+            "retained": "swallowed",
+            "frequency": "daily",
+            "heat": false,
+            "fat": false,
+            "why": "Eaten, so whatever is in it arrives whole."
+          },
+          "testingNote": "As You Sow independent state certified laboratory testing of the darkest chocolate in the sampler, January 2015: lead 0.7 ug per serving, cadmium 1.2 ug. Lead is above California's Proposition 65 maximum allowable dose level of 0.5 ug, at 140% of it, the threshold that legally triggers a cancer and reproductive harm warning label. Never retested. Read from As You Sow's own chocolate tracker table on 2026-10-01, filtered to the brand, not from a secondhand summary. As You Sow states the thresholds on the same page: at or below 0.5 ug per serving of lead and 4.1 ug of cadmium is green, above is red. Its 2015 and 2016 rows are filed under the company name Lindt & Sprungli, which is why a brand name search misses them.",
+          "testingDate": "2015",
+          "cappedFrom": "careful",
+          "capRestoreWhy": "section 6: testing is caution",
+          "verdict": "skip",
+          "dated": "2026-10-01",
+          "why": "section 6 ceiling: testing is fail",
+          "fronts": {
+            "formula": "unassessed",
+            "materials": "unassessed",
+            "legal": "pass",
+            "testing": "fail"
+          },
+          "frontOrigin": {
+            "legal": "database",
+            "testing": "database"
+          },
+          "scope": "line",
+          "basis": "direct",
+          "disclose": false,
+          "rules": []
+        },
+        "cat": "Pantry"
+      },
+      {
+        "name": "Russell Stover Milk Chocolate Bunny",
+        "verdict": "careful",
+        "note": "The best tested thing here and still not a clean bill. Two samples in March 2022 came in at 0.3 micrograms of lead per serving against a 0.5 limit, with cadmium at 0.5 and 0.6 against 4.1. Under both limits, but lead was detected at around 60% of the level that would require a warning label, and the 2016 Break-It Rabbit sat exactly on the limit at 0.5. Milk chocolate steps out of the cadmium question because it carries little cocoa. It does not step out of the lead one.",
         "origin": "hand",
         "source": "chocolate-brands-tested-for-lead-and-cadmium.html",
         "matchAll": [
@@ -145195,7 +145540,8 @@
           "frontNotes": {
             "formula": "No ingredient list recorded.",
             "materials": "The contact material is not recorded.",
-            "legal": "Checked FDA recall listings and recall news on 2026-10-01. Two allergen recalls on record: February 2023, Sugar Free Peanut Butter Cups with undeclared pecan because Sugar Free Pecan Delights were inside the wrapper; and 2008, undeclared hazelnut in Private Reserve Assorted. Both labelling failures rather than contamination, both closed and over 24 months old, so informational under rule 5.2, and fifteen years apart so the three in five years pattern rule does not fire. No heavy metals litigation or Proposition 65 notice found."
+            "legal": "Checked FDA recall listings and recall news on 2026-10-01. Two allergen recalls on record: February 2023, Sugar Free Peanut Butter Cups with undeclared pecan because Sugar Free Pecan Delights were inside the wrapper; and 2008, undeclared hazelnut in Private Reserve Assorted. Both labelling failures rather than contamination, both closed and over 24 months old, so informational under rule 5.2, and fifteen years apart so the three in five years pattern rule does not fire. No heavy metals litigation or Proposition 65 notice found.",
+            "testing": "As You Sow independent state certified laboratory testing, March 2022, two samples: lead 0.3 ug per serving in both, cadmium 0.5 and 0.6 ug. Both are below California's maximum allowable dose levels of 0.5 and 4.1 ug. Lead was detected at about 60% of its level, and the Break-It Rabbit milk chocolate sat exactly on the 0.5 limit in February 2016, so this is a detection under the limit rather than a clean result. Read from As You Sow's own chocolate tracker table on 2026-10-01, filtered to the brand, not from a secondhand summary. As You Sow states the thresholds on the same page: at or below 0.5 ug per serving of lead and 4.1 ug of cadmium is green, above is red. Its 2015 and 2016 rows are filed under the company name Lindt & Sprungli, which is why a brand name search misses them."
           },
           "formulaAnswers": {
             "ingredients": "",
@@ -145207,6 +145553,44 @@
             "source": "",
             "checked": ""
           },
+          "testingResults": [
+            {
+              "analyte": "lead",
+              "lab": "As You Sow, independent state certified laboratory (chocolate tracker)",
+              "lod": "not stated",
+              "source": "https://www.asyousow.org/environmental-health/toxic-enforcement/toxic-chocolate",
+              "unit": "ug/serving",
+              "value": "0.3",
+              "year": 2022
+            },
+            {
+              "analyte": "cadmium",
+              "lab": "As You Sow, independent state certified laboratory (chocolate tracker)",
+              "lod": "not stated",
+              "source": "https://www.asyousow.org/environmental-health/toxic-enforcement/toxic-chocolate",
+              "unit": "ug/serving",
+              "value": "0.6",
+              "year": 2022
+            },
+            {
+              "analyte": "lead",
+              "lab": "As You Sow, independent state certified laboratory (chocolate tracker)",
+              "lod": "not stated",
+              "source": "https://www.asyousow.org/environmental-health/toxic-enforcement/toxic-chocolate",
+              "unit": "ug/serving",
+              "value": "0.5",
+              "year": 2016
+            },
+            {
+              "analyte": "cadmium",
+              "lab": "As You Sow, independent state certified laboratory (chocolate tracker)",
+              "lod": "not stated",
+              "source": "https://www.asyousow.org/environmental-health/toxic-enforcement/toxic-chocolate",
+              "unit": "ug/serving",
+              "value": "0.5",
+              "year": 2016
+            }
+          ],
           "materialAnswers": {
             "contact": "yes",
             "contactFrom": "recorded",
@@ -145216,14 +145600,14 @@
             "reuse": "",
             "use": "",
             "binder": "",
-            "material": "Wrapper film not named by the maker. Recorded as undisclosed.",
+            "material": "Wrapper film not named by the maker. Contents are chocolate, a fat, which rule 3.1 reads as the strongest extractant against a polymer. Recorded as undisclosed.",
             "treatment": "",
             "treatmentSource": "",
             "dispenser": "",
             "lining": "",
             "certification": "",
             "certificationSource": "",
-            "source": "Ingredient list read from retail listings for the Sugar Free dark line on 2026-10-01. Cacao percentages published by the maker on the 90% Cacao Sugar Free bar and the Private Reserve 70% Cacao. Wrapper film not named anywhere by the maker.",
+            "source": "Wrapper film not named by the maker. Checked 2026-10-01.",
             "checked": "2026-10-01",
             "open": "The contact material is not recorded"
           },
@@ -145241,17 +145625,20 @@
             "fat": false,
             "why": "Eaten, so whatever is in it arrives whole."
           },
-          "verdict": "unrated",
+          "testingNote": "As You Sow independent state certified laboratory testing, March 2022, two samples: lead 0.3 ug per serving in both, cadmium 0.5 and 0.6 ug. Both are below California's maximum allowable dose levels of 0.5 and 4.1 ug. Lead was detected at about 60% of its level, and the Break-It Rabbit milk chocolate sat exactly on the 0.5 limit in February 2016, so this is a detection under the limit rather than a clean result. Read from As You Sow's own chocolate tracker table on 2026-10-01, filtered to the brand, not from a secondhand summary. As You Sow states the thresholds on the same page: at or below 0.5 ug per serving of lead and 4.1 ug of cadmium is green, above is red. Its 2015 and 2016 rows are filed under the company name Lindt & Sprungli, which is why a brand name search misses them.",
+          "testingDate": "2022",
+          "verdict": "careful",
           "dated": "2026-10-01",
-          "why": "neutral is not a verdict, nothing is being asserted",
+          "why": "section 6: testing is caution",
           "fronts": {
             "formula": "unassessed",
             "materials": "unassessed",
             "legal": "pass",
-            "testing": "unassessed"
+            "testing": "caution"
           },
           "frontOrigin": {
-            "legal": "database"
+            "legal": "database",
+            "testing": "database"
           },
           "scope": "line",
           "basis": "direct",
