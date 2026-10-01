@@ -809,7 +809,15 @@ function draw() {
         hideBusy();
         if (r.state === "ok") { track("kids_unlocked", { via: "iap" }); toast("Opened. The room is on your list"); render(); }
         else if (r.state === "cancelled") { /* their choice, say nothing */ }
-        else if (r.state === "unavailable") toast("Not available on this device");
+        else if (r.state === "unavailable") {
+          // Tracked, because it is a failure the person sees and we could not.
+          // Somebody asking later how often the purchase breaks could count
+          // store-refused and paid-unopened and never learn how many taps died
+          // here instead, which reads as a cancellation in the numbers and as
+          // a broken app on the phone.
+          track("kids_buy_failed", { state: r.state, why: "no purchases plugin on this device" });
+          toast("Not available on this device");
+        }
         else {
           // Log the store's own words. Without them a failed purchase is
           // unreadable from here: the tap was tracked and the reason was not.
